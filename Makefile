@@ -1,7 +1,13 @@
 
+
+#python := $(shell which python)
+virtualenv.exe := ~/ZZZ-local/bin/virtualenv
+
+
 top := $(CURDIR)
 
-PYTHON := $(shell which python)
+#PYTHON := $(shell which python)
+PYTHON := $(top)/work/bin/python
 # 2.7
 PYTHON_VER := $(shell $(PYTHON) -c "import sys;sys.stdout.write('{version[0]}.{version[1]}'.format(version=sys.version_info))")
 # linux-x86_64
@@ -15,17 +21,20 @@ testsdir := $(top)/tests
 
 include $(top)/tests/defaults.mk
 
+virtualenv : 
+	$(virtualenv.exe) work
+
 develop :
-	python setup.py develop
+	$(PYTHON) setup.py develop
 
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 docs :
-	python setup.py build_sphinx
+	$(PYTHON) setup.py build_sphinx
 
 test :
-	python setup.py test
-#	python -m unittest tests
+	$(PYTHON) setup.py test
+#	$(PYTHON) -m unittest tests
 
 # Pattern rule to make directories.
 %/.. : ; $(at)test -d $(dir $@) || mkdir -p $(dir $@)
@@ -84,7 +93,7 @@ print-debug:
 	@echo PLATFORM=$(PLATFORM)
 	@echo tempdir=$(tempdir)
 
-.PHONY : develop docs test testdirs
+.PHONY : virtualenv develop docs test testdirs
 .PHONY : fortran test-fortran tutorial strings
 .PHONY : test-python py-tutorial
 .PHONY : test-lua lua-tutorial

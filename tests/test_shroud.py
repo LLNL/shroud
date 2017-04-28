@@ -1,4 +1,5 @@
 from __future__ import print_function
+from __future__ import absolute_import
 #from __future__ import unicode_literals
 
 from shroud import main
@@ -8,7 +9,7 @@ import sys
 import sysconfig
 import unittest
 
-import do_test
+from . import do_test
 
 def distutils_dir_name(dname):
     """Returns the name of a distutils build directory"""

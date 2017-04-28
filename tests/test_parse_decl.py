@@ -42,11 +42,11 @@ class CheckDeclCase(unittest.TestCase):
 
     def test_attr03(self):
         r = parse_decl.x("+intent()").attr()
-        self.assertEqual(r, ('intent', '()'))
+        self.assertEqual(r, ('intent', ''))
 
     def test_attr04(self):
         r = parse_decl.x("+intent(in)").attr()
-        self.assertEqual(r, ('intent', '(in)'))
+        self.assertEqual(r, ('intent', 'in'))
 
     def test_attr05(self):
         r = parse_decl.x('+name="abcd"').attr()
@@ -78,11 +78,11 @@ class CheckDeclCase(unittest.TestCase):
 
     def test_attr12(self):
         r = parse_decl.x("+dimension(*)").attr()
-        self.assertEqual(r, ('dimension', '(*)'))
+        self.assertEqual(r, ('dimension', '*'))
 
     def test_attr13(self):
         r = parse_decl.x("+dimension(len)").attr()
-        self.assertEqual(r, ('dimension', '(len)'))
+        self.assertEqual(r, ('dimension', 'len'))
 
     # declarator
     def test_declarator01(self):
