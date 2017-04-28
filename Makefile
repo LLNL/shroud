@@ -1,28 +1,27 @@
-
-
-#python := $(shell which python)
-virtualenv.exe := ~/ZZZ-local/bin/virtualenv
+#
+# targets to aid development
+#
 
 
 top := $(CURDIR)
 
-#PYTHON := $(shell which python)
-PYTHON := $(top)/work/bin/python
-# 2.7
-PYTHON_VER := $(shell $(PYTHON) -c "import sys;sys.stdout.write('{version[0]}.{version[1]}'.format(version=sys.version_info))")
-# linux-x86_64
-PLATFORM := $(shell $(PYTHON) -c "import sys, sysconfig;sys.stdout.write(sysconfig.get_platform())")
-
-LUA = $(shell which lua)
-
-# build/temp-linux-x86_64-3.6
-tempdir := build/temp.$(PLATFORM)-$(PYTHON_VER)
-testsdir := $(top)/tests
+PYTHON := $(shell which python)
+venv := $(dir $(PYTHON))virtualenv
 
 include $(top)/tests/defaults.mk
 
+LUA = $(shell which lua)
+
+# build/temp-linux-x86_64-2.7
+tempdir := build/temp.$(PLATFORM)-$(PYTHON_VER)
+testsdir := $(top)/tests
+
+venv.dir := $(top)/$(tempdir)/venv
+PYTHON := $(venv.dir)/bin/python
+
+
 virtualenv : 
-	$(virtualenv.exe) work
+	$(venv) $(venv.dir)
 
 develop :
 	$(PYTHON) setup.py develop
@@ -85,6 +84,15 @@ test-all : test-fortran test-python test-lua
 test-clean :
 	rm -rf $(tempdir)
 
+#
+# Run the sample YAML files and compare output
+#
+do-test :
+	export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
+	export TEST_INPUT_DIR=$(top)/tests; \
+	export EXECUTABLE_DIR=$(venv.dir)/bin; \
+	$(PYTHON) tests/do_test.py
+
 print-debug:
 	@echo LUA=$(LUA)
 	@echo PYTHON=$(PYTHON)
@@ -98,4 +106,4 @@ print-debug:
 .PHONY : test-python py-tutorial
 .PHONY : test-lua lua-tutorial
 .PHONY : test-all test-clean
-.PHONY : print-debug
+.PHONY : do-test print-debug

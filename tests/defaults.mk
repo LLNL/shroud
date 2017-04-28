@@ -4,10 +4,15 @@ compiler = gcc
 #compiler = intel
 
 # paths need the trailing slash
+# LC
 gcc.path = /usr/apps/gnu/4.7.1/bin/
 gcc.path = /usr/apps/gnu/4.9.3/bin/
 intel.path = /usr/local/tools/ic-15.0.187/bin/
 intel.path = /usr/local/tools/ic-16.0.109/bin/
+
+# battra
+#gcc.path = $(HOME)/apps/gcc-4.9.4/bin/
+
 
 ifeq ($(compiler),gcc)
 CC = $(gcc.path)gcc
@@ -35,6 +40,7 @@ endif
 
 # 2.7
 PYTHON_VER := $(shell $(PYTHON) -c "import sys;sys.stdout.write('{v[0]}.{v[1]}'.format(v=sys.version_info))")
+PLATFORM := $(shell $(PYTHON) -c "import sys, sysconfig;sys.stdout.write(sysconfig.get_platform())")
 PYTHON_PREFIX := $(shell $(PYTHON) -c "import sys;sys.stdout.write(sys.exec_prefix)")
 PYTHON_BIN := $(PYTHON)
 PYTHON_INC := -I$(PYTHON_PREFIX)/include/python$(PYTHON_VER)
