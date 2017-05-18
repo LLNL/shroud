@@ -35,6 +35,7 @@ from . import wrapc
 from . import wrapf
 from . import wrapp
 from . import wrapl
+from . import whelpers
 
 wformat = util.wformat
 
@@ -1525,8 +1526,8 @@ def main():
                         help='Colon delimited paths to search for '
                         'splicer files, may be supplied multiple '
                         'times to append to path.')
-    parser.add_argument('--sitedir', action='store_true',
-                        help='Print install location and quit')
+    parser.add_argument('--cmake', default='',
+                        help='Create a file with CMake macro')
     parser.add_argument('filename', nargs='*',
                         help='Input file to process.')
 
@@ -1541,9 +1542,16 @@ def main_with_args(args):
     Useful for testing.
     """
 
-    if args.sitedir:
-        print(os.path.dirname(__file__))
-        raise SystemExit
+    if args.cmake:
+        # Create C make file
+        try:
+            fp = open(args.cmake, 'w')
+            fp.write(whelpers.cmake)
+            fp.close()
+            raise SystemExit
+        except IOError, e:
+            print(str(e))
+            raise SystemExit(1)
 
     # check command line options
     if len(args.filename) == 0:
