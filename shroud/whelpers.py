@@ -166,7 +166,7 @@ if(NOT SHROUD_EXECUTABLE)
     MESSAGE(FATAL_ERROR "Could not find Shroud. Shroud requires explicit SHROUD_EXECUTABLE.")
 endif()
 
-message(STATUS Found SHROUD: ${SHROUD_EXECUTABLE})
+message(STATUS "Found SHROUD: ${SHROUD_EXECUTABLE}")
 
 add_custom_target(generate)
 set(SHROUD_FOUND TRUE)
@@ -185,6 +185,8 @@ set(SHROUD_FOUND TRUE)
 ##             PYTHON_OUTPUT_DIR dir
 ##             LUA_OUTPUT_DIR dir
 ##             YAML_OUTPUT_DIR dir
+##             CFILES file
+##             FFILES file
 ## )
 ##
 ##  YAML_INPUT_FILE - yaml input file to shroud. Required.
@@ -192,11 +194,14 @@ set(SHROUD_FOUND TRUE)
 ##  DEPENDS_BINARY  - splicer files in the binary directory
 ##  C_FORTRAN_OUTPUT_DIR - directory for C and Fortran wrapper output files.
 ##  PYTHON_OUTPUT_DIR - directory for Python wrapper output files.
-##  LUA_OUTPUT_DIR - directory for Lua wrapper output files.
+##  LUA_OUTPUT_DIR  - directory for Lua wrapper output files.
 ##  YAML_OUTPUT_DIR - directory for YAML output files.
 ##                    Defaults to CMAKE_CURRENT_SOURCE_DIR
+##  CFILES          - Output file with list of generated C/C++ files
+##  FFILES          - Output file with list of generated Fortran files
 ##
-## Add a shroud target to generate wrappers.
+## Add a target generate_${basename} where basename is generated from
+## YAML_INPUT_FILE.  It is then added as a dependency to the generate target.
 ##
 ##------------------------------------------------------------------------------
 
@@ -216,17 +221,20 @@ macro(add_shroud)
         PYTHON_OUTPUT_DIR
         LUA_OUTPUT_DIR
         YAML_OUTPUT_DIR
+        CFILES
+        FFILES
     )
     set(multiValueArgs DEPENDS_SOURCE DEPENDS_BINARY )
 
     ## parse the arguments to the macro
     cmake_parse_arguments(arg
-         "${options}" "${singleValueArgs}" "${multiValueArgs}" ${ARGN})
+        "${options}" "${singleValueArgs}" "${multiValueArgs}" ${ARGN})
 
     # make sure YAML_INPUT_FILE is defined
     if(NOT arg_YAML_INPUT_FILE)
       message(FATAL_ERROR "add_shroud macro must define YAML_INPUT_FILE")
     endif()
+    get_filename_component(_basename ${arg_YAML_INPUT_FILE} NAME_WE)
 
     if(arg_C_FORTRAN_OUTPUT_DIR)
       set(SHROUD_C_FORTRAN_OUTPUT_DIR --outdir-c-fortran ${arg_C_FORTRAN_OUTPUT_DIR})
@@ -246,6 +254,18 @@ macro(add_shroud)
       set(SHROUD_YAML_OUTPUT_DIR --outdir-yaml ${CMAKE_CURRENT_SOURCE_DIR})
     endif()
 
+    if(arg_CFILES)
+      set(SHROUD_CFILES ${arg_CFILES})
+    else()
+      set(SHROUD_CFILES ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.cfiles)
+    endif()
+
+    if(arg_FFILES)
+      set(SHROUD_FFILES ${arg_FFILES})
+    else()
+      set(SHROUD_FFILES ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.ffiles)
+    endif()
+
     # convert DEPENDS to full paths
     set(shroud_depends)
     foreach (_file ${arg_DEPENDS_SOURCE})
@@ -255,10 +275,7 @@ macro(add_shroud)
         list(APPEND shroud_depends "${CMAKE_CURRENT_BINARY_DIR}/${_file}")
     endforeach ()
 
-    get_filename_component(_basename ${arg_YAML_INPUT_FILE} NAME_WE)
     set(_timestamp  ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.time)
-    set(_cfiles     ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.cfiles)
-    set(_ffiles     ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.ffiles)
 
     set(_cmd
         ${SHROUD_EXECUTABLE}
@@ -270,8 +287,8 @@ macro(add_shroud)
         # path controls where to search for splicer files listed in YAML_INPUT_FILE
         --path ${CMAKE_CURRENT_BINARY_DIR}
         --path ${CMAKE_CURRENT_SOURCE_DIR}
-        --cfiles ${_cfiles}
-        --ffiles ${_ffiles}
+        --cfiles ${SHROUD_CFILES}
+        --ffiles ${SHROUD_FFILES}
         ${CMAKE_CURRENT_SOURCE_DIR}/${arg_YAML_INPUT_FILE}
     )
 
@@ -285,11 +302,8 @@ macro(add_shroud)
     )
 
     # Create target to process this Shroud file
-    set(_shroud_target generate_${_basename})
-    add_custom_target(${_shroud_target}
-        DEPENDS ${_timestamp}
-    )
+    add_custom_target(generate_${_basename}    DEPENDS ${_timestamp})
 
-    add_dependencies(generate ${_shroud_target})
+    add_dependencies(generate generate_${_basename})
 endmacro(add_shroud)
 """
