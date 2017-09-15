@@ -55,13 +55,23 @@ LUA = $(shell which lua)
 # build/temp-linux-x86_64-2.7
 tempdir := build/temp.$(PLATFORM)-$(PYTHON_VER)
 testsdir := $(top)/tests
+venv.dir := $(top)/$(tempdir)/venv
 
-#venv.dir := $(top)/$(tempdir)/venv
-#python.dir := $(venv.dir)/bin
-#PYTHON := $(venv.dir)/bin/python
+# if virtualenv is created us it, else depend on python in path
+ifneq ($(wildcard $(venv.dir)),)
+python.dir := $(venv.dir)/bin
+PYTHON := $(venv.dir)/bin/python
+endif
 
+export PYTHON
+export LUA
 
-virtualenv : 
+########################################################################
+# Create a virtual environment.
+# Then 'make develop' will use the environement to install dependencies
+
+virtualenv : $(venv.dir)
+$(venv.dir) :
 	$(venv) $(venv.dir)
 
 develop :
@@ -76,9 +86,15 @@ test :
 	$(PYTHON) setup.py test
 #	$(PYTHON) -m unittest tests
 
+
 # Pattern rule to make directories.
 %/.. : ; $(at)test -d $(dir $@) || mkdir -p $(dir $@)
 
+########################################################################
+#
+# Compile code in tutrial and string directory
+# Used to make sure the generated wrappers work.
+#
 TESTDIRS = \
     $(tempdir)/run-tutorial/..\
     $(tempdir)/run-tutorial/python/.. \
@@ -125,6 +141,7 @@ test-all : test-fortran test-python test-lua
 test-clean :
 	rm -rf $(tempdir)
 
+########################################################################
 #
 # Run the sample YAML files and compare output
 #
@@ -140,6 +157,8 @@ do-test-replace :
 	export TEST_INPUT_DIR=$(top)/tests; \
 	export EXECUTABLE_DIR=$(python.dir); \
 	$(PYTHON) tests/do_test.py -r
+
+########################################################################
 
 print-debug:
 	@echo LUA=$(LUA)

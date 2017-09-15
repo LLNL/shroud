@@ -119,6 +119,13 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=['pyyaml', 'parsley'],
+# This works around the error
+# Searching for parsley
+# Reading https://pypi.python.org/simple/parsley/
+# No local packages or working download links found for parsley
+    dependency_links=[
+        "https://pypi.python.org/packages/06/52/cac2f9e78c26cff8bb518bdb4f2b5a0c7058dec7a62087ed48fe87478ef0/Parsley-1.3.tar.gz#md5=92bc256e5f73810a609dc7874637ad31"
+    ],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
