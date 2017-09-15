@@ -45,6 +45,7 @@
 top := $(CURDIR)
 
 PYTHON := $(shell which python)
+python.dir := $(dir $(PYTHON))
 venv := $(dir $(PYTHON))virtualenv
 
 include $(top)/tests/defaults.mk
@@ -55,7 +56,8 @@ LUA = $(shell which lua)
 tempdir := build/temp.$(PLATFORM)-$(PYTHON_VER)
 testsdir := $(top)/tests
 
-venv.dir := $(top)/$(tempdir)/venv
+#venv.dir := $(top)/$(tempdir)/venv
+#python.dir := $(venv.dir)/bin
 #PYTHON := $(venv.dir)/bin/python
 
 
@@ -129,14 +131,14 @@ test-clean :
 do-test :
 	export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
 	export TEST_INPUT_DIR=$(top)/tests; \
-	export EXECUTABLE_DIR=$(venv.dir)/bin; \
+	export EXECUTABLE_DIR=$(python.dir); \
 	$(PYTHON) tests/do_test.py
 
 # replace test answers
 do-test-replace :
 	export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
 	export TEST_INPUT_DIR=$(top)/tests; \
-	export EXECUTABLE_DIR=$(venv.dir)/bin; \
+	export EXECUTABLE_DIR=$(python.dir); \
 	$(PYTHON) tests/do_test.py -r
 
 print-debug:
