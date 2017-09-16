@@ -207,6 +207,22 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: NSH_F_rv
         end subroutine c_get_string2_empty_bufferify
 
+        subroutine c_get_string5_bufferify(SH_F_rv, NSH_F_rv) &
+                bind(C, name="STR_get_string5_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: SH_F_rv(*)
+            integer(C_INT), value, intent(IN) :: NSH_F_rv
+        end subroutine c_get_string5_bufferify
+
+        subroutine c_get_string6_bufferify(output, Noutput) &
+                bind(C, name="STR_get_string6_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: output(*)
+            integer(C_INT), value, intent(IN) :: Noutput
+        end subroutine c_get_string6_bufferify
+
         subroutine c_accept_string_const_reference(arg1) &
                 bind(C, name="STR_accept_string_const_reference")
             use iso_c_binding, only : C_CHAR
@@ -328,7 +344,7 @@ contains
     end subroutine pass_char_ptr
 
     ! const string_result_fstr * getChar1()+pure
-    ! function_index=17
+    ! function_index=19
     !>
     !! \brief return a 'const char *' as character(*)
     !!
@@ -360,7 +376,7 @@ contains
 
     ! void getChar3(char * output+intent(out)+len(Noutput))
     ! string_to_buffer_and_len - string_to_buffer_and_len
-    ! function_index=20
+    ! function_index=22
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -376,7 +392,7 @@ contains
     end subroutine get_char3
 
     ! const string_result_fstr & getString1()+pure
-    ! function_index=22
+    ! function_index=24
     !>
     !! \brief return a 'const string&' as character(*)
     !!
@@ -408,7 +424,7 @@ contains
 
     ! void getString3(string & output+intent(out)+len(Noutput))
     ! string_to_buffer_and_len - string_to_buffer_and_len
-    ! function_index=25
+    ! function_index=27
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -440,9 +456,43 @@ contains
         ! splicer end function.get_string2_empty
     end function get_string2_empty
 
-    ! void acceptStringConstReference(const std::string & arg1+intent(in))
+    ! const string getString5()
     ! string_to_buffer_and_len
     ! function_index=10
+    !>
+    !! \brief return a 'const string' as argument
+    !!
+    !<
+    function get_string5() result(SH_rv)
+        use iso_c_binding, only : C_CHAR, C_INT
+        character(kind=C_CHAR, len=30) :: SH_rv
+        ! splicer begin function.get_string5
+        call c_get_string5_bufferify(  &
+            SH_rv,  &
+            len(SH_rv, kind=C_INT))
+        ! splicer end function.get_string5
+    end function get_string5
+
+    ! void getString6(string * output+intent(out)+len(Noutput))
+    ! string_to_buffer_and_len - string_to_buffer_and_len
+    ! function_index=31
+    !>
+    !! \brief return a 'const string' as argument
+    !!
+    !<
+    subroutine get_string6(output)
+        use iso_c_binding, only : C_INT
+        character(*), intent(OUT) :: output
+        ! splicer begin function.get_string6
+        call c_get_string6_bufferify(  &
+            output,  &
+            len(output, kind=C_INT))
+        ! splicer end function.get_string6
+    end subroutine get_string6
+
+    ! void acceptStringConstReference(const std::string & arg1+intent(in))
+    ! string_to_buffer_and_len
+    ! function_index=12
     !>
     !! \brief Accept a const string reference
     !!
@@ -462,7 +512,7 @@ contains
 
     ! void acceptStringReference(std::string & arg1+intent(inout))
     ! string_to_buffer_and_len
-    ! function_index=11
+    ! function_index=13
     !>
     !! \brief Accept a string reference
     !!
@@ -483,7 +533,7 @@ contains
 
     ! void explicit1(char * name+intent(in)+len_trim(AAlen))
     ! string_to_buffer_and_len
-    ! function_index=12
+    ! function_index=14
     subroutine explicit1(name)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
@@ -496,7 +546,7 @@ contains
 
     ! void explicit2(char * name+intent(out)+len(AAtrim))
     ! string_to_buffer_and_len
-    ! function_index=13
+    ! function_index=15
     subroutine explicit2(name)
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: name

@@ -146,14 +146,14 @@ test-clean :
 # Run the sample YAML files and compare output
 #
 do-test :
-	export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
+	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
 	export TEST_INPUT_DIR=$(top)/tests; \
 	export EXECUTABLE_DIR=$(python.dir); \
 	$(PYTHON) tests/do_test.py
 
 # replace test answers
 do-test-replace :
-	export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
+	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
 	export TEST_INPUT_DIR=$(top)/tests; \
 	export EXECUTABLE_DIR=$(python.dir); \
 	$(PYTHON) tests/do_test.py -r

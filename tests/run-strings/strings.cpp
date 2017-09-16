@@ -112,6 +112,21 @@ const std::string& getString2_empty()
     return static_str_empty;
 }
 
+const std::string getString4()
+{
+    return static_str;
+}
+
+const std::string getString5()
+{
+    return static_str;
+}
+
+const std::string getString6()
+{
+    return static_str;
+}
+
 //----------------------------------------
 
 void acceptStringConstReference(const std::string & arg1)

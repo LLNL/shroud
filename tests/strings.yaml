@@ -90,6 +90,7 @@ functions:
     F_string_result_as_arg: output
 
 ########################################
+# return std::string reference
 
 - decl: const string& getString1()  +pure
 #  C_error_pattern: C_invalid_name
@@ -112,6 +113,27 @@ functions:
   C_error_pattern: C_invalid_name
   doxygen:
     brief: Test returning empty string reference
+
+########################################
+# return std::string
+
+# This tries to call a C wrapper which is not created
+#- decl: const string getString4() # +pure
+#  C_error_pattern: C_invalid_name
+#  doxygen:
+#    brief: return a 'const string' as argument
+
+- decl: const string getString5+len=30() # +pure
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const string' as argument
+
+- decl: const string getString6() # +pure
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const string' as argument
+  options:
+    F_string_result_as_arg: output
 
 ########################################
 

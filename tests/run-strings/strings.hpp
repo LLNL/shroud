@@ -60,6 +60,10 @@ const std::string& getString2();
 const std::string& getString3();
 const std::string& getString2_empty();
 
+const std::string getString4();
+const std::string getString5();
+const std::string getString6();
+
 void acceptName_instance(std::string arg1);
 
 void acceptStringConstReference(const std::string & arg1);

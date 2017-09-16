@@ -136,6 +136,18 @@ contains
 
 !--------------------------------------------------
 
+    ! character(30) function
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_string5()
+    call assert_true( str == "dog")
+
+    ! string_result_as_arg
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call get_string6(str)
+    call assert_true( str == "dog")
+ 
+!--------------------------------------------------
+
     call accept_string_const_reference("cat")
 !    call assert_true( rv_char == "dog")
 
