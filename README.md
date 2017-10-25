@@ -4,6 +4,13 @@ verb
 1. wrap or dress (a body) in a shroud for burial.
 2. cover or envelop so as to conceal from view.
 
+[![Documentation Status](https://readthedocs.org/projects/shroud/badge/?version=latest)](http://shroud.readthedocs.io/en/latest/?badge=latest)
+
+## Documentation
+
+To get started using Shroud, check out the full documentation:
+
+http://shroud.readthedocs.io/
 
 ## required packages
 
