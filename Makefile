@@ -87,6 +87,9 @@ test :
 #	$(PYTHON) -m unittest tests
 
 
+requirements.txt :
+	$(python.dir)/pip freeze > $@
+
 # Pattern rule to make directories.
 %/.. : ; $(at)test -d $(dir $@) || mkdir -p $(dir $@)
 

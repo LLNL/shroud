@@ -1,0 +1,4 @@
+build
+docs/_build
+*.pyc
+shroud.egg-info
