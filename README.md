@@ -4,7 +4,10 @@ verb
 1. wrap or dress (a body) in a shroud for burial.
 2. cover or envelop so as to conceal from view.
 
+[![Build Status](https://travis-ci.org/LLNL/shroud.svg?branch=develop)](https://travis-ci.org/LLNL/shroud)
 [![Documentation Status](https://readthedocs.org/projects/shroud/badge/?version=latest)](http://shroud.readthedocs.io/en/latest/?badge=latest)
+
+Create Fortran bindings for a C++ Library.
 
 ## Documentation
 
@@ -12,12 +15,14 @@ To get started using Shroud, check out the full documentation:
 
 http://shroud.readthedocs.io/
 
-## required packages
+## Mailing List
+
+shroud-users@llnl.gov
+
+## Required Packages
 
 *  parsley - https://pypi.python.org/pypi/Parsley
-     https://github.com/python-parsley/parsley
-     head of repository for Python 3 support
-*  yaml - https://pypi.python.org/pypi/PyYAML/3.11
+*  yaml - https://pypi.python.org/pypi/PyYAML
 
 ## C++ to C to Fortran
 
