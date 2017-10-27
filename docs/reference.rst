@@ -99,7 +99,7 @@ C_header_filename
     Name of generated header file for the library.
     Defaulted from expansion of option *C_header_filename_library_template*.
 
-C_impl_file
+C_impl_filename
     Name of generated C++ implementation file for the library.
     Defaulted from expansion of option *C_impl_filename_library_template*.
 
@@ -381,6 +381,16 @@ C_bufferify_suffix
   with explicit lengths.
   Defaults to *_bufferify*
 
+C_header_filename_suffix:
+   Suffix added to C header files.
+   Defaults to ``h``.
+   Other useful values might be ``hh`` or ``hxx``.
+
+C_impl_filename_suffix:
+   Suffix added to C implementation files.
+   Defaults to ``cpp``.
+   Other useful values might be ``cc`` or ``cxx``.
+
 C_prefix
   Prefix added to name of generated C routines.
   The prefix helps to ensure unique global names.
@@ -434,6 +444,11 @@ F_this
    It must not be the same as any of the routines arguments.
    Defaults to ``obj``.
 
+F_filename_suffix:
+   Suffix added to Fortran files.
+   Defaults to ``f``.
+   Other useful values might be ``F`` or ``f90``.
+
 F_result
     The name of the Fortran wrapper's result variable.
     It must not be the same as any of the routines arguments.
@@ -463,10 +478,29 @@ F_force_wrapper
   directly by defining the correct interface.
   The default is *false*.
 
+LUA_header_filename_suffix
+   Suffix added to Lua header files.
+   Defaults to ``h``.
+   Other useful values might be ``hh`` or ``hxx``.
+
+LUA_impl_filename_suffix
+   Suffix added to Lua implementation files.
+   Defaults to ``cpp``.
+   Other useful values might be ``cc`` or ``cxx``.
 
 LUA_result
     The name of the Lua wrapper's result variable.
     It defaults to *rv*  (return value).
+
+PY_header_filename_suffix
+   Suffix added to Python header files.
+   Defaults to ``h``.
+   Other useful values might be ``hh`` or ``hxx``.
+
+PY_impl_filename_suffix
+   Suffix added to Python implementation files.
+   Defaults to ``cpp``.
+   Other useful values might be ``cc`` or ``cxx``.
 
 PY_result
     The name of the Python wrapper's result variable.
@@ -501,16 +535,16 @@ Templates are set in options then expanded to assign to the format
 dictionary.
 
 C_header_filename_class_template
-    ``wrap{cpp_class}.h``
+    ``wrap{cpp_class}.{C_header_filename_suffix}``
 
 C_header_filename_library_template
-   ``wrap{library}.h``
+   ``wrap{library}.{C_header_filename_suffix}``
 
 C_impl_filename_class_template
-    ``wrap{cpp_class}.cpp``
+    ``wrap{cpp_class}.{C_impl_filename_suffix}``
 
 C_impl_filename_library_template
-    ``wrap{library}.cpp``
+    ``wrap{library}.{C_impl_filename_suffix}``
 
 C_name_template
     ``{C_prefix}{class_prefix}{underscore_name}{function_suffix}``
@@ -527,10 +561,10 @@ F_name_generic_template
     ``{underscore_name}``
 
 F_impl_filename_class_template
-    ``wrapf{cpp_class}.f``
+    ``wrapf{cpp_class}.{F_filename_suffix}``
 
 F_impl_filename_library_template
-    ``wrapf{library_lower}.f``
+    ``wrapf{library_lower}.{F_filename_suffix}``
 
 F_name_impl_template
     ``{name_class}{underscore_name}{function_suffix}``
@@ -558,14 +592,14 @@ LUA_ctor_name_template
     ``{cpp_class}``
 
 LUA_header_filename_template
-    ``lua{library}module.hpp``
+    ``lua{library}module.{LUA_header_filename_suffix}``
 
 LUA_metadata_template
     Name of metatable for a class.
     ``{cpp_class}.metatable``
 
 LUA_module_filename_template
-    ``lua{library}module.cpp``
+    ``lua{library}module.{LUA_impl_filename_suffix}``
 
 LUA_module_name
     Name of Lua module for library.

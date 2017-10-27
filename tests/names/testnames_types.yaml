@@ -52,3 +52,13 @@ types:
     f_module:
       name_module:
       - names
+
+  Names2:
+    base: wrapped
+    cpp_type: Names2
+    c_type: TES_names2
+    f_derived_type: names2
+    f_to_c: "{f_var}%get_instance()"
+    f_module:
+      names2_mod:
+      - names2

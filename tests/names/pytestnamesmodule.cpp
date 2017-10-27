@@ -270,6 +270,15 @@ MOD_INITBASIS(void)
     PyModule_AddObject(m, "Names", (PyObject *)&PY_Names_Type);
 
 
+// Names2
+    PY_Names2_Type.tp_new   = PyType_GenericNew;
+    PY_Names2_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Names2_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Names2_Type);
+    PyModule_AddObject(m, "Names2", (PyObject *)&PY_Names2_Type);
+
+
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
         return RETVAL;

@@ -1,0 +1,8 @@
+Add ability to set Filename suffixes with options
+    C_header_filename_suffix, C_impl_filename_suffix
+    F_filename_suffix,
+    PY_header_filename_suffix, PY_impl_filename_suffix
+    LUA_header_filename_suffix, LUA_impl_filename_suffix
+
+v0.2.0 Initial Open Source Release
+

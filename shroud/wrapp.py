@@ -54,12 +54,16 @@ from .util import wformat, append_format
 
 def add_templates(options):
     options.update(dict(
-        PY_module_filename_template='py{library}module.cpp',
-        PY_header_filename_template='py{library}module.hpp',
-        PY_helper_filename_template='py{library}helper.cpp',
+        PY_module_filename_template=(
+            'py{library}module.{PY_impl_filename_suffix}'),
+        PY_header_filename_template=(
+            'py{library}module.{PY_header_filename_suffix}'),
+        PY_helper_filename_template=(
+            'py{library}helper.{PY_impl_filename_suffix}'),
         PY_PyTypeObject_template='{PY_prefix}{cpp_class}_Type',
         PY_PyObject_template='{PY_prefix}{cpp_class}',
-        PY_type_filename_template='py{cpp_class}type.cpp',
+        PY_type_filename_template=(
+            'py{cpp_class}type.{PY_impl_filename_suffix}'),
         PY_name_impl_template=(
             '{PY_prefix}{class_prefix}{underscore_name}{function_suffix}'),
     ))

@@ -165,7 +165,14 @@ class Schema(object):
                      'C_this', 'C_result', 'CPP_this',
                      'F_this', 'F_result', 'F_derived_member',
                      'C_string_result_as_arg', 'F_string_result_as_arg',
+                     'C_header_filename_suffix',
+                     'C_impl_filename_suffix',
+                     'F_filename_suffix',
+                     'PY_header_filename_suffix',
+                     'PY_impl_filename_suffix',
                      'PY_result',
+                     'LUA_header_filename_suffix',
+                     'LUA_impl_filename_suffix',
                      'LUA_result']:
             if name in options:
                 setattr(fmt, name, options[name])
@@ -197,11 +204,11 @@ class Schema(object):
 
             YAML_type_filename_template='{library_lower}_types.yaml',
 
-            C_header_filename_library_template='wrap{library}.h',
-            C_impl_filename_library_template='wrap{library}.cpp',
+            C_header_filename_library_template='wrap{library}.{C_header_filename_suffix}',
+            C_impl_filename_library_template='wrap{library}.{C_impl_filename_suffix}',
 
-            C_header_filename_class_template='wrap{cpp_class}.h',
-            C_impl_filename_class_template='wrap{cpp_class}.cpp',
+            C_header_filename_class_template='wrap{cpp_class}.{C_header_filename_suffix}',
+            C_impl_filename_class_template='wrap{cpp_class}.{C_impl_filename_suffix}',
 
             C_name_template=(
                 '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
@@ -222,10 +229,10 @@ class Schema(object):
             F_name_generic_template='{underscore_name}',
 
             F_module_name_library_template='{library_lower}_mod',
-            F_impl_filename_library_template='wrapf{library_lower}.f',
+            F_impl_filename_library_template='wrapf{library_lower}.{F_filename_suffix}',
 
             F_module_name_class_template='{class_lower}_mod',
-            F_impl_filename_class_template='wrapf{cpp_class}.f',
+            F_impl_filename_class_template='wrapf{cpp_class}.{F_filename_suffix}',
 
             F_name_instance_get='get_instance',
             F_name_instance_set='set_instance',
@@ -256,8 +263,6 @@ class Schema(object):
                 '::'.join(node['namespace'].split()) + '::')
         else:
             fmt_library.namespace_scope = ''
-        util.eval_template(node, 'C_header_filename', '_library')
-        util.eval_template(node, 'C_impl_filename', '_library')
 
         # set default values for fields which may be unset.
         fmt_library.class_prefix = ''
@@ -277,19 +282,31 @@ class Schema(object):
         fmt_library.F_result = 'SH_rv'
         fmt_library.F_derived_member = 'voidptr'
 
-        fmt_library.C_string_result_as_arg='SH_F_rv'
-        fmt_library.F_string_result_as_arg=''
+        fmt_library.C_string_result_as_arg = 'SH_F_rv'
+        fmt_library.F_string_result_as_arg = ''
+
+        fmt_library.C_header_filename_suffix = 'h'
+        fmt_library.C_impl_filename_suffix = 'cpp'
+        fmt_library.F_filename_suffix = 'f'
 
         # don't have to worry about argument names in Python wrappers
         # so skip the SH_ prefix by default.
         fmt_library.PY_result = 'rv'
         fmt_library.LUA_result = 'rv'
 
+        fmt_library.PY_header_filename_suffix = 'hpp'
+        fmt_library.PY_impl_filename_suffix = 'cpp'
+
+        fmt_library.LUA_header_filename_suffix = 'hpp'
+        fmt_library.LUA_impl_filename_suffix = 'cpp'
+
         self.option_to_fmt(fmt_library, old)
 
         self.fmt_stack.append(fmt_library)
 
         # default some options based on other options
+        util.eval_template(node, 'C_header_filename', '_library')
+        util.eval_template(node, 'C_impl_filename', '_library')
         # All class/methods and functions may go into this file or
         # just functions.
         util.eval_template(node, 'F_module_name', '_library')
@@ -1651,7 +1668,8 @@ def main_with_args(args):
             fp = open(filename, 'r')
             d = yaml.load(fp.read())
             fp.close()
-            all.update(d)
+            if d is not None:
+                all.update(d)
 #            util.update(all, d)  # recursive update
         elif ext == '.json':
             raise NotImplemented("Can not deal with json input for now")
