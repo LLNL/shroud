@@ -50,8 +50,10 @@ from .util import wformat, append_format
 def add_templates(options):
     options.update(dict(
         LUA_module_name_template='{library_lower}',
-        LUA_module_filename_template='lua{library}module.cpp',
-        LUA_header_filename_template='lua{library}module.hpp',
+        LUA_module_filename_template=(
+            'lua{library}module.{LUA_impl_filename_suffix}'),
+        LUA_header_filename_template=(
+            'lua{library}module.{LUA_header_filename_suffix}'),
         LUA_userdata_type_template='{LUA_prefix}{cpp_class}_Type',
         LUA_userdata_member_template='self',
         LUA_module_reg_template='{LUA_prefix}{library}_Reg',

@@ -60,8 +60,42 @@ create makefile dependencies using pattern rules::
 
     %.o %.mod : %.f
 
+File names for the header and implementation files can be set
+explicitly by setting variables in the global or class scope.
 
-How Names are created
+    C_header_filename: top.h
+    C_impl_filename: top.cpp
+    F_impl_filename: top.f
+
+    classes:
+      - name: Names
+        C_header_filename: foo.h
+        C_impl_filename: foo.cpp
+        F_impl_filename: foo.f
+ 
+
+The default file names are controlled by global options.
+The option values can be changed to avoid setting the name for 
+each class file explicitly.
+It's also possible to change just the suffix of files.
+
+    options:
+        YAML_type_filename_template: {library_lower}_types.yaml
+
+        C_header_filename_suffix: h
+        C_impl_filename_suffix: cpp
+        C_header_filename_library_template: wrap{library}.{C_header_filename_suffix}
+        C_impl_filename_library_template: wrap{library}.{C_impl_filename_suffix}
+
+        C_header_filename_class_template: wrap{cpp_class}.{C_header_file_suffix}
+        C_impl_filename_class_template: wrap{cpp_class}.{C_impl_filename_suffix}
+
+        F_filename_suffix: f
+        F_impl_filename_library_template: wrapf{library_lower}.{F_filename_suffix}
+        F_impl_filename_class_template: wrapf{cpp_class}.{F_filename_suffix}
+
+
+How names are created
 ---------------------
 
 Shroud attempts to provide user control of names while providing

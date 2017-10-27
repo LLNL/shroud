@@ -129,6 +129,39 @@
                 "F_C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
                 "none": "foo"
             }
+        }, 
+        {
+            "F_module_dependencies": [
+                [
+                    "iso_c_binding", 
+                    [
+                        "C_PTR"
+                    ]
+                ]
+            ], 
+            "cpp_header": "", 
+            "fmt": {
+                "CPP_this_call": "SH_this->", 
+                "C_header_filename": "wrapNames2.hh", 
+                "C_impl_filename": "wrapNames2.cc", 
+                "C_type_name": "TES_names2", 
+                "F_derived_name": "names2", 
+                "F_impl_filename": "wrapfNames2.F", 
+                "F_module_name": "names2_mod", 
+                "PY_PyObject": "PY_Names2", 
+                "PY_PyTypeObject": "PY_Names2_Type", 
+                "PY_capsule_name": "PY_Names2_capsule_name", 
+                "PY_from_object_func": "PP_Names2_from_Object", 
+                "PY_to_object_func": "PP_Names2_to_Object", 
+                "PY_type_filename": "pyNames2type.cpp", 
+                "class_lower": "names2", 
+                "class_prefix": "names2_", 
+                "class_upper": "NAMES2", 
+                "cpp_class": "Names2"
+            }, 
+            "methods": [], 
+            "name": "Names2", 
+            "options": {}
         }
     ], 
     "copyright": [
@@ -180,7 +213,9 @@
         "CPP_this": "SH_this", 
         "CPP_this_call": "", 
         "C_header_filename": "top.h", 
+        "C_header_filename_suffix": "hh", 
         "C_impl_filename": "top.cpp", 
+        "C_impl_filename_suffix": "cc", 
         "C_post_call": "", 
         "C_pre_call": "", 
         "C_prefix": "TES_", 
@@ -191,6 +226,7 @@
         "F_C_pure_clause": "", 
         "F_C_result_clause": "", 
         "F_derived_member": "voidptr", 
+        "F_filename_suffix": "F", 
         "F_impl_filename": "top.f", 
         "F_module_name": "top_module", 
         "F_pure_clause": "", 
@@ -198,10 +234,14 @@
         "F_result_clause": "", 
         "F_string_result_as_arg": "", 
         "F_this": "obj", 
+        "LUA_header_filename_suffix": "hpp", 
+        "LUA_impl_filename_suffix": "cpp", 
         "LUA_result": "rv", 
         "PY_PyObject": "PyObject", 
         "PY_header_filename": "pytestnamesmodule.hpp", 
+        "PY_header_filename_suffix": "hpp", 
         "PY_helper_filename": "pytestnameshelper.cpp", 
+        "PY_impl_filename_suffix": "cpp", 
         "PY_library_doc": "library documentation", 
         "PY_module_filename": "pytestnamesmodule.cpp", 
         "PY_module_name": "testnames", 
@@ -492,18 +532,21 @@
     "namespace": "", 
     "options": {
         "C_bufferify_suffix": "_bufferify", 
-        "C_header_filename_class_template": "wrap{cpp_class}.h", 
-        "C_header_filename_library_template": "wrap{library}.h", 
-        "C_impl_filename_class_template": "wrap{cpp_class}.cpp", 
-        "C_impl_filename_library_template": "wrap{library}.cpp", 
+        "C_header_filename_class_template": "wrap{cpp_class}.{C_header_filename_suffix}", 
+        "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
+        "C_header_filename_suffix": "hh", 
+        "C_impl_filename_class_template": "wrap{cpp_class}.{C_impl_filename_suffix}", 
+        "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
+        "C_impl_filename_suffix": "cc", 
         "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
         "C_var_len_template": "N{c_var}", 
         "C_var_trim_template": "L{c_var}", 
         "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
         "F_C_prefix": "c_", 
+        "F_filename_suffix": "F", 
         "F_force_wrapper": true, 
-        "F_impl_filename_class_template": "wrapf{cpp_class}.f", 
-        "F_impl_filename_library_template": "wrapf{library_lower}.f", 
+        "F_impl_filename_class_template": "wrapf{cpp_class}.{F_filename_suffix}", 
+        "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 
         "F_module_name_class_template": "{class_lower}_mod", 
         "F_module_name_library_template": "{library_lower}_mod", 
         "F_module_per_class": true, 
@@ -517,9 +560,9 @@
         "F_string_len_trim": true, 
         "LUA_class_reg_template": "{LUA_prefix}{cpp_class}_Reg", 
         "LUA_ctor_name_template": "{cpp_class}", 
-        "LUA_header_filename_template": "lua{library}module.hpp", 
+        "LUA_header_filename_template": "lua{library}module.{LUA_header_filename_suffix}", 
         "LUA_metadata_template": "{cpp_class}.metatable", 
-        "LUA_module_filename_template": "lua{library}module.cpp", 
+        "LUA_module_filename_template": "lua{library}module.{LUA_impl_filename_suffix}", 
         "LUA_module_name_template": "{library_lower}", 
         "LUA_module_reg_template": "{LUA_prefix}{library}_Reg", 
         "LUA_name_impl_template": "{LUA_prefix}{class_prefix}{underscore_name}", 
@@ -528,11 +571,11 @@
         "LUA_userdata_type_template": "{LUA_prefix}{cpp_class}_Type", 
         "PY_PyObject_template": "{PY_prefix}{cpp_class}", 
         "PY_PyTypeObject_template": "{PY_prefix}{cpp_class}_Type", 
-        "PY_header_filename_template": "py{library}module.hpp", 
-        "PY_helper_filename_template": "py{library}helper.cpp", 
-        "PY_module_filename_template": "py{library}module.cpp", 
+        "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}", 
+        "PY_helper_filename_template": "py{library}helper.{PY_impl_filename_suffix}", 
+        "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}", 
         "PY_name_impl_template": "{PY_prefix}{class_prefix}{underscore_name}{function_suffix}", 
-        "PY_type_filename_template": "py{cpp_class}type.cpp", 
+        "PY_type_filename_template": "py{cpp_class}type.{PY_impl_filename_suffix}", 
         "YAML_type_filename_template": "{library_lower}_types.yaml", 
         "class_prefix_template": "{class_lower}_", 
         "debug": true, 
@@ -587,6 +630,48 @@
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(FNames)", 
             "forward": "Names", 
+            "py_statements": {
+                "intent_in": {
+                    "post_parse": [
+                        "{cpp_var} = {py_var} ? {py_var}->{BBB} : NULL;"
+                    ]
+                }, 
+                "intent_out": {
+                    "ctor": [
+                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{py_var}->{BBB} = {cpp_var};"
+                    ]
+                }
+            }
+        }, 
+        "Names2": {
+            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_type": "LUA_TUSERDATA", 
+            "PY_PyObject": "PY_Names2", 
+            "PY_PyTypeObject": "PY_Names2_Type", 
+            "PY_from_object": "PP_Names2_from_Object", 
+            "PY_to_object": "PP_Names2_to_Object", 
+            "base": "wrapped", 
+            "c_to_cpp": "static_cast<{c_const}Names2{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
+            "c_type": "TES_names2", 
+            "cpp_to_c": "static_cast<{c_const}TES_names2 *>(static_cast<{c_const}void *>({cpp_var}))", 
+            "cpp_type": "Names2", 
+            "f_c_module": {
+                "iso_c_binding": [
+                    "C_PTR"
+                ]
+            }, 
+            "f_c_type": "type(C_PTR)", 
+            "f_derived_type": "names2", 
+            "f_module": {
+                "names2_mod": [
+                    "names2"
+                ]
+            }, 
+            "f_return_code": "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})", 
+            "f_to_c": "{f_var}%get_instance()", 
+            "f_type": "type(names2)", 
+            "forward": "Names2", 
             "py_statements": {
                 "intent_in": {
                     "post_parse": [

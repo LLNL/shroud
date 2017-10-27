@@ -42,6 +42,7 @@
 // #######################################################################
 #include "pytestnamesmodule.hpp"
 const char *PY_Names_capsule_name = "Names";
+const char *PY_Names2_capsule_name = "Names2";
 
 
 PyObject *PP_Names_to_Object(Names *addr)
@@ -71,4 +72,33 @@ int PP_Names_from_Object(PyObject *obj, void **addr)
     *addr = self->BBB;
     return 1;
     // splicer end class.Names.helper.from_object
+}
+
+PyObject *PP_Names2_to_Object(Names2 *addr)
+{
+    // splicer begin class.Names2.helper.to_object
+    PyObject *voidobj;
+    PyObject *args;
+    PyObject *rv;
+
+    voidobj = PyCapsule_New(addr, PY_Names2_capsule_name, NULL);
+    args = PyTuple_New(1);
+    PyTuple_SET_ITEM(args, 0, voidobj);
+    rv = PyObject_Call((PyObject *) &PY_Names2_Type, args, NULL);
+    Py_DECREF(args);
+    return rv;
+    // splicer end class.Names2.helper.to_object
+}
+
+int PP_Names2_from_Object(PyObject *obj, void **addr)
+{
+    // splicer begin class.Names2.helper.from_object
+    if (obj->ob_type != &PY_Names2_Type) {
+        // raise exception
+        return 0;
+    }
+    PY_Names2 * self = (PY_Names2 *) obj;
+    *addr = self->BBB;
+    return 1;
+    // splicer end class.Names2.helper.from_object
 }
