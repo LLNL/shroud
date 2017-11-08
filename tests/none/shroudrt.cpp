@@ -1,6 +1,7 @@
 // shroudrt.cpp
 // This is generated code, do not edit
 
+/* *INDENT-OFF* */
 #ifdef __cplusplus
 // Standard C++ headers
 #include <cstring>
@@ -9,6 +10,7 @@ extern "C" {
 #else
 #include <string.h>
 #endif
+/* *INDENT-ON* */
 
 void shroud_FccCopy(char *a, int la, const char *s)
 {
@@ -42,6 +44,8 @@ void shroud_c_loc_(void * addr, void ** out)
 }
 
 
+/* *INDENT-OFF* */
 #ifdef __cplusplus
 }  // extern "C"
 #endif
+/* *INDENT-ON* */
