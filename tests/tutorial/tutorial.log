@@ -39,6 +39,7 @@ C function int overload1(double type+intent(in)+value, int num+intent(in)+value,
 C function TypeID typefunc(TypeID arg+intent(in)+value)
 C function EnumTypeID enumfunc(EnumTypeID arg+intent(in)+value)
 C function void useclass(const Class1 * arg1+intent(in)+value)
+C function void vector1()
 C function const std::string & LastFunctionCalled()+pure
 C function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
 Close wrapTutorial.h
@@ -86,6 +87,7 @@ C-interface, Fortran function int overload1(double type+intent(in)+value, int nu
 C-interface, Fortran function TypeID typefunc(TypeID arg+intent(in)+value)
 C-interface, Fortran function EnumTypeID enumfunc(EnumTypeID arg+intent(in)+value)
 C-interface, Fortran function void useclass(const Class1 * arg1+intent(in)+value)
+C-interface, Fortran function void vector1()
 C-interface function const std::string & LastFunctionCalled()+pure
 C-interface function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
 Fortran function const string_result_fstr & LastFunctionCalled()+pure
