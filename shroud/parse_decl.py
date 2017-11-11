@@ -118,3 +118,20 @@ def check_decl(expr, parser=x):
     """ parse expr as a declaration, return list/dict result.
     """
     return parser(expr).decl()
+
+# convert declaration to string
+def str_declarator(decl):
+    attrs = decl['attrs']
+    out = ''
+    if 'const' in attrs:
+        out += 'const '
+    out += decl['type']
+    if 'template' in attrs:
+        out += '<' + attrs['template'] + '>'
+    out += ' '
+    if 'reference' in attrs:
+        out += '&'
+    if 'ptr' in attrs:
+        out += '*'
+    out += decl['name']
+    return out
