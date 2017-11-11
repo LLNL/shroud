@@ -53,8 +53,6 @@ program tester
   real(C_DOUBLE) rv_double
   character(30) rv_char
 
-  character(4)  status
-
   call init_fruit
 
   call test_functions
