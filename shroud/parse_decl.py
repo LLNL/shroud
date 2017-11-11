@@ -94,11 +94,14 @@ pointer = '*' -> [('ptr', True)]
         | '&' -> [('reference', True)]
         |     -> []
 
-default = ws '=' ws value:default -> [('default', default)]
-                 |                -> []
+default = '=' ws value:default -> [('default', default)]
+        |                      -> []
 
-declarator = qualifier:qu ws type:t ws pointer:pp ws name:n  ( ws attr )*:at default:df
-        -> dict(type=t, name=n, attrs=dict(qu+pp+at+df))
+template = '<' ws type:template ws '>' -> [('template', template)]
+         |                             -> []
+
+declarator = qualifier:qu ws type:t ws template:tt ws pointer:pp ws name:n  ( ws attr )*:at ws default:df
+        -> dict(type=t, name=n, attrs=dict(tt+qu+pp+at+df))
 
 parameter_list = declarator:first ( ws ',' ws declarator)*:rest -> [first] + rest
                  | -> []

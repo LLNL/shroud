@@ -48,7 +48,7 @@ import unittest
 
 class CheckDeclCase(unittest.TestCase):
 
-    # decl
+    # qualifier
     def test_qualifier01(self):
         r = parse_decl.x("const").qualifier()
         self.assertEqual(r, [('const', True)])
@@ -69,6 +69,15 @@ class CheckDeclCase(unittest.TestCase):
     def test_pointer03(self):
         r = parse_decl.x("").pointer()
         self.assertEqual(r, [])
+
+    # templat
+    def test_template01(self):
+        r = parse_decl.x("<int>").template()
+        self.assertEqual(r, [('template', 'int')])
+
+    def test_template02(self):
+        r = parse_decl.x("< int >").template()
+        self.assertEqual(r, [('template', 'int')])
 
     # attr
     def test_attr01(self):
@@ -147,6 +156,28 @@ class CheckDeclCase(unittest.TestCase):
             'attrs': {},
             'name': 'arg'
         })
+
+    def test_declarator04(self):
+        r = parse_decl.x("std::vector<int> &arg").declarator()
+        self.assertEqual(r, {
+            'type': 'std::vector',
+            'attrs': {
+               'reference': True,
+               'template': 'int'
+            },
+            'name': 'arg'
+            })
+
+    def test_declarator05(self):
+        r = parse_decl.x("std::vector<std::string> &arg").declarator()
+        self.assertEqual(r, {
+            'type': 'std::vector',
+            'attrs': {
+               'reference': True,
+               'template': 'std::string'
+            },
+            'name': 'arg'
+            })
 
     # parameter_list
     def test_parameter_list01(self):
