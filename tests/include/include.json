@@ -587,6 +587,19 @@
                         "{cpp_var}[{c_var_trim}] = '\\0';"
                     ]
                 }, 
+                "intent_inout_buf": {
+                    "cpp_header": "shroudrt.hpp", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
+                        "delete [] {cpp_var};"
+                    ], 
+                    "pre_call": [
+                        "char * {cpp_var} = new char [{c_var_len} + 1];", 
+                        "std::strncpy({cpp_var}, {c_var}, {c_var_trim});", 
+                        "{cpp_var}[{c_var_trim}] = '\\0';"
+                    ]
+                }, 
                 "intent_out_buf": {
                     "cpp_header": "shroudrt.hpp", 
                     "cpp_local_var": true, 
@@ -800,16 +813,44 @@
                         "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
                     ]
                 }, 
-                "intent_out": {
+                "intent_inout": {
                     "cpp_header": "<cstring>", 
+                    "cpp_local_var": true, 
                     "post_call": [
                         "strcpy({c_var}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::string {cpp_var}({c_var});"
+                    ]
+                }, 
+                "intent_inout_buf": {
+                    "cpp_header": "shroudrt.hpp", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "std::string {cpp_var}({c_var}, {c_var_trim});"
+                    ]
+                }, 
+                "intent_out": {
+                    "cpp_header": "<cstring>", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "strcpy({c_var}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::string {cpp_var};"
                     ]
                 }, 
                 "intent_out_buf": {
                     "cpp_header": "shroudrt.hpp", 
+                    "cpp_local_var": true, 
                     "post_call": [
                         "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "std::string {cpp_var};"
                     ]
                 }, 
                 "result_buf": {
@@ -896,16 +937,44 @@
                         "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
                     ]
                 }, 
-                "intent_out": {
+                "intent_inout": {
                     "cpp_header": "<cstring>", 
+                    "cpp_local_var": true, 
                     "post_call": [
                         "strcpy({c_var}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::string {cpp_var}({c_var});"
+                    ]
+                }, 
+                "intent_inout_buf": {
+                    "cpp_header": "shroudrt.hpp", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "std::string {cpp_var}({c_var}, {c_var_trim});"
+                    ]
+                }, 
+                "intent_out": {
+                    "cpp_header": "<cstring>", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "strcpy({c_var}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::string {cpp_var};"
                     ]
                 }, 
                 "intent_out_buf": {
                     "cpp_header": "shroudrt.hpp", 
+                    "cpp_local_var": true, 
                     "post_call": [
                         "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "std::string {cpp_var};"
                     ]
                 }, 
                 "result_buf": {
@@ -959,16 +1028,44 @@
                         "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
                     ]
                 }, 
-                "intent_out": {
+                "intent_inout": {
                     "cpp_header": "<cstring>", 
+                    "cpp_local_var": true, 
                     "post_call": [
                         "strcpy({c_var}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::string {cpp_var}({c_var});"
+                    ]
+                }, 
+                "intent_inout_buf": {
+                    "cpp_header": "shroudrt.hpp", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "std::string {cpp_var}({c_var}, {c_var_trim});"
+                    ]
+                }, 
+                "intent_out": {
+                    "cpp_header": "<cstring>", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "strcpy({c_var}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::string {cpp_var};"
                     ]
                 }, 
                 "intent_out_buf": {
                     "cpp_header": "shroudrt.hpp", 
+                    "cpp_local_var": true, 
                     "post_call": [
                         "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "std::string {cpp_var};"
                     ]
                 }, 
                 "result_buf": {

@@ -71,6 +71,10 @@ void STR_pass_char_ptr(char * dest, const char * src);
 
 void STR_pass_char_ptr_bufferify(char * dest, int Ndest, const char * src, int Lsrc);
 
+void STR_pass_char_ptr_in_out(char * s);
+
+void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns);
+
 const char * STR_get_char1();
 
 void STR_get_char1_bufferify(char * SH_F_rv, int NSH_F_rv);
@@ -106,6 +110,10 @@ void STR_get_string6_bufferify(char * output, int Noutput);
 void STR_accept_string_const_reference(const char * arg1);
 
 void STR_accept_string_const_reference_bufferify(const char * arg1, int Larg1);
+
+void STR_accept_string_reference_out(char * arg1);
+
+void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1);
 
 void STR_accept_string_reference(char * arg1);
 

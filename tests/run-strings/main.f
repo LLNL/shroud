@@ -47,8 +47,6 @@ program tester
   implicit none
   logical ok
 
-  character(4)  status
-
   call init_fruit
 
   call test_charargs
@@ -87,6 +85,10 @@ contains
     call c_pass_char_ptr(dest=str, src="mouse" // C_NULL_CHAR)
     call assert_true( str(1:5) == "mouse")
     call assert_true( str(6:6) == C_NULL_CHAR)
+
+    str = 'dog'
+    call pass_char_ptr_in_out(str)
+    call assert_true( str == "DOG")
 
   end subroutine test_charargs
 
@@ -150,6 +152,10 @@ contains
 
     call accept_string_const_reference("cat")
 !    call assert_true( rv_char == "dog")
+
+    str = " "
+    call accept_string_reference_out(str)
+    call assert_true( str == "dog")
 
     str = "cat"
     call accept_string_reference(str)

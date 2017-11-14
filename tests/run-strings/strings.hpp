@@ -50,6 +50,7 @@ void passChar(char status);
 char returnChar();
 
 void passCharPtr(char * dest, const char *src);
+void passCharPtrInOut(char * s);
 
 const char * getChar1();
 const char * getChar2();
@@ -67,6 +68,8 @@ const std::string getString6();
 void acceptName_instance(std::string arg1);
 
 void acceptStringConstReference(const std::string & arg1);
+
+void acceptStringReferenceOut(std::string & arg1);
 
 void acceptStringReference(std::string & arg1);
 

@@ -70,6 +70,10 @@ functions:
       dest is marked intent(OUT) to override the intent(INOUT) default
       This avoid a copy-in on dest.
 
+- decl: void passCharPtrInOut(char * s+intent(inout))
+  doxygen:
+    brief: Change a string in-place
+
 ########################################
 
 - decl: const char * getChar1()  +pure
@@ -144,6 +148,14 @@ functions:
        Save contents of arg1.
        arg1 is assumed to be intent(IN) since it is const
        Will copy in.
+
+- decl: void acceptStringReferenceOut(std::string & arg1+intent(out))
+  doxygen:
+    brief: Accept a string reference
+    description: |
+       Set out to a constant string.
+       arg1 is intent(OUT)
+       Must copy out.
 
 - decl: void acceptStringReference(std::string & arg1)
   doxygen:

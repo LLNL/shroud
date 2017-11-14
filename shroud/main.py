@@ -463,6 +463,19 @@ class Schema(object):
                             'delete [] {cpp_var};',
                             ],
                         ),
+                    intent_inout_buf=dict(
+                        cpp_local_var=True,
+                        cpp_header='shroudrt.hpp',
+                        pre_call=[
+                            'char * {cpp_var} = new char [{c_var_len} + 1];',
+                            'std::strncpy({cpp_var}, {c_var}, {c_var_trim});',
+                            '{cpp_var}[{c_var_trim}] = \'\\0\';'
+                            ],
+                        post_call=[
+                            'shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});',
+                            'delete [] {cpp_var};',
+                            ],
+                        ),
                     result_buf=dict(
                         cpp_header='<cstring> shroudrt.hpp',
                         post_call=[
@@ -542,6 +555,22 @@ class Schema(object):
 #                        pre_call=[
 #                            'int {c_var_trim} = strlen({c_var});',
 #                            ],
+                        cpp_local_var=True,
+                        pre_call=[
+                            '{c_const}std::string {cpp_var};'
+                            ],
+                        post_call=[
+                            # This may overwrite c_var if cpp_val is too long
+                            'strcpy({c_var}, {cpp_val});'
+#                            'shroud_FccCopy({c_var}, {c_var_trim}, {cpp_val});'
+                        ],
+                    ),
+                    intent_inout=dict(
+                        cpp_header='<cstring>',
+                        cpp_local_var=True,
+                        pre_call=[
+                            '{c_const}std::string {cpp_var}({c_var});'
+                            ],
                         post_call=[
                             # This may overwrite c_var if cpp_val is too long
                             'strcpy({c_var}, {cpp_val});'
@@ -557,6 +586,20 @@ class Schema(object):
                     ),
                     intent_out_buf=dict(
                         cpp_header='shroudrt.hpp',
+                        cpp_local_var=True,
+                        pre_call=[
+                            'std::string {cpp_var};'
+                        ],
+                        post_call=[
+                            'shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});'
+                        ],
+                    ),
+                    intent_inout_buf=dict(
+                        cpp_header='shroudrt.hpp',
+                        cpp_local_var=True,
+                        pre_call=[
+                            'std::string {cpp_var}({c_var}, {c_var_trim});'
+                        ],
                         post_call=[
                             'shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});'
                         ],

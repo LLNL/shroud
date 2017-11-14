@@ -193,6 +193,7 @@ functions:
     wrap_python: False
     wrap_lua: False
 
+# does multidimensional make sense.  Need to call shape
 #- decl: void vector1XXX(std::vector<int> &arg+dimension(:,:))
 
 
