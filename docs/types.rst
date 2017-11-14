@@ -143,6 +143,12 @@ The type map is defined as::
               c_local_var: true 
               post_call:
               -  {f_var} = {c_var}  ! coerce to logical
+           intent_inout:
+              c_local_var: true 
+              pre_call:
+              -  {c_var} = {f_var}  ! coerce to C_BOOL
+              post_call:
+              -  {f_var} = {c_var}  ! coerce to logical
            result:
               need_wrapper: true
 
@@ -290,6 +296,15 @@ The type map::
                     post_call:
                       - shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});
                       - delete [] {cpp_var};
+                intent_inout_buf:
+                    cpp_local_var: True
+                    cpp_header: <cstring>
+                    pre_call:
+                      - char * {cpp_var} = new char [{c_var_trim} + 1];
+                      - std::strncpy({cpp_var}, {c_var}, {c_var_trim});
+                      - {cpp_var}[{c_var_trim}] = '\0';
+                    post_call:
+                      -  delete [] {cpp_var};
                 result_buf:
                     cpp_header: <cstring> shroudrt.hpp
                     post_call:
@@ -437,15 +452,28 @@ additional sections to convert between ``char *`` and ``std::string``::
                     cpp_header: <cstring>
                     post_call:
                       - strcpy({c_var}, {cpp_val});
+                intent_inout:
+                    cpp_header: <cstring>
+                    pre_call:
+                      - {c_const}std::string {cpp_var}({c_var});
+                    post_call:
+                      - strcpy({c_var}, {cpp_val});
 
                 intent_in_buf:
                     cpp_local_var: True
                     pre_call:
-                      - {c_const}std::string {cpp_var}({c_var});
-                    pre_call_buf:
                       - {c_const}std::string {cpp_var}({c_var}, {c_var_trim});
                 intent_out_buf:
                     cpp_header: shroudrt.hpp
+                    pre_call:
+                      - {c_const}std::string {cpp_var};
+                    post_call:
+                      - shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});
+                intent_inout_buf:
+                    cpp_header: shroudrt.hpp
+                    cpp_local_var: True
+                    pre_call:
+                      - std::string {cpp_var}({c_var}, {c_var_trim});
                     post_call:
                       - shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});
                 result_buf:

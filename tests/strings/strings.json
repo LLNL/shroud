@@ -2656,6 +2656,15 @@
                         "{c_var} = {f_var}  ! coerce to C_BOOL"
                     ]
                 }, 
+                "intent_inout": {
+                    "c_local_var": true, 
+                    "post_call": [
+                        "{f_var} = {c_var}  ! coerce to logical"
+                    ], 
+                    "pre_call": [
+                        "{c_var} = {f_var}  ! coerce to C_BOOL"
+                    ]
+                }, 
                 "intent_out": {
                     "c_local_var": true, 
                     "post_call": [

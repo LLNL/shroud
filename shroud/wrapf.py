@@ -813,43 +813,34 @@ class Wrapf(util.WrapperMixin):
                     arg_typedef = self.typedef[c_attrs['template']]
 
                 f_statements = arg_typedef.f_statements
+                stmts = 'intent_' + c_attrs['intent']
 
-                slist = []
-                if c_attrs['intent'] in ['inout', 'in']:
-                    slist.append('intent_in')
-                if c_attrs['intent'] in ['inout', 'out']:
-                    slist.append('intent_out')
-
-                # Create a local C variable if necessary
-                have_c_local_var = False
-                for intent in slist:
-                    have_c_local_var = have_c_local_var or \
-                        f_statements.get(intent, {}).get('c_local_var', False)
+                # Create a local variable for C if necessary
+                have_c_local_var = f_statements.get(stmts, {}).get('c_local_var', False)
                 if have_c_local_var:
                     fmt_arg.c_var = 'SH_' + fmt_arg.f_var
                     arg_f_decl.append('{} {}'.format(
                         arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
 
                 # Add code for intent of argument
-                for intent in slist:
-                    cmd_list = f_statements.get(intent, {}).get('declare', [])
-                    if cmd_list:
-                        need_wrapper = True
-                        fmt_arg.c_var = 'SH_' + fmt_arg.f_var
-                        for cmd in cmd_list:
-                            append_format(arg_f_decl, cmd, fmt_arg)
+                cmd_list = f_statements.get(stmts, {}).get('declare', [])
+                if cmd_list:
+                    need_wrapper = True
+                    fmt_arg.c_var = 'SH_' + fmt_arg.f_var
+                    for cmd in cmd_list:
+                        append_format(arg_f_decl, cmd, fmt_arg)
 
-                    cmd_list = f_statements.get(intent, {}).get('pre_call', [])
-                    if cmd_list:
-                        need_wrapper = True
-                        for cmd in cmd_list:
-                            append_format(pre_call, cmd, fmt_arg)
+                cmd_list = f_statements.get(stmts, {}).get('pre_call', [])
+                if cmd_list:
+                    need_wrapper = True
+                    for cmd in cmd_list:
+                        append_format(pre_call, cmd, fmt_arg)
 
-                    cmd_list = f_statements.get(intent, {}).get('post_call', [])
-                    if cmd_list:
-                        need_wrapper = True
-                        for cmd in cmd_list:
-                            append_format(post_call, cmd, fmt_arg)
+                cmd_list = f_statements.get(stmts, {}).get('post_call', [])
+                if cmd_list:
+                    need_wrapper = True
+                    for cmd in cmd_list:
+                        append_format(post_call, cmd, fmt_arg)
 
                 self.update_f_module(modules, arg_typedef.f_module)
 

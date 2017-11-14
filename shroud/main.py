@@ -408,6 +408,15 @@ class Schema(object):
                             '{f_var} = {c_var}  ! coerce to logical',
                             ],
                         ),
+                    intent_inout=dict(
+                        c_local_var=True,
+                        pre_call=[
+                            '{c_var} = {f_var}  ! coerce to C_BOOL',
+                            ],
+                        post_call=[
+                            '{f_var} = {c_var}  ! coerce to logical',
+                            ],
+                        ),
                     result=dict(
                         # The wrapper is needed to convert bool to logical
                         need_wrapper=True,

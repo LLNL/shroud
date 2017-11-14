@@ -726,18 +726,22 @@ c_to_cpp
 
 c_statements
     A nested dictionary of code template to add.
-    The first layer is *intent_in*, *intent_out*, *result*,
-    *intent_in_buf*, *intent_out_buf*, and *result_buf*.
+    The first layer is *intent_in*, *intent_out*, *intent_inout*, *result*,
+    *intent_in_buf*, *intent_out_buf*, *intent_inout_buf*, and *result_buf*.
     The second layer is *pre_call*, *pre_call_buf*, *post_call*, *cpp_header*.
     The entries are a list of format strings.
 
     intent_in
-        Code to add for argument with intent(IN).
+        Code to add for argument with ``intent(IN)``.
         Can be used to convert types or copy-in semantics.
         For example, ``char *`` to ``std::string``.
 
     intent_out
-        Code to add after call when ``intent(OUT)`` or ``intent(INOUT)``.
+        Code to add after call when ``intent(OUT)``.
+        Used to implement copy-out semantics.
+
+    intent_inout
+        Code to add after call when ``intent(INOUT)``.
         Used to implement copy-out semantics.
 
     result
@@ -826,7 +830,7 @@ f_to_c
 
 f_statement
     A nested dictionary of code template to add.
-    The first layer is *intent_in*, *intent_out*, and *result*.
+    The first layer is *intent_in*, *intent_out*, *intent_inout*, and *result*.
     The second layer is *declare*, *pre_call*, and *post_call*
     The entries are a list of format strings.
 
