@@ -1,9 +1,0 @@
-Read yaml small.yaml
-C function void vector1(const std::vector & arg+dimension(:)+intent(in)+size(Narg)+template(int))
-Close wrapdefault_library.h
-Close wrapdefault_library.cpp
-Close shroudrt.hpp
-Close shroudrt.cpp
-Fortran function void vector1(const std::vector & arg+dimension(:)+intent(in)+template(int))
-C-interface function void vector1(const std::vector & arg+dimension(:)+intent(in)+size(Narg)+template(int))
-Close wrapfdefault_library.f
