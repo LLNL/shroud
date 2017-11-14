@@ -249,6 +249,17 @@ void vector_iota(std::vector<int> &arg)
 }
 
 //----------------------------------------------------------------------
+// vector reference as argument, intent(out)
+
+void vector_increment(std::vector<int> &arg)
+{
+  for(unsigned int i=0; i < arg.size(); i++) {
+    arg[i] += 1;
+  }
+  return;
+}
+
+//----------------------------------------------------------------------
 
 const std::string& LastFunctionCalled()
 {

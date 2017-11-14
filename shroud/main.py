@@ -688,6 +688,17 @@ class Schema(object):
                             '}}'
                         ],
                     ),
+                    intent_inout_buf=dict(
+                        cpp_local_var=True,
+                        pre_call=[
+                            'std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});'
+                        ],
+                        post_call=[
+                            'for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{',
+                            '    {c_var}[i] = {cpp_var}[i];',
+                            '}}'
+                        ],
+                    ),
                     result_buf=dict(
                         post_call=[
                             'if ({cpp_var}.empty()) {{',

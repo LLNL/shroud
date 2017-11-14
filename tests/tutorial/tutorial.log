@@ -41,6 +41,7 @@ C function EnumTypeID enumfunc(EnumTypeID arg+intent(in)+value)
 C function void useclass(const Class1 * arg1+intent(in)+value)
 C function int vector_sum(const std::vector & arg+dimension(:)+intent(in)+size(Sarg)+template(int))
 C function void vector_iota(std::vector & arg+dimension(:)+intent(out)+size(Sarg)+template(int))
+C function void vector_increment(std::vector & arg+dimension(:)+intent(inout)+size(Sarg)+template(int))
 C function const std::string & LastFunctionCalled()+pure
 C function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
 Close wrapTutorial.h
@@ -92,6 +93,8 @@ Fortran function int vector_sum(const std::vector & arg+dimension(:)+intent(in)+
 C-interface function int vector_sum(const std::vector & arg+dimension(:)+intent(in)+size(Sarg)+template(int))
 Fortran function void vector_iota(std::vector & arg+dimension(:)+intent(out)+template(int))
 C-interface function void vector_iota(std::vector & arg+dimension(:)+intent(out)+size(Sarg)+template(int))
+Fortran function void vector_increment(std::vector & arg+dimension(:)+intent(inout)+template(int))
+C-interface function void vector_increment(std::vector & arg+dimension(:)+intent(inout)+size(Sarg)+template(int))
 C-interface function const std::string & LastFunctionCalled()+pure
 C-interface function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
 Fortran function const string_result_fstr & LastFunctionCalled()+pure

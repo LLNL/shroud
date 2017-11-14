@@ -902,6 +902,17 @@
                         "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
+                "intent_inout_buf": {
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
+                        "    {c_var}[i] = {cpp_var}[i];", 
+                        "}}"
+                    ], 
+                    "pre_call": [
+                        "std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
+                    ]
+                }, 
                 "intent_out_buf": {
                     "cpp_local_var": true, 
                     "post_call": [
@@ -1121,6 +1132,17 @@
                     "cpp_local_var": true, 
                     "pre_call": [
                         "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
+                    ]
+                }, 
+                "intent_inout_buf": {
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
+                        "    {c_var}[i] = {cpp_var}[i];", 
+                        "}}"
+                    ], 
+                    "pre_call": [
+                        "std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
                 "intent_out_buf": {

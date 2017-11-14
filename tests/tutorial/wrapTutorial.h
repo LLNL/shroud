@@ -129,6 +129,8 @@ int TUT_vector_sum_bufferify(const int * arg, long Sarg);
 
 void TUT_vector_iota_bufferify(int * arg, long Sarg);
 
+void TUT_vector_increment_bufferify(int * arg, long Sarg);
+
 const char * TUT_last_function_called();
 
 void TUT_last_function_called_bufferify(char * SH_F_rv, int NSH_F_rv);

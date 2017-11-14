@@ -193,6 +193,12 @@ functions:
     wrap_python: False
     wrap_lua: False
 
+# defaults to intent(inout)
+- decl: void vector_increment(std::vector<int> &arg)
+  options:
+    wrap_python: False
+    wrap_lua: False
+
 # does multidimensional make sense.  Need to call shape
 #- decl: void vector1XXX(std::vector<int> &arg+dimension(:,:))
 

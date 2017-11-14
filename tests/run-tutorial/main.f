@@ -160,6 +160,10 @@ contains
     call vector_iota(intv)
     call assert_true(all(intv(:) .eq. [1,2,3,4,5]))
 
+    intv = [1,2,3,4,5]
+    call vector_increment(intv)
+    call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
+
   end subroutine test_functions
 
   subroutine test_class1
