@@ -49,7 +49,9 @@ Functions
 
 The simplest item to wrap is a function in the file ``tutorial.hpp``::
 
-   void Function1(void);
+   namespace tutorial {
+     void Function1(void);
+   }
 
 This is wrapped using a YAML input file ``tut.yaml``::
 
@@ -225,8 +227,8 @@ Logical
 
 Logical variables require a conversion since they are not directly
 compatible with C.  In addition, how ``.true.`` and ``.false.`` are
-represented internally is compiler dependent.  Some compilers use 0 for
-``.false.`` while other use -1.
+represented internally is compiler dependent.  Some compilers use 1 for
+``.true.`` while other use -1.
 
 A simple C++ function which accepts and returns a boolean argument::
 

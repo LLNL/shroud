@@ -287,11 +287,22 @@ c_var
 
 c_var_len
     Function argument generated from the *len* annotation.
+    Used with char/string arguments.
     Set from option **C_var_len_template**.
+
+c_var_size
+    Function argument generated from the *size* annotation.
+    Used with array/std::vector arguments.
+    Set from option **C_var_size_template**.
 
 c_var_trim
     Function argument generated from the *len_trim* annotation.
+    Used with char/string arguments.
     Set from option **C_var_trim_template**.
+
+cpp_T
+    The template parameter for std::vector arguments.
+    ``std::vector<cpp_T>``
 
 cpp_type
     The C++ type of the argument.
@@ -418,6 +429,10 @@ C_this
 C_var_len_template
     Format for variable created with *len* annotation.
     Default ``N{c_var}``
+
+C_var_size_template
+    Format for variable created with *size* annotation.
+    Default ``S{c_var}``
 
 C_var_trim_template
     Format for variable created with *len_trim* annotation.

@@ -125,7 +125,9 @@ int TUT_enumfunc(int arg);
 
 void TUT_useclass(const TUT_class1 * arg1);
 
-void TUT_vector1();
+int TUT_vector_sum_bufferify(const int * arg, long Sarg);
+
+void TUT_vector_iota_bufferify(int * arg, long Sarg);
 
 const char * TUT_last_function_called();
 

@@ -46,7 +46,7 @@ It does this by using C as the lingua franca.
 C++ can communicate with C via a common heritage and the ``extern "C"`` keyword.
 Fortran uses the interoperability with C features introduced in Fortran 2003
 including the ``iso_c_binding`` module and the ``bind`` and ``value`` keywords.
-A C API for C++ API is produced as a by product of the Fortran wrapping.
+A C API for C++ API is produced as a byproduct of the Fortran wrapping.
 
 Goals
 -----

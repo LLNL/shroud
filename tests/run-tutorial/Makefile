@@ -63,3 +63,6 @@ OBJS = \
 
 tutorial : $(OBJS)
 	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+
+clean :
+	rm -f $(OBJS) *.mod tutorial

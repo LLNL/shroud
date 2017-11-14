@@ -71,6 +71,8 @@ contains
 
   subroutine test_functions
 
+    integer(C_INT) intv(5)
+
     call set_case_name("test_functions")
 
     call function1
@@ -149,6 +151,14 @@ contains
 
     rv_int = enumfunc(1)
     call assert_true(rv_int .eq. 2)
+
+    intv = [1,2,3,4,5]
+    rv_int = vector_sum(intv)
+    call assert_true(rv_int .eq. 15)
+
+    intv(:) = 0
+    call vector_iota(intv)
+    call assert_true(all(intv(:) .eq. [1,2,3,4,5]))
 
   end subroutine test_functions
 

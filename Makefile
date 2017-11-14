@@ -67,9 +67,11 @@ export PYTHON
 export LUA
 
 ########################################################################
-# Create a virtual environment.
-# Then 'make develop' will use the environement to install dependencies
+# For development:
+# make virtualenv
+# make develop
 
+# Create a virtual environment.
 virtualenv : $(venv.dir)
 $(venv.dir) :
 	$(venv) $(venv.dir)
@@ -147,19 +149,21 @@ test-clean :
 ########################################################################
 #
 # Run the sample YAML files and compare output
+# make do-test
+# make do-test do-test-args=tutorial
 #
 do-test :
 	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
 	export TEST_INPUT_DIR=$(top)/tests; \
 	export EXECUTABLE_DIR=$(python.dir); \
-	$(PYTHON) tests/do_test.py
+	$(PYTHON) tests/do_test.py $(do-test-args)
 
 # replace test answers
 do-test-replace :
 	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
 	export TEST_INPUT_DIR=$(top)/tests; \
 	export EXECUTABLE_DIR=$(python.dir); \
-	$(PYTHON) tests/do_test.py -r
+	$(PYTHON) tests/do_test.py -r  $(do-test-args)
 
 ########################################################################
 

@@ -182,11 +182,19 @@ functions:
 #    wrap_lua: False
 
 # test std::vector
-#- decl: void vector1(std::vector<int> &arg)
-- decl: void vector1()
+# const implies intent(in)
+- decl: int vector_sum(const std::vector<int> &arg)
   options:
     wrap_python: False
     wrap_lua: False
+
+- decl: void vector_iota(std::vector<int> &arg+intent(out))
+  options:
+    wrap_python: False
+    wrap_lua: False
+
+#- decl: void vector1XXX(std::vector<int> &arg+dimension(:,:))
+
 
 ##################################################
 

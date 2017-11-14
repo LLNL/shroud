@@ -95,18 +95,22 @@ class Wrapc(util.WrapperMixin):
 #            raise RuntimeError
         t = []
         typedef = self.typedef.get(arg['type'], None)
+        attrs = arg['attrs']
+        if 'template' in attrs:
+            # If a template, use its type
+            typedef = self.typedef[attrs['template']]
         if typedef is None:
             raise RuntimeError("No such type %s" % arg['type'])
-        if arg['attrs'].get('const', False):
+        if attrs.get('const', False):
             t.append('const')
         typ = getattr(typedef, lang)
         if typ is None:
             raise RuntimeError(
                 "Type {} has no value for {}".format(arg['type'], lang))
         t.append(typ)
-        if arg['attrs'].get('ptr', False):
+        if attrs.get('ptr', False):
             t.append('*')
-        elif arg['attrs'].get('reference', False):
+        elif attrs.get('reference', False):
             if lang == 'cpp_type':
                 t.append('&')
             else:
@@ -410,6 +414,12 @@ class Wrapc(util.WrapperMixin):
             fmt_arg = arg.setdefault('fmtc', util.Options(fmt_func))
             c_attrs = arg['attrs']
             arg_typedef = self.typedef[arg['type']]
+            if 'template' in c_attrs:
+                base_typedef = arg_typedef
+                arg_typedef = self.typedef[c_attrs['template']]
+            else:
+                base_typedef = util.Typedef('-none-')
+
             c_statements = arg_typedef.c_statements
             fmt_arg.c_var = arg['name']
             if arg_typedef.base == 'string' or \
@@ -420,6 +430,13 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_var_len = c_attrs.get('len', 'SH_' +
                                                 options.C_var_len_template.format(
                                                     c_var=fmt_arg.c_var))
+            elif base_typedef.base == 'vector':
+                fmt_arg.c_var_size = c_attrs.get('size', 'SH_' +
+                                                 options.C_var_size_template.format(
+                                                    c_var=fmt_arg.c_var))
+                fmt_arg.cpp_T = c_attrs['template']
+                c_statements = base_typedef.c_statements
+
             if c_attrs.get('const', False):
                 fmt_arg.c_const = 'const '
             else:
@@ -433,15 +450,17 @@ class Wrapc(util.WrapperMixin):
             proto_list.append(self._c_decl('c_type', arg))
 
             intent_grp = ''
-            if generator == 'string_to_buffer_and_len' and \
-               (arg_typedef.base == 'string' or
-                arg_typedef.name == 'char_scalar'):
-                len_trim = c_attrs.get('len_trim', False)
-                if len_trim:
-                    append_format(proto_list, 'int {c_var_trim}', fmt_arg)
-                len_arg = c_attrs.get('len', False)
-                if len_arg:
-                    append_format(proto_list, 'int {c_var_len}', fmt_arg)
+            if generator == 'string_to_buffer_and_len':
+                if (arg_typedef.base == 'string' or
+                    arg_typedef.name == 'char_scalar'):
+                    len_trim = c_attrs.get('len_trim', False)
+                    if len_trim:
+                        append_format(proto_list, 'int {c_var_trim}', fmt_arg)
+                    len_arg = c_attrs.get('len', False)
+                    if len_arg:
+                        append_format(proto_list, 'int {c_var_len}', fmt_arg)
+                elif base_typedef.base == 'vector':
+                    append_format(proto_list, 'long {c_var_size}', fmt_arg)
                 intent_grp = '_buf'
 
             if c_attrs.get('_is_result', False):
@@ -470,6 +489,7 @@ class Wrapc(util.WrapperMixin):
             if have_cpp_local_var:
                 fmt_arg.cpp_var = 'SH_' + fmt_arg.c_var
 
+            # Add code for intent of argument
             for intent in slist:
                 # pre_call.append('// intent=%s' % intent)
                 intent_blk = c_statements.get(intent, {})

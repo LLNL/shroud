@@ -62,3 +62,6 @@ OBJS = \
 
 strings : $(OBJS)
 	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+
+clean :
+	rm -f $(OBJS) *.mod strings

@@ -1,6 +1,6 @@
 Read yaml strings.yaml
-Skipping getString5, unable to create C wrapper for function returning std::string instance (must return a pointer or reference).
-Skipping getString6, unable to create C wrapper for function returning std::string instance (must return a pointer or reference).
+Skipping std::string, unable to create C wrapper for function returning getString5 instance (must return a pointer or reference).
+Skipping std::string, unable to create C wrapper for function returning getString6 instance (must return a pointer or reference).
 C function void passChar(char_scalar status+intent(in)+value)
 C function char_scalar returnChar()
 C function void returnChar(char_scalar * SH_F_rv+intent(out)+len(NSH_F_rv))

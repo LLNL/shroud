@@ -45,6 +45,7 @@
 #define TUTORIAL_HPP
 
 #include <string>
+#include <vector>
 
 namespace tutorial
 {
@@ -104,6 +105,9 @@ public:
 
 void useclass(const Class1 *arg);
 void getclass(const Class1 **arg);
+
+int vector_sum(const std::vector<int> &arg);
+void vector_iota(std::vector<int> &arg);
 
 } /* end namespace tutorial */
 

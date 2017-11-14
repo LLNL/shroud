@@ -654,6 +654,68 @@ The generated wrappers are::
           it after copying the contents. Shroud does not deal with this case
           and will result in leaked memory.
 
+std::vector
+-----------
+
+A ``std::vector`` argument for a C++ function can be created from a Fortran array.
+The address and size of the array is extracted and passed to the C wrapper to create
+the ``std::vector``::
+
+    int vector_sum(const std::vector<int> &arg);
+    void vector_iota(std::vector<int> &arg);
+
+Are wrapped with the YAML input::
+
+    - decl: int vector_sum(const std::vector<int> &arg)
+    - decl: void vector_iota(std::vector<int> &arg+intent(out))
+
+``intent(in)`` is implied for the *vector_sum* argument since it is ``const``.
+The Fortran wrapper passes the array and the size to C::
+
+    function vector_sum(arg) result(SH_rv)
+        use iso_c_binding, only : C_INT, C_LONG
+        integer(C_INT), intent(IN) :: arg(:)
+        integer(C_INT) :: SH_rv
+        SH_rv = c_vector_sum_bufferify(  &
+            arg,  &
+            size(arg, kind=C_LONG))
+    end function vector_sum
+
+    subroutine vector_iota(arg)
+        use iso_c_binding, only : C_INT, C_LONG
+        integer(C_INT), intent(OUT) :: arg(:)
+        call c_vector_iota_bufferify(  &
+            arg,  &
+            size(arg, kind=C_LONG))
+    end subroutine vector_iota
+
+The C wrapper then creates a ``std::vector``::
+
+    int TUT_vector_sum_bufferify(const int * arg, long Sarg)
+    {
+        const std::vector<int> SH_arg(arg, arg + Sarg);
+        int SH_rv = vector_sum(SH_arg);
+        return SH_rv;
+    }
+    
+    void TUT_vector_iota_bufferify(int * arg, long Sarg)
+    {
+        std::vector<int> SH_arg(Sarg);
+        vector_iota(SH_arg);
+        for(std::vector<int>::size_type i = 0;
+            i < std::min(SH_arg.size(),static_cast<std::vector<int>::size_type>(Sarg));
+            i++) {
+            arg[i] = SH_arg[i];
+        }
+        return;
+    }
+
+On ``intent(in)``, the ``std::vector`` constructor copies the values from the input pointer.
+With ``intent(out)``, the values are copied after calling the function.
+
+.. note:: With ``intent(out)``, if *vector_iota* changes the size of ``arg`` to be longer than
+          the original size of the Fortran argument, the additional values will not be copied. 
+
 MPI_Comm
 --------
 

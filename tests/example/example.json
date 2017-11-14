@@ -4104,6 +4104,7 @@
         "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
         "C_prefix": "AA_", 
         "C_var_len_template": "N{c_var}", 
+        "C_var_size_template": "S{c_var}", 
         "C_var_trim_template": "L{c_var}", 
         "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
         "F_C_prefix": "c_", 
@@ -4661,6 +4662,39 @@
                 }
             }
         }, 
+        "std::vector": {
+            "base": "vector", 
+            "c_statements": {
+                "intent_in_buf": {
+                    "cpp_local_var": true, 
+                    "pre_call": [
+                        "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
+                    ]
+                }, 
+                "intent_out_buf": {
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
+                        "    {c_var}[i] = {cpp_var}[i];", 
+                        "}}"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});"
+                    ]
+                }, 
+                "result_buf": {
+                    "post_call": [
+                        "if ({cpp_var}.empty()) {{", 
+                        "  std::memset({c_var}, ' ', {c_var_len});", 
+                        "}} else {{", 
+                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
+                        "}}"
+                    ]
+                }
+            }, 
+            "cpp_header": "<vector>", 
+            "cpp_type": "std::vector<{cpp_T}>"
+        }, 
         "string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
@@ -4792,6 +4826,39 @@
                     ]
                 }
             }
+        }, 
+        "vector": {
+            "base": "vector", 
+            "c_statements": {
+                "intent_in_buf": {
+                    "cpp_local_var": true, 
+                    "pre_call": [
+                        "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
+                    ]
+                }, 
+                "intent_out_buf": {
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
+                        "    {c_var}[i] = {cpp_var}[i];", 
+                        "}}"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});"
+                    ]
+                }, 
+                "result_buf": {
+                    "post_call": [
+                        "if ({cpp_var}.empty()) {{", 
+                        "  std::memset({c_var}, ' ', {c_var_len});", 
+                        "}} else {{", 
+                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
+                        "}}"
+                    ]
+                }
+            }, 
+            "cpp_header": "<vector>", 
+            "cpp_type": "std::vector<{cpp_T}>"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cpp_var}, NULL, NULL)", 

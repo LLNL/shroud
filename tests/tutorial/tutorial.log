@@ -1,5 +1,5 @@
 Read yaml tutorial.yaml
-Skipping Function4a, unable to create C wrapper for function returning std::string instance (must return a pointer or reference).
+Skipping std::string, unable to create C wrapper for function returning Function4a instance (must return a pointer or reference).
 Read splicer ftutorialsplicer.f
 Close tutorial_types.yaml
 class Class1
@@ -39,7 +39,8 @@ C function int overload1(double type+intent(in)+value, int num+intent(in)+value,
 C function TypeID typefunc(TypeID arg+intent(in)+value)
 C function EnumTypeID enumfunc(EnumTypeID arg+intent(in)+value)
 C function void useclass(const Class1 * arg1+intent(in)+value)
-C function void vector1()
+C function int vector_sum(const std::vector & arg+dimension(:)+intent(in)+size(Sarg)+template(int))
+C function void vector_iota(std::vector & arg+dimension(:)+intent(out)+size(Sarg)+template(int))
 C function const std::string & LastFunctionCalled()+pure
 C function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
 Close wrapTutorial.h
@@ -87,7 +88,10 @@ C-interface, Fortran function int overload1(double type+intent(in)+value, int nu
 C-interface, Fortran function TypeID typefunc(TypeID arg+intent(in)+value)
 C-interface, Fortran function EnumTypeID enumfunc(EnumTypeID arg+intent(in)+value)
 C-interface, Fortran function void useclass(const Class1 * arg1+intent(in)+value)
-C-interface, Fortran function void vector1()
+Fortran function int vector_sum(const std::vector & arg+dimension(:)+intent(in)+template(int))
+C-interface function int vector_sum(const std::vector & arg+dimension(:)+intent(in)+size(Sarg)+template(int))
+Fortran function void vector_iota(std::vector & arg+dimension(:)+intent(out)+template(int))
+C-interface function void vector_iota(std::vector & arg+dimension(:)+intent(out)+size(Sarg)+template(int))
 C-interface function const std::string & LastFunctionCalled()+pure
 C-interface function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
 Fortran function const string_result_fstr & LastFunctionCalled()+pure

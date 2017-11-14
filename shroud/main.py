@@ -178,7 +178,8 @@ class Schema(object):
                 setattr(fmt, name, options[name])
 
     def check_schema(self):
-        """ Routine to check entire schema of input tree"
+        """ Check entire schema of input tree.
+        Create format dictionaries.
         """
         node = self.config
 
@@ -214,8 +215,9 @@ class Schema(object):
                 '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
 
             C_bufferify_suffix='_bufferify',
-            C_var_len_template = 'N{c_var}',
-            C_var_trim_template = 'L{c_var}',
+            C_var_len_template = 'N{c_var}',         # argument for result of len(arg)
+            C_var_trim_template = 'L{c_var}',        # argument for result of len_trim(arg)
+            C_var_size_template = 'S{c_var}',        # argument for result of size(arg)
 
             # Fortran's names for C functions
             F_C_prefix='c_',
@@ -593,6 +595,74 @@ class Schema(object):
                 base='string',
                 ),
 
+            # C++ std::vector
+            # No c_type or f_type, use attr[template]
+            vector=util.Typedef(
+                'vector',
+                cpp_type='std::vector<{cpp_T}>',
+                cpp_header='<vector>',
+#                cpp_to_c='{cpp_var}.data()',  # C++11
+
+                c_statements=dict(
+#                    intent_in=dict(
+#                        cpp_local_var=True,
+#                        pre_call=[
+#                            '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var});'
+#                            ],
+#                    ),
+#                    intent_out=dict(
+#                        cpp_header='<cvector>',
+#                        post_call=[
+#                            # This may overwrite c_var if cpp_val is too long
+#                            'strcpy({c_var}, {cpp_val});'
+##                            'shroud_FccCopy({c_var}, {c_var_trim}, {cpp_val});'
+#                        ],
+#                    ),
+                    intent_in_buf=dict(
+                        cpp_local_var=True,
+                        pre_call=[
+                            ('{c_const}std::vector<{cpp_T}> '
+                             '{cpp_var}({c_var}, {c_var} + {c_var_size});')
+                        ],
+                    ),
+                    intent_out_buf=dict(
+                        cpp_local_var=True,
+                        pre_call=[
+                            '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});'
+                        ],
+                        post_call=[
+                            'for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{',
+                            '    {c_var}[i] = {cpp_var}[i];',
+                            '}}'
+                        ],
+                    ),
+                    result_buf=dict(
+                        post_call=[
+                            'if ({cpp_var}.empty()) {{',
+                            '  std::memset({c_var}, \' \', {c_var_len});',
+                            '}} else {{',
+                            '  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});',
+                            '}}',
+                        ],
+                    ),
+                ),
+
+#                py_statements=dict(
+#                    intent_in=dict(
+#                        cpp_local_var=True,
+#                        post_parse=[
+#                            '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var});'
+#                            ],
+#                        ),
+#                    ),
+#                PY_format='s',
+#                PY_ctor='PyString_FromString({c_var})',
+#                LUA_type='LUA_TSTRING',
+#                LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
+#                LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
+                base='vector',
+                ),
+
             MPI_Comm=util.Typedef(
                 'MPI_Comm',
                 cpp_type='MPI_Comm',
@@ -609,6 +679,7 @@ class Schema(object):
 
         # aliases
         def_types['std::string'] = def_types['string']
+        def_types['std::vector'] = def_types['vector']
         def_types['integer(C_INT)'] = def_types['int']
         def_types['integer(C_LONG)'] = def_types['long']
         def_types['real(C_FLOAT)'] = def_types['float']
@@ -775,6 +846,8 @@ class GenFunctions(object):
         self.typedef = tree['types']
 
     def gen_library(self):
+        """Entry routine to generate functions for a library.
+        """
         tree = self.tree
 
         # Order of creating.
@@ -797,9 +870,11 @@ class GenFunctions(object):
         ilist.append(node)
 
     def define_function_suffix(self, functions):
-        """ Look for functions with the same name.
-        Return a new list with overloaded function inserted.
         """
+        Return a new list with generated function inserted.
+        """
+
+        # Look for overloaded functions
         cpp_overload = {}
         for function in functions:
             if 'function_suffix' in function:
@@ -998,9 +1073,10 @@ class GenFunctions(object):
             pass
 
     def string_to_buffer_and_len(self, node, ordered_functions):
-        """ Check if function has any string arguments and will be
-        wrapped by Fortran. If so then create a new C function that
-        will convert string arguments into a buffer and length.
+        """Look for function which have implied arguments.
+        This includes functions with string or vector arguments.
+        If found then create a new C function that
+        will convert argument into a buffer and length.
         """
         options = node['options']
         fmt = node['fmt']
@@ -1020,23 +1096,23 @@ class GenFunctions(object):
         attrs = result['attrs']
         result_is_ptr = (attrs.get('ptr', False) or
                          attrs.get('reference', False))
-        if result_typedef and result_typedef.base == 'string' and \
+        if result_typedef and result_typedef.base in ['string', 'vector'] and \
                 result_type != 'char' and \
                 not result_is_ptr:
             options.wrap_c = False
 #            options.wrap_fortran = False
             self.config.log.write("Skipping {}, unable to create C wrapper "
-                                  "for function returning std::string instance"
+                                  "for function returning {} instance"
                                   " (must return a pointer or reference).\n"
-                                  .format(result['name']))
+                                  .format(result_typedef.cpp_type, result['name']))
 
         if options.wrap_fortran is False:
             return
-        if options.F_string_len_trim is False:
+        if options.F_string_len_trim is False:  # XXX what about vector
             return
 
         # Is result or any argument a string?
-        has_string_arg = False
+        has_implied_arg = False
         for arg in node['args']:
             argtype = arg['type']
             if self.typedef[argtype].base == 'string':
@@ -1044,9 +1120,11 @@ class GenFunctions(object):
                 is_ptr = (attrs.get('ptr', False) or
                           attrs.get('reference', False))
                 if is_ptr:
-                    has_string_arg = True
+                    has_implied_arg = True
                 else:
                     arg['type'] = 'char_scalar'
+            elif self.typedef[argtype].base == 'vector':
+                has_implied_arg = True
 
         has_string_result = False
         result_as_arg = ''  # only applies to string functions
@@ -1058,8 +1136,10 @@ class GenFunctions(object):
             has_string_result = True
             result_as_arg = fmt.F_string_result_as_arg
             result_name = result_as_arg or fmt.C_string_result_as_arg
+        elif result_typedef.base == 'vector':
+            raise NotImplemented("vector result")
 
-        if not (has_string_result or has_string_arg):
+        if not (has_string_result or has_implied_arg):
             return
 
         # XXX       options = node['options']
@@ -1092,6 +1172,9 @@ class GenFunctions(object):
                 # strings passed in need len_trim
                 # strings returned need len
                 # Add attributes if not already set
+                # The original C function will still be wrapped since it can
+                # be called by Fortran or C with a NULL terminated string
+                # and implied len computed using strlen()
                 attrs = arg['attrs']
                 intent = attrs['intent']
                 if intent in ['in', 'inout'] and 'len_trim' not in attrs:
@@ -1103,6 +1186,12 @@ class GenFunctions(object):
                     # so the wrapper will know how much space
                     # can be written to.
                     attrs['len'] = options.C_var_len_template.format(c_var=arg['name'])
+            elif self.typedef[argtype].base == 'vector':
+                attrs = arg['attrs']
+                attrs['size'] = options.C_var_size_template.format(c_var=arg['name'])
+                # Do not wrap the orignal C function with vector argument.
+                # Meaningless to call without the size argument.
+                node['options'].wrap_c = False
 
         if has_string_result:
             # Add additional argument to hold result
@@ -1356,11 +1445,16 @@ class VerifyAttrs(object):
             typename = arg['type']
             typedef = self.typedef.get(typename, None)
             if typedef is None:
+                # if the type does not exist, make sure it is defined by cpp_template
+                #- decl: void Function7(ArgType arg)
+                #  cpp_template:
+                #    ArgType:
+                #    - int
+                #    - double
                 cpp_template = node.get('cpp_template', {})
                 if typename not in cpp_template:
                     raise RuntimeError("No such type %s: %s" % (
                             typename, parse_decl.str_declarator(arg)))
-                    # XXX print decl
 
             attrs = arg['attrs']
             is_ptr = (attrs.get('ptr', False) or
@@ -1374,6 +1468,8 @@ class VerifyAttrs(object):
                 elif attrs.get('const', False):
                     attrs['intent'] = 'in'
                 elif typedef.base == 'string':
+                    attrs['intent'] = 'inout'
+                elif typedef.base == 'vector':
                     attrs['intent'] = 'inout'
                 else:
                     # void *
@@ -1413,6 +1509,9 @@ class VerifyAttrs(object):
                 else:
                     # Put parens around dimension
                     attrs['dimension'] = '(' + attrs['dimension'] + ')'
+            elif typedef and typedef.base == 'vector':
+                # default to 1-d assumed shape 
+                attrs['dimension'] = '(:)'
 
             if 'default' in attrs:
                 found_default = True
@@ -1428,7 +1527,23 @@ class VerifyAttrs(object):
             len_name = attrs.get('len_trim', False)
             if len_name is True:
                 attrs['len_trim'] = options.C_var_trim_template.format(c_var=argname)
-#        if typedef.base == 'string':
+            size_name = attrs.get('size', False)
+            if size_name is True:
+                attrs['size'] = options.C_var_size_template.format(c_var=argname)
+
+            # Check template attribute
+            temp = attrs.get('template', None)
+            if typedef and typedef.base == 'vector':
+                if not temp:
+                    raise RuntimeError("std::vector must have template argument: %s" % (
+                            parse_decl.str_declarator(arg)))
+                typedef = self.typedef.get(temp, None)
+                if typedef is None:
+                    raise RuntimeError("No such type %s for template: %s" % (
+                            temp, parse_decl.str_declarator(arg)))
+            elif temp is not None:
+                raise RuntimeError("Type '%s' may not supply template argument: %s" % (
+                        typename, parse_decl.str_declarator(arg)))
 
 
 class Namify(object):

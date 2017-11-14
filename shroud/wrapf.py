@@ -134,7 +134,11 @@ class Wrapf(util.WrapperMixin):
         """
         t = []
         typedef = self.typedef[arg['type']]
+        basedef = typedef
         attrs = arg['attrs']
+        if 'template' in attrs:
+            # If a template, use its type
+            typedef = self.typedef[attrs['template']]
         intent = attrs.get('intent', None)
 
         typ = typedef.f_c_type or typedef.f_type
@@ -145,7 +149,9 @@ class Wrapf(util.WrapperMixin):
             t.append('value')
         if intent:
             t.append('intent(%s)' % intent.upper())
-        if typedef.base == 'string':
+        if basedef.base == 'vector':
+            dimension = '(*)'  # is array
+        elif typedef.base == 'string':
             dimension = '(*)'  # is array
         else:
             # XXX should C always have dimensions of '(*)'?
@@ -178,6 +184,9 @@ class Wrapf(util.WrapperMixin):
         t = []
         typedef = self.typedef[arg['type']]
         attrs = arg['attrs']
+        if 'template' in attrs:
+            # If a template, use its type
+            typedef = self.typedef[attrs['template']]
         intent = attrs.get('intent', None)
 
         typ = typedef.f_type
@@ -600,6 +609,9 @@ class Wrapf(util.WrapperMixin):
             arg_typedef = self.typedef[arg['type']]
             fmt.c_var = arg['name']
             attrs = arg['attrs']
+            base_typedef = arg_typedef
+            if 'template' in attrs:
+                arg_typedef = self.typedef[attrs['template']]
             self.update_f_module(modules,
                                  arg_typedef.f_c_module or arg_typedef.f_module)
 
@@ -620,21 +632,27 @@ class Wrapf(util.WrapperMixin):
             else:
                 arg_c_decl.append(self._c_decl(arg))
 
-            if generator == 'string_to_buffer_and_len' and \
-               (arg_typedef.base == 'string' or
-                arg_typedef.name == 'char_scalar'):
-                len_trim = attrs.get('len_trim', None)
-                if len_trim:
-                    arg_c_names.append(len_trim)
+            if generator == 'string_to_buffer_and_len':
+                if (arg_typedef.base == 'string' or
+                    arg_typedef.name == 'char_scalar'):
+                    len_trim = attrs.get('len_trim', None)
+                    if len_trim:
+                        arg_c_names.append(len_trim)
+                        arg_c_decl.append(
+                            'integer(C_INT), value, intent(IN) :: %s' % len_trim)
+                        self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+                    len_arg = attrs.get('len', None)
+                    if len_arg:
+                        arg_c_names.append(len_arg)
+                        arg_c_decl.append(
+                            'integer(C_INT), value, intent(IN) :: %s' % len_arg)
+                        self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+                elif base_typedef.base == 'vector':
+                    size = attrs['size']
+                    arg_c_names.append(size)
                     arg_c_decl.append(
-                        'integer(C_INT), value, intent(IN) :: %s' % len_trim)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                len_arg = attrs.get('len', None)
-                if len_arg:
-                    arg_c_names.append(len_arg)
-                    arg_c_decl.append(
-                        'integer(C_INT), value, intent(IN) :: %s' % len_arg)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+                        'integer(C_LONG), value, intent(IN) :: %s' % size)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
 
         if (subprogram == 'function' and
                 (is_pure or (func_is_const and args_all_in))):
@@ -789,6 +807,10 @@ class Wrapf(util.WrapperMixin):
 
                 arg_type = f_arg['type']
                 arg_typedef = self.typedef[arg_type]
+                base_typedef = arg_typedef
+                if 'template' in c_attrs:
+                    # If a template, use its type
+                    arg_typedef = self.typedef[c_attrs['template']]
 
                 f_statements = arg_typedef.f_statements
 
@@ -808,6 +830,7 @@ class Wrapf(util.WrapperMixin):
                     arg_f_decl.append('{} {}'.format(
                         arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
 
+                # Add code for intent of argument
                 for intent in slist:
                     cmd_list = f_statements.get(intent, {}).get('declare', [])
                     if cmd_list:
@@ -828,7 +851,7 @@ class Wrapf(util.WrapperMixin):
                         for cmd in cmd_list:
                             append_format(post_call, cmd, fmt_arg)
 
-                    self.update_f_module(modules, arg_typedef.f_module)
+                self.update_f_module(modules, arg_typedef.f_module)
 
             # Now C function arguments
             # May have different types, like generic
@@ -862,6 +885,14 @@ class Wrapf(util.WrapperMixin):
                     need_wrapper = True
                     append_format(arg_c_call, 'len({f_var}, kind=C_INT)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+            elif arg_typedef.base == 'vector':
+                try:
+                    size_arg = c_arg['attrs']['size']
+                except KeyError:
+                    raise RuntimeError("Expected size attribute   XXX", c_arg)
+                need_wrapper = True
+                append_format(arg_c_call, 'size({f_var}, kind=C_LONG)', fmt_arg)
+                self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
 
         fmt_func.F_arg_c_call = ', '.join(arg_c_call)
         # use tabs to insert continuations

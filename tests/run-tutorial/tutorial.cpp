@@ -226,6 +226,29 @@ void Class1::Method1()
 }
 
 //----------------------------------------------------------------------
+// vector reference as argument, intent(in)
+
+int vector_sum(const std::vector<int> &arg)
+{
+  int sum = 0;
+  for(std::vector<int>::const_iterator it = arg.begin(); it != arg.end(); ++it) {
+    sum += *it;
+  }
+  return sum;
+}
+
+//----------------------------------------------------------------------
+// vector reference as argument, intent(out)
+
+void vector_iota(std::vector<int> &arg)
+{
+  for(unsigned int i=0; i < arg.size(); i++) {
+    arg[i] = i + 1;
+  }
+  return;
+}
+
+//----------------------------------------------------------------------
 
 const std::string& LastFunctionCalled()
 {
