@@ -336,7 +336,7 @@ module strings_mod
 contains
 
     ! char_scalar returnChar()
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=1
     !>
     !! \brief return a char argument (non-pointer)
@@ -353,7 +353,7 @@ contains
     end function return_char
 
     ! void passCharPtr(char * dest+intent(out), const char * src+intent(in))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=2
     !>
     !! \brief strcpy like behavior
@@ -375,7 +375,7 @@ contains
     end subroutine pass_char_ptr
 
     ! void passCharPtrInOut(char * s+intent(inout))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=3
     !>
     !! \brief Change a string in-place
@@ -407,7 +407,7 @@ contains
     end function get_char1
 
     ! const char * getChar2()
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=5
     !>
     !! \brief return 'const char *' with fixed size (len=30)
@@ -424,7 +424,7 @@ contains
     end function get_char2
 
     ! void getChar3(char * output+intent(out)+len(Noutput))
-    ! string_to_buffer_and_len - string_to_buffer_and_len
+    ! arg_to_buffer - arg_to_buffer
     ! function_index=25
     !>
     !! \brief return a 'const char *' as argument
@@ -455,7 +455,7 @@ contains
     end function get_string1
 
     ! const string & getString2()
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=8
     !>
     !! \brief return 'const string&' with fixed size (len=30)
@@ -472,7 +472,7 @@ contains
     end function get_string2
 
     ! void getString3(string & output+intent(out)+len(Noutput))
-    ! string_to_buffer_and_len - string_to_buffer_and_len
+    ! arg_to_buffer - arg_to_buffer
     ! function_index=30
     !>
     !! \brief return a 'const string&' as argument
@@ -489,7 +489,7 @@ contains
     end subroutine get_string3
 
     ! const string & getString2_empty()
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=10
     !>
     !! \brief Test returning empty string reference
@@ -506,7 +506,7 @@ contains
     end function get_string2_empty
 
     ! const string getString5()
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=11
     !>
     !! \brief return a 'const string' as argument
@@ -523,7 +523,7 @@ contains
     end function get_string5
 
     ! void getString6(string * output+intent(out)+len(Noutput))
-    ! string_to_buffer_and_len - string_to_buffer_and_len
+    ! arg_to_buffer - arg_to_buffer
     ! function_index=34
     !>
     !! \brief return a 'const string' as argument
@@ -540,7 +540,7 @@ contains
     end subroutine get_string6
 
     ! void acceptStringConstReference(const std::string & arg1+intent(in))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=13
     !>
     !! \brief Accept a const string reference
@@ -560,7 +560,7 @@ contains
     end subroutine accept_string_const_reference
 
     ! void acceptStringReferenceOut(std::string & arg1+intent(out))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=14
     !>
     !! \brief Accept a string reference
@@ -580,7 +580,7 @@ contains
     end subroutine accept_string_reference_out
 
     ! void acceptStringReference(std::string & arg1+intent(inout))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=15
     !>
     !! \brief Accept a string reference
@@ -601,7 +601,7 @@ contains
     end subroutine accept_string_reference
 
     ! void explicit1(char * name+intent(in)+len_trim(AAlen))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=16
     subroutine explicit1(name)
         use iso_c_binding, only : C_INT
@@ -614,7 +614,7 @@ contains
     end subroutine explicit1
 
     ! void explicit2(char * name+intent(out)+len(AAtrim))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=17
     subroutine explicit2(name)
         use iso_c_binding, only : C_INT

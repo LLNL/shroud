@@ -632,7 +632,7 @@ class Wrapf(util.WrapperMixin):
             else:
                 arg_c_decl.append(self._c_decl(arg))
 
-            if generator == 'string_to_buffer_and_len':
+            if generator == 'arg_to_buffer':
                 if (arg_typedef.base == 'string' or
                     arg_typedef.name == 'char_scalar'):
                     len_trim = attrs.get('len_trim', None)

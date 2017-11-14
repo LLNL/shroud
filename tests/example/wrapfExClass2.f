@@ -319,7 +319,7 @@ module exclass2_mod
 contains
 
     ! ExClass2 * ExClass2(const string * name+intent(in))+constructor
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=18
     function exclass2_ex_class2(name) result(SH_rv)
         use iso_c_binding, only : C_INT
@@ -344,7 +344,7 @@ contains
     end subroutine exclass2_delete
 
     ! const string & getName() const
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=20
     function exclass2_get_name(obj) result(SH_rv)
         use iso_c_binding, only : C_CHAR, C_INT
@@ -359,7 +359,7 @@ contains
     end function exclass2_get_name
 
     ! const string & getName2()
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=21
     function exclass2_get_name2(obj) result(SH_rv)
         use iso_c_binding, only : C_CHAR, C_INT
@@ -377,7 +377,7 @@ contains
     end function exclass2_get_name2
 
     ! string & getName3() const
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=22
     function exclass2_get_name3(obj) result(SH_rv)
         use iso_c_binding, only : C_CHAR, C_INT
@@ -395,7 +395,7 @@ contains
     end function exclass2_get_name3
 
     ! string & getName4()
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=23
     function exclass2_get_name4(obj) result(SH_rv)
         use iso_c_binding, only : C_CHAR, C_INT

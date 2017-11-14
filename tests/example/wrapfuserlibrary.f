@@ -185,7 +185,7 @@ module userlibrary_mod
 contains
 
     ! bool isNameValid(const std::string & name+intent(in))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=48
     function is_name_valid(name) result(SH_rv)
         use iso_c_binding, only : C_BOOL, C_INT
@@ -229,7 +229,7 @@ contains
     end subroutine check_bool
 
     ! void test_names(const std::string & name+intent(in))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=51
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
@@ -242,7 +242,7 @@ contains
     end subroutine test_names
 
     ! void test_names(const std::string & name+intent(in), int flag+intent(in)+value)
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=52
     subroutine test_names_flag(name, flag)
         use iso_c_binding, only : C_INT

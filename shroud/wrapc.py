@@ -450,7 +450,7 @@ class Wrapc(util.WrapperMixin):
             proto_list.append(self._c_decl('c_type', arg))
 
             intent_grp = ''
-            if generator == 'string_to_buffer_and_len':
+            if generator == 'arg_to_buffer':
                 if (arg_typedef.base == 'string' or
                     arg_typedef.name == 'char_scalar'):
                     len_trim = c_attrs.get('len_trim', False)

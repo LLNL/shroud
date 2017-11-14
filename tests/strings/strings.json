@@ -218,7 +218,7 @@
             "_decl": "void returnChar(char_scalar * SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 18, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -387,7 +387,7 @@
             "_decl": "void passCharPtr(char * dest+intent(out)+len(Ndest), const char * src+intent(in)+len_trim(Lsrc))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 19, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -545,7 +545,7 @@
             "_decl": "void passCharPtrInOut(char * s+intent(inout)+len(Ns)+len_trim(Ls))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 20, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -650,7 +650,7 @@
             "_decl": "void getChar1(char * SH_F_rv+intent(out)+len(NSH_F_rv))+pure", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 21, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -810,7 +810,7 @@
             "_decl": "void getChar2(char * SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 23, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -923,7 +923,7 @@
             "_decl": "void getChar3(char * output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 24, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -995,7 +995,7 @@
             "_decl": "void getChar3(char * output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 25, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1092,7 +1092,7 @@
             "_decl": "void getString1(string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 26, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1258,7 +1258,7 @@
             "_decl": "void getString2(string & SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 28, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1377,7 +1377,7 @@
             "_decl": "void getString3(string & output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 29, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1450,7 +1450,7 @@
             "_decl": "void getString3(string & output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 30, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1559,7 +1559,7 @@
             "_decl": "void getString2_empty(string & SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 31, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1672,7 +1672,7 @@
             "_decl": "void getString5(string * SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 32, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1776,7 +1776,7 @@
             "_decl": "void getString6(string * output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 33, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1850,7 +1850,7 @@
             "_decl": "void getString6(string * output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 34, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1974,7 +1974,7 @@
             "_decl": "void acceptStringConstReference(const std::string & arg1+intent(in)+len_trim(Larg1))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 35, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -2110,7 +2110,7 @@
             "_decl": "void acceptStringReferenceOut(std::string & arg1+intent(out)+len(Narg1))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 36, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -2247,7 +2247,7 @@
             "_decl": "void acceptStringReference(std::string & arg1+intent(inout)+len(Narg1)+len_trim(Larg1))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 37, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -2379,7 +2379,7 @@
             "_decl": "void explicit1(char * name+intent(in)+len_trim(AAlen))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 38, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -2506,7 +2506,7 @@
             "_decl": "void explicit2(char * name+intent(out)+len(AAtrim))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 39, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {

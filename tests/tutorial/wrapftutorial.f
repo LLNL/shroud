@@ -576,7 +576,7 @@ contains
     end subroutine function3b
 
     ! const std::string Function4a(const std::string & arg1+intent(in), const std::string & arg2+intent(in))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=8
     function function4a(arg1, arg2) result(SH_rv)
         use iso_c_binding, only : C_CHAR, C_INT
@@ -595,7 +595,7 @@ contains
     end function function4a
 
     ! void Function4b(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string & output+intent(out)+len(Noutput))
-    ! string_to_buffer_and_len - string_to_buffer_and_len
+    ! arg_to_buffer - arg_to_buffer
     ! function_index=39
     subroutine function4b(arg1, arg2, output)
         use iso_c_binding, only : C_INT
@@ -653,7 +653,7 @@ contains
     end function function5_arg1_arg2
 
     ! void Function6(const std::string & name+intent(in))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=11
     subroutine function6_from_name(name)
         use iso_c_binding, only : C_INT
@@ -750,7 +750,7 @@ contains
     end subroutine function10_0
 
     ! void Function10(const std::string & name+intent(in), float arg2+intent(in)+value)
-    ! fortran_generic - string_to_buffer_and_len
+    ! fortran_generic - arg_to_buffer
     ! function_index=49
     subroutine function10_1_float(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT, C_INT
@@ -765,7 +765,7 @@ contains
     end subroutine function10_1_float
 
     ! void Function10(const std::string & name+intent(in), double arg2+intent(in)+value)
-    ! fortran_generic - string_to_buffer_and_len
+    ! fortran_generic - arg_to_buffer
     ! function_index=50
     subroutine function10_1_double(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -882,7 +882,7 @@ contains
     end subroutine useclass
 
     ! int vector_sum(const std::vector & arg+dimension(:)+intent(in)+template(int))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=23
     function vector_sum(arg) result(SH_rv)
         use iso_c_binding, only : C_INT, C_LONG
@@ -896,7 +896,7 @@ contains
     end function vector_sum
 
     ! void vector_iota(std::vector & arg+dimension(:)+intent(out)+template(int))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=24
     subroutine vector_iota(arg)
         use iso_c_binding, only : C_INT, C_LONG
@@ -909,7 +909,7 @@ contains
     end subroutine vector_iota
 
     ! void vector_increment(std::vector & arg+dimension(:)+intent(inout)+template(int))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=25
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LONG

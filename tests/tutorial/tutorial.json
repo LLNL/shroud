@@ -811,7 +811,7 @@
             "_decl": "void Function4a(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string * SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 37, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1047,7 +1047,7 @@
             "_decl": "void Function4b(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string & output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 38, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1165,7 +1165,7 @@
             "_decl": "void Function4b(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string & output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 39, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1582,7 +1582,7 @@
             "_decl": "void Function6(const std::string & name+intent(in)+len_trim(Lname))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 40, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "args": [
@@ -2448,7 +2448,7 @@
             "_decl": "void Function10(const std::string & name+intent(in)+len_trim(Lname), double arg2+intent(in)+value)", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 41, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "args": [
@@ -3555,7 +3555,7 @@
             "_decl": "int vector_sum(const std::vector & arg+dimension(:)+intent(in)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 42, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
             "args": [
                 {
@@ -3664,7 +3664,7 @@
             "_decl": "void vector_iota(std::vector & arg+dimension(:)+intent(out)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 43, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -3770,7 +3770,7 @@
             "_decl": "void vector_increment(std::vector & arg+dimension(:)+intent(inout)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 44, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -3875,7 +3875,7 @@
             "_decl": "void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 45, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {

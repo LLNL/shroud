@@ -985,7 +985,7 @@ class GenFunctions(object):
         ordered3 = []
         for method in ordered_functions:
             ordered3.append(method)
-            self.string_to_buffer_and_len(method, ordered3)
+            self.arg_to_buffer(method, ordered3)
 
         # Create multiple generic Fortran wrappers to call a
         # single C functions
@@ -1135,7 +1135,7 @@ class GenFunctions(object):
         except IndexError:
             pass
 
-    def string_to_buffer_and_len(self, node, ordered_functions):
+    def arg_to_buffer(self, node, ordered_functions):
         """Look for function which have implied arguments.
         This includes functions with string or vector arguments.
         If found then create a new C function that
@@ -1216,7 +1216,7 @@ class GenFunctions(object):
         ordered_functions.append(C_new)
         self.append_function_index(C_new)
 
-        C_new['_generated'] = 'string_to_buffer_and_len'
+        C_new['_generated'] = 'arg_to_buffer'
         C_new['_error_pattern_suffix'] = '_as_buffer'
         fmt = C_new['fmt']
         fmt.function_suffix = fmt.function_suffix + options.C_bufferify_suffix
