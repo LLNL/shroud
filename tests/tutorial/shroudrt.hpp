@@ -48,8 +48,6 @@
 extern "C" {
 #endif
 
-void shroud_FccCopy(char *a, int la, const char *s);
-
 #ifdef __cplusplus
 }  // extern "C"
 #endif

@@ -464,7 +464,7 @@ class Schema(object):
                         ),
                     intent_out_buf=dict(
                         cpp_local_var=True,
-                        cpp_header='shroudrt.hpp',
+                        c_helper='FccCopy',
                         pre_call=[
                             'char * {cpp_var} = new char [{c_var_len} + 1];',
                             ],
@@ -475,7 +475,7 @@ class Schema(object):
                         ),
                     intent_inout_buf=dict(
                         cpp_local_var=True,
-                        cpp_header='shroudrt.hpp',
+                        c_helper='FccCopy',
                         pre_call=[
                             'char * {cpp_var} = new char [{c_var_len} + 1];',
                             'std::strncpy({cpp_var}, {c_var}, {c_var_trim});',
@@ -487,7 +487,8 @@ class Schema(object):
                             ],
                         ),
                     result_buf=dict(
-                        cpp_header='<cstring> shroudrt.hpp',
+                        cpp_header='<cstring>',
+                        c_helper='FccCopy',
                         post_call=[
                             'if ({cpp_var} == NULL) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',
@@ -568,7 +569,6 @@ class Schema(object):
                     ),
                     intent_out=dict(
                         cpp_header='<cstring>',
-#                        cpp_header='shroudrt.hpp',
 #                        pre_call=[
 #                            'int {c_var_trim} = strlen({c_var});',
 #                            ],
@@ -602,7 +602,7 @@ class Schema(object):
                         ],
                     ),
                     intent_out_buf=dict(
-                        cpp_header='shroudrt.hpp',
+                        c_helper='FccCopy',
                         cpp_local_var=True,
                         pre_call=[
                             'std::string {cpp_var};'
@@ -612,7 +612,7 @@ class Schema(object):
                         ],
                     ),
                     intent_inout_buf=dict(
-                        cpp_header='shroudrt.hpp',
+                        c_helper='FccCopy',
                         cpp_local_var=True,
                         pre_call=[
                             'std::string {cpp_var}({c_var}, {c_var_trim});'
@@ -622,7 +622,8 @@ class Schema(object):
                         ],
                     ),
                     result_buf=dict(
-                        cpp_header='<cstring> shroudrt.hpp',
+                        cpp_header='<cstring>',
+                        c_helper='FccCopy',
                         post_call=[
                             'if ({cpp_var}.empty()) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',
@@ -716,6 +717,7 @@ class Schema(object):
                         ],
                     ),
                     result_buf=dict(
+                        c_helper='FccCopy',
                         post_call=[
                             'if ({cpp_var}.empty()) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',

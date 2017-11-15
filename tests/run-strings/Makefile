@@ -56,7 +56,6 @@ OBJS = \
     strings.o \
     wrapfstrings.o \
     wrapstrings.o \
-    shroudrt.o \
     fruit.o \
     main.o
 

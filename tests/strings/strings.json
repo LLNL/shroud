@@ -2641,7 +2641,7 @@
                     ]
                 }, 
                 "intent_inout_buf": {
-                    "cpp_header": "shroudrt.hpp", 
+                    "c_helper": "FccCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
                         "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
@@ -2654,7 +2654,7 @@
                     ]
                 }, 
                 "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
+                    "c_helper": "FccCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
                         "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
@@ -2665,7 +2665,8 @@
                     ]
                 }, 
                 "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
+                    "c_helper": "FccCopy", 
+                    "cpp_header": "<cstring>", 
                     "post_call": [
                         "if ({cpp_var} == NULL) {{", 
                         "  std::memset({c_var}, ' ', {c_var_len});", 
@@ -2886,7 +2887,7 @@
                     ]
                 }, 
                 "intent_inout_buf": {
-                    "cpp_header": "shroudrt.hpp", 
+                    "c_helper": "FccCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
                         "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
@@ -2906,7 +2907,7 @@
                     ]
                 }, 
                 "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
+                    "c_helper": "FccCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
                         "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
@@ -2916,7 +2917,8 @@
                     ]
                 }, 
                 "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
+                    "c_helper": "FccCopy", 
+                    "cpp_header": "<cstring>", 
                     "post_call": [
                         "if ({cpp_var}.empty()) {{", 
                         "  std::memset({c_var}, ' ', {c_var_len});", 
@@ -2987,6 +2989,7 @@
                     ]
                 }, 
                 "result_buf": {
+                    "c_helper": "FccCopy", 
                     "post_call": [
                         "if ({cpp_var}.empty()) {{", 
                         "  std::memset({c_var}, ' ', {c_var_len});", 
@@ -3030,7 +3033,7 @@
                     ]
                 }, 
                 "intent_inout_buf": {
-                    "cpp_header": "shroudrt.hpp", 
+                    "c_helper": "FccCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
                         "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
@@ -3050,7 +3053,7 @@
                     ]
                 }, 
                 "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
+                    "c_helper": "FccCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
                         "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
@@ -3060,7 +3063,8 @@
                     ]
                 }, 
                 "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
+                    "c_helper": "FccCopy", 
+                    "cpp_header": "<cstring>", 
                     "post_call": [
                         "if ({cpp_var}.empty()) {{", 
                         "  std::memset({c_var}, ' ', {c_var_len});", 
@@ -3131,6 +3135,7 @@
                     ]
                 }, 
                 "result_buf": {
+                    "c_helper": "FccCopy", 
                     "post_call": [
                         "if ({cpp_var}.empty()) {{", 
                         "  std::memset({c_var}, ' ', {c_var_len});", 

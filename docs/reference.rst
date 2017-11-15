@@ -756,9 +756,10 @@ c_statements
            Usually a C++ constructor is involved.
            This sets *cpp_var* is set to ``SH_{c_var}``.
 
-c_return_code
-    Fortran code used to call function and assign the return value.
-    Defaults to *None*.
+        c_helper
+           A blank delimited list of helper routines to add.
+           These functions are defined in whelper.py.
+           There is no current way to add additional functions.
 
 f_c_args
     List of argument names to F_C routine.

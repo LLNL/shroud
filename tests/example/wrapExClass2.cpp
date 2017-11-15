@@ -44,8 +44,16 @@
 #include <cstring>
 #include <string>
 #include "ExClass2.hpp"
-#include "shroudrt.hpp"
 #include "sidre/SidreWrapperHelpers.hpp"
+
+static void shroud_FccCopy(char *a, int la, const char *s)
+{
+   int ls,nm;
+   ls = strlen(s);
+   nm = ls < la ? ls : la;
+   memcpy(a,s,nm);
+   if(la > nm) { memset(a+nm,' ',la-nm);}
+}
 
 namespace example {
 namespace nested {

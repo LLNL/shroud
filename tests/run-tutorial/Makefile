@@ -57,7 +57,6 @@ OBJS = \
     wrapftutorial.o \
     wrapTutorial.o \
     wrapClass1.o \
-    shroudrt.o \
     fruit.o \
     main.o
 

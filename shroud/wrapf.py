@@ -1090,13 +1090,12 @@ class Wrapf(util.WrapperMixin):
         # (They are duplicated in each module)
         helper_source = []
         if self.f_helper:
-            find_all_helpers(self.f_helper)
-
+            helperdict = whelpers.find_all_helpers('f', self.f_helper)
             helpers = sorted(self.f_helper)
             private_names = []
             interface_lines = []
             for helper in helpers:
-                helper_info = whelpers.FHelpers[helper]
+                helper_info = helperdict[helper]
                 private_names.extend(helper_info.get('private', []))
                 lines = helper_info.get('interface', None)
                 if lines:
@@ -1132,22 +1131,3 @@ class Wrapf(util.WrapperMixin):
         """ Write C helper functions that will be used by the wrappers.
         """
         pass
-
-
-def find_all_helpers(helpers, check=None):
-    """Find all helper functions recursively.
-    A helper function is required by some argument/result conversions.
-    """
-
-    if check is None:
-        # do all top level helpers
-        # Copy initial keys since helpers may change
-        keys = list(helpers.keys())
-        for check in keys:
-            for name in whelpers.FHelpers[check].get('f_helper', []):
-                find_all_helpers(helpers, name)
-    else:
-        if check not in helpers:
-            helpers[check] = True
-            for name in whelpers.FHelpers[check].get('f_helper', []):
-                find_all_helpers(helpers, name)

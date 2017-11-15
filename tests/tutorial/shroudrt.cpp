@@ -52,15 +52,6 @@ extern "C" {
 #endif
 /* *INDENT-ON* */
 
-void shroud_FccCopy(char *a, int la, const char *s)
-{
-   int ls,nm;
-   ls = strlen(s);
-   nm = ls < la ? ls : la;
-   memcpy(a,s,nm);
-   if(la > nm) { memset(a+nm,' ',la-nm);}
-}
-
 // equivalent to C_LOC
 // called from Fortran
 // https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53945

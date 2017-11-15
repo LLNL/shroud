@@ -80,6 +80,7 @@ class Wrapc(util.WrapperMixin):
         self.header_impl_include = {}
         self.header_proto_c = []
         self.impl = []
+        self.c_helper = {}
 
     def _c_type(self, lang, arg):
         """
@@ -234,6 +235,19 @@ class Wrapc(util.WrapperMixin):
         output = []
         output.append('// ' + fname)
 
+        # Insert any helper functions needed
+        helper_source = []
+        if self.c_helper:
+            helperdict = whelpers.find_all_helpers('c', self.c_helper)
+            helpers = sorted(self.c_helper)
+            for helper in helpers:
+                helper_info = helperdict[helper]
+                if 'cpp_header' in helper_info:
+                    for include in helper_info['cpp_header'].split():
+                        self.header_impl_include[include] = True
+                if 'source' in helper_info:
+                    helper_source.append(helper_info['source'])
+
         output.append('#include "%s"' % hname)
 
         # Use headers from class if they exist or else library
@@ -248,6 +262,8 @@ class Wrapc(util.WrapperMixin):
         if self.header_impl_include:
             headers = self.header_impl_include.keys()
             self.write_headers(headers, output)
+
+        output.extend(helper_source)
 
         self.namespace(library, cls, 'begin', output)
         output.append('')
@@ -498,6 +514,10 @@ class Wrapc(util.WrapperMixin):
                 for cmd in cmd_list:
                     append_format(post_call, cmd, fmt_arg)
 
+            if 'c_helper' in intent_blk:
+                for helper in intent_blk['c_helper'].split():
+                    self.c_helper[helper] = True
+
             cpp_header = intent_blk.get('cpp_header', None)
             # include any dependent header in generated source
             if cpp_header:
@@ -607,7 +627,10 @@ class Wrapc(util.WrapperMixin):
                     cmd_list = intent_blk.get('post_call', [])
                     for cmd in cmd_list:
                         append_format(post_call, cmd, fmt_result)
-                    # XXX release rv is necessary
+                    # XXX release rv if necessary
+                    if 'c_helper' in intent_blk:
+                        for helper in intent_blk['c_helper'].split():
+                            self.c_helper[helper] = True
 
                 if subprogram == 'function':
                     # Note: A C function may be converted into a Fortran subroutine subprogram

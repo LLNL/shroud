@@ -44,8 +44,16 @@
 #include "wrapstrings.h"
 #include <cstring>
 #include <string>
-#include "shroudrt.hpp"
 #include "strings.hpp"
+
+static void shroud_FccCopy(char *a, int la, const char *s)
+{
+   int ls,nm;
+   ls = strlen(s);
+   nm = ls < la ? ls : la;
+   memcpy(a,s,nm);
+   if(la > nm) { memset(a+nm,' ',la-nm);}
+}
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

@@ -41,6 +41,36 @@
 Helper functions for C and Fortran wrappers.
 """
 
+
+def find_all_helpers(mode, helpers, check=None):
+    """Find all helper functions recursively.
+    A helper function is required by some argument/result conversions.
+
+    Return helper dictionary used.
+    """
+    if mode =='c':
+        helpdict = CHelpers
+    elif mode == 'f':
+        helpdict = FHelpers
+    else:
+        raise RuntimeError("Unexpected mode in find_all_helpers")
+
+    if check is None:
+        # do all top level helpers
+        # Copy initial keys since helpers may change
+        keys = list(helpers.keys())
+        for check in keys:
+            for name in helpdict[check].get('f_helper', []):
+                find_all_helpers(mode, helpers, name)
+    else:
+        if check not in helpers:
+            helpers[check] = True
+            for name in helpdict[check].get('f_helper', []):
+                find_all_helpers(mode, helpers, name)
+
+    return helpdict
+
+
 FccHeaders = """
 #ifndef SHROUDRT_HPP_
 #define SHROUDRT_HPP_
@@ -48,8 +78,6 @@ FccHeaders = """
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-void shroud_FccCopy(char *a, int la, const char *s);
 
 #ifdef __cplusplus
 }  // extern "C"
@@ -75,15 +103,6 @@ extern "C" {
 #include <string.h>
 #endif
 /* *INDENT-ON* */
-
-void shroud_FccCopy(char *a, int la, const char *s)
-{
-   int ls,nm;
-   ls = strlen(s);
-   nm = ls < la ? ls : la;
-   memcpy(a,s,nm);
-   if(la > nm) { memset(a+nm,' ',la-nm);}
-}
 
 // equivalent to C_LOC
 // called from Fortran
@@ -115,14 +134,40 @@ void shroud_c_loc_(void * addr, void ** out)
 /* *INDENT-ON* */"""
 
 #
+# C helper functions which may be added to a implementation file.
+#
+# c_helpers = Dictionary of helpers needed by this helper
+# cpp_header  = Blank delimited list of header files to #include.
+#               when wrapping a C++ library.
+# c_header    = Blank delimited list of header files to #include
+#               when wrapping a C library.
+# source      = Code inserted before any wrappers.
+#               The functions should be file static.
+
+CHelpers = dict(
+    FccCopy=dict(
+        cpp_header='<cstring>',
+        c_header='<string.h>',
+        source="""
+static void shroud_FccCopy(char *a, int la, const char *s)
+{
+   int ls,nm;
+   ls = strlen(s);
+   nm = ls < la ? ls : la;
+   memcpy(a,s,nm);
+   if(la > nm) { memset(a+nm,' ',la-nm);}
+}"""
+        )
+    )
+
+#
 # Fortran helper functions which may be added to a module.
 #
 # f_helpers = dictionary of helpers needed by this helper
 # private   = names for PRIVATE statement 
 # interface = code for INTERFACE
 # source    = code for CONTAINS
-#
-#
+
 FHelpers = dict(
     fstr=dict(
         f_helper=dict(fstr_ptr=True, fstr_arr=True),
