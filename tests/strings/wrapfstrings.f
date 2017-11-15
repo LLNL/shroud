@@ -319,7 +319,7 @@ module strings_mod
         ! splicer end additional_interfaces
     end interface
 
-    private fstr, fstr_ptr, fstr_arr, strlen_arr, strlen_ptr
+    private fstr, fstr_arr, fstr_ptr, strlen_arr, strlen_ptr
 
     interface fstr
       module procedure fstr_ptr, fstr_arr
@@ -629,6 +629,17 @@ contains
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
+    ! Convert a null-terminated array of characters to a Fortran string.
+    function fstr_arr(s) result(fs)
+      use, intrinsic :: iso_c_binding, only : c_char, c_null_char
+      character(kind=c_char, len=1), intent(in) :: s(*)
+      character(kind=c_char, len=strlen_arr(s)) :: fs
+      integer :: i
+      do i = 1, len(fs)
+         fs(i:i) = s(i)
+      enddo
+    end function fstr_arr
+
     ! Convert a null-terminated C "char *" pointer to a Fortran string.
     function fstr_ptr(s) result(fs)
       use, intrinsic :: iso_c_binding, only: c_char, c_ptr, c_f_pointer
@@ -641,17 +652,6 @@ contains
          fs(i:i) = cptr(i)
       enddo
     end function fstr_ptr
-
-    ! Convert a null-terminated array of characters to a Fortran string.
-    function fstr_arr(s) result(fs)
-      use, intrinsic :: iso_c_binding, only : c_char, c_null_char
-      character(kind=c_char, len=1), intent(in) :: s(*)
-      character(kind=c_char, len=strlen_arr(s)) :: fs
-      integer :: i
-      do i = 1, len(fs)
-         fs(i:i) = s(i)
-      enddo
-    end function fstr_arr
 
     ! Count the characters in a null-terminated array.
     pure function strlen_arr(s)

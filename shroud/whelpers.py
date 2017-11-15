@@ -125,12 +125,17 @@ void shroud_c_loc_(void * addr, void ** out)
 #
 FHelpers = dict(
     fstr=dict(
-        f_helper=dict(strlen_ptr=True, strlen_arr=True),
-        private=['fstr', 'fstr_ptr', 'fstr_arr'],
+        f_helper=dict(fstr_ptr=True, fstr_arr=True),
+        private=['fstr'],
         interface="""
 interface fstr
   module procedure fstr_ptr, fstr_arr
 end interface""",
+        ),
+
+    fstr_ptr=dict(
+        f_helper=dict(strlen_ptr=True),
+        private=['fstr_ptr'],
         source="""
 ! Convert a null-terminated C "char *" pointer to a Fortran string.
 function fstr_ptr(s) result(fs)
@@ -143,8 +148,13 @@ function fstr_ptr(s) result(fs)
   do i=1, len(fs)
      fs(i:i) = cptr(i)
   enddo
-end function fstr_ptr
+end function fstr_ptr"""
+        ),
 
+    fstr_arr=dict(
+        f_helper=dict(strlen_arr=True),
+        private=['fstr_arr'],
+        source="""
 ! Convert a null-terminated array of characters to a Fortran string.
 function fstr_arr(s) result(fs)
   use, intrinsic :: iso_c_binding, only : c_char, c_null_char
@@ -154,7 +164,7 @@ function fstr_arr(s) result(fs)
   do i = 1, len(fs)
      fs(i:i) = s(i)
   enddo
-end function fstr_arr""",
+end function fstr_arr"""
         ),
 
     strlen_arr=dict(
