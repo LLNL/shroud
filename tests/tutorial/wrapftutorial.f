@@ -468,11 +468,7 @@ module tutorial_mod
         module procedure overload1_5
     end interface overload1
 
-    private fstr, fstr_arr, fstr_ptr, strlen_arr, strlen_ptr
-
-    interface fstr
-      module procedure fstr_ptr, fstr_arr
-    end interface
+    private fstr_ptr, strlen_ptr
 
     interface
        pure function strlen_ptr(s) result(result) bind(c,name="strlen")
@@ -927,7 +923,7 @@ contains
         use iso_c_binding, only : C_CHAR
         character(kind=C_CHAR, len=strlen_ptr(c_last_function_called())) :: SH_rv
         ! splicer begin function.last_function_called
-        SH_rv = fstr(c_last_function_called())
+        SH_rv = fstr_ptr(c_last_function_called())
         ! splicer end function.last_function_called
     end function last_function_called
 
@@ -958,17 +954,6 @@ contains
         endif
     end function class1_ne
 
-    ! Convert a null-terminated array of characters to a Fortran string.
-    function fstr_arr(s) result(fs)
-      use, intrinsic :: iso_c_binding, only : c_char, c_null_char
-      character(kind=c_char, len=1), intent(in) :: s(*)
-      character(kind=c_char, len=strlen_arr(s)) :: fs
-      integer :: i
-      do i = 1, len(fs)
-         fs(i:i) = s(i)
-      enddo
-    end function fstr_arr
-
     ! Convert a null-terminated C "char *" pointer to a Fortran string.
     function fstr_ptr(s) result(fs)
       use, intrinsic :: iso_c_binding, only: c_char, c_ptr, c_f_pointer
@@ -981,18 +966,5 @@ contains
          fs(i:i) = cptr(i)
       enddo
     end function fstr_ptr
-
-    ! Count the characters in a null-terminated array.
-    pure function strlen_arr(s)
-      use, intrinsic :: iso_c_binding, only : c_char, c_null_char
-      character(kind=c_char, len=1), intent(in) :: s(*)
-      integer :: i, strlen_arr
-      i=1
-      do
-         if (s(i) == c_null_char) exit
-         i = i+1
-      enddo
-      strlen_arr = i-1
-    end function strlen_arr
 
 end module tutorial_mod

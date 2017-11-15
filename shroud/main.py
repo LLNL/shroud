@@ -505,9 +505,9 @@ class Schema(object):
                 f_statements=dict(
                     result_pure=dict(
                         need_wrapper=True,
-                        f_helper='fstr',
+                        f_helper='fstr_ptr',
                         call=[
-                            '{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))',
+                            '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))',
                             ],
                         )
                     ),
@@ -640,9 +640,9 @@ class Schema(object):
                 f_statements=dict(
                     result_pure=dict(
                         need_wrapper=True,
-                        f_helper='fstr',
+                        f_helper='fstr_ptr',
                         call=[
-                            '{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))',
+                            '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))',
                             ],
                         )
                     ),

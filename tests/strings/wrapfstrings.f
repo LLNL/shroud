@@ -319,11 +319,7 @@ module strings_mod
         ! splicer end additional_interfaces
     end interface
 
-    private fstr, fstr_arr, fstr_ptr, strlen_arr, strlen_ptr
-
-    interface fstr
-      module procedure fstr_ptr, fstr_arr
-    end interface
+    private fstr_ptr, strlen_ptr
 
     interface
        pure function strlen_ptr(s) result(result) bind(c,name="strlen")
@@ -402,7 +398,7 @@ contains
         use iso_c_binding, only : C_CHAR
         character(kind=C_CHAR, len=strlen_ptr(c_get_char1())) :: SH_rv
         ! splicer begin function.get_char1
-        SH_rv = fstr(c_get_char1())
+        SH_rv = fstr_ptr(c_get_char1())
         ! splicer end function.get_char1
     end function get_char1
 
@@ -450,7 +446,7 @@ contains
         use iso_c_binding, only : C_CHAR
         character(kind=C_CHAR, len=strlen_ptr(c_get_string1())) :: SH_rv
         ! splicer begin function.get_string1
-        SH_rv = fstr(c_get_string1())
+        SH_rv = fstr_ptr(c_get_string1())
         ! splicer end function.get_string1
     end function get_string1
 
@@ -629,17 +625,6 @@ contains
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
-    ! Convert a null-terminated array of characters to a Fortran string.
-    function fstr_arr(s) result(fs)
-      use, intrinsic :: iso_c_binding, only : c_char, c_null_char
-      character(kind=c_char, len=1), intent(in) :: s(*)
-      character(kind=c_char, len=strlen_arr(s)) :: fs
-      integer :: i
-      do i = 1, len(fs)
-         fs(i:i) = s(i)
-      enddo
-    end function fstr_arr
-
     ! Convert a null-terminated C "char *" pointer to a Fortran string.
     function fstr_ptr(s) result(fs)
       use, intrinsic :: iso_c_binding, only: c_char, c_ptr, c_f_pointer
@@ -652,18 +637,5 @@ contains
          fs(i:i) = cptr(i)
       enddo
     end function fstr_ptr
-
-    ! Count the characters in a null-terminated array.
-    pure function strlen_arr(s)
-      use, intrinsic :: iso_c_binding, only : c_char, c_null_char
-      character(kind=c_char, len=1), intent(in) :: s(*)
-      integer :: i, strlen_arr
-      i=1
-      do
-         if (s(i) == c_null_char) exit
-         i = i+1
-      enddo
-      strlen_arr = i-1
-    end function strlen_arr
 
 end module strings_mod

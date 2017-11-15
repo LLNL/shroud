@@ -3848,7 +3848,7 @@
                 "F_arg_c_call": "", 
                 "F_arg_c_call_tab": "\t", 
                 "F_arguments": "", 
-                "F_call_code": "SH_rv = fstr(c_last_function_called(\t))", 
+                "F_call_code": "SH_rv = fstr_ptr(c_last_function_called(\t))", 
                 "F_name_function": "last_function_called", 
                 "F_name_generic": "last_function_called", 
                 "F_name_impl": "last_function_called", 
@@ -4220,9 +4220,9 @@
             "f_statements": {
                 "result_pure": {
                     "call": [
-                        "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))"
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
                     ], 
-                    "f_helper": "fstr", 
+                    "f_helper": "fstr_ptr", 
                     "need_wrapper": true
                 }
             }, 
@@ -4473,9 +4473,9 @@
             "f_statements": {
                 "result_pure": {
                     "call": [
-                        "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))"
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
                     ], 
-                    "f_helper": "fstr", 
+                    "f_helper": "fstr_ptr", 
                     "need_wrapper": true
                 }
             }, 
@@ -4617,9 +4617,9 @@
             "f_statements": {
                 "result_pure": {
                     "call": [
-                        "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))"
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
                     ], 
-                    "f_helper": "fstr", 
+                    "f_helper": "fstr_ptr", 
                     "need_wrapper": true
                 }
             }, 
