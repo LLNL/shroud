@@ -623,15 +623,24 @@
                 "C_prototype": "", 
                 "C_return_code": "return SH_rv;", 
                 "C_return_type": "const char *", 
+                "F_C_call": "c_get_char1", 
                 "F_C_name": "c_get_char1", 
+                "F_arg_c_call": "", 
+                "F_arg_c_call_tab": "\t", 
+                "F_arguments": "", 
+                "F_call_code": "SH_rv = fstr(c_get_char1(\t))", 
+                "F_name_function": "get_char1", 
+                "F_name_generic": "get_char1", 
+                "F_name_impl": "get_char1", 
+                "F_result_clause": " result(SH_rv)", 
+                "F_subprogram": "function", 
                 "PY_name_impl": "PY_get_char1", 
                 "c_const": "const ", 
+                "c_var_len": "strlen_ptr(c_get_char1(\t))", 
                 "function_name": "getChar1", 
                 "underscore_name": "get_char1"
             }, 
-            "options": {
-                "wrap_fortran": false
-            }, 
+            "options": {}, 
             "result": {
                 "attrs": {
                     "const": true, 
@@ -715,48 +724,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 4, 
-            "_decl": "const string_result_fstr * getChar1()+pure", 
-            "_function_index": 22, 
-            "_subprogram": "function", 
-            "args": [], 
-            "attrs": {
-                "pure": true
-            }, 
-            "decl": "const char * getChar1()  +pure", 
-            "doxygen": {
-                "brief": "return a 'const char *' as character(*)"
-            }, 
-            "fmt": {
-                "F_C_call": "c_get_char1", 
-                "F_arg_c_call": "", 
-                "F_arg_c_call_tab": "\t", 
-                "F_arguments": "", 
-                "F_call_code": "SH_rv = fstr(c_get_char1(\t))", 
-                "F_name_function": "get_char1", 
-                "F_name_generic": "get_char1", 
-                "F_name_impl": "get_char1", 
-                "F_result_clause": " result(SH_rv)", 
-                "F_subprogram": "function", 
-                "c_var_len": "strlen_ptr(c_get_char1(\t))"
-            }, 
-            "options": {
-                "wrap_c": false, 
-                "wrap_fortran": true, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
-                "attrs": {
-                    "const": true, 
-                    "ptr": true
-                }, 
-                "name": "getChar1", 
-                "type": "string_result_fstr"
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 23, 
+            "_PTR_F_C_index": 22, 
             "_decl": "const char * getChar2()", 
             "_function_index": 5, 
             "_subprogram": "function", 
@@ -809,7 +777,7 @@
             "_PTR_C_CPP_index": 5, 
             "_decl": "void getChar2(char * SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 23, 
+            "_function_index": 22, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -922,7 +890,7 @@
             "_PTR_C_CPP_index": 6, 
             "_decl": "void getChar3(char * output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 24, 
+            "_function_index": 23, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -991,10 +959,10 @@
         }, 
         {
             "_PTR_C_CPP_index": 6, 
-            "_PTR_F_C_index": 24, 
+            "_PTR_F_C_index": 23, 
             "_decl": "void getChar3(char * output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 25, 
+            "_function_index": 24, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -1062,15 +1030,24 @@
                 "C_prototype": "", 
                 "C_return_code": "return XSH_rv;", 
                 "C_return_type": "const char *", 
+                "F_C_call": "c_get_string1", 
                 "F_C_name": "c_get_string1", 
+                "F_arg_c_call": "", 
+                "F_arg_c_call_tab": "\t", 
+                "F_arguments": "", 
+                "F_call_code": "SH_rv = fstr(c_get_string1(\t))", 
+                "F_name_function": "get_string1", 
+                "F_name_generic": "get_string1", 
+                "F_name_impl": "get_string1", 
+                "F_result_clause": " result(SH_rv)", 
+                "F_subprogram": "function", 
                 "PY_name_impl": "PY_get_string1", 
                 "c_const": "const ", 
+                "c_var_len": "strlen_ptr(c_get_string1(\t))", 
                 "function_name": "getString1", 
                 "underscore_name": "get_string1"
             }, 
-            "options": {
-                "wrap_fortran": false
-            }, 
+            "options": {}, 
             "result": {
                 "attrs": {
                     "const": true, 
@@ -1091,7 +1068,7 @@
             "_PTR_C_CPP_index": 7, 
             "_decl": "void getString1(string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 26, 
+            "_function_index": 25, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -1157,49 +1134,8 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 7, 
-            "_decl": "const string_result_fstr & getString1()+pure", 
-            "_function_index": 27, 
-            "_subprogram": "function", 
-            "args": [], 
-            "attrs": {
-                "pure": true
-            }, 
-            "decl": "const string& getString1()  +pure", 
-            "doxygen": {
-                "brief": "return a 'const string&' as character(*)"
-            }, 
-            "fmt": {
-                "F_C_call": "c_get_string1", 
-                "F_arg_c_call": "", 
-                "F_arg_c_call_tab": "\t", 
-                "F_arguments": "", 
-                "F_call_code": "SH_rv = fstr(c_get_string1(\t))", 
-                "F_name_function": "get_string1", 
-                "F_name_generic": "get_string1", 
-                "F_name_impl": "get_string1", 
-                "F_result_clause": " result(SH_rv)", 
-                "F_subprogram": "function", 
-                "c_var_len": "strlen_ptr(c_get_string1(\t))"
-            }, 
-            "options": {
-                "wrap_c": false, 
-                "wrap_fortran": true, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
-                "attrs": {
-                    "const": true, 
-                    "reference": true
-                }, 
-                "name": "getString1", 
-                "type": "string_result_fstr"
-            }
-        }, 
-        {
             "C_error_pattern": "C_invalid_name", 
-            "_PTR_F_C_index": 28, 
+            "_PTR_F_C_index": 26, 
             "_decl": "const string & getString2()", 
             "_function_index": 8, 
             "_subprogram": "function", 
@@ -1257,7 +1193,7 @@
             "_PTR_C_CPP_index": 8, 
             "_decl": "void getString2(string & SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 28, 
+            "_function_index": 26, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -1376,7 +1312,7 @@
             "_PTR_C_CPP_index": 9, 
             "_decl": "void getString3(string & output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 29, 
+            "_function_index": 27, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -1446,10 +1382,10 @@
         {
             "C_error_pattern": "C_invalid_name", 
             "_PTR_C_CPP_index": 9, 
-            "_PTR_F_C_index": 29, 
+            "_PTR_F_C_index": 27, 
             "_decl": "void getString3(string & output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 30, 
+            "_function_index": 28, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -1500,7 +1436,7 @@
         }, 
         {
             "C_error_pattern": "C_invalid_name", 
-            "_PTR_F_C_index": 31, 
+            "_PTR_F_C_index": 29, 
             "_decl": "const string & getString2_empty()", 
             "_function_index": 10, 
             "_subprogram": "function", 
@@ -1558,7 +1494,7 @@
             "_PTR_C_CPP_index": 10, 
             "_decl": "void getString2_empty(string & SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 31, 
+            "_function_index": 29, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -1628,7 +1564,7 @@
         }, 
         {
             "C_error_pattern": "C_invalid_name", 
-            "_PTR_F_C_index": 32, 
+            "_PTR_F_C_index": 30, 
             "_decl": "const string getString5()", 
             "_function_index": 11, 
             "_subprogram": "function", 
@@ -1671,7 +1607,7 @@
             "_PTR_C_CPP_index": 11, 
             "_decl": "void getString5(string * SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 32, 
+            "_function_index": 30, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -1775,7 +1711,7 @@
             "_PTR_C_CPP_index": 12, 
             "_decl": "void getString6(string * output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 33, 
+            "_function_index": 31, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -1846,10 +1782,10 @@
         {
             "C_error_pattern": "C_invalid_name", 
             "_PTR_C_CPP_index": 12, 
-            "_PTR_F_C_index": 33, 
+            "_PTR_F_C_index": 31, 
             "_decl": "void getString6(string * output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 34, 
+            "_function_index": 32, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -1900,7 +1836,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 35, 
+            "_PTR_F_C_index": 33, 
             "_decl": "void acceptStringConstReference(const std::string & arg1+intent(in))", 
             "_function_index": 13, 
             "_subprogram": "subroutine", 
@@ -1973,7 +1909,7 @@
             "_PTR_C_CPP_index": 13, 
             "_decl": "void acceptStringConstReference(const std::string & arg1+intent(in)+len_trim(Larg1))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 35, 
+            "_function_index": 33, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -2033,7 +1969,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 36, 
+            "_PTR_F_C_index": 34, 
             "_decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))", 
             "_function_index": 14, 
             "_subprogram": "subroutine", 
@@ -2109,7 +2045,7 @@
             "_PTR_C_CPP_index": 14, 
             "_decl": "void acceptStringReferenceOut(std::string & arg1+intent(out)+len(Narg1))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 36, 
+            "_function_index": 34, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -2170,7 +2106,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 37, 
+            "_PTR_F_C_index": 35, 
             "_decl": "void acceptStringReference(std::string & arg1+intent(inout))", 
             "_function_index": 15, 
             "_subprogram": "subroutine", 
@@ -2246,7 +2182,7 @@
             "_PTR_C_CPP_index": 15, 
             "_decl": "void acceptStringReference(std::string & arg1+intent(inout)+len(Narg1)+len_trim(Larg1))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 37, 
+            "_function_index": 35, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -2308,7 +2244,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 38, 
+            "_PTR_F_C_index": 36, 
             "_decl": "void explicit1(char * name+intent(in)+len_trim(AAlen))", 
             "_function_index": 16, 
             "_subprogram": "subroutine", 
@@ -2378,7 +2314,7 @@
             "_PTR_C_CPP_index": 16, 
             "_decl": "void explicit1(char * name+intent(in)+len_trim(AAlen))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 38, 
+            "_function_index": 36, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -2435,7 +2371,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 39, 
+            "_PTR_F_C_index": 37, 
             "_decl": "void explicit2(char * name+intent(out)+len(AAtrim))", 
             "_function_index": 17, 
             "_subprogram": "subroutine", 
@@ -2505,7 +2441,7 @@
             "_PTR_C_CPP_index": 17, 
             "_decl": "void explicit2(char * name+intent(out)+len(AAtrim))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 39, 
+            "_function_index": 37, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
@@ -2747,6 +2683,15 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
+            "f_statements": {
+                "result_pure": {
+                    "call": [
+                        "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))"
+                    ], 
+                    "f_helper": "fstr", 
+                    "need_wrapper": true
+                }
+            }, 
             "f_type": "character(*)"
         }, 
         "char_scalar": {
@@ -2991,6 +2936,15 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
+            "f_statements": {
+                "result_pure": {
+                    "call": [
+                        "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))"
+                    ], 
+                    "f_helper": "fstr", 
+                    "need_wrapper": true
+                }
+            }, 
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
@@ -3126,103 +3080,15 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
-            "f_type": "character(*)", 
-            "py_statements": {
-                "intent_in": {
-                    "cpp_local_var": true, 
-                    "post_parse": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }
-            }
-        }, 
-        "string_result_fstr": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TSTRING", 
-            "PY_ctor": "PyString_FromString({c_var})", 
-            "PY_format": "s", 
-            "base": "string", 
-            "c_statements": {
-                "intent_in": {
-                    "cpp_local_var": true, 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }, 
-                "intent_in_buf": {
-                    "cpp_local_var": true, 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
-                    ]
-                }, 
-                "intent_inout": {
-                    "cpp_header": "<cstring>", 
-                    "cpp_local_var": true, 
-                    "post_call": [
-                        "strcpy({c_var}, {cpp_val});"
+            "f_statements": {
+                "result_pure": {
+                    "call": [
+                        "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))"
                     ], 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }, 
-                "intent_inout_buf": {
-                    "cpp_header": "shroudrt.hpp", 
-                    "cpp_local_var": true, 
-                    "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
-                    ], 
-                    "pre_call": [
-                        "std::string {cpp_var}({c_var}, {c_var_trim});"
-                    ]
-                }, 
-                "intent_out": {
-                    "cpp_header": "<cstring>", 
-                    "cpp_local_var": true, 
-                    "post_call": [
-                        "strcpy({c_var}, {cpp_val});"
-                    ], 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var};"
-                    ]
-                }, 
-                "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
-                    "cpp_local_var": true, 
-                    "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
-                    ], 
-                    "pre_call": [
-                        "std::string {cpp_var};"
-                    ]
-                }, 
-                "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
-                    "post_call": [
-                        "if ({cpp_var}.empty()) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
-                        "}} else {{", 
-                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "}}"
-                    ]
+                    "f_helper": "fstr", 
+                    "need_wrapper": true
                 }
             }, 
-            "c_type": "char", 
-            "cpp_header": "<string>", 
-            "cpp_to_c": "{cpp_var}.c_str()", 
-            "cpp_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            }, 
-            "f_c_type": "character(kind=C_CHAR)", 
-            "f_helper": {
-                "f_return_code": {
-                    "fstr": true
-                }
-            }, 
-            "f_return_code": "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))", 
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {

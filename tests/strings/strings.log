@@ -45,17 +45,15 @@ C-interface, Fortran function void passCharPtr(char * dest+intent(out), const ch
 C-interface function void passCharPtr(char * dest+intent(out)+len(Ndest), const char * src+intent(in)+len_trim(Lsrc))
 C-interface, Fortran function void passCharPtrInOut(char * s+intent(inout))
 C-interface function void passCharPtrInOut(char * s+intent(inout)+len(Ns)+len_trim(Ls))
-C-interface function const char * getChar1()+pure
+C-interface, Fortran function const char * getChar1()+pure
 C-interface function void getChar1(char * SH_F_rv+intent(out)+len(NSH_F_rv))+pure
-Fortran function const string_result_fstr * getChar1()+pure
 C-interface, Fortran function const char * getChar2()
 C-interface function void getChar2(char * SH_F_rv+intent(out)+len(NSH_F_rv))
 C-interface function const char * getChar3()
 C-interface function void getChar3(char * output+intent(out)+len(Noutput))
 Fortran function void getChar3(char * output+intent(out)+len(Noutput))
-C-interface function const string & getString1()+pure
+C-interface, Fortran function const string & getString1()+pure
 C-interface function void getString1(string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
-Fortran function const string_result_fstr & getString1()+pure
 C-interface, Fortran function const string & getString2()
 C-interface function void getString2(string & SH_F_rv+intent(out)+len(NSH_F_rv))
 C-interface function const string & getString3()

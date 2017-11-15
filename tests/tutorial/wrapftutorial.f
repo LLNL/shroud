@@ -721,7 +721,7 @@ contains
 
     ! void Function9(float arg+intent(in)+value)
     ! fortran_generic
-    ! function_index=47
+    ! function_index=46
     subroutine function9_float(arg)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
         real(C_FLOAT), value, intent(IN) :: arg
@@ -732,7 +732,7 @@ contains
 
     ! void Function9(double arg+intent(in)+value)
     ! fortran_generic
-    ! function_index=48
+    ! function_index=47
     subroutine function9_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
@@ -751,7 +751,7 @@ contains
 
     ! void Function10(const std::string & name+intent(in), float arg2+intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    ! function_index=49
+    ! function_index=48
     subroutine function10_1_float(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT, C_INT
         character(*), intent(IN) :: name
@@ -766,7 +766,7 @@ contains
 
     ! void Function10(const std::string & name+intent(in), double arg2+intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    ! function_index=50
+    ! function_index=49
     subroutine function10_1_double(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
         character(*), intent(IN) :: name
@@ -921,8 +921,8 @@ contains
         ! splicer end function.vector_increment
     end subroutine vector_increment
 
-    ! const string_result_fstr & LastFunctionCalled()+pure
-    ! function_index=46
+    ! const std::string & LastFunctionCalled()+pure
+    ! function_index=26
     function last_function_called() result(SH_rv)
         use iso_c_binding, only : C_CHAR
         character(kind=C_CHAR, len=strlen_ptr(c_last_function_called())) :: SH_rv

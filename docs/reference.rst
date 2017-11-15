@@ -177,7 +177,7 @@ C_prefix
 
 F_C_prefix
     Prefix for Fortran name for C wrapper.  Defaults to ``c_``.
-    Set from **options** and defaults to `c_`
+    Set from **options** and defaults to ``c_``
 
 
 
@@ -830,7 +830,7 @@ f_to_c
 
 f_statement
     A nested dictionary of code template to add.
-    The first layer is *intent_in*, *intent_out*, *intent_inout*, and *result*.
+    The first layer is *intent_in*, *intent_out*, *intent_inout*, *result_pure* and *result*.
     The second layer is *declare*, *pre_call*, and *post_call*
     The entries are a list of format strings.
 
@@ -849,31 +849,38 @@ f_statement
         Statement to execute before call, often to coerce types
         when *f_cast* cannot be used.
 
+    call
+        Code used to call the function.
+        Defaults to ``{F_result} = {F_C_call}({F_arg_c_call_tab})``
+
     post_call
         Statement to execute after call.
         Can be use to cleanup after *f_pre_call*
         or to coerce the return value.
 
     need_wrapper
-        If true, the fortran wrapper will always be created.
-        This is useful then a function assignment is needed to do a type coercision.
+        If true, the Fortran wrapper will always be created.
+        This is used when an assignment is needed to do a type coercision;
+        for example, with logical types.
 
 ..  XXX - maybe later.  For not in wrapping routines
 ..         f_attr_len_trim = None,
 ..         f_attr_len = None,
 ..         f_attr_size = None,
 
-f_helper
-    Additional code to add into the module for helper functions.
+    f_helper
+        Blank delimited list of helper function names to add to generated Fortran code.
+        These functions are defined in whelper.py.
+        There is no current way to add additional functions.
 
-    private
-       List of names which should be PRIVATE to the module
+        private
+           List of names which should be PRIVATE to the module
 
-    interface
-       Code to add to the non-executable part of the module.
+        interface
+           Code to add to the non-executable part of the module.
 
-    source
-       Code to add in the CONTAINS section of the module.
+        source
+           Code to add in the CONTAINS section of the module.
 
 result_as_arg
     Override fields when result should be treated as an argument.

@@ -95,9 +95,8 @@ Fortran function void vector_iota(std::vector & arg+dimension(:)+intent(out)+tem
 C-interface function void vector_iota(std::vector & arg+dimension(:)+intent(out)+size(Sarg)+template(int))
 Fortran function void vector_increment(std::vector & arg+dimension(:)+intent(inout)+template(int))
 C-interface function void vector_increment(std::vector & arg+dimension(:)+intent(inout)+size(Sarg)+template(int))
-C-interface function const std::string & LastFunctionCalled()+pure
+C-interface, Fortran function const std::string & LastFunctionCalled()+pure
 C-interface function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
-Fortran function const string_result_fstr & LastFunctionCalled()+pure
 Close wrapftutorial.f
 class Class1
 Python method Class1 * new()+constructor

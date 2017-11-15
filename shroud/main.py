@@ -395,6 +395,7 @@ class Schema(object):
                 f_type='logical',
                 f_c_type='logical(C_BOOL)',
                 f_module=dict(iso_c_binding=['C_BOOL']),
+
                 f_statements=dict(
                     intent_in=dict(
                         c_local_var=True,
@@ -500,8 +501,17 @@ class Schema(object):
                 f_type='character(*)',
                 f_c_type='character(kind=C_CHAR)',
                 f_c_module=dict(iso_c_binding=['C_CHAR']),
-                # f_return_code='{F_result} =
-                #    fstr({F_C_call}({F_arg_c_call_tab}))',
+
+                f_statements=dict(
+                    result_pure=dict(
+                        need_wrapper=True,
+                        f_helper='fstr',
+                        call=[
+                            '{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))',
+                            ],
+                        )
+                    ),
+
                 PY_format='s',
                 PY_ctor='PyString_FromString({c_var})',
                 LUA_type='LUA_TSTRING',
@@ -532,8 +542,6 @@ class Schema(object):
                 f_type='character',
                 f_c_type='character(kind=C_CHAR)',
                 f_c_module=dict(iso_c_binding=['C_CHAR']),
-                # f_return_code='{F_result} =
-                #    fstr({F_C_call}({F_arg_c_call_tab}))',
                 PY_format='s',
                 PY_ctor='PyString_FromString({c_var})',
                 LUA_type='LUA_TSTRING',
@@ -628,8 +636,16 @@ class Schema(object):
                 f_type='character(*)',
                 f_c_type='character(kind=C_CHAR)',
                 f_c_module=dict(iso_c_binding=['C_CHAR']),
-                # f_return_code='{F_result} =
-                #    fstr({F_C_call}({F_arg_c_call_tab}))',
+
+                f_statements=dict(
+                    result_pure=dict(
+                        need_wrapper=True,
+                        f_helper='fstr',
+                        call=[
+                            '{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))',
+                            ],
+                        )
+                    ),
 
                 py_statements=dict(
                     intent_in=dict(
@@ -747,15 +763,6 @@ class Schema(object):
         def_types['integer(C_LONG)'] = def_types['long']
         def_types['real(C_FLOAT)'] = def_types['float']
         def_types['real(C_DOUBLE)'] = def_types['double']
-
-        # pure fortran string
-        tmp = def_types['string'].clone_as('string_result_fstr')
-        tmp.update(dict(
-                f_return_code=('{F_result} = '
-                               'fstr({F_C_call}({F_arg_c_call_tab}))'),
-                f_helper=dict(f_return_code=dict(fstr=True)),
-                ))
-        def_types[tmp.name] = tmp
 
         types_dict = node.get('types', None)
         if types_dict is not None:
@@ -1280,24 +1287,8 @@ class GenFunctions(object):
             attrs['reference'] = False
 
         if is_pure:
-            # Return a character(*) function
-            # Create a fortran function with a different result type
-            # so fstr will be called on result.
-            F_new = util.copy_function_node(node)
-            ordered_functions.append(F_new)
-            self.append_function_index(F_new)
-
-            F_new['result']['type'] = 'string_result_fstr'
-            F_new['_PTR_F_C_index'] = node['_function_index']
-            options = F_new['options']
-            options.wrap_c = False
-            options.wrap_fortran = True
-            options.wrap_python = False
-            options.wrap_lua = False
-
-            # Do not wrap original function (Has a different result type)
-            node['options'].wrap_fortran = False
-
+            # pure functions which return a string have result_pure defined.
+            pass
         elif result_as_arg:
             # Create Fortran function without bufferify function_suffix but
             # with len attributes on string arguments.
@@ -1315,7 +1306,7 @@ class GenFunctions(object):
             # Do not add '_bufferify'
             F_new['fmt'].function_suffix = node['fmt'].function_suffix
 
-            # Do not wrap original function (does not have result argumument)
+            # Do not wrap original function (does not have result argument)
             node['options'].wrap_fortran = False
         else:
             # Fortran function may call C subroutine if string result

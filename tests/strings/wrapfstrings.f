@@ -392,8 +392,8 @@ contains
         ! splicer end function.pass_char_ptr_in_out
     end subroutine pass_char_ptr_in_out
 
-    ! const string_result_fstr * getChar1()+pure
-    ! function_index=22
+    ! const char * getChar1()+pure
+    ! function_index=4
     !>
     !! \brief return a 'const char *' as character(*)
     !!
@@ -425,7 +425,7 @@ contains
 
     ! void getChar3(char * output+intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=25
+    ! function_index=24
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -440,8 +440,8 @@ contains
         ! splicer end function.get_char3
     end subroutine get_char3
 
-    ! const string_result_fstr & getString1()+pure
-    ! function_index=27
+    ! const string & getString1()+pure
+    ! function_index=7
     !>
     !! \brief return a 'const string&' as character(*)
     !!
@@ -473,7 +473,7 @@ contains
 
     ! void getString3(string & output+intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=30
+    ! function_index=28
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -524,7 +524,7 @@ contains
 
     ! void getString6(string * output+intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=34
+    ! function_index=32
     !>
     !! \brief return a 'const string' as argument
     !!

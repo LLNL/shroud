@@ -741,11 +741,16 @@ class Wrapf(util.WrapperMixin):
         result_typedef = self.typedef[result_type]
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
+        is_pure = node['attrs'].get('pure', False)
         is_const = result['attrs'].get('const', False)
+
+        result_intent_grp = ''
+        if is_pure:
+            result_intent_grp = '_pure'
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        if result_typedef.f_statements.get('result', {}) \
+        if result_typedef.f_statements.get('result' + result_intent_grp, {}) \
                                       .get('need_wrapper', False):
             need_wrapper = True
 
@@ -950,16 +955,19 @@ class Wrapf(util.WrapperMixin):
                     '{F_C_call}({F_arg_c_call_tab})', fmt_func)
                 self.append_method_arguments(F_code, fmt_func.F_call_code)
             elif c_subprogram == 'function':
-                f_return_code = result_typedef.f_return_code
-                if f_return_code is None:
-                    f_return_code = (
-                        '{F_result} = {F_C_call}({F_arg_c_call_tab})')
-                else:
-                    self.f_helper.update(
-                        result_typedef.f_helper.get('f_return_code', {}))
-                    need_wrapper = True
-                fmt_func.F_call_code = wformat(f_return_code, fmt_func)
+                f_statements = result_typedef.f_statements
+                intent_blk = f_statements.get('result' + result_intent_grp,{})
+                cmd_list = intent_blk.get('call', [
+                        '{F_result} = {F_C_call}({F_arg_c_call_tab})'])
+#                for cmd in cmd_list:  # only allow a single statment for now
+#                    append_format(pre_call, cmd, fmt_arg)
+                fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
                 self.append_method_arguments(F_code, fmt_func.F_call_code)
+
+                # Find any helper routines needed
+                if 'f_helper' in intent_blk:
+                    for helper in intent_blk['f_helper'].split():
+                        self.f_helper[helper] = True
             else:
                 fmt_func.F_call_code = wformat('call {F_C_call}({F_arg_c_call_tab})', fmt_func)
                 self.append_method_arguments(F_code, fmt_func.F_call_code)
@@ -1000,7 +1008,7 @@ class Wrapf(util.WrapperMixin):
             fmt_func.F_C_name = fmt_func.F_name_impl
 
     def append_method_arguments(self, F_code, line1):
-        """Append each argment in arg_c_call as a line in the function.
+        """Append each argument in line1 as a line in the function.
         Must account for continuations
         Replace tabs in line1 with continuations.
         """

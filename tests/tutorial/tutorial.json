@@ -2085,7 +2085,7 @@
         {
             "_PTR_F_C_index": 15, 
             "_decl": "void Function9(float arg+intent(in)+value)", 
-            "_function_index": 47, 
+            "_function_index": 46, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2128,7 +2128,7 @@
         {
             "_PTR_F_C_index": 15, 
             "_decl": "void Function9(double arg+intent(in)+value)", 
-            "_function_index": 48, 
+            "_function_index": 47, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2332,7 +2332,7 @@
                 17
             ], 
             "_decl": "void Function10(const std::string & name+intent(in), float arg2+intent(in)+value)", 
-            "_function_index": 49, 
+            "_function_index": 48, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2389,7 +2389,7 @@
                 17
             ], 
             "_decl": "void Function10(const std::string & name+intent(in), double arg2+intent(in)+value)", 
-            "_function_index": 50, 
+            "_function_index": 49, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -3843,17 +3843,26 @@
                 "C_prototype": "", 
                 "C_return_code": "return XSH_rv;", 
                 "C_return_type": "const char *", 
+                "F_C_call": "c_last_function_called", 
                 "F_C_name": "c_last_function_called", 
+                "F_arg_c_call": "", 
+                "F_arg_c_call_tab": "\t", 
+                "F_arguments": "", 
+                "F_call_code": "SH_rv = fstr(c_last_function_called(\t))", 
+                "F_name_function": "last_function_called", 
+                "F_name_generic": "last_function_called", 
+                "F_name_impl": "last_function_called", 
+                "F_result_clause": " result(SH_rv)", 
+                "F_subprogram": "function", 
                 "LUA_name": "LastFunctionCalled", 
                 "LUA_name_impl": "l_last_function_called", 
                 "PY_name_impl": "PY_last_function_called", 
                 "c_const": "const ", 
+                "c_var_len": "strlen_ptr(c_last_function_called(\t))", 
                 "function_name": "LastFunctionCalled", 
                 "underscore_name": "last_function_called"
             }, 
-            "options": {
-                "wrap_fortran": false
-            }, 
+            "options": {}, 
             "result": {
                 "attrs": {
                     "const": true, 
@@ -3934,44 +3943,6 @@
                 }, 
                 "name": "LastFunctionCalled", 
                 "type": "void"
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 26, 
-            "_decl": "const string_result_fstr & LastFunctionCalled()+pure", 
-            "_function_index": 46, 
-            "_subprogram": "function", 
-            "args": [], 
-            "attrs": {
-                "pure": true
-            }, 
-            "decl": "const std::string& LastFunctionCalled() +pure", 
-            "fmt": {
-                "F_C_call": "c_last_function_called", 
-                "F_arg_c_call": "", 
-                "F_arg_c_call_tab": "\t", 
-                "F_arguments": "", 
-                "F_call_code": "SH_rv = fstr(c_last_function_called(\t))", 
-                "F_name_function": "last_function_called", 
-                "F_name_generic": "last_function_called", 
-                "F_name_impl": "last_function_called", 
-                "F_result_clause": " result(SH_rv)", 
-                "F_subprogram": "function", 
-                "c_var_len": "strlen_ptr(c_last_function_called(\t))"
-            }, 
-            "options": {
-                "wrap_c": false, 
-                "wrap_fortran": true, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
-                "attrs": {
-                    "const": true, 
-                    "reference": true
-                }, 
-                "name": "LastFunctionCalled", 
-                "type": "string_result_fstr"
             }
         }
     ], 
@@ -4061,7 +4032,14 @@
                     "class1"
                 ]
             }, 
-            "f_return_code": "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})", 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(class1)", 
             "forward": "Class1", 
@@ -4239,6 +4217,15 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
+            "f_statements": {
+                "result_pure": {
+                    "call": [
+                        "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))"
+                    ], 
+                    "f_helper": "fstr", 
+                    "need_wrapper": true
+                }
+            }, 
             "f_type": "character(*)"
         }, 
         "char_scalar": {
@@ -4483,6 +4470,15 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
+            "f_statements": {
+                "result_pure": {
+                    "call": [
+                        "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))"
+                    ], 
+                    "f_helper": "fstr", 
+                    "need_wrapper": true
+                }
+            }, 
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
@@ -4618,103 +4614,15 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
-            "f_type": "character(*)", 
-            "py_statements": {
-                "intent_in": {
-                    "cpp_local_var": true, 
-                    "post_parse": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }
-            }
-        }, 
-        "string_result_fstr": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TSTRING", 
-            "PY_ctor": "PyString_FromString({c_var})", 
-            "PY_format": "s", 
-            "base": "string", 
-            "c_statements": {
-                "intent_in": {
-                    "cpp_local_var": true, 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }, 
-                "intent_in_buf": {
-                    "cpp_local_var": true, 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
-                    ]
-                }, 
-                "intent_inout": {
-                    "cpp_header": "<cstring>", 
-                    "cpp_local_var": true, 
-                    "post_call": [
-                        "strcpy({c_var}, {cpp_val});"
+            "f_statements": {
+                "result_pure": {
+                    "call": [
+                        "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))"
                     ], 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }, 
-                "intent_inout_buf": {
-                    "cpp_header": "shroudrt.hpp", 
-                    "cpp_local_var": true, 
-                    "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
-                    ], 
-                    "pre_call": [
-                        "std::string {cpp_var}({c_var}, {c_var_trim});"
-                    ]
-                }, 
-                "intent_out": {
-                    "cpp_header": "<cstring>", 
-                    "cpp_local_var": true, 
-                    "post_call": [
-                        "strcpy({c_var}, {cpp_val});"
-                    ], 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var};"
-                    ]
-                }, 
-                "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
-                    "cpp_local_var": true, 
-                    "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
-                    ], 
-                    "pre_call": [
-                        "std::string {cpp_var};"
-                    ]
-                }, 
-                "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
-                    "post_call": [
-                        "if ({cpp_var}.empty()) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
-                        "}} else {{", 
-                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "}}"
-                    ]
+                    "f_helper": "fstr", 
+                    "need_wrapper": true
                 }
             }, 
-            "c_type": "char", 
-            "cpp_header": "<string>", 
-            "cpp_to_c": "{cpp_var}.c_str()", 
-            "cpp_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            }, 
-            "f_c_type": "character(kind=C_CHAR)", 
-            "f_helper": {
-                "f_return_code": {
-                    "fstr": true
-                }
-            }, 
-            "f_return_code": "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))", 
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
