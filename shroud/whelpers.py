@@ -70,6 +70,18 @@ def find_all_helpers(mode, helpers, check=None):
 
     return helpdict
 
+def XXXwrite_helper_files(self, directory):
+    """This library file is no longer needed.
+
+    Should be writtento config.c_fortran_dir
+    """
+    output = [FccHeaders]
+    self.write_output_file('shroudrt.hpp',
+                           directory, output)
+
+    output = [FccCSource]
+    self.write_output_file('shroudrt.cpp',
+                           directory, output)
 
 FccHeaders = """
 #ifndef SHROUDRT_HPP_
@@ -104,28 +116,7 @@ extern "C" {
 #endif
 /* *INDENT-ON* */
 
-// equivalent to C_LOC
-// called from Fortran
-// https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53945
-// Work around a problem with gfortran 4.7 where C_LOC does not work
-// with assumed shape array.  Passing the first element of the
-// array to a function without an interface will force the compiler
-// to use f77 semantics and pass the address of the data, essentially
-// the same as C_LOC.
-// XXX Pass the first element, not the entire array, to avoid getting
-// XXX a copy of the array.
-//
-// The result must be an argument because some compilers (Intel)
-// cannot return type(C_PTR)
-void shroud_c_loc(void * addr, void ** out)
-{
-  *out = addr;
-}
-void shroud_c_loc_(void * addr, void ** out)
-{
-  *out = addr;
-}
-
+// insert code here
 
 /* *INDENT-OFF* */
 #ifdef __cplusplus

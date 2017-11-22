@@ -36,8 +36,6 @@ C function void explicit2(char * name+intent(out)+len(AAtrim))
 C function void explicit2(char * name+intent(out)+len(AAtrim))
 Close wrapstrings.h
 Close wrapstrings.cpp
-Close shroudrt.hpp
-Close shroudrt.cpp
 C-interface, Fortran function void passChar(char_scalar status+intent(in)+value)
 C-interface, Fortran function char_scalar returnChar()
 C-interface function void returnChar(char_scalar * SH_F_rv+intent(out)+len(NSH_F_rv))

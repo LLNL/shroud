@@ -46,8 +46,6 @@ C function const std::string & LastFunctionCalled()+pure
 C function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
 Close wrapTutorial.h
 Close wrapTutorial.cpp
-Close shroudrt.hpp
-Close shroudrt.cpp
 class Class1
 C-interface, Fortran method Class1 * new()+constructor
 C-interface, Fortran method void delete()+destructor

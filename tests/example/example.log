@@ -66,8 +66,6 @@ C function void testgroup1(DataGroup * grp+intent(in)+value)
 C function void testgroup2(const DataGroup * grp+intent(in)+value)
 Close wrapUserLibrary.h
 Close wrapUserLibrary.cpp
-Close shroudrt.hpp
-Close shroudrt.cpp
 class ExClass1
 C-interface, Fortran method ExClass1 * new(const string * name+intent(in))+constructor
 C-interface method ExClass1 * new(const string * name+intent(in)+len_trim(Lname))+constructor

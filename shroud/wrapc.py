@@ -143,8 +143,6 @@ class Wrapc(util.WrapperMixin):
         if self.tree['functions']:
             self.write_file(self.tree, None)
 
-        self.write_helper_files()
-
     def write_file(self, library, cls):
         """Write a file for the library and its functions or
         a class and its methods.
@@ -665,12 +663,3 @@ class Wrapc(util.WrapperMixin):
         self._create_splicer(fmt_func.underscore_name +
                              fmt_func.function_suffix, impl, C_code)
         impl.append('}')
-
-    def write_helper_files(self):
-        output = [whelpers.FccHeaders]
-        self.write_output_file('shroudrt.hpp',
-                               self.config.c_fortran_dir, output)
-
-        output = [whelpers.FccCSource]
-        self.write_output_file('shroudrt.cpp',
-                               self.config.c_fortran_dir, output)
