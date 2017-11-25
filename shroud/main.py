@@ -453,6 +453,7 @@ class Schema(object):
                     intent_in_buf=dict(
                         cpp_local_var=True,
                         cpp_header='<cstring>',
+                        buf_args = [ 'len_trim' ],
                         pre_call=[
                             'char * {cpp_var} = new char [{c_var_trim} + 1];',
                             'std::strncpy({cpp_var}, {c_var}, {c_var_trim});',
@@ -465,6 +466,7 @@ class Schema(object):
                     intent_out_buf=dict(
                         cpp_local_var=True,
                         c_helper='FccCopy',
+                        buf_args = [ 'len' ],
                         pre_call=[
                             'char * {cpp_var} = new char [{c_var_len} + 1];',
                             ],
@@ -476,6 +478,7 @@ class Schema(object):
                     intent_inout_buf=dict(
                         cpp_local_var=True,
                         c_helper='FccCopy',
+                        buf_args = [ 'len_trim', 'len' ],
                         pre_call=[
                             'char * {cpp_var} = new char [{c_var_len} + 1];',
                             'std::strncpy({cpp_var}, {c_var}, {c_var_trim});',
@@ -489,6 +492,7 @@ class Schema(object):
                     result_buf=dict(
                         cpp_header='<cstring>',
                         c_helper='FccCopy',
+                        buf_args = [ 'len' ],
                         post_call=[
                             'if ({cpp_var} == NULL) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',
@@ -533,6 +537,7 @@ class Schema(object):
                 c_statements=dict(
                     result_buf=dict(
                         cpp_header='<cstring>',
+                        buf_args = [ 'len' ],
                         post_call=[
                             'std::memset({c_var}, \' \', {c_var_len});',
                             '{c_var}[0] = {cpp_var};',
@@ -596,6 +601,7 @@ class Schema(object):
                     ),
                     intent_in_buf=dict(
                         cpp_local_var=True,
+                        buf_args = [ 'len_trim' ],
                         pre_call=[
                             ('{c_const}std::string '
                              '{cpp_var}({c_var}, {c_var_trim});')
@@ -604,6 +610,7 @@ class Schema(object):
                     intent_out_buf=dict(
                         c_helper='FccCopy',
                         cpp_local_var=True,
+                        buf_args = [ 'len' ],
                         pre_call=[
                             'std::string {cpp_var};'
                         ],
@@ -614,6 +621,7 @@ class Schema(object):
                     intent_inout_buf=dict(
                         c_helper='FccCopy',
                         cpp_local_var=True,
+                        buf_args = [ 'len_trim', 'len' ],
                         pre_call=[
                             'std::string {cpp_var}({c_var}, {c_var_trim});'
                         ],
@@ -624,6 +632,7 @@ class Schema(object):
                     result_buf=dict(
                         cpp_header='<cstring>',
                         c_helper='FccCopy',
+                        buf_args = [ 'len' ],
                         post_call=[
                             'if ({cpp_var}.empty()) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',
@@ -689,6 +698,7 @@ class Schema(object):
 #                    ),
                     intent_in_buf=dict(
                         cpp_local_var=True,
+                        buf_args = [ 'size' ],
                         pre_call=[
                             ('{c_const}std::vector<{cpp_T}> '
                              '{cpp_var}({c_var}, {c_var} + {c_var_size});')
@@ -696,6 +706,7 @@ class Schema(object):
                     ),
                     intent_out_buf=dict(
                         cpp_local_var=True,
+                        buf_args = [ 'size' ],
                         pre_call=[
                             '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});'
                         ],
@@ -707,6 +718,7 @@ class Schema(object):
                     ),
                     intent_inout_buf=dict(
                         cpp_local_var=True,
+                        buf_args = [ 'size' ],
                         pre_call=[
                             'std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});'
                         ],
@@ -718,6 +730,7 @@ class Schema(object):
                     ),
                     result_buf=dict(
                         c_helper='FccCopy',
+                        buf_args = [ 'size' ],
                         post_call=[
                             'if ({cpp_var}.empty()) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',
@@ -734,6 +747,7 @@ class Schema(object):
                     string=dict(
                         intent_in_buf=dict(
                             cpp_local_var=True,
+                            buf_args = [ 'size', 'len' ],
                             pre_call=[
                                 '{c_const}std::vector<{cpp_T}> {cpp_var};',
                                 '{{',
@@ -748,6 +762,7 @@ class Schema(object):
                         ),
                         intent_out_buf=dict(
                             cpp_local_var=True,
+                            buf_args = [ 'size', 'len' ],
                             pre_call=[
                                 '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});'
                             ],
@@ -759,6 +774,7 @@ class Schema(object):
                         ),
                         intent_inout_buf=dict(
                             cpp_local_var=True,
+                            buf_args = [ 'size', 'len' ],
                             pre_call=[
                                 'std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});'
                             ],
@@ -1301,28 +1317,25 @@ class GenFunctions(object):
             argtype = arg['type']
             typedef = util.Typedef.lookup(argtype)
             if typedef.base == 'vector':
-                attrs = arg['attrs']
-                attrs['size'] = options.C_var_size_template.format(c_var=arg['name'])
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
+                # TODO: add an option where char** length is determined by looking
+                #       for trailing NULL pointer.  { "foo", "bar", NULL };
                 node['options'].wrap_c = False
-            elif typedef.base == 'string':
-                # strings passed in need len_trim
-                # strings returned need len
-                # Add attributes if not already set
-                # The original C function will still be wrapped since it can
-                # be called by Fortran or C with a NULL terminated string
-                # and implied len computed using strlen()
-                attrs = arg['attrs']
-                intent = attrs['intent']
-                if intent in ['in', 'inout'] and 'len_trim' not in attrs:
-                    # Force len_trim when intent is IN
-                    # Assume trailing blanks are not part of data
+
+            # set names for implied buffer arguments
+            attrs = arg['attrs']
+            stmts = 'intent_' + attrs['intent'] + '_buf'
+            intent_blk = typedef.c_statements.get(stmts, {})
+            for extra in intent_blk.get('buf_args', []):
+                if extra in attrs:
+                    # do not override user specified variable name
+                    continue
+                if extra == 'size':
+                    attrs['size'] = options.C_var_size_template.format(c_var=arg['name'])
+                elif extra == 'len_trim':
                     attrs['len_trim'] = options.C_var_trim_template.format(c_var=arg['name'])
-                if intent in ['out', 'inout'] and 'len' not in attrs:
-                    # Force len attribute when intent is OUT
-                    # so the wrapper will know how much space
-                    # can be written to.
+                elif extra == 'len':
                     attrs['len'] = options.C_var_len_template.format(c_var=arg['name'])
 
                 ## base typedef

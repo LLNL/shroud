@@ -4171,6 +4171,9 @@
             "base": "string", 
             "c_statements": {
                 "intent_in_buf": {
+                    "buf_args": [
+                        "len_trim"
+                    ], 
                     "cpp_header": "<cstring>", 
                     "cpp_local_var": true, 
                     "post_call": [
@@ -4183,6 +4186,10 @@
                     ]
                 }, 
                 "intent_inout_buf": {
+                    "buf_args": [
+                        "len_trim", 
+                        "len"
+                    ], 
                     "c_helper": "FccCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
@@ -4196,6 +4203,9 @@
                     ]
                 }, 
                 "intent_out_buf": {
+                    "buf_args": [
+                        "len"
+                    ], 
                     "c_helper": "FccCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
@@ -4207,6 +4217,9 @@
                     ]
                 }, 
                 "result_buf": {
+                    "buf_args": [
+                        "len"
+                    ], 
                     "c_helper": "FccCopy", 
                     "cpp_header": "<cstring>", 
                     "post_call": [
@@ -4245,6 +4258,9 @@
             "PY_format": "s", 
             "c_statements": {
                 "result_buf": {
+                    "buf_args": [
+                        "len"
+                    ], 
                     "cpp_header": "<cstring>", 
                     "post_call": [
                         "std::memset({c_var}, ' ', {c_var_len});", 
@@ -4353,6 +4369,9 @@
                     ]
                 }, 
                 "intent_in_buf": {
+                    "buf_args": [
+                        "len_trim"
+                    ], 
                     "cpp_local_var": true, 
                     "pre_call": [
                         "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
@@ -4369,6 +4388,10 @@
                     ]
                 }, 
                 "intent_inout_buf": {
+                    "buf_args": [
+                        "len_trim", 
+                        "len"
+                    ], 
                     "c_helper": "FccCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
@@ -4389,6 +4412,9 @@
                     ]
                 }, 
                 "intent_out_buf": {
+                    "buf_args": [
+                        "len"
+                    ], 
                     "c_helper": "FccCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
@@ -4399,6 +4425,9 @@
                     ]
                 }, 
                 "result_buf": {
+                    "buf_args": [
+                        "len"
+                    ], 
                     "c_helper": "FccCopy", 
                     "cpp_header": "<cstring>", 
                     "post_call": [
@@ -4443,12 +4472,18 @@
             "base": "vector", 
             "c_statements": {
                 "intent_in_buf": {
+                    "buf_args": [
+                        "size"
+                    ], 
                     "cpp_local_var": true, 
                     "pre_call": [
                         "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
                 "intent_inout_buf": {
+                    "buf_args": [
+                        "size"
+                    ], 
                     "cpp_local_var": true, 
                     "post_call": [
                         "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
@@ -4460,6 +4495,9 @@
                     ]
                 }, 
                 "intent_out_buf": {
+                    "buf_args": [
+                        "size"
+                    ], 
                     "cpp_local_var": true, 
                     "post_call": [
                         "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
@@ -4471,6 +4509,9 @@
                     ]
                 }, 
                 "result_buf": {
+                    "buf_args": [
+                        "size"
+                    ], 
                     "c_helper": "FccCopy", 
                     "post_call": [
                         "if ({cpp_var}.empty()) {{", 
@@ -4484,6 +4525,10 @@
             "c_templates": {
                 "string": {
                     "intent_in_buf": {
+                        "buf_args": [
+                            "size", 
+                            "len"
+                        ], 
                         "cpp_local_var": true, 
                         "pre_call": [
                             "{c_const}std::vector<{cpp_T}> {cpp_var};", 
@@ -4498,6 +4543,10 @@
                         ]
                     }, 
                     "intent_inout_buf": {
+                        "buf_args": [
+                            "size", 
+                            "len"
+                        ], 
                         "cpp_local_var": true, 
                         "post_call": [
                             "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
@@ -4509,6 +4558,10 @@
                         ]
                     }, 
                     "intent_out_buf": {
+                        "buf_args": [
+                            "size", 
+                            "len"
+                        ], 
                         "cpp_local_var": true, 
                         "post_call": [
                             "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
