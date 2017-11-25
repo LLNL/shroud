@@ -745,7 +745,7 @@ class Wrapf(util.WrapperMixin):
         subprogram = node['_subprogram']
         c_subprogram = C_node['_subprogram']
 
-        generator = node.get('_generated', '')
+        generator = C_node.get('_generated', '')
         if generator == 'arg_to_buffer':
             intent_grp = '_buf'
         else:
@@ -806,14 +806,16 @@ class Wrapf(util.WrapperMixin):
         post_call = []
         f_args = node['args']
         f_index = -1       # index into f_args
-        for c_index, c_arg in enumerate(C_node['args']):
+        for c_arg in C_node['args']:
             fmt_arg = c_arg.setdefault('fmtf', util.Options(fmt_func))
             fmt_arg.f_var = c_arg['name']
             fmt_arg.c_var = fmt_arg.f_var
 
             f_arg = True   # assume C and Fortran arguments match
             c_attrs = c_arg['attrs']
+            intent = c_attrs['intent']
             if c_attrs.get('_is_result', False):
+                c_stmts = 'result' + intent_grp
                 result_as_arg = fmt_func.F_string_result_as_arg
                 if not result_as_arg:
                     # passing Fortran function result variable down to C
@@ -821,6 +823,8 @@ class Wrapf(util.WrapperMixin):
                     fmt_arg.c_var = fmt_func.F_result
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
+            else:
+                c_stmts = 'intent_' + intent + intent_grp
 
             if f_arg:
                 # An argument to the C and Fortran function
@@ -839,7 +843,7 @@ class Wrapf(util.WrapperMixin):
                     arg_typedef = util.Typedef.lookup(cpp_T)
 
                 f_statements = arg_typedef.f_statements
-                f_stmts = 'intent_' + c_attrs['intent']
+                f_stmts = 'intent_' + intent
                 f_intent_blk = f_statements.get(f_stmts, {})
 
                 # Create a local variable for C if necessary
@@ -875,6 +879,14 @@ class Wrapf(util.WrapperMixin):
             # May have different types, like generic
             # or different attributes, like adding +len to string args
             arg_typedef = util.Typedef.lookup(c_arg['type'])
+            c_statements = arg_typedef.c_statements
+            if 'template' in c_attrs:
+                # If a template, use its type
+                cpp_T = c_attrs['template']
+                c_statements = arg_typedef.c_templates.get(
+                    cpp_T, c_statements)
+                arg_typedef = util.Typedef.lookup(cpp_T)
+            c_intent_blk = c_statements.get(c_stmts, {})
 
             # Attributes   None=skip, True=use default, else use value
             if arg_typedef.f_args:
@@ -891,24 +903,15 @@ class Wrapf(util.WrapperMixin):
             else:
                 append_format(arg_c_call, '{c_var}', fmt_arg)
 
-            if arg_typedef.base == 'vector':
-                try:
-                    size_arg = c_arg['attrs']['size']
-                except KeyError:
-                    raise RuntimeError("Expected size attribute   XXX", c_arg)
+            for buf_arg in c_intent_blk.get('buf_args', []):
                 need_wrapper = True
-                append_format(arg_c_call, 'size({f_var}, kind=C_LONG)', fmt_arg)
-                self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
-            elif arg_typedef.base == 'string' or \
-               arg_typedef.name == 'char_scalar':
-                len_trim = c_arg['attrs'].get('len_trim', None)
-                if len_trim:
-                    need_wrapper = True
+                if buf_arg == 'size':
+                    append_format(arg_c_call, 'size({f_var}, kind=C_LONG)', fmt_arg)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
+                elif buf_arg == 'len_trim':
                     append_format(arg_c_call, 'len_trim({f_var}, kind=C_INT)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                len_arg = c_arg['attrs'].get('len', None)
-                if len_arg:
-                    need_wrapper = True
+                elif buf_arg == 'len':
                     append_format(arg_c_call, 'len({f_var}, kind=C_INT)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
 

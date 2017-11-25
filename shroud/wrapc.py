@@ -429,17 +429,13 @@ class Wrapc(util.WrapperMixin):
             arg_typedef = util.Typedef.lookup(arg['type'])
             c_statements = arg_typedef.c_statements
             if 'template' in c_attrs:
-                base_typedef = arg_typedef
                 cpp_T = c_attrs['template']
                 fmt_arg.cpp_T = cpp_T
-                fmt_arg.c_var_size = 'AAA'
-                arg_typedef = util.Typedef.lookup(cpp_T)
                 # Look for template specific c_statements
                 # or use c_statements for base_typedef
-                c_statements = base_typedef.c_templates.get(
-                    cpp_T, None) or base_typedef.c_statements
-            else:
-                base_typedef = util.Typedef('-none-')
+                c_statements = arg_typedef.c_templates.get(
+                    cpp_T, c_statements)
+                arg_typedef = util.Typedef.lookup(cpp_T)
 
             fmt_arg.c_var = arg['name']
 
