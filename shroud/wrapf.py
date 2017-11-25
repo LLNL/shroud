@@ -610,15 +610,9 @@ class Wrapf(util.WrapperMixin):
         for arg in node['args']:
             # default argument's intent
             # XXX look at const, ptr
-            arg_typedef = util.Typedef.lookup(arg['type'])
-            c_statements = arg_typedef.c_statements
+            arg_typedef, c_statements = util.lookup_c_statements(arg)
             fmt.c_var = arg['name']
             attrs = arg['attrs']
-            if 'template' in attrs:
-                cpp_T = attrs['template']
-                c_statements = arg_typedef.c_templates.get(
-                    cpp_T, c_statements)
-                arg_typedef = util.Typedef.lookup(cpp_T)
             self.update_f_module(modules,
                                  arg_typedef.f_c_module or arg_typedef.f_module)
 
@@ -879,13 +873,7 @@ class Wrapf(util.WrapperMixin):
             # May have different types, like generic
             # or different attributes, like adding +len to string args
             arg_typedef = util.Typedef.lookup(c_arg['type'])
-            c_statements = arg_typedef.c_statements
-            if 'template' in c_attrs:
-                # If a template, use its type
-                cpp_T = c_attrs['template']
-                c_statements = arg_typedef.c_templates.get(
-                    cpp_T, c_statements)
-                arg_typedef = util.Typedef.lookup(cpp_T)
+            arg_typedef, c_statements = util.lookup_c_statements(c_arg)
             c_intent_blk = c_statements.get(c_stmts, {})
 
             # Attributes   None=skip, True=use default, else use value

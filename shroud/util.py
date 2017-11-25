@@ -270,7 +270,8 @@ def lookup_c_statements(arg):
         cpp_T = attrs['template']
         c_statements = arg_typedef.c_templates.get(
             cpp_T, c_statements)
-    return c_statements
+        arg_typedef = Typedef.lookup(cpp_T)
+    return arg_typedef, c_statements
 
 
 class WrapperMixin(object):

@@ -1325,8 +1325,8 @@ class GenFunctions(object):
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
                 node['options'].wrap_c = False
                 node['options'].wrap_python = False  # NotImplemented
-                node['options'].wrap_lua = False
-            c_statements = util.lookup_c_statements(arg)
+                node['options'].wrap_lua = False     # NotImplemented
+            arg_typedef, c_statements = util.lookup_c_statements(arg)
 
             # set names for implied buffer arguments
             stmts = 'intent_' + attrs['intent'] + '_buf'

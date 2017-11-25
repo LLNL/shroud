@@ -426,16 +426,9 @@ class Wrapc(util.WrapperMixin):
         for arg in node['args']:
             fmt_arg = arg.setdefault('fmtc', util.Options(fmt_func))
             c_attrs = arg['attrs']
-            arg_typedef = util.Typedef.lookup(arg['type'])
-            c_statements = arg_typedef.c_statements
+            arg_typedef, c_statements = util.lookup_c_statements(arg)
             if 'template' in c_attrs:
-                cpp_T = c_attrs['template']
-                fmt_arg.cpp_T = cpp_T
-                # Look for template specific c_statements
-                # or use c_statements for base_typedef
-                c_statements = arg_typedef.c_templates.get(
-                    cpp_T, c_statements)
-                arg_typedef = util.Typedef.lookup(cpp_T)
+                fmt_arg.cpp_T = c_attrs['template']
 
             fmt_arg.c_var = arg['name']
 
