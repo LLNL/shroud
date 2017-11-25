@@ -632,7 +632,13 @@ class Wrapf(util.WrapperMixin):
                 arg_c_decl.append(self._c_decl(arg))
 
             if generator == 'arg_to_buffer':
-                if (arg_typedef.base == 'string' or
+                if base_typedef.base == 'vector':
+                    size = attrs['size']
+                    arg_c_names.append(size)
+                    arg_c_decl.append(
+                        'integer(C_LONG), value, intent(IN) :: %s' % size)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
+                elif (arg_typedef.base == 'string' or
                     arg_typedef.name == 'char_scalar'):
                     len_trim = attrs.get('len_trim', None)
                     if len_trim:
@@ -646,12 +652,6 @@ class Wrapf(util.WrapperMixin):
                         arg_c_decl.append(
                             'integer(C_INT), value, intent(IN) :: %s' % len_arg)
                         self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                elif base_typedef.base == 'vector':
-                    size = attrs['size']
-                    arg_c_names.append(size)
-                    arg_c_decl.append(
-                        'integer(C_LONG), value, intent(IN) :: %s' % size)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
 
         if (subprogram == 'function' and
                 (is_pure or (func_is_const and args_all_in))):
@@ -868,7 +868,15 @@ class Wrapf(util.WrapperMixin):
             else:
                 append_format(arg_c_call, '{c_var}', fmt_arg)
 
-            if arg_typedef.base == 'string' or \
+            if arg_typedef.base == 'vector':
+                try:
+                    size_arg = c_arg['attrs']['size']
+                except KeyError:
+                    raise RuntimeError("Expected size attribute   XXX", c_arg)
+                need_wrapper = True
+                append_format(arg_c_call, 'size({f_var}, kind=C_LONG)', fmt_arg)
+                self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
+            elif arg_typedef.base == 'string' or \
                arg_typedef.name == 'char_scalar':
                 len_trim = c_arg['attrs'].get('len_trim', None)
                 if len_trim:
@@ -880,14 +888,6 @@ class Wrapf(util.WrapperMixin):
                     need_wrapper = True
                     append_format(arg_c_call, 'len({f_var}, kind=C_INT)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-            elif arg_typedef.base == 'vector':
-                try:
-                    size_arg = c_arg['attrs']['size']
-                except KeyError:
-                    raise RuntimeError("Expected size attribute   XXX", c_arg)
-                need_wrapper = True
-                append_format(arg_c_call, 'size({f_var}, kind=C_LONG)', fmt_arg)
-                self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
 
         fmt_func.F_arg_c_call = ', '.join(arg_c_call)
         # use tabs to insert continuations

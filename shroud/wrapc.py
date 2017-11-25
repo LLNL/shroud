@@ -442,7 +442,12 @@ class Wrapc(util.WrapperMixin):
                 base_typedef = util.Typedef('-none-')
 
             fmt_arg.c_var = arg['name']
-            if arg_typedef.base == 'string' or \
+            if base_typedef.base == 'vector':
+                fmt_arg.c_var_size = c_attrs.get('size', 'SH_' +
+                                                 options.C_var_size_template.format(
+                                                    c_var=fmt_arg.c_var))
+                fmt_arg.cpp_T = c_attrs['template']
+            elif arg_typedef.base == 'string' or \
                arg_typedef.name == 'char_scalar':
                 fmt_arg.c_var_trim = c_attrs.get('len_trim', 'SH_' +
                                                  options.C_var_trim_template.format(
@@ -450,11 +455,6 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_var_len = c_attrs.get('len', 'SH_' +
                                                 options.C_var_len_template.format(
                                                     c_var=fmt_arg.c_var))
-            elif base_typedef.base == 'vector':
-                fmt_arg.c_var_size = c_attrs.get('size', 'SH_' +
-                                                 options.C_var_size_template.format(
-                                                    c_var=fmt_arg.c_var))
-                fmt_arg.cpp_T = c_attrs['template']
 #                c_statements = base_typedef.c_statements
 
             if c_attrs.get('const', False):
@@ -471,7 +471,9 @@ class Wrapc(util.WrapperMixin):
 
             intent_grp = ''
             if generator == 'arg_to_buffer':
-                if (arg_typedef.base == 'string' or
+                if base_typedef.base == 'vector':
+                    append_format(proto_list, 'long {c_var_size}', fmt_arg)
+                elif (arg_typedef.base == 'string' or
                     arg_typedef.name == 'char_scalar'):
                     len_trim = c_attrs.get('len_trim', False)
                     if len_trim:
@@ -479,8 +481,6 @@ class Wrapc(util.WrapperMixin):
                     len_arg = c_attrs.get('len', False)
                     if len_arg:
                         append_format(proto_list, 'int {c_var_len}', fmt_arg)
-                elif base_typedef.base == 'vector':
-                    append_format(proto_list, 'long {c_var_size}', fmt_arg)
                 intent_grp = '_buf'
 
             if c_attrs.get('_is_result', False):

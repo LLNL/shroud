@@ -1260,15 +1260,15 @@ class GenFunctions(object):
         has_string_result = False
         result_as_arg = ''  # only applies to string functions
         is_pure = node['attrs'].get('pure', False)
-        if result_typedef.base == 'string':
+        if result_typedef.base == 'vector':
+            raise NotImplemented("vector result")
+        elif result_typedef.base == 'string':
             if result_type == 'char' and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
                 result['type'] = 'char_scalar'
             has_string_result = True
             result_as_arg = fmt.F_string_result_as_arg
             result_name = result_as_arg or fmt.C_string_result_as_arg
-        elif result_typedef.base == 'vector':
-            raise NotImplemented("vector result")
 
         if not (has_string_result or has_implied_arg):
             return
@@ -1300,7 +1300,13 @@ class GenFunctions(object):
         for arg in C_new['args']:
             argtype = arg['type']
             typedef = util.Typedef.lookup(argtype)
-            if typedef.base == 'string':
+            if typedef.base == 'vector':
+                attrs = arg['attrs']
+                attrs['size'] = options.C_var_size_template.format(c_var=arg['name'])
+                # Do not wrap the orignal C function with vector argument.
+                # Meaningless to call without the size argument.
+                node['options'].wrap_c = False
+            elif typedef.base == 'string':
                 # strings passed in need len_trim
                 # strings returned need len
                 # Add attributes if not already set
@@ -1318,12 +1324,6 @@ class GenFunctions(object):
                     # so the wrapper will know how much space
                     # can be written to.
                     attrs['len'] = options.C_var_len_template.format(c_var=arg['name'])
-            elif typedef.base == 'vector':
-                attrs = arg['attrs']
-                attrs['size'] = options.C_var_size_template.format(c_var=arg['name'])
-                # Do not wrap the orignal C function with vector argument.
-                # Meaningless to call without the size argument.
-                node['options'].wrap_c = False
 
                 ## base typedef
 
