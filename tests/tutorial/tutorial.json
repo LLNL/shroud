@@ -3813,7 +3813,7 @@
         }, 
         {
             "_PTR_F_C_index": 46, 
-            "_decl": "int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+template(string))", 
+            "_decl": "int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+template(std::string))", 
             "_function_index": 26, 
             "_subprogram": "function", 
             "args": [
@@ -3823,7 +3823,7 @@
                         "dimension": "(:)", 
                         "intent": "in", 
                         "reference": true, 
-                        "template": "string", 
+                        "template": "std::string", 
                         "value": false
                     }, 
                     "name": "arg", 
@@ -3831,7 +3831,7 @@
                 }
             ], 
             "attrs": {}, 
-            "decl": "int vector_string_count(const std::vector< string > &arg)", 
+            "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
             "doxygen": {
                 "brief": "count number of underscore in vector of strings", 
                 "decription": "The input will be copied in order to create the C++ argument\n"
@@ -3863,7 +3863,7 @@
         }, 
         {
             "_PTR_C_CPP_index": 26, 
-            "_decl": "int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(string))", 
+            "_decl": "int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 46, 
             "_generated": "arg_to_buffer", 
@@ -3877,7 +3877,7 @@
                         "len": "Narg", 
                         "reference": true, 
                         "size": "Sarg", 
-                        "template": "string", 
+                        "template": "std::string", 
                         "value": false
                     }, 
                     "fmtc": {
@@ -3886,7 +3886,7 @@
                         "c_var": "arg", 
                         "c_var_len": "Narg", 
                         "c_var_size": "Sarg", 
-                        "cpp_T": "string", 
+                        "cpp_T": "std::string", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg"
                     }, 
@@ -3899,7 +3899,7 @@
                 }
             ], 
             "attrs": {}, 
-            "decl": "int vector_string_count(const std::vector< string > &arg)", 
+            "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
             "doxygen": {
                 "brief": "count number of underscore in vector of strings", 
                 "decription": "The input will be copied in order to create the C++ argument\n"
@@ -4636,11 +4636,11 @@
                         "c_helper": "ShroudLenTrim", 
                         "cpp_local_var": true, 
                         "pre_call": [
-                            "std::vector<std::{cpp_T}> {cpp_var};", 
+                            "std::vector<{cpp_T}> {cpp_var};", 
                             "{{", 
                             "  {c_const}char * BBB = {c_var};", 
-                            "  std::vector<std::{cpp_T}>::size_type i = 0;", 
-                            "  for( ; i < static_cast<std::vector<std::{cpp_T}>::size_type>({c_var_size}); i++) {{", 
+                            "  std::vector<{cpp_T}>::size_type i = 0;", 
+                            "  for( ; i < static_cast<std::vector<{cpp_T}>::size_type>({c_var_size}); i++) {{", 
                             "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
                             "    BBB += {c_var_len};", 
                             "  }}", 

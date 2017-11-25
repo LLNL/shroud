@@ -928,7 +928,7 @@ contains
         ! splicer end function.vector_increment
     end subroutine vector_increment
 
-    ! int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+template(string))
+    ! int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+template(std::string))
     ! arg_to_buffer
     ! function_index=26
     !>

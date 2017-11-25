@@ -268,6 +268,7 @@ def lookup_c_statements(arg):
     c_statements = arg_typedef.c_statements
     if 'template' in attrs:
         cpp_T = attrs['template']
+        cpp_T = Typedef.resolve_alias(cpp_T)
         c_statements = arg_typedef.c_templates.get(
             cpp_T, c_statements)
         arg_typedef = Typedef.lookup(cpp_T)
@@ -624,11 +625,14 @@ class Typedef(object):
     @classmethod
     def lookup(cls, name):
         """Lookup name in registered types taking aliases into account."""
-        if name in cls._typealias:
-            typedef = cls._typedict[cls._typealias[name]]
-        else:
-            typedef = cls._typedict.get(name, None)
+        typedef = cls._typedict.get(cls._typealias.get(name,name), None)
         return typedef
+
+    @classmethod
+    def resolve_alias(cls, name):
+        """return typedef for alias.
+        """
+        return cls._typealias.get(name, name)
 
 
 class Options(object):

@@ -449,7 +449,7 @@ void TUT_vector_increment_bufferify(int * arg, long Sarg)
 // splicer end function.vector_increment_bufferify
 }
 
-// int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(string))
+// int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))
 // function_index=46
 /**
  * \brief count number of underscore in vector of strings
