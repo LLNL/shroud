@@ -92,7 +92,6 @@ class Wrapf(util.WrapperMixin):
         self.patterns = tree['patterns']
         self.config = config
         self.log = config.log
-        self.typedef = tree['types']
         self._init_splicer(splicers)
         self.comment = '!'
         self.doxygen_begin = '!>'
@@ -133,12 +132,12 @@ class Wrapf(util.WrapperMixin):
 
         """
         t = []
-        typedef = self.typedef[arg['type']]
+        typedef = util.Typedef.lookup(arg['type'])
         basedef = typedef
         attrs = arg['attrs']
         if 'template' in attrs:
             # If a template, use its type
-            typedef = self.typedef[attrs['template']]
+            typedef = util.Typedef.lookup(attrs['template'])
         intent = attrs.get('intent', None)
 
         typ = typedef.f_c_type or typedef.f_type
@@ -182,11 +181,11 @@ class Wrapf(util.WrapperMixin):
           OPTIONAL, VALUE, and INTENT
         """
         t = []
-        typedef = self.typedef[arg['type']]
+        typedef = util.Typedef.lookup(arg['type'])
         attrs = arg['attrs']
         if 'template' in attrs:
             # If a template, use its type
-            typedef = self.typedef[attrs['template']]
+            typedef = util.Typedef.lookup(attrs['template'])
         intent = attrs.get('intent', None)
 
         typ = typedef.f_type
@@ -289,7 +288,7 @@ class Wrapf(util.WrapperMixin):
         self.log.write("class {1[name]}\n".format(self, node))
         name = node['name']
         unname = util.un_camel(name)
-        typedef = self.typedef[name]
+        typedef = util.Typedef.lookup(name)
 
         fmt_class = node['fmt']
 
@@ -576,7 +575,7 @@ class Wrapf(util.WrapperMixin):
             result_type = 'void'
             subprogram = 'subroutine'
 
-        result_typedef = self.typedef[result_type]
+        result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)
         is_const = node['attrs'].get('const', False)
         is_pure = node['attrs'].get('pure', False)
@@ -606,12 +605,12 @@ class Wrapf(util.WrapperMixin):
         for arg in node['args']:
             # default argument's intent
             # XXX look at const, ptr
-            arg_typedef = self.typedef[arg['type']]
+            arg_typedef = util.Typedef.lookup(arg['type'])
             fmt.c_var = arg['name']
             attrs = arg['attrs']
             base_typedef = arg_typedef
             if 'template' in attrs:
-                arg_typedef = self.typedef[attrs['template']]
+                arg_typedef = util.Typedef.lookup(attrs['template'])
             self.update_f_module(modules,
                                  arg_typedef.f_c_module or arg_typedef.f_module)
 
@@ -738,7 +737,7 @@ class Wrapf(util.WrapperMixin):
             subprogram = 'subroutine'
             c_subprogram = 'subroutine'
 
-        result_typedef = self.typedef[result_type]
+        result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
         is_pure = node['attrs'].get('pure', False)
@@ -811,11 +810,11 @@ class Wrapf(util.WrapperMixin):
                 arg_f_decl.append(self._f_decl(f_arg))
 
                 arg_type = f_arg['type']
-                arg_typedef = self.typedef[arg_type]
+                arg_typedef = util.Typedef.lookup(arg_type)
                 base_typedef = arg_typedef
                 if 'template' in c_attrs:
                     # If a template, use its type
-                    arg_typedef = self.typedef[c_attrs['template']]
+                    arg_typedef = util.Typedef.lookup(c_attrs['template'])
 
                 f_statements = arg_typedef.f_statements
                 stmts = 'intent_' + c_attrs['intent']
@@ -852,7 +851,7 @@ class Wrapf(util.WrapperMixin):
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
-            arg_typedef = self.typedef[c_arg['type']]
+            arg_typedef = util.Typedef.lookup(c_arg['type'])
 
             # Attributes   None=skip, True=use default, else use value
             if arg_typedef.f_args:

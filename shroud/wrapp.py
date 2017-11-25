@@ -78,7 +78,6 @@ class Wrapp(util.WrapperMixin):
         self.patterns = tree['patterns']
         self.config = config
         self.log = config.log
-        self.typedef = tree['types']
         self._init_splicer(splicers)
         self.comment = '//'
 
@@ -127,7 +126,7 @@ class Wrapp(util.WrapperMixin):
 
         # preprocess all classes first to allow them to reference each other
         for node in self.tree['classes']:
-            typedef = self.typedef[node['name']]
+            typedef = util.Typedef.lookup(node['name'])
             fmt = node['fmt']
             typedef.PY_format = 'O'
 
@@ -172,7 +171,7 @@ class Wrapp(util.WrapperMixin):
         self.log.write("class {1[name]}\n".format(self, node))
         name = node['name']
         unname = util.un_camel(name)
-        typedef = self.typedef[name]
+        typedef = util.Typedef.lookup(name)
 
         options = node['options']
         fmt_class = node['fmt']
@@ -375,7 +374,7 @@ return 1;""", fmt)
             result_is_ptr = False
             CPP_subprogram = 'subroutine'
 
-        result_typedef = self.typedef[result_type]
+        result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
 #        is_const = result['attrs'].get('const', False)
@@ -445,7 +444,7 @@ return 1;""", fmt)
                     fmt_arg.c_ptr = ''
                 attrs = arg['attrs']
 
-                arg_typedef = self.typedef[arg['type']]
+                arg_typedef = util.Typedef.lookup(arg['type'])
                 fmt_arg.cpp_type = arg_typedef.cpp_type
                 py_statements = arg_typedef.py_statements
                 have_cpp_local_var = arg_typedef.cpp_local_var

@@ -63,7 +63,6 @@ class Wrapc(util.WrapperMixin):
         self.patterns = tree['patterns']
         self.config = config
         self.log = config.log
-        self.typedef = tree['types']
         self._init_splicer(splicers)
         self.comment = '//'
         self.doxygen_begin = '/**'
@@ -95,11 +94,11 @@ class Wrapc(util.WrapperMixin):
 #        if lang not in [ 'c_type', 'cpp_type' ]:
 #            raise RuntimeError
         t = []
-        typedef = self.typedef.get(arg['type'], None)
+        typedef = util.Typedef.lookup(arg['type'])
         attrs = arg['attrs']
         if 'template' in attrs:
             # If a template, use its type
-            typedef = self.typedef[attrs['template']]
+            typedef = util.Typedef.lookup(attrs['template'])
         if typedef is None:
             raise RuntimeError("No such type %s" % arg['type'])
         if attrs.get('const', False):
@@ -289,7 +288,7 @@ class Wrapc(util.WrapperMixin):
     def wrap_class(self, node):
         self.log.write("class {1[name]}\n".format(self, node))
         name = node['name']
-        typedef = self.typedef[name]
+        typedef = util.Typedef.lookup(name)
         cname = typedef.c_type
 
         fmt_class = node['fmt']
@@ -352,7 +351,7 @@ class Wrapc(util.WrapperMixin):
             CPP_result_type = 'void'
             CPP_subprogram = 'subroutine'
 
-        result_typedef = self.typedef[result_type]
+        result_typedef = util.Typedef.lookup(result_type)
         result_is_const = result['attrs'].get('const', False)
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
@@ -412,7 +411,7 @@ class Wrapc(util.WrapperMixin):
             fmt_func.c_ptr = ' *'
             fmt_func.c_var = fmt_func.C_this
             # LHS is class' cpp_to_c
-            cls_typedef = self.typedef[cls['name']]
+            cls_typedef = util.Typedef.lookup(cls['name'])
             append_format(pre_call, 
                           '{c_const}{cpp_class} *{CPP_this} = ' +
                           cls_typedef.c_to_cpp + ';', fmt_func)
@@ -427,14 +426,14 @@ class Wrapc(util.WrapperMixin):
         for arg in node['args']:
             fmt_arg = arg.setdefault('fmtc', util.Options(fmt_func))
             c_attrs = arg['attrs']
-            arg_typedef = self.typedef[arg['type']]
+            arg_typedef = util.Typedef.lookup(arg['type'])
             c_statements = arg_typedef.c_statements
             if 'template' in c_attrs:
                 base_typedef = arg_typedef
                 cpp_T = c_attrs['template']
                 fmt_arg.cpp_T = cpp_T
                 fmt_arg.c_var_size = 'AAA'
-                arg_typedef = self.typedef[cpp_T]
+                arg_typedef = util.Typedef.lookup(cpp_T)
                 # Look for template specific c_statements
                 # or use c_statements for base_typedef
                 c_statements = base_typedef.c_templates.get(

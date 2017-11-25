@@ -815,12 +815,13 @@ class Schema(object):
             )
 
         # aliases
-        def_types['std::string'] = def_types['string']
-        def_types['std::vector'] = def_types['vector']
-        def_types['integer(C_INT)'] = def_types['int']
-        def_types['integer(C_LONG)'] = def_types['long']
-        def_types['real(C_FLOAT)'] = def_types['float']
-        def_types['real(C_DOUBLE)'] = def_types['double']
+        def_types_alias = dict()
+        def_types_alias['std::string'] = 'string'
+        def_types_alias['std::vector'] = 'vector'
+        def_types_alias['integer(C_INT)'] = 'int'
+        def_types_alias['integer(C_LONG)'] = 'long'
+        def_types_alias['real(C_FLOAT)'] = 'float'
+        def_types_alias['real(C_DOUBLE)'] = 'double'
 
         types_dict = node.get('types', None)
         if types_dict is not None:
@@ -848,7 +849,12 @@ class Schema(object):
         patterns = node.setdefault('patterns', [])
 
         node['types'] = def_types
-        self.typedef = node['types']
+        self.typedef = def_types
+
+        node['type_aliases'] = def_types_alias
+        self.typealias = def_types_alias
+
+        util.Typedef.set_global_types(def_types, def_types_alias)
 
         classes = node.setdefault('classes', [])
         self.check_classes(classes)
@@ -971,7 +977,6 @@ class GenFunctions(object):
     def __init__(self, tree, config):
         self.tree = tree    # json tree
         self.config = config
-        self.typedef = tree['types']
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
@@ -1135,8 +1140,8 @@ class GenFunctions(object):
                     if arg['name'] == argname:
                         # Convert any typedef to native type with f_type
                         argtype = arg['type']
-                        typedef = self.typedef[argtype]
-                        typedef = self.typedef[typedef.f_type]
+                        typedef = util.Typedef.lookup(argtype)
+                        typedef = util.Typedef.lookup(typedef.f_type)
                         if not typedef.f_cast:
                             raise RuntimeError(
                                 "unable to cast type {} in fortran_generic"
@@ -1215,12 +1220,9 @@ class GenFunctions(object):
         # c_str of a stack variable. Warn and turn off the wrapper.
         result = node['result']
         result_type = result['type']
-        try:
-            result_typedef = self.typedef[result_type]
-        except KeyError:
-            # wrapped classes have not been added yet.
-            # Only care about string here.
-            result_typedef = None
+        result_typedef = util.Typedef.lookup(result_type)
+        # wrapped classes have not been added yet.
+        # Only care about string here.
         attrs = result['attrs']
         result_is_ptr = (attrs.get('ptr', False) or
                          attrs.get('reference', False))
@@ -1243,7 +1245,8 @@ class GenFunctions(object):
         has_implied_arg = False
         for arg in node['args']:
             argtype = arg['type']
-            if self.typedef[argtype].base == 'string':
+            typedef = util.Typedef.lookup(argtype)
+            if typedef.base == 'string':
                 attrs = arg['attrs']
                 is_ptr = (attrs.get('ptr', False) or
                           attrs.get('reference', False))
@@ -1251,7 +1254,7 @@ class GenFunctions(object):
                     has_implied_arg = True
                 else:
                     arg['type'] = 'char_scalar'
-            elif self.typedef[argtype].base == 'vector':
+            elif typedef.base == 'vector':
                 has_implied_arg = True
 
         has_string_result = False
@@ -1296,7 +1299,8 @@ class GenFunctions(object):
         newargs = []
         for arg in C_new['args']:
             argtype = arg['type']
-            if self.typedef[argtype].base == 'string':
+            typedef = util.Typedef.lookup(argtype)
+            if typedef.base == 'string':
                 # strings passed in need len_trim
                 # strings returned need len
                 # Add attributes if not already set
@@ -1314,7 +1318,7 @@ class GenFunctions(object):
                     # so the wrapper will know how much space
                     # can be written to.
                     attrs['len'] = options.C_var_len_template.format(c_var=arg['name'])
-            elif self.typedef[argtype].base == 'vector':
+            elif typedef.base == 'vector':
                 attrs = arg['attrs']
                 attrs['size'] = options.C_var_size_template.format(c_var=arg['name'])
                 # Do not wrap the orignal C function with vector argument.
@@ -1409,19 +1413,20 @@ class GenFunctions(object):
             return
         result = node['result']
         rv_type = result['type']
-        if rv_type not in self.typedef:
+        typedef = util.Typedef.lookup(rv_type)
+        if typedef is None:
             raise RuntimeError(
                 "Unknown type {} for function decl: {}"
                 .format(rv_type, node['decl']))
-        result_typedef = self.typedef[rv_type]
+        result_typedef = util.Typedef.lookup(rv_type)
         # XXX - make sure it exists
         used_types[result['type']] = result_typedef
         for arg in node['args']:
             argtype = arg['type']
-            if argtype in self.typedef:
-                used_types[arg['type']] = self.typedef[argtype]
-            else:
+            typedef = util.Typedef.lookup(argtype)
+            if typedef is None:
                 raise RuntimeError("%s not defined" % argtype)
+            used_types[argtype] = typedef
 
     _skip_annotations = ['const', 'ptr', 'reference']
 
@@ -1493,7 +1498,6 @@ class VerifyAttrs(object):
     def __init__(self, tree, config):
         self.tree = tree    # json tree
         self.config = config
-        self.typedef = tree['types']
 
     def verify_attrs(self):
         tree = self.tree
@@ -1515,11 +1519,12 @@ class VerifyAttrs(object):
         fmt_class = cls['fmt']
         options = cls['options']
 
-        if name not in self.typedef:
+        typedef = util.Typedef.lookup(name)
+        if typedef is None:
             # unname = util.un_camel(name)
             unname = name.lower()
             cname = fmt_class.C_prefix + unname
-            self.typedef[name] = util.Typedef(
+            typedef = util.Typedef(
                 name,
                 base='wrapped',
                 cpp_type=name,
@@ -1528,9 +1533,9 @@ class VerifyAttrs(object):
                 f_module={fmt_class.F_module_name:[unname]},
                 f_to_c = '{f_var}%%%s()' % options.F_name_instance_get,
                 )
-            util.typedef_wrapped_defaults(self.typedef[name])
+            util.typedef_wrapped_defaults(typedef)
+            util.Typedef.register(name, typedef)
 
-        typedef = self.typedef[name]
         fmt_class.C_type_name = typedef.c_type
 
     def check_arg_attrs(self, node):
@@ -1556,8 +1561,8 @@ class VerifyAttrs(object):
         found_default = False
         for arg in node['args']:
             argname = arg['name']
-            typename = arg['type']
-            typedef = self.typedef.get(typename, None)
+            argtype = arg['type']
+            typedef = util.Typedef.lookup(argtype)
             if typedef is None:
                 # if the type does not exist, make sure it is defined by cpp_template
                 #- decl: void Function7(ArgType arg)
@@ -1566,9 +1571,9 @@ class VerifyAttrs(object):
                 #    - int
                 #    - double
                 cpp_template = node.get('cpp_template', {})
-                if typename not in cpp_template:
+                if argtype not in cpp_template:
                     raise RuntimeError("No such type %s: %s" % (
-                            typename, parse_decl.str_declarator(arg)))
+                            argtype, parse_decl.str_declarator(arg)))
 
             attrs = arg['attrs']
             is_ptr = (attrs.get('ptr', False) or
@@ -1651,13 +1656,13 @@ class VerifyAttrs(object):
                 if not temp:
                     raise RuntimeError("std::vector must have template argument: %s" % (
                             parse_decl.str_declarator(arg)))
-                typedef = self.typedef.get(temp, None)
+                typedef = util.Typedef.lookup(temp)
                 if typedef is None:
                     raise RuntimeError("No such type %s for template: %s" % (
                             temp, parse_decl.str_declarator(arg)))
             elif temp is not None:
                 raise RuntimeError("Type '%s' may not supply template argument: %s" % (
-                        typename, parse_decl.str_declarator(arg)))
+                        argtype, parse_decl.str_declarator(arg)))
 
 
 class Namify(object):

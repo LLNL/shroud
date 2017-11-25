@@ -321,9 +321,7 @@ class WrapperMixin(object):
 #        if lang not in [ 'c_type', 'cpp_type' ]:
 #            raise RuntimeError
         t = []
-        typedef = self.typedef.get(arg['type'], None)
-        if typedef is None:
-            raise RuntimeError("No such type %s" % arg['type'])
+        typedef = Typedef.lookup(arg['type'])
 
         if const is None:
             const = arg['attrs'].get('const', False)
@@ -591,6 +589,29 @@ class Typedef(object):
             'f_to_c',
             'f_module',
         ], indent, output)
+
+
+    ### Manage collection of typedefs
+    _typedict = {}   # dictionary of registered types
+    _typealias = {}  # dictionary of registered type aliases
+    @classmethod
+    def set_global_types(cls, typedict, typealias):
+        cls._typedict = typedict
+        cls._typealias = typealias
+
+    @classmethod
+    def register(cls, name, typedef):
+        """Register a typedef"""
+        cls._typedict[name] = typedef
+
+    @classmethod
+    def lookup(cls, name):
+        """Lookup name in registered types taking aliases into account."""
+        if name in cls._typealias:
+            typedef = cls._typedict[cls._typealias[name]]
+        else:
+            typedef = cls._typedict.get(name, None)
+        return typedef
 
 
 class Options(object):
