@@ -202,6 +202,11 @@ functions:
 # does multidimensional make sense.  Need to call shape
 #- decl: void vector1XXX(std::vector<int> &arg+dimension(:,:))
 
+-  decl: int vector_string_count(const std::vector< string > &arg)
+   doxygen:
+     brief: count number of underscore in vector of strings
+     decription: |
+       The input will be copied in order to create the C++ argument
 
 ##################################################
 

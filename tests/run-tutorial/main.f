@@ -57,6 +57,8 @@ program tester
 
   call test_functions
 
+  call test_vector
+
   call test_class1
 
   call fruit_summary
@@ -165,6 +167,15 @@ contains
     call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
 
   end subroutine test_functions
+
+  subroutine test_vector
+    character(10) :: names(3) = [ "dog_cat   ", "bird_mouse", "__        " ]
+    integer irv
+
+    irv = vector_string_count(names)
+    call assert_true( irv == 4)
+ 
+  end subroutine test_vector
 
   subroutine test_class1
     type(class1) obj

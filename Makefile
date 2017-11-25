@@ -110,32 +110,38 @@ testdirs : $(TESTDIRS)
 
 fortran : tutorial strings
 
+# Compile the generated Fortran wrapper
 tutorial strings : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-$@ \
 	    -f $(top)/tests/run-$@/Makefile \
 	    top=$(top) $@
 
+# Run the Fortran tests
 test-fortran : fortran
 	$(tempdir)/run-tutorial/tutorial
 	$(tempdir)/run-strings/strings
 
+# Compile the generated Python wrapper
 py-tutorial : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-tutorial/python \
 	    -f $(top)/tests/run-tutorial/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
+# Run the Python tests
 test-python : py-tutorial
 	export PYTHONPATH=$(top)/$(tempdir)/run-tutorial/python; \
 	$(PYTHON_BIN) $(top)/tests/run-tutorial/python/test.py	
 
+# Compile the geneated Lua wrapper
 lua-tutorial : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-tutorial/lua \
 	    -f $(top)/tests/run-tutorial/lua/Makefile \
 	    LUA=$(LUA) top=$(top) all
 
+# Run the Lua test
 test-lua : lua-tutorial
 #	export LUA_PATH=$(top)/$(tempdir)/run-tutorial/lua;
 	cd $(top)/$(tempdir)/run-tutorial/lua; \

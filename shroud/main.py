@@ -465,19 +465,19 @@ class Schema(object):
                         ),
                     intent_out_buf=dict(
                         cpp_local_var=True,
-                        c_helper='FccCopy',
+                        c_helper='ShroudStrCopy',
                         buf_args = [ 'len' ],
                         pre_call=[
                             'char * {cpp_var} = new char [{c_var_len} + 1];',
                             ],
                         post_call=[
-                            'shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});',
+                            'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
                             'delete [] {cpp_var};',
                             ],
                         ),
                     intent_inout_buf=dict(
                         cpp_local_var=True,
-                        c_helper='FccCopy',
+                        c_helper='ShroudStrCopy',
                         buf_args = [ 'len_trim', 'len' ],
                         pre_call=[
                             'char * {cpp_var} = new char [{c_var_len} + 1];',
@@ -485,19 +485,19 @@ class Schema(object):
                             '{cpp_var}[{c_var_trim}] = \'\\0\';'
                             ],
                         post_call=[
-                            'shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});',
+                            'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
                             'delete [] {cpp_var};',
                             ],
                         ),
                     result_buf=dict(
                         cpp_header='<cstring>',
-                        c_helper='FccCopy',
+                        c_helper='ShroudStrCopy',
                         buf_args = [ 'len' ],
                         post_call=[
                             'if ({cpp_var} == NULL) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',
                             '}} else {{',
-                            '  shroud_FccCopy({c_var}, {c_var_len}, {cpp_var});',
+                            '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});',
                             '}}',
                             ],
                         ),
@@ -584,7 +584,7 @@ class Schema(object):
                         post_call=[
                             # This may overwrite c_var if cpp_val is too long
                             'strcpy({c_var}, {cpp_val});'
-#                            'shroud_FccCopy({c_var}, {c_var_trim}, {cpp_val});'
+#                            'ShroudStrCopy({c_var}, {c_var_trim}, {cpp_val});'
                         ],
                     ),
                     intent_inout=dict(
@@ -596,7 +596,7 @@ class Schema(object):
                         post_call=[
                             # This may overwrite c_var if cpp_val is too long
                             'strcpy({c_var}, {cpp_val});'
-#                            'shroud_FccCopy({c_var}, {c_var_trim}, {cpp_val});'
+#                            'ShroudStrCopy({c_var}, {c_var_trim}, {cpp_val});'
                         ],
                     ),
                     intent_in_buf=dict(
@@ -608,36 +608,36 @@ class Schema(object):
                         ],
                     ),
                     intent_out_buf=dict(
-                        c_helper='FccCopy',
+                        c_helper='ShroudStrCopy',
                         cpp_local_var=True,
                         buf_args = [ 'len' ],
                         pre_call=[
                             'std::string {cpp_var};'
                         ],
                         post_call=[
-                            'shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});'
+                            'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});'
                         ],
                     ),
                     intent_inout_buf=dict(
-                        c_helper='FccCopy',
+                        c_helper='ShroudStrCopy',
                         cpp_local_var=True,
                         buf_args = [ 'len_trim', 'len' ],
                         pre_call=[
                             'std::string {cpp_var}({c_var}, {c_var_trim});'
                         ],
                         post_call=[
-                            'shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});'
+                            'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});'
                         ],
                     ),
                     result_buf=dict(
                         cpp_header='<cstring>',
-                        c_helper='FccCopy',
+                        c_helper='ShroudStrCopy',
                         buf_args = [ 'len' ],
                         post_call=[
                             'if ({cpp_var}.empty()) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',
                             '}} else {{',
-                            '  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});',
+                            '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
                             '}}',
                         ],
                     ),
@@ -693,7 +693,7 @@ class Schema(object):
 #                        post_call=[
 #                            # This may overwrite c_var if cpp_val is too long
 #                            'strcpy({c_var}, {cpp_val});'
-##                            'shroud_FccCopy({c_var}, {c_var_trim}, {cpp_val});'
+##                            'ShroudStrCopy({c_var}, {c_var_trim}, {cpp_val});'
 #                        ],
 #                    ),
                     intent_in_buf=dict(
@@ -729,13 +729,13 @@ class Schema(object):
                         ],
                     ),
                     result_buf=dict(
-                        c_helper='FccCopy',
+                        c_helper='ShroudStrCopy',
                         buf_args = [ 'size' ],
                         post_call=[
                             'if ({cpp_var}.empty()) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',
                             '}} else {{',
-                            '  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});',
+                            '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
                             '}}',
                         ],
                     ),
@@ -746,15 +746,16 @@ class Schema(object):
                 c_templates=dict(
                     string=dict(
                         intent_in_buf=dict(
+                            c_helper='ShroudLenTrim',
                             cpp_local_var=True,
                             buf_args = [ 'size', 'len' ],
                             pre_call=[
-                                '{c_const}std::vector<{cpp_T}> {cpp_var};',
+                                'std::vector<std::{cpp_T}> {cpp_var};',
                                 '{{',
-                                '  char * BBB = {c_var};',
-                                '  std::vector<{cpp_T}>::size_type i = 0;',
-                                '  for( ; i < {c_var_size}; i++) {{',
-                                '    {cpp_var}.push_back(std::string(BBB,FccStrLen(BBB, BBB0)));',
+                                '  {c_const}char * BBB = {c_var};',
+                                '  std::vector<std::{cpp_T}>::size_type i = 0;',
+                                '  for( ; i < static_cast<std::vector<std::{cpp_T}>::size_type>({c_var_size}); i++) {{',
+                                '    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));',
                                 '    BBB += {c_var_len};',
                                 '  }}',
                                 '}}'
@@ -785,12 +786,12 @@ class Schema(object):
                             ],
                         ),
                         result_buf=dict(
-                            c_helper='FccCopy',
+                            c_helper='ShroudStrCopy',
                             post_call=[
                                 'if ({cpp_var}.empty()) {{',
                                 '  std::memset({c_var}, \' \', {c_var_len});',
                                 '}} else {{',
-                                '  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});',
+                                '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
                                 '}}',
                             ],
                         ),
@@ -1314,19 +1315,22 @@ class GenFunctions(object):
 
         newargs = []
         for arg in C_new['args']:
+            attrs = arg['attrs']
             argtype = arg['type']
-            typedef = util.Typedef.lookup(argtype)
-            if typedef.base == 'vector':
+            arg_typedef = util.Typedef.lookup(argtype)
+            if arg_typedef.base == 'vector':
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
                 # TODO: add an option where char** length is determined by looking
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
                 node['options'].wrap_c = False
+                node['options'].wrap_python = False  # NotImplemented
+                node['options'].wrap_lua = False
+            c_statements = util.lookup_c_statements(arg)
 
             # set names for implied buffer arguments
-            attrs = arg['attrs']
             stmts = 'intent_' + attrs['intent'] + '_buf'
-            intent_blk = typedef.c_statements.get(stmts, {})
+            intent_blk = c_statements.get(stmts, {})
             for buf_arg in intent_blk.get('buf_args', []):
                 if buf_arg in attrs:
                     # do not override user specified variable name

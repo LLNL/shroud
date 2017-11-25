@@ -136,11 +136,11 @@ extern "C" {
 #               The functions should be file static.
 
 CHelpers = dict(
-    FccCopy=dict(
+    ShroudStrCopy=dict(
         cpp_header='<cstring>',
         c_header='<string.h>',
         source="""
-static void shroud_FccCopy(char *a, int la, const char *s)
+static void ShroudStrCopy(char *a, int la, const char *s)
 {
    int ls,nm;
    ls = strlen(s);
@@ -148,7 +148,24 @@ static void shroud_FccCopy(char *a, int la, const char *s)
    memcpy(a,s,nm);
    if(la > nm) { memset(a+nm,' ',la-nm);}
 }"""
-        )
+        ),
+    ShroudLenTrim=dict(
+        cpp_header='<cstring>',
+        c_header='<string.h>',
+        source="""
+int ShroudLenTrim(const char *s, int ls) {
+    int i;
+
+    for (i = ls - 1; i >= 0; i--) {
+        if (s[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+"""
+    ),
     )
 
 #

@@ -256,6 +256,22 @@ def extern_C(output, position):
                 '#endif'
                 ])
 
+def lookup_c_statements(arg):
+    """Look up the c_statements for an argument.
+    If the argument type is a template, look for 
+    template specific c_statements.
+    """
+    attrs = arg['attrs']
+    argtype = arg['type']
+    arg_typedef = Typedef.lookup(argtype)
+
+    c_statements = arg_typedef.c_statements
+    if 'template' in attrs:
+        cpp_T = attrs['template']
+        c_statements = arg_typedef.c_templates.get(
+            cpp_T, c_statements)
+    return c_statements
+
 
 class WrapperMixin(object):
     """Methods common to all wrapping classes.
