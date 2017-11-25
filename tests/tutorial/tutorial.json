@@ -826,7 +826,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg1", 
-                        "c_var_len": "SH_Narg1", 
                         "c_var_trim": "Larg1", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg1"
@@ -850,7 +849,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg2", 
-                        "c_var_len": "SH_Narg2", 
                         "c_var_trim": "Larg2", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg2"
@@ -876,7 +874,6 @@
                         "c_ptr": " *", 
                         "c_var": "SH_F_rv", 
                         "c_var_len": "NSH_F_rv", 
-                        "c_var_trim": "SH_LSH_F_rv", 
                         "cpp_type": "std::string", 
                         "cpp_val": "SH_rv.c_str()", 
                         "cpp_var": "SH_rv"
@@ -941,8 +938,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg1", 
-                        "c_var_len": "SH_Narg1", 
-                        "c_var_trim": "SH_Larg1", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg1"
                     }, 
@@ -977,8 +972,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg2", 
-                        "c_var_len": "SH_Narg2", 
-                        "c_var_trim": "SH_Larg2", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg2"
                     }, 
@@ -1062,7 +1055,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg1", 
-                        "c_var_len": "SH_Narg1", 
                         "c_var_trim": "Larg1", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg1"
@@ -1086,7 +1078,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg2", 
-                        "c_var_len": "SH_Narg2", 
                         "c_var_trim": "Larg2", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg2"
@@ -1111,7 +1102,6 @@
                         "c_ptr": "", 
                         "c_var": "output", 
                         "c_var_len": "Noutput", 
-                        "c_var_trim": "SH_Loutput", 
                         "cpp_type": "std::string", 
                         "cpp_val": "SH_rv.c_str()", 
                         "cpp_var": "SH_rv"
@@ -1511,8 +1501,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
-                        "c_var_trim": "SH_Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
                     }, 
@@ -1598,7 +1586,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
                         "c_var_trim": "Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
@@ -2234,8 +2221,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
-                        "c_var_trim": "SH_Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
                     }, 
@@ -2464,7 +2449,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
                         "c_var_trim": "Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
@@ -3900,7 +3884,6 @@
                         "c_ptr": "", 
                         "c_var": "SH_F_rv", 
                         "c_var_len": "NSH_F_rv", 
-                        "c_var_trim": "SH_LSH_F_rv", 
                         "cpp_type": "std::string", 
                         "cpp_val": "SH_rv.c_str()", 
                         "cpp_var": "SH_rv"

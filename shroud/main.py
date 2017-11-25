@@ -1327,15 +1327,15 @@ class GenFunctions(object):
             attrs = arg['attrs']
             stmts = 'intent_' + attrs['intent'] + '_buf'
             intent_blk = typedef.c_statements.get(stmts, {})
-            for extra in intent_blk.get('buf_args', []):
-                if extra in attrs:
+            for buf_arg in intent_blk.get('buf_args', []):
+                if buf_arg in attrs:
                     # do not override user specified variable name
                     continue
-                if extra == 'size':
+                if buf_arg == 'size':
                     attrs['size'] = options.C_var_size_template.format(c_var=arg['name'])
-                elif extra == 'len_trim':
+                elif buf_arg == 'len_trim':
                     attrs['len_trim'] = options.C_var_trim_template.format(c_var=arg['name'])
-                elif extra == 'len':
+                elif buf_arg == 'len':
                     attrs['len'] = options.C_var_len_template.format(c_var=arg['name'])
 
                 ## base typedef
