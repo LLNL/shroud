@@ -728,6 +728,62 @@ class Schema(object):
                     ),
                 ),
 
+###
+                # custom code for templates
+                c_templates=dict(
+                    string=dict(
+                        intent_in_buf=dict(
+                            cpp_local_var=True,
+                            pre_call=[
+                                '{c_const}std::vector<{cpp_T}> {cpp_var};',
+                                '{{',
+                                '  char * BBB = {c_var};',
+                                '  std::vector<{cpp_T}>::size_type i = 0;',
+                                '  for( ; i < {c_var_size}; i++) {{',
+                                '    {cpp_var}.push_back(std::string(BBB,FccStrLen(BBB, BBB0)));',
+                                '    BBB += {c_var_len};',
+                                '  }}',
+                                '}}'
+                            ],
+                        ),
+                        intent_out_buf=dict(
+                            cpp_local_var=True,
+                            pre_call=[
+                                '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});'
+                            ],
+                            post_call=[
+                                'for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{',
+                                '    {c_var}[i] = {cpp_var}[i];',
+                                '}}'
+                            ],
+                        ),
+                        intent_inout_buf=dict(
+                            cpp_local_var=True,
+                            pre_call=[
+                                'std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});'
+                            ],
+                            post_call=[
+                                'for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{',
+                                '    {c_var}[i] = {cpp_var}[i];',
+                                '}}'
+                            ],
+                        ),
+                        result_buf=dict(
+                            c_helper='FccCopy',
+                            post_call=[
+                                'if ({cpp_var}.empty()) {{',
+                                '  std::memset({c_var}, \' \', {c_var_len});',
+                                '}} else {{',
+                                '  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});',
+                                '}}',
+                            ],
+                        ),
+                    ),
+                ),
+###
+
+
+
 #                py_statements=dict(
 #                    intent_in=dict(
 #                        cpp_local_var=True,
@@ -1264,6 +1320,8 @@ class GenFunctions(object):
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
                 node['options'].wrap_c = False
+
+                ## base typedef
 
         if has_string_result:
             # Add additional argument to hold result

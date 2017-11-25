@@ -481,6 +481,7 @@ class Typedef(object):
         ('c_header', None),       # Name of C header file required for type
         ('c_to_cpp', '{c_var}'),  # Expression to convert from C to C++
         ('c_statements', {}),
+        ('c_templates', {}),      # c_statements for cpp_T
         ('c_return_code', None),
 
         ('f_c_args', None),       # List of argument names to F_C routine

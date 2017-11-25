@@ -1129,6 +1129,56 @@
                     ]
                 }
             }, 
+            "c_templates": {
+                "string": {
+                    "intent_in_buf": {
+                        "cpp_local_var": true, 
+                        "pre_call": [
+                            "{c_const}std::vector<{cpp_T}> {cpp_var};", 
+                            "{{", 
+                            "  char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type i = 0;", 
+                            "  for( ; i < {c_var_size}; i++) {{", 
+                            "    {cpp_var}.push_back(std::string(BBB,FccStrLen(BBB, BBB0)));", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
+                            "}}"
+                        ]
+                    }, 
+                    "intent_inout_buf": {
+                        "cpp_local_var": true, 
+                        "post_call": [
+                            "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
+                            "    {c_var}[i] = {cpp_var}[i];", 
+                            "}}"
+                        ], 
+                        "pre_call": [
+                            "std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
+                        ]
+                    }, 
+                    "intent_out_buf": {
+                        "cpp_local_var": true, 
+                        "post_call": [
+                            "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
+                            "    {c_var}[i] = {cpp_var}[i];", 
+                            "}}"
+                        ], 
+                        "pre_call": [
+                            "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});"
+                        ]
+                    }, 
+                    "result_buf": {
+                        "c_helper": "FccCopy", 
+                        "post_call": [
+                            "if ({cpp_var}.empty()) {{", 
+                            "  std::memset({c_var}, ' ', {c_var_len});", 
+                            "}} else {{", 
+                            "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
+                            "}}"
+                        ]
+                    }
+                }
+            }, 
             "cpp_header": "<vector>", 
             "cpp_type": "std::vector<{cpp_T}>"
         }, 
@@ -1273,6 +1323,56 @@
                         "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
                         "}}"
                     ]
+                }
+            }, 
+            "c_templates": {
+                "string": {
+                    "intent_in_buf": {
+                        "cpp_local_var": true, 
+                        "pre_call": [
+                            "{c_const}std::vector<{cpp_T}> {cpp_var};", 
+                            "{{", 
+                            "  char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type i = 0;", 
+                            "  for( ; i < {c_var_size}; i++) {{", 
+                            "    {cpp_var}.push_back(std::string(BBB,FccStrLen(BBB, BBB0)));", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
+                            "}}"
+                        ]
+                    }, 
+                    "intent_inout_buf": {
+                        "cpp_local_var": true, 
+                        "post_call": [
+                            "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
+                            "    {c_var}[i] = {cpp_var}[i];", 
+                            "}}"
+                        ], 
+                        "pre_call": [
+                            "std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
+                        ]
+                    }, 
+                    "intent_out_buf": {
+                        "cpp_local_var": true, 
+                        "post_call": [
+                            "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
+                            "    {c_var}[i] = {cpp_var}[i];", 
+                            "}}"
+                        ], 
+                        "pre_call": [
+                            "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});"
+                        ]
+                    }, 
+                    "result_buf": {
+                        "c_helper": "FccCopy", 
+                        "post_call": [
+                            "if ({cpp_var}.empty()) {{", 
+                            "  std::memset({c_var}, ' ', {c_var_len});", 
+                            "}} else {{", 
+                            "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
+                            "}}"
+                        ]
+                    }
                 }
             }, 
             "cpp_header": "<vector>", 

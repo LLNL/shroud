@@ -110,6 +110,8 @@ int vector_sum(const std::vector<int> &arg);
 void vector_iota(std::vector<int> &arg);
 void vector_increment(std::vector<int> &arg);
 
+int vector_string_count(const std::vector< std::string > &arg);
+
 } /* end namespace tutorial */
 
 #endif // TUTORIAL_HPP

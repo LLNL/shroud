@@ -260,6 +260,22 @@ void vector_increment(std::vector<int> &arg)
 }
 
 //----------------------------------------------------------------------
+// count underscore in strings
+
+int vector_string_count(const std::vector< std::string > &arg)
+{
+  int count = 0;
+  for(unsigned int i=0; i < arg.size(); i++) {
+    for (unsigned int j = 0; j < arg[i].size(); j++) {
+      if (arg[i][j] == '_') {
+        count++;
+      }
+    }
+  }
+  return count;
+}
+
+//----------------------------------------------------------------------
 
 const std::string& LastFunctionCalled()
 {

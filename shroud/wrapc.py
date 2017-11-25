@@ -428,13 +428,20 @@ class Wrapc(util.WrapperMixin):
             fmt_arg = arg.setdefault('fmtc', util.Options(fmt_func))
             c_attrs = arg['attrs']
             arg_typedef = self.typedef[arg['type']]
+            c_statements = arg_typedef.c_statements
             if 'template' in c_attrs:
                 base_typedef = arg_typedef
-                arg_typedef = self.typedef[c_attrs['template']]
+                cpp_T = c_attrs['template']
+                fmt_arg.cpp_T = cpp_T
+                fmt_arg.c_var_size = 'AAA'
+                arg_typedef = self.typedef[cpp_T]
+                # Look for template specific c_statements
+                # or use c_statements for base_typedef
+                c_statements = base_typedef.c_templates.get(
+                    cpp_T, None) or base_typedef.c_statements
             else:
                 base_typedef = util.Typedef('-none-')
 
-            c_statements = arg_typedef.c_statements
             fmt_arg.c_var = arg['name']
             if arg_typedef.base == 'string' or \
                arg_typedef.name == 'char_scalar':
@@ -449,7 +456,7 @@ class Wrapc(util.WrapperMixin):
                                                  options.C_var_size_template.format(
                                                     c_var=fmt_arg.c_var))
                 fmt_arg.cpp_T = c_attrs['template']
-                c_statements = base_typedef.c_statements
+#                c_statements = base_typedef.c_statements
 
             if c_attrs.get('const', False):
                 fmt_arg.c_const = 'const '
