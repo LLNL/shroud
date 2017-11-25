@@ -569,7 +569,12 @@ class Wrapf(util.WrapperMixin):
         result = node['result']
         result_type = result['type']
         subprogram = node['_subprogram']
+
         generator = node.get('_generated', '')
+        if generator == 'arg_to_buffer':
+            intent_grp = '_buf'
+        else:
+            intent_grp = ''
 
         if node.get('return_this', False):
             result_type = 'void'
@@ -606,15 +611,19 @@ class Wrapf(util.WrapperMixin):
             # default argument's intent
             # XXX look at const, ptr
             arg_typedef = util.Typedef.lookup(arg['type'])
+            c_statements = arg_typedef.c_statements
             fmt.c_var = arg['name']
             attrs = arg['attrs']
-            base_typedef = arg_typedef
             if 'template' in attrs:
-                arg_typedef = util.Typedef.lookup(attrs['template'])
+                cpp_T = attrs['template']
+                c_statements = arg_typedef.c_templates.get(
+                    cpp_T, c_statements)
+                arg_typedef = util.Typedef.lookup(cpp_T)
             self.update_f_module(modules,
                                  arg_typedef.f_c_module or arg_typedef.f_module)
 
-            if attrs.get('intent', 'inout') != 'in':
+            intent = attrs.get('intent', 'inout')
+            if intent != 'in':
                 args_all_in = False
 
             # argument names
@@ -631,27 +640,31 @@ class Wrapf(util.WrapperMixin):
             else:
                 arg_c_decl.append(self._c_decl(arg))
 
-            if generator == 'arg_to_buffer':
-                if base_typedef.base == 'vector':
-                    size = attrs['size']
-                    arg_c_names.append(size)
+            if attrs.get('_is_result', False):
+                c_stmts = 'result' + intent_grp
+            else:
+                c_stmts = 'intent_' + intent + intent_grp
+
+            c_intent_blk = c_statements.get(c_stmts, {})
+
+            # Add implied buffer arguments to prototype
+            for buf_arg in c_intent_blk.get('buf_args', []):
+                buf_arg_name = attrs[buf_arg]
+                if buf_arg == 'size':
+                    arg_c_names.append(buf_arg_name)
                     arg_c_decl.append(
-                        'integer(C_LONG), value, intent(IN) :: %s' % size)
+                        'integer(C_LONG), value, intent(IN) :: %s' % buf_arg_name)
                     self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
-                elif (arg_typedef.base == 'string' or
-                    arg_typedef.name == 'char_scalar'):
-                    len_trim = attrs.get('len_trim', None)
-                    if len_trim:
-                        arg_c_names.append(len_trim)
-                        arg_c_decl.append(
-                            'integer(C_INT), value, intent(IN) :: %s' % len_trim)
-                        self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                    len_arg = attrs.get('len', None)
-                    if len_arg:
-                        arg_c_names.append(len_arg)
-                        arg_c_decl.append(
-                            'integer(C_INT), value, intent(IN) :: %s' % len_arg)
-                        self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+                elif buf_arg == 'len_trim':
+                    arg_c_names.append(buf_arg_name)
+                    arg_c_decl.append(
+                        'integer(C_INT), value, intent(IN) :: %s' % buf_arg_name)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+                elif buf_arg == 'len':
+                    arg_c_names.append(buf_arg_name)
+                    arg_c_decl.append(
+                        'integer(C_INT), value, intent(IN) :: %s' % buf_arg_name)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_INT')
 
         if (subprogram == 'function' and
                 (is_pure or (func_is_const and args_all_in))):
@@ -732,6 +745,12 @@ class Wrapf(util.WrapperMixin):
         subprogram = node['_subprogram']
         c_subprogram = C_node['_subprogram']
 
+        generator = node.get('_generated', '')
+        if generator == 'arg_to_buffer':
+            intent_grp = '_buf'
+        else:
+            intent_grp = ''
+
         if node.get('return_this', False):
             result_type = 'void'
             subprogram = 'subroutine'
@@ -804,6 +823,8 @@ class Wrapf(util.WrapperMixin):
                     need_wrapper = True
 
             if f_arg:
+                # An argument to the C and Fortran function
+                # result_arguments are not processed here
                 f_index += 1
                 f_arg = f_args[f_index]
                 arg_f_names.append(fmt_arg.f_var)
@@ -814,33 +835,35 @@ class Wrapf(util.WrapperMixin):
                 base_typedef = arg_typedef
                 if 'template' in c_attrs:
                     # If a template, use its type
-                    arg_typedef = util.Typedef.lookup(c_attrs['template'])
+                    cpp_T = c_attrs['template']
+                    arg_typedef = util.Typedef.lookup(cpp_T)
 
                 f_statements = arg_typedef.f_statements
-                stmts = 'intent_' + c_attrs['intent']
+                f_stmts = 'intent_' + c_attrs['intent']
+                f_intent_blk = f_statements.get(f_stmts, {})
 
                 # Create a local variable for C if necessary
-                have_c_local_var = f_statements.get(stmts, {}).get('c_local_var', False)
+                have_c_local_var = f_intent_blk.get('c_local_var', False)
                 if have_c_local_var:
                     fmt_arg.c_var = 'SH_' + fmt_arg.f_var
                     arg_f_decl.append('{} {}'.format(
                         arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
 
                 # Add code for intent of argument
-                cmd_list = f_statements.get(stmts, {}).get('declare', [])
+                cmd_list = f_intent_blk.get('declare', [])
                 if cmd_list:
                     need_wrapper = True
                     fmt_arg.c_var = 'SH_' + fmt_arg.f_var
                     for cmd in cmd_list:
                         append_format(arg_f_decl, cmd, fmt_arg)
 
-                cmd_list = f_statements.get(stmts, {}).get('pre_call', [])
+                cmd_list = f_intent_blk.get('pre_call', [])
                 if cmd_list:
                     need_wrapper = True
                     for cmd in cmd_list:
                         append_format(pre_call, cmd, fmt_arg)
 
-                cmd_list = f_statements.get(stmts, {}).get('post_call', [])
+                cmd_list = f_intent_blk.get('post_call', [])
                 if cmd_list:
                     need_wrapper = True
                     for cmd in cmd_list:
