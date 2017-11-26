@@ -292,6 +292,18 @@ void vector_string_fill(std::vector< std::string > &arg)
 }
 
 //----------------------------------------------------------------------
+// Append to strings in arg.
+// arg+intent(inout)
+
+void vector_string_append(std::vector< std::string > &arg)
+{
+  for(unsigned int i=0; i < arg.size(); i++) {
+    arg[i] += "-like";
+  }
+  return;
+}
+
+//----------------------------------------------------------------------
 
 const std::string& LastFunctionCalled()
 {

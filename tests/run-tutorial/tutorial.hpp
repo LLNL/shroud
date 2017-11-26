@@ -112,6 +112,7 @@ void vector_increment(std::vector<int> &arg);
 
 int vector_string_count(const std::vector< std::string > &arg);
 void vector_string_fill(std::vector< std::string > &arg);
+void vector_string_append(std::vector< std::string > &arg);
 
 } /* end namespace tutorial */
 

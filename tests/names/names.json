@@ -1146,12 +1146,28 @@
                         ], 
                         "cpp_local_var": true, 
                         "post_call": [
-                            "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
-                            "    {c_var}[i] = {cpp_var}[i];", 
+                            "{{", 
+                            "  char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type", 
+                            "     i = 0,", 
+                            "     n = {c_var_size};", 
+                            "  n = std::min({cpp_var}.size(),n);", 
+                            "  for(; i < n; i++) {{", 
+                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[i].c_str());", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
                             "}}"
                         ], 
                         "pre_call": [
-                            "std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
+                            "std::vector<{cpp_T}> {cpp_var};", 
+                            "{{", 
+                            "  {c_const}char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type i = 0;", 
+                            "  for( ; i < static_cast<std::vector<{cpp_T}>::size_type>({c_var_size}); i++) {{", 
+                            "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
+                            "}}"
                         ]
                     }, 
                     "intent_out_buf": {

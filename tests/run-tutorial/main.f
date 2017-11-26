@@ -182,6 +182,12 @@ contains
     call assert_true( names(1) == "dog")
     call assert_true( names(2) == "bird")
     call assert_true( names(3) == "mouse")
+
+    names = [ "fish      ", "toolong   ", "          " ]
+    call vector_string_append(names)
+    call assert_true( names(1) == "fish-like")
+    call assert_true( names(2) == "toolong-li")
+    call assert_true( names(3) == "-like")
  
   end subroutine test_vector
 

@@ -212,6 +212,9 @@ functions:
    doxygen:
      brief: Fill in arg with some animal names
 
+-  decl: void vector_string_append(std::vector< std::string > &arg+intent(inout))
+   doxygen:
+     brief: append '-like' to names.
 
 ##################################################
 
