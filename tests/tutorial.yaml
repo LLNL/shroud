@@ -208,6 +208,11 @@ functions:
      decription: |
        The input will be copied in order to create the C++ argument
 
+-  decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
+   doxygen:
+     brief: Fill in arg with some animal names
+
+
 ##################################################
 
 # Used with testing

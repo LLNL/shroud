@@ -226,7 +226,8 @@ void Class1::Method1()
 }
 
 //----------------------------------------------------------------------
-// vector reference as argument, intent(in)
+// vector reference as argument.
+// arg+intent(in)
 
 int vector_sum(const std::vector<int> &arg)
 {
@@ -238,7 +239,8 @@ int vector_sum(const std::vector<int> &arg)
 }
 
 //----------------------------------------------------------------------
-// vector reference as argument, intent(out)
+// vector reference as argument.
+// arg+intent(out)
 
 void vector_iota(std::vector<int> &arg)
 {
@@ -249,7 +251,8 @@ void vector_iota(std::vector<int> &arg)
 }
 
 //----------------------------------------------------------------------
-// vector reference as argument, intent(out)
+// vector reference as argument.
+// arg+intent(inout)
 
 void vector_increment(std::vector<int> &arg)
 {
@@ -261,6 +264,7 @@ void vector_increment(std::vector<int> &arg)
 
 //----------------------------------------------------------------------
 // count underscore in strings
+// arg+intent(in)
 
 int vector_string_count(const std::vector< std::string > &arg)
 {
@@ -273,6 +277,18 @@ int vector_string_count(const std::vector< std::string > &arg)
     }
   }
   return count;
+}
+
+//----------------------------------------------------------------------
+// Add strings to arg.
+// arg+intent(out)
+
+void vector_string_fill(std::vector< std::string > &arg)
+{
+  arg.push_back("dog");
+  arg.push_back("bird");
+  arg.push_back("mouse");
+  return;
 }
 
 //----------------------------------------------------------------------

@@ -133,6 +133,8 @@ void TUT_vector_increment_bufferify(int * arg, long Sarg);
 
 int TUT_vector_string_count_bufferify(const char * arg, long Sarg, int Narg);
 
+void TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg);
+
 const char * TUT_last_function_called();
 
 void TUT_last_function_called_bufferify(char * SH_F_rv, int NSH_F_rv);

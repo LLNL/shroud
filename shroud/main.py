@@ -762,14 +762,23 @@ class Schema(object):
                             ],
                         ),
                         intent_out_buf=dict(
+                            c_helper='ShroudLenTrim',
                             cpp_local_var=True,
                             buf_args = [ 'size', 'len' ],
                             pre_call=[
-                                '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});'
+                                '{c_const}std::vector<{cpp_T}> {cpp_var};'
                             ],
                             post_call=[
-                                'for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{',
-                                '    {c_var}[i] = {cpp_var}[i];',
+                                '{{',
+                                '  char * BBB = {c_var};',
+                                '  std::vector<{cpp_T}>::size_type',
+                                '     i = 0,',
+                                '     n = {c_var_size};',
+                                '  n = std::min({cpp_var}.size(),n);',
+                                '  for(; i < n; i++) {{',
+                                '    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[i].c_str());',
+                                '    BBB += {c_var_len};',
+                                '  }}',
                                 '}}'
                             ],
                         ),

@@ -73,8 +73,6 @@ contains
 
   subroutine test_functions
 
-    integer(C_INT) intv(5)
-
     call set_case_name("test_functions")
 
     call function1
@@ -154,6 +152,15 @@ contains
     rv_int = enumfunc(1)
     call assert_true(rv_int .eq. 2)
 
+  end subroutine test_functions
+
+  subroutine test_vector
+    integer(C_INT) intv(5)
+    character(10) :: names(3)
+    integer irv
+
+    call set_case_name("test_vector")
+
     intv = [1,2,3,4,5]
     rv_int = vector_sum(intv)
     call assert_true(rv_int .eq. 15)
@@ -166,14 +173,15 @@ contains
     call vector_increment(intv)
     call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
 
-  end subroutine test_functions
-
-  subroutine test_vector
-    character(10) :: names(3) = [ "dog_cat   ", "bird_mouse", "__        " ]
-    integer irv
-
+    names = [ "dog_cat   ", "bird_mouse", "__        " ]
     irv = vector_string_count(names)
     call assert_true( irv == 4)
+
+    names = " "
+    call vector_string_fill(names)
+    call assert_true( names(1) == "dog")
+    call assert_true( names(2) == "bird")
+    call assert_true( names(3) == "mouse")
  
   end subroutine test_vector
 

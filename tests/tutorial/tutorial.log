@@ -43,6 +43,7 @@ C function int vector_sum(const std::vector & arg+dimension(:)+intent(in)+size(S
 C function void vector_iota(std::vector & arg+dimension(:)+intent(out)+size(Sarg)+template(int))
 C function void vector_increment(std::vector & arg+dimension(:)+intent(inout)+size(Sarg)+template(int))
 C function int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))
+C function void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))
 C function const std::string & LastFunctionCalled()+pure
 C function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
 Close wrapTutorial.h
@@ -96,6 +97,8 @@ Fortran function void vector_increment(std::vector & arg+dimension(:)+intent(ino
 C-interface function void vector_increment(std::vector & arg+dimension(:)+intent(inout)+size(Sarg)+template(int))
 Fortran function int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+template(std::string))
 C-interface function int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))
+Fortran function void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+template(std::string))
+C-interface function void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))
 C-interface, Fortran function const std::string & LastFunctionCalled()+pure
 C-interface function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
 Close wrapftutorial.f
