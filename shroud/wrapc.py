@@ -540,6 +540,8 @@ class Wrapc(util.WrapperMixin):
 
         if node.get('return_this', False):
             fmt_func.C_return_type = 'void'
+        elif 'C_return_type' in node:
+            fmt_func.C_return_type = node['C_return_type']
         else:
             fmt_func.C_return_type = options.get(
                 'C_return_type', self._c_type('c_type', result))
@@ -589,6 +591,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_result)
 
                 if not result_arg:
+                    # The result is not passed back in an argument
                     c_statements = result_typedef.c_statements
                     intent_blk = c_statements.get('result', {})
                     if result_typedef.cpp_to_c != '{cpp_var}':
@@ -620,6 +623,16 @@ class Wrapc(util.WrapperMixin):
                     fmt_func.C_return_code = ('return '
                                             + wformat(return_lang, fmt_result)
                                             + ';')
+
+            if 'C_post_call' in node:
+                post_call.append('{')
+                post_call.append('// C_post_call')
+                append_format(post_call, node['C_post_call'], fmt_func)
+                post_call.append('}')
+
+            if 'C_return_code' in node:
+                # override any computed return code.
+                fmt_func.C_return_code = wformat(node['C_return_code'], fmt_func)
 
             # copy-out values, clean up
             C_code = [1]

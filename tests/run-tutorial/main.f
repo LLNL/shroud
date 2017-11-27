@@ -162,8 +162,8 @@ contains
     call set_case_name("test_vector")
 
     intv = [1,2,3,4,5]
-    rv_int = vector_sum(intv)
-    call assert_true(rv_int .eq. 15)
+    irv = vector_sum(intv)
+    call assert_true(irv .eq. 15)
 
     intv(:) = 0
     call vector_iota(intv)
@@ -173,16 +173,21 @@ contains
     call vector_increment(intv)
     call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
 
+    ! count number of underscores
     names = [ "dog_cat   ", "bird_mouse", "__        " ]
     irv = vector_string_count(names)
-    call assert_true( irv == 4)
+    call assert_true(irv == 4)
 
+    ! Fill strings into names
     names = " "
-    call vector_string_fill(names)
+    irv = vector_string_fill(names)
+    call assert_true(irv == 2)
     call assert_true( names(1) == "dog")
     call assert_true( names(2) == "bird")
-    call assert_true( names(3) == "mouse")
+    call assert_true( names(3) == " ")
 
+    ! Append -like to names.
+    ! Note that strings will be truncated to len(names)
     names = [ "fish      ", "toolong   ", "          " ]
     call vector_string_append(names)
     call assert_true( names(1) == "fish-like")

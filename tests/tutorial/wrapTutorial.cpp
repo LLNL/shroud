@@ -479,8 +479,10 @@ int TUT_vector_string_count_bufferify(const char * arg, long Sarg, int Narg)
 /**
  * \brief Fill in arg with some animal names
  *
+ * The C++ function returns void. But the C and Fortran wrappers return
+ * an int with the number of items added to arg.
  */
-void TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg)
+int TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg)
 {
 // splicer begin function.vector_string_fill_bufferify
     std::vector<std::string> SH_arg;
@@ -496,7 +498,7 @@ void TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg)
         BBB += Narg;
       }
     }
-    return;
+    return SH_arg.size();
 // splicer end function.vector_string_fill_bufferify
 }
 

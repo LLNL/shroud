@@ -3933,6 +3933,8 @@
             }
         }, 
         {
+            "C_return_code": "return SH_arg.size();", 
+            "C_return_type": "int", 
             "_PTR_F_C_index": 49, 
             "_decl": "void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+template(std::string))", 
             "_function_index": 27, 
@@ -3953,18 +3955,20 @@
             "attrs": {}, 
             "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
             "doxygen": {
-                "brief": "Fill in arg with some animal names"
+                "brief": "Fill in arg with some animal names", 
+                "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
             }, 
             "fmt": {
                 "F_C_call": "c_vector_string_fill_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
                 "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
                 "F_arguments": "arg", 
-                "F_call_code": "call c_vector_string_fill_bufferify(\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT))", 
+                "F_call_code": "SH_rv = c_vector_string_fill_bufferify(\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT))", 
                 "F_name_function": "vector_string_fill", 
                 "F_name_generic": "vector_string_fill", 
                 "F_name_impl": "vector_string_fill", 
-                "F_subprogram": "subroutine", 
+                "F_result_clause": " result(SH_rv)", 
+                "F_subprogram": "function", 
                 "function_name": "vector_string_fill", 
                 "underscore_name": "vector_string_fill"
             }, 
@@ -3980,6 +3984,8 @@
             }
         }, 
         {
+            "C_return_code": "return SH_arg.size();", 
+            "C_return_type": "int", 
             "_PTR_C_CPP_index": 27, 
             "_decl": "void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -4019,7 +4025,8 @@
             "attrs": {}, 
             "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
             "doxygen": {
-                "brief": "Fill in arg with some animal names"
+                "brief": "Fill in arg with some animal names", 
+                "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
             }, 
             "fmt": {
                 "C_call_code": "vector_string_fill(SH_arg);", 
@@ -4028,8 +4035,8 @@
                 "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    i = 0,\n    n = Sarg;\n  n = std::min(SH_arg.size(),n);\n  for(; i < n; i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[i].c_str());\n    BBB += Narg;\n  }\n}", 
                 "C_pre_call": "std::vector<std::string> SH_arg;", 
                 "C_prototype": "char * arg, long Sarg, int Narg", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
+                "C_return_code": "return SH_arg.size();", 
+                "C_return_type": "int", 
                 "F_C_name": "c_vector_string_fill_bufferify", 
                 "c_const": "", 
                 "function_suffix": "_bufferify"

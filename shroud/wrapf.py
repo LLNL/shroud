@@ -76,6 +76,7 @@ end module {F_module_name}
 from __future__ import print_function
 from __future__ import absolute_import
 
+import copy
 import os
 
 from . import whelpers
@@ -579,6 +580,9 @@ class Wrapf(util.WrapperMixin):
         if node.get('return_this', False):
             result_type = 'void'
             subprogram = 'subroutine'
+        elif 'C_return_type' in node:
+            result_type = node['C_return_type']
+            subprogram = 'function'
 
         result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)
@@ -749,6 +753,16 @@ class Wrapf(util.WrapperMixin):
             result_type = 'void'
             subprogram = 'subroutine'
             c_subprogram = 'subroutine'
+        elif 'C_return_type' in node:
+            # User has changed the return type of the C function
+            # TODO: probably needs to be more clever about
+            # setting pointer or reference fields too.
+            # Maybe parse result_type instead of copy.
+            result_type = node['C_return_type']
+            subprogram = 'function'
+            c_subprogram = 'function'
+            result = copy.deepcopy(node['result'])
+            result['type'] = result_type
 
         result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)

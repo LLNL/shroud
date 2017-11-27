@@ -287,7 +287,6 @@ void vector_string_fill(std::vector< std::string > &arg)
 {
   arg.push_back("dog");
   arg.push_back("bird");
-  arg.push_back("mouse");
   return;
 }
 

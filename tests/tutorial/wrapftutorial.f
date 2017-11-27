@@ -419,14 +419,16 @@ module tutorial_mod
             integer(C_INT) :: SH_rv
         end function c_vector_string_count_bufferify
 
-        subroutine c_vector_string_fill_bufferify(arg, Sarg, Narg) &
+        function c_vector_string_fill_bufferify(arg, Sarg, Narg) &
+                result(SH_rv) &
                 bind(C, name="TUT_vector_string_fill_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_LONG
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg(*)
             integer(C_LONG), value, intent(IN) :: Sarg
             integer(C_INT), value, intent(IN) :: Narg
-        end subroutine c_vector_string_fill_bufferify
+            integer(C_INT) :: SH_rv
+        end function c_vector_string_fill_bufferify
 
         subroutine c_vector_string_append_bufferify(arg, Sarg, Narg) &
                 bind(C, name="TUT_vector_string_append_bufferify")
@@ -971,17 +973,20 @@ contains
     !>
     !! \brief Fill in arg with some animal names
     !!
+    !! The C++ function returns void. But the C and Fortran wrappers return
+    !! an int with the number of items added to arg.
     !<
-    subroutine vector_string_fill(arg)
+    function vector_string_fill(arg) result(SH_rv)
         use iso_c_binding, only : C_INT, C_LONG
         character(*), intent(OUT) :: arg(:)
+        integer(C_INT) :: SH_rv
         ! splicer begin function.vector_string_fill
-        call c_vector_string_fill_bufferify(  &
+        SH_rv = c_vector_string_fill_bufferify(  &
             arg,  &
             size(arg, kind=C_LONG),  &
             len(arg, kind=C_INT))
         ! splicer end function.vector_string_fill
-    end subroutine vector_string_fill
+    end function vector_string_fill
 
     ! void vector_string_append(std::vector & arg+dimension(:)+intent(inout)+template(std::string))
     ! arg_to_buffer
