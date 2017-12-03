@@ -46,6 +46,8 @@
 #include "ExClass2.hpp"
 #include "sidre/SidreWrapperHelpers.hpp"
 
+// Copy s into a, blank fill to la characters
+// Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
 {
    int ls,nm;

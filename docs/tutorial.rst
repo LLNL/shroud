@@ -336,7 +336,7 @@ computed using ``len``::
         if (SH_rv.empty()) {
           std::memset(SH_F_rv, ' ', NSH_F_rv);
         } else {
-          shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+          ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
         }
         return;
     }

@@ -239,8 +239,8 @@ be controlled directly by the input file::
     end module {F_module_name}
 
 
-Helper functions
-----------------
+Additional Wrapper Functions
+----------------------------
 
 Functions can be created in the Fortran wrapper which have no
 corresponding function in the C++ library.  This may be necessary to
@@ -280,6 +280,22 @@ to get the definition.
 
 
 .. Fortran shadow class
+
+Helper functions
+----------------
+
+Shroud provides some additional file static function which are inserted 
+at the beginning of the wrapped code.
+
+C helper functions
+
+``ShroudStrCopy(char *a, int la, const char *s)``
+    Copy *s* into *a*, blank fill to *la* characters
+    Truncate if *a* is too short.
+
+``int ShroudLenTrim(const char *s, int ls)``
+    Returns the length of character string *a* with length *ls*,
+    ignoring any trailing blanks.
 
 
 Header Files

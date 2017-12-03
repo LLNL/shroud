@@ -451,9 +451,9 @@ class Schema(object):
 
                 c_statements=dict(
                     intent_in_buf=dict(
+                        buf_args = [ 'len_trim' ],
                         cpp_local_var=True,
                         cpp_header='<cstring>',
-                        buf_args = [ 'len_trim' ],
                         pre_call=[
                             'char * {cpp_var} = new char [{c_var_trim} + 1];',
                             'std::strncpy({cpp_var}, {c_var}, {c_var_trim});',
@@ -464,9 +464,9 @@ class Schema(object):
                             ],
                         ),
                     intent_out_buf=dict(
+                        buf_args = [ 'len' ],
                         cpp_local_var=True,
                         c_helper='ShroudStrCopy',
-                        buf_args = [ 'len' ],
                         pre_call=[
                             'char * {cpp_var} = new char [{c_var_len} + 1];',
                             ],
@@ -476,9 +476,9 @@ class Schema(object):
                             ],
                         ),
                     intent_inout_buf=dict(
+                        buf_args = [ 'len_trim', 'len' ],
                         cpp_local_var=True,
                         c_helper='ShroudStrCopy',
-                        buf_args = [ 'len_trim', 'len' ],
                         pre_call=[
                             'char * {cpp_var} = new char [{c_var_len} + 1];',
                             'std::strncpy({cpp_var}, {c_var}, {c_var_trim});',
@@ -490,9 +490,9 @@ class Schema(object):
                             ],
                         ),
                     result_buf=dict(
+                        buf_args = [ 'len' ],
                         cpp_header='<cstring>',
                         c_helper='ShroudStrCopy',
-                        buf_args = [ 'len' ],
                         post_call=[
                             'if ({cpp_var} == NULL) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',
@@ -536,8 +536,8 @@ class Schema(object):
 
                 c_statements=dict(
                     result_buf=dict(
-                        cpp_header='<cstring>',
                         buf_args = [ 'len' ],
+                        cpp_header='<cstring>',
                         post_call=[
                             'std::memset({c_var}, \' \', {c_var_len});',
                             '{c_var}[0] = {cpp_var};',
@@ -600,17 +600,17 @@ class Schema(object):
                         ],
                     ),
                     intent_in_buf=dict(
-                        cpp_local_var=True,
                         buf_args = [ 'len_trim' ],
+                        cpp_local_var=True,
                         pre_call=[
                             ('{c_const}std::string '
                              '{cpp_var}({c_var}, {c_var_trim});')
                         ],
                     ),
                     intent_out_buf=dict(
+                        buf_args = [ 'len' ],
                         c_helper='ShroudStrCopy',
                         cpp_local_var=True,
-                        buf_args = [ 'len' ],
                         pre_call=[
                             'std::string {cpp_var};'
                         ],
@@ -619,9 +619,9 @@ class Schema(object):
                         ],
                     ),
                     intent_inout_buf=dict(
+                        buf_args = [ 'len_trim', 'len' ],
                         c_helper='ShroudStrCopy',
                         cpp_local_var=True,
-                        buf_args = [ 'len_trim', 'len' ],
                         pre_call=[
                             'std::string {cpp_var}({c_var}, {c_var_trim});'
                         ],
@@ -630,9 +630,9 @@ class Schema(object):
                         ],
                     ),
                     result_buf=dict(
+                        buf_args = [ 'len' ],
                         cpp_header='<cstring>',
                         c_helper='ShroudStrCopy',
-                        buf_args = [ 'len' ],
                         post_call=[
                             'if ({cpp_var}.empty()) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',
@@ -697,16 +697,16 @@ class Schema(object):
 #                        ],
 #                    ),
                     intent_in_buf=dict(
-                        cpp_local_var=True,
                         buf_args = [ 'size' ],
+                        cpp_local_var=True,
                         pre_call=[
                             ('{c_const}std::vector<{cpp_T}> '
                              '{cpp_var}({c_var}, {c_var} + {c_var_size});')
                         ],
                     ),
                     intent_out_buf=dict(
-                        cpp_local_var=True,
                         buf_args = [ 'size' ],
+                        cpp_local_var=True,
                         pre_call=[
                             '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});'
                         ],
@@ -717,8 +717,8 @@ class Schema(object):
                         ],
                     ),
                     intent_inout_buf=dict(
-                        cpp_local_var=True,
                         buf_args = [ 'size' ],
+                        cpp_local_var=True,
                         pre_call=[
                             'std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});'
                         ],
@@ -729,8 +729,8 @@ class Schema(object):
                         ],
                     ),
                     result_buf=dict(
-                        c_helper='ShroudStrCopy',
                         buf_args = [ 'size' ],
+                        c_helper='ShroudStrCopy',
                         post_call=[
                             'if ({cpp_var}.empty()) {{',
                             '  std::memset({c_var}, \' \', {c_var_len});',
@@ -746,9 +746,9 @@ class Schema(object):
                 c_templates=dict(
                     string=dict(
                         intent_in_buf=dict(
+                            buf_args = [ 'size', 'len' ],
                             c_helper='ShroudLenTrim',
                             cpp_local_var=True,
-                            buf_args = [ 'size', 'len' ],
                             pre_call=[
                                 'std::vector<{cpp_T}> {cpp_var};',
                                 '{{',
@@ -764,9 +764,9 @@ class Schema(object):
                             ],
                         ),
                         intent_out_buf=dict(
+                            buf_args = [ 'size', 'len' ],
                             c_helper='ShroudLenTrim',
                             cpp_local_var=True,
-                            buf_args = [ 'size', 'len' ],
                             pre_call=[
                                 '{c_const}std::vector<{cpp_T}> {cpp_var};'
                             ],
@@ -785,8 +785,8 @@ class Schema(object):
                             ],
                         ),
                         intent_inout_buf=dict(
-                            cpp_local_var=True,
                             buf_args = [ 'size', 'len' ],
+                            cpp_local_var=True,
                             pre_call=[
                                 'std::vector<{cpp_T}> {cpp_var};',
                                 '{{',

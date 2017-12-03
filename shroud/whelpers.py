@@ -140,6 +140,8 @@ CHelpers = dict(
         cpp_header='<cstring>',
         c_header='<string.h>',
         source="""
+// Copy s into a, blank fill to la characters
+// Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
 {
    int ls,nm;
@@ -153,6 +155,8 @@ static void ShroudStrCopy(char *a, int la, const char *s)
         cpp_header='<cstring>',
         c_header='<string.h>',
         source="""
+// Returns the length of character string a with length ls,
+// ignoring any trailing blanks.
 int ShroudLenTrim(const char *s, int ls) {
     int i;
 

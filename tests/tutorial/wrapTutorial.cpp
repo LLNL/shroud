@@ -46,6 +46,8 @@
 #include <string>
 #include "tutorial.hpp"
 
+// Returns the length of character string a with length ls,
+// ignoring any trailing blanks.
 int ShroudLenTrim(const char *s, int ls) {
     int i;
 
@@ -59,6 +61,8 @@ int ShroudLenTrim(const char *s, int ls) {
 }
 
 
+// Copy s into a, blank fill to la characters
+// Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
 {
    int ls,nm;

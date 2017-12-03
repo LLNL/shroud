@@ -280,6 +280,8 @@ The type map::
             c_type: char
             c_statements:
                 intent_in_buf:
+                    buf_args:
+                    - len_trim
                     cpp_local_var: True
                     cpp_header: <cstring>
                     pre_call:
@@ -289,14 +291,20 @@ The type map::
                     post_call:
                       -  delete [] {cpp_var};
                 intent_out_buf:
+                    buf_args:
+                    - len
+                    c_helper: ShroudStrCopy
                     cpp_local_var: True
-                    cpp_header: shroudrt.hpp
                     pre_call:
                       - char * {cpp_var} = new char [{c_var_len} + 1];
                     post_call:
-                      - shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
                       - delete [] {cpp_var};
                 intent_inout_buf:
+                    buf_args:
+                    - len_trim
+                    - len
+                    c_helper: ShroudStrCopy
                     cpp_local_var: True
                     cpp_header: <cstring>
                     pre_call:
@@ -306,12 +314,15 @@ The type map::
                     post_call:
                       -  delete [] {cpp_var};
                 result_buf:
-                    cpp_header: <cstring> shroudrt.hpp
+                    buf_args:
+                    - len
+                    c_helper: ShroudStrCopy
+                    cpp_header: <cstring>
                     post_call:
                       - if ({cpp_var} == NULL) {{
                       -   std::memset({c_var}, ' ', {c_var_len});
                       - }} else {{
-                      -   shroud_FccCopy({c_var}, {c_var_len}, {cpp_var});
+                      -   ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});
                       - }}
 
             f_type: character(*)
@@ -319,6 +330,14 @@ The type map::
             f_c_module:
                 iso_c_binding:
                   - C_CHAR
+
+            f_statements:
+                result_pure:
+                    need_wrapper: True
+                    f_helper: fstr_ptr
+                    call:
+                      - {F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))
+
 
 The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
 statement ``dest = str``::
@@ -373,7 +392,7 @@ And generates::
         std::strncpy(SH_src, src, Lsrc);
         SH_src[Lsrc] = '\0';
         passCharPtr(SH_dest, SH_src);
-        shroud_FccCopy(dest, Ndest, SH_dest);
+        ShroudStrCopy(dest, Ndest, SH_dest);
         delete [] SH_dest;
         delete [] SH_src;
         return;
@@ -394,7 +413,7 @@ buffers with space for an additional character (the ``NULL``).  The
 *intent(in)* string copies the data and adds an explicit terminating
 ``NULL``.  The function is called then the post_call section copies
 the result back into the ``dest`` argument and deletes the scratch
-space.  ``shroud_FccCopy`` is a function provided by Shroud which
+space.  ``ShroudStrCopy`` is a function provided by Shroud which
 copies character into the destination up to ``Ndest`` characters, then
 blank fills any remaining space.
 
@@ -460,29 +479,38 @@ additional sections to convert between ``char *`` and ``std::string``::
                       - strcpy({c_var}, {cpp_val});
 
                 intent_in_buf:
+                    buf_args:
+                    - len_trim
                     cpp_local_var: True
                     pre_call:
                       - {c_const}std::string {cpp_var}({c_var}, {c_var_trim});
                 intent_out_buf:
+                    buf_args:
+                    - len
                     cpp_header: shroudrt.hpp
                     pre_call:
                       - {c_const}std::string {cpp_var};
                     post_call:
-                      - shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
                 intent_inout_buf:
+                    buf_args:
+                    - len_trim
+                    - len
                     cpp_header: shroudrt.hpp
                     cpp_local_var: True
                     pre_call:
                       - std::string {cpp_var}({c_var}, {c_var_trim});
                     post_call:
-                      - shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
                 result_buf:
+                    buf_args:
+                    - len
                     cpp_header: <cstring> shroudrt.hpp
                     post_call:
                        - if ({cpp_var}.empty()) {{
                        -   std::memset({c_var}, ' ', {c_var_len});
                        - }} else {{
-                       -   shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});
+                       -   ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
                        - }}
     
             f_type: character(*)
@@ -490,6 +518,13 @@ additional sections to convert between ``char *`` and ``std::string``::
             f_c_module:
                 iso_c_binding:
                   - C_CHAR
+
+            f_statements:
+                result_pure:
+                    need_wrapper: True
+                    f_helper: fstr_ptr
+                    call:
+                      - {F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))
 
 
 To demonstrate this type map, ``acceptStringReference`` is a function which
@@ -520,7 +555,7 @@ short for the new string value::
     {
         std::string SH_arg1(arg1, Larg1);
         acceptStringReference(SH_arg1);
-        shroud_FccCopy(arg1, Narg1, SH_arg1.c_str());
+        ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());
         return;
     }
 
@@ -588,7 +623,7 @@ copies the result into a buffer of known length::
         if (SH_rv == NULL) {
            std::memset(SH_F_rv, ' ', NSH_F_rv);
         } else {
-          shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv);
+          ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);
         }
         return;
     }
@@ -672,7 +707,7 @@ The generated wrappers are::
         if (SH_rv.empty()) {
           std::memset(SH_F_rv, ' ', NSH_F_rv);
         } else {
-          shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+          ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
         }
         return;
     }

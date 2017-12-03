@@ -747,6 +747,20 @@ c_statements
     result
         Code to use when passing result as an argument.
 
+
+        buf_args
+           An array of arguments which will be added to the
+           bufferified version of a function.
+
+           len
+              Fortran intrinsic `LEN`, of type *int*.
+
+           len_trim
+              Fortran intrinsic `LEN_TRIM`, of type *int*.
+
+           size
+              Fortran intrinsic `SIZE`, of type *long*.
+
         cpp_header
            string of blank delimited header names
 
@@ -760,6 +774,16 @@ c_statements
            A blank delimited list of helper routines to add.
            These functions are defined in whelper.py.
            There is no current way to add additional functions.
+
+c_templates
+    A dictionary indexed by type of specialized *c_statements*
+    When an argument has a *template* field, such as type ``vector<string>``,
+    some additional specialization of c_statements may be required::
+
+        c_templates:
+            string:
+               intent_in_buf:
+               - code to copy CHARACTER to vector<string>
 
 f_c_args
     List of argument names to F_C routine.
@@ -1009,6 +1033,17 @@ C_code
 C_name
     Name of the C wrapper function.
     Defaults to evaluation of option *C_name_template*.
+
+C_post_call
+    Code added after all of the argument *post_call* code.
+
+C_return_type
+    Allow the C wrapper and Fortran wrapper to return a different type
+    than the C++ function.
+
+C_return_code
+    Code used to compute the return value.
+    Must include the ``return`` statement.
 
 F_C_name
     Name of the Fortran ``BIND(C)`` interface for a C function.
