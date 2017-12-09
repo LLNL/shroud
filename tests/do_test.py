@@ -288,7 +288,7 @@ def clear_files(path):
         try:
             if os.path.isfile(full_path):
                 os.unlink(full_path)
-        except Exception, e:
+        except Exception as e:
             logging.warning('Unable to remove file: ' + full_path)
             logging.warning(e)
 

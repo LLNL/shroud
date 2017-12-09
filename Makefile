@@ -44,7 +44,9 @@
 
 top := $(CURDIR)
 
-PYTHON := $(shell which python)
+PYTHONEXE := python2
+
+PYTHON := $(shell which $(PYTHONEXE))
 python.dir := $(dir $(PYTHON))
 venv := $(dir $(PYTHON))virtualenv
 
@@ -60,7 +62,7 @@ venv.dir := $(top)/$(tempdir)/venv
 # if virtualenv is created us it, else depend on python in path
 ifneq ($(wildcard $(venv.dir)),)
 python.dir := $(venv.dir)/bin
-PYTHON := $(venv.dir)/bin/python
+PYTHON := $(venv.dir)/bin/$(PYTHONEXE)
 endif
 
 export PYTHON
