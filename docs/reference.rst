@@ -213,7 +213,9 @@ C_return_code
 
 C_return_type
     Return type of the function.
-    If the **return_this** field is true, then *C_return_type* is set to ``void``.
+    If the **return_this** field is true, then set to ``void``.
+    If the **C_return_type** field is set, use its value.
+    Otherwise set to function's return type.
 
 CPP_template
     The template component of the function declaration.
