@@ -209,6 +209,7 @@ class Tester:
             '--path', self.test_input_dir,
             '--logdir', self.result_dir,
             '--outdir', self.result_dir,
+#            '--yaml-types', 'def_types.yaml',
             self.testyaml,
             ]
         logging.debug(' '.join(cmd))

@@ -99,7 +99,8 @@ class Schema(object):
       check_functions
         check_function
     """
-    def __init__(self, config):
+    def __init__(self, tree, config):
+        self.tree = tree    # json tree
         self.config = config
         self.fmt_stack = []
 
@@ -181,7 +182,7 @@ class Schema(object):
         """ Check entire schema of input tree.
         Create format dictionaries.
         """
-        node = self.config
+        node = self.tree
 
         # default options
         def_options = util.Options(
@@ -858,6 +859,11 @@ class Schema(object):
                 c_to_cpp='MPI_Comm_f2c({c_var})',
                 ),
             )
+
+        # Write out as YAML if requested
+        if self.config.yaml_types:
+            with open(self.config.yaml_types, 'w') as yaml_file:
+                yaml.dump(def_types, yaml_file, default_flow_style=False)
 
         # aliases
         def_types_alias = dict()
@@ -1862,6 +1868,8 @@ def main():
                         'times to append to path.')
     parser.add_argument('--cmake', default='',
                         help='Create a file with CMake macro')
+    parser.add_argument('--yaml-types', default='',
+                        help='Write a YAML file with default types')
     parser.add_argument('filename', nargs='*',
                         help='Input file to process.')
 
@@ -1927,6 +1935,7 @@ def main_with_args(args):
     config.python_dir = args.outdir_python or args.outdir
     config.lua_dir = args.outdir_lua or args.outdir
     config.yaml_dir = args.outdir_yaml or args.outdir
+    config.yaml_types = os.path.join(args.outdir, args.yaml_types)
     config.log = log
     config.cfiles = []  # list of C/C++ files created
     config.ffiles = []  # list of Fortran files created
@@ -1958,7 +1967,7 @@ def main_with_args(args):
 
 #    print(all)
 
-    Schema(all).check_schema()
+    Schema(all, config).check_schema()
     VerifyAttrs(all, config).verify_attrs()
     GenFunctions(all, config).gen_library()
     Namify(all, config).name_library()
