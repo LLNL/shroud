@@ -369,7 +369,14 @@ namespace.
 Local Variable
 ^^^^^^^^^^^^^^
 
-*SH_* prefix on local variables.
+*SH_* prefix on local variables which are created for a corresponding argument.
+For example the argument `char *name`, may need to create a local variable
+named `std::string SH_name`.
+
+Shroud also generates some code which requires local variables such as
+loop indexes.  These are prefixed with *SH_T_*.  This name is controlled 
+by the format variable *c_temp*.
+
 
 Results are named from *fmt.C_result* or *fmt.F_result*.
 

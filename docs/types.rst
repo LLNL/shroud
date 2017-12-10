@@ -79,6 +79,7 @@ Types
   * float
   * double
   * std::string
+  * std::vector
 
   Fortran has no support for unsigned types.
           ``size_t`` will be the correct number of bytes, but
@@ -868,3 +869,19 @@ show above with the remainder set to default values by Shroud.
     
 
 ..  chained function calls
+
+
+Memory Management
+-----------------
+
+Shroud generated C wrappers do not explicitly delete any memory.
+However a destructor may be automatically called for some C++ stl
+classes.  For example, a function which returns a ``std::string``
+will have its value copied into Fortran memory since the function's
+returned object will be destructed when the C++ wrapper returns.  If a
+function returns a ``char *`` value, it will also be copied into Fortran
+memory. But if the caller of the C++ function wants to transfer
+ownership of the pointer to its caller, the C++ wrapper will leak the
+memory.
+
+.. note:: Reference counting and garbage collection are still a work in progress
