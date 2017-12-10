@@ -106,6 +106,9 @@ C_impl_filename
 C_result
     TODO
 
+c_temp
+    Prefix for wrapper working variables.
+    Defaults to *SH_T_*.
 F_module_name
     Name of module for Fortran interface for the library.
     Defaulted from expansion of option *F_module_name_library_template*.
@@ -279,7 +282,7 @@ function_suffix
 Argument
 ^^^^^^^^
 
-C_const
+c_const
     ``const`` if argument has the *const* attribute.
 
 c_var
@@ -709,7 +712,7 @@ cpp_local_var
     add multiple statements into the wrapper.  *c_statements* and *cpp_local_var* cannot
     be used together.
 
-..  {C_const}{cpp_type}{ptr} = c_to_cpp ;
+..  {c_const}{cpp_type}{ptr} = c_to_cpp ;
 
 c_type
     name of type in C.

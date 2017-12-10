@@ -765,10 +765,14 @@ The C wrapper then creates a ``std::vector``::
     {
         std::vector<int> SH_arg(Sarg);
         vector_iota(SH_arg);
-        for(std::vector<int>::size_type i = 0;
-            i < std::min(SH_arg.size(),static_cast<std::vector<int>::size_type>(Sarg));
-            i++) {
-            arg[i] = SH_arg[i];
+        {
+          std::vector<int>::size_type
+            SH_T_i = 0,
+            SH_T_n = Sarg;
+          SH_T_n = std::min(SH_arg.size(), SH_T_n);
+          for(; SH_T_i < SH_T_n; SH_T_i++) {
+            arg[SH_T_i] = SH_arg[SH_T_i];
+          }
         }
         return;
     }

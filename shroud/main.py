@@ -277,6 +277,7 @@ class Schema(object):
 
         fmt_library.C_this = 'self'
         fmt_library.C_result = 'SH_rv'
+        fmt_library.c_temp = 'SH_T_'
 
         fmt_library.CPP_this = 'SH_this'
 
@@ -682,20 +683,6 @@ class Schema(object):
 #                cpp_to_c='{cpp_var}.data()',  # C++11
 
                 c_statements=dict(
-#                    intent_in=dict(
-#                        cpp_local_var=True,
-#                        pre_call=[
-#                            '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var});'
-#                            ],
-#                    ),
-#                    intent_out=dict(
-#                        cpp_header='<cvector>',
-#                        post_call=[
-#                            # This may overwrite c_var if cpp_val is too long
-#                            'strcpy({c_var}, {cpp_val});'
-##                            'ShroudStrCopy({c_var}, {c_var_trim}, {cpp_val});'
-#                        ],
-#                    ),
                     intent_in_buf=dict(
                         buf_args = [ 'size' ],
                         cpp_local_var=True,
@@ -711,8 +698,14 @@ class Schema(object):
                             '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});'
                         ],
                         post_call=[
-                            'for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{',
-                            '    {c_var}[i] = {cpp_var}[i];',
+                            '{{',
+                            '  std::vector<{cpp_T}>::size_type',
+                            '    {c_temp}i = 0,',
+                            '    {c_temp}n = {c_var_size};',
+                            '  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);',
+                            '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
+                            '    {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];',
+                            '  }}',
                             '}}'
                         ],
                     ),
@@ -723,22 +716,28 @@ class Schema(object):
                             'std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});'
                         ],
                         post_call=[
-                            'for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{',
-                            '    {c_var}[i] = {cpp_var}[i];',
+                            '{{',
+                            '  std::vector<{cpp_T}>::size_type',
+                            '    {c_temp}i = 0,',
+                            '    {c_temp}n = {c_var_size};',
+                            '  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);',
+                            '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
+                            '      {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];',
+                            '  }}',
                             '}}'
                         ],
                     ),
-                    result_buf=dict(
-                        buf_args = [ 'size' ],
-                        c_helper='ShroudStrCopy',
-                        post_call=[
-                            'if ({cpp_var}.empty()) {{',
-                            '  std::memset({c_var}, \' \', {c_var_len});',
-                            '}} else {{',
-                            '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-                            '}}',
-                        ],
-                    ),
+#                    result_buf=dict(
+#                        buf_args = [ 'size' ],
+#                        c_helper='ShroudStrCopy',
+#                        post_call=[
+#                            'if ({cpp_var}.empty()) {{',
+#                            '  std::memset({c_var}, \' \', {c_var_len});',
+#                            '}} else {{',
+#                            '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
+#                            '}}',
+#                        ],
+#                    ),
                 ),
 
 ###
@@ -754,9 +753,9 @@ class Schema(object):
                                 '{{',
                                 '  {c_const}char * BBB = {c_var};',
                                 '  std::vector<{cpp_T}>::size_type',
-                                '    i = 0,',
-                                '    n = {c_var_size};',
-                                '  for( ; i < n; i++) {{',
+                                '    {c_temp}i = 0,',
+                                '    {c_temp}n = {c_var_size};',
+                                '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
                                 '    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));',
                                 '    BBB += {c_var_len};',
                                 '  }}',
@@ -774,11 +773,11 @@ class Schema(object):
                                 '{{',
                                 '  char * BBB = {c_var};',
                                 '  std::vector<{cpp_T}>::size_type',
-                                '    i = 0,',
-                                '    n = {c_var_size};',
-                                '  n = std::min({cpp_var}.size(),n);',
-                                '  for(; i < n; i++) {{',
-                                '    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[i].c_str());',
+                                '    {c_temp}i = 0,',
+                                '    {c_temp}n = {c_var_size};',
+                                '  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);',
+                                '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
+                                '    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());',
                                 '    BBB += {c_var_len};',
                                 '  }}',
                                 '}}'
@@ -792,9 +791,9 @@ class Schema(object):
                                 '{{',
                                 '  {c_const}char * BBB = {c_var};',
                                 '  std::vector<{cpp_T}>::size_type',
-                                '    i = 0,',
-                                '    n = {c_var_size};',
-                                '  for( ; i < n; i++) {{',
+                                '    {c_temp}i = 0,',
+                                '    {c_temp}n = {c_var_size};',
+                                '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
                                 '    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));',
                                 '    BBB += {c_var_len};',
                                 '  }}',
@@ -804,26 +803,26 @@ class Schema(object):
                                 '{{',
                                 '  char * BBB = {c_var};',
                                 '  std::vector<{cpp_T}>::size_type',
-                                '    i = 0,',
-                                '    n = {c_var_size};',
-                                '  n = std::min({cpp_var}.size(),n);',
-                                '  for(; i < n; i++) {{',
-                                '    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[i].c_str());',
+                                '    {c_temp}i = 0,',
+                                '    {c_temp}n = {c_var_size};',
+                                '  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);',
+                                '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
+                                '    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());',
                                 '    BBB += {c_var_len};',
                                 '  }}',
                                 '}}'
                             ],
                         ),
-                        result_buf=dict(
-                            c_helper='ShroudStrCopy',
-                            post_call=[
-                                'if ({cpp_var}.empty()) {{',
-                                '  std::memset({c_var}, \' \', {c_var_len});',
-                                '}} else {{',
-                                '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-                                '}}',
-                            ],
-                        ),
+#                        result_buf=dict(
+#                            c_helper='ShroudStrCopy',
+#                            post_call=[
+#                                'if ({cpp_var}.empty()) {{',
+#                                '  std::memset({c_var}, \' \', {c_var_len});',
+#                                '}} else {{',
+#                                '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
+#                                '}}',
+#                            ],
+#                        ),
                     ),
                 ),
 ###

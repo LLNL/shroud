@@ -91,6 +91,7 @@
         "PY_used_param_kwds": false, 
         "PY_used_param_self": false, 
         "YAML_type_filename": "strings_types.yaml", 
+        "c_temp": "SH_T_", 
         "class_prefix": "", 
         "function_suffix": "", 
         "library": "strings", 
@@ -2918,8 +2919,14 @@
                     ], 
                     "cpp_local_var": true, 
                     "post_call": [
-                        "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
-                        "    {c_var}[i] = {cpp_var}[i];", 
+                        "{{", 
+                        "  std::vector<{cpp_T}>::size_type", 
+                        "    {c_temp}i = 0,", 
+                        "    {c_temp}n = {c_var_size};", 
+                        "  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);", 
+                        "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                        "      {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];", 
+                        "  }}", 
                         "}}"
                     ], 
                     "pre_call": [
@@ -2932,25 +2939,18 @@
                     ], 
                     "cpp_local_var": true, 
                     "post_call": [
-                        "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
-                        "    {c_var}[i] = {cpp_var}[i];", 
+                        "{{", 
+                        "  std::vector<{cpp_T}>::size_type", 
+                        "    {c_temp}i = 0,", 
+                        "    {c_temp}n = {c_var_size};", 
+                        "  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);", 
+                        "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                        "    {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];", 
+                        "  }}", 
                         "}}"
                     ], 
                     "pre_call": [
                         "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});"
-                    ]
-                }, 
-                "result_buf": {
-                    "buf_args": [
-                        "size"
-                    ], 
-                    "c_helper": "ShroudStrCopy", 
-                    "post_call": [
-                        "if ({cpp_var}.empty()) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
-                        "}} else {{", 
-                        "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "}}"
                     ]
                 }
             }, 
@@ -2968,9 +2968,9 @@
                             "{{", 
                             "  {c_const}char * BBB = {c_var};", 
                             "  std::vector<{cpp_T}>::size_type", 
-                            "    i = 0,", 
-                            "    n = {c_var_size};", 
-                            "  for( ; i < n; i++) {{", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
                             "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
@@ -2987,11 +2987,11 @@
                             "{{", 
                             "  char * BBB = {c_var};", 
                             "  std::vector<{cpp_T}>::size_type", 
-                            "    i = 0,", 
-                            "    n = {c_var_size};", 
-                            "  n = std::min({cpp_var}.size(),n);", 
-                            "  for(; i < n; i++) {{", 
-                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[i].c_str());", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
                             "}}"
@@ -3001,9 +3001,9 @@
                             "{{", 
                             "  {c_const}char * BBB = {c_var};", 
                             "  std::vector<{cpp_T}>::size_type", 
-                            "    i = 0,", 
-                            "    n = {c_var_size};", 
-                            "  for( ; i < n; i++) {{", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
                             "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
@@ -3021,27 +3021,17 @@
                             "{{", 
                             "  char * BBB = {c_var};", 
                             "  std::vector<{cpp_T}>::size_type", 
-                            "    i = 0,", 
-                            "    n = {c_var_size};", 
-                            "  n = std::min({cpp_var}.size(),n);", 
-                            "  for(; i < n; i++) {{", 
-                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[i].c_str());", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
                             "}}"
                         ], 
                         "pre_call": [
                             "{c_const}std::vector<{cpp_T}> {cpp_var};"
-                        ]
-                    }, 
-                    "result_buf": {
-                        "c_helper": "ShroudStrCopy", 
-                        "post_call": [
-                            "if ({cpp_var}.empty()) {{", 
-                            "  std::memset({c_var}, ' ', {c_var_len});", 
-                            "}} else {{", 
-                            "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
-                            "}}"
                         ]
                     }
                 }

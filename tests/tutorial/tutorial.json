@@ -273,6 +273,7 @@
         "PY_used_param_kwds": false, 
         "PY_used_param_self": false, 
         "YAML_type_filename": "tutorial_types.yaml", 
+        "c_temp": "SH_T_", 
         "class_prefix": "", 
         "function_suffix": "", 
         "library": "Tutorial", 
@@ -3684,7 +3685,7 @@
                 "C_call_code": "vector_iota(SH_arg);", 
                 "C_call_list": "SH_arg", 
                 "C_name": "TUT_vector_iota_bufferify", 
-                "C_post_call": "for(std::vector<int>::size_type i = 0; i < std::min(SH_arg.size(),static_cast<std::vector<int>::size_type>(Sarg)); i++) {\n    arg[i] = SH_arg[i];\n}", 
+                "C_post_call": "{\n  std::vector<int>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  SH_T_n = std::min(SH_arg.size(), SH_T_n);\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n    arg[SH_T_i] = SH_arg[SH_T_i];\n  }\n}", 
                 "C_pre_call": "std::vector<int> SH_arg(Sarg);", 
                 "C_prototype": "int * arg, long Sarg", 
                 "C_return_code": "return;", 
@@ -3790,7 +3791,7 @@
                 "C_call_code": "vector_increment(SH_arg);", 
                 "C_call_list": "SH_arg", 
                 "C_name": "TUT_vector_increment_bufferify", 
-                "C_post_call": "for(std::vector<int>::size_type i = 0; i < std::min(SH_arg.size(),static_cast<std::vector<int>::size_type>(Sarg)); i++) {\n    arg[i] = SH_arg[i];\n}", 
+                "C_post_call": "{\n  std::vector<int>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  SH_T_n = std::min(SH_arg.size(), SH_T_n);\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n      arg[SH_T_i] = SH_arg[SH_T_i];\n  }\n}", 
                 "C_pre_call": "std::vector<int> SH_arg(arg, arg + Sarg);", 
                 "C_prototype": "int * arg, long Sarg", 
                 "C_return_code": "return;", 
@@ -3908,7 +3909,7 @@
                 "C_call_code": "int SH_rv = vector_string_count(SH_arg);", 
                 "C_call_list": "SH_arg", 
                 "C_name": "TUT_vector_string_count_bufferify", 
-                "C_pre_call": "std::vector<std::string> SH_arg;\n{\n  const char * BBB = arg;\n  std::vector<std::string>::size_type\n    i = 0,\n    n = Sarg;\n  for( ; i < n; i++) {\n    SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n    BBB += Narg;\n  }\n}", 
+                "C_pre_call": "std::vector<std::string> SH_arg;\n{\n  const char * BBB = arg;\n  std::vector<std::string>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n    SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n    BBB += Narg;\n  }\n}", 
                 "C_prototype": "const char * arg, long Sarg, int Narg", 
                 "C_return_code": "return SH_rv;", 
                 "C_return_type": "int", 
@@ -4032,7 +4033,7 @@
                 "C_call_code": "vector_string_fill(SH_arg);", 
                 "C_call_list": "SH_arg", 
                 "C_name": "TUT_vector_string_fill_bufferify", 
-                "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    i = 0,\n    n = Sarg;\n  n = std::min(SH_arg.size(),n);\n  for(; i < n; i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[i].c_str());\n    BBB += Narg;\n  }\n}", 
+                "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  SH_T_n = std::min(SH_arg.size(),SH_T_n);\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[SH_T_i].c_str());\n    BBB += Narg;\n  }\n}", 
                 "C_pre_call": "std::vector<std::string> SH_arg;", 
                 "C_prototype": "char * arg, long Sarg, int Narg", 
                 "C_return_code": "return SH_arg.size();", 
@@ -4146,8 +4147,8 @@
                 "C_call_code": "vector_string_append(SH_arg);", 
                 "C_call_list": "SH_arg", 
                 "C_name": "TUT_vector_string_append_bufferify", 
-                "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    i = 0,\n    n = Sarg;\n  n = std::min(SH_arg.size(),n);\n  for(; i < n; i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[i].c_str());\n    BBB += Narg;\n  }\n}", 
-                "C_pre_call": "std::vector<std::string> SH_arg;\n{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    i = 0,\n    n = Sarg;\n  for( ; i < n; i++) {\n    SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n    BBB += Narg;\n  }\n}", 
+                "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  SH_T_n = std::min(SH_arg.size(),SH_T_n);\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[SH_T_i].c_str());\n    BBB += Narg;\n  }\n}", 
+                "C_pre_call": "std::vector<std::string> SH_arg;\n{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n    SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n    BBB += Narg;\n  }\n}", 
                 "C_prototype": "char * arg, long Sarg, int Narg", 
                 "C_return_code": "return;", 
                 "C_return_type": "void", 
@@ -4825,8 +4826,14 @@
                     ], 
                     "cpp_local_var": true, 
                     "post_call": [
-                        "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
-                        "    {c_var}[i] = {cpp_var}[i];", 
+                        "{{", 
+                        "  std::vector<{cpp_T}>::size_type", 
+                        "    {c_temp}i = 0,", 
+                        "    {c_temp}n = {c_var_size};", 
+                        "  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);", 
+                        "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                        "      {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];", 
+                        "  }}", 
                         "}}"
                     ], 
                     "pre_call": [
@@ -4839,25 +4846,18 @@
                     ], 
                     "cpp_local_var": true, 
                     "post_call": [
-                        "for(std::vector<{cpp_T}>::size_type i = 0; i < std::min({cpp_var}.size(),static_cast<std::vector<{cpp_T}>::size_type>({c_var_size})); i++) {{", 
-                        "    {c_var}[i] = {cpp_var}[i];", 
+                        "{{", 
+                        "  std::vector<{cpp_T}>::size_type", 
+                        "    {c_temp}i = 0,", 
+                        "    {c_temp}n = {c_var_size};", 
+                        "  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);", 
+                        "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                        "    {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];", 
+                        "  }}", 
                         "}}"
                     ], 
                     "pre_call": [
                         "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});"
-                    ]
-                }, 
-                "result_buf": {
-                    "buf_args": [
-                        "size"
-                    ], 
-                    "c_helper": "ShroudStrCopy", 
-                    "post_call": [
-                        "if ({cpp_var}.empty()) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
-                        "}} else {{", 
-                        "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "}}"
                     ]
                 }
             }, 
@@ -4875,9 +4875,9 @@
                             "{{", 
                             "  {c_const}char * BBB = {c_var};", 
                             "  std::vector<{cpp_T}>::size_type", 
-                            "    i = 0,", 
-                            "    n = {c_var_size};", 
-                            "  for( ; i < n; i++) {{", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
                             "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
@@ -4894,11 +4894,11 @@
                             "{{", 
                             "  char * BBB = {c_var};", 
                             "  std::vector<{cpp_T}>::size_type", 
-                            "    i = 0,", 
-                            "    n = {c_var_size};", 
-                            "  n = std::min({cpp_var}.size(),n);", 
-                            "  for(; i < n; i++) {{", 
-                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[i].c_str());", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
                             "}}"
@@ -4908,9 +4908,9 @@
                             "{{", 
                             "  {c_const}char * BBB = {c_var};", 
                             "  std::vector<{cpp_T}>::size_type", 
-                            "    i = 0,", 
-                            "    n = {c_var_size};", 
-                            "  for( ; i < n; i++) {{", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
                             "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
@@ -4928,27 +4928,17 @@
                             "{{", 
                             "  char * BBB = {c_var};", 
                             "  std::vector<{cpp_T}>::size_type", 
-                            "    i = 0,", 
-                            "    n = {c_var_size};", 
-                            "  n = std::min({cpp_var}.size(),n);", 
-                            "  for(; i < n; i++) {{", 
-                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[i].c_str());", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
                             "}}"
                         ], 
                         "pre_call": [
                             "{c_const}std::vector<{cpp_T}> {cpp_var};"
-                        ]
-                    }, 
-                    "result_buf": {
-                        "c_helper": "ShroudStrCopy", 
-                        "post_call": [
-                            "if ({cpp_var}.empty()) {{", 
-                            "  std::memset({c_var}, ' ', {c_var_len});", 
-                            "}} else {{", 
-                            "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
-                            "}}"
                         ]
                     }
                 }

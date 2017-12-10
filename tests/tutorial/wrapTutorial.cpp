@@ -432,8 +432,14 @@ void TUT_vector_iota_bufferify(int * arg, long Sarg)
 // splicer begin function.vector_iota_bufferify
     std::vector<int> SH_arg(Sarg);
     vector_iota(SH_arg);
-    for(std::vector<int>::size_type i = 0; i < std::min(SH_arg.size(),static_cast<std::vector<int>::size_type>(Sarg)); i++) {
-        arg[i] = SH_arg[i];
+    {
+      std::vector<int>::size_type
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      SH_T_n = std::min(SH_arg.size(), SH_T_n);
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
+        arg[SH_T_i] = SH_arg[SH_T_i];
+      }
     }
     return;
 // splicer end function.vector_iota_bufferify
@@ -446,8 +452,14 @@ void TUT_vector_increment_bufferify(int * arg, long Sarg)
 // splicer begin function.vector_increment_bufferify
     std::vector<int> SH_arg(arg, arg + Sarg);
     vector_increment(SH_arg);
-    for(std::vector<int>::size_type i = 0; i < std::min(SH_arg.size(),static_cast<std::vector<int>::size_type>(Sarg)); i++) {
-        arg[i] = SH_arg[i];
+    {
+      std::vector<int>::size_type
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      SH_T_n = std::min(SH_arg.size(), SH_T_n);
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
+          arg[SH_T_i] = SH_arg[SH_T_i];
+      }
     }
     return;
 // splicer end function.vector_increment_bufferify
@@ -466,9 +478,9 @@ int TUT_vector_string_count_bufferify(const char * arg, long Sarg, int Narg)
     {
       const char * BBB = arg;
       std::vector<std::string>::size_type
-        i = 0,
-        n = Sarg;
-      for( ; i < n; i++) {
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
         SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
         BBB += Narg;
       }
@@ -494,11 +506,11 @@ int TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg)
     {
       char * BBB = arg;
       std::vector<std::string>::size_type
-        i = 0,
-        n = Sarg;
-      n = std::min(SH_arg.size(),n);
-      for(; i < n; i++) {
-        ShroudStrCopy(BBB, Narg, SH_arg[i].c_str());
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      SH_T_n = std::min(SH_arg.size(),SH_T_n);
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
+        ShroudStrCopy(BBB, Narg, SH_arg[SH_T_i].c_str());
         BBB += Narg;
       }
     }
@@ -519,9 +531,9 @@ void TUT_vector_string_append_bufferify(char * arg, long Sarg, int Narg)
     {
       char * BBB = arg;
       std::vector<std::string>::size_type
-        i = 0,
-        n = Sarg;
-      for( ; i < n; i++) {
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
         SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
         BBB += Narg;
       }
@@ -530,11 +542,11 @@ void TUT_vector_string_append_bufferify(char * arg, long Sarg, int Narg)
     {
       char * BBB = arg;
       std::vector<std::string>::size_type
-        i = 0,
-        n = Sarg;
-      n = std::min(SH_arg.size(),n);
-      for(; i < n; i++) {
-        ShroudStrCopy(BBB, Narg, SH_arg[i].c_str());
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      SH_T_n = std::min(SH_arg.size(),SH_T_n);
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
+        ShroudStrCopy(BBB, Narg, SH_arg[SH_T_i].c_str());
         BBB += Narg;
       }
     }
