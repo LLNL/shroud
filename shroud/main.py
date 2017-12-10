@@ -862,8 +862,9 @@ class Schema(object):
 
         # Write out as YAML if requested
         if self.config.yaml_types:
-            with open(self.config.yaml_types, 'w') as yaml_file:
+            with open(os.path.join(self.config.yaml_dir, self.config.yaml_types), 'w') as yaml_file:
                 yaml.dump(def_types, yaml_file, default_flow_style=False)
+            print("Wrote", self.config.yaml_types)
 
         # aliases
         def_types_alias = dict()
@@ -1935,7 +1936,7 @@ def main_with_args(args):
     config.python_dir = args.outdir_python or args.outdir
     config.lua_dir = args.outdir_lua or args.outdir
     config.yaml_dir = args.outdir_yaml or args.outdir
-    config.yaml_types = os.path.join(args.outdir, args.yaml_types)
+    config.yaml_types = args.yaml_types
     config.log = log
     config.cfiles = []  # list of C/C++ files created
     config.ffiles = []  # list of Fortran files created
