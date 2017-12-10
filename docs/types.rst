@@ -104,7 +104,7 @@ for wrappers::
           - C_INT
         f_cast: int({f_var}, C_INT)
 
-One case where a converstion is required is when the Fortran argument
+One case where a conversion is required is when the Fortran argument
 is one type and the C++ argument is another. This may happen when an
 overloaded function is generated so that a ``C_INT`` or ``C_LONG``
 argument may be passed to a C++ function function expecting a
@@ -120,8 +120,8 @@ Bool
 
 C++ functions with a ``bool`` argument generate a Fortran wrapper with
 a ``logical`` argument.  One of the goals of Shroud is to produce an
-ideomatic interface.  Converting the types in the wrapper avoids the
-awkardness of requiring the Fortran user to passing in
+idiomatic interface.  Converting the types in the wrapper avoids the
+awkwardness of requiring the Fortran user to passing in
 ``.true._c_bool`` instead of just ``.true.``.
 
 The type map is defined as::
@@ -159,7 +159,7 @@ is ``logical(C_BOOL)`` while **f_type**, the type of the Fortran
 wrapper argument, is ``logical``.
 
 The **f_statements** section describes code to add into the Fortran
-wrapper to perform the converstion.  *c_var* and *f_var* default to
+wrapper to perform the conversion.  *c_var* and *f_var* default to
 the same value as the argument name.  By setting **c_local_var**, a
 local variable is generated for the call to the C wrapper.  It will be
 named ``SH_{f_var}``.
@@ -228,10 +228,10 @@ Fortran, C, and C++ each have their own semantics for character variables.
 
   * Fortran ``character`` variables know their length and are blank filled
   * C ``char *`` variables are assumed to be ``NULL`` terminated.
-  * C++ ``std::string`` know their own length and can provied a ``NULL`` terminated pointer.
+  * C++ ``std::string`` know their own length and can provide a ``NULL`` terminated pointer.
 
 It is not sufficient to pass an address between Fortran and C++ like
-it is with other native types.  In order to get ideomatic behavior in
+it is with other native types.  In order to get idiomatic behavior in
 the Fortran wrappers it is often necessary to copy the values.  This
 is to account for blank filled vs ``NULL`` terminated.
 
@@ -341,7 +341,7 @@ The type map::
 
 
 The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
-statement ``dest = str``::
+statement ``dest = src``::
 
     - decl: void passCharPtr(char *dest, const char *src)
 
@@ -488,7 +488,6 @@ additional sections to convert between ``char *`` and ``std::string``::
                 intent_out_buf:
                     buf_args:
                     - len
-                    cpp_header: shroudrt.hpp
                     pre_call:
                       - {c_const}std::string {cpp_var};
                     post_call:
@@ -497,7 +496,6 @@ additional sections to convert between ``char *`` and ``std::string``::
                     buf_args:
                     - len_trim
                     - len
-                    cpp_header: shroudrt.hpp
                     cpp_local_var: True
                     pre_call:
                       - std::string {cpp_var}({c_var}, {c_var_trim});
@@ -506,7 +504,7 @@ additional sections to convert between ``char *`` and ``std::string``::
                 result_buf:
                     buf_args:
                     - len
-                    cpp_header: <cstring> shroudrt.hpp
+                    cpp_header: <cstring>
                     post_call:
                        - if ({cpp_var}.empty()) {{
                        -   std::memset({c_var}, ' ', {c_var_len});
@@ -598,7 +596,7 @@ char functions
 Functions which return a ``char *`` provide an additional challenge.
 Taken literally they should return a ``type(C_PTR)``.  And if you call
 the function via the interface, that's what you get.  However,
-Shroud provides several options to provide a more ideomatic usage.
+Shroud provides several options to provide a more idiomatic usage.
 
 Each of these declaration call identical C++ functions but they are
 wrapped differently::

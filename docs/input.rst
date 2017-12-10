@@ -128,7 +128,7 @@ Options are used to customize the behavior of Shroud.
 They are defined in the YAML files as a dictionary.
 Options can be defined at the global, class, or function level.
 Each level creates a new scope which can access all upper level options.
-This allows the user to modifiy behavior for all functions or just a single one::
+This allows the user to modify behavior for all functions or just a single one::
 
     options:
       option_a = false
@@ -142,10 +142,10 @@ This allows the user to modifiy behavior for all functions or just a single one:
          option_b = true
     #    option_c = false     # inherited
       methods:
-      - decl: void funtion1
+      - decl: void function1
         options:
     #     option_a = false    # inherited
-    #     option_b = true     # ihherited
+    #     option_b = true     # inherited
           option_c = true
 
 How code is formatted

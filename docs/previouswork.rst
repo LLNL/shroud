@@ -49,14 +49,25 @@ Babel
 .. https://computation.llnl.gov/casc/components
 
 https://computation.llnl.gov/projects/babel-high-performance-language-interoperability
-Babel parses a SIDL (Scientific Interface Definition Langauge) file to generate source. It is a hub-and-spokes approach where each language it supports is mapped to a Babel runtime object.  The last release was 2012-01-06. http://en.wikipedia.org/wiki/Babel_Middleware
+Babel parses a SIDL (Scientific Interface Definition Language) file to
+generate source. It is a hub-and-spokes approach where each language
+it supports is mapped to a Babel runtime object.  The last release was
+2012-01-06. http://en.wikipedia.org/wiki/Babel_Middleware
 
 Chasm
 -----
 
 http://chasm-interop.sourceforge.net/ - This page is dated July 13, 2005
 
-Chasm is a tool to improve C++ and Fortran 90 interoperability. Chasm parses Fortran 90 source code and automatically generates C++ bridging code that can be used in C++ programs to make calls to Fortran routines. It also automatically generates C structs that provide a bridge to Fortran derived types. Chasm supplies a C++ array descriptor class which provides an interface between C and F90 arrays. This allows arrays to be created in one language and then passed to and used by the other language. http://www.cs.uoregon.edu/research/pdt/users.php
+Chasm is a tool to improve C++ and Fortran 90 interoperability. Chasm
+parses Fortran 90 source code and automatically generates C++ bridging
+code that can be used in C++ programs to make calls to Fortran
+routines. It also automatically generates C structs that provide a
+bridge to Fortran derived types. Chasm supplies a C++ array descriptor
+class which provides an interface between C and F90 arrays. This
+allows arrays to be created in one language and then passed to and
+used by the other
+language. http://www.cs.uoregon.edu/research/pdt/users.php
 
 http://permalink.lanl.gov/object/tr?what=info:lanl-repo/lareport/LA-UR-01-4955
 

@@ -114,7 +114,7 @@ F_module_name
     Defaulted from expansion of option *F_module_name_library_template*.
 
 F_impl_filename
-    Name of generated Fortran implemention file for the library.
+    Name of generated Fortran implementation file for the library.
     Defaulted from expansion of option *F_impl_filename_library_template*.
     If option *F_module_per_class* is false, then all derived types
     generated for each class will also be in this file.
@@ -154,7 +154,7 @@ F_module_name
     Only defined if *F_module_per_class* is true.
 
 F_impl_filename
-    Name of generated Fortran implemention file for the library.
+    Name of generated Fortran implementation file for the library.
     Defaulted from expansion of option *F_impl_filename_class_template*.
     Only defined if *F_module_per_class* is true.
 
@@ -277,7 +277,7 @@ function_suffix
     Suffix append to name.  Used to differentiate overloaded functions.
     Defaults to a sequence number (e.g. `_0`, `_1`, ...) but can be set
     by using the function field *function_suffix*.
-    Mulitple suffixes may be applied.
+    Multiple suffixes may be applied.
 
 Argument
 ^^^^^^^^
@@ -426,7 +426,7 @@ C_string_result_as_arg
   the result in an additional argument in the C wrapper.
 
 C_this
-    Name of the C object argument.  Defauls to ``self``.
+    Name of the C object argument.  Defaults to ``self``.
     It may be necessary to set this if it conflicts with an argument name.
 
 C_var_len_template
@@ -443,7 +443,7 @@ C_var_trim_template
 
 CPP_this
     Name of the C++ object pointer set from the *C_this* argument.
-    Defauls to ``SH_this``.
+    Defaults to ``SH_this``.
 
 
 F_C_prefix
@@ -705,7 +705,7 @@ cpp_local_var
     If true then a local variable will be created instead of passing the argument
     directly to the function.
     The variable will be assigned a value using *c_to_cpp*.
-    If *c_to_cpp* is a large expression it is sometimes convient to have a local variable
+    If *c_to_cpp* is a large expression it is sometimes convenient to have a local variable
     for debugging purposes.
     It can also be used to create cleaner code when *c_to_cpp* will generate a very long statement.
     When *c_to_cpp* is not sufficient to assign a value, *c_statements* can be used to 
@@ -888,7 +888,7 @@ f_statement
 
     need_wrapper
         If true, the Fortran wrapper will always be created.
-        This is used when an assignment is needed to do a type coercision;
+        This is used when an assignment is needed to do a type coercion;
         for example, with logical types.
 
 ..  XXX - maybe later.  For not in wrapping routines
@@ -1025,8 +1025,8 @@ function_suffix
    Suffix to append to the end of generated name.
 
 return_this
-   The method returns a reference to ``this``.  This ideom can be used
-   to chain calls in C++.  This ideom does not translate to C and Fortran.
+   The method returns a reference to ``this``.  This idiom can be used
+   to chain calls in C++.  This idiom does not translate to C and Fortran.
    Instead the *C_return_type* format is set to ``void``.
 
 
