@@ -1,5 +1,5 @@
 Read yaml tutorial.yaml
-Skipping Function4a, unable to create C wrapper for function returning std::string instance (must return a pointer or reference).
+Skipping std::string, unable to create C wrapper for function returning Function4a instance (must return a pointer or reference).
 Read splicer ftutorialsplicer.f
 Close tutorial_types.yaml
 class Class1
@@ -39,12 +39,16 @@ C function int overload1(double type+intent(in)+value, int num+intent(in)+value,
 C function TypeID typefunc(TypeID arg+intent(in)+value)
 C function EnumTypeID enumfunc(EnumTypeID arg+intent(in)+value)
 C function void useclass(const Class1 * arg1+intent(in)+value)
+C function int vector_sum(const std::vector & arg+dimension(:)+intent(in)+size(Sarg)+template(int))
+C function void vector_iota(std::vector & arg+dimension(:)+intent(out)+size(Sarg)+template(int))
+C function void vector_increment(std::vector & arg+dimension(:)+intent(inout)+size(Sarg)+template(int))
+C function int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))
+C function void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))
+C function void vector_string_append(std::vector & arg+dimension(:)+intent(inout)+len(Narg)+size(Sarg)+template(std::string))
 C function const std::string & LastFunctionCalled()+pure
 C function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
 Close wrapTutorial.h
 Close wrapTutorial.cpp
-Close shroudrt.hpp
-Close shroudrt.cpp
 class Class1
 C-interface, Fortran method Class1 * new()+constructor
 C-interface, Fortran method void delete()+destructor
@@ -86,9 +90,20 @@ C-interface, Fortran function int overload1(double type+intent(in)+value, int nu
 C-interface, Fortran function TypeID typefunc(TypeID arg+intent(in)+value)
 C-interface, Fortran function EnumTypeID enumfunc(EnumTypeID arg+intent(in)+value)
 C-interface, Fortran function void useclass(const Class1 * arg1+intent(in)+value)
-C-interface function const std::string & LastFunctionCalled()+pure
+Fortran function int vector_sum(const std::vector & arg+dimension(:)+intent(in)+template(int))
+C-interface function int vector_sum(const std::vector & arg+dimension(:)+intent(in)+size(Sarg)+template(int))
+Fortran function void vector_iota(std::vector & arg+dimension(:)+intent(out)+template(int))
+C-interface function void vector_iota(std::vector & arg+dimension(:)+intent(out)+size(Sarg)+template(int))
+Fortran function void vector_increment(std::vector & arg+dimension(:)+intent(inout)+template(int))
+C-interface function void vector_increment(std::vector & arg+dimension(:)+intent(inout)+size(Sarg)+template(int))
+Fortran function int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+template(std::string))
+C-interface function int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))
+Fortran function void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+template(std::string))
+C-interface function void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))
+Fortran function void vector_string_append(std::vector & arg+dimension(:)+intent(inout)+template(std::string))
+C-interface function void vector_string_append(std::vector & arg+dimension(:)+intent(inout)+len(Narg)+size(Sarg)+template(std::string))
+C-interface, Fortran function const std::string & LastFunctionCalled()+pure
 C-interface function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
-Fortran function const string_result_fstr & LastFunctionCalled()+pure
 Close wrapftutorial.f
 class Class1
 Python method Class1 * new()+constructor

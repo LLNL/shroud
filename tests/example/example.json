@@ -63,8 +63,6 @@
                                 "c_const": "const ", 
                                 "c_ptr": " *", 
                                 "c_var": "name", 
-                                "c_var_len": "SH_Nname", 
-                                "c_var_trim": "SH_Lname", 
                                 "cpp_type": "std::string", 
                                 "cpp_var": "SH_name"
                             }, 
@@ -122,7 +120,7 @@
                     "_decl": "ExClass1 * new(const string * name+intent(in)+len_trim(Lname))+constructor", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_function_index": 13, 
-                    "_generated": "string_to_buffer_and_len", 
+                    "_generated": "arg_to_buffer", 
                     "_subprogram": "function", 
                     "args": [
                         {
@@ -137,7 +135,6 @@
                                 "c_const": "const ", 
                                 "c_ptr": " *", 
                                 "c_var": "name", 
-                                "c_var_len": "SH_Nname", 
                                 "c_var_trim": "Lname", 
                                 "cpp_type": "std::string", 
                                 "cpp_var": "SH_name"
@@ -370,7 +367,7 @@
                     "_decl": "void getName(string & SH_F_rv+intent(out)+len(NSH_F_rv)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_function_index": 14, 
-                    "_generated": "string_to_buffer_and_len", 
+                    "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "args": [
                         {
@@ -386,7 +383,6 @@
                                 "c_ptr": "", 
                                 "c_var": "SH_F_rv", 
                                 "c_var_len": "NSH_F_rv", 
-                                "c_var_trim": "SH_LSH_F_rv", 
                                 "cpp_type": "std::string", 
                                 "cpp_val": "SH_rv.c_str()", 
                                 "cpp_var": "SH_rv"
@@ -407,7 +403,7 @@
                         "C_call_code": "const std::string & SH_rv = SH_this->getName();", 
                         "C_call_list": "", 
                         "C_name": "AA_exclass1_get_name_bufferify", 
-                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
+                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
                         "C_pre_call": "const ExClass1 *SH_this = static_cast<const ExClass1 *>(static_cast<const void *>(self));", 
                         "C_prototype": "const AA_exclass1 * self, char * SH_F_rv, int NSH_F_rv", 
                         "C_return_code": "return;", 
@@ -546,7 +542,7 @@
                     "_decl": "void getNameErrorCheck(string & SH_F_rv+intent(out)+len(NSH_F_rv)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_function_index": 15, 
-                    "_generated": "string_to_buffer_and_len", 
+                    "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "args": [
                         {
@@ -562,7 +558,6 @@
                                 "c_ptr": "", 
                                 "c_var": "SH_F_rv", 
                                 "c_var_len": "NSH_F_rv", 
-                                "c_var_trim": "SH_LSH_F_rv", 
                                 "cpp_type": "std::string", 
                                 "cpp_val": "SH_rv.c_str()", 
                                 "cpp_var": "SH_rv"
@@ -583,7 +578,7 @@
                         "C_call_code": "const std::string & SH_rv = SH_this->getNameErrorCheck();", 
                         "C_call_list": "", 
                         "C_name": "AA_exclass1_get_name_error_check_bufferify", 
-                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
+                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
                         "C_pre_call": "const ExClass1 *SH_this = static_cast<const ExClass1 *>(static_cast<const void *>(self));", 
                         "C_prototype": "const AA_exclass1 * self, char * SH_F_rv, int NSH_F_rv", 
                         "C_return_code": "return;", 
@@ -665,7 +660,7 @@
                     "_decl": "void getNameArg(string & name+intent(out)+len(Nname)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_function_index": 16, 
-                    "_generated": "string_to_buffer_and_len", 
+                    "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "args": [
                         {
@@ -681,7 +676,6 @@
                                 "c_ptr": "", 
                                 "c_var": "name", 
                                 "c_var_len": "Nname", 
-                                "c_var_trim": "SH_Lname", 
                                 "cpp_type": "std::string", 
                                 "cpp_val": "SH_rv.c_str()", 
                                 "cpp_var": "SH_rv"
@@ -702,7 +696,7 @@
                         "C_call_code": "const std::string & SH_rv = SH_this->getNameArg();", 
                         "C_call_list": "", 
                         "C_name": "AA_exclass1_get_name_arg_bufferify", 
-                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(name, ' ', Nname);\n} else {\n  shroud_FccCopy(name, Nname, SH_rv.c_str());\n}", 
+                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(name, ' ', Nname);\n} else {\n  ShroudStrCopy(name, Nname, SH_rv.c_str());\n}", 
                         "C_pre_call": "const ExClass1 *SH_this = static_cast<const ExClass1 *>(static_cast<const void *>(self));", 
                         "C_prototype": "const AA_exclass1 * self, char * name, int Nname", 
                         "C_return_code": "return;", 
@@ -739,7 +733,7 @@
                     "_decl": "void getNameArg(string & name+intent(out)+len(Nname)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_function_index": 17, 
-                    "_generated": "string_to_buffer_and_len", 
+                    "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "args": [
                         {
@@ -1220,8 +1214,6 @@
                                 "c_const": "const ", 
                                 "c_ptr": " *", 
                                 "c_var": "name", 
-                                "c_var_len": "SH_Nname", 
-                                "c_var_trim": "SH_Lname", 
                                 "cpp_type": "std::string", 
                                 "cpp_var": "SH_name"
                             }, 
@@ -1274,7 +1266,7 @@
                     "_decl": "ExClass2 * ExClass2(const string * name+intent(in)+len_trim(Lname))+constructor", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_function_index": 38, 
-                    "_generated": "string_to_buffer_and_len", 
+                    "_generated": "arg_to_buffer", 
                     "_subprogram": "function", 
                     "args": [
                         {
@@ -1289,7 +1281,6 @@
                                 "c_const": "const ", 
                                 "c_ptr": " *", 
                                 "c_var": "name", 
-                                "c_var_len": "SH_Nname", 
                                 "c_var_trim": "Lname", 
                                 "cpp_type": "std::string", 
                                 "cpp_var": "SH_name"
@@ -1437,7 +1428,7 @@
                     "_decl": "void getName(string & SH_F_rv+intent(out)+len(NSH_F_rv)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_function_index": 39, 
-                    "_generated": "string_to_buffer_and_len", 
+                    "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "args": [
                         {
@@ -1453,7 +1444,6 @@
                                 "c_ptr": "", 
                                 "c_var": "SH_F_rv", 
                                 "c_var_len": "NSH_F_rv", 
-                                "c_var_trim": "SH_LSH_F_rv", 
                                 "cpp_type": "std::string", 
                                 "cpp_val": "SH_rv.c_str()", 
                                 "cpp_var": "SH_rv"
@@ -1474,7 +1464,7 @@
                         "C_call_code": "const std::string & SH_rv = SH_this->getName();", 
                         "C_call_list": "", 
                         "C_name": "AA_exclass2_get_name_bufferify", 
-                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
+                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
                         "C_pre_call": "const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));", 
                         "C_prototype": "const AA_exclass2 * self, char * SH_F_rv, int NSH_F_rv", 
                         "C_return_code": "return;", 
@@ -1563,7 +1553,7 @@
                     "_decl": "void getName2(string & SH_F_rv+intent(out)+len(NSH_F_rv))", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_function_index": 40, 
-                    "_generated": "string_to_buffer_and_len", 
+                    "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "args": [
                         {
@@ -1579,7 +1569,6 @@
                                 "c_ptr": "", 
                                 "c_var": "SH_F_rv", 
                                 "c_var_len": "NSH_F_rv", 
-                                "c_var_trim": "SH_LSH_F_rv", 
                                 "cpp_type": "std::string", 
                                 "cpp_val": "SH_rv.c_str()", 
                                 "cpp_var": "SH_rv"
@@ -1598,7 +1587,7 @@
                         "C_call_code": "const std::string & SH_rv = SH_this->getName2();", 
                         "C_call_list": "", 
                         "C_name": "AA_exclass2_get_name2_bufferify", 
-                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
+                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
                         "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
                         "C_prototype": "AA_exclass2 * self, char * SH_F_rv, int NSH_F_rv", 
                         "C_return_code": "return;", 
@@ -1687,7 +1676,7 @@
                     "_decl": "void getName3(string & SH_F_rv+intent(out)+len(NSH_F_rv)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_function_index": 41, 
-                    "_generated": "string_to_buffer_and_len", 
+                    "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "args": [
                         {
@@ -1703,7 +1692,6 @@
                                 "c_ptr": "", 
                                 "c_var": "SH_F_rv", 
                                 "c_var_len": "NSH_F_rv", 
-                                "c_var_trim": "SH_LSH_F_rv", 
                                 "cpp_type": "std::string", 
                                 "cpp_val": "SH_rv.c_str()", 
                                 "cpp_var": "SH_rv"
@@ -1724,7 +1712,7 @@
                         "C_call_code": "std::string & SH_rv = SH_this->getName3();", 
                         "C_call_list": "", 
                         "C_name": "AA_exclass2_get_name3_bufferify", 
-                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
+                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
                         "C_pre_call": "const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));", 
                         "C_prototype": "const AA_exclass2 * self, char * SH_F_rv, int NSH_F_rv", 
                         "C_return_code": "return;", 
@@ -1811,7 +1799,7 @@
                     "_decl": "void getName4(string & SH_F_rv+intent(out)+len(NSH_F_rv))", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_function_index": 42, 
-                    "_generated": "string_to_buffer_and_len", 
+                    "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "args": [
                         {
@@ -1827,7 +1815,6 @@
                                 "c_ptr": "", 
                                 "c_var": "SH_F_rv", 
                                 "c_var_len": "NSH_F_rv", 
-                                "c_var_trim": "SH_LSH_F_rv", 
                                 "cpp_type": "std::string", 
                                 "cpp_val": "SH_rv.c_str()", 
                                 "cpp_var": "SH_rv"
@@ -1846,7 +1833,7 @@
                         "C_call_code": "std::string & SH_rv = SH_this->getName4();", 
                         "C_call_list": "", 
                         "C_name": "AA_exclass2_get_name4_bufferify", 
-                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
+                        "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
                         "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
                         "C_prototype": "AA_exclass2 * self, char * SH_F_rv, int NSH_F_rv", 
                         "C_return_code": "return;", 
@@ -3027,6 +3014,7 @@
         "PY_used_param_kwds": false, 
         "PY_used_param_self": false, 
         "YAML_type_filename": "userlibrary_types.yaml", 
+        "c_temp": "SH_T_", 
         "class_prefix": "", 
         "function_suffix": "", 
         "library": "UserLibrary", 
@@ -3091,8 +3079,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
-                        "c_var_trim": "SH_Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
                     }, 
@@ -3149,7 +3135,7 @@
             "_decl": "bool isNameValid(const std::string & name+intent(in)+len_trim(Lname))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 59, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
             "args": [
                 {
@@ -3164,7 +3150,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
                         "c_var_trim": "Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
@@ -3392,8 +3377,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
-                        "c_var_trim": "SH_Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
                     }, 
@@ -3452,7 +3435,7 @@
             "_decl": "void test_names(const std::string & name+intent(in)+len_trim(Lname))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 60, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "args": [
@@ -3468,7 +3451,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
                         "c_var_trim": "Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
@@ -3530,8 +3512,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
-                        "c_var_trim": "SH_Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
                     }, 
@@ -3613,7 +3593,7 @@
             "_decl": "void test_names(const std::string & name+intent(in)+len_trim(Lname), int flag+intent(in)+value)", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 61, 
-            "_generated": "string_to_buffer_and_len", 
+            "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "args": [
@@ -3629,7 +3609,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
                         "c_var_trim": "Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
@@ -4104,6 +4083,7 @@
         "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
         "C_prefix": "AA_", 
         "C_var_len_template": "N{c_var}", 
+        "C_var_size_template": "S{c_var}", 
         "C_var_trim_template": "L{c_var}", 
         "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
         "F_C_prefix": "c_", 
@@ -4164,6 +4144,14 @@
             "pysplicer.c"
         ]
     }, 
+    "type_aliases": {
+        "integer(C_INT)": "int", 
+        "integer(C_LONG)": "long", 
+        "real(C_DOUBLE)": "double", 
+        "real(C_FLOAT)": "float", 
+        "std::string": "string", 
+        "std::vector": "vector"
+    }, 
     "types": {
         "DataGroup": {
             "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
@@ -4189,7 +4177,14 @@
                     "group"
                 ]
             }, 
-            "f_return_code": "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})", 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(datagroup)", 
             "forward": "axom::sidre::Group", 
@@ -4231,7 +4226,14 @@
                     "exclass1"
                 ]
             }, 
-            "f_return_code": "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})", 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
             "f_to_c": "{f_var}%yadda()", 
             "f_type": "type(exclass1)", 
             "forward": "ExClass1", 
@@ -4273,7 +4275,14 @@
                     "exclass2"
                 ]
             }, 
-            "f_return_code": "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})", 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
             "f_to_c": "{f_var}%yadda()", 
             "f_type": "type(exclass2)", 
             "forward": "ExClass2", 
@@ -4363,6 +4372,15 @@
                         "{c_var} = {f_var}  ! coerce to C_BOOL"
                     ]
                 }, 
+                "intent_inout": {
+                    "c_local_var": true, 
+                    "post_call": [
+                        "{f_var} = {c_var}  ! coerce to logical"
+                    ], 
+                    "pre_call": [
+                        "{c_var} = {f_var}  ! coerce to C_BOOL"
+                    ]
+                }, 
                 "intent_out": {
                     "c_local_var": true, 
                     "post_call": [
@@ -4391,6 +4409,9 @@
             "base": "string", 
             "c_statements": {
                 "intent_in_buf": {
+                    "buf_args": [
+                        "len_trim"
+                    ], 
                     "cpp_header": "<cstring>", 
                     "cpp_local_var": true, 
                     "post_call": [
@@ -4402,11 +4423,31 @@
                         "{cpp_var}[{c_var_trim}] = '\\0';"
                     ]
                 }, 
-                "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
+                "intent_inout_buf": {
+                    "buf_args": [
+                        "len_trim", 
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
+                        "delete [] {cpp_var};"
+                    ], 
+                    "pre_call": [
+                        "char * {cpp_var} = new char [{c_var_len} + 1];", 
+                        "std::strncpy({cpp_var}, {c_var}, {c_var_trim});", 
+                        "{cpp_var}[{c_var_trim}] = '\\0';"
+                    ]
+                }, 
+                "intent_out_buf": {
+                    "buf_args": [
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
                         "delete [] {cpp_var};"
                     ], 
                     "pre_call": [
@@ -4414,12 +4455,16 @@
                     ]
                 }, 
                 "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
+                    "buf_args": [
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
+                    "cpp_header": "<cstring>", 
                     "post_call": [
                         "if ({cpp_var} == NULL) {{", 
                         "  std::memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_var});", 
+                        "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});", 
                         "}}"
                     ]
                 }
@@ -4432,6 +4477,15 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
+            "f_statements": {
+                "result_pure": {
+                    "call": [
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
+                    ], 
+                    "f_helper": "fstr_ptr", 
+                    "need_wrapper": true
+                }
+            }, 
             "f_type": "character(*)"
         }, 
         "char_scalar": {
@@ -4442,6 +4496,9 @@
             "PY_format": "s", 
             "c_statements": {
                 "result_buf": {
+                    "buf_args": [
+                        "len"
+                    ], 
                     "cpp_header": "<cstring>", 
                     "post_call": [
                         "std::memset({c_var}, ' ', {c_var_len});", 
@@ -4504,36 +4561,6 @@
             }, 
             "f_type": "integer(C_INT)"
         }, 
-        "integer(C_INT)": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TNUMBER", 
-            "PY_format": "i", 
-            "c_type": "int", 
-            "cpp_type": "int", 
-            "f_cast": "int({f_var}, C_INT)", 
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            }, 
-            "f_type": "integer(C_INT)"
-        }, 
-        "integer(C_LONG)": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TNUMBER", 
-            "PY_format": "l", 
-            "c_type": "long", 
-            "cpp_type": "long", 
-            "f_cast": "int({f_var}, C_LONG)", 
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG"
-                ]
-            }, 
-            "f_type": "integer(C_LONG)"
-        }, 
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
@@ -4552,36 +4579,6 @@
         "other": {
             "cpp_type": "junk"
         }, 
-        "real(C_DOUBLE)": {
-            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TNUMBER", 
-            "PY_format": "d", 
-            "c_type": "double", 
-            "cpp_type": "double", 
-            "f_cast": "real({f_var}, C_DOUBLE)", 
-            "f_module": {
-                "iso_c_binding": [
-                    "C_DOUBLE"
-                ]
-            }, 
-            "f_type": "real(C_DOUBLE)"
-        }, 
-        "real(C_FLOAT)": {
-            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TNUMBER", 
-            "PY_format": "f", 
-            "c_type": "float", 
-            "cpp_type": "float", 
-            "f_cast": "real({f_var}, C_FLOAT)", 
-            "f_module": {
-                "iso_c_binding": [
-                    "C_FLOAT"
-                ]
-            }, 
-            "f_type": "real(C_FLOAT)"
-        }, 
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
@@ -4598,69 +4595,6 @@
             }, 
             "f_type": "integer(C_SIZE_T)"
         }, 
-        "std::string": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TSTRING", 
-            "PY_ctor": "PyString_FromString({c_var})", 
-            "PY_format": "s", 
-            "base": "string", 
-            "c_statements": {
-                "intent_in": {
-                    "cpp_local_var": true, 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }, 
-                "intent_in_buf": {
-                    "cpp_local_var": true, 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
-                    ]
-                }, 
-                "intent_out": {
-                    "cpp_header": "<cstring>", 
-                    "post_call": [
-                        "strcpy({c_var}, {cpp_val});"
-                    ]
-                }, 
-                "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
-                    "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
-                    ]
-                }, 
-                "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
-                    "post_call": [
-                        "if ({cpp_var}.empty()) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
-                        "}} else {{", 
-                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "}}"
-                    ]
-                }
-            }, 
-            "c_type": "char", 
-            "cpp_header": "<string>", 
-            "cpp_to_c": "{cpp_var}.c_str()", 
-            "cpp_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            }, 
-            "f_c_type": "character(kind=C_CHAR)", 
-            "f_type": "character(*)", 
-            "py_statements": {
-                "intent_in": {
-                    "cpp_local_var": true, 
-                    "post_parse": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }
-            }
-        }, 
         "string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
@@ -4676,30 +4610,72 @@
                     ]
                 }, 
                 "intent_in_buf": {
+                    "buf_args": [
+                        "len_trim"
+                    ], 
                     "cpp_local_var": true, 
                     "pre_call": [
                         "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
                     ]
                 }, 
-                "intent_out": {
+                "intent_inout": {
                     "cpp_header": "<cstring>", 
+                    "cpp_local_var": true, 
                     "post_call": [
                         "strcpy({c_var}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::string {cpp_var}({c_var});"
+                    ]
+                }, 
+                "intent_inout_buf": {
+                    "buf_args": [
+                        "len_trim", 
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "std::string {cpp_var}({c_var}, {c_var_trim});"
+                    ]
+                }, 
+                "intent_out": {
+                    "cpp_header": "<cstring>", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "strcpy({c_var}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::string {cpp_var};"
                     ]
                 }, 
                 "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
+                    "buf_args": [
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
+                    "cpp_local_var": true, 
                     "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "std::string {cpp_var};"
                     ]
                 }, 
                 "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
+                    "buf_args": [
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
+                    "cpp_header": "<cstring>", 
                     "post_call": [
                         "if ({cpp_var}.empty()) {{", 
                         "  std::memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
+                        "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
                         "}}"
                     ]
                 }
@@ -4714,6 +4690,15 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
+            "f_statements": {
+                "result_pure": {
+                    "call": [
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
+                    ], 
+                    "f_helper": "fstr_ptr", 
+                    "need_wrapper": true
+                }
+            }, 
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
@@ -4724,74 +4709,143 @@
                 }
             }
         }, 
-        "string_result_fstr": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TSTRING", 
-            "PY_ctor": "PyString_FromString({c_var})", 
-            "PY_format": "s", 
-            "base": "string", 
+        "vector": {
+            "base": "vector", 
             "c_statements": {
-                "intent_in": {
-                    "cpp_local_var": true, 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }, 
                 "intent_in_buf": {
+                    "buf_args": [
+                        "size"
+                    ], 
                     "cpp_local_var": true, 
                     "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
+                        "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
-                "intent_out": {
-                    "cpp_header": "<cstring>", 
+                "intent_inout_buf": {
+                    "buf_args": [
+                        "size"
+                    ], 
+                    "cpp_local_var": true, 
                     "post_call": [
-                        "strcpy({c_var}, {cpp_val});"
+                        "{{", 
+                        "  std::vector<{cpp_T}>::size_type", 
+                        "    {c_temp}i = 0,", 
+                        "    {c_temp}n = {c_var_size};", 
+                        "  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);", 
+                        "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                        "      {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];", 
+                        "  }}", 
+                        "}}"
+                    ], 
+                    "pre_call": [
+                        "std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
                 "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
-                    "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
-                    ]
-                }, 
-                "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
-                    "post_call": [
-                        "if ({cpp_var}.empty()) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
-                        "}} else {{", 
-                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "}}"
-                    ]
-                }
-            }, 
-            "c_type": "char", 
-            "cpp_header": "<string>", 
-            "cpp_to_c": "{cpp_var}.c_str()", 
-            "cpp_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            }, 
-            "f_c_type": "character(kind=C_CHAR)", 
-            "f_helper": {
-                "f_return_code": {
-                    "fstr": true
-                }
-            }, 
-            "f_return_code": "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))", 
-            "f_type": "character(*)", 
-            "py_statements": {
-                "intent_in": {
+                    "buf_args": [
+                        "size"
+                    ], 
                     "cpp_local_var": true, 
-                    "post_parse": [
-                        "{c_const}std::string {cpp_var}({c_var});"
+                    "post_call": [
+                        "{{", 
+                        "  std::vector<{cpp_T}>::size_type", 
+                        "    {c_temp}i = 0,", 
+                        "    {c_temp}n = {c_var_size};", 
+                        "  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);", 
+                        "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                        "    {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];", 
+                        "  }}", 
+                        "}}"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});"
                     ]
                 }
-            }
+            }, 
+            "c_templates": {
+                "string": {
+                    "intent_in_buf": {
+                        "buf_args": [
+                            "size", 
+                            "len"
+                        ], 
+                        "c_helper": "ShroudLenTrim", 
+                        "cpp_local_var": true, 
+                        "pre_call": [
+                            "std::vector<{cpp_T}> {cpp_var};", 
+                            "{{", 
+                            "  {c_const}char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
+                            "}}"
+                        ]
+                    }, 
+                    "intent_inout_buf": {
+                        "buf_args": [
+                            "size", 
+                            "len"
+                        ], 
+                        "cpp_local_var": true, 
+                        "post_call": [
+                            "{{", 
+                            "  char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
+                            "}}"
+                        ], 
+                        "pre_call": [
+                            "std::vector<{cpp_T}> {cpp_var};", 
+                            "{{", 
+                            "  {c_const}char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
+                            "}}"
+                        ]
+                    }, 
+                    "intent_out_buf": {
+                        "buf_args": [
+                            "size", 
+                            "len"
+                        ], 
+                        "c_helper": "ShroudLenTrim", 
+                        "cpp_local_var": true, 
+                        "post_call": [
+                            "{{", 
+                            "  char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
+                            "}}"
+                        ], 
+                        "pre_call": [
+                            "{c_const}std::vector<{cpp_T}> {cpp_var};"
+                        ]
+                    }
+                }
+            }, 
+            "cpp_header": "<vector>", 
+            "cpp_type": "std::vector<{cpp_T}>"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cpp_var}, NULL, NULL)", 

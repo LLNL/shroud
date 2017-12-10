@@ -44,8 +44,18 @@
 #include <cstring>
 #include <string>
 #include "ExClass2.hpp"
-#include "shroudrt.hpp"
 #include "sidre/SidreWrapperHelpers.hpp"
+
+// Copy s into a, blank fill to la characters
+// Truncate if a is too short.
+static void ShroudStrCopy(char *a, int la, const char *s)
+{
+   int ls,nm;
+   ls = strlen(s);
+   nm = ls < la ? ls : la;
+   memcpy(a,s,nm);
+   if(la > nm) { memset(a+nm,' ',la-nm);}
+}
 
 namespace example {
 namespace nested {
@@ -113,7 +123,7 @@ void AA_exclass2_get_name_bufferify(const AA_exclass2 * self, char * SH_F_rv, in
     if (SH_rv.empty()) {
       std::memset(SH_F_rv, ' ', NSH_F_rv);
     } else {
-      shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name_bufferify
@@ -141,7 +151,7 @@ void AA_exclass2_get_name2_bufferify(AA_exclass2 * self, char * SH_F_rv, int NSH
     if (SH_rv.empty()) {
       std::memset(SH_F_rv, ' ', NSH_F_rv);
     } else {
-      shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name2_bufferify
@@ -169,7 +179,7 @@ void AA_exclass2_get_name3_bufferify(const AA_exclass2 * self, char * SH_F_rv, i
     if (SH_rv.empty()) {
       std::memset(SH_F_rv, ' ', NSH_F_rv);
     } else {
-      shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name3_bufferify
@@ -197,7 +207,7 @@ void AA_exclass2_get_name4_bufferify(AA_exclass2 * self, char * SH_F_rv, int NSH
     if (SH_rv.empty()) {
       std::memset(SH_F_rv, ' ', NSH_F_rv);
     } else {
-      shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name4_bufferify

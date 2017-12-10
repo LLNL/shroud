@@ -49,7 +49,9 @@ Functions
 
 The simplest item to wrap is a function in the file ``tutorial.hpp``::
 
-   void Function1(void);
+   namespace tutorial {
+     void Function1(void);
+   }
 
 This is wrapped using a YAML input file ``tut.yaml``::
 
@@ -74,8 +76,6 @@ Process the file with *Shroud*::
     % shroud tut.yaml
     Wrote wrapTutorial.h
     Wrote wrapTutorial.cpp
-    Wrote shroudrt.hpp
-    Wrote shroudrt.cpp
     Wrote wrapftutorial.f
 
 The generated C function in file ``wrapTutorial.cpp`` is::
@@ -225,8 +225,8 @@ Logical
 
 Logical variables require a conversion since they are not directly
 compatible with C.  In addition, how ``.true.`` and ``.false.`` are
-represented internally is compiler dependent.  Some compilers use 0 for
-``.false.`` while other use -1.
+represented internally is compiler dependent.  Some compilers use 1 for
+``.true.`` while other use -1.
 
 A simple C++ function which accepts and returns a boolean argument::
 
@@ -276,7 +276,7 @@ Character
 .. XXX document len annotation
 
 Character variables have significant differences between C and
-Fortran.  The Fortran interoperabilty with C feature treats a
+Fortran.  The Fortran interoperability with C feature treats a
 ``character`` variable of default kind as an array of
 ``character(kind=C_CHAR,len=1)``.  The wrapper then deals with the C
 convention of ``NULL`` termination to Fortran's blank filled.
@@ -334,7 +334,7 @@ computed using ``len``::
         if (SH_rv.empty()) {
           std::memset(SH_F_rv, ' ', NSH_F_rv);
         } else {
-          shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+          ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
         }
         return;
     }
@@ -363,7 +363,7 @@ The function is called as::
 
   rv4a = function4a("bird", "dog")
 
-.. note :: This function is just for demonstartion purposes.
+.. note :: This function is just for demonstration purposes.
            Any reasonable person would just use the concatenation operator in Fortran.
 
 Default Value Arguments
@@ -458,7 +458,7 @@ Fortran usage::
            For example, ``bool`` type or when the default value
            is created by calling a C++ function.
 
-           Using the ``OPTIONAL`` keyword creates the possiblity to
+           Using the ``OPTIONAL`` keyword creates the possibility to
            call the C++ function in a way which is not supported by
            the C++ compilers.
            For example, ``function5(arg2=.false.)``

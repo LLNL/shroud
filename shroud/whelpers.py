@@ -41,6 +41,48 @@
 Helper functions for C and Fortran wrappers.
 """
 
+
+def find_all_helpers(mode, helpers, check=None):
+    """Find all helper functions recursively.
+    A helper function is required by some argument/result conversions.
+
+    Return helper dictionary used.
+    """
+    if mode =='c':
+        helpdict = CHelpers
+    elif mode == 'f':
+        helpdict = FHelpers
+    else:
+        raise RuntimeError("Unexpected mode in find_all_helpers")
+
+    if check is None:
+        # do all top level helpers
+        # Copy initial keys since helpers may change
+        keys = list(helpers.keys())
+        for check in keys:
+            for name in helpdict[check].get('f_helper', []):
+                find_all_helpers(mode, helpers, name)
+    else:
+        if check not in helpers:
+            helpers[check] = True
+            for name in helpdict[check].get('f_helper', []):
+                find_all_helpers(mode, helpers, name)
+
+    return helpdict
+
+def XXXwrite_helper_files(self, directory):
+    """This library file is no longer needed.
+
+    Should be writtento config.c_fortran_dir
+    """
+    output = [FccHeaders]
+    self.write_output_file('shroudrt.hpp',
+                           directory, output)
+
+    output = [FccCSource]
+    self.write_output_file('shroudrt.cpp',
+                           directory, output)
+
 FccHeaders = """
 #ifndef SHROUDRT_HPP_
 #define SHROUDRT_HPP_
@@ -48,8 +90,6 @@ FccHeaders = """
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-void shroud_FccCopy(char *a, int la, const char *s);
 
 #ifdef __cplusplus
 }  // extern "C"
@@ -76,37 +116,7 @@ extern "C" {
 #endif
 /* *INDENT-ON* */
 
-void shroud_FccCopy(char *a, int la, const char *s)
-{
-   int ls,nm;
-   ls = strlen(s);
-   nm = ls < la ? ls : la;
-   memcpy(a,s,nm);
-   if(la > nm) { memset(a+nm,' ',la-nm);}
-}
-
-// equivalent to C_LOC
-// called from Fortran
-// https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53945
-// Work around a problem with gfortran 4.7 where C_LOC does not work
-// with assumed shape array.  Passing the first element of the
-// array to a function without an interface will force the compiler
-// to use f77 semantics and pass the address of the data, essentially
-// the same as C_LOC.
-// XXX Pass the first element, not the entire array, to avoid getting
-// XXX a copy of the array.
-//
-// The result must be an argument because some compilers (Intel)
-// cannot return type(C_PTR)
-void shroud_c_loc(void * addr, void ** out)
-{
-  *out = addr;
-}
-void shroud_c_loc_(void * addr, void ** out)
-{
-  *out = addr;
-}
-
+// insert code here
 
 /* *INDENT-OFF* */
 #ifdef __cplusplus
@@ -115,22 +125,74 @@ void shroud_c_loc_(void * addr, void ** out)
 /* *INDENT-ON* */"""
 
 #
+# C helper functions which may be added to a implementation file.
+#
+# c_helpers = Dictionary of helpers needed by this helper
+# cpp_header  = Blank delimited list of header files to #include.
+#               when wrapping a C++ library.
+# c_header    = Blank delimited list of header files to #include
+#               when wrapping a C library.
+# source      = Code inserted before any wrappers.
+#               The functions should be file static.
+
+CHelpers = dict(
+    ShroudStrCopy=dict(
+        cpp_header='<cstring>',
+        c_header='<string.h>',
+        source="""
+// Copy s into a, blank fill to la characters
+// Truncate if a is too short.
+static void ShroudStrCopy(char *a, int la, const char *s)
+{
+   int ls,nm;
+   ls = strlen(s);
+   nm = ls < la ? ls : la;
+   memcpy(a,s,nm);
+   if(la > nm) { memset(a+nm,' ',la-nm);}
+}"""
+        ),
+    ShroudLenTrim=dict(
+        cpp_header='<cstring>',
+        c_header='<string.h>',
+        source="""
+// Returns the length of character string a with length ls,
+// ignoring any trailing blanks.
+int ShroudLenTrim(const char *s, int ls) {
+    int i;
+
+    for (i = ls - 1; i >= 0; i--) {
+        if (s[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+"""
+    ),
+    )
+
+#
 # Fortran helper functions which may be added to a module.
 #
 # f_helpers = dictionary of helpers needed by this helper
 # private   = names for PRIVATE statement 
 # interface = code for INTERFACE
 # source    = code for CONTAINS
-#
-#
+
 FHelpers = dict(
     fstr=dict(
-        f_helper=dict(strlen_ptr=True, strlen_arr=True),
-        private=['fstr', 'fstr_ptr', 'fstr_arr'],
+        f_helper=dict(fstr_ptr=True, fstr_arr=True),
+        private=['fstr'],
         interface="""
 interface fstr
   module procedure fstr_ptr, fstr_arr
 end interface""",
+        ),
+
+    fstr_ptr=dict(
+        f_helper=dict(strlen_ptr=True),
+        private=['fstr_ptr'],
         source="""
 ! Convert a null-terminated C "char *" pointer to a Fortran string.
 function fstr_ptr(s) result(fs)
@@ -143,8 +205,13 @@ function fstr_ptr(s) result(fs)
   do i=1, len(fs)
      fs(i:i) = cptr(i)
   enddo
-end function fstr_ptr
+end function fstr_ptr"""
+        ),
 
+    fstr_arr=dict(
+        f_helper=dict(strlen_arr=True),
+        private=['fstr_arr'],
+        source="""
 ! Convert a null-terminated array of characters to a Fortran string.
 function fstr_arr(s) result(fs)
   use, intrinsic :: iso_c_binding, only : c_char, c_null_char
@@ -154,7 +221,7 @@ function fstr_arr(s) result(fs)
   do i = 1, len(fs)
      fs(i:i) = s(i)
   enddo
-end function fstr_arr""",
+end function fstr_arr"""
         ),
 
     strlen_arr=dict(

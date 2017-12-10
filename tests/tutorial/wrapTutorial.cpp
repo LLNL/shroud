@@ -44,8 +44,33 @@
 #include "wrapTutorial.h"
 #include <cstring>
 #include <string>
-#include "shroudrt.hpp"
 #include "tutorial.hpp"
+
+// Returns the length of character string a with length ls,
+// ignoring any trailing blanks.
+int ShroudLenTrim(const char *s, int ls) {
+    int i;
+
+    for (i = ls - 1; i >= 0; i--) {
+        if (s[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
+
+// Copy s into a, blank fill to la characters
+// Truncate if a is too short.
+static void ShroudStrCopy(char *a, int la, const char *s)
+{
+   int ls,nm;
+   ls = strlen(s);
+   nm = ls < la ? ls : la;
+   memcpy(a,s,nm);
+   if(la > nm) { memset(a+nm,' ',la-nm);}
+}
 
 namespace tutorial {
 
@@ -108,7 +133,7 @@ void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
 }
 
 // void Function4a(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string * SH_F_rv+intent(out)+len(NSH_F_rv))
-// function_index=34
+// function_index=40
 void TUT_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * SH_F_rv, int NSH_F_rv)
 {
 // splicer begin function.function4a_bufferify
@@ -118,7 +143,7 @@ void TUT_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, i
     if (SH_rv.empty()) {
       std::memset(SH_F_rv, ' ', NSH_F_rv);
     } else {
-      shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
     }
     return;
 // splicer end function.function4a_bufferify
@@ -138,7 +163,7 @@ const char * TUT_function4b(const char * arg1, const char * arg2)
 }
 
 // void Function4b(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string & output+intent(out)+len(Noutput))
-// function_index=35
+// function_index=41
 void TUT_function4b_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * output, int Noutput)
 {
 // splicer begin function.function4b_bufferify
@@ -148,14 +173,14 @@ void TUT_function4b_bufferify(const char * arg1, int Larg1, const char * arg2, i
     if (SH_rv.empty()) {
       std::memset(output, ' ', Noutput);
     } else {
-      shroud_FccCopy(output, Noutput, SH_rv.c_str());
+      ShroudStrCopy(output, Noutput, SH_rv.c_str());
     }
     return;
 // splicer end function.function4b_bufferify
 }
 
 // double Function5()
-// function_index=24
+// function_index=30
 double TUT_function5()
 {
 // splicer begin function.function5
@@ -165,7 +190,7 @@ double TUT_function5()
 }
 
 // double Function5(double arg1+default(3.1415)+intent(in)+value)
-// function_index=25
+// function_index=31
 double TUT_function5_arg1(double arg1)
 {
 // splicer begin function.function5_arg1
@@ -196,7 +221,7 @@ void TUT_function6_from_name(const char * name)
 }
 
 // void Function6(const std::string & name+intent(in)+len_trim(Lname))
-// function_index=37
+// function_index=43
 void TUT_function6_from_name_bufferify(const char * name, int Lname)
 {
 // splicer begin function.function6_from_name_bufferify
@@ -217,7 +242,7 @@ void TUT_function6_from_index(int indx)
 }
 
 // void Function7(int arg+intent(in)+value)
-// function_index=26
+// function_index=32
 void TUT_function7_int(int arg)
 {
 // splicer begin function.function7_int
@@ -227,7 +252,7 @@ void TUT_function7_int(int arg)
 }
 
 // void Function7(double arg+intent(in)+value)
-// function_index=27
+// function_index=33
 void TUT_function7_double(double arg)
 {
 // splicer begin function.function7_double
@@ -237,7 +262,7 @@ void TUT_function7_double(double arg)
 }
 
 // int Function8()
-// function_index=28
+// function_index=34
 int TUT_function8_int()
 {
 // splicer begin function.function8_int
@@ -247,7 +272,7 @@ int TUT_function8_int()
 }
 
 // double Function8()
-// function_index=29
+// function_index=35
 double TUT_function8_double()
 {
 // splicer begin function.function8_double
@@ -288,7 +313,7 @@ void TUT_function10_1(const char * name, double arg2)
 }
 
 // void Function10(const std::string & name+intent(in)+len_trim(Lname), double arg2+intent(in)+value)
-// function_index=38
+// function_index=44
 void TUT_function10_1_bufferify(const char * name, int Lname, double arg2)
 {
 // splicer begin function.function10_1_bufferify
@@ -299,7 +324,7 @@ void TUT_function10_1_bufferify(const char * name, int Lname, double arg2)
 }
 
 // int overload1(int num+intent(in)+value)
-// function_index=30
+// function_index=36
 int TUT_overload1_num(int num)
 {
 // splicer begin function.overload1_num
@@ -309,7 +334,7 @@ int TUT_overload1_num(int num)
 }
 
 // int overload1(int num+intent(in)+value, int offset+default(0)+intent(in)+value)
-// function_index=31
+// function_index=37
 int TUT_overload1_num_offset(int num, int offset)
 {
 // splicer begin function.overload1_num_offset
@@ -329,7 +354,7 @@ int TUT_overload1_num_offset_stride(int num, int offset, int stride)
 }
 
 // int overload1(double type+intent(in)+value, int num+intent(in)+value)
-// function_index=32
+// function_index=38
 int TUT_overload1_3(double type, int num)
 {
 // splicer begin function.overload1_3
@@ -339,7 +364,7 @@ int TUT_overload1_3(double type, int num)
 }
 
 // int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset+default(0)+intent(in)+value)
-// function_index=33
+// function_index=39
 int TUT_overload1_4(double type, int num, int offset)
 {
 // splicer begin function.overload1_4
@@ -389,8 +414,148 @@ void TUT_useclass(const TUT_class1 * arg1)
 // splicer end function.useclass
 }
 
+// int vector_sum(const std::vector & arg+dimension(:)+intent(in)+size(Sarg)+template(int))
+// function_index=45
+int TUT_vector_sum_bufferify(const int * arg, long Sarg)
+{
+// splicer begin function.vector_sum_bufferify
+    const std::vector<int> SH_arg(arg, arg + Sarg);
+    int SH_rv = vector_sum(SH_arg);
+    return SH_rv;
+// splicer end function.vector_sum_bufferify
+}
+
+// void vector_iota(std::vector & arg+dimension(:)+intent(out)+size(Sarg)+template(int))
+// function_index=46
+void TUT_vector_iota_bufferify(int * arg, long Sarg)
+{
+// splicer begin function.vector_iota_bufferify
+    std::vector<int> SH_arg(Sarg);
+    vector_iota(SH_arg);
+    {
+      std::vector<int>::size_type
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      SH_T_n = std::min(SH_arg.size(), SH_T_n);
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
+        arg[SH_T_i] = SH_arg[SH_T_i];
+      }
+    }
+    return;
+// splicer end function.vector_iota_bufferify
+}
+
+// void vector_increment(std::vector & arg+dimension(:)+intent(inout)+size(Sarg)+template(int))
+// function_index=47
+void TUT_vector_increment_bufferify(int * arg, long Sarg)
+{
+// splicer begin function.vector_increment_bufferify
+    std::vector<int> SH_arg(arg, arg + Sarg);
+    vector_increment(SH_arg);
+    {
+      std::vector<int>::size_type
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      SH_T_n = std::min(SH_arg.size(), SH_T_n);
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
+          arg[SH_T_i] = SH_arg[SH_T_i];
+      }
+    }
+    return;
+// splicer end function.vector_increment_bufferify
+}
+
+// int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))
+// function_index=48
+/**
+ * \brief count number of underscore in vector of strings
+ *
+ */
+int TUT_vector_string_count_bufferify(const char * arg, long Sarg, int Narg)
+{
+// splicer begin function.vector_string_count_bufferify
+    std::vector<std::string> SH_arg;
+    {
+      const char * BBB = arg;
+      std::vector<std::string>::size_type
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
+        SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
+        BBB += Narg;
+      }
+    }
+    int SH_rv = vector_string_count(SH_arg);
+    return SH_rv;
+// splicer end function.vector_string_count_bufferify
+}
+
+// void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))
+// function_index=49
+/**
+ * \brief Fill in arg with some animal names
+ *
+ * The C++ function returns void. But the C and Fortran wrappers return
+ * an int with the number of items added to arg.
+ */
+int TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg)
+{
+// splicer begin function.vector_string_fill_bufferify
+    std::vector<std::string> SH_arg;
+    vector_string_fill(SH_arg);
+    {
+      char * BBB = arg;
+      std::vector<std::string>::size_type
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      SH_T_n = std::min(SH_arg.size(),SH_T_n);
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
+        ShroudStrCopy(BBB, Narg, SH_arg[SH_T_i].c_str());
+        BBB += Narg;
+      }
+    }
+    return SH_arg.size();
+// splicer end function.vector_string_fill_bufferify
+}
+
+// void vector_string_append(std::vector & arg+dimension(:)+intent(inout)+len(Narg)+size(Sarg)+template(std::string))
+// function_index=50
+/**
+ * \brief append '-like' to names.
+ *
+ */
+void TUT_vector_string_append_bufferify(char * arg, long Sarg, int Narg)
+{
+// splicer begin function.vector_string_append_bufferify
+    std::vector<std::string> SH_arg;
+    {
+      char * BBB = arg;
+      std::vector<std::string>::size_type
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
+        SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
+        BBB += Narg;
+      }
+    }
+    vector_string_append(SH_arg);
+    {
+      char * BBB = arg;
+      std::vector<std::string>::size_type
+        SH_T_i = 0,
+        SH_T_n = Sarg;
+      SH_T_n = std::min(SH_arg.size(),SH_T_n);
+      for(; SH_T_i < SH_T_n; SH_T_i++) {
+        ShroudStrCopy(BBB, Narg, SH_arg[SH_T_i].c_str());
+        BBB += Narg;
+      }
+    }
+    return;
+// splicer end function.vector_string_append_bufferify
+}
+
 // const std::string & LastFunctionCalled()+pure
-// function_index=23
+// function_index=29
 const char * TUT_last_function_called()
 {
 // splicer begin function.last_function_called
@@ -401,7 +566,7 @@ const char * TUT_last_function_called()
 }
 
 // void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
-// function_index=39
+// function_index=51
 void TUT_last_function_called_bufferify(char * SH_F_rv, int NSH_F_rv)
 {
 // splicer begin function.last_function_called_bufferify
@@ -409,7 +574,7 @@ void TUT_last_function_called_bufferify(char * SH_F_rv, int NSH_F_rv)
     if (SH_rv.empty()) {
       std::memset(SH_F_rv, ' ', NSH_F_rv);
     } else {
-      shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
     }
     return;
 // splicer end function.last_function_called_bufferify

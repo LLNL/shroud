@@ -74,7 +74,6 @@ class Wrapl(util.WrapperMixin):
         self.patterns = tree['patterns']
         self.config = config
         self.log = config.log
-        self.typedef = tree['types']
         self._init_splicer(splicers)
         self.comment = '//'
 
@@ -232,7 +231,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             # XXX           result_is_ptr = False
             CPP_subprogram = 'subroutine'
 
-        # XXX       result_typedef = self.typedef[result_type]
+        # XXX       result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
         if is_dtor:
@@ -257,7 +256,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             out_args = []
             found_default = False
             for arg in function['args']:
-                arg_typedef = self.typedef[arg['type']]
+                arg_typedef = util.Typedef.lookup(arg['type'])
                 attrs = arg['attrs']
                 if 'default' in attrs:
                     all_calls.append(lua_function(
@@ -310,7 +309,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     fmt.nresults = call.nresults
                     checks = []
                     for iarg, arg in enumerate(call.inargs):
-                        arg_typedef = self.typedef[arg['type']]
+                        arg_typedef = util.Typedef.lookup(arg['type'])
                         fmt.itype_var = itype_vars[iarg]
                         fmt.itype = arg_typedef.LUA_type
                         append_format(checks, '{itype_var} == {itype}', fmt)
@@ -444,7 +443,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             result_is_ptr = False
             CPP_subprogram = 'subroutine'
 
-        result_typedef = self.typedef[result_type]
+        result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
         #        is_const = result['attrs'].get('const', False)
@@ -472,7 +471,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # find class object
         if cls:
-            cls_typedef = self.typedef[cls['name']]
+            cls_typedef = util.Typedef.lookup(cls['name'])
             if not is_ctor:
                 fmt.LUA_used_param_state = True
                 fmt.c_var = wformat(cls_typedef.LUA_pop, fmt)
@@ -506,7 +505,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             lua_pop = None
 
-            arg_typedef = self.typedef[arg['type']]
+            arg_typedef = util.Typedef.lookup(arg['type'])
             fmt_arg.cpp_type = arg_typedef.cpp_type
             LUA_statements = arg_typedef.LUA_statements
             if attrs['intent'] in ['inout', 'in']:

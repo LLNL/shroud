@@ -120,6 +120,32 @@ PY_pass_char_ptr(
 // splicer end function.pass_char_ptr
 }
 
+static char PY_pass_char_ptr_in_out__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_pass_char_ptr_in_out(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.pass_char_ptr_in_out
+    char * s;
+    const char *SH_kwcpp = "s";
+    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtrInOut", SH_kw_list,
+        &s))
+    {
+        return NULL;
+    }
+    passCharPtrInOut(s);
+    PyObject * SH_Py_s = PyString_FromString(s);
+    return (PyObject *) *SH_Py_s;
+// splicer end function.pass_char_ptr_in_out
+}
+
 static char PY_get_char1__doc__[] =
 "documentation"
 ;
@@ -299,6 +325,32 @@ PY_accept_string_const_reference(
 // splicer end function.accept_string_const_reference
 }
 
+static char PY_accept_string_reference_out__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_accept_string_reference_out(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.accept_string_reference_out
+    char * arg1;
+    const char *SH_kwcpp = "";
+    char *SH_kw_list[] = { , NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, ":acceptStringReferenceOut", SH_kw_list,
+        ))
+    {
+        return NULL;
+    }
+    acceptStringReferenceOut(arg1.c_str());
+    PyObject * SH_Py_arg1 = PyString_FromString(arg1.c_str());
+    return (PyObject *) *SH_Py_arg1;
+// splicer end function.accept_string_reference_out
+}
+
 static char PY_accept_string_reference__doc__[] =
 "documentation"
 ;
@@ -380,6 +432,7 @@ static PyMethodDef PY_methods[] = {
 {"passChar", (PyCFunction)PY_pass_char, METH_VARARGS|METH_KEYWORDS, PY_pass_char__doc__},
 {"returnChar", (PyCFunction)PY_return_char, METH_NOARGS, PY_return_char__doc__},
 {"passCharPtr", (PyCFunction)PY_pass_char_ptr, METH_VARARGS|METH_KEYWORDS, PY_pass_char_ptr__doc__},
+{"passCharPtrInOut", (PyCFunction)PY_pass_char_ptr_in_out, METH_VARARGS|METH_KEYWORDS, PY_pass_char_ptr_in_out__doc__},
 {"getChar1", (PyCFunction)PY_get_char1, METH_NOARGS, PY_get_char1__doc__},
 {"getChar2", (PyCFunction)PY_get_char2, METH_NOARGS, PY_get_char2__doc__},
 {"getChar3", (PyCFunction)PY_get_char3, METH_NOARGS, PY_get_char3__doc__},
@@ -390,6 +443,7 @@ static PyMethodDef PY_methods[] = {
 {"getString5", (PyCFunction)PY_get_string5, METH_NOARGS, PY_get_string5__doc__},
 {"getString6", (PyCFunction)PY_get_string6, METH_NOARGS, PY_get_string6__doc__},
 {"acceptStringConstReference", (PyCFunction)PY_accept_string_const_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_const_reference__doc__},
+{"acceptStringReferenceOut", (PyCFunction)PY_accept_string_reference_out, METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference_out__doc__},
 {"acceptStringReference", (PyCFunction)PY_accept_string_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS, PY_explicit1__doc__},
 {"explicit2", (PyCFunction)PY_explicit2, METH_VARARGS|METH_KEYWORDS, PY_explicit2__doc__},

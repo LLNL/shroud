@@ -53,11 +53,11 @@ program tester
   real(C_DOUBLE) rv_double
   character(30) rv_char
 
-  character(4)  status
-
   call init_fruit
 
   call test_functions
+
+  call test_vector
 
   call test_class1
 
@@ -153,6 +153,48 @@ contains
     call assert_true(rv_int .eq. 2)
 
   end subroutine test_functions
+
+  subroutine test_vector
+    integer(C_INT) intv(5)
+    character(10) :: names(3)
+    integer irv
+
+    call set_case_name("test_vector")
+
+    intv = [1,2,3,4,5]
+    irv = vector_sum(intv)
+    call assert_true(irv .eq. 15)
+
+    intv(:) = 0
+    call vector_iota(intv)
+    call assert_true(all(intv(:) .eq. [1,2,3,4,5]))
+
+    intv = [1,2,3,4,5]
+    call vector_increment(intv)
+    call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
+
+    ! count number of underscores
+    names = [ "dog_cat   ", "bird_mouse", "__        " ]
+    irv = vector_string_count(names)
+    call assert_true(irv == 4)
+
+    ! Fill strings into names
+    names = " "
+    irv = vector_string_fill(names)
+    call assert_true(irv == 2)
+    call assert_true( names(1) == "dog")
+    call assert_true( names(2) == "bird")
+    call assert_true( names(3) == " ")
+
+    ! Append -like to names.
+    ! Note that strings will be truncated to len(names)
+    names = [ "fish      ", "toolong   ", "          " ]
+    call vector_string_append(names)
+    call assert_true( names(1) == "fish-like")
+    call assert_true( names(2) == "toolong-li")
+    call assert_true( names(3) == "-like")
+ 
+  end subroutine test_vector
 
   subroutine test_class1
     type(class1) obj

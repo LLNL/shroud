@@ -273,6 +273,7 @@
         "PY_used_param_kwds": false, 
         "PY_used_param_self": false, 
         "YAML_type_filename": "tutorial_types.yaml", 
+        "c_temp": "SH_T_", 
         "class_prefix": "", 
         "function_suffix": "", 
         "library": "Tutorial", 
@@ -714,7 +715,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 34, 
+            "_PTR_F_C_index": 40, 
             "_decl": "const std::string Function4a(const std::string & arg1+intent(in), const std::string & arg2+intent(in))", 
             "_function_index": 8, 
             "_subprogram": "function", 
@@ -810,8 +811,8 @@
             "_PTR_C_CPP_index": 8, 
             "_decl": "void Function4a(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string * SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 34, 
-            "_generated": "string_to_buffer_and_len", 
+            "_function_index": 40, 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -826,7 +827,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg1", 
-                        "c_var_len": "SH_Narg1", 
                         "c_var_trim": "Larg1", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg1"
@@ -850,7 +850,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg2", 
-                        "c_var_len": "SH_Narg2", 
                         "c_var_trim": "Larg2", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg2"
@@ -876,7 +875,6 @@
                         "c_ptr": " *", 
                         "c_var": "SH_F_rv", 
                         "c_var_len": "NSH_F_rv", 
-                        "c_var_trim": "SH_LSH_F_rv", 
                         "cpp_type": "std::string", 
                         "cpp_val": "SH_rv.c_str()", 
                         "cpp_var": "SH_rv"
@@ -895,7 +893,7 @@
                 "C_call_code": "const std::string SH_rv = Function4a(SH_arg1, SH_arg2);", 
                 "C_call_list": "SH_arg1, SH_arg2", 
                 "C_name": "TUT_function4a_bufferify", 
-                "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
+                "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
                 "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
                 "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * SH_F_rv, int NSH_F_rv", 
                 "C_return_code": "return;", 
@@ -941,8 +939,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg1", 
-                        "c_var_len": "SH_Narg1", 
-                        "c_var_trim": "SH_Larg1", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg1"
                     }, 
@@ -977,8 +973,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg2", 
-                        "c_var_len": "SH_Narg2", 
-                        "c_var_trim": "SH_Larg2", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg2"
                     }, 
@@ -1046,8 +1040,8 @@
             "_PTR_C_CPP_index": 9, 
             "_decl": "void Function4b(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string & output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 35, 
-            "_generated": "string_to_buffer_and_len", 
+            "_function_index": 41, 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1062,7 +1056,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg1", 
-                        "c_var_len": "SH_Narg1", 
                         "c_var_trim": "Larg1", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg1"
@@ -1086,7 +1079,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "arg2", 
-                        "c_var_len": "SH_Narg2", 
                         "c_var_trim": "Larg2", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_arg2"
@@ -1111,7 +1103,6 @@
                         "c_ptr": "", 
                         "c_var": "output", 
                         "c_var_len": "Noutput", 
-                        "c_var_trim": "SH_Loutput", 
                         "cpp_type": "std::string", 
                         "cpp_val": "SH_rv.c_str()", 
                         "cpp_var": "SH_rv"
@@ -1130,7 +1121,7 @@
                 "C_call_code": "const std::string & SH_rv = Function4b(SH_arg1, SH_arg2);", 
                 "C_call_list": "SH_arg1, SH_arg2", 
                 "C_name": "TUT_function4b_bufferify", 
-                "C_post_call": "if (SH_rv.empty()) {\n  std::memset(output, ' ', Noutput);\n} else {\n  shroud_FccCopy(output, Noutput, SH_rv.c_str());\n}", 
+                "C_post_call": "if (SH_rv.empty()) {\n  std::memset(output, ' ', Noutput);\n} else {\n  ShroudStrCopy(output, Noutput, SH_rv.c_str());\n}", 
                 "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
                 "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * output, int Noutput", 
                 "C_return_code": "return;", 
@@ -1161,11 +1152,11 @@
         }, 
         {
             "_PTR_C_CPP_index": 9, 
-            "_PTR_F_C_index": 35, 
+            "_PTR_F_C_index": 41, 
             "_decl": "void Function4b(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string & output+intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 36, 
-            "_generated": "string_to_buffer_and_len", 
+            "_function_index": 42, 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -1234,7 +1225,7 @@
         }, 
         {
             "_decl": "double Function5()", 
-            "_function_index": 24, 
+            "_function_index": 30, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -1285,7 +1276,7 @@
         }, 
         {
             "_decl": "double Function5(double arg1+default(3.1415)+intent(in)+value)", 
-            "_function_index": 25, 
+            "_function_index": 31, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -1358,8 +1349,8 @@
         {
             "_decl": "double Function5(double arg1+default(3.1415)+intent(in)+value, bool arg2+default(true)+intent(in)+value)", 
             "_default_funcs": [
-                24, 
-                25
+                30, 
+                31
             ], 
             "_function_index": 10, 
             "_has_default_arg": true, 
@@ -1490,7 +1481,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 37, 
+            "_PTR_F_C_index": 43, 
             "_cpp_overload": [
                 11, 
                 12
@@ -1511,8 +1502,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
-                        "c_var_trim": "SH_Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
                     }, 
@@ -1581,8 +1570,8 @@
             ], 
             "_decl": "void Function6(const std::string & name+intent(in)+len_trim(Lname))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 37, 
-            "_generated": "string_to_buffer_and_len", 
+            "_function_index": 43, 
+            "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "args": [
@@ -1598,7 +1587,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
                         "c_var_trim": "Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
@@ -1759,7 +1747,7 @@
         }, 
         {
             "_decl": "void Function7(int arg+intent(in)+value)", 
-            "_function_index": 26, 
+            "_function_index": 32, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -1821,7 +1809,7 @@
         }, 
         {
             "_decl": "void Function7(double arg+intent(in)+value)", 
-            "_function_index": 27, 
+            "_function_index": 33, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -1914,7 +1902,7 @@
         {
             "_CPP_return_templated": true, 
             "_decl": "int Function8()", 
-            "_function_index": 28, 
+            "_function_index": 34, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -1962,7 +1950,7 @@
         {
             "_CPP_return_templated": true, 
             "_decl": "double Function8()", 
-            "_function_index": 29, 
+            "_function_index": 35, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -2085,7 +2073,7 @@
         {
             "_PTR_F_C_index": 15, 
             "_decl": "void Function9(float arg+intent(in)+value)", 
-            "_function_index": 41, 
+            "_function_index": 52, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2128,7 +2116,7 @@
         {
             "_PTR_F_C_index": 15, 
             "_decl": "void Function9(double arg+intent(in)+value)", 
-            "_function_index": 42, 
+            "_function_index": 53, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2213,7 +2201,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 38, 
+            "_PTR_F_C_index": 44, 
             "_cpp_overload": [
                 16, 
                 17
@@ -2234,8 +2222,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
-                        "c_var_trim": "SH_Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
                     }, 
@@ -2332,7 +2318,7 @@
                 17
             ], 
             "_decl": "void Function10(const std::string & name+intent(in), float arg2+intent(in)+value)", 
-            "_function_index": 43, 
+            "_function_index": 54, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2389,7 +2375,7 @@
                 17
             ], 
             "_decl": "void Function10(const std::string & name+intent(in), double arg2+intent(in)+value)", 
-            "_function_index": 44, 
+            "_function_index": 55, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2447,8 +2433,8 @@
             ], 
             "_decl": "void Function10(const std::string & name+intent(in)+len_trim(Lname), double arg2+intent(in)+value)", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 38, 
-            "_generated": "string_to_buffer_and_len", 
+            "_function_index": 44, 
+            "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "args": [
@@ -2464,7 +2450,6 @@
                         "c_const": "const ", 
                         "c_ptr": "", 
                         "c_var": "name", 
-                        "c_var_len": "SH_Nname", 
                         "c_var_trim": "Lname", 
                         "cpp_type": "std::string", 
                         "cpp_var": "SH_name"
@@ -2534,7 +2519,7 @@
                 19
             ], 
             "_decl": "int overload1(int num+intent(in)+value)", 
-            "_function_index": 30, 
+            "_function_index": 36, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -2609,7 +2594,7 @@
                 19
             ], 
             "_decl": "int overload1(int num+intent(in)+value, int offset+default(0)+intent(in)+value)", 
-            "_function_index": 31, 
+            "_function_index": 37, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -2705,8 +2690,8 @@
             ], 
             "_decl": "int overload1(int num+intent(in)+value, int offset+default(0)+intent(in)+value, int stride+default(1)+intent(in)+value)", 
             "_default_funcs": [
-                30, 
-                31
+                36, 
+                37
             ], 
             "_function_index": 18, 
             "_has_default_arg": true, 
@@ -2878,7 +2863,7 @@
                 19
             ], 
             "_decl": "int overload1(double type+intent(in)+value, int num+intent(in)+value)", 
-            "_function_index": 32, 
+            "_function_index": 38, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -2967,7 +2952,7 @@
                 19
             ], 
             "_decl": "int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset+default(0)+intent(in)+value)", 
-            "_function_index": 33, 
+            "_function_index": 39, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -3077,8 +3062,8 @@
             ], 
             "_decl": "int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset+default(0)+intent(in)+value, int stride+default(1)+intent(in)+value)", 
             "_default_funcs": [
-                32, 
-                33
+                38, 
+                39
             ], 
             "_function_index": 19, 
             "_has_default_arg": true, 
@@ -3505,8 +3490,687 @@
             }
         }, 
         {
-            "_decl": "const std::string & LastFunctionCalled()+pure", 
+            "_PTR_F_C_index": 45, 
+            "_decl": "int vector_sum(const std::vector & arg+dimension(:)+intent(in)+template(int))", 
             "_function_index": 23, 
+            "_subprogram": "function", 
+            "args": [
+                {
+                    "attrs": {
+                        "const": true, 
+                        "dimension": "(:)", 
+                        "intent": "in", 
+                        "reference": true, 
+                        "template": "int", 
+                        "value": false
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "int vector_sum(const std::vector<int> &arg)", 
+            "fmt": {
+                "F_C_call": "c_vector_sum_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
+                "F_arguments": "arg", 
+                "F_call_code": "SH_rv = c_vector_sum_bufferify(\targ\tsize(arg, kind=C_LONG))", 
+                "F_name_function": "vector_sum", 
+                "F_name_generic": "vector_sum", 
+                "F_name_impl": "vector_sum", 
+                "F_result_clause": " result(SH_rv)", 
+                "F_subprogram": "function", 
+                "function_name": "vector_sum", 
+                "underscore_name": "vector_sum"
+            }, 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "name": "vector_sum", 
+                "type": "int"
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 23, 
+            "_decl": "int vector_sum(const std::vector & arg+dimension(:)+intent(in)+size(Sarg)+template(int))", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_function_index": 45, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "function", 
+            "args": [
+                {
+                    "attrs": {
+                        "const": true, 
+                        "dimension": "(:)", 
+                        "intent": "in", 
+                        "reference": true, 
+                        "size": "Sarg", 
+                        "template": "int", 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "int", 
+                        "cpp_type": "int", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "int vector_sum(const std::vector<int> &arg)", 
+            "fmt": {
+                "C_call_code": "int SH_rv = vector_sum(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_sum_bufferify", 
+                "C_pre_call": "const std::vector<int> SH_arg(arg, arg + Sarg);", 
+                "C_prototype": "const int * arg, long Sarg", 
+                "C_return_code": "return SH_rv;", 
+                "C_return_type": "int", 
+                "F_C_name": "c_vector_sum_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
+            "options": {
+                "wrap_c": true, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "fmtc": {
+                    "cpp_rv_decl": "int SH_rv", 
+                    "cpp_var": "SH_rv"
+                }, 
+                "name": "vector_sum", 
+                "type": "int"
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 46, 
+            "_decl": "void vector_iota(std::vector & arg+dimension(:)+intent(out)+template(int))", 
+            "_function_index": 24, 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "dimension": "(:)", 
+                        "intent": "out", 
+                        "reference": true, 
+                        "template": "int", 
+                        "value": false
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
+            "fmt": {
+                "F_C_call": "c_vector_iota_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
+                "F_arguments": "arg", 
+                "F_call_code": "call c_vector_iota_bufferify(\targ\tsize(arg, kind=C_LONG))", 
+                "F_name_function": "vector_iota", 
+                "F_name_generic": "vector_iota", 
+                "F_name_impl": "vector_iota", 
+                "F_subprogram": "subroutine", 
+                "function_name": "vector_iota", 
+                "underscore_name": "vector_iota"
+            }, 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "name": "vector_iota", 
+                "type": "void"
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 24, 
+            "_decl": "void vector_iota(std::vector & arg+dimension(:)+intent(out)+size(Sarg)+template(int))", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_function_index": 46, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "dimension": "(:)", 
+                        "intent": "out", 
+                        "reference": true, 
+                        "size": "Sarg", 
+                        "template": "int", 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "int", 
+                        "cpp_type": "int", 
+                        "cpp_val": "SH_arg", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
+            "fmt": {
+                "C_call_code": "vector_iota(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_iota_bufferify", 
+                "C_post_call": "{\n  std::vector<int>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  SH_T_n = std::min(SH_arg.size(), SH_T_n);\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n    arg[SH_T_i] = SH_arg[SH_T_i];\n  }\n}", 
+                "C_pre_call": "std::vector<int> SH_arg(Sarg);", 
+                "C_prototype": "int * arg, long Sarg", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_vector_iota_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
+            "options": {
+                "wrap_c": true, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "name": "vector_iota", 
+                "type": "void"
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 47, 
+            "_decl": "void vector_increment(std::vector & arg+dimension(:)+intent(inout)+template(int))", 
+            "_function_index": 25, 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "dimension": "(:)", 
+                        "intent": "inout", 
+                        "reference": true, 
+                        "template": "int", 
+                        "value": false
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "void vector_increment(std::vector<int> &arg)", 
+            "fmt": {
+                "F_C_call": "c_vector_increment_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
+                "F_arguments": "arg", 
+                "F_call_code": "call c_vector_increment_bufferify(\targ\tsize(arg, kind=C_LONG))", 
+                "F_name_function": "vector_increment", 
+                "F_name_generic": "vector_increment", 
+                "F_name_impl": "vector_increment", 
+                "F_subprogram": "subroutine", 
+                "function_name": "vector_increment", 
+                "underscore_name": "vector_increment"
+            }, 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "name": "vector_increment", 
+                "type": "void"
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 25, 
+            "_decl": "void vector_increment(std::vector & arg+dimension(:)+intent(inout)+size(Sarg)+template(int))", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_function_index": 47, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "dimension": "(:)", 
+                        "intent": "inout", 
+                        "reference": true, 
+                        "size": "Sarg", 
+                        "template": "int", 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "int", 
+                        "cpp_type": "int", 
+                        "cpp_val": "SH_arg", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "void vector_increment(std::vector<int> &arg)", 
+            "fmt": {
+                "C_call_code": "vector_increment(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_increment_bufferify", 
+                "C_post_call": "{\n  std::vector<int>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  SH_T_n = std::min(SH_arg.size(), SH_T_n);\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n      arg[SH_T_i] = SH_arg[SH_T_i];\n  }\n}", 
+                "C_pre_call": "std::vector<int> SH_arg(arg, arg + Sarg);", 
+                "C_prototype": "int * arg, long Sarg", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_vector_increment_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
+            "options": {
+                "wrap_c": true, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "name": "vector_increment", 
+                "type": "void"
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 48, 
+            "_decl": "int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+template(std::string))", 
+            "_function_index": 26, 
+            "_subprogram": "function", 
+            "args": [
+                {
+                    "attrs": {
+                        "const": true, 
+                        "dimension": "(:)", 
+                        "intent": "in", 
+                        "reference": true, 
+                        "template": "std::string", 
+                        "value": false
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
+            "doxygen": {
+                "brief": "count number of underscore in vector of strings", 
+                "decription": "The input will be copied in order to create the C++ argument\n"
+            }, 
+            "fmt": {
+                "F_C_call": "c_vector_string_count_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
+                "F_arguments": "arg", 
+                "F_call_code": "SH_rv = c_vector_string_count_bufferify(\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT))", 
+                "F_name_function": "vector_string_count", 
+                "F_name_generic": "vector_string_count", 
+                "F_name_impl": "vector_string_count", 
+                "F_result_clause": " result(SH_rv)", 
+                "F_subprogram": "function", 
+                "function_name": "vector_string_count", 
+                "underscore_name": "vector_string_count"
+            }, 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "name": "vector_string_count", 
+                "type": "int"
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 26, 
+            "_decl": "int vector_string_count(const std::vector & arg+dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_function_index": 48, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "function", 
+            "args": [
+                {
+                    "attrs": {
+                        "const": true, 
+                        "dimension": "(:)", 
+                        "intent": "in", 
+                        "len": "Narg", 
+                        "reference": true, 
+                        "size": "Sarg", 
+                        "template": "std::string", 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_len": "Narg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "std::string", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
+            "doxygen": {
+                "brief": "count number of underscore in vector of strings", 
+                "decription": "The input will be copied in order to create the C++ argument\n"
+            }, 
+            "fmt": {
+                "C_call_code": "int SH_rv = vector_string_count(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_string_count_bufferify", 
+                "C_pre_call": "std::vector<std::string> SH_arg;\n{\n  const char * BBB = arg;\n  std::vector<std::string>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n    SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n    BBB += Narg;\n  }\n}", 
+                "C_prototype": "const char * arg, long Sarg, int Narg", 
+                "C_return_code": "return SH_rv;", 
+                "C_return_type": "int", 
+                "F_C_name": "c_vector_string_count_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
+            "options": {
+                "wrap_c": true, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "fmtc": {
+                    "cpp_rv_decl": "int SH_rv", 
+                    "cpp_var": "SH_rv"
+                }, 
+                "name": "vector_string_count", 
+                "type": "int"
+            }
+        }, 
+        {
+            "C_return_code": "return SH_arg.size();", 
+            "C_return_type": "int", 
+            "_PTR_F_C_index": 49, 
+            "_decl": "void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+template(std::string))", 
+            "_function_index": 27, 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "dimension": "(:)", 
+                        "intent": "out", 
+                        "reference": true, 
+                        "template": "std::string", 
+                        "value": false
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
+            "doxygen": {
+                "brief": "Fill in arg with some animal names", 
+                "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
+            }, 
+            "fmt": {
+                "F_C_call": "c_vector_string_fill_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
+                "F_arguments": "arg", 
+                "F_call_code": "SH_rv = c_vector_string_fill_bufferify(\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT))", 
+                "F_name_function": "vector_string_fill", 
+                "F_name_generic": "vector_string_fill", 
+                "F_name_impl": "vector_string_fill", 
+                "F_result_clause": " result(SH_rv)", 
+                "F_subprogram": "function", 
+                "function_name": "vector_string_fill", 
+                "underscore_name": "vector_string_fill"
+            }, 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "name": "vector_string_fill", 
+                "type": "void"
+            }
+        }, 
+        {
+            "C_return_code": "return SH_arg.size();", 
+            "C_return_type": "int", 
+            "_PTR_C_CPP_index": 27, 
+            "_decl": "void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_function_index": 49, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "dimension": "(:)", 
+                        "intent": "out", 
+                        "len": "Narg", 
+                        "reference": true, 
+                        "size": "Sarg", 
+                        "template": "std::string", 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_len": "Narg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "std::string", 
+                        "cpp_type": "std::string", 
+                        "cpp_val": "SH_arg.c_str()", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
+            "doxygen": {
+                "brief": "Fill in arg with some animal names", 
+                "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
+            }, 
+            "fmt": {
+                "C_call_code": "vector_string_fill(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_string_fill_bufferify", 
+                "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  SH_T_n = std::min(SH_arg.size(),SH_T_n);\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[SH_T_i].c_str());\n    BBB += Narg;\n  }\n}", 
+                "C_pre_call": "std::vector<std::string> SH_arg;", 
+                "C_prototype": "char * arg, long Sarg, int Narg", 
+                "C_return_code": "return SH_arg.size();", 
+                "C_return_type": "int", 
+                "F_C_name": "c_vector_string_fill_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
+            "options": {
+                "wrap_c": true, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "name": "vector_string_fill", 
+                "type": "void"
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 50, 
+            "_decl": "void vector_string_append(std::vector & arg+dimension(:)+intent(inout)+template(std::string))", 
+            "_function_index": 28, 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "dimension": "(:)", 
+                        "intent": "inout", 
+                        "reference": true, 
+                        "template": "std::string", 
+                        "value": false
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
+            "doxygen": {
+                "brief": "append '-like' to names."
+            }, 
+            "fmt": {
+                "F_C_call": "c_vector_string_append_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
+                "F_arguments": "arg", 
+                "F_call_code": "call c_vector_string_append_bufferify(\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT))", 
+                "F_name_function": "vector_string_append", 
+                "F_name_generic": "vector_string_append", 
+                "F_name_impl": "vector_string_append", 
+                "F_subprogram": "subroutine", 
+                "function_name": "vector_string_append", 
+                "underscore_name": "vector_string_append"
+            }, 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "name": "vector_string_append", 
+                "type": "void"
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 28, 
+            "_decl": "void vector_string_append(std::vector & arg+dimension(:)+intent(inout)+len(Narg)+size(Sarg)+template(std::string))", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_function_index": 50, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "dimension": "(:)", 
+                        "intent": "inout", 
+                        "len": "Narg", 
+                        "reference": true, 
+                        "size": "Sarg", 
+                        "template": "std::string", 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_len": "Narg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "std::string", 
+                        "cpp_type": "std::string", 
+                        "cpp_val": "SH_arg.c_str()", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }, 
+                    "name": "arg", 
+                    "type": "std::vector"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
+            "doxygen": {
+                "brief": "append '-like' to names."
+            }, 
+            "fmt": {
+                "C_call_code": "vector_string_append(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_string_append_bufferify", 
+                "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  SH_T_n = std::min(SH_arg.size(),SH_T_n);\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[SH_T_i].c_str());\n    BBB += Narg;\n  }\n}", 
+                "C_pre_call": "std::vector<std::string> SH_arg;\n{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SH_T_i = 0,\n    SH_T_n = Sarg;\n  for(; SH_T_i < SH_T_n; SH_T_i++) {\n    SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n    BBB += Narg;\n  }\n}", 
+                "C_prototype": "char * arg, long Sarg, int Narg", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_vector_string_append_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
+            "options": {
+                "wrap_c": true, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "name": "vector_string_append", 
+                "type": "void"
+            }
+        }, 
+        {
+            "_decl": "const std::string & LastFunctionCalled()+pure", 
+            "_function_index": 29, 
             "_subprogram": "function", 
             "args": [], 
             "attrs": {
@@ -3520,17 +4184,26 @@
                 "C_prototype": "", 
                 "C_return_code": "return XSH_rv;", 
                 "C_return_type": "const char *", 
+                "F_C_call": "c_last_function_called", 
                 "F_C_name": "c_last_function_called", 
+                "F_arg_c_call": "", 
+                "F_arg_c_call_tab": "\t", 
+                "F_arguments": "", 
+                "F_call_code": "SH_rv = fstr_ptr(c_last_function_called(\t))", 
+                "F_name_function": "last_function_called", 
+                "F_name_generic": "last_function_called", 
+                "F_name_impl": "last_function_called", 
+                "F_result_clause": " result(SH_rv)", 
+                "F_subprogram": "function", 
                 "LUA_name": "LastFunctionCalled", 
                 "LUA_name_impl": "l_last_function_called", 
                 "PY_name_impl": "PY_last_function_called", 
                 "c_const": "const ", 
+                "c_var_len": "strlen_ptr(c_last_function_called(\t))", 
                 "function_name": "LastFunctionCalled", 
                 "underscore_name": "last_function_called"
             }, 
-            "options": {
-                "wrap_fortran": false
-            }, 
+            "options": {}, 
             "result": {
                 "attrs": {
                     "const": true, 
@@ -3548,11 +4221,11 @@
             }
         }, 
         {
-            "_PTR_C_CPP_index": 23, 
+            "_PTR_C_CPP_index": 29, 
             "_decl": "void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 39, 
-            "_generated": "string_to_buffer_and_len", 
+            "_function_index": 51, 
+            "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -3568,7 +4241,6 @@
                         "c_ptr": "", 
                         "c_var": "SH_F_rv", 
                         "c_var_len": "NSH_F_rv", 
-                        "c_var_trim": "SH_LSH_F_rv", 
                         "cpp_type": "std::string", 
                         "cpp_val": "SH_rv.c_str()", 
                         "cpp_var": "SH_rv"
@@ -3585,7 +4257,7 @@
                 "C_call_code": "const std::string & SH_rv = LastFunctionCalled();", 
                 "C_call_list": "", 
                 "C_name": "TUT_last_function_called_bufferify", 
-                "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
+                "C_post_call": "if (SH_rv.empty()) {\n  std::memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());\n}", 
                 "C_prototype": "char * SH_F_rv, int NSH_F_rv", 
                 "C_return_code": "return;", 
                 "C_return_type": "void", 
@@ -3612,44 +4284,6 @@
                 "name": "LastFunctionCalled", 
                 "type": "void"
             }
-        }, 
-        {
-            "_PTR_F_C_index": 23, 
-            "_decl": "const string_result_fstr & LastFunctionCalled()+pure", 
-            "_function_index": 40, 
-            "_subprogram": "function", 
-            "args": [], 
-            "attrs": {
-                "pure": true
-            }, 
-            "decl": "const std::string& LastFunctionCalled() +pure", 
-            "fmt": {
-                "F_C_call": "c_last_function_called", 
-                "F_arg_c_call": "", 
-                "F_arg_c_call_tab": "\t", 
-                "F_arguments": "", 
-                "F_call_code": "SH_rv = fstr(c_last_function_called(\t))", 
-                "F_name_function": "last_function_called", 
-                "F_name_generic": "last_function_called", 
-                "F_name_impl": "last_function_called", 
-                "F_result_clause": " result(SH_rv)", 
-                "F_subprogram": "function", 
-                "c_var_len": "strlen_ptr(c_last_function_called(\t))"
-            }, 
-            "options": {
-                "wrap_c": false, 
-                "wrap_fortran": true, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
-                "attrs": {
-                    "const": true, 
-                    "reference": true
-                }, 
-                "name": "LastFunctionCalled", 
-                "type": "string_result_fstr"
-            }
         }
     ], 
     "library": "Tutorial", 
@@ -3662,6 +4296,7 @@
         "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
         "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
         "C_var_len_template": "N{c_var}", 
+        "C_var_size_template": "S{c_var}", 
         "C_var_trim_template": "L{c_var}", 
         "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
         "F_C_prefix": "c_", 
@@ -3712,6 +4347,14 @@
             "ftutorialsplicer.f"
         ]
     }, 
+    "type_aliases": {
+        "integer(C_INT)": "int", 
+        "integer(C_LONG)": "long", 
+        "real(C_DOUBLE)": "double", 
+        "real(C_FLOAT)": "float", 
+        "std::string": "string", 
+        "std::vector": "vector"
+    }, 
     "types": {
         "Class1": {
             "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
@@ -3737,7 +4380,14 @@
                     "class1"
                 ]
             }, 
-            "f_return_code": "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})", 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(class1)", 
             "forward": "Class1", 
@@ -3824,6 +4474,15 @@
                         "{c_var} = {f_var}  ! coerce to C_BOOL"
                     ]
                 }, 
+                "intent_inout": {
+                    "c_local_var": true, 
+                    "post_call": [
+                        "{f_var} = {c_var}  ! coerce to logical"
+                    ], 
+                    "pre_call": [
+                        "{c_var} = {f_var}  ! coerce to C_BOOL"
+                    ]
+                }, 
                 "intent_out": {
                     "c_local_var": true, 
                     "post_call": [
@@ -3852,6 +4511,9 @@
             "base": "string", 
             "c_statements": {
                 "intent_in_buf": {
+                    "buf_args": [
+                        "len_trim"
+                    ], 
                     "cpp_header": "<cstring>", 
                     "cpp_local_var": true, 
                     "post_call": [
@@ -3863,11 +4525,31 @@
                         "{cpp_var}[{c_var_trim}] = '\\0';"
                     ]
                 }, 
-                "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
+                "intent_inout_buf": {
+                    "buf_args": [
+                        "len_trim", 
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
                     "cpp_local_var": true, 
                     "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
+                        "delete [] {cpp_var};"
+                    ], 
+                    "pre_call": [
+                        "char * {cpp_var} = new char [{c_var_len} + 1];", 
+                        "std::strncpy({cpp_var}, {c_var}, {c_var_trim});", 
+                        "{cpp_var}[{c_var_trim}] = '\\0';"
+                    ]
+                }, 
+                "intent_out_buf": {
+                    "buf_args": [
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
                         "delete [] {cpp_var};"
                     ], 
                     "pre_call": [
@@ -3875,12 +4557,16 @@
                     ]
                 }, 
                 "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
+                    "buf_args": [
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
+                    "cpp_header": "<cstring>", 
                     "post_call": [
                         "if ({cpp_var} == NULL) {{", 
                         "  std::memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_var});", 
+                        "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});", 
                         "}}"
                     ]
                 }
@@ -3893,6 +4579,15 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
+            "f_statements": {
+                "result_pure": {
+                    "call": [
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
+                    ], 
+                    "f_helper": "fstr_ptr", 
+                    "need_wrapper": true
+                }
+            }, 
             "f_type": "character(*)"
         }, 
         "char_scalar": {
@@ -3903,6 +4598,9 @@
             "PY_format": "s", 
             "c_statements": {
                 "result_buf": {
+                    "buf_args": [
+                        "len"
+                    ], 
                     "cpp_header": "<cstring>", 
                     "post_call": [
                         "std::memset({c_var}, ' ', {c_var_len});", 
@@ -3965,36 +4663,6 @@
             }, 
             "f_type": "integer(C_INT)"
         }, 
-        "integer(C_INT)": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TNUMBER", 
-            "PY_format": "i", 
-            "c_type": "int", 
-            "cpp_type": "int", 
-            "f_cast": "int({f_var}, C_INT)", 
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            }, 
-            "f_type": "integer(C_INT)"
-        }, 
-        "integer(C_LONG)": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TNUMBER", 
-            "PY_format": "l", 
-            "c_type": "long", 
-            "cpp_type": "long", 
-            "f_cast": "int({f_var}, C_LONG)", 
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG"
-                ]
-            }, 
-            "f_type": "integer(C_LONG)"
-        }, 
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
@@ -4009,36 +4677,6 @@
                 ]
             }, 
             "f_type": "integer(C_LONG)"
-        }, 
-        "real(C_DOUBLE)": {
-            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TNUMBER", 
-            "PY_format": "d", 
-            "c_type": "double", 
-            "cpp_type": "double", 
-            "f_cast": "real({f_var}, C_DOUBLE)", 
-            "f_module": {
-                "iso_c_binding": [
-                    "C_DOUBLE"
-                ]
-            }, 
-            "f_type": "real(C_DOUBLE)"
-        }, 
-        "real(C_FLOAT)": {
-            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TNUMBER", 
-            "PY_format": "f", 
-            "c_type": "float", 
-            "cpp_type": "float", 
-            "f_cast": "real({f_var}, C_FLOAT)", 
-            "f_module": {
-                "iso_c_binding": [
-                    "C_FLOAT"
-                ]
-            }, 
-            "f_type": "real(C_FLOAT)"
         }, 
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
@@ -4056,69 +4694,6 @@
             }, 
             "f_type": "integer(C_SIZE_T)"
         }, 
-        "std::string": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TSTRING", 
-            "PY_ctor": "PyString_FromString({c_var})", 
-            "PY_format": "s", 
-            "base": "string", 
-            "c_statements": {
-                "intent_in": {
-                    "cpp_local_var": true, 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }, 
-                "intent_in_buf": {
-                    "cpp_local_var": true, 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
-                    ]
-                }, 
-                "intent_out": {
-                    "cpp_header": "<cstring>", 
-                    "post_call": [
-                        "strcpy({c_var}, {cpp_val});"
-                    ]
-                }, 
-                "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
-                    "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
-                    ]
-                }, 
-                "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
-                    "post_call": [
-                        "if ({cpp_var}.empty()) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
-                        "}} else {{", 
-                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "}}"
-                    ]
-                }
-            }, 
-            "c_type": "char", 
-            "cpp_header": "<string>", 
-            "cpp_to_c": "{cpp_var}.c_str()", 
-            "cpp_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            }, 
-            "f_c_type": "character(kind=C_CHAR)", 
-            "f_type": "character(*)", 
-            "py_statements": {
-                "intent_in": {
-                    "cpp_local_var": true, 
-                    "post_parse": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }
-            }
-        }, 
         "string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
@@ -4134,30 +4709,72 @@
                     ]
                 }, 
                 "intent_in_buf": {
+                    "buf_args": [
+                        "len_trim"
+                    ], 
                     "cpp_local_var": true, 
                     "pre_call": [
                         "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
                     ]
                 }, 
-                "intent_out": {
+                "intent_inout": {
                     "cpp_header": "<cstring>", 
+                    "cpp_local_var": true, 
                     "post_call": [
                         "strcpy({c_var}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::string {cpp_var}({c_var});"
+                    ]
+                }, 
+                "intent_inout_buf": {
+                    "buf_args": [
+                        "len_trim", 
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "std::string {cpp_var}({c_var}, {c_var_trim});"
+                    ]
+                }, 
+                "intent_out": {
+                    "cpp_header": "<cstring>", 
+                    "cpp_local_var": true, 
+                    "post_call": [
+                        "strcpy({c_var}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::string {cpp_var};"
                     ]
                 }, 
                 "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
+                    "buf_args": [
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
+                    "cpp_local_var": true, 
                     "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});"
+                    ], 
+                    "pre_call": [
+                        "std::string {cpp_var};"
                     ]
                 }, 
                 "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
+                    "buf_args": [
+                        "len"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
+                    "cpp_header": "<cstring>", 
                     "post_call": [
                         "if ({cpp_var}.empty()) {{", 
                         "  std::memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
+                        "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
                         "}}"
                     ]
                 }
@@ -4172,6 +4789,15 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
+            "f_statements": {
+                "result_pure": {
+                    "call": [
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
+                    ], 
+                    "f_helper": "fstr_ptr", 
+                    "need_wrapper": true
+                }
+            }, 
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
@@ -4182,74 +4808,143 @@
                 }
             }
         }, 
-        "string_result_fstr": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TSTRING", 
-            "PY_ctor": "PyString_FromString({c_var})", 
-            "PY_format": "s", 
-            "base": "string", 
+        "vector": {
+            "base": "vector", 
             "c_statements": {
-                "intent_in": {
-                    "cpp_local_var": true, 
-                    "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var});"
-                    ]
-                }, 
                 "intent_in_buf": {
+                    "buf_args": [
+                        "size"
+                    ], 
                     "cpp_local_var": true, 
                     "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
+                        "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
-                "intent_out": {
-                    "cpp_header": "<cstring>", 
+                "intent_inout_buf": {
+                    "buf_args": [
+                        "size"
+                    ], 
+                    "cpp_local_var": true, 
                     "post_call": [
-                        "strcpy({c_var}, {cpp_val});"
+                        "{{", 
+                        "  std::vector<{cpp_T}>::size_type", 
+                        "    {c_temp}i = 0,", 
+                        "    {c_temp}n = {c_var_size};", 
+                        "  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);", 
+                        "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                        "      {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];", 
+                        "  }}", 
+                        "}}"
+                    ], 
+                    "pre_call": [
+                        "std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
                 "intent_out_buf": {
-                    "cpp_header": "shroudrt.hpp", 
-                    "post_call": [
-                        "shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});"
-                    ]
-                }, 
-                "result_buf": {
-                    "cpp_header": "<cstring> shroudrt.hpp", 
-                    "post_call": [
-                        "if ({cpp_var}.empty()) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
-                        "}} else {{", 
-                        "  shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "}}"
-                    ]
-                }
-            }, 
-            "c_type": "char", 
-            "cpp_header": "<string>", 
-            "cpp_to_c": "{cpp_var}.c_str()", 
-            "cpp_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            }, 
-            "f_c_type": "character(kind=C_CHAR)", 
-            "f_helper": {
-                "f_return_code": {
-                    "fstr": true
-                }
-            }, 
-            "f_return_code": "{F_result} = fstr({F_C_call}({F_arg_c_call_tab}))", 
-            "f_type": "character(*)", 
-            "py_statements": {
-                "intent_in": {
+                    "buf_args": [
+                        "size"
+                    ], 
                     "cpp_local_var": true, 
-                    "post_parse": [
-                        "{c_const}std::string {cpp_var}({c_var});"
+                    "post_call": [
+                        "{{", 
+                        "  std::vector<{cpp_T}>::size_type", 
+                        "    {c_temp}i = 0,", 
+                        "    {c_temp}n = {c_var_size};", 
+                        "  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);", 
+                        "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                        "    {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];", 
+                        "  }}", 
+                        "}}"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});"
                     ]
                 }
-            }
+            }, 
+            "c_templates": {
+                "string": {
+                    "intent_in_buf": {
+                        "buf_args": [
+                            "size", 
+                            "len"
+                        ], 
+                        "c_helper": "ShroudLenTrim", 
+                        "cpp_local_var": true, 
+                        "pre_call": [
+                            "std::vector<{cpp_T}> {cpp_var};", 
+                            "{{", 
+                            "  {c_const}char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
+                            "}}"
+                        ]
+                    }, 
+                    "intent_inout_buf": {
+                        "buf_args": [
+                            "size", 
+                            "len"
+                        ], 
+                        "cpp_local_var": true, 
+                        "post_call": [
+                            "{{", 
+                            "  char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
+                            "}}"
+                        ], 
+                        "pre_call": [
+                            "std::vector<{cpp_T}> {cpp_var};", 
+                            "{{", 
+                            "  {c_const}char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
+                            "}}"
+                        ]
+                    }, 
+                    "intent_out_buf": {
+                        "buf_args": [
+                            "size", 
+                            "len"
+                        ], 
+                        "c_helper": "ShroudLenTrim", 
+                        "cpp_local_var": true, 
+                        "post_call": [
+                            "{{", 
+                            "  char * BBB = {c_var};", 
+                            "  std::vector<{cpp_T}>::size_type", 
+                            "    {c_temp}i = 0,", 
+                            "    {c_temp}n = {c_var_size};", 
+                            "  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);", 
+                            "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
+                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());", 
+                            "    BBB += {c_var_len};", 
+                            "  }}", 
+                            "}}"
+                        ], 
+                        "pre_call": [
+                            "{c_const}std::vector<{cpp_T}> {cpp_var};"
+                        ]
+                    }
+                }
+            }, 
+            "cpp_header": "<vector>", 
+            "cpp_type": "std::vector<{cpp_T}>"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cpp_var}, NULL, NULL)", 

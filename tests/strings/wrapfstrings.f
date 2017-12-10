@@ -95,6 +95,22 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: Lsrc
         end subroutine c_pass_char_ptr_bufferify
 
+        subroutine c_pass_char_ptr_in_out(s) &
+                bind(C, name="STR_pass_char_ptr_in_out")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR), intent(INOUT) :: s(*)
+        end subroutine c_pass_char_ptr_in_out
+
+        subroutine c_pass_char_ptr_in_out_bufferify(s, Ls, Ns) &
+                bind(C, name="STR_pass_char_ptr_in_out_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(INOUT) :: s(*)
+            integer(C_INT), value, intent(IN) :: Ls
+            integer(C_INT), value, intent(IN) :: Ns
+        end subroutine c_pass_char_ptr_in_out_bufferify
+
         pure function c_get_char1() &
                 result(SH_rv) &
                 bind(C, name="STR_get_char1")
@@ -238,6 +254,21 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: Larg1
         end subroutine c_accept_string_const_reference_bufferify
 
+        subroutine c_accept_string_reference_out(arg1) &
+                bind(C, name="STR_accept_string_reference_out")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: arg1(*)
+        end subroutine c_accept_string_reference_out
+
+        subroutine c_accept_string_reference_out_bufferify(arg1, Narg1) &
+                bind(C, name="STR_accept_string_reference_out_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: arg1(*)
+            integer(C_INT), value, intent(IN) :: Narg1
+        end subroutine c_accept_string_reference_out_bufferify
+
         subroutine c_accept_string_reference(arg1) &
                 bind(C, name="STR_accept_string_reference")
             use iso_c_binding, only : C_CHAR
@@ -288,11 +319,7 @@ module strings_mod
         ! splicer end additional_interfaces
     end interface
 
-    private fstr, fstr_ptr, fstr_arr, strlen_arr, strlen_ptr
-
-    interface fstr
-      module procedure fstr_ptr, fstr_arr
-    end interface
+    private fstr_ptr, strlen_ptr
 
     interface
        pure function strlen_ptr(s) result(result) bind(c,name="strlen")
@@ -305,7 +332,7 @@ module strings_mod
 contains
 
     ! char_scalar returnChar()
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=1
     !>
     !! \brief return a char argument (non-pointer)
@@ -322,7 +349,7 @@ contains
     end function return_char
 
     ! void passCharPtr(char * dest+intent(out), const char * src+intent(in))
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=2
     !>
     !! \brief strcpy like behavior
@@ -343,8 +370,26 @@ contains
         ! splicer end function.pass_char_ptr
     end subroutine pass_char_ptr
 
-    ! const string_result_fstr * getChar1()+pure
-    ! function_index=19
+    ! void passCharPtrInOut(char * s+intent(inout))
+    ! arg_to_buffer
+    ! function_index=3
+    !>
+    !! \brief Change a string in-place
+    !!
+    !<
+    subroutine pass_char_ptr_in_out(s)
+        use iso_c_binding, only : C_INT
+        character(*), intent(INOUT) :: s
+        ! splicer begin function.pass_char_ptr_in_out
+        call c_pass_char_ptr_in_out_bufferify(  &
+            s,  &
+            len_trim(s, kind=C_INT),  &
+            len(s, kind=C_INT))
+        ! splicer end function.pass_char_ptr_in_out
+    end subroutine pass_char_ptr_in_out
+
+    ! const char * getChar1()+pure
+    ! function_index=4
     !>
     !! \brief return a 'const char *' as character(*)
     !!
@@ -353,13 +398,13 @@ contains
         use iso_c_binding, only : C_CHAR
         character(kind=C_CHAR, len=strlen_ptr(c_get_char1())) :: SH_rv
         ! splicer begin function.get_char1
-        SH_rv = fstr(c_get_char1())
+        SH_rv = fstr_ptr(c_get_char1())
         ! splicer end function.get_char1
     end function get_char1
 
     ! const char * getChar2()
-    ! string_to_buffer_and_len
-    ! function_index=4
+    ! arg_to_buffer
+    ! function_index=5
     !>
     !! \brief return 'const char *' with fixed size (len=30)
     !!
@@ -375,8 +420,8 @@ contains
     end function get_char2
 
     ! void getChar3(char * output+intent(out)+len(Noutput))
-    ! string_to_buffer_and_len - string_to_buffer_and_len
-    ! function_index=22
+    ! arg_to_buffer - arg_to_buffer
+    ! function_index=24
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -391,8 +436,8 @@ contains
         ! splicer end function.get_char3
     end subroutine get_char3
 
-    ! const string_result_fstr & getString1()+pure
-    ! function_index=24
+    ! const string & getString1()+pure
+    ! function_index=7
     !>
     !! \brief return a 'const string&' as character(*)
     !!
@@ -401,13 +446,13 @@ contains
         use iso_c_binding, only : C_CHAR
         character(kind=C_CHAR, len=strlen_ptr(c_get_string1())) :: SH_rv
         ! splicer begin function.get_string1
-        SH_rv = fstr(c_get_string1())
+        SH_rv = fstr_ptr(c_get_string1())
         ! splicer end function.get_string1
     end function get_string1
 
     ! const string & getString2()
-    ! string_to_buffer_and_len
-    ! function_index=7
+    ! arg_to_buffer
+    ! function_index=8
     !>
     !! \brief return 'const string&' with fixed size (len=30)
     !!
@@ -423,8 +468,8 @@ contains
     end function get_string2
 
     ! void getString3(string & output+intent(out)+len(Noutput))
-    ! string_to_buffer_and_len - string_to_buffer_and_len
-    ! function_index=27
+    ! arg_to_buffer - arg_to_buffer
+    ! function_index=28
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -440,8 +485,8 @@ contains
     end subroutine get_string3
 
     ! const string & getString2_empty()
-    ! string_to_buffer_and_len
-    ! function_index=9
+    ! arg_to_buffer
+    ! function_index=10
     !>
     !! \brief Test returning empty string reference
     !!
@@ -457,8 +502,8 @@ contains
     end function get_string2_empty
 
     ! const string getString5()
-    ! string_to_buffer_and_len
-    ! function_index=10
+    ! arg_to_buffer
+    ! function_index=11
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -474,8 +519,8 @@ contains
     end function get_string5
 
     ! void getString6(string * output+intent(out)+len(Noutput))
-    ! string_to_buffer_and_len - string_to_buffer_and_len
-    ! function_index=31
+    ! arg_to_buffer - arg_to_buffer
+    ! function_index=32
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -491,8 +536,8 @@ contains
     end subroutine get_string6
 
     ! void acceptStringConstReference(const std::string & arg1+intent(in))
-    ! string_to_buffer_and_len
-    ! function_index=12
+    ! arg_to_buffer
+    ! function_index=13
     !>
     !! \brief Accept a const string reference
     !!
@@ -510,9 +555,29 @@ contains
         ! splicer end function.accept_string_const_reference
     end subroutine accept_string_const_reference
 
+    ! void acceptStringReferenceOut(std::string & arg1+intent(out))
+    ! arg_to_buffer
+    ! function_index=14
+    !>
+    !! \brief Accept a string reference
+    !!
+    !! Set out to a constant string.
+    !! arg1 is intent(OUT)
+    !! Must copy out.
+    !<
+    subroutine accept_string_reference_out(arg1)
+        use iso_c_binding, only : C_INT
+        character(*), intent(OUT) :: arg1
+        ! splicer begin function.accept_string_reference_out
+        call c_accept_string_reference_out_bufferify(  &
+            arg1,  &
+            len(arg1, kind=C_INT))
+        ! splicer end function.accept_string_reference_out
+    end subroutine accept_string_reference_out
+
     ! void acceptStringReference(std::string & arg1+intent(inout))
-    ! string_to_buffer_and_len
-    ! function_index=13
+    ! arg_to_buffer
+    ! function_index=15
     !>
     !! \brief Accept a string reference
     !!
@@ -532,8 +597,8 @@ contains
     end subroutine accept_string_reference
 
     ! void explicit1(char * name+intent(in)+len_trim(AAlen))
-    ! string_to_buffer_and_len
-    ! function_index=14
+    ! arg_to_buffer
+    ! function_index=16
     subroutine explicit1(name)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
@@ -545,8 +610,8 @@ contains
     end subroutine explicit1
 
     ! void explicit2(char * name+intent(out)+len(AAtrim))
-    ! string_to_buffer_and_len
-    ! function_index=15
+    ! arg_to_buffer
+    ! function_index=17
     subroutine explicit2(name)
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: name
@@ -572,29 +637,5 @@ contains
          fs(i:i) = cptr(i)
       enddo
     end function fstr_ptr
-
-    ! Convert a null-terminated array of characters to a Fortran string.
-    function fstr_arr(s) result(fs)
-      use, intrinsic :: iso_c_binding, only : c_char, c_null_char
-      character(kind=c_char, len=1), intent(in) :: s(*)
-      character(kind=c_char, len=strlen_arr(s)) :: fs
-      integer :: i
-      do i = 1, len(fs)
-         fs(i:i) = s(i)
-      enddo
-    end function fstr_arr
-
-    ! Count the characters in a null-terminated array.
-    pure function strlen_arr(s)
-      use, intrinsic :: iso_c_binding, only : c_char, c_null_char
-      character(kind=c_char, len=1), intent(in) :: s(*)
-      integer :: i, strlen_arr
-      i=1
-      do
-         if (s(i) == c_null_char) exit
-         i = i+1
-      enddo
-      strlen_arr = i-1
-    end function strlen_arr
 
 end module strings_mod

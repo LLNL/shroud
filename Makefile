@@ -44,7 +44,9 @@
 
 top := $(CURDIR)
 
-PYTHON := $(shell which python)
+PYTHONEXE := python2
+
+PYTHON := $(shell which $(PYTHONEXE))
 python.dir := $(dir $(PYTHON))
 venv := $(dir $(PYTHON))virtualenv
 
@@ -60,16 +62,18 @@ venv.dir := $(top)/$(tempdir)/venv
 # if virtualenv is created us it, else depend on python in path
 ifneq ($(wildcard $(venv.dir)),)
 python.dir := $(venv.dir)/bin
-PYTHON := $(venv.dir)/bin/python
+PYTHON := $(venv.dir)/bin/$(PYTHONEXE)
 endif
 
 export PYTHON
 export LUA
 
 ########################################################################
-# Create a virtual environment.
-# Then 'make develop' will use the environement to install dependencies
+# For development:
+# make virtualenv
+# make develop
 
+# Create a virtual environment.
 virtualenv : $(venv.dir)
 $(venv.dir) :
 	$(venv) $(venv.dir)
@@ -108,32 +112,38 @@ testdirs : $(TESTDIRS)
 
 fortran : tutorial strings
 
+# Compile the generated Fortran wrapper
 tutorial strings : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-$@ \
 	    -f $(top)/tests/run-$@/Makefile \
 	    top=$(top) $@
 
+# Run the Fortran tests
 test-fortran : fortran
 	$(tempdir)/run-tutorial/tutorial
 	$(tempdir)/run-strings/strings
 
+# Compile the generated Python wrapper
 py-tutorial : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-tutorial/python \
 	    -f $(top)/tests/run-tutorial/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
+# Run the Python tests
 test-python : py-tutorial
 	export PYTHONPATH=$(top)/$(tempdir)/run-tutorial/python; \
 	$(PYTHON_BIN) $(top)/tests/run-tutorial/python/test.py	
 
+# Compile the geneated Lua wrapper
 lua-tutorial : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-tutorial/lua \
 	    -f $(top)/tests/run-tutorial/lua/Makefile \
 	    LUA=$(LUA) top=$(top) all
 
+# Run the Lua test
 test-lua : lua-tutorial
 #	export LUA_PATH=$(top)/$(tempdir)/run-tutorial/lua;
 	cd $(top)/$(tempdir)/run-tutorial/lua; \
@@ -147,19 +157,21 @@ test-clean :
 ########################################################################
 #
 # Run the sample YAML files and compare output
+# make do-test
+# make do-test do-test-args=tutorial
 #
 do-test :
 	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
 	export TEST_INPUT_DIR=$(top)/tests; \
 	export EXECUTABLE_DIR=$(python.dir); \
-	$(PYTHON) tests/do_test.py
+	$(PYTHON) tests/do_test.py $(do-test-args)
 
 # replace test answers
 do-test-replace :
 	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
 	export TEST_INPUT_DIR=$(top)/tests; \
 	export EXECUTABLE_DIR=$(python.dir); \
-	$(PYTHON) tests/do_test.py -r
+	$(PYTHON) tests/do_test.py -r  $(do-test-args)
 
 ########################################################################
 

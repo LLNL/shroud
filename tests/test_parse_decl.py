@@ -48,7 +48,7 @@ import unittest
 
 class CheckDeclCase(unittest.TestCase):
 
-    # decl
+    # qualifier
     def test_qualifier01(self):
         r = parse_decl.x("const").qualifier()
         self.assertEqual(r, [('const', True)])
@@ -69,6 +69,15 @@ class CheckDeclCase(unittest.TestCase):
     def test_pointer03(self):
         r = parse_decl.x("").pointer()
         self.assertEqual(r, [])
+
+    # template
+    def test_template01(self):
+        r = parse_decl.x("<int>").template()
+        self.assertEqual(r, [('template', 'int')])
+
+    def test_template02(self):
+        r = parse_decl.x("< int >").template()
+        self.assertEqual(r, [('template', 'int')])
 
     # attr
     def test_attr01(self):
@@ -131,6 +140,7 @@ class CheckDeclCase(unittest.TestCase):
             'attrs': {},
             'name': 'arg'
         })
+        self.assertEqual(parse_decl.str_declarator(r), "int arg")
 
     def test_declarator02(self):
         r = parse_decl.x("const int arg").declarator()
@@ -139,6 +149,7 @@ class CheckDeclCase(unittest.TestCase):
             'attrs': {'const': True},
             'name': 'arg'
         })
+        self.assertEqual(parse_decl.str_declarator(r), "const int arg")
 
     def test_declarator03(self):
         r = parse_decl.x("badtype arg").declarator()
@@ -147,6 +158,30 @@ class CheckDeclCase(unittest.TestCase):
             'attrs': {},
             'name': 'arg'
         })
+        self.assertEqual(parse_decl.str_declarator(r), "badtype arg")
+
+    def test_declarator04(self):
+        r = parse_decl.x("std::vector<int> &arg").declarator()
+        self.assertEqual(r, {
+            'type': 'std::vector',
+            'attrs': {
+               'reference': True,
+               'template': 'int'
+            },
+            'name': 'arg'
+            })
+        self.assertEqual(parse_decl.str_declarator(r), "std::vector<int> &arg")
+
+    def test_declarator05(self):
+        r = parse_decl.x("std::vector<std::string> arg").declarator()
+        self.assertEqual(r, {
+            'type': 'std::vector',
+            'attrs': {
+               'template': 'std::string'
+            },
+            'name': 'arg'
+            })
+        self.assertEqual(parse_decl.str_declarator(r), "std::vector<std::string> arg")
 
     # parameter_list
     def test_parameter_list01(self):

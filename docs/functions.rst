@@ -147,7 +147,7 @@ To rename all functions, set the template in the toplevel *options*::
 How Functions are Wrapped
 -------------------------
 
-As each function declartion is parsed a format dictionary is created
+As each function declaration is parsed a format dictionary is created
 with fields to describe the function and its arguments.
 The fields are then expanded into the function wrapper.
 
@@ -184,6 +184,17 @@ The *C_code* field has a default value of::
 * **C_post_call** code used with *intent(out)* arguments.
 
 * **C_return_code** returns a value from the wrapper.
+
+**C_return_code** can be set from the YAML file to override the return value::
+
+    -  decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
+       C_return_type: int
+       C_return_code: return SH_arg.size();
+
+The C wrapper (and the Fortran wrapper) will return ``int`` instead of
+``void`` using **C_return_code** to compute the value.  In this case,
+the wrapper will return the size of the vector.  This is useful since
+C and Fortran convert the vector into an array.
 
 
 .. wrapc.py   Wrapc.write_header
@@ -239,8 +250,8 @@ be controlled directly by the input file::
     end module {F_module_name}
 
 
-Helper functions
-----------------
+Additional Wrapper Functions
+----------------------------
 
 Functions can be created in the Fortran wrapper which have no
 corresponding function in the C++ library.  This may be necessary to
@@ -280,6 +291,22 @@ to get the definition.
 
 
 .. Fortran shadow class
+
+Helper functions
+----------------
+
+Shroud provides some additional file static function which are inserted 
+at the beginning of the wrapped code.
+
+C helper functions
+
+``ShroudStrCopy(char *a, int la, const char *s)``
+    Copy *s* into *a*, blank fill to *la* characters
+    Truncate if *a* is too short.
+
+``int ShroudLenTrim(const char *s, int ls)``
+    Returns the length of character string *a* with length *ls*,
+    ignoring any trailing blanks.
 
 
 Header Files
@@ -353,7 +380,14 @@ namespace.
 Local Variable
 ^^^^^^^^^^^^^^
 
-*SH_* prefix on local variables.
+*SH_* prefix on local variables which are created for a corresponding argument.
+For example the argument `char *name`, may need to create a local variable
+named `std::string SH_name`.
+
+Shroud also generates some code which requires local variables such as
+loop indexes.  These are prefixed with *SH_T_*.  This name is controlled 
+by the format variable *c_temp*.
+
 
 Results are named from *fmt.C_result* or *fmt.F_result*.
 
@@ -380,12 +414,12 @@ The **C_error_pattern** will insert code after the call to the C++
 function in the C wrapper and before any post_call sections from the
 types. The bufferified version of a function will append
 ``_as_buffer`` to the **C_error_pattern** value.  The *pattern* is
-formated using the context of the return argument if present,
+formatted using the context of the return argument if present,
 otherwise the context of the function is used.  This means that
 *c_var* and *c_var_len* refer to the argument which is added to
 contain the function result for the ``_as_buffer`` pattern.
 
-The function ``getString2`` is returing a ``std::string`` referrence.
+The function ``getString2`` is returning a ``std::string`` reference.
 Since C and Fortran cannot deal with this directly, the empty string
 is converted into a ``NULL`` pointer::
 will blank fill the result::
@@ -409,7 +443,7 @@ Splicers
 No matter how many features are added to Shroud there will always exist
 cases that it does not handle.  One of the weaknesses of generated
 code is that if the generated code is edited it becomes difficult to
-regenerate the code and perserve the edits.  To deal with this
+regenerate the code and preserve the edits.  To deal with this
 situation each block of generated code is surrounded by 'splicer'
 comments::
 
@@ -506,5 +540,5 @@ Debugging
 Shroud generates a JSON file with all of the input from the YAML
 and all of the format dictionaries and type maps.
 This file can be useful to see which format keys are available and
-how code is genenerated.
+how code is generated.
 

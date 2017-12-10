@@ -106,12 +106,15 @@ C_impl_filename
 C_result
     TODO
 
+c_temp
+    Prefix for wrapper working variables.
+    Defaults to *SH_T_*.
 F_module_name
     Name of module for Fortran interface for the library.
     Defaulted from expansion of option *F_module_name_library_template*.
 
 F_impl_filename
-    Name of generated Fortran implemention file for the library.
+    Name of generated Fortran implementation file for the library.
     Defaulted from expansion of option *F_impl_filename_library_template*.
     If option *F_module_per_class* is false, then all derived types
     generated for each class will also be in this file.
@@ -151,7 +154,7 @@ F_module_name
     Only defined if *F_module_per_class* is true.
 
 F_impl_filename
-    Name of generated Fortran implemention file for the library.
+    Name of generated Fortran implementation file for the library.
     Defaulted from expansion of option *F_impl_filename_class_template*.
     Only defined if *F_module_per_class* is true.
 
@@ -177,7 +180,7 @@ C_prefix
 
 F_C_prefix
     Prefix for Fortran name for C wrapper.  Defaults to ``c_``.
-    Set from **options** and defaults to `c_`
+    Set from **options** and defaults to ``c_``
 
 
 
@@ -210,7 +213,9 @@ C_return_code
 
 C_return_type
     Return type of the function.
-    If the **return_this** field is true, then *C_return_type* is set to ``void``.
+    If the **return_this** field is true, then set to ``void``.
+    If the **C_return_type** field is set, use its value.
+    Otherwise set to function's return type.
 
 CPP_template
     The template component of the function declaration.
@@ -274,12 +279,12 @@ function_suffix
     Suffix append to name.  Used to differentiate overloaded functions.
     Defaults to a sequence number (e.g. `_0`, `_1`, ...) but can be set
     by using the function field *function_suffix*.
-    Mulitple suffixes may be applied.
+    Multiple suffixes may be applied.
 
 Argument
 ^^^^^^^^
 
-C_const
+c_const
     ``const`` if argument has the *const* attribute.
 
 c_var
@@ -287,11 +292,22 @@ c_var
 
 c_var_len
     Function argument generated from the *len* annotation.
+    Used with char/string arguments.
     Set from option **C_var_len_template**.
+
+c_var_size
+    Function argument generated from the *size* annotation.
+    Used with array/std::vector arguments.
+    Set from option **C_var_size_template**.
 
 c_var_trim
     Function argument generated from the *len_trim* annotation.
+    Used with char/string arguments.
     Set from option **C_var_trim_template**.
+
+cpp_T
+    The template parameter for std::vector arguments.
+    ``std::vector<cpp_T>``
 
 cpp_type
     The C++ type of the argument.
@@ -412,12 +428,16 @@ C_string_result_as_arg
   the result in an additional argument in the C wrapper.
 
 C_this
-    Name of the C object argument.  Defauls to ``self``.
+    Name of the C object argument.  Defaults to ``self``.
     It may be necessary to set this if it conflicts with an argument name.
 
 C_var_len_template
     Format for variable created with *len* annotation.
     Default ``N{c_var}``
+
+C_var_size_template
+    Format for variable created with *size* annotation.
+    Default ``S{c_var}``
 
 C_var_trim_template
     Format for variable created with *len_trim* annotation.
@@ -425,7 +445,7 @@ C_var_trim_template
 
 CPP_this
     Name of the C++ object pointer set from the *C_this* argument.
-    Defauls to ``SH_this``.
+    Defaults to ``SH_this``.
 
 
 F_C_prefix
@@ -687,14 +707,14 @@ cpp_local_var
     If true then a local variable will be created instead of passing the argument
     directly to the function.
     The variable will be assigned a value using *c_to_cpp*.
-    If *c_to_cpp* is a large expression it is sometimes convient to have a local variable
+    If *c_to_cpp* is a large expression it is sometimes convenient to have a local variable
     for debugging purposes.
     It can also be used to create cleaner code when *c_to_cpp* will generate a very long statement.
     When *c_to_cpp* is not sufficient to assign a value, *c_statements* can be used to 
     add multiple statements into the wrapper.  *c_statements* and *cpp_local_var* cannot
     be used together.
 
-..  {C_const}{cpp_type}{ptr} = c_to_cpp ;
+..  {c_const}{cpp_type}{ptr} = c_to_cpp ;
 
 c_type
     name of type in C.
@@ -711,22 +731,40 @@ c_to_cpp
 
 c_statements
     A nested dictionary of code template to add.
-    The first layer is *intent_in*, *intent_out*, *result*,
-    *intent_in_buf*, *intent_out_buf*, and *result_buf*.
+    The first layer is *intent_in*, *intent_out*, *intent_inout*, *result*,
+    *intent_in_buf*, *intent_out_buf*, *intent_inout_buf*, and *result_buf*.
     The second layer is *pre_call*, *pre_call_buf*, *post_call*, *cpp_header*.
     The entries are a list of format strings.
 
     intent_in
-        Code to add for argument with intent(IN).
+        Code to add for argument with ``intent(IN)``.
         Can be used to convert types or copy-in semantics.
         For example, ``char *`` to ``std::string``.
 
     intent_out
-        Code to add after call when ``intent(OUT)`` or ``intent(INOUT)``.
+        Code to add after call when ``intent(OUT)``.
+        Used to implement copy-out semantics.
+
+    intent_inout
+        Code to add after call when ``intent(INOUT)``.
         Used to implement copy-out semantics.
 
     result
         Code to use when passing result as an argument.
+
+
+        buf_args
+           An array of arguments which will be added to the
+           bufferified version of a function.
+
+           len
+              Fortran intrinsic `LEN`, of type *int*.
+
+           len_trim
+              Fortran intrinsic `LEN_TRIM`, of type *int*.
+
+           size
+              Fortran intrinsic `SIZE`, of type *long*.
 
         cpp_header
            string of blank delimited header names
@@ -737,9 +775,20 @@ c_statements
            Usually a C++ constructor is involved.
            This sets *cpp_var* is set to ``SH_{c_var}``.
 
-c_return_code
-    Fortran code used to call function and assign the return value.
-    Defaults to *None*.
+        c_helper
+           A blank delimited list of helper routines to add.
+           These functions are defined in whelper.py.
+           There is no current way to add additional functions.
+
+c_templates
+    A dictionary indexed by type of specialized *c_statements*
+    When an argument has a *template* field, such as type ``vector<string>``,
+    some additional specialization of c_statements may be required::
+
+        c_templates:
+            string:
+               intent_in_buf:
+               - code to copy CHARACTER to vector<string>
 
 f_c_args
     List of argument names to F_C routine.
@@ -811,7 +860,7 @@ f_to_c
 
 f_statement
     A nested dictionary of code template to add.
-    The first layer is *intent_in*, *intent_out*, and *result*.
+    The first layer is *intent_in*, *intent_out*, *intent_inout*, *result_pure* and *result*.
     The second layer is *declare*, *pre_call*, and *post_call*
     The entries are a list of format strings.
 
@@ -830,31 +879,38 @@ f_statement
         Statement to execute before call, often to coerce types
         when *f_cast* cannot be used.
 
+    call
+        Code used to call the function.
+        Defaults to ``{F_result} = {F_C_call}({F_arg_c_call_tab})``
+
     post_call
         Statement to execute after call.
         Can be use to cleanup after *f_pre_call*
         or to coerce the return value.
 
     need_wrapper
-        If true, the fortran wrapper will always be created.
-        This is useful then a function assignment is needed to do a type coercision.
+        If true, the Fortran wrapper will always be created.
+        This is used when an assignment is needed to do a type coercion;
+        for example, with logical types.
 
 ..  XXX - maybe later.  For not in wrapping routines
 ..         f_attr_len_trim = None,
 ..         f_attr_len = None,
 ..         f_attr_size = None,
 
-f_helper
-    Additional code to add into the module for helper functions.
+    f_helper
+        Blank delimited list of helper function names to add to generated Fortran code.
+        These functions are defined in whelper.py.
+        There is no current way to add additional functions.
 
-    private
-       List of names which should be PRIVATE to the module
+        private
+           List of names which should be PRIVATE to the module
 
-    interface
-       Code to add to the non-executable part of the module.
+        interface
+           Code to add to the non-executable part of the module.
 
-    source
-       Code to add in the CONTAINS section of the module.
+        source
+           Code to add in the CONTAINS section of the module.
 
 result_as_arg
     Override fields when result should be treated as an argument.
@@ -971,8 +1027,8 @@ function_suffix
    Suffix to append to the end of generated name.
 
 return_this
-   The method returns a reference to ``this``.  This ideom can be used
-   to chain calls in C++.  This ideom does not translate to C and Fortran.
+   The method returns a reference to ``this``.  This idiom can be used
+   to chain calls in C++.  This idiom does not translate to C and Fortran.
    Instead the *C_return_type* format is set to ``void``.
 
 
@@ -982,6 +1038,17 @@ C_code
 C_name
     Name of the C wrapper function.
     Defaults to evaluation of option *C_name_template*.
+
+C_post_call
+    Code added after all of the argument *post_call* code.
+
+C_return_type
+    Allow the C wrapper and Fortran wrapper to return a different type
+    than the C++ function.
+
+C_return_code
+    Code used to compute the return value.
+    Must include the ``return`` statement.
 
 F_C_name
     Name of the Fortran ``BIND(C)`` interface for a C function.

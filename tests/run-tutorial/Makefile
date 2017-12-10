@@ -57,9 +57,11 @@ OBJS = \
     wrapftutorial.o \
     wrapTutorial.o \
     wrapClass1.o \
-    shroudrt.o \
     fruit.o \
     main.o
 
 tutorial : $(OBJS)
 	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+
+clean :
+	rm -f $(OBJS) *.mod tutorial

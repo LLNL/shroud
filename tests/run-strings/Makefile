@@ -56,9 +56,11 @@ OBJS = \
     strings.o \
     wrapfstrings.o \
     wrapstrings.o \
-    shroudrt.o \
     fruit.o \
     main.o
 
 strings : $(OBJS)
 	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+
+clean :
+	rm -f $(OBJS) *.mod strings

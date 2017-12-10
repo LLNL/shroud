@@ -260,7 +260,7 @@ module exclass1_mod
 contains
 
     ! ExClass1 * new(const string * name+intent(in))+constructor
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=0
     !>
     !! \brief constructor
@@ -310,7 +310,7 @@ contains
     end function exclass1_increment_count
 
     ! const string & getName() const
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=3
     function exclass1_get_name(obj) result(SH_rv)
         use iso_c_binding, only : C_CHAR, C_INT
@@ -340,7 +340,7 @@ contains
     end function exclass1_get_name_length
 
     ! const string & getNameErrorCheck() const
-    ! string_to_buffer_and_len
+    ! arg_to_buffer
     ! function_index=5
     function exclass1_get_name_error_check(obj) result(SH_rv)
         use iso_c_binding, only : C_CHAR, C_INT
@@ -358,7 +358,7 @@ contains
     end function exclass1_get_name_error_check
 
     ! void getNameArg(string & name+intent(out)+len(Nname)) const
-    ! string_to_buffer_and_len - string_to_buffer_and_len
+    ! arg_to_buffer - arg_to_buffer
     ! function_index=17
     subroutine exclass1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT

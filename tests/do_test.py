@@ -209,6 +209,7 @@ class Tester:
             '--path', self.test_input_dir,
             '--logdir', self.result_dir,
             '--outdir', self.result_dir,
+#            '--yaml-types', 'def_types.yaml',
             self.testyaml,
             ]
         logging.debug(' '.join(cmd))
@@ -288,7 +289,7 @@ def clear_files(path):
         try:
             if os.path.isfile(full_path):
                 os.unlink(full_path)
-        except Exception, e:
+        except Exception as e:
             logging.warning('Unable to remove file: ' + full_path)
             logging.warning(e)
 

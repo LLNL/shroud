@@ -1,11 +1,13 @@
 Read yaml strings.yaml
-Skipping getString5, unable to create C wrapper for function returning std::string instance (must return a pointer or reference).
-Skipping getString6, unable to create C wrapper for function returning std::string instance (must return a pointer or reference).
+Skipping std::string, unable to create C wrapper for function returning getString5 instance (must return a pointer or reference).
+Skipping std::string, unable to create C wrapper for function returning getString6 instance (must return a pointer or reference).
 C function void passChar(char_scalar status+intent(in)+value)
 C function char_scalar returnChar()
 C function void returnChar(char_scalar * SH_F_rv+intent(out)+len(NSH_F_rv))
 C function void passCharPtr(char * dest+intent(out), const char * src+intent(in))
 C function void passCharPtr(char * dest+intent(out)+len(Ndest), const char * src+intent(in)+len_trim(Lsrc))
+C function void passCharPtrInOut(char * s+intent(inout))
+C function void passCharPtrInOut(char * s+intent(inout)+len(Ns)+len_trim(Ls))
 C function const char * getChar1()+pure
 C function void getChar1(char * SH_F_rv+intent(out)+len(NSH_F_rv))+pure
 C function const char * getChar2()
@@ -24,6 +26,8 @@ C function void getString5(string * SH_F_rv+intent(out)+len(NSH_F_rv))
 C function void getString6(string * output+intent(out)+len(Noutput))
 C function void acceptStringConstReference(const std::string & arg1+intent(in))
 C function void acceptStringConstReference(const std::string & arg1+intent(in)+len_trim(Larg1))
+C function void acceptStringReferenceOut(std::string & arg1+intent(out))
+C function void acceptStringReferenceOut(std::string & arg1+intent(out)+len(Narg1))
 C function void acceptStringReference(std::string & arg1+intent(inout))
 C function void acceptStringReference(std::string & arg1+intent(inout)+len(Narg1)+len_trim(Larg1))
 C function void explicit1(char * name+intent(in)+len_trim(AAlen))
@@ -32,24 +36,22 @@ C function void explicit2(char * name+intent(out)+len(AAtrim))
 C function void explicit2(char * name+intent(out)+len(AAtrim))
 Close wrapstrings.h
 Close wrapstrings.cpp
-Close shroudrt.hpp
-Close shroudrt.cpp
 C-interface, Fortran function void passChar(char_scalar status+intent(in)+value)
 C-interface, Fortran function char_scalar returnChar()
 C-interface function void returnChar(char_scalar * SH_F_rv+intent(out)+len(NSH_F_rv))
 C-interface, Fortran function void passCharPtr(char * dest+intent(out), const char * src+intent(in))
 C-interface function void passCharPtr(char * dest+intent(out)+len(Ndest), const char * src+intent(in)+len_trim(Lsrc))
-C-interface function const char * getChar1()+pure
+C-interface, Fortran function void passCharPtrInOut(char * s+intent(inout))
+C-interface function void passCharPtrInOut(char * s+intent(inout)+len(Ns)+len_trim(Ls))
+C-interface, Fortran function const char * getChar1()+pure
 C-interface function void getChar1(char * SH_F_rv+intent(out)+len(NSH_F_rv))+pure
-Fortran function const string_result_fstr * getChar1()+pure
 C-interface, Fortran function const char * getChar2()
 C-interface function void getChar2(char * SH_F_rv+intent(out)+len(NSH_F_rv))
 C-interface function const char * getChar3()
 C-interface function void getChar3(char * output+intent(out)+len(Noutput))
 Fortran function void getChar3(char * output+intent(out)+len(Noutput))
-C-interface function const string & getString1()+pure
+C-interface, Fortran function const string & getString1()+pure
 C-interface function void getString1(string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
-Fortran function const string_result_fstr & getString1()+pure
 C-interface, Fortran function const string & getString2()
 C-interface function void getString2(string & SH_F_rv+intent(out)+len(NSH_F_rv))
 C-interface function const string & getString3()
@@ -63,6 +65,8 @@ C-interface function void getString6(string * output+intent(out)+len(Noutput))
 Fortran function void getString6(string * output+intent(out)+len(Noutput))
 C-interface, Fortran function void acceptStringConstReference(const std::string & arg1+intent(in))
 C-interface function void acceptStringConstReference(const std::string & arg1+intent(in)+len_trim(Larg1))
+C-interface, Fortran function void acceptStringReferenceOut(std::string & arg1+intent(out))
+C-interface function void acceptStringReferenceOut(std::string & arg1+intent(out)+len(Narg1))
 C-interface, Fortran function void acceptStringReference(std::string & arg1+intent(inout))
 C-interface function void acceptStringReference(std::string & arg1+intent(inout)+len(Narg1)+len_trim(Larg1))
 C-interface, Fortran function void explicit1(char * name+intent(in)+len_trim(AAlen))
@@ -73,6 +77,7 @@ Close wrapfstrings.f
 Python function void passChar(char_scalar status+intent(in)+value)
 Python function char_scalar returnChar()
 Python function void passCharPtr(char * dest+intent(out), const char * src+intent(in))
+Python function void passCharPtrInOut(char * s+intent(inout))
 Python function const char * getChar1()+pure
 Python function const char * getChar2()
 Python function const char * getChar3()
@@ -83,6 +88,7 @@ Python function const string & getString2_empty()
 Python function const string getString5()
 Python function const string getString6()
 Python function void acceptStringConstReference(const std::string & arg1+intent(in))
+Python function void acceptStringReferenceOut(std::string & arg1+intent(out))
 Python function void acceptStringReference(std::string & arg1+intent(inout))
 Python function void explicit1(char * name+intent(in)+len_trim(AAlen))
 Python function void explicit2(char * name+intent(out)+len(AAtrim))

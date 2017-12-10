@@ -203,8 +203,15 @@ def typedef_wrapped_defaults(typedef):
 
     # return from C function
     # f_c_return_decl='type(CPTR)' % unname,
-    typedef.f_return_code=('{F_result}%{F_derived_member} = '
-                           '{F_C_call}({F_arg_c_call_tab})')
+    typedef.f_statements = dict(
+        result=dict(
+            need_wrapper=True,
+            call=[
+                ('{F_result}%{F_derived_member} = '
+                 '{F_C_call}({F_arg_c_call_tab})')
+                ],
+            )
+        )
     typedef.f_c_module={ 'iso_c_binding': ['C_PTR']}
 
     typedef.py_statements=dict(
@@ -248,6 +255,24 @@ def extern_C(output, position):
                 '}',
                 '#endif'
                 ])
+
+def lookup_c_statements(arg):
+    """Look up the c_statements for an argument.
+    If the argument type is a template, look for 
+    template specific c_statements.
+    """
+    attrs = arg['attrs']
+    argtype = arg['type']
+    arg_typedef = Typedef.lookup(argtype)
+
+    c_statements = arg_typedef.c_statements
+    if 'template' in attrs:
+        cpp_T = attrs['template']
+        cpp_T = Typedef.resolve_alias(cpp_T)
+        c_statements = arg_typedef.c_templates.get(
+            cpp_T, c_statements)
+        arg_typedef = Typedef.lookup(cpp_T)
+    return arg_typedef, c_statements
 
 
 class WrapperMixin(object):
@@ -314,9 +339,7 @@ class WrapperMixin(object):
 #        if lang not in [ 'c_type', 'cpp_type' ]:
 #            raise RuntimeError
         t = []
-        typedef = self.typedef.get(arg['type'], None)
-        if typedef is None:
-            raise RuntimeError("No such type %s" % arg['type'])
+        typedef = Typedef.lookup(arg['type'])
 
         if const is None:
             const = arg['attrs'].get('const', False)
@@ -474,6 +497,7 @@ class Typedef(object):
         ('c_header', None),       # Name of C header file required for type
         ('c_to_cpp', '{c_var}'),  # Expression to convert from C to C++
         ('c_statements', {}),
+        ('c_templates', {}),      # c_statements for cpp_T
         ('c_return_code', None),
 
         ('f_c_args', None),       # List of argument names to F_C routine
@@ -486,11 +510,9 @@ class Typedef(object):
         ('f_derived_type', None), # Fortran derived type name
         ('f_args', None),         # Argument in Fortran wrapper to call C.
         ('f_module', None),       # Fortran modules needed for type  (dictionary)
-        ('f_return_code', None),
         ('f_cast', '{f_var}'),    # Expression to convert to type
                                   # e.g. intrinsics such as int and real
         ('f_statements', {}),
-        ('f_helper', {}),         # helper functions to insert into module as PRIVATE
 
         ('result_as_arg', None),  # override fields when result should be treated as an argument
 
@@ -585,6 +607,32 @@ class Typedef(object):
             'f_to_c',
             'f_module',
         ], indent, output)
+
+
+    ### Manage collection of typedefs
+    _typedict = {}   # dictionary of registered types
+    _typealias = {}  # dictionary of registered type aliases
+    @classmethod
+    def set_global_types(cls, typedict, typealias):
+        cls._typedict = typedict
+        cls._typealias = typealias
+
+    @classmethod
+    def register(cls, name, typedef):
+        """Register a typedef"""
+        cls._typedict[name] = typedef
+
+    @classmethod
+    def lookup(cls, name):
+        """Lookup name in registered types taking aliases into account."""
+        typedef = cls._typedict.get(cls._typealias.get(name,name), None)
+        return typedef
+
+    @classmethod
+    def resolve_alias(cls, name):
+        """return typedef for alias.
+        """
+        return cls._typealias.get(name, name)
 
 
 class Options(object):

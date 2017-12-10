@@ -79,6 +79,7 @@ Types
   * float
   * double
   * std::string
+  * std::vector
 
   Fortran has no support for unsigned types.
           ``size_t`` will be the correct number of bytes, but
@@ -103,7 +104,7 @@ for wrappers::
           - C_INT
         f_cast: int({f_var}, C_INT)
 
-One case where a converstion is required is when the Fortran argument
+One case where a conversion is required is when the Fortran argument
 is one type and the C++ argument is another. This may happen when an
 overloaded function is generated so that a ``C_INT`` or ``C_LONG``
 argument may be passed to a C++ function function expecting a
@@ -119,8 +120,8 @@ Bool
 
 C++ functions with a ``bool`` argument generate a Fortran wrapper with
 a ``logical`` argument.  One of the goals of Shroud is to produce an
-ideomatic interface.  Converting the types in the wrapper avoids the
-awkardness of requiring the Fortran user to passing in
+idiomatic interface.  Converting the types in the wrapper avoids the
+awkwardness of requiring the Fortran user to passing in
 ``.true._c_bool`` instead of just ``.true.``.
 
 The type map is defined as::
@@ -143,6 +144,12 @@ The type map is defined as::
               c_local_var: true 
               post_call:
               -  {f_var} = {c_var}  ! coerce to logical
+           intent_inout:
+              c_local_var: true 
+              pre_call:
+              -  {c_var} = {f_var}  ! coerce to C_BOOL
+              post_call:
+              -  {f_var} = {c_var}  ! coerce to logical
            result:
               need_wrapper: true
 
@@ -152,7 +159,7 @@ is ``logical(C_BOOL)`` while **f_type**, the type of the Fortran
 wrapper argument, is ``logical``.
 
 The **f_statements** section describes code to add into the Fortran
-wrapper to perform the converstion.  *c_var* and *f_var* default to
+wrapper to perform the conversion.  *c_var* and *f_var* default to
 the same value as the argument name.  By setting **c_local_var**, a
 local variable is generated for the call to the C wrapper.  It will be
 named ``SH_{f_var}``.
@@ -221,10 +228,10 @@ Fortran, C, and C++ each have their own semantics for character variables.
 
   * Fortran ``character`` variables know their length and are blank filled
   * C ``char *`` variables are assumed to be ``NULL`` terminated.
-  * C++ ``std::string`` know their own length and can provied a ``NULL`` terminated pointer.
+  * C++ ``std::string`` know their own length and can provide a ``NULL`` terminated pointer.
 
 It is not sufficient to pass an address between Fortran and C++ like
-it is with other native types.  In order to get ideomatic behavior in
+it is with other native types.  In order to get idiomatic behavior in
 the Fortran wrappers it is often necessary to copy the values.  This
 is to account for blank filled vs ``NULL`` terminated.
 
@@ -274,6 +281,8 @@ The type map::
             c_type: char
             c_statements:
                 intent_in_buf:
+                    buf_args:
+                    - len_trim
                     cpp_local_var: True
                     cpp_header: <cstring>
                     pre_call:
@@ -283,20 +292,38 @@ The type map::
                     post_call:
                       -  delete [] {cpp_var};
                 intent_out_buf:
+                    buf_args:
+                    - len
+                    c_helper: ShroudStrCopy
                     cpp_local_var: True
-                    cpp_header: shroudrt.hpp
                     pre_call:
                       - char * {cpp_var} = new char [{c_var_len} + 1];
                     post_call:
-                      - shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
                       - delete [] {cpp_var};
+                intent_inout_buf:
+                    buf_args:
+                    - len_trim
+                    - len
+                    c_helper: ShroudStrCopy
+                    cpp_local_var: True
+                    cpp_header: <cstring>
+                    pre_call:
+                      - char * {cpp_var} = new char [{c_var_trim} + 1];
+                      - std::strncpy({cpp_var}, {c_var}, {c_var_trim});
+                      - {cpp_var}[{c_var_trim}] = '\0';
+                    post_call:
+                      -  delete [] {cpp_var};
                 result_buf:
-                    cpp_header: <cstring> shroudrt.hpp
+                    buf_args:
+                    - len
+                    c_helper: ShroudStrCopy
+                    cpp_header: <cstring>
                     post_call:
                       - if ({cpp_var} == NULL) {{
                       -   std::memset({c_var}, ' ', {c_var_len});
                       - }} else {{
-                      -   shroud_FccCopy({c_var}, {c_var_len}, {cpp_var});
+                      -   ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});
                       - }}
 
             f_type: character(*)
@@ -305,8 +332,16 @@ The type map::
                 iso_c_binding:
                   - C_CHAR
 
+            f_statements:
+                result_pure:
+                    need_wrapper: True
+                    f_helper: fstr_ptr
+                    call:
+                      - {F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))
+
+
 The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
-statement ``dest = str``::
+statement ``dest = src``::
 
     - decl: void passCharPtr(char *dest, const char *src)
 
@@ -358,7 +393,7 @@ And generates::
         std::strncpy(SH_src, src, Lsrc);
         SH_src[Lsrc] = '\0';
         passCharPtr(SH_dest, SH_src);
-        shroud_FccCopy(dest, Ndest, SH_dest);
+        ShroudStrCopy(dest, Ndest, SH_dest);
         delete [] SH_dest;
         delete [] SH_src;
         return;
@@ -379,7 +414,7 @@ buffers with space for an additional character (the ``NULL``).  The
 *intent(in)* string copies the data and adds an explicit terminating
 ``NULL``.  The function is called then the post_call section copies
 the result back into the ``dest`` argument and deletes the scratch
-space.  ``shroud_FccCopy`` is a function provided by Shroud which
+space.  ``ShroudStrCopy`` is a function provided by Shroud which
 copies character into the destination up to ``Ndest`` characters, then
 blank fills any remaining space.
 
@@ -437,24 +472,44 @@ additional sections to convert between ``char *`` and ``std::string``::
                     cpp_header: <cstring>
                     post_call:
                       - strcpy({c_var}, {cpp_val});
-
-                intent_in_buf:
-                    cpp_local_var: True
+                intent_inout:
+                    cpp_header: <cstring>
                     pre_call:
                       - {c_const}std::string {cpp_var}({c_var});
-                    pre_call_buf:
+                    post_call:
+                      - strcpy({c_var}, {cpp_val});
+
+                intent_in_buf:
+                    buf_args:
+                    - len_trim
+                    cpp_local_var: True
+                    pre_call:
                       - {c_const}std::string {cpp_var}({c_var}, {c_var_trim});
                 intent_out_buf:
-                    cpp_header: shroudrt.hpp
+                    buf_args:
+                    - len
+                    pre_call:
+                      - {c_const}std::string {cpp_var};
                     post_call:
-                      - shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
+                intent_inout_buf:
+                    buf_args:
+                    - len_trim
+                    - len
+                    cpp_local_var: True
+                    pre_call:
+                      - std::string {cpp_var}({c_var}, {c_var_trim});
+                    post_call:
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
                 result_buf:
-                    cpp_header: <cstring> shroudrt.hpp
+                    buf_args:
+                    - len
+                    cpp_header: <cstring>
                     post_call:
                        - if ({cpp_var}.empty()) {{
                        -   std::memset({c_var}, ' ', {c_var_len});
                        - }} else {{
-                       -   shroud_FccCopy({c_var}, {c_var_len}, {cpp_val});
+                       -   ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
                        - }}
     
             f_type: character(*)
@@ -462,6 +517,13 @@ additional sections to convert between ``char *`` and ``std::string``::
             f_c_module:
                 iso_c_binding:
                   - C_CHAR
+
+            f_statements:
+                result_pure:
+                    need_wrapper: True
+                    f_helper: fstr_ptr
+                    call:
+                      - {F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))
 
 
 To demonstrate this type map, ``acceptStringReference`` is a function which
@@ -492,7 +554,7 @@ short for the new string value::
     {
         std::string SH_arg1(arg1, Larg1);
         acceptStringReference(SH_arg1);
-        shroud_FccCopy(arg1, Narg1, SH_arg1.c_str());
+        ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());
         return;
     }
 
@@ -534,7 +596,7 @@ char functions
 Functions which return a ``char *`` provide an additional challenge.
 Taken literally they should return a ``type(C_PTR)``.  And if you call
 the function via the interface, that's what you get.  However,
-Shroud provides several options to provide a more ideomatic usage.
+Shroud provides several options to provide a more idiomatic usage.
 
 Each of these declaration call identical C++ functions but they are
 wrapped differently::
@@ -560,7 +622,7 @@ copies the result into a buffer of known length::
         if (SH_rv == NULL) {
            std::memset(SH_F_rv, ' ', NSH_F_rv);
         } else {
-          shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv);
+          ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);
         }
         return;
     }
@@ -644,7 +706,7 @@ The generated wrappers are::
         if (SH_rv.empty()) {
           std::memset(SH_F_rv, ' ', NSH_F_rv);
         } else {
-          shroud_FccCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+          ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
         }
         return;
     }
@@ -653,6 +715,72 @@ The generated wrappers are::
           If the C++ function allocates a string, the C wrapper should deallocate
           it after copying the contents. Shroud does not deal with this case
           and will result in leaked memory.
+
+std::vector
+-----------
+
+A ``std::vector`` argument for a C++ function can be created from a Fortran array.
+The address and size of the array is extracted and passed to the C wrapper to create
+the ``std::vector``::
+
+    int vector_sum(const std::vector<int> &arg);
+    void vector_iota(std::vector<int> &arg);
+
+Are wrapped with the YAML input::
+
+    - decl: int vector_sum(const std::vector<int> &arg)
+    - decl: void vector_iota(std::vector<int> &arg+intent(out))
+
+``intent(in)`` is implied for the *vector_sum* argument since it is ``const``.
+The Fortran wrapper passes the array and the size to C::
+
+    function vector_sum(arg) result(SH_rv)
+        use iso_c_binding, only : C_INT, C_LONG
+        integer(C_INT), intent(IN) :: arg(:)
+        integer(C_INT) :: SH_rv
+        SH_rv = c_vector_sum_bufferify(  &
+            arg,  &
+            size(arg, kind=C_LONG))
+    end function vector_sum
+
+    subroutine vector_iota(arg)
+        use iso_c_binding, only : C_INT, C_LONG
+        integer(C_INT), intent(OUT) :: arg(:)
+        call c_vector_iota_bufferify(  &
+            arg,  &
+            size(arg, kind=C_LONG))
+    end subroutine vector_iota
+
+The C wrapper then creates a ``std::vector``::
+
+    int TUT_vector_sum_bufferify(const int * arg, long Sarg)
+    {
+        const std::vector<int> SH_arg(arg, arg + Sarg);
+        int SH_rv = vector_sum(SH_arg);
+        return SH_rv;
+    }
+    
+    void TUT_vector_iota_bufferify(int * arg, long Sarg)
+    {
+        std::vector<int> SH_arg(Sarg);
+        vector_iota(SH_arg);
+        {
+          std::vector<int>::size_type
+            SH_T_i = 0,
+            SH_T_n = Sarg;
+          SH_T_n = std::min(SH_arg.size(), SH_T_n);
+          for(; SH_T_i < SH_T_n; SH_T_i++) {
+            arg[SH_T_i] = SH_arg[SH_T_i];
+          }
+        }
+        return;
+    }
+
+On ``intent(in)``, the ``std::vector`` constructor copies the values from the input pointer.
+With ``intent(out)``, the values are copied after calling the function.
+
+.. note:: With ``intent(out)``, if *vector_iota* changes the size of ``arg`` to be longer than
+          the original size of the Fortran argument, the additional values will not be copied. 
 
 MPI_Comm
 --------
@@ -739,3 +867,19 @@ show above with the remainder set to default values by Shroud.
     
 
 ..  chained function calls
+
+
+Memory Management
+-----------------
+
+Shroud generated C wrappers do not explicitly delete any memory.
+However a destructor may be automatically called for some C++ stl
+classes.  For example, a function which returns a ``std::string``
+will have its value copied into Fortran memory since the function's
+returned object will be destructed when the C++ wrapper returns.  If a
+function returns a ``char *`` value, it will also be copied into Fortran
+memory. But if the caller of the C++ function wants to transfer
+ownership of the pointer to its caller, the C++ wrapper will leak the
+memory.
+
+.. note:: Reference counting and garbage collection are still a work in progress

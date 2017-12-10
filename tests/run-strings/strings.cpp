@@ -73,6 +73,14 @@ void passCharPtr(char *dest, const char *src)
     std::strcpy(dest, src);
 }
 
+void passCharPtrInOut(char *s)
+{
+    size_t n = strlen(s);
+    for (unsigned int i = 0; i < n; i++) {
+        s[i] = toupper(s[i]);
+    }
+}
+
 //----------------------------------------
 
 const char * getChar1()
@@ -132,6 +140,11 @@ const std::string getString6()
 void acceptStringConstReference(const std::string & arg1)
 {
     global_str = arg1;
+}
+
+void acceptStringReferenceOut(std::string & arg1)
+{
+    arg1 = "dog";
 }
 
 void acceptStringReference(std::string & arg1)

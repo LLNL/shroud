@@ -76,6 +76,7 @@ end module {F_module_name}
 from __future__ import print_function
 from __future__ import absolute_import
 
+import copy
 import os
 
 from . import whelpers
@@ -92,7 +93,6 @@ class Wrapf(util.WrapperMixin):
         self.patterns = tree['patterns']
         self.config = config
         self.log = config.log
-        self.typedef = tree['types']
         self._init_splicer(splicers)
         self.comment = '!'
         self.doxygen_begin = '!>'
@@ -133,8 +133,12 @@ class Wrapf(util.WrapperMixin):
 
         """
         t = []
-        typedef = self.typedef[arg['type']]
+        typedef = util.Typedef.lookup(arg['type'])
+        basedef = typedef
         attrs = arg['attrs']
+        if 'template' in attrs:
+            # If a template, use its type
+            typedef = util.Typedef.lookup(attrs['template'])
         intent = attrs.get('intent', None)
 
         typ = typedef.f_c_type or typedef.f_type
@@ -145,7 +149,9 @@ class Wrapf(util.WrapperMixin):
             t.append('value')
         if intent:
             t.append('intent(%s)' % intent.upper())
-        if typedef.base == 'string':
+        if basedef.base == 'vector':
+            dimension = '(*)'  # is array
+        elif typedef.base == 'string':
             dimension = '(*)'  # is array
         else:
             # XXX should C always have dimensions of '(*)'?
@@ -176,8 +182,11 @@ class Wrapf(util.WrapperMixin):
           OPTIONAL, VALUE, and INTENT
         """
         t = []
-        typedef = self.typedef[arg['type']]
+        typedef = util.Typedef.lookup(arg['type'])
         attrs = arg['attrs']
+        if 'template' in attrs:
+            # If a template, use its type
+            typedef = util.Typedef.lookup(attrs['template'])
         intent = attrs.get('intent', None)
 
         typ = typedef.f_type
@@ -280,7 +289,7 @@ class Wrapf(util.WrapperMixin):
         self.log.write("class {1[name]}\n".format(self, node))
         name = node['name']
         unname = util.un_camel(name)
-        typedef = self.typedef[name]
+        typedef = util.Typedef.lookup(name)
 
         fmt_class = node['fmt']
 
@@ -561,13 +570,21 @@ class Wrapf(util.WrapperMixin):
         result = node['result']
         result_type = result['type']
         subprogram = node['_subprogram']
+
         generator = node.get('_generated', '')
+        if generator == 'arg_to_buffer':
+            intent_grp = '_buf'
+        else:
+            intent_grp = ''
 
         if node.get('return_this', False):
             result_type = 'void'
             subprogram = 'subroutine'
+        elif 'C_return_type' in node:
+            result_type = node['C_return_type']
+            subprogram = 'function'
 
-        result_typedef = self.typedef[result_type]
+        result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)
         is_const = node['attrs'].get('const', False)
         is_pure = node['attrs'].get('pure', False)
@@ -597,13 +614,14 @@ class Wrapf(util.WrapperMixin):
         for arg in node['args']:
             # default argument's intent
             # XXX look at const, ptr
-            arg_typedef = self.typedef[arg['type']]
+            arg_typedef, c_statements = util.lookup_c_statements(arg)
             fmt.c_var = arg['name']
             attrs = arg['attrs']
             self.update_f_module(modules,
                                  arg_typedef.f_c_module or arg_typedef.f_module)
 
-            if attrs.get('intent', 'inout') != 'in':
+            intent = attrs.get('intent', 'inout')
+            if intent != 'in':
                 args_all_in = False
 
             # argument names
@@ -620,20 +638,30 @@ class Wrapf(util.WrapperMixin):
             else:
                 arg_c_decl.append(self._c_decl(arg))
 
-            if generator == 'string_to_buffer_and_len' and \
-               (arg_typedef.base == 'string' or
-                arg_typedef.name == 'char_scalar'):
-                len_trim = attrs.get('len_trim', None)
-                if len_trim:
-                    arg_c_names.append(len_trim)
+            if attrs.get('_is_result', False):
+                c_stmts = 'result' + intent_grp
+            else:
+                c_stmts = 'intent_' + intent + intent_grp
+
+            c_intent_blk = c_statements.get(c_stmts, {})
+
+            # Add implied buffer arguments to prototype
+            for buf_arg in c_intent_blk.get('buf_args', []):
+                buf_arg_name = attrs[buf_arg]
+                if buf_arg == 'size':
+                    arg_c_names.append(buf_arg_name)
                     arg_c_decl.append(
-                        'integer(C_INT), value, intent(IN) :: %s' % len_trim)
+                        'integer(C_LONG), value, intent(IN) :: %s' % buf_arg_name)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
+                elif buf_arg == 'len_trim':
+                    arg_c_names.append(buf_arg_name)
+                    arg_c_decl.append(
+                        'integer(C_INT), value, intent(IN) :: %s' % buf_arg_name)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                len_arg = attrs.get('len', None)
-                if len_arg:
-                    arg_c_names.append(len_arg)
+                elif buf_arg == 'len':
+                    arg_c_names.append(buf_arg_name)
                     arg_c_decl.append(
-                        'integer(C_INT), value, intent(IN) :: %s' % len_arg)
+                        'integer(C_INT), value, intent(IN) :: %s' % buf_arg_name)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
 
         if (subprogram == 'function' and
@@ -715,19 +743,40 @@ class Wrapf(util.WrapperMixin):
         subprogram = node['_subprogram']
         c_subprogram = C_node['_subprogram']
 
+        generator = C_node.get('_generated', '')
+        if generator == 'arg_to_buffer':
+            intent_grp = '_buf'
+        else:
+            intent_grp = ''
+
         if node.get('return_this', False):
             result_type = 'void'
             subprogram = 'subroutine'
             c_subprogram = 'subroutine'
+        elif 'C_return_type' in node:
+            # User has changed the return type of the C function
+            # TODO: probably needs to be more clever about
+            # setting pointer or reference fields too.
+            # Maybe parse result_type instead of copy.
+            result_type = node['C_return_type']
+            subprogram = 'function'
+            c_subprogram = 'function'
+            result = copy.deepcopy(node['result'])
+            result['type'] = result_type
 
-        result_typedef = self.typedef[result_type]
+        result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
+        is_pure = node['attrs'].get('pure', False)
         is_const = result['attrs'].get('const', False)
+
+        result_intent_grp = ''
+        if is_pure:
+            result_intent_grp = '_pure'
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        if result_typedef.f_statements.get('result', {}) \
+        if result_typedef.f_statements.get('result' + result_intent_grp, {}) \
                                       .get('need_wrapper', False):
             need_wrapper = True
 
@@ -765,14 +814,16 @@ class Wrapf(util.WrapperMixin):
         post_call = []
         f_args = node['args']
         f_index = -1       # index into f_args
-        for c_index, c_arg in enumerate(C_node['args']):
+        for c_arg in C_node['args']:
             fmt_arg = c_arg.setdefault('fmtf', util.Options(fmt_func))
             fmt_arg.f_var = c_arg['name']
             fmt_arg.c_var = fmt_arg.f_var
 
             f_arg = True   # assume C and Fortran arguments match
             c_attrs = c_arg['attrs']
+            intent = c_attrs['intent']
             if c_attrs.get('_is_result', False):
+                c_stmts = 'result' + intent_grp
                 result_as_arg = fmt_func.F_string_result_as_arg
                 if not result_as_arg:
                     # passing Fortran function result variable down to C
@@ -780,60 +831,64 @@ class Wrapf(util.WrapperMixin):
                     fmt_arg.c_var = fmt_func.F_result
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
+            else:
+                c_stmts = 'intent_' + intent + intent_grp
 
             if f_arg:
+                # An argument to the C and Fortran function
+                # result_arguments are not processed here
                 f_index += 1
                 f_arg = f_args[f_index]
                 arg_f_names.append(fmt_arg.f_var)
                 arg_f_decl.append(self._f_decl(f_arg))
 
                 arg_type = f_arg['type']
-                arg_typedef = self.typedef[arg_type]
+                arg_typedef = util.Typedef.lookup(arg_type)
+                base_typedef = arg_typedef
+                if 'template' in c_attrs:
+                    # If a template, use its type
+                    cpp_T = c_attrs['template']
+                    arg_typedef = util.Typedef.lookup(cpp_T)
 
                 f_statements = arg_typedef.f_statements
+                f_stmts = 'intent_' + intent
+                f_intent_blk = f_statements.get(f_stmts, {})
 
-                slist = []
-                if c_attrs['intent'] in ['inout', 'in']:
-                    slist.append('intent_in')
-                if c_attrs['intent'] in ['inout', 'out']:
-                    slist.append('intent_out')
-
-                # Create a local C variable if necessary
-                have_c_local_var = False
-                for intent in slist:
-                    have_c_local_var = have_c_local_var or \
-                        f_statements.get(intent, {}).get('c_local_var', False)
+                # Create a local variable for C if necessary
+                have_c_local_var = f_intent_blk.get('c_local_var', False)
                 if have_c_local_var:
                     fmt_arg.c_var = 'SH_' + fmt_arg.f_var
                     arg_f_decl.append('{} {}'.format(
                         arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
 
-                for intent in slist:
-                    cmd_list = f_statements.get(intent, {}).get('declare', [])
-                    if cmd_list:
-                        need_wrapper = True
-                        fmt_arg.c_var = 'SH_' + fmt_arg.f_var
-                        for cmd in cmd_list:
-                            append_format(arg_f_decl, cmd, fmt_arg)
+                # Add code for intent of argument
+                cmd_list = f_intent_blk.get('declare', [])
+                if cmd_list:
+                    need_wrapper = True
+                    fmt_arg.c_var = 'SH_' + fmt_arg.f_var
+                    for cmd in cmd_list:
+                        append_format(arg_f_decl, cmd, fmt_arg)
 
-                    cmd_list = f_statements.get(intent, {}).get('pre_call', [])
-                    if cmd_list:
-                        need_wrapper = True
-                        for cmd in cmd_list:
-                            append_format(pre_call, cmd, fmt_arg)
+                cmd_list = f_intent_blk.get('pre_call', [])
+                if cmd_list:
+                    need_wrapper = True
+                    for cmd in cmd_list:
+                        append_format(pre_call, cmd, fmt_arg)
 
-                    cmd_list = f_statements.get(intent, {}).get('post_call', [])
-                    if cmd_list:
-                        need_wrapper = True
-                        for cmd in cmd_list:
-                            append_format(post_call, cmd, fmt_arg)
+                cmd_list = f_intent_blk.get('post_call', [])
+                if cmd_list:
+                    need_wrapper = True
+                    for cmd in cmd_list:
+                        append_format(post_call, cmd, fmt_arg)
 
-                    self.update_f_module(modules, arg_typedef.f_module)
+                self.update_f_module(modules, arg_typedef.f_module)
 
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
-            arg_typedef = self.typedef[c_arg['type']]
+            arg_typedef = util.Typedef.lookup(c_arg['type'])
+            arg_typedef, c_statements = util.lookup_c_statements(c_arg)
+            c_intent_blk = c_statements.get(c_stmts, {})
 
             # Attributes   None=skip, True=use default, else use value
             if arg_typedef.f_args:
@@ -850,16 +905,15 @@ class Wrapf(util.WrapperMixin):
             else:
                 append_format(arg_c_call, '{c_var}', fmt_arg)
 
-            if arg_typedef.base == 'string' or \
-               arg_typedef.name == 'char_scalar':
-                len_trim = c_arg['attrs'].get('len_trim', None)
-                if len_trim:
-                    need_wrapper = True
+            for buf_arg in c_intent_blk.get('buf_args', []):
+                need_wrapper = True
+                if buf_arg == 'size':
+                    append_format(arg_c_call, 'size({f_var}, kind=C_LONG)', fmt_arg)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
+                elif buf_arg == 'len_trim':
                     append_format(arg_c_call, 'len_trim({f_var}, kind=C_INT)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                len_arg = c_arg['attrs'].get('len', None)
-                if len_arg:
-                    need_wrapper = True
+                elif buf_arg == 'len':
                     append_format(arg_c_call, 'len({f_var}, kind=C_INT)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
 
@@ -928,16 +982,19 @@ class Wrapf(util.WrapperMixin):
                     '{F_C_call}({F_arg_c_call_tab})', fmt_func)
                 self.append_method_arguments(F_code, fmt_func.F_call_code)
             elif c_subprogram == 'function':
-                f_return_code = result_typedef.f_return_code
-                if f_return_code is None:
-                    f_return_code = (
-                        '{F_result} = {F_C_call}({F_arg_c_call_tab})')
-                else:
-                    self.f_helper.update(
-                        result_typedef.f_helper.get('f_return_code', {}))
-                    need_wrapper = True
-                fmt_func.F_call_code = wformat(f_return_code, fmt_func)
+                f_statements = result_typedef.f_statements
+                intent_blk = f_statements.get('result' + result_intent_grp,{})
+                cmd_list = intent_blk.get('call', [
+                        '{F_result} = {F_C_call}({F_arg_c_call_tab})'])
+#                for cmd in cmd_list:  # only allow a single statment for now
+#                    append_format(pre_call, cmd, fmt_arg)
+                fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
                 self.append_method_arguments(F_code, fmt_func.F_call_code)
+
+                # Find any helper routines needed
+                if 'f_helper' in intent_blk:
+                    for helper in intent_blk['f_helper'].split():
+                        self.f_helper[helper] = True
             else:
                 fmt_func.F_call_code = wformat('call {F_C_call}({F_arg_c_call_tab})', fmt_func)
                 self.append_method_arguments(F_code, fmt_func.F_call_code)
@@ -978,7 +1035,7 @@ class Wrapf(util.WrapperMixin):
             fmt_func.F_C_name = fmt_func.F_name_impl
 
     def append_method_arguments(self, F_code, line1):
-        """Append each argment in arg_c_call as a line in the function.
+        """Append each argument in line1 as a line in the function.
         Must account for continuations
         Replace tabs in line1 with continuations.
         """
@@ -1060,13 +1117,12 @@ class Wrapf(util.WrapperMixin):
         # (They are duplicated in each module)
         helper_source = []
         if self.f_helper:
-            find_all_helpers(self.f_helper)
-
+            helperdict = whelpers.find_all_helpers('f', self.f_helper)
             helpers = sorted(self.f_helper)
             private_names = []
             interface_lines = []
             for helper in helpers:
-                helper_info = whelpers.FHelpers[helper]
+                helper_info = helperdict[helper]
                 private_names.extend(helper_info.get('private', []))
                 lines = helper_info.get('interface', None)
                 if lines:
@@ -1102,22 +1158,3 @@ class Wrapf(util.WrapperMixin):
         """ Write C helper functions that will be used by the wrappers.
         """
         pass
-
-
-def find_all_helpers(helpers, check=None):
-    """Find all helper functions recursively.
-    A helper function is required by some argument/result conversions.
-    """
-
-    if check is None:
-        # do all top level helpers
-        # Copy initial keys since helpers may change
-        keys = list(helpers.keys())
-        for check in keys:
-            for name in whelpers.FHelpers[check].get('f_helper', []):
-                find_all_helpers(helpers, name)
-    else:
-        if check not in helpers:
-            helpers[check] = True
-            for name in whelpers.FHelpers[check].get('f_helper', []):
-                find_all_helpers(helpers, name)
