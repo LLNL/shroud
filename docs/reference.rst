@@ -361,6 +361,11 @@ F_impl_filename
    Name of Fortran file for functions.
    Defaults to option *F_impl_name_library_template*.
 
+langauge
+  The language of the library to wrap.
+  Valid values are ``c`` and ``c++``.
+  The default is ``c++``.
+
 library
   The name of the library.
   Used to name output files and modules.

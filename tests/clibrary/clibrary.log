@@ -1,0 +1,8 @@
+Read yaml clibrary.yaml
+C function void Function1()
+C function double Function2(double arg1+intent(in)+value, int arg2+intent(in)+value)
+Close wrapClibrary.h
+Close wrapClibrary.c
+C-interface, Fortran function void Function1()
+C-interface, Fortran function double Function2(double arg1+intent(in)+value, int arg2+intent(in)+value)
+Close wrapfclibrary.f

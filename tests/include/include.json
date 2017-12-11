@@ -363,6 +363,7 @@
             }
         }
     ], 
+    "language": "c++", 
     "library": "default_library", 
     "namespace": "one two", 
     "options": {

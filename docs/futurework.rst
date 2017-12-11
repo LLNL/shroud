@@ -51,9 +51,10 @@ Future Work
   * reference counting and garbage collection
 
 
-The copying of strings solves the blank-filled vs null-terminated differences
-between Fortran and C and works well for many strings.  However, if a large buffer
-is passed, it may be desirable to avoid the copy.
+The copying of strings solves the blank-filled vs null-terminated
+differences between Fortran and C and works well for many strings.
+However, if a large buffer is passed, it may be desirable to avoid the
+copy.
 
 There is some initial work to support Python and Lua wrappers.
 

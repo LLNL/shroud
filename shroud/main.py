@@ -184,6 +184,11 @@ class Schema(object):
         """
         node = self.tree
 
+        language = node['language'].lower()
+        if language not in ['c', 'c++']:
+            raise RuntimeError("language must be 'c' or 'c++'")
+        langobj = util.Language(language)
+
         # default options
         def_options = util.Options(
             parent=None,
@@ -289,8 +294,6 @@ class Schema(object):
         fmt_library.C_string_result_as_arg = 'SH_F_rv'
         fmt_library.F_string_result_as_arg = ''
 
-        fmt_library.C_header_filename_suffix = 'h'
-        fmt_library.C_impl_filename_suffix = 'cpp'
         fmt_library.F_filename_suffix = 'f'
 
         # don't have to worry about argument names in Python wrappers
@@ -298,11 +301,24 @@ class Schema(object):
         fmt_library.PY_result = 'rv'
         fmt_library.LUA_result = 'rv'
 
-        fmt_library.PY_header_filename_suffix = 'hpp'
-        fmt_library.PY_impl_filename_suffix = 'cpp'
+        if language == 'c':
+            fmt_library.C_header_filename_suffix = 'h'
+            fmt_library.C_impl_filename_suffix = 'c'
 
-        fmt_library.LUA_header_filename_suffix = 'hpp'
-        fmt_library.LUA_impl_filename_suffix = 'cpp'
+            fmt_library.PY_header_filename_suffix = 'h'
+            fmt_library.PY_impl_filename_suffix = 'c'
+
+            fmt_library.LUA_header_filename_suffix = 'h'
+            fmt_library.LUA_impl_filename_suffix = 'c'
+        else:
+            fmt_library.C_header_filename_suffix = 'h'
+            fmt_library.C_impl_filename_suffix = 'cpp'
+
+            fmt_library.PY_header_filename_suffix = 'hpp'
+            fmt_library.PY_impl_filename_suffix = 'cpp'
+
+            fmt_library.LUA_header_filename_suffix = 'hpp'
+            fmt_library.LUA_impl_filename_suffix = 'cpp'
 
         self.option_to_fmt(fmt_library, old)
 
@@ -1946,6 +1962,7 @@ def main_with_args(args):
         library='default_library',
         cpp_header='',
         namespace='',
+        language='c++',
         )
     splicers = dict(c={}, f={}, py={}, lua={})
 

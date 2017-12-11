@@ -4072,6 +4072,7 @@
             }
         }
     ], 
+    "language": "c++", 
     "library": "UserLibrary", 
     "namespace": "example nested", 
     "options": {

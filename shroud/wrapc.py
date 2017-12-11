@@ -61,6 +61,7 @@ class Wrapc(util.WrapperMixin):
     def __init__(self, tree, config, splicers):
         self.tree = tree    # json tree
         self.patterns = tree['patterns']
+        self.language = tree['language']
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -178,7 +179,7 @@ class Wrapc(util.WrapperMixin):
             self.write_doxygen_file(output, fname, library, cls)
 
         output.extend([
-                '// For C users and C++ implementation',
+                '// For C users and %s implementation' % self.language.upper(),
                 '',
                 '#ifndef %s' % guard,
                 '#define %s' % guard,
@@ -190,16 +191,18 @@ class Wrapc(util.WrapperMixin):
             headers = self.header_typedef_include.keys()
             self.write_headers(headers, output)
 
-        output.append('')
-        self._create_splicer('CXX_declarations', output)
-
+        if self.language == 'c++':
+            output.append('')
+            self._create_splicer('CXX_declarations', output)
+            output.extend([
+                    '',
+                    '#ifdef __cplusplus',
+                    'extern "C" {',
+                    '#endif'
+                    ])
         output.extend([
                 '',
-                '#ifdef __cplusplus',
-                'extern "C" {',
-                '#endif',
-                '',
-                '// declaration of wrapped types',
+                '// declaration of wrapped types'
                 ])
         names = sorted(self.header_forward.keys())
         for name in names:
@@ -210,11 +213,14 @@ class Wrapc(util.WrapperMixin):
         output.append('')
         self._create_splicer('C_declarations', output)
         output.extend(self.header_proto_c)
+        if self.language == 'c++':
+            output.extend([
+                    '',
+                    '#ifdef __cplusplus',
+                    '}',
+                    '#endif'
+                    ])
         output.extend([
-                '',
-                '#ifdef __cplusplus',
-                '}',
-                '#endif',
                 '',
                 '#endif  // %s' % guard
                 ])
@@ -263,15 +269,17 @@ class Wrapc(util.WrapperMixin):
         output.extend(helper_source)
 
         self.namespace(library, cls, 'begin', output)
-        output.append('')
-        self._create_splicer('CXX_definitions', output)
-        output.append('\nextern "C" {')
+        if self.language == 'c++':
+            output.append('')
+            self._create_splicer('CXX_definitions', output)
+            output.append('\nextern "C" {')
         output.append('')
         self._create_splicer('C_definitions', output)
         output.extend(self.impl)
-        output.append('')
 
-        output.append('}  // extern "C"')
+        if self.language == 'c++':
+            output.append('')
+            output.append('}  // extern "C"')
         self.namespace(library, cls, 'end', output)
 
         self.config.cfiles.append(

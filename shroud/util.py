@@ -275,6 +275,13 @@ def lookup_c_statements(arg):
     return arg_typedef, c_statements
 
 
+class Language(object):
+    """Define some input language differences
+    """
+    def __init__(self, language):
+        self.language = language
+
+
 class WrapperMixin(object):
     """Methods common to all wrapping classes.
     """
