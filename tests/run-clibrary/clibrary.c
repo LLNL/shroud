@@ -67,7 +67,6 @@ double Function2(double arg1, int arg2)
     return arg1 + arg2;
 }
 
-#if 0
 bool Function3(bool arg)
 {
     strncpy(last_function_called, "Function3", MAXLAST);
@@ -82,6 +81,7 @@ void Function3b(const bool arg1, bool *arg2, bool *arg3)
     return;
 }
 
+#if 0
 const std::string Function4a(const std::string& arg1, const std::string& arg2)
 {
     strncpy(last_function_called, "Function4a", MAXLAST);
@@ -135,19 +135,22 @@ void Function10(const std::string &name, double arg2)
     global_str = name;
     global_double = arg2;
 }
+#endif
 
 void Sum(int len, int *values, int *result)
 {
     strncpy(last_function_called, "Sum", MAXLAST);
 
+    int i;
     int sum = 0;
-    for (int i=0; i < len; i++) {
+    for (i=0; i < len; i++) {
 	sum += values[i];
     }
     *result = sum;
     return;
 }
 
+#if 0
 TypeID typefunc(TypeID arg)
 {
     strncpy(last_function_called, "typefunc", MAXLAST);

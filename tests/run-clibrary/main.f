@@ -47,9 +47,9 @@ program tester
   implicit none
   logical ok
 
-!  logical rv_logical, wrk_logical
+  logical rv_logical, wrk_logical
 !  integer rv_integer
-!  integer(C_INT) rv_int
+  integer(C_INT) rv_int
   real(C_DOUBLE) rv_double
 !  character(30) rv_char
 
@@ -81,21 +81,21 @@ contains
     rv_double = function2(1.d0, 4)
     call assert_true(rv_double == 5.d0)
 
-!    rv_logical = function3(.false.)
-!    call assert_true(rv_logical)
-!
-!    rv_logical = .true.
-!    wrk_logical = .true.
-!    call function3b(.true., rv_logical, wrk_logical)
-!    call assert_false(rv_logical)
-!    call assert_false(wrk_logical)
-!
-!    rv_logical = .false.
-!    wrk_logical = .false.
-!    call function3b(.false., rv_logical, wrk_logical)
-!    call assert_true(rv_logical)
-!    call assert_true(wrk_logical)
-!
+    rv_logical = function3(.false.)
+    call assert_true(rv_logical)
+
+    rv_logical = .true.
+    wrk_logical = .true.
+    call function3b(.true., rv_logical, wrk_logical)
+    call assert_false(rv_logical)
+    call assert_false(wrk_logical)
+
+    rv_logical = .false.
+    wrk_logical = .false.
+    call function3b(.false., rv_logical, wrk_logical)
+    call assert_true(rv_logical)
+    call assert_true(wrk_logical)
+
 !    call assert_true( function4a("dog", "cat") == "dogcat")
 !
 !    call function4b("dog", "cat", rv_char)
@@ -121,10 +121,10 @@ contains
 !    call assert_true(.true.)
 !    call function10("bar", 2.0d0)
 !    call assert_true(.true.)
-!
-!    call sum(5, [1,2,3,4,5], rv_int)
-!    call assert_true(rv_int .eq. 15)
-!
+
+    call sum(5, [1,2,3,4,5], rv_int)
+    call assert_true(rv_int .eq. 15)
+
 !    rv_int = typefunc(2)
 !    call assert_true(rv_int .eq. 2)
 !

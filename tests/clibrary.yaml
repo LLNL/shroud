@@ -69,20 +69,20 @@ types:
 functions:
 - decl: void Function1()
 - decl: double Function2(double arg1, int arg2)
-##-- decl: void Sum(int len, int *values+dimension(len)+intent(in),
-##-                 int *result+intent(out))
+- decl: void Sum(int len, int *values+dimension(len)+intent(in),
+                 int *result+intent(out))
 ##-  options:
 ##-    # unable to deal with dimension
 ##-    wrap_python: False
 ##-    wrap_lua: False
 
-##-- decl: bool Function3(bool arg)
-##-- decl: void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
+- decl: bool Function3(bool arg)
+- decl: void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
 ##-  options:
 ##-    # check out arguments
 ##-    wrap_python: False
 ##-    wrap_lua: False
-##-
+
 ##-- decl: const std::string Function4a+len(30)(
 ##-    const std::string& arg1,
 ##-    const std::string& arg2 )
@@ -95,13 +95,13 @@ functions:
 ##-    const std::string& arg2 )
 ##-  options:
 ##-    F_string_result_as_arg: output
-##-
+
 ##-- decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
 ##-  default_arg_suffix:
 ##-  -  
 ##-  -  _arg1
 ##-  -  _arg1_arg2
-##-
+
 ##-- decl: void Function6(const std::string& name)
 ##-  function_suffix: _from_name
 ##-- decl: void Function6(int indx)

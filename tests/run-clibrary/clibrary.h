@@ -44,6 +44,8 @@
 #ifndef CLIBRARY_HPP
 #define CLIBRARY_HPP
 
+#include <stdbool.h>
+
 enum EnumTypeID {
     ENUM0,
     ENUM1,
@@ -56,10 +58,10 @@ void Function1();
 
 double Function2(double arg1, int arg2);
 
-#if 0
 bool Function3(bool arg);
 void Function3b(const bool arg1, bool *arg2, bool *arg3);
 
+#if 0
 const std::string Function4a(const std::string& arg1, const std::string& arg2);
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);
 
@@ -72,9 +74,11 @@ void Function9(double arg);
 
 void Function10();
 void Function10(const std::string &name, double arg2);
+#endif
 
 void Sum(int len, int * values, int *result);
 
+#if 0
 TypeID typefunc(TypeID arg);
 
 EnumTypeID enumfunc(EnumTypeID arg);

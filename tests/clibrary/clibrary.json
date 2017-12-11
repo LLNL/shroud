@@ -199,6 +199,258 @@
                 "name": "Function2", 
                 "type": "double"
             }
+        }, 
+        {
+            "_decl": "void Sum(int len+intent(in)+value, int * values+dimension(len)+intent(in), int * result+intent(out))", 
+            "_function_index": 2, 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "intent": "in", 
+                        "value": true
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "len", 
+                        "cpp_type": "int", 
+                        "cpp_var": "len"
+                    }, 
+                    "fmtf": {
+                        "c_var": "len", 
+                        "f_var": "len"
+                    }, 
+                    "name": "len", 
+                    "type": "int"
+                }, 
+                {
+                    "attrs": {
+                        "dimension": "(len)", 
+                        "intent": "in", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "values", 
+                        "cpp_type": "int", 
+                        "cpp_var": "values"
+                    }, 
+                    "fmtf": {
+                        "c_var": "values", 
+                        "f_var": "values"
+                    }, 
+                    "name": "values", 
+                    "type": "int"
+                }, 
+                {
+                    "attrs": {
+                        "intent": "out", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "result", 
+                        "cpp_type": "int", 
+                        "cpp_var": "result"
+                    }, 
+                    "fmtf": {
+                        "c_var": "result", 
+                        "f_var": "result"
+                    }, 
+                    "name": "result", 
+                    "type": "int"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
+            "fmt": {
+                "C_call_code": "Sum(len, values, result);", 
+                "C_call_list": "len, values, result", 
+                "C_name": "Sum", 
+                "C_prototype": "int len, int * values, int * result", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_sum", 
+                "F_C_name": "sum", 
+                "F_arg_c_call": "len, values, result", 
+                "F_arg_c_call_tab": "\tlen\tvalues\tresult", 
+                "F_arguments": "len, values, result", 
+                "F_call_code": "call c_sum(\tlen\tvalues\tresult)", 
+                "F_name_function": "sum", 
+                "F_name_generic": "sum", 
+                "F_name_impl": "sum", 
+                "F_subprogram": "subroutine", 
+                "c_const": "", 
+                "function_name": "Sum", 
+                "underscore_name": "sum"
+            }, 
+            "options": {}, 
+            "result": {
+                "attrs": {}, 
+                "name": "Sum", 
+                "type": "void"
+            }
+        }, 
+        {
+            "_decl": "bool Function3(bool arg+intent(in)+value)", 
+            "_function_index": 3, 
+            "_subprogram": "function", 
+            "args": [
+                {
+                    "attrs": {
+                        "intent": "in", 
+                        "value": true
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg", 
+                        "f_var": "arg"
+                    }, 
+                    "name": "arg", 
+                    "type": "bool"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "bool Function3(bool arg)", 
+            "fmt": {
+                "C_call_code": "bool SH_rv = Function3(arg);", 
+                "C_call_list": "arg", 
+                "C_name": "Function3", 
+                "C_prototype": "bool arg", 
+                "C_return_code": "return SH_rv;", 
+                "C_return_type": "bool", 
+                "F_C_call": "c_function3", 
+                "F_C_name": "c_function3", 
+                "F_arg_c_call": "SH_arg", 
+                "F_arg_c_call_tab": "\tSH_arg", 
+                "F_arguments": "arg", 
+                "F_call_code": "SH_rv = c_function3(\tSH_arg)", 
+                "F_name_function": "function3", 
+                "F_name_generic": "function3", 
+                "F_name_impl": "function3", 
+                "F_result_clause": " result(SH_rv)", 
+                "F_subprogram": "function", 
+                "c_const": "", 
+                "function_name": "Function3", 
+                "underscore_name": "function3"
+            }, 
+            "options": {}, 
+            "result": {
+                "attrs": {}, 
+                "fmtc": {
+                    "cpp_rv_decl": "bool SH_rv", 
+                    "cpp_var": "SH_rv"
+                }, 
+                "name": "Function3", 
+                "type": "bool"
+            }
+        }, 
+        {
+            "_decl": "void Function3b(const bool arg1+intent(in)+value, bool * arg2+intent(out), bool * arg3+intent(inout))", 
+            "_function_index": 4, 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "const": true, 
+                        "intent": "in", 
+                        "value": true
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg1", 
+                        "f_var": "arg1"
+                    }, 
+                    "name": "arg1", 
+                    "type": "bool"
+                }, 
+                {
+                    "attrs": {
+                        "intent": "out", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "arg2", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg2", 
+                        "f_var": "arg2"
+                    }, 
+                    "name": "arg2", 
+                    "type": "bool"
+                }, 
+                {
+                    "attrs": {
+                        "intent": "inout", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "arg3", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg3"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg3", 
+                        "f_var": "arg3"
+                    }, 
+                    "name": "arg3", 
+                    "type": "bool"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
+            "fmt": {
+                "C_call_code": "Function3b(arg1, arg2, arg3);", 
+                "C_call_list": "arg1, arg2, arg3", 
+                "C_name": "Function3b", 
+                "C_prototype": "const bool arg1, bool * arg2, bool * arg3", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_function3b", 
+                "F_C_name": "c_function3b", 
+                "F_arg_c_call": "SH_arg1, SH_arg2, SH_arg3", 
+                "F_arg_c_call_tab": "\tSH_arg1\tSH_arg2\tSH_arg3", 
+                "F_arguments": "arg1, arg2, arg3", 
+                "F_call_code": "call c_function3b(\tSH_arg1\tSH_arg2\tSH_arg3)", 
+                "F_name_function": "function3b", 
+                "F_name_generic": "function3b", 
+                "F_name_impl": "function3b", 
+                "F_subprogram": "subroutine", 
+                "c_const": "", 
+                "function_name": "Function3b", 
+                "underscore_name": "function3b"
+            }, 
+            "options": {}, 
+            "result": {
+                "attrs": {}, 
+                "name": "Function3b", 
+                "type": "void"
+            }
         }
     ], 
     "language": "c", 

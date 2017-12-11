@@ -72,11 +72,73 @@ module clibrary_mod
             real(C_DOUBLE) :: SH_rv
         end function function2
 
+        subroutine sum(len, values, result) &
+                bind(C, name="Sum")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: len
+            integer(C_INT), intent(IN) :: values(len)
+            integer(C_INT), intent(OUT) :: result
+        end subroutine sum
+
+        function c_function3(arg) &
+                result(SH_rv) &
+                bind(C, name="Function3")
+            use iso_c_binding, only : C_BOOL
+            implicit none
+            logical(C_BOOL), value, intent(IN) :: arg
+            logical(C_BOOL) :: SH_rv
+        end function c_function3
+
+        subroutine c_function3b(arg1, arg2, arg3) &
+                bind(C, name="Function3b")
+            use iso_c_binding, only : C_BOOL
+            implicit none
+            logical(C_BOOL), value, intent(IN) :: arg1
+            logical(C_BOOL), intent(OUT) :: arg2
+            logical(C_BOOL), intent(INOUT) :: arg3
+        end subroutine c_function3b
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
 
 contains
+
+    ! bool Function3(bool arg+intent(in)+value)
+    ! function_index=3
+    function function3(arg) result(SH_rv)
+        use iso_c_binding, only : C_BOOL
+        logical, value, intent(IN) :: arg
+        logical(C_BOOL) SH_arg
+        logical :: SH_rv
+        SH_arg = arg  ! coerce to C_BOOL
+        ! splicer begin function.function3
+        SH_rv = c_function3(SH_arg)
+        ! splicer end function.function3
+    end function function3
+
+    ! void Function3b(const bool arg1+intent(in)+value, bool * arg2+intent(out), bool * arg3+intent(inout))
+    ! function_index=4
+    subroutine function3b(arg1, arg2, arg3)
+        use iso_c_binding, only : C_BOOL
+        logical, value, intent(IN) :: arg1
+        logical(C_BOOL) SH_arg1
+        logical, intent(OUT) :: arg2
+        logical(C_BOOL) SH_arg2
+        logical, intent(INOUT) :: arg3
+        logical(C_BOOL) SH_arg3
+        SH_arg1 = arg1  ! coerce to C_BOOL
+        SH_arg3 = arg3  ! coerce to C_BOOL
+        ! splicer begin function.function3b
+        call c_function3b(  &
+            SH_arg1,  &
+            SH_arg2,  &
+            SH_arg3)
+        ! splicer end function.function3b
+        arg2 = SH_arg2  ! coerce to logical
+        arg3 = SH_arg3  ! coerce to logical
+    end subroutine function3b
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
