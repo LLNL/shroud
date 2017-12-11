@@ -58,13 +58,13 @@ module clibrary_mod
     interface
 
         subroutine function1() &
-                bind(C, name="CLI_function1")
+                bind(C, name="Function1")
             implicit none
         end subroutine function1
 
         function function2(arg1, arg2) &
                 result(SH_rv) &
-                bind(C, name="CLI_function2")
+                bind(C, name="Function2")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1

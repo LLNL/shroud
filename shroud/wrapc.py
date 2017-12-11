@@ -331,6 +331,15 @@ class Wrapc(util.WrapperMixin):
 
         fmt_func = node['fmt']
 
+        if self.language == 'c':
+            # Fortran can call C directly and only needs wrappers when code is
+            # inserted. For example, precall or postcall.
+            need_wrapper = False
+        else:
+            # C++ will need C wrappers to deal with name mangling.
+            # TODO: allow 'extern "C"' from C++ to skip wrapper
+            need_wrapper = True
+
         # Look for C++ routine to wrap
         # Usually the same node unless it is generated (i.e. bufferified)
         CPP_node = node
@@ -396,6 +405,7 @@ class Wrapc(util.WrapperMixin):
         proto_list = []
         call_list = []
         if cls:
+            need_wrapper = True
             # object pointer
             arg_dict = dict(name=fmt_func.C_this,
                             type=cls['name'],
@@ -462,6 +472,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 stmts = 'result' + intent_grp
+                need_wrapper = True
             else:
                 arg_call = arg
                 fmt_arg.cpp_var = fmt_arg.c_var      # name in c++ call.
@@ -471,6 +482,7 @@ class Wrapc(util.WrapperMixin):
 
             # Add implied buffer arguments to prototype
             for buf_arg in intent_blk.get('buf_args', []):
+                need_wrapper = True
                 if buf_arg == 'size':
                     fmt_arg.c_var_size = c_attrs['size']
                     append_format(proto_list, 'long {c_var_size}', fmt_arg)
@@ -494,11 +506,13 @@ class Wrapc(util.WrapperMixin):
             # pre_call.append('// intent=%s' % intent)
             cmd_list = intent_blk.get('pre_call', [])
             if cmd_list:
+                need_wrapper = True
                 for cmd in cmd_list:
                     append_format(pre_call, cmd, fmt_arg)
 
             cmd_list = intent_blk.get('post_call', [])
             if cmd_list:
+                need_wrapper = True
                 # pick up c_str() from cpp_to_c
                 fmt_arg.cpp_val = wformat(arg_typedef.cpp_to_c, fmt_arg)
                 for cmd in cmd_list:
@@ -568,13 +582,16 @@ class Wrapc(util.WrapperMixin):
                 append_format(
                     post_call_pattern, self.patterns[C_error_pattern], fmt_pattern)
         if post_call_pattern:
+            need_wrapper = True
             fmt_func.C_post_call_pattern = '\n'.join(post_call_pattern)
 
         # body of function
         splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
         if 'C_code' in node:
+            need_wrapper = True
             C_code = [1, wformat(node['C_code'], fmt_func), -1]
         elif splicer_code:
+            need_wrapper = True
             C_code = splicer_code
         else:
             # generate the C body
@@ -633,6 +650,7 @@ class Wrapc(util.WrapperMixin):
                                             + ';')
 
             if 'C_post_call' in node:
+                need_wrapper = True
                 post_call.append('{')
                 post_call.append('// C_post_call')
                 append_format(post_call, node['C_post_call'], fmt_func)
@@ -640,6 +658,7 @@ class Wrapc(util.WrapperMixin):
 
             if 'C_return_code' in node:
                 # override any computed return code.
+                need_wrapper = True
                 fmt_func.C_return_code = wformat(node['C_return_code'], fmt_func)
 
             # copy-out values, clean up
@@ -651,20 +670,24 @@ class Wrapc(util.WrapperMixin):
             C_code.append(fmt_func.C_return_code)
             C_code.append(-1)
 
-        self.header_proto_c.append('')
-        self.header_proto_c.append(
-            wformat('{C_return_type} {C_name}({C_prototype});',
-                    fmt_func))
+        if need_wrapper:
+            self.header_proto_c.append('')
+            self.header_proto_c.append(
+                wformat('{C_return_type} {C_name}({C_prototype});',
+                        fmt_func))
 
-        impl = self.impl
-        impl.append('')
-        if options.debug:
-            impl.append('// %s' % node['_decl'])
-            impl.append('// function_index=%d' % node['_function_index'])
-        if options.doxygen and 'doxygen' in node:
-            self.write_doxygen(impl, node['doxygen'])
-        impl.append(wformat('{C_return_type} {C_name}({C_prototype})', fmt_func))
-        impl.append('{')
-        self._create_splicer(fmt_func.underscore_name +
-                             fmt_func.function_suffix, impl, C_code)
-        impl.append('}')
+            impl = self.impl
+            impl.append('')
+            if options.debug:
+                impl.append('// %s' % node['_decl'])
+                impl.append('// function_index=%d' % node['_function_index'])
+            if options.doxygen and 'doxygen' in node:
+                self.write_doxygen(impl, node['doxygen'])
+            impl.append(wformat('{C_return_type} {C_name}({C_prototype})', fmt_func))
+            impl.append('{')
+            self._create_splicer(fmt_func.underscore_name +
+                                 fmt_func.function_suffix, impl, C_code)
+            impl.append('}')
+        else:
+            # There is no C wrapper, have Fortran call the function directly.
+            fmt_func.C_name = node['result']['name']

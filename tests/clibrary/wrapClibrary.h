@@ -54,8 +54,4 @@
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void CLI_function1();
-
-double CLI_function2(double arg1, int arg2);
-
 #endif  // WRAPCLIBRARY_H

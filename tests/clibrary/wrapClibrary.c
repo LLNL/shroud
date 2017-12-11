@@ -46,23 +46,3 @@
 
 // splicer begin C_definitions
 // splicer end C_definitions
-
-// void Function1()
-// function_index=0
-void CLI_function1()
-{
-// splicer begin function.function1
-    Function1();
-    return;
-// splicer end function.function1
-}
-
-// double Function2(double arg1+intent(in)+value, int arg2+intent(in)+value)
-// function_index=1
-double CLI_function2(double arg1, int arg2)
-{
-// splicer begin function.function2
-    double SH_rv = Function2(arg1, arg2);
-    return SH_rv;
-// splicer end function.function2
-}

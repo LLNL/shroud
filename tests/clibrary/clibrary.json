@@ -96,7 +96,7 @@
             "fmt": {
                 "C_call_code": "Function1();", 
                 "C_call_list": "", 
-                "C_name": "CLI_function1", 
+                "C_name": "Function1", 
                 "C_prototype": "", 
                 "C_return_code": "return;", 
                 "C_return_type": "void", 
@@ -170,7 +170,7 @@
             "fmt": {
                 "C_call_code": "double SH_rv = Function2(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
-                "C_name": "CLI_function2", 
+                "C_name": "Function2", 
                 "C_prototype": "double arg1, int arg2", 
                 "C_return_code": "return SH_rv;", 
                 "C_return_type": "double", 
