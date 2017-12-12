@@ -99,6 +99,28 @@ module clibrary_mod
             logical(C_BOOL), intent(INOUT) :: arg3
         end subroutine c_function3b
 
+        function c_function4a(arg1, arg2) &
+                result(SH_rv) &
+                bind(C, name="Function4a")
+            use iso_c_binding, only : C_CHAR, C_PTR
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: arg1(*)
+            character(kind=C_CHAR), intent(IN) :: arg2(*)
+            type(C_PTR) SH_rv
+        end function c_function4a
+
+        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, SH_F_rv, NSH_F_rv) &
+                bind(C, name="CLI_function4a_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: arg1(*)
+            integer(C_INT), value, intent(IN) :: Larg1
+            character(kind=C_CHAR), intent(IN) :: arg2(*)
+            integer(C_INT), value, intent(IN) :: Larg2
+            character(kind=C_CHAR), intent(OUT) :: SH_F_rv(*)
+            integer(C_INT), value, intent(IN) :: NSH_F_rv
+        end subroutine c_function4a_bufferify
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -139,6 +161,25 @@ contains
         arg2 = SH_arg2  ! coerce to logical
         arg3 = SH_arg3  ! coerce to logical
     end subroutine function3b
+
+    ! const char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))
+    ! arg_to_buffer
+    ! function_index=5
+    function function4a(arg1, arg2) result(SH_rv)
+        use iso_c_binding, only : C_CHAR, C_INT
+        character(*), intent(IN) :: arg1
+        character(*), intent(IN) :: arg2
+        character(kind=C_CHAR, len=30) :: SH_rv
+        ! splicer begin function.function4a
+        call c_function4a_bufferify(  &
+            arg1,  &
+            len_trim(arg1, kind=C_INT),  &
+            arg2,  &
+            len_trim(arg2, kind=C_INT),  &
+            SH_rv,  &
+            len(SH_rv, kind=C_INT))
+        ! splicer end function.function4a
+    end function function4a
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -83,13 +83,13 @@ functions:
 ##-    wrap_python: False
 ##-    wrap_lua: False
 
-##-- decl: const std::string Function4a+len(30)(
-##-    const std::string& arg1,
-##-    const std::string& arg2 )
-##-# +pure
-##-#  result:
-##-#    attrs:
-##-#      len: 30
+- decl: const char *Function4a+len(30)(
+    const char *arg1,
+    const char *arg2 )
+# +pure
+#  result:
+#    attrs:
+#      len: 30
 ##-- decl: const std::string& Function4b(
 ##-    const std::string& arg1,
 ##-    const std::string& arg2 )

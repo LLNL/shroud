@@ -42,7 +42,43 @@
 // #######################################################################
 // wrapClibrary.c
 #include "wrapClibrary.h"
+#include <stdlib.h>
+#include <string.h>
 #include "clibrary.h"
+
+// Copy s into a, blank fill to la characters
+// Truncate if a is too short.
+static void ShroudStrCopy(char *a, int la, const char *s)
+{
+   int ls,nm;
+   ls = strlen(s);
+   nm = ls < la ? ls : la;
+   memcpy(a,s,nm);
+   if(la > nm) { memset(a+nm,' ',la-nm);}
+}
 
 // splicer begin C_definitions
 // splicer end C_definitions
+
+// void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SH_F_rv+intent(out)+len(NSH_F_rv))
+// function_index=6
+void CLI_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * SH_F_rv, int NSH_F_rv)
+{
+// splicer begin function.function4a_bufferify
+    char * SH_arg1 = (char *) malloc(Larg1 + 1);
+    memcpy(SH_arg1, arg1, Larg1);
+    SH_arg1[Larg1] = '\0';
+    char * SH_arg2 = (char *) malloc(Larg2 + 1);
+    memcpy(SH_arg2, arg2, Larg2);
+    SH_arg2[Larg2] = '\0';
+    const char * SH_rv = Function4a(SH_arg1, SH_arg2);
+    free(SH_arg1);
+    free(SH_arg2);
+    if (SH_rv == NULL) {
+      memset(SH_F_rv, ' ', NSH_F_rv);
+    } else {
+      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);
+    }
+    return;
+// splicer end function.function4a_bufferify
+}

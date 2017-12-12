@@ -134,6 +134,11 @@ library_upper
 namespace_scope
     The values in field **namespace** delimited with ``::``.
 
+stdlib
+    Name of C++ standard library prefix.
+    blank when *language=c*.
+    ``std::`` when *language=c++*.
+
 YAML_type_filename
     Output filename for type maps for classes.
 
@@ -695,6 +700,11 @@ typedef
     Initialize from existing type
     Defaults to *None*.
 
+c_header
+    Name of C header file required for implementation.
+    Only used with *language=c*.
+    Defaults to *None*.
+
 cpp_type
     Name of type in C++.
     Defaults to *None*.
@@ -706,6 +716,7 @@ cpp_to_c
 cpp_header
     Name of C++ header file required for implementation.
     For example, if cpp_to_c was a function.
+    Only used with *language=c++*.
     Defaults to *None*.
 
 cpp_local_var

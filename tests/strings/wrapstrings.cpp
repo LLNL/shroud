@@ -43,6 +43,7 @@
 // wrapstrings.cpp
 #include "wrapstrings.h"
 #include <cstring>
+#include <stdlib.h>
 #include <string>
 #include "strings.hpp"
 
@@ -136,14 +137,14 @@ void STR_pass_char_ptr(char * dest, const char * src)
 void STR_pass_char_ptr_bufferify(char * dest, int Ndest, const char * src, int Lsrc)
 {
 // splicer begin function.pass_char_ptr_bufferify
-    char * SH_dest = new char [Ndest + 1];
-    char * SH_src = new char [Lsrc + 1];
-    std::strncpy(SH_src, src, Lsrc);
+    char * SH_dest = (char *) malloc(Ndest + 1);
+    char * SH_src = (char *) malloc(Lsrc + 1);
+    std::memcpy(SH_src, src, Lsrc);
     SH_src[Lsrc] = '\0';
     passCharPtr(SH_dest, SH_src);
     ShroudStrCopy(dest, Ndest, SH_dest);
-    delete [] SH_dest;
-    delete [] SH_src;
+    free(SH_dest);
+    free(SH_src);
     return;
 // splicer end function.pass_char_ptr_bufferify
 }
@@ -171,12 +172,12 @@ void STR_pass_char_ptr_in_out(char * s)
 void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 {
 // splicer begin function.pass_char_ptr_in_out_bufferify
-    char * SH_s = new char [Ns + 1];
-    std::strncpy(SH_s, s, Ls);
+    char * SH_s = (char *) malloc(Ns + 1);
+    std::memcpy(SH_s, s, Ls);
     SH_s[Ls] = '\0';
     passCharPtrInOut(SH_s);
     ShroudStrCopy(s, Ns, SH_s);
-    delete [] SH_s;
+    free(SH_s);
     return;
 // splicer end function.pass_char_ptr_in_out_bufferify
 }
@@ -596,11 +597,11 @@ void STR_explicit1(char * name)
 void STR_explicit1_BUFFER(char * name, int AAlen)
 {
 // splicer begin function.explicit1_BUFFER
-    char * SH_name = new char [AAlen + 1];
-    std::strncpy(SH_name, name, AAlen);
+    char * SH_name = (char *) malloc(AAlen + 1);
+    std::memcpy(SH_name, name, AAlen);
     SH_name[AAlen] = '\0';
     explicit1(SH_name);
-    delete [] SH_name;
+    free(SH_name);
     return;
 // splicer end function.explicit1_BUFFER
 }
@@ -620,10 +621,10 @@ void STR_explicit2(char * name)
 void STR_explicit2_bufferify(char * name, int AAtrim)
 {
 // splicer begin function.explicit2_bufferify
-    char * SH_name = new char [AAtrim + 1];
+    char * SH_name = (char *) malloc(AAtrim + 1);
     explicit2(SH_name);
     ShroudStrCopy(name, AAtrim, SH_name);
-    delete [] SH_name;
+    free(SH_name);
     return;
 // splicer end function.explicit2_bufferify
 }

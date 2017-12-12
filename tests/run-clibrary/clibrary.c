@@ -81,12 +81,18 @@ void Function3b(const bool arg1, bool *arg2, bool *arg3)
     return;
 }
 
-#if 0
-const std::string Function4a(const std::string& arg1, const std::string& arg2)
+/* Note that the caller is responsible to free memory */
+const char *Function4a(const char *arg1, const char *arg2)
 {
     strncpy(last_function_called, "Function4a", MAXLAST);
-    return arg1 + arg2;
+    size_t narg1 = strlen(arg1);
+    size_t narg2 = strlen(arg2);
+    char *out = malloc(narg1 + narg2 + 1);
+    sprintf(out, "%s%s", arg1, arg2);
+    return out;
 }
+
+#if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2)
 {
     strncpy(last_function_called, "Function4b", MAXLAST);

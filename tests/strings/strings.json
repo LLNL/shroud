@@ -97,7 +97,8 @@
         "library": "strings", 
         "library_lower": "strings", 
         "library_upper": "STRINGS", 
-        "namespace_scope": ""
+        "namespace_scope": "", 
+        "stdlib": "std::"
     }, 
     "functions": [
         {
@@ -442,8 +443,8 @@
                 "C_call_code": "passCharPtr(SH_dest, SH_src);", 
                 "C_call_list": "SH_dest, SH_src", 
                 "C_name": "STR_pass_char_ptr_bufferify", 
-                "C_post_call": "ShroudStrCopy(dest, Ndest, SH_dest);\ndelete [] SH_dest;\ndelete [] SH_src;", 
-                "C_pre_call": "char * SH_dest = new char [Ndest + 1];\nchar * SH_src = new char [Lsrc + 1];\nstd::strncpy(SH_src, src, Lsrc);\nSH_src[Lsrc] = '\\0';", 
+                "C_post_call": "ShroudStrCopy(dest, Ndest, SH_dest);\nfree(SH_dest);\nfree(SH_src);", 
+                "C_pre_call": "char * SH_dest = (char *) malloc(Ndest + 1);\nchar * SH_src = (char *) malloc(Lsrc + 1);\nstd::memcpy(SH_src, src, Lsrc);\nSH_src[Lsrc] = '\\0';", 
                 "C_prototype": "char * dest, int Ndest, const char * src, int Lsrc", 
                 "C_return_code": "return;", 
                 "C_return_type": "void", 
@@ -573,8 +574,8 @@
                 "C_call_code": "passCharPtrInOut(SH_s);", 
                 "C_call_list": "SH_s", 
                 "C_name": "STR_pass_char_ptr_in_out_bufferify", 
-                "C_post_call": "ShroudStrCopy(s, Ns, SH_s);\ndelete [] SH_s;", 
-                "C_pre_call": "char * SH_s = new char [Ns + 1];\nstd::strncpy(SH_s, s, Ls);\nSH_s[Ls] = '\\0';", 
+                "C_post_call": "ShroudStrCopy(s, Ns, SH_s);\nfree(SH_s);", 
+                "C_pre_call": "char * SH_s = (char *) malloc(Ns + 1);\nstd::memcpy(SH_s, s, Ls);\nSH_s[Ls] = '\\0';", 
                 "C_prototype": "char * s, int Ls, int Ns", 
                 "C_return_code": "return;", 
                 "C_return_type": "void", 
@@ -2319,8 +2320,8 @@
                 "C_call_code": "explicit1(SH_name);", 
                 "C_call_list": "SH_name", 
                 "C_name": "STR_explicit1_BUFFER", 
-                "C_post_call": "delete [] SH_name;", 
-                "C_pre_call": "char * SH_name = new char [AAlen + 1];\nstd::strncpy(SH_name, name, AAlen);\nSH_name[AAlen] = '\\0';", 
+                "C_post_call": "free(SH_name);", 
+                "C_pre_call": "char * SH_name = (char *) malloc(AAlen + 1);\nstd::memcpy(SH_name, name, AAlen);\nSH_name[AAlen] = '\\0';", 
                 "C_prototype": "char * name, int AAlen", 
                 "C_return_code": "return;", 
                 "C_return_type": "void", 
@@ -2443,8 +2444,8 @@
                 "C_call_code": "explicit2(SH_name);", 
                 "C_call_list": "SH_name", 
                 "C_name": "STR_explicit2_bufferify", 
-                "C_post_call": "ShroudStrCopy(name, AAtrim, SH_name);\ndelete [] SH_name;", 
-                "C_pre_call": "char * SH_name = new char [AAtrim + 1];", 
+                "C_post_call": "ShroudStrCopy(name, AAtrim, SH_name);\nfree(SH_name);", 
+                "C_pre_call": "char * SH_name = (char *) malloc(AAtrim + 1);", 
                 "C_prototype": "char * name, int AAtrim", 
                 "C_return_code": "return;", 
                 "C_return_type": "void", 
@@ -2608,14 +2609,15 @@
                     "buf_args": [
                         "len_trim"
                     ], 
-                    "cpp_header": "<cstring>", 
+                    "c_header": "<stdlib.h> <string.h>", 
+                    "cpp_header": "<stdlib.h> <cstring>", 
                     "cpp_local_var": true, 
                     "post_call": [
-                        "delete [] {cpp_var};"
+                        "free({cpp_var});"
                     ], 
                     "pre_call": [
-                        "char * {cpp_var} = new char [{c_var_trim} + 1];", 
-                        "std::strncpy({cpp_var}, {c_var}, {c_var_trim});", 
+                        "char * {cpp_var} = (char *) malloc({c_var_trim} + 1);", 
+                        "{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});", 
                         "{cpp_var}[{c_var_trim}] = '\\0';"
                     ]
                 }, 
@@ -2624,15 +2626,17 @@
                         "len_trim", 
                         "len"
                     ], 
+                    "c_header": "<stdlib.h> <string.h>", 
                     "c_helper": "ShroudStrCopy", 
+                    "cpp_header": "<stdlib.h> <cstring>", 
                     "cpp_local_var": true, 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "delete [] {cpp_var};"
+                        "free({cpp_var});"
                     ], 
                     "pre_call": [
-                        "char * {cpp_var} = new char [{c_var_len} + 1];", 
-                        "std::strncpy({cpp_var}, {c_var}, {c_var_trim});", 
+                        "char * {cpp_var} = (char *) malloc({c_var_len} + 1);", 
+                        "{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});", 
                         "{cpp_var}[{c_var_trim}] = '\\0';"
                     ]
                 }, 
@@ -2640,25 +2644,28 @@
                     "buf_args": [
                         "len"
                     ], 
+                    "c_header": "<stdlib.h>", 
                     "c_helper": "ShroudStrCopy", 
+                    "cpp_header": "<stdlib.h>", 
                     "cpp_local_var": true, 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "delete [] {cpp_var};"
+                        "free({cpp_var});"
                     ], 
                     "pre_call": [
-                        "char * {cpp_var} = new char [{c_var_len} + 1];"
+                        "char * {cpp_var} = (char *) malloc({c_var_len} + 1);"
                     ]
                 }, 
                 "result_buf": {
                     "buf_args": [
                         "len"
                     ], 
+                    "c_header": "<string.h>", 
                     "c_helper": "ShroudStrCopy", 
                     "cpp_header": "<cstring>", 
                     "post_call": [
                         "if ({cpp_var} == NULL) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
+                        "  {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
                         "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});", 
                         "}}"
@@ -2695,9 +2702,10 @@
                     "buf_args": [
                         "len"
                     ], 
+                    "c_header": "<string.h>", 
                     "cpp_header": "<cstring>", 
                     "post_call": [
-                        "std::memset({c_var}, ' ', {c_var_len});", 
+                        "{stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "{c_var}[0] = {cpp_var};"
                     ]
                 }
@@ -2866,7 +2874,7 @@
                     "cpp_header": "<cstring>", 
                     "post_call": [
                         "if ({cpp_var}.empty()) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
+                        "  {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
                         "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
                         "}}"

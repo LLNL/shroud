@@ -310,6 +310,8 @@ class Schema(object):
 
             fmt_library.LUA_header_filename_suffix = 'h'
             fmt_library.LUA_impl_filename_suffix = 'c'
+
+            fmt_library.stdlib  = ''
         else:
             fmt_library.C_header_filename_suffix = 'h'
             fmt_library.C_impl_filename_suffix = 'cpp'
@@ -319,6 +321,8 @@ class Schema(object):
 
             fmt_library.LUA_header_filename_suffix = 'hpp'
             fmt_library.LUA_impl_filename_suffix = 'cpp'
+
+            fmt_library.stdlib  = 'std::'
 
         self.option_to_fmt(fmt_library, old)
 
@@ -471,49 +475,55 @@ class Schema(object):
                     intent_in_buf=dict(
                         buf_args = [ 'len_trim' ],
                         cpp_local_var=True,
-                        cpp_header='<cstring>',
+                        c_header='<stdlib.h> <string.h>',
+                        cpp_header='<stdlib.h> <cstring>',
                         pre_call=[
-                            'char * {cpp_var} = new char [{c_var_trim} + 1];',
-                            'std::strncpy({cpp_var}, {c_var}, {c_var_trim});',
+                            'char * {cpp_var} = (char *) malloc({c_var_trim} + 1);',
+                            '{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});',
                             '{cpp_var}[{c_var_trim}] = \'\\0\';'
                             ],
                         post_call=[
-                            'delete [] {cpp_var};'
+                            'free({cpp_var});'
                             ],
                         ),
                     intent_out_buf=dict(
                         buf_args = [ 'len' ],
                         cpp_local_var=True,
+                        c_header='<stdlib.h>',
+                        cpp_header='<stdlib.h>',
                         c_helper='ShroudStrCopy',
                         pre_call=[
-                            'char * {cpp_var} = new char [{c_var_len} + 1];',
+                            'char * {cpp_var} = (char *) malloc({c_var_len} + 1);',
                             ],
                         post_call=[
                             'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-                            'delete [] {cpp_var};',
+                            'free({cpp_var});',
                             ],
                         ),
                     intent_inout_buf=dict(
                         buf_args = [ 'len_trim', 'len' ],
                         cpp_local_var=True,
                         c_helper='ShroudStrCopy',
+                        c_header='<stdlib.h> <string.h>',
+                        cpp_header='<stdlib.h> <cstring>',
                         pre_call=[
-                            'char * {cpp_var} = new char [{c_var_len} + 1];',
-                            'std::strncpy({cpp_var}, {c_var}, {c_var_trim});',
+                            'char * {cpp_var} = (char *) malloc({c_var_len} + 1);',
+                            '{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});',
                             '{cpp_var}[{c_var_trim}] = \'\\0\';'
                             ],
                         post_call=[
                             'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-                            'delete [] {cpp_var};',
+                            'free({cpp_var});',
                             ],
                         ),
                     result_buf=dict(
                         buf_args = [ 'len' ],
+                        c_header='<string.h>',
                         cpp_header='<cstring>',
                         c_helper='ShroudStrCopy',
                         post_call=[
                             'if ({cpp_var} == NULL) {{',
-                            '  std::memset({c_var}, \' \', {c_var_len});',
+                            '  {stdlib}memset({c_var}, \' \', {c_var_len});',
                             '}} else {{',
                             '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});',
                             '}}',
@@ -555,9 +565,10 @@ class Schema(object):
                 c_statements=dict(
                     result_buf=dict(
                         buf_args = [ 'len' ],
+                        c_header='<string.h>',
                         cpp_header='<cstring>',
                         post_call=[
-                            'std::memset({c_var}, \' \', {c_var_len});',
+                            '{stdlib}memset({c_var}, \' \', {c_var_len});',
                             '{c_var}[0] = {cpp_var};',
                         ],
                     ),
@@ -653,7 +664,7 @@ class Schema(object):
                         c_helper='ShroudStrCopy',
                         post_call=[
                             'if ({cpp_var}.empty()) {{',
-                            '  std::memset({c_var}, \' \', {c_var_len});',
+                            '  {stdlib}memset({c_var}, \' \', {c_var_len});',
                             '}} else {{',
                             '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
                             '}}',

@@ -96,8 +96,8 @@ contains
     call assert_true(rv_logical)
     call assert_true(wrk_logical)
 
-!    call assert_true( function4a("dog", "cat") == "dogcat")
-!
+    call assert_true( function4a("dog", "cat") == "dogcat")
+
 !    call function4b("dog", "cat", rv_char)
 !    call assert_true( rv_char == "dogcat")
 !

@@ -243,10 +243,11 @@ class Wrapc(util.WrapperMixin):
         if self.c_helper:
             helperdict = whelpers.find_all_helpers('c', self.c_helper)
             helpers = sorted(self.c_helper)
+            lang_header = self.language + '_header'
             for helper in helpers:
                 helper_info = helperdict[helper]
-                if 'cpp_header' in helper_info:
-                    for include in helper_info['cpp_header'].split():
+                if lang_header in helper_info:
+                    for include in helper_info[lang_header].split():
                         self.header_impl_include[include] = True
                 if 'source' in helper_info:
                     helper_source.append(helper_info['source'])
@@ -335,10 +336,12 @@ class Wrapc(util.WrapperMixin):
             # Fortran can call C directly and only needs wrappers when code is
             # inserted. For example, precall or postcall.
             need_wrapper = False
+            lang_header = 'c_header'
         else:
             # C++ will need C wrappers to deal with name mangling.
             # TODO: allow 'extern "C"' from C++ to skip wrapper
             need_wrapper = True
+            lang_header = 'cpp_header'
 
         # Look for C++ routine to wrap
         # Usually the same node unless it is generated (i.e. bufferified)
@@ -522,7 +525,7 @@ class Wrapc(util.WrapperMixin):
                 for helper in intent_blk['c_helper'].split():
                     self.c_helper[helper] = True
 
-            cpp_header = intent_blk.get('cpp_header', None)
+            cpp_header = intent_blk.get(lang_header, None)
             # include any dependent header in generated source
             if cpp_header:
                 for h in cpp_header.split():
@@ -691,3 +694,26 @@ class Wrapc(util.WrapperMixin):
         else:
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node['result']['name']
+
+
+    def XXXget_intent(self, intent_blk, block):
+        # Maybe later...
+        """Get a language specific block of code.
+        block = pre_call, post_call
+
+        intent_in={
+            pre_call_c = []
+            pre_call_cpp = []
+        }
+        -- or --
+        intent_in={
+            pre_call = []
+        }
+        """
+        name = block + '_' + self.language
+        if name in intent_blk:
+            return intent_blk[name]
+        elif block in intent_blk:
+            return intent_blk[block]
+        else:
+            return []

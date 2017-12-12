@@ -83,7 +83,8 @@
         "library": "Clibrary", 
         "library_lower": "clibrary", 
         "library_upper": "CLIBRARY", 
-        "namespace_scope": ""
+        "namespace_scope": "", 
+        "stdlib": ""
     }, 
     "functions": [
         {
@@ -451,6 +452,204 @@
                 "name": "Function3b", 
                 "type": "void"
             }
+        }, 
+        {
+            "_PTR_F_C_index": 6, 
+            "_decl": "const char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))", 
+            "_function_index": 5, 
+            "_subprogram": "function", 
+            "args": [
+                {
+                    "attrs": {
+                        "const": true, 
+                        "intent": "in", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": " *", 
+                        "c_var": "arg1", 
+                        "cpp_type": "char", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "name": "arg1", 
+                    "type": "char"
+                }, 
+                {
+                    "attrs": {
+                        "const": true, 
+                        "intent": "in", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": " *", 
+                        "c_var": "arg2", 
+                        "cpp_type": "char", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "name": "arg2", 
+                    "type": "char"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "const char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
+            "fmt": {
+                "C_call_code": "const char * SH_rv = Function4a(arg1, arg2);", 
+                "C_call_list": "arg1, arg2", 
+                "C_name": "Function4a", 
+                "C_prototype": "const char * arg1, const char * arg2", 
+                "C_return_code": "return SH_rv;", 
+                "C_return_type": "const char *", 
+                "F_C_call": "c_function4a_bufferify", 
+                "F_C_name": "c_function4a", 
+                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SH_rv, len(SH_rv, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSH_rv\tlen(SH_rv, kind=C_INT)", 
+                "F_arguments": "arg1, arg2", 
+                "F_call_code": "call c_function4a_bufferify(\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSH_rv\tlen(SH_rv, kind=C_INT))", 
+                "F_name_function": "function4a", 
+                "F_name_generic": "function4a", 
+                "F_name_impl": "function4a", 
+                "F_result_clause": " result(SH_rv)", 
+                "F_subprogram": "function", 
+                "c_const": "const ", 
+                "c_var_len": "30", 
+                "function_name": "Function4a", 
+                "underscore_name": "function4a"
+            }, 
+            "options": {}, 
+            "result": {
+                "attrs": {
+                    "const": true, 
+                    "len": "30", 
+                    "ptr": true
+                }, 
+                "fmtc": {
+                    "cpp_rv_decl": "const char * SH_rv", 
+                    "cpp_var": "SH_rv"
+                }, 
+                "name": "Function4a", 
+                "type": "char"
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 5, 
+            "_decl": "void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SH_F_rv+intent(out)+len(NSH_F_rv))", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_function_index": 6, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "const": true, 
+                        "intent": "in", 
+                        "len_trim": "Larg1", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": " *", 
+                        "c_var": "arg1", 
+                        "c_var_trim": "Larg1", 
+                        "cpp_type": "char", 
+                        "cpp_val": "SH_arg1", 
+                        "cpp_var": "SH_arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }, 
+                    "name": "arg1", 
+                    "type": "char"
+                }, 
+                {
+                    "attrs": {
+                        "const": true, 
+                        "intent": "in", 
+                        "len_trim": "Larg2", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": " *", 
+                        "c_var": "arg2", 
+                        "c_var_trim": "Larg2", 
+                        "cpp_type": "char", 
+                        "cpp_val": "SH_arg2", 
+                        "cpp_var": "SH_arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg2", 
+                        "f_var": "arg2"
+                    }, 
+                    "name": "arg2", 
+                    "type": "char"
+                }, 
+                {
+                    "attrs": {
+                        "_is_result": true, 
+                        "const": false, 
+                        "intent": "out", 
+                        "len": "NSH_F_rv", 
+                        "ptr": true
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "SH_F_rv", 
+                        "c_var_len": "NSH_F_rv", 
+                        "cpp_type": "char", 
+                        "cpp_val": "SH_rv", 
+                        "cpp_var": "SH_rv"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_rv", 
+                        "f_var": "SH_rv"
+                    }, 
+                    "name": "SH_F_rv", 
+                    "type": "char"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "const char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
+            "fmt": {
+                "C_call_code": "const char * SH_rv = Function4a(SH_arg1, SH_arg2);", 
+                "C_call_list": "SH_arg1, SH_arg2", 
+                "C_name": "CLI_function4a_bufferify", 
+                "C_post_call": "free(SH_arg1);\nfree(SH_arg2);\nif (SH_rv == NULL) {\n  memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);\n}", 
+                "C_pre_call": "char * SH_arg1 = (char *) malloc(Larg1 + 1);\nmemcpy(SH_arg1, arg1, Larg1);\nSH_arg1[Larg1] = '\\0';\nchar * SH_arg2 = (char *) malloc(Larg2 + 1);\nmemcpy(SH_arg2, arg2, Larg2);\nSH_arg2[Larg2] = '\\0';", 
+                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * SH_F_rv, int NSH_F_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_function4a_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
+            "options": {
+                "wrap_c": true, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {
+                    "const": false, 
+                    "len": "30", 
+                    "ptr": false, 
+                    "reference": false
+                }, 
+                "fmtc": {
+                    "cpp_rv_decl": "const char * SH_rv", 
+                    "cpp_var": "SH_rv"
+                }, 
+                "name": "Function4a", 
+                "type": "void"
+            }
         }
     ], 
     "language": "c", 
@@ -628,14 +827,15 @@
                     "buf_args": [
                         "len_trim"
                     ], 
-                    "cpp_header": "<cstring>", 
+                    "c_header": "<stdlib.h> <string.h>", 
+                    "cpp_header": "<stdlib.h> <cstring>", 
                     "cpp_local_var": true, 
                     "post_call": [
-                        "delete [] {cpp_var};"
+                        "free({cpp_var});"
                     ], 
                     "pre_call": [
-                        "char * {cpp_var} = new char [{c_var_trim} + 1];", 
-                        "std::strncpy({cpp_var}, {c_var}, {c_var_trim});", 
+                        "char * {cpp_var} = (char *) malloc({c_var_trim} + 1);", 
+                        "{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});", 
                         "{cpp_var}[{c_var_trim}] = '\\0';"
                     ]
                 }, 
@@ -644,15 +844,17 @@
                         "len_trim", 
                         "len"
                     ], 
+                    "c_header": "<stdlib.h> <string.h>", 
                     "c_helper": "ShroudStrCopy", 
+                    "cpp_header": "<stdlib.h> <cstring>", 
                     "cpp_local_var": true, 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "delete [] {cpp_var};"
+                        "free({cpp_var});"
                     ], 
                     "pre_call": [
-                        "char * {cpp_var} = new char [{c_var_len} + 1];", 
-                        "std::strncpy({cpp_var}, {c_var}, {c_var_trim});", 
+                        "char * {cpp_var} = (char *) malloc({c_var_len} + 1);", 
+                        "{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});", 
                         "{cpp_var}[{c_var_trim}] = '\\0';"
                     ]
                 }, 
@@ -660,25 +862,28 @@
                     "buf_args": [
                         "len"
                     ], 
+                    "c_header": "<stdlib.h>", 
                     "c_helper": "ShroudStrCopy", 
+                    "cpp_header": "<stdlib.h>", 
                     "cpp_local_var": true, 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "delete [] {cpp_var};"
+                        "free({cpp_var});"
                     ], 
                     "pre_call": [
-                        "char * {cpp_var} = new char [{c_var_len} + 1];"
+                        "char * {cpp_var} = (char *) malloc({c_var_len} + 1);"
                     ]
                 }, 
                 "result_buf": {
                     "buf_args": [
                         "len"
                     ], 
+                    "c_header": "<string.h>", 
                     "c_helper": "ShroudStrCopy", 
                     "cpp_header": "<cstring>", 
                     "post_call": [
                         "if ({cpp_var} == NULL) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
+                        "  {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
                         "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});", 
                         "}}"
@@ -715,9 +920,10 @@
                     "buf_args": [
                         "len"
                     ], 
+                    "c_header": "<string.h>", 
                     "cpp_header": "<cstring>", 
                     "post_call": [
-                        "std::memset({c_var}, ' ', {c_var_len});", 
+                        "{stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "{c_var}[0] = {cpp_var};"
                     ]
                 }
@@ -886,7 +1092,7 @@
                     "cpp_header": "<cstring>", 
                     "post_call": [
                         "if ({cpp_var}.empty()) {{", 
-                        "  std::memset({c_var}, ' ', {c_var_len});", 
+                        "  {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
                         "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
                         "}}"
