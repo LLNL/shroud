@@ -370,6 +370,9 @@ class Wrapc(util.WrapperMixin):
         result_type = result['type']
         subprogram = node['_subprogram']
         generator = node.get('_generated', '')
+        intent_grp = ''
+        if generator == 'arg_to_buffer':
+            intent_grp = '_buf'
 
         # C++ functions which return 'this',
         # are easier to call from Fortran if they are subroutines.
@@ -471,10 +474,6 @@ class Wrapc(util.WrapperMixin):
             fmt_arg.cpp_type = arg_typedef.cpp_type
 
             proto_list.append(self._c_decl('c_type', arg))
-
-            intent_grp = ''
-            if generator == 'arg_to_buffer':
-                intent_grp = '_buf'
 
             if c_attrs.get('_is_result', False):
                 arg_call = False

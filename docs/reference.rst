@@ -1057,6 +1057,11 @@ C_name
 
 C_post_call
     Code added after all of the argument *post_call* code.
+    Can be used to release memory from the C routine.
+
+C_post_call_buf
+    Identical to **C_post_call** but only applies to the buffer version of the
+    wrapper routine.
 
 C_return_type
     Allow the C wrapper and Fortran wrapper to return a different type

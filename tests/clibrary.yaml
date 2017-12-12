@@ -83,13 +83,15 @@ functions:
 ##-    wrap_python: False
 ##-    wrap_lua: False
 
-- decl: const char *Function4a+len(30)(
+- decl: char *Function4a+len(30)(
     const char *arg1,
     const char *arg2 )
+  C_post_call_buf: |
+     // Function4a allocates memory which must be released after it is copied
+     // into the Fortran argument or else it will leak.
+     free({C_result});
 # +pure
-#  result:
-#    attrs:
-#      len: 30
+
 ##-- decl: const std::string& Function4b(
 ##-    const std::string& arg1,
 ##-    const std::string& arg2 )

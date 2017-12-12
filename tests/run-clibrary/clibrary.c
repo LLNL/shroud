@@ -43,6 +43,8 @@
 
 #include "clibrary.h"
 
+#include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
 #define MAXLAST 50
@@ -82,7 +84,7 @@ void Function3b(const bool arg1, bool *arg2, bool *arg3)
 }
 
 /* Note that the caller is responsible to free memory */
-const char *Function4a(const char *arg1, const char *arg2)
+char *Function4a(const char *arg1, const char *arg2)
 {
     strncpy(last_function_called, "Function4a", MAXLAST);
     size_t narg1 = strlen(arg1);

@@ -882,4 +882,8 @@ memory. But if the caller of the C++ function wants to transfer
 ownership of the pointer to its caller, the C++ wrapper will leak the
 memory.
 
+The **C_post_call** variable may be used to insert code before
+returning from the wrapper.  Use **C_post_call_buf** for the buffer
+version of wrapped functions.
+
 .. note:: Reference counting and garbage collection are still a work in progress

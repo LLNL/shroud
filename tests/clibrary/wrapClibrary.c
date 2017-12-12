@@ -71,13 +71,20 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, i
     char * SH_arg2 = (char *) malloc(Larg2 + 1);
     memcpy(SH_arg2, arg2, Larg2);
     SH_arg2[Larg2] = '\0';
-    const char * SH_rv = Function4a(SH_arg1, SH_arg2);
+    char * SH_rv = Function4a(SH_arg1, SH_arg2);
     free(SH_arg1);
     free(SH_arg2);
     if (SH_rv == NULL) {
       memset(SH_F_rv, ' ', NSH_F_rv);
     } else {
       ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);
+    }
+    {
+    // C_post_call
+    // Function4a allocates memory which must be released after it is copied
+    // into the Fortran argument or else it will leak.
+    free(SH_rv);
+
     }
     return;
 // splicer end function.function4a_bufferify

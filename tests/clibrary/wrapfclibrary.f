@@ -162,7 +162,7 @@ contains
         arg3 = SH_arg3  ! coerce to logical
     end subroutine function3b
 
-    ! const char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))
+    ! char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))
     ! arg_to_buffer
     ! function_index=5
     function function4a(arg1, arg2) result(SH_rv)

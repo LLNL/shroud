@@ -454,8 +454,9 @@
             }
         }, 
         {
+            "C_post_call_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
             "_PTR_F_C_index": 6, 
-            "_decl": "const char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))", 
+            "_decl": "char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))", 
             "_function_index": 5, 
             "_subprogram": "function", 
             "args": [
@@ -495,14 +496,14 @@
                 }
             ], 
             "attrs": {}, 
-            "decl": "const char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
+            "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
             "fmt": {
-                "C_call_code": "const char * SH_rv = Function4a(arg1, arg2);", 
+                "C_call_code": "char * SH_rv = Function4a(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
                 "C_name": "Function4a", 
                 "C_prototype": "const char * arg1, const char * arg2", 
                 "C_return_code": "return SH_rv;", 
-                "C_return_type": "const char *", 
+                "C_return_type": "char *", 
                 "F_C_call": "c_function4a_bufferify", 
                 "F_C_name": "c_function4a", 
                 "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SH_rv, len(SH_rv, kind=C_INT)", 
@@ -514,7 +515,7 @@
                 "F_name_impl": "function4a", 
                 "F_result_clause": " result(SH_rv)", 
                 "F_subprogram": "function", 
-                "c_const": "const ", 
+                "c_const": "", 
                 "c_var_len": "30", 
                 "function_name": "Function4a", 
                 "underscore_name": "function4a"
@@ -522,12 +523,11 @@
             "options": {}, 
             "result": {
                 "attrs": {
-                    "const": true, 
                     "len": "30", 
                     "ptr": true
                 }, 
                 "fmtc": {
-                    "cpp_rv_decl": "const char * SH_rv", 
+                    "cpp_rv_decl": "char * SH_rv", 
                     "cpp_var": "SH_rv"
                 }, 
                 "name": "Function4a", 
@@ -535,6 +535,8 @@
             }
         }, 
         {
+            "C_post_call": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
+            "C_post_call_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
             "_PTR_C_CPP_index": 5, 
             "_decl": "void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SH_F_rv+intent(out)+len(NSH_F_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -616,9 +618,9 @@
                 }
             ], 
             "attrs": {}, 
-            "decl": "const char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
+            "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
             "fmt": {
-                "C_call_code": "const char * SH_rv = Function4a(SH_arg1, SH_arg2);", 
+                "C_call_code": "char * SH_rv = Function4a(SH_arg1, SH_arg2);", 
                 "C_call_list": "SH_arg1, SH_arg2", 
                 "C_name": "CLI_function4a_bufferify", 
                 "C_post_call": "free(SH_arg1);\nfree(SH_arg2);\nif (SH_rv == NULL) {\n  memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);\n}", 
@@ -644,7 +646,7 @@
                     "reference": false
                 }, 
                 "fmtc": {
-                    "cpp_rv_decl": "const char * SH_rv", 
+                    "cpp_rv_decl": "char * SH_rv", 
                     "cpp_var": "SH_rv"
                 }, 
                 "name": "Function4a", 
