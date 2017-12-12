@@ -243,13 +243,20 @@ class Wrapc(util.WrapperMixin):
         if self.c_helper:
             helperdict = whelpers.find_all_helpers('c', self.c_helper)
             helpers = sorted(self.c_helper)
-            lang_header = self.language + '_header'
+            if self.language == 'c':
+                lang_header = 'c_header'
+                lang_source = 'c_source'
+            else:
+                lang_header = 'cpp_header'
+                lang_source = 'cpp_source'
             for helper in helpers:
                 helper_info = helperdict[helper]
                 if lang_header in helper_info:
                     for include in helper_info[lang_header].split():
                         self.header_impl_include[include] = True
-                if 'source' in helper_info:
+                if lang_source in helper_info:
+                    helper_source.append(helper_info[lang_source])
+                elif 'source' in helper_info:
                     helper_source.append(helper_info['source'])
 
         output.append('#include "%s"' % hname)

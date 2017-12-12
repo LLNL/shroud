@@ -66,10 +66,10 @@ int ShroudLenTrim(const char *s, int ls) {
 static void ShroudStrCopy(char *a, int la, const char *s)
 {
    int ls,nm;
-   ls = strlen(s);
+   ls = std::strlen(s);
    nm = ls < la ? ls : la;
-   memcpy(a,s,nm);
-   if(la > nm) { memset(a+nm,' ',la-nm);}
+   std::memcpy(a,s,nm);
+   if(la > nm) std::memset(a+nm,' ',la-nm);
 }
 
 namespace tutorial {

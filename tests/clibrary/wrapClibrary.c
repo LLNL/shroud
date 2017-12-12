@@ -54,7 +54,7 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    ls = strlen(s);
    nm = ls < la ? ls : la;
    memcpy(a,s,nm);
-   if(la > nm) { memset(a+nm,' ',la-nm);}
+   if(la > nm) memset(a+nm,' ',la-nm);
 }
 
 // splicer begin C_definitions
