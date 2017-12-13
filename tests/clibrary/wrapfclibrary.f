@@ -47,7 +47,6 @@
 ! splicer begin file_top
 ! splicer end file_top
 module clibrary_mod
-    use, intrinsic :: iso_c_binding, only : C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none

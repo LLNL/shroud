@@ -2,20 +2,6 @@
     "F_module_dependencies": [], 
     "classes": [
         {
-            "F_module_dependencies": [
-                [
-                    "iso_c_binding", 
-                    [
-                        "C_PTR"
-                    ]
-                ], 
-                [
-                    "tutorial_mod", 
-                    [
-                        "class1"
-                    ]
-                ]
-            ], 
             "cpp_header": "", 
             "fmt": {
                 "CPP_this_call": "SH_this->", 

@@ -45,7 +45,7 @@
 !! \brief Shroud generated wrapper for Class1 class
 !<
 module class1_mod
-    use iso_c_binding, only : C_INT, C_PTR
+    use iso_c_binding, only : C_PTR
     implicit none
 
 

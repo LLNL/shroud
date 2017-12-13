@@ -47,11 +47,9 @@
 ! splicer begin file_top
 ! splicer end file_top
 module tutorial_mod
-    use, intrinsic :: iso_c_binding, only : C_PTR
+    use iso_c_binding, only : C_PTR
     ! splicer begin module_use
     ! splicer end module_use
-    ! splicer begin class.Class1.module_use
-    ! splicer end class.Class1.module_use
     implicit none
 
     ! splicer begin module_top

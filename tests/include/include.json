@@ -2,15 +2,6 @@
     "F_module_dependencies": [], 
     "classes": [
         {
-            "F_module_dependencies": [
-                [
-                    "iso_c_binding", 
-                    [
-                        "C_INT", 
-                        "C_PTR"
-                    ]
-                ]
-            ], 
             "cpp_header": "class_header.hpp", 
             "fmt": {
                 "CPP_this_call": "SH_this->", 
@@ -90,20 +81,6 @@
             "options": {}
         }, 
         {
-            "F_module_dependencies": [
-                [
-                    "class1_mod", 
-                    [
-                        "class1"
-                    ]
-                ], 
-                [
-                    "iso_c_binding", 
-                    [
-                        "C_PTR"
-                    ]
-                ]
-            ], 
             "cpp_header": "", 
             "fmt": {
                 "CPP_this_call": "SH_this->", 

@@ -11,14 +11,6 @@
             "C_impl_filename": "foo.cpp", 
             "F_derived_name": "FNames", 
             "F_impl_filename": "foo.f", 
-            "F_module_dependencies": [
-                [
-                    "iso_c_binding", 
-                    [
-                        "C_PTR"
-                    ]
-                ]
-            ], 
             "F_module_name": "name_module", 
             "cpp_header": "", 
             "fmt": {
@@ -129,14 +121,6 @@
             }
         }, 
         {
-            "F_module_dependencies": [
-                [
-                    "iso_c_binding", 
-                    [
-                        "C_PTR"
-                    ]
-                ]
-            ], 
             "cpp_header": "", 
             "fmt": {
                 "CPP_this_call": "SH_this->", 

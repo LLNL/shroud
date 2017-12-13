@@ -2,29 +2,6 @@
     "F_module_dependencies": [], 
     "classes": [
         {
-            "F_module_dependencies": [
-                [
-                    "exclass1_mod", 
-                    [
-                        "exclass1"
-                    ]
-                ], 
-                [
-                    "exclass2_mod", 
-                    [
-                        "exclass2"
-                    ]
-                ], 
-                [
-                    "iso_c_binding", 
-                    [
-                        "C_BOOL", 
-                        "C_INT", 
-                        "C_LONG", 
-                        "C_PTR"
-                    ]
-                ]
-            ], 
             "cpp_header": "ExClass1.hpp", 
             "fmt": {
                 "CPP_this_call": "SH_this->", 
@@ -1152,30 +1129,6 @@
             }
         }, 
         {
-            "F_module_dependencies": [
-                [
-                    "exclass1_mod", 
-                    [
-                        "exclass1"
-                    ]
-                ], 
-                [
-                    "exclass2_mod", 
-                    [
-                        "exclass2"
-                    ]
-                ], 
-                [
-                    "iso_c_binding", 
-                    [
-                        "C_DOUBLE", 
-                        "C_FLOAT", 
-                        "C_INT", 
-                        "C_LONG", 
-                        "C_PTR"
-                    ]
-                ]
-            ], 
             "cpp_header": "ExClass2.hpp", 
             "fmt": {
                 "CPP_this_call": "SH_this->", 

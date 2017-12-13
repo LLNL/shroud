@@ -46,8 +46,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module exclass1_mod
-    use exclass2_mod, only : exclass2
-    use iso_c_binding, only : C_BOOL, C_INT, C_LONG, C_PTR
+    use iso_c_binding, only : C_PTR
     ! splicer begin class.ExClass1.module_use
     ! splicer end class.ExClass1.module_use
     implicit none

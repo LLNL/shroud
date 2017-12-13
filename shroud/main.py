@@ -1069,8 +1069,9 @@ class GenFunctions(object):
             cls['methods'] = self.define_function_suffix(cls['methods'])
         tree['functions'] = self.define_function_suffix(tree['functions'])
 
-        for cls in tree['classes']:
-            self.check_class_dependencies(cls)
+# No longer need this, but keep code for now in case some other dependency checking is needed
+#        for cls in tree['classes']:
+#            self.check_class_dependencies(cls)
 
     def append_function_index(self, node):
         """append to function_index, set index into node.
@@ -1461,7 +1462,7 @@ class GenFunctions(object):
             # Fortran function may call C subroutine if string result
             node['_PTR_F_C_index'] = C_new['_function_index']
 
-    def check_class_dependencies(self, node):
+    def XXXcheck_class_dependencies(self, node):
         """
         Check used_types and find which header and module files
         to use for this class
@@ -1488,7 +1489,7 @@ class GenFunctions(object):
             F_modules.append((mname, sorted(modules[mname])))
         node['F_module_dependencies'] = F_modules
 
-    def check_function_dependencies(self, node, used_types):
+    def XXXcheck_function_dependencies(self, node, used_types):
         """Record which types are used by a function.
         """
         if 'cpp_template' in node:
@@ -1511,7 +1512,8 @@ class GenFunctions(object):
             typedef = util.Typedef.lookup(argtype)
             if typedef is None:
                 raise RuntimeError("%s not defined" % argtype)
-            used_types[argtype] = typedef
+            if typedef.base == 'wrapped':
+                used_types[argtype] = typedef
 
     _skip_annotations = ['const', 'ptr', 'reference']
 
