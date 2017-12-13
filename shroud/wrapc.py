@@ -339,15 +339,16 @@ class Wrapc(util.WrapperMixin):
 
         fmt_func = node['fmt']
 
-        if self.language == 'c':
+        if self.language == 'c' or options.get('C_extern_C',False):
             # Fortran can call C directly and only needs wrappers when code is
             # inserted. For example, precall or postcall.
             need_wrapper = False
-            lang_header = 'c_header'
         else:
             # C++ will need C wrappers to deal with name mangling.
-            # TODO: allow 'extern "C"' from C++ to skip wrapper
             need_wrapper = True
+        if self.language == 'c':
+            lang_header = 'c_header'
+        else:
             lang_header = 'cpp_header'
 
         # Look for C++ routine to wrap

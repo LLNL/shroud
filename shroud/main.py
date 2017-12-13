@@ -187,7 +187,6 @@ class Schema(object):
         language = node['language'].lower()
         if language not in ['c', 'c++']:
             raise RuntimeError("language must be 'c' or 'c++'")
-        langobj = util.Language(language)
 
         # default options
         def_options = util.Options(

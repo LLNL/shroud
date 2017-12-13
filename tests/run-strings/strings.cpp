@@ -171,3 +171,50 @@ void explicit2(char * name)
 }
 
 //----------------------------------------
+//----------------------------------------
+
+extern "C" void CpassChar(char status)
+{
+    if (status == 'w') {
+        global_str = "w";
+    }
+}
+
+extern "C" char CreturnChar()
+{
+    return 'w';
+}
+
+//----------------------------------------
+
+extern "C" void CpassCharPtr(char *dest, const char *src)
+{
+    std::strcpy(dest, src);
+}
+
+extern "C" void CpassCharPtrInOut(char *s)
+{
+    size_t n = strlen(s);
+    for (unsigned int i = 0; i < n; i++) {
+        s[i] = toupper(s[i]);
+    }
+}
+
+//----------------------------------------
+
+extern "C" const char * CgetChar1()
+{
+    return static_char;
+}
+  
+extern "C" const char * CgetChar2()
+{
+    return static_char;
+}
+
+extern "C" const char * CgetChar3()
+{
+    return static_char;
+}
+
+//----------------------------------------

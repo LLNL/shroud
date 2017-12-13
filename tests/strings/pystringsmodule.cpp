@@ -428,6 +428,33 @@ PY_explicit2(
     return (PyObject *) *SH_Py_name;
 // splicer end function.explicit2
 }
+
+static char PY_cpass_char_ptr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_cpass_char_ptr(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.cpass_char_ptr
+    char * dest;
+    const char * src;
+    const char *SH_kwcpp = "src";
+    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:CpassCharPtr", SH_kw_list,
+        &src))
+    {
+        return NULL;
+    }
+    CpassCharPtr(dest, src);
+    PyObject * SH_Py_dest = PyString_FromString(dest);
+    return (PyObject *) *SH_Py_dest;
+// splicer end function.cpass_char_ptr
+}
 static PyMethodDef PY_methods[] = {
 {"passChar", (PyCFunction)PY_pass_char, METH_VARARGS|METH_KEYWORDS, PY_pass_char__doc__},
 {"returnChar", (PyCFunction)PY_return_char, METH_NOARGS, PY_return_char__doc__},
@@ -447,6 +474,7 @@ static PyMethodDef PY_methods[] = {
 {"acceptStringReference", (PyCFunction)PY_accept_string_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS, PY_explicit1__doc__},
 {"explicit2", (PyCFunction)PY_explicit2, METH_VARARGS|METH_KEYWORDS, PY_explicit2__doc__},
+{"CpassCharPtr", (PyCFunction)PY_cpass_char_ptr, METH_VARARGS|METH_KEYWORDS, PY_cpass_char_ptr__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

@@ -315,6 +315,24 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: AAtrim
         end subroutine c_explicit2_bufferify
 
+        subroutine c_cpass_char_ptr(dest, src) &
+                bind(C, name="CpassCharPtr")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: dest(*)
+            character(kind=C_CHAR), intent(IN) :: src(*)
+        end subroutine c_cpass_char_ptr
+
+        subroutine c_cpass_char_ptr_bufferify(dest, Ndest, src, Lsrc) &
+                bind(C, name="STR_cpass_char_ptr_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: dest(*)
+            integer(C_INT), value, intent(IN) :: Ndest
+            character(kind=C_CHAR), intent(IN) :: src(*)
+            integer(C_INT), value, intent(IN) :: Lsrc
+        end subroutine c_cpass_char_ptr_bufferify
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -421,7 +439,7 @@ contains
 
     ! void getChar3(char * output+intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=24
+    ! function_index=25
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -469,7 +487,7 @@ contains
 
     ! void getString3(string & output+intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=28
+    ! function_index=29
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -520,7 +538,7 @@ contains
 
     ! void getString6(string * output+intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=32
+    ! function_index=33
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -621,6 +639,29 @@ contains
             len(name, kind=C_INT))
         ! splicer end function.explicit2
     end subroutine explicit2
+
+    ! void CpassCharPtr(char * dest+intent(out), const char * src+intent(in))
+    ! arg_to_buffer
+    ! function_index=18
+    !>
+    !! \brief strcpy like behavior
+    !!
+    !! extern "C"
+    !! dest is marked intent(OUT) to override the intent(INOUT) default
+    !! This avoid a copy-in on dest.
+    !<
+    subroutine cpass_char_ptr(dest, src)
+        use iso_c_binding, only : C_INT
+        character(*), intent(OUT) :: dest
+        character(*), intent(IN) :: src
+        ! splicer begin function.cpass_char_ptr
+        call c_cpass_char_ptr_bufferify(  &
+            dest,  &
+            len(dest, kind=C_INT),  &
+            src,  &
+            len_trim(src, kind=C_INT))
+        ! splicer end function.cpass_char_ptr
+    end subroutine cpass_char_ptr
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

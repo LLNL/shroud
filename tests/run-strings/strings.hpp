@@ -78,5 +78,20 @@ void acceptStringPointer(std::string * arg1);
 void explicit1(char * name);
 void explicit2(char * name);
 
+extern "C" {
+  void CpassChar(char status);
+  char CreturnChar();
+
+  void CpassCharPtr(char * dest, const char *src);
+  void CpassCharPtrInOut(char * s);
+
+  const char * CgetChar1();
+  const char * CgetChar2();
+  const char * CgetChar3();
+
+  void Cexplicit1(char * name);
+  void Cexplicit2(char * name);
+}
+
 
 #endif // STRINGS_HPP

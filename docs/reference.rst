@@ -407,6 +407,10 @@ C_bufferify_suffix
   with explicit lengths.
   Defaults to *_bufferify*
 
+C_extern_C
+   Set to *true* when the C++ routine is ``extern "C"``.
+   Defaults to *false*.
+
 C_header_filename_suffix:
    Suffix added to C header files.
    Defaults to ``h``.

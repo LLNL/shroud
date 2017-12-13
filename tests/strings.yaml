@@ -189,6 +189,21 @@ functions:
 #- decl: void explicit3(char * name+len(AAlen)+len_trim(AAtrim))
 # set names for len/len_trim annotations
 
+################################################################################
+# extern "C"  C++ functions
+
+- decl: void CpassCharPtr(char * dest+intent(out), const char *src)
+  options:
+    C_extern_C: true
+  doxygen:
+    brief: strcpy like behavior
+    description: |
+      extern "C"
+      dest is marked intent(OUT) to override the intent(INOUT) default
+      This avoid a copy-in on dest.
+
+########################################
+
 ########################################
 patterns:
     C_invalid_name: |

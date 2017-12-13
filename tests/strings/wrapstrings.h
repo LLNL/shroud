@@ -127,6 +127,8 @@ void STR_explicit2(char * name);
 
 void STR_explicit2_bufferify(char * name, int AAtrim);
 
+void STR_cpass_char_ptr_bufferify(char * dest, int Ndest, const char * src, int Lsrc);
+
 #ifdef __cplusplus
 }
 #endif
