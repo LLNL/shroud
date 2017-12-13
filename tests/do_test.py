@@ -321,7 +321,8 @@ if __name__ == '__main__':
     if args.testname:
         test_names = args.testname
     else:
-        test_names = [ 'none', 'tutorial', 'example', 'include', 'names', 'strings', 'clibrary' ]
+        test_names = [ 'none', 'tutorial', 'example', 'include',
+                       'names', 'strings', 'clibrary', 'interface' ]
 
     logging.info('Tests to run: {}'.format( ' '.join(test_names)))
 

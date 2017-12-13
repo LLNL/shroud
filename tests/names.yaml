@@ -104,3 +104,16 @@ functions:
 
   # test F_result
   - decl: int function4()
+
+
+# Test explicit splicers
+# class Name2 has no methods by default it would not be written.
+splicer_code:
+   c:
+     CXX_definitions:
+       - // Add some text from splicer
+       - // And another line
+     class:
+       Names2:
+         C_definitions:
+           - int write_file;

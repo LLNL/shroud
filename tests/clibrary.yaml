@@ -238,14 +238,3 @@ functions:
 ##-  - decl: Class1 *new()  +constructor
 ##-  - decl: void delete()  +destructor
 ##-  - decl: void Method1()
-##-
-##-
-##-
-##-
-##-##################################################
-##-# Files which contain code to be inserted into generated code
-##-splicer:
-##-#  c:
-##-#  -  ctutorialsplicer.c
-##-  f:
-##-  -  ftutorialsplicer.f

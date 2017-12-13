@@ -50,6 +50,8 @@ module userlibrary_mod
     ! splicer end module_use
     implicit none
 
+    ! splicer begin module_top
+    ! splicer end module_top
 
     interface
 

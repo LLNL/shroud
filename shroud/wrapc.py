@@ -173,6 +173,8 @@ class Wrapc(util.WrapperMixin):
         node = cls or library
         options = node['options']
 
+        # If no C wrappers are required, do not write the file
+        write_file = False
         output = []
 
         if options.doxygen:
@@ -193,7 +195,8 @@ class Wrapc(util.WrapperMixin):
 
         if self.language == 'c++':
             output.append('')
-            self._create_splicer('CXX_declarations', output)
+            if self._create_splicer('CXX_declarations', output):
+                write_file = True
             output.extend([
                     '',
                     '#ifdef __cplusplus',
@@ -206,13 +209,17 @@ class Wrapc(util.WrapperMixin):
                 ])
         names = sorted(self.header_forward.keys())
         for name in names:
+            write_file = True
             output.append(
                 'struct s_{C_type_name};\n'
                 'typedef struct s_{C_type_name} {C_type_name};'.
                 format(C_type_name=name))
         output.append('')
-        self._create_splicer('C_declarations', output)
-        output.extend(self.header_proto_c)
+        if self._create_splicer('C_declarations', output):
+            write_file = True
+        if self.header_proto_c:
+            write_file = True
+            output.extend(self.header_proto_c)
         if self.language == 'c++':
             output.extend([
                     '',
@@ -225,9 +232,10 @@ class Wrapc(util.WrapperMixin):
                 '#endif  // %s' % guard
                 ])
 
-        self.config.cfiles.append(
-            os.path.join(self.config.c_fortran_dir, fname))
-        self.write_output_file(fname, self.config.c_fortran_dir, output)
+        if write_file:
+            self.config.cfiles.append(
+                os.path.join(self.config.c_fortran_dir, fname))
+            self.write_output_file(fname, self.config.c_fortran_dir, output)
 
     def write_impl(self, library, cls, hname, fname):
         """Write implementation
@@ -235,6 +243,8 @@ class Wrapc(util.WrapperMixin):
         node = cls or library
         options = node['options']
 
+        # If no C wrappers are required, do not write the file
+        write_file = False
         output = []
         output.append('// ' + fname)
 
@@ -274,25 +284,32 @@ class Wrapc(util.WrapperMixin):
             headers = self.header_impl_include.keys()
             self.write_headers(headers, output)
 
-        output.extend(helper_source)
+        if helper_source:
+            write_file = True
+            output.extend(helper_source)
 
         self.namespace(library, cls, 'begin', output)
         if self.language == 'c++':
             output.append('')
-            self._create_splicer('CXX_definitions', output)
+            if self._create_splicer('CXX_definitions', output):
+                write_file = True
             output.append('\nextern "C" {')
         output.append('')
-        self._create_splicer('C_definitions', output)
-        output.extend(self.impl)
+        if self._create_splicer('C_definitions', output):
+            write_file = True
+        if self.impl:
+            write_file = True
+            output.extend(self.impl)
 
         if self.language == 'c++':
             output.append('')
             output.append('}  // extern "C"')
         self.namespace(library, cls, 'end', output)
 
-        self.config.cfiles.append(
-            os.path.join(self.config.c_fortran_dir, fname))
-        self.write_output_file(fname, self.config.c_fortran_dir, output)
+        if write_file:
+            self.config.cfiles.append(
+                os.path.join(self.config.c_fortran_dir, fname))
+            self.write_output_file(fname, self.config.c_fortran_dir, output)
 
     def write_headers(self, headers, output):
         for header in sorted(headers):

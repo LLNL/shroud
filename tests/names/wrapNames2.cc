@@ -49,6 +49,7 @@
 extern "C" {
 
 // splicer begin class.Names2.C_definitions
+int write_file;
 // splicer end class.Names2.C_definitions
 
 }  // extern "C"

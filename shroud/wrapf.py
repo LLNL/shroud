@@ -1081,15 +1081,13 @@ class Wrapf(util.WrapperMixin):
                             mname, ', '.join(only)))
                 else:
                     output.append('use %s' % mname)
-            output.extend(self.use_stmts)
-            output.append('implicit none')
-            output.append('')
         else:
             output.append('use, intrinsic :: iso_c_binding, only : C_PTR')
             self._create_splicer('module_use', output)
-            output.extend(self.use_stmts)
-            output.append('implicit none')
-            output.append('')
+        output.extend(self.use_stmts)
+        output.append('implicit none')
+        output.append('')
+        if cls is None:
             self._create_splicer('module_top', output)
 
         # XXX output.append('! splicer push class')

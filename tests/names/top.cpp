@@ -44,6 +44,8 @@
 #include "top.h"
 
 // splicer begin CXX_definitions
+// Add some text from splicer
+// And another line
 // splicer end CXX_definitions
 
 extern "C" {

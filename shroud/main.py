@@ -2008,7 +2008,7 @@ def main_with_args(args):
     Namify(all, config).name_library()
 
     if 'splicer' in all:
-        # read splicer files defined in input yaml file
+        # read splicer files defined in input YAML file
         for suffix, names in all['splicer'].items():
             # suffix = 'c', 'f', 'py', 'lua'
             subsplicer = splicers.setdefault(suffix, {})
@@ -2024,6 +2024,10 @@ def main_with_args(args):
                     raise RuntimeError("File not found: %s" % name)
                 log.write("Read splicer %s\n" % name)
                 splicer.get_splicers(fullname, subsplicer)
+
+    # Add any explicit splicers in the YAML file.
+    if 'splicer_code' in all:
+        splicers.update(all['splicer_code'])
 
     # Write out generated types
     TypeOut(all, config).write_types()
