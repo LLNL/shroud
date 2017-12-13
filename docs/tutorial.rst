@@ -659,14 +659,12 @@ block.  Each wrapper will coerce the argument to the correct type::
 
     subroutine function9_float(arg)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
-        implicit none
         real(C_FLOAT), value, intent(IN) :: arg
         call c_function9(real(arg, C_DOUBLE))
     end subroutine function9_float
     
     subroutine function9_double(arg)
         use iso_c_binding, only : C_DOUBLE
-        implicit none
         real(C_DOUBLE), value, intent(IN) :: arg
         call c_function9(arg)
     end subroutine function9_double
@@ -829,8 +827,6 @@ For Fortran a derived type is created::
 And the subroutines::
 
     function class1_new() result(SHT_rv)
-        use iso_c_binding, only : C_PTR
-        implicit none
         type(class1) :: SHT_rv
         SHT_rv%voidptr = c_class1_new()
     end function class1_new

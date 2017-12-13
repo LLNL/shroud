@@ -603,7 +603,6 @@ contains
 
     function exclass2_yadda(obj) result (voidptr)
         use iso_c_binding, only: C_PTR
-        implicit none
         class(exclass2), intent(IN) :: obj
         type(C_PTR) :: voidptr
         voidptr = obj%voidptr
@@ -611,7 +610,6 @@ contains
 
     function exclass2_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        implicit none
         class(exclass2), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%voidptr)
@@ -622,7 +620,6 @@ contains
 
     function exclass2_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        implicit none
         type(exclass2), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%voidptr, b%voidptr)) then
@@ -634,7 +631,6 @@ contains
 
     function exclass2_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        implicit none
         type(exclass2), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%voidptr, b%voidptr)) then

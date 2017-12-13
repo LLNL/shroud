@@ -111,7 +111,6 @@ contains
 
     function class2_get_instance(obj) result (voidptr)
         use iso_c_binding, only: C_PTR
-        implicit none
         class(class2), intent(IN) :: obj
         type(C_PTR) :: voidptr
         voidptr = obj%voidptr
@@ -119,7 +118,6 @@ contains
 
     subroutine class2_set_instance(obj, voidptr)
         use iso_c_binding, only: C_PTR
-        implicit none
         class(class2), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: voidptr
         obj%voidptr = voidptr
@@ -127,7 +125,6 @@ contains
 
     function class2_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        implicit none
         class(class2), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%voidptr)
@@ -136,7 +133,6 @@ contains
 
     function class2_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        implicit none
         type(class2), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%voidptr, b%voidptr)) then
@@ -148,7 +144,6 @@ contains
 
     function class2_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        implicit none
         type(class2), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%voidptr, b%voidptr)) then

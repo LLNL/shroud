@@ -388,7 +388,6 @@ class Wrapf(util.WrapperMixin):
                 'result ({F_derived_member})', fmt)
             impl.append(1)
             impl.append('use iso_c_binding, only: C_PTR')
-            impl.append('implicit none')
             append_format(
                 impl, 'class({F_derived_name}), intent(IN) :: {F_this}', fmt)
             append_format(impl, 'type(C_PTR) :: {F_derived_member}', fmt)
@@ -411,7 +410,6 @@ class Wrapf(util.WrapperMixin):
                 '({F_this}, {F_derived_member})', fmt)
             impl.append(1)
             impl.append('use iso_c_binding, only: C_PTR')
-            impl.append('implicit none')
             append_format(
                 impl, 'class({F_derived_name}), intent(INOUT) :: {F_this}',
                 fmt)
@@ -435,7 +433,6 @@ class Wrapf(util.WrapperMixin):
                 impl, 'function {F_name_impl}({F_this}) result (rv)', fmt)
             impl.append(1)
             impl.append('use iso_c_binding, only: c_associated')
-            impl.append('implicit none')
             append_format(
                 impl, 'class({F_derived_name}), intent(IN) :: {F_this}', fmt)
             impl.append('logical rv')
@@ -462,7 +459,6 @@ class Wrapf(util.WrapperMixin):
         append_format(operator, 'function {procedure}(a,b) result (rv)', fmt)
         operator.append(1)
         operator.append('use iso_c_binding, only: c_associated')
-        operator.append('implicit none')
         append_format(operator,
                       'type({F_derived_name}), intent(IN) ::a,b', fmt)
         operator.append('logical :: rv')
