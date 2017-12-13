@@ -315,6 +315,29 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: AAtrim
         end subroutine c_explicit2_bufferify
 
+        subroutine cpass_char(status) &
+                bind(C, name="CpassChar")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR), value, intent(IN) :: status
+        end subroutine cpass_char
+
+        function c_creturn_char() &
+                result(SH_rv) &
+                bind(C, name="CreturnChar")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR) :: SH_rv
+        end function c_creturn_char
+
+        subroutine c_creturn_char_bufferify(SH_F_rv, NSH_F_rv) &
+                bind(C, name="STR_creturn_char_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: SH_F_rv
+            integer(C_INT), value, intent(IN) :: NSH_F_rv
+        end subroutine c_creturn_char_bufferify
+
         subroutine c_cpass_char_ptr(dest, src) &
                 bind(C, name="CpassCharPtr")
             use iso_c_binding, only : C_CHAR
@@ -439,7 +462,7 @@ contains
 
     ! void getChar3(char * output+intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=25
+    ! function_index=27
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -487,7 +510,7 @@ contains
 
     ! void getString3(string & output+intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=29
+    ! function_index=31
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -538,7 +561,7 @@ contains
 
     ! void getString6(string * output+intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=33
+    ! function_index=35
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -640,15 +663,32 @@ contains
         ! splicer end function.explicit2
     end subroutine explicit2
 
+    ! char_scalar CreturnChar()
+    ! arg_to_buffer
+    ! function_index=19
+    !>
+    !! \brief return a char argument (non-pointer), extern "C"
+    !!
+    !<
+    function creturn_char() result(SH_rv)
+        use iso_c_binding, only : C_INT
+        character :: SH_rv
+        ! splicer begin function.creturn_char
+        call c_creturn_char_bufferify(  &
+            SH_rv,  &
+            len(SH_rv, kind=C_INT))
+        ! splicer end function.creturn_char
+    end function creturn_char
+
     ! void CpassCharPtr(char * dest+intent(out), const char * src+intent(in))
     ! arg_to_buffer
-    ! function_index=18
+    ! function_index=20
     !>
     !! \brief strcpy like behavior
     !!
-    !! extern "C"
     !! dest is marked intent(OUT) to override the intent(INOUT) default
     !! This avoid a copy-in on dest.
+    !! extern "C"
     !<
     subroutine cpass_char_ptr(dest, src)
         use iso_c_binding, only : C_INT

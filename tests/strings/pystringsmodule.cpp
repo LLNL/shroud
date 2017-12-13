@@ -429,6 +429,48 @@ PY_explicit2(
 // splicer end function.explicit2
 }
 
+static char PY_cpass_char__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_cpass_char(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.cpass_char
+    char status;
+    const char *SH_kwcpp = "status";
+    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:CpassChar", SH_kw_list,
+        &status))
+    {
+        return NULL;
+    }
+    CpassChar(status);
+    Py_RETURN_NONE;
+// splicer end function.cpass_char
+}
+
+static char PY_creturn_char__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_creturn_char(
+  PyObject *,  // self unused
+  PyObject *,  // args unused
+  PyObject *)  // kwds unused
+{
+// splicer begin function.creturn_char
+    char rv = CreturnChar();
+    PyObject * SH_Py_rv = PyString_FromString(rv);
+    return (PyObject *) SH_Py_rv;
+// splicer end function.creturn_char
+}
+
 static char PY_cpass_char_ptr__doc__[] =
 "documentation"
 ;
@@ -474,6 +516,8 @@ static PyMethodDef PY_methods[] = {
 {"acceptStringReference", (PyCFunction)PY_accept_string_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS, PY_explicit1__doc__},
 {"explicit2", (PyCFunction)PY_explicit2, METH_VARARGS|METH_KEYWORDS, PY_explicit2__doc__},
+{"CpassChar", (PyCFunction)PY_cpass_char, METH_VARARGS|METH_KEYWORDS, PY_cpass_char__doc__},
+{"CreturnChar", (PyCFunction)PY_creturn_char, METH_NOARGS, PY_creturn_char__doc__},
 {"CpassCharPtr", (PyCFunction)PY_cpass_char_ptr, METH_VARARGS|METH_KEYWORDS, PY_cpass_char_ptr__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };

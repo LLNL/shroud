@@ -192,17 +192,30 @@ functions:
 ################################################################################
 # extern "C"  C++ functions
 
+- decl: void CpassChar(char status)
+  doxygen:
+    brief: pass a single char argument as a scalar, extern "C"
+  options:
+    C_extern_C: true
+
+- decl: char CreturnChar()
+  doxygen:
+    brief: return a char argument (non-pointer), extern "C"
+  options:
+    C_extern_C: true
+
+########################################
+# char * argument
+
 - decl: void CpassCharPtr(char * dest+intent(out), const char *src)
   options:
     C_extern_C: true
   doxygen:
     brief: strcpy like behavior
     description: |
-      extern "C"
       dest is marked intent(OUT) to override the intent(INOUT) default
       This avoid a copy-in on dest.
-
-########################################
+      extern "C"
 
 ########################################
 patterns:

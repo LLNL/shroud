@@ -102,10 +102,10 @@ contains
 
     call set_case_name("test_charargs_c")
 
-!    call pass_char("w")
+    call pass_char("w")
 
-!    ch = return_char()
-!    call assert_true( ch == "w")
+    ch = return_char()
+    call assert_true( ch == "w")
 
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
@@ -114,14 +114,10 @@ contains
 
     ! call C version directly via the interface
     ! caller is responsible for nulls
-!    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-!    call c_pass_char_ptr(dest=str, src="mouse" // C_NULL_CHAR)
-!    call assert_true( str(1:5) == "mouse")
-!    call assert_true( str(6:6) == C_NULL_CHAR)
-
-!    str = 'dog'
-!    call pass_char_ptr_in_out(str)
-!    call assert_true( str == "DOG")
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call c_cpass_char_ptr(dest=str, src="mouse" // C_NULL_CHAR)
+    call assert_true( str(1:5) == "mouse")
+    call assert_true( str(6:6) == C_NULL_CHAR)
 
   end subroutine test_charargs_c
 
