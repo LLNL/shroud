@@ -61,30 +61,30 @@ module userlibrary_mod
         end subroutine local_function1
 
         function c_is_name_valid(name) &
-                result(SH_rv) &
+                result(SHT_rv) &
                 bind(C, name="AA_is_name_valid")
             use iso_c_binding, only : C_BOOL, C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            logical(C_BOOL) :: SH_rv
+            logical(C_BOOL) :: SHT_rv
         end function c_is_name_valid
 
         function c_is_name_valid_bufferify(name, Lname) &
-                result(SH_rv) &
+                result(SHT_rv) &
                 bind(C, name="AA_is_name_valid_bufferify")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
-            logical(C_BOOL) :: SH_rv
+            logical(C_BOOL) :: SHT_rv
         end function c_is_name_valid_bufferify
 
         function c_is_initialized() &
-                result(SH_rv) &
+                result(SHT_rv) &
                 bind(C, name="AA_is_initialized")
             use iso_c_binding, only : C_BOOL
             implicit none
-            logical(C_BOOL) :: SH_rv
+            logical(C_BOOL) :: SHT_rv
         end function c_is_initialized
 
         subroutine c_check_bool(arg1, arg2, arg3) &
@@ -189,10 +189,10 @@ contains
     ! bool isNameValid(const std::string & name+intent(in))
     ! arg_to_buffer
     ! function_index=48
-    function is_name_valid(name) result(SH_rv)
+    function is_name_valid(name) result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT
         character(*), intent(IN) :: name
-        logical :: SH_rv
+        logical :: SHT_rv
         ! splicer begin function.is_name_valid
         rv = name .ne. " "
         ! splicer end function.is_name_valid
@@ -200,11 +200,11 @@ contains
 
     ! bool isInitialized()
     ! function_index=49
-    function is_initialized() result(SH_rv)
+    function is_initialized() result(SHT_rv)
         use iso_c_binding, only : C_BOOL
-        logical :: SH_rv
+        logical :: SHT_rv
         ! splicer begin function.is_initialized
-        SH_rv = c_is_initialized()
+        SHT_rv = c_is_initialized()
         ! splicer end function.is_initialized
     end function is_initialized
 

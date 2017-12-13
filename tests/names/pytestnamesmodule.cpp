@@ -132,11 +132,21 @@ static char PY_function4__doc__[] =
 static PyObject *
 PY_function4(
   PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *args,
+  PyObject *kwds)
 {
 // splicer begin function.function4
-    int rv = function4();
+    const char * rv;
+    const char *SH_kwcpp = "rv";
+    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:function4", SH_kw_list,
+        &rv))
+    {
+        return NULL;
+    }
+    const std::string SH_rv(rv);
+    int rv = function4(SH_rv);
     return Py_BuildValue("i", rv);
 // splicer end function.function4
 }
@@ -181,7 +191,7 @@ PY_function3a(
 static PyMethodDef PY_methods[] = {
 {"function1", (PyCFunction)PY_function1, METH_NOARGS, PY_function1__doc__},
 {"function2", (PyCFunction)PY_function2, METH_NOARGS, PY_function2__doc__},
-{"function4", (PyCFunction)PY_function4, METH_NOARGS, PY_function4__doc__},
+{"function4", (PyCFunction)PY_function4, METH_VARARGS|METH_KEYWORDS, PY_function4__doc__},
 {"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS, PY_function3a__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };

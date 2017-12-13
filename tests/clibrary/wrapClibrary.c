@@ -60,9 +60,9 @@ static void ShroudStrCopy(char *a, int la, const char *s)
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SH_F_rv+intent(out)+len(NSH_F_rv))
+// void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SHF_rv+intent(out)+len(NSHF_rv))
 // function_index=6
-void CLI_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * SH_F_rv, int NSH_F_rv)
+void CLI_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.function4a_bufferify
     char * SH_arg1 = (char *) malloc(Larg1 + 1);
@@ -71,19 +71,19 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, i
     char * SH_arg2 = (char *) malloc(Larg2 + 1);
     memcpy(SH_arg2, arg2, Larg2);
     SH_arg2[Larg2] = '\0';
-    char * SH_rv = Function4a(SH_arg1, SH_arg2);
+    char * SHT_rv = Function4a(SH_arg1, SH_arg2);
     free(SH_arg1);
     free(SH_arg2);
-    if (SH_rv == NULL) {
-      memset(SH_F_rv, ' ', NSH_F_rv);
+    if (SHT_rv == NULL) {
+      memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);
+      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
     }
     {
     // C_post_call
     // Function4a allocates memory which must be released after it is copied
     // into the Fortran argument or else it will leak.
-    free(SH_rv);
+    free(SHT_rv);
 
     }
     return;

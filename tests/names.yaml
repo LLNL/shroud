@@ -50,7 +50,6 @@ options:
   # always create wrappers to demonstrate name generation
   F_force_wrapper: True
   wrap_python: True
-  F_result: 'RV'
 
   C_header_filename_suffix: hh
   C_impl_filename_suffix: cc
@@ -103,7 +102,8 @@ functions:
     F_name_impl: F_name_function3a_long
 
   # test F_result
-  - decl: int function4()
+  # test C_result  with arg rv
+  - decl: int function4(const std::string &rv)
 
 
 # Test explicit splicers

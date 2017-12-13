@@ -89,23 +89,23 @@ void STR_pass_char(char status)
 char STR_return_char()
 {
 // splicer begin function.return_char
-    char SH_rv = returnChar();
-    return SH_rv;
+    char SHT_rv = returnChar();
+    return SHT_rv;
 // splicer end function.return_char
 }
 
-// void returnChar(char_scalar * SH_F_rv+intent(out)+len(NSH_F_rv))
+// void returnChar(char_scalar * SHF_rv+intent(out)+len(NSHF_rv))
 // function_index=21
 /**
  * \brief return a char argument (non-pointer)
  *
  */
-void STR_return_char_bufferify(char * SH_F_rv, int NSH_F_rv)
+void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.return_char_bufferify
-    char SH_rv = returnChar();
-    std::memset(SH_F_rv, ' ', NSH_F_rv);
-    SH_F_rv[0] = SH_rv;
+    char SHT_rv = returnChar();
+    std::memset(SHF_rv, ' ', NSHF_rv);
+    SHF_rv[0] = SHT_rv;
     return;
 // splicer end function.return_char_bufferify
 }
@@ -191,25 +191,25 @@ void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 const char * STR_get_char1()
 {
 // splicer begin function.get_char1
-    const char * SH_rv = getChar1();
-    return SH_rv;
+    const char * SHT_rv = getChar1();
+    return SHT_rv;
 // splicer end function.get_char1
 }
 
-// void getChar1(char * SH_F_rv+intent(out)+len(NSH_F_rv))+pure
+// void getChar1(char * SHF_rv+intent(out)+len(NSHF_rv))+pure
 // function_index=24
 /**
  * \brief return a 'const char *' as character(*)
  *
  */
-void STR_get_char1_bufferify(char * SH_F_rv, int NSH_F_rv)
+void STR_get_char1_bufferify(char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.get_char1_bufferify
-    const char * SH_rv = getChar1();
-    if (SH_rv == NULL) {
-      std::memset(SH_F_rv, ' ', NSH_F_rv);
+    const char * SHT_rv = getChar1();
+    if (SHT_rv == NULL) {
+      std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);
+      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
     }
     return;
 // splicer end function.get_char1_bufferify
@@ -224,25 +224,25 @@ void STR_get_char1_bufferify(char * SH_F_rv, int NSH_F_rv)
 const char * STR_get_char2()
 {
 // splicer begin function.get_char2
-    const char * SH_rv = getChar2();
-    return SH_rv;
+    const char * SHT_rv = getChar2();
+    return SHT_rv;
 // splicer end function.get_char2
 }
 
-// void getChar2(char * SH_F_rv+intent(out)+len(NSH_F_rv))
+// void getChar2(char * SHF_rv+intent(out)+len(NSHF_rv))
 // function_index=25
 /**
  * \brief return 'const char *' with fixed size (len=30)
  *
  */
-void STR_get_char2_bufferify(char * SH_F_rv, int NSH_F_rv)
+void STR_get_char2_bufferify(char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.get_char2_bufferify
-    const char * SH_rv = getChar2();
-    if (SH_rv == NULL) {
-      std::memset(SH_F_rv, ' ', NSH_F_rv);
+    const char * SHT_rv = getChar2();
+    if (SHT_rv == NULL) {
+      std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);
+      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
     }
     return;
 // splicer end function.get_char2_bufferify
@@ -257,8 +257,8 @@ void STR_get_char2_bufferify(char * SH_F_rv, int NSH_F_rv)
 const char * STR_get_char3()
 {
 // splicer begin function.get_char3
-    const char * SH_rv = getChar3();
-    return SH_rv;
+    const char * SHT_rv = getChar3();
+    return SHT_rv;
 // splicer end function.get_char3
 }
 
@@ -271,11 +271,11 @@ const char * STR_get_char3()
 void STR_get_char3_bufferify(char * output, int Noutput)
 {
 // splicer begin function.get_char3_bufferify
-    const char * SH_rv = getChar3();
-    if (SH_rv == NULL) {
+    const char * SHT_rv = getChar3();
+    if (SHT_rv == NULL) {
       std::memset(output, ' ', Noutput);
     } else {
-      ShroudStrCopy(output, Noutput, SH_rv);
+      ShroudStrCopy(output, Noutput, SHT_rv);
     }
     return;
 // splicer end function.get_char3_bufferify
@@ -290,26 +290,26 @@ void STR_get_char3_bufferify(char * output, int Noutput)
 const char * STR_get_string1()
 {
 // splicer begin function.get_string1
-    const std::string & SH_rv = getString1();
-    const char * XSH_rv = SH_rv.c_str();
-    return XSH_rv;
+    const std::string & SHT_rv = getString1();
+    const char * XSHT_rv = SHT_rv.c_str();
+    return XSHT_rv;
 // splicer end function.get_string1
 }
 
-// void getString1(string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
+// void getString1(string & SHF_rv+intent(out)+len(NSHF_rv))+pure
 // function_index=28
 /**
  * \brief return a 'const string&' as character(*)
  *
  */
-void STR_get_string1_bufferify(char * SH_F_rv, int NSH_F_rv)
+void STR_get_string1_bufferify(char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.get_string1_bufferify
-    const std::string & SH_rv = getString1();
-    if (SH_rv.empty()) {
-      std::memset(SH_F_rv, ' ', NSH_F_rv);
+    const std::string & SHT_rv = getString1();
+    if (SHT_rv.empty()) {
+      std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end function.get_string1_bufferify
@@ -324,31 +324,31 @@ void STR_get_string1_bufferify(char * SH_F_rv, int NSH_F_rv)
 const char * STR_get_string2()
 {
 // splicer begin function.get_string2
-    const std::string & SH_rv = getString2();
+    const std::string & SHT_rv = getString2();
     // C_error_pattern
-    if (SH_rv.empty()) {
+    if (SHT_rv.empty()) {
         return NULL;
     }
 
-    const char * XSH_rv = SH_rv.c_str();
-    return XSH_rv;
+    const char * XSHT_rv = SHT_rv.c_str();
+    return XSHT_rv;
 // splicer end function.get_string2
 }
 
-// void getString2(string & SH_F_rv+intent(out)+len(NSH_F_rv))
+// void getString2(string & SHF_rv+intent(out)+len(NSHF_rv))
 // function_index=29
 /**
  * \brief return 'const string&' with fixed size (len=30)
  *
  */
-void STR_get_string2_bufferify(char * SH_F_rv, int NSH_F_rv)
+void STR_get_string2_bufferify(char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.get_string2_bufferify
-    const std::string & SH_rv = getString2();
-    if (SH_rv.empty()) {
-      std::memset(SH_F_rv, ' ', NSH_F_rv);
+    const std::string & SHT_rv = getString2();
+    if (SHT_rv.empty()) {
+      std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end function.get_string2_bufferify
@@ -363,14 +363,14 @@ void STR_get_string2_bufferify(char * SH_F_rv, int NSH_F_rv)
 const char * STR_get_string3()
 {
 // splicer begin function.get_string3
-    const std::string & SH_rv = getString3();
+    const std::string & SHT_rv = getString3();
     // C_error_pattern
-    if (SH_rv.empty()) {
+    if (SHT_rv.empty()) {
         return NULL;
     }
 
-    const char * XSH_rv = SH_rv.c_str();
-    return XSH_rv;
+    const char * XSHT_rv = SHT_rv.c_str();
+    return XSHT_rv;
 // splicer end function.get_string3
 }
 
@@ -383,11 +383,11 @@ const char * STR_get_string3()
 void STR_get_string3_bufferify(char * output, int Noutput)
 {
 // splicer begin function.get_string3_bufferify
-    const std::string & SH_rv = getString3();
-    if (SH_rv.empty()) {
+    const std::string & SHT_rv = getString3();
+    if (SHT_rv.empty()) {
       std::memset(output, ' ', Noutput);
     } else {
-      ShroudStrCopy(output, Noutput, SH_rv.c_str());
+      ShroudStrCopy(output, Noutput, SHT_rv.c_str());
     }
     return;
 // splicer end function.get_string3_bufferify
@@ -402,50 +402,50 @@ void STR_get_string3_bufferify(char * output, int Noutput)
 const char * STR_get_string2_empty()
 {
 // splicer begin function.get_string2_empty
-    const std::string & SH_rv = getString2_empty();
+    const std::string & SHT_rv = getString2_empty();
     // C_error_pattern
-    if (SH_rv.empty()) {
+    if (SHT_rv.empty()) {
         return NULL;
     }
 
-    const char * XSH_rv = SH_rv.c_str();
-    return XSH_rv;
+    const char * XSHT_rv = SHT_rv.c_str();
+    return XSHT_rv;
 // splicer end function.get_string2_empty
 }
 
-// void getString2_empty(string & SH_F_rv+intent(out)+len(NSH_F_rv))
+// void getString2_empty(string & SHF_rv+intent(out)+len(NSHF_rv))
 // function_index=32
 /**
  * \brief Test returning empty string reference
  *
  */
-void STR_get_string2_empty_bufferify(char * SH_F_rv, int NSH_F_rv)
+void STR_get_string2_empty_bufferify(char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.get_string2_empty_bufferify
-    const std::string & SH_rv = getString2_empty();
-    if (SH_rv.empty()) {
-      std::memset(SH_F_rv, ' ', NSH_F_rv);
+    const std::string & SHT_rv = getString2_empty();
+    if (SHT_rv.empty()) {
+      std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end function.get_string2_empty_bufferify
 }
 
-// void getString5(string * SH_F_rv+intent(out)+len(NSH_F_rv))
+// void getString5(string * SHF_rv+intent(out)+len(NSHF_rv))
 // function_index=33
 /**
  * \brief return a 'const string' as argument
  *
  */
-void STR_get_string5_bufferify(char * SH_F_rv, int NSH_F_rv)
+void STR_get_string5_bufferify(char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.get_string5_bufferify
-    const std::string SH_rv = getString5();
-    if (SH_rv.empty()) {
-      std::memset(SH_F_rv, ' ', NSH_F_rv);
+    const std::string SHT_rv = getString5();
+    if (SHT_rv.empty()) {
+      std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end function.get_string5_bufferify
@@ -460,11 +460,11 @@ void STR_get_string5_bufferify(char * SH_F_rv, int NSH_F_rv)
 void STR_get_string6_bufferify(char * output, int Noutput)
 {
 // splicer begin function.get_string6_bufferify
-    const std::string SH_rv = getString6();
-    if (SH_rv.empty()) {
+    const std::string SHT_rv = getString6();
+    if (SHT_rv.empty()) {
       std::memset(output, ' ', Noutput);
     } else {
-      ShroudStrCopy(output, Noutput, SH_rv.c_str());
+      ShroudStrCopy(output, Noutput, SHT_rv.c_str());
     }
     return;
 // splicer end function.get_string6_bufferify
@@ -629,18 +629,18 @@ void STR_explicit2_bufferify(char * name, int AAtrim)
 // splicer end function.explicit2_bufferify
 }
 
-// void CreturnChar(char_scalar * SH_F_rv+intent(out)+len(NSH_F_rv))
+// void CreturnChar(char_scalar * SHF_rv+intent(out)+len(NSHF_rv))
 // function_index=41
 /**
  * \brief return a char argument (non-pointer), extern "C"
  *
  */
-void STR_creturn_char_bufferify(char * SH_F_rv, int NSH_F_rv)
+void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.creturn_char_bufferify
-    char SH_rv = CreturnChar();
-    std::memset(SH_F_rv, ' ', NSH_F_rv);
-    SH_F_rv[0] = SH_rv;
+    char SHT_rv = CreturnChar();
+    std::memset(SHF_rv, ' ', NSHF_rv);
+    SHF_rv[0] = SHT_rv;
     return;
 // splicer end function.creturn_char_bufferify
 }

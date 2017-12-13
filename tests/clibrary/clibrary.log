@@ -5,7 +5,7 @@ C function void Sum(int len+intent(in)+value, int * values+dimension(len)+intent
 C function bool Function3(bool arg+intent(in)+value)
 C function void Function3b(const bool arg1+intent(in)+value, bool * arg2+intent(out), bool * arg3+intent(inout))
 C function char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))
-C function void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SH_F_rv+intent(out)+len(NSH_F_rv))
+C function void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SHF_rv+intent(out)+len(NSHF_rv))
 Close wrapClibrary.h
 Close wrapClibrary.c
 C-interface, Fortran function void Function1()
@@ -14,5 +14,5 @@ C-interface, Fortran function void Sum(int len+intent(in)+value, int * values+di
 C-interface, Fortran function bool Function3(bool arg+intent(in)+value)
 C-interface, Fortran function void Function3b(const bool arg1+intent(in)+value, bool * arg2+intent(out), bool * arg3+intent(inout))
 C-interface, Fortran function char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))
-C-interface function void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SH_F_rv+intent(out)+len(NSH_F_rv))
+C-interface function void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SHF_rv+intent(out)+len(NSHF_rv))
 Close wrapfclibrary.f

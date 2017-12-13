@@ -42,6 +42,7 @@
 // #######################################################################
 // top.cpp
 #include "top.h"
+#include <string>
 
 // splicer begin CXX_definitions
 // Add some text from splicer
@@ -93,14 +94,26 @@ void YYY_TES_function3a_1(long i)
 // splicer end function.function3a_1
 }
 
-// int function4()
+// int function4(const std::string & rv+intent(in))
 // function_index=6
-int YYY_TES_function4()
+int YYY_TES_function4(const char * rv)
 {
 // splicer begin function.function4
-    int SH_rv = function4();
-    return SH_rv;
+    const std::string SH_rv(rv);
+    int SHT_rv = function4(SH_rv);
+    return SHT_rv;
 // splicer end function.function4
+}
+
+// int function4(const std::string & rv+intent(in)+len_trim(Lrv))
+// function_index=7
+int YYY_TES_function4_bufferify(const char * rv, int Lrv)
+{
+// splicer begin function.function4_bufferify
+    const std::string SH_rv(rv, Lrv);
+    int SHT_rv = function4(SH_rv);
+    return SHT_rv;
+// splicer end function.function4_bufferify
 }
 
 }  // extern "C"

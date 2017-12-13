@@ -281,16 +281,16 @@ class Schema(object):
         fmt_library.C_post_call = ''
 
         fmt_library.C_this = 'self'
-        fmt_library.C_result = 'SH_rv'
-        fmt_library.c_temp = 'SH_T_'
+        fmt_library.C_result = 'SHT_rv'
+        fmt_library.c_temp = 'SHT_'
 
         fmt_library.CPP_this = 'SH_this'
 
         fmt_library.F_this = 'obj'
-        fmt_library.F_result = 'SH_rv'
+        fmt_library.F_result = 'SHT_rv'
         fmt_library.F_derived_member = 'voidptr'
 
-        fmt_library.C_string_result_as_arg = 'SH_F_rv'
+        fmt_library.C_string_result_as_arg = 'SHF_rv'
         fmt_library.F_string_result_as_arg = ''
 
         fmt_library.F_filename_suffix = 'f'

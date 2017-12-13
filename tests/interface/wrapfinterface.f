@@ -62,13 +62,13 @@ module interface_mod
         end subroutine function1
 
         function function2(arg1, arg2) &
-                result(SH_rv) &
+                result(SHT_rv) &
                 bind(C, name="Function2")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
             integer(C_INT), value, intent(IN) :: arg2
-            real(C_DOUBLE) :: SH_rv
+            real(C_DOUBLE) :: SHT_rv
         end function function2
 
         ! splicer begin additional_interfaces

@@ -66,7 +66,6 @@
                         "F_name_function": "type_method1", 
                         "F_name_generic": "method1", 
                         "F_name_impl": "names_method1", 
-                        "F_result": "RV", 
                         "F_subprogram": "subroutine", 
                         "PY_name_impl": "PY_names_method1", 
                         "c_const": "", 
@@ -106,7 +105,6 @@
                         "F_name_function": "method2", 
                         "F_name_generic": "method2", 
                         "F_name_impl": "names_method2", 
-                        "F_result": "RV", 
                         "F_subprogram": "subroutine", 
                         "PY_name_impl": "PY_names_method2", 
                         "c_const": "", 
@@ -219,8 +217,8 @@
         "C_post_call": "", 
         "C_pre_call": "", 
         "C_prefix": "TES_", 
-        "C_result": "SH_rv", 
-        "C_string_result_as_arg": "SH_F_rv", 
+        "C_result": "SHT_rv", 
+        "C_string_result_as_arg": "SHF_rv", 
         "C_this": "self", 
         "F_C_prefix": "c_", 
         "F_C_pure_clause": "", 
@@ -230,7 +228,7 @@
         "F_impl_filename": "top.f", 
         "F_module_name": "top_module", 
         "F_pure_clause": "", 
-        "F_result": "RV", 
+        "F_result": "SHT_rv", 
         "F_result_clause": "", 
         "F_string_result_as_arg": "", 
         "F_this": "obj", 
@@ -254,7 +252,7 @@
         "PY_used_param_kwds": false, 
         "PY_used_param_self": false, 
         "YAML_type_filename": "testnames_types.yaml", 
-        "c_temp": "SH_T_", 
+        "c_temp": "SHT_", 
         "class_prefix": "", 
         "function_suffix": "", 
         "library": "testnames", 
@@ -287,7 +285,6 @@
                 "F_name_function": "function1", 
                 "F_name_generic": "function1", 
                 "F_name_impl": "testnames_function1", 
-                "F_result": "RV", 
                 "F_subprogram": "subroutine", 
                 "PY_name_impl": "PY_function1", 
                 "c_const": "", 
@@ -327,7 +324,6 @@
                 "F_name_function": "function2", 
                 "F_name_generic": "function2", 
                 "F_name_impl": "f_name_special", 
-                "F_result": "RV", 
                 "F_subprogram": "subroutine", 
                 "PY_name_impl": "PY_function2", 
                 "c_const": "", 
@@ -399,7 +395,6 @@
                 "F_name_function": "function3a_0", 
                 "F_name_generic": "generic3", 
                 "F_name_impl": "F_name_function3a_int", 
-                "F_result": "RV", 
                 "F_subprogram": "subroutine", 
                 "PY_name_impl": "PY_function3a_0", 
                 "c_const": "", 
@@ -472,7 +467,6 @@
                 "F_name_function": "function3a_1", 
                 "F_name_generic": "generic3", 
                 "F_name_impl": "F_name_function3a_long", 
-                "F_result": "RV", 
                 "F_subprogram": "subroutine", 
                 "PY_name_impl": "PY_function3a_1", 
                 "c_const": "", 
@@ -488,30 +482,57 @@
             }
         }, 
         {
-            "_decl": "int function4()", 
+            "_PTR_F_C_index": 7, 
+            "_decl": "int function4(const std::string & rv+intent(in))", 
             "_function_index": 6, 
             "_subprogram": "function", 
-            "args": [], 
+            "args": [
+                {
+                    "attrs": {
+                        "const": true, 
+                        "intent": "in", 
+                        "reference": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "rv", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_rv"
+                    }, 
+                    "fmtpy": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "rv", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_rv", 
+                        "py_var": "SH_Py_rv"
+                    }, 
+                    "name": "rv", 
+                    "type": "std::string"
+                }
+            ], 
             "attrs": {}, 
-            "decl": "int function4()", 
+            "decl": "int function4(const std::string &rv)", 
             "fmt": {
-                "C_call_code": "int SH_rv = function4();", 
-                "C_call_list": "", 
+                "C_call_code": "int SHT_rv = function4(SH_rv);", 
+                "C_call_list": "SH_rv", 
                 "C_name": "YYY_TES_function4", 
-                "C_prototype": "", 
-                "C_return_code": "return SH_rv;", 
+                "C_pre_call": "const std::string SH_rv(rv);", 
+                "C_prototype": "const char * rv", 
+                "C_return_code": "return SHT_rv;", 
                 "C_return_type": "int", 
-                "F_C_call": "yyy_tes_function4", 
+                "F_C_call": "yyy_tes_function4_bufferify", 
                 "F_C_name": "yyy_tes_function4", 
-                "F_arg_c_call": "", 
-                "F_arg_c_call_tab": "\t", 
-                "F_arguments": "", 
-                "F_call_code": "RV = yyy_tes_function4(\t)", 
+                "F_arg_c_call": "rv, len_trim(rv, kind=C_INT)", 
+                "F_arg_c_call_tab": "\trv\tlen_trim(rv, kind=C_INT)", 
+                "F_arguments": "rv", 
+                "F_call_code": "SHT_rv = yyy_tes_function4_bufferify(\trv\tlen_trim(rv, kind=C_INT))", 
                 "F_name_function": "function4", 
                 "F_name_generic": "function4", 
                 "F_name_impl": "testnames_function4", 
-                "F_result": "RV", 
-                "F_result_clause": " result(RV)", 
+                "F_result_clause": " result(SHT_rv)", 
                 "F_subprogram": "function", 
                 "PY_name_impl": "PY_function4", 
                 "c_const": "", 
@@ -522,8 +543,70 @@
             "result": {
                 "attrs": {}, 
                 "fmtc": {
-                    "cpp_rv_decl": "int SH_rv", 
-                    "cpp_var": "SH_rv"
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }, 
+                "name": "function4", 
+                "type": "int"
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 6, 
+            "_decl": "int function4(const std::string & rv+intent(in)+len_trim(Lrv))", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_function_index": 7, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "function", 
+            "args": [
+                {
+                    "attrs": {
+                        "const": true, 
+                        "intent": "in", 
+                        "len_trim": "Lrv", 
+                        "reference": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "rv", 
+                        "c_var_trim": "Lrv", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_rv"
+                    }, 
+                    "fmtf": {
+                        "c_var": "rv", 
+                        "f_var": "rv"
+                    }, 
+                    "name": "rv", 
+                    "type": "std::string"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "int function4(const std::string &rv)", 
+            "fmt": {
+                "C_call_code": "int SHT_rv = function4(SH_rv);", 
+                "C_call_list": "SH_rv", 
+                "C_name": "YYY_TES_function4_bufferify", 
+                "C_pre_call": "const std::string SH_rv(rv, Lrv);", 
+                "C_prototype": "const char * rv, int Lrv", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "int", 
+                "F_C_name": "yyy_tes_function4_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
+            "options": {
+                "wrap_c": true, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
+            }, 
+            "result": {
+                "attrs": {}, 
+                "fmtc": {
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
                 }, 
                 "name": "function4", 
                 "type": "int"
@@ -560,7 +643,6 @@
         "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}", 
         "F_name_instance_get": "get_instance", 
         "F_name_instance_set": "set_instance", 
-        "F_result": "RV", 
         "F_string_len_trim": true, 
         "LUA_class_reg_template": "{LUA_prefix}{cpp_class}_Reg", 
         "LUA_ctor_name_template": "{cpp_class}", 

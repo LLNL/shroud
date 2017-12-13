@@ -108,7 +108,8 @@ C_result
 
 c_temp
     Prefix for wrapper working variables.
-    Defaults to *SH_T_*.
+    Defaults to *SHT_*.
+
 F_module_name
     Name of module for Fortran interface for the library.
     Defaulted from expansion of option *F_module_name_library_template*.

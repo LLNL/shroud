@@ -63,13 +63,13 @@ module clibrary_mod
         end subroutine function1
 
         function function2(arg1, arg2) &
-                result(SH_rv) &
+                result(SHT_rv) &
                 bind(C, name="Function2")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
             integer(C_INT), value, intent(IN) :: arg2
-            real(C_DOUBLE) :: SH_rv
+            real(C_DOUBLE) :: SHT_rv
         end function function2
 
         subroutine sum(len, values, result) &
@@ -82,12 +82,12 @@ module clibrary_mod
         end subroutine sum
 
         function c_function3(arg) &
-                result(SH_rv) &
+                result(SHT_rv) &
                 bind(C, name="Function3")
             use iso_c_binding, only : C_BOOL
             implicit none
             logical(C_BOOL), value, intent(IN) :: arg
-            logical(C_BOOL) :: SH_rv
+            logical(C_BOOL) :: SHT_rv
         end function c_function3
 
         subroutine c_function3b(arg1, arg2, arg3) &
@@ -100,16 +100,16 @@ module clibrary_mod
         end subroutine c_function3b
 
         function c_function4a(arg1, arg2) &
-                result(SH_rv) &
+                result(SHT_rv) &
                 bind(C, name="Function4a")
             use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
             character(kind=C_CHAR), intent(IN) :: arg2(*)
-            type(C_PTR) SH_rv
+            type(C_PTR) SHT_rv
         end function c_function4a
 
-        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, SH_F_rv, NSH_F_rv) &
+        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, SHF_rv, NSHF_rv) &
                 bind(C, name="CLI_function4a_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
@@ -117,8 +117,8 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Larg1
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: Larg2
-            character(kind=C_CHAR), intent(OUT) :: SH_F_rv(*)
-            integer(C_INT), value, intent(IN) :: NSH_F_rv
+            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
+            integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
 
         ! splicer begin additional_interfaces
@@ -129,14 +129,14 @@ contains
 
     ! bool Function3(bool arg+intent(in)+value)
     ! function_index=3
-    function function3(arg) result(SH_rv)
+    function function3(arg) result(SHT_rv)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg
         logical(C_BOOL) SH_arg
-        logical :: SH_rv
+        logical :: SHT_rv
         SH_arg = arg  ! coerce to C_BOOL
         ! splicer begin function.function3
-        SH_rv = c_function3(SH_arg)
+        SHT_rv = c_function3(SH_arg)
         ! splicer end function.function3
     end function function3
 
@@ -165,19 +165,19 @@ contains
     ! char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))
     ! arg_to_buffer
     ! function_index=5
-    function function4a(arg1, arg2) result(SH_rv)
+    function function4a(arg1, arg2) result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(*), intent(IN) :: arg1
         character(*), intent(IN) :: arg2
-        character(kind=C_CHAR, len=30) :: SH_rv
+        character(kind=C_CHAR, len=30) :: SHT_rv
         ! splicer begin function.function4a
         call c_function4a_bufferify(  &
             arg1,  &
             len_trim(arg1, kind=C_INT),  &
             arg2,  &
             len_trim(arg2, kind=C_INT),  &
-            SH_rv,  &
-            len(SH_rv, kind=C_INT))
+            SHT_rv,  &
+            len(SHT_rv, kind=C_INT))
         ! splicer end function.function4a
     end function function4a
 

@@ -55,8 +55,8 @@
         "C_post_call": "", 
         "C_pre_call": "", 
         "C_prefix": "CLI_", 
-        "C_result": "SH_rv", 
-        "C_string_result_as_arg": "SH_F_rv", 
+        "C_result": "SHT_rv", 
+        "C_string_result_as_arg": "SHF_rv", 
         "C_this": "self", 
         "F_C_prefix": "c_", 
         "F_C_pure_clause": "", 
@@ -66,7 +66,7 @@
         "F_impl_filename": "wrapfclibrary.f", 
         "F_module_name": "clibrary_mod", 
         "F_pure_clause": "", 
-        "F_result": "SH_rv", 
+        "F_result": "SHT_rv", 
         "F_result_clause": "", 
         "F_string_result_as_arg": "", 
         "F_this": "obj", 
@@ -77,7 +77,7 @@
         "PY_impl_filename_suffix": "c", 
         "PY_result": "rv", 
         "YAML_type_filename": "clibrary_types.yaml", 
-        "c_temp": "SH_T_", 
+        "c_temp": "SHT_", 
         "class_prefix": "", 
         "function_suffix": "", 
         "library": "Clibrary", 
@@ -169,22 +169,22 @@
             "attrs": {}, 
             "decl": "double Function2(double arg1, int arg2)", 
             "fmt": {
-                "C_call_code": "double SH_rv = Function2(arg1, arg2);", 
+                "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
                 "C_name": "Function2", 
                 "C_prototype": "double arg1, int arg2", 
-                "C_return_code": "return SH_rv;", 
+                "C_return_code": "return SHT_rv;", 
                 "C_return_type": "double", 
                 "F_C_call": "c_function2", 
                 "F_C_name": "function2", 
                 "F_arg_c_call": "arg1, arg2", 
                 "F_arg_c_call_tab": "\targ1\targ2", 
                 "F_arguments": "arg1, arg2", 
-                "F_call_code": "SH_rv = c_function2(\targ1\targ2)", 
+                "F_call_code": "SHT_rv = c_function2(\targ1\targ2)", 
                 "F_name_function": "function2", 
                 "F_name_generic": "function2", 
                 "F_name_impl": "function2", 
-                "F_result_clause": " result(SH_rv)", 
+                "F_result_clause": " result(SHT_rv)", 
                 "F_subprogram": "function", 
                 "c_const": "", 
                 "function_name": "Function2", 
@@ -194,8 +194,8 @@
             "result": {
                 "attrs": {}, 
                 "fmtc": {
-                    "cpp_rv_decl": "double SH_rv", 
-                    "cpp_var": "SH_rv"
+                    "cpp_rv_decl": "double SHT_rv", 
+                    "cpp_var": "SHT_rv"
                 }, 
                 "name": "Function2", 
                 "type": "double"
@@ -325,22 +325,22 @@
             "attrs": {}, 
             "decl": "bool Function3(bool arg)", 
             "fmt": {
-                "C_call_code": "bool SH_rv = Function3(arg);", 
+                "C_call_code": "bool SHT_rv = Function3(arg);", 
                 "C_call_list": "arg", 
                 "C_name": "Function3", 
                 "C_prototype": "bool arg", 
-                "C_return_code": "return SH_rv;", 
+                "C_return_code": "return SHT_rv;", 
                 "C_return_type": "bool", 
                 "F_C_call": "c_function3", 
                 "F_C_name": "c_function3", 
                 "F_arg_c_call": "SH_arg", 
                 "F_arg_c_call_tab": "\tSH_arg", 
                 "F_arguments": "arg", 
-                "F_call_code": "SH_rv = c_function3(\tSH_arg)", 
+                "F_call_code": "SHT_rv = c_function3(\tSH_arg)", 
                 "F_name_function": "function3", 
                 "F_name_generic": "function3", 
                 "F_name_impl": "function3", 
-                "F_result_clause": " result(SH_rv)", 
+                "F_result_clause": " result(SHT_rv)", 
                 "F_subprogram": "function", 
                 "c_const": "", 
                 "function_name": "Function3", 
@@ -350,8 +350,8 @@
             "result": {
                 "attrs": {}, 
                 "fmtc": {
-                    "cpp_rv_decl": "bool SH_rv", 
-                    "cpp_var": "SH_rv"
+                    "cpp_rv_decl": "bool SHT_rv", 
+                    "cpp_var": "SHT_rv"
                 }, 
                 "name": "Function3", 
                 "type": "bool"
@@ -498,22 +498,22 @@
             "attrs": {}, 
             "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
             "fmt": {
-                "C_call_code": "char * SH_rv = Function4a(arg1, arg2);", 
+                "C_call_code": "char * SHT_rv = Function4a(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
                 "C_name": "Function4a", 
                 "C_prototype": "const char * arg1, const char * arg2", 
-                "C_return_code": "return SH_rv;", 
+                "C_return_code": "return SHT_rv;", 
                 "C_return_type": "char *", 
                 "F_C_call": "c_function4a_bufferify", 
                 "F_C_name": "c_function4a", 
-                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SH_rv, len(SH_rv, kind=C_INT)", 
-                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSH_rv\tlen(SH_rv, kind=C_INT)", 
+                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SHT_rv, len(SHT_rv, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT)", 
                 "F_arguments": "arg1, arg2", 
-                "F_call_code": "call c_function4a_bufferify(\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSH_rv\tlen(SH_rv, kind=C_INT))", 
+                "F_call_code": "call c_function4a_bufferify(\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT))", 
                 "F_name_function": "function4a", 
                 "F_name_generic": "function4a", 
                 "F_name_impl": "function4a", 
-                "F_result_clause": " result(SH_rv)", 
+                "F_result_clause": " result(SHT_rv)", 
                 "F_subprogram": "function", 
                 "c_const": "", 
                 "c_var_len": "30", 
@@ -527,8 +527,8 @@
                     "ptr": true
                 }, 
                 "fmtc": {
-                    "cpp_rv_decl": "char * SH_rv", 
-                    "cpp_var": "SH_rv"
+                    "cpp_rv_decl": "char * SHT_rv", 
+                    "cpp_var": "SHT_rv"
                 }, 
                 "name": "Function4a", 
                 "type": "char"
@@ -538,7 +538,7 @@
             "C_post_call": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
             "C_post_call_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
             "_PTR_C_CPP_index": 5, 
-            "_decl": "void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SH_F_rv+intent(out)+len(NSH_F_rv))", 
+            "_decl": "void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SHF_rv+intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 6, 
             "_generated": "arg_to_buffer", 
@@ -597,35 +597,35 @@
                         "_is_result": true, 
                         "const": false, 
                         "intent": "out", 
-                        "len": "NSH_F_rv", 
+                        "len": "NSHF_rv", 
                         "ptr": true
                     }, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
-                        "c_var": "SH_F_rv", 
-                        "c_var_len": "NSH_F_rv", 
+                        "c_var": "SHF_rv", 
+                        "c_var_len": "NSHF_rv", 
                         "cpp_type": "char", 
-                        "cpp_val": "SH_rv", 
-                        "cpp_var": "SH_rv"
+                        "cpp_val": "SHT_rv", 
+                        "cpp_var": "SHT_rv"
                     }, 
                     "fmtf": {
-                        "c_var": "SH_rv", 
-                        "f_var": "SH_rv"
+                        "c_var": "SHT_rv", 
+                        "f_var": "SHT_rv"
                     }, 
-                    "name": "SH_F_rv", 
+                    "name": "SHF_rv", 
                     "type": "char"
                 }
             ], 
             "attrs": {}, 
             "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
             "fmt": {
-                "C_call_code": "char * SH_rv = Function4a(SH_arg1, SH_arg2);", 
+                "C_call_code": "char * SHT_rv = Function4a(SH_arg1, SH_arg2);", 
                 "C_call_list": "SH_arg1, SH_arg2", 
                 "C_name": "CLI_function4a_bufferify", 
-                "C_post_call": "free(SH_arg1);\nfree(SH_arg2);\nif (SH_rv == NULL) {\n  memset(SH_F_rv, ' ', NSH_F_rv);\n} else {\n  ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);\n}", 
+                "C_post_call": "free(SH_arg1);\nfree(SH_arg2);\nif (SHT_rv == NULL) {\n  memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
                 "C_pre_call": "char * SH_arg1 = (char *) malloc(Larg1 + 1);\nmemcpy(SH_arg1, arg1, Larg1);\nSH_arg1[Larg1] = '\\0';\nchar * SH_arg2 = (char *) malloc(Larg2 + 1);\nmemcpy(SH_arg2, arg2, Larg2);\nSH_arg2[Larg2] = '\\0';", 
-                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * SH_F_rv, int NSH_F_rv", 
+                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv", 
                 "C_return_code": "return;", 
                 "C_return_type": "void", 
                 "F_C_name": "c_function4a_bufferify", 
@@ -646,8 +646,8 @@
                     "reference": false
                 }, 
                 "fmtc": {
-                    "cpp_rv_decl": "char * SH_rv", 
-                    "cpp_var": "SH_rv"
+                    "cpp_rv_decl": "char * SHT_rv", 
+                    "cpp_var": "SHT_rv"
                 }, 
                 "name": "Function4a", 
                 "type": "void"
