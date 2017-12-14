@@ -87,7 +87,6 @@ contains
 
     function names2_get_instance(obj) result (voidptr)
         use iso_c_binding, only: C_PTR
-        implicit none
         class(names2), intent(IN) :: obj
         type(C_PTR) :: voidptr
         voidptr = obj%voidptr
@@ -95,7 +94,6 @@ contains
 
     subroutine names2_set_instance(obj, voidptr)
         use iso_c_binding, only: C_PTR
-        implicit none
         class(names2), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: voidptr
         obj%voidptr = voidptr
@@ -103,7 +101,6 @@ contains
 
     function names2_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        implicit none
         class(names2), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%voidptr)
@@ -114,7 +111,6 @@ contains
 
     function names2_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        implicit none
         type(names2), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%voidptr, b%voidptr)) then
@@ -126,7 +122,6 @@ contains
 
     function names2_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        implicit none
         type(names2), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%voidptr, b%voidptr)) then

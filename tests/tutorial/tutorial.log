@@ -13,7 +13,7 @@ C function double Function2(double arg1+intent(in)+value, int arg2+intent(in)+va
 C function void Sum(int len+intent(in)+value, int * values+dimension(len)+intent(in), int * result+intent(out))
 C function bool Function3(bool arg+intent(in)+value)
 C function void Function3b(const bool arg1+intent(in)+value, bool * arg2+intent(out), bool * arg3+intent(inout))
-C function void Function4a(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string * SH_F_rv+intent(out)+len(NSH_F_rv))
+C function void Function4a(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string * SHF_rv+intent(out)+len(NSHF_rv))
 C function const std::string & Function4b(const std::string & arg1+intent(in), const std::string & arg2+intent(in))
 C function void Function4b(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string & output+intent(out)+len(Noutput))
 C function double Function5()
@@ -46,7 +46,7 @@ C function int vector_string_count(const std::vector & arg+dimension(:)+intent(i
 C function void vector_string_fill(std::vector & arg+dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))
 C function void vector_string_append(std::vector & arg+dimension(:)+intent(inout)+len(Narg)+size(Sarg)+template(std::string))
 C function const std::string & LastFunctionCalled()+pure
-C function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
+C function void LastFunctionCalled(std::string & SHF_rv+intent(out)+len(NSHF_rv))+pure
 Close wrapTutorial.h
 Close wrapTutorial.cpp
 class Class1
@@ -59,7 +59,7 @@ C-interface, Fortran function void Sum(int len+intent(in)+value, int * values+di
 C-interface, Fortran function bool Function3(bool arg+intent(in)+value)
 C-interface, Fortran function void Function3b(const bool arg1+intent(in)+value, bool * arg2+intent(out), bool * arg3+intent(inout))
 Fortran function const std::string Function4a(const std::string & arg1+intent(in), const std::string & arg2+intent(in))
-C-interface function void Function4a(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string * SH_F_rv+intent(out)+len(NSH_F_rv))
+C-interface function void Function4a(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string * SHF_rv+intent(out)+len(NSHF_rv))
 C-interface function const std::string & Function4b(const std::string & arg1+intent(in), const std::string & arg2+intent(in))
 C-interface function void Function4b(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string & output+intent(out)+len(Noutput))
 Fortran function void Function4b(const std::string & arg1+intent(in)+len_trim(Larg1), const std::string & arg2+intent(in)+len_trim(Larg2), std::string & output+intent(out)+len(Noutput))
@@ -103,7 +103,7 @@ C-interface function void vector_string_fill(std::vector & arg+dimension(:)+inte
 Fortran function void vector_string_append(std::vector & arg+dimension(:)+intent(inout)+template(std::string))
 C-interface function void vector_string_append(std::vector & arg+dimension(:)+intent(inout)+len(Narg)+size(Sarg)+template(std::string))
 C-interface, Fortran function const std::string & LastFunctionCalled()+pure
-C-interface function void LastFunctionCalled(std::string & SH_F_rv+intent(out)+len(NSH_F_rv))+pure
+C-interface function void LastFunctionCalled(std::string & SHF_rv+intent(out)+len(NSHF_rv))+pure
 Close wrapftutorial.f
 class Class1
 Python method Class1 * new()+constructor

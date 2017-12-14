@@ -306,20 +306,26 @@ class WrapperMixin(object):
         """Insert a splicer with *name* into list *out*.
         Use the splicer from the splicer_stack if it exists.
         This allows the user to replace the default text.
+        Return true if code was added to out, else false.
         TODO:
           Option to ignore splicer stack to generate original code
         """
         # The prefix is needed when two different sets of output
         # are being create and they are not in sync.
         # Creating methods and derived types together.
+        added_code = False
         show_splicer_comments = self.tree['options'].show_splicer_comments
         if show_splicer_comments:
             out.append('%s splicer begin %s%s' % (
                 self.comment, self.splicer_path, name))
-        out.extend(self.splicer_stack[-1].get(name, default))
+        code = self.splicer_stack[-1].get(name, default)
+        if code:
+            added_code = True
+            out.extend(code)
         if show_splicer_comments:
             out.append('%s splicer end %s%s' % (
                 self.comment, self.splicer_path, name))
+        return added_code
 
 #####
 

@@ -1,8 +1,11 @@
-// Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
-// Produced at the Lawrence Livermore National Laboratory 
+// wrapClibrary.c
+// This is generated code, do not edit
+// #######################################################################
+// Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+// Produced at the Lawrence Livermore National Laboratory
 //
 // LLNL-CODE-738041.
-// All rights reserved. 
+// All rights reserved.
 //
 // This file is part of Shroud.  For details, see
 // https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
@@ -13,7 +16,7 @@
 //
 // * Redistributions of source code must retain the above copyright
 //   notice, this list of conditions and the disclaimer below.
-// 
+//
 // * Redistributions in binary form must reproduce the above copyright
 //   notice, this list of conditions and the disclaimer (as noted below)
 //   in the documentation and/or other materials provided with the
@@ -37,53 +40,52 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-//
-// strings.hpp - wrapped routines
-//
+// wrapClibrary.c
+#include "wrapClibrary.h"
+#include <stdlib.h>
+#include <string.h>
+#include "clibrary.h"
 
-#ifndef STRINGS_HPP
-#define STRINGS_HPP
-
-#include <string>
-
-void passChar(char status);
-char returnChar();
-
-void passCharPtr(char * dest, const char *src);
-void passCharPtrInOut(char * s);
-
-const char * getChar1();
-const char * getChar2();
-const char * getChar3();
-
-const std::string& getString1();
-const std::string& getString2();
-const std::string& getString3();
-const std::string& getString2_empty();
-
-const std::string getString4();
-const std::string getString5();
-const std::string getString6();
-
-void acceptName_instance(std::string arg1);
-
-void acceptStringConstReference(const std::string & arg1);
-
-void acceptStringReferenceOut(std::string & arg1);
-
-void acceptStringReference(std::string & arg1);
-
-void acceptStringPointer(std::string * arg1);
-
-void explicit1(char * name);
-void explicit2(char * name);
-
-extern "C" {
-  void CpassChar(char status);
-  char CreturnChar();
-
-  void CpassCharPtr(char * dest, const char *src);
+// Copy s into a, blank fill to la characters
+// Truncate if a is too short.
+static void ShroudStrCopy(char *a, int la, const char *s)
+{
+   int ls,nm;
+   ls = strlen(s);
+   nm = ls < la ? ls : la;
+   memcpy(a,s,nm);
+   if(la > nm) memset(a+nm,' ',la-nm);
 }
 
+// splicer begin C_definitions
+// splicer end C_definitions
 
-#endif // STRINGS_HPP
+// void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SHF_rv+intent(out)+len(NSHF_rv))
+// function_index=6
+void CLI_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
+{
+// splicer begin function.function4a_bufferify
+    char * SH_arg1 = (char *) malloc(Larg1 + 1);
+    memcpy(SH_arg1, arg1, Larg1);
+    SH_arg1[Larg1] = '\0';
+    char * SH_arg2 = (char *) malloc(Larg2 + 1);
+    memcpy(SH_arg2, arg2, Larg2);
+    SH_arg2[Larg2] = '\0';
+    char * SHT_rv = Function4a(SH_arg1, SH_arg2);
+    free(SH_arg1);
+    free(SH_arg2);
+    if (SHT_rv == NULL) {
+      memset(SHF_rv, ' ', NSHF_rv);
+    } else {
+      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
+    }
+    {
+    // C_post_call
+    // Function4a allocates memory which must be released after it is copied
+    // into the Fortran argument or else it will leak.
+    free(SHT_rv);
+
+    }
+    return;
+// splicer end function.function4a_bufferify
+}

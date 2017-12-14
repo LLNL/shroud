@@ -184,6 +184,10 @@ class Schema(object):
         """
         node = self.tree
 
+        language = node['language'].lower()
+        if language not in ['c', 'c++']:
+            raise RuntimeError("language must be 'c' or 'c++'")
+
         # default options
         def_options = util.Options(
             parent=None,
@@ -277,20 +281,18 @@ class Schema(object):
         fmt_library.C_post_call = ''
 
         fmt_library.C_this = 'self'
-        fmt_library.C_result = 'SH_rv'
-        fmt_library.c_temp = 'SH_T_'
+        fmt_library.C_result = 'SHT_rv'
+        fmt_library.c_temp = 'SHT_'
 
         fmt_library.CPP_this = 'SH_this'
 
         fmt_library.F_this = 'obj'
-        fmt_library.F_result = 'SH_rv'
+        fmt_library.F_result = 'SHT_rv'
         fmt_library.F_derived_member = 'voidptr'
 
-        fmt_library.C_string_result_as_arg = 'SH_F_rv'
+        fmt_library.C_string_result_as_arg = 'SHF_rv'
         fmt_library.F_string_result_as_arg = ''
 
-        fmt_library.C_header_filename_suffix = 'h'
-        fmt_library.C_impl_filename_suffix = 'cpp'
         fmt_library.F_filename_suffix = 'f'
 
         # don't have to worry about argument names in Python wrappers
@@ -298,11 +300,28 @@ class Schema(object):
         fmt_library.PY_result = 'rv'
         fmt_library.LUA_result = 'rv'
 
-        fmt_library.PY_header_filename_suffix = 'hpp'
-        fmt_library.PY_impl_filename_suffix = 'cpp'
+        if language == 'c':
+            fmt_library.C_header_filename_suffix = 'h'
+            fmt_library.C_impl_filename_suffix = 'c'
 
-        fmt_library.LUA_header_filename_suffix = 'hpp'
-        fmt_library.LUA_impl_filename_suffix = 'cpp'
+            fmt_library.PY_header_filename_suffix = 'h'
+            fmt_library.PY_impl_filename_suffix = 'c'
+
+            fmt_library.LUA_header_filename_suffix = 'h'
+            fmt_library.LUA_impl_filename_suffix = 'c'
+
+            fmt_library.stdlib  = ''
+        else:
+            fmt_library.C_header_filename_suffix = 'h'
+            fmt_library.C_impl_filename_suffix = 'cpp'
+
+            fmt_library.PY_header_filename_suffix = 'hpp'
+            fmt_library.PY_impl_filename_suffix = 'cpp'
+
+            fmt_library.LUA_header_filename_suffix = 'hpp'
+            fmt_library.LUA_impl_filename_suffix = 'cpp'
+
+            fmt_library.stdlib  = 'std::'
 
         self.option_to_fmt(fmt_library, old)
 
@@ -455,49 +474,55 @@ class Schema(object):
                     intent_in_buf=dict(
                         buf_args = [ 'len_trim' ],
                         cpp_local_var=True,
-                        cpp_header='<cstring>',
+                        c_header='<stdlib.h> <string.h>',
+                        cpp_header='<stdlib.h> <cstring>',
                         pre_call=[
-                            'char * {cpp_var} = new char [{c_var_trim} + 1];',
-                            'std::strncpy({cpp_var}, {c_var}, {c_var_trim});',
+                            'char * {cpp_var} = (char *) malloc({c_var_trim} + 1);',
+                            '{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});',
                             '{cpp_var}[{c_var_trim}] = \'\\0\';'
                             ],
                         post_call=[
-                            'delete [] {cpp_var};'
+                            'free({cpp_var});'
                             ],
                         ),
                     intent_out_buf=dict(
                         buf_args = [ 'len' ],
                         cpp_local_var=True,
+                        c_header='<stdlib.h>',
+                        cpp_header='<stdlib.h>',
                         c_helper='ShroudStrCopy',
                         pre_call=[
-                            'char * {cpp_var} = new char [{c_var_len} + 1];',
+                            'char * {cpp_var} = (char *) malloc({c_var_len} + 1);',
                             ],
                         post_call=[
                             'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-                            'delete [] {cpp_var};',
+                            'free({cpp_var});',
                             ],
                         ),
                     intent_inout_buf=dict(
                         buf_args = [ 'len_trim', 'len' ],
                         cpp_local_var=True,
                         c_helper='ShroudStrCopy',
+                        c_header='<stdlib.h> <string.h>',
+                        cpp_header='<stdlib.h> <cstring>',
                         pre_call=[
-                            'char * {cpp_var} = new char [{c_var_len} + 1];',
-                            'std::strncpy({cpp_var}, {c_var}, {c_var_trim});',
+                            'char * {cpp_var} = (char *) malloc({c_var_len} + 1);',
+                            '{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});',
                             '{cpp_var}[{c_var_trim}] = \'\\0\';'
                             ],
                         post_call=[
                             'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-                            'delete [] {cpp_var};',
+                            'free({cpp_var});',
                             ],
                         ),
                     result_buf=dict(
                         buf_args = [ 'len' ],
+                        c_header='<string.h>',
                         cpp_header='<cstring>',
                         c_helper='ShroudStrCopy',
                         post_call=[
                             'if ({cpp_var} == NULL) {{',
-                            '  std::memset({c_var}, \' \', {c_var_len});',
+                            '  {stdlib}memset({c_var}, \' \', {c_var_len});',
                             '}} else {{',
                             '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});',
                             '}}',
@@ -539,9 +564,10 @@ class Schema(object):
                 c_statements=dict(
                     result_buf=dict(
                         buf_args = [ 'len' ],
+                        c_header='<string.h>',
                         cpp_header='<cstring>',
                         post_call=[
-                            'std::memset({c_var}, \' \', {c_var_len});',
+                            '{stdlib}memset({c_var}, \' \', {c_var_len});',
                             '{c_var}[0] = {cpp_var};',
                         ],
                     ),
@@ -637,7 +663,7 @@ class Schema(object):
                         c_helper='ShroudStrCopy',
                         post_call=[
                             'if ({cpp_var}.empty()) {{',
-                            '  std::memset({c_var}, \' \', {c_var_len});',
+                            '  {stdlib}memset({c_var}, \' \', {c_var_len});',
                             '}} else {{',
                             '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
                             '}}',
@@ -1043,8 +1069,9 @@ class GenFunctions(object):
             cls['methods'] = self.define_function_suffix(cls['methods'])
         tree['functions'] = self.define_function_suffix(tree['functions'])
 
-        for cls in tree['classes']:
-            self.check_class_dependencies(cls)
+# No longer need this, but keep code for now in case some other dependency checking is needed
+#        for cls in tree['classes']:
+#            self.check_class_dependencies(cls)
 
     def append_function_index(self, node):
         """append to function_index, set index into node.
@@ -1379,6 +1406,13 @@ class GenFunctions(object):
 
                 ## base typedef
 
+        # Copy over some buffer specific fields to their generic name.
+        #    C_post_call = C_post_call_buf
+        for field in ['C_post_call']:
+            workname = field + '_buf'
+            if workname in C_new:
+                C_new[field] = C_new[workname]
+
         if has_string_result:
             # Add additional argument to hold result
             result_as_string = copy.deepcopy(result)
@@ -1428,7 +1462,7 @@ class GenFunctions(object):
             # Fortran function may call C subroutine if string result
             node['_PTR_F_C_index'] = C_new['_function_index']
 
-    def check_class_dependencies(self, node):
+    def XXXcheck_class_dependencies(self, node):
         """
         Check used_types and find which header and module files
         to use for this class
@@ -1455,7 +1489,7 @@ class GenFunctions(object):
             F_modules.append((mname, sorted(modules[mname])))
         node['F_module_dependencies'] = F_modules
 
-    def check_function_dependencies(self, node, used_types):
+    def XXXcheck_function_dependencies(self, node, used_types):
         """Record which types are used by a function.
         """
         if 'cpp_template' in node:
@@ -1478,7 +1512,8 @@ class GenFunctions(object):
             typedef = util.Typedef.lookup(argtype)
             if typedef is None:
                 raise RuntimeError("%s not defined" % argtype)
-            used_types[argtype] = typedef
+            if typedef.base == 'wrapped':
+                used_types[argtype] = typedef
 
     _skip_annotations = ['const', 'ptr', 'reference']
 
@@ -1946,6 +1981,7 @@ def main_with_args(args):
         library='default_library',
         cpp_header='',
         namespace='',
+        language='c++',
         )
     splicers = dict(c={}, f={}, py={}, lua={})
 
@@ -1974,7 +2010,7 @@ def main_with_args(args):
     Namify(all, config).name_library()
 
     if 'splicer' in all:
-        # read splicer files defined in input yaml file
+        # read splicer files defined in input YAML file
         for suffix, names in all['splicer'].items():
             # suffix = 'c', 'f', 'py', 'lua'
             subsplicer = splicers.setdefault(suffix, {})
@@ -1990,6 +2026,10 @@ def main_with_args(args):
                     raise RuntimeError("File not found: %s" % name)
                 log.write("Read splicer %s\n" % name)
                 splicer.get_splicers(fullname, subsplicer)
+
+    # Add any explicit splicers in the YAML file.
+    if 'splicer_code' in all:
+        splicers.update(all['splicer_code'])
 
     # Write out generated types
     TypeOut(all, config).write_types()

@@ -50,6 +50,7 @@ program tester
   call init_fruit
 
   call test_charargs
+  call test_charargs_c
   call test_functions
 
   call fruit_summary
@@ -63,6 +64,7 @@ program tester
 contains
 
   subroutine test_charargs
+    ! test C++ functions
 
     character(30) str
     character ch
@@ -92,6 +94,32 @@ contains
 
   end subroutine test_charargs
 
+  subroutine test_charargs_c
+    ! test extern "C" functions
+
+    character(30) str
+    character ch
+
+    call set_case_name("test_charargs_c")
+
+    call pass_char("w")
+
+    ch = return_char()
+    call assert_true( ch == "w")
+
+    ! character(*) function
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call cpass_char_ptr(dest=str, src="bird")
+    call assert_true( str == "bird")
+
+    ! call C version directly via the interface
+    ! caller is responsible for nulls
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call c_cpass_char_ptr(dest=str, src="mouse" // C_NULL_CHAR)
+    call assert_true( str(1:5) == "mouse")
+    call assert_true( str(6:6) == C_NULL_CHAR)
+
+  end subroutine test_charargs_c
 
   subroutine test_functions
 

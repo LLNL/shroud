@@ -61,6 +61,7 @@ class Wrapc(util.WrapperMixin):
     def __init__(self, tree, config, splicers):
         self.tree = tree    # json tree
         self.patterns = tree['patterns']
+        self.language = tree['language']
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -172,13 +173,15 @@ class Wrapc(util.WrapperMixin):
         node = cls or library
         options = node['options']
 
+        # If no C wrappers are required, do not write the file
+        write_file = False
         output = []
 
         if options.doxygen:
             self.write_doxygen_file(output, fname, library, cls)
 
         output.extend([
-                '// For C users and C++ implementation',
+                '// For C users and %s implementation' % self.language.upper(),
                 '',
                 '#ifndef %s' % guard,
                 '#define %s' % guard,
@@ -190,38 +193,49 @@ class Wrapc(util.WrapperMixin):
             headers = self.header_typedef_include.keys()
             self.write_headers(headers, output)
 
-        output.append('')
-        self._create_splicer('CXX_declarations', output)
-
+        if self.language == 'c++':
+            output.append('')
+            if self._create_splicer('CXX_declarations', output):
+                write_file = True
+            output.extend([
+                    '',
+                    '#ifdef __cplusplus',
+                    'extern "C" {',
+                    '#endif'
+                    ])
         output.extend([
                 '',
-                '#ifdef __cplusplus',
-                'extern "C" {',
-                '#endif',
-                '',
-                '// declaration of wrapped types',
+                '// declaration of wrapped types'
                 ])
         names = sorted(self.header_forward.keys())
         for name in names:
+            write_file = True
             output.append(
                 'struct s_{C_type_name};\n'
                 'typedef struct s_{C_type_name} {C_type_name};'.
                 format(C_type_name=name))
         output.append('')
-        self._create_splicer('C_declarations', output)
-        output.extend(self.header_proto_c)
+        if self._create_splicer('C_declarations', output):
+            write_file = True
+        if self.header_proto_c:
+            write_file = True
+            output.extend(self.header_proto_c)
+        if self.language == 'c++':
+            output.extend([
+                    '',
+                    '#ifdef __cplusplus',
+                    '}',
+                    '#endif'
+                    ])
         output.extend([
-                '',
-                '#ifdef __cplusplus',
-                '}',
-                '#endif',
                 '',
                 '#endif  // %s' % guard
                 ])
 
-        self.config.cfiles.append(
-            os.path.join(self.config.c_fortran_dir, fname))
-        self.write_output_file(fname, self.config.c_fortran_dir, output)
+        if write_file:
+            self.config.cfiles.append(
+                os.path.join(self.config.c_fortran_dir, fname))
+            self.write_output_file(fname, self.config.c_fortran_dir, output)
 
     def write_impl(self, library, cls, hname, fname):
         """Write implementation
@@ -229,6 +243,8 @@ class Wrapc(util.WrapperMixin):
         node = cls or library
         options = node['options']
 
+        # If no C wrappers are required, do not write the file
+        write_file = False
         output = []
         output.append('// ' + fname)
 
@@ -237,12 +253,20 @@ class Wrapc(util.WrapperMixin):
         if self.c_helper:
             helperdict = whelpers.find_all_helpers('c', self.c_helper)
             helpers = sorted(self.c_helper)
+            if self.language == 'c':
+                lang_header = 'c_header'
+                lang_source = 'c_source'
+            else:
+                lang_header = 'cpp_header'
+                lang_source = 'cpp_source'
             for helper in helpers:
                 helper_info = helperdict[helper]
-                if 'cpp_header' in helper_info:
-                    for include in helper_info['cpp_header'].split():
+                if lang_header in helper_info:
+                    for include in helper_info[lang_header].split():
                         self.header_impl_include[include] = True
-                if 'source' in helper_info:
+                if lang_source in helper_info:
+                    helper_source.append(helper_info[lang_source])
+                elif 'source' in helper_info:
                     helper_source.append(helper_info['source'])
 
         output.append('#include "%s"' % hname)
@@ -260,23 +284,32 @@ class Wrapc(util.WrapperMixin):
             headers = self.header_impl_include.keys()
             self.write_headers(headers, output)
 
-        output.extend(helper_source)
+        if helper_source:
+            write_file = True
+            output.extend(helper_source)
 
         self.namespace(library, cls, 'begin', output)
+        if self.language == 'c++':
+            output.append('')
+            if self._create_splicer('CXX_definitions', output):
+                write_file = True
+            output.append('\nextern "C" {')
         output.append('')
-        self._create_splicer('CXX_definitions', output)
-        output.append('\nextern "C" {')
-        output.append('')
-        self._create_splicer('C_definitions', output)
-        output.extend(self.impl)
-        output.append('')
+        if self._create_splicer('C_definitions', output):
+            write_file = True
+        if self.impl:
+            write_file = True
+            output.extend(self.impl)
 
-        output.append('}  // extern "C"')
+        if self.language == 'c++':
+            output.append('')
+            output.append('}  // extern "C"')
         self.namespace(library, cls, 'end', output)
 
-        self.config.cfiles.append(
-            os.path.join(self.config.c_fortran_dir, fname))
-        self.write_output_file(fname, self.config.c_fortran_dir, output)
+        if write_file:
+            self.config.cfiles.append(
+                os.path.join(self.config.c_fortran_dir, fname))
+            self.write_output_file(fname, self.config.c_fortran_dir, output)
 
     def write_headers(self, headers, output):
         for header in sorted(headers):
@@ -323,6 +356,18 @@ class Wrapc(util.WrapperMixin):
 
         fmt_func = node['fmt']
 
+        if self.language == 'c' or options.get('C_extern_C',False):
+            # Fortran can call C directly and only needs wrappers when code is
+            # inserted. For example, precall or postcall.
+            need_wrapper = False
+        else:
+            # C++ will need C wrappers to deal with name mangling.
+            need_wrapper = True
+        if self.language == 'c':
+            lang_header = 'c_header'
+        else:
+            lang_header = 'cpp_header'
+
         # Look for C++ routine to wrap
         # Usually the same node unless it is generated (i.e. bufferified)
         CPP_node = node
@@ -343,6 +388,9 @@ class Wrapc(util.WrapperMixin):
         result_type = result['type']
         subprogram = node['_subprogram']
         generator = node.get('_generated', '')
+        intent_grp = ''
+        if generator == 'arg_to_buffer':
+            intent_grp = '_buf'
 
         # C++ functions which return 'this',
         # are easier to call from Fortran if they are subroutines.
@@ -388,6 +436,7 @@ class Wrapc(util.WrapperMixin):
         proto_list = []
         call_list = []
         if cls:
+            need_wrapper = True
             # object pointer
             arg_dict = dict(name=fmt_func.C_this,
                             type=cls['name'],
@@ -444,16 +493,13 @@ class Wrapc(util.WrapperMixin):
 
             proto_list.append(self._c_decl('c_type', arg))
 
-            intent_grp = ''
-            if generator == 'arg_to_buffer':
-                intent_grp = '_buf'
-
             if c_attrs.get('_is_result', False):
                 arg_call = False
                 fmt_arg.cpp_var = fmt_arg.C_result
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 stmts = 'result' + intent_grp
+                need_wrapper = True
             else:
                 arg_call = arg
                 fmt_arg.cpp_var = fmt_arg.c_var      # name in c++ call.
@@ -463,6 +509,7 @@ class Wrapc(util.WrapperMixin):
 
             # Add implied buffer arguments to prototype
             for buf_arg in intent_blk.get('buf_args', []):
+                need_wrapper = True
                 if buf_arg == 'size':
                     fmt_arg.c_var_size = c_attrs['size']
                     append_format(proto_list, 'long {c_var_size}', fmt_arg)
@@ -486,11 +533,13 @@ class Wrapc(util.WrapperMixin):
             # pre_call.append('// intent=%s' % intent)
             cmd_list = intent_blk.get('pre_call', [])
             if cmd_list:
+                need_wrapper = True
                 for cmd in cmd_list:
                     append_format(pre_call, cmd, fmt_arg)
 
             cmd_list = intent_blk.get('post_call', [])
             if cmd_list:
+                need_wrapper = True
                 # pick up c_str() from cpp_to_c
                 fmt_arg.cpp_val = wformat(arg_typedef.cpp_to_c, fmt_arg)
                 for cmd in cmd_list:
@@ -500,7 +549,7 @@ class Wrapc(util.WrapperMixin):
                 for helper in intent_blk['c_helper'].split():
                     self.c_helper[helper] = True
 
-            cpp_header = intent_blk.get('cpp_header', None)
+            cpp_header = intent_blk.get(lang_header, None)
             # include any dependent header in generated source
             if cpp_header:
                 for h in cpp_header.split():
@@ -560,13 +609,16 @@ class Wrapc(util.WrapperMixin):
                 append_format(
                     post_call_pattern, self.patterns[C_error_pattern], fmt_pattern)
         if post_call_pattern:
+            need_wrapper = True
             fmt_func.C_post_call_pattern = '\n'.join(post_call_pattern)
 
         # body of function
         splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
         if 'C_code' in node:
+            need_wrapper = True
             C_code = [1, wformat(node['C_code'], fmt_func), -1]
         elif splicer_code:
+            need_wrapper = True
             C_code = splicer_code
         else:
             # generate the C body
@@ -625,6 +677,7 @@ class Wrapc(util.WrapperMixin):
                                             + ';')
 
             if 'C_post_call' in node:
+                need_wrapper = True
                 post_call.append('{')
                 post_call.append('// C_post_call')
                 append_format(post_call, node['C_post_call'], fmt_func)
@@ -632,6 +685,7 @@ class Wrapc(util.WrapperMixin):
 
             if 'C_return_code' in node:
                 # override any computed return code.
+                need_wrapper = True
                 fmt_func.C_return_code = wformat(node['C_return_code'], fmt_func)
 
             # copy-out values, clean up
@@ -643,20 +697,47 @@ class Wrapc(util.WrapperMixin):
             C_code.append(fmt_func.C_return_code)
             C_code.append(-1)
 
-        self.header_proto_c.append('')
-        self.header_proto_c.append(
-            wformat('{C_return_type} {C_name}({C_prototype});',
-                    fmt_func))
+        if need_wrapper:
+            self.header_proto_c.append('')
+            self.header_proto_c.append(
+                wformat('{C_return_type} {C_name}({C_prototype});',
+                        fmt_func))
 
-        impl = self.impl
-        impl.append('')
-        if options.debug:
-            impl.append('// %s' % node['_decl'])
-            impl.append('// function_index=%d' % node['_function_index'])
-        if options.doxygen and 'doxygen' in node:
-            self.write_doxygen(impl, node['doxygen'])
-        impl.append(wformat('{C_return_type} {C_name}({C_prototype})', fmt_func))
-        impl.append('{')
-        self._create_splicer(fmt_func.underscore_name +
-                             fmt_func.function_suffix, impl, C_code)
-        impl.append('}')
+            impl = self.impl
+            impl.append('')
+            if options.debug:
+                impl.append('// %s' % node['_decl'])
+                impl.append('// function_index=%d' % node['_function_index'])
+            if options.doxygen and 'doxygen' in node:
+                self.write_doxygen(impl, node['doxygen'])
+            impl.append(wformat('{C_return_type} {C_name}({C_prototype})', fmt_func))
+            impl.append('{')
+            self._create_splicer(fmt_func.underscore_name +
+                                 fmt_func.function_suffix, impl, C_code)
+            impl.append('}')
+        else:
+            # There is no C wrapper, have Fortran call the function directly.
+            fmt_func.C_name = node['result']['name']
+
+
+    def XXXget_intent(self, intent_blk, block):
+        # Maybe later...
+        """Get a language specific block of code.
+        block = pre_call, post_call
+
+        intent_in={
+            pre_call_c = []
+            pre_call_cpp = []
+        }
+        -- or --
+        intent_in={
+            pre_call = []
+        }
+        """
+        name = block + '_' + self.language
+        if name in intent_blk:
+            return intent_blk[name]
+        elif block in intent_blk:
+            return intent_blk[block]
+        else:
+            return []

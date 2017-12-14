@@ -766,11 +766,11 @@ The C wrapper then creates a ``std::vector``::
         vector_iota(SH_arg);
         {
           std::vector<int>::size_type
-            SH_T_i = 0,
-            SH_T_n = Sarg;
-          SH_T_n = std::min(SH_arg.size(), SH_T_n);
-          for(; SH_T_i < SH_T_n; SH_T_i++) {
-            arg[SH_T_i] = SH_arg[SH_T_i];
+            SHT_i = 0,
+            SHT_n = Sarg;
+          SHT_n = std::min(SH_arg.size(), SHT_n);
+          for(; SHT_i < SHT_n; SHT_i++) {
+            arg[SHT_i] = SH_arg[SHT_i];
           }
         }
         return;
@@ -881,5 +881,9 @@ function returns a ``char *`` value, it will also be copied into Fortran
 memory. But if the caller of the C++ function wants to transfer
 ownership of the pointer to its caller, the C++ wrapper will leak the
 memory.
+
+The **C_post_call** variable may be used to insert code before
+returning from the wrapper.  Use **C_post_call_buf** for the buffer
+version of wrapped functions.
 
 .. note:: Reference counting and garbage collection are still a work in progress

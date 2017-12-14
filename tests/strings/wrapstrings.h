@@ -65,7 +65,7 @@ void STR_pass_char(char status);
 
 char STR_return_char();
 
-void STR_return_char_bufferify(char * SH_F_rv, int NSH_F_rv);
+void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv);
 
 void STR_pass_char_ptr(char * dest, const char * src);
 
@@ -77,11 +77,11 @@ void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns);
 
 const char * STR_get_char1();
 
-void STR_get_char1_bufferify(char * SH_F_rv, int NSH_F_rv);
+void STR_get_char1_bufferify(char * SHF_rv, int NSHF_rv);
 
 const char * STR_get_char2();
 
-void STR_get_char2_bufferify(char * SH_F_rv, int NSH_F_rv);
+void STR_get_char2_bufferify(char * SHF_rv, int NSHF_rv);
 
 const char * STR_get_char3();
 
@@ -89,11 +89,11 @@ void STR_get_char3_bufferify(char * output, int Noutput);
 
 const char * STR_get_string1();
 
-void STR_get_string1_bufferify(char * SH_F_rv, int NSH_F_rv);
+void STR_get_string1_bufferify(char * SHF_rv, int NSHF_rv);
 
 const char * STR_get_string2();
 
-void STR_get_string2_bufferify(char * SH_F_rv, int NSH_F_rv);
+void STR_get_string2_bufferify(char * SHF_rv, int NSHF_rv);
 
 const char * STR_get_string3();
 
@@ -101,9 +101,9 @@ void STR_get_string3_bufferify(char * output, int Noutput);
 
 const char * STR_get_string2_empty();
 
-void STR_get_string2_empty_bufferify(char * SH_F_rv, int NSH_F_rv);
+void STR_get_string2_empty_bufferify(char * SHF_rv, int NSHF_rv);
 
-void STR_get_string5_bufferify(char * SH_F_rv, int NSH_F_rv);
+void STR_get_string5_bufferify(char * SHF_rv, int NSHF_rv);
 
 void STR_get_string6_bufferify(char * output, int Noutput);
 
@@ -126,6 +126,10 @@ void STR_explicit1_BUFFER(char * name, int AAlen);
 void STR_explicit2(char * name);
 
 void STR_explicit2_bufferify(char * name, int AAtrim);
+
+void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv);
+
+void STR_cpass_char_ptr_bufferify(char * dest, int Ndest, const char * src, int Lsrc);
 
 #ifdef __cplusplus
 }

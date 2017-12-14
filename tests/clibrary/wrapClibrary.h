@@ -1,8 +1,11 @@
-// Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
-// Produced at the Lawrence Livermore National Laboratory 
+// wrapClibrary.h
+// This is generated code, do not edit
+// #######################################################################
+// Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+// Produced at the Lawrence Livermore National Laboratory
 //
 // LLNL-CODE-738041.
-// All rights reserved. 
+// All rights reserved.
 //
 // This file is part of Shroud.  For details, see
 // https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
@@ -13,7 +16,7 @@
 //
 // * Redistributions of source code must retain the above copyright
 //   notice, this list of conditions and the disclaimer below.
-// 
+//
 // * Redistributions in binary form must reproduce the above copyright
 //   notice, this list of conditions and the disclaimer (as noted below)
 //   in the documentation and/or other materials provided with the
@@ -37,53 +40,20 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-//
-// strings.hpp - wrapped routines
-//
+/**
+ * \file wrapClibrary.h
+ * \brief Shroud generated wrapper for Clibrary library
+ */
+// For C users and C implementation
 
-#ifndef STRINGS_HPP
-#define STRINGS_HPP
+#ifndef WRAPCLIBRARY_H
+#define WRAPCLIBRARY_H
 
-#include <string>
+// declaration of wrapped types
 
-void passChar(char status);
-char returnChar();
+// splicer begin C_declarations
+// splicer end C_declarations
 
-void passCharPtr(char * dest, const char *src);
-void passCharPtrInOut(char * s);
+void CLI_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
 
-const char * getChar1();
-const char * getChar2();
-const char * getChar3();
-
-const std::string& getString1();
-const std::string& getString2();
-const std::string& getString3();
-const std::string& getString2_empty();
-
-const std::string getString4();
-const std::string getString5();
-const std::string getString6();
-
-void acceptName_instance(std::string arg1);
-
-void acceptStringConstReference(const std::string & arg1);
-
-void acceptStringReferenceOut(std::string & arg1);
-
-void acceptStringReference(std::string & arg1);
-
-void acceptStringPointer(std::string * arg1);
-
-void explicit1(char * name);
-void explicit2(char * name);
-
-extern "C" {
-  void CpassChar(char status);
-  char CreturnChar();
-
-  void CpassCharPtr(char * dest, const char *src);
-}
-
-
-#endif // STRINGS_HPP
+#endif  // WRAPCLIBRARY_H

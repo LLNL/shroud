@@ -108,7 +108,8 @@ C_result
 
 c_temp
     Prefix for wrapper working variables.
-    Defaults to *SH_T_*.
+    Defaults to *SHT_*.
+
 F_module_name
     Name of module for Fortran interface for the library.
     Defaulted from expansion of option *F_module_name_library_template*.
@@ -133,6 +134,11 @@ library_upper
 
 namespace_scope
     The values in field **namespace** delimited with ``::``.
+
+stdlib
+    Name of C++ standard library prefix.
+    blank when *language=c*.
+    ``std::`` when *language=c++*.
 
 YAML_type_filename
     Output filename for type maps for classes.
@@ -361,6 +367,11 @@ F_impl_filename
    Name of Fortran file for functions.
    Defaults to option *F_impl_name_library_template*.
 
+langauge
+  The language of the library to wrap.
+  Valid values are ``c`` and ``c++``.
+  The default is ``c++``.
+
 library
   The name of the library.
   Used to name output files and modules.
@@ -396,6 +407,10 @@ C_bufferify_suffix
   Suffix appended to generated routine which pass strings as buffers
   with explicit lengths.
   Defaults to *_bufferify*
+
+C_extern_C
+   Set to *true* when the C++ routine is ``extern "C"``.
+   Defaults to *false*.
 
 C_header_filename_suffix:
    Suffix added to C header files.
@@ -690,6 +705,11 @@ typedef
     Initialize from existing type
     Defaults to *None*.
 
+c_header
+    Name of C header file required for implementation.
+    Only used with *language=c*.
+    Defaults to *None*.
+
 cpp_type
     Name of type in C++.
     Defaults to *None*.
@@ -701,6 +721,7 @@ cpp_to_c
 cpp_header
     Name of C++ header file required for implementation.
     For example, if cpp_to_c was a function.
+    Only used with *language=c++*.
     Defaults to *None*.
 
 cpp_local_var
@@ -1041,6 +1062,11 @@ C_name
 
 C_post_call
     Code added after all of the argument *post_call* code.
+    Can be used to release memory from the C routine.
+
+C_post_call_buf
+    Identical to **C_post_call** but only applies to the buffer version of the
+    wrapper routine.
 
 C_return_type
     Allow the C wrapper and Fortran wrapper to return a different type

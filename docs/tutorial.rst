@@ -161,13 +161,13 @@ are pass-by-value and cannot return a value.
 The C wrapper can be called directly by Fortran using the interface::
 
      interface
-        function function2(arg1, arg2) result(rv) &
+        function function2(arg1, arg2) result(SHT_rv) &
                 bind(C, name="TUT_function2")
-            use iso_c_binding
+            use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
             integer(C_INT), value, intent(IN) :: arg2
-            real(C_DOUBLE) :: rv
+            real(C_DOUBLE) :: SHT_rv
         end function function2
      end interface
 
@@ -245,23 +245,22 @@ In this case a Fortran wrapper is created in addition to the interface.
 The wrapper convert the logical's value before calling the C wrapper::
 
      interface
-        function c_function3(arg) result(rv) &
+        function c_function3(arg) result(SHT_rv) &
                 bind(C, name="TUT_function3")
-            use iso_c_binding
+            use iso_c_binding, only : C_BOOL
             implicit none
             logical(C_BOOL), value, intent(IN) :: arg
-            logical(C_BOOL) :: rv
+            logical(C_BOOL) :: SHT_rv
         end function c_function3
     end interface
 
-    function function3(arg) result(rv)
+    function function3(arg) result(SHT_rv)
         use iso_c_binding, only : C_BOOL
-        implicit none
         logical, value, intent(IN) :: arg
-        logical :: rv
-        logical(C_BOOL) tmp_arg
-        tmp_arg = arg  ! coerce to C_BOOL
-        rv = c_function3(tmp_arg)
+        logical(C_BOOL) SH_arg
+        logical :: SHT_rv
+        SH_arg = arg  ! coerce to C_BOOL
+        SHT_rv = c_function3(SH_arg)
     end function function3
 
 The wrapper routine uses the compiler to coerce type using an assignment.
@@ -326,35 +325,34 @@ computed using ``len``::
     void TUT_function4a_bufferify(
         const char * arg1, int Larg1,
         const char * arg2, int Larg2,
-        char * SH_F_rv, int LSH_F_rv)
+        char * SHF_rv, int NSHF_rv)
     {
         const std::string SH_arg1(arg1, Larg1);
         const std::string SH_arg2(arg2, Larg2);
-        const std::string SH_rv = Function4a(SH_arg1, SH_arg2);
-        if (SH_rv.empty()) {
-          std::memset(SH_F_rv, ' ', NSH_F_rv);
+        const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);
+        if (SHT_rv.empty()) {
+          std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
-          ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+          ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
         }
         return;
     }
 
 The contents of the ``std::string`` are copied into the result argument and blank
-filled by FccCopy.
-Before the C wrapper returns, ``rv`` will be deleted.
+filled by ``ShroudStrCopy``.
+Before the C wrapper returns, ``SHT_rv`` will be deleted.
 
 The Fortran wrapper::
 
-    function function4a(arg1, arg2) result(rv)
+    function function4a(arg1, arg2) result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
-        implicit none
         character(*), intent(IN) :: arg1
         character(*), intent(IN) :: arg2
         character(kind=C_CHAR, len=30) :: rv
         call c_function4a_bufferify(  &
             arg1, len_trim(arg1, kind=C_INT),  &
             arg2, len_trim(arg2, kind=C_INT),  &
-            rv, len(rv, kind=C_INT)))
+            SHT_rv, len(SHT_rv, kind=C_INT)))
     end function function4a
 
 The function is called as::
@@ -391,20 +389,20 @@ C wrappers::
 
     double TUT_function5()
     {
-      double rv = Function5();
-      return rv;
+      double SHT_rv = Function5();
+      return SHT_rv;
     }
     
     double TUT_function5_arg1(double arg1)
     {
-      double rv = Function5(arg1);
-      return rv;
+      double SHT_rv = Function5(arg1);
+      return SHT_rv;
     }
     
     double TUT_function5_arg1_arg2(double arg1, bool arg2)
     {
-      double rv = Function5(arg1, arg2);
-      return rv;
+      double SHT_rv = Function5(arg1, arg2);
+      return SHT_rv;
     }
 
 
@@ -418,30 +416,27 @@ Fortran wrapper::
 
     contains
 
-    function function5() result(rv)
+    function function5() result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
-        implicit none
-        real(C_DOUBLE) :: rv
-        rv = c_function5()
+        real(C_DOUBLE) :: SHT_rv
+        SHT_rv = c_function5()
     end function function5
     
-    function function5_arg1(arg1) result(rv)
+    function function5_arg1(arg1) result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
-        implicit none
         real(C_DOUBLE), value, intent(IN) :: arg1
-        real(C_DOUBLE) :: rv
-        rv = c_function5_arg1(arg1)
+        real(C_DOUBLE) :: SHT_rv
+        SHT_rv = c_function5_arg1(arg1)
     end function function5_arg1
     
-    function function5_arg1_arg2(arg1, arg2) result(rv)
+    function function5_arg1_arg2(arg1, arg2) result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_DOUBLE
-        implicit none
         real(C_DOUBLE), value, intent(IN) :: arg1
         logical, value, intent(IN) :: arg2
-        logical(C_BOOL) tmp_arg2
-        real(C_DOUBLE) :: rv
-        tmp_arg2 = arg2  ! coerce to C_BOOL
-        rv = c_function5_arg1_arg2(arg1, tmp_arg2)
+        logical(C_BOOL) SH_arg2
+        real(C_DOUBLE) :: SHT_rv
+        SH_arg2 = arg2  ! coerce to C_BOOL
+        SHT_rv = c_function5_arg1_arg2(arg1, tmp_arg2)
     end function function5_arg1_arg2
 
 Fortran usage::
@@ -606,14 +601,14 @@ C wrapper::
 
     int TUT_function8_int()
     {
-      int rv = Function8<int>();
-      return rv;
+      int SHT_rv = Function8<int>();
+      return SHT_rv;
     }
 
     double TUT_function8_double()
     {
-      double rv = Function8<double>();
-      return rv;
+      double SHT_rv = Function8<double>();
+      return SHT_rv;
     }
 
 Generic Functions
@@ -664,14 +659,12 @@ block.  Each wrapper will coerce the argument to the correct type::
 
     subroutine function9_float(arg)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
-        implicit none
         real(C_FLOAT), value, intent(IN) :: arg
         call c_function9(real(arg, C_DOUBLE))
     end subroutine function9_float
     
     subroutine function9_double(arg)
         use iso_c_binding, only : C_DOUBLE
-        implicit none
         real(C_DOUBLE), value, intent(IN) :: arg
         call c_function9(arg)
     end subroutine function9_double
@@ -708,8 +701,8 @@ The C wrapper will use ``int``::
 
   int TUT_typefunc(int arg)
   {
-    int rv = typefunc(arg);
-    return rv;
+    int SHT_rv = typefunc(arg);
+    return SHT_rv;
   }
 
 Enumerations
@@ -749,8 +742,9 @@ return type is explicitly converted to a C type in the generated wrapper::
 
   int TUT_enumfunc(int arg)
   {
-    EnumTypeID rv = enumfunc(static_cast<EnumTypeID>(arg));
-    return static_cast<int>(rv);
+    EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));
+    int XSHT_rv = static_cast<int>(SHT_rv);
+    return XSHT_rv;
   }
 
 Without the explicit conversion you're likely to get an error such as::
@@ -811,8 +805,8 @@ pointers for every instance::
 
     TUT_class1 * TUT_class1_new()
     {
-        Class1 *SH_rv = new Class1();
-        return static_cast<TUT_class1 *>(static_cast<void *>(SH_rv));
+        Class1 *SHT_rv = new Class1();
+        return static_cast<TUT_class1 *>(static_cast<void *>(SHT_rv));
     }
 
     void TUT_class1_method1(TUT_class1 * self)
@@ -832,14 +826,12 @@ For Fortran a derived type is created::
 
 And the subroutines::
 
-    function class1_new() result(rv)
-        implicit none
-        type(class1) :: rv
-        rv%voidptr = c_class1_new()
+    function class1_new() result(SHT_rv)
+        type(class1) :: SHT_rv
+        SHT_rv%voidptr = c_class1_new()
     end function class1_new
     
     subroutine class1_method1(obj)
-        implicit none
         class(class1) :: obj
         call c_class1_method1(obj%voidptr)
     end subroutine class1_method1

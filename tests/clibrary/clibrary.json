@@ -1,151 +1,6 @@
 {
-    "C_header_filename": "top.h", 
-    "C_impl_filename": "top.cpp", 
-    "F_impl_filename": "top.f", 
     "F_module_dependencies": [], 
-    "F_module_name": "top_module", 
-    "LUA_module_name": "lua_module_name", 
-    "classes": [
-        {
-            "C_header_filename": "foo.h", 
-            "C_impl_filename": "foo.cpp", 
-            "F_derived_name": "FNames", 
-            "F_impl_filename": "foo.f", 
-            "F_module_name": "name_module", 
-            "cpp_header": "", 
-            "fmt": {
-                "CPP_this_call": "SH_this->", 
-                "C_header_filename": "foo.h", 
-                "C_impl_filename": "foo.cpp", 
-                "C_type_name": "TES_names", 
-                "F_derived_name": "FNames", 
-                "F_impl_filename": "foo.f", 
-                "F_module_name": "name_module", 
-                "PY_PyObject": "PY_Names", 
-                "PY_PyTypeObject": "PY_Names_Type", 
-                "PY_capsule_name": "PY_Names_capsule_name", 
-                "PY_from_object_func": "PP_Names_from_Object", 
-                "PY_to_object_func": "PP_Names_to_Object", 
-                "PY_type_filename": "pyNamestype.cpp", 
-                "class_lower": "names", 
-                "class_prefix": "names_", 
-                "class_upper": "NAMES", 
-                "cpp_class": "Names"
-            }, 
-            "methods": [
-                {
-                    "F_name_function": "type_method1", 
-                    "_decl": "void method1()", 
-                    "_function_index": 0, 
-                    "_subprogram": "subroutine", 
-                    "args": [], 
-                    "attrs": {}, 
-                    "decl": "void method1", 
-                    "fmt": {
-                        "C_call_code": "SH_this->method1();", 
-                        "C_call_list": "", 
-                        "C_name": "XXX_TES_names_method1", 
-                        "C_pre_call": "Names *SH_this = static_cast<Names *>(static_cast<void *>(self));", 
-                        "C_prototype": "TES_names * self", 
-                        "C_return_code": "return;", 
-                        "C_return_type": "void", 
-                        "F_C_call": "xxx_tes_names_method1", 
-                        "F_C_name": "xxx_tes_names_method1", 
-                        "F_arg_c_call": "obj%voidptr", 
-                        "F_arg_c_call_tab": "\tobj%voidptr", 
-                        "F_arguments": "obj", 
-                        "F_call_code": "call xxx_tes_names_method1(\tobj%voidptr)", 
-                        "F_name_function": "type_method1", 
-                        "F_name_generic": "method1", 
-                        "F_name_impl": "names_method1", 
-                        "F_subprogram": "subroutine", 
-                        "PY_name_impl": "PY_names_method1", 
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "self", 
-                        "function_name": "method1", 
-                        "underscore_name": "method1"
-                    }, 
-                    "options": {}, 
-                    "result": {
-                        "attrs": {}, 
-                        "name": "method1", 
-                        "type": "void"
-                    }
-                }, 
-                {
-                    "_decl": "void method2()", 
-                    "_function_index": 1, 
-                    "_subprogram": "subroutine", 
-                    "args": [], 
-                    "attrs": {}, 
-                    "decl": "void method2", 
-                    "fmt": {
-                        "C_call_code": "SH_this->method2();", 
-                        "C_call_list": "", 
-                        "C_name": "XXX_TES_names_method2", 
-                        "C_pre_call": "Names *SH_this = static_cast<Names *>(static_cast<void *>(self));", 
-                        "C_prototype": "TES_names * self", 
-                        "C_return_code": "return;", 
-                        "C_return_type": "void", 
-                        "F_C_call": "xxx_tes_names_method2", 
-                        "F_C_name": "xxx_tes_names_method2", 
-                        "F_arg_c_call": "obj%voidptr", 
-                        "F_arg_c_call_tab": "\tobj%voidptr", 
-                        "F_arguments": "obj", 
-                        "F_call_code": "call xxx_tes_names_method2(\tobj%voidptr)", 
-                        "F_name_function": "method2", 
-                        "F_name_generic": "method2", 
-                        "F_name_impl": "names_method2", 
-                        "F_subprogram": "subroutine", 
-                        "PY_name_impl": "PY_names_method2", 
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "self", 
-                        "function_name": "method2", 
-                        "underscore_name": "method2"
-                    }, 
-                    "options": {}, 
-                    "result": {
-                        "attrs": {}, 
-                        "name": "method2", 
-                        "type": "void"
-                    }
-                }
-            ], 
-            "name": "Names", 
-            "options": {
-                "C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
-                "F_C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
-                "none": "foo"
-            }
-        }, 
-        {
-            "cpp_header": "", 
-            "fmt": {
-                "CPP_this_call": "SH_this->", 
-                "C_header_filename": "wrapNames2.hh", 
-                "C_impl_filename": "wrapNames2.cc", 
-                "C_type_name": "TES_names2", 
-                "F_derived_name": "names2", 
-                "F_impl_filename": "wrapfNames2.F", 
-                "F_module_name": "names2_mod", 
-                "PY_PyObject": "PY_Names2", 
-                "PY_PyTypeObject": "PY_Names2_Type", 
-                "PY_capsule_name": "PY_Names2_capsule_name", 
-                "PY_from_object_func": "PP_Names2_from_Object", 
-                "PY_to_object_func": "PP_Names2_to_Object", 
-                "PY_type_filename": "pyNames2type.cpp", 
-                "class_lower": "names2", 
-                "class_prefix": "names2_", 
-                "class_upper": "NAMES2", 
-                "cpp_class": "Names2"
-            }, 
-            "methods": [], 
-            "name": "Names2", 
-            "options": {}
-        }
-    ], 
+    "classes": [], 
     "copyright": [
         "#######################################################################", 
         "Copyright (c) 2017, Lawrence Livermore National Security, LLC.", 
@@ -188,19 +43,18 @@
         null, 
         "#######################################################################"
     ], 
-    "cpp_header": "", 
+    "cpp_header": "clibrary.h", 
     "fmt": {
-        "BBB": "BBB", 
         "CPP_template": "", 
         "CPP_this": "SH_this", 
         "CPP_this_call": "", 
-        "C_header_filename": "top.h", 
-        "C_header_filename_suffix": "hh", 
-        "C_impl_filename": "top.cpp", 
-        "C_impl_filename_suffix": "cc", 
+        "C_header_filename": "wrapClibrary.h", 
+        "C_header_filename_suffix": "h", 
+        "C_impl_filename": "wrapClibrary.c", 
+        "C_impl_filename_suffix": "c", 
         "C_post_call": "", 
         "C_pre_call": "", 
-        "C_prefix": "TES_", 
+        "C_prefix": "CLI_", 
         "C_result": "SHT_rv", 
         "C_string_result_as_arg": "SHF_rv", 
         "C_this": "self", 
@@ -208,129 +62,148 @@
         "F_C_pure_clause": "", 
         "F_C_result_clause": "", 
         "F_derived_member": "voidptr", 
-        "F_filename_suffix": "F", 
-        "F_impl_filename": "top.f", 
-        "F_module_name": "top_module", 
+        "F_filename_suffix": "f", 
+        "F_impl_filename": "wrapfclibrary.f", 
+        "F_module_name": "clibrary_mod", 
         "F_pure_clause": "", 
         "F_result": "SHT_rv", 
         "F_result_clause": "", 
         "F_string_result_as_arg": "", 
         "F_this": "obj", 
-        "LUA_header_filename_suffix": "hpp", 
-        "LUA_impl_filename_suffix": "cpp", 
+        "LUA_header_filename_suffix": "h", 
+        "LUA_impl_filename_suffix": "c", 
         "LUA_result": "rv", 
-        "PY_PyObject": "PyObject", 
-        "PY_header_filename": "pytestnamesmodule.hpp", 
-        "PY_header_filename_suffix": "hpp", 
-        "PY_helper_filename": "pytestnameshelper.cpp", 
-        "PY_impl_filename_suffix": "cpp", 
-        "PY_library_doc": "library documentation", 
-        "PY_module_filename": "pytestnamesmodule.cpp", 
-        "PY_module_name": "testnames", 
-        "PY_param_args": "args", 
-        "PY_param_kwds": "kwds", 
-        "PY_param_self": "self", 
-        "PY_prefix": "PY_", 
+        "PY_header_filename_suffix": "h", 
+        "PY_impl_filename_suffix": "c", 
         "PY_result": "rv", 
-        "PY_used_param_args": false, 
-        "PY_used_param_kwds": false, 
-        "PY_used_param_self": false, 
-        "YAML_type_filename": "testnames_types.yaml", 
+        "YAML_type_filename": "clibrary_types.yaml", 
         "c_temp": "SHT_", 
         "class_prefix": "", 
         "function_suffix": "", 
-        "library": "testnames", 
-        "library_lower": "testnames", 
-        "library_upper": "TESTNAMES", 
+        "library": "Clibrary", 
+        "library_lower": "clibrary", 
+        "library_upper": "CLIBRARY", 
         "namespace_scope": "", 
-        "stdlib": "std::"
+        "stdlib": ""
     }, 
     "functions": [
         {
-            "_decl": "void function1()", 
-            "_function_index": 2, 
+            "_decl": "void Function1()", 
+            "_function_index": 0, 
             "_subprogram": "subroutine", 
             "args": [], 
             "attrs": {}, 
-            "decl": "void function1", 
+            "decl": "void Function1()", 
             "fmt": {
-                "C_call_code": "function1();", 
+                "C_call_code": "Function1();", 
                 "C_call_list": "", 
-                "C_name": "YYY_TES_function1", 
+                "C_name": "Function1", 
                 "C_prototype": "", 
                 "C_return_code": "return;", 
                 "C_return_type": "void", 
-                "F_C_call": "yyy_tes_function1", 
-                "F_C_name": "yyy_tes_function1", 
+                "F_C_call": "c_function1", 
+                "F_C_name": "function1", 
                 "F_arg_c_call": "", 
                 "F_arg_c_call_tab": "\t", 
                 "F_arguments": "", 
-                "F_call_code": "call yyy_tes_function1(\t)", 
+                "F_call_code": "call c_function1(\t)", 
                 "F_name_function": "function1", 
                 "F_name_generic": "function1", 
-                "F_name_impl": "testnames_function1", 
+                "F_name_impl": "function1", 
                 "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_function1", 
                 "c_const": "", 
-                "function_name": "function1", 
+                "function_name": "Function1", 
                 "underscore_name": "function1"
             }, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
-                "name": "function1", 
+                "name": "Function1", 
                 "type": "void"
             }
         }, 
         {
-            "C_name": "c_name_special", 
-            "F_C_name": "f_c_name_special", 
-            "F_name_impl": "f_name_special", 
-            "_decl": "void function2()", 
-            "_function_index": 3, 
-            "_subprogram": "subroutine", 
-            "args": [], 
+            "_decl": "double Function2(double arg1+intent(in)+value, int arg2+intent(in)+value)", 
+            "_function_index": 1, 
+            "_subprogram": "function", 
+            "args": [
+                {
+                    "attrs": {
+                        "intent": "in", 
+                        "value": true
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }, 
+                    "name": "arg1", 
+                    "type": "double"
+                }, 
+                {
+                    "attrs": {
+                        "intent": "in", 
+                        "value": true
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "int", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg2", 
+                        "f_var": "arg2"
+                    }, 
+                    "name": "arg2", 
+                    "type": "int"
+                }
+            ], 
             "attrs": {}, 
-            "decl": "void function2", 
+            "decl": "double Function2(double arg1, int arg2)", 
             "fmt": {
-                "C_call_code": "function2();", 
-                "C_call_list": "", 
-                "C_name": "c_name_special", 
-                "C_prototype": "", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "f_c_name_special", 
-                "F_C_name": "f_c_name_special", 
-                "F_arg_c_call": "", 
-                "F_arg_c_call_tab": "\t", 
-                "F_arguments": "", 
-                "F_call_code": "call f_c_name_special(\t)", 
+                "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
+                "C_call_list": "arg1, arg2", 
+                "C_name": "Function2", 
+                "C_prototype": "double arg1, int arg2", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "double", 
+                "F_C_call": "c_function2", 
+                "F_C_name": "function2", 
+                "F_arg_c_call": "arg1, arg2", 
+                "F_arg_c_call_tab": "\targ1\targ2", 
+                "F_arguments": "arg1, arg2", 
+                "F_call_code": "SHT_rv = c_function2(\targ1\targ2)", 
                 "F_name_function": "function2", 
                 "F_name_generic": "function2", 
-                "F_name_impl": "f_name_special", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_function2", 
+                "F_name_impl": "function2", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
                 "c_const": "", 
-                "function_name": "function2", 
+                "function_name": "Function2", 
                 "underscore_name": "function2"
             }, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
-                "name": "function2", 
-                "type": "void"
+                "fmtc": {
+                    "cpp_rv_decl": "double SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }, 
+                "name": "Function2", 
+                "type": "double"
             }
         }, 
         {
-            "F_name_generic": "generic3", 
-            "F_name_impl": "F_name_function3a_int", 
-            "_cpp_overload": [
-                4, 
-                5
-            ], 
-            "_decl": "void function3a(int i+intent(in)+value)", 
-            "_function_index": 4, 
-            "_overloaded": true, 
+            "_decl": "void Sum(int len+intent(in)+value, int * values+dimension(len)+intent(in), int * result+intent(out))", 
+            "_function_index": 2, 
             "_subprogram": "subroutine", 
             "args": [
                 {
@@ -341,69 +214,93 @@
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
-                        "c_var": "i", 
+                        "c_var": "len", 
                         "cpp_type": "int", 
-                        "cpp_var": "i"
+                        "cpp_var": "len"
                     }, 
                     "fmtf": {
-                        "c_var": "i", 
-                        "f_var": "i"
+                        "c_var": "len", 
+                        "f_var": "len"
                     }, 
-                    "fmtpy": {
+                    "name": "len", 
+                    "type": "int"
+                }, 
+                {
+                    "attrs": {
+                        "dimension": "(len)", 
+                        "intent": "in", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
                         "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "i", 
+                        "c_ptr": " *", 
+                        "c_var": "values", 
                         "cpp_type": "int", 
-                        "cpp_var": "i", 
-                        "py_var": "SH_Py_i"
+                        "cpp_var": "values"
                     }, 
-                    "name": "i", 
+                    "fmtf": {
+                        "c_var": "values", 
+                        "f_var": "values"
+                    }, 
+                    "name": "values", 
+                    "type": "int"
+                }, 
+                {
+                    "attrs": {
+                        "intent": "out", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "result", 
+                        "cpp_type": "int", 
+                        "cpp_var": "result"
+                    }, 
+                    "fmtf": {
+                        "c_var": "result", 
+                        "f_var": "result"
+                    }, 
+                    "name": "result", 
                     "type": "int"
                 }
             ], 
             "attrs": {}, 
-            "decl": "void function3a(int i)", 
+            "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
             "fmt": {
-                "C_call_code": "function3a(i);", 
-                "C_call_list": "i", 
-                "C_name": "YYY_TES_function3a_0", 
-                "C_prototype": "int i", 
+                "C_call_code": "Sum(len, values, result);", 
+                "C_call_list": "len, values, result", 
+                "C_name": "Sum", 
+                "C_prototype": "int len, int * values, int * result", 
                 "C_return_code": "return;", 
                 "C_return_type": "void", 
-                "F_C_call": "yyy_tes_function3a_0", 
-                "F_C_name": "yyy_tes_function3a_0", 
-                "F_arg_c_call": "i", 
-                "F_arg_c_call_tab": "\ti", 
-                "F_arguments": "i", 
-                "F_call_code": "call yyy_tes_function3a_0(\ti)", 
-                "F_name_function": "function3a_0", 
-                "F_name_generic": "generic3", 
-                "F_name_impl": "F_name_function3a_int", 
+                "F_C_call": "c_sum", 
+                "F_C_name": "sum", 
+                "F_arg_c_call": "len, values, result", 
+                "F_arg_c_call_tab": "\tlen\tvalues\tresult", 
+                "F_arguments": "len, values, result", 
+                "F_call_code": "call c_sum(\tlen\tvalues\tresult)", 
+                "F_name_function": "sum", 
+                "F_name_generic": "sum", 
+                "F_name_impl": "sum", 
                 "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_function3a_0", 
                 "c_const": "", 
-                "function_name": "function3a", 
-                "function_suffix": "_0", 
-                "underscore_name": "function3a"
+                "function_name": "Sum", 
+                "underscore_name": "sum"
             }, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
-                "name": "function3a", 
+                "name": "Sum", 
                 "type": "void"
             }
         }, 
         {
-            "F_name_generic": "generic3", 
-            "F_name_impl": "F_name_function3a_long", 
-            "_cpp_overload": [
-                4, 
-                5
-            ], 
-            "_decl": "void function3a(long i+intent(in)+value)", 
-            "_function_index": 5, 
-            "_overloaded": true, 
-            "_subprogram": "subroutine", 
+            "_decl": "bool Function3(bool arg+intent(in)+value)", 
+            "_function_index": 3, 
+            "_subprogram": "function", 
             "args": [
                 {
                     "attrs": {
@@ -413,170 +310,325 @@
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
-                        "c_var": "i", 
-                        "cpp_type": "long", 
-                        "cpp_var": "i"
+                        "c_var": "arg", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg"
                     }, 
                     "fmtf": {
-                        "c_var": "i", 
-                        "f_var": "i"
+                        "c_var": "SH_arg", 
+                        "f_var": "arg"
                     }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "i", 
-                        "cpp_type": "long", 
-                        "cpp_var": "i", 
-                        "py_var": "SH_Py_i"
-                    }, 
-                    "name": "i", 
-                    "type": "long"
+                    "name": "arg", 
+                    "type": "bool"
                 }
             ], 
             "attrs": {}, 
-            "decl": "void function3a(long i)", 
+            "decl": "bool Function3(bool arg)", 
             "fmt": {
-                "C_call_code": "function3a(i);", 
-                "C_call_list": "i", 
-                "C_name": "YYY_TES_function3a_1", 
-                "C_prototype": "long i", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "yyy_tes_function3a_1", 
-                "F_C_name": "yyy_tes_function3a_1", 
-                "F_arg_c_call": "i", 
-                "F_arg_c_call_tab": "\ti", 
-                "F_arguments": "i", 
-                "F_call_code": "call yyy_tes_function3a_1(\ti)", 
-                "F_name_function": "function3a_1", 
-                "F_name_generic": "generic3", 
-                "F_name_impl": "F_name_function3a_long", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_function3a_1", 
-                "c_const": "", 
-                "function_name": "function3a", 
-                "function_suffix": "_1", 
-                "underscore_name": "function3a"
-            }, 
-            "options": {}, 
-            "result": {
-                "attrs": {}, 
-                "name": "function3a", 
-                "type": "void"
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 7, 
-            "_decl": "int function4(const std::string & rv+intent(in))", 
-            "_function_index": 6, 
-            "_subprogram": "function", 
-            "args": [
-                {
-                    "attrs": {
-                        "const": true, 
-                        "intent": "in", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "rv", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_rv"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "rv", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_rv", 
-                        "py_var": "SH_Py_rv"
-                    }, 
-                    "name": "rv", 
-                    "type": "std::string"
-                }
-            ], 
-            "attrs": {}, 
-            "decl": "int function4(const std::string &rv)", 
-            "fmt": {
-                "C_call_code": "int SHT_rv = function4(SH_rv);", 
-                "C_call_list": "SH_rv", 
-                "C_name": "YYY_TES_function4", 
-                "C_pre_call": "const std::string SH_rv(rv);", 
-                "C_prototype": "const char * rv", 
+                "C_call_code": "bool SHT_rv = Function3(arg);", 
+                "C_call_list": "arg", 
+                "C_name": "Function3", 
+                "C_prototype": "bool arg", 
                 "C_return_code": "return SHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_call": "yyy_tes_function4_bufferify", 
-                "F_C_name": "yyy_tes_function4", 
-                "F_arg_c_call": "rv, len_trim(rv, kind=C_INT)", 
-                "F_arg_c_call_tab": "\trv\tlen_trim(rv, kind=C_INT)", 
-                "F_arguments": "rv", 
-                "F_call_code": "SHT_rv = yyy_tes_function4_bufferify(\trv\tlen_trim(rv, kind=C_INT))", 
-                "F_name_function": "function4", 
-                "F_name_generic": "function4", 
-                "F_name_impl": "testnames_function4", 
+                "C_return_type": "bool", 
+                "F_C_call": "c_function3", 
+                "F_C_name": "c_function3", 
+                "F_arg_c_call": "SH_arg", 
+                "F_arg_c_call_tab": "\tSH_arg", 
+                "F_arguments": "arg", 
+                "F_call_code": "SHT_rv = c_function3(\tSH_arg)", 
+                "F_name_function": "function3", 
+                "F_name_generic": "function3", 
+                "F_name_impl": "function3", 
                 "F_result_clause": " result(SHT_rv)", 
                 "F_subprogram": "function", 
-                "PY_name_impl": "PY_function4", 
                 "c_const": "", 
-                "function_name": "function4", 
-                "underscore_name": "function4"
+                "function_name": "Function3", 
+                "underscore_name": "function3"
             }, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_rv_decl": "bool SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
-                "name": "function4", 
-                "type": "int"
+                "name": "Function3", 
+                "type": "bool"
             }
         }, 
         {
-            "_PTR_C_CPP_index": 6, 
-            "_decl": "int function4(const std::string & rv+intent(in)+len_trim(Lrv))", 
-            "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 7, 
-            "_generated": "arg_to_buffer", 
+            "_decl": "void Function3b(const bool arg1+intent(in)+value, bool * arg2+intent(out), bool * arg3+intent(inout))", 
+            "_function_index": 4, 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "const": true, 
+                        "intent": "in", 
+                        "value": true
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg1", 
+                        "f_var": "arg1"
+                    }, 
+                    "name": "arg1", 
+                    "type": "bool"
+                }, 
+                {
+                    "attrs": {
+                        "intent": "out", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "arg2", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg2", 
+                        "f_var": "arg2"
+                    }, 
+                    "name": "arg2", 
+                    "type": "bool"
+                }, 
+                {
+                    "attrs": {
+                        "intent": "inout", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "arg3", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg3"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg3", 
+                        "f_var": "arg3"
+                    }, 
+                    "name": "arg3", 
+                    "type": "bool"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
+            "fmt": {
+                "C_call_code": "Function3b(arg1, arg2, arg3);", 
+                "C_call_list": "arg1, arg2, arg3", 
+                "C_name": "Function3b", 
+                "C_prototype": "const bool arg1, bool * arg2, bool * arg3", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_function3b", 
+                "F_C_name": "c_function3b", 
+                "F_arg_c_call": "SH_arg1, SH_arg2, SH_arg3", 
+                "F_arg_c_call_tab": "\tSH_arg1\tSH_arg2\tSH_arg3", 
+                "F_arguments": "arg1, arg2, arg3", 
+                "F_call_code": "call c_function3b(\tSH_arg1\tSH_arg2\tSH_arg3)", 
+                "F_name_function": "function3b", 
+                "F_name_generic": "function3b", 
+                "F_name_impl": "function3b", 
+                "F_subprogram": "subroutine", 
+                "c_const": "", 
+                "function_name": "Function3b", 
+                "underscore_name": "function3b"
+            }, 
+            "options": {}, 
+            "result": {
+                "attrs": {}, 
+                "name": "Function3b", 
+                "type": "void"
+            }
+        }, 
+        {
+            "C_post_call_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
+            "_PTR_F_C_index": 6, 
+            "_decl": "char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))", 
+            "_function_index": 5, 
             "_subprogram": "function", 
             "args": [
                 {
                     "attrs": {
                         "const": true, 
                         "intent": "in", 
-                        "len_trim": "Lrv", 
-                        "reference": true, 
+                        "ptr": true, 
                         "value": false
                     }, 
                     "fmtc": {
                         "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "rv", 
-                        "c_var_trim": "Lrv", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_rv"
+                        "c_ptr": " *", 
+                        "c_var": "arg1", 
+                        "cpp_type": "char", 
+                        "cpp_var": "arg1"
                     }, 
-                    "fmtf": {
-                        "c_var": "rv", 
-                        "f_var": "rv"
+                    "name": "arg1", 
+                    "type": "char"
+                }, 
+                {
+                    "attrs": {
+                        "const": true, 
+                        "intent": "in", 
+                        "ptr": true, 
+                        "value": false
                     }, 
-                    "name": "rv", 
-                    "type": "std::string"
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": " *", 
+                        "c_var": "arg2", 
+                        "cpp_type": "char", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "name": "arg2", 
+                    "type": "char"
                 }
             ], 
             "attrs": {}, 
-            "decl": "int function4(const std::string &rv)", 
+            "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
             "fmt": {
-                "C_call_code": "int SHT_rv = function4(SH_rv);", 
-                "C_call_list": "SH_rv", 
-                "C_name": "YYY_TES_function4_bufferify", 
-                "C_pre_call": "const std::string SH_rv(rv, Lrv);", 
-                "C_prototype": "const char * rv, int Lrv", 
+                "C_call_code": "char * SHT_rv = Function4a(arg1, arg2);", 
+                "C_call_list": "arg1, arg2", 
+                "C_name": "Function4a", 
+                "C_prototype": "const char * arg1, const char * arg2", 
                 "C_return_code": "return SHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_name": "yyy_tes_function4_bufferify", 
+                "C_return_type": "char *", 
+                "F_C_call": "c_function4a_bufferify", 
+                "F_C_name": "c_function4a", 
+                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SHT_rv, len(SHT_rv, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT)", 
+                "F_arguments": "arg1, arg2", 
+                "F_call_code": "call c_function4a_bufferify(\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT))", 
+                "F_name_function": "function4a", 
+                "F_name_generic": "function4a", 
+                "F_name_impl": "function4a", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "c_const": "", 
+                "c_var_len": "30", 
+                "function_name": "Function4a", 
+                "underscore_name": "function4a"
+            }, 
+            "options": {}, 
+            "result": {
+                "attrs": {
+                    "len": "30", 
+                    "ptr": true
+                }, 
+                "fmtc": {
+                    "cpp_rv_decl": "char * SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }, 
+                "name": "Function4a", 
+                "type": "char"
+            }
+        }, 
+        {
+            "C_post_call": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
+            "C_post_call_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
+            "_PTR_C_CPP_index": 5, 
+            "_decl": "void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SHF_rv+intent(out)+len(NSHF_rv))", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_function_index": 6, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "args": [
+                {
+                    "attrs": {
+                        "const": true, 
+                        "intent": "in", 
+                        "len_trim": "Larg1", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": " *", 
+                        "c_var": "arg1", 
+                        "c_var_trim": "Larg1", 
+                        "cpp_type": "char", 
+                        "cpp_val": "SH_arg1", 
+                        "cpp_var": "SH_arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }, 
+                    "name": "arg1", 
+                    "type": "char"
+                }, 
+                {
+                    "attrs": {
+                        "const": true, 
+                        "intent": "in", 
+                        "len_trim": "Larg2", 
+                        "ptr": true, 
+                        "value": false
+                    }, 
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": " *", 
+                        "c_var": "arg2", 
+                        "c_var_trim": "Larg2", 
+                        "cpp_type": "char", 
+                        "cpp_val": "SH_arg2", 
+                        "cpp_var": "SH_arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg2", 
+                        "f_var": "arg2"
+                    }, 
+                    "name": "arg2", 
+                    "type": "char"
+                }, 
+                {
+                    "attrs": {
+                        "_is_result": true, 
+                        "const": false, 
+                        "intent": "out", 
+                        "len": "NSHF_rv", 
+                        "ptr": true
+                    }, 
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "SHF_rv", 
+                        "c_var_len": "NSHF_rv", 
+                        "cpp_type": "char", 
+                        "cpp_val": "SHT_rv", 
+                        "cpp_var": "SHT_rv"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SHT_rv", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "name": "SHF_rv", 
+                    "type": "char"
+                }
+            ], 
+            "attrs": {}, 
+            "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
+            "fmt": {
+                "C_call_code": "char * SHT_rv = Function4a(SH_arg1, SH_arg2);", 
+                "C_call_list": "SH_arg1, SH_arg2", 
+                "C_name": "CLI_function4a_bufferify", 
+                "C_post_call": "free(SH_arg1);\nfree(SH_arg2);\nif (SHT_rv == NULL) {\n  memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
+                "C_pre_call": "char * SH_arg1 = (char *) malloc(Larg1 + 1);\nmemcpy(SH_arg1, arg1, Larg1);\nSH_arg1[Larg1] = '\\0';\nchar * SH_arg2 = (char *) malloc(Larg2 + 1);\nmemcpy(SH_arg2, arg2, Larg2);\nSH_arg2[Larg2] = '\\0';", 
+                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_function4a_bufferify", 
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
@@ -587,40 +639,42 @@
                 "wrap_python": false
             }, 
             "result": {
-                "attrs": {}, 
+                "attrs": {
+                    "const": false, 
+                    "len": "30", 
+                    "ptr": false, 
+                    "reference": false
+                }, 
                 "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_rv_decl": "char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
-                "name": "function4", 
-                "type": "int"
+                "name": "Function4a", 
+                "type": "void"
             }
         }
     ], 
-    "language": "c++", 
-    "library": "testnames", 
+    "language": "c", 
+    "library": "Clibrary", 
     "namespace": "", 
     "options": {
         "C_bufferify_suffix": "_bufferify", 
         "C_header_filename_class_template": "wrap{cpp_class}.{C_header_filename_suffix}", 
         "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
-        "C_header_filename_suffix": "hh", 
         "C_impl_filename_class_template": "wrap{cpp_class}.{C_impl_filename_suffix}", 
         "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
-        "C_impl_filename_suffix": "cc", 
         "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
         "C_var_len_template": "N{c_var}", 
         "C_var_size_template": "S{c_var}", 
         "C_var_trim_template": "L{c_var}", 
         "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
         "F_C_prefix": "c_", 
-        "F_filename_suffix": "F", 
-        "F_force_wrapper": true, 
+        "F_force_wrapper": false, 
         "F_impl_filename_class_template": "wrapf{cpp_class}.{F_filename_suffix}", 
         "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 
         "F_module_name_class_template": "{class_lower}_mod", 
         "F_module_name_library_template": "{library_lower}_mod", 
-        "F_module_per_class": true, 
+        "F_module_per_class": false, 
         "F_name_associated": "associated", 
         "F_name_function_template": "{underscore_name}{function_suffix}", 
         "F_name_generic_template": "{underscore_name}", 
@@ -654,29 +708,9 @@
         "wrap_c": true, 
         "wrap_fortran": true, 
         "wrap_lua": false, 
-        "wrap_python": true
+        "wrap_python": false
     }, 
     "patterns": [], 
-    "splicer_code": {
-        "c": {
-            "CXX_definitions": [
-                "// Add some text from splicer", 
-                "// And another line"
-            ], 
-            "class": {
-                "Names": {
-                    "method": {}
-                }, 
-                "Names2": {
-                    "C_definitions": [
-                        "int write_file;"
-                    ], 
-                    "method": {}
-                }
-            }, 
-            "function": {}
-        }
-    }, 
     "type_aliases": {
         "integer(C_INT)": "int", 
         "integer(C_LONG)": "long", 
@@ -686,6 +720,24 @@
         "std::vector": "vector"
     }, 
     "types": {
+        "EnumTypeID": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PY_format": "i", 
+            "c_to_cpp": "static_cast<EnumTypeID>({c_var})", 
+            "c_type": "int", 
+            "cpp_to_c": "static_cast<int>({cpp_var})", 
+            "cpp_type": "EnumTypeID", 
+            "f_cast": "int({f_var}, C_INT)", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            }, 
+            "f_type": "integer(C_INT)", 
+            "typedef": "int"
+        }, 
         "MPI_Comm": {
             "c_header": "mpi.h", 
             "c_to_cpp": "MPI_Comm_f2c({c_var})", 
@@ -700,103 +752,21 @@
             "f_c_type": "integer(C_INT)", 
             "f_type": "integer"
         }, 
-        "Names": {
-            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
-            "LUA_type": "LUA_TUSERDATA", 
-            "PY_PyObject": "PY_Names", 
-            "PY_PyTypeObject": "PY_Names_Type", 
-            "PY_from_object": "PP_Names_from_Object", 
-            "PY_to_object": "PP_Names_to_Object", 
-            "base": "wrapped", 
-            "c_to_cpp": "static_cast<{c_const}Names{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
-            "c_type": "TES_names", 
-            "cpp_to_c": "static_cast<{c_const}TES_names *>(static_cast<{c_const}void *>({cpp_var}))", 
-            "cpp_type": "Names", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
-            }, 
-            "f_c_type": "type(C_PTR)", 
-            "f_derived_type": "FNames", 
+        "TypeID": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PY_format": "i", 
+            "c_type": "int", 
+            "cpp_type": "TypeID", 
+            "f_cast": "int({f_var}, C_INT)", 
             "f_module": {
-                "name_module": [
-                    "names"
-                ]
-            }, 
-            "f_statements": {
-                "result": {
-                    "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})"
-                    ], 
-                    "need_wrapper": true
-                }
-            }, 
-            "f_to_c": "{f_var}%get_instance()", 
-            "f_type": "type(FNames)", 
-            "forward": "Names", 
-            "py_statements": {
-                "intent_in": {
-                    "post_parse": [
-                        "{cpp_var} = {py_var} ? {py_var}->{BBB} : NULL;"
-                    ]
-                }, 
-                "intent_out": {
-                    "ctor": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{BBB} = {cpp_var};"
-                    ]
-                }
-            }
-        }, 
-        "Names2": {
-            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
-            "LUA_type": "LUA_TUSERDATA", 
-            "PY_PyObject": "PY_Names2", 
-            "PY_PyTypeObject": "PY_Names2_Type", 
-            "PY_from_object": "PP_Names2_from_Object", 
-            "PY_to_object": "PP_Names2_to_Object", 
-            "base": "wrapped", 
-            "c_to_cpp": "static_cast<{c_const}Names2{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
-            "c_type": "TES_names2", 
-            "cpp_to_c": "static_cast<{c_const}TES_names2 *>(static_cast<{c_const}void *>({cpp_var}))", 
-            "cpp_type": "Names2", 
-            "f_c_module": {
                 "iso_c_binding": [
-                    "C_PTR"
+                    "C_INT"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
-            "f_derived_type": "names2", 
-            "f_module": {
-                "names2_mod": [
-                    "names2"
-                ]
-            }, 
-            "f_statements": {
-                "result": {
-                    "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})"
-                    ], 
-                    "need_wrapper": true
-                }
-            }, 
-            "f_to_c": "{f_var}%get_instance()", 
-            "f_type": "type(names2)", 
-            "forward": "Names2", 
-            "py_statements": {
-                "intent_in": {
-                    "post_parse": [
-                        "{cpp_var} = {py_var} ? {py_var}->{BBB} : NULL;"
-                    ]
-                }, 
-                "intent_out": {
-                    "ctor": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{BBB} = {cpp_var};"
-                    ]
-                }
-            }
+            "f_type": "integer(C_INT)", 
+            "typedef": "int"
         }, 
         "bool": {
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})", 

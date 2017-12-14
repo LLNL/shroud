@@ -51,6 +51,8 @@ module top_module
     ! splicer end module_use
     implicit none
 
+    ! splicer begin module_top
+    ! splicer end module_top
 
     interface
 
@@ -78,13 +80,24 @@ module top_module
             integer(C_LONG), value, intent(IN) :: i
         end subroutine yyy_tes_function3a_1
 
-        function yyy_tes_function4() &
-                result(RV) &
+        function yyy_tes_function4(rv) &
+                result(SHT_rv) &
                 bind(C, name="YYY_TES_function4")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            integer(C_INT) :: RV
+            character(kind=C_CHAR), intent(IN) :: rv(*)
+            integer(C_INT) :: SHT_rv
         end function yyy_tes_function4
+
+        function yyy_tes_function4_bufferify(rv, Lrv) &
+                result(SHT_rv) &
+                bind(C, name="YYY_TES_function4_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: rv(*)
+            integer(C_INT), value, intent(IN) :: Lrv
+            integer(C_INT) :: SHT_rv
+        end function yyy_tes_function4_bufferify
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -133,13 +146,17 @@ contains
         ! splicer end function.function3a_1
     end subroutine F_name_function3a_long
 
-    ! int function4()
+    ! int function4(const std::string & rv+intent(in))
+    ! arg_to_buffer
     ! function_index=6
-    function testnames_function4() result(RV)
+    function testnames_function4(rv) result(SHT_rv)
         use iso_c_binding, only : C_INT
-        integer(C_INT) :: RV
+        character(*), intent(IN) :: rv
+        integer(C_INT) :: SHT_rv
         ! splicer begin function.function4
-        RV = yyy_tes_function4()
+        SHT_rv = yyy_tes_function4_bufferify(  &
+            rv,  &
+            len_trim(rv, kind=C_INT))
         ! splicer end function.function4
     end function testnames_function4
 

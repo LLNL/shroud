@@ -222,6 +222,7 @@ class Wrapf(util.WrapperMixin):
         fmt_library.F_C_result_clause = ''
         fmt_library.F_C_pure_clause = ''
 
+        self.module_use = {}    # Use statements for a module
         self._begin_output_file()
         self._push_splicer('class')
         for node in self.tree['classes']:
@@ -279,7 +280,6 @@ class Wrapf(util.WrapperMixin):
 
         if not options.F_module_per_class:
             # put all functions and classes into one module
-            self.tree['F_module_dependencies'] = []
             self._end_output_file()
             self.write_module(self.tree, None)
 
@@ -317,6 +317,7 @@ class Wrapf(util.WrapperMixin):
                 1,
                 wformat('type(C_PTR), private :: {F_derived_member}', fmt_class),
                 ])
+        self.set_f_module(self.module_use, 'iso_c_binding', 'C_PTR')
         self._create_splicer('component_part', self.f_type_decl)
         self.f_type_decl.extend([
                 -1, 'contains', 1,
@@ -388,7 +389,6 @@ class Wrapf(util.WrapperMixin):
                 'result ({F_derived_member})', fmt)
             impl.append(1)
             impl.append('use iso_c_binding, only: C_PTR')
-            impl.append('implicit none')
             append_format(
                 impl, 'class({F_derived_name}), intent(IN) :: {F_this}', fmt)
             append_format(impl, 'type(C_PTR) :: {F_derived_member}', fmt)
@@ -411,7 +411,6 @@ class Wrapf(util.WrapperMixin):
                 '({F_this}, {F_derived_member})', fmt)
             impl.append(1)
             impl.append('use iso_c_binding, only: C_PTR')
-            impl.append('implicit none')
             append_format(
                 impl, 'class({F_derived_name}), intent(INOUT) :: {F_this}',
                 fmt)
@@ -435,7 +434,6 @@ class Wrapf(util.WrapperMixin):
                 impl, 'function {F_name_impl}({F_this}) result (rv)', fmt)
             impl.append(1)
             impl.append('use iso_c_binding, only: c_associated')
-            impl.append('implicit none')
             append_format(
                 impl, 'class({F_derived_name}), intent(IN) :: {F_this}', fmt)
             impl.append('logical rv')
@@ -462,7 +460,6 @@ class Wrapf(util.WrapperMixin):
         append_format(operator, 'function {procedure}(a,b) result (rv)', fmt)
         operator.append(1)
         operator.append('use iso_c_binding, only: c_associated')
-        operator.append('implicit none')
         append_format(operator,
                       'type({F_derived_name}), intent(IN) ::a,b', fmt)
         operator.append('logical :: rv')
@@ -1071,25 +1068,18 @@ class Wrapf(util.WrapperMixin):
         output.append('module %s' % module_name)
         output.append(1)
 
+        # Write use statments (classes use iso_c_binding C_PTR)
+        arg_f_use = self.sort_module_info(self.module_use, module_name)
+        output.extend(arg_f_use)
+        self.module_use = {}
+
         if options.F_module_per_class:
-            # XXX this will have some problems because of forward declarations
-            for mname, only in node['F_module_dependencies']:
-                if mname == module_name:
-                    continue
-                if only:
-                    output.append('use %s, only : %s' % (
-                            mname, ', '.join(only)))
-                else:
-                    output.append('use %s' % mname)
             output.extend(self.use_stmts)
-            output.append('implicit none')
-            output.append('')
         else:
-            output.append('use, intrinsic :: iso_c_binding, only : C_PTR')
             self._create_splicer('module_use', output)
-            output.extend(self.use_stmts)
-            output.append('implicit none')
-            output.append('')
+        output.append('implicit none')
+        output.append('')
+        if cls is None:
             self._create_splicer('module_top', output)
 
         # XXX output.append('! splicer push class')

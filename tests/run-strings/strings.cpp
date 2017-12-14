@@ -171,3 +171,25 @@ void explicit2(char * name)
 }
 
 //----------------------------------------
+//----------------------------------------
+
+extern "C" void CpassChar(char status)
+{
+    if (status == 'w') {
+        global_str = "w";
+    }
+}
+
+extern "C" char CreturnChar()
+{
+    return 'w';
+}
+
+//----------------------------------------
+
+extern "C" void CpassCharPtr(char *dest, const char *src)
+{
+    std::strcpy(dest, src);
+}
+
+//----------------------------------------

@@ -69,7 +69,9 @@ void YYY_TES_function3a_0(int i);
 
 void YYY_TES_function3a_1(long i);
 
-int YYY_TES_function4();
+int YYY_TES_function4(const char * rv);
+
+int YYY_TES_function4_bufferify(const char * rv, int Lrv);
 
 #ifdef __cplusplus
 }

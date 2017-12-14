@@ -88,8 +88,8 @@ bool AA_is_name_valid_bufferify(const char * name, int Lname)
 bool AA_is_initialized()
 {
 // splicer begin function.is_initialized
-    bool SH_rv = isInitialized();
-    return SH_rv;
+    bool SHT_rv = isInitialized();
+    return SHT_rv;
 // splicer end function.is_initialized
 }
 

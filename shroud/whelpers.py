@@ -107,12 +107,8 @@ extern "C" {
 FccCSource = """
 /* *INDENT-OFF* */
 #ifdef __cplusplus
-// Standard C++ headers
-#include <cstring>
-using namespace std;
 extern "C" {
 #else
-#include <string.h>
 #endif
 /* *INDENT-ON* */
 
@@ -128,18 +124,21 @@ extern "C" {
 # C helper functions which may be added to a implementation file.
 #
 # c_helpers = Dictionary of helpers needed by this helper
-# cpp_header  = Blank delimited list of header files to #include.
-#               when wrapping a C++ library.
 # c_header    = Blank delimited list of header files to #include
 #               when wrapping a C library.
+# cpp_header  = Blank delimited list of header files to #include.
+#               when wrapping a C++ library.
+# c_source    = language=c source.
+# cpp_source  = language=c++ source.
 # source      = Code inserted before any wrappers.
 #               The functions should be file static.
+#               Used if c_source or cpp_source is not defined.
 
 CHelpers = dict(
     ShroudStrCopy=dict(
-        cpp_header='<cstring>',
         c_header='<string.h>',
-        source="""
+        cpp_header='<cstring>',
+        c_source="""
 // Copy s into a, blank fill to la characters
 // Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
@@ -148,12 +147,21 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    ls = strlen(s);
    nm = ls < la ? ls : la;
    memcpy(a,s,nm);
-   if(la > nm) { memset(a+nm,' ',la-nm);}
+   if(la > nm) memset(a+nm,' ',la-nm);
+}""",
+        cpp_source="""
+// Copy s into a, blank fill to la characters
+// Truncate if a is too short.
+static void ShroudStrCopy(char *a, int la, const char *s)
+{
+   int ls,nm;
+   ls = std::strlen(s);
+   nm = ls < la ? ls : la;
+   std::memcpy(a,s,nm);
+   if(la > nm) std::memset(a+nm,' ',la-nm);
 }"""
         ),
     ShroudLenTrim=dict(
-        cpp_header='<cstring>',
-        c_header='<string.h>',
         source="""
 // Returns the length of character string a with length ls,
 // ignoring any trailing blanks.
