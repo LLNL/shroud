@@ -189,16 +189,16 @@ classes:
 
     - decl: void delete() +destructor
 
-    - decl: const string& getName const
+    - decl: const string& getName() const
       # test annotating result
       result:
          attrs:
             len: aa_exclass2_get_name_length({F_this}%{F_derived_member})
 
 # test variations of const for result and method
-    - decl: const string& getName2
-    - decl:       string& getName3 const
-    - decl:       string& getName4
+    - decl: const string& getName2()
+    - decl:       string& getName3() const
+    - decl:       string& getName4()
 
     - doxygen:
         brief: helper function for Fortran

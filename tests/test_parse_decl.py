@@ -387,8 +387,9 @@ class CheckDeclCase(unittest.TestCase):
         })
 
     def test_decl08(self):
-        r = parse_decl.check_decl("const void foo("
-                                  "int arg1+in, double arg2+out)")
+        r = parse_decl.check_decl("const void foo+attr1(30)("
+                                  "int arg1+in, double arg2+out)"
+                                  "+attr2(True)" )
         self.assertEqual(r, {
             'args': [
                 {
@@ -401,11 +402,13 @@ class CheckDeclCase(unittest.TestCase):
                     'name': 'arg2'
                 }
             ],
-            'attrs': {},
+            'attrs': { 'attr2': 'True' },
             'result':
             {
                 'type': 'void',
-                'attrs': {'const': True},
+                'attrs': {
+                    'attr1': '30',
+                    'const': True},
                 'name': 'foo'
             }
         })
@@ -419,6 +422,42 @@ class CheckDeclCase(unittest.TestCase):
                 'type': 'void',
                 'attrs': {},
                 'name': 'new'
+            }
+        })
+
+    def test_decl10(self):
+        r = parse_decl.check_decl("void name(int arg1 = 0, "
+                                  "double arg2 = 0.0,"
+                                  "std::string arg3 = \"name\")")
+        self.assertEqual(r,  {
+            "args": [
+                {
+                    "attrs": {
+                        "default": 0
+                    }, 
+                    "name": "arg1", 
+                    "type": "int"
+                }, 
+                {
+                    "attrs": {
+                        "default": 0.0
+                    }, 
+                    "name": "arg2", 
+                    "type": "double"
+                }, 
+                {
+                    "attrs": {
+                        "default": "name"
+                    }, 
+                    "name": "arg3", 
+                    "type": "std::string"
+                }
+            ], 
+            "attrs": {}, 
+            "result": {
+                "attrs": {}, 
+                "name": "name", 
+                "type": "void"
             }
         })
 

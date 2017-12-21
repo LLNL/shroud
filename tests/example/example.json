@@ -1330,7 +1330,7 @@
                     "attrs": {
                         "const": true
                     }, 
-                    "decl": "const string& getName const", 
+                    "decl": "const string& getName() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                         "C_call_list": "", 
@@ -1412,7 +1412,7 @@
                     "attrs": {
                         "const": true
                     }, 
-                    "decl": "const string& getName const", 
+                    "decl": "const string& getName() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                         "C_call_list": "", 
@@ -1456,7 +1456,7 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "attrs": {}, 
-                    "decl": "const string& getName2", 
+                    "decl": "const string& getName2()", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName2();", 
                         "C_call_list": "", 
@@ -1535,7 +1535,7 @@
                         }
                     ], 
                     "attrs": {}, 
-                    "decl": "const string& getName2", 
+                    "decl": "const string& getName2()", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName2();", 
                         "C_call_list": "", 
@@ -1580,7 +1580,7 @@
                     "attrs": {
                         "const": true
                     }, 
-                    "decl": "string& getName3 const", 
+                    "decl": "string& getName3() const", 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName3();", 
                         "C_call_list": "", 
@@ -1660,7 +1660,7 @@
                     "attrs": {
                         "const": true
                     }, 
-                    "decl": "string& getName3 const", 
+                    "decl": "string& getName3() const", 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName3();", 
                         "C_call_list": "", 
@@ -1703,7 +1703,7 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "attrs": {}, 
-                    "decl": "string& getName4", 
+                    "decl": "string& getName4()", 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName4();", 
                         "C_call_list": "", 
@@ -1781,7 +1781,7 @@
                         }
                     ], 
                     "attrs": {}, 
-                    "decl": "string& getName4", 
+                    "decl": "string& getName4()", 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName4();", 
                         "C_call_list": "", 
