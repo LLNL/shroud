@@ -42,99 +42,68 @@ Parse C++ declarations.
 """
 from __future__ import print_function
 
-from shroud import parse_decl
+from shroud import declast
 
 import unittest
 
-class CheckDeclCase(unittest.TestCase):
-
-    # qualifier
-    def test_qualifier01(self):
-        r = parse_decl.x("const").qualifier()
-        self.assertEqual(r, [('const', True)])
-
-    def test_qualifier02(self):
-        r = parse_decl.x("const").qualifier()
-        self.assertEqual(r, [('const', True)])
-
-    # pointer
-    def test_pointer01(self):
-        r = parse_decl.x("*").pointer()
-        self.assertEqual(r, [('ptr', True)])
-
-    def test_pointer02(self):
-        r = parse_decl.x("&").pointer()
-        self.assertEqual(r, [('reference', True)])
-
-    def test_pointer03(self):
-        r = parse_decl.x("").pointer()
-        self.assertEqual(r, [])
-
-    # template
-    def test_template01(self):
-        r = parse_decl.x("<int>").template()
-        self.assertEqual(r, [('template', 'int')])
-
-    def test_template02(self):
-        r = parse_decl.x("< int >").template()
-        self.assertEqual(r, [('template', 'int')])
+class CheckParse(unittest.TestCase):
 
     # attr
-    def test_attr01(self):
+    def xtest_attr01(self):
         r = parse_decl.x("+intent").attr()
         self.assertEqual(r, ('intent', True))
 
-    def test_attr02(self):
+    def xtest_attr02(self):
         r = parse_decl.x("+intent=in").attr()
         self.assertEqual(r, ('intent', 'in'))
 
-    def test_attr03(self):
+    def xtest_attr03(self):
         r = parse_decl.x("+intent()").attr()
         self.assertEqual(r, ('intent', ''))
 
-    def test_attr04(self):
+    def xtest_attr04(self):
         r = parse_decl.x("+intent(in)").attr()
         self.assertEqual(r, ('intent', 'in'))
 
-    def test_attr05(self):
+    def xtest_attr05(self):
         r = parse_decl.x('+name="abcd"').attr()
         self.assertEqual(r, ('name', 'abcd'))
 
-    def test_attr06(self):
+    def xtest_attr06(self):
         r = parse_decl.x("+name='def'").attr()
         self.assertEqual(r, ('name', 'def'))
 
-    def test_attr07(self):
+    def xtest_attr07(self):
         r = parse_decl.x("+ii=12").attr()
         self.assertEqual(r, ('ii', 12))
 
-    def test_attr08(self):
+    def xtest_attr08(self):
         r = parse_decl.x("+d1=-12.0").attr()
         self.assertEqual(r, ('d1', -12.0))
 
-    def test_attr09(self):
+    def xtest_attr09(self):
         r = parse_decl.x("+d2=11.3e-10").attr()
         self.assertEqual(r, ('d2', 1.13e-09))
 
-    def test_attr10(self):
+    def xtest_attr10(self):
         r = parse_decl.x("+d3=11e10").attr()
         self.assertEqual(r, ('d3', 110000000000.0))
 
-    def test_attr11(self):
+    def xtest_attr11(self):
         r = parse_decl.x("+dimension").attr()
         self.assertEqual(r, ('dimension', True))
 
-    def test_attr12(self):
+    def xtest_attr12(self):
         r = parse_decl.x("+dimension(*)").attr()
         self.assertEqual(r, ('dimension', '*'))
 
-    def test_attr13(self):
+    def xtest_attr13(self):
         r = parse_decl.x("+dimension(len)").attr()
         self.assertEqual(r, ('dimension', 'len'))
 
     # declarator
-    def test_declarator01(self):
-        r = parse_decl.x("int arg").declarator()
+    def xtest_declarator01(self):
+        r = parse_decl("int arg")
         self.assertEqual(r, {
             'type': 'int',
             'attrs': {},
@@ -142,7 +111,7 @@ class CheckDeclCase(unittest.TestCase):
         })
         self.assertEqual(parse_decl.str_declarator(r), "int arg")
 
-    def test_declarator02(self):
+    def xtest_declarator02(self):
         r = parse_decl.x("const int arg").declarator()
         self.assertEqual(r, {
             'type': 'int',
@@ -151,7 +120,7 @@ class CheckDeclCase(unittest.TestCase):
         })
         self.assertEqual(parse_decl.str_declarator(r), "const int arg")
 
-    def test_declarator03(self):
+    def xtest_declarator03(self):
         r = parse_decl.x("badtype arg").declarator()
         self.assertEqual(r, {
             'type': 'badtype',
@@ -160,7 +129,7 @@ class CheckDeclCase(unittest.TestCase):
         })
         self.assertEqual(parse_decl.str_declarator(r), "badtype arg")
 
-    def test_declarator04(self):
+    def xtest_declarator04(self):
         r = parse_decl.x("std::vector<int> &arg").declarator()
         self.assertEqual(r, {
             'type': 'std::vector',
@@ -172,7 +141,7 @@ class CheckDeclCase(unittest.TestCase):
             })
         self.assertEqual(parse_decl.str_declarator(r), "std::vector<int> &arg")
 
-    def test_declarator05(self):
+    def xtest_declarator05(self):
         r = parse_decl.x("std::vector<std::string> arg").declarator()
         self.assertEqual(r, {
             'type': 'std::vector',
@@ -184,7 +153,7 @@ class CheckDeclCase(unittest.TestCase):
         self.assertEqual(parse_decl.str_declarator(r), "std::vector<std::string> arg")
 
     # parameter_list
-    def test_parameter_list01(self):
+    def xtest_parameter_list01(self):
         r = parse_decl.x('int arg').parameter_list()
         self.assertEqual(r, [{
             'type': 'int',
@@ -192,7 +161,7 @@ class CheckDeclCase(unittest.TestCase):
             'name': 'arg'
         }])
 
-    def test_parameter_list02(self):
+    def xtest_parameter_list02(self):
         r = parse_decl.x('int *arg').parameter_list()
         self.assertEqual(r,[{
             'type': 'int',
@@ -200,7 +169,7 @@ class CheckDeclCase(unittest.TestCase):
             'name': 'arg'
         }])
 
-    def test_parameter_list03(self):
+    def xtest_parameter_list03(self):
         r = parse_decl.x('int arg1, double arg2').parameter_list()
         self.assertEqual(r, [{
             'type': 'int',
@@ -212,7 +181,7 @@ class CheckDeclCase(unittest.TestCase):
             'name': 'arg2'
         }])
 
-    def test_parameter_list04(self):
+    def xtest_parameter_list04(self):
         r = parse_decl.x('int arg +in').parameter_list()
         self.assertEqual(r,  [{
             'type': 'int',
@@ -220,7 +189,7 @@ class CheckDeclCase(unittest.TestCase):
             'name': 'arg'
         }])
 
-    def test_parameter_list05(self):
+    def xtest_parameter_list05(self):
         r = parse_decl.x('int arg +in +value').parameter_list()
         self.assertEqual(r,[{
             'type': 'int',
@@ -228,7 +197,7 @@ class CheckDeclCase(unittest.TestCase):
             'name': 'arg'
         }])
 
-    def test_parameter_list06(self):
+    def xtest_parameter_list06(self):
         r = parse_decl.x('const string& getName').parameter_list()
         self.assertEqual(r,[{
             'type': 'string',
@@ -236,7 +205,7 @@ class CheckDeclCase(unittest.TestCase):
             'name': 'getName'
         }])
 
-    def test_parameter_list07(self):
+    def xtest_parameter_list07(self):
         r = parse_decl.x('std::string getName').parameter_list()
         self.assertEqual(r,[{
             'type': 'std::string',
@@ -245,11 +214,11 @@ class CheckDeclCase(unittest.TestCase):
         }])
 
     # argument_list
-    def test_argument_list01(self):
+    def xtest_argument_list01(self):
         r = parse_decl.x("()").argument_list()
         self.assertEqual(r, [])
 
-    def test_argument_list02(self):
+    def xtest_argument_list02(self):
         r = parse_decl.x("(int arg1)").argument_list()
         self.assertEqual(r, [
             {
@@ -259,7 +228,7 @@ class CheckDeclCase(unittest.TestCase):
             }
         ])
 
-    def test_argument_list03(self):
+    def xtest_argument_list03(self):
         r = parse_decl.x("(int arg1, double arg2)").argument_list()
         self.assertEqual(r, [
             {
@@ -273,7 +242,7 @@ class CheckDeclCase(unittest.TestCase):
             }
         ])
 
-    def test_argument_list04(self):
+    def xtest_argument_list04(self):
         r = parse_decl.x("(int arg1, double arg2 = 0.0)").argument_list()
         self.assertEqual(r,  [
             {
@@ -289,146 +258,169 @@ class CheckDeclCase(unittest.TestCase):
 
     # decl
     def test_decl01(self):
-        r = parse_decl.check_decl("void foo")
+        """Simple declaration"""
+        r = declast.check_decl("void foo")
         self.assertEqual(r,{
             'args': [],
             'attrs': {},
             'result': {
-                'type': 'void',
                 'attrs': {},
-                'name': 'foo'
+                'name': 'foo',
+                'type': 'void',
             }
         })
 
     def test_decl02(self):
-        r = parse_decl.check_decl("void foo +alias=junk")
+        """Simple declaration with attribute"""
+        r = declast.check_decl("void foo +alias(junk)")
         self.assertEqual(r, {
             'args': [],
             'attrs': {},
             'result': {
-                'type': 'void',
                 'attrs': {'alias': 'junk'},
-                'name': 'foo'
+                'name': 'foo',
+                'type': 'void',
             }
         })
 
     def test_decl03(self):
-        r = parse_decl.check_decl("void foo()")
+        """Empty parameter list"""
+        r = declast.check_decl("void foo()")
         self.assertEqual(r, {
             'args': [],
             'attrs': {},
             'result': {
-                'type': 'void',
                 'attrs': {},
-                'name': 'foo'
+                'name': 'foo',
+                'type': 'void',
             }
         })
 
     def test_decl04(self):
-        r = parse_decl.check_decl("void foo() const")
+        """const method"""
+        r = declast.check_decl("void foo() const")
         self.assertEqual(r,{
             'args': [],
             'attrs': {'const': True},
             'result': {
-                'type': 'void',
                 'attrs': {},
-                'name': 'foo'
+                'name': 'foo',
+                'type': 'void',
             }
         })
 
     def test_decl05(self):
-        r = parse_decl.check_decl("void foo(int arg1)")
+        """Single argument"""
+        r = declast.check_decl("void foo(int arg1)")
         self.assertEqual(r,{
             'args': [
                 {
-                    'type': 'int',
                     'attrs': {},
-                    'name': 'arg1'
+                    'name': 'arg1',
+                    'type': 'int',
                 }
             ],
             'attrs': {},
             'result': {
-                'type': 'void',
                 'attrs': {},
-                'name': 'foo'
+                'name': 'foo',
+                'type': 'void',
             }
         })
 
     def test_decl06(self):
-        r = parse_decl.check_decl("void foo(int arg1, double arg2)")
+        """multiple arguments"""
+        r = declast.check_decl("void foo(int arg1, double arg2)")
         self.assertEqual(r, {
             'args': [{
+                'attrs': {},
+                'name': 'arg1',
                 'type': 'int',
-                'attrs': {},
-                'name': 'arg1'
             },{
-                'type': 'double',
                 'attrs': {},
-                'name': 'arg2'
+                'name': 'arg2',
+                'type': 'double',
             }],
             'attrs': {},
             'result': {
-                'type': 'void',
                 'attrs': {},
-                'name': 'foo'
+                'name': 'foo',
+                'type': 'void',
             }
         })
 
     def test_decl07(self):
-        r = parse_decl.check_decl("const std::string& getName() const")
+        """Complex declaration"""
+        r = declast.check_decl("const std::string& getName() const")
         self.assertEqual(r, {
             'args': [],
             'attrs': {'const': True},
             'result': {
-                'type': 'std::string',
                 'attrs': {'const': True, 'reference': True},
-                'name': 'getName'
+                'name': 'getName',
+                'type': 'std::string',
             }
         })
 
     def test_decl08(self):
-        r = parse_decl.check_decl("const void foo+attr1(30)("
-                                  "int arg1+in, double arg2+out)"
-                                  "+attr2(True)" )
+        """Test attributes.
+        """
+        r = declast.check_decl("const void foo+attr1(30)+len=30("
+                       "int arg1+in, double arg2+out)"
+                       "+attr2(True)" )
         self.assertEqual(r, {
             'args': [
                 {
-                    'type': 'int',
                     'attrs': {'in': True},
-                    'name': 'arg1'
+                    'name': 'arg1',
+                    'type': 'int',
                 },{
-                    'type': 'double',
                     'attrs': {'out': True},
-                    'name': 'arg2'
+                    'name': 'arg2',
+                    'type': 'double',
                 }
             ],
-            'attrs': { 'attr2': 'True' },
+            'attrs': {
+                'attr2' : 'True',
+            },
             'result':
             {
-                'type': 'void',
                 'attrs': {
                     'attr1': '30',
-                    'const': True},
-                'name': 'foo'
+                    'const': True,
+                    'len': 30,
+                },
+                'name': 'foo',
+                'type': 'void',
             }
         })
 
     def test_decl09(self):
-        r = parse_decl.check_decl("void new() + constructor")
-        self.assertEqual(r, {
-            'args': [],
-            'attrs': {'constructor': True},
-            'result': {
-                'type': 'void',
-                'attrs': {},
-                'name': 'new'
+        """Test constructor
+        The type and varialbe have the same name.
+        """
+        r = declast.check_decl("Class1 *Class1()  +constructor",current_class='Class1')
+        self.assertEqual(r,  {
+            "args": [], 
+            "attrs": {
+                "constructor": True
+            }, 
+            "result": {
+                "attrs": {
+                    "ptr": True
+                }, 
+                "name": "Class1", 
+                "type": "Class1"
             }
         })
 
     def test_decl10(self):
-        r = parse_decl.check_decl("void name(int arg1 = 0, "
-                                  "double arg2 = 0.0,"
-                                  "std::string arg3 = \"name\")")
+        """Test default arguments
+        """
+        r = declast.check_decl("void name(int arg1 = 0, "
+                       "double arg2 = 0.0,"
+                       "std::string arg3 = \"name\","
+                       "bool arg4 = true)")
         self.assertEqual(r,  {
             "args": [
                 {
@@ -451,6 +443,13 @@ class CheckDeclCase(unittest.TestCase):
                     }, 
                     "name": "arg3", 
                     "type": "std::string"
+                },
+                {
+                    "attrs": {
+                        "default": "true"
+                    }, 
+                    "name": "arg4", 
+                    "type": "bool"
                 }
             ], 
             "attrs": {}, 
@@ -461,6 +460,54 @@ class CheckDeclCase(unittest.TestCase):
             }
         })
 
-
+    def test_decl11(self):
+        """Test template_types
+        """
+        r = declast.check_decl("void decl11(ArgType arg)", template_types=['ArgType'])
+        self.assertEqual(r,  {
+            "args": [
+                {
+                    "attrs": {}, 
+                    "name": "arg", 
+                    "type": "ArgType"
+                }
+            ], 
+            "attrs": {}, 
+            "result": {
+                "attrs": {}, 
+                "name": "decl11", 
+                "type": "void"
+            }
+        })
+                         
+    def test_decl12(self):
+        """Test templates
+        Test std::string and string types.
+        """
+        r = declast.check_decl("void decl12(std::vector<std::string> arg1, string arg2)")
+        self.assertEqual(r,  {
+            "args": [
+                {
+                    "attrs": {
+                        "template": "std::string"
+                    }, 
+                    "name": "arg1", 
+                    "type": "std::vector"
+                }, 
+                {
+                    "attrs": {}, 
+                    "name": "arg2", 
+                    "type": "string"
+                }
+            ], 
+            "attrs": {}, 
+            "result": {
+                "attrs": {}, 
+                "name": "decl12",
+                "type": "void"
+            }
+        })
+                         
+                         
 if __name__ == '__main__':
     unittest.main()

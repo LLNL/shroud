@@ -48,8 +48,6 @@ import string
 import json
 import os
 
-from . import parse_decl
-
 fmt = string.Formatter()
 
 default_template = dict(

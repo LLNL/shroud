@@ -67,7 +67,7 @@ import sys
 import yaml
 
 from . import util
-from . import parse_decl
+from . import declast
 from . import splicer
 from . import wrapc
 from . import wrapf
@@ -908,6 +908,7 @@ class Schema(object):
             for key, value in types_dict.items():
                 if not isinstance(value, dict):
                     raise TypeError("types '%s' must be a dictionary" % key)
+                declast.add_type(key)   # Add to parser
 
                 if 'typedef' in value:
                     copy_type = value['typedef']
@@ -936,7 +937,7 @@ class Schema(object):
 
         classes = node.setdefault('classes', [])
         self.check_classes(classes)
-        self.check_functions(node, 'functions')
+        self.check_functions(node, '', 'functions')
 
     def check_classes(self, node):
         if not isinstance(node, list):
@@ -944,6 +945,10 @@ class Schema(object):
         for cls in node:
             if not isinstance(cls, dict):
                 raise TypeError("classes[n] must be a dictionary")
+            if 'name' not in cls:
+                raise TypeError("class does not define name")
+            declast.add_type(cls['name'])
+        for cls in node:
             self.check_class(cls)
 
     def check_class(self, node):
@@ -974,11 +979,11 @@ class Schema(object):
             util.eval_template(node, 'F_module_name', '_class')
             util.eval_template(node, 'F_impl_filename', '_class')
 
-        self.check_functions(node, 'methods')
+        self.check_functions(node, name, 'methods')
         self.pop_fmt()
         self.pop_options()
 
-    def check_function(self, node):
+    def check_function(self, node, cls_name):
         """ Make sure necessary fields are present for a function.
         """
         options, old = self.push_options(node)
@@ -992,9 +997,15 @@ class Schema(object):
         node['attrs'] = {}
         node['args'] = []
 
+        if 'cpp_template' in node:
+            template_types = node['cpp_template'].keys()
+        else:
+            template_types = []
         if 'decl' in node:
             # parse decl and add to dictionary
-            values = parse_decl.check_decl(node['decl'])
+            values = declast.check_decl(node['decl'],
+                                        current_class=cls_name,
+                                        template_types=template_types)
             util.update(node, values)  # recursive update
         if ('function_suffix' in node and
                 node['function_suffix'] is None):
@@ -1027,7 +1038,7 @@ class Schema(object):
         self.pop_fmt()
         self.pop_options()
 
-    def check_functions(self, node, member):
+    def check_functions(self, node, cls_name, member):
         """ check functions.
 
         Create a new list without the options only entries.
@@ -1040,7 +1051,7 @@ class Schema(object):
         for func in functions:
             if self.check_options_only(func):
                 continue
-            self.check_function(func)
+            self.check_function(func, cls_name)
             only_functions.append(func)
         node[member] = only_functions
 
@@ -1660,7 +1671,7 @@ class VerifyAttrs(object):
                 cpp_template = node.get('cpp_template', {})
                 if argtype not in cpp_template:
                     raise RuntimeError("No such type %s: %s" % (
-                            argtype, parse_decl.str_declarator(arg)))
+                            argtype, declast.str_declarator(arg)))
 
             attrs = arg['attrs']
             is_ptr = (attrs.get('ptr', False) or
@@ -1742,14 +1753,14 @@ class VerifyAttrs(object):
             if typedef and typedef.base == 'vector':
                 if not temp:
                     raise RuntimeError("std::vector must have template argument: %s" % (
-                            parse_decl.str_declarator(arg)))
+                            declast.str_declarator(arg)))
                 typedef = util.Typedef.lookup(temp)
                 if typedef is None:
                     raise RuntimeError("No such type %s for template: %s" % (
-                            temp, parse_decl.str_declarator(arg)))
+                            temp, declast.str_declarator(arg)))
             elif temp is not None:
                 raise RuntimeError("Type '%s' may not supply template argument: %s" % (
-                        argtype, parse_decl.str_declarator(arg)))
+                        argtype, declast.str_declarator(arg)))
 
 
 class Namify(object):
