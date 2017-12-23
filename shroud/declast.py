@@ -100,6 +100,8 @@ def tokenize(s):
                     typ = 'TYPE_SPECIFIER'
                 elif val in type_qualifier:
                     typ = 'TYPE_QUALIFIER'
+                elif val in storage_class:
+                    typ = 'STORAGE_CLASS'
             yield Token(typ, val, line, mo.start()-line_start)
         pos = mo.end()
         mo = get_token(s, pos)
@@ -198,17 +200,15 @@ class Parser(object):
         Returns a list of specifiers
         """
         self.enter('declaration_specifier')
-        lst = []
-        node.specifier = lst
         while True:
             # if self.token.type = 'ID' and  typedef-name
             if self.token.typ == 'ID' and self.token.value in namespace:
-                node.vartype = self.nested_namespace()
+                node.specifier.append(self.nested_namespace())
                 if self.have('LT'):
                     node.attrs['template'] = self.nested_namespace()
                     self.mustbe('GT')
             elif self.token.typ == 'TYPE_SPECIFIER':
-                node.vartype = self.token.value
+                node.specifier.append(self.token.value)
                 self.info('type-specifier:', self.token.value)
                 self.next()
             elif self.token.typ == 'TYPE_QUALIFIER':
@@ -216,14 +216,13 @@ class Parser(object):
                 setattr(node, self.token.value, True)
                 self.info('type-qualifier:', self.token.value)
                 self.next()
-            elif self.token.typ == 'STORAGE_CLASS_SPECIFIER':
-                lst.append(self.token.value)
+            elif self.token.typ == 'STORAGE_CLASS':
+                node.storage.append(self.token.value)
                 self.info('storage-class-specifier:', self.token.value)
                 self.next()
             else:
                 break
-        self.exit('declaration_specifier', str(lst))
-        return lst
+        self.exit('declaration_specifier')
 
     def decl_statement(self):
         """Check for optional semicolon and stray stuff at the end of line.
@@ -244,7 +243,7 @@ class Parser(object):
         """
         self.enter('declaration')
         node = Declaration()
-        node.specifier = self.declaration_specifier(node)
+        self.declaration_specifier(node)
         node.declarator = self.declarator()
         self.attribute(node.attrs)  # this is ambiguous   'void foo+attr(int arg1)'
 
@@ -437,7 +436,17 @@ class Ptr(Node):
             attrs['ptr'] = True
         if self.const:
             attrs['const'] = True
-            attrs['AAA'] = True
+
+    def _to_dict(self):
+        """Convert to dictionary.
+        Used by util.ExpandedEncoder.
+        """
+        d = dict(
+            ptr = self.ptr,
+            const = self.const,
+#            volatile = self.volatile,
+        )
+        return d
 
     def __str__(self):
         if self.const:
@@ -447,16 +456,33 @@ class Ptr(Node):
 
 
 class Declarator(Node):
+    """
+    If both name and func are are None, then this is an abstract
+    declarator: ex. 'int *' in 'void foo(int *)'.
+    """
     def __init__(self):
         self.pointer = []     # Multiple levels of indirection
         self.name    = None   #  *name
-        self.func    = None   # (*name)
+        self.func    = None   # (*name)     declarator
 
     def to_dict(self, d):
         if self.name:
             d['name'] = self.name
         if self.pointer:
             self.pointer[0].to_dict(d['attrs'])
+
+    def _to_dict(self):
+        """Convert to dictionary.
+        Used by util.ExpandedEncoder.
+        """
+        d = dict(
+            pointer = [p._to_dict() for p in self.pointer],
+        )
+        if self.name:
+            d['name'] = self.name
+        elif self.func:
+            d['func'] = self.func._to_dict()
+        return d
 
     def __str__(self):
         out = ''
@@ -478,11 +504,10 @@ class Declaration(Node):
     init =         a  *a   a=1
     """
     def __init__(self):
-        self.specifier  = None
+        self.specifier  = []    # int, long, ...
+        self.storage    = []    # static, ...
         self.const      = False
         self.volatile   = False
-        self.specifier  = []    # static, ...
-        self.vartype    = 'int'
         self.declarator = None
         self.params     = None   # None=No parameters, []=empty parameters list
         self.func_const = False
@@ -508,7 +533,10 @@ class Declaration(Node):
             top['attrs'].update(self.fattrs)
         else:
             top = None
-        d['type'] = self.vartype
+        if self.specifier:
+            d['type'] = self.specifier[0]
+        else:
+            d['type'] = 'int'
         d['attrs'] = attrs
         attrs.update(self.attrs)
         if self.const:
@@ -523,13 +551,40 @@ class Declaration(Node):
                 param.to_dict(arg)
         return top
 
+    def _to_dict(self):
+        """Convert to dictionary.
+        Used by util.ExpandedEncoder.
+        """
+        d = dict(
+            specifier = self.specifier,
+            storage = self.storage,
+            const = self.const,
+#            volatile = self.volatile,
+            declarator = self.declarator._to_dict(),
+            func_const = self.func_const,
+#            self.array,
+            attrs = self.attrs,
+        )
+        if self.params is not None:
+            d['args'] = [ x._to_dict() for x in self.params]
+            d['fattrs'] = self.fattrs
+        else:
+            if self.fattrs:
+                raise RuntimeError("fattrs is not empty for non-function")
+        if self.init is not None:
+            d['init'] = self.init
+        return d
+
     def __str__(self):
         out = ' '.join(self.specifier)
         if self.const:
             out += 'const '
         if self.volatile:
             out += 'volatile'
-        out += self.vartype
+        if self.specifier:
+            out += ' '.join(self.specifier)
+        else:
+            out += 'int'
         out += ' '
         if self.declarator:
             out += str(self.declarator)
@@ -564,7 +619,7 @@ def check_decl(decl, current_class=None, template_types=[]):
         type_specifier = old_types
     else:
         a = Parser(decl,current_class=current_class,trace=False).decl_statement()
-    return a.to_dict()
+    return a
 
 def str_declarator(decl):
     """ Convert declaration dict to string.
@@ -586,7 +641,8 @@ def str_declarator(decl):
         out += '&'
     if 'ptr' in attrs:
         out += '*'
-    out += decl['name']
+#    out += decl['name']
+    out += decl.get('name','XXXNAME')
     return out
 
 
@@ -621,29 +677,58 @@ int *[3];
 int (*) [5];
 int (*const []) ( unsigned int, ... );
 long long foo()
+const void (*someFunc)()
+void (*const timer_func)()
 """
+
+if True:
+    # tests from test_declast.py
+    # used to generate baselines
+    statements = """
+void foo
+void foo +alias(junk)
+void foo()
+void foo() const
+void foo(int arg1)
+void foo(int arg1, double arg2)
+const std::string& getName() const
+const void foo+attr1(30)+len=30(int arg1+in, double arg2+out)+attr2(True)
+Class1 *Class1()  +constructor
+void name(int arg1 = 0, double arg2 = 0.0, std::string arg3 = \"name\",bool arg4 = true)
+void decl11(ArgType arg)
+void decl12(std::vector<std::string> arg1, string arg2)
+"""
+    current_class='Class1'
+    add_type('Class1')
+    add_type('ArgType')
+
 
 #void foo()
 #void funptr1(double (*get)())
 #const void foo(int arg1+in, double arg2+out = 0.0)
-statements = """
-int * foo
+xstatements = """
+static long int **foo
 """
 #add_type('Class1')
-current_class = ''
+#current_class = ''
 
 if __name__ == '__main__':
     import json
     for line in statements.split('\n'):
         if line:
-            a = Parser(line,current_class=current_class,trace=True).decl_statement()
+            a = Parser(line,current_class=current_class,trace=False).decl_statement()
             print(line)
             print(a)
+
             dd = a.to_dict()
             print(str_declarator(dd['result']))
             for arg in dd['args']:
                 print('arg:', str_declarator(arg))
             print(json.dumps(dd, indent=4, sort_keys=True))
+
+            dd = a._to_dict()
+            print(json.dumps(dd, indent=4, sort_keys=True))
+
             if line.replace(' ','') == str(a).replace(' ',''):
                 print('PASS')
             else:

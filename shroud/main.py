@@ -1003,10 +1003,11 @@ class Schema(object):
             template_types = []
         if 'decl' in node:
             # parse decl and add to dictionary
-            values = declast.check_decl(node['decl'],
-                                        current_class=cls_name,
-                                        template_types=template_types)
-            util.update(node, values)  # recursive update
+            decl = declast.check_decl(node['decl'],
+                                      current_class=cls_name,
+                                      template_types=template_types)
+            util.update(node, decl.to_dict())  # recursive update
+#            node['tester'] = decl
         if ('function_suffix' in node and
                 node['function_suffix'] is None):
             # YAML turns blanks strings into None
