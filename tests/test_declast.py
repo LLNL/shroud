@@ -47,6 +47,7 @@ from shroud import declast
 import unittest
 
 class CheckParse(unittest.TestCase):
+#    maxDiff = None
 
     # attr
     def xtest_attr01(self):
@@ -260,6 +261,10 @@ class CheckParse(unittest.TestCase):
     def test_decl01(self):
         """Simple declaration"""
         r = declast.check_decl("void foo")
+
+        s = r.gen_decl()
+        self.assertEqual("void foo", s)
+
         self.assertEqual(r.to_dict(),{
             'args': [],
             'attrs': {},
@@ -282,10 +287,15 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("foo", r.get_name())
 
     def test_decl02(self):
         """Simple declaration with attribute"""
         r = declast.check_decl("void foo +alias(junk)")
+
+        s = r.gen_decl()
+        self.assertEqual("void foo+alias(junk)", s)
+
         self.assertEqual(r.to_dict(), {
             'args': [],
             'attrs': {},
@@ -310,10 +320,15 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("foo", r.get_name())
 
     def test_decl03(self):
         """Empty parameter list"""
         r = declast.check_decl("void foo()")
+
+        s = r.gen_decl()
+        self.assertEqual("void foo()", s)
+
         self.assertEqual(r.to_dict(), {
             'args': [],
             'attrs': {},
@@ -338,10 +353,15 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("foo", r.get_name())
 
     def test_decl04(self):
         """const method"""
         r = declast.check_decl("void foo() const")
+
+        s = r.gen_decl()
+        self.assertEqual("void foo() const", s)
+
         self.assertEqual(r.to_dict(),{
             'args': [],
             'attrs': {'const': True},
@@ -366,10 +386,15 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("foo", r.get_name())
 
     def test_decl05(self):
         """Single argument"""
         r = declast.check_decl("void foo(int arg1)")
+
+        s = r.gen_decl()
+        self.assertEqual("void foo(int arg1)", s)
+
         self.assertEqual(r.to_dict(),{
             'args': [
                 {
@@ -414,10 +439,15 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("foo", r.get_name())
 
     def test_decl06(self):
         """multiple arguments"""
         r = declast.check_decl("void foo(int arg1, double arg2)")
+
+        s = r.gen_decl()
+        self.assertEqual("void foo(int arg1, double arg2)", s)
+
         self.assertEqual(r.to_dict(), {
             'args': [{
                 'attrs': {},
@@ -477,10 +507,15 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("foo", r.get_name())
 
     def test_decl07(self):
         """Complex declaration"""
         r = declast.check_decl("const std::string& getName() const")
+
+        s = r.gen_decl()
+        self.assertEqual("const std::string &getName() const", s)
+
         self.assertEqual(r.to_dict(), {
             'args': [],
             'attrs': {'const': True},
@@ -510,13 +545,20 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("getName", r.get_name())
 
     def test_decl08(self):
         """Test attributes.
         """
         r = declast.check_decl("const void foo+attr1(30)+len=30("
-                       "int arg1+in, double arg2+out)"
-                       "+attr2(True)" )
+                               "int arg1+in, double arg2+out)"
+                               "+attr2(True)" )
+
+        s = r.gen_decl()
+        self.assertEqual("const void foo+attr1(30)+len(30)("
+                         "int arg1+in, double arg2+out)"
+                         "+attr2(True)", s)
+
         self.assertEqual(r.to_dict(), {
             'args': [
                 {
@@ -594,12 +636,17 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("foo", r.get_name())
 
     def test_decl09(self):
         """Test constructor
         The type and varialbe have the same name.
         """
         r = declast.check_decl("Class1 *Class1()  +constructor",current_class='Class1')
+
+        s = r.gen_decl()
+        self.assertEqual("Class1 *Class1()+constructor", s)
+
         self.assertEqual(r.to_dict(),  {
             "args": [], 
             "attrs": {
@@ -635,14 +682,22 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("Class1", r.get_name())
 
     def test_decl10(self):
         """Test default arguments
         """
         r = declast.check_decl("void name(int arg1 = 0, "
-                       "double arg2 = 0.0,"
-                       "std::string arg3 = \"name\","
-                       "bool arg4 = true)")
+                               "double arg2 = 0.0,"
+                               "std::string arg3 = \"name\","
+                               "bool arg4 = true)")
+
+        s = r.gen_decl()
+        self.assertEqual("void name(int arg1=0, "
+                         "double arg2=0.0, "
+                         "std::string arg3=\"name\", "
+                         "bool arg4=true)", s)
+
         self.assertEqual(r.to_dict(),  {
             "args": [
                 {
@@ -661,7 +716,7 @@ class CheckParse(unittest.TestCase):
                 }, 
                 {
                     "attrs": {
-                        "default": "name"
+                        "default": '"name"'
                     }, 
                     "name": "arg3", 
                     "type": "std::string"
@@ -719,7 +774,7 @@ class CheckParse(unittest.TestCase):
                         "pointer": []
                     }, 
                     "func_const": False,
-                    "init": "name",
+                    "init": '"name"',
                     "specifier": [
                         "std::string"
                     ], 
@@ -753,11 +808,16 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("name", r.get_name())
 
     def test_decl11(self):
         """Test template_types
         """
         r = declast.check_decl("void decl11(ArgType arg)", template_types=['ArgType'])
+
+        s = r.gen_decl()
+        self.assertEqual("void decl11(ArgType arg)", s)
+
         self.assertEqual(r.to_dict(),  {
             "args": [
                 {
@@ -802,12 +862,17 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("decl11", r.get_name())
                          
     def test_decl12(self):
         """Test templates
         Test std::string and string types.
         """
         r = declast.check_decl("void decl12(std::vector<std::string> arg1, string arg2)")
+
+        s = r.gen_decl()
+        self.assertEqual("void decl12(std::vector<std::string> arg1, string arg2)", s)
+
         self.assertEqual(r.to_dict(),  {
             "args": [
                 {
@@ -874,6 +939,7 @@ class CheckParse(unittest.TestCase):
             ], 
             "storage": []
         })
+        self.assertEqual("decl12", r.get_name())
                          
                          
 if __name__ == '__main__':

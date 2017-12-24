@@ -327,9 +327,9 @@ class Parser(object):
         elif self.have('INTEGER'):
             value = int(value)
         elif self.have('DQUOTE'):
-            value = value[1:-1]
+            value = value
         elif self.have('SQUOTE'):
-            value = value[1:-1]
+            value = value
         elif self.have('ID'):
             pass
         else:
@@ -516,6 +516,54 @@ class Declaration(Node):
         self.attrs      = {}     # declarator attributes
         self.fattrs     = {}     # function attributes
 
+    def get_name(self):
+        """Extract name from declarator."""
+        name = self.declarator.name
+        if name is None:
+            if self.declarator.func:
+                name = self.declarator.func.name
+        return name
+
+    def get_type(self):
+        """Extract type.
+        TODO: deal with 'long long', 'unsigned int'
+        """
+        if self.specifier:
+            if len(self.specifier) > 1:
+                raise RuntimeError("too many type specifiers '{}'"
+                                   .format(' '.join(self.specifier)))
+            typ = self.specifier[0]
+        else:
+            typ = 'int'
+        return typ
+
+    def is_pointer(self):
+        """Return number of levels of pointers.
+        """
+        nlevels = 0
+        for ptr in self.declarator.pointer:
+            if ptr.ptr == '*':
+                nlevels += 1
+        return nlevels
+
+    def is_reference(self):
+        """Return number of levels of references.
+        """
+        nlevels = 0
+        for ptr in self.declarator.pointer:
+            if ptr.ptr == '&':
+                nlevels += 1
+        return nlevels
+
+    def is_indirect(self):
+        """Return number of indirections, pointer or reference.
+        """
+        nlevels = 0
+        for ptr in self.declarator.pointer:
+            if ptr.ptr:
+                nlevels += 1
+        return nlevels
+
     def to_dict(self, d=None):
         """
         Create a dictionary to match the one created by parse_decl.py
@@ -603,6 +651,57 @@ class Declaration(Node):
         if self.init:
             out += '=' + str(self.init)
         return out
+
+    def gen_arg_decl(self, decl):
+        """ Generate declaration for a single Declaration node.
+        decl - array of strings
+        """
+        if self.const:
+            decl.append('const ')
+        decl.append(self.get_type())
+        if 'template' in self.attrs:
+            decl.append('<{}>'.format(self.attrs['template']))
+        decl.append(' ')
+        for ptr in self.declarator.pointer:
+            if ptr.ptr:
+                decl.append(ptr.ptr)
+        # XXX - deal with function pointers
+        decl.append(self.get_name())
+        self.gen_attrs(self.attrs, decl)
+        if self.init is not None:
+            decl.append('=')
+            decl.append(str(self.init))
+
+    def gen_decl(self):
+        """Generate declaration.
+        """
+        decl = []
+        self.gen_arg_decl(decl)
+
+        if self.params is not None:
+            decl.append('(')
+            comma = ''
+            for arg in self.params:
+                decl.append(comma)
+                arg.gen_arg_decl(decl)
+                comma = ', ' 
+            decl.append(')')
+
+        if self.func_const:
+            decl.append(' const')
+        self.gen_attrs(self.fattrs, decl)
+
+        return ''.join(decl)
+
+    def gen_attrs(self, attrs, decl):
+        for attr in sorted(attrs):
+            if attr == 'template':
+                continue
+            value = attrs[attr]
+            if value is True:
+                decl.append('+{}'.format(attr))
+            else:
+                decl.append('+{}({})'.format(attr, value))
 
 
 def check_decl(decl, current_class=None, template_types=[]):
