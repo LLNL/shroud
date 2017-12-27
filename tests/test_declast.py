@@ -510,7 +510,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("foo", r.get_name())
 
     def test_decl07(self):
-        """Complex declaration"""
+        """Return string"""
         r = declast.check_decl("const std::string& getName() const")
 
         s = r.gen_decl()
@@ -940,7 +940,16 @@ class CheckParse(unittest.TestCase):
             "storage": []
         })
         self.assertEqual("decl12", r.get_name())
-                         
+
+    def test_asarg(self):
+        r = declast.check_decl("const std::string& getName() const")
+
+        s = r.gen_decl()
+        self.assertEqual("const std::string &getName() const", s)
+
+        r.result_as_arg('output')
+        s = r.gen_decl()
+        self.assertEqual("void getName(std::string &output) const", s)
                          
 if __name__ == '__main__':
     unittest.main()

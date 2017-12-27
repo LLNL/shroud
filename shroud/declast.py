@@ -46,6 +46,7 @@ additions for shroud attributes.
 
 from __future__ import print_function
 import collections
+import copy
 import re
 
 Token = collections.namedtuple('Token', ['typ', 'value', 'line', 'column'])
@@ -424,7 +425,7 @@ class Node(object):
 
 class Ptr(Node):
     """ A pointer or reference. """
-    def __init__(self, ptr):
+    def __init__(self, ptr=''):
         self.ptr   = ptr     # * or &
         self.const = False
         self.volatile = False
@@ -537,6 +538,9 @@ class Declaration(Node):
             typ = 'int'
         return typ
 
+    def set_type(self, typ):
+        self.specifier[0] = typ
+
     def is_pointer(self):
         """Return number of levels of pointers.
         """
@@ -563,6 +567,34 @@ class Declaration(Node):
             if ptr.ptr:
                 nlevels += 1
         return nlevels
+
+    def _as_arg(self, name):
+        """Create an argument to hold the result.
+        """
+        new = Declaration()
+        new.specifier  = self.specifier[:]
+        new.storage    = self.storage[:]
+        new.const      = False
+        new.volatile   = False
+        new.declarator = copy.deepcopy(self.declarator)
+        new.declarator.name = name
+#        new.array      = None
+        new.attrs      = copy.deepcopy(self.attrs)
+        return new
+
+    def _set_to_void(self):
+        """Change function to void"""
+        self.specifier = ['void']
+        self.const = False
+        self.declarator.pointer = []
+
+    def result_as_arg(self, name):
+        """Pass the function result as an argument.
+        """
+        newarg = self._as_arg(name)
+        self.params.append(newarg)
+        self._set_to_void()
+        return newarg
 
     def to_dict(self, d=None):
         """
