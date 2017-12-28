@@ -126,7 +126,7 @@
             }
         }, 
         {
-            "_decl": "double Function2(double arg1+intent(in)+value, int arg2+intent(in)+value)", 
+            "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
             "_function_index": 1, 
             "_subprogram": "function", 
             "args": [

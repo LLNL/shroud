@@ -67,7 +67,7 @@ extern "C" {
 // splicer begin class.ExClass1.C_definitions
 // splicer end class.ExClass1.C_definitions
 
-// ExClass1 * new(const string * name+intent(in))+constructor
+// ExClass1 * new(const string * name +intent(in)) +constructor
 // function_index=0
 /**
  * \brief constructor
@@ -86,7 +86,7 @@ AA_exclass1 * AA_exclass1_new(const char * name)
 // splicer end class.ExClass1.method.new
 }
 
-// ExClass1 * new(const string * name+intent(in)+len_trim(Lname))+constructor
+// ExClass1 * new(const string * name +intent(in)+len_trim(Lname)) +constructor
 // function_index=13
 /**
  * \brief constructor
@@ -105,7 +105,7 @@ AA_exclass1 * AA_exclass1_new_bufferify(const char * name, int Lname)
 // splicer end class.ExClass1.method.new_bufferify
 }
 
-// void delete()+destructor
+// void delete() +destructor
 // function_index=1
 /**
  * longer description joined with previous line
@@ -119,7 +119,7 @@ void AA_exclass1_delete(AA_exclass1 * self)
 // splicer end class.ExClass1.method.delete
 }
 
-// int incrementCount(int incr+intent(in)+value)
+// int incrementCount(int incr +intent(in)+value)
 // function_index=2
 int AA_exclass1_increment_count(AA_exclass1 * self, int incr)
 {
@@ -147,7 +147,7 @@ const char * AA_exclass1_get_name(const AA_exclass1 * self)
 // splicer end class.ExClass1.method.get_name
 }
 
-// void getName(string & SHF_rv+intent(out)+len(NSHF_rv)) const
+// void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const
 // function_index=14
 void AA_exclass1_get_name_bufferify(const AA_exclass1 * self, char * SHF_rv, int NSHF_rv)
 {
@@ -190,7 +190,7 @@ const char * AA_exclass1_get_name_error_check(const AA_exclass1 * self)
 // splicer end class.ExClass1.method.get_name_error_check
 }
 
-// void getNameErrorCheck(string & SHF_rv+intent(out)+len(NSHF_rv)) const
+// void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_rv)) const
 // function_index=15
 void AA_exclass1_get_name_error_check_bufferify(const AA_exclass1 * self, char * SHF_rv, int NSHF_rv)
 {
@@ -218,7 +218,7 @@ const char * AA_exclass1_get_name_arg(const AA_exclass1 * self)
 // splicer end class.ExClass1.method.get_name_arg
 }
 
-// void getNameArg(string & name+intent(out)+len(Nname)) const
+// void getNameArg(string & name +intent(out)+len(Nname)) const
 // function_index=16
 void AA_exclass1_get_name_arg_bufferify(const AA_exclass1 * self, char * name, int Nname)
 {
@@ -246,7 +246,7 @@ AA_exclass2 * AA_exclass1_get_root(AA_exclass1 * self)
 // splicer end class.ExClass1.method.get_root
 }
 
-// int getValue(int value+intent(in)+value)
+// int getValue(int value +intent(in)+value)
 // function_index=8
 int AA_exclass1_get_value_from_int(AA_exclass1 * self, int value)
 {
@@ -257,7 +257,7 @@ int AA_exclass1_get_value_from_int(AA_exclass1 * self, int value)
 // splicer end class.ExClass1.method.get_value_from_int
 }
 
-// long getValue(long value+intent(in)+value)
+// long getValue(long value +intent(in)+value)
 // function_index=9
 long AA_exclass1_get_value_1(AA_exclass1 * self, long value)
 {
@@ -279,7 +279,7 @@ void * AA_exclass1_get_addr(AA_exclass1 * self)
 // splicer end class.ExClass1.method.get_addr
 }
 
-// bool hasAddr(bool in+intent(in)+value)
+// bool hasAddr(bool in +intent(in)+value)
 // function_index=11
 bool AA_exclass1_has_addr(AA_exclass1 * self, bool in)
 {

@@ -1540,7 +1540,7 @@ class GenFunctions(object):
             value = attrs[key]
             if value is False:
                 continue
-#            decl.append(space)
+            decl.append(space)
             decl.append('+')
             if value is True:
                 decl.append(key)

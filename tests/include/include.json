@@ -18,7 +18,7 @@
             }, 
             "methods": [
                 {
-                    "_decl": "void method1(CustomType arg1+intent(in)+value)", 
+                    "_decl": "void method1(CustomType arg1 +intent(in)+value)", 
                     "_function_index": 0, 
                     "_subprogram": "subroutine", 
                     "args": [
@@ -102,7 +102,7 @@
             }, 
             "methods": [
                 {
-                    "_decl": "void method1(MPI_Comm comm+intent(in)+value)", 
+                    "_decl": "void method1(MPI_Comm comm +intent(in)+value)", 
                     "_function_index": 1, 
                     "_subprogram": "subroutine", 
                     "args": [
@@ -165,7 +165,7 @@
                     }
                 }, 
                 {
-                    "_decl": "void method2(Class1 * c2+intent(in)+value)", 
+                    "_decl": "void method2(Class1 * c2 +intent(in)+value)", 
                     "_function_index": 2, 
                     "_subprogram": "subroutine", 
                     "args": [

@@ -340,7 +340,7 @@
                 4, 
                 5
             ], 
-            "_decl": "void function3a(int i+intent(in)+value)", 
+            "_decl": "void function3a(int i +intent(in)+value)", 
             "_function_index": 4, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -417,7 +417,7 @@
                 4, 
                 5
             ], 
-            "_decl": "void function3a(long i+intent(in)+value)", 
+            "_decl": "void function3a(long i +intent(in)+value)", 
             "_function_index": 5, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -489,7 +489,7 @@
         }, 
         {
             "_PTR_F_C_index": 7, 
-            "_decl": "int function4(const std::string & rv+intent(in))", 
+            "_decl": "int function4(const std::string & rv +intent(in))", 
             "_function_index": 6, 
             "_subprogram": "function", 
             "args": [
@@ -562,7 +562,7 @@
         }, 
         {
             "_PTR_C_CPP_index": 6, 
-            "_decl": "int function4(const std::string & rv+intent(in)+len_trim(Lrv))", 
+            "_decl": "int function4(const std::string & rv +intent(in)+len_trim(Lrv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 7, 
             "_generated": "arg_to_buffer", 

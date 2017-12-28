@@ -126,7 +126,7 @@
             }
         }, 
         {
-            "_decl": "double Function2(double arg1+intent(in)+value, int arg2+intent(in)+value)", 
+            "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
             "_function_index": 1, 
             "_subprogram": "function", 
             "args": [
@@ -212,7 +212,7 @@
             }
         }, 
         {
-            "_decl": "void Sum(int len+intent(in)+value, int * values+dimension(len)+intent(in), int * result+intent(out))", 
+            "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
             "_function_index": 2, 
             "_subprogram": "subroutine", 
             "args": [
@@ -317,7 +317,7 @@
             }
         }, 
         {
-            "_decl": "bool Function3(bool arg+intent(in)+value)", 
+            "_decl": "bool Function3(bool arg +intent(in)+value)", 
             "_function_index": 3, 
             "_subprogram": "function", 
             "args": [
@@ -382,7 +382,7 @@
             }
         }, 
         {
-            "_decl": "void Function3b(const bool arg1+intent(in)+value, bool * arg2+intent(out), bool * arg3+intent(inout))", 
+            "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
             "_function_index": 4, 
             "_subprogram": "subroutine", 
             "args": [
@@ -488,7 +488,7 @@
         {
             "C_post_call_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
             "_PTR_F_C_index": 6, 
-            "_decl": "char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))", 
+            "_decl": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in))", 
             "_function_index": 5, 
             "_subprogram": "function", 
             "args": [
@@ -575,7 +575,7 @@
             "C_post_call": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
             "C_post_call_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
             "_PTR_C_CPP_index": 5, 
-            "_decl": "void Function4a(const char * arg1+intent(in)+len_trim(Larg1), const char * arg2+intent(in)+len_trim(Larg2), char * SHF_rv+intent(out)+len(NSHF_rv))", 
+            "_decl": "void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_function_index": 6, 
             "_generated": "arg_to_buffer", 

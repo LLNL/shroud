@@ -54,7 +54,7 @@ extern "C" {
 // splicer begin class.Class1.C_definitions
 // splicer end class.Class1.C_definitions
 
-// Class1 * new()+constructor
+// Class1 * new() +constructor
 // function_index=0
 TUT_class1 * TUT_class1_new()
 {
@@ -64,7 +64,7 @@ TUT_class1 * TUT_class1_new()
 // splicer end class.Class1.method.new
 }
 
-// void delete()+destructor
+// void delete() +destructor
 // function_index=1
 void TUT_class1_delete(TUT_class1 * self)
 {
