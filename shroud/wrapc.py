@@ -47,6 +47,7 @@ from __future__ import absolute_import
 
 import os
 
+from . import declast
 from . import whelpers
 from . import util
 from .util import append_format
@@ -109,9 +110,9 @@ class Wrapc(util.WrapperMixin):
             raise RuntimeError(
                 "Type {} has no value for {}".format(arg['type'], lang))
         t.append(typ)
-        if attrs.get('ptr', False):
+        if declast.is_pointer(arg):
             t.append('*')
-        elif attrs.get('reference', False):
+        elif declast.is_reference(arg):
             if lang == 'cpp_type':
                 t.append('&')
             else:
@@ -485,7 +486,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_const = 'const '
             else:
                 fmt_arg.c_const = ''
-            if c_attrs.get('ptr', False):
+            if declast.is_pointer(arg):
                 fmt_arg.c_ptr = ' *'
             else:
                 fmt_arg.c_ptr = ''

@@ -48,6 +48,7 @@ One Extension module per class
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import declast
 from . import util
 from .util import wformat, append_format
 
@@ -366,8 +367,8 @@ return 1;""", fmt)
 
         result = node['result']
         result_type = result['type']
-        result_is_ptr = result['attrs'].get('ptr', False)
-        result_is_ref = result['attrs'].get('reference', False)
+        result_is_ptr = declast.is_pointer(result)
+        result_is_ref = declast.is_reference(result)
 
         if node.get('return_this', False):
             result_type = 'void'
@@ -502,7 +503,7 @@ return 1;""", fmt)
                 if arg_typedef.base == 'string':
                     # C++ will coerce char * to std::string
                     lang = 'c_type'
-                if attrs.get('reference', False):
+                if declast.is_reference(arg):
                     # convert a reference to a pointer
                     ptr = True
                 else:

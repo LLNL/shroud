@@ -43,6 +43,7 @@ Generate Lua module for C++ code.
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import declast
 from . import util
 from .util import wformat, append_format
 
@@ -223,8 +224,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # XXX       result = node['result']
         # XXX       result_type = result['type']
-        # XXX       result_is_ptr = result['attrs'].get('ptr', False)
-        # XXX       result_is_ref = result['attrs'].get('reference', False)
+        # XXX       result_is_ptr = declast.is_pointer(result)
+        # XXX       result_is_ref = declast.is_reference(result)
 
         if node.get('return_this', False):
             # XXX           result_type = 'void'
@@ -435,8 +436,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         result = node['result']
         result_type = result['type']
-        result_is_ptr = result['attrs'].get('ptr', False)
-        result_is_ref = result['attrs'].get('reference', False)
+        result_is_ptr = declast.is_pointer(result)
+        result_is_ref = declast.is_reference(result)
 
         if node.get('return_this', False):
             result_type = 'void'
@@ -535,7 +536,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 # C++ will coerce char * to std::string
                 lang = 'c_type'
                 arg_const = True  # lua_tostring is const
-            if attrs.get('reference', False):
+            if declast.is_reference(arg):
                 # convert a reference to a pointer
                 ptr = True
             else:

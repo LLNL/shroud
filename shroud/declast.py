@@ -435,8 +435,9 @@ class Ptr(Node):
             attrs['reference'] = True
         elif self.ptr == '*':
             attrs['ptr'] = True
-        if self.const:
-            attrs['const'] = True
+# old implementation did not support const pointers
+#        if self.const:
+#            attrs['const'] = True
 
     def _to_dict(self):
         """Convert to dictionary.
@@ -762,6 +763,16 @@ def create_this_arg(name, typ, const=True):
     arg.specifier = [ typ ]
     return arg
     
+##################################################
+def is_pointer(decl):
+    """Old dictionary based."""
+    return decl['attrs'].get('ptr', False)
+
+def is_reference(decl):
+    """Old dictionary based."""
+    return decl['attrs'].get('reference', False)
+
+##################################################
 
 def str_declarator(decl):
     """ Convert declaration dict to string.
