@@ -468,7 +468,7 @@ contains
         ! splicer end class.ExClass2.method.declare_0_long
     end subroutine exclass2_declare_0_long
 
-    ! void * declare(TypeID type+intent(in)+value, int len+default(1)+intent(in)+value)
+    ! void * declare(TypeID type+intent(in)+value, int len=1+intent(in)+value)
     ! fortran_generic
     ! function_index=45
     subroutine exclass2_declare_1_int(obj, type, len)
@@ -484,7 +484,7 @@ contains
         ! splicer end class.ExClass2.method.declare_1_int
     end subroutine exclass2_declare_1_int
 
-    ! void * declare(TypeID type+intent(in)+value, long len+default(1)+intent(in)+value)
+    ! void * declare(TypeID type+intent(in)+value, long len=1+intent(in)+value)
     ! fortran_generic
     ! function_index=46
     subroutine exclass2_declare_1_long(obj, type, len)

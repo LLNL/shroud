@@ -131,6 +131,7 @@
                         "cpp_var": "status", 
                         "py_var": "SH_Py_status"
                     }, 
+                    "init": null, 
                     "name": "status", 
                     "type": "char_scalar"
                 }
@@ -167,6 +168,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "passChar", 
                 "type": "void"
             }
@@ -214,6 +216,7 @@
                     "cpp_rv_decl": "char SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "returnChar", 
                 "type": "char_scalar"
             }
@@ -248,6 +251,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "init": null, 
                     "name": "SHF_rv", 
                     "type": "char_scalar"
                 }
@@ -286,6 +290,7 @@
                     "cpp_rv_decl": "char SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "returnChar", 
                 "type": "void"
             }
@@ -320,6 +325,7 @@
                         "cpp_var": "dest", 
                         "py_var": "SH_Py_dest"
                     }, 
+                    "init": null, 
                     "name": "dest", 
                     "type": "char"
                 }, 
@@ -345,6 +351,7 @@
                         "cpp_var": "src", 
                         "py_var": "SH_Py_src"
                     }, 
+                    "init": null, 
                     "name": "src", 
                     "type": "char"
                 }
@@ -382,6 +389,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "passCharPtr", 
                 "type": "void"
             }
@@ -415,6 +423,7 @@
                         "c_var": "dest", 
                         "f_var": "dest"
                     }, 
+                    "init": null, 
                     "name": "dest", 
                     "type": "char"
                 }, 
@@ -439,6 +448,7 @@
                         "c_var": "src", 
                         "f_var": "src"
                     }, 
+                    "init": null, 
                     "name": "src", 
                     "type": "char"
                 }
@@ -472,6 +482,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "passCharPtr", 
                 "type": "void"
             }
@@ -506,6 +517,7 @@
                         "cpp_var": "s", 
                         "py_var": "SH_Py_s"
                     }, 
+                    "init": null, 
                     "name": "s", 
                     "type": "char"
                 }
@@ -542,6 +554,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "passCharPtrInOut", 
                 "type": "void"
             }
@@ -577,6 +590,7 @@
                         "c_var": "s", 
                         "f_var": "s"
                     }, 
+                    "init": null, 
                     "name": "s", 
                     "type": "char"
                 }
@@ -609,6 +623,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "passCharPtrInOut", 
                 "type": "void"
             }
@@ -660,6 +675,7 @@
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getChar1", 
                 "type": "char"
             }
@@ -689,6 +705,7 @@
                         "cpp_val": "SHT_rv", 
                         "cpp_var": "SHT_rv"
                     }, 
+                    "init": null, 
                     "name": "SHF_rv", 
                     "type": "char"
                 }
@@ -729,6 +746,7 @@
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getChar1", 
                 "type": "void"
             }
@@ -780,6 +798,7 @@
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getChar2", 
                 "type": "char"
             }
@@ -813,6 +832,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "init": null, 
                     "name": "SHF_rv", 
                     "type": "char"
                 }
@@ -852,6 +872,7 @@
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getChar2", 
                 "type": "void"
             }
@@ -894,6 +915,7 @@
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getChar3", 
                 "type": "char"
             }
@@ -927,6 +949,7 @@
                         "c_var": "output", 
                         "f_var": "output"
                     }, 
+                    "init": null, 
                     "name": "output", 
                     "type": "char"
                 }
@@ -965,6 +988,7 @@
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getChar3", 
                 "type": "void"
             }
@@ -986,6 +1010,7 @@
                         "ptr": true
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "output", 
                     "type": "char"
                 }
@@ -1020,6 +1045,7 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "init": null, 
                 "name": "getChar3", 
                 "type": "void"
             }
@@ -1074,6 +1100,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getString1", 
                 "type": "string"
             }
@@ -1103,6 +1130,7 @@
                         "cpp_val": "SHT_rv.c_str()", 
                         "cpp_var": "SHT_rv"
                     }, 
+                    "init": null, 
                     "name": "SHF_rv", 
                     "type": "string"
                 }
@@ -1143,6 +1171,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getString1", 
                 "type": "void"
             }
@@ -1199,6 +1228,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getString2", 
                 "type": "string"
             }
@@ -1233,6 +1263,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "init": null, 
                     "name": "SHF_rv", 
                     "type": "string"
                 }
@@ -1272,6 +1303,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getString2", 
                 "type": "void"
             }
@@ -1319,6 +1351,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getString3", 
                 "type": "string"
             }
@@ -1353,6 +1386,7 @@
                         "c_var": "output", 
                         "f_var": "output"
                     }, 
+                    "init": null, 
                     "name": "output", 
                     "type": "string"
                 }
@@ -1391,6 +1425,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getString3", 
                 "type": "void"
             }
@@ -1413,6 +1448,7 @@
                         "reference": true
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "output", 
                     "type": "string"
                 }
@@ -1447,6 +1483,7 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "init": null, 
                 "name": "getString3", 
                 "type": "void"
             }
@@ -1503,6 +1540,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getString2_empty", 
                 "type": "string"
             }
@@ -1537,6 +1575,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "init": null, 
                     "name": "SHF_rv", 
                     "type": "string"
                 }
@@ -1576,6 +1615,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getString2_empty", 
                 "type": "void"
             }
@@ -1617,6 +1657,7 @@
                     "len": 30
                 }, 
                 "const": true, 
+                "init": null, 
                 "name": "getString5", 
                 "type": "string"
             }
@@ -1652,6 +1693,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "init": null, 
                     "name": "SHF_rv", 
                     "type": "string"
                 }
@@ -1691,6 +1733,7 @@
                     "cpp_rv_decl": "const std::string SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getString5", 
                 "type": "void"
             }
@@ -1721,6 +1764,7 @@
             "result": {
                 "attrs": {}, 
                 "const": true, 
+                "init": null, 
                 "name": "getString6", 
                 "type": "string"
             }
@@ -1756,6 +1800,7 @@
                         "c_var": "output", 
                         "f_var": "output"
                     }, 
+                    "init": null, 
                     "name": "output", 
                     "type": "string"
                 }
@@ -1794,6 +1839,7 @@
                     "cpp_rv_decl": "const std::string SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "getString6", 
                 "type": "void"
             }
@@ -1817,6 +1863,7 @@
                         "reference": false
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "output", 
                     "type": "string"
                 }
@@ -1851,6 +1898,7 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "init": null, 
                 "name": "getString6", 
                 "type": "void"
             }
@@ -1883,6 +1931,7 @@
                         "cpp_var": "SH_arg1", 
                         "py_var": "SH_Py_arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "std::string"
                 }
@@ -1921,6 +1970,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "acceptStringConstReference", 
                 "type": "void"
             }
@@ -1953,6 +2003,7 @@
                         "c_var": "arg1", 
                         "f_var": "arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "std::string"
                 }
@@ -1985,6 +2036,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "acceptStringConstReference", 
                 "type": "void"
             }
@@ -2020,6 +2072,7 @@
                         "cpp_var": "arg1", 
                         "py_var": "SH_Py_arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "std::string"
                 }
@@ -2059,6 +2112,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "acceptStringReferenceOut", 
                 "type": "void"
             }
@@ -2092,6 +2146,7 @@
                         "c_var": "arg1", 
                         "f_var": "arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "std::string"
                 }
@@ -2125,6 +2180,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "acceptStringReferenceOut", 
                 "type": "void"
             }
@@ -2160,6 +2216,7 @@
                         "cpp_var": "SH_arg1", 
                         "py_var": "SH_Py_arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "std::string"
                 }
@@ -2199,6 +2256,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "acceptStringReference", 
                 "type": "void"
             }
@@ -2234,6 +2292,7 @@
                         "c_var": "arg1", 
                         "f_var": "arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "std::string"
                 }
@@ -2267,6 +2326,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "acceptStringReference", 
                 "type": "void"
             }
@@ -2300,6 +2360,7 @@
                         "cpp_var": "name", 
                         "py_var": "SH_Py_name"
                     }, 
+                    "init": null, 
                     "name": "name", 
                     "type": "char"
                 }
@@ -2335,6 +2396,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "explicit1", 
                 "type": "void"
             }
@@ -2368,6 +2430,7 @@
                         "c_var": "name", 
                         "f_var": "name"
                     }, 
+                    "init": null, 
                     "name": "name", 
                     "type": "char"
                 }
@@ -2397,6 +2460,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "explicit1", 
                 "type": "void"
             }
@@ -2432,6 +2496,7 @@
                         "cpp_var": "name", 
                         "py_var": "SH_Py_name"
                     }, 
+                    "init": null, 
                     "name": "name", 
                     "type": "char"
                 }
@@ -2465,6 +2530,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "explicit2", 
                 "type": "void"
             }
@@ -2498,6 +2564,7 @@
                         "c_var": "name", 
                         "f_var": "name"
                     }, 
+                    "init": null, 
                     "name": "name", 
                     "type": "char"
                 }
@@ -2527,6 +2594,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "explicit2", 
                 "type": "void"
             }
@@ -2561,6 +2629,7 @@
                         "cpp_var": "status", 
                         "py_var": "SH_Py_status"
                     }, 
+                    "init": null, 
                     "name": "status", 
                     "type": "char_scalar"
                 }
@@ -2599,6 +2668,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "CpassChar", 
                 "type": "void"
             }
@@ -2648,6 +2718,7 @@
                     "cpp_rv_decl": "char SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "CreturnChar", 
                 "type": "char_scalar"
             }
@@ -2682,6 +2753,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "init": null, 
                     "name": "SHF_rv", 
                     "type": "char_scalar"
                 }
@@ -2720,6 +2792,7 @@
                     "cpp_rv_decl": "char SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "CreturnChar", 
                 "type": "void"
             }
@@ -2754,6 +2827,7 @@
                         "cpp_var": "dest", 
                         "py_var": "SH_Py_dest"
                     }, 
+                    "init": null, 
                     "name": "dest", 
                     "type": "char"
                 }, 
@@ -2779,6 +2853,7 @@
                         "cpp_var": "src", 
                         "py_var": "SH_Py_src"
                     }, 
+                    "init": null, 
                     "name": "src", 
                     "type": "char"
                 }
@@ -2818,6 +2893,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "CpassCharPtr", 
                 "type": "void"
             }
@@ -2851,6 +2927,7 @@
                         "c_var": "dest", 
                         "f_var": "dest"
                     }, 
+                    "init": null, 
                     "name": "dest", 
                     "type": "char"
                 }, 
@@ -2875,6 +2952,7 @@
                         "c_var": "src", 
                         "f_var": "src"
                     }, 
+                    "init": null, 
                     "name": "src", 
                     "type": "char"
                 }
@@ -2908,6 +2986,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "CpassCharPtr", 
                 "type": "void"
             }

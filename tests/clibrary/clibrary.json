@@ -120,6 +120,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function1", 
                 "type": "void"
             }
@@ -146,6 +147,7 @@
                         "c_var": "arg1", 
                         "f_var": "arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "double"
                 }, 
@@ -166,6 +168,7 @@
                         "c_var": "arg2", 
                         "f_var": "arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "int"
                 }
@@ -203,6 +206,7 @@
                     "cpp_rv_decl": "double SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function2", 
                 "type": "double"
             }
@@ -229,6 +233,7 @@
                         "c_var": "len", 
                         "f_var": "len"
                     }, 
+                    "init": null, 
                     "name": "len", 
                     "type": "int"
                 }, 
@@ -251,6 +256,7 @@
                         "c_var": "values", 
                         "f_var": "values"
                     }, 
+                    "init": null, 
                     "name": "values", 
                     "type": "int"
                 }, 
@@ -272,6 +278,7 @@
                         "c_var": "result", 
                         "f_var": "result"
                     }, 
+                    "init": null, 
                     "name": "result", 
                     "type": "int"
                 }
@@ -304,6 +311,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Sum", 
                 "type": "void"
             }
@@ -330,6 +338,7 @@
                         "c_var": "SH_arg", 
                         "f_var": "arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "bool"
                 }
@@ -367,6 +376,7 @@
                     "cpp_rv_decl": "bool SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function3", 
                 "type": "bool"
             }
@@ -393,6 +403,7 @@
                         "c_var": "SH_arg1", 
                         "f_var": "arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "bool"
                 }, 
@@ -414,6 +425,7 @@
                         "c_var": "SH_arg2", 
                         "f_var": "arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "bool"
                 }, 
@@ -435,6 +447,7 @@
                         "c_var": "SH_arg3", 
                         "f_var": "arg3"
                     }, 
+                    "init": null, 
                     "name": "arg3", 
                     "type": "bool"
                 }
@@ -467,6 +480,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function3b", 
                 "type": "void"
             }
@@ -492,6 +506,7 @@
                         "cpp_type": "char", 
                         "cpp_var": "arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "char"
                 }, 
@@ -509,6 +524,7 @@
                         "cpp_type": "char", 
                         "cpp_var": "arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "char"
                 }
@@ -550,6 +566,7 @@
                     "cpp_rv_decl": "char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function4a", 
                 "type": "char"
             }
@@ -585,6 +602,7 @@
                         "c_var": "arg1", 
                         "f_var": "arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "char"
                 }, 
@@ -609,6 +627,7 @@
                         "c_var": "arg2", 
                         "f_var": "arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "char"
                 }, 
@@ -633,6 +652,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "init": null, 
                     "name": "SHF_rv", 
                     "type": "char"
                 }
@@ -670,6 +690,7 @@
                     "cpp_rv_decl": "char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function4a", 
                 "type": "void"
             }

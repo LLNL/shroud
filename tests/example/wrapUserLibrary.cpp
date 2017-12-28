@@ -157,7 +157,7 @@ void AA_testoptional_0()
 // splicer end function.testoptional_0
 }
 
-// void testoptional(int i+default(1)+intent(in)+value)
+// void testoptional(int i=1+intent(in)+value)
 // function_index=58
 void AA_testoptional_1(int i)
 {
@@ -167,7 +167,7 @@ void AA_testoptional_1(int i)
 // splicer end function.testoptional_1
 }
 
-// void testoptional(int i+default(1)+intent(in)+value, long j+default(2)+intent(in)+value)
+// void testoptional(int i=1+intent(in)+value, long j=2+intent(in)+value)
 // function_index=53
 void AA_testoptional_2(int i, long j)
 {

@@ -39,6 +39,7 @@
                                 "c_var": "arg1", 
                                 "f_var": "arg1"
                             }, 
+                            "init": null, 
                             "name": "arg1", 
                             "type": "CustomType"
                         }
@@ -74,6 +75,7 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "init": null, 
                         "name": "method1", 
                         "type": "void"
                     }
@@ -121,6 +123,7 @@
                                 "c_var": "comm", 
                                 "f_var": "comm"
                             }, 
+                            "init": null, 
                             "name": "comm", 
                             "type": "MPI_Comm"
                         }
@@ -156,6 +159,7 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "init": null, 
                         "name": "method1", 
                         "type": "void"
                     }
@@ -183,6 +187,7 @@
                                 "c_var": "c2", 
                                 "f_var": "c2"
                             }, 
+                            "init": null, 
                             "name": "c2", 
                             "type": "Class1"
                         }
@@ -218,6 +223,7 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "init": null, 
                         "name": "method2", 
                         "type": "void"
                     }
@@ -347,6 +353,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "function1", 
                 "type": "void"
             }

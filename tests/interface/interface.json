@@ -120,6 +120,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function1", 
                 "type": "void"
             }
@@ -146,6 +147,7 @@
                         "c_var": "arg1", 
                         "f_var": "arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "double"
                 }, 
@@ -166,6 +168,7 @@
                         "c_var": "arg2", 
                         "f_var": "arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "int"
                 }
@@ -203,6 +206,7 @@
                     "cpp_rv_decl": "double SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function2", 
                 "type": "double"
             }

@@ -456,7 +456,7 @@ return 1;""", fmt)
                     offset += len(arg_name) + 1
 
                     # XXX default should be handled differently
-                    if 'default' in attrs:
+                    if arg['init'] is not None:
                         if not found_default:
                             parse_format.append('|')  # add once
                             found_default = True

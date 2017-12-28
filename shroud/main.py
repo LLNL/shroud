@@ -1263,7 +1263,7 @@ class GenFunctions(object):
 
         min_args = 0
         for i, arg in enumerate(node['args']):
-            if 'default' not in arg['attrs']:
+            if arg['init'] is None:
                 min_args += 1
                 continue
             new = util.copy_function_node(node)
@@ -1531,22 +1531,25 @@ class GenFunctions(object):
         Skip some that are already handled.
         """
         keys = sorted(attrs)
+        space = ' '
         for key in keys:
             if key[0] == '_':  # internal attribute
                 continue
             if key in self._skip_annotations:
                 continue
             value = attrs[key]
+            if value is False:
+                continue
+#            decl.append(space)
+            decl.append('+')
             if value is True:
-                decl.append('+' + key)
-            elif value is False:
-                pass
-#                decl.append('-' + key)
+                decl.append(key)
             elif key == 'dimension':
                 # dimension already has parens
-                decl.append('+%s%s' % (key, value))
+                decl.append('%s%s' % (key, value))
             else:
-                decl.append('+%s(%s)' % (key, value))
+                decl.append('%s(%s)' % (key, value))
+            space = ''
 
     def gen_arg_decl(self, arg, decl):
         """ Generate declaration for a single arg (or result)
@@ -1559,6 +1562,9 @@ class GenFunctions(object):
         if declast.is_reference(arg):
             decl.append('& ')
         decl.append(arg['name'])
+        if arg['init'] is not None:
+            decl.append('=')
+            decl.append(str(arg['init']))
 
     def gen_functions_decl(self, functions):
         """ Generate _decl for generated all functions.
@@ -1725,7 +1731,7 @@ class VerifyAttrs(object):
                 # default to 1-d assumed shape 
                 attrs['dimension'] = '(:)'
 
-            if 'default' in attrs:
+            if arg['init'] is not None:
                 found_default = True
                 node['_has_default_arg'] = True
             elif found_default is True:

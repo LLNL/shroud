@@ -259,7 +259,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             for arg in function['args']:
                 arg_typedef = util.Typedef.lookup(arg['type'])
                 attrs = arg['attrs']
-                if 'default' in attrs:
+                if arg['init'] is not None:
                     all_calls.append(lua_function(
                         function, CPP_subprogram, in_args[:], out_args))
                     found_default = True

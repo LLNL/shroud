@@ -169,7 +169,7 @@ class Wrapf(util.WrapperMixin):
         rv = typ + ' :: ' + (name or arg['name']) + dimension
         return rv
 
-    def _f_type(self, arg, default=None, local=False):
+    def _f_type(self, arg, local=False):
         """
         Return the Fortran type, and array attribute
         pass-by-value default
@@ -196,21 +196,17 @@ class Wrapf(util.WrapperMixin):
                 t.append('value')
             if intent:
                 t.append('intent(%s)' % intent.upper())
-            # --            if default is None:
-            # --                default = attrs.get('default', '')
-            # --            if default != '':
-            # --                t.append('optional')
         dimension = attrs.get('dimension', '')
         return (', '.join(t), dimension)
 
-    def _f_decl(self, arg, name=None, default=None, local=False):
+    def _f_decl(self, arg, name=None, local=False):
         """
         Return the Fortran declaration.
 
         If name is not supplied, use name in arg.
         This makes it easy to reproduce the arguments.
         """
-        typ, dimension = self._f_type(arg, default=default, local=local)
+        typ, dimension = self._f_type(arg, local=local)
         rv = typ + ' :: ' + (name or arg['name']) + dimension
         return rv
 

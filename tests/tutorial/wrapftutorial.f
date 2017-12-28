@@ -646,7 +646,7 @@ contains
         ! splicer end function.function5
     end function function5
 
-    ! double Function5(double arg1+default(3.1415)+intent(in)+value)
+    ! double Function5(double arg1=3.1415+intent(in)+value)
     ! has_default_arg
     ! function_index=31
     function function5_arg1(arg1) result(SHT_rv)
@@ -658,7 +658,7 @@ contains
         ! splicer end function.function5_arg1
     end function function5_arg1
 
-    ! double Function5(double arg1+default(3.1415)+intent(in)+value, bool arg2+default(true)+intent(in)+value)
+    ! double Function5(double arg1=3.1415+intent(in)+value, bool arg2=true+intent(in)+value)
     ! function_index=10
     function function5_arg1_arg2(arg1, arg2) result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_DOUBLE
@@ -813,7 +813,7 @@ contains
         ! splicer end function.overload1_num
     end function overload1_num
 
-    ! int overload1(int num+intent(in)+value, int offset+default(0)+intent(in)+value)
+    ! int overload1(int num+intent(in)+value, int offset=0+intent(in)+value)
     ! has_default_arg
     ! function_index=37
     function overload1_num_offset(num, offset) result(SHT_rv)
@@ -828,7 +828,7 @@ contains
         ! splicer end function.overload1_num_offset
     end function overload1_num_offset
 
-    ! int overload1(int num+intent(in)+value, int offset+default(0)+intent(in)+value, int stride+default(1)+intent(in)+value)
+    ! int overload1(int num+intent(in)+value, int offset=0+intent(in)+value, int stride=1+intent(in)+value)
     ! function_index=18
     function overload1_num_offset_stride(num, offset, stride) result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -859,7 +859,7 @@ contains
         ! splicer end function.overload1_3
     end function overload1_3
 
-    ! int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset+default(0)+intent(in)+value)
+    ! int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset=0+intent(in)+value)
     ! has_default_arg
     ! function_index=39
     function overload1_4(type, num, offset) result(SHT_rv)
@@ -876,7 +876,7 @@ contains
         ! splicer end function.overload1_4
     end function overload1_4
 
-    ! int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset+default(0)+intent(in)+value, int stride+default(1)+intent(in)+value)
+    ! int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset=0+intent(in)+value, int stride=1+intent(in)+value)
     ! function_index=19
     function overload1_5(type, num, offset, stride) result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT

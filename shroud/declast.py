@@ -620,8 +620,7 @@ class Declaration(Node):
         d['attrs'] = attrs
         attrs.update(self.attrs)
         d['const'] = self.const
-        if self.init is not None:
-            attrs['default'] = self.init
+        d['init'] = self.init
         self.declarator.to_dict(d)
         if self.params is not None:
             for param in self.params:

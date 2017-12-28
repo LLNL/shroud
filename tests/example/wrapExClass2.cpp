@@ -251,7 +251,7 @@ void AA_exclass2_declare_0(AA_exclass2 * self, int type)
 // splicer end class.ExClass2.method.declare_0
 }
 
-// void * declare(TypeID type+intent(in)+value, SidreLength len+default(1)+intent(in)+value)
+// void * declare(TypeID type+intent(in)+value, SidreLength len=1+intent(in)+value)
 // function_index=26
 void AA_exclass2_declare_1(AA_exclass2 * self, int type, SIDRE_SidreLength len)
 {

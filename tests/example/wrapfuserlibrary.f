@@ -267,7 +267,7 @@ contains
         ! splicer end function.testoptional_0
     end subroutine testoptional_0
 
-    ! void testoptional(int i+default(1)+intent(in)+value)
+    ! void testoptional(int i=1+intent(in)+value)
     ! has_default_arg
     ! function_index=58
     subroutine testoptional_1(i)
@@ -278,7 +278,7 @@ contains
         ! splicer end function.testoptional_1
     end subroutine testoptional_1
 
-    ! void testoptional(int i+default(1)+intent(in)+value, long j+default(2)+intent(in)+value)
+    ! void testoptional(int i=1+intent(in)+value, long j=2+intent(in)+value)
     ! function_index=53
     subroutine testoptional_2(i, j)
         use iso_c_binding, only : C_INT, C_LONG

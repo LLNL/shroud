@@ -71,6 +71,7 @@
                             "cpp_rv_decl": "Class1 * SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "init": null, 
                         "name": "new", 
                         "type": "Class1"
                     }
@@ -116,6 +117,7 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "init": null, 
                         "name": "delete", 
                         "type": "void"
                     }
@@ -159,6 +161,7 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "init": null, 
                         "name": "Method1", 
                         "type": "void"
                     }
@@ -311,6 +314,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function1", 
                 "type": "void"
             }
@@ -354,6 +358,7 @@
                         "cpp_var": "arg1", 
                         "py_var": "SH_Py_arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "double"
                 }, 
@@ -391,6 +396,7 @@
                         "cpp_var": "arg2", 
                         "py_var": "SH_Py_arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "int"
                 }
@@ -431,6 +437,7 @@
                     "cpp_rv_decl": "double SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function2", 
                 "type": "double"
             }
@@ -457,6 +464,7 @@
                         "c_var": "len", 
                         "f_var": "len"
                     }, 
+                    "init": null, 
                     "name": "len", 
                     "type": "int"
                 }, 
@@ -479,6 +487,7 @@
                         "c_var": "values", 
                         "f_var": "values"
                     }, 
+                    "init": null, 
                     "name": "values", 
                     "type": "int"
                 }, 
@@ -500,6 +509,7 @@
                         "c_var": "result", 
                         "f_var": "result"
                     }, 
+                    "init": null, 
                     "name": "result", 
                     "type": "int"
                 }
@@ -535,6 +545,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Sum", 
                 "type": "void"
             }
@@ -578,6 +589,7 @@
                         "cpp_var": "arg", 
                         "py_var": "SH_Py_arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "bool"
                 }
@@ -618,6 +630,7 @@
                     "cpp_rv_decl": "bool SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function3", 
                 "type": "bool"
             }
@@ -644,6 +657,7 @@
                         "c_var": "SH_arg1", 
                         "f_var": "arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "bool"
                 }, 
@@ -665,6 +679,7 @@
                         "c_var": "SH_arg2", 
                         "f_var": "arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "bool"
                 }, 
@@ -686,6 +701,7 @@
                         "c_var": "SH_arg3", 
                         "f_var": "arg3"
                     }, 
+                    "init": null, 
                     "name": "arg3", 
                     "type": "bool"
                 }
@@ -721,6 +737,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function3b", 
                 "type": "void"
             }
@@ -755,6 +772,7 @@
                         "cpp_var": "SH_arg1", 
                         "py_var": "SH_Py_arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "std::string"
                 }, 
@@ -782,6 +800,7 @@
                         "cpp_var": "SH_arg2", 
                         "py_var": "SH_Py_arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "std::string"
                 }
@@ -815,6 +834,7 @@
                     "len": "30"
                 }, 
                 "const": true, 
+                "init": null, 
                 "name": "Function4a", 
                 "type": "std::string"
             }
@@ -847,6 +867,7 @@
                         "c_var": "arg1", 
                         "f_var": "arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "std::string"
                 }, 
@@ -870,6 +891,7 @@
                         "c_var": "arg2", 
                         "f_var": "arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "std::string"
                 }, 
@@ -895,6 +917,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "init": null, 
                     "name": "SHF_rv", 
                     "type": "std::string"
                 }
@@ -932,6 +955,7 @@
                     "cpp_rv_decl": "const std::string SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function4a", 
                 "type": "void"
             }
@@ -972,6 +996,7 @@
                         "cpp_var": "SH_arg1", 
                         "py_var": "SH_Py_arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "std::string"
                 }, 
@@ -1006,6 +1031,7 @@
                         "cpp_var": "SH_arg2", 
                         "py_var": "SH_Py_arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "std::string"
                 }
@@ -1046,6 +1072,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function4b", 
                 "type": "std::string"
             }
@@ -1078,6 +1105,7 @@
                         "c_var": "arg1", 
                         "f_var": "arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "std::string"
                 }, 
@@ -1101,6 +1129,7 @@
                         "c_var": "arg2", 
                         "f_var": "arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "std::string"
                 }, 
@@ -1125,6 +1154,7 @@
                         "c_var": "output", 
                         "f_var": "output"
                     }, 
+                    "init": null, 
                     "name": "output", 
                     "type": "std::string"
                 }
@@ -1161,6 +1191,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function4b", 
                 "type": "void"
             }
@@ -1182,6 +1213,7 @@
                         "value": false
                     }, 
                     "const": true, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "std::string"
                 }, 
@@ -1193,6 +1225,7 @@
                         "value": false
                     }, 
                     "const": true, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "std::string"
                 }, 
@@ -1204,6 +1237,7 @@
                         "reference": true
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "output", 
                     "type": "std::string"
                 }
@@ -1235,6 +1269,7 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "init": null, 
                 "name": "Function4b", 
                 "type": "void"
             }
@@ -1288,12 +1323,13 @@
                     "cpp_rv_decl": "double SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function5", 
                 "type": "double"
             }
         }, 
         {
-            "_decl": "double Function5(double arg1+default(3.1415)+intent(in)+value)", 
+            "_decl": "double Function5(double arg1=3.1415+intent(in)+value)", 
             "_function_index": 31, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
@@ -1301,7 +1337,6 @@
             "args": [
                 {
                     "attrs": {
-                        "default": 3.1415, 
                         "intent": "in", 
                         "value": true
                     }, 
@@ -1317,6 +1352,7 @@
                         "c_var": "arg1", 
                         "f_var": "arg1"
                     }, 
+                    "init": 3.1415, 
                     "name": "arg1", 
                     "type": "double"
                 }
@@ -1363,12 +1399,13 @@
                     "cpp_rv_decl": "double SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function5", 
                 "type": "double"
             }
         }, 
         {
-            "_decl": "double Function5(double arg1+default(3.1415)+intent(in)+value, bool arg2+default(true)+intent(in)+value)", 
+            "_decl": "double Function5(double arg1=3.1415+intent(in)+value, bool arg2=true+intent(in)+value)", 
             "_default_funcs": [
                 30, 
                 31
@@ -1384,7 +1421,6 @@
             "args": [
                 {
                     "attrs": {
-                        "default": 3.1415, 
                         "intent": "in", 
                         "value": true
                     }, 
@@ -1417,12 +1453,12 @@
                         "cpp_var": "arg1", 
                         "py_var": "SH_Py_arg1"
                     }, 
+                    "init": 3.1415, 
                     "name": "arg1", 
                     "type": "double"
                 }, 
                 {
                     "attrs": {
-                        "default": "true", 
                         "intent": "in", 
                         "value": true
                     }, 
@@ -1455,6 +1491,7 @@
                         "cpp_var": "arg2", 
                         "py_var": "SH_Py_arg2"
                     }, 
+                    "init": "true", 
                     "name": "arg2", 
                     "type": "bool"
                 }
@@ -1501,6 +1538,7 @@
                     "cpp_rv_decl": "double SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function5", 
                 "type": "double"
             }
@@ -1547,6 +1585,7 @@
                         "cpp_var": "SH_name", 
                         "py_var": "SH_Py_name"
                     }, 
+                    "init": null, 
                     "name": "name", 
                     "type": "std::string"
                 }
@@ -1585,6 +1624,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function6", 
                 "type": "void"
             }
@@ -1622,6 +1662,7 @@
                         "c_var": "name", 
                         "f_var": "name"
                     }, 
+                    "init": null, 
                     "name": "name", 
                     "type": "std::string"
                 }
@@ -1651,6 +1692,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function6", 
                 "type": "void"
             }
@@ -1699,6 +1741,7 @@
                         "cpp_var": "indx", 
                         "py_var": "SH_Py_indx"
                     }, 
+                    "init": null, 
                     "name": "indx", 
                     "type": "int"
                 }
@@ -1734,6 +1777,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function6", 
                 "type": "void"
             }
@@ -1750,6 +1794,7 @@
                         "value": true
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "ArgType"
                 }
@@ -1776,6 +1821,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function7", 
                 "type": "void"
             }
@@ -1804,6 +1850,7 @@
                         "c_var": "arg", 
                         "f_var": "arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "int"
                 }
@@ -1841,6 +1888,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function7", 
                 "type": "void"
             }
@@ -1869,6 +1917,7 @@
                         "c_var": "arg", 
                         "f_var": "arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "double"
                 }
@@ -1906,6 +1955,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function7", 
                 "type": "void"
             }
@@ -1938,6 +1988,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function8", 
                 "type": "RetType"
             }
@@ -1988,6 +2039,7 @@
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function8", 
                 "type": "int"
             }
@@ -2038,6 +2090,7 @@
                     "cpp_rv_decl": "double SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "Function8", 
                 "type": "double"
             }
@@ -2082,6 +2135,7 @@
                         "cpp_var": "arg", 
                         "py_var": "SH_Py_arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "double"
                 }
@@ -2116,6 +2170,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function9", 
                 "type": "void"
             }
@@ -2134,6 +2189,7 @@
                         "value": true
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "float"
                 }
@@ -2162,6 +2218,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function9", 
                 "type": "void"
             }
@@ -2180,6 +2237,7 @@
                         "value": true
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "double"
                 }
@@ -2208,6 +2266,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function9", 
                 "type": "void"
             }
@@ -2254,6 +2313,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function10", 
                 "type": "void"
             }
@@ -2300,6 +2360,7 @@
                         "cpp_var": "SH_name", 
                         "py_var": "SH_Py_name"
                     }, 
+                    "init": null, 
                     "name": "name", 
                     "type": "std::string"
                 }, 
@@ -2333,6 +2394,7 @@
                         "cpp_var": "arg2", 
                         "py_var": "SH_Py_arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "double"
                 }
@@ -2368,6 +2430,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function10", 
                 "type": "void"
             }
@@ -2391,6 +2454,7 @@
                         "value": false
                     }, 
                     "const": true, 
+                    "init": null, 
                     "name": "name", 
                     "type": "std::string"
                 }, 
@@ -2400,6 +2464,7 @@
                         "value": true
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "float"
                 }
@@ -2428,6 +2493,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function10", 
                 "type": "void"
             }
@@ -2451,6 +2517,7 @@
                         "value": false
                     }, 
                     "const": true, 
+                    "init": null, 
                     "name": "name", 
                     "type": "std::string"
                 }, 
@@ -2460,6 +2527,7 @@
                         "value": true
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "double"
                 }
@@ -2488,6 +2556,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function10", 
                 "type": "void"
             }
@@ -2525,6 +2594,7 @@
                         "c_var": "name", 
                         "f_var": "name"
                     }, 
+                    "init": null, 
                     "name": "name", 
                     "type": "std::string"
                 }, 
@@ -2545,6 +2615,7 @@
                         "c_var": "arg2", 
                         "f_var": "arg2"
                     }, 
+                    "init": null, 
                     "name": "arg2", 
                     "type": "double"
                 }
@@ -2579,6 +2650,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "Function10", 
                 "type": "void"
             }
@@ -2611,6 +2683,7 @@
                         "c_var": "num", 
                         "f_var": "num"
                     }, 
+                    "init": null, 
                     "name": "num", 
                     "type": "int"
                 }
@@ -2657,6 +2730,7 @@
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "overload1", 
                 "type": "int"
             }
@@ -2666,7 +2740,7 @@
                 18, 
                 19
             ], 
-            "_decl": "int overload1(int num+intent(in)+value, int offset+default(0)+intent(in)+value)", 
+            "_decl": "int overload1(int num+intent(in)+value, int offset=0+intent(in)+value)", 
             "_function_index": 37, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
@@ -2689,12 +2763,12 @@
                         "c_var": "num", 
                         "f_var": "num"
                     }, 
+                    "init": null, 
                     "name": "num", 
                     "type": "int"
                 }, 
                 {
                     "attrs": {
-                        "default": 0, 
                         "intent": "in", 
                         "value": true
                     }, 
@@ -2710,6 +2784,7 @@
                         "c_var": "offset", 
                         "f_var": "offset"
                     }, 
+                    "init": 0, 
                     "name": "offset", 
                     "type": "int"
                 }
@@ -2756,6 +2831,7 @@
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "overload1", 
                 "type": "int"
             }
@@ -2765,7 +2841,7 @@
                 18, 
                 19
             ], 
-            "_decl": "int overload1(int num+intent(in)+value, int offset+default(0)+intent(in)+value, int stride+default(1)+intent(in)+value)", 
+            "_decl": "int overload1(int num+intent(in)+value, int offset=0+intent(in)+value, int stride=1+intent(in)+value)", 
             "_default_funcs": [
                 36, 
                 37
@@ -2813,12 +2889,12 @@
                         "cpp_var": "num", 
                         "py_var": "SH_Py_num"
                     }, 
+                    "init": null, 
                     "name": "num", 
                     "type": "int"
                 }, 
                 {
                     "attrs": {
-                        "default": 0, 
                         "intent": "in", 
                         "value": true
                     }, 
@@ -2851,12 +2927,12 @@
                         "cpp_var": "offset", 
                         "py_var": "SH_Py_offset"
                     }, 
+                    "init": 0, 
                     "name": "offset", 
                     "type": "int"
                 }, 
                 {
                     "attrs": {
-                        "default": 1, 
                         "intent": "in", 
                         "value": true
                     }, 
@@ -2889,6 +2965,7 @@
                         "cpp_var": "stride", 
                         "py_var": "SH_Py_stride"
                     }, 
+                    "init": 1, 
                     "name": "stride", 
                     "type": "int"
                 }
@@ -2935,6 +3012,7 @@
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "overload1", 
                 "type": "int"
             }
@@ -2967,6 +3045,7 @@
                         "c_var": "type", 
                         "f_var": "type"
                     }, 
+                    "init": null, 
                     "name": "type", 
                     "type": "double"
                 }, 
@@ -2987,6 +3066,7 @@
                         "c_var": "num", 
                         "f_var": "num"
                     }, 
+                    "init": null, 
                     "name": "num", 
                     "type": "int"
                 }
@@ -3028,6 +3108,7 @@
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "overload1", 
                 "type": "int"
             }
@@ -3037,7 +3118,7 @@
                 18, 
                 19
             ], 
-            "_decl": "int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset+default(0)+intent(in)+value)", 
+            "_decl": "int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset=0+intent(in)+value)", 
             "_function_index": 39, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
@@ -3060,6 +3141,7 @@
                         "c_var": "type", 
                         "f_var": "type"
                     }, 
+                    "init": null, 
                     "name": "type", 
                     "type": "double"
                 }, 
@@ -3080,12 +3162,12 @@
                         "c_var": "num", 
                         "f_var": "num"
                     }, 
+                    "init": null, 
                     "name": "num", 
                     "type": "int"
                 }, 
                 {
                     "attrs": {
-                        "default": 0, 
                         "intent": "in", 
                         "value": true
                     }, 
@@ -3101,6 +3183,7 @@
                         "c_var": "offset", 
                         "f_var": "offset"
                     }, 
+                    "init": 0, 
                     "name": "offset", 
                     "type": "int"
                 }
@@ -3142,6 +3225,7 @@
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "overload1", 
                 "type": "int"
             }
@@ -3151,7 +3235,7 @@
                 18, 
                 19
             ], 
-            "_decl": "int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset+default(0)+intent(in)+value, int stride+default(1)+intent(in)+value)", 
+            "_decl": "int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset=0+intent(in)+value, int stride=1+intent(in)+value)", 
             "_default_funcs": [
                 38, 
                 39
@@ -3199,6 +3283,7 @@
                         "cpp_var": "type", 
                         "py_var": "SH_Py_type"
                     }, 
+                    "init": null, 
                     "name": "type", 
                     "type": "double"
                 }, 
@@ -3236,12 +3321,12 @@
                         "cpp_var": "num", 
                         "py_var": "SH_Py_num"
                     }, 
+                    "init": null, 
                     "name": "num", 
                     "type": "int"
                 }, 
                 {
                     "attrs": {
-                        "default": 0, 
                         "intent": "in", 
                         "value": true
                     }, 
@@ -3274,12 +3359,12 @@
                         "cpp_var": "offset", 
                         "py_var": "SH_Py_offset"
                     }, 
+                    "init": 0, 
                     "name": "offset", 
                     "type": "int"
                 }, 
                 {
                     "attrs": {
-                        "default": 1, 
                         "intent": "in", 
                         "value": true
                     }, 
@@ -3312,6 +3397,7 @@
                         "cpp_var": "stride", 
                         "py_var": "SH_Py_stride"
                     }, 
+                    "init": 1, 
                     "name": "stride", 
                     "type": "int"
                 }
@@ -3351,6 +3437,7 @@
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "overload1", 
                 "type": "int"
             }
@@ -3394,6 +3481,7 @@
                         "cpp_var": "arg", 
                         "py_var": "SH_Py_arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "TypeID"
                 }
@@ -3434,6 +3522,7 @@
                     "cpp_rv_decl": "TypeID SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "typefunc", 
                 "type": "TypeID"
             }
@@ -3477,6 +3566,7 @@
                         "cpp_var": "arg", 
                         "py_var": "SH_Py_arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "EnumTypeID"
                 }
@@ -3520,6 +3610,7 @@
                     "cpp_rv_decl": "EnumTypeID SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "enumfunc", 
                 "type": "EnumTypeID"
             }
@@ -3555,6 +3646,7 @@
                         "cpp_var": "arg1", 
                         "py_var": "SH_Py_arg1"
                     }, 
+                    "init": null, 
                     "name": "arg1", 
                     "type": "Class1"
                 }
@@ -3590,6 +3682,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "useclass", 
                 "type": "void"
             }
@@ -3609,6 +3702,7 @@
                         "value": false
                     }, 
                     "const": true, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -3638,6 +3732,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "vector_sum", 
                 "type": "int"
             }
@@ -3673,6 +3768,7 @@
                         "c_var": "arg", 
                         "f_var": "arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -3705,6 +3801,7 @@
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "vector_sum", 
                 "type": "int"
             }
@@ -3724,6 +3821,7 @@
                         "value": false
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -3752,6 +3850,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "vector_iota", 
                 "type": "void"
             }
@@ -3788,6 +3887,7 @@
                         "c_var": "arg", 
                         "f_var": "arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -3817,6 +3917,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "vector_iota", 
                 "type": "void"
             }
@@ -3836,6 +3937,7 @@
                         "value": false
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -3864,6 +3966,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "vector_increment", 
                 "type": "void"
             }
@@ -3900,6 +4003,7 @@
                         "c_var": "arg", 
                         "f_var": "arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -3929,6 +4033,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "vector_increment", 
                 "type": "void"
             }
@@ -3948,6 +4053,7 @@
                         "value": false
                     }, 
                     "const": true, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -3981,6 +4087,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "vector_string_count", 
                 "type": "int"
             }
@@ -4018,6 +4125,7 @@
                         "c_var": "arg", 
                         "f_var": "arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -4054,6 +4162,7 @@
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "vector_string_count", 
                 "type": "int"
             }
@@ -4075,6 +4184,7 @@
                         "value": false
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -4108,6 +4218,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "vector_string_fill", 
                 "type": "void"
             }
@@ -4148,6 +4259,7 @@
                         "c_var": "arg", 
                         "f_var": "arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -4181,6 +4293,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "vector_string_fill", 
                 "type": "void"
             }
@@ -4200,6 +4313,7 @@
                         "value": false
                     }, 
                     "const": false, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -4231,6 +4345,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "vector_string_append", 
                 "type": "void"
             }
@@ -4269,6 +4384,7 @@
                         "c_var": "arg", 
                         "f_var": "arg"
                     }, 
+                    "init": null, 
                     "name": "arg", 
                     "type": "std::vector"
                 }
@@ -4301,6 +4417,7 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "init": null, 
                 "name": "vector_string_append", 
                 "type": "void"
             }
@@ -4354,6 +4471,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "LastFunctionCalled", 
                 "type": "std::string"
             }
@@ -4383,6 +4501,7 @@
                         "cpp_val": "SHT_rv.c_str()", 
                         "cpp_var": "SHT_rv"
                     }, 
+                    "init": null, 
                     "name": "SHF_rv", 
                     "type": "std::string"
                 }
@@ -4420,6 +4539,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "init": null, 
                 "name": "LastFunctionCalled", 
                 "type": "void"
             }

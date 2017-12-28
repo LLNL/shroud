@@ -189,7 +189,7 @@ double TUT_function5()
 // splicer end function.function5
 }
 
-// double Function5(double arg1+default(3.1415)+intent(in)+value)
+// double Function5(double arg1=3.1415+intent(in)+value)
 // function_index=31
 double TUT_function5_arg1(double arg1)
 {
@@ -199,7 +199,7 @@ double TUT_function5_arg1(double arg1)
 // splicer end function.function5_arg1
 }
 
-// double Function5(double arg1+default(3.1415)+intent(in)+value, bool arg2+default(true)+intent(in)+value)
+// double Function5(double arg1=3.1415+intent(in)+value, bool arg2=true+intent(in)+value)
 // function_index=10
 double TUT_function5_arg1_arg2(double arg1, bool arg2)
 {
@@ -333,7 +333,7 @@ int TUT_overload1_num(int num)
 // splicer end function.overload1_num
 }
 
-// int overload1(int num+intent(in)+value, int offset+default(0)+intent(in)+value)
+// int overload1(int num+intent(in)+value, int offset=0+intent(in)+value)
 // function_index=37
 int TUT_overload1_num_offset(int num, int offset)
 {
@@ -343,7 +343,7 @@ int TUT_overload1_num_offset(int num, int offset)
 // splicer end function.overload1_num_offset
 }
 
-// int overload1(int num+intent(in)+value, int offset+default(0)+intent(in)+value, int stride+default(1)+intent(in)+value)
+// int overload1(int num+intent(in)+value, int offset=0+intent(in)+value, int stride=1+intent(in)+value)
 // function_index=18
 int TUT_overload1_num_offset_stride(int num, int offset, int stride)
 {
@@ -363,7 +363,7 @@ int TUT_overload1_3(double type, int num)
 // splicer end function.overload1_3
 }
 
-// int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset+default(0)+intent(in)+value)
+// int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset=0+intent(in)+value)
 // function_index=39
 int TUT_overload1_4(double type, int num, int offset)
 {
@@ -373,7 +373,7 @@ int TUT_overload1_4(double type, int num, int offset)
 // splicer end function.overload1_4
 }
 
-// int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset+default(0)+intent(in)+value, int stride+default(1)+intent(in)+value)
+// int overload1(double type+intent(in)+value, int num+intent(in)+value, int offset=0+intent(in)+value, int stride=1+intent(in)+value)
 // function_index=19
 int TUT_overload1_5(double type, int num, int offset, int stride)
 {

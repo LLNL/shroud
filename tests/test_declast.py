@@ -64,6 +64,7 @@ class CheckParse(unittest.TestCase):
             'result': {
                 'attrs': {},
                 'const': False,
+                'init': None,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -97,6 +98,7 @@ class CheckParse(unittest.TestCase):
             'result': {
                 'attrs': {'alias': 'junk'},
                 'const': False,
+                'init': None,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -132,6 +134,7 @@ class CheckParse(unittest.TestCase):
             'result': {
                 'attrs': {},
                 'const': False,
+                'init': None,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -167,6 +170,7 @@ class CheckParse(unittest.TestCase):
             'result': {
                 'attrs': {},
                 'const': False,
+                'init': None,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -200,6 +204,7 @@ class CheckParse(unittest.TestCase):
                 {
                     'attrs': {},
                     'const': False,
+                    'init': None,
                     'name': 'arg1',
                     'type': 'int',
                 }
@@ -209,6 +214,7 @@ class CheckParse(unittest.TestCase):
             'result': {
                 'attrs': {},
                 'const': False,
+                'init': None,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -255,11 +261,13 @@ class CheckParse(unittest.TestCase):
             'args': [{
                 'attrs': {},
                 'const': False,
+                'init': None,
                 'name': 'arg1',
                 'type': 'int',
             },{
                 'attrs': {},
                 'const': False,
+                'init': None,
                 'name': 'arg2',
                 'type': 'double',
             }],
@@ -268,6 +276,7 @@ class CheckParse(unittest.TestCase):
             'result': {
                 'attrs': {},
                 'const': False,
+                'init': None,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -330,6 +339,7 @@ class CheckParse(unittest.TestCase):
             'result': {
                 'attrs': {'reference': True},
                 'const': True,
+                'init': None,
                 'name': 'getName',
                 'type': 'std::string',
             }
@@ -373,11 +383,13 @@ class CheckParse(unittest.TestCase):
                 {
                     'attrs': {'in': True},
                     'const': False,
+                    'init': None,
                     'name': 'arg1',
                     'type': 'int',
                 },{
                     'attrs': {'out': True},
                     'const': False,
+                    'init': None,
                     'name': 'arg2',
                     'type': 'double',
                 }
@@ -393,6 +405,7 @@ class CheckParse(unittest.TestCase):
                     'len': 30,
                 },
                 'const': True,
+                'init': None,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -470,6 +483,7 @@ class CheckParse(unittest.TestCase):
                     "ptr": True
                 }, 
                 'const': False,
+                'init': None,
                 "name": "Class1", 
                 "type": "Class1"
             }
@@ -515,33 +529,29 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(r.to_dict(),  {
             "args": [
                 {
-                    "attrs": {
-                        "default": 0
-                    }, 
+                    "attrs": {},
+                    "init": 0,
                     'const': False,
                     "name": "arg1", 
                     "type": "int"
                 }, 
                 {
-                    "attrs": {
-                        "default": 0.0
-                    }, 
+                    "attrs": {},
+                    "init": 0.0,
                     'const': False,
                     "name": "arg2", 
                     "type": "double"
                 }, 
                 {
-                    "attrs": {
-                        "default": '"name"'
-                    }, 
+                    "attrs": {},
+                    "init": '"name"',
                     'const': False,
                     "name": "arg3", 
                     "type": "std::string"
                 },
                 {
-                    "attrs": {
-                        "default": "true"
-                    }, 
+                    "attrs": {},
+                    "init": "true",
                     'const': False,
                     "name": "arg4", 
                     "type": "bool"
@@ -552,6 +562,7 @@ class CheckParse(unittest.TestCase):
             "result": {
                 "attrs": {}, 
                 'const': False,
+                'init': None,
                 "name": "name", 
                 "type": "void"
             }
@@ -643,6 +654,7 @@ class CheckParse(unittest.TestCase):
                 {
                     "attrs": {}, 
                     'const': False,
+                    'init': None,
                     "name": "arg", 
                     "type": "ArgType"
                 }
@@ -652,6 +664,7 @@ class CheckParse(unittest.TestCase):
             "result": {
                 "attrs": {}, 
                 'const': False,
+                'init': None,
                 "name": "decl11", 
                 "type": "void"
             }
@@ -701,14 +714,16 @@ class CheckParse(unittest.TestCase):
                 {
                     "attrs": {
                         "template": "std::string"
-                    }, 
+                    },
                     'const': False,
+                    'init': None,
                     "name": "arg1", 
                     "type": "std::vector"
                 }, 
                 {
                     "attrs": {}, 
                     'const': False,
+                    'init': None,
                     "name": "arg2", 
                     "type": "string"
                 }
@@ -718,6 +733,7 @@ class CheckParse(unittest.TestCase):
             "result": {
                 "attrs": {}, 
                 'const': False,
+                'init': None,
                 "name": "decl12",
                 "type": "void"
             }
