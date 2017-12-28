@@ -752,6 +752,19 @@ def check_decl(decl, current_class=None, template_types=[]):
         a = Parser(decl,current_class=current_class,trace=False).decl_statement()
     return a
 
+
+def create_this_arg(name, typ, const=True):
+    """Create a Declaration for an argument for the 'this' argument.
+    """
+    arg = Declaration()
+    arg.const = const
+    arg.declarator = Declarator()
+    arg.declarator.name = name
+    arg.declarator.pointer = [ Ptr('*') ]
+    arg.specifier = [ typ ]
+    return arg
+    
+
 def str_declarator(decl):
     """ Convert declaration dict to string.
     Used with output from check_decl.

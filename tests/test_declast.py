@@ -951,5 +951,18 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void getName(std::string &output) const", s)
                          
+    def test_thisarg01(self):
+        """Create an argument for const this"""
+        r = declast.create_this_arg('self', 'Class1', const=True)
+        s = r.gen_decl()
+        self.assertEqual("const Class1 *self", s)
+
+    def test_thisarg02(self):
+        """Create an argument for this"""
+        r = declast.create_this_arg('self', 'Class1', const=False)
+        s = r.gen_decl()
+        self.assertEqual("Class1 *self", s)
+
+                         
 if __name__ == '__main__':
     unittest.main()
