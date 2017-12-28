@@ -274,7 +274,7 @@ PP_exclass2_get_name_length(
   PyObject *)  // kwds unused
 {
 // splicer begin class.ExClass2.method.get_name_length
-    const int rv = self->BBB->GetNameLength();
+    int rv = self->BBB->GetNameLength();
     return Py_BuildValue("i", rv);
 // splicer end class.ExClass2.method.get_name_length
 }

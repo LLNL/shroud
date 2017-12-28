@@ -213,16 +213,16 @@ void AA_exclass2_get_name4_bufferify(AA_exclass2 * self, char * SHF_rv, int NSHF
 // splicer end class.ExClass2.method.get_name4_bufferify
 }
 
-// const int GetNameLength()
+// int GetNameLength() const
 // function_index=24
 /**
  * \brief helper function for Fortran
  *
  */
-const int AA_exclass2_get_name_length(AA_exclass2 * self)
+int AA_exclass2_get_name_length(const AA_exclass2 * self)
 {
 // splicer begin class.ExClass2.method.get_name_length
-    ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));
+    const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));
     return SH_this->getName().length();
 
 // splicer end class.ExClass2.method.get_name_length

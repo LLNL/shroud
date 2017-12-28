@@ -1945,18 +1945,19 @@
                 }, 
                 {
                     "C_code": "{C_pre_call}\nreturn {CPP_this}->getName().length();\n", 
-                    "_decl": "const int GetNameLength()", 
+                    "_decl": "int GetNameLength() const", 
                     "_function_index": 24, 
                     "_subprogram": "function", 
+                    "decl": "int GetNameLength() const", 
                     "doxygen": {
                         "brief": "helper function for Fortran"
                     }, 
                     "fmt": {
                         "C_call_list": "", 
                         "C_name": "AA_exclass2_get_name_length", 
-                        "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
-                        "C_prototype": "AA_exclass2 * self", 
-                        "C_return_type": "const int", 
+                        "C_pre_call": "const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));", 
+                        "C_prototype": "const AA_exclass2 * self", 
+                        "C_return_type": "int", 
                         "F_C_call": "c_exclass2_get_name_length", 
                         "F_C_name": "c_exclass2_get_name_length", 
                         "F_arg_c_call": "obj%voidptr", 
@@ -1969,24 +1970,23 @@
                         "F_result_clause": " result(SHT_rv)", 
                         "F_subprogram": "function", 
                         "PY_name_impl": "PP_exclass2_get_name_length", 
-                        "c_const": "", 
+                        "c_const": "const ", 
                         "c_ptr": " *", 
                         "c_var": "self", 
                         "function_name": "GetNameLength", 
                         "underscore_name": "get_name_length"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "args": [], 
                         "attrs": {}, 
-                        "const": true, 
+                        "const": false, 
                         "fattrs": {}, 
                         "fmtc": {
-                            "cpp_rv_decl": "const int SHT_rv", 
+                            "cpp_rv_decl": "int SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
-                        "func_const": false, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "GetNameLength", 
                         "type": "int"

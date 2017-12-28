@@ -196,17 +196,10 @@ classes:
     - decl:       string& getName3() const
     - decl:       string& getName4()
 
-    - doxygen:
+#   This function does not actually exist in the wrapped libray
+    - decl: int GetNameLength() const
+      doxygen:
         brief: helper function for Fortran
-      result:
-         name: GetNameLength
-         type: int
-         const: true
-         init: null
-         fattrs: {}
-         func_const: False
-         args: []
-      func_const: False
       C_code: |
         {C_pre_call}
         return {CPP_this}->getName().length();

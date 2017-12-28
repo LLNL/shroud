@@ -35,7 +35,7 @@ C method string & getName3() const
 C method void getName3(string & SHF_rv +intent(out)+len(NSHF_rv)) const
 C method string & getName4()
 C method void getName4(string & SHF_rv +intent(out)+len(NSHF_rv))
-C method const int GetNameLength()
+C method int GetNameLength() const
 C method ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
 C method void * declare(TypeID type +intent(in)+value)
 C method void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
@@ -98,7 +98,7 @@ C-interface, Fortran method string & getName3() const
 C-interface method void getName3(string & SHF_rv +intent(out)+len(NSHF_rv)) const
 C-interface, Fortran method string & getName4()
 C-interface method void getName4(string & SHF_rv +intent(out)+len(NSHF_rv))
-C-interface, Fortran method const int GetNameLength()
+C-interface, Fortran method int GetNameLength() const
 C-interface, Fortran method ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
 C-interface method void * declare(TypeID type +intent(in)+value)
 Fortran method void * declare(TypeID type +intent(in)+value)
@@ -153,7 +153,7 @@ Python method const string & getName() const
 Python method const string & getName2()
 Python method string & getName3() const
 Python method string & getName4()
-Python method const int GetNameLength()
+Python method int GetNameLength() const
 Python method ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
 Python method void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
 Python method void destroyall()

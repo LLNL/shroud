@@ -209,7 +209,7 @@ module exclass2_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_exclass2_get_name4_bufferify
 
-        function c_exclass2_get_name_length(self) &
+        pure function c_exclass2_get_name_length(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass2_get_name_length")
             use iso_c_binding, only : C_INT, C_PTR
@@ -411,7 +411,7 @@ contains
         ! splicer end class.ExClass2.method.get_name4
     end function exclass2_get_name4
 
-    ! const int GetNameLength()
+    ! int GetNameLength() const
     ! function_index=24
     !>
     !! \brief helper function for Fortran
