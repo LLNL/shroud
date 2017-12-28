@@ -994,8 +994,6 @@ class Schema(object):
 #        func.update(node)
 #        func.dump()
 
-        node['args'] = []
-
         if 'cpp_template' in node:
             template_types = node['cpp_template'].keys()
         else:
@@ -1189,7 +1187,7 @@ class GenFunctions(object):
                 if new['result']['type'] == typename:
                     new['result']['type'] = type
                     new['_CPP_return_templated'] = True
-                for arg in new['args']:
+                for arg in new['result']['args']:
                     if arg['type'] == typename:
                         arg['type'] = type
 
@@ -1226,7 +1224,7 @@ class GenFunctions(object):
                 options.wrap_python = False
                 options.wrap_lua = False
                 # Convert typename to type
-                for arg in new['args']:
+                for arg in new['result']['args']:
                     if arg['name'] == argname:
                         # Convert any typedef to native type with f_type
                         argtype = arg['type']
@@ -1261,14 +1259,14 @@ class GenFunctions(object):
         ndefault = 0
 
         min_args = 0
-        for i, arg in enumerate(node['args']):
+        for i, arg in enumerate(node['result']['args']):
             if arg['init'] is None:
                 min_args += 1
                 continue
             new = util.copy_function_node(node)
             self.append_function_index(new)
             new['_generated'] = 'has_default_arg'
-            del new['args'][i:]  # remove trailing arguments
+            del new['result']['args'][i:]  # remove trailing arguments
             del new['_has_default_arg']
             options = new['options']
             options.wrap_c = True
@@ -1288,7 +1286,7 @@ class GenFunctions(object):
 
         # keep track of generated default value functions
         node['_default_funcs'] = default_funcs
-        node['_nargs'] = (min_args, len(node['args']))
+        node['_nargs'] = (min_args, len(node['result']['args']))
         # The last name calls with all arguments (the original decl)
         try:
             node['fmt'].function_suffix = default_arg_suffix[ndefault]
@@ -1332,7 +1330,7 @@ class GenFunctions(object):
 
         # Is result or any argument a string?
         has_implied_arg = False
-        for arg in node['args']:
+        for arg in node['result']['args']:
             argtype = arg['type']
             typedef = util.Typedef.lookup(argtype)
             if typedef.base == 'string':
@@ -1384,7 +1382,7 @@ class GenFunctions(object):
         C_new['_PTR_C_CPP_index'] = node['_function_index']
 
         newargs = []
-        for arg in C_new['args']:
+        for arg in C_new['result']['args']:
             attrs = arg['attrs']
             argtype = arg['type']
             arg_typedef = util.Typedef.lookup(argtype)
@@ -1433,7 +1431,7 @@ class GenFunctions(object):
             if not result_is_ptr:
                 attrs['ptr'] = True
                 attrs['reference'] = False
-            C_new['args'].append(result_as_string)
+            C_new['result']['args'].append(result_as_string)
 
             # convert to subroutine
             C_new['_subprogram'] = 'subroutine'
@@ -1515,7 +1513,7 @@ class GenFunctions(object):
         result_typedef = util.Typedef.lookup(rv_type)
         # XXX - make sure it exists
         used_types[result['type']] = result_typedef
-        for arg in node['args']:
+        for arg in result['args']:
             argtype = arg['type']
             typedef = util.Typedef.lookup(argtype)
             if typedef is None:
@@ -1573,9 +1571,9 @@ class GenFunctions(object):
             result = node['result']
             self.gen_arg_decl(result, decl)
 
-            if node['args']:
+            if result['args']:
                 decl.append('(')
-                for arg in node['args']:
+                for arg in result['args']:
                     self.gen_arg_decl(arg, decl)
                     self.gen_annotations_decl(arg['attrs'], decl)
                     decl.append(', ')
@@ -1659,7 +1657,7 @@ class VerifyAttrs(object):
             node['_subprogram'] = 'function'
 
         found_default = False
-        for arg in node['args']:
+        for arg in result['args']:
             argname = arg['name']
             argtype = arg['type']
             typedef = util.Typedef.lookup(argtype)

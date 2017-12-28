@@ -28,26 +28,6 @@
                     "_decl": "ExClass1 * new(const string * name +intent(in)) +constructor", 
                     "_function_index": 0, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "ptr": true, 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "fmtc": {
-                                "c_const": "const ", 
-                                "c_ptr": " *", 
-                                "c_var": "name", 
-                                "cpp_type": "std::string", 
-                                "cpp_var": "SH_name"
-                            }, 
-                            "init": null, 
-                            "name": "name", 
-                            "type": "string"
-                        }
-                    ], 
                     "decl": "ExClass1 *new ( const string *name ) +constructor", 
                     "doxygen": {
                         "brief": "constructor", 
@@ -79,6 +59,26 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "ptr": true, 
+                                    "value": false
+                                }, 
+                                "const": true, 
+                                "fmtc": {
+                                    "c_const": "const ", 
+                                    "c_ptr": " *", 
+                                    "c_var": "name", 
+                                    "cpp_type": "std::string", 
+                                    "cpp_var": "SH_name"
+                                }, 
+                                "init": null, 
+                                "name": "name", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -103,32 +103,6 @@
                     "_function_index": 13, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "len_trim": "Lname", 
-                                "ptr": true, 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "fmtc": {
-                                "c_const": "const ", 
-                                "c_ptr": " *", 
-                                "c_var": "name", 
-                                "c_var_trim": "Lname", 
-                                "cpp_type": "std::string", 
-                                "cpp_var": "SH_name"
-                            }, 
-                            "fmtf": {
-                                "c_var": "name", 
-                                "f_var": "name"
-                            }, 
-                            "init": null, 
-                            "name": "name", 
-                            "type": "string"
-                        }
-                    ], 
                     "decl": "ExClass1 *new ( const string *name ) +constructor", 
                     "doxygen": {
                         "brief": "constructor", 
@@ -154,6 +128,32 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "len_trim": "Lname", 
+                                    "ptr": true, 
+                                    "value": false
+                                }, 
+                                "const": true, 
+                                "fmtc": {
+                                    "c_const": "const ", 
+                                    "c_ptr": " *", 
+                                    "c_var": "name", 
+                                    "c_var_trim": "Lname", 
+                                    "cpp_type": "std::string", 
+                                    "cpp_var": "SH_name"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "name", 
+                                    "f_var": "name"
+                                }, 
+                                "init": null, 
+                                "name": "name", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -175,7 +175,6 @@
                     "_decl": "void delete() +destructor", 
                     "_function_index": 1, 
                     "_subprogram": "subroutine", 
-                    "args": [], 
                     "decl": "void delete() +destructor", 
                     "doxygen": {
                         "description": "longer description joined with previous line"
@@ -207,6 +206,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {
@@ -222,37 +222,6 @@
                     "_decl": "int incrementCount(int incr +intent(in)+value)", 
                     "_function_index": 2, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "incr", 
-                                "cpp_type": "int", 
-                                "cpp_var": "incr"
-                            }, 
-                            "fmtf": {
-                                "c_var": "incr", 
-                                "f_var": "incr"
-                            }, 
-                            "fmtpy": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "incr", 
-                                "cpp_type": "int", 
-                                "cpp_var": "incr", 
-                                "py_var": "SH_Py_incr"
-                            }, 
-                            "init": null, 
-                            "name": "incr", 
-                            "type": "int"
-                        }
-                    ], 
                     "decl": "int incrementCount(int incr)", 
                     "fmt": {
                         "C_call_code": "int SHT_rv = SH_this->incrementCount(incr);", 
@@ -282,6 +251,37 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "incr", 
+                                    "cpp_type": "int", 
+                                    "cpp_var": "incr"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "incr", 
+                                    "f_var": "incr"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "incr", 
+                                    "cpp_type": "int", 
+                                    "cpp_var": "incr", 
+                                    "py_var": "SH_Py_incr"
+                                }, 
+                                "init": null, 
+                                "name": "incr", 
+                                "type": "int"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -302,7 +302,6 @@
                     "_decl": "const string & getName() const", 
                     "_function_index": 3, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "const string& getName() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
@@ -334,6 +333,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {
                             "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})", 
                             "reference": true
@@ -362,35 +362,6 @@
                     "_function_index": 14, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "_is_result": true, 
-                                "intent": "out", 
-                                "len": "NSHF_rv", 
-                                "reference": true
-                            }, 
-                            "const": false, 
-                            "fattrs": {}, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "SHF_rv", 
-                                "c_var_len": "NSHF_rv", 
-                                "cpp_type": "std::string", 
-                                "cpp_val": "SHT_rv.c_str()", 
-                                "cpp_var": "SHT_rv"
-                            }, 
-                            "fmtf": {
-                                "c_var": "SHT_rv", 
-                                "f_var": "SHT_rv"
-                            }, 
-                            "func_const": true, 
-                            "init": null, 
-                            "name": "SHF_rv", 
-                            "type": "string"
-                        }
-                    ], 
                     "decl": "const string& getName() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
@@ -414,6 +385,36 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "args": [], 
+                                "attrs": {
+                                    "_is_result": true, 
+                                    "intent": "out", 
+                                    "len": "NSHF_rv", 
+                                    "reference": true
+                                }, 
+                                "const": false, 
+                                "fattrs": {}, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "SHF_rv", 
+                                    "c_var_len": "NSHF_rv", 
+                                    "cpp_type": "std::string", 
+                                    "cpp_val": "SHT_rv.c_str()", 
+                                    "cpp_var": "SHT_rv"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "SHT_rv", 
+                                    "f_var": "SHT_rv"
+                                }, 
+                                "func_const": true, 
+                                "init": null, 
+                                "name": "SHF_rv", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})", 
                             "ptr": false, 
@@ -436,7 +437,6 @@
                     "_decl": "int GetNameLength() const", 
                     "_function_index": 4, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "int GetNameLength() const", 
                     "doxygen": {
                         "brief": "helper function for Fortran to get length of name."
@@ -467,6 +467,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -485,7 +486,6 @@
                     "_decl": "const string & getNameErrorCheck() const", 
                     "_function_index": 5, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "const string& getNameErrorCheck() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameErrorCheck();", 
@@ -516,6 +516,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {
                             "reference": true
                         }, 
@@ -541,35 +542,6 @@
                     "_function_index": 15, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "_is_result": true, 
-                                "intent": "out", 
-                                "len": "NSHF_rv", 
-                                "reference": true
-                            }, 
-                            "const": false, 
-                            "fattrs": {}, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "SHF_rv", 
-                                "c_var_len": "NSHF_rv", 
-                                "cpp_type": "std::string", 
-                                "cpp_val": "SHT_rv.c_str()", 
-                                "cpp_var": "SHT_rv"
-                            }, 
-                            "fmtf": {
-                                "c_var": "SHT_rv", 
-                                "f_var": "SHT_rv"
-                            }, 
-                            "func_const": true, 
-                            "init": null, 
-                            "name": "SHF_rv", 
-                            "type": "string"
-                        }
-                    ], 
                     "decl": "const string& getNameErrorCheck() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameErrorCheck();", 
@@ -593,6 +565,36 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "args": [], 
+                                "attrs": {
+                                    "_is_result": true, 
+                                    "intent": "out", 
+                                    "len": "NSHF_rv", 
+                                    "reference": true
+                                }, 
+                                "const": false, 
+                                "fattrs": {}, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "SHF_rv", 
+                                    "c_var_len": "NSHF_rv", 
+                                    "cpp_type": "std::string", 
+                                    "cpp_val": "SHT_rv.c_str()", 
+                                    "cpp_var": "SHT_rv"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "SHT_rv", 
+                                    "f_var": "SHT_rv"
+                                }, 
+                                "func_const": true, 
+                                "init": null, 
+                                "name": "SHF_rv", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": false, 
                             "reference": false
@@ -613,7 +615,6 @@
                     "_decl": "const string & getNameArg() const", 
                     "_function_index": 6, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "const string& getNameArg() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameArg();", 
@@ -637,6 +638,7 @@
                         "wrap_fortran": false
                     }, 
                     "result": {
+                        "args": [], 
                         "attrs": {
                             "reference": true
                         }, 
@@ -662,35 +664,6 @@
                     "_function_index": 16, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "_is_result": true, 
-                                "intent": "out", 
-                                "len": "Nname", 
-                                "reference": true
-                            }, 
-                            "const": false, 
-                            "fattrs": {}, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "name", 
-                                "c_var_len": "Nname", 
-                                "cpp_type": "std::string", 
-                                "cpp_val": "SHT_rv.c_str()", 
-                                "cpp_var": "SHT_rv"
-                            }, 
-                            "fmtf": {
-                                "c_var": "name", 
-                                "f_var": "name"
-                            }, 
-                            "func_const": true, 
-                            "init": null, 
-                            "name": "name", 
-                            "type": "string"
-                        }
-                    ], 
                     "decl": "const string& getNameArg() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameArg();", 
@@ -714,6 +687,36 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "args": [], 
+                                "attrs": {
+                                    "_is_result": true, 
+                                    "intent": "out", 
+                                    "len": "Nname", 
+                                    "reference": true
+                                }, 
+                                "const": false, 
+                                "fattrs": {}, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "name", 
+                                    "c_var_len": "Nname", 
+                                    "cpp_type": "std::string", 
+                                    "cpp_val": "SHT_rv.c_str()", 
+                                    "cpp_var": "SHT_rv"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "name", 
+                                    "f_var": "name"
+                                }, 
+                                "func_const": true, 
+                                "init": null, 
+                                "name": "name", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": false, 
                             "reference": false
@@ -738,22 +741,6 @@
                     "_function_index": 17, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "_is_result": true, 
-                                "intent": "out", 
-                                "len": "Nname", 
-                                "reference": true
-                            }, 
-                            "const": false, 
-                            "fattrs": {}, 
-                            "func_const": true, 
-                            "init": null, 
-                            "name": "name", 
-                            "type": "string"
-                        }
-                    ], 
                     "decl": "const string& getNameArg() const", 
                     "fmt": {
                         "F_C_call": "c_exclass1_get_name_arg_bufferify", 
@@ -774,6 +761,23 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "args": [], 
+                                "attrs": {
+                                    "_is_result": true, 
+                                    "intent": "out", 
+                                    "len": "Nname", 
+                                    "reference": true
+                                }, 
+                                "const": false, 
+                                "fattrs": {}, 
+                                "func_const": true, 
+                                "init": null, 
+                                "name": "name", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": false, 
                             "reference": false
@@ -790,7 +794,6 @@
                     "_decl": "ExClass2 * getRoot()", 
                     "_function_index": 7, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "ExClass2 *getRoot()", 
                     "fmt": {
                         "C_call_code": "ExClass2 * SHT_rv = SH_this->getRoot();", 
@@ -820,6 +823,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -847,37 +851,6 @@
                     "_function_index": 8, 
                     "_overloaded": true, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "value", 
-                                "cpp_type": "int", 
-                                "cpp_var": "value"
-                            }, 
-                            "fmtf": {
-                                "c_var": "value", 
-                                "f_var": "value"
-                            }, 
-                            "fmtpy": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "value", 
-                                "cpp_type": "int", 
-                                "cpp_var": "value", 
-                                "py_var": "SH_Py_value"
-                            }, 
-                            "init": null, 
-                            "name": "value", 
-                            "type": "int"
-                        }
-                    ], 
                     "decl": "int  getValue(int value)", 
                     "fmt": {
                         "C_call_code": "int SHT_rv = SH_this->getValue(value);", 
@@ -909,6 +882,37 @@
                     "function_suffix": "_from_int", 
                     "options": {}, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "value", 
+                                    "cpp_type": "int", 
+                                    "cpp_var": "value"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "value", 
+                                    "f_var": "value"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "value", 
+                                    "cpp_type": "int", 
+                                    "cpp_var": "value", 
+                                    "py_var": "SH_Py_value"
+                                }, 
+                                "init": null, 
+                                "name": "value", 
+                                "type": "int"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -931,37 +935,6 @@
                     "_function_index": 9, 
                     "_overloaded": true, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "value", 
-                                "cpp_type": "long", 
-                                "cpp_var": "value"
-                            }, 
-                            "fmtf": {
-                                "c_var": "value", 
-                                "f_var": "value"
-                            }, 
-                            "fmtpy": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "value", 
-                                "cpp_type": "long", 
-                                "cpp_var": "value", 
-                                "py_var": "SH_Py_value"
-                            }, 
-                            "init": null, 
-                            "name": "value", 
-                            "type": "long"
-                        }
-                    ], 
                     "decl": "long getValue(long value)", 
                     "fmt": {
                         "C_call_code": "long SHT_rv = SH_this->getValue(value);", 
@@ -992,6 +965,37 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "value", 
+                                    "cpp_type": "long", 
+                                    "cpp_var": "value"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "value", 
+                                    "f_var": "value"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "value", 
+                                    "cpp_type": "long", 
+                                    "cpp_var": "value", 
+                                    "py_var": "SH_Py_value"
+                                }, 
+                                "init": null, 
+                                "name": "value", 
+                                "type": "long"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -1009,7 +1013,6 @@
                     "_decl": "void * getAddr()", 
                     "_function_index": 10, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "void *getAddr()", 
                     "fmt": {
                         "C_call_code": "void * SHT_rv = SH_this->getAddr();", 
@@ -1039,6 +1042,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -1058,37 +1062,6 @@
                     "_decl": "bool hasAddr(bool in +intent(in)+value)", 
                     "_function_index": 11, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "in", 
-                                "cpp_type": "bool", 
-                                "cpp_var": "in"
-                            }, 
-                            "fmtf": {
-                                "c_var": "SH_in", 
-                                "f_var": "in"
-                            }, 
-                            "fmtpy": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "in", 
-                                "cpp_type": "bool", 
-                                "cpp_var": "in", 
-                                "py_var": "SH_Py_in"
-                            }, 
-                            "init": null, 
-                            "name": "in", 
-                            "type": "bool"
-                        }
-                    ], 
                     "decl": "bool hasAddr(bool in)", 
                     "fmt": {
                         "C_call_code": "bool SHT_rv = SH_this->hasAddr(in);", 
@@ -1118,6 +1091,37 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "in", 
+                                    "cpp_type": "bool", 
+                                    "cpp_var": "in"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "SH_in", 
+                                    "f_var": "in"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "in", 
+                                    "cpp_type": "bool", 
+                                    "cpp_var": "in", 
+                                    "py_var": "SH_Py_in"
+                                }, 
+                                "init": null, 
+                                "name": "in", 
+                                "type": "bool"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -1135,7 +1139,6 @@
                     "_decl": "void SplicerSpecial()", 
                     "_function_index": 12, 
                     "_subprogram": "subroutine", 
-                    "args": [], 
                     "decl": "void SplicerSpecial", 
                     "fmt": {
                         "C_call_list": "", 
@@ -1161,6 +1164,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -1211,21 +1215,13 @@
                     "args": [
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "ptr": true, 
-                                "value": false
+                                "random": 2
                             }, 
-                            "const": true, 
-                            "fmtc": {
-                                "c_const": "const ", 
-                                "c_ptr": " *", 
-                                "c_var": "name", 
-                                "cpp_type": "std::string", 
-                                "cpp_var": "SH_name"
-                            }, 
-                            "init": null, 
                             "name": "name", 
-                            "type": "string"
+                            "random": 1
+                        }, 
+                        {
+                            "name": "extra"
                         }
                     ], 
                     "decl": "ExClass2 *ExClass2 (const string *name) +constructor", 
@@ -1254,6 +1250,26 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "ptr": true, 
+                                    "value": false
+                                }, 
+                                "const": true, 
+                                "fmtc": {
+                                    "c_const": "const ", 
+                                    "c_ptr": " *", 
+                                    "c_var": "name", 
+                                    "cpp_type": "std::string", 
+                                    "cpp_var": "SH_name"
+                                }, 
+                                "init": null, 
+                                "name": "name", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -1281,27 +1297,13 @@
                     "args": [
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "len_trim": "Lname", 
-                                "ptr": true, 
-                                "value": false
+                                "random": 2
                             }, 
-                            "const": true, 
-                            "fmtc": {
-                                "c_const": "const ", 
-                                "c_ptr": " *", 
-                                "c_var": "name", 
-                                "c_var_trim": "Lname", 
-                                "cpp_type": "std::string", 
-                                "cpp_var": "SH_name"
-                            }, 
-                            "fmtf": {
-                                "c_var": "name", 
-                                "f_var": "name"
-                            }, 
-                            "init": null, 
                             "name": "name", 
-                            "type": "string"
+                            "random": 1
+                        }, 
+                        {
+                            "name": "extra"
                         }
                     ], 
                     "decl": "ExClass2 *ExClass2 (const string *name) +constructor", 
@@ -1324,6 +1326,32 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "len_trim": "Lname", 
+                                    "ptr": true, 
+                                    "value": false
+                                }, 
+                                "const": true, 
+                                "fmtc": {
+                                    "c_const": "const ", 
+                                    "c_ptr": " *", 
+                                    "c_var": "name", 
+                                    "c_var_trim": "Lname", 
+                                    "cpp_type": "std::string", 
+                                    "cpp_var": "SH_name"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "name", 
+                                    "f_var": "name"
+                                }, 
+                                "init": null, 
+                                "name": "name", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -1345,7 +1373,6 @@
                     "_decl": "void delete() +destructor", 
                     "_function_index": 19, 
                     "_subprogram": "subroutine", 
-                    "args": [], 
                     "decl": "void delete() +destructor", 
                     "fmt": {
                         "C_call_code": "delete SH_this;", 
@@ -1374,6 +1401,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {
@@ -1390,7 +1418,6 @@
                     "_decl": "const string & getName() const", 
                     "_function_index": 20, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "const string& getName() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
@@ -1421,6 +1448,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {
                             "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})", 
                             "reference": true
@@ -1447,35 +1475,6 @@
                     "_function_index": 39, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "_is_result": true, 
-                                "intent": "out", 
-                                "len": "NSHF_rv", 
-                                "reference": true
-                            }, 
-                            "const": false, 
-                            "fattrs": {}, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "SHF_rv", 
-                                "c_var_len": "NSHF_rv", 
-                                "cpp_type": "std::string", 
-                                "cpp_val": "SHT_rv.c_str()", 
-                                "cpp_var": "SHT_rv"
-                            }, 
-                            "fmtf": {
-                                "c_var": "SHT_rv", 
-                                "f_var": "SHT_rv"
-                            }, 
-                            "func_const": true, 
-                            "init": null, 
-                            "name": "SHF_rv", 
-                            "type": "string"
-                        }
-                    ], 
                     "decl": "const string& getName() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
@@ -1499,6 +1498,36 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "args": [], 
+                                "attrs": {
+                                    "_is_result": true, 
+                                    "intent": "out", 
+                                    "len": "NSHF_rv", 
+                                    "reference": true
+                                }, 
+                                "const": false, 
+                                "fattrs": {}, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "SHF_rv", 
+                                    "c_var_len": "NSHF_rv", 
+                                    "cpp_type": "std::string", 
+                                    "cpp_val": "SHT_rv.c_str()", 
+                                    "cpp_var": "SHT_rv"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "SHT_rv", 
+                                    "f_var": "SHT_rv"
+                                }, 
+                                "func_const": true, 
+                                "init": null, 
+                                "name": "SHF_rv", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})", 
                             "ptr": false, 
@@ -1521,7 +1550,6 @@
                     "_decl": "const string & getName2()", 
                     "_function_index": 21, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "const string& getName2()", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName2();", 
@@ -1552,6 +1580,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {
                             "reference": true
                         }, 
@@ -1577,35 +1606,6 @@
                     "_function_index": 40, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "_is_result": true, 
-                                "intent": "out", 
-                                "len": "NSHF_rv", 
-                                "reference": true
-                            }, 
-                            "const": false, 
-                            "fattrs": {}, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "SHF_rv", 
-                                "c_var_len": "NSHF_rv", 
-                                "cpp_type": "std::string", 
-                                "cpp_val": "SHT_rv.c_str()", 
-                                "cpp_var": "SHT_rv"
-                            }, 
-                            "fmtf": {
-                                "c_var": "SHT_rv", 
-                                "f_var": "SHT_rv"
-                            }, 
-                            "func_const": false, 
-                            "init": null, 
-                            "name": "SHF_rv", 
-                            "type": "string"
-                        }
-                    ], 
                     "decl": "const string& getName2()", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName2();", 
@@ -1629,6 +1629,36 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "args": [], 
+                                "attrs": {
+                                    "_is_result": true, 
+                                    "intent": "out", 
+                                    "len": "NSHF_rv", 
+                                    "reference": true
+                                }, 
+                                "const": false, 
+                                "fattrs": {}, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "SHF_rv", 
+                                    "c_var_len": "NSHF_rv", 
+                                    "cpp_type": "std::string", 
+                                    "cpp_val": "SHT_rv.c_str()", 
+                                    "cpp_var": "SHT_rv"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "SHT_rv", 
+                                    "f_var": "SHT_rv"
+                                }, 
+                                "func_const": false, 
+                                "init": null, 
+                                "name": "SHF_rv", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": false, 
                             "reference": false
@@ -1650,7 +1680,6 @@
                     "_decl": "string & getName3() const", 
                     "_function_index": 22, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "string& getName3() const", 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName3();", 
@@ -1681,6 +1710,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {
                             "reference": true
                         }, 
@@ -1706,35 +1736,6 @@
                     "_function_index": 41, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "_is_result": true, 
-                                "intent": "out", 
-                                "len": "NSHF_rv", 
-                                "reference": true
-                            }, 
-                            "const": false, 
-                            "fattrs": {}, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "SHF_rv", 
-                                "c_var_len": "NSHF_rv", 
-                                "cpp_type": "std::string", 
-                                "cpp_val": "SHT_rv.c_str()", 
-                                "cpp_var": "SHT_rv"
-                            }, 
-                            "fmtf": {
-                                "c_var": "SHT_rv", 
-                                "f_var": "SHT_rv"
-                            }, 
-                            "func_const": true, 
-                            "init": null, 
-                            "name": "SHF_rv", 
-                            "type": "string"
-                        }
-                    ], 
                     "decl": "string& getName3() const", 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName3();", 
@@ -1758,6 +1759,36 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "args": [], 
+                                "attrs": {
+                                    "_is_result": true, 
+                                    "intent": "out", 
+                                    "len": "NSHF_rv", 
+                                    "reference": true
+                                }, 
+                                "const": false, 
+                                "fattrs": {}, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "SHF_rv", 
+                                    "c_var_len": "NSHF_rv", 
+                                    "cpp_type": "std::string", 
+                                    "cpp_val": "SHT_rv.c_str()", 
+                                    "cpp_var": "SHT_rv"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "SHT_rv", 
+                                    "f_var": "SHT_rv"
+                                }, 
+                                "func_const": true, 
+                                "init": null, 
+                                "name": "SHF_rv", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": false, 
                             "reference": false
@@ -1779,7 +1810,6 @@
                     "_decl": "string & getName4()", 
                     "_function_index": 23, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "string& getName4()", 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName4();", 
@@ -1810,6 +1840,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {
                             "reference": true
                         }, 
@@ -1835,35 +1866,6 @@
                     "_function_index": 42, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "_is_result": true, 
-                                "intent": "out", 
-                                "len": "NSHF_rv", 
-                                "reference": true
-                            }, 
-                            "const": false, 
-                            "fattrs": {}, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "SHF_rv", 
-                                "c_var_len": "NSHF_rv", 
-                                "cpp_type": "std::string", 
-                                "cpp_val": "SHT_rv.c_str()", 
-                                "cpp_var": "SHT_rv"
-                            }, 
-                            "fmtf": {
-                                "c_var": "SHT_rv", 
-                                "f_var": "SHT_rv"
-                            }, 
-                            "func_const": false, 
-                            "init": null, 
-                            "name": "SHF_rv", 
-                            "type": "string"
-                        }
-                    ], 
                     "decl": "string& getName4()", 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName4();", 
@@ -1887,6 +1889,36 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "args": [], 
+                                "attrs": {
+                                    "_is_result": true, 
+                                    "intent": "out", 
+                                    "len": "NSHF_rv", 
+                                    "reference": true
+                                }, 
+                                "const": false, 
+                                "fattrs": {}, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "SHF_rv", 
+                                    "c_var_len": "NSHF_rv", 
+                                    "cpp_type": "std::string", 
+                                    "cpp_val": "SHT_rv.c_str()", 
+                                    "cpp_var": "SHT_rv"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "SHT_rv", 
+                                    "f_var": "SHT_rv"
+                                }, 
+                                "func_const": false, 
+                                "init": null, 
+                                "name": "SHF_rv", 
+                                "type": "string"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": false, 
                             "reference": false
@@ -1908,7 +1940,6 @@
                     "_decl": "const int GetNameLength()", 
                     "_function_index": 24, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "doxygen": {
                         "brief": "helper function for Fortran"
                     }, 
@@ -1939,6 +1970,7 @@
                     "func_const": false, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": true, 
                         "fattrs": {}, 
@@ -1956,38 +1988,6 @@
                     "_decl": "ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)", 
                     "_function_index": 25, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "ptr": true, 
-                                "value": true
-                            }, 
-                            "const": true, 
-                            "fmtc": {
-                                "c_const": "const ", 
-                                "c_ptr": " *", 
-                                "c_var": "in", 
-                                "cpp_type": "ExClass1", 
-                                "cpp_var": "in"
-                            }, 
-                            "fmtf": {
-                                "c_var": "in", 
-                                "f_var": "in"
-                            }, 
-                            "fmtpy": {
-                                "c_const": "const ", 
-                                "c_ptr": " *", 
-                                "c_var": "in", 
-                                "cpp_type": "ExClass1", 
-                                "cpp_var": "in", 
-                                "py_var": "SH_Py_in"
-                            }, 
-                            "init": null, 
-                            "name": "in", 
-                            "type": "ExClass1"
-                        }
-                    ], 
                     "decl": "ExClass1 *get_class1(const ExClass1 *in)", 
                     "fmt": {
                         "C_call_code": "ExClass1 * SHT_rv = SH_this->get_class1(static_cast<const ExClass1 *>(static_cast<const void *>(in)));", 
@@ -2017,6 +2017,38 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "ptr": true, 
+                                    "value": true
+                                }, 
+                                "const": true, 
+                                "fmtc": {
+                                    "c_const": "const ", 
+                                    "c_ptr": " *", 
+                                    "c_var": "in", 
+                                    "cpp_type": "ExClass1", 
+                                    "cpp_var": "in"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "in", 
+                                    "f_var": "in"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "const ", 
+                                    "c_ptr": " *", 
+                                    "c_var": "in", 
+                                    "cpp_type": "ExClass1", 
+                                    "cpp_var": "in", 
+                                    "py_var": "SH_Py_in"
+                                }, 
+                                "init": null, 
+                                "name": "in", 
+                                "type": "ExClass1"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -2041,29 +2073,6 @@
                     "_generated": "has_default_arg", 
                     "_overloaded": true, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "type", 
-                                "cpp_type": "TypeID", 
-                                "cpp_var": "type"
-                            }, 
-                            "fmtf": {
-                                "c_var": "type", 
-                                "f_var": "type"
-                            }, 
-                            "init": null, 
-                            "name": "type", 
-                            "type": "TypeID"
-                        }
-                    ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
                     "fmt": {
                         "C_call_code": "SH_this->declare(getTypeID(type));", 
@@ -2092,6 +2101,29 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "type", 
+                                    "cpp_type": "TypeID", 
+                                    "cpp_var": "type"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "type", 
+                                    "f_var": "type"
+                                }, 
+                                "init": null, 
+                                "name": "type", 
+                                "type": "TypeID"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -2111,18 +2143,6 @@
                     "_generated": "fortran_generic", 
                     "_overloaded": true, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "init": null, 
-                            "name": "type", 
-                            "type": "TypeID"
-                        }
-                    ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
                     "fmt": {
                         "F_C_call": "c_exclass2_declare_0", 
@@ -2143,6 +2163,18 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "init": null, 
+                                "name": "type", 
+                                "type": "TypeID"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -2162,18 +2194,6 @@
                     "_generated": "fortran_generic", 
                     "_overloaded": true, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "init": null, 
-                            "name": "type", 
-                            "type": "TypeID"
-                        }
-                    ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
                     "fmt": {
                         "F_C_call": "c_exclass2_declare_0", 
@@ -2194,6 +2214,18 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "init": null, 
+                                "name": "type", 
+                                "type": "TypeID"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -2219,66 +2251,6 @@
                     ], 
                     "_overloaded": true, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "type", 
-                                "cpp_type": "TypeID", 
-                                "cpp_var": "type"
-                            }, 
-                            "fmtf": {
-                                "c_var": "type", 
-                                "f_var": "type"
-                            }, 
-                            "fmtpy": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "type", 
-                                "cpp_type": "TypeID", 
-                                "cpp_var": "type", 
-                                "py_var": "SH_Py_type"
-                            }, 
-                            "init": null, 
-                            "name": "type", 
-                            "type": "TypeID"
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "len", 
-                                "cpp_type": "SidreLength", 
-                                "cpp_var": "len"
-                            }, 
-                            "fmtf": {
-                                "c_var": "len", 
-                                "f_var": "len"
-                            }, 
-                            "fmtpy": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "len", 
-                                "cpp_type": "SidreLength", 
-                                "cpp_var": "len", 
-                                "py_var": "SH_Py_len"
-                            }, 
-                            "init": 1, 
-                            "name": "len", 
-                            "type": "SidreLength"
-                        }
-                    ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
                     "fmt": {
                         "C_call_code": "SH_this->declare(getTypeID(type), len);", 
@@ -2307,6 +2279,66 @@
                         "wrap_fortran": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "type", 
+                                    "cpp_type": "TypeID", 
+                                    "cpp_var": "type"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "type", 
+                                    "f_var": "type"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "type", 
+                                    "cpp_type": "TypeID", 
+                                    "cpp_var": "type", 
+                                    "py_var": "SH_Py_type"
+                                }, 
+                                "init": null, 
+                                "name": "type", 
+                                "type": "TypeID"
+                            }, 
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "len", 
+                                    "cpp_type": "SidreLength", 
+                                    "cpp_var": "len"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "len", 
+                                    "f_var": "len"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "len", 
+                                    "cpp_type": "SidreLength", 
+                                    "cpp_var": "len", 
+                                    "py_var": "SH_Py_len"
+                                }, 
+                                "init": 1, 
+                                "name": "len", 
+                                "type": "SidreLength"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -2334,28 +2366,6 @@
                     ], 
                     "_overloaded": true, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "init": null, 
-                            "name": "type", 
-                            "type": "TypeID"
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "init": 1, 
-                            "name": "len", 
-                            "type": "int"
-                        }
-                    ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
                     "fmt": {
                         "F_C_call": "c_exclass2_declare_1", 
@@ -2376,6 +2386,28 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "init": null, 
+                                "name": "type", 
+                                "type": "TypeID"
+                            }, 
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "init": 1, 
+                                "name": "len", 
+                                "type": "int"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -2403,28 +2435,6 @@
                     ], 
                     "_overloaded": true, 
                     "_subprogram": "function", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "init": null, 
-                            "name": "type", 
-                            "type": "TypeID"
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "init": 1, 
-                            "name": "len", 
-                            "type": "long"
-                        }
-                    ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
                     "fmt": {
                         "F_C_call": "c_exclass2_declare_1", 
@@ -2445,6 +2455,28 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "init": null, 
+                                "name": "type", 
+                                "type": "TypeID"
+                            }, 
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "init": 1, 
+                                "name": "len", 
+                                "type": "long"
+                            }
+                        ], 
                         "attrs": {
                             "ptr": true
                         }, 
@@ -2461,7 +2493,6 @@
                     "_decl": "void destroyall()", 
                     "_function_index": 27, 
                     "_subprogram": "subroutine", 
-                    "args": [], 
                     "decl": "void destroyall()", 
                     "fmt": {
                         "C_call_code": "SH_this->destroyall();", 
@@ -2490,6 +2521,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -2503,7 +2535,6 @@
                     "_decl": "TypeID getTypeID() const", 
                     "_function_index": 28, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "TypeID getTypeID() const", 
                     "fmt": {
                         "C_call_code": "TypeID SHT_rv = SH_this->getTypeID();", 
@@ -2533,6 +2564,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -2554,18 +2586,6 @@
                     "_function_index": 29, 
                     "_overloaded": true, 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "init": null, 
-                            "name": "value", 
-                            "type": "ValueType"
-                        }
-                    ], 
                     "cpp_template": {
                         "ValueType": [
                             "int", 
@@ -2586,6 +2606,18 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "init": null, 
+                                "name": "value", 
+                                "type": "ValueType"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -2601,29 +2633,6 @@
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "value", 
-                                "cpp_type": "int", 
-                                "cpp_var": "value"
-                            }, 
-                            "fmtf": {
-                                "c_var": "value", 
-                                "f_var": "value"
-                            }, 
-                            "init": null, 
-                            "name": "value", 
-                            "type": "int"
-                        }
-                    ], 
                     "decl": "void setValue(ValueType value)", 
                     "fmt": {
                         "CPP_template": "<int>", 
@@ -2656,6 +2665,29 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "value", 
+                                    "cpp_type": "int", 
+                                    "cpp_var": "value"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "value", 
+                                    "f_var": "value"
+                                }, 
+                                "init": null, 
+                                "name": "value", 
+                                "type": "int"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -2671,29 +2703,6 @@
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "value", 
-                                "cpp_type": "long", 
-                                "cpp_var": "value"
-                            }, 
-                            "fmtf": {
-                                "c_var": "value", 
-                                "f_var": "value"
-                            }, 
-                            "init": null, 
-                            "name": "value", 
-                            "type": "long"
-                        }
-                    ], 
                     "decl": "void setValue(ValueType value)", 
                     "fmt": {
                         "CPP_template": "<long>", 
@@ -2726,6 +2735,29 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "value", 
+                                    "cpp_type": "long", 
+                                    "cpp_var": "value"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "value", 
+                                    "f_var": "value"
+                                }, 
+                                "init": null, 
+                                "name": "value", 
+                                "type": "long"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -2741,29 +2773,6 @@
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "value", 
-                                "cpp_type": "float", 
-                                "cpp_var": "value"
-                            }, 
-                            "fmtf": {
-                                "c_var": "value", 
-                                "f_var": "value"
-                            }, 
-                            "init": null, 
-                            "name": "value", 
-                            "type": "float"
-                        }
-                    ], 
                     "decl": "void setValue(ValueType value)", 
                     "fmt": {
                         "CPP_template": "<float>", 
@@ -2796,6 +2805,29 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "value", 
+                                    "cpp_type": "float", 
+                                    "cpp_var": "value"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "value", 
+                                    "f_var": "value"
+                                }, 
+                                "init": null, 
+                                "name": "value", 
+                                "type": "float"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -2811,29 +2843,6 @@
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "value", 
-                                "cpp_type": "double", 
-                                "cpp_var": "value"
-                            }, 
-                            "fmtf": {
-                                "c_var": "value", 
-                                "f_var": "value"
-                            }, 
-                            "init": null, 
-                            "name": "value", 
-                            "type": "double"
-                        }
-                    ], 
                     "decl": "void setValue(ValueType value)", 
                     "fmt": {
                         "CPP_template": "<double>", 
@@ -2866,6 +2875,29 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "value", 
+                                    "cpp_type": "double", 
+                                    "cpp_var": "value"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "value", 
+                                    "f_var": "value"
+                                }, 
+                                "init": null, 
+                                "name": "value", 
+                                "type": "double"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -2880,7 +2912,6 @@
                     "_function_index": 30, 
                     "_overloaded": true, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "cpp_template": {
                         "ValueType": [
                             "int", 
@@ -2899,6 +2930,7 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -2915,7 +2947,6 @@
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "ValueType getValue()", 
                     "fmt": {
                         "CPP_template": "<int>", 
@@ -2949,6 +2980,7 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -2969,7 +3001,6 @@
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "function", 
-                    "args": [], 
                     "decl": "ValueType getValue()", 
                     "fmt": {
                         "CPP_template": "<double>", 
@@ -3003,6 +3034,7 @@
                         "wrap_python": false
                     }, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -3144,7 +3176,6 @@
             "_decl": "void local_function1()", 
             "_function_index": 47, 
             "_subprogram": "subroutine", 
-            "args": [], 
             "decl": "void local_function1", 
             "docs": "yada yada yada", 
             "fmt": {
@@ -3171,6 +3202,7 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -3187,34 +3219,6 @@
             "_decl": "bool isNameValid(const std::string & name +intent(in))", 
             "_function_index": 48, 
             "_subprogram": "function", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "name", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_name"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "name", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_name", 
-                        "py_var": "SH_Py_name"
-                    }, 
-                    "init": null, 
-                    "name": "name", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "bool isNameValid(const std::string& name)", 
             "fmt": {
                 "C_call_list": "SH_name", 
@@ -3239,6 +3243,34 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "name", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_name"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "name", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_name", 
+                            "py_var": "SH_Py_name"
+                        }, 
+                        "init": null, 
+                        "name": "name", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -3261,32 +3293,6 @@
             "_function_index": 59, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "len_trim": "Lname", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "name", 
-                        "c_var_trim": "Lname", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_name"
-                    }, 
-                    "fmtf": {
-                        "c_var": "name", 
-                        "f_var": "name"
-                    }, 
-                    "init": null, 
-                    "name": "name", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "bool isNameValid(const std::string& name)", 
             "fmt": {
                 "C_call_list": "SH_name", 
@@ -3305,6 +3311,32 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "len_trim": "Lname", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "name", 
+                            "c_var_trim": "Lname", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_name"
+                        }, 
+                        "fmtf": {
+                            "c_var": "name", 
+                            "f_var": "name"
+                        }, 
+                        "init": null, 
+                        "name": "name", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -3322,7 +3354,6 @@
             "_decl": "bool isInitialized()", 
             "_function_index": 49, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "bool isInitialized()", 
             "fmt": {
                 "C_call_code": "bool SHT_rv = isInitialized();", 
@@ -3349,6 +3380,7 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -3366,101 +3398,6 @@
             "_decl": "void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
             "_function_index": 50, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg1"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SH_arg1", 
-                        "f_var": "arg1"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg1", 
-                        "py_var": "SH_Py_arg1"
-                    }, 
-                    "init": null, 
-                    "name": "arg1", 
-                    "type": "bool"
-                }, 
-                {
-                    "attrs": {
-                        "intent": "out", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "arg2", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg2"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SH_arg2", 
-                        "f_var": "arg2"
-                    }, 
-                    "fmtpy": {
-                        "PyObject": "PyObject", 
-                        "PyTypeObject": "PyBool_Type", 
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "arg2", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg2", 
-                        "py_var": "SH_Py_arg2"
-                    }, 
-                    "init": null, 
-                    "name": "arg2", 
-                    "type": "bool"
-                }, 
-                {
-                    "attrs": {
-                        "intent": "inout", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "arg3", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg3"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SH_arg3", 
-                        "f_var": "arg3"
-                    }, 
-                    "fmtpy": {
-                        "PyObject": "PyObject", 
-                        "PyTypeObject": "PyBool_Type", 
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "arg3", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg3", 
-                        "py_var": "SH_Py_arg3"
-                    }, 
-                    "init": null, 
-                    "name": "arg3", 
-                    "type": "bool"
-                }
-            ], 
             "decl": "void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))", 
             "fmt": {
                 "C_call_code": "checkBool(arg1, arg2, arg3);", 
@@ -3486,6 +3423,101 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cpp_type": "bool", 
+                            "cpp_var": "arg1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SH_arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cpp_type": "bool", 
+                            "cpp_var": "arg1", 
+                            "py_var": "SH_Py_arg1"
+                        }, 
+                        "init": null, 
+                        "name": "arg1", 
+                        "type": "bool"
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "out", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arg2", 
+                            "cpp_type": "bool", 
+                            "cpp_var": "arg2"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SH_arg2", 
+                            "f_var": "arg2"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": "PyBool_Type", 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arg2", 
+                            "cpp_type": "bool", 
+                            "cpp_var": "arg2", 
+                            "py_var": "SH_Py_arg2"
+                        }, 
+                        "init": null, 
+                        "name": "arg2", 
+                        "type": "bool"
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "inout", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arg3", 
+                            "cpp_type": "bool", 
+                            "cpp_var": "arg3"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SH_arg3", 
+                            "f_var": "arg3"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": "PyBool_Type", 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arg3", 
+                            "cpp_type": "bool", 
+                            "cpp_var": "arg3", 
+                            "py_var": "SH_Py_arg3"
+                        }, 
+                        "init": null, 
+                        "name": "arg3", 
+                        "type": "bool"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -3505,34 +3537,6 @@
             "_function_index": 51, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "name", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_name"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "name", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_name", 
-                        "py_var": "SH_Py_name"
-                    }, 
-                    "init": null, 
-                    "name": "name", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "void test_names(const std::string &name)", 
             "fmt": {
                 "C_call_code": "test_names(SH_name);", 
@@ -3561,6 +3565,34 @@
             "function_suffix": "", 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "name", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_name"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "name", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_name", 
+                            "py_var": "SH_Py_name"
+                        }, 
+                        "init": null, 
+                        "name": "name", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -3582,32 +3614,6 @@
             "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "len_trim": "Lname", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "name", 
-                        "c_var_trim": "Lname", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_name"
-                    }, 
-                    "fmtf": {
-                        "c_var": "name", 
-                        "f_var": "name"
-                    }, 
-                    "init": null, 
-                    "name": "name", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "void test_names(const std::string &name)", 
             "fmt": {
                 "C_call_code": "test_names(SH_name);", 
@@ -3629,6 +3635,32 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "len_trim": "Lname", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "name", 
+                            "c_var_trim": "Lname", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_name"
+                        }, 
+                        "fmtf": {
+                            "c_var": "name", 
+                            "f_var": "name"
+                        }, 
+                        "init": null, 
+                        "name": "name", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -3648,59 +3680,6 @@
             "_function_index": 52, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "name", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_name"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "name", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_name", 
-                        "py_var": "SH_Py_name"
-                    }, 
-                    "init": null, 
-                    "name": "name", 
-                    "type": "std::string"
-                }, 
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "flag", 
-                        "cpp_type": "int", 
-                        "cpp_var": "flag"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "flag", 
-                        "cpp_type": "int", 
-                        "cpp_var": "flag", 
-                        "py_var": "SH_Py_flag"
-                    }, 
-                    "init": null, 
-                    "name": "flag", 
-                    "type": "int"
-                }
-            ], 
             "decl": "void test_names(const std::string &name, int flag)", 
             "fmt": {
                 "C_call_code": "test_names(SH_name, flag);", 
@@ -3729,6 +3708,59 @@
             "function_suffix": "_flag", 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "name", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_name"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "name", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_name", 
+                            "py_var": "SH_Py_name"
+                        }, 
+                        "init": null, 
+                        "name": "name", 
+                        "type": "std::string"
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "flag", 
+                            "cpp_type": "int", 
+                            "cpp_var": "flag"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "flag", 
+                            "cpp_type": "int", 
+                            "cpp_var": "flag", 
+                            "py_var": "SH_Py_flag"
+                        }, 
+                        "init": null, 
+                        "name": "flag", 
+                        "type": "int"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -3750,53 +3782,6 @@
             "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "len_trim": "Lname", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "name", 
-                        "c_var_trim": "Lname", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_name"
-                    }, 
-                    "fmtf": {
-                        "c_var": "name", 
-                        "f_var": "name"
-                    }, 
-                    "init": null, 
-                    "name": "name", 
-                    "type": "std::string"
-                }, 
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "flag", 
-                        "cpp_type": "int", 
-                        "cpp_var": "flag"
-                    }, 
-                    "fmtf": {
-                        "c_var": "flag", 
-                        "f_var": "flag"
-                    }, 
-                    "init": null, 
-                    "name": "flag", 
-                    "type": "int"
-                }
-            ], 
             "decl": "void test_names(const std::string &name, int flag)", 
             "fmt": {
                 "C_call_code": "test_names(SH_name, flag);", 
@@ -3818,6 +3803,53 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "len_trim": "Lname", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "name", 
+                            "c_var_trim": "Lname", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_name"
+                        }, 
+                        "fmtf": {
+                            "c_var": "name", 
+                            "f_var": "name"
+                        }, 
+                        "init": null, 
+                        "name": "name", 
+                        "type": "std::string"
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "flag", 
+                            "cpp_type": "int", 
+                            "cpp_var": "flag"
+                        }, 
+                        "fmtf": {
+                            "c_var": "flag", 
+                            "f_var": "flag"
+                        }, 
+                        "init": null, 
+                        "name": "flag", 
+                        "type": "int"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -3833,7 +3865,6 @@
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
-            "args": [], 
             "decl": "void testoptional(int i = 1, long j=2)", 
             "fmt": {
                 "C_call_code": "testoptional();", 
@@ -3862,6 +3893,7 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -3877,29 +3909,6 @@
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "i", 
-                        "cpp_type": "int", 
-                        "cpp_var": "i"
-                    }, 
-                    "fmtf": {
-                        "c_var": "i", 
-                        "f_var": "i"
-                    }, 
-                    "init": 1, 
-                    "name": "i", 
-                    "type": "int"
-                }
-            ], 
             "decl": "void testoptional(int i = 1, long j=2)", 
             "fmt": {
                 "C_call_code": "testoptional(i);", 
@@ -3928,6 +3937,29 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "i", 
+                            "cpp_type": "int", 
+                            "cpp_var": "i"
+                        }, 
+                        "fmtf": {
+                            "c_var": "i", 
+                            "f_var": "i"
+                        }, 
+                        "init": 1, 
+                        "name": "i", 
+                        "type": "int"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -3951,66 +3983,6 @@
             ], 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "i", 
-                        "cpp_type": "int", 
-                        "cpp_var": "i"
-                    }, 
-                    "fmtf": {
-                        "c_var": "i", 
-                        "f_var": "i"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "i", 
-                        "cpp_type": "int", 
-                        "cpp_var": "i", 
-                        "py_var": "SH_Py_i"
-                    }, 
-                    "init": 1, 
-                    "name": "i", 
-                    "type": "int"
-                }, 
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "j", 
-                        "cpp_type": "long", 
-                        "cpp_var": "j"
-                    }, 
-                    "fmtf": {
-                        "c_var": "j", 
-                        "f_var": "j"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "j", 
-                        "cpp_type": "long", 
-                        "cpp_var": "j", 
-                        "py_var": "SH_Py_j"
-                    }, 
-                    "init": 2, 
-                    "name": "j", 
-                    "type": "long"
-                }
-            ], 
             "decl": "void testoptional(int i = 1, long j=2)", 
             "fmt": {
                 "C_call_code": "testoptional(i, j);", 
@@ -4037,6 +4009,66 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "i", 
+                            "cpp_type": "int", 
+                            "cpp_var": "i"
+                        }, 
+                        "fmtf": {
+                            "c_var": "i", 
+                            "f_var": "i"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "i", 
+                            "cpp_type": "int", 
+                            "cpp_var": "i", 
+                            "py_var": "SH_Py_i"
+                        }, 
+                        "init": 1, 
+                        "name": "i", 
+                        "type": "int"
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "j", 
+                            "cpp_type": "long", 
+                            "cpp_var": "j"
+                        }, 
+                        "fmtf": {
+                            "c_var": "j", 
+                            "f_var": "j"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "j", 
+                            "cpp_type": "long", 
+                            "cpp_var": "j", 
+                            "py_var": "SH_Py_j"
+                        }, 
+                        "init": 2, 
+                        "name": "j", 
+                        "type": "long"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -4050,37 +4082,6 @@
             "_decl": "void testmpi(MPI_Comm comm +intent(in)+value)", 
             "_function_index": 54, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "comm", 
-                        "cpp_type": "MPI_Comm", 
-                        "cpp_var": "comm"
-                    }, 
-                    "fmtf": {
-                        "c_var": "comm", 
-                        "f_var": "comm"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "comm", 
-                        "cpp_type": "MPI_Comm", 
-                        "cpp_var": "comm", 
-                        "py_var": "SH_Py_comm"
-                    }, 
-                    "init": null, 
-                    "name": "comm", 
-                    "type": "MPI_Comm"
-                }
-            ], 
             "decl": "void testmpi(MPI_Comm comm)", 
             "fmt": {
                 "C_call_code": "testmpi(MPI_Comm_f2c(comm));", 
@@ -4106,6 +4107,37 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "comm", 
+                            "cpp_type": "MPI_Comm", 
+                            "cpp_var": "comm"
+                        }, 
+                        "fmtf": {
+                            "c_var": "comm", 
+                            "f_var": "comm"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "comm", 
+                            "cpp_type": "MPI_Comm", 
+                            "cpp_var": "comm", 
+                            "py_var": "SH_Py_comm"
+                        }, 
+                        "init": null, 
+                        "name": "comm", 
+                        "type": "MPI_Comm"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -4119,38 +4151,6 @@
             "_decl": "void testgroup1(DataGroup * grp +intent(in)+value)", 
             "_function_index": 55, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "ptr": true, 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "grp", 
-                        "cpp_type": "axom::sidre::Group", 
-                        "cpp_var": "SH_grp"
-                    }, 
-                    "fmtf": {
-                        "c_var": "grp", 
-                        "f_var": "grp"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "grp", 
-                        "cpp_type": "axom::sidre::Group", 
-                        "cpp_var": "SH_grp", 
-                        "py_var": "SH_Py_grp"
-                    }, 
-                    "init": null, 
-                    "name": "grp", 
-                    "type": "DataGroup"
-                }
-            ], 
             "decl": "void testgroup1(DataGroup * grp)", 
             "fmt": {
                 "C_call_code": "testgroup1(SH_grp);", 
@@ -4177,6 +4177,38 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "ptr": true, 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "grp", 
+                            "cpp_type": "axom::sidre::Group", 
+                            "cpp_var": "SH_grp"
+                        }, 
+                        "fmtf": {
+                            "c_var": "grp", 
+                            "f_var": "grp"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "grp", 
+                            "cpp_type": "axom::sidre::Group", 
+                            "cpp_var": "SH_grp", 
+                            "py_var": "SH_Py_grp"
+                        }, 
+                        "init": null, 
+                        "name": "grp", 
+                        "type": "DataGroup"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -4190,38 +4222,6 @@
             "_decl": "void testgroup2(const DataGroup * grp +intent(in)+value)", 
             "_function_index": 56, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "ptr": true, 
-                        "value": true
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": " *", 
-                        "c_var": "grp", 
-                        "cpp_type": "axom::sidre::Group", 
-                        "cpp_var": "SH_grp"
-                    }, 
-                    "fmtf": {
-                        "c_var": "grp", 
-                        "f_var": "grp"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "const ", 
-                        "c_ptr": " *", 
-                        "c_var": "grp", 
-                        "cpp_type": "axom::sidre::Group", 
-                        "cpp_var": "SH_grp", 
-                        "py_var": "SH_Py_grp"
-                    }, 
-                    "init": null, 
-                    "name": "grp", 
-                    "type": "DataGroup"
-                }
-            ], 
             "decl": "void testgroup2(const DataGroup * grp)", 
             "fmt": {
                 "C_call_code": "testgroup2(SH_grp);", 
@@ -4248,6 +4248,38 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "ptr": true, 
+                            "value": true
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "grp", 
+                            "cpp_type": "axom::sidre::Group", 
+                            "cpp_var": "SH_grp"
+                        }, 
+                        "fmtf": {
+                            "c_var": "grp", 
+                            "f_var": "grp"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "grp", 
+                            "cpp_type": "axom::sidre::Group", 
+                            "cpp_var": "SH_grp", 
+                            "py_var": "SH_Py_grp"
+                        }, 
+                        "init": null, 
+                        "name": "grp", 
+                        "type": "DataGroup"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 

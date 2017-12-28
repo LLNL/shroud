@@ -603,7 +603,7 @@ class Wrapf(util.WrapperMixin):
                 self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
 
         args_all_in = True   # assume all arguments are intent(in)
-        for arg in node['args']:
+        for arg in result['args']:
             # default argument's intent
             # XXX look at const, ptr
             arg_typedef, c_statements = util.lookup_c_statements(arg)
@@ -803,9 +803,9 @@ class Wrapf(util.WrapperMixin):
         #
         pre_call = []
         post_call = []
-        f_args = node['args']
+        f_args = result['args']
         f_index = -1       # index into f_args
-        for c_arg in C_node['args']:
+        for c_arg in C_node['result']['args']:
             fmt_arg = c_arg.setdefault('fmtf', util.Options(fmt_func))
             fmt_arg.f_var = c_arg['name']
             fmt_arg.c_var = fmt_arg.f_var

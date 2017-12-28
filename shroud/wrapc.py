@@ -473,7 +473,7 @@ class Wrapc(util.WrapperMixin):
 #                 Usually same as c_var but may be a new local variable
 #                 or the funtion result variable.
 
-        for arg in node['args']:
+        for arg in result['args']:
             fmt_arg = arg.setdefault('fmtc', util.Options(fmt_func))
             c_attrs = arg['attrs']
             arg_typedef, c_statements = util.lookup_c_statements(arg)

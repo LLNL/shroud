@@ -105,37 +105,6 @@
             "_decl": "void passChar(char_scalar status +intent(in)+value)", 
             "_function_index": 0, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "status", 
-                        "cpp_type": "char", 
-                        "cpp_var": "status"
-                    }, 
-                    "fmtf": {
-                        "c_var": "status", 
-                        "f_var": "status"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "status", 
-                        "cpp_type": "char", 
-                        "cpp_var": "status", 
-                        "py_var": "SH_Py_status"
-                    }, 
-                    "init": null, 
-                    "name": "status", 
-                    "type": "char_scalar"
-                }
-            ], 
             "decl": "void passChar(char status)", 
             "doxygen": {
                 "brief": "pass a single char argument as a scalar."
@@ -164,6 +133,37 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "status", 
+                            "cpp_type": "char", 
+                            "cpp_var": "status"
+                        }, 
+                        "fmtf": {
+                            "c_var": "status", 
+                            "f_var": "status"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "status", 
+                            "cpp_type": "char", 
+                            "cpp_var": "status", 
+                            "py_var": "SH_Py_status"
+                        }, 
+                        "init": null, 
+                        "name": "status", 
+                        "type": "char_scalar"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -178,7 +178,6 @@
             "_decl": "char_scalar returnChar()", 
             "_function_index": 1, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "char returnChar()", 
             "doxygen": {
                 "brief": "return a char argument (non-pointer)"
@@ -208,6 +207,7 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -228,36 +228,6 @@
             "_function_index": 21, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "NSHF_rv", 
-                        "ptr": true, 
-                        "reference": false
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "SHF_rv", 
-                        "c_var_len": "NSHF_rv", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SHT_rv", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SHT_rv", 
-                        "f_var": "SHT_rv"
-                    }, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "SHF_rv", 
-                    "type": "char_scalar"
-                }
-            ], 
             "decl": "char returnChar()", 
             "doxygen": {
                 "brief": "return a char argument (non-pointer)"
@@ -281,6 +251,37 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv", 
+                            "ptr": true, 
+                            "reference": false
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SHT_rv", 
+                            "cpp_var": "SHT_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "f_var": "SHT_rv"
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "SHF_rv", 
+                        "type": "char_scalar"
+                    }
+                ], 
                 "attrs": {
                     "ptr": false, 
                     "reference": false
@@ -302,62 +303,6 @@
             "_decl": "void passCharPtr(char * dest +intent(out), const char * src +intent(in))", 
             "_function_index": 2, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "out", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "dest", 
-                        "cpp_type": "char", 
-                        "cpp_var": "dest"
-                    }, 
-                    "fmtpy": {
-                        "PyObject": "PyObject", 
-                        "PyTypeObject": null, 
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "dest", 
-                        "cpp_type": "char", 
-                        "cpp_var": "dest", 
-                        "py_var": "SH_Py_dest"
-                    }, 
-                    "init": null, 
-                    "name": "dest", 
-                    "type": "char"
-                }, 
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": " *", 
-                        "c_var": "src", 
-                        "cpp_type": "char", 
-                        "cpp_var": "src"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "const ", 
-                        "c_ptr": " *", 
-                        "c_var": "src", 
-                        "cpp_type": "char", 
-                        "cpp_var": "src", 
-                        "py_var": "SH_Py_src"
-                    }, 
-                    "init": null, 
-                    "name": "src", 
-                    "type": "char"
-                }
-            ], 
             "decl": "void passCharPtr(char * dest+intent(out), const char *src)", 
             "doxygen": {
                 "brief": "strcpy like behavior", 
@@ -387,6 +332,62 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "out", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "dest", 
+                            "cpp_type": "char", 
+                            "cpp_var": "dest"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "dest", 
+                            "cpp_type": "char", 
+                            "cpp_var": "dest", 
+                            "py_var": "SH_Py_dest"
+                        }, 
+                        "init": null, 
+                        "name": "dest", 
+                        "type": "char"
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "src", 
+                            "cpp_type": "char", 
+                            "cpp_var": "src"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "src", 
+                            "cpp_type": "char", 
+                            "cpp_var": "src", 
+                            "py_var": "SH_Py_src"
+                        }, 
+                        "init": null, 
+                        "name": "src", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -403,58 +404,6 @@
             "_function_index": 22, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "out", 
-                        "len": "Ndest", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "dest", 
-                        "c_var_len": "Ndest", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SH_dest", 
-                        "cpp_var": "SH_dest"
-                    }, 
-                    "fmtf": {
-                        "c_var": "dest", 
-                        "f_var": "dest"
-                    }, 
-                    "init": null, 
-                    "name": "dest", 
-                    "type": "char"
-                }, 
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "len_trim": "Lsrc", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": " *", 
-                        "c_var": "src", 
-                        "c_var_trim": "Lsrc", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SH_src", 
-                        "cpp_var": "SH_src"
-                    }, 
-                    "fmtf": {
-                        "c_var": "src", 
-                        "f_var": "src"
-                    }, 
-                    "init": null, 
-                    "name": "src", 
-                    "type": "char"
-                }
-            ], 
             "decl": "void passCharPtr(char * dest+intent(out), const char *src)", 
             "doxygen": {
                 "brief": "strcpy like behavior", 
@@ -480,6 +429,58 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "out", 
+                            "len": "Ndest", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "dest", 
+                            "c_var_len": "Ndest", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SH_dest", 
+                            "cpp_var": "SH_dest"
+                        }, 
+                        "fmtf": {
+                            "c_var": "dest", 
+                            "f_var": "dest"
+                        }, 
+                        "init": null, 
+                        "name": "dest", 
+                        "type": "char"
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "len_trim": "Lsrc", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "src", 
+                            "c_var_trim": "Lsrc", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SH_src", 
+                            "cpp_var": "SH_src"
+                        }, 
+                        "fmtf": {
+                            "c_var": "src", 
+                            "f_var": "src"
+                        }, 
+                        "init": null, 
+                        "name": "src", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -494,36 +495,6 @@
             "_decl": "void passCharPtrInOut(char * s +intent(inout))", 
             "_function_index": 3, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "inout", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "s", 
-                        "cpp_type": "char", 
-                        "cpp_var": "s"
-                    }, 
-                    "fmtpy": {
-                        "PyObject": "PyObject", 
-                        "PyTypeObject": null, 
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "s", 
-                        "cpp_type": "char", 
-                        "cpp_var": "s", 
-                        "py_var": "SH_Py_s"
-                    }, 
-                    "init": null, 
-                    "name": "s", 
-                    "type": "char"
-                }
-            ], 
             "decl": "void passCharPtrInOut(char * s+intent(inout))", 
             "doxygen": {
                 "brief": "Change a string in-place"
@@ -552,6 +523,36 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "inout", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "s", 
+                            "cpp_type": "char", 
+                            "cpp_var": "s"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "s", 
+                            "cpp_type": "char", 
+                            "cpp_var": "s", 
+                            "py_var": "SH_Py_s"
+                        }, 
+                        "init": null, 
+                        "name": "s", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -568,35 +569,6 @@
             "_function_index": 23, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "inout", 
-                        "len": "Ns", 
-                        "len_trim": "Ls", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "s", 
-                        "c_var_len": "Ns", 
-                        "c_var_trim": "Ls", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SH_s", 
-                        "cpp_var": "SH_s"
-                    }, 
-                    "fmtf": {
-                        "c_var": "s", 
-                        "f_var": "s"
-                    }, 
-                    "init": null, 
-                    "name": "s", 
-                    "type": "char"
-                }
-            ], 
             "decl": "void passCharPtrInOut(char * s+intent(inout))", 
             "doxygen": {
                 "brief": "Change a string in-place"
@@ -621,6 +593,35 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "inout", 
+                            "len": "Ns", 
+                            "len_trim": "Ls", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "s", 
+                            "c_var_len": "Ns", 
+                            "c_var_trim": "Ls", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SH_s", 
+                            "cpp_var": "SH_s"
+                        }, 
+                        "fmtf": {
+                            "c_var": "s", 
+                            "f_var": "s"
+                        }, 
+                        "init": null, 
+                        "name": "s", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -634,7 +635,6 @@
             "_decl": "const char * getChar1() +pure", 
             "_function_index": 4, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "const char * getChar1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const char *' as character(*)"
@@ -665,6 +665,7 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [], 
                 "attrs": {
                     "ptr": true
                 }, 
@@ -689,33 +690,6 @@
             "_function_index": 24, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "NSHF_rv", 
-                        "ptr": true
-                    }, 
-                    "const": false, 
-                    "fattrs": {
-                        "pure": true
-                    }, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "SHF_rv", 
-                        "c_var_len": "NSHF_rv", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SHT_rv", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "SHF_rv", 
-                    "type": "char"
-                }
-            ], 
             "decl": "const char * getChar1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const char *' as character(*)"
@@ -739,6 +713,34 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv", 
+                            "ptr": true
+                        }, 
+                        "const": false, 
+                        "fattrs": {
+                            "pure": true
+                        }, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SHT_rv", 
+                            "cpp_var": "SHT_rv"
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "SHF_rv", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {
                     "ptr": false, 
                     "reference": false
@@ -762,7 +764,6 @@
             "_decl": "const char * getChar2()", 
             "_function_index": 5, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "const char * getChar2+len(30)()", 
             "doxygen": {
                 "brief": "return 'const char *' with fixed size (len=30)"
@@ -793,6 +794,7 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [], 
                 "attrs": {
                     "len": "30", 
                     "ptr": true
@@ -816,35 +818,6 @@
             "_function_index": 25, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "NSHF_rv", 
-                        "ptr": true
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "SHF_rv", 
-                        "c_var_len": "NSHF_rv", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SHT_rv", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SHT_rv", 
-                        "f_var": "SHT_rv"
-                    }, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "SHF_rv", 
-                    "type": "char"
-                }
-            ], 
             "decl": "const char * getChar2+len(30)()", 
             "doxygen": {
                 "brief": "return 'const char *' with fixed size (len=30)"
@@ -868,6 +841,36 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv", 
+                            "ptr": true
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SHT_rv", 
+                            "cpp_var": "SHT_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "f_var": "SHT_rv"
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "SHF_rv", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {
                     "len": "30", 
                     "ptr": false, 
@@ -889,7 +892,6 @@
             "_decl": "const char * getChar3()", 
             "_function_index": 6, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "const char * getChar3()", 
             "doxygen": {
                 "brief": "return a 'const char *' as argument"
@@ -913,6 +915,7 @@
                 "wrap_fortran": false
             }, 
             "result": {
+                "args": [], 
                 "attrs": {
                     "ptr": true
                 }, 
@@ -935,35 +938,6 @@
             "_function_index": 26, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "Noutput", 
-                        "ptr": true
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "output", 
-                        "c_var_len": "Noutput", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SHT_rv", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "output", 
-                        "f_var": "output"
-                    }, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "output", 
-                    "type": "char"
-                }
-            ], 
             "decl": "const char * getChar3()", 
             "doxygen": {
                 "brief": "return a 'const char *' as argument"
@@ -987,6 +961,36 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "Noutput", 
+                            "ptr": true
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "output", 
+                            "c_var_len": "Noutput", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SHT_rv", 
+                            "cpp_var": "SHT_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "output", 
+                            "f_var": "output"
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "output", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {
                     "ptr": false, 
                     "reference": false
@@ -1011,22 +1015,6 @@
             "_function_index": 27, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "Noutput", 
-                        "ptr": true
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "output", 
-                    "type": "char"
-                }
-            ], 
             "decl": "const char * getChar3()", 
             "doxygen": {
                 "brief": "return a 'const char *' as argument"
@@ -1050,6 +1038,23 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "Noutput", 
+                            "ptr": true
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "output", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {
                     "ptr": false, 
                     "reference": false
@@ -1066,7 +1071,6 @@
             "_decl": "const string & getString1() +pure", 
             "_function_index": 7, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "const string& getString1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const string&' as character(*)"
@@ -1097,6 +1101,7 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [], 
                 "attrs": {
                     "reference": true
                 }, 
@@ -1124,33 +1129,6 @@
             "_function_index": 28, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "NSHF_rv", 
-                        "reference": true
-                    }, 
-                    "const": false, 
-                    "fattrs": {
-                        "pure": true
-                    }, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "SHF_rv", 
-                        "c_var_len": "NSHF_rv", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SHT_rv.c_str()", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "SHF_rv", 
-                    "type": "string"
-                }
-            ], 
             "decl": "const string& getString1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const string&' as character(*)"
@@ -1174,6 +1152,34 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv", 
+                            "reference": true
+                        }, 
+                        "const": false, 
+                        "fattrs": {
+                            "pure": true
+                        }, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cpp_type": "std::string", 
+                            "cpp_val": "SHT_rv.c_str()", 
+                            "cpp_var": "SHT_rv"
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "SHF_rv", 
+                        "type": "string"
+                    }
+                ], 
                 "attrs": {
                     "ptr": false, 
                     "reference": false
@@ -1198,7 +1204,6 @@
             "_decl": "const string & getString2()", 
             "_function_index": 8, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "const string& getString2+len=30()", 
             "doxygen": {
                 "brief": "return 'const string&' with fixed size (len=30)"
@@ -1230,6 +1235,7 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [], 
                 "attrs": {
                     "len": 30, 
                     "reference": true
@@ -1257,35 +1263,6 @@
             "_function_index": 29, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "NSHF_rv", 
-                        "reference": true
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "SHF_rv", 
-                        "c_var_len": "NSHF_rv", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SHT_rv.c_str()", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SHT_rv", 
-                        "f_var": "SHT_rv"
-                    }, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "SHF_rv", 
-                    "type": "string"
-                }
-            ], 
             "decl": "const string& getString2+len=30()", 
             "doxygen": {
                 "brief": "return 'const string&' with fixed size (len=30)"
@@ -1309,6 +1286,36 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv", 
+                            "reference": true
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cpp_type": "std::string", 
+                            "cpp_val": "SHT_rv.c_str()", 
+                            "cpp_var": "SHT_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "f_var": "SHT_rv"
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "SHF_rv", 
+                        "type": "string"
+                    }
+                ], 
                 "attrs": {
                     "len": 30, 
                     "ptr": false, 
@@ -1331,7 +1338,6 @@
             "_decl": "const string & getString3()", 
             "_function_index": 9, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "const string& getString3()", 
             "doxygen": {
                 "brief": "return a 'const string&' as argument"
@@ -1356,6 +1362,7 @@
                 "wrap_fortran": false
             }, 
             "result": {
+                "args": [], 
                 "attrs": {
                     "reference": true
                 }, 
@@ -1382,35 +1389,6 @@
             "_function_index": 30, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "Noutput", 
-                        "reference": true
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "output", 
-                        "c_var_len": "Noutput", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SHT_rv.c_str()", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "output", 
-                        "f_var": "output"
-                    }, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "output", 
-                    "type": "string"
-                }
-            ], 
             "decl": "const string& getString3()", 
             "doxygen": {
                 "brief": "return a 'const string&' as argument"
@@ -1434,6 +1412,36 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "Noutput", 
+                            "reference": true
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "output", 
+                            "c_var_len": "Noutput", 
+                            "cpp_type": "std::string", 
+                            "cpp_val": "SHT_rv.c_str()", 
+                            "cpp_var": "SHT_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "output", 
+                            "f_var": "output"
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "output", 
+                        "type": "string"
+                    }
+                ], 
                 "attrs": {
                     "ptr": false, 
                     "reference": false
@@ -1459,22 +1467,6 @@
             "_function_index": 31, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "Noutput", 
-                        "reference": true
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "output", 
-                    "type": "string"
-                }
-            ], 
             "decl": "const string& getString3()", 
             "doxygen": {
                 "brief": "return a 'const string&' as argument"
@@ -1498,6 +1490,23 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "Noutput", 
+                            "reference": true
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "output", 
+                        "type": "string"
+                    }
+                ], 
                 "attrs": {
                     "ptr": false, 
                     "reference": false
@@ -1516,7 +1525,6 @@
             "_decl": "const string & getString2_empty()", 
             "_function_index": 10, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "const string& getString2_empty+len=30()", 
             "doxygen": {
                 "brief": "Test returning empty string reference"
@@ -1548,6 +1556,7 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [], 
                 "attrs": {
                     "len": 30, 
                     "reference": true
@@ -1575,35 +1584,6 @@
             "_function_index": 32, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "NSHF_rv", 
-                        "reference": true
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "SHF_rv", 
-                        "c_var_len": "NSHF_rv", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SHT_rv.c_str()", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SHT_rv", 
-                        "f_var": "SHT_rv"
-                    }, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "SHF_rv", 
-                    "type": "string"
-                }
-            ], 
             "decl": "const string& getString2_empty+len=30()", 
             "doxygen": {
                 "brief": "Test returning empty string reference"
@@ -1627,6 +1607,36 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv", 
+                            "reference": true
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cpp_type": "std::string", 
+                            "cpp_val": "SHT_rv.c_str()", 
+                            "cpp_var": "SHT_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "f_var": "SHT_rv"
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "SHF_rv", 
+                        "type": "string"
+                    }
+                ], 
                 "attrs": {
                     "len": 30, 
                     "ptr": false, 
@@ -1650,7 +1660,6 @@
             "_decl": "const string getString5()", 
             "_function_index": 11, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "const string getString5+len=30()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
@@ -1675,6 +1684,7 @@
                 "wrap_c": false
             }, 
             "result": {
+                "args": [], 
                 "attrs": {
                     "len": 30
                 }, 
@@ -1694,36 +1704,6 @@
             "_function_index": 33, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "NSHF_rv", 
-                        "ptr": true, 
-                        "reference": false
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "SHF_rv", 
-                        "c_var_len": "NSHF_rv", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SHT_rv.c_str()", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SHT_rv", 
-                        "f_var": "SHT_rv"
-                    }, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "SHF_rv", 
-                    "type": "string"
-                }
-            ], 
             "decl": "const string getString5+len=30()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
@@ -1747,6 +1727,37 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv", 
+                            "ptr": true, 
+                            "reference": false
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cpp_type": "std::string", 
+                            "cpp_val": "SHT_rv.c_str()", 
+                            "cpp_var": "SHT_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "f_var": "SHT_rv"
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "SHF_rv", 
+                        "type": "string"
+                    }
+                ], 
                 "attrs": {
                     "len": 30, 
                     "ptr": false, 
@@ -1769,7 +1780,6 @@
             "_decl": "const string getString6()", 
             "_function_index": 12, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "const string getString6()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
@@ -1786,6 +1796,7 @@
                 "wrap_fortran": false
             }, 
             "result": {
+                "args": [], 
                 "attrs": {}, 
                 "const": true, 
                 "fattrs": {}, 
@@ -1803,36 +1814,6 @@
             "_function_index": 34, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "Noutput", 
-                        "ptr": true, 
-                        "reference": false
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "output", 
-                        "c_var_len": "Noutput", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SHT_rv.c_str()", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "output", 
-                        "f_var": "output"
-                    }, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "output", 
-                    "type": "string"
-                }
-            ], 
             "decl": "const string getString6()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
@@ -1856,6 +1837,37 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "Noutput", 
+                            "ptr": true, 
+                            "reference": false
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "output", 
+                            "c_var_len": "Noutput", 
+                            "cpp_type": "std::string", 
+                            "cpp_val": "SHT_rv.c_str()", 
+                            "cpp_var": "SHT_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "output", 
+                            "f_var": "output"
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "output", 
+                        "type": "string"
+                    }
+                ], 
                 "attrs": {
                     "ptr": false, 
                     "reference": false
@@ -1881,23 +1893,6 @@
             "_function_index": 35, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "Noutput", 
-                        "ptr": true, 
-                        "reference": false
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "output", 
-                    "type": "string"
-                }
-            ], 
             "decl": "const string getString6()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
@@ -1921,6 +1916,24 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "Noutput", 
+                            "ptr": true, 
+                            "reference": false
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "output", 
+                        "type": "string"
+                    }
+                ], 
                 "attrs": {
                     "ptr": false, 
                     "reference": false
@@ -1938,34 +1951,6 @@
             "_decl": "void acceptStringConstReference(const std::string & arg1 +intent(in))", 
             "_function_index": 13, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_arg1"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_arg1", 
-                        "py_var": "SH_Py_arg1"
-                    }, 
-                    "init": null, 
-                    "name": "arg1", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "void acceptStringConstReference(const std::string & arg1)", 
             "doxygen": {
                 "brief": "Accept a const string reference", 
@@ -1996,6 +1981,34 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_arg1", 
+                            "py_var": "SH_Py_arg1"
+                        }, 
+                        "init": null, 
+                        "name": "arg1", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2012,32 +2025,6 @@
             "_function_index": 36, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "len_trim": "Larg1", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "c_var_trim": "Larg1", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_arg1"
-                    }, 
-                    "fmtf": {
-                        "c_var": "arg1", 
-                        "f_var": "arg1"
-                    }, 
-                    "init": null, 
-                    "name": "arg1", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "void acceptStringConstReference(const std::string & arg1)", 
             "doxygen": {
                 "brief": "Accept a const string reference", 
@@ -2062,6 +2049,32 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "len_trim": "Larg1", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "c_var_trim": "Larg1", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_arg1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "init": null, 
+                        "name": "arg1", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2076,37 +2089,6 @@
             "_decl": "void acceptStringReferenceOut(std::string & arg1 +intent(out))", 
             "_function_index": 14, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "out", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SH_arg1.c_str()", 
-                        "cpp_var": "SH_arg1"
-                    }, 
-                    "fmtpy": {
-                        "PyObject": "PyObject", 
-                        "PyTypeObject": null, 
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "arg1.c_str()", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "arg1", 
-                        "py_var": "SH_Py_arg1"
-                    }, 
-                    "init": null, 
-                    "name": "arg1", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))", 
             "doxygen": {
                 "brief": "Accept a string reference", 
@@ -2138,6 +2120,37 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "out", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cpp_type": "std::string", 
+                            "cpp_val": "SH_arg1.c_str()", 
+                            "cpp_var": "SH_arg1"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg1.c_str()", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "arg1", 
+                            "py_var": "SH_Py_arg1"
+                        }, 
+                        "init": null, 
+                        "name": "arg1", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2154,33 +2167,6 @@
             "_function_index": 37, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "out", 
-                        "len": "Narg1", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "c_var_len": "Narg1", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SH_arg1.c_str()", 
-                        "cpp_var": "SH_arg1"
-                    }, 
-                    "fmtf": {
-                        "c_var": "arg1", 
-                        "f_var": "arg1"
-                    }, 
-                    "init": null, 
-                    "name": "arg1", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))", 
             "doxygen": {
                 "brief": "Accept a string reference", 
@@ -2206,6 +2192,33 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "out", 
+                            "len": "Narg1", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "c_var_len": "Narg1", 
+                            "cpp_type": "std::string", 
+                            "cpp_val": "SH_arg1.c_str()", 
+                            "cpp_var": "SH_arg1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "init": null, 
+                        "name": "arg1", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2220,37 +2233,6 @@
             "_decl": "void acceptStringReference(std::string & arg1 +intent(inout))", 
             "_function_index": 15, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "inout", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SH_arg1.c_str()", 
-                        "cpp_var": "SH_arg1"
-                    }, 
-                    "fmtpy": {
-                        "PyObject": "PyObject", 
-                        "PyTypeObject": null, 
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "SH_arg1.c_str()", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_arg1", 
-                        "py_var": "SH_Py_arg1"
-                    }, 
-                    "init": null, 
-                    "name": "arg1", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "void acceptStringReference(std::string & arg1)", 
             "doxygen": {
                 "brief": "Accept a string reference", 
@@ -2282,6 +2264,37 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "inout", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cpp_type": "std::string", 
+                            "cpp_val": "SH_arg1.c_str()", 
+                            "cpp_var": "SH_arg1"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "SH_arg1.c_str()", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_arg1", 
+                            "py_var": "SH_Py_arg1"
+                        }, 
+                        "init": null, 
+                        "name": "arg1", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2298,35 +2311,6 @@
             "_function_index": 38, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "inout", 
-                        "len": "Narg1", 
-                        "len_trim": "Larg1", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "c_var_len": "Narg1", 
-                        "c_var_trim": "Larg1", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SH_arg1.c_str()", 
-                        "cpp_var": "SH_arg1"
-                    }, 
-                    "fmtf": {
-                        "c_var": "arg1", 
-                        "f_var": "arg1"
-                    }, 
-                    "init": null, 
-                    "name": "arg1", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "void acceptStringReference(std::string & arg1)", 
             "doxygen": {
                 "brief": "Accept a string reference", 
@@ -2352,6 +2336,35 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "inout", 
+                            "len": "Narg1", 
+                            "len_trim": "Larg1", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "c_var_len": "Narg1", 
+                            "c_var_trim": "Larg1", 
+                            "cpp_type": "std::string", 
+                            "cpp_val": "SH_arg1.c_str()", 
+                            "cpp_var": "SH_arg1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "init": null, 
+                        "name": "arg1", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2366,35 +2379,6 @@
             "_decl": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
             "_function_index": 16, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "len_trim": "AAlen", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "name", 
-                        "cpp_type": "char", 
-                        "cpp_var": "name"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "name", 
-                        "cpp_type": "char", 
-                        "cpp_var": "name", 
-                        "py_var": "SH_Py_name"
-                    }, 
-                    "init": null, 
-                    "name": "name", 
-                    "type": "char"
-                }
-            ], 
             "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
             "fmt": {
                 "C_call_code": "explicit1(name);", 
@@ -2422,6 +2406,35 @@
                 "C_bufferify_suffix": "_BUFFER"
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "len_trim": "AAlen", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "name", 
+                            "cpp_type": "char", 
+                            "cpp_var": "name"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "name", 
+                            "cpp_type": "char", 
+                            "cpp_var": "name", 
+                            "py_var": "SH_Py_name"
+                        }, 
+                        "init": null, 
+                        "name": "name", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2438,33 +2451,6 @@
             "_function_index": 39, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "len_trim": "AAlen", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "name", 
-                        "c_var_trim": "AAlen", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SH_name", 
-                        "cpp_var": "SH_name"
-                    }, 
-                    "fmtf": {
-                        "c_var": "name", 
-                        "f_var": "name"
-                    }, 
-                    "init": null, 
-                    "name": "name", 
-                    "type": "char"
-                }
-            ], 
             "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
             "fmt": {
                 "C_call_code": "explicit1(SH_name);", 
@@ -2486,6 +2472,33 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "len_trim": "AAlen", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "name", 
+                            "c_var_trim": "AAlen", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SH_name", 
+                            "cpp_var": "SH_name"
+                        }, 
+                        "fmtf": {
+                            "c_var": "name", 
+                            "f_var": "name"
+                        }, 
+                        "init": null, 
+                        "name": "name", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2500,37 +2513,6 @@
             "_decl": "void explicit2(char * name +intent(out)+len(AAtrim))", 
             "_function_index": 17, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "out", 
-                        "len": "AAtrim", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "name", 
-                        "cpp_type": "char", 
-                        "cpp_var": "name"
-                    }, 
-                    "fmtpy": {
-                        "PyObject": "PyObject", 
-                        "PyTypeObject": null, 
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "name", 
-                        "cpp_type": "char", 
-                        "cpp_var": "name", 
-                        "py_var": "SH_Py_name"
-                    }, 
-                    "init": null, 
-                    "name": "name", 
-                    "type": "char"
-                }
-            ], 
             "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
             "fmt": {
                 "C_call_code": "explicit2(name);", 
@@ -2556,6 +2538,37 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "out", 
+                            "len": "AAtrim", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "name", 
+                            "cpp_type": "char", 
+                            "cpp_var": "name"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "name", 
+                            "cpp_type": "char", 
+                            "cpp_var": "name", 
+                            "py_var": "SH_Py_name"
+                        }, 
+                        "init": null, 
+                        "name": "name", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2572,33 +2585,6 @@
             "_function_index": 40, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "out", 
-                        "len": "AAtrim", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "name", 
-                        "c_var_len": "AAtrim", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SH_name", 
-                        "cpp_var": "SH_name"
-                    }, 
-                    "fmtf": {
-                        "c_var": "name", 
-                        "f_var": "name"
-                    }, 
-                    "init": null, 
-                    "name": "name", 
-                    "type": "char"
-                }
-            ], 
             "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
             "fmt": {
                 "C_call_code": "explicit2(SH_name);", 
@@ -2620,6 +2606,33 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "out", 
+                            "len": "AAtrim", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "name", 
+                            "c_var_len": "AAtrim", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SH_name", 
+                            "cpp_var": "SH_name"
+                        }, 
+                        "fmtf": {
+                            "c_var": "name", 
+                            "f_var": "name"
+                        }, 
+                        "init": null, 
+                        "name": "name", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2633,37 +2646,6 @@
             "_decl": "void CpassChar(char_scalar status +intent(in)+value)", 
             "_function_index": 18, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "status", 
-                        "cpp_type": "char", 
-                        "cpp_var": "status"
-                    }, 
-                    "fmtf": {
-                        "c_var": "status", 
-                        "f_var": "status"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "status", 
-                        "cpp_type": "char", 
-                        "cpp_var": "status", 
-                        "py_var": "SH_Py_status"
-                    }, 
-                    "init": null, 
-                    "name": "status", 
-                    "type": "char_scalar"
-                }
-            ], 
             "decl": "void CpassChar(char status)", 
             "doxygen": {
                 "brief": "pass a single char argument as a scalar, extern \"C\""
@@ -2694,6 +2676,37 @@
                 "C_extern_C": true
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "status", 
+                            "cpp_type": "char", 
+                            "cpp_var": "status"
+                        }, 
+                        "fmtf": {
+                            "c_var": "status", 
+                            "f_var": "status"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "status", 
+                            "cpp_type": "char", 
+                            "cpp_var": "status", 
+                            "py_var": "SH_Py_status"
+                        }, 
+                        "init": null, 
+                        "name": "status", 
+                        "type": "char_scalar"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2708,7 +2721,6 @@
             "_decl": "char_scalar CreturnChar()", 
             "_function_index": 19, 
             "_subprogram": "function", 
-            "args": [], 
             "decl": "char CreturnChar()", 
             "doxygen": {
                 "brief": "return a char argument (non-pointer), extern \"C\""
@@ -2740,6 +2752,7 @@
                 "C_extern_C": true
             }, 
             "result": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2760,36 +2773,6 @@
             "_function_index": 41, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "_is_result": true, 
-                        "intent": "out", 
-                        "len": "NSHF_rv", 
-                        "ptr": true, 
-                        "reference": false
-                    }, 
-                    "const": false, 
-                    "fattrs": {}, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "SHF_rv", 
-                        "c_var_len": "NSHF_rv", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SHT_rv", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SHT_rv", 
-                        "f_var": "SHT_rv"
-                    }, 
-                    "func_const": false, 
-                    "init": null, 
-                    "name": "SHF_rv", 
-                    "type": "char_scalar"
-                }
-            ], 
             "decl": "char CreturnChar()", 
             "doxygen": {
                 "brief": "return a char argument (non-pointer), extern \"C\""
@@ -2813,6 +2796,37 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv", 
+                            "ptr": true, 
+                            "reference": false
+                        }, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SHT_rv", 
+                            "cpp_var": "SHT_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "f_var": "SHT_rv"
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "SHF_rv", 
+                        "type": "char_scalar"
+                    }
+                ], 
                 "attrs": {
                     "ptr": false, 
                     "reference": false
@@ -2834,62 +2848,6 @@
             "_decl": "void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))", 
             "_function_index": 20, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "out", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "dest", 
-                        "cpp_type": "char", 
-                        "cpp_var": "dest"
-                    }, 
-                    "fmtpy": {
-                        "PyObject": "PyObject", 
-                        "PyTypeObject": null, 
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "dest", 
-                        "cpp_type": "char", 
-                        "cpp_var": "dest", 
-                        "py_var": "SH_Py_dest"
-                    }, 
-                    "init": null, 
-                    "name": "dest", 
-                    "type": "char"
-                }, 
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": " *", 
-                        "c_var": "src", 
-                        "cpp_type": "char", 
-                        "cpp_var": "src"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "const ", 
-                        "c_ptr": " *", 
-                        "c_var": "src", 
-                        "cpp_type": "char", 
-                        "cpp_var": "src", 
-                        "py_var": "SH_Py_src"
-                    }, 
-                    "init": null, 
-                    "name": "src", 
-                    "type": "char"
-                }
-            ], 
             "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)", 
             "doxygen": {
                 "brief": "strcpy like behavior", 
@@ -2921,6 +2879,62 @@
                 "C_extern_C": true
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "out", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "dest", 
+                            "cpp_type": "char", 
+                            "cpp_var": "dest"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "dest", 
+                            "cpp_type": "char", 
+                            "cpp_var": "dest", 
+                            "py_var": "SH_Py_dest"
+                        }, 
+                        "init": null, 
+                        "name": "dest", 
+                        "type": "char"
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "src", 
+                            "cpp_type": "char", 
+                            "cpp_var": "src"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "src", 
+                            "cpp_type": "char", 
+                            "cpp_var": "src", 
+                            "py_var": "SH_Py_src"
+                        }, 
+                        "init": null, 
+                        "name": "src", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -2937,58 +2951,6 @@
             "_function_index": 42, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "out", 
-                        "len": "Ndest", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "dest", 
-                        "c_var_len": "Ndest", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SH_dest", 
-                        "cpp_var": "SH_dest"
-                    }, 
-                    "fmtf": {
-                        "c_var": "dest", 
-                        "f_var": "dest"
-                    }, 
-                    "init": null, 
-                    "name": "dest", 
-                    "type": "char"
-                }, 
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "len_trim": "Lsrc", 
-                        "ptr": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": " *", 
-                        "c_var": "src", 
-                        "c_var_trim": "Lsrc", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SH_src", 
-                        "cpp_var": "SH_src"
-                    }, 
-                    "fmtf": {
-                        "c_var": "src", 
-                        "f_var": "src"
-                    }, 
-                    "init": null, 
-                    "name": "src", 
-                    "type": "char"
-                }
-            ], 
             "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)", 
             "doxygen": {
                 "brief": "strcpy like behavior", 
@@ -3014,6 +2976,58 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "out", 
+                            "len": "Ndest", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "dest", 
+                            "c_var_len": "Ndest", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SH_dest", 
+                            "cpp_var": "SH_dest"
+                        }, 
+                        "fmtf": {
+                            "c_var": "dest", 
+                            "f_var": "dest"
+                        }, 
+                        "init": null, 
+                        "name": "dest", 
+                        "type": "char"
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "len_trim": "Lsrc", 
+                            "ptr": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "src", 
+                            "c_var_trim": "Lsrc", 
+                            "cpp_type": "char", 
+                            "cpp_val": "SH_src", 
+                            "cpp_var": "SH_src"
+                        }, 
+                        "fmtf": {
+                            "c_var": "src", 
+                            "f_var": "src"
+                        }, 
+                        "init": null, 
+                        "name": "src", 
+                        "type": "char"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 

@@ -257,7 +257,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             in_args = []
             out_args = []
             found_default = False
-            for arg in function['args']:
+            for arg in function['result']['args']:
                 arg_typedef = util.Typedef.lookup(arg['type'])
                 attrs = arg['attrs']
                 if arg['init'] is not None:
@@ -494,7 +494,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         fmt_arg = util.Options(fmt)
         LUA_index = 1
         for iarg in range(luafcn.nargs):
-            arg = node['args'][iarg]
+            arg = result['args'][iarg]
             arg_name = arg['name']
             fmt_arg = arg.setdefault('fmtl', util.Options(fmt))
             fmt_arg.LUA_index = LUA_index

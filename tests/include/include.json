@@ -21,29 +21,6 @@
                     "_decl": "void method1(CustomType arg1 +intent(in)+value)", 
                     "_function_index": 0, 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "arg1", 
-                                "cpp_type": "int", 
-                                "cpp_var": "arg1"
-                            }, 
-                            "fmtf": {
-                                "c_var": "arg1", 
-                                "f_var": "arg1"
-                            }, 
-                            "init": null, 
-                            "name": "arg1", 
-                            "type": "CustomType"
-                        }
-                    ], 
                     "decl": "void method1(CustomType arg1)", 
                     "fmt": {
                         "C_call_code": "SH_this->method1(arg1);", 
@@ -71,6 +48,29 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "arg1", 
+                                    "cpp_type": "int", 
+                                    "cpp_var": "arg1"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "arg1", 
+                                    "f_var": "arg1"
+                                }, 
+                                "init": null, 
+                                "name": "arg1", 
+                                "type": "CustomType"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -105,29 +105,6 @@
                     "_decl": "void method1(MPI_Comm comm +intent(in)+value)", 
                     "_function_index": 1, 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "comm", 
-                                "cpp_type": "MPI_Comm", 
-                                "cpp_var": "comm"
-                            }, 
-                            "fmtf": {
-                                "c_var": "comm", 
-                                "f_var": "comm"
-                            }, 
-                            "init": null, 
-                            "name": "comm", 
-                            "type": "MPI_Comm"
-                        }
-                    ], 
                     "decl": "void method1(MPI_Comm comm)", 
                     "fmt": {
                         "C_call_code": "SH_this->method1(MPI_Comm_f2c(comm));", 
@@ -155,6 +132,29 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "comm", 
+                                    "cpp_type": "MPI_Comm", 
+                                    "cpp_var": "comm"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "comm", 
+                                    "f_var": "comm"
+                                }, 
+                                "init": null, 
+                                "name": "comm", 
+                                "type": "MPI_Comm"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -168,30 +168,6 @@
                     "_decl": "void method2(Class1 * c2 +intent(in)+value)", 
                     "_function_index": 2, 
                     "_subprogram": "subroutine", 
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "ptr": true, 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": " *", 
-                                "c_var": "c2", 
-                                "cpp_type": "Class1", 
-                                "cpp_var": "c2"
-                            }, 
-                            "fmtf": {
-                                "c_var": "c2", 
-                                "f_var": "c2"
-                            }, 
-                            "init": null, 
-                            "name": "c2", 
-                            "type": "Class1"
-                        }
-                    ], 
                     "decl": "void method2(Class1 * c2)", 
                     "fmt": {
                         "C_call_code": "SH_this->method2(static_cast<Class1 *>(static_cast<void *>(c2)));", 
@@ -219,6 +195,30 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "ptr": true, 
+                                    "value": true
+                                }, 
+                                "const": false, 
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": " *", 
+                                    "c_var": "c2", 
+                                    "cpp_type": "Class1", 
+                                    "cpp_var": "c2"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "c2", 
+                                    "f_var": "c2"
+                                }, 
+                                "init": null, 
+                                "name": "c2", 
+                                "type": "Class1"
+                            }
+                        ], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -324,7 +324,6 @@
             "_decl": "void function1()", 
             "_function_index": 3, 
             "_subprogram": "subroutine", 
-            "args": [], 
             "decl": "void function1()", 
             "fmt": {
                 "C_call_code": "function1();", 
@@ -349,6 +348,7 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 

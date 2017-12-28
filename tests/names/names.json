@@ -38,7 +38,6 @@
                     "_decl": "void method1()", 
                     "_function_index": 0, 
                     "_subprogram": "subroutine", 
-                    "args": [], 
                     "decl": "void method1", 
                     "fmt": {
                         "C_call_code": "SH_this->method1();", 
@@ -67,6 +66,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -80,7 +80,6 @@
                     "_decl": "void method2()", 
                     "_function_index": 1, 
                     "_subprogram": "subroutine", 
-                    "args": [], 
                     "decl": "void method2", 
                     "fmt": {
                         "C_call_code": "SH_this->method2();", 
@@ -109,6 +108,7 @@
                     }, 
                     "options": {}, 
                     "result": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "fattrs": {}, 
@@ -256,7 +256,6 @@
             "_decl": "void function1()", 
             "_function_index": 2, 
             "_subprogram": "subroutine", 
-            "args": [], 
             "decl": "void function1", 
             "fmt": {
                 "C_call_code": "function1();", 
@@ -282,6 +281,7 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -298,7 +298,6 @@
             "_decl": "void function2()", 
             "_function_index": 3, 
             "_subprogram": "subroutine", 
-            "args": [], 
             "decl": "void function2", 
             "fmt": {
                 "C_call_code": "function2();", 
@@ -324,6 +323,7 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -344,37 +344,6 @@
             "_function_index": 4, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "i", 
-                        "cpp_type": "int", 
-                        "cpp_var": "i"
-                    }, 
-                    "fmtf": {
-                        "c_var": "i", 
-                        "f_var": "i"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "i", 
-                        "cpp_type": "int", 
-                        "cpp_var": "i", 
-                        "py_var": "SH_Py_i"
-                    }, 
-                    "init": null, 
-                    "name": "i", 
-                    "type": "int"
-                }
-            ], 
             "decl": "void function3a(int i)", 
             "fmt": {
                 "C_call_code": "function3a(i);", 
@@ -401,6 +370,37 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "i", 
+                            "cpp_type": "int", 
+                            "cpp_var": "i"
+                        }, 
+                        "fmtf": {
+                            "c_var": "i", 
+                            "f_var": "i"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "i", 
+                            "cpp_type": "int", 
+                            "cpp_var": "i", 
+                            "py_var": "SH_Py_i"
+                        }, 
+                        "init": null, 
+                        "name": "i", 
+                        "type": "int"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -421,37 +421,6 @@
             "_function_index": 5, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "value": true
-                    }, 
-                    "const": false, 
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "i", 
-                        "cpp_type": "long", 
-                        "cpp_var": "i"
-                    }, 
-                    "fmtf": {
-                        "c_var": "i", 
-                        "f_var": "i"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "i", 
-                        "cpp_type": "long", 
-                        "cpp_var": "i", 
-                        "py_var": "SH_Py_i"
-                    }, 
-                    "init": null, 
-                    "name": "i", 
-                    "type": "long"
-                }
-            ], 
             "decl": "void function3a(long i)", 
             "fmt": {
                 "C_call_code": "function3a(i);", 
@@ -478,6 +447,37 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "i", 
+                            "cpp_type": "long", 
+                            "cpp_var": "i"
+                        }, 
+                        "fmtf": {
+                            "c_var": "i", 
+                            "f_var": "i"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "i", 
+                            "cpp_type": "long", 
+                            "cpp_var": "i", 
+                            "py_var": "SH_Py_i"
+                        }, 
+                        "init": null, 
+                        "name": "i", 
+                        "type": "long"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -492,34 +492,6 @@
             "_decl": "int function4(const std::string & rv +intent(in))", 
             "_function_index": 6, 
             "_subprogram": "function", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "rv", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_rv"
-                    }, 
-                    "fmtpy": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "rv", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_rv", 
-                        "py_var": "SH_Py_rv"
-                    }, 
-                    "init": null, 
-                    "name": "rv", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "int function4(const std::string &rv)", 
             "fmt": {
                 "C_call_code": "int SHT_rv = function4(SH_rv);", 
@@ -547,6 +519,34 @@
             }, 
             "options": {}, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "rv", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_rv"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "rv", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_rv", 
+                            "py_var": "SH_Py_rv"
+                        }, 
+                        "init": null, 
+                        "name": "rv", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
@@ -567,32 +567,6 @@
             "_function_index": 7, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
-            "args": [
-                {
-                    "attrs": {
-                        "intent": "in", 
-                        "len_trim": "Lrv", 
-                        "reference": true, 
-                        "value": false
-                    }, 
-                    "const": true, 
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "rv", 
-                        "c_var_trim": "Lrv", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "rv", 
-                        "f_var": "rv"
-                    }, 
-                    "init": null, 
-                    "name": "rv", 
-                    "type": "std::string"
-                }
-            ], 
             "decl": "int function4(const std::string &rv)", 
             "fmt": {
                 "C_call_code": "int SHT_rv = function4(SH_rv);", 
@@ -613,6 +587,32 @@
                 "wrap_python": false
             }, 
             "result": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "len_trim": "Lrv", 
+                            "reference": true, 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "rv", 
+                            "c_var_trim": "Lrv", 
+                            "cpp_type": "std::string", 
+                            "cpp_var": "SH_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "rv", 
+                            "f_var": "rv"
+                        }, 
+                        "init": null, 
+                        "name": "rv", 
+                        "type": "std::string"
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 

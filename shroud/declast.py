@@ -607,13 +607,10 @@ class Declaration(Node):
             d = {}
             top = dict(
                 result = d,
-                args = [],
-#                func_const = self.func_const,
-#                fattrs = {}
             )
-#            top['fattrs'].update(self.fattrs)
             d['fattrs'] = self.fattrs
             d['func_const'] = self.func_const
+            d['args'] = []
         else:
             top = None
         if self.specifier:
@@ -628,7 +625,7 @@ class Declaration(Node):
         if self.params is not None:
             for param in self.params:
                 arg = {}
-                top['args'].append(arg)
+                d['args'].append(arg)
                 param.to_dict(arg)
         return top
 
