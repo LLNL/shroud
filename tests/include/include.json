@@ -27,6 +27,7 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
+                            "const": false, 
                             "fmtc": {
                                 "c_const": "", 
                                 "c_ptr": "", 
@@ -71,6 +72,7 @@
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
+                        "const": false, 
                         "name": "method1", 
                         "type": "void"
                     }
@@ -106,6 +108,7 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
+                            "const": false, 
                             "fmtc": {
                                 "c_const": "", 
                                 "c_ptr": "", 
@@ -150,6 +153,7 @@
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
+                        "const": false, 
                         "name": "method1", 
                         "type": "void"
                     }
@@ -165,6 +169,7 @@
                                 "ptr": true, 
                                 "value": true
                             }, 
+                            "const": false, 
                             "fmtc": {
                                 "c_const": "", 
                                 "c_ptr": " *", 
@@ -209,6 +214,7 @@
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
+                        "const": false, 
                         "name": "method2", 
                         "type": "void"
                     }
@@ -336,6 +342,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "name": "function1", 
                 "type": "void"
             }

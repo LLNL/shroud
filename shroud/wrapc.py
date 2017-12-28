@@ -102,7 +102,7 @@ class Wrapc(util.WrapperMixin):
             typedef = util.Typedef.lookup(attrs['template'])
         if typedef is None:
             raise RuntimeError("No such type %s" % arg['type'])
-        if attrs.get('const', False):
+        if arg['const']:
             t.append('const')
         typ = getattr(typedef, lang)
         if typ is None:
@@ -400,7 +400,7 @@ class Wrapc(util.WrapperMixin):
             CPP_subprogram = 'subroutine'
 
         result_typedef = util.Typedef.lookup(result_type)
-        result_is_const = result['attrs'].get('const', False)
+        result_is_const = result['const']
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
         is_const = node['attrs'].get('const', False)
@@ -440,8 +440,8 @@ class Wrapc(util.WrapperMixin):
             # object pointer
             arg_dict = dict(name=fmt_func.C_this,
                             type=cls['name'],
-                            attrs=dict(ptr=True,
-                                       const=is_const))
+                            const=is_const,
+                            attrs=dict(ptr=True))
             C_this_type = self._c_type('c_type', arg_dict)
             if not is_ctor:
                 arg = self._c_decl('c_type', arg_dict)
@@ -481,7 +481,7 @@ class Wrapc(util.WrapperMixin):
 
             fmt_arg.c_var = arg['name']
 
-            if c_attrs.get('const', False):
+            if arg['const']:
                 fmt_arg.c_const = 'const '
             else:
                 fmt_arg.c_const = ''

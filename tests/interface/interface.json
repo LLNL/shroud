@@ -118,6 +118,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "name": "Function1", 
                 "type": "void"
             }
@@ -132,6 +133,7 @@
                         "intent": "in", 
                         "value": true
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -151,6 +153,7 @@
                         "intent": "in", 
                         "value": true
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -193,6 +196,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "fmtc": {
                     "cpp_rv_decl": "double SHT_rv", 
                     "cpp_var": "SHT_rv"

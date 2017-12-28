@@ -47,215 +47,7 @@ from shroud import declast
 import unittest
 
 class CheckParse(unittest.TestCase):
-#    maxDiff = None
-
-    # attr
-    def xtest_attr01(self):
-        r = parse_decl.x("+intent").attr()
-        self.assertEqual(r, ('intent', True))
-
-    def xtest_attr02(self):
-        r = parse_decl.x("+intent=in").attr()
-        self.assertEqual(r, ('intent', 'in'))
-
-    def xtest_attr03(self):
-        r = parse_decl.x("+intent()").attr()
-        self.assertEqual(r, ('intent', ''))
-
-    def xtest_attr04(self):
-        r = parse_decl.x("+intent(in)").attr()
-        self.assertEqual(r, ('intent', 'in'))
-
-    def xtest_attr05(self):
-        r = parse_decl.x('+name="abcd"').attr()
-        self.assertEqual(r, ('name', 'abcd'))
-
-    def xtest_attr06(self):
-        r = parse_decl.x("+name='def'").attr()
-        self.assertEqual(r, ('name', 'def'))
-
-    def xtest_attr07(self):
-        r = parse_decl.x("+ii=12").attr()
-        self.assertEqual(r, ('ii', 12))
-
-    def xtest_attr08(self):
-        r = parse_decl.x("+d1=-12.0").attr()
-        self.assertEqual(r, ('d1', -12.0))
-
-    def xtest_attr09(self):
-        r = parse_decl.x("+d2=11.3e-10").attr()
-        self.assertEqual(r, ('d2', 1.13e-09))
-
-    def xtest_attr10(self):
-        r = parse_decl.x("+d3=11e10").attr()
-        self.assertEqual(r, ('d3', 110000000000.0))
-
-    def xtest_attr11(self):
-        r = parse_decl.x("+dimension").attr()
-        self.assertEqual(r, ('dimension', True))
-
-    def xtest_attr12(self):
-        r = parse_decl.x("+dimension(*)").attr()
-        self.assertEqual(r, ('dimension', '*'))
-
-    def xtest_attr13(self):
-        r = parse_decl.x("+dimension(len)").attr()
-        self.assertEqual(r, ('dimension', 'len'))
-
-    # declarator
-    def xtest_declarator01(self):
-        r = parse_decl("int arg")
-        self.assertEqual(r, {
-            'type': 'int',
-            'attrs': {},
-            'name': 'arg'
-        })
-        self.assertEqual(parse_decl.str_declarator(r), "int arg")
-
-    def xtest_declarator02(self):
-        r = parse_decl.x("const int arg").declarator()
-        self.assertEqual(r, {
-            'type': 'int',
-            'attrs': {'const': True},
-            'name': 'arg'
-        })
-        self.assertEqual(parse_decl.str_declarator(r), "const int arg")
-
-    def xtest_declarator03(self):
-        r = parse_decl.x("badtype arg").declarator()
-        self.assertEqual(r, {
-            'type': 'badtype',
-            'attrs': {},
-            'name': 'arg'
-        })
-        self.assertEqual(parse_decl.str_declarator(r), "badtype arg")
-
-    def xtest_declarator04(self):
-        r = parse_decl.x("std::vector<int> &arg").declarator()
-        self.assertEqual(r, {
-            'type': 'std::vector',
-            'attrs': {
-               'reference': True,
-               'template': 'int'
-            },
-            'name': 'arg'
-            })
-        self.assertEqual(parse_decl.str_declarator(r), "std::vector<int> &arg")
-
-    def xtest_declarator05(self):
-        r = parse_decl.x("std::vector<std::string> arg").declarator()
-        self.assertEqual(r, {
-            'type': 'std::vector',
-            'attrs': {
-               'template': 'std::string'
-            },
-            'name': 'arg'
-            })
-        self.assertEqual(parse_decl.str_declarator(r), "std::vector<std::string> arg")
-
-    # parameter_list
-    def xtest_parameter_list01(self):
-        r = parse_decl.x('int arg').parameter_list()
-        self.assertEqual(r, [{
-            'type': 'int',
-            'attrs': {},
-            'name': 'arg'
-        }])
-
-    def xtest_parameter_list02(self):
-        r = parse_decl.x('int *arg').parameter_list()
-        self.assertEqual(r,[{
-            'type': 'int',
-            'attrs': {'ptr': True},
-            'name': 'arg'
-        }])
-
-    def xtest_parameter_list03(self):
-        r = parse_decl.x('int arg1, double arg2').parameter_list()
-        self.assertEqual(r, [{
-            'type': 'int',
-            'attrs': {},
-            'name': 'arg1'
-        },{
-            'type': 'double',
-            'attrs': {},
-            'name': 'arg2'
-        }])
-
-    def xtest_parameter_list04(self):
-        r = parse_decl.x('int arg +in').parameter_list()
-        self.assertEqual(r,  [{
-            'type': 'int',
-            'attrs': {'in': True},
-            'name': 'arg'
-        }])
-
-    def xtest_parameter_list05(self):
-        r = parse_decl.x('int arg +in +value').parameter_list()
-        self.assertEqual(r,[{
-            'type': 'int',
-            'attrs': {'value': True, 'in': True},
-            'name': 'arg'
-        }])
-
-    def xtest_parameter_list06(self):
-        r = parse_decl.x('const string& getName').parameter_list()
-        self.assertEqual(r,[{
-            'type': 'string',
-            'attrs': {'const': True, 'reference': True},
-            'name': 'getName'
-        }])
-
-    def xtest_parameter_list07(self):
-        r = parse_decl.x('std::string getName').parameter_list()
-        self.assertEqual(r,[{
-            'type': 'std::string',
-            'attrs': {},
-            'name': 'getName'
-        }])
-
-    # argument_list
-    def xtest_argument_list01(self):
-        r = parse_decl.x("()").argument_list()
-        self.assertEqual(r, [])
-
-    def xtest_argument_list02(self):
-        r = parse_decl.x("(int arg1)").argument_list()
-        self.assertEqual(r, [
-            {
-                'type': 'int',
-                'attrs': {},
-                'name': 'arg1'
-            }
-        ])
-
-    def xtest_argument_list03(self):
-        r = parse_decl.x("(int arg1, double arg2)").argument_list()
-        self.assertEqual(r, [
-            {
-                'type': 'int',
-                'attrs': {},
-                'name': 'arg1'
-            },{
-                'type': 'double',
-                'attrs': {},
-                'name': 'arg2'
-            }
-        ])
-
-    def xtest_argument_list04(self):
-        r = parse_decl.x("(int arg1, double arg2 = 0.0)").argument_list()
-        self.assertEqual(r,  [
-            {
-                'type': 'int',
-                'attrs': {},
-                'name': 'arg1'
-            },{
-                'type': 'double',
-                'attrs': {'default': 0.0},
-                'name': 'arg2'
-            }
-        ])
+    maxDiff = None
 
     # decl
     def test_decl01(self):
@@ -270,6 +62,7 @@ class CheckParse(unittest.TestCase):
             'attrs': {},
             'result': {
                 'attrs': {},
+                'const': False,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -301,6 +94,7 @@ class CheckParse(unittest.TestCase):
             'attrs': {},
             'result': {
                 'attrs': {'alias': 'junk'},
+                'const': False,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -334,6 +128,7 @@ class CheckParse(unittest.TestCase):
             'attrs': {},
             'result': {
                 'attrs': {},
+                'const': False,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -367,6 +162,7 @@ class CheckParse(unittest.TestCase):
             'attrs': {'const': True},
             'result': {
                 'attrs': {},
+                'const': False,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -399,6 +195,7 @@ class CheckParse(unittest.TestCase):
             'args': [
                 {
                     'attrs': {},
+                    'const': False,
                     'name': 'arg1',
                     'type': 'int',
                 }
@@ -406,6 +203,7 @@ class CheckParse(unittest.TestCase):
             'attrs': {},
             'result': {
                 'attrs': {},
+                'const': False,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -451,16 +249,19 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(r.to_dict(), {
             'args': [{
                 'attrs': {},
+                'const': False,
                 'name': 'arg1',
                 'type': 'int',
             },{
                 'attrs': {},
+                'const': False,
                 'name': 'arg2',
                 'type': 'double',
             }],
             'attrs': {},
             'result': {
                 'attrs': {},
+                'const': False,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -520,7 +321,8 @@ class CheckParse(unittest.TestCase):
             'args': [],
             'attrs': {'const': True},
             'result': {
-                'attrs': {'const': True, 'reference': True},
+                'attrs': {'reference': True},
+                'const': True,
                 'name': 'getName',
                 'type': 'std::string',
             }
@@ -563,10 +365,12 @@ class CheckParse(unittest.TestCase):
             'args': [
                 {
                     'attrs': {'in': True},
+                    'const': False,
                     'name': 'arg1',
                     'type': 'int',
                 },{
                     'attrs': {'out': True},
+                    'const': False,
                     'name': 'arg2',
                     'type': 'double',
                 }
@@ -578,9 +382,9 @@ class CheckParse(unittest.TestCase):
             {
                 'attrs': {
                     'attr1': '30',
-                    'const': True,
                     'len': 30,
                 },
+                'const': True,
                 'name': 'foo',
                 'type': 'void',
             }
@@ -656,6 +460,7 @@ class CheckParse(unittest.TestCase):
                 "attrs": {
                     "ptr": True
                 }, 
+                'const': False,
                 "name": "Class1", 
                 "type": "Class1"
             }
@@ -704,6 +509,7 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "default": 0
                     }, 
+                    'const': False,
                     "name": "arg1", 
                     "type": "int"
                 }, 
@@ -711,6 +517,7 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "default": 0.0
                     }, 
+                    'const': False,
                     "name": "arg2", 
                     "type": "double"
                 }, 
@@ -718,6 +525,7 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "default": '"name"'
                     }, 
+                    'const': False,
                     "name": "arg3", 
                     "type": "std::string"
                 },
@@ -725,6 +533,7 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "default": "true"
                     }, 
+                    'const': False,
                     "name": "arg4", 
                     "type": "bool"
                 }
@@ -732,6 +541,7 @@ class CheckParse(unittest.TestCase):
             "attrs": {}, 
             "result": {
                 "attrs": {}, 
+                'const': False,
                 "name": "name", 
                 "type": "void"
             }
@@ -822,6 +632,7 @@ class CheckParse(unittest.TestCase):
             "args": [
                 {
                     "attrs": {}, 
+                    'const': False,
                     "name": "arg", 
                     "type": "ArgType"
                 }
@@ -829,6 +640,7 @@ class CheckParse(unittest.TestCase):
             "attrs": {}, 
             "result": {
                 "attrs": {}, 
+                'const': False,
                 "name": "decl11", 
                 "type": "void"
             }
@@ -879,11 +691,13 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "template": "std::string"
                     }, 
+                    'const': False,
                     "name": "arg1", 
                     "type": "std::vector"
                 }, 
                 {
                     "attrs": {}, 
+                    'const': False,
                     "name": "arg2", 
                     "type": "string"
                 }
@@ -891,6 +705,7 @@ class CheckParse(unittest.TestCase):
             "attrs": {}, 
             "result": {
                 "attrs": {}, 
+                'const': False,
                 "name": "decl12",
                 "type": "void"
             }

@@ -118,6 +118,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "name": "Function1", 
                 "type": "void"
             }
@@ -132,6 +133,7 @@
                         "intent": "in", 
                         "value": true
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -151,6 +153,7 @@
                         "intent": "in", 
                         "value": true
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -193,6 +196,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "fmtc": {
                     "cpp_rv_decl": "double SHT_rv", 
                     "cpp_var": "SHT_rv"
@@ -211,6 +215,7 @@
                         "intent": "in", 
                         "value": true
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -232,6 +237,7 @@
                         "ptr": true, 
                         "value": false
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -252,6 +258,7 @@
                         "ptr": true, 
                         "value": false
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -293,6 +300,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "name": "Sum", 
                 "type": "void"
             }
@@ -307,6 +315,7 @@
                         "intent": "in", 
                         "value": true
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -349,6 +358,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "fmtc": {
                     "cpp_rv_decl": "bool SHT_rv", 
                     "cpp_var": "SHT_rv"
@@ -364,10 +374,10 @@
             "args": [
                 {
                     "attrs": {
-                        "const": true, 
                         "intent": "in", 
                         "value": true
                     }, 
+                    "const": true, 
                     "fmtc": {
                         "c_const": "const ", 
                         "c_ptr": "", 
@@ -388,6 +398,7 @@
                         "ptr": true, 
                         "value": false
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -408,6 +419,7 @@
                         "ptr": true, 
                         "value": false
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -449,6 +461,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "name": "Function3b", 
                 "type": "void"
             }
@@ -462,11 +475,11 @@
             "args": [
                 {
                     "attrs": {
-                        "const": true, 
                         "intent": "in", 
                         "ptr": true, 
                         "value": false
                     }, 
+                    "const": true, 
                     "fmtc": {
                         "c_const": "const ", 
                         "c_ptr": " *", 
@@ -479,11 +492,11 @@
                 }, 
                 {
                     "attrs": {
-                        "const": true, 
                         "intent": "in", 
                         "ptr": true, 
                         "value": false
                     }, 
+                    "const": true, 
                     "fmtc": {
                         "c_const": "const ", 
                         "c_ptr": " *", 
@@ -526,6 +539,7 @@
                     "len": "30", 
                     "ptr": true
                 }, 
+                "const": false, 
                 "fmtc": {
                     "cpp_rv_decl": "char * SHT_rv", 
                     "cpp_var": "SHT_rv"
@@ -546,12 +560,12 @@
             "args": [
                 {
                     "attrs": {
-                        "const": true, 
                         "intent": "in", 
                         "len_trim": "Larg1", 
                         "ptr": true, 
                         "value": false
                     }, 
+                    "const": true, 
                     "fmtc": {
                         "c_const": "const ", 
                         "c_ptr": " *", 
@@ -570,12 +584,12 @@
                 }, 
                 {
                     "attrs": {
-                        "const": true, 
                         "intent": "in", 
                         "len_trim": "Larg2", 
                         "ptr": true, 
                         "value": false
                     }, 
+                    "const": true, 
                     "fmtc": {
                         "c_const": "const ", 
                         "c_ptr": " *", 
@@ -595,11 +609,11 @@
                 {
                     "attrs": {
                         "_is_result": true, 
-                        "const": false, 
                         "intent": "out", 
                         "len": "NSHF_rv", 
                         "ptr": true
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -640,11 +654,11 @@
             }, 
             "result": {
                 "attrs": {
-                    "const": false, 
                     "len": "30", 
                     "ptr": false, 
                     "reference": false
                 }, 
+                "const": false, 
                 "fmtc": {
                     "cpp_rv_decl": "char * SHT_rv", 
                     "cpp_var": "SHT_rv"

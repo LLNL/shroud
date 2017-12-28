@@ -1429,8 +1429,8 @@ class GenFunctions(object):
             # Add additional argument to hold result
             result_as_string = copy.deepcopy(result)
             result_as_string['name'] = result_name
+            result_as_string['const'] = False
             attrs = result_as_string['attrs']
-            attrs['const'] = False
             attrs['len'] = options.C_var_len_template.format(c_var=result_name)
             attrs['intent'] = 'out'
             attrs['_is_result'] = True
@@ -1444,7 +1444,7 @@ class GenFunctions(object):
             result = C_new['result']
             result['type'] = 'void'
             attrs = result['attrs']
-            attrs['const'] = False
+            result['const'] = False
             attrs['ptr'] = False
             attrs['reference'] = False
 
@@ -1555,7 +1555,10 @@ class GenFunctions(object):
         """ Generate declaration for a single arg (or result)
         """
         attrs = arg['attrs']
-        if attrs.get('const', False):
+        if 'const' not in arg:
+            print ("XXXXXXXXX", arg)
+            raise RuntimeError
+        if arg['const']:
             decl.append('const ')
         decl.append(arg['type'] + ' ')
         if attrs.get('ptr', False):
@@ -1683,7 +1686,7 @@ class VerifyAttrs(object):
             if intent is None:
                 if not is_ptr:
                     attrs['intent'] = 'in'
-                elif attrs.get('const', False):
+                elif arg['const']:
                     attrs['intent'] = 'in'
                 elif typedef.base == 'string':
                     attrs['intent'] = 'inout'

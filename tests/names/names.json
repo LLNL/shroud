@@ -69,6 +69,7 @@
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
+                        "const": false, 
                         "name": "method1", 
                         "type": "void"
                     }
@@ -108,6 +109,7 @@
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
+                        "const": false, 
                         "name": "method2", 
                         "type": "void"
                     }
@@ -278,6 +280,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "name": "function1", 
                 "type": "void"
             }
@@ -317,6 +320,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "name": "function2", 
                 "type": "void"
             }
@@ -338,6 +342,7 @@
                         "intent": "in", 
                         "value": true
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -389,6 +394,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "name": "function3a", 
                 "type": "void"
             }
@@ -410,6 +416,7 @@
                         "intent": "in", 
                         "value": true
                     }, 
+                    "const": false, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -461,6 +468,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "name": "function3a", 
                 "type": "void"
             }
@@ -473,11 +481,11 @@
             "args": [
                 {
                     "attrs": {
-                        "const": true, 
                         "intent": "in", 
                         "reference": true, 
                         "value": false
                     }, 
+                    "const": true, 
                     "fmtc": {
                         "c_const": "const ", 
                         "c_ptr": "", 
@@ -526,6 +534,7 @@
             "options": {}, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "fmtc": {
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
@@ -544,12 +553,12 @@
             "args": [
                 {
                     "attrs": {
-                        "const": true, 
                         "intent": "in", 
                         "len_trim": "Lrv", 
                         "reference": true, 
                         "value": false
                     }, 
+                    "const": true, 
                     "fmtc": {
                         "c_const": "const ", 
                         "c_ptr": "", 
@@ -588,6 +597,7 @@
             }, 
             "result": {
                 "attrs": {}, 
+                "const": false, 
                 "fmtc": {
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"

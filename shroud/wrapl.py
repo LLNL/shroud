@@ -446,7 +446,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
-        #        is_const = result['attrs'].get('const', False)
+        #        is_const = result['const']
         # XXX        if is_ctor:   # or is_dtor:
         # XXX            # XXX - have explicit delete
         # XXX            # need code in __init__ and __del__

@@ -346,7 +346,7 @@ class WrapperMixin(object):
         typedef = Typedef.lookup(arg['type'])
 
         if const is None:
-            const = arg['attrs'].get('const', False)
+            const = arg['const']
         if const:
             t.append('const')
 

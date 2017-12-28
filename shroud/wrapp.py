@@ -377,7 +377,7 @@ return 1;""", fmt)
         result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
-#        is_const = result['attrs'].get('const', False)
+#        is_const = result['const']
         if is_ctor:   # or is_dtor:
             # XXX - have explicit delete
             # need code in __init__ and __del__
@@ -434,7 +434,7 @@ return 1;""", fmt)
                 fmt_arg.c_var = arg['name']
                 fmt_arg.cpp_var = fmt_arg.c_var
                 fmt_arg.py_var = 'SH_Py_' + fmt_arg.c_var
-                if arg['attrs'].get('const', False):
+                if arg['const']:
                     fmt_arg.c_const = 'const '
                 else:
                     fmt_arg.c_const = ''

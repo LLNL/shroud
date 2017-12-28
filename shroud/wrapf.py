@@ -765,7 +765,7 @@ class Wrapf(util.WrapperMixin):
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
         is_pure = node['attrs'].get('pure', False)
-        is_const = result['attrs'].get('const', False)
+        is_const = result['const']
 
         result_intent_grp = ''
         if is_pure:

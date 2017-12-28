@@ -619,8 +619,7 @@ class Declaration(Node):
             d['type'] = 'int'
         d['attrs'] = attrs
         attrs.update(self.attrs)
-        if self.const:
-            attrs['const'] = True
+        d['const'] = self.const
         if self.init is not None:
             attrs['default'] = self.init
         self.declarator.to_dict(d)
