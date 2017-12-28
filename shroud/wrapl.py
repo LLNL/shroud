@@ -187,7 +187,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for function in functions:
             if not function['options'].wrap_lua:
                 continue
-            name = function['result']['name']
+            name = declast.get_name(function['result'])
             if name in overloaded_methods:
                 overloaded_methods[name].append(function)
             else:
@@ -215,7 +215,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         node = overloads[0]
 
         result = node['result']
-        function_name = result['name']
+        function_name = declast.get_name(result)
         fmt_func = node['fmt']
         fmt = util.Options(fmt_func)
         util.eval_template(node, 'LUA_name')
@@ -224,7 +224,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         CPP_subprogram = node['_subprogram']
 
         # XXX       result = node['result']
-        # XXX       result_type = result['type']
+        # XXX       result_type = declast.get_type(result)
         # XXX       result_is_ptr = declast.is_pointer(result)
         # XXX       result_is_ref = declast.is_reference(result)
 
@@ -258,7 +258,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             out_args = []
             found_default = False
             for arg in function['result']['args']:
-                arg_typedef = util.Typedef.lookup(arg['type'])
+                arg_typedef = util.Typedef.lookup(declast.get_type(arg))
                 attrs = arg['attrs']
                 if arg['init'] is not None:
                     all_calls.append(lua_function(
@@ -311,7 +311,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     fmt.nresults = call.nresults
                     checks = []
                     for iarg, arg in enumerate(call.inargs):
-                        arg_typedef = util.Typedef.lookup(arg['type'])
+                        arg_typedef = util.Typedef.lookup(declast.get_type(arg))
                         fmt.itype_var = itype_vars[iarg]
                         fmt.itype = arg_typedef.LUA_type
                         append_format(checks, '{itype_var} == {itype}', fmt)
@@ -436,7 +436,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         CPP_subprogram = node['_subprogram']
 
         result = node['result']
-        result_type = result['type']
+        result_type = declast.get_type(result)
         result_is_ptr = declast.is_pointer(result)
         result_is_ref = declast.is_reference(result)
 
@@ -495,10 +495,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         LUA_index = 1
         for iarg in range(luafcn.nargs):
             arg = result['args'][iarg]
-            arg_name = arg['name']
+            arg_name = declast.get_name(arg)
             fmt_arg = arg.setdefault('fmtl', util.Options(fmt))
             fmt_arg.LUA_index = LUA_index
-            fmt_arg.c_var = arg['name']
+            fmt_arg.c_var = arg_name
             fmt_arg.cpp_var = fmt_arg.c_var
             fmt_arg.lua_var = 'SH_Lua_' + fmt_arg.c_var
             fmt_arg.c_var_len = 'L' + fmt_arg.c_var
@@ -507,7 +507,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             lua_pop = None
 
-            arg_typedef = util.Typedef.lookup(arg['type'])
+            arg_typedef = util.Typedef.lookup(declast.get_type(arg))
             fmt_arg.cpp_type = arg_typedef.cpp_type
             LUA_statements = arg_typedef.LUA_statements
             if attrs['intent'] in ['inout', 'in']:

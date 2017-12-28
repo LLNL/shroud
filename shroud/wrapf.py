@@ -79,6 +79,7 @@ from __future__ import absolute_import
 import copy
 import os
 
+from . import declast
 from . import whelpers
 from . import util
 from .util import wformat, append_format
@@ -133,7 +134,7 @@ class Wrapf(util.WrapperMixin):
 
         """
         t = []
-        typedef = util.Typedef.lookup(arg['type'])
+        typedef = util.Typedef.lookup(declast.get_type(arg))
         basedef = typedef
         attrs = arg['attrs']
         if 'template' in attrs:
@@ -143,7 +144,7 @@ class Wrapf(util.WrapperMixin):
 
         typ = typedef.f_c_type or typedef.f_type
         if typ is None:
-            raise RuntimeError("Type {} has no value for f_c_type".format(arg['type']))
+            raise RuntimeError("Type {} has no value for f_c_type".format(declast.get_type(arg)))
         t.append(typ)
         if attrs.get('value', False):
             t.append('value')
@@ -166,7 +167,7 @@ class Wrapf(util.WrapperMixin):
         This makes it easy to reproduce the arguments.
         """
         typ, dimension = self._c_type(arg)
-        rv = typ + ' :: ' + (name or arg['name']) + dimension
+        rv = typ + ' :: ' + (name or declast.get_name(arg)) + dimension
         return rv
 
     def _f_type(self, arg, local=False):
@@ -182,7 +183,7 @@ class Wrapf(util.WrapperMixin):
           OPTIONAL, VALUE, and INTENT
         """
         t = []
-        typedef = util.Typedef.lookup(arg['type'])
+        typedef = util.Typedef.lookup(declast.get_type(arg))
         attrs = arg['attrs']
         if 'template' in attrs:
             # If a template, use its type
@@ -207,7 +208,7 @@ class Wrapf(util.WrapperMixin):
         This makes it easy to reproduce the arguments.
         """
         typ, dimension = self._f_type(arg, local=local)
-        rv = typ + ' :: ' + (name or arg['name']) + dimension
+        rv = typ + ' :: ' + (name or declast.get_name(arg)) + dimension
         return rv
 
     def wrap_library(self):
@@ -559,7 +560,7 @@ class Wrapf(util.WrapperMixin):
         fmt = util.Options(fmt_func)
 
         result = node['result']
-        result_type = result['type']
+        result_type = declast.get_type(result)
         func_is_const = result['func_const']
         subprogram = node['_subprogram']
 
@@ -607,7 +608,7 @@ class Wrapf(util.WrapperMixin):
             # default argument's intent
             # XXX look at const, ptr
             arg_typedef, c_statements = util.lookup_c_statements(arg)
-            fmt.c_var = arg['name']
+            fmt.c_var = declast.get_name(arg)
             attrs = arg['attrs']
             self.update_f_module(modules,
                                  arg_typedef.f_c_module or arg_typedef.f_module)
@@ -621,7 +622,7 @@ class Wrapf(util.WrapperMixin):
                 for argname in arg_typedef.f_c_args:
                     arg_c_names.append(argname)
             else:
-                arg_c_names.append(arg['name'])
+                arg_c_names.append(declast.get_name(arg))
 
             # argument declarations
             if arg_typedef.f_c_argdecl:
@@ -729,7 +730,7 @@ class Wrapf(util.WrapperMixin):
 
         # Fortran return type
         result = node['result']
-        result_type = result['type']
+        result_type = declast.get_type(result)
         func_is_const = result['func_const']
         subprogram = node['_subprogram']
         c_subprogram = C_node['_subprogram']
@@ -753,7 +754,7 @@ class Wrapf(util.WrapperMixin):
             subprogram = 'function'
             c_subprogram = 'function'
             result = copy.deepcopy(node['result'])
-            result['type'] = result_type
+            declast.set_type(result, result_type)
 
         result_typedef = util.Typedef.lookup(result_type)
         is_ctor = result['fattrs'].get('constructor', False)
@@ -807,7 +808,7 @@ class Wrapf(util.WrapperMixin):
         f_index = -1       # index into f_args
         for c_arg in C_node['result']['args']:
             fmt_arg = c_arg.setdefault('fmtf', util.Options(fmt_func))
-            fmt_arg.f_var = c_arg['name']
+            fmt_arg.f_var = declast.get_name(c_arg)
             fmt_arg.c_var = fmt_arg.f_var
 
             f_arg = True   # assume C and Fortran arguments match
@@ -833,7 +834,7 @@ class Wrapf(util.WrapperMixin):
                 arg_f_names.append(fmt_arg.f_var)
                 arg_f_decl.append(self._f_decl(f_arg))
 
-                arg_type = f_arg['type']
+                arg_type = declast.get_type(f_arg)
                 arg_typedef = util.Typedef.lookup(arg_type)
                 base_typedef = arg_typedef
                 if 'template' in c_attrs:
@@ -877,7 +878,7 @@ class Wrapf(util.WrapperMixin):
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
-            arg_typedef = util.Typedef.lookup(c_arg['type'])
+            arg_typedef = util.Typedef.lookup(declast.get_type(c_arg))
             arg_typedef, c_statements = util.lookup_c_statements(c_arg)
             c_intent_blk = c_statements.get(c_stmts, {})
 
@@ -889,7 +890,7 @@ class Wrapf(util.WrapperMixin):
             elif arg_typedef.f_to_c:
                 need_wrapper = True
                 append_format(arg_c_call, arg_typedef.f_to_c, fmt_arg)
-            elif f_arg and c_arg['type'] != f_arg['type']:
+            elif f_arg and declast.get_type(c_arg) != declast.get_type(f_arg):
                 need_wrapper = True
                 append_format(arg_c_call, arg_typedef.f_cast, fmt_arg)
                 self.update_f_module(modules, arg_typedef.f_module)

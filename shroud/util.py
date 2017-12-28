@@ -41,12 +41,13 @@
 from __future__ import print_function
 from __future__ import absolute_import
 
-
 import collections
 import copy
 import string
 import json
 import os
+
+from . import declast
 
 fmt = string.Formatter()
 
@@ -260,7 +261,7 @@ def lookup_c_statements(arg):
     template specific c_statements.
     """
     attrs = arg['attrs']
-    argtype = arg['type']
+    argtype = declast.get_type(arg)
     arg_typedef = Typedef.lookup(argtype)
 
     c_statements = arg_typedef.c_statements
@@ -343,7 +344,7 @@ class WrapperMixin(object):
 #        if lang not in [ 'c_type', 'cpp_type' ]:
 #            raise RuntimeError
         t = []
-        typedef = Typedef.lookup(arg['type'])
+        typedef = Typedef.lookup(declast.get_type(arg))
 
         if const is None:
             const = arg['const']
@@ -369,7 +370,7 @@ class WrapperMixin(object):
         This makes it easy to reproduce the arguments.
         """
         typ = self.std_c_type(lang, arg, const, ptr)
-        return typ + ' ' + (name or arg['name'])
+        return typ + ' ' + (name or declast.get_name(arg))
 
 #####
 
@@ -779,7 +780,7 @@ class XXXFunctionNode(object):
         if 'args' in d:
             if self.args:
                 for arg in d['args']:
-                    name = arg['name']
+                    name = declast.get_name(arg)
                     if name in self.arg_map:
                         # update existing arg
                         update(self.arg_map[name], arg)
@@ -790,7 +791,7 @@ class XXXFunctionNode(object):
             else:
                 self.args = d['args']
                 for arg in self.args:
-                    name = arg['name']
+                    name = declast.get_name(arg)
                     self.arg_map[name] = arg
 
     def dump(self):

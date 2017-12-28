@@ -758,16 +758,50 @@ def create_this_arg(name, typ, const=True):
     return arg
     
 ##################################################
+
+def get_name(decl):
+    if isinstance(decl, Declaration):
+        return decl.get_name()
+    else:
+        return decl['name']
+
+def set_name(decl, name):
+    if isinstance(decl, Declaration):
+        decl.declarator.name = name
+    else:
+        decl['name'] = name
+
+def get_type(decl):
+    if isinstance(decl, Declaration):
+        return decl.get_type()
+    else:
+        return decl['type']
+
+def set_type(decl, typ):
+    if isinstance(decl, Declaration):
+        decl.set_type(typ)
+    else:
+        decl['type'] = typ
+
 def is_pointer(decl):
     """Old dictionary based."""
-    return decl['attrs'].get('ptr', False)
+    if isinstance(decl, Declaration):
+        return decl.is_pointer()
+    else:
+        return decl['attrs'].get('ptr', False)
 
 def is_reference(decl):
     """Old dictionary based."""
-    return decl['attrs'].get('reference', False)
+    if isinstance(decl, Declaration):
+        return decl.is_reference()
+    else:
+        return decl['attrs'].get('reference', False)
 
 def is_indirect(decl):
-    return is_pointer(decl) or is_reference(decl)
+    if isinstance(decl, Declaration):
+        return decl.is_indirect()
+    else:
+        return is_pointer(decl) or is_reference(decl)
 
 ##################################################
 

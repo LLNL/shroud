@@ -96,19 +96,20 @@ class Wrapc(util.WrapperMixin):
 #        if lang not in [ 'c_type', 'cpp_type' ]:
 #            raise RuntimeError
         t = []
-        typedef = util.Typedef.lookup(arg['type'])
+        typ = declast.get_type(arg)
+        typedef = util.Typedef.lookup(typ)
         attrs = arg['attrs']
         if 'template' in attrs:
             # If a template, use its type
             typedef = util.Typedef.lookup(attrs['template'])
         if typedef is None:
-            raise RuntimeError("No such type %s" % arg['type'])
+            raise RuntimeError("No such type %s" % typ)
         if arg['const']:
             t.append('const')
         typ = getattr(typedef, lang)
         if typ is None:
             raise RuntimeError(
-                "Type {} has no value for {}".format(arg['type'], lang))
+                "Type {} has no value for {}".format(typ, lang))
         t.append(typ)
         if declast.is_pointer(arg):
             t.append('*')
@@ -129,7 +130,7 @@ class Wrapc(util.WrapperMixin):
 #        if lang not in [ 'c_type', 'cpp_type' ]:
 #            raise RuntimeError
         typ = self._c_type(lang, arg)
-        return typ + ' ' + (name or arg['name'])
+        return typ + ' ' + (name or declast.get_name(arg))
 
     def wrap_library(self):
         fmt_library = self.tree['fmt']
@@ -381,12 +382,12 @@ class Wrapc(util.WrapperMixin):
             if '_generated' in CPP_node:
                 generated.append(CPP_node['_generated'])
         CPP_result = CPP_node['result']
-        CPP_result_type = CPP_result['type']
+        CPP_result_type = declast.get_type(CPP_result)
         CPP_subprogram = CPP_node['_subprogram']
 
         # C return type
         result = node['result']
-        result_type = result['type']
+        result_type = declast.get_type(result)
         subprogram = node['_subprogram']
         generator = node.get('_generated', '')
         intent_grp = ''
@@ -480,7 +481,7 @@ class Wrapc(util.WrapperMixin):
             if 'template' in c_attrs:
                 fmt_arg.cpp_T = c_attrs['template']
 
-            fmt_arg.c_var = arg['name']
+            fmt_arg.c_var = declast.get_name(arg)
 
             if arg['const']:
                 fmt_arg.c_const = 'const '
@@ -718,7 +719,7 @@ class Wrapc(util.WrapperMixin):
             impl.append('}')
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = node['result']['name']
+            fmt_func.C_name = declast.get_name(node['result'])
 
 
     def XXXget_intent(self, intent_blk, block):

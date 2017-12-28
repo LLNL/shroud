@@ -322,7 +322,7 @@ return 1;""", fmt)
         overloaded_methods = {}
         for function in functions:
             flist = overloaded_methods. \
-                setdefault(function['result']['name'], [])
+                setdefault(declast.get_name(function['result']), [])
             if '_cpp_overload' not in function:
                 continue
             if not function['options'].wrap_python:
@@ -366,7 +366,7 @@ return 1;""", fmt)
         CPP_subprogram = node['_subprogram']
 
         result = node['result']
-        result_type = result['type']
+        result_type = declast.get_type(result)
         result_is_ptr = declast.is_pointer(result)
         result_is_ref = declast.is_reference(result)
 
@@ -431,8 +431,8 @@ return 1;""", fmt)
             offset = 0
             for arg in args:
                 fmt_arg = arg.setdefault('fmtpy', util.Options(fmt))
-                arg_name = arg['name']
-                fmt_arg.c_var = arg['name']
+                arg_name = declast.get_name(arg)
+                fmt_arg.c_var = arg_name
                 fmt_arg.cpp_var = fmt_arg.c_var
                 fmt_arg.py_var = 'SH_Py_' + fmt_arg.c_var
                 if arg['const']:
@@ -445,7 +445,7 @@ return 1;""", fmt)
                     fmt_arg.c_ptr = ''
                 attrs = arg['attrs']
 
-                arg_typedef = util.Typedef.lookup(arg['type'])
+                arg_typedef = util.Typedef.lookup(declast.get_type(arg))
                 fmt_arg.cpp_type = arg_typedef.cpp_type
                 py_statements = arg_typedef.py_statements
                 have_cpp_local_var = arg_typedef.cpp_local_var
@@ -666,7 +666,7 @@ return 1;""", fmt)
         util.eval_template(node, 'PY_name_impl')
 
         expose = True
-        if len(self.overloaded_methods[result['name']]) > 1:
+        if len(self.overloaded_methods[declast.get_name(result)]) > 1:
             # Only expose a multi-dispatch name, not each overload
             expose = False
         elif found_default:
