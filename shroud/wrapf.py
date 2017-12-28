@@ -582,9 +582,9 @@ class Wrapf(util.WrapperMixin):
             subprogram = 'function'
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['attrs'].get('constructor', False)
+        is_ctor = node['fattrs'].get('constructor', False)
         is_const = node['func_const']
-        is_pure = node['attrs'].get('pure', False)
+        is_pure = node['fattrs'].get('pure', False)
 
         arg_c_names = []  # argument names for functions
         arg_c_decl = []   # declaraion of argument names
@@ -762,9 +762,9 @@ class Wrapf(util.WrapperMixin):
             result['type'] = result_type
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['attrs'].get('constructor', False)
-        is_dtor = node['attrs'].get('destructor', False)
-        is_pure = node['attrs'].get('pure', False)
+        is_ctor = node['fattrs'].get('constructor', False)
+        is_dtor = node['fattrs'].get('destructor', False)
+        is_pure = node['fattrs'].get('pure', False)
         is_const = result['const']
 
         result_intent_grp = ''

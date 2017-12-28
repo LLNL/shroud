@@ -92,8 +92,8 @@
             "_function_index": 0, 
             "_subprogram": "subroutine", 
             "args": [], 
-            "attrs": {}, 
             "decl": "void Function1()", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function1();", 
                 "C_call_list": "", 
@@ -170,8 +170,8 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "double Function2(double arg1, int arg2)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 

@@ -608,9 +608,9 @@ class Declaration(Node):
                 result = d,
                 args = [],
                 func_const = self.func_const,
-                attrs = {}
+                fattrs = {}
             )
-            top['attrs'].update(self.fattrs)
+            top['fattrs'].update(self.fattrs)
         else:
             top = None
         if self.specifier:
@@ -771,6 +771,9 @@ def is_pointer(decl):
 def is_reference(decl):
     """Old dictionary based."""
     return decl['attrs'].get('reference', False)
+
+def is_indirect(decl):
+    return is_pointer(decl) or is_reference(decl)
 
 ##################################################
 

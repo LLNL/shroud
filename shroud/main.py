@@ -994,7 +994,7 @@ class Schema(object):
 #        func.update(node)
 #        func.dump()
 
-        node['attrs'] = {}
+        node['fattrs'] = {}
         node['args'] = []
 
         if 'cpp_template' in node:
@@ -1315,8 +1315,7 @@ class GenFunctions(object):
         # wrapped classes have not been added yet.
         # Only care about string here.
         attrs = result['attrs']
-        result_is_ptr = (attrs.get('ptr', False) or
-                         attrs.get('reference', False))
+        result_is_ptr = declast.is_indirect(result)
         if result_typedef and result_typedef.base in ['string', 'vector'] and \
                 result_type != 'char' and \
                 not result_is_ptr:
@@ -1338,9 +1337,7 @@ class GenFunctions(object):
             argtype = arg['type']
             typedef = util.Typedef.lookup(argtype)
             if typedef.base == 'string':
-                attrs = arg['attrs']
-                is_ptr = (attrs.get('ptr', False) or
-                          attrs.get('reference', False))
+                is_ptr = declast.is_indirect(arg)
                 if is_ptr:
                     has_implied_arg = True
                 else:
@@ -1350,7 +1347,7 @@ class GenFunctions(object):
 
         has_string_result = False
         result_as_arg = ''  # only applies to string functions
-        is_pure = node['attrs'].get('pure', False)
+        is_pure = node['fattrs'].get('pure', False)
         if result_typedef.base == 'vector':
             raise NotImplemented("vector result")
         elif result_typedef.base == 'string':
@@ -1554,13 +1551,12 @@ class GenFunctions(object):
     def gen_arg_decl(self, arg, decl):
         """ Generate declaration for a single arg (or result)
         """
-        attrs = arg['attrs']
         if arg['const']:
             decl.append('const ')
         decl.append(arg['type'] + ' ')
-        if attrs.get('ptr', False):
+        if declast.is_pointer(arg):
             decl.append('* ')
-        if attrs.get('reference', False):
+        if declast.is_reference(arg):
             decl.append('& ')
         decl.append(arg['name'])
 
@@ -1581,10 +1577,9 @@ class GenFunctions(object):
             else:
                 decl.append('()')
 
-            attrs = node['attrs']
             if node['func_const']:
                 decl.append(' const')
-            self.gen_annotations_decl(attrs, decl)
+            self.gen_annotations_decl(node['fattrs'], decl)
 
             node['_decl'] = ''.join(decl)
 
@@ -1650,7 +1645,7 @@ class VerifyAttrs(object):
         # cache subprogram type
         result = node['result']
         result_type = result['type']
-        result_is_ptr = result['attrs'].get('ptr', False)
+        result_is_ptr = declast.is_pointer(result)
         #  'void'=subroutine   'void *'=function
         if result_type == 'void' and not result_is_ptr:
             node['_subprogram'] = 'subroutine'
@@ -1674,9 +1669,8 @@ class VerifyAttrs(object):
                     raise RuntimeError("No such type %s: %s" % (
                             argtype, declast.str_declarator(arg)))
 
+            is_ptr = declast.is_indirect(arg)
             attrs = arg['attrs']
-            is_ptr = (attrs.get('ptr', False) or
-                      attrs.get('reference', False))
 
             # intent
             intent = attrs.get('intent', None)

@@ -92,8 +92,8 @@
             "_function_index": 0, 
             "_subprogram": "subroutine", 
             "args": [], 
-            "attrs": {}, 
             "decl": "void Function1()", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function1();", 
                 "C_call_list": "", 
@@ -170,8 +170,8 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "double Function2(double arg1, int arg2)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
@@ -276,8 +276,8 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Sum(len, values, result);", 
                 "C_call_list": "len, values, result", 
@@ -334,8 +334,8 @@
                     "type": "bool"
                 }
             ], 
-            "attrs": {}, 
             "decl": "bool Function3(bool arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "bool SHT_rv = Function3(arg);", 
                 "C_call_list": "arg", 
@@ -439,8 +439,8 @@
                     "type": "bool"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function3b(arg1, arg2, arg3);", 
                 "C_call_list": "arg1, arg2, arg3", 
@@ -513,8 +513,8 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char * SHT_rv = Function4a(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
@@ -637,8 +637,8 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char * SHT_rv = Function4a(SH_arg1, SH_arg2);", 
                 "C_call_list": "SH_arg1, SH_arg2", 

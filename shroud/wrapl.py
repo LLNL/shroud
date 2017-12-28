@@ -233,8 +233,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             CPP_subprogram = 'subroutine'
 
         # XXX       result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['attrs'].get('constructor', False)
-        is_dtor = node['attrs'].get('destructor', False)
+        is_ctor = node['fattrs'].get('constructor', False)
+        is_dtor = node['fattrs'].get('destructor', False)
         if is_dtor:
             fmt.LUA_name = '__gc'
 
@@ -445,8 +445,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             CPP_subprogram = 'subroutine'
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['attrs'].get('constructor', False)
-        is_dtor = node['attrs'].get('destructor', False)
+        is_ctor = node['fattrs'].get('constructor', False)
+        is_dtor = node['fattrs'].get('destructor', False)
         #        is_const = result['const']
         # XXX        if is_ctor:   # or is_dtor:
         # XXX            # XXX - have explicit delete
@@ -501,7 +501,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_arg.cpp_var = fmt_arg.c_var
             fmt_arg.lua_var = 'SH_Lua_' + fmt_arg.c_var
             fmt_arg.c_var_len = 'L' + fmt_arg.c_var
-            fmt_arg.ptr = ' *' if arg['attrs'].get('ptr', False) else ''
+            fmt_arg.ptr = ' *' if declast.is_pointer(arg) else ''
             attrs = arg['attrs']
 
             lua_pop = None

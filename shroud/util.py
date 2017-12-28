@@ -726,7 +726,7 @@ def copy_function_node(node):
     new = node.copy()
 
     # Deep copy dictionaries
-    for field in ['args', 'attrs', 'result']:
+    for field in ['args', 'fattrs', 'result']:
         new[field] = copy.deepcopy(node[field])
 
     # Add new Options in chain

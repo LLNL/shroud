@@ -59,7 +59,7 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(),{
             'args': [],
-            'attrs': {},
+            'fattrs': {},
             'func_const': False, 
             'result': {
                 'attrs': {},
@@ -92,7 +92,7 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(), {
             'args': [],
-            'attrs': {},
+            'fattrs': {},
             'func_const': False, 
             'result': {
                 'attrs': {'alias': 'junk'},
@@ -127,7 +127,7 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(), {
             'args': [],
-            'attrs': {},
+            'fattrs': {},
             'func_const': False, 
             'result': {
                 'attrs': {},
@@ -162,7 +162,7 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(),{
             'args': [],
-            'attrs': {},
+            'fattrs': {},
             'func_const': True, 
             'result': {
                 'attrs': {},
@@ -204,7 +204,7 @@ class CheckParse(unittest.TestCase):
                     'type': 'int',
                 }
             ],
-            'attrs': {},
+            'fattrs': {},
             'func_const': False, 
             'result': {
                 'attrs': {},
@@ -263,7 +263,7 @@ class CheckParse(unittest.TestCase):
                 'name': 'arg2',
                 'type': 'double',
             }],
-            'attrs': {},
+            'fattrs': {},
             'func_const': False, 
             'result': {
                 'attrs': {},
@@ -325,7 +325,7 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(), {
             'args': [],
-            'attrs': {},
+            'fattrs': {},
             'func_const': True, 
             'result': {
                 'attrs': {'reference': True},
@@ -382,7 +382,7 @@ class CheckParse(unittest.TestCase):
                     'type': 'double',
                 }
             ],
-            'attrs': {
+            'fattrs': {
                 'attr2' : 'True',
             },
             'func_const': False, 
@@ -461,7 +461,7 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(),  {
             "args": [], 
-            "attrs": {
+            "fattrs": {
                 "constructor": True
             }, 
             'func_const': False, 
@@ -547,7 +547,7 @@ class CheckParse(unittest.TestCase):
                     "type": "bool"
                 }
             ], 
-            "attrs": {}, 
+            "fattrs": {}, 
             'func_const': False, 
             "result": {
                 "attrs": {}, 
@@ -647,7 +647,7 @@ class CheckParse(unittest.TestCase):
                     "type": "ArgType"
                 }
             ], 
-            "attrs": {}, 
+            "fattrs": {}, 
             'func_const': False, 
             "result": {
                 "attrs": {}, 
@@ -713,7 +713,7 @@ class CheckParse(unittest.TestCase):
                     "type": "string"
                 }
             ], 
-            "attrs": {}, 
+            "fattrs": {}, 
             'func_const': False, 
             "result": {
                 "attrs": {}, 

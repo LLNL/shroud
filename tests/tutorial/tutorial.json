@@ -32,10 +32,10 @@
                     "_function_index": 0, 
                     "_subprogram": "function", 
                     "args": [], 
-                    "attrs": {
+                    "decl": "Class1 *new()  +constructor", 
+                    "fattrs": {
                         "constructor": true
                     }, 
-                    "decl": "Class1 *new()  +constructor", 
                     "fmt": {
                         "C_call_code": "Class1 * SHT_rv = new Class1();", 
                         "C_call_list": "", 
@@ -80,10 +80,10 @@
                     "_function_index": 1, 
                     "_subprogram": "subroutine", 
                     "args": [], 
-                    "attrs": {
+                    "decl": "void delete()  +destructor", 
+                    "fattrs": {
                         "destructor": true
                     }, 
-                    "decl": "void delete()  +destructor", 
                     "fmt": {
                         "C_call_code": "delete SH_this;", 
                         "C_call_list": "", 
@@ -125,8 +125,8 @@
                     "_function_index": 2, 
                     "_subprogram": "subroutine", 
                     "args": [], 
-                    "attrs": {}, 
                     "decl": "void Method1()", 
+                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "SH_this->Method1();", 
                         "C_call_list": "", 
@@ -280,8 +280,8 @@
             "_function_index": 3, 
             "_subprogram": "subroutine", 
             "args": [], 
-            "attrs": {}, 
             "decl": "void Function1()", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function1();", 
                 "C_call_list": "", 
@@ -395,8 +395,8 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "double Function2(double arg1, int arg2)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
@@ -504,8 +504,8 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Sum(len, values, result);", 
                 "C_call_list": "len, values, result", 
@@ -582,8 +582,8 @@
                     "type": "bool"
                 }
             ], 
-            "attrs": {}, 
             "decl": "bool Function3(bool arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "bool SHT_rv = Function3(arg);", 
                 "C_call_list": "arg", 
@@ -690,8 +690,8 @@
                     "type": "bool"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function3b(arg1, arg2, arg3);", 
                 "C_call_list": "arg1, arg2, arg3", 
@@ -786,8 +786,8 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_function4a_bufferify", 
                 "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SHT_rv, len(SHT_rv, kind=C_INT)", 
@@ -899,8 +899,8 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);", 
                 "C_call_list": "SH_arg1, SH_arg2", 
@@ -1010,8 +1010,8 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
                 "C_call_list": "SH_arg1, SH_arg2", 
@@ -1129,8 +1129,8 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
                 "C_call_list": "SH_arg1, SH_arg2", 
@@ -1208,8 +1208,8 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_function4b_bufferify", 
                 "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), output, len(output, kind=C_INT)", 
@@ -1246,13 +1246,13 @@
             "_overloaded": true, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
             "default_arg_suffix": [
                 "", 
                 "_arg1", 
                 "_arg1_arg2"
             ], 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "double SHT_rv = Function5();", 
                 "C_call_list": "", 
@@ -1321,13 +1321,13 @@
                     "type": "double"
                 }
             ], 
-            "attrs": {}, 
             "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
             "default_arg_suffix": [
                 "", 
                 "_arg1", 
                 "_arg1_arg2"
             ], 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "double SHT_rv = Function5(arg1);", 
                 "C_call_list": "arg1", 
@@ -1459,13 +1459,13 @@
                     "type": "bool"
                 }
             ], 
-            "attrs": {}, 
             "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
             "default_arg_suffix": [
                 "", 
                 "_arg1", 
                 "_arg1_arg2"
             ], 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "double SHT_rv = Function5(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
@@ -1551,8 +1551,8 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function6(const std::string& name)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function6(SH_name);", 
                 "C_call_list": "SH_name", 
@@ -1626,8 +1626,8 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function6(const std::string& name)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function6(SH_name);", 
                 "C_call_list": "SH_name", 
@@ -1703,8 +1703,8 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function6(int indx)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function6(indx);", 
                 "C_call_list": "indx", 
@@ -1754,7 +1754,6 @@
                     "type": "ArgType"
                 }
             ], 
-            "attrs": {}, 
             "cpp_template": {
                 "ArgType": [
                     "int", 
@@ -1762,6 +1761,7 @@
                 ]
             }, 
             "decl": "void Function7(ArgType arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "function_name": "Function7", 
                 "underscore_name": "function7"
@@ -1808,8 +1808,8 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function7(ArgType arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "CPP_template": "<int>", 
                 "C_call_code": "Function7<int>(arg);", 
@@ -1873,8 +1873,8 @@
                     "type": "double"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function7(ArgType arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "CPP_template": "<double>", 
                 "C_call_code": "Function7<double>(arg);", 
@@ -1916,7 +1916,6 @@
             "_overloaded": true, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "cpp_template": {
                 "RetType": [
                     "int", 
@@ -1924,6 +1923,7 @@
                 ]
             }, 
             "decl": "RetType Function8()", 
+            "fattrs": {}, 
             "fmt": {
                 "function_name": "Function8", 
                 "underscore_name": "function8"
@@ -1950,8 +1950,8 @@
             "_overloaded": true, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "RetType Function8()", 
+            "fattrs": {}, 
             "fmt": {
                 "CPP_template": "<int>", 
                 "C_call_code": "int SHT_rv = Function8<int>();", 
@@ -2000,8 +2000,8 @@
             "_overloaded": true, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "RetType Function8()", 
+            "fattrs": {}, 
             "fmt": {
                 "CPP_template": "<double>", 
                 "C_call_code": "double SHT_rv = Function8<double>();", 
@@ -2086,8 +2086,8 @@
                     "type": "double"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function9(double arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function9(arg);", 
                 "C_call_list": "arg", 
@@ -2138,8 +2138,8 @@
                     "type": "float"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function9(double arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_function9", 
                 "F_arg_c_call": "real(arg, C_DOUBLE)", 
@@ -2184,8 +2184,8 @@
                     "type": "double"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function9(double arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_function9", 
                 "F_arg_c_call": "arg", 
@@ -2222,8 +2222,8 @@
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "args": [], 
-            "attrs": {}, 
             "decl": "void Function10()", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function10();", 
                 "C_call_list": "", 
@@ -2337,8 +2337,8 @@
                     "type": "double"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function10(const std::string &name, double arg2)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function10(SH_name, arg2);", 
                 "C_call_list": "SH_name, arg2", 
@@ -2404,8 +2404,8 @@
                     "type": "float"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function10(const std::string &name, double arg2)", 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_function10_1_bufferify", 
                 "F_arg_c_call": "name, len_trim(name, kind=C_INT), real(arg2, C_DOUBLE)", 
@@ -2464,8 +2464,8 @@
                     "type": "double"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function10(const std::string &name, double arg2)", 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_function10_1_bufferify", 
                 "F_arg_c_call": "name, len_trim(name, kind=C_INT), arg2", 
@@ -2549,8 +2549,8 @@
                     "type": "double"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void Function10(const std::string &name, double arg2)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function10(SH_name, arg2);", 
                 "C_call_list": "SH_name, arg2", 
@@ -2615,13 +2615,13 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
             "default_arg_suffix": [
                 "_num", 
                 "_num_offset", 
                 "_num_offset_stride"
             ], 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "int SHT_rv = overload1(num);", 
                 "C_call_list": "num", 
@@ -2714,13 +2714,13 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
             "default_arg_suffix": [
                 "_num", 
                 "_num_offset", 
                 "_num_offset_stride"
             ], 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "int SHT_rv = overload1(num, offset);", 
                 "C_call_list": "num, offset", 
@@ -2893,13 +2893,13 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
             "default_arg_suffix": [
                 "_num", 
                 "_num_offset", 
                 "_num_offset_stride"
             ], 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "int SHT_rv = overload1(num, offset, stride);", 
                 "C_call_list": "num, offset, stride", 
@@ -2991,8 +2991,8 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "int SHT_rv = overload1(type, num);", 
                 "C_call_list": "type, num", 
@@ -3105,8 +3105,8 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "int SHT_rv = overload1(type, num, offset);", 
                 "C_call_list": "type, num, offset", 
@@ -3316,8 +3316,8 @@
                     "type": "int"
                 }
             ], 
-            "attrs": {}, 
             "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "int SHT_rv = overload1(type, num, offset, stride);", 
                 "C_call_list": "type, num, offset, stride", 
@@ -3398,8 +3398,8 @@
                     "type": "TypeID"
                 }
             ], 
-            "attrs": {}, 
             "decl": "TypeID typefunc(TypeID arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "TypeID SHT_rv = typefunc(arg);", 
                 "C_call_list": "arg", 
@@ -3481,8 +3481,8 @@
                     "type": "EnumTypeID"
                 }
             ], 
-            "attrs": {}, 
             "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));", 
                 "C_call_list": "static_cast<EnumTypeID>(arg)", 
@@ -3559,8 +3559,8 @@
                     "type": "Class1"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void useclass(const Class1 *arg1)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "useclass(static_cast<const Class1 *>(static_cast<const void *>(arg1)));", 
                 "C_call_list": "static_cast<const Class1 *>(static_cast<const void *>(arg1))", 
@@ -3613,8 +3613,8 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "int vector_sum(const std::vector<int> &arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_vector_sum_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
@@ -3677,8 +3677,8 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "int vector_sum(const std::vector<int> &arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "int SHT_rv = vector_sum(SH_arg);", 
                 "C_call_list": "SH_arg", 
@@ -3728,8 +3728,8 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_vector_iota_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
@@ -3792,8 +3792,8 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "vector_iota(SH_arg);", 
                 "C_call_list": "SH_arg", 
@@ -3840,8 +3840,8 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void vector_increment(std::vector<int> &arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_vector_increment_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
@@ -3904,8 +3904,8 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void vector_increment(std::vector<int> &arg)", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "vector_increment(SH_arg);", 
                 "C_call_list": "SH_arg", 
@@ -3952,12 +3952,12 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
             "doxygen": {
                 "brief": "count number of underscore in vector of strings", 
                 "decription": "The input will be copied in order to create the C++ argument\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_vector_string_count_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
@@ -4022,12 +4022,12 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
             "doxygen": {
                 "brief": "count number of underscore in vector of strings", 
                 "decription": "The input will be copied in order to create the C++ argument\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "int SHT_rv = vector_string_count(SH_arg);", 
                 "C_call_list": "SH_arg", 
@@ -4079,12 +4079,12 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
             "doxygen": {
                 "brief": "Fill in arg with some animal names", 
                 "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_vector_string_fill_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
@@ -4152,12 +4152,12 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
             "doxygen": {
                 "brief": "Fill in arg with some animal names", 
                 "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "vector_string_fill(SH_arg);", 
                 "C_call_list": "SH_arg", 
@@ -4204,11 +4204,11 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
             "doxygen": {
                 "brief": "append '-like' to names."
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_vector_string_append_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
@@ -4273,11 +4273,11 @@
                     "type": "std::vector"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
             "doxygen": {
                 "brief": "append '-like' to names."
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "vector_string_append(SH_arg);", 
                 "C_call_list": "SH_arg", 
@@ -4310,10 +4310,10 @@
             "_function_index": 29, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {
+            "decl": "const std::string& LastFunctionCalled() +pure", 
+            "fattrs": {
                 "pure": true
             }, 
-            "decl": "const std::string& LastFunctionCalled() +pure", 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 
                 "C_call_list": "", 
@@ -4387,10 +4387,10 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {
+            "decl": "const std::string& LastFunctionCalled() +pure", 
+            "fattrs": {
                 "pure": true
             }, 
-            "decl": "const std::string& LastFunctionCalled() +pure", 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 
                 "C_call_list": "", 

@@ -135,11 +135,11 @@
                     "type": "char_scalar"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void passChar(char status)", 
             "doxygen": {
                 "brief": "pass a single char argument as a scalar."
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "passChar(status);", 
                 "C_call_list": "status", 
@@ -177,11 +177,11 @@
             "_function_index": 1, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "char returnChar()", 
             "doxygen": {
                 "brief": "return a char argument (non-pointer)"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char SHT_rv = returnChar();", 
                 "C_call_list": "", 
@@ -252,11 +252,11 @@
                     "type": "char_scalar"
                 }
             ], 
-            "attrs": {}, 
             "decl": "char returnChar()", 
             "doxygen": {
                 "brief": "return a char argument (non-pointer)"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char SHT_rv = returnChar();", 
                 "C_call_list": "", 
@@ -349,12 +349,12 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void passCharPtr(char * dest+intent(out), const char *src)", 
             "doxygen": {
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "passCharPtr(dest, src);", 
                 "C_call_list": "dest, src", 
@@ -443,12 +443,12 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void passCharPtr(char * dest+intent(out), const char *src)", 
             "doxygen": {
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "passCharPtr(SH_dest, SH_src);", 
                 "C_call_list": "SH_dest, SH_src", 
@@ -510,11 +510,11 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void passCharPtrInOut(char * s+intent(inout))", 
             "doxygen": {
                 "brief": "Change a string in-place"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "passCharPtrInOut(s);", 
                 "C_call_list": "s", 
@@ -581,11 +581,11 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void passCharPtrInOut(char * s+intent(inout))", 
             "doxygen": {
                 "brief": "Change a string in-place"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "passCharPtrInOut(SH_s);", 
                 "C_call_list": "SH_s", 
@@ -618,12 +618,12 @@
             "_function_index": 4, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {
-                "pure": true
-            }, 
             "decl": "const char * getChar1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const char *' as character(*)"
+            }, 
+            "fattrs": {
+                "pure": true
             }, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar1();", 
@@ -693,12 +693,12 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {
-                "pure": true
-            }, 
             "decl": "const char * getChar1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const char *' as character(*)"
+            }, 
+            "fattrs": {
+                "pure": true
             }, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar1();", 
@@ -739,11 +739,11 @@
             "_function_index": 5, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "const char * getChar2+len(30)()", 
             "doxygen": {
                 "brief": "return 'const char *' with fixed size (len=30)"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar2();", 
                 "C_call_list": "", 
@@ -817,11 +817,11 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const char * getChar2+len(30)()", 
             "doxygen": {
                 "brief": "return 'const char *' with fixed size (len=30)"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar2();", 
                 "C_call_list": "", 
@@ -861,11 +861,11 @@
             "_function_index": 6, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "const char * getChar3()", 
             "doxygen": {
                 "brief": "return a 'const char *' as argument"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar3();", 
                 "C_call_list": "", 
@@ -931,11 +931,11 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const char * getChar3()", 
             "doxygen": {
                 "brief": "return a 'const char *' as argument"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar3();", 
                 "C_call_list": "", 
@@ -990,11 +990,11 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const char * getChar3()", 
             "doxygen": {
                 "brief": "return a 'const char *' as argument"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_get_char3_bufferify", 
                 "F_arg_c_call": "output, len(output, kind=C_INT)", 
@@ -1029,12 +1029,12 @@
             "_function_index": 7, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {
-                "pure": true
-            }, 
             "decl": "const string& getString1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const string&' as character(*)"
+            }, 
+            "fattrs": {
+                "pure": true
             }, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString1();", 
@@ -1107,12 +1107,12 @@
                     "type": "string"
                 }
             ], 
-            "attrs": {
-                "pure": true
-            }, 
             "decl": "const string& getString1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const string&' as character(*)"
+            }, 
+            "fattrs": {
+                "pure": true
             }, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString1();", 
@@ -1154,11 +1154,11 @@
             "_function_index": 8, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "const string& getString2+len=30()", 
             "doxygen": {
                 "brief": "return 'const string&' with fixed size (len=30)"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2();", 
                 "C_call_list": "", 
@@ -1237,11 +1237,11 @@
                     "type": "string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const string& getString2+len=30()", 
             "doxygen": {
                 "brief": "return 'const string&' with fixed size (len=30)"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2();", 
                 "C_call_list": "", 
@@ -1282,11 +1282,11 @@
             "_function_index": 9, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "const string& getString3()", 
             "doxygen": {
                 "brief": "return a 'const string&' as argument"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString3();", 
                 "C_call_list": "", 
@@ -1357,11 +1357,11 @@
                     "type": "string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const string& getString3()", 
             "doxygen": {
                 "brief": "return a 'const string&' as argument"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString3();", 
                 "C_call_list": "", 
@@ -1417,11 +1417,11 @@
                     "type": "string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const string& getString3()", 
             "doxygen": {
                 "brief": "return a 'const string&' as argument"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_get_string3_bufferify", 
                 "F_arg_c_call": "output, len(output, kind=C_INT)", 
@@ -1458,11 +1458,11 @@
             "_function_index": 10, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "const string& getString2_empty+len=30()", 
             "doxygen": {
                 "brief": "Test returning empty string reference"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2_empty();", 
                 "C_call_list": "", 
@@ -1541,11 +1541,11 @@
                     "type": "string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const string& getString2_empty+len=30()", 
             "doxygen": {
                 "brief": "Test returning empty string reference"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2_empty();", 
                 "C_call_list": "", 
@@ -1587,11 +1587,11 @@
             "_function_index": 11, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "const string getString5+len=30()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_get_string5_bufferify", 
                 "F_arg_c_call": "SHT_rv, len(SHT_rv, kind=C_INT)", 
@@ -1656,11 +1656,11 @@
                     "type": "string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const string getString5+len=30()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string SHT_rv = getString5();", 
                 "C_call_list": "", 
@@ -1701,11 +1701,11 @@
             "_function_index": 12, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "const string getString6()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "F_string_result_as_arg": "output", 
                 "PY_name_impl": "PY_get_string6", 
@@ -1760,11 +1760,11 @@
                     "type": "string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const string getString6()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string SHT_rv = getString6();", 
                 "C_call_list": "", 
@@ -1821,11 +1821,11 @@
                     "type": "string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "const string getString6()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_get_string6_bufferify", 
                 "F_arg_c_call": "output, len(output, kind=C_INT)", 
@@ -1887,12 +1887,12 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void acceptStringConstReference(const std::string & arg1)", 
             "doxygen": {
                 "brief": "Accept a const string reference", 
                 "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringConstReference(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -1957,12 +1957,12 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void acceptStringConstReference(const std::string & arg1)", 
             "doxygen": {
                 "brief": "Accept a const string reference", 
                 "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringConstReference(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -2024,12 +2024,12 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))", 
             "doxygen": {
                 "brief": "Accept a string reference", 
                 "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringReferenceOut(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -2096,12 +2096,12 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))", 
             "doxygen": {
                 "brief": "Accept a string reference", 
                 "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringReferenceOut(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -2164,12 +2164,12 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void acceptStringReference(std::string & arg1)", 
             "doxygen": {
                 "brief": "Accept a string reference", 
                 "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringReference(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -2238,12 +2238,12 @@
                     "type": "std::string"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void acceptStringReference(std::string & arg1)", 
             "doxygen": {
                 "brief": "Accept a string reference", 
                 "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringReference(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -2304,8 +2304,8 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "explicit1(name);", 
                 "C_call_list": "name", 
@@ -2372,8 +2372,8 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "explicit1(SH_name);", 
                 "C_call_list": "SH_name", 
@@ -2436,8 +2436,8 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "explicit2(name);", 
                 "C_call_list": "name", 
@@ -2502,8 +2502,8 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "explicit2(SH_name);", 
                 "C_call_list": "SH_name", 
@@ -2565,11 +2565,11 @@
                     "type": "char_scalar"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void CpassChar(char status)", 
             "doxygen": {
                 "brief": "pass a single char argument as a scalar, extern \"C\""
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "CpassChar(status);", 
                 "C_call_list": "status", 
@@ -2609,11 +2609,11 @@
             "_function_index": 19, 
             "_subprogram": "function", 
             "args": [], 
-            "attrs": {}, 
             "decl": "char CreturnChar()", 
             "doxygen": {
                 "brief": "return a char argument (non-pointer), extern \"C\""
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char SHT_rv = CreturnChar();", 
                 "C_call_list": "", 
@@ -2686,11 +2686,11 @@
                     "type": "char_scalar"
                 }
             ], 
-            "attrs": {}, 
             "decl": "char CreturnChar()", 
             "doxygen": {
                 "brief": "return a char argument (non-pointer), extern \"C\""
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char SHT_rv = CreturnChar();", 
                 "C_call_list": "", 
@@ -2783,12 +2783,12 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)", 
             "doxygen": {
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "CpassCharPtr(dest, src);", 
                 "C_call_list": "dest, src", 
@@ -2879,12 +2879,12 @@
                     "type": "char"
                 }
             ], 
-            "attrs": {}, 
             "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)", 
             "doxygen": {
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
             }, 
+            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "CpassCharPtr(SH_dest, SH_src);", 
                 "C_call_list": "SH_dest, SH_src", 

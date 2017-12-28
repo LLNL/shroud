@@ -376,8 +376,8 @@ return 1;""", fmt)
             CPP_subprogram = 'subroutine'
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['attrs'].get('constructor', False)
-        is_dtor = node['attrs'].get('destructor', False)
+        is_ctor = node['fattrs'].get('constructor', False)
+        is_dtor = node['fattrs'].get('destructor', False)
 #        is_const = result['const']
         if is_ctor:   # or is_dtor:
             # XXX - have explicit delete
@@ -439,7 +439,7 @@ return 1;""", fmt)
                     fmt_arg.c_const = 'const '
                 else:
                     fmt_arg.c_const = ''
-                if arg['attrs'].get('ptr', False):
+                if declast.is_pointer(arg):
                     fmt_arg.c_ptr = ' *'
                 else:
                     fmt_arg.c_ptr = ''
