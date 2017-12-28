@@ -162,6 +162,7 @@
                 "function_name": "passChar", 
                 "underscore_name": "pass_char"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -204,6 +205,7 @@
                 "function_name": "returnChar", 
                 "underscore_name": "return_char"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -267,6 +269,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -374,6 +377,7 @@
                 "function_name": "passCharPtr", 
                 "underscore_name": "pass_char_ptr"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -458,6 +462,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -532,6 +537,7 @@
                 "function_name": "passCharPtrInOut", 
                 "underscore_name": "pass_char_ptr_in_out"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -593,6 +599,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -642,6 +649,7 @@
                 "function_name": "getChar1", 
                 "underscore_name": "get_char1"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
@@ -704,6 +712,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -759,6 +768,7 @@
                 "function_name": "getChar2", 
                 "underscore_name": "get_char2"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
@@ -824,6 +834,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -869,6 +880,7 @@
                 "function_name": "getChar3", 
                 "underscore_name": "get_char3"
             }, 
+            "func_const": false, 
             "options": {
                 "F_string_result_as_arg": "output", 
                 "wrap_fortran": false
@@ -936,6 +948,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -994,6 +1007,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -1046,6 +1060,7 @@
                 "function_name": "getString1", 
                 "underscore_name": "get_string1"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
@@ -1111,6 +1126,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1168,6 +1184,7 @@
                 "function_name": "getString2", 
                 "underscore_name": "get_string2"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
@@ -1237,6 +1254,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1284,6 +1302,7 @@
                 "function_name": "getString3", 
                 "underscore_name": "get_string3"
             }, 
+            "func_const": false, 
             "options": {
                 "F_string_result_as_arg": "output", 
                 "wrap_fortran": false
@@ -1355,6 +1374,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1414,6 +1434,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -1467,6 +1488,7 @@
                 "function_name": "getString2_empty", 
                 "underscore_name": "get_string2_empty"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
@@ -1536,6 +1558,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1585,6 +1608,7 @@
                 "function_name": "getString5", 
                 "underscore_name": "get_string5"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false
             }, 
@@ -1649,6 +1673,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1687,6 +1712,7 @@
                 "function_name": "getString6", 
                 "underscore_name": "get_string6"
             }, 
+            "func_const": false, 
             "options": {
                 "F_string_result_as_arg": "output", 
                 "wrap_c": false, 
@@ -1751,6 +1777,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1811,6 +1838,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -1888,6 +1916,7 @@
                 "function_name": "acceptStringConstReference", 
                 "underscore_name": "accept_string_const_reference"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -1946,6 +1975,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2024,6 +2054,7 @@
                 "function_name": "acceptStringReferenceOut", 
                 "underscore_name": "accept_string_reference_out"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -2084,6 +2115,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2162,6 +2194,7 @@
                 "function_name": "acceptStringReference", 
                 "underscore_name": "accept_string_reference"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -2224,6 +2257,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2294,6 +2328,7 @@
                 "function_name": "explicit1", 
                 "underscore_name": "explicit1"
             }, 
+            "func_const": false, 
             "options": {
                 "C_bufferify_suffix": "_BUFFER"
             }, 
@@ -2352,6 +2387,7 @@
                 "c_const": "", 
                 "function_suffix": "_BUFFER"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2424,6 +2460,7 @@
                 "function_name": "explicit2", 
                 "underscore_name": "explicit2"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -2480,6 +2517,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2554,6 +2592,7 @@
                 "function_name": "CpassChar", 
                 "underscore_name": "cpass_char"
             }, 
+            "func_const": false, 
             "options": {
                 "C_extern_C": true
             }, 
@@ -2598,6 +2637,7 @@
                 "function_name": "CreturnChar", 
                 "underscore_name": "creturn_char"
             }, 
+            "func_const": false, 
             "options": {
                 "C_extern_C": true
             }, 
@@ -2663,6 +2703,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2770,6 +2811,7 @@
                 "function_name": "CpassCharPtr", 
                 "underscore_name": "cpass_char_ptr"
             }, 
+            "func_const": false, 
             "options": {
                 "C_extern_C": true
             }, 
@@ -2856,6 +2898,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 

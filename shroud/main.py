@@ -1555,9 +1555,6 @@ class GenFunctions(object):
         """ Generate declaration for a single arg (or result)
         """
         attrs = arg['attrs']
-        if 'const' not in arg:
-            print ("XXXXXXXXX", arg)
-            raise RuntimeError
         if arg['const']:
             decl.append('const ')
         decl.append(arg['type'] + ' ')
@@ -1585,7 +1582,7 @@ class GenFunctions(object):
                 decl.append('()')
 
             attrs = node['attrs']
-            if attrs.get('const', False):
+            if node['func_const']:
                 decl.append(' const')
             self.gen_annotations_decl(attrs, decl)
 

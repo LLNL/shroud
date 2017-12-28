@@ -66,6 +66,7 @@
                         "function_name": "method1", 
                         "underscore_name": "method1"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -106,6 +107,7 @@
                         "function_name": "method2", 
                         "underscore_name": "method2"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -277,6 +279,7 @@
                 "function_name": "function1", 
                 "underscore_name": "function1"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -317,6 +320,7 @@
                 "function_name": "function2", 
                 "underscore_name": "function2"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -391,6 +395,7 @@
                 "function_suffix": "_0", 
                 "underscore_name": "function3a"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -465,6 +470,7 @@
                 "function_suffix": "_1", 
                 "underscore_name": "function3a"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -531,6 +537,7 @@
                 "function_name": "function4", 
                 "underscore_name": "function4"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -589,6 +596,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 

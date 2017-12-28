@@ -79,6 +79,7 @@
                         "function_name": "new", 
                         "underscore_name": "new"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -146,6 +147,7 @@
                         "c_const": "", 
                         "function_suffix": "_bufferify"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -202,6 +204,7 @@
                         "function_name": "delete", 
                         "underscore_name": "delete"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -272,6 +275,7 @@
                         "function_name": "incrementCount", 
                         "underscore_name": "increment_count"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -292,9 +296,7 @@
                     "_function_index": 3, 
                     "_subprogram": "function", 
                     "args": [], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "const string& getName() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
@@ -324,6 +326,7 @@
                         "function_name": "getName", 
                         "underscore_name": "get_name"
                     }, 
+                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -377,9 +380,7 @@
                             "type": "string"
                         }
                     ], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "const string& getName() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
@@ -396,6 +397,7 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
+                    "func_const": true, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -423,9 +425,7 @@
                     "_function_index": 4, 
                     "_subprogram": "function", 
                     "args": [], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "int GetNameLength() const", 
                     "doxygen": {
                         "brief": "helper function for Fortran to get length of name."
@@ -454,6 +454,7 @@
                         "function_name": "GetNameLength", 
                         "underscore_name": "get_name_length"
                     }, 
+                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -472,9 +473,7 @@
                     "_function_index": 5, 
                     "_subprogram": "function", 
                     "args": [], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "const string& getNameErrorCheck() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameErrorCheck();", 
@@ -503,6 +502,7 @@
                         "function_name": "getNameErrorCheck", 
                         "underscore_name": "get_name_error_check"
                     }, 
+                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -553,9 +553,7 @@
                             "type": "string"
                         }
                     ], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "const string& getNameErrorCheck() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameErrorCheck();", 
@@ -572,6 +570,7 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
+                    "func_const": true, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -597,9 +596,7 @@
                     "_function_index": 6, 
                     "_subprogram": "function", 
                     "args": [], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "const string& getNameArg() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameArg();", 
@@ -618,6 +615,7 @@
                         "function_name": "getNameArg", 
                         "underscore_name": "get_name_arg"
                     }, 
+                    "func_const": true, 
                     "options": {
                         "F_string_result_as_arg": "name", 
                         "wrap_fortran": false
@@ -671,9 +669,7 @@
                             "type": "string"
                         }
                     ], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "const string& getNameArg() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameArg();", 
@@ -690,6 +686,7 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
+                    "func_const": true, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -731,9 +728,7 @@
                             "type": "string"
                         }
                     ], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "const string& getNameArg() const", 
                     "fmt": {
                         "F_C_call": "c_exclass1_get_name_arg_bufferify", 
@@ -747,6 +742,7 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": ""
                     }, 
+                    "func_const": true, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": true, 
@@ -796,6 +792,7 @@
                         "function_name": "getRoot", 
                         "underscore_name": "get_root"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -881,6 +878,7 @@
                         "function_suffix": "_from_int", 
                         "underscore_name": "get_value"
                     }, 
+                    "func_const": false, 
                     "function_suffix": "_from_int", 
                     "options": {}, 
                     "result": {
@@ -962,6 +960,7 @@
                         "function_suffix": "_1", 
                         "underscore_name": "get_value"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -1007,6 +1006,7 @@
                         "function_name": "getAddr", 
                         "underscore_name": "get_addr"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -1083,6 +1083,7 @@
                         "function_name": "hasAddr", 
                         "underscore_name": "has_addr"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -1124,6 +1125,7 @@
                         "function_name": "SplicerSpecial", 
                         "underscore_name": "splicer_special"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -1216,6 +1218,7 @@
                         "function_name": "ExClass2", 
                         "underscore_name": "ex_class2"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -1278,6 +1281,7 @@
                         "c_const": "", 
                         "function_suffix": "_bufferify"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -1331,6 +1335,7 @@
                         "function_name": "delete", 
                         "underscore_name": "delete"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -1345,9 +1350,7 @@
                     "_function_index": 20, 
                     "_subprogram": "function", 
                     "args": [], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "const string& getName() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
@@ -1376,6 +1379,7 @@
                         "function_name": "getName", 
                         "underscore_name": "get_name"
                     }, 
+                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -1427,9 +1431,7 @@
                             "type": "string"
                         }
                     ], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "const string& getName() const", 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
@@ -1446,6 +1448,7 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
+                    "func_const": true, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -1502,6 +1505,7 @@
                         "function_name": "getName2", 
                         "underscore_name": "get_name2"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -1569,6 +1573,7 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -1595,9 +1600,7 @@
                     "_function_index": 22, 
                     "_subprogram": "function", 
                     "args": [], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "string& getName3() const", 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName3();", 
@@ -1626,6 +1629,7 @@
                         "function_name": "getName3", 
                         "underscore_name": "get_name3"
                     }, 
+                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -1676,9 +1680,7 @@
                             "type": "string"
                         }
                     ], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "string& getName3() const", 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName3();", 
@@ -1695,6 +1697,7 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
+                    "func_const": true, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -1750,6 +1753,7 @@
                         "function_name": "getName4", 
                         "underscore_name": "get_name4"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -1817,6 +1821,7 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -1871,6 +1876,7 @@
                         "function_name": "GetNameLength", 
                         "underscore_name": "get_name_length"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -1946,6 +1952,7 @@
                         "function_name": "get_class1", 
                         "underscore_name": "get_class1"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -2013,6 +2020,7 @@
                             "long"
                         ]
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -2061,6 +2069,7 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_0_int"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": true, 
@@ -2109,6 +2118,7 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_0_long"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": true, 
@@ -2222,6 +2232,7 @@
                             "long"
                         ]
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_fortran": false
                     }, 
@@ -2285,6 +2296,7 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_1_int"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": true, 
@@ -2351,6 +2363,7 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_1_long"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": true, 
@@ -2399,6 +2412,7 @@
                         "function_name": "destroyall", 
                         "underscore_name": "destroyall"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -2412,9 +2426,7 @@
                     "_function_index": 28, 
                     "_subprogram": "function", 
                     "args": [], 
-                    "attrs": {
-                        "const": true
-                    }, 
+                    "attrs": {}, 
                     "decl": "TypeID getTypeID() const", 
                     "fmt": {
                         "C_call_code": "TypeID SHT_rv = SH_this->getTypeID();", 
@@ -2442,6 +2454,7 @@
                         "function_name": "getTypeID", 
                         "underscore_name": "get_type_id"
                     }, 
+                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -2487,6 +2500,7 @@
                         "function_name": "setValue", 
                         "underscore_name": "set_value"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": false, 
@@ -2554,6 +2568,7 @@
                         "c_var": "self", 
                         "function_suffix": "_int"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -2621,6 +2636,7 @@
                         "c_var": "self", 
                         "function_suffix": "_long"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -2688,6 +2704,7 @@
                         "c_var": "self", 
                         "function_suffix": "_float"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -2755,6 +2772,7 @@
                         "c_var": "self", 
                         "function_suffix": "_double"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -2786,6 +2804,7 @@
                         "function_name": "getValue", 
                         "underscore_name": "get_value"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": false, 
@@ -2834,6 +2853,7 @@
                         "c_var": "self", 
                         "function_suffix": "_int"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -2886,6 +2906,7 @@
                         "c_var": "self", 
                         "function_suffix": "_double"
                     }, 
+                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -3057,6 +3078,7 @@
                 "function_name": "local_function1", 
                 "underscore_name": "local_function1"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -3122,6 +3144,7 @@
                 "function_name": "isNameValid", 
                 "underscore_name": "is_name_valid"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -3180,6 +3203,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -3227,6 +3251,7 @@
                 "function_name": "isInitialized", 
                 "underscore_name": "is_initialized"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -3359,6 +3384,7 @@
                 "function_name": "checkBool", 
                 "underscore_name": "check_bool"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -3430,6 +3456,7 @@
                 "function_suffix": "", 
                 "underscore_name": "test_names"
             }, 
+            "func_const": false, 
             "function_suffix": "", 
             "options": {}, 
             "result": {
@@ -3490,6 +3517,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "function_suffix": "", 
             "options": {
                 "wrap_c": true, 
@@ -3591,6 +3619,7 @@
                 "function_suffix": "_flag", 
                 "underscore_name": "test_names"
             }, 
+            "func_const": false, 
             "function_suffix": "_flag", 
             "options": {}, 
             "result": {
@@ -3671,6 +3700,7 @@
                 "c_const": "", 
                 "function_suffix": "_flag_bufferify"
             }, 
+            "func_const": false, 
             "function_suffix": "_flag", 
             "options": {
                 "wrap_c": true, 
@@ -3714,6 +3744,7 @@
                 "c_const": "", 
                 "function_suffix": "_0"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -3778,6 +3809,7 @@
                 "c_const": "", 
                 "function_suffix": "_1"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -3890,6 +3922,7 @@
                 "function_suffix": "_2", 
                 "underscore_name": "testoptional"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -3956,6 +3989,7 @@
                 "function_name": "testmpi", 
                 "underscore_name": "testmpi"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -4024,6 +4058,7 @@
                 "function_name": "testgroup1", 
                 "underscore_name": "testgroup1"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -4092,6 +4127,7 @@
                 "function_name": "testgroup2", 
                 "underscore_name": "testgroup2"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 

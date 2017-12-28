@@ -60,6 +60,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(r.to_dict(),{
             'args': [],
             'attrs': {},
+            'func_const': False, 
             'result': {
                 'attrs': {},
                 'const': False,
@@ -92,6 +93,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(r.to_dict(), {
             'args': [],
             'attrs': {},
+            'func_const': False, 
             'result': {
                 'attrs': {'alias': 'junk'},
                 'const': False,
@@ -126,6 +128,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(r.to_dict(), {
             'args': [],
             'attrs': {},
+            'func_const': False, 
             'result': {
                 'attrs': {},
                 'const': False,
@@ -159,7 +162,8 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(),{
             'args': [],
-            'attrs': {'const': True},
+            'attrs': {},
+            'func_const': True, 
             'result': {
                 'attrs': {},
                 'const': False,
@@ -201,6 +205,7 @@ class CheckParse(unittest.TestCase):
                 }
             ],
             'attrs': {},
+            'func_const': False, 
             'result': {
                 'attrs': {},
                 'const': False,
@@ -259,6 +264,7 @@ class CheckParse(unittest.TestCase):
                 'type': 'double',
             }],
             'attrs': {},
+            'func_const': False, 
             'result': {
                 'attrs': {},
                 'const': False,
@@ -319,7 +325,8 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(), {
             'args': [],
-            'attrs': {'const': True},
+            'attrs': {},
+            'func_const': True, 
             'result': {
                 'attrs': {'reference': True},
                 'const': True,
@@ -378,6 +385,7 @@ class CheckParse(unittest.TestCase):
             'attrs': {
                 'attr2' : 'True',
             },
+            'func_const': False, 
             'result':
             {
                 'attrs': {
@@ -456,6 +464,7 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "constructor": True
             }, 
+            'func_const': False, 
             "result": {
                 "attrs": {
                     "ptr": True
@@ -539,6 +548,7 @@ class CheckParse(unittest.TestCase):
                 }
             ], 
             "attrs": {}, 
+            'func_const': False, 
             "result": {
                 "attrs": {}, 
                 'const': False,
@@ -638,6 +648,7 @@ class CheckParse(unittest.TestCase):
                 }
             ], 
             "attrs": {}, 
+            'func_const': False, 
             "result": {
                 "attrs": {}, 
                 'const': False,
@@ -703,6 +714,7 @@ class CheckParse(unittest.TestCase):
                 }
             ], 
             "attrs": {}, 
+            'func_const': False, 
             "result": {
                 "attrs": {}, 
                 'const': False,

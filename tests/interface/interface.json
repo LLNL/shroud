@@ -115,6 +115,7 @@
                 "function_name": "Function1", 
                 "underscore_name": "function1"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -193,6 +194,7 @@
                 "function_name": "Function2", 
                 "underscore_name": "function2"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 

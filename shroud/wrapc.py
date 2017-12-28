@@ -403,7 +403,7 @@ class Wrapc(util.WrapperMixin):
         result_is_const = result['const']
         is_ctor = node['attrs'].get('constructor', False)
         is_dtor = node['attrs'].get('destructor', False)
-        is_const = node['attrs'].get('const', False)
+        is_const = node['func_const']
 
         if result_typedef.c_header:
             # include any dependent header in generated header

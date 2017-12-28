@@ -206,6 +206,7 @@ classes:
          name: GetNameLength
          type: int
          const: true
+      func_const: False
       C_code: |
         {C_pre_call}
         return {CPP_this}->getName().length();

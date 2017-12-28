@@ -60,6 +60,7 @@
                         "function_name": "new", 
                         "underscore_name": "new"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -110,6 +111,7 @@
                         "function_name": "delete", 
                         "underscore_name": "delete"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -152,6 +154,7 @@
                         "function_name": "Method1", 
                         "underscore_name": "method1"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -303,6 +306,7 @@
                 "function_name": "Function1", 
                 "underscore_name": "function1"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -418,6 +422,7 @@
                 "function_name": "Function2", 
                 "underscore_name": "function2"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -522,6 +527,7 @@
                 "function_name": "Sum", 
                 "underscore_name": "sum"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_lua": false, 
                 "wrap_python": false
@@ -603,6 +609,7 @@
                 "function_name": "Function3", 
                 "underscore_name": "function3"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -706,6 +713,7 @@
                 "function_name": "Function3b", 
                 "underscore_name": "function3b"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_lua": false, 
                 "wrap_python": false
@@ -798,6 +806,7 @@
                 "function_name": "Function4a", 
                 "underscore_name": "function4a"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false
             }, 
@@ -905,6 +914,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1019,6 +1029,7 @@
                 "function_name": "Function4b", 
                 "underscore_name": "function4b"
             }, 
+            "func_const": false, 
             "options": {
                 "F_string_result_as_arg": "output", 
                 "wrap_fortran": false
@@ -1133,6 +1144,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1210,6 +1222,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -1261,6 +1274,7 @@
                 "c_const": "", 
                 "function_suffix": ""
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -1335,6 +1349,7 @@
                 "c_const": "", 
                 "function_suffix": "_arg1"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -1477,6 +1492,7 @@
                 "function_suffix": "_arg1_arg2", 
                 "underscore_name": "function5"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -1563,6 +1579,7 @@
                 "function_suffix": "_from_name", 
                 "underscore_name": "function6"
             }, 
+            "func_const": false, 
             "function_suffix": "_from_name", 
             "options": {}, 
             "result": {
@@ -1623,6 +1640,7 @@
                 "c_const": "", 
                 "function_suffix": "_from_name_bufferify"
             }, 
+            "func_const": false, 
             "function_suffix": "_from_name", 
             "options": {
                 "wrap_c": true, 
@@ -1710,6 +1728,7 @@
                 "function_suffix": "_from_index", 
                 "underscore_name": "function6"
             }, 
+            "func_const": false, 
             "function_suffix": "_from_index", 
             "options": {}, 
             "result": {
@@ -1747,6 +1766,7 @@
                 "function_name": "Function7", 
                 "underscore_name": "function7"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": false, 
@@ -1811,6 +1831,7 @@
                 "c_const": "", 
                 "function_suffix": "_int"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -1875,6 +1896,7 @@
                 "c_const": "", 
                 "function_suffix": "_double"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -1906,6 +1928,7 @@
                 "function_name": "Function8", 
                 "underscore_name": "function8"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": false, 
@@ -1951,6 +1974,7 @@
                 "c_const": "", 
                 "function_suffix": "_int"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -2000,6 +2024,7 @@
                 "c_const": "", 
                 "function_suffix": "_double"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -2084,6 +2109,7 @@
                     "double"
                 ]
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_fortran": false
             }, 
@@ -2126,6 +2152,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_float"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -2171,6 +2198,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_double"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -2221,6 +2249,7 @@
                 "function_suffix": "_0", 
                 "underscore_name": "function10"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -2331,6 +2360,7 @@
                     "double"
                 ]
             }, 
+            "func_const": false, 
             "options": {
                 "F_string_len_trim": true, 
                 "wrap_fortran": false
@@ -2388,6 +2418,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_1_float"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -2447,6 +2478,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_1_double"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -2537,6 +2569,7 @@
                     "double"
                 ]
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2610,6 +2643,7 @@
                 "c_const": "", 
                 "function_suffix": "_num"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -2708,6 +2742,7 @@
                 "c_const": "", 
                 "function_suffix": "_num_offset"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -2891,6 +2926,7 @@
                 "function_suffix": "_num_offset_stride", 
                 "underscore_name": "overload1"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -2978,6 +3014,7 @@
                 "c_const": "", 
                 "function_suffix": "_3"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -3091,6 +3128,7 @@
                 "c_const": "", 
                 "function_suffix": "_4"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -3304,6 +3342,7 @@
                 "function_suffix": "_5", 
                 "underscore_name": "overload1"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -3386,6 +3425,7 @@
                 "function_name": "typefunc", 
                 "underscore_name": "typefunc"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -3468,6 +3508,7 @@
                 "function_name": "enumfunc", 
                 "underscore_name": "enumfunc"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -3542,6 +3583,7 @@
                 "function_name": "useclass", 
                 "underscore_name": "useclass"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_lua": false
             }, 
@@ -3587,6 +3629,7 @@
                 "function_name": "vector_sum", 
                 "underscore_name": "vector_sum"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_lua": false, 
@@ -3648,6 +3691,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -3699,6 +3743,7 @@
                 "function_name": "vector_iota", 
                 "underscore_name": "vector_iota"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_lua": false, 
@@ -3762,6 +3807,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -3809,6 +3855,7 @@
                 "function_name": "vector_increment", 
                 "underscore_name": "vector_increment"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_lua": false, 
@@ -3872,6 +3919,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -3924,6 +3972,7 @@
                 "function_name": "vector_string_count", 
                 "underscore_name": "vector_string_count"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_lua": false, 
@@ -3991,6 +4040,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -4049,6 +4099,7 @@
                 "function_name": "vector_string_fill", 
                 "underscore_name": "vector_string_fill"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_lua": false, 
@@ -4120,6 +4171,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -4170,6 +4222,7 @@
                 "function_name": "vector_string_append", 
                 "underscore_name": "vector_string_append"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_lua": false, 
@@ -4238,6 +4291,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -4286,6 +4340,7 @@
                 "function_name": "LastFunctionCalled", 
                 "underscore_name": "last_function_called"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
@@ -4348,6 +4403,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 

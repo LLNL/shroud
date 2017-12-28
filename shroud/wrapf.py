@@ -562,7 +562,7 @@ class Wrapf(util.WrapperMixin):
         fmt_func = node['fmt']
         fmt = util.Options(fmt_func)
 
-        func_is_const = node['attrs'].get('const', False)
+        func_is_const = node['func_const']
 
         result = node['result']
         result_type = result['type']
@@ -583,7 +583,7 @@ class Wrapf(util.WrapperMixin):
 
         result_typedef = util.Typedef.lookup(result_type)
         is_ctor = node['attrs'].get('constructor', False)
-        is_const = node['attrs'].get('const', False)
+        is_const = node['func_const']
         is_pure = node['attrs'].get('pure', False)
 
         arg_c_names = []  # argument names for functions
@@ -732,7 +732,7 @@ class Wrapf(util.WrapperMixin):
 
         fmt_func.F_C_call = C_node['fmt'].F_C_name
 
-        func_is_const = node['attrs'].get('const', False)
+        func_is_const = node['func_const']
 
         # Fortran return type
         result = node['result']

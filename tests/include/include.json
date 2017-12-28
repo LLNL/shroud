@@ -69,6 +69,7 @@
                         "function_name": "method1", 
                         "underscore_name": "method1"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -150,6 +151,7 @@
                         "function_name": "method1", 
                         "underscore_name": "method1"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -211,6 +213,7 @@
                         "function_name": "method2", 
                         "underscore_name": "method2"
                     }, 
+                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
@@ -339,6 +342,7 @@
                 "function_name": "function1", 
                 "underscore_name": "function1"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 

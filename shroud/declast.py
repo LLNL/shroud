@@ -606,10 +606,9 @@ class Declaration(Node):
             top = dict(
                 result = d,
                 args = [],
+                func_const = self.func_const,
                 attrs = {}
             )
-            if self.func_const:
-                top['attrs']['const'] = True
             top['attrs'].update(self.fattrs)
         else:
             top = None

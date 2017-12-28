@@ -115,6 +115,7 @@
                 "function_name": "Function1", 
                 "underscore_name": "function1"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -193,6 +194,7 @@
                 "function_name": "Function2", 
                 "underscore_name": "function2"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -297,6 +299,7 @@
                 "function_name": "Sum", 
                 "underscore_name": "sum"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -355,6 +358,7 @@
                 "function_name": "Function3", 
                 "underscore_name": "function3"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -458,6 +462,7 @@
                 "function_name": "Function3b", 
                 "underscore_name": "function3b"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
@@ -533,6 +538,7 @@
                 "function_name": "Function4a", 
                 "underscore_name": "function4a"
             }, 
+            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
@@ -646,6 +652,7 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
+            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
