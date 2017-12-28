@@ -605,14 +605,9 @@ class Declaration(Node):
         attrs = {}
         if d is None:
             d = {}
-            top = dict(
-                result = d,
-            )
             d['fattrs'] = self.fattrs
             d['func_const'] = self.func_const
             d['args'] = []
-        else:
-            top = None
         if self.specifier:
             d['type'] = self.specifier[0]
         else:
@@ -627,7 +622,7 @@ class Declaration(Node):
                 arg = {}
                 d['args'].append(arg)
                 param.to_dict(arg)
-        return top
+        return d
 
     def _to_dict(self):
         """Convert to dictionary.

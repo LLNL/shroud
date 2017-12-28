@@ -1003,7 +1003,20 @@ class Schema(object):
             decl = declast.check_decl(node['decl'],
                                       current_class=cls_name,
                                       template_types=template_types)
-            util.update(node, decl.to_dict())  # recursive update
+            result = decl.to_dict()
+            node['result'] = result
+
+            # add any attributes from YAML files to the ast
+            if 'attrs' in node:
+                attrs = node['attrs']
+                if 'result' in attrs:
+                    result['attrs'].update(attrs['result'])
+                for arg in result['args']:
+                    name = arg['name']
+                    if name in attrs:
+                        arg['attrs'].update(attrs['name'])
+            # XXX waring about unused fields in attrs
+                                        
 #            node['tester'] = decl
         if ('function_suffix' in node and
                 node['function_suffix'] is None):

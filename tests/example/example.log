@@ -24,8 +24,8 @@ C method void SplicerSpecial()
 Close wrapExClass1.h
 Close wrapExClass1.cpp
 class ExClass2
-C method ExClass2 * ExClass2(const string * name +intent(in)) +constructor
-C method ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)) +constructor
+C method ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
+C method ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2)) +constructor
 C method void delete() +destructor
 C method const string & getName() const
 C method void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const
@@ -87,8 +87,8 @@ C-interface, Fortran method bool hasAddr(bool in +intent(in)+value)
 C-interface, Fortran method void SplicerSpecial()
 Close wrapfExClass1.f
 class ExClass2
-C-interface, Fortran method ExClass2 * ExClass2(const string * name +intent(in)) +constructor
-C-interface method ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)) +constructor
+C-interface, Fortran method ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
+C-interface method ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2)) +constructor
 C-interface, Fortran method void delete() +destructor
 C-interface, Fortran method const string & getName() const
 C-interface method void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const
@@ -147,7 +147,7 @@ Python method bool hasAddr(bool in +intent(in)+value)
 Python method void SplicerSpecial()
 Close pyExClass1type.cpp
 class ExClass2
-Python method ExClass2 * ExClass2(const string * name +intent(in)) +constructor
+Python method ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
 Python method void delete() +destructor
 Python method const string & getName() const
 Python method const string & getName2()

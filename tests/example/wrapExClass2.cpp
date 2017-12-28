@@ -68,7 +68,7 @@ extern "C" {
 // splicer begin class.ExClass2.C_definitions
 // splicer end class.ExClass2.C_definitions
 
-// ExClass2 * ExClass2(const string * name +intent(in)) +constructor
+// ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
 // function_index=18
 AA_exclass2 * AA_exclass2_ex_class2(const char * name)
 {
@@ -79,7 +79,7 @@ AA_exclass2 * AA_exclass2_ex_class2(const char * name)
 // splicer end class.ExClass2.method.ex_class2
 }
 
-// ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)) +constructor
+// ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2)) +constructor
 // function_index=38
 AA_exclass2 * AA_exclass2_ex_class2_bufferify(const char * name, int Lname)
 {

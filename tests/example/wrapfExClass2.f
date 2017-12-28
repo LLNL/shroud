@@ -317,7 +317,7 @@ module exclass2_mod
 
 contains
 
-    ! ExClass2 * ExClass2(const string * name +intent(in)) +constructor
+    ! ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
     ! arg_to_buffer
     ! function_index=18
     function exclass2_ex_class2(name) result(SHT_rv)
