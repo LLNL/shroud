@@ -402,9 +402,9 @@ class Wrapc(util.WrapperMixin):
 
         result_typedef = util.Typedef.lookup(result_type)
         result_is_const = result['const']
-        is_ctor = node['fattrs'].get('constructor', False)
-        is_dtor = node['fattrs'].get('destructor', False)
-        is_const = node['func_const']
+        is_ctor = result['fattrs'].get('constructor', False)
+        is_dtor = result['fattrs'].get('destructor', False)
+        is_const = result['func_const']
 
         if result_typedef.c_header:
             # include any dependent header in generated header

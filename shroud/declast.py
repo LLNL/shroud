@@ -512,10 +512,11 @@ class Declaration(Node):
         self.volatile   = False
         self.declarator = None
         self.params     = None   # None=No parameters, []=empty parameters list
-        self.func_const = False
         self.array      = None
         self.init       = None   # initial value
         self.attrs      = {}     # declarator attributes
+
+        self.func_const = False
         self.fattrs     = {}     # function attributes
 
     def get_name(self):
@@ -607,10 +608,12 @@ class Declaration(Node):
             top = dict(
                 result = d,
                 args = [],
-                func_const = self.func_const,
-                fattrs = {}
+#                func_const = self.func_const,
+#                fattrs = {}
             )
-            top['fattrs'].update(self.fattrs)
+#            top['fattrs'].update(self.fattrs)
+            d['fattrs'] = self.fattrs
+            d['func_const'] = self.func_const
         else:
             top = None
         if self.specifier:

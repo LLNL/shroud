@@ -59,14 +59,15 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(),{
             'args': [],
-            'fattrs': {},
-            'func_const': False, 
             'result': {
                 'attrs': {},
                 'const': False,
                 'init': None,
                 'name': 'foo',
                 'type': 'void',
+                'fattrs': {},
+                'func_const': False, 
+
             }
         })
         self.assertEqual(r._to_dict(),{
@@ -93,14 +94,14 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(), {
             'args': [],
-            'fattrs': {},
-            'func_const': False, 
             'result': {
                 'attrs': {'alias': 'junk'},
                 'const': False,
                 'init': None,
                 'name': 'foo',
                 'type': 'void',
+                'fattrs': {},
+                'func_const': False, 
             }
         })
         self.assertEqual(r._to_dict(),{
@@ -129,14 +130,14 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(), {
             'args': [],
-            'fattrs': {},
-            'func_const': False, 
             'result': {
                 'attrs': {},
                 'const': False,
                 'init': None,
                 'name': 'foo',
                 'type': 'void',
+                'fattrs': {},
+                'func_const': False, 
             }
         })
         self.assertEqual(r._to_dict(),{
@@ -165,14 +166,14 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(),{
             'args': [],
-            'fattrs': {},
-            'func_const': True, 
             'result': {
                 'attrs': {},
                 'const': False,
                 'init': None,
                 'name': 'foo',
                 'type': 'void',
+                'fattrs': {},
+                'func_const': True, 
             }
         })
         self.assertEqual(r._to_dict(),{
@@ -209,14 +210,14 @@ class CheckParse(unittest.TestCase):
                     'type': 'int',
                 }
             ],
-            'fattrs': {},
-            'func_const': False, 
             'result': {
                 'attrs': {},
                 'const': False,
                 'init': None,
                 'name': 'foo',
                 'type': 'void',
+                'fattrs': {},
+                'func_const': False, 
             }
         })
         self.assertEqual(r._to_dict(),{
@@ -271,14 +272,14 @@ class CheckParse(unittest.TestCase):
                 'name': 'arg2',
                 'type': 'double',
             }],
-            'fattrs': {},
-            'func_const': False, 
             'result': {
                 'attrs': {},
                 'const': False,
                 'init': None,
                 'name': 'foo',
                 'type': 'void',
+                'fattrs': {},
+                'func_const': False, 
             }
         })
         self.assertEqual(r._to_dict(),{
@@ -334,14 +335,14 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(), {
             'args': [],
-            'fattrs': {},
-            'func_const': True, 
             'result': {
                 'attrs': {'reference': True},
                 'const': True,
                 'init': None,
                 'name': 'getName',
                 'type': 'std::string',
+                'fattrs': {},
+                'func_const': True, 
             }
         })
         self.assertEqual(r._to_dict(),{
@@ -394,10 +395,6 @@ class CheckParse(unittest.TestCase):
                     'type': 'double',
                 }
             ],
-            'fattrs': {
-                'attr2' : 'True',
-            },
-            'func_const': False, 
             'result':
             {
                 'attrs': {
@@ -408,6 +405,10 @@ class CheckParse(unittest.TestCase):
                 'init': None,
                 'name': 'foo',
                 'type': 'void',
+                'fattrs': {
+                    'attr2' : 'True',
+                },
+                'func_const': False, 
             }
         })
         self.assertEqual(r._to_dict(),{
@@ -474,10 +475,6 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r.to_dict(),  {
             "args": [], 
-            "fattrs": {
-                "constructor": True
-            }, 
-            'func_const': False, 
             "result": {
                 "attrs": {
                     "ptr": True
@@ -485,7 +482,11 @@ class CheckParse(unittest.TestCase):
                 'const': False,
                 'init': None,
                 "name": "Class1", 
-                "type": "Class1"
+                "type": "Class1",
+                "fattrs": {
+                    "constructor": True
+                }, 
+                'func_const': False, 
             }
         })
         self.assertEqual(r._to_dict(),{
@@ -557,14 +558,14 @@ class CheckParse(unittest.TestCase):
                     "type": "bool"
                 }
             ], 
-            "fattrs": {}, 
-            'func_const': False, 
             "result": {
                 "attrs": {}, 
                 'const': False,
                 'init': None,
                 "name": "name", 
-                "type": "void"
+                "type": "void",
+                "fattrs": {}, 
+                'func_const': False, 
             }
         })
         self.assertEqual(r._to_dict(),{
@@ -659,14 +660,14 @@ class CheckParse(unittest.TestCase):
                     "type": "ArgType"
                 }
             ], 
-            "fattrs": {}, 
-            'func_const': False, 
             "result": {
                 "attrs": {}, 
                 'const': False,
                 'init': None,
                 "name": "decl11", 
-                "type": "void"
+                "type": "void",
+                "fattrs": {}, 
+                'func_const': False, 
             }
         })
         self.assertEqual(r._to_dict(),{
@@ -728,14 +729,14 @@ class CheckParse(unittest.TestCase):
                     "type": "string"
                 }
             ], 
-            "fattrs": {}, 
-            'func_const': False, 
             "result": {
                 "attrs": {}, 
                 'const': False,
                 'init': None,
                 "name": "decl12",
-                "type": "void"
+                "type": "void",
+                "fattrs": {}, 
+                'func_const': False, 
             }
         })
         self.assertEqual(r._to_dict(),{

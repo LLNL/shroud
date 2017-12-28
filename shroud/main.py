@@ -994,7 +994,6 @@ class Schema(object):
 #        func.update(node)
 #        func.dump()
 
-        node['fattrs'] = {}
         node['args'] = []
 
         if 'cpp_template' in node:
@@ -1347,7 +1346,7 @@ class GenFunctions(object):
 
         has_string_result = False
         result_as_arg = ''  # only applies to string functions
-        is_pure = node['fattrs'].get('pure', False)
+        is_pure = result['fattrs'].get('pure', False)
         if result_typedef.base == 'vector':
             raise NotImplemented("vector result")
         elif result_typedef.base == 'string':
@@ -1571,7 +1570,8 @@ class GenFunctions(object):
         """
         for node in functions:
             decl = []
-            self.gen_arg_decl(node['result'], decl)
+            result = node['result']
+            self.gen_arg_decl(result, decl)
 
             if node['args']:
                 decl.append('(')
@@ -1583,9 +1583,9 @@ class GenFunctions(object):
             else:
                 decl.append('()')
 
-            if node['func_const']:
+            if result['func_const']:
                 decl.append(' const')
-            self.gen_annotations_decl(node['fattrs'], decl)
+            self.gen_annotations_decl(result['fattrs'], decl)
 
             node['_decl'] = ''.join(decl)
 

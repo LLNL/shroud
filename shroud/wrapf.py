@@ -558,10 +558,9 @@ class Wrapf(util.WrapperMixin):
         fmt_func = node['fmt']
         fmt = util.Options(fmt_func)
 
-        func_is_const = node['func_const']
-
         result = node['result']
         result_type = result['type']
+        func_is_const = result['func_const']
         subprogram = node['_subprogram']
 
         generator = node.get('_generated', '')
@@ -578,9 +577,9 @@ class Wrapf(util.WrapperMixin):
             subprogram = 'function'
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['fattrs'].get('constructor', False)
-        is_const = node['func_const']
-        is_pure = node['fattrs'].get('pure', False)
+        is_const = result['func_const']
+        is_ctor = result['fattrs'].get('constructor', False)
+        is_pure = result['fattrs'].get('pure', False)
 
         arg_c_names = []  # argument names for functions
         arg_c_decl = []   # declaraion of argument names
@@ -728,11 +727,10 @@ class Wrapf(util.WrapperMixin):
 
         fmt_func.F_C_call = C_node['fmt'].F_C_name
 
-        func_is_const = node['func_const']
-
         # Fortran return type
         result = node['result']
         result_type = result['type']
+        func_is_const = result['func_const']
         subprogram = node['_subprogram']
         c_subprogram = C_node['_subprogram']
 
@@ -758,9 +756,9 @@ class Wrapf(util.WrapperMixin):
             result['type'] = result_type
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['fattrs'].get('constructor', False)
-        is_dtor = node['fattrs'].get('destructor', False)
-        is_pure = node['fattrs'].get('pure', False)
+        is_ctor = result['fattrs'].get('constructor', False)
+        is_dtor = result['fattrs'].get('destructor', False)
+        is_pure = result['fattrs'].get('pure', False)
         is_const = result['const']
 
         result_intent_grp = ''

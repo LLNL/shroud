@@ -54,9 +54,6 @@
                         "description": "longer description\nusually multiple lines\n", 
                         "return": "return new instance"
                     }, 
-                    "fattrs": {
-                        "constructor": true
-                    }, 
                     "fmt": {
                         "C_call_code": "ExClass1 * SHT_rv = new ExClass1(SH_name);", 
                         "C_call_list": "SH_name", 
@@ -80,17 +77,20 @@
                         "function_name": "new", 
                         "underscore_name": "new"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {
+                            "constructor": true
+                        }, 
                         "fmtc": {
                             "cpp_rv_decl": "ExClass1 * SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "new", 
                         "type": "ExClass1"
@@ -135,9 +135,6 @@
                         "description": "longer description\nusually multiple lines\n", 
                         "return": "return new instance"
                     }, 
-                    "fattrs": {
-                        "constructor": true
-                    }, 
                     "fmt": {
                         "C_call_code": "ExClass1 * SHT_rv = new ExClass1(SH_name);", 
                         "C_call_list": "SH_name", 
@@ -150,7 +147,6 @@
                         "c_const": "", 
                         "function_suffix": "_bufferify"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -162,10 +158,14 @@
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {
+                            "constructor": true
+                        }, 
                         "fmtc": {
                             "cpp_rv_decl": "ExClass1 * SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "new", 
                         "type": "ExClass1"
@@ -179,9 +179,6 @@
                     "decl": "void delete() +destructor", 
                     "doxygen": {
                         "description": "longer description joined with previous line"
-                    }, 
-                    "fattrs": {
-                        "destructor": true
                     }, 
                     "fmt": {
                         "C_call_code": "delete SH_this;", 
@@ -208,11 +205,14 @@
                         "function_name": "delete", 
                         "underscore_name": "delete"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {
+                            "destructor": true
+                        }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "delete", 
                         "type": "void"
@@ -254,7 +254,6 @@
                         }
                     ], 
                     "decl": "int incrementCount(int incr)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "int SHT_rv = SH_this->incrementCount(incr);", 
                         "C_call_list": "incr", 
@@ -281,15 +280,16 @@
                         "function_name": "incrementCount", 
                         "underscore_name": "increment_count"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "int SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "incrementCount", 
                         "type": "int"
@@ -304,7 +304,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "const string& getName() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                         "C_call_list": "", 
@@ -333,7 +332,6 @@
                         "function_name": "getName", 
                         "underscore_name": "get_name"
                     }, 
-                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -341,6 +339,7 @@
                             "reference": true
                         }, 
                         "const": true, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "c_rv_decl": "const char * XSHT_rv", 
                             "c_val": "SHT_rv.c_str()", 
@@ -348,6 +347,7 @@
                             "cpp_rv_decl": "const std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getName", 
                         "type": "string"
@@ -371,6 +371,7 @@
                                 "reference": true
                             }, 
                             "const": false, 
+                            "fattrs": {}, 
                             "fmtc": {
                                 "c_const": "", 
                                 "c_ptr": "", 
@@ -384,13 +385,13 @@
                                 "c_var": "SHT_rv", 
                                 "f_var": "SHT_rv"
                             }, 
+                            "func_const": true, 
                             "init": null, 
                             "name": "SHF_rv", 
                             "type": "string"
                         }
                     ], 
                     "decl": "const string& getName() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                         "C_call_list": "", 
@@ -406,7 +407,6 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
-                    "func_const": true, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -420,10 +420,12 @@
                             "reference": false
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "const std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getName", 
                         "type": "void"
@@ -439,7 +441,6 @@
                     "doxygen": {
                         "brief": "helper function for Fortran to get length of name."
                     }, 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_list": "", 
                         "C_name": "AA_exclass1_get_name_length", 
@@ -464,15 +465,16 @@
                         "function_name": "GetNameLength", 
                         "underscore_name": "get_name_length"
                     }, 
-                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "int SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "GetNameLength", 
                         "type": "int"
@@ -485,7 +487,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "const string& getNameErrorCheck() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameErrorCheck();", 
                         "C_call_list": "", 
@@ -513,13 +514,13 @@
                         "function_name": "getNameErrorCheck", 
                         "underscore_name": "get_name_error_check"
                     }, 
-                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {
                             "reference": true
                         }, 
                         "const": true, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "c_rv_decl": "const char * XSHT_rv", 
                             "c_val": "SHT_rv.c_str()", 
@@ -527,6 +528,7 @@
                             "cpp_rv_decl": "const std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getNameErrorCheck", 
                         "type": "string"
@@ -548,6 +550,7 @@
                                 "reference": true
                             }, 
                             "const": false, 
+                            "fattrs": {}, 
                             "fmtc": {
                                 "c_const": "", 
                                 "c_ptr": "", 
@@ -561,13 +564,13 @@
                                 "c_var": "SHT_rv", 
                                 "f_var": "SHT_rv"
                             }, 
+                            "func_const": true, 
                             "init": null, 
                             "name": "SHF_rv", 
                             "type": "string"
                         }
                     ], 
                     "decl": "const string& getNameErrorCheck() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameErrorCheck();", 
                         "C_call_list": "", 
@@ -583,7 +586,6 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
-                    "func_const": true, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -596,10 +598,12 @@
                             "reference": false
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "const std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getNameErrorCheck", 
                         "type": "void"
@@ -611,7 +615,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "const string& getNameArg() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameArg();", 
                         "C_call_list": "", 
@@ -629,7 +632,6 @@
                         "function_name": "getNameArg", 
                         "underscore_name": "get_name_arg"
                     }, 
-                    "func_const": true, 
                     "options": {
                         "F_string_result_as_arg": "name", 
                         "wrap_fortran": false
@@ -639,6 +641,7 @@
                             "reference": true
                         }, 
                         "const": true, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "c_rv_decl": "const char * XSHT_rv", 
                             "c_val": "SHT_rv.c_str()", 
@@ -646,6 +649,7 @@
                             "cpp_rv_decl": "const std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getNameArg", 
                         "type": "string"
@@ -667,6 +671,7 @@
                                 "reference": true
                             }, 
                             "const": false, 
+                            "fattrs": {}, 
                             "fmtc": {
                                 "c_const": "", 
                                 "c_ptr": "", 
@@ -680,13 +685,13 @@
                                 "c_var": "name", 
                                 "f_var": "name"
                             }, 
+                            "func_const": true, 
                             "init": null, 
                             "name": "name", 
                             "type": "string"
                         }
                     ], 
                     "decl": "const string& getNameArg() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getNameArg();", 
                         "C_call_list": "", 
@@ -702,7 +707,6 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
-                    "func_const": true, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -715,10 +719,12 @@
                             "reference": false
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "const std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getNameArg", 
                         "type": "void"
@@ -741,13 +747,14 @@
                                 "reference": true
                             }, 
                             "const": false, 
+                            "fattrs": {}, 
+                            "func_const": true, 
                             "init": null, 
                             "name": "name", 
                             "type": "string"
                         }
                     ], 
                     "decl": "const string& getNameArg() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "F_C_call": "c_exclass1_get_name_arg_bufferify", 
                         "F_arg_c_call": "obj%voidptr, name, len(name, kind=C_INT)", 
@@ -760,7 +767,6 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": ""
                     }, 
-                    "func_const": true, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": true, 
@@ -773,6 +779,8 @@
                             "reference": false
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getNameArg", 
                         "type": "void"
@@ -784,7 +792,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "ExClass2 *getRoot()", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "ExClass2 * SHT_rv = SH_this->getRoot();", 
                         "C_call_list": "", 
@@ -811,13 +818,13 @@
                         "function_name": "getRoot", 
                         "underscore_name": "get_root"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "c_rv_decl": "AA_exclass2 * XSHT_rv", 
                             "c_val": "static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv))", 
@@ -825,6 +832,7 @@
                             "cpp_rv_decl": "ExClass2 * SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "getRoot", 
                         "type": "ExClass2"
@@ -871,7 +879,6 @@
                         }
                     ], 
                     "decl": "int  getValue(int value)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "int SHT_rv = SH_this->getValue(value);", 
                         "C_call_list": "value", 
@@ -899,16 +906,17 @@
                         "function_suffix": "_from_int", 
                         "underscore_name": "get_value"
                     }, 
-                    "func_const": false, 
                     "function_suffix": "_from_int", 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "int SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "getValue", 
                         "type": "int"
@@ -955,7 +963,6 @@
                         }
                     ], 
                     "decl": "long getValue(long value)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "long SHT_rv = SH_this->getValue(value);", 
                         "C_call_list": "value", 
@@ -983,15 +990,16 @@
                         "function_suffix": "_1", 
                         "underscore_name": "get_value"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "long SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "getValue", 
                         "type": "long"
@@ -1003,7 +1011,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "void *getAddr()", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "void * SHT_rv = SH_this->getAddr();", 
                         "C_call_list": "", 
@@ -1030,17 +1037,18 @@
                         "function_name": "getAddr", 
                         "underscore_name": "get_addr"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "void * SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "getAddr", 
                         "type": "void"
@@ -1082,7 +1090,6 @@
                         }
                     ], 
                     "decl": "bool hasAddr(bool in)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "bool SHT_rv = SH_this->hasAddr(in);", 
                         "C_call_list": "in", 
@@ -1109,15 +1116,16 @@
                         "function_name": "hasAddr", 
                         "underscore_name": "has_addr"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "bool SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "hasAddr", 
                         "type": "bool"
@@ -1129,7 +1137,6 @@
                     "_subprogram": "subroutine", 
                     "args": [], 
                     "decl": "void SplicerSpecial", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_list": "", 
                         "C_name": "AA_exclass1_splicer_special", 
@@ -1152,11 +1159,12 @@
                         "function_name": "SplicerSpecial", 
                         "underscore_name": "splicer_special"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "SplicerSpecial", 
                         "type": "void"
@@ -1221,9 +1229,6 @@
                         }
                     ], 
                     "decl": "ExClass2 *ExClass2 (const string *name) +constructor", 
-                    "fattrs": {
-                        "constructor": true
-                    }, 
                     "fmt": {
                         "C_call_code": "ExClass2 * SHT_rv = new ExClass2(SH_name);", 
                         "C_call_list": "SH_name", 
@@ -1247,17 +1252,20 @@
                         "function_name": "ExClass2", 
                         "underscore_name": "ex_class2"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {
+                            "constructor": true
+                        }, 
                         "fmtc": {
                             "cpp_rv_decl": "ExClass2 * SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "ExClass2", 
                         "type": "ExClass2"
@@ -1297,9 +1305,6 @@
                         }
                     ], 
                     "decl": "ExClass2 *ExClass2 (const string *name) +constructor", 
-                    "fattrs": {
-                        "constructor": true
-                    }, 
                     "fmt": {
                         "C_call_code": "ExClass2 * SHT_rv = new ExClass2(SH_name);", 
                         "C_call_list": "SH_name", 
@@ -1312,7 +1317,6 @@
                         "c_const": "", 
                         "function_suffix": "_bufferify"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -1324,10 +1328,14 @@
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {
+                            "constructor": true
+                        }, 
                         "fmtc": {
                             "cpp_rv_decl": "ExClass2 * SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "ExClass2", 
                         "type": "ExClass2"
@@ -1339,9 +1347,6 @@
                     "_subprogram": "subroutine", 
                     "args": [], 
                     "decl": "void delete() +destructor", 
-                    "fattrs": {
-                        "destructor": true
-                    }, 
                     "fmt": {
                         "C_call_code": "delete SH_this;", 
                         "C_call_list": "", 
@@ -1367,11 +1372,14 @@
                         "function_name": "delete", 
                         "underscore_name": "delete"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {
+                            "destructor": true
+                        }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "delete", 
                         "type": "void"
@@ -1384,7 +1392,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "const string& getName() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                         "C_call_list": "", 
@@ -1412,7 +1419,6 @@
                         "function_name": "getName", 
                         "underscore_name": "get_name"
                     }, 
-                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {
@@ -1420,6 +1426,7 @@
                             "reference": true
                         }, 
                         "const": true, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "c_rv_decl": "const char * XSHT_rv", 
                             "c_val": "SHT_rv.c_str()", 
@@ -1427,6 +1434,7 @@
                             "cpp_rv_decl": "const std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getName", 
                         "type": "string"
@@ -1448,6 +1456,7 @@
                                 "reference": true
                             }, 
                             "const": false, 
+                            "fattrs": {}, 
                             "fmtc": {
                                 "c_const": "", 
                                 "c_ptr": "", 
@@ -1461,13 +1470,13 @@
                                 "c_var": "SHT_rv", 
                                 "f_var": "SHT_rv"
                             }, 
+                            "func_const": true, 
                             "init": null, 
                             "name": "SHF_rv", 
                             "type": "string"
                         }
                     ], 
                     "decl": "const string& getName() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                         "C_call_list": "", 
@@ -1483,7 +1492,6 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
-                    "func_const": true, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -1497,10 +1505,12 @@
                             "reference": false
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "const std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getName", 
                         "type": "void"
@@ -1513,7 +1523,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "const string& getName2()", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName2();", 
                         "C_call_list": "", 
@@ -1541,13 +1550,13 @@
                         "function_name": "getName2", 
                         "underscore_name": "get_name2"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
                             "reference": true
                         }, 
                         "const": true, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "c_rv_decl": "const char * XSHT_rv", 
                             "c_val": "SHT_rv.c_str()", 
@@ -1555,6 +1564,7 @@
                             "cpp_rv_decl": "const std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "getName2", 
                         "type": "string"
@@ -1576,6 +1586,7 @@
                                 "reference": true
                             }, 
                             "const": false, 
+                            "fattrs": {}, 
                             "fmtc": {
                                 "c_const": "", 
                                 "c_ptr": "", 
@@ -1589,13 +1600,13 @@
                                 "c_var": "SHT_rv", 
                                 "f_var": "SHT_rv"
                             }, 
+                            "func_const": false, 
                             "init": null, 
                             "name": "SHF_rv", 
                             "type": "string"
                         }
                     ], 
                     "decl": "const string& getName2()", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName2();", 
                         "C_call_list": "", 
@@ -1611,7 +1622,6 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -1624,10 +1634,12 @@
                             "reference": false
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "const std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "getName2", 
                         "type": "void"
@@ -1640,7 +1652,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "string& getName3() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName3();", 
                         "C_call_list": "", 
@@ -1668,13 +1679,13 @@
                         "function_name": "getName3", 
                         "underscore_name": "get_name3"
                     }, 
-                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {
                             "reference": true
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "c_rv_decl": "char * XSHT_rv", 
                             "c_val": "SHT_rv.c_str()", 
@@ -1682,6 +1693,7 @@
                             "cpp_rv_decl": "std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getName3", 
                         "type": "string"
@@ -1703,6 +1715,7 @@
                                 "reference": true
                             }, 
                             "const": false, 
+                            "fattrs": {}, 
                             "fmtc": {
                                 "c_const": "", 
                                 "c_ptr": "", 
@@ -1716,13 +1729,13 @@
                                 "c_var": "SHT_rv", 
                                 "f_var": "SHT_rv"
                             }, 
+                            "func_const": true, 
                             "init": null, 
                             "name": "SHF_rv", 
                             "type": "string"
                         }
                     ], 
                     "decl": "string& getName3() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName3();", 
                         "C_call_list": "", 
@@ -1738,7 +1751,6 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
-                    "func_const": true, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -1751,10 +1763,12 @@
                             "reference": false
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getName3", 
                         "type": "void"
@@ -1767,7 +1781,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "string& getName4()", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName4();", 
                         "C_call_list": "", 
@@ -1795,13 +1808,13 @@
                         "function_name": "getName4", 
                         "underscore_name": "get_name4"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
                             "reference": true
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "c_rv_decl": "char * XSHT_rv", 
                             "c_val": "SHT_rv.c_str()", 
@@ -1809,6 +1822,7 @@
                             "cpp_rv_decl": "std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "getName4", 
                         "type": "string"
@@ -1830,6 +1844,7 @@
                                 "reference": true
                             }, 
                             "const": false, 
+                            "fattrs": {}, 
                             "fmtc": {
                                 "c_const": "", 
                                 "c_ptr": "", 
@@ -1843,13 +1858,13 @@
                                 "c_var": "SHT_rv", 
                                 "f_var": "SHT_rv"
                             }, 
+                            "func_const": false, 
                             "init": null, 
                             "name": "SHF_rv", 
                             "type": "string"
                         }
                     ], 
                     "decl": "string& getName4()", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "std::string & SHT_rv = SH_this->getName4();", 
                         "C_call_list": "", 
@@ -1865,7 +1880,6 @@
                         "c_var": "self", 
                         "function_suffix": "_bufferify"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -1878,10 +1892,12 @@
                             "reference": false
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "std::string & SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "getName4", 
                         "type": "void"
@@ -1896,7 +1912,6 @@
                     "doxygen": {
                         "brief": "helper function for Fortran"
                     }, 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_list": "", 
                         "C_name": "AA_exclass2_get_name_length", 
@@ -1926,10 +1941,12 @@
                     "result": {
                         "attrs": {}, 
                         "const": true, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "const int SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "GetNameLength", 
                         "type": "int"
@@ -1972,7 +1989,6 @@
                         }
                     ], 
                     "decl": "ExClass1 *get_class1(const ExClass1 *in)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "ExClass1 * SHT_rv = SH_this->get_class1(static_cast<const ExClass1 *>(static_cast<const void *>(in)));", 
                         "C_call_list": "static_cast<const ExClass1 *>(static_cast<const void *>(in))", 
@@ -1999,13 +2015,13 @@
                         "function_name": "get_class1", 
                         "underscore_name": "get_class1"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "c_rv_decl": "AA_exclass1 * XSHT_rv", 
                             "c_val": "static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv))", 
@@ -2013,6 +2029,7 @@
                             "cpp_rv_decl": "ExClass1 * SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "get_class1", 
                         "type": "ExClass1"
@@ -2048,7 +2065,6 @@
                         }
                     ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "SH_this->declare(getTypeID(type));", 
                         "C_call_list": "getTypeID(type)", 
@@ -2069,7 +2085,6 @@
                             "long"
                         ]
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -2081,6 +2096,8 @@
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "declare", 
                         "type": "void"
@@ -2107,7 +2124,6 @@
                         }
                     ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "F_C_call": "c_exclass2_declare_0", 
                         "F_arg_c_call": "obj%voidptr, type", 
@@ -2120,7 +2136,6 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_0_int"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": true, 
@@ -2132,6 +2147,8 @@
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "declare", 
                         "type": "void"
@@ -2158,7 +2175,6 @@
                         }
                     ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "F_C_call": "c_exclass2_declare_0", 
                         "F_arg_c_call": "obj%voidptr, type", 
@@ -2171,7 +2187,6 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_0_long"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": true, 
@@ -2183,6 +2198,8 @@
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "declare", 
                         "type": "void"
@@ -2263,7 +2280,6 @@
                         }
                     ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "SH_this->declare(getTypeID(type), len);", 
                         "C_call_list": "getTypeID(type), len", 
@@ -2287,7 +2303,6 @@
                             "long"
                         ]
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_fortran": false
                     }, 
@@ -2296,6 +2311,8 @@
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "declare", 
                         "type": "void"
@@ -2340,7 +2357,6 @@
                         }
                     ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "F_C_call": "c_exclass2_declare_1", 
                         "F_arg_c_call": "obj%voidptr, type, int(len, C_LONG)", 
@@ -2353,7 +2369,6 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_1_int"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": true, 
@@ -2365,6 +2380,8 @@
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "declare", 
                         "type": "void"
@@ -2409,7 +2426,6 @@
                         }
                     ], 
                     "decl": "void* declare(TypeID type, SidreLength len = 1)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "F_C_call": "c_exclass2_declare_1", 
                         "F_arg_c_call": "obj%voidptr, type, int(len, C_LONG)", 
@@ -2422,7 +2438,6 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_1_long"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": true, 
@@ -2434,6 +2449,8 @@
                             "ptr": true
                         }, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "declare", 
                         "type": "void"
@@ -2446,7 +2463,6 @@
                     "_subprogram": "subroutine", 
                     "args": [], 
                     "decl": "void destroyall()", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "SH_this->destroyall();", 
                         "C_call_list": "", 
@@ -2472,11 +2488,12 @@
                         "function_name": "destroyall", 
                         "underscore_name": "destroyall"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "destroyall", 
                         "type": "void"
@@ -2488,7 +2505,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "TypeID getTypeID() const", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "TypeID SHT_rv = SH_this->getTypeID();", 
                         "C_call_list": "", 
@@ -2515,11 +2531,11 @@
                         "function_name": "getTypeID", 
                         "underscore_name": "get_type_id"
                     }, 
-                    "func_const": true, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "c_rv_decl": "int XSHT_rv", 
                             "c_val": "static_cast<int>(SHT_rv)", 
@@ -2527,6 +2543,7 @@
                             "cpp_rv_decl": "TypeID SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": true, 
                         "init": null, 
                         "name": "getTypeID", 
                         "type": "TypeID"
@@ -2558,12 +2575,10 @@
                         ]
                     }, 
                     "decl": "void setValue(ValueType value)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "function_name": "setValue", 
                         "underscore_name": "set_value"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": false, 
@@ -2573,6 +2588,8 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "setValue", 
                         "type": "void"
@@ -2608,7 +2625,6 @@
                         }
                     ], 
                     "decl": "void setValue(ValueType value)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "CPP_template": "<int>", 
                         "C_call_code": "SH_this->setValue<int>(value);", 
@@ -2633,7 +2649,6 @@
                         "c_var": "self", 
                         "function_suffix": "_int"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -2643,6 +2658,8 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "setValue", 
                         "type": "void"
@@ -2678,7 +2695,6 @@
                         }
                     ], 
                     "decl": "void setValue(ValueType value)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "CPP_template": "<long>", 
                         "C_call_code": "SH_this->setValue<long>(value);", 
@@ -2703,7 +2719,6 @@
                         "c_var": "self", 
                         "function_suffix": "_long"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -2713,6 +2728,8 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "setValue", 
                         "type": "void"
@@ -2748,7 +2765,6 @@
                         }
                     ], 
                     "decl": "void setValue(ValueType value)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "CPP_template": "<float>", 
                         "C_call_code": "SH_this->setValue<float>(value);", 
@@ -2773,7 +2789,6 @@
                         "c_var": "self", 
                         "function_suffix": "_float"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -2783,6 +2798,8 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "setValue", 
                         "type": "void"
@@ -2818,7 +2835,6 @@
                         }
                     ], 
                     "decl": "void setValue(ValueType value)", 
-                    "fattrs": {}, 
                     "fmt": {
                         "CPP_template": "<double>", 
                         "C_call_code": "SH_this->setValue<double>(value);", 
@@ -2843,7 +2859,6 @@
                         "c_var": "self", 
                         "function_suffix": "_double"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -2853,6 +2868,8 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "setValue", 
                         "type": "void"
@@ -2871,12 +2888,10 @@
                         ]
                     }, 
                     "decl": "ValueType getValue()", 
-                    "fattrs": {}, 
                     "fmt": {
                         "function_name": "getValue", 
                         "underscore_name": "get_value"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": false, 
                         "wrap_fortran": false, 
@@ -2886,6 +2901,8 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "getValue", 
                         "type": "ValueType"
@@ -2900,7 +2917,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "ValueType getValue()", 
-                    "fattrs": {}, 
                     "fmt": {
                         "CPP_template": "<int>", 
                         "C_call_code": "int SHT_rv = SH_this->getValue<int>();", 
@@ -2926,7 +2942,6 @@
                         "c_var": "self", 
                         "function_suffix": "_int"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -2936,10 +2951,12 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "int SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "getValue", 
                         "type": "int"
@@ -2954,7 +2971,6 @@
                     "_subprogram": "function", 
                     "args": [], 
                     "decl": "ValueType getValue()", 
-                    "fattrs": {}, 
                     "fmt": {
                         "CPP_template": "<double>", 
                         "C_call_code": "double SHT_rv = SH_this->getValue<double>();", 
@@ -2980,7 +2996,6 @@
                         "c_var": "self", 
                         "function_suffix": "_double"
                     }, 
-                    "func_const": false, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": true, 
@@ -2990,10 +3005,12 @@
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
                         "fmtc": {
                             "cpp_rv_decl": "double SHT_rv", 
                             "cpp_var": "SHT_rv"
                         }, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "getValue", 
                         "type": "double"
@@ -3130,7 +3147,6 @@
             "args": [], 
             "decl": "void local_function1", 
             "docs": "yada yada yada", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "local_function1();", 
                 "C_call_list": "", 
@@ -3153,11 +3169,12 @@
                 "function_name": "local_function1", 
                 "underscore_name": "local_function1"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "local_function1", 
                 "type": "void"
@@ -3199,7 +3216,6 @@
                 }
             ], 
             "decl": "bool isNameValid(const std::string& name)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_list": "SH_name", 
                 "C_name": "AA_is_name_valid", 
@@ -3221,15 +3237,16 @@
                 "function_name": "isNameValid", 
                 "underscore_name": "is_name_valid"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "bool SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "isNameValid", 
                 "type": "bool"
@@ -3271,7 +3288,6 @@
                 }
             ], 
             "decl": "bool isNameValid(const std::string& name)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_list": "SH_name", 
                 "C_name": "AA_is_name_valid_bufferify", 
@@ -3282,7 +3298,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -3292,10 +3307,12 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "bool SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "isNameValid", 
                 "type": "bool"
@@ -3307,7 +3324,6 @@
             "_subprogram": "function", 
             "args": [], 
             "decl": "bool isInitialized()", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "bool SHT_rv = isInitialized();", 
                 "C_call_list": "", 
@@ -3331,15 +3347,16 @@
                 "function_name": "isInitialized", 
                 "underscore_name": "is_initialized"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "bool SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "isInitialized", 
                 "type": "bool"
@@ -3445,7 +3462,6 @@
                 }
             ], 
             "decl": "void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "checkBool(arg1, arg2, arg3);", 
                 "C_call_list": "arg1, arg2, arg3", 
@@ -3468,11 +3484,12 @@
                 "function_name": "checkBool", 
                 "underscore_name": "check_bool"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "checkBool", 
                 "type": "void"
@@ -3517,7 +3534,6 @@
                 }
             ], 
             "decl": "void test_names(const std::string &name)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "test_names(SH_name);", 
                 "C_call_list": "SH_name", 
@@ -3542,12 +3558,13 @@
                 "function_suffix": "", 
                 "underscore_name": "test_names"
             }, 
-            "func_const": false, 
             "function_suffix": "", 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "test_names", 
                 "type": "void"
@@ -3592,7 +3609,6 @@
                 }
             ], 
             "decl": "void test_names(const std::string &name)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "test_names(SH_name);", 
                 "C_call_list": "SH_name", 
@@ -3605,7 +3621,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "function_suffix": "", 
             "options": {
                 "wrap_c": true, 
@@ -3616,6 +3631,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "test_names", 
                 "type": "void"
@@ -3685,7 +3702,6 @@
                 }
             ], 
             "decl": "void test_names(const std::string &name, int flag)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "test_names(SH_name, flag);", 
                 "C_call_list": "SH_name, flag", 
@@ -3710,12 +3726,13 @@
                 "function_suffix": "_flag", 
                 "underscore_name": "test_names"
             }, 
-            "func_const": false, 
             "function_suffix": "_flag", 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "test_names", 
                 "type": "void"
@@ -3781,7 +3798,6 @@
                 }
             ], 
             "decl": "void test_names(const std::string &name, int flag)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "test_names(SH_name, flag);", 
                 "C_call_list": "SH_name, flag", 
@@ -3794,7 +3810,6 @@
                 "c_const": "", 
                 "function_suffix": "_flag_bufferify"
             }, 
-            "func_const": false, 
             "function_suffix": "_flag", 
             "options": {
                 "wrap_c": true, 
@@ -3805,6 +3820,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "test_names", 
                 "type": "void"
@@ -3818,7 +3835,6 @@
             "_subprogram": "subroutine", 
             "args": [], 
             "decl": "void testoptional(int i = 1, long j=2)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "testoptional();", 
                 "C_call_list": "", 
@@ -3839,7 +3855,6 @@
                 "c_const": "", 
                 "function_suffix": "_0"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -3849,6 +3864,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "testoptional", 
                 "type": "void"
@@ -3884,7 +3901,6 @@
                 }
             ], 
             "decl": "void testoptional(int i = 1, long j=2)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "testoptional(i);", 
                 "C_call_list": "i", 
@@ -3905,7 +3921,6 @@
                 "c_const": "", 
                 "function_suffix": "_1"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -3915,6 +3930,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "testoptional", 
                 "type": "void"
@@ -3995,7 +4012,6 @@
                 }
             ], 
             "decl": "void testoptional(int i = 1, long j=2)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "testoptional(i, j);", 
                 "C_call_list": "i, j", 
@@ -4019,11 +4035,12 @@
                 "function_suffix": "_2", 
                 "underscore_name": "testoptional"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "testoptional", 
                 "type": "void"
@@ -4065,7 +4082,6 @@
                 }
             ], 
             "decl": "void testmpi(MPI_Comm comm)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "testmpi(MPI_Comm_f2c(comm));", 
                 "C_call_list": "MPI_Comm_f2c(comm)", 
@@ -4088,11 +4104,12 @@
                 "function_name": "testmpi", 
                 "underscore_name": "testmpi"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "testmpi", 
                 "type": "void"
@@ -4135,7 +4152,6 @@
                 }
             ], 
             "decl": "void testgroup1(DataGroup * grp)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "testgroup1(SH_grp);", 
                 "C_call_list": "SH_grp", 
@@ -4159,11 +4175,12 @@
                 "function_name": "testgroup1", 
                 "underscore_name": "testgroup1"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "testgroup1", 
                 "type": "void"
@@ -4206,7 +4223,6 @@
                 }
             ], 
             "decl": "void testgroup2(const DataGroup * grp)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "testgroup2(SH_grp);", 
                 "C_call_list": "SH_grp", 
@@ -4230,11 +4246,12 @@
                 "function_name": "testgroup2", 
                 "underscore_name": "testgroup2"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "testgroup2", 
                 "type": "void"

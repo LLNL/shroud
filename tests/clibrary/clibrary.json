@@ -93,7 +93,6 @@
             "_subprogram": "subroutine", 
             "args": [], 
             "decl": "void Function1()", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function1();", 
                 "C_call_list": "", 
@@ -115,11 +114,12 @@
                 "function_name": "Function1", 
                 "underscore_name": "function1"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "Function1", 
                 "type": "void"
@@ -174,7 +174,6 @@
                 }
             ], 
             "decl": "double Function2(double arg1, int arg2)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
@@ -197,15 +196,16 @@
                 "function_name": "Function2", 
                 "underscore_name": "function2"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "double SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "Function2", 
                 "type": "double"
@@ -284,7 +284,6 @@
                 }
             ], 
             "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Sum(len, values, result);", 
                 "C_call_list": "len, values, result", 
@@ -306,11 +305,12 @@
                 "function_name": "Sum", 
                 "underscore_name": "sum"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "Sum", 
                 "type": "void"
@@ -344,7 +344,6 @@
                 }
             ], 
             "decl": "bool Function3(bool arg)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "bool SHT_rv = Function3(arg);", 
                 "C_call_list": "arg", 
@@ -367,15 +366,16 @@
                 "function_name": "Function3", 
                 "underscore_name": "function3"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "bool SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "Function3", 
                 "type": "bool"
@@ -453,7 +453,6 @@
                 }
             ], 
             "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function3b(arg1, arg2, arg3);", 
                 "C_call_list": "arg1, arg2, arg3", 
@@ -475,11 +474,12 @@
                 "function_name": "Function3b", 
                 "underscore_name": "function3b"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "Function3b", 
                 "type": "void"
@@ -530,7 +530,6 @@
                 }
             ], 
             "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char * SHT_rv = Function4a(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
@@ -554,7 +553,6 @@
                 "function_name": "Function4a", 
                 "underscore_name": "function4a"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
@@ -562,10 +560,12 @@
                     "ptr": true
                 }, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "Function4a", 
                 "type": "char"
@@ -639,6 +639,7 @@
                         "ptr": true
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -652,13 +653,13 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "SHF_rv", 
                     "type": "char"
                 }
             ], 
             "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char * SHT_rv = Function4a(SH_arg1, SH_arg2);", 
                 "C_call_list": "SH_arg1, SH_arg2", 
@@ -672,7 +673,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -686,10 +686,12 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "Function4a", 
                 "type": "void"

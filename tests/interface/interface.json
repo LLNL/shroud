@@ -93,7 +93,6 @@
             "_subprogram": "subroutine", 
             "args": [], 
             "decl": "void Function1()", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "Function1();", 
                 "C_call_list": "", 
@@ -115,11 +114,12 @@
                 "function_name": "Function1", 
                 "underscore_name": "function1"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "Function1", 
                 "type": "void"
@@ -174,7 +174,6 @@
                 }
             ], 
             "decl": "double Function2(double arg1, int arg2)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
@@ -197,15 +196,16 @@
                 "function_name": "Function2", 
                 "underscore_name": "function2"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "double SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "Function2", 
                 "type": "double"

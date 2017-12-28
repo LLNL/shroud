@@ -207,6 +207,8 @@ classes:
          type: int
          const: true
          init: null
+         fattrs: {}
+         func_const: False
       func_const: False
       C_code: |
         {C_pre_call}

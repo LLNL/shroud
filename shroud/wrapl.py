@@ -214,7 +214,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # First overload defines options
         node = overloads[0]
 
-        function_name = node['result']['name']
+        result = node['result']
+        function_name = result['name']
         fmt_func = node['fmt']
         fmt = util.Options(fmt_func)
         util.eval_template(node, 'LUA_name')
@@ -233,8 +234,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             CPP_subprogram = 'subroutine'
 
         # XXX       result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['fattrs'].get('constructor', False)
-        is_dtor = node['fattrs'].get('destructor', False)
+        is_ctor = result['fattrs'].get('constructor', False)
+        is_dtor = result['fattrs'].get('destructor', False)
         if is_dtor:
             fmt.LUA_name = '__gc'
 
@@ -445,8 +446,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             CPP_subprogram = 'subroutine'
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['fattrs'].get('constructor', False)
-        is_dtor = node['fattrs'].get('destructor', False)
+        is_ctor = result['fattrs'].get('constructor', False)
+        is_dtor = result['fattrs'].get('destructor', False)
         #        is_const = result['const']
         # XXX        if is_ctor:   # or is_dtor:
         # XXX            # XXX - have explicit delete

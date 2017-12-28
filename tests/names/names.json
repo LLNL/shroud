@@ -40,7 +40,6 @@
                     "_subprogram": "subroutine", 
                     "args": [], 
                     "decl": "void method1", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "SH_this->method1();", 
                         "C_call_list": "", 
@@ -66,11 +65,12 @@
                         "function_name": "method1", 
                         "underscore_name": "method1"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "method1", 
                         "type": "void"
@@ -82,7 +82,6 @@
                     "_subprogram": "subroutine", 
                     "args": [], 
                     "decl": "void method2", 
-                    "fattrs": {}, 
                     "fmt": {
                         "C_call_code": "SH_this->method2();", 
                         "C_call_list": "", 
@@ -108,11 +107,12 @@
                         "function_name": "method2", 
                         "underscore_name": "method2"
                     }, 
-                    "func_const": false, 
                     "options": {}, 
                     "result": {
                         "attrs": {}, 
                         "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
                         "init": null, 
                         "name": "method2", 
                         "type": "void"
@@ -258,7 +258,6 @@
             "_subprogram": "subroutine", 
             "args": [], 
             "decl": "void function1", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "function1();", 
                 "C_call_list": "", 
@@ -281,11 +280,12 @@
                 "function_name": "function1", 
                 "underscore_name": "function1"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "function1", 
                 "type": "void"
@@ -300,7 +300,6 @@
             "_subprogram": "subroutine", 
             "args": [], 
             "decl": "void function2", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "function2();", 
                 "C_call_list": "", 
@@ -323,11 +322,12 @@
                 "function_name": "function2", 
                 "underscore_name": "function2"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "function2", 
                 "type": "void"
@@ -376,7 +376,6 @@
                 }
             ], 
             "decl": "void function3a(int i)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "function3a(i);", 
                 "C_call_list": "i", 
@@ -400,11 +399,12 @@
                 "function_suffix": "_0", 
                 "underscore_name": "function3a"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "function3a", 
                 "type": "void"
@@ -453,7 +453,6 @@
                 }
             ], 
             "decl": "void function3a(long i)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "function3a(i);", 
                 "C_call_list": "i", 
@@ -477,11 +476,12 @@
                 "function_suffix": "_1", 
                 "underscore_name": "function3a"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "function3a", 
                 "type": "void"
@@ -521,7 +521,6 @@
                 }
             ], 
             "decl": "int function4(const std::string &rv)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "int SHT_rv = function4(SH_rv);", 
                 "C_call_list": "SH_rv", 
@@ -546,15 +545,16 @@
                 "function_name": "function4", 
                 "underscore_name": "function4"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "function4", 
                 "type": "int"
@@ -594,7 +594,6 @@
                 }
             ], 
             "decl": "int function4(const std::string &rv)", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "int SHT_rv = function4(SH_rv);", 
                 "C_call_list": "SH_rv", 
@@ -607,7 +606,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -617,10 +615,12 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "int SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "function4", 
                 "type": "int"

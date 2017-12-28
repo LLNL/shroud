@@ -140,7 +140,6 @@
             "doxygen": {
                 "brief": "pass a single char argument as a scalar."
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "passChar(status);", 
                 "C_call_list": "status", 
@@ -163,11 +162,12 @@
                 "function_name": "passChar", 
                 "underscore_name": "pass_char"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "passChar", 
                 "type": "void"
@@ -183,7 +183,6 @@
             "doxygen": {
                 "brief": "return a char argument (non-pointer)"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char SHT_rv = returnChar();", 
                 "C_call_list": "", 
@@ -207,15 +206,16 @@
                 "function_name": "returnChar", 
                 "underscore_name": "return_char"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "char SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "returnChar", 
                 "type": "char_scalar"
@@ -238,6 +238,7 @@
                         "reference": false
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -251,6 +252,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "SHF_rv", 
                     "type": "char_scalar"
@@ -260,7 +262,6 @@
             "doxygen": {
                 "brief": "return a char argument (non-pointer)"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char SHT_rv = returnChar();", 
                 "C_call_list": "", 
@@ -273,7 +274,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -286,10 +286,12 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "char SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "returnChar", 
                 "type": "void"
@@ -361,7 +363,6 @@
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "passCharPtr(dest, src);", 
                 "C_call_list": "dest, src", 
@@ -384,11 +385,12 @@
                 "function_name": "passCharPtr", 
                 "underscore_name": "pass_char_ptr"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "passCharPtr", 
                 "type": "void"
@@ -458,7 +460,6 @@
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "passCharPtr(SH_dest, SH_src);", 
                 "C_call_list": "SH_dest, SH_src", 
@@ -472,7 +473,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -482,6 +482,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "passCharPtr", 
                 "type": "void"
@@ -526,7 +528,6 @@
             "doxygen": {
                 "brief": "Change a string in-place"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "passCharPtrInOut(s);", 
                 "C_call_list": "s", 
@@ -549,11 +550,12 @@
                 "function_name": "passCharPtrInOut", 
                 "underscore_name": "pass_char_ptr_in_out"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "passCharPtrInOut", 
                 "type": "void"
@@ -599,7 +601,6 @@
             "doxygen": {
                 "brief": "Change a string in-place"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "passCharPtrInOut(SH_s);", 
                 "C_call_list": "SH_s", 
@@ -613,7 +614,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -623,6 +623,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "passCharPtrInOut", 
                 "type": "void"
@@ -636,9 +638,6 @@
             "decl": "const char * getChar1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const char *' as character(*)"
-            }, 
-            "fattrs": {
-                "pure": true
             }, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar1();", 
@@ -664,17 +663,20 @@
                 "function_name": "getChar1", 
                 "underscore_name": "get_char1"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
                     "ptr": true
                 }, 
                 "const": true, 
+                "fattrs": {
+                    "pure": true
+                }, 
                 "fmtc": {
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getChar1", 
                 "type": "char"
@@ -696,6 +698,9 @@
                         "ptr": true
                     }, 
                     "const": false, 
+                    "fattrs": {
+                        "pure": true
+                    }, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -705,6 +710,7 @@
                         "cpp_val": "SHT_rv", 
                         "cpp_var": "SHT_rv"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "SHF_rv", 
                     "type": "char"
@@ -713,9 +719,6 @@
             "decl": "const char * getChar1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const char *' as character(*)"
-            }, 
-            "fattrs": {
-                "pure": true
             }, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar1();", 
@@ -729,7 +732,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -742,10 +744,14 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {
+                    "pure": true
+                }, 
                 "fmtc": {
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getChar1", 
                 "type": "void"
@@ -761,7 +767,6 @@
             "doxygen": {
                 "brief": "return 'const char *' with fixed size (len=30)"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar2();", 
                 "C_call_list": "", 
@@ -786,7 +791,6 @@
                 "function_name": "getChar2", 
                 "underscore_name": "get_char2"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
@@ -794,10 +798,12 @@
                     "ptr": true
                 }, 
                 "const": true, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getChar2", 
                 "type": "char"
@@ -819,6 +825,7 @@
                         "ptr": true
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -832,6 +839,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "SHF_rv", 
                     "type": "char"
@@ -841,7 +849,6 @@
             "doxygen": {
                 "brief": "return 'const char *' with fixed size (len=30)"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar2();", 
                 "C_call_list": "", 
@@ -854,7 +861,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -868,10 +874,12 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getChar2", 
                 "type": "void"
@@ -886,7 +894,6 @@
             "doxygen": {
                 "brief": "return a 'const char *' as argument"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar3();", 
                 "C_call_list": "", 
@@ -901,7 +908,6 @@
                 "function_name": "getChar3", 
                 "underscore_name": "get_char3"
             }, 
-            "func_const": false, 
             "options": {
                 "F_string_result_as_arg": "output", 
                 "wrap_fortran": false
@@ -911,10 +917,12 @@
                     "ptr": true
                 }, 
                 "const": true, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getChar3", 
                 "type": "char"
@@ -936,6 +944,7 @@
                         "ptr": true
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -949,6 +958,7 @@
                         "c_var": "output", 
                         "f_var": "output"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "output", 
                     "type": "char"
@@ -958,7 +968,6 @@
             "doxygen": {
                 "brief": "return a 'const char *' as argument"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const char * SHT_rv = getChar3();", 
                 "C_call_list": "", 
@@ -971,7 +980,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -984,10 +992,12 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "const char * SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getChar3", 
                 "type": "void"
@@ -1010,6 +1020,8 @@
                         "ptr": true
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "output", 
                     "type": "char"
@@ -1019,7 +1031,6 @@
             "doxygen": {
                 "brief": "return a 'const char *' as argument"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_get_char3_bufferify", 
                 "F_arg_c_call": "output, len(output, kind=C_INT)", 
@@ -1032,7 +1043,6 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -1045,6 +1055,8 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getChar3", 
                 "type": "void"
@@ -1058,9 +1070,6 @@
             "decl": "const string& getString1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const string&' as character(*)"
-            }, 
-            "fattrs": {
-                "pure": true
             }, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString1();", 
@@ -1086,13 +1095,15 @@
                 "function_name": "getString1", 
                 "underscore_name": "get_string1"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
                     "reference": true
                 }, 
                 "const": true, 
+                "fattrs": {
+                    "pure": true
+                }, 
                 "fmtc": {
                     "c_rv_decl": "const char * XSHT_rv", 
                     "c_val": "SHT_rv.c_str()", 
@@ -1100,6 +1111,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString1", 
                 "type": "string"
@@ -1121,6 +1133,9 @@
                         "reference": true
                     }, 
                     "const": false, 
+                    "fattrs": {
+                        "pure": true
+                    }, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -1130,6 +1145,7 @@
                         "cpp_val": "SHT_rv.c_str()", 
                         "cpp_var": "SHT_rv"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "SHF_rv", 
                     "type": "string"
@@ -1138,9 +1154,6 @@
             "decl": "const string& getString1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const string&' as character(*)"
-            }, 
-            "fattrs": {
-                "pure": true
             }, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString1();", 
@@ -1154,7 +1167,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1167,10 +1179,14 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {
+                    "pure": true
+                }, 
                 "fmtc": {
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString1", 
                 "type": "void"
@@ -1187,7 +1203,6 @@
             "doxygen": {
                 "brief": "return 'const string&' with fixed size (len=30)"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2();", 
                 "C_call_list": "", 
@@ -1213,7 +1228,6 @@
                 "function_name": "getString2", 
                 "underscore_name": "get_string2"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
@@ -1221,6 +1235,7 @@
                     "reference": true
                 }, 
                 "const": true, 
+                "fattrs": {}, 
                 "fmtc": {
                     "c_rv_decl": "const char * XSHT_rv", 
                     "c_val": "SHT_rv.c_str()", 
@@ -1228,6 +1243,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString2", 
                 "type": "string"
@@ -1250,6 +1266,7 @@
                         "reference": true
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -1263,6 +1280,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "SHF_rv", 
                     "type": "string"
@@ -1272,7 +1290,6 @@
             "doxygen": {
                 "brief": "return 'const string&' with fixed size (len=30)"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2();", 
                 "C_call_list": "", 
@@ -1285,7 +1302,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1299,10 +1315,12 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString2", 
                 "type": "void"
@@ -1318,7 +1336,6 @@
             "doxygen": {
                 "brief": "return a 'const string&' as argument"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString3();", 
                 "C_call_list": "", 
@@ -1334,7 +1351,6 @@
                 "function_name": "getString3", 
                 "underscore_name": "get_string3"
             }, 
-            "func_const": false, 
             "options": {
                 "F_string_result_as_arg": "output", 
                 "wrap_fortran": false
@@ -1344,6 +1360,7 @@
                     "reference": true
                 }, 
                 "const": true, 
+                "fattrs": {}, 
                 "fmtc": {
                     "c_rv_decl": "const char * XSHT_rv", 
                     "c_val": "SHT_rv.c_str()", 
@@ -1351,6 +1368,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString3", 
                 "type": "string"
@@ -1373,6 +1391,7 @@
                         "reference": true
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -1386,6 +1405,7 @@
                         "c_var": "output", 
                         "f_var": "output"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "output", 
                     "type": "string"
@@ -1395,7 +1415,6 @@
             "doxygen": {
                 "brief": "return a 'const string&' as argument"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString3();", 
                 "C_call_list": "", 
@@ -1408,7 +1427,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1421,10 +1439,12 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString3", 
                 "type": "void"
@@ -1448,6 +1468,8 @@
                         "reference": true
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "output", 
                     "type": "string"
@@ -1457,7 +1479,6 @@
             "doxygen": {
                 "brief": "return a 'const string&' as argument"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_get_string3_bufferify", 
                 "F_arg_c_call": "output, len(output, kind=C_INT)", 
@@ -1470,7 +1491,6 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -1483,6 +1503,8 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString3", 
                 "type": "void"
@@ -1499,7 +1521,6 @@
             "doxygen": {
                 "brief": "Test returning empty string reference"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2_empty();", 
                 "C_call_list": "", 
@@ -1525,7 +1546,6 @@
                 "function_name": "getString2_empty", 
                 "underscore_name": "get_string2_empty"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {
@@ -1533,6 +1553,7 @@
                     "reference": true
                 }, 
                 "const": true, 
+                "fattrs": {}, 
                 "fmtc": {
                     "c_rv_decl": "const char * XSHT_rv", 
                     "c_val": "SHT_rv.c_str()", 
@@ -1540,6 +1561,7 @@
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString2_empty", 
                 "type": "string"
@@ -1562,6 +1584,7 @@
                         "reference": true
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": "", 
@@ -1575,6 +1598,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "SHF_rv", 
                     "type": "string"
@@ -1584,7 +1608,6 @@
             "doxygen": {
                 "brief": "Test returning empty string reference"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2_empty();", 
                 "C_call_list": "", 
@@ -1597,7 +1620,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1611,10 +1633,12 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "const std::string & SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString2_empty", 
                 "type": "void"
@@ -1631,7 +1655,6 @@
             "doxygen": {
                 "brief": "return a 'const string' as argument"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_get_string5_bufferify", 
                 "F_arg_c_call": "SHT_rv, len(SHT_rv, kind=C_INT)", 
@@ -1648,7 +1671,6 @@
                 "function_name": "getString5", 
                 "underscore_name": "get_string5"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": false
             }, 
@@ -1657,6 +1679,8 @@
                     "len": 30
                 }, 
                 "const": true, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString5", 
                 "type": "string"
@@ -1680,6 +1704,7 @@
                         "reference": false
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -1693,6 +1718,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "SHF_rv", 
                     "type": "string"
@@ -1702,7 +1728,6 @@
             "doxygen": {
                 "brief": "return a 'const string' as argument"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string SHT_rv = getString5();", 
                 "C_call_list": "", 
@@ -1715,7 +1740,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1729,10 +1753,12 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "const std::string SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString5", 
                 "type": "void"
@@ -1748,14 +1774,12 @@
             "doxygen": {
                 "brief": "return a 'const string' as argument"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "F_string_result_as_arg": "output", 
                 "PY_name_impl": "PY_get_string6", 
                 "function_name": "getString6", 
                 "underscore_name": "get_string6"
             }, 
-            "func_const": false, 
             "options": {
                 "F_string_result_as_arg": "output", 
                 "wrap_c": false, 
@@ -1764,6 +1788,8 @@
             "result": {
                 "attrs": {}, 
                 "const": true, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString6", 
                 "type": "string"
@@ -1787,6 +1813,7 @@
                         "reference": false
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -1800,6 +1827,7 @@
                         "c_var": "output", 
                         "f_var": "output"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "output", 
                     "type": "string"
@@ -1809,7 +1837,6 @@
             "doxygen": {
                 "brief": "return a 'const string' as argument"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "const std::string SHT_rv = getString6();", 
                 "C_call_list": "", 
@@ -1822,7 +1849,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1835,10 +1861,12 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "const std::string SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString6", 
                 "type": "void"
@@ -1863,6 +1891,8 @@
                         "reference": false
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "output", 
                     "type": "string"
@@ -1872,7 +1902,6 @@
             "doxygen": {
                 "brief": "return a 'const string' as argument"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "F_C_call": "c_get_string6_bufferify", 
                 "F_arg_c_call": "output, len(output, kind=C_INT)", 
@@ -1885,7 +1914,6 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -1898,6 +1926,8 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "getString6", 
                 "type": "void"
@@ -1941,7 +1971,6 @@
                 "brief": "Accept a const string reference", 
                 "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringConstReference(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -1965,11 +1994,12 @@
                 "function_name": "acceptStringConstReference", 
                 "underscore_name": "accept_string_const_reference"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "acceptStringConstReference", 
                 "type": "void"
@@ -2013,7 +2043,6 @@
                 "brief": "Accept a const string reference", 
                 "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringConstReference(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -2026,7 +2055,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2036,6 +2064,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "acceptStringConstReference", 
                 "type": "void"
@@ -2082,7 +2112,6 @@
                 "brief": "Accept a string reference", 
                 "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringReferenceOut(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -2107,11 +2136,12 @@
                 "function_name": "acceptStringReferenceOut", 
                 "underscore_name": "accept_string_reference_out"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "acceptStringReferenceOut", 
                 "type": "void"
@@ -2156,7 +2186,6 @@
                 "brief": "Accept a string reference", 
                 "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringReferenceOut(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -2170,7 +2199,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2180,6 +2208,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "acceptStringReferenceOut", 
                 "type": "void"
@@ -2226,7 +2256,6 @@
                 "brief": "Accept a string reference", 
                 "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringReference(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -2251,11 +2280,12 @@
                 "function_name": "acceptStringReference", 
                 "underscore_name": "accept_string_reference"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "acceptStringReference", 
                 "type": "void"
@@ -2302,7 +2332,6 @@
                 "brief": "Accept a string reference", 
                 "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "acceptStringReference(SH_arg1);", 
                 "C_call_list": "SH_arg1", 
@@ -2316,7 +2345,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2326,6 +2354,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "acceptStringReference", 
                 "type": "void"
@@ -2366,7 +2396,6 @@
                 }
             ], 
             "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "explicit1(name);", 
                 "C_call_list": "name", 
@@ -2389,13 +2418,14 @@
                 "function_name": "explicit1", 
                 "underscore_name": "explicit1"
             }, 
-            "func_const": false, 
             "options": {
                 "C_bufferify_suffix": "_BUFFER"
             }, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "explicit1", 
                 "type": "void"
@@ -2436,7 +2466,6 @@
                 }
             ], 
             "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "explicit1(SH_name);", 
                 "C_call_list": "SH_name", 
@@ -2450,7 +2479,6 @@
                 "c_const": "", 
                 "function_suffix": "_BUFFER"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2460,6 +2488,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "explicit1", 
                 "type": "void"
@@ -2502,7 +2532,6 @@
                 }
             ], 
             "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "explicit2(name);", 
                 "C_call_list": "name", 
@@ -2525,11 +2554,12 @@
                 "function_name": "explicit2", 
                 "underscore_name": "explicit2"
             }, 
-            "func_const": false, 
             "options": {}, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "explicit2", 
                 "type": "void"
@@ -2570,7 +2600,6 @@
                 }
             ], 
             "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "explicit2(SH_name);", 
                 "C_call_list": "SH_name", 
@@ -2584,7 +2613,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2594,6 +2622,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "explicit2", 
                 "type": "void"
@@ -2638,7 +2668,6 @@
             "doxygen": {
                 "brief": "pass a single char argument as a scalar, extern \"C\""
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "CpassChar(status);", 
                 "C_call_list": "status", 
@@ -2661,13 +2690,14 @@
                 "function_name": "CpassChar", 
                 "underscore_name": "cpass_char"
             }, 
-            "func_const": false, 
             "options": {
                 "C_extern_C": true
             }, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "CpassChar", 
                 "type": "void"
@@ -2683,7 +2713,6 @@
             "doxygen": {
                 "brief": "return a char argument (non-pointer), extern \"C\""
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char SHT_rv = CreturnChar();", 
                 "C_call_list": "", 
@@ -2707,17 +2736,18 @@
                 "function_name": "CreturnChar", 
                 "underscore_name": "creturn_char"
             }, 
-            "func_const": false, 
             "options": {
                 "C_extern_C": true
             }, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "char SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "CreturnChar", 
                 "type": "char_scalar"
@@ -2740,6 +2770,7 @@
                         "reference": false
                     }, 
                     "const": false, 
+                    "fattrs": {}, 
                     "fmtc": {
                         "c_const": "", 
                         "c_ptr": " *", 
@@ -2753,6 +2784,7 @@
                         "c_var": "SHT_rv", 
                         "f_var": "SHT_rv"
                     }, 
+                    "func_const": false, 
                     "init": null, 
                     "name": "SHF_rv", 
                     "type": "char_scalar"
@@ -2762,7 +2794,6 @@
             "doxygen": {
                 "brief": "return a char argument (non-pointer), extern \"C\""
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "char SHT_rv = CreturnChar();", 
                 "C_call_list": "", 
@@ -2775,7 +2806,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2788,10 +2818,12 @@
                     "reference": false
                 }, 
                 "const": false, 
+                "fattrs": {}, 
                 "fmtc": {
                     "cpp_rv_decl": "char SHT_rv", 
                     "cpp_var": "SHT_rv"
                 }, 
+                "func_const": false, 
                 "init": null, 
                 "name": "CreturnChar", 
                 "type": "void"
@@ -2863,7 +2895,6 @@
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "CpassCharPtr(dest, src);", 
                 "C_call_list": "dest, src", 
@@ -2886,13 +2917,14 @@
                 "function_name": "CpassCharPtr", 
                 "underscore_name": "cpass_char_ptr"
             }, 
-            "func_const": false, 
             "options": {
                 "C_extern_C": true
             }, 
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "CpassCharPtr", 
                 "type": "void"
@@ -2962,7 +2994,6 @@
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
             }, 
-            "fattrs": {}, 
             "fmt": {
                 "C_call_code": "CpassCharPtr(SH_dest, SH_src);", 
                 "C_call_list": "SH_dest, SH_src", 
@@ -2976,7 +3007,6 @@
                 "c_const": "", 
                 "function_suffix": "_bufferify"
             }, 
-            "func_const": false, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2986,6 +3016,8 @@
             "result": {
                 "attrs": {}, 
                 "const": false, 
+                "fattrs": {}, 
+                "func_const": false, 
                 "init": null, 
                 "name": "CpassCharPtr", 
                 "type": "void"
