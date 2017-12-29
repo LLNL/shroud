@@ -29,6 +29,13 @@
             "methods": [
                 {
                     "_decl": "Class1 * new() +constructor", 
+                    "_fmtargs": {}, 
+                    "_fmtresult": {
+                        "fmtc": {
+                            "cpp_rv_decl": "Class1 * SHT_rv", 
+                            "cpp_var": "SHT_rv"
+                        }
+                    }, 
                     "_function_index": 0, 
                     "_subprogram": "function", 
                     "decl": "Class1 *new()  +constructor", 
@@ -66,10 +73,6 @@
                         "fattrs": {
                             "constructor": true
                         }, 
-                        "fmtc": {
-                            "cpp_rv_decl": "Class1 * SHT_rv", 
-                            "cpp_var": "SHT_rv"
-                        }, 
                         "func_const": false, 
                         "init": null, 
                         "name": "new", 
@@ -78,6 +81,7 @@
                 }, 
                 {
                     "_decl": "void delete() +destructor", 
+                    "_fmtargs": {}, 
                     "_function_index": 1, 
                     "_subprogram": "subroutine", 
                     "decl": "void delete()  +destructor", 
@@ -124,6 +128,7 @@
                 }, 
                 {
                     "_decl": "void Method1()", 
+                    "_fmtargs": {}, 
                     "_function_index": 2, 
                     "_subprogram": "subroutine", 
                     "decl": "void Method1()", 
@@ -280,6 +285,7 @@
     "functions": [
         {
             "_decl": "void Function1()", 
+            "_fmtargs": {}, 
             "_function_index": 3, 
             "_subprogram": "subroutine", 
             "decl": "void Function1()", 
@@ -321,6 +327,74 @@
         }, 
         {
             "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
+            "_fmtargs": {
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tonumber(L, 1)", 
+                        "c_var_len": "Larg1", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg1", 
+                        "lua_var": "SH_Lua_arg1", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg1", 
+                        "py_var": "SH_Py_arg1"
+                    }
+                }, 
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "int", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg2", 
+                        "f_var": "arg2"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 2, 
+                        "c_var": "lua_tointeger(L, 2)", 
+                        "c_var_len": "Larg2", 
+                        "cpp_type": "int", 
+                        "cpp_var": "arg2", 
+                        "lua_var": "SH_Lua_arg2", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "int", 
+                        "cpp_var": "arg2", 
+                        "py_var": "SH_Py_arg2"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "double SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 4, 
             "_subprogram": "function", 
             "decl": "double Function2(double arg1, int arg2)", 
@@ -358,34 +432,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg1", 
-                            "f_var": "arg1"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tonumber(L, 1)", 
-                            "c_var_len": "Larg1", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg1", 
-                            "lua_var": "SH_Lua_arg1", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg1", 
-                            "py_var": "SH_Py_arg1"
-                        }, 
                         "init": null, 
                         "name": "arg1", 
                         "type": "double"
@@ -396,34 +442,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cpp_type": "int", 
-                            "cpp_var": "arg2"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg2", 
-                            "f_var": "arg2"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 2, 
-                            "c_var": "lua_tointeger(L, 2)", 
-                            "c_var_len": "Larg2", 
-                            "cpp_type": "int", 
-                            "cpp_var": "arg2", 
-                            "lua_var": "SH_Lua_arg2", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cpp_type": "int", 
-                            "cpp_var": "arg2", 
-                            "py_var": "SH_Py_arg2"
-                        }, 
                         "init": null, 
                         "name": "arg2", 
                         "type": "int"
@@ -432,10 +450,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "double SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "Function2", 
@@ -444,6 +458,47 @@
         }, 
         {
             "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
+            "_fmtargs": {
+                "len": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "len", 
+                        "cpp_type": "int", 
+                        "cpp_var": "len"
+                    }, 
+                    "fmtf": {
+                        "c_var": "len", 
+                        "f_var": "len"
+                    }
+                }, 
+                "result": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "result", 
+                        "cpp_type": "int", 
+                        "cpp_var": "result"
+                    }, 
+                    "fmtf": {
+                        "c_var": "result", 
+                        "f_var": "result"
+                    }
+                }, 
+                "values": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "values", 
+                        "cpp_type": "int", 
+                        "cpp_var": "values"
+                    }, 
+                    "fmtf": {
+                        "c_var": "values", 
+                        "f_var": "values"
+                    }
+                }
+            }, 
             "_function_index": 5, 
             "_subprogram": "subroutine", 
             "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
@@ -480,17 +535,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "len", 
-                            "cpp_type": "int", 
-                            "cpp_var": "len"
-                        }, 
-                        "fmtf": {
-                            "c_var": "len", 
-                            "f_var": "len"
-                        }, 
                         "init": null, 
                         "name": "len", 
                         "type": "int"
@@ -503,17 +547,6 @@
                             "value": false
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "values", 
-                            "cpp_type": "int", 
-                            "cpp_var": "values"
-                        }, 
-                        "fmtf": {
-                            "c_var": "values", 
-                            "f_var": "values"
-                        }, 
                         "init": null, 
                         "name": "values", 
                         "type": "int"
@@ -525,17 +558,6 @@
                             "value": false
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "result", 
-                            "cpp_type": "int", 
-                            "cpp_var": "result"
-                        }, 
-                        "fmtf": {
-                            "c_var": "result", 
-                            "f_var": "result"
-                        }, 
                         "init": null, 
                         "name": "result", 
                         "type": "int"
@@ -552,6 +574,44 @@
         }, 
         {
             "_decl": "bool Function3(bool arg +intent(in)+value)", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg", 
+                        "f_var": "arg"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_toboolean(L, 1)", 
+                        "c_var_len": "Larg", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg", 
+                        "lua_var": "SH_Lua_arg", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg", 
+                        "py_var": "SH_Py_arg"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "bool SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 6, 
             "_subprogram": "function", 
             "decl": "bool Function3(bool arg)", 
@@ -589,34 +649,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cpp_type": "bool", 
-                            "cpp_var": "arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "SH_arg", 
-                            "f_var": "arg"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_toboolean(L, 1)", 
-                            "c_var_len": "Larg", 
-                            "cpp_type": "bool", 
-                            "cpp_var": "arg", 
-                            "lua_var": "SH_Lua_arg", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cpp_type": "bool", 
-                            "cpp_var": "arg", 
-                            "py_var": "SH_Py_arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "bool"
@@ -625,10 +657,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "bool SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "Function3", 
@@ -637,6 +665,47 @@
         }, 
         {
             "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
+            "_fmtargs": {
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg1", 
+                        "f_var": "arg1"
+                    }
+                }, 
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "arg2", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg2", 
+                        "f_var": "arg2"
+                    }
+                }, 
+                "arg3": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "arg3", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg3"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg3", 
+                        "f_var": "arg3"
+                    }
+                }
+            }, 
             "_function_index": 7, 
             "_subprogram": "subroutine", 
             "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
@@ -673,17 +742,6 @@
                             "value": true
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cpp_type": "bool", 
-                            "cpp_var": "arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "SH_arg1", 
-                            "f_var": "arg1"
-                        }, 
                         "init": null, 
                         "name": "arg1", 
                         "type": "bool"
@@ -695,17 +753,6 @@
                             "value": false
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "arg2", 
-                            "cpp_type": "bool", 
-                            "cpp_var": "arg2"
-                        }, 
-                        "fmtf": {
-                            "c_var": "SH_arg2", 
-                            "f_var": "arg2"
-                        }, 
                         "init": null, 
                         "name": "arg2", 
                         "type": "bool"
@@ -717,17 +764,6 @@
                             "value": false
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "arg3", 
-                            "cpp_type": "bool", 
-                            "cpp_var": "arg3"
-                        }, 
-                        "fmtf": {
-                            "c_var": "SH_arg3", 
-                            "f_var": "arg3"
-                        }, 
                         "init": null, 
                         "name": "arg3", 
                         "type": "bool"
@@ -745,6 +781,46 @@
         {
             "_PTR_F_C_index": 40, 
             "_decl": "const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
+            "_fmtargs": {
+                "arg1": {
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tostring(L, 1)", 
+                        "c_var_len": "Larg1", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "arg1", 
+                        "lua_var": "SH_Lua_arg1", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg1", 
+                        "py_var": "SH_Py_arg1"
+                    }
+                }, 
+                "arg2": {
+                    "fmtl": {
+                        "LUA_index": 2, 
+                        "c_var": "lua_tostring(L, 2)", 
+                        "c_var_len": "Larg2", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "arg2", 
+                        "lua_var": "SH_Lua_arg2", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg2", 
+                        "py_var": "SH_Py_arg2"
+                    }
+                }
+            }, 
             "_function_index": 8, 
             "_subprogram": "function", 
             "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
@@ -778,23 +854,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tostring(L, 1)", 
-                            "c_var_len": "Larg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "arg1", 
-                            "lua_var": "SH_Lua_arg1", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg1", 
-                            "py_var": "SH_Py_arg1"
-                        }, 
                         "init": null, 
                         "name": "arg1", 
                         "type": "std::string"
@@ -806,23 +865,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtl": {
-                            "LUA_index": 2, 
-                            "c_var": "lua_tostring(L, 2)", 
-                            "c_var_len": "Larg2", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "arg2", 
-                            "lua_var": "SH_Lua_arg2", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg2", 
-                            "py_var": "SH_Py_arg2"
-                        }, 
                         "init": null, 
                         "name": "arg2", 
                         "type": "std::string"
@@ -843,6 +885,57 @@
             "_PTR_C_CPP_index": 8, 
             "_decl": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmtargs": {
+                "SHF_rv": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "SHF_rv", 
+                        "c_var_len": "NSHF_rv", 
+                        "cpp_type": "std::string", 
+                        "cpp_val": "SHT_rv.c_str()", 
+                        "cpp_var": "SHT_rv"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SHT_rv", 
+                        "f_var": "SHT_rv"
+                    }
+                }, 
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "c_var_trim": "Larg1", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }
+                }, 
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "c_var_trim": "Larg2", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg2", 
+                        "f_var": "arg2"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "const std::string SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 40, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
@@ -876,18 +969,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "c_var_trim": "Larg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg1", 
-                            "f_var": "arg1"
-                        }, 
                         "init": null, 
                         "name": "arg1", 
                         "type": "std::string"
@@ -900,18 +981,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "c_var_trim": "Larg2", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg2"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg2", 
-                            "f_var": "arg2"
-                        }, 
                         "init": null, 
                         "name": "arg2", 
                         "type": "std::string"
@@ -950,19 +1019,6 @@
                         }, 
                         "const": false, 
                         "fattrs": {}, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SHT_rv.c_str()", 
-                            "cpp_var": "SHT_rv"
-                        }, 
-                        "fmtf": {
-                            "c_var": "SHT_rv", 
-                            "f_var": "SHT_rv"
-                        }, 
                         "func_const": false, 
                         "init": null, 
                         "name": "SHF_rv", 
@@ -976,10 +1032,6 @@
                 }, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "const std::string SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "Function4a", 
@@ -988,6 +1040,69 @@
         }, 
         {
             "_decl": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
+            "_fmtargs": {
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg1"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tostring(L, 1)", 
+                        "c_var_len": "Larg1", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "arg1", 
+                        "lua_var": "SH_Lua_arg1", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg1", 
+                        "py_var": "SH_Py_arg1"
+                    }
+                }, 
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg2"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 2, 
+                        "c_var": "lua_tostring(L, 2)", 
+                        "c_var_len": "Larg2", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "arg2", 
+                        "lua_var": "SH_Lua_arg2", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg2", 
+                        "py_var": "SH_Py_arg2"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "c_rv_decl": "const char * XSHT_rv", 
+                    "c_val": "SHT_rv.c_str()", 
+                    "c_var": "XSHT_rv", 
+                    "cpp_rv_decl": "const std::string & SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 9, 
             "_subprogram": "function", 
             "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
@@ -1021,30 +1136,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg1"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tostring(L, 1)", 
-                            "c_var_len": "Larg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "arg1", 
-                            "lua_var": "SH_Lua_arg1", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg1", 
-                            "py_var": "SH_Py_arg1"
-                        }, 
                         "init": null, 
                         "name": "arg1", 
                         "type": "std::string"
@@ -1056,30 +1147,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg2"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 2, 
-                            "c_var": "lua_tostring(L, 2)", 
-                            "c_var_len": "Larg2", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "arg2", 
-                            "lua_var": "SH_Lua_arg2", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg2", 
-                            "py_var": "SH_Py_arg2"
-                        }, 
                         "init": null, 
                         "name": "arg2", 
                         "type": "std::string"
@@ -1090,13 +1157,6 @@
                 }, 
                 "const": true, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "c_rv_decl": "const char * XSHT_rv", 
-                    "c_val": "SHT_rv.c_str()", 
-                    "c_var": "XSHT_rv", 
-                    "cpp_rv_decl": "const std::string & SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "Function4b", 
@@ -1107,6 +1167,57 @@
             "_PTR_C_CPP_index": 9, 
             "_decl": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmtargs": {
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "c_var_trim": "Larg1", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }
+                }, 
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "c_var_trim": "Larg2", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg2", 
+                        "f_var": "arg2"
+                    }
+                }, 
+                "output": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "output", 
+                        "c_var_len": "Noutput", 
+                        "cpp_type": "std::string", 
+                        "cpp_val": "SHT_rv.c_str()", 
+                        "cpp_var": "SHT_rv"
+                    }, 
+                    "fmtf": {
+                        "c_var": "output", 
+                        "f_var": "output"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "const std::string & SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 41, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
@@ -1140,18 +1251,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "c_var_trim": "Larg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg1", 
-                            "f_var": "arg1"
-                        }, 
                         "init": null, 
                         "name": "arg1", 
                         "type": "std::string"
@@ -1164,18 +1263,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "c_var_trim": "Larg2", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg2"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg2", 
-                            "f_var": "arg2"
-                        }, 
                         "init": null, 
                         "name": "arg2", 
                         "type": "std::string"
@@ -1213,19 +1300,6 @@
                         }, 
                         "const": false, 
                         "fattrs": {}, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "output", 
-                            "c_var_len": "Noutput", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SHT_rv.c_str()", 
-                            "cpp_var": "SHT_rv"
-                        }, 
-                        "fmtf": {
-                            "c_var": "output", 
-                            "f_var": "output"
-                        }, 
                         "func_const": false, 
                         "init": null, 
                         "name": "output", 
@@ -1238,10 +1312,6 @@
                 }, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "const std::string & SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "Function4b", 
@@ -1354,6 +1424,13 @@
         }, 
         {
             "_decl": "double Function5()", 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "double SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 30, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
@@ -1396,10 +1473,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "double SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "Function5", 
@@ -1408,6 +1481,27 @@
         }, 
         {
             "_decl": "double Function5(double arg1=3.1415 +intent(in)+value)", 
+            "_fmtargs": {
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "double SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 31, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
@@ -1453,17 +1547,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg1", 
-                            "f_var": "arg1"
-                        }, 
                         "init": 3.1415, 
                         "name": "arg1", 
                         "type": "double"
@@ -1472,10 +1555,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "double SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "Function5", 
@@ -1488,6 +1567,74 @@
                 30, 
                 31
             ], 
+            "_fmtargs": {
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tonumber(L, 1)", 
+                        "c_var_len": "Larg1", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg1", 
+                        "lua_var": "SH_Lua_arg1", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg1", 
+                        "py_var": "SH_Py_arg1"
+                    }
+                }, 
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg2", 
+                        "f_var": "arg2"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 2, 
+                        "c_var": "lua_toboolean(L, 2)", 
+                        "c_var_len": "Larg2", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg2", 
+                        "lua_var": "SH_Lua_arg2", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg2", 
+                        "py_var": "SH_Py_arg2"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "double SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 10, 
             "_has_default_arg": true, 
             "_nargs": [
@@ -1537,34 +1684,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg1", 
-                            "f_var": "arg1"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tonumber(L, 1)", 
-                            "c_var_len": "Larg1", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg1", 
-                            "lua_var": "SH_Lua_arg1", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg1", 
-                            "py_var": "SH_Py_arg1"
-                        }, 
                         "init": 3.1415, 
                         "name": "arg1", 
                         "type": "double"
@@ -1575,34 +1694,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cpp_type": "bool", 
-                            "cpp_var": "arg2"
-                        }, 
-                        "fmtf": {
-                            "c_var": "SH_arg2", 
-                            "f_var": "arg2"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 2, 
-                            "c_var": "lua_toboolean(L, 2)", 
-                            "c_var_len": "Larg2", 
-                            "cpp_type": "bool", 
-                            "cpp_var": "arg2", 
-                            "lua_var": "SH_Lua_arg2", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cpp_type": "bool", 
-                            "cpp_var": "arg2", 
-                            "py_var": "SH_Py_arg2"
-                        }, 
                         "init": "true", 
                         "name": "arg2", 
                         "type": "bool"
@@ -1611,10 +1702,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "double SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "Function5", 
@@ -1628,6 +1715,34 @@
                 12
             ], 
             "_decl": "void Function6(const std::string & name +intent(in))", 
+            "_fmtargs": {
+                "name": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "name", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_name"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tostring(L, 1)", 
+                        "c_var_len": "Lname", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "name", 
+                        "lua_var": "SH_Lua_name", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "name", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_name", 
+                        "py_var": "SH_Py_name"
+                    }
+                }
+            }, 
             "_function_index": 11, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -1669,30 +1784,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "name", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_name"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tostring(L, 1)", 
-                            "c_var_len": "Lname", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "name", 
-                            "lua_var": "SH_Lua_name", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "name", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_name", 
-                            "py_var": "SH_Py_name"
-                        }, 
                         "init": null, 
                         "name": "name", 
                         "type": "std::string"
@@ -1715,6 +1806,22 @@
             ], 
             "_decl": "void Function6(const std::string & name +intent(in)+len_trim(Lname))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmtargs": {
+                "name": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "name", 
+                        "c_var_trim": "Lname", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_name"
+                    }, 
+                    "fmtf": {
+                        "c_var": "name", 
+                        "f_var": "name"
+                    }
+                }
+            }, 
             "_function_index": 43, 
             "_generated": "arg_to_buffer", 
             "_overloaded": true, 
@@ -1749,18 +1856,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "name", 
-                            "c_var_trim": "Lname", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_name"
-                        }, 
-                        "fmtf": {
-                            "c_var": "name", 
-                            "f_var": "name"
-                        }, 
                         "init": null, 
                         "name": "name", 
                         "type": "std::string"
@@ -1781,6 +1876,38 @@
                 12
             ], 
             "_decl": "void Function6(int indx +intent(in)+value)", 
+            "_fmtargs": {
+                "indx": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "indx", 
+                        "cpp_type": "int", 
+                        "cpp_var": "indx"
+                    }, 
+                    "fmtf": {
+                        "c_var": "indx", 
+                        "f_var": "indx"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tointeger(L, 1)", 
+                        "c_var_len": "Lindx", 
+                        "cpp_type": "int", 
+                        "cpp_var": "indx", 
+                        "lua_var": "SH_Lua_indx", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "indx", 
+                        "cpp_type": "int", 
+                        "cpp_var": "indx", 
+                        "py_var": "SH_Py_indx"
+                    }
+                }
+            }, 
             "_function_index": 12, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -1818,34 +1945,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "indx", 
-                            "cpp_type": "int", 
-                            "cpp_var": "indx"
-                        }, 
-                        "fmtf": {
-                            "c_var": "indx", 
-                            "f_var": "indx"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tointeger(L, 1)", 
-                            "c_var_len": "Lindx", 
-                            "cpp_type": "int", 
-                            "cpp_var": "indx", 
-                            "lua_var": "SH_Lua_indx", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "indx", 
-                            "cpp_type": "int", 
-                            "cpp_var": "indx", 
-                            "py_var": "SH_Py_indx"
-                        }, 
                         "init": null, 
                         "name": "indx", 
                         "type": "int"
@@ -1906,6 +2005,21 @@
         }, 
         {
             "_decl": "void Function7(int arg +intent(in)+value)", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "int", 
+                        "cpp_var": "arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }
+                }
+            }, 
             "_function_index": 32, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
@@ -1946,17 +2060,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cpp_type": "int", 
-                            "cpp_var": "arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "int"
@@ -1973,6 +2076,21 @@
         }, 
         {
             "_decl": "void Function7(double arg +intent(in)+value)", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }
+                }
+            }, 
             "_function_index": 33, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
@@ -2013,17 +2131,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "double"
@@ -2074,6 +2181,13 @@
         {
             "_CPP_return_templated": true, 
             "_decl": "int Function8()", 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 34, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
@@ -2112,10 +2226,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "Function8", 
@@ -2125,6 +2235,13 @@
         {
             "_CPP_return_templated": true, 
             "_decl": "double Function8()", 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "double SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 35, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
@@ -2163,10 +2280,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "double SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "Function8", 
@@ -2175,6 +2288,38 @@
         }, 
         {
             "_decl": "void Function9(double arg +intent(in)+value)", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tonumber(L, 1)", 
+                        "c_var_len": "Larg", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg", 
+                        "lua_var": "SH_Lua_arg", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg", 
+                        "py_var": "SH_Py_arg"
+                    }
+                }
+            }, 
             "_function_index": 15, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2211,34 +2356,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tonumber(L, 1)", 
-                            "c_var_len": "Larg", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg", 
-                            "lua_var": "SH_Lua_arg", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg", 
-                            "py_var": "SH_Py_arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "double"
@@ -2355,6 +2472,7 @@
                 17
             ], 
             "_decl": "void Function10()", 
+            "_fmtargs": {}, 
             "_function_index": 16, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2403,6 +2521,60 @@
                 17
             ], 
             "_decl": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
+            "_fmtargs": {
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 2, 
+                        "c_var": "lua_tonumber(L, 2)", 
+                        "c_var_len": "Larg2", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg2", 
+                        "lua_var": "SH_Lua_arg2", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg2", 
+                        "py_var": "SH_Py_arg2"
+                    }
+                }, 
+                "name": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "name", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_name"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tostring(L, 1)", 
+                        "c_var_len": "Lname", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "name", 
+                        "lua_var": "SH_Lua_name", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "name", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_name", 
+                        "py_var": "SH_Py_name"
+                    }
+                }
+            }, 
             "_function_index": 17, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2441,30 +2613,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "name", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_name"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tostring(L, 1)", 
-                            "c_var_len": "Lname", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "name", 
-                            "lua_var": "SH_Lua_name", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "name", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_name", 
-                            "py_var": "SH_Py_name"
-                        }, 
                         "init": null, 
                         "name": "name", 
                         "type": "std::string"
@@ -2475,30 +2623,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg2"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 2, 
-                            "c_var": "lua_tonumber(L, 2)", 
-                            "c_var_len": "Larg2", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg2", 
-                            "lua_var": "SH_Lua_arg2", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg2", 
-                            "py_var": "SH_Py_arg2"
-                        }, 
                         "init": null, 
                         "name": "arg2", 
                         "type": "double"
@@ -2647,6 +2771,35 @@
             ], 
             "_decl": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmtargs": {
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg2", 
+                        "f_var": "arg2"
+                    }
+                }, 
+                "name": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "name", 
+                        "c_var_trim": "Lname", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_name"
+                    }, 
+                    "fmtf": {
+                        "c_var": "name", 
+                        "f_var": "name"
+                    }
+                }
+            }, 
             "_function_index": 44, 
             "_generated": "arg_to_buffer", 
             "_overloaded": true, 
@@ -2686,18 +2839,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "name", 
-                            "c_var_trim": "Lname", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_name"
-                        }, 
-                        "fmtf": {
-                            "c_var": "name", 
-                            "f_var": "name"
-                        }, 
                         "init": null, 
                         "name": "name", 
                         "type": "std::string"
@@ -2708,17 +2849,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg2"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg2", 
-                            "f_var": "arg2"
-                        }, 
                         "init": null, 
                         "name": "arg2", 
                         "type": "double"
@@ -2739,6 +2869,27 @@
                 19
             ], 
             "_decl": "int overload1(int num +intent(in)+value)", 
+            "_fmtargs": {
+                "num": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "num", 
+                        "cpp_type": "int", 
+                        "cpp_var": "num"
+                    }, 
+                    "fmtf": {
+                        "c_var": "num", 
+                        "f_var": "num"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 36, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
@@ -2784,17 +2935,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "num", 
-                            "cpp_type": "int", 
-                            "cpp_var": "num"
-                        }, 
-                        "fmtf": {
-                            "c_var": "num", 
-                            "f_var": "num"
-                        }, 
                         "init": null, 
                         "name": "num", 
                         "type": "int"
@@ -2803,10 +2943,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "overload1", 
@@ -2819,6 +2955,40 @@
                 19
             ], 
             "_decl": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)", 
+            "_fmtargs": {
+                "num": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "num", 
+                        "cpp_type": "int", 
+                        "cpp_var": "num"
+                    }, 
+                    "fmtf": {
+                        "c_var": "num", 
+                        "f_var": "num"
+                    }
+                }, 
+                "offset": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "offset", 
+                        "cpp_type": "int", 
+                        "cpp_var": "offset"
+                    }, 
+                    "fmtf": {
+                        "c_var": "offset", 
+                        "f_var": "offset"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 37, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
@@ -2864,17 +3034,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "num", 
-                            "cpp_type": "int", 
-                            "cpp_var": "num"
-                        }, 
-                        "fmtf": {
-                            "c_var": "num", 
-                            "f_var": "num"
-                        }, 
                         "init": null, 
                         "name": "num", 
                         "type": "int"
@@ -2885,17 +3044,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "offset", 
-                            "cpp_type": "int", 
-                            "cpp_var": "offset"
-                        }, 
-                        "fmtf": {
-                            "c_var": "offset", 
-                            "f_var": "offset"
-                        }, 
                         "init": 0, 
                         "name": "offset", 
                         "type": "int"
@@ -2904,10 +3052,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "overload1", 
@@ -2924,6 +3068,104 @@
                 36, 
                 37
             ], 
+            "_fmtargs": {
+                "num": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "num", 
+                        "cpp_type": "int", 
+                        "cpp_var": "num"
+                    }, 
+                    "fmtf": {
+                        "c_var": "num", 
+                        "f_var": "num"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tointeger(L, 1)", 
+                        "c_var_len": "Lnum", 
+                        "cpp_type": "int", 
+                        "cpp_var": "num", 
+                        "lua_var": "SH_Lua_num", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "num", 
+                        "cpp_type": "int", 
+                        "cpp_var": "num", 
+                        "py_var": "SH_Py_num"
+                    }
+                }, 
+                "offset": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "offset", 
+                        "cpp_type": "int", 
+                        "cpp_var": "offset"
+                    }, 
+                    "fmtf": {
+                        "c_var": "offset", 
+                        "f_var": "offset"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 2, 
+                        "c_var": "lua_tointeger(L, 2)", 
+                        "c_var_len": "Loffset", 
+                        "cpp_type": "int", 
+                        "cpp_var": "offset", 
+                        "lua_var": "SH_Lua_offset", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "offset", 
+                        "cpp_type": "int", 
+                        "cpp_var": "offset", 
+                        "py_var": "SH_Py_offset"
+                    }
+                }, 
+                "stride": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "stride", 
+                        "cpp_type": "int", 
+                        "cpp_var": "stride"
+                    }, 
+                    "fmtf": {
+                        "c_var": "stride", 
+                        "f_var": "stride"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 3, 
+                        "c_var": "lua_tointeger(L, 3)", 
+                        "c_var_len": "Lstride", 
+                        "cpp_type": "int", 
+                        "cpp_var": "stride", 
+                        "lua_var": "SH_Lua_stride", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "stride", 
+                        "cpp_type": "int", 
+                        "cpp_var": "stride", 
+                        "py_var": "SH_Py_stride"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 18, 
             "_has_default_arg": true, 
             "_nargs": [
@@ -2973,34 +3215,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "num", 
-                            "cpp_type": "int", 
-                            "cpp_var": "num"
-                        }, 
-                        "fmtf": {
-                            "c_var": "num", 
-                            "f_var": "num"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tointeger(L, 1)", 
-                            "c_var_len": "Lnum", 
-                            "cpp_type": "int", 
-                            "cpp_var": "num", 
-                            "lua_var": "SH_Lua_num", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "num", 
-                            "cpp_type": "int", 
-                            "cpp_var": "num", 
-                            "py_var": "SH_Py_num"
-                        }, 
                         "init": null, 
                         "name": "num", 
                         "type": "int"
@@ -3011,34 +3225,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "offset", 
-                            "cpp_type": "int", 
-                            "cpp_var": "offset"
-                        }, 
-                        "fmtf": {
-                            "c_var": "offset", 
-                            "f_var": "offset"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 2, 
-                            "c_var": "lua_tointeger(L, 2)", 
-                            "c_var_len": "Loffset", 
-                            "cpp_type": "int", 
-                            "cpp_var": "offset", 
-                            "lua_var": "SH_Lua_offset", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "offset", 
-                            "cpp_type": "int", 
-                            "cpp_var": "offset", 
-                            "py_var": "SH_Py_offset"
-                        }, 
                         "init": 0, 
                         "name": "offset", 
                         "type": "int"
@@ -3049,34 +3235,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "stride", 
-                            "cpp_type": "int", 
-                            "cpp_var": "stride"
-                        }, 
-                        "fmtf": {
-                            "c_var": "stride", 
-                            "f_var": "stride"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 3, 
-                            "c_var": "lua_tointeger(L, 3)", 
-                            "c_var_len": "Lstride", 
-                            "cpp_type": "int", 
-                            "cpp_var": "stride", 
-                            "lua_var": "SH_Lua_stride", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "stride", 
-                            "cpp_type": "int", 
-                            "cpp_var": "stride", 
-                            "py_var": "SH_Py_stride"
-                        }, 
                         "init": 1, 
                         "name": "stride", 
                         "type": "int"
@@ -3085,10 +3243,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "overload1", 
@@ -3101,6 +3255,40 @@
                 19
             ], 
             "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
+            "_fmtargs": {
+                "num": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "num", 
+                        "cpp_type": "int", 
+                        "cpp_var": "num"
+                    }, 
+                    "fmtf": {
+                        "c_var": "num", 
+                        "f_var": "num"
+                    }
+                }, 
+                "type": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "type", 
+                        "cpp_type": "double", 
+                        "cpp_var": "type"
+                    }, 
+                    "fmtf": {
+                        "c_var": "type", 
+                        "f_var": "type"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 38, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
@@ -3141,17 +3329,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "type", 
-                            "cpp_type": "double", 
-                            "cpp_var": "type"
-                        }, 
-                        "fmtf": {
-                            "c_var": "type", 
-                            "f_var": "type"
-                        }, 
                         "init": null, 
                         "name": "type", 
                         "type": "double"
@@ -3162,17 +3339,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "num", 
-                            "cpp_type": "int", 
-                            "cpp_var": "num"
-                        }, 
-                        "fmtf": {
-                            "c_var": "num", 
-                            "f_var": "num"
-                        }, 
                         "init": null, 
                         "name": "num", 
                         "type": "int"
@@ -3181,10 +3347,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "overload1", 
@@ -3197,6 +3359,53 @@
                 19
             ], 
             "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
+            "_fmtargs": {
+                "num": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "num", 
+                        "cpp_type": "int", 
+                        "cpp_var": "num"
+                    }, 
+                    "fmtf": {
+                        "c_var": "num", 
+                        "f_var": "num"
+                    }
+                }, 
+                "offset": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "offset", 
+                        "cpp_type": "int", 
+                        "cpp_var": "offset"
+                    }, 
+                    "fmtf": {
+                        "c_var": "offset", 
+                        "f_var": "offset"
+                    }
+                }, 
+                "type": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "type", 
+                        "cpp_type": "double", 
+                        "cpp_var": "type"
+                    }, 
+                    "fmtf": {
+                        "c_var": "type", 
+                        "f_var": "type"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 39, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
@@ -3237,17 +3446,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "type", 
-                            "cpp_type": "double", 
-                            "cpp_var": "type"
-                        }, 
-                        "fmtf": {
-                            "c_var": "type", 
-                            "f_var": "type"
-                        }, 
                         "init": null, 
                         "name": "type", 
                         "type": "double"
@@ -3258,17 +3456,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "num", 
-                            "cpp_type": "int", 
-                            "cpp_var": "num"
-                        }, 
-                        "fmtf": {
-                            "c_var": "num", 
-                            "f_var": "num"
-                        }, 
                         "init": null, 
                         "name": "num", 
                         "type": "int"
@@ -3279,17 +3466,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "offset", 
-                            "cpp_type": "int", 
-                            "cpp_var": "offset"
-                        }, 
-                        "fmtf": {
-                            "c_var": "offset", 
-                            "f_var": "offset"
-                        }, 
                         "init": 0, 
                         "name": "offset", 
                         "type": "int"
@@ -3298,10 +3474,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "overload1", 
@@ -3318,6 +3490,134 @@
                 38, 
                 39
             ], 
+            "_fmtargs": {
+                "num": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "num", 
+                        "cpp_type": "int", 
+                        "cpp_var": "num"
+                    }, 
+                    "fmtf": {
+                        "c_var": "num", 
+                        "f_var": "num"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 2, 
+                        "c_var": "lua_tointeger(L, 2)", 
+                        "c_var_len": "Lnum", 
+                        "cpp_type": "int", 
+                        "cpp_var": "num", 
+                        "lua_var": "SH_Lua_num", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "num", 
+                        "cpp_type": "int", 
+                        "cpp_var": "num", 
+                        "py_var": "SH_Py_num"
+                    }
+                }, 
+                "offset": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "offset", 
+                        "cpp_type": "int", 
+                        "cpp_var": "offset"
+                    }, 
+                    "fmtf": {
+                        "c_var": "offset", 
+                        "f_var": "offset"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 3, 
+                        "c_var": "lua_tointeger(L, 3)", 
+                        "c_var_len": "Loffset", 
+                        "cpp_type": "int", 
+                        "cpp_var": "offset", 
+                        "lua_var": "SH_Lua_offset", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "offset", 
+                        "cpp_type": "int", 
+                        "cpp_var": "offset", 
+                        "py_var": "SH_Py_offset"
+                    }
+                }, 
+                "stride": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "stride", 
+                        "cpp_type": "int", 
+                        "cpp_var": "stride"
+                    }, 
+                    "fmtf": {
+                        "c_var": "stride", 
+                        "f_var": "stride"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 4, 
+                        "c_var": "lua_tointeger(L, 4)", 
+                        "c_var_len": "Lstride", 
+                        "cpp_type": "int", 
+                        "cpp_var": "stride", 
+                        "lua_var": "SH_Lua_stride", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "stride", 
+                        "cpp_type": "int", 
+                        "cpp_var": "stride", 
+                        "py_var": "SH_Py_stride"
+                    }
+                }, 
+                "type": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "type", 
+                        "cpp_type": "double", 
+                        "cpp_var": "type"
+                    }, 
+                    "fmtf": {
+                        "c_var": "type", 
+                        "f_var": "type"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tonumber(L, 1)", 
+                        "c_var_len": "Ltype", 
+                        "cpp_type": "double", 
+                        "cpp_var": "type", 
+                        "lua_var": "SH_Lua_type", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "type", 
+                        "cpp_type": "double", 
+                        "cpp_var": "type", 
+                        "py_var": "SH_Py_type"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 19, 
             "_has_default_arg": true, 
             "_nargs": [
@@ -3360,34 +3660,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "type", 
-                            "cpp_type": "double", 
-                            "cpp_var": "type"
-                        }, 
-                        "fmtf": {
-                            "c_var": "type", 
-                            "f_var": "type"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tonumber(L, 1)", 
-                            "c_var_len": "Ltype", 
-                            "cpp_type": "double", 
-                            "cpp_var": "type", 
-                            "lua_var": "SH_Lua_type", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "type", 
-                            "cpp_type": "double", 
-                            "cpp_var": "type", 
-                            "py_var": "SH_Py_type"
-                        }, 
                         "init": null, 
                         "name": "type", 
                         "type": "double"
@@ -3398,34 +3670,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "num", 
-                            "cpp_type": "int", 
-                            "cpp_var": "num"
-                        }, 
-                        "fmtf": {
-                            "c_var": "num", 
-                            "f_var": "num"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 2, 
-                            "c_var": "lua_tointeger(L, 2)", 
-                            "c_var_len": "Lnum", 
-                            "cpp_type": "int", 
-                            "cpp_var": "num", 
-                            "lua_var": "SH_Lua_num", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "num", 
-                            "cpp_type": "int", 
-                            "cpp_var": "num", 
-                            "py_var": "SH_Py_num"
-                        }, 
                         "init": null, 
                         "name": "num", 
                         "type": "int"
@@ -3436,34 +3680,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "offset", 
-                            "cpp_type": "int", 
-                            "cpp_var": "offset"
-                        }, 
-                        "fmtf": {
-                            "c_var": "offset", 
-                            "f_var": "offset"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 3, 
-                            "c_var": "lua_tointeger(L, 3)", 
-                            "c_var_len": "Loffset", 
-                            "cpp_type": "int", 
-                            "cpp_var": "offset", 
-                            "lua_var": "SH_Lua_offset", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "offset", 
-                            "cpp_type": "int", 
-                            "cpp_var": "offset", 
-                            "py_var": "SH_Py_offset"
-                        }, 
                         "init": 0, 
                         "name": "offset", 
                         "type": "int"
@@ -3474,34 +3690,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "stride", 
-                            "cpp_type": "int", 
-                            "cpp_var": "stride"
-                        }, 
-                        "fmtf": {
-                            "c_var": "stride", 
-                            "f_var": "stride"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 4, 
-                            "c_var": "lua_tointeger(L, 4)", 
-                            "c_var_len": "Lstride", 
-                            "cpp_type": "int", 
-                            "cpp_var": "stride", 
-                            "lua_var": "SH_Lua_stride", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "stride", 
-                            "cpp_type": "int", 
-                            "cpp_var": "stride", 
-                            "py_var": "SH_Py_stride"
-                        }, 
                         "init": 1, 
                         "name": "stride", 
                         "type": "int"
@@ -3510,10 +3698,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "overload1", 
@@ -3522,6 +3706,44 @@
         }, 
         {
             "_decl": "TypeID typefunc(TypeID arg +intent(in)+value)", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "TypeID", 
+                        "cpp_var": "arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tointeger(L, 1)", 
+                        "c_var_len": "Larg", 
+                        "cpp_type": "TypeID", 
+                        "cpp_var": "arg", 
+                        "lua_var": "SH_Lua_arg", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "TypeID", 
+                        "cpp_var": "arg", 
+                        "py_var": "SH_Py_arg"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "TypeID SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 20, 
             "_subprogram": "function", 
             "decl": "TypeID typefunc(TypeID arg)", 
@@ -3559,34 +3781,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cpp_type": "TypeID", 
-                            "cpp_var": "arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tointeger(L, 1)", 
-                            "c_var_len": "Larg", 
-                            "cpp_type": "TypeID", 
-                            "cpp_var": "arg", 
-                            "lua_var": "SH_Lua_arg", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cpp_type": "TypeID", 
-                            "cpp_var": "arg", 
-                            "py_var": "SH_Py_arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "TypeID"
@@ -3595,10 +3789,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "TypeID SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "typefunc", 
@@ -3607,6 +3797,47 @@
         }, 
         {
             "_decl": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "EnumTypeID", 
+                        "cpp_var": "arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }, 
+                    "fmtl": {
+                        "LUA_index": 1, 
+                        "c_var": "lua_tointeger(L, 1)", 
+                        "c_var_len": "Larg", 
+                        "cpp_type": "EnumTypeID", 
+                        "cpp_var": "arg", 
+                        "lua_var": "SH_Lua_arg", 
+                        "ptr": ""
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "EnumTypeID", 
+                        "cpp_var": "arg", 
+                        "py_var": "SH_Py_arg"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "c_rv_decl": "int XSHT_rv", 
+                    "c_val": "static_cast<int>(SHT_rv)", 
+                    "c_var": "XSHT_rv", 
+                    "cpp_rv_decl": "EnumTypeID SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 21, 
             "_subprogram": "function", 
             "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
@@ -3644,34 +3875,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cpp_type": "EnumTypeID", 
-                            "cpp_var": "arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }, 
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tointeger(L, 1)", 
-                            "c_var_len": "Larg", 
-                            "cpp_type": "EnumTypeID", 
-                            "cpp_var": "arg", 
-                            "lua_var": "SH_Lua_arg", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cpp_type": "EnumTypeID", 
-                            "cpp_var": "arg", 
-                            "py_var": "SH_Py_arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "EnumTypeID"
@@ -3680,13 +3883,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "c_rv_decl": "int XSHT_rv", 
-                    "c_val": "static_cast<int>(SHT_rv)", 
-                    "c_var": "XSHT_rv", 
-                    "cpp_rv_decl": "EnumTypeID SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "enumfunc", 
@@ -3695,6 +3891,29 @@
         }, 
         {
             "_decl": "void useclass(const Class1 * arg1 +intent(in)+value)", 
+            "_fmtargs": {
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": " *", 
+                        "c_var": "arg1", 
+                        "cpp_type": "Class1", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }, 
+                    "fmtpy": {
+                        "c_const": "const ", 
+                        "c_ptr": " *", 
+                        "c_var": "arg1", 
+                        "cpp_type": "Class1", 
+                        "cpp_var": "arg1", 
+                        "py_var": "SH_Py_arg1"
+                    }
+                }
+            }, 
             "_function_index": 22, 
             "_subprogram": "subroutine", 
             "decl": "void useclass(const Class1 *arg1)", 
@@ -3732,25 +3951,6 @@
                             "value": true
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": " *", 
-                            "c_var": "arg1", 
-                            "cpp_type": "Class1", 
-                            "cpp_var": "arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg1", 
-                            "f_var": "arg1"
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": " *", 
-                            "c_var": "arg1", 
-                            "cpp_type": "Class1", 
-                            "cpp_var": "arg1", 
-                            "py_var": "SH_Py_arg1"
-                        }, 
                         "init": null, 
                         "name": "arg1", 
                         "type": "Class1"
@@ -3819,6 +4019,29 @@
             "_PTR_C_CPP_index": 23, 
             "_decl": "int vector_sum(const std::vector & arg +dimension(:)+intent(in)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "int", 
+                        "cpp_type": "int", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 45, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
@@ -3853,19 +4076,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "c_var_size": "Sarg", 
-                            "cpp_T": "int", 
-                            "cpp_type": "int", 
-                            "cpp_var": "SH_arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "std::vector"
@@ -3874,10 +4084,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "vector_sum", 
@@ -3937,6 +4143,24 @@
             "_PTR_C_CPP_index": 24, 
             "_decl": "void vector_iota(std::vector & arg +dimension(:)+intent(out)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "int", 
+                        "cpp_type": "int", 
+                        "cpp_val": "SH_arg", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }
+                }
+            }, 
             "_function_index": 46, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
@@ -3972,20 +4196,6 @@
                             "value": false
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "c_var_size": "Sarg", 
-                            "cpp_T": "int", 
-                            "cpp_type": "int", 
-                            "cpp_val": "SH_arg", 
-                            "cpp_var": "SH_arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "std::vector"
@@ -4053,6 +4263,24 @@
             "_PTR_C_CPP_index": 25, 
             "_decl": "void vector_increment(std::vector & arg +dimension(:)+intent(inout)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "int", 
+                        "cpp_type": "int", 
+                        "cpp_val": "SH_arg", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }
+                }
+            }, 
             "_function_index": 47, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
@@ -4088,20 +4316,6 @@
                             "value": false
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "c_var_size": "Sarg", 
-                            "cpp_T": "int", 
-                            "cpp_type": "int", 
-                            "cpp_val": "SH_arg", 
-                            "cpp_var": "SH_arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "std::vector"
@@ -4174,6 +4388,30 @@
             "_PTR_C_CPP_index": 26, 
             "_decl": "int vector_string_count(const std::vector & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_len": "Narg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "std::string", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 48, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
@@ -4213,20 +4451,6 @@
                             "value": false
                         }, 
                         "const": true, 
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "c_var_len": "Narg", 
-                            "c_var_size": "Sarg", 
-                            "cpp_T": "std::string", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "std::vector"
@@ -4235,10 +4459,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "vector_string_count", 
@@ -4307,6 +4527,25 @@
             "_PTR_C_CPP_index": 27, 
             "_decl": "void vector_string_fill(std::vector & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_len": "Narg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "std::string", 
+                        "cpp_type": "std::string", 
+                        "cpp_val": "SH_arg.c_str()", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }
+                }
+            }, 
             "_function_index": 49, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
@@ -4347,21 +4586,6 @@
                             "value": false
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "c_var_len": "Narg", 
-                            "c_var_size": "Sarg", 
-                            "cpp_T": "std::string", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SH_arg.c_str()", 
-                            "cpp_var": "SH_arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "std::vector"
@@ -4432,6 +4656,25 @@
             "_PTR_C_CPP_index": 28, 
             "_decl": "void vector_string_append(std::vector & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg)+template(std::string))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "c_var_len": "Narg", 
+                        "c_var_size": "Sarg", 
+                        "cpp_T": "std::string", 
+                        "cpp_type": "std::string", 
+                        "cpp_val": "SH_arg.c_str()", 
+                        "cpp_var": "SH_arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }
+                }
+            }, 
             "_function_index": 50, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
@@ -4471,21 +4714,6 @@
                             "value": false
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "c_var_len": "Narg", 
-                            "c_var_size": "Sarg", 
-                            "cpp_T": "std::string", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SH_arg.c_str()", 
-                            "cpp_var": "SH_arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }, 
                         "init": null, 
                         "name": "arg", 
                         "type": "std::vector"
@@ -4502,6 +4730,16 @@
         }, 
         {
             "_decl": "const std::string & LastFunctionCalled() +pure", 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "c_rv_decl": "const char * XSHT_rv", 
+                    "c_val": "SHT_rv.c_str()", 
+                    "c_var": "XSHT_rv", 
+                    "cpp_rv_decl": "const std::string & SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 29, 
             "_subprogram": "function", 
             "decl": "const std::string& LastFunctionCalled() +pure", 
@@ -4541,13 +4779,6 @@
                 "fattrs": {
                     "pure": true
                 }, 
-                "fmtc": {
-                    "c_rv_decl": "const char * XSHT_rv", 
-                    "c_val": "SHT_rv.c_str()", 
-                    "c_var": "XSHT_rv", 
-                    "cpp_rv_decl": "const std::string & SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "LastFunctionCalled", 
@@ -4558,6 +4789,25 @@
             "_PTR_C_CPP_index": 29, 
             "_decl": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmtargs": {
+                "SHF_rv": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "SHF_rv", 
+                        "c_var_len": "NSHF_rv", 
+                        "cpp_type": "std::string", 
+                        "cpp_val": "SHT_rv.c_str()", 
+                        "cpp_var": "SHT_rv"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "const std::string & SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 51, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
@@ -4594,15 +4844,6 @@
                         "fattrs": {
                             "pure": true
                         }, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SHT_rv.c_str()", 
-                            "cpp_var": "SHT_rv"
-                        }, 
                         "func_const": false, 
                         "init": null, 
                         "name": "SHF_rv", 
@@ -4616,10 +4857,6 @@
                 "const": false, 
                 "fattrs": {
                     "pure": true
-                }, 
-                "fmtc": {
-                    "cpp_rv_decl": "const std::string & SHT_rv", 
-                    "cpp_var": "SHT_rv"
                 }, 
                 "func_const": false, 
                 "init": null, 

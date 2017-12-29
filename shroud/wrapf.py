@@ -727,6 +727,7 @@ class Wrapf(util.WrapperMixin):
 #            raise RuntimeError("Argument mismatch between Fortran and C functions")
 
         fmt_func.F_C_call = C_node['fmt'].F_C_name
+        fmtargs = C_node.setdefault('_fmtargs', {})
 
         # Fortran return type
         result = node['result']
@@ -793,7 +794,6 @@ class Wrapf(util.WrapperMixin):
                         'class({F_derived_name}) :: {F_this}',
                         fmt_func))
 
-        #
         # Fortran and C arguments may have different types (fortran generic)
         #
         # f_var - argument to Fortran function (wrapper function)
@@ -807,12 +807,11 @@ class Wrapf(util.WrapperMixin):
         f_args = result['args']
         f_index = -1       # index into f_args
         for c_arg in C_node['result']['args']:
-            if 'fmtf' not in c_arg:
-                c_arg['fmtf'] = util.Options(fmt_func)
-            fmt_arg = c_arg['fmtf']
-#XXX            fmt_arg = c_arg.setdefault('fmtf', util.Options(fmt_func))
-            fmt_arg.f_var = declast.get_name(c_arg)
-            fmt_arg.c_var = fmt_arg.f_var
+            arg_name = declast.get_name(c_arg)
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg  = fmt_arg0.setdefault('fmtf', util.Options(fmt_func))
+            fmt_arg.f_var = arg_name
+            fmt_arg.c_var = arg_name
 
             f_arg = True   # assume C and Fortran arguments match
             c_attrs = c_arg['attrs']

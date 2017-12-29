@@ -89,6 +89,7 @@
     "functions": [
         {
             "_decl": "void Function1()", 
+            "_fmtargs": {}, 
             "_function_index": 0, 
             "_subprogram": "subroutine", 
             "decl": "void Function1()", 
@@ -127,6 +128,40 @@
         }, 
         {
             "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
+            "_fmtargs": {
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }
+                }, 
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "cpp_type": "int", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg2", 
+                        "f_var": "arg2"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "double SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
             "_function_index": 1, 
             "_subprogram": "function", 
             "decl": "double Function2(double arg1, int arg2)", 
@@ -161,17 +196,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cpp_type": "double", 
-                            "cpp_var": "arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg1", 
-                            "f_var": "arg1"
-                        }, 
                         "init": null, 
                         "name": "arg1", 
                         "type": "double"
@@ -182,17 +206,6 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cpp_type": "int", 
-                            "cpp_var": "arg2"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg2", 
-                            "f_var": "arg2"
-                        }, 
                         "init": null, 
                         "name": "arg2", 
                         "type": "int"
@@ -201,10 +214,6 @@
                 "attrs": {}, 
                 "const": false, 
                 "fattrs": {}, 
-                "fmtc": {
-                    "cpp_rv_decl": "double SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }, 
                 "func_const": false, 
                 "init": null, 
                 "name": "Function2", 

@@ -358,6 +358,7 @@ return 1;""", fmt)
         self.log.write("Python {0} {1[_decl]}\n".format(cls_function, node))
 
         fmt_func = node['fmt']
+        fmtargs = node.setdefault('_fmtargs', {})
         fmt = util.Options(fmt_func)
         fmt.doc_string = 'documentation'
         if cls:
@@ -427,14 +428,12 @@ return 1;""", fmt)
             arg_offsets = []
             offset = 0
             for arg in args:
-                if 'fmtpy' not in arg:
-                    arg['fmtpy'] = util.Options(fmt)
-                fmt_arg = arg['fmtpy']
-#XXX                fmt_arg = arg.setdefault('fmtpy', util.Options(fmt))
                 arg_name = declast.get_name(arg)
+                fmt_arg0 = fmtargs.setdefault(arg_name, {})
+                fmt_arg = fmt_arg0.setdefault('fmtpy', util.Options(fmt))
                 fmt_arg.c_var = arg_name
-                fmt_arg.cpp_var = fmt_arg.c_var
-                fmt_arg.py_var = 'SH_Py_' + fmt_arg.c_var
+                fmt_arg.cpp_var = arg_name
+                fmt_arg.py_var = 'SH_Py_' + arg_name
                 if arg['const']:
                     fmt_arg.c_const = 'const '
                 else:

@@ -428,6 +428,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         self.log.write("Lua {0} {1[_decl]}\n".format(cls_function, node))
 
 #        fmt_func = node['fmt']
+        fmtargs = node.setdefault('_fmtargs', {})
 #        fmt = util.Options(fmt_func)
 #        fmt.doc_string = 'documentation'
 #        util.eval_template(node, 'LUA_name')
@@ -493,15 +494,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for iarg in range(luafcn.nargs):
             arg = result['args'][iarg]
             arg_name = declast.get_name(arg)
-            if 'fmtl' not in arg:
-                arg['fmtl'] = util.Options(fmt)
-            fmt_arg = arg['fmtl']
-#XXX            fmt_arg = arg.setdefault('fmtl', util.Options(fmt))
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault('fmtl', util.Options(fmt))
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
-            fmt_arg.cpp_var = fmt_arg.c_var
-            fmt_arg.lua_var = 'SH_Lua_' + fmt_arg.c_var
-            fmt_arg.c_var_len = 'L' + fmt_arg.c_var
+            fmt_arg.cpp_var = arg_name
+            fmt_arg.lua_var = 'SH_Lua_' + arg_name
+            fmt_arg.c_var_len = 'L' + arg_name
             fmt_arg.ptr = ' *' if declast.is_pointer(arg) else ''
             attrs = arg['attrs']
 

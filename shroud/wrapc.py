@@ -357,6 +357,7 @@ class Wrapc(util.WrapperMixin):
         self.log.write("C {0} {1[_decl]}\n".format(cls_function, node))
 
         fmt_func = node['fmt']
+        fmtargs = node.setdefault('_fmtargs', {})
 
         if self.language == 'c' or options.get('C_extern_C',False):
             # Fortran can call C directly and only needs wrappers when code is
@@ -428,10 +429,8 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_func
             fmt_pattern = fmt_func
         else:
-            if 'fmtc' not in result:
-                result['fmtc'] = util.Options(fmt_func)
-            fmt_result = result['fmtc']
-#XXX            fmt_result = result.setdefault('fmtc', util.Options(fmt_func))
+            fmt_result0 = node.setdefault('_fmtresult', {})
+            fmt_result = fmt_result0.setdefault('fmtc', util.Options(fmt_func))
             fmt_result.cpp_var = fmt_func.C_result
 #            fmt_result.cpp_decl = self._c_type('cpp_type', CPP_result)
 
@@ -478,16 +477,15 @@ class Wrapc(util.WrapperMixin):
 #                 or the funtion result variable.
 
         for arg in result['args']:
-            if 'fmtc' not in arg:
-                arg['fmtc'] = util.Options(fmt_func)
-            fmt_arg = arg['fmtc']
-#XXX            fmt_arg = arg.setdefault('fmtc', util.Options(fmt_func))
+            arg_name = declast.get_name(arg)
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault('fmtc', util.Options(fmt_func))
             c_attrs = arg['attrs']
             arg_typedef, c_statements = util.lookup_c_statements(arg)
             if 'template' in c_attrs:
                 fmt_arg.cpp_T = c_attrs['template']
 
-            fmt_arg.c_var = declast.get_name(arg)
+            fmt_arg.c_var = arg_name
 
             if arg['const']:
                 fmt_arg.c_const = 'const '

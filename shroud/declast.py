@@ -526,14 +526,13 @@ class Declaration(Node):
                 return []
             else:
                 return self.params
-        elif item in ['attrs', 'const', 'fattrs', 'func_const',
-                      'init', 'fmtc', 'fmtf', 'fmtpy', 'fmtl']:
+        elif item in ['attrs', 'const', 'fattrs', 'func_const', 'init']:
             return getattr(self, item)
         else:
             raise KeyError
 
     def __setitem__(self, item, value):
-        if item in ['const', 'fmtc', 'fmtf', 'fmtpy', 'fmtl']:
+        if item in ['const']:
             setattr(self, item, value)
         else:
             raise RuntimeError("setitem key")
@@ -541,8 +540,6 @@ class Declaration(Node):
     def __contains__(self, item):
         if item in ['name', 'type', 'attrs']:
             return True
-        elif item in ['fmtc', 'fmtf', 'fmtpy', 'fmtl']:
-            return hasattr(self, item)
         else:
             return False
 
