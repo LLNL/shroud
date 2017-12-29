@@ -130,7 +130,7 @@ class Wrapc(util.WrapperMixin):
 #        if lang not in [ 'c_type', 'cpp_type' ]:
 #            raise RuntimeError
         typ = self._c_type(lang, ast)
-        return typ + ' ' + (name or declast.get_name(ast))
+        return typ + ' ' + (name or ast.name)
 
     def wrap_library(self):
         fmt_library = self.tree['_fmt']
@@ -474,7 +474,7 @@ class Wrapc(util.WrapperMixin):
 #                 or the funtion result variable.
 
         for arg in ast.params:
-            arg_name = declast.get_name(arg)
+            arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault('fmtc', util.Options(fmt_func))
             c_attrs = arg.attrs
@@ -720,7 +720,7 @@ class Wrapc(util.WrapperMixin):
             impl.append('}')
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = declast.get_name(node['_ast'])
+            fmt_func.C_name = node['_ast'].name
 
 
     def XXXget_intent(self, intent_blk, block):

@@ -370,7 +370,7 @@ class WrapperMixin(object):
         This makes it easy to reproduce the arguments.
         """
         typ = self.std_c_type(lang, ast, const, ptr)
-        return typ + ' ' + (name or declast.get_name(ast))
+        return typ + ' ' + (name or ast.name)
 
 #####
 

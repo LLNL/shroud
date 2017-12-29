@@ -187,7 +187,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for function in functions:
             if not function['options'].wrap_lua:
                 continue
-            name = declast.get_name(function['_ast'])
+            name = function['_ast'].name
             if name in overloaded_methods:
                 overloaded_methods[name].append(function)
             else:
@@ -215,7 +215,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         node = overloads[0]
 
         ast = node['_ast']
-        function_name = declast.get_name(ast)
+        function_name = ast.name
         fmt_func = node['_fmt']
         fmt = util.Options(fmt_func)
         util.eval_template(node, 'LUA_name')
@@ -493,7 +493,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         LUA_index = 1
         for iarg in range(luafcn.nargs):
             arg = ast.params[iarg]
-            arg_name = declast.get_name(arg)
+            arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault('fmtl', util.Options(fmt))
             fmt_arg.LUA_index = LUA_index

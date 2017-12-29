@@ -167,7 +167,7 @@ class Wrapf(util.WrapperMixin):
         This makes it easy to reproduce the arguments.
         """
         typ, dimension = self._c_type(ast)
-        rv = typ + ' :: ' + (name or declast.get_name(ast)) + dimension
+        rv = typ + ' :: ' + (name or ast.name) + dimension
         return rv
 
     def _f_type(self, ast, local=False):
@@ -208,7 +208,7 @@ class Wrapf(util.WrapperMixin):
         This makes it easy to reproduce the arguments.
         """
         typ, dimension = self._f_type(ast, local=local)
-        rv = typ + ' :: ' + (name or declast.get_name(ast)) + dimension
+        rv = typ + ' :: ' + (name or ast.name) + dimension
         return rv
 
     def wrap_library(self):
@@ -608,7 +608,7 @@ class Wrapf(util.WrapperMixin):
             # default argument's intent
             # XXX look at const, ptr
             arg_typedef, c_statements = util.lookup_c_statements(arg)
-            fmt.c_var = declast.get_name(arg)
+            fmt.c_var = arg.name
             attrs = arg.attrs
             self.update_f_module(modules,
                                  arg_typedef.f_c_module or arg_typedef.f_module)
@@ -622,7 +622,7 @@ class Wrapf(util.WrapperMixin):
                 for argname in arg_typedef.f_c_args:
                     arg_c_names.append(argname)
             else:
-                arg_c_names.append(declast.get_name(arg))
+                arg_c_names.append(arg.name)
 
             # argument declarations
             if arg_typedef.f_c_argdecl:
@@ -805,7 +805,7 @@ class Wrapf(util.WrapperMixin):
         f_args = ast.params
         f_index = -1       # index into f_args
         for c_arg in C_node['_ast'].params:
-            arg_name = declast.get_name(c_arg)
+            arg_name = c_arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg  = fmt_arg0.setdefault('fmtf', util.Options(fmt_func))
             fmt_arg.f_var = arg_name

@@ -1011,7 +1011,7 @@ class Schema(object):
                 if 'result' in attrs:
                     ast.attrs.update(attrs['result'])
                 for arg in ast.params:
-                    name = declast.get_name(arg)
+                    name = arg.name
                     if name in attrs:
                         arg.attrs.update(attrs[name])
             # XXX - waring about unused fields in attrs
@@ -1042,7 +1042,7 @@ class Schema(object):
 
         ast = node['_ast']
 
-        fmt_func.function_name = declast.get_name(ast)
+        fmt_func.function_name = ast.name
         fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
 
         # docs
@@ -1115,7 +1115,7 @@ class GenFunctions(object):
                 function['_fmt'].function_suffix = function['function_suffix']
             self.append_function_index(function)
             cpp_overload. \
-                setdefault(declast.get_name(function['_ast']), []). \
+                setdefault(function['_ast'].name, []). \
                 append(function['_function_index'])
 
         # keep track of which function are overloaded in C++.
@@ -1142,7 +1142,7 @@ class GenFunctions(object):
             if 'cpp_template' in function:
                 continue
             overloaded_functions.setdefault(
-                declast.get_name(function['_ast']), []).append(function)
+                function['_ast'].name, []).append(function)
 
         # look for function overload and compute function_suffix
         for mname, overloads in overloaded_functions.items():
@@ -1238,7 +1238,7 @@ class GenFunctions(object):
                 options.wrap_lua = False
                 # Convert typename to type
                 for arg in new['_ast'].params:
-                    if declast.get_name(arg) == argname:
+                    if arg.name == argname:
                         # Convert any typedef to native type with f_type
                         argtype = declast.get_type(arg)
                         typedef = util.Typedef.lookup(argtype)
@@ -1335,7 +1335,7 @@ class GenFunctions(object):
                                   "for function returning {} instance"
                                   " (must return a pointer or reference).\n"
                                   .format(result_typedef.cpp_type,
-                                          declast.get_name(ast)))
+                                          ast.name))
 
         if options.wrap_fortran is False:
             return
@@ -1419,13 +1419,13 @@ class GenFunctions(object):
                     continue
                 if buf_arg == 'size':
                     attrs['size'] = options.C_var_size_template.format(
-                        c_var=declast.get_name(arg))
+                        c_var=arg.name)
                 elif buf_arg == 'len_trim':
                     attrs['len_trim'] = options.C_var_trim_template.format(
-                        c_var=declast.get_name(arg))
+                        c_var=arg.name)
                 elif buf_arg == 'len':
                     attrs['len'] = options.C_var_len_template.format(
-                        c_var=declast.get_name(arg))
+                        c_var=arg.name)
 
                 ## base typedef
 
@@ -1439,7 +1439,7 @@ class GenFunctions(object):
         if has_string_result:
             # Add additional argument to hold result
             result_as_string = copy.deepcopy(ast)
-            declast.set_name(result_as_string, result_name)
+            result_as_string.name = result_name
             result_as_string.const = False
             attrs = result_as_string.attrs
             attrs['len'] = options.C_var_len_template.format(c_var=result_name)
@@ -1574,7 +1574,7 @@ class GenFunctions(object):
             decl.append('* ')
         if declast.is_reference(ast):
             decl.append('& ')
-        decl.append(declast.get_name(ast))
+        decl.append(ast.name)
         if ast.init is not None:
             decl.append('=')
             decl.append(str(ast.init))
@@ -1674,7 +1674,7 @@ class VerifyAttrs(object):
 
         found_default = False
         for arg in ast.params:
-            argname = declast.get_name(arg)
+            argname = arg.name
             argtype = declast.get_type(arg)
             typedef = util.Typedef.lookup(argtype)
             if typedef is None:

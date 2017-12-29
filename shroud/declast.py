@@ -520,12 +520,21 @@ class Declaration(Node):
         self.fattrs     = {}     # function attributes
 
     def get_name(self):
-        """Extract name from declarator."""
+        """Get name from declarator"""
         name = self.declarator.name
         if name is None:
             if self.declarator.func:
                 name = self.declarator.func.name
         return name
+ 
+    def set_name(self, name):
+        """Set name in declarator"""
+        if self.declarator.name:
+            self.declarator.name = name
+        else:
+            self.declarator.func.name = name
+
+    name = property(get_name, set_name, None, "Declaration name")
 
     def get_type(self):
         """Extract type.
@@ -762,18 +771,6 @@ def create_this_arg(name, typ, const=True):
     return arg
     
 ##################################################
-
-def get_name(decl):
-    if isinstance(decl, Declaration):
-        return decl.get_name()
-    else:
-        return decl['name']
-
-def set_name(decl, name):
-    if isinstance(decl, Declaration):
-        decl.declarator.name = name
-    else:
-        decl['name'] = name
 
 def get_type(decl):
     if isinstance(decl, Declaration):

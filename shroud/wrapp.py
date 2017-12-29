@@ -322,7 +322,7 @@ return 1;""", fmt)
         overloaded_methods = {}
         for function in functions:
             flist = overloaded_methods. \
-                setdefault(declast.get_name(function['_ast']), [])
+                setdefault(function['_ast'].name, [])
             if '_cpp_overload' not in function:
                 continue
             if not function['options'].wrap_python:
@@ -428,7 +428,7 @@ return 1;""", fmt)
             arg_offsets = []
             offset = 0
             for arg in args:
-                arg_name = declast.get_name(arg)
+                arg_name = arg.name
                 fmt_arg0 = fmtargs.setdefault(arg_name, {})
                 fmt_arg = fmt_arg0.setdefault('fmtpy', util.Options(fmt))
                 fmt_arg.c_var = arg_name
@@ -665,7 +665,7 @@ return 1;""", fmt)
         util.eval_template(node, 'PY_name_impl')
 
         expose = True
-        if len(self.overloaded_methods[declast.get_name(ast)]) > 1:
+        if len(self.overloaded_methods[ast.name]) > 1:
             # Only expose a multi-dispatch name, not each overload
             expose = False
         elif found_default:

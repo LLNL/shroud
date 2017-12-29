@@ -789,8 +789,14 @@ class CheckParse(unittest.TestCase):
                                "const std::string& arg1,"
                                "const std::string& arg2 )")
         self.assertTrue(r.is_reference())
+        self.assertEqual(r.name, "Function4b")
 
         r2 = copy.deepcopy(r)
+
+        r2.name = 'newname'
+        self.assertEqual(r.name, 'Function4b')
+        self.assertEqual(r2.name, 'newname')
+
         declast.set_indirection(r2)
 
         self.assertTrue(r.is_reference())    # first is unchanged
