@@ -618,32 +618,6 @@ class Declaration(Node):
         self._set_to_void()
         return newarg
 
-    def to_dict(self, d=None):
-        """
-        Create a dictionary to match the one created by parse_decl.py
-        """
-        attrs = {}
-        if d is None:
-            d = {}
-            d['fattrs'] = self.fattrs
-            d['func_const'] = self.func_const
-            d['args'] = []
-        if self.specifier:
-            d['type'] = self.specifier[0]
-        else:
-            d['type'] = 'int'
-        d['attrs'] = attrs
-        attrs.update(self.attrs)
-        d['const'] = self.const
-        d['init'] = self.init
-        self.declarator.to_dict(d)
-        if self.params is not None:
-            for param in self.params:
-                arg = {}
-                d['args'].append(arg)
-                param.to_dict(arg)
-        return d
-
     def _to_dict(self):
         """Convert to dictionary.
         Used by util.ExpandedEncoder.
@@ -666,10 +640,6 @@ class Declaration(Node):
                 raise RuntimeError("fattrs is not empty for non-function")
         if self.init is not None:
             d['init'] = self.init
-
-        for n in ['fmtc', 'fmtf', 'fmtpy', 'fmtl']:
-            if hasattr(self, n):
-                d[n] = getattr(self, n)
         return d
 
     def __str__(self):
