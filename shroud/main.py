@@ -1003,9 +1003,8 @@ class Schema(object):
             decl = declast.check_decl(node['decl'],
                                       current_class=cls_name,
                                       template_types=template_types)
-            result = decl.to_dict()
+            result = decl
             node['result'] = result
-#            node['tester'] = decl
 
             # add any attributes from YAML files to the ast
             if 'attrs' in node:

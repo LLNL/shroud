@@ -119,11 +119,16 @@
                 "args": [], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "Function1", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "Function1", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -196,9 +201,15 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "double"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "double"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
@@ -206,18 +217,29 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg2", 
-                        "type": "int"
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "Function2", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "Function2", 
-                "type": "double"
+                "specifier": [
+                    "double"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -296,41 +318,72 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "len", 
-                        "type": "int"
+                        "declarator": {
+                            "name": "len", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "dimension": "(len)", 
                             "intent": "in", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "values", 
-                        "type": "int"
+                        "declarator": {
+                            "name": "values", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "intent": "out", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "result", 
-                        "type": "int"
+                        "declarator": {
+                            "name": "result", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "Sum", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "Sum", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -390,18 +443,29 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg", 
-                        "type": "bool"
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "bool"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "Function3", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "Function3", 
-                "type": "bool"
+                "specifier": [
+                    "bool"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -480,40 +544,71 @@
                             "value": true
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "bool"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "bool"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "intent": "out", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg2", 
-                        "type": "bool"
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "bool"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "intent": "inout", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg3", 
-                        "type": "bool"
+                        "declarator": {
+                            "name": "arg3", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "bool"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "Function3b", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "Function3b", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -578,36 +673,65 @@
                     {
                         "attrs": {
                             "intent": "in", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "intent": "in", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "arg2", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {
-                    "len": "30", 
-                    "ptr": true
+                    "len": "30"
                 }, 
                 "const": false, 
+                "declarator": {
+                    "name": "Function4a", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "*"
+                        }
+                    ]
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "Function4a", 
-                "type": "char"
+                "specifier": [
+                    "char"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -698,76 +822,128 @@
                         "attrs": {
                             "intent": "in", 
                             "len_trim": "Larg1", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "intent": "in", 
                             "len_trim": "Larg2", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "arg2", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "args": [
                             {
                                 "attrs": {
                                     "intent": "in", 
-                                    "ptr": true, 
                                     "value": false
                                 }, 
                                 "const": true, 
-                                "init": null, 
-                                "name": "arg1", 
-                                "type": "char"
+                                "declarator": {
+                                    "name": "arg1", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "char"
+                                ], 
+                                "storage": []
                             }, 
                             {
                                 "attrs": {
                                     "intent": "in", 
-                                    "ptr": true, 
                                     "value": false
                                 }, 
                                 "const": true, 
-                                "init": null, 
-                                "name": "arg2", 
-                                "type": "char"
+                                "declarator": {
+                                    "name": "arg2", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "char"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "NSHF_rv", 
-                            "ptr": true
+                            "len": "NSHF_rv"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "SHF_rv", 
-                        "type": "char"
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {
-                    "len": "30", 
-                    "ptr": false, 
-                    "reference": false
+                    "len": "30"
                 }, 
                 "const": false, 
+                "declarator": {
+                    "name": "Function4a", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "Function4a", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }
     ], 

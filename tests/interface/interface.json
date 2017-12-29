@@ -119,11 +119,16 @@
                 "args": [], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "Function1", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "Function1", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -196,9 +201,15 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "double"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "double"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
@@ -206,18 +217,29 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg2", 
-                        "type": "int"
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "Function2", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "Function2", 
-                "type": "double"
+                "specifier": [
+                    "double"
+                ], 
+                "storage": []
             }
         }
     ], 

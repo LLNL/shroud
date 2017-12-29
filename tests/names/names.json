@@ -123,14 +123,17 @@
                     "decl": "void method1", 
                     "options": {}, 
                     "result": {
-                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
-                        "fattrs": {}, 
+                        "declarator": {
+                            "name": "method1", 
+                            "pointer": []
+                        }, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "method1", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -166,14 +169,17 @@
                     "decl": "void method2", 
                     "options": {}, 
                     "result": {
-                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
-                        "fattrs": {}, 
+                        "declarator": {
+                            "name": "method2", 
+                            "pointer": []
+                        }, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "method2", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }
             ], 
@@ -284,14 +290,17 @@
             "decl": "void function1", 
             "options": {}, 
             "result": {
-                "args": [], 
                 "attrs": {}, 
                 "const": false, 
-                "fattrs": {}, 
+                "declarator": {
+                    "name": "function1", 
+                    "pointer": []
+                }, 
                 "func_const": false, 
-                "init": null, 
-                "name": "function1", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -327,14 +336,17 @@
             "decl": "void function2", 
             "options": {}, 
             "result": {
-                "args": [], 
                 "attrs": {}, 
                 "const": false, 
-                "fattrs": {}, 
+                "declarator": {
+                    "name": "function2", 
+                    "pointer": []
+                }, 
                 "func_const": false, 
-                "init": null, 
-                "name": "function2", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -404,18 +416,29 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "i", 
-                        "type": "int"
+                        "declarator": {
+                            "name": "i", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "function3a", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "function3a", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -485,18 +508,29 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "i", 
-                        "type": "long"
+                        "declarator": {
+                            "name": "i", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "long"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "function3a", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "function3a", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -560,22 +594,37 @@
                     {
                         "attrs": {
                             "intent": "in", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "rv", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "function4", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "function4", 
-                "type": "int"
+                "specifier": [
+                    "int"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -632,22 +681,37 @@
                         "attrs": {
                             "intent": "in", 
                             "len_trim": "Lrv", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "rv", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "function4", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "function4", 
-                "type": "int"
+                "specifier": [
+                    "int"
+                ], 
+                "storage": []
             }
         }
     ], 

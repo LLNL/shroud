@@ -136,26 +136,44 @@
                             {
                                 "attrs": {
                                     "intent": "in", 
-                                    "ptr": true, 
                                     "value": false
                                 }, 
                                 "const": true, 
-                                "init": null, 
-                                "name": "name", 
-                                "type": "string"
+                                "declarator": {
+                                    "name": "name", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "new", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {
                             "constructor": true
                         }, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "new", 
-                        "type": "ExClass1"
+                        "specifier": [
+                            "ExClass1"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -217,26 +235,44 @@
                                 "attrs": {
                                     "intent": "in", 
                                     "len_trim": "Lname", 
-                                    "ptr": true, 
                                     "value": false
                                 }, 
                                 "const": true, 
-                                "init": null, 
-                                "name": "name", 
-                                "type": "string"
+                                "declarator": {
+                                    "name": "name", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "new", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {
                             "constructor": true
                         }, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "new", 
-                        "type": "ExClass1"
+                        "specifier": [
+                            "ExClass1"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -278,13 +314,18 @@
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "delete", 
+                            "pointer": []
+                        }, 
                         "fattrs": {
                             "destructor": true
                         }, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "delete", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -356,18 +397,29 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "incr", 
-                                "type": "int"
+                                "declarator": {
+                                    "name": "incr", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "int"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "incrementCount", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "incrementCount", 
-                        "type": "int"
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -425,15 +477,24 @@
                     "result": {
                         "args": [], 
                         "attrs": {
-                            "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})", 
-                            "reference": true
+                            "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
                         }, 
                         "const": true, 
+                        "declarator": {
+                            "name": "getName", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getName", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -502,28 +563,40 @@
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
-                                    "len": "NSHF_rv", 
-                                    "reference": true
+                                    "len": "NSHF_rv"
                                 }, 
                                 "const": false, 
+                                "declarator": {
+                                    "name": "SHF_rv", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                }, 
                                 "fattrs": {}, 
                                 "func_const": true, 
-                                "init": null, 
-                                "name": "SHF_rv", 
-                                "type": "string"
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {
-                            "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})", 
-                            "ptr": false, 
-                            "reference": false
+                            "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getName", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getName", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -571,11 +644,16 @@
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "GetNameLength", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "GetNameLength", 
-                        "type": "int"
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -624,15 +702,23 @@
                     "options": {}, 
                     "result": {
                         "args": [], 
-                        "attrs": {
-                            "reference": true
-                        }, 
+                        "attrs": {}, 
                         "const": true, 
+                        "declarator": {
+                            "name": "getNameErrorCheck", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getNameErrorCheck", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -694,27 +780,38 @@
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
-                                    "len": "NSHF_rv", 
-                                    "reference": true
+                                    "len": "NSHF_rv"
                                 }, 
                                 "const": false, 
+                                "declarator": {
+                                    "name": "SHF_rv", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                }, 
                                 "fattrs": {}, 
                                 "func_const": true, 
-                                "init": null, 
-                                "name": "SHF_rv", 
-                                "type": "string"
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": false, 
-                            "reference": false
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getNameErrorCheck", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getNameErrorCheck", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -755,15 +852,23 @@
                     }, 
                     "result": {
                         "args": [], 
-                        "attrs": {
-                            "reference": true
-                        }, 
+                        "attrs": {}, 
                         "const": true, 
+                        "declarator": {
+                            "name": "getNameArg", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getNameArg", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -825,27 +930,38 @@
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
-                                    "len": "Nname", 
-                                    "reference": true
+                                    "len": "Nname"
                                 }, 
                                 "const": false, 
+                                "declarator": {
+                                    "name": "name", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                }, 
                                 "fattrs": {}, 
                                 "func_const": true, 
-                                "init": null, 
-                                "name": "name", 
-                                "type": "string"
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": false, 
-                            "reference": false
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getNameArg", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getNameArg", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -882,27 +998,38 @@
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
-                                    "len": "Nname", 
-                                    "reference": true
+                                    "len": "Nname"
                                 }, 
                                 "const": false, 
+                                "declarator": {
+                                    "name": "name", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                }, 
                                 "fattrs": {}, 
                                 "func_const": true, 
-                                "init": null, 
-                                "name": "name", 
-                                "type": "string"
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": false, 
-                            "reference": false
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getNameArg", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getNameArg", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -949,15 +1076,23 @@
                     "options": {}, 
                     "result": {
                         "args": [], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getRoot", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "getRoot", 
-                        "type": "ExClass2"
+                        "specifier": [
+                            "ExClass2"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1036,18 +1171,29 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "value", 
-                                "type": "int"
+                                "declarator": {
+                                    "name": "value", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "int"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getValue", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "getValue", 
-                        "type": "int"
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1125,18 +1271,29 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "value", 
-                                "type": "long"
+                                "declarator": {
+                                    "name": "value", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "long"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getValue", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "getValue", 
-                        "type": "long"
+                        "specifier": [
+                            "long"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1180,15 +1337,23 @@
                     "options": {}, 
                     "result": {
                         "args": [], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getAddr", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "getAddr", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1260,18 +1425,29 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "in", 
-                                "type": "bool"
+                                "declarator": {
+                                    "name": "in", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "bool"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "hasAddr", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "hasAddr", 
-                        "type": "bool"
+                        "specifier": [
+                            "bool"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1304,14 +1480,17 @@
                     "decl": "void SplicerSpecial", 
                     "options": {}, 
                     "result": {
-                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
-                        "fattrs": {}, 
+                        "declarator": {
+                            "name": "SplicerSpecial", 
+                            "pointer": []
+                        }, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "SplicerSpecial", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }
             ], 
@@ -1404,27 +1583,45 @@
                             {
                                 "attrs": {
                                     "intent": "in", 
-                                    "ptr": true, 
                                     "random": 2, 
                                     "value": false
                                 }, 
                                 "const": true, 
-                                "init": null, 
-                                "name": "name", 
-                                "type": "string"
+                                "declarator": {
+                                    "name": "name", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "ExClass2", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {
                             "constructor": true
                         }, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "ExClass2", 
-                        "type": "ExClass2"
+                        "specifier": [
+                            "ExClass2"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1486,27 +1683,45 @@
                                 "attrs": {
                                     "intent": "in", 
                                     "len_trim": "Lname", 
-                                    "ptr": true, 
                                     "random": 2, 
                                     "value": false
                                 }, 
                                 "const": true, 
-                                "init": null, 
-                                "name": "name", 
-                                "type": "string"
+                                "declarator": {
+                                    "name": "name", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "ExClass2", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {
                             "constructor": true
                         }, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "ExClass2", 
-                        "type": "ExClass2"
+                        "specifier": [
+                            "ExClass2"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1545,13 +1760,18 @@
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "delete", 
+                            "pointer": []
+                        }, 
                         "fattrs": {
                             "destructor": true
                         }, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "delete", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1606,15 +1826,24 @@
                     "result": {
                         "args": [], 
                         "attrs": {
-                            "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})", 
-                            "reference": true
+                            "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                         }, 
                         "const": true, 
+                        "declarator": {
+                            "name": "getName", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getName", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1681,28 +1910,40 @@
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
-                                    "len": "NSHF_rv", 
-                                    "reference": true
+                                    "len": "NSHF_rv"
                                 }, 
                                 "const": false, 
+                                "declarator": {
+                                    "name": "SHF_rv", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                }, 
                                 "fattrs": {}, 
                                 "func_const": true, 
-                                "init": null, 
-                                "name": "SHF_rv", 
-                                "type": "string"
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {
-                            "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})", 
-                            "ptr": false, 
-                            "reference": false
+                            "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getName", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getName", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1751,15 +1992,23 @@
                     "options": {}, 
                     "result": {
                         "args": [], 
-                        "attrs": {
-                            "reference": true
-                        }, 
+                        "attrs": {}, 
                         "const": true, 
+                        "declarator": {
+                            "name": "getName2", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "getName2", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1821,27 +2070,38 @@
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
-                                    "len": "NSHF_rv", 
-                                    "reference": true
+                                    "len": "NSHF_rv"
                                 }, 
                                 "const": false, 
+                                "declarator": {
+                                    "name": "SHF_rv", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                }, 
                                 "fattrs": {}, 
                                 "func_const": false, 
-                                "init": null, 
-                                "name": "SHF_rv", 
-                                "type": "string"
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": false, 
-                            "reference": false
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getName2", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "getName2", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1890,15 +2150,23 @@
                     "options": {}, 
                     "result": {
                         "args": [], 
-                        "attrs": {
-                            "reference": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getName3", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getName3", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -1960,27 +2228,38 @@
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
-                                    "len": "NSHF_rv", 
-                                    "reference": true
+                                    "len": "NSHF_rv"
                                 }, 
                                 "const": false, 
+                                "declarator": {
+                                    "name": "SHF_rv", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                }, 
                                 "fattrs": {}, 
                                 "func_const": true, 
-                                "init": null, 
-                                "name": "SHF_rv", 
-                                "type": "string"
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": false, 
-                            "reference": false
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getName3", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getName3", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -2029,15 +2308,23 @@
                     "options": {}, 
                     "result": {
                         "args": [], 
-                        "attrs": {
-                            "reference": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getName4", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "getName4", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -2099,27 +2386,38 @@
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
-                                    "len": "NSHF_rv", 
-                                    "reference": true
+                                    "len": "NSHF_rv"
                                 }, 
                                 "const": false, 
+                                "declarator": {
+                                    "name": "SHF_rv", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                }, 
                                 "fattrs": {}, 
                                 "func_const": false, 
-                                "init": null, 
-                                "name": "SHF_rv", 
-                                "type": "string"
+                                "specifier": [
+                                    "string"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": false, 
-                            "reference": false
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getName4", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "getName4", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -2167,11 +2465,16 @@
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "GetNameLength", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "GetNameLength", 
-                        "type": "int"
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -2243,24 +2546,42 @@
                             {
                                 "attrs": {
                                     "intent": "in", 
-                                    "ptr": true, 
                                     "value": true
                                 }, 
                                 "const": true, 
-                                "init": null, 
-                                "name": "in", 
-                                "type": "ExClass1"
+                                "declarator": {
+                                    "name": "in", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "ExClass1"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "get_class1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "get_class1", 
-                        "type": "ExClass1"
+                        "specifier": [
+                            "ExClass1"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -2319,20 +2640,34 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "type", 
-                                "type": "TypeID"
+                                "declarator": {
+                                    "name": "type", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "TypeID"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "declare", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "declare", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }, 
                     "return_this": true
                 }, 
@@ -2370,20 +2705,34 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "type", 
-                                "type": "TypeID"
+                                "declarator": {
+                                    "name": "type", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "TypeID"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "declare", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "declare", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }, 
                     "return_this": true
                 }, 
@@ -2421,20 +2770,34 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "type", 
-                                "type": "TypeID"
+                                "declarator": {
+                                    "name": "type", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "TypeID"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "declare", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "declare", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }, 
                     "return_this": true
                 }, 
@@ -2530,9 +2893,15 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "type", 
-                                "type": "TypeID"
+                                "declarator": {
+                                    "name": "type", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "TypeID"
+                                ], 
+                                "storage": []
                             }, 
                             {
                                 "attrs": {
@@ -2540,20 +2909,35 @@
                                     "value": true
                                 }, 
                                 "const": false, 
+                                "declarator": {
+                                    "name": "len", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
                                 "init": 1, 
-                                "name": "len", 
-                                "type": "SidreLength"
+                                "specifier": [
+                                    "SidreLength"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "declare", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "declare", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }, 
                     "return_this": true
                 }, 
@@ -2599,9 +2983,15 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "type", 
-                                "type": "TypeID"
+                                "declarator": {
+                                    "name": "type", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "TypeID"
+                                ], 
+                                "storage": []
                             }, 
                             {
                                 "attrs": {
@@ -2609,20 +2999,35 @@
                                     "value": true
                                 }, 
                                 "const": false, 
+                                "declarator": {
+                                    "name": "len", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
                                 "init": 1, 
-                                "name": "len", 
-                                "type": "int"
+                                "specifier": [
+                                    "int"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "declare", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "declare", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }, 
                     "return_this": true
                 }, 
@@ -2668,9 +3073,15 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "type", 
-                                "type": "TypeID"
+                                "declarator": {
+                                    "name": "type", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "TypeID"
+                                ], 
+                                "storage": []
                             }, 
                             {
                                 "attrs": {
@@ -2678,20 +3089,35 @@
                                     "value": true
                                 }, 
                                 "const": false, 
+                                "declarator": {
+                                    "name": "len", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
                                 "init": 1, 
-                                "name": "len", 
-                                "type": "long"
+                                "specifier": [
+                                    "long"
+                                ], 
+                                "storage": []
                             }
                         ], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
+                        "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "declare", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "declare", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }, 
                     "return_this": true
                 }, 
@@ -2731,11 +3157,16 @@
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "destroyall", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "destroyall", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -2784,11 +3215,16 @@
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getTypeID", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": true, 
-                        "init": null, 
-                        "name": "getTypeID", 
-                        "type": "TypeID"
+                        "specifier": [
+                            "TypeID"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -2823,18 +3259,29 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "value", 
-                                "type": "ValueType"
+                                "declarator": {
+                                    "name": "value", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "ValueType"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "setValue", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "setValue", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -2897,18 +3344,29 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "value", 
-                                "type": "int"
+                                "declarator": {
+                                    "name": "value", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "int"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "setValue", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "setValue", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -2971,18 +3429,29 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "value", 
-                                "type": "long"
+                                "declarator": {
+                                    "name": "value", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "long"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "setValue", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "setValue", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -3045,18 +3514,29 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "value", 
-                                "type": "float"
+                                "declarator": {
+                                    "name": "value", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "float"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "setValue", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "setValue", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -3119,18 +3599,29 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "value", 
-                                "type": "double"
+                                "declarator": {
+                                    "name": "value", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "double"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "setValue", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "setValue", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -3159,11 +3650,16 @@
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getValue", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "getValue", 
-                        "type": "ValueType"
+                        "specifier": [
+                            "ValueType"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -3216,11 +3712,16 @@
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getValue", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "getValue", 
-                        "type": "int"
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -3273,11 +3774,16 @@
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "getValue", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "getValue", 
-                        "type": "double"
+                        "specifier": [
+                            "double"
+                        ], 
+                        "storage": []
                     }
                 }
             ], 
@@ -3379,14 +3885,17 @@
             "docs": "yada yada yada", 
             "options": {}, 
             "result": {
-                "args": [], 
                 "attrs": {}, 
                 "const": false, 
-                "fattrs": {}, 
+                "declarator": {
+                    "name": "local_function1", 
+                    "pointer": []
+                }, 
                 "func_const": false, 
-                "init": null, 
-                "name": "local_function1", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -3449,22 +3958,37 @@
                     {
                         "attrs": {
                             "intent": "in", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "name", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "isNameValid", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "isNameValid", 
-                "type": "bool"
+                "specifier": [
+                    "bool"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -3521,22 +4045,37 @@
                         "attrs": {
                             "intent": "in", 
                             "len_trim": "Lname", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "name", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "isNameValid", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "isNameValid", 
-                "type": "bool"
+                "specifier": [
+                    "bool"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -3579,11 +4118,16 @@
                 "args": [], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "isInitialized", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "isInitialized", 
-                "type": "bool"
+                "specifier": [
+                    "bool"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -3691,40 +4235,71 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "bool"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "bool"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "intent": "out", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg2", 
-                        "type": "bool"
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "bool"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "intent": "inout", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg3", 
-                        "type": "bool"
+                        "declarator": {
+                            "name": "arg3", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "bool"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "checkBool", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "checkBool", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -3788,22 +4363,37 @@
                     {
                         "attrs": {
                             "intent": "in", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "name", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "test_names", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "test_names", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -3860,22 +4450,37 @@
                         "attrs": {
                             "intent": "in", 
                             "len_trim": "Lname", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "name", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "test_names", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "test_names", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -3956,13 +4561,23 @@
                     {
                         "attrs": {
                             "intent": "in", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "name", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
@@ -3970,18 +4585,29 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "flag", 
-                        "type": "int"
+                        "declarator": {
+                            "name": "flag", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "test_names", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "test_names", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -4051,13 +4677,23 @@
                         "attrs": {
                             "intent": "in", 
                             "len_trim": "Lname", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "name", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
@@ -4065,18 +4701,29 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "flag", 
-                        "type": "int"
+                        "declarator": {
+                            "name": "flag", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "test_names", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "test_names", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -4117,11 +4764,16 @@
                 "args": [], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "testoptional", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "testoptional", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -4180,18 +4832,30 @@
                             "value": true
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "i", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
                         "init": 1, 
-                        "name": "i", 
-                        "type": "int"
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "testoptional", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "testoptional", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -4285,9 +4949,16 @@
                             "value": true
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "i", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
                         "init": 1, 
-                        "name": "i", 
-                        "type": "int"
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
@@ -4295,18 +4966,30 @@
                             "value": true
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "j", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
                         "init": 2, 
-                        "name": "j", 
-                        "type": "long"
+                        "specifier": [
+                            "long"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "testoptional", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "testoptional", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -4368,18 +5051,29 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "comm", 
-                        "type": "MPI_Comm"
+                        "declarator": {
+                            "name": "comm", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "MPI_Comm"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "testmpi", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "testmpi", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -4439,22 +5133,37 @@
                     {
                         "attrs": {
                             "intent": "in", 
-                            "ptr": true, 
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "grp", 
-                        "type": "DataGroup"
+                        "declarator": {
+                            "name": "grp", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "DataGroup"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "testgroup1", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "testgroup1", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -4514,22 +5223,37 @@
                     {
                         "attrs": {
                             "intent": "in", 
-                            "ptr": true, 
                             "value": true
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "grp", 
-                        "type": "DataGroup"
+                        "declarator": {
+                            "name": "grp", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "DataGroup"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "testgroup2", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "testgroup2", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }
     ], 

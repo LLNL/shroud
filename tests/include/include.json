@@ -112,18 +112,29 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "arg1", 
-                                "type": "CustomType"
+                                "declarator": {
+                                    "name": "arg1", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "CustomType"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "method1", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "method1", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }
             ], 
@@ -200,18 +211,29 @@
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "comm", 
-                                "type": "MPI_Comm"
+                                "declarator": {
+                                    "name": "comm", 
+                                    "pointer": []
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "MPI_Comm"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "method1", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "method1", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }, 
                 {
@@ -264,22 +286,37 @@
                             {
                                 "attrs": {
                                     "intent": "in", 
-                                    "ptr": true, 
                                     "value": true
                                 }, 
                                 "const": false, 
-                                "init": null, 
-                                "name": "c2", 
-                                "type": "Class1"
+                                "declarator": {
+                                    "name": "c2", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "Class1"
+                                ], 
+                                "storage": []
                             }
                         ], 
                         "attrs": {}, 
                         "const": false, 
+                        "declarator": {
+                            "name": "method2", 
+                            "pointer": []
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "method2", 
-                        "type": "void"
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
                     }
                 }
             ], 
@@ -364,11 +401,16 @@
                 "args": [], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "function1", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "function1", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }
     ], 

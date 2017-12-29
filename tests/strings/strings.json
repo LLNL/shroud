@@ -163,18 +163,29 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "status", 
-                        "type": "char_scalar"
+                        "declarator": {
+                            "name": "status", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char_scalar"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "passChar", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "passChar", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -221,11 +232,16 @@
                 "args": [], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "returnChar", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "returnChar", 
-                "type": "char_scalar"
+                "specifier": [
+                    "char_scalar"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -287,28 +303,38 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "NSHF_rv", 
-                            "ptr": true, 
-                            "reference": false
+                            "len": "NSHF_rv"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "SHF_rv", 
-                        "type": "char_scalar"
+                        "specifier": [
+                            "char_scalar"
+                        ], 
+                        "storage": []
                     }
                 ], 
-                "attrs": {
-                    "ptr": false, 
-                    "reference": false
-                }, 
+                "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "returnChar", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "returnChar", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -387,33 +413,58 @@
                     {
                         "attrs": {
                             "intent": "out", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "dest", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "dest", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "intent": "in", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "src", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "src", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "passCharPtr", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "passCharPtr", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -485,34 +536,59 @@
                         "attrs": {
                             "intent": "out", 
                             "len": "Ndest", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "dest", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "dest", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "intent": "in", 
                             "len_trim": "Lsrc", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "src", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "src", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "passCharPtr", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "passCharPtr", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -573,22 +649,37 @@
                     {
                         "attrs": {
                             "intent": "inout", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "s", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "s", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "passCharPtrInOut", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "passCharPtrInOut", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -646,22 +737,37 @@
                             "intent": "inout", 
                             "len": "Ns", 
                             "len_trim": "Ls", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "s", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "s", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "passCharPtrInOut", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "passCharPtrInOut", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -706,17 +812,25 @@
             "options": {}, 
             "result": {
                 "args": [], 
-                "attrs": {
-                    "ptr": true
-                }, 
+                "attrs": {}, 
                 "const": true, 
+                "declarator": {
+                    "name": "getChar1", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "*"
+                        }
+                    ]
+                }, 
                 "fattrs": {
                     "pure": true
                 }, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getChar1", 
-                "type": "char"
+                "specifier": [
+                    "char"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -774,31 +888,42 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "NSHF_rv", 
-                            "ptr": true
+                            "len": "NSHF_rv"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {
                             "pure": true
                         }, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "SHF_rv", 
-                        "type": "char"
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
-                "attrs": {
-                    "ptr": false, 
-                    "reference": false
-                }, 
+                "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "getChar1", 
+                    "pointer": []
+                }, 
                 "fattrs": {
                     "pure": true
                 }, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getChar1", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -845,15 +970,24 @@
             "result": {
                 "args": [], 
                 "attrs": {
-                    "len": "30", 
-                    "ptr": true
+                    "len": "30"
                 }, 
                 "const": true, 
+                "declarator": {
+                    "name": "getChar2", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "*"
+                        }
+                    ]
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getChar2", 
-                "type": "char"
+                "specifier": [
+                    "char"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -915,28 +1049,40 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "NSHF_rv", 
-                            "ptr": true
+                            "len": "NSHF_rv"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "SHF_rv", 
-                        "type": "char"
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {
-                    "len": "30", 
-                    "ptr": false, 
-                    "reference": false
+                    "len": "30"
                 }, 
                 "const": false, 
+                "declarator": {
+                    "name": "getChar2", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getChar2", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -974,15 +1120,23 @@
             }, 
             "result": {
                 "args": [], 
-                "attrs": {
-                    "ptr": true
-                }, 
+                "attrs": {}, 
                 "const": true, 
+                "declarator": {
+                    "name": "getChar3", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "*"
+                        }
+                    ]
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getChar3", 
-                "type": "char"
+                "specifier": [
+                    "char"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1044,27 +1198,38 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "Noutput", 
-                            "ptr": true
+                            "len": "Noutput"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "output", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "output", 
-                        "type": "char"
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
-                "attrs": {
-                    "ptr": false, 
-                    "reference": false
-                }, 
+                "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "getChar3", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getChar3", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1104,27 +1269,38 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "Noutput", 
-                            "ptr": true
+                            "len": "Noutput"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "output", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "output", 
-                        "type": "char"
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
-                "attrs": {
-                    "ptr": false, 
-                    "reference": false
-                }, 
+                "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "getChar3", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getChar3", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1172,17 +1348,25 @@
             "options": {}, 
             "result": {
                 "args": [], 
-                "attrs": {
-                    "reference": true
-                }, 
+                "attrs": {}, 
                 "const": true, 
+                "declarator": {
+                    "name": "getString1", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "&"
+                        }
+                    ]
+                }, 
                 "fattrs": {
                     "pure": true
                 }, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString1", 
-                "type": "string"
+                "specifier": [
+                    "string"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1240,31 +1424,42 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "NSHF_rv", 
-                            "reference": true
+                            "len": "NSHF_rv"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {
                             "pure": true
                         }, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "SHF_rv", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 ], 
-                "attrs": {
-                    "ptr": false, 
-                    "reference": false
-                }, 
+                "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "getString1", 
+                    "pointer": []
+                }, 
                 "fattrs": {
                     "pure": true
                 }, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString1", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1316,15 +1511,24 @@
             "result": {
                 "args": [], 
                 "attrs": {
-                    "len": 30, 
-                    "reference": true
+                    "len": 30
                 }, 
                 "const": true, 
+                "declarator": {
+                    "name": "getString2", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "&"
+                        }
+                    ]
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString2", 
-                "type": "string"
+                "specifier": [
+                    "string"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1387,28 +1591,40 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "NSHF_rv", 
-                            "reference": true
+                            "len": "NSHF_rv"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "SHF_rv", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {
-                    "len": 30, 
-                    "ptr": false, 
-                    "reference": false
+                    "len": 30
                 }, 
                 "const": false, 
+                "declarator": {
+                    "name": "getString2", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString2", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1451,15 +1667,23 @@
             }, 
             "result": {
                 "args": [], 
-                "attrs": {
-                    "reference": true
-                }, 
+                "attrs": {}, 
                 "const": true, 
+                "declarator": {
+                    "name": "getString3", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "&"
+                        }
+                    ]
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString3", 
-                "type": "string"
+                "specifier": [
+                    "string"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1522,27 +1746,38 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "Noutput", 
-                            "reference": true
+                            "len": "Noutput"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "output", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "output", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 ], 
-                "attrs": {
-                    "ptr": false, 
-                    "reference": false
-                }, 
+                "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "getString3", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString3", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1583,27 +1818,38 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "Noutput", 
-                            "reference": true
+                            "len": "Noutput"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "output", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "output", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 ], 
-                "attrs": {
-                    "ptr": false, 
-                    "reference": false
-                }, 
+                "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "getString3", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString3", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1655,15 +1901,24 @@
             "result": {
                 "args": [], 
                 "attrs": {
-                    "len": 30, 
-                    "reference": true
+                    "len": 30
                 }, 
                 "const": true, 
+                "declarator": {
+                    "name": "getString2_empty", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "&"
+                        }
+                    ]
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString2_empty", 
-                "type": "string"
+                "specifier": [
+                    "string"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1726,28 +1981,40 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "NSHF_rv", 
-                            "reference": true
+                            "len": "NSHF_rv"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "SHF_rv", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {
-                    "len": 30, 
-                    "ptr": false, 
-                    "reference": false
+                    "len": 30
                 }, 
                 "const": false, 
+                "declarator": {
+                    "name": "getString2_empty", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString2_empty", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1786,11 +2053,16 @@
                     "len": 30
                 }, 
                 "const": true, 
+                "declarator": {
+                    "name": "getString5", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString5", 
-                "type": "string"
+                "specifier": [
+                    "string"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1853,29 +2125,40 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "NSHF_rv", 
-                            "ptr": true, 
-                            "reference": false
+                            "len": "NSHF_rv"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "SHF_rv", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {
-                    "len": 30, 
-                    "ptr": false, 
-                    "reference": false
+                    "len": 30
                 }, 
                 "const": false, 
+                "declarator": {
+                    "name": "getString5", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString5", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1903,11 +2186,16 @@
                 "args": [], 
                 "attrs": {}, 
                 "const": true, 
+                "declarator": {
+                    "name": "getString6", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString6", 
-                "type": "string"
+                "specifier": [
+                    "string"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -1970,28 +2258,38 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "Noutput", 
-                            "ptr": true, 
-                            "reference": false
+                            "len": "Noutput"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "output", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "output", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 ], 
-                "attrs": {
-                    "ptr": false, 
-                    "reference": false
-                }, 
+                "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "getString6", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString6", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2032,28 +2330,38 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "Noutput", 
-                            "ptr": true, 
-                            "reference": false
+                            "len": "Noutput"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "output", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "output", 
-                        "type": "string"
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
                     }
                 ], 
-                "attrs": {
-                    "ptr": false, 
-                    "reference": false
-                }, 
+                "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "getString6", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "getString6", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2114,22 +2422,37 @@
                     {
                         "attrs": {
                             "intent": "in", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "acceptStringConstReference", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "acceptStringConstReference", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2184,22 +2507,37 @@
                         "attrs": {
                             "intent": "in", 
                             "len_trim": "Larg1", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "acceptStringConstReference", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "acceptStringConstReference", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2264,22 +2602,37 @@
                     {
                         "attrs": {
                             "intent": "out", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "acceptStringReferenceOut", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "acceptStringReferenceOut", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2336,22 +2689,37 @@
                         "attrs": {
                             "intent": "out", 
                             "len": "Narg1", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "acceptStringReferenceOut", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "acceptStringReferenceOut", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2416,22 +2784,37 @@
                     {
                         "attrs": {
                             "intent": "inout", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "acceptStringReference", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "acceptStringReference", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2490,22 +2873,37 @@
                             "intent": "inout", 
                             "len": "Narg1", 
                             "len_trim": "Larg1", 
-                            "reference": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "arg1", 
-                        "type": "std::string"
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "acceptStringReference", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "acceptStringReference", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2564,22 +2962,37 @@
                         "attrs": {
                             "intent": "in", 
                             "len_trim": "AAlen", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "name", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "explicit1", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "explicit1", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2632,22 +3045,37 @@
                         "attrs": {
                             "intent": "in", 
                             "len_trim": "AAlen", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "name", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "explicit1", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "explicit1", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2706,22 +3134,37 @@
                         "attrs": {
                             "intent": "out", 
                             "len": "AAtrim", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "name", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "explicit2", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "explicit2", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2774,22 +3217,37 @@
                         "attrs": {
                             "intent": "out", 
                             "len": "AAtrim", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "name", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "explicit2", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "explicit2", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2856,18 +3314,29 @@
                             "value": true
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "status", 
-                        "type": "char_scalar"
+                        "declarator": {
+                            "name": "status", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char_scalar"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "CpassChar", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "CpassChar", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2916,11 +3385,16 @@
                 "args": [], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "CreturnChar", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "CreturnChar", 
-                "type": "char_scalar"
+                "specifier": [
+                    "char_scalar"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -2982,28 +3456,38 @@
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
-                            "len": "NSHF_rv", 
-                            "ptr": true, 
-                            "reference": false
+                            "len": "NSHF_rv"
                         }, 
                         "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
                         "fattrs": {}, 
                         "func_const": false, 
-                        "init": null, 
-                        "name": "SHF_rv", 
-                        "type": "char_scalar"
+                        "specifier": [
+                            "char_scalar"
+                        ], 
+                        "storage": []
                     }
                 ], 
-                "attrs": {
-                    "ptr": false, 
-                    "reference": false
-                }, 
+                "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "CreturnChar", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "CreturnChar", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -3084,33 +3568,58 @@
                     {
                         "attrs": {
                             "intent": "out", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "dest", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "dest", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "intent": "in", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "src", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "src", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "CpassCharPtr", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "CpassCharPtr", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }, 
         {
@@ -3182,34 +3691,59 @@
                         "attrs": {
                             "intent": "out", 
                             "len": "Ndest", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": false, 
-                        "init": null, 
-                        "name": "dest", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "dest", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }, 
                     {
                         "attrs": {
                             "intent": "in", 
                             "len_trim": "Lsrc", 
-                            "ptr": true, 
                             "value": false
                         }, 
                         "const": true, 
-                        "init": null, 
-                        "name": "src", 
-                        "type": "char"
+                        "declarator": {
+                            "name": "src", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
                 "const": false, 
+                "declarator": {
+                    "name": "CpassCharPtr", 
+                    "pointer": []
+                }, 
                 "fattrs": {}, 
                 "func_const": false, 
-                "init": null, 
-                "name": "CpassCharPtr", 
-                "type": "void"
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
             }
         }
     ], 
