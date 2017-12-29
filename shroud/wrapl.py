@@ -214,8 +214,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # First overload defines options
         node = overloads[0]
 
-        result = node['_ast']
-        function_name = declast.get_name(result)
+        ast = node['_ast']
+        function_name = declast.get_name(ast)
         fmt_func = node['_fmt']
         fmt = util.Options(fmt_func)
         util.eval_template(node, 'LUA_name')
@@ -223,10 +223,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         CPP_subprogram = node['_subprogram']
 
-        # XXX       result = node['_ast']
-        # XXX       result_type = declast.get_type(result)
-        # XXX       result_is_ptr = declast.is_pointer(result)
-        # XXX       result_is_ref = declast.is_reference(result)
+        # XXX       ast = node['_ast']
+        # XXX       result_type = declast.get_type(ast)
+        # XXX       result_is_ptr = declast.is_pointer(ast)
+        # XXX       result_is_ref = declast.is_reference(ast)
 
         if node.get('return_this', False):
             # XXX           result_type = 'void'
@@ -234,8 +234,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             CPP_subprogram = 'subroutine'
 
         # XXX       result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = result['fattrs'].get('constructor', False)
-        is_dtor = result['fattrs'].get('destructor', False)
+        is_ctor = ast['fattrs'].get('constructor', False)
+        is_dtor = ast['fattrs'].get('destructor', False)
         if is_dtor:
             fmt.LUA_name = '__gc'
 
@@ -436,17 +436,17 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         CPP_subprogram = node['_subprogram']
 
-        result = node['_ast']
-        result_type = declast.get_type(result)
+        ast = node['_ast']
+        result_type = declast.get_type(ast)
 
         if node.get('return_this', False):
             result_type = 'void'
             CPP_subprogram = 'subroutine'
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = result['fattrs'].get('constructor', False)
-        is_dtor = result['fattrs'].get('destructor', False)
-        #        is_const = result['const']
+        is_ctor = ast['fattrs'].get('constructor', False)
+        is_dtor = ast['fattrs'].get('destructor', False)
+        #        is_const = ast['const']
         # XXX        if is_ctor:   # or is_dtor:
         # XXX            # XXX - have explicit delete
         # XXX            # need code in __init__ and __del__
@@ -460,7 +460,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             is_const = None
         # return value
         fmt.rv_decl = self.std_c_decl(
-            'cpp_type', result, name=fmt.LUA_result, const=is_const)
+            'cpp_type', ast, name=fmt.LUA_result, const=is_const)
 
         LUA_decl = []  # declare variables and pop values
         LUA_code = []  # call C++ function
@@ -492,7 +492,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         fmt_arg = util.Options(fmt)
         LUA_index = 1
         for iarg in range(luafcn.nargs):
-            arg = result['args'][iarg]
+            arg = ast['args'][iarg]
             arg_name = declast.get_name(arg)
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault('fmtl', util.Options(fmt))

@@ -366,17 +366,17 @@ return 1;""", fmt)
 
         CPP_subprogram = node['_subprogram']
 
-        result = node['_ast']
-        result_type = declast.get_type(result)
+        ast = node['_ast']
+        result_type = declast.get_type(ast)
 
         if node.get('return_this', False):
             result_type = 'void'
             CPP_subprogram = 'subroutine'
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = result['fattrs'].get('constructor', False)
-        is_dtor = result['fattrs'].get('destructor', False)
-#        is_const = result['const']
+        is_ctor = ast['fattrs'].get('constructor', False)
+        is_dtor = ast['fattrs'].get('destructor', False)
+#        is_const = ast['const']
         if is_ctor:   # or is_dtor:
             # XXX - have explicit delete
             # need code in __init__ and __del__
@@ -389,7 +389,7 @@ return 1;""", fmt)
         else:
             is_const = None
         fmt.rv_decl = self.std_c_decl(
-            'cpp_type', result, name=fmt.PY_result, const=is_const)  # return value
+            'cpp_type', ast, name=fmt.PY_result, const=is_const)  # return value
 
         PY_decl = []     # variables for function
         PY_code = []
@@ -417,7 +417,7 @@ return 1;""", fmt)
                     'if (kwds != NULL) SH_nargs += PyDict_Size(args);',
                     ])
 
-        args = result['args']
+        args = ast['args']
         if not args:
             fmt.ml_flags = 'METH_NOARGS'
         else:
@@ -665,7 +665,7 @@ return 1;""", fmt)
         util.eval_template(node, 'PY_name_impl')
 
         expose = True
-        if len(self.overloaded_methods[declast.get_name(result)]) > 1:
+        if len(self.overloaded_methods[declast.get_name(ast)]) > 1:
             # Only expose a multi-dispatch name, not each overload
             expose = False
         elif found_default:

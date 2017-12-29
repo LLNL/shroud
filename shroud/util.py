@@ -328,13 +328,13 @@ class WrapperMixin(object):
 
 #####
 
-    def std_c_type(self, lang, arg, const=None, ptr=False):
+    def std_c_type(self, lang, ast, const=None, ptr=False):
         """
         Return the C type.
         pass-by-value default
 
         lang = c_type or cpp_type
-        if const is None, use const from arg.
+        if const is None, use const from ast.
 
         attributes:
         ptr - True = pass-by-reference
@@ -344,33 +344,33 @@ class WrapperMixin(object):
 #        if lang not in [ 'c_type', 'cpp_type' ]:
 #            raise RuntimeError
         t = []
-        typedef = Typedef.lookup(declast.get_type(arg))
+        typedef = Typedef.lookup(declast.get_type(ast))
 
         if const is None:
-            const = arg['const']
+            const = ast['const']
         if const:
             t.append('const')
 
         t.append(getattr(typedef, lang))
-        if declast.is_pointer(arg):
+        if declast.is_pointer(ast):
             t.append('*')
-        elif declast.is_reference(arg):
+        elif declast.is_reference(ast):
             if lang == 'cpp_type':
                 t.append('&')
             else:
                 t.append('*')
         return ' '.join(t)
 
-    def std_c_decl(self, lang, arg,
+    def std_c_decl(self, lang, ast,
                    name=None, const=None, ptr=False):
         """
         Return the C declaration.
 
-        If name is not supplied, use name in arg.
+        If name is not supplied, use name in ast.
         This makes it easy to reproduce the arguments.
         """
-        typ = self.std_c_type(lang, arg, const, ptr)
-        return typ + ' ' + (name or declast.get_name(arg))
+        typ = self.std_c_type(lang, ast, const, ptr)
+        return typ + ' ' + (name or declast.get_name(ast))
 
 #####
 
