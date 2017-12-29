@@ -473,7 +473,7 @@ class Wrapc(util.WrapperMixin):
 #                 Usually same as c_var but may be a new local variable
 #                 or the funtion result variable.
 
-        for arg in ast['args']:
+        for arg in ast.params:
             arg_name = declast.get_name(arg)
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault('fmtc', util.Options(fmt_func))

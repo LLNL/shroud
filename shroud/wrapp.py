@@ -417,7 +417,7 @@ return 1;""", fmt)
                     'if (kwds != NULL) SH_nargs += PyDict_Size(args);',
                     ])
 
-        args = ast['args']
+        args = ast.params
         if not args:
             fmt.ml_flags = 'METH_NOARGS'
         else:
@@ -845,7 +845,7 @@ return 1;""", fmt)
                                 % overload['_nargs'])
                 else:
                     body.append('if (SH_nargs == %d) {' %
-                                len(overload['_ast']['args']))
+                                len(overload['_ast'].params))
                 body.append(1)
                 append_format(body,
                               'rvobj = {PY_name_impl}(self, args, kwds);',

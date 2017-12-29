@@ -604,7 +604,7 @@ class Wrapf(util.WrapperMixin):
                 self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
 
         args_all_in = True   # assume all arguments are intent(in)
-        for arg in ast['args']:
+        for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
             arg_typedef, c_statements = util.lookup_c_statements(arg)
@@ -721,7 +721,7 @@ class Wrapf(util.WrapperMixin):
             if '_generated' in C_node:
                 generated.append(C_node['_generated'])
 #  #This is no longer true with the result as an argument
-#        if len(node['args']) != len(C_node['args']):
+#        if len(node.params) != len(C_node.params):
 #            raise RuntimeError("Argument mismatch between Fortran and C functions")
 
         fmt_func.F_C_call = C_node['_fmt'].F_C_name
@@ -802,9 +802,9 @@ class Wrapf(util.WrapperMixin):
         #
         pre_call = []
         post_call = []
-        f_args = ast['args']
+        f_args = ast.params
         f_index = -1       # index into f_args
-        for c_arg in C_node['_ast']['args']:
+        for c_arg in C_node['_ast'].params:
             arg_name = declast.get_name(c_arg)
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg  = fmt_arg0.setdefault('fmtf', util.Options(fmt_func))

@@ -1452,12 +1452,14 @@
                 }, 
                 {
                     "_ast": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "declarator": {
                             "name": "SplicerSpecial", 
                             "pointer": []
                         }, 
+                        "fattrs": {}, 
                         "func_const": false, 
                         "specifier": [
                             "void"
@@ -1490,7 +1492,7 @@
                     "_fmtargs": {}, 
                     "_function_index": 12, 
                     "_subprogram": "subroutine", 
-                    "decl": "void SplicerSpecial", 
+                    "decl": "void SplicerSpecial()", 
                     "options": {}
                 }
             ], 
@@ -3856,12 +3858,14 @@
     "functions": [
         {
             "_ast": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
                     "name": "local_function1", 
                     "pointer": []
                 }, 
+                "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
                     "void"
@@ -3894,7 +3898,7 @@
             "_fmtargs": {}, 
             "_function_index": 47, 
             "_subprogram": "subroutine", 
-            "decl": "void local_function1", 
+            "decl": "void local_function1()", 
             "docs": "yada yada yada", 
             "options": {}
         }, 

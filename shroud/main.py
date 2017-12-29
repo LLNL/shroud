@@ -1010,7 +1010,7 @@ class Schema(object):
                 attrs = node['attrs']
                 if 'result' in attrs:
                     ast.attrs.update(attrs['result'])
-                for arg in ast['args']:
+                for arg in ast.params:
                     name = declast.get_name(arg)
                     if name in attrs:
                         arg.attrs.update(attrs[name])
@@ -1036,6 +1036,9 @@ class Schema(object):
 #            raise RuntimeError("Missing result.name")
 #        if 'type' not in result:
 #            raise RuntimeError("Missing result.type")
+
+        if ast.params is None:
+            raise RuntimeError("Missing arguments:", ast.gen_decl())
 
         ast = node['_ast']
 
@@ -1197,7 +1200,7 @@ class GenFunctions(object):
                 if declast.get_type(new['_ast']) == typename:
                     declast.set_type(new['_ast'], type)
                     new['_CPP_return_templated'] = True
-                for arg in new['_ast']['args']:
+                for arg in new['_ast'].params:
                     if declast.get_type(arg) == typename:
                         declast.set_type(arg, type)
 
@@ -1234,7 +1237,7 @@ class GenFunctions(object):
                 options.wrap_python = False
                 options.wrap_lua = False
                 # Convert typename to type
-                for arg in new['_ast']['args']:
+                for arg in new['_ast'].params:
                     if declast.get_name(arg) == argname:
                         # Convert any typedef to native type with f_type
                         argtype = declast.get_type(arg)
@@ -1269,14 +1272,14 @@ class GenFunctions(object):
         ndefault = 0
 
         min_args = 0
-        for i, arg in enumerate(node['_ast']['args']):
+        for i, arg in enumerate(node['_ast'].params):
             if arg.init is None:
                 min_args += 1
                 continue
             new = util.copy_function_node(node)
             self.append_function_index(new)
             new['_generated'] = 'has_default_arg'
-            del new['_ast']['args'][i:]  # remove trailing arguments
+            del new['_ast'].params[i:]  # remove trailing arguments
             del new['_has_default_arg']
             options = new['options']
             options.wrap_c = True
@@ -1296,7 +1299,7 @@ class GenFunctions(object):
 
         # keep track of generated default value functions
         node['_default_funcs'] = default_funcs
-        node['_nargs'] = (min_args, len(node['_ast']['args']))
+        node['_nargs'] = (min_args, len(node['_ast'].params))
         # The last name calls with all arguments (the original decl)
         try:
             node['_fmt'].function_suffix = default_arg_suffix[ndefault]
@@ -1341,7 +1344,7 @@ class GenFunctions(object):
 
         # Is result or any argument a string?
         has_implied_arg = False
-        for arg in ast['args']:
+        for arg in ast.params:
             argtype = declast.get_type(arg)
             typedef = util.Typedef.lookup(argtype)
             if typedef.base == 'string':
@@ -1393,7 +1396,7 @@ class GenFunctions(object):
         C_new['_PTR_C_CPP_index'] = node['_function_index']
 
         newargs = []
-        for arg in C_new['_ast']['args']:
+        for arg in C_new['_ast'].params:
             attrs = arg.attrs
             argtype = declast.get_type(arg)
             arg_typedef = util.Typedef.lookup(argtype)
@@ -1446,7 +1449,7 @@ class GenFunctions(object):
                 declast.set_indirection(result_as_string, '*')
 
             ast = C_new['_ast']
-            ast['args'].append(result_as_string)
+            ast.params.append(result_as_string)
 
             # convert to subroutine
             C_new['_subprogram'] = 'subroutine'
@@ -1515,8 +1518,8 @@ class GenFunctions(object):
             # XXX - Maybe dummy it out
             # XXX - process templated types
             return
-        result = node['_ast']
-        rv_type = declast.get_type(result)
+        ast = node['_ast']
+        rv_type = declast.get_type(ast)
         typedef = util.Typedef.lookup(rv_type)
         if typedef is None:
             raise RuntimeError(
@@ -1525,7 +1528,7 @@ class GenFunctions(object):
         result_typedef = util.Typedef.lookup(rv_type)
         # XXX - make sure it exists
         used_types[rv_type] = result_typedef
-        for arg in result['args']:
+        for arg in ast.params:
             argtype = declast.get_type(arg)
             typedef = util.Typedef.lookup(argtype)
             if typedef is None:
@@ -1584,9 +1587,9 @@ class GenFunctions(object):
             ast = node['_ast']
             self.gen_arg_decl(ast, decl)
 
-            if ast['args']:
+            if ast.params:
                 decl.append('(')
-                for arg in ast['args']:
+                for arg in ast.params:
                     self.gen_arg_decl(arg, decl)
                     self.gen_annotations_decl(arg.attrs, decl)
                     decl.append(', ')
@@ -1660,9 +1663,9 @@ class VerifyAttrs(object):
             return
 
         # cache subprogram type
-        result = node['_ast']
-        result_type = declast.get_type(result)
-        result_is_ptr = declast.is_pointer(result)
+        ast = node['_ast']
+        result_type = declast.get_type(ast)
+        result_is_ptr = declast.is_pointer(ast)
         #  'void'=subroutine   'void *'=function
         if result_type == 'void' and not result_is_ptr:
             node['_subprogram'] = 'subroutine'
@@ -1670,7 +1673,7 @@ class VerifyAttrs(object):
             node['_subprogram'] = 'function'
 
         found_default = False
-        for arg in result['args']:
+        for arg in ast.params:
             argname = declast.get_name(arg)
             argtype = declast.get_type(arg)
             typedef = util.Typedef.lookup(argtype)

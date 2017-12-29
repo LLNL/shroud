@@ -92,12 +92,14 @@
                 {
                     "F_name_function": "type_method1", 
                     "_ast": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "declarator": {
                             "name": "method1", 
                             "pointer": []
                         }, 
+                        "fattrs": {}, 
                         "func_const": false, 
                         "specifier": [
                             "void"
@@ -133,17 +135,19 @@
                     "_fmtargs": {}, 
                     "_function_index": 0, 
                     "_subprogram": "subroutine", 
-                    "decl": "void method1", 
+                    "decl": "void method1()", 
                     "options": {}
                 }, 
                 {
                     "_ast": {
+                        "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "declarator": {
                             "name": "method2", 
                             "pointer": []
                         }, 
+                        "fattrs": {}, 
                         "func_const": false, 
                         "specifier": [
                             "void"
@@ -179,7 +183,7 @@
                     "_fmtargs": {}, 
                     "_function_index": 1, 
                     "_subprogram": "subroutine", 
-                    "decl": "void method2", 
+                    "decl": "void method2()", 
                     "options": {}
                 }
             ], 
@@ -262,12 +266,14 @@
     "functions": [
         {
             "_ast": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
                     "name": "function1", 
                     "pointer": []
                 }, 
+                "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
                     "void"
@@ -300,7 +306,7 @@
             "_fmtargs": {}, 
             "_function_index": 2, 
             "_subprogram": "subroutine", 
-            "decl": "void function1", 
+            "decl": "void function1()", 
             "options": {}
         }, 
         {
@@ -308,12 +314,14 @@
             "F_C_name": "f_c_name_special", 
             "F_name_impl": "f_name_special", 
             "_ast": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
                     "name": "function2", 
                     "pointer": []
                 }, 
+                "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
                     "void"
@@ -346,7 +354,7 @@
             "_fmtargs": {}, 
             "_function_index": 3, 
             "_subprogram": "subroutine", 
-            "decl": "void function2", 
+            "decl": "void function2()", 
             "options": {}
         }, 
         {

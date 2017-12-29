@@ -519,22 +519,6 @@ class Declaration(Node):
         self.func_const = False
         self.fattrs     = {}     # function attributes
 
-    def __getitem__(self, item):
-        """ emulate behavior for old result['const']"""
-        if item == 'args':
-            if self.params is None:
-                return []
-            else:
-                return self.params
-        else:
-            raise KeyError
-
-    def __contains__(self, item):
-        if item in ['name', 'type', 'attrs']:
-            return True
-        else:
-            return False
-
     def get_name(self):
         """Extract name from declarator."""
         name = self.declarator.name

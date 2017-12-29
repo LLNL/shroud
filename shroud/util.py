@@ -770,30 +770,6 @@ class XXXFunctionNode(object):
             self.set_decl(d['decl'])
         self._update_result_args(d)
 
-    def _update_result_args(self, d):
-        # Just assign if no value yet.
-        if 'result' in d:
-            if self.result:
-                update(self.result, d['result'])
-            else:
-                self.result = d['result']
-        if 'args' in d:
-            if self.args:
-                for arg in d['args']:
-                    name = declast.get_name(arg)
-                    if name in self.arg_map:
-                        # update existing arg
-                        update(self.arg_map[name], arg)
-                    else:
-                        # append to current args
-                        self.args.append(arg)
-                        self.arg_map[name] = arg
-            else:
-                self.args = d['args']
-                for arg in self.args:
-                    name = declast.get_name(arg)
-                    self.arg_map[name] = arg
-
     def dump(self):
         print('FunctionNode:', self.decl)
         print(self.result)

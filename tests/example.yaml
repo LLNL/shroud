@@ -164,7 +164,7 @@ classes:
     - decl: void *getAddr()
     - decl: bool hasAddr(bool in)
 
-    - decl: void SplicerSpecial
+    - decl: void SplicerSpecial()
 
   ######################################################################
   - name: ExClass2
@@ -243,7 +243,7 @@ classes:
 
 
 functions:
-  - decl: void local_function1
+  - decl: void local_function1()
     docs: yada yada yada
 
   # override the C code.
