@@ -559,7 +559,7 @@ class Wrapf(util.WrapperMixin):
         fmt_func = node['_fmt']
         fmt = util.Options(fmt_func)
 
-        result = node['result']
+        result = node['_ast']
         result_type = declast.get_type(result)
         func_is_const = result['func_const']
         subprogram = node['_subprogram']
@@ -730,7 +730,7 @@ class Wrapf(util.WrapperMixin):
         fmtargs = C_node.setdefault('_fmtargs', {})
 
         # Fortran return type
-        result = node['result']
+        result = node['_ast']
         result_type = declast.get_type(result)
         func_is_const = result['func_const']
         subprogram = node['_subprogram']
@@ -754,7 +754,7 @@ class Wrapf(util.WrapperMixin):
             result_type = node['C_return_type']
             subprogram = 'function'
             c_subprogram = 'function'
-            result = copy.deepcopy(node['result'])
+            result = copy.deepcopy(node['_ast'])
             declast.set_type(result, result_type)
 
         result_typedef = util.Typedef.lookup(result_type)
@@ -806,7 +806,7 @@ class Wrapf(util.WrapperMixin):
         post_call = []
         f_args = result['args']
         f_index = -1       # index into f_args
-        for c_arg in C_node['result']['args']:
+        for c_arg in C_node['_ast']['args']:
             arg_name = declast.get_name(c_arg)
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg  = fmt_arg0.setdefault('fmtf', util.Options(fmt_func))

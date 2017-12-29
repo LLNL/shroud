@@ -382,12 +382,12 @@ class Wrapc(util.WrapperMixin):
                 CPP_node['_PTR_C_CPP_index']]
             if '_generated' in CPP_node:
                 generated.append(CPP_node['_generated'])
-        CPP_result = CPP_node['result']
+        CPP_result = CPP_node['_ast']
         CPP_result_type = declast.get_type(CPP_result)
         CPP_subprogram = CPP_node['_subprogram']
 
         # C return type
-        result = node['result']
+        result = node['_ast']
         result_type = declast.get_type(result)
         subprogram = node['_subprogram']
         generator = node.get('_generated', '')
@@ -723,7 +723,7 @@ class Wrapc(util.WrapperMixin):
             impl.append('}')
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = declast.get_name(node['result'])
+            fmt_func.C_name = declast.get_name(node['_ast'])
 
 
     def XXXget_intent(self, intent_blk, block):

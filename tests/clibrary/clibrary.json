@@ -88,6 +88,21 @@
     "cpp_header": "clibrary.h", 
     "functions": [
         {
+            "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "Function1", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void Function1()", 
             "_fmt": {
                 "C_call_code": "Function1();", 
@@ -114,24 +129,57 @@
             "_function_index": 0, 
             "_subprogram": "subroutine", 
             "decl": "void Function1()", 
-            "options": {}, 
-            "result": {
-                "args": [], 
+            "options": {}
+        }, 
+        {
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "double"
+                        ], 
+                        "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "Function1", 
+                    "name": "Function2", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "void"
+                    "double"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
@@ -192,125 +240,10 @@
             "_function_index": 1, 
             "_subprogram": "function", 
             "decl": "double Function2(double arg1, int arg2)", 
-            "options": {}, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg1", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "double"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg2", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "int"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "Function2", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "double"
-                ], 
-                "storage": []
-            }
+            "options": {}
         }, 
         {
-            "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
-            "_fmt": {
-                "C_call_code": "Sum(len, values, result);", 
-                "C_call_list": "len, values, result", 
-                "C_name": "Sum", 
-                "C_prototype": "int len, int * values, int * result", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_sum", 
-                "F_C_name": "sum", 
-                "F_arg_c_call": "len, values, result", 
-                "F_arg_c_call_tab": "\tlen\tvalues\tresult", 
-                "F_arguments": "len, values, result", 
-                "F_call_code": "call c_sum(\tlen\tvalues\tresult)", 
-                "F_name_function": "sum", 
-                "F_name_generic": "sum", 
-                "F_name_impl": "sum", 
-                "F_subprogram": "subroutine", 
-                "c_const": "", 
-                "function_name": "Sum", 
-                "underscore_name": "sum"
-            }, 
-            "_fmtargs": {
-                "len": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "len", 
-                        "cpp_type": "int", 
-                        "cpp_var": "len"
-                    }, 
-                    "fmtf": {
-                        "c_var": "len", 
-                        "f_var": "len"
-                    }
-                }, 
-                "result": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "result", 
-                        "cpp_type": "int", 
-                        "cpp_var": "result"
-                    }, 
-                    "fmtf": {
-                        "c_var": "result", 
-                        "f_var": "result"
-                    }
-                }, 
-                "values": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "values", 
-                        "cpp_type": "int", 
-                        "cpp_var": "values"
-                    }, 
-                    "fmtf": {
-                        "c_var": "values", 
-                        "f_var": "values"
-                    }
-                }
-            }, 
-            "_function_index": 2, 
-            "_subprogram": "subroutine", 
-            "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
-            "options": {}, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -384,9 +317,108 @@
                     "void"
                 ], 
                 "storage": []
-            }
+            }, 
+            "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
+            "_fmt": {
+                "C_call_code": "Sum(len, values, result);", 
+                "C_call_list": "len, values, result", 
+                "C_name": "Sum", 
+                "C_prototype": "int len, int * values, int * result", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_sum", 
+                "F_C_name": "sum", 
+                "F_arg_c_call": "len, values, result", 
+                "F_arg_c_call_tab": "\tlen\tvalues\tresult", 
+                "F_arguments": "len, values, result", 
+                "F_call_code": "call c_sum(\tlen\tvalues\tresult)", 
+                "F_name_function": "sum", 
+                "F_name_generic": "sum", 
+                "F_name_impl": "sum", 
+                "F_subprogram": "subroutine", 
+                "c_const": "", 
+                "function_name": "Sum", 
+                "underscore_name": "sum"
+            }, 
+            "_fmtargs": {
+                "len": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "len", 
+                        "cpp_type": "int", 
+                        "cpp_var": "len"
+                    }, 
+                    "fmtf": {
+                        "c_var": "len", 
+                        "f_var": "len"
+                    }
+                }, 
+                "result": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "result", 
+                        "cpp_type": "int", 
+                        "cpp_var": "result"
+                    }, 
+                    "fmtf": {
+                        "c_var": "result", 
+                        "f_var": "result"
+                    }
+                }, 
+                "values": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "values", 
+                        "cpp_type": "int", 
+                        "cpp_var": "values"
+                    }, 
+                    "fmtf": {
+                        "c_var": "values", 
+                        "f_var": "values"
+                    }
+                }
+            }, 
+            "_function_index": 2, 
+            "_subprogram": "subroutine", 
+            "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
+            "options": {}
         }, 
         {
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "bool"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "Function3", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "bool"
+                ], 
+                "storage": []
+            }, 
             "_decl": "bool Function3(bool arg +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "bool SHT_rv = Function3(arg);", 
@@ -434,109 +466,10 @@
             "_function_index": 3, 
             "_subprogram": "function", 
             "decl": "bool Function3(bool arg)", 
-            "options": {}, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "bool"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "Function3", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "bool"
-                ], 
-                "storage": []
-            }
+            "options": {}
         }, 
         {
-            "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
-            "_fmt": {
-                "C_call_code": "Function3b(arg1, arg2, arg3);", 
-                "C_call_list": "arg1, arg2, arg3", 
-                "C_name": "Function3b", 
-                "C_prototype": "const bool arg1, bool * arg2, bool * arg3", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_function3b", 
-                "F_C_name": "c_function3b", 
-                "F_arg_c_call": "SH_arg1, SH_arg2, SH_arg3", 
-                "F_arg_c_call_tab": "\tSH_arg1\tSH_arg2\tSH_arg3", 
-                "F_arguments": "arg1, arg2, arg3", 
-                "F_call_code": "call c_function3b(\tSH_arg1\tSH_arg2\tSH_arg3)", 
-                "F_name_function": "function3b", 
-                "F_name_generic": "function3b", 
-                "F_name_impl": "function3b", 
-                "F_subprogram": "subroutine", 
-                "c_const": "", 
-                "function_name": "Function3b", 
-                "underscore_name": "function3b"
-            }, 
-            "_fmtargs": {
-                "arg1": {
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg1"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SH_arg1", 
-                        "f_var": "arg1"
-                    }
-                }, 
-                "arg2": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "arg2", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg2"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SH_arg2", 
-                        "f_var": "arg2"
-                    }
-                }, 
-                "arg3": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "arg3", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg3"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SH_arg3", 
-                        "f_var": "arg3"
-                    }
-                }
-            }, 
-            "_function_index": 4, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
-            "options": {}, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -609,66 +542,79 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "C_post_call_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
-            "_PTR_F_C_index": 6, 
-            "_decl": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in))", 
+            }, 
+            "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
             "_fmt": {
-                "C_call_code": "char * SHT_rv = Function4a(arg1, arg2);", 
-                "C_call_list": "arg1, arg2", 
-                "C_name": "Function4a", 
-                "C_prototype": "const char * arg1, const char * arg2", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "char *", 
-                "F_C_call": "c_function4a_bufferify", 
-                "F_C_name": "c_function4a", 
-                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SHT_rv, len(SHT_rv, kind=C_INT)", 
-                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT)", 
-                "F_arguments": "arg1, arg2", 
-                "F_call_code": "call c_function4a_bufferify(\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT))", 
-                "F_name_function": "function4a", 
-                "F_name_generic": "function4a", 
-                "F_name_impl": "function4a", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
+                "C_call_code": "Function3b(arg1, arg2, arg3);", 
+                "C_call_list": "arg1, arg2, arg3", 
+                "C_name": "Function3b", 
+                "C_prototype": "const bool arg1, bool * arg2, bool * arg3", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_function3b", 
+                "F_C_name": "c_function3b", 
+                "F_arg_c_call": "SH_arg1, SH_arg2, SH_arg3", 
+                "F_arg_c_call_tab": "\tSH_arg1\tSH_arg2\tSH_arg3", 
+                "F_arguments": "arg1, arg2, arg3", 
+                "F_call_code": "call c_function3b(\tSH_arg1\tSH_arg2\tSH_arg3)", 
+                "F_name_function": "function3b", 
+                "F_name_generic": "function3b", 
+                "F_name_impl": "function3b", 
+                "F_subprogram": "subroutine", 
                 "c_const": "", 
-                "c_var_len": "30", 
-                "function_name": "Function4a", 
-                "underscore_name": "function4a"
+                "function_name": "Function3b", 
+                "underscore_name": "function3b"
             }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
                         "c_const": "const ", 
-                        "c_ptr": " *", 
+                        "c_ptr": "", 
                         "c_var": "arg1", 
-                        "cpp_type": "char", 
+                        "cpp_type": "bool", 
                         "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg1", 
+                        "f_var": "arg1"
                     }
                 }, 
                 "arg2": {
                     "fmtc": {
-                        "c_const": "const ", 
+                        "c_const": "", 
                         "c_ptr": " *", 
                         "c_var": "arg2", 
-                        "cpp_type": "char", 
+                        "cpp_type": "bool", 
                         "cpp_var": "arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg2", 
+                        "f_var": "arg2"
+                    }
+                }, 
+                "arg3": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "arg3", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg3"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg3", 
+                        "f_var": "arg3"
                     }
                 }
             }, 
-            "_fmtresult": {
-                "fmtc": {
-                    "cpp_rv_decl": "char * SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 5, 
-            "_subprogram": "function", 
-            "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
-            "options": {}, 
-            "result": {
+            "_function_index": 4, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
+            "options": {}
+        }, 
+        {
+            "C_post_call_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
+            "_PTR_F_C_index": 6, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -732,56 +678,39 @@
                     "char"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "C_post_call": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
-            "C_post_call_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
-            "_PTR_C_CPP_index": 5, 
-            "_decl": "void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))", 
-            "_error_pattern_suffix": "_as_buffer", 
+            }, 
+            "_decl": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in))", 
             "_fmt": {
-                "C_call_code": "char * SHT_rv = Function4a(SH_arg1, SH_arg2);", 
-                "C_call_list": "SH_arg1, SH_arg2", 
-                "C_name": "CLI_function4a_bufferify", 
-                "C_post_call": "free(SH_arg1);\nfree(SH_arg2);\nif (SHT_rv == NULL) {\n  memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
-                "C_pre_call": "char * SH_arg1 = (char *) malloc(Larg1 + 1);\nmemcpy(SH_arg1, arg1, Larg1);\nSH_arg1[Larg1] = '\\0';\nchar * SH_arg2 = (char *) malloc(Larg2 + 1);\nmemcpy(SH_arg2, arg2, Larg2);\nSH_arg2[Larg2] = '\\0';", 
-                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_function4a_bufferify", 
+                "C_call_code": "char * SHT_rv = Function4a(arg1, arg2);", 
+                "C_call_list": "arg1, arg2", 
+                "C_name": "Function4a", 
+                "C_prototype": "const char * arg1, const char * arg2", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "char *", 
+                "F_C_call": "c_function4a_bufferify", 
+                "F_C_name": "c_function4a", 
+                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SHT_rv, len(SHT_rv, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT)", 
+                "F_arguments": "arg1, arg2", 
+                "F_call_code": "call c_function4a_bufferify(\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT))", 
+                "F_name_function": "function4a", 
+                "F_name_generic": "function4a", 
+                "F_name_impl": "function4a", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
                 "c_const": "", 
-                "function_suffix": "_bufferify"
+                "c_var_len": "30", 
+                "function_name": "Function4a", 
+                "underscore_name": "function4a"
             }, 
             "_fmtargs": {
-                "SHF_rv": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "SHF_rv", 
-                        "c_var_len": "NSHF_rv", 
-                        "cpp_type": "char", 
-                        "cpp_val": "SHT_rv", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SHT_rv", 
-                        "f_var": "SHT_rv"
-                    }
-                }, 
                 "arg1": {
                     "fmtc": {
                         "c_const": "const ", 
                         "c_ptr": " *", 
                         "c_var": "arg1", 
-                        "c_var_trim": "Larg1", 
                         "cpp_type": "char", 
-                        "cpp_val": "SH_arg1", 
-                        "cpp_var": "SH_arg1"
-                    }, 
-                    "fmtf": {
-                        "c_var": "arg1", 
-                        "f_var": "arg1"
+                        "cpp_var": "arg1"
                     }
                 }, 
                 "arg2": {
@@ -789,14 +718,8 @@
                         "c_const": "const ", 
                         "c_ptr": " *", 
                         "c_var": "arg2", 
-                        "c_var_trim": "Larg2", 
                         "cpp_type": "char", 
-                        "cpp_val": "SH_arg2", 
-                        "cpp_var": "SH_arg2"
-                    }, 
-                    "fmtf": {
-                        "c_var": "arg2", 
-                        "f_var": "arg2"
+                        "cpp_var": "arg2"
                     }
                 }
             }, 
@@ -806,17 +729,16 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 6, 
-            "_generated": "arg_to_buffer", 
-            "_subprogram": "subroutine", 
+            "_function_index": 5, 
+            "_subprogram": "function", 
             "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
-            "options": {
-                "wrap_c": true, 
-                "wrap_fortran": false, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "C_post_call": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
+            "C_post_call_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
+            "_PTR_C_CPP_index": 5, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -944,6 +866,84 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "char * SHT_rv = Function4a(SH_arg1, SH_arg2);", 
+                "C_call_list": "SH_arg1, SH_arg2", 
+                "C_name": "CLI_function4a_bufferify", 
+                "C_post_call": "free(SH_arg1);\nfree(SH_arg2);\nif (SHT_rv == NULL) {\n  memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
+                "C_pre_call": "char * SH_arg1 = (char *) malloc(Larg1 + 1);\nmemcpy(SH_arg1, arg1, Larg1);\nSH_arg1[Larg1] = '\\0';\nchar * SH_arg2 = (char *) malloc(Larg2 + 1);\nmemcpy(SH_arg2, arg2, Larg2);\nSH_arg2[Larg2] = '\\0';", 
+                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_function4a_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
+            "_fmtargs": {
+                "SHF_rv": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "SHF_rv", 
+                        "c_var_len": "NSHF_rv", 
+                        "cpp_type": "char", 
+                        "cpp_val": "SHT_rv", 
+                        "cpp_var": "SHT_rv"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SHT_rv", 
+                        "f_var": "SHT_rv"
+                    }
+                }, 
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": " *", 
+                        "c_var": "arg1", 
+                        "c_var_trim": "Larg1", 
+                        "cpp_type": "char", 
+                        "cpp_val": "SH_arg1", 
+                        "cpp_var": "SH_arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }
+                }, 
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": " *", 
+                        "c_var": "arg2", 
+                        "c_var_trim": "Larg2", 
+                        "cpp_type": "char", 
+                        "cpp_val": "SH_arg2", 
+                        "cpp_var": "SH_arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg2", 
+                        "f_var": "arg2"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "char * SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 6, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
+            "options": {
+                "wrap_c": true, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }
     ], 

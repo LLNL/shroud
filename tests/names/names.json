@@ -91,6 +91,19 @@
             "methods": [
                 {
                     "F_name_function": "type_method1", 
+                    "_ast": {
+                        "attrs": {}, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "method1", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "void"
+                        ], 
+                        "storage": []
+                    }, 
                     "_decl": "void method1()", 
                     "_fmt": {
                         "C_call_code": "SH_this->method1();", 
@@ -121,12 +134,14 @@
                     "_function_index": 0, 
                     "_subprogram": "subroutine", 
                     "decl": "void method1", 
-                    "options": {}, 
-                    "result": {
+                    "options": {}
+                }, 
+                {
+                    "_ast": {
                         "attrs": {}, 
                         "const": false, 
                         "declarator": {
-                            "name": "method1", 
+                            "name": "method2", 
                             "pointer": []
                         }, 
                         "func_const": false, 
@@ -134,9 +149,7 @@
                             "void"
                         ], 
                         "storage": []
-                    }
-                }, 
-                {
+                    }, 
                     "_decl": "void method2()", 
                     "_fmt": {
                         "C_call_code": "SH_this->method2();", 
@@ -167,20 +180,7 @@
                     "_function_index": 1, 
                     "_subprogram": "subroutine", 
                     "decl": "void method2", 
-                    "options": {}, 
-                    "result": {
-                        "attrs": {}, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "method2", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "void"
-                        ], 
-                        "storage": []
-                    }
+                    "options": {}
                 }
             ], 
             "name": "Names", 
@@ -261,6 +261,19 @@
     "cpp_header": "", 
     "functions": [
         {
+            "_ast": {
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "function1", 
+                    "pointer": []
+                }, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void function1()", 
             "_fmt": {
                 "C_call_code": "function1();", 
@@ -288,12 +301,17 @@
             "_function_index": 2, 
             "_subprogram": "subroutine", 
             "decl": "void function1", 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "C_name": "c_name_special", 
+            "F_C_name": "f_c_name_special", 
+            "F_name_impl": "f_name_special", 
+            "_ast": {
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "function1", 
+                    "name": "function2", 
                     "pointer": []
                 }, 
                 "func_const": false, 
@@ -301,12 +319,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "C_name": "c_name_special", 
-            "F_C_name": "f_c_name_special", 
-            "F_name_impl": "f_name_special", 
+            }, 
             "_decl": "void function2()", 
             "_fmt": {
                 "C_call_code": "function2();", 
@@ -334,24 +347,43 @@
             "_function_index": 3, 
             "_subprogram": "subroutine", 
             "decl": "void function2", 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "F_name_generic": "generic3", 
+            "F_name_impl": "F_name_function3a_int", 
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "i", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "function2", 
+                    "name": "function3a", 
                     "pointer": []
                 }, 
+                "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "F_name_generic": "generic3", 
-            "F_name_impl": "F_name_function3a_int", 
+            }, 
             "_cpp_overload": [
                 4, 
                 5
@@ -407,8 +439,12 @@
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void function3a(int i)", 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "F_name_generic": "generic3", 
+            "F_name_impl": "F_name_function3a_long", 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -422,7 +458,7 @@
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "int"
+                            "long"
                         ], 
                         "storage": []
                     }
@@ -439,11 +475,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "F_name_generic": "generic3", 
-            "F_name_impl": "F_name_function3a_long", 
+            }, 
             "_cpp_overload": [
                 4, 
                 5
@@ -499,22 +531,30 @@
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void function3a(long i)", 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_PTR_F_C_index": 7, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "in", 
-                            "value": true
+                            "value": false
                         }, 
-                        "const": false, 
+                        "const": true, 
                         "declarator": {
-                            "name": "i", 
-                            "pointer": []
+                            "name": "rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "long"
+                            "std::string"
                         ], 
                         "storage": []
                     }
@@ -522,19 +562,16 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "function3a", 
+                    "name": "function4", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "void"
+                    "int"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 7, 
+            }, 
             "_decl": "int function4(const std::string & rv +intent(in))", 
             "_fmt": {
                 "C_call_code": "int SHT_rv = function4(SH_rv);", 
@@ -588,12 +625,16 @@
             "_function_index": 6, 
             "_subprogram": "function", 
             "decl": "int function4(const std::string &rv)", 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 6, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "in", 
+                            "len_trim": "Lrv", 
                             "value": false
                         }, 
                         "const": true, 
@@ -625,10 +666,7 @@
                     "int"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 6, 
+            }, 
             "_decl": "int function4(const std::string & rv +intent(in)+len_trim(Lrv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -674,44 +712,6 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "len_trim": "Lrv", 
-                            "value": false
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "rv", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::string"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "function4", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "int"
-                ], 
-                "storage": []
             }
         }
     ], 

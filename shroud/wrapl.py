@@ -187,7 +187,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for function in functions:
             if not function['options'].wrap_lua:
                 continue
-            name = declast.get_name(function['result'])
+            name = declast.get_name(function['_ast'])
             if name in overloaded_methods:
                 overloaded_methods[name].append(function)
             else:
@@ -214,7 +214,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # First overload defines options
         node = overloads[0]
 
-        result = node['result']
+        result = node['_ast']
         function_name = declast.get_name(result)
         fmt_func = node['_fmt']
         fmt = util.Options(fmt_func)
@@ -223,7 +223,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         CPP_subprogram = node['_subprogram']
 
-        # XXX       result = node['result']
+        # XXX       result = node['_ast']
         # XXX       result_type = declast.get_type(result)
         # XXX       result_is_ptr = declast.is_pointer(result)
         # XXX       result_is_ref = declast.is_reference(result)
@@ -257,7 +257,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             in_args = []
             out_args = []
             found_default = False
-            for arg in function['result']['args']:
+            for arg in function['_ast']['args']:
                 arg_typedef = util.Typedef.lookup(declast.get_type(arg))
                 attrs = arg['attrs']
                 if arg['init'] is not None:
@@ -436,7 +436,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         CPP_subprogram = node['_subprogram']
 
-        result = node['result']
+        result = node['_ast']
         result_type = declast.get_type(result)
 
         if node.get('return_this', False):

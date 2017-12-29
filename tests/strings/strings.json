@@ -102,6 +102,38 @@
     "cpp_header": "strings.hpp", 
     "functions": [
         {
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "status", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char_scalar"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "passChar", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void passChar(char_scalar status +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "passChar(status);", 
@@ -154,42 +186,25 @@
             "doxygen": {
                 "brief": "pass a single char argument as a scalar."
             }, 
-            "options": {}, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "status", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "char_scalar"
-                        ], 
-                        "storage": []
-                    }
-                ], 
+            "options": {}
+        }, 
+        {
+            "_PTR_F_C_index": 21, 
+            "_ast": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "passChar", 
+                    "name": "returnChar", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "void"
+                    "char_scalar"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 21, 
+            }, 
             "_decl": "char_scalar returnChar()", 
             "_fmt": {
                 "C_call_code": "char SHT_rv = returnChar();", 
@@ -227,9 +242,37 @@
             "doxygen": {
                 "brief": "return a char argument (non-pointer)"
             }, 
-            "options": {}, 
-            "result": {
-                "args": [], 
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 1, 
+            "_ast": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char_scalar"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
@@ -239,13 +282,10 @@
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "char_scalar"
+                    "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 1, 
+            }, 
             "_decl": "void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -295,19 +335,20 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 22, 
+            "_ast": {
                 "args": [
                     {
-                        "args": [], 
                         "attrs": {
-                            "_is_result": true, 
                             "intent": "out", 
-                            "len": "NSHF_rv"
+                            "value": false
                         }, 
                         "const": false, 
                         "declarator": {
-                            "name": "SHF_rv", 
+                            "name": "dest", 
                             "pointer": [
                                 {
                                     "const": false, 
@@ -315,10 +356,30 @@
                                 }
                             ]
                         }, 
-                        "fattrs": {}, 
                         "func_const": false, 
                         "specifier": [
-                            "char_scalar"
+                            "char"
+                        ], 
+                        "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "declarator": {
+                            "name": "src", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
                         ], 
                         "storage": []
                     }
@@ -326,7 +387,7 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "returnChar", 
+                    "name": "passCharPtr", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
@@ -335,10 +396,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 22, 
+            }, 
             "_decl": "void passCharPtr(char * dest +intent(out), const char * src +intent(in))", 
             "_fmt": {
                 "C_call_code": "passCharPtr(dest, src);", 
@@ -407,12 +465,16 @@
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
             }, 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 2, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "out", 
+                            "len": "Ndest", 
                             "value": false
                         }, 
                         "const": false, 
@@ -434,6 +496,7 @@
                     {
                         "attrs": {
                             "intent": "in", 
+                            "len_trim": "Lsrc", 
                             "value": false
                         }, 
                         "const": true, 
@@ -465,10 +528,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 2, 
+            }, 
             "_decl": "void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -529,40 +589,20 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 23, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
-                            "intent": "out", 
-                            "len": "Ndest", 
+                            "intent": "inout", 
                             "value": false
                         }, 
                         "const": false, 
                         "declarator": {
-                            "name": "dest", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "char"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "len_trim": "Lsrc", 
-                            "value": false
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "src", 
+                            "name": "s", 
                             "pointer": [
                                 {
                                     "const": false, 
@@ -580,7 +620,7 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "passCharPtr", 
+                    "name": "passCharPtrInOut", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
@@ -589,10 +629,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 23, 
+            }, 
             "_decl": "void passCharPtrInOut(char * s +intent(inout))", 
             "_fmt": {
                 "C_call_code": "passCharPtrInOut(s);", 
@@ -643,12 +680,17 @@
             "doxygen": {
                 "brief": "Change a string in-place"
             }, 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 3, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "inout", 
+                            "len": "Ns", 
+                            "len_trim": "Ls", 
                             "value": false
                         }, 
                         "const": false, 
@@ -680,10 +722,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 3, 
+            }, 
             "_decl": "void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -729,48 +768,31 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "inout", 
-                            "len": "Ns", 
-                            "len_trim": "Ls", 
-                            "value": false
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "s", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "char"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "passCharPtrInOut", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
+            "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": true, 
+                "declarator": {
+                    "name": "getChar1", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "*"
+                        }
+                    ]
+                }, 
+                "fattrs": {
+                    "pure": true
+                }, 
+                "func_const": false, 
+                "specifier": [
+                    "char"
+                ], 
+                "storage": []
+            }, 
             "_decl": "const char * getChar1() +pure", 
             "_fmt": {
                 "C_call_code": "const char * SHT_rv = getChar1();", 
@@ -809,32 +831,54 @@
             "doxygen": {
                 "brief": "return a 'const char *' as character(*)"
             }, 
-            "options": {}, 
-            "result": {
-                "args": [], 
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 4, 
+            "_ast": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {
+                            "pure": true
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
-                "const": true, 
+                "const": false, 
                 "declarator": {
                     "name": "getChar1", 
-                    "pointer": [
-                        {
-                            "const": false, 
-                            "ptr": "*"
-                        }
-                    ]
+                    "pointer": []
                 }, 
                 "fattrs": {
                     "pure": true
                 }, 
                 "func_const": false, 
                 "specifier": [
-                    "char"
+                    "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 4, 
+            }, 
             "_decl": "void getChar1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -880,54 +924,32 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "args": [], 
-                        "attrs": {
-                            "_is_result": true, 
-                            "intent": "out", 
-                            "len": "NSHF_rv"
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "SHF_rv", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
-                        "fattrs": {
-                            "pure": true
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "char"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "getChar1", 
-                    "pointer": []
-                }, 
-                "fattrs": {
-                    "pure": true
-                }, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
             "_PTR_F_C_index": 25, 
+            "_ast": {
+                "args": [], 
+                "attrs": {
+                    "len": "30"
+                }, 
+                "const": true, 
+                "declarator": {
+                    "name": "getChar2", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "*"
+                        }
+                    ]
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "char"
+                ], 
+                "storage": []
+            }, 
             "_decl": "const char * getChar2()", 
             "_fmt": {
                 "C_call_code": "const char * SHT_rv = getChar2();", 
@@ -966,32 +988,52 @@
             "doxygen": {
                 "brief": "return 'const char *' with fixed size (len=30)"
             }, 
-            "options": {}, 
-            "result": {
-                "args": [], 
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 5, 
+            "_ast": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {
                     "len": "30"
                 }, 
-                "const": true, 
+                "const": false, 
                 "declarator": {
                     "name": "getChar2", 
-                    "pointer": [
-                        {
-                            "const": false, 
-                            "ptr": "*"
-                        }
-                    ]
+                    "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "char"
+                    "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 5, 
+            }, 
             "_decl": "void getChar2(char * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -1041,51 +1083,29 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "args": [], 
-                        "attrs": {
-                            "_is_result": true, 
-                            "intent": "out", 
-                            "len": "NSHF_rv"
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "SHF_rv", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
-                        "fattrs": {}, 
-                        "func_const": false, 
-                        "specifier": [
-                            "char"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {
-                    "len": "30"
-                }, 
-                "const": false, 
+            }
+        }, 
+        {
+            "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": true, 
                 "declarator": {
-                    "name": "getChar2", 
-                    "pointer": []
+                    "name": "getChar3", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "*"
+                        }
+                    ]
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "void"
+                    "char"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "const char * getChar3()", 
             "_fmt": {
                 "C_call_code": "const char * SHT_rv = getChar3();", 
@@ -1117,30 +1137,50 @@
             "options": {
                 "F_string_result_as_arg": "output", 
                 "wrap_fortran": false
-            }, 
-            "result": {
-                "args": [], 
-                "attrs": {}, 
-                "const": true, 
-                "declarator": {
-                    "name": "getChar3", 
-                    "pointer": [
-                        {
-                            "const": false, 
-                            "ptr": "*"
-                        }
-                    ]
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "char"
-                ], 
-                "storage": []
             }
         }, 
         {
             "_PTR_C_CPP_index": 6, 
+            "_ast": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "Noutput"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "output", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "getChar3", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void getChar3(char * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -1190,8 +1230,12 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 6, 
+            "_PTR_F_C_index": 26, 
+            "_ast": {
                 "args": [
                     {
                         "args": [], 
@@ -1230,11 +1274,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 6, 
-            "_PTR_F_C_index": 26, 
+            }, 
             "_decl": "void getChar3(char * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -1261,49 +1301,31 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "args": [], 
-                        "attrs": {
-                            "_is_result": true, 
-                            "intent": "out", 
-                            "len": "Noutput"
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "output", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
-                        "fattrs": {}, 
-                        "func_const": false, 
-                        "specifier": [
-                            "char"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "getChar3", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
+            "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": true, 
+                "declarator": {
+                    "name": "getString1", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "&"
+                        }
+                    ]
+                }, 
+                "fattrs": {
+                    "pure": true
+                }, 
+                "func_const": false, 
+                "specifier": [
+                    "string"
+                ], 
+                "storage": []
+            }, 
             "_decl": "const string & getString1() +pure", 
             "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString1();", 
@@ -1345,32 +1367,54 @@
             "doxygen": {
                 "brief": "return a 'const string&' as character(*)"
             }, 
-            "options": {}, 
-            "result": {
-                "args": [], 
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 7, 
+            "_ast": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {
+                            "pure": true
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
-                "const": true, 
+                "const": false, 
                 "declarator": {
                     "name": "getString1", 
-                    "pointer": [
-                        {
-                            "const": false, 
-                            "ptr": "&"
-                        }
-                    ]
+                    "pointer": []
                 }, 
                 "fattrs": {
                     "pure": true
                 }, 
                 "func_const": false, 
                 "specifier": [
-                    "string"
+                    "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 7, 
+            }, 
             "_decl": "void getString1(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -1416,55 +1460,33 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "args": [], 
-                        "attrs": {
-                            "_is_result": true, 
-                            "intent": "out", 
-                            "len": "NSHF_rv"
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "SHF_rv", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "fattrs": {
-                            "pure": true
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "string"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "getString1", 
-                    "pointer": []
-                }, 
-                "fattrs": {
-                    "pure": true
-                }, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
             "C_error_pattern": "C_invalid_name", 
             "_PTR_F_C_index": 29, 
+            "_ast": {
+                "args": [], 
+                "attrs": {
+                    "len": 30
+                }, 
+                "const": true, 
+                "declarator": {
+                    "name": "getString2", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "&"
+                        }
+                    ]
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "string"
+                ], 
+                "storage": []
+            }, 
             "_decl": "const string & getString2()", 
             "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2();", 
@@ -1507,33 +1529,53 @@
             "doxygen": {
                 "brief": "return 'const string&' with fixed size (len=30)"
             }, 
-            "options": {}, 
-            "result": {
-                "args": [], 
-                "attrs": {
-                    "len": 30
-                }, 
-                "const": true, 
-                "declarator": {
-                    "name": "getString2", 
-                    "pointer": [
-                        {
-                            "const": false, 
-                            "ptr": "&"
-                        }
-                    ]
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "string"
-                ], 
-                "storage": []
-            }
+            "options": {}
         }, 
         {
             "C_error_pattern": "C_invalid_name", 
             "_PTR_C_CPP_index": 8, 
+            "_ast": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {
+                    "len": 30
+                }, 
+                "const": false, 
+                "declarator": {
+                    "name": "getString2", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void getString2(string & SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -1583,52 +1625,30 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "args": [], 
-                        "attrs": {
-                            "_is_result": true, 
-                            "intent": "out", 
-                            "len": "NSHF_rv"
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "SHF_rv", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "fattrs": {}, 
-                        "func_const": false, 
-                        "specifier": [
-                            "string"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {
-                    "len": 30
-                }, 
-                "const": false, 
-                "declarator": {
-                    "name": "getString2", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
             "C_error_pattern": "C_invalid_name", 
+            "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": true, 
+                "declarator": {
+                    "name": "getString3", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "&"
+                        }
+                    ]
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "string"
+                ], 
+                "storage": []
+            }, 
             "_decl": "const string & getString3()", 
             "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString3();", 
@@ -1664,31 +1684,51 @@
             "options": {
                 "F_string_result_as_arg": "output", 
                 "wrap_fortran": false
-            }, 
-            "result": {
-                "args": [], 
-                "attrs": {}, 
-                "const": true, 
-                "declarator": {
-                    "name": "getString3", 
-                    "pointer": [
-                        {
-                            "const": false, 
-                            "ptr": "&"
-                        }
-                    ]
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "string"
-                ], 
-                "storage": []
             }
         }, 
         {
             "C_error_pattern": "C_invalid_name", 
             "_PTR_C_CPP_index": 9, 
+            "_ast": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "Noutput"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "output", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "getString3", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void getString3(string & output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -1738,8 +1778,13 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "C_error_pattern": "C_invalid_name", 
+            "_PTR_C_CPP_index": 9, 
+            "_PTR_F_C_index": 30, 
+            "_ast": {
                 "args": [
                     {
                         "args": [], 
@@ -1778,12 +1823,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "C_error_pattern": "C_invalid_name", 
-            "_PTR_C_CPP_index": 9, 
-            "_PTR_F_C_index": 30, 
+            }, 
             "_decl": "void getString3(string & output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -1810,51 +1850,33 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "args": [], 
-                        "attrs": {
-                            "_is_result": true, 
-                            "intent": "out", 
-                            "len": "Noutput"
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "output", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "fattrs": {}, 
-                        "func_const": false, 
-                        "specifier": [
-                            "string"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "getString3", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
             "C_error_pattern": "C_invalid_name", 
             "_PTR_F_C_index": 32, 
+            "_ast": {
+                "args": [], 
+                "attrs": {
+                    "len": 30
+                }, 
+                "const": true, 
+                "declarator": {
+                    "name": "getString2_empty", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "&"
+                        }
+                    ]
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "string"
+                ], 
+                "storage": []
+            }, 
             "_decl": "const string & getString2_empty()", 
             "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2_empty();", 
@@ -1897,33 +1919,53 @@
             "doxygen": {
                 "brief": "Test returning empty string reference"
             }, 
-            "options": {}, 
-            "result": {
-                "args": [], 
-                "attrs": {
-                    "len": 30
-                }, 
-                "const": true, 
-                "declarator": {
-                    "name": "getString2_empty", 
-                    "pointer": [
-                        {
-                            "const": false, 
-                            "ptr": "&"
-                        }
-                    ]
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "string"
-                ], 
-                "storage": []
-            }
+            "options": {}
         }, 
         {
             "C_error_pattern": "C_invalid_name", 
             "_PTR_C_CPP_index": 10, 
+            "_ast": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {
+                    "len": 30
+                }, 
+                "const": false, 
+                "declarator": {
+                    "name": "getString2_empty", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void getString2_empty(string & SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -1973,53 +2015,28 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "args": [], 
-                        "attrs": {
-                            "_is_result": true, 
-                            "intent": "out", 
-                            "len": "NSHF_rv"
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "SHF_rv", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "fattrs": {}, 
-                        "func_const": false, 
-                        "specifier": [
-                            "string"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {
-                    "len": 30
-                }, 
-                "const": false, 
-                "declarator": {
-                    "name": "getString2_empty", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
             "C_error_pattern": "C_invalid_name", 
             "_PTR_F_C_index": 33, 
+            "_ast": {
+                "args": [], 
+                "attrs": {
+                    "len": 30
+                }, 
+                "const": true, 
+                "declarator": {
+                    "name": "getString5", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "string"
+                ], 
+                "storage": []
+            }, 
             "_decl": "const string getString5()", 
             "_fmt": {
                 "F_C_call": "c_get_string5_bufferify", 
@@ -2046,13 +2063,42 @@
             }, 
             "options": {
                 "wrap_c": false
-            }, 
-            "result": {
-                "args": [], 
+            }
+        }, 
+        {
+            "C_error_pattern": "C_invalid_name", 
+            "_PTR_C_CPP_index": 11, 
+            "_ast": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {
                     "len": 30
                 }, 
-                "const": true, 
+                "const": false, 
                 "declarator": {
                     "name": "getString5", 
                     "pointer": []
@@ -2060,14 +2106,10 @@
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "string"
+                    "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "C_error_pattern": "C_invalid_name", 
-            "_PTR_C_CPP_index": 11, 
+            }, 
             "_decl": "void getString5(string * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -2117,52 +2159,25 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "args": [], 
-                        "attrs": {
-                            "_is_result": true, 
-                            "intent": "out", 
-                            "len": "NSHF_rv"
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "SHF_rv", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
-                        "fattrs": {}, 
-                        "func_const": false, 
-                        "specifier": [
-                            "string"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {
-                    "len": 30
-                }, 
-                "const": false, 
+            }
+        }, 
+        {
+            "C_error_pattern": "C_invalid_name", 
+            "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": true, 
                 "declarator": {
-                    "name": "getString5", 
+                    "name": "getString6", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "void"
+                    "string"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "C_error_pattern": "C_invalid_name", 
+            }, 
             "_decl": "const string getString6()", 
             "_fmt": {
                 "F_string_result_as_arg": "output", 
@@ -2181,11 +2196,40 @@
                 "F_string_result_as_arg": "output", 
                 "wrap_c": false, 
                 "wrap_fortran": false
-            }, 
-            "result": {
-                "args": [], 
+            }
+        }, 
+        {
+            "C_error_pattern": "C_invalid_name", 
+            "_PTR_C_CPP_index": 12, 
+            "_ast": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "Noutput"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "output", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "specifier": [
+                            "string"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
-                "const": true, 
+                "const": false, 
                 "declarator": {
                     "name": "getString6", 
                     "pointer": []
@@ -2193,14 +2237,10 @@
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "string"
+                    "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "C_error_pattern": "C_invalid_name", 
-            "_PTR_C_CPP_index": 12, 
+            }, 
             "_decl": "void getString6(string * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -2250,8 +2290,13 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "C_error_pattern": "C_invalid_name", 
+            "_PTR_C_CPP_index": 12, 
+            "_PTR_F_C_index": 34, 
+            "_ast": {
                 "args": [
                     {
                         "args": [], 
@@ -2290,12 +2335,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "C_error_pattern": "C_invalid_name", 
-            "_PTR_C_CPP_index": 12, 
-            "_PTR_F_C_index": 34, 
+            }, 
             "_decl": "void getString6(string * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -2322,30 +2362,30 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 36, 
+            "_ast": {
                 "args": [
                     {
-                        "args": [], 
                         "attrs": {
-                            "_is_result": true, 
-                            "intent": "out", 
-                            "len": "Noutput"
+                            "intent": "in", 
+                            "value": false
                         }, 
-                        "const": false, 
+                        "const": true, 
                         "declarator": {
-                            "name": "output", 
+                            "name": "arg1", 
                             "pointer": [
                                 {
                                     "const": false, 
-                                    "ptr": "*"
+                                    "ptr": "&"
                                 }
                             ]
                         }, 
-                        "fattrs": {}, 
                         "func_const": false, 
                         "specifier": [
-                            "string"
+                            "std::string"
                         ], 
                         "storage": []
                     }
@@ -2353,7 +2393,7 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "getString6", 
+                    "name": "acceptStringConstReference", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
@@ -2362,10 +2402,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 36, 
+            }, 
             "_decl": "void acceptStringConstReference(const std::string & arg1 +intent(in))", 
             "_fmt": {
                 "C_call_code": "acceptStringConstReference(SH_arg1);", 
@@ -2416,12 +2453,16 @@
                 "brief": "Accept a const string reference", 
                 "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
             }, 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 13, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "in", 
+                            "len_trim": "Larg1", 
                             "value": false
                         }, 
                         "const": true, 
@@ -2453,10 +2494,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 13, 
+            }, 
             "_decl": "void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -2500,16 +2538,18 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 37, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
-                            "intent": "in", 
-                            "len_trim": "Larg1", 
+                            "intent": "out", 
                             "value": false
                         }, 
-                        "const": true, 
+                        "const": false, 
                         "declarator": {
                             "name": "arg1", 
                             "pointer": [
@@ -2529,7 +2569,7 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "acceptStringConstReference", 
+                    "name": "acceptStringReferenceOut", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
@@ -2538,10 +2578,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 37, 
+            }, 
             "_decl": "void acceptStringReferenceOut(std::string & arg1 +intent(out))", 
             "_fmt": {
                 "C_call_code": "acceptStringReferenceOut(SH_arg1);", 
@@ -2596,12 +2633,16 @@
                 "brief": "Accept a string reference", 
                 "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
             }, 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 14, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "out", 
+                            "len": "Narg1", 
                             "value": false
                         }, 
                         "const": false, 
@@ -2633,10 +2674,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 14, 
+            }, 
             "_decl": "void acceptStringReferenceOut(std::string & arg1 +intent(out)+len(Narg1))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -2682,13 +2720,15 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 38, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
-                            "intent": "out", 
-                            "len": "Narg1", 
+                            "intent": "inout", 
                             "value": false
                         }, 
                         "const": false, 
@@ -2711,7 +2751,7 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "acceptStringReferenceOut", 
+                    "name": "acceptStringReference", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
@@ -2720,10 +2760,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 38, 
+            }, 
             "_decl": "void acceptStringReference(std::string & arg1 +intent(inout))", 
             "_fmt": {
                 "C_call_code": "acceptStringReference(SH_arg1);", 
@@ -2778,12 +2815,17 @@
                 "brief": "Accept a string reference", 
                 "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
             }, 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 15, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "inout", 
+                            "len": "Narg1", 
+                            "len_trim": "Larg1", 
                             "value": false
                         }, 
                         "const": false, 
@@ -2815,10 +2857,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 15, 
+            }, 
             "_decl": "void acceptStringReference(std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -2865,29 +2904,31 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 39, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
-                            "intent": "inout", 
-                            "len": "Narg1", 
-                            "len_trim": "Larg1", 
+                            "intent": "in", 
+                            "len_trim": "AAlen", 
                             "value": false
                         }, 
                         "const": false, 
                         "declarator": {
-                            "name": "arg1", 
+                            "name": "name", 
                             "pointer": [
                                 {
                                     "const": false, 
-                                    "ptr": "&"
+                                    "ptr": "*"
                                 }
                             ]
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "std::string"
+                            "char"
                         ], 
                         "storage": []
                     }
@@ -2895,7 +2936,7 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "acceptStringReference", 
+                    "name": "explicit1", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
@@ -2904,10 +2945,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 39, 
+            }, 
             "_decl": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
             "_fmt": {
                 "C_call_code": "explicit1(name);", 
@@ -2955,8 +2993,11 @@
             "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
             "options": {
                 "C_bufferify_suffix": "_BUFFER"
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 16, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -2993,10 +3034,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 16, 
+            }, 
             "_decl": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -3038,13 +3076,16 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 40, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
-                            "intent": "in", 
-                            "len_trim": "AAlen", 
+                            "intent": "out", 
+                            "len": "AAtrim", 
                             "value": false
                         }, 
                         "const": false, 
@@ -3067,7 +3108,7 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "explicit1", 
+                    "name": "explicit2", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
@@ -3076,10 +3117,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 40, 
+            }, 
             "_decl": "void explicit2(char * name +intent(out)+len(AAtrim))", 
             "_fmt": {
                 "C_call_code": "explicit2(name);", 
@@ -3127,8 +3165,11 @@
             "_function_index": 17, 
             "_subprogram": "subroutine", 
             "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 17, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -3165,10 +3206,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 17, 
+            }, 
             "_decl": "void explicit2(char * name +intent(out)+len(AAtrim))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -3210,28 +3248,24 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
-                            "intent": "out", 
-                            "len": "AAtrim", 
-                            "value": false
+                            "intent": "in", 
+                            "value": true
                         }, 
                         "const": false, 
                         "declarator": {
-                            "name": "name", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
+                            "name": "status", 
+                            "pointer": []
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "char"
+                            "char_scalar"
                         ], 
                         "storage": []
                     }
@@ -3239,7 +3273,7 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "explicit2", 
+                    "name": "CpassChar", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
@@ -3248,9 +3282,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "void CpassChar(char_scalar status +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "CpassChar(status);", 
@@ -3305,42 +3337,25 @@
             }, 
             "options": {
                 "C_extern_C": true
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "status", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "char_scalar"
-                        ], 
-                        "storage": []
-                    }
-                ], 
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 41, 
+            "_ast": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "CpassChar", 
+                    "name": "CreturnChar", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "void"
+                    "char_scalar"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 41, 
+            }, 
             "_decl": "char_scalar CreturnChar()", 
             "_fmt": {
                 "C_call_code": "char SHT_rv = CreturnChar();", 
@@ -3380,9 +3395,37 @@
             }, 
             "options": {
                 "C_extern_C": true
-            }, 
-            "result": {
-                "args": [], 
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 19, 
+            "_ast": {
+                "args": [
+                    {
+                        "args": [], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "NSHF_rv"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "SHF_rv", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char_scalar"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
@@ -3392,13 +3435,10 @@
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "char_scalar"
+                    "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 19, 
+            }, 
             "_decl": "void CreturnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -3448,19 +3488,20 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 42, 
+            "_ast": {
                 "args": [
                     {
-                        "args": [], 
                         "attrs": {
-                            "_is_result": true, 
                             "intent": "out", 
-                            "len": "NSHF_rv"
+                            "value": false
                         }, 
                         "const": false, 
                         "declarator": {
-                            "name": "SHF_rv", 
+                            "name": "dest", 
                             "pointer": [
                                 {
                                     "const": false, 
@@ -3468,10 +3509,30 @@
                                 }
                             ]
                         }, 
-                        "fattrs": {}, 
                         "func_const": false, 
                         "specifier": [
-                            "char_scalar"
+                            "char"
+                        ], 
+                        "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "declarator": {
+                            "name": "src", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "char"
                         ], 
                         "storage": []
                     }
@@ -3479,7 +3540,7 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "CreturnChar", 
+                    "name": "CpassCharPtr", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
@@ -3488,10 +3549,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 42, 
+            }, 
             "_decl": "void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))", 
             "_fmt": {
                 "C_call_code": "CpassCharPtr(dest, src);", 
@@ -3562,12 +3620,16 @@
             }, 
             "options": {
                 "C_extern_C": true
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 20, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "out", 
+                            "len": "Ndest", 
                             "value": false
                         }, 
                         "const": false, 
@@ -3589,6 +3651,7 @@
                     {
                         "attrs": {
                             "intent": "in", 
+                            "len_trim": "Lsrc", 
                             "value": false
                         }, 
                         "const": true, 
@@ -3620,10 +3683,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 20, 
+            }, 
             "_decl": "void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -3684,66 +3744,6 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "out", 
-                            "len": "Ndest", 
-                            "value": false
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "dest", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "char"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "len_trim": "Lsrc", 
-                            "value": false
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "src", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "char"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "CpassCharPtr", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }
     ], 

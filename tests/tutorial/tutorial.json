@@ -91,6 +91,28 @@
             "cpp_header": "", 
             "methods": [
                 {
+                    "_ast": {
+                        "args": [], 
+                        "attrs": {}, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "new", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {
+                            "constructor": true
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "Class1"
+                        ], 
+                        "storage": []
+                    }, 
                     "_decl": "Class1 * new() +constructor", 
                     "_fmt": {
                         "C_call_code": "Class1 * SHT_rv = new Class1();", 
@@ -126,31 +148,26 @@
                     "_function_index": 0, 
                     "_subprogram": "function", 
                     "decl": "Class1 *new()  +constructor", 
-                    "options": {}, 
-                    "result": {
+                    "options": {}
+                }, 
+                {
+                    "_ast": {
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "declarator": {
-                            "name": "new", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
+                            "name": "delete", 
+                            "pointer": []
                         }, 
                         "fattrs": {
-                            "constructor": true
+                            "destructor": true
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "Class1"
+                            "void"
                         ], 
                         "storage": []
-                    }
-                }, 
-                {
+                    }, 
                     "_decl": "void delete() +destructor", 
                     "_fmt": {
                         "C_call_code": "delete SH_this;", 
@@ -183,26 +200,24 @@
                     "_function_index": 1, 
                     "_subprogram": "subroutine", 
                     "decl": "void delete()  +destructor", 
-                    "options": {}, 
-                    "result": {
+                    "options": {}
+                }, 
+                {
+                    "_ast": {
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
                         "declarator": {
-                            "name": "delete", 
+                            "name": "Method1", 
                             "pointer": []
                         }, 
-                        "fattrs": {
-                            "destructor": true
-                        }, 
+                        "fattrs": {}, 
                         "func_const": false, 
                         "specifier": [
                             "void"
                         ], 
                         "storage": []
-                    }
-                }, 
-                {
+                    }, 
                     "_decl": "void Method1()", 
                     "_fmt": {
                         "C_call_code": "SH_this->Method1();", 
@@ -235,22 +250,7 @@
                     "_function_index": 2, 
                     "_subprogram": "subroutine", 
                     "decl": "void Method1()", 
-                    "options": {}, 
-                    "result": {
-                        "args": [], 
-                        "attrs": {}, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "Method1", 
-                            "pointer": []
-                        }, 
-                        "fattrs": {}, 
-                        "func_const": false, 
-                        "specifier": [
-                            "void"
-                        ], 
-                        "storage": []
-                    }
+                    "options": {}
                 }
             ], 
             "name": "Class1", 
@@ -302,6 +302,21 @@
     "cpp_header": "tutorial.hpp", 
     "functions": [
         {
+            "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "Function1", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void Function1()", 
             "_fmt": {
                 "C_call_code": "Function1();", 
@@ -331,24 +346,57 @@
             "_function_index": 3, 
             "_subprogram": "subroutine", 
             "decl": "void Function1()", 
-            "options": {}, 
-            "result": {
-                "args": [], 
+            "options": {}
+        }, 
+        {
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "double"
+                        ], 
+                        "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "Function1", 
+                    "name": "Function2", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "void"
+                    "double"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
@@ -446,128 +494,10 @@
             "_function_index": 4, 
             "_subprogram": "function", 
             "decl": "double Function2(double arg1, int arg2)", 
-            "options": {}, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg1", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "double"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg2", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "int"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "Function2", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "double"
-                ], 
-                "storage": []
-            }
+            "options": {}
         }, 
         {
-            "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
-            "_fmt": {
-                "C_call_code": "Sum(len, values, result);", 
-                "C_call_list": "len, values, result", 
-                "C_name": "TUT_sum", 
-                "C_prototype": "int len, int * values, int * result", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_sum", 
-                "F_C_name": "sum", 
-                "F_arg_c_call": "len, values, result", 
-                "F_arg_c_call_tab": "\tlen\tvalues\tresult", 
-                "F_arguments": "len, values, result", 
-                "F_call_code": "call c_sum(\tlen\tvalues\tresult)", 
-                "F_name_function": "sum", 
-                "F_name_generic": "sum", 
-                "F_name_impl": "sum", 
-                "F_subprogram": "subroutine", 
-                "c_const": "", 
-                "function_name": "Sum", 
-                "underscore_name": "sum"
-            }, 
-            "_fmtargs": {
-                "len": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "len", 
-                        "cpp_type": "int", 
-                        "cpp_var": "len"
-                    }, 
-                    "fmtf": {
-                        "c_var": "len", 
-                        "f_var": "len"
-                    }
-                }, 
-                "result": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "result", 
-                        "cpp_type": "int", 
-                        "cpp_var": "result"
-                    }, 
-                    "fmtf": {
-                        "c_var": "result", 
-                        "f_var": "result"
-                    }
-                }, 
-                "values": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "values", 
-                        "cpp_type": "int", 
-                        "cpp_var": "values"
-                    }, 
-                    "fmtf": {
-                        "c_var": "values", 
-                        "f_var": "values"
-                    }
-                }
-            }, 
-            "_function_index": 5, 
-            "_subprogram": "subroutine", 
-            "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
-            "options": {
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -641,9 +571,111 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
+            "_fmt": {
+                "C_call_code": "Sum(len, values, result);", 
+                "C_call_list": "len, values, result", 
+                "C_name": "TUT_sum", 
+                "C_prototype": "int len, int * values, int * result", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_sum", 
+                "F_C_name": "sum", 
+                "F_arg_c_call": "len, values, result", 
+                "F_arg_c_call_tab": "\tlen\tvalues\tresult", 
+                "F_arguments": "len, values, result", 
+                "F_call_code": "call c_sum(\tlen\tvalues\tresult)", 
+                "F_name_function": "sum", 
+                "F_name_generic": "sum", 
+                "F_name_impl": "sum", 
+                "F_subprogram": "subroutine", 
+                "c_const": "", 
+                "function_name": "Sum", 
+                "underscore_name": "sum"
+            }, 
+            "_fmtargs": {
+                "len": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "len", 
+                        "cpp_type": "int", 
+                        "cpp_var": "len"
+                    }, 
+                    "fmtf": {
+                        "c_var": "len", 
+                        "f_var": "len"
+                    }
+                }, 
+                "result": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "result", 
+                        "cpp_type": "int", 
+                        "cpp_var": "result"
+                    }, 
+                    "fmtf": {
+                        "c_var": "result", 
+                        "f_var": "result"
+                    }
+                }, 
+                "values": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "values", 
+                        "cpp_type": "int", 
+                        "cpp_var": "values"
+                    }, 
+                    "fmtf": {
+                        "c_var": "values", 
+                        "f_var": "values"
+                    }
+                }
+            }, 
+            "_function_index": 5, 
+            "_subprogram": "subroutine", 
+            "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
+            "options": {
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "bool"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "Function3", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "bool"
+                ], 
+                "storage": []
+            }, 
             "_decl": "bool Function3(bool arg +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "bool SHT_rv = Function3(arg);", 
@@ -711,112 +743,10 @@
             "_function_index": 6, 
             "_subprogram": "function", 
             "decl": "bool Function3(bool arg)", 
-            "options": {}, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "bool"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "Function3", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "bool"
-                ], 
-                "storage": []
-            }
+            "options": {}
         }, 
         {
-            "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
-            "_fmt": {
-                "C_call_code": "Function3b(arg1, arg2, arg3);", 
-                "C_call_list": "arg1, arg2, arg3", 
-                "C_name": "TUT_function3b", 
-                "C_prototype": "const bool arg1, bool * arg2, bool * arg3", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_function3b", 
-                "F_C_name": "c_function3b", 
-                "F_arg_c_call": "SH_arg1, SH_arg2, SH_arg3", 
-                "F_arg_c_call_tab": "\tSH_arg1\tSH_arg2\tSH_arg3", 
-                "F_arguments": "arg1, arg2, arg3", 
-                "F_call_code": "call c_function3b(\tSH_arg1\tSH_arg2\tSH_arg3)", 
-                "F_name_function": "function3b", 
-                "F_name_generic": "function3b", 
-                "F_name_impl": "function3b", 
-                "F_subprogram": "subroutine", 
-                "c_const": "", 
-                "function_name": "Function3b", 
-                "underscore_name": "function3b"
-            }, 
-            "_fmtargs": {
-                "arg1": {
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg1"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SH_arg1", 
-                        "f_var": "arg1"
-                    }
-                }, 
-                "arg2": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "arg2", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg2"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SH_arg2", 
-                        "f_var": "arg2"
-                    }
-                }, 
-                "arg3": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "arg3", 
-                        "cpp_type": "bool", 
-                        "cpp_var": "arg3"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SH_arg3", 
-                        "f_var": "arg3"
-                    }
-                }
-            }, 
-            "_function_index": 7, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
-            "options": {
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -889,10 +819,140 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
+            "_fmt": {
+                "C_call_code": "Function3b(arg1, arg2, arg3);", 
+                "C_call_list": "arg1, arg2, arg3", 
+                "C_name": "TUT_function3b", 
+                "C_prototype": "const bool arg1, bool * arg2, bool * arg3", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_function3b", 
+                "F_C_name": "c_function3b", 
+                "F_arg_c_call": "SH_arg1, SH_arg2, SH_arg3", 
+                "F_arg_c_call_tab": "\tSH_arg1\tSH_arg2\tSH_arg3", 
+                "F_arguments": "arg1, arg2, arg3", 
+                "F_call_code": "call c_function3b(\tSH_arg1\tSH_arg2\tSH_arg3)", 
+                "F_name_function": "function3b", 
+                "F_name_generic": "function3b", 
+                "F_name_impl": "function3b", 
+                "F_subprogram": "subroutine", 
+                "c_const": "", 
+                "function_name": "Function3b", 
+                "underscore_name": "function3b"
+            }, 
+            "_fmtargs": {
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg1", 
+                        "f_var": "arg1"
+                    }
+                }, 
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "arg2", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg2", 
+                        "f_var": "arg2"
+                    }
+                }, 
+                "arg3": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "arg3", 
+                        "cpp_type": "bool", 
+                        "cpp_var": "arg3"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SH_arg3", 
+                        "f_var": "arg3"
+                    }
+                }
+            }, 
+            "_function_index": 7, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
+            "options": {
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
             "_PTR_F_C_index": 40, 
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {
+                    "len": "30"
+                }, 
+                "const": true, 
+                "declarator": {
+                    "name": "Function4a", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "std::string"
+                ], 
+                "storage": []
+            }, 
             "_decl": "const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
             "_fmt": {
                 "F_C_call": "c_function4a_bufferify", 
@@ -957,147 +1017,11 @@
             "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
             "options": {
                 "wrap_c": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": false
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "arg1", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::string"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": false
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "arg2", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::string"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {
-                    "len": "30"
-                }, 
-                "const": true, 
-                "declarator": {
-                    "name": "Function4a", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "std::string"
-                ], 
-                "storage": []
             }
         }, 
         {
             "_PTR_C_CPP_index": 8, 
-            "_decl": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
-            "_error_pattern_suffix": "_as_buffer", 
-            "_fmt": {
-                "C_call_code": "const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);", 
-                "C_call_list": "SH_arg1, SH_arg2", 
-                "C_name": "TUT_function4a_bufferify", 
-                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
-                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_function4a_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
-            }, 
-            "_fmtargs": {
-                "SHF_rv": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "SHF_rv", 
-                        "c_var_len": "NSHF_rv", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SHT_rv.c_str()", 
-                        "cpp_var": "SHT_rv"
-                    }, 
-                    "fmtf": {
-                        "c_var": "SHT_rv", 
-                        "f_var": "SHT_rv"
-                    }
-                }, 
-                "arg1": {
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "arg1", 
-                        "c_var_trim": "Larg1", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_arg1"
-                    }, 
-                    "fmtf": {
-                        "c_var": "arg1", 
-                        "f_var": "arg1"
-                    }
-                }, 
-                "arg2": {
-                    "fmtc": {
-                        "c_const": "const ", 
-                        "c_ptr": "", 
-                        "c_var": "arg2", 
-                        "c_var_trim": "Larg2", 
-                        "cpp_type": "std::string", 
-                        "cpp_var": "SH_arg2"
-                    }, 
-                    "fmtf": {
-                        "c_var": "arg2", 
-                        "f_var": "arg2"
-                    }
-                }
-            }, 
-            "_fmtresult": {
-                "fmtc": {
-                    "cpp_rv_decl": "const std::string SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 40, 
-            "_generated": "arg_to_buffer", 
-            "_subprogram": "subroutine", 
-            "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
-            "options": {
-                "wrap_c": true, 
-                "wrap_fortran": false, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -1225,9 +1149,148 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);", 
+                "C_call_list": "SH_arg1, SH_arg2", 
+                "C_name": "TUT_function4a_bufferify", 
+                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
+                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_function4a_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
+            "_fmtargs": {
+                "SHF_rv": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "SHF_rv", 
+                        "c_var_len": "NSHF_rv", 
+                        "cpp_type": "std::string", 
+                        "cpp_val": "SHT_rv.c_str()", 
+                        "cpp_var": "SHT_rv"
+                    }, 
+                    "fmtf": {
+                        "c_var": "SHT_rv", 
+                        "f_var": "SHT_rv"
+                    }
+                }, 
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "c_var_trim": "Larg1", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }
+                }, 
+                "arg2": {
+                    "fmtc": {
+                        "c_const": "const ", 
+                        "c_ptr": "", 
+                        "c_var": "arg2", 
+                        "c_var_trim": "Larg2", 
+                        "cpp_type": "std::string", 
+                        "cpp_var": "SH_arg2"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg2", 
+                        "f_var": "arg2"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "const std::string SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 40, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
+            "options": {
+                "wrap_c": true, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": true, 
+                "declarator": {
+                    "name": "Function4b", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "&"
+                        }
+                    ]
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "std::string"
+                ], 
+                "storage": []
+            }, 
             "_decl": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
             "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
@@ -1315,12 +1378,16 @@
             "options": {
                 "F_string_result_as_arg": "output", 
                 "wrap_fortran": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 9, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "in", 
+                            "len_trim": "Larg1", 
                             "value": false
                         }, 
                         "const": true, 
@@ -1342,6 +1409,7 @@
                     {
                         "attrs": {
                             "intent": "in", 
+                            "len_trim": "Larg2", 
                             "value": false
                         }, 
                         "const": true, 
@@ -1359,29 +1427,88 @@
                             "std::string"
                         ], 
                         "storage": []
+                    }, 
+                    {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": false
+                                }, 
+                                "const": true, 
+                                "declarator": {
+                                    "name": "arg1", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "std::string"
+                                ], 
+                                "storage": []
+                            }, 
+                            {
+                                "attrs": {
+                                    "intent": "in", 
+                                    "value": false
+                                }, 
+                                "const": true, 
+                                "declarator": {
+                                    "name": "arg2", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                }, 
+                                "func_const": false, 
+                                "specifier": [
+                                    "std::string"
+                                ], 
+                                "storage": []
+                            }
+                        ], 
+                        "attrs": {
+                            "_is_result": true, 
+                            "intent": "out", 
+                            "len": "Noutput"
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "output", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
-                "const": true, 
+                "const": false, 
                 "declarator": {
                     "name": "Function4b", 
-                    "pointer": [
-                        {
-                            "const": false, 
-                            "ptr": "&"
-                        }
-                    ]
+                    "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "std::string"
+                    "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 9, 
+            }, 
             "_decl": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -1457,8 +1584,12 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_C_CPP_index": 9, 
+            "_PTR_F_C_index": 41, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -1584,11 +1715,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 9, 
-            "_PTR_F_C_index": 41, 
+            }, 
             "_decl": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -1612,136 +1739,24 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "len_trim": "Larg1", 
-                            "value": false
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "arg1", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::string"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "len_trim": "Larg2", 
-                            "value": false
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "arg2", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::string"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "args": [
-                            {
-                                "attrs": {
-                                    "intent": "in", 
-                                    "value": false
-                                }, 
-                                "const": true, 
-                                "declarator": {
-                                    "name": "arg1", 
-                                    "pointer": [
-                                        {
-                                            "const": false, 
-                                            "ptr": "&"
-                                        }
-                                    ]
-                                }, 
-                                "func_const": false, 
-                                "specifier": [
-                                    "std::string"
-                                ], 
-                                "storage": []
-                            }, 
-                            {
-                                "attrs": {
-                                    "intent": "in", 
-                                    "value": false
-                                }, 
-                                "const": true, 
-                                "declarator": {
-                                    "name": "arg2", 
-                                    "pointer": [
-                                        {
-                                            "const": false, 
-                                            "ptr": "&"
-                                        }
-                                    ]
-                                }, 
-                                "func_const": false, 
-                                "specifier": [
-                                    "std::string"
-                                ], 
-                                "storage": []
-                            }
-                        ], 
-                        "attrs": {
-                            "_is_result": true, 
-                            "intent": "out", 
-                            "len": "Noutput"
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "output", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "fattrs": {}, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::string"
-                        ], 
-                        "storage": []
-                    }
-                ], 
+            }
+        }, 
+        {
+            "_ast": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "Function4b", 
+                    "name": "Function5", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "void"
+                    "double"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "double Function5()", 
             "_fmt": {
                 "C_call_code": "double SHT_rv = Function5();", 
@@ -1786,9 +1801,29 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [], 
+            }
+        }, 
+        {
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "init": 3.1415, 
+                        "specifier": [
+                            "double"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
@@ -1801,9 +1836,7 @@
                     "double"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "double Function5(double arg1=3.1415 +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "double SHT_rv = Function5(arg1);", 
@@ -1862,8 +1895,10 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -1881,6 +1916,23 @@
                             "double"
                         ], 
                         "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "init": "true", 
+                        "specifier": [
+                            "bool"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
@@ -1895,9 +1947,7 @@
                     "double"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)", 
             "_default_funcs": [
                 30, 
@@ -2011,40 +2061,30 @@
                 "_arg1", 
                 "_arg1_arg2"
             ], 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_PTR_F_C_index": 43, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "in", 
-                            "value": true
+                            "value": false
                         }, 
-                        "const": false, 
+                        "const": true, 
                         "declarator": {
-                            "name": "arg1", 
-                            "pointer": []
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
                         }, 
                         "func_const": false, 
-                        "init": 3.1415, 
                         "specifier": [
-                            "double"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg2", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "init": "true", 
-                        "specifier": [
-                            "bool"
+                            "std::string"
                         ], 
                         "storage": []
                     }
@@ -2052,19 +2092,16 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "Function5", 
+                    "name": "Function6", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "double"
+                    "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 43, 
+            }, 
             "_cpp_overload": [
                 11, 
                 12
@@ -2129,12 +2166,16 @@
             "_subprogram": "subroutine", 
             "decl": "void Function6(const std::string& name)", 
             "function_suffix": "_from_name", 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_PTR_C_CPP_index": 11, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "in", 
+                            "len_trim": "Lname", 
                             "value": false
                         }, 
                         "const": true, 
@@ -2166,10 +2207,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_C_CPP_index": 11, 
+            }, 
             "_cpp_overload": [
                 11, 
                 12
@@ -2215,28 +2253,24 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "in", 
-                            "len_trim": "Lname", 
-                            "value": false
+                            "value": true
                         }, 
-                        "const": true, 
+                        "const": false, 
                         "declarator": {
-                            "name": "name", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
+                            "name": "indx", 
+                            "pointer": []
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "std::string"
+                            "int"
                         ], 
                         "storage": []
                     }
@@ -2253,9 +2287,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_cpp_overload": [
                 11, 
                 12
@@ -2321,63 +2353,10 @@
             "_subprogram": "subroutine", 
             "decl": "void Function6(int indx)", 
             "function_suffix": "_from_index", 
-            "options": {}, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "indx", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "int"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "Function6", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
-            }
+            "options": {}
         }, 
         {
-            "_decl": "void Function7(ArgType arg +intent(in)+value)", 
-            "_fmt": {
-                "function_name": "Function7", 
-                "underscore_name": "function7"
-            }, 
-            "_function_index": 13, 
-            "_overloaded": true, 
-            "_subprogram": "subroutine", 
-            "cpp_template": {
-                "ArgType": [
-                    "int", 
-                    "double"
-                ]
-            }, 
-            "decl": "void Function7(ArgType arg)", 
-            "options": {
-                "wrap_c": false, 
-                "wrap_fortran": false, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -2408,9 +2387,62 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "void Function7(ArgType arg +intent(in)+value)", 
+            "_fmt": {
+                "function_name": "Function7", 
+                "underscore_name": "function7"
+            }, 
+            "_function_index": 13, 
+            "_overloaded": true, 
+            "_subprogram": "subroutine", 
+            "cpp_template": {
+                "ArgType": [
+                    "int", 
+                    "double"
+                ]
+            }, 
+            "decl": "void Function7(ArgType arg)", 
+            "options": {
+                "wrap_c": false, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "Function7", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void Function7(int arg +intent(in)+value)", 
             "_fmt": {
                 "CPP_template": "<int>", 
@@ -2458,8 +2490,10 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -2473,7 +2507,7 @@
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "int"
+                            "double"
                         ], 
                         "storage": []
                     }
@@ -2490,9 +2524,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "void Function7(double arg +intent(in)+value)", 
             "_fmt": {
                 "CPP_template": "<double>", 
@@ -2540,41 +2572,24 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "double"
-                        ], 
-                        "storage": []
-                    }
-                ], 
+            }
+        }, 
+        {
+            "_ast": {
+                "args": [], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "Function7", 
+                    "name": "Function8", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "void"
+                    "RetType"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "RetType Function8()", 
             "_fmt": {
                 "function_name": "Function8", 
@@ -2595,8 +2610,11 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_CPP_return_templated": true, 
+            "_ast": {
                 "args": [], 
                 "attrs": {}, 
                 "const": false, 
@@ -2607,13 +2625,10 @@
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "RetType"
+                    "int"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_CPP_return_templated": true, 
+            }, 
             "_decl": "int Function8()", 
             "_fmt": {
                 "CPP_template": "<int>", 
@@ -2654,8 +2669,11 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_CPP_return_templated": true, 
+            "_ast": {
                 "args": [], 
                 "attrs": {}, 
                 "const": false, 
@@ -2666,13 +2684,10 @@
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "int"
+                    "double"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_CPP_return_templated": true, 
+            }, 
             "_decl": "double Function8()", 
             "_fmt": {
                 "CPP_template": "<double>", 
@@ -2713,24 +2728,41 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [], 
+            }
+        }, 
+        {
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "double"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "Function8", 
+                    "name": "Function9", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "double"
+                    "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "void Function9(double arg +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "Function9(arg);", 
@@ -2791,67 +2823,11 @@
             }, 
             "options": {
                 "wrap_fortran": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "double"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "Function9", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
             "_PTR_F_C_index": 15, 
-            "_decl": "void Function9(float arg +intent(in)+value)", 
-            "_fmt": {
-                "F_C_call": "c_function9", 
-                "F_arg_c_call": "real(arg, C_DOUBLE)", 
-                "F_arg_c_call_tab": "\treal(arg, C_DOUBLE)", 
-                "F_arguments": "arg", 
-                "F_call_code": "call c_function9(\treal(arg, C_DOUBLE))", 
-                "F_name_function": "function9_float", 
-                "F_name_generic": "function9", 
-                "F_name_impl": "function9_float", 
-                "F_subprogram": "subroutine", 
-                "function_suffix": "_float"
-            }, 
-            "_function_index": 52, 
-            "_generated": "fortran_generic", 
-            "_overloaded": true, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function9(double arg)", 
-            "options": {
-                "wrap_c": false, 
-                "wrap_fortran": true, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -2882,24 +2858,21 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 15, 
-            "_decl": "void Function9(double arg +intent(in)+value)", 
+            }, 
+            "_decl": "void Function9(float arg +intent(in)+value)", 
             "_fmt": {
                 "F_C_call": "c_function9", 
-                "F_arg_c_call": "arg", 
-                "F_arg_c_call_tab": "\targ", 
+                "F_arg_c_call": "real(arg, C_DOUBLE)", 
+                "F_arg_c_call_tab": "\treal(arg, C_DOUBLE)", 
                 "F_arguments": "arg", 
-                "F_call_code": "call c_function9(\targ)", 
-                "F_name_function": "function9_double", 
+                "F_call_code": "call c_function9(\treal(arg, C_DOUBLE))", 
+                "F_name_function": "function9_float", 
                 "F_name_generic": "function9", 
-                "F_name_impl": "function9_double", 
+                "F_name_impl": "function9_float", 
                 "F_subprogram": "subroutine", 
-                "function_suffix": "_double"
+                "function_suffix": "_float"
             }, 
-            "_function_index": 53, 
+            "_function_index": 52, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2909,8 +2882,11 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 15, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -2941,9 +2917,48 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "void Function9(double arg +intent(in)+value)", 
+            "_fmt": {
+                "F_C_call": "c_function9", 
+                "F_arg_c_call": "arg", 
+                "F_arg_c_call_tab": "\targ", 
+                "F_arguments": "arg", 
+                "F_call_code": "call c_function9(\targ)", 
+                "F_name_function": "function9_double", 
+                "F_name_generic": "function9", 
+                "F_name_impl": "function9_double", 
+                "F_subprogram": "subroutine", 
+                "function_suffix": "_double"
+            }, 
+            "_function_index": 53, 
+            "_generated": "fortran_generic", 
+            "_overloaded": true, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function9(double arg)", 
+            "options": {
+                "wrap_c": false, 
+                "wrap_fortran": true, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
+            "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "Function10", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_cpp_overload": [
                 16, 
                 17
@@ -2979,9 +2994,50 @@
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function10()", 
-            "options": {}, 
-            "result": {
-                "args": [], 
+            "options": {}
+        }, 
+        {
+            "_PTR_F_C_index": 44, 
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "double"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
@@ -2994,10 +3050,7 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 44, 
+            }, 
             "_cpp_overload": [
                 16, 
                 17
@@ -3085,92 +3138,11 @@
             "options": {
                 "F_string_len_trim": true, 
                 "wrap_fortran": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": false
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "name", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::string"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg2", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "double"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "Function10", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
             "_PTR_F_C_index": 17, 
-            "_cpp_overload": [
-                16, 
-                17
-            ], 
-            "_decl": "void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)", 
-            "_fmt": {
-                "F_C_call": "c_function10_1_bufferify", 
-                "F_arg_c_call": "name, len_trim(name, kind=C_INT), real(arg2, C_DOUBLE)", 
-                "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)\treal(arg2, C_DOUBLE)", 
-                "F_arguments": "name, arg2", 
-                "F_call_code": "call c_function10_1_bufferify(\tname\tlen_trim(name, kind=C_INT)\treal(arg2, C_DOUBLE))", 
-                "F_name_function": "function10_1_float", 
-                "F_name_generic": "function10", 
-                "F_name_impl": "function10_1_float", 
-                "F_subprogram": "subroutine", 
-                "function_suffix": "_1_float"
-            }, 
-            "_function_index": 54, 
-            "_generated": "fortran_generic", 
-            "_overloaded": true, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function10(const std::string &name, double arg2)", 
-            "options": {
-                "wrap_c": false, 
-                "wrap_fortran": true, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -3222,28 +3194,25 @@
                     "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
-            "_PTR_F_C_index": 17, 
+            }, 
             "_cpp_overload": [
                 16, 
                 17
             ], 
-            "_decl": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
+            "_decl": "void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)", 
             "_fmt": {
                 "F_C_call": "c_function10_1_bufferify", 
-                "F_arg_c_call": "name, len_trim(name, kind=C_INT), arg2", 
-                "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)\targ2", 
+                "F_arg_c_call": "name, len_trim(name, kind=C_INT), real(arg2, C_DOUBLE)", 
+                "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)\treal(arg2, C_DOUBLE)", 
                 "F_arguments": "name, arg2", 
-                "F_call_code": "call c_function10_1_bufferify(\tname\tlen_trim(name, kind=C_INT)\targ2)", 
-                "F_name_function": "function10_1_double", 
+                "F_call_code": "call c_function10_1_bufferify(\tname\tlen_trim(name, kind=C_INT)\treal(arg2, C_DOUBLE))", 
+                "F_name_function": "function10_1_float", 
                 "F_name_generic": "function10", 
-                "F_name_impl": "function10_1_double", 
+                "F_name_impl": "function10_1_float", 
                 "F_subprogram": "subroutine", 
-                "function_suffix": "_1_double"
+                "function_suffix": "_1_float"
             }, 
-            "_function_index": 55, 
+            "_function_index": 54, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -3253,8 +3222,11 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_PTR_F_C_index": 17, 
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -3306,10 +3278,92 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_cpp_overload": [
+                16, 
+                17
+            ], 
+            "_decl": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
+            "_fmt": {
+                "F_C_call": "c_function10_1_bufferify", 
+                "F_arg_c_call": "name, len_trim(name, kind=C_INT), arg2", 
+                "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)\targ2", 
+                "F_arguments": "name, arg2", 
+                "F_call_code": "call c_function10_1_bufferify(\tname\tlen_trim(name, kind=C_INT)\targ2)", 
+                "F_name_function": "function10_1_double", 
+                "F_name_generic": "function10", 
+                "F_name_impl": "function10_1_double", 
+                "F_subprogram": "subroutine", 
+                "function_suffix": "_1_double"
+            }, 
+            "_function_index": 55, 
+            "_generated": "fortran_generic", 
+            "_overloaded": true, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function10(const std::string &name, double arg2)", 
+            "options": {
+                "wrap_c": false, 
+                "wrap_fortran": true, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
             "_PTR_C_CPP_index": 17, 
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "len_trim": "Lname", 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "declarator": {
+                            "name": "name", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::string"
+                        ], 
+                        "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "double"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "Function10", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_cpp_overload": [
                 16, 
                 17
@@ -3373,31 +3427,11 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_ast": {
                 "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "len_trim": "Lname", 
-                            "value": false
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "name", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::string"
-                        ], 
-                        "storage": []
-                    }, 
                     {
                         "attrs": {
                             "intent": "in", 
@@ -3405,12 +3439,12 @@
                         }, 
                         "const": false, 
                         "declarator": {
-                            "name": "arg2", 
+                            "name": "num", 
                             "pointer": []
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "double"
+                            "int"
                         ], 
                         "storage": []
                     }
@@ -3418,18 +3452,16 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "Function10", 
+                    "name": "overload1", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "void"
+                    "int"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_cpp_overload": [
                 18, 
                 19
@@ -3492,8 +3524,10 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -3506,6 +3540,23 @@
                             "pointer": []
                         }, 
                         "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "offset", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "init": 0, 
                         "specifier": [
                             "int"
                         ], 
@@ -3524,9 +3575,7 @@
                     "int"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_cpp_overload": [
                 18, 
                 19
@@ -3602,8 +3651,10 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -3637,6 +3688,23 @@
                             "int"
                         ], 
                         "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "stride", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "init": 1, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
@@ -3651,9 +3719,7 @@
                     "int"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_cpp_overload": [
                 18, 
                 19
@@ -3801,9 +3867,27 @@
                 "_num_offset", 
                 "_num_offset_stride"
             ], 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_ast": {
                 "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "type", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "double"
+                        ], 
+                        "storage": []
+                    }, 
                     {
                         "attrs": {
                             "intent": "in", 
@@ -3815,40 +3899,6 @@
                             "pointer": []
                         }, 
                         "func_const": false, 
-                        "specifier": [
-                            "int"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "offset", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "init": 0, 
-                        "specifier": [
-                            "int"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "stride", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "init": 1, 
                         "specifier": [
                             "int"
                         ], 
@@ -3867,9 +3917,7 @@
                     "int"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_cpp_overload": [
                 18, 
                 19
@@ -3940,8 +3988,10 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -3974,6 +4024,23 @@
                             "int"
                         ], 
                         "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "offset", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "init": 0, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
@@ -3988,9 +4055,7 @@
                     "int"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_cpp_overload": [
                 18, 
                 19
@@ -4074,8 +4139,10 @@
                 "wrap_fortran": true, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
+            }
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -4125,6 +4192,23 @@
                             "int"
                         ], 
                         "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "stride", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "init": 1, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
                     }
                 ], 
                 "attrs": {}, 
@@ -4139,9 +4223,7 @@
                     "int"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_cpp_overload": [
                 18, 
                 19
@@ -4312,8 +4394,10 @@
             "_overloaded": true, 
             "_subprogram": "function", 
             "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -4322,62 +4406,12 @@
                         }, 
                         "const": false, 
                         "declarator": {
-                            "name": "type", 
+                            "name": "arg", 
                             "pointer": []
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "double"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "num", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "int"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "offset", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "init": 0, 
-                        "specifier": [
-                            "int"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "stride", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "init": 1, 
-                        "specifier": [
-                            "int"
+                            "TypeID"
                         ], 
                         "storage": []
                     }
@@ -4385,18 +4419,16 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "overload1", 
+                    "name": "typefunc", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "int"
+                    "TypeID"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "TypeID typefunc(TypeID arg +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "TypeID SHT_rv = typefunc(arg);", 
@@ -4464,8 +4496,10 @@
             "_function_index": 20, 
             "_subprogram": "function", 
             "decl": "TypeID typefunc(TypeID arg)", 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -4479,7 +4513,7 @@
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "TypeID"
+                            "EnumTypeID"
                         ], 
                         "storage": []
                     }
@@ -4487,18 +4521,16 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "typefunc", 
+                    "name": "enumfunc", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "TypeID"
+                    "EnumTypeID"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));", 
@@ -4569,22 +4601,29 @@
             "_function_index": 21, 
             "_subprogram": "function", 
             "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
-            "options": {}, 
-            "result": {
+            "options": {}
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
                             "intent": "in", 
                             "value": true
                         }, 
-                        "const": false, 
+                        "const": true, 
                         "declarator": {
-                            "name": "arg", 
-                            "pointer": []
+                            "name": "arg1", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "*"
+                                }
+                            ]
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "EnumTypeID"
+                            "Class1"
                         ], 
                         "storage": []
                     }
@@ -4592,18 +4631,16 @@
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "enumfunc", 
+                    "name": "useclass", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "EnumTypeID"
+                    "void"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "void useclass(const Class1 * arg1 +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "useclass(static_cast<const Class1 *>(static_cast<const void *>(arg1)));", 
@@ -4655,71 +4692,11 @@
             "decl": "void useclass(const Class1 *arg1)", 
             "options": {
                 "wrap_lua": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "arg1", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "Class1"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "useclass", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
             "_PTR_F_C_index": 45, 
-            "_decl": "int vector_sum(const std::vector & arg +dimension(:)+intent(in)+template(int))", 
-            "_fmt": {
-                "F_C_call": "c_vector_sum_bufferify", 
-                "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
-                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
-                "F_arguments": "arg", 
-                "F_call_code": "SHT_rv = c_vector_sum_bufferify(\targ\tsize(arg, kind=C_LONG))", 
-                "F_name_function": "vector_sum", 
-                "F_name_generic": "vector_sum", 
-                "F_name_impl": "vector_sum", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "function_name": "vector_sum", 
-                "underscore_name": "vector_sum"
-            }, 
-            "_function_index": 23, 
-            "_subprogram": "function", 
-            "decl": "int vector_sum(const std::vector<int> &arg)", 
-            "options": {
-                "wrap_c": false, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -4757,10 +4734,73 @@
                     "int"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "int vector_sum(const std::vector & arg +dimension(:)+intent(in)+template(int))", 
+            "_fmt": {
+                "F_C_call": "c_vector_sum_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
+                "F_arguments": "arg", 
+                "F_call_code": "SHT_rv = c_vector_sum_bufferify(\targ\tsize(arg, kind=C_LONG))", 
+                "F_name_function": "vector_sum", 
+                "F_name_generic": "vector_sum", 
+                "F_name_impl": "vector_sum", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "function_name": "vector_sum", 
+                "underscore_name": "vector_sum"
+            }, 
+            "_function_index": 23, 
+            "_subprogram": "function", 
+            "decl": "int vector_sum(const std::vector<int> &arg)", 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
             "_PTR_C_CPP_index": 23, 
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "dimension": "(:)", 
+                            "intent": "in", 
+                            "size": "Sarg", 
+                            "template": "int", 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::vector"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "vector_sum", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "int"
+                ], 
+                "storage": []
+            }, 
             "_decl": "int vector_sum(const std::vector & arg +dimension(:)+intent(in)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -4807,73 +4847,11 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "dimension": "(:)", 
-                            "intent": "in", 
-                            "size": "Sarg", 
-                            "template": "int", 
-                            "value": false
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "arg", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::vector"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "vector_sum", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "int"
-                ], 
-                "storage": []
             }
         }, 
         {
             "_PTR_F_C_index": 46, 
-            "_decl": "void vector_iota(std::vector & arg +dimension(:)+intent(out)+template(int))", 
-            "_fmt": {
-                "F_C_call": "c_vector_iota_bufferify", 
-                "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
-                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
-                "F_arguments": "arg", 
-                "F_call_code": "call c_vector_iota_bufferify(\targ\tsize(arg, kind=C_LONG))", 
-                "F_name_function": "vector_iota", 
-                "F_name_generic": "vector_iota", 
-                "F_name_impl": "vector_iota", 
-                "F_subprogram": "subroutine", 
-                "function_name": "vector_iota", 
-                "underscore_name": "vector_iota"
-            }, 
-            "_function_index": 24, 
-            "_subprogram": "subroutine", 
-            "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
-            "options": {
-                "wrap_c": false, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -4911,10 +4889,72 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "void vector_iota(std::vector & arg +dimension(:)+intent(out)+template(int))", 
+            "_fmt": {
+                "F_C_call": "c_vector_iota_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
+                "F_arguments": "arg", 
+                "F_call_code": "call c_vector_iota_bufferify(\targ\tsize(arg, kind=C_LONG))", 
+                "F_name_function": "vector_iota", 
+                "F_name_generic": "vector_iota", 
+                "F_name_impl": "vector_iota", 
+                "F_subprogram": "subroutine", 
+                "function_name": "vector_iota", 
+                "underscore_name": "vector_iota"
+            }, 
+            "_function_index": 24, 
+            "_subprogram": "subroutine", 
+            "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
             "_PTR_C_CPP_index": 24, 
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "dimension": "(:)", 
+                            "intent": "out", 
+                            "size": "Sarg", 
+                            "template": "int", 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::vector"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "vector_iota", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void vector_iota(std::vector & arg +dimension(:)+intent(out)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -4957,73 +4997,11 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "dimension": "(:)", 
-                            "intent": "out", 
-                            "size": "Sarg", 
-                            "template": "int", 
-                            "value": false
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::vector"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "vector_iota", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
             "_PTR_F_C_index": 47, 
-            "_decl": "void vector_increment(std::vector & arg +dimension(:)+intent(inout)+template(int))", 
-            "_fmt": {
-                "F_C_call": "c_vector_increment_bufferify", 
-                "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
-                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
-                "F_arguments": "arg", 
-                "F_call_code": "call c_vector_increment_bufferify(\targ\tsize(arg, kind=C_LONG))", 
-                "F_name_function": "vector_increment", 
-                "F_name_generic": "vector_increment", 
-                "F_name_impl": "vector_increment", 
-                "F_subprogram": "subroutine", 
-                "function_name": "vector_increment", 
-                "underscore_name": "vector_increment"
-            }, 
-            "_function_index": 25, 
-            "_subprogram": "subroutine", 
-            "decl": "void vector_increment(std::vector<int> &arg)", 
-            "options": {
-                "wrap_c": false, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -5061,10 +5039,72 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "void vector_increment(std::vector & arg +dimension(:)+intent(inout)+template(int))", 
+            "_fmt": {
+                "F_C_call": "c_vector_increment_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
+                "F_arguments": "arg", 
+                "F_call_code": "call c_vector_increment_bufferify(\targ\tsize(arg, kind=C_LONG))", 
+                "F_name_function": "vector_increment", 
+                "F_name_generic": "vector_increment", 
+                "F_name_impl": "vector_increment", 
+                "F_subprogram": "subroutine", 
+                "function_name": "vector_increment", 
+                "underscore_name": "vector_increment"
+            }, 
+            "_function_index": 25, 
+            "_subprogram": "subroutine", 
+            "decl": "void vector_increment(std::vector<int> &arg)", 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
             "_PTR_C_CPP_index": 25, 
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "dimension": "(:)", 
+                            "intent": "inout", 
+                            "size": "Sarg", 
+                            "template": "int", 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::vector"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "vector_increment", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void vector_increment(std::vector & arg +dimension(:)+intent(inout)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -5107,78 +5147,11 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "dimension": "(:)", 
-                            "intent": "inout", 
-                            "size": "Sarg", 
-                            "template": "int", 
-                            "value": false
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::vector"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "vector_increment", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
             "_PTR_F_C_index": 48, 
-            "_decl": "int vector_string_count(const std::vector & arg +dimension(:)+intent(in)+template(std::string))", 
-            "_fmt": {
-                "F_C_call": "c_vector_string_count_bufferify", 
-                "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
-                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
-                "F_arguments": "arg", 
-                "F_call_code": "SHT_rv = c_vector_string_count_bufferify(\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT))", 
-                "F_name_function": "vector_string_count", 
-                "F_name_generic": "vector_string_count", 
-                "F_name_impl": "vector_string_count", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "function_name": "vector_string_count", 
-                "underscore_name": "vector_string_count"
-            }, 
-            "_function_index": 26, 
-            "_subprogram": "function", 
-            "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
-            "doxygen": {
-                "brief": "count number of underscore in vector of strings", 
-                "decription": "The input will be copied in order to create the C++ argument\n"
-            }, 
-            "options": {
-                "wrap_c": false, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -5216,10 +5189,78 @@
                     "int"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "int vector_string_count(const std::vector & arg +dimension(:)+intent(in)+template(std::string))", 
+            "_fmt": {
+                "F_C_call": "c_vector_string_count_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
+                "F_arguments": "arg", 
+                "F_call_code": "SHT_rv = c_vector_string_count_bufferify(\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT))", 
+                "F_name_function": "vector_string_count", 
+                "F_name_generic": "vector_string_count", 
+                "F_name_impl": "vector_string_count", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "function_name": "vector_string_count", 
+                "underscore_name": "vector_string_count"
+            }, 
+            "_function_index": 26, 
+            "_subprogram": "function", 
+            "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
+            "doxygen": {
+                "brief": "count number of underscore in vector of strings", 
+                "decription": "The input will be copied in order to create the C++ argument\n"
+            }, 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
             "_PTR_C_CPP_index": 26, 
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "dimension": "(:)", 
+                            "intent": "in", 
+                            "len": "Narg", 
+                            "size": "Sarg", 
+                            "template": "std::string", 
+                            "value": false
+                        }, 
+                        "const": true, 
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::vector"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "vector_string_count", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "int"
+                ], 
+                "storage": []
+            }, 
             "_decl": "int vector_string_count(const std::vector & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -5271,81 +5312,13 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "dimension": "(:)", 
-                            "intent": "in", 
-                            "len": "Narg", 
-                            "size": "Sarg", 
-                            "template": "std::string", 
-                            "value": false
-                        }, 
-                        "const": true, 
-                        "declarator": {
-                            "name": "arg", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::vector"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "vector_string_count", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "int"
-                ], 
-                "storage": []
             }
         }, 
         {
             "C_return_code": "return SH_arg.size();", 
             "C_return_type": "int", 
             "_PTR_F_C_index": 49, 
-            "_decl": "void vector_string_fill(std::vector & arg +dimension(:)+intent(out)+template(std::string))", 
-            "_fmt": {
-                "F_C_call": "c_vector_string_fill_bufferify", 
-                "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
-                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
-                "F_arguments": "arg", 
-                "F_call_code": "SHT_rv = c_vector_string_fill_bufferify(\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT))", 
-                "F_name_function": "vector_string_fill", 
-                "F_name_generic": "vector_string_fill", 
-                "F_name_impl": "vector_string_fill", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "function_name": "vector_string_fill", 
-                "underscore_name": "vector_string_fill"
-            }, 
-            "_function_index": 27, 
-            "_subprogram": "subroutine", 
-            "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
-            "doxygen": {
-                "brief": "Fill in arg with some animal names", 
-                "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
-            }, 
-            "options": {
-                "wrap_c": false, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -5383,12 +5356,80 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "void vector_string_fill(std::vector & arg +dimension(:)+intent(out)+template(std::string))", 
+            "_fmt": {
+                "F_C_call": "c_vector_string_fill_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
+                "F_arguments": "arg", 
+                "F_call_code": "SHT_rv = c_vector_string_fill_bufferify(\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT))", 
+                "F_name_function": "vector_string_fill", 
+                "F_name_generic": "vector_string_fill", 
+                "F_name_impl": "vector_string_fill", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "function_name": "vector_string_fill", 
+                "underscore_name": "vector_string_fill"
+            }, 
+            "_function_index": 27, 
+            "_subprogram": "subroutine", 
+            "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
+            "doxygen": {
+                "brief": "Fill in arg with some animal names", 
+                "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
+            }, 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
             "C_return_code": "return SH_arg.size();", 
             "C_return_type": "int", 
             "_PTR_C_CPP_index": 27, 
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "dimension": "(:)", 
+                            "intent": "out", 
+                            "len": "Narg", 
+                            "size": "Sarg", 
+                            "template": "std::string", 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::vector"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "vector_string_fill", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void vector_string_fill(std::vector & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -5436,77 +5477,11 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "dimension": "(:)", 
-                            "intent": "out", 
-                            "len": "Narg", 
-                            "size": "Sarg", 
-                            "template": "std::string", 
-                            "value": false
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::vector"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "vector_string_fill", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
             "_PTR_F_C_index": 50, 
-            "_decl": "void vector_string_append(std::vector & arg +dimension(:)+intent(inout)+template(std::string))", 
-            "_fmt": {
-                "F_C_call": "c_vector_string_append_bufferify", 
-                "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
-                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
-                "F_arguments": "arg", 
-                "F_call_code": "call c_vector_string_append_bufferify(\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT))", 
-                "F_name_function": "vector_string_append", 
-                "F_name_generic": "vector_string_append", 
-                "F_name_impl": "vector_string_append", 
-                "F_subprogram": "subroutine", 
-                "function_name": "vector_string_append", 
-                "underscore_name": "vector_string_append"
-            }, 
-            "_function_index": 28, 
-            "_subprogram": "subroutine", 
-            "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
-            "doxygen": {
-                "brief": "append '-like' to names."
-            }, 
-            "options": {
-                "wrap_c": false, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -5544,10 +5519,76 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "void vector_string_append(std::vector & arg +dimension(:)+intent(inout)+template(std::string))", 
+            "_fmt": {
+                "F_C_call": "c_vector_string_append_bufferify", 
+                "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
+                "F_arguments": "arg", 
+                "F_call_code": "call c_vector_string_append_bufferify(\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT))", 
+                "F_name_function": "vector_string_append", 
+                "F_name_generic": "vector_string_append", 
+                "F_name_impl": "vector_string_append", 
+                "F_subprogram": "subroutine", 
+                "function_name": "vector_string_append", 
+                "underscore_name": "vector_string_append"
+            }, 
+            "_function_index": 28, 
+            "_subprogram": "subroutine", 
+            "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
+            "doxygen": {
+                "brief": "append '-like' to names."
+            }, 
+            "options": {
+                "wrap_c": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }, 
         {
             "_PTR_C_CPP_index": 28, 
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "dimension": "(:)", 
+                            "intent": "inout", 
+                            "len": "Narg", 
+                            "size": "Sarg", 
+                            "template": "std::string", 
+                            "value": false
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": [
+                                {
+                                    "const": false, 
+                                    "ptr": "&"
+                                }
+                            ]
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "std::vector"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "vector_string_append", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void vector_string_append(std::vector & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg)+template(std::string))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
@@ -5594,50 +5635,31 @@
                 "wrap_fortran": false, 
                 "wrap_lua": false, 
                 "wrap_python": false
-            }, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "dimension": "(:)", 
-                            "intent": "inout", 
-                            "len": "Narg", 
-                            "size": "Sarg", 
-                            "template": "std::string", 
-                            "value": false
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "&"
-                                }
-                            ]
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "std::vector"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "vector_string_append", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "void"
-                ], 
-                "storage": []
             }
         }, 
         {
+            "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": true, 
+                "declarator": {
+                    "name": "LastFunctionCalled", 
+                    "pointer": [
+                        {
+                            "const": false, 
+                            "ptr": "&"
+                        }
+                    ]
+                }, 
+                "fattrs": {
+                    "pure": true
+                }, 
+                "func_const": false, 
+                "specifier": [
+                    "std::string"
+                ], 
+                "storage": []
+            }, 
             "_decl": "const std::string & LastFunctionCalled() +pure", 
             "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 
@@ -5678,76 +5700,11 @@
             "_function_index": 29, 
             "_subprogram": "function", 
             "decl": "const std::string& LastFunctionCalled() +pure", 
-            "options": {}, 
-            "result": {
-                "args": [], 
-                "attrs": {}, 
-                "const": true, 
-                "declarator": {
-                    "name": "LastFunctionCalled", 
-                    "pointer": [
-                        {
-                            "const": false, 
-                            "ptr": "&"
-                        }
-                    ]
-                }, 
-                "fattrs": {
-                    "pure": true
-                }, 
-                "func_const": false, 
-                "specifier": [
-                    "std::string"
-                ], 
-                "storage": []
-            }
+            "options": {}
         }, 
         {
             "_PTR_C_CPP_index": 29, 
-            "_decl": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
-            "_error_pattern_suffix": "_as_buffer", 
-            "_fmt": {
-                "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 
-                "C_call_list": "", 
-                "C_name": "TUT_last_function_called_bufferify", 
-                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                "C_prototype": "char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_last_function_called_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
-            }, 
-            "_fmtargs": {
-                "SHF_rv": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "SHF_rv", 
-                        "c_var_len": "NSHF_rv", 
-                        "cpp_type": "std::string", 
-                        "cpp_val": "SHT_rv.c_str()", 
-                        "cpp_var": "SHT_rv"
-                    }
-                }
-            }, 
-            "_fmtresult": {
-                "fmtc": {
-                    "cpp_rv_decl": "const std::string & SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 51, 
-            "_generated": "arg_to_buffer", 
-            "_subprogram": "subroutine", 
-            "decl": "const std::string& LastFunctionCalled() +pure", 
-            "options": {
-                "wrap_c": true, 
-                "wrap_fortran": false, 
-                "wrap_lua": false, 
-                "wrap_python": false
-            }, 
-            "result": {
+            "_ast": {
                 "args": [
                     {
                         "args": [], 
@@ -5790,6 +5747,49 @@
                     "void"
                 ], 
                 "storage": []
+            }, 
+            "_decl": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
+            "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 
+                "C_call_list": "", 
+                "C_name": "TUT_last_function_called_bufferify", 
+                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                "C_prototype": "char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_last_function_called_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
+            "_fmtargs": {
+                "SHF_rv": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "SHF_rv", 
+                        "c_var_len": "NSHF_rv", 
+                        "cpp_type": "std::string", 
+                        "cpp_val": "SHT_rv.c_str()", 
+                        "cpp_var": "SHT_rv"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "const std::string & SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 51, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "decl": "const std::string& LastFunctionCalled() +pure", 
+            "options": {
+                "wrap_c": true, 
+                "wrap_fortran": false, 
+                "wrap_lua": false, 
+                "wrap_python": false
             }
         }
     ], 

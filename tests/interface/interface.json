@@ -88,6 +88,21 @@
     "cpp_header": "interface.h", 
     "functions": [
         {
+            "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "Function1", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ], 
+                "storage": []
+            }, 
             "_decl": "void Function1()", 
             "_fmt": {
                 "C_call_code": "Function1();", 
@@ -114,24 +129,57 @@
             "_function_index": 0, 
             "_subprogram": "subroutine", 
             "decl": "void Function1()", 
-            "options": {}, 
-            "result": {
-                "args": [], 
+            "options": {}
+        }, 
+        {
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg1", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "double"
+                        ], 
+                        "storage": []
+                    }, 
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
+                            "name": "arg2", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "int"
+                        ], 
+                        "storage": []
+                    }
+                ], 
                 "attrs": {}, 
                 "const": false, 
                 "declarator": {
-                    "name": "Function1", 
+                    "name": "Function2", 
                     "pointer": []
                 }, 
                 "fattrs": {}, 
                 "func_const": false, 
                 "specifier": [
-                    "void"
+                    "double"
                 ], 
                 "storage": []
-            }
-        }, 
-        {
+            }, 
             "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
@@ -192,55 +240,7 @@
             "_function_index": 1, 
             "_subprogram": "function", 
             "decl": "double Function2(double arg1, int arg2)", 
-            "options": {}, 
-            "result": {
-                "args": [
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg1", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "double"
-                        ], 
-                        "storage": []
-                    }, 
-                    {
-                        "attrs": {
-                            "intent": "in", 
-                            "value": true
-                        }, 
-                        "const": false, 
-                        "declarator": {
-                            "name": "arg2", 
-                            "pointer": []
-                        }, 
-                        "func_const": false, 
-                        "specifier": [
-                            "int"
-                        ], 
-                        "storage": []
-                    }
-                ], 
-                "attrs": {}, 
-                "const": false, 
-                "declarator": {
-                    "name": "Function2", 
-                    "pointer": []
-                }, 
-                "fattrs": {}, 
-                "func_const": false, 
-                "specifier": [
-                    "double"
-                ], 
-                "storage": []
-            }
+            "options": {}
         }
     ], 
     "language": "c", 

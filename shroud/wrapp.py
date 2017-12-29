@@ -322,7 +322,7 @@ return 1;""", fmt)
         overloaded_methods = {}
         for function in functions:
             flist = overloaded_methods. \
-                setdefault(declast.get_name(function['result']), [])
+                setdefault(declast.get_name(function['_ast']), [])
             if '_cpp_overload' not in function:
                 continue
             if not function['options'].wrap_python:
@@ -366,7 +366,7 @@ return 1;""", fmt)
 
         CPP_subprogram = node['_subprogram']
 
-        result = node['result']
+        result = node['_ast']
         result_type = declast.get_type(result)
 
         if node.get('return_this', False):
@@ -845,7 +845,7 @@ return 1;""", fmt)
                                 % overload['_nargs'])
                 else:
                     body.append('if (SH_nargs == %d) {' %
-                                len(overload['result']['args']))
+                                len(overload['_ast']['args']))
                 body.append(1)
                 append_format(body,
                               'rvobj = {PY_name_impl}(self, args, kwds);',
