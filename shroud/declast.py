@@ -714,12 +714,13 @@ class Declaration(Node):
         for ptr in self.declarator.pointer:
             if ptr.ptr:
                 decl.append(ptr.ptr)
+                decl.append(' ')
         # XXX - deal with function pointers
         decl.append(self.name)
-        self.gen_attrs(self.attrs, decl)
         if self.init is not None:
             decl.append('=')
             decl.append(str(self.init))
+        self.gen_attrs(self.attrs, decl)
 
     def gen_decl(self):
         """Generate declaration.
@@ -758,6 +759,10 @@ class Declaration(Node):
             decl.append('+')
             if value is True:
                 decl.append(attr)
+            elif attr == 'dimension':
+                # dimension already has parens
+                decl.append(attr)
+                decl.append(value)
             else:
                 decl.append('{}({})'.format(attr, value))
             space = ''

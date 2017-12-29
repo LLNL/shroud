@@ -1536,72 +1536,11 @@ class GenFunctions(object):
             if typedef.base == 'wrapped':
                 used_types[argtype] = typedef
 
-    _skip_annotations = ['const', 'ptr', 'reference']
-
-    def gen_annotations_decl(self, attrs, decl):
-        """Append annotations from attrs onto decl in sorted order.
-        Skip some that are already handled.
-        """
-        keys = sorted(attrs)
-        space = ' '
-        for key in keys:
-            if key[0] == '_':  # internal attribute
-                continue
-            if key in self._skip_annotations:
-                continue
-            value = attrs[key]
-            if value is False:
-                continue
-            decl.append(space)
-            decl.append('+')
-            if value is True:
-                decl.append(key)
-            elif key == 'dimension':
-                # dimension already has parens
-                decl.append('%s%s' % (key, value))
-            else:
-                decl.append('%s(%s)' % (key, value))
-            space = ''
-
-    def gen_arg_decl(self, ast, decl):
-        """ Generate declaration for a single arg (or result)
-        """
-        if ast.const:
-            decl.append('const ')
-        decl.append(ast.typename)
-        decl.append(' ')
-        if ast.is_pointer():
-            decl.append('* ')
-        if ast.is_reference():
-            decl.append('& ')
-        decl.append(ast.name)
-        if ast.init is not None:
-            decl.append('=')
-            decl.append(str(ast.init))
-
     def gen_functions_decl(self, functions):
         """ Generate _decl for generated all functions.
         """
         for node in functions:
-            decl = []
-            ast = node['_ast']
-            self.gen_arg_decl(ast, decl)
-
-            if ast.params:
-                decl.append('(')
-                for arg in ast.params:
-                    self.gen_arg_decl(arg, decl)
-                    self.gen_annotations_decl(arg.attrs, decl)
-                    decl.append(', ')
-                decl[-1] = ')'
-            else:
-                decl.append('()')
-
-            if ast.func_const:
-                decl.append(' const')
-            self.gen_annotations_decl(ast.fattrs, decl)
-
-            node['_decl'] = ''.join(decl)
+            node['_decl'] = node['_ast'].gen_decl()
 
 
 class VerifyAttrs(object):

@@ -448,7 +448,7 @@
                         ], 
                         "storage": []
                     }, 
-                    "_decl": "const string & getName() const", 
+                    "_decl": "const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const", 
                     "_fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                         "C_call_list": "", 
@@ -543,7 +543,7 @@
                         ], 
                         "storage": []
                     }, 
-                    "_decl": "void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
+                    "_decl": "void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
@@ -1800,7 +1800,7 @@
                         ], 
                         "storage": []
                     }, 
-                    "_decl": "const string & getName() const", 
+                    "_decl": "const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const", 
                     "_fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                         "C_call_list": "", 
@@ -1892,7 +1892,7 @@
                         ], 
                         "storage": []
                     }, 
-                    "_decl": "void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
+                    "_decl": "void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_fmt": {
                         "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 

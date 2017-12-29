@@ -320,7 +320,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("const std::string& getName() const")
 
         s = r.gen_decl()
-        self.assertEqual("const std::string &getName() const", s)
+        self.assertEqual("const std::string & getName() const", s)
 
         self.assertEqual(r.to_dict(), {
             'args': [],
@@ -455,7 +455,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("Class1 *Class1()  +constructor",current_class='Class1')
 
         s = r.gen_decl()
-        self.assertEqual("Class1 *Class1() +constructor", s)
+        self.assertEqual("Class1 * Class1() +constructor", s)
 
         self.assertEqual(r.to_dict(),  {
             "args": [], 
@@ -765,23 +765,23 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("const std::string& getName() const")
 
         s = r.gen_decl()
-        self.assertEqual("const std::string &getName() const", s)
+        self.assertEqual("const std::string & getName() const", s)
 
         r.result_as_arg('output')
         s = r.gen_decl()
-        self.assertEqual("void getName(std::string &output) const", s)
+        self.assertEqual("void getName(std::string & output) const", s)
                          
     def test_thisarg01(self):
         """Create an argument for const this"""
         r = declast.create_this_arg('self', 'Class1', const=True)
         s = r.gen_decl()
-        self.assertEqual("const Class1 *self", s)
+        self.assertEqual("const Class1 * self", s)
 
     def test_thisarg02(self):
         """Create an argument for this"""
         r = declast.create_this_arg('self', 'Class1', const=False)
         s = r.gen_decl()
-        self.assertEqual("Class1 *self", s)
+        self.assertEqual("Class1 * self", s)
 
     def test_copy01(self):
         """Test copy"""

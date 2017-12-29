@@ -950,7 +950,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "const char * getChar2()", 
+            "_decl": "const char * getChar2 +len(30)()", 
             "_fmt": {
                 "C_call_code": "const char * SHT_rv = getChar2();", 
                 "C_call_list": "", 
@@ -1034,7 +1034,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void getChar2(char * SHF_rv +intent(out)+len(NSHF_rv))", 
+            "_decl": "void getChar2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "const char * SHT_rv = getChar2();", 
@@ -1487,7 +1487,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "const string & getString2()", 
+            "_decl": "const string & getString2 +len(30)()", 
             "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2();", 
                 "C_call_list": "", 
@@ -1576,7 +1576,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void getString2(string & SHF_rv +intent(out)+len(NSHF_rv))", 
+            "_decl": "void getString2 +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2();", 
@@ -1877,7 +1877,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "const string & getString2_empty()", 
+            "_decl": "const string & getString2_empty +len(30)()", 
             "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2_empty();", 
                 "C_call_list": "", 
@@ -1966,7 +1966,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void getString2_empty(string & SHF_rv +intent(out)+len(NSHF_rv))", 
+            "_decl": "void getString2_empty +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2_empty();", 
@@ -2037,7 +2037,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "const string getString5()", 
+            "_decl": "const string getString5 +len(30)()", 
             "_fmt": {
                 "F_C_call": "c_get_string5_bufferify", 
                 "F_arg_c_call": "SHT_rv, len(SHT_rv, kind=C_INT)", 
@@ -2110,7 +2110,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void getString5(string * SHF_rv +intent(out)+len(NSHF_rv))", 
+            "_decl": "void getString5 +len(30)(string * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "const std::string SHT_rv = getString5();", 

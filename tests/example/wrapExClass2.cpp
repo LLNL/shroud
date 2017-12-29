@@ -101,7 +101,7 @@ void AA_exclass2_delete(AA_exclass2 * self)
 // splicer end class.ExClass2.method.delete
 }
 
-// const string & getName() const
+// const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 // function_index=20
 const char * AA_exclass2_get_name(const AA_exclass2 * self)
 {
@@ -113,7 +113,7 @@ const char * AA_exclass2_get_name(const AA_exclass2 * self)
 // splicer end class.ExClass2.method.get_name
 }
 
-// void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const
+// void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
 // function_index=39
 void AA_exclass2_get_name_bufferify(const AA_exclass2 * self, char * SHF_rv, int NSHF_rv)
 {

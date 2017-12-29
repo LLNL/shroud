@@ -215,7 +215,7 @@ void STR_get_char1_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_char1_bufferify
 }
 
-// const char * getChar2()
+// const char * getChar2 +len(30)()
 // function_index=5
 /**
  * \brief return 'const char *' with fixed size (len=30)
@@ -229,7 +229,7 @@ const char * STR_get_char2()
 // splicer end function.get_char2
 }
 
-// void getChar2(char * SHF_rv +intent(out)+len(NSHF_rv))
+// void getChar2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=25
 /**
  * \brief return 'const char *' with fixed size (len=30)
@@ -315,7 +315,7 @@ void STR_get_string1_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_string1_bufferify
 }
 
-// const string & getString2()
+// const string & getString2 +len(30)()
 // function_index=8
 /**
  * \brief return 'const string&' with fixed size (len=30)
@@ -335,7 +335,7 @@ const char * STR_get_string2()
 // splicer end function.get_string2
 }
 
-// void getString2(string & SHF_rv +intent(out)+len(NSHF_rv))
+// void getString2 +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=29
 /**
  * \brief return 'const string&' with fixed size (len=30)
@@ -393,7 +393,7 @@ void STR_get_string3_bufferify(char * output, int Noutput)
 // splicer end function.get_string3_bufferify
 }
 
-// const string & getString2_empty()
+// const string & getString2_empty +len(30)()
 // function_index=10
 /**
  * \brief Test returning empty string reference
@@ -413,7 +413,7 @@ const char * STR_get_string2_empty()
 // splicer end function.get_string2_empty
 }
 
-// void getString2_empty(string & SHF_rv +intent(out)+len(NSHF_rv))
+// void getString2_empty +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=32
 /**
  * \brief Test returning empty string reference
@@ -432,7 +432,7 @@ void STR_get_string2_empty_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_string2_empty_bufferify
 }
 
-// void getString5(string * SHF_rv +intent(out)+len(NSHF_rv))
+// void getString5 +len(30)(string * SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=33
 /**
  * \brief return a 'const string' as argument

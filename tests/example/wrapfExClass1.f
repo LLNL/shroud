@@ -308,7 +308,7 @@ contains
         ! splicer end class.ExClass1.method.increment_count
     end function exclass1_increment_count
 
-    ! const string & getName() const
+    ! const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const
     ! arg_to_buffer
     ! function_index=3
     function exclass1_get_name(obj) result(SHT_rv)

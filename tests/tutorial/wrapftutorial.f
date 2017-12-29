@@ -597,7 +597,7 @@ contains
         arg3 = SH_arg3  ! coerce to logical
     end subroutine function3b
 
-    ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
+    ! const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
     ! arg_to_buffer
     ! function_index=8
     function function4a(arg1, arg2) result(SHT_rv)
@@ -903,7 +903,7 @@ contains
         ! splicer end function.useclass
     end subroutine useclass
 
-    ! int vector_sum(const std::vector & arg +dimension(:)+intent(in)+template(int))
+    ! int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
     ! arg_to_buffer
     ! function_index=23
     function vector_sum(arg) result(SHT_rv)
@@ -917,7 +917,7 @@ contains
         ! splicer end function.vector_sum
     end function vector_sum
 
-    ! void vector_iota(std::vector & arg +dimension(:)+intent(out)+template(int))
+    ! void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))
     ! arg_to_buffer
     ! function_index=24
     subroutine vector_iota(arg)
@@ -930,7 +930,7 @@ contains
         ! splicer end function.vector_iota
     end subroutine vector_iota
 
-    ! void vector_increment(std::vector & arg +dimension(:)+intent(inout)+template(int))
+    ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
     ! arg_to_buffer
     ! function_index=25
     subroutine vector_increment(arg)
@@ -943,7 +943,7 @@ contains
         ! splicer end function.vector_increment
     end subroutine vector_increment
 
-    ! int vector_string_count(const std::vector & arg +dimension(:)+intent(in)+template(std::string))
+    ! int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
     ! arg_to_buffer
     ! function_index=26
     !>
@@ -962,7 +962,7 @@ contains
         ! splicer end function.vector_string_count
     end function vector_string_count
 
-    ! void vector_string_fill(std::vector & arg +dimension(:)+intent(out)+template(std::string))
+    ! void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))
     ! arg_to_buffer
     ! function_index=27
     !>
@@ -983,7 +983,7 @@ contains
         ! splicer end function.vector_string_fill
     end function vector_string_fill
 
-    ! void vector_string_append(std::vector & arg +dimension(:)+intent(inout)+template(std::string))
+    ! void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))
     ! arg_to_buffer
     ! function_index=28
     !>

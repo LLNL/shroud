@@ -132,7 +132,7 @@ void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
 // splicer end function.function3b
 }
 
-// void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))
+// void Function4a +len(30)(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=40
 void TUT_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
 {
@@ -414,7 +414,7 @@ void TUT_useclass(const TUT_class1 * arg1)
 // splicer end function.useclass
 }
 
-// int vector_sum(const std::vector & arg +dimension(:)+intent(in)+size(Sarg)+template(int))
+// int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
 // function_index=45
 int TUT_vector_sum_bufferify(const int * arg, long Sarg)
 {
@@ -425,7 +425,7 @@ int TUT_vector_sum_bufferify(const int * arg, long Sarg)
 // splicer end function.vector_sum_bufferify
 }
 
-// void vector_iota(std::vector & arg +dimension(:)+intent(out)+size(Sarg)+template(int))
+// void vector_iota(std::vector<int> & arg +dimension(:)+intent(out)+size(Sarg))
 // function_index=46
 void TUT_vector_iota_bufferify(int * arg, long Sarg)
 {
@@ -445,7 +445,7 @@ void TUT_vector_iota_bufferify(int * arg, long Sarg)
 // splicer end function.vector_iota_bufferify
 }
 
-// void vector_increment(std::vector & arg +dimension(:)+intent(inout)+size(Sarg)+template(int))
+// void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))
 // function_index=47
 void TUT_vector_increment_bufferify(int * arg, long Sarg)
 {
@@ -465,7 +465,7 @@ void TUT_vector_increment_bufferify(int * arg, long Sarg)
 // splicer end function.vector_increment_bufferify
 }
 
-// int vector_string_count(const std::vector & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))
+// int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
 // function_index=48
 /**
  * \brief count number of underscore in vector of strings
@@ -490,7 +490,7 @@ int TUT_vector_string_count_bufferify(const char * arg, long Sarg, int Narg)
 // splicer end function.vector_string_count_bufferify
 }
 
-// void vector_string_fill(std::vector & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))
+// void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg))
 // function_index=49
 /**
  * \brief Fill in arg with some animal names
@@ -518,7 +518,7 @@ int TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg)
 // splicer end function.vector_string_fill_bufferify
 }
 
-// void vector_string_append(std::vector & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg)+template(std::string))
+// void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))
 // function_index=50
 /**
  * \brief append '-like' to names.

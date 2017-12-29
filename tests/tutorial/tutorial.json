@@ -953,7 +953,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
+            "_decl": "const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
             "_fmt": {
                 "F_C_call": "c_function4a_bufferify", 
                 "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SHT_rv, len(SHT_rv, kind=C_INT)", 
@@ -1150,7 +1150,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
+            "_decl": "void Function4a +len(30)(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);", 
@@ -4735,7 +4735,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "int vector_sum(const std::vector & arg +dimension(:)+intent(in)+template(int))", 
+            "_decl": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))", 
             "_fmt": {
                 "F_C_call": "c_vector_sum_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
@@ -4801,7 +4801,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "int vector_sum(const std::vector & arg +dimension(:)+intent(in)+size(Sarg)+template(int))", 
+            "_decl": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "int SHT_rv = vector_sum(SH_arg);", 
@@ -4890,7 +4890,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void vector_iota(std::vector & arg +dimension(:)+intent(out)+template(int))", 
+            "_decl": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))", 
             "_fmt": {
                 "F_C_call": "c_vector_iota_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
@@ -4955,7 +4955,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void vector_iota(std::vector & arg +dimension(:)+intent(out)+size(Sarg)+template(int))", 
+            "_decl": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out)+size(Sarg))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "vector_iota(SH_arg);", 
@@ -5040,7 +5040,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void vector_increment(std::vector & arg +dimension(:)+intent(inout)+template(int))", 
+            "_decl": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))", 
             "_fmt": {
                 "F_C_call": "c_vector_increment_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
@@ -5105,7 +5105,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void vector_increment(std::vector & arg +dimension(:)+intent(inout)+size(Sarg)+template(int))", 
+            "_decl": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "vector_increment(SH_arg);", 
@@ -5190,7 +5190,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "int vector_string_count(const std::vector & arg +dimension(:)+intent(in)+template(std::string))", 
+            "_decl": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))", 
             "_fmt": {
                 "F_C_call": "c_vector_string_count_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
@@ -5261,7 +5261,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "int vector_string_count(const std::vector & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))", 
+            "_decl": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "int SHT_rv = vector_string_count(SH_arg);", 
@@ -5357,7 +5357,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void vector_string_fill(std::vector & arg +dimension(:)+intent(out)+template(std::string))", 
+            "_decl": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))", 
             "_fmt": {
                 "F_C_call": "c_vector_string_fill_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
@@ -5430,7 +5430,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void vector_string_fill(std::vector & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))", 
+            "_decl": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "vector_string_fill(SH_arg);", 
@@ -5520,7 +5520,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void vector_string_append(std::vector & arg +dimension(:)+intent(inout)+template(std::string))", 
+            "_decl": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))", 
             "_fmt": {
                 "F_C_call": "c_vector_string_append_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
@@ -5589,7 +5589,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void vector_string_append(std::vector & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg)+template(std::string))", 
+            "_decl": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "vector_string_append(SH_arg);", 

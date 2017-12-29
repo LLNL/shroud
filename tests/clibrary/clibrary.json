@@ -679,7 +679,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in))", 
+            "_decl": "char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))", 
             "_fmt": {
                 "C_call_code": "char * SHT_rv = Function4a(arg1, arg2);", 
                 "C_call_list": "arg1, arg2", 
@@ -867,7 +867,7 @@
                 ], 
                 "storage": []
             }, 
-            "_decl": "void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))", 
+            "_decl": "void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
             "_fmt": {
                 "C_call_code": "char * SHT_rv = Function4a(SH_arg1, SH_arg2);", 
