@@ -260,7 +260,7 @@ def lookup_c_statements(arg):
     If the argument type is a template, look for 
     template specific c_statements.
     """
-    attrs = arg['attrs']
+    attrs = arg.attrs
     argtype = declast.get_type(arg)
     arg_typedef = Typedef.lookup(argtype)
 
@@ -347,7 +347,7 @@ class WrapperMixin(object):
         typedef = Typedef.lookup(declast.get_type(ast))
 
         if const is None:
-            const = ast['const']
+            const = ast.const
         if const:
             t.append('const')
 

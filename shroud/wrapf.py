@@ -136,7 +136,7 @@ class Wrapf(util.WrapperMixin):
         t = []
         typedef = util.Typedef.lookup(declast.get_type(ast))
         basedef = typedef
-        attrs = ast['attrs']
+        attrs = ast.attrs
         if 'template' in attrs:
             # If a template, use its type
             typedef = util.Typedef.lookup(attrs['template'])
@@ -184,7 +184,7 @@ class Wrapf(util.WrapperMixin):
         """
         t = []
         typedef = util.Typedef.lookup(declast.get_type(ast))
-        attrs = ast['attrs']
+        attrs = ast.attrs
         if 'template' in attrs:
             # If a template, use its type
             typedef = util.Typedef.lookup(attrs['template'])
@@ -561,7 +561,7 @@ class Wrapf(util.WrapperMixin):
 
         ast = node['_ast']
         result_type = declast.get_type(ast)
-        func_is_const = ast['func_const']
+        func_is_const = ast.func_const
         subprogram = node['_subprogram']
 
         generator = node.get('_generated', '')
@@ -578,9 +578,9 @@ class Wrapf(util.WrapperMixin):
             subprogram = 'function'
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_const = ast['func_const']
-        is_ctor = ast['fattrs'].get('constructor', False)
-        is_pure = ast['fattrs'].get('pure', False)
+        is_const = ast.func_const
+        is_ctor = ast.fattrs.get('constructor', False)
+        is_pure = ast.fattrs.get('pure', False)
 
         arg_c_names = []  # argument names for functions
         arg_c_decl = []   # declaraion of argument names
@@ -609,7 +609,7 @@ class Wrapf(util.WrapperMixin):
             # XXX look at const, ptr
             arg_typedef, c_statements = util.lookup_c_statements(arg)
             fmt.c_var = declast.get_name(arg)
-            attrs = arg['attrs']
+            attrs = arg.attrs
             self.update_f_module(modules,
                                  arg_typedef.f_c_module or arg_typedef.f_module)
 
@@ -670,10 +670,8 @@ class Wrapf(util.WrapperMixin):
                 self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             else:
                 # XXX - make sure ptr is set to avoid VALUE
-                arg_dict = dict(name=fmt.F_result,
-                                type=result_type,
-                                attrs=dict(ptr=True))
-                arg_c_decl.append(self._c_decl(arg_dict))
+                rvast = declast.create_this_arg(fmt.F_result, result_type, False)
+                arg_c_decl.append(self._c_decl(rvast))
                 self.update_f_module(modules,
                                      result_typedef.f_c_module or
                                      result_typedef.f_module)
@@ -732,7 +730,7 @@ class Wrapf(util.WrapperMixin):
         # Fortran return type
         ast = node['_ast']
         result_type = declast.get_type(ast)
-        func_is_const = ast['func_const']
+        func_is_const = ast.func_const
         subprogram = node['_subprogram']
         c_subprogram = C_node['_subprogram']
 
@@ -758,10 +756,10 @@ class Wrapf(util.WrapperMixin):
             declast.set_type(ast, result_type)
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = ast['fattrs'].get('constructor', False)
-        is_dtor = ast['fattrs'].get('destructor', False)
-        is_pure = ast['fattrs'].get('pure', False)
-        is_const = ast['const']
+        is_ctor = ast.fattrs.get('constructor', False)
+        is_dtor = ast.fattrs.get('destructor', False)
+        is_pure = ast.fattrs.get('pure', False)
+        is_const = ast.const
 
         result_intent_grp = ''
         if is_pure:
@@ -814,7 +812,7 @@ class Wrapf(util.WrapperMixin):
             fmt_arg.c_var = arg_name
 
             f_arg = True   # assume C and Fortran arguments match
-            c_attrs = c_arg['attrs']
+            c_attrs = c_arg.attrs
             intent = c_attrs['intent']
             if c_attrs.get('_is_result', False):
                 c_stmts = 'result' + intent_grp
@@ -924,7 +922,7 @@ class Wrapf(util.WrapperMixin):
             #     fmt_func.F_pure_clause = 'pure '
             if result_typedef.base == 'string':
                 # special case returning a string
-                rvlen = ast['attrs'].get('len', None)
+                rvlen = ast.attrs.get('len', None)
                 if rvlen is None:
                     rvlen = wformat(
                         'strlen_ptr({F_C_call}({F_arg_c_call_tab}))',

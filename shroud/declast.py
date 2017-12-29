@@ -526,16 +526,8 @@ class Declaration(Node):
                 return []
             else:
                 return self.params
-        elif item in ['attrs', 'const', 'fattrs', 'func_const', 'init']:
-            return getattr(self, item)
         else:
             raise KeyError
-
-    def __setitem__(self, item, value):
-        if item in ['const']:
-            setattr(self, item, value)
-        else:
-            raise RuntimeError("setitem key")
 
     def __contains__(self, item):
         if item in ['name', 'type', 'attrs']:

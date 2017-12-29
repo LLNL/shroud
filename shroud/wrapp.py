@@ -374,9 +374,9 @@ return 1;""", fmt)
             CPP_subprogram = 'subroutine'
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = ast['fattrs'].get('constructor', False)
-        is_dtor = ast['fattrs'].get('destructor', False)
-#        is_const = ast['const']
+        is_ctor = ast.fattrs.get('constructor', False)
+        is_dtor = ast.fattrs.get('destructor', False)
+#        is_const = ast.const
         if is_ctor:   # or is_dtor:
             # XXX - have explicit delete
             # need code in __init__ and __del__
@@ -434,7 +434,7 @@ return 1;""", fmt)
                 fmt_arg.c_var = arg_name
                 fmt_arg.cpp_var = arg_name
                 fmt_arg.py_var = 'SH_Py_' + arg_name
-                if arg['const']:
+                if arg.const:
                     fmt_arg.c_const = 'const '
                 else:
                     fmt_arg.c_const = ''
@@ -442,7 +442,7 @@ return 1;""", fmt)
                     fmt_arg.c_ptr = ' *'
                 else:
                     fmt_arg.c_ptr = ''
-                attrs = arg['attrs']
+                attrs = arg.attrs
 
                 arg_typedef = util.Typedef.lookup(declast.get_type(arg))
                 fmt_arg.cpp_type = arg_typedef.cpp_type
@@ -455,7 +455,7 @@ return 1;""", fmt)
                     offset += len(arg_name) + 1
 
                     # XXX default should be handled differently
-                    if arg['init'] is not None:
+                    if arg.init is not None:
                         if not found_default:
                             parse_format.append('|')  # add once
                             found_default = True

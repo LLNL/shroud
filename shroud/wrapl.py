@@ -234,8 +234,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             CPP_subprogram = 'subroutine'
 
         # XXX       result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = ast['fattrs'].get('constructor', False)
-        is_dtor = ast['fattrs'].get('destructor', False)
+        is_ctor = ast.fattrs.get('constructor', False)
+        is_dtor = ast.fattrs.get('destructor', False)
         if is_dtor:
             fmt.LUA_name = '__gc'
 
@@ -259,8 +259,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             found_default = False
             for arg in function['_ast']['args']:
                 arg_typedef = util.Typedef.lookup(declast.get_type(arg))
-                attrs = arg['attrs']
-                if arg['init'] is not None:
+                attrs = arg.attrs
+                if arg.init is not None:
                     all_calls.append(lua_function(
                         function, CPP_subprogram, in_args[:], out_args))
                     found_default = True
@@ -444,9 +444,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             CPP_subprogram = 'subroutine'
 
         result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = ast['fattrs'].get('constructor', False)
-        is_dtor = ast['fattrs'].get('destructor', False)
-        #        is_const = ast['const']
+        is_ctor = ast.fattrs.get('constructor', False)
+        is_dtor = ast.fattrs.get('destructor', False)
+        #        is_const = ast.const
         # XXX        if is_ctor:   # or is_dtor:
         # XXX            # XXX - have explicit delete
         # XXX            # need code in __init__ and __del__
@@ -502,7 +502,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_arg.lua_var = 'SH_Lua_' + arg_name
             fmt_arg.c_var_len = 'L' + arg_name
             fmt_arg.ptr = ' *' if declast.is_pointer(arg) else ''
-            attrs = arg['attrs']
+            attrs = arg.attrs
 
             lua_pop = None
 

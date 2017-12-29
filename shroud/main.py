@@ -1009,11 +1009,11 @@ class Schema(object):
             if 'attrs' in node:
                 attrs = node['attrs']
                 if 'result' in attrs:
-                    ast['attrs'].update(attrs['result'])
+                    ast.attrs.update(attrs['result'])
                 for arg in ast['args']:
                     name = declast.get_name(arg)
                     if name in attrs:
-                        arg['attrs'].update(attrs[name])
+                        arg.attrs.update(attrs[name])
             # XXX - waring about unused fields in attrs
         else:
             raise RuntimeError("Missing decl")
@@ -1270,7 +1270,7 @@ class GenFunctions(object):
 
         min_args = 0
         for i, arg in enumerate(node['_ast']['args']):
-            if arg['init'] is None:
+            if arg.init is None:
                 min_args += 1
                 continue
             new = util.copy_function_node(node)
@@ -1316,13 +1316,13 @@ class GenFunctions(object):
         # the default wrapper will not compile since the wrapper
         # will be declared as char. It will also want to return the
         # c_str of a stack variable. Warn and turn off the wrapper.
-        result = node['_ast']
-        result_type = declast.get_type(result)
+        ast = node['_ast']
+        result_type = declast.get_type(ast)
         result_typedef = util.Typedef.lookup(result_type)
         # wrapped classes have not been added yet.
         # Only care about string here.
-        attrs = result['attrs']
-        result_is_ptr = declast.is_indirect(result)
+        attrs = ast.attrs
+        result_is_ptr = declast.is_indirect(ast)
         if result_typedef and result_typedef.base in ['string', 'vector'] and \
                 result_type != 'char' and \
                 not result_is_ptr:
@@ -1332,7 +1332,7 @@ class GenFunctions(object):
                                   "for function returning {} instance"
                                   " (must return a pointer or reference).\n"
                                   .format(result_typedef.cpp_type,
-                                          declast.get_name(result)))
+                                          declast.get_name(ast)))
 
         if options.wrap_fortran is False:
             return
@@ -1341,7 +1341,7 @@ class GenFunctions(object):
 
         # Is result or any argument a string?
         has_implied_arg = False
-        for arg in result['args']:
+        for arg in ast['args']:
             argtype = declast.get_type(arg)
             typedef = util.Typedef.lookup(argtype)
             if typedef.base == 'string':
@@ -1355,13 +1355,13 @@ class GenFunctions(object):
 
         has_string_result = False
         result_as_arg = ''  # only applies to string functions
-        is_pure = result['fattrs'].get('pure', False)
+        is_pure = ast.fattrs.get('pure', False)
         if result_typedef.base == 'vector':
             raise NotImplemented("vector result")
         elif result_typedef.base == 'string':
             if result_type == 'char' and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
-                declast.set_type(result, 'char_scalar')
+                declast.set_type(ast, 'char_scalar')
             has_string_result = True
             result_as_arg = fmt.F_string_result_as_arg
             result_name = result_as_arg or fmt.C_string_result_as_arg
@@ -1394,7 +1394,7 @@ class GenFunctions(object):
 
         newargs = []
         for arg in C_new['_ast']['args']:
-            attrs = arg['attrs']
+            attrs = arg.attrs
             argtype = declast.get_type(arg)
             arg_typedef = util.Typedef.lookup(argtype)
             if arg_typedef.base == 'vector':
@@ -1435,24 +1435,24 @@ class GenFunctions(object):
 
         if has_string_result:
             # Add additional argument to hold result
-            result_as_string = copy.deepcopy(result)
+            result_as_string = copy.deepcopy(ast)
             declast.set_name(result_as_string, result_name)
-            result_as_string['const'] = False
-            attrs = result_as_string['attrs']
+            result_as_string.const = False
+            attrs = result_as_string.attrs
             attrs['len'] = options.C_var_len_template.format(c_var=result_name)
             attrs['intent'] = 'out'
             attrs['_is_result'] = True
             if not result_is_ptr:
                 declast.set_indirection(result_as_string, '*')
 
-            result = C_new['_ast']
-            result['args'].append(result_as_string)
+            ast = C_new['_ast']
+            ast['args'].append(result_as_string)
 
             # convert to subroutine
             C_new['_subprogram'] = 'subroutine'
-            declast.set_type(result, 'void')
-            declast.set_indirection(result, '')
-            result['const'] = False
+            declast.set_type(ast, 'void')
+            declast.set_indirection(ast, '')
+            ast.const = False
 
         if is_pure:
             # pure functions which return a string have result_pure defined.
@@ -1560,43 +1560,43 @@ class GenFunctions(object):
                 decl.append('%s(%s)' % (key, value))
             space = ''
 
-    def gen_arg_decl(self, arg, decl):
+    def gen_arg_decl(self, ast, decl):
         """ Generate declaration for a single arg (or result)
         """
-        if arg['const']:
+        if ast.const:
             decl.append('const ')
-        decl.append(declast.get_type(arg))
+        decl.append(declast.get_type(ast))
         decl.append(' ')
-        if declast.is_pointer(arg):
+        if declast.is_pointer(ast):
             decl.append('* ')
-        if declast.is_reference(arg):
+        if declast.is_reference(ast):
             decl.append('& ')
-        decl.append(declast.get_name(arg))
-        if arg['init'] is not None:
+        decl.append(declast.get_name(ast))
+        if ast.init is not None:
             decl.append('=')
-            decl.append(str(arg['init']))
+            decl.append(str(ast.init))
 
     def gen_functions_decl(self, functions):
         """ Generate _decl for generated all functions.
         """
         for node in functions:
             decl = []
-            result = node['_ast']
-            self.gen_arg_decl(result, decl)
+            ast = node['_ast']
+            self.gen_arg_decl(ast, decl)
 
-            if result['args']:
+            if ast['args']:
                 decl.append('(')
-                for arg in result['args']:
+                for arg in ast['args']:
                     self.gen_arg_decl(arg, decl)
-                    self.gen_annotations_decl(arg['attrs'], decl)
+                    self.gen_annotations_decl(arg.attrs, decl)
                     decl.append(', ')
                 decl[-1] = ')'
             else:
                 decl.append('()')
 
-            if result['func_const']:
+            if ast.func_const:
                 decl.append(' const')
-            self.gen_annotations_decl(result['fattrs'], decl)
+            self.gen_annotations_decl(ast.fattrs, decl)
 
             node['_decl'] = ''.join(decl)
 
@@ -1687,14 +1687,14 @@ class VerifyAttrs(object):
                             argtype, declast.str_declarator(arg)))
 
             is_ptr = declast.is_indirect(arg)
-            attrs = arg['attrs']
+            attrs = arg.attrs
 
             # intent
             intent = attrs.get('intent', None)
             if intent is None:
                 if not is_ptr:
                     attrs['intent'] = 'in'
-                elif arg['const']:
+                elif arg.const:
                     attrs['intent'] = 'in'
                 elif typedef.base == 'string':
                     attrs['intent'] = 'inout'
@@ -1742,7 +1742,7 @@ class VerifyAttrs(object):
                 # default to 1-d assumed shape 
                 attrs['dimension'] = '(:)'
 
-            if arg['init'] is not None:
+            if arg.init is not None:
                 found_default = True
                 node['_has_default_arg'] = True
             elif found_default is True:

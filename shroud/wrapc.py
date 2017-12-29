@@ -98,13 +98,13 @@ class Wrapc(util.WrapperMixin):
         t = []
         typ = declast.get_type(ast)
         typedef = util.Typedef.lookup(typ)
-        attrs = ast['attrs']
+        attrs = ast.attrs
         if 'template' in attrs:
             # If a template, use its type
             typedef = util.Typedef.lookup(attrs['template'])
         if typedef is None:
             raise RuntimeError("No such type %s" % typ)
-        if ast['const']:
+        if ast.const:
             t.append('const')
         typ = getattr(typedef, lang)
         if typ is None:
@@ -403,10 +403,10 @@ class Wrapc(util.WrapperMixin):
             CPP_subprogram = 'subroutine'
 
         result_typedef = util.Typedef.lookup(result_type)
-        result_is_const = ast['const']
-        is_ctor = ast['fattrs'].get('constructor', False)
-        is_dtor = ast['fattrs'].get('destructor', False)
-        is_const = ast['func_const']
+        result_is_const = ast.const
+        is_ctor = ast.fattrs.get('constructor', False)
+        is_dtor = ast.fattrs.get('destructor', False)
+        is_const = ast.func_const
 
         if result_typedef.c_header:
             # include any dependent header in generated header
@@ -442,13 +442,10 @@ class Wrapc(util.WrapperMixin):
         if cls:
             need_wrapper = True
             # object pointer
-            arg_dict = dict(name=fmt_func.C_this,
-                            type=cls['name'],
-                            const=is_const,
-                            attrs=dict(ptr=True))
-            C_this_type = self._c_type('c_type', arg_dict)
+            rvast = declast.create_this_arg(fmt_func.C_this, cls['name'], is_const)
+            C_this_type = self._c_type('c_type', rvast)
             if not is_ctor:
-                arg = self._c_decl('c_type', arg_dict)
+                arg = self._c_decl('c_type', rvast)
                 proto_list.append(arg)
 
         # indicate which argument contains function result, usually none
@@ -480,14 +477,14 @@ class Wrapc(util.WrapperMixin):
             arg_name = declast.get_name(arg)
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault('fmtc', util.Options(fmt_func))
-            c_attrs = arg['attrs']
+            c_attrs = arg.attrs
             arg_typedef, c_statements = util.lookup_c_statements(arg)
             if 'template' in c_attrs:
                 fmt_arg.cpp_T = c_attrs['template']
 
             fmt_arg.c_var = arg_name
 
-            if arg['const']:
+            if arg.const:
                 fmt_arg.c_const = 'const '
             else:
                 fmt_arg.c_const = ''
