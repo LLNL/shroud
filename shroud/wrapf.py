@@ -807,7 +807,10 @@ class Wrapf(util.WrapperMixin):
         f_args = result['args']
         f_index = -1       # index into f_args
         for c_arg in C_node['result']['args']:
-            fmt_arg = c_arg.setdefault('fmtf', util.Options(fmt_func))
+            if 'fmtf' not in c_arg:
+                c_arg['fmtf'] = util.Options(fmt_func)
+            fmt_arg = c_arg['fmtf']
+#XXX            fmt_arg = c_arg.setdefault('fmtf', util.Options(fmt_func))
             fmt_arg.f_var = declast.get_name(c_arg)
             fmt_arg.c_var = fmt_arg.f_var
 

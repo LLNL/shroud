@@ -85,8 +85,8 @@ functions:
     const std::string& arg1,
     const std::string& arg2 )
 # +pure
-#  result:
-#    attrs:
+#  attrs:
+#    result:
 #      len: 30
 - decl: const std::string& Function4b(
     const std::string& arg1,

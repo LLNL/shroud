@@ -45,6 +45,7 @@ from __future__ import print_function
 from shroud import declast
 
 import unittest
+import copy
 
 class CheckParse(unittest.TestCase):
     maxDiff = None
@@ -781,6 +782,20 @@ class CheckParse(unittest.TestCase):
         r = declast.create_this_arg('self', 'Class1', const=False)
         s = r.gen_decl()
         self.assertEqual("Class1 *self", s)
+
+    def test_copy01(self):
+        """Test copy"""
+        r = declast.check_decl("const std::string& Function4b("
+                               "const std::string& arg1,"
+                               "const std::string& arg2 )")
+        self.assertTrue(r.is_reference())
+
+        r2 = copy.deepcopy(r)
+        declast.set_indirection(r2)
+
+        self.assertTrue(r.is_reference())    # first is unchanged
+        self.assertFalse(r2.is_reference())
+
 
                          
 if __name__ == '__main__':

@@ -428,7 +428,10 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_func
             fmt_pattern = fmt_func
         else:
-            fmt_result = result.setdefault('fmtc', util.Options(fmt_func))
+            if 'fmtc' not in result:
+                result['fmtc'] = util.Options(fmt_func)
+            fmt_result = result['fmtc']
+#XXX            fmt_result = result.setdefault('fmtc', util.Options(fmt_func))
             fmt_result.cpp_var = fmt_func.C_result
 #            fmt_result.cpp_decl = self._c_type('cpp_type', CPP_result)
 
@@ -475,7 +478,10 @@ class Wrapc(util.WrapperMixin):
 #                 or the funtion result variable.
 
         for arg in result['args']:
-            fmt_arg = arg.setdefault('fmtc', util.Options(fmt_func))
+            if 'fmtc' not in arg:
+                arg['fmtc'] = util.Options(fmt_func)
+            fmt_arg = arg['fmtc']
+#XXX            fmt_arg = arg.setdefault('fmtc', util.Options(fmt_func))
             c_attrs = arg['attrs']
             arg_typedef, c_statements = util.lookup_c_statements(arg)
             if 'template' in c_attrs:

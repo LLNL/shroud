@@ -367,12 +367,9 @@ return 1;""", fmt)
 
         result = node['result']
         result_type = declast.get_type(result)
-        result_is_ptr = declast.is_pointer(result)
-        result_is_ref = declast.is_reference(result)
 
         if node.get('return_this', False):
             result_type = 'void'
-            result_is_ptr = False
             CPP_subprogram = 'subroutine'
 
         result_typedef = util.Typedef.lookup(result_type)
@@ -430,7 +427,10 @@ return 1;""", fmt)
             arg_offsets = []
             offset = 0
             for arg in args:
-                fmt_arg = arg.setdefault('fmtpy', util.Options(fmt))
+                if 'fmtpy' not in arg:
+                    arg['fmtpy'] = util.Options(fmt)
+                fmt_arg = arg['fmtpy']
+#XXX                fmt_arg = arg.setdefault('fmtpy', util.Options(fmt))
                 arg_name = declast.get_name(arg)
                 fmt_arg.c_var = arg_name
                 fmt_arg.cpp_var = fmt_arg.c_var

@@ -352,9 +352,9 @@ class WrapperMixin(object):
             t.append('const')
 
         t.append(getattr(typedef, lang))
-        if arg['attrs'].get('ptr', ptr):
+        if declast.is_pointer(arg):
             t.append('*')
-        elif arg['attrs'].get('reference', False):
+        elif declast.is_reference(arg):
             if lang == 'cpp_type':
                 t.append('&')
             else:

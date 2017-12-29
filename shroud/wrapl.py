@@ -437,12 +437,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         result = node['result']
         result_type = declast.get_type(result)
-        result_is_ptr = declast.is_pointer(result)
-        result_is_ref = declast.is_reference(result)
 
         if node.get('return_this', False):
             result_type = 'void'
-            result_is_ptr = False
             CPP_subprogram = 'subroutine'
 
         result_typedef = util.Typedef.lookup(result_type)
@@ -496,7 +493,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for iarg in range(luafcn.nargs):
             arg = result['args'][iarg]
             arg_name = declast.get_name(arg)
-            fmt_arg = arg.setdefault('fmtl', util.Options(fmt))
+            if 'fmtl' not in arg:
+                arg['fmtl'] = util.Options(fmt)
+            fmt_arg = arg['fmtl']
+#XXX            fmt_arg = arg.setdefault('fmtl', util.Options(fmt))
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
             fmt_arg.cpp_var = fmt_arg.c_var

@@ -519,6 +519,33 @@ class Declaration(Node):
         self.func_const = False
         self.fattrs     = {}     # function attributes
 
+    def __getitem__(self, item):
+        """ emulate behavior for old result['const']"""
+        if item == 'args':
+            if self.params is None:
+                return []
+            else:
+                return self.params
+        elif item in ['attrs', 'const', 'fattrs', 'func_const',
+                      'init', 'fmtc', 'fmtf', 'fmtpy', 'fmtl']:
+            return getattr(self, item)
+        else:
+            raise KeyError
+
+    def __setitem__(self, item, value):
+        if item in ['const', 'fmtc', 'fmtf', 'fmtpy', 'fmtl']:
+            setattr(self, item, value)
+        else:
+            raise RuntimeError("setitem key")
+
+    def __contains__(self, item):
+        if item in ['name', 'type', 'attrs']:
+            return True
+        elif item in ['fmtc', 'fmtf', 'fmtpy', 'fmtl']:
+            return hasattr(self, item)
+        else:
+            return False
+
     def get_name(self):
         """Extract name from declarator."""
         name = self.declarator.name
@@ -646,6 +673,10 @@ class Declaration(Node):
                 raise RuntimeError("fattrs is not empty for non-function")
         if self.init is not None:
             d['init'] = self.init
+
+        for n in ['fmtc', 'fmtf', 'fmtpy', 'fmtl']:
+            if hasattr(self, n):
+                d[n] = getattr(self, n)
         return d
 
     def __str__(self):
@@ -784,16 +815,14 @@ def set_type(decl, typ):
         decl['type'] = typ
 
 def is_pointer(decl):
-    """Old dictionary based."""
     if isinstance(decl, Declaration):
-        return decl.is_pointer()
+        return decl.is_pointer() > 0
     else:
         return decl['attrs'].get('ptr', False)
 
 def is_reference(decl):
-    """Old dictionary based."""
     if isinstance(decl, Declaration):
-        return decl.is_reference()
+        return decl.is_reference() > 0
     else:
         return decl['attrs'].get('reference', False)
 
@@ -802,6 +831,27 @@ def is_indirect(decl):
         return decl.is_indirect()
     else:
         return is_pointer(decl) or is_reference(decl)
+
+def set_indirection(decl, value=''):
+    """ only ptr or reference can be True. """
+    if isinstance(decl, Declaration):
+        if value:
+            decl.declarator.pointer = [ Ptr(value) ]
+        else:
+            decl.declarator.pointer = [ ]
+    else:
+        attrs = decl['attrs']
+        if value == '*':
+            attrs['ptr'] = True
+            attrs['reference'] = False
+        elif value == '&':
+            attrs['ptr'] = False
+            attrs['reference'] = True
+        else:
+            attrs['ptr'] = False
+            attrs['reference'] = False
+
+
 
 ##################################################
 
@@ -890,8 +940,8 @@ void decl12(std::vector<std::string> arg1, string arg2)
 #void foo()
 #void funptr1(double (*get)())
 #const void foo(int arg1+in, double arg2+out = 0.0)
-xstatements = """
-static long int **foo
+statements = """
+const std::string& Function4b(const std::string& arg1, const std::string& arg2 )
 """
 #add_type('Class1')
 #current_class = ''
@@ -905,7 +955,7 @@ if __name__ == '__main__':
             print(a)
 
             dd = a.to_dict()
-            print(str_declarator(dd['result']))
+            print(str_declarator(dd))
             for arg in dd['args']:
                 print('arg:', str_declarator(arg))
             print(json.dumps(dd, indent=4, sort_keys=True))

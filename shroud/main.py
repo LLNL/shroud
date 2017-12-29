@@ -1005,6 +1005,7 @@ class Schema(object):
                                       template_types=template_types)
             result = decl.to_dict()
             node['result'] = result
+#            node['tester'] = decl
 
             # add any attributes from YAML files to the ast
             if 'attrs' in node:
@@ -1017,7 +1018,6 @@ class Schema(object):
                         arg['attrs'].update(attrs[name])
             # XXX waring about unused fields in attrs
                                         
-#            node['tester'] = decl
         if ('function_suffix' in node and
                 node['function_suffix'] is None):
             # YAML turns blanks strings into None
@@ -1344,7 +1344,7 @@ class GenFunctions(object):
 
         # Is result or any argument a string?
         has_implied_arg = False
-        for arg in node['result']['args']:
+        for arg in result['args']:
             argtype = declast.get_type(arg)
             typedef = util.Typedef.lookup(argtype)
             if typedef.base == 'string':
@@ -1446,18 +1446,16 @@ class GenFunctions(object):
             attrs['intent'] = 'out'
             attrs['_is_result'] = True
             if not result_is_ptr:
-                attrs['ptr'] = True
-                attrs['reference'] = False
-            C_new['result']['args'].append(result_as_string)
+                declast.set_indirection(result_as_string, '*')
+
+            result = C_new['result']
+            result['args'].append(result_as_string)
 
             # convert to subroutine
             C_new['_subprogram'] = 'subroutine'
-            result = C_new['result']
             declast.set_type(result, 'void')
-            attrs = result['attrs']
+            declast.set_indirection(result, '')
             result['const'] = False
-            attrs['ptr'] = False
-            attrs['reference'] = False
 
         if is_pure:
             # pure functions which return a string have result_pure defined.
