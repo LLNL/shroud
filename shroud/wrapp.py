@@ -48,7 +48,6 @@ One Extension module per class
 from __future__ import print_function
 from __future__ import absolute_import
 
-from . import declast
 from . import util
 from .util import wformat, append_format
 
@@ -438,7 +437,7 @@ return 1;""", fmt)
                     fmt_arg.c_const = 'const '
                 else:
                     fmt_arg.c_const = ''
-                if declast.is_pointer(arg):
+                if arg.is_pointer():
                     fmt_arg.c_ptr = ' *'
                 else:
                     fmt_arg.c_ptr = ''
@@ -502,7 +501,7 @@ return 1;""", fmt)
                 if arg_typedef.base == 'string':
                     # C++ will coerce char * to std::string
                     lang = 'c_type'
-                if declast.is_reference(arg):
+                if arg.is_reference():
                     # convert a reference to a pointer
                     ptr = True
                 else:

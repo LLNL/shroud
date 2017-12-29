@@ -1325,7 +1325,7 @@ class GenFunctions(object):
         # wrapped classes have not been added yet.
         # Only care about string here.
         attrs = ast.attrs
-        result_is_ptr = declast.is_indirect(ast)
+        result_is_ptr = ast.is_indirect()
         if result_typedef and result_typedef.base in ['string', 'vector'] and \
                 result_type != 'char' and \
                 not result_is_ptr:
@@ -1348,7 +1348,7 @@ class GenFunctions(object):
             argtype = arg.typename
             typedef = util.Typedef.lookup(argtype)
             if typedef.base == 'string':
-                is_ptr = declast.is_indirect(arg)
+                is_ptr = arg.is_indirect()
                 if is_ptr:
                     has_implied_arg = True
                 else:
@@ -1446,7 +1446,7 @@ class GenFunctions(object):
             attrs['intent'] = 'out'
             attrs['_is_result'] = True
             if not result_is_ptr:
-                declast.set_indirection(result_as_string, '*')
+                result_as_string.set_indirection('*')
 
             ast = C_new['_ast']
             ast.params.append(result_as_string)
@@ -1454,7 +1454,7 @@ class GenFunctions(object):
             # convert to subroutine
             C_new['_subprogram'] = 'subroutine'
             ast.typename = 'void'
-            declast.set_indirection(ast, '')
+            ast.set_indirection('')
             ast.const = False
 
         if is_pure:
@@ -1570,9 +1570,9 @@ class GenFunctions(object):
             decl.append('const ')
         decl.append(ast.typename)
         decl.append(' ')
-        if declast.is_pointer(ast):
+        if ast.is_pointer():
             decl.append('* ')
-        if declast.is_reference(ast):
+        if ast.is_reference():
             decl.append('& ')
         decl.append(ast.name)
         if ast.init is not None:
@@ -1665,7 +1665,7 @@ class VerifyAttrs(object):
         # cache subprogram type
         ast = node['_ast']
         result_type = ast.typename
-        result_is_ptr = declast.is_pointer(ast)
+        result_is_ptr = ast.is_pointer()
         #  'void'=subroutine   'void *'=function
         if result_type == 'void' and not result_is_ptr:
             node['_subprogram'] = 'subroutine'
@@ -1689,7 +1689,7 @@ class VerifyAttrs(object):
                     raise RuntimeError("No such type %s: %s" % (
                             argtype, declast.str_declarator(arg)))
 
-            is_ptr = declast.is_indirect(arg)
+            is_ptr = arg.is_indirect()
             attrs = arg.attrs
 
             # intent

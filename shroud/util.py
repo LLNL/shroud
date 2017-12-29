@@ -47,8 +47,6 @@ import string
 import json
 import os
 
-from . import declast
-
 fmt = string.Formatter()
 
 default_template = dict(
@@ -352,9 +350,9 @@ class WrapperMixin(object):
             t.append('const')
 
         t.append(getattr(typedef, lang))
-        if declast.is_pointer(ast):
+        if ast.is_pointer():
             t.append('*')
-        elif declast.is_reference(ast):
+        elif ast.is_reference():
             if lang == 'cpp_type':
                 t.append('&')
             else:

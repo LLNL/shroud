@@ -581,6 +581,15 @@ class Declaration(Node):
                 nlevels += 1
         return nlevels
 
+    def set_indirection(self, value=''):
+        """ only ptr or reference can be True.
+        value - '*' or '&' or ''
+        """
+        if value:
+            self.declarator.pointer = [ Ptr(value) ]
+        else:
+            self.declarator.pointer = [ ]
+
     def _as_arg(self, name):
         """Create an argument to hold the result.
         """
@@ -772,48 +781,6 @@ def create_this_arg(name, typ, const=True):
     arg.specifier = [ typ ]
     return arg
     
-##################################################
-
-def is_pointer(decl):
-    if isinstance(decl, Declaration):
-        return decl.is_pointer() > 0
-    else:
-        return decl['attrs'].get('ptr', False)
-
-def is_reference(decl):
-    if isinstance(decl, Declaration):
-        return decl.is_reference() > 0
-    else:
-        return decl['attrs'].get('reference', False)
-
-def is_indirect(decl):
-    if isinstance(decl, Declaration):
-        return decl.is_indirect()
-    else:
-        return is_pointer(decl) or is_reference(decl)
-
-def set_indirection(decl, value=''):
-    """ only ptr or reference can be True. """
-    if isinstance(decl, Declaration):
-        if value:
-            decl.declarator.pointer = [ Ptr(value) ]
-        else:
-            decl.declarator.pointer = [ ]
-    else:
-        attrs = decl['attrs']
-        if value == '*':
-            attrs['ptr'] = True
-            attrs['reference'] = False
-        elif value == '&':
-            attrs['ptr'] = False
-            attrs['reference'] = True
-        else:
-            attrs['ptr'] = False
-            attrs['reference'] = False
-
-
-
-##################################################
 
 def str_declarator(decl):
     """ Convert declaration dict to string.

@@ -111,9 +111,9 @@ class Wrapc(util.WrapperMixin):
             raise RuntimeError(
                 "Type {} has no value for {}".format(typ, lang))
         t.append(typ)
-        if declast.is_pointer(ast):
+        if ast.is_pointer():
             t.append('*')
-        elif declast.is_reference(ast):
+        elif ast.is_reference():
             if lang == 'cpp_type':
                 t.append('&')
             else:
@@ -488,7 +488,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_const = 'const '
             else:
                 fmt_arg.c_const = ''
-            if declast.is_pointer(arg):
+            if arg.is_pointer():
                 fmt_arg.c_ptr = ' *'
             else:
                 fmt_arg.c_ptr = ''

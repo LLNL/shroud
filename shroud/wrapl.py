@@ -43,7 +43,6 @@ Generate Lua module for C++ code.
 from __future__ import print_function
 from __future__ import absolute_import
 
-from . import declast
 from . import util
 from .util import wformat, append_format
 
@@ -225,8 +224,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # XXX       ast = node['_ast']
         # XXX       result_type = ast.typename
-        # XXX       result_is_ptr = declast.is_pointer(ast)
-        # XXX       result_is_ref = declast.is_reference(ast)
+        # XXX       result_is_ptr = ast.is_pointer()
+        # XXX       result_is_ref = ast.is_reference()
 
         if node.get('return_this', False):
             # XXX           result_type = 'void'
@@ -501,7 +500,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_arg.cpp_var = arg_name
             fmt_arg.lua_var = 'SH_Lua_' + arg_name
             fmt_arg.c_var_len = 'L' + arg_name
-            fmt_arg.ptr = ' *' if declast.is_pointer(arg) else ''
+            fmt_arg.ptr = ' *' if arg.is_pointer() else ''
             attrs = arg.attrs
 
             lua_pop = None
@@ -536,7 +535,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 # C++ will coerce char * to std::string
                 lang = 'c_type'
                 arg_const = True  # lua_tostring is const
-            if declast.is_reference(arg):
+            if arg.is_reference():
                 # convert a reference to a pointer
                 ptr = True
             else:
