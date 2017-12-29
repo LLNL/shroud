@@ -742,15 +742,25 @@ class Declaration(Node):
 
         return ''.join(decl)
 
+    _skip_annotations = ['template']
+
     def gen_attrs(self, attrs, decl):
+        space = ' '
         for attr in sorted(attrs):
-            if attr == 'template':
+            if attr[0] == '_':  # internal attribute
+                continue
+            if attr in self._skip_annotations:
                 continue
             value = attrs[attr]
+            if value is False:
+                continue
+            decl.append(space)
+            decl.append('+')
             if value is True:
-                decl.append('+{}'.format(attr))
+                decl.append(attr)
             else:
-                decl.append('+{}({})'.format(attr, value))
+                decl.append('{}({})'.format(attr, value))
+            space = ''
 
 
 def check_decl(decl, current_class=None, template_types=[]):

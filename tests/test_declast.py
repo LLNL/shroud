@@ -89,7 +89,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("void foo +alias(junk)")
 
         s = r.gen_decl()
-        self.assertEqual("void foo+alias(junk)", s)
+        self.assertEqual("void foo +alias(junk)", s)
 
         self.assertEqual(r.to_dict(), {
             'args': [],
@@ -362,9 +362,9 @@ class CheckParse(unittest.TestCase):
                                "+attr2(True)" )
 
         s = r.gen_decl()
-        self.assertEqual("const void foo+attr1(30)+len(30)("
-                         "int arg1+in, double arg2+out)"
-                         "+attr2(True)", s)
+        self.assertEqual("const void foo +attr1(30)+len(30)("
+                         "int arg1 +in, double arg2 +out)"
+                         " +attr2(True)", s)
 
         self.assertEqual(r.to_dict(), {
             'args': [
@@ -455,7 +455,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("Class1 *Class1()  +constructor",current_class='Class1')
 
         s = r.gen_decl()
-        self.assertEqual("Class1 *Class1()+constructor", s)
+        self.assertEqual("Class1 *Class1() +constructor", s)
 
         self.assertEqual(r.to_dict(),  {
             "args": [], 
