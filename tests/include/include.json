@@ -1,9 +1,50 @@
 {
     "F_module_dependencies": [], 
+    "_fmt": {
+        "CPP_template": "", 
+        "CPP_this": "SH_this", 
+        "CPP_this_call": "", 
+        "C_header_filename": "wrapdefault_library.h", 
+        "C_header_filename_suffix": "h", 
+        "C_impl_filename": "wrapdefault_library.cpp", 
+        "C_impl_filename_suffix": "cpp", 
+        "C_post_call": "", 
+        "C_pre_call": "", 
+        "C_prefix": "DEF_", 
+        "C_result": "SHT_rv", 
+        "C_string_result_as_arg": "SHF_rv", 
+        "C_this": "self", 
+        "F_C_prefix": "c_", 
+        "F_C_pure_clause": "", 
+        "F_C_result_clause": "", 
+        "F_derived_member": "voidptr", 
+        "F_filename_suffix": "f", 
+        "F_impl_filename": "wrapfdefault_library.f", 
+        "F_module_name": "default_library_mod", 
+        "F_pure_clause": "", 
+        "F_result": "SHT_rv", 
+        "F_result_clause": "", 
+        "F_string_result_as_arg": "", 
+        "F_this": "obj", 
+        "LUA_header_filename_suffix": "hpp", 
+        "LUA_impl_filename_suffix": "cpp", 
+        "LUA_result": "rv", 
+        "PY_header_filename_suffix": "hpp", 
+        "PY_impl_filename_suffix": "cpp", 
+        "PY_result": "rv", 
+        "YAML_type_filename": "default_library_types.yaml", 
+        "c_temp": "SHT_", 
+        "class_prefix": "", 
+        "function_suffix": "", 
+        "library": "default_library", 
+        "library_lower": "default_library", 
+        "library_upper": "DEFAULT_LIBRARY", 
+        "namespace_scope": "one::two::", 
+        "stdlib": "std::"
+    }, 
     "classes": [
         {
-            "cpp_header": "class_header.hpp", 
-            "fmt": {
+            "_fmt": {
                 "CPP_this_call": "SH_this->", 
                 "C_header_filename": "wrapClass1.h", 
                 "C_impl_filename": "wrapClass1.cpp", 
@@ -16,28 +57,11 @@
                 "class_upper": "CLASS1", 
                 "cpp_class": "Class1"
             }, 
+            "cpp_header": "class_header.hpp", 
             "methods": [
                 {
                     "_decl": "void method1(CustomType arg1 +intent(in)+value)", 
-                    "_fmtargs": {
-                        "arg1": {
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "arg1", 
-                                "cpp_type": "int", 
-                                "cpp_var": "arg1"
-                            }, 
-                            "fmtf": {
-                                "c_var": "arg1", 
-                                "f_var": "arg1"
-                            }
-                        }
-                    }, 
-                    "_function_index": 0, 
-                    "_subprogram": "subroutine", 
-                    "decl": "void method1(CustomType arg1)", 
-                    "fmt": {
+                    "_fmt": {
                         "C_call_code": "SH_this->method1(arg1);", 
                         "C_call_list": "arg1", 
                         "C_name": "DEF_class1_method1", 
@@ -61,6 +85,24 @@
                         "function_name": "method1", 
                         "underscore_name": "method1"
                     }, 
+                    "_fmtargs": {
+                        "arg1": {
+                            "fmtc": {
+                                "c_const": "", 
+                                "c_ptr": "", 
+                                "c_var": "arg1", 
+                                "cpp_type": "int", 
+                                "cpp_var": "arg1"
+                            }, 
+                            "fmtf": {
+                                "c_var": "arg1", 
+                                "f_var": "arg1"
+                            }
+                        }
+                    }, 
+                    "_function_index": 0, 
+                    "_subprogram": "subroutine", 
+                    "decl": "void method1(CustomType arg1)", 
                     "options": {}, 
                     "result": {
                         "args": [
@@ -90,8 +132,7 @@
             "options": {}
         }, 
         {
-            "cpp_header": "", 
-            "fmt": {
+            "_fmt": {
                 "CPP_this_call": "SH_this->", 
                 "C_header_filename": "wrapClass2.h", 
                 "C_impl_filename": "wrapClass2.cpp", 
@@ -104,28 +145,11 @@
                 "class_upper": "CLASS2", 
                 "cpp_class": "Class2"
             }, 
+            "cpp_header": "", 
             "methods": [
                 {
                     "_decl": "void method1(MPI_Comm comm +intent(in)+value)", 
-                    "_fmtargs": {
-                        "comm": {
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": "", 
-                                "c_var": "comm", 
-                                "cpp_type": "MPI_Comm", 
-                                "cpp_var": "comm"
-                            }, 
-                            "fmtf": {
-                                "c_var": "comm", 
-                                "f_var": "comm"
-                            }
-                        }
-                    }, 
-                    "_function_index": 1, 
-                    "_subprogram": "subroutine", 
-                    "decl": "void method1(MPI_Comm comm)", 
-                    "fmt": {
+                    "_fmt": {
                         "C_call_code": "SH_this->method1(MPI_Comm_f2c(comm));", 
                         "C_call_list": "MPI_Comm_f2c(comm)", 
                         "C_name": "DEF_class2_method1", 
@@ -149,6 +173,24 @@
                         "function_name": "method1", 
                         "underscore_name": "method1"
                     }, 
+                    "_fmtargs": {
+                        "comm": {
+                            "fmtc": {
+                                "c_const": "", 
+                                "c_ptr": "", 
+                                "c_var": "comm", 
+                                "cpp_type": "MPI_Comm", 
+                                "cpp_var": "comm"
+                            }, 
+                            "fmtf": {
+                                "c_var": "comm", 
+                                "f_var": "comm"
+                            }
+                        }
+                    }, 
+                    "_function_index": 1, 
+                    "_subprogram": "subroutine", 
+                    "decl": "void method1(MPI_Comm comm)", 
                     "options": {}, 
                     "result": {
                         "args": [
@@ -174,25 +216,7 @@
                 }, 
                 {
                     "_decl": "void method2(Class1 * c2 +intent(in)+value)", 
-                    "_fmtargs": {
-                        "c2": {
-                            "fmtc": {
-                                "c_const": "", 
-                                "c_ptr": " *", 
-                                "c_var": "c2", 
-                                "cpp_type": "Class1", 
-                                "cpp_var": "c2"
-                            }, 
-                            "fmtf": {
-                                "c_var": "c2", 
-                                "f_var": "c2"
-                            }
-                        }
-                    }, 
-                    "_function_index": 2, 
-                    "_subprogram": "subroutine", 
-                    "decl": "void method2(Class1 * c2)", 
-                    "fmt": {
+                    "_fmt": {
                         "C_call_code": "SH_this->method2(static_cast<Class1 *>(static_cast<void *>(c2)));", 
                         "C_call_list": "static_cast<Class1 *>(static_cast<void *>(c2))", 
                         "C_name": "DEF_class2_method2", 
@@ -216,6 +240,24 @@
                         "function_name": "method2", 
                         "underscore_name": "method2"
                     }, 
+                    "_fmtargs": {
+                        "c2": {
+                            "fmtc": {
+                                "c_const": "", 
+                                "c_ptr": " *", 
+                                "c_var": "c2", 
+                                "cpp_type": "Class1", 
+                                "cpp_var": "c2"
+                            }, 
+                            "fmtf": {
+                                "c_var": "c2", 
+                                "f_var": "c2"
+                            }
+                        }
+                    }, 
+                    "_function_index": 2, 
+                    "_subprogram": "subroutine", 
+                    "decl": "void method2(Class1 * c2)", 
                     "options": {}, 
                     "result": {
                         "args": [
@@ -289,56 +331,10 @@
         "#######################################################################"
     ], 
     "cpp_header": "global_header.hpp", 
-    "fmt": {
-        "CPP_template": "", 
-        "CPP_this": "SH_this", 
-        "CPP_this_call": "", 
-        "C_header_filename": "wrapdefault_library.h", 
-        "C_header_filename_suffix": "h", 
-        "C_impl_filename": "wrapdefault_library.cpp", 
-        "C_impl_filename_suffix": "cpp", 
-        "C_post_call": "", 
-        "C_pre_call": "", 
-        "C_prefix": "DEF_", 
-        "C_result": "SHT_rv", 
-        "C_string_result_as_arg": "SHF_rv", 
-        "C_this": "self", 
-        "F_C_prefix": "c_", 
-        "F_C_pure_clause": "", 
-        "F_C_result_clause": "", 
-        "F_derived_member": "voidptr", 
-        "F_filename_suffix": "f", 
-        "F_impl_filename": "wrapfdefault_library.f", 
-        "F_module_name": "default_library_mod", 
-        "F_pure_clause": "", 
-        "F_result": "SHT_rv", 
-        "F_result_clause": "", 
-        "F_string_result_as_arg": "", 
-        "F_this": "obj", 
-        "LUA_header_filename_suffix": "hpp", 
-        "LUA_impl_filename_suffix": "cpp", 
-        "LUA_result": "rv", 
-        "PY_header_filename_suffix": "hpp", 
-        "PY_impl_filename_suffix": "cpp", 
-        "PY_result": "rv", 
-        "YAML_type_filename": "default_library_types.yaml", 
-        "c_temp": "SHT_", 
-        "class_prefix": "", 
-        "function_suffix": "", 
-        "library": "default_library", 
-        "library_lower": "default_library", 
-        "library_upper": "DEFAULT_LIBRARY", 
-        "namespace_scope": "one::two::", 
-        "stdlib": "std::"
-    }, 
     "functions": [
         {
             "_decl": "void function1()", 
-            "_fmtargs": {}, 
-            "_function_index": 3, 
-            "_subprogram": "subroutine", 
-            "decl": "void function1()", 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "function1();", 
                 "C_call_list": "", 
                 "C_name": "DEF_function1", 
@@ -359,6 +355,10 @@
                 "function_name": "function1", 
                 "underscore_name": "function1"
             }, 
+            "_fmtargs": {}, 
+            "_function_index": 3, 
+            "_subprogram": "subroutine", 
+            "decl": "void function1()", 
             "options": {}, 
             "result": {
                 "args": [], 

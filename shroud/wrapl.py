@@ -84,7 +84,7 @@ class Wrapl(util.WrapperMixin):
     def wrap_library(self):
         top = self.tree
         options = self.tree['options']
-        fmt_library = self.tree['fmt']
+        fmt_library = self.tree['_fmt']
 
         # Format variables
         fmt_library.LUA_prefix = options.get('LUA_prefix', 'l_')
@@ -123,7 +123,7 @@ class Wrapl(util.WrapperMixin):
 
     def wrap_class(self, node):
         options = node['options']
-        fmt_class = node['fmt']
+        fmt_class = node['_fmt']
 
         fmt_class.LUA_userdata_var = 'SH_this'
         util.eval_template(node, 'LUA_userdata_type')
@@ -216,7 +216,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         result = node['result']
         function_name = declast.get_name(result)
-        fmt_func = node['fmt']
+        fmt_func = node['_fmt']
         fmt = util.Options(fmt_func)
         util.eval_template(node, 'LUA_name')
         util.eval_template(node, 'LUA_name_impl')
@@ -427,7 +427,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             cls_function = 'function'
         self.log.write("Lua {0} {1[_decl]}\n".format(cls_function, node))
 
-#        fmt_func = node['fmt']
+#        fmt_func = node['_fmt']
         fmtargs = node.setdefault('_fmtargs', {})
 #        fmt = util.Options(fmt_func)
 #        fmt.doc_string = 'documentation'
@@ -616,7 +616,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
     def write_header(self, node):
         options = node['options']
-        fmt = node['fmt']
+        fmt = node['_fmt']
         fname = fmt.LUA_header_filename
 
         output = []
@@ -662,7 +662,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
     def write_module(self, node):
         # node is library
         options = node['options']
-        fmt = node['fmt']
+        fmt = node['_fmt']
         fname = fmt.LUA_module_filename
 
         output = []

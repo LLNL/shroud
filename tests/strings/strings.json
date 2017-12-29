@@ -1,50 +1,6 @@
 {
     "F_module_dependencies": [], 
-    "classes": [], 
-    "copyright": [
-        "#######################################################################", 
-        "Copyright (c) 2017, Lawrence Livermore National Security, LLC.", 
-        "Produced at the Lawrence Livermore National Laboratory", 
-        null, 
-        "LLNL-CODE-738041.", 
-        "All rights reserved.", 
-        null, 
-        "This file is part of Shroud.  For details, see", 
-        "https://github.com/LLNL/shroud. Please also read shroud/LICENSE.", 
-        null, 
-        "Redistribution and use in source and binary forms, with or without", 
-        "modification, are permitted provided that the following conditions are", 
-        "met:", 
-        null, 
-        "* Redistributions of source code must retain the above copyright", 
-        "  notice, this list of conditions and the disclaimer below.", 
-        null, 
-        "* Redistributions in binary form must reproduce the above copyright", 
-        "  notice, this list of conditions and the disclaimer (as noted below)", 
-        "  in the documentation and/or other materials provided with the", 
-        "  distribution.", 
-        null, 
-        "* Neither the name of the LLNS/LLNL nor the names of its contributors", 
-        "  may be used to endorse or promote products derived from this", 
-        "  software without specific prior written permission.", 
-        null, 
-        "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS", 
-        "\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT", 
-        "LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR", 
-        "A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL LAWRENCE", 
-        "LIVERMORE NATIONAL SECURITY, LLC, THE U.S. DEPARTMENT OF ENERGY OR", 
-        "CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,", 
-        "EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,", 
-        "PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR", 
-        "PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF", 
-        "LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING", 
-        "NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS", 
-        "SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.", 
-        null, 
-        "#######################################################################"
-    ], 
-    "cpp_header": "strings.hpp", 
-    "fmt": {
+    "_fmt": {
         "BBB": "BBB", 
         "CPP_template": "", 
         "CPP_this": "SH_this", 
@@ -100,9 +56,75 @@
         "namespace_scope": "", 
         "stdlib": "std::"
     }, 
+    "classes": [], 
+    "copyright": [
+        "#######################################################################", 
+        "Copyright (c) 2017, Lawrence Livermore National Security, LLC.", 
+        "Produced at the Lawrence Livermore National Laboratory", 
+        null, 
+        "LLNL-CODE-738041.", 
+        "All rights reserved.", 
+        null, 
+        "This file is part of Shroud.  For details, see", 
+        "https://github.com/LLNL/shroud. Please also read shroud/LICENSE.", 
+        null, 
+        "Redistribution and use in source and binary forms, with or without", 
+        "modification, are permitted provided that the following conditions are", 
+        "met:", 
+        null, 
+        "* Redistributions of source code must retain the above copyright", 
+        "  notice, this list of conditions and the disclaimer below.", 
+        null, 
+        "* Redistributions in binary form must reproduce the above copyright", 
+        "  notice, this list of conditions and the disclaimer (as noted below)", 
+        "  in the documentation and/or other materials provided with the", 
+        "  distribution.", 
+        null, 
+        "* Neither the name of the LLNS/LLNL nor the names of its contributors", 
+        "  may be used to endorse or promote products derived from this", 
+        "  software without specific prior written permission.", 
+        null, 
+        "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS", 
+        "\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT", 
+        "LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR", 
+        "A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL LAWRENCE", 
+        "LIVERMORE NATIONAL SECURITY, LLC, THE U.S. DEPARTMENT OF ENERGY OR", 
+        "CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,", 
+        "EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,", 
+        "PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR", 
+        "PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF", 
+        "LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING", 
+        "NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS", 
+        "SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.", 
+        null, 
+        "#######################################################################"
+    ], 
+    "cpp_header": "strings.hpp", 
     "functions": [
         {
             "_decl": "void passChar(char_scalar status +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "passChar(status);", 
+                "C_call_list": "status", 
+                "C_name": "STR_pass_char", 
+                "C_prototype": "char status", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_pass_char", 
+                "F_C_name": "pass_char", 
+                "F_arg_c_call": "status", 
+                "F_arg_c_call_tab": "\tstatus", 
+                "F_arguments": "status", 
+                "F_call_code": "call c_pass_char(\tstatus)", 
+                "F_name_function": "pass_char", 
+                "F_name_generic": "pass_char", 
+                "F_name_impl": "pass_char", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_pass_char", 
+                "c_const": "", 
+                "function_name": "passChar", 
+                "underscore_name": "pass_char"
+            }, 
             "_fmtargs": {
                 "status": {
                     "fmtc": {
@@ -132,28 +154,6 @@
             "doxygen": {
                 "brief": "pass a single char argument as a scalar."
             }, 
-            "fmt": {
-                "C_call_code": "passChar(status);", 
-                "C_call_list": "status", 
-                "C_name": "STR_pass_char", 
-                "C_prototype": "char status", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_pass_char", 
-                "F_C_name": "pass_char", 
-                "F_arg_c_call": "status", 
-                "F_arg_c_call_tab": "\tstatus", 
-                "F_arguments": "status", 
-                "F_call_code": "call c_pass_char(\tstatus)", 
-                "F_name_function": "pass_char", 
-                "F_name_generic": "pass_char", 
-                "F_name_impl": "pass_char", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_pass_char", 
-                "c_const": "", 
-                "function_name": "passChar", 
-                "underscore_name": "pass_char"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -180,20 +180,7 @@
         {
             "_PTR_F_C_index": 21, 
             "_decl": "char_scalar returnChar()", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "cpp_rv_decl": "char SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 1, 
-            "_subprogram": "function", 
-            "decl": "char returnChar()", 
-            "doxygen": {
-                "brief": "return a char argument (non-pointer)"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "char SHT_rv = returnChar();", 
                 "C_call_list": "", 
                 "C_name": "STR_return_char", 
@@ -216,6 +203,19 @@
                 "function_name": "returnChar", 
                 "underscore_name": "return_char"
             }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "char SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 1, 
+            "_subprogram": "function", 
+            "decl": "char returnChar()", 
+            "doxygen": {
+                "brief": "return a char argument (non-pointer)"
+            }, 
             "options": {}, 
             "result": {
                 "args": [], 
@@ -232,6 +232,18 @@
             "_PTR_C_CPP_index": 1, 
             "_decl": "void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "char SHT_rv = returnChar();", 
+                "C_call_list": "", 
+                "C_name": "STR_return_char_bufferify", 
+                "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHT_rv;", 
+                "C_prototype": "char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_return_char_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "SHF_rv": {
                     "fmtc": {
@@ -261,18 +273,6 @@
             "decl": "char returnChar()", 
             "doxygen": {
                 "brief": "return a char argument (non-pointer)"
-            }, 
-            "fmt": {
-                "C_call_code": "char SHT_rv = returnChar();", 
-                "C_call_list": "", 
-                "C_name": "STR_return_char_bufferify", 
-                "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHT_rv;", 
-                "C_prototype": "char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_return_char_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -314,6 +314,28 @@
         {
             "_PTR_F_C_index": 22, 
             "_decl": "void passCharPtr(char * dest +intent(out), const char * src +intent(in))", 
+            "_fmt": {
+                "C_call_code": "passCharPtr(dest, src);", 
+                "C_call_list": "dest, src", 
+                "C_name": "STR_pass_char_ptr", 
+                "C_prototype": "char * dest, const char * src", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_pass_char_ptr_bufferify", 
+                "F_C_name": "c_pass_char_ptr", 
+                "F_arg_c_call": "dest, len(dest, kind=C_INT), src, len_trim(src, kind=C_INT)", 
+                "F_arg_c_call_tab": "\tdest\tlen(dest, kind=C_INT)\tsrc\tlen_trim(src, kind=C_INT)", 
+                "F_arguments": "dest, src", 
+                "F_call_code": "call c_pass_char_ptr_bufferify(\tdest\tlen(dest, kind=C_INT)\tsrc\tlen_trim(src, kind=C_INT))", 
+                "F_name_function": "pass_char_ptr", 
+                "F_name_generic": "pass_char_ptr", 
+                "F_name_impl": "pass_char_ptr", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_pass_char_ptr", 
+                "c_const": "", 
+                "function_name": "passCharPtr", 
+                "underscore_name": "pass_char_ptr"
+            }, 
             "_fmtargs": {
                 "dest": {
                     "fmtc": {
@@ -359,28 +381,6 @@
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
             }, 
-            "fmt": {
-                "C_call_code": "passCharPtr(dest, src);", 
-                "C_call_list": "dest, src", 
-                "C_name": "STR_pass_char_ptr", 
-                "C_prototype": "char * dest, const char * src", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_pass_char_ptr_bufferify", 
-                "F_C_name": "c_pass_char_ptr", 
-                "F_arg_c_call": "dest, len(dest, kind=C_INT), src, len_trim(src, kind=C_INT)", 
-                "F_arg_c_call_tab": "\tdest\tlen(dest, kind=C_INT)\tsrc\tlen_trim(src, kind=C_INT)", 
-                "F_arguments": "dest, src", 
-                "F_call_code": "call c_pass_char_ptr_bufferify(\tdest\tlen(dest, kind=C_INT)\tsrc\tlen_trim(src, kind=C_INT))", 
-                "F_name_function": "pass_char_ptr", 
-                "F_name_generic": "pass_char_ptr", 
-                "F_name_impl": "pass_char_ptr", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_pass_char_ptr", 
-                "c_const": "", 
-                "function_name": "passCharPtr", 
-                "underscore_name": "pass_char_ptr"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -420,6 +420,19 @@
             "_PTR_C_CPP_index": 2, 
             "_decl": "void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "passCharPtr(SH_dest, SH_src);", 
+                "C_call_list": "SH_dest, SH_src", 
+                "C_name": "STR_pass_char_ptr_bufferify", 
+                "C_post_call": "ShroudStrCopy(dest, Ndest, SH_dest);\nfree(SH_dest);\nfree(SH_src);", 
+                "C_pre_call": "char * SH_dest = (char *) malloc(Ndest + 1);\nchar * SH_src = (char *) malloc(Lsrc + 1);\nstd::memcpy(SH_src, src, Lsrc);\nSH_src[Lsrc] = '\\0';", 
+                "C_prototype": "char * dest, int Ndest, const char * src, int Lsrc", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_pass_char_ptr_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "dest": {
                     "fmtc": {
@@ -459,19 +472,6 @@
             "doxygen": {
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
-            }, 
-            "fmt": {
-                "C_call_code": "passCharPtr(SH_dest, SH_src);", 
-                "C_call_list": "SH_dest, SH_src", 
-                "C_name": "STR_pass_char_ptr_bufferify", 
-                "C_post_call": "ShroudStrCopy(dest, Ndest, SH_dest);\nfree(SH_dest);\nfree(SH_src);", 
-                "C_pre_call": "char * SH_dest = (char *) malloc(Ndest + 1);\nchar * SH_src = (char *) malloc(Lsrc + 1);\nstd::memcpy(SH_src, src, Lsrc);\nSH_src[Lsrc] = '\\0';", 
-                "C_prototype": "char * dest, int Ndest, const char * src, int Lsrc", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_pass_char_ptr_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -518,6 +518,28 @@
         {
             "_PTR_F_C_index": 23, 
             "_decl": "void passCharPtrInOut(char * s +intent(inout))", 
+            "_fmt": {
+                "C_call_code": "passCharPtrInOut(s);", 
+                "C_call_list": "s", 
+                "C_name": "STR_pass_char_ptr_in_out", 
+                "C_prototype": "char * s", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_pass_char_ptr_in_out_bufferify", 
+                "F_C_name": "c_pass_char_ptr_in_out", 
+                "F_arg_c_call": "s, len_trim(s, kind=C_INT), len(s, kind=C_INT)", 
+                "F_arg_c_call_tab": "\ts\tlen_trim(s, kind=C_INT)\tlen(s, kind=C_INT)", 
+                "F_arguments": "s", 
+                "F_call_code": "call c_pass_char_ptr_in_out_bufferify(\ts\tlen_trim(s, kind=C_INT)\tlen(s, kind=C_INT))", 
+                "F_name_function": "pass_char_ptr_in_out", 
+                "F_name_generic": "pass_char_ptr_in_out", 
+                "F_name_impl": "pass_char_ptr_in_out", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_pass_char_ptr_in_out", 
+                "c_const": "", 
+                "function_name": "passCharPtrInOut", 
+                "underscore_name": "pass_char_ptr_in_out"
+            }, 
             "_fmtargs": {
                 "s": {
                     "fmtc": {
@@ -544,28 +566,6 @@
             "decl": "void passCharPtrInOut(char * s+intent(inout))", 
             "doxygen": {
                 "brief": "Change a string in-place"
-            }, 
-            "fmt": {
-                "C_call_code": "passCharPtrInOut(s);", 
-                "C_call_list": "s", 
-                "C_name": "STR_pass_char_ptr_in_out", 
-                "C_prototype": "char * s", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_pass_char_ptr_in_out_bufferify", 
-                "F_C_name": "c_pass_char_ptr_in_out", 
-                "F_arg_c_call": "s, len_trim(s, kind=C_INT), len(s, kind=C_INT)", 
-                "F_arg_c_call_tab": "\ts\tlen_trim(s, kind=C_INT)\tlen(s, kind=C_INT)", 
-                "F_arguments": "s", 
-                "F_call_code": "call c_pass_char_ptr_in_out_bufferify(\ts\tlen_trim(s, kind=C_INT)\tlen(s, kind=C_INT))", 
-                "F_name_function": "pass_char_ptr_in_out", 
-                "F_name_generic": "pass_char_ptr_in_out", 
-                "F_name_impl": "pass_char_ptr_in_out", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_pass_char_ptr_in_out", 
-                "c_const": "", 
-                "function_name": "passCharPtrInOut", 
-                "underscore_name": "pass_char_ptr_in_out"
             }, 
             "options": {}, 
             "result": {
@@ -595,6 +595,19 @@
             "_PTR_C_CPP_index": 3, 
             "_decl": "void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "passCharPtrInOut(SH_s);", 
+                "C_call_list": "SH_s", 
+                "C_name": "STR_pass_char_ptr_in_out_bufferify", 
+                "C_post_call": "ShroudStrCopy(s, Ns, SH_s);\nfree(SH_s);", 
+                "C_pre_call": "char * SH_s = (char *) malloc(Ns + 1);\nstd::memcpy(SH_s, s, Ls);\nSH_s[Ls] = '\\0';", 
+                "C_prototype": "char * s, int Ls, int Ns", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_pass_char_ptr_in_out_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "s": {
                     "fmtc": {
@@ -619,19 +632,6 @@
             "decl": "void passCharPtrInOut(char * s+intent(inout))", 
             "doxygen": {
                 "brief": "Change a string in-place"
-            }, 
-            "fmt": {
-                "C_call_code": "passCharPtrInOut(SH_s);", 
-                "C_call_list": "SH_s", 
-                "C_name": "STR_pass_char_ptr_in_out_bufferify", 
-                "C_post_call": "ShroudStrCopy(s, Ns, SH_s);\nfree(SH_s);", 
-                "C_pre_call": "char * SH_s = (char *) malloc(Ns + 1);\nstd::memcpy(SH_s, s, Ls);\nSH_s[Ls] = '\\0';", 
-                "C_prototype": "char * s, int Ls, int Ns", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_pass_char_ptr_in_out_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -666,20 +666,7 @@
         }, 
         {
             "_decl": "const char * getChar1() +pure", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "cpp_rv_decl": "const char * SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 4, 
-            "_subprogram": "function", 
-            "decl": "const char * getChar1()  +pure", 
-            "doxygen": {
-                "brief": "return a 'const char *' as character(*)"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "const char * SHT_rv = getChar1();", 
                 "C_call_list": "", 
                 "C_name": "STR_get_char1", 
@@ -703,6 +690,19 @@
                 "function_name": "getChar1", 
                 "underscore_name": "get_char1"
             }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "const char * SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 4, 
+            "_subprogram": "function", 
+            "decl": "const char * getChar1()  +pure", 
+            "doxygen": {
+                "brief": "return a 'const char *' as character(*)"
+            }, 
             "options": {}, 
             "result": {
                 "args": [], 
@@ -723,6 +723,18 @@
             "_PTR_C_CPP_index": 4, 
             "_decl": "void getChar1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const char * SHT_rv = getChar1();", 
+                "C_call_list": "", 
+                "C_name": "STR_get_char1_bufferify", 
+                "C_post_call": "if (SHT_rv == NULL) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
+                "C_prototype": "char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_get_char1_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "SHF_rv": {
                     "fmtc": {
@@ -748,18 +760,6 @@
             "decl": "const char * getChar1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const char *' as character(*)"
-            }, 
-            "fmt": {
-                "C_call_code": "const char * SHT_rv = getChar1();", 
-                "C_call_list": "", 
-                "C_name": "STR_get_char1_bufferify", 
-                "C_post_call": "if (SHT_rv == NULL) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
-                "C_prototype": "char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_get_char1_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -804,20 +804,7 @@
         {
             "_PTR_F_C_index": 25, 
             "_decl": "const char * getChar2()", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "cpp_rv_decl": "const char * SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 5, 
-            "_subprogram": "function", 
-            "decl": "const char * getChar2+len(30)()", 
-            "doxygen": {
-                "brief": "return 'const char *' with fixed size (len=30)"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "const char * SHT_rv = getChar2();", 
                 "C_call_list": "", 
                 "C_name": "STR_get_char2", 
@@ -841,6 +828,19 @@
                 "function_name": "getChar2", 
                 "underscore_name": "get_char2"
             }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "const char * SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 5, 
+            "_subprogram": "function", 
+            "decl": "const char * getChar2+len(30)()", 
+            "doxygen": {
+                "brief": "return 'const char *' with fixed size (len=30)"
+            }, 
             "options": {}, 
             "result": {
                 "args": [], 
@@ -860,6 +860,18 @@
             "_PTR_C_CPP_index": 5, 
             "_decl": "void getChar2(char * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const char * SHT_rv = getChar2();", 
+                "C_call_list": "", 
+                "C_name": "STR_get_char2_bufferify", 
+                "C_post_call": "if (SHT_rv == NULL) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
+                "C_prototype": "char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_get_char2_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "SHF_rv": {
                     "fmtc": {
@@ -889,18 +901,6 @@
             "decl": "const char * getChar2+len(30)()", 
             "doxygen": {
                 "brief": "return 'const char *' with fixed size (len=30)"
-            }, 
-            "fmt": {
-                "C_call_code": "const char * SHT_rv = getChar2();", 
-                "C_call_list": "", 
-                "C_name": "STR_get_char2_bufferify", 
-                "C_post_call": "if (SHT_rv == NULL) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
-                "C_prototype": "char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_get_char2_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -941,20 +941,7 @@
         }, 
         {
             "_decl": "const char * getChar3()", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "cpp_rv_decl": "const char * SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 6, 
-            "_subprogram": "function", 
-            "decl": "const char * getChar3()", 
-            "doxygen": {
-                "brief": "return a 'const char *' as argument"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "const char * SHT_rv = getChar3();", 
                 "C_call_list": "", 
                 "C_name": "STR_get_char3", 
@@ -967,6 +954,19 @@
                 "c_const": "const ", 
                 "function_name": "getChar3", 
                 "underscore_name": "get_char3"
+            }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "const char * SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 6, 
+            "_subprogram": "function", 
+            "decl": "const char * getChar3()", 
+            "doxygen": {
+                "brief": "return a 'const char *' as argument"
             }, 
             "options": {
                 "F_string_result_as_arg": "output", 
@@ -989,6 +989,18 @@
             "_PTR_C_CPP_index": 6, 
             "_decl": "void getChar3(char * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const char * SHT_rv = getChar3();", 
+                "C_call_list": "", 
+                "C_name": "STR_get_char3_bufferify", 
+                "C_post_call": "if (SHT_rv == NULL) {\n  std::memset(output, ' ', Noutput);\n} else {\n  ShroudStrCopy(output, Noutput, SHT_rv);\n}", 
+                "C_prototype": "char * output, int Noutput", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_get_char3_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "output": {
                     "fmtc": {
@@ -1018,18 +1030,6 @@
             "decl": "const char * getChar3()", 
             "doxygen": {
                 "brief": "return a 'const char *' as argument"
-            }, 
-            "fmt": {
-                "C_call_code": "const char * SHT_rv = getChar3();", 
-                "C_call_list": "", 
-                "C_name": "STR_get_char3_bufferify", 
-                "C_post_call": "if (SHT_rv == NULL) {\n  std::memset(output, ' ', Noutput);\n} else {\n  ShroudStrCopy(output, Noutput, SHT_rv);\n}", 
-                "C_prototype": "char * output, int Noutput", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_get_char3_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -1072,14 +1072,7 @@
             "_PTR_F_C_index": 26, 
             "_decl": "void getChar3(char * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 27, 
-            "_generated": "arg_to_buffer", 
-            "_subprogram": "subroutine", 
-            "decl": "const char * getChar3()", 
-            "doxygen": {
-                "brief": "return a 'const char *' as argument"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_get_char3_bufferify", 
                 "F_arg_c_call": "output, len(output, kind=C_INT)", 
                 "F_arg_c_call_tab": "\toutput\tlen(output, kind=C_INT)", 
@@ -1090,6 +1083,13 @@
                 "F_name_impl": "get_char3", 
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
+            }, 
+            "_function_index": 27, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "decl": "const char * getChar3()", 
+            "doxygen": {
+                "brief": "return a 'const char *' as argument"
             }, 
             "options": {
                 "wrap_c": false, 
@@ -1129,23 +1129,7 @@
         }, 
         {
             "_decl": "const string & getString1() +pure", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "c_rv_decl": "const char * XSHT_rv", 
-                    "c_val": "SHT_rv.c_str()", 
-                    "c_var": "XSHT_rv", 
-                    "cpp_rv_decl": "const std::string & SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 7, 
-            "_subprogram": "function", 
-            "decl": "const string& getString1()  +pure", 
-            "doxygen": {
-                "brief": "return a 'const string&' as character(*)"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString1();", 
                 "C_call_list": "", 
                 "C_name": "STR_get_string1", 
@@ -1169,6 +1153,22 @@
                 "function_name": "getString1", 
                 "underscore_name": "get_string1"
             }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "c_rv_decl": "const char * XSHT_rv", 
+                    "c_val": "SHT_rv.c_str()", 
+                    "c_var": "XSHT_rv", 
+                    "cpp_rv_decl": "const std::string & SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 7, 
+            "_subprogram": "function", 
+            "decl": "const string& getString1()  +pure", 
+            "doxygen": {
+                "brief": "return a 'const string&' as character(*)"
+            }, 
             "options": {}, 
             "result": {
                 "args": [], 
@@ -1189,6 +1189,18 @@
             "_PTR_C_CPP_index": 7, 
             "_decl": "void getString1(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const std::string & SHT_rv = getString1();", 
+                "C_call_list": "", 
+                "C_name": "STR_get_string1_bufferify", 
+                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                "C_prototype": "char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_get_string1_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "SHF_rv": {
                     "fmtc": {
@@ -1214,18 +1226,6 @@
             "decl": "const string& getString1()  +pure", 
             "doxygen": {
                 "brief": "return a 'const string&' as character(*)"
-            }, 
-            "fmt": {
-                "C_call_code": "const std::string & SHT_rv = getString1();", 
-                "C_call_list": "", 
-                "C_name": "STR_get_string1_bufferify", 
-                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                "C_prototype": "char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_get_string1_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -1271,23 +1271,7 @@
             "C_error_pattern": "C_invalid_name", 
             "_PTR_F_C_index": 29, 
             "_decl": "const string & getString2()", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "c_rv_decl": "const char * XSHT_rv", 
-                    "c_val": "SHT_rv.c_str()", 
-                    "c_var": "XSHT_rv", 
-                    "cpp_rv_decl": "const std::string & SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 8, 
-            "_subprogram": "function", 
-            "decl": "const string& getString2+len=30()", 
-            "doxygen": {
-                "brief": "return 'const string&' with fixed size (len=30)"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2();", 
                 "C_call_list": "", 
                 "C_name": "STR_get_string2", 
@@ -1312,6 +1296,22 @@
                 "function_name": "getString2", 
                 "underscore_name": "get_string2"
             }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "c_rv_decl": "const char * XSHT_rv", 
+                    "c_val": "SHT_rv.c_str()", 
+                    "c_var": "XSHT_rv", 
+                    "cpp_rv_decl": "const std::string & SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 8, 
+            "_subprogram": "function", 
+            "decl": "const string& getString2+len=30()", 
+            "doxygen": {
+                "brief": "return 'const string&' with fixed size (len=30)"
+            }, 
             "options": {}, 
             "result": {
                 "args": [], 
@@ -1332,6 +1332,18 @@
             "_PTR_C_CPP_index": 8, 
             "_decl": "void getString2(string & SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const std::string & SHT_rv = getString2();", 
+                "C_call_list": "", 
+                "C_name": "STR_get_string2_bufferify", 
+                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                "C_prototype": "char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_get_string2_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "SHF_rv": {
                     "fmtc": {
@@ -1361,18 +1373,6 @@
             "decl": "const string& getString2+len=30()", 
             "doxygen": {
                 "brief": "return 'const string&' with fixed size (len=30)"
-            }, 
-            "fmt": {
-                "C_call_code": "const std::string & SHT_rv = getString2();", 
-                "C_call_list": "", 
-                "C_name": "STR_get_string2_bufferify", 
-                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                "C_prototype": "char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_get_string2_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -1414,6 +1414,21 @@
         {
             "C_error_pattern": "C_invalid_name", 
             "_decl": "const string & getString3()", 
+            "_fmt": {
+                "C_call_code": "const std::string & SHT_rv = getString3();", 
+                "C_call_list": "", 
+                "C_name": "STR_get_string3", 
+                "C_post_call_pattern": "// C_error_pattern\nif (SHT_rv.empty()) {\n    return NULL;\n}\n", 
+                "C_prototype": "", 
+                "C_return_code": "return XSHT_rv;", 
+                "C_return_type": "const char *", 
+                "F_C_name": "c_get_string3", 
+                "F_string_result_as_arg": "output", 
+                "PY_name_impl": "PY_get_string3", 
+                "c_const": "const ", 
+                "function_name": "getString3", 
+                "underscore_name": "get_string3"
+            }, 
             "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
@@ -1429,21 +1444,6 @@
             "decl": "const string& getString3()", 
             "doxygen": {
                 "brief": "return a 'const string&' as argument"
-            }, 
-            "fmt": {
-                "C_call_code": "const std::string & SHT_rv = getString3();", 
-                "C_call_list": "", 
-                "C_name": "STR_get_string3", 
-                "C_post_call_pattern": "// C_error_pattern\nif (SHT_rv.empty()) {\n    return NULL;\n}\n", 
-                "C_prototype": "", 
-                "C_return_code": "return XSHT_rv;", 
-                "C_return_type": "const char *", 
-                "F_C_name": "c_get_string3", 
-                "F_string_result_as_arg": "output", 
-                "PY_name_impl": "PY_get_string3", 
-                "c_const": "const ", 
-                "function_name": "getString3", 
-                "underscore_name": "get_string3"
             }, 
             "options": {
                 "F_string_result_as_arg": "output", 
@@ -1467,6 +1467,18 @@
             "_PTR_C_CPP_index": 9, 
             "_decl": "void getString3(string & output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const std::string & SHT_rv = getString3();", 
+                "C_call_list": "", 
+                "C_name": "STR_get_string3_bufferify", 
+                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(output, ' ', Noutput);\n} else {\n  ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
+                "C_prototype": "char * output, int Noutput", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_get_string3_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "output": {
                     "fmtc": {
@@ -1496,18 +1508,6 @@
             "decl": "const string& getString3()", 
             "doxygen": {
                 "brief": "return a 'const string&' as argument"
-            }, 
-            "fmt": {
-                "C_call_code": "const std::string & SHT_rv = getString3();", 
-                "C_call_list": "", 
-                "C_name": "STR_get_string3_bufferify", 
-                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(output, ' ', Noutput);\n} else {\n  ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
-                "C_prototype": "char * output, int Noutput", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_get_string3_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -1551,14 +1551,7 @@
             "_PTR_F_C_index": 30, 
             "_decl": "void getString3(string & output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 31, 
-            "_generated": "arg_to_buffer", 
-            "_subprogram": "subroutine", 
-            "decl": "const string& getString3()", 
-            "doxygen": {
-                "brief": "return a 'const string&' as argument"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_get_string3_bufferify", 
                 "F_arg_c_call": "output, len(output, kind=C_INT)", 
                 "F_arg_c_call_tab": "\toutput\tlen(output, kind=C_INT)", 
@@ -1569,6 +1562,13 @@
                 "F_name_impl": "get_string3", 
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
+            }, 
+            "_function_index": 31, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "decl": "const string& getString3()", 
+            "doxygen": {
+                "brief": "return a 'const string&' as argument"
             }, 
             "options": {
                 "wrap_c": false, 
@@ -1610,23 +1610,7 @@
             "C_error_pattern": "C_invalid_name", 
             "_PTR_F_C_index": 32, 
             "_decl": "const string & getString2_empty()", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "c_rv_decl": "const char * XSHT_rv", 
-                    "c_val": "SHT_rv.c_str()", 
-                    "c_var": "XSHT_rv", 
-                    "cpp_rv_decl": "const std::string & SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 10, 
-            "_subprogram": "function", 
-            "decl": "const string& getString2_empty+len=30()", 
-            "doxygen": {
-                "brief": "Test returning empty string reference"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = getString2_empty();", 
                 "C_call_list": "", 
                 "C_name": "STR_get_string2_empty", 
@@ -1651,6 +1635,22 @@
                 "function_name": "getString2_empty", 
                 "underscore_name": "get_string2_empty"
             }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "c_rv_decl": "const char * XSHT_rv", 
+                    "c_val": "SHT_rv.c_str()", 
+                    "c_var": "XSHT_rv", 
+                    "cpp_rv_decl": "const std::string & SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 10, 
+            "_subprogram": "function", 
+            "decl": "const string& getString2_empty+len=30()", 
+            "doxygen": {
+                "brief": "Test returning empty string reference"
+            }, 
             "options": {}, 
             "result": {
                 "args": [], 
@@ -1671,6 +1671,18 @@
             "_PTR_C_CPP_index": 10, 
             "_decl": "void getString2_empty(string & SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const std::string & SHT_rv = getString2_empty();", 
+                "C_call_list": "", 
+                "C_name": "STR_get_string2_empty_bufferify", 
+                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                "C_prototype": "char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_get_string2_empty_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "SHF_rv": {
                     "fmtc": {
@@ -1700,18 +1712,6 @@
             "decl": "const string& getString2_empty+len=30()", 
             "doxygen": {
                 "brief": "Test returning empty string reference"
-            }, 
-            "fmt": {
-                "C_call_code": "const std::string & SHT_rv = getString2_empty();", 
-                "C_call_list": "", 
-                "C_name": "STR_get_string2_empty_bufferify", 
-                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                "C_prototype": "char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_get_string2_empty_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -1754,14 +1754,7 @@
             "C_error_pattern": "C_invalid_name", 
             "_PTR_F_C_index": 33, 
             "_decl": "const string getString5()", 
-            "_fmtargs": {}, 
-            "_function_index": 11, 
-            "_subprogram": "function", 
-            "decl": "const string getString5+len=30()", 
-            "doxygen": {
-                "brief": "return a 'const string' as argument"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_get_string5_bufferify", 
                 "F_arg_c_call": "SHT_rv, len(SHT_rv, kind=C_INT)", 
                 "F_arg_c_call_tab": "\tSHT_rv\tlen(SHT_rv, kind=C_INT)", 
@@ -1776,6 +1769,13 @@
                 "c_var_len": "30", 
                 "function_name": "getString5", 
                 "underscore_name": "get_string5"
+            }, 
+            "_fmtargs": {}, 
+            "_function_index": 11, 
+            "_subprogram": "function", 
+            "decl": "const string getString5+len=30()", 
+            "doxygen": {
+                "brief": "return a 'const string' as argument"
             }, 
             "options": {
                 "wrap_c": false
@@ -1798,6 +1798,18 @@
             "_PTR_C_CPP_index": 11, 
             "_decl": "void getString5(string * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const std::string SHT_rv = getString5();", 
+                "C_call_list": "", 
+                "C_name": "STR_get_string5_bufferify", 
+                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                "C_prototype": "char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_get_string5_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "SHF_rv": {
                     "fmtc": {
@@ -1827,18 +1839,6 @@
             "decl": "const string getString5+len=30()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
-            }, 
-            "fmt": {
-                "C_call_code": "const std::string SHT_rv = getString5();", 
-                "C_call_list": "", 
-                "C_name": "STR_get_string5_bufferify", 
-                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                "C_prototype": "char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_get_string5_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -1881,18 +1881,18 @@
         {
             "C_error_pattern": "C_invalid_name", 
             "_decl": "const string getString6()", 
+            "_fmt": {
+                "F_string_result_as_arg": "output", 
+                "PY_name_impl": "PY_get_string6", 
+                "function_name": "getString6", 
+                "underscore_name": "get_string6"
+            }, 
             "_fmtargs": {}, 
             "_function_index": 12, 
             "_subprogram": "function", 
             "decl": "const string getString6()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
-            }, 
-            "fmt": {
-                "F_string_result_as_arg": "output", 
-                "PY_name_impl": "PY_get_string6", 
-                "function_name": "getString6", 
-                "underscore_name": "get_string6"
             }, 
             "options": {
                 "F_string_result_as_arg": "output", 
@@ -1915,6 +1915,18 @@
             "_PTR_C_CPP_index": 12, 
             "_decl": "void getString6(string * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const std::string SHT_rv = getString6();", 
+                "C_call_list": "", 
+                "C_name": "STR_get_string6_bufferify", 
+                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(output, ' ', Noutput);\n} else {\n  ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
+                "C_prototype": "char * output, int Noutput", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_get_string6_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "output": {
                     "fmtc": {
@@ -1944,18 +1956,6 @@
             "decl": "const string getString6()", 
             "doxygen": {
                 "brief": "return a 'const string' as argument"
-            }, 
-            "fmt": {
-                "C_call_code": "const std::string SHT_rv = getString6();", 
-                "C_call_list": "", 
-                "C_name": "STR_get_string6_bufferify", 
-                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(output, ' ', Noutput);\n} else {\n  ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
-                "C_prototype": "char * output, int Noutput", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_get_string6_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -2000,14 +2000,7 @@
             "_PTR_F_C_index": 34, 
             "_decl": "void getString6(string * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 35, 
-            "_generated": "arg_to_buffer", 
-            "_subprogram": "subroutine", 
-            "decl": "const string getString6()", 
-            "doxygen": {
-                "brief": "return a 'const string' as argument"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_get_string6_bufferify", 
                 "F_arg_c_call": "output, len(output, kind=C_INT)", 
                 "F_arg_c_call_tab": "\toutput\tlen(output, kind=C_INT)", 
@@ -2018,6 +2011,13 @@
                 "F_name_impl": "get_string6", 
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
+            }, 
+            "_function_index": 35, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "decl": "const string getString6()", 
+            "doxygen": {
+                "brief": "return a 'const string' as argument"
             }, 
             "options": {
                 "wrap_c": false, 
@@ -2059,6 +2059,29 @@
         {
             "_PTR_F_C_index": 36, 
             "_decl": "void acceptStringConstReference(const std::string & arg1 +intent(in))", 
+            "_fmt": {
+                "C_call_code": "acceptStringConstReference(SH_arg1);", 
+                "C_call_list": "SH_arg1", 
+                "C_name": "STR_accept_string_const_reference", 
+                "C_pre_call": "const std::string SH_arg1(arg1);", 
+                "C_prototype": "const char * arg1", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_accept_string_const_reference_bufferify", 
+                "F_C_name": "c_accept_string_const_reference", 
+                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)", 
+                "F_arguments": "arg1", 
+                "F_call_code": "call c_accept_string_const_reference_bufferify(\targ1\tlen_trim(arg1, kind=C_INT))", 
+                "F_name_function": "accept_string_const_reference", 
+                "F_name_generic": "accept_string_const_reference", 
+                "F_name_impl": "accept_string_const_reference", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_accept_string_const_reference", 
+                "c_const": "", 
+                "function_name": "acceptStringConstReference", 
+                "underscore_name": "accept_string_const_reference"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -2084,29 +2107,6 @@
             "doxygen": {
                 "brief": "Accept a const string reference", 
                 "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
-            }, 
-            "fmt": {
-                "C_call_code": "acceptStringConstReference(SH_arg1);", 
-                "C_call_list": "SH_arg1", 
-                "C_name": "STR_accept_string_const_reference", 
-                "C_pre_call": "const std::string SH_arg1(arg1);", 
-                "C_prototype": "const char * arg1", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_accept_string_const_reference_bufferify", 
-                "F_C_name": "c_accept_string_const_reference", 
-                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT)", 
-                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)", 
-                "F_arguments": "arg1", 
-                "F_call_code": "call c_accept_string_const_reference_bufferify(\targ1\tlen_trim(arg1, kind=C_INT))", 
-                "F_name_function": "accept_string_const_reference", 
-                "F_name_generic": "accept_string_const_reference", 
-                "F_name_impl": "accept_string_const_reference", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_accept_string_const_reference", 
-                "c_const": "", 
-                "function_name": "acceptStringConstReference", 
-                "underscore_name": "accept_string_const_reference"
             }, 
             "options": {}, 
             "result": {
@@ -2136,6 +2136,18 @@
             "_PTR_C_CPP_index": 13, 
             "_decl": "void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "acceptStringConstReference(SH_arg1);", 
+                "C_call_list": "SH_arg1", 
+                "C_name": "STR_accept_string_const_reference_bufferify", 
+                "C_pre_call": "const std::string SH_arg1(arg1, Larg1);", 
+                "C_prototype": "const char * arg1, int Larg1", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_accept_string_const_reference_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -2159,18 +2171,6 @@
             "doxygen": {
                 "brief": "Accept a const string reference", 
                 "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
-            }, 
-            "fmt": {
-                "C_call_code": "acceptStringConstReference(SH_arg1);", 
-                "C_call_list": "SH_arg1", 
-                "C_name": "STR_accept_string_const_reference_bufferify", 
-                "C_pre_call": "const std::string SH_arg1(arg1, Larg1);", 
-                "C_prototype": "const char * arg1, int Larg1", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_accept_string_const_reference_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -2205,6 +2205,30 @@
         {
             "_PTR_F_C_index": 37, 
             "_decl": "void acceptStringReferenceOut(std::string & arg1 +intent(out))", 
+            "_fmt": {
+                "C_call_code": "acceptStringReferenceOut(SH_arg1);", 
+                "C_call_list": "SH_arg1", 
+                "C_name": "STR_accept_string_reference_out", 
+                "C_post_call": "strcpy(arg1, SH_arg1.c_str());", 
+                "C_pre_call": "std::string SH_arg1;", 
+                "C_prototype": "char * arg1", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_accept_string_reference_out_bufferify", 
+                "F_C_name": "c_accept_string_reference_out", 
+                "F_arg_c_call": "arg1, len(arg1, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ1\tlen(arg1, kind=C_INT)", 
+                "F_arguments": "arg1", 
+                "F_call_code": "call c_accept_string_reference_out_bufferify(\targ1\tlen(arg1, kind=C_INT))", 
+                "F_name_function": "accept_string_reference_out", 
+                "F_name_generic": "accept_string_reference_out", 
+                "F_name_impl": "accept_string_reference_out", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_accept_string_reference_out", 
+                "c_const": "", 
+                "function_name": "acceptStringReferenceOut", 
+                "underscore_name": "accept_string_reference_out"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -2234,30 +2258,6 @@
                 "brief": "Accept a string reference", 
                 "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
             }, 
-            "fmt": {
-                "C_call_code": "acceptStringReferenceOut(SH_arg1);", 
-                "C_call_list": "SH_arg1", 
-                "C_name": "STR_accept_string_reference_out", 
-                "C_post_call": "strcpy(arg1, SH_arg1.c_str());", 
-                "C_pre_call": "std::string SH_arg1;", 
-                "C_prototype": "char * arg1", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_accept_string_reference_out_bufferify", 
-                "F_C_name": "c_accept_string_reference_out", 
-                "F_arg_c_call": "arg1, len(arg1, kind=C_INT)", 
-                "F_arg_c_call_tab": "\targ1\tlen(arg1, kind=C_INT)", 
-                "F_arguments": "arg1", 
-                "F_call_code": "call c_accept_string_reference_out_bufferify(\targ1\tlen(arg1, kind=C_INT))", 
-                "F_name_function": "accept_string_reference_out", 
-                "F_name_generic": "accept_string_reference_out", 
-                "F_name_impl": "accept_string_reference_out", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_accept_string_reference_out", 
-                "c_const": "", 
-                "function_name": "acceptStringReferenceOut", 
-                "underscore_name": "accept_string_reference_out"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -2286,6 +2286,19 @@
             "_PTR_C_CPP_index": 14, 
             "_decl": "void acceptStringReferenceOut(std::string & arg1 +intent(out)+len(Narg1))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "acceptStringReferenceOut(SH_arg1);", 
+                "C_call_list": "SH_arg1", 
+                "C_name": "STR_accept_string_reference_out_bufferify", 
+                "C_post_call": "ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());", 
+                "C_pre_call": "std::string SH_arg1;", 
+                "C_prototype": "char * arg1, int Narg1", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_accept_string_reference_out_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -2310,19 +2323,6 @@
             "doxygen": {
                 "brief": "Accept a string reference", 
                 "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
-            }, 
-            "fmt": {
-                "C_call_code": "acceptStringReferenceOut(SH_arg1);", 
-                "C_call_list": "SH_arg1", 
-                "C_name": "STR_accept_string_reference_out_bufferify", 
-                "C_post_call": "ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());", 
-                "C_pre_call": "std::string SH_arg1;", 
-                "C_prototype": "char * arg1, int Narg1", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_accept_string_reference_out_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -2357,6 +2357,30 @@
         {
             "_PTR_F_C_index": 38, 
             "_decl": "void acceptStringReference(std::string & arg1 +intent(inout))", 
+            "_fmt": {
+                "C_call_code": "acceptStringReference(SH_arg1);", 
+                "C_call_list": "SH_arg1", 
+                "C_name": "STR_accept_string_reference", 
+                "C_post_call": "strcpy(arg1, SH_arg1.c_str());", 
+                "C_pre_call": "std::string SH_arg1(arg1);", 
+                "C_prototype": "char * arg1", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_accept_string_reference_bufferify", 
+                "F_C_name": "c_accept_string_reference", 
+                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\tlen(arg1, kind=C_INT)", 
+                "F_arguments": "arg1", 
+                "F_call_code": "call c_accept_string_reference_bufferify(\targ1\tlen_trim(arg1, kind=C_INT)\tlen(arg1, kind=C_INT))", 
+                "F_name_function": "accept_string_reference", 
+                "F_name_generic": "accept_string_reference", 
+                "F_name_impl": "accept_string_reference", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_accept_string_reference", 
+                "c_const": "", 
+                "function_name": "acceptStringReference", 
+                "underscore_name": "accept_string_reference"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -2386,30 +2410,6 @@
                 "brief": "Accept a string reference", 
                 "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
             }, 
-            "fmt": {
-                "C_call_code": "acceptStringReference(SH_arg1);", 
-                "C_call_list": "SH_arg1", 
-                "C_name": "STR_accept_string_reference", 
-                "C_post_call": "strcpy(arg1, SH_arg1.c_str());", 
-                "C_pre_call": "std::string SH_arg1(arg1);", 
-                "C_prototype": "char * arg1", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_accept_string_reference_bufferify", 
-                "F_C_name": "c_accept_string_reference", 
-                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT)", 
-                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\tlen(arg1, kind=C_INT)", 
-                "F_arguments": "arg1", 
-                "F_call_code": "call c_accept_string_reference_bufferify(\targ1\tlen_trim(arg1, kind=C_INT)\tlen(arg1, kind=C_INT))", 
-                "F_name_function": "accept_string_reference", 
-                "F_name_generic": "accept_string_reference", 
-                "F_name_impl": "accept_string_reference", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_accept_string_reference", 
-                "c_const": "", 
-                "function_name": "acceptStringReference", 
-                "underscore_name": "accept_string_reference"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -2438,6 +2438,19 @@
             "_PTR_C_CPP_index": 15, 
             "_decl": "void acceptStringReference(std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "acceptStringReference(SH_arg1);", 
+                "C_call_list": "SH_arg1", 
+                "C_name": "STR_accept_string_reference_bufferify", 
+                "C_post_call": "ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());", 
+                "C_pre_call": "std::string SH_arg1(arg1, Larg1);", 
+                "C_prototype": "char * arg1, int Larg1, int Narg1", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_accept_string_reference_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -2463,19 +2476,6 @@
             "doxygen": {
                 "brief": "Accept a string reference", 
                 "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
-            }, 
-            "fmt": {
-                "C_call_code": "acceptStringReference(SH_arg1);", 
-                "C_call_list": "SH_arg1", 
-                "C_name": "STR_accept_string_reference_bufferify", 
-                "C_post_call": "ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());", 
-                "C_pre_call": "std::string SH_arg1(arg1, Larg1);", 
-                "C_prototype": "char * arg1, int Larg1, int Narg1", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_accept_string_reference_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -2511,6 +2511,28 @@
         {
             "_PTR_F_C_index": 39, 
             "_decl": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
+            "_fmt": {
+                "C_call_code": "explicit1(name);", 
+                "C_call_list": "name", 
+                "C_name": "STR_explicit1", 
+                "C_prototype": "char * name", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_explicit1_buffer", 
+                "F_C_name": "c_explicit1", 
+                "F_arg_c_call": "name, len_trim(name, kind=C_INT)", 
+                "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)", 
+                "F_arguments": "name", 
+                "F_call_code": "call c_explicit1_buffer(\tname\tlen_trim(name, kind=C_INT))", 
+                "F_name_function": "explicit1", 
+                "F_name_generic": "explicit1", 
+                "F_name_impl": "explicit1", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_explicit1", 
+                "c_const": "", 
+                "function_name": "explicit1", 
+                "underscore_name": "explicit1"
+            }, 
             "_fmtargs": {
                 "name": {
                     "fmtc": {
@@ -2533,28 +2555,6 @@
             "_function_index": 16, 
             "_subprogram": "subroutine", 
             "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
-            "fmt": {
-                "C_call_code": "explicit1(name);", 
-                "C_call_list": "name", 
-                "C_name": "STR_explicit1", 
-                "C_prototype": "char * name", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_explicit1_buffer", 
-                "F_C_name": "c_explicit1", 
-                "F_arg_c_call": "name, len_trim(name, kind=C_INT)", 
-                "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)", 
-                "F_arguments": "name", 
-                "F_call_code": "call c_explicit1_buffer(\tname\tlen_trim(name, kind=C_INT))", 
-                "F_name_function": "explicit1", 
-                "F_name_generic": "explicit1", 
-                "F_name_impl": "explicit1", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_explicit1", 
-                "c_const": "", 
-                "function_name": "explicit1", 
-                "underscore_name": "explicit1"
-            }, 
             "options": {
                 "C_bufferify_suffix": "_BUFFER"
             }, 
@@ -2586,6 +2586,19 @@
             "_PTR_C_CPP_index": 16, 
             "_decl": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "explicit1(SH_name);", 
+                "C_call_list": "SH_name", 
+                "C_name": "STR_explicit1_BUFFER", 
+                "C_post_call": "free(SH_name);", 
+                "C_pre_call": "char * SH_name = (char *) malloc(AAlen + 1);\nstd::memcpy(SH_name, name, AAlen);\nSH_name[AAlen] = '\\0';", 
+                "C_prototype": "char * name, int AAlen", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_explicit1_buffer", 
+                "c_const": "", 
+                "function_suffix": "_BUFFER"
+            }, 
             "_fmtargs": {
                 "name": {
                     "fmtc": {
@@ -2607,19 +2620,6 @@
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
-            "fmt": {
-                "C_call_code": "explicit1(SH_name);", 
-                "C_call_list": "SH_name", 
-                "C_name": "STR_explicit1_BUFFER", 
-                "C_post_call": "free(SH_name);", 
-                "C_pre_call": "char * SH_name = (char *) malloc(AAlen + 1);\nstd::memcpy(SH_name, name, AAlen);\nSH_name[AAlen] = '\\0';", 
-                "C_prototype": "char * name, int AAlen", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_explicit1_buffer", 
-                "c_const": "", 
-                "function_suffix": "_BUFFER"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2653,6 +2653,28 @@
         {
             "_PTR_F_C_index": 40, 
             "_decl": "void explicit2(char * name +intent(out)+len(AAtrim))", 
+            "_fmt": {
+                "C_call_code": "explicit2(name);", 
+                "C_call_list": "name", 
+                "C_name": "STR_explicit2", 
+                "C_prototype": "char * name", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_explicit2_bufferify", 
+                "F_C_name": "c_explicit2", 
+                "F_arg_c_call": "name, len(name, kind=C_INT)", 
+                "F_arg_c_call_tab": "\tname\tlen(name, kind=C_INT)", 
+                "F_arguments": "name", 
+                "F_call_code": "call c_explicit2_bufferify(\tname\tlen(name, kind=C_INT))", 
+                "F_name_function": "explicit2", 
+                "F_name_generic": "explicit2", 
+                "F_name_impl": "explicit2", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_explicit2", 
+                "c_const": "", 
+                "function_name": "explicit2", 
+                "underscore_name": "explicit2"
+            }, 
             "_fmtargs": {
                 "name": {
                     "fmtc": {
@@ -2677,28 +2699,6 @@
             "_function_index": 17, 
             "_subprogram": "subroutine", 
             "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
-            "fmt": {
-                "C_call_code": "explicit2(name);", 
-                "C_call_list": "name", 
-                "C_name": "STR_explicit2", 
-                "C_prototype": "char * name", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_explicit2_bufferify", 
-                "F_C_name": "c_explicit2", 
-                "F_arg_c_call": "name, len(name, kind=C_INT)", 
-                "F_arg_c_call_tab": "\tname\tlen(name, kind=C_INT)", 
-                "F_arguments": "name", 
-                "F_call_code": "call c_explicit2_bufferify(\tname\tlen(name, kind=C_INT))", 
-                "F_name_function": "explicit2", 
-                "F_name_generic": "explicit2", 
-                "F_name_impl": "explicit2", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_explicit2", 
-                "c_const": "", 
-                "function_name": "explicit2", 
-                "underscore_name": "explicit2"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -2728,6 +2728,19 @@
             "_PTR_C_CPP_index": 17, 
             "_decl": "void explicit2(char * name +intent(out)+len(AAtrim))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "explicit2(SH_name);", 
+                "C_call_list": "SH_name", 
+                "C_name": "STR_explicit2_bufferify", 
+                "C_post_call": "ShroudStrCopy(name, AAtrim, SH_name);\nfree(SH_name);", 
+                "C_pre_call": "char * SH_name = (char *) malloc(AAtrim + 1);", 
+                "C_prototype": "char * name, int AAtrim", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_explicit2_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "name": {
                     "fmtc": {
@@ -2749,19 +2762,6 @@
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
-            "fmt": {
-                "C_call_code": "explicit2(SH_name);", 
-                "C_call_list": "SH_name", 
-                "C_name": "STR_explicit2_bufferify", 
-                "C_post_call": "ShroudStrCopy(name, AAtrim, SH_name);\nfree(SH_name);", 
-                "C_pre_call": "char * SH_name = (char *) malloc(AAtrim + 1);", 
-                "C_prototype": "char * name, int AAtrim", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_explicit2_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -2794,6 +2794,28 @@
         }, 
         {
             "_decl": "void CpassChar(char_scalar status +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "CpassChar(status);", 
+                "C_call_list": "status", 
+                "C_name": "CpassChar", 
+                "C_prototype": "char status", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_cpass_char", 
+                "F_C_name": "cpass_char", 
+                "F_arg_c_call": "status", 
+                "F_arg_c_call_tab": "\tstatus", 
+                "F_arguments": "status", 
+                "F_call_code": "call c_cpass_char(\tstatus)", 
+                "F_name_function": "cpass_char", 
+                "F_name_generic": "cpass_char", 
+                "F_name_impl": "cpass_char", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_cpass_char", 
+                "c_const": "", 
+                "function_name": "CpassChar", 
+                "underscore_name": "cpass_char"
+            }, 
             "_fmtargs": {
                 "status": {
                     "fmtc": {
@@ -2823,28 +2845,6 @@
             "doxygen": {
                 "brief": "pass a single char argument as a scalar, extern \"C\""
             }, 
-            "fmt": {
-                "C_call_code": "CpassChar(status);", 
-                "C_call_list": "status", 
-                "C_name": "CpassChar", 
-                "C_prototype": "char status", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_cpass_char", 
-                "F_C_name": "cpass_char", 
-                "F_arg_c_call": "status", 
-                "F_arg_c_call_tab": "\tstatus", 
-                "F_arguments": "status", 
-                "F_call_code": "call c_cpass_char(\tstatus)", 
-                "F_name_function": "cpass_char", 
-                "F_name_generic": "cpass_char", 
-                "F_name_impl": "cpass_char", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_cpass_char", 
-                "c_const": "", 
-                "function_name": "CpassChar", 
-                "underscore_name": "cpass_char"
-            }, 
             "options": {
                 "C_extern_C": true
             }, 
@@ -2873,20 +2873,7 @@
         {
             "_PTR_F_C_index": 41, 
             "_decl": "char_scalar CreturnChar()", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "cpp_rv_decl": "char SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 19, 
-            "_subprogram": "function", 
-            "decl": "char CreturnChar()", 
-            "doxygen": {
-                "brief": "return a char argument (non-pointer), extern \"C\""
-            }, 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "char SHT_rv = CreturnChar();", 
                 "C_call_list": "", 
                 "C_name": "CreturnChar", 
@@ -2909,6 +2896,19 @@
                 "function_name": "CreturnChar", 
                 "underscore_name": "creturn_char"
             }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "char SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 19, 
+            "_subprogram": "function", 
+            "decl": "char CreturnChar()", 
+            "doxygen": {
+                "brief": "return a char argument (non-pointer), extern \"C\""
+            }, 
             "options": {
                 "C_extern_C": true
             }, 
@@ -2927,6 +2927,18 @@
             "_PTR_C_CPP_index": 19, 
             "_decl": "void CreturnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "char SHT_rv = CreturnChar();", 
+                "C_call_list": "", 
+                "C_name": "STR_creturn_char_bufferify", 
+                "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHT_rv;", 
+                "C_prototype": "char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_creturn_char_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "SHF_rv": {
                     "fmtc": {
@@ -2956,18 +2968,6 @@
             "decl": "char CreturnChar()", 
             "doxygen": {
                 "brief": "return a char argument (non-pointer), extern \"C\""
-            }, 
-            "fmt": {
-                "C_call_code": "char SHT_rv = CreturnChar();", 
-                "C_call_list": "", 
-                "C_name": "STR_creturn_char_bufferify", 
-                "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHT_rv;", 
-                "C_prototype": "char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_creturn_char_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -3009,6 +3009,28 @@
         {
             "_PTR_F_C_index": 42, 
             "_decl": "void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))", 
+            "_fmt": {
+                "C_call_code": "CpassCharPtr(dest, src);", 
+                "C_call_list": "dest, src", 
+                "C_name": "CpassCharPtr", 
+                "C_prototype": "char * dest, const char * src", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_cpass_char_ptr_bufferify", 
+                "F_C_name": "c_cpass_char_ptr", 
+                "F_arg_c_call": "dest, len(dest, kind=C_INT), src, len_trim(src, kind=C_INT)", 
+                "F_arg_c_call_tab": "\tdest\tlen(dest, kind=C_INT)\tsrc\tlen_trim(src, kind=C_INT)", 
+                "F_arguments": "dest, src", 
+                "F_call_code": "call c_cpass_char_ptr_bufferify(\tdest\tlen(dest, kind=C_INT)\tsrc\tlen_trim(src, kind=C_INT))", 
+                "F_name_function": "cpass_char_ptr", 
+                "F_name_generic": "cpass_char_ptr", 
+                "F_name_impl": "cpass_char_ptr", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_cpass_char_ptr", 
+                "c_const": "", 
+                "function_name": "CpassCharPtr", 
+                "underscore_name": "cpass_char_ptr"
+            }, 
             "_fmtargs": {
                 "dest": {
                     "fmtc": {
@@ -3054,28 +3076,6 @@
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
             }, 
-            "fmt": {
-                "C_call_code": "CpassCharPtr(dest, src);", 
-                "C_call_list": "dest, src", 
-                "C_name": "CpassCharPtr", 
-                "C_prototype": "char * dest, const char * src", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_cpass_char_ptr_bufferify", 
-                "F_C_name": "c_cpass_char_ptr", 
-                "F_arg_c_call": "dest, len(dest, kind=C_INT), src, len_trim(src, kind=C_INT)", 
-                "F_arg_c_call_tab": "\tdest\tlen(dest, kind=C_INT)\tsrc\tlen_trim(src, kind=C_INT)", 
-                "F_arguments": "dest, src", 
-                "F_call_code": "call c_cpass_char_ptr_bufferify(\tdest\tlen(dest, kind=C_INT)\tsrc\tlen_trim(src, kind=C_INT))", 
-                "F_name_function": "cpass_char_ptr", 
-                "F_name_generic": "cpass_char_ptr", 
-                "F_name_impl": "cpass_char_ptr", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_cpass_char_ptr", 
-                "c_const": "", 
-                "function_name": "CpassCharPtr", 
-                "underscore_name": "cpass_char_ptr"
-            }, 
             "options": {
                 "C_extern_C": true
             }, 
@@ -3117,6 +3117,19 @@
             "_PTR_C_CPP_index": 20, 
             "_decl": "void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "CpassCharPtr(SH_dest, SH_src);", 
+                "C_call_list": "SH_dest, SH_src", 
+                "C_name": "STR_cpass_char_ptr_bufferify", 
+                "C_post_call": "ShroudStrCopy(dest, Ndest, SH_dest);\nfree(SH_dest);\nfree(SH_src);", 
+                "C_pre_call": "char * SH_dest = (char *) malloc(Ndest + 1);\nchar * SH_src = (char *) malloc(Lsrc + 1);\nstd::memcpy(SH_src, src, Lsrc);\nSH_src[Lsrc] = '\\0';", 
+                "C_prototype": "char * dest, int Ndest, const char * src, int Lsrc", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_cpass_char_ptr_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "dest": {
                     "fmtc": {
@@ -3156,19 +3169,6 @@
             "doxygen": {
                 "brief": "strcpy like behavior", 
                 "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
-            }, 
-            "fmt": {
-                "C_call_code": "CpassCharPtr(SH_dest, SH_src);", 
-                "C_call_list": "SH_dest, SH_src", 
-                "C_name": "STR_cpass_char_ptr_bufferify", 
-                "C_post_call": "ShroudStrCopy(dest, Ndest, SH_dest);\nfree(SH_dest);\nfree(SH_src);", 
-                "C_pre_call": "char * SH_dest = (char *) malloc(Ndest + 1);\nchar * SH_src = (char *) malloc(Lsrc + 1);\nstd::memcpy(SH_src, src, Lsrc);\nSH_src[Lsrc] = '\\0';", 
-                "C_prototype": "char * dest, int Ndest, const char * src, int Lsrc", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_cpass_char_ptr_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 

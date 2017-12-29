@@ -99,7 +99,7 @@ class Wrapp(util.WrapperMixin):
     def wrap_library(self):
         top = self.tree
         options = self.tree['options']
-        fmt_library = self.tree['fmt']
+        fmt_library = self.tree['_fmt']
 
         # Format variables
         fmt_library.PY_prefix = options.get('PY_prefix', 'PY_')
@@ -128,7 +128,7 @@ class Wrapp(util.WrapperMixin):
         # preprocess all classes first to allow them to reference each other
         for node in self.tree['classes']:
             typedef = util.Typedef.lookup(node['name'])
-            fmt = node['fmt']
+            fmt = node['_fmt']
             typedef.PY_format = 'O'
 
             # PyTypeObject for class
@@ -175,7 +175,7 @@ class Wrapp(util.WrapperMixin):
         typedef = util.Typedef.lookup(name)
 
         options = node['options']
-        fmt_class = node['fmt']
+        fmt_class = node['_fmt']
 
         util.eval_template(node, 'PY_type_filename')
 
@@ -213,7 +213,7 @@ class Wrapp(util.WrapperMixin):
         These functions are used by PyArg_ParseTupleAndKeywords
         and Py_BuildValue node is a C++ class.
         """
-        fmt = node['fmt']
+        fmt = node['_fmt']
 
         fmt.PY_capsule_name = wformat('PY_{cpp_class}_capsule_name', fmt)
 
@@ -357,7 +357,7 @@ return 1;""", fmt)
             cls_function = 'function'
         self.log.write("Python {0} {1[_decl]}\n".format(cls_function, node))
 
-        fmt_func = node['fmt']
+        fmt_func = node['_fmt']
         fmtargs = node.setdefault('_fmtargs', {})
         fmt = util.Options(fmt_func)
         fmt.doc_string = 'documentation'
@@ -770,7 +770,7 @@ return 1;""", fmt)
         self._pop_splicer('type')
 
     def write_extension_type(self, library, node):
-        fmt = node['fmt']
+        fmt = node['_fmt']
         fname = fmt.PY_type_filename
 
         output = []
@@ -821,7 +821,7 @@ return 1;""", fmt)
             if len(methods) < 2:
                 continue  # not overloaded
 
-            fmt_func = methods[0]['fmt']
+            fmt_func = methods[0]['_fmt']
             fmt = util.Options(fmt_func)
             fmt.function_suffix = ''
             fmt.doc_string = 'documentation'
@@ -849,7 +849,7 @@ return 1;""", fmt)
                 body.append(1)
                 append_format(body,
                               'rvobj = {PY_name_impl}(self, args, kwds);',
-                              overload['fmt'])
+                              overload['_fmt'])
                 body.append('if (!PyErr_Occurred()) {')
                 body.append(1)
                 body.append('return rvobj;')
@@ -876,7 +876,7 @@ return 1;""", fmt)
     def write_header(self, node):
         # node is library
         options = node['options']
-        fmt = node['fmt']
+        fmt = node['_fmt']
         fname = fmt.PY_header_filename
 
         output = []
@@ -934,7 +934,7 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
     def write_module(self, node):
         # node is library.
         options = node['options']
-        fmt = node['fmt']
+        fmt = node['_fmt']
         fname = fmt.PY_module_filename
 
         fmt.PY_library_doc = 'library documentation'
@@ -975,7 +975,7 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
 
     def write_helper(self):
         node = self.tree
-        fmt = node['fmt']
+        fmt = node['_fmt']
         output = []
         output.append(wformat('#include "{PY_header_filename}"', fmt))
         self.namespace(node, None, 'begin', output)

@@ -1,225 +1,6 @@
 {
     "F_module_dependencies": [], 
-    "classes": [
-        {
-            "cpp_header": "", 
-            "fmt": {
-                "CPP_this_call": "SH_this->", 
-                "C_header_filename": "wrapClass1.h", 
-                "C_impl_filename": "wrapClass1.cpp", 
-                "C_type_name": "TUT_class1", 
-                "F_derived_name": "class1", 
-                "LUA_class_reg": "l_Class1_Reg", 
-                "LUA_ctor_name": "Class1", 
-                "LUA_metadata": "Class1.metatable", 
-                "LUA_userdata_member": "self", 
-                "LUA_userdata_type": "l_Class1_Type", 
-                "LUA_userdata_var": "SH_this", 
-                "PY_PyObject": "PY_Class1", 
-                "PY_PyTypeObject": "PY_Class1_Type", 
-                "PY_capsule_name": "PY_Class1_capsule_name", 
-                "PY_from_object_func": "PP_Class1_from_Object", 
-                "PY_to_object_func": "PP_Class1_to_Object", 
-                "PY_type_filename": "pyClass1type.cpp", 
-                "class_lower": "class1", 
-                "class_prefix": "class1_", 
-                "class_upper": "CLASS1", 
-                "cpp_class": "Class1"
-            }, 
-            "methods": [
-                {
-                    "_decl": "Class1 * new() +constructor", 
-                    "_fmtargs": {}, 
-                    "_fmtresult": {
-                        "fmtc": {
-                            "cpp_rv_decl": "Class1 * SHT_rv", 
-                            "cpp_var": "SHT_rv"
-                        }
-                    }, 
-                    "_function_index": 0, 
-                    "_subprogram": "function", 
-                    "decl": "Class1 *new()  +constructor", 
-                    "fmt": {
-                        "C_call_code": "Class1 * SHT_rv = new Class1();", 
-                        "C_call_list": "", 
-                        "C_name": "TUT_class1_new", 
-                        "C_prototype": "", 
-                        "C_return_code": "return static_cast<TUT_class1 *>(static_cast<void *>(SHT_rv));", 
-                        "C_return_type": "TUT_class1 *", 
-                        "F_C_call": "c_class1_new", 
-                        "F_C_name": "c_class1_new", 
-                        "F_arg_c_call": "", 
-                        "F_arg_c_call_tab": "\t", 
-                        "F_arguments": "", 
-                        "F_call_code": "SHT_rv%voidptr = c_class1_new(\t)", 
-                        "F_name_function": "new", 
-                        "F_name_generic": "new", 
-                        "F_name_impl": "class1_new", 
-                        "F_result_clause": " result(SHT_rv)", 
-                        "F_subprogram": "function", 
-                        "LUA_name": "new", 
-                        "LUA_name_impl": "l_class1_new", 
-                        "c_const": "", 
-                        "function_name": "new", 
-                        "underscore_name": "new"
-                    }, 
-                    "options": {}, 
-                    "result": {
-                        "args": [], 
-                        "attrs": {
-                            "ptr": true
-                        }, 
-                        "const": false, 
-                        "fattrs": {
-                            "constructor": true
-                        }, 
-                        "func_const": false, 
-                        "init": null, 
-                        "name": "new", 
-                        "type": "Class1"
-                    }
-                }, 
-                {
-                    "_decl": "void delete() +destructor", 
-                    "_fmtargs": {}, 
-                    "_function_index": 1, 
-                    "_subprogram": "subroutine", 
-                    "decl": "void delete()  +destructor", 
-                    "fmt": {
-                        "C_call_code": "delete SH_this;", 
-                        "C_call_list": "", 
-                        "C_name": "TUT_class1_delete", 
-                        "C_pre_call": "Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));", 
-                        "C_prototype": "TUT_class1 * self", 
-                        "C_return_code": "return;", 
-                        "C_return_type": "void", 
-                        "F_C_call": "c_class1_delete", 
-                        "F_C_name": "c_class1_delete", 
-                        "F_arg_c_call": "obj%voidptr", 
-                        "F_arg_c_call_tab": "\tobj%voidptr", 
-                        "F_arguments": "obj", 
-                        "F_call_code": "call c_class1_delete(\tobj%voidptr)", 
-                        "F_name_function": "delete", 
-                        "F_name_generic": "delete", 
-                        "F_name_impl": "class1_delete", 
-                        "F_subprogram": "subroutine", 
-                        "LUA_name": "delete", 
-                        "LUA_name_impl": "l_class1_delete", 
-                        "PY_name_impl": "PY_class1_delete", 
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "self", 
-                        "function_name": "delete", 
-                        "underscore_name": "delete"
-                    }, 
-                    "options": {}, 
-                    "result": {
-                        "args": [], 
-                        "attrs": {}, 
-                        "const": false, 
-                        "fattrs": {
-                            "destructor": true
-                        }, 
-                        "func_const": false, 
-                        "init": null, 
-                        "name": "delete", 
-                        "type": "void"
-                    }
-                }, 
-                {
-                    "_decl": "void Method1()", 
-                    "_fmtargs": {}, 
-                    "_function_index": 2, 
-                    "_subprogram": "subroutine", 
-                    "decl": "void Method1()", 
-                    "fmt": {
-                        "C_call_code": "SH_this->Method1();", 
-                        "C_call_list": "", 
-                        "C_name": "TUT_class1_method1", 
-                        "C_pre_call": "Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));", 
-                        "C_prototype": "TUT_class1 * self", 
-                        "C_return_code": "return;", 
-                        "C_return_type": "void", 
-                        "F_C_call": "c_class1_method1", 
-                        "F_C_name": "c_class1_method1", 
-                        "F_arg_c_call": "obj%voidptr", 
-                        "F_arg_c_call_tab": "\tobj%voidptr", 
-                        "F_arguments": "obj", 
-                        "F_call_code": "call c_class1_method1(\tobj%voidptr)", 
-                        "F_name_function": "method1", 
-                        "F_name_generic": "method1", 
-                        "F_name_impl": "class1_method1", 
-                        "F_subprogram": "subroutine", 
-                        "LUA_name": "Method1", 
-                        "LUA_name_impl": "l_class1_method1", 
-                        "PY_name_impl": "PY_class1_method1", 
-                        "c_const": "", 
-                        "c_ptr": " *", 
-                        "c_var": "self", 
-                        "function_name": "Method1", 
-                        "underscore_name": "method1"
-                    }, 
-                    "options": {}, 
-                    "result": {
-                        "args": [], 
-                        "attrs": {}, 
-                        "const": false, 
-                        "fattrs": {}, 
-                        "func_const": false, 
-                        "init": null, 
-                        "name": "Method1", 
-                        "type": "void"
-                    }
-                }
-            ], 
-            "name": "Class1", 
-            "options": {}
-        }
-    ], 
-    "copyright": [
-        "#######################################################################", 
-        "Copyright (c) 2017, Lawrence Livermore National Security, LLC.", 
-        "Produced at the Lawrence Livermore National Laboratory", 
-        null, 
-        "LLNL-CODE-738041.", 
-        "All rights reserved.", 
-        null, 
-        "This file is part of Shroud.  For details, see", 
-        "https://github.com/LLNL/shroud. Please also read shroud/LICENSE.", 
-        null, 
-        "Redistribution and use in source and binary forms, with or without", 
-        "modification, are permitted provided that the following conditions are", 
-        "met:", 
-        null, 
-        "* Redistributions of source code must retain the above copyright", 
-        "  notice, this list of conditions and the disclaimer below.", 
-        null, 
-        "* Redistributions in binary form must reproduce the above copyright", 
-        "  notice, this list of conditions and the disclaimer (as noted below)", 
-        "  in the documentation and/or other materials provided with the", 
-        "  distribution.", 
-        null, 
-        "* Neither the name of the LLNS/LLNL nor the names of its contributors", 
-        "  may be used to endorse or promote products derived from this", 
-        "  software without specific prior written permission.", 
-        null, 
-        "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS", 
-        "\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT", 
-        "LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR", 
-        "A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL LAWRENCE", 
-        "LIVERMORE NATIONAL SECURITY, LLC, THE U.S. DEPARTMENT OF ENERGY OR", 
-        "CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,", 
-        "EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,", 
-        "PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR", 
-        "PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF", 
-        "LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING", 
-        "NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS", 
-        "SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.", 
-        null, 
-        "#######################################################################"
-    ], 
-    "cpp_header": "tutorial.hpp", 
-    "fmt": {
+    "_fmt": {
         "BBB": "BBB", 
         "CPP_template": "", 
         "CPP_this": "SH_this", 
@@ -282,14 +63,229 @@
         "namespace_scope": "tutorial::", 
         "stdlib": "std::"
     }, 
+    "classes": [
+        {
+            "_fmt": {
+                "CPP_this_call": "SH_this->", 
+                "C_header_filename": "wrapClass1.h", 
+                "C_impl_filename": "wrapClass1.cpp", 
+                "C_type_name": "TUT_class1", 
+                "F_derived_name": "class1", 
+                "LUA_class_reg": "l_Class1_Reg", 
+                "LUA_ctor_name": "Class1", 
+                "LUA_metadata": "Class1.metatable", 
+                "LUA_userdata_member": "self", 
+                "LUA_userdata_type": "l_Class1_Type", 
+                "LUA_userdata_var": "SH_this", 
+                "PY_PyObject": "PY_Class1", 
+                "PY_PyTypeObject": "PY_Class1_Type", 
+                "PY_capsule_name": "PY_Class1_capsule_name", 
+                "PY_from_object_func": "PP_Class1_from_Object", 
+                "PY_to_object_func": "PP_Class1_to_Object", 
+                "PY_type_filename": "pyClass1type.cpp", 
+                "class_lower": "class1", 
+                "class_prefix": "class1_", 
+                "class_upper": "CLASS1", 
+                "cpp_class": "Class1"
+            }, 
+            "cpp_header": "", 
+            "methods": [
+                {
+                    "_decl": "Class1 * new() +constructor", 
+                    "_fmt": {
+                        "C_call_code": "Class1 * SHT_rv = new Class1();", 
+                        "C_call_list": "", 
+                        "C_name": "TUT_class1_new", 
+                        "C_prototype": "", 
+                        "C_return_code": "return static_cast<TUT_class1 *>(static_cast<void *>(SHT_rv));", 
+                        "C_return_type": "TUT_class1 *", 
+                        "F_C_call": "c_class1_new", 
+                        "F_C_name": "c_class1_new", 
+                        "F_arg_c_call": "", 
+                        "F_arg_c_call_tab": "\t", 
+                        "F_arguments": "", 
+                        "F_call_code": "SHT_rv%voidptr = c_class1_new(\t)", 
+                        "F_name_function": "new", 
+                        "F_name_generic": "new", 
+                        "F_name_impl": "class1_new", 
+                        "F_result_clause": " result(SHT_rv)", 
+                        "F_subprogram": "function", 
+                        "LUA_name": "new", 
+                        "LUA_name_impl": "l_class1_new", 
+                        "c_const": "", 
+                        "function_name": "new", 
+                        "underscore_name": "new"
+                    }, 
+                    "_fmtargs": {}, 
+                    "_fmtresult": {
+                        "fmtc": {
+                            "cpp_rv_decl": "Class1 * SHT_rv", 
+                            "cpp_var": "SHT_rv"
+                        }
+                    }, 
+                    "_function_index": 0, 
+                    "_subprogram": "function", 
+                    "decl": "Class1 *new()  +constructor", 
+                    "options": {}, 
+                    "result": {
+                        "args": [], 
+                        "attrs": {
+                            "ptr": true
+                        }, 
+                        "const": false, 
+                        "fattrs": {
+                            "constructor": true
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "new", 
+                        "type": "Class1"
+                    }
+                }, 
+                {
+                    "_decl": "void delete() +destructor", 
+                    "_fmt": {
+                        "C_call_code": "delete SH_this;", 
+                        "C_call_list": "", 
+                        "C_name": "TUT_class1_delete", 
+                        "C_pre_call": "Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));", 
+                        "C_prototype": "TUT_class1 * self", 
+                        "C_return_code": "return;", 
+                        "C_return_type": "void", 
+                        "F_C_call": "c_class1_delete", 
+                        "F_C_name": "c_class1_delete", 
+                        "F_arg_c_call": "obj%voidptr", 
+                        "F_arg_c_call_tab": "\tobj%voidptr", 
+                        "F_arguments": "obj", 
+                        "F_call_code": "call c_class1_delete(\tobj%voidptr)", 
+                        "F_name_function": "delete", 
+                        "F_name_generic": "delete", 
+                        "F_name_impl": "class1_delete", 
+                        "F_subprogram": "subroutine", 
+                        "LUA_name": "delete", 
+                        "LUA_name_impl": "l_class1_delete", 
+                        "PY_name_impl": "PY_class1_delete", 
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "self", 
+                        "function_name": "delete", 
+                        "underscore_name": "delete"
+                    }, 
+                    "_fmtargs": {}, 
+                    "_function_index": 1, 
+                    "_subprogram": "subroutine", 
+                    "decl": "void delete()  +destructor", 
+                    "options": {}, 
+                    "result": {
+                        "args": [], 
+                        "attrs": {}, 
+                        "const": false, 
+                        "fattrs": {
+                            "destructor": true
+                        }, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "delete", 
+                        "type": "void"
+                    }
+                }, 
+                {
+                    "_decl": "void Method1()", 
+                    "_fmt": {
+                        "C_call_code": "SH_this->Method1();", 
+                        "C_call_list": "", 
+                        "C_name": "TUT_class1_method1", 
+                        "C_pre_call": "Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));", 
+                        "C_prototype": "TUT_class1 * self", 
+                        "C_return_code": "return;", 
+                        "C_return_type": "void", 
+                        "F_C_call": "c_class1_method1", 
+                        "F_C_name": "c_class1_method1", 
+                        "F_arg_c_call": "obj%voidptr", 
+                        "F_arg_c_call_tab": "\tobj%voidptr", 
+                        "F_arguments": "obj", 
+                        "F_call_code": "call c_class1_method1(\tobj%voidptr)", 
+                        "F_name_function": "method1", 
+                        "F_name_generic": "method1", 
+                        "F_name_impl": "class1_method1", 
+                        "F_subprogram": "subroutine", 
+                        "LUA_name": "Method1", 
+                        "LUA_name_impl": "l_class1_method1", 
+                        "PY_name_impl": "PY_class1_method1", 
+                        "c_const": "", 
+                        "c_ptr": " *", 
+                        "c_var": "self", 
+                        "function_name": "Method1", 
+                        "underscore_name": "method1"
+                    }, 
+                    "_fmtargs": {}, 
+                    "_function_index": 2, 
+                    "_subprogram": "subroutine", 
+                    "decl": "void Method1()", 
+                    "options": {}, 
+                    "result": {
+                        "args": [], 
+                        "attrs": {}, 
+                        "const": false, 
+                        "fattrs": {}, 
+                        "func_const": false, 
+                        "init": null, 
+                        "name": "Method1", 
+                        "type": "void"
+                    }
+                }
+            ], 
+            "name": "Class1", 
+            "options": {}
+        }
+    ], 
+    "copyright": [
+        "#######################################################################", 
+        "Copyright (c) 2017, Lawrence Livermore National Security, LLC.", 
+        "Produced at the Lawrence Livermore National Laboratory", 
+        null, 
+        "LLNL-CODE-738041.", 
+        "All rights reserved.", 
+        null, 
+        "This file is part of Shroud.  For details, see", 
+        "https://github.com/LLNL/shroud. Please also read shroud/LICENSE.", 
+        null, 
+        "Redistribution and use in source and binary forms, with or without", 
+        "modification, are permitted provided that the following conditions are", 
+        "met:", 
+        null, 
+        "* Redistributions of source code must retain the above copyright", 
+        "  notice, this list of conditions and the disclaimer below.", 
+        null, 
+        "* Redistributions in binary form must reproduce the above copyright", 
+        "  notice, this list of conditions and the disclaimer (as noted below)", 
+        "  in the documentation and/or other materials provided with the", 
+        "  distribution.", 
+        null, 
+        "* Neither the name of the LLNS/LLNL nor the names of its contributors", 
+        "  may be used to endorse or promote products derived from this", 
+        "  software without specific prior written permission.", 
+        null, 
+        "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS", 
+        "\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT", 
+        "LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR", 
+        "A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL LAWRENCE", 
+        "LIVERMORE NATIONAL SECURITY, LLC, THE U.S. DEPARTMENT OF ENERGY OR", 
+        "CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,", 
+        "EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,", 
+        "PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR", 
+        "PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF", 
+        "LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING", 
+        "NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS", 
+        "SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.", 
+        null, 
+        "#######################################################################"
+    ], 
+    "cpp_header": "tutorial.hpp", 
     "functions": [
         {
             "_decl": "void Function1()", 
-            "_fmtargs": {}, 
-            "_function_index": 3, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function1()", 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "Function1();", 
                 "C_call_list": "", 
                 "C_name": "TUT_function1", 
@@ -313,6 +309,10 @@
                 "function_name": "Function1", 
                 "underscore_name": "function1"
             }, 
+            "_fmtargs": {}, 
+            "_function_index": 3, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function1()", 
             "options": {}, 
             "result": {
                 "args": [], 
@@ -327,6 +327,31 @@
         }, 
         {
             "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
+                "C_call_list": "arg1, arg2", 
+                "C_name": "TUT_function2", 
+                "C_prototype": "double arg1, int arg2", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "double", 
+                "F_C_call": "c_function2", 
+                "F_C_name": "function2", 
+                "F_arg_c_call": "arg1, arg2", 
+                "F_arg_c_call_tab": "\targ1\targ2", 
+                "F_arguments": "arg1, arg2", 
+                "F_call_code": "SHT_rv = c_function2(\targ1\targ2)", 
+                "F_name_function": "function2", 
+                "F_name_generic": "function2", 
+                "F_name_impl": "function2", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "LUA_name": "Function2", 
+                "LUA_name_impl": "l_function2", 
+                "PY_name_impl": "PY_function2", 
+                "c_const": "", 
+                "function_name": "Function2", 
+                "underscore_name": "function2"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -398,31 +423,6 @@
             "_function_index": 4, 
             "_subprogram": "function", 
             "decl": "double Function2(double arg1, int arg2)", 
-            "fmt": {
-                "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
-                "C_call_list": "arg1, arg2", 
-                "C_name": "TUT_function2", 
-                "C_prototype": "double arg1, int arg2", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "double", 
-                "F_C_call": "c_function2", 
-                "F_C_name": "function2", 
-                "F_arg_c_call": "arg1, arg2", 
-                "F_arg_c_call_tab": "\targ1\targ2", 
-                "F_arguments": "arg1, arg2", 
-                "F_call_code": "SHT_rv = c_function2(\targ1\targ2)", 
-                "F_name_function": "function2", 
-                "F_name_generic": "function2", 
-                "F_name_impl": "function2", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "LUA_name": "Function2", 
-                "LUA_name_impl": "l_function2", 
-                "PY_name_impl": "PY_function2", 
-                "c_const": "", 
-                "function_name": "Function2", 
-                "underscore_name": "function2"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -458,6 +458,27 @@
         }, 
         {
             "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
+            "_fmt": {
+                "C_call_code": "Sum(len, values, result);", 
+                "C_call_list": "len, values, result", 
+                "C_name": "TUT_sum", 
+                "C_prototype": "int len, int * values, int * result", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_sum", 
+                "F_C_name": "sum", 
+                "F_arg_c_call": "len, values, result", 
+                "F_arg_c_call_tab": "\tlen\tvalues\tresult", 
+                "F_arguments": "len, values, result", 
+                "F_call_code": "call c_sum(\tlen\tvalues\tresult)", 
+                "F_name_function": "sum", 
+                "F_name_generic": "sum", 
+                "F_name_impl": "sum", 
+                "F_subprogram": "subroutine", 
+                "c_const": "", 
+                "function_name": "Sum", 
+                "underscore_name": "sum"
+            }, 
             "_fmtargs": {
                 "len": {
                     "fmtc": {
@@ -502,27 +523,6 @@
             "_function_index": 5, 
             "_subprogram": "subroutine", 
             "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
-            "fmt": {
-                "C_call_code": "Sum(len, values, result);", 
-                "C_call_list": "len, values, result", 
-                "C_name": "TUT_sum", 
-                "C_prototype": "int len, int * values, int * result", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_sum", 
-                "F_C_name": "sum", 
-                "F_arg_c_call": "len, values, result", 
-                "F_arg_c_call_tab": "\tlen\tvalues\tresult", 
-                "F_arguments": "len, values, result", 
-                "F_call_code": "call c_sum(\tlen\tvalues\tresult)", 
-                "F_name_function": "sum", 
-                "F_name_generic": "sum", 
-                "F_name_impl": "sum", 
-                "F_subprogram": "subroutine", 
-                "c_const": "", 
-                "function_name": "Sum", 
-                "underscore_name": "sum"
-            }, 
             "options": {
                 "wrap_lua": false, 
                 "wrap_python": false
@@ -574,6 +574,31 @@
         }, 
         {
             "_decl": "bool Function3(bool arg +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "bool SHT_rv = Function3(arg);", 
+                "C_call_list": "arg", 
+                "C_name": "TUT_function3", 
+                "C_prototype": "bool arg", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "bool", 
+                "F_C_call": "c_function3", 
+                "F_C_name": "c_function3", 
+                "F_arg_c_call": "SH_arg", 
+                "F_arg_c_call_tab": "\tSH_arg", 
+                "F_arguments": "arg", 
+                "F_call_code": "SHT_rv = c_function3(\tSH_arg)", 
+                "F_name_function": "function3", 
+                "F_name_generic": "function3", 
+                "F_name_impl": "function3", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "LUA_name": "Function3", 
+                "LUA_name_impl": "l_function3", 
+                "PY_name_impl": "PY_function3", 
+                "c_const": "", 
+                "function_name": "Function3", 
+                "underscore_name": "function3"
+            }, 
             "_fmtargs": {
                 "arg": {
                     "fmtc": {
@@ -615,31 +640,6 @@
             "_function_index": 6, 
             "_subprogram": "function", 
             "decl": "bool Function3(bool arg)", 
-            "fmt": {
-                "C_call_code": "bool SHT_rv = Function3(arg);", 
-                "C_call_list": "arg", 
-                "C_name": "TUT_function3", 
-                "C_prototype": "bool arg", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "bool", 
-                "F_C_call": "c_function3", 
-                "F_C_name": "c_function3", 
-                "F_arg_c_call": "SH_arg", 
-                "F_arg_c_call_tab": "\tSH_arg", 
-                "F_arguments": "arg", 
-                "F_call_code": "SHT_rv = c_function3(\tSH_arg)", 
-                "F_name_function": "function3", 
-                "F_name_generic": "function3", 
-                "F_name_impl": "function3", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "LUA_name": "Function3", 
-                "LUA_name_impl": "l_function3", 
-                "PY_name_impl": "PY_function3", 
-                "c_const": "", 
-                "function_name": "Function3", 
-                "underscore_name": "function3"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -665,6 +665,27 @@
         }, 
         {
             "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
+            "_fmt": {
+                "C_call_code": "Function3b(arg1, arg2, arg3);", 
+                "C_call_list": "arg1, arg2, arg3", 
+                "C_name": "TUT_function3b", 
+                "C_prototype": "const bool arg1, bool * arg2, bool * arg3", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_function3b", 
+                "F_C_name": "c_function3b", 
+                "F_arg_c_call": "SH_arg1, SH_arg2, SH_arg3", 
+                "F_arg_c_call_tab": "\tSH_arg1\tSH_arg2\tSH_arg3", 
+                "F_arguments": "arg1, arg2, arg3", 
+                "F_call_code": "call c_function3b(\tSH_arg1\tSH_arg2\tSH_arg3)", 
+                "F_name_function": "function3b", 
+                "F_name_generic": "function3b", 
+                "F_name_impl": "function3b", 
+                "F_subprogram": "subroutine", 
+                "c_const": "", 
+                "function_name": "Function3b", 
+                "underscore_name": "function3b"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -709,27 +730,6 @@
             "_function_index": 7, 
             "_subprogram": "subroutine", 
             "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
-            "fmt": {
-                "C_call_code": "Function3b(arg1, arg2, arg3);", 
-                "C_call_list": "arg1, arg2, arg3", 
-                "C_name": "TUT_function3b", 
-                "C_prototype": "const bool arg1, bool * arg2, bool * arg3", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_function3b", 
-                "F_C_name": "c_function3b", 
-                "F_arg_c_call": "SH_arg1, SH_arg2, SH_arg3", 
-                "F_arg_c_call_tab": "\tSH_arg1\tSH_arg2\tSH_arg3", 
-                "F_arguments": "arg1, arg2, arg3", 
-                "F_call_code": "call c_function3b(\tSH_arg1\tSH_arg2\tSH_arg3)", 
-                "F_name_function": "function3b", 
-                "F_name_generic": "function3b", 
-                "F_name_impl": "function3b", 
-                "F_subprogram": "subroutine", 
-                "c_const": "", 
-                "function_name": "Function3b", 
-                "underscore_name": "function3b"
-            }, 
             "options": {
                 "wrap_lua": false, 
                 "wrap_python": false
@@ -781,6 +781,24 @@
         {
             "_PTR_F_C_index": 40, 
             "_decl": "const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
+            "_fmt": {
+                "F_C_call": "c_function4a_bufferify", 
+                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SHT_rv, len(SHT_rv, kind=C_INT)", 
+                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT)", 
+                "F_arguments": "arg1, arg2", 
+                "F_call_code": "call c_function4a_bufferify(\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT))", 
+                "F_name_function": "function4a", 
+                "F_name_generic": "function4a", 
+                "F_name_impl": "function4a", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "LUA_name": "Function4a", 
+                "LUA_name_impl": "l_function4a", 
+                "PY_name_impl": "PY_function4a", 
+                "c_var_len": "30", 
+                "function_name": "Function4a", 
+                "underscore_name": "function4a"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtl": {
@@ -824,24 +842,6 @@
             "_function_index": 8, 
             "_subprogram": "function", 
             "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
-            "fmt": {
-                "F_C_call": "c_function4a_bufferify", 
-                "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SHT_rv, len(SHT_rv, kind=C_INT)", 
-                "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT)", 
-                "F_arguments": "arg1, arg2", 
-                "F_call_code": "call c_function4a_bufferify(\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\tSHT_rv\tlen(SHT_rv, kind=C_INT))", 
-                "F_name_function": "function4a", 
-                "F_name_generic": "function4a", 
-                "F_name_impl": "function4a", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "LUA_name": "Function4a", 
-                "LUA_name_impl": "l_function4a", 
-                "PY_name_impl": "PY_function4a", 
-                "c_var_len": "30", 
-                "function_name": "Function4a", 
-                "underscore_name": "function4a"
-            }, 
             "options": {
                 "wrap_c": false
             }, 
@@ -885,6 +885,19 @@
             "_PTR_C_CPP_index": 8, 
             "_decl": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);", 
+                "C_call_list": "SH_arg1, SH_arg2", 
+                "C_name": "TUT_function4a_bufferify", 
+                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
+                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_function4a_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "SHF_rv": {
                     "fmtc": {
@@ -940,19 +953,6 @@
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
-            "fmt": {
-                "C_call_code": "const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);", 
-                "C_call_list": "SH_arg1, SH_arg2", 
-                "C_name": "TUT_function4a_bufferify", 
-                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
-                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_function4a_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1040,6 +1040,23 @@
         }, 
         {
             "_decl": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
+            "_fmt": {
+                "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
+                "C_call_list": "SH_arg1, SH_arg2", 
+                "C_name": "TUT_function4b", 
+                "C_pre_call": "const std::string SH_arg1(arg1);\nconst std::string SH_arg2(arg2);", 
+                "C_prototype": "const char * arg1, const char * arg2", 
+                "C_return_code": "return XSHT_rv;", 
+                "C_return_type": "const char *", 
+                "F_C_name": "c_function4b", 
+                "F_string_result_as_arg": "output", 
+                "LUA_name": "Function4b", 
+                "LUA_name_impl": "l_function4b", 
+                "PY_name_impl": "PY_function4b", 
+                "c_const": "const ", 
+                "function_name": "Function4b", 
+                "underscore_name": "function4b"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -1106,23 +1123,6 @@
             "_function_index": 9, 
             "_subprogram": "function", 
             "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
-            "fmt": {
-                "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
-                "C_call_list": "SH_arg1, SH_arg2", 
-                "C_name": "TUT_function4b", 
-                "C_pre_call": "const std::string SH_arg1(arg1);\nconst std::string SH_arg2(arg2);", 
-                "C_prototype": "const char * arg1, const char * arg2", 
-                "C_return_code": "return XSHT_rv;", 
-                "C_return_type": "const char *", 
-                "F_C_name": "c_function4b", 
-                "F_string_result_as_arg": "output", 
-                "LUA_name": "Function4b", 
-                "LUA_name_impl": "l_function4b", 
-                "PY_name_impl": "PY_function4b", 
-                "c_const": "const ", 
-                "function_name": "Function4b", 
-                "underscore_name": "function4b"
-            }, 
             "options": {
                 "F_string_result_as_arg": "output", 
                 "wrap_fortran": false
@@ -1167,6 +1167,19 @@
             "_PTR_C_CPP_index": 9, 
             "_decl": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
+                "C_call_list": "SH_arg1, SH_arg2", 
+                "C_name": "TUT_function4b_bufferify", 
+                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(output, ' ', Noutput);\n} else {\n  ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
+                "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
+                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * output, int Noutput", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_function4b_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -1222,19 +1235,6 @@
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
-            "fmt": {
-                "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
-                "C_call_list": "SH_arg1, SH_arg2", 
-                "C_name": "TUT_function4b_bufferify", 
-                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(output, ' ', Noutput);\n} else {\n  ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
-                "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
-                "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * output, int Noutput", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_function4b_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -1323,11 +1323,7 @@
             "_PTR_F_C_index": 41, 
             "_decl": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
-            "_function_index": 42, 
-            "_generated": "arg_to_buffer", 
-            "_subprogram": "subroutine", 
-            "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_function4b_bufferify", 
                 "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), output, len(output, kind=C_INT)", 
                 "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\targ2\tlen_trim(arg2, kind=C_INT)\toutput\tlen(output, kind=C_INT)", 
@@ -1339,6 +1335,10 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
             }, 
+            "_function_index": 42, 
+            "_generated": "arg_to_buffer", 
+            "_subprogram": "subroutine", 
+            "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -1424,24 +1424,7 @@
         }, 
         {
             "_decl": "double Function5()", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "cpp_rv_decl": "double SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 30, 
-            "_generated": "has_default_arg", 
-            "_overloaded": true, 
-            "_subprogram": "function", 
-            "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
-            "default_arg_suffix": [
-                "", 
-                "_arg1", 
-                "_arg1_arg2"
-            ], 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "double SHT_rv = Function5();", 
                 "C_call_list": "", 
                 "C_name": "TUT_function5", 
@@ -1462,6 +1445,23 @@
                 "c_const": "", 
                 "function_suffix": ""
             }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "double SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 30, 
+            "_generated": "has_default_arg", 
+            "_overloaded": true, 
+            "_subprogram": "function", 
+            "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
+            "default_arg_suffix": [
+                "", 
+                "_arg1", 
+                "_arg1_arg2"
+            ], 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -1481,6 +1481,27 @@
         }, 
         {
             "_decl": "double Function5(double arg1=3.1415 +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "double SHT_rv = Function5(arg1);", 
+                "C_call_list": "arg1", 
+                "C_name": "TUT_function5_arg1", 
+                "C_prototype": "double arg1", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "double", 
+                "F_C_call": "c_function5_arg1", 
+                "F_C_name": "c_function5_arg1", 
+                "F_arg_c_call": "arg1", 
+                "F_arg_c_call_tab": "\targ1", 
+                "F_arguments": "arg1", 
+                "F_call_code": "SHT_rv = c_function5_arg1(\targ1)", 
+                "F_name_function": "function5_arg1", 
+                "F_name_generic": "function5", 
+                "F_name_impl": "function5_arg1", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "c_const": "", 
+                "function_suffix": "_arg1"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -1512,27 +1533,6 @@
                 "_arg1", 
                 "_arg1_arg2"
             ], 
-            "fmt": {
-                "C_call_code": "double SHT_rv = Function5(arg1);", 
-                "C_call_list": "arg1", 
-                "C_name": "TUT_function5_arg1", 
-                "C_prototype": "double arg1", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "double", 
-                "F_C_call": "c_function5_arg1", 
-                "F_C_name": "c_function5_arg1", 
-                "F_arg_c_call": "arg1", 
-                "F_arg_c_call_tab": "\targ1", 
-                "F_arguments": "arg1", 
-                "F_call_code": "SHT_rv = c_function5_arg1(\targ1)", 
-                "F_name_function": "function5_arg1", 
-                "F_name_generic": "function5", 
-                "F_name_impl": "function5_arg1", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "c_const": "", 
-                "function_suffix": "_arg1"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -1567,6 +1567,32 @@
                 30, 
                 31
             ], 
+            "_fmt": {
+                "C_call_code": "double SHT_rv = Function5(arg1, arg2);", 
+                "C_call_list": "arg1, arg2", 
+                "C_name": "TUT_function5_arg1_arg2", 
+                "C_prototype": "double arg1, bool arg2", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "double", 
+                "F_C_call": "c_function5_arg1_arg2", 
+                "F_C_name": "c_function5_arg1_arg2", 
+                "F_arg_c_call": "arg1, SH_arg2", 
+                "F_arg_c_call_tab": "\targ1\tSH_arg2", 
+                "F_arguments": "arg1, arg2", 
+                "F_call_code": "SHT_rv = c_function5_arg1_arg2(\targ1\tSH_arg2)", 
+                "F_name_function": "function5_arg1_arg2", 
+                "F_name_generic": "function5", 
+                "F_name_impl": "function5_arg1_arg2", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "LUA_name": "Function5", 
+                "LUA_name_impl": "l_function5", 
+                "PY_name_impl": "PY_function5_arg1_arg2", 
+                "c_const": "", 
+                "function_name": "Function5", 
+                "function_suffix": "_arg1_arg2", 
+                "underscore_name": "function5"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -1649,32 +1675,6 @@
                 "_arg1", 
                 "_arg1_arg2"
             ], 
-            "fmt": {
-                "C_call_code": "double SHT_rv = Function5(arg1, arg2);", 
-                "C_call_list": "arg1, arg2", 
-                "C_name": "TUT_function5_arg1_arg2", 
-                "C_prototype": "double arg1, bool arg2", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "double", 
-                "F_C_call": "c_function5_arg1_arg2", 
-                "F_C_name": "c_function5_arg1_arg2", 
-                "F_arg_c_call": "arg1, SH_arg2", 
-                "F_arg_c_call_tab": "\targ1\tSH_arg2", 
-                "F_arguments": "arg1, arg2", 
-                "F_call_code": "SHT_rv = c_function5_arg1_arg2(\targ1\tSH_arg2)", 
-                "F_name_function": "function5_arg1_arg2", 
-                "F_name_generic": "function5", 
-                "F_name_impl": "function5_arg1_arg2", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "LUA_name": "Function5", 
-                "LUA_name_impl": "l_function5", 
-                "PY_name_impl": "PY_function5_arg1_arg2", 
-                "c_const": "", 
-                "function_name": "Function5", 
-                "function_suffix": "_arg1_arg2", 
-                "underscore_name": "function5"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -1715,6 +1715,32 @@
                 12
             ], 
             "_decl": "void Function6(const std::string & name +intent(in))", 
+            "_fmt": {
+                "C_call_code": "Function6(SH_name);", 
+                "C_call_list": "SH_name", 
+                "C_name": "TUT_function6_from_name", 
+                "C_pre_call": "const std::string SH_name(name);", 
+                "C_prototype": "const char * name", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_function6_from_name_bufferify", 
+                "F_C_name": "c_function6_from_name", 
+                "F_arg_c_call": "name, len_trim(name, kind=C_INT)", 
+                "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)", 
+                "F_arguments": "name", 
+                "F_call_code": "call c_function6_from_name_bufferify(\tname\tlen_trim(name, kind=C_INT))", 
+                "F_name_function": "function6_from_name", 
+                "F_name_generic": "function6", 
+                "F_name_impl": "function6_from_name", 
+                "F_subprogram": "subroutine", 
+                "LUA_name": "Function6", 
+                "LUA_name_impl": "l_function6", 
+                "PY_name_impl": "PY_function6_from_name", 
+                "c_const": "", 
+                "function_name": "Function6", 
+                "function_suffix": "_from_name", 
+                "underscore_name": "function6"
+            }, 
             "_fmtargs": {
                 "name": {
                     "fmtc": {
@@ -1747,32 +1773,6 @@
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function6(const std::string& name)", 
-            "fmt": {
-                "C_call_code": "Function6(SH_name);", 
-                "C_call_list": "SH_name", 
-                "C_name": "TUT_function6_from_name", 
-                "C_pre_call": "const std::string SH_name(name);", 
-                "C_prototype": "const char * name", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_function6_from_name_bufferify", 
-                "F_C_name": "c_function6_from_name", 
-                "F_arg_c_call": "name, len_trim(name, kind=C_INT)", 
-                "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)", 
-                "F_arguments": "name", 
-                "F_call_code": "call c_function6_from_name_bufferify(\tname\tlen_trim(name, kind=C_INT))", 
-                "F_name_function": "function6_from_name", 
-                "F_name_generic": "function6", 
-                "F_name_impl": "function6_from_name", 
-                "F_subprogram": "subroutine", 
-                "LUA_name": "Function6", 
-                "LUA_name_impl": "l_function6", 
-                "PY_name_impl": "PY_function6_from_name", 
-                "c_const": "", 
-                "function_name": "Function6", 
-                "function_suffix": "_from_name", 
-                "underscore_name": "function6"
-            }, 
             "function_suffix": "_from_name", 
             "options": {}, 
             "result": {
@@ -1806,6 +1806,18 @@
             ], 
             "_decl": "void Function6(const std::string & name +intent(in)+len_trim(Lname))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "Function6(SH_name);", 
+                "C_call_list": "SH_name", 
+                "C_name": "TUT_function6_from_name_bufferify", 
+                "C_pre_call": "const std::string SH_name(name, Lname);", 
+                "C_prototype": "const char * name, int Lname", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_function6_from_name_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_from_name_bufferify"
+            }, 
             "_fmtargs": {
                 "name": {
                     "fmtc": {
@@ -1827,18 +1839,6 @@
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function6(const std::string& name)", 
-            "fmt": {
-                "C_call_code": "Function6(SH_name);", 
-                "C_call_list": "SH_name", 
-                "C_name": "TUT_function6_from_name_bufferify", 
-                "C_pre_call": "const std::string SH_name(name, Lname);", 
-                "C_prototype": "const char * name, int Lname", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_function6_from_name_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_from_name_bufferify"
-            }, 
             "function_suffix": "_from_name", 
             "options": {
                 "wrap_c": true, 
@@ -1876,6 +1876,29 @@
                 12
             ], 
             "_decl": "void Function6(int indx +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "Function6(indx);", 
+                "C_call_list": "indx", 
+                "C_name": "TUT_function6_from_index", 
+                "C_prototype": "int indx", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_function6_from_index", 
+                "F_C_name": "c_function6_from_index", 
+                "F_arg_c_call": "indx", 
+                "F_arg_c_call_tab": "\tindx", 
+                "F_arguments": "indx", 
+                "F_call_code": "call c_function6_from_index(\tindx)", 
+                "F_name_function": "function6_from_index", 
+                "F_name_generic": "function6", 
+                "F_name_impl": "function6_from_index", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_function6_from_index", 
+                "c_const": "", 
+                "function_name": "Function6", 
+                "function_suffix": "_from_index", 
+                "underscore_name": "function6"
+            }, 
             "_fmtargs": {
                 "indx": {
                     "fmtc": {
@@ -1912,29 +1935,6 @@
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function6(int indx)", 
-            "fmt": {
-                "C_call_code": "Function6(indx);", 
-                "C_call_list": "indx", 
-                "C_name": "TUT_function6_from_index", 
-                "C_prototype": "int indx", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_function6_from_index", 
-                "F_C_name": "c_function6_from_index", 
-                "F_arg_c_call": "indx", 
-                "F_arg_c_call_tab": "\tindx", 
-                "F_arguments": "indx", 
-                "F_call_code": "call c_function6_from_index(\tindx)", 
-                "F_name_function": "function6_from_index", 
-                "F_name_generic": "function6", 
-                "F_name_impl": "function6_from_index", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_function6_from_index", 
-                "c_const": "", 
-                "function_name": "Function6", 
-                "function_suffix": "_from_index", 
-                "underscore_name": "function6"
-            }, 
             "function_suffix": "_from_index", 
             "options": {}, 
             "result": {
@@ -1961,6 +1961,10 @@
         }, 
         {
             "_decl": "void Function7(ArgType arg +intent(in)+value)", 
+            "_fmt": {
+                "function_name": "Function7", 
+                "underscore_name": "function7"
+            }, 
             "_function_index": 13, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -1971,10 +1975,6 @@
                 ]
             }, 
             "decl": "void Function7(ArgType arg)", 
-            "fmt": {
-                "function_name": "Function7", 
-                "underscore_name": "function7"
-            }, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": false, 
@@ -2005,27 +2005,7 @@
         }, 
         {
             "_decl": "void Function7(int arg +intent(in)+value)", 
-            "_fmtargs": {
-                "arg": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "arg", 
-                        "cpp_type": "int", 
-                        "cpp_var": "arg"
-                    }, 
-                    "fmtf": {
-                        "c_var": "arg", 
-                        "f_var": "arg"
-                    }
-                }
-            }, 
-            "_function_index": 32, 
-            "_generated": "cpp_template", 
-            "_overloaded": true, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function7(ArgType arg)", 
-            "fmt": {
+            "_fmt": {
                 "CPP_template": "<int>", 
                 "C_call_code": "Function7<int>(arg);", 
                 "C_call_list": "arg", 
@@ -2046,6 +2026,26 @@
                 "c_const": "", 
                 "function_suffix": "_int"
             }, 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "int", 
+                        "cpp_var": "arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }
+                }
+            }, 
+            "_function_index": 32, 
+            "_generated": "cpp_template", 
+            "_overloaded": true, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function7(ArgType arg)", 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -2076,27 +2076,7 @@
         }, 
         {
             "_decl": "void Function7(double arg +intent(in)+value)", 
-            "_fmtargs": {
-                "arg": {
-                    "fmtc": {
-                        "c_const": "", 
-                        "c_ptr": "", 
-                        "c_var": "arg", 
-                        "cpp_type": "double", 
-                        "cpp_var": "arg"
-                    }, 
-                    "fmtf": {
-                        "c_var": "arg", 
-                        "f_var": "arg"
-                    }
-                }
-            }, 
-            "_function_index": 33, 
-            "_generated": "cpp_template", 
-            "_overloaded": true, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function7(ArgType arg)", 
-            "fmt": {
+            "_fmt": {
                 "CPP_template": "<double>", 
                 "C_call_code": "Function7<double>(arg);", 
                 "C_call_list": "arg", 
@@ -2117,6 +2097,26 @@
                 "c_const": "", 
                 "function_suffix": "_double"
             }, 
+            "_fmtargs": {
+                "arg": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg", 
+                        "cpp_type": "double", 
+                        "cpp_var": "arg"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg", 
+                        "f_var": "arg"
+                    }
+                }
+            }, 
+            "_function_index": 33, 
+            "_generated": "cpp_template", 
+            "_overloaded": true, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function7(ArgType arg)", 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -2147,6 +2147,10 @@
         }, 
         {
             "_decl": "RetType Function8()", 
+            "_fmt": {
+                "function_name": "Function8", 
+                "underscore_name": "function8"
+            }, 
             "_function_index": 14, 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -2157,10 +2161,6 @@
                 ]
             }, 
             "decl": "RetType Function8()", 
-            "fmt": {
-                "function_name": "Function8", 
-                "underscore_name": "function8"
-            }, 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": false, 
@@ -2181,19 +2181,7 @@
         {
             "_CPP_return_templated": true, 
             "_decl": "int Function8()", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "cpp_rv_decl": "int SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 34, 
-            "_generated": "cpp_template", 
-            "_overloaded": true, 
-            "_subprogram": "function", 
-            "decl": "RetType Function8()", 
-            "fmt": {
+            "_fmt": {
                 "CPP_template": "<int>", 
                 "C_call_code": "int SHT_rv = Function8<int>();", 
                 "C_call_list": "", 
@@ -2215,6 +2203,18 @@
                 "c_const": "", 
                 "function_suffix": "_int"
             }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "int SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 34, 
+            "_generated": "cpp_template", 
+            "_overloaded": true, 
+            "_subprogram": "function", 
+            "decl": "RetType Function8()", 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -2235,19 +2235,7 @@
         {
             "_CPP_return_templated": true, 
             "_decl": "double Function8()", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "cpp_rv_decl": "double SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 35, 
-            "_generated": "cpp_template", 
-            "_overloaded": true, 
-            "_subprogram": "function", 
-            "decl": "RetType Function8()", 
-            "fmt": {
+            "_fmt": {
                 "CPP_template": "<double>", 
                 "C_call_code": "double SHT_rv = Function8<double>();", 
                 "C_call_list": "", 
@@ -2269,6 +2257,18 @@
                 "c_const": "", 
                 "function_suffix": "_double"
             }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "double SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 35, 
+            "_generated": "cpp_template", 
+            "_overloaded": true, 
+            "_subprogram": "function", 
+            "decl": "RetType Function8()", 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -2288,6 +2288,21 @@
         }, 
         {
             "_decl": "void Function9(double arg +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "Function9(arg);", 
+                "C_call_list": "arg", 
+                "C_name": "TUT_function9", 
+                "C_prototype": "double arg", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_function9", 
+                "LUA_name": "Function9", 
+                "LUA_name_impl": "l_function9", 
+                "PY_name_impl": "PY_function9", 
+                "c_const": "", 
+                "function_name": "Function9", 
+                "underscore_name": "function9"
+            }, 
             "_fmtargs": {
                 "arg": {
                     "fmtc": {
@@ -2324,21 +2339,6 @@
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function9(double arg)", 
-            "fmt": {
-                "C_call_code": "Function9(arg);", 
-                "C_call_list": "arg", 
-                "C_name": "TUT_function9", 
-                "C_prototype": "double arg", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_function9", 
-                "LUA_name": "Function9", 
-                "LUA_name_impl": "l_function9", 
-                "PY_name_impl": "PY_function9", 
-                "c_const": "", 
-                "function_name": "Function9", 
-                "underscore_name": "function9"
-            }, 
             "fortran_generic": {
                 "arg": [
                     "float", 
@@ -2373,12 +2373,7 @@
         {
             "_PTR_F_C_index": 15, 
             "_decl": "void Function9(float arg +intent(in)+value)", 
-            "_function_index": 52, 
-            "_generated": "fortran_generic", 
-            "_overloaded": true, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function9(double arg)", 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_function9", 
                 "F_arg_c_call": "real(arg, C_DOUBLE)", 
                 "F_arg_c_call_tab": "\treal(arg, C_DOUBLE)", 
@@ -2390,6 +2385,11 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_float"
             }, 
+            "_function_index": 52, 
+            "_generated": "fortran_generic", 
+            "_overloaded": true, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function9(double arg)", 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -2421,12 +2421,7 @@
         {
             "_PTR_F_C_index": 15, 
             "_decl": "void Function9(double arg +intent(in)+value)", 
-            "_function_index": 53, 
-            "_generated": "fortran_generic", 
-            "_overloaded": true, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function9(double arg)", 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_function9", 
                 "F_arg_c_call": "arg", 
                 "F_arg_c_call_tab": "\targ", 
@@ -2438,6 +2433,11 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_double"
             }, 
+            "_function_index": 53, 
+            "_generated": "fortran_generic", 
+            "_overloaded": true, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function9(double arg)", 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -2472,12 +2472,7 @@
                 17
             ], 
             "_decl": "void Function10()", 
-            "_fmtargs": {}, 
-            "_function_index": 16, 
-            "_overloaded": true, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function10()", 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "Function10();", 
                 "C_call_list": "", 
                 "C_name": "TUT_function10_0", 
@@ -2502,6 +2497,11 @@
                 "function_suffix": "_0", 
                 "underscore_name": "function10"
             }, 
+            "_fmtargs": {}, 
+            "_function_index": 16, 
+            "_overloaded": true, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function10()", 
             "options": {}, 
             "result": {
                 "args": [], 
@@ -2521,6 +2521,21 @@
                 17
             ], 
             "_decl": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "Function10(SH_name, arg2);", 
+                "C_call_list": "SH_name, arg2", 
+                "C_name": "TUT_function10_1", 
+                "C_pre_call": "const std::string SH_name(name);", 
+                "C_prototype": "const char * name, double arg2", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_function10_1", 
+                "PY_name_impl": "PY_function10_1", 
+                "c_const": "", 
+                "function_name": "Function10", 
+                "function_suffix": "_1", 
+                "underscore_name": "function10"
+            }, 
             "_fmtargs": {
                 "arg2": {
                     "fmtc": {
@@ -2579,21 +2594,6 @@
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function10(const std::string &name, double arg2)", 
-            "fmt": {
-                "C_call_code": "Function10(SH_name, arg2);", 
-                "C_call_list": "SH_name, arg2", 
-                "C_name": "TUT_function10_1", 
-                "C_pre_call": "const std::string SH_name(name);", 
-                "C_prototype": "const char * name, double arg2", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_function10_1", 
-                "PY_name_impl": "PY_function10_1", 
-                "c_const": "", 
-                "function_name": "Function10", 
-                "function_suffix": "_1", 
-                "underscore_name": "function10"
-            }, 
             "fortran_generic": {
                 "arg2": [
                     "float", 
@@ -2644,12 +2644,7 @@
                 17
             ], 
             "_decl": "void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)", 
-            "_function_index": 54, 
-            "_generated": "fortran_generic", 
-            "_overloaded": true, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function10(const std::string &name, double arg2)", 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_function10_1_bufferify", 
                 "F_arg_c_call": "name, len_trim(name, kind=C_INT), real(arg2, C_DOUBLE)", 
                 "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)\treal(arg2, C_DOUBLE)", 
@@ -2661,6 +2656,11 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_1_float"
             }, 
+            "_function_index": 54, 
+            "_generated": "fortran_generic", 
+            "_overloaded": true, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function10(const std::string &name, double arg2)", 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -2707,12 +2707,7 @@
                 17
             ], 
             "_decl": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
-            "_function_index": 55, 
-            "_generated": "fortran_generic", 
-            "_overloaded": true, 
-            "_subprogram": "subroutine", 
-            "decl": "void Function10(const std::string &name, double arg2)", 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_function10_1_bufferify", 
                 "F_arg_c_call": "name, len_trim(name, kind=C_INT), arg2", 
                 "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)\targ2", 
@@ -2724,6 +2719,11 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_1_double"
             }, 
+            "_function_index": 55, 
+            "_generated": "fortran_generic", 
+            "_overloaded": true, 
+            "_subprogram": "subroutine", 
+            "decl": "void Function10(const std::string &name, double arg2)", 
             "options": {
                 "wrap_c": false, 
                 "wrap_fortran": true, 
@@ -2771,6 +2771,18 @@
             ], 
             "_decl": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "Function10(SH_name, arg2);", 
+                "C_call_list": "SH_name, arg2", 
+                "C_name": "TUT_function10_1_bufferify", 
+                "C_pre_call": "const std::string SH_name(name, Lname);", 
+                "C_prototype": "const char * name, int Lname, double arg2", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_function10_1_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_1_bufferify"
+            }, 
             "_fmtargs": {
                 "arg2": {
                     "fmtc": {
@@ -2805,18 +2817,6 @@
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function10(const std::string &name, double arg2)", 
-            "fmt": {
-                "C_call_code": "Function10(SH_name, arg2);", 
-                "C_call_list": "SH_name, arg2", 
-                "C_name": "TUT_function10_1_bufferify", 
-                "C_pre_call": "const std::string SH_name(name, Lname);", 
-                "C_prototype": "const char * name, int Lname, double arg2", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_function10_1_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_1_bufferify"
-            }, 
             "fortran_generic": {
                 "arg2": [
                     "float", 
@@ -2869,6 +2869,27 @@
                 19
             ], 
             "_decl": "int overload1(int num +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "int SHT_rv = overload1(num);", 
+                "C_call_list": "num", 
+                "C_name": "TUT_overload1_num", 
+                "C_prototype": "int num", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "int", 
+                "F_C_call": "c_overload1_num", 
+                "F_C_name": "c_overload1_num", 
+                "F_arg_c_call": "num", 
+                "F_arg_c_call_tab": "\tnum", 
+                "F_arguments": "num", 
+                "F_call_code": "SHT_rv = c_overload1_num(\tnum)", 
+                "F_name_function": "overload1_num", 
+                "F_name_generic": "overload1", 
+                "F_name_impl": "overload1_num", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "c_const": "", 
+                "function_suffix": "_num"
+            }, 
             "_fmtargs": {
                 "num": {
                     "fmtc": {
@@ -2900,27 +2921,6 @@
                 "_num_offset", 
                 "_num_offset_stride"
             ], 
-            "fmt": {
-                "C_call_code": "int SHT_rv = overload1(num);", 
-                "C_call_list": "num", 
-                "C_name": "TUT_overload1_num", 
-                "C_prototype": "int num", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_call": "c_overload1_num", 
-                "F_C_name": "c_overload1_num", 
-                "F_arg_c_call": "num", 
-                "F_arg_c_call_tab": "\tnum", 
-                "F_arguments": "num", 
-                "F_call_code": "SHT_rv = c_overload1_num(\tnum)", 
-                "F_name_function": "overload1_num", 
-                "F_name_generic": "overload1", 
-                "F_name_impl": "overload1_num", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "c_const": "", 
-                "function_suffix": "_num"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -2955,6 +2955,27 @@
                 19
             ], 
             "_decl": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "int SHT_rv = overload1(num, offset);", 
+                "C_call_list": "num, offset", 
+                "C_name": "TUT_overload1_num_offset", 
+                "C_prototype": "int num, int offset", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "int", 
+                "F_C_call": "c_overload1_num_offset", 
+                "F_C_name": "c_overload1_num_offset", 
+                "F_arg_c_call": "num, offset", 
+                "F_arg_c_call_tab": "\tnum\toffset", 
+                "F_arguments": "num, offset", 
+                "F_call_code": "SHT_rv = c_overload1_num_offset(\tnum\toffset)", 
+                "F_name_function": "overload1_num_offset", 
+                "F_name_generic": "overload1", 
+                "F_name_impl": "overload1_num_offset", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "c_const": "", 
+                "function_suffix": "_num_offset"
+            }, 
             "_fmtargs": {
                 "num": {
                     "fmtc": {
@@ -2999,27 +3020,6 @@
                 "_num_offset", 
                 "_num_offset_stride"
             ], 
-            "fmt": {
-                "C_call_code": "int SHT_rv = overload1(num, offset);", 
-                "C_call_list": "num, offset", 
-                "C_name": "TUT_overload1_num_offset", 
-                "C_prototype": "int num, int offset", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_call": "c_overload1_num_offset", 
-                "F_C_name": "c_overload1_num_offset", 
-                "F_arg_c_call": "num, offset", 
-                "F_arg_c_call_tab": "\tnum\toffset", 
-                "F_arguments": "num, offset", 
-                "F_call_code": "SHT_rv = c_overload1_num_offset(\tnum\toffset)", 
-                "F_name_function": "overload1_num_offset", 
-                "F_name_generic": "overload1", 
-                "F_name_impl": "overload1_num_offset", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "c_const": "", 
-                "function_suffix": "_num_offset"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -3068,6 +3068,32 @@
                 36, 
                 37
             ], 
+            "_fmt": {
+                "C_call_code": "int SHT_rv = overload1(num, offset, stride);", 
+                "C_call_list": "num, offset, stride", 
+                "C_name": "TUT_overload1_num_offset_stride", 
+                "C_prototype": "int num, int offset, int stride", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "int", 
+                "F_C_call": "c_overload1_num_offset_stride", 
+                "F_C_name": "c_overload1_num_offset_stride", 
+                "F_arg_c_call": "num, offset, stride", 
+                "F_arg_c_call_tab": "\tnum\toffset\tstride", 
+                "F_arguments": "num, offset, stride", 
+                "F_call_code": "SHT_rv = c_overload1_num_offset_stride(\tnum\toffset\tstride)", 
+                "F_name_function": "overload1_num_offset_stride", 
+                "F_name_generic": "overload1", 
+                "F_name_impl": "overload1_num_offset_stride", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "LUA_name": "overload1", 
+                "LUA_name_impl": "l_overload1", 
+                "PY_name_impl": "PY_overload1_num_offset_stride", 
+                "c_const": "", 
+                "function_name": "overload1", 
+                "function_suffix": "_num_offset_stride", 
+                "underscore_name": "overload1"
+            }, 
             "_fmtargs": {
                 "num": {
                     "fmtc": {
@@ -3180,32 +3206,6 @@
                 "_num_offset", 
                 "_num_offset_stride"
             ], 
-            "fmt": {
-                "C_call_code": "int SHT_rv = overload1(num, offset, stride);", 
-                "C_call_list": "num, offset, stride", 
-                "C_name": "TUT_overload1_num_offset_stride", 
-                "C_prototype": "int num, int offset, int stride", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_call": "c_overload1_num_offset_stride", 
-                "F_C_name": "c_overload1_num_offset_stride", 
-                "F_arg_c_call": "num, offset, stride", 
-                "F_arg_c_call_tab": "\tnum\toffset\tstride", 
-                "F_arguments": "num, offset, stride", 
-                "F_call_code": "SHT_rv = c_overload1_num_offset_stride(\tnum\toffset\tstride)", 
-                "F_name_function": "overload1_num_offset_stride", 
-                "F_name_generic": "overload1", 
-                "F_name_impl": "overload1_num_offset_stride", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "LUA_name": "overload1", 
-                "LUA_name_impl": "l_overload1", 
-                "PY_name_impl": "PY_overload1_num_offset_stride", 
-                "c_const": "", 
-                "function_name": "overload1", 
-                "function_suffix": "_num_offset_stride", 
-                "underscore_name": "overload1"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -3255,6 +3255,27 @@
                 19
             ], 
             "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "int SHT_rv = overload1(type, num);", 
+                "C_call_list": "type, num", 
+                "C_name": "TUT_overload1_3", 
+                "C_prototype": "double type, int num", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "int", 
+                "F_C_call": "c_overload1_3", 
+                "F_C_name": "c_overload1_3", 
+                "F_arg_c_call": "type, num", 
+                "F_arg_c_call_tab": "\ttype\tnum", 
+                "F_arguments": "type, num", 
+                "F_call_code": "SHT_rv = c_overload1_3(\ttype\tnum)", 
+                "F_name_function": "overload1_3", 
+                "F_name_generic": "overload1", 
+                "F_name_impl": "overload1_3", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "c_const": "", 
+                "function_suffix": "_3"
+            }, 
             "_fmtargs": {
                 "num": {
                     "fmtc": {
@@ -3294,27 +3315,6 @@
             "_overloaded": true, 
             "_subprogram": "function", 
             "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
-            "fmt": {
-                "C_call_code": "int SHT_rv = overload1(type, num);", 
-                "C_call_list": "type, num", 
-                "C_name": "TUT_overload1_3", 
-                "C_prototype": "double type, int num", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_call": "c_overload1_3", 
-                "F_C_name": "c_overload1_3", 
-                "F_arg_c_call": "type, num", 
-                "F_arg_c_call_tab": "\ttype\tnum", 
-                "F_arguments": "type, num", 
-                "F_call_code": "SHT_rv = c_overload1_3(\ttype\tnum)", 
-                "F_name_function": "overload1_3", 
-                "F_name_generic": "overload1", 
-                "F_name_impl": "overload1_3", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "c_const": "", 
-                "function_suffix": "_3"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -3359,6 +3359,27 @@
                 19
             ], 
             "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "int SHT_rv = overload1(type, num, offset);", 
+                "C_call_list": "type, num, offset", 
+                "C_name": "TUT_overload1_4", 
+                "C_prototype": "double type, int num, int offset", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "int", 
+                "F_C_call": "c_overload1_4", 
+                "F_C_name": "c_overload1_4", 
+                "F_arg_c_call": "type, num, offset", 
+                "F_arg_c_call_tab": "\ttype\tnum\toffset", 
+                "F_arguments": "type, num, offset", 
+                "F_call_code": "SHT_rv = c_overload1_4(\ttype\tnum\toffset)", 
+                "F_name_function": "overload1_4", 
+                "F_name_generic": "overload1", 
+                "F_name_impl": "overload1_4", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "c_const": "", 
+                "function_suffix": "_4"
+            }, 
             "_fmtargs": {
                 "num": {
                     "fmtc": {
@@ -3411,27 +3432,6 @@
             "_overloaded": true, 
             "_subprogram": "function", 
             "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
-            "fmt": {
-                "C_call_code": "int SHT_rv = overload1(type, num, offset);", 
-                "C_call_list": "type, num, offset", 
-                "C_name": "TUT_overload1_4", 
-                "C_prototype": "double type, int num, int offset", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_call": "c_overload1_4", 
-                "F_C_name": "c_overload1_4", 
-                "F_arg_c_call": "type, num, offset", 
-                "F_arg_c_call_tab": "\ttype\tnum\toffset", 
-                "F_arguments": "type, num, offset", 
-                "F_call_code": "SHT_rv = c_overload1_4(\ttype\tnum\toffset)", 
-                "F_name_function": "overload1_4", 
-                "F_name_generic": "overload1", 
-                "F_name_impl": "overload1_4", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "c_const": "", 
-                "function_suffix": "_4"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": true, 
@@ -3490,6 +3490,30 @@
                 38, 
                 39
             ], 
+            "_fmt": {
+                "C_call_code": "int SHT_rv = overload1(type, num, offset, stride);", 
+                "C_call_list": "type, num, offset, stride", 
+                "C_name": "TUT_overload1_5", 
+                "C_prototype": "double type, int num, int offset, int stride", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "int", 
+                "F_C_call": "c_overload1_5", 
+                "F_C_name": "c_overload1_5", 
+                "F_arg_c_call": "type, num, offset, stride", 
+                "F_arg_c_call_tab": "\ttype\tnum\toffset\tstride", 
+                "F_arguments": "type, num, offset, stride", 
+                "F_call_code": "SHT_rv = c_overload1_5(\ttype\tnum\toffset\tstride)", 
+                "F_name_function": "overload1_5", 
+                "F_name_generic": "overload1", 
+                "F_name_impl": "overload1_5", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "PY_name_impl": "PY_overload1_5", 
+                "c_const": "", 
+                "function_name": "overload1", 
+                "function_suffix": "_5", 
+                "underscore_name": "overload1"
+            }, 
             "_fmtargs": {
                 "num": {
                     "fmtc": {
@@ -3627,30 +3651,6 @@
             "_overloaded": true, 
             "_subprogram": "function", 
             "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
-            "fmt": {
-                "C_call_code": "int SHT_rv = overload1(type, num, offset, stride);", 
-                "C_call_list": "type, num, offset, stride", 
-                "C_name": "TUT_overload1_5", 
-                "C_prototype": "double type, int num, int offset, int stride", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_call": "c_overload1_5", 
-                "F_C_name": "c_overload1_5", 
-                "F_arg_c_call": "type, num, offset, stride", 
-                "F_arg_c_call_tab": "\ttype\tnum\toffset\tstride", 
-                "F_arguments": "type, num, offset, stride", 
-                "F_call_code": "SHT_rv = c_overload1_5(\ttype\tnum\toffset\tstride)", 
-                "F_name_function": "overload1_5", 
-                "F_name_generic": "overload1", 
-                "F_name_impl": "overload1_5", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "PY_name_impl": "PY_overload1_5", 
-                "c_const": "", 
-                "function_name": "overload1", 
-                "function_suffix": "_5", 
-                "underscore_name": "overload1"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -3706,6 +3706,31 @@
         }, 
         {
             "_decl": "TypeID typefunc(TypeID arg +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "TypeID SHT_rv = typefunc(arg);", 
+                "C_call_list": "arg", 
+                "C_name": "TUT_typefunc", 
+                "C_prototype": "int arg", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "int", 
+                "F_C_call": "c_typefunc", 
+                "F_C_name": "typefunc", 
+                "F_arg_c_call": "arg", 
+                "F_arg_c_call_tab": "\targ", 
+                "F_arguments": "arg", 
+                "F_call_code": "SHT_rv = c_typefunc(\targ)", 
+                "F_name_function": "typefunc", 
+                "F_name_generic": "typefunc", 
+                "F_name_impl": "typefunc", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "LUA_name": "typefunc", 
+                "LUA_name_impl": "l_typefunc", 
+                "PY_name_impl": "PY_typefunc", 
+                "c_const": "", 
+                "function_name": "typefunc", 
+                "underscore_name": "typefunc"
+            }, 
             "_fmtargs": {
                 "arg": {
                     "fmtc": {
@@ -3747,31 +3772,6 @@
             "_function_index": 20, 
             "_subprogram": "function", 
             "decl": "TypeID typefunc(TypeID arg)", 
-            "fmt": {
-                "C_call_code": "TypeID SHT_rv = typefunc(arg);", 
-                "C_call_list": "arg", 
-                "C_name": "TUT_typefunc", 
-                "C_prototype": "int arg", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_call": "c_typefunc", 
-                "F_C_name": "typefunc", 
-                "F_arg_c_call": "arg", 
-                "F_arg_c_call_tab": "\targ", 
-                "F_arguments": "arg", 
-                "F_call_code": "SHT_rv = c_typefunc(\targ)", 
-                "F_name_function": "typefunc", 
-                "F_name_generic": "typefunc", 
-                "F_name_impl": "typefunc", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "LUA_name": "typefunc", 
-                "LUA_name_impl": "l_typefunc", 
-                "PY_name_impl": "PY_typefunc", 
-                "c_const": "", 
-                "function_name": "typefunc", 
-                "underscore_name": "typefunc"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -3797,6 +3797,31 @@
         }, 
         {
             "_decl": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));", 
+                "C_call_list": "static_cast<EnumTypeID>(arg)", 
+                "C_name": "TUT_enumfunc", 
+                "C_prototype": "int arg", 
+                "C_return_code": "return XSHT_rv;", 
+                "C_return_type": "int", 
+                "F_C_call": "c_enumfunc", 
+                "F_C_name": "enumfunc", 
+                "F_arg_c_call": "arg", 
+                "F_arg_c_call_tab": "\targ", 
+                "F_arguments": "arg", 
+                "F_call_code": "SHT_rv = c_enumfunc(\targ)", 
+                "F_name_function": "enumfunc", 
+                "F_name_generic": "enumfunc", 
+                "F_name_impl": "enumfunc", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "LUA_name": "enumfunc", 
+                "LUA_name_impl": "l_enumfunc", 
+                "PY_name_impl": "PY_enumfunc", 
+                "c_const": "", 
+                "function_name": "enumfunc", 
+                "underscore_name": "enumfunc"
+            }, 
             "_fmtargs": {
                 "arg": {
                     "fmtc": {
@@ -3841,31 +3866,6 @@
             "_function_index": 21, 
             "_subprogram": "function", 
             "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
-            "fmt": {
-                "C_call_code": "EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));", 
-                "C_call_list": "static_cast<EnumTypeID>(arg)", 
-                "C_name": "TUT_enumfunc", 
-                "C_prototype": "int arg", 
-                "C_return_code": "return XSHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_call": "c_enumfunc", 
-                "F_C_name": "enumfunc", 
-                "F_arg_c_call": "arg", 
-                "F_arg_c_call_tab": "\targ", 
-                "F_arguments": "arg", 
-                "F_call_code": "SHT_rv = c_enumfunc(\targ)", 
-                "F_name_function": "enumfunc", 
-                "F_name_generic": "enumfunc", 
-                "F_name_impl": "enumfunc", 
-                "F_result_clause": " result(SHT_rv)", 
-                "F_subprogram": "function", 
-                "LUA_name": "enumfunc", 
-                "LUA_name_impl": "l_enumfunc", 
-                "PY_name_impl": "PY_enumfunc", 
-                "c_const": "", 
-                "function_name": "enumfunc", 
-                "underscore_name": "enumfunc"
-            }, 
             "options": {}, 
             "result": {
                 "args": [
@@ -3891,6 +3891,28 @@
         }, 
         {
             "_decl": "void useclass(const Class1 * arg1 +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "useclass(static_cast<const Class1 *>(static_cast<const void *>(arg1)));", 
+                "C_call_list": "static_cast<const Class1 *>(static_cast<const void *>(arg1))", 
+                "C_name": "TUT_useclass", 
+                "C_prototype": "const TUT_class1 * arg1", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "c_useclass", 
+                "F_C_name": "c_useclass", 
+                "F_arg_c_call": "arg1%get_instance()", 
+                "F_arg_c_call_tab": "\targ1%get_instance()", 
+                "F_arguments": "arg1", 
+                "F_call_code": "call c_useclass(\targ1%get_instance())", 
+                "F_name_function": "useclass", 
+                "F_name_generic": "useclass", 
+                "F_name_impl": "useclass", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_useclass", 
+                "c_const": "", 
+                "function_name": "useclass", 
+                "underscore_name": "useclass"
+            }, 
             "_fmtargs": {
                 "arg1": {
                     "fmtc": {
@@ -3917,28 +3939,6 @@
             "_function_index": 22, 
             "_subprogram": "subroutine", 
             "decl": "void useclass(const Class1 *arg1)", 
-            "fmt": {
-                "C_call_code": "useclass(static_cast<const Class1 *>(static_cast<const void *>(arg1)));", 
-                "C_call_list": "static_cast<const Class1 *>(static_cast<const void *>(arg1))", 
-                "C_name": "TUT_useclass", 
-                "C_prototype": "const TUT_class1 * arg1", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_call": "c_useclass", 
-                "F_C_name": "c_useclass", 
-                "F_arg_c_call": "arg1%get_instance()", 
-                "F_arg_c_call_tab": "\targ1%get_instance()", 
-                "F_arguments": "arg1", 
-                "F_call_code": "call c_useclass(\targ1%get_instance())", 
-                "F_name_function": "useclass", 
-                "F_name_generic": "useclass", 
-                "F_name_impl": "useclass", 
-                "F_subprogram": "subroutine", 
-                "PY_name_impl": "PY_useclass", 
-                "c_const": "", 
-                "function_name": "useclass", 
-                "underscore_name": "useclass"
-            }, 
             "options": {
                 "wrap_lua": false
             }, 
@@ -3968,10 +3968,7 @@
         {
             "_PTR_F_C_index": 45, 
             "_decl": "int vector_sum(const std::vector & arg +dimension(:)+intent(in)+template(int))", 
-            "_function_index": 23, 
-            "_subprogram": "function", 
-            "decl": "int vector_sum(const std::vector<int> &arg)", 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_vector_sum_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
                 "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
@@ -3985,6 +3982,9 @@
                 "function_name": "vector_sum", 
                 "underscore_name": "vector_sum"
             }, 
+            "_function_index": 23, 
+            "_subprogram": "function", 
+            "decl": "int vector_sum(const std::vector<int> &arg)", 
             "options": {
                 "wrap_c": false, 
                 "wrap_lua": false, 
@@ -4019,6 +4019,18 @@
             "_PTR_C_CPP_index": 23, 
             "_decl": "int vector_sum(const std::vector & arg +dimension(:)+intent(in)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "int SHT_rv = vector_sum(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_sum_bufferify", 
+                "C_pre_call": "const std::vector<int> SH_arg(arg, arg + Sarg);", 
+                "C_prototype": "const int * arg, long Sarg", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "int", 
+                "F_C_name": "c_vector_sum_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "arg": {
                     "fmtc": {
@@ -4046,18 +4058,6 @@
             "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
             "decl": "int vector_sum(const std::vector<int> &arg)", 
-            "fmt": {
-                "C_call_code": "int SHT_rv = vector_sum(SH_arg);", 
-                "C_call_list": "SH_arg", 
-                "C_name": "TUT_vector_sum_bufferify", 
-                "C_pre_call": "const std::vector<int> SH_arg(arg, arg + Sarg);", 
-                "C_prototype": "const int * arg, long Sarg", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_name": "c_vector_sum_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -4093,10 +4093,7 @@
         {
             "_PTR_F_C_index": 46, 
             "_decl": "void vector_iota(std::vector & arg +dimension(:)+intent(out)+template(int))", 
-            "_function_index": 24, 
-            "_subprogram": "subroutine", 
-            "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_vector_iota_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
                 "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
@@ -4109,6 +4106,9 @@
                 "function_name": "vector_iota", 
                 "underscore_name": "vector_iota"
             }, 
+            "_function_index": 24, 
+            "_subprogram": "subroutine", 
+            "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
             "options": {
                 "wrap_c": false, 
                 "wrap_lua": false, 
@@ -4143,6 +4143,19 @@
             "_PTR_C_CPP_index": 24, 
             "_decl": "void vector_iota(std::vector & arg +dimension(:)+intent(out)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "vector_iota(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_iota_bufferify", 
+                "C_post_call": "{\n  std::vector<int>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  SHT_n = std::min(SH_arg.size(), SHT_n);\n  for(; SHT_i < SHT_n; SHT_i++) {\n    arg[SHT_i] = SH_arg[SHT_i];\n  }\n}", 
+                "C_pre_call": "std::vector<int> SH_arg(Sarg);", 
+                "C_prototype": "int * arg, long Sarg", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_vector_iota_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "arg": {
                     "fmtc": {
@@ -4165,19 +4178,6 @@
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
-            "fmt": {
-                "C_call_code": "vector_iota(SH_arg);", 
-                "C_call_list": "SH_arg", 
-                "C_name": "TUT_vector_iota_bufferify", 
-                "C_post_call": "{\n  std::vector<int>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  SHT_n = std::min(SH_arg.size(), SHT_n);\n  for(; SHT_i < SHT_n; SHT_i++) {\n    arg[SHT_i] = SH_arg[SHT_i];\n  }\n}", 
-                "C_pre_call": "std::vector<int> SH_arg(Sarg);", 
-                "C_prototype": "int * arg, long Sarg", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_vector_iota_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -4213,10 +4213,7 @@
         {
             "_PTR_F_C_index": 47, 
             "_decl": "void vector_increment(std::vector & arg +dimension(:)+intent(inout)+template(int))", 
-            "_function_index": 25, 
-            "_subprogram": "subroutine", 
-            "decl": "void vector_increment(std::vector<int> &arg)", 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_vector_increment_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
                 "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)", 
@@ -4229,6 +4226,9 @@
                 "function_name": "vector_increment", 
                 "underscore_name": "vector_increment"
             }, 
+            "_function_index": 25, 
+            "_subprogram": "subroutine", 
+            "decl": "void vector_increment(std::vector<int> &arg)", 
             "options": {
                 "wrap_c": false, 
                 "wrap_lua": false, 
@@ -4263,6 +4263,19 @@
             "_PTR_C_CPP_index": 25, 
             "_decl": "void vector_increment(std::vector & arg +dimension(:)+intent(inout)+size(Sarg)+template(int))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "vector_increment(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_increment_bufferify", 
+                "C_post_call": "{\n  std::vector<int>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  SHT_n = std::min(SH_arg.size(), SHT_n);\n  for(; SHT_i < SHT_n; SHT_i++) {\n      arg[SHT_i] = SH_arg[SHT_i];\n  }\n}", 
+                "C_pre_call": "std::vector<int> SH_arg(arg, arg + Sarg);", 
+                "C_prototype": "int * arg, long Sarg", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_vector_increment_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "arg": {
                     "fmtc": {
@@ -4285,19 +4298,6 @@
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "void vector_increment(std::vector<int> &arg)", 
-            "fmt": {
-                "C_call_code": "vector_increment(SH_arg);", 
-                "C_call_list": "SH_arg", 
-                "C_name": "TUT_vector_increment_bufferify", 
-                "C_post_call": "{\n  std::vector<int>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  SHT_n = std::min(SH_arg.size(), SHT_n);\n  for(; SHT_i < SHT_n; SHT_i++) {\n      arg[SHT_i] = SH_arg[SHT_i];\n  }\n}", 
-                "C_pre_call": "std::vector<int> SH_arg(arg, arg + Sarg);", 
-                "C_prototype": "int * arg, long Sarg", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_vector_increment_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 
@@ -4333,14 +4333,7 @@
         {
             "_PTR_F_C_index": 48, 
             "_decl": "int vector_string_count(const std::vector & arg +dimension(:)+intent(in)+template(std::string))", 
-            "_function_index": 26, 
-            "_subprogram": "function", 
-            "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
-            "doxygen": {
-                "brief": "count number of underscore in vector of strings", 
-                "decription": "The input will be copied in order to create the C++ argument\n"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_vector_string_count_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
                 "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
@@ -4353,6 +4346,13 @@
                 "F_subprogram": "function", 
                 "function_name": "vector_string_count", 
                 "underscore_name": "vector_string_count"
+            }, 
+            "_function_index": 26, 
+            "_subprogram": "function", 
+            "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
+            "doxygen": {
+                "brief": "count number of underscore in vector of strings", 
+                "decription": "The input will be copied in order to create the C++ argument\n"
             }, 
             "options": {
                 "wrap_c": false, 
@@ -4388,6 +4388,18 @@
             "_PTR_C_CPP_index": 26, 
             "_decl": "int vector_string_count(const std::vector & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg)+template(std::string))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "int SHT_rv = vector_string_count(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_string_count_bufferify", 
+                "C_pre_call": "std::vector<std::string> SH_arg;\n{\n  const char * BBB = arg;\n  std::vector<std::string>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  for(; SHT_i < SHT_n; SHT_i++) {\n    SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n    BBB += Narg;\n  }\n}", 
+                "C_prototype": "const char * arg, long Sarg, int Narg", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "int", 
+                "F_C_name": "c_vector_string_count_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "arg": {
                     "fmtc": {
@@ -4419,18 +4431,6 @@
             "doxygen": {
                 "brief": "count number of underscore in vector of strings", 
                 "decription": "The input will be copied in order to create the C++ argument\n"
-            }, 
-            "fmt": {
-                "C_call_code": "int SHT_rv = vector_string_count(SH_arg);", 
-                "C_call_list": "SH_arg", 
-                "C_name": "TUT_vector_string_count_bufferify", 
-                "C_pre_call": "std::vector<std::string> SH_arg;\n{\n  const char * BBB = arg;\n  std::vector<std::string>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  for(; SHT_i < SHT_n; SHT_i++) {\n    SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n    BBB += Narg;\n  }\n}", 
-                "C_prototype": "const char * arg, long Sarg, int Narg", 
-                "C_return_code": "return SHT_rv;", 
-                "C_return_type": "int", 
-                "F_C_name": "c_vector_string_count_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -4470,14 +4470,7 @@
             "C_return_type": "int", 
             "_PTR_F_C_index": 49, 
             "_decl": "void vector_string_fill(std::vector & arg +dimension(:)+intent(out)+template(std::string))", 
-            "_function_index": 27, 
-            "_subprogram": "subroutine", 
-            "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
-            "doxygen": {
-                "brief": "Fill in arg with some animal names", 
-                "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
-            }, 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_vector_string_fill_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
                 "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
@@ -4490,6 +4483,13 @@
                 "F_subprogram": "function", 
                 "function_name": "vector_string_fill", 
                 "underscore_name": "vector_string_fill"
+            }, 
+            "_function_index": 27, 
+            "_subprogram": "subroutine", 
+            "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
+            "doxygen": {
+                "brief": "Fill in arg with some animal names", 
+                "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
             }, 
             "options": {
                 "wrap_c": false, 
@@ -4527,6 +4527,19 @@
             "_PTR_C_CPP_index": 27, 
             "_decl": "void vector_string_fill(std::vector & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg)+template(std::string))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "vector_string_fill(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_string_fill_bufferify", 
+                "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  SHT_n = std::min(SH_arg.size(),SHT_n);\n  for(; SHT_i < SHT_n; SHT_i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());\n    BBB += Narg;\n  }\n}", 
+                "C_pre_call": "std::vector<std::string> SH_arg;", 
+                "C_prototype": "char * arg, long Sarg, int Narg", 
+                "C_return_code": "return SH_arg.size();", 
+                "C_return_type": "int", 
+                "F_C_name": "c_vector_string_fill_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "arg": {
                     "fmtc": {
@@ -4553,19 +4566,6 @@
             "doxygen": {
                 "brief": "Fill in arg with some animal names", 
                 "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
-            }, 
-            "fmt": {
-                "C_call_code": "vector_string_fill(SH_arg);", 
-                "C_call_list": "SH_arg", 
-                "C_name": "TUT_vector_string_fill_bufferify", 
-                "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  SHT_n = std::min(SH_arg.size(),SHT_n);\n  for(; SHT_i < SHT_n; SHT_i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());\n    BBB += Narg;\n  }\n}", 
-                "C_pre_call": "std::vector<std::string> SH_arg;", 
-                "C_prototype": "char * arg, long Sarg, int Narg", 
-                "C_return_code": "return SH_arg.size();", 
-                "C_return_type": "int", 
-                "F_C_name": "c_vector_string_fill_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -4603,13 +4603,7 @@
         {
             "_PTR_F_C_index": 50, 
             "_decl": "void vector_string_append(std::vector & arg +dimension(:)+intent(inout)+template(std::string))", 
-            "_function_index": 28, 
-            "_subprogram": "subroutine", 
-            "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
-            "doxygen": {
-                "brief": "append '-like' to names."
-            }, 
-            "fmt": {
+            "_fmt": {
                 "F_C_call": "c_vector_string_append_bufferify", 
                 "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
                 "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
@@ -4621,6 +4615,12 @@
                 "F_subprogram": "subroutine", 
                 "function_name": "vector_string_append", 
                 "underscore_name": "vector_string_append"
+            }, 
+            "_function_index": 28, 
+            "_subprogram": "subroutine", 
+            "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
+            "doxygen": {
+                "brief": "append '-like' to names."
             }, 
             "options": {
                 "wrap_c": false, 
@@ -4656,6 +4656,19 @@
             "_PTR_C_CPP_index": 28, 
             "_decl": "void vector_string_append(std::vector & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg)+template(std::string))", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "vector_string_append(SH_arg);", 
+                "C_call_list": "SH_arg", 
+                "C_name": "TUT_vector_string_append_bufferify", 
+                "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  SHT_n = std::min(SH_arg.size(),SHT_n);\n  for(; SHT_i < SHT_n; SHT_i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());\n    BBB += Narg;\n  }\n}", 
+                "C_pre_call": "std::vector<std::string> SH_arg;\n{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  for(; SHT_i < SHT_n; SHT_i++) {\n    SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n    BBB += Narg;\n  }\n}", 
+                "C_prototype": "char * arg, long Sarg, int Narg", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_vector_string_append_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "arg": {
                     "fmtc": {
@@ -4681,19 +4694,6 @@
             "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
             "doxygen": {
                 "brief": "append '-like' to names."
-            }, 
-            "fmt": {
-                "C_call_code": "vector_string_append(SH_arg);", 
-                "C_call_list": "SH_arg", 
-                "C_name": "TUT_vector_string_append_bufferify", 
-                "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  SHT_n = std::min(SH_arg.size(),SHT_n);\n  for(; SHT_i < SHT_n; SHT_i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());\n    BBB += Narg;\n  }\n}", 
-                "C_pre_call": "std::vector<std::string> SH_arg;\n{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  for(; SHT_i < SHT_n; SHT_i++) {\n    SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n    BBB += Narg;\n  }\n}", 
-                "C_prototype": "char * arg, long Sarg, int Narg", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_vector_string_append_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
             }, 
             "options": {
                 "wrap_c": true, 
@@ -4730,20 +4730,7 @@
         }, 
         {
             "_decl": "const std::string & LastFunctionCalled() +pure", 
-            "_fmtargs": {}, 
-            "_fmtresult": {
-                "fmtc": {
-                    "c_rv_decl": "const char * XSHT_rv", 
-                    "c_val": "SHT_rv.c_str()", 
-                    "c_var": "XSHT_rv", 
-                    "cpp_rv_decl": "const std::string & SHT_rv", 
-                    "cpp_var": "SHT_rv"
-                }
-            }, 
-            "_function_index": 29, 
-            "_subprogram": "function", 
-            "decl": "const std::string& LastFunctionCalled() +pure", 
-            "fmt": {
+            "_fmt": {
                 "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 
                 "C_call_list": "", 
                 "C_name": "TUT_last_function_called", 
@@ -4769,6 +4756,19 @@
                 "function_name": "LastFunctionCalled", 
                 "underscore_name": "last_function_called"
             }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "c_rv_decl": "const char * XSHT_rv", 
+                    "c_val": "SHT_rv.c_str()", 
+                    "c_var": "XSHT_rv", 
+                    "cpp_rv_decl": "const std::string & SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 29, 
+            "_subprogram": "function", 
+            "decl": "const std::string& LastFunctionCalled() +pure", 
             "options": {}, 
             "result": {
                 "args": [], 
@@ -4789,6 +4789,18 @@
             "_PTR_C_CPP_index": 29, 
             "_decl": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
             "_error_pattern_suffix": "_as_buffer", 
+            "_fmt": {
+                "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 
+                "C_call_list": "", 
+                "C_name": "TUT_last_function_called_bufferify", 
+                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                "C_prototype": "char * SHF_rv, int NSHF_rv", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_name": "c_last_function_called_bufferify", 
+                "c_const": "", 
+                "function_suffix": "_bufferify"
+            }, 
             "_fmtargs": {
                 "SHF_rv": {
                     "fmtc": {
@@ -4812,18 +4824,6 @@
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "const std::string& LastFunctionCalled() +pure", 
-            "fmt": {
-                "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 
-                "C_call_list": "", 
-                "C_name": "TUT_last_function_called_bufferify", 
-                "C_post_call": "if (SHT_rv.empty()) {\n  std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n  ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                "C_prototype": "char * SHF_rv, int NSHF_rv", 
-                "C_return_code": "return;", 
-                "C_return_type": "void", 
-                "F_C_name": "c_last_function_called_bufferify", 
-                "c_const": "", 
-                "function_suffix": "_bufferify"
-            }, 
             "options": {
                 "wrap_c": true, 
                 "wrap_fortran": false, 

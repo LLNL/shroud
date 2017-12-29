@@ -1,7 +1,5 @@
 {
-    "classes": [], 
-    "cpp_header": "", 
-    "fmt": {
+    "_fmt": {
         "CPP_template": "", 
         "CPP_this": "SH_this", 
         "CPP_this_call": "", 
@@ -43,6 +41,8 @@
         "namespace_scope": "", 
         "stdlib": "std::"
     }, 
+    "classes": [], 
+    "cpp_header": "", 
     "functions": [], 
     "language": "c++", 
     "library": "default_library", 

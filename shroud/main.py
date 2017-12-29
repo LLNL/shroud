@@ -149,7 +149,7 @@ class Schema(object):
     def push_fmt(self, node):
         fmt = util.Options(self.fmt_stack[-1])
         self.fmt_stack.append(fmt)
-        node['fmt'] = fmt
+        node['_fmt'] = fmt
         return fmt
 
     def pop_fmt(self):
@@ -257,7 +257,7 @@ class Schema(object):
         self.options_stack = [def_options]
         node['options'] = def_options
 
-        fmt_library = node['fmt'] = util.Options(None)
+        fmt_library = node['_fmt'] = util.Options(None)
         fmt_library.library = node['library']
         fmt_library.library_lower = fmt_library.library.lower()
         fmt_library.library_upper = fmt_library.library.upper()
@@ -1100,7 +1100,7 @@ class GenFunctions(object):
         """
         ilist = self.function_index
         node['_function_index'] = len(ilist)
-#        node['fmt'].function_index = str(len(ilist)) # debugging
+#        node['_fmt'].function_index = str(len(ilist)) # debugging
         ilist.append(node)
 
     def define_function_suffix(self, functions):
@@ -1112,7 +1112,7 @@ class GenFunctions(object):
         cpp_overload = {}
         for function in functions:
             if 'function_suffix' in function:
-                function['fmt'].function_suffix = function['function_suffix']
+                function['_fmt'].function_suffix = function['function_suffix']
             self.append_function_index(function)
             cpp_overload. \
                 setdefault(declast.get_name(function['result']), []). \
@@ -1149,8 +1149,8 @@ class GenFunctions(object):
             if len(overloads) > 1:
                 for i, function in enumerate(overloads):
                     function['_overloaded'] = True
-                    if not function['fmt'].inlocal('function_suffix'):
-                        function['fmt'].function_suffix = '_{}'.format(i)
+                    if not function['_fmt'].inlocal('function_suffix'):
+                        function['_fmt'].function_suffix = '_{}'.format(i)
 
         # Create additional C bufferify functions.
         ordered3 = []
@@ -1187,7 +1187,7 @@ class GenFunctions(object):
                 self.append_function_index(new)
 
                 new['_generated'] = 'cpp_template'
-                fmt = new['fmt']
+                fmt = new['_fmt']
                 fmt.function_suffix = fmt.function_suffix + '_' + type
                 del new['cpp_template']
                 options = new['options']
@@ -1227,7 +1227,7 @@ class GenFunctions(object):
 
                 new['_generated'] = 'fortran_generic'
                 new['_PTR_F_C_index'] = node['_function_index']
-                fmt = new['fmt']
+                fmt = new['_fmt']
                 # XXX append to existing suffix
                 fmt.function_suffix = fmt.function_suffix + '_' + type
                 del new['fortran_generic']
@@ -1286,7 +1286,7 @@ class GenFunctions(object):
             options.wrap_fortran = True
             options.wrap_python = False
             options.wrap_lua = False
-            fmt = new['fmt']
+            fmt = new['_fmt']
             try:
                 fmt.function_suffix = default_arg_suffix[ndefault]
             except IndexError:
@@ -1302,7 +1302,7 @@ class GenFunctions(object):
         node['_nargs'] = (min_args, len(node['result']['args']))
         # The last name calls with all arguments (the original decl)
         try:
-            node['fmt'].function_suffix = default_arg_suffix[ndefault]
+            node['_fmt'].function_suffix = default_arg_suffix[ndefault]
         except IndexError:
             pass
 
@@ -1313,7 +1313,7 @@ class GenFunctions(object):
         will convert argument into a buffer and length.
         """
         options = node['options']
-        fmt = node['fmt']
+        fmt = node['_fmt']
 
         # If a C++ function returns a std::string instance,
         # the default wrapper will not compile since the wrapper
@@ -1385,7 +1385,7 @@ class GenFunctions(object):
 
         C_new['_generated'] = 'arg_to_buffer'
         C_new['_error_pattern_suffix'] = '_as_buffer'
-        fmt = C_new['fmt']
+        fmt = C_new['_fmt']
         fmt.function_suffix = fmt.function_suffix + options.C_bufferify_suffix
 
         options = C_new['options']
@@ -1475,7 +1475,7 @@ class GenFunctions(object):
             options.wrap_python = False
             options.wrap_lua = False
             # Do not add '_bufferify'
-            F_new['fmt'].function_suffix = node['fmt'].function_suffix
+            F_new['_fmt'].function_suffix = node['_fmt'].function_suffix
 
             # Do not wrap original function (does not have result argument)
             node['options'].wrap_fortran = False
@@ -1630,7 +1630,7 @@ class VerifyAttrs(object):
         # create typedef for each class before generating code
         # this allows classes to reference each other
         name = cls['name']
-        fmt_class = cls['fmt']
+        fmt_class = cls['_fmt']
         options = cls['options']
 
         typedef = util.Typedef.lookup(name)
@@ -1805,7 +1805,7 @@ class Namify(object):
                 handler(cls, func)
 
             options = cls['options']
-            fmt_class = cls['fmt']
+            fmt_class = cls['_fmt']
             if 'F_this' in options:
                 fmt_class.F_this = options.F_this
 
@@ -1816,7 +1816,7 @@ class Namify(object):
         options = node['options']
         if not options.wrap_c:
             return
-        fmt_func = node['fmt']
+        fmt_func = node['_fmt']
 
         util.eval_template(node, 'C_name')
         util.eval_template(node, 'F_C_name')
@@ -1831,7 +1831,7 @@ class Namify(object):
         options = node['options']
         if not options.wrap_fortran:
             return
-        fmt_func = node['fmt']
+        fmt_func = node['_fmt']
 
         util.eval_template(node, 'F_name_impl')
         util.eval_template(node, 'F_name_function')
@@ -1859,7 +1859,7 @@ class TypeOut(util.WrapperMixin):
         This file can be read by Shroud to share types.
         """
         util.eval_template(self.tree, 'YAML_type_filename')
-        fname = self.tree['fmt'].YAML_type_filename
+        fname = self.tree['_fmt'].YAML_type_filename
         output = [
             '# Types generated by Shroud for class {}'.format(
                 self.tree['library']),

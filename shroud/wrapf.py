@@ -213,7 +213,7 @@ class Wrapf(util.WrapperMixin):
 
     def wrap_library(self):
         options = self.tree['options']
-        fmt_library = self.tree['fmt']
+        fmt_library = self.tree['_fmt']
         fmt_library.F_result_clause = ''
         fmt_library.F_pure_clause = ''
         fmt_library.F_C_result_clause = ''
@@ -288,7 +288,7 @@ class Wrapf(util.WrapperMixin):
         unname = util.un_camel(name)
         typedef = util.Typedef.lookup(name)
 
-        fmt_class = node['fmt']
+        fmt_class = node['_fmt']
 
         fmt_class.F_derived_name = typedef.f_derived_type
 
@@ -556,7 +556,7 @@ class Wrapf(util.WrapperMixin):
         multiple Fortran wrappers.
         """
         options = node['options']
-        fmt_func = node['fmt']
+        fmt_func = node['_fmt']
         fmt = util.Options(fmt_func)
 
         result = node['result']
@@ -706,7 +706,7 @@ class Wrapf(util.WrapperMixin):
         Wrap implementation of Fortran function
         """
         options = node['options']
-        fmt_func = node['fmt']
+        fmt_func = node['_fmt']
 
         # Assume that the C function can be called directly.
         # If the wrapper does any work, then set need_wraper to True
@@ -726,7 +726,7 @@ class Wrapf(util.WrapperMixin):
 #        if len(node['args']) != len(C_node['args']):
 #            raise RuntimeError("Argument mismatch between Fortran and C functions")
 
-        fmt_func.F_C_call = C_node['fmt'].F_C_name
+        fmt_func.F_C_call = C_node['_fmt'].F_C_name
         fmtargs = C_node.setdefault('_fmtargs', {})
 
         # Fortran return type
@@ -1052,7 +1052,7 @@ class Wrapf(util.WrapperMixin):
         """
         node = cls or library
         options = node['options']
-        fmt_node = node['fmt']
+        fmt_node = node['_fmt']
         fname = fmt_node.F_impl_filename
         module_name = fmt_node.F_module_name
 

@@ -81,7 +81,7 @@ def eval_template(node, name, tname='', fmt=None):
     """fmt[name] = node[name] or option[name + tname + '_template']
     """
     if fmt is None:
-        fmt = node['fmt']
+        fmt = node['_fmt']
     if name in node:
         setattr(fmt, name, node[name])
     else:
@@ -731,7 +731,7 @@ def copy_function_node(node):
         new[field] = copy.deepcopy(node[field])
 
     # Add new Options in chain
-    for field in ['fmt', 'options']:
+    for field in ['_fmt', 'options']:
         new[field] = Options(node[field])
 
     return new
