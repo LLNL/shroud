@@ -224,7 +224,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         CPP_subprogram = node['_subprogram']
 
         # XXX       ast = node['_ast']
-        # XXX       result_type = declast.get_type(ast)
+        # XXX       result_type = ast.typename
         # XXX       result_is_ptr = declast.is_pointer(ast)
         # XXX       result_is_ref = declast.is_reference(ast)
 
@@ -258,7 +258,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             out_args = []
             found_default = False
             for arg in function['_ast'].params:
-                arg_typedef = util.Typedef.lookup(declast.get_type(arg))
+                arg_typedef = util.Typedef.lookup(arg.typename)
                 attrs = arg.attrs
                 if arg.init is not None:
                     all_calls.append(lua_function(
@@ -311,7 +311,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     fmt.nresults = call.nresults
                     checks = []
                     for iarg, arg in enumerate(call.inargs):
-                        arg_typedef = util.Typedef.lookup(declast.get_type(arg))
+                        arg_typedef = util.Typedef.lookup(arg.typename)
                         fmt.itype_var = itype_vars[iarg]
                         fmt.itype = arg_typedef.LUA_type
                         append_format(checks, '{itype_var} == {itype}', fmt)
@@ -437,7 +437,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         CPP_subprogram = node['_subprogram']
 
         ast = node['_ast']
-        result_type = declast.get_type(ast)
+        result_type = ast.typename
 
         if node.get('return_this', False):
             result_type = 'void'
@@ -506,7 +506,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             lua_pop = None
 
-            arg_typedef = util.Typedef.lookup(declast.get_type(arg))
+            arg_typedef = util.Typedef.lookup(arg.typename)
             fmt_arg.cpp_type = arg_typedef.cpp_type
             LUA_statements = arg_typedef.LUA_statements
             if attrs['intent'] in ['inout', 'in']:

@@ -261,7 +261,7 @@ def lookup_c_statements(arg):
     template specific c_statements.
     """
     attrs = arg.attrs
-    argtype = declast.get_type(arg)
+    argtype = arg.typename
     arg_typedef = Typedef.lookup(argtype)
 
     c_statements = arg_typedef.c_statements
@@ -344,7 +344,7 @@ class WrapperMixin(object):
 #        if lang not in [ 'c_type', 'cpp_type' ]:
 #            raise RuntimeError
         t = []
-        typedef = Typedef.lookup(declast.get_type(ast))
+        typedef = Typedef.lookup(ast.typename)
 
         if const is None:
             const = ast.const

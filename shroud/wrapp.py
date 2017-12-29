@@ -367,7 +367,7 @@ return 1;""", fmt)
         CPP_subprogram = node['_subprogram']
 
         ast = node['_ast']
-        result_type = declast.get_type(ast)
+        result_type = ast.typename
 
         if node.get('return_this', False):
             result_type = 'void'
@@ -444,7 +444,7 @@ return 1;""", fmt)
                     fmt_arg.c_ptr = ''
                 attrs = arg.attrs
 
-                arg_typedef = util.Typedef.lookup(declast.get_type(arg))
+                arg_typedef = util.Typedef.lookup(arg.typename)
                 fmt_arg.cpp_type = arg_typedef.cpp_type
                 py_statements = arg_typedef.py_statements
                 have_cpp_local_var = arg_typedef.cpp_local_var

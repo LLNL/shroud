@@ -552,6 +552,8 @@ class Declaration(Node):
     def set_type(self, typ):
         self.specifier[0] = typ
 
+    typename = property(get_type, set_type, None, "Declaration type")
+
     def is_pointer(self):
         """Return number of levels of pointers.
         """
@@ -696,7 +698,7 @@ class Declaration(Node):
         """
         if self.const:
             decl.append('const ')
-        decl.append(self.get_type())
+        decl.append(self.typename)
         if 'template' in self.attrs:
             decl.append('<{}>'.format(self.attrs['template']))
         decl.append(' ')
@@ -704,7 +706,7 @@ class Declaration(Node):
             if ptr.ptr:
                 decl.append(ptr.ptr)
         # XXX - deal with function pointers
-        decl.append(self.get_name())
+        decl.append(self.name)
         self.gen_attrs(self.attrs, decl)
         if self.init is not None:
             decl.append('=')
@@ -771,18 +773,6 @@ def create_this_arg(name, typ, const=True):
     return arg
     
 ##################################################
-
-def get_type(decl):
-    if isinstance(decl, Declaration):
-        return decl.get_type()
-    else:
-        return decl['type']
-
-def set_type(decl, typ):
-    if isinstance(decl, Declaration):
-        decl.set_type(typ)
-    else:
-        decl['type'] = typ
 
 def is_pointer(decl):
     if isinstance(decl, Declaration):

@@ -1197,12 +1197,12 @@ class GenFunctions(object):
                 options.wrap_lua = False
                 # Convert typename to type
                 fmt.CPP_template = '<{}>'.format(type)
-                if declast.get_type(new['_ast']) == typename:
-                    declast.set_type(new['_ast'], type)
+                if new['_ast'].typename == typename:
+                    new['_ast'].typename = type
                     new['_CPP_return_templated'] = True
                 for arg in new['_ast'].params:
-                    if declast.get_type(arg) == typename:
-                        declast.set_type(arg, type)
+                    if arg.typename == typename:
+                        arg.typename = type
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -1240,14 +1240,14 @@ class GenFunctions(object):
                 for arg in new['_ast'].params:
                     if arg.name == argname:
                         # Convert any typedef to native type with f_type
-                        argtype = declast.get_type(arg)
+                        argtype = arg.typename
                         typedef = util.Typedef.lookup(argtype)
                         typedef = util.Typedef.lookup(typedef.f_type)
                         if not typedef.f_cast:
                             raise RuntimeError(
                                 "unable to cast type {} in fortran_generic"
-                                .format(declast.get_type(arg)))
-                        declast.set_type(arg, type)
+                                .format(argtype))
+                        arg.typename = type
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -1320,7 +1320,7 @@ class GenFunctions(object):
         # will be declared as char. It will also want to return the
         # c_str of a stack variable. Warn and turn off the wrapper.
         ast = node['_ast']
-        result_type = declast.get_type(ast)
+        result_type = ast.typename
         result_typedef = util.Typedef.lookup(result_type)
         # wrapped classes have not been added yet.
         # Only care about string here.
@@ -1345,14 +1345,14 @@ class GenFunctions(object):
         # Is result or any argument a string?
         has_implied_arg = False
         for arg in ast.params:
-            argtype = declast.get_type(arg)
+            argtype = arg.typename
             typedef = util.Typedef.lookup(argtype)
             if typedef.base == 'string':
                 is_ptr = declast.is_indirect(arg)
                 if is_ptr:
                     has_implied_arg = True
                 else:
-                    declast.set_type(arg, 'char_scalar')
+                    arg.typename = 'char_scalar'
             elif typedef.base == 'vector':
                 has_implied_arg = True
 
@@ -1364,7 +1364,7 @@ class GenFunctions(object):
         elif result_typedef.base == 'string':
             if result_type == 'char' and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
-                declast.set_type(ast, 'char_scalar')
+                ast.typename = 'char_scalar'
             has_string_result = True
             result_as_arg = fmt.F_string_result_as_arg
             result_name = result_as_arg or fmt.C_string_result_as_arg
@@ -1398,7 +1398,7 @@ class GenFunctions(object):
         newargs = []
         for arg in C_new['_ast'].params:
             attrs = arg.attrs
-            argtype = declast.get_type(arg)
+            argtype = arg.typename
             arg_typedef = util.Typedef.lookup(argtype)
             if arg_typedef.base == 'vector':
                 # Do not wrap the orignal C function with vector argument.
@@ -1453,7 +1453,7 @@ class GenFunctions(object):
 
             # convert to subroutine
             C_new['_subprogram'] = 'subroutine'
-            declast.set_type(ast, 'void')
+            ast.typename = 'void'
             declast.set_indirection(ast, '')
             ast.const = False
 
@@ -1519,7 +1519,7 @@ class GenFunctions(object):
             # XXX - process templated types
             return
         ast = node['_ast']
-        rv_type = declast.get_type(ast)
+        rv_type = ast.typename
         typedef = util.Typedef.lookup(rv_type)
         if typedef is None:
             raise RuntimeError(
@@ -1529,7 +1529,7 @@ class GenFunctions(object):
         # XXX - make sure it exists
         used_types[rv_type] = result_typedef
         for arg in ast.params:
-            argtype = declast.get_type(arg)
+            argtype = arg.typename
             typedef = util.Typedef.lookup(argtype)
             if typedef is None:
                 raise RuntimeError("%s not defined" % argtype)
@@ -1568,7 +1568,7 @@ class GenFunctions(object):
         """
         if ast.const:
             decl.append('const ')
-        decl.append(declast.get_type(ast))
+        decl.append(ast.typename)
         decl.append(' ')
         if declast.is_pointer(ast):
             decl.append('* ')
@@ -1664,7 +1664,7 @@ class VerifyAttrs(object):
 
         # cache subprogram type
         ast = node['_ast']
-        result_type = declast.get_type(ast)
+        result_type = ast.typename
         result_is_ptr = declast.is_pointer(ast)
         #  'void'=subroutine   'void *'=function
         if result_type == 'void' and not result_is_ptr:
@@ -1675,7 +1675,7 @@ class VerifyAttrs(object):
         found_default = False
         for arg in ast.params:
             argname = arg.name
-            argtype = declast.get_type(arg)
+            argtype = arg.typename
             typedef = util.Typedef.lookup(argtype)
             if typedef is None:
                 # if the type does not exist, make sure it is defined by cpp_template

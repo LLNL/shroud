@@ -96,7 +96,7 @@ class Wrapc(util.WrapperMixin):
 #        if lang not in [ 'c_type', 'cpp_type' ]:
 #            raise RuntimeError
         t = []
-        typ = declast.get_type(ast)
+        typ = ast.typename
         typedef = util.Typedef.lookup(typ)
         attrs = ast.attrs
         if 'template' in attrs:
@@ -383,12 +383,12 @@ class Wrapc(util.WrapperMixin):
             if '_generated' in CPP_node:
                 generated.append(CPP_node['_generated'])
         CPP_result = CPP_node['_ast']
-        CPP_result_type = declast.get_type(CPP_result)
+        CPP_result_type = CPP_result.typename
         CPP_subprogram = CPP_node['_subprogram']
 
         # C return type
         ast = node['_ast']
-        result_type = declast.get_type(ast)
+        result_type = ast.typename
         subprogram = node['_subprogram']
         generator = node.get('_generated', '')
         intent_grp = ''
