@@ -50,6 +50,14 @@ import copy
 class CheckParse(unittest.TestCase):
     maxDiff = None
 
+    # types
+    def xtest_type_int(self):
+        r = declast.check_decl("int var1")
+
+        s = r.gen_decl()
+        self.assertEqual("int var1", s)
+
+
     # decl
     def test_decl01(self):
         """Simple declaration"""
@@ -65,11 +73,9 @@ class CheckParse(unittest.TestCase):
                 "name": "foo", 
                 "pointer": []
             }, 
-            "func_const": False, 
             "specifier": [
                 "void"
             ], 
-            "storage": []
         })
         self.assertEqual("foo", r.get_name())
 
@@ -89,11 +95,9 @@ class CheckParse(unittest.TestCase):
                 "name": "foo", 
                 "pointer": []
             }, 
-            "func_const": False, 
             "specifier": [
                 "void"
             ], 
-            "storage": []
         })
         self.assertEqual("foo", r.get_name())
 
@@ -117,7 +121,6 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "void"
             ], 
-            "storage": []
         })
         self.assertEqual("foo", r.get_name())
 
@@ -141,7 +144,6 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "void"
             ], 
-            "storage": []
         })
         self.assertEqual("foo", r.get_name())
 
@@ -161,11 +163,9 @@ class CheckParse(unittest.TestCase):
                         "name": "arg1", 
                         "pointer": []
                     }, 
-                    "func_const": False, 
                     "specifier": [
                         "int"
                     ], 
-                    "storage": []
                 }
             ], 
             "attrs": {}, 
@@ -179,7 +179,6 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "void"
             ], 
-            "storage": []
         })
         self.assertEqual("foo", r.get_name())
 
@@ -199,11 +198,9 @@ class CheckParse(unittest.TestCase):
                         "name": "arg1", 
                         "pointer": []
                     }, 
-                    "func_const": False, 
                     "specifier": [
                         "int"
                     ], 
-                    "storage": []
                 }, 
                 {
                     "attrs": {}, 
@@ -212,11 +209,9 @@ class CheckParse(unittest.TestCase):
                         "name": "arg2", 
                         "pointer": []
                     }, 
-                    "func_const": False, 
                     "specifier": [
                         "double"
                     ], 
-                    "storage": []
                 }
             ], 
             "attrs": {}, 
@@ -230,7 +225,6 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "void"
             ], 
-            "storage": []
         })
         self.assertEqual("foo", r.get_name())
 
@@ -259,7 +253,6 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "std::string"
             ], 
-            "storage": []
         })
         self.assertEqual("getName", r.get_name())
 
@@ -286,11 +279,9 @@ class CheckParse(unittest.TestCase):
                         "name": "arg1", 
                         "pointer": []
                     }, 
-                    "func_const": False, 
                     "specifier": [
                         "int"
                     ], 
-                    "storage": []
                 }, 
                 {
                     "attrs": {
@@ -301,11 +292,9 @@ class CheckParse(unittest.TestCase):
                         "name": "arg2", 
                         "pointer": []
                     }, 
-                    "func_const": False, 
                     "specifier": [
                         "double"
                     ], 
-                    "storage": []
                 }
             ], 
             "attrs": {
@@ -324,7 +313,6 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "void"
             ], 
-            "storage": []
         })
         self.assertEqual("foo", r.get_name())
 
@@ -357,7 +345,6 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "Class1"
             ], 
-            "storage": []
         })
         self.assertEqual("Class1", r.get_name())
 
@@ -384,12 +371,10 @@ class CheckParse(unittest.TestCase):
                         "name": "arg1", 
                         "pointer": []
                     }, 
-                    "func_const": False, 
                     "init": 0,
                     "specifier": [
                         "int"
                     ], 
-                    "storage": []
                 }, 
                 {
                     "attrs": {}, 
@@ -398,12 +383,10 @@ class CheckParse(unittest.TestCase):
                         "name": "arg2", 
                         "pointer": []
                     }, 
-                    "func_const": False, 
                     "init": 0.0,
                     "specifier": [
                         "double"
                     ], 
-                    "storage": []
                 }, 
                 {
                     "attrs": {}, 
@@ -412,12 +395,10 @@ class CheckParse(unittest.TestCase):
                         "name": "arg3", 
                         "pointer": []
                     }, 
-                    "func_const": False,
                     "init": '"name"',
                     "specifier": [
                         "std::string"
                     ], 
-                    "storage": []
                 }, 
                 {
                     "attrs": {}, 
@@ -427,11 +408,9 @@ class CheckParse(unittest.TestCase):
                         "pointer": []
                     }, 
                     "init": "true",
-                    "func_const": False, 
                     "specifier": [
                         "bool"
                     ], 
-                    "storage": []
                 }
             ], 
             "attrs": {}, 
@@ -445,7 +424,6 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "void"
             ], 
-            "storage": []
         })
         self.assertEqual("name", r.get_name())
 
@@ -466,11 +444,9 @@ class CheckParse(unittest.TestCase):
                         "name": "arg", 
                         "pointer": []
                     }, 
-                    "func_const": False, 
                     "specifier": [
                         "ArgType"
                     ], 
-                    "storage": []
                 }
             ], 
             "attrs": {}, 
@@ -484,7 +460,6 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "void"
             ], 
-            "storage": []
         })
         self.assertEqual("decl11", r.get_name())
                          
@@ -508,11 +483,9 @@ class CheckParse(unittest.TestCase):
                         "name": "arg1", 
                         "pointer": []
                     }, 
-                    "func_const": False, 
                     "specifier": [
                         "std::vector"
                     ], 
-                    "storage": []
                 }, 
                 {
                     "attrs": {}, 
@@ -521,11 +494,9 @@ class CheckParse(unittest.TestCase):
                         "name": "arg2", 
                         "pointer": []
                     }, 
-                    "func_const": False, 
                     "specifier": [
                         "string"
                     ], 
-                    "storage": []
                 }
             ], 
             "attrs": {}, 
@@ -539,7 +510,6 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "void"
             ], 
-            "storage": []
         })
         self.assertEqual("decl12", r.get_name())
 
@@ -573,11 +543,9 @@ class CheckParse(unittest.TestCase):
                             "declarator": {
                                 "pointer": []
                             }, 
-                            "func_const": False, 
                             "specifier": [
                                 "int"
                             ], 
-                            "storage": []
                         }
                     ], 
                     "attrs": {}, 
@@ -599,7 +567,6 @@ class CheckParse(unittest.TestCase):
                     "specifier": [
                         "int"
                     ], 
-                    "storage": []
                 }
             ], 
             "attrs": {}, 
@@ -613,7 +580,6 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "int"
             ], 
-            "storage": []
         })
 
     def test_asarg(self):
