@@ -51,12 +51,68 @@ class CheckParse(unittest.TestCase):
     maxDiff = None
 
     # types
-    def xtest_type_int(self):
-        r = declast.check_decl("int var1")
+    def test_type_int(self):
+        """Test variable declarations
+        Combinations of const and pointer.
+        """
+        r = declast.check_decl("int")
+        s = r.gen_decl()
+        self.assertEqual("int ", s)
 
+        r = declast.check_decl("int var1")
         s = r.gen_decl()
         self.assertEqual("int var1", s)
 
+        r = declast.check_decl("const int var1")
+        s = r.gen_decl()
+        self.assertEqual("const int var1", s)
+
+        r = declast.check_decl("int const var1")
+        s = r.gen_decl()
+        self.assertEqual("const int var1", s)
+
+        r = declast.check_decl("int *var1")
+        s = r.gen_decl()
+        self.assertEqual("int * var1", s)
+
+        r = declast.check_decl("int * const var1")
+        s = r.gen_decl()
+        self.assertEqual("int * const var1", s)
+
+        r = declast.check_decl("int **var1")
+        s = r.gen_decl()
+        self.assertEqual("int * * var1", s)
+
+        r = declast.check_decl("const int * const * const var1")
+        s = r.gen_decl()
+        self.assertEqual("const int * const * const var1", s)
+
+    def test_type_string(self):
+        """Test string declarations
+        """
+        r = declast.check_decl("char var1")
+        s = r.gen_decl()
+        self.assertEqual("char var1", s)
+
+        r = declast.check_decl("char *var1")
+        s = r.gen_decl()
+        self.assertEqual("char * var1", s)
+
+        r = declast.check_decl("char **var1")
+        s = r.gen_decl()
+        self.assertEqual("char * * var1", s)
+
+        r = declast.check_decl("std::string var1")
+        s = r.gen_decl()
+        self.assertEqual("std::string var1", s)
+
+        r = declast.check_decl("std::string *var1")
+        s = r.gen_decl()
+        self.assertEqual("std::string * var1", s)
+
+        r = declast.check_decl("std::string &var1")
+        s = r.gen_decl()
+        self.assertEqual("std::string & var1", s)
 
     # decl
     def test_decl01(self):

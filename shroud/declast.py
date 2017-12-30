@@ -430,6 +430,17 @@ class Ptr(Node):
         self.const = False
         self.volatile = False
 
+    def gen_decl_work(self, decl):
+        """Generate string by appending text to decl.
+        """
+        if self.ptr:
+            decl.append(self.ptr)
+            decl.append(' ')
+        if self.const:
+            decl.append('const ')
+        if self.volatile:
+            decl.append('volatile ')
+
     def _to_dict(self):
         """Convert to dictionary.
         Used by util.ExpandedEncoder.
@@ -462,9 +473,7 @@ class Declarator(Node):
         """Generate string by appending text to decl.
         """
         for ptr in self.pointer:
-            if ptr.ptr:
-                decl.append(ptr.ptr)
-                decl.append(' ')
+            ptr.gen_decl_work(decl)
         if self.name:
             decl.append(self.name)
         elif self.func:
