@@ -72,11 +72,9 @@
                                     "name": "arg1", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "CustomType"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -89,8 +87,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void method1(CustomType arg1 +intent(in)+value)", 
                     "_fmt": {
@@ -171,11 +168,9 @@
                                     "name": "comm", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "MPI_Comm"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -188,8 +183,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void method1(MPI_Comm comm +intent(in)+value)", 
                     "_fmt": {
@@ -254,11 +248,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "Class1"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -271,8 +263,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void method2(Class1 * c2 +intent(in)+value)", 
                     "_fmt": {
@@ -382,8 +373,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void function1()", 
             "_fmt": {

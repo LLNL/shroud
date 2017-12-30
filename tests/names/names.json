@@ -103,8 +103,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void method1()", 
                     "_fmt": {
@@ -151,8 +150,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void method2()", 
                     "_fmt": {
@@ -277,8 +275,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void function1()", 
             "_fmt": {
@@ -325,8 +322,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void function2()", 
             "_fmt": {
@@ -372,11 +368,9 @@
                             "name": "i", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -389,8 +383,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_cpp_overload": [
                 4, 
@@ -464,11 +457,9 @@
                             "name": "i", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "long"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -481,8 +472,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_cpp_overload": [
                 4, 
@@ -560,11 +550,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -577,8 +565,7 @@
                 "func_const": false, 
                 "specifier": [
                     "int"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "int function4(const std::string & rv +intent(in))", 
             "_fmt": {
@@ -655,11 +642,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -672,8 +657,7 @@
                 "func_const": false, 
                 "specifier": [
                     "int"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "int function4(const std::string & rv +intent(in)+len_trim(Lrv))", 
             "_error_pattern_suffix": "_as_buffer", 

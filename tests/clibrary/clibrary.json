@@ -100,8 +100,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void Function1()", 
             "_fmt": {
@@ -144,11 +143,9 @@
                             "name": "arg1", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "double"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -160,11 +157,9 @@
                             "name": "arg2", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -177,8 +172,7 @@
                 "func_const": false, 
                 "specifier": [
                     "double"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
             "_fmt": {
@@ -255,11 +249,9 @@
                             "name": "len", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -277,11 +269,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -298,11 +288,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -315,8 +303,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
             "_fmt": {
@@ -399,11 +386,9 @@
                             "name": "arg", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "bool"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -416,8 +401,7 @@
                 "func_const": false, 
                 "specifier": [
                     "bool"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "bool Function3(bool arg +intent(in)+value)", 
             "_fmt": {
@@ -481,11 +465,9 @@
                             "name": "arg1", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "bool"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -502,11 +484,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "bool"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -523,11 +503,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "bool"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -540,8 +518,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
             "_fmt": {
@@ -631,11 +608,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -652,11 +627,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {
@@ -676,8 +649,7 @@
                 "func_const": false, 
                 "specifier": [
                     "char"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))", 
             "_fmt": {
@@ -756,11 +728,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -778,11 +748,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -800,11 +768,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {
@@ -819,8 +785,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 

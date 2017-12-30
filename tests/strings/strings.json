@@ -114,11 +114,9 @@
                             "name": "status", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char_scalar"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -131,8 +129,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void passChar(char_scalar status +intent(in)+value)", 
             "_fmt": {
@@ -202,8 +199,7 @@
                 "func_const": false, 
                 "specifier": [
                     "char_scalar"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "char_scalar returnChar()", 
             "_fmt": {
@@ -264,11 +260,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char_scalar"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -281,8 +275,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -354,11 +347,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -375,11 +366,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -392,8 +381,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void passCharPtr(char * dest +intent(out), const char * src +intent(in))", 
             "_fmt": {
@@ -485,11 +473,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -507,11 +493,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -524,8 +508,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -608,11 +591,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -625,8 +606,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void passCharPtrInOut(char * s +intent(inout))", 
             "_fmt": {
@@ -701,11 +681,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -718,8 +696,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -788,8 +765,7 @@
                 "func_const": false, 
                 "specifier": [
                     "char"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "const char * getChar1() +pure", 
             "_fmt": {
@@ -851,11 +827,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -870,8 +844,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getChar1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -941,8 +914,7 @@
                 "func_const": false, 
                 "specifier": [
                     "char"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "const char * getChar2 +len(30)()", 
             "_fmt": {
@@ -1004,11 +976,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {
@@ -1023,8 +993,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getChar2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -1095,8 +1064,7 @@
                 "func_const": false, 
                 "specifier": [
                     "char"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "const char * getChar3()", 
             "_fmt": {
@@ -1151,11 +1119,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -1168,8 +1134,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getChar3(char * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -1243,11 +1208,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -1260,8 +1223,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getChar3(char * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -1311,8 +1273,7 @@
                 "func_const": false, 
                 "specifier": [
                     "string"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "const string & getString1() +pure", 
             "_fmt": {
@@ -1377,11 +1338,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -1396,8 +1355,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getString1(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -1468,8 +1426,7 @@
                 "func_const": false, 
                 "specifier": [
                     "string"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "const string & getString2 +len(30)()", 
             "_fmt": {
@@ -1536,11 +1493,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {
@@ -1555,8 +1510,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getString2 +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -1628,8 +1582,7 @@
                 "func_const": false, 
                 "specifier": [
                     "string"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "const string & getString3()", 
             "_fmt": {
@@ -1689,11 +1642,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -1706,8 +1657,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getString3(string & output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -1782,11 +1732,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -1799,8 +1747,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getString3(string & output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -1852,8 +1799,7 @@
                 "func_const": false, 
                 "specifier": [
                     "string"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "const string & getString2_empty +len(30)()", 
             "_fmt": {
@@ -1920,11 +1866,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {
@@ -1939,8 +1883,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getString2_empty +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -2010,8 +1953,7 @@
                 "func_const": false, 
                 "specifier": [
                     "string"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "const string getString5 +len(30)()", 
             "_fmt": {
@@ -2062,11 +2004,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {
@@ -2081,8 +2021,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getString5 +len(30)(string * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -2149,8 +2088,7 @@
                 "func_const": false, 
                 "specifier": [
                     "string"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "const string getString6()", 
             "_fmt": {
@@ -2193,11 +2131,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -2210,8 +2146,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getString6(string * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -2286,11 +2221,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -2303,8 +2236,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void getString6(string * output +intent(out)+len(Noutput))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -2353,11 +2285,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -2370,8 +2300,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void acceptStringConstReference(const std::string & arg1 +intent(in))", 
             "_fmt": {
@@ -2445,11 +2374,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -2462,8 +2389,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -2529,11 +2455,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -2546,8 +2470,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void acceptStringReferenceOut(std::string & arg1 +intent(out))", 
             "_fmt": {
@@ -2625,11 +2548,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -2642,8 +2563,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void acceptStringReferenceOut(std::string & arg1 +intent(out)+len(Narg1))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -2711,11 +2631,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -2728,8 +2646,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void acceptStringReference(std::string & arg1 +intent(inout))", 
             "_fmt": {
@@ -2808,11 +2725,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -2825,8 +2740,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void acceptStringReference(std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -2896,11 +2810,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -2913,8 +2825,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
             "_fmt": {
@@ -2985,11 +2896,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -3002,8 +2911,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -3068,11 +2976,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -3085,8 +2991,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void explicit2(char * name +intent(out)+len(AAtrim))", 
             "_fmt": {
@@ -3157,11 +3062,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -3174,8 +3077,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void explicit2(char * name +intent(out)+len(AAtrim))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -3233,11 +3135,9 @@
                             "name": "status", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char_scalar"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -3250,8 +3150,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void CpassChar(char_scalar status +intent(in)+value)", 
             "_fmt": {
@@ -3323,8 +3222,7 @@
                 "func_const": false, 
                 "specifier": [
                     "char_scalar"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "char_scalar CreturnChar()", 
             "_fmt": {
@@ -3387,11 +3285,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char_scalar"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -3404,8 +3300,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void CreturnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -3477,11 +3372,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -3498,11 +3391,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -3515,8 +3406,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))", 
             "_fmt": {
@@ -3610,11 +3500,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -3632,11 +3520,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "char"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -3649,8 +3535,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
             "_error_pattern_suffix": "_as_buffer", 

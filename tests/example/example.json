@@ -98,11 +98,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -122,8 +120,7 @@
                         "func_const": false, 
                         "specifier": [
                             "ExClass1"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "ExClass1 * new(const string * name +intent(in)) +constructor", 
                     "_fmt": {
@@ -196,11 +193,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -220,8 +215,7 @@
                         "func_const": false, 
                         "specifier": [
                             "ExClass1"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "ExClass1 * new(const string * name +intent(in)+len_trim(Lname)) +constructor", 
                     "_error_pattern_suffix": "_as_buffer", 
@@ -290,8 +284,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void delete() +destructor", 
                     "_fmt": {
@@ -341,11 +334,9 @@
                                     "name": "incr", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "int"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -358,8 +349,7 @@
                         "func_const": false, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "int incrementCount(int incr +intent(in)+value)", 
                     "_fmt": {
@@ -445,8 +435,7 @@
                         "func_const": true, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const", 
                     "_fmt": {
@@ -519,11 +508,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {
@@ -538,8 +525,7 @@
                         "func_const": true, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
@@ -611,8 +597,7 @@
                         "func_const": true, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "int GetNameLength() const", 
                     "_fmt": {
@@ -673,8 +658,7 @@
                         "func_const": true, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "const string & getNameErrorCheck() const", 
                     "_fmt": {
@@ -739,11 +723,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -756,8 +738,7 @@
                         "func_const": true, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
@@ -828,8 +809,7 @@
                         "func_const": true, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "const string & getNameArg() const", 
                     "_fmt": {
@@ -887,11 +867,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -904,8 +882,7 @@
                         "func_const": true, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void getNameArg(string & name +intent(out)+len(Nname)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
@@ -979,11 +956,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -996,8 +971,7 @@
                         "func_const": true, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void getNameArg(string & name +intent(out)+len(Nname)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
@@ -1042,8 +1016,7 @@
                         "func_const": false, 
                         "specifier": [
                             "ExClass2"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "ExClass2 * getRoot()", 
                     "_fmt": {
@@ -1100,11 +1073,9 @@
                                     "name": "value", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "int"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -1117,8 +1088,7 @@
                         "func_const": false, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_cpp_overload": [
                         8, 
@@ -1201,11 +1171,9 @@
                                     "name": "value", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "long"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -1218,8 +1186,7 @@
                         "func_const": false, 
                         "specifier": [
                             "long"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_cpp_overload": [
                         8, 
@@ -1306,8 +1273,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void * getAddr()", 
                     "_fmt": {
@@ -1361,11 +1327,9 @@
                                     "name": "in", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "bool"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -1378,8 +1342,7 @@
                         "func_const": false, 
                         "specifier": [
                             "bool"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "bool hasAddr(bool in +intent(in)+value)", 
                     "_fmt": {
@@ -1455,8 +1418,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void SplicerSpecial()", 
                     "_fmt": {
@@ -1540,11 +1502,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -1564,8 +1524,7 @@
                         "func_const": false, 
                         "specifier": [
                             "ExClass2"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor", 
                     "_fmt": {
@@ -1639,11 +1598,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -1663,8 +1620,7 @@
                         "func_const": false, 
                         "specifier": [
                             "ExClass2"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2)) +constructor", 
                     "_error_pattern_suffix": "_as_buffer", 
@@ -1733,8 +1689,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void delete() +destructor", 
                     "_fmt": {
@@ -1789,8 +1744,7 @@
                         "func_const": true, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const", 
                     "_fmt": {
@@ -1860,11 +1814,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {
@@ -1879,8 +1831,7 @@
                         "func_const": true, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
@@ -1957,8 +1908,7 @@
                         "func_const": false, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "const string & getName2()", 
                     "_fmt": {
@@ -2023,11 +1973,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -2040,8 +1988,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void getName2(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                     "_error_pattern_suffix": "_as_buffer", 
@@ -2113,8 +2060,7 @@
                         "func_const": true, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "string & getName3() const", 
                     "_fmt": {
@@ -2179,11 +2125,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -2196,8 +2140,7 @@
                         "func_const": true, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void getName3(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                     "_error_pattern_suffix": "_as_buffer", 
@@ -2269,8 +2212,7 @@
                         "func_const": false, 
                         "specifier": [
                             "string"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "string & getName4()", 
                     "_fmt": {
@@ -2335,11 +2277,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "string"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -2352,8 +2292,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void getName4(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                     "_error_pattern_suffix": "_as_buffer", 
@@ -2420,8 +2359,7 @@
                         "func_const": true, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "int GetNameLength() const", 
                     "_fmt": {
@@ -2481,11 +2419,9 @@
                                         }
                                     ]
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "ExClass1"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -2503,8 +2439,7 @@
                         "func_const": false, 
                         "specifier": [
                             "ExClass1"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)", 
                     "_fmt": {
@@ -2583,11 +2518,9 @@
                                     "name": "type", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "TypeID"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -2605,8 +2538,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void * declare(TypeID type +intent(in)+value)", 
                     "_fmt": {
@@ -2671,11 +2603,9 @@
                                     "name": "type", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "TypeID"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -2693,8 +2623,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void * declare(TypeID type +intent(in)+value)", 
                     "_fmt": {
@@ -2736,11 +2665,9 @@
                                     "name": "type", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "TypeID"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -2758,8 +2685,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void * declare(TypeID type +intent(in)+value)", 
                     "_fmt": {
@@ -2800,11 +2726,9 @@
                                     "name": "type", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "TypeID"
-                                ], 
-                                "storage": []
+                                ]
                             }, 
                             {
                                 "attrs": {
@@ -2816,12 +2740,10 @@
                                     "name": "len", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "init": 1, 
                                 "specifier": [
                                     "SidreLength"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -2839,8 +2761,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)", 
                     "_default_funcs": [
@@ -2941,11 +2862,9 @@
                                     "name": "type", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "TypeID"
-                                ], 
-                                "storage": []
+                                ]
                             }, 
                             {
                                 "attrs": {
@@ -2957,12 +2876,10 @@
                                     "name": "len", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "init": 1, 
                                 "specifier": [
                                     "int"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -2980,8 +2897,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)", 
                     "_default_funcs": [
@@ -3031,11 +2947,9 @@
                                     "name": "type", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "TypeID"
-                                ], 
-                                "storage": []
+                                ]
                             }, 
                             {
                                 "attrs": {
@@ -3047,12 +2961,10 @@
                                     "name": "len", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "init": 1, 
                                 "specifier": [
                                     "long"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -3070,8 +2982,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)", 
                     "_default_funcs": [
@@ -3120,8 +3031,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void destroyall()", 
                     "_fmt": {
@@ -3168,8 +3078,7 @@
                         "func_const": true, 
                         "specifier": [
                             "TypeID"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "TypeID getTypeID() const", 
                     "_fmt": {
@@ -3226,11 +3135,9 @@
                                     "name": "value", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "ValueType"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -3243,8 +3150,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void setValue(ValueType value +intent(in)+value)", 
                     "_fmt": {
@@ -3283,11 +3189,9 @@
                                     "name": "value", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "int"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -3300,8 +3204,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void setValue(int value +intent(in)+value)", 
                     "_fmt": {
@@ -3368,11 +3271,9 @@
                                     "name": "value", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "long"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -3385,8 +3286,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void setValue(long value +intent(in)+value)", 
                     "_fmt": {
@@ -3453,11 +3353,9 @@
                                     "name": "value", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "float"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -3470,8 +3368,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void setValue(float value +intent(in)+value)", 
                     "_fmt": {
@@ -3538,11 +3435,9 @@
                                     "name": "value", 
                                     "pointer": []
                                 }, 
-                                "func_const": false, 
                                 "specifier": [
                                     "double"
-                                ], 
-                                "storage": []
+                                ]
                             }
                         ], 
                         "attrs": {}, 
@@ -3555,8 +3450,7 @@
                         "func_const": false, 
                         "specifier": [
                             "void"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "void setValue(double value +intent(in)+value)", 
                     "_fmt": {
@@ -3623,8 +3517,7 @@
                         "func_const": false, 
                         "specifier": [
                             "ValueType"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "ValueType getValue()", 
                     "_fmt": {
@@ -3662,8 +3555,7 @@
                         "func_const": false, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "int getValue()", 
                     "_fmt": {
@@ -3724,8 +3616,7 @@
                         "func_const": false, 
                         "specifier": [
                             "double"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     "_decl": "double getValue()", 
                     "_fmt": {
@@ -3853,8 +3744,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void local_function1()", 
             "_fmt": {
@@ -3907,11 +3797,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -3924,8 +3812,7 @@
                 "func_const": false, 
                 "specifier": [
                     "bool"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "bool isNameValid(const std::string & name +intent(in))", 
             "_fmt": {
@@ -4001,11 +3888,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -4018,8 +3903,7 @@
                 "func_const": false, 
                 "specifier": [
                     "bool"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -4079,8 +3963,7 @@
                 "func_const": false, 
                 "specifier": [
                     "bool"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "bool isInitialized()", 
             "_fmt": {
@@ -4131,11 +4014,9 @@
                             "name": "arg1", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "bool"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -4152,11 +4033,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "bool"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -4173,11 +4052,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "bool"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -4190,8 +4067,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
             "_fmt": {
@@ -4309,11 +4185,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -4326,8 +4200,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_cpp_overload": [
                 51, 
@@ -4404,11 +4277,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -4421,8 +4292,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_cpp_overload": [
                 51, 
@@ -4490,11 +4360,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -4506,11 +4374,9 @@
                             "name": "flag", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -4523,8 +4389,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_cpp_overload": [
                 51, 
@@ -4618,11 +4483,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "std::string"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -4634,11 +4497,9 @@
                             "name": "flag", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -4651,8 +4512,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_cpp_overload": [
                 51, 
@@ -4727,8 +4587,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void testoptional()", 
             "_fmt": {
@@ -4777,12 +4636,10 @@
                             "name": "i", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "init": 1, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -4795,8 +4652,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void testoptional(int i=1 +intent(in)+value)", 
             "_fmt": {
@@ -4859,12 +4715,10 @@
                             "name": "i", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "init": 1, 
                         "specifier": [
                             "int"
-                        ], 
-                        "storage": []
+                        ]
                     }, 
                     {
                         "attrs": {
@@ -4876,12 +4730,10 @@
                             "name": "j", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "init": 2, 
                         "specifier": [
                             "long"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -4894,8 +4746,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)", 
             "_default_funcs": [
@@ -4993,11 +4844,9 @@
                             "name": "comm", 
                             "pointer": []
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "MPI_Comm"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -5010,8 +4859,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void testmpi(MPI_Comm comm +intent(in)+value)", 
             "_fmt": {
@@ -5082,11 +4930,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "DataGroup"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -5099,8 +4945,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void testgroup1(DataGroup * grp +intent(in)+value)", 
             "_fmt": {
@@ -5172,11 +5017,9 @@
                                 }
                             ]
                         }, 
-                        "func_const": false, 
                         "specifier": [
                             "DataGroup"
-                        ], 
-                        "storage": []
+                        ]
                     }
                 ], 
                 "attrs": {}, 
@@ -5189,8 +5032,7 @@
                 "func_const": false, 
                 "specifier": [
                     "void"
-                ], 
-                "storage": []
+                ]
             }, 
             "_decl": "void testgroup2(const DataGroup * grp +intent(in)+value)", 
             "_fmt": {

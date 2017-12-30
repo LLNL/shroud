@@ -624,17 +624,18 @@ class Declaration(Node):
         """
         d = dict(
             specifier = self.specifier,
-            storage = self.storage,
             const = self.const,
 #            volatile = self.volatile,
             declarator = self.declarator._to_dict(),
-            func_const = self.func_const,
 #            self.array,
             attrs = self.attrs,
         )
+        if self.storage:
+            d['storage'] = self.storage
         if self.params is not None:
             d['args'] = [ x._to_dict() for x in self.params]
             d['fattrs'] = self.fattrs
+            d['func_const'] = self.func_const
         else:
             if self.fattrs:
                 raise RuntimeError("fattrs is not empty for non-function")
