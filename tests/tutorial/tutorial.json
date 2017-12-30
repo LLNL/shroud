@@ -659,7 +659,7 @@
                     "long"
                 ]
             }, 
-            "_decl": "long_long TypeLongLong(long_long arg1 +intent(in)+value)", 
+            "_decl": "long long TypeLongLong(long long arg1 +intent(in)+value)", 
             "_fmt": {
                 "C_call_code": "long long SHT_rv = TypeLongLong(arg1);", 
                 "C_call_list": "arg1", 

@@ -112,7 +112,7 @@ void TUT_sum(int len, int * values, int * result)
 // splicer end function.sum
 }
 
-// long_long TypeLongLong(long_long arg1 +intent(in)+value)
+// long long TypeLongLong(long long arg1 +intent(in)+value)
 // function_index=6
 long long TUT_type_long_long(long long arg1)
 {

@@ -49,6 +49,8 @@ import collections
 import copy
 import re
 
+from . import util
+
 Token = collections.namedtuple('Token', ['typ', 'value', 'line', 'column'])
 
 # https://docs.python.org/3.2/library/re.html#writing-a-tokenizer
@@ -430,11 +432,15 @@ class Ptr(Node):
         self.const = False
         self.volatile = False
 
-    def gen_decl_work(self, decl):
+    def gen_decl_work(self, decl, **kwargs):
         """Generate string by appending text to decl.
         """
         if self.ptr:
-            decl.append(self.ptr)
+            if kwargs.get('as_c', False):
+                # references become pointers with as_c
+                decl.append('*')
+            else:
+                decl.append(self.ptr)
             decl.append(' ')
         if self.const:
             decl.append('const ')
@@ -469,17 +475,21 @@ class Declarator(Node):
         self.name    = None   #  *name
         self.func    = None   # (*name)     declarator
 
-    def gen_decl_work(self, decl):
+    def gen_decl_work(self, decl, **kwargs):
         """Generate string by appending text to decl.
+
+        Replace name with value from kwargs.
         """
         for ptr in self.pointer:
             ptr.gen_decl_work(decl)
-        if self.name:
-            decl.append(self.name)
-        elif self.func:
+        if self.func:
             decl.append('(')
-            self.func.gen_decl_work(decl)
+            self.func.gen_decl_work(decl, **kwargs)
             decl.append(')')
+        elif 'name' in kwargs:
+            decl.append(kwargs['name'])
+        elif self.name:
+            decl.append(self.name)
 
     def _to_dict(self):
         """Convert to dictionary.
@@ -682,44 +692,49 @@ class Declaration(Node):
             out.append(str(self.init))
         return ''.join(out)
 
-    def gen_decl(self):
+    def gen_decl(self, **kwargs):
         """Return a string of the unparsed declaration.
         """
         decl = []
-        self.gen_decl_work(decl)
+        self.gen_decl_work(decl, **kwargs)
         return ''.join(decl)
 
-    def gen_decl_work(self, decl):
+    def gen_decl_work(self, decl, **kwargs):
         """Generate string by appending text to decl.
+
+        Replace params with value from kwargs.
+        Most useful to call with params=None to skip parameters
+        and only get function result.
         """
         if self.const:
             decl.append('const ')
-        decl.append(self.typename)
+
+        decl.append(' '.join(self.specifier))
         if 'template' in self.attrs:
             decl.append('<')
             decl.append(self.attrs['template'])
             decl.append('>')
         decl.append(' ')
 
-        self.declarator.gen_decl_work(decl)
+        self.declarator.gen_decl_work(decl, **kwargs)
 
         if self.init is not None:
             decl.append('=')
             decl.append(str(self.init))
         self.gen_attrs(self.attrs, decl)
 
-        if self.params is not None:
+        params = kwargs.get('params', self.params)
+        if params is not None:
             decl.append('(')
             comma = ''
-            for arg in self.params:
+            for arg in params:
                 decl.append(comma)
                 arg.gen_decl_work(decl)
                 comma = ', ' 
             decl.append(')')
-
-        if self.func_const:
-            decl.append(' const')
-        self.gen_attrs(self.fattrs, decl)
+            if self.func_const:
+                decl.append(' const')
+            self.gen_attrs(self.fattrs, decl)
 
     _skip_annotations = ['template']
 
@@ -744,6 +759,29 @@ class Declaration(Node):
             else:
                 decl.append('{}({})'.format(attr, value))
             space = ''
+
+    def gen_arg_as_c(self, **kwargs):
+        """Return a string of the unparsed declaration.
+        """
+        decl = []
+        self.gen_arg_work_as_c(decl, **kwargs)
+        return ''.join(decl)
+
+    def gen_arg_work_as_c(self, decl, **kwargs):
+        """Generate string by appending text to decl.
+        """
+        if self.const:
+            decl.append('const ')
+
+        typename = self.typename
+        typedef = util.Typedef.lookup(typename)
+        if typedef is None:
+            raise RuntimeError("No such type: {}".format(typename))
+
+        typ = getattr(typedef, 'c_type')
+        decl.append(typ)
+
+        self.declarator.gen_decl_work(decl, as_c=True, **kwargs)
 
 
 def check_decl(decl, current_class=None, template_types=[]):

@@ -87,6 +87,10 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("const int * const * const var1", s)
 
+        r = declast.check_decl("long long var2")
+        s = r.gen_decl()
+        self.assertEqual("long long var2", s)
+
     def test_type_string(self):
         """Test string declarations
         """
@@ -105,6 +109,8 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("std::string var1")
         s = r.gen_decl()
         self.assertEqual("std::string var1", s)
+#        s = r.gen_arg_as_c()
+#        self.assertEqual("std::string var1", s)
 
         r = declast.check_decl("std::string *var1")
         s = r.gen_decl()
@@ -113,6 +119,20 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("std::string &var1")
         s = r.gen_decl()
         self.assertEqual("std::string & var1", s)
+
+    def test_type_int_func(self):
+        """Test function declarations
+        Test keywords of gen_decl.
+        """
+        r = declast.check_decl("int var1(int arg1) const")
+        s = r.gen_decl()
+        self.assertEqual("int var1(int arg1) const", s)
+
+        s = r.gen_decl(params=None)
+        self.assertEqual("int var1", s)
+
+        s = r.gen_decl(name='newname', params=None)
+        self.assertEqual("int newname", s)
 
     # decl
     def test_decl01(self):
