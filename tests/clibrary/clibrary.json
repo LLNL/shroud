@@ -785,50 +785,6 @@
                         "storage": []
                     }, 
                     {
-                        "args": [
-                            {
-                                "attrs": {
-                                    "intent": "in", 
-                                    "value": false
-                                }, 
-                                "const": true, 
-                                "declarator": {
-                                    "name": "arg1", 
-                                    "pointer": [
-                                        {
-                                            "const": false, 
-                                            "ptr": "*"
-                                        }
-                                    ]
-                                }, 
-                                "func_const": false, 
-                                "specifier": [
-                                    "char"
-                                ], 
-                                "storage": []
-                            }, 
-                            {
-                                "attrs": {
-                                    "intent": "in", 
-                                    "value": false
-                                }, 
-                                "const": true, 
-                                "declarator": {
-                                    "name": "arg2", 
-                                    "pointer": [
-                                        {
-                                            "const": false, 
-                                            "ptr": "*"
-                                        }
-                                    ]
-                                }, 
-                                "func_const": false, 
-                                "specifier": [
-                                    "char"
-                                ], 
-                                "storage": []
-                            }
-                        ], 
                         "attrs": {
                             "_is_result": true, 
                             "intent": "out", 
@@ -844,7 +800,6 @@
                                 }
                             ]
                         }, 
-                        "fattrs": {}, 
                         "func_const": false, 
                         "specifier": [
                             "char"

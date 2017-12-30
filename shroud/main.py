@@ -1450,24 +1450,14 @@ class GenFunctions(object):
 
         if has_string_result:
             # Add additional argument to hold result
-            result_as_string = copy.deepcopy(ast)
-            result_as_string.name = result_name
-            result_as_string.const = False
+            ast = C_new['_ast']
+            result_as_string = ast.result_as_arg(result_name)
             attrs = result_as_string.attrs
             attrs['len'] = options.C_var_len_template.format(c_var=result_name)
             attrs['intent'] = 'out'
             attrs['_is_result'] = True
-            if not result_is_ptr:
-                result_as_string.set_indirection('*')
-
-            ast = C_new['_ast']
-            ast.params.append(result_as_string)
-
             # convert to subroutine
             C_new['_subprogram'] = 'subroutine'
-            ast.typename = 'void'
-            ast.set_indirection('')
-            ast.const = False
 
         if is_pure:
             # pure functions which return a string have result_pure defined.

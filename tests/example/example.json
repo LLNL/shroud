@@ -504,7 +504,6 @@
                     "_ast": {
                         "args": [
                             {
-                                "args": [], 
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
@@ -520,8 +519,7 @@
                                         }
                                     ]
                                 }, 
-                                "fattrs": {}, 
-                                "func_const": true, 
+                                "func_const": false, 
                                 "specifier": [
                                     "string"
                                 ], 
@@ -726,7 +724,6 @@
                     "_ast": {
                         "args": [
                             {
-                                "args": [], 
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
@@ -742,8 +739,7 @@
                                         }
                                     ]
                                 }, 
-                                "fattrs": {}, 
-                                "func_const": true, 
+                                "func_const": false, 
                                 "specifier": [
                                     "string"
                                 ], 
@@ -876,7 +872,6 @@
                     "_ast": {
                         "args": [
                             {
-                                "args": [], 
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
@@ -892,8 +887,7 @@
                                         }
                                     ]
                                 }, 
-                                "fattrs": {}, 
-                                "func_const": true, 
+                                "func_const": false, 
                                 "specifier": [
                                     "string"
                                 ], 
@@ -970,7 +964,6 @@
                     "_ast": {
                         "args": [
                             {
-                                "args": [], 
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
@@ -986,8 +979,7 @@
                                         }
                                     ]
                                 }, 
-                                "fattrs": {}, 
-                                "func_const": true, 
+                                "func_const": false, 
                                 "specifier": [
                                     "string"
                                 ], 
@@ -1853,7 +1845,6 @@
                     "_ast": {
                         "args": [
                             {
-                                "args": [], 
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
@@ -1869,8 +1860,7 @@
                                         }
                                     ]
                                 }, 
-                                "fattrs": {}, 
-                                "func_const": true, 
+                                "func_const": false, 
                                 "specifier": [
                                     "string"
                                 ], 
@@ -2018,7 +2008,6 @@
                     "_ast": {
                         "args": [
                             {
-                                "args": [], 
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
@@ -2034,7 +2023,6 @@
                                         }
                                     ]
                                 }, 
-                                "fattrs": {}, 
                                 "func_const": false, 
                                 "specifier": [
                                     "string"
@@ -2176,7 +2164,6 @@
                     "_ast": {
                         "args": [
                             {
-                                "args": [], 
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
@@ -2192,8 +2179,7 @@
                                         }
                                     ]
                                 }, 
-                                "fattrs": {}, 
-                                "func_const": true, 
+                                "func_const": false, 
                                 "specifier": [
                                     "string"
                                 ], 
@@ -2334,7 +2320,6 @@
                     "_ast": {
                         "args": [
                             {
-                                "args": [], 
                                 "attrs": {
                                     "_is_result": true, 
                                     "intent": "out", 
@@ -2350,7 +2335,6 @@
                                         }
                                     ]
                                 }, 
-                                "fattrs": {}, 
                                 "func_const": false, 
                                 "specifier": [
                                     "string"

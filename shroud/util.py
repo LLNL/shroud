@@ -719,7 +719,8 @@ class Options(object):
 
 
 def copy_function_node(node):
-    """Create a copy of a function node to use with C++ template.
+    """Create a copy of a function node to use with C++ template
+    or changing result to argument.
     """
     # Shallow copy everything
     new = node.copy()

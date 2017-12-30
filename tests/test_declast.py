@@ -560,6 +560,9 @@ class CheckParse(unittest.TestCase):
         """
         r = declast.check_decl("int CallBack1(  int (*func)(int) )")
 
+        s = r.gen_decl()
+        self.assertEqual("int CallBack1(int (* func)(int ))", s)
+
         self.assertEqual(r._to_dict(),{
             "args": [
                 {

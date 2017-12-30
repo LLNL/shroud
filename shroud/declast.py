@@ -430,15 +430,6 @@ class Ptr(Node):
         self.const = False
         self.volatile = False
 
-    def to_dict(self, attrs):
-        if self.ptr == '&':
-            attrs['reference'] = True
-        elif self.ptr == '*':
-            attrs['ptr'] = True
-# old implementation did not support const pointers
-#        if self.const:
-#            attrs['const'] = True
-
     def _to_dict(self):
         """Convert to dictionary.
         Used by util.ExpandedEncoder.
@@ -467,11 +458,19 @@ class Declarator(Node):
         self.name    = None   #  *name
         self.func    = None   # (*name)     declarator
 
-    def to_dict(self, d):
+    def gen_decl_work(self, decl):
+        """Generate string by appending text to decl.
+        """
+        for ptr in self.pointer:
+            if ptr.ptr:
+                decl.append(ptr.ptr)
+                decl.append(' ')
         if self.name:
-            d['name'] = self.name
-        if self.pointer:
-            self.pointer[0].to_dict(d['attrs'])
+            decl.append(self.name)
+        elif self.func:
+            decl.append('(')
+            self.func.gen_decl_work(decl)
+            decl.append(')')
 
     def _to_dict(self):
         """Convert to dictionary.
@@ -588,7 +587,8 @@ class Declaration(Node):
             self.declarator.pointer = [ ]
 
     def _as_arg(self, name):
-        """Create an argument to hold the result.
+        """Create an argument to hold the function result.
+        This is intended for pointer arguments, char or string.
         """
         new = Declaration()
         new.specifier  = self.specifier[:]
@@ -597,6 +597,9 @@ class Declaration(Node):
         new.volatile   = False
         new.declarator = copy.deepcopy(self.declarator)
         new.declarator.name = name
+        if not new.declarator.pointer:
+            # make sure the return type is a pointer
+            new.declarator.pointer = [ Ptr('*') ]
 #        new.array      = None
         new.attrs      = copy.deepcopy(self.attrs)
         return new
@@ -669,47 +672,44 @@ class Declaration(Node):
             out.append(str(self.init))
         return ''.join(out)
 
-    def gen_arg_decl(self, decl):
-        """ Generate declaration for a single Declaration node.
-        decl - array of strings
+    def gen_decl(self):
+        """Return a string of the unparsed declaration.
+        """
+        decl = []
+        self.gen_decl_work(decl)
+        return ''.join(decl)
+
+    def gen_decl_work(self, decl):
+        """Generate string by appending text to decl.
         """
         if self.const:
             decl.append('const ')
         decl.append(self.typename)
         if 'template' in self.attrs:
-            decl.append('<{}>'.format(self.attrs['template']))
+            decl.append('<')
+            decl.append(self.attrs['template'])
+            decl.append('>')
         decl.append(' ')
-        for ptr in self.declarator.pointer:
-            if ptr.ptr:
-                decl.append(ptr.ptr)
-                decl.append(' ')
-        # XXX - deal with function pointers
-        decl.append(self.name)
+
+        self.declarator.gen_decl_work(decl)
+
         if self.init is not None:
             decl.append('=')
             decl.append(str(self.init))
         self.gen_attrs(self.attrs, decl)
-
-    def gen_decl(self):
-        """Generate declaration.
-        """
-        decl = []
-        self.gen_arg_decl(decl)
 
         if self.params is not None:
             decl.append('(')
             comma = ''
             for arg in self.params:
                 decl.append(comma)
-                arg.gen_arg_decl(decl)
+                arg.gen_decl_work(decl)
                 comma = ', ' 
             decl.append(')')
 
         if self.func_const:
             decl.append(' const')
         self.gen_attrs(self.fattrs, decl)
-
-        return ''.join(decl)
 
     _skip_annotations = ['template']
 
@@ -850,7 +850,7 @@ void decl12(std::vector<std::string> arg1, string arg2)
 #void funptr1(double (*get)())
 #const void foo(int arg1+in, double arg2+out = 0.0)
 statements = """
-void decl13(long int arg1,long long arg2,unsigned int)
+int CallBack(  int (*func)(int) )
 """
 #add_type('Class1')
 #current_class = ''
