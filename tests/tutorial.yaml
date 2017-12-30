@@ -74,6 +74,12 @@ functions:
     # unable to deal with dimension
     wrap_python: False
     wrap_lua: False
+
+- decl: long long TypeLongLong(long long arg1)
+  options:
+     # No long long in Lua
+     wrap_lua: False
+
 - decl: bool Function3(bool arg)
 - decl: void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
   options:
@@ -100,6 +106,7 @@ functions:
   -  _arg1
   -  _arg1_arg2
 
+# overloaded functions
 - decl: void Function6(const std::string& name)
   function_suffix: _from_name
 - decl: void Function6(int indx)
@@ -199,7 +206,7 @@ functions:
     wrap_python: False
     wrap_lua: False
 
-# does multidimensional make sense.  Need to call shape
+# does multidimensional make sense?  Need to call shape
 #- decl: void vector1XXX(std::vector<int> &arg+dimension(:,:))
 
 -  decl: int vector_string_count(const std::vector< std::string > &arg)

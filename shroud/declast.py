@@ -537,20 +537,17 @@ class Declaration(Node):
     name = property(get_name, set_name, None, "Declaration name")
 
     def get_type(self):
-        """Extract type.
-        TODO: deal with 'long long', 'unsigned int'
+        """Return type.
+        Mulitple specifies are joined by an underscore. i.e. long_long
         """
         if self.specifier:
-            if len(self.specifier) > 1:
-                raise RuntimeError("too many type specifiers '{}'"
-                                   .format(' '.join(self.specifier)))
-            typ = self.specifier[0]
+            typ = '_'.join(self.specifier)
         else:
             typ = 'int'
         return typ
 
     def set_type(self, typ):
-        self.specifier[0] = typ
+        self.specifier = typ.split()
 
     typename = property(get_type, set_type, None, "Declaration type")
 
@@ -643,33 +640,34 @@ class Declaration(Node):
         return d
 
     def __str__(self):
-        out = ' '.join(self.specifier)
+        out = []
         if self.const:
-            out += 'const '
+            out.append('const ')
         if self.volatile:
-            out += 'volatile'
+            out.append('volatile ')
         if self.specifier:
-            out += ' '.join(self.specifier)
+            out.append(' '.join(self.specifier))
         else:
-            out += 'int'
-        out += ' '
+            out.append('int')
+        out.append(' ')
         if self.declarator:
-            out += str(self.declarator)
+            out.append(str(self.declarator))
         if self.params is not None:
-            out += '('
+            out.append('(')
             if self.params:
-                out += str(self.params[0])
+                out.append(str(self.params[0]))
                 for param in self.params[1:]:
-                    out += ','
-                    out += str(param)
-            out += ')'
+                    out.append(',')
+                    out.append(str(param))
+            out.append(')')
             if self.func_const:
-                out += ' const'
+                out.append(' const')
         elif self.array:
-            out += '[AAAA]'
+            out.append('[AAAA]')
         if self.init:
-            out += '=' + str(self.init)
-        return out
+            out.append('=')
+            out.append(str(self.init))
+        return ''.join(out)
 
     def gen_arg_decl(self, decl):
         """ Generate declaration for a single Declaration node.
@@ -775,20 +773,19 @@ def str_declarator(decl):
       str_declarator( a['result'] )
       str_declarator( a['args'][0] )
     """
-    attrs = decl['attrs']
+    attrs = decl.attrs
     out = ''
-    if 'const' in attrs:
+    if decl.const:
         out += 'const '
-    out += decl['type']
+    out += ' '.join(decl.specifier)
     if 'template' in attrs:
         out += '<' + attrs['template'] + '>'
     out += ' '
-    if 'reference' in attrs:
+    if decl.is_reference():
         out += '&'
-    if 'ptr' in attrs:
+    if decl.is_pointer():
         out += '*'
-#    out += decl['name']
-    out += decl.get('name','XXXNAME')
+    out += decl.name
     return out
 
 
@@ -853,7 +850,7 @@ void decl12(std::vector<std::string> arg1, string arg2)
 #void funptr1(double (*get)())
 #const void foo(int arg1+in, double arg2+out = 0.0)
 statements = """
-const std::string& Function4b(const std::string& arg1, const std::string& arg2 )
+void decl13(long int arg1,long long arg2,unsigned int)
 """
 #add_type('Class1')
 #current_class = ''
@@ -865,12 +862,6 @@ if __name__ == '__main__':
             a = Parser(line,current_class=current_class,trace=False).decl_statement()
             print(line)
             print(a)
-
-            dd = a.to_dict()
-            print(str_declarator(dd))
-            for arg in dd['args']:
-                print('arg:', str_declarator(arg))
-            print(json.dumps(dd, indent=4, sort_keys=True))
 
             dd = a._to_dict()
             print(json.dumps(dd, indent=4, sort_keys=True))

@@ -369,6 +369,18 @@ class Schema(object):
                 LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
                 LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
                 ),
+            long_long=util.Typedef(
+                'long_long',
+                c_type='long long',
+                cpp_type='long long',
+                f_cast='int({f_var}, C_LONG_LONG)',
+                f_type='integer(C_LONG_LONG)',
+                f_module=dict(iso_c_binding=['C_LONG_LONG']),
+                PY_format='L',
+                LUA_type='LUA_TNUMBER',
+                LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+                LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+                ),
             size_t=util.Typedef(
                 'size_t',
                 c_type='size_t',

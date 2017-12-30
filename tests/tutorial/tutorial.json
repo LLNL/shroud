@@ -653,6 +653,101 @@
                         }, 
                         "const": false, 
                         "declarator": {
+                            "name": "arg1", 
+                            "pointer": []
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "long", 
+                            "long"
+                        ], 
+                        "storage": []
+                    }
+                ], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "TypeLongLong", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "long", 
+                    "long"
+                ], 
+                "storage": []
+            }, 
+            "_decl": "long_long TypeLongLong(long_long arg1 +intent(in)+value)", 
+            "_fmt": {
+                "C_call_code": "long long SHT_rv = TypeLongLong(arg1);", 
+                "C_call_list": "arg1", 
+                "C_name": "TUT_type_long_long", 
+                "C_prototype": "long long arg1", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "long long", 
+                "F_C_call": "c_type_long_long", 
+                "F_C_name": "type_long_long", 
+                "F_arg_c_call": "arg1", 
+                "F_arg_c_call_tab": "\targ1", 
+                "F_arguments": "arg1", 
+                "F_call_code": "SHT_rv = c_type_long_long(\targ1)", 
+                "F_name_function": "type_long_long", 
+                "F_name_generic": "type_long_long", 
+                "F_name_impl": "type_long_long", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "PY_name_impl": "PY_type_long_long", 
+                "c_const": "", 
+                "function_name": "TypeLongLong", 
+                "underscore_name": "type_long_long"
+            }, 
+            "_fmtargs": {
+                "arg1": {
+                    "fmtc": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "long long", 
+                        "cpp_var": "arg1"
+                    }, 
+                    "fmtf": {
+                        "c_var": "arg1", 
+                        "f_var": "arg1"
+                    }, 
+                    "fmtpy": {
+                        "c_const": "", 
+                        "c_ptr": "", 
+                        "c_var": "arg1", 
+                        "cpp_type": "long long", 
+                        "cpp_var": "arg1", 
+                        "py_var": "SH_Py_arg1"
+                    }
+                }
+            }, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "long long SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 6, 
+            "_subprogram": "function", 
+            "decl": "long long TypeLongLong(long long arg1)", 
+            "options": {
+                "wrap_lua": false
+            }
+        }, 
+        {
+            "_ast": {
+                "args": [
+                    {
+                        "attrs": {
+                            "intent": "in", 
+                            "value": true
+                        }, 
+                        "const": false, 
+                        "declarator": {
                             "name": "arg", 
                             "pointer": []
                         }, 
@@ -740,7 +835,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 6, 
+            "_function_index": 7, 
             "_subprogram": "function", 
             "decl": "bool Function3(bool arg)", 
             "options": {}
@@ -883,7 +978,7 @@
                     }
                 }
             }, 
-            "_function_index": 7, 
+            "_function_index": 8, 
             "_subprogram": "subroutine", 
             "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
             "options": {
@@ -892,7 +987,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 40, 
+            "_PTR_F_C_index": 41, 
             "_ast": {
                 "args": [
                     {
@@ -1012,7 +1107,7 @@
                     }
                 }
             }, 
-            "_function_index": 8, 
+            "_function_index": 9, 
             "_subprogram": "function", 
             "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
             "options": {
@@ -1020,7 +1115,7 @@
             }
         }, 
         {
-            "_PTR_C_CPP_index": 8, 
+            "_PTR_C_CPP_index": 9, 
             "_ast": {
                 "args": [
                     {
@@ -1216,7 +1311,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 40, 
+            "_function_index": 41, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
@@ -1372,7 +1467,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 9, 
+            "_function_index": 10, 
             "_subprogram": "function", 
             "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
             "options": {
@@ -1381,7 +1476,7 @@
             }
         }, 
         {
-            "_PTR_C_CPP_index": 9, 
+            "_PTR_C_CPP_index": 10, 
             "_ast": {
                 "args": [
                     {
@@ -1575,7 +1670,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 41, 
+            "_function_index": 42, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
@@ -1587,8 +1682,8 @@
             }
         }, 
         {
-            "_PTR_C_CPP_index": 9, 
-            "_PTR_F_C_index": 41, 
+            "_PTR_C_CPP_index": 10, 
+            "_PTR_F_C_index": 42, 
             "_ast": {
                 "args": [
                     {
@@ -1730,7 +1825,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": ""
             }, 
-            "_function_index": 42, 
+            "_function_index": 43, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
@@ -1786,7 +1881,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 30, 
+            "_function_index": 31, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -1880,7 +1975,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 31, 
+            "_function_index": 32, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -1950,8 +2045,8 @@
             }, 
             "_decl": "double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)", 
             "_default_funcs": [
-                30, 
-                31
+                31, 
+                32
             ], 
             "_fmt": {
                 "C_call_code": "double SHT_rv = Function5(arg1, arg2);", 
@@ -2047,7 +2142,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 10, 
+            "_function_index": 11, 
             "_has_default_arg": true, 
             "_nargs": [
                 0, 
@@ -2064,7 +2159,7 @@
             "options": {}
         }, 
         {
-            "_PTR_F_C_index": 43, 
+            "_PTR_F_C_index": 44, 
             "_ast": {
                 "args": [
                     {
@@ -2103,8 +2198,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                11, 
-                12
+                12, 
+                13
             ], 
             "_decl": "void Function6(const std::string & name +intent(in))", 
             "_fmt": {
@@ -2161,7 +2256,7 @@
                     }
                 }
             }, 
-            "_function_index": 11, 
+            "_function_index": 12, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function6(const std::string& name)", 
@@ -2169,7 +2264,7 @@
             "options": {}
         }, 
         {
-            "_PTR_C_CPP_index": 11, 
+            "_PTR_C_CPP_index": 12, 
             "_ast": {
                 "args": [
                     {
@@ -2209,8 +2304,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                11, 
-                12
+                12, 
+                13
             ], 
             "_decl": "void Function6(const std::string & name +intent(in)+len_trim(Lname))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -2242,7 +2337,7 @@
                     }
                 }
             }, 
-            "_function_index": 43, 
+            "_function_index": 44, 
             "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2289,8 +2384,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                11, 
-                12
+                12, 
+                13
             ], 
             "_decl": "void Function6(int indx +intent(in)+value)", 
             "_fmt": {
@@ -2348,7 +2443,7 @@
                     }
                 }
             }, 
-            "_function_index": 12, 
+            "_function_index": 13, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function6(int indx)", 
@@ -2393,7 +2488,7 @@
                 "function_name": "Function7", 
                 "underscore_name": "function7"
             }, 
-            "_function_index": 13, 
+            "_function_index": 14, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "cpp_template": {
@@ -2480,7 +2575,7 @@
                     }
                 }
             }, 
-            "_function_index": 32, 
+            "_function_index": 33, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2562,7 +2657,7 @@
                     }
                 }
             }, 
-            "_function_index": 33, 
+            "_function_index": 34, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2595,7 +2690,7 @@
                 "function_name": "Function8", 
                 "underscore_name": "function8"
             }, 
-            "_function_index": 14, 
+            "_function_index": 15, 
             "_overloaded": true, 
             "_subprogram": "function", 
             "cpp_template": {
@@ -2659,7 +2754,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 34, 
+            "_function_index": 35, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -2718,7 +2813,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 35, 
+            "_function_index": 36, 
             "_generated": "cpp_template", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -2811,7 +2906,7 @@
                     }
                 }
             }, 
-            "_function_index": 15, 
+            "_function_index": 16, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function9(double arg)", 
@@ -2826,7 +2921,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 15, 
+            "_PTR_F_C_index": 16, 
             "_ast": {
                 "args": [
                     {
@@ -2872,7 +2967,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_float"
             }, 
-            "_function_index": 52, 
+            "_function_index": 53, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2885,7 +2980,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 15, 
+            "_PTR_F_C_index": 16, 
             "_ast": {
                 "args": [
                     {
@@ -2931,7 +3026,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_double"
             }, 
-            "_function_index": 53, 
+            "_function_index": 54, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -2960,8 +3055,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                16, 
-                17
+                17, 
+                18
             ], 
             "_decl": "void Function10()", 
             "_fmt": {
@@ -2990,14 +3085,14 @@
                 "underscore_name": "function10"
             }, 
             "_fmtargs": {}, 
-            "_function_index": 16, 
+            "_function_index": 17, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function10()", 
             "options": {}
         }, 
         {
-            "_PTR_F_C_index": 44, 
+            "_PTR_F_C_index": 45, 
             "_ast": {
                 "args": [
                     {
@@ -3052,8 +3147,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                16, 
-                17
+                17, 
+                18
             ], 
             "_decl": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
             "_fmt": {
@@ -3125,7 +3220,7 @@
                     }
                 }
             }, 
-            "_function_index": 17, 
+            "_function_index": 18, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void Function10(const std::string &name, double arg2)", 
@@ -3141,7 +3236,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 17, 
+            "_PTR_F_C_index": 18, 
             "_ast": {
                 "args": [
                     {
@@ -3196,8 +3291,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                16, 
-                17
+                17, 
+                18
             ], 
             "_decl": "void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)", 
             "_fmt": {
@@ -3212,7 +3307,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_1_float"
             }, 
-            "_function_index": 54, 
+            "_function_index": 55, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -3225,7 +3320,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 17, 
+            "_PTR_F_C_index": 18, 
             "_ast": {
                 "args": [
                     {
@@ -3280,8 +3375,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                16, 
-                17
+                17, 
+                18
             ], 
             "_decl": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
             "_fmt": {
@@ -3296,7 +3391,7 @@
                 "F_subprogram": "subroutine", 
                 "function_suffix": "_1_double"
             }, 
-            "_function_index": 55, 
+            "_function_index": 56, 
             "_generated": "fortran_generic", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -3309,7 +3404,7 @@
             }
         }, 
         {
-            "_PTR_C_CPP_index": 17, 
+            "_PTR_C_CPP_index": 18, 
             "_ast": {
                 "args": [
                     {
@@ -3365,8 +3460,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                16, 
-                17
+                17, 
+                18
             ], 
             "_decl": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -3411,7 +3506,7 @@
                     }
                 }
             }, 
-            "_function_index": 44, 
+            "_function_index": 45, 
             "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -3463,8 +3558,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                18, 
-                19
+                19, 
+                20
             ], 
             "_decl": "int overload1(int num +intent(in)+value)", 
             "_fmt": {
@@ -3509,7 +3604,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 36, 
+            "_function_index": 37, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -3577,8 +3672,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                18, 
-                19
+                19, 
+                20
             ], 
             "_decl": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)", 
             "_fmt": {
@@ -3636,7 +3731,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 37, 
+            "_function_index": 38, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -3721,13 +3816,13 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                18, 
-                19
+                19, 
+                20
             ], 
             "_decl": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
             "_default_funcs": [
-                36, 
-                37
+                37, 
+                38
             ], 
             "_fmt": {
                 "C_call_code": "int SHT_rv = overload1(num, offset, stride);", 
@@ -3853,7 +3948,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 18, 
+            "_function_index": 19, 
             "_has_default_arg": true, 
             "_nargs": [
                 1, 
@@ -3919,8 +4014,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                18, 
-                19
+                19, 
+                20
             ], 
             "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
             "_fmt": {
@@ -3978,7 +4073,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 38, 
+            "_function_index": 39, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -4057,8 +4152,8 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                18, 
-                19
+                19, 
+                20
             ], 
             "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
             "_fmt": {
@@ -4129,7 +4224,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 39, 
+            "_function_index": 40, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "function", 
@@ -4225,13 +4320,13 @@
                 "storage": []
             }, 
             "_cpp_overload": [
-                18, 
-                19
+                19, 
+                20
             ], 
             "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
             "_default_funcs": [
-                38, 
-                39
+                39, 
+                40
             ], 
             "_fmt": {
                 "C_call_code": "int SHT_rv = overload1(type, num, offset, stride);", 
@@ -4385,7 +4480,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 19, 
+            "_function_index": 20, 
             "_has_default_arg": true, 
             "_nargs": [
                 2, 
@@ -4493,7 +4588,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 20, 
+            "_function_index": 21, 
             "_subprogram": "function", 
             "decl": "TypeID typefunc(TypeID arg)", 
             "options": {}
@@ -4598,7 +4693,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 21, 
+            "_function_index": 22, 
             "_subprogram": "function", 
             "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
             "options": {}
@@ -4687,7 +4782,7 @@
                     }
                 }
             }, 
-            "_function_index": 22, 
+            "_function_index": 23, 
             "_subprogram": "subroutine", 
             "decl": "void useclass(const Class1 *arg1)", 
             "options": {
@@ -4695,7 +4790,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 45, 
+            "_PTR_F_C_index": 46, 
             "_ast": {
                 "args": [
                     {
@@ -4750,7 +4845,7 @@
                 "function_name": "vector_sum", 
                 "underscore_name": "vector_sum"
             }, 
-            "_function_index": 23, 
+            "_function_index": 24, 
             "_subprogram": "function", 
             "decl": "int vector_sum(const std::vector<int> &arg)", 
             "options": {
@@ -4760,7 +4855,7 @@
             }
         }, 
         {
-            "_PTR_C_CPP_index": 23, 
+            "_PTR_C_CPP_index": 24, 
             "_ast": {
                 "args": [
                     {
@@ -4838,7 +4933,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 45, 
+            "_function_index": 46, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
             "decl": "int vector_sum(const std::vector<int> &arg)", 
@@ -4850,7 +4945,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 46, 
+            "_PTR_F_C_index": 47, 
             "_ast": {
                 "args": [
                     {
@@ -4904,7 +4999,7 @@
                 "function_name": "vector_iota", 
                 "underscore_name": "vector_iota"
             }, 
-            "_function_index": 24, 
+            "_function_index": 25, 
             "_subprogram": "subroutine", 
             "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
             "options": {
@@ -4914,7 +5009,7 @@
             }
         }, 
         {
-            "_PTR_C_CPP_index": 24, 
+            "_PTR_C_CPP_index": 25, 
             "_ast": {
                 "args": [
                     {
@@ -4988,7 +5083,7 @@
                     }
                 }
             }, 
-            "_function_index": 46, 
+            "_function_index": 47, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
@@ -5000,7 +5095,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 47, 
+            "_PTR_F_C_index": 48, 
             "_ast": {
                 "args": [
                     {
@@ -5054,7 +5149,7 @@
                 "function_name": "vector_increment", 
                 "underscore_name": "vector_increment"
             }, 
-            "_function_index": 25, 
+            "_function_index": 26, 
             "_subprogram": "subroutine", 
             "decl": "void vector_increment(std::vector<int> &arg)", 
             "options": {
@@ -5064,7 +5159,7 @@
             }
         }, 
         {
-            "_PTR_C_CPP_index": 25, 
+            "_PTR_C_CPP_index": 26, 
             "_ast": {
                 "args": [
                     {
@@ -5138,7 +5233,7 @@
                     }
                 }
             }, 
-            "_function_index": 47, 
+            "_function_index": 48, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "void vector_increment(std::vector<int> &arg)", 
@@ -5150,7 +5245,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 48, 
+            "_PTR_F_C_index": 49, 
             "_ast": {
                 "args": [
                     {
@@ -5205,7 +5300,7 @@
                 "function_name": "vector_string_count", 
                 "underscore_name": "vector_string_count"
             }, 
-            "_function_index": 26, 
+            "_function_index": 27, 
             "_subprogram": "function", 
             "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
             "doxygen": {
@@ -5219,7 +5314,7 @@
             }
         }, 
         {
-            "_PTR_C_CPP_index": 26, 
+            "_PTR_C_CPP_index": 27, 
             "_ast": {
                 "args": [
                     {
@@ -5299,7 +5394,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 48, 
+            "_function_index": 49, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
             "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
@@ -5317,7 +5412,7 @@
         {
             "C_return_code": "return SH_arg.size();", 
             "C_return_type": "int", 
-            "_PTR_F_C_index": 49, 
+            "_PTR_F_C_index": 50, 
             "_ast": {
                 "args": [
                     {
@@ -5372,7 +5467,7 @@
                 "function_name": "vector_string_fill", 
                 "underscore_name": "vector_string_fill"
             }, 
-            "_function_index": 27, 
+            "_function_index": 28, 
             "_subprogram": "subroutine", 
             "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
             "doxygen": {
@@ -5388,7 +5483,7 @@
         {
             "C_return_code": "return SH_arg.size();", 
             "C_return_type": "int", 
-            "_PTR_C_CPP_index": 27, 
+            "_PTR_C_CPP_index": 28, 
             "_ast": {
                 "args": [
                     {
@@ -5464,7 +5559,7 @@
                     }
                 }
             }, 
-            "_function_index": 49, 
+            "_function_index": 50, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
@@ -5480,7 +5575,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 50, 
+            "_PTR_F_C_index": 51, 
             "_ast": {
                 "args": [
                     {
@@ -5534,7 +5629,7 @@
                 "function_name": "vector_string_append", 
                 "underscore_name": "vector_string_append"
             }, 
-            "_function_index": 28, 
+            "_function_index": 29, 
             "_subprogram": "subroutine", 
             "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
             "doxygen": {
@@ -5547,7 +5642,7 @@
             }
         }, 
         {
-            "_PTR_C_CPP_index": 28, 
+            "_PTR_C_CPP_index": 29, 
             "_ast": {
                 "args": [
                     {
@@ -5623,7 +5718,7 @@
                     }
                 }
             }, 
-            "_function_index": 50, 
+            "_function_index": 51, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
@@ -5697,13 +5792,13 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 29, 
+            "_function_index": 30, 
             "_subprogram": "function", 
             "decl": "const std::string& LastFunctionCalled() +pure", 
             "options": {}
         }, 
         {
-            "_PTR_C_CPP_index": 29, 
+            "_PTR_C_CPP_index": 30, 
             "_ast": {
                 "args": [
                     {
@@ -5781,7 +5876,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 51, 
+            "_function_index": 52, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "subroutine", 
             "decl": "const std::string& LastFunctionCalled() +pure", 
@@ -6192,6 +6287,21 @@
                 ]
             }, 
             "f_type": "integer(C_LONG)"
+        }, 
+        "long_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PY_format": "L", 
+            "c_type": "long long", 
+            "cpp_type": "long long", 
+            "f_cast": "int({f_var}, C_LONG_LONG)", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG_LONG)"
         }, 
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 

@@ -73,6 +73,8 @@ contains
 
   subroutine test_functions
 
+    integer(C_LONG_LONG) :: rv_ll
+
     call set_case_name("test_functions")
 
     call function1
@@ -135,6 +137,9 @@ contains
 
     call sum(5, [1,2,3,4,5], rv_int)
     call assert_true(rv_int .eq. 15)
+
+    rv_ll = type_long_long( 2_c_long_long)
+    call assert_true(rv_ll .eq. 4)
 
     rv_int = overload1(10)
     call assert_true(rv_int .eq. 10)

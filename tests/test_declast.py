@@ -543,6 +543,18 @@ class CheckParse(unittest.TestCase):
         })
         self.assertEqual("decl12", r.get_name())
 
+    def test_decl13(self):
+        """Test multi-specifier
+        """
+        r = declast.check_decl("void decl13("
+                               "long int arg1,"
+                               "long long arg2,"
+                               "unsigned int)")
+
+        self.assertEqual("long_int", r.params[0].typename)
+        self.assertEqual("long_long", r.params[1].typename)
+        self.assertEqual("unsigned_int", r.params[2].typename)
+
     def test_asarg(self):
         r = declast.check_decl("const std::string& getName() const")
 

@@ -176,6 +176,12 @@ void Sum(int len, int *values, int *result)
     return;
 }
 
+long long TypeLongLong(long long arg1)
+{
+  return arg1 + 2;
+}
+
+
 int overload1(int num, int offset, int stride)
 {
     last_function_called = "overload1_0";
