@@ -555,6 +555,64 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("long_long", r.params[1].typename)
         self.assertEqual("unsigned_int", r.params[2].typename)
 
+    def test_decl14(self):
+        """Function pointer
+        """
+        r = declast.check_decl("int CallBack1(  int (*func)(int) )")
+
+        self.assertEqual(r._to_dict(),{
+            "args": [
+                {
+                    "args": [
+                        {
+                            "attrs": {}, 
+                            "const": False, 
+                            "declarator": {
+                                "pointer": []
+                            }, 
+                            "func_const": False, 
+                            "specifier": [
+                                "int"
+                            ], 
+                            "storage": []
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": False, 
+                    "declarator": {
+                        "func": {
+                            "name": "func", 
+                            "pointer": [
+                                {
+                                    "const": False, 
+                                    "ptr": "*"
+                                }
+                            ]
+                        }, 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": False, 
+                    "specifier": [
+                        "int"
+                    ], 
+                    "storage": []
+                }
+            ], 
+            "attrs": {}, 
+            "const": False, 
+            "declarator": {
+                "name": "CallBack1", 
+                "pointer": []
+            }, 
+            "fattrs": {}, 
+            "func_const": False, 
+            "specifier": [
+                "int"
+            ], 
+            "storage": []
+        })
+
     def test_asarg(self):
         r = declast.check_decl("const std::string& getName() const")
 
