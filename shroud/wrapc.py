@@ -48,6 +48,7 @@ from __future__ import absolute_import
 import os
 
 from . import declast
+from . import typemap
 from . import whelpers
 from . import util
 from .util import append_format
@@ -97,11 +98,11 @@ class Wrapc(util.WrapperMixin):
 #            raise RuntimeError
         t = []
         typ = ast.typename
-        typedef = util.Typedef.lookup(typ)
+        typedef = typemap.Typedef.lookup(typ)
         attrs = ast.attrs
         if 'template' in attrs:
             # If a template, use its type
-            typedef = util.Typedef.lookup(attrs['template'])
+            typedef = typemap.Typedef.lookup(attrs['template'])
         if typedef is None:
             raise RuntimeError("No such type %s" % typ)
         if ast.const:
@@ -323,7 +324,7 @@ class Wrapc(util.WrapperMixin):
     def wrap_class(self, node):
         self.log.write("class {1[name]}\n".format(self, node))
         name = node['name']
-        typedef = util.Typedef.lookup(name)
+        typedef = typemap.Typedef.lookup(name)
         cname = typedef.c_type
 
         fmt_class = node['_fmt']
@@ -402,7 +403,7 @@ class Wrapc(util.WrapperMixin):
             CPP_result_type = 'void'
             CPP_subprogram = 'subroutine'
 
-        result_typedef = util.Typedef.lookup(result_type)
+        result_typedef = typemap.Typedef.lookup(result_type)
         result_is_const = ast.const
         is_ctor = ast.fattrs.get('constructor', False)
         is_dtor = ast.fattrs.get('destructor', False)
@@ -461,7 +462,7 @@ class Wrapc(util.WrapperMixin):
             fmt_func.c_ptr = ' *'
             fmt_func.c_var = fmt_func.C_this
             # LHS is class' cpp_to_c
-            cls_typedef = util.Typedef.lookup(cls['name'])
+            cls_typedef = typemap.Typedef.lookup(cls['name'])
             append_format(pre_call, 
                           '{c_const}{cpp_class} *{CPP_this} = ' +
                           cls_typedef.c_to_cpp + ';', fmt_func)
@@ -478,7 +479,7 @@ class Wrapc(util.WrapperMixin):
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault('fmtc', util.Options(fmt_func))
             c_attrs = arg.attrs
-            arg_typedef, c_statements = util.lookup_c_statements(arg)
+            arg_typedef, c_statements = typemap.lookup_c_statements(arg)
             if 'template' in c_attrs:
                 fmt_arg.cpp_T = c_attrs['template']
 

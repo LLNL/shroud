@@ -80,6 +80,7 @@ import copy
 import os
 
 from . import declast
+from . import typemap
 from . import whelpers
 from . import util
 from .util import wformat, append_format
@@ -134,12 +135,12 @@ class Wrapf(util.WrapperMixin):
 
         """
         t = []
-        typedef = util.Typedef.lookup(ast.typename)
+        typedef = typemap.Typedef.lookup(ast.typename)
         basedef = typedef
         attrs = ast.attrs
         if 'template' in attrs:
             # If a template, use its type
-            typedef = util.Typedef.lookup(attrs['template'])
+            typedef = typemap.Typedef.lookup(attrs['template'])
         intent = attrs.get('intent', None)
 
         typ = typedef.f_c_type or typedef.f_type
@@ -183,11 +184,11 @@ class Wrapf(util.WrapperMixin):
           OPTIONAL, VALUE, and INTENT
         """
         t = []
-        typedef = util.Typedef.lookup(ast.typename)
+        typedef = typemap.Typedef.lookup(ast.typename)
         attrs = ast.attrs
         if 'template' in attrs:
             # If a template, use its type
-            typedef = util.Typedef.lookup(attrs['template'])
+            typedef = typemap.Typedef.lookup(attrs['template'])
         intent = attrs.get('intent', None)
 
         typ = typedef.f_type
@@ -286,7 +287,7 @@ class Wrapf(util.WrapperMixin):
         self.log.write("class {1[name]}\n".format(self, node))
         name = node['name']
         unname = util.un_camel(name)
-        typedef = util.Typedef.lookup(name)
+        typedef = typemap.Typedef.lookup(name)
 
         fmt_class = node['_fmt']
 
@@ -577,7 +578,7 @@ class Wrapf(util.WrapperMixin):
             result_type = node['C_return_type']
             subprogram = 'function'
 
-        result_typedef = util.Typedef.lookup(result_type)
+        result_typedef = typemap.Typedef.lookup(result_type)
         is_const = ast.func_const
         is_ctor = ast.fattrs.get('constructor', False)
         is_pure = ast.fattrs.get('pure', False)
@@ -607,7 +608,7 @@ class Wrapf(util.WrapperMixin):
         for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
-            arg_typedef, c_statements = util.lookup_c_statements(arg)
+            arg_typedef, c_statements = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
             attrs = arg.attrs
             self.update_f_module(modules,
@@ -755,7 +756,7 @@ class Wrapf(util.WrapperMixin):
             ast = copy.deepcopy(node['_ast'])
             ast.typename = result_type
 
-        result_typedef = util.Typedef.lookup(result_type)
+        result_typedef = typemap.Typedef.lookup(result_type)
         is_ctor = ast.fattrs.get('constructor', False)
         is_dtor = ast.fattrs.get('destructor', False)
         is_pure = ast.fattrs.get('pure', False)
@@ -835,12 +836,12 @@ class Wrapf(util.WrapperMixin):
                 arg_f_decl.append(self._f_decl(f_arg))
 
                 arg_type = f_arg.typename
-                arg_typedef = util.Typedef.lookup(arg_type)
+                arg_typedef = typemap.Typedef.lookup(arg_type)
                 base_typedef = arg_typedef
                 if 'template' in c_attrs:
                     # If a template, use its type
                     cpp_T = c_attrs['template']
-                    arg_typedef = util.Typedef.lookup(cpp_T)
+                    arg_typedef = typemap.Typedef.lookup(cpp_T)
 
                 f_statements = arg_typedef.f_statements
                 f_stmts = 'intent_' + intent
@@ -878,8 +879,8 @@ class Wrapf(util.WrapperMixin):
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
-            arg_typedef = util.Typedef.lookup(c_arg.typename)
-            arg_typedef, c_statements = util.lookup_c_statements(c_arg)
+            arg_typedef = typemap.Typedef.lookup(c_arg.typename)
+            arg_typedef, c_statements = typemap.lookup_c_statements(c_arg)
             c_intent_blk = c_statements.get(c_stmts, {})
 
             # Attributes   None=skip, True=use default, else use value

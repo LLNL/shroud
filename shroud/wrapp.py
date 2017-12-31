@@ -48,6 +48,7 @@ One Extension module per class
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import typemap
 from . import util
 from .util import wformat, append_format
 
@@ -80,6 +81,7 @@ class Wrapp(util.WrapperMixin):
         self.log = config.log
         self._init_splicer(splicers)
         self.comment = '//'
+        self.Typedef = typemap.Typedef   ### kludge
 
     def XXX_begin_output_file(self):
         """Start a new class for output"""
@@ -126,7 +128,7 @@ class Wrapp(util.WrapperMixin):
 
         # preprocess all classes first to allow them to reference each other
         for node in self.tree['classes']:
-            typedef = util.Typedef.lookup(node['name'])
+            typedef = typemap.Typedef.lookup(node['name'])
             fmt = node['_fmt']
             typedef.PY_format = 'O'
 
@@ -171,7 +173,7 @@ class Wrapp(util.WrapperMixin):
         self.log.write("class {1[name]}\n".format(self, node))
         name = node['name']
         unname = util.un_camel(name)
-        typedef = util.Typedef.lookup(name)
+        typedef = typemap.Typedef.lookup(name)
 
         options = node['options']
         fmt_class = node['_fmt']
@@ -372,7 +374,7 @@ return 1;""", fmt)
             result_type = 'void'
             CPP_subprogram = 'subroutine'
 
-        result_typedef = util.Typedef.lookup(result_type)
+        result_typedef = typemap.Typedef.lookup(result_type)
         is_ctor = ast.fattrs.get('constructor', False)
         is_dtor = ast.fattrs.get('destructor', False)
 #        is_const = ast.const
@@ -443,7 +445,7 @@ return 1;""", fmt)
                     fmt_arg.c_ptr = ''
                 attrs = arg.attrs
 
-                arg_typedef = util.Typedef.lookup(arg.typename)
+                arg_typedef = typemap.Typedef.lookup(arg.typename)
                 fmt_arg.cpp_type = arg_typedef.cpp_type
                 py_statements = arg_typedef.py_statements
                 have_cpp_local_var = arg_typedef.cpp_local_var

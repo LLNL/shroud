@@ -359,14 +359,14 @@ class Schema(object):
                     if not orig:
                         raise RuntimeError(
                             "No type for typedef {}".format(copy_type))
-                    def_types[key] = util.Typedef(key)
+                    def_types[key] = typemap.Typedef(key)
                     def_types[key].update(def_types[copy_type]._to_dict())
 
                 if key in def_types:
                     def_types[key].update(value)
                 else:
-                    def_types[key] = util.Typedef(key, **value)
-                util.typedef_wrapped_defaults(def_types[key])
+                    def_types[key] = typemap.Typedef(key, **value)
+                typemap.typedef_wrapped_defaults(def_types[key])
 
         patterns = node.setdefault('patterns', [])
 
@@ -682,8 +682,8 @@ class GenFunctions(object):
                     if arg.name == argname:
                         # Convert any typedef to native type with f_type
                         argtype = arg.typename
-                        typedef = util.Typedef.lookup(argtype)
-                        typedef = util.Typedef.lookup(typedef.f_type)
+                        typedef = typemap.Typedef.lookup(argtype)
+                        typedef = typemap.Typedef.lookup(typedef.f_type)
                         if not typedef.f_cast:
                             raise RuntimeError(
                                 "unable to cast type {} in fortran_generic"
@@ -762,7 +762,7 @@ class GenFunctions(object):
         # c_str of a stack variable. Warn and turn off the wrapper.
         ast = node['_ast']
         result_type = ast.typename
-        result_typedef = util.Typedef.lookup(result_type)
+        result_typedef = typemap.Typedef.lookup(result_type)
         # wrapped classes have not been added yet.
         # Only care about string here.
         attrs = ast.attrs
@@ -787,7 +787,7 @@ class GenFunctions(object):
         has_implied_arg = False
         for arg in ast.params:
             argtype = arg.typename
-            typedef = util.Typedef.lookup(argtype)
+            typedef = typemap.Typedef.lookup(argtype)
             if typedef.base == 'string':
                 is_ptr = arg.is_indirect()
                 if is_ptr:
@@ -840,7 +840,7 @@ class GenFunctions(object):
         for arg in C_new['_ast'].params:
             attrs = arg.attrs
             argtype = arg.typename
-            arg_typedef = util.Typedef.lookup(argtype)
+            arg_typedef = typemap.Typedef.lookup(argtype)
             if arg_typedef.base == 'vector':
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
@@ -849,7 +849,7 @@ class GenFunctions(object):
                 node['options'].wrap_c = False
                 node['options'].wrap_python = False  # NotImplemented
                 node['options'].wrap_lua = False     # NotImplemented
-            arg_typedef, c_statements = util.lookup_c_statements(arg)
+            arg_typedef, c_statements = typemap.lookup_c_statements(arg)
 
             # set names for implied buffer arguments
             stmts = 'intent_' + attrs['intent'] + '_buf'
@@ -951,17 +951,17 @@ class GenFunctions(object):
             return
         ast = node['_ast']
         rv_type = ast.typename
-        typedef = util.Typedef.lookup(rv_type)
+        typedef = typemap.Typedef.lookup(rv_type)
         if typedef is None:
             raise RuntimeError(
                 "Unknown type {} for function decl: {}"
                 .format(rv_type, node['decl']))
-        result_typedef = util.Typedef.lookup(rv_type)
+        result_typedef = typemap.Typedef.lookup(rv_type)
         # XXX - make sure it exists
         used_types[rv_type] = result_typedef
         for arg in ast.params:
             argtype = arg.typename
-            typedef = util.Typedef.lookup(argtype)
+            typedef = typemap.Typedef.lookup(argtype)
             if typedef is None:
                 raise RuntimeError("%s not defined" % argtype)
             if typedef.base == 'wrapped':
@@ -1003,12 +1003,12 @@ class VerifyAttrs(object):
         fmt_class = cls['_fmt']
         options = cls['options']
 
-        typedef = util.Typedef.lookup(name)
+        typedef = typemap.Typedef.lookup(name)
         if typedef is None:
             # unname = util.un_camel(name)
             unname = name.lower()
             cname = fmt_class.C_prefix + unname
-            typedef = util.Typedef(
+            typedef = typemap.Typedef(
                 name,
                 base='wrapped',
                 cpp_type=name,
@@ -1017,8 +1017,8 @@ class VerifyAttrs(object):
                 f_module={fmt_class.F_module_name:[unname]},
                 f_to_c = '{f_var}%%%s()' % options.F_name_instance_get,
                 )
-            util.typedef_wrapped_defaults(typedef)
-            util.Typedef.register(name, typedef)
+            typemap.typedef_wrapped_defaults(typedef)
+            typemap.Typedef.register(name, typedef)
 
         fmt_class.C_type_name = typedef.c_type
 
@@ -1046,7 +1046,7 @@ class VerifyAttrs(object):
         for arg in ast.params:
             argname = arg.name
             argtype = arg.typename
-            typedef = util.Typedef.lookup(argtype)
+            typedef = typemap.Typedef.lookup(argtype)
             if typedef is None:
                 # if the type does not exist, make sure it is defined by cpp_template
                 #- decl: void Function7(ArgType arg)
@@ -1139,7 +1139,7 @@ class VerifyAttrs(object):
                 if not temp:
                     raise RuntimeError("std::vector must have template argument: %s" % (
                             declast.str_declarator(arg)))
-                typedef = util.Typedef.lookup(temp)
+                typedef = typemap.Typedef.lookup(temp)
                 if typedef is None:
                     raise RuntimeError("No such type %s for template: %s" % (
                             temp, declast.str_declarator(arg)))

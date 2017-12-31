@@ -43,6 +43,7 @@ Generate Lua module for C++ code.
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import typemap
 from . import util
 from .util import wformat, append_format
 
@@ -76,6 +77,7 @@ class Wrapl(util.WrapperMixin):
         self.log = config.log
         self._init_splicer(splicers)
         self.comment = '//'
+        self.Typedef = typemap.Typedef   ### kludge
 
     def reset_file(self):
         pass
@@ -232,7 +234,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             # XXX           result_is_ptr = False
             CPP_subprogram = 'subroutine'
 
-        # XXX       result_typedef = util.Typedef.lookup(result_type)
+        # XXX       result_typedef = typemap.Typedef.lookup(result_type)
         is_ctor = ast.fattrs.get('constructor', False)
         is_dtor = ast.fattrs.get('destructor', False)
         if is_dtor:
@@ -257,7 +259,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             out_args = []
             found_default = False
             for arg in function['_ast'].params:
-                arg_typedef = util.Typedef.lookup(arg.typename)
+                arg_typedef = typemap.Typedef.lookup(arg.typename)
                 attrs = arg.attrs
                 if arg.init is not None:
                     all_calls.append(lua_function(
@@ -310,7 +312,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     fmt.nresults = call.nresults
                     checks = []
                     for iarg, arg in enumerate(call.inargs):
-                        arg_typedef = util.Typedef.lookup(arg.typename)
+                        arg_typedef = typemap.Typedef.lookup(arg.typename)
                         fmt.itype_var = itype_vars[iarg]
                         fmt.itype = arg_typedef.LUA_type
                         append_format(checks, '{itype_var} == {itype}', fmt)
@@ -442,7 +444,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             result_type = 'void'
             CPP_subprogram = 'subroutine'
 
-        result_typedef = util.Typedef.lookup(result_type)
+        result_typedef = typemap.Typedef.lookup(result_type)
         is_ctor = ast.fattrs.get('constructor', False)
         is_dtor = ast.fattrs.get('destructor', False)
         #        is_const = ast.const
@@ -470,7 +472,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # find class object
         if cls:
-            cls_typedef = util.Typedef.lookup(cls['name'])
+            cls_typedef = typemap.Typedef.lookup(cls['name'])
             if not is_ctor:
                 fmt.LUA_used_param_state = True
                 fmt.c_var = wformat(cls_typedef.LUA_pop, fmt)
@@ -505,7 +507,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             lua_pop = None
 
-            arg_typedef = util.Typedef.lookup(arg.typename)
+            arg_typedef = typemap.Typedef.lookup(arg.typename)
             fmt_arg.cpp_type = arg_typedef.cpp_type
             LUA_statements = arg_typedef.LUA_statements
             if attrs['intent'] in ['inout', 'in']:

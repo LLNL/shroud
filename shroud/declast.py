@@ -49,7 +49,7 @@ import collections
 import copy
 import re
 
-from . import util
+from . import typemap
 
 Token = collections.namedtuple('Token', ['typ', 'value', 'line', 'column'])
 
@@ -774,7 +774,7 @@ class Declaration(Node):
             decl.append('const ')
 
         typename = self.typename
-        typedef = util.Typedef.lookup(typename)
+        typedef = typemap.Typedef.lookup(typename)
         if typedef is None:
             raise RuntimeError("No such type: {}".format(typename))
 

@@ -174,69 +174,6 @@ def as_yaml(obj, order, indent, output):
             output.append('{}{}: {}'.format(prefix, key, value))
 
 
-def typedef_wrapped_defaults(typedef):
-    """Add some defaults to typedef.
-    When dumping typedefs to a file, only a subset is written
-    since the rest are boilerplate.  This function restores
-    the boilerplate.
-    """
-    if typedef.base != 'wrapped':
-        return
-
-    typedef.cpp_to_c=('static_cast<{c_const}%s *>('
-                      'static_cast<{c_const}void *>({cpp_var}))' %
-                      typedef.c_type)
-
-    # opaque pointer -> void pointer -> class instance pointer
-    typedef.c_to_cpp=('static_cast<{c_const}%s{c_ptr}>('
-                      'static_cast<{c_const}void *>({c_var}))' %
-                      typedef.cpp_type)
-
-    typedef.f_type='type(%s)' % typedef.f_derived_type
-    typedef.f_c_type='type(C_PTR)'
-
-    # XXX module name may not conflict with type name
-#    typedef.f_module={fmt_class.F_module_name:[unname]}
-
-    # return from C function
-    # f_c_return_decl='type(CPTR)' % unname,
-    typedef.f_statements = dict(
-        result=dict(
-            need_wrapper=True,
-            call=[
-                ('{F_result}%{F_derived_member} = '
-                 '{F_C_call}({F_arg_c_call_tab})')
-                ],
-            )
-        )
-    typedef.f_c_module={ 'iso_c_binding': ['C_PTR']}
-
-    typedef.py_statements=dict(
-        intent_in=dict(
-            post_parse=[
-                '{cpp_var} = {py_var} ? {py_var}->{BBB} : NULL;',
-            ],
-        ),
-        intent_out=dict(
-            ctor=[
-                ('{PyObject} * {py_var} = '
-                 'PyObject_New({PyObject}, &{PyTypeObject});'),
-                '{py_var}->{BBB} = {cpp_var};',
-            ]
-        ),
-    )
-    # typedef.PY_ctor='PyObject_New({PyObject}, &{PyTypeObject})'
-
-    typedef.LUA_type='LUA_TUSERDATA'
-    typedef.LUA_pop=('({LUA_userdata_type} *)luaL_checkudata'
-                     '({LUA_state_var}, 1, "{LUA_metadata}")')
-    # typedef.LUA_push=None  # XXX create a userdata object with metatable
-    # typedef.LUA_statements={}
-
-    # allow forward declarations to avoid recursive headers
-    typedef.forward=typedef.cpp_type
-
-
 def extern_C(output, position):
     """Create extern "C" guards for C++
     """
@@ -252,25 +189,6 @@ def extern_C(output, position):
                 '}',
                 '#endif'
                 ])
-
-def lookup_c_statements(arg):
-    """Look up the c_statements for an argument.
-    If the argument type is a template, look for 
-    template specific c_statements.
-    """
-    attrs = arg.attrs
-    argtype = arg.typename
-    arg_typedef = Typedef.lookup(argtype)
-
-    c_statements = arg_typedef.c_statements
-    if 'template' in attrs:
-        cpp_T = attrs['template']
-        cpp_T = Typedef.resolve_alias(cpp_T)
-        c_statements = arg_typedef.c_templates.get(
-            cpp_T, c_statements)
-        arg_typedef = Typedef.lookup(cpp_T)
-    return arg_typedef, c_statements
-
 
 class WrapperMixin(object):
     """Methods common to all wrapping classes.
@@ -342,7 +260,8 @@ class WrapperMixin(object):
 #        if lang not in [ 'c_type', 'cpp_type' ]:
 #            raise RuntimeError
         t = []
-        typedef = Typedef.lookup(ast.typename)
+        ### kludge
+        typedef = self.Typedef.lookup(ast.typename)
 
         if const is None:
             const = ast.const
@@ -475,167 +394,6 @@ class WrapperMixin(object):
             output.append(self.doxygen_cont)
             output.append(self.doxygen_cont + ' \\return %s' % docs['return'])
         output.append(self.doxygen_end)
-
-
-class Typedef(object):
-    """ Collect fields for an argument.
-    This used to be a dict but a class has better access semantics:
-       i.attr vs d['attr']
-    It also initializes default values to avoid  d.get('attr', default)
-    """
-
-    # Array of known keys with default values
-    _order = (
-        ('base', 'unknown'),      # Base type: 'string'
-        ('forward', None),        # Forward declaration
-        ('typedef', None),        # Initialize from existing type
-
-        ('cpp_type', None),       # Name of type in C++
-        ('cpp_to_c', '{cpp_var}'), # Expression to convert from C++ to C
-        ('cpp_header', None),     # Name of C++ header file required for implementation
-                                  # For example, if cpp_to_c was a function
-        ('cpp_local_var', False), # True if c_to_cpp requires a local C variable
-
-        ('c_type', None),         # Name of type in C
-        ('c_header', None),       # Name of C header file required for type
-        ('c_to_cpp', '{c_var}'),  # Expression to convert from C to C++
-        ('c_statements', {}),
-        ('c_templates', {}),      # c_statements for cpp_T
-        ('c_return_code', None),
-
-        ('f_c_args', None),       # List of argument names to F_C routine
-        ('f_c_argdecl', None),    # List of declarations to F_C routine
-        ('f_c_module', None),     # Fortran modules needed for interface  (dictionary)
-
-        ('f_type', None),         # Name of type in Fortran
-        ('f_c_type', None),       # Type for C interface
-        ('f_to_c', None),         # Expression to convert from Fortran to C
-        ('f_derived_type', None), # Fortran derived type name
-        ('f_args', None),         # Argument in Fortran wrapper to call C.
-        ('f_module', None),       # Fortran modules needed for type  (dictionary)
-        ('f_cast', '{f_var}'),    # Expression to convert to type
-                                  # e.g. intrinsics such as int and real
-        ('f_statements', {}),
-
-        ('result_as_arg', None),  # override fields when result should be treated as an argument
-
-        # Python
-        ('PY_format', 'O'),       # 'format unit' for PyArg_Parse
-        ('PY_PyTypeObject', None), # variable name of PyTypeObject instance
-        ('PY_PyObject', None),    # typedef name of PyObject instance
-        ('PY_ctor', None),        # expression to create object.
-                                  # ex. PyBool_FromLong({rv})
-        ('PY_to_object', None),   # PyBuild - object'=converter(address)
-        ('PY_from_object', None), # PyArg_Parse - status=converter(object, address);
-        ('py_statements', {}),
-
-        # Lua
-        ('LUA_type', 'LUA_TNONE'),
-        ('LUA_pop', 'POP'),
-        ('LUA_push', 'PUSH'),
-        ('LUA_statements', {}),
-    )
-
-
-    _keyorder, _valueorder = zip(*_order)
-
-    # valid fields
-    defaults = dict(_order)
-
-    def __init__(self, name, **kw):
-        self.name = name
-#        for key, defvalue in self.defaults.items():
-#            setattr(self, key, defvalue)
-        self.__dict__.update(self.defaults)  # set all default values
-        self.update(kw)
-
-    def update(self, d):
-        """Add options from dictionary to self.
-        """
-        for key in d:
-            if key in self.defaults:
-                setattr(self, key, d[key])
-            else:
-                raise RuntimeError("Unknown key for Argument %s", key)
-
-    def XXXcopy(self):
-        n = Typedef(self.name)
-        n.update(self._to_dict())
-        return n
-
-    def clone_as(self, name):
-        n = Typedef(name)
-        n.update(self._to_dict())
-        return n
-
-    def _to_dict(self):
-        """Convert instance to a dictionary for json.
-        """
-        # only export non-default values
-        a = {}
-        for key, defvalue in self.defaults.items():
-            value = getattr(self, key)
-            if value is not defvalue:
-                a[key] = value
-        return a
-
-    def __repr__(self):
-        # only print non-default values
-        args = []
-        for key, defvalue in self.defaults.items():
-            value = getattr(self, key)
-            if value is not defvalue:
-                if isinstance(value, str):
-                    args.append("{0}='{1}'".format(key, value))
-                else:
-                    args.append("{0}={1}".format(key, value))
-        return "Typedef('%s', " % self.name + ','.join(args) + ')'
-
-    def __as_yaml__(self, indent, output):
-        """Write out entire typedef as YAML.
-        """
-        as_yaml(self, self._keyorder, indent, output)
-
-    def __export_yaml__(self, indent, output):
-        """Write out a subset of a wrapped type.
-        Other fields are set with typedef_wrapped_defaults.
-        """
-        as_yaml(self, [
-            'base',
-            'cpp_header',
-            'cpp_type',
-            'c_type',
-            'c_header',
-            'f_derived_type',
-            'f_to_c',
-            'f_module',
-        ], indent, output)
-
-
-    ### Manage collection of typedefs
-    _typedict = {}   # dictionary of registered types
-    _typealias = {}  # dictionary of registered type aliases
-    @classmethod
-    def set_global_types(cls, typedict, typealias):
-        cls._typedict = typedict
-        cls._typealias = typealias
-
-    @classmethod
-    def register(cls, name, typedef):
-        """Register a typedef"""
-        cls._typedict[name] = typedef
-
-    @classmethod
-    def lookup(cls, name):
-        """Lookup name in registered types taking aliases into account."""
-        typedef = cls._typedict.get(cls._typealias.get(name,name), None)
-        return typedef
-
-    @classmethod
-    def resolve_alias(cls, name):
-        """return typedef for alias.
-        """
-        return cls._typealias.get(name, name)
 
 
 class Options(object):
