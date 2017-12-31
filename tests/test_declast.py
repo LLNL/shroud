@@ -43,6 +43,7 @@ Parse C++ declarations.
 from __future__ import print_function
 
 from shroud import declast
+from shroud import typemap
 
 import unittest
 import copy
@@ -94,6 +95,8 @@ class CheckParse(unittest.TestCase):
     def test_type_string(self):
         """Test string declarations
         """
+        typemap.initialize()
+
         r = declast.check_decl("char var1")
         s = r.gen_decl()
         self.assertEqual("char var1", s)
@@ -109,8 +112,6 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("std::string var1")
         s = r.gen_decl()
         self.assertEqual("std::string var1", s)
-#        s = r.gen_arg_as_c()
-#        self.assertEqual("std::string var1", s)
 
         r = declast.check_decl("std::string *var1")
         s = r.gen_decl()
@@ -119,6 +120,8 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("std::string &var1")
         s = r.gen_decl()
         self.assertEqual("std::string & var1", s)
+        s = r.gen_arg_as_c()
+        self.assertEqual("char * var1", s)
 
     def test_type_int_func(self):
         """Test function declarations

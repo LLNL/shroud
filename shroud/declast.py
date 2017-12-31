@@ -481,7 +481,7 @@ class Declarator(Node):
         Replace name with value from kwargs.
         """
         for ptr in self.pointer:
-            ptr.gen_decl_work(decl)
+            ptr.gen_decl_work(decl, **kwargs)
         if self.func:
             decl.append('(')
             self.func.gen_decl_work(decl, **kwargs)
@@ -780,11 +780,12 @@ class Declaration(Node):
 
         typ = getattr(typedef, 'c_type')
         decl.append(typ)
+        decl.append(' ')
 
         self.declarator.gen_decl_work(decl, as_c=True, **kwargs)
 
 
-def check_decl(decl, current_class=None, template_types=[]):
+def check_decl(decl, current_class=None, template_types=[],trace=False):
     """ parse expr as a declaration, return list/dict result.
     """
     if template_types or current_class:
@@ -794,10 +795,10 @@ def check_decl(decl, current_class=None, template_types=[]):
         type_specifier.update(template_types)
         if current_class:
             type_specifier.add(current_class)
-        a = Parser(decl,current_class=current_class,trace=False).decl_statement()
+        a = Parser(decl,current_class=current_class,trace=trace).decl_statement()
         type_specifier = old_types
     else:
-        a = Parser(decl,current_class=current_class,trace=False).decl_statement()
+        a = Parser(decl,current_class=current_class,trace=trace).decl_statement()
     return a
 
 
@@ -835,89 +836,3 @@ def str_declarator(decl):
         out += '*'
     out += decl.name
     return out
-
-
-statements = '''
- 10.
- 11.0
-   .12
--13.
-+14.0
--15e100
--16e-100
- 17e+100
- 18
-+19
-'''
-
-statements = """
-unsigned int a
-void funptr1(double (*get)())
-int *
-int *()
-int (*) ( void )
-char ** cc
-void aaa0(int)
-void aaa1(int a)
-void aaa2(int *a)
-int bbb(int a, int * b, const int * c, int const * d, int **e)
-"""
-
-later = """
-int *[3];
-int (*) [5];
-int (*const []) ( unsigned int, ... );
-long long foo()
-const void (*someFunc)()
-void (*const timer_func)()
-"""
-
-if True:
-    # tests from test_declast.py
-    # used to generate baselines
-    statements = """
-void foo
-void foo +alias(junk)
-void foo()
-void foo() const
-void foo(int arg1)
-void foo(int arg1, double arg2)
-const std::string& getName() const
-const void foo+attr1(30)+len=30(int arg1+in, double arg2+out)+attr2(True)
-Class1 *Class1()  +constructor
-void name(int arg1 = 0, double arg2 = 0.0, std::string arg3 = \"name\",bool arg4 = true)
-void decl11(ArgType arg)
-void decl12(std::vector<std::string> arg1, string arg2)
-"""
-    current_class='Class1'
-    add_type('Class1')
-    add_type('ArgType')
-
-
-#void foo()
-#void funptr1(double (*get)())
-#const void foo(int arg1+in, double arg2+out = 0.0)
-statements = """
-int CallBack(  int (*func)(int) )
-"""
-#add_type('Class1')
-#current_class = ''
-
-if __name__ == '__main__':
-    import json
-    for line in statements.split('\n'):
-        if line:
-            a = Parser(line,current_class=current_class,trace=False).decl_statement()
-            print(line)
-            print(a)
-
-            dd = a._to_dict()
-            print(json.dumps(dd, indent=4, sort_keys=True))
-
-            if line.replace(' ','') == str(a).replace(' ',''):
-                print('PASS')
-            else:
-                print('**', line.replace(' ',''))
-                print('**', str(a).replace(' ',''))
-                print('***** FAIL *****')
-#            print('123456789 123456789 123456789')

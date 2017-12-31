@@ -205,9 +205,7 @@ class Typedef(object):
         return cls._typealias.get(name, name)
 
 
-
 def initialize():
-
     def_types = dict(
         void=Typedef(
             'void',
@@ -777,6 +775,7 @@ def initialize():
     def_types_alias['std::vector'] = 'vector'
     def_types_alias['integer(C_INT)'] = 'int'
     def_types_alias['integer(C_LONG)'] = 'long'
+    def_types_alias['integer(C_LONG_LONG)'] = 'long_long'
     def_types_alias['real(C_FLOAT)'] = 'float'
     def_types_alias['real(C_DOUBLE)'] = 'double'
 
