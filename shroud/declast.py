@@ -815,6 +815,85 @@ class Declaration(Node):
             self.declarator.gen_decl_work(decl, **kwargs)
 
 
+##############
+
+    def bind_c(self, **kwargs):
+        """Generate an argument used with the bind(C) interface from Fortran.
+        """
+        t = []
+        typedef = typemap.Typedef.lookup(self.typename)
+        basedef = typedef
+        attrs = self.attrs
+        if 'template' in attrs:
+            # If a template, use its type
+            typedef = typemap.Typedef.lookup(attrs['template'])
+        intent = attrs.get('intent', None)
+
+        typ = typedef.f_c_type or typedef.f_type
+        if typ is None:
+            raise RuntimeError("Type {} has no value for f_c_type".format(self.typename))
+        t.append(typ)
+        if attrs.get('value', False):
+            t.append('value')
+        if intent:
+            t.append('intent(%s)' % intent.upper())
+
+        decl = []
+        decl.append(', '.join(t))
+        decl.append(' :: ')
+
+        if 'name' in kwargs:
+            decl.append(kwargs['name'])
+        else:
+            decl.append(self.name)
+
+        if basedef.base == 'vector':
+            dimension = '(*)'  # is array
+        elif typedef.base == 'string':
+            dimension = '(*)'  # is array
+        else:
+            # XXX should C always have dimensions of '(*)'?
+            dimension = attrs.get('dimension', '')
+        decl.append(dimension)
+        return ''.join(decl)
+
+    def gen_arg_as_fortran(self, local=False, **kwargs):
+        """Geneate declaration for Fortran variable.
+
+        If local==True, this is a local variable, skip attributes
+          OPTIONAL, VALUE, and INTENT
+        """
+        t = []
+        typedef = typemap.Typedef.lookup(self.typename)
+        attrs = self.attrs
+        if 'template' in attrs:
+            # If a template, use its type
+            typedef = typemap.Typedef.lookup(attrs['template'])
+
+        typ = typedef.f_type
+        t.append(typ)
+        if not local:  # must be dummy argument
+            if attrs.get('value', False):
+                t.append('value')
+            intent = attrs.get('intent', None)
+            if intent:
+                t.append('intent(%s)' % intent.upper())
+
+        decl = []
+        decl.append(', '.join(t))
+        decl.append(' :: ')
+
+        if 'name' in kwargs:
+            decl.append(kwargs['name'])
+        else:
+            decl.append(self.name)
+
+        dimension = attrs.get('dimension', '')
+        decl.append(dimension)
+
+        return ''.join(decl)
+
+
 def check_decl(decl, current_class=None, template_types=[],trace=False):
     """ parse expr as a declaration, return list/dict result.
     """

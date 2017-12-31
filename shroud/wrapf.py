@@ -123,95 +123,6 @@ class Wrapf(util.WrapperMixin):
         self.f_type_generic = {}  # look for generic methods
         self.type_bound_part = []
 
-    def _c_type(self, ast):
-        """
-        Return the Fortran type, and dimension
-        pass-by-value default
-
-        attributes:
-        ptr - True = pass-by-reference
-        reference - True = pass-by-reference
-        dimension - True = '(*)'
-
-        """
-        t = []
-        typedef = typemap.Typedef.lookup(ast.typename)
-        basedef = typedef
-        attrs = ast.attrs
-        if 'template' in attrs:
-            # If a template, use its type
-            typedef = typemap.Typedef.lookup(attrs['template'])
-        intent = attrs.get('intent', None)
-
-        typ = typedef.f_c_type or typedef.f_type
-        if typ is None:
-            raise RuntimeError("Type {} has no value for f_c_type".format(ast.typename))
-        t.append(typ)
-        if attrs.get('value', False):
-            t.append('value')
-        if intent:
-            t.append('intent(%s)' % intent.upper())
-        if basedef.base == 'vector':
-            dimension = '(*)'  # is array
-        elif typedef.base == 'string':
-            dimension = '(*)'  # is array
-        else:
-            # XXX should C always have dimensions of '(*)'?
-            dimension = attrs.get('dimension', '')
-        return (', '.join(t), dimension)
-
-    def _c_decl(self, ast, name=None):
-        """
-        Return the Fortran declaration.
-
-        If name is not supplied, use name in ast.
-        This makes it easy to reproduce the arguments.
-        """
-        typ, dimension = self._c_type(ast)
-        rv = typ + ' :: ' + (name or ast.name) + dimension
-        return rv
-
-    def _f_type(self, ast, local=False):
-        """
-        Return the Fortran type, and array attribute
-        pass-by-value default
-
-        attributes:
-        ptr - True = pass-by-reference
-        reference - True = pass-by-reference
-
-        If local==True, this is a local variable, skip attributes
-          OPTIONAL, VALUE, and INTENT
-        """
-        t = []
-        typedef = typemap.Typedef.lookup(ast.typename)
-        attrs = ast.attrs
-        if 'template' in attrs:
-            # If a template, use its type
-            typedef = typemap.Typedef.lookup(attrs['template'])
-        intent = attrs.get('intent', None)
-
-        typ = typedef.f_type
-        t.append(typ)
-        if not local:  # must be dummy argument
-            if attrs.get('value', False):
-                t.append('value')
-            if intent:
-                t.append('intent(%s)' % intent.upper())
-        dimension = attrs.get('dimension', '')
-        return (', '.join(t), dimension)
-
-    def _f_decl(self, ast, name=None, local=False):
-        """
-        Return the Fortran declaration.
-
-        If name is not supplied, use name in ast.
-        This makes it easy to reproduce the arguments.
-        """
-        typ, dimension = self._f_type(ast, local=local)
-        rv = typ + ' :: ' + (name or ast.name) + dimension
-        return rv
-
     def wrap_library(self):
         options = self.tree['options']
         fmt_library = self.tree['_fmt']
@@ -630,7 +541,7 @@ class Wrapf(util.WrapperMixin):
                 for argdecl in arg_typedef.f_c_argdecl:
                     append_format(arg_c_decl, argdecl, fmt)
             else:
-                arg_c_decl.append(self._c_decl(arg))
+                arg_c_decl.append(arg.bind_c())
 
             if attrs.get('_is_result', False):
                 c_stmts = 'result' + intent_grp
@@ -672,7 +583,7 @@ class Wrapf(util.WrapperMixin):
             else:
                 # XXX - make sure ptr is set to avoid VALUE
                 rvast = declast.create_this_arg(fmt.F_result, result_type, False)
-                arg_c_decl.append(self._c_decl(rvast))
+                arg_c_decl.append(rvast.bind_c())
                 self.update_f_module(modules,
                                      result_typedef.f_c_module or
                                      result_typedef.f_module)
@@ -833,7 +744,7 @@ class Wrapf(util.WrapperMixin):
                 f_index += 1
                 f_arg = f_args[f_index]
                 arg_f_names.append(fmt_arg.f_var)
-                arg_f_decl.append(self._f_decl(f_arg))
+                arg_f_decl.append(f_arg.gen_arg_as_fortran())
 
                 arg_type = f_arg.typename
                 arg_typedef = typemap.Typedef.lookup(arg_type)
@@ -937,7 +848,7 @@ class Wrapf(util.WrapperMixin):
                 self.append_method_arguments(arg_f_decl, line1)
                 self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
             else:
-                arg_f_decl.append(self._f_decl(ast, name=fmt_func.F_result))
+                arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
             self.update_f_module(modules, result_typedef.f_module)
 
         if not is_ctor:

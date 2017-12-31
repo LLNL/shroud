@@ -56,6 +56,8 @@ class CheckParse(unittest.TestCase):
         """Test variable declarations
         Combinations of const and pointer.
         """
+        typemap.initialize()
+
         r = declast.check_decl("int")
         s = r.gen_decl()
         self.assertEqual("int", s)
@@ -63,6 +65,10 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("int var1")
         s = r.gen_decl()
         self.assertEqual("int var1", s)
+        s = r.bind_c()
+        self.assertEqual("integer(C_INT) :: var1", s)
+        s = r.gen_arg_as_fortran()
+        self.assertEqual("integer(C_INT) :: var1", s)
 
         r = declast.check_decl("const int var1")
         s = r.gen_decl()
