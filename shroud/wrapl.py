@@ -77,7 +77,6 @@ class Wrapl(util.WrapperMixin):
         self.log = config.log
         self._init_splicer(splicers)
         self.comment = '//'
-        self.Typedef = typemap.Typedef   ### kludge
 
     def reset_file(self):
         pass
@@ -455,13 +454,15 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.
-        if result_typedef.base == 'wrapped':
-            is_const = False
-        else:
-            is_const = None
+# This has been replaced by gen_arg methods, but not sure about const.
+#        if result_typedef.base == 'wrapped':
+#            is_const = False
+#        else:
+#            is_const = None
         # return value
-        fmt.rv_decl = self.std_c_decl(
-            'cpp_type', ast, name=fmt.LUA_result, const=is_const)
+#        fmt.rv_decl = self.std_c_decl(
+#            'cpp_type', ast, name=fmt.LUA_result, const=is_const)
+        fmt.rv_decl = ast.gen_arg_as_cpp(name=fmt.LUA_result)
 
         LUA_decl = []  # declare variables and pop values
         LUA_code = []  # call C++ function
@@ -531,25 +532,28 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 LUA_push.append(tmp + ';')
 
             # argument for C++ function
-            lang = 'cpp_type'
-            arg_const = False
-            if arg_typedef.base == 'string':
-                # C++ will coerce char * to std::string
-                lang = 'c_type'
-                arg_const = True  # lua_tostring is const
-            if arg.is_reference():
-                # convert a reference to a pointer
-                ptr = True
-            else:
-                ptr = False
+# This has been replaced by gen_arg methods, but not sure about const.
+#            lang = 'cpp_type'
+#            arg_const = False
+#            if arg_typedef.base == 'string':
+#                # C++ will coerce char * to std::string
+#                lang = 'c_type'
+#                arg_const = True  # lua_tostring is const
+#            if arg.is_reference():
+#                # convert a reference to a pointer
+#                ptr = True
+#            else:
+#                ptr = False
 
             if lua_pop:
                 fmt.LUA_used_param_state = True
                 decl_suffix = ' = {};'.format(lua_pop)
             else:
                 decl_suffix = ';'
-            LUA_decl.append(self.std_c_decl(
-                lang, arg, const=arg_const, ptr=ptr) + decl_suffix)
+            if arg_typedef.base == 'string':
+                LUA_decl.append(arg.gen_arg_as_c() + decl_suffix)
+            else:
+                LUA_decl.append(arg.gen_arg_as_cpp() + decl_suffix)
 
             cpp_call_list.append(fmt_arg.cpp_var)
 

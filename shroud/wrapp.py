@@ -81,7 +81,6 @@ class Wrapp(util.WrapperMixin):
         self.log = config.log
         self._init_splicer(splicers)
         self.comment = '//'
-        self.Typedef = typemap.Typedef   ### kludge
 
     def XXX_begin_output_file(self):
         """Start a new class for output"""
@@ -385,12 +384,12 @@ return 1;""", fmt)
 
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.
-        if result_typedef.base == 'wrapped':
-            is_const = False
-        else:
-            is_const = None
-        fmt.rv_decl = self.std_c_decl(
-            'cpp_type', ast, name=fmt.PY_result, const=is_const)  # return value
+# This has been replaced by gen_arg methods, but not sure about const.
+#        if result_typedef.base == 'wrapped':
+#            is_const = False
+#        else:
+#            is_const = None
+        fmt.rv_decl = ast.gen_arg_as_cpp(name=fmt.PY_result)  # return value
 
         PY_decl = []     # variables for function
         PY_code = []
@@ -499,16 +498,11 @@ return 1;""", fmt)
                     build_vargs.append('*' + vargs)
 
                 # argument for C++ function
-                lang = 'cpp_type'
                 if arg_typedef.base == 'string':
                     # C++ will coerce char * to std::string
-                    lang = 'c_type'
-                if arg.is_reference():
-                    # convert a reference to a pointer
-                    ptr = True
+                    PY_decl.append(arg.gen_arg_as_c() + ';')
                 else:
-                    ptr = False
-                PY_decl.append(self.std_c_decl(lang, arg, ptr=ptr) + ';')
+                    PY_decl.append(arg.gen_arg_as_cpp() + ';')
 
                 if arg_typedef.cpp_local_var:
                     # cpp_local_var should only be set if

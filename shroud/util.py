@@ -244,53 +244,6 @@ class WrapperMixin(object):
 
 #####
 
-    def std_c_type(self, lang, ast, const=None, ptr=False):
-        """
-        Return the C type.
-        pass-by-value default
-
-        lang = c_type or cpp_type
-        if const is None, use const from ast.
-
-        attributes:
-        ptr - True = pass-by-reference
-        reference - True = pass-by-reference
-
-        """
-#        if lang not in [ 'c_type', 'cpp_type' ]:
-#            raise RuntimeError
-        t = []
-        ### kludge
-        typedef = self.Typedef.lookup(ast.typename)
-
-        if const is None:
-            const = ast.const
-        if const:
-            t.append('const')
-
-        t.append(getattr(typedef, lang))
-        if ast.is_pointer():
-            t.append('*')
-        elif ast.is_reference():
-            if lang == 'cpp_type':
-                t.append('&')
-            else:
-                t.append('*')
-        return ' '.join(t)
-
-    def std_c_decl(self, lang, ast,
-                   name=None, const=None, ptr=False):
-        """
-        Return the C declaration.
-
-        If name is not supplied, use name in ast.
-        This makes it easy to reproduce the arguments.
-        """
-        typ = self.std_c_type(lang, ast, const, ptr)
-        return typ + ' ' + (name or ast.name)
-
-#####
-
     def namespace(self, library, cls, position, output):
         if cls and 'namespace' in cls:
             namespace = cls['namespace']
