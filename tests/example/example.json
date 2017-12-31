@@ -3779,7 +3779,7 @@
         {
             "C_code": "return name != NULL;", 
             "F_code": "rv = name .ne. \" \"", 
-            "_PTR_F_C_index": 59, 
+            "_PTR_F_C_index": 60, 
             "_ast": {
                 "args": [
                     {
@@ -3939,7 +3939,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 59, 
+            "_function_index": 60, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
             "decl": "bool isNameValid(const std::string& name)", 
@@ -4167,7 +4167,7 @@
             "options": {}
         }, 
         {
-            "_PTR_F_C_index": 60, 
+            "_PTR_F_C_index": 61, 
             "_ast": {
                 "args": [
                     {
@@ -4328,7 +4328,7 @@
                     }
                 }
             }, 
-            "_function_index": 60, 
+            "_function_index": 61, 
             "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -4342,7 +4342,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 61, 
+            "_PTR_F_C_index": 62, 
             "_ast": {
                 "args": [
                     {
@@ -4561,7 +4561,7 @@
                     }
                 }
             }, 
-            "_function_index": 61, 
+            "_function_index": 62, 
             "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -4611,7 +4611,7 @@
                 "function_suffix": "_0"
             }, 
             "_fmtargs": {}, 
-            "_function_index": 57, 
+            "_function_index": 58, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -4690,7 +4690,7 @@
                     }
                 }
             }, 
-            "_function_index": 58, 
+            "_function_index": 59, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -4750,8 +4750,8 @@
             }, 
             "_decl": "void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)", 
             "_default_funcs": [
-                57, 
-                58
+                58, 
+                59
             ], 
             "_fmt": {
                 "C_call_code": "testoptional(i, j);", 
@@ -4833,6 +4833,57 @@
         }, 
         {
             "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "test_size_t", 
+                    "pointer": []
+                }, 
+                "fattrs": {}, 
+                "func_const": false, 
+                "specifier": [
+                    "size_t"
+                ]
+            }, 
+            "_decl": "size_t test_size_t()", 
+            "_fmt": {
+                "C_call_code": "size_t SHT_rv = test_size_t();", 
+                "C_call_list": "", 
+                "C_name": "AA_test_size_t", 
+                "C_prototype": "", 
+                "C_return_code": "return SHT_rv;", 
+                "C_return_type": "size_t", 
+                "F_C_call": "c_test_size_t", 
+                "F_C_name": "test_size_t", 
+                "F_arg_c_call": "", 
+                "F_arg_c_call_tab": "\t", 
+                "F_arguments": "", 
+                "F_call_code": "SHT_rv = c_test_size_t(\t)", 
+                "F_name_function": "test_size_t", 
+                "F_name_generic": "test_size_t", 
+                "F_name_impl": "test_size_t", 
+                "F_result_clause": " result(SHT_rv)", 
+                "F_subprogram": "function", 
+                "PY_name_impl": "PP_test_size_t", 
+                "c_const": "", 
+                "function_name": "test_size_t", 
+                "underscore_name": "test_size_t"
+            }, 
+            "_fmtargs": {}, 
+            "_fmtresult": {
+                "fmtc": {
+                    "cpp_rv_decl": "size_t SHT_rv", 
+                    "cpp_var": "SHT_rv"
+                }
+            }, 
+            "_function_index": 54, 
+            "_subprogram": "function", 
+            "decl": "size_t test_size_t()", 
+            "options": {}
+        }, 
+        {
+            "_ast": {
                 "args": [
                     {
                         "attrs": {
@@ -4907,7 +4958,7 @@
                     }
                 }
             }, 
-            "_function_index": 54, 
+            "_function_index": 55, 
             "_subprogram": "subroutine", 
             "decl": "void testmpi(MPI_Comm comm)", 
             "options": {}
@@ -4994,7 +5045,7 @@
                     }
                 }
             }, 
-            "_function_index": 55, 
+            "_function_index": 56, 
             "_subprogram": "subroutine", 
             "decl": "void testgroup1(DataGroup * grp)", 
             "options": {}
@@ -5081,7 +5132,7 @@
                     }
                 }
             }, 
-            "_function_index": 56, 
+            "_function_index": 57, 
             "_subprogram": "subroutine", 
             "decl": "void testgroup2(const DataGroup * grp)", 
             "options": {}

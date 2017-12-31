@@ -337,6 +337,7 @@ class Schema(object):
         util.eval_template(node, 'F_impl_filename', '_library')
 
         def_types, def_types_alias = typemap.initialize()
+        declast.add_typemap()
 
         # Write out as YAML if requested
         if self.config.yaml_types:
@@ -344,8 +345,8 @@ class Schema(object):
                 yaml.dump(def_types, yaml_file, default_flow_style=False)
             print("Wrote", self.config.yaml_types)
 
-        types_dict = node.get('types', None)
-        if types_dict is not None:
+        if 'types' in node:
+            types_dict = node['types']
             if not isinstance(types_dict, dict):
                 raise TypeError("types must be a dictionary")
             for key, value in types_dict.items():
@@ -368,14 +369,10 @@ class Schema(object):
                     def_types[key] = typemap.Typedef(key, **value)
                 typemap.typedef_wrapped_defaults(def_types[key])
 
-        patterns = node.setdefault('patterns', [])
-
         node['types'] = def_types
-        self.typedef = def_types
-
         node['type_aliases'] = def_types_alias
-        self.typealias = def_types_alias
 
+        patterns = node.setdefault('patterns', [])
         classes = node.setdefault('classes', [])
         self.check_classes(classes)
         self.check_functions(node, '', 'functions')

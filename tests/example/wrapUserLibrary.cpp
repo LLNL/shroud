@@ -75,7 +75,7 @@ bool AA_is_name_valid(const char * name)
 }
 
 // bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=59
+// function_index=60
 bool AA_is_name_valid_bufferify(const char * name, int Lname)
 {
 // splicer begin function.is_name_valid_bufferify
@@ -115,7 +115,7 @@ void AA_test_names(const char * name)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=60
+// function_index=61
 void AA_test_names_bufferify(const char * name, int Lname)
 {
 // splicer begin function.test_names_bufferify
@@ -137,7 +137,7 @@ void AA_test_names_flag(const char * name, int flag)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)
-// function_index=61
+// function_index=62
 void AA_test_names_flag_bufferify(const char * name, int Lname, int flag)
 {
 // splicer begin function.test_names_flag_bufferify
@@ -148,7 +148,7 @@ void AA_test_names_flag_bufferify(const char * name, int Lname, int flag)
 }
 
 // void testoptional()
-// function_index=57
+// function_index=58
 void AA_testoptional_0()
 {
 // splicer begin function.testoptional_0
@@ -158,7 +158,7 @@ void AA_testoptional_0()
 }
 
 // void testoptional(int i=1 +intent(in)+value)
-// function_index=58
+// function_index=59
 void AA_testoptional_1(int i)
 {
 // splicer begin function.testoptional_1
@@ -177,8 +177,18 @@ void AA_testoptional_2(int i, long j)
 // splicer end function.testoptional_2
 }
 
-// void testmpi(MPI_Comm comm +intent(in)+value)
+// size_t test_size_t()
 // function_index=54
+size_t AA_test_size_t()
+{
+// splicer begin function.test_size_t
+    size_t SHT_rv = test_size_t();
+    return SHT_rv;
+// splicer end function.test_size_t
+}
+
+// void testmpi(MPI_Comm comm +intent(in)+value)
+// function_index=55
 void AA_testmpi(MPI_Fint comm)
 {
 // splicer begin function.testmpi
@@ -188,7 +198,7 @@ void AA_testmpi(MPI_Fint comm)
 }
 
 // void testgroup1(DataGroup * grp +intent(in)+value)
-// function_index=55
+// function_index=56
 void AA_testgroup1(SIDRE_group * grp)
 {
 // splicer begin function.testgroup1
@@ -199,7 +209,7 @@ void AA_testgroup1(SIDRE_group * grp)
 }
 
 // void testgroup2(const DataGroup * grp +intent(in)+value)
-// function_index=56
+// function_index=57
 void AA_testgroup2(const SIDRE_group * grp)
 {
 // splicer begin function.testgroup2

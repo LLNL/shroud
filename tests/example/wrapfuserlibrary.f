@@ -148,6 +148,14 @@ module userlibrary_mod
             integer(C_LONG), value, intent(IN) :: j
         end subroutine c_testoptional_2
 
+        function test_size_t() &
+                result(SHT_rv) &
+                bind(C, name="AA_test_size_t")
+            use iso_c_binding, only : C_SIZE_T
+            implicit none
+            integer(C_SIZE_T) :: SHT_rv
+        end function test_size_t
+
         subroutine testmpi(comm) &
                 bind(C, name="AA_testmpi")
             use iso_c_binding, only : C_INT
@@ -260,7 +268,7 @@ contains
 
     ! void testoptional()
     ! has_default_arg
-    ! function_index=57
+    ! function_index=58
     subroutine testoptional_0()
         ! splicer begin function.testoptional_0
         call c_testoptional_0()
@@ -269,7 +277,7 @@ contains
 
     ! void testoptional(int i=1 +intent(in)+value)
     ! has_default_arg
-    ! function_index=58
+    ! function_index=59
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -292,7 +300,7 @@ contains
     end subroutine testoptional_2
 
     ! void testgroup1(DataGroup * grp +intent(in)+value)
-    ! function_index=55
+    ! function_index=56
     subroutine testgroup1(grp)
         use sidre_mod, only : group
         type(datagroup), value, intent(IN) :: grp
@@ -302,7 +310,7 @@ contains
     end subroutine testgroup1
 
     ! void testgroup2(const DataGroup * grp +intent(in)+value)
-    ! function_index=56
+    ! function_index=57
     subroutine testgroup2(grp)
         use sidre_mod, only : group
         type(datagroup), value, intent(IN) :: grp

@@ -231,6 +231,23 @@ PP_testoptional_2(
 // splicer end function.testoptional
 }
 
+static char PP_test_size_t__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_test_size_t(
+  PyObject *,  // self unused
+  PyObject *,  // args unused
+  PyObject *)  // kwds unused
+{
+// splicer begin function.test_size_t
+    size_t rv = test_size_t();
+    PyObject * SH_Py_rv = PyInt_FromLong(rv);
+    return (PyObject *) SH_Py_rv;
+// splicer end function.test_size_t
+}
+
 static char PP_testmpi__doc__[] =
 "documentation"
 ;
@@ -355,6 +372,7 @@ static PyMethodDef PP_methods[] = {
 {"isInitialized", (PyCFunction)PP_is_initialized, METH_NOARGS, PP_is_initialized__doc__},
 {"checkBool", (PyCFunction)PP_check_bool, METH_VARARGS|METH_KEYWORDS, PP_check_bool__doc__},
 {"testoptional", (PyCFunction)PP_testoptional_2, METH_VARARGS|METH_KEYWORDS, PP_testoptional_2__doc__},
+{"test_size_t", (PyCFunction)PP_test_size_t, METH_NOARGS, PP_test_size_t__doc__},
 {"testmpi", (PyCFunction)PP_testmpi, METH_VARARGS|METH_KEYWORDS, PP_testmpi__doc__},
 {"testgroup1", (PyCFunction)PP_testgroup1, METH_VARARGS|METH_KEYWORDS, PP_testgroup1__doc__},
 {"testgroup2", (PyCFunction)PP_testgroup2, METH_VARARGS|METH_KEYWORDS, PP_testgroup2__doc__},

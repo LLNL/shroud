@@ -113,9 +113,15 @@ def tokenize(s):
 
 
 def add_type(name):
-    """Add a use type (typedef, class) to the parser.
+    """Add a user type (typedef, class) to the parser.
     """
     type_specifier.add(name)
+
+def add_typemap():
+    """Add all types from the typemap to the parser.
+    """
+    for name in typemap.Typedef._typedict.keys():
+        type_specifier.add(name)
 
 #indent = 0
 #def trace(name, indent=0):

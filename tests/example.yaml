@@ -282,6 +282,7 @@ functions:
 #       - float
 #       - double
 
+  - decl: size_t test_size_t()
   - decl: void testmpi(MPI_Comm comm)
 
   - decl: void testgroup1(DataGroup * grp)

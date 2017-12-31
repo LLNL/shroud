@@ -51,13 +51,15 @@ import copy
 class CheckParse(unittest.TestCase):
     maxDiff = None
 
+    def setUp(self):
+        typemap.initialize()
+        declast.add_typemap()
+
     # types
     def test_type_int(self):
         """Test variable declarations
         Combinations of const and pointer.
         """
-        typemap.initialize()
-
         r = declast.check_decl("int")
         s = r.gen_decl()
         self.assertEqual("int", s)
@@ -130,6 +132,17 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("std::string & var1", s)
         s = r.gen_arg_as_c()
         self.assertEqual("char * var1", s)
+
+    def test_type_other(self):
+        """Test size_t declarations
+        """
+        r = declast.check_decl("size_t var1()")
+        s = r.gen_decl()
+        self.assertEqual("size_t var1()", s)
+
+        r = declast.check_decl("MPI_Comm get_comm()")
+        s = r.gen_decl()
+        self.assertEqual("MPI_Comm get_comm()", s)
 
     def test_type_int_func(self):
         """Test function declarations
