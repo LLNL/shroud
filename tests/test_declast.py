@@ -702,12 +702,9 @@ class CheckParse(unittest.TestCase):
         r2 = copy.deepcopy(r)
 
         r2.name = 'newname'
-        self.assertEqual(r.name, 'Function4b')
+        self.assertEqual(r.name, 'Function4b')  # first is unchanged
         self.assertEqual(r2.name, 'newname')
 
-        r2.set_indirection()
-        self.assertTrue(r.is_reference())    # first is unchanged
-        self.assertFalse(r2.is_reference())
 
                          
 if __name__ == '__main__':

@@ -600,15 +600,6 @@ class Declaration(Node):
                 nlevels += 1
         return nlevels
 
-    def set_indirection(self, value=''):
-        """ only ptr or reference can be True.
-        value - '*' or '&' or ''
-        """
-        if value:
-            self.declarator.pointer = [ Ptr(value) ]
-        else:
-            self.declarator.pointer = [ ]
-
     def _as_arg(self, name):
         """Create an argument to hold the function result.
         This is intended for pointer arguments, char or string.
@@ -921,27 +912,3 @@ def create_this_arg(name, typ, const=True):
     arg.declarator.pointer = [ Ptr('*') ]
     arg.specifier = [ typ ]
     return arg
-    
-
-def str_declarator(decl):
-    """ Convert declaration dict to string.
-    Used with output from check_decl.
-    Helpful in error messages.
-      a = check_decl()
-      str_declarator( a['result'] )
-      str_declarator( a['args'][0] )
-    """
-    attrs = decl.attrs
-    out = ''
-    if decl.const:
-        out += 'const '
-    out += ' '.join(decl.specifier)
-    if 'template' in attrs:
-        out += '<' + attrs['template'] + '>'
-    out += ' '
-    if decl.is_reference():
-        out += '&'
-    if decl.is_pointer():
-        out += '*'
-    out += decl.name
-    return out

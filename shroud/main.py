@@ -1057,7 +1057,7 @@ class VerifyAttrs(object):
                 cpp_template = node.get('cpp_template', {})
                 if argtype not in cpp_template:
                     raise RuntimeError("No such type %s: %s" % (
-                            argtype, declast.str_declarator(arg)))
+                            argtype, arg.gen_decl()))
 
             is_ptr = arg.is_indirect()
             attrs = arg.attrs
@@ -1138,14 +1138,14 @@ class VerifyAttrs(object):
             if typedef and typedef.base == 'vector':
                 if not temp:
                     raise RuntimeError("std::vector must have template argument: %s" % (
-                            declast.str_declarator(arg)))
+                            arg.gen_decl()))
                 typedef = typemap.Typedef.lookup(temp)
                 if typedef is None:
                     raise RuntimeError("No such type %s for template: %s" % (
-                            temp, declast.str_declarator(arg)))
+                            temp, arg.gen_decl()))
             elif temp is not None:
                 raise RuntimeError("Type '%s' may not supply template argument: %s" % (
-                        argtype, declast.str_declarator(arg)))
+                        argtype, arg.gen_decl()))
 
 
 class Namify(object):
