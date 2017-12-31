@@ -84,55 +84,6 @@ class Wrapc(util.WrapperMixin):
         self.impl = []
         self.c_helper = {}
 
-    def _c_type(self, lang, ast):
-        """
-        Return the C type.
-        pass-by-value default
-
-        attributes:
-        ptr - True = pass-by-reference
-        reference - True = pass-by-reference
-
-        """
-#        if lang not in [ 'c_type', 'cpp_type' ]:
-#            raise RuntimeError
-        t = []
-        typ = ast.typename
-        typedef = typemap.Typedef.lookup(typ)
-        attrs = ast.attrs
-        if 'template' in attrs:
-            # If a template, use its type
-            typedef = typemap.Typedef.lookup(attrs['template'])
-        if typedef is None:
-            raise RuntimeError("No such type %s" % typ)
-        if ast.const:
-            t.append('const')
-        typ = getattr(typedef, lang)
-        if typ is None:
-            raise RuntimeError(
-                "Type {} has no value for {}".format(typ, lang))
-        t.append(typ)
-        if ast.is_pointer():
-            t.append('*')
-        elif ast.is_reference():
-            if lang == 'cpp_type':
-                t.append('&')
-            else:
-                t.append('*')
-        return ' '.join(t)
-
-    def _c_decl(self, lang, ast, name=None):
-        """
-        Return the C declaration.
-
-        If name is not supplied, use name in ast.
-        This makes it easy to reproduce the arguments.
-        """
-#        if lang not in [ 'c_type', 'cpp_type' ]:
-#            raise RuntimeError
-        typ = self._c_type(lang, ast)
-        return typ + ' ' + (name or ast.name)
-
     def wrap_library(self):
         fmt_library = self.tree['_fmt']
 
@@ -433,9 +384,7 @@ class Wrapc(util.WrapperMixin):
             fmt_result0 = node.setdefault('_fmtresult', {})
             fmt_result = fmt_result0.setdefault('fmtc', util.Options(fmt_func))
             fmt_result.cpp_var = fmt_func.C_result
-#            fmt_result.cpp_decl = self._c_type('cpp_type', CPP_result)
-
-            fmt_result.cpp_rv_decl = self._c_decl('cpp_type', CPP_result, name=fmt_func.C_result)
+            fmt_result.cpp_rv_decl = CPP_result.gen_arg_as_cpp(name=fmt_func.C_result)
             fmt_pattern = fmt_result
 
         proto_list = []
@@ -444,9 +393,8 @@ class Wrapc(util.WrapperMixin):
             need_wrapper = True
             # object pointer
             rvast = declast.create_this_arg(fmt_func.C_this, cls['name'], is_const)
-            C_this_type = self._c_type('c_type', rvast)
             if not is_ctor:
-                arg = self._c_decl('c_type', rvast)
+                arg = rvast.gen_arg_as_c()
                 proto_list.append(arg)
 
         # indicate which argument contains function result, usually none
@@ -495,7 +443,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_ptr = ''
             fmt_arg.cpp_type = arg_typedef.cpp_type
 
-            proto_list.append(self._c_decl('c_type', arg))
+            proto_list.append(arg.gen_arg_as_c())
 
             if c_attrs.get('_is_result', False):
                 arg_call = False
@@ -597,7 +545,7 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = node['C_return_type']
         else:
             fmt_func.C_return_type = options.get(
-                'C_return_type', self._c_type('c_type', ast))
+                'C_return_type', ast.gen_arg_as_c(name=None))
 
         if pre_call:
             fmt_func.C_pre_call = '\n'.join(pre_call)
@@ -659,8 +607,8 @@ class Wrapc(util.WrapperMixin):
                     if have_c_local_var:
                         # XXX need better mangling than 'X'
                         fmt_result.c_var = 'X' + fmt_func.C_result
-                        fmt_result.c_rv_decl = self._c_decl('c_type', CPP_result,
-                                                          name=fmt_result.c_var)
+                        fmt_result.c_rv_decl = CPP_result.gen_arg_as_c(
+                            name=fmt_result.c_var)
                         fmt_result.c_val = wformat(result_typedef.cpp_to_c, fmt_result)
                         append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
                         return_lang = '{c_var}'

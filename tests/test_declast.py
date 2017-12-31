@@ -58,7 +58,7 @@ class CheckParse(unittest.TestCase):
         """
         r = declast.check_decl("int")
         s = r.gen_decl()
-        self.assertEqual("int ", s)
+        self.assertEqual("int", s)
 
         r = declast.check_decl("int var1")
         s = r.gen_decl()
@@ -119,6 +119,8 @@ class CheckParse(unittest.TestCase):
 
         r = declast.check_decl("std::string &var1")
         s = r.gen_decl()
+        self.assertEqual("std::string & var1", s)
+        s = r.gen_arg_as_cpp()
         self.assertEqual("std::string & var1", s)
         s = r.gen_arg_as_c()
         self.assertEqual("char * var1", s)
@@ -610,7 +612,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("int CallBack1(  int (*func)(int) )")
 
         s = r.gen_decl()
-        self.assertEqual("int CallBack1(int (* func)(int ))", s)
+        self.assertEqual("int CallBack1(int ( * func)(int))", s)
 
         self.assertEqual(r._to_dict(),{
             "args": [

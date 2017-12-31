@@ -436,16 +436,16 @@ class Ptr(Node):
         """Generate string by appending text to decl.
         """
         if self.ptr:
+            decl.append(' ')
             if kwargs.get('as_c', False):
                 # references become pointers with as_c
                 decl.append('*')
             else:
                 decl.append(self.ptr)
-            decl.append(' ')
         if self.const:
-            decl.append('const ')
+            decl.append(' const')
         if self.volatile:
-            decl.append('volatile ')
+            decl.append(' volatile')
 
     def _to_dict(self):
         """Convert to dictionary.
@@ -479,16 +479,20 @@ class Declarator(Node):
         """Generate string by appending text to decl.
 
         Replace name with value from kwargs.
+        name=None will skip appending any existing name.
         """
         for ptr in self.pointer:
             ptr.gen_decl_work(decl, **kwargs)
         if self.func:
-            decl.append('(')
+            decl.append(' (')
             self.func.gen_decl_work(decl, **kwargs)
             decl.append(')')
         elif 'name' in kwargs:
-            decl.append(kwargs['name'])
+            if kwargs['name']:
+                decl.append(' ')
+                decl.append(kwargs['name'])
         elif self.name:
+            decl.append(' ')
             decl.append(self.name)
 
     def _to_dict(self):
@@ -705,7 +709,10 @@ class Declaration(Node):
         Replace params with value from kwargs.
         Most useful to call with params=None to skip parameters
         and only get function result.
+
+        attrs=False give compilable code.
         """
+        use_attrs = kwargs.get('attrs', True)
         if self.const:
             decl.append('const ')
 
@@ -714,14 +721,14 @@ class Declaration(Node):
             decl.append('<')
             decl.append(self.attrs['template'])
             decl.append('>')
-        decl.append(' ')
 
         self.declarator.gen_decl_work(decl, **kwargs)
 
         if self.init is not None:
             decl.append('=')
             decl.append(str(self.init))
-        self.gen_attrs(self.attrs, decl)
+        if use_attrs:
+            self.gen_attrs(self.attrs, decl)
 
         params = kwargs.get('params', self.params)
         if params is not None:
@@ -734,7 +741,8 @@ class Declaration(Node):
             decl.append(')')
             if self.func_const:
                 decl.append(' const')
-            self.gen_attrs(self.fattrs, decl)
+            if use_attrs:
+                self.gen_attrs(self.fattrs, decl)
 
     _skip_annotations = ['template']
 
@@ -760,29 +768,51 @@ class Declaration(Node):
                 decl.append('{}({})'.format(attr, value))
             space = ''
 
+    def gen_arg_as_cpp(self, **kwargs):
+        """Generate C++ declaration of variable.
+        No parameters or attributes.
+        """
+        decl = []
+        self.gen_arg_work(decl, lang='cpp_type', **kwargs)
+        return ''.join(decl)
+
     def gen_arg_as_c(self, **kwargs):
         """Return a string of the unparsed declaration.
         """
         decl = []
-        self.gen_arg_work_as_c(decl, **kwargs)
+        self.gen_arg_work(decl, lang='c_type', **kwargs)
         return ''.join(decl)
 
-    def gen_arg_work_as_c(self, decl, **kwargs):
-        """Generate string by appending text to decl.
+    def gen_arg_work(self, decl, lang, **kwargs):
+        """Generate an argument for the C wrapper.
+        C++ types are converted to C types using typemap.
+
+        lang = c_type or cpp_type
+
+        If a templated type, assume std::vector.
+        The C argument will be a pointer to the template type.
+        'std::vector<int> &'  generates 'int *'
+        The length info is lost but will be provided as another argument
+        to the C wrapper.
         """
         if self.const:
             decl.append('const ')
 
-        typename = self.typename
-        typedef = typemap.Typedef.lookup(typename)
+        if 'template' in self.attrs:
+            typedef = typemap.Typedef.lookup(self.attrs['template'])
+        else:
+            typename = self.typename
+            typedef = typemap.Typedef.lookup(typename)
         if typedef is None:
             raise RuntimeError("No such type: {}".format(typename))
 
-        typ = getattr(typedef, 'c_type')
+        typ = getattr(typedef, lang)
         decl.append(typ)
-        decl.append(' ')
 
-        self.declarator.gen_decl_work(decl, as_c=True, **kwargs)
+        if lang == 'c_type':
+            self.declarator.gen_decl_work(decl, as_c=True, **kwargs)
+        else:
+            self.declarator.gen_decl_work(decl, **kwargs)
 
 
 def check_decl(decl, current_class=None, template_types=[],trace=False):
