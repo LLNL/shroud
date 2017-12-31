@@ -369,8 +369,9 @@ class Schema(object):
                     def_types[key] = typemap.Typedef(key, **value)
                 typemap.typedef_wrapped_defaults(def_types[key])
 
-        node['types'] = def_types
-        node['type_aliases'] = def_types_alias
+        # Add to node so they show up in the json debug file.
+        node['_types'] = def_types
+        node['_type_aliases'] = def_types_alias
 
         patterns = node.setdefault('patterns', [])
         classes = node.setdefault('classes', [])
@@ -1238,7 +1239,7 @@ class TypeOut(util.WrapperMixin):
             name = cls['name']
             output.append('')
             output.append('  {}:'.format(name))
-            self.tree['types'][name].__export_yaml__(2, output)
+            self.tree['_types'][name].__export_yaml__(2, output)
             write_file = True
 
             # yaml.dump does not make a nice output
