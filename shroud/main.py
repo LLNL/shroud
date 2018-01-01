@@ -67,8 +67,9 @@ import sys
 import yaml
 
 from . import util
-from . import parse_decl
+from . import declast
 from . import splicer
+from . import typemap
 from . import wrapc
 from . import wrapf
 from . import wrapp
@@ -149,7 +150,7 @@ class Schema(object):
     def push_fmt(self, node):
         fmt = util.Options(self.fmt_stack[-1])
         self.fmt_stack.append(fmt)
-        node['fmt'] = fmt
+        node['_fmt'] = fmt
         return fmt
 
     def pop_fmt(self):
@@ -257,7 +258,7 @@ class Schema(object):
         self.options_stack = [def_options]
         node['options'] = def_options
 
-        fmt_library = node['fmt'] = util.Options(None)
+        fmt_library = node['_fmt'] = util.Options(None)
         fmt_library.library = node['library']
         fmt_library.library_lower = fmt_library.library.lower()
         fmt_library.library_upper = fmt_library.library.upper()
@@ -335,556 +336,8 @@ class Schema(object):
         util.eval_template(node, 'F_module_name', '_library')
         util.eval_template(node, 'F_impl_filename', '_library')
 
-        def_types = dict(
-            void=util.Typedef(
-                'void',
-                c_type='void',
-                cpp_type='void',
-                # fortran='subroutine',
-                f_type='type(C_PTR)',
-                f_module=dict(iso_c_binding=['C_PTR']),
-                PY_ctor='PyCapsule_New({cpp_var}, NULL, NULL)',
-                ),
-            int=util.Typedef(
-                'int',
-                c_type='int',
-                cpp_type='int',
-                f_cast='int({f_var}, C_INT)',
-                f_type='integer(C_INT)',
-                f_module=dict(iso_c_binding=['C_INT']),
-                PY_format='i',
-                LUA_type='LUA_TNUMBER',
-                LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
-                LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
-                ),
-            long=util.Typedef(
-                'long',
-                c_type='long',
-                cpp_type='long',
-                f_cast='int({f_var}, C_LONG)',
-                f_type='integer(C_LONG)',
-                f_module=dict(iso_c_binding=['C_LONG']),
-                PY_format='l',
-                LUA_type='LUA_TNUMBER',
-                LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
-                LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
-                ),
-            size_t=util.Typedef(
-                'size_t',
-                c_type='size_t',
-                cpp_type='size_t',
-                c_header='stdlib.h',
-                f_cast='int({f_var}, C_SIZE_T)',
-                f_type='integer(C_SIZE_T)',
-                f_module=dict(iso_c_binding=['C_SIZE_T']),
-                PY_ctor='PyInt_FromLong({c_var})',
-                LUA_type='LUA_TNUMBER',
-                LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
-                LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
-                ),
-
-            float=util.Typedef(
-                'float',
-                c_type='float',
-                cpp_type='float',
-                f_cast='real({f_var}, C_FLOAT)',
-                f_type='real(C_FLOAT)',
-                f_module=dict(iso_c_binding=['C_FLOAT']),
-                PY_format='f',
-                LUA_type='LUA_TNUMBER',
-                LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',
-                LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
-                ),
-            double=util.Typedef(
-                'double',
-                c_type='double',
-                cpp_type='double',
-                f_cast='real({f_var}, C_DOUBLE)',
-                f_type='real(C_DOUBLE)',
-                f_module=dict(iso_c_binding=['C_DOUBLE']),
-                PY_format='d',
-                LUA_type='LUA_TNUMBER',
-                LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',
-                LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
-                ),
-
-            bool=util.Typedef(
-                'bool',
-                c_type='bool',
-                cpp_type='bool',
-
-                f_type='logical',
-                f_c_type='logical(C_BOOL)',
-                f_module=dict(iso_c_binding=['C_BOOL']),
-
-                f_statements=dict(
-                    intent_in=dict(
-                        c_local_var=True,
-                        pre_call=[
-                            '{c_var} = {f_var}  ! coerce to C_BOOL',
-                            ],
-                        ),
-                    intent_out=dict(
-                        c_local_var=True,
-                        post_call=[
-                            '{f_var} = {c_var}  ! coerce to logical',
-                            ],
-                        ),
-                    intent_inout=dict(
-                        c_local_var=True,
-                        pre_call=[
-                            '{c_var} = {f_var}  ! coerce to C_BOOL',
-                            ],
-                        post_call=[
-                            '{f_var} = {c_var}  ! coerce to logical',
-                            ],
-                        ),
-                    result=dict(
-                        # The wrapper is needed to convert bool to logical
-                        need_wrapper=True,
-                        ),
-                    ),
-
-                py_statements=dict(
-                    intent_in=dict(
-                        post_parse=[
-                            '{cpp_var} = PyObject_IsTrue({py_var});',
-                            ],
-                        ),
-                    ),
-
-                # XXX PY_format='p',  # Python 3.3 or greater
-                PY_ctor='PyBool_FromLong({c_var})',
-                PY_PyTypeObject='PyBool_Type',
-                LUA_type='LUA_TBOOLEAN',
-                LUA_pop='lua_toboolean({LUA_state_var}, {LUA_index})',
-                LUA_push='lua_pushboolean({LUA_state_var}, {c_var})',
-                ),
-
-            # implies null terminated string
-            char=util.Typedef(
-                'char',
-                cpp_type='char',
-                # cpp_header='<string>',
-                # cpp_to_c='{cpp_var}.c_str()',  # . or ->
-
-                c_type='char',    # XXX - char *
-
-                c_statements=dict(
-                    intent_in_buf=dict(
-                        buf_args = [ 'len_trim' ],
-                        cpp_local_var=True,
-                        c_header='<stdlib.h> <string.h>',
-                        cpp_header='<stdlib.h> <cstring>',
-                        pre_call=[
-                            'char * {cpp_var} = (char *) malloc({c_var_trim} + 1);',
-                            '{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});',
-                            '{cpp_var}[{c_var_trim}] = \'\\0\';'
-                            ],
-                        post_call=[
-                            'free({cpp_var});'
-                            ],
-                        ),
-                    intent_out_buf=dict(
-                        buf_args = [ 'len' ],
-                        cpp_local_var=True,
-                        c_header='<stdlib.h>',
-                        cpp_header='<stdlib.h>',
-                        c_helper='ShroudStrCopy',
-                        pre_call=[
-                            'char * {cpp_var} = (char *) malloc({c_var_len} + 1);',
-                            ],
-                        post_call=[
-                            'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-                            'free({cpp_var});',
-                            ],
-                        ),
-                    intent_inout_buf=dict(
-                        buf_args = [ 'len_trim', 'len' ],
-                        cpp_local_var=True,
-                        c_helper='ShroudStrCopy',
-                        c_header='<stdlib.h> <string.h>',
-                        cpp_header='<stdlib.h> <cstring>',
-                        pre_call=[
-                            'char * {cpp_var} = (char *) malloc({c_var_len} + 1);',
-                            '{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});',
-                            '{cpp_var}[{c_var_trim}] = \'\\0\';'
-                            ],
-                        post_call=[
-                            'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-                            'free({cpp_var});',
-                            ],
-                        ),
-                    result_buf=dict(
-                        buf_args = [ 'len' ],
-                        c_header='<string.h>',
-                        cpp_header='<cstring>',
-                        c_helper='ShroudStrCopy',
-                        post_call=[
-                            'if ({cpp_var} == NULL) {{',
-                            '  {stdlib}memset({c_var}, \' \', {c_var_len});',
-                            '}} else {{',
-                            '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});',
-                            '}}',
-                            ],
-                        ),
-                    ),
-
-                f_type='character(*)',
-                f_c_type='character(kind=C_CHAR)',
-                f_c_module=dict(iso_c_binding=['C_CHAR']),
-
-                f_statements=dict(
-                    result_pure=dict(
-                        need_wrapper=True,
-                        f_helper='fstr_ptr',
-                        call=[
-                            '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))',
-                            ],
-                        )
-                    ),
-
-                PY_format='s',
-                PY_ctor='PyString_FromString({c_var})',
-                LUA_type='LUA_TSTRING',
-                LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
-                LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
-                base='string',
-                ),
-
-            # char scalar
-            char_scalar=util.Typedef(
-                'char_scalar',
-                cpp_type='char',
-                # cpp_header='<string>',
-                # cpp_to_c='{cpp_var}.c_str()',  # . or ->
-
-                c_type='char',    # XXX - char *
-
-                c_statements=dict(
-                    result_buf=dict(
-                        buf_args = [ 'len' ],
-                        c_header='<string.h>',
-                        cpp_header='<cstring>',
-                        post_call=[
-                            '{stdlib}memset({c_var}, \' \', {c_var_len});',
-                            '{c_var}[0] = {cpp_var};',
-                        ],
-                    ),
-                ),
-
-                f_type='character',
-                f_c_type='character(kind=C_CHAR)',
-                f_c_module=dict(iso_c_binding=['C_CHAR']),
-                PY_format='s',
-                PY_ctor='PyString_FromString({c_var})',
-                LUA_type='LUA_TSTRING',
-                LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
-                LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
-                # # base='string',
-                ),
-
-            # C++ std::string
-            string=util.Typedef(
-                'string',
-                cpp_type='std::string',
-                cpp_header='<string>',
-                cpp_to_c='{cpp_var}.c_str()',  # . or ->
-
-                c_type='char',    # XXX - char *
-
-                c_statements=dict(
-                    intent_in=dict(
-                        cpp_local_var=True,
-                        pre_call=[
-                            '{c_const}std::string {cpp_var}({c_var});'
-                            ],
-                    ),
-                    intent_out=dict(
-                        cpp_header='<cstring>',
-#                        pre_call=[
-#                            'int {c_var_trim} = strlen({c_var});',
-#                            ],
-                        cpp_local_var=True,
-                        pre_call=[
-                            '{c_const}std::string {cpp_var};'
-                            ],
-                        post_call=[
-                            # This may overwrite c_var if cpp_val is too long
-                            'strcpy({c_var}, {cpp_val});'
-#                            'ShroudStrCopy({c_var}, {c_var_trim}, {cpp_val});'
-                        ],
-                    ),
-                    intent_inout=dict(
-                        cpp_header='<cstring>',
-                        cpp_local_var=True,
-                        pre_call=[
-                            '{c_const}std::string {cpp_var}({c_var});'
-                            ],
-                        post_call=[
-                            # This may overwrite c_var if cpp_val is too long
-                            'strcpy({c_var}, {cpp_val});'
-#                            'ShroudStrCopy({c_var}, {c_var_trim}, {cpp_val});'
-                        ],
-                    ),
-                    intent_in_buf=dict(
-                        buf_args = [ 'len_trim' ],
-                        cpp_local_var=True,
-                        pre_call=[
-                            ('{c_const}std::string '
-                             '{cpp_var}({c_var}, {c_var_trim});')
-                        ],
-                    ),
-                    intent_out_buf=dict(
-                        buf_args = [ 'len' ],
-                        c_helper='ShroudStrCopy',
-                        cpp_local_var=True,
-                        pre_call=[
-                            'std::string {cpp_var};'
-                        ],
-                        post_call=[
-                            'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});'
-                        ],
-                    ),
-                    intent_inout_buf=dict(
-                        buf_args = [ 'len_trim', 'len' ],
-                        c_helper='ShroudStrCopy',
-                        cpp_local_var=True,
-                        pre_call=[
-                            'std::string {cpp_var}({c_var}, {c_var_trim});'
-                        ],
-                        post_call=[
-                            'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});'
-                        ],
-                    ),
-                    result_buf=dict(
-                        buf_args = [ 'len' ],
-                        cpp_header='<cstring>',
-                        c_helper='ShroudStrCopy',
-                        post_call=[
-                            'if ({cpp_var}.empty()) {{',
-                            '  {stdlib}memset({c_var}, \' \', {c_var_len});',
-                            '}} else {{',
-                            '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-                            '}}',
-                        ],
-                    ),
-                ),
-
-                f_type='character(*)',
-                f_c_type='character(kind=C_CHAR)',
-                f_c_module=dict(iso_c_binding=['C_CHAR']),
-
-                f_statements=dict(
-                    result_pure=dict(
-                        need_wrapper=True,
-                        f_helper='fstr_ptr',
-                        call=[
-                            '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))',
-                            ],
-                        )
-                    ),
-
-                py_statements=dict(
-                    intent_in=dict(
-                        cpp_local_var=True,
-                        post_parse=[
-                            '{c_const}std::string {cpp_var}({c_var});'
-                            ],
-                        ),
-                    ),
-                PY_format='s',
-                PY_ctor='PyString_FromString({c_var})',
-                LUA_type='LUA_TSTRING',
-                LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
-                LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
-                base='string',
-                ),
-
-            # C++ std::vector
-            # No c_type or f_type, use attr[template]
-            vector=util.Typedef(
-                'vector',
-                cpp_type='std::vector<{cpp_T}>',
-                cpp_header='<vector>',
-#                cpp_to_c='{cpp_var}.data()',  # C++11
-
-                c_statements=dict(
-                    intent_in_buf=dict(
-                        buf_args = [ 'size' ],
-                        cpp_local_var=True,
-                        pre_call=[
-                            ('{c_const}std::vector<{cpp_T}> '
-                             '{cpp_var}({c_var}, {c_var} + {c_var_size});')
-                        ],
-                    ),
-                    intent_out_buf=dict(
-                        buf_args = [ 'size' ],
-                        cpp_local_var=True,
-                        pre_call=[
-                            '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});'
-                        ],
-                        post_call=[
-                            '{{',
-                            '  std::vector<{cpp_T}>::size_type',
-                            '    {c_temp}i = 0,',
-                            '    {c_temp}n = {c_var_size};',
-                            '  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);',
-                            '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                            '    {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];',
-                            '  }}',
-                            '}}'
-                        ],
-                    ),
-                    intent_inout_buf=dict(
-                        buf_args = [ 'size' ],
-                        cpp_local_var=True,
-                        pre_call=[
-                            'std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});'
-                        ],
-                        post_call=[
-                            '{{',
-                            '  std::vector<{cpp_T}>::size_type',
-                            '    {c_temp}i = 0,',
-                            '    {c_temp}n = {c_var_size};',
-                            '  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);',
-                            '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                            '      {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];',
-                            '  }}',
-                            '}}'
-                        ],
-                    ),
-#                    result_buf=dict(
-#                        buf_args = [ 'size' ],
-#                        c_helper='ShroudStrCopy',
-#                        post_call=[
-#                            'if ({cpp_var}.empty()) {{',
-#                            '  std::memset({c_var}, \' \', {c_var_len});',
-#                            '}} else {{',
-#                            '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-#                            '}}',
-#                        ],
-#                    ),
-                ),
-
-###
-                # custom code for templates
-                c_templates=dict(
-                    string=dict(
-                        intent_in_buf=dict(
-                            buf_args = [ 'size', 'len' ],
-                            c_helper='ShroudLenTrim',
-                            cpp_local_var=True,
-                            pre_call=[
-                                'std::vector<{cpp_T}> {cpp_var};',
-                                '{{',
-                                '  {c_const}char * BBB = {c_var};',
-                                '  std::vector<{cpp_T}>::size_type',
-                                '    {c_temp}i = 0,',
-                                '    {c_temp}n = {c_var_size};',
-                                '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                                '    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));',
-                                '    BBB += {c_var_len};',
-                                '  }}',
-                                '}}'
-                            ],
-                        ),
-                        intent_out_buf=dict(
-                            buf_args = [ 'size', 'len' ],
-                            c_helper='ShroudLenTrim',
-                            cpp_local_var=True,
-                            pre_call=[
-                                '{c_const}std::vector<{cpp_T}> {cpp_var};'
-                            ],
-                            post_call=[
-                                '{{',
-                                '  char * BBB = {c_var};',
-                                '  std::vector<{cpp_T}>::size_type',
-                                '    {c_temp}i = 0,',
-                                '    {c_temp}n = {c_var_size};',
-                                '  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);',
-                                '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                                '    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());',
-                                '    BBB += {c_var_len};',
-                                '  }}',
-                                '}}'
-                            ],
-                        ),
-                        intent_inout_buf=dict(
-                            buf_args = [ 'size', 'len' ],
-                            cpp_local_var=True,
-                            pre_call=[
-                                'std::vector<{cpp_T}> {cpp_var};',
-                                '{{',
-                                '  {c_const}char * BBB = {c_var};',
-                                '  std::vector<{cpp_T}>::size_type',
-                                '    {c_temp}i = 0,',
-                                '    {c_temp}n = {c_var_size};',
-                                '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                                '    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));',
-                                '    BBB += {c_var_len};',
-                                '  }}',
-                                '}}'
-                            ],
-                            post_call=[
-                                '{{',
-                                '  char * BBB = {c_var};',
-                                '  std::vector<{cpp_T}>::size_type',
-                                '    {c_temp}i = 0,',
-                                '    {c_temp}n = {c_var_size};',
-                                '  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);',
-                                '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                                '    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());',
-                                '    BBB += {c_var_len};',
-                                '  }}',
-                                '}}'
-                            ],
-                        ),
-#                        result_buf=dict(
-#                            c_helper='ShroudStrCopy',
-#                            post_call=[
-#                                'if ({cpp_var}.empty()) {{',
-#                                '  std::memset({c_var}, \' \', {c_var_len});',
-#                                '}} else {{',
-#                                '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-#                                '}}',
-#                            ],
-#                        ),
-                    ),
-                ),
-###
-
-
-
-#                py_statements=dict(
-#                    intent_in=dict(
-#                        cpp_local_var=True,
-#                        post_parse=[
-#                            '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var});'
-#                            ],
-#                        ),
-#                    ),
-#                PY_format='s',
-#                PY_ctor='PyString_FromString({c_var})',
-#                LUA_type='LUA_TSTRING',
-#                LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
-#                LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
-                base='vector',
-                ),
-
-            MPI_Comm=util.Typedef(
-                'MPI_Comm',
-                cpp_type='MPI_Comm',
-                c_header='mpi.h',
-                c_type='MPI_Fint',
-                # usually, MPI_Fint will be equivalent to int
-                f_type='integer',
-                f_c_type='integer(C_INT)',
-                f_c_module=dict(iso_c_binding=['C_INT']),
-                cpp_to_c='MPI_Comm_c2f({cpp_var})',
-                c_to_cpp='MPI_Comm_f2c({c_var})',
-                ),
-            )
+        def_types, def_types_alias = typemap.initialize()
+        declast.add_typemap()
 
         # Write out as YAML if requested
         if self.config.yaml_types:
@@ -892,22 +345,14 @@ class Schema(object):
                 yaml.dump(def_types, yaml_file, default_flow_style=False)
             print("Wrote", self.config.yaml_types)
 
-        # aliases
-        def_types_alias = dict()
-        def_types_alias['std::string'] = 'string'
-        def_types_alias['std::vector'] = 'vector'
-        def_types_alias['integer(C_INT)'] = 'int'
-        def_types_alias['integer(C_LONG)'] = 'long'
-        def_types_alias['real(C_FLOAT)'] = 'float'
-        def_types_alias['real(C_DOUBLE)'] = 'double'
-
-        types_dict = node.get('types', None)
-        if types_dict is not None:
+        if 'types' in node:
+            types_dict = node['types']
             if not isinstance(types_dict, dict):
                 raise TypeError("types must be a dictionary")
             for key, value in types_dict.items():
                 if not isinstance(value, dict):
                     raise TypeError("types '%s' must be a dictionary" % key)
+                declast.add_type(key)   # Add to parser
 
                 if 'typedef' in value:
                     copy_type = value['typedef']
@@ -915,28 +360,23 @@ class Schema(object):
                     if not orig:
                         raise RuntimeError(
                             "No type for typedef {}".format(copy_type))
-                    def_types[key] = util.Typedef(key)
+                    def_types[key] = typemap.Typedef(key)
                     def_types[key].update(def_types[copy_type]._to_dict())
 
                 if key in def_types:
                     def_types[key].update(value)
                 else:
-                    def_types[key] = util.Typedef(key, **value)
-                util.typedef_wrapped_defaults(def_types[key])
+                    def_types[key] = typemap.Typedef(key, **value)
+                typemap.typedef_wrapped_defaults(def_types[key])
+
+        # Add to node so they show up in the json debug file.
+        node['_types'] = def_types
+        node['_type_aliases'] = def_types_alias
 
         patterns = node.setdefault('patterns', [])
-
-        node['types'] = def_types
-        self.typedef = def_types
-
-        node['type_aliases'] = def_types_alias
-        self.typealias = def_types_alias
-
-        util.Typedef.set_global_types(def_types, def_types_alias)
-
         classes = node.setdefault('classes', [])
         self.check_classes(classes)
-        self.check_functions(node, 'functions')
+        self.check_functions(node, '', 'functions')
 
     def check_classes(self, node):
         if not isinstance(node, list):
@@ -944,6 +384,10 @@ class Schema(object):
         for cls in node:
             if not isinstance(cls, dict):
                 raise TypeError("classes[n] must be a dictionary")
+            if 'name' not in cls:
+                raise TypeError("class does not define name")
+            declast.add_type(cls['name'])
+        for cls in node:
             self.check_class(cls)
 
     def check_class(self, node):
@@ -974,11 +418,11 @@ class Schema(object):
             util.eval_template(node, 'F_module_name', '_class')
             util.eval_template(node, 'F_impl_filename', '_class')
 
-        self.check_functions(node, 'methods')
+        self.check_functions(node, name, 'methods')
         self.pop_fmt()
         self.pop_options()
 
-    def check_function(self, node):
+    def check_function(self, node, cls_name):
         """ Make sure necessary fields are present for a function.
         """
         options, old = self.push_options(node)
@@ -989,13 +433,30 @@ class Schema(object):
 #        func.update(node)
 #        func.dump()
 
-        node['attrs'] = {}
-        node['args'] = []
-
+        if 'cpp_template' in node:
+            template_types = node['cpp_template'].keys()
+        else:
+            template_types = []
         if 'decl' in node:
             # parse decl and add to dictionary
-            values = parse_decl.check_decl(node['decl'])
-            util.update(node, values)  # recursive update
+            ast = declast.check_decl(node['decl'],
+                                     current_class=cls_name,
+                                     template_types=template_types)
+            node['_ast'] = ast
+
+            # add any attributes from YAML files to the ast
+            if 'attrs' in node:
+                attrs = node['attrs']
+                if 'result' in attrs:
+                    ast.attrs.update(attrs['result'])
+                for arg in ast.params:
+                    name = arg.name
+                    if name in attrs:
+                        arg.attrs.update(attrs[name])
+            # XXX - waring about unused fields in attrs
+        else:
+            raise RuntimeError("Missing decl")
+                                        
         if ('function_suffix' in node and
                 node['function_suffix'] is None):
             # YAML turns blanks strings into None
@@ -1008,26 +469,26 @@ class Schema(object):
                 if value is None:
                     # YAML turns blanks strings to None
                     node['default_arg_suffix'][i] = ''
-        if 'result' not in node:
-            raise RuntimeError("Missing result")
-        result = node['result']
-        if 'name' not in result:
-            raise RuntimeError("Missing result.name")
-        if 'type' not in result:
-            raise RuntimeError("Missing result.type")
-        if 'attrs' not in result:
-            result['attrs'] = {}
 
-        result = node['result']
+# XXX - do some error checks on ast
+#        if 'name' not in result:
+#            raise RuntimeError("Missing result.name")
+#        if 'type' not in result:
+#            raise RuntimeError("Missing result.type")
 
-        fmt_func.function_name = result['name']
-        fmt_func.underscore_name = util.un_camel(result['name'])
+        if ast.params is None:
+            raise RuntimeError("Missing arguments:", ast.gen_decl())
+
+        ast = node['_ast']
+
+        fmt_func.function_name = ast.name
+        fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
 
         # docs
         self.pop_fmt()
         self.pop_options()
 
-    def check_functions(self, node, member):
+    def check_functions(self, node, cls_name, member):
         """ check functions.
 
         Create a new list without the options only entries.
@@ -1040,7 +501,7 @@ class Schema(object):
         for func in functions:
             if self.check_options_only(func):
                 continue
-            self.check_function(func)
+            self.check_function(func, cls_name)
             only_functions.append(func)
         node[member] = only_functions
 
@@ -1078,7 +539,7 @@ class GenFunctions(object):
         """
         ilist = self.function_index
         node['_function_index'] = len(ilist)
-#        node['fmt'].function_index = str(len(ilist)) # debugging
+#        node['_fmt'].function_index = str(len(ilist)) # debugging
         ilist.append(node)
 
     def define_function_suffix(self, functions):
@@ -1090,10 +551,10 @@ class GenFunctions(object):
         cpp_overload = {}
         for function in functions:
             if 'function_suffix' in function:
-                function['fmt'].function_suffix = function['function_suffix']
+                function['_fmt'].function_suffix = function['function_suffix']
             self.append_function_index(function)
             cpp_overload. \
-                setdefault(function['result']['name'], []). \
+                setdefault(function['_ast'].name, []). \
                 append(function['_function_index'])
 
         # keep track of which function are overloaded in C++.
@@ -1120,15 +581,15 @@ class GenFunctions(object):
             if 'cpp_template' in function:
                 continue
             overloaded_functions.setdefault(
-                function['result']['name'], []).append(function)
+                function['_ast'].name, []).append(function)
 
         # look for function overload and compute function_suffix
         for mname, overloads in overloaded_functions.items():
             if len(overloads) > 1:
                 for i, function in enumerate(overloads):
                     function['_overloaded'] = True
-                    if not function['fmt'].inlocal('function_suffix'):
-                        function['fmt'].function_suffix = '_{}'.format(i)
+                    if not function['_fmt'].inlocal('function_suffix'):
+                        function['_fmt'].function_suffix = '_{}'.format(i)
 
         # Create additional C bufferify functions.
         ordered3 = []
@@ -1165,7 +626,7 @@ class GenFunctions(object):
                 self.append_function_index(new)
 
                 new['_generated'] = 'cpp_template'
-                fmt = new['fmt']
+                fmt = new['_fmt']
                 fmt.function_suffix = fmt.function_suffix + '_' + type
                 del new['cpp_template']
                 options = new['options']
@@ -1175,12 +636,12 @@ class GenFunctions(object):
                 options.wrap_lua = False
                 # Convert typename to type
                 fmt.CPP_template = '<{}>'.format(type)
-                if new['result']['type'] == typename:
-                    new['result']['type'] = type
+                if new['_ast'].typename == typename:
+                    new['_ast'].typename = type
                     new['_CPP_return_templated'] = True
-                for arg in new['args']:
-                    if arg['type'] == typename:
-                        arg['type'] = type
+                for arg in new['_ast'].params:
+                    if arg.typename == typename:
+                        arg.typename = type
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -1205,7 +666,7 @@ class GenFunctions(object):
 
                 new['_generated'] = 'fortran_generic'
                 new['_PTR_F_C_index'] = node['_function_index']
-                fmt = new['fmt']
+                fmt = new['_fmt']
                 # XXX append to existing suffix
                 fmt.function_suffix = fmt.function_suffix + '_' + type
                 del new['fortran_generic']
@@ -1215,17 +676,17 @@ class GenFunctions(object):
                 options.wrap_python = False
                 options.wrap_lua = False
                 # Convert typename to type
-                for arg in new['args']:
-                    if arg['name'] == argname:
+                for arg in new['_ast'].params:
+                    if arg.name == argname:
                         # Convert any typedef to native type with f_type
-                        argtype = arg['type']
-                        typedef = util.Typedef.lookup(argtype)
-                        typedef = util.Typedef.lookup(typedef.f_type)
+                        argtype = arg.typename
+                        typedef = typemap.Typedef.lookup(argtype)
+                        typedef = typemap.Typedef.lookup(typedef.f_type)
                         if not typedef.f_cast:
                             raise RuntimeError(
                                 "unable to cast type {} in fortran_generic"
-                                .format(arg['type']))
-                        arg['type'] = type
+                                .format(argtype))
+                        arg.typename = type
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -1250,21 +711,21 @@ class GenFunctions(object):
         ndefault = 0
 
         min_args = 0
-        for i, arg in enumerate(node['args']):
-            if 'default' not in arg['attrs']:
+        for i, arg in enumerate(node['_ast'].params):
+            if arg.init is None:
                 min_args += 1
                 continue
             new = util.copy_function_node(node)
             self.append_function_index(new)
             new['_generated'] = 'has_default_arg'
-            del new['args'][i:]  # remove trailing arguments
+            del new['_ast'].params[i:]  # remove trailing arguments
             del new['_has_default_arg']
             options = new['options']
             options.wrap_c = True
             options.wrap_fortran = True
             options.wrap_python = False
             options.wrap_lua = False
-            fmt = new['fmt']
+            fmt = new['_fmt']
             try:
                 fmt.function_suffix = default_arg_suffix[ndefault]
             except IndexError:
@@ -1277,10 +738,10 @@ class GenFunctions(object):
 
         # keep track of generated default value functions
         node['_default_funcs'] = default_funcs
-        node['_nargs'] = (min_args, len(node['args']))
+        node['_nargs'] = (min_args, len(node['_ast'].params))
         # The last name calls with all arguments (the original decl)
         try:
-            node['fmt'].function_suffix = default_arg_suffix[ndefault]
+            node['_fmt'].function_suffix = default_arg_suffix[ndefault]
         except IndexError:
             pass
 
@@ -1291,20 +752,19 @@ class GenFunctions(object):
         will convert argument into a buffer and length.
         """
         options = node['options']
-        fmt = node['fmt']
+        fmt = node['_fmt']
 
         # If a C++ function returns a std::string instance,
         # the default wrapper will not compile since the wrapper
         # will be declared as char. It will also want to return the
         # c_str of a stack variable. Warn and turn off the wrapper.
-        result = node['result']
-        result_type = result['type']
-        result_typedef = util.Typedef.lookup(result_type)
+        ast = node['_ast']
+        result_type = ast.typename
+        result_typedef = typemap.Typedef.lookup(result_type)
         # wrapped classes have not been added yet.
         # Only care about string here.
-        attrs = result['attrs']
-        result_is_ptr = (attrs.get('ptr', False) or
-                         attrs.get('reference', False))
+        attrs = ast.attrs
+        result_is_ptr = ast.is_indirect()
         if result_typedef and result_typedef.base in ['string', 'vector'] and \
                 result_type != 'char' and \
                 not result_is_ptr:
@@ -1313,7 +773,8 @@ class GenFunctions(object):
             self.config.log.write("Skipping {}, unable to create C wrapper "
                                   "for function returning {} instance"
                                   " (must return a pointer or reference).\n"
-                                  .format(result_typedef.cpp_type, result['name']))
+                                  .format(result_typedef.cpp_type,
+                                          ast.name))
 
         if options.wrap_fortran is False:
             return
@@ -1322,29 +783,27 @@ class GenFunctions(object):
 
         # Is result or any argument a string?
         has_implied_arg = False
-        for arg in node['args']:
-            argtype = arg['type']
-            typedef = util.Typedef.lookup(argtype)
+        for arg in ast.params:
+            argtype = arg.typename
+            typedef = typemap.Typedef.lookup(argtype)
             if typedef.base == 'string':
-                attrs = arg['attrs']
-                is_ptr = (attrs.get('ptr', False) or
-                          attrs.get('reference', False))
+                is_ptr = arg.is_indirect()
                 if is_ptr:
                     has_implied_arg = True
                 else:
-                    arg['type'] = 'char_scalar'
+                    arg.typename = 'char_scalar'
             elif typedef.base == 'vector':
                 has_implied_arg = True
 
         has_string_result = False
         result_as_arg = ''  # only applies to string functions
-        is_pure = node['attrs'].get('pure', False)
+        is_pure = ast.fattrs.get('pure', False)
         if result_typedef.base == 'vector':
             raise NotImplemented("vector result")
         elif result_typedef.base == 'string':
             if result_type == 'char' and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
-                result['type'] = 'char_scalar'
+                ast.typename = 'char_scalar'
             has_string_result = True
             result_as_arg = fmt.F_string_result_as_arg
             result_name = result_as_arg or fmt.C_string_result_as_arg
@@ -1365,7 +824,7 @@ class GenFunctions(object):
 
         C_new['_generated'] = 'arg_to_buffer'
         C_new['_error_pattern_suffix'] = '_as_buffer'
-        fmt = C_new['fmt']
+        fmt = C_new['_fmt']
         fmt.function_suffix = fmt.function_suffix + options.C_bufferify_suffix
 
         options = C_new['options']
@@ -1376,10 +835,10 @@ class GenFunctions(object):
         C_new['_PTR_C_CPP_index'] = node['_function_index']
 
         newargs = []
-        for arg in C_new['args']:
-            attrs = arg['attrs']
-            argtype = arg['type']
-            arg_typedef = util.Typedef.lookup(argtype)
+        for arg in C_new['_ast'].params:
+            attrs = arg.attrs
+            argtype = arg.typename
+            arg_typedef = typemap.Typedef.lookup(argtype)
             if arg_typedef.base == 'vector':
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
@@ -1388,7 +847,7 @@ class GenFunctions(object):
                 node['options'].wrap_c = False
                 node['options'].wrap_python = False  # NotImplemented
                 node['options'].wrap_lua = False     # NotImplemented
-            arg_typedef, c_statements = util.lookup_c_statements(arg)
+            arg_typedef, c_statements = typemap.lookup_c_statements(arg)
 
             # set names for implied buffer arguments
             stmts = 'intent_' + attrs['intent'] + '_buf'
@@ -1398,11 +857,14 @@ class GenFunctions(object):
                     # do not override user specified variable name
                     continue
                 if buf_arg == 'size':
-                    attrs['size'] = options.C_var_size_template.format(c_var=arg['name'])
+                    attrs['size'] = options.C_var_size_template.format(
+                        c_var=arg.name)
                 elif buf_arg == 'len_trim':
-                    attrs['len_trim'] = options.C_var_trim_template.format(c_var=arg['name'])
+                    attrs['len_trim'] = options.C_var_trim_template.format(
+                        c_var=arg.name)
                 elif buf_arg == 'len':
-                    attrs['len'] = options.C_var_len_template.format(c_var=arg['name'])
+                    attrs['len'] = options.C_var_len_template.format(
+                        c_var=arg.name)
 
                 ## base typedef
 
@@ -1415,26 +877,14 @@ class GenFunctions(object):
 
         if has_string_result:
             # Add additional argument to hold result
-            result_as_string = copy.deepcopy(result)
-            result_as_string['name'] = result_name
-            attrs = result_as_string['attrs']
-            attrs['const'] = False
+            ast = C_new['_ast']
+            result_as_string = ast.result_as_arg(result_name)
+            attrs = result_as_string.attrs
             attrs['len'] = options.C_var_len_template.format(c_var=result_name)
             attrs['intent'] = 'out'
             attrs['_is_result'] = True
-            if not result_is_ptr:
-                attrs['ptr'] = True
-                attrs['reference'] = False
-            C_new['args'].append(result_as_string)
-
             # convert to subroutine
             C_new['_subprogram'] = 'subroutine'
-            result = C_new['result']
-            result['type'] = 'void'
-            attrs = result['attrs']
-            attrs['const'] = False
-            attrs['ptr'] = False
-            attrs['reference'] = False
 
         if is_pure:
             # pure functions which return a string have result_pure defined.
@@ -1454,7 +904,7 @@ class GenFunctions(object):
             options.wrap_python = False
             options.wrap_lua = False
             # Do not add '_bufferify'
-            F_new['fmt'].function_suffix = node['fmt'].function_suffix
+            F_new['_fmt'].function_suffix = node['_fmt'].function_suffix
 
             # Do not wrap original function (does not have result argument)
             node['options'].wrap_fortran = False
@@ -1497,84 +947,29 @@ class GenFunctions(object):
             # XXX - Maybe dummy it out
             # XXX - process templated types
             return
-        result = node['result']
-        rv_type = result['type']
-        typedef = util.Typedef.lookup(rv_type)
+        ast = node['_ast']
+        rv_type = ast.typename
+        typedef = typemap.Typedef.lookup(rv_type)
         if typedef is None:
             raise RuntimeError(
                 "Unknown type {} for function decl: {}"
                 .format(rv_type, node['decl']))
-        result_typedef = util.Typedef.lookup(rv_type)
+        result_typedef = typemap.Typedef.lookup(rv_type)
         # XXX - make sure it exists
-        used_types[result['type']] = result_typedef
-        for arg in node['args']:
-            argtype = arg['type']
-            typedef = util.Typedef.lookup(argtype)
+        used_types[rv_type] = result_typedef
+        for arg in ast.params:
+            argtype = arg.typename
+            typedef = typemap.Typedef.lookup(argtype)
             if typedef is None:
                 raise RuntimeError("%s not defined" % argtype)
             if typedef.base == 'wrapped':
                 used_types[argtype] = typedef
 
-    _skip_annotations = ['const', 'ptr', 'reference']
-
-    def gen_annotations_decl(self, attrs, decl):
-        """Append annotations from attrs onto decl in sorted order.
-        Skip some that are already handled.
-        """
-        keys = sorted(attrs)
-        for key in keys:
-            if key[0] == '_':  # internal attribute
-                continue
-            if key in self._skip_annotations:
-                continue
-            value = attrs[key]
-            if value is True:
-                decl.append('+' + key)
-            elif value is False:
-                pass
-#                decl.append('-' + key)
-            elif key == 'dimension':
-                # dimension already has parens
-                decl.append('+%s%s' % (key, value))
-            else:
-                decl.append('+%s(%s)' % (key, value))
-
-    def gen_arg_decl(self, arg, decl):
-        """ Generate declaration for a single arg (or result)
-        """
-        attrs = arg['attrs']
-        if attrs.get('const', False):
-            decl.append('const ')
-        decl.append(arg['type'] + ' ')
-        if attrs.get('ptr', False):
-            decl.append('* ')
-        if attrs.get('reference', False):
-            decl.append('& ')
-        decl.append(arg['name'])
-
     def gen_functions_decl(self, functions):
         """ Generate _decl for generated all functions.
         """
         for node in functions:
-            decl = []
-            self.gen_arg_decl(node['result'], decl)
-
-            if node['args']:
-                decl.append('(')
-                for arg in node['args']:
-                    self.gen_arg_decl(arg, decl)
-                    self.gen_annotations_decl(arg['attrs'], decl)
-                    decl.append(', ')
-                decl[-1] = ')'
-            else:
-                decl.append('()')
-
-            attrs = node['attrs']
-            if attrs.get('const', False):
-                decl.append(' const')
-            self.gen_annotations_decl(attrs, decl)
-
-            node['_decl'] = ''.join(decl)
+            node['_decl'] = node['_ast'].gen_decl()
 
 
 class VerifyAttrs(object):
@@ -1603,15 +998,15 @@ class VerifyAttrs(object):
         # create typedef for each class before generating code
         # this allows classes to reference each other
         name = cls['name']
-        fmt_class = cls['fmt']
+        fmt_class = cls['_fmt']
         options = cls['options']
 
-        typedef = util.Typedef.lookup(name)
+        typedef = typemap.Typedef.lookup(name)
         if typedef is None:
             # unname = util.un_camel(name)
             unname = name.lower()
             cname = fmt_class.C_prefix + unname
-            typedef = util.Typedef(
+            typedef = typemap.Typedef(
                 name,
                 base='wrapped',
                 cpp_type=name,
@@ -1620,8 +1015,8 @@ class VerifyAttrs(object):
                 f_module={fmt_class.F_module_name:[unname]},
                 f_to_c = '{f_var}%%%s()' % options.F_name_instance_get,
                 )
-            util.typedef_wrapped_defaults(typedef)
-            util.Typedef.register(name, typedef)
+            typemap.typedef_wrapped_defaults(typedef)
+            typemap.Typedef.register(name, typedef)
 
         fmt_class.C_type_name = typedef.c_type
 
@@ -1636,9 +1031,9 @@ class VerifyAttrs(object):
             return
 
         # cache subprogram type
-        result = node['result']
-        result_type = result['type']
-        result_is_ptr = result['attrs'].get('ptr', False)
+        ast = node['_ast']
+        result_type = ast.typename
+        result_is_ptr = ast.is_pointer()
         #  'void'=subroutine   'void *'=function
         if result_type == 'void' and not result_is_ptr:
             node['_subprogram'] = 'subroutine'
@@ -1646,10 +1041,10 @@ class VerifyAttrs(object):
             node['_subprogram'] = 'function'
 
         found_default = False
-        for arg in node['args']:
-            argname = arg['name']
-            argtype = arg['type']
-            typedef = util.Typedef.lookup(argtype)
+        for arg in ast.params:
+            argname = arg.name
+            argtype = arg.typename
+            typedef = typemap.Typedef.lookup(argtype)
             if typedef is None:
                 # if the type does not exist, make sure it is defined by cpp_template
                 #- decl: void Function7(ArgType arg)
@@ -1660,18 +1055,17 @@ class VerifyAttrs(object):
                 cpp_template = node.get('cpp_template', {})
                 if argtype not in cpp_template:
                     raise RuntimeError("No such type %s: %s" % (
-                            argtype, parse_decl.str_declarator(arg)))
+                            argtype, arg.gen_decl()))
 
-            attrs = arg['attrs']
-            is_ptr = (attrs.get('ptr', False) or
-                      attrs.get('reference', False))
+            is_ptr = arg.is_indirect()
+            attrs = arg.attrs
 
             # intent
             intent = attrs.get('intent', None)
             if intent is None:
                 if not is_ptr:
                     attrs['intent'] = 'in'
-                elif attrs.get('const', False):
+                elif arg.const:
                     attrs['intent'] = 'in'
                 elif typedef.base == 'string':
                     attrs['intent'] = 'inout'
@@ -1719,7 +1113,7 @@ class VerifyAttrs(object):
                 # default to 1-d assumed shape 
                 attrs['dimension'] = '(:)'
 
-            if 'default' in attrs:
+            if arg.init is not None:
                 found_default = True
                 node['_has_default_arg'] = True
             elif found_default is True:
@@ -1742,14 +1136,14 @@ class VerifyAttrs(object):
             if typedef and typedef.base == 'vector':
                 if not temp:
                     raise RuntimeError("std::vector must have template argument: %s" % (
-                            parse_decl.str_declarator(arg)))
-                typedef = util.Typedef.lookup(temp)
+                            arg.gen_decl()))
+                typedef = typemap.Typedef.lookup(temp)
                 if typedef is None:
                     raise RuntimeError("No such type %s for template: %s" % (
-                            temp, parse_decl.str_declarator(arg)))
+                            temp, arg.gen_decl()))
             elif temp is not None:
                 raise RuntimeError("Type '%s' may not supply template argument: %s" % (
-                        argtype, parse_decl.str_declarator(arg)))
+                        argtype, arg.gen_decl()))
 
 
 class Namify(object):
@@ -1779,7 +1173,7 @@ class Namify(object):
                 handler(cls, func)
 
             options = cls['options']
-            fmt_class = cls['fmt']
+            fmt_class = cls['_fmt']
             if 'F_this' in options:
                 fmt_class.F_this = options.F_this
 
@@ -1790,7 +1184,7 @@ class Namify(object):
         options = node['options']
         if not options.wrap_c:
             return
-        fmt_func = node['fmt']
+        fmt_func = node['_fmt']
 
         util.eval_template(node, 'C_name')
         util.eval_template(node, 'F_C_name')
@@ -1805,7 +1199,7 @@ class Namify(object):
         options = node['options']
         if not options.wrap_fortran:
             return
-        fmt_func = node['fmt']
+        fmt_func = node['_fmt']
 
         util.eval_template(node, 'F_name_impl')
         util.eval_template(node, 'F_name_function')
@@ -1833,7 +1227,7 @@ class TypeOut(util.WrapperMixin):
         This file can be read by Shroud to share types.
         """
         util.eval_template(self.tree, 'YAML_type_filename')
-        fname = self.tree['fmt'].YAML_type_filename
+        fname = self.tree['_fmt'].YAML_type_filename
         output = [
             '# Types generated by Shroud for class {}'.format(
                 self.tree['library']),
@@ -1845,7 +1239,7 @@ class TypeOut(util.WrapperMixin):
             name = cls['name']
             output.append('')
             output.append('  {}:'.format(name))
-            self.tree['types'][name].__export_yaml__(2, output)
+            self.tree['_types'][name].__export_yaml__(2, output)
             write_file = True
 
             # yaml.dump does not make a nice output

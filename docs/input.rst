@@ -115,7 +115,9 @@ Annotations
 ^^^^^^^^^^^
 
 Annotations or attributes apply to specific arguments or results.
-They describe semantic behavior for an argument::
+They describe semantic behavior for an argument.
+An attribute may be set to true by listing its name or
+it may have a value in parens::
 
     - decl: Class1 *new()  +constructor
     - decl: void delete()  +destructor

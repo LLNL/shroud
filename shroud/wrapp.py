@@ -48,6 +48,7 @@ One Extension module per class
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import typemap
 from . import util
 from .util import wformat, append_format
 
@@ -98,7 +99,7 @@ class Wrapp(util.WrapperMixin):
     def wrap_library(self):
         top = self.tree
         options = self.tree['options']
-        fmt_library = self.tree['fmt']
+        fmt_library = self.tree['_fmt']
 
         # Format variables
         fmt_library.PY_prefix = options.get('PY_prefix', 'PY_')
@@ -126,8 +127,8 @@ class Wrapp(util.WrapperMixin):
 
         # preprocess all classes first to allow them to reference each other
         for node in self.tree['classes']:
-            typedef = util.Typedef.lookup(node['name'])
-            fmt = node['fmt']
+            typedef = typemap.Typedef.lookup(node['name'])
+            fmt = node['_fmt']
             typedef.PY_format = 'O'
 
             # PyTypeObject for class
@@ -171,10 +172,10 @@ class Wrapp(util.WrapperMixin):
         self.log.write("class {1[name]}\n".format(self, node))
         name = node['name']
         unname = util.un_camel(name)
-        typedef = util.Typedef.lookup(name)
+        typedef = typemap.Typedef.lookup(name)
 
         options = node['options']
-        fmt_class = node['fmt']
+        fmt_class = node['_fmt']
 
         util.eval_template(node, 'PY_type_filename')
 
@@ -212,7 +213,7 @@ class Wrapp(util.WrapperMixin):
         These functions are used by PyArg_ParseTupleAndKeywords
         and Py_BuildValue node is a C++ class.
         """
-        fmt = node['fmt']
+        fmt = node['_fmt']
 
         fmt.PY_capsule_name = wformat('PY_{cpp_class}_capsule_name', fmt)
 
@@ -321,7 +322,7 @@ return 1;""", fmt)
         overloaded_methods = {}
         for function in functions:
             flist = overloaded_methods. \
-                setdefault(function['result']['name'], [])
+                setdefault(function['_ast'].name, [])
             if '_cpp_overload' not in function:
                 continue
             if not function['options'].wrap_python:
@@ -356,7 +357,8 @@ return 1;""", fmt)
             cls_function = 'function'
         self.log.write("Python {0} {1[_decl]}\n".format(cls_function, node))
 
-        fmt_func = node['fmt']
+        fmt_func = node['_fmt']
+        fmtargs = node.setdefault('_fmtargs', {})
         fmt = util.Options(fmt_func)
         fmt.doc_string = 'documentation'
         if cls:
@@ -364,20 +366,17 @@ return 1;""", fmt)
 
         CPP_subprogram = node['_subprogram']
 
-        result = node['result']
-        result_type = result['type']
-        result_is_ptr = result['attrs'].get('ptr', False)
-        result_is_ref = result['attrs'].get('reference', False)
+        ast = node['_ast']
+        result_type = ast.typename
 
         if node.get('return_this', False):
             result_type = 'void'
-            result_is_ptr = False
             CPP_subprogram = 'subroutine'
 
-        result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['attrs'].get('constructor', False)
-        is_dtor = node['attrs'].get('destructor', False)
-#        is_const = result['attrs'].get('const', False)
+        result_typedef = typemap.Typedef.lookup(result_type)
+        is_ctor = ast.fattrs.get('constructor', False)
+        is_dtor = ast.fattrs.get('destructor', False)
+#        is_const = ast.const
         if is_ctor:   # or is_dtor:
             # XXX - have explicit delete
             # need code in __init__ and __del__
@@ -385,12 +384,12 @@ return 1;""", fmt)
 
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.
-        if result_typedef.base == 'wrapped':
-            is_const = False
-        else:
-            is_const = None
-        fmt.rv_decl = self.std_c_decl(
-            'cpp_type', result, name=fmt.PY_result, const=is_const)  # return value
+# This has been replaced by gen_arg methods, but not sure about const.
+#        if result_typedef.base == 'wrapped':
+#            is_const = False
+#        else:
+#            is_const = None
+        fmt.rv_decl = ast.gen_arg_as_cpp(name=fmt.PY_result)  # return value
 
         PY_decl = []     # variables for function
         PY_code = []
@@ -418,7 +417,7 @@ return 1;""", fmt)
                     'if (kwds != NULL) SH_nargs += PyDict_Size(args);',
                     ])
 
-        args = node['args']
+        args = ast.params
         if not args:
             fmt.ml_flags = 'METH_NOARGS'
         else:
@@ -429,22 +428,23 @@ return 1;""", fmt)
             arg_offsets = []
             offset = 0
             for arg in args:
-                fmt_arg = arg.setdefault('fmtpy', util.Options(fmt))
-                arg_name = arg['name']
-                fmt_arg.c_var = arg['name']
-                fmt_arg.cpp_var = fmt_arg.c_var
-                fmt_arg.py_var = 'SH_Py_' + fmt_arg.c_var
-                if arg['attrs'].get('const', False):
+                arg_name = arg.name
+                fmt_arg0 = fmtargs.setdefault(arg_name, {})
+                fmt_arg = fmt_arg0.setdefault('fmtpy', util.Options(fmt))
+                fmt_arg.c_var = arg_name
+                fmt_arg.cpp_var = arg_name
+                fmt_arg.py_var = 'SH_Py_' + arg_name
+                if arg.const:
                     fmt_arg.c_const = 'const '
                 else:
                     fmt_arg.c_const = ''
-                if arg['attrs'].get('ptr', False):
+                if arg.is_pointer():
                     fmt_arg.c_ptr = ' *'
                 else:
                     fmt_arg.c_ptr = ''
-                attrs = arg['attrs']
+                attrs = arg.attrs
 
-                arg_typedef = util.Typedef.lookup(arg['type'])
+                arg_typedef = typemap.Typedef.lookup(arg.typename)
                 fmt_arg.cpp_type = arg_typedef.cpp_type
                 py_statements = arg_typedef.py_statements
                 have_cpp_local_var = arg_typedef.cpp_local_var
@@ -455,7 +455,7 @@ return 1;""", fmt)
                     offset += len(arg_name) + 1
 
                     # XXX default should be handled differently
-                    if 'default' in attrs:
+                    if arg.init is not None:
                         if not found_default:
                             parse_format.append('|')  # add once
                             found_default = True
@@ -498,16 +498,11 @@ return 1;""", fmt)
                     build_vargs.append('*' + vargs)
 
                 # argument for C++ function
-                lang = 'cpp_type'
                 if arg_typedef.base == 'string':
                     # C++ will coerce char * to std::string
-                    lang = 'c_type'
-                if attrs.get('reference', False):
-                    # convert a reference to a pointer
-                    ptr = True
+                    PY_decl.append(arg.gen_arg_as_c() + ';')
                 else:
-                    ptr = False
-                PY_decl.append(self.std_c_decl(lang, arg, ptr=ptr) + ';')
+                    PY_decl.append(arg.gen_arg_as_cpp() + ';')
 
                 if arg_typedef.cpp_local_var:
                     # cpp_local_var should only be set if
@@ -665,7 +660,7 @@ return 1;""", fmt)
         util.eval_template(node, 'PY_name_impl')
 
         expose = True
-        if len(self.overloaded_methods[result['name']]) > 1:
+        if len(self.overloaded_methods[ast.name]) > 1:
             # Only expose a multi-dispatch name, not each overload
             expose = False
         elif found_default:
@@ -770,7 +765,7 @@ return 1;""", fmt)
         self._pop_splicer('type')
 
     def write_extension_type(self, library, node):
-        fmt = node['fmt']
+        fmt = node['_fmt']
         fname = fmt.PY_type_filename
 
         output = []
@@ -821,7 +816,7 @@ return 1;""", fmt)
             if len(methods) < 2:
                 continue  # not overloaded
 
-            fmt_func = methods[0]['fmt']
+            fmt_func = methods[0]['_fmt']
             fmt = util.Options(fmt_func)
             fmt.function_suffix = ''
             fmt.doc_string = 'documentation'
@@ -845,11 +840,11 @@ return 1;""", fmt)
                                 % overload['_nargs'])
                 else:
                     body.append('if (SH_nargs == %d) {' %
-                                len(overload['args']))
+                                len(overload['_ast'].params))
                 body.append(1)
                 append_format(body,
                               'rvobj = {PY_name_impl}(self, args, kwds);',
-                              overload['fmt'])
+                              overload['_fmt'])
                 body.append('if (!PyErr_Occurred()) {')
                 body.append(1)
                 body.append('return rvobj;')
@@ -876,7 +871,7 @@ return 1;""", fmt)
     def write_header(self, node):
         # node is library
         options = node['options']
-        fmt = node['fmt']
+        fmt = node['_fmt']
         fname = fmt.PY_header_filename
 
         output = []
@@ -934,7 +929,7 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
     def write_module(self, node):
         # node is library.
         options = node['options']
-        fmt = node['fmt']
+        fmt = node['_fmt']
         fname = fmt.PY_module_filename
 
         fmt.PY_library_doc = 'library documentation'
@@ -975,7 +970,7 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
 
     def write_helper(self):
         node = self.tree
-        fmt = node['fmt']
+        fmt = node['_fmt']
         output = []
         output.append(wformat('#include "{PY_header_filename}"', fmt))
         self.namespace(node, None, 'begin', output)

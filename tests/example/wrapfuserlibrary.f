@@ -148,6 +148,14 @@ module userlibrary_mod
             integer(C_LONG), value, intent(IN) :: j
         end subroutine c_testoptional_2
 
+        function test_size_t() &
+                result(SHT_rv) &
+                bind(C, name="AA_test_size_t")
+            use iso_c_binding, only : C_SIZE_T
+            implicit none
+            integer(C_SIZE_T) :: SHT_rv
+        end function test_size_t
+
         subroutine testmpi(comm) &
                 bind(C, name="AA_testmpi")
             use iso_c_binding, only : C_INT
@@ -186,7 +194,7 @@ module userlibrary_mod
 
 contains
 
-    ! bool isNameValid(const std::string & name+intent(in))
+    ! bool isNameValid(const std::string & name +intent(in))
     ! arg_to_buffer
     ! function_index=48
     function is_name_valid(name) result(SHT_rv)
@@ -208,7 +216,7 @@ contains
         ! splicer end function.is_initialized
     end function is_initialized
 
-    ! void checkBool(bool arg1+intent(in)+value, bool * arg2+intent(out), bool * arg3+intent(inout))
+    ! void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
     ! function_index=50
     subroutine check_bool(arg1, arg2, arg3)
         use iso_c_binding, only : C_BOOL
@@ -230,7 +238,7 @@ contains
         arg3 = SH_arg3  ! coerce to logical
     end subroutine check_bool
 
-    ! void test_names(const std::string & name+intent(in))
+    ! void test_names(const std::string & name +intent(in))
     ! arg_to_buffer
     ! function_index=51
     subroutine test_names(name)
@@ -243,7 +251,7 @@ contains
         ! splicer end function.test_names
     end subroutine test_names
 
-    ! void test_names(const std::string & name+intent(in), int flag+intent(in)+value)
+    ! void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
     ! arg_to_buffer
     ! function_index=52
     subroutine test_names_flag(name, flag)
@@ -260,16 +268,16 @@ contains
 
     ! void testoptional()
     ! has_default_arg
-    ! function_index=57
+    ! function_index=58
     subroutine testoptional_0()
         ! splicer begin function.testoptional_0
         call c_testoptional_0()
         ! splicer end function.testoptional_0
     end subroutine testoptional_0
 
-    ! void testoptional(int i+default(1)+intent(in)+value)
+    ! void testoptional(int i=1 +intent(in)+value)
     ! has_default_arg
-    ! function_index=58
+    ! function_index=59
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -278,7 +286,7 @@ contains
         ! splicer end function.testoptional_1
     end subroutine testoptional_1
 
-    ! void testoptional(int i+default(1)+intent(in)+value, long j+default(2)+intent(in)+value)
+    ! void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
     ! function_index=53
     subroutine testoptional_2(i, j)
         use iso_c_binding, only : C_INT, C_LONG
@@ -291,8 +299,8 @@ contains
         ! splicer end function.testoptional_2
     end subroutine testoptional_2
 
-    ! void testgroup1(DataGroup * grp+intent(in)+value)
-    ! function_index=55
+    ! void testgroup1(DataGroup * grp +intent(in)+value)
+    ! function_index=56
     subroutine testgroup1(grp)
         use sidre_mod, only : group
         type(datagroup), value, intent(IN) :: grp
@@ -301,8 +309,8 @@ contains
         ! splicer end function.testgroup1
     end subroutine testgroup1
 
-    ! void testgroup2(const DataGroup * grp+intent(in)+value)
-    ! function_index=56
+    ! void testgroup2(const DataGroup * grp +intent(in)+value)
+    ! function_index=57
     subroutine testgroup2(grp)
         use sidre_mod, only : group
         type(datagroup), value, intent(IN) :: grp

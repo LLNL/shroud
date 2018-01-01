@@ -74,7 +74,7 @@ void c_name_special()
 // splicer end function.function2
 }
 
-// void function3a(int i+intent(in)+value)
+// void function3a(int i +intent(in)+value)
 // function_index=4
 void YYY_TES_function3a_0(int i)
 {
@@ -84,7 +84,7 @@ void YYY_TES_function3a_0(int i)
 // splicer end function.function3a_0
 }
 
-// void function3a(long i+intent(in)+value)
+// void function3a(long i +intent(in)+value)
 // function_index=5
 void YYY_TES_function3a_1(long i)
 {
@@ -94,7 +94,7 @@ void YYY_TES_function3a_1(long i)
 // splicer end function.function3a_1
 }
 
-// int function4(const std::string & rv+intent(in))
+// int function4(const std::string & rv +intent(in))
 // function_index=6
 int YYY_TES_function4(const char * rv)
 {
@@ -105,7 +105,7 @@ int YYY_TES_function4(const char * rv)
 // splicer end function.function4
 }
 
-// int function4(const std::string & rv+intent(in)+len_trim(Lrv))
+// int function4(const std::string & rv +intent(in)+len_trim(Lrv))
 // function_index=7
 int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 {

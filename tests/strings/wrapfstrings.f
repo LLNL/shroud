@@ -391,7 +391,7 @@ contains
         ! splicer end function.return_char
     end function return_char
 
-    ! void passCharPtr(char * dest+intent(out), const char * src+intent(in))
+    ! void passCharPtr(char * dest +intent(out), const char * src +intent(in))
     ! arg_to_buffer
     ! function_index=2
     !>
@@ -413,7 +413,7 @@ contains
         ! splicer end function.pass_char_ptr
     end subroutine pass_char_ptr
 
-    ! void passCharPtrInOut(char * s+intent(inout))
+    ! void passCharPtrInOut(char * s +intent(inout))
     ! arg_to_buffer
     ! function_index=3
     !>
@@ -431,7 +431,7 @@ contains
         ! splicer end function.pass_char_ptr_in_out
     end subroutine pass_char_ptr_in_out
 
-    ! const char * getChar1()+pure
+    ! const char * getChar1() +pure
     ! function_index=4
     !>
     !! \brief return a 'const char *' as character(*)
@@ -445,7 +445,7 @@ contains
         ! splicer end function.get_char1
     end function get_char1
 
-    ! const char * getChar2()
+    ! const char * getChar2 +len(30)()
     ! arg_to_buffer
     ! function_index=5
     !>
@@ -462,7 +462,7 @@ contains
         ! splicer end function.get_char2
     end function get_char2
 
-    ! void getChar3(char * output+intent(out)+len(Noutput))
+    ! void getChar3(char * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
     ! function_index=27
     !>
@@ -479,7 +479,7 @@ contains
         ! splicer end function.get_char3
     end subroutine get_char3
 
-    ! const string & getString1()+pure
+    ! const string & getString1() +pure
     ! function_index=7
     !>
     !! \brief return a 'const string&' as character(*)
@@ -493,7 +493,7 @@ contains
         ! splicer end function.get_string1
     end function get_string1
 
-    ! const string & getString2()
+    ! const string & getString2 +len(30)()
     ! arg_to_buffer
     ! function_index=8
     !>
@@ -510,7 +510,7 @@ contains
         ! splicer end function.get_string2
     end function get_string2
 
-    ! void getString3(string & output+intent(out)+len(Noutput))
+    ! void getString3(string & output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
     ! function_index=31
     !>
@@ -527,7 +527,7 @@ contains
         ! splicer end function.get_string3
     end subroutine get_string3
 
-    ! const string & getString2_empty()
+    ! const string & getString2_empty +len(30)()
     ! arg_to_buffer
     ! function_index=10
     !>
@@ -544,7 +544,7 @@ contains
         ! splicer end function.get_string2_empty
     end function get_string2_empty
 
-    ! const string getString5()
+    ! const string getString5 +len(30)()
     ! arg_to_buffer
     ! function_index=11
     !>
@@ -561,7 +561,7 @@ contains
         ! splicer end function.get_string5
     end function get_string5
 
-    ! void getString6(string * output+intent(out)+len(Noutput))
+    ! void getString6(string * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
     ! function_index=35
     !>
@@ -578,7 +578,7 @@ contains
         ! splicer end function.get_string6
     end subroutine get_string6
 
-    ! void acceptStringConstReference(const std::string & arg1+intent(in))
+    ! void acceptStringConstReference(const std::string & arg1 +intent(in))
     ! arg_to_buffer
     ! function_index=13
     !>
@@ -598,7 +598,7 @@ contains
         ! splicer end function.accept_string_const_reference
     end subroutine accept_string_const_reference
 
-    ! void acceptStringReferenceOut(std::string & arg1+intent(out))
+    ! void acceptStringReferenceOut(std::string & arg1 +intent(out))
     ! arg_to_buffer
     ! function_index=14
     !>
@@ -618,7 +618,7 @@ contains
         ! splicer end function.accept_string_reference_out
     end subroutine accept_string_reference_out
 
-    ! void acceptStringReference(std::string & arg1+intent(inout))
+    ! void acceptStringReference(std::string & arg1 +intent(inout))
     ! arg_to_buffer
     ! function_index=15
     !>
@@ -639,7 +639,7 @@ contains
         ! splicer end function.accept_string_reference
     end subroutine accept_string_reference
 
-    ! void explicit1(char * name+intent(in)+len_trim(AAlen))
+    ! void explicit1(char * name +intent(in)+len_trim(AAlen))
     ! arg_to_buffer
     ! function_index=16
     subroutine explicit1(name)
@@ -652,7 +652,7 @@ contains
         ! splicer end function.explicit1
     end subroutine explicit1
 
-    ! void explicit2(char * name+intent(out)+len(AAtrim))
+    ! void explicit2(char * name +intent(out)+len(AAtrim))
     ! arg_to_buffer
     ! function_index=17
     subroutine explicit2(name)
@@ -682,7 +682,7 @@ contains
         ! splicer end function.creturn_char
     end function creturn_char
 
-    ! void CpassCharPtr(char * dest+intent(out), const char * src+intent(in))
+    ! void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))
     ! arg_to_buffer
     ! function_index=20
     !>

@@ -68,7 +68,7 @@ extern "C" {
 // splicer begin class.ExClass2.C_definitions
 // splicer end class.ExClass2.C_definitions
 
-// ExClass2 * ExClass2(const string * name+intent(in))+constructor
+// ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
 // function_index=18
 AA_exclass2 * AA_exclass2_ex_class2(const char * name)
 {
@@ -79,7 +79,7 @@ AA_exclass2 * AA_exclass2_ex_class2(const char * name)
 // splicer end class.ExClass2.method.ex_class2
 }
 
-// ExClass2 * ExClass2(const string * name+intent(in)+len_trim(Lname))+constructor
+// ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2)) +constructor
 // function_index=38
 AA_exclass2 * AA_exclass2_ex_class2_bufferify(const char * name, int Lname)
 {
@@ -90,7 +90,7 @@ AA_exclass2 * AA_exclass2_ex_class2_bufferify(const char * name, int Lname)
 // splicer end class.ExClass2.method.ex_class2_bufferify
 }
 
-// void delete()+destructor
+// void delete() +destructor
 // function_index=19
 void AA_exclass2_delete(AA_exclass2 * self)
 {
@@ -101,7 +101,7 @@ void AA_exclass2_delete(AA_exclass2 * self)
 // splicer end class.ExClass2.method.delete
 }
 
-// const string & getName() const
+// const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 // function_index=20
 const char * AA_exclass2_get_name(const AA_exclass2 * self)
 {
@@ -113,7 +113,7 @@ const char * AA_exclass2_get_name(const AA_exclass2 * self)
 // splicer end class.ExClass2.method.get_name
 }
 
-// void getName(string & SHF_rv+intent(out)+len(NSHF_rv)) const
+// void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
 // function_index=39
 void AA_exclass2_get_name_bufferify(const AA_exclass2 * self, char * SHF_rv, int NSHF_rv)
 {
@@ -141,7 +141,7 @@ const char * AA_exclass2_get_name2(AA_exclass2 * self)
 // splicer end class.ExClass2.method.get_name2
 }
 
-// void getName2(string & SHF_rv+intent(out)+len(NSHF_rv))
+// void getName2(string & SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=40
 void AA_exclass2_get_name2_bufferify(AA_exclass2 * self, char * SHF_rv, int NSHF_rv)
 {
@@ -169,7 +169,7 @@ char * AA_exclass2_get_name3(const AA_exclass2 * self)
 // splicer end class.ExClass2.method.get_name3
 }
 
-// void getName3(string & SHF_rv+intent(out)+len(NSHF_rv)) const
+// void getName3(string & SHF_rv +intent(out)+len(NSHF_rv)) const
 // function_index=41
 void AA_exclass2_get_name3_bufferify(const AA_exclass2 * self, char * SHF_rv, int NSHF_rv)
 {
@@ -197,7 +197,7 @@ char * AA_exclass2_get_name4(AA_exclass2 * self)
 // splicer end class.ExClass2.method.get_name4
 }
 
-// void getName4(string & SHF_rv+intent(out)+len(NSHF_rv))
+// void getName4(string & SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=42
 void AA_exclass2_get_name4_bufferify(AA_exclass2 * self, char * SHF_rv, int NSHF_rv)
 {
@@ -213,22 +213,22 @@ void AA_exclass2_get_name4_bufferify(AA_exclass2 * self, char * SHF_rv, int NSHF
 // splicer end class.ExClass2.method.get_name4_bufferify
 }
 
-// const int GetNameLength()
+// int GetNameLength() const
 // function_index=24
 /**
  * \brief helper function for Fortran
  *
  */
-const int AA_exclass2_get_name_length(AA_exclass2 * self)
+int AA_exclass2_get_name_length(const AA_exclass2 * self)
 {
 // splicer begin class.ExClass2.method.get_name_length
-    ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));
+    const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));
     return SH_this->getName().length();
 
 // splicer end class.ExClass2.method.get_name_length
 }
 
-// ExClass1 * get_class1(const ExClass1 * in+intent(in)+value)
+// ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
 // function_index=25
 AA_exclass1 * AA_exclass2_get_class1(AA_exclass2 * self, const AA_exclass1 * in)
 {
@@ -240,7 +240,7 @@ AA_exclass1 * AA_exclass2_get_class1(AA_exclass2 * self, const AA_exclass1 * in)
 // splicer end class.ExClass2.method.get_class1
 }
 
-// void * declare(TypeID type+intent(in)+value)
+// void * declare(TypeID type +intent(in)+value)
 // function_index=31
 void AA_exclass2_declare_0(AA_exclass2 * self, int type)
 {
@@ -251,7 +251,7 @@ void AA_exclass2_declare_0(AA_exclass2 * self, int type)
 // splicer end class.ExClass2.method.declare_0
 }
 
-// void * declare(TypeID type+intent(in)+value, SidreLength len+default(1)+intent(in)+value)
+// void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
 // function_index=26
 void AA_exclass2_declare_1(AA_exclass2 * self, int type, SIDRE_SidreLength len)
 {
@@ -285,7 +285,7 @@ int AA_exclass2_get_type_id(const AA_exclass2 * self)
 // splicer end class.ExClass2.method.get_type_id
 }
 
-// void setValue(int value+intent(in)+value)
+// void setValue(int value +intent(in)+value)
 // function_index=32
 void AA_exclass2_set_value_int(AA_exclass2 * self, int value)
 {
@@ -296,7 +296,7 @@ void AA_exclass2_set_value_int(AA_exclass2 * self, int value)
 // splicer end class.ExClass2.method.set_value_int
 }
 
-// void setValue(long value+intent(in)+value)
+// void setValue(long value +intent(in)+value)
 // function_index=33
 void AA_exclass2_set_value_long(AA_exclass2 * self, long value)
 {
@@ -307,7 +307,7 @@ void AA_exclass2_set_value_long(AA_exclass2 * self, long value)
 // splicer end class.ExClass2.method.set_value_long
 }
 
-// void setValue(float value+intent(in)+value)
+// void setValue(float value +intent(in)+value)
 // function_index=34
 void AA_exclass2_set_value_float(AA_exclass2 * self, float value)
 {
@@ -318,7 +318,7 @@ void AA_exclass2_set_value_float(AA_exclass2 * self, float value)
 // splicer end class.ExClass2.method.set_value_float
 }
 
-// void setValue(double value+intent(in)+value)
+// void setValue(double value +intent(in)+value)
 // function_index=35
 void AA_exclass2_set_value_double(AA_exclass2 * self, double value)
 {

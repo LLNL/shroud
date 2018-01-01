@@ -126,7 +126,7 @@ contains
         ! splicer end function.function2
     end subroutine f_name_special
 
-    ! void function3a(int i+intent(in)+value)
+    ! void function3a(int i +intent(in)+value)
     ! function_index=4
     subroutine F_name_function3a_int(i)
         use iso_c_binding, only : C_INT
@@ -136,7 +136,7 @@ contains
         ! splicer end function.function3a_0
     end subroutine F_name_function3a_int
 
-    ! void function3a(long i+intent(in)+value)
+    ! void function3a(long i +intent(in)+value)
     ! function_index=5
     subroutine F_name_function3a_long(i)
         use iso_c_binding, only : C_LONG
@@ -146,7 +146,7 @@ contains
         ! splicer end function.function3a_1
     end subroutine F_name_function3a_long
 
-    ! int function4(const std::string & rv+intent(in))
+    ! int function4(const std::string & rv +intent(in))
     ! arg_to_buffer
     ! function_index=6
     function testnames_function4(rv) result(SHT_rv)

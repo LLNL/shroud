@@ -69,6 +69,8 @@ double TUT_function2(double arg1, int arg2);
 
 void TUT_sum(int len, int * values, int * result);
 
+long long TUT_type_long_long(long long arg1);
+
 bool TUT_function3(bool arg);
 
 void TUT_function3b(const bool arg1, bool * arg2, bool * arg3);

@@ -47,6 +47,8 @@ from __future__ import absolute_import
 
 import os
 
+from . import declast
+from . import typemap
 from . import whelpers
 from . import util
 from .util import append_format
@@ -82,56 +84,8 @@ class Wrapc(util.WrapperMixin):
         self.impl = []
         self.c_helper = {}
 
-    def _c_type(self, lang, arg):
-        """
-        Return the C type.
-        pass-by-value default
-
-        attributes:
-        ptr - True = pass-by-reference
-        reference - True = pass-by-reference
-
-        """
-#        if lang not in [ 'c_type', 'cpp_type' ]:
-#            raise RuntimeError
-        t = []
-        typedef = util.Typedef.lookup(arg['type'])
-        attrs = arg['attrs']
-        if 'template' in attrs:
-            # If a template, use its type
-            typedef = util.Typedef.lookup(attrs['template'])
-        if typedef is None:
-            raise RuntimeError("No such type %s" % arg['type'])
-        if attrs.get('const', False):
-            t.append('const')
-        typ = getattr(typedef, lang)
-        if typ is None:
-            raise RuntimeError(
-                "Type {} has no value for {}".format(arg['type'], lang))
-        t.append(typ)
-        if attrs.get('ptr', False):
-            t.append('*')
-        elif attrs.get('reference', False):
-            if lang == 'cpp_type':
-                t.append('&')
-            else:
-                t.append('*')
-        return ' '.join(t)
-
-    def _c_decl(self, lang, arg, name=None):
-        """
-        Return the C declaration.
-
-        If name is not supplied, use name in arg.
-        This makes it easy to reproduce the arguments.
-        """
-#        if lang not in [ 'c_type', 'cpp_type' ]:
-#            raise RuntimeError
-        typ = self._c_type(lang, arg)
-        return typ + ' ' + (name or arg['name'])
-
     def wrap_library(self):
-        fmt_library = self.tree['fmt']
+        fmt_library = self.tree['_fmt']
 
         self._push_splicer('class')
         for node in self.tree['classes']:
@@ -148,7 +102,7 @@ class Wrapc(util.WrapperMixin):
         a class and its methods.
         """
         node = cls or library
-        fmt = node['fmt']
+        fmt = node['_fmt']
         self._begin_output_file()
         if cls:
             self.wrap_class(cls)
@@ -321,10 +275,10 @@ class Wrapc(util.WrapperMixin):
     def wrap_class(self, node):
         self.log.write("class {1[name]}\n".format(self, node))
         name = node['name']
-        typedef = util.Typedef.lookup(name)
+        typedef = typemap.Typedef.lookup(name)
         cname = typedef.c_type
 
-        fmt_class = node['fmt']
+        fmt_class = node['_fmt']
         # call method syntax
         fmt_class.CPP_this_call = fmt_class.CPP_this + '->'
 #        fmt_class.update(dict(
@@ -354,7 +308,8 @@ class Wrapc(util.WrapperMixin):
             cls_function = 'function'
         self.log.write("C {0} {1[_decl]}\n".format(cls_function, node))
 
-        fmt_func = node['fmt']
+        fmt_func = node['_fmt']
+        fmtargs = node.setdefault('_fmtargs', {})
 
         if self.language == 'c' or options.get('C_extern_C',False):
             # Fortran can call C directly and only needs wrappers when code is
@@ -379,13 +334,13 @@ class Wrapc(util.WrapperMixin):
                 CPP_node['_PTR_C_CPP_index']]
             if '_generated' in CPP_node:
                 generated.append(CPP_node['_generated'])
-        CPP_result = CPP_node['result']
-        CPP_result_type = CPP_result['type']
+        CPP_result = CPP_node['_ast']
+        CPP_result_type = CPP_result.typename
         CPP_subprogram = CPP_node['_subprogram']
 
         # C return type
-        result = node['result']
-        result_type = result['type']
+        ast = node['_ast']
+        result_type = ast.typename
         subprogram = node['_subprogram']
         generator = node.get('_generated', '')
         intent_grp = ''
@@ -399,11 +354,11 @@ class Wrapc(util.WrapperMixin):
             CPP_result_type = 'void'
             CPP_subprogram = 'subroutine'
 
-        result_typedef = util.Typedef.lookup(result_type)
-        result_is_const = result['attrs'].get('const', False)
-        is_ctor = node['attrs'].get('constructor', False)
-        is_dtor = node['attrs'].get('destructor', False)
-        is_const = node['attrs'].get('const', False)
+        result_typedef = typemap.Typedef.lookup(result_type)
+        result_is_const = ast.const
+        is_ctor = ast.fattrs.get('constructor', False)
+        is_dtor = ast.fattrs.get('destructor', False)
+        is_const = ast.func_const
 
         if result_typedef.c_header:
             # include any dependent header in generated header
@@ -426,11 +381,10 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_func
             fmt_pattern = fmt_func
         else:
-            fmt_result = result.setdefault('fmtc', util.Options(fmt_func))
+            fmt_result0 = node.setdefault('_fmtresult', {})
+            fmt_result = fmt_result0.setdefault('fmtc', util.Options(fmt_func))
             fmt_result.cpp_var = fmt_func.C_result
-#            fmt_result.cpp_decl = self._c_type('cpp_type', CPP_result)
-
-            fmt_result.cpp_rv_decl = self._c_decl('cpp_type', CPP_result, name=fmt_func.C_result)
+            fmt_result.cpp_rv_decl = CPP_result.gen_arg_as_cpp(name=fmt_func.C_result)
             fmt_pattern = fmt_result
 
         proto_list = []
@@ -438,13 +392,9 @@ class Wrapc(util.WrapperMixin):
         if cls:
             need_wrapper = True
             # object pointer
-            arg_dict = dict(name=fmt_func.C_this,
-                            type=cls['name'],
-                            attrs=dict(ptr=True,
-                                       const=is_const))
-            C_this_type = self._c_type('c_type', arg_dict)
+            rvast = declast.create_this_arg(fmt_func.C_this, cls['name'], is_const)
             if not is_ctor:
-                arg = self._c_decl('c_type', arg_dict)
+                arg = rvast.gen_arg_as_c()
                 proto_list.append(arg)
 
         # indicate which argument contains function result, usually none
@@ -460,7 +410,7 @@ class Wrapc(util.WrapperMixin):
             fmt_func.c_ptr = ' *'
             fmt_func.c_var = fmt_func.C_this
             # LHS is class' cpp_to_c
-            cls_typedef = util.Typedef.lookup(cls['name'])
+            cls_typedef = typemap.Typedef.lookup(cls['name'])
             append_format(pre_call, 
                           '{c_const}{cpp_class} *{CPP_this} = ' +
                           cls_typedef.c_to_cpp + ';', fmt_func)
@@ -472,26 +422,28 @@ class Wrapc(util.WrapperMixin):
 #                 Usually same as c_var but may be a new local variable
 #                 or the funtion result variable.
 
-        for arg in node['args']:
-            fmt_arg = arg.setdefault('fmtc', util.Options(fmt_func))
-            c_attrs = arg['attrs']
-            arg_typedef, c_statements = util.lookup_c_statements(arg)
+        for arg in ast.params:
+            arg_name = arg.name
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault('fmtc', util.Options(fmt_func))
+            c_attrs = arg.attrs
+            arg_typedef, c_statements = typemap.lookup_c_statements(arg)
             if 'template' in c_attrs:
                 fmt_arg.cpp_T = c_attrs['template']
 
-            fmt_arg.c_var = arg['name']
+            fmt_arg.c_var = arg_name
 
-            if c_attrs.get('const', False):
+            if arg.const:
                 fmt_arg.c_const = 'const '
             else:
                 fmt_arg.c_const = ''
-            if c_attrs.get('ptr', False):
+            if arg.is_pointer():
                 fmt_arg.c_ptr = ' *'
             else:
                 fmt_arg.c_ptr = ''
             fmt_arg.cpp_type = arg_typedef.cpp_type
 
-            proto_list.append(self._c_decl('c_type', arg))
+            proto_list.append(arg.gen_arg_as_c())
 
             if c_attrs.get('_is_result', False):
                 arg_call = False
@@ -593,7 +545,7 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = node['C_return_type']
         else:
             fmt_func.C_return_type = options.get(
-                'C_return_type', self._c_type('c_type', result))
+                'C_return_type', ast.gen_arg_as_c(name=None))
 
         if pre_call:
             fmt_func.C_pre_call = '\n'.join(pre_call)
@@ -655,8 +607,8 @@ class Wrapc(util.WrapperMixin):
                     if have_c_local_var:
                         # XXX need better mangling than 'X'
                         fmt_result.c_var = 'X' + fmt_func.C_result
-                        fmt_result.c_rv_decl = self._c_decl('c_type', CPP_result,
-                                                          name=fmt_result.c_var)
+                        fmt_result.c_rv_decl = CPP_result.gen_arg_as_c(
+                            name=fmt_result.c_var)
                         fmt_result.c_val = wformat(result_typedef.cpp_to_c, fmt_result)
                         append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
                         return_lang = '{c_var}'
@@ -717,7 +669,7 @@ class Wrapc(util.WrapperMixin):
             impl.append('}')
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = node['result']['name']
+            fmt_func.C_name = node['_ast'].name
 
 
     def XXXget_intent(self, intent_blk, block):

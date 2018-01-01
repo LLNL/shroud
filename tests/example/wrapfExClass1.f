@@ -258,7 +258,7 @@ module exclass1_mod
 
 contains
 
-    ! ExClass1 * new(const string * name+intent(in))+constructor
+    ! ExClass1 * new(const string * name +intent(in)) +constructor
     ! arg_to_buffer
     ! function_index=0
     !>
@@ -280,7 +280,7 @@ contains
         ! splicer end class.ExClass1.method.new
     end function exclass1_new
 
-    ! void delete()+destructor
+    ! void delete() +destructor
     ! function_index=1
     !>
     !! longer description joined with previous line
@@ -294,7 +294,7 @@ contains
         ! splicer end class.ExClass1.method.delete
     end subroutine exclass1_delete
 
-    ! int incrementCount(int incr+intent(in)+value)
+    ! int incrementCount(int incr +intent(in)+value)
     ! function_index=2
     function exclass1_increment_count(obj, incr) result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -308,7 +308,7 @@ contains
         ! splicer end class.ExClass1.method.increment_count
     end function exclass1_increment_count
 
-    ! const string & getName() const
+    ! const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const
     ! arg_to_buffer
     ! function_index=3
     function exclass1_get_name(obj) result(SHT_rv)
@@ -356,7 +356,7 @@ contains
         ! splicer end class.ExClass1.method.get_name_error_check
     end function exclass1_get_name_error_check
 
-    ! void getNameArg(string & name+intent(out)+len(Nname)) const
+    ! void getNameArg(string & name +intent(out)+len(Nname)) const
     ! arg_to_buffer - arg_to_buffer
     ! function_index=17
     subroutine exclass1_get_name_arg(obj, name)
@@ -382,7 +382,7 @@ contains
         ! splicer end class.ExClass1.method.get_root
     end function exclass1_get_root
 
-    ! int getValue(int value+intent(in)+value)
+    ! int getValue(int value +intent(in)+value)
     ! function_index=8
     function exclass1_get_value_from_int(obj, value) result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -396,7 +396,7 @@ contains
         ! splicer end class.ExClass1.method.get_value_from_int
     end function exclass1_get_value_from_int
 
-    ! long getValue(long value+intent(in)+value)
+    ! long getValue(long value +intent(in)+value)
     ! function_index=9
     function exclass1_get_value_1(obj, value) result(SHT_rv)
         use iso_c_binding, only : C_LONG
@@ -421,7 +421,7 @@ contains
         ! splicer end class.ExClass1.method.get_addr
     end function exclass1_get_addr
 
-    ! bool hasAddr(bool in+intent(in)+value)
+    ! bool hasAddr(bool in +intent(in)+value)
     ! function_index=11
     function exclass1_has_addr(obj, in) result(SHT_rv)
         use iso_c_binding, only : C_BOOL

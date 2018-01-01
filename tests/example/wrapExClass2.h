@@ -88,7 +88,7 @@ char * AA_exclass2_get_name4(AA_exclass2 * self);
 
 void AA_exclass2_get_name4_bufferify(AA_exclass2 * self, char * SHF_rv, int NSHF_rv);
 
-const int AA_exclass2_get_name_length(AA_exclass2 * self);
+int AA_exclass2_get_name_length(const AA_exclass2 * self);
 
 AA_exclass1 * AA_exclass2_get_class1(AA_exclass2 * self, const AA_exclass1 * in);
 

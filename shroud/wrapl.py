@@ -43,6 +43,7 @@ Generate Lua module for C++ code.
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import typemap
 from . import util
 from .util import wformat, append_format
 
@@ -83,7 +84,7 @@ class Wrapl(util.WrapperMixin):
     def wrap_library(self):
         top = self.tree
         options = self.tree['options']
-        fmt_library = self.tree['fmt']
+        fmt_library = self.tree['_fmt']
 
         # Format variables
         fmt_library.LUA_prefix = options.get('LUA_prefix', 'l_')
@@ -122,7 +123,7 @@ class Wrapl(util.WrapperMixin):
 
     def wrap_class(self, node):
         options = node['options']
-        fmt_class = node['fmt']
+        fmt_class = node['_fmt']
 
         fmt_class.LUA_userdata_var = 'SH_this'
         util.eval_template(node, 'LUA_userdata_type')
@@ -186,7 +187,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for function in functions:
             if not function['options'].wrap_lua:
                 continue
-            name = function['result']['name']
+            name = function['_ast'].name
             if name in overloaded_methods:
                 overloaded_methods[name].append(function)
             else:
@@ -213,27 +214,28 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # First overload defines options
         node = overloads[0]
 
-        function_name = node['result']['name']
-        fmt_func = node['fmt']
+        ast = node['_ast']
+        function_name = ast.name
+        fmt_func = node['_fmt']
         fmt = util.Options(fmt_func)
         util.eval_template(node, 'LUA_name')
         util.eval_template(node, 'LUA_name_impl')
 
         CPP_subprogram = node['_subprogram']
 
-        # XXX       result = node['result']
-        # XXX       result_type = result['type']
-        # XXX       result_is_ptr = result['attrs'].get('ptr', False)
-        # XXX       result_is_ref = result['attrs'].get('reference', False)
+        # XXX       ast = node['_ast']
+        # XXX       result_type = ast.typename
+        # XXX       result_is_ptr = ast.is_pointer()
+        # XXX       result_is_ref = ast.is_reference()
 
         if node.get('return_this', False):
             # XXX           result_type = 'void'
             # XXX           result_is_ptr = False
             CPP_subprogram = 'subroutine'
 
-        # XXX       result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['attrs'].get('constructor', False)
-        is_dtor = node['attrs'].get('destructor', False)
+        # XXX       result_typedef = typemap.Typedef.lookup(result_type)
+        is_ctor = ast.fattrs.get('constructor', False)
+        is_dtor = ast.fattrs.get('destructor', False)
         if is_dtor:
             fmt.LUA_name = '__gc'
 
@@ -255,10 +257,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             in_args = []
             out_args = []
             found_default = False
-            for arg in function['args']:
-                arg_typedef = util.Typedef.lookup(arg['type'])
-                attrs = arg['attrs']
-                if 'default' in attrs:
+            for arg in function['_ast'].params:
+                arg_typedef = typemap.Typedef.lookup(arg.typename)
+                attrs = arg.attrs
+                if arg.init is not None:
                     all_calls.append(lua_function(
                         function, CPP_subprogram, in_args[:], out_args))
                     found_default = True
@@ -309,7 +311,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     fmt.nresults = call.nresults
                     checks = []
                     for iarg, arg in enumerate(call.inargs):
-                        arg_typedef = util.Typedef.lookup(arg['type'])
+                        arg_typedef = typemap.Typedef.lookup(arg.typename)
                         fmt.itype_var = itype_vars[iarg]
                         fmt.itype = arg_typedef.LUA_type
                         append_format(checks, '{itype_var} == {itype}', fmt)
@@ -425,7 +427,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             cls_function = 'function'
         self.log.write("Lua {0} {1[_decl]}\n".format(cls_function, node))
 
-#        fmt_func = node['fmt']
+#        fmt_func = node['_fmt']
+        fmtargs = node.setdefault('_fmtargs', {})
 #        fmt = util.Options(fmt_func)
 #        fmt.doc_string = 'documentation'
 #        util.eval_template(node, 'LUA_name')
@@ -433,20 +436,17 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         CPP_subprogram = node['_subprogram']
 
-        result = node['result']
-        result_type = result['type']
-        result_is_ptr = result['attrs'].get('ptr', False)
-        result_is_ref = result['attrs'].get('reference', False)
+        ast = node['_ast']
+        result_type = ast.typename
 
         if node.get('return_this', False):
             result_type = 'void'
-            result_is_ptr = False
             CPP_subprogram = 'subroutine'
 
-        result_typedef = util.Typedef.lookup(result_type)
-        is_ctor = node['attrs'].get('constructor', False)
-        is_dtor = node['attrs'].get('destructor', False)
-        #        is_const = result['attrs'].get('const', False)
+        result_typedef = typemap.Typedef.lookup(result_type)
+        is_ctor = ast.fattrs.get('constructor', False)
+        is_dtor = ast.fattrs.get('destructor', False)
+        #        is_const = ast.const
         # XXX        if is_ctor:   # or is_dtor:
         # XXX            # XXX - have explicit delete
         # XXX            # need code in __init__ and __del__
@@ -454,13 +454,15 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.
-        if result_typedef.base == 'wrapped':
-            is_const = False
-        else:
-            is_const = None
+# This has been replaced by gen_arg methods, but not sure about const.
+#        if result_typedef.base == 'wrapped':
+#            is_const = False
+#        else:
+#            is_const = None
         # return value
-        fmt.rv_decl = self.std_c_decl(
-            'cpp_type', result, name=fmt.LUA_result, const=is_const)
+#        fmt.rv_decl = self.std_c_decl(
+#            'cpp_type', ast, name=fmt.LUA_result, const=is_const)
+        fmt.rv_decl = ast.gen_arg_as_cpp(name=fmt.LUA_result)
 
         LUA_decl = []  # declare variables and pop values
         LUA_code = []  # call C++ function
@@ -471,7 +473,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # find class object
         if cls:
-            cls_typedef = util.Typedef.lookup(cls['name'])
+            cls_typedef = typemap.Typedef.lookup(cls['name'])
             if not is_ctor:
                 fmt.LUA_used_param_state = True
                 fmt.c_var = wformat(cls_typedef.LUA_pop, fmt)
@@ -492,20 +494,21 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         fmt_arg = util.Options(fmt)
         LUA_index = 1
         for iarg in range(luafcn.nargs):
-            arg = node['args'][iarg]
-            arg_name = arg['name']
-            fmt_arg = arg.setdefault('fmtl', util.Options(fmt))
+            arg = ast.params[iarg]
+            arg_name = arg.name
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault('fmtl', util.Options(fmt))
             fmt_arg.LUA_index = LUA_index
-            fmt_arg.c_var = arg['name']
-            fmt_arg.cpp_var = fmt_arg.c_var
-            fmt_arg.lua_var = 'SH_Lua_' + fmt_arg.c_var
-            fmt_arg.c_var_len = 'L' + fmt_arg.c_var
-            fmt_arg.ptr = ' *' if arg['attrs'].get('ptr', False) else ''
-            attrs = arg['attrs']
+            fmt_arg.c_var = arg_name
+            fmt_arg.cpp_var = arg_name
+            fmt_arg.lua_var = 'SH_Lua_' + arg_name
+            fmt_arg.c_var_len = 'L' + arg_name
+            fmt_arg.ptr = ' *' if arg.is_pointer() else ''
+            attrs = arg.attrs
 
             lua_pop = None
 
-            arg_typedef = util.Typedef.lookup(arg['type'])
+            arg_typedef = typemap.Typedef.lookup(arg.typename)
             fmt_arg.cpp_type = arg_typedef.cpp_type
             LUA_statements = arg_typedef.LUA_statements
             if attrs['intent'] in ['inout', 'in']:
@@ -529,25 +532,28 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 LUA_push.append(tmp + ';')
 
             # argument for C++ function
-            lang = 'cpp_type'
-            arg_const = False
-            if arg_typedef.base == 'string':
-                # C++ will coerce char * to std::string
-                lang = 'c_type'
-                arg_const = True  # lua_tostring is const
-            if attrs.get('reference', False):
-                # convert a reference to a pointer
-                ptr = True
-            else:
-                ptr = False
+# This has been replaced by gen_arg methods, but not sure about const.
+#            lang = 'cpp_type'
+#            arg_const = False
+#            if arg_typedef.base == 'string':
+#                # C++ will coerce char * to std::string
+#                lang = 'c_type'
+#                arg_const = True  # lua_tostring is const
+#            if arg.is_reference():
+#                # convert a reference to a pointer
+#                ptr = True
+#            else:
+#                ptr = False
 
             if lua_pop:
                 fmt.LUA_used_param_state = True
                 decl_suffix = ' = {};'.format(lua_pop)
             else:
                 decl_suffix = ';'
-            LUA_decl.append(self.std_c_decl(
-                lang, arg, const=arg_const, ptr=ptr) + decl_suffix)
+            if arg_typedef.base == 'string':
+                LUA_decl.append(arg.gen_arg_as_c() + decl_suffix)
+            else:
+                LUA_decl.append(arg.gen_arg_as_cpp() + decl_suffix)
 
             cpp_call_list.append(fmt_arg.cpp_var)
 
@@ -615,7 +621,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
     def write_header(self, node):
         options = node['options']
-        fmt = node['fmt']
+        fmt = node['_fmt']
         fname = fmt.LUA_header_filename
 
         output = []
@@ -661,7 +667,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
     def write_module(self, node):
         # node is library
         options = node['options']
-        fmt = node['fmt']
+        fmt = node['_fmt']
         fname = fmt.LUA_module_filename
 
         output = []

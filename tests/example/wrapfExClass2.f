@@ -209,7 +209,7 @@ module exclass2_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_exclass2_get_name4_bufferify
 
-        function c_exclass2_get_name_length(self) &
+        pure function c_exclass2_get_name_length(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass2_get_name_length")
             use iso_c_binding, only : C_INT, C_PTR
@@ -317,7 +317,7 @@ module exclass2_mod
 
 contains
 
-    ! ExClass2 * ExClass2(const string * name+intent(in))+constructor
+    ! ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
     ! arg_to_buffer
     ! function_index=18
     function exclass2_ex_class2(name) result(SHT_rv)
@@ -331,7 +331,7 @@ contains
         ! splicer end class.ExClass2.method.ex_class2
     end function exclass2_ex_class2
 
-    ! void delete()+destructor
+    ! void delete() +destructor
     ! function_index=19
     subroutine exclass2_delete(obj)
         use iso_c_binding, only : C_NULL_PTR
@@ -342,7 +342,7 @@ contains
         ! splicer end class.ExClass2.method.delete
     end subroutine exclass2_delete
 
-    ! const string & getName() const
+    ! const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
     ! arg_to_buffer
     ! function_index=20
     function exclass2_get_name(obj) result(SHT_rv)
@@ -411,7 +411,7 @@ contains
         ! splicer end class.ExClass2.method.get_name4
     end function exclass2_get_name4
 
-    ! const int GetNameLength()
+    ! int GetNameLength() const
     ! function_index=24
     !>
     !! \brief helper function for Fortran
@@ -426,7 +426,7 @@ contains
         ! splicer end class.ExClass2.method.get_name_length
     end function exclass2_get_name_length
 
-    ! ExClass1 * get_class1(const ExClass1 * in+intent(in)+value)
+    ! ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
     ! function_index=25
     function exclass2_get_class1(obj, in) result(SHT_rv)
         use exclass1_mod, only : exclass1
@@ -440,7 +440,7 @@ contains
         ! splicer end class.ExClass2.method.get_class1
     end function exclass2_get_class1
 
-    ! void * declare(TypeID type+intent(in)+value)
+    ! void * declare(TypeID type +intent(in)+value)
     ! fortran_generic - has_default_arg
     ! function_index=43
     subroutine exclass2_declare_0_int(obj, type)
@@ -454,7 +454,7 @@ contains
         ! splicer end class.ExClass2.method.declare_0_int
     end subroutine exclass2_declare_0_int
 
-    ! void * declare(TypeID type+intent(in)+value)
+    ! void * declare(TypeID type +intent(in)+value)
     ! fortran_generic - has_default_arg
     ! function_index=44
     subroutine exclass2_declare_0_long(obj, type)
@@ -468,7 +468,7 @@ contains
         ! splicer end class.ExClass2.method.declare_0_long
     end subroutine exclass2_declare_0_long
 
-    ! void * declare(TypeID type+intent(in)+value, int len+default(1)+intent(in)+value)
+    ! void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)
     ! fortran_generic
     ! function_index=45
     subroutine exclass2_declare_1_int(obj, type, len)
@@ -484,7 +484,7 @@ contains
         ! splicer end class.ExClass2.method.declare_1_int
     end subroutine exclass2_declare_1_int
 
-    ! void * declare(TypeID type+intent(in)+value, long len+default(1)+intent(in)+value)
+    ! void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)
     ! fortran_generic
     ! function_index=46
     subroutine exclass2_declare_1_long(obj, type, len)
@@ -520,7 +520,7 @@ contains
         ! splicer end class.ExClass2.method.get_type_id
     end function exclass2_get_type_id
 
-    ! void setValue(int value+intent(in)+value)
+    ! void setValue(int value +intent(in)+value)
     ! cpp_template
     ! function_index=32
     subroutine exclass2_set_value_int(obj, value)
@@ -534,7 +534,7 @@ contains
         ! splicer end class.ExClass2.method.set_value_int
     end subroutine exclass2_set_value_int
 
-    ! void setValue(long value+intent(in)+value)
+    ! void setValue(long value +intent(in)+value)
     ! cpp_template
     ! function_index=33
     subroutine exclass2_set_value_long(obj, value)
@@ -548,7 +548,7 @@ contains
         ! splicer end class.ExClass2.method.set_value_long
     end subroutine exclass2_set_value_long
 
-    ! void setValue(float value+intent(in)+value)
+    ! void setValue(float value +intent(in)+value)
     ! cpp_template
     ! function_index=34
     subroutine exclass2_set_value_float(obj, value)
@@ -562,7 +562,7 @@ contains
         ! splicer end class.ExClass2.method.set_value_float
     end subroutine exclass2_set_value_float
 
-    ! void setValue(double value+intent(in)+value)
+    ! void setValue(double value +intent(in)+value)
     ! cpp_template
     ! function_index=35
     subroutine exclass2_set_value_double(obj, value)

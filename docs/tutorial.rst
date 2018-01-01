@@ -307,8 +307,8 @@ Attributes may also be added by assign new fields in **attrs**::
     - decl: const std::string Function4a(
         const std::string& arg1,
         const std::string& arg2 )
-      result:
-        attrs:
+      attrs:
+        result:
           len: 30
 
 The C wrapper uses ``char *`` for ``std::string`` arguments which

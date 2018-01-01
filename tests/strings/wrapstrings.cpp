@@ -66,7 +66,7 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void passChar(char_scalar status+intent(in)+value)
+// void passChar(char_scalar status +intent(in)+value)
 // function_index=0
 /**
  * \brief pass a single char argument as a scalar.
@@ -94,7 +94,7 @@ char STR_return_char()
 // splicer end function.return_char
 }
 
-// void returnChar(char_scalar * SHF_rv+intent(out)+len(NSHF_rv))
+// void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=21
 /**
  * \brief return a char argument (non-pointer)
@@ -110,7 +110,7 @@ void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.return_char_bufferify
 }
 
-// void passCharPtr(char * dest+intent(out), const char * src+intent(in))
+// void passCharPtr(char * dest +intent(out), const char * src +intent(in))
 // function_index=2
 /**
  * \brief strcpy like behavior
@@ -126,7 +126,7 @@ void STR_pass_char_ptr(char * dest, const char * src)
 // splicer end function.pass_char_ptr
 }
 
-// void passCharPtr(char * dest+intent(out)+len(Ndest), const char * src+intent(in)+len_trim(Lsrc))
+// void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))
 // function_index=22
 /**
  * \brief strcpy like behavior
@@ -149,7 +149,7 @@ void STR_pass_char_ptr_bufferify(char * dest, int Ndest, const char * src, int L
 // splicer end function.pass_char_ptr_bufferify
 }
 
-// void passCharPtrInOut(char * s+intent(inout))
+// void passCharPtrInOut(char * s +intent(inout))
 // function_index=3
 /**
  * \brief Change a string in-place
@@ -163,7 +163,7 @@ void STR_pass_char_ptr_in_out(char * s)
 // splicer end function.pass_char_ptr_in_out
 }
 
-// void passCharPtrInOut(char * s+intent(inout)+len(Ns)+len_trim(Ls))
+// void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))
 // function_index=23
 /**
  * \brief Change a string in-place
@@ -182,7 +182,7 @@ void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 // splicer end function.pass_char_ptr_in_out_bufferify
 }
 
-// const char * getChar1()+pure
+// const char * getChar1() +pure
 // function_index=4
 /**
  * \brief return a 'const char *' as character(*)
@@ -196,7 +196,7 @@ const char * STR_get_char1()
 // splicer end function.get_char1
 }
 
-// void getChar1(char * SHF_rv+intent(out)+len(NSHF_rv))+pure
+// void getChar1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure
 // function_index=24
 /**
  * \brief return a 'const char *' as character(*)
@@ -215,7 +215,7 @@ void STR_get_char1_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_char1_bufferify
 }
 
-// const char * getChar2()
+// const char * getChar2 +len(30)()
 // function_index=5
 /**
  * \brief return 'const char *' with fixed size (len=30)
@@ -229,7 +229,7 @@ const char * STR_get_char2()
 // splicer end function.get_char2
 }
 
-// void getChar2(char * SHF_rv+intent(out)+len(NSHF_rv))
+// void getChar2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=25
 /**
  * \brief return 'const char *' with fixed size (len=30)
@@ -262,7 +262,7 @@ const char * STR_get_char3()
 // splicer end function.get_char3
 }
 
-// void getChar3(char * output+intent(out)+len(Noutput))
+// void getChar3(char * output +intent(out)+len(Noutput))
 // function_index=26
 /**
  * \brief return a 'const char *' as argument
@@ -281,7 +281,7 @@ void STR_get_char3_bufferify(char * output, int Noutput)
 // splicer end function.get_char3_bufferify
 }
 
-// const string & getString1()+pure
+// const string & getString1() +pure
 // function_index=7
 /**
  * \brief return a 'const string&' as character(*)
@@ -296,7 +296,7 @@ const char * STR_get_string1()
 // splicer end function.get_string1
 }
 
-// void getString1(string & SHF_rv+intent(out)+len(NSHF_rv))+pure
+// void getString1(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
 // function_index=28
 /**
  * \brief return a 'const string&' as character(*)
@@ -315,7 +315,7 @@ void STR_get_string1_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_string1_bufferify
 }
 
-// const string & getString2()
+// const string & getString2 +len(30)()
 // function_index=8
 /**
  * \brief return 'const string&' with fixed size (len=30)
@@ -335,7 +335,7 @@ const char * STR_get_string2()
 // splicer end function.get_string2
 }
 
-// void getString2(string & SHF_rv+intent(out)+len(NSHF_rv))
+// void getString2 +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=29
 /**
  * \brief return 'const string&' with fixed size (len=30)
@@ -374,7 +374,7 @@ const char * STR_get_string3()
 // splicer end function.get_string3
 }
 
-// void getString3(string & output+intent(out)+len(Noutput))
+// void getString3(string & output +intent(out)+len(Noutput))
 // function_index=30
 /**
  * \brief return a 'const string&' as argument
@@ -393,7 +393,7 @@ void STR_get_string3_bufferify(char * output, int Noutput)
 // splicer end function.get_string3_bufferify
 }
 
-// const string & getString2_empty()
+// const string & getString2_empty +len(30)()
 // function_index=10
 /**
  * \brief Test returning empty string reference
@@ -413,7 +413,7 @@ const char * STR_get_string2_empty()
 // splicer end function.get_string2_empty
 }
 
-// void getString2_empty(string & SHF_rv+intent(out)+len(NSHF_rv))
+// void getString2_empty +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=32
 /**
  * \brief Test returning empty string reference
@@ -432,7 +432,7 @@ void STR_get_string2_empty_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_string2_empty_bufferify
 }
 
-// void getString5(string * SHF_rv+intent(out)+len(NSHF_rv))
+// void getString5 +len(30)(string * SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=33
 /**
  * \brief return a 'const string' as argument
@@ -451,7 +451,7 @@ void STR_get_string5_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_string5_bufferify
 }
 
-// void getString6(string * output+intent(out)+len(Noutput))
+// void getString6(string * output +intent(out)+len(Noutput))
 // function_index=34
 /**
  * \brief return a 'const string' as argument
@@ -470,7 +470,7 @@ void STR_get_string6_bufferify(char * output, int Noutput)
 // splicer end function.get_string6_bufferify
 }
 
-// void acceptStringConstReference(const std::string & arg1+intent(in))
+// void acceptStringConstReference(const std::string & arg1 +intent(in))
 // function_index=13
 /**
  * \brief Accept a const string reference
@@ -488,7 +488,7 @@ void STR_accept_string_const_reference(const char * arg1)
 // splicer end function.accept_string_const_reference
 }
 
-// void acceptStringConstReference(const std::string & arg1+intent(in)+len_trim(Larg1))
+// void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))
 // function_index=36
 /**
  * \brief Accept a const string reference
@@ -506,7 +506,7 @@ void STR_accept_string_const_reference_bufferify(const char * arg1, int Larg1)
 // splicer end function.accept_string_const_reference_bufferify
 }
 
-// void acceptStringReferenceOut(std::string & arg1+intent(out))
+// void acceptStringReferenceOut(std::string & arg1 +intent(out))
 // function_index=14
 /**
  * \brief Accept a string reference
@@ -525,7 +525,7 @@ void STR_accept_string_reference_out(char * arg1)
 // splicer end function.accept_string_reference_out
 }
 
-// void acceptStringReferenceOut(std::string & arg1+intent(out)+len(Narg1))
+// void acceptStringReferenceOut(std::string & arg1 +intent(out)+len(Narg1))
 // function_index=37
 /**
  * \brief Accept a string reference
@@ -544,7 +544,7 @@ void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1)
 // splicer end function.accept_string_reference_out_bufferify
 }
 
-// void acceptStringReference(std::string & arg1+intent(inout))
+// void acceptStringReference(std::string & arg1 +intent(inout))
 // function_index=15
 /**
  * \brief Accept a string reference
@@ -563,7 +563,7 @@ void STR_accept_string_reference(char * arg1)
 // splicer end function.accept_string_reference
 }
 
-// void acceptStringReference(std::string & arg1+intent(inout)+len(Narg1)+len_trim(Larg1))
+// void acceptStringReference(std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))
 // function_index=38
 /**
  * \brief Accept a string reference
@@ -582,7 +582,7 @@ void STR_accept_string_reference_bufferify(char * arg1, int Larg1, int Narg1)
 // splicer end function.accept_string_reference_bufferify
 }
 
-// void explicit1(char * name+intent(in)+len_trim(AAlen))
+// void explicit1(char * name +intent(in)+len_trim(AAlen))
 // function_index=16
 void STR_explicit1(char * name)
 {
@@ -592,7 +592,7 @@ void STR_explicit1(char * name)
 // splicer end function.explicit1
 }
 
-// void explicit1(char * name+intent(in)+len_trim(AAlen))
+// void explicit1(char * name +intent(in)+len_trim(AAlen))
 // function_index=39
 void STR_explicit1_BUFFER(char * name, int AAlen)
 {
@@ -606,7 +606,7 @@ void STR_explicit1_BUFFER(char * name, int AAlen)
 // splicer end function.explicit1_BUFFER
 }
 
-// void explicit2(char * name+intent(out)+len(AAtrim))
+// void explicit2(char * name +intent(out)+len(AAtrim))
 // function_index=17
 void STR_explicit2(char * name)
 {
@@ -616,7 +616,7 @@ void STR_explicit2(char * name)
 // splicer end function.explicit2
 }
 
-// void explicit2(char * name+intent(out)+len(AAtrim))
+// void explicit2(char * name +intent(out)+len(AAtrim))
 // function_index=40
 void STR_explicit2_bufferify(char * name, int AAtrim)
 {
@@ -629,7 +629,7 @@ void STR_explicit2_bufferify(char * name, int AAtrim)
 // splicer end function.explicit2_bufferify
 }
 
-// void CreturnChar(char_scalar * SHF_rv+intent(out)+len(NSHF_rv))
+// void CreturnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=41
 /**
  * \brief return a char argument (non-pointer), extern "C"
@@ -645,7 +645,7 @@ void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.creturn_char_bufferify
 }
 
-// void CpassCharPtr(char * dest+intent(out)+len(Ndest), const char * src+intent(in)+len_trim(Lsrc))
+// void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))
 // function_index=42
 /**
  * \brief strcpy like behavior

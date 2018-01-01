@@ -126,7 +126,7 @@ module clibrary_mod
 
 contains
 
-    ! bool Function3(bool arg+intent(in)+value)
+    ! bool Function3(bool arg +intent(in)+value)
     ! function_index=3
     function function3(arg) result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -139,7 +139,7 @@ contains
         ! splicer end function.function3
     end function function3
 
-    ! void Function3b(const bool arg1+intent(in)+value, bool * arg2+intent(out), bool * arg3+intent(inout))
+    ! void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
     ! function_index=4
     subroutine function3b(arg1, arg2, arg3)
         use iso_c_binding, only : C_BOOL
@@ -161,7 +161,7 @@ contains
         arg3 = SH_arg3  ! coerce to logical
     end subroutine function3b
 
-    ! char * Function4a(const char * arg1+intent(in), const char * arg2+intent(in))
+    ! char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))
     ! arg_to_buffer
     ! function_index=5
     function function4a(arg1, arg2) result(SHT_rv)

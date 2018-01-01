@@ -50,6 +50,7 @@
 
 #include "mpi.h"
 #include "sidre/wrapGroup.h"
+#include "stdlib.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
@@ -88,6 +89,8 @@ void AA_testoptional_0();
 void AA_testoptional_1(int i);
 
 void AA_testoptional_2(int i, long j);
+
+size_t AA_test_size_t();
 
 void AA_testmpi(MPI_Fint comm);
 

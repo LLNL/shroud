@@ -135,9 +135,8 @@ classes:
     - decl: int incrementCount(int incr)
 
     - decl: const string& getName() const
-      result:
-         attrs:
-#            len: aa_exclass1_get_name_length({f_to_c})
+      attrs:
+        result:
             len: aa_exclass1_get_name_length({F_this}%{F_derived_member})
       C_error_pattern: C_invalid_name
       PY_error_pattern: PY_invalid_name
@@ -165,7 +164,7 @@ classes:
     - decl: void *getAddr()
     - decl: bool hasAddr(bool in)
 
-    - decl: void SplicerSpecial
+    - decl: void SplicerSpecial()
 
   ######################################################################
   - name: ExClass2
@@ -180,33 +179,27 @@ classes:
     - decl: ExClass2 *ExClass2 (const string *name) +constructor
 
       # test annotating arguments
-      args:
-      -  name: name
-         random: 1
-         attrs:
-           random: 2
-      -  name: extra
+      attrs:
+        name:
+          random: 2
 
     - decl: void delete() +destructor
 
-    - decl: const string& getName const
+    - decl: const string& getName() const
       # test annotating result
-      result:
-         attrs:
+      attrs:
+         result:
             len: aa_exclass2_get_name_length({F_this}%{F_derived_member})
 
 # test variations of const for result and method
-    - decl: const string& getName2
-    - decl:       string& getName3 const
-    - decl:       string& getName4
+    - decl: const string& getName2()
+    - decl:       string& getName3() const
+    - decl:       string& getName4()
 
-    - doxygen:
+#   This function does not actually exist in the wrapped libray
+    - decl: int GetNameLength() const
+      doxygen:
         brief: helper function for Fortran
-      result:
-         name: GetNameLength
-         type: int
-         attrs:
-           const: true
       C_code: |
         {C_pre_call}
         return {CPP_this}->getName().length();
@@ -250,7 +243,7 @@ classes:
 
 
 functions:
-  - decl: void local_function1
+  - decl: void local_function1()
     docs: yada yada yada
 
   # override the C code.
@@ -289,6 +282,7 @@ functions:
 #       - float
 #       - double
 
+  - decl: size_t test_size_t()
   - decl: void testmpi(MPI_Comm comm)
 
   - decl: void testgroup1(DataGroup * grp)

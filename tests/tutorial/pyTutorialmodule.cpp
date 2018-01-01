@@ -95,6 +95,31 @@ PY_function2(
 // splicer end function.function2
 }
 
+static char PY_type_long_long__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_type_long_long(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.type_long_long
+    long long arg1;
+    const char *SH_kwcpp = "arg1";
+    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:TypeLongLong", SH_kw_list,
+        &arg1))
+    {
+        return NULL;
+    }
+    long long rv = TypeLongLong(arg1);
+    return Py_BuildValue("L", rv);
+// splicer end function.type_long_long
+}
+
 static char PY_function3__doc__[] =
 "documentation"
 ;
@@ -611,6 +636,7 @@ PY_overload1(
 static PyMethodDef PY_methods[] = {
 {"Function1", (PyCFunction)PY_function1, METH_NOARGS, PY_function1__doc__},
 {"Function2", (PyCFunction)PY_function2, METH_VARARGS|METH_KEYWORDS, PY_function2__doc__},
+{"TypeLongLong", (PyCFunction)PY_type_long_long, METH_VARARGS|METH_KEYWORDS, PY_type_long_long__doc__},
 {"Function3", (PyCFunction)PY_function3, METH_VARARGS|METH_KEYWORDS, PY_function3__doc__},
 {"Function4a", (PyCFunction)PY_function4a, METH_VARARGS|METH_KEYWORDS, PY_function4a__doc__},
 {"Function4b", (PyCFunction)PY_function4b, METH_VARARGS|METH_KEYWORDS, PY_function4b__doc__},
