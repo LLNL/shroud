@@ -5,7 +5,7 @@ verb
 2. cover or envelop so as to conceal from view.
 
 [![Build Status](https://travis-ci.org/LLNL/shroud.svg?branch=develop)](https://travis-ci.org/LLNL/shroud)
-[![Documentation Status](https://readthedocs.org/projects/shroud/badge/?version=latest)](http://shroud.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/shroud/badge/?version=develop)](http://shroud.readthedocs.io/en/latest/?badge=develop)
 
 Create Fortran bindings for a C++ Library.
 
@@ -13,7 +13,7 @@ Create Fortran bindings for a C++ Library.
 
 To get started using Shroud, check out the full documentation:
 
-http://shroud.readthedocs.io/
+http://shroud.readthedocs.io/en/develop
 
 ## Mailing List
 
