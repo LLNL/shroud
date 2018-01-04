@@ -73,6 +73,8 @@ int YYY_TES_function4(const char * rv);
 
 int YYY_TES_function4_bufferify(const char * rv, int Lrv);
 
+void YYY_TES_fiveplus();
+
 #ifdef __cplusplus
 }
 #endif

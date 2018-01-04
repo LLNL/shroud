@@ -1402,25 +1402,27 @@ def main_with_args(args):
     # Write out generated types
     TypeOut(all, config).write_types()
 
-    if all['options'].wrap_c:
-        wrapc.Wrapc(all, config, splicers['c']).wrap_library()
+    try:
+        if all['options'].wrap_c:
+            wrapc.Wrapc(all, config, splicers['c']).wrap_library()
 
-    if all['options'].wrap_fortran:
-        wrapf.Wrapf(all, config, splicers['f']).wrap_library()
+        if all['options'].wrap_fortran:
+            wrapf.Wrapf(all, config, splicers['f']).wrap_library()
 
-    if all['options'].wrap_python:
-        wrapp.Wrapp(all, config, splicers['py']).wrap_library()
+        if all['options'].wrap_python:
+            wrapp.Wrapp(all, config, splicers['py']).wrap_library()
 
-    if all['options'].wrap_lua:
-        wrapl.Wrapl(all, config, splicers['lua']).wrap_library()
+        if all['options'].wrap_lua:
+            wrapl.Wrapl(all, config, splicers['lua']).wrap_library()
+    finally:
+        # Write a debug dump even if there was an exception.
+        # when dumping json, remove function_index to avoid duplication
+        del all['function_index']
 
-    # when dumping json, remove function_index to avoid duplication
-    del all['function_index']
-
-    jsonpath = os.path.join(args.logdir, basename + '.json')
-    fp = open(jsonpath, 'w')
-    json.dump(all, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
-    fp.close()
+        jsonpath = os.path.join(args.logdir, basename + '.json')
+        fp = open(jsonpath, 'w')
+        json.dump(all, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
+        fp.close()
 
     # Write list of output files.  May be useful for build systems
     if args.cfiles:

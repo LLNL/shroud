@@ -4,6 +4,7 @@ Read splicer pysplicer.c
 Read splicer fsplicer.f
 Close userlibrary_types.yaml
 class ExClass1
+C method ExClass1()
 C method ExClass1(const string * name +intent(in))
 C method ExClass1(const string * name +intent(in)+len_trim(Lname))
 C method ~ExClass1()
@@ -68,6 +69,7 @@ C function void testgroup2(const DataGroup * grp +intent(in)+value)
 Close wrapUserLibrary.h
 Close wrapUserLibrary.cpp
 class ExClass1
+C-interface, Fortran method ExClass1()
 C-interface, Fortran method ExClass1(const string * name +intent(in))
 C-interface method ExClass1(const string * name +intent(in)+len_trim(Lname))
 C-interface, Fortran method ~ExClass1()

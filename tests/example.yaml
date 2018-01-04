@@ -118,6 +118,11 @@ classes:
       type: [ init, repr, richcompare ]
 
     methods:
+    - decl: ExClass1()
+      options:
+        # This constructor should be ignored, instead it gets wrapped as a method
+        # because of the overload
+        wrap_python: false
     - decl: ExClass1( const string *name )
       doxygen:
         brief:  constructor

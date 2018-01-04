@@ -99,6 +99,11 @@ module top_module
             integer(C_INT) :: SHT_rv
         end function yyy_tes_function4_bufferify
 
+        subroutine yyy_tes_fiveplus() &
+                bind(C, name="YYY_TES_fiveplus")
+            implicit none
+        end subroutine yyy_tes_fiveplus
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -159,6 +164,14 @@ contains
             len_trim(rv, kind=C_INT))
         ! splicer end function.function4
     end function testnames_function4
+
+    ! void function5() +name(fiveplus)
+    ! function_index=7
+    subroutine testnames_fiveplus()
+        ! splicer begin function.fiveplus
+        call yyy_tes_fiveplus()
+        ! splicer end function.fiveplus
+    end subroutine testnames_fiveplus
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
