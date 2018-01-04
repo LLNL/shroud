@@ -1295,7 +1295,7 @@ def main_with_args(args):
             fp.write(whelpers.cmake)
             fp.close()
             raise SystemExit
-        except IOError, e:
+        except IOError as e:
             print(str(e))
             raise SystemExit(1)
 
