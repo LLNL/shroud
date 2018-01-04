@@ -44,6 +44,7 @@ from __future__ import print_function
 
 from shroud import declast
 from shroud import typemap
+from shroud import util
 
 import unittest
 import copy
@@ -54,6 +55,17 @@ class CheckParse(unittest.TestCase):
     def setUp(self):
         typemap.initialize()
         declast.add_typemap()
+
+        # Create a Typemap for 'Class1'
+        cls = dict(
+            name='Class1',
+            _fmt = util.Options(None),
+            options = util.Options(None),
+        )
+        cls['_fmt'].C_prefix = 'CC_'
+        cls['_fmt'].F_module_name = 'moder'
+        cls['options'].F_name_instance_get = 'get'
+        typemap.create_class_typedef(cls)
 
     # types
     def test_type_int(self):
@@ -416,37 +428,119 @@ class CheckParse(unittest.TestCase):
         })
         self.assertEqual("foo", r.get_name())
 
-    def test_decl09(self):
+    def test_decl09a(self):
         """Test constructor
-        The type and varialbe have the same name.
         """
-        r = declast.check_decl("Class1 *Class1()  +constructor",current_class='Class1')
+        r = declast.check_decl("Class1()",current_class='Class1')
 
         s = r.gen_decl()
-        self.assertEqual("Class1 * Class1() +constructor", s)
+        self.assertEqual("Class1()", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [], 
-            "attrs": {}, 
-            "const": False, 
-            "declarator": {
-                "name": "Class1", 
-                "pointer": [
-                    {
-                        "const": False, 
-                        "ptr": "*"
-                    }
-                ]
-            }, 
+            "args": [],
+            "attrs": {},
+            "const": False,
             "fattrs": {
-                "constructor": True
-            }, 
-            "func_const": False, 
+                "_constructor": True,
+                "_name": "ctor",
+            },
+            "func_const": False,
             "specifier": [
                 "Class1"
-            ], 
+            ]
         })
-        self.assertEqual("Class1", r.get_name())
+        self.assertEqual('ctor', r.get_name())
+        self.assertFalse(r.is_pointer())
+        self.assertFalse(r.is_reference())
+        # must provide the name since the ctor has no name
+        self.assertEqual('Class1 * ctor', r.gen_arg_as_cpp())
+        self.assertEqual('CC_class1 * ctor', r.gen_arg_as_c())
+
+    def test_decl09b(self):
+        """Test constructor +name
+        """
+        r = declast.check_decl("Class1() +name(new)",current_class='Class1')
+
+        s = r.gen_decl()
+        self.assertEqual("Class1() +name(new)", s)
+
+        self.assertEqual(r._to_dict(),{
+            "args": [],
+            "attrs": {},
+            "const": False,
+            "fattrs": {
+                "_constructor": True,
+                "_name": "ctor",
+                "name": "new",
+            },
+            "func_const": False,
+            "specifier": [
+                "Class1"
+            ]
+        })
+        self.assertEqual('new', r.get_name())
+        self.assertFalse(r.is_pointer())
+        self.assertFalse(r.is_reference())
+        self.assertFalse(r.is_indirect())
+        self.assertEqual('Class1 * new', r.gen_arg_as_cpp())
+        self.assertEqual('CC_class1 * new', r.gen_arg_as_c())
+
+    def test_decl09c(self):
+        """Test destructor
+        """
+        r = declast.check_decl("~Class1()",current_class='Class1')
+
+        s = r.gen_decl()
+        self.assertEqual("~Class1()", s)
+
+        self.assertEqual(r._to_dict(),{
+            "attrs": {},
+            "args": [],
+            "const": False,
+            "fattrs": {
+                "_destructor": True,
+                "_name": "dtor",
+            },
+            "func_const": False,
+            "specifier": [
+                "Class1"
+            ]
+        })
+        self.assertEqual('dtor', r.get_name())
+        self.assertFalse(r.is_pointer())
+        self.assertFalse(r.is_reference())
+        self.assertFalse(r.is_indirect())
+        self.assertEqual('Class1 * dtor', r.gen_arg_as_cpp())
+        self.assertEqual('CC_class1 * dtor', r.gen_arg_as_c())
+
+    def test_decl09d(self):
+        """Return pointer to Class instance
+        """
+        r = declast.check_decl("Class1 * make()",current_class='Class1')
+
+        s = r.gen_decl()
+        self.assertEqual("Class1 * make()", s)
+
+        self.assertEqual(r._to_dict(),{
+            "args": [],
+            "attrs": {},
+            "const": False,
+            "declarator": {
+                "name": "make",
+                "pointer": [
+                    {
+                        "const": False,
+                        "ptr": "*"
+                    }
+            ]
+            },
+            "fattrs": {},
+            "func_const": False,
+            "specifier": [
+                "Class1"
+            ]
+        })
+        self.assertEqual('make', r.get_name())
 
     def test_decl10(self):
         """Test default arguments

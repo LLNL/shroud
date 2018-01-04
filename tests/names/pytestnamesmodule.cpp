@@ -151,6 +151,22 @@ PY_function4(
 // splicer end function.function4
 }
 
+static char PY_fiveplus__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fiveplus(
+  PyObject *,  // self unused
+  PyObject *,  // args unused
+  PyObject *)  // kwds unused
+{
+// splicer begin function.fiveplus
+    fiveplus();
+    Py_RETURN_NONE;
+// splicer end function.fiveplus
+}
+
 static char PY_function3a__doc__[] =
 "documentation"
 ;
@@ -192,6 +208,7 @@ static PyMethodDef PY_methods[] = {
 {"function1", (PyCFunction)PY_function1, METH_NOARGS, PY_function1__doc__},
 {"function2", (PyCFunction)PY_function2, METH_NOARGS, PY_function2__doc__},
 {"function4", (PyCFunction)PY_function4, METH_VARARGS|METH_KEYWORDS, PY_function4__doc__},
+{"fiveplus", (PyCFunction)PY_fiveplus, METH_NOARGS, PY_fiveplus__doc__},
 {"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS, PY_function3a__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };

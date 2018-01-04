@@ -118,7 +118,12 @@ classes:
       type: [ init, repr, richcompare ]
 
     methods:
-    - decl: ExClass1 *new ( const string *name ) +constructor
+    - decl: ExClass1()
+      options:
+        # This constructor should be ignored, instead it gets wrapped as a method
+        # because of the overload
+        wrap_python: false
+    - decl: ExClass1( const string *name )
       doxygen:
         brief:  constructor
         description: |
@@ -126,8 +131,10 @@ classes:
            usually multiple lines
         return: return new instance
 
-    - decl: void delete() +destructor
+    - decl: ~ExClass1()
+      F_name_function: delete
       doxygen:
+        brief: destructor
         description:
            longer description
            joined with previous line
@@ -176,14 +183,19 @@ classes:
              init, alloc, new, free, del]
 
     methods:
-    - decl: ExClass2 *ExClass2 (const string *name) +constructor
+    - decl: ExClass2(const string *name)
+      doxygen:
+        brief:  constructor
 
       # test annotating arguments
       attrs:
         name:
           random: 2
 
-    - decl: void delete() +destructor
+    - decl: ~ExClass2()
+      F_name_function: delete
+      doxygen:
+        brief: destructor
 
     - decl: const string& getName() const
       # test annotating result

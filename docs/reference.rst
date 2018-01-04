@@ -602,16 +602,13 @@ F_impl_filename_library_template
     ``wrapf{library_lower}.{F_filename_suffix}``
 
 F_name_impl_template
-    ``{name_class}{underscore_name}{function_suffix}``
+    ``{class_prefix}{underscore_name}{function_suffix}``
 
 F_module_name_class_template
     ``{class_lower}_mod``
 
 F_module_name_library_template
     ``{library_lower}_mod``
-
-F_name_impl_template
-    ``{class_prefix}{underscore_name}{function_suffix}``
 
 F_name_function_template
     ``{underscore_name}{function_suffix}``
@@ -1117,7 +1114,7 @@ LUA_name
 Annotations
 -----------
 
-Ann annotation can be used to provide semantic information for a function or argument.
+An annotation can be used to provide semantic information for a function or argument.
 
 
 .. a.k.a. attributes
@@ -1137,18 +1134,16 @@ dimension
    array.  *value* must be *False*
    If set without a value, it defaults to ``(*)``.
 
+name
+   Name of the method.
+   Useful for constructor and destructor methods which have no names.
+
 value
    If true, pass-by-value; else, pass-by-reference.
 
 intent
    Valid valid values are ``in``, ``out``, ``inout``.
    If the argument is ``const``, the default is ``in``.
-
-ptr
-   Argument is a pointer
-
-reference
-   Argument is a reference
 
 default
    Default value for C++ function argument.

@@ -178,21 +178,21 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // splicer end class.ExClass2.type.del
 }
 
-static char PP_exclass2_delete__doc__[] =
+static char PP_exclass2_dtor__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass2_delete(
+PP_exclass2_dtor(
   PP_ExClass2 *self,
   PyObject *,  // args unused
   PyObject *)  // kwds unused
 {
-// splicer begin class.ExClass2.method.delete
+// splicer begin class.ExClass2.method.dtor
     delete self->BBB;
     self->BBB = NULL;
     Py_RETURN_NONE;
-// splicer end class.ExClass2.method.delete
+// splicer end class.ExClass2.method.dtor
 }
 
 static char PP_exclass2_get_name__doc__[] =
@@ -378,7 +378,7 @@ PP_exclass2_get_type_id(
 // splicer begin class.ExClass2.impl.after_methods
 // splicer end class.ExClass2.impl.after_methods
 static PyMethodDef PP_ExClass2_methods[] = {
-{"delete", (PyCFunction)PP_exclass2_delete, METH_NOARGS, PP_exclass2_delete__doc__},
+{"dtor", (PyCFunction)PP_exclass2_dtor, METH_NOARGS, PP_exclass2_dtor__doc__},
 {"getName", (PyCFunction)PP_exclass2_get_name, METH_NOARGS, PP_exclass2_get_name__doc__},
 {"getName2", (PyCFunction)PP_exclass2_get_name2, METH_NOARGS, PP_exclass2_get_name2__doc__},
 {"getName3", (PyCFunction)PP_exclass2_get_name3, METH_NOARGS, PP_exclass2_get_name3__doc__},

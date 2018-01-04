@@ -784,6 +784,31 @@ def initialize():
     return def_types, def_types_alias
 
 
+def create_class_typedef(cls):
+    name = cls['name']
+    fmt_class = cls['_fmt']
+    options = cls['options']
+
+    typedef = Typedef.lookup(name)
+    if typedef is None:
+        # unname = util.un_camel(name)
+        unname = name.lower()
+        cname = fmt_class.C_prefix + unname
+        typedef = Typedef(
+            name,
+            base='wrapped',
+            cpp_type=name,
+            c_type=cname,
+            f_derived_type=cls.get('F_derived_name',None) or unname,
+            f_module={fmt_class.F_module_name:[unname]},
+            f_to_c = '{f_var}%%%s()' % options.F_name_instance_get,
+            )
+        typedef_wrapped_defaults(typedef)
+        Typedef.register(name, typedef)
+
+    fmt_class.C_type_name = typedef.c_type
+
+
 def typedef_wrapped_defaults(typedef):
     """Add some defaults to typedef.
     When dumping typedefs to a file, only a subset is written

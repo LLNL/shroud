@@ -518,7 +518,7 @@ module tutorial_mod
 
 contains
 
-    ! Class1 * new() +constructor
+    ! Class1() +name(new)
     ! function_index=0
     function class1_new() result(SHT_rv)
         type(class1) :: SHT_rv
@@ -527,7 +527,7 @@ contains
         ! splicer end class.Class1.method.new
     end function class1_new
 
-    ! void delete() +destructor
+    ! ~Class1() +name(delete)
     ! function_index=1
     subroutine class1_delete(obj)
         use iso_c_binding, only : C_NULL_PTR

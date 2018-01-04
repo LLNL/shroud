@@ -72,21 +72,21 @@ return Py_NotImplemented;
 // splicer end class.ExClass1.type.richcompare
 }
 
-static char PP_exclass1_delete__doc__[] =
+static char PP_exclass1_dtor__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_delete(
+PP_exclass1_dtor(
   PP_ExClass1 *self,
   PyObject *,  // args unused
   PyObject *)  // kwds unused
 {
-// splicer begin class.ExClass1.method.delete
+// splicer begin class.ExClass1.method.dtor
     delete self->BBB;
     self->BBB = NULL;
     Py_RETURN_NONE;
-// splicer end class.ExClass1.method.delete
+// splicer end class.ExClass1.method.dtor
 }
 
 static char PP_exclass1_increment_count__doc__[] =
@@ -347,7 +347,7 @@ PP_exclass1_get_value(
 // splicer begin class.ExClass1.impl.after_methods
 // splicer end class.ExClass1.impl.after_methods
 static PyMethodDef PP_ExClass1_methods[] = {
-{"delete", (PyCFunction)PP_exclass1_delete, METH_NOARGS, PP_exclass1_delete__doc__},
+{"dtor", (PyCFunction)PP_exclass1_dtor, METH_NOARGS, PP_exclass1_dtor__doc__},
 {"incrementCount", (PyCFunction)PP_exclass1_increment_count, METH_VARARGS|METH_KEYWORDS, PP_exclass1_increment_count__doc__},
 {"getName", (PyCFunction)PP_exclass1_get_name, METH_NOARGS, PP_exclass1_get_name__doc__},
 {"GetNameLength", (PyCFunction)PP_exclass1_get_name_length, METH_NOARGS, PP_exclass1_get_name_length__doc__},

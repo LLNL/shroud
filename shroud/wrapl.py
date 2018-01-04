@@ -234,9 +234,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             CPP_subprogram = 'subroutine'
 
         # XXX       result_typedef = typemap.Typedef.lookup(result_type)
-        is_ctor = ast.fattrs.get('constructor', False)
-        is_dtor = ast.fattrs.get('destructor', False)
+        is_ctor = ast.fattrs.get('_constructor', False)
+        is_dtor = ast.fattrs.get('_destructor', False)
         if is_dtor:
+            CPP_subprogram = 'subroutine'
             fmt.LUA_name = '__gc'
 
         if cls:
@@ -438,14 +439,14 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         ast = node['_ast']
         result_type = ast.typename
+        is_ctor = ast.fattrs.get('_constructor', False)
+        is_dtor = ast.fattrs.get('_destructor', False)
 
-        if node.get('return_this', False):
+        if is_dtor or node.get('return_this', False):
             result_type = 'void'
             CPP_subprogram = 'subroutine'
 
         result_typedef = typemap.Typedef.lookup(result_type)
-        is_ctor = ast.fattrs.get('constructor', False)
-        is_dtor = ast.fattrs.get('destructor', False)
         #        is_const = ast.const
         # XXX        if is_ctor:   # or is_dtor:
         # XXX            # XXX - have explicit delete

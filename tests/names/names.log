@@ -14,6 +14,7 @@ C function void function3a(int i +intent(in)+value)
 C function void function3a(long i +intent(in)+value)
 C function int function4(const std::string & rv +intent(in))
 C function int function4(const std::string & rv +intent(in)+len_trim(Lrv))
+C function void function5() +name(fiveplus)
 Close top.h
 Close top.cpp
 class Names
@@ -28,6 +29,7 @@ C-interface, Fortran function void function3a(int i +intent(in)+value)
 C-interface, Fortran function void function3a(long i +intent(in)+value)
 C-interface, Fortran function int function4(const std::string & rv +intent(in))
 C-interface function int function4(const std::string & rv +intent(in)+len_trim(Lrv))
+C-interface, Fortran function void function5() +name(fiveplus)
 Close top.f
 class Names
 Python method void method1()
@@ -40,6 +42,7 @@ Python function void function2()
 Python function void function3a(int i +intent(in)+value)
 Python function void function3a(long i +intent(in)+value)
 Python function int function4(const std::string & rv +intent(in))
+Python function void function5() +name(fiveplus)
 Close pytestnamesmodule.hpp
 Close pytestnamesmodule.cpp
 Close pytestnameshelper.cpp

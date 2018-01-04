@@ -785,14 +785,13 @@ To wrap the class add the lines to the YAML file::
     classes:
     - name: Class1
       methods:
-      - decl: Class1 *new()  +constructor
-      - decl: void delete()  +destructor
+      - decl: Class1()  +name(new)
+      - decl: ~Class1() +name(delete)
       - decl: void Method1()
 
-The method ``new`` has the attribute **+constructor** to mark it as a
-constructor.  In this example the empty paren expression is required
-to apply the annotation to the function instead of the result.
-Likewise, ``delete`` is marked as a destructor.  These annotations
+The constructor and destructor have no method name associated with
+them.  They default to **ctor** and **dtor**.  The names can be
+overridden by supplying the **+name** annotation.  These declarations
 will create wrappers over the ``new`` and ``delete`` keywords.
 
 The file ``wrapClass1.h`` will have an opaque struct for the class.
@@ -807,6 +806,13 @@ pointers for every instance::
     {
         Class1 *SHT_rv = new Class1();
         return static_cast<TUT_class1 *>(static_cast<void *>(SHT_rv));
+    }
+
+    void TUT_class1_delete(TUT_class1 * self)
+    {
+        Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
+        delete SH_this;
+        return;
     }
 
     void TUT_class1_method1(TUT_class1 * self)
@@ -831,13 +837,20 @@ And the subroutines::
         SHT_rv%voidptr = c_class1_new()
     end function class1_new
     
+    subroutine class1_delete(obj)
+        use iso_c_binding, only : C_NULL_PTR
+        class(class1) :: obj
+        call c_class1_delete(obj%voidptr)
+        obj%voidptr = C_NULL_PTR
+    end subroutine class1_delete
+
     subroutine class1_method1(obj)
         class(class1) :: obj
         call c_class1_method1(obj%voidptr)
     end subroutine class1_method1
 
 
-The additional C++ code to call the function::
+The C++ code to call the function::
 
     tutorial::Class1 *cptr = new tutorial::Class1();
 

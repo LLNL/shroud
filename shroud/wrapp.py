@@ -368,19 +368,19 @@ return 1;""", fmt)
 
         ast = node['_ast']
         result_type = ast.typename
-
-        if node.get('return_this', False):
-            result_type = 'void'
-            CPP_subprogram = 'subroutine'
-
-        result_typedef = typemap.Typedef.lookup(result_type)
-        is_ctor = ast.fattrs.get('constructor', False)
-        is_dtor = ast.fattrs.get('destructor', False)
+        is_ctor = ast.fattrs.get('_constructor', False)
+        is_dtor = ast.fattrs.get('_destructor', False)
 #        is_const = ast.const
+
         if is_ctor:   # or is_dtor:
             # XXX - have explicit delete
             # need code in __init__ and __del__
             return
+        if is_dtor or node.get('return_this', False):
+            result_type = 'void'
+            CPP_subprogram = 'subroutine'
+
+        result_typedef = typemap.Typedef.lookup(result_type)
 
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.

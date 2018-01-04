@@ -818,7 +818,64 @@
             "cpp_header": "ExClass1.hpp", 
             "methods": [
                 {
-                    "_PTR_F_C_index": 13, 
+                    "_ast": {
+                        "args": [], 
+                        "attrs": {}, 
+                        "const": false, 
+                        "fattrs": {
+                            "_constructor": true, 
+                            "_name": "ctor"
+                        }, 
+                        "func_const": false, 
+                        "specifier": [
+                            "ExClass1"
+                        ]
+                    }, 
+                    "_cpp_overload": [
+                        0, 
+                        1
+                    ], 
+                    "_decl": "ExClass1()", 
+                    "_fmt": {
+                        "C_call_code": "ExClass1 * SHT_rv = new ExClass1();", 
+                        "C_call_list": "", 
+                        "C_name": "AA_exclass1_ctor_0", 
+                        "C_prototype": "", 
+                        "C_return_code": "return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));", 
+                        "C_return_type": "AA_exclass1 *", 
+                        "F_C_call": "c_exclass1_ctor_0", 
+                        "F_C_name": "c_exclass1_ctor_0", 
+                        "F_arg_c_call": "", 
+                        "F_arg_c_call_tab": "\t", 
+                        "F_arguments": "", 
+                        "F_call_code": "SHT_rv%voidptr = c_exclass1_ctor_0(\t)", 
+                        "F_name_function": "ctor_0", 
+                        "F_name_generic": "ctor", 
+                        "F_name_impl": "exclass1_ctor_0", 
+                        "F_result_clause": " result(SHT_rv)", 
+                        "F_subprogram": "function", 
+                        "c_const": "", 
+                        "function_name": "ctor", 
+                        "function_suffix": "_0", 
+                        "underscore_name": "ctor"
+                    }, 
+                    "_fmtargs": {}, 
+                    "_fmtresult": {
+                        "fmtc": {
+                            "cpp_rv_decl": "ExClass1 * SHT_rv", 
+                            "cpp_var": "SHT_rv"
+                        }
+                    }, 
+                    "_function_index": 0, 
+                    "_overloaded": true, 
+                    "_subprogram": "function", 
+                    "decl": "ExClass1()", 
+                    "options": {
+                        "wrap_python": false
+                    }
+                }, 
+                {
+                    "_PTR_F_C_index": 14, 
                     "_ast": {
                         "args": [
                             {
@@ -843,46 +900,43 @@
                         ], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "new", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
                         "fattrs": {
-                            "constructor": true
+                            "_constructor": true, 
+                            "_name": "ctor"
                         }, 
                         "func_const": false, 
                         "specifier": [
                             "ExClass1"
                         ]
                     }, 
-                    "_decl": "ExClass1 * new(const string * name +intent(in)) +constructor", 
+                    "_cpp_overload": [
+                        0, 
+                        1
+                    ], 
+                    "_decl": "ExClass1(const string * name +intent(in))", 
                     "_fmt": {
                         "C_call_code": "ExClass1 * SHT_rv = new ExClass1(SH_name);", 
                         "C_call_list": "SH_name", 
-                        "C_name": "AA_exclass1_new", 
+                        "C_name": "AA_exclass1_ctor_1", 
                         "C_pre_call": "const std::string SH_name(name);", 
                         "C_prototype": "const char * name", 
                         "C_return_code": "return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));", 
                         "C_return_type": "AA_exclass1 *", 
-                        "F_C_call": "c_exclass1_new_bufferify", 
-                        "F_C_name": "c_exclass1_new", 
+                        "F_C_call": "c_exclass1_ctor_1_bufferify", 
+                        "F_C_name": "c_exclass1_ctor_1", 
                         "F_arg_c_call": "name, len_trim(name, kind=C_INT)", 
                         "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)", 
                         "F_arguments": "name", 
-                        "F_call_code": "SHT_rv%voidptr = c_exclass1_new_bufferify(\tname\tlen_trim(name, kind=C_INT))", 
-                        "F_name_function": "new", 
-                        "F_name_generic": "new", 
-                        "F_name_impl": "exclass1_new", 
+                        "F_call_code": "SHT_rv%voidptr = c_exclass1_ctor_1_bufferify(\tname\tlen_trim(name, kind=C_INT))", 
+                        "F_name_function": "ctor_1", 
+                        "F_name_generic": "ctor", 
+                        "F_name_impl": "exclass1_ctor_1", 
                         "F_result_clause": " result(SHT_rv)", 
                         "F_subprogram": "function", 
                         "c_const": "", 
-                        "function_name": "new", 
-                        "underscore_name": "new"
+                        "function_name": "ctor", 
+                        "function_suffix": "_1", 
+                        "underscore_name": "ctor"
                     }, 
                     "_fmtargs": {
                         "name": {
@@ -901,9 +955,10 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 0, 
+                    "_function_index": 1, 
+                    "_overloaded": true, 
                     "_subprogram": "function", 
-                    "decl": "ExClass1 *new ( const string *name ) +constructor", 
+                    "decl": "ExClass1( const string *name )", 
                     "doxygen": {
                         "brief": "constructor", 
                         "description": "longer description\nusually multiple lines\n", 
@@ -912,7 +967,7 @@
                     "options": {}
                 }, 
                 {
-                    "_PTR_C_CPP_index": 0, 
+                    "_PTR_C_CPP_index": 1, 
                     "_ast": {
                         "args": [
                             {
@@ -938,36 +993,32 @@
                         ], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "new", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
                         "fattrs": {
-                            "constructor": true
+                            "_constructor": true, 
+                            "_name": "ctor"
                         }, 
                         "func_const": false, 
                         "specifier": [
                             "ExClass1"
                         ]
                     }, 
-                    "_decl": "ExClass1 * new(const string * name +intent(in)+len_trim(Lname)) +constructor", 
+                    "_cpp_overload": [
+                        0, 
+                        1
+                    ], 
+                    "_decl": "ExClass1(const string * name +intent(in)+len_trim(Lname))", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_fmt": {
                         "C_call_code": "ExClass1 * SHT_rv = new ExClass1(SH_name);", 
                         "C_call_list": "SH_name", 
-                        "C_name": "AA_exclass1_new_bufferify", 
+                        "C_name": "AA_exclass1_ctor_1_bufferify", 
                         "C_pre_call": "const std::string SH_name(name, Lname);", 
                         "C_prototype": "const char * name, int Lname", 
                         "C_return_code": "return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));", 
                         "C_return_type": "AA_exclass1 *", 
-                        "F_C_name": "c_exclass1_new_bufferify", 
+                        "F_C_name": "c_exclass1_ctor_1_bufferify", 
                         "c_const": "", 
-                        "function_suffix": "_bufferify"
+                        "function_suffix": "_1_bufferify"
                     }, 
                     "_fmtargs": {
                         "name": {
@@ -991,10 +1042,11 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 13, 
+                    "_function_index": 14, 
                     "_generated": "arg_to_buffer", 
+                    "_overloaded": true, 
                     "_subprogram": "function", 
-                    "decl": "ExClass1 *new ( const string *name ) +constructor", 
+                    "decl": "ExClass1( const string *name )", 
                     "doxygen": {
                         "brief": "constructor", 
                         "description": "longer description\nusually multiple lines\n", 
@@ -1008,53 +1060,52 @@
                     }
                 }, 
                 {
+                    "F_name_function": "delete", 
                     "_ast": {
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "delete", 
-                            "pointer": []
-                        }, 
                         "fattrs": {
-                            "destructor": true
+                            "_destructor": true, 
+                            "_name": "dtor"
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "void"
+                            "ExClass1"
                         ]
                     }, 
-                    "_decl": "void delete() +destructor", 
+                    "_decl": "~ExClass1()", 
                     "_fmt": {
                         "C_call_code": "delete SH_this;", 
                         "C_call_list": "", 
-                        "C_name": "AA_exclass1_delete", 
+                        "C_name": "AA_exclass1_dtor", 
                         "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
                         "C_prototype": "AA_exclass1 * self", 
                         "C_return_code": "return;", 
                         "C_return_type": "void", 
-                        "F_C_call": "c_exclass1_delete", 
-                        "F_C_name": "c_exclass1_delete", 
+                        "F_C_call": "c_exclass1_dtor", 
+                        "F_C_name": "c_exclass1_dtor", 
                         "F_arg_c_call": "obj%voidptr", 
                         "F_arg_c_call_tab": "\tobj%voidptr", 
                         "F_arguments": "obj", 
-                        "F_call_code": "call c_exclass1_delete(\tobj%voidptr)", 
+                        "F_call_code": "call c_exclass1_dtor(\tobj%voidptr)", 
                         "F_name_function": "delete", 
-                        "F_name_generic": "delete", 
-                        "F_name_impl": "exclass1_delete", 
+                        "F_name_generic": "dtor", 
+                        "F_name_impl": "exclass1_dtor", 
                         "F_subprogram": "subroutine", 
-                        "PY_name_impl": "PP_exclass1_delete", 
+                        "PY_name_impl": "PP_exclass1_dtor", 
                         "c_const": "", 
                         "c_ptr": " *", 
                         "c_var": "self", 
-                        "function_name": "delete", 
-                        "underscore_name": "delete"
+                        "function_name": "dtor", 
+                        "underscore_name": "dtor"
                     }, 
                     "_fmtargs": {}, 
-                    "_function_index": 1, 
-                    "_subprogram": "subroutine", 
-                    "decl": "void delete() +destructor", 
+                    "_function_index": 2, 
+                    "_subprogram": "function", 
+                    "decl": "~ExClass1()", 
                     "doxygen": {
+                        "brief": "destructor", 
                         "description": "longer description joined with previous line"
                     }, 
                     "options": {}
@@ -1145,7 +1196,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 2, 
+                    "_function_index": 3, 
                     "_subprogram": "function", 
                     "decl": "int incrementCount(int incr)", 
                     "options": {}
@@ -1153,7 +1204,7 @@
                 {
                     "C_error_pattern": "C_invalid_name", 
                     "PY_error_pattern": "PY_invalid_name", 
-                    "_PTR_F_C_index": 14, 
+                    "_PTR_F_C_index": 15, 
                     "_ast": {
                         "args": [], 
                         "attrs": {
@@ -1214,7 +1265,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 3, 
+                    "_function_index": 4, 
                     "_subprogram": "function", 
                     "attrs": {
                         "result": {
@@ -1227,7 +1278,7 @@
                 {
                     "C_error_pattern": "C_invalid_name", 
                     "PY_error_pattern": "PY_invalid_name", 
-                    "_PTR_C_CPP_index": 3, 
+                    "_PTR_C_CPP_index": 4, 
                     "_ast": {
                         "args": [
                             {
@@ -1305,7 +1356,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 14, 
+                    "_function_index": 15, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "attrs": {
@@ -1369,7 +1420,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 4, 
+                    "_function_index": 5, 
                     "_subprogram": "function", 
                     "decl": "int GetNameLength() const", 
                     "doxygen": {
@@ -1378,7 +1429,7 @@
                     "options": {}
                 }, 
                 {
-                    "_PTR_F_C_index": 15, 
+                    "_PTR_F_C_index": 16, 
                     "_ast": {
                         "args": [], 
                         "attrs": {}, 
@@ -1436,13 +1487,13 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 5, 
+                    "_function_index": 6, 
                     "_subprogram": "function", 
                     "decl": "const string& getNameErrorCheck() const", 
                     "options": {}
                 }, 
                 {
-                    "_PTR_C_CPP_index": 5, 
+                    "_PTR_C_CPP_index": 6, 
                     "_ast": {
                         "args": [
                             {
@@ -1518,7 +1569,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 15, 
+                    "_function_index": 16, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "decl": "const string& getNameErrorCheck() const", 
@@ -1577,7 +1628,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 6, 
+                    "_function_index": 7, 
                     "_subprogram": "function", 
                     "decl": "const string& getNameArg() const", 
                     "options": {
@@ -1586,7 +1637,7 @@
                     }
                 }, 
                 {
-                    "_PTR_C_CPP_index": 6, 
+                    "_PTR_C_CPP_index": 7, 
                     "_ast": {
                         "args": [
                             {
@@ -1662,7 +1713,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 16, 
+                    "_function_index": 17, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "decl": "const string& getNameArg() const", 
@@ -1674,8 +1725,8 @@
                     }
                 }, 
                 {
-                    "_PTR_C_CPP_index": 6, 
-                    "_PTR_F_C_index": 16, 
+                    "_PTR_C_CPP_index": 7, 
+                    "_PTR_F_C_index": 17, 
                     "_ast": {
                         "args": [
                             {
@@ -1725,7 +1776,7 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": ""
                     }, 
-                    "_function_index": 17, 
+                    "_function_index": 18, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "decl": "const string& getNameArg() const", 
@@ -1793,7 +1844,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 7, 
+                    "_function_index": 8, 
                     "_subprogram": "function", 
                     "decl": "ExClass2 *getRoot()", 
                     "options": {}
@@ -1829,8 +1880,8 @@
                         ]
                     }, 
                     "_cpp_overload": [
-                        8, 
-                        9
+                        9, 
+                        10
                     ], 
                     "_decl": "int getValue(int value +intent(in)+value)", 
                     "_fmt": {
@@ -1889,7 +1940,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 8, 
+                    "_function_index": 9, 
                     "_overloaded": true, 
                     "_subprogram": "function", 
                     "decl": "int  getValue(int value)", 
@@ -1927,8 +1978,8 @@
                         ]
                     }, 
                     "_cpp_overload": [
-                        8, 
-                        9
+                        9, 
+                        10
                     ], 
                     "_decl": "long getValue(long value +intent(in)+value)", 
                     "_fmt": {
@@ -1987,7 +2038,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 9, 
+                    "_function_index": 10, 
                     "_overloaded": true, 
                     "_subprogram": "function", 
                     "decl": "long getValue(long value)", 
@@ -2047,7 +2098,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 10, 
+                    "_function_index": 11, 
                     "_subprogram": "function", 
                     "decl": "void *getAddr()", 
                     "options": {}
@@ -2138,7 +2189,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 11, 
+                    "_function_index": 12, 
                     "_subprogram": "function", 
                     "decl": "bool hasAddr(bool in)", 
                     "options": {}
@@ -2182,7 +2233,7 @@
                         "underscore_name": "splicer_special"
                     }, 
                     "_fmtargs": {}, 
-                    "_function_index": 12, 
+                    "_function_index": 13, 
                     "_subprogram": "subroutine", 
                     "decl": "void SplicerSpecial()", 
                     "options": {}
@@ -2221,7 +2272,7 @@
             "cpp_header": "ExClass2.hpp", 
             "methods": [
                 {
-                    "_PTR_F_C_index": 38, 
+                    "_PTR_F_C_index": 39, 
                     "_ast": {
                         "args": [
                             {
@@ -2247,46 +2298,38 @@
                         ], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "ExClass2", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
                         "fattrs": {
-                            "constructor": true
+                            "_constructor": true, 
+                            "_name": "ctor"
                         }, 
                         "func_const": false, 
                         "specifier": [
                             "ExClass2"
                         ]
                     }, 
-                    "_decl": "ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor", 
+                    "_decl": "ExClass2(const string * name +intent(in)+random(2))", 
                     "_fmt": {
                         "C_call_code": "ExClass2 * SHT_rv = new ExClass2(SH_name);", 
                         "C_call_list": "SH_name", 
-                        "C_name": "AA_exclass2_ex_class2", 
+                        "C_name": "AA_exclass2_ctor", 
                         "C_pre_call": "const std::string SH_name(name);", 
                         "C_prototype": "const char * name", 
                         "C_return_code": "return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));", 
                         "C_return_type": "AA_exclass2 *", 
-                        "F_C_call": "c_exclass2_ex_class2_bufferify", 
-                        "F_C_name": "c_exclass2_ex_class2", 
+                        "F_C_call": "c_exclass2_ctor_bufferify", 
+                        "F_C_name": "c_exclass2_ctor", 
                         "F_arg_c_call": "name, len_trim(name, kind=C_INT)", 
                         "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)", 
                         "F_arguments": "name", 
-                        "F_call_code": "SHT_rv%voidptr = c_exclass2_ex_class2_bufferify(\tname\tlen_trim(name, kind=C_INT))", 
-                        "F_name_function": "ex_class2", 
-                        "F_name_generic": "ex_class2", 
-                        "F_name_impl": "exclass2_ex_class2", 
+                        "F_call_code": "SHT_rv%voidptr = c_exclass2_ctor_bufferify(\tname\tlen_trim(name, kind=C_INT))", 
+                        "F_name_function": "ctor", 
+                        "F_name_generic": "ctor", 
+                        "F_name_impl": "exclass2_ctor", 
                         "F_result_clause": " result(SHT_rv)", 
                         "F_subprogram": "function", 
                         "c_const": "", 
-                        "function_name": "ExClass2", 
-                        "underscore_name": "ex_class2"
+                        "function_name": "ctor", 
+                        "underscore_name": "ctor"
                     }, 
                     "_fmtargs": {
                         "name": {
@@ -2305,18 +2348,21 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 18, 
+                    "_function_index": 19, 
                     "_subprogram": "function", 
                     "attrs": {
                         "name": {
                             "random": 2
                         }
                     }, 
-                    "decl": "ExClass2 *ExClass2 (const string *name) +constructor", 
+                    "decl": "ExClass2(const string *name)", 
+                    "doxygen": {
+                        "brief": "constructor"
+                    }, 
                     "options": {}
                 }, 
                 {
-                    "_PTR_C_CPP_index": 18, 
+                    "_PTR_C_CPP_index": 19, 
                     "_ast": {
                         "args": [
                             {
@@ -2343,34 +2389,26 @@
                         ], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "ExClass2", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
                         "fattrs": {
-                            "constructor": true
+                            "_constructor": true, 
+                            "_name": "ctor"
                         }, 
                         "func_const": false, 
                         "specifier": [
                             "ExClass2"
                         ]
                     }, 
-                    "_decl": "ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2)) +constructor", 
+                    "_decl": "ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_fmt": {
                         "C_call_code": "ExClass2 * SHT_rv = new ExClass2(SH_name);", 
                         "C_call_list": "SH_name", 
-                        "C_name": "AA_exclass2_ex_class2_bufferify", 
+                        "C_name": "AA_exclass2_ctor_bufferify", 
                         "C_pre_call": "const std::string SH_name(name, Lname);", 
                         "C_prototype": "const char * name, int Lname", 
                         "C_return_code": "return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));", 
                         "C_return_type": "AA_exclass2 *", 
-                        "F_C_name": "c_exclass2_ex_class2_bufferify", 
+                        "F_C_name": "c_exclass2_ctor_bufferify", 
                         "c_const": "", 
                         "function_suffix": "_bufferify"
                     }, 
@@ -2396,7 +2434,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 38, 
+                    "_function_index": 39, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "function", 
                     "attrs": {
@@ -2404,7 +2442,10 @@
                             "random": 2
                         }
                     }, 
-                    "decl": "ExClass2 *ExClass2 (const string *name) +constructor", 
+                    "decl": "ExClass2(const string *name)", 
+                    "doxygen": {
+                        "brief": "constructor"
+                    }, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -2413,56 +2454,57 @@
                     }
                 }, 
                 {
+                    "F_name_function": "delete", 
                     "_ast": {
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "delete", 
-                            "pointer": []
-                        }, 
                         "fattrs": {
-                            "destructor": true
+                            "_destructor": true, 
+                            "_name": "dtor"
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "void"
+                            "ExClass2"
                         ]
                     }, 
-                    "_decl": "void delete() +destructor", 
+                    "_decl": "~ExClass2()", 
                     "_fmt": {
                         "C_call_code": "delete SH_this;", 
                         "C_call_list": "", 
-                        "C_name": "AA_exclass2_delete", 
+                        "C_name": "AA_exclass2_dtor", 
                         "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
                         "C_prototype": "AA_exclass2 * self", 
                         "C_return_code": "return;", 
                         "C_return_type": "void", 
-                        "F_C_call": "c_exclass2_delete", 
-                        "F_C_name": "c_exclass2_delete", 
+                        "F_C_call": "c_exclass2_dtor", 
+                        "F_C_name": "c_exclass2_dtor", 
                         "F_arg_c_call": "obj%voidptr", 
                         "F_arg_c_call_tab": "\tobj%voidptr", 
                         "F_arguments": "obj", 
-                        "F_call_code": "call c_exclass2_delete(\tobj%voidptr)", 
+                        "F_call_code": "call c_exclass2_dtor(\tobj%voidptr)", 
                         "F_name_function": "delete", 
-                        "F_name_generic": "delete", 
-                        "F_name_impl": "exclass2_delete", 
+                        "F_name_generic": "dtor", 
+                        "F_name_impl": "exclass2_dtor", 
                         "F_subprogram": "subroutine", 
-                        "PY_name_impl": "PP_exclass2_delete", 
+                        "PY_name_impl": "PP_exclass2_dtor", 
                         "c_const": "", 
                         "c_ptr": " *", 
                         "c_var": "self", 
-                        "function_name": "delete", 
-                        "underscore_name": "delete"
+                        "function_name": "dtor", 
+                        "underscore_name": "dtor"
                     }, 
                     "_fmtargs": {}, 
-                    "_function_index": 19, 
-                    "_subprogram": "subroutine", 
-                    "decl": "void delete() +destructor", 
+                    "_function_index": 20, 
+                    "_subprogram": "function", 
+                    "decl": "~ExClass2()", 
+                    "doxygen": {
+                        "brief": "destructor"
+                    }, 
                     "options": {}
                 }, 
                 {
-                    "_PTR_F_C_index": 39, 
+                    "_PTR_F_C_index": 40, 
                     "_ast": {
                         "args": [], 
                         "attrs": {
@@ -2522,7 +2564,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 20, 
+                    "_function_index": 21, 
                     "_subprogram": "function", 
                     "attrs": {
                         "result": {
@@ -2533,7 +2575,7 @@
                     "options": {}
                 }, 
                 {
-                    "_PTR_C_CPP_index": 20, 
+                    "_PTR_C_CPP_index": 21, 
                     "_ast": {
                         "args": [
                             {
@@ -2611,7 +2653,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 39, 
+                    "_function_index": 40, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "attrs": {
@@ -2628,7 +2670,7 @@
                     }
                 }, 
                 {
-                    "_PTR_F_C_index": 40, 
+                    "_PTR_F_C_index": 41, 
                     "_ast": {
                         "args": [], 
                         "attrs": {}, 
@@ -2686,13 +2728,13 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 21, 
+                    "_function_index": 22, 
                     "_subprogram": "function", 
                     "decl": "const string& getName2()", 
                     "options": {}
                 }, 
                 {
-                    "_PTR_C_CPP_index": 21, 
+                    "_PTR_C_CPP_index": 22, 
                     "_ast": {
                         "args": [
                             {
@@ -2768,7 +2810,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 40, 
+                    "_function_index": 41, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "decl": "const string& getName2()", 
@@ -2780,7 +2822,7 @@
                     }
                 }, 
                 {
-                    "_PTR_F_C_index": 41, 
+                    "_PTR_F_C_index": 42, 
                     "_ast": {
                         "args": [], 
                         "attrs": {}, 
@@ -2838,13 +2880,13 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 22, 
+                    "_function_index": 23, 
                     "_subprogram": "function", 
                     "decl": "string& getName3() const", 
                     "options": {}
                 }, 
                 {
-                    "_PTR_C_CPP_index": 22, 
+                    "_PTR_C_CPP_index": 23, 
                     "_ast": {
                         "args": [
                             {
@@ -2920,7 +2962,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 41, 
+                    "_function_index": 42, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "decl": "string& getName3() const", 
@@ -2932,7 +2974,7 @@
                     }
                 }, 
                 {
-                    "_PTR_F_C_index": 42, 
+                    "_PTR_F_C_index": 43, 
                     "_ast": {
                         "args": [], 
                         "attrs": {}, 
@@ -2990,13 +3032,13 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 23, 
+                    "_function_index": 24, 
                     "_subprogram": "function", 
                     "decl": "string& getName4()", 
                     "options": {}
                 }, 
                 {
-                    "_PTR_C_CPP_index": 23, 
+                    "_PTR_C_CPP_index": 24, 
                     "_ast": {
                         "args": [
                             {
@@ -3072,7 +3114,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 42, 
+                    "_function_index": 43, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "subroutine", 
                     "decl": "string& getName4()", 
@@ -3131,7 +3173,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 24, 
+                    "_function_index": 25, 
                     "_subprogram": "function", 
                     "decl": "int GetNameLength() const", 
                     "doxygen": {
@@ -3238,7 +3280,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 25, 
+                    "_function_index": 26, 
                     "_subprogram": "function", 
                     "decl": "ExClass1 *get_class1(const ExClass1 *in)", 
                     "options": {}
@@ -3308,7 +3350,7 @@
                             }
                         }
                     }, 
-                    "_function_index": 31, 
+                    "_function_index": 32, 
                     "_generated": "has_default_arg", 
                     "_overloaded": true, 
                     "_subprogram": "function", 
@@ -3328,7 +3370,7 @@
                     "return_this": true
                 }, 
                 {
-                    "_PTR_F_C_index": 31, 
+                    "_PTR_F_C_index": 32, 
                     "_ast": {
                         "args": [
                             {
@@ -3376,7 +3418,7 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_0_int"
                     }, 
-                    "_function_index": 43, 
+                    "_function_index": 44, 
                     "_generated": "fortran_generic", 
                     "_overloaded": true, 
                     "_subprogram": "function", 
@@ -3390,7 +3432,7 @@
                     "return_this": true
                 }, 
                 {
-                    "_PTR_F_C_index": 31, 
+                    "_PTR_F_C_index": 32, 
                     "_ast": {
                         "args": [
                             {
@@ -3438,7 +3480,7 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_0_long"
                     }, 
-                    "_function_index": 44, 
+                    "_function_index": 45, 
                     "_generated": "fortran_generic", 
                     "_overloaded": true, 
                     "_subprogram": "function", 
@@ -3503,7 +3545,7 @@
                     }, 
                     "_decl": "void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)", 
                     "_default_funcs": [
-                        31
+                        32
                     ], 
                     "_fmt": {
                         "C_call_code": "SH_this->declare(getTypeID(type), len);", 
@@ -3566,7 +3608,7 @@
                             }
                         }
                     }, 
-                    "_function_index": 26, 
+                    "_function_index": 27, 
                     "_has_default_arg": true, 
                     "_nargs": [
                         1, 
@@ -3587,7 +3629,7 @@
                     "return_this": true
                 }, 
                 {
-                    "_PTR_F_C_index": 26, 
+                    "_PTR_F_C_index": 27, 
                     "_ast": {
                         "args": [
                             {
@@ -3639,7 +3681,7 @@
                     }, 
                     "_decl": "void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)", 
                     "_default_funcs": [
-                        31
+                        32
                     ], 
                     "_fmt": {
                         "F_C_call": "c_exclass2_declare_1", 
@@ -3653,7 +3695,7 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_1_int"
                     }, 
-                    "_function_index": 45, 
+                    "_function_index": 46, 
                     "_generated": "fortran_generic", 
                     "_has_default_arg": true, 
                     "_nargs": [
@@ -3672,7 +3714,7 @@
                     "return_this": true
                 }, 
                 {
-                    "_PTR_F_C_index": 26, 
+                    "_PTR_F_C_index": 27, 
                     "_ast": {
                         "args": [
                             {
@@ -3724,7 +3766,7 @@
                     }, 
                     "_decl": "void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)", 
                     "_default_funcs": [
-                        31
+                        32
                     ], 
                     "_fmt": {
                         "F_C_call": "c_exclass2_declare_1", 
@@ -3738,7 +3780,7 @@
                         "F_subprogram": "subroutine", 
                         "function_suffix": "_1_long"
                     }, 
-                    "_function_index": 46, 
+                    "_function_index": 47, 
                     "_generated": "fortran_generic", 
                     "_has_default_arg": true, 
                     "_nargs": [
@@ -3798,7 +3840,7 @@
                         "underscore_name": "destroyall"
                     }, 
                     "_fmtargs": {}, 
-                    "_function_index": 27, 
+                    "_function_index": 28, 
                     "_subprogram": "subroutine", 
                     "decl": "void destroyall()", 
                     "options": {}
@@ -3855,7 +3897,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 28, 
+                    "_function_index": 29, 
                     "_subprogram": "function", 
                     "decl": "TypeID getTypeID() const", 
                     "options": {}
@@ -3895,7 +3937,7 @@
                         "function_name": "setValue", 
                         "underscore_name": "set_value"
                     }, 
-                    "_function_index": 29, 
+                    "_function_index": 30, 
                     "_overloaded": true, 
                     "_subprogram": "subroutine", 
                     "cpp_template": {
@@ -3984,7 +4026,7 @@
                             }
                         }
                     }, 
-                    "_function_index": 32, 
+                    "_function_index": 33, 
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "subroutine", 
@@ -4066,7 +4108,7 @@
                             }
                         }
                     }, 
-                    "_function_index": 33, 
+                    "_function_index": 34, 
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "subroutine", 
@@ -4148,7 +4190,7 @@
                             }
                         }
                     }, 
-                    "_function_index": 34, 
+                    "_function_index": 35, 
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "subroutine", 
@@ -4230,7 +4272,7 @@
                             }
                         }
                     }, 
-                    "_function_index": 35, 
+                    "_function_index": 36, 
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "subroutine", 
@@ -4262,7 +4304,7 @@
                         "function_name": "getValue", 
                         "underscore_name": "get_value"
                     }, 
-                    "_function_index": 30, 
+                    "_function_index": 31, 
                     "_overloaded": true, 
                     "_subprogram": "function", 
                     "cpp_template": {
@@ -4328,7 +4370,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 36, 
+                    "_function_index": 37, 
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "function", 
@@ -4389,7 +4431,7 @@
                             "cpp_var": "SHT_rv"
                         }
                     }, 
-                    "_function_index": 37, 
+                    "_function_index": 38, 
                     "_generated": "cpp_template", 
                     "_overloaded": true, 
                     "_subprogram": "function", 
@@ -4508,7 +4550,7 @@
                 "underscore_name": "local_function1"
             }, 
             "_fmtargs": {}, 
-            "_function_index": 47, 
+            "_function_index": 48, 
             "_subprogram": "subroutine", 
             "decl": "void local_function1()", 
             "docs": "yada yada yada", 
@@ -4517,7 +4559,7 @@
         {
             "C_code": "return name != NULL;", 
             "F_code": "rv = name .ne. \" \"", 
-            "_PTR_F_C_index": 60, 
+            "_PTR_F_C_index": 61, 
             "_ast": {
                 "args": [
                     {
@@ -4599,7 +4641,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 48, 
+            "_function_index": 49, 
             "_subprogram": "function", 
             "decl": "bool isNameValid(const std::string& name)", 
             "options": {}
@@ -4607,7 +4649,7 @@
         {
             "C_code": "return name != NULL;", 
             "F_code": "rv = name .ne. \" \"", 
-            "_PTR_C_CPP_index": 48, 
+            "_PTR_C_CPP_index": 49, 
             "_ast": {
                 "args": [
                     {
@@ -4677,7 +4719,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 60, 
+            "_function_index": 61, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
             "decl": "bool isNameValid(const std::string& name)", 
@@ -4734,7 +4776,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 49, 
+            "_function_index": 50, 
             "_subprogram": "function", 
             "decl": "bool isInitialized()", 
             "options": {}
@@ -4899,13 +4941,13 @@
                     }
                 }
             }, 
-            "_function_index": 50, 
+            "_function_index": 51, 
             "_subprogram": "subroutine", 
             "decl": "void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))", 
             "options": {}
         }, 
         {
-            "_PTR_F_C_index": 61, 
+            "_PTR_F_C_index": 62, 
             "_ast": {
                 "args": [
                     {
@@ -4941,8 +4983,8 @@
                 ]
             }, 
             "_cpp_overload": [
-                51, 
-                52
+                52, 
+                53
             ], 
             "_decl": "void test_names(const std::string & name +intent(in))", 
             "_fmt": {
@@ -4988,7 +5030,7 @@
                     }
                 }
             }, 
-            "_function_index": 51, 
+            "_function_index": 52, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void test_names(const std::string &name)", 
@@ -4996,7 +5038,7 @@
             "options": {}
         }, 
         {
-            "_PTR_C_CPP_index": 51, 
+            "_PTR_C_CPP_index": 52, 
             "_ast": {
                 "args": [
                     {
@@ -5033,8 +5075,8 @@
                 ]
             }, 
             "_cpp_overload": [
-                51, 
-                52
+                52, 
+                53
             ], 
             "_decl": "void test_names(const std::string & name +intent(in)+len_trim(Lname))", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -5066,7 +5108,7 @@
                     }
                 }
             }, 
-            "_function_index": 61, 
+            "_function_index": 62, 
             "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -5080,7 +5122,7 @@
             }
         }, 
         {
-            "_PTR_F_C_index": 62, 
+            "_PTR_F_C_index": 63, 
             "_ast": {
                 "args": [
                     {
@@ -5130,8 +5172,8 @@
                 ]
             }, 
             "_cpp_overload": [
-                51, 
-                52
+                52, 
+                53
             ], 
             "_decl": "void test_names(const std::string & name +intent(in), int flag +intent(in)+value)", 
             "_fmt": {
@@ -5194,7 +5236,7 @@
                     }
                 }
             }, 
-            "_function_index": 52, 
+            "_function_index": 53, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
             "decl": "void test_names(const std::string &name, int flag)", 
@@ -5202,7 +5244,7 @@
             "options": {}
         }, 
         {
-            "_PTR_C_CPP_index": 52, 
+            "_PTR_C_CPP_index": 53, 
             "_ast": {
                 "args": [
                     {
@@ -5253,8 +5295,8 @@
                 ]
             }, 
             "_cpp_overload": [
-                51, 
-                52
+                52, 
+                53
             ], 
             "_decl": "void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)", 
             "_error_pattern_suffix": "_as_buffer", 
@@ -5299,7 +5341,7 @@
                     }
                 }
             }, 
-            "_function_index": 62, 
+            "_function_index": 63, 
             "_generated": "arg_to_buffer", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -5349,7 +5391,7 @@
                 "function_suffix": "_0"
             }, 
             "_fmtargs": {}, 
-            "_function_index": 58, 
+            "_function_index": 59, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -5428,7 +5470,7 @@
                     }
                 }
             }, 
-            "_function_index": 59, 
+            "_function_index": 60, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -5488,8 +5530,8 @@
             }, 
             "_decl": "void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)", 
             "_default_funcs": [
-                58, 
-                59
+                59, 
+                60
             ], 
             "_fmt": {
                 "C_call_code": "testoptional(i, j);", 
@@ -5558,7 +5600,7 @@
                     }
                 }
             }, 
-            "_function_index": 53, 
+            "_function_index": 54, 
             "_has_default_arg": true, 
             "_nargs": [
                 0, 
@@ -5615,7 +5657,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 54, 
+            "_function_index": 55, 
             "_subprogram": "function", 
             "decl": "size_t test_size_t()", 
             "options": {}
@@ -5696,7 +5738,7 @@
                     }
                 }
             }, 
-            "_function_index": 55, 
+            "_function_index": 56, 
             "_subprogram": "subroutine", 
             "decl": "void testmpi(MPI_Comm comm)", 
             "options": {}
@@ -5783,7 +5825,7 @@
                     }
                 }
             }, 
-            "_function_index": 56, 
+            "_function_index": 57, 
             "_subprogram": "subroutine", 
             "decl": "void testgroup1(DataGroup * grp)", 
             "options": {}
@@ -5870,7 +5912,7 @@
                     }
                 }
             }, 
-            "_function_index": 57, 
+            "_function_index": 58, 
             "_subprogram": "subroutine", 
             "decl": "void testgroup2(const DataGroup * grp)", 
             "options": {}

@@ -105,6 +105,8 @@ functions:
   # test C_result  with arg rv
   - decl: int function4(const std::string &rv)
 
+  - decl: void function5() +name(fiveplus)
+
 
 # Test explicit splicers
 # class Name2 has no methods by default it would not be written.

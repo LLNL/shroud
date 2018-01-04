@@ -1181,7 +1181,7 @@
             "options": {}
         }, 
         {
-            "_PTR_F_C_index": 7, 
+            "_PTR_F_C_index": 8, 
             "_ast": {
                 "args": [
                     {
@@ -1344,7 +1344,7 @@
                     "cpp_var": "SHT_rv"
                 }
             }, 
-            "_function_index": 7, 
+            "_function_index": 8, 
             "_generated": "arg_to_buffer", 
             "_subprogram": "function", 
             "decl": "int function4(const std::string &rv)", 
@@ -1354,6 +1354,52 @@
                 "wrap_lua": false, 
                 "wrap_python": false
             }
+        }, 
+        {
+            "_ast": {
+                "args": [], 
+                "attrs": {}, 
+                "const": false, 
+                "declarator": {
+                    "name": "function5", 
+                    "pointer": []
+                }, 
+                "fattrs": {
+                    "name": "fiveplus"
+                }, 
+                "func_const": false, 
+                "specifier": [
+                    "void"
+                ]
+            }, 
+            "_decl": "void function5() +name(fiveplus)", 
+            "_fmt": {
+                "C_call_code": "fiveplus();", 
+                "C_call_list": "", 
+                "C_name": "YYY_TES_fiveplus", 
+                "C_prototype": "", 
+                "C_return_code": "return;", 
+                "C_return_type": "void", 
+                "F_C_call": "yyy_tes_fiveplus", 
+                "F_C_name": "yyy_tes_fiveplus", 
+                "F_arg_c_call": "", 
+                "F_arg_c_call_tab": "\t", 
+                "F_arguments": "", 
+                "F_call_code": "call yyy_tes_fiveplus(\t)", 
+                "F_name_function": "fiveplus", 
+                "F_name_generic": "fiveplus", 
+                "F_name_impl": "testnames_fiveplus", 
+                "F_subprogram": "subroutine", 
+                "PY_name_impl": "PY_fiveplus", 
+                "c_const": "", 
+                "function_name": "fiveplus", 
+                "underscore_name": "fiveplus"
+            }, 
+            "_fmtargs": {}, 
+            "_function_index": 7, 
+            "_subprogram": "subroutine", 
+            "decl": "void function5() +name(fiveplus)", 
+            "options": {}
         }
     ], 
     "language": "c++", 
