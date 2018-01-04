@@ -77,6 +77,7 @@ token_specification = [
     ('SEMICOLON', r';'),
     ('LT',        r'<'),
     ('GT',        r'>'),
+    ('TILDE',     r'\~'),
     ('NAMESPACE', r'::'),
     ('VARARG',    r'\.\.\.'),
     ('ID',        r'[A-Za-z_][A-Za-z0-9_]*'),   # Identifiers
@@ -205,11 +206,38 @@ class Parser(object):
                                   | <type-specifier>
                                   | <type-qualifier>
                                   | { nested-namespace } [ < { nested-namespace } > }?
+                                  | <current_class>       # constructor
+                                  | ~ <current_class>
 
-        Returns a list of specifiers
+        Returns True if need declarator after, else False (i.e. ctor or dtor)
         """
         self.enter('declaration_specifier')
-        while True:
+        need = True
+        more = True
+        if self.have('TILDE'):
+            specifier = self.mustbe('TYPE_SPECIFIER').value
+            if specifier == self.current_class:
+                self.info('destructor')
+                node.specifier.append(specifier)
+                node.fattrs['_name'] = 'dtor'
+                node.fattrs['_destructor'] = True
+                more = False
+                need = False
+            else:
+                raise RuntimeError("Expected destructor")
+        elif self.token.typ == 'TYPE_SPECIFIER' and self.token.value == self.current_class:
+            # class constructor
+            self.info('type-specifier0:', self.token.value)
+            node.specifier.append(self.token.value)
+            self.next()
+            if self.token.typ == 'LPAREN':
+                self.info('constructor')
+                node.fattrs['_name'] = 'ctor'
+                node.fattrs['_constructor'] = True
+                more = False
+                need = False
+
+        while more:
             # if self.token.type = 'ID' and  typedef-name
             if self.token.typ == 'ID' and self.token.value in namespace:
                 node.specifier.append(self.nested_namespace())
@@ -230,8 +258,9 @@ class Parser(object):
                 self.info('storage-class-specifier:', self.token.value)
                 self.next()
             else:
-                break
-        self.exit('declaration_specifier')
+                more= False
+        self.exit('declaration_specifier', need)
+        return need
 
     def decl_statement(self):
         """Check for optional semicolon and stray stuff at the end of line.
@@ -252,8 +281,8 @@ class Parser(object):
         """
         self.enter('declaration')
         node = Declaration()
-        self.declaration_specifier(node)
-        node.declarator = self.declarator()
+        if self.declaration_specifier(node):
+            node.declarator = self.declarator()
         self.attribute(node.attrs)  # this is ambiguous   'void foo+attr(int arg1)'
 
         if self.token.typ == 'LPAREN':     # peek
@@ -289,12 +318,6 @@ class Parser(object):
         if self.token.typ == 'ID':         # variable identifier
             node.name = self.token.value
             self.info("declarator ID:", self.token.value)
-            self.next()
-        elif self.token.typ == 'TYPE_SPECIFIER' and \
-             self.token.value == self.current_class:
-            # class constructor
-            node.name = self.token.value
-            self.info("declarator ID(class):", self.token.value)
             self.next()
         elif self.token.typ == 'LPAREN':   # (*var)
             self.next()
@@ -548,7 +571,15 @@ class Declaration(Node):
         self.fattrs     = {}     # function attributes
 
     def get_name(self):
-        """Get name from declarator"""
+        """Get name from declarator
+        ctor and dtor should have _name set
+        """
+        name = self.fattrs.get('name', None) or self.fattrs.get('_name', None)
+        if name is not None:
+            return name
+        if self.declarator is None:
+            # abstract declarator
+            return None
         name = self.declarator.name
         if name is None:
             if self.declarator.func:
@@ -583,6 +614,8 @@ class Declaration(Node):
         """Return number of levels of pointers.
         """
         nlevels = 0
+        if self.declarator is None:
+            return nlevels
         for ptr in self.declarator.pointer:
             if ptr.ptr == '*':
                 nlevels += 1
@@ -592,6 +625,8 @@ class Declaration(Node):
         """Return number of levels of references.
         """
         nlevels = 0
+        if self.declarator is None:
+            return nlevels
         for ptr in self.declarator.pointer:
             if ptr.ptr == '&':
                 nlevels += 1
@@ -601,6 +636,8 @@ class Declaration(Node):
         """Return number of indirections, pointer or reference.
         """
         nlevels = 0
+        if self.declarator is None:
+            return nlevels
         for ptr in self.declarator.pointer:
             if ptr.ptr:
                 nlevels += 1
@@ -646,10 +683,12 @@ class Declaration(Node):
             specifier = self.specifier,
             const = self.const,
 #            volatile = self.volatile,
-            declarator = self.declarator._to_dict(),
 #            self.array,
             attrs = self.attrs,
         )
+        if self.declarator:
+            # ctor and dtor have no declarator
+            d['declarator'] = self.declarator._to_dict()
         if self.storage:
             d['storage'] = self.storage
         if self.params is not None:
@@ -669,6 +708,8 @@ class Declaration(Node):
             out.append('const ')
         if self.volatile:
             out.append('volatile ')
+        if '_destructor' in self.fattrs:
+            out.append('~')
         if self.specifier:
             out.append(' '.join(self.specifier))
         else:
@@ -713,13 +754,16 @@ class Declaration(Node):
         if self.const:
             decl.append('const ')
 
+        if '_destructor' in self.fattrs:
+            decl.append('~')
         decl.append(' '.join(self.specifier))
         if 'template' in self.attrs:
             decl.append('<')
             decl.append(self.attrs['template'])
             decl.append('>')
 
-        self.declarator.gen_decl_work(decl, **kwargs)
+        if self.declarator:
+            self.declarator.gen_decl_work(decl, **kwargs)
 
         if self.init is not None:
             decl.append('=')
@@ -806,10 +850,17 @@ class Declaration(Node):
         typ = getattr(typedef, lang)
         decl.append(typ)
 
-        if lang == 'c_type':
-            self.declarator.gen_decl_work(decl, as_c=True, **kwargs)
+        if self.declarator is None:
+            # The C wrapper wants a pointer to the type.
+            declarator = Declarator()
+            declarator.pointer = [ Ptr('*') ]
+            declarator.name = self.name
         else:
-            self.declarator.gen_decl_work(decl, **kwargs)
+            declarator = self.declarator
+        if lang == 'c_type':
+            declarator.gen_decl_work(decl, as_c=True, **kwargs)
+        else:
+            declarator.gen_decl_work(decl, **kwargs)
 
 
 ##############

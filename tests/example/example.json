@@ -843,46 +843,38 @@
                         ], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "new", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
                         "fattrs": {
-                            "constructor": true
+                            "_constructor": true, 
+                            "_name": "ctor"
                         }, 
                         "func_const": false, 
                         "specifier": [
                             "ExClass1"
                         ]
                     }, 
-                    "_decl": "ExClass1 * new(const string * name +intent(in)) +constructor", 
+                    "_decl": "ExClass1(const string * name +intent(in))", 
                     "_fmt": {
                         "C_call_code": "ExClass1 * SHT_rv = new ExClass1(SH_name);", 
                         "C_call_list": "SH_name", 
-                        "C_name": "AA_exclass1_new", 
+                        "C_name": "AA_exclass1_ctor", 
                         "C_pre_call": "const std::string SH_name(name);", 
                         "C_prototype": "const char * name", 
                         "C_return_code": "return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));", 
                         "C_return_type": "AA_exclass1 *", 
-                        "F_C_call": "c_exclass1_new_bufferify", 
-                        "F_C_name": "c_exclass1_new", 
+                        "F_C_call": "c_exclass1_ctor_bufferify", 
+                        "F_C_name": "c_exclass1_ctor", 
                         "F_arg_c_call": "name, len_trim(name, kind=C_INT)", 
                         "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)", 
                         "F_arguments": "name", 
-                        "F_call_code": "SHT_rv%voidptr = c_exclass1_new_bufferify(\tname\tlen_trim(name, kind=C_INT))", 
-                        "F_name_function": "new", 
-                        "F_name_generic": "new", 
-                        "F_name_impl": "exclass1_new", 
+                        "F_call_code": "SHT_rv%voidptr = c_exclass1_ctor_bufferify(\tname\tlen_trim(name, kind=C_INT))", 
+                        "F_name_function": "ctor", 
+                        "F_name_generic": "ctor", 
+                        "F_name_impl": "exclass1_ctor", 
                         "F_result_clause": " result(SHT_rv)", 
                         "F_subprogram": "function", 
                         "c_const": "", 
-                        "function_name": "new", 
-                        "underscore_name": "new"
+                        "function_name": "ctor", 
+                        "underscore_name": "ctor"
                     }, 
                     "_fmtargs": {
                         "name": {
@@ -903,7 +895,7 @@
                     }, 
                     "_function_index": 0, 
                     "_subprogram": "function", 
-                    "decl": "ExClass1 *new ( const string *name ) +constructor", 
+                    "decl": "ExClass1( const string *name )", 
                     "doxygen": {
                         "brief": "constructor", 
                         "description": "longer description\nusually multiple lines\n", 
@@ -938,34 +930,26 @@
                         ], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "new", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
                         "fattrs": {
-                            "constructor": true
+                            "_constructor": true, 
+                            "_name": "ctor"
                         }, 
                         "func_const": false, 
                         "specifier": [
                             "ExClass1"
                         ]
                     }, 
-                    "_decl": "ExClass1 * new(const string * name +intent(in)+len_trim(Lname)) +constructor", 
+                    "_decl": "ExClass1(const string * name +intent(in)+len_trim(Lname))", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_fmt": {
                         "C_call_code": "ExClass1 * SHT_rv = new ExClass1(SH_name);", 
                         "C_call_list": "SH_name", 
-                        "C_name": "AA_exclass1_new_bufferify", 
+                        "C_name": "AA_exclass1_ctor_bufferify", 
                         "C_pre_call": "const std::string SH_name(name, Lname);", 
                         "C_prototype": "const char * name, int Lname", 
                         "C_return_code": "return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));", 
                         "C_return_type": "AA_exclass1 *", 
-                        "F_C_name": "c_exclass1_new_bufferify", 
+                        "F_C_name": "c_exclass1_ctor_bufferify", 
                         "c_const": "", 
                         "function_suffix": "_bufferify"
                     }, 
@@ -994,7 +978,7 @@
                     "_function_index": 13, 
                     "_generated": "arg_to_buffer", 
                     "_subprogram": "function", 
-                    "decl": "ExClass1 *new ( const string *name ) +constructor", 
+                    "decl": "ExClass1( const string *name )", 
                     "doxygen": {
                         "brief": "constructor", 
                         "description": "longer description\nusually multiple lines\n", 
@@ -1008,53 +992,52 @@
                     }
                 }, 
                 {
+                    "F_name_function": "delete", 
                     "_ast": {
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "delete", 
-                            "pointer": []
-                        }, 
                         "fattrs": {
-                            "destructor": true
+                            "_destructor": true, 
+                            "_name": "dtor"
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "void"
+                            "ExClass1"
                         ]
                     }, 
-                    "_decl": "void delete() +destructor", 
+                    "_decl": "~ExClass1()", 
                     "_fmt": {
                         "C_call_code": "delete SH_this;", 
                         "C_call_list": "", 
-                        "C_name": "AA_exclass1_delete", 
+                        "C_name": "AA_exclass1_dtor", 
                         "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
                         "C_prototype": "AA_exclass1 * self", 
                         "C_return_code": "return;", 
                         "C_return_type": "void", 
-                        "F_C_call": "c_exclass1_delete", 
-                        "F_C_name": "c_exclass1_delete", 
+                        "F_C_call": "c_exclass1_dtor", 
+                        "F_C_name": "c_exclass1_dtor", 
                         "F_arg_c_call": "obj%voidptr", 
                         "F_arg_c_call_tab": "\tobj%voidptr", 
                         "F_arguments": "obj", 
-                        "F_call_code": "call c_exclass1_delete(\tobj%voidptr)", 
+                        "F_call_code": "call c_exclass1_dtor(\tobj%voidptr)", 
                         "F_name_function": "delete", 
-                        "F_name_generic": "delete", 
-                        "F_name_impl": "exclass1_delete", 
+                        "F_name_generic": "dtor", 
+                        "F_name_impl": "exclass1_dtor", 
                         "F_subprogram": "subroutine", 
-                        "PY_name_impl": "PP_exclass1_delete", 
+                        "PY_name_impl": "PP_exclass1_dtor", 
                         "c_const": "", 
                         "c_ptr": " *", 
                         "c_var": "self", 
-                        "function_name": "delete", 
-                        "underscore_name": "delete"
+                        "function_name": "dtor", 
+                        "underscore_name": "dtor"
                     }, 
                     "_fmtargs": {}, 
                     "_function_index": 1, 
-                    "_subprogram": "subroutine", 
-                    "decl": "void delete() +destructor", 
+                    "_subprogram": "function", 
+                    "decl": "~ExClass1()", 
                     "doxygen": {
+                        "brief": "destructor", 
                         "description": "longer description joined with previous line"
                     }, 
                     "options": {}
@@ -2247,46 +2230,38 @@
                         ], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "ExClass2", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
                         "fattrs": {
-                            "constructor": true
+                            "_constructor": true, 
+                            "_name": "ctor"
                         }, 
                         "func_const": false, 
                         "specifier": [
                             "ExClass2"
                         ]
                     }, 
-                    "_decl": "ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor", 
+                    "_decl": "ExClass2(const string * name +intent(in)+random(2))", 
                     "_fmt": {
                         "C_call_code": "ExClass2 * SHT_rv = new ExClass2(SH_name);", 
                         "C_call_list": "SH_name", 
-                        "C_name": "AA_exclass2_ex_class2", 
+                        "C_name": "AA_exclass2_ctor", 
                         "C_pre_call": "const std::string SH_name(name);", 
                         "C_prototype": "const char * name", 
                         "C_return_code": "return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));", 
                         "C_return_type": "AA_exclass2 *", 
-                        "F_C_call": "c_exclass2_ex_class2_bufferify", 
-                        "F_C_name": "c_exclass2_ex_class2", 
+                        "F_C_call": "c_exclass2_ctor_bufferify", 
+                        "F_C_name": "c_exclass2_ctor", 
                         "F_arg_c_call": "name, len_trim(name, kind=C_INT)", 
                         "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)", 
                         "F_arguments": "name", 
-                        "F_call_code": "SHT_rv%voidptr = c_exclass2_ex_class2_bufferify(\tname\tlen_trim(name, kind=C_INT))", 
-                        "F_name_function": "ex_class2", 
-                        "F_name_generic": "ex_class2", 
-                        "F_name_impl": "exclass2_ex_class2", 
+                        "F_call_code": "SHT_rv%voidptr = c_exclass2_ctor_bufferify(\tname\tlen_trim(name, kind=C_INT))", 
+                        "F_name_function": "ctor", 
+                        "F_name_generic": "ctor", 
+                        "F_name_impl": "exclass2_ctor", 
                         "F_result_clause": " result(SHT_rv)", 
                         "F_subprogram": "function", 
                         "c_const": "", 
-                        "function_name": "ExClass2", 
-                        "underscore_name": "ex_class2"
+                        "function_name": "ctor", 
+                        "underscore_name": "ctor"
                     }, 
                     "_fmtargs": {
                         "name": {
@@ -2312,7 +2287,10 @@
                             "random": 2
                         }
                     }, 
-                    "decl": "ExClass2 *ExClass2 (const string *name) +constructor", 
+                    "decl": "ExClass2(const string *name)", 
+                    "doxygen": {
+                        "brief": "constructor"
+                    }, 
                     "options": {}
                 }, 
                 {
@@ -2343,34 +2321,26 @@
                         ], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "ExClass2", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
                         "fattrs": {
-                            "constructor": true
+                            "_constructor": true, 
+                            "_name": "ctor"
                         }, 
                         "func_const": false, 
                         "specifier": [
                             "ExClass2"
                         ]
                     }, 
-                    "_decl": "ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2)) +constructor", 
+                    "_decl": "ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))", 
                     "_error_pattern_suffix": "_as_buffer", 
                     "_fmt": {
                         "C_call_code": "ExClass2 * SHT_rv = new ExClass2(SH_name);", 
                         "C_call_list": "SH_name", 
-                        "C_name": "AA_exclass2_ex_class2_bufferify", 
+                        "C_name": "AA_exclass2_ctor_bufferify", 
                         "C_pre_call": "const std::string SH_name(name, Lname);", 
                         "C_prototype": "const char * name, int Lname", 
                         "C_return_code": "return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));", 
                         "C_return_type": "AA_exclass2 *", 
-                        "F_C_name": "c_exclass2_ex_class2_bufferify", 
+                        "F_C_name": "c_exclass2_ctor_bufferify", 
                         "c_const": "", 
                         "function_suffix": "_bufferify"
                     }, 
@@ -2404,7 +2374,10 @@
                             "random": 2
                         }
                     }, 
-                    "decl": "ExClass2 *ExClass2 (const string *name) +constructor", 
+                    "decl": "ExClass2(const string *name)", 
+                    "doxygen": {
+                        "brief": "constructor"
+                    }, 
                     "options": {
                         "wrap_c": true, 
                         "wrap_fortran": false, 
@@ -2413,52 +2386,53 @@
                     }
                 }, 
                 {
+                    "F_name_function": "delete", 
                     "_ast": {
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "delete", 
-                            "pointer": []
-                        }, 
                         "fattrs": {
-                            "destructor": true
+                            "_destructor": true, 
+                            "_name": "dtor"
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "void"
+                            "ExClass2"
                         ]
                     }, 
-                    "_decl": "void delete() +destructor", 
+                    "_decl": "~ExClass2()", 
                     "_fmt": {
                         "C_call_code": "delete SH_this;", 
                         "C_call_list": "", 
-                        "C_name": "AA_exclass2_delete", 
+                        "C_name": "AA_exclass2_dtor", 
                         "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
                         "C_prototype": "AA_exclass2 * self", 
                         "C_return_code": "return;", 
                         "C_return_type": "void", 
-                        "F_C_call": "c_exclass2_delete", 
-                        "F_C_name": "c_exclass2_delete", 
+                        "F_C_call": "c_exclass2_dtor", 
+                        "F_C_name": "c_exclass2_dtor", 
                         "F_arg_c_call": "obj%voidptr", 
                         "F_arg_c_call_tab": "\tobj%voidptr", 
                         "F_arguments": "obj", 
-                        "F_call_code": "call c_exclass2_delete(\tobj%voidptr)", 
+                        "F_call_code": "call c_exclass2_dtor(\tobj%voidptr)", 
                         "F_name_function": "delete", 
-                        "F_name_generic": "delete", 
-                        "F_name_impl": "exclass2_delete", 
+                        "F_name_generic": "dtor", 
+                        "F_name_impl": "exclass2_dtor", 
                         "F_subprogram": "subroutine", 
-                        "PY_name_impl": "PP_exclass2_delete", 
+                        "PY_name_impl": "PP_exclass2_dtor", 
                         "c_const": "", 
                         "c_ptr": " *", 
                         "c_var": "self", 
-                        "function_name": "delete", 
-                        "underscore_name": "delete"
+                        "function_name": "dtor", 
+                        "underscore_name": "dtor"
                     }, 
                     "_fmtargs": {}, 
                     "_function_index": 19, 
-                    "_subprogram": "subroutine", 
-                    "decl": "void delete() +destructor", 
+                    "_subprogram": "function", 
+                    "decl": "~ExClass2()", 
+                    "doxygen": {
+                        "brief": "destructor"
+                    }, 
                     "options": {}
                 }, 
                 {

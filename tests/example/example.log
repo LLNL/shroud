@@ -4,9 +4,9 @@ Read splicer pysplicer.c
 Read splicer fsplicer.f
 Close userlibrary_types.yaml
 class ExClass1
-C method ExClass1 * new(const string * name +intent(in)) +constructor
-C method ExClass1 * new(const string * name +intent(in)+len_trim(Lname)) +constructor
-C method void delete() +destructor
+C method ExClass1(const string * name +intent(in))
+C method ExClass1(const string * name +intent(in)+len_trim(Lname))
+C method ~ExClass1()
 C method int incrementCount(int incr +intent(in)+value)
 C method const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const
 C method void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
@@ -24,9 +24,9 @@ C method void SplicerSpecial()
 Close wrapExClass1.h
 Close wrapExClass1.cpp
 class ExClass2
-C method ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
-C method ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2)) +constructor
-C method void delete() +destructor
+C method ExClass2(const string * name +intent(in)+random(2))
+C method ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))
+C method ~ExClass2()
 C method const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 C method void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
 C method const string & getName2()
@@ -68,9 +68,9 @@ C function void testgroup2(const DataGroup * grp +intent(in)+value)
 Close wrapUserLibrary.h
 Close wrapUserLibrary.cpp
 class ExClass1
-C-interface, Fortran method ExClass1 * new(const string * name +intent(in)) +constructor
-C-interface method ExClass1 * new(const string * name +intent(in)+len_trim(Lname)) +constructor
-C-interface, Fortran method void delete() +destructor
+C-interface, Fortran method ExClass1(const string * name +intent(in))
+C-interface method ExClass1(const string * name +intent(in)+len_trim(Lname))
+C-interface, Fortran method ~ExClass1()
 C-interface, Fortran method int incrementCount(int incr +intent(in)+value)
 C-interface, Fortran method const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const
 C-interface method void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
@@ -88,9 +88,9 @@ C-interface, Fortran method bool hasAddr(bool in +intent(in)+value)
 C-interface, Fortran method void SplicerSpecial()
 Close wrapfExClass1.f
 class ExClass2
-C-interface, Fortran method ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
-C-interface method ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2)) +constructor
-C-interface, Fortran method void delete() +destructor
+C-interface, Fortran method ExClass2(const string * name +intent(in)+random(2))
+C-interface method ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))
+C-interface, Fortran method ~ExClass2()
 C-interface, Fortran method const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 C-interface method void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
 C-interface, Fortran method const string & getName2()
@@ -134,8 +134,8 @@ C-interface, Fortran function void testgroup1(DataGroup * grp +intent(in)+value)
 C-interface, Fortran function void testgroup2(const DataGroup * grp +intent(in)+value)
 Close wrapfuserlibrary.f
 class ExClass1
-Python method ExClass1 * new(const string * name +intent(in)) +constructor
-Python method void delete() +destructor
+Python method ExClass1(const string * name +intent(in))
+Python method ~ExClass1()
 Python method int incrementCount(int incr +intent(in)+value)
 Python method const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const
 Python method int GetNameLength() const
@@ -149,8 +149,8 @@ Python method bool hasAddr(bool in +intent(in)+value)
 Python method void SplicerSpecial()
 Close pyExClass1type.cpp
 class ExClass2
-Python method ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
-Python method void delete() +destructor
+Python method ExClass2(const string * name +intent(in)+random(2))
+Python method ~ExClass2()
 Python method const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 Python method const string & getName2()
 Python method string & getName3() const

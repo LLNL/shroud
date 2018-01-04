@@ -985,7 +985,7 @@ class VerifyAttrs(object):
         tree = self.tree
 
         for cls in tree['classes']:
-            self.create_class_typedef(cls)
+            typemap.create_class_typedef(cls)
 
         for cls in tree['classes']:
             for func in cls['methods']:
@@ -993,32 +993,6 @@ class VerifyAttrs(object):
 
         for func in tree['functions']:
             self.check_arg_attrs(func)
-
-    def create_class_typedef(self, cls):
-        # create typedef for each class before generating code
-        # this allows classes to reference each other
-        name = cls['name']
-        fmt_class = cls['_fmt']
-        options = cls['options']
-
-        typedef = typemap.Typedef.lookup(name)
-        if typedef is None:
-            # unname = util.un_camel(name)
-            unname = name.lower()
-            cname = fmt_class.C_prefix + unname
-            typedef = typemap.Typedef(
-                name,
-                base='wrapped',
-                cpp_type=name,
-                c_type=cname,
-                f_derived_type=cls.get('F_derived_name',None) or unname,
-                f_module={fmt_class.F_module_name:[unname]},
-                f_to_c = '{f_var}%%%s()' % options.F_name_instance_get,
-                )
-            typemap.typedef_wrapped_defaults(typedef)
-            typemap.Typedef.register(name, typedef)
-
-        fmt_class.C_type_name = typedef.c_type
 
     def check_arg_attrs(self, node):
         """Regularize attributes
@@ -1194,7 +1168,7 @@ class Namify(object):
             fmt_func.C_this = options.C_this
 
     def name_function_fortran(self, cls, node):
-        """ Must process C functions for to generate their names.
+        """ Must process C functions to generate their names.
         """
         options = node['options']
         if not options.wrap_fortran:

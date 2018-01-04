@@ -68,37 +68,49 @@ extern "C" {
 // splicer begin class.ExClass2.C_definitions
 // splicer end class.ExClass2.C_definitions
 
-// ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
+// ExClass2(const string * name +intent(in)+random(2))
 // function_index=18
-AA_exclass2 * AA_exclass2_ex_class2(const char * name)
+/**
+ * \brief constructor
+ *
+ */
+AA_exclass2 * AA_exclass2_ctor(const char * name)
 {
-// splicer begin class.ExClass2.method.ex_class2
+// splicer begin class.ExClass2.method.ctor
     const std::string SH_name(name);
     ExClass2 * SHT_rv = new ExClass2(SH_name);
     return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));
-// splicer end class.ExClass2.method.ex_class2
+// splicer end class.ExClass2.method.ctor
 }
 
-// ExClass2 * ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2)) +constructor
+// ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))
 // function_index=38
-AA_exclass2 * AA_exclass2_ex_class2_bufferify(const char * name, int Lname)
+/**
+ * \brief constructor
+ *
+ */
+AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name, int Lname)
 {
-// splicer begin class.ExClass2.method.ex_class2_bufferify
+// splicer begin class.ExClass2.method.ctor_bufferify
     const std::string SH_name(name, Lname);
     ExClass2 * SHT_rv = new ExClass2(SH_name);
     return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));
-// splicer end class.ExClass2.method.ex_class2_bufferify
+// splicer end class.ExClass2.method.ctor_bufferify
 }
 
-// void delete() +destructor
+// ~ExClass2()
 // function_index=19
-void AA_exclass2_delete(AA_exclass2 * self)
+/**
+ * \brief destructor
+ *
+ */
+void AA_exclass2_dtor(AA_exclass2 * self)
 {
-// splicer begin class.ExClass2.method.delete
+// splicer begin class.ExClass2.method.dtor
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));
     delete SH_this;
     return;
-// splicer end class.ExClass2.method.delete
+// splicer end class.ExClass2.method.dtor
 }
 
 // const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const

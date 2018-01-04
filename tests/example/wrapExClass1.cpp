@@ -67,7 +67,7 @@ extern "C" {
 // splicer begin class.ExClass1.C_definitions
 // splicer end class.ExClass1.C_definitions
 
-// ExClass1 * new(const string * name +intent(in)) +constructor
+// ExClass1(const string * name +intent(in))
 // function_index=0
 /**
  * \brief constructor
@@ -77,16 +77,16 @@ extern "C" {
  *
  * \return return new instance
  */
-AA_exclass1 * AA_exclass1_new(const char * name)
+AA_exclass1 * AA_exclass1_ctor(const char * name)
 {
-// splicer begin class.ExClass1.method.new
+// splicer begin class.ExClass1.method.ctor
     const std::string SH_name(name);
     ExClass1 * SHT_rv = new ExClass1(SH_name);
     return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));
-// splicer end class.ExClass1.method.new
+// splicer end class.ExClass1.method.ctor
 }
 
-// ExClass1 * new(const string * name +intent(in)+len_trim(Lname)) +constructor
+// ExClass1(const string * name +intent(in)+len_trim(Lname))
 // function_index=13
 /**
  * \brief constructor
@@ -96,27 +96,29 @@ AA_exclass1 * AA_exclass1_new(const char * name)
  *
  * \return return new instance
  */
-AA_exclass1 * AA_exclass1_new_bufferify(const char * name, int Lname)
+AA_exclass1 * AA_exclass1_ctor_bufferify(const char * name, int Lname)
 {
-// splicer begin class.ExClass1.method.new_bufferify
+// splicer begin class.ExClass1.method.ctor_bufferify
     const std::string SH_name(name, Lname);
     ExClass1 * SHT_rv = new ExClass1(SH_name);
     return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));
-// splicer end class.ExClass1.method.new_bufferify
+// splicer end class.ExClass1.method.ctor_bufferify
 }
 
-// void delete() +destructor
+// ~ExClass1()
 // function_index=1
 /**
+ * \brief destructor
+ *
  * longer description joined with previous line
  */
-void AA_exclass1_delete(AA_exclass1 * self)
+void AA_exclass1_dtor(AA_exclass1 * self)
 {
-// splicer begin class.ExClass1.method.delete
+// splicer begin class.ExClass1.method.dtor
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));
     delete SH_this;
     return;
-// splicer end class.ExClass1.method.delete
+// splicer end class.ExClass1.method.dtor
 }
 
 // int incrementCount(int incr +intent(in)+value)

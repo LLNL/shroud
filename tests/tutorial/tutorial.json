@@ -729,24 +729,17 @@
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "new", 
-                            "pointer": [
-                                {
-                                    "const": false, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
                         "fattrs": {
-                            "constructor": true
+                            "_constructor": true, 
+                            "_name": "ctor", 
+                            "name": "new"
                         }, 
                         "func_const": false, 
                         "specifier": [
                             "Class1"
                         ]
                     }, 
-                    "_decl": "Class1 * new() +constructor", 
+                    "_decl": "Class1() +name(new)", 
                     "_fmt": {
                         "C_call_code": "Class1 * SHT_rv = new Class1();", 
                         "C_call_list": "", 
@@ -780,7 +773,7 @@
                     }, 
                     "_function_index": 0, 
                     "_subprogram": "function", 
-                    "decl": "Class1 *new()  +constructor", 
+                    "decl": "Class1() +name(new)", 
                     "options": {}
                 }, 
                 {
@@ -788,19 +781,17 @@
                         "args": [], 
                         "attrs": {}, 
                         "const": false, 
-                        "declarator": {
-                            "name": "delete", 
-                            "pointer": []
-                        }, 
                         "fattrs": {
-                            "destructor": true
+                            "_destructor": true, 
+                            "_name": "dtor", 
+                            "name": "delete"
                         }, 
                         "func_const": false, 
                         "specifier": [
-                            "void"
+                            "Class1"
                         ]
                     }, 
-                    "_decl": "void delete() +destructor", 
+                    "_decl": "~Class1() +name(delete)", 
                     "_fmt": {
                         "C_call_code": "delete SH_this;", 
                         "C_call_list": "", 
@@ -830,8 +821,8 @@
                     }, 
                     "_fmtargs": {}, 
                     "_function_index": 1, 
-                    "_subprogram": "subroutine", 
-                    "decl": "void delete()  +destructor", 
+                    "_subprogram": "function", 
+                    "decl": "~Class1() +name(delete)", 
                     "options": {}
                 }, 
                 {

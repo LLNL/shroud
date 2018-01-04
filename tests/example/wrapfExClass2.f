@@ -61,7 +61,7 @@ module exclass2_mod
         ! splicer begin class.ExClass2.component_part
         ! splicer end class.ExClass2.component_part
     contains
-        procedure :: delete => exclass2_delete
+        procedure :: delete => exclass2_dtor
         procedure :: get_name => exclass2_get_name
         procedure :: get_name2 => exclass2_get_name2
         procedure :: get_name3 => exclass2_get_name3
@@ -111,31 +111,31 @@ module exclass2_mod
 
     interface
 
-        function c_exclass2_ex_class2(name) &
+        function c_exclass2_ctor(name) &
                 result(SHT_rv) &
-                bind(C, name="AA_exclass2_ex_class2")
+                bind(C, name="AA_exclass2_ctor")
             use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             type(C_PTR) :: SHT_rv
-        end function c_exclass2_ex_class2
+        end function c_exclass2_ctor
 
-        function c_exclass2_ex_class2_bufferify(name, Lname) &
+        function c_exclass2_ctor_bufferify(name, Lname) &
                 result(SHT_rv) &
-                bind(C, name="AA_exclass2_ex_class2_bufferify")
+                bind(C, name="AA_exclass2_ctor_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
             type(C_PTR) :: SHT_rv
-        end function c_exclass2_ex_class2_bufferify
+        end function c_exclass2_ctor_bufferify
 
-        subroutine c_exclass2_delete(self) &
-                bind(C, name="AA_exclass2_delete")
+        subroutine c_exclass2_dtor(self) &
+                bind(C, name="AA_exclass2_dtor")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: self
-        end subroutine c_exclass2_delete
+        end subroutine c_exclass2_dtor
 
         pure function c_exclass2_get_name(self) &
                 result(SHT_rv) &
@@ -317,30 +317,38 @@ module exclass2_mod
 
 contains
 
-    ! ExClass2 * ExClass2(const string * name +intent(in)+random(2)) +constructor
+    ! ExClass2(const string * name +intent(in)+random(2))
     ! arg_to_buffer
     ! function_index=18
-    function exclass2_ex_class2(name) result(SHT_rv)
+    !>
+    !! \brief constructor
+    !!
+    !<
+    function exclass2_ctor(name) result(SHT_rv)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
         type(exclass2) :: SHT_rv
-        ! splicer begin class.ExClass2.method.ex_class2
-        SHT_rv%voidptr = c_exclass2_ex_class2_bufferify(  &
+        ! splicer begin class.ExClass2.method.ctor
+        SHT_rv%voidptr = c_exclass2_ctor_bufferify(  &
             name,  &
             len_trim(name, kind=C_INT))
-        ! splicer end class.ExClass2.method.ex_class2
-    end function exclass2_ex_class2
+        ! splicer end class.ExClass2.method.ctor
+    end function exclass2_ctor
 
-    ! void delete() +destructor
+    ! ~ExClass2()
     ! function_index=19
-    subroutine exclass2_delete(obj)
+    !>
+    !! \brief destructor
+    !!
+    !<
+    subroutine exclass2_dtor(obj)
         use iso_c_binding, only : C_NULL_PTR
         class(exclass2) :: obj
         ! splicer begin class.ExClass2.method.delete
-        call c_exclass2_delete(obj%voidptr)
+        call c_exclass2_dtor(obj%voidptr)
         obj%voidptr = C_NULL_PTR
         ! splicer end class.ExClass2.method.delete
-    end subroutine exclass2_delete
+    end subroutine exclass2_dtor
 
     ! const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
     ! arg_to_buffer

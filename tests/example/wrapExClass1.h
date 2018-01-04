@@ -64,11 +64,11 @@ typedef struct s_AA_exclass2 AA_exclass2;
 // splicer begin class.ExClass1.C_declarations
 // splicer end class.ExClass1.C_declarations
 
-AA_exclass1 * AA_exclass1_new(const char * name);
+AA_exclass1 * AA_exclass1_ctor(const char * name);
 
-AA_exclass1 * AA_exclass1_new_bufferify(const char * name, int Lname);
+AA_exclass1 * AA_exclass1_ctor_bufferify(const char * name, int Lname);
 
-void AA_exclass1_delete(AA_exclass1 * self);
+void AA_exclass1_dtor(AA_exclass1 * self);
 
 int AA_exclass1_increment_count(AA_exclass1 * self, int incr);
 

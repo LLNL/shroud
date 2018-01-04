@@ -335,7 +335,6 @@ class Wrapc(util.WrapperMixin):
             if '_generated' in CPP_node:
                 generated.append(CPP_node['_generated'])
         CPP_result = CPP_node['_ast']
-        CPP_result_type = CPP_result.typename
         CPP_subprogram = CPP_node['_subprogram']
 
         # C return type
@@ -347,18 +346,17 @@ class Wrapc(util.WrapperMixin):
         if generator == 'arg_to_buffer':
             intent_grp = '_buf'
 
+        result_typedef = typemap.Typedef.lookup(result_type)
+        result_is_const = ast.const
+        is_ctor = CPP_result.fattrs.get('_constructor', False)
+        is_dtor = CPP_result.fattrs.get('_destructor', False)
+        is_const = ast.func_const
+
         # C++ functions which return 'this',
         # are easier to call from Fortran if they are subroutines.
         # There is no way to chain in Fortran:  obj->doA()->doB();
-        if node.get('return_this', False):
-            CPP_result_type = 'void'
+        if node.get('return_this', False) or is_dtor:
             CPP_subprogram = 'subroutine'
-
-        result_typedef = typemap.Typedef.lookup(result_type)
-        result_is_const = ast.const
-        is_ctor = ast.fattrs.get('constructor', False)
-        is_dtor = ast.fattrs.get('destructor', False)
-        is_const = ast.func_const
 
         if result_typedef.c_header:
             # include any dependent header in generated header
@@ -540,6 +538,8 @@ class Wrapc(util.WrapperMixin):
         fmt_func.C_prototype = options.get('C_prototype', ', '.join(proto_list))
 
         if node.get('return_this', False):
+            fmt_func.C_return_type = 'void'
+        elif is_dtor:
             fmt_func.C_return_type = 'void'
         elif 'C_return_type' in node:
             fmt_func.C_return_type = node['C_return_type']

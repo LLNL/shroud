@@ -3,8 +3,8 @@ Skipping std::string, unable to create C wrapper for function returning Function
 Read splicer ftutorialsplicer.f
 Close tutorial_types.yaml
 class Class1
-C method Class1 * new() +constructor
-C method void delete() +destructor
+C method Class1() +name(new)
+C method ~Class1() +name(delete)
 C method void Method1()
 Close wrapClass1.h
 Close wrapClass1.cpp
@@ -51,8 +51,8 @@ C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv
 Close wrapTutorial.h
 Close wrapTutorial.cpp
 class Class1
-C-interface, Fortran method Class1 * new() +constructor
-C-interface, Fortran method void delete() +destructor
+C-interface, Fortran method Class1() +name(new)
+C-interface, Fortran method ~Class1() +name(delete)
 C-interface, Fortran method void Method1()
 C-interface, Fortran function void Function1()
 C-interface, Fortran function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
@@ -108,8 +108,8 @@ C-interface, Fortran function const std::string & LastFunctionCalled() +pure
 C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
 Close wrapftutorial.f
 class Class1
-Python method Class1 * new() +constructor
-Python method void delete() +destructor
+Python method Class1() +name(new)
+Python method ~Class1() +name(delete)
 Python method void Method1()
 Close pyClass1type.cpp
 Python function void Function1()
@@ -133,8 +133,8 @@ Python function const std::string & LastFunctionCalled() +pure
 Close pyTutorialmodule.hpp
 Close pyTutorialmodule.cpp
 Close pyTutorialhelper.cpp
-Lua method Class1 * new() +constructor
-Lua method void delete() +destructor
+Lua method Class1() +name(new)
+Lua method ~Class1() +name(delete)
 Lua method void Method1()
 Lua function void Function1()
 Lua function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)

@@ -63,7 +63,7 @@ module exclass1_mod
           component part 1b
         ! splicer end class.ExClass1.component_part
     contains
-        procedure :: delete => exclass1_delete
+        procedure :: delete => exclass1_dtor
         procedure :: increment_count => exclass1_increment_count
         procedure :: get_name => exclass1_get_name
         procedure :: get_name_length => exclass1_get_name_length
@@ -98,31 +98,31 @@ module exclass1_mod
 
     interface
 
-        function c_exclass1_new(name) &
+        function c_exclass1_ctor(name) &
                 result(SHT_rv) &
-                bind(C, name="AA_exclass1_new")
+                bind(C, name="AA_exclass1_ctor")
             use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             type(C_PTR) :: SHT_rv
-        end function c_exclass1_new
+        end function c_exclass1_ctor
 
-        function c_exclass1_new_bufferify(name, Lname) &
+        function c_exclass1_ctor_bufferify(name, Lname) &
                 result(SHT_rv) &
-                bind(C, name="AA_exclass1_new_bufferify")
+                bind(C, name="AA_exclass1_ctor_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
             type(C_PTR) :: SHT_rv
-        end function c_exclass1_new_bufferify
+        end function c_exclass1_ctor_bufferify
 
-        subroutine c_exclass1_delete(self) &
-                bind(C, name="AA_exclass1_delete")
+        subroutine c_exclass1_dtor(self) &
+                bind(C, name="AA_exclass1_dtor")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: self
-        end subroutine c_exclass1_delete
+        end subroutine c_exclass1_dtor
 
         function c_exclass1_increment_count(self, incr) &
                 result(SHT_rv) &
@@ -258,7 +258,7 @@ module exclass1_mod
 
 contains
 
-    ! ExClass1 * new(const string * name +intent(in)) +constructor
+    ! ExClass1(const string * name +intent(in))
     ! arg_to_buffer
     ! function_index=0
     !>
@@ -269,30 +269,32 @@ contains
     !!
     !! \return return new instance
     !<
-    function exclass1_new(name) result(SHT_rv)
+    function exclass1_ctor(name) result(SHT_rv)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
         type(exclass1) :: SHT_rv
-        ! splicer begin class.ExClass1.method.new
-        SHT_rv%voidptr = c_exclass1_new_bufferify(  &
+        ! splicer begin class.ExClass1.method.ctor
+        SHT_rv%voidptr = c_exclass1_ctor_bufferify(  &
             name,  &
             len_trim(name, kind=C_INT))
-        ! splicer end class.ExClass1.method.new
-    end function exclass1_new
+        ! splicer end class.ExClass1.method.ctor
+    end function exclass1_ctor
 
-    ! void delete() +destructor
+    ! ~ExClass1()
     ! function_index=1
     !>
+    !! \brief destructor
+    !!
     !! longer description joined with previous line
     !<
-    subroutine exclass1_delete(obj)
+    subroutine exclass1_dtor(obj)
         use iso_c_binding, only : C_NULL_PTR
         class(exclass1) :: obj
         ! splicer begin class.ExClass1.method.delete
-        call c_exclass1_delete(obj%voidptr)
+        call c_exclass1_dtor(obj%voidptr)
         obj%voidptr = C_NULL_PTR
         ! splicer end class.ExClass1.method.delete
-    end subroutine exclass1_delete
+    end subroutine exclass1_dtor
 
     ! int incrementCount(int incr +intent(in)+value)
     ! function_index=2

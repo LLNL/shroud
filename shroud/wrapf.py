@@ -473,6 +473,9 @@ class Wrapf(util.WrapperMixin):
 
         ast = node['_ast']
         result_type = ast.typename
+        is_ctor = ast.fattrs.get('_constructor', False)
+        is_dtor = ast.fattrs.get('_destructor', False)
+        is_pure = ast.fattrs.get('pure', False)
         func_is_const = ast.func_const
         subprogram = node['_subprogram']
 
@@ -482,7 +485,7 @@ class Wrapf(util.WrapperMixin):
         else:
             intent_grp = ''
 
-        if node.get('return_this', False):
+        if is_dtor or node.get('return_this', False):
             result_type = 'void'
             subprogram = 'subroutine'
         elif 'C_return_type' in node:
@@ -490,9 +493,6 @@ class Wrapf(util.WrapperMixin):
             subprogram = 'function'
 
         result_typedef = typemap.Typedef.lookup(result_type)
-        is_const = ast.func_const
-        is_ctor = ast.fattrs.get('constructor', False)
-        is_pure = ast.fattrs.get('pure', False)
 
         arg_c_names = []  # argument names for functions
         arg_c_decl = []   # declaraion of argument names
@@ -642,7 +642,9 @@ class Wrapf(util.WrapperMixin):
         # Fortran return type
         ast = node['_ast']
         result_type = ast.typename
-        func_is_const = ast.func_const
+        is_ctor = ast.fattrs.get('_constructor', False)
+        is_dtor = ast.fattrs.get('_destructor', False)
+        is_pure = ast.fattrs.get('pure', False)
         subprogram = node['_subprogram']
         c_subprogram = C_node['_subprogram']
 
@@ -652,7 +654,7 @@ class Wrapf(util.WrapperMixin):
         else:
             intent_grp = ''
 
-        if node.get('return_this', False):
+        if is_dtor or node.get('return_this', False):
             result_type = 'void'
             subprogram = 'subroutine'
             c_subprogram = 'subroutine'
@@ -668,10 +670,6 @@ class Wrapf(util.WrapperMixin):
             ast.typename = result_type
 
         result_typedef = typemap.Typedef.lookup(result_type)
-        is_ctor = ast.fattrs.get('constructor', False)
-        is_dtor = ast.fattrs.get('destructor', False)
-        is_pure = ast.fattrs.get('pure', False)
-        is_const = ast.const
 
         result_intent_grp = ''
         if is_pure:
