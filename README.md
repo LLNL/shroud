@@ -7,7 +7,7 @@ verb
 [![Build Status](https://travis-ci.org/LLNL/shroud.svg?branch=develop)](https://travis-ci.org/LLNL/shroud)
 [![Documentation Status](https://readthedocs.org/projects/shroud/badge/?version=develop)](http://shroud.readthedocs.io/en/latest/?badge=develop)
 
-Create Fortran bindings for a C++ Library.
+Create Fortran bindings for a C or C++ Library.
 
 ## Documentation
 
@@ -21,7 +21,6 @@ shroud-users@llnl.gov
 
 ## Required Packages
 
-*  parsley - https://pypi.python.org/pypi/Parsley
 *  yaml - https://pypi.python.org/pypi/PyYAML
 
 ## C++ to C to Fortran
