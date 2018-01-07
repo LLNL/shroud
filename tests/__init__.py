@@ -55,8 +55,8 @@ from . import test_util
 test_cases = (
     test_util.UtilCase,
     test_util.OptionCase,
-    test_ast.CheckAst,
     test_declast.CheckParse,
+    test_ast.CheckAst,
 #    test_shroud.MainCase,
 )
 

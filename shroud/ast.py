@@ -1,5 +1,6 @@
 
 from . import util
+from . import declast
 
 class AstNode(object):
     def update_options_from_dict(self, node):
@@ -41,12 +42,56 @@ class AstNode(object):
             tname = name + tname + '_template'
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
+    def check_options_only(self, node, parent):
+        """Process an options only entry in a list.
+
+        functions:
+        - options:
+             a = b
+        - decl:
+          options:
+
+        Return True if node only has options.
+        Return Options instance to use.
+        node is assumed to be a dictionary.
+        Update current set of options from node['options'].
+        """
+        if len(node) != 1:
+            return False, parent
+        if 'options' not in node:
+            return False, parent
+        options = node['options']
+        if not options:
+            return False, parent
+        if not isinstance(options, dict):
+            raise TypeError("options must be a dictionary")
+
+        new = util.Options(parent=parent)
+        new.update(node['options'])
+        return True, new
+
+    def add_functions(self, node, cls_name, member):
+        """ Add functions from dictionary 'node'.
+
+        Used with class methods and functions.
+        """
+        if member not in node:
+            return
+        functions = node[member]
+        if not isinstance(functions, list):
+            raise TypeError("functions must be a list")
+
+        options = self.options
+        for func in functions:
+            only, options = self.check_options_only(func, options)
+            if not only:
+                self.functions.append(FunctionNode(func, self, cls_name, options))
+
     def _to_dict(self):
         """Convert to dictionary.
         Used by util.ExpandedEncoder.
         """
         return dict()
-        
 
 
 class LibraryNode(AstNode):
@@ -62,8 +107,8 @@ class LibraryNode(AstNode):
 
         self.language = 'c++'     # input language: c or c++
         self.options = self.default_options()
-#        wrapp.add_templates(def_options)
-#        wrapl.add_templates(def_options)
+        self.classes = []
+        self.functions = []
 
         if node is None:
             node = dict()
@@ -89,6 +134,9 @@ class LibraryNode(AstNode):
         # just functions.
         self.eval_template(node, 'F_module_name', '_library')
         self.eval_template(node, 'F_impl_filename', '_library')
+
+        self.add_classes(node)
+        self.add_functions(node, None, 'functions')
 
     def default_options(self):
         """default options."""
@@ -252,6 +300,31 @@ class LibraryNode(AstNode):
 
             fmt_library.stdlib  = 'std::'
 
+    def add_classes(self, node):
+        """Add classes from a dictionary.
+
+        classes:
+        - name: Class1
+        - name: Class2
+        """
+        if 'classes' not in node:
+            return
+        classes = node['classes']
+        if not isinstance(classes, list):
+            raise TypeError("classes must be a list")
+
+        # Add all class types to parser first
+        # Emulate forward declarations of classes.
+        for cls in classes:
+            if not isinstance(cls, dict):
+                raise TypeError("classes[n] must be a dictionary")
+            if 'name' not in cls:
+                raise TypeError("class does not define name")
+            declast.add_type(cls['name'])
+
+        for cls in classes:
+            self.classes.append(ClassNode(cls['name'], self, cls))
+
     def XX_to_dict(self):
         """Convert to dictionary.
         Used by util.ExpandedEncoder.
@@ -260,11 +333,115 @@ class LibraryNode(AstNode):
             _fmt=self._fmt
         )
 
+
 class ClassNode(AstNode):
-    def __init__(self):
-        pass
+    def __init__(self, name, parent, node):
+        self.name = name
+        self.functions = []
+        self.cpp_header = ''
+
+        # default cpp_header to blank
+        if 'cpp_header' in node and node['cpp_header']:
+            # YAML treats blank string as None
+            self.cpp_header = node['cpp_header']
+
+        self.options = util.Options(parent=parent.options)
+        self.update_options_from_dict(node)
+        options = self.options
+
+        self._fmt = util.Options(parent._fmt)
+        fmt_class = self._fmt
+        fmt_class.cpp_class = name
+        fmt_class.class_lower = name.lower()
+        fmt_class.class_upper = name.upper()
+        self.eval_template(node, 'class_prefix')
+
+        # Only one file per class for C.
+        self.eval_template(node, 'C_header_filename', '_class')
+        self.eval_template(node, 'C_impl_filename', '_class')
+
+        if options.F_module_per_class:
+            self.eval_template(node, 'F_module_name', '_class')
+            self.eval_template(node, 'F_impl_filename', '_class')
+
+        self.add_functions(node, name, 'methods')
+
+    def XX_to_dict(self):
+        """Convert to dictionary.
+        Used by util.ExpandedEncoder.
+        """
+        return dict(
+            cpp_header=self.cpp_header,
+        )
+
 
 class FunctionNode(AstNode):
-    def __init__(self):
-        pass
+    def __init__(self, node, parent, cls_name, options):
+        self.options = util.Options(parent=options)
+        self.update_options_from_dict(node)
+        options = self.options
+
+        self._fmt = util.Options(parent._fmt)
+        self.option_to_fmt()
+        fmt_func = self._fmt
+
+        if 'cpp_template' in node:
+            template_types = node['cpp_template'].keys()
+        else:
+            template_types = []
+        if 'decl' in node:
+            # parse decl and add to dictionary
+            self.decl = node['decl']
+            ast = declast.check_decl(node['decl'],
+                                     current_class=cls_name,
+                                     template_types=template_types)
+            self.ast = ast
+
+            # add any attributes from YAML files to the ast
+            if 'attrs' in node:
+                attrs = node['attrs']
+                if 'result' in attrs:
+                    ast.attrs.update(attrs['result'])
+                for arg in ast.params:
+                    name = arg.name
+                    if name in attrs:
+                        arg.attrs.update(attrs[name])
+            # XXX - waring about unused fields in attrs
+        else:
+            raise RuntimeError("Missing decl")
+                                        
+        if ('function_suffix' in node and
+                node['function_suffix'] is None):
+            # YAML turns blanks strings into None
+            node['function_suffix'] = ''
+        if 'default_arg_suffix' in node:
+            default_arg_suffix = node['default_arg_suffix']
+            if not isinstance(default_arg_suffix, list):
+                raise RuntimeError('default_arg_suffix must be a list')
+            for i, value in enumerate(node['default_arg_suffix']):
+                if value is None:
+                    # YAML turns blanks strings to None
+                    node['default_arg_suffix'][i] = ''
+
+# XXX - do some error checks on ast
+#        if 'name' not in result:
+#            raise RuntimeError("Missing result.name")
+#        if 'type' not in result:
+#            raise RuntimeError("Missing result.type")
+
+        if ast.params is None:
+            raise RuntimeError("Missing arguments:", ast.gen_decl())
+
+        ast = self.ast
+
+        fmt_func.function_name = ast.name
+        fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
+
+    def XX_to_dict(self):
+        """Convert to dictionary.
+        Used by util.ExpandedEncoder.
+        """
+        return dict(
+            cpp_header=self.cpp_header,
+        )
 

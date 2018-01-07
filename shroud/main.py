@@ -186,15 +186,6 @@ class Schema(object):
         """
         node = self.tree
 
-        node['newlibrary'] = ast.LibraryNode(node)
-
-        # recreate old behavior for _fmt and options
-        node['_fmt'] = node['newlibrary']._fmt
-        self.fmt_stack.append(node['_fmt'])
-
-        self.options_stack = [ node['newlibrary'].options ]
-        node['options'] = node['newlibrary'].options
-
         def_types, def_types_alias = typemap.initialize()
         declast.add_typemap()
 
@@ -231,6 +222,15 @@ class Schema(object):
         # Add to node so they show up in the json debug file.
         node['_types'] = def_types
         node['_type_aliases'] = def_types_alias
+
+        node['newlibrary'] = ast.LibraryNode(node)
+
+        # recreate old behavior for _fmt and options
+        node['_fmt'] = node['newlibrary']._fmt
+        self.fmt_stack.append(node['_fmt'])
+
+        self.options_stack = [ node['newlibrary'].options ]
+        node['options'] = node['newlibrary'].options
 
         patterns = node.setdefault('patterns', [])
         classes = node.setdefault('classes', [])
