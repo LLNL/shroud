@@ -124,8 +124,9 @@ class Wrapf(util.WrapperMixin):
         self.type_bound_part = []
 
     def wrap_library(self):
-        options = self.tree['options']
-        fmt_library = self.tree['_fmt']
+        newlibrary = self.tree['newlibrary']
+        options = newlibrary.options
+        fmt_library = newlibrary._fmt
         fmt_library.F_result_clause = ''
         fmt_library.F_pure_clause = ''
         fmt_library.F_C_result_clause = ''

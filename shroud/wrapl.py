@@ -65,8 +65,9 @@ class Wrapl(util.WrapperMixin):
 
     def wrap_library(self):
         top = self.tree
-        options = self.tree['options']
-        fmt_library = self.tree['_fmt']
+        newlibrary = self.tree['newlibrary']
+        options = newlibrary.options
+        fmt_library = newlibrary._fmt
 
         # Format variables
         fmt_library.LUA_prefix = options.get('LUA_prefix', 'l_')

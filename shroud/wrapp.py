@@ -81,8 +81,9 @@ class Wrapp(util.WrapperMixin):
 
     def wrap_library(self):
         top = self.tree
-        options = self.tree['options']
-        fmt_library = self.tree['_fmt']
+        newlibrary = self.tree['newlibrary']
+        options = newlibrary.options
+        fmt_library = newlibrary._fmt
 
         # Format variables
         fmt_library.PY_prefix = options.get('PY_prefix', 'PY_')

@@ -85,7 +85,8 @@ class Wrapc(util.WrapperMixin):
         self.c_helper = {}
 
     def wrap_library(self):
-        fmt_library = self.tree['_fmt']
+        newlibrary = self.tree['newlibrary']
+        fmt_library = newlibrary._fmt
 
         self._push_splicer('class')
         for node in self.tree['classes']:
