@@ -66,10 +66,11 @@ import os
 import sys
 import yaml
 
-from . import util
+from . import ast
 from . import declast
 from . import splicer
 from . import typemap
+from . import util
 from . import wrapc
 from . import wrapf
 from . import wrapp
@@ -185,156 +186,14 @@ class Schema(object):
         """
         node = self.tree
 
-        language = node['language'].lower()
-        if language not in ['c', 'c++']:
-            raise RuntimeError("language must be 'c' or 'c++'")
+        node['newlibrary'] = ast.LibraryNode(node)
 
-        # default options
-        def_options = util.Options(
-            parent=None,
-            debug=False,   # print additional debug info
+        # recreate old behavior for _fmt and options
+        node['_fmt'] = node['newlibrary']._fmt
+        self.fmt_stack.append(node['_fmt'])
 
-            F_module_per_class=True,
-            F_string_len_trim=True,
-            F_force_wrapper=False,
-
-            wrap_c=True,
-            wrap_fortran=True,
-            wrap_python=False,
-            wrap_lua=False,
-
-            doxygen=True,       # create doxygen comments
-            show_splicer_comments=True,
-
-            # blank for functions, set in classes.
-            class_prefix_template='{class_lower}_',
-
-            YAML_type_filename_template='{library_lower}_types.yaml',
-
-            C_header_filename_library_template='wrap{library}.{C_header_filename_suffix}',
-            C_impl_filename_library_template='wrap{library}.{C_impl_filename_suffix}',
-
-            C_header_filename_class_template='wrap{cpp_class}.{C_header_filename_suffix}',
-            C_impl_filename_class_template='wrap{cpp_class}.{C_impl_filename_suffix}',
-
-            C_name_template=(
-                '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
-
-            C_bufferify_suffix='_bufferify',
-            C_var_len_template = 'N{c_var}',         # argument for result of len(arg)
-            C_var_trim_template = 'L{c_var}',        # argument for result of len_trim(arg)
-            C_var_size_template = 'S{c_var}',        # argument for result of size(arg)
-
-            # Fortran's names for C functions
-            F_C_prefix='c_',
-            F_C_name_template=(
-                '{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
-
-            F_name_impl_template=(
-                '{class_prefix}{underscore_name}{function_suffix}'),
-
-            F_name_function_template='{underscore_name}{function_suffix}',
-            F_name_generic_template='{underscore_name}',
-
-            F_module_name_library_template='{library_lower}_mod',
-            F_impl_filename_library_template='wrapf{library_lower}.{F_filename_suffix}',
-
-            F_module_name_class_template='{class_lower}_mod',
-            F_impl_filename_class_template='wrapf{cpp_class}.{F_filename_suffix}',
-
-            F_name_instance_get='get_instance',
-            F_name_instance_set='set_instance',
-            F_name_associated='associated',
-
-            )
-        wrapp.add_templates(def_options)
-        wrapl.add_templates(def_options)
-
-        if 'options' in node:
-            old = node['options']
-            def_options.update(old)
-        else:
-            old = None
-        self.options_stack = [def_options]
-        node['options'] = def_options
-
-        fmt_library = node['_fmt'] = util.Options(None)
-        fmt_library.library = node['library']
-        fmt_library.library_lower = fmt_library.library.lower()
-        fmt_library.library_upper = fmt_library.library.upper()
-        fmt_library.function_suffix = ''   # assume no suffix
-        fmt_library.C_prefix = def_options.get(
-            'C_prefix', fmt_library.library_upper[:3] + '_')
-        fmt_library.F_C_prefix = def_options['F_C_prefix']
-        if node['namespace']:
-            fmt_library.namespace_scope = (
-                '::'.join(node['namespace'].split()) + '::')
-        else:
-            fmt_library.namespace_scope = ''
-
-        # set default values for fields which may be unset.
-        fmt_library.class_prefix = ''
-#        fmt_library.c_ptr = ''
-#        fmt_library.c_const = ''
-        fmt_library.CPP_this_call = ''
-        fmt_library.CPP_template = ''
-        fmt_library.C_pre_call = ''
-        fmt_library.C_post_call = ''
-
-        fmt_library.C_this = 'self'
-        fmt_library.C_result = 'SHT_rv'
-        fmt_library.c_temp = 'SHT_'
-
-        fmt_library.CPP_this = 'SH_this'
-
-        fmt_library.F_this = 'obj'
-        fmt_library.F_result = 'SHT_rv'
-        fmt_library.F_derived_member = 'voidptr'
-
-        fmt_library.C_string_result_as_arg = 'SHF_rv'
-        fmt_library.F_string_result_as_arg = ''
-
-        fmt_library.F_filename_suffix = 'f'
-
-        # don't have to worry about argument names in Python wrappers
-        # so skip the SH_ prefix by default.
-        fmt_library.PY_result = 'rv'
-        fmt_library.LUA_result = 'rv'
-
-        if language == 'c':
-            fmt_library.C_header_filename_suffix = 'h'
-            fmt_library.C_impl_filename_suffix = 'c'
-
-            fmt_library.PY_header_filename_suffix = 'h'
-            fmt_library.PY_impl_filename_suffix = 'c'
-
-            fmt_library.LUA_header_filename_suffix = 'h'
-            fmt_library.LUA_impl_filename_suffix = 'c'
-
-            fmt_library.stdlib  = ''
-        else:
-            fmt_library.C_header_filename_suffix = 'h'
-            fmt_library.C_impl_filename_suffix = 'cpp'
-
-            fmt_library.PY_header_filename_suffix = 'hpp'
-            fmt_library.PY_impl_filename_suffix = 'cpp'
-
-            fmt_library.LUA_header_filename_suffix = 'hpp'
-            fmt_library.LUA_impl_filename_suffix = 'cpp'
-
-            fmt_library.stdlib  = 'std::'
-
-        self.option_to_fmt(fmt_library, old)
-
-        self.fmt_stack.append(fmt_library)
-
-        # default some options based on other options
-        util.eval_template(node, 'C_header_filename', '_library')
-        util.eval_template(node, 'C_impl_filename', '_library')
-        # All class/methods and functions may go into this file or
-        # just functions.
-        util.eval_template(node, 'F_module_name', '_library')
-        util.eval_template(node, 'F_impl_filename', '_library')
+        self.options_stack = [ node['newlibrary'].options ]
+        node['options'] = node['newlibrary'].options
 
         def_types, def_types_alias = typemap.initialize()
         declast.add_typemap()
@@ -1403,16 +1262,17 @@ def main_with_args(args):
     TypeOut(all, config).write_types()
 
     try:
-        if all['options'].wrap_c:
+        options = all['options']
+        if options.wrap_c:
             wrapc.Wrapc(all, config, splicers['c']).wrap_library()
 
-        if all['options'].wrap_fortran:
+        if options.wrap_fortran:
             wrapf.Wrapf(all, config, splicers['f']).wrap_library()
 
-        if all['options'].wrap_python:
+        if options.wrap_python:
             wrapp.Wrapp(all, config, splicers['py']).wrap_library()
 
-        if all['options'].wrap_lua:
+        if options.wrap_lua:
             wrapl.Wrapl(all, config, splicers['lua']).wrap_library()
     finally:
         # Write a debug dump even if there was an exception.
@@ -1421,6 +1281,11 @@ def main_with_args(args):
 
         jsonpath = os.path.join(args.logdir, basename + '.json')
         fp = open(jsonpath, 'w')
+
+        # Test top level _fmt and options
+        all['_fmt'] = all['newlibrary']._fmt
+        all['options'] = all['newlibrary'].options
+
         json.dump(all, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
         fp.close()
 

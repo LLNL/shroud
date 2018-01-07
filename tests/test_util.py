@@ -98,6 +98,13 @@ class OptionCase(unittest.TestCase):
         self.assertIn('yyy', lev1)
         self.assertEqual(lev1.yyy, 'yyyvalue')
 
+    def test_update(self):
+        self.assertEqual(self.lev0.a, 1)
+
+        self.lev0.update(dict(a=100), replace=True)
+        self.assertEqual(self.lev0.a, 100)
+        
+
 
 if __name__ == '__main__':
     unittest.main()

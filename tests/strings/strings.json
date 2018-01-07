@@ -4154,6 +4154,7 @@
     "language": "c++", 
     "library": "strings", 
     "namespace": "", 
+    "newlibrary": {}, 
     "options": {
         "C_bufferify_suffix": "_bufferify", 
         "C_header_filename_class_template": "wrap{cpp_class}.{C_header_filename_suffix}", 
