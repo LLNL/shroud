@@ -384,10 +384,13 @@ class LibraryNode(AstNode):
 ######################################################################
 
 class ClassNode(AstNode):
-    def __init__(self, name, parent, node):
+    def __init__(self, name, parent, node=None):
         self.name = name
         self.functions = []
         self.cpp_header = ''
+
+        if node is None:
+            node = {}
 
         # default cpp_header to blank
         if 'cpp_header' in node and node['cpp_header']:
@@ -461,10 +464,7 @@ class ClassNode(AstNode):
 
     def __getitem__(self, key):
         """Help migrate to attribute based."""
-        if key == 'methods':
-            return self.functions
-        elif key in ['_fmt', 'classes', 'cpp_header', 'name', 'namespace', 'options',
-                     'C_header_filename', 'C_impl_filename',
+        if key in ['C_header_filename', 'C_impl_filename',
                      'F_derived_name', 'F_impl_filename', 'F_module_name']:
             return getattr(self, key)
         elif key in self.genlist:

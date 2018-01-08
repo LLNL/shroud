@@ -110,8 +110,8 @@ class Wrapp(util.WrapperMixin):
         self.py_helper_functions = []
 
         # preprocess all classes first to allow them to reference each other
-        for node in self.tree['classes']:
-            typedef = typemap.Typedef.lookup(node['name'])
+        for node in newlibrary.classes:
+            typedef = typemap.Typedef.lookup(node.name)
             fmt = node._fmt
             typedef.PY_format = 'O'
 
@@ -132,20 +132,20 @@ class Wrapp(util.WrapperMixin):
             typedef.PY_from_object = fmt.PY_from_object_func
 
         self._push_splicer('class')
-        for node in self.tree['classes']:
-            name = node['name']
+        for node in newlibrary.classes:
+            name = node.name
             self.reset_file()
             self._push_splicer(name)
             self.wrap_class(node)
-            self.write_extension_type(self.tree, node)
+            self.write_extension_type(newlibrary, node)
             self._pop_splicer(name)
         self._pop_splicer('class')
 
         self.reset_file()
-        if self.tree['functions']:
+        if newlibrary.functions:
             self._push_splicer('function')
 #            self._begin_class()
-            self.wrap_functions(None, self.tree['functions'])
+            self.wrap_functions(None, newlibrary.functions)
             self._pop_splicer('function')
 
         self.write_header(newlibrary)
@@ -153,8 +153,8 @@ class Wrapp(util.WrapperMixin):
         self.write_helper()
 
     def wrap_class(self, node):
-        self.log.write("class {1[name]}\n".format(self, node))
-        name = node['name']
+        self.log.write("class {1.name}\n".format(self, node))
+        name = node.name
         unname = util.un_camel(name)
         typedef = typemap.Typedef.lookup(name)
 
@@ -189,7 +189,7 @@ class Wrapp(util.WrapperMixin):
 
         # wrap methods
         self._push_splicer('method')
-        self.wrap_functions(node, node['methods'])
+        self.wrap_functions(node, node.functions)
         self._pop_splicer('method')
 
     def create_class_helper_functions(self, node):

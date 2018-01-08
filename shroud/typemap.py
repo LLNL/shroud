@@ -785,9 +785,9 @@ def initialize():
 
 
 def create_class_typedef(cls):
-    name = cls['name']
-    fmt_class = cls['_fmt']
-    options = cls['options']
+    name = cls.name
+    fmt_class = cls._fmt
+    options = cls.options
 
     typedef = Typedef.lookup(name)
     if typedef is None:

@@ -91,9 +91,9 @@ class Wrapc(util.WrapperMixin):
 
         self._push_splicer('class')
         for node in newlibrary.classes:
-            self._push_splicer(node['name'])
+            self._push_splicer(node.name)
             self.write_file(newlibrary, node)
-            self._pop_splicer(node['name'])
+            self._pop_splicer(node.name)
         self._pop_splicer('class')
 
         if self.newlibrary['functions']:
@@ -228,11 +228,11 @@ class Wrapc(util.WrapperMixin):
         output.append('#include "%s"' % hname)
 
         # Use headers from class if they exist or else library
-        if cls and cls['cpp_header']:
-            for include in cls['cpp_header'].split():
+        if cls and cls.cpp_header:
+            for include in cls.cpp_header.split():
                 self.header_impl_include[include] = True
         else:
-            for include in library['cpp_header'].split():
+            for include in library.cpp_header.split():
                 self.header_impl_include[include] = True
 
         # headers required by implementation
@@ -275,8 +275,8 @@ class Wrapc(util.WrapperMixin):
                 output.append('#include "%s"' % header)
 
     def wrap_class(self, node):
-        self.log.write("class {1[name]}\n".format(self, node))
-        name = node['name']
+        self.log.write("class {1.name}\n".format(self, node))
+        name = node.name
         typedef = typemap.Typedef.lookup(name)
         cname = typedef.c_type
 
@@ -290,7 +290,7 @@ class Wrapc(util.WrapperMixin):
         self.header_forward[cname] = True
 
         self._push_splicer('method')
-        for method in node['methods']:
+        for method in node.functions:
             self.wrap_function(node, method)
         self._pop_splicer('method')
 
@@ -392,7 +392,7 @@ class Wrapc(util.WrapperMixin):
         if cls:
             need_wrapper = True
             # object pointer
-            rvast = declast.create_this_arg(fmt_func.C_this, cls['name'], is_const)
+            rvast = declast.create_this_arg(fmt_func.C_this, cls.name, is_const)
             if not is_ctor:
                 arg = rvast.gen_arg_as_c()
                 proto_list.append(arg)
@@ -410,7 +410,7 @@ class Wrapc(util.WrapperMixin):
             fmt_func.c_ptr = ' *'
             fmt_func.c_var = fmt_func.C_this
             # LHS is class' cpp_to_c
-            cls_typedef = typemap.Typedef.lookup(cls['name'])
+            cls_typedef = typemap.Typedef.lookup(cls.name)
             append_format(pre_call, 
                           '{c_const}{cpp_class} *{CPP_this} = ' +
                           cls_typedef.c_to_cpp + ';', fmt_func)

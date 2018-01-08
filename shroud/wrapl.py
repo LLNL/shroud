@@ -85,8 +85,8 @@ class Wrapl(util.WrapperMixin):
         self.lua_type_structs = []
 
         self._push_splicer('class')
-        for node in self.tree['classes']:
-            name = node['name']
+        for node in newlibrary.classes:
+            name = node.name
             self.reset_file()
             self._push_splicer(name)
             self.wrap_class(node)
@@ -131,7 +131,7 @@ class Wrapl(util.WrapperMixin):
 
         # wrap methods
         self._push_splicer('method')
-        self.wrap_functions(node, node['methods'])
+        self.wrap_functions(node, node.functions)
         self._pop_splicer('method')
         self.append_luaL_Reg(self.body_lines, fmt_class.LUA_class_reg,
                              self.luaL_Reg_class)
@@ -457,7 +457,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # find class object
         if cls:
-            cls_typedef = typemap.Typedef.lookup(cls['name'])
+            cls_typedef = typemap.Typedef.lookup(cls.name)
             if not is_ctor:
                 fmt.LUA_used_param_state = True
                 fmt.c_var = wformat(cls_typedef.LUA_pop, fmt)

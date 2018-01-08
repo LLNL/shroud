@@ -233,12 +233,12 @@ class WrapperMixin(object):
 #####
 
     def namespace(self, library, cls, position, output):
-        if cls and 'namespace' in cls and cls['namespace']:
-            namespace = cls['namespace']
+        if cls and cls.namespace:
+            namespace = cls.namespace
             if namespace.startswith('-'):
                 return
         else:
-            namespace = library['namespace']
+            namespace = library.namespace
         if not namespace:
             return
         output.append('')
@@ -307,7 +307,7 @@ class WrapperMixin(object):
         if cls:
             output.append(self.doxygen_cont +
                           ' \\brief Shroud generated wrapper for {} class'
-                          .format(node['name']))
+                          .format(node.name))
         else:
             output.append(self.doxygen_cont +
                           ' \\brief Shroud generated wrapper for {} library'

@@ -139,7 +139,7 @@ class Wrapf(util.WrapperMixin):
         for node in self.tree['classes']:
             self._begin_class()
 
-            name = node['name']
+            name = node.name
             # how to decide module name, module per class
 #            module_name = node.options.setdefault('module_name', name.lower())
             self.wrap_class(node)
@@ -197,8 +197,8 @@ class Wrapf(util.WrapperMixin):
         self.write_c_helper()
 
     def wrap_class(self, node):
-        self.log.write("class {1[name]}\n".format(self, node))
-        name = node['name']
+        self.log.write("class {1.name}\n".format(self, node))
+        name = node.name
         unname = util.un_camel(name)
         typedef = typemap.Typedef.lookup(name)
 
@@ -210,7 +210,7 @@ class Wrapf(util.WrapperMixin):
         self._push_splicer(fmt_class.cpp_class)
         self._create_splicer('module_use', self.use_stmts)
         self._push_splicer('method')
-        for method in node['methods']:
+        for method in node.functions:
             self.wrap_function(node, method)
         self._pop_splicer('method')
         self.write_object_get_set(node, fmt_class)
