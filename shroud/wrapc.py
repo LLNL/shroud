@@ -197,7 +197,7 @@ class Wrapc(util.WrapperMixin):
         """Write implementation
         """
         node = cls or library
-        options = node['options']
+        options = node.options
 
         # If no C wrappers are required, do not write the file
         write_file = False
@@ -280,7 +280,7 @@ class Wrapc(util.WrapperMixin):
         typedef = typemap.Typedef.lookup(name)
         cname = typedef.c_type
 
-        fmt_class = node['_fmt']
+        fmt_class = node._fmt
         # call method syntax
         fmt_class.CPP_this_call = fmt_class.CPP_this + '->'
 #        fmt_class.update(dict(
@@ -300,7 +300,7 @@ class Wrapc(util.WrapperMixin):
         cls  - class node or None for functions
         node - function/method node
         """
-        options = node['options']
+        options = node.options
         if not options.wrap_c:
             return
 
@@ -310,7 +310,7 @@ class Wrapc(util.WrapperMixin):
             cls_function = 'function'
         self.log.write("C {0} {1[_decl]}\n".format(cls_function, node))
 
-        fmt_func = node['_fmt']
+        fmt_func = node._fmt
         fmtargs = node.setdefault('_fmtargs', {})
 
         if self.language == 'c' or options.get('C_extern_C',False):
@@ -336,13 +336,13 @@ class Wrapc(util.WrapperMixin):
                 CPP_node['_PTR_C_CPP_index']]
             if '_generated' in CPP_node:
                 generated.append(CPP_node['_generated'])
-        CPP_result = CPP_node['_ast']
-        CPP_subprogram = CPP_node['_subprogram']
+        CPP_result = CPP_node._ast
+        CPP_subprogram = CPP_node._subprogram
 
         # C return type
-        ast = node['_ast']
+        ast = node._ast
         result_type = ast.typename
-        subprogram = node['_subprogram']
+        subprogram = node._subprogram
         generator = node.get('_generated', '')
         intent_grp = ''
         if generator == 'arg_to_buffer':
@@ -663,7 +663,7 @@ class Wrapc(util.WrapperMixin):
                 impl.append('// %s' % node['_decl'])
                 impl.append('// function_index=%d' % node['_function_index'])
             if options.doxygen and node.get('doxygen', False):
-                self.write_doxygen(impl, node['doxygen'])
+                self.write_doxygen(impl, node.doxygen)
             impl.append(wformat('{C_return_type} {C_name}({C_prototype})', fmt_func))
             impl.append('{')
             self._create_splicer(fmt_func.underscore_name +
@@ -671,7 +671,7 @@ class Wrapc(util.WrapperMixin):
             impl.append('}')
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = node['_ast'].name
+            fmt_func.C_name = node._ast.name
 
 
     def XXXget_intent(self, intent_blk, block):

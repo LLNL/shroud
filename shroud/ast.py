@@ -670,22 +670,12 @@ class FunctionNode(AstNode):
 
     def __getitem__(self, key):
         """Help migrate to attribute based."""
-
-        if key in ['_ast',  '_fmt', 'cpp_template', 'doxygen',
-                   'fortran_generic',  'functions', 
-                   'function_suffix', 'options',
-                   ]:
-            return getattr(self, key)
-        elif key in self.genlist:
+        if key in self.genlist:
             return getattr(self, key)
         raise KeyError
 
     def __setitem__(self, key, value):
-        if key in ['_ast', '_fmt', 'options']:   # copy_function_node
-            setattr(self, key, value)
-        elif key in ['cpp_template', 'fortran_generic']:  # used to clear
-            setattr(self, key, value)
-        elif key in self.genlist:
+        if key in self.genlist:
             setattr(self, key, value)
         else:
             raise KeyError

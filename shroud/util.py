@@ -424,16 +424,9 @@ def copy_function_node(node):
     # Shallow copy everything
     new = copy.copy(node)
 
-    # Deep copy dictionaries
-    for field in ['_ast']:
-        new[field] = copy.deepcopy(node[field])
-
-    # Add new Options in chain
-#    for field in ['_fmt', 'options']:
-#        new[field] = Options(node[field])
-
-    new['_fmt'] = Options(node['_fmt'])
-    new['options'] = Options(node['options'])
+    new._ast = copy.deepcopy(node._ast)
+    new._fmt = Options(node._fmt)
+    new.options = Options(node.options)
 
     return new
 

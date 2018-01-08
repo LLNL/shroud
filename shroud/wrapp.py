@@ -112,7 +112,7 @@ class Wrapp(util.WrapperMixin):
         # preprocess all classes first to allow them to reference each other
         for node in self.tree['classes']:
             typedef = typemap.Typedef.lookup(node['name'])
-            fmt = node['_fmt']
+            fmt = node._fmt
             typedef.PY_format = 'O'
 
             # PyTypeObject for class
@@ -158,8 +158,8 @@ class Wrapp(util.WrapperMixin):
         unname = util.un_camel(name)
         typedef = typemap.Typedef.lookup(name)
 
-        options = node['options']
-        fmt_class = node['_fmt']
+        options = node.options
+        fmt_class = node._fmt
 
         node.eval_template('PY_type_filename')
 
@@ -197,7 +197,7 @@ class Wrapp(util.WrapperMixin):
         These functions are used by PyArg_ParseTupleAndKeywords
         and Py_BuildValue node is a C++ class.
         """
-        fmt = node['_fmt']
+        fmt = node._fmt
 
         fmt.PY_capsule_name = wformat('PY_{cpp_class}_capsule_name', fmt)
 
@@ -306,10 +306,10 @@ return 1;""", fmt)
         overloaded_methods = {}
         for function in functions:
             flist = overloaded_methods. \
-                setdefault(function['_ast'].name, [])
+                setdefault(function._ast.name, [])
             if '_cpp_overload' not in function:
                 continue
-            if not function['options'].wrap_python:
+            if not function.options.wrap_python:
                 continue
             flist.append(function)
         self.overloaded_methods = overloaded_methods
@@ -331,7 +331,7 @@ return 1;""", fmt)
         fmt.PY_used_param_args - True/False if parameter args is used
         fmt.PY_used_param_kwds - True/False if parameter kwds is used
         """
-        options = node['options']
+        options = node.options
         if not options.wrap_python:
             return
 
@@ -341,7 +341,7 @@ return 1;""", fmt)
             cls_function = 'function'
         self.log.write("Python {0} {1[_decl]}\n".format(cls_function, node))
 
-        fmt_func = node['_fmt']
+        fmt_func = node._fmt
         fmtargs = node.setdefault('_fmtargs', {})
         fmt = util.Options(fmt_func)
         fmt.doc_string = 'documentation'
@@ -350,7 +350,7 @@ return 1;""", fmt)
 
         CPP_subprogram = node['_subprogram']
 
-        ast = node['_ast']
+        ast = node._ast
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
@@ -749,7 +749,7 @@ return 1;""", fmt)
         self._pop_splicer('type')
 
     def write_extension_type(self, library, node):
-        fmt = node['_fmt']
+        fmt = node._fmt
         fname = fmt.PY_type_filename
 
         output = []
@@ -800,7 +800,7 @@ return 1;""", fmt)
             if len(methods) < 2:
                 continue  # not overloaded
 
-            fmt_func = methods[0]['_fmt']
+            fmt_func = methods[0]._fmt
             fmt = util.Options(fmt_func)
             fmt.function_suffix = ''
             fmt.doc_string = 'documentation'
@@ -824,11 +824,11 @@ return 1;""", fmt)
                                 % overload['_nargs'])
                 else:
                     body.append('if (SH_nargs == %d) {' %
-                                len(overload['_ast'].params))
+                                len(overload._ast.params))
                 body.append(1)
                 append_format(body,
                               'rvobj = {PY_name_impl}(self, args, kwds);',
-                              overload['_fmt'])
+                              overload._fmt)
                 body.append('if (!PyErr_Occurred()) {')
                 body.append(1)
                 body.append('return rvobj;')
@@ -912,8 +912,8 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
 
     def write_module(self, node):
         # node is library.
-        options = node['options']
-        fmt = node['_fmt']
+        options = node.options
+        fmt = node._fmt
         fname = fmt.PY_module_filename
 
         fmt.PY_library_doc = 'library documentation'
@@ -954,7 +954,7 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
 
     def write_helper(self):
         node = self.tree['newlibrary']
-        fmt = node['_fmt']
+        fmt = node._fmt
         output = []
         output.append(wformat('#include "{PY_header_filename}"', fmt))
         self.namespace(node, None, 'begin', output)

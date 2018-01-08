@@ -312,10 +312,10 @@ class GenFunctions(object):
         cpp_overload = {}
         for function in functions:
             if function.get('function_suffix', None) is not None:
-                function['_fmt'].function_suffix = function['function_suffix']
+                function._fmt.function_suffix = function.function_suffix
             self.append_function_index(function)
             cpp_overload. \
-                setdefault(function['_ast'].name, []). \
+                setdefault(function._ast.name, []). \
                 append(function['_function_index'])
 
         # keep track of which function are overloaded in C++.
@@ -342,15 +342,15 @@ class GenFunctions(object):
             if function.get('cpp_template', False):
                 continue
             overloaded_functions.setdefault(
-                function['_ast'].name, []).append(function)
+                function._ast.name, []).append(function)
 
         # look for function overload and compute function_suffix
         for mname, overloads in overloaded_functions.items():
             if len(overloads) > 1:
                 for i, function in enumerate(overloads):
                     function['_overloaded'] = True
-                    if not function['_fmt'].inlocal('function_suffix'):
-                        function['_fmt'].function_suffix = '_{}'.format(i)
+                    if not function._fmt.inlocal('function_suffix'):
+                        function._fmt.function_suffix = '_{}'.format(i)
 
         # Create additional C bufferify functions.
         ordered3 = []
@@ -363,10 +363,10 @@ class GenFunctions(object):
         ordered4 = []
         for method in ordered3:
             ordered4.append(method)
-            if not method['options'].wrap_fortran:
+            if not method.options.wrap_fortran:
                 continue
-            if 'fortran_generic' in method and method['fortran_generic']: # not empty
-                method['_overloaded'] = True
+            if method.fortran_generic:
+                method._overloaded = True
                 self.generic_function(method, ordered4)
 
         self.gen_functions_decl(ordered4)
@@ -376,37 +376,37 @@ class GenFunctions(object):
     def template_function(self, node, ordered_functions):
         """ Create overloaded functions for each templated argument.
         """
-        if len(node['cpp_template']) != 1:
+        if len(node.cpp_template) != 1:
             # In the future it may be useful to have multiple templates
             # That the would start creating more permutations
             raise NotImplementedError("Only one cpp_templated type for now")
-        for typename, types in node['cpp_template'].items():
+        for typename, types in node.cpp_template.items():
             for type in types:
                 new = util.copy_function_node(node)
                 ordered_functions.append(new)
                 self.append_function_index(new)
 
                 new['_generated'] = 'cpp_template'
-                fmt = new['_fmt']
+                fmt = new._fmt
                 fmt.function_suffix = fmt.function_suffix + '_' + type
-                new['cpp_template'] = {}
-                options = new['options']
+                new.cpp_template = {}
+                options = new.options
                 options.wrap_c = True
                 options.wrap_fortran = True
                 options.wrap_python = False
                 options.wrap_lua = False
                 # Convert typename to type
                 fmt.CPP_template = '<{}>'.format(type)
-                if new['_ast'].typename == typename:
-                    new['_ast'].typename = type
-                    new['_CPP_return_templated'] = True
-                for arg in new['_ast'].params:
+                if new._ast.typename == typename:
+                    new._ast.typename = type
+                    new._CPP_return_templated = True
+                for arg in new._ast.params:
                     if arg.typename == typename:
                         arg.typename = type
 
         # Do not process templated node, instead process
         # generated functions above.
-        options = node['options']
+        options = node.options
         options.wrap_c = False
         options.wrap_fortran = False
         options.wrap_python = False
@@ -415,11 +415,11 @@ class GenFunctions(object):
     def generic_function(self, node, ordered_functions):
         """ Create overloaded functions for each generic method.
         """
-        if len(node['fortran_generic']) != 1:
+        if len(node.fortran_generic) != 1:
             # In the future it may be useful to have multiple generic arguments
             # That the would start creating more permutations
             raise NotImplemented("Only one generic arg for now")
-        for argname, types in node['fortran_generic'].items():
+        for argname, types in node.fortran_generic.items():
             for type in types:
                 new = util.copy_function_node(node)
                 ordered_functions.append(new)
@@ -427,17 +427,17 @@ class GenFunctions(object):
 
                 new['_generated'] = 'fortran_generic'
                 new['_PTR_F_C_index'] = node['_function_index']
-                fmt = new['_fmt']
+                fmt = new._fmt
                 # XXX append to existing suffix
                 fmt.function_suffix = fmt.function_suffix + '_' + type
-                new['fortran_generic'] = {}
-                options = new['options']
+                new.fortran_generic = {}
+                options = new.options
                 options.wrap_c = False
                 options.wrap_fortran = True
                 options.wrap_python = False
                 options.wrap_lua = False
                 # Convert typename to type
-                for arg in new['_ast'].params:
+                for arg in new._ast.params:
                     if arg.name == argname:
                         # Convert any typedef to native type with f_type
                         argtype = arg.typename
@@ -451,7 +451,7 @@ class GenFunctions(object):
 
         # Do not process templated node, instead process
         # generated functions above.
-        options = node['options']
+        options = node.options
 #        options.wrap_c = False
         options.wrap_fortran = False
 #        options.wrap_python = False
@@ -472,21 +472,21 @@ class GenFunctions(object):
         ndefault = 0
 
         min_args = 0
-        for i, arg in enumerate(node['_ast'].params):
+        for i, arg in enumerate(node._ast.params):
             if arg.init is None:
                 min_args += 1
                 continue
             new = util.copy_function_node(node)
             self.append_function_index(new)
             new['_generated'] = 'has_default_arg'
-            del new['_ast'].params[i:]  # remove trailing arguments
+            del new._ast.params[i:]  # remove trailing arguments
             new['_has_default_arg'] = False
-            options = new['options']
+            options = new.options
             options.wrap_c = True
             options.wrap_fortran = True
             options.wrap_python = False
             options.wrap_lua = False
-            fmt = new['_fmt']
+            fmt = new._fmt
             try:
                 fmt.function_suffix = default_arg_suffix[ndefault]
             except IndexError:
@@ -499,10 +499,10 @@ class GenFunctions(object):
 
         # keep track of generated default value functions
         node['_default_funcs'] = default_funcs
-        node['_nargs'] = (min_args, len(node['_ast'].params))
+        node['_nargs'] = (min_args, len(node._ast.params))
         # The last name calls with all arguments (the original decl)
         try:
-            node['_fmt'].function_suffix = default_arg_suffix[ndefault]
+            node._fmt.function_suffix = default_arg_suffix[ndefault]
         except IndexError:
             pass
 
@@ -512,14 +512,14 @@ class GenFunctions(object):
         If found then create a new C function that
         will convert argument into a buffer and length.
         """
-        options = node['options']
-        fmt = node['_fmt']
+        options = node.options
+        fmt = node._fmt
 
         # If a C++ function returns a std::string instance,
         # the default wrapper will not compile since the wrapper
         # will be declared as char. It will also want to return the
         # c_str of a stack variable. Warn and turn off the wrapper.
-        ast = node['_ast']
+        ast = node._ast
         result_type = ast.typename
         result_typedef = typemap.Typedef.lookup(result_type)
         # wrapped classes have not been added yet.
@@ -585,10 +585,10 @@ class GenFunctions(object):
 
         C_new['_generated'] = 'arg_to_buffer'
         C_new['_error_pattern_suffix'] = '_as_buffer'
-        fmt = C_new['_fmt']
+        fmt = C_new._fmt
         fmt.function_suffix = fmt.function_suffix + options.C_bufferify_suffix
 
-        options = C_new['options']
+        options = C_new.options
         options.wrap_c = True
         options.wrap_fortran = False
         options.wrap_python = False
@@ -596,7 +596,7 @@ class GenFunctions(object):
         C_new['_PTR_C_CPP_index'] = node['_function_index']
 
         newargs = []
-        for arg in C_new['_ast'].params:
+        for arg in C_new._ast.params:
             attrs = arg.attrs
             argtype = arg.typename
             arg_typedef = typemap.Typedef.lookup(argtype)
@@ -605,9 +605,9 @@ class GenFunctions(object):
                 # Meaningless to call without the size argument.
                 # TODO: add an option where char** length is determined by looking
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
-                node['options'].wrap_c = False
-                node['options'].wrap_python = False  # NotImplemented
-                node['options'].wrap_lua = False     # NotImplemented
+                node.options.wrap_c = False
+                node.options.wrap_python = False  # NotImplemented
+                node.options.wrap_lua = False     # NotImplemented
             arg_typedef, c_statements = typemap.lookup_c_statements(arg)
 
             # set names for implied buffer arguments
@@ -634,7 +634,7 @@ class GenFunctions(object):
 
         if has_string_result:
             # Add additional argument to hold result
-            ast = C_new['_ast']
+            ast = C_new._ast
             result_as_string = ast.result_as_arg(result_name)
             attrs = result_as_string.attrs
             attrs['len'] = options.C_var_len_template.format(c_var=result_name)
@@ -655,16 +655,16 @@ class GenFunctions(object):
 
             # Fortran function should wrap the new C function
             F_new['_PTR_F_C_index'] = C_new['_function_index']
-            options = F_new['options']
+            options = F_new.options
             options.wrap_c = False
             options.wrap_fortran = True
             options.wrap_python = False
             options.wrap_lua = False
             # Do not add '_bufferify'
-            F_new['_fmt'].function_suffix = node['_fmt'].function_suffix
+            F_new._fmt.function_suffix = node._fmt.function_suffix
 
             # Do not wrap original function (does not have result argument)
-            node['options'].wrap_fortran = False
+            node.options.wrap_fortran = False
         else:
             # Fortran function may call C subroutine if string result
             node['_PTR_F_C_index'] = C_new['_function_index']
@@ -704,7 +704,7 @@ class GenFunctions(object):
             # XXX - Maybe dummy it out
             # XXX - process templated types
             return
-        ast = node['_ast']
+        ast = node._ast
         rv_type = ast.typename
         typedef = typemap.Typedef.lookup(rv_type)
         if typedef is None:
@@ -726,7 +726,7 @@ class GenFunctions(object):
         """ Generate _decl for generated all functions.
         """
         for node in functions:
-            node['_decl'] = node['_ast'].gen_decl()
+            node._decl = node._ast.gen_decl()
 
 
 class VerifyAttrs(object):
@@ -758,19 +758,19 @@ class VerifyAttrs(object):
         value: if pointer, default to False (pass-by-reference;
                else True (pass-by-value).
         """
-        options = node['options']
+        options = node.options
         if not options.wrap_fortran and not options.wrap_c:
             return
 
         # cache subprogram type
-        ast = node['_ast']
+        ast = node._ast
         result_type = ast.typename
         result_is_ptr = ast.is_pointer()
         #  'void'=subroutine   'void *'=function
         if result_type == 'void' and not result_is_ptr:
-            node['_subprogram'] = 'subroutine'
+            node._subprogram = 'subroutine'
         else:
-            node['_subprogram'] = 'function'
+            node._subprogram = 'function'
 
         found_default = False
         for arg in ast.params:
@@ -913,10 +913,10 @@ class Namify(object):
             handler(None, func)
 
     def name_function_c(self, cls, node):
-        options = node['options']
+        options = node.options
         if not options.wrap_c:
             return
-        fmt_func = node['_fmt']
+        fmt_func = node._fmt
 
         node.eval_template('C_name')
         node.eval_template('F_C_name')
@@ -928,10 +928,10 @@ class Namify(object):
     def name_function_fortran(self, cls, node):
         """ Must process C functions to generate their names.
         """
-        options = node['options']
+        options = node.options
         if not options.wrap_fortran:
             return
-        fmt_func = node['_fmt']
+        fmt_func = node._fmt
 
         node.eval_template('F_name_impl')
         node.eval_template('F_name_function')
@@ -960,7 +960,7 @@ class TypeOut(util.WrapperMixin):
         This file can be read by Shroud to share types.
         """
         self.newlibrary.eval_template('YAML_type_filename')
-        fname = self.newlibrary['_fmt'].YAML_type_filename
+        fname = self.newlibrary._fmt.YAML_type_filename
         output = [
             '# Types generated by Shroud for class {}'.format(
                 self.newlibrary['library']),
