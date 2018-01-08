@@ -584,12 +584,12 @@ return 1;""", fmt)
                     fmt)
                 PY_code.append(line)
 
-            if node.get('PY_error_pattern',''):
+            if node.PY_error_pattern:
                 lfmt = util.Options(fmt)
                 lfmt.c_var = fmt.PY_result
                 lfmt.cpp_var = fmt.PY_result
                 append_format(PY_code,
-                              self.patterns[node['PY_error_pattern']], lfmt)
+                              self.patterns[node.PY_error_pattern], lfmt)
 
             if found_default:
                 PY_code.append('break;')

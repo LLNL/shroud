@@ -630,11 +630,7 @@ class GenFunctions(object):
                 ## base typedef
 
         # Copy over some buffer specific fields to their generic name.
-        #    C_post_call = C_post_call_buf
-        for field in ['C_post_call']:
-            workname = field + '_buf'
-            if workname in C_new:
-                C_new[field] = C_new[workname]
+        C_new.C_post_call = C_new.C_post_call_buf
 
         if has_string_result:
             # Add additional argument to hold result

@@ -543,8 +543,8 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = 'void'
         elif is_dtor:
             fmt_func.C_return_type = 'void'
-        elif 'C_return_type' in node and node['C_return_type']:
-            fmt_func.C_return_type = node['C_return_type']
+        elif node.C_return_type is not None:
+            fmt_func.C_return_type = node.C_return_type
         else:
             fmt_func.C_return_type = options.get(
                 'C_return_type', ast.gen_arg_as_c(name=None))
@@ -555,8 +555,8 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_post_call = '\n'.join(post_call)
 
         post_call_pattern = []
-        if 'C_error_pattern' in node:
-            C_error_pattern = node['C_error_pattern'] + \
+        if node.C_error_pattern is not None:
+            C_error_pattern = node.C_error_pattern + \
                               node.get('_error_pattern_suffix', '')
             if C_error_pattern in self.patterns:
                 post_call_pattern.append('// C_error_pattern')
@@ -568,9 +568,9 @@ class Wrapc(util.WrapperMixin):
 
         # body of function
         splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
-        if node.get('C_code',''):
+        if node.C_code is not None:
             need_wrapper = True
-            C_code = [1, wformat(node['C_code'], fmt_func), -1]
+            C_code = [1, wformat(node.C_code, fmt_func), -1]
         elif splicer_code:
             need_wrapper = True
             C_code = splicer_code
@@ -630,17 +630,17 @@ class Wrapc(util.WrapperMixin):
                                             + wformat(return_lang, fmt_result)
                                             + ';')
 
-            if node.get('C_post_call',None):
+            if node.C_post_call is not None:
                 need_wrapper = True
                 post_call.append('{')
                 post_call.append('// C_post_call')
-                append_format(post_call, node['C_post_call'], fmt_func)
+                append_format(post_call, node.C_post_call, fmt_func)
                 post_call.append('}')
 
-            if 'C_return_code' in node and node['C_return_code']:
+            if node.C_return_code is not None:
                 # override any computed return code.
                 need_wrapper = True
-                fmt_func.C_return_code = wformat(node['C_return_code'], fmt_func)
+                fmt_func.C_return_code = wformat(node.C_return_code, fmt_func)
 
             # copy-out values, clean up
             C_code = [1]

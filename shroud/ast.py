@@ -535,6 +535,8 @@ class FunctionNode(AstNode):
 
         # Move fields from node into instance
         for n in [
+                'C_error_pattern', 'C_name',
+                'C_post_call', 'C_post_call_buf',
                 'F_name_function',
                 'LUA_name', 'LUA_name_impl',
                 'PY_name_impl' ]:
@@ -547,20 +549,16 @@ class FunctionNode(AstNode):
         self.fortran_generic = node.get('fortran_generic', {})
         self.return_this = node.get('return_this', False)
 
-        self.C_code = node.get('C_code', '')
-        self.C_error_pattern = node.get('C_error_pattern', '')
-        self.C_name = node.get('C_name', None)
-
-        self.C_post_call = node.get('C_post_call', None)
-        self.C_post_call_buf = node.get('C_post_call_buf', None)
-
-        self.C_return_code = node.get('C_return_code', '')
-        self.C_return_type = node.get('C_return_type', '')
         self.F_C_name = node.get('F_C_name', None)
-        self.F_code = node.get('F_code', '')
         self.F_name_generic = node.get('F_name_generic', None)
         self.F_name_impl = node.get('F_name_impl', None)
         self.PY_error_pattern = node.get('PY_error_pattern', '')
+
+        # referenced explicity (not via fmt)
+        self.C_code = node.get('C_code', None)
+        self.C_return_code = node.get('C_return_code', None)
+        self.C_return_type = node.get('C_return_type', None)
+        self.F_code = node.get('F_code', None)
         
 #        self.function_suffix = node.get('function_suffix', None)  # '' is legal value, None=unset
         if 'function_suffix' in node:
@@ -672,21 +670,18 @@ class FunctionNode(AstNode):
 
     def __getitem__(self, key):
         """Help migrate to attribute based."""
+
         if key in ['_ast',  '_fmt', 'cpp_template', 'doxygen',
                    'fortran_generic',  'functions', 
                    'function_suffix', 'options',
-                   'C_name', 'C_code', 'C_error_pattern',
-                   'C_post_call', 'C_post_call_buf', 
-                   'C_return_code', 'C_return_type',
-                   'F_C_name', 'F_code', 'F_name_function', 'F_name_generic', 'F_name_impl',
-                   'PY_error_pattern']:
+                   ]:
             return getattr(self, key)
         elif key in self.genlist:
             return getattr(self, key)
         raise KeyError
 
     def __setitem__(self, key, value):
-        if key in ['_ast', '_fmt', 'options', 'C_post_call']:   # copy_function_node
+        if key in ['_ast', '_fmt', 'options']:   # copy_function_node
             setattr(self, key, value)
         elif key in ['cpp_template', 'fortran_generic']:  # used to clear
             setattr(self, key, value)

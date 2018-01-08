@@ -490,8 +490,8 @@ class Wrapf(util.WrapperMixin):
         if is_dtor or node.get('return_this', False):
             result_type = 'void'
             subprogram = 'subroutine'
-        elif 'C_return_type' in node and node['C_return_type']:   # not empty
-            result_type = node['C_return_type']
+        elif node.C_return_type is not None:
+            result_type = node.C_return_type
             subprogram = 'function'
 
         result_typedef = typemap.Typedef.lookup(result_type)
@@ -660,12 +660,12 @@ class Wrapf(util.WrapperMixin):
             result_type = 'void'
             subprogram = 'subroutine'
             c_subprogram = 'subroutine'
-        elif 'C_return_type' in node and node['C_return_type']:
+        elif node.C_return_type is not None:
             # User has changed the return type of the C function
             # TODO: probably needs to be more clever about
             # setting pointer or reference fields too.
             # Maybe parse result_type instead of copy.
-            result_type = node['C_return_type']
+            result_type = node.C_return_type
             subprogram = 'function'
             c_subprogram = 'function'
             ast = copy.deepcopy(node['_ast'])
@@ -872,9 +872,9 @@ class Wrapf(util.WrapperMixin):
         # XXX sname = fmt_func.F_name_impl
         sname = fmt_func.F_name_function
         splicer_code = self.splicer_stack[-1].get(sname, None)
-        if node.get('F_code',''):
+        if node.F_code is not None:
             need_wrapper = True
-            F_code = [wformat(node['F_code'], fmt_func)]
+            F_code = [wformat(node.F_code, fmt_func)]
         elif splicer_code:
             need_wrapper = True
             F_code = splicer_code
