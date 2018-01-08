@@ -73,10 +73,10 @@ class Wrapl(util.WrapperMixin):
         fmt_library.LUA_prefix = options.get('LUA_prefix', 'l_')
         fmt_library.LUA_state_var = 'L'
         fmt_library.LUA_used_param_state = False
-        util.eval_template(top, 'LUA_module_name')
-        util.eval_template(top, 'LUA_module_reg')
-        util.eval_template(top, 'LUA_module_filename')
-        util.eval_template(top, 'LUA_header_filename')
+        newlibrary.eval_template('LUA_module_name')
+        newlibrary.eval_template('LUA_module_reg')
+        newlibrary.eval_template('LUA_module_filename')
+        newlibrary.eval_template('LUA_header_filename')
 
         # Variables to accumulate output lines
         self.luaL_Reg_module = []
@@ -109,11 +109,11 @@ class Wrapl(util.WrapperMixin):
         fmt_class = node['_fmt']
 
         fmt_class.LUA_userdata_var = 'SH_this'
-        util.eval_template(node, 'LUA_userdata_type')
-        util.eval_template(node, 'LUA_userdata_member')
-        util.eval_template(node, 'LUA_class_reg')
-        util.eval_template(node, 'LUA_metadata')
-        util.eval_template(node, 'LUA_ctor_name')
+        node.eval_template('LUA_userdata_type')
+        node.eval_template('LUA_userdata_member')
+        node.eval_template('LUA_class_reg')
+        node.eval_template('LUA_metadata')
+        node.eval_template('LUA_ctor_name')
 
         self._create_splicer('C_declaration', self.lua_type_structs)
         self.lua_type_structs.append('')
@@ -201,8 +201,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         function_name = ast.name
         fmt_func = node['_fmt']
         fmt = util.Options(fmt_func)
-        util.eval_template(node, 'LUA_name')
-        util.eval_template(node, 'LUA_name_impl')
+        node.eval_template('LUA_name')
+        node.eval_template('LUA_name_impl')
 
         CPP_subprogram = node['_subprogram']
 
@@ -415,8 +415,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         fmtargs = node.setdefault('_fmtargs', {})
 #        fmt = util.Options(fmt_func)
 #        fmt.doc_string = 'documentation'
-#        util.eval_template(node, 'LUA_name')
-#        util.eval_template(node, 'LUA_name_impl')
+#        node.eval_template('LUA_name')
+#        node.eval_template('LUA_name_impl')
 
         CPP_subprogram = node['_subprogram']
 

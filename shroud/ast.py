@@ -31,13 +31,14 @@ class AstNode(object):
             if self.options.inlocal(name):
                 setattr(self._fmt, name, self.options[name])
 
-    def eval_template(self, node, name, tname='', fmt=None):
-        """fmt[name] = node[name] or option[name + tname + '_template']
+    def eval_template(self, name, tname='', fmt=None):
+        """fmt[name] = self.name or option[name + tname + '_template']
         """
         if fmt is None:
             fmt = self._fmt
-        if name in node:
-            setattr(fmt, name, node[name])
+        value = getattr(self, name)
+        if value is not None:
+            setattr(fmt, name, value)
         else:
             tname = name + tname + '_template'
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
@@ -119,6 +120,13 @@ class LibraryNode(AstNode):
 
         self.library = node.get('library', 'default_library')
 
+        for n in ['C_header_filename', 'C_impl_filename',
+                  'F_module_name', 'F_impl_filename',
+                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
+                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
+                  'YAML_type_filename']:
+            setattr(self, n, node.get(n, None))
+
         if 'language' in node:
             language = node['language'].lower()
             if language not in ['c', 'c++']:
@@ -133,12 +141,12 @@ class LibraryNode(AstNode):
 #        self.fmt_stack.append(fmt_library)
 
         # default some options based on other options
-        self.eval_template(node, 'C_header_filename', '_library')
-        self.eval_template(node, 'C_impl_filename', '_library')
+        self.eval_template('C_header_filename', '_library')
+        self.eval_template('C_impl_filename', '_library')
         # All class/methods and functions may go into this file or
         # just functions.
-        self.eval_template(node, 'F_module_name', '_library')
-        self.eval_template(node, 'F_impl_filename', '_library')
+        self.eval_template('F_module_name', '_library')
+        self.eval_template('F_impl_filename', '_library')
 
         # default cpp_header to blank
         if 'cpp_header' in node and node['cpp_header']:
@@ -392,11 +400,13 @@ class ClassNode(AstNode):
             self.namespace = node['namespace']
         self.python = node.get('python', {})
 
-        self.C_header_filename = node.get('C_header_filename', None)
-        self.C_impl_filename = node.get('C_impl_filename', None)
-        self.F_derived_name = node.get('F_derived_name', None)
-        self.F_impl_filename = node.get('F_impl_filename', None)
-        self.F_module_name = node.get('F_module_name', None)
+        for n in ['C_header_filename', 'C_impl_filename',
+                  'F_derived_name', 'F_impl_filename', 'F_module_name',
+                  'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
+                  'LUA_metadata', 'LUA_ctor_name',
+                  'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
+                  'class_prefix']:
+            setattr(self, n, node.get(n, None))
 
         self.options = util.Options(parent=parent.options)
         self.update_options_from_dict(node)
@@ -407,15 +417,15 @@ class ClassNode(AstNode):
         fmt_class.cpp_class = name
         fmt_class.class_lower = name.lower()
         fmt_class.class_upper = name.upper()
-        self.eval_template(node, 'class_prefix')
+        self.eval_template('class_prefix')
 
         # Only one file per class for C.
-        self.eval_template(node, 'C_header_filename', '_class')
-        self.eval_template(node, 'C_impl_filename', '_class')
+        self.eval_template('C_header_filename', '_class')
+        self.eval_template('C_impl_filename', '_class')
 
         if options.F_module_per_class:
-            self.eval_template(node, 'F_module_name', '_class')
-            self.eval_template(node, 'F_impl_filename', '_class')
+            self.eval_template('F_module_name', '_class')
+            self.eval_template('F_impl_filename', '_class')
 
         self.add_functions(node, name, 'methods')
 
@@ -524,6 +534,12 @@ class FunctionNode(AstNode):
         self.attrs = node.get('attrs', None)
 
         # Move fields from node into instance
+        for n in [
+                'F_name_function',
+                'LUA_name', 'LUA_name_impl',
+                'PY_name_impl' ]:
+            setattr(self, n, node.get(n, None))
+
         self.default_arg_suffix = node.get('default_arg_suffix', [])
         self.docs = node.get('docs', '')
         self.cpp_template = node.get('cpp_template', {})
@@ -542,7 +558,6 @@ class FunctionNode(AstNode):
         self.C_return_type = node.get('C_return_type', '')
         self.F_C_name = node.get('F_C_name', None)
         self.F_code = node.get('F_code', '')
-        self.F_name_function = node.get('F_name_function', '')
         self.F_name_generic = node.get('F_name_generic', None)
         self.F_name_impl = node.get('F_name_impl', None)
         self.PY_error_pattern = node.get('PY_error_pattern', '')

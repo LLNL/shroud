@@ -75,18 +75,6 @@ def append_format(lst, template, dct):
     lst.append(wformat(template, dct))
 
 
-def eval_template(node, name, tname='', fmt=None):
-    """fmt[name] = node[name] or option[name + tname + '_template']
-    """
-    if fmt is None:
-        fmt = node['_fmt']
-    if name in node and node[name]:
-        setattr(fmt, name, node[name])
-    else:
-        tname = name + tname + '_template'
-        setattr(fmt, name, wformat(node['options'][tname], fmt))
-
-
 # http://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-camel-case
 def un_camel(text):
     """ Converts a CamelCase name into an under_score name.
