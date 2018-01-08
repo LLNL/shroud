@@ -62,6 +62,7 @@ class Wrapc(util.WrapperMixin):
     """
     def __init__(self, tree, config, splicers):
         self.tree = tree    # json tree
+        self.newlibrary = tree['newlibrary']
         self.patterns = tree['patterns']
         self.language = tree['language']
         self.config = config
@@ -89,21 +90,21 @@ class Wrapc(util.WrapperMixin):
         fmt_library = newlibrary._fmt
 
         self._push_splicer('class')
-        for node in self.tree['classes']:
+        for node in newlibrary.classes:
             self._push_splicer(node['name'])
-            self.write_file(self.tree, node)
+            self.write_file(newlibrary, node)
             self._pop_splicer(node['name'])
         self._pop_splicer('class')
 
-        if self.tree['functions']:
-            self.write_file(self.tree, None)
+        if self.newlibrary['functions']:
+            self.write_file(newlibrary, None)
 
     def write_file(self, library, cls):
         """Write a file for the library and its functions or
         a class and its methods.
         """
         node = cls or library
-        fmt = node['_fmt']
+        fmt = node._fmt
         self._begin_output_file()
         if cls:
             self.wrap_class(cls)
@@ -117,7 +118,7 @@ class Wrapc(util.WrapperMixin):
     def wrap_functions(self, tree):
         # worker function for write_file
         self._push_splicer('function')
-        for node in tree['functions']:
+        for node in tree.functions:
             self.wrap_function(None, node)
         self._pop_splicer('function')
 
@@ -126,7 +127,7 @@ class Wrapc(util.WrapperMixin):
         """
         guard = fname.replace(".", "_").upper()
         node = cls or library
-        options = node['options']
+        options = node.options
 
         # If no C wrappers are required, do not write the file
         write_file = False
@@ -331,7 +332,7 @@ class Wrapc(util.WrapperMixin):
         if '_generated' in CPP_node:
             generated.append(CPP_node['_generated'])
         while '_PTR_C_CPP_index' in CPP_node:
-            CPP_node = self.tree['function_index'][
+            CPP_node = self.newlibrary['function_index'][
                 CPP_node['_PTR_C_CPP_index']]
             if '_generated' in CPP_node:
                 generated.append(CPP_node['_generated'])
@@ -542,7 +543,7 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = 'void'
         elif is_dtor:
             fmt_func.C_return_type = 'void'
-        elif 'C_return_type' in node:
+        elif 'C_return_type' in node and node['C_return_type']:
             fmt_func.C_return_type = node['C_return_type']
         else:
             fmt_func.C_return_type = options.get(
@@ -567,7 +568,7 @@ class Wrapc(util.WrapperMixin):
 
         # body of function
         splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
-        if 'C_code' in node:
+        if node.get('C_code',''):
             need_wrapper = True
             C_code = [1, wformat(node['C_code'], fmt_func), -1]
         elif splicer_code:
@@ -629,14 +630,14 @@ class Wrapc(util.WrapperMixin):
                                             + wformat(return_lang, fmt_result)
                                             + ';')
 
-            if 'C_post_call' in node:
+            if node.get('C_post_call',None):
                 need_wrapper = True
                 post_call.append('{')
                 post_call.append('// C_post_call')
                 append_format(post_call, node['C_post_call'], fmt_func)
                 post_call.append('}')
 
-            if 'C_return_code' in node:
+            if 'C_return_code' in node and node['C_return_code']:
                 # override any computed return code.
                 need_wrapper = True
                 fmt_func.C_return_code = wformat(node['C_return_code'], fmt_func)
@@ -661,7 +662,7 @@ class Wrapc(util.WrapperMixin):
             if options.debug:
                 impl.append('// %s' % node['_decl'])
                 impl.append('// function_index=%d' % node['_function_index'])
-            if options.doxygen and 'doxygen' in node:
+            if options.doxygen and node.get('doxygen', False):
                 self.write_doxygen(impl, node['doxygen'])
             impl.append(wformat('{C_return_type} {C_name}({C_prototype})', fmt_func))
             impl.append('{')

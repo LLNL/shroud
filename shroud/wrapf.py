@@ -92,6 +92,7 @@ class Wrapf(util.WrapperMixin):
 
     def __init__(self, tree, config, splicers):
         self.tree = tree    # json tree
+        self.newlibrary = tree['newlibrary']
         self.patterns = tree['patterns']
         self.config = config
         self.log = config.log
@@ -489,7 +490,7 @@ class Wrapf(util.WrapperMixin):
         if is_dtor or node.get('return_this', False):
             result_type = 'void'
             subprogram = 'subroutine'
-        elif 'C_return_type' in node:
+        elif 'C_return_type' in node and node['C_return_type']:   # not empty
             result_type = node['C_return_type']
             subprogram = 'function'
 
@@ -627,11 +628,11 @@ class Wrapf(util.WrapperMixin):
         # Usually the same node unless it is a generic function
         C_node = node
         generated = []
-        if '_generated' in C_node:
+        if '_generated' in C_node and C_node['_generated']:
             generated.append(C_node['_generated'])
         while '_PTR_F_C_index' in C_node:
-            C_node = self.tree['function_index'][C_node['_PTR_F_C_index']]
-            if '_generated' in C_node:
+            C_node = self.newlibrary['function_index'][C_node['_PTR_F_C_index']]
+            if '_generated' in C_node and C_node['_generated']:
                 generated.append(C_node['_generated'])
 #  #This is no longer true with the result as an argument
 #        if len(node.params) != len(C_node.params):
@@ -659,7 +660,7 @@ class Wrapf(util.WrapperMixin):
             result_type = 'void'
             subprogram = 'subroutine'
             c_subprogram = 'subroutine'
-        elif 'C_return_type' in node:
+        elif 'C_return_type' in node and node['C_return_type']:
             # User has changed the return type of the C function
             # TODO: probably needs to be more clever about
             # setting pointer or reference fields too.
@@ -852,9 +853,9 @@ class Wrapf(util.WrapperMixin):
 
         if not is_ctor:
             # Add method to derived type
-            if '_overloaded' in node:
+            if node.get('_overloaded', False):
                 need_wrapper = True
-            if '_CPP_return_templated' not in node:
+            if not node.get('_CPP_return_templated', False):
                 # if return type is templated in C++,
                 # then do not set up generic since only the
                 # return type may be different (ex. getValue<T>())
@@ -871,7 +872,7 @@ class Wrapf(util.WrapperMixin):
         # XXX sname = fmt_func.F_name_impl
         sname = fmt_func.F_name_function
         splicer_code = self.splicer_stack[-1].get(sname, None)
-        if 'F_code' in node:
+        if node.get('F_code',''):
             need_wrapper = True
             F_code = [wformat(node['F_code'], fmt_func)]
         elif splicer_code:
@@ -921,7 +922,7 @@ class Wrapf(util.WrapperMixin):
                 if generated:
                     impl.append('! %s' % ' - '.join(generated))
                 impl.append('! function_index=%d' % node['_function_index'])
-                if options.doxygen and 'doxygen' in node:
+                if options.doxygen and node.get('doxygen', False):
                     self.write_doxygen(impl, node['doxygen'])
             impl.append(wformat(
                 '{F_subprogram} {F_name_impl}'

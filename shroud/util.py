@@ -80,7 +80,7 @@ def eval_template(node, name, tname='', fmt=None):
     """
     if fmt is None:
         fmt = node['_fmt']
-    if name in node:
+    if name in node and node[name]:
         setattr(fmt, name, node[name])
     else:
         tname = name + tname + '_template'
@@ -245,7 +245,7 @@ class WrapperMixin(object):
 #####
 
     def namespace(self, library, cls, position, output):
-        if cls and 'namespace' in cls:
+        if cls and 'namespace' in cls and cls['namespace']:
             namespace = cls['namespace']
             if namespace.startswith('-'):
                 return
@@ -434,15 +434,18 @@ def copy_function_node(node):
     or changing result to argument.
     """
     # Shallow copy everything
-    new = node.copy()
+    new = copy.copy(node)
 
     # Deep copy dictionaries
     for field in ['_ast']:
         new[field] = copy.deepcopy(node[field])
 
     # Add new Options in chain
-    for field in ['_fmt', 'options']:
-        new[field] = Options(node[field])
+#    for field in ['_fmt', 'options']:
+#        new[field] = Options(node[field])
+
+    new['_fmt'] = Options(node['_fmt'])
+    new['options'] = Options(node['options'])
 
     return new
 

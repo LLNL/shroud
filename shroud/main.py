@@ -157,29 +157,6 @@ class Schema(object):
     def pop_fmt(self):
         self.fmt_stack.pop()
 
-    def option_to_fmt(self, fmt, options):
-        """Set fmt based on options dictionary.
-
-        options - options dictionary from YAML file.
-        """
-        if options is None:
-            return
-        for name in ['C_prefix', 'F_C_prefix', 
-                     'C_this', 'C_result', 'CPP_this',
-                     'F_this', 'F_result', 'F_derived_member',
-                     'C_string_result_as_arg', 'F_string_result_as_arg',
-                     'C_header_filename_suffix',
-                     'C_impl_filename_suffix',
-                     'F_filename_suffix',
-                     'PY_header_filename_suffix',
-                     'PY_impl_filename_suffix',
-                     'PY_result',
-                     'LUA_header_filename_suffix',
-                     'LUA_impl_filename_suffix',
-                     'LUA_result']:
-            if name in options:
-                setattr(fmt, name, options[name])
-
     def check_schema(self):
         """ Check entire schema of input tree.
         Create format dictionaries.
@@ -223,19 +200,23 @@ class Schema(object):
         node['_types'] = def_types
         node['_type_aliases'] = def_types_alias
 
-        node['newlibrary'] = ast.LibraryNode(node)
+        newlibrary = ast.LibraryNode(node)
+        node['newlibrary'] = newlibrary
 
         # recreate old behavior for _fmt and options
         node['_fmt'] = node['newlibrary']._fmt
         self.fmt_stack.append(node['_fmt'])
 
-        self.options_stack = [ node['newlibrary'].options ]
-        node['options'] = node['newlibrary'].options
+        self.options_stack = [ newlibrary.options ]
+        node['options'] = newlibrary.options
 
         patterns = node.setdefault('patterns', [])
         classes = node.setdefault('classes', [])
-        self.check_classes(classes)
-        self.check_functions(node, '', 'functions')
+#        self.check_classes(classes)
+#        self.check_functions(node, '', 'functions')
+        # XXX - for json
+        node['classes'] = newlibrary.classes
+        node['functions'] = newlibrary.functions
 
     def check_classes(self, node):
         if not isinstance(node, list):
@@ -281,89 +262,6 @@ class Schema(object):
         self.pop_fmt()
         self.pop_options()
 
-    def check_function(self, node, cls_name):
-        """ Make sure necessary fields are present for a function.
-        """
-        options, old = self.push_options(node)
-        fmt_func = self.push_fmt(node)
-        self.option_to_fmt(fmt_func, old)
-
-#        func = util.FunctionNode()
-#        func.update(node)
-#        func.dump()
-
-        if 'cpp_template' in node:
-            template_types = node['cpp_template'].keys()
-        else:
-            template_types = []
-        if 'decl' in node:
-            # parse decl and add to dictionary
-            ast = declast.check_decl(node['decl'],
-                                     current_class=cls_name,
-                                     template_types=template_types)
-            node['_ast'] = ast
-
-            # add any attributes from YAML files to the ast
-            if 'attrs' in node:
-                attrs = node['attrs']
-                if 'result' in attrs:
-                    ast.attrs.update(attrs['result'])
-                for arg in ast.params:
-                    name = arg.name
-                    if name in attrs:
-                        arg.attrs.update(attrs[name])
-            # XXX - waring about unused fields in attrs
-        else:
-            raise RuntimeError("Missing decl")
-                                        
-        if ('function_suffix' in node and
-                node['function_suffix'] is None):
-            # YAML turns blanks strings into None
-            node['function_suffix'] = ''
-        if 'default_arg_suffix' in node:
-            default_arg_suffix = node['default_arg_suffix']
-            if not isinstance(default_arg_suffix, list):
-                raise RuntimeError('default_arg_suffix must be a list')
-            for i, value in enumerate(node['default_arg_suffix']):
-                if value is None:
-                    # YAML turns blanks strings to None
-                    node['default_arg_suffix'][i] = ''
-
-# XXX - do some error checks on ast
-#        if 'name' not in result:
-#            raise RuntimeError("Missing result.name")
-#        if 'type' not in result:
-#            raise RuntimeError("Missing result.type")
-
-        if ast.params is None:
-            raise RuntimeError("Missing arguments:", ast.gen_decl())
-
-        ast = node['_ast']
-
-        fmt_func.function_name = ast.name
-        fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
-
-        # docs
-        self.pop_fmt()
-        self.pop_options()
-
-    def check_functions(self, node, cls_name, member):
-        """ check functions.
-
-        Create a new list without the options only entries.
-        """
-        functions = node.get(member, [])
-
-        if not isinstance(functions, list):
-            raise TypeError("functions must be a list")
-        only_functions = []
-        for func in functions:
-            if self.check_options_only(func):
-                continue
-            self.check_function(func, cls_name)
-            only_functions.append(func)
-        node[member] = only_functions
-
 
 class GenFunctions(object):
     """
@@ -380,14 +278,18 @@ class GenFunctions(object):
         """Entry routine to generate functions for a library.
         """
         tree = self.tree
+        newlibrary = self.tree['newlibrary']
+#        tree = newlibrary
 
         # Order of creating.
         # Each is given a _function_index when created.
-        tree['function_index'] = self.function_index = []
+        self.function_index = []
+        newlibrary['function_index'] = self.function_index
 
-        for cls in tree['classes']:
+        for cls in newlibrary.classes:
             cls['methods'] = self.define_function_suffix(cls['methods'])
-        tree['functions'] = self.define_function_suffix(tree['functions'])
+        newlibrary['functions'] = self.define_function_suffix(newlibrary['functions'])
+        tree['functions'] = newlibrary['functions'] # XXX - for json
 
 # No longer need this, but keep code for now in case some other dependency checking is needed
 #        for cls in tree['classes']:
@@ -409,7 +311,7 @@ class GenFunctions(object):
         # Look for overloaded functions
         cpp_overload = {}
         for function in functions:
-            if 'function_suffix' in function:
+            if function.get('function_suffix', None) is not None:
                 function['_fmt'].function_suffix = function['function_suffix']
             self.append_function_index(function)
             cpp_overload. \
@@ -425,10 +327,10 @@ class GenFunctions(object):
         # Create additional functions needed for wrapping
         ordered_functions = []
         for method in functions:
-            if '_has_default_arg' in method:
+            if method.get('_has_default_arg', False):
                 self.has_default_args(method, ordered_functions)
             ordered_functions.append(method)
-            if 'cpp_template' in method:
+            if method.get('cpp_template', False):
                 method['_overloaded'] = True
                 self.template_function(method, ordered_functions)
 
@@ -437,7 +339,7 @@ class GenFunctions(object):
         for function in ordered_functions:
             # if not function['options'].wrap_c:
             #     continue
-            if 'cpp_template' in function:
+            if function.get('cpp_template', False):
                 continue
             overloaded_functions.setdefault(
                 function['_ast'].name, []).append(function)
@@ -463,7 +365,7 @@ class GenFunctions(object):
             ordered4.append(method)
             if not method['options'].wrap_fortran:
                 continue
-            if 'fortran_generic' in method:
+            if 'fortran_generic' in method and method['fortran_generic']: # not empty
                 method['_overloaded'] = True
                 self.generic_function(method, ordered4)
 
@@ -477,7 +379,7 @@ class GenFunctions(object):
         if len(node['cpp_template']) != 1:
             # In the future it may be useful to have multiple templates
             # That the would start creating more permutations
-            raise NotImplemented("Only one cpp_templated type for now")
+            raise NotImplementedError("Only one cpp_templated type for now")
         for typename, types in node['cpp_template'].items():
             for type in types:
                 new = util.copy_function_node(node)
@@ -487,7 +389,7 @@ class GenFunctions(object):
                 new['_generated'] = 'cpp_template'
                 fmt = new['_fmt']
                 fmt.function_suffix = fmt.function_suffix + '_' + type
-                del new['cpp_template']
+                new['cpp_template'] = {}
                 options = new['options']
                 options.wrap_c = True
                 options.wrap_fortran = True
@@ -528,7 +430,7 @@ class GenFunctions(object):
                 fmt = new['_fmt']
                 # XXX append to existing suffix
                 fmt.function_suffix = fmt.function_suffix + '_' + type
-                del new['fortran_generic']
+                new['fortran_generic'] = {}
                 options = new['options']
                 options.wrap_c = False
                 options.wrap_fortran = True
@@ -578,7 +480,7 @@ class GenFunctions(object):
             self.append_function_index(new)
             new['_generated'] = 'has_default_arg'
             del new['_ast'].params[i:]  # remove trailing arguments
-            del new['_has_default_arg']
+            new['_has_default_arg'] = False
             options = new['options']
             options.wrap_c = True
             options.wrap_fortran = True
@@ -842,15 +744,16 @@ class VerifyAttrs(object):
 
     def verify_attrs(self):
         tree = self.tree
+        newlibrary = self.tree['newlibrary']
 
-        for cls in tree['classes']:
+        for cls in newlibrary.classes:
             typemap.create_class_typedef(cls)
 
-        for cls in tree['classes']:
+        for cls in newlibrary.classes:
             for func in cls['methods']:
                 self.check_arg_attrs(func)
 
-        for func in tree['functions']:
+        for func in newlibrary.functions:
             self.check_arg_attrs(func)
 
     def check_arg_attrs(self, node):
@@ -1000,7 +903,7 @@ class Namify(object):
         self.name_language(self.name_function_fortran)
 
     def name_language(self, handler):
-        tree = self.tree
+        tree = self.tree['newlibrary']
         for cls in tree['classes']:
             for func in cls['methods']:
                 handler(cls, func)
@@ -1051,6 +954,7 @@ class TypeOut(util.WrapperMixin):
     """
     def __init__(self, tree, config):
         self.tree = tree    # json tree
+        self.newlibrary = tree['newlibrary']
         self.config = config
         self.log = config.log
         self.comment = '#'
@@ -1059,11 +963,11 @@ class TypeOut(util.WrapperMixin):
         """Write out types into a file.
         This file can be read by Shroud to share types.
         """
-        util.eval_template(self.tree, 'YAML_type_filename')
-        fname = self.tree['_fmt'].YAML_type_filename
+        self.newlibrary.eval_template(self.tree, 'YAML_type_filename')
+        fname = self.newlibrary['_fmt'].YAML_type_filename
         output = [
             '# Types generated by Shroud for class {}'.format(
-                self.tree['library']),
+                self.newlibrary['library']),
             'types:',
         ]
 
@@ -1277,7 +1181,7 @@ def main_with_args(args):
     finally:
         # Write a debug dump even if there was an exception.
         # when dumping json, remove function_index to avoid duplication
-        del all['function_index']
+#        del all['function_index']
 
         jsonpath = os.path.join(args.logdir, basename + '.json')
         fp = open(jsonpath, 'w')

@@ -148,8 +148,8 @@ class Wrapp(util.WrapperMixin):
             self.wrap_functions(None, self.tree['functions'])
             self._pop_splicer('function')
 
-        self.write_header(self.tree)
-        self.write_module(self.tree)
+        self.write_header(newlibrary)
+        self.write_module(newlibrary)
         self.write_helper()
 
     def wrap_class(self, node):
@@ -394,7 +394,7 @@ return 1;""", fmt)
         # call function based on number of default arguments provided
         default_calls = []   # each possible default call
         found_default = False
-        if '_has_default_arg' in node:
+        if node.get('_has_default_arg', False):
             PY_decl.append('Py_ssize_t SH_nargs = 0;')
             PY_code.extend([
                     'if (args != NULL) SH_nargs += PyTuple_Size(args);',
@@ -584,7 +584,7 @@ return 1;""", fmt)
                     fmt)
                 PY_code.append(line)
 
-            if 'PY_error_pattern' in node:
+            if node.get('PY_error_pattern',''):
                 lfmt = util.Options(fmt)
                 lfmt.c_var = fmt.PY_result
                 lfmt.cpp_var = fmt.PY_result
@@ -854,8 +854,8 @@ return 1;""", fmt)
 
     def write_header(self, node):
         # node is library
-        options = node['options']
-        fmt = node['_fmt']
+        options = node.options
+        fmt = node._fmt
         fname = fmt.PY_header_filename
 
         output = []
@@ -873,7 +873,7 @@ return 1;""", fmt)
                 '#define IS_PY3K',
                 '#endif'])
 
-        for include in node['cpp_header'].split():
+        for include in node.cpp_header.split():
             output.append('#include "%s"' % include)
 
         self._push_splicer('header')
@@ -953,7 +953,7 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
         self.write_output_file(fname, self.config.python_dir, output)
 
     def write_helper(self):
-        node = self.tree
+        node = self.tree['newlibrary']
         fmt = node['_fmt']
         output = []
         output.append(wformat('#include "{PY_header_filename}"', fmt))

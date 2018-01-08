@@ -28,7 +28,7 @@ class AstNode(object):
                      'LUA_header_filename_suffix',
                      'LUA_impl_filename_suffix',
                      'LUA_result']:
-            if name in self.options:
+            if self.options.inlocal(name):
                 setattr(self._fmt, name, self.options[name])
 
     def eval_template(self, node, name, tname='', fmt=None):
@@ -93,6 +93,7 @@ class AstNode(object):
         """
         return dict()
 
+######################################################################
 
 class LibraryNode(AstNode):
     def __init__(self, node=None):
@@ -109,11 +110,15 @@ class LibraryNode(AstNode):
         self.options = self.default_options()
         self.classes = []
         self.functions = []
+        self.cpp_header = ''
+        self.namespace = ''
 
         if node is None:
             node = dict()
-
         self.node = node
+
+        self.library = node.get('library', 'default_library')
+
         if 'language' in node:
             language = node['language'].lower()
             if language not in ['c', 'c++']:
@@ -134,6 +139,15 @@ class LibraryNode(AstNode):
         # just functions.
         self.eval_template(node, 'F_module_name', '_library')
         self.eval_template(node, 'F_impl_filename', '_library')
+
+        # default cpp_header to blank
+        if 'cpp_header' in node and node['cpp_header']:
+            # YAML treats blank string as None
+            self.cpp_header = node['cpp_header']
+
+        if 'namespace' in node and node['namespace']:
+            # YAML treats blank string as None
+            self.namespace = node['namespace']
 
         self.add_classes(node)
         self.add_functions(node, None, 'functions')
@@ -329,10 +343,37 @@ class LibraryNode(AstNode):
         """Convert to dictionary.
         Used by util.ExpandedEncoder.
         """
-        return dict(
+        d = dict(
             _fmt=self._fmt
         )
+        return d
 
+    genlist = [ 'function_index' ]
+
+    def __getitem__(self, key):
+        """Help migrate to attribute based."""
+        if key in ['_fmt', 'classes', 'cpp_header', 'functions',
+                   'library', 'namespace', 'options']:
+            return getattr(self, key)
+        elif key in self.genlist:
+            return getattr(self, key)
+        raise KeyError(key)
+
+    def __setitem__(self, key, value):
+        if key in ['functions']:
+            setattr(self, key, value)
+        elif key in self.genlist:
+            setattr(self, key, value)
+        else:
+            raise KeyError
+
+    def __contains__(self, key):
+        if hasattr(self, key):
+            return True
+        else:
+            return False
+
+######################################################################
 
 class ClassNode(AstNode):
     def __init__(self, name, parent, node):
@@ -344,6 +385,18 @@ class ClassNode(AstNode):
         if 'cpp_header' in node and node['cpp_header']:
             # YAML treats blank string as None
             self.cpp_header = node['cpp_header']
+
+        self.namespace = ''
+        if 'namespace' in node and node['namespace']:
+            # YAML treats blank string as None
+            self.namespace = node['namespace']
+        self.python = node.get('python', {})
+
+        self.C_header_filename = node.get('C_header_filename', None)
+        self.C_impl_filename = node.get('C_impl_filename', None)
+        self.F_derived_name = node.get('F_derived_name', None)
+        self.F_impl_filename = node.get('F_impl_filename', None)
+        self.F_module_name = node.get('F_module_name', None)
 
         self.options = util.Options(parent=parent.options)
         self.update_options_from_dict(node)
@@ -366,16 +419,89 @@ class ClassNode(AstNode):
 
         self.add_functions(node, name, 'methods')
 
-    def XX_to_dict(self):
+    def _to_dict(self):
         """Convert to dictionary.
         Used by util.ExpandedEncoder.
         """
-        return dict(
+        d = dict(
+            _fmt = self._fmt,
             cpp_header=self.cpp_header,
+            methods=self.functions,
+            name=self.name,
+            options=self.options,
         )
+        for key in ['namespace', 'python']:
+            value = getattr(self,key)
+            if value:
+                d[key] = value
+        for key in ['C_header_filename', 'C_impl_filename',
+                    'F_derived_name', 'F_impl_filename', 'F_module_name']:
+            value = getattr(self,key)
+            if value is not None:
+                d[key] = value
+        for key in self.genlist:
+            if hasattr(self,key):
+                value = getattr(self,key)
+                if value is not None and value is not False:
+                    d[key] = value
+        return d
 
+###############
+    genlist = []
+
+    def __getitem__(self, key):
+        """Help migrate to attribute based."""
+        if key == 'methods':
+            return self.functions
+        elif key in ['_fmt', 'classes', 'cpp_header', 'name', 'namespace', 'options',
+                     'C_header_filename', 'C_impl_filename',
+                     'F_derived_name', 'F_impl_filename', 'F_module_name']:
+            return getattr(self, key)
+        elif key in self.genlist:
+            return getattr(self, key)
+        raise KeyError
+
+    def __setitem__(self, key, value):
+        if key in ['methods']:
+            self.functions = value
+        elif key in self.genlist:
+            setattr(self, key, value)
+        else:
+            raise KeyError
+
+    def setdefault(self, name, dflt):
+        if hasattr(self, name):
+            return getattr(self, name)
+        else:
+            setattr(self, name, dflt)
+            return dflt
+
+    def get(self, name, dflt):
+        if hasattr(self, name):
+            return getattr(self, name)
+        else:
+            return dflt
+
+    def __contains__(self, key):
+        if hasattr(self, key):
+            return True
+        else:
+            return False
+
+######################################################################
 
 class FunctionNode(AstNode):
+    """
+
+    - decl:
+      cpp_template:
+        ArgType:
+        - int
+        - double
+    """
+
+
+
     def __init__(self, node, parent, cls_name, options):
         self.options = util.Options(parent=options)
         self.update_options_from_dict(node)
@@ -385,17 +511,65 @@ class FunctionNode(AstNode):
         self.option_to_fmt()
         fmt_func = self._fmt
 
+        # working variables
+        self._cpp_overload = None
+        self._function_index = None
+        self._has_default_arg = False
+        self._subprogram = 'function'
+        self._overloaded = False
+
+#        self.function_index = []
+
+        # Only needed for json diff
+        self.attrs = node.get('attrs', None)
+
+        # Move fields from node into instance
+        self.default_arg_suffix = node.get('default_arg_suffix', [])
+        self.docs = node.get('docs', '')
+        self.cpp_template = node.get('cpp_template', {})
+        self.doxygen = node.get('doxygen', {})
+        self.fortran_generic = node.get('fortran_generic', {})
+        self.return_this = node.get('return_this', False)
+
+        self.C_code = node.get('C_code', '')
+        self.C_error_pattern = node.get('C_error_pattern', '')
+        self.C_name = node.get('C_name', None)
+
+        self.C_post_call = node.get('C_post_call', None)
+        self.C_post_call_buf = node.get('C_post_call_buf', None)
+
+        self.C_return_code = node.get('C_return_code', '')
+        self.C_return_type = node.get('C_return_type', '')
+        self.F_C_name = node.get('F_C_name', None)
+        self.F_code = node.get('F_code', '')
+        self.F_name_function = node.get('F_name_function', '')
+        self.F_name_generic = node.get('F_name_generic', None)
+        self.F_name_impl = node.get('F_name_impl', None)
+        self.PY_error_pattern = node.get('PY_error_pattern', '')
+        
+#        self.function_suffix = node.get('function_suffix', None)  # '' is legal value, None=unset
+        if 'function_suffix' in node:
+            self.function_suffix = node['function_suffix']
+            if self.function_suffix is None:
+                # YAML turns blanks strings into None
+                # mark as explicitly set to empty
+                self.function_suffix = ''
+        else:
+            # Mark as unset
+            self.function_suffix = None
+
         if 'cpp_template' in node:
             template_types = node['cpp_template'].keys()
         else:
             template_types = []
+
         if 'decl' in node:
             # parse decl and add to dictionary
             self.decl = node['decl']
             ast = declast.check_decl(node['decl'],
                                      current_class=cls_name,
                                      template_types=template_types)
-            self.ast = ast
+            self._ast = ast
 
             # add any attributes from YAML files to the ast
             if 'attrs' in node:
@@ -432,16 +606,95 @@ class FunctionNode(AstNode):
         if ast.params is None:
             raise RuntimeError("Missing arguments:", ast.gen_decl())
 
-        ast = self.ast
-
         fmt_func.function_name = ast.name
         fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
 
-    def XX_to_dict(self):
+    def _to_dict(self):
         """Convert to dictionary.
         Used by util.ExpandedEncoder.
         """
-        return dict(
-            cpp_header=self.cpp_header,
+        d = dict(
+            _ast=self._ast,
+            _fmt=self._fmt,
+            decl=self.decl,
+            options=self.options,
         )
+        for key in ['attrs', 'cpp_template', 'default_arg_suffix', 'docs', 'doxygen', 
+                    'fortran_generic', 'return_this',
+                    'C_code', 'C_error_pattern', 'C_name',
+                    'C_post_call', 'C_post_call_buf', 
+                    'C_return_code', 'C_return_type',
+                    'F_C_name', 'F_code', 'F_name_function', 'F_name_generic', 'F_name_impl',
+                    'PY_error_pattern']:
+            value = getattr(self,key)
+            if value:
+                d[key] = value
 
+        for key in ['function_suffix']:
+            value = getattr(self,key)
+            if value is not None:   # '' is OK
+                d[key] = value
+
+        for key in self.genlist:
+            if hasattr(self,key):
+                value = getattr(self,key)
+                if value is not None and value is not False:
+                    d[key] = value
+        return d
+
+
+#####################
+    genlist = ['_CPP_return_templated',
+               '_PTR_C_CPP_index',
+               '_PTR_F_C_index',
+               '_cpp_overload', '_decl', '_default_funcs', 
+               '_error_pattern_suffix',
+               '_fmtargs', '_fmtresult',
+               '_function_index', '_generated',
+               '_has_default_arg',
+               '_nargs', '_overloaded', '_subprogram']
+
+
+    def __getitem__(self, key):
+        """Help migrate to attribute based."""
+        if key in ['_ast',  '_fmt', 'cpp_template', 'doxygen',
+                   'fortran_generic',  'functions', 
+                   'function_suffix', 'options',
+                   'C_name', 'C_code', 'C_error_pattern',
+                   'C_post_call', 'C_post_call_buf', 
+                   'C_return_code', 'C_return_type',
+                   'F_C_name', 'F_code', 'F_name_function', 'F_name_generic', 'F_name_impl',
+                   'PY_error_pattern']:
+            return getattr(self, key)
+        elif key in self.genlist:
+            return getattr(self, key)
+        raise KeyError
+
+    def __setitem__(self, key, value):
+        if key in ['_ast', '_fmt', 'options', 'C_post_call']:   # copy_function_node
+            setattr(self, key, value)
+        elif key in ['cpp_template', 'fortran_generic']:  # used to clear
+            setattr(self, key, value)
+        elif key in self.genlist:
+            setattr(self, key, value)
+        else:
+            raise KeyError
+
+    def setdefault(self, name, dflt):
+        if hasattr(self, name):
+            return getattr(self, name)
+        else:
+            setattr(self, name, dflt)
+            return dflt
+
+    def get(self, name, dflt):
+        if hasattr(self, name):
+            return getattr(self, name)
+        else:
+            return dflt
+
+    def __contains__(self, key):
+        if hasattr(self, key):
+            return True
+        else:
+            return False
