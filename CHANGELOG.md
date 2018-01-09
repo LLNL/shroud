@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## v0.4.0 - 2018-01-14
+## v0.5.0 - 2018-01-09
+### Added
+- File shroud/ast.py with LibraryNode, ClassNode, and FunctionNode.
+
+## v0.4.0 - 2018-01-05
 ### Added
 - Recursive Descent Parser to replace Parsley.
 - Parse `long long`.
