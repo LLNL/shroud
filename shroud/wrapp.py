@@ -339,7 +339,7 @@ return 1;""", fmt)
             cls_function = 'method'
         else:
             cls_function = 'function'
-        self.log.write("Python {0} {1[_decl]}\n".format(cls_function, node))
+        self.log.write("Python {0} {1._decl}\n".format(cls_function, node))
 
         fmt_func = node._fmt
         fmtargs = node.setdefault('_fmtargs', {})
@@ -348,7 +348,7 @@ return 1;""", fmt)
         if cls:
             fmt.PY_used_param_self = True
 
-        CPP_subprogram = node['_subprogram']
+        CPP_subprogram = node._subprogram
 
         ast = node._ast
         result_type = ast.typename
@@ -821,7 +821,7 @@ return 1;""", fmt)
             for overload in methods:
                 if overload._nargs:
                     body.append('if (SH_nargs >= %d && SH_nargs <= %d) {'
-                                % overload['_nargs'])
+                                % overload._nargs)
                 else:
                     body.append('if (SH_nargs == %d) {' %
                                 len(overload._ast.params))

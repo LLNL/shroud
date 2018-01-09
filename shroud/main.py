@@ -299,8 +299,8 @@ class GenFunctions(object):
         """append to function_index, set index into node.
         """
         ilist = self.function_index
-        node['_function_index'] = len(ilist)
-#        node['_fmt'].function_index = str(len(ilist)) # debugging
+        node._function_index = len(ilist)
+#        node._fmt.function_index = str(len(ilist)) # debugging
         ilist.append(node)
 
     def define_function_suffix(self, functions):
@@ -316,13 +316,13 @@ class GenFunctions(object):
             self.append_function_index(function)
             cpp_overload. \
                 setdefault(function._ast.name, []). \
-                append(function['_function_index'])
+                append(function._function_index)
 
         # keep track of which function are overloaded in C++.
         for key, value in cpp_overload.items():
             if len(value) > 1:
                 for index in value:
-                    self.function_index[index]['_cpp_overload'] = value
+                    self.function_index[index]._cpp_overload = value
 
         # Create additional functions needed for wrapping
         ordered_functions = []
@@ -348,7 +348,7 @@ class GenFunctions(object):
         for mname, overloads in overloaded_functions.items():
             if len(overloads) > 1:
                 for i, function in enumerate(overloads):
-                    function['_overloaded'] = True
+                    function._overloaded = True
                     if not function._fmt.inlocal('function_suffix'):
                         function._fmt.function_suffix = '_{}'.format(i)
 
@@ -386,7 +386,7 @@ class GenFunctions(object):
                 ordered_functions.append(new)
                 self.append_function_index(new)
 
-                new['_generated'] = 'cpp_template'
+                new._generated = 'cpp_template'
                 fmt = new._fmt
                 fmt.function_suffix = fmt.function_suffix + '_' + type
                 new.cpp_template = {}
@@ -425,8 +425,8 @@ class GenFunctions(object):
                 ordered_functions.append(new)
                 self.append_function_index(new)
 
-                new['_generated'] = 'fortran_generic'
-                new['_PTR_F_C_index'] = node['_function_index']
+                new._generated = 'fortran_generic'
+                new._PTR_F_C_index = node._function_index
                 fmt = new._fmt
                 # XXX append to existing suffix
                 fmt.function_suffix = fmt.function_suffix + '_' + type
@@ -478,9 +478,9 @@ class GenFunctions(object):
                 continue
             new = util.copy_function_node(node)
             self.append_function_index(new)
-            new['_generated'] = 'has_default_arg'
+            new._generated = 'has_default_arg'
             del new._ast.params[i:]  # remove trailing arguments
-            new['_has_default_arg'] = False
+            new._has_default_arg = False
             options = new.options
             options.wrap_c = True
             options.wrap_fortran = True
@@ -493,13 +493,13 @@ class GenFunctions(object):
                 # XXX fmt.function_suffix =
                 # XXX  fmt.function_suffix + '_nargs%d' % (i + 1)
                 pass
-            default_funcs.append(new['_function_index'])
+            default_funcs.append(new._function_index)
             ordered_functions.append(new)
             ndefault += 1
 
         # keep track of generated default value functions
-        node['_default_funcs'] = default_funcs
-        node['_nargs'] = (min_args, len(node._ast.params))
+        node._default_funcs = default_funcs
+        node._nargs = (min_args, len(node._ast.params))
         # The last name calls with all arguments (the original decl)
         try:
             node._fmt.function_suffix = default_arg_suffix[ndefault]
@@ -641,7 +641,7 @@ class GenFunctions(object):
             attrs['intent'] = 'out'
             attrs['_is_result'] = True
             # convert to subroutine
-            C_new['_subprogram'] = 'subroutine'
+            C_new._subprogram = 'subroutine'
 
         if is_pure:
             # pure functions which return a string have result_pure defined.
@@ -654,7 +654,7 @@ class GenFunctions(object):
             self.append_function_index(F_new)
 
             # Fortran function should wrap the new C function
-            F_new['_PTR_F_C_index'] = C_new['_function_index']
+            F_new._PTR_F_C_index = C_new._function_index
             options = F_new.options
             options.wrap_c = False
             options.wrap_fortran = True
@@ -667,7 +667,7 @@ class GenFunctions(object):
             node.options.wrap_fortran = False
         else:
             # Fortran function may call C subroutine if string result
-            node['_PTR_F_C_index'] = C_new['_function_index']
+            node._PTR_F_C_index = C_new._function_index
 
     def XXXcheck_class_dependencies(self, node):
         """
@@ -846,7 +846,7 @@ class VerifyAttrs(object):
 
             if arg.init is not None:
                 found_default = True
-                node['_has_default_arg'] = True
+                node._has_default_arg = True
             elif found_default is True:
                 raise RuntimeError("Expected default value for %s" % argname)
 

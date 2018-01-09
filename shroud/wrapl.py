@@ -204,7 +204,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         node.eval_template('LUA_name')
         node.eval_template('LUA_name_impl')
 
-        CPP_subprogram = node['_subprogram']
+        CPP_subprogram = node._subprogram
 
         # XXX       ast = node._ast
         # XXX       result_type = ast.typename
@@ -409,16 +409,16 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             cls_function = 'method'
         else:
             cls_function = 'function'
-        self.log.write("Lua {0} {1[_decl]}\n".format(cls_function, node))
+        self.log.write("Lua {0} {1._decl}\n".format(cls_function, node))
 
-#        fmt_func = node['_fmt']
+#        fmt_func = node._fmt
         fmtargs = node.setdefault('_fmtargs', {})
 #        fmt = util.Options(fmt_func)
 #        fmt.doc_string = 'documentation'
 #        node.eval_template('LUA_name')
 #        node.eval_template('LUA_name_impl')
 
-        CPP_subprogram = node['_subprogram']
+        CPP_subprogram = node._subprogram
 
         ast = node._ast
         result_type = ast.typename

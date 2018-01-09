@@ -411,7 +411,7 @@ class Wrapf(util.WrapperMixin):
             return
 
         self.log.write(', '.join(wrap))
-        self.log.write(" {0} {1[_decl]}\n".format(cls_function, node))
+        self.log.write(" {0} {1._decl}\n".format(cls_function, node))
 
         # Create fortran wrappers first.
         # If no real work to do, call the C function directly.
@@ -479,7 +479,7 @@ class Wrapf(util.WrapperMixin):
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
         func_is_const = ast.func_const
-        subprogram = node['_subprogram']
+        subprogram = node._subprogram
 
         if node._generated == 'arg_to_buffer':
             intent_grp = '_buf'
@@ -628,7 +628,7 @@ class Wrapf(util.WrapperMixin):
         C_node = node
         generated = []
         if C_node._generated:
-            generated.append(C_node['_generated'])
+            generated.append(C_node._generated)
         while C_node._PTR_F_C_index is not None:
             C_node = self.newlibrary['function_index'][C_node._PTR_F_C_index]
             if C_node._generated:
@@ -646,8 +646,8 @@ class Wrapf(util.WrapperMixin):
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
-        subprogram = node['_subprogram']
-        c_subprogram = C_node['_subprogram']
+        subprogram = node._subprogram
+        c_subprogram = C_node._subprogram
 
         if C_node._generated == 'arg_to_buffer':
             intent_grp = '_buf'
@@ -916,10 +916,10 @@ class Wrapf(util.WrapperMixin):
             impl = self.impl
             impl.append('')
             if options.debug:
-                impl.append('! %s' % node['_decl'])
+                impl.append('! %s' % node._decl)
                 if generated:
                     impl.append('! %s' % ' - '.join(generated))
-                impl.append('! function_index=%d' % node['_function_index'])
+                impl.append('! function_index=%d' % node._function_index)
                 if options.doxygen and node.doxygen:
                     self.write_doxygen(impl, node.doxygen)
             impl.append(wformat(

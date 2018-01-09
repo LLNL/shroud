@@ -452,27 +452,7 @@ class ClassNode(AstNode):
             value = getattr(self,key)
             if value is not None:
                 d[key] = value
-        for key in self.genlist:
-            if hasattr(self,key):
-                value = getattr(self,key)
-                if value is not None and value is not False:
-                    d[key] = value
         return d
-
-###############
-    genlist = []
-
-    def __getitem__(self, key):
-        """Help migrate to attribute based."""
-        if key in self.genlist:
-            return getattr(self, key)
-        raise KeyError
-
-    def __setitem__(self, key, value):
-        if key in self.genlist:
-            setattr(self, key, value)
-        else:
-            raise KeyError
 
 
 ######################################################################
@@ -505,11 +485,12 @@ class FunctionNode(AstNode):
         self._cpp_overload = None
         self._function_index = None
         self._error_pattern_suffix = ''
+        self._function_index = None
         self._generated = False
         self._has_default_arg = False
         self._nargs = None
         self._overloaded = False
-        self._subprogram = 'function'
+        self._subprogram = 'XXX-subprogram'
 
 #        self.function_index = []
 
@@ -621,14 +602,10 @@ class FunctionNode(AstNode):
                     'C_post_call', 'C_post_call_buf', 
                     'C_return_code', 'C_return_type',
                     'F_C_name', 'F_code', 'F_name_function', 'F_name_generic', 'F_name_impl',
-                    'PY_error_pattern']:
+                    'PY_error_pattern',
+                    '_error_pattern_suffix']:
             value = getattr(self,key)
             if value:
-                d[key] = value
-
-        for key in ['_error_pattern_suffix']:
-            value = getattr(self,key)
-            if value is not '':
                 d[key] = value
 
         for key in ['function_suffix']:
@@ -656,24 +633,9 @@ class FunctionNode(AstNode):
                '_nargs', '_overloaded', '_subprogram']
 
 
-    def __getitem__(self, key):
-        """Help migrate to attribute based."""
-        if key in self.genlist:
-            return getattr(self, key)
-        raise KeyError
-
-    def __setitem__(self, key, value):
-        if key in self.genlist:
-            setattr(self, key, value)
-        else:
-            raise KeyError
-
     def setdefault(self, name, dflt):
         if hasattr(self, name):
             return getattr(self, name)
         else:
             setattr(self, name, dflt)
             return dflt
-
-
-
