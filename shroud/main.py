@@ -168,26 +168,23 @@ class GenFunctions(object):
     Computes fmt.function_suffix.
     """
 
-    def __init__(self, tree, config):
-        self.tree = tree    # json tree
+    def __init__(self, newlibrary, config):
+        self.newlibrary = newlibrary
         self.config = config
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
         """
-        tree = self.tree
-        newlibrary = self.tree['newlibrary']
-#        tree = newlibrary
+        newlibrary = self.newlibrary
 
         self.function_index = newlibrary.function_index
 
         for cls in newlibrary.classes:
             cls.functions = self.define_function_suffix(cls.functions)
         newlibrary.functions = self.define_function_suffix(newlibrary.functions)
-        tree['functions'] = newlibrary.functions # XXX - for json
 
 # No longer need this, but keep code for now in case some other dependency checking is needed
-#        for cls in tree['classes']:
+#        for cls in newlibrary.classes:
 #            self.check_class_dependencies(cls)
 
     def append_function_index(self, node):
@@ -629,13 +626,12 @@ class VerifyAttrs(object):
     Check attributes and set some defaults.
     Generate types for classes.
     """
-    def __init__(self, tree, config):
-        self.tree = tree    # json tree
+    def __init__(self, newlibrary, config):
+        self.newlibrary = newlibrary
         self.config = config
 
     def verify_attrs(self):
-        tree = self.tree
-        newlibrary = self.tree['newlibrary']
+        newlibrary = self.newlibrary
 
         for cls in newlibrary.classes:
             typemap.create_class_typedef(cls)
@@ -784,8 +780,8 @@ class Namify(object):
     F_C_name - Fortran function for C interface
     F_name_impl - Name of Fortran function implementation
     """
-    def __init__(self, tree, config):
-        self.tree = tree    # json tree
+    def __init__(self, newlibrary, config):
+        self.newlibrary = newlibrary
         self.config = config
 
     def name_library(self):
@@ -793,7 +789,7 @@ class Namify(object):
         self.name_language(self.name_function_fortran)
 
     def name_language(self, handler):
-        newlibrary = self.tree['newlibrary']
+        newlibrary = self.newlibrary
         for cls in newlibrary.classes:
             for func in cls.functions:
                 handler(cls, func)
@@ -842,9 +838,8 @@ class TypeOut(util.WrapperMixin):
     It subclasses util.WrapperMixin in order to access 
     write routines.
     """
-    def __init__(self, tree, config):
-        self.tree = tree    # json tree
-        self.newlibrary = tree['newlibrary']
+    def __init__(self, newlibrary, config):
+        self.newlibrary = newlibrary
         self.config = config
         self.log = config.log
         self.comment = '#'
@@ -862,22 +857,24 @@ class TypeOut(util.WrapperMixin):
             'types:',
         ]
 
+        def_types, def_types_alias = typemap.Typedef.get_global_types()
+
         write_file = False
         for cls in newlibrary.classes:
             name = cls.name
             output.append('')
             output.append('  {}:'.format(name))
-            self.tree['_types'][name].__export_yaml__(2, output)
+            def_types[name].__export_yaml__(2, output)
             write_file = True
 
             # yaml.dump does not make a nice output
-            # line = yaml.dump(self.tree['types'][cls['name']],
+            # line = yaml.dump(def_types[cls['name']],
             #                  default_flow_style=False)
 
         # debug prints
         # name = 'bool'
         # output.append('  {}:'.format(name))
-        # self.tree['types'][name].__as_yaml__(2, output)
+        # def_types[name].__as_yaml__(2, output)
 
         if write_file:
             self.write_output_file(fname, self.config.yaml_dir, output)
@@ -1027,9 +1024,9 @@ def main_with_args(args):
 #    print(all)
 
     newlibrary = Schema(all, config).check_schema()
-    VerifyAttrs(all, config).verify_attrs()
-    GenFunctions(all, config).gen_library()
-    Namify(all, config).name_library()
+    VerifyAttrs(newlibrary, config).verify_attrs()
+    GenFunctions(newlibrary, config).gen_library()
+    Namify(newlibrary, config).name_library()
 
     if 'splicer' in all:
         # read splicer files defined in input YAML file
@@ -1054,7 +1051,7 @@ def main_with_args(args):
         splicers.update(all['splicer_code'])
 
     # Write out generated types
-    TypeOut(all, config).write_types()
+    TypeOut(newlibrary, config).write_types()
 
     try:
         options = all['options']
@@ -1078,8 +1075,9 @@ def main_with_args(args):
         fp = open(jsonpath, 'w')
 
         # Test top level _fmt and options
-        all['_fmt'] = all['newlibrary']._fmt
-        all['options'] = all['newlibrary'].options
+        all['_fmt'] = newlibrary._fmt
+        all['options'] = newlibrary.options
+        all['functions'] = newlibrary.functions
 
         json.dump(all, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
         fp.close()

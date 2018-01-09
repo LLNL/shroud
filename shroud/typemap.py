@@ -188,6 +188,10 @@ class Typedef(object):
         cls._typealias = typealias
 
     @classmethod
+    def get_global_types(cls):
+        return cls._typedict, cls._typealias
+
+    @classmethod
     def register(cls, name, typedef):
         """Register a typedef"""
         cls._typedict[name] = typedef
