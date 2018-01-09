@@ -188,6 +188,10 @@ class Typedef(object):
         cls._typealias = typealias
 
     @classmethod
+    def get_global_types(cls):
+        return cls._typedict, cls._typealias
+
+    @classmethod
     def register(cls, name, typedef):
         """Register a typedef"""
         cls._typedict[name] = typedef
@@ -785,9 +789,9 @@ def initialize():
 
 
 def create_class_typedef(cls):
-    name = cls['name']
-    fmt_class = cls['_fmt']
-    options = cls['options']
+    name = cls.name
+    fmt_class = cls._fmt
+    options = cls.options
 
     typedef = Typedef.lookup(name)
     if typedef is None:
@@ -799,7 +803,7 @@ def create_class_typedef(cls):
             base='wrapped',
             cpp_type=name,
             c_type=cname,
-            f_derived_type=cls.get('F_derived_name',None) or unname,
+            f_derived_type=cls.F_derived_name or unname,
             f_module={fmt_class.F_module_name:[unname]},
             f_to_c = '{f_var}%%%s()' % options.F_name_instance_get,
             )

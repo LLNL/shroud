@@ -53,30 +53,13 @@ from . import util
 from .util import wformat, append_format
 
 
-def add_templates(options):
-    options.update(dict(
-        PY_module_filename_template=(
-            'py{library}module.{PY_impl_filename_suffix}'),
-        PY_header_filename_template=(
-            'py{library}module.{PY_header_filename_suffix}'),
-        PY_helper_filename_template=(
-            'py{library}helper.{PY_impl_filename_suffix}'),
-        PY_PyTypeObject_template='{PY_prefix}{cpp_class}_Type',
-        PY_PyObject_template='{PY_prefix}{cpp_class}',
-        PY_type_filename_template=(
-            'py{cpp_class}type.{PY_impl_filename_suffix}'),
-        PY_name_impl_template=(
-            '{PY_prefix}{class_prefix}{underscore_name}{function_suffix}'),
-    ))
-
-
 class Wrapp(util.WrapperMixin):
     """Generate Python bindings.
     """
 
-    def __init__(self, tree, config, splicers):
-        self.tree = tree    # json tree
-        self.patterns = tree['patterns']
+    def __init__(self, newlibrary, config, splicers):
+        self.newlibrary = newlibrary
+        self.patterns = self.newlibrary.patterns
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -97,16 +80,16 @@ class Wrapp(util.WrapperMixin):
         self.PyMethodDef = []
 
     def wrap_library(self):
-        top = self.tree
-        options = self.tree['options']
-        fmt_library = self.tree['_fmt']
+        newlibrary = self.newlibrary
+        options = newlibrary.options
+        fmt_library = newlibrary._fmt
 
         # Format variables
         fmt_library.PY_prefix = options.get('PY_prefix', 'PY_')
         fmt_library.PY_module_name = fmt_library.library_lower
-        util.eval_template(top, 'PY_module_filename')
-        util.eval_template(top, 'PY_header_filename')
-        util.eval_template(top, 'PY_helper_filename')
+        newlibrary.eval_template('PY_module_filename')
+        newlibrary.eval_template('PY_header_filename')
+        newlibrary.eval_template('PY_helper_filename')
         fmt_library.BBB = 'BBB'   # name of cpp class pointer in PyObject
         fmt_library.PY_PyObject = 'PyObject'
         fmt_library.PY_param_self = 'self'
@@ -126,16 +109,16 @@ class Wrapp(util.WrapperMixin):
         self.py_helper_functions = []
 
         # preprocess all classes first to allow them to reference each other
-        for node in self.tree['classes']:
-            typedef = typemap.Typedef.lookup(node['name'])
-            fmt = node['_fmt']
+        for node in newlibrary.classes:
+            typedef = typemap.Typedef.lookup(node.name)
+            fmt = node._fmt
             typedef.PY_format = 'O'
 
             # PyTypeObject for class
-            util.eval_template(node, 'PY_PyTypeObject')
+            node.eval_template('PY_PyTypeObject')
 
             # PyObject for class
-            util.eval_template(node, 'PY_PyObject')
+            node.eval_template('PY_PyObject')
 
             fmt.PY_to_object_func = wformat(
                 'PP_{cpp_class}_to_Object', fmt)
@@ -148,36 +131,36 @@ class Wrapp(util.WrapperMixin):
             typedef.PY_from_object = fmt.PY_from_object_func
 
         self._push_splicer('class')
-        for node in self.tree['classes']:
-            name = node['name']
+        for node in newlibrary.classes:
+            name = node.name
             self.reset_file()
             self._push_splicer(name)
             self.wrap_class(node)
-            self.write_extension_type(self.tree, node)
+            self.write_extension_type(newlibrary, node)
             self._pop_splicer(name)
         self._pop_splicer('class')
 
         self.reset_file()
-        if self.tree['functions']:
+        if newlibrary.functions:
             self._push_splicer('function')
 #            self._begin_class()
-            self.wrap_functions(None, self.tree['functions'])
+            self.wrap_functions(None, newlibrary.functions)
             self._pop_splicer('function')
 
-        self.write_header(self.tree)
-        self.write_module(self.tree)
+        self.write_header(newlibrary)
+        self.write_module(newlibrary)
         self.write_helper()
 
     def wrap_class(self, node):
-        self.log.write("class {1[name]}\n".format(self, node))
-        name = node['name']
+        self.log.write("class {1.name}\n".format(self, node))
+        name = node.name
         unname = util.un_camel(name)
         typedef = typemap.Typedef.lookup(name)
 
-        options = node['options']
-        fmt_class = node['_fmt']
+        options = node.options
+        fmt_class = node._fmt
 
-        util.eval_template(node, 'PY_type_filename')
+        node.eval_template('PY_type_filename')
 
         self.create_class_helper_functions(node)
 
@@ -205,7 +188,7 @@ class Wrapp(util.WrapperMixin):
 
         # wrap methods
         self._push_splicer('method')
-        self.wrap_functions(node, node['methods'])
+        self.wrap_functions(node, node.functions)
         self._pop_splicer('method')
 
     def create_class_helper_functions(self, node):
@@ -213,7 +196,7 @@ class Wrapp(util.WrapperMixin):
         These functions are used by PyArg_ParseTupleAndKeywords
         and Py_BuildValue node is a C++ class.
         """
-        fmt = node['_fmt']
+        fmt = node._fmt
 
         fmt.PY_capsule_name = wformat('PY_{cpp_class}_capsule_name', fmt)
 
@@ -322,10 +305,10 @@ return 1;""", fmt)
         overloaded_methods = {}
         for function in functions:
             flist = overloaded_methods. \
-                setdefault(function['_ast'].name, [])
-            if '_cpp_overload' not in function:
+                setdefault(function._ast.name, [])
+            if not function._cpp_overload:
                 continue
-            if not function['options'].wrap_python:
+            if not function.options.wrap_python:
                 continue
             flist.append(function)
         self.overloaded_methods = overloaded_methods
@@ -347,7 +330,7 @@ return 1;""", fmt)
         fmt.PY_used_param_args - True/False if parameter args is used
         fmt.PY_used_param_kwds - True/False if parameter kwds is used
         """
-        options = node['options']
+        options = node.options
         if not options.wrap_python:
             return
 
@@ -355,18 +338,18 @@ return 1;""", fmt)
             cls_function = 'method'
         else:
             cls_function = 'function'
-        self.log.write("Python {0} {1[_decl]}\n".format(cls_function, node))
+        self.log.write("Python {0} {1._decl}\n".format(cls_function, node))
 
-        fmt_func = node['_fmt']
-        fmtargs = node.setdefault('_fmtargs', {})
+        fmt_func = node._fmt
+        fmtargs = node._fmtargs
         fmt = util.Options(fmt_func)
         fmt.doc_string = 'documentation'
         if cls:
             fmt.PY_used_param_self = True
 
-        CPP_subprogram = node['_subprogram']
+        CPP_subprogram = node._subprogram
 
-        ast = node['_ast']
+        ast = node._ast
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
@@ -376,7 +359,7 @@ return 1;""", fmt)
             # XXX - have explicit delete
             # need code in __init__ and __del__
             return
-        if is_dtor or node.get('return_this', False):
+        if is_dtor or node.return_this:
             result_type = 'void'
             CPP_subprogram = 'subroutine'
 
@@ -410,7 +393,7 @@ return 1;""", fmt)
         # call function based on number of default arguments provided
         default_calls = []   # each possible default call
         found_default = False
-        if '_has_default_arg' in node:
+        if node._has_default_arg:
             PY_decl.append('Py_ssize_t SH_nargs = 0;')
             PY_code.extend([
                     'if (args != NULL) SH_nargs += PyTuple_Size(args);',
@@ -600,12 +583,12 @@ return 1;""", fmt)
                     fmt)
                 PY_code.append(line)
 
-            if 'PY_error_pattern' in node:
+            if node.PY_error_pattern:
                 lfmt = util.Options(fmt)
                 lfmt.c_var = fmt.PY_result
                 lfmt.cpp_var = fmt.PY_result
                 append_format(PY_code,
-                              self.patterns[node['PY_error_pattern']], lfmt)
+                              self.patterns[node.PY_error_pattern], lfmt)
 
             if found_default:
                 PY_code.append('break;')
@@ -657,7 +640,7 @@ return 1;""", fmt)
 
         PY_impl = [1] + PY_decl + PY_code + [-1]
 
-        util.eval_template(node, 'PY_name_impl')
+        node.eval_template('PY_name_impl')
 
         expose = True
         if len(self.overloaded_methods[ast.name]) > 1:
@@ -738,7 +721,7 @@ return 1;""", fmt)
         # update with type function names
         # type bodies must be filled in by user, no real way to guess
         PyObj = fmt.PY_PyObject
-        selected = node.get('python', {}).get('type', [])
+        selected = node.python.get('type', [])
 
         # Dictionary of methods for bodies
         default_body = dict(
@@ -765,7 +748,7 @@ return 1;""", fmt)
         self._pop_splicer('type')
 
     def write_extension_type(self, library, node):
-        fmt = node['_fmt']
+        fmt = node._fmt
         fname = fmt.PY_type_filename
 
         output = []
@@ -816,7 +799,7 @@ return 1;""", fmt)
             if len(methods) < 2:
                 continue  # not overloaded
 
-            fmt_func = methods[0]['_fmt']
+            fmt_func = methods[0]._fmt
             fmt = util.Options(fmt_func)
             fmt.function_suffix = ''
             fmt.doc_string = 'documentation'
@@ -835,16 +818,16 @@ return 1;""", fmt)
             body.append('PyObject *rvobj;')
 
             for overload in methods:
-                if '_nargs' in overload:
+                if overload._nargs:
                     body.append('if (SH_nargs >= %d && SH_nargs <= %d) {'
-                                % overload['_nargs'])
+                                % overload._nargs)
                 else:
                     body.append('if (SH_nargs == %d) {' %
-                                len(overload['_ast'].params))
+                                len(overload._ast.params))
                 body.append(1)
                 append_format(body,
                               'rvobj = {PY_name_impl}(self, args, kwds);',
-                              overload['_fmt'])
+                              overload._fmt)
                 body.append('if (!PyErr_Occurred()) {')
                 body.append(1)
                 body.append('return rvobj;')
@@ -864,14 +847,14 @@ return 1;""", fmt)
             body.append('return NULL;')
             body.append(-1)
 
-            util.eval_template(methods[0], 'PY_name_impl', fmt=fmt)
+            methods[0].eval_template('PY_name_impl', fmt=fmt)
 
             self.create_method(cls, True, fmt, body)
 
     def write_header(self, node):
         # node is library
-        options = node['options']
-        fmt = node['_fmt']
+        options = node.options
+        fmt = node._fmt
         fname = fmt.PY_header_filename
 
         output = []
@@ -889,7 +872,7 @@ return 1;""", fmt)
                 '#define IS_PY3K',
                 '#endif'])
 
-        for include in node['cpp_header'].split():
+        for include in node.cpp_header.split():
             output.append('#include "%s"' % include)
 
         self._push_splicer('header')
@@ -928,8 +911,8 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
 
     def write_module(self, node):
         # node is library.
-        options = node['options']
-        fmt = node['_fmt']
+        options = node.options
+        fmt = node._fmt
         fname = fmt.PY_module_filename
 
         fmt.PY_library_doc = 'library documentation'
@@ -969,8 +952,8 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
         self.write_output_file(fname, self.config.python_dir, output)
 
     def write_helper(self):
-        node = self.tree
-        fmt = node['_fmt']
+        node = self.newlibrary
+        fmt = node._fmt
         output = []
         output.append(wformat('#include "{PY_header_filename}"', fmt))
         self.namespace(node, None, 'begin', output)

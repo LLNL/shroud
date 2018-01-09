@@ -48,31 +48,13 @@ from . import util
 from .util import wformat, append_format
 
 
-def add_templates(options):
-    options.update(dict(
-        LUA_module_name_template='{library_lower}',
-        LUA_module_filename_template=(
-            'lua{library}module.{LUA_impl_filename_suffix}'),
-        LUA_header_filename_template=(
-            'lua{library}module.{LUA_header_filename_suffix}'),
-        LUA_userdata_type_template='{LUA_prefix}{cpp_class}_Type',
-        LUA_userdata_member_template='self',
-        LUA_module_reg_template='{LUA_prefix}{library}_Reg',
-        LUA_class_reg_template='{LUA_prefix}{cpp_class}_Reg',
-        LUA_metadata_template='{cpp_class}.metatable',
-        LUA_ctor_name_template='{cpp_class}',
-        LUA_name_template='{function_name}',
-        LUA_name_impl_template='{LUA_prefix}{class_prefix}{underscore_name}',
-        ))
-
-
 class Wrapl(util.WrapperMixin):
     """Generate Lua bindings.
     """
 
-    def __init__(self, tree, config, splicers):
-        self.tree = tree    # json tree
-        self.patterns = tree['patterns']
+    def __init__(self, newlibrary, config, splicers):
+        self.newlibrary = newlibrary
+        self.patterns = newlibrary.patterns
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -82,18 +64,18 @@ class Wrapl(util.WrapperMixin):
         pass
 
     def wrap_library(self):
-        top = self.tree
-        options = self.tree['options']
-        fmt_library = self.tree['_fmt']
+        newlibrary = self.newlibrary
+        options = newlibrary.options
+        fmt_library = newlibrary._fmt
 
         # Format variables
         fmt_library.LUA_prefix = options.get('LUA_prefix', 'l_')
         fmt_library.LUA_state_var = 'L'
         fmt_library.LUA_used_param_state = False
-        util.eval_template(top, 'LUA_module_name')
-        util.eval_template(top, 'LUA_module_reg')
-        util.eval_template(top, 'LUA_module_filename')
-        util.eval_template(top, 'LUA_header_filename')
+        newlibrary.eval_template('LUA_module_name')
+        newlibrary.eval_template('LUA_module_reg')
+        newlibrary.eval_template('LUA_module_filename')
+        newlibrary.eval_template('LUA_header_filename')
 
         # Variables to accumulate output lines
         self.luaL_Reg_module = []
@@ -102,8 +84,8 @@ class Wrapl(util.WrapperMixin):
         self.lua_type_structs = []
 
         self._push_splicer('class')
-        for node in self.tree['classes']:
-            name = node['name']
+        for node in newlibrary.classes:
+            name = node.name
             self.reset_file()
             self._push_splicer(name)
             self.wrap_class(node)
@@ -112,25 +94,25 @@ class Wrapl(util.WrapperMixin):
         self._pop_splicer('class')
 
         self.reset_file()
-        if self.tree['functions']:
+        if newlibrary.functions:
             self._push_splicer('function')
-            self.wrap_functions(None, self.tree['functions'])
+            self.wrap_functions(None, newlibrary.functions)
             self._pop_splicer('function')
 
-        self.write_header(self.tree)
-        self.write_module(self.tree)
+        self.write_header(newlibrary)
+        self.write_module(newlibrary)
 #        self.write_helper()
 
     def wrap_class(self, node):
-        options = node['options']
-        fmt_class = node['_fmt']
+        options = node.options
+        fmt_class = node._fmt
 
         fmt_class.LUA_userdata_var = 'SH_this'
-        util.eval_template(node, 'LUA_userdata_type')
-        util.eval_template(node, 'LUA_userdata_member')
-        util.eval_template(node, 'LUA_class_reg')
-        util.eval_template(node, 'LUA_metadata')
-        util.eval_template(node, 'LUA_ctor_name')
+        node.eval_template('LUA_userdata_type')
+        node.eval_template('LUA_userdata_member')
+        node.eval_template('LUA_class_reg')
+        node.eval_template('LUA_metadata')
+        node.eval_template('LUA_ctor_name')
 
         self._create_splicer('C_declaration', self.lua_type_structs)
         self.lua_type_structs.append('')
@@ -148,7 +130,7 @@ class Wrapl(util.WrapperMixin):
 
         # wrap methods
         self._push_splicer('method')
-        self.wrap_functions(node, node['methods'])
+        self.wrap_functions(node, node.functions)
         self._pop_splicer('method')
         self.append_luaL_Reg(self.body_lines, fmt_class.LUA_class_reg,
                              self.luaL_Reg_class)
@@ -185,9 +167,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         overloaded_methods = {}
         overloads = []
         for function in functions:
-            if not function['options'].wrap_lua:
+            if not function.options.wrap_lua:
                 continue
-            name = function['_ast'].name
+            name = function._ast.name
             if name in overloaded_methods:
                 overloaded_methods[name].append(function)
             else:
@@ -214,21 +196,21 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # First overload defines options
         node = overloads[0]
 
-        ast = node['_ast']
+        ast = node._ast
         function_name = ast.name
-        fmt_func = node['_fmt']
+        fmt_func = node._fmt
         fmt = util.Options(fmt_func)
-        util.eval_template(node, 'LUA_name')
-        util.eval_template(node, 'LUA_name_impl')
+        node.eval_template('LUA_name')
+        node.eval_template('LUA_name_impl')
 
-        CPP_subprogram = node['_subprogram']
+        CPP_subprogram = node._subprogram
 
-        # XXX       ast = node['_ast']
+        # XXX       ast = node._ast
         # XXX       result_type = ast.typename
         # XXX       result_is_ptr = ast.is_pointer()
         # XXX       result_is_ref = ast.is_reference()
 
-        if node.get('return_this', False):
+        if node.return_this:
             # XXX           result_type = 'void'
             # XXX           result_is_ptr = False
             CPP_subprogram = 'subroutine'
@@ -258,7 +240,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             in_args = []
             out_args = []
             found_default = False
-            for arg in function['_ast'].params:
+            for arg in function._ast.params:
                 arg_typedef = typemap.Typedef.lookup(arg.typename)
                 attrs = arg.attrs
                 if arg.init is not None:
@@ -426,23 +408,23 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             cls_function = 'method'
         else:
             cls_function = 'function'
-        self.log.write("Lua {0} {1[_decl]}\n".format(cls_function, node))
+        self.log.write("Lua {0} {1._decl}\n".format(cls_function, node))
 
-#        fmt_func = node['_fmt']
-        fmtargs = node.setdefault('_fmtargs', {})
+#        fmt_func = node._fmt
+        fmtargs = node._fmtargs
 #        fmt = util.Options(fmt_func)
 #        fmt.doc_string = 'documentation'
-#        util.eval_template(node, 'LUA_name')
-#        util.eval_template(node, 'LUA_name_impl')
+#        node.eval_template('LUA_name')
+#        node.eval_template('LUA_name_impl')
 
-        CPP_subprogram = node['_subprogram']
+        CPP_subprogram = node._subprogram
 
-        ast = node['_ast']
+        ast = node._ast
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
 
-        if is_dtor or node.get('return_this', False):
+        if is_dtor or node.return_this:
             result_type = 'void'
             CPP_subprogram = 'subroutine'
 
@@ -474,7 +456,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # find class object
         if cls:
-            cls_typedef = typemap.Typedef.lookup(cls['name'])
+            cls_typedef = typemap.Typedef.lookup(cls.name)
             if not is_ctor:
                 fmt.LUA_used_param_state = True
                 fmt.c_var = wformat(cls_typedef.LUA_pop, fmt)
@@ -621,8 +603,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         lines.extend(LUA_push)    # return values
 
     def write_header(self, node):
-        options = node['options']
-        fmt = node['_fmt']
+        options = node.options
+        fmt = node._fmt
         fname = fmt.LUA_header_filename
 
         output = []
@@ -635,7 +617,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 ])
         util.extern_C(output, 'begin')
 
-        for include in node['cpp_header'].split():
+        for include in node.cpp_header.split():
             output.append('#include "%s"' % include)
 
         output.append('#include "lua.h"')
@@ -667,13 +649,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
     def write_module(self, node):
         # node is library
-        options = node['options']
-        fmt = node['_fmt']
+        options = node.options
+        fmt = node._fmt
         fname = fmt.LUA_module_filename
 
         output = []
 
-        for include in node['cpp_header'].split():
+        for include in node.cpp_header.split():
             output.append('#include "{}"'.format(include))
         output.append(wformat('#include "{LUA_header_filename}"', fmt))
 

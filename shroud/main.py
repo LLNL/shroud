@@ -66,10 +66,11 @@ import os
 import sys
 import yaml
 
-from . import util
+from . import ast
 from . import declast
 from . import splicer
 from . import typemap
+from . import util
 from . import wrapc
 from . import wrapf
 from . import wrapp
@@ -86,255 +87,17 @@ class Config(object):
 
 
 class Schema(object):
-    """
-    Verify that the input dictionary has the correct fields.
-    Create defaults for missing fields.
-
-
-    check_schema
-      check_classes
-        check_class
-          check_function
-        check_class_depedencies
-          check_function_dependencies
-      check_functions
-        check_function
+    """Create a LibraryNode from a dictionary.
     """
     def __init__(self, tree, config):
         self.tree = tree    # json tree
         self.config = config
-        self.fmt_stack = []
-
-    def push_options(self, node):
-        """ Push a new set of options.
-        Copy current options, then update with new options.
-        Replace node[option] dictionary with Options instance.
-        Return original options dictionary.
-        """
-        old = None
-        new = util.Options(parent=self.options_stack[-1])
-        if 'options' in node and \
-                node['options'] is not None:
-            if not isinstance(node['options'], dict):
-                raise TypeError("options must be a dictionary")
-            old = node['options']
-            new.update(old)
-        self.options_stack.append(new)
-        node['options'] = new
-        return new, old
-
-    def pop_options(self):
-        self.options_stack.pop()
-
-    def check_options_only(self, node):
-        """Process an options only entry in a list.
-
-        Return True if node only has options.
-        node is assumed to be a dictionary.
-        Update current set of options from node['options'].
-        """
-        if len(node) != 1:
-            return False
-        options = node.get('options', None)
-        if not options:
-            return False
-        if not isinstance(options, dict):
-            raise TypeError("options must be a dictionary")
-
-        # replace current options
-        new = util.Options(parent=self.options_stack[-1])
-        new.update(node['options'])
-        self.options_stack[-1] = new
-        return True
-
-    def push_fmt(self, node):
-        fmt = util.Options(self.fmt_stack[-1])
-        self.fmt_stack.append(fmt)
-        node['_fmt'] = fmt
-        return fmt
-
-    def pop_fmt(self):
-        self.fmt_stack.pop()
-
-    def option_to_fmt(self, fmt, options):
-        """Set fmt based on options dictionary.
-
-        options - options dictionary from YAML file.
-        """
-        if options is None:
-            return
-        for name in ['C_prefix', 'F_C_prefix', 
-                     'C_this', 'C_result', 'CPP_this',
-                     'F_this', 'F_result', 'F_derived_member',
-                     'C_string_result_as_arg', 'F_string_result_as_arg',
-                     'C_header_filename_suffix',
-                     'C_impl_filename_suffix',
-                     'F_filename_suffix',
-                     'PY_header_filename_suffix',
-                     'PY_impl_filename_suffix',
-                     'PY_result',
-                     'LUA_header_filename_suffix',
-                     'LUA_impl_filename_suffix',
-                     'LUA_result']:
-            if name in options:
-                setattr(fmt, name, options[name])
 
     def check_schema(self):
         """ Check entire schema of input tree.
         Create format dictionaries.
         """
         node = self.tree
-
-        language = node['language'].lower()
-        if language not in ['c', 'c++']:
-            raise RuntimeError("language must be 'c' or 'c++'")
-
-        # default options
-        def_options = util.Options(
-            parent=None,
-            debug=False,   # print additional debug info
-
-            F_module_per_class=True,
-            F_string_len_trim=True,
-            F_force_wrapper=False,
-
-            wrap_c=True,
-            wrap_fortran=True,
-            wrap_python=False,
-            wrap_lua=False,
-
-            doxygen=True,       # create doxygen comments
-            show_splicer_comments=True,
-
-            # blank for functions, set in classes.
-            class_prefix_template='{class_lower}_',
-
-            YAML_type_filename_template='{library_lower}_types.yaml',
-
-            C_header_filename_library_template='wrap{library}.{C_header_filename_suffix}',
-            C_impl_filename_library_template='wrap{library}.{C_impl_filename_suffix}',
-
-            C_header_filename_class_template='wrap{cpp_class}.{C_header_filename_suffix}',
-            C_impl_filename_class_template='wrap{cpp_class}.{C_impl_filename_suffix}',
-
-            C_name_template=(
-                '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
-
-            C_bufferify_suffix='_bufferify',
-            C_var_len_template = 'N{c_var}',         # argument for result of len(arg)
-            C_var_trim_template = 'L{c_var}',        # argument for result of len_trim(arg)
-            C_var_size_template = 'S{c_var}',        # argument for result of size(arg)
-
-            # Fortran's names for C functions
-            F_C_prefix='c_',
-            F_C_name_template=(
-                '{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
-
-            F_name_impl_template=(
-                '{class_prefix}{underscore_name}{function_suffix}'),
-
-            F_name_function_template='{underscore_name}{function_suffix}',
-            F_name_generic_template='{underscore_name}',
-
-            F_module_name_library_template='{library_lower}_mod',
-            F_impl_filename_library_template='wrapf{library_lower}.{F_filename_suffix}',
-
-            F_module_name_class_template='{class_lower}_mod',
-            F_impl_filename_class_template='wrapf{cpp_class}.{F_filename_suffix}',
-
-            F_name_instance_get='get_instance',
-            F_name_instance_set='set_instance',
-            F_name_associated='associated',
-
-            )
-        wrapp.add_templates(def_options)
-        wrapl.add_templates(def_options)
-
-        if 'options' in node:
-            old = node['options']
-            def_options.update(old)
-        else:
-            old = None
-        self.options_stack = [def_options]
-        node['options'] = def_options
-
-        fmt_library = node['_fmt'] = util.Options(None)
-        fmt_library.library = node['library']
-        fmt_library.library_lower = fmt_library.library.lower()
-        fmt_library.library_upper = fmt_library.library.upper()
-        fmt_library.function_suffix = ''   # assume no suffix
-        fmt_library.C_prefix = def_options.get(
-            'C_prefix', fmt_library.library_upper[:3] + '_')
-        fmt_library.F_C_prefix = def_options['F_C_prefix']
-        if node['namespace']:
-            fmt_library.namespace_scope = (
-                '::'.join(node['namespace'].split()) + '::')
-        else:
-            fmt_library.namespace_scope = ''
-
-        # set default values for fields which may be unset.
-        fmt_library.class_prefix = ''
-#        fmt_library.c_ptr = ''
-#        fmt_library.c_const = ''
-        fmt_library.CPP_this_call = ''
-        fmt_library.CPP_template = ''
-        fmt_library.C_pre_call = ''
-        fmt_library.C_post_call = ''
-
-        fmt_library.C_this = 'self'
-        fmt_library.C_result = 'SHT_rv'
-        fmt_library.c_temp = 'SHT_'
-
-        fmt_library.CPP_this = 'SH_this'
-
-        fmt_library.F_this = 'obj'
-        fmt_library.F_result = 'SHT_rv'
-        fmt_library.F_derived_member = 'voidptr'
-
-        fmt_library.C_string_result_as_arg = 'SHF_rv'
-        fmt_library.F_string_result_as_arg = ''
-
-        fmt_library.F_filename_suffix = 'f'
-
-        # don't have to worry about argument names in Python wrappers
-        # so skip the SH_ prefix by default.
-        fmt_library.PY_result = 'rv'
-        fmt_library.LUA_result = 'rv'
-
-        if language == 'c':
-            fmt_library.C_header_filename_suffix = 'h'
-            fmt_library.C_impl_filename_suffix = 'c'
-
-            fmt_library.PY_header_filename_suffix = 'h'
-            fmt_library.PY_impl_filename_suffix = 'c'
-
-            fmt_library.LUA_header_filename_suffix = 'h'
-            fmt_library.LUA_impl_filename_suffix = 'c'
-
-            fmt_library.stdlib  = ''
-        else:
-            fmt_library.C_header_filename_suffix = 'h'
-            fmt_library.C_impl_filename_suffix = 'cpp'
-
-            fmt_library.PY_header_filename_suffix = 'hpp'
-            fmt_library.PY_impl_filename_suffix = 'cpp'
-
-            fmt_library.LUA_header_filename_suffix = 'hpp'
-            fmt_library.LUA_impl_filename_suffix = 'cpp'
-
-            fmt_library.stdlib  = 'std::'
-
-        self.option_to_fmt(fmt_library, old)
-
-        self.fmt_stack.append(fmt_library)
-
-        # default some options based on other options
-        util.eval_template(node, 'C_header_filename', '_library')
-        util.eval_template(node, 'C_impl_filename', '_library')
-        # All class/methods and functions may go into this file or
-        # just functions.
-        util.eval_template(node, 'F_module_name', '_library')
-        util.eval_template(node, 'F_impl_filename', '_library')
 
         def_types, def_types_alias = typemap.initialize()
         declast.add_typemap()
@@ -369,141 +132,9 @@ class Schema(object):
                     def_types[key] = typemap.Typedef(key, **value)
                 typemap.typedef_wrapped_defaults(def_types[key])
 
-        # Add to node so they show up in the json debug file.
-        node['_types'] = def_types
-        node['_type_aliases'] = def_types_alias
+        newlibrary = ast.LibraryNode(node)
 
-        patterns = node.setdefault('patterns', [])
-        classes = node.setdefault('classes', [])
-        self.check_classes(classes)
-        self.check_functions(node, '', 'functions')
-
-    def check_classes(self, node):
-        if not isinstance(node, list):
-            raise TypeError("classes must be a list")
-        for cls in node:
-            if not isinstance(cls, dict):
-                raise TypeError("classes[n] must be a dictionary")
-            if 'name' not in cls:
-                raise TypeError("class does not define name")
-            declast.add_type(cls['name'])
-        for cls in node:
-            self.check_class(cls)
-
-    def check_class(self, node):
-        if 'name' not in node:
-            raise RuntimeError('Expected name for class')
-        name = node['name']
-
-        # default cpp_header to blank
-        if 'cpp_header' not in node:
-            node['cpp_header'] = ''
-        if node['cpp_header'] is None:
-            # YAML turns blank strings into None
-            node['cpp_header'] = ''
-
-        options, old = self.push_options(node)
-        fmt_class = self.push_fmt(node)
-        self.option_to_fmt(fmt_class, old)
-        fmt_class.cpp_class = name
-        fmt_class.class_lower = name.lower()
-        fmt_class.class_upper = name.upper()
-        util.eval_template(node, 'class_prefix')
-
-        # Only one file per class for C.
-        util.eval_template(node, 'C_header_filename', '_class')
-        util.eval_template(node, 'C_impl_filename', '_class')
-
-        if options.F_module_per_class:
-            util.eval_template(node, 'F_module_name', '_class')
-            util.eval_template(node, 'F_impl_filename', '_class')
-
-        self.check_functions(node, name, 'methods')
-        self.pop_fmt()
-        self.pop_options()
-
-    def check_function(self, node, cls_name):
-        """ Make sure necessary fields are present for a function.
-        """
-        options, old = self.push_options(node)
-        fmt_func = self.push_fmt(node)
-        self.option_to_fmt(fmt_func, old)
-
-#        func = util.FunctionNode()
-#        func.update(node)
-#        func.dump()
-
-        if 'cpp_template' in node:
-            template_types = node['cpp_template'].keys()
-        else:
-            template_types = []
-        if 'decl' in node:
-            # parse decl and add to dictionary
-            ast = declast.check_decl(node['decl'],
-                                     current_class=cls_name,
-                                     template_types=template_types)
-            node['_ast'] = ast
-
-            # add any attributes from YAML files to the ast
-            if 'attrs' in node:
-                attrs = node['attrs']
-                if 'result' in attrs:
-                    ast.attrs.update(attrs['result'])
-                for arg in ast.params:
-                    name = arg.name
-                    if name in attrs:
-                        arg.attrs.update(attrs[name])
-            # XXX - waring about unused fields in attrs
-        else:
-            raise RuntimeError("Missing decl")
-                                        
-        if ('function_suffix' in node and
-                node['function_suffix'] is None):
-            # YAML turns blanks strings into None
-            node['function_suffix'] = ''
-        if 'default_arg_suffix' in node:
-            default_arg_suffix = node['default_arg_suffix']
-            if not isinstance(default_arg_suffix, list):
-                raise RuntimeError('default_arg_suffix must be a list')
-            for i, value in enumerate(node['default_arg_suffix']):
-                if value is None:
-                    # YAML turns blanks strings to None
-                    node['default_arg_suffix'][i] = ''
-
-# XXX - do some error checks on ast
-#        if 'name' not in result:
-#            raise RuntimeError("Missing result.name")
-#        if 'type' not in result:
-#            raise RuntimeError("Missing result.type")
-
-        if ast.params is None:
-            raise RuntimeError("Missing arguments:", ast.gen_decl())
-
-        ast = node['_ast']
-
-        fmt_func.function_name = ast.name
-        fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
-
-        # docs
-        self.pop_fmt()
-        self.pop_options()
-
-    def check_functions(self, node, cls_name, member):
-        """ check functions.
-
-        Create a new list without the options only entries.
-        """
-        functions = node.get(member, [])
-
-        if not isinstance(functions, list):
-            raise TypeError("functions must be a list")
-        only_functions = []
-        for func in functions:
-            if self.check_options_only(func):
-                continue
-            self.check_function(func, cls_name)
-            only_functions.append(func)
-        node[member] = only_functions
+        return newlibrary
 
 
 class GenFunctions(object):
@@ -513,33 +144,31 @@ class GenFunctions(object):
     Computes fmt.function_suffix.
     """
 
-    def __init__(self, tree, config):
-        self.tree = tree    # json tree
+    def __init__(self, newlibrary, config):
+        self.newlibrary = newlibrary
         self.config = config
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
         """
-        tree = self.tree
+        newlibrary = self.newlibrary
 
-        # Order of creating.
-        # Each is given a _function_index when created.
-        tree['function_index'] = self.function_index = []
+        self.function_index = newlibrary.function_index
 
-        for cls in tree['classes']:
-            cls['methods'] = self.define_function_suffix(cls['methods'])
-        tree['functions'] = self.define_function_suffix(tree['functions'])
+        for cls in newlibrary.classes:
+            cls.functions = self.define_function_suffix(cls.functions)
+        newlibrary.functions = self.define_function_suffix(newlibrary.functions)
 
 # No longer need this, but keep code for now in case some other dependency checking is needed
-#        for cls in tree['classes']:
+#        for cls in newlibrary.classes:
 #            self.check_class_dependencies(cls)
 
     def append_function_index(self, node):
         """append to function_index, set index into node.
         """
         ilist = self.function_index
-        node['_function_index'] = len(ilist)
-#        node['_fmt'].function_index = str(len(ilist)) # debugging
+        node._function_index = len(ilist)
+#        node._fmt.function_index = str(len(ilist)) # debugging
         ilist.append(node)
 
     def define_function_suffix(self, functions):
@@ -550,46 +179,46 @@ class GenFunctions(object):
         # Look for overloaded functions
         cpp_overload = {}
         for function in functions:
-            if 'function_suffix' in function:
-                function['_fmt'].function_suffix = function['function_suffix']
+            if function.function_suffix is not None:
+                function._fmt.function_suffix = function.function_suffix
             self.append_function_index(function)
             cpp_overload. \
-                setdefault(function['_ast'].name, []). \
-                append(function['_function_index'])
+                setdefault(function._ast.name, []). \
+                append(function._function_index)
 
         # keep track of which function are overloaded in C++.
         for key, value in cpp_overload.items():
             if len(value) > 1:
                 for index in value:
-                    self.function_index[index]['_cpp_overload'] = value
+                    self.function_index[index]._cpp_overload = value
 
         # Create additional functions needed for wrapping
         ordered_functions = []
         for method in functions:
-            if '_has_default_arg' in method:
+            if method._has_default_arg:
                 self.has_default_args(method, ordered_functions)
             ordered_functions.append(method)
-            if 'cpp_template' in method:
-                method['_overloaded'] = True
+            if method.cpp_template:
+                method._overloaded = True
                 self.template_function(method, ordered_functions)
 
         # Look for overloaded functions
         overloaded_functions = {}
         for function in ordered_functions:
-            # if not function['options'].wrap_c:
+            # if not function.options.wrap_c:
             #     continue
-            if 'cpp_template' in function:
+            if function.cpp_template:
                 continue
             overloaded_functions.setdefault(
-                function['_ast'].name, []).append(function)
+                function._ast.name, []).append(function)
 
         # look for function overload and compute function_suffix
         for mname, overloads in overloaded_functions.items():
             if len(overloads) > 1:
                 for i, function in enumerate(overloads):
-                    function['_overloaded'] = True
-                    if not function['_fmt'].inlocal('function_suffix'):
-                        function['_fmt'].function_suffix = '_{}'.format(i)
+                    function._overloaded = True
+                    if not function._fmt.inlocal('function_suffix'):
+                        function._fmt.function_suffix = '_{}'.format(i)
 
         # Create additional C bufferify functions.
         ordered3 = []
@@ -602,10 +231,10 @@ class GenFunctions(object):
         ordered4 = []
         for method in ordered3:
             ordered4.append(method)
-            if not method['options'].wrap_fortran:
+            if not method.options.wrap_fortran:
                 continue
-            if 'fortran_generic' in method:
-                method['_overloaded'] = True
+            if method.fortran_generic:
+                method._overloaded = True
                 self.generic_function(method, ordered4)
 
         self.gen_functions_decl(ordered4)
@@ -615,37 +244,37 @@ class GenFunctions(object):
     def template_function(self, node, ordered_functions):
         """ Create overloaded functions for each templated argument.
         """
-        if len(node['cpp_template']) != 1:
+        if len(node.cpp_template) != 1:
             # In the future it may be useful to have multiple templates
             # That the would start creating more permutations
-            raise NotImplemented("Only one cpp_templated type for now")
-        for typename, types in node['cpp_template'].items():
+            raise NotImplementedError("Only one cpp_templated type for now")
+        for typename, types in node.cpp_template.items():
             for type in types:
                 new = util.copy_function_node(node)
                 ordered_functions.append(new)
                 self.append_function_index(new)
 
-                new['_generated'] = 'cpp_template'
-                fmt = new['_fmt']
+                new._generated = 'cpp_template'
+                fmt = new._fmt
                 fmt.function_suffix = fmt.function_suffix + '_' + type
-                del new['cpp_template']
-                options = new['options']
+                new.cpp_template = {}
+                options = new.options
                 options.wrap_c = True
                 options.wrap_fortran = True
                 options.wrap_python = False
                 options.wrap_lua = False
                 # Convert typename to type
                 fmt.CPP_template = '<{}>'.format(type)
-                if new['_ast'].typename == typename:
-                    new['_ast'].typename = type
-                    new['_CPP_return_templated'] = True
-                for arg in new['_ast'].params:
+                if new._ast.typename == typename:
+                    new._ast.typename = type
+                    new._CPP_return_templated = True
+                for arg in new._ast.params:
                     if arg.typename == typename:
                         arg.typename = type
 
         # Do not process templated node, instead process
         # generated functions above.
-        options = node['options']
+        options = node.options
         options.wrap_c = False
         options.wrap_fortran = False
         options.wrap_python = False
@@ -654,29 +283,29 @@ class GenFunctions(object):
     def generic_function(self, node, ordered_functions):
         """ Create overloaded functions for each generic method.
         """
-        if len(node['fortran_generic']) != 1:
+        if len(node.fortran_generic) != 1:
             # In the future it may be useful to have multiple generic arguments
             # That the would start creating more permutations
             raise NotImplemented("Only one generic arg for now")
-        for argname, types in node['fortran_generic'].items():
+        for argname, types in node.fortran_generic.items():
             for type in types:
                 new = util.copy_function_node(node)
                 ordered_functions.append(new)
                 self.append_function_index(new)
 
-                new['_generated'] = 'fortran_generic'
-                new['_PTR_F_C_index'] = node['_function_index']
-                fmt = new['_fmt']
+                new._generated = 'fortran_generic'
+                new._PTR_F_C_index = node._function_index
+                fmt = new._fmt
                 # XXX append to existing suffix
                 fmt.function_suffix = fmt.function_suffix + '_' + type
-                del new['fortran_generic']
-                options = new['options']
+                new.fortran_generic = {}
+                options = new.options
                 options.wrap_c = False
                 options.wrap_fortran = True
                 options.wrap_python = False
                 options.wrap_lua = False
                 # Convert typename to type
-                for arg in new['_ast'].params:
+                for arg in new._ast.params:
                     if arg.name == argname:
                         # Convert any typedef to native type with f_type
                         argtype = arg.typename
@@ -690,7 +319,7 @@ class GenFunctions(object):
 
         # Do not process templated node, instead process
         # generated functions above.
-        options = node['options']
+        options = node.options
 #        options.wrap_c = False
         options.wrap_fortran = False
 #        options.wrap_python = False
@@ -707,41 +336,41 @@ class GenFunctions(object):
         """
         default_funcs = []
 
-        default_arg_suffix = node.get('default_arg_suffix', [])
+        default_arg_suffix = node.default_arg_suffix
         ndefault = 0
 
         min_args = 0
-        for i, arg in enumerate(node['_ast'].params):
+        for i, arg in enumerate(node._ast.params):
             if arg.init is None:
                 min_args += 1
                 continue
             new = util.copy_function_node(node)
             self.append_function_index(new)
-            new['_generated'] = 'has_default_arg'
-            del new['_ast'].params[i:]  # remove trailing arguments
-            del new['_has_default_arg']
-            options = new['options']
+            new._generated = 'has_default_arg'
+            del new._ast.params[i:]  # remove trailing arguments
+            new._has_default_arg = False
+            options = new.options
             options.wrap_c = True
             options.wrap_fortran = True
             options.wrap_python = False
             options.wrap_lua = False
-            fmt = new['_fmt']
+            fmt = new._fmt
             try:
                 fmt.function_suffix = default_arg_suffix[ndefault]
             except IndexError:
                 # XXX fmt.function_suffix =
                 # XXX  fmt.function_suffix + '_nargs%d' % (i + 1)
                 pass
-            default_funcs.append(new['_function_index'])
+            default_funcs.append(new._function_index)
             ordered_functions.append(new)
             ndefault += 1
 
         # keep track of generated default value functions
-        node['_default_funcs'] = default_funcs
-        node['_nargs'] = (min_args, len(node['_ast'].params))
+        node._default_funcs = default_funcs
+        node._nargs = (min_args, len(node._ast.params))
         # The last name calls with all arguments (the original decl)
         try:
-            node['_fmt'].function_suffix = default_arg_suffix[ndefault]
+            node._fmt.function_suffix = default_arg_suffix[ndefault]
         except IndexError:
             pass
 
@@ -751,14 +380,14 @@ class GenFunctions(object):
         If found then create a new C function that
         will convert argument into a buffer and length.
         """
-        options = node['options']
-        fmt = node['_fmt']
+        options = node.options
+        fmt = node._fmt
 
         # If a C++ function returns a std::string instance,
         # the default wrapper will not compile since the wrapper
         # will be declared as char. It will also want to return the
         # c_str of a stack variable. Warn and turn off the wrapper.
-        ast = node['_ast']
+        ast = node._ast
         result_type = ast.typename
         result_typedef = typemap.Typedef.lookup(result_type)
         # wrapped classes have not been added yet.
@@ -822,20 +451,20 @@ class GenFunctions(object):
         ordered_functions.append(C_new)
         self.append_function_index(C_new)
 
-        C_new['_generated'] = 'arg_to_buffer'
-        C_new['_error_pattern_suffix'] = '_as_buffer'
-        fmt = C_new['_fmt']
+        C_new._generated = 'arg_to_buffer'
+        C_new._error_pattern_suffix = '_as_buffer'
+        fmt = C_new._fmt
         fmt.function_suffix = fmt.function_suffix + options.C_bufferify_suffix
 
-        options = C_new['options']
+        options = C_new.options
         options.wrap_c = True
         options.wrap_fortran = False
         options.wrap_python = False
         options.wrap_lua = False
-        C_new['_PTR_C_CPP_index'] = node['_function_index']
+        C_new._PTR_C_CPP_index = node._function_index
 
         newargs = []
-        for arg in C_new['_ast'].params:
+        for arg in C_new._ast.params:
             attrs = arg.attrs
             argtype = arg.typename
             arg_typedef = typemap.Typedef.lookup(argtype)
@@ -844,9 +473,9 @@ class GenFunctions(object):
                 # Meaningless to call without the size argument.
                 # TODO: add an option where char** length is determined by looking
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
-                node['options'].wrap_c = False
-                node['options'].wrap_python = False  # NotImplemented
-                node['options'].wrap_lua = False     # NotImplemented
+                node.options.wrap_c = False
+                node.options.wrap_python = False  # NotImplemented
+                node.options.wrap_lua = False     # NotImplemented
             arg_typedef, c_statements = typemap.lookup_c_statements(arg)
 
             # set names for implied buffer arguments
@@ -869,22 +498,18 @@ class GenFunctions(object):
                 ## base typedef
 
         # Copy over some buffer specific fields to their generic name.
-        #    C_post_call = C_post_call_buf
-        for field in ['C_post_call']:
-            workname = field + '_buf'
-            if workname in C_new:
-                C_new[field] = C_new[workname]
+        C_new.C_post_call = C_new.C_post_call_buf
 
         if has_string_result:
             # Add additional argument to hold result
-            ast = C_new['_ast']
+            ast = C_new._ast
             result_as_string = ast.result_as_arg(result_name)
             attrs = result_as_string.attrs
             attrs['len'] = options.C_var_len_template.format(c_var=result_name)
             attrs['intent'] = 'out'
             attrs['_is_result'] = True
             # convert to subroutine
-            C_new['_subprogram'] = 'subroutine'
+            C_new._subprogram = 'subroutine'
 
         if is_pure:
             # pure functions which return a string have result_pure defined.
@@ -897,20 +522,20 @@ class GenFunctions(object):
             self.append_function_index(F_new)
 
             # Fortran function should wrap the new C function
-            F_new['_PTR_F_C_index'] = C_new['_function_index']
-            options = F_new['options']
+            F_new._PTR_F_C_index = C_new._function_index
+            options = F_new.options
             options.wrap_c = False
             options.wrap_fortran = True
             options.wrap_python = False
             options.wrap_lua = False
             # Do not add '_bufferify'
-            F_new['_fmt'].function_suffix = node['_fmt'].function_suffix
+            F_new._fmt.function_suffix = node._fmt.function_suffix
 
             # Do not wrap original function (does not have result argument)
-            node['options'].wrap_fortran = False
+            node.options.wrap_fortran = False
         else:
             # Fortran function may call C subroutine if string result
-            node['_PTR_F_C_index'] = C_new['_function_index']
+            node._PTR_F_C_index = C_new._function_index
 
     def XXXcheck_class_dependencies(self, node):
         """
@@ -937,17 +562,17 @@ class GenFunctions(object):
         F_modules = []  # array of tuples ( name, (only1, only2) )
         for mname in sorted(modules):
             F_modules.append((mname, sorted(modules[mname])))
-        node['F_module_dependencies'] = F_modules
+        node.F_module_dependencies = F_modules
 
     def XXXcheck_function_dependencies(self, node, used_types):
         """Record which types are used by a function.
         """
-        if 'cpp_template' in node:
+        if node.cpp_template:
             # The templated type will raise an error.
             # XXX - Maybe dummy it out
             # XXX - process templated types
             return
-        ast = node['_ast']
+        ast = node._ast
         rv_type = ast.typename
         typedef = typemap.Typedef.lookup(rv_type)
         if typedef is None:
@@ -969,7 +594,7 @@ class GenFunctions(object):
         """ Generate _decl for generated all functions.
         """
         for node in functions:
-            node['_decl'] = node['_ast'].gen_decl()
+            node._decl = node._ast.gen_decl()
 
 
 class VerifyAttrs(object):
@@ -977,21 +602,21 @@ class VerifyAttrs(object):
     Check attributes and set some defaults.
     Generate types for classes.
     """
-    def __init__(self, tree, config):
-        self.tree = tree    # json tree
+    def __init__(self, newlibrary, config):
+        self.newlibrary = newlibrary
         self.config = config
 
     def verify_attrs(self):
-        tree = self.tree
+        newlibrary = self.newlibrary
 
-        for cls in tree['classes']:
+        for cls in newlibrary.classes:
             typemap.create_class_typedef(cls)
 
-        for cls in tree['classes']:
-            for func in cls['methods']:
+        for cls in newlibrary.classes:
+            for func in cls.functions:
                 self.check_arg_attrs(func)
 
-        for func in tree['functions']:
+        for func in newlibrary.functions:
             self.check_arg_attrs(func)
 
     def check_arg_attrs(self, node):
@@ -1000,19 +625,19 @@ class VerifyAttrs(object):
         value: if pointer, default to False (pass-by-reference;
                else True (pass-by-value).
         """
-        options = node['options']
+        options = node.options
         if not options.wrap_fortran and not options.wrap_c:
             return
 
         # cache subprogram type
-        ast = node['_ast']
+        ast = node._ast
         result_type = ast.typename
         result_is_ptr = ast.is_pointer()
         #  'void'=subroutine   'void *'=function
         if result_type == 'void' and not result_is_ptr:
-            node['_subprogram'] = 'subroutine'
+            node._subprogram = 'subroutine'
         else:
-            node['_subprogram'] = 'function'
+            node._subprogram = 'function'
 
         found_default = False
         for arg in ast.params:
@@ -1026,8 +651,7 @@ class VerifyAttrs(object):
                 #    ArgType:
                 #    - int
                 #    - double
-                cpp_template = node.get('cpp_template', {})
-                if argtype not in cpp_template:
+                if argtype not in node.cpp_template:
                     raise RuntimeError("No such type %s: %s" % (
                             argtype, arg.gen_decl()))
 
@@ -1089,7 +713,7 @@ class VerifyAttrs(object):
 
             if arg.init is not None:
                 found_default = True
-                node['_has_default_arg'] = True
+                node._has_default_arg = True
             elif found_default is True:
                 raise RuntimeError("Expected default value for %s" % argname)
 
@@ -1132,8 +756,8 @@ class Namify(object):
     F_C_name - Fortran function for C interface
     F_name_impl - Name of Fortran function implementation
     """
-    def __init__(self, tree, config):
-        self.tree = tree    # json tree
+    def __init__(self, newlibrary, config):
+        self.newlibrary = newlibrary
         self.config = config
 
     def name_library(self):
@@ -1141,27 +765,27 @@ class Namify(object):
         self.name_language(self.name_function_fortran)
 
     def name_language(self, handler):
-        tree = self.tree
-        for cls in tree['classes']:
-            for func in cls['methods']:
+        newlibrary = self.newlibrary
+        for cls in newlibrary.classes:
+            for func in cls.functions:
                 handler(cls, func)
 
-            options = cls['options']
-            fmt_class = cls['_fmt']
+            options = cls.options
+            fmt_class = cls._fmt
             if 'F_this' in options:
                 fmt_class.F_this = options.F_this
 
-        for func in tree['functions']:
+        for func in newlibrary.functions:
             handler(None, func)
 
     def name_function_c(self, cls, node):
-        options = node['options']
+        options = node.options
         if not options.wrap_c:
             return
-        fmt_func = node['_fmt']
+        fmt_func = node._fmt
 
-        util.eval_template(node, 'C_name')
-        util.eval_template(node, 'F_C_name')
+        node.eval_template('C_name')
+        node.eval_template('F_C_name')
         fmt_func.F_C_name = fmt_func.F_C_name.lower()
 
         if 'C_this' in options:
@@ -1170,14 +794,14 @@ class Namify(object):
     def name_function_fortran(self, cls, node):
         """ Must process C functions to generate their names.
         """
-        options = node['options']
+        options = node.options
         if not options.wrap_fortran:
             return
-        fmt_func = node['_fmt']
+        fmt_func = node._fmt
 
-        util.eval_template(node, 'F_name_impl')
-        util.eval_template(node, 'F_name_function')
-        util.eval_template(node, 'F_name_generic')
+        node.eval_template('F_name_impl')
+        node.eval_template('F_name_function')
+        node.eval_template('F_name_generic')
 
         if 'F_this' in options:
             fmt_func.F_this = options.F_this
@@ -1190,8 +814,8 @@ class TypeOut(util.WrapperMixin):
     It subclasses util.WrapperMixin in order to access 
     write routines.
     """
-    def __init__(self, tree, config):
-        self.tree = tree    # json tree
+    def __init__(self, newlibrary, config):
+        self.newlibrary = newlibrary
         self.config = config
         self.log = config.log
         self.comment = '#'
@@ -1200,30 +824,33 @@ class TypeOut(util.WrapperMixin):
         """Write out types into a file.
         This file can be read by Shroud to share types.
         """
-        util.eval_template(self.tree, 'YAML_type_filename')
-        fname = self.tree['_fmt'].YAML_type_filename
+        newlibrary = self.newlibrary
+        newlibrary.eval_template('YAML_type_filename')
+        fname = newlibrary._fmt.YAML_type_filename
         output = [
             '# Types generated by Shroud for class {}'.format(
-                self.tree['library']),
+                self.newlibrary.library),
             'types:',
         ]
 
+        def_types, def_types_alias = typemap.Typedef.get_global_types()
+
         write_file = False
-        for cls in self.tree['classes']:
-            name = cls['name']
+        for cls in newlibrary.classes:
+            name = cls.name
             output.append('')
             output.append('  {}:'.format(name))
-            self.tree['_types'][name].__export_yaml__(2, output)
+            def_types[name].__export_yaml__(2, output)
             write_file = True
 
             # yaml.dump does not make a nice output
-            # line = yaml.dump(self.tree['types'][cls['name']],
+            # line = yaml.dump(def_types[cls['name']],
             #                  default_flow_style=False)
 
         # debug prints
         # name = 'bool'
         # output.append('  {}:'.format(name))
-        # self.tree['types'][name].__as_yaml__(2, output)
+        # def_types[name].__as_yaml__(2, output)
 
         if write_file:
             self.write_output_file(fname, self.config.yaml_dir, output)
@@ -1372,10 +999,10 @@ def main_with_args(args):
 
 #    print(all)
 
-    Schema(all, config).check_schema()
-    VerifyAttrs(all, config).verify_attrs()
-    GenFunctions(all, config).gen_library()
-    Namify(all, config).name_library()
+    newlibrary = Schema(all, config).check_schema()
+    VerifyAttrs(newlibrary, config).verify_attrs()
+    GenFunctions(newlibrary, config).gen_library()
+    Namify(newlibrary, config).name_library()
 
     if 'splicer' in all:
         # read splicer files defined in input YAML file
@@ -1400,28 +1027,36 @@ def main_with_args(args):
         splicers.update(all['splicer_code'])
 
     # Write out generated types
-    TypeOut(all, config).write_types()
+    TypeOut(newlibrary, config).write_types()
 
     try:
-        if all['options'].wrap_c:
-            wrapc.Wrapc(all, config, splicers['c']).wrap_library()
+        options = newlibrary.options
+        if options.wrap_c:
+            wrapc.Wrapc(newlibrary, config, splicers['c']).wrap_library()
 
-        if all['options'].wrap_fortran:
-            wrapf.Wrapf(all, config, splicers['f']).wrap_library()
+        if options.wrap_fortran:
+            wrapf.Wrapf(newlibrary, config, splicers['f']).wrap_library()
 
-        if all['options'].wrap_python:
-            wrapp.Wrapp(all, config, splicers['py']).wrap_library()
+        if options.wrap_python:
+            wrapp.Wrapp(newlibrary, config, splicers['py']).wrap_library()
 
-        if all['options'].wrap_lua:
-            wrapl.Wrapl(all, config, splicers['lua']).wrap_library()
+        if options.wrap_lua:
+            wrapl.Wrapl(newlibrary, config, splicers['lua']).wrap_library()
     finally:
         # Write a debug dump even if there was an exception.
-        # when dumping json, remove function_index to avoid duplication
-        del all['function_index']
+        def_types, def_types_alias = typemap.Typedef.get_global_types()
 
         jsonpath = os.path.join(args.logdir, basename + '.json')
         fp = open(jsonpath, 'w')
-        json.dump(all, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
+
+        out = dict(
+            library = newlibrary,
+            types = def_types,
+            typealias = def_types_alias,
+#            yaml = all,
+        )
+
+        json.dump(out, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
         fp.close()
 
     # Write list of output files.  May be useful for build systems

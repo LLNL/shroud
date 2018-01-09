@@ -42,6 +42,7 @@ Parse C++ declarations.
 """
 from __future__ import print_function
 
+from shroud import ast
 from shroud import declast
 from shroud import typemap
 from shroud import util
@@ -56,15 +57,13 @@ class CheckParse(unittest.TestCase):
         typemap.initialize()
         declast.add_typemap()
 
+        library = ast.LibraryNode()
+
         # Create a Typemap for 'Class1'
-        cls = dict(
-            name='Class1',
-            _fmt = util.Options(None),
-            options = util.Options(None),
-        )
-        cls['_fmt'].C_prefix = 'CC_'
-        cls['_fmt'].F_module_name = 'moder'
-        cls['options'].F_name_instance_get = 'get'
+        cls = ast.ClassNode('Class1', parent=library)
+        cls._fmt.C_prefix = 'CC_'
+        cls._fmt.F_module_name = 'moder'
+        cls.options.F_name_instance_get = 'get'
         typemap.create_class_typedef(cls)
 
     # types

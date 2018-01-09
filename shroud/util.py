@@ -75,18 +75,6 @@ def append_format(lst, template, dct):
     lst.append(wformat(template, dct))
 
 
-def eval_template(node, name, tname='', fmt=None):
-    """fmt[name] = node[name] or option[name + tname + '_template']
-    """
-    if fmt is None:
-        fmt = node['_fmt']
-    if name in node:
-        setattr(fmt, name, node[name])
-    else:
-        tname = name + tname + '_template'
-        setattr(fmt, name, wformat(node['options'][tname], fmt))
-
-
 # http://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-camel-case
 def un_camel(text):
     """ Converts a CamelCase name into an under_score name.
@@ -229,7 +217,7 @@ class WrapperMixin(object):
         # are being create and they are not in sync.
         # Creating methods and derived types together.
         added_code = False
-        show_splicer_comments = self.tree['options'].show_splicer_comments
+        show_splicer_comments = self.newlibrary.options.show_splicer_comments
         if show_splicer_comments:
             out.append('%s splicer begin %s%s' % (
                 self.comment, self.splicer_path, name))
@@ -245,12 +233,12 @@ class WrapperMixin(object):
 #####
 
     def namespace(self, library, cls, position, output):
-        if cls and 'namespace' in cls:
-            namespace = cls['namespace']
+        if cls and cls.namespace:
+            namespace = cls.namespace
             if namespace.startswith('-'):
                 return
         else:
-            namespace = library['namespace']
+            namespace = library.namespace
         if not namespace:
             return
         output.append('')
@@ -284,7 +272,7 @@ class WrapperMixin(object):
         """
         Write the copyright from the input YAML file.
         """
-        for line in self.tree.get('copyright', []):
+        for line in self.newlibrary.copyright:
             if line:
                 fp.write(self.comment + ' ' + line + '\n')
             else:
@@ -319,11 +307,11 @@ class WrapperMixin(object):
         if cls:
             output.append(self.doxygen_cont +
                           ' \\brief Shroud generated wrapper for {} class'
-                          .format(node['name']))
+                          .format(node.name))
         else:
             output.append(self.doxygen_cont +
                           ' \\brief Shroud generated wrapper for {} library'
-                          .format(node['library']))
+                          .format(node.library))
         output.append(self.doxygen_end)
 
     def write_doxygen(self, output, docs):
@@ -434,56 +422,17 @@ def copy_function_node(node):
     or changing result to argument.
     """
     # Shallow copy everything
-    new = node.copy()
+    new = copy.copy(node)
 
-    # Deep copy dictionaries
-    for field in ['_ast']:
-        new[field] = copy.deepcopy(node[field])
+    new._ast = copy.deepcopy(node._ast)
+    new._fmt = Options(node._fmt)
+    new.options = Options(node.options)
 
-    # Add new Options in chain
-    for field in ['_fmt', 'options']:
-        new[field] = Options(node[field])
+    # deep copy dictionaries
+    new._fmtargs = copy.deepcopy(node._fmtargs)
+    new._fmtresult = copy.deepcopy(node._fmtresult)
 
     return new
-
-
-class XXXClassNode(object):
-    """Represent a class.  Usually a C++ class.
-    It'd be nice if a group of related function which are used in an o-o manner
-    would also be treated as a class.
-    """
-    def __init__(self, name):
-        self.name = name
-        self.options = None
-        self.methods = []
-
-
-class XXXFunctionNode(object):
-    def __init__(self):
-        self.decl = None
-        self.result = {}
-        self.args = []
-        self.function_suffix = ''
-        self.arg_map = {}
-
-    def set_decl(self, decl):
-        """decl will compute result and args
-        """
-        self.decl = decl
-        values = parse_decl.check_decl(decl)
-        self._update_result_args(values)
-
-    def update(self, d):
-        """Update from a dictionary.
-        """
-        if 'decl' in d:
-            self.set_decl(d['decl'])
-        self._update_result_args(d)
-
-    def dump(self):
-        print('FunctionNode:', self.decl)
-        print(self.result)
-        print(self.args)
 
 
 class ExpandedEncoder(json.JSONEncoder):
