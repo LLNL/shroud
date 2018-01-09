@@ -144,20 +144,8 @@ class Schema(object):
                     def_types[key] = typemap.Typedef(key, **value)
                 typemap.typedef_wrapped_defaults(def_types[key])
 
-        # Add to node so they show up in the json debug file.
-        node['_types'] = def_types
-        node['_type_aliases'] = def_types_alias
-
         newlibrary = ast.LibraryNode(node)
-        node['newlibrary'] = newlibrary
 
-        # recreate old behavior for _fmt and options
-        node['_fmt'] = newlibrary._fmt
-        node['options'] = newlibrary.options
-
-        # XXX - for json
-        node['classes'] = newlibrary.classes
-        node['functions'] = newlibrary.functions
         return newlibrary
 
 
@@ -1054,7 +1042,7 @@ def main_with_args(args):
     TypeOut(newlibrary, config).write_types()
 
     try:
-        options = all['options']
+        options = newlibrary.options
         if options.wrap_c:
             wrapc.Wrapc(newlibrary, config, splicers['c']).wrap_library()
 
@@ -1070,14 +1058,31 @@ def main_with_args(args):
         # Write a debug dump even if there was an exception.
         # when dumping json, remove function_index to avoid duplication
 #        del all['function_index']
+        def_types, def_types_alias = typemap.Typedef.get_global_types()
 
+##        jsonpath = os.path.join(args.logdir, basename + '2.json')
+##        fp = open(jsonpath, 'w')
+##
+##        out = dict(
+##            library = newlibrary,
+##            types = def_types,
+##            typealias = def_types_alias,
+###            yaml = all,
+##        )
+##
+##        json.dump(out, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
+##        fp.close()
+###
         jsonpath = os.path.join(args.logdir, basename + '.json')
         fp = open(jsonpath, 'w')
 
-        # Test top level _fmt and options
+        all['newlibrary'] = {}
         all['_fmt'] = newlibrary._fmt
         all['options'] = newlibrary.options
+        all['classes'] = newlibrary.classes
         all['functions'] = newlibrary.functions
+        all['_types'] = def_types
+        all['_type_aliases'] = def_types_alias
 
         json.dump(all, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
         fp.close()

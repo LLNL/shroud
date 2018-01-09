@@ -143,8 +143,6 @@ class LibraryNode(AstNode):
         self.default_format(node)
         self.option_to_fmt()
 
-#        self.fmt_stack.append(fmt_library)
-
         # default some options based on other options
         self.eval_template('C_header_filename', '_library')
         self.eval_template('C_impl_filename', '_library')
@@ -352,13 +350,21 @@ class LibraryNode(AstNode):
         for cls in classes:
             self.classes.append(ClassNode(cls['name'], self, cls))
 
-    def XX_to_dict(self):
+    def _to_dict(self):
         """Convert to dictionary.
         Used by util.ExpandedEncoder.
         """
         d = dict(
-            _fmt=self._fmt
+            _fmt=self._fmt,
+            options=self.options,
         )
+
+        for key in [ 'classes', 'copyright', 'cpp_header',
+                     'functions', 'language', 'namespace' ]:
+            value = getattr(self,key)
+            if value:
+                d[key] = value
+
         return d
 
 ######################################################################
