@@ -115,12 +115,14 @@ class LibraryNode(AstNode):
         self.language = 'c++'     # input language: c or c++
         self.namespace = ''
         self.options = self.default_options()
+        self.F_module_dependencies = []     # unused
 
         if node is None:
             node = dict()
         self.node = node
 
         self.library = node.get('library', 'default_library')
+        self.copyright = node.setdefault('copyright', [])
         self.patterns = node.setdefault('patterns', [])
 
         for n in ['C_header_filename', 'C_impl_filename',

@@ -217,7 +217,7 @@ class WrapperMixin(object):
         # are being create and they are not in sync.
         # Creating methods and derived types together.
         added_code = False
-        show_splicer_comments = self.tree['options'].show_splicer_comments
+        show_splicer_comments = self.newlibrary.options.show_splicer_comments
         if show_splicer_comments:
             out.append('%s splicer begin %s%s' % (
                 self.comment, self.splicer_path, name))
@@ -272,7 +272,7 @@ class WrapperMixin(object):
         """
         Write the copyright from the input YAML file.
         """
-        for line in self.tree.get('copyright', []):
+        for line in self.newlibrary.copyright:
             if line:
                 fp.write(self.comment + ' ' + line + '\n')
             else:

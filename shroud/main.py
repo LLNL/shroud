@@ -158,6 +158,7 @@ class Schema(object):
         # XXX - for json
         node['classes'] = newlibrary.classes
         node['functions'] = newlibrary.functions
+        return newlibrary
 
 
 class GenFunctions(object):
@@ -588,7 +589,7 @@ class GenFunctions(object):
         F_modules = []  # array of tuples ( name, (only1, only2) )
         for mname in sorted(modules):
             F_modules.append((mname, sorted(modules[mname])))
-        node['F_module_dependencies'] = F_modules
+        node.F_module_dependencies = F_modules
 
     def XXXcheck_function_dependencies(self, node, used_types):
         """Record which types are used by a function.
@@ -1025,7 +1026,7 @@ def main_with_args(args):
 
 #    print(all)
 
-    Schema(all, config).check_schema()
+    newlibrary = Schema(all, config).check_schema()
     VerifyAttrs(all, config).verify_attrs()
     GenFunctions(all, config).gen_library()
     Namify(all, config).name_library()
@@ -1058,16 +1059,16 @@ def main_with_args(args):
     try:
         options = all['options']
         if options.wrap_c:
-            wrapc.Wrapc(all, config, splicers['c']).wrap_library()
+            wrapc.Wrapc(newlibrary, config, splicers['c']).wrap_library()
 
         if options.wrap_fortran:
-            wrapf.Wrapf(all, config, splicers['f']).wrap_library()
+            wrapf.Wrapf(newlibrary, config, splicers['f']).wrap_library()
 
         if options.wrap_python:
-            wrapp.Wrapp(all, config, splicers['py']).wrap_library()
+            wrapp.Wrapp(newlibrary, config, splicers['py']).wrap_library()
 
         if options.wrap_lua:
-            wrapl.Wrapl(all, config, splicers['lua']).wrap_library()
+            wrapl.Wrapl(newlibrary, config, splicers['lua']).wrap_library()
     finally:
         # Write a debug dump even if there was an exception.
         # when dumping json, remove function_index to avoid duplication

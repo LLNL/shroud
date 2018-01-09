@@ -90,10 +90,9 @@ class Wrapf(util.WrapperMixin):
     """Generate Fortran bindings.
     """
 
-    def __init__(self, tree, config, splicers):
-        self.tree = tree    # json tree
-        self.newlibrary = tree['newlibrary']
-        self.patterns = self.newlibrary.patterns
+    def __init__(self, newlibrary, config, splicers):
+        self.newlibrary = newlibrary
+        self.patterns = newlibrary.patterns
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -155,7 +154,7 @@ class Wrapf(util.WrapperMixin):
             self._begin_class()  # clear out old class info
             if options.F_module_per_class:
                 self._begin_output_file()
-            self.tree['F_module_dependencies'] = []
+            newlibrary.F_module_dependencies = []
             self._push_splicer('function')
             for node in newlibrary.functions:
                 self.wrap_function(None, node)

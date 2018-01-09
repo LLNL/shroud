@@ -57,9 +57,8 @@ class Wrapp(util.WrapperMixin):
     """Generate Python bindings.
     """
 
-    def __init__(self, tree, config, splicers):
-        self.tree = tree    # json tree
-        self.newlibrary = tree['newlibrary']
+    def __init__(self, newlibrary, config, splicers):
+        self.newlibrary = newlibrary
         self.patterns = self.newlibrary.patterns
         self.config = config
         self.log = config.log

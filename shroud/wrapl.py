@@ -52,10 +52,9 @@ class Wrapl(util.WrapperMixin):
     """Generate Lua bindings.
     """
 
-    def __init__(self, tree, config, splicers):
-        self.tree = tree    # json tree
-        self.newlibrary = tree['newlibrary']
-        self.patterns = self.newlibrary.patterns
+    def __init__(self, newlibrary, config, splicers):
+        self.newlibrary = newlibrary
+        self.patterns = newlibrary.patterns
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
