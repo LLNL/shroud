@@ -87,19 +87,7 @@ class Config(object):
 
 
 class Schema(object):
-    """
-    Verify that the input dictionary has the correct fields.
-    Create defaults for missing fields.
-
-
-    check_schema
-      check_classes
-        check_class
-          check_function
-        check_class_depedencies
-          check_function_dependencies
-      check_functions
-        check_function
+    """Create a LibraryNode from a dictionary.
     """
     def __init__(self, tree, config):
         self.tree = tree    # json tree
