@@ -211,7 +211,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # XXX       result_is_ptr = ast.is_pointer()
         # XXX       result_is_ref = ast.is_reference()
 
-        if node.get('return_this', False):
+        if node.return_this:
             # XXX           result_type = 'void'
             # XXX           result_is_ptr = False
             CPP_subprogram = 'subroutine'
@@ -425,7 +425,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
 
-        if is_dtor or node.get('return_this', False):
+        if is_dtor or node.return_this:
             result_type = 'void'
             CPP_subprogram = 'subroutine'
 

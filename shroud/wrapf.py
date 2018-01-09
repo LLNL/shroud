@@ -481,13 +481,12 @@ class Wrapf(util.WrapperMixin):
         func_is_const = ast.func_const
         subprogram = node['_subprogram']
 
-        generator = node.get('_generated', '')
-        if generator == 'arg_to_buffer':
+        if node._generated == 'arg_to_buffer':
             intent_grp = '_buf'
         else:
             intent_grp = ''
 
-        if is_dtor or node.get('return_this', False):
+        if is_dtor or node.return_this:
             result_type = 'void'
             subprogram = 'subroutine'
         elif node.C_return_type is not None:
@@ -628,12 +627,12 @@ class Wrapf(util.WrapperMixin):
         # Usually the same node unless it is a generic function
         C_node = node
         generated = []
-        if '_generated' in C_node and C_node['_generated']:
+        if C_node._generated:
             generated.append(C_node['_generated'])
-        while '_PTR_F_C_index' in C_node:
-            C_node = self.newlibrary['function_index'][C_node['_PTR_F_C_index']]
-            if '_generated' in C_node and C_node['_generated']:
-                generated.append(C_node['_generated'])
+        while C_node._PTR_F_C_index is not None:
+            C_node = self.newlibrary['function_index'][C_node._PTR_F_C_index]
+            if C_node._generated:
+                generated.append(C_node._generated)
 #  #This is no longer true with the result as an argument
 #        if len(node.params) != len(C_node.params):
 #            raise RuntimeError("Argument mismatch between Fortran and C functions")
@@ -650,13 +649,12 @@ class Wrapf(util.WrapperMixin):
         subprogram = node['_subprogram']
         c_subprogram = C_node['_subprogram']
 
-        generator = C_node.get('_generated', '')
-        if generator == 'arg_to_buffer':
+        if C_node._generated == 'arg_to_buffer':
             intent_grp = '_buf'
         else:
             intent_grp = ''
 
-        if is_dtor or node.get('return_this', False):
+        if is_dtor or node.return_this:
             result_type = 'void'
             subprogram = 'subroutine'
             c_subprogram = 'subroutine'
@@ -853,9 +851,9 @@ class Wrapf(util.WrapperMixin):
 
         if not is_ctor:
             # Add method to derived type
-            if node.get('_overloaded', False):
+            if node._overloaded:
                 need_wrapper = True
-            if not node.get('_CPP_return_templated', False):
+            if not node._CPP_return_templated:
                 # if return type is templated in C++,
                 # then do not set up generic since only the
                 # return type may be different (ex. getValue<T>())
@@ -922,7 +920,7 @@ class Wrapf(util.WrapperMixin):
                 if generated:
                     impl.append('! %s' % ' - '.join(generated))
                 impl.append('! function_index=%d' % node['_function_index'])
-                if options.doxygen and node.get('doxygen', False):
+                if options.doxygen and node.doxygen:
                     self.write_doxygen(impl, node.doxygen)
             impl.append(wformat(
                 '{F_subprogram} {F_name_impl}'

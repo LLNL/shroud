@@ -307,7 +307,7 @@ return 1;""", fmt)
         for function in functions:
             flist = overloaded_methods. \
                 setdefault(function._ast.name, [])
-            if '_cpp_overload' not in function:
+            if not function._cpp_overload:
                 continue
             if not function.options.wrap_python:
                 continue
@@ -360,7 +360,7 @@ return 1;""", fmt)
             # XXX - have explicit delete
             # need code in __init__ and __del__
             return
-        if is_dtor or node.get('return_this', False):
+        if is_dtor or node.return_this:
             result_type = 'void'
             CPP_subprogram = 'subroutine'
 
@@ -394,7 +394,7 @@ return 1;""", fmt)
         # call function based on number of default arguments provided
         default_calls = []   # each possible default call
         found_default = False
-        if node.get('_has_default_arg', False):
+        if node._has_default_arg:
             PY_decl.append('Py_ssize_t SH_nargs = 0;')
             PY_code.extend([
                     'if (args != NULL) SH_nargs += PyTuple_Size(args);',
@@ -722,7 +722,7 @@ return 1;""", fmt)
         # update with type function names
         # type bodies must be filled in by user, no real way to guess
         PyObj = fmt.PY_PyObject
-        selected = node.get('python', {}).get('type', [])
+        selected = node.python.get('type', [])
 
         # Dictionary of methods for bodies
         default_body = dict(
@@ -819,7 +819,7 @@ return 1;""", fmt)
             body.append('PyObject *rvobj;')
 
             for overload in methods:
-                if '_nargs' in overload:
+                if overload._nargs:
                     body.append('if (SH_nargs >= %d && SH_nargs <= %d) {'
                                 % overload['_nargs'])
                 else:

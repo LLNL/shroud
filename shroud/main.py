@@ -311,7 +311,7 @@ class GenFunctions(object):
         # Look for overloaded functions
         cpp_overload = {}
         for function in functions:
-            if function.get('function_suffix', None) is not None:
+            if function.function_suffix is not None:
                 function._fmt.function_suffix = function.function_suffix
             self.append_function_index(function)
             cpp_overload. \
@@ -327,19 +327,19 @@ class GenFunctions(object):
         # Create additional functions needed for wrapping
         ordered_functions = []
         for method in functions:
-            if method.get('_has_default_arg', False):
+            if method._has_default_arg:
                 self.has_default_args(method, ordered_functions)
             ordered_functions.append(method)
-            if method.get('cpp_template', False):
-                method['_overloaded'] = True
+            if method.cpp_template:
+                method._overloaded = True
                 self.template_function(method, ordered_functions)
 
         # Look for overloaded functions
         overloaded_functions = {}
         for function in ordered_functions:
-            # if not function['options'].wrap_c:
+            # if not function.options.wrap_c:
             #     continue
-            if function.get('cpp_template', False):
+            if function.cpp_template:
                 continue
             overloaded_functions.setdefault(
                 function._ast.name, []).append(function)
@@ -468,7 +468,7 @@ class GenFunctions(object):
         """
         default_funcs = []
 
-        default_arg_suffix = node.get('default_arg_suffix', [])
+        default_arg_suffix = node.default_arg_suffix
         ndefault = 0
 
         min_args = 0
@@ -583,8 +583,8 @@ class GenFunctions(object):
         ordered_functions.append(C_new)
         self.append_function_index(C_new)
 
-        C_new['_generated'] = 'arg_to_buffer'
-        C_new['_error_pattern_suffix'] = '_as_buffer'
+        C_new._generated = 'arg_to_buffer'
+        C_new._error_pattern_suffix = '_as_buffer'
         fmt = C_new._fmt
         fmt.function_suffix = fmt.function_suffix + options.C_bufferify_suffix
 
@@ -593,7 +593,7 @@ class GenFunctions(object):
         options.wrap_fortran = False
         options.wrap_python = False
         options.wrap_lua = False
-        C_new['_PTR_C_CPP_index'] = node['_function_index']
+        C_new._PTR_C_CPP_index = node._function_index
 
         newargs = []
         for arg in C_new._ast.params:
@@ -699,7 +699,7 @@ class GenFunctions(object):
     def XXXcheck_function_dependencies(self, node, used_types):
         """Record which types are used by a function.
         """
-        if 'cpp_template' in node:
+        if node.cpp_template:
             # The templated type will raise an error.
             # XXX - Maybe dummy it out
             # XXX - process templated types
@@ -784,8 +784,7 @@ class VerifyAttrs(object):
                 #    ArgType:
                 #    - int
                 #    - double
-                cpp_template = node.get('cpp_template', {})
-                if argtype not in cpp_template:
+                if argtype not in node.cpp_template:
                     raise RuntimeError("No such type %s: %s" % (
                             argtype, arg.gen_decl()))
 

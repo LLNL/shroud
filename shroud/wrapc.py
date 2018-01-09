@@ -329,13 +329,13 @@ class Wrapc(util.WrapperMixin):
         # Usually the same node unless it is generated (i.e. bufferified)
         CPP_node = node
         generated = []
-        if '_generated' in CPP_node:
-            generated.append(CPP_node['_generated'])
-        while '_PTR_C_CPP_index' in CPP_node:
+        if CPP_node._generated:
+            generated.append(CPP_node._generated)
+        while CPP_node._PTR_C_CPP_index is not None:
             CPP_node = self.newlibrary['function_index'][
-                CPP_node['_PTR_C_CPP_index']]
-            if '_generated' in CPP_node:
-                generated.append(CPP_node['_generated'])
+                CPP_node._PTR_C_CPP_index]
+            if CPP_node._generated:
+                generated.append(CPP_node._generated)
         CPP_result = CPP_node._ast
         CPP_subprogram = CPP_node._subprogram
 
@@ -343,9 +343,8 @@ class Wrapc(util.WrapperMixin):
         ast = node._ast
         result_type = ast.typename
         subprogram = node._subprogram
-        generator = node.get('_generated', '')
         intent_grp = ''
-        if generator == 'arg_to_buffer':
+        if node._generated == 'arg_to_buffer':
             intent_grp = '_buf'
 
         result_typedef = typemap.Typedef.lookup(result_type)
@@ -357,7 +356,7 @@ class Wrapc(util.WrapperMixin):
         # C++ functions which return 'this',
         # are easier to call from Fortran if they are subroutines.
         # There is no way to chain in Fortran:  obj->doA()->doB();
-        if node.get('return_this', False) or is_dtor:
+        if node.return_this or is_dtor:
             CPP_subprogram = 'subroutine'
 
         if result_typedef.c_header:
@@ -539,7 +538,7 @@ class Wrapc(util.WrapperMixin):
 
         fmt_func.C_prototype = options.get('C_prototype', ', '.join(proto_list))
 
-        if node.get('return_this', False):
+        if node.return_this:
             fmt_func.C_return_type = 'void'
         elif is_dtor:
             fmt_func.C_return_type = 'void'
@@ -556,8 +555,7 @@ class Wrapc(util.WrapperMixin):
 
         post_call_pattern = []
         if node.C_error_pattern is not None:
-            C_error_pattern = node.C_error_pattern + \
-                              node.get('_error_pattern_suffix', '')
+            C_error_pattern = node.C_error_pattern + node._error_pattern_suffix
             if C_error_pattern in self.patterns:
                 post_call_pattern.append('// C_error_pattern')
                 append_format(
@@ -662,7 +660,7 @@ class Wrapc(util.WrapperMixin):
             if options.debug:
                 impl.append('// %s' % node['_decl'])
                 impl.append('// function_index=%d' % node['_function_index'])
-            if options.doxygen and node.get('doxygen', False):
+            if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             impl.append(wformat('{C_return_type} {C_name}({C_prototype})', fmt_func))
             impl.append('{')

@@ -799,7 +799,7 @@ def create_class_typedef(cls):
             base='wrapped',
             cpp_type=name,
             c_type=cname,
-            f_derived_type=cls.get('F_derived_name',None) or unname,
+            f_derived_type=cls.F_derived_name or unname,
             f_module={fmt_class.F_module_name:[unname]},
             f_to_c = '{f_var}%%%s()' % options.F_name_instance_get,
             )

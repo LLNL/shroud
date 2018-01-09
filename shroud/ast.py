@@ -464,39 +464,16 @@ class ClassNode(AstNode):
 
     def __getitem__(self, key):
         """Help migrate to attribute based."""
-        if key in ['C_header_filename', 'C_impl_filename',
-                     'F_derived_name', 'F_impl_filename', 'F_module_name']:
-            return getattr(self, key)
-        elif key in self.genlist:
+        if key in self.genlist:
             return getattr(self, key)
         raise KeyError
 
     def __setitem__(self, key, value):
-        if key in ['methods']:
-            self.functions = value
-        elif key in self.genlist:
+        if key in self.genlist:
             setattr(self, key, value)
         else:
             raise KeyError
 
-    def setdefault(self, name, dflt):
-        if hasattr(self, name):
-            return getattr(self, name)
-        else:
-            setattr(self, name, dflt)
-            return dflt
-
-    def get(self, name, dflt):
-        if hasattr(self, name):
-            return getattr(self, name)
-        else:
-            return dflt
-
-    def __contains__(self, key):
-        if hasattr(self, key):
-            return True
-        else:
-            return False
 
 ######################################################################
 
@@ -522,11 +499,17 @@ class FunctionNode(AstNode):
         fmt_func = self._fmt
 
         # working variables
+        self._PTR_C_CPP_index = None
+        self._PTR_F_C_index = None
+        self._CPP_return_templated = False
         self._cpp_overload = None
         self._function_index = None
+        self._error_pattern_suffix = ''
+        self._generated = False
         self._has_default_arg = False
-        self._subprogram = 'function'
+        self._nargs = None
         self._overloaded = False
+        self._subprogram = 'function'
 
 #        self.function_index = []
 
@@ -643,6 +626,11 @@ class FunctionNode(AstNode):
             if value:
                 d[key] = value
 
+        for key in ['_error_pattern_suffix']:
+            value = getattr(self,key)
+            if value is not '':
+                d[key] = value
+
         for key in ['function_suffix']:
             value = getattr(self,key)
             if value is not None:   # '' is OK
@@ -661,7 +649,7 @@ class FunctionNode(AstNode):
                '_PTR_C_CPP_index',
                '_PTR_F_C_index',
                '_cpp_overload', '_decl', '_default_funcs', 
-               '_error_pattern_suffix',
+#               '_error_pattern_suffix',
                '_fmtargs', '_fmtresult',
                '_function_index', '_generated',
                '_has_default_arg',
@@ -687,14 +675,5 @@ class FunctionNode(AstNode):
             setattr(self, name, dflt)
             return dflt
 
-    def get(self, name, dflt):
-        if hasattr(self, name):
-            return getattr(self, name)
-        else:
-            return dflt
 
-    def __contains__(self, key):
-        if hasattr(self, key):
-            return True
-        else:
-            return False
+
