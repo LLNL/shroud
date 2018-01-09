@@ -638,7 +638,7 @@ class Wrapf(util.WrapperMixin):
 #            raise RuntimeError("Argument mismatch between Fortran and C functions")
 
         fmt_func.F_C_call = C_node._fmt.F_C_name
-        fmtargs = C_node.setdefault('_fmtargs', {})
+        fmtargs = C_node._fmtargs
 
         # Fortran return type
         ast = node._ast

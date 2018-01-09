@@ -428,6 +428,10 @@ def copy_function_node(node):
     new._fmt = Options(node._fmt)
     new.options = Options(node.options)
 
+    # deep copy dictionaries
+    new._fmtargs = copy.deepcopy(node._fmtargs)
+    new._fmtresult = copy.deepcopy(node._fmtresult)
+
     return new
 
 

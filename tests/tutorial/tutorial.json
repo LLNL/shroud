@@ -764,7 +764,6 @@
                         "function_name": "new", 
                         "underscore_name": "new"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "cpp_rv_decl": "Class1 * SHT_rv", 
@@ -819,7 +818,6 @@
                         "function_name": "delete", 
                         "underscore_name": "delete"
                     }, 
-                    "_fmtargs": {}, 
                     "_function_index": 1, 
                     "_subprogram": "function", 
                     "decl": "~Class1() +name(delete)", 
@@ -868,7 +866,6 @@
                         "function_name": "Method1", 
                         "underscore_name": "method1"
                     }, 
-                    "_fmtargs": {}, 
                     "_function_index": 2, 
                     "_subprogram": "subroutine", 
                     "decl": "void Method1()", 
@@ -963,7 +960,6 @@
                 "function_name": "Function1", 
                 "underscore_name": "function1"
             }, 
-            "_fmtargs": {}, 
             "_function_index": 3, 
             "_subprogram": "subroutine", 
             "decl": "void Function1()", 
@@ -2303,7 +2299,6 @@
                 "c_const": "", 
                 "function_suffix": ""
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "cpp_rv_decl": "double SHT_rv", 
@@ -3148,7 +3143,6 @@
                 "c_const": "", 
                 "function_suffix": "_int"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "cpp_rv_decl": "int SHT_rv", 
@@ -3206,7 +3200,6 @@
                 "c_const": "", 
                 "function_suffix": "_double"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "cpp_rv_decl": "double SHT_rv", 
@@ -3474,7 +3467,6 @@
                 "function_suffix": "_0", 
                 "underscore_name": "function10"
             }, 
-            "_fmtargs": {}, 
             "_function_index": 17, 
             "_overloaded": true, 
             "_subprogram": "subroutine", 
@@ -6070,7 +6062,6 @@
                 "function_name": "LastFunctionCalled", 
                 "underscore_name": "last_function_called"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "c_rv_decl": "const char * XSHT_rv", 

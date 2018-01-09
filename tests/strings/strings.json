@@ -776,7 +776,6 @@
                 "function_name": "returnChar", 
                 "underscore_name": "return_char"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "cpp_rv_decl": "char SHT_rv", 
@@ -1343,7 +1342,6 @@
                 "function_name": "getChar1", 
                 "underscore_name": "get_char1"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "cpp_rv_decl": "const char * SHT_rv", 
@@ -1492,7 +1490,6 @@
                 "function_name": "getChar2", 
                 "underscore_name": "get_char2"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "cpp_rv_decl": "const char * SHT_rv", 
@@ -1632,7 +1629,6 @@
                 "function_name": "getChar3", 
                 "underscore_name": "get_char3"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "cpp_rv_decl": "const char * SHT_rv", 
@@ -1851,7 +1847,6 @@
                 "function_name": "getString1", 
                 "underscore_name": "get_string1"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "c_rv_decl": "const char * XSHT_rv", 
@@ -2005,7 +2000,6 @@
                 "function_name": "getString2", 
                 "underscore_name": "get_string2"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "c_rv_decl": "const char * XSHT_rv", 
@@ -2151,7 +2145,6 @@
                 "function_name": "getString3", 
                 "underscore_name": "get_string3"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "c_rv_decl": "const char * XSHT_rv", 
@@ -2378,7 +2371,6 @@
                 "function_name": "getString2_empty", 
                 "underscore_name": "get_string2_empty"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "c_rv_decl": "const char * XSHT_rv", 
@@ -2523,7 +2515,6 @@
                 "function_name": "getString5", 
                 "underscore_name": "get_string5"
             }, 
-            "_fmtargs": {}, 
             "_function_index": 11, 
             "_subprogram": "function", 
             "decl": "const string getString5+len=30()", 
@@ -2648,7 +2639,6 @@
                 "function_name": "getString6", 
                 "underscore_name": "get_string6"
             }, 
-            "_fmtargs": {}, 
             "_function_index": 12, 
             "_subprogram": "function", 
             "decl": "const string getString6()", 
@@ -3799,7 +3789,6 @@
                 "function_name": "CreturnChar", 
                 "underscore_name": "creturn_char"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "cpp_rv_decl": "char SHT_rv", 

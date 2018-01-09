@@ -780,7 +780,6 @@
                         "function_name": "method1", 
                         "underscore_name": "method1"
                     }, 
-                    "_fmtargs": {}, 
                     "_function_index": 0, 
                     "_subprogram": "subroutine", 
                     "decl": "void method1()", 
@@ -827,7 +826,6 @@
                         "function_name": "method2", 
                         "underscore_name": "method2"
                     }, 
-                    "_fmtargs": {}, 
                     "_function_index": 1, 
                     "_subprogram": "subroutine", 
                     "decl": "void method2()", 
@@ -949,7 +947,6 @@
                 "function_name": "function1", 
                 "underscore_name": "function1"
             }, 
-            "_fmtargs": {}, 
             "_function_index": 2, 
             "_subprogram": "subroutine", 
             "decl": "void function1()", 
@@ -996,7 +993,6 @@
                 "function_name": "function2", 
                 "underscore_name": "function2"
             }, 
-            "_fmtargs": {}, 
             "_function_index": 3, 
             "_subprogram": "subroutine", 
             "decl": "void function2()", 
@@ -1395,7 +1391,6 @@
                 "function_name": "fiveplus", 
                 "underscore_name": "fiveplus"
             }, 
-            "_fmtargs": {}, 
             "_function_index": 7, 
             "_subprogram": "subroutine", 
             "decl": "void function5() +name(fiveplus)", 

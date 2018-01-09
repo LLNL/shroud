@@ -1056,7 +1056,6 @@
                 "function_name": "function1", 
                 "underscore_name": "function1"
             }, 
-            "_fmtargs": {}, 
             "_function_index": 3, 
             "_subprogram": "subroutine", 
             "decl": "void function1()", 

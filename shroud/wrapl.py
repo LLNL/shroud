@@ -412,7 +412,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         self.log.write("Lua {0} {1._decl}\n".format(cls_function, node))
 
 #        fmt_func = node._fmt
-        fmtargs = node.setdefault('_fmtargs', {})
+        fmtargs = node._fmtargs
 #        fmt = util.Options(fmt_func)
 #        fmt.doc_string = 'documentation'
 #        node.eval_template('LUA_name')

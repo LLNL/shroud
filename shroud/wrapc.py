@@ -311,7 +311,7 @@ class Wrapc(util.WrapperMixin):
         self.log.write("C {0} {1._decl}\n".format(cls_function, node))
 
         fmt_func = node._fmt
-        fmtargs = node.setdefault('_fmtargs', {})
+        fmtargs = node._fmtargs
 
         if self.language == 'c' or options.get('C_extern_C',False):
             # Fortran can call C directly and only needs wrappers when code is
@@ -379,7 +379,7 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_func
             fmt_pattern = fmt_func
         else:
-            fmt_result0 = node.setdefault('_fmtresult', {})
+            fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault('fmtc', util.Options(fmt_func))
             fmt_result.cpp_var = fmt_func.C_result
             fmt_result.cpp_rv_decl = CPP_result.gen_arg_as_cpp(name=fmt_func.C_result)

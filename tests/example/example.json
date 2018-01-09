@@ -859,7 +859,6 @@
                         "function_suffix": "_0", 
                         "underscore_name": "ctor"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "cpp_rv_decl": "ExClass1 * SHT_rv", 
@@ -1100,7 +1099,6 @@
                         "function_name": "dtor", 
                         "underscore_name": "dtor"
                     }, 
-                    "_fmtargs": {}, 
                     "_function_index": 2, 
                     "_subprogram": "function", 
                     "decl": "~ExClass1()", 
@@ -1255,7 +1253,6 @@
                         "function_name": "getName", 
                         "underscore_name": "get_name"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "c_rv_decl": "const char * XSHT_rv", 
@@ -1413,7 +1410,6 @@
                         "function_name": "GetNameLength", 
                         "underscore_name": "get_name_length"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "cpp_rv_decl": "int SHT_rv", 
@@ -1477,7 +1473,6 @@
                         "function_name": "getNameErrorCheck", 
                         "underscore_name": "get_name_error_check"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "c_rv_decl": "const char * XSHT_rv", 
@@ -1618,7 +1613,6 @@
                         "function_name": "getNameArg", 
                         "underscore_name": "get_name_arg"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "c_rv_decl": "const char * XSHT_rv", 
@@ -1834,7 +1828,6 @@
                         "function_name": "getRoot", 
                         "underscore_name": "get_root"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "c_rv_decl": "AA_exclass2 * XSHT_rv", 
@@ -2091,7 +2084,6 @@
                         "function_name": "getAddr", 
                         "underscore_name": "get_addr"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "cpp_rv_decl": "void * SHT_rv", 
@@ -2232,7 +2224,6 @@
                         "function_name": "SplicerSpecial", 
                         "underscore_name": "splicer_special"
                     }, 
-                    "_fmtargs": {}, 
                     "_function_index": 13, 
                     "_subprogram": "subroutine", 
                     "decl": "void SplicerSpecial()", 
@@ -2494,7 +2485,6 @@
                         "function_name": "dtor", 
                         "underscore_name": "dtor"
                     }, 
-                    "_fmtargs": {}, 
                     "_function_index": 20, 
                     "_subprogram": "function", 
                     "decl": "~ExClass2()", 
@@ -2554,7 +2544,6 @@
                         "function_name": "getName", 
                         "underscore_name": "get_name"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "c_rv_decl": "const char * XSHT_rv", 
@@ -2718,7 +2707,6 @@
                         "function_name": "getName2", 
                         "underscore_name": "get_name2"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "c_rv_decl": "const char * XSHT_rv", 
@@ -2870,7 +2858,6 @@
                         "function_name": "getName3", 
                         "underscore_name": "get_name3"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "c_rv_decl": "char * XSHT_rv", 
@@ -3022,7 +3009,6 @@
                         "function_name": "getName4", 
                         "underscore_name": "get_name4"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "c_rv_decl": "char * XSHT_rv", 
@@ -3166,7 +3152,6 @@
                         "function_name": "GetNameLength", 
                         "underscore_name": "get_name_length"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "cpp_rv_decl": "int SHT_rv", 
@@ -3839,7 +3824,6 @@
                         "function_name": "destroyall", 
                         "underscore_name": "destroyall"
                     }, 
-                    "_fmtargs": {}, 
                     "_function_index": 28, 
                     "_subprogram": "subroutine", 
                     "decl": "void destroyall()", 
@@ -3887,7 +3871,6 @@
                         "function_name": "getTypeID", 
                         "underscore_name": "get_type_id"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "c_rv_decl": "int XSHT_rv", 
@@ -4363,7 +4346,6 @@
                         "c_var": "self", 
                         "function_suffix": "_int"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "cpp_rv_decl": "int SHT_rv", 
@@ -4424,7 +4406,6 @@
                         "c_var": "self", 
                         "function_suffix": "_double"
                     }, 
-                    "_fmtargs": {}, 
                     "_fmtresult": {
                         "fmtc": {
                             "cpp_rv_decl": "double SHT_rv", 
@@ -4549,7 +4530,6 @@
                 "function_name": "local_function1", 
                 "underscore_name": "local_function1"
             }, 
-            "_fmtargs": {}, 
             "_function_index": 48, 
             "_subprogram": "subroutine", 
             "decl": "void local_function1()", 
@@ -4769,7 +4749,6 @@
                 "function_name": "isInitialized", 
                 "underscore_name": "is_initialized"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "cpp_rv_decl": "bool SHT_rv", 
@@ -5390,7 +5369,6 @@
                 "c_const": "", 
                 "function_suffix": "_0"
             }, 
-            "_fmtargs": {}, 
             "_function_index": 59, 
             "_generated": "has_default_arg", 
             "_overloaded": true, 
@@ -5650,7 +5628,6 @@
                 "function_name": "test_size_t", 
                 "underscore_name": "test_size_t"
             }, 
-            "_fmtargs": {}, 
             "_fmtresult": {
                 "fmtc": {
                     "cpp_rv_decl": "size_t SHT_rv", 

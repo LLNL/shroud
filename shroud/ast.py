@@ -442,6 +442,20 @@ class FunctionNode(AstNode):
         ArgType:
         - int
         - double
+
+
+    _fmtfunc = Option()
+
+    _fmtresult = {
+       'fmtc': Option(_fmtfunc)
+    }
+    _fmtargs = {
+      'arg1': {
+        'fmtc': Option(_fmtfunc),
+        'fmtf': Option(_fmtfunc)
+      }
+    }
+
     """
 
 
@@ -463,6 +477,8 @@ class FunctionNode(AstNode):
         self._default_funcs = []         #  generated default value functions  (unused?)
         self._function_index = None
         self._error_pattern_suffix = ''
+        self._fmtargs = {}
+        self._fmtresult = {}
         self._function_index = None
         self._generated = False
         self._has_default_arg = False
@@ -586,6 +602,7 @@ class FunctionNode(AstNode):
                     '_CPP_return_templated',
                     '_cpp_overload', '_error_pattern_suffix',
                     '_decl', '_default_funcs', 
+                    '_fmtargs', '_fmtresult',
                     '_generated', '_has_default_arg',
                     '_nargs', '_overloaded', '_subprogram']:
             value = getattr(self,key)
@@ -596,20 +613,4 @@ class FunctionNode(AstNode):
             value = getattr(self,key)
             if value is not None:   # '' is OK
                 d[key] = value
-
-        for key in [ '_fmtargs', '_fmtresult'        ]:
-            if hasattr(self,key):
-                value = getattr(self,key)
-                if value is not None and value is not False:
-                    d[key] = value
         return d
-
-
-#####################
-
-    def setdefault(self, name, dflt):
-        if hasattr(self, name):
-            return getattr(self, name)
-        else:
-            setattr(self, name, dflt)
-            return dflt

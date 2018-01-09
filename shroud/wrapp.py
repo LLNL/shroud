@@ -342,7 +342,7 @@ return 1;""", fmt)
         self.log.write("Python {0} {1._decl}\n".format(cls_function, node))
 
         fmt_func = node._fmt
-        fmtargs = node.setdefault('_fmtargs', {})
+        fmtargs = node._fmtargs
         fmt = util.Options(fmt_func)
         fmt.doc_string = 'documentation'
         if cls:
