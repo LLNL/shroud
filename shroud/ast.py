@@ -456,10 +456,11 @@ class FunctionNode(AstNode):
         fmt_func = self._fmt
 
         # working variables
+        self._CPP_return_templated = False
         self._PTR_C_CPP_index = None
         self._PTR_F_C_index = None
-        self._CPP_return_templated = False
         self._cpp_overload = None
+        self._default_funcs = []         #  generated default value functions  (unused?)
         self._function_index = None
         self._error_pattern_suffix = ''
         self._function_index = None
@@ -570,6 +571,7 @@ class FunctionNode(AstNode):
         d = dict(
             _ast=self._ast,
             _fmt=self._fmt,
+            _function_index=self._function_index,
             decl=self.decl,
             options=self.options,
         )
@@ -580,7 +582,12 @@ class FunctionNode(AstNode):
                     'C_return_code', 'C_return_type',
                     'F_C_name', 'F_code', 'F_name_function', 'F_name_generic', 'F_name_impl',
                     'PY_error_pattern',
-                    '_error_pattern_suffix']:
+                    '_PTR_C_CPP_index', '_PTR_F_C_index',
+                    '_CPP_return_templated',
+                    '_cpp_overload', '_error_pattern_suffix',
+                    '_decl', '_default_funcs', 
+                    '_generated', '_has_default_arg',
+                    '_nargs', '_overloaded', '_subprogram']:
             value = getattr(self,key)
             if value:
                 d[key] = value
@@ -590,7 +597,7 @@ class FunctionNode(AstNode):
             if value is not None:   # '' is OK
                 d[key] = value
 
-        for key in self.genlist:
+        for key in [ '_fmtargs', '_fmtresult'        ]:
             if hasattr(self,key):
                 value = getattr(self,key)
                 if value is not None and value is not False:
@@ -599,16 +606,6 @@ class FunctionNode(AstNode):
 
 
 #####################
-    genlist = ['_CPP_return_templated',
-               '_PTR_C_CPP_index',
-               '_PTR_F_C_index',
-               '_cpp_overload', '_decl', '_default_funcs', 
-#               '_error_pattern_suffix',
-               '_fmtargs', '_fmtresult',
-               '_function_index', '_generated',
-               '_has_default_arg',
-               '_nargs', '_overloaded', '_subprogram']
-
 
     def setdefault(self, name, dflt):
         if hasattr(self, name):
