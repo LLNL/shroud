@@ -311,7 +311,7 @@ class WrapperMixin(object):
         else:
             output.append(self.doxygen_cont +
                           ' \\brief Shroud generated wrapper for {} library'
-                          .format(node['library']))
+                          .format(node.library))
         output.append(self.doxygen_end)
 
     def write_doxygen(self, output, docs):

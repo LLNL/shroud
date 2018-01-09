@@ -630,7 +630,7 @@ class Wrapf(util.WrapperMixin):
         if C_node._generated:
             generated.append(C_node._generated)
         while C_node._PTR_F_C_index is not None:
-            C_node = self.newlibrary['function_index'][C_node._PTR_F_C_index]
+            C_node = self.newlibrary.function_index[C_node._PTR_F_C_index]
             if C_node._generated:
                 generated.append(C_node._generated)
 #  #This is no longer true with the result as an argument

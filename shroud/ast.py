@@ -107,12 +107,14 @@ class LibraryNode(AstNode):
 
         """
 
-        self.language = 'c++'     # input language: c or c++
-        self.options = self.default_options()
         self.classes = []
-        self.functions = []
         self.cpp_header = ''
+        self.functions = []
+        # Each is given a _function_index when created.
+        self.function_index = []
+        self.language = 'c++'     # input language: c or c++
         self.namespace = ''
+        self.options = self.default_options()
 
         if node is None:
             node = dict()
@@ -355,31 +357,6 @@ class LibraryNode(AstNode):
             _fmt=self._fmt
         )
         return d
-
-    genlist = [ 'function_index' ]
-
-    def __getitem__(self, key):
-        """Help migrate to attribute based."""
-        if key in ['_fmt', 'classes', 'cpp_header', 'functions',
-                   'library', 'namespace', 'options']:
-            return getattr(self, key)
-        elif key in self.genlist:
-            return getattr(self, key)
-        raise KeyError(key)
-
-    def __setitem__(self, key, value):
-        if key in ['functions']:
-            setattr(self, key, value)
-        elif key in self.genlist:
-            setattr(self, key, value)
-        else:
-            raise KeyError
-
-    def __contains__(self, key):
-        if hasattr(self, key):
-            return True
-        else:
-            return False
 
 ######################################################################
 

@@ -96,7 +96,7 @@ class Wrapc(util.WrapperMixin):
             self._pop_splicer(node.name)
         self._pop_splicer('class')
 
-        if self.newlibrary['functions']:
+        if self.newlibrary.functions:
             self.write_file(newlibrary, None)
 
     def write_file(self, library, cls):
@@ -332,8 +332,7 @@ class Wrapc(util.WrapperMixin):
         if CPP_node._generated:
             generated.append(CPP_node._generated)
         while CPP_node._PTR_C_CPP_index is not None:
-            CPP_node = self.newlibrary['function_index'][
-                CPP_node._PTR_C_CPP_index]
+            CPP_node = self.newlibrary.function_index[CPP_node._PTR_C_CPP_index]
             if CPP_node._generated:
                 generated.append(CPP_node._generated)
         CPP_result = CPP_node._ast

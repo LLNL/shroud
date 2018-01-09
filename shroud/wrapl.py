@@ -618,7 +618,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 ])
         util.extern_C(output, 'begin')
 
-        for include in node['cpp_header'].split():
+        for include in node.cpp_header.split():
             output.append('#include "%s"' % include)
 
         output.append('#include "lua.h"')
@@ -656,7 +656,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         output = []
 
-        for include in node['cpp_header'].split():
+        for include in node.cpp_header.split():
             output.append('#include "{}"'.format(include))
         output.append(wformat('#include "{LUA_header_filename}"', fmt))
 
