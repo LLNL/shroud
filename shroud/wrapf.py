@@ -93,7 +93,7 @@ class Wrapf(util.WrapperMixin):
     def __init__(self, tree, config, splicers):
         self.tree = tree    # json tree
         self.newlibrary = tree['newlibrary']
-        self.patterns = tree['patterns']
+        self.patterns = self.newlibrary.patterns
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -125,7 +125,7 @@ class Wrapf(util.WrapperMixin):
         self.type_bound_part = []
 
     def wrap_library(self):
-        newlibrary = self.tree['newlibrary']
+        newlibrary = self.newlibrary
         options = newlibrary.options
         fmt_library = newlibrary._fmt
         fmt_library.F_result_clause = ''
@@ -136,7 +136,7 @@ class Wrapf(util.WrapperMixin):
         self.module_use = {}    # Use statements for a module
         self._begin_output_file()
         self._push_splicer('class')
-        for node in self.tree['classes']:
+        for node in newlibrary.classes:
             self._begin_class()
 
             name = node.name
@@ -151,13 +151,13 @@ class Wrapf(util.WrapperMixin):
                 self._push_splicer('class')
         self._pop_splicer('class')
 
-        if self.tree['functions']:
+        if newlibrary.functions:
             self._begin_class()  # clear out old class info
             if options.F_module_per_class:
                 self._begin_output_file()
             self.tree['F_module_dependencies'] = []
             self._push_splicer('function')
-            for node in self.tree['functions']:
+            for node in newlibrary.functions:
                 self.wrap_function(None, node)
             self._pop_splicer('function')
             self.c_interface.append('')

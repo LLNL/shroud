@@ -121,6 +121,7 @@ class LibraryNode(AstNode):
         self.node = node
 
         self.library = node.get('library', 'default_library')
+        self.patterns = node.setdefault('patterns', [])
 
         for n in ['C_header_filename', 'C_impl_filename',
                   'F_module_name', 'F_impl_filename',

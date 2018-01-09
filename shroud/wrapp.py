@@ -59,7 +59,8 @@ class Wrapp(util.WrapperMixin):
 
     def __init__(self, tree, config, splicers):
         self.tree = tree    # json tree
-        self.patterns = tree['patterns']
+        self.newlibrary = tree['newlibrary']
+        self.patterns = self.newlibrary.patterns
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -80,8 +81,7 @@ class Wrapp(util.WrapperMixin):
         self.PyMethodDef = []
 
     def wrap_library(self):
-        top = self.tree
-        newlibrary = self.tree['newlibrary']
+        newlibrary = self.newlibrary
         options = newlibrary.options
         fmt_library = newlibrary._fmt
 
@@ -953,7 +953,7 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
         self.write_output_file(fname, self.config.python_dir, output)
 
     def write_helper(self):
-        node = self.tree['newlibrary']
+        node = self.newlibrary
         fmt = node._fmt
         output = []
         output.append(wformat('#include "{PY_header_filename}"', fmt))

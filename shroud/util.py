@@ -435,45 +435,6 @@ def copy_function_node(node):
     return new
 
 
-class XXXClassNode(object):
-    """Represent a class.  Usually a C++ class.
-    It'd be nice if a group of related function which are used in an o-o manner
-    would also be treated as a class.
-    """
-    def __init__(self, name):
-        self.name = name
-        self.options = None
-        self.methods = []
-
-
-class XXXFunctionNode(object):
-    def __init__(self):
-        self.decl = None
-        self.result = {}
-        self.args = []
-        self.function_suffix = ''
-        self.arg_map = {}
-
-    def set_decl(self, decl):
-        """decl will compute result and args
-        """
-        self.decl = decl
-        values = parse_decl.check_decl(decl)
-        self._update_result_args(values)
-
-    def update(self, d):
-        """Update from a dictionary.
-        """
-        if 'decl' in d:
-            self.set_decl(d['decl'])
-        self._update_result_args(d)
-
-    def dump(self):
-        print('FunctionNode:', self.decl)
-        print(self.result)
-        print(self.args)
-
-
 class ExpandedEncoder(json.JSONEncoder):
     """Jason handler to convert objects into a dictionary when they have
     a _to_dict method.

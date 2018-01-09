@@ -104,58 +104,6 @@ class Schema(object):
     def __init__(self, tree, config):
         self.tree = tree    # json tree
         self.config = config
-        self.fmt_stack = []
-
-    def push_options(self, node):
-        """ Push a new set of options.
-        Copy current options, then update with new options.
-        Replace node[option] dictionary with Options instance.
-        Return original options dictionary.
-        """
-        old = None
-        new = util.Options(parent=self.options_stack[-1])
-        if 'options' in node and \
-                node['options'] is not None:
-            if not isinstance(node['options'], dict):
-                raise TypeError("options must be a dictionary")
-            old = node['options']
-            new.update(old)
-        self.options_stack.append(new)
-        node['options'] = new
-        return new, old
-
-    def pop_options(self):
-        self.options_stack.pop()
-
-    def check_options_only(self, node):
-        """Process an options only entry in a list.
-
-        Return True if node only has options.
-        node is assumed to be a dictionary.
-        Update current set of options from node['options'].
-        """
-        if len(node) != 1:
-            return False
-        options = node.get('options', None)
-        if not options:
-            return False
-        if not isinstance(options, dict):
-            raise TypeError("options must be a dictionary")
-
-        # replace current options
-        new = util.Options(parent=self.options_stack[-1])
-        new.update(node['options'])
-        self.options_stack[-1] = new
-        return True
-
-    def push_fmt(self, node):
-        fmt = util.Options(self.fmt_stack[-1])
-        self.fmt_stack.append(fmt)
-        node['_fmt'] = fmt
-        return fmt
-
-    def pop_fmt(self):
-        self.fmt_stack.pop()
 
     def check_schema(self):
         """ Check entire schema of input tree.
@@ -204,63 +152,12 @@ class Schema(object):
         node['newlibrary'] = newlibrary
 
         # recreate old behavior for _fmt and options
-        node['_fmt'] = node['newlibrary']._fmt
-        self.fmt_stack.append(node['_fmt'])
-
-        self.options_stack = [ newlibrary.options ]
+        node['_fmt'] = newlibrary._fmt
         node['options'] = newlibrary.options
 
-        patterns = node.setdefault('patterns', [])
-        classes = node.setdefault('classes', [])
-#        self.check_classes(classes)
-#        self.check_functions(node, '', 'functions')
         # XXX - for json
         node['classes'] = newlibrary.classes
         node['functions'] = newlibrary.functions
-
-    def check_classes(self, node):
-        if not isinstance(node, list):
-            raise TypeError("classes must be a list")
-        for cls in node:
-            if not isinstance(cls, dict):
-                raise TypeError("classes[n] must be a dictionary")
-            if 'name' not in cls:
-                raise TypeError("class does not define name")
-            declast.add_type(cls['name'])
-        for cls in node:
-            self.check_class(cls)
-
-    def check_class(self, node):
-        if 'name' not in node:
-            raise RuntimeError('Expected name for class')
-        name = node['name']
-
-        # default cpp_header to blank
-        if 'cpp_header' not in node:
-            node['cpp_header'] = ''
-        if node['cpp_header'] is None:
-            # YAML turns blank strings into None
-            node['cpp_header'] = ''
-
-        options, old = self.push_options(node)
-        fmt_class = self.push_fmt(node)
-        self.option_to_fmt(fmt_class, old)
-        fmt_class.cpp_class = name
-        fmt_class.class_lower = name.lower()
-        fmt_class.class_upper = name.upper()
-        util.eval_template(node, 'class_prefix')
-
-        # Only one file per class for C.
-        util.eval_template(node, 'C_header_filename', '_class')
-        util.eval_template(node, 'C_impl_filename', '_class')
-
-        if options.F_module_per_class:
-            util.eval_template(node, 'F_module_name', '_class')
-            util.eval_template(node, 'F_impl_filename', '_class')
-
-        self.check_functions(node, name, 'methods')
-        self.pop_fmt()
-        self.pop_options()
 
 
 class GenFunctions(object):

@@ -63,8 +63,8 @@ class Wrapc(util.WrapperMixin):
     def __init__(self, tree, config, splicers):
         self.tree = tree    # json tree
         self.newlibrary = tree['newlibrary']
-        self.patterns = tree['patterns']
-        self.language = tree['language']
+        self.patterns = self.newlibrary.patterns
+        self.language = self.newlibrary.language
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -86,7 +86,7 @@ class Wrapc(util.WrapperMixin):
         self.c_helper = {}
 
     def wrap_library(self):
-        newlibrary = self.tree['newlibrary']
+        newlibrary = self.newlibrary
         fmt_library = newlibrary._fmt
 
         self._push_splicer('class')
@@ -115,10 +115,10 @@ class Wrapc(util.WrapperMixin):
         self.write_header(library, cls, c_header)
         self.write_impl(library, cls, c_header, c_impl)
 
-    def wrap_functions(self, tree):
+    def wrap_functions(self, library):
         # worker function for write_file
         self._push_splicer('function')
-        for node in tree.functions:
+        for node in library.functions:
             self.wrap_function(None, node)
         self._pop_splicer('function')
 

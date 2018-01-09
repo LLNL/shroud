@@ -54,7 +54,8 @@ class Wrapl(util.WrapperMixin):
 
     def __init__(self, tree, config, splicers):
         self.tree = tree    # json tree
-        self.patterns = tree['patterns']
+        self.newlibrary = tree['newlibrary']
+        self.patterns = self.newlibrary.patterns
         self.config = config
         self.log = config.log
         self._init_splicer(splicers)
@@ -64,8 +65,7 @@ class Wrapl(util.WrapperMixin):
         pass
 
     def wrap_library(self):
-        top = self.tree
-        newlibrary = self.tree['newlibrary']
+        newlibrary = self.newlibrary
         options = newlibrary.options
         fmt_library = newlibrary._fmt
 
@@ -95,9 +95,9 @@ class Wrapl(util.WrapperMixin):
         self._pop_splicer('class')
 
         self.reset_file()
-        if self.tree['functions']:
+        if newlibrary.functions:
             self._push_splicer('function')
-            self.wrap_functions(None, self.tree['functions'])
+            self.wrap_functions(None, newlibrary.functions)
             self._pop_splicer('function')
 
         self.write_header(newlibrary)
