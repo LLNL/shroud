@@ -1056,35 +1056,19 @@ def main_with_args(args):
             wrapl.Wrapl(newlibrary, config, splicers['lua']).wrap_library()
     finally:
         # Write a debug dump even if there was an exception.
-        # when dumping json, remove function_index to avoid duplication
-#        del all['function_index']
         def_types, def_types_alias = typemap.Typedef.get_global_types()
 
-##        jsonpath = os.path.join(args.logdir, basename + '2.json')
-##        fp = open(jsonpath, 'w')
-##
-##        out = dict(
-##            library = newlibrary,
-##            types = def_types,
-##            typealias = def_types_alias,
-###            yaml = all,
-##        )
-##
-##        json.dump(out, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
-##        fp.close()
-###
         jsonpath = os.path.join(args.logdir, basename + '.json')
         fp = open(jsonpath, 'w')
 
-        all['newlibrary'] = {}
-        all['_fmt'] = newlibrary._fmt
-        all['options'] = newlibrary.options
-        all['classes'] = newlibrary.classes
-        all['functions'] = newlibrary.functions
-        all['_types'] = def_types
-        all['_type_aliases'] = def_types_alias
+        out = dict(
+            library = newlibrary,
+            types = def_types,
+            typealias = def_types_alias,
+#            yaml = all,
+        )
 
-        json.dump(all, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
+        json.dump(out, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
         fp.close()
 
     # Write list of output files.  May be useful for build systems
