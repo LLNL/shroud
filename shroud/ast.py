@@ -462,30 +462,18 @@ class FunctionNode(AstNode):
                 'F_C_name', 'F_code',
                 'F_name_function', 'F_name_generic', 'F_name_impl',
                 'LUA_name', 'LUA_name_impl',
-                'PY_error_pattern', 'PY_name_impl' ]:
+                'PY_error_pattern', 'PY_name_impl',
+                'docs', 'function_suffix', 'return_this']:
             setattr(self, n, kwargs.get(n, None))
 
         self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
-        self.docs = kwargs.get('docs', '')
         self.cpp_template = kwargs.get('cpp_template', {})
         self.doxygen = kwargs.get('doxygen', {})
         self.fortran_generic = kwargs.get('fortran_generic', {})
-        self.return_this = kwargs.get('return_this', False)
 
         # referenced explicity (not via fmt)
         # C_code, C_return_code, C_return_type, F_code
         
-#        self.function_suffix = kwargs.get('function_suffix', None)  # '' is legal value, None=unset
-        if 'function_suffix' in kwargs:
-            self.function_suffix = kwargs['function_suffix']
-            if self.function_suffix is None:
-                # YAML turns blanks strings into None
-                # mark as explicitly set to empty
-                self.function_suffix = ''
-        else:
-            # Mark as unset
-            self.function_suffix = None
-
         if not decl:
             raise RuntimeError("Missing decl")
 
@@ -513,26 +501,8 @@ class FunctionNode(AstNode):
                     arg.attrs.update(attrs[name])
         # XXX - waring about unused fields in attrs
                                     
-        if ('function_suffix' in kwargs and
-                kwargs['function_suffix'] is None):
-            # YAML turns blanks strings into None
-            kwargs['function_suffix'] = ''
-        if 'default_arg_suffix' in kwargs:
-            default_arg_suffix = kwargs['default_arg_suffix']
-            if not isinstance(default_arg_suffix, list):
-                raise RuntimeError('default_arg_suffix must be a list')
-            for i, value in enumerate(kwargs['default_arg_suffix']):
-                if value is None:
-                    # YAML turns blanks strings to None
-                    kwargs['default_arg_suffix'][i] = ''
-
-# XXX - do some error checks on ast
-#        if 'name' not in result:
-#            raise RuntimeError("Missing result.name")
-#        if 'type' not in result:
-#            raise RuntimeError("Missing result.type")
-
         if ast.params is None:
+            # 'void foo' instead of 'void foo()'
             raise RuntimeError("Missing arguments:", ast.gen_decl())
 
         fmt_func = self._fmt
@@ -583,9 +553,19 @@ def clean_dictionary(dd):
     """YAML converts some blank fields to None,
     but we want blank.
     """
-    for key in ['cpp_header', 'namespace']:
+    for key in ['cpp_header', 'namespace',
+                'function_suffix']:
         if key in dd and dd[key] is None:
             dd[key] = ''
+
+    if 'default_arg_suffix' in dd:
+        default_arg_suffix = dd['default_arg_suffix']
+        if not isinstance(default_arg_suffix, list):
+            raise RuntimeError('default_arg_suffix must be a list')
+        for i, value in enumerate(dd['default_arg_suffix']):
+            if value is None:
+                dd['default_arg_suffix'][i] = ''
+
 
 def check_options_only(node, parent):
     """Process an options only entry in a list.
