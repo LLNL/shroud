@@ -564,8 +564,8 @@ def clean_dictionary(dd):
                 dd['default_arg_suffix'][i] = ''
 
 
-def check_options_only(node, parent):
-    """Process an options only entry in a list.
+def is_options_only(node):
+    """Detect an options only node.
 
     functions:
     - options:
@@ -574,23 +574,14 @@ def check_options_only(node, parent):
       options:
 
     Return True if node only has options.
-    Return Options instance to use.
-    node is assumed to be a dictionary.
-    Update current set of options from node['options'].
     """
     if len(node) != 1:
-        return False, parent
+        return False
     if 'options' not in node:
-        return False, parent
-    options = node['options']
-    if not options:
-        return False, parent
-    if not isinstance(options, dict):
+        return False
+    if not isinstance(node['options'], dict):
         raise TypeError("options must be a dictionary")
-
-    new = util.Options(parent=parent)
-    new.update(node['options'])
-    return True, new
+    return True
 
 def add_functions(parent, functions):
     """ Add functions from list 'functions'.
@@ -612,11 +603,12 @@ def add_functions(parent, functions):
         raise TypeError("functions must be a list")
 
     options = parent.options
-    for func in functions:
-        only, options = check_options_only(func, options)
-        if not only:
-            clean_dictionary(func)
-            parent.add_function(parentoptions=options, **func)
+    for node in functions:
+        if is_options_only(node):
+            options = util.Options(options, **node['options'])
+        else:
+            clean_dictionary(node)
+            parent.add_function(parentoptions=options, **node)
 
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.
