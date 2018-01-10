@@ -451,9 +451,6 @@ class FunctionNode(AstNode):
 
 #        self.function_index = []
 
-        # Only needed for json diff
-        self.attrs = kwargs.get('attrs', None)
-
         # Move fields from kwargs into instance
         for n in [
                 'C_code', 'C_error_pattern', 'C_name',
@@ -520,7 +517,7 @@ class FunctionNode(AstNode):
             decl=self.decl,
             options=self.options,
         )
-        for key in ['attrs', 'cpp_template', 'default_arg_suffix', 'docs', 'doxygen', 
+        for key in ['cpp_template', 'default_arg_suffix', 'docs', 'doxygen', 
                     'fortran_generic', 'return_this',
                     'C_code', 'C_error_pattern', 'C_name',
                     'C_post_call', 'C_post_call_buf', 
