@@ -42,25 +42,10 @@
 generate language bindings
 """
 
-#
-# Annotate the YAML tree with additional internal fields
-#  _decl            - generated declaration.
-#                     Includes computed attributes
-#  _function_index  - sequence number function,
-#                     used in lieu of a pointer
-#  _generated       - who generated this function
-#  _PTR_F_C_index   - Used by fortran wrapper to find index of
-#                     C function to call
-#  _PTR_C_CPP_index - Used by C wrapper to find index of C++ function
-#                     to call
-#  _subprogram      - subroutine or function
-#
-#
 from __future__ import print_function
 from __future__ import absolute_import
 
 import argparse
-import copy
 import json
 import os
 import sys
@@ -72,46 +57,17 @@ from . import generate
 from . import splicer
 from . import typemap
 from . import util
+from . import whelpers
 from . import wrapc
 from . import wrapf
 from . import wrapp
 from . import wrapl
-from . import whelpers
-
-wformat = util.wformat
 
 
 class Config(object):
     """A class to stash configuration values.
     """
     pass
-
-
-class Schema(object):
-    """Create a LibraryNode from a dictionary.
-    """
-    def __init__(self, tree, config):
-        self.tree = tree    # json tree
-        self.config = config
-
-    def check_schema(self):
-        """ Check entire schema of input tree.
-        Create format dictionaries.
-        """
-        node = self.tree
-
-        def_types, def_types_alias = typemap.initialize()
-        declast.add_typemap()
-
-        # Write out native types as YAML if requested
-        if self.config.yaml_types:
-            with open(os.path.join(self.config.yaml_dir, self.config.yaml_types), 'w') as yaml_file:
-                yaml.dump(def_types, yaml_file, default_flow_style=False)
-            print("Wrote", self.config.yaml_types)
-
-        newlibrary = ast.create_library_from_dictionary(node)
-
-        return newlibrary
 
 
 class TypeOut(util.WrapperMixin):
@@ -299,7 +255,17 @@ def main_with_args(args):
 
 #    print(all)
 
-    newlibrary = Schema(all, config).check_schema()
+    def_types, def_types_alias = typemap.initialize()
+    declast.add_typemap()
+
+    # Write out native types as YAML if requested
+    if config.yaml_types:
+        with open(os.path.join(config.yaml_dir, config.yaml_types), 'w') as yaml_file:
+            yaml.dump(def_types, yaml_file, default_flow_style=False)
+        print("Wrote", config.yaml_types)
+
+    newlibrary = ast.create_library_from_dictionary(all)
+
     generate.generate_functions(newlibrary, config)
 
     if 'splicer' in all:

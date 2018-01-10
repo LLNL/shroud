@@ -428,6 +428,17 @@ class FunctionNode(AstNode):
       }
     }
 
+    _decl            - generated declaration.
+                       Includes computed attributes
+    _function_index  - sequence number function,
+                       used in lieu of a pointer
+    _generated       - who generated this function
+    _PTR_F_C_index   - Used by fortran wrapper to find index of
+                       C function to call
+    _PTR_C_CPP_index - Used by C wrapper to find index of C++ function
+                       to call
+    _subprogram      - subroutine or function
+
     """
     def __init__(self, parent,
                  decl=None,
