@@ -128,46 +128,28 @@ class CheckAst(unittest.TestCase):
 
     def test_c_class1(self):
         """Add a class to library"""
-        node = dict(
-            classes=[
-                {
-                    'name': 'Class1',
-                }
-            ]
-        )
-        library = ast.create_library_from_dictionary(node)
+        library = ast.LibraryNode()
+        library.add_class('Class1')
 
         self.assertEqual(len(library.classes), 1)
 
     def test_c_class2(self):
-        """Add a class to library"""
-        node = dict(
-            classes=[
-                {
-                    'name': 'Class1',
-                    'methods': [
-                        {
-                            'decl': 'void c1func1()',
-                        },{
-                            'decl': 'void c1func2()',
-                        }
-                    ],
-                },{
-                    'name': 'Class2',
-                    'methods': [
-                        {
-                            'decl': 'void c2func1()',
-                        }
-                    ],
-                },
-            ],
-        )
-        library = ast.create_library_from_dictionary(node)
+        """Add a classes with functions to library"""
+        library = ast.LibraryNode()
+
+        cls1 = library.add_class('Class1')
+        cls1.add_function(decl='void c1func1()')
+        cls1.add_function(decl='void c1func2()')
+
+        cls2 = library.add_class('Class2')
+        cls2.add_function(decl='void c2func1()')
 
         self.assertEqual(len(library.classes), 2)
         self.assertEqual(len(library.classes[0].functions), 2)
+        self.assertEqual(library.classes[0].functions[0]._ast.name, 'c1func1')
+        self.assertEqual(library.classes[0].functions[1]._ast.name, 'c1func2')
         self.assertEqual(len(library.classes[1].functions), 1)
-
+        self.assertEqual(library.classes[1].functions[0]._ast.name, 'c2func1')
 
     def test_c_class2(self):
         """Test class options"""
