@@ -76,18 +76,18 @@ class AstNode(object):
             tname = name + tname + '_template'
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
-    def add_function(self, parentoptions=None, **node):
-        """Add a function from dictionary node.
+    def add_function(self, parentoptions=None, **kwargs):
+        """Add a function.
         """
-        fcnnode = FunctionNode(self, parentoptions, **node)
+        fcnnode = FunctionNode(self, parentoptions, **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
 
 ######################################################################
 
 class LibraryNode(AstNode):
-    def __init__(self, options=None, **node):
-        """Populate LibraryNode from a dictionary.
+    def __init__(self, options=None, **kwargs):
+        """Create LibraryNode.
 
         fields = value
         options:
@@ -109,24 +109,24 @@ class LibraryNode(AstNode):
 
         self.F_module_dependencies = []     # unused
 
-        self.library = node.get('library', 'default_library')
-        self.copyright = node.setdefault('copyright', [])
-        self.patterns = node.setdefault('patterns', [])
+        self.library = kwargs.get('library', 'default_library')
+        self.copyright = kwargs.setdefault('copyright', [])
+        self.patterns = kwargs.setdefault('patterns', [])
 
         for n in ['C_header_filename', 'C_impl_filename',
                   'F_module_name', 'F_impl_filename',
                   'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
                   'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
                   'YAML_type_filename']:
-            setattr(self, n, node.get(n, None))
+            setattr(self, n, kwargs.get(n, None))
 
-        if 'language' in node:
-            language = node['language'].lower()
+        if 'language' in kwargs:
+            language = kwargs['language'].lower()
             if language not in ['c', 'c++']:
                 raise RuntimeError("language must be 'c' or 'c++'")
-            self.language = node['language']
+            self.language = kwargs['language']
 
-        self.default_format(node)
+        self.default_format(kwargs)
         self.option_to_fmt()
 
         # default some options based on other options
@@ -138,13 +138,13 @@ class LibraryNode(AstNode):
         self.eval_template('F_impl_filename', '_library')
 
         # default cpp_header to blank
-        if 'cpp_header' in node and node['cpp_header']:
+        if 'cpp_header' in kwargs and kwargs['cpp_header']:
             # YAML treats blank string as None
-            self.cpp_header = node['cpp_header']
+            self.cpp_header = kwargs['cpp_header']
 
-        if 'namespace' in node and node['namespace']:
+        if 'namespace' in kwargs and kwargs['namespace']:
             # YAML treats blank string as None
-            self.namespace = node['namespace']
+            self.namespace = kwargs['namespace']
 
     def default_options(self):
         """default options."""
@@ -308,10 +308,10 @@ class LibraryNode(AstNode):
 
             fmt_library.stdlib  = 'std::'
 
-    def add_class(self, name, **node):
-        """Add a class from dictionary node.
+    def add_class(self, name, **kwargs):
+        """Add a class.
         """
-        clsnode = ClassNode(name, self, **node)
+        clsnode = ClassNode(name, self, **kwargs)
         self.classes.append(clsnode)
         return clsnode
 
@@ -335,21 +335,21 @@ class LibraryNode(AstNode):
 ######################################################################
 
 class ClassNode(AstNode):
-    def __init__(self, name, parent, options=None, **node):
+    def __init__(self, name, parent, options=None, **kwargs):
         self.name = name
         self.functions = []
         self.cpp_header = ''
 
         # default cpp_header to blank
-        if 'cpp_header' in node and node['cpp_header']:
+        if 'cpp_header' in kwargs and kwargs['cpp_header']:
             # YAML treats blank string as None
-            self.cpp_header = node['cpp_header']
+            self.cpp_header = kwargs['cpp_header']
 
         self.namespace = ''
-        if 'namespace' in node and node['namespace']:
+        if 'namespace' in kwargs and kwargs['namespace']:
             # YAML treats blank string as None
-            self.namespace = node['namespace']
-        self.python = node.get('python', {})
+            self.namespace = kwargs['namespace']
+        self.python = kwargs.get('python', {})
 
         for n in ['C_header_filename', 'C_impl_filename',
                   'F_derived_name', 'F_impl_filename', 'F_module_name',
@@ -357,7 +357,7 @@ class ClassNode(AstNode):
                   'LUA_metadata', 'LUA_ctor_name',
                   'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
                   'class_prefix']:
-            setattr(self, n, node.get(n, None))
+            setattr(self, n, kwargs.get(n, None))
 
         self.options = util.Options(parent=parent.options)
         if options:
@@ -427,7 +427,7 @@ class FunctionNode(AstNode):
     }
 
     """
-    def __init__(self, parent, parentoptions=None, options=None, **node):
+    def __init__(self, parent, parentoptions=None, options=None, **kwargs):
         self.options = util.Options(parent= parentoptions or parent.options)
         if options:
             self.options.update(options, replace=True)
@@ -456,38 +456,38 @@ class FunctionNode(AstNode):
 #        self.function_index = []
 
         # Only needed for json diff
-        self.attrs = node.get('attrs', None)
+        self.attrs = kwargs.get('attrs', None)
 
-        # Move fields from node into instance
+        # Move fields from kwargs into instance
         for n in [
                 'C_error_pattern', 'C_name',
                 'C_post_call', 'C_post_call_buf',
                 'F_name_function',
                 'LUA_name', 'LUA_name_impl',
                 'PY_name_impl' ]:
-            setattr(self, n, node.get(n, None))
+            setattr(self, n, kwargs.get(n, None))
 
-        self.default_arg_suffix = node.get('default_arg_suffix', [])
-        self.docs = node.get('docs', '')
-        self.cpp_template = node.get('cpp_template', {})
-        self.doxygen = node.get('doxygen', {})
-        self.fortran_generic = node.get('fortran_generic', {})
-        self.return_this = node.get('return_this', False)
+        self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
+        self.docs = kwargs.get('docs', '')
+        self.cpp_template = kwargs.get('cpp_template', {})
+        self.doxygen = kwargs.get('doxygen', {})
+        self.fortran_generic = kwargs.get('fortran_generic', {})
+        self.return_this = kwargs.get('return_this', False)
 
-        self.F_C_name = node.get('F_C_name', None)
-        self.F_name_generic = node.get('F_name_generic', None)
-        self.F_name_impl = node.get('F_name_impl', None)
-        self.PY_error_pattern = node.get('PY_error_pattern', '')
+        self.F_C_name = kwargs.get('F_C_name', None)
+        self.F_name_generic = kwargs.get('F_name_generic', None)
+        self.F_name_impl = kwargs.get('F_name_impl', None)
+        self.PY_error_pattern = kwargs.get('PY_error_pattern', '')
 
         # referenced explicity (not via fmt)
-        self.C_code = node.get('C_code', None)
-        self.C_return_code = node.get('C_return_code', None)
-        self.C_return_type = node.get('C_return_type', None)
-        self.F_code = node.get('F_code', None)
+        self.C_code = kwargs.get('C_code', None)
+        self.C_return_code = kwargs.get('C_return_code', None)
+        self.C_return_type = kwargs.get('C_return_type', None)
+        self.F_code = kwargs.get('F_code', None)
         
-#        self.function_suffix = node.get('function_suffix', None)  # '' is legal value, None=unset
-        if 'function_suffix' in node:
-            self.function_suffix = node['function_suffix']
+#        self.function_suffix = kwargs.get('function_suffix', None)  # '' is legal value, None=unset
+        if 'function_suffix' in kwargs:
+            self.function_suffix = kwargs['function_suffix']
             if self.function_suffix is None:
                 # YAML turns blanks strings into None
                 # mark as explicitly set to empty
@@ -496,27 +496,27 @@ class FunctionNode(AstNode):
             # Mark as unset
             self.function_suffix = None
 
-        if 'cpp_template' in node:
-            template_types = node['cpp_template'].keys()
+        if 'cpp_template' in kwargs:
+            template_types = kwargs['cpp_template'].keys()
         else:
             template_types = []
 
-        if 'decl' in node:
+        if 'decl' in kwargs:
             # parse decl and add to dictionary
             if isinstance(parent,ClassNode):
                 cls_name = parent.name
             else:
                 cls_name = None
 
-            self.decl = node['decl']
-            ast = declast.check_decl(node['decl'],
+            self.decl = kwargs['decl']
+            ast = declast.check_decl(kwargs['decl'],
                                      current_class=cls_name,
                                      template_types=template_types)
             self._ast = ast
 
             # add any attributes from YAML files to the ast
-            if 'attrs' in node:
-                attrs = node['attrs']
+            if 'attrs' in kwargs:
+                attrs = kwargs['attrs']
                 if 'result' in attrs:
                     ast.attrs.update(attrs['result'])
                 for arg in ast.params:
@@ -527,18 +527,18 @@ class FunctionNode(AstNode):
         else:
             raise RuntimeError("Missing decl")
                                         
-        if ('function_suffix' in node and
-                node['function_suffix'] is None):
+        if ('function_suffix' in kwargs and
+                kwargs['function_suffix'] is None):
             # YAML turns blanks strings into None
-            node['function_suffix'] = ''
-        if 'default_arg_suffix' in node:
-            default_arg_suffix = node['default_arg_suffix']
+            kwargs['function_suffix'] = ''
+        if 'default_arg_suffix' in kwargs:
+            default_arg_suffix = kwargs['default_arg_suffix']
             if not isinstance(default_arg_suffix, list):
                 raise RuntimeError('default_arg_suffix must be a list')
-            for i, value in enumerate(node['default_arg_suffix']):
+            for i, value in enumerate(kwargs['default_arg_suffix']):
                 if value is None:
                     # YAML turns blanks strings to None
-                    node['default_arg_suffix'][i] = ''
+                    kwargs['default_arg_suffix'][i] = ''
 
 # XXX - do some error checks on ast
 #        if 'name' not in result:
@@ -587,7 +587,7 @@ class FunctionNode(AstNode):
                 d[key] = value
         return d
 
-    def add_function(self, options=None, **node):
+    def add_function(self, options=None, **kwargs):
         # inherited from AstNode
         raise RuntimeError("Cannot add a function to a FunctionNode")
 
