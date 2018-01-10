@@ -79,14 +79,19 @@ class AstNode(object):
     def add_function(self, parentoptions=None, **kwargs):
         """Add a function.
         """
-        fcnnode = FunctionNode(self, parentoptions, **kwargs)
+        fcnnode = FunctionNode(self, parentoptions=parentoptions, **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
 
 ######################################################################
 
 class LibraryNode(AstNode):
-    def __init__(self, options=None, **kwargs):
+    def __init__(self,
+                 cpp_header='',
+                 library='default_library',
+                 namespace='',
+                 options=None,
+                 **kwargs):
         """Create LibraryNode.
 
         fields = value
@@ -95,21 +100,22 @@ class LibraryNode(AstNode):
         functions:
 
         """
+        # From arguments
+        self.cpp_header = cpp_header
+        self.library = library
+        self.namespace = namespace
 
         self.classes = []
-        self.cpp_header = ''
         self.functions = []
         # Each is given a _function_index when created.
         self.function_index = []
         self.language = 'c++'     # input language: c or c++
-        self.namespace = ''
         self.options = self.default_options()
         if options:
             self.options.update(options, replace=True)
 
         self.F_module_dependencies = []     # unused
 
-        self.library = kwargs.get('library', 'default_library')
         self.copyright = kwargs.setdefault('copyright', [])
         self.patterns = kwargs.setdefault('patterns', [])
 
@@ -126,7 +132,7 @@ class LibraryNode(AstNode):
                 raise RuntimeError("language must be 'c' or 'c++'")
             self.language = kwargs['language']
 
-        self.default_format(kwargs)
+        self.default_format()
         self.option_to_fmt()
 
         # default some options based on other options
@@ -136,15 +142,6 @@ class LibraryNode(AstNode):
         # just functions.
         self.eval_template('F_module_name', '_library')
         self.eval_template('F_impl_filename', '_library')
-
-        # default cpp_header to blank
-        if 'cpp_header' in kwargs and kwargs['cpp_header']:
-            # YAML treats blank string as None
-            self.cpp_header = kwargs['cpp_header']
-
-        if 'namespace' in kwargs and kwargs['namespace']:
-            # YAML treats blank string as None
-            self.namespace = kwargs['namespace']
 
     def default_options(self):
         """default options."""
@@ -233,26 +230,23 @@ class LibraryNode(AstNode):
             )
         return def_options
 
-    def default_format(self, node):
+    def default_format(self):
         """Set format dictionary.
         """
 
         self._fmt = util.Options(None)
         fmt_library = self._fmt
 
-        if 'library' in node:
-            fmt_library.library = node['library']
-        else:
-            fmt_library.library = 'default_library'
+        fmt_library.library = self.library
         fmt_library.library_lower = fmt_library.library.lower()
         fmt_library.library_upper = fmt_library.library.upper()
         fmt_library.function_suffix = ''   # assume no suffix
         fmt_library.C_prefix = self.options.get(
             'C_prefix', fmt_library.library_upper[:3] + '_')
         fmt_library.F_C_prefix = self.options['F_C_prefix']
-        if 'namespace' in node and node['namespace']:
+        if self.namespace:
             fmt_library.namespace_scope = (
-                '::'.join(node['namespace'].split()) + '::')
+                '::'.join(self.namespace.split()) + '::')
         else:
             fmt_library.namespace_scope = ''
 
@@ -335,20 +329,20 @@ class LibraryNode(AstNode):
 ######################################################################
 
 class ClassNode(AstNode):
-    def __init__(self, name, parent, options=None, **kwargs):
+    def __init__(self, name, parent,
+                 cpp_header='',
+                 namespace='',
+                 options=None,
+                 **kwargs):
+        """Create ClassNode.
+        """
+        # From arguments
         self.name = name
+        self.cpp_header = cpp_header
+        self.namespace = namespace
+
         self.functions = []
-        self.cpp_header = ''
 
-        # default cpp_header to blank
-        if 'cpp_header' in kwargs and kwargs['cpp_header']:
-            # YAML treats blank string as None
-            self.cpp_header = kwargs['cpp_header']
-
-        self.namespace = ''
-        if 'namespace' in kwargs and kwargs['namespace']:
-            # YAML treats blank string as None
-            self.namespace = kwargs['namespace']
         self.python = kwargs.get('python', {})
 
         for n in ['C_header_filename', 'C_impl_filename',
@@ -362,7 +356,6 @@ class ClassNode(AstNode):
         self.options = util.Options(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
-        options = self.options
 
         self._fmt = util.Options(parent._fmt)
         fmt_class = self._fmt
@@ -375,7 +368,7 @@ class ClassNode(AstNode):
         self.eval_template('C_header_filename', '_class')
         self.eval_template('C_impl_filename', '_class')
 
-        if options.F_module_per_class:
+        if self.options.F_module_per_class:
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
 
@@ -427,7 +420,11 @@ class FunctionNode(AstNode):
     }
 
     """
-    def __init__(self, parent, parentoptions=None, options=None, **kwargs):
+    def __init__(self, parent,
+                 decl=None,
+                 parentoptions=None,
+                 options=None,
+                 **kwargs):
         self.options = util.Options(parent= parentoptions or parent.options)
         if options:
             self.options.update(options, replace=True)
@@ -501,32 +498,32 @@ class FunctionNode(AstNode):
         else:
             template_types = []
 
-        if 'decl' in kwargs:
-            # parse decl and add to dictionary
-            if isinstance(parent,ClassNode):
-                cls_name = parent.name
-            else:
-                cls_name = None
-
-            self.decl = kwargs['decl']
-            ast = declast.check_decl(kwargs['decl'],
-                                     current_class=cls_name,
-                                     template_types=template_types)
-            self._ast = ast
-
-            # add any attributes from YAML files to the ast
-            if 'attrs' in kwargs:
-                attrs = kwargs['attrs']
-                if 'result' in attrs:
-                    ast.attrs.update(attrs['result'])
-                for arg in ast.params:
-                    name = arg.name
-                    if name in attrs:
-                        arg.attrs.update(attrs[name])
-            # XXX - waring about unused fields in attrs
-        else:
+        if not decl:
             raise RuntimeError("Missing decl")
-                                        
+
+        # parse decl and add to dictionary
+        if isinstance(parent,ClassNode):
+            cls_name = parent.name
+        else:
+            cls_name = None
+
+        self.decl = decl
+        ast = declast.check_decl(decl,
+                                 current_class=cls_name,
+                                 template_types=template_types)
+        self._ast = ast
+
+        # add any attributes from YAML files to the ast
+        if 'attrs' in kwargs:
+            attrs = kwargs['attrs']
+            if 'result' in attrs:
+                ast.attrs.update(attrs['result'])
+            for arg in ast.params:
+                name = arg.name
+                if name in attrs:
+                    arg.attrs.update(attrs[name])
+        # XXX - waring about unused fields in attrs
+                                    
         if ('function_suffix' in kwargs and
                 kwargs['function_suffix'] is None):
             # YAML turns blanks strings into None
@@ -592,6 +589,14 @@ class FunctionNode(AstNode):
         raise RuntimeError("Cannot add a function to a FunctionNode")
 
 
+def clean_dictionary(dd):
+    """YAML converts some blank fields to None,
+    but we want blank.
+    """
+    for key in ['cpp_header', 'namespace']:
+        if key in dd and dd[key] is None:
+            dd[key] = ''
+
 def check_options_only(node, parent):
     """Process an options only entry in a list.
 
@@ -643,6 +648,7 @@ def add_functions(parent, functions):
     for func in functions:
         only, options = check_options_only(func, options)
         if not only:
+            clean_dictionary(func)
             parent.add_function(parentoptions=options, **func)
 
 def create_library_from_dictionary(node):
@@ -658,6 +664,8 @@ def create_library_from_dictionary(node):
     Do some checking on the input.
     Every class must have a name.
     """
+
+    clean_dictionary(node)
     library = LibraryNode(**node)
 
     if 'classes' in node:
@@ -672,6 +680,7 @@ def create_library_from_dictionary(node):
                 raise TypeError("classes[n] must be a dictionary")
             if 'name' not in cls:
                 raise TypeError("class does not define name")
+            clean_dictionary(cls)
             declast.add_type(cls['name'])
 
         for cls in classes:
