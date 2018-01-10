@@ -43,6 +43,7 @@ Abstract Syntax Tree nodes for Library, Class, and Function nodes.
 
 from . import util
 from . import declast
+from . import typemap
 
 class AstNode(object):
     def option_to_fmt(self):
@@ -623,6 +624,31 @@ def create_library_from_dictionary(node):
     Do some checking on the input.
     Every class must have a name.
     """
+
+    if 'types' in node:
+        types_dict = node['types']
+        if not isinstance(types_dict, dict):
+            raise TypeError("types must be a dictionary")
+        def_types, def_types_alias = typemap.Typedef.get_global_types()
+        for key, value in types_dict.items():
+            if not isinstance(value, dict):
+                raise TypeError("types '%s' must be a dictionary" % key)
+            declast.add_type(key)   # Add to parser
+
+            if 'typedef' in value:
+                copy_type = value['typedef']
+                orig = def_types.get(copy_type, None)
+                if not orig:
+                    raise RuntimeError(
+                        "No type for typedef {}".format(copy_type))
+                def_types[key] = typemap.Typedef(key)
+                def_types[key].update(def_types[copy_type]._to_dict())
+
+            if key in def_types:
+                def_types[key].update(value)
+            else:
+                def_types[key] = typemap.Typedef(key, **value)
+            typemap.typedef_wrapped_defaults(def_types[key])
 
     clean_dictionary(node)
     library = LibraryNode(**node)

@@ -102,35 +102,11 @@ class Schema(object):
         def_types, def_types_alias = typemap.initialize()
         declast.add_typemap()
 
-        # Write out as YAML if requested
+        # Write out native types as YAML if requested
         if self.config.yaml_types:
             with open(os.path.join(self.config.yaml_dir, self.config.yaml_types), 'w') as yaml_file:
                 yaml.dump(def_types, yaml_file, default_flow_style=False)
             print("Wrote", self.config.yaml_types)
-
-        if 'types' in node:
-            types_dict = node['types']
-            if not isinstance(types_dict, dict):
-                raise TypeError("types must be a dictionary")
-            for key, value in types_dict.items():
-                if not isinstance(value, dict):
-                    raise TypeError("types '%s' must be a dictionary" % key)
-                declast.add_type(key)   # Add to parser
-
-                if 'typedef' in value:
-                    copy_type = value['typedef']
-                    orig = def_types.get(copy_type, None)
-                    if not orig:
-                        raise RuntimeError(
-                            "No type for typedef {}".format(copy_type))
-                    def_types[key] = typemap.Typedef(key)
-                    def_types[key].update(def_types[copy_type]._to_dict())
-
-                if key in def_types:
-                    def_types[key].update(value)
-                else:
-                    def_types[key] = typemap.Typedef(key, **value)
-                typemap.typedef_wrapped_defaults(def_types[key])
 
         newlibrary = ast.create_library_from_dictionary(node)
 
