@@ -972,12 +972,7 @@ def main_with_args(args):
     config.ffiles = []  # list of Fortran files created
 
     # accumulated input
-    all = dict(
-        library='default_library',
-        cpp_header='',
-        namespace='',
-        language='c++',
-        )
+    all = {}
     splicers = dict(c={}, f={}, py={}, lua={})
 
     for filename in args.filename:
