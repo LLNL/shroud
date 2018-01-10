@@ -76,18 +76,12 @@ class AstNode(object):
             tname = name + tname + '_template'
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
-    def add_function(self, parentoptions=None, **kwargs):
-        """Add a function.
-        """
-        fcnnode = FunctionNode(self, parentoptions=parentoptions, **kwargs)
-        self.functions.append(fcnnode)
-        return fcnnode
-
 ######################################################################
 
 class LibraryNode(AstNode):
     def __init__(self,
                  cpp_header='',
+                 language='c++',
                  library='default_library',
                  namespace='',
                  options=None,
@@ -102,6 +96,9 @@ class LibraryNode(AstNode):
         """
         # From arguments
         self.cpp_header = cpp_header
+        self.language = language.lower()
+        if self.language not in ['c', 'c++']:
+            raise RuntimeError("language must be 'c' or 'c++'")
         self.library = library
         self.namespace = namespace
 
@@ -109,7 +106,6 @@ class LibraryNode(AstNode):
         self.functions = []
         # Each is given a _function_index when created.
         self.function_index = []
-        self.language = 'c++'     # input language: c or c++
         self.options = self.default_options()
         if options:
             self.options.update(options, replace=True)
@@ -125,12 +121,6 @@ class LibraryNode(AstNode):
                   'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
                   'YAML_type_filename']:
             setattr(self, n, kwargs.get(n, None))
-
-        if 'language' in kwargs:
-            language = kwargs['language'].lower()
-            if language not in ['c', 'c++']:
-                raise RuntimeError("language must be 'c' or 'c++'")
-            self.language = kwargs['language']
 
         self.default_format()
         self.option_to_fmt()
@@ -302,6 +292,13 @@ class LibraryNode(AstNode):
 
             fmt_library.stdlib  = 'std::'
 
+    def add_function(self, parentoptions=None, **kwargs):
+        """Add a function.
+        """
+        fcnnode = FunctionNode(self, parentoptions=parentoptions, **kwargs)
+        self.functions.append(fcnnode)
+        return fcnnode
+
     def add_class(self, name, **kwargs):
         """Add a class.
         """
@@ -371,6 +368,13 @@ class ClassNode(AstNode):
         if self.options.F_module_per_class:
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
+
+    def add_function(self, parentoptions=None, **kwargs):
+        """Add a function.
+        """
+        fcnnode = FunctionNode(self, parentoptions=parentoptions, **kwargs)
+        self.functions.append(fcnnode)
+        return fcnnode
 
     def _to_dict(self):
         """Convert to dictionary.
@@ -540,10 +544,6 @@ class FunctionNode(AstNode):
             if value is not None:   # '' is OK
                 d[key] = value
         return d
-
-    def add_function(self, options=None, **kwargs):
-        # inherited from AstNode
-        raise RuntimeError("Cannot add a function to a FunctionNode")
 
 
 def clean_dictionary(dd):
