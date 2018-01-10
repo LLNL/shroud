@@ -40,6 +40,10 @@
 """
 Abstract Syntax Tree nodes for Library, Class, and Function nodes.
 """
+from __future__ import print_function
+from __future__ import absolute_import
+
+import copy
 
 from . import util
 from . import declast
@@ -545,6 +549,24 @@ class FunctionNode(AstNode):
             if value is not None:   # '' is OK
                 d[key] = value
         return d
+
+    def clone(self):
+        """Create a copy of a function node to use with C++ template
+        or changing result to argument.
+        """
+        # Shallow copy everything
+        new = copy.copy(self)
+
+        # new layer of Options
+        new._fmt = util.Options(self._fmt)
+        new.options = util.Options(self.options)
+    
+        # deep copy dictionaries
+        new._ast = copy.deepcopy(self._ast)
+        new._fmtargs = copy.deepcopy(self._fmtargs)
+        new._fmtresult = copy.deepcopy(self._fmtresult)
+    
+        return new
 
 
 def clean_dictionary(dd):

@@ -40,9 +40,10 @@
 """
 Generate additional functions required to create wrappers.
 """
+from __future__ import print_function
+from __future__ import absolute_import
 
 from . import typemap
-from . import util  # copy function node
 
 
 class VerifyAttrs(object):
@@ -305,7 +306,7 @@ class GenFunctions(object):
             raise NotImplementedError("Only one cpp_templated type for now")
         for typename, types in node.cpp_template.items():
             for type in types:
-                new = util.copy_function_node(node)
+                new = node.clone()
                 ordered_functions.append(new)
                 self.append_function_index(new)
 
@@ -344,7 +345,7 @@ class GenFunctions(object):
             raise NotImplemented("Only one generic arg for now")
         for argname, types in node.fortran_generic.items():
             for type in types:
-                new = util.copy_function_node(node)
+                new = node.clone()
                 ordered_functions.append(new)
                 self.append_function_index(new)
 
@@ -399,7 +400,7 @@ class GenFunctions(object):
             if arg.init is None:
                 min_args += 1
                 continue
-            new = util.copy_function_node(node)
+            new = node.clone()
             self.append_function_index(new)
             new._generated = 'has_default_arg'
             del new._ast.params[i:]  # remove trailing arguments
@@ -502,7 +503,7 @@ class GenFunctions(object):
 
         # Create a new C function and change arguments
         # to add len_trim attribute
-        C_new = util.copy_function_node(node)
+        C_new = node.clone()
         ordered_functions.append(C_new)
         self.append_function_index(C_new)
 
@@ -572,7 +573,7 @@ class GenFunctions(object):
         elif result_as_arg:
             # Create Fortran function without bufferify function_suffix but
             # with len attributes on string arguments.
-            F_new = util.copy_function_node(C_new)
+            F_new = C_new.clone()
             ordered_functions.append(F_new)
             self.append_function_index(F_new)
 
