@@ -45,15 +45,6 @@ from . import util
 from . import declast
 
 class AstNode(object):
-    def update_options_from_dict(self, node):
-        """Update options from node.
-        """
-        if 'options' in node and \
-                node['options'] is not None:
-            if not isinstance(node['options'], dict):
-                raise TypeError("options must be a dictionary")
-            self.options.update(node['options'], replace=True)
-
     def option_to_fmt(self):
         """Set fmt based on options dictionary.
         """
@@ -85,17 +76,17 @@ class AstNode(object):
             tname = name + tname + '_template'
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
-    def add_function(self, node, options=None):
+    def add_function(self, parentoptions=None, **node):
         """Add a function from dictionary node.
         """
-        fcnnode = FunctionNode(node, self, options)
+        fcnnode = FunctionNode(self, parentoptions, **node)
         self.functions.append(fcnnode)
         return fcnnode
 
 ######################################################################
 
 class LibraryNode(AstNode):
-    def __init__(self, node=None):
+    def __init__(self, options=None, **node):
         """Populate LibraryNode from a dictionary.
 
         fields = value
@@ -113,10 +104,10 @@ class LibraryNode(AstNode):
         self.language = 'c++'     # input language: c or c++
         self.namespace = ''
         self.options = self.default_options()
-        self.F_module_dependencies = []     # unused
+        if options:
+            self.options.update(options, replace=True)
 
-        if node is None:
-            node = dict()
+        self.F_module_dependencies = []     # unused
 
         self.library = node.get('library', 'default_library')
         self.copyright = node.setdefault('copyright', [])
@@ -134,8 +125,6 @@ class LibraryNode(AstNode):
             if language not in ['c', 'c++']:
                 raise RuntimeError("language must be 'c' or 'c++'")
             self.language = node['language']
-
-        self.update_options_from_dict(node)
 
         self.default_format(node)
         self.option_to_fmt()
@@ -319,10 +308,10 @@ class LibraryNode(AstNode):
 
             fmt_library.stdlib  = 'std::'
 
-    def add_class(self, node):
+    def add_class(self, name, **node):
         """Add a class from dictionary node.
         """
-        clsnode = ClassNode(node['name'], self, node)
+        clsnode = ClassNode(name, self, **node)
         self.classes.append(clsnode)
         return clsnode
 
@@ -346,13 +335,10 @@ class LibraryNode(AstNode):
 ######################################################################
 
 class ClassNode(AstNode):
-    def __init__(self, name, parent, node=None):
+    def __init__(self, name, parent, options=None, **node):
         self.name = name
         self.functions = []
         self.cpp_header = ''
-
-        if node is None:
-            node = {}
 
         # default cpp_header to blank
         if 'cpp_header' in node and node['cpp_header']:
@@ -374,7 +360,8 @@ class ClassNode(AstNode):
             setattr(self, n, node.get(n, None))
 
         self.options = util.Options(parent=parent.options)
-        self.update_options_from_dict(node)
+        if options:
+            self.options.update(options, replace=True)
         options = self.options
 
         self._fmt = util.Options(parent._fmt)
@@ -440,15 +427,10 @@ class FunctionNode(AstNode):
     }
 
     """
-
-
-
-    def __init__(self, node, parent, options=None):
-        if options is None:
-            self.options = util.Options(parent=parent.options)
-        else:
-            self.options = util.Options(parent=options)
-        self.update_options_from_dict(node)
+    def __init__(self, parent, parentoptions=None, options=None, **node):
+        self.options = util.Options(parent= parentoptions or parent.options)
+        if options:
+            self.options.update(options, replace=True)
 
         self._fmt = util.Options(parent._fmt)
         self.option_to_fmt()
@@ -605,7 +587,7 @@ class FunctionNode(AstNode):
                 d[key] = value
         return d
 
-    def add_function(self, node, options=None):
+    def add_function(self, options=None, **node):
         # inherited from AstNode
         raise RuntimeError("Cannot add a function to a FunctionNode")
 
@@ -661,7 +643,7 @@ def add_functions(parent, functions):
     for func in functions:
         only, options = check_options_only(func, options)
         if not only:
-            parent.add_function(func, options)
+            parent.add_function(parentoptions=options, **func)
 
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.
@@ -676,7 +658,7 @@ def create_library_from_dictionary(node):
     Do some checking on the input.
     Every class must have a name.
     """
-    library = LibraryNode(node)
+    library = LibraryNode(**node)
 
     if 'classes' in node:
         classes = node['classes']
@@ -693,7 +675,7 @@ def create_library_from_dictionary(node):
             declast.add_type(cls['name'])
 
         for cls in classes:
-            clsnode = library.add_class(cls)
+            clsnode = library.add_class(**cls)
             if 'methods' in cls:
                 add_functions(clsnode, cls['methods'])
 

@@ -61,14 +61,13 @@ class CheckAst(unittest.TestCase):
 
     def test_a_library1(self):
         """Update LibraryNode"""
-        node = dict(
+        library = ast.LibraryNode(
             language='c',
             options=dict(
                 wrap_c=False,
                 C_prefix='XXX_',
             )
         )
-        library = ast.LibraryNode(node)
 
         self.assertEqual(library.language, 'c')              # updated from dict
         self.assertEqual(library.options.wrap_c, False)      # updated from dict
@@ -79,10 +78,8 @@ class CheckAst(unittest.TestCase):
 
     def test_b_function1(self):
         """Add a function to library"""
-        function1=dict(decl='void func1()')
-
         library = ast.LibraryNode()
-        library.add_function(function1)
+        library.add_function(decl='void func1()')
 
         self.assertEqual(len(library.functions), 1)
 
