@@ -85,56 +85,12 @@ class AstNode(object):
             tname = name + tname + '_template'
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
-    def check_options_only(self, node, parent):
-        """Process an options only entry in a list.
-
-        functions:
-        - options:
-             a = b
-        - decl:
-          options:
-
-        Return True if node only has options.
-        Return Options instance to use.
-        node is assumed to be a dictionary.
-        Update current set of options from node['options'].
+    def add_function(self, node, options=None):
+        """Add a function from dictionary node.
         """
-        if len(node) != 1:
-            return False, parent
-        if 'options' not in node:
-            return False, parent
-        options = node['options']
-        if not options:
-            return False, parent
-        if not isinstance(options, dict):
-            raise TypeError("options must be a dictionary")
-
-        new = util.Options(parent=parent)
-        new.update(node['options'])
-        return True, new
-
-    def add_functions(self, node, cls_name, member):
-        """ Add functions from dictionary 'node'.
-
-        Used with class methods and functions.
-        """
-        if member not in node:
-            return
-        functions = node[member]
-        if not isinstance(functions, list):
-            raise TypeError("functions must be a list")
-
-        options = self.options
-        for func in functions:
-            only, options = self.check_options_only(func, options)
-            if not only:
-                self.functions.append(FunctionNode(func, self, cls_name, options))
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        return dict()
+        fcnnode = FunctionNode(node, self, options)
+        self.functions.append(fcnnode)
+        return fcnnode
 
 ######################################################################
 
@@ -161,7 +117,6 @@ class LibraryNode(AstNode):
 
         if node is None:
             node = dict()
-        self.node = node
 
         self.library = node.get('library', 'default_library')
         self.copyright = node.setdefault('copyright', [])
@@ -201,9 +156,6 @@ class LibraryNode(AstNode):
         if 'namespace' in node and node['namespace']:
             # YAML treats blank string as None
             self.namespace = node['namespace']
-
-        self.add_classes(node)
-        self.add_functions(node, None, 'functions')
 
     def default_options(self):
         """default options."""
@@ -367,30 +319,12 @@ class LibraryNode(AstNode):
 
             fmt_library.stdlib  = 'std::'
 
-    def add_classes(self, node):
-        """Add classes from a dictionary.
-
-        classes:
-        - name: Class1
-        - name: Class2
+    def add_class(self, node):
+        """Add a class from dictionary node.
         """
-        if 'classes' not in node:
-            return
-        classes = node['classes']
-        if not isinstance(classes, list):
-            raise TypeError("classes must be a list")
-
-        # Add all class types to parser first
-        # Emulate forward declarations of classes.
-        for cls in classes:
-            if not isinstance(cls, dict):
-                raise TypeError("classes[n] must be a dictionary")
-            if 'name' not in cls:
-                raise TypeError("class does not define name")
-            declast.add_type(cls['name'])
-
-        for cls in classes:
-            self.classes.append(ClassNode(cls['name'], self, cls))
+        clsnode = ClassNode(node['name'], self, node)
+        self.classes.append(clsnode)
+        return clsnode
 
     def _to_dict(self):
         """Convert to dictionary.
@@ -458,8 +392,6 @@ class ClassNode(AstNode):
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
 
-        self.add_functions(node, name, 'methods')
-
     def _to_dict(self):
         """Convert to dictionary.
         Used by util.ExpandedEncoder.
@@ -511,10 +443,12 @@ class FunctionNode(AstNode):
 
 
 
-    def __init__(self, node, parent, cls_name, options):
-        self.options = util.Options(parent=options)
+    def __init__(self, node, parent, options=None):
+        if options is None:
+            self.options = util.Options(parent=parent.options)
+        else:
+            self.options = util.Options(parent=options)
         self.update_options_from_dict(node)
-        options = self.options
 
         self._fmt = util.Options(parent._fmt)
         self.option_to_fmt()
@@ -587,6 +521,11 @@ class FunctionNode(AstNode):
 
         if 'decl' in node:
             # parse decl and add to dictionary
+            if isinstance(parent,ClassNode):
+                cls_name = parent.name
+            else:
+                cls_name = None
+
             self.decl = node['decl']
             ast = declast.check_decl(node['decl'],
                                      current_class=cls_name,
@@ -665,3 +604,100 @@ class FunctionNode(AstNode):
             if value is not None:   # '' is OK
                 d[key] = value
         return d
+
+    def add_function(self, node, options=None):
+        # inherited from AstNode
+        raise RuntimeError("Cannot add a function to a FunctionNode")
+
+
+def check_options_only(node, parent):
+    """Process an options only entry in a list.
+
+    functions:
+    - options:
+         a = b
+    - decl:
+      options:
+
+    Return True if node only has options.
+    Return Options instance to use.
+    node is assumed to be a dictionary.
+    Update current set of options from node['options'].
+    """
+    if len(node) != 1:
+        return False, parent
+    if 'options' not in node:
+        return False, parent
+    options = node['options']
+    if not options:
+        return False, parent
+    if not isinstance(options, dict):
+        raise TypeError("options must be a dictionary")
+
+    new = util.Options(parent=parent)
+    new.update(node['options'])
+    return True, new
+
+def add_functions(parent, functions):
+    """ Add functions from list 'functions'.
+    Look for 'options' only entries.
+
+    functions = [
+      {
+        'options': 
+      },{
+        'decl': 'void func1()'
+      },{
+        'decl': 'void func2()'
+      }
+    ]
+
+    Used with class methods and functions.
+    """
+    if not isinstance(functions, list):
+        raise TypeError("functions must be a list")
+
+    options = parent.options
+    for func in functions:
+        only, options = check_options_only(func, options)
+        if not only:
+            parent.add_function(func, options)
+
+def create_library_from_dictionary(node):
+    """Create a library and add classes and functions from node.
+    Typically, node is defined via YAML.
+
+    library: name
+    classes:
+    - name: Class1
+    functions:
+    - decl: void func1()
+
+    Do some checking on the input.
+    Every class must have a name.
+    """
+    library = LibraryNode(node)
+
+    if 'classes' in node:
+        classes = node['classes']
+        if not isinstance(classes, list):
+            raise TypeError("classes must be a list")
+
+        # Add all class types to parser first
+        # Emulate forward declarations of classes.
+        for cls in classes:
+            if not isinstance(cls, dict):
+                raise TypeError("classes[n] must be a dictionary")
+            if 'name' not in cls:
+                raise TypeError("class does not define name")
+            declast.add_type(cls['name'])
+
+        for cls in classes:
+            clsnode = library.add_class(cls)
+            if 'methods' in cls:
+                add_functions(clsnode, cls['methods'])
+
+    if 'functions' in node:
+        add_functions(library, node['functions'])
+
+    return library

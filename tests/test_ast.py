@@ -79,10 +79,10 @@ class CheckAst(unittest.TestCase):
 
     def test_b_function1(self):
         """Add a function to library"""
-        node = dict(
-            functions=[ dict(decl='void func1()') ]
-        )
-        library = ast.LibraryNode(node)
+        function1=dict(decl='void func1()')
+
+        library = ast.LibraryNode()
+        library.add_function(function1)
 
         self.assertEqual(len(library.functions), 1)
 
@@ -113,7 +113,7 @@ class CheckAst(unittest.TestCase):
                 },
             ],
         )
-        library = ast.LibraryNode(node)
+        library = ast.create_library_from_dictionary(node)
 
         self.assertEqual(len(library.functions), 2)
         self.assertEqual(library.options.testa, 'a')
@@ -138,7 +138,7 @@ class CheckAst(unittest.TestCase):
                 }
             ]
         )
-        library = ast.LibraryNode(node)
+        library = ast.create_library_from_dictionary(node)
 
         self.assertEqual(len(library.classes), 1)
 
@@ -165,7 +165,7 @@ class CheckAst(unittest.TestCase):
                 },
             ],
         )
-        library = ast.LibraryNode(node)
+        library = ast.create_library_from_dictionary(node)
 
         self.assertEqual(len(library.classes), 2)
         self.assertEqual(len(library.classes[0].functions), 2)
@@ -199,7 +199,7 @@ class CheckAst(unittest.TestCase):
                 },
             ],
         )
-        library = ast.LibraryNode(node)
+        library = ast.create_library_from_dictionary(node)
 
         self.assertEqual(len(library.classes), 1)
         self.assertEqual(len(library.classes[0].functions), 2)

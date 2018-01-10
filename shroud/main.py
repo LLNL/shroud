@@ -132,7 +132,7 @@ class Schema(object):
                     def_types[key] = typemap.Typedef(key, **value)
                 typemap.typedef_wrapped_defaults(def_types[key])
 
-        newlibrary = ast.LibraryNode(node)
+        newlibrary = ast.create_library_from_dictionary(node)
 
         return newlibrary
 
