@@ -431,7 +431,6 @@ class FunctionNode(AstNode):
 
         self._fmt = util.Options(parent._fmt)
         self.option_to_fmt()
-        fmt_func = self._fmt
 
         # working variables
         self._CPP_return_templated = False
@@ -457,11 +456,13 @@ class FunctionNode(AstNode):
 
         # Move fields from kwargs into instance
         for n in [
-                'C_error_pattern', 'C_name',
+                'C_code', 'C_error_pattern', 'C_name',
                 'C_post_call', 'C_post_call_buf',
-                'F_name_function',
+                'C_return_code', 'C_return_type',
+                'F_C_name', 'F_code',
+                'F_name_function', 'F_name_generic', 'F_name_impl',
                 'LUA_name', 'LUA_name_impl',
-                'PY_name_impl' ]:
+                'PY_error_pattern', 'PY_name_impl' ]:
             setattr(self, n, kwargs.get(n, None))
 
         self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
@@ -471,16 +472,8 @@ class FunctionNode(AstNode):
         self.fortran_generic = kwargs.get('fortran_generic', {})
         self.return_this = kwargs.get('return_this', False)
 
-        self.F_C_name = kwargs.get('F_C_name', None)
-        self.F_name_generic = kwargs.get('F_name_generic', None)
-        self.F_name_impl = kwargs.get('F_name_impl', None)
-        self.PY_error_pattern = kwargs.get('PY_error_pattern', '')
-
         # referenced explicity (not via fmt)
-        self.C_code = kwargs.get('C_code', None)
-        self.C_return_code = kwargs.get('C_return_code', None)
-        self.C_return_type = kwargs.get('C_return_type', None)
-        self.F_code = kwargs.get('F_code', None)
+        # C_code, C_return_code, C_return_type, F_code
         
 #        self.function_suffix = kwargs.get('function_suffix', None)  # '' is legal value, None=unset
         if 'function_suffix' in kwargs:
@@ -493,11 +486,6 @@ class FunctionNode(AstNode):
             # Mark as unset
             self.function_suffix = None
 
-        if 'cpp_template' in kwargs:
-            template_types = kwargs['cpp_template'].keys()
-        else:
-            template_types = []
-
         if not decl:
             raise RuntimeError("Missing decl")
 
@@ -506,6 +494,7 @@ class FunctionNode(AstNode):
             cls_name = parent.name
         else:
             cls_name = None
+        template_types = self.cpp_template.keys()
 
         self.decl = decl
         ast = declast.check_decl(decl,
@@ -546,6 +535,7 @@ class FunctionNode(AstNode):
         if ast.params is None:
             raise RuntimeError("Missing arguments:", ast.gen_decl())
 
+        fmt_func = self._fmt
         fmt_func.function_name = ast.name
         fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
 
