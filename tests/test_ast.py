@@ -41,6 +41,7 @@
 from __future__ import print_function
 
 from shroud import ast
+from shroud import generate
 
 import unittest
 
@@ -61,14 +62,13 @@ class CheckAst(unittest.TestCase):
 
     def test_a_library1(self):
         """Update LibraryNode"""
-        node = dict(
+        library = ast.LibraryNode(
             language='c',
             options=dict(
                 wrap_c=False,
                 C_prefix='XXX_',
             )
         )
-        library = ast.LibraryNode(node)
 
         self.assertEqual(library.language, 'c')              # updated from dict
         self.assertEqual(library.options.wrap_c, False)      # updated from dict
@@ -79,10 +79,8 @@ class CheckAst(unittest.TestCase):
 
     def test_b_function1(self):
         """Add a function to library"""
-        node = dict(
-            functions=[ dict(decl='void func1()') ]
-        )
-        library = ast.LibraryNode(node)
+        library = ast.LibraryNode()
+        library.add_function(decl='void func1()')
 
         self.assertEqual(len(library.functions), 1)
 
@@ -113,7 +111,7 @@ class CheckAst(unittest.TestCase):
                 },
             ],
         )
-        library = ast.LibraryNode(node)
+        library = ast.create_library_from_dictionary(node)
 
         self.assertEqual(len(library.functions), 2)
         self.assertEqual(library.options.testa, 'a')
@@ -131,46 +129,28 @@ class CheckAst(unittest.TestCase):
 
     def test_c_class1(self):
         """Add a class to library"""
-        node = dict(
-            classes=[
-                {
-                    'name': 'Class1',
-                }
-            ]
-        )
-        library = ast.LibraryNode(node)
+        library = ast.LibraryNode()
+        library.add_class('Class1')
 
         self.assertEqual(len(library.classes), 1)
 
     def test_c_class2(self):
-        """Add a class to library"""
-        node = dict(
-            classes=[
-                {
-                    'name': 'Class1',
-                    'methods': [
-                        {
-                            'decl': 'void c1func1()',
-                        },{
-                            'decl': 'void c1func2()',
-                        }
-                    ],
-                },{
-                    'name': 'Class2',
-                    'methods': [
-                        {
-                            'decl': 'void c2func1()',
-                        }
-                    ],
-                },
-            ],
-        )
-        library = ast.LibraryNode(node)
+        """Add a classes with functions to library"""
+        library = ast.LibraryNode()
+
+        cls1 = library.add_class('Class1')
+        cls1.add_function(decl='void c1func1()')
+        cls1.add_function(decl='void c1func2()')
+
+        cls2 = library.add_class('Class2')
+        cls2.add_function(decl='void c2func1()')
 
         self.assertEqual(len(library.classes), 2)
         self.assertEqual(len(library.classes[0].functions), 2)
+        self.assertEqual(library.classes[0].functions[0]._ast.name, 'c1func1')
+        self.assertEqual(library.classes[0].functions[1]._ast.name, 'c1func2')
         self.assertEqual(len(library.classes[1].functions), 1)
-
+        self.assertEqual(library.classes[1].functions[0]._ast.name, 'c2func1')
 
     def test_c_class2(self):
         """Test class options"""
@@ -199,7 +179,7 @@ class CheckAst(unittest.TestCase):
                 },
             ],
         )
-        library = ast.LibraryNode(node)
+        library = ast.create_library_from_dictionary(node)
 
         self.assertEqual(len(library.classes), 1)
         self.assertEqual(len(library.classes[0].functions), 2)
@@ -215,3 +195,24 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(library.classes[0].functions[1].options.testa, 'a')
         self.assertEqual(library.classes[0].functions[1].options.testb, 'bb')
         self.assertEqual(library.classes[0].functions[1].options.testc, 'c')
+
+    def test_d_generate1(self):
+        """char bufferify
+        Geneate an additional function with len and len_trim attributes.
+        """
+        library = ast.LibraryNode()
+        library.add_function(decl='void func1(char * arg)')
+        self.assertEqual(len(library.functions), 1)
+
+        generate.generate_functions(library, None)
+        self.assertEqual(len(library.functions), 2)
+        self.assertEqual(library.functions[0]._decl,
+                         'void func1(char * arg +intent(inout))')
+        self.assertEqual(library.functions[1]._decl,
+                         'void func1(char * arg +intent(inout)+len(Narg)+len_trim(Larg))')
+
+#        import json
+#        from shroud import util
+#        print(json.dumps(library, cls=util.ExpandedEncoder, indent=4, sort_keys=True))
+
+

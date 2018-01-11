@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## v0.6.0 - 2018-01-10
+### Changed
+- Improved API for creating LibraryNode instances by using keyword arguments.
+- Factored out routine create_library_from_dictionary for dealing with YAML
+  generated dictionary.
+- Moved code into generate.py which generates additional routines to wrap.
+
 ## v0.5.0 - 2018-01-09
 ### Added
 - File shroud/ast.py with LibraryNode, ClassNode, and FunctionNode.
@@ -38,4 +45,3 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## v0.2.0 - 2017-10-26
 ### Initial Open Source Release
-	

@@ -42,7 +42,6 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 import collections
-import copy
 import string
 import json
 import os
@@ -415,24 +414,6 @@ class Options(object):
         if self.__parent:
             self.__parent._to_full_dict(d)
         return d
-
-
-def copy_function_node(node):
-    """Create a copy of a function node to use with C++ template
-    or changing result to argument.
-    """
-    # Shallow copy everything
-    new = copy.copy(node)
-
-    new._ast = copy.deepcopy(node._ast)
-    new._fmt = Options(node._fmt)
-    new.options = Options(node.options)
-
-    # deep copy dictionaries
-    new._fmtargs = copy.deepcopy(node._fmtargs)
-    new._fmtresult = copy.deepcopy(node._fmtresult)
-
-    return new
 
 
 class ExpandedEncoder(json.JSONEncoder):

@@ -40,20 +40,16 @@
 """
 Abstract Syntax Tree nodes for Library, Class, and Function nodes.
 """
+from __future__ import print_function
+from __future__ import absolute_import
+
+import copy
 
 from . import util
 from . import declast
+from . import typemap
 
 class AstNode(object):
-    def update_options_from_dict(self, node):
-        """Update options from node.
-        """
-        if 'options' in node and \
-                node['options'] is not None:
-            if not isinstance(node['options'], dict):
-                raise TypeError("options must be a dictionary")
-            self.options.update(node['options'], replace=True)
-
     def option_to_fmt(self):
         """Set fmt based on options dictionary.
         """
@@ -85,62 +81,17 @@ class AstNode(object):
             tname = name + tname + '_template'
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
-    def check_options_only(self, node, parent):
-        """Process an options only entry in a list.
-
-        functions:
-        - options:
-             a = b
-        - decl:
-          options:
-
-        Return True if node only has options.
-        Return Options instance to use.
-        node is assumed to be a dictionary.
-        Update current set of options from node['options'].
-        """
-        if len(node) != 1:
-            return False, parent
-        if 'options' not in node:
-            return False, parent
-        options = node['options']
-        if not options:
-            return False, parent
-        if not isinstance(options, dict):
-            raise TypeError("options must be a dictionary")
-
-        new = util.Options(parent=parent)
-        new.update(node['options'])
-        return True, new
-
-    def add_functions(self, node, cls_name, member):
-        """ Add functions from dictionary 'node'.
-
-        Used with class methods and functions.
-        """
-        if member not in node:
-            return
-        functions = node[member]
-        if not isinstance(functions, list):
-            raise TypeError("functions must be a list")
-
-        options = self.options
-        for func in functions:
-            only, options = self.check_options_only(func, options)
-            if not only:
-                self.functions.append(FunctionNode(func, self, cls_name, options))
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        return dict()
-
 ######################################################################
 
 class LibraryNode(AstNode):
-    def __init__(self, node=None):
-        """Populate LibraryNode from a dictionary.
+    def __init__(self,
+                 cpp_header='',
+                 language='c++',
+                 library='default_library',
+                 namespace='',
+                 options=None,
+                 **kwargs):
+        """Create LibraryNode.
 
         fields = value
         options:
@@ -148,41 +99,35 @@ class LibraryNode(AstNode):
         functions:
 
         """
+        # From arguments
+        self.cpp_header = cpp_header
+        self.language = language.lower()
+        if self.language not in ['c', 'c++']:
+            raise RuntimeError("language must be 'c' or 'c++'")
+        self.library = library
+        self.namespace = namespace
 
         self.classes = []
-        self.cpp_header = ''
         self.functions = []
         # Each is given a _function_index when created.
         self.function_index = []
-        self.language = 'c++'     # input language: c or c++
-        self.namespace = ''
         self.options = self.default_options()
+        if options:
+            self.options.update(options, replace=True)
+
         self.F_module_dependencies = []     # unused
 
-        if node is None:
-            node = dict()
-        self.node = node
-
-        self.library = node.get('library', 'default_library')
-        self.copyright = node.setdefault('copyright', [])
-        self.patterns = node.setdefault('patterns', [])
+        self.copyright = kwargs.setdefault('copyright', [])
+        self.patterns = kwargs.setdefault('patterns', [])
 
         for n in ['C_header_filename', 'C_impl_filename',
                   'F_module_name', 'F_impl_filename',
                   'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
                   'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
                   'YAML_type_filename']:
-            setattr(self, n, node.get(n, None))
+            setattr(self, n, kwargs.get(n, None))
 
-        if 'language' in node:
-            language = node['language'].lower()
-            if language not in ['c', 'c++']:
-                raise RuntimeError("language must be 'c' or 'c++'")
-            self.language = node['language']
-
-        self.update_options_from_dict(node)
-
-        self.default_format(node)
+        self.default_format()
         self.option_to_fmt()
 
         # default some options based on other options
@@ -192,18 +137,6 @@ class LibraryNode(AstNode):
         # just functions.
         self.eval_template('F_module_name', '_library')
         self.eval_template('F_impl_filename', '_library')
-
-        # default cpp_header to blank
-        if 'cpp_header' in node and node['cpp_header']:
-            # YAML treats blank string as None
-            self.cpp_header = node['cpp_header']
-
-        if 'namespace' in node and node['namespace']:
-            # YAML treats blank string as None
-            self.namespace = node['namespace']
-
-        self.add_classes(node)
-        self.add_functions(node, None, 'functions')
 
     def default_options(self):
         """default options."""
@@ -292,26 +225,23 @@ class LibraryNode(AstNode):
             )
         return def_options
 
-    def default_format(self, node):
+    def default_format(self):
         """Set format dictionary.
         """
 
         self._fmt = util.Options(None)
         fmt_library = self._fmt
 
-        if 'library' in node:
-            fmt_library.library = node['library']
-        else:
-            fmt_library.library = 'default_library'
+        fmt_library.library = self.library
         fmt_library.library_lower = fmt_library.library.lower()
         fmt_library.library_upper = fmt_library.library.upper()
         fmt_library.function_suffix = ''   # assume no suffix
         fmt_library.C_prefix = self.options.get(
             'C_prefix', fmt_library.library_upper[:3] + '_')
         fmt_library.F_C_prefix = self.options['F_C_prefix']
-        if 'namespace' in node and node['namespace']:
+        if self.namespace:
             fmt_library.namespace_scope = (
-                '::'.join(node['namespace'].split()) + '::')
+                '::'.join(self.namespace.split()) + '::')
         else:
             fmt_library.namespace_scope = ''
 
@@ -367,30 +297,19 @@ class LibraryNode(AstNode):
 
             fmt_library.stdlib  = 'std::'
 
-    def add_classes(self, node):
-        """Add classes from a dictionary.
-
-        classes:
-        - name: Class1
-        - name: Class2
+    def add_function(self, parentoptions=None, **kwargs):
+        """Add a function.
         """
-        if 'classes' not in node:
-            return
-        classes = node['classes']
-        if not isinstance(classes, list):
-            raise TypeError("classes must be a list")
+        fcnnode = FunctionNode(self, parentoptions=parentoptions, **kwargs)
+        self.functions.append(fcnnode)
+        return fcnnode
 
-        # Add all class types to parser first
-        # Emulate forward declarations of classes.
-        for cls in classes:
-            if not isinstance(cls, dict):
-                raise TypeError("classes[n] must be a dictionary")
-            if 'name' not in cls:
-                raise TypeError("class does not define name")
-            declast.add_type(cls['name'])
-
-        for cls in classes:
-            self.classes.append(ClassNode(cls['name'], self, cls))
+    def add_class(self, name, **kwargs):
+        """Add a class.
+        """
+        clsnode = ClassNode(name, self, **kwargs)
+        self.classes.append(clsnode)
+        return clsnode
 
     def _to_dict(self):
         """Convert to dictionary.
@@ -412,24 +331,21 @@ class LibraryNode(AstNode):
 ######################################################################
 
 class ClassNode(AstNode):
-    def __init__(self, name, parent, node=None):
+    def __init__(self, name, parent,
+                 cpp_header='',
+                 namespace='',
+                 options=None,
+                 **kwargs):
+        """Create ClassNode.
+        """
+        # From arguments
         self.name = name
+        self.cpp_header = cpp_header
+        self.namespace = namespace
+
         self.functions = []
-        self.cpp_header = ''
 
-        if node is None:
-            node = {}
-
-        # default cpp_header to blank
-        if 'cpp_header' in node and node['cpp_header']:
-            # YAML treats blank string as None
-            self.cpp_header = node['cpp_header']
-
-        self.namespace = ''
-        if 'namespace' in node and node['namespace']:
-            # YAML treats blank string as None
-            self.namespace = node['namespace']
-        self.python = node.get('python', {})
+        self.python = kwargs.get('python', {})
 
         for n in ['C_header_filename', 'C_impl_filename',
                   'F_derived_name', 'F_impl_filename', 'F_module_name',
@@ -437,11 +353,11 @@ class ClassNode(AstNode):
                   'LUA_metadata', 'LUA_ctor_name',
                   'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
                   'class_prefix']:
-            setattr(self, n, node.get(n, None))
+            setattr(self, n, kwargs.get(n, None))
 
         self.options = util.Options(parent=parent.options)
-        self.update_options_from_dict(node)
-        options = self.options
+        if options:
+            self.options.update(options, replace=True)
 
         self._fmt = util.Options(parent._fmt)
         fmt_class = self._fmt
@@ -454,11 +370,16 @@ class ClassNode(AstNode):
         self.eval_template('C_header_filename', '_class')
         self.eval_template('C_impl_filename', '_class')
 
-        if options.F_module_per_class:
+        if self.options.F_module_per_class:
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
 
-        self.add_functions(node, name, 'methods')
+    def add_function(self, parentoptions=None, **kwargs):
+        """Add a function.
+        """
+        fcnnode = FunctionNode(self, parentoptions=parentoptions, **kwargs)
+        self.functions.append(fcnnode)
+        return fcnnode
 
     def _to_dict(self):
         """Convert to dictionary.
@@ -507,18 +428,29 @@ class FunctionNode(AstNode):
       }
     }
 
+    _decl            - generated declaration.
+                       Includes computed attributes
+    _function_index  - sequence number function,
+                       used in lieu of a pointer
+    _generated       - who generated this function
+    _PTR_F_C_index   - Used by fortran wrapper to find index of
+                       C function to call
+    _PTR_C_CPP_index - Used by C wrapper to find index of C++ function
+                       to call
+    _subprogram      - subroutine or function
+
     """
-
-
-
-    def __init__(self, node, parent, cls_name, options):
-        self.options = util.Options(parent=options)
-        self.update_options_from_dict(node)
-        options = self.options
+    def __init__(self, parent,
+                 decl=None,
+                 parentoptions=None,
+                 options=None,
+                 **kwargs):
+        self.options = util.Options(parent= parentoptions or parent.options)
+        if options:
+            self.options.update(options, replace=True)
 
         self._fmt = util.Options(parent._fmt)
         self.option_to_fmt()
-        fmt_func = self._fmt
 
         # working variables
         self._CPP_return_templated = False
@@ -539,95 +471,58 @@ class FunctionNode(AstNode):
 
 #        self.function_index = []
 
-        # Only needed for json diff
-        self.attrs = node.get('attrs', None)
-
-        # Move fields from node into instance
+        # Move fields from kwargs into instance
         for n in [
-                'C_error_pattern', 'C_name',
+                'C_code', 'C_error_pattern', 'C_name',
                 'C_post_call', 'C_post_call_buf',
-                'F_name_function',
+                'C_return_code', 'C_return_type',
+                'F_C_name', 'F_code',
+                'F_name_function', 'F_name_generic', 'F_name_impl',
                 'LUA_name', 'LUA_name_impl',
-                'PY_name_impl' ]:
-            setattr(self, n, node.get(n, None))
+                'PY_error_pattern', 'PY_name_impl',
+                'docs', 'function_suffix', 'return_this']:
+            setattr(self, n, kwargs.get(n, None))
 
-        self.default_arg_suffix = node.get('default_arg_suffix', [])
-        self.docs = node.get('docs', '')
-        self.cpp_template = node.get('cpp_template', {})
-        self.doxygen = node.get('doxygen', {})
-        self.fortran_generic = node.get('fortran_generic', {})
-        self.return_this = node.get('return_this', False)
-
-        self.F_C_name = node.get('F_C_name', None)
-        self.F_name_generic = node.get('F_name_generic', None)
-        self.F_name_impl = node.get('F_name_impl', None)
-        self.PY_error_pattern = node.get('PY_error_pattern', '')
+        self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
+        self.cpp_template = kwargs.get('cpp_template', {})
+        self.doxygen = kwargs.get('doxygen', {})
+        self.fortran_generic = kwargs.get('fortran_generic', {})
 
         # referenced explicity (not via fmt)
-        self.C_code = node.get('C_code', None)
-        self.C_return_code = node.get('C_return_code', None)
-        self.C_return_type = node.get('C_return_type', None)
-        self.F_code = node.get('F_code', None)
+        # C_code, C_return_code, C_return_type, F_code
         
-#        self.function_suffix = node.get('function_suffix', None)  # '' is legal value, None=unset
-        if 'function_suffix' in node:
-            self.function_suffix = node['function_suffix']
-            if self.function_suffix is None:
-                # YAML turns blanks strings into None
-                # mark as explicitly set to empty
-                self.function_suffix = ''
-        else:
-            # Mark as unset
-            self.function_suffix = None
-
-        if 'cpp_template' in node:
-            template_types = node['cpp_template'].keys()
-        else:
-            template_types = []
-
-        if 'decl' in node:
-            # parse decl and add to dictionary
-            self.decl = node['decl']
-            ast = declast.check_decl(node['decl'],
-                                     current_class=cls_name,
-                                     template_types=template_types)
-            self._ast = ast
-
-            # add any attributes from YAML files to the ast
-            if 'attrs' in node:
-                attrs = node['attrs']
-                if 'result' in attrs:
-                    ast.attrs.update(attrs['result'])
-                for arg in ast.params:
-                    name = arg.name
-                    if name in attrs:
-                        arg.attrs.update(attrs[name])
-            # XXX - waring about unused fields in attrs
-        else:
+        if not decl:
             raise RuntimeError("Missing decl")
-                                        
-        if ('function_suffix' in node and
-                node['function_suffix'] is None):
-            # YAML turns blanks strings into None
-            node['function_suffix'] = ''
-        if 'default_arg_suffix' in node:
-            default_arg_suffix = node['default_arg_suffix']
-            if not isinstance(default_arg_suffix, list):
-                raise RuntimeError('default_arg_suffix must be a list')
-            for i, value in enumerate(node['default_arg_suffix']):
-                if value is None:
-                    # YAML turns blanks strings to None
-                    node['default_arg_suffix'][i] = ''
 
-# XXX - do some error checks on ast
-#        if 'name' not in result:
-#            raise RuntimeError("Missing result.name")
-#        if 'type' not in result:
-#            raise RuntimeError("Missing result.type")
+        # parse decl and add to dictionary
+        if isinstance(parent,ClassNode):
+            cls_name = parent.name
+        else:
+            cls_name = None
+        template_types = self.cpp_template.keys()
 
+        self.decl = decl
+        ast = declast.check_decl(decl,
+                                 current_class=cls_name,
+                                 template_types=template_types)
+        self._ast = ast
+
+        # add any attributes from YAML files to the ast
+        if 'attrs' in kwargs:
+            attrs = kwargs['attrs']
+            if 'result' in attrs:
+                ast.attrs.update(attrs['result'])
+            for arg in ast.params:
+                name = arg.name
+                if name in attrs:
+                    arg.attrs.update(attrs[name])
+        # XXX - waring about unused fields in attrs
+                                    
         if ast.params is None:
+            # 'void foo' instead of 'void foo()'
             raise RuntimeError("Missing arguments:", ast.gen_decl())
 
+        fmt_func = self._fmt
         fmt_func.function_name = ast.name
         fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
 
@@ -642,7 +537,7 @@ class FunctionNode(AstNode):
             decl=self.decl,
             options=self.options,
         )
-        for key in ['attrs', 'cpp_template', 'default_arg_suffix', 'docs', 'doxygen', 
+        for key in ['cpp_template', 'default_arg_suffix', 'docs', 'doxygen', 
                     'fortran_generic', 'return_this',
                     'C_code', 'C_error_pattern', 'C_name',
                     'C_post_call', 'C_post_call_buf', 
@@ -665,3 +560,153 @@ class FunctionNode(AstNode):
             if value is not None:   # '' is OK
                 d[key] = value
         return d
+
+    def clone(self):
+        """Create a copy of a function node to use with C++ template
+        or changing result to argument.
+        """
+        # Shallow copy everything
+        new = copy.copy(self)
+
+        # new layer of Options
+        new._fmt = util.Options(self._fmt)
+        new.options = util.Options(self.options)
+    
+        # deep copy dictionaries
+        new._ast = copy.deepcopy(self._ast)
+        new._fmtargs = copy.deepcopy(self._fmtargs)
+        new._fmtresult = copy.deepcopy(self._fmtresult)
+    
+        return new
+
+
+def clean_dictionary(dd):
+    """YAML converts some blank fields to None,
+    but we want blank.
+    """
+    for key in ['cpp_header', 'namespace',
+                'function_suffix']:
+        if key in dd and dd[key] is None:
+            dd[key] = ''
+
+    if 'default_arg_suffix' in dd:
+        default_arg_suffix = dd['default_arg_suffix']
+        if not isinstance(default_arg_suffix, list):
+            raise RuntimeError('default_arg_suffix must be a list')
+        for i, value in enumerate(dd['default_arg_suffix']):
+            if value is None:
+                dd['default_arg_suffix'][i] = ''
+
+
+def is_options_only(node):
+    """Detect an options only node.
+
+    functions:
+    - options:
+         a = b
+    - decl:
+      options:
+
+    Return True if node only has options.
+    """
+    if len(node) != 1:
+        return False
+    if 'options' not in node:
+        return False
+    if not isinstance(node['options'], dict):
+        raise TypeError("options must be a dictionary")
+    return True
+
+def add_functions(parent, functions):
+    """ Add functions from list 'functions'.
+    Look for 'options' only entries.
+
+    functions = [
+      {
+        'options': 
+      },{
+        'decl': 'void func1()'
+      },{
+        'decl': 'void func2()'
+      }
+    ]
+
+    Used with class methods and functions.
+    """
+    if not isinstance(functions, list):
+        raise TypeError("functions must be a list")
+
+    options = parent.options
+    for node in functions:
+        if is_options_only(node):
+            options = util.Options(options, **node['options'])
+        else:
+            clean_dictionary(node)
+            parent.add_function(parentoptions=options, **node)
+
+def create_library_from_dictionary(node):
+    """Create a library and add classes and functions from node.
+    Typically, node is defined via YAML.
+
+    library: name
+    classes:
+    - name: Class1
+    functions:
+    - decl: void func1()
+
+    Do some checking on the input.
+    Every class must have a name.
+    """
+
+    if 'types' in node:
+        types_dict = node['types']
+        if not isinstance(types_dict, dict):
+            raise TypeError("types must be a dictionary")
+        def_types, def_types_alias = typemap.Typedef.get_global_types()
+        for key, value in types_dict.items():
+            if not isinstance(value, dict):
+                raise TypeError("types '%s' must be a dictionary" % key)
+            declast.add_type(key)   # Add to parser
+
+            if 'typedef' in value:
+                copy_type = value['typedef']
+                orig = def_types.get(copy_type, None)
+                if not orig:
+                    raise RuntimeError(
+                        "No type for typedef {}".format(copy_type))
+                def_types[key] = typemap.Typedef(key)
+                def_types[key].update(def_types[copy_type]._to_dict())
+
+            if key in def_types:
+                def_types[key].update(value)
+            else:
+                def_types[key] = typemap.Typedef(key, **value)
+            typemap.typedef_wrapped_defaults(def_types[key])
+
+    clean_dictionary(node)
+    library = LibraryNode(**node)
+
+    if 'classes' in node:
+        classes = node['classes']
+        if not isinstance(classes, list):
+            raise TypeError("classes must be a list")
+
+        # Add all class types to parser first
+        # Emulate forward declarations of classes.
+        for cls in classes:
+            if not isinstance(cls, dict):
+                raise TypeError("classes[n] must be a dictionary")
+            if 'name' not in cls:
+                raise TypeError("class does not define name")
+            clean_dictionary(cls)
+            declast.add_type(cls['name'])
+
+        for cls in classes:
+            clsnode = library.add_class(**cls)
+            if 'methods' in cls:
+                add_functions(clsnode, cls['methods'])
+
+    if 'functions' in node:
+        add_functions(library, node['functions'])
+
+    return library

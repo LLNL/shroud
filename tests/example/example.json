@@ -526,11 +526,6 @@
                         }, 
                         "_function_index": 4, 
                         "_subprogram": "function", 
-                        "attrs": {
-                            "result": {
-                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
-                            }
-                        }, 
                         "decl": "const string& getName() const", 
                         "options": {}
                     }, 
@@ -618,11 +613,6 @@
                         "_function_index": 15, 
                         "_generated": "arg_to_buffer", 
                         "_subprogram": "subroutine", 
-                        "attrs": {
-                            "result": {
-                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
-                            }
-                        }, 
                         "decl": "const string& getName() const", 
                         "options": {
                             "wrap_c": true, 
@@ -1603,11 +1593,6 @@
                         }, 
                         "_function_index": 19, 
                         "_subprogram": "function", 
-                        "attrs": {
-                            "name": {
-                                "random": 2
-                            }
-                        }, 
                         "decl": "ExClass2(const string *name)", 
                         "doxygen": {
                             "brief": "constructor"
@@ -1690,11 +1675,6 @@
                         "_function_index": 39, 
                         "_generated": "arg_to_buffer", 
                         "_subprogram": "function", 
-                        "attrs": {
-                            "name": {
-                                "random": 2
-                            }
-                        }, 
                         "decl": "ExClass2(const string *name)", 
                         "doxygen": {
                             "brief": "constructor"
@@ -1817,11 +1797,6 @@
                         }, 
                         "_function_index": 21, 
                         "_subprogram": "function", 
-                        "attrs": {
-                            "result": {
-                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
-                            }
-                        }, 
                         "decl": "const string& getName() const", 
                         "options": {}
                     }, 
@@ -1907,11 +1882,6 @@
                         "_function_index": 40, 
                         "_generated": "arg_to_buffer", 
                         "_subprogram": "subroutine", 
-                        "attrs": {
-                            "result": {
-                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
-                            }
-                        }, 
                         "decl": "const string& getName() const", 
                         "options": {
                             "wrap_c": true, 
