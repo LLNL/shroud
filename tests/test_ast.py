@@ -41,6 +41,7 @@
 from __future__ import print_function
 
 from shroud import ast
+from shroud import generate
 
 import unittest
 
@@ -194,3 +195,24 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(library.classes[0].functions[1].options.testa, 'a')
         self.assertEqual(library.classes[0].functions[1].options.testb, 'bb')
         self.assertEqual(library.classes[0].functions[1].options.testc, 'c')
+
+    def test_d_generate1(self):
+        """char bufferify
+        Geneate an additional function with len and len_trim attributes.
+        """
+        library = ast.LibraryNode()
+        library.add_function(decl='void func1(char * arg)')
+        self.assertEqual(len(library.functions), 1)
+
+        generate.generate_functions(library, None)
+        self.assertEqual(len(library.functions), 2)
+        self.assertEqual(library.functions[0]._decl,
+                         'void func1(char * arg +intent(inout))')
+        self.assertEqual(library.functions[1]._decl,
+                         'void func1(char * arg +intent(inout)+len(Narg)+len_trim(Larg))')
+
+#        import json
+#        from shroud import util
+#        print(json.dumps(library, cls=util.ExpandedEncoder, indent=4, sort_keys=True))
+
+
