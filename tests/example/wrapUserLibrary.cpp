@@ -189,6 +189,7 @@ size_t AA_test_size_t()
 
 // void testmpi(MPI_Comm comm +intent(in)+value)
 // function_index=57
+#ifdef HAVE_MPI
 void AA_testmpi(MPI_Fint comm)
 {
 // splicer begin function.testmpi
@@ -196,6 +197,7 @@ void AA_testmpi(MPI_Fint comm)
     return;
 // splicer end function.testmpi
 }
+#endif  // ifdef HAVE_MPI
 
 // void testgroup1(DataGroup * grp +intent(in)+value)
 // function_index=58

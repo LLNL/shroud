@@ -40,6 +40,7 @@
 //
 // #######################################################################
 // wrapExClass3.cpp
+#ifdef USE_CLASS3
 #include "wrapExClass3.h"
 
 namespace example {
@@ -68,3 +69,4 @@ void AA_exclass3_exfunc(AA_exclass3 * self)
 
 }  // namespace nested
 }  // namespace example
+#endif  // ifdef USE_CLASS3

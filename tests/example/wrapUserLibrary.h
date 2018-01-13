@@ -92,7 +92,9 @@ void AA_testoptional_2(int i, long j);
 
 size_t AA_test_size_t();
 
+#ifdef HAVE_MPI
 void AA_testmpi(MPI_Fint comm);
+#endif
 
 void AA_testgroup1(SIDRE_group * grp);
 

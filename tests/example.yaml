@@ -256,7 +256,7 @@ classes:
   - name: ExClass3
     options:
       wrap_python: False
-#    cpp_if: ifdef USE_CLASS3
+    cpp_if: ifdef USE_CLASS3
     functions:
     - decl: void exfunc()
 
@@ -302,7 +302,7 @@ functions:
 
   - decl: size_t test_size_t()
   - decl: void testmpi(MPI_Comm comm)
-#    cpp_if: ifdef HAVE_MPI
+    cpp_if: ifdef HAVE_MPI
 
   - decl: void testgroup1(DataGroup * grp)
   - decl: void testgroup2(const DataGroup * grp)

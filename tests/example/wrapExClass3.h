@@ -47,6 +47,7 @@
 
 #ifndef WRAPEXCLASS3_H
 #define WRAPEXCLASS3_H
+#ifdef USE_CLASS3
 
 // splicer begin class.ExClass3.CXX_declarations
 // splicer end class.ExClass3.CXX_declarations
@@ -67,5 +68,6 @@ void AA_exclass3_exfunc(AA_exclass3 * self);
 #ifdef __cplusplus
 }
 #endif
+#endif  // ifdef USE_CLASS3
 
 #endif  // WRAPEXCLASS3_H
