@@ -39,7 +39,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// wrapExClass2.cpp
 #include "wrapExClass2.h"
 #include <cstring>
 #include <string>

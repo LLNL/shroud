@@ -40,7 +40,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// foo.cpp
 #include "foo.h"
 
 // splicer begin class.Names.CXX_definitions

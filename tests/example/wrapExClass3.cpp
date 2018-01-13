@@ -39,7 +39,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// wrapExClass3.cpp
 #ifdef USE_CLASS3
 #include "wrapExClass3.h"
 

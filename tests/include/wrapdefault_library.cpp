@@ -40,7 +40,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// wrapdefault_library.cpp
 #include "wrapdefault_library.h"
 #include "global_header.hpp"
 

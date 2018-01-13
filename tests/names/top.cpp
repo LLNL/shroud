@@ -40,7 +40,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// top.cpp
 #include "top.h"
 #include <string>
 

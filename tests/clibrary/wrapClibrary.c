@@ -40,7 +40,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// wrapClibrary.c
 #include "wrapClibrary.h"
 #include <stdlib.h>
 #include <string.h>

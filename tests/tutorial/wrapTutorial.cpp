@@ -40,7 +40,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// wrapTutorial.cpp
 #include "wrapTutorial.h"
 #include <cstring>
 #include <string>

@@ -40,7 +40,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// wrapClass1.cpp
 #include "wrapClass1.h"
 #include "tutorial.hpp"
 

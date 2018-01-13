@@ -208,7 +208,6 @@ class Wrapc(util.WrapperMixin):
         # If no C wrappers are required, do not write the file
         write_file = False
         output = []
-        output.append('// ' + fname)
         if cls and cls.cpp_if:
             output.append('#' + node.cpp_if)
 

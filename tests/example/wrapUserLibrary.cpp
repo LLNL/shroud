@@ -39,7 +39,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// wrapUserLibrary.cpp
 #include "wrapUserLibrary.h"
 #include <string>
 #include "sidre/Group.hpp"

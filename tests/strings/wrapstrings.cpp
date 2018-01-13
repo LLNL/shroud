@@ -40,7 +40,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// wrapstrings.cpp
 #include "wrapstrings.h"
 #include <cstring>
 #include <stdlib.h>
