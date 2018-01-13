@@ -341,6 +341,7 @@ class LibraryNode(AstNode):
 class ClassNode(AstNode):
     def __init__(self, name, parent,
                  cxx_header='',
+                 format=None,
                  namespace='',
                  options=None,
                  **kwargs):
@@ -381,6 +382,8 @@ class ClassNode(AstNode):
         if self.options.F_module_per_class:
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
+        if format:
+            self.fmtdict.update(format, replace=True)
 
     def add_function(self, parentoptions=None, **kwargs):
         """Add a function.
@@ -450,6 +453,7 @@ class FunctionNode(AstNode):
     """
     def __init__(self, parent,
                  decl=None,
+                 format=None,
                  parentoptions=None,
                  options=None,
                  **kwargs):
@@ -459,6 +463,8 @@ class FunctionNode(AstNode):
 
         self.fmtdict = util.Scope(parent.fmtdict)
         self.option_to_fmt(self.fmtdict)
+        if format:
+            self.fmtdict.update(format, replace=True)
 
         # working variables
         self._CXX_return_templated = False

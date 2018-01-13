@@ -97,18 +97,30 @@ class CheckAst(unittest.TestCase):
                 'testa': 'a',
                 'testb': 'b',
             },
+            format={
+                'fmt1': 'f1',
+                'fmt2': 'f2',
+            },
             functions=[
                 {
                     'decl': 'void func1()',
                     'options': {
                         'testc': 'c',
-                    }
+                    },
+                    'format': {
+                        'fmt3': 'f3',
+                    },
                 },{
                     'options': {
                         'testb': 'bb',
                         'testd': 'd',
                         'teste': 'e',
                     },
+#                    'format': {
+#                        'fmt2': 'f22',
+#                        'fmt4': 'f4',
+#                        'fmt5': 'f5',
+#                    },
                 },{
                     'decl': 'void func2()',
                     'options': {
@@ -122,10 +134,15 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(len(library.functions), 2)
         self.assertEqual(library.options.testa, 'a')
         self.assertEqual(library.options.testb, 'b')
+        self.assertEqual(library.fmtdict.fmt1, 'f1')
+        self.assertEqual(library.fmtdict.fmt2, 'f2')
 
         self.assertEqual(library.functions[0].options.testa, 'a')
         self.assertEqual(library.functions[0].options.testb, 'b')
         self.assertEqual(library.functions[0].options.testc, 'c')
+        self.assertEqual(library.functions[0].fmtdict.fmt1, 'f1')
+        self.assertEqual(library.functions[0].fmtdict.fmt2, 'f2')
+        self.assertEqual(library.functions[0].fmtdict.fmt3, 'f3')
 
         self.assertEqual(library.functions[1].options.testa, 'a')
         self.assertEqual(library.functions[1].options.testb, 'bb')
@@ -135,10 +152,24 @@ class CheckAst(unittest.TestCase):
 
     def test_c_class1(self):
         """Add a class to library"""
-        library = ast.LibraryNode()
-        library.add_class('Class1')
+        library = ast.LibraryNode(
+            format=dict(
+                fmt1='f1',
+                fmt2='f2')
+        )
+        library.add_class('Class1',
+                          format=dict(
+                              fmt2='f2',
+                              fmt3='f3')
+        )
 
+        self.assertEqual(library.fmtdict.fmt1, 'f1')
+        self.assertEqual(library.fmtdict.fmt2, 'f2')
         self.assertEqual(len(library.classes), 1)
+
+        self.assertEqual(library.classes[0].fmtdict.fmt1, 'f1')
+        self.assertEqual(library.classes[0].fmtdict.fmt2, 'f2')
+        self.assertEqual(library.classes[0].fmtdict.fmt3, 'f3')
 
     def test_c_class2(self):
         """Add a classes with functions to library"""
