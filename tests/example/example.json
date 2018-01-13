@@ -3679,6 +3679,73 @@
                         "del"
                     ]
                 }
+            }, 
+            {
+                "_fmt": {
+                    "CXX_this_call": "SH_this->", 
+                    "C_header_filename": "wrapExClass3.h", 
+                    "C_impl_filename": "wrapExClass3.cpp", 
+                    "C_type_name": "AA_exclass3", 
+                    "F_derived_name": "exclass3", 
+                    "F_impl_filename": "wrapfExClass3.f", 
+                    "F_module_name": "exclass3_mod", 
+                    "class_lower": "exclass3", 
+                    "class_prefix": "exclass3_", 
+                    "class_upper": "EXCLASS3", 
+                    "cxx_class": "ExClass3"
+                }, 
+                "cxx_header": "", 
+                "methods": [
+                    {
+                        "_ast": {
+                            "args": [], 
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "exfunc", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "specifier": [
+                                "void"
+                            ]
+                        }, 
+                        "_decl": "void exfunc()", 
+                        "_fmt": {
+                            "C_call_code": "SH_this->exfunc();", 
+                            "C_call_list": "", 
+                            "C_name": "AA_exclass3_exfunc", 
+                            "C_pre_call": "ExClass3 *SH_this = static_cast<ExClass3 *>(static_cast<void *>(self));", 
+                            "C_prototype": "AA_exclass3 * self", 
+                            "C_return_code": "return;", 
+                            "C_return_type": "void", 
+                            "F_C_call": "c_exclass3_exfunc", 
+                            "F_C_name": "c_exclass3_exfunc", 
+                            "F_arg_c_call": "obj%voidptr", 
+                            "F_arg_c_call_tab": "\tobj%voidptr", 
+                            "F_arguments": "obj", 
+                            "F_call_code": "call c_exclass3_exfunc(\tobj%voidptr)", 
+                            "F_name_function": "exfunc", 
+                            "F_name_generic": "exfunc", 
+                            "F_name_impl": "exclass3_exfunc", 
+                            "F_subprogram": "subroutine", 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "self", 
+                            "function_name": "exfunc", 
+                            "underscore_name": "exfunc"
+                        }, 
+                        "_function_index": 48, 
+                        "_subprogram": "subroutine", 
+                        "decl": "void exfunc()", 
+                        "options": {}
+                    }
+                ], 
+                "name": "ExClass3", 
+                "options": {
+                    "wrap_python": false
+                }
             }
         ], 
         "copyright": [
@@ -3761,7 +3828,7 @@
                     "function_name": "local_function1", 
                     "underscore_name": "local_function1"
                 }, 
-                "_function_index": 48, 
+                "_function_index": 49, 
                 "_subprogram": "subroutine", 
                 "decl": "void local_function1()", 
                 "docs": "yada yada yada", 
@@ -3770,7 +3837,7 @@
             {
                 "C_code": "return name != NULL;", 
                 "F_code": "rv = name .ne. \" \"", 
-                "_PTR_F_C_index": 61, 
+                "_PTR_F_C_index": 62, 
                 "_ast": {
                     "args": [
                         {
@@ -3852,7 +3919,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 49, 
+                "_function_index": 50, 
                 "_subprogram": "function", 
                 "decl": "bool isNameValid(const std::string& name)", 
                 "options": {}
@@ -3860,7 +3927,7 @@
             {
                 "C_code": "return name != NULL;", 
                 "F_code": "rv = name .ne. \" \"", 
-                "_PTR_C_CXX_index": 49, 
+                "_PTR_C_CXX_index": 50, 
                 "_ast": {
                     "args": [
                         {
@@ -3930,7 +3997,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 61, 
+                "_function_index": 62, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "function", 
                 "decl": "bool isNameValid(const std::string& name)", 
@@ -3986,7 +4053,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 50, 
+                "_function_index": 51, 
                 "_subprogram": "function", 
                 "decl": "bool isInitialized()", 
                 "options": {}
@@ -4151,13 +4218,13 @@
                         }
                     }
                 }, 
-                "_function_index": 51, 
+                "_function_index": 52, 
                 "_subprogram": "subroutine", 
                 "decl": "void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))", 
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 62, 
+                "_PTR_F_C_index": 63, 
                 "_ast": {
                     "args": [
                         {
@@ -4193,8 +4260,8 @@
                     ]
                 }, 
                 "_cxx_overload": [
-                    52, 
-                    53
+                    53, 
+                    54
                 ], 
                 "_decl": "void test_names(const std::string & name +intent(in))", 
                 "_fmt": {
@@ -4240,7 +4307,7 @@
                         }
                     }
                 }, 
-                "_function_index": 52, 
+                "_function_index": 53, 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
                 "decl": "void test_names(const std::string &name)", 
@@ -4248,7 +4315,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 52, 
+                "_PTR_C_CXX_index": 53, 
                 "_ast": {
                     "args": [
                         {
@@ -4285,8 +4352,8 @@
                     ]
                 }, 
                 "_cxx_overload": [
-                    52, 
-                    53
+                    53, 
+                    54
                 ], 
                 "_decl": "void test_names(const std::string & name +intent(in)+len_trim(Lname))", 
                 "_error_pattern_suffix": "_as_buffer", 
@@ -4318,7 +4385,7 @@
                         }
                     }
                 }, 
-                "_function_index": 62, 
+                "_function_index": 63, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
@@ -4332,7 +4399,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 63, 
+                "_PTR_F_C_index": 64, 
                 "_ast": {
                     "args": [
                         {
@@ -4382,8 +4449,8 @@
                     ]
                 }, 
                 "_cxx_overload": [
-                    52, 
-                    53
+                    53, 
+                    54
                 ], 
                 "_decl": "void test_names(const std::string & name +intent(in), int flag +intent(in)+value)", 
                 "_fmt": {
@@ -4446,7 +4513,7 @@
                         }
                     }
                 }, 
-                "_function_index": 53, 
+                "_function_index": 54, 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
                 "decl": "void test_names(const std::string &name, int flag)", 
@@ -4454,7 +4521,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 53, 
+                "_PTR_C_CXX_index": 54, 
                 "_ast": {
                     "args": [
                         {
@@ -4505,8 +4572,8 @@
                     ]
                 }, 
                 "_cxx_overload": [
-                    52, 
-                    53
+                    53, 
+                    54
                 ], 
                 "_decl": "void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)", 
                 "_error_pattern_suffix": "_as_buffer", 
@@ -4551,7 +4618,7 @@
                         }
                     }
                 }, 
-                "_function_index": 63, 
+                "_function_index": 64, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
@@ -4600,7 +4667,7 @@
                     "c_const": "", 
                     "function_suffix": "_0"
                 }, 
-                "_function_index": 59, 
+                "_function_index": 60, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
@@ -4679,7 +4746,7 @@
                         }
                     }
                 }, 
-                "_function_index": 60, 
+                "_function_index": 61, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
@@ -4739,8 +4806,8 @@
                 }, 
                 "_decl": "void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)", 
                 "_default_funcs": [
-                    59, 
-                    60
+                    60, 
+                    61
                 ], 
                 "_fmt": {
                     "C_call_code": "testoptional(i, j);", 
@@ -4809,7 +4876,7 @@
                         }
                     }
                 }, 
-                "_function_index": 54, 
+                "_function_index": 55, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     0, 
@@ -4865,7 +4932,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 55, 
+                "_function_index": 56, 
                 "_subprogram": "function", 
                 "decl": "size_t test_size_t()", 
                 "options": {}
@@ -4946,7 +5013,7 @@
                         }
                     }
                 }, 
-                "_function_index": 56, 
+                "_function_index": 57, 
                 "_subprogram": "subroutine", 
                 "decl": "void testmpi(MPI_Comm comm)", 
                 "options": {}
@@ -5033,7 +5100,7 @@
                         }
                     }
                 }, 
-                "_function_index": 57, 
+                "_function_index": 58, 
                 "_subprogram": "subroutine", 
                 "decl": "void testgroup1(DataGroup * grp)", 
                 "options": {}
@@ -5120,7 +5187,7 @@
                         }
                     }
                 }, 
-                "_function_index": 58, 
+                "_function_index": 59, 
                 "_subprogram": "subroutine", 
                 "decl": "void testgroup2(const DataGroup * grp)", 
                 "options": {}
@@ -5327,6 +5394,51 @@
             "f_to_c": "{f_var}%yadda()", 
             "f_type": "type(exclass2)", 
             "forward": "ExClass2", 
+            "py_statements": {
+                "intent_in": {
+                    "post_parse": [
+                        "{cxx_var} = {py_var} ? {py_var}->{BBB} : NULL;"
+                    ]
+                }, 
+                "intent_out": {
+                    "ctor": [
+                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{py_var}->{BBB} = {cxx_var};"
+                    ]
+                }
+            }
+        }, 
+        "ExClass3": {
+            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_type": "LUA_TUSERDATA", 
+            "base": "wrapped", 
+            "c_to_cpp": "static_cast<{c_const}ExClass3{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
+            "c_type": "AA_exclass3", 
+            "cxx_to_c": "static_cast<{c_const}AA_exclass3 *>(static_cast<{c_const}void *>({cxx_var}))", 
+            "cxx_type": "ExClass3", 
+            "f_c_module": {
+                "iso_c_binding": [
+                    "C_PTR"
+                ]
+            }, 
+            "f_c_type": "type(C_PTR)", 
+            "f_derived_type": "exclass3", 
+            "f_module": {
+                "exclass3_mod": [
+                    "exclass3"
+                ]
+            }, 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
+            "f_to_c": "{f_var}%yadda()", 
+            "f_type": "type(exclass3)", 
+            "forward": "ExClass3", 
             "py_statements": {
                 "intent_in": {
                     "post_parse": [

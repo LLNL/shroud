@@ -90,6 +90,8 @@ class Wrapc(util.WrapperMixin):
 
         self._push_splicer('class')
         for node in newlibrary.classes:
+            if not node.options.wrap_c:
+                continue
             self._push_splicer(node.name)
             self.write_file(newlibrary, node)
             self._pop_splicer(node.name)
@@ -141,6 +143,9 @@ class Wrapc(util.WrapperMixin):
                 '#ifndef %s' % guard,
                 '#define %s' % guard,
                 ])
+        if cls and cls.cpp_if:
+            output.append('#' + node.cpp_if)
+
         # headers required by typedefs
         if self.header_typedef_include:
             # output.append('// header_typedef_include')
@@ -186,6 +191,8 @@ class Wrapc(util.WrapperMixin):
                 '',
                 '#endif  // %s' % guard
                 ])
+        if cls and cls.cpp_if:
+            output.append('#endif  //' + node.cpp_if)
 
         if write_file:
             self.config.cfiles.append(
@@ -202,6 +209,8 @@ class Wrapc(util.WrapperMixin):
         write_file = False
         output = []
         output.append('// ' + fname)
+        if cls and cls.cpp_if:
+            output.append('#' + node.cpp_if)
 
         # Insert any helper functions needed
         helper_source = []
@@ -261,6 +270,9 @@ class Wrapc(util.WrapperMixin):
             output.append('}  // extern "C"')
         self.namespace(library, cls, 'end', output)
 
+        if cls and cls.cpp_if:
+            output.append('#endif  //' + node.cpp_if)
+
         if write_file:
             self.config.cfiles.append(
                 os.path.join(self.config.c_fortran_dir, fname))
@@ -282,8 +294,6 @@ class Wrapc(util.WrapperMixin):
         fmt_class = node._fmt
         # call method syntax
         fmt_class.CXX_this_call = fmt_class.CXX_this + '->'
-#        fmt_class.update(dict(
-#                ))
 
         # create a forward declaration for this type
         self.header_forward[cname] = True
@@ -649,9 +659,13 @@ class Wrapc(util.WrapperMixin):
 
         if need_wrapper:
             self.header_proto_c.append('')
+            if node.cpp_if:
+                self.header_proto_c.append('#' + node.cpp_if)
             self.header_proto_c.append(
                 wformat('{C_return_type} {C_name}({C_prototype});',
                         fmt_func))
+            if node.cpp_if:
+                self.header_proto_c.append('#endif')
 
             impl = self.impl
             impl.append('')
@@ -660,11 +674,15 @@ class Wrapc(util.WrapperMixin):
                 impl.append('// function_index=%d' % node._function_index)
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
+            if node.cpp_if:
+                self.impl.append('#' + node.cpp_if)
             impl.append(wformat('{C_return_type} {C_name}({C_prototype})', fmt_func))
             impl.append('{')
             self._create_splicer(fmt_func.underscore_name +
                                  fmt_func.function_suffix, impl, C_code)
             impl.append('}')
+            if node.cpp_if:
+                self.impl.append('#endif  //' + node.cpp_if)
         else:
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node._ast.name

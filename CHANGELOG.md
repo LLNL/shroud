@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## Added
+- cpp_if will add an #if directive around a class or function.
+- All 'functions' to be used in YAML in place of 'methods'.
+  'methods' still works but only one should be provided. 
+
+## Changed
+- All cpp_ prefixes for options and fmt have changed to cxx_.
+
+## Fixed
+- Respect wrap_* options for classes.
 
 ## v0.6.0 - 2018-01-10
 ### Changed

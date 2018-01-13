@@ -85,6 +85,8 @@ class Wrapl(util.WrapperMixin):
 
         self._push_splicer('class')
         for node in newlibrary.classes:
+            if not node.options.wrap_lua:
+                continue
             name = node.name
             self.reset_file()
             self._push_splicer(name)

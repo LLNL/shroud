@@ -61,3 +61,13 @@ types:
     f_module:
       exclass2_mod:
       - exclass2
+
+  ExClass3:
+    base: wrapped
+    cxx_type: ExClass3
+    c_type: AA_exclass3
+    f_derived_type: exclass3
+    f_to_c: "{f_var}%yadda()"
+    f_module:
+      exclass3_mod:
+      - exclass3

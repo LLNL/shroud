@@ -196,7 +196,7 @@ contains
 
     ! bool isNameValid(const std::string & name +intent(in))
     ! arg_to_buffer
-    ! function_index=49
+    ! function_index=50
     function is_name_valid(name) result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT
         character(*), intent(IN) :: name
@@ -207,7 +207,7 @@ contains
     end function is_name_valid
 
     ! bool isInitialized()
-    ! function_index=50
+    ! function_index=51
     function is_initialized() result(SHT_rv)
         use iso_c_binding, only : C_BOOL
         logical :: SHT_rv
@@ -217,7 +217,7 @@ contains
     end function is_initialized
 
     ! void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-    ! function_index=51
+    ! function_index=52
     subroutine check_bool(arg1, arg2, arg3)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg1
@@ -240,7 +240,7 @@ contains
 
     ! void test_names(const std::string & name +intent(in))
     ! arg_to_buffer
-    ! function_index=52
+    ! function_index=53
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
@@ -253,7 +253,7 @@ contains
 
     ! void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
     ! arg_to_buffer
-    ! function_index=53
+    ! function_index=54
     subroutine test_names_flag(name, flag)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
@@ -268,7 +268,7 @@ contains
 
     ! void testoptional()
     ! has_default_arg
-    ! function_index=59
+    ! function_index=60
     subroutine testoptional_0()
         ! splicer begin function.testoptional_0
         call c_testoptional_0()
@@ -277,7 +277,7 @@ contains
 
     ! void testoptional(int i=1 +intent(in)+value)
     ! has_default_arg
-    ! function_index=60
+    ! function_index=61
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -287,7 +287,7 @@ contains
     end subroutine testoptional_1
 
     ! void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
-    ! function_index=54
+    ! function_index=55
     subroutine testoptional_2(i, j)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), value, intent(IN) :: i
@@ -300,7 +300,7 @@ contains
     end subroutine testoptional_2
 
     ! void testgroup1(DataGroup * grp +intent(in)+value)
-    ! function_index=57
+    ! function_index=58
     subroutine testgroup1(grp)
         use sidre_mod, only : group
         type(datagroup), value, intent(IN) :: grp
@@ -310,7 +310,7 @@ contains
     end subroutine testgroup1
 
     ! void testgroup2(const DataGroup * grp +intent(in)+value)
-    ! function_index=58
+    ! function_index=59
     subroutine testgroup2(grp)
         use sidre_mod, only : group
         type(datagroup), value, intent(IN) :: grp

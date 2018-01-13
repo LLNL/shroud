@@ -110,6 +110,8 @@ class Wrapp(util.WrapperMixin):
 
         # preprocess all classes first to allow them to reference each other
         for node in newlibrary.classes:
+            if not node.options.wrap_python:
+                continue
             typedef = typemap.Typedef.lookup(node.name)
             fmt = node._fmt
             typedef.PY_format = 'O'
@@ -132,6 +134,8 @@ class Wrapp(util.WrapperMixin):
 
         self._push_splicer('class')
         for node in newlibrary.classes:
+            if not node.options.wrap_python:
+                continue
             name = node.name
             self.reset_file()
             self._push_splicer(name)

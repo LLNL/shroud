@@ -352,7 +352,7 @@ class ClassNode(AstNode):
                   'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
                   'LUA_metadata', 'LUA_ctor_name',
                   'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
-                  'class_prefix']:
+                  'class_prefix', 'cpp_if']:
             setattr(self, n, kwargs.get(n, None))
 
         self.options = util.Options(parent=parent.options)
@@ -480,7 +480,7 @@ class FunctionNode(AstNode):
                 'F_name_function', 'F_name_generic', 'F_name_impl',
                 'LUA_name', 'LUA_name_impl',
                 'PY_error_pattern', 'PY_name_impl',
-                'docs', 'function_suffix', 'return_this']:
+                'cpp_if', 'docs', 'function_suffix', 'return_this']:
             setattr(self, n, kwargs.get(n, None))
 
         self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
@@ -705,6 +705,8 @@ def create_library_from_dictionary(node):
             clsnode = library.add_class(**cls)
             if 'methods' in cls:
                 add_functions(clsnode, cls['methods'])
+            elif 'functions' in cls:
+                add_functions(clsnode, cls['functions'])
 
     if 'functions' in node:
         add_functions(library, node['functions'])

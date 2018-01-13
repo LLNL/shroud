@@ -136,6 +136,8 @@ class Wrapf(util.WrapperMixin):
         self._begin_output_file()
         self._push_splicer('class')
         for node in newlibrary.classes:
+            if not node.options.wrap_fortran:
+                continue
             self._begin_class()
 
             name = node.name
