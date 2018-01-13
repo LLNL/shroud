@@ -67,13 +67,13 @@ class AstNode(object):
                      'LUA_impl_filename_suffix',
                      'LUA_result']:
             if self.options.inlocal(name):
-                setattr(self._fmt, name, self.options[name])
+                setattr(self.fmtdict, name, self.options[name])
 
     def eval_template(self, name, tname='', fmt=None):
         """fmt[name] = self.name or option[name + tname + '_template']
         """
         if fmt is None:
-            fmt = self._fmt
+            fmt = self.fmtdict
         value = getattr(self, name)
         if value is not None:
             setattr(fmt, name, value)
@@ -229,8 +229,8 @@ class LibraryNode(AstNode):
         """Set format dictionary.
         """
 
-        self._fmt = util.Scope(None)
-        fmt_library = self._fmt
+        self.fmtdict = util.Scope(None)
+        fmt_library = self.fmtdict
 
         fmt_library.library = self.library
         fmt_library.library_lower = fmt_library.library.lower()
@@ -316,7 +316,7 @@ class LibraryNode(AstNode):
         Used by util.ExpandedEncoder.
         """
         d = dict(
-            format=self._fmt,
+            format=self.fmtdict,
             options=self.options,
         )
 
@@ -359,8 +359,8 @@ class ClassNode(AstNode):
         if options:
             self.options.update(options, replace=True)
 
-        self._fmt = util.Scope(parent._fmt)
-        fmt_class = self._fmt
+        self.fmtdict = util.Scope(parent.fmtdict)
+        fmt_class = self.fmtdict
         fmt_class.cxx_class = name
         fmt_class.class_lower = name.lower()
         fmt_class.class_upper = name.upper()
@@ -387,7 +387,7 @@ class ClassNode(AstNode):
         """
         d = dict(
             cxx_header=self.cxx_header,
-            format = self._fmt,
+            format = self.fmtdict,
             methods=self.functions,
             name=self.name,
             options=self.options,
@@ -449,7 +449,7 @@ class FunctionNode(AstNode):
         if options:
             self.options.update(options, replace=True)
 
-        self._fmt = util.Scope(parent._fmt)
+        self.fmtdict = util.Scope(parent.fmtdict)
         self.option_to_fmt()
 
         # working variables
@@ -523,7 +523,7 @@ class FunctionNode(AstNode):
             # 'void foo' instead of 'void foo()'
             raise RuntimeError("Missing arguments:", ast.gen_decl())
 
-        fmt_func = self._fmt
+        fmt_func = self.fmtdict
         fmt_func.function_name = ast.name
         fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
 
@@ -535,7 +535,7 @@ class FunctionNode(AstNode):
             _ast=self._ast,
             _function_index=self._function_index,
             decl=self.decl,
-            format=self._fmt,
+            format=self.fmtdict,
             options=self.options,
         )
         for key in ['cxx_template', 'default_arg_suffix', 'docs', 'doxygen', 
@@ -570,7 +570,7 @@ class FunctionNode(AstNode):
         new = copy.copy(self)
 
         # new layer of Scopes
-        new._fmt = util.Scope(self._fmt)
+        new.fmtdict = util.Scope(self.fmtdict)
         new.options = util.Scope(self.options)
     
         # deep copy dictionaries

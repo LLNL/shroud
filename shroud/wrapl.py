@@ -66,7 +66,7 @@ class Wrapl(util.WrapperMixin):
     def wrap_library(self):
         newlibrary = self.newlibrary
         options = newlibrary.options
-        fmt_library = newlibrary._fmt
+        fmt_library = newlibrary.fmtdict
 
         # Format variables
         fmt_library.LUA_prefix = options.get('LUA_prefix', 'l_')
@@ -107,7 +107,7 @@ class Wrapl(util.WrapperMixin):
 
     def wrap_class(self, node):
         options = node.options
-        fmt_class = node._fmt
+        fmt_class = node.fmtdict
 
         fmt_class.LUA_userdata_var = 'SH_this'
         node.eval_template('LUA_userdata_type')
@@ -200,7 +200,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         ast = node._ast
         function_name = ast.name
-        fmt_func = node._fmt
+        fmt_func = node.fmtdict
         fmt = util.Scope(fmt_func)
         node.eval_template('LUA_name')
         node.eval_template('LUA_name_impl')
@@ -412,7 +412,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             cls_function = 'function'
         self.log.write("Lua {0} {1._decl}\n".format(cls_function, node))
 
-#        fmt_func = node._fmt
+#        fmt_func = node.fmtdict
         fmtargs = node._fmtargs
 #        fmt = util.Scope(fmt_func)
 #        fmt.doc_string = 'documentation'
@@ -606,7 +606,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
     def write_header(self, node):
         options = node.options
-        fmt = node._fmt
+        fmt = node.fmtdict
         fname = fmt.LUA_header_filename
 
         output = []
@@ -652,7 +652,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
     def write_module(self, node):
         # node is library
         options = node.options
-        fmt = node._fmt
+        fmt = node.fmtdict
         fname = fmt.LUA_module_filename
 
         output = []

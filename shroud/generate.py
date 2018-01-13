@@ -224,7 +224,7 @@ class GenFunctions(object):
         """
         ilist = self.function_index
         node._function_index = len(ilist)
-#        node._fmt.function_index = str(len(ilist)) # debugging
+#        node.fmtdict.function_index = str(len(ilist)) # debugging
         ilist.append(node)
 
     def define_function_suffix(self, functions):
@@ -236,7 +236,7 @@ class GenFunctions(object):
         cxx_overload = {}
         for function in functions:
             if function.function_suffix is not None:
-                function._fmt.function_suffix = function.function_suffix
+                function.fmtdict.function_suffix = function.function_suffix
             self.append_function_index(function)
             cxx_overload. \
                 setdefault(function._ast.name, []). \
@@ -273,8 +273,8 @@ class GenFunctions(object):
             if len(overloads) > 1:
                 for i, function in enumerate(overloads):
                     function._overloaded = True
-                    if not function._fmt.inlocal('function_suffix'):
-                        function._fmt.function_suffix = '_{}'.format(i)
+                    if not function.fmtdict.inlocal('function_suffix'):
+                        function.fmtdict.function_suffix = '_{}'.format(i)
 
         # Create additional C bufferify functions.
         ordered3 = []
@@ -311,7 +311,7 @@ class GenFunctions(object):
                 self.append_function_index(new)
 
                 new._generated = 'cxx_template'
-                fmt = new._fmt
+                fmt = new.fmtdict
                 fmt.function_suffix = fmt.function_suffix + '_' + type
                 new.cxx_template = {}
                 options = new.options
@@ -351,7 +351,7 @@ class GenFunctions(object):
 
                 new._generated = 'fortran_generic'
                 new._PTR_F_C_index = node._function_index
-                fmt = new._fmt
+                fmt = new.fmtdict
                 # XXX append to existing suffix
                 fmt.function_suffix = fmt.function_suffix + '_' + type
                 new.fortran_generic = {}
@@ -410,7 +410,7 @@ class GenFunctions(object):
             options.wrap_fortran = True
             options.wrap_python = False
             options.wrap_lua = False
-            fmt = new._fmt
+            fmt = new.fmtdict
             try:
                 fmt.function_suffix = default_arg_suffix[ndefault]
             except IndexError:
@@ -426,7 +426,7 @@ class GenFunctions(object):
         node._nargs = (min_args, len(node._ast.params))
         # The last name calls with all arguments (the original decl)
         try:
-            node._fmt.function_suffix = default_arg_suffix[ndefault]
+            node.fmtdict.function_suffix = default_arg_suffix[ndefault]
         except IndexError:
             pass
 
@@ -437,7 +437,7 @@ class GenFunctions(object):
         will convert argument into a buffer and length.
         """
         options = node.options
-        fmt = node._fmt
+        fmt = node.fmtdict
 
         # If a C++ function returns a std::string instance,
         # the default wrapper will not compile since the wrapper
@@ -509,7 +509,7 @@ class GenFunctions(object):
 
         C_new._generated = 'arg_to_buffer'
         C_new._error_pattern_suffix = '_as_buffer'
-        fmt = C_new._fmt
+        fmt = C_new.fmtdict
         fmt.function_suffix = fmt.function_suffix + options.C_bufferify_suffix
 
         options = C_new.options
@@ -585,7 +585,7 @@ class GenFunctions(object):
             options.wrap_python = False
             options.wrap_lua = False
             # Do not add '_bufferify'
-            F_new._fmt.function_suffix = node._fmt.function_suffix
+            F_new.fmtdict.function_suffix = node.fmtdict.function_suffix
 
             # Do not wrap original function (does not have result argument)
             node.options.wrap_fortran = False
@@ -680,7 +680,7 @@ class Namify(object):
                 handler(cls, func)
 
             options = cls.options
-            fmt_class = cls._fmt
+            fmt_class = cls.fmtdict
             if 'F_this' in options:
                 fmt_class.F_this = options.F_this
 
@@ -691,7 +691,7 @@ class Namify(object):
         options = node.options
         if not options.wrap_c:
             return
-        fmt_func = node._fmt
+        fmt_func = node.fmtdict
 
         node.eval_template('C_name')
         node.eval_template('F_C_name')
@@ -706,7 +706,7 @@ class Namify(object):
         options = node.options
         if not options.wrap_fortran:
             return
-        fmt_func = node._fmt
+        fmt_func = node.fmtdict
 
         node.eval_template('F_name_impl')
         node.eval_template('F_name_function')

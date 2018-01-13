@@ -61,8 +61,8 @@ class CheckParse(unittest.TestCase):
 
         # Create a Typemap for 'Class1'
         cls = ast.ClassNode('Class1', parent=library)
-        cls._fmt.C_prefix = 'CC_'
-        cls._fmt.F_module_name = 'moder'
+        cls.fmtdict.C_prefix = 'CC_'
+        cls.fmtdict.F_module_name = 'moder'
         cls.options.F_name_instance_get = 'get'
         typemap.create_class_typedef(cls)
 

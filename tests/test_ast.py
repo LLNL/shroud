@@ -56,7 +56,7 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(library.options.wrap_c, True)
         self.assertEqual(library.options.wrap_fortran, True)
 
-        fmt = library._fmt
+        fmt = library.fmtdict
         self.assertEqual(fmt.C_prefix, 'DEF_')
 
 
@@ -74,7 +74,7 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(library.options.wrap_c, False)      # updated from dict
         self.assertEqual(library.options.wrap_fortran, True)
 
-        fmt = library._fmt
+        fmt = library.fmtdict
         self.assertEqual(fmt.C_prefix, 'XXX_')
 
     def test_b_function1(self):

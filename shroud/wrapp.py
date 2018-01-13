@@ -82,7 +82,7 @@ class Wrapp(util.WrapperMixin):
     def wrap_library(self):
         newlibrary = self.newlibrary
         options = newlibrary.options
-        fmt_library = newlibrary._fmt
+        fmt_library = newlibrary.fmtdict
 
         # Format variables
         fmt_library.PY_prefix = options.get('PY_prefix', 'PY_')
@@ -113,7 +113,7 @@ class Wrapp(util.WrapperMixin):
             if not node.options.wrap_python:
                 continue
             typedef = typemap.Typedef.lookup(node.name)
-            fmt = node._fmt
+            fmt = node.fmtdict
             typedef.PY_format = 'O'
 
             # PyTypeObject for class
@@ -162,7 +162,7 @@ class Wrapp(util.WrapperMixin):
         typedef = typemap.Typedef.lookup(name)
 
         options = node.options
-        fmt_class = node._fmt
+        fmt_class = node.fmtdict
 
         node.eval_template('PY_type_filename')
 
@@ -200,7 +200,7 @@ class Wrapp(util.WrapperMixin):
         These functions are used by PyArg_ParseTupleAndKeywords
         and Py_BuildValue node is a C++ class.
         """
-        fmt = node._fmt
+        fmt = node.fmtdict
 
         fmt.PY_capsule_name = wformat('PY_{cxx_class}_capsule_name', fmt)
 
@@ -344,7 +344,7 @@ return 1;""", fmt)
             cls_function = 'function'
         self.log.write("Python {0} {1._decl}\n".format(cls_function, node))
 
-        fmt_func = node._fmt
+        fmt_func = node.fmtdict
         fmtargs = node._fmtargs
         fmt = util.Scope(fmt_func)
         fmt.doc_string = 'documentation'
@@ -752,7 +752,7 @@ return 1;""", fmt)
         self._pop_splicer('type')
 
     def write_extension_type(self, library, node):
-        fmt = node._fmt
+        fmt = node.fmtdict
         fname = fmt.PY_type_filename
 
         output = []
@@ -803,7 +803,7 @@ return 1;""", fmt)
             if len(methods) < 2:
                 continue  # not overloaded
 
-            fmt_func = methods[0]._fmt
+            fmt_func = methods[0].fmtdict
             fmt = util.Scope(fmt_func)
             fmt.function_suffix = ''
             fmt.doc_string = 'documentation'
@@ -831,7 +831,7 @@ return 1;""", fmt)
                 body.append(1)
                 append_format(body,
                               'rvobj = {PY_name_impl}(self, args, kwds);',
-                              overload._fmt)
+                              overload.fmtdict)
                 body.append('if (!PyErr_Occurred()) {')
                 body.append(1)
                 body.append('return rvobj;')
@@ -858,7 +858,7 @@ return 1;""", fmt)
     def write_header(self, node):
         # node is library
         options = node.options
-        fmt = node._fmt
+        fmt = node.fmtdict
         fname = fmt.PY_header_filename
 
         output = []
@@ -916,7 +916,7 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
     def write_module(self, node):
         # node is library.
         options = node.options
-        fmt = node._fmt
+        fmt = node.fmtdict
         fname = fmt.PY_module_filename
 
         fmt.PY_library_doc = 'library documentation'
@@ -957,7 +957,7 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
 
     def write_helper(self):
         node = self.newlibrary
-        fmt = node._fmt
+        fmt = node.fmtdict
         output = []
         output.append(wformat('#include "{PY_header_filename}"', fmt))
         self.namespace(node, None, 'begin', output)

@@ -790,7 +790,7 @@ def initialize():
 
 def create_class_typedef(cls):
     name = cls.name
-    fmt_class = cls._fmt
+    fmt_class = cls.fmtdict
     options = cls.options
 
     typedef = Typedef.lookup(name)

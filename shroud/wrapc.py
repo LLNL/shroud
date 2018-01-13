@@ -86,7 +86,7 @@ class Wrapc(util.WrapperMixin):
 
     def wrap_library(self):
         newlibrary = self.newlibrary
-        fmt_library = newlibrary._fmt
+        fmt_library = newlibrary.fmtdict
 
         self._push_splicer('class')
         for node in newlibrary.classes:
@@ -105,7 +105,7 @@ class Wrapc(util.WrapperMixin):
         a class and its methods.
         """
         node = cls or library
-        fmt = node._fmt
+        fmt = node.fmtdict
         self._begin_output_file()
         if cls:
             self.wrap_class(cls)
@@ -290,7 +290,7 @@ class Wrapc(util.WrapperMixin):
         typedef = typemap.Typedef.lookup(name)
         cname = typedef.c_type
 
-        fmt_class = node._fmt
+        fmt_class = node.fmtdict
         # call method syntax
         fmt_class.CXX_this_call = fmt_class.CXX_this + '->'
 
@@ -318,7 +318,7 @@ class Wrapc(util.WrapperMixin):
             cls_function = 'function'
         self.log.write("C {0} {1._decl}\n".format(cls_function, node))
 
-        fmt_func = node._fmt
+        fmt_func = node.fmtdict
         fmtargs = node._fmtargs
 
         if self.language == 'c' or options.get('C_extern_C',False):
