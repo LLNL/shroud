@@ -457,6 +457,7 @@ class FunctionNode(AstNode):
         self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
         self._cxx_overload = None
+        self._decl = None
         self._default_funcs = []         #  generated default value functions  (unused?)
         self._function_index = None
         self._error_pattern_suffix = ''

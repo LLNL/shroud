@@ -41,6 +41,14 @@
 Shroud - generate language bindings
 """
 
+from ast import LibraryNode, ClassNode, FunctionNode
+
+def print_as_json(node, fp):
+    """Use the _to_dict methods to convert to a dictonary."""
+    import json
+    json.dump(node, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
+    
+
 
 __version__ = "0.6.0"
 version_info = (0,6,0,"beta",0)
