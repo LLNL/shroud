@@ -283,7 +283,7 @@ class Wrapf(util.WrapperMixin):
         """
         options = node.options
         impl = self.impl
-        fmt = util.Options(fmt_class)
+        fmt = util.Scope(fmt_class)
 
         # get
         fmt.underscore_name = options['F_name_instance_get']
@@ -356,7 +356,7 @@ class Wrapf(util.WrapperMixin):
     def overload_compare(self, fmt_class, operator, procedure, predicate):
         """ Overload .eq. and .eq.
         """
-        fmt = util.Options(fmt_class)
+        fmt = util.Scope(fmt_class)
         fmt.procedure = procedure
         fmt.predicate = predicate
 
@@ -472,7 +472,7 @@ class Wrapf(util.WrapperMixin):
         """
         options = node.options
         fmt_func = node._fmt
-        fmt = util.Options(fmt_func)
+        fmt = util.Scope(fmt_func)
 
         ast = node._ast
         result_type = ast.typename
@@ -718,7 +718,7 @@ class Wrapf(util.WrapperMixin):
         for c_arg in C_node._ast.params:
             arg_name = c_arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg  = fmt_arg0.setdefault('fmtf', util.Options(fmt_func))
+            fmt_arg  = fmt_arg0.setdefault('fmtf', util.Scope(fmt_func))
             fmt_arg.f_var = arg_name
             fmt_arg.c_var = arg_name
 

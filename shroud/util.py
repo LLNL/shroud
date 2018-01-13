@@ -336,9 +336,10 @@ class WrapperMixin(object):
         output.append(self.doxygen_end)
 
 
-class Options(object):
+class Scope(object):
     """
-    If attribute is not found, look in parent's.
+    Create a scoped namespace.
+    If item is not found, look in parent.
     A replacement for a dictionary to allow obj.name syntax.
     It will automatically look in __parent for attribute if not found to allow
     A nesting of options.

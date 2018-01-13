@@ -346,7 +346,7 @@ return 1;""", fmt)
 
         fmt_func = node._fmt
         fmtargs = node._fmtargs
-        fmt = util.Options(fmt_func)
+        fmt = util.Scope(fmt_func)
         fmt.doc_string = 'documentation'
         if cls:
             fmt.PY_used_param_self = True
@@ -417,7 +417,7 @@ return 1;""", fmt)
             for arg in args:
                 arg_name = arg.name
                 fmt_arg0 = fmtargs.setdefault(arg_name, {})
-                fmt_arg = fmt_arg0.setdefault('fmtpy', util.Options(fmt))
+                fmt_arg = fmt_arg0.setdefault('fmtpy', util.Scope(fmt))
                 fmt_arg.c_var = arg_name
                 fmt_arg.cxx_var = arg_name
                 fmt_arg.py_var = 'SH_Py_' + arg_name
@@ -588,7 +588,7 @@ return 1;""", fmt)
                 PY_code.append(line)
 
             if node.PY_error_pattern:
-                lfmt = util.Options(fmt)
+                lfmt = util.Scope(fmt)
                 lfmt.c_var = fmt.PY_result
                 lfmt.cxx_var = fmt.PY_result
                 append_format(PY_code,
@@ -653,7 +653,7 @@ return 1;""", fmt)
         elif found_default:
             # Only one wrapper to deal with default arugments.
             # [C creates a wrapper per default argument]
-            fmt = util.Options(fmt)
+            fmt = util.Scope(fmt)
             fmt.function_suffix = ''
 
         self.create_method(cls, expose, fmt, PY_impl)
@@ -716,7 +716,7 @@ return 1;""", fmt)
                         '{PY_name_impl}__doc__}},', fmt))
 #        elif expose is not False:
 #            # override name
-#            fmt = util.Options(fmt)
+#            fmt = util.Scope(fmt)
 #            fmt.expose = expose
 #            self.PyMethodDef.append( wformat('{{"{expose}", (PyCFunction){PY_name_impl}, {ml_flags}, {PY_name_impl}__doc__}},', fmt))
 
@@ -804,7 +804,7 @@ return 1;""", fmt)
                 continue  # not overloaded
 
             fmt_func = methods[0]._fmt
-            fmt = util.Options(fmt_func)
+            fmt = util.Scope(fmt_func)
             fmt.function_suffix = ''
             fmt.doc_string = 'documentation'
             fmt.ml_flags = 'METH_VARARGS|METH_KEYWORDS'

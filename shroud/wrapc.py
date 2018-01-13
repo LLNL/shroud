@@ -388,7 +388,7 @@ class Wrapc(util.WrapperMixin):
             fmt_pattern = fmt_func
         else:
             fmt_result0 = node._fmtresult
-            fmt_result = fmt_result0.setdefault('fmtc', util.Options(fmt_func))
+            fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
             fmt_result.cxx_var = fmt_func.C_result
             fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_cpp(name=fmt_func.C_result)
             fmt_pattern = fmt_result
@@ -431,7 +431,7 @@ class Wrapc(util.WrapperMixin):
         for arg in ast.params:
             arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault('fmtc', util.Options(fmt_func))
+            fmt_arg = fmt_arg0.setdefault('fmtc', util.Scope(fmt_func))
             c_attrs = arg.attrs
             arg_typedef, c_statements = typemap.lookup_c_statements(arg)
             if 'template' in c_attrs:

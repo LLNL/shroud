@@ -201,7 +201,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         ast = node._ast
         function_name = ast.name
         fmt_func = node._fmt
-        fmt = util.Options(fmt_func)
+        fmt = util.Scope(fmt_func)
         node.eval_template('LUA_name')
         node.eval_template('LUA_name_impl')
 
@@ -414,7 +414,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
 #        fmt_func = node._fmt
         fmtargs = node._fmtargs
-#        fmt = util.Options(fmt_func)
+#        fmt = util.Scope(fmt_func)
 #        fmt.doc_string = 'documentation'
 #        node.eval_template('LUA_name')
 #        node.eval_template('LUA_name_impl')
@@ -476,13 +476,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # Only process nargs.
         # Each variation of default-arguments produces a new call.
-        fmt_arg = util.Options(fmt)
+        fmt_arg = util.Scope(fmt)
         LUA_index = 1
         for iarg in range(luafcn.nargs):
             arg = ast.params[iarg]
             arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault('fmtl', util.Options(fmt))
+            fmt_arg = fmt_arg0.setdefault('fmtl', util.Scope(fmt))
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
@@ -584,7 +584,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             LUA_code.append(line)
 
 #        if 'LUA_error_pattern' in node:
-#            lfmt = util.Options(fmt)
+#            lfmt = util.Scope(fmt)
 #            lfmt.c_var = fmt.LUA_result
 #            lfmt.cxx_var = fmt.LUA_result
 #            append_format(LUA_code,

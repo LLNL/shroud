@@ -140,7 +140,7 @@ class LibraryNode(AstNode):
 
     def default_options(self):
         """default options."""
-        def_options = util.Options(
+        def_options = util.Scope(
             parent=None,
             debug=False,   # print additional debug info
 
@@ -229,7 +229,7 @@ class LibraryNode(AstNode):
         """Set format dictionary.
         """
 
-        self._fmt = util.Options(None)
+        self._fmt = util.Scope(None)
         fmt_library = self._fmt
 
         fmt_library.library = self.library
@@ -355,11 +355,11 @@ class ClassNode(AstNode):
                   'class_prefix', 'cpp_if']:
             setattr(self, n, kwargs.get(n, None))
 
-        self.options = util.Options(parent=parent.options)
+        self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
 
-        self._fmt = util.Options(parent._fmt)
+        self._fmt = util.Scope(parent._fmt)
         fmt_class = self._fmt
         fmt_class.cxx_class = name
         fmt_class.class_lower = name.lower()
@@ -416,15 +416,15 @@ class FunctionNode(AstNode):
         - double
 
 
-    _fmtfunc = Option()
+    _fmtfunc = Scope()
 
     _fmtresult = {
-       'fmtc': Option(_fmtfunc)
+       'fmtc': Scope(_fmtfunc)
     }
     _fmtargs = {
       'arg1': {
-        'fmtc': Option(_fmtfunc),
-        'fmtf': Option(_fmtfunc)
+        'fmtc': Scope(_fmtfunc),
+        'fmtf': Scope(_fmtfunc)
       }
     }
 
@@ -445,11 +445,11 @@ class FunctionNode(AstNode):
                  parentoptions=None,
                  options=None,
                  **kwargs):
-        self.options = util.Options(parent= parentoptions or parent.options)
+        self.options = util.Scope(parent= parentoptions or parent.options)
         if options:
             self.options.update(options, replace=True)
 
-        self._fmt = util.Options(parent._fmt)
+        self._fmt = util.Scope(parent._fmt)
         self.option_to_fmt()
 
         # working variables
@@ -569,9 +569,9 @@ class FunctionNode(AstNode):
         # Shallow copy everything
         new = copy.copy(self)
 
-        # new layer of Options
-        new._fmt = util.Options(self._fmt)
-        new.options = util.Options(self.options)
+        # new layer of Scopes
+        new._fmt = util.Scope(self._fmt)
+        new.options = util.Scope(self.options)
     
         # deep copy dictionaries
         new._ast = copy.deepcopy(self._ast)
@@ -640,7 +640,7 @@ def add_functions(parent, functions):
     options = parent.options
     for node in functions:
         if is_options_only(node):
-            options = util.Options(options, **node['options'])
+            options = util.Scope(options, **node['options'])
         else:
             clean_dictionary(node)
             parent.add_function(parentoptions=options, **node)
