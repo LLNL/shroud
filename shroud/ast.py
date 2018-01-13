@@ -316,7 +316,7 @@ class LibraryNode(AstNode):
         Used by util.ExpandedEncoder.
         """
         d = dict(
-            _fmt=self._fmt,
+            format=self._fmt,
             options=self.options,
         )
 
@@ -386,8 +386,8 @@ class ClassNode(AstNode):
         Used by util.ExpandedEncoder.
         """
         d = dict(
-            _fmt = self._fmt,
             cxx_header=self.cxx_header,
+            format = self._fmt,
             methods=self.functions,
             name=self.name,
             options=self.options,
@@ -533,9 +533,9 @@ class FunctionNode(AstNode):
         """
         d = dict(
             _ast=self._ast,
-            _fmt=self._fmt,
             _function_index=self._function_index,
             decl=self.decl,
+            format=self._fmt,
             options=self.options,
         )
         for key in ['cxx_template', 'default_arg_suffix', 'docs', 'doxygen', 
