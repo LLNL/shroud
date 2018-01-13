@@ -54,7 +54,7 @@ class AstNode(object):
         """Set fmt based on options dictionary.
         """
         for name in ['C_prefix', 'F_C_prefix', 
-                     'C_this', 'C_result', 'CPP_this',
+                     'C_this', 'C_result', 'CXX_this',
                      'F_this', 'F_result', 'F_derived_member',
                      'C_string_result_as_arg', 'F_string_result_as_arg',
                      'C_header_filename_suffix',
@@ -85,7 +85,7 @@ class AstNode(object):
 
 class LibraryNode(AstNode):
     def __init__(self,
-                 cpp_header='',
+                 cxx_header='',
                  language='c++',
                  library='default_library',
                  namespace='',
@@ -100,7 +100,7 @@ class LibraryNode(AstNode):
 
         """
         # From arguments
-        self.cpp_header = cpp_header
+        self.cxx_header = cxx_header
         self.language = language.lower()
         if self.language not in ['c', 'c++']:
             raise RuntimeError("language must be 'c' or 'c++'")
@@ -164,8 +164,8 @@ class LibraryNode(AstNode):
             C_header_filename_library_template='wrap{library}.{C_header_filename_suffix}',
             C_impl_filename_library_template='wrap{library}.{C_impl_filename_suffix}',
 
-            C_header_filename_class_template='wrap{cpp_class}.{C_header_filename_suffix}',
-            C_impl_filename_class_template='wrap{cpp_class}.{C_impl_filename_suffix}',
+            C_header_filename_class_template='wrap{cxx_class}.{C_header_filename_suffix}',
+            C_impl_filename_class_template='wrap{cxx_class}.{C_impl_filename_suffix}',
 
             C_name_template=(
                 '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
@@ -190,7 +190,7 @@ class LibraryNode(AstNode):
             F_impl_filename_library_template='wrapf{library_lower}.{F_filename_suffix}',
 
             F_module_name_class_template='{class_lower}_mod',
-            F_impl_filename_class_template='wrapf{cpp_class}.{F_filename_suffix}',
+            F_impl_filename_class_template='wrapf{cxx_class}.{F_filename_suffix}',
 
             F_name_instance_get='get_instance',
             F_name_instance_set='set_instance',
@@ -201,12 +201,12 @@ class LibraryNode(AstNode):
                 'lua{library}module.{LUA_impl_filename_suffix}'),
             LUA_header_filename_template=(
                 'lua{library}module.{LUA_header_filename_suffix}'),
-            LUA_userdata_type_template='{LUA_prefix}{cpp_class}_Type',
+            LUA_userdata_type_template='{LUA_prefix}{cxx_class}_Type',
             LUA_userdata_member_template='self',
             LUA_module_reg_template='{LUA_prefix}{library}_Reg',
-            LUA_class_reg_template='{LUA_prefix}{cpp_class}_Reg',
-            LUA_metadata_template='{cpp_class}.metatable',
-            LUA_ctor_name_template='{cpp_class}',
+            LUA_class_reg_template='{LUA_prefix}{cxx_class}_Reg',
+            LUA_metadata_template='{cxx_class}.metatable',
+            LUA_ctor_name_template='{cxx_class}',
             LUA_name_template='{function_name}',
             LUA_name_impl_template='{LUA_prefix}{class_prefix}{underscore_name}',
 
@@ -216,10 +216,10 @@ class LibraryNode(AstNode):
                 'py{library}module.{PY_header_filename_suffix}'),
             PY_helper_filename_template=(
                 'py{library}helper.{PY_impl_filename_suffix}'),
-            PY_PyTypeObject_template='{PY_prefix}{cpp_class}_Type',
-            PY_PyObject_template='{PY_prefix}{cpp_class}',
+            PY_PyTypeObject_template='{PY_prefix}{cxx_class}_Type',
+            PY_PyObject_template='{PY_prefix}{cxx_class}',
             PY_type_filename_template=(
-                'py{cpp_class}type.{PY_impl_filename_suffix}'),
+                'py{cxx_class}type.{PY_impl_filename_suffix}'),
             PY_name_impl_template=(
                 '{PY_prefix}{class_prefix}{underscore_name}{function_suffix}'),
             )
@@ -249,8 +249,8 @@ class LibraryNode(AstNode):
         fmt_library.class_prefix = ''
 #        fmt_library.c_ptr = ''
 #        fmt_library.c_const = ''
-        fmt_library.CPP_this_call = ''
-        fmt_library.CPP_template = ''
+        fmt_library.CXX_this_call = ''
+        fmt_library.CXX_template = ''
         fmt_library.C_pre_call = ''
         fmt_library.C_post_call = ''
 
@@ -258,7 +258,7 @@ class LibraryNode(AstNode):
         fmt_library.C_result = 'SHT_rv'
         fmt_library.c_temp = 'SHT_'
 
-        fmt_library.CPP_this = 'SH_this'
+        fmt_library.CXX_this = 'SH_this'
 
         fmt_library.F_this = 'obj'
         fmt_library.F_result = 'SHT_rv'
@@ -320,7 +320,7 @@ class LibraryNode(AstNode):
             options=self.options,
         )
 
-        for key in [ 'classes', 'copyright', 'cpp_header',
+        for key in [ 'classes', 'copyright', 'cxx_header',
                      'functions', 'language', 'namespace' ]:
             value = getattr(self,key)
             if value:
@@ -332,7 +332,7 @@ class LibraryNode(AstNode):
 
 class ClassNode(AstNode):
     def __init__(self, name, parent,
-                 cpp_header='',
+                 cxx_header='',
                  namespace='',
                  options=None,
                  **kwargs):
@@ -340,7 +340,7 @@ class ClassNode(AstNode):
         """
         # From arguments
         self.name = name
-        self.cpp_header = cpp_header
+        self.cxx_header = cxx_header
         self.namespace = namespace
 
         self.functions = []
@@ -361,7 +361,7 @@ class ClassNode(AstNode):
 
         self._fmt = util.Options(parent._fmt)
         fmt_class = self._fmt
-        fmt_class.cpp_class = name
+        fmt_class.cxx_class = name
         fmt_class.class_lower = name.lower()
         fmt_class.class_upper = name.upper()
         self.eval_template('class_prefix')
@@ -387,7 +387,7 @@ class ClassNode(AstNode):
         """
         d = dict(
             _fmt = self._fmt,
-            cpp_header=self.cpp_header,
+            cxx_header=self.cxx_header,
             methods=self.functions,
             name=self.name,
             options=self.options,
@@ -410,7 +410,7 @@ class FunctionNode(AstNode):
     """
 
     - decl:
-      cpp_template:
+      cxx_template:
         ArgType:
         - int
         - double
@@ -435,7 +435,7 @@ class FunctionNode(AstNode):
     _generated       - who generated this function
     _PTR_F_C_index   - Used by fortran wrapper to find index of
                        C function to call
-    _PTR_C_CPP_index - Used by C wrapper to find index of C++ function
+    _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
                        to call
     _subprogram      - subroutine or function
 
@@ -453,10 +453,10 @@ class FunctionNode(AstNode):
         self.option_to_fmt()
 
         # working variables
-        self._CPP_return_templated = False
-        self._PTR_C_CPP_index = None
+        self._CXX_return_templated = False
+        self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
-        self._cpp_overload = None
+        self._cxx_overload = None
         self._default_funcs = []         #  generated default value functions  (unused?)
         self._function_index = None
         self._error_pattern_suffix = ''
@@ -484,7 +484,7 @@ class FunctionNode(AstNode):
             setattr(self, n, kwargs.get(n, None))
 
         self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
-        self.cpp_template = kwargs.get('cpp_template', {})
+        self.cxx_template = kwargs.get('cxx_template', {})
         self.doxygen = kwargs.get('doxygen', {})
         self.fortran_generic = kwargs.get('fortran_generic', {})
 
@@ -499,7 +499,7 @@ class FunctionNode(AstNode):
             cls_name = parent.name
         else:
             cls_name = None
-        template_types = self.cpp_template.keys()
+        template_types = self.cxx_template.keys()
 
         self.decl = decl
         ast = declast.check_decl(decl,
@@ -537,16 +537,16 @@ class FunctionNode(AstNode):
             decl=self.decl,
             options=self.options,
         )
-        for key in ['cpp_template', 'default_arg_suffix', 'docs', 'doxygen', 
+        for key in ['cxx_template', 'default_arg_suffix', 'docs', 'doxygen', 
                     'fortran_generic', 'return_this',
                     'C_code', 'C_error_pattern', 'C_name',
                     'C_post_call', 'C_post_call_buf', 
                     'C_return_code', 'C_return_type',
                     'F_C_name', 'F_code', 'F_name_function', 'F_name_generic', 'F_name_impl',
                     'PY_error_pattern',
-                    '_PTR_C_CPP_index', '_PTR_F_C_index',
-                    '_CPP_return_templated',
-                    '_cpp_overload', '_error_pattern_suffix',
+                    '_PTR_C_CXX_index', '_PTR_F_C_index',
+                    '_CXX_return_templated',
+                    '_cxx_overload', '_error_pattern_suffix',
                     '_decl', '_default_funcs', 
                     '_fmtargs', '_fmtresult',
                     '_generated', '_has_default_arg',
@@ -584,7 +584,7 @@ def clean_dictionary(dd):
     """YAML converts some blank fields to None,
     but we want blank.
     """
-    for key in ['cpp_header', 'namespace',
+    for key in ['cxx_header', 'namespace',
                 'function_suffix']:
         if key in dd and dd[key] is None:
             dd[key] = ''

@@ -56,7 +56,7 @@ format variables to describe the context.  These variables are
 c_var
     The C name of the argument.
 
-cpp_var
+cxx_var
     Name of the C++ variable.
 
 f_var
@@ -97,7 +97,7 @@ for wrappers::
     types:
       int:
         c_type: int 
-        cpp_type: int
+        cxx_type: int
         f_type: integer(C_INT)
         f_module:
           iso_c_binding:
@@ -129,7 +129,7 @@ The type map is defined as::
     types:
       bool:
         c_type: bool 
-        cpp_type: bool 
+        cxx_type: bool 
         f_type: logical 
         f_c_type: logical(C_BOOL) 
         f_module:
@@ -277,53 +277,53 @@ The type map::
     types:
         char:
             base: string
-            cpp_type: char
+            cxx_type: char
             c_type: char
             c_statements:
                 intent_in_buf:
                     buf_args:
                     - len_trim
-                    cpp_local_var: True
-                    cpp_header: <cstring>
+                    cxx_local_var: True
+                    cxx_header: <cstring>
                     pre_call:
-                      - char * {cpp_var} = new char [{c_var_trim} + 1];
-                      - std::strncpy({cpp_var}, {c_var}, {c_var_trim});
-                      - {cpp_var}[{c_var_trim}] = '\0';
+                      - char * {cxx_var} = new char [{c_var_trim} + 1];
+                      - std::strncpy({cxx_var}, {c_var}, {c_var_trim});
+                      - {cxx_var}[{c_var_trim}] = '\0';
                     post_call:
-                      -  delete [] {cpp_var};
+                      -  delete [] {cxx_var};
                 intent_out_buf:
                     buf_args:
                     - len
                     c_helper: ShroudStrCopy
-                    cpp_local_var: True
+                    cxx_local_var: True
                     pre_call:
-                      - char * {cpp_var} = new char [{c_var_len} + 1];
+                      - char * {cxx_var} = new char [{c_var_len} + 1];
                     post_call:
-                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
-                      - delete [] {cpp_var};
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
+                      - delete [] {cxx_var};
                 intent_inout_buf:
                     buf_args:
                     - len_trim
                     - len
                     c_helper: ShroudStrCopy
-                    cpp_local_var: True
-                    cpp_header: <cstring>
+                    cxx_local_var: True
+                    cxx_header: <cstring>
                     pre_call:
-                      - char * {cpp_var} = new char [{c_var_trim} + 1];
-                      - std::strncpy({cpp_var}, {c_var}, {c_var_trim});
-                      - {cpp_var}[{c_var_trim}] = '\0';
+                      - char * {cxx_var} = new char [{c_var_trim} + 1];
+                      - std::strncpy({cxx_var}, {c_var}, {c_var_trim});
+                      - {cxx_var}[{c_var_trim}] = '\0';
                     post_call:
-                      -  delete [] {cpp_var};
+                      -  delete [] {cxx_var};
                 result_buf:
                     buf_args:
                     - len
                     c_helper: ShroudStrCopy
-                    cpp_header: <cstring>
+                    cxx_header: <cstring>
                     post_call:
-                      - if ({cpp_var} == NULL) {{
+                      - if ({cxx_var} == NULL) {{
                       -   std::memset({c_var}, ' ', {c_var_len});
                       - }} else {{
-                      -   ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});
+                      -   ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});
                       - }}
 
             f_type: character(*)
@@ -458,58 +458,58 @@ additional sections to convert between ``char *`` and ``std::string``::
     types:
         string:
             base: string
-            cpp_type: std::string
-            cpp_header: <string>
-            cpp_to_c: {cpp_var}.c_str()
+            cxx_type: std::string
+            cxx_header: <string>
+            cxx_to_c: {cxx_var}.c_str()
             c_type: char
     
             c_statements:
                 intent_in:
-                    cpp_local_var: true
+                    cxx_local_var: true
                     pre_call:
-                      - {c_const}std::string {cpp_var}({c_var});
+                      - {c_const}std::string {cxx_var}({c_var});
                 intent_out:
-                    cpp_header: <cstring>
+                    cxx_header: <cstring>
                     post_call:
-                      - strcpy({c_var}, {cpp_val});
+                      - strcpy({c_var}, {cxx_val});
                 intent_inout:
-                    cpp_header: <cstring>
+                    cxx_header: <cstring>
                     pre_call:
-                      - {c_const}std::string {cpp_var}({c_var});
+                      - {c_const}std::string {cxx_var}({c_var});
                     post_call:
-                      - strcpy({c_var}, {cpp_val});
+                      - strcpy({c_var}, {cxx_val});
 
                 intent_in_buf:
                     buf_args:
                     - len_trim
-                    cpp_local_var: True
+                    cxx_local_var: True
                     pre_call:
-                      - {c_const}std::string {cpp_var}({c_var}, {c_var_trim});
+                      - {c_const}std::string {cxx_var}({c_var}, {c_var_trim});
                 intent_out_buf:
                     buf_args:
                     - len
                     pre_call:
-                      - {c_const}std::string {cpp_var};
+                      - {c_const}std::string {cxx_var};
                     post_call:
-                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
                 intent_inout_buf:
                     buf_args:
                     - len_trim
                     - len
-                    cpp_local_var: True
+                    cxx_local_var: True
                     pre_call:
-                      - std::string {cpp_var}({c_var}, {c_var_trim});
+                      - std::string {cxx_var}({c_var}, {c_var_trim});
                     post_call:
-                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
                 result_buf:
                     buf_args:
                     - len
-                    cpp_header: <cstring>
+                    cxx_header: <cstring>
                     post_call:
-                       - if ({cpp_var}.empty()) {{
+                       - if ({cxx_var}.empty()) {{
                        -   std::memset({c_var}, ' ', {c_var_len});
                        - }} else {{
-                       -   ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
+                       -   ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
                        - }}
     
             f_type: character(*)
@@ -792,7 +792,7 @@ how to use these routines::
 
     types:
         MPI_Comm:
-            cpp_type: MPI_Comm
+            cxx_type: MPI_Comm
             c_header: mpi.h
             c_type: MPI_Fint
             f_type: integer
@@ -800,7 +800,7 @@ how to use these routines::
             f_c_module:
                 iso_c_binding:
                   - C_INT
-            cpp_to_c: MPI_Comm_c2f({cpp_var})
+            cxx_to_c: MPI_Comm_c2f({cxx_var})
             c_to_cpp: MPI_Comm_f2c({c_var})
 
 
@@ -825,7 +825,7 @@ generated ``get_instance`` function to return the pointer which will
 be passed to C.
 
 In C an opaque typedef for a struct is created as the type for the C++
-instance pointer.  The *c_to_cpp* and *cpp_to_c* fields casts this
+instance pointer.  The *c_to_cpp* and *cxx_to_c* fields casts this
 pointer to C++ and back to C.
 
 The class example from the tutorial is::
@@ -839,9 +839,9 @@ Shroud will generate a type map for this class as::
       Class1:
         base: wrapped
         c_type: TUT_class1
-        cpp_type: Class1
+        cxx_type: Class1
         c_to_cpp: static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}))
-        cpp_to_c: static_cast<{c_const}TUT_class1 *>(static_cast<{c_const}void *>({cpp_var}))
+        cxx_to_c: static_cast<{c_const}TUT_class1 *>(static_cast<{c_const}void *>({cxx_var}))
 
         f_type: type(class1)
         f_derived_type: class1

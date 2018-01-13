@@ -44,7 +44,7 @@ copyright:
 #
 
 library: strings
-cpp_header: strings.hpp
+cxx_header: strings.hpp
 
 options:
   debug: True
@@ -220,12 +220,12 @@ functions:
 ########################################
 patterns:
     C_invalid_name: |
-        if ({cpp_var}.empty()) {{
+        if ({cxx_var}.empty()) {{
             return NULL;
         }}
     # return a blank field string if an error occurs
 #    C_invalid_name_as_buffer: |
-#        if ({cpp_var}.empty()) {{
+#        if ({cxx_var}.empty()) {{
 #            std::memset({c_var}, ' ', {c_var_len});
 #            return;
 #        }}

@@ -43,7 +43,7 @@ copyright:
 # Wrap a C library
 
 library: Clibrary
-cpp_header: clibrary.h
+cxx_header: clibrary.h
 
 language: c
 
@@ -57,13 +57,13 @@ options:
 types:
   TypeID:
     typedef  : int
-    cpp_type : TypeID
+    cxx_type : TypeID
 
   EnumTypeID:
     typedef  : int
-    cpp_type : EnumTypeID
+    cxx_type : EnumTypeID
     c_to_cpp : static_cast<EnumTypeID>({c_var})
-    cpp_to_c : static_cast<int>({cpp_var})
+    cxx_to_c : static_cast<int>({cxx_var})
 
 
 functions:
@@ -110,13 +110,13 @@ functions:
 ##-  function_suffix: _from_index
 ##-
 ##-- decl: void Function7(ArgType arg)
-##-  cpp_template:
+##-  cxx_template:
 ##-    ArgType:
 ##-    - int
 ##-    - double
 ##-
 ##-- decl: RetType Function8()
-##-  cpp_template:
+##-  cxx_template:
 ##-    RetType:
 ##-    - int
 ##-    - double
@@ -127,12 +127,12 @@ functions:
 ##-     - float
 ##-     - double
 ##-
-##-# test cpp_template, fortran_generic, overload
+##-# test cxx_template, fortran_generic, overload
 ##-#- decl: void Function10()
 ##-#- decl: void Function10(ArgType arg1, std::string &name, double arg2 = 0)
 ##-#  options:
 ##-#    F_string_len_trim: True
-##-#  cpp_template:
+##-#  cxx_template:
 ##-#    ArgType:
 ##-#    - int
 ##-#    - double
@@ -147,7 +147,7 @@ functions:
 ##-- decl: void Function10(const std::string &name, double arg2)
 ##-  options:
 ##-    F_string_len_trim: True
-##-#  cpp_template:
+##-#  cxx_template:
 ##-#    ArgType:
 ##-#    - int
 ##-#    - double

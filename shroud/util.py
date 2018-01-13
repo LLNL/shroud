@@ -51,8 +51,8 @@ fmt = string.Formatter()
 default_template = dict(
     # C_name='{C_prefix}{class_lower}_{underscore_name}{function_suffix}',
 
-    # C_header_filename = 'wrap{cpp_class}.h',
-    # C_impl_filename = 'wrap{cpp_class}.cpp',
+    # C_header_filename = 'wrap{cxx_class}.h',
+    # C_impl_filename = 'wrap{cxx_class}.cpp',
 
     # F_name_impl = '{class_lower}_{underscore_name}{function_suffix}',
     # F_name_function = '{underscore_name}{function_suffix}',

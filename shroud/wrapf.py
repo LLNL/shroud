@@ -206,7 +206,7 @@ class Wrapf(util.WrapperMixin):
         fmt_class.F_derived_name = typedef.f_derived_type
 
         # wrap methods
-        self._push_splicer(fmt_class.cpp_class)
+        self._push_splicer(fmt_class.cxx_class)
         self._create_splicer('module_use', self.use_stmts)
         self._push_splicer('method')
         for method in node.functions:
@@ -215,11 +215,11 @@ class Wrapf(util.WrapperMixin):
         self.write_object_get_set(node, fmt_class)
         self.impl.append('')
         self._create_splicer('additional_functions', self.impl)
-        self._pop_splicer(fmt_class.cpp_class)
+        self._pop_splicer(fmt_class.cxx_class)
 
         # type declaration
         self.f_type_decl.append('')
-        self._push_splicer(fmt_class.cpp_class)
+        self._push_splicer(fmt_class.cxx_class)
         self._create_splicer('module_top', self.f_type_decl)
         self.f_type_decl.extend([
                 '',
@@ -258,7 +258,7 @@ class Wrapf(util.WrapperMixin):
         self.c_interface.append('')
         self._create_splicer('additional_interfaces', self.c_interface)
 
-        self._pop_splicer(fmt_class.cpp_class)
+        self._pop_splicer(fmt_class.cxx_class)
 
         # overload operators
         self.overload_compare(
@@ -748,8 +748,8 @@ class Wrapf(util.WrapperMixin):
                 base_typedef = arg_typedef
                 if 'template' in c_attrs:
                     # If a template, use its type
-                    cpp_T = c_attrs['template']
-                    arg_typedef = typemap.Typedef.lookup(cpp_T)
+                    cxx_T = c_attrs['template']
+                    arg_typedef = typemap.Typedef.lookup(cxx_T)
 
                 f_statements = arg_typedef.f_statements
                 f_stmts = 'intent_' + intent
@@ -852,7 +852,7 @@ class Wrapf(util.WrapperMixin):
             # Add method to derived type
             if node._overloaded:
                 need_wrapper = True
-            if not node._CPP_return_templated:
+            if not node._CXX_return_templated:
                 # if return type is templated in C++,
                 # then do not set up generic since only the
                 # return type may be different (ex. getValue<T>())

@@ -56,7 +56,7 @@ The simplest item to wrap is a function in the file ``tutorial.hpp``::
 This is wrapped using a YAML input file ``tut.yaml``::
 
   library: Tutorial
-  cpp_header: tutorial.hpp
+  cxx_header: tutorial.hpp
   namespace: tutorial
 
   functions:
@@ -67,7 +67,7 @@ This is wrapped using a YAML input file ``tut.yaml``::
 .. The **options** mapping allows the user to give information to guide the wrapping.
 
 **library** is used to name output files and name the
-Fortran module.  **cpp_header** is the name of a C++ header file which
+Fortran module.  **cxx_header** is the name of a C++ header file which
 contains the declarations for functions to be wrapped.  **functions**
 is a sequence of mappings which describe the functions to wrap.
 
@@ -549,7 +549,7 @@ C++::
 YAML::
 
   - decl: void Function7(ArgType arg)
-    cpp_template:
+    cxx_template:
       ArgType:
         - int
         - double
@@ -592,7 +592,7 @@ C++::
 YAML::
 
   - decl: RetType Function8()
-    cpp_template:
+    cxx_template:
       RetType:
         - int
         - double
@@ -694,7 +694,7 @@ Shroud must be told about user defined types in the YAML file::
   types:
     TypeID:
       typedef  : int
-      cpp_type : TypeID
+      cxx_type : TypeID
 
 This will map the C++ type ``TypeID`` to the predefined type ``int``.
 The C wrapper will use ``int``::
@@ -733,9 +733,9 @@ describe how to convert between C and C++::
     types:
       EnumTypeID:
         typedef  : int
-        cpp_type : EnumTypeID
+        cxx_type : EnumTypeID
         c_to_cpp : static_cast<EnumTypeID>({c_var})
-        cpp_to_c : static_cast<int>({cpp_var})
+        cxx_to_c : static_cast<int>({cxx_var})
 
 The C argument is explicitly converted to a C++ type, then the
 return type is explicitly converted to a C type in the generated wrapper::

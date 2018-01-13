@@ -2,9 +2,9 @@
     "library": {
         "_fmt": {
             "BBB": "BBB", 
-            "CPP_template": "", 
-            "CPP_this": "SH_this", 
-            "CPP_this_call": "", 
+            "CXX_template": "", 
+            "CXX_this": "SH_this", 
+            "CXX_this_call": "", 
             "C_header_filename": "wrapstrings.h", 
             "C_header_filename_suffix": "h", 
             "C_impl_filename": "wrapstrings.cpp", 
@@ -98,7 +98,7 @@
             null, 
             "#######################################################################"
         ], 
-        "cpp_header": "strings.hpp", 
+        "cxx_header": "strings.hpp", 
         "functions": [
             {
                 "_ast": {
@@ -159,8 +159,8 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "status", 
-                            "cpp_type": "char", 
-                            "cpp_var": "status"
+                            "cxx_type": "char", 
+                            "cxx_var": "status"
                         }, 
                         "fmtf": {
                             "c_var": "status", 
@@ -170,8 +170,8 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "status", 
-                            "cpp_type": "char", 
-                            "cpp_var": "status", 
+                            "cxx_type": "char", 
+                            "cxx_var": "status", 
                             "py_var": "SH_Py_status"
                         }
                     }
@@ -226,8 +226,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "char SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "char SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 1, 
@@ -239,7 +239,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CPP_index": 1, 
+                "_PTR_C_CXX_index": 1, 
                 "_ast": {
                     "args": [
                         {
@@ -296,9 +296,9 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SHT_rv", 
-                            "cpp_var": "SHT_rv"
+                            "cxx_type": "char", 
+                            "cxx_val": "SHT_rv", 
+                            "cxx_var": "SHT_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -308,8 +308,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "char SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "char SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 21, 
@@ -410,8 +410,8 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "dest", 
-                            "cpp_type": "char", 
-                            "cpp_var": "dest"
+                            "cxx_type": "char", 
+                            "cxx_var": "dest"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -419,8 +419,8 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "dest", 
-                            "cpp_type": "char", 
-                            "cpp_var": "dest", 
+                            "cxx_type": "char", 
+                            "cxx_var": "dest", 
                             "py_var": "SH_Py_dest"
                         }
                     }, 
@@ -429,15 +429,15 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "src", 
-                            "cpp_type": "char", 
-                            "cpp_var": "src"
+                            "cxx_type": "char", 
+                            "cxx_var": "src"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "src", 
-                            "cpp_type": "char", 
-                            "cpp_var": "src", 
+                            "cxx_type": "char", 
+                            "cxx_var": "src", 
                             "py_var": "SH_Py_src"
                         }
                     }
@@ -452,7 +452,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CPP_index": 2, 
+                "_PTR_C_CXX_index": 2, 
                 "_ast": {
                     "args": [
                         {
@@ -530,9 +530,9 @@
                             "c_ptr": " *", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SH_dest", 
-                            "cpp_var": "SH_dest"
+                            "cxx_type": "char", 
+                            "cxx_val": "SH_dest", 
+                            "cxx_var": "SH_dest"
                         }, 
                         "fmtf": {
                             "c_var": "dest", 
@@ -545,9 +545,9 @@
                             "c_ptr": " *", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SH_src", 
-                            "cpp_var": "SH_src"
+                            "cxx_type": "char", 
+                            "cxx_val": "SH_src", 
+                            "cxx_var": "SH_src"
                         }, 
                         "fmtf": {
                             "c_var": "src", 
@@ -635,8 +635,8 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "s", 
-                            "cpp_type": "char", 
-                            "cpp_var": "s"
+                            "cxx_type": "char", 
+                            "cxx_var": "s"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -644,8 +644,8 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "s", 
-                            "cpp_type": "char", 
-                            "cpp_var": "s", 
+                            "cxx_type": "char", 
+                            "cxx_var": "s", 
                             "py_var": "SH_Py_s"
                         }
                     }
@@ -659,7 +659,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CPP_index": 3, 
+                "_PTR_C_CXX_index": 3, 
                 "_ast": {
                     "args": [
                         {
@@ -719,9 +719,9 @@
                             "c_var": "s", 
                             "c_var_len": "Ns", 
                             "c_var_trim": "Ls", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SH_s", 
-                            "cpp_var": "SH_s"
+                            "cxx_type": "char", 
+                            "cxx_val": "SH_s", 
+                            "cxx_var": "SH_s"
                         }, 
                         "fmtf": {
                             "c_var": "s", 
@@ -792,8 +792,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const char * SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const char * SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 4, 
@@ -805,7 +805,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CPP_index": 4, 
+                "_PTR_C_CXX_index": 4, 
                 "_ast": {
                     "args": [
                         {
@@ -864,16 +864,16 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SHT_rv", 
-                            "cpp_var": "SHT_rv"
+                            "cxx_type": "char", 
+                            "cxx_val": "SHT_rv", 
+                            "cxx_var": "SHT_rv"
                         }
                     }
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const char * SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const char * SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 24, 
@@ -940,8 +940,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const char * SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const char * SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 5, 
@@ -953,7 +953,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CPP_index": 5, 
+                "_PTR_C_CXX_index": 5, 
                 "_ast": {
                     "args": [
                         {
@@ -1012,9 +1012,9 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SHT_rv", 
-                            "cpp_var": "SHT_rv"
+                            "cxx_type": "char", 
+                            "cxx_val": "SHT_rv", 
+                            "cxx_var": "SHT_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -1024,8 +1024,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const char * SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const char * SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 25, 
@@ -1079,8 +1079,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const char * SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const char * SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 6, 
@@ -1095,7 +1095,7 @@
                 }
             }, 
             {
-                "_PTR_C_CPP_index": 6, 
+                "_PTR_C_CXX_index": 6, 
                 "_ast": {
                     "args": [
                         {
@@ -1152,9 +1152,9 @@
                             "c_ptr": " *", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SHT_rv", 
-                            "cpp_var": "SHT_rv"
+                            "cxx_type": "char", 
+                            "cxx_val": "SHT_rv", 
+                            "cxx_var": "SHT_rv"
                         }, 
                         "fmtf": {
                             "c_var": "output", 
@@ -1164,8 +1164,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const char * SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const char * SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 26, 
@@ -1183,7 +1183,7 @@
                 }
             }, 
             {
-                "_PTR_C_CPP_index": 6, 
+                "_PTR_C_CXX_index": 6, 
                 "_PTR_F_C_index": 26, 
                 "_ast": {
                     "args": [
@@ -1300,8 +1300,8 @@
                         "c_rv_decl": "const char * XSHT_rv", 
                         "c_val": "SHT_rv.c_str()", 
                         "c_var": "XSHT_rv", 
-                        "cpp_rv_decl": "const std::string & SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 7, 
@@ -1313,7 +1313,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CPP_index": 7, 
+                "_PTR_C_CXX_index": 7, 
                 "_ast": {
                     "args": [
                         {
@@ -1372,16 +1372,16 @@
                             "c_ptr": "", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SHT_rv.c_str()", 
-                            "cpp_var": "SHT_rv"
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SHT_rv.c_str()", 
+                            "cxx_var": "SHT_rv"
                         }
                     }
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const std::string & SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 28, 
@@ -1453,8 +1453,8 @@
                         "c_rv_decl": "const char * XSHT_rv", 
                         "c_val": "SHT_rv.c_str()", 
                         "c_var": "XSHT_rv", 
-                        "cpp_rv_decl": "const std::string & SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 8, 
@@ -1467,7 +1467,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_C_CPP_index": 8, 
+                "_PTR_C_CXX_index": 8, 
                 "_ast": {
                     "args": [
                         {
@@ -1526,9 +1526,9 @@
                             "c_ptr": "", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SHT_rv.c_str()", 
-                            "cpp_var": "SHT_rv"
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SHT_rv.c_str()", 
+                            "cxx_var": "SHT_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -1538,8 +1538,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const std::string & SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 29, 
@@ -1598,8 +1598,8 @@
                         "c_rv_decl": "const char * XSHT_rv", 
                         "c_val": "SHT_rv.c_str()", 
                         "c_var": "XSHT_rv", 
-                        "cpp_rv_decl": "const std::string & SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 9, 
@@ -1615,7 +1615,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_C_CPP_index": 9, 
+                "_PTR_C_CXX_index": 9, 
                 "_ast": {
                     "args": [
                         {
@@ -1672,9 +1672,9 @@
                             "c_ptr": "", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SHT_rv.c_str()", 
-                            "cpp_var": "SHT_rv"
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SHT_rv.c_str()", 
+                            "cxx_var": "SHT_rv"
                         }, 
                         "fmtf": {
                             "c_var": "output", 
@@ -1684,8 +1684,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const std::string & SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 30, 
@@ -1704,7 +1704,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_C_CPP_index": 9, 
+                "_PTR_C_CXX_index": 9, 
                 "_PTR_F_C_index": 30, 
                 "_ast": {
                     "args": [
@@ -1824,8 +1824,8 @@
                         "c_rv_decl": "const char * XSHT_rv", 
                         "c_val": "SHT_rv.c_str()", 
                         "c_var": "XSHT_rv", 
-                        "cpp_rv_decl": "const std::string & SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 10, 
@@ -1838,7 +1838,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_C_CPP_index": 10, 
+                "_PTR_C_CXX_index": 10, 
                 "_ast": {
                     "args": [
                         {
@@ -1897,9 +1897,9 @@
                             "c_ptr": "", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SHT_rv.c_str()", 
-                            "cpp_var": "SHT_rv"
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SHT_rv.c_str()", 
+                            "cxx_var": "SHT_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -1909,8 +1909,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const std::string & SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 32, 
@@ -1975,7 +1975,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_C_CPP_index": 11, 
+                "_PTR_C_CXX_index": 11, 
                 "_ast": {
                     "args": [
                         {
@@ -2034,9 +2034,9 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SHT_rv.c_str()", 
-                            "cpp_var": "SHT_rv"
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SHT_rv.c_str()", 
+                            "cxx_var": "SHT_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -2046,8 +2046,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const std::string SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 33, 
@@ -2101,7 +2101,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_C_CPP_index": 12, 
+                "_PTR_C_CXX_index": 12, 
                 "_ast": {
                     "args": [
                         {
@@ -2158,9 +2158,9 @@
                             "c_ptr": " *", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SHT_rv.c_str()", 
-                            "cpp_var": "SHT_rv"
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SHT_rv.c_str()", 
+                            "cxx_var": "SHT_rv"
                         }, 
                         "fmtf": {
                             "c_var": "output", 
@@ -2170,8 +2170,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "const std::string SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 34, 
@@ -2190,7 +2190,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_C_CPP_index": 12, 
+                "_PTR_C_CXX_index": 12, 
                 "_PTR_F_C_index": 34, 
                 "_ast": {
                     "args": [
@@ -2321,15 +2321,15 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg1"
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_arg1"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg1", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_arg1", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
@@ -2344,7 +2344,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CPP_index": 13, 
+                "_PTR_C_CXX_index": 13, 
                 "_ast": {
                     "args": [
                         {
@@ -2401,8 +2401,8 @@
                             "c_ptr": "", 
                             "c_var": "arg1", 
                             "c_var_trim": "Larg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg1"
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_arg1"
                         }, 
                         "fmtf": {
                             "c_var": "arg1", 
@@ -2492,9 +2492,9 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SH_arg1.c_str()", 
-                            "cpp_var": "SH_arg1"
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SH_arg1.c_str()", 
+                            "cxx_var": "SH_arg1"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -2502,8 +2502,8 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1.c_str()", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "arg1", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "arg1", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
@@ -2518,7 +2518,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CPP_index": 14, 
+                "_PTR_C_CXX_index": 14, 
                 "_ast": {
                     "args": [
                         {
@@ -2576,9 +2576,9 @@
                             "c_ptr": "", 
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SH_arg1.c_str()", 
-                            "cpp_var": "SH_arg1"
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SH_arg1.c_str()", 
+                            "cxx_var": "SH_arg1"
                         }, 
                         "fmtf": {
                             "c_var": "arg1", 
@@ -2668,9 +2668,9 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SH_arg1.c_str()", 
-                            "cpp_var": "SH_arg1"
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SH_arg1.c_str()", 
+                            "cxx_var": "SH_arg1"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -2678,8 +2678,8 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "SH_arg1.c_str()", 
-                            "cpp_type": "std::string", 
-                            "cpp_var": "SH_arg1", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_arg1", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
@@ -2694,7 +2694,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CPP_index": 15, 
+                "_PTR_C_CXX_index": 15, 
                 "_ast": {
                     "args": [
                         {
@@ -2754,9 +2754,9 @@
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "c_var_trim": "Larg1", 
-                            "cpp_type": "std::string", 
-                            "cpp_val": "SH_arg1.c_str()", 
-                            "cpp_var": "SH_arg1"
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SH_arg1.c_str()", 
+                            "cxx_var": "SH_arg1"
                         }, 
                         "fmtf": {
                             "c_var": "arg1", 
@@ -2845,15 +2845,15 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "name", 
-                            "cpp_type": "char", 
-                            "cpp_var": "name"
+                            "cxx_type": "char", 
+                            "cxx_var": "name"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "name", 
-                            "cpp_type": "char", 
-                            "cpp_var": "name", 
+                            "cxx_type": "char", 
+                            "cxx_var": "name", 
                             "py_var": "SH_Py_name"
                         }
                     }
@@ -2866,7 +2866,7 @@
                 }
             }, 
             {
-                "_PTR_C_CPP_index": 16, 
+                "_PTR_C_CXX_index": 16, 
                 "_ast": {
                     "args": [
                         {
@@ -2924,9 +2924,9 @@
                             "c_ptr": " *", 
                             "c_var": "name", 
                             "c_var_trim": "AAlen", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SH_name", 
-                            "cpp_var": "SH_name"
+                            "cxx_type": "char", 
+                            "cxx_val": "SH_name", 
+                            "cxx_var": "SH_name"
                         }, 
                         "fmtf": {
                             "c_var": "name", 
@@ -3011,8 +3011,8 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "name", 
-                            "cpp_type": "char", 
-                            "cpp_var": "name"
+                            "cxx_type": "char", 
+                            "cxx_var": "name"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -3020,8 +3020,8 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "name", 
-                            "cpp_type": "char", 
-                            "cpp_var": "name", 
+                            "cxx_type": "char", 
+                            "cxx_var": "name", 
                             "py_var": "SH_Py_name"
                         }
                     }
@@ -3032,7 +3032,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CPP_index": 17, 
+                "_PTR_C_CXX_index": 17, 
                 "_ast": {
                     "args": [
                         {
@@ -3090,9 +3090,9 @@
                             "c_ptr": " *", 
                             "c_var": "name", 
                             "c_var_len": "AAtrim", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SH_name", 
-                            "cpp_var": "SH_name"
+                            "cxx_type": "char", 
+                            "cxx_val": "SH_name", 
+                            "cxx_var": "SH_name"
                         }, 
                         "fmtf": {
                             "c_var": "name", 
@@ -3170,8 +3170,8 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "status", 
-                            "cpp_type": "char", 
-                            "cpp_var": "status"
+                            "cxx_type": "char", 
+                            "cxx_var": "status"
                         }, 
                         "fmtf": {
                             "c_var": "status", 
@@ -3181,8 +3181,8 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "status", 
-                            "cpp_type": "char", 
-                            "cpp_var": "status", 
+                            "cxx_type": "char", 
+                            "cxx_var": "status", 
                             "py_var": "SH_Py_status"
                         }
                     }
@@ -3239,8 +3239,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "char SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "char SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 19, 
@@ -3254,7 +3254,7 @@
                 }
             }, 
             {
-                "_PTR_C_CPP_index": 19, 
+                "_PTR_C_CXX_index": 19, 
                 "_ast": {
                     "args": [
                         {
@@ -3311,9 +3311,9 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SHT_rv", 
-                            "cpp_var": "SHT_rv"
+                            "cxx_type": "char", 
+                            "cxx_val": "SHT_rv", 
+                            "cxx_var": "SHT_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -3323,8 +3323,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "cpp_rv_decl": "char SHT_rv", 
-                        "cpp_var": "SHT_rv"
+                        "cxx_rv_decl": "char SHT_rv", 
+                        "cxx_var": "SHT_rv"
                     }
                 }, 
                 "_function_index": 41, 
@@ -3425,8 +3425,8 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "dest", 
-                            "cpp_type": "char", 
-                            "cpp_var": "dest"
+                            "cxx_type": "char", 
+                            "cxx_var": "dest"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -3434,8 +3434,8 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "dest", 
-                            "cpp_type": "char", 
-                            "cpp_var": "dest", 
+                            "cxx_type": "char", 
+                            "cxx_var": "dest", 
                             "py_var": "SH_Py_dest"
                         }
                     }, 
@@ -3444,15 +3444,15 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "src", 
-                            "cpp_type": "char", 
-                            "cpp_var": "src"
+                            "cxx_type": "char", 
+                            "cxx_var": "src"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "src", 
-                            "cpp_type": "char", 
-                            "cpp_var": "src", 
+                            "cxx_type": "char", 
+                            "cxx_var": "src", 
                             "py_var": "SH_Py_src"
                         }
                     }
@@ -3469,7 +3469,7 @@
                 }
             }, 
             {
-                "_PTR_C_CPP_index": 20, 
+                "_PTR_C_CXX_index": 20, 
                 "_ast": {
                     "args": [
                         {
@@ -3547,9 +3547,9 @@
                             "c_ptr": " *", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SH_dest", 
-                            "cpp_var": "SH_dest"
+                            "cxx_type": "char", 
+                            "cxx_val": "SH_dest", 
+                            "cxx_var": "SH_dest"
                         }, 
                         "fmtf": {
                             "c_var": "dest", 
@@ -3562,9 +3562,9 @@
                             "c_ptr": " *", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
-                            "cpp_type": "char", 
-                            "cpp_val": "SH_src", 
-                            "cpp_var": "SH_src"
+                            "cxx_type": "char", 
+                            "cxx_val": "SH_src", 
+                            "cxx_var": "SH_src"
                         }, 
                         "fmtf": {
                             "c_var": "src", 
@@ -3591,9 +3591,9 @@
         "language": "c++", 
         "options": {
             "C_bufferify_suffix": "_bufferify", 
-            "C_header_filename_class_template": "wrap{cpp_class}.{C_header_filename_suffix}", 
+            "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
-            "C_impl_filename_class_template": "wrap{cpp_class}.{C_impl_filename_suffix}", 
+            "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "C_var_len_template": "N{c_var}", 
@@ -3602,7 +3602,7 @@
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "F_C_prefix": "c_", 
             "F_force_wrapper": false, 
-            "F_impl_filename_class_template": "wrapf{cpp_class}.{F_filename_suffix}", 
+            "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 
             "F_module_name_class_template": "{class_lower}_mod", 
             "F_module_name_library_template": "{library_lower}_mod", 
@@ -3614,24 +3614,24 @@
             "F_name_instance_get": "get_instance", 
             "F_name_instance_set": "set_instance", 
             "F_string_len_trim": true, 
-            "LUA_class_reg_template": "{LUA_prefix}{cpp_class}_Reg", 
-            "LUA_ctor_name_template": "{cpp_class}", 
+            "LUA_class_reg_template": "{LUA_prefix}{cxx_class}_Reg", 
+            "LUA_ctor_name_template": "{cxx_class}", 
             "LUA_header_filename_template": "lua{library}module.{LUA_header_filename_suffix}", 
-            "LUA_metadata_template": "{cpp_class}.metatable", 
+            "LUA_metadata_template": "{cxx_class}.metatable", 
             "LUA_module_filename_template": "lua{library}module.{LUA_impl_filename_suffix}", 
             "LUA_module_name_template": "{library_lower}", 
             "LUA_module_reg_template": "{LUA_prefix}{library}_Reg", 
             "LUA_name_impl_template": "{LUA_prefix}{class_prefix}{underscore_name}", 
             "LUA_name_template": "{function_name}", 
             "LUA_userdata_member_template": "self", 
-            "LUA_userdata_type_template": "{LUA_prefix}{cpp_class}_Type", 
-            "PY_PyObject_template": "{PY_prefix}{cpp_class}", 
-            "PY_PyTypeObject_template": "{PY_prefix}{cpp_class}_Type", 
+            "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type", 
+            "PY_PyObject_template": "{PY_prefix}{cxx_class}", 
+            "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type", 
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}", 
             "PY_helper_filename_template": "py{library}helper.{PY_impl_filename_suffix}", 
             "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}", 
             "PY_name_impl_template": "{PY_prefix}{class_prefix}{underscore_name}{function_suffix}", 
-            "PY_type_filename_template": "py{cpp_class}type.{PY_impl_filename_suffix}", 
+            "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
@@ -3657,8 +3657,8 @@
             "c_header": "mpi.h", 
             "c_to_cpp": "MPI_Comm_f2c({c_var})", 
             "c_type": "MPI_Fint", 
-            "cpp_to_c": "MPI_Comm_c2f({cpp_var})", 
-            "cpp_type": "MPI_Comm", 
+            "cxx_to_c": "MPI_Comm_c2f({cxx_var})", 
+            "cxx_type": "MPI_Comm", 
             "f_c_module": {
                 "iso_c_binding": [
                     "C_INT"
@@ -3674,7 +3674,7 @@
             "PY_PyTypeObject": "PyBool_Type", 
             "PY_ctor": "PyBool_FromLong({c_var})", 
             "c_type": "bool", 
-            "cpp_type": "bool", 
+            "cxx_type": "bool", 
             "f_c_type": "logical(C_BOOL)", 
             "f_module": {
                 "iso_c_binding": [
@@ -3711,7 +3711,7 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cpp_var} = PyObject_IsTrue({py_var});"
+                        "{cxx_var} = PyObject_IsTrue({py_var});"
                     ]
                 }
             }
@@ -3729,15 +3729,15 @@
                         "len_trim"
                     ], 
                     "c_header": "<stdlib.h> <string.h>", 
-                    "cpp_header": "<stdlib.h> <cstring>", 
-                    "cpp_local_var": true, 
+                    "cxx_header": "<stdlib.h> <cstring>", 
+                    "cxx_local_var": true, 
                     "post_call": [
-                        "free({cpp_var});"
+                        "free({cxx_var});"
                     ], 
                     "pre_call": [
-                        "char * {cpp_var} = (char *) malloc({c_var_trim} + 1);", 
-                        "{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});", 
-                        "{cpp_var}[{c_var_trim}] = '\\0';"
+                        "char * {cxx_var} = (char *) malloc({c_var_trim} + 1);", 
+                        "{stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});", 
+                        "{cxx_var}[{c_var_trim}] = '\\0';"
                     ]
                 }, 
                 "intent_inout_buf": {
@@ -3747,16 +3747,16 @@
                     ], 
                     "c_header": "<stdlib.h> <string.h>", 
                     "c_helper": "ShroudStrCopy", 
-                    "cpp_header": "<stdlib.h> <cstring>", 
-                    "cpp_local_var": true, 
+                    "cxx_header": "<stdlib.h> <cstring>", 
+                    "cxx_local_var": true, 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "free({cpp_var});"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
+                        "free({cxx_var});"
                     ], 
                     "pre_call": [
-                        "char * {cpp_var} = (char *) malloc({c_var_len} + 1);", 
-                        "{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});", 
-                        "{cpp_var}[{c_var_trim}] = '\\0';"
+                        "char * {cxx_var} = (char *) malloc({c_var_len} + 1);", 
+                        "{stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});", 
+                        "{cxx_var}[{c_var_trim}] = '\\0';"
                     ]
                 }, 
                 "intent_out_buf": {
@@ -3765,14 +3765,14 @@
                     ], 
                     "c_header": "<stdlib.h>", 
                     "c_helper": "ShroudStrCopy", 
-                    "cpp_header": "<stdlib.h>", 
-                    "cpp_local_var": true, 
+                    "cxx_header": "<stdlib.h>", 
+                    "cxx_local_var": true, 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
-                        "free({cpp_var});"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
+                        "free({cxx_var});"
                     ], 
                     "pre_call": [
-                        "char * {cpp_var} = (char *) malloc({c_var_len} + 1);"
+                        "char * {cxx_var} = (char *) malloc({c_var_len} + 1);"
                     ]
                 }, 
                 "result_buf": {
@@ -3781,18 +3781,18 @@
                     ], 
                     "c_header": "<string.h>", 
                     "c_helper": "ShroudStrCopy", 
-                    "cpp_header": "<cstring>", 
+                    "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cpp_var} == NULL) {{", 
+                        "if ({cxx_var} == NULL) {{", 
                         "  {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});", 
+                        "  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});", 
                         "}}"
                     ]
                 }
             }, 
             "c_type": "char", 
-            "cpp_type": "char", 
+            "cxx_type": "char", 
             "f_c_module": {
                 "iso_c_binding": [
                     "C_CHAR"
@@ -3822,15 +3822,15 @@
                         "len"
                     ], 
                     "c_header": "<string.h>", 
-                    "cpp_header": "<cstring>", 
+                    "cxx_header": "<cstring>", 
                     "post_call": [
                         "{stdlib}memset({c_var}, ' ', {c_var_len});", 
-                        "{c_var}[0] = {cpp_var};"
+                        "{c_var}[0] = {cxx_var};"
                     ]
                 }
             }, 
             "c_type": "char", 
-            "cpp_type": "char", 
+            "cxx_type": "char", 
             "f_c_module": {
                 "iso_c_binding": [
                     "C_CHAR"
@@ -3845,7 +3845,7 @@
             "LUA_type": "LUA_TNUMBER", 
             "PY_format": "d", 
             "c_type": "double", 
-            "cpp_type": "double", 
+            "cxx_type": "double", 
             "f_cast": "real({f_var}, C_DOUBLE)", 
             "f_module": {
                 "iso_c_binding": [
@@ -3860,7 +3860,7 @@
             "LUA_type": "LUA_TNUMBER", 
             "PY_format": "f", 
             "c_type": "float", 
-            "cpp_type": "float", 
+            "cxx_type": "float", 
             "f_cast": "real({f_var}, C_FLOAT)", 
             "f_module": {
                 "iso_c_binding": [
@@ -3875,7 +3875,7 @@
             "LUA_type": "LUA_TNUMBER", 
             "PY_format": "i", 
             "c_type": "int", 
-            "cpp_type": "int", 
+            "cxx_type": "int", 
             "f_cast": "int({f_var}, C_INT)", 
             "f_module": {
                 "iso_c_binding": [
@@ -3890,7 +3890,7 @@
             "LUA_type": "LUA_TNUMBER", 
             "PY_format": "l", 
             "c_type": "long", 
-            "cpp_type": "long", 
+            "cxx_type": "long", 
             "f_cast": "int({f_var}, C_LONG)", 
             "f_module": {
                 "iso_c_binding": [
@@ -3905,7 +3905,7 @@
             "LUA_type": "LUA_TNUMBER", 
             "PY_format": "L", 
             "c_type": "long long", 
-            "cpp_type": "long long", 
+            "cxx_type": "long long", 
             "f_cast": "int({f_var}, C_LONG_LONG)", 
             "f_module": {
                 "iso_c_binding": [
@@ -3921,7 +3921,7 @@
             "PY_ctor": "PyInt_FromLong({c_var})", 
             "c_header": "stdlib.h", 
             "c_type": "size_t", 
-            "cpp_type": "size_t", 
+            "cxx_type": "size_t", 
             "f_cast": "int({f_var}, C_SIZE_T)", 
             "f_module": {
                 "iso_c_binding": [
@@ -3939,28 +3939,28 @@
             "base": "string", 
             "c_statements": {
                 "intent_in": {
-                    "cpp_local_var": true, 
+                    "cxx_local_var": true, 
                     "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var});"
+                        "{c_const}std::string {cxx_var}({c_var});"
                     ]
                 }, 
                 "intent_in_buf": {
                     "buf_args": [
                         "len_trim"
                     ], 
-                    "cpp_local_var": true, 
+                    "cxx_local_var": true, 
                     "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var}, {c_var_trim});"
+                        "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});"
                     ]
                 }, 
                 "intent_inout": {
-                    "cpp_header": "<cstring>", 
-                    "cpp_local_var": true, 
+                    "cxx_header": "<cstring>", 
+                    "cxx_local_var": true, 
                     "post_call": [
-                        "strcpy({c_var}, {cpp_val});"
+                        "strcpy({c_var}, {cxx_val});"
                     ], 
                     "pre_call": [
-                        "{c_const}std::string {cpp_var}({c_var});"
+                        "{c_const}std::string {cxx_var}({c_var});"
                     ]
                 }, 
                 "intent_inout_buf": {
@@ -3969,22 +3969,22 @@
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
-                    "cpp_local_var": true, 
+                    "cxx_local_var": true, 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});"
                     ], 
                     "pre_call": [
-                        "std::string {cpp_var}({c_var}, {c_var_trim});"
+                        "std::string {cxx_var}({c_var}, {c_var_trim});"
                     ]
                 }, 
                 "intent_out": {
-                    "cpp_header": "<cstring>", 
-                    "cpp_local_var": true, 
+                    "cxx_header": "<cstring>", 
+                    "cxx_local_var": true, 
                     "post_call": [
-                        "strcpy({c_var}, {cpp_val});"
+                        "strcpy({c_var}, {cxx_val});"
                     ], 
                     "pre_call": [
-                        "{c_const}std::string {cpp_var};"
+                        "{c_const}std::string {cxx_var};"
                     ]
                 }, 
                 "intent_out_buf": {
@@ -3992,12 +3992,12 @@
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
-                    "cpp_local_var": true, 
+                    "cxx_local_var": true, 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});"
                     ], 
                     "pre_call": [
-                        "std::string {cpp_var};"
+                        "std::string {cxx_var};"
                     ]
                 }, 
                 "result_buf": {
@@ -4005,20 +4005,20 @@
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
-                    "cpp_header": "<cstring>", 
+                    "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cpp_var}.empty()) {{", 
+                        "if ({cxx_var}.empty()) {{", 
                         "  {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});", 
+                        "  ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
                         "}}"
                     ]
                 }
             }, 
             "c_type": "char", 
-            "cpp_header": "<string>", 
-            "cpp_to_c": "{cpp_var}.c_str()", 
-            "cpp_type": "std::string", 
+            "cxx_header": "<string>", 
+            "cxx_to_c": "{cxx_var}.c_str()", 
+            "cxx_type": "std::string", 
             "f_c_module": {
                 "iso_c_binding": [
                     "C_CHAR"
@@ -4037,9 +4037,9 @@
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
-                    "cpp_local_var": true, 
+                    "cxx_local_var": true, 
                     "post_parse": [
-                        "{c_const}std::string {cpp_var}({c_var});"
+                        "{c_const}std::string {cxx_var}({c_var});"
                     ]
                 }
             }
@@ -4051,49 +4051,49 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cpp_local_var": true, 
+                    "cxx_local_var": true, 
                     "pre_call": [
-                        "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
+                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
                 "intent_inout_buf": {
                     "buf_args": [
                         "size"
                     ], 
-                    "cpp_local_var": true, 
+                    "cxx_local_var": true, 
                     "post_call": [
                         "{{", 
-                        "  std::vector<{cpp_T}>::size_type", 
+                        "  std::vector<{cxx_T}>::size_type", 
                         "    {c_temp}i = 0,", 
                         "    {c_temp}n = {c_var_size};", 
-                        "  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);", 
+                        "  {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
                         "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                        "      {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];", 
+                        "      {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
                         "  }}", 
                         "}}"
                     ], 
                     "pre_call": [
-                        "std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});"
+                        "std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
                         "size"
                     ], 
-                    "cpp_local_var": true, 
+                    "cxx_local_var": true, 
                     "post_call": [
                         "{{", 
-                        "  std::vector<{cpp_T}>::size_type", 
+                        "  std::vector<{cxx_T}>::size_type", 
                         "    {c_temp}i = 0,", 
                         "    {c_temp}n = {c_var_size};", 
-                        "  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);", 
+                        "  {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
                         "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                        "    {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];", 
+                        "    {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
                         "  }}", 
                         "}}"
                     ], 
                     "pre_call": [
-                        "{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});"
+                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var_size});"
                     ]
                 }
             }, 
@@ -4105,16 +4105,16 @@
                             "len"
                         ], 
                         "c_helper": "ShroudLenTrim", 
-                        "cpp_local_var": true, 
+                        "cxx_local_var": true, 
                         "pre_call": [
-                            "std::vector<{cpp_T}> {cpp_var};", 
+                            "std::vector<{cxx_T}> {cxx_var};", 
                             "{{", 
                             "  {c_const}char * BBB = {c_var};", 
-                            "  std::vector<{cpp_T}>::size_type", 
+                            "  std::vector<{cxx_T}>::size_type", 
                             "    {c_temp}i = 0,", 
                             "    {c_temp}n = {c_var_size};", 
                             "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                            "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
+                            "    {cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
                             "}}"
@@ -4125,29 +4125,29 @@
                             "size", 
                             "len"
                         ], 
-                        "cpp_local_var": true, 
+                        "cxx_local_var": true, 
                         "post_call": [
                             "{{", 
                             "  char * BBB = {c_var};", 
-                            "  std::vector<{cpp_T}>::size_type", 
+                            "  std::vector<{cxx_T}>::size_type", 
                             "    {c_temp}i = 0,", 
                             "    {c_temp}n = {c_var_size};", 
-                            "  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);", 
+                            "  {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);", 
                             "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());", 
+                            "    ShroudStrCopy(BBB, {c_var_len}, {cxx_var}[{c_temp}i].c_str());", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
                             "}}"
                         ], 
                         "pre_call": [
-                            "std::vector<{cpp_T}> {cpp_var};", 
+                            "std::vector<{cxx_T}> {cxx_var};", 
                             "{{", 
                             "  {c_const}char * BBB = {c_var};", 
-                            "  std::vector<{cpp_T}>::size_type", 
+                            "  std::vector<{cxx_T}>::size_type", 
                             "    {c_temp}i = 0,", 
                             "    {c_temp}n = {c_var_size};", 
                             "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                            "    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
+                            "    {cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
                             "}}"
@@ -4159,33 +4159,33 @@
                             "len"
                         ], 
                         "c_helper": "ShroudLenTrim", 
-                        "cpp_local_var": true, 
+                        "cxx_local_var": true, 
                         "post_call": [
                             "{{", 
                             "  char * BBB = {c_var};", 
-                            "  std::vector<{cpp_T}>::size_type", 
+                            "  std::vector<{cxx_T}>::size_type", 
                             "    {c_temp}i = 0,", 
                             "    {c_temp}n = {c_var_size};", 
-                            "  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);", 
+                            "  {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);", 
                             "  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                            "    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());", 
+                            "    ShroudStrCopy(BBB, {c_var_len}, {cxx_var}[{c_temp}i].c_str());", 
                             "    BBB += {c_var_len};", 
                             "  }}", 
                             "}}"
                         ], 
                         "pre_call": [
-                            "{c_const}std::vector<{cpp_T}> {cpp_var};"
+                            "{c_const}std::vector<{cxx_T}> {cxx_var};"
                         ]
                     }
                 }
             }, 
-            "cpp_header": "<vector>", 
-            "cpp_type": "std::vector<{cpp_T}>"
+            "cxx_header": "<vector>", 
+            "cxx_type": "std::vector<{cxx_T}>"
         }, 
         "void": {
-            "PY_ctor": "PyCapsule_New({cpp_var}, NULL, NULL)", 
+            "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 
             "c_type": "void", 
-            "cpp_type": "void", 
+            "cxx_type": "void", 
             "f_module": {
                 "iso_c_binding": [
                     "C_PTR"

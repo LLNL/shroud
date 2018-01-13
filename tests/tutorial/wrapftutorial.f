@@ -707,7 +707,7 @@ contains
     end subroutine function6_from_index
 
     ! void Function7(int arg +intent(in)+value)
-    ! cpp_template
+    ! cxx_template
     ! function_index=33
     subroutine function7_int(arg)
         use iso_c_binding, only : C_INT
@@ -718,7 +718,7 @@ contains
     end subroutine function7_int
 
     ! void Function7(double arg +intent(in)+value)
-    ! cpp_template
+    ! cxx_template
     ! function_index=34
     subroutine function7_double(arg)
         use iso_c_binding, only : C_DOUBLE
@@ -729,7 +729,7 @@ contains
     end subroutine function7_double
 
     ! int Function8()
-    ! cpp_template
+    ! cxx_template
     ! function_index=35
     function function8_int() result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -740,7 +740,7 @@ contains
     end function function8_int
 
     ! double Function8()
-    ! cpp_template
+    ! cxx_template
     ! function_index=36
     function function8_double() result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE

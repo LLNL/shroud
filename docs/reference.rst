@@ -164,14 +164,14 @@ F_impl_filename
     Defaulted from expansion of option *F_impl_filename_class_template*.
     Only defined if *F_module_per_class* is true.
 
-cpp_class
+cxx_class
     The name of the C++ class from the YAML input file.
 
 class_lower
-    Lowercase version of *cpp_class*.
+    Lowercase version of *cxx_class*.
 
 class_upper
-    Uppercase version of *cpp_class*.
+    Uppercase version of *cxx_class*.
 
 class_prefix
     Variable which may be used in creating function names.
@@ -223,13 +223,13 @@ C_return_type
     If the **C_return_type** field is set, use its value.
     Otherwise set to function's return type.
 
-CPP_template
+CXX_template
     The template component of the function declaration.
     ``<{type}>``
 
-CPP_this_call
+CXX_this_call
     How to call the function.
-    ``{CPP_this}->`` for instance methods and blank for library functions.
+    ``{CXX_this}->`` for instance methods and blank for library functions.
 
 F_arg_c_call
     Comma delimited arguments to call C function from Fortran.
@@ -311,18 +311,18 @@ c_var_trim
     Used with char/string arguments.
     Set from option **C_var_trim_template**.
 
-cpp_T
+cxx_T
     The template parameter for std::vector arguments.
-    ``std::vector<cpp_T>``
+    ``std::vector<cxx_T>``
 
-cpp_type
+cxx_type
     The C++ type of the argument.
 
-cpp_var
+cxx_var
     Name of the C++ variable.
 
-cpp_val
-    Evaluation of cpp_to_c for the arguments typedef.
+cxx_val
+    Evaluation of cxx_to_c for the arguments typedef.
 
 f_var
     Fortran variable name for argument.
@@ -336,7 +336,7 @@ len_var
 Result
 ------
 
-cpp_rv_decl
+cxx_rv_decl
     Declaration of variable to hold return value for function.
 
 
@@ -356,7 +356,7 @@ copyright
    Do not include any language specific comment characters since
    Shroud will add the appropriate comment delimiters for each language.
 
-cpp_header
+cxx_header
   C++ header file name which will be included in the implementation file.
 
 F_module_name
@@ -380,7 +380,7 @@ library
   Each YAML file is intended to wrap a single library.
 
 namespace
-  Blank delimited list of namespaces for **cpp_header**.
+  Blank delimited list of namespaces for **cxx_header**.
   The namespaces will be nested.
 
 patterns
@@ -458,7 +458,7 @@ C_var_trim_template
     Format for variable created with *len_trim* annotation.
     Default ``L{c_var}``
 
-CPP_this
+CXX_this
     Name of the C++ object pointer set from the *C_this* argument.
     Defaults to ``SH_this``.
 
@@ -570,13 +570,13 @@ Templates are set in options then expanded to assign to the format
 dictionary.
 
 C_header_filename_class_template
-    ``wrap{cpp_class}.{C_header_filename_suffix}``
+    ``wrap{cxx_class}.{C_header_filename_suffix}``
 
 C_header_filename_library_template
    ``wrap{library}.{C_header_filename_suffix}``
 
 C_impl_filename_class_template
-    ``wrap{cpp_class}.{C_impl_filename_suffix}``
+    ``wrap{cxx_class}.{C_impl_filename_suffix}``
 
 C_impl_filename_library_template
     ``wrap{library}.{C_impl_filename_suffix}``
@@ -596,7 +596,7 @@ F_name_generic_template
     ``{underscore_name}``
 
 F_impl_filename_class_template
-    ``wrapf{cpp_class}.{F_filename_suffix}``
+    ``wrapf{cxx_class}.{F_filename_suffix}``
 
 F_impl_filename_library_template
     ``wrapf{library_lower}.{F_filename_suffix}``
@@ -616,19 +616,19 @@ F_name_function_template
 
 LUA_class_reg_template
     Name of `luaL_Reg` array of function names for a class.
-    ``{LUA_prefix}{cpp_class}_Reg``
+    ``{LUA_prefix}{cxx_class}_Reg``
 
 LUA_ctor_name_template
     Name of constructor for a class.
     Added to the library's table.
-    ``{cpp_class}``
+    ``{cxx_class}``
 
 LUA_header_filename_template
     ``lua{library}module.{LUA_header_filename_suffix}``
 
 LUA_metadata_template
     Name of metatable for a class.
-    ``{cpp_class}.metatable``
+    ``{cxx_class}.metatable``
 
 LUA_module_filename_template
     ``lua{library}module.{LUA_impl_filename_suffix}``
@@ -654,7 +654,7 @@ LUA_name_template
     ``{function_name}``
 
 LUA_userdata_type_template
-    ``{LUA_prefix}{cpp_class}_Type``
+    ``{LUA_prefix}{cxx_class}_Type``
 
 LUA_userdata_member_template
     Name of pointer to class instance in userdata.
@@ -707,21 +707,21 @@ c_header
     Only used with *language=c*.
     Defaults to *None*.
 
-cpp_type
+cxx_type
     Name of type in C++.
     Defaults to *None*.
 
-cpp_to_c
+cxx_to_c
     Expression to convert from C++ to C.
-    Defaults to *{cpp_var}*.  i.e. no conversion required.
+    Defaults to *{cxx_var}*.  i.e. no conversion required.
 
-cpp_header
+cxx_header
     Name of C++ header file required for implementation.
-    For example, if cpp_to_c was a function.
+    For example, if cxx_to_c was a function.
     Only used with *language=c++*.
     Defaults to *None*.
 
-cpp_local_var
+cxx_local_var
     If true then a local variable will be created instead of passing the argument
     directly to the function.
     The variable will be assigned a value using *c_to_cpp*.
@@ -729,10 +729,10 @@ cpp_local_var
     for debugging purposes.
     It can also be used to create cleaner code when *c_to_cpp* will generate a very long statement.
     When *c_to_cpp* is not sufficient to assign a value, *c_statements* can be used to 
-    add multiple statements into the wrapper.  *c_statements* and *cpp_local_var* cannot
+    add multiple statements into the wrapper.  *c_statements* and *cxx_local_var* cannot
     be used together.
 
-..  {c_const}{cpp_type}{ptr} = c_to_cpp ;
+..  {c_const}{cxx_type}{ptr} = c_to_cpp ;
 
 c_type
     name of type in C.
@@ -751,7 +751,7 @@ c_statements
     A nested dictionary of code template to add.
     The first layer is *intent_in*, *intent_out*, *intent_inout*, *result*,
     *intent_in_buf*, *intent_out_buf*, *intent_inout_buf*, and *result_buf*.
-    The second layer is *pre_call*, *pre_call_buf*, *post_call*, *cpp_header*.
+    The second layer is *pre_call*, *pre_call_buf*, *post_call*, *cxx_header*.
     The entries are a list of format strings.
 
     intent_in
@@ -784,14 +784,14 @@ c_statements
            size
               Fortran intrinsic `SIZE`, of type *long*.
 
-        cpp_header
+        cxx_header
            string of blank delimited header names
 
-        cpp_local_var
+        cxx_local_var
            True if a local C++ variable is created.
            This is the case when C and C++ are not directly compatible.
            Usually a C++ constructor is involved.
-           This sets *cpp_var* is set to ``SH_{c_var}``.
+           This sets *cxx_var* is set to ``SH_{c_var}``.
 
         c_helper
            A blank delimited list of helper routines to add.
@@ -974,14 +974,14 @@ py_statement
 
     ctor
         Statements to create a Python object.
-	Must ensure that ``py_var = cpp_var`` in some form.
+	Must ensure that ``py_var = cxx_var`` in some form.
 
 ..    post_call
         Statement to execute after call.
         Can be use to cleanup after *f_pre_call*
         or to coerce the return value.
 
-        cpp_local_var
+        cxx_local_var
            True if a local C++ variable is created.
            This is the case when C and C++ are not directly compatible.
            Usually a C++ constructor is involved.
@@ -990,9 +990,9 @@ py_statement
 Class Fields
 ------------
 
-cpp_header
+cxx_header
   C++ header file name which will be included in the implementation file.
-  If unset then the global *cpp_header* will be used.
+  If unset then the global *cxx_header* will be used.
 
 C_header_filename
    Output file name for header for  wrapper routines.
@@ -1017,7 +1017,7 @@ F_impl_filename
    Only used if option *F_module_per_class* is True.
 
 namespace
-  Blank delimited list of namespaces for **cpp_header**.
+  Blank delimited list of namespaces for **cxx_header**.
   The namespaces will be nested.
   If not defined then the global *namespace* will be used.
   If it starts with a ``-`` then no namespace will be used.

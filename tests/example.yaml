@@ -67,17 +67,17 @@ options:
 
 types:
   other:
-    cpp_type: junk
+    cxx_type: junk
 
 #  string:
-#    cpp_to_c : "isNameValid({cpp_var}) ? {cpp_var}.c_str() : NULL"
+#    cxx_to_c : "isNameValid({cxx_var}) ? {cxx_var}.c_str() : NULL"
 
   SidreLength:
     typedef  : long
 # defined in SidreTypes.hpp
     c_header : sidre/SidreTypes.h
     c_type   : SIDRE_SidreLength
-    cpp_type : SidreLength
+    cxx_type : SidreLength
 #    f_type   : integer(C_LONG)
 ##    f_module : iso_c_binding:C_LONG
 #    f_module : 
@@ -88,30 +88,30 @@ types:
     typedef : int
     # enum for types
     c_header : sidre/SidreTypes.h
-    cpp_header : sidre/SidreWrapperHelpers.hpp
-    cpp_type: TypeID
-    cpp_to_c : static_cast<int>({cpp_var})
+    cxx_header : sidre/SidreWrapperHelpers.hpp
+    cxx_type: TypeID
+    cxx_to_c : static_cast<int>({cxx_var})
     c_to_cpp :  getTypeID({c_var})
 
   # This example is pulled from spio
   # DataGroup is a type which is provided by another shroud wrapped library
   DataGroup:
     base: wrapped
-    cpp_header: sidre/Group.hpp
-    cpp_type: axom::sidre::Group
+    cxx_header: sidre/Group.hpp
+    cxx_type: axom::sidre::Group
     f_derived_type: datagroup
     f_module:
       sidre_mod: [ group ]
     c_type: SIDRE_group
     c_header: sidre/wrapGroup.h
     f_to_c: '{f_var}%get_instance()'
-    # cpp_local_var uses c_to_cpp to assign a value to a local variable
-    cpp_local_var: True
+    # cxx_local_var uses c_to_cpp to assign a value to a local variable
+    cxx_local_var: True
     PY_PyTypeObject: FillInTypeForGroup
 
 classes:
   - name: ExClass1
-    cpp_header: ExClass1.hpp
+    cxx_header: ExClass1.hpp
     # include files to add to module
 
     python:
@@ -153,7 +153,7 @@ classes:
         brief: helper function for Fortran to get length of name.
       C_code: |
         {C_pre_call}
-        return {CPP_this}->getName().length();
+        return {CXX_this}->getName().length();
 
     - decl: const string& getNameErrorCheck() const
 
@@ -175,7 +175,7 @@ classes:
 
   ######################################################################
   - name: ExClass2
-    cpp_header: ExClass2.hpp
+    cxx_header: ExClass2.hpp
     python:
       type: [dealloc, print, compare, getattr, setattr,
              getattro, setattro,
@@ -214,7 +214,7 @@ classes:
         brief: helper function for Fortran
       C_code: |
         {C_pre_call}
-        return {CPP_this}->getName().length();
+        return {CXX_this}->getName().length();
 
     # test forward declarations
     - decl: ExClass1 *get_class1(const ExClass1 *in)
@@ -237,7 +237,7 @@ classes:
 
 #           template<typename ValueType>
     - decl: void setValue(ValueType value)
-      cpp_template:
+      cxx_template:
         ValueType:
         - int
         - long
@@ -246,7 +246,7 @@ classes:
 
 #           template<typename ValueType>
     - decl: ValueType getValue()
-      cpp_template:
+      cxx_template:
         ValueType:
         - int
 #        - long
@@ -280,12 +280,12 @@ functions:
 
   - decl: void testoptional(int i = 1, long j=2)
 
-# test cpp_template, fortran_generic, overload
+# test cxx_template, fortran_generic, overload
 #  - decl: void Function10()
 #  - decl: void Function10(ArgType arg1, std::string &name, double arg2 = 0)
 #    options:
 #      F_string_len_trim: True
-#    cpp_template:
+#    cxx_template:
 #      ArgType:
 #      - int
 #      - double
@@ -303,11 +303,11 @@ functions:
 ######################################################################
 patterns:
     C_invalid_name: |
-        if (! isNameValid({cpp_var})) {{
+        if (! isNameValid({cxx_var})) {{
             return NULL;
         }}
     PY_invalid_name: |
-        if (! isNameValid({cpp_var})) {{
+        if (! isNameValid({cxx_var})) {{
             PyErr_SetString(PyExc_KeyError, "XXX need value of name");
             return NULL;
         }}

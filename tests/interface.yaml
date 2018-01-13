@@ -44,7 +44,7 @@ copyright:
 # Only an INTERFACE block is created in the Fortran
 
 library: Interface
-cpp_header: interface.h
+cxx_header: interface.h
 language: c
 
 options:

@@ -52,7 +52,7 @@ separated by a colon::
     types:
       TypeID:
         typedef  : int
-        cpp_type : TypeID
+        cxx_type : TypeID
     
     functions:
     - decl: void Function1
@@ -79,13 +79,13 @@ Some values consist of blocks of code.  The pipe, ``|``, is used to indicate tha
 the string will span several lines and that newlines should be preserved::
 
     C_invalid_name: |
-        if (! isNameValid({cpp_var})) {{
+        if (! isNameValid({cxx_var})) {{
             return NULL;
         }}
 
 Note that to insert a literal ``{``, a double brace, ``{{``, is
 required since single braces are used for variable expansion.
-``{cpp_var}`` in this example.
+``{cxx_var}`` in this example.
 
 
 
