@@ -385,7 +385,7 @@ class Scope(object):
         return self.__dict__.get(key, value)
 
     def update(self, d, replace=True):
-        """Add options from dictionary to self.
+        """Add attributes from dictionary to self.
         """
         for key, value in d.items():
             if replace:

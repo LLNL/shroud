@@ -50,7 +50,7 @@ from . import declast
 from . import typemap
 
 class AstNode(object):
-    def option_to_fmt(self):
+    def option_to_fmt(self, fmtdict):
         """Set fmt based on options dictionary.
         """
         for name in ['C_prefix', 'F_C_prefix', 
@@ -67,7 +67,7 @@ class AstNode(object):
                      'LUA_impl_filename_suffix',
                      'LUA_result']:
             if self.options.inlocal(name):
-                setattr(self.fmtdict, name, self.options[name])
+                setattr(fmtdict, name, self.options[name])
 
     def eval_template(self, name, tname='', fmt=None):
         """fmt[name] = self.name or option[name + tname + '_template']
@@ -86,6 +86,7 @@ class AstNode(object):
 class LibraryNode(AstNode):
     def __init__(self,
                  cxx_header='',
+                 format=None,
                  language='c++',
                  library='default_library',
                  namespace='',
@@ -120,15 +121,9 @@ class LibraryNode(AstNode):
         self.copyright = kwargs.setdefault('copyright', [])
         self.patterns = kwargs.setdefault('patterns', [])
 
-        for n in ['C_header_filename', 'C_impl_filename',
-                  'F_module_name', 'F_impl_filename',
-                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
-                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
-                  'YAML_type_filename']:
-            setattr(self, n, kwargs.get(n, None))
-
-        self.default_format()
-        self.option_to_fmt()
+        self.fmtdict = self.default_format(kwargs)
+        if format:
+            self.fmtdict.update(format, replace=True)
 
         # default some options based on other options
         self.eval_template('C_header_filename', '_library')
@@ -225,12 +220,14 @@ class LibraryNode(AstNode):
             )
         return def_options
 
-    def default_format(self):
+    def default_format(self, kwargs):
         """Set format dictionary.
+
+        Values based off of library variables and
+        format templates in options.
         """
 
-        self.fmtdict = util.Scope(None)
-        fmt_library = self.fmtdict
+        fmt_library = util.Scope(None)
 
         fmt_library.library = self.library
         fmt_library.library_lower = fmt_library.library.lower()
@@ -296,6 +293,17 @@ class LibraryNode(AstNode):
             fmt_library.LUA_impl_filename_suffix = 'cpp'
 
             fmt_library.stdlib  = 'std::'
+
+        for n in ['C_header_filename', 'C_impl_filename',
+                  'F_module_name', 'F_impl_filename',
+                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
+                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
+                  'YAML_type_filename']:
+            setattr(self, n, kwargs.get(n, None))
+
+        self.option_to_fmt(fmt_library)
+
+        return fmt_library
 
     def add_function(self, parentoptions=None, **kwargs):
         """Add a function.
@@ -450,7 +458,7 @@ class FunctionNode(AstNode):
             self.options.update(options, replace=True)
 
         self.fmtdict = util.Scope(parent.fmtdict)
-        self.option_to_fmt()
+        self.option_to_fmt(self.fmtdict)
 
         # working variables
         self._CXX_return_templated = False
