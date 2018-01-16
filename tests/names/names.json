@@ -2,8 +2,6 @@
     "library": {
         "classes": [
             {
-                "C_header_filename": "foo.h", 
-                "C_impl_filename": "foo.cpp", 
                 "F_derived_name": "FNames", 
                 "F_impl_filename": "foo.f", 
                 "F_module_name": "name_module", 

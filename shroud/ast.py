@@ -84,13 +84,12 @@ class AstNode(object):
 
     def eval_template2(self, name, tname='', fmt=None):
         """fmt[name] = fmt.name or option[name + tname + '_template']
+
+        If a format has not been explicitly set, set from template
         """
         if fmt is None:
             fmt = self.fmtdict
-        value = getattr(fmt, name)
-        if value is not None:
-            setattr(fmt, name, value)
-        else:
+        if not fmt.inlocal(name):
             tname = name + tname + '_template'
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
@@ -298,6 +297,16 @@ class LibraryNode(AstNode):
             fmt_library.stdlib  = 'std::'
 
         for n in ['C_header_filename', 'C_impl_filename',
+#                  'F_module_name', 'F_impl_filename',
+#                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
+#                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
+#                  'YAML_type_filename'
+        ]:
+            if n in kwargs:
+                raise DeprecationWarning("Setting field {} in library, change to format group".format(
+                    n))
+
+        for n in [#'C_header_filename', 'C_impl_filename',
                   'F_module_name', 'F_impl_filename',
                   'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
                   'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
@@ -312,8 +321,8 @@ class LibraryNode(AstNode):
         self.fmtdict = fmt_library
 
         # default some format strings based on other format strings
-        self.eval_template('C_header_filename', '_library')
-        self.eval_template('C_impl_filename', '_library')
+        self.eval_template2('C_header_filename', '_library')
+        self.eval_template2('C_impl_filename', '_library')
         # All class/methods and functions may go into this file or
         # just functions.
         self.eval_template('F_module_name', '_library')
@@ -380,17 +389,19 @@ class ClassNode(AstNode):
     def default_format(self, parent, format, kwargs):
         """Set format dictionary."""
 
-#        for n in ['C_header_filename', 'C_impl_filename',
+        for n in ['C_header_filename', 'C_impl_filename',
 #                  'F_derived_name', 'F_impl_filename', 'F_module_name',
 #                  'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
 #                  'LUA_metadata', 'LUA_ctor_name',
 #                  'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
-#                  'class_prefix']:
-#            raise DeprecationWarning("Setting field {} in class {}, change to format group".format(
-#                    n, self.name))
+#                  'class_prefix'
+        ]:
+            if n in kwargs:
+                raise DeprecationWarning("Setting field {} in class {}, change to format group".format(
+                    n, self.name))
 
 
-        for n in ['C_header_filename', 'C_impl_filename',
+        for n in [#'C_header_filename', 'C_impl_filename',
                   'F_derived_name', 'F_impl_filename', 'F_module_name',
                   'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
                   'LUA_metadata', 'LUA_ctor_name',
@@ -412,8 +423,8 @@ class ClassNode(AstNode):
         self.eval_template('class_prefix')
 
         # Only one file per class for C.
-        self.eval_template('C_header_filename', '_class')
-        self.eval_template('C_impl_filename', '_class')
+        self.eval_template2('C_header_filename', '_class')
+        self.eval_template2('C_impl_filename', '_class')
 
         if self.options.F_module_per_class:
             self.eval_template('F_module_name', '_class')
@@ -441,7 +452,7 @@ class ClassNode(AstNode):
             value = getattr(self,key)
             if value:
                 d[key] = value
-        for key in ['C_header_filename', 'C_impl_filename',
+        for key in [
                     'F_derived_name', 'F_impl_filename', 'F_module_name']:
             value = getattr(self,key)
             if value is not None:
