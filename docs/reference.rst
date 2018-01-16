@@ -99,9 +99,19 @@ C_header_filename
     Name of generated header file for the library.
     Defaulted from expansion of option *C_header_filename_library_template*.
 
+C_header_filename_suffix:
+   Suffix added to C header files.
+   Defaults to ``h``.
+   Other useful values might be ``hh`` or ``hxx``.
+
 C_impl_filename
     Name of generated C++ implementation file for the library.
     Defaulted from expansion of option *C_impl_filename_library_template*.
+
+C_impl_filename_suffix:
+   Suffix added to C implementation files.
+   Defaults to ``cpp``.
+   Other useful values might be ``cc`` or ``cxx``.
 
 C_result
     The name of the C wrapper's result variable.
@@ -135,6 +145,11 @@ F_derived_member
     wraps a C++ class.  It will contain a ``type(C_PTR)`` which
     points to the C++ instance.
     Defaults to *voidptr*.
+
+F_filename_suffix:
+   Suffix added to Fortran files.
+   Defaults to ``f``.
+   Other useful values might be ``F`` or ``f90``.
 
 F_module_name
     Name of module for Fortran interface for the library.
@@ -173,12 +188,39 @@ library_lower
 library_upper
     Uppercase version of *library*.
 
+LUA_header_filename_suffix
+   Suffix added to Lua header files.
+   Defaults to ``h``.
+   Other useful values might be ``hh`` or ``hxx``.
+
+LUA_impl_filename_suffix
+   Suffix added to Lua implementation files.
+   Defaults to ``cpp``.
+   Other useful values might be ``cc`` or ``cxx``.
+
+LUA_module_name
+    Name of Lua module for library.
+    ``{library_lower}``
+
 LUA_result
     The name of the Lua wrapper's result variable.
     It defaults to *rv*  (return value).
 
 namespace_scope
     The values in field **namespace** delimited with ``::``.
+
+PY_header_filename_suffix
+   Suffix added to Python header files.
+   Defaults to ``h``.
+   Other useful values might be ``hh`` or ``hxx``.
+
+PY_name_impl
+    PY_class1_method1
+
+PY_impl_filename_suffix
+   Suffix added to Python implementation files.
+   Defaults to ``cpp``.
+   Other useful values might be ``cc`` or ``cxx``.
 
 PY_result
     The name of the Python wrapper's result variable.
@@ -446,16 +488,6 @@ C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
    Defaults to *false*.
 
-C_header_filename_suffix:
-   Suffix added to C header files.
-   Defaults to ``h``.
-   Other useful values might be ``hh`` or ``hxx``.
-
-C_impl_filename_suffix:
-   Suffix added to C implementation files.
-   Defaults to ``cpp``.
-   Other useful values might be ``cc`` or ``cxx``.
-
 C_proto_type
    XXX  override prototype of generated C function
 
@@ -473,11 +505,6 @@ C_var_size_template
 C_var_trim_template
     Format for variable created with *len_trim* annotation.
     Default ``L{c_var}``
-
-F_filename_suffix:
-   Suffix added to Fortran files.
-   Defaults to ``f``.
-   Other useful values might be ``F`` or ``f90``.
 
 F_string_len_trim
   For each function with a ``std::string`` argument, create another C
@@ -497,26 +524,6 @@ F_force_wrapper
   numeric types does not need a wrapper since it can be called
   directly by defining the correct interface.
   The default is *false*.
-
-LUA_header_filename_suffix
-   Suffix added to Lua header files.
-   Defaults to ``h``.
-   Other useful values might be ``hh`` or ``hxx``.
-
-LUA_impl_filename_suffix
-   Suffix added to Lua implementation files.
-   Defaults to ``cpp``.
-   Other useful values might be ``cc`` or ``cxx``.
-
-PY_header_filename_suffix
-   Suffix added to Python header files.
-   Defaults to ``h``.
-   Other useful values might be ``hh`` or ``hxx``.
-
-PY_impl_filename_suffix
-   Suffix added to Python implementation files.
-   Defaults to ``cpp``.
-   Other useful values might be ``cc`` or ``cxx``.
 
 show_splicer_comments
     If ``true`` show comments which delineate the splicer blocks;
@@ -610,10 +617,6 @@ LUA_metadata_template
 LUA_module_filename_template
     ``lua{library}module.{LUA_impl_filename_suffix}``
 
-LUA_module_name
-    Name of Lua module for library.
-    ``{library_lower}``
-
 LUA_module_reg_template
     Name of `luaL_Reg` array of function names for a library.
     ``{LUA_prefix}{library}_Reg``
@@ -636,10 +639,6 @@ LUA_userdata_type_template
 LUA_userdata_member_template
     Name of pointer to class instance in userdata.
     ``self``
-
-
-PY_name_impl
-    PY_class1_method1
 
 YAML_type_filename_template
     Default value for global field YAML_type_filename
