@@ -256,7 +256,7 @@ class LibraryNode(AstNode):
             library_upper = self.library.upper(),
 
         # set default values for fields which may be unset.
-            class_prefix = '',
+            class_prefix = '',   # expand to blanks for library
 #           c_ptr = '',
 #           c_const = '',
             CXX_this_call = '',
@@ -305,13 +305,6 @@ class LibraryNode(AstNode):
             if n in kwargs:
                 raise DeprecationWarning("Setting field {} in library, change to format group".format(
                     n))
-
-#        for n in [#'C_header_filename', 'C_impl_filename',
-#                  'F_module_name', 'F_impl_filename',
-#                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
-#                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
-#                  'YAML_type_filename']:
-#            setattr(self, n, kwargs.get(n, None))
 
         self.option_to_fmt(fmt_library)
 
@@ -394,20 +387,11 @@ class ClassNode(AstNode):
                   'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
                   'LUA_metadata', 'LUA_ctor_name',
                   'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
-#                  'class_prefix'
+                  'class_prefix'
         ]:
             if n in kwargs:
                 raise DeprecationWarning("Setting field {} in class {}, change to format group".format(
                     n, self.name))
-
-
-        for n in [#'C_header_filename', 'C_impl_filename',
-#                  'F_derived_name', 'F_impl_filename', 'F_module_name',
-#                  'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
-#                  'LUA_metadata', 'LUA_ctor_name',
-#                  'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
-                  'class_prefix']:
-            setattr(self, n, kwargs.get(n, None))
 
         self.fmtdict = util.Scope(
             parent = parent.fmtdict,
@@ -422,7 +406,7 @@ class ClassNode(AstNode):
         if format:
             self.fmtdict.update(format, replace=True)
 
-        self.eval_template('class_prefix')
+        self.eval_template2('class_prefix')
 
         # Only one file per class for C.
         self.eval_template2('C_header_filename', '_class')
