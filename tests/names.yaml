@@ -60,8 +60,7 @@ format:
   C_impl_filename: top.cpp
   F_module_name: top_module
   F_impl_filename: top.f
-
-LUA_module_name: lua_module_name
+  LUA_module_name: lua_module_name
 
 classes:
   - name: Names

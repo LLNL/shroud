@@ -87,9 +87,9 @@ class Wrapp(util.WrapperMixin):
         # Format variables
         fmt_library.PY_prefix = options.get('PY_prefix', 'PY_')
         fmt_library.PY_module_name = fmt_library.library_lower
-        newlibrary.eval_template('PY_module_filename')
-        newlibrary.eval_template('PY_header_filename')
-        newlibrary.eval_template('PY_helper_filename')
+        newlibrary.eval_template2('PY_module_filename')
+        newlibrary.eval_template2('PY_header_filename')
+        newlibrary.eval_template2('PY_helper_filename')
         fmt_library.BBB = 'BBB'   # name of cpp class pointer in PyObject
         fmt_library.PY_PyObject = 'PyObject'
         fmt_library.PY_param_self = 'self'
@@ -117,10 +117,10 @@ class Wrapp(util.WrapperMixin):
             typedef.PY_format = 'O'
 
             # PyTypeObject for class
-            node.eval_template('PY_PyTypeObject')
+            node.eval_template2('PY_PyTypeObject')
 
             # PyObject for class
-            node.eval_template('PY_PyObject')
+            node.eval_template2('PY_PyObject')
 
             fmt.PY_to_object_func = wformat(
                 'PP_{cxx_class}_to_Object', fmt)
@@ -164,7 +164,7 @@ class Wrapp(util.WrapperMixin):
         options = node.options
         fmt_class = node.fmtdict
 
-        node.eval_template('PY_type_filename')
+        node.eval_template2('PY_type_filename')
 
         self.create_class_helper_functions(node)
 
@@ -644,7 +644,7 @@ return 1;""", fmt)
 
         PY_impl = [1] + PY_decl + PY_code + [-1]
 
-        node.eval_template('PY_name_impl')
+        node.eval_template2('PY_name_impl')
 
         expose = True
         if len(self.overloaded_methods[ast.name]) > 1:
@@ -851,7 +851,7 @@ return 1;""", fmt)
             body.append('return NULL;')
             body.append(-1)
 
-            methods[0].eval_template('PY_name_impl', fmt=fmt)
+            methods[0].eval_template2('PY_name_impl', fmt=fmt)
 
             self.create_method(cls, True, fmt, body)
 

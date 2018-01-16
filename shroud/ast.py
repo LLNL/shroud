@@ -298,20 +298,20 @@ class LibraryNode(AstNode):
 
         for n in ['C_header_filename', 'C_impl_filename',
                   'F_module_name', 'F_impl_filename',
-#                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
-#                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
-#                  'YAML_type_filename'
+                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
+                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
+                  'YAML_type_filename'
         ]:
             if n in kwargs:
                 raise DeprecationWarning("Setting field {} in library, change to format group".format(
                     n))
 
-        for n in [#'C_header_filename', 'C_impl_filename',
+#        for n in [#'C_header_filename', 'C_impl_filename',
 #                  'F_module_name', 'F_impl_filename',
-                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
-                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
-                  'YAML_type_filename']:
-            setattr(self, n, kwargs.get(n, None))
+#                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
+#                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
+#                  'YAML_type_filename']:
+#            setattr(self, n, kwargs.get(n, None))
 
         self.option_to_fmt(fmt_library)
 
@@ -391,9 +391,9 @@ class ClassNode(AstNode):
 
         for n in ['C_header_filename', 'C_impl_filename',
                   'F_derived_name', 'F_impl_filename', 'F_module_name',
-#                  'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
-#                  'LUA_metadata', 'LUA_ctor_name',
-#                  'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
+                  'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
+                  'LUA_metadata', 'LUA_ctor_name',
+                  'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
 #                  'class_prefix'
         ]:
             if n in kwargs:
@@ -403,9 +403,9 @@ class ClassNode(AstNode):
 
         for n in [#'C_header_filename', 'C_impl_filename',
 #                  'F_derived_name', 'F_impl_filename', 'F_module_name',
-                  'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
-                  'LUA_metadata', 'LUA_ctor_name',
-                  'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
+#                  'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
+#                  'LUA_metadata', 'LUA_ctor_name',
+#                  'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
                   'class_prefix']:
             setattr(self, n, kwargs.get(n, None))
 
@@ -529,6 +529,7 @@ class FunctionNode(AstNode):
         self.cxx_template = kwargs.get('cxx_template', {})
         self.doxygen = kwargs.get('doxygen', {})
         self.fortran_generic = kwargs.get('fortran_generic', {})
+        self.cpp_if = kwargs.get('cpp_if', None)
 
         if not decl:
             raise RuntimeError("Missing decl")
@@ -572,14 +573,29 @@ class FunctionNode(AstNode):
         
         # Move fields from kwargs into instance
         for n in [
+#                'C_code', 'C_error_pattern', 'C_name',
+#                'C_post_call', 'C_post_call_buf',
+#                'C_return_code', 'C_return_type',
+#                'F_C_name', 'F_code',
+#                'F_name_function', 'F_name_generic', 'F_name_impl',
+                'LUA_name', 'LUA_name_impl',
+#                'PY_error_pattern', 'PY_name_impl',
+#                'docs', 'function_suffix', 'return_this'
+        ]:
+            if n in kwargs:
+                raise DeprecationWarning("Setting field {} in function, change to format group".format(
+                    n))
+
+        # Move fields from kwargs into instance
+        for n in [
                 'C_code', 'C_error_pattern', 'C_name',
                 'C_post_call', 'C_post_call_buf',
                 'C_return_code', 'C_return_type',
                 'F_C_name', 'F_code',
                 'F_name_function', 'F_name_generic', 'F_name_impl',
-                'LUA_name', 'LUA_name_impl',
+#                'LUA_name', 'LUA_name_impl',
                 'PY_error_pattern', 'PY_name_impl',
-                'cpp_if', 'docs', 'function_suffix', 'return_this']:
+                'docs', 'function_suffix', 'return_this']:
             setattr(self, n, kwargs.get(n, None))
 
         self.fmtdict = util.Scope(parent.fmtdict)
