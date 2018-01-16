@@ -3808,7 +3808,6 @@
                 "_function_index": 49, 
                 "_subprogram": "subroutine", 
                 "decl": "void local_function1()", 
-                "docs": "yada yada yada", 
                 "format": {
                     "C_call_code": "local_function1();", 
                     "C_call_list": "", 

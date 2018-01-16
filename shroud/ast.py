@@ -510,10 +510,11 @@ class FunctionNode(AstNode):
 #        self.function_index = []
 
         self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
+        self.cpp_if = kwargs.get('cpp_if', None)
         self.cxx_template = kwargs.get('cxx_template', {})
         self.doxygen = kwargs.get('doxygen', {})
         self.fortran_generic = kwargs.get('fortran_generic', {})
-        self.cpp_if = kwargs.get('cpp_if', None)
+        self.return_this = kwargs.get('return_this', False)
 
         if not decl:
             raise RuntimeError("Missing decl")
@@ -564,7 +565,7 @@ class FunctionNode(AstNode):
 #                'F_name_function', 'F_name_generic', 'F_name_impl',
                 'LUA_name', 'LUA_name_impl',
 #                'PY_error_pattern', 'PY_name_impl',
-#                'docs', 'function_suffix', 'return_this'
+#                'function_suffix'
         ]:
             if n in kwargs:
                 raise DeprecationWarning("Setting field {} in function, change to format group".format(
@@ -579,7 +580,7 @@ class FunctionNode(AstNode):
                 'F_name_function', 'F_name_generic', 'F_name_impl',
 #                'LUA_name', 'LUA_name_impl',
                 'PY_error_pattern', 'PY_name_impl',
-                'docs', 'function_suffix', 'return_this']:
+                'function_suffix']:
             setattr(self, n, kwargs.get(n, None))
 
         self.fmtdict = util.Scope(parent.fmtdict)
@@ -599,7 +600,7 @@ class FunctionNode(AstNode):
             format=self.fmtdict,
             options=self.options,
         )
-        for key in ['cxx_template', 'default_arg_suffix', 'docs', 'doxygen', 
+        for key in ['cxx_template', 'default_arg_suffix', 'doxygen', 
                     'fortran_generic', 'return_this',
                     'C_code', 'C_error_pattern', 'C_name',
                     'C_post_call', 'C_post_call_buf', 
