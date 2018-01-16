@@ -53,7 +53,11 @@ class AstNode(object):
     def option_to_fmt(self, fmtdict):
         """Set fmt based on options dictionary.
         """
-        for name in [
+        for name in ['C_prefix', 'F_C_prefix',
+                     'C_result', 'F_result', 'F_derived_member',
+                     'PY_result', 'LUA_result',
+                     'C_this', 'CXX_this', 'F_this',
+                     'C_string_result_as_arg', 'F_string_result_as_arg',
                      'C_header_filename_suffix',
                      'C_impl_filename_suffix',
                      'F_filename_suffix',
@@ -61,17 +65,9 @@ class AstNode(object):
                      'PY_impl_filename_suffix',
                      'LUA_header_filename_suffix',
                      'LUA_impl_filename_suffix',
-                     ]:
+        ]:
             if self.options.inlocal(name):
-                setattr(fmtdict, name, self.options[name])
-
-        for name in ['C_prefix', 'F_C_prefix',
-                     'C_result', 'F_result', 'F_derived_member',
-                     'PY_result', 'LUA_result',
-                     'C_this', 'CXX_this', 'F_this',
-                     'C_string_result_as_arg', 'F_string_result_as_arg']:
-            if self.options.inlocal(name):
-                raise RuntimeError("Setting option {} for {}".format(
+                raise DeprecationWarning("Setting option {} for {}, change to format group".format(
                     name, self.__class__.__name__))
 
     def eval_template(self, name, tname='', fmt=None):

@@ -44,16 +44,17 @@ copyright:
 
 library: testnames
 
+format:
+  C_header_filename_suffix: hh
+  C_impl_filename_suffix: cc
+  F_filename_suffix: F
+
 options:
   debug: True
 
   # always create wrappers to demonstrate name generation
   F_force_wrapper: True
   wrap_python: True
-
-  C_header_filename_suffix: hh
-  C_impl_filename_suffix: cc
-  F_filename_suffix: F
 
 C_header_filename: top.h
 C_impl_filename: top.cpp
