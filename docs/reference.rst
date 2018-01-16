@@ -104,7 +104,9 @@ C_impl_filename
     Defaulted from expansion of option *C_impl_filename_library_template*.
 
 C_result
-    TODO
+    The name of the C wrapper's result variable.
+    It must not be the same as any of the routines arguments.
+    It defaults to *SH_rv*  (Shroud return value).
 
 C_string_result_as_arg
     The name of the output argument for string results.
@@ -128,6 +130,12 @@ F_C_prefix
     Prefix added to name of generated Fortran interface for C routines.
     Defaults to **c_**.
 
+F_derived_member
+    The name of the member of the Fortran derived type which
+    wraps a C++ class.  It will contain a ``type(C_PTR)`` which
+    points to the C++ instance.
+    Defaults to *voidptr*.
+
 F_module_name
     Name of module for Fortran interface for the library.
     Defaulted from expansion of option *F_module_name_library_template*.
@@ -139,7 +147,9 @@ F_impl_filename
     generated for each class will also be in this file.
 
 F_result
-    TODO
+    The name of the Fortran wrapper's result variable.
+    It must not be the same as any of the routines arguments.
+    It defaults to *SH_rv*  (Shroud return value).
 
 F_string_result_as_arg
     The name of the output argument.
@@ -162,8 +172,16 @@ library_lower
 library_upper
     Uppercase version of *library*.
 
+LUA_result
+    The name of the Lua wrapper's result variable.
+    It defaults to *rv*  (return value).
+
 namespace_scope
     The values in field **namespace** delimited with ``::``.
+
+PY_result
+    The name of the Python wrapper's result variable.
+    It defaults to *rv*  (return value).
 
 stdlib
     Name of C++ standard library prefix.
@@ -451,11 +469,6 @@ C_impl_filename_suffix:
 C_proto_type
    XXX  override prototype of generated C function
 
-C_result
-    The name of the C wrapper's result variable.
-    It must not be the same as any of the routines arguments.
-    It defaults to *SH_rv*  (Shroud return value).
-
 C_return_type
    XXX   override return type of function
 
@@ -471,22 +484,10 @@ C_var_trim_template
     Format for variable created with *len_trim* annotation.
     Default ``L{c_var}``
 
-
-F_derived_member
-    The name of the member of the Fortran derived type which
-    wraps a C++ class.  It will contain a ``type(C_PTR)`` which
-    points to the C++ instance.
-    Defaults to *voidptr*.
-
 F_filename_suffix:
    Suffix added to Fortran files.
    Defaults to ``f``.
    Other useful values might be ``F`` or ``f90``.
-
-F_result
-    The name of the Fortran wrapper's result variable.
-    It must not be the same as any of the routines arguments.
-    It defaults to *SH_rv*  (Shroud return value).
 
 F_string_len_trim
   For each function with a ``std::string`` argument, create another C
@@ -517,10 +518,6 @@ LUA_impl_filename_suffix
    Defaults to ``cpp``.
    Other useful values might be ``cc`` or ``cxx``.
 
-LUA_result
-    The name of the Lua wrapper's result variable.
-    It defaults to *rv*  (return value).
-
 PY_header_filename_suffix
    Suffix added to Python header files.
    Defaults to ``h``.
@@ -530,10 +527,6 @@ PY_impl_filename_suffix
    Suffix added to Python implementation files.
    Defaults to ``cpp``.
    Other useful values might be ``cc`` or ``cxx``.
-
-PY_result
-    The name of the Python wrapper's result variable.
-    It defaults to *rv*  (return value).
 
 show_splicer_comments
     If ``true`` show comments which delineate the splicer blocks;

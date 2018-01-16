@@ -54,21 +54,20 @@ class AstNode(object):
         """Set fmt based on options dictionary.
         """
         for name in [
-                     'C_result',
-                     'F_result', 'F_derived_member',
                      'C_header_filename_suffix',
                      'C_impl_filename_suffix',
                      'F_filename_suffix',
                      'PY_header_filename_suffix',
                      'PY_impl_filename_suffix',
-                     'PY_result',
                      'LUA_header_filename_suffix',
                      'LUA_impl_filename_suffix',
-                     'LUA_result']:
+                     ]:
             if self.options.inlocal(name):
                 setattr(fmtdict, name, self.options[name])
 
         for name in ['C_prefix', 'F_C_prefix',
+                     'C_result', 'F_result', 'F_derived_member',
+                     'PY_result', 'LUA_result',
                      'C_this', 'CXX_this', 'F_this',
                      'C_string_result_as_arg', 'F_string_result_as_arg']:
             if self.options.inlocal(name):
@@ -234,15 +233,23 @@ class LibraryNode(AstNode):
 
         fmt_library = util.Scope(
             C_prefix = self.library.upper()[:3] + '_',
+            C_result = 'SHT_rv',
             C_this = 'self',
 
             CXX_this = 'SH_this',
 
             F_C_prefix='c_',
+            F_derived_member = 'voidptr',
+            F_result = 'SHT_rv',
             F_this = 'obj',
 
             C_string_result_as_arg = 'SHF_rv',
             F_string_result_as_arg = '',
+
+            # don't have to worry about argument names in Python wrappers
+            # so skip the SH_ prefix by default.
+            PY_result = 'rv',
+            LUA_result = 'rv',
 
             parent=None,
         )
@@ -266,20 +273,12 @@ class LibraryNode(AstNode):
         fmt_library.C_pre_call = ''
         fmt_library.C_post_call = ''
 
-        fmt_library.C_result = 'SHT_rv'
         fmt_library.c_temp = 'SHT_'
 
 
-        fmt_library.F_result = 'SHT_rv'
-        fmt_library.F_derived_member = 'voidptr'
 
 
         fmt_library.F_filename_suffix = 'f'
-
-        # don't have to worry about argument names in Python wrappers
-        # so skip the SH_ prefix by default.
-        fmt_library.PY_result = 'rv'
-        fmt_library.LUA_result = 'rv'
 
         if self.language == 'c':
             fmt_library.C_header_filename_suffix = 'h'
