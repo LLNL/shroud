@@ -2,9 +2,6 @@
     "library": {
         "classes": [
             {
-                "F_derived_name": "FNames", 
-                "F_impl_filename": "foo.f", 
-                "F_module_name": "name_module", 
                 "cxx_header": "", 
                 "format": {
                     "CXX_this_call": "SH_this->", 

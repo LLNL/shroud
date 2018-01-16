@@ -297,7 +297,7 @@ class LibraryNode(AstNode):
             fmt_library.stdlib  = 'std::'
 
         for n in ['C_header_filename', 'C_impl_filename',
-#                  'F_module_name', 'F_impl_filename',
+                  'F_module_name', 'F_impl_filename',
 #                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
 #                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
 #                  'YAML_type_filename'
@@ -307,7 +307,7 @@ class LibraryNode(AstNode):
                     n))
 
         for n in [#'C_header_filename', 'C_impl_filename',
-                  'F_module_name', 'F_impl_filename',
+#                  'F_module_name', 'F_impl_filename',
                   'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
                   'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
                   'YAML_type_filename']:
@@ -325,8 +325,8 @@ class LibraryNode(AstNode):
         self.eval_template2('C_impl_filename', '_library')
         # All class/methods and functions may go into this file or
         # just functions.
-        self.eval_template('F_module_name', '_library')
-        self.eval_template('F_impl_filename', '_library')
+        self.eval_template2('F_module_name', '_library')
+        self.eval_template2('F_impl_filename', '_library')
 
     def add_function(self, parentoptions=None, **kwargs):
         """Add a function.
@@ -390,7 +390,7 @@ class ClassNode(AstNode):
         """Set format dictionary."""
 
         for n in ['C_header_filename', 'C_impl_filename',
-#                  'F_derived_name', 'F_impl_filename', 'F_module_name',
+                  'F_derived_name', 'F_impl_filename', 'F_module_name',
 #                  'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
 #                  'LUA_metadata', 'LUA_ctor_name',
 #                  'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
@@ -402,7 +402,7 @@ class ClassNode(AstNode):
 
 
         for n in [#'C_header_filename', 'C_impl_filename',
-                  'F_derived_name', 'F_impl_filename', 'F_module_name',
+#                  'F_derived_name', 'F_impl_filename', 'F_module_name',
                   'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
                   'LUA_metadata', 'LUA_ctor_name',
                   'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
@@ -415,6 +415,8 @@ class ClassNode(AstNode):
             cxx_class = self.name,
             class_lower = self.name.lower(),
             class_upper = self.name.upper(),
+
+            F_derived_name = self.name.lower(),
         )
 
         if format:
@@ -427,8 +429,8 @@ class ClassNode(AstNode):
         self.eval_template2('C_impl_filename', '_class')
 
         if self.options.F_module_per_class:
-            self.eval_template('F_module_name', '_class')
-            self.eval_template('F_impl_filename', '_class')
+            self.eval_template2('F_module_name', '_class')
+            self.eval_template2('F_impl_filename', '_class')
 
     def add_function(self, parentoptions=None, **kwargs):
         """Add a function.
@@ -451,11 +453,6 @@ class ClassNode(AstNode):
         for key in ['namespace', 'python']:
             value = getattr(self,key)
             if value:
-                d[key] = value
-        for key in [
-                    'F_derived_name', 'F_impl_filename', 'F_module_name']:
-            value = getattr(self,key)
-            if value is not None:
                 d[key] = value
         return d
 

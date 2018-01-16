@@ -138,7 +138,8 @@ F_derived_member
 
 F_module_name
     Name of module for Fortran interface for the library.
-    Defaulted from expansion of option *F_module_name_library_template*.
+    Defaulted from expansion of option *F_module_name_library_template*
+    which is **{library_lower}_mod**.
 
 F_impl_filename
     Name of generated Fortran implementation file for the library.
@@ -202,9 +203,14 @@ C_impl_file
     Name of generated C++ implementation file for the library.
     Defaulted from expansion of option *C_impl_filename_class_template*.
 
+F_derived_name
+   Name of Fortran derived type for this class.
+   Defaults to the C++ class name.
+
 F_module_name
-    Name of module for Fortran interface for the library.
-    Defaulted from expansion of option *F_module_name_class_template*.
+    Name of module for Fortran interface for the class.
+    Defaulted from expansion of option *F_module_name_class_template*
+    which is **{class_lower}_mod**.
     Only defined if *F_module_per_class* is true.
 
 F_impl_filename
@@ -387,14 +393,6 @@ cxx_rv_decl
 Global Fields
 -------------
 
-C_header_filename
-   Output file name for header for  wrapper routines.
-   Defaults to expansion of option *C_header_filename_library_template*.
-
-C_impl_filename
-   Output file name for implementation of wrapper routines.
-   Defaults to expansion of option *C_impl_filename_library_template*.
-
 copyright
    A list of lines to add to the top of each generate file.
    Do not include any language specific comment characters since
@@ -402,14 +400,6 @@ copyright
 
 cxx_header
   C++ header file name which will be included in the implementation file.
-
-F_module_name
-   Name of Fortran module for this class.
-   Defaults to option *F_module_name_library_template*.
-
-F_impl_filename
-   Name of Fortran file for functions.
-   Defaults to option *F_impl_name_library_template*.
 
 langauge
   The language of the library to wrap.
@@ -980,28 +970,6 @@ Class Fields
 cxx_header
   C++ header file name which will be included in the implementation file.
   If unset then the global *cxx_header* will be used.
-
-C_header_filename
-   Output file name for header for  wrapper routines.
-   Defaults to evaluation of option *C_header_filename_class_template*.
-
-C_impl_filename
-   Output file name for implementation of wrapper routines.
-   Defaults to evaluation of option *C_impl_filename_class_template*.
-
-F_derived_name
-   Name of Fortran derived type for this class.
-   Defaults to the C++ class name.
-
-F_module_name
-   Name of Fortran module for this class.
-   Defaults to evaluation of option *F_module_name_class_template*.
-   Only used if option *F_module_per_class* is True.
-
-F_impl_filename
-   Name of Fortran file for this class.
-   Defaults to evaluation of option *F_impl_name_class_template*.
-   Only used if option *F_module_per_class* is True.
 
 namespace
   Blank delimited list of namespaces for **cxx_header**.
