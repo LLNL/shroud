@@ -66,9 +66,9 @@ class CheckAst(unittest.TestCase):
             language='c',
             options=dict(
                 wrap_c=False,
-                C_prefix='XXX_',
             ),
             format=dict(
+                C_prefix='XXX_',
                 fmt1='fmt1value',
                 fmt2='fmt2value',
             )

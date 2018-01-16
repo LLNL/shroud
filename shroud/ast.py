@@ -53,7 +53,7 @@ class AstNode(object):
     def option_to_fmt(self, fmtdict):
         """Set fmt based on options dictionary.
         """
-        for name in ['C_prefix',
+        for name in [
                      'C_this', 'C_result', 'CXX_this',
                      'F_this', 'F_result', 'F_derived_member',
                      'C_header_filename_suffix',
@@ -68,7 +68,7 @@ class AstNode(object):
             if self.options.inlocal(name):
                 setattr(fmtdict, name, self.options[name])
 
-        for name in ['F_C_prefix',
+        for name in ['C_prefix', 'F_C_prefix',
                      'C_string_result_as_arg', 'F_string_result_as_arg']:
             if self.options.inlocal(name):
                 raise RuntimeError("Setting option {} for {}".format(
@@ -232,6 +232,8 @@ class LibraryNode(AstNode):
         """
 
         fmt_library = util.Scope(
+            C_prefix = self.library.upper()[:3] + '_',
+
             F_C_prefix='c_',
 
             C_string_result_as_arg = 'SHF_rv',
@@ -244,8 +246,6 @@ class LibraryNode(AstNode):
         fmt_library.library_lower = fmt_library.library.lower()
         fmt_library.library_upper = fmt_library.library.upper()
         fmt_library.function_suffix = ''   # assume no suffix
-        fmt_library.C_prefix = self.options.get(
-            'C_prefix', fmt_library.library_upper[:3] + '_')
         if self.namespace:
             fmt_library.namespace_scope = (
                 '::'.join(self.namespace.split()) + '::')

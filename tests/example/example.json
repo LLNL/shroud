@@ -5201,7 +5201,6 @@
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
-            "C_prefix": "AA_", 
             "C_var_len_template": "N{c_var}", 
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 
