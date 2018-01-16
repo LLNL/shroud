@@ -97,7 +97,7 @@ functions:
 - decl: const std::string& Function4b(
     const std::string& arg1,
     const std::string& arg2 )
-  options:
+  format:
     F_string_result_as_arg: output
 
 - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
@@ -171,7 +171,7 @@ functions:
 
 # test F_string_result_as_arg and optional arguments
 #- decl: const string& overload2(int flag = 0, bool flag2 = true) const
-#  options:
+#  format:
 #    F_string_result_as_arg: output
 
 # TypeID and DataTypeId must be define in types

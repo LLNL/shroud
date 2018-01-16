@@ -53,10 +53,9 @@ class AstNode(object):
     def option_to_fmt(self, fmtdict):
         """Set fmt based on options dictionary.
         """
-        for name in ['C_prefix', 'F_C_prefix', 
+        for name in ['C_prefix',
                      'C_this', 'C_result', 'CXX_this',
                      'F_this', 'F_result', 'F_derived_member',
-                     'C_string_result_as_arg', 'F_string_result_as_arg',
                      'C_header_filename_suffix',
                      'C_impl_filename_suffix',
                      'F_filename_suffix',
@@ -68,6 +67,12 @@ class AstNode(object):
                      'LUA_result']:
             if self.options.inlocal(name):
                 setattr(fmtdict, name, self.options[name])
+
+        for name in ['F_C_prefix',
+                     'C_string_result_as_arg', 'F_string_result_as_arg']:
+            if self.options.inlocal(name):
+                raise RuntimeError("Setting option {} for {}".format(
+                    name, self.__class__.__name__))
 
     def eval_template(self, name, tname='', fmt=None):
         """fmt[name] = self.name or option[name + tname + '_template']
@@ -171,7 +176,6 @@ class LibraryNode(AstNode):
             C_var_size_template = 'S{c_var}',        # argument for result of size(arg)
 
             # Fortran's names for C functions
-            F_C_prefix='c_',
             F_C_name_template=(
                 '{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
 
@@ -227,7 +231,14 @@ class LibraryNode(AstNode):
         format templates in options.
         """
 
-        fmt_library = util.Scope(None)
+        fmt_library = util.Scope(
+            F_C_prefix='c_',
+
+            C_string_result_as_arg = 'SHF_rv',
+            F_string_result_as_arg = '',
+
+            parent=None,
+        )
 
         fmt_library.library = self.library
         fmt_library.library_lower = fmt_library.library.lower()
@@ -235,7 +246,6 @@ class LibraryNode(AstNode):
         fmt_library.function_suffix = ''   # assume no suffix
         fmt_library.C_prefix = self.options.get(
             'C_prefix', fmt_library.library_upper[:3] + '_')
-        fmt_library.F_C_prefix = self.options['F_C_prefix']
         if self.namespace:
             fmt_library.namespace_scope = (
                 '::'.join(self.namespace.split()) + '::')
@@ -261,8 +271,6 @@ class LibraryNode(AstNode):
         fmt_library.F_result = 'SHT_rv'
         fmt_library.F_derived_member = 'voidptr'
 
-        fmt_library.C_string_result_as_arg = 'SHF_rv'
-        fmt_library.F_string_result_as_arg = ''
 
         fmt_library.F_filename_suffix = 'f'
 

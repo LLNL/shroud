@@ -159,7 +159,7 @@ classes:
 
     - decl: const string& getNameArg() const
     # This function will convert the return value into a argument
-      options:
+      format:
          F_string_result_as_arg: name
 
     - decl: ExClass2 *getRoot()

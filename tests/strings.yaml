@@ -90,7 +90,7 @@ functions:
 #  C_error_pattern: C_char_invalid_name
   doxygen:
     brief: return a 'const char *' as argument
-  options:
+  format:
     F_string_result_as_arg: output
 
 ########################################
@@ -110,7 +110,7 @@ functions:
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string&' as argument
-  options:
+  format:
     F_string_result_as_arg: output
 
 - decl: const string& getString2_empty+len=30()
@@ -136,7 +136,7 @@ functions:
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
-  options:
+  format:
     F_string_result_as_arg: output
 
 ########################################

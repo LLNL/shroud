@@ -1367,7 +1367,6 @@
                     "underscore_name": "function4b"
                 }, 
                 "options": {
-                    "F_string_result_as_arg": "output", 
                     "wrap_fortran": false
                 }
             }, 
@@ -5539,7 +5538,6 @@
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
-            "F_C_prefix": "c_", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 

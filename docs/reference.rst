@@ -106,9 +106,19 @@ C_impl_filename
 C_result
     TODO
 
+C_string_result_as_arg
+    The name of the output argument for string results.
+    Function which return ``char`` or ``std::string`` values return
+    the result in an additional argument in the C wrapper.
+    See also *F_string_result_as_arg*.
+
 c_temp
     Prefix for wrapper working variables.
     Defaults to *SHT_*.
+
+F_C_prefix
+    Prefix added to name of generated Fortran interface for C routines.
+    Defaults to **c_**.
 
 F_module_name
     Name of module for Fortran interface for the library.
@@ -122,6 +132,12 @@ F_impl_filename
 
 F_result
     TODO
+
+F_string_result_as_arg
+    The name of the output argument.
+    Function which return a ``char *`` will instead by converted to a
+    subroutine which require an additional argument for the result.
+    See also *C_string_result_as_arg*.
 
 library
     The value of global **field** *library*.
@@ -183,10 +199,6 @@ C_prefix
     Set from **options**.
     If no option is set then the first three letters
     of *library_upper* are used.
-
-F_C_prefix
-    Prefix for Fortran name for C wrapper.  Defaults to ``c_``.
-    Set from **options** and defaults to ``c_``
 
 
 
@@ -437,11 +449,6 @@ C_result
 C_return_type
    XXX   override return type of function
 
-C_string_result_as_arg
-  The name of the output argument for string results.
-  Function which return ``char`` or ``std::string`` values return
-  the result in an additional argument in the C wrapper.
-
 C_this
     Name of the C object argument.  Defaults to ``self``.
     It may be necessary to set this if it conflicts with an argument name.
@@ -462,10 +469,6 @@ CXX_this
     Name of the C++ object pointer set from the *C_this* argument.
     Defaults to ``SH_this``.
 
-
-F_C_prefix
-  Prefix added to name of generated Fortran interface for C routines.
-  Defaults to **c_**.
 
 F_derived_member
     The name of the member of the Fortran derived type which
@@ -488,11 +491,6 @@ F_result
     The name of the Fortran wrapper's result variable.
     It must not be the same as any of the routines arguments.
     It defaults to *SH_rv*  (Shroud return value).
-
-F_string_result_as_arg
-  The name of the output argument.
-  Function which return a ``char *`` will instead by converted to a
-  subroutine which require an additional argument for the result.
 
 F_string_len_trim
   For each function with a ``std::string`` argument, create another C

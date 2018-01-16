@@ -604,7 +604,7 @@ wrapped differently::
     - decl: const char * getChar1()  +pure
     - decl: const char * getChar2+len(30)()
     - decl: const char * getChar3()
-      options:
+      format:
          F_string_result_as_arg: output
 
 All of the generated C wrappers are very similar.  The buffer version
@@ -669,7 +669,7 @@ truncated::
 
 The third option gives the best of both worlds.  The C wrapper is only
 called once and any size result can be returned.  The result of the C
-function will be returned in the Fortran argument named by option
+function will be returned in the Fortran argument named by format string
 **F_string_result_as_arg**.  The potential downside is that a Fortran
 subroutine is generated instead of a function::
 
