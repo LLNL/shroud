@@ -88,11 +88,11 @@ module name_module
             type(C_PTR), value, intent(IN) :: self
         end subroutine xxx_tes_names_method1
 
-        subroutine xxx_tes_names_method2(self) &
+        subroutine xxx_tes_names_method2(self2) &
                 bind(C, name="XXX_TES_names_method2")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR), value, intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self2
         end subroutine xxx_tes_names_method2
 
         ! splicer begin class.Names.additional_interfaces
@@ -112,10 +112,10 @@ contains
 
     ! void method2()
     ! function_index=1
-    subroutine names_method2(obj)
-        class(FNames) :: obj
+    subroutine names_method2(obj2)
+        class(FNames) :: obj2
         ! splicer begin class.Names.method.method2
-        call xxx_tes_names_method2(obj%voidptr)
+        call xxx_tes_names_method2(obj2%voidptr)
         ! splicer end class.Names.method.method2
     end subroutine names_method2
 

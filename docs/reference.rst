@@ -116,6 +116,14 @@ c_temp
     Prefix for wrapper working variables.
     Defaults to *SHT_*.
 
+C_this
+    Name of the C object argument.  Defaults to ``self``.
+    It may be necessary to set this if it conflicts with an argument name.
+
+CXX_this
+    Name of the C++ object pointer set from the *C_this* argument.
+    Defaults to ``SH_this``.
+
 F_C_prefix
     Prefix added to name of generated Fortran interface for C routines.
     Defaults to **c_**.
@@ -138,6 +146,12 @@ F_string_result_as_arg
     Function which return a ``char *`` will instead by converted to a
     subroutine which require an additional argument for the result.
     See also *C_string_result_as_arg*.
+
+F_this
+   Name of the Fortran argument which is the derived type
+   which represents a C++ class.
+   It must not be the same as any of the routines arguments.
+   Defaults to ``obj``.
 
 library
     The value of global **field** *library*.
@@ -196,9 +210,9 @@ class_prefix
 
 C_prefix
     Prefix for C wrapper functions.
-    Set from **options**.
-    If no option is set then the first three letters
-    of *library_upper* are used.
+    The prefix helps to ensure unique global names.
+    Defaults to the first three letters of *library_upper*.
+
 
 
 
@@ -434,10 +448,6 @@ C_impl_filename_suffix:
    Defaults to ``cpp``.
    Other useful values might be ``cc`` or ``cxx``.
 
-C_prefix
-  Prefix added to name of generated C routines.
-  The prefix helps to ensure unique global names.
-
 C_proto_type
    XXX  override prototype of generated C function
 
@@ -448,10 +458,6 @@ C_result
 
 C_return_type
    XXX   override return type of function
-
-C_this
-    Name of the C object argument.  Defaults to ``self``.
-    It may be necessary to set this if it conflicts with an argument name.
 
 C_var_len_template
     Format for variable created with *len* annotation.
@@ -465,22 +471,12 @@ C_var_trim_template
     Format for variable created with *len_trim* annotation.
     Default ``L{c_var}``
 
-CXX_this
-    Name of the C++ object pointer set from the *C_this* argument.
-    Defaults to ``SH_this``.
-
 
 F_derived_member
     The name of the member of the Fortran derived type which
     wraps a C++ class.  It will contain a ``type(C_PTR)`` which
     points to the C++ instance.
     Defaults to *voidptr*.
-
-F_this
-   Name of the Fortran argument which is the derived type
-   which represents a C++ class.
-   It must not be the same as any of the routines arguments.
-   Defaults to ``obj``.
 
 F_filename_suffix:
    Suffix added to Fortran files.

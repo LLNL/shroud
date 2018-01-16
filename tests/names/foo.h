@@ -65,7 +65,7 @@ typedef struct s_TES_names TES_names;
 
 void XXX_TES_names_method1(TES_names * self);
 
-void XXX_TES_names_method2(TES_names * self);
+void XXX_TES_names_method2(TES_names * self2);
 
 #ifdef __cplusplus
 }

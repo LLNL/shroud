@@ -78,6 +78,10 @@ classes:
     -  decl: void method1()
        F_name_function: type_method1
     -  decl: void method2()
+       format:
+         C_this: self2
+         CXX_this: SH_this2
+         F_this:  obj2
 
 # test file suffix
   - name: Names2

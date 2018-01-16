@@ -54,8 +54,8 @@ class AstNode(object):
         """Set fmt based on options dictionary.
         """
         for name in [
-                     'C_this', 'C_result', 'CXX_this',
-                     'F_this', 'F_result', 'F_derived_member',
+                     'C_result',
+                     'F_result', 'F_derived_member',
                      'C_header_filename_suffix',
                      'C_impl_filename_suffix',
                      'F_filename_suffix',
@@ -69,6 +69,7 @@ class AstNode(object):
                 setattr(fmtdict, name, self.options[name])
 
         for name in ['C_prefix', 'F_C_prefix',
+                     'C_this', 'CXX_this', 'F_this',
                      'C_string_result_as_arg', 'F_string_result_as_arg']:
             if self.options.inlocal(name):
                 raise RuntimeError("Setting option {} for {}".format(
@@ -233,8 +234,12 @@ class LibraryNode(AstNode):
 
         fmt_library = util.Scope(
             C_prefix = self.library.upper()[:3] + '_',
+            C_this = 'self',
+
+            CXX_this = 'SH_this',
 
             F_C_prefix='c_',
+            F_this = 'obj',
 
             C_string_result_as_arg = 'SHF_rv',
             F_string_result_as_arg = '',
@@ -261,13 +266,10 @@ class LibraryNode(AstNode):
         fmt_library.C_pre_call = ''
         fmt_library.C_post_call = ''
 
-        fmt_library.C_this = 'self'
         fmt_library.C_result = 'SHT_rv'
         fmt_library.c_temp = 'SHT_'
 
-        fmt_library.CXX_this = 'SH_this'
 
-        fmt_library.F_this = 'obj'
         fmt_library.F_result = 'SHT_rv'
         fmt_library.F_derived_member = 'voidptr'
 
