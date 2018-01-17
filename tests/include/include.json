@@ -321,6 +321,7 @@
             "CXX_template": "", 
             "CXX_this": "SH_this", 
             "CXX_this_call": "", 
+            "C_bufferify_suffix": "_bufferify", 
             "C_header_filename": "wrapdefault_library.h", 
             "C_header_filename_suffix": "h", 
             "C_impl_filename": "wrapdefault_library.cpp", 
@@ -406,7 +407,6 @@
         "language": "c++", 
         "namespace": "one two", 
         "options": {
-            "C_bufferify_suffix": "_bufferify", 
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 

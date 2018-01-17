@@ -179,7 +179,7 @@ functions:
 # local declarations shadow parameter
 
 - decl: void explicit1(char * name+len_trim(AAlen)+intent(in))
-  options:
+  format:
     C_bufferify_suffix: _BUFFER
 # len_trim is added for free because intent(in)
 

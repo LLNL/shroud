@@ -508,7 +508,7 @@ class GenFunctions(object):
         C_new._generated = 'arg_to_buffer'
         C_new._error_pattern_suffix = '_as_buffer'
         fmt = C_new.fmtdict
-        fmt.function_suffix = fmt.function_suffix + options.C_bufferify_suffix
+        fmt.function_suffix = fmt.function_suffix + fmt.C_bufferify_suffix
 
         options = C_new.options
         options.wrap_c = True

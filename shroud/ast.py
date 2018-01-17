@@ -167,7 +167,6 @@ class LibraryNode(AstNode):
             C_name_template=(
                 '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
 
-            C_bufferify_suffix='_bufferify',
             C_var_len_template = 'N{c_var}',         # argument for result of len(arg)
             C_var_trim_template = 'L{c_var}',        # argument for result of len_trim(arg)
             C_var_size_template = 'S{c_var}',        # argument for result of size(arg)
@@ -231,6 +230,7 @@ class LibraryNode(AstNode):
         fmt_library = util.Scope(
             parent=None,
 
+            C_bufferify_suffix='_bufferify',
             C_prefix = self.library.upper()[:3] + '_',
             C_result = 'SHT_rv',
             c_temp = 'SHT_',

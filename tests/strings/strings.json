@@ -48,6 +48,7 @@
             "CXX_template": "", 
             "CXX_this": "SH_this", 
             "CXX_this_call": "", 
+            "C_bufferify_suffix": "_bufferify", 
             "C_header_filename": "wrapstrings.h", 
             "C_header_filename_suffix": "h", 
             "C_impl_filename": "wrapstrings.cpp", 
@@ -2837,6 +2838,7 @@
                 "_subprogram": "subroutine", 
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
                 "format": {
+                    "C_bufferify_suffix": "_BUFFER", 
                     "C_call_code": "explicit1(name);", 
                     "C_call_list": "name", 
                     "C_name": "STR_explicit1", 
@@ -2858,9 +2860,7 @@
                     "function_name": "explicit1", 
                     "underscore_name": "explicit1"
                 }, 
-                "options": {
-                    "C_bufferify_suffix": "_BUFFER"
-                }
+                "options": {}
             }, 
             {
                 "_PTR_C_CXX_index": 16, 
@@ -3587,7 +3587,6 @@
         ], 
         "language": "c++", 
         "options": {
-            "C_bufferify_suffix": "_bufferify", 
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
