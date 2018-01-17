@@ -863,7 +863,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_function4a_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "Function4a", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "function4a"
                 }, 
                 "options": {
                     "wrap_c": true, 

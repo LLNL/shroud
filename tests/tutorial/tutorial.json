@@ -1218,7 +1218,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_function4a_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "Function4a", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "function4a"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -1518,8 +1520,11 @@
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_function4b_bufferify", 
+                    "F_string_result_as_arg": "output", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "Function4b", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "function4b"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -1621,8 +1626,11 @@
                     "F_name_function": "function4b", 
                     "F_name_generic": "function4b", 
                     "F_name_impl": "function4b", 
+                    "F_string_result_as_arg": "output", 
                     "F_subprogram": "subroutine", 
-                    "function_suffix": ""
+                    "function_name": "Function4b", 
+                    "function_suffix": "", 
+                    "underscore_name": "function4b"
                 }, 
                 "options": {
                     "wrap_c": false, 
@@ -1682,7 +1690,9 @@
                     "F_result_clause": " result(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
-                    "function_suffix": ""
+                    "function_name": "Function5", 
+                    "function_suffix": "", 
+                    "underscore_name": "function5"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -1773,7 +1783,9 @@
                     "F_result_clause": " result(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
-                    "function_suffix": "_arg1"
+                    "function_name": "Function5", 
+                    "function_suffix": "_arg1", 
+                    "underscore_name": "function5"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2118,7 +2130,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_function6_from_name_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_from_name_bufferify"
+                    "function_name": "Function6", 
+                    "function_suffix": "_from_name_bufferify", 
+                    "underscore_name": "function6"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2345,7 +2359,9 @@
                     "F_name_impl": "function7_int", 
                     "F_subprogram": "subroutine", 
                     "c_const": "", 
-                    "function_suffix": "_int"
+                    "function_name": "Function7", 
+                    "function_suffix": "_int", 
+                    "underscore_name": "function7"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2424,7 +2440,9 @@
                     "F_name_impl": "function7_double", 
                     "F_subprogram": "subroutine", 
                     "c_const": "", 
-                    "function_suffix": "_double"
+                    "function_name": "Function7", 
+                    "function_suffix": "_double", 
+                    "underscore_name": "function7"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2518,7 +2536,9 @@
                     "F_result_clause": " result(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
-                    "function_suffix": "_int"
+                    "function_name": "Function8", 
+                    "function_suffix": "_int", 
+                    "underscore_name": "function8"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2575,7 +2595,9 @@
                     "F_result_clause": " result(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
-                    "function_suffix": "_double"
+                    "function_name": "Function8", 
+                    "function_suffix": "_double", 
+                    "underscore_name": "function8"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2723,7 +2745,9 @@
                     "F_name_generic": "function9", 
                     "F_name_impl": "function9_float", 
                     "F_subprogram": "subroutine", 
-                    "function_suffix": "_float"
+                    "function_name": "Function9", 
+                    "function_suffix": "_float", 
+                    "underscore_name": "function9"
                 }, 
                 "options": {
                     "wrap_c": false, 
@@ -2779,7 +2803,9 @@
                     "F_name_generic": "function9", 
                     "F_name_impl": "function9_double", 
                     "F_subprogram": "subroutine", 
-                    "function_suffix": "_double"
+                    "function_name": "Function9", 
+                    "function_suffix": "_double", 
+                    "underscore_name": "function9"
                 }, 
                 "options": {
                     "wrap_c": false, 
@@ -3048,9 +3074,12 @@
                     "F_name_generic": "function10", 
                     "F_name_impl": "function10_1_float", 
                     "F_subprogram": "subroutine", 
-                    "function_suffix": "_1_float"
+                    "function_name": "Function10", 
+                    "function_suffix": "_1_float", 
+                    "underscore_name": "function10"
                 }, 
                 "options": {
+                    "F_string_len_trim": true, 
                     "wrap_c": false, 
                     "wrap_fortran": true, 
                     "wrap_lua": false, 
@@ -3127,9 +3156,12 @@
                     "F_name_generic": "function10", 
                     "F_name_impl": "function10_1_double", 
                     "F_subprogram": "subroutine", 
-                    "function_suffix": "_1_double"
+                    "function_name": "Function10", 
+                    "function_suffix": "_1_double", 
+                    "underscore_name": "function10"
                 }, 
                 "options": {
+                    "F_string_len_trim": true, 
                     "wrap_c": false, 
                     "wrap_fortran": true, 
                     "wrap_lua": false, 
@@ -3237,7 +3269,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_function10_1_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_1_bufferify"
+                    "function_name": "Function10", 
+                    "function_suffix": "_1_bufferify", 
+                    "underscore_name": "function10"
                 }, 
                 "fortran_generic": {
                     "arg2": [
@@ -3246,6 +3280,7 @@
                     ]
                 }, 
                 "options": {
+                    "F_string_len_trim": true, 
                     "wrap_c": true, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -3337,7 +3372,9 @@
                     "F_result_clause": " result(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
-                    "function_suffix": "_num"
+                    "function_name": "overload1", 
+                    "function_suffix": "_num", 
+                    "underscore_name": "overload1"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -3459,7 +3496,9 @@
                     "F_result_clause": " result(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
-                    "function_suffix": "_num_offset"
+                    "function_name": "overload1", 
+                    "function_suffix": "_num_offset", 
+                    "underscore_name": "overload1"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -3784,7 +3823,9 @@
                     "F_result_clause": " result(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
-                    "function_suffix": "_3"
+                    "function_name": "overload1", 
+                    "function_suffix": "_3", 
+                    "underscore_name": "overload1"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -3928,7 +3969,9 @@
                     "F_result_clause": " result(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
-                    "function_suffix": "_4"
+                    "function_name": "overload1", 
+                    "function_suffix": "_4", 
+                    "underscore_name": "overload1"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -4612,7 +4655,9 @@
                     "C_return_type": "int", 
                     "F_C_name": "c_vector_sum_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "vector_sum", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "vector_sum"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -4756,7 +4801,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_vector_iota_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "vector_iota", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "vector_iota"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -4900,7 +4947,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_vector_increment_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "vector_increment", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "vector_increment"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -5059,7 +5108,9 @@
                     "C_return_type": "int", 
                     "F_C_name": "c_vector_string_count_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "vector_string_count", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "vector_string_count"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -5218,7 +5269,9 @@
                     "C_return_type": "int", 
                     "F_C_name": "c_vector_string_fill_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "vector_string_fill", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "vector_string_fill"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -5370,7 +5423,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_vector_string_append_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "vector_string_append", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "vector_string_append"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -5516,7 +5571,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_last_function_called_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "LastFunctionCalled", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "last_function_called"
                 }, 
                 "options": {
                     "wrap_c": true, 

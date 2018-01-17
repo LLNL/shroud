@@ -255,7 +255,9 @@
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_name": "c_exclass1_ctor_1_bufferify", 
                             "c_const": "", 
-                            "function_suffix": "_1_bufferify"
+                            "function_name": "ctor", 
+                            "function_suffix": "_1_bufferify", 
+                            "underscore_name": "ctor"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -555,7 +557,9 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_bufferify"
+                            "function_name": "getName", 
+                            "function_suffix": "_bufferify", 
+                            "underscore_name": "get_name"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -761,7 +765,9 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_bufferify"
+                            "function_name": "getNameErrorCheck", 
+                            "function_suffix": "_bufferify", 
+                            "underscore_name": "get_name_error_check"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -900,10 +906,13 @@
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_name": "c_exclass1_get_name_arg_bufferify", 
+                            "F_string_result_as_arg": "name", 
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_bufferify"
+                            "function_name": "getNameArg", 
+                            "function_suffix": "_bufferify", 
+                            "underscore_name": "get_name_arg"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -965,8 +974,11 @@
                             "F_name_function": "get_name_arg", 
                             "F_name_generic": "get_name_arg", 
                             "F_name_impl": "exclass1_get_name_arg", 
+                            "F_string_result_as_arg": "name", 
                             "F_subprogram": "subroutine", 
-                            "function_suffix": ""
+                            "function_name": "getNameArg", 
+                            "function_suffix": "", 
+                            "underscore_name": "get_name_arg"
                         }, 
                         "options": {
                             "wrap_c": false, 
@@ -1618,7 +1630,9 @@
                             "C_return_type": "AA_exclass2 *", 
                             "F_C_name": "c_exclass2_ctor_bufferify", 
                             "c_const": "", 
-                            "function_suffix": "_bufferify"
+                            "function_name": "ctor", 
+                            "function_suffix": "_bufferify", 
+                            "underscore_name": "ctor"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -1821,7 +1835,9 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_bufferify"
+                            "function_name": "getName", 
+                            "function_suffix": "_bufferify", 
+                            "underscore_name": "get_name"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -1972,7 +1988,9 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_bufferify"
+                            "function_name": "getName2", 
+                            "function_suffix": "_bufferify", 
+                            "underscore_name": "get_name2"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -2123,7 +2141,9 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_bufferify"
+                            "function_name": "getName3", 
+                            "function_suffix": "_bufferify", 
+                            "underscore_name": "get_name3"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -2274,7 +2294,9 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_bufferify"
+                            "function_name": "getName4", 
+                            "function_suffix": "_bufferify", 
+                            "underscore_name": "get_name4"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -2510,7 +2532,9 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_0"
+                            "function_name": "declare", 
+                            "function_suffix": "_0", 
+                            "underscore_name": "declare"
                         }, 
                         "fortran_generic": {
                             "len": [
@@ -2578,7 +2602,9 @@
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_0_int", 
                             "F_subprogram": "subroutine", 
-                            "function_suffix": "_0_int"
+                            "function_name": "declare", 
+                            "function_suffix": "_0_int", 
+                            "underscore_name": "declare"
                         }, 
                         "options": {
                             "wrap_c": false, 
@@ -2640,7 +2666,9 @@
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_0_long", 
                             "F_subprogram": "subroutine", 
-                            "function_suffix": "_0_long"
+                            "function_name": "declare", 
+                            "function_suffix": "_0_long", 
+                            "underscore_name": "declare"
                         }, 
                         "options": {
                             "wrap_c": false, 
@@ -2860,7 +2888,9 @@
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_1_int", 
                             "F_subprogram": "subroutine", 
-                            "function_suffix": "_1_int"
+                            "function_name": "declare", 
+                            "function_suffix": "_1_int", 
+                            "underscore_name": "declare"
                         }, 
                         "options": {
                             "wrap_c": false, 
@@ -2945,7 +2975,9 @@
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_1_long", 
                             "F_subprogram": "subroutine", 
-                            "function_suffix": "_1_long"
+                            "function_name": "declare", 
+                            "function_suffix": "_1_long", 
+                            "underscore_name": "declare"
                         }, 
                         "options": {
                             "wrap_c": false, 
@@ -3184,7 +3216,9 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_int"
+                            "function_name": "setValue", 
+                            "function_suffix": "_int", 
+                            "underscore_name": "set_value"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -3266,7 +3300,9 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_long"
+                            "function_name": "setValue", 
+                            "function_suffix": "_long", 
+                            "underscore_name": "set_value"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -3348,7 +3384,9 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_float"
+                            "function_name": "setValue", 
+                            "function_suffix": "_float", 
+                            "underscore_name": "set_value"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -3430,7 +3468,9 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_double"
+                            "function_name": "setValue", 
+                            "function_suffix": "_double", 
+                            "underscore_name": "set_value"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -3527,7 +3567,9 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_int"
+                            "function_name": "getValue", 
+                            "function_suffix": "_int", 
+                            "underscore_name": "get_value"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -3587,7 +3629,9 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_suffix": "_double"
+                            "function_name": "getValue", 
+                            "function_suffix": "_double", 
+                            "underscore_name": "get_value"
                         }, 
                         "options": {
                             "wrap_c": true, 
@@ -4000,7 +4044,9 @@
                     "C_return_type": "bool", 
                     "F_C_name": "c_is_name_valid_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "isNameValid", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "is_name_valid"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -4388,7 +4434,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_test_names_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "test_names", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "test_names"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -4619,7 +4667,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_test_names_flag_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_flag_bufferify"
+                    "function_name": "test_names", 
+                    "function_suffix": "_flag_bufferify", 
+                    "underscore_name": "test_names"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -4667,7 +4717,9 @@
                     "F_name_impl": "testoptional_0", 
                     "F_subprogram": "subroutine", 
                     "c_const": "", 
-                    "function_suffix": "_0"
+                    "function_name": "testoptional", 
+                    "function_suffix": "_0", 
+                    "underscore_name": "testoptional"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -4746,7 +4798,9 @@
                     "F_name_impl": "testoptional_1", 
                     "F_subprogram": "subroutine", 
                     "c_const": "", 
-                    "function_suffix": "_1"
+                    "function_name": "testoptional", 
+                    "function_suffix": "_1", 
+                    "underscore_name": "testoptional"
                 }, 
                 "options": {
                     "wrap_c": true, 

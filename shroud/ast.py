@@ -622,9 +622,9 @@ class FunctionNode(AstNode):
         # Shallow copy everything
         new = copy.copy(self)
 
-        # new layer of Scopes
-        new.fmtdict = util.Scope(self.fmtdict)
-        new.options = util.Scope(self.options)
+        # new Scope with same inlocal and parent
+        new.fmtdict = self.fmtdict.clone()
+        new.options = self.options.clone()
     
         # deep copy dictionaries
         new._ast = copy.deepcopy(self._ast)

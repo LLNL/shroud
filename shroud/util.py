@@ -399,6 +399,15 @@ class Scope(object):
         """
         return key in self.__dict__
 
+    def clone(self):
+        """return new Scope with same inlocal and parent"""
+        new = Scope(self.__parent)
+        skip = '_' + self.__class__.__name__ + '__'   # __name is skipped
+        for key, value in self.__dict__.items():
+            if not key.startswith(skip):
+                new.__dict__[key] = value
+        return new
+
     def _to_dict(self):
         d = {}
         skip = '_' + self.__class__.__name__ + '__'   # __name is skipped

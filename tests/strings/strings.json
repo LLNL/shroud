@@ -323,7 +323,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_return_char_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "returnChar", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "return_char"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -567,7 +569,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_pass_char_ptr_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "passCharPtr", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "pass_char_ptr"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -740,7 +744,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_pass_char_ptr_in_out_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "passCharPtrInOut", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "pass_char_ptr_in_out"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -887,7 +893,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_get_char1_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "getChar1", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_char1"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -1039,7 +1047,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_get_char2_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "getChar2", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_char2"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -1177,8 +1187,11 @@
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_char3_bufferify", 
+                    "F_string_result_as_arg": "output", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "getChar3", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_char3"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -1243,8 +1256,11 @@
                     "F_name_function": "get_char3", 
                     "F_name_generic": "get_char3", 
                     "F_name_impl": "get_char3", 
+                    "F_string_result_as_arg": "output", 
                     "F_subprogram": "subroutine", 
-                    "function_suffix": ""
+                    "function_name": "getChar3", 
+                    "function_suffix": "", 
+                    "underscore_name": "get_char3"
                 }, 
                 "options": {
                     "wrap_c": false, 
@@ -1394,7 +1410,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string1_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "getString1", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_string1"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -1552,7 +1570,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string2_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "getString2", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_string2"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -1696,8 +1716,11 @@
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string3_bufferify", 
+                    "F_string_result_as_arg": "output", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "getString3", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_string3"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -1763,8 +1786,11 @@
                     "F_name_function": "get_string3", 
                     "F_name_generic": "get_string3", 
                     "F_name_impl": "get_string3", 
+                    "F_string_result_as_arg": "output", 
                     "F_subprogram": "subroutine", 
-                    "function_suffix": ""
+                    "function_name": "getString3", 
+                    "function_suffix": "", 
+                    "underscore_name": "get_string3"
                 }, 
                 "options": {
                     "wrap_c": false, 
@@ -1922,7 +1948,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string2_empty_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "getString2_empty", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_string2_empty"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2059,7 +2087,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string5_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "getString5", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_string5"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2181,8 +2211,11 @@
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string6_bufferify", 
+                    "F_string_result_as_arg": "output", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "getString6", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_string6"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2248,8 +2281,11 @@
                     "F_name_function": "get_string6", 
                     "F_name_generic": "get_string6", 
                     "F_name_impl": "get_string6", 
+                    "F_string_result_as_arg": "output", 
                     "F_subprogram": "subroutine", 
-                    "function_suffix": ""
+                    "function_name": "getString6", 
+                    "function_suffix": "", 
+                    "underscore_name": "get_string6"
                 }, 
                 "options": {
                     "wrap_c": false, 
@@ -2419,7 +2455,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_accept_string_const_reference_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "acceptStringConstReference", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "accept_string_const_reference"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2595,7 +2633,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_accept_string_reference_out_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "acceptStringReferenceOut", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "accept_string_reference_out"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2773,7 +2813,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_accept_string_reference_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "acceptStringReference", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "accept_string_reference"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2928,6 +2970,7 @@
                 "_subprogram": "subroutine", 
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
                 "format": {
+                    "C_bufferify_suffix": "_BUFFER", 
                     "C_call_code": "explicit1(SH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "STR_explicit1_BUFFER", 
@@ -2938,7 +2981,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_explicit1_buffer", 
                     "c_const": "", 
-                    "function_suffix": "_BUFFER"
+                    "function_name": "explicit1", 
+                    "function_suffix": "_BUFFER", 
+                    "underscore_name": "explicit1"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -3104,7 +3149,9 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_explicit2_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "explicit2", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "explicit2"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -3334,9 +3381,12 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_creturn_char_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "CreturnChar", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "creturn_char"
                 }, 
                 "options": {
+                    "C_extern_C": true, 
                     "wrap_c": true, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -3580,9 +3630,12 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_cpass_char_ptr_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "CpassCharPtr", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "cpass_char_ptr"
                 }, 
                 "options": {
+                    "C_extern_C": true, 
                     "wrap_c": true, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 

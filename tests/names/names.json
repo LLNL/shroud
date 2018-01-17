@@ -684,7 +684,9 @@
                     "C_return_type": "int", 
                     "F_C_name": "yyy_tes_function4_bufferify", 
                     "c_const": "", 
-                    "function_suffix": "_bufferify"
+                    "function_name": "function4", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "function4"
                 }, 
                 "options": {
                     "wrap_c": true, 
