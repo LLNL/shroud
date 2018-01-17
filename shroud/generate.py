@@ -235,8 +235,6 @@ class GenFunctions(object):
         # Look for overloaded functions
         cxx_overload = {}
         for function in functions:
-            if function.function_suffix is not None:
-                function.fmtdict.function_suffix = function.function_suffix
             self.append_function_index(function)
             cxx_overload. \
                 setdefault(function._ast.name, []). \

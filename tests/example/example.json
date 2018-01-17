@@ -1131,7 +1131,6 @@
                             "function_suffix": "_from_int", 
                             "underscore_name": "get_value"
                         }, 
-                        "function_suffix": "_from_int", 
                         "options": {}
                     }, 
                     {
@@ -4307,7 +4306,6 @@
                     "function_suffix": "", 
                     "underscore_name": "test_names"
                 }, 
-                "function_suffix": "", 
                 "options": {}
             }, 
             {
@@ -4386,7 +4384,6 @@
                     "c_const": "", 
                     "function_suffix": "_bufferify"
                 }, 
-                "function_suffix": "", 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -4513,7 +4510,6 @@
                     "function_suffix": "_flag", 
                     "underscore_name": "test_names"
                 }, 
-                "function_suffix": "_flag", 
                 "options": {}
             }, 
             {
@@ -4619,7 +4615,6 @@
                     "c_const": "", 
                     "function_suffix": "_flag_bufferify"
                 }, 
-                "function_suffix": "_flag", 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 

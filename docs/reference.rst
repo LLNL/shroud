@@ -291,6 +291,10 @@ C_call_list
 C_call_code
     Code used to call function in C wrapper.
 
+C_name
+    Name of the C wrapper function.
+    Defaults to evaluation of option *C_name_template*.
+
 C_post_call
     Statements added after the call to the function.
     Used to convert result and/or ``intent(OUT)`` arguments to C types.
@@ -342,7 +346,8 @@ F_C_call
     This can be done for functions with string arguments.
 
 F_C_name
-    The name of the ``bind(C)`` interface function.
+    Name of the Fortran ``BIND(C)`` interface for a C function.
+    Defaults to the lower case version of *F_C_name_template*.
 
 F_C_pure_clause
     TODO
@@ -357,11 +362,17 @@ F_pure_clause
     For non-void function, ``pure`` if the *pure* annotation is added or 
     the function is ``const`` and all arguments are ``intent(in)``.
 
-F_name_method
-    Evaluation of *F_name_method_template*.
+F_name_function
+    The name of the *F_name_impl* subprogram when used as a
+    type procedure.
+    Defaults to evaluation of option *F_name_function_template*.
+
+F_name_generic
+    Defaults to evaluation of option *F_name_generic_template*.
 
 F_name_impl
-    Evaluate of *F_name_impl_template*.
+    Name of the Fortran implementation function.
+    Defaults to evaluation of option *F_name_impl_template* .
 
 F_result_clause
     `` result({F_result})`` for functions.
@@ -369,6 +380,10 @@ F_result_clause
 
 function_name
     Name of function in the YAML file.
+
+LUA_name
+    Name of function as known by LUA.
+    Defaults to evaluation of option *LUA_name_template*.
 
 underscore_name
     *function_name* converted from CamelCase to snake_case.
@@ -999,17 +1014,12 @@ function_suffix
    Suffix to append to the end of generated name.
 
 return_this
-   The method returns a reference to ``this``.  This idiom can be used
+   If true, the method returns a reference to ``this``.  This idiom can be used
    to chain calls in C++.  This idiom does not translate to C and Fortran.
    Instead the *C_return_type* format is set to ``void``.
 
-
 C_code
     C++ code to use within the splicer block for this function.
-
-C_name
-    Name of the C wrapper function.
-    Defaults to evaluation of option *C_name_template*.
 
 C_post_call
     Code added after all of the argument *post_call* code.
@@ -1027,28 +1037,12 @@ C_return_code
     Code used to compute the return value.
     Must include the ``return`` statement.
 
-F_C_name
-    Name of the Fortran ``BIND(C)`` interface for a C function.
-    Defaults to the lower case version of *F_C_name_template*.
-
 F_code
     Fortran code to use within the splicer block for this function.
 
 ..    tut_class1_method1
 
-F_name_impl
-    Name of the Fortran implementation function.
-    Defaults to evaluation of option *F_name_impl_template* .
-
 ..    class1_method1
-
-F_name_function
-    The name of the *F_name_impl* subprogram when used as a
-    type procedure.
-    Defaults to evaluation of option *F_name_function_template*.
-
-F_name_generic
-    Defaults to evaluation of option *F_name_generic_template*.
 
 F_name_instance_get
     Name of method to get ``type(C_PTR)`` instance pointer from wrapped class.
@@ -1059,10 +1053,6 @@ F_name_instance_set
     Name of method to set ``type(C_PTR)`` instance pointer in wrapped class.
     Defaults to *set_instance*.
     If the name is blank, no function is generated.
-
-LUA_name
-    Name of function as known by LUA.
-    Defaults to evaluation of option *LUA_name_template*.
 
 
 Annotations

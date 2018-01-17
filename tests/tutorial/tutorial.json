@@ -2038,7 +2038,6 @@
                     "function_suffix": "_from_name", 
                     "underscore_name": "function6"
                 }, 
-                "function_suffix": "_from_name", 
                 "options": {}
             }, 
             {
@@ -2117,7 +2116,6 @@
                     "c_const": "", 
                     "function_suffix": "_from_name_bufferify"
                 }, 
-                "function_suffix": "_from_name", 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -2219,7 +2217,6 @@
                     "function_suffix": "_from_index", 
                     "underscore_name": "function6"
                 }, 
-                "function_suffix": "_from_index", 
                 "options": {}
             }, 
             {

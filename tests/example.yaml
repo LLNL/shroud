@@ -168,7 +168,8 @@ classes:
     - decl: ExClass2 *getRoot()
 
     - decl: int  getValue(int value)
-      function_suffix: _from_int
+      format:
+        function_suffix: _from_int
     - decl: long getValue(long value)
 
     - decl: void *getAddr()
@@ -283,9 +284,11 @@ functions:
   # Test the name of generated 'bufferify' functions
   -  decl: void test_names(const std::string &name)
      # explicitly set suffix, otherwise it defaults to _0
-     function_suffix:
+     format:
+       function_suffix:
   -  decl: void test_names(const std::string &name, int flag)
-     function_suffix: _flag
+     format:
+       function_suffix: _flag
 
   - decl: void testoptional(int i = 1, long j=2)
 

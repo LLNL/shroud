@@ -108,9 +108,11 @@ functions:
 
 # overloaded functions
 - decl: void Function6(const std::string& name)
-  function_suffix: _from_name
+  format:
+    function_suffix: _from_name
 - decl: void Function6(int indx)
-  function_suffix: _from_index
+  format:
+    function_suffix: _from_index
 
 - decl: void Function7(ArgType arg)
   cxx_template:

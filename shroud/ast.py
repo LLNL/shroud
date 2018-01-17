@@ -566,8 +566,9 @@ class FunctionNode(AstNode):
 #                'F_code',
                 'F_name_function', 'F_name_generic', 'F_name_impl',
                 'LUA_name', 'LUA_name_impl',
-#                'PY_error_pattern', 'PY_name_impl',
-#                'function_suffix'
+#                'PY_error_pattern',
+                'PY_name_impl',
+                'function_suffix'
         ]:
             if n in kwargs:
                 raise DeprecationWarning("Setting field {} in function, change to format group".format(
@@ -579,8 +580,8 @@ class FunctionNode(AstNode):
                 'C_post_call', 'C_post_call_buf',
                 'C_return_code', 'C_return_type',
                 'F_code',
-                'PY_error_pattern', 'PY_name_impl',
-                'function_suffix']:
+                'PY_error_pattern',
+        ]:
             setattr(self, n, kwargs.get(n, None))
 
         self.fmtdict = util.Scope(parent.fmtdict)
@@ -617,11 +618,6 @@ class FunctionNode(AstNode):
             value = getattr(self,key)
             if value:
                 d[key] = value
-
-        for key in ['function_suffix']:
-            value = getattr(self,key)
-            if value is not None:   # '' is OK
-                d[key] = value
         return d
 
     def clone(self):
@@ -647,8 +643,7 @@ def clean_dictionary(dd):
     """YAML converts some blank fields to None,
     but we want blank.
     """
-    for key in ['cxx_header', 'namespace',
-                'function_suffix']:
+    for key in ['cxx_header', 'namespace']:
         if key in dd and dd[key] is None:
             dd[key] = ''
 
@@ -660,6 +655,11 @@ def clean_dictionary(dd):
             if value is None:
                 dd['default_arg_suffix'][i] = ''
 
+    if 'format' in dd:
+        dd0 = dd['format']
+        for key in ['function_suffix']:
+            if key in dd0 and dd0[key] is None:
+                dd0[key] = ''
 
 def is_options_only(node):
     """Detect an options only node.
