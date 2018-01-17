@@ -222,6 +222,8 @@ class LibraryNode(AstNode):
             c_temp = 'SHT_',
             C_this = 'self',
 
+            C_custom_return_type = '',  # assume no value
+
             CXX_this = 'SH_this',
 
             F_C_prefix='c_',
@@ -549,14 +551,14 @@ class FunctionNode(AstNode):
     def default_format(self, parent, format, kwargs):
 
         # referenced explicity (not via fmt)
-        # C_code, C_return_code, C_return_type, F_code
+        # C_code, F_code
         
         # Move fields from kwargs into instance
         for n in [
 #                'C_code', 'C_error_pattern',
                  'C_name',
 #                'C_post_call', 'C_post_call_buf',
-#                'C_return_code', 'C_return_type',
+                'C_return_code', 'C_return_type',
                 'F_C_name',
 #                'F_code',
                 'F_name_function', 'F_name_generic', 'F_name_impl',
@@ -573,7 +575,6 @@ class FunctionNode(AstNode):
         for n in [
                 'C_code', 'C_error_pattern',
                 'C_post_call', 'C_post_call_buf',
-                'C_return_code', 'C_return_type',
                 'F_code',
                 'PY_error_pattern',
         ]:
@@ -584,6 +585,10 @@ class FunctionNode(AstNode):
         self.option_to_fmt(self.fmtdict)
         if format:
             self.fmtdict.update(format, replace=True)
+            if 'C_return_type' in format:
+                # wrapc.py will overwrite C_return_type.
+                # keep original value for wrapf.py.
+                self.fmtdict.C_custom_return_type = format['C_return_type']
 
     def _to_dict(self):
         """Convert to dictionary.
@@ -600,7 +605,6 @@ class FunctionNode(AstNode):
                     'fortran_generic', 'return_this',
                     'C_code', 'C_error_pattern',
                     'C_post_call', 'C_post_call_buf', 
-                    'C_return_code', 'C_return_type',
                     'F_code',
                     'PY_error_pattern',
                     '_PTR_C_CXX_index', '_PTR_F_C_index',

@@ -549,11 +549,10 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = 'void'
         elif is_dtor:
             fmt_func.C_return_type = 'void'
-        elif node.C_return_type is not None:
-            fmt_func.C_return_type = node.C_return_type
+        elif fmt_func.C_custom_return_type:
+            pass
         else:
-            fmt_func.C_return_type = options.get(
-                'C_return_type', ast.gen_arg_as_c(name=None))
+            fmt_func.C_return_type = ast.gen_arg_as_c(name=None)
 
         if pre_call:
             fmt_func.C_pre_call = '\n'.join(pre_call)
@@ -581,13 +580,12 @@ class Wrapc(util.WrapperMixin):
             C_code = splicer_code
         else:
             # generate the C body
-            fmt_func.C_return_code = 'return;'
+            C_return_code = 'return;'
             if is_ctor:
                 fmt_func.C_call_code = wformat('{cxx_rv_decl} = new {cxx_class}'
                                '({C_call_list});', fmt_result)
-                fmt_func.C_return_code = ('return '
-                               + wformat(result_typedef.cxx_to_c, fmt_result)
-                               + ';')
+                C_return_code = ('return {};'.format(
+                    wformat(result_typedef.cxx_to_c, fmt_result)))
             elif is_dtor:
                 fmt_func.C_call_code = 'delete %s;' % fmt_func.CXX_this
             elif CXX_subprogram == 'subroutine':
@@ -631,10 +629,9 @@ class Wrapc(util.WrapperMixin):
                 if subprogram == 'function':
                     # Note: A C function may be converted into a Fortran subroutine subprogram
                     # when the result is returned in an argument.
-                    fmt_func.C_return_code = ('return '
-                                            + wformat(return_lang, fmt_result)
-                                            + ';')
-
+                    C_return_code = 'return {};'.format(
+                        wformat(return_lang, fmt_result))
+ 
             if node.C_post_call is not None:
                 need_wrapper = True
                 post_call.append('{')
@@ -642,10 +639,11 @@ class Wrapc(util.WrapperMixin):
                 append_format(post_call, node.C_post_call, fmt_func)
                 post_call.append('}')
 
-            if node.C_return_code is not None:
-                # override any computed return code.
+            if fmt_func.inlocal('C_return_code'):
                 need_wrapper = True
-                fmt_func.C_return_code = wformat(node.C_return_code, fmt_func)
+                C_return_code = wformat(fmt_func.C_return_code, fmt_func)
+            else:
+                fmt_func.C_return_code = C_return_code
 
             # copy-out values, clean up
             C_code = [1]
@@ -653,7 +651,7 @@ class Wrapc(util.WrapperMixin):
             C_code.append(fmt_func.C_call_code)
             C_code.extend(post_call_pattern)
             C_code.extend(post_call)
-            C_code.append(fmt_func.C_return_code)
+            C_code.append(C_return_code)
             C_code.append(-1)
 
         if need_wrapper:

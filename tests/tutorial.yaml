@@ -218,8 +218,9 @@ functions:
        The input will be copied in order to create the C++ argument
 
 -  decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
-   C_return_type: int
-   C_return_code: return SH_arg.size();
+   format:
+     C_return_type: int
+     C_return_code: return SH_arg.size();
    doxygen:
      brief: Fill in arg with some animal names
      description: |

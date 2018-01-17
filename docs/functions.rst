@@ -188,8 +188,9 @@ The *C_code* field has a default value of::
 **C_return_code** can be set from the YAML file to override the return value::
 
     -  decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
-       C_return_type: int
-       C_return_code: return SH_arg.size();
+       format:
+         C_return_type: int
+         C_return_code: return SH_arg.size();
 
 The C wrapper (and the Fortran wrapper) will return ``int`` instead of
 ``void`` using **C_return_code** to compute the value.  In this case,

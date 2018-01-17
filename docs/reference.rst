@@ -348,7 +348,7 @@ C_return_code
 C_return_type
     Return type of the function.
     If the **return_this** field is true, then set to ``void``.
-    If the **C_return_type** field is set, use its value.
+    If the **C_return_type** format is set, use its value.
     Otherwise set to function's return type.
 
 CXX_template
@@ -1050,14 +1050,6 @@ C_post_call
 C_post_call_buf
     Identical to **C_post_call** but only applies to the buffer version of the
     wrapper routine.
-
-C_return_type
-    Allow the C wrapper and Fortran wrapper to return a different type
-    than the C++ function.
-
-C_return_code
-    Code used to compute the return value.
-    Must include the ``return`` statement.
 
 F_code
     Fortran code to use within the splicer block for this function.

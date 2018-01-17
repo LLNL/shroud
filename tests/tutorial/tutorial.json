@@ -228,6 +228,7 @@
             "CXX_this": "SH_this", 
             "CXX_this_call": "", 
             "C_bufferify_suffix": "_bufferify", 
+            "C_custom_return_type": "", 
             "C_header_filename": "wrapTutorial.h", 
             "C_header_filename_suffix": "h", 
             "C_impl_filename": "wrapTutorial.cpp", 
@@ -5120,8 +5121,6 @@
                 }
             }, 
             {
-                "C_return_code": "return SH_arg.size();", 
-                "C_return_type": "int", 
                 "_PTR_F_C_index": 50, 
                 "_ast": {
                     "args": [
@@ -5168,6 +5167,9 @@
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 }, 
                 "format": {
+                    "C_custom_return_type": "int", 
+                    "C_return_code": "return SH_arg.size();", 
+                    "C_return_type": "int", 
                     "F_C_call": "c_vector_string_fill_bufferify", 
                     "F_arg_c_call": "arg, size(arg, kind=C_LONG), len(arg, kind=C_INT)", 
                     "F_arg_c_call_tab": "\targ\tsize(arg, kind=C_LONG)\tlen(arg, kind=C_INT)", 
@@ -5188,8 +5190,6 @@
                 }
             }, 
             {
-                "C_return_code": "return SH_arg.size();", 
-                "C_return_type": "int", 
                 "_PTR_C_CXX_index": 28, 
                 "_ast": {
                     "args": [
@@ -5261,6 +5261,7 @@
                 "format": {
                     "C_call_code": "vector_string_fill(SH_arg);", 
                     "C_call_list": "SH_arg", 
+                    "C_custom_return_type": "int", 
                     "C_name": "TUT_vector_string_fill_bufferify", 
                     "C_post_call": "{\n  char * BBB = arg;\n  std::vector<std::string>::size_type\n    SHT_i = 0,\n    SHT_n = Sarg;\n  SHT_n = std::min(SH_arg.size(),SHT_n);\n  for(; SHT_i < SHT_n; SHT_i++) {\n    ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());\n    BBB += Narg;\n  }\n}", 
                     "C_pre_call": "std::vector<std::string> SH_arg;", 

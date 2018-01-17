@@ -489,8 +489,8 @@ class Wrapf(util.WrapperMixin):
         if is_dtor or node.return_this:
             result_type = 'void'
             subprogram = 'subroutine'
-        elif node.C_return_type is not None:
-            result_type = node.C_return_type
+        elif fmt_func.C_custom_return_type:
+            result_type = fmt_func.C_custom_return_type
             subprogram = 'function'
 
         result_typedef = typemap.Typedef.lookup(result_type)
@@ -658,18 +658,21 @@ class Wrapf(util.WrapperMixin):
             result_type = 'void'
             subprogram = 'subroutine'
             c_subprogram = 'subroutine'
-        elif node.C_return_type is not None:
+        elif fmt_func.C_custom_return_type:
             # User has changed the return type of the C function
             # TODO: probably needs to be more clever about
             # setting pointer or reference fields too.
             # Maybe parse result_type instead of copy.
-            result_type = node.C_return_type
+            result_type = fmt_func.C_custom_return_type
             subprogram = 'function'
             c_subprogram = 'function'
             ast = copy.deepcopy(node._ast)
             ast.typename = result_type
 
         result_typedef = typemap.Typedef.lookup(result_type)
+        if not result_typedef:
+            raise RuntimeError("Unknown type {} in {}",
+                               result_type, fmt_func.function_name)
 
         result_intent_grp = ''
         if is_pure:
