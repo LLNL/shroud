@@ -77,7 +77,8 @@ classes:
 
     methods:
     -  decl: void method1()
-       F_name_function: type_method1
+       format:
+         F_name_function: type_method1
     -  decl: void method2()
        format:
          C_this: self2
@@ -94,17 +95,20 @@ functions:
        F_name_impl_template: "{library}_{class_prefix}{underscore_name}{function_suffix}"
   - decl: void function1()
   - decl: void function2()
-    C_name: c_name_special
-    F_C_name: f_c_name_special
-    F_name_impl: f_name_special
+    format:
+      C_name: c_name_special
+      F_C_name: f_c_name_special
+      F_name_impl: f_name_special
 
   # test generic/overloaded functions
   - decl: void function3a(int i)
-    F_name_generic: generic3
-    F_name_impl: F_name_function3a_int
+    format:
+      F_name_generic: generic3
+      F_name_impl: F_name_function3a_int
   - decl: void function3a(long i)
-    F_name_generic: generic3
-    F_name_impl: F_name_function3a_long
+    format:
+      F_name_generic: generic3
+      F_name_impl: F_name_function3a_long
 
   # test F_result
   # test C_result  with arg rv

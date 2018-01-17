@@ -134,7 +134,8 @@ classes:
         return: return new instance
 
     - decl: ~ExClass1()
-      F_name_function: delete
+      format:
+        F_name_function: delete
       doxygen:
         brief: destructor
         description:
@@ -195,7 +196,8 @@ classes:
           random: 2
 
     - decl: ~ExClass2()
-      F_name_function: delete
+      format:
+        F_name_function: delete
       doxygen:
         brief: destructor
 

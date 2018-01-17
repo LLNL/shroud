@@ -119,8 +119,7 @@ They describe semantic behavior for an argument.
 An attribute may be set to true by listing its name or
 it may have a value in parens::
 
-    - decl: Class1 *new()  +constructor
-    - decl: void delete()  +destructor
+    - decl: Class1 new()  +name(new)
     - decl: void Sum(int len, int *values+dimension+intent(in))
 
 Options

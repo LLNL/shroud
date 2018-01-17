@@ -63,8 +63,8 @@ To wrap the class add the lines to the YAML file::
     classes:
     - name: Class1
       methods:
-      - decl: Class1 *new()  +constructor
-      - decl: void delete()  +destructor
+      - decl: Class1 new()  +name(new)
+      - decl: ~Class1()  +name(delete)
       - decl: void Method1()
 
 The method ``new`` has the attribute **+constructor** to mark it as a

@@ -693,8 +693,8 @@ class Namify(object):
             return
         fmt_func = node.fmtdict
 
-        node.eval_template('C_name')
-        node.eval_template('F_C_name')
+        node.eval_template2('C_name')
+        node.eval_template2('F_C_name')
         fmt_func.F_C_name = fmt_func.F_C_name.lower()
 
         if 'C_this' in options:
@@ -708,9 +708,9 @@ class Namify(object):
             return
         fmt_func = node.fmtdict
 
-        node.eval_template('F_name_impl')
-        node.eval_template('F_name_function')
-        node.eval_template('F_name_generic')
+        node.eval_template2('F_name_impl')
+        node.eval_template2('F_name_function')
+        node.eval_template2('F_name_generic')
 
         if 'F_this' in options:
             fmt_func.F_this = options.F_this

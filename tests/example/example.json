@@ -265,7 +265,6 @@
                         }
                     }, 
                     {
-                        "F_name_function": "delete", 
                         "_ast": {
                             "args": [], 
                             "attrs": {}, 
@@ -1630,7 +1629,6 @@
                         }
                     }, 
                     {
-                        "F_name_function": "delete", 
                         "_ast": {
                             "args": [], 
                             "attrs": {}, 

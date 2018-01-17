@@ -24,7 +24,6 @@
                 }, 
                 "methods": [
                     {
-                        "F_name_function": "type_method1", 
                         "_ast": {
                             "args": [], 
                             "attrs": {}, 
@@ -297,9 +296,6 @@
                 "options": {}
             }, 
             {
-                "C_name": "c_name_special", 
-                "F_C_name": "f_c_name_special", 
-                "F_name_impl": "f_name_special", 
                 "_ast": {
                     "args": [], 
                     "attrs": {}, 
@@ -343,8 +339,6 @@
                 "options": {}
             }, 
             {
-                "F_name_generic": "generic3", 
-                "F_name_impl": "F_name_function3a_int", 
                 "_ast": {
                     "args": [
                         {
@@ -432,8 +426,6 @@
                 "options": {}
             }, 
             {
-                "F_name_generic": "generic3", 
-                "F_name_impl": "F_name_function3a_long", 
                 "_ast": {
                     "args": [
                         {
