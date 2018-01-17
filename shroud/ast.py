@@ -70,7 +70,7 @@ class AstNode(object):
                 raise DeprecationWarning("Setting option {} for {}, change to format group".format(
                     name, self.__class__.__name__))
 
-    def eval_template(self, name, tname='', fmt=None):
+    def XXeval_template(self, name, tname='', fmt=None):
         """fmt[name] = self.name or option[name + tname + '_template']
         """
         if fmt is None:
@@ -82,7 +82,7 @@ class AstNode(object):
             tname = name + tname + '_template'
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
-    def eval_template2(self, name, tname='', fmt=None):
+    def eval_template(self, name, tname='', fmt=None):
         """fmt[name] = fmt.name or option[name + tname + '_template']
 
         If a format has not been explicitly set, set from template
@@ -314,12 +314,12 @@ class LibraryNode(AstNode):
         self.fmtdict = fmt_library
 
         # default some format strings based on other format strings
-        self.eval_template2('C_header_filename', '_library')
-        self.eval_template2('C_impl_filename', '_library')
+        self.eval_template('C_header_filename', '_library')
+        self.eval_template('C_impl_filename', '_library')
         # All class/methods and functions may go into this file or
         # just functions.
-        self.eval_template2('F_module_name', '_library')
-        self.eval_template2('F_impl_filename', '_library')
+        self.eval_template('F_module_name', '_library')
+        self.eval_template('F_impl_filename', '_library')
 
     def add_function(self, parentoptions=None, **kwargs):
         """Add a function.
@@ -406,15 +406,15 @@ class ClassNode(AstNode):
         if format:
             self.fmtdict.update(format, replace=True)
 
-        self.eval_template2('class_prefix')
+        self.eval_template('class_prefix')
 
         # Only one file per class for C.
-        self.eval_template2('C_header_filename', '_class')
-        self.eval_template2('C_impl_filename', '_class')
+        self.eval_template('C_header_filename', '_class')
+        self.eval_template('C_impl_filename', '_class')
 
         if self.options.F_module_per_class:
-            self.eval_template2('F_module_name', '_class')
-            self.eval_template2('F_impl_filename', '_class')
+            self.eval_template('F_module_name', '_class')
+            self.eval_template('F_impl_filename', '_class')
 
     def add_function(self, parentoptions=None, **kwargs):
         """Add a function.

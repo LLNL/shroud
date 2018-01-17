@@ -72,10 +72,10 @@ class Wrapl(util.WrapperMixin):
         fmt_library.LUA_prefix = options.get('LUA_prefix', 'l_')
         fmt_library.LUA_state_var = 'L'
         fmt_library.LUA_used_param_state = False
-        newlibrary.eval_template2('LUA_module_name')
-        newlibrary.eval_template2('LUA_module_reg')
-        newlibrary.eval_template2('LUA_module_filename')
-        newlibrary.eval_template2('LUA_header_filename')
+        newlibrary.eval_template('LUA_module_name')
+        newlibrary.eval_template('LUA_module_reg')
+        newlibrary.eval_template('LUA_module_filename')
+        newlibrary.eval_template('LUA_header_filename')
 
         # Variables to accumulate output lines
         self.luaL_Reg_module = []
@@ -110,11 +110,11 @@ class Wrapl(util.WrapperMixin):
         fmt_class = node.fmtdict
 
         fmt_class.LUA_userdata_var = 'SH_this'
-        node.eval_template2('LUA_userdata_type')
-        node.eval_template2('LUA_userdata_member')
-        node.eval_template2('LUA_class_reg')
-        node.eval_template2('LUA_metadata')
-        node.eval_template2('LUA_ctor_name')
+        node.eval_template('LUA_userdata_type')
+        node.eval_template('LUA_userdata_member')
+        node.eval_template('LUA_class_reg')
+        node.eval_template('LUA_metadata')
+        node.eval_template('LUA_ctor_name')
 
         self._create_splicer('C_declaration', self.lua_type_structs)
         self.lua_type_structs.append('')
@@ -202,8 +202,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         function_name = ast.name
         fmt_func = node.fmtdict
         fmt = util.Scope(fmt_func)
-        node.eval_template2('LUA_name')
-        node.eval_template2('LUA_name_impl')
+        node.eval_template('LUA_name')
+        node.eval_template('LUA_name_impl')
 
         CXX_subprogram = node._subprogram
 
