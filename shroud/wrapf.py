@@ -873,9 +873,9 @@ class Wrapf(util.WrapperMixin):
         # XXX sname = fmt_func.F_name_impl
         sname = fmt_func.F_name_function
         splicer_code = self.splicer_stack[-1].get(sname, None)
-        if node.F_code is not None:
+        if fmt_func.inlocal('F_code'):
             need_wrapper = True
-            F_code = [wformat(node.F_code, fmt_func)]
+            F_code = [wformat(fmt_func.F_code, fmt_func)]
         elif splicer_code:
             need_wrapper = True
             F_code = splicer_code

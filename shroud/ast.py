@@ -550,17 +550,15 @@ class FunctionNode(AstNode):
 
     def default_format(self, parent, format, kwargs):
 
-        # referenced explicity (not via fmt)
-        # C_code, F_code
-        
         # Move fields from kwargs into instance
         for n in [
-#                'C_code', 'C_error_pattern',
+                'C_code',
+#               'C_error_pattern',
                  'C_name',
 #                'C_post_call', 'C_post_call_buf',
                 'C_return_code', 'C_return_type',
                 'F_C_name',
-#                'F_code',
+                'F_code',
                 'F_name_function', 'F_name_generic', 'F_name_impl',
                 'LUA_name', 'LUA_name_impl',
 #                'PY_error_pattern',
@@ -573,9 +571,8 @@ class FunctionNode(AstNode):
 
         # Move fields from kwargs into instance
         for n in [
-                'C_code', 'C_error_pattern',
+                'C_error_pattern',
                 'C_post_call', 'C_post_call_buf',
-                'F_code',
                 'PY_error_pattern',
         ]:
             setattr(self, n, kwargs.get(n, None))
@@ -603,9 +600,8 @@ class FunctionNode(AstNode):
         )
         for key in ['cxx_template', 'default_arg_suffix', 'doxygen', 
                     'fortran_generic', 'return_this',
-                    'C_code', 'C_error_pattern',
+                    'C_error_pattern',
                     'C_post_call', 'C_post_call_buf', 
-                    'F_code',
                     'PY_error_pattern',
                     '_PTR_C_CXX_index', '_PTR_F_C_index',
                     '_CXX_return_templated',

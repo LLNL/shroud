@@ -323,6 +323,9 @@ C_call_list
 C_call_code
     Code used to call function in C wrapper.
 
+C_code
+    User supplied wrapper code for the C wrapper for a function.
+
 C_name
     Name of the C wrapper function.
     Defaults to evaluation of option *C_name_template*.
@@ -389,6 +392,9 @@ F_C_result_clause
 
 F_C_subprogram
     ``subroutine`` or ``function``.
+
+F_code
+    User supplied wrapper code for the Fortran wrapper for a function.
 
 F_pure_clause
     For non-void function, ``pure`` if the *pure* annotation is added or 
@@ -1040,9 +1046,6 @@ return_this
    to chain calls in C++.  This idiom does not translate to C and Fortran.
    Instead the *C_return_type* format is set to ``void``.
 
-C_code
-    C++ code to use within the splicer block for this function.
-
 C_post_call
     Code added after all of the argument *post_call* code.
     Can be used to release memory from the C routine.
@@ -1051,19 +1054,11 @@ C_post_call_buf
     Identical to **C_post_call** but only applies to the buffer version of the
     wrapper routine.
 
-F_code
-    Fortran code to use within the splicer block for this function.
-
-..    tut_class1_method1
-
-..    class1_method1
-
 
 Annotations
 -----------
 
 An annotation can be used to provide semantic information for a function or argument.
-
 
 .. a.k.a. attributes
 

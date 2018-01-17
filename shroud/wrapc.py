@@ -572,9 +572,9 @@ class Wrapc(util.WrapperMixin):
 
         # body of function
         splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
-        if node.C_code is not None:
+        if fmt_func.inlocal('C_code'):
             need_wrapper = True
-            C_code = [1, wformat(node.C_code, fmt_func), -1]
+            C_code = [1, wformat(fmt_func.C_code, fmt_func), -1]
         elif splicer_code:
             need_wrapper = True
             C_code = splicer_code
@@ -651,7 +651,7 @@ class Wrapc(util.WrapperMixin):
             C_code.append(fmt_func.C_call_code)
             C_code.extend(post_call_pattern)
             C_code.extend(post_call)
-            C_code.append(C_return_code)
+            C_code.append(fmt_func.C_return_code)
             C_code.append(-1)
 
         if need_wrapper:

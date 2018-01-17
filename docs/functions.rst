@@ -273,9 +273,10 @@ without adding to the C++ library::
       - name: ExClass1
         methods:
           - decl: int GetNameLength() const
-            C_code: |
-              {C_pre_call}
-              return {CXX_this}->getName().length();
+            format:
+              C_code: |
+                {C_pre_call}
+                return {CXX_this}->getName().length();
 
 The generated C wrapper will use the *C_code* provided for the body::
 
