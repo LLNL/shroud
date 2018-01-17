@@ -286,11 +286,10 @@ class Wrapf(util.WrapperMixin):
         fmt = util.Scope(fmt_class)
 
         # get
-        fmt.underscore_name = options['F_name_instance_get']
+        fmt.underscore_name = fmt_class.F_name_instance_get
         if fmt.underscore_name:
-            fmt.underscore_name = options['F_name_instance_get']
-            fmt.F_name_function = wformat(options['F_name_function_template'], fmt)
-            fmt.F_name_impl = wformat(options['F_name_impl_template'], fmt)
+            fmt.F_name_function = wformat(options.F_name_function_template, fmt)
+            fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
             self.type_bound_part.append('procedure :: %s => %s' % (
                     fmt.F_name_function, fmt.F_name_impl))
@@ -309,10 +308,10 @@ class Wrapf(util.WrapperMixin):
             append_format(impl, 'end function {F_name_impl}', fmt)
 
         # set
-        fmt.underscore_name = options['F_name_instance_set']
+        fmt.underscore_name = fmt_class.F_name_instance_set
         if fmt.underscore_name:
-            fmt.F_name_function = wformat(options['F_name_function_template'], fmt)
-            fmt.F_name_impl = wformat(options['F_name_impl_template'], fmt)
+            fmt.F_name_function = wformat(options.F_name_function_template, fmt)
+            fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
             self.type_bound_part.append('procedure :: %s => %s' % (
                     fmt.F_name_function, fmt.F_name_impl))
@@ -333,10 +332,10 @@ class Wrapf(util.WrapperMixin):
             append_format(impl, 'end subroutine {F_name_impl}', fmt)
 
         # associated
-        fmt.underscore_name = options['F_name_associated']
+        fmt.underscore_name = fmt_class.F_name_associated
         if fmt.underscore_name:
-            fmt.F_name_function = wformat(options['F_name_function_template'], fmt)
-            fmt.F_name_impl = wformat(options['F_name_impl_template'], fmt)
+            fmt.F_name_function = wformat(options.F_name_function_template, fmt)
+            fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
             self.type_bound_part.append('procedure :: %s => %s' % (
                     fmt.F_name_function, fmt.F_name_impl))

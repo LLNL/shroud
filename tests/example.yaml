@@ -52,6 +52,9 @@ splicer:
 
 format:
   C_prefix: AA_
+  # do not create get/set instance routines
+  F_name_instance_get: yadda
+  F_name_instance_set:
 
 options:
 #  module_name: exclass1_mod
@@ -61,11 +64,6 @@ options:
   wrap_python: True
 
   PY_prefix: PP_
-
-  # do not create get/set instance routines
-  F_name_instance_get: yadda
-  F_name_instance_set:
-  
 
 types:
   other:

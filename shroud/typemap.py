@@ -791,7 +791,6 @@ def initialize():
 def create_class_typedef(cls):
     name = cls.name
     fmt_class = cls.fmtdict
-    options = cls.options
 
     typedef = Typedef.lookup(name)
     if typedef is None:
@@ -805,7 +804,7 @@ def create_class_typedef(cls):
             c_type=cname,
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[unname]},
-            f_to_c = '{f_var}%%%s()' % options.F_name_instance_get,
+            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
             )
         typedef_wrapped_defaults(typedef)
         Typedef.register(name, typedef)

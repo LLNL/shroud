@@ -95,6 +95,11 @@ searched.
 Library
 ^^^^^^^
 
+C_bufferify_suffix
+  Suffix appended to generated routine which pass strings as buffers
+  with explicit lengths.
+  Defaults to *_bufferify*
+
 C_header_filename
     Name of generated header file for the library.
     Defaulted from expansion of option *C_header_filename_library_template*.
@@ -249,16 +254,30 @@ F_derived_name
    Name of Fortran derived type for this class.
    Defaults to the C++ class name.
 
+F_impl_filename
+    Name of generated Fortran implementation file for the library.
+    Defaulted from expansion of option *F_impl_filename_class_template*.
+    Only defined if *F_module_per_class* is true.
+
 F_module_name
     Name of module for Fortran interface for the class.
     Defaulted from expansion of option *F_module_name_class_template*
     which is **{class_lower}_mod**.
     Only defined if *F_module_per_class* is true.
 
-F_impl_filename
-    Name of generated Fortran implementation file for the library.
-    Defaulted from expansion of option *F_impl_filename_class_template*.
-    Only defined if *F_module_per_class* is true.
+F_name_associated
+    Name of method to report if aa is associated.
+    If the name is blank, no function is generated.
+
+F_name_instance_get
+    Name of method to get ``type(C_PTR)`` instance pointer from wrapped class.
+    Defaults to *get_instance*.
+    If the name is blank, no function is generated.
+
+F_name_instance_set
+    Name of method to set ``type(C_PTR)`` instance pointer in wrapped class.
+    Defaults to *set_instance*.
+    If the name is blank, no function is generated.
 
 cxx_class
     The name of the C++ class from the YAML input file.
@@ -494,32 +513,9 @@ debug
   be useful for debugging.
   Defaults to *false*.
 
-C_bufferify_suffix
-  Suffix appended to generated routine which pass strings as buffers
-  with explicit lengths.
-  Defaults to *_bufferify*
-
 C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
    Defaults to *false*.
-
-C_proto_type
-   XXX  override prototype of generated C function
-
-C_return_type
-   XXX   override return type of function
-
-C_var_len_template
-    Format for variable created with *len* annotation.
-    Default ``N{c_var}``
-
-C_var_size_template
-    Format for variable created with *size* annotation.
-    Default ``S{c_var}``
-
-C_var_trim_template
-    Format for variable created with *len_trim* annotation.
-    Default ``L{c_var}``
 
 F_string_len_trim
   For each function with a ``std::string`` argument, create another C
@@ -583,6 +579,18 @@ C_impl_filename_library_template
 C_name_template
     ``{C_prefix}{class_prefix}{underscore_name}{function_suffix}``
 
+C_var_len_template
+    Format for variable created with *len* annotation.
+    Default ``N{c_var}``
+
+C_var_size_template
+    Format for variable created with *size* annotation.
+    Default ``S{c_var}``
+
+C_var_trim_template
+    Format for variable created with *len_trim* annotation.
+    Default ``L{c_var}``
+
 class_prefix_template
     Class component for function names.
     Will be blank if the function is not in a class.
@@ -611,7 +619,6 @@ F_module_name_library_template
 
 F_name_function_template
     ``{underscore_name}{function_suffix}``
-
 
 LUA_class_reg_template
     Name of `luaL_Reg` array of function names for a class.
@@ -999,6 +1006,8 @@ Each function can define fields to define the function
 and how it should be wrapped.  These fields apply only
 to a single function i.e. they are not inherited.
 
+C_prototype
+   XXX  override prototype of generated C function
 
 decl
    Function declaration.
@@ -1044,16 +1053,6 @@ F_code
 
 ..    class1_method1
 
-F_name_instance_get
-    Name of method to get ``type(C_PTR)`` instance pointer from wrapped class.
-    Defaults to *get_instance*.
-    If the name is blank, no function is generated.
-
-F_name_instance_set
-    Name of method to set ``type(C_PTR)`` instance pointer in wrapped class.
-    Defaults to *set_instance*.
-    If the name is blank, no function is generated.
-
 
 Annotations
 -----------
@@ -1062,12 +1061,6 @@ An annotation can be used to provide semantic information for a function or argu
 
 
 .. a.k.a. attributes
-
-constructor
-   Mark method as a constructor.
-
-destructor
-   Mark method as a destructor.
 
 pure
    Sets the Fortran PURE attribute.

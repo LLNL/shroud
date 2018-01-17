@@ -187,10 +187,6 @@ class LibraryNode(AstNode):
             F_module_name_class_template='{class_lower}_mod',
             F_impl_filename_class_template='wrapf{cxx_class}.{F_filename_suffix}',
 
-            F_name_instance_get='get_instance',
-            F_name_instance_set='set_instance',
-            F_name_associated='associated',
-
             LUA_module_name_template='{library_lower}',
             LUA_module_filename_template=(
                 'lua{library}module.{LUA_impl_filename_suffix}'),
@@ -240,6 +236,9 @@ class LibraryNode(AstNode):
 
             F_C_prefix='c_',
             F_derived_member = 'voidptr',
+            F_name_associated = 'associated',
+            F_name_instance_get = 'get_instance',
+            F_name_instance_set = 'set_instance',
             F_result = 'SHT_rv',
             F_this = 'obj',
 
