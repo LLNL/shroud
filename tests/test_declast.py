@@ -139,7 +139,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("std::string &var1")
         s = r.gen_decl()
         self.assertEqual("std::string & var1", s)
-        s = r.gen_arg_as_cpp()
+        s = r.gen_arg_as_cxx()
         self.assertEqual("std::string & var1", s)
         s = r.gen_arg_as_c()
         self.assertEqual("char * var1", s)
@@ -452,7 +452,7 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         # must provide the name since the ctor has no name
-        self.assertEqual('Class1 * ctor', r.gen_arg_as_cpp())
+        self.assertEqual('Class1 * ctor', r.gen_arg_as_cxx())
         self.assertEqual('CC_class1 * ctor', r.gen_arg_as_c())
 
     def test_decl09b(self):
@@ -481,7 +481,7 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         self.assertFalse(r.is_indirect())
-        self.assertEqual('Class1 * new', r.gen_arg_as_cpp())
+        self.assertEqual('Class1 * new', r.gen_arg_as_cxx())
         self.assertEqual('CC_class1 * new', r.gen_arg_as_c())
 
     def test_decl09c(self):
@@ -509,7 +509,7 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         self.assertFalse(r.is_indirect())
-        self.assertEqual('Class1 * dtor', r.gen_arg_as_cpp())
+        self.assertEqual('Class1 * dtor', r.gen_arg_as_cxx())
         self.assertEqual('CC_class1 * dtor', r.gen_arg_as_c())
 
     def test_decl09d(self):

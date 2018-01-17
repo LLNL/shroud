@@ -390,7 +390,7 @@ class Wrapc(util.WrapperMixin):
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
             fmt_result.cxx_var = fmt_func.C_result
-            fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_cpp(name=fmt_func.C_result)
+            fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_cxx(name=fmt_func.C_result)
             fmt_pattern = fmt_result
 
         proto_list = []
@@ -419,7 +419,7 @@ class Wrapc(util.WrapperMixin):
             cls_typedef = typemap.Typedef.lookup(cls.name)
             append_format(pre_call, 
                           '{c_const}{cxx_class} *{CXX_this} = ' +
-                          cls_typedef.c_to_cpp + ';', fmt_func)
+                          cls_typedef.c_to_cxx + ';', fmt_func)
 
 #    c_var      - argument to C function  (wrapper function)
 #    c_var_trim - variable with trimmed length of c_var
@@ -522,14 +522,14 @@ class Wrapc(util.WrapperMixin):
                         .format(arg_typedef.name))
                 append_format(pre_call,
                               '{c_const}{cxx_type}{c_ptr} {cxx_var} = ' +
-                              arg_typedef.c_to_cpp + ';', fmt_arg)
+                              arg_typedef.c_to_cxx + ';', fmt_arg)
 
             if arg_call:
                 if have_cxx_local_var:
                     call_list.append(fmt_arg.cxx_var)
                 else:
                     # convert C argument to C++
-                    append_format(call_list, arg_typedef.c_to_cpp, fmt_arg)
+                    append_format(call_list, arg_typedef.c_to_cxx, fmt_arg)
 
             if arg_typedef.c_header:
                 # include any dependent header in generated header
@@ -685,26 +685,3 @@ class Wrapc(util.WrapperMixin):
         else:
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node._ast.name
-
-
-    def XXXget_intent(self, intent_blk, block):
-        # Maybe later...
-        """Get a language specific block of code.
-        block = pre_call, post_call
-
-        intent_in={
-            pre_call_c = []
-            pre_call_cpp = []
-        }
-        -- or --
-        intent_in={
-            pre_call = []
-        }
-        """
-        name = block + '_' + self.language
-        if name in intent_blk:
-            return intent_blk[name]
-        elif block in intent_blk:
-            return intent_blk[block]
-        else:
-            return []

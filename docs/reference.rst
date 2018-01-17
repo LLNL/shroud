@@ -735,15 +735,15 @@ cxx_header
 cxx_local_var
     If true then a local variable will be created instead of passing the argument
     directly to the function.
-    The variable will be assigned a value using *c_to_cpp*.
-    If *c_to_cpp* is a large expression it is sometimes convenient to have a local variable
+    The variable will be assigned a value using *c_to_cxx*.
+    If *c_to_cxx* is a large expression it is sometimes convenient to have a local variable
     for debugging purposes.
-    It can also be used to create cleaner code when *c_to_cpp* will generate a very long statement.
-    When *c_to_cpp* is not sufficient to assign a value, *c_statements* can be used to 
+    It can also be used to create cleaner code when *c_to_cxx* will generate a very long statement.
+    When *c_to_cxx* is not sufficient to assign a value, *c_statements* can be used to 
     add multiple statements into the wrapper.  *c_statements* and *cxx_local_var* cannot
     be used together.
 
-..  {c_const}{cxx_type}{ptr} = c_to_cpp ;
+..  {c_const}{cxx_type}{ptr} = c_to_cxx ;
 
 c_type
     name of type in C.
@@ -754,7 +754,7 @@ c_header
     This file is included in the interface header.
     Defaults to *None*.
 
-c_to_cpp
+c_to_cxx
     Expression to convert from C to C++.
     Defaults to *{c_var}*.  i.e. no conversion required.
 

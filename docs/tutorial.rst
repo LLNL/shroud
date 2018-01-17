@@ -734,7 +734,7 @@ describe how to convert between C and C++::
       EnumTypeID:
         typedef  : int
         cxx_type : EnumTypeID
-        c_to_cpp : static_cast<EnumTypeID>({c_var})
+        c_to_cxx : static_cast<EnumTypeID>({c_var})
         cxx_to_c : static_cast<int>({cxx_var})
 
 The C argument is explicitly converted to a C++ type, then the

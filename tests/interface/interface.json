@@ -305,7 +305,7 @@
     "types": {
         "MPI_Comm": {
             "c_header": "mpi.h", 
-            "c_to_cpp": "MPI_Comm_f2c({c_var})", 
+            "c_to_cxx": "MPI_Comm_f2c({c_var})", 
             "c_type": "MPI_Fint", 
             "cxx_to_c": "MPI_Comm_c2f({cxx_var})", 
             "cxx_type": "MPI_Comm", 

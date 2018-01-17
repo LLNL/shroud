@@ -61,11 +61,11 @@ class Typedef(object):
         ('cxx_to_c', '{cxx_var}'), # Expression to convert from C++ to C
         ('cxx_header', None),     # Name of C++ header file required for implementation
                                   # For example, if cxx_to_c was a function
-        ('cxx_local_var', False), # True if c_to_cpp requires a local C variable
+        ('cxx_local_var', False), # True if c_to_cxx requires a local C variable
 
         ('c_type', None),         # Name of type in C
         ('c_header', None),       # Name of C header file required for type
-        ('c_to_cpp', '{c_var}'),  # Expression to convert from C to C++
+        ('c_to_cxx', '{c_var}'),  # Expression to convert from C to C++
         ('c_statements', {}),
         ('c_templates', {}),      # c_statements for cxx_T
         ('c_return_code', None),
@@ -769,7 +769,7 @@ def initialize():
             f_c_type='integer(C_INT)',
             f_c_module=dict(iso_c_binding=['C_INT']),
             cxx_to_c='MPI_Comm_c2f({cxx_var})',
-            c_to_cpp='MPI_Comm_f2c({c_var})',
+            c_to_cxx='MPI_Comm_f2c({c_var})',
             ),
         )
 
@@ -826,7 +826,7 @@ def typedef_wrapped_defaults(typedef):
                       typedef.c_type)
 
     # opaque pointer -> void pointer -> class instance pointer
-    typedef.c_to_cpp=('static_cast<{c_const}%s{c_ptr}>('
+    typedef.c_to_cxx=('static_cast<{c_const}%s{c_ptr}>('
                       'static_cast<{c_const}void *>({c_var}))' %
                       typedef.cxx_type)
 

@@ -445,7 +445,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # return value
 #        fmt.rv_decl = self.std_c_decl(
 #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
-        fmt.rv_decl = ast.gen_arg_as_cpp(name=fmt.LUA_result)
+        fmt.rv_decl = ast.gen_arg_as_cxx(name=fmt.LUA_result)
 
         LUA_decl = []  # declare variables and pop values
         LUA_code = []  # call C++ function
@@ -498,7 +498,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 # XXX lua_pop = wformat(arg_typedef.LUA_pop, fmt_arg)
                 # lua_pop is a C++ expression
                 fmt_arg.c_var = wformat(arg_typedef.LUA_pop, fmt_arg)
-                lua_pop = wformat(arg_typedef.c_to_cpp, fmt_arg)
+                lua_pop = wformat(arg_typedef.c_to_cxx, fmt_arg)
                 LUA_index += 1
 
             if attrs['intent'] in ['inout', 'out']:
@@ -536,7 +536,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             if arg_typedef.base == 'string':
                 LUA_decl.append(arg.gen_arg_as_c() + decl_suffix)
             else:
-                LUA_decl.append(arg.gen_arg_as_cpp() + decl_suffix)
+                LUA_decl.append(arg.gen_arg_as_cxx() + decl_suffix)
 
             cxx_call_list.append(fmt_arg.cxx_var)
 

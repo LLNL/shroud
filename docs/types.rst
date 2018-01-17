@@ -801,7 +801,7 @@ how to use these routines::
                 iso_c_binding:
                   - C_INT
             cxx_to_c: MPI_Comm_c2f({cxx_var})
-            c_to_cpp: MPI_Comm_f2c({c_var})
+            c_to_cxx: MPI_Comm_f2c({c_var})
 
 
 This mapping makes the assumption that ``integer`` and
@@ -825,7 +825,7 @@ generated ``get_instance`` function to return the pointer which will
 be passed to C.
 
 In C an opaque typedef for a struct is created as the type for the C++
-instance pointer.  The *c_to_cpp* and *cxx_to_c* fields casts this
+instance pointer.  The *c_to_cxx* and *cxx_to_c* fields casts this
 pointer to C++ and back to C.
 
 The class example from the tutorial is::
@@ -840,7 +840,7 @@ Shroud will generate a type map for this class as::
         base: wrapped
         c_type: TUT_class1
         cxx_type: Class1
-        c_to_cpp: static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}))
+        c_to_cxx: static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}))
         cxx_to_c: static_cast<{c_const}TUT_class1 *>(static_cast<{c_const}void *>({cxx_var}))
 
         f_type: type(class1)

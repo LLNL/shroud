@@ -374,7 +374,7 @@ return 1;""", fmt)
 #            is_const = False
 #        else:
 #            is_const = None
-        fmt.rv_decl = ast.gen_arg_as_cpp(name=fmt.PY_result)  # return value
+        fmt.rv_decl = ast.gen_arg_as_cxx(name=fmt.PY_result)  # return value
 
         PY_decl = []     # variables for function
         PY_code = []
@@ -487,7 +487,7 @@ return 1;""", fmt)
                     # C++ will coerce char * to std::string
                     PY_decl.append(arg.gen_arg_as_c() + ';')
                 else:
-                    PY_decl.append(arg.gen_arg_as_cpp() + ';')
+                    PY_decl.append(arg.gen_arg_as_cxx() + ';')
 
                 if arg_typedef.cxx_local_var:
                     # cxx_local_var should only be set if
@@ -500,7 +500,7 @@ return 1;""", fmt)
 #                            .format(arg_typedef.name))
                     append_format(post_parse,
                                   '{c_const}{cxx_type}{c_ptr} {cxx_var} = '
-                                  + arg_typedef.c_to_cpp + ';', fmt_arg)
+                                  + arg_typedef.c_to_cxx + ';', fmt_arg)
 
                 if arg_typedef.PY_PyTypeObject:
                     # A Python Object which must be converted to C++ type.
@@ -514,7 +514,7 @@ return 1;""", fmt)
                     cxx_call_list.append(fmt_arg.cxx_var)
                 else:
                     # convert to C++ type
-                    append_format(cxx_call_list, arg_typedef.c_to_cpp, fmt_arg)
+                    append_format(cxx_call_list, arg_typedef.c_to_cxx, fmt_arg)
 
             if True:
                 # jump through some hoops for char ** const correctness for C++

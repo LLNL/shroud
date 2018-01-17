@@ -809,7 +809,7 @@ class Declaration(Node):
                 decl.append('{}({})'.format(attr, value))
             space = ''
 
-    def gen_arg_as_cpp(self, **kwargs):
+    def gen_arg_as_cxx(self, **kwargs):
         """Generate C++ declaration of variable.
         No parameters or attributes.
         """

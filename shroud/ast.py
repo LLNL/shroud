@@ -72,18 +72,6 @@ class AstNode(object):
                 raise DeprecationWarning("Setting option {} for {}, change to format group".format(
                     name, self.__class__.__name__))
 
-    def XXeval_template(self, name, tname='', fmt=None):
-        """fmt[name] = self.name or option[name + tname + '_template']
-        """
-        if fmt is None:
-            fmt = self.fmtdict
-        value = getattr(self, name)
-        if value is not None:
-            setattr(fmt, name, value)
-        else:
-            tname = name + tname + '_template'
-            setattr(fmt, name, util.wformat(self.options[tname], fmt))
-
     def eval_template(self, name, tname='', fmt=None):
         """fmt[name] = fmt.name or option[name + tname + '_template']
 
