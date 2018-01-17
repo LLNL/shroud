@@ -69,8 +69,6 @@ class Wrapl(util.WrapperMixin):
         fmt_library = newlibrary.fmtdict
 
         # Format variables
-        fmt_library.LUA_prefix = options.get('LUA_prefix', 'l_')
-        fmt_library.LUA_state_var = 'L'
         fmt_library.LUA_used_param_state = False
         newlibrary.eval_template('LUA_module_name')
         newlibrary.eval_template('LUA_module_reg')

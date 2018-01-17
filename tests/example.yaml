@@ -55,6 +55,7 @@ format:
   # do not create get/set instance routines
   F_name_instance_get: yadda
   F_name_instance_set:
+  PY_prefix: PP_
 
 options:
 #  module_name: exclass1_mod
@@ -62,8 +63,6 @@ options:
   F_module_per_class: True
   # include files to add to module
   wrap_python: True
-
-  PY_prefix: PP_
 
 types:
   other:

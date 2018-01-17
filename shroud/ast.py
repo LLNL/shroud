@@ -61,8 +61,10 @@ class AstNode(object):
                      'C_header_filename_suffix',
                      'C_impl_filename_suffix',
                      'F_filename_suffix',
+                     'PY_prefix',
                      'PY_header_filename_suffix',
                      'PY_impl_filename_suffix',
+                     'LUA_prefix',
                      'LUA_header_filename_suffix',
                      'LUA_impl_filename_suffix',
         ]:
@@ -249,6 +251,12 @@ class LibraryNode(AstNode):
             # so skip the SH_ prefix by default.
             PY_result = 'rv',
             LUA_result = 'rv',
+
+            LUA_prefix = 'l_',
+            LUA_state_var = 'L',
+
+            PY_prefix = 'PY_',
+            PY_module_name = self.library.lower(),
 
             library = self.library,
             library_lower = self.library.lower(),

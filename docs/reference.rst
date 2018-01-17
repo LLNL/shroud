@@ -207,9 +207,15 @@ LUA_module_name
     Name of Lua module for library.
     ``{library_lower}``
 
+LUA_prefix
+    Prefix added to Lua wrapper functions.
+
 LUA_result
     The name of the Lua wrapper's result variable.
     It defaults to *rv*  (return value).
+
+LUA_state_var
+    Name of argument in Lua wrapper functions for lua_State pointer.
 
 namespace_scope
     The values in field **namespace** delimited with ``::``.
@@ -219,13 +225,20 @@ PY_header_filename_suffix
    Defaults to ``h``.
    Other useful values might be ``hh`` or ``hxx``.
 
-PY_name_impl
-    PY_class1_method1
-
 PY_impl_filename_suffix
    Suffix added to Python implementation files.
    Defaults to ``cpp``.
    Other useful values might be ``cc`` or ``cxx``.
+
+PY_module_name
+    Name of wrapper Python module.
+    Defaults to library name.
+
+PY_name_impl
+    PY_class1_method1
+
+PY_prefix
+    Prefix added to Python wrapper functions.
 
 PY_result
     The name of the Python wrapper's result variable.

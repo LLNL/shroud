@@ -85,8 +85,6 @@ class Wrapp(util.WrapperMixin):
         fmt_library = newlibrary.fmtdict
 
         # Format variables
-        fmt_library.PY_prefix = options.get('PY_prefix', 'PY_')
-        fmt_library.PY_module_name = fmt_library.library_lower
         newlibrary.eval_template('PY_module_filename')
         newlibrary.eval_template('PY_header_filename')
         newlibrary.eval_template('PY_helper_filename')
