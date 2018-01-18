@@ -554,6 +554,16 @@ class Wrapc(util.WrapperMixin):
         else:
             fmt_func.C_return_type = ast.gen_arg_as_c(name=None)
 
+        if fmt_func.inlocal('C_finalize' + intent_grp):
+            # maybe check C_finalize up chain for accumulative code
+            # i.e. per class, per library.
+            finalize_line = fmt_func.get('C_finalize' + intent_grp)
+            need_wrapper = True
+            post_call.append('{')
+            post_call.append('    // C_finalize')
+            util.append_format_indent(post_call, finalize_line, fmt_func)
+            post_call.append('}')
+
         if pre_call:
             fmt_func.C_pre_call = '\n'.join(pre_call)
         if post_call:
@@ -632,13 +642,6 @@ class Wrapc(util.WrapperMixin):
                     C_return_code = 'return {};'.format(
                         wformat(return_lang, fmt_result))
  
-            if node.C_post_call is not None:
-                need_wrapper = True
-                post_call.append('{')
-                post_call.append('// C_post_call')
-                append_format(post_call, node.C_post_call, fmt_func)
-                post_call.append('}')
-
             if fmt_func.inlocal('C_return_code'):
                 need_wrapper = True
                 C_return_code = wformat(fmt_func.C_return_code, fmt_func)

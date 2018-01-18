@@ -176,12 +176,13 @@ The *C_code* field has a default value of::
   Derived from argument types c_statements code.
 
 * **C_call_code** code used to call the function.
-  The *constructor* and *destructor* annotations will use ``new`` and ``delete``.
+  Constructor and destructor will use ``new`` and ``delete``.
 
 * **C_post_call_pattern** code from the *C_error_pattern*.
   Can be used to deal with error values.
 
 * **C_post_call** code used with *intent(out)* arguments.
+  Includes any code from **C_finalize**.
 
 * **C_return_code** returns a value from the wrapper.
 

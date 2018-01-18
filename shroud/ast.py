@@ -555,7 +555,7 @@ class FunctionNode(AstNode):
                 'C_code',
 #               'C_error_pattern',
                  'C_name',
-#                'C_post_call', 'C_post_call_buf',
+                'C_post_call', 'C_post_call_buf',
                 'C_return_code', 'C_return_type',
                 'F_C_name',
                 'F_code',
@@ -571,9 +571,7 @@ class FunctionNode(AstNode):
 
         # Move fields from kwargs into instance
         for n in [
-                'C_error_pattern',
-                'C_post_call', 'C_post_call_buf',
-                'PY_error_pattern',
+                'C_error_pattern', 'PY_error_pattern',
         ]:
             setattr(self, n, kwargs.get(n, None))
 
@@ -600,9 +598,7 @@ class FunctionNode(AstNode):
         )
         for key in ['cxx_template', 'default_arg_suffix', 'doxygen', 
                     'fortran_generic', 'return_this',
-                    'C_error_pattern',
-                    'C_post_call', 'C_post_call_buf', 
-                    'PY_error_pattern',
+                    'C_error_pattern', 'PY_error_pattern',
                     '_PTR_C_CXX_index', '_PTR_F_C_index',
                     '_CXX_return_templated',
                     '_cxx_overload', '_error_pattern_suffix',

@@ -326,6 +326,15 @@ C_call_code
 C_code
     User supplied wrapper code for the C wrapper for a function.
 
+C_finalize
+    User supplied code to perform any function finialization.
+    Code added after all of the argument's *post_call* code.
+    Can be used to free memory in the C wrapper.
+
+C_finalize_buf
+    Identical to **C_finalize** but only applies to the buffer version of the
+    wrapper routine.
+
 C_name
     Name of the C wrapper function.
     Defaults to evaluation of option *C_name_template*.
@@ -419,6 +428,9 @@ F_result_clause
 function_name
     Name of function in the YAML file.
 
+function_suffix
+   Suffix to append to the end of generated name.
+
 LUA_name
     Name of function as known by LUA.
     Defaults to evaluation of option *LUA_name_template*.
@@ -496,6 +508,9 @@ copyright
 cxx_header
   C++ header file name which will be included in the implementation file.
 
+format
+   Format fields for the library.
+
 langauge
   The language of the library to wrap.
   Valid values are ``c`` and ``c++``.
@@ -511,6 +526,9 @@ library
 namespace
   Blank delimited list of namespaces for **cxx_header**.
   The namespaces will be nested.
+
+options
+   Options fields for the library.
 
 patterns
    Code blocks to insert into generated code.
@@ -1011,6 +1029,14 @@ cxx_header
   C++ header file name which will be included in the implementation file.
   If unset then the global *cxx_header* will be used.
 
+format
+   Format fields for the class.
+   Creates scope within library.
+
+options
+   Options fields for the class.
+   Creates scope within library.
+
 namespace
   Blank delimited list of namespaces for **cxx_header**.
   The namespaces will be nested.
@@ -1038,21 +1064,18 @@ default_arg_suffix
    the function with the fewest arguments and the final entry should be for
    all of the arguments.
 
-function_suffix
-   Suffix to append to the end of generated name.
+format
+   Format fields for the function.
+   Creates scope within container (library or class).
+
+options
+   Options fields for the function.
+   Creates scope within container (library or class).
 
 return_this
    If true, the method returns a reference to ``this``.  This idiom can be used
    to chain calls in C++.  This idiom does not translate to C and Fortran.
    Instead the *C_return_type* format is set to ``void``.
-
-C_post_call
-    Code added after all of the argument *post_call* code.
-    Can be used to release memory from the C routine.
-
-C_post_call_buf
-    Identical to **C_post_call** but only applies to the buffer version of the
-    wrapper routine.
 
 
 Annotations
