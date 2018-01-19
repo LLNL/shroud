@@ -18,7 +18,6 @@
                 }, 
                 "methods": [
                     {
-                        "_decl": "void method1(CustomType arg1 +intent(in)+value)", 
                         "_fmtargs": {
                             "arg1": {
                                 "fmtc": {
@@ -66,6 +65,7 @@
                             ]
                         }, 
                         "decl": "void method1(CustomType arg1)", 
+                        "declgen": "void method1(CustomType arg1 +intent(in)+value)", 
                         "format": {
                             "C_call_code": "SH_this->method1(arg1);", 
                             "C_call_list": "arg1", 
@@ -114,7 +114,6 @@
                 }, 
                 "methods": [
                     {
-                        "_decl": "void method1(MPI_Comm comm +intent(in)+value)", 
                         "_fmtargs": {
                             "comm": {
                                 "fmtc": {
@@ -162,6 +161,7 @@
                             ]
                         }, 
                         "decl": "void method1(MPI_Comm comm)", 
+                        "declgen": "void method1(MPI_Comm comm +intent(in)+value)", 
                         "format": {
                             "C_call_code": "SH_this->method1(MPI_Comm_f2c(comm));", 
                             "C_call_list": "MPI_Comm_f2c(comm)", 
@@ -189,7 +189,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "void method2(Class1 * c2 +intent(in)+value)", 
                         "_fmtargs": {
                             "c2": {
                                 "fmtc": {
@@ -242,6 +241,7 @@
                             ]
                         }, 
                         "decl": "void method2(Class1 * c2)", 
+                        "declgen": "void method2(Class1 * c2 +intent(in)+value)", 
                         "format": {
                             "C_call_code": "SH_this->method2(static_cast<Class1 *>(static_cast<void *>(c2)));", 
                             "C_call_list": "static_cast<Class1 *>(static_cast<void *>(c2))", 
@@ -370,7 +370,6 @@
         }, 
         "functions": [
             {
-                "_decl": "void function1()", 
                 "_function_index": 3, 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -388,6 +387,7 @@
                     ]
                 }, 
                 "decl": "void function1()", 
+                "declgen": "void function1()", 
                 "format": {
                     "C_call_code": "function1();", 
                     "C_call_list": "", 

@@ -108,7 +108,6 @@
         }, 
         "functions": [
             {
-                "_decl": "void passChar(char_scalar status +intent(in)+value)", 
                 "_fmtargs": {
                     "status": {
                         "fmtc": {
@@ -164,6 +163,7 @@
                     ]
                 }, 
                 "decl": "void passChar(char status)", 
+                "declgen": "void passChar(char_scalar status +intent(in)+value)", 
                 "doxygen": {
                     "brief": "pass a single char argument as a scalar."
                 }, 
@@ -193,7 +193,6 @@
             }, 
             {
                 "_PTR_F_C_index": 21, 
-                "_decl": "char_scalar returnChar()", 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "char SHT_rv", 
@@ -217,6 +216,7 @@
                     ]
                 }, 
                 "decl": "char returnChar()", 
+                "declgen": "char_scalar returnChar()", 
                 "doxygen": {
                     "brief": "return a char argument (non-pointer)"
                 }, 
@@ -247,7 +247,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 1, 
-                "_decl": "void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -311,6 +310,7 @@
                     ]
                 }, 
                 "decl": "char returnChar()", 
+                "declgen": "void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "doxygen": {
                     "brief": "return a char argument (non-pointer)"
                 }, 
@@ -337,7 +337,6 @@
             }, 
             {
                 "_PTR_F_C_index": 22, 
-                "_decl": "void passCharPtr(char * dest +intent(out), const char * src +intent(in))", 
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
@@ -432,6 +431,7 @@
                     ]
                 }, 
                 "decl": "void passCharPtr(char * dest+intent(out), const char *src)", 
+                "declgen": "void passCharPtr(char * dest +intent(out), const char * src +intent(in))", 
                 "doxygen": {
                     "brief": "strcpy like behavior", 
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
@@ -462,7 +462,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 2, 
-                "_decl": "void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "dest": {
@@ -555,6 +554,7 @@
                     ]
                 }, 
                 "decl": "void passCharPtr(char * dest+intent(out), const char *src)", 
+                "declgen": "void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
                 "doxygen": {
                     "brief": "strcpy like behavior", 
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
@@ -583,7 +583,6 @@
             }, 
             {
                 "_PTR_F_C_index": 23, 
-                "_decl": "void passCharPtrInOut(char * s +intent(inout))", 
                 "_fmtargs": {
                     "s": {
                         "fmtc": {
@@ -642,6 +641,7 @@
                     ]
                 }, 
                 "decl": "void passCharPtrInOut(char * s+intent(inout))", 
+                "declgen": "void passCharPtrInOut(char * s +intent(inout))", 
                 "doxygen": {
                     "brief": "Change a string in-place"
                 }, 
@@ -671,7 +671,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 3, 
-                "_decl": "void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "s": {
@@ -731,6 +730,7 @@
                     ]
                 }, 
                 "decl": "void passCharPtrInOut(char * s+intent(inout))", 
+                "declgen": "void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))", 
                 "doxygen": {
                     "brief": "Change a string in-place"
                 }, 
@@ -757,7 +757,6 @@
                 }
             }, 
             {
-                "_decl": "const char * getChar1() +pure", 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "const char * SHT_rv", 
@@ -788,6 +787,7 @@
                     ]
                 }, 
                 "decl": "const char * getChar1()  +pure", 
+                "declgen": "const char * getChar1() +pure", 
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 }, 
@@ -819,7 +819,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 4, 
-                "_decl": "void getChar1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -881,6 +880,7 @@
                     ]
                 }, 
                 "decl": "const char * getChar1()  +pure", 
+                "declgen": "void getChar1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 }, 
@@ -907,7 +907,6 @@
             }, 
             {
                 "_PTR_F_C_index": 25, 
-                "_decl": "const char * getChar2 +len(30)()", 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "const char * SHT_rv", 
@@ -938,6 +937,7 @@
                     ]
                 }, 
                 "decl": "const char * getChar2+len(30)()", 
+                "declgen": "const char * getChar2 +len(30)()", 
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
@@ -969,7 +969,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 5, 
-                "_decl": "void getChar2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -1035,6 +1034,7 @@
                     ]
                 }, 
                 "decl": "const char * getChar2+len(30)()", 
+                "declgen": "void getChar2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
@@ -1060,7 +1060,6 @@
                 }
             }, 
             {
-                "_decl": "const char * getChar3()", 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "const char * SHT_rv", 
@@ -1089,6 +1088,7 @@
                     ]
                 }, 
                 "decl": "const char * getChar3()", 
+                "declgen": "const char * getChar3()", 
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 }, 
@@ -1112,7 +1112,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 6, 
-                "_decl": "void getChar3(char * output +intent(out)+len(Noutput))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "output": {
@@ -1176,6 +1175,7 @@
                     ]
                 }, 
                 "decl": "const char * getChar3()", 
+                "declgen": "void getChar3(char * output +intent(out)+len(Noutput))", 
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 }, 
@@ -1204,7 +1204,6 @@
             {
                 "_PTR_C_CXX_index": 6, 
                 "_PTR_F_C_index": 26, 
-                "_decl": "void getChar3(char * output +intent(out)+len(Noutput))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_function_index": 27, 
                 "_generated": "arg_to_buffer", 
@@ -1245,6 +1244,7 @@
                     ]
                 }, 
                 "decl": "const char * getChar3()", 
+                "declgen": "void getChar3(char * output +intent(out)+len(Noutput))", 
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 }, 
@@ -1271,7 +1271,6 @@
                 }
             }, 
             {
-                "_decl": "const string & getString1() +pure", 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * XSHT_rv", 
@@ -1305,6 +1304,7 @@
                     ]
                 }, 
                 "decl": "const string& getString1()  +pure", 
+                "declgen": "const string & getString1() +pure", 
                 "doxygen": {
                     "brief": "return a 'const string&' as character(*)"
                 }, 
@@ -1336,7 +1336,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 7, 
-                "_decl": "void getString1(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -1398,6 +1397,7 @@
                     ]
                 }, 
                 "decl": "const string& getString1()  +pure", 
+                "declgen": "void getString1(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
                 "doxygen": {
                     "brief": "return a 'const string&' as character(*)"
                 }, 
@@ -1425,7 +1425,6 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_F_C_index": 29, 
-                "_decl": "const string & getString2 +len(30)()", 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * XSHT_rv", 
@@ -1459,6 +1458,7 @@
                     ]
                 }, 
                 "decl": "const string& getString2+len=30()", 
+                "declgen": "const string & getString2 +len(30)()", 
                 "doxygen": {
                     "brief": "return 'const string&' with fixed size (len=30)"
                 }, 
@@ -1492,7 +1492,6 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 8, 
-                "_decl": "void getString2 +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -1558,6 +1557,7 @@
                     ]
                 }, 
                 "decl": "const string& getString2+len=30()", 
+                "declgen": "void getString2 +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                 "doxygen": {
                     "brief": "return 'const string&' with fixed size (len=30)"
                 }, 
@@ -1584,7 +1584,6 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_decl": "const string & getString3()", 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * XSHT_rv", 
@@ -1616,6 +1615,7 @@
                     ]
                 }, 
                 "decl": "const string& getString3()", 
+                "declgen": "const string & getString3()", 
                 "doxygen": {
                     "brief": "return a 'const string&' as argument"
                 }, 
@@ -1641,7 +1641,6 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 9, 
-                "_decl": "void getString3(string & output +intent(out)+len(Noutput))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "output": {
@@ -1705,6 +1704,7 @@
                     ]
                 }, 
                 "decl": "const string& getString3()", 
+                "declgen": "void getString3(string & output +intent(out)+len(Noutput))", 
                 "doxygen": {
                     "brief": "return a 'const string&' as argument"
                 }, 
@@ -1734,7 +1734,6 @@
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 9, 
                 "_PTR_F_C_index": 30, 
-                "_decl": "void getString3(string & output +intent(out)+len(Noutput))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_function_index": 31, 
                 "_generated": "arg_to_buffer", 
@@ -1775,6 +1774,7 @@
                     ]
                 }, 
                 "decl": "const string& getString3()", 
+                "declgen": "void getString3(string & output +intent(out)+len(Noutput))", 
                 "doxygen": {
                     "brief": "return a 'const string&' as argument"
                 }, 
@@ -1803,7 +1803,6 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_F_C_index": 32, 
-                "_decl": "const string & getString2_empty +len(30)()", 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * XSHT_rv", 
@@ -1837,6 +1836,7 @@
                     ]
                 }, 
                 "decl": "const string& getString2_empty+len=30()", 
+                "declgen": "const string & getString2_empty +len(30)()", 
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 }, 
@@ -1870,7 +1870,6 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 10, 
-                "_decl": "void getString2_empty +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -1936,6 +1935,7 @@
                     ]
                 }, 
                 "decl": "const string& getString2_empty+len=30()", 
+                "declgen": "void getString2_empty +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 }, 
@@ -1963,7 +1963,6 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_F_C_index": 33, 
-                "_decl": "const string getString5 +len(30)()", 
                 "_function_index": 11, 
                 "_subprogram": "function", 
                 "ast": {
@@ -1983,6 +1982,7 @@
                     ]
                 }, 
                 "decl": "const string getString5+len=30()", 
+                "declgen": "const string getString5 +len(30)()", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
@@ -2009,7 +2009,6 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 11, 
-                "_decl": "void getString5 +len(30)(string * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -2075,6 +2074,7 @@
                     ]
                 }, 
                 "decl": "const string getString5+len=30()", 
+                "declgen": "void getString5 +len(30)(string * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
@@ -2101,7 +2101,6 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_decl": "const string getString6()", 
                 "_function_index": 12, 
                 "_subprogram": "function", 
                 "ast": {
@@ -2119,6 +2118,7 @@
                     ]
                 }, 
                 "decl": "const string getString6()", 
+                "declgen": "const string getString6()", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
@@ -2136,7 +2136,6 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 12, 
-                "_decl": "void getString6(string * output +intent(out)+len(Noutput))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "output": {
@@ -2200,6 +2199,7 @@
                     ]
                 }, 
                 "decl": "const string getString6()", 
+                "declgen": "void getString6(string * output +intent(out)+len(Noutput))", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
@@ -2229,7 +2229,6 @@
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 12, 
                 "_PTR_F_C_index": 34, 
-                "_decl": "void getString6(string * output +intent(out)+len(Noutput))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_function_index": 35, 
                 "_generated": "arg_to_buffer", 
@@ -2270,6 +2269,7 @@
                     ]
                 }, 
                 "decl": "const string getString6()", 
+                "declgen": "void getString6(string * output +intent(out)+len(Noutput))", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
@@ -2297,7 +2297,6 @@
             }, 
             {
                 "_PTR_F_C_index": 36, 
-                "_decl": "void acceptStringConstReference(const std::string & arg1 +intent(in))", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2354,6 +2353,7 @@
                     ]
                 }, 
                 "decl": "void acceptStringConstReference(const std::string & arg1)", 
+                "declgen": "void acceptStringConstReference(const std::string & arg1 +intent(in))", 
                 "doxygen": {
                     "brief": "Accept a const string reference", 
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
@@ -2385,7 +2385,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 13, 
-                "_decl": "void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg1": {
@@ -2442,6 +2441,7 @@
                     ]
                 }, 
                 "decl": "void acceptStringConstReference(const std::string & arg1)", 
+                "declgen": "void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))", 
                 "doxygen": {
                     "brief": "Accept a const string reference", 
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
@@ -2469,7 +2469,6 @@
             }, 
             {
                 "_PTR_F_C_index": 37, 
-                "_decl": "void acceptStringReferenceOut(std::string & arg1 +intent(out))", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2529,6 +2528,7 @@
                     ]
                 }, 
                 "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))", 
+                "declgen": "void acceptStringReferenceOut(std::string & arg1 +intent(out))", 
                 "doxygen": {
                     "brief": "Accept a string reference", 
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
@@ -2561,7 +2561,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 14, 
-                "_decl": "void acceptStringReferenceOut(std::string & arg1 +intent(out)+len(Narg1))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg1": {
@@ -2619,6 +2618,7 @@
                     ]
                 }, 
                 "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))", 
+                "declgen": "void acceptStringReferenceOut(std::string & arg1 +intent(out)+len(Narg1))", 
                 "doxygen": {
                     "brief": "Accept a string reference", 
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
@@ -2647,7 +2647,6 @@
             }, 
             {
                 "_PTR_F_C_index": 38, 
-                "_decl": "void acceptStringReference(std::string & arg1 +intent(inout))", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2707,6 +2706,7 @@
                     ]
                 }, 
                 "decl": "void acceptStringReference(std::string & arg1)", 
+                "declgen": "void acceptStringReference(std::string & arg1 +intent(inout))", 
                 "doxygen": {
                     "brief": "Accept a string reference", 
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
@@ -2739,7 +2739,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 15, 
-                "_decl": "void acceptStringReference(std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg1": {
@@ -2799,6 +2798,7 @@
                     ]
                 }, 
                 "decl": "void acceptStringReference(std::string & arg1)", 
+                "declgen": "void acceptStringReference(std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))", 
                 "doxygen": {
                     "brief": "Accept a string reference", 
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
@@ -2827,7 +2827,6 @@
             }, 
             {
                 "_PTR_F_C_index": 39, 
-                "_decl": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -2885,6 +2884,7 @@
                     ]
                 }, 
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
+                "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
                 "format": {
                     "C_bufferify_suffix": "_BUFFER", 
                     "C_call_code": "explicit1(name);", 
@@ -2912,7 +2912,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 16, 
-                "_decl": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
@@ -2970,6 +2969,7 @@
                     ]
                 }, 
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
+                "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
                 "format": {
                     "C_bufferify_suffix": "_BUFFER", 
                     "C_call_code": "explicit1(SH_name);", 
@@ -2995,7 +2995,6 @@
             }, 
             {
                 "_PTR_F_C_index": 40, 
-                "_decl": "void explicit2(char * name +intent(out)+len(AAtrim))", 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -3055,6 +3054,7 @@
                     ]
                 }, 
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
+                "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))", 
                 "format": {
                     "C_call_code": "explicit2(name);", 
                     "C_call_list": "name", 
@@ -3081,7 +3081,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 17, 
-                "_decl": "void explicit2(char * name +intent(out)+len(AAtrim))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
@@ -3139,6 +3138,7 @@
                     ]
                 }, 
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
+                "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))", 
                 "format": {
                     "C_call_code": "explicit2(SH_name);", 
                     "C_call_list": "SH_name", 
@@ -3162,7 +3162,6 @@
                 }
             }, 
             {
-                "_decl": "void CpassChar(char_scalar status +intent(in)+value)", 
                 "_fmtargs": {
                     "status": {
                         "fmtc": {
@@ -3218,6 +3217,7 @@
                     ]
                 }, 
                 "decl": "void CpassChar(char status)", 
+                "declgen": "void CpassChar(char_scalar status +intent(in)+value)", 
                 "doxygen": {
                     "brief": "pass a single char argument as a scalar, extern \"C\""
                 }, 
@@ -3249,7 +3249,6 @@
             }, 
             {
                 "_PTR_F_C_index": 41, 
-                "_decl": "char_scalar CreturnChar()", 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "char SHT_rv", 
@@ -3273,6 +3272,7 @@
                     ]
                 }, 
                 "decl": "char CreturnChar()", 
+                "declgen": "char_scalar CreturnChar()", 
                 "doxygen": {
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 }, 
@@ -3305,7 +3305,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 19, 
-                "_decl": "void CreturnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -3369,6 +3368,7 @@
                     ]
                 }, 
                 "decl": "char CreturnChar()", 
+                "declgen": "void CreturnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "doxygen": {
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 }, 
@@ -3396,7 +3396,6 @@
             }, 
             {
                 "_PTR_F_C_index": 42, 
-                "_decl": "void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))", 
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
@@ -3491,6 +3490,7 @@
                     ]
                 }, 
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)", 
+                "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))", 
                 "doxygen": {
                     "brief": "strcpy like behavior", 
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
@@ -3523,7 +3523,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 20, 
-                "_decl": "void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "dest": {
@@ -3616,6 +3615,7 @@
                     ]
                 }, 
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)", 
+                "declgen": "void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
                 "doxygen": {
                     "brief": "strcpy like behavior", 
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"

@@ -96,7 +96,6 @@
         }, 
         "functions": [
             {
-                "_decl": "void Function1()", 
                 "_function_index": 0, 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -114,6 +113,7 @@
                     ]
                 }, 
                 "decl": "void Function1()", 
+                "declgen": "void Function1()", 
                 "format": {
                     "C_call_code": "Function1();", 
                     "C_call_list": "", 
@@ -138,7 +138,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -219,6 +218,7 @@
                     ]
                 }, 
                 "decl": "double Function2(double arg1, int arg2)", 
+                "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "format": {
                     "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
                     "C_call_list": "arg1, arg2", 
@@ -244,7 +244,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
                 "_fmtargs": {
                     "len": {
                         "fmtc": {
@@ -357,6 +356,7 @@
                     ]
                 }, 
                 "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
+                "declgen": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
                 "format": {
                     "C_call_code": "Sum(len, values, result);", 
                     "C_call_list": "len, values, result", 
@@ -381,7 +381,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "bool Function3(bool arg +intent(in)+value)", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -435,6 +434,7 @@
                     ]
                 }, 
                 "decl": "bool Function3(bool arg)", 
+                "declgen": "bool Function3(bool arg +intent(in)+value)", 
                 "format": {
                     "C_call_code": "bool SHT_rv = Function3(arg);", 
                     "C_call_list": "arg", 
@@ -460,7 +460,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -572,6 +571,7 @@
                     ]
                 }, 
                 "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
+                "declgen": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "format": {
                     "C_call_code": "Function3b(arg1, arg2, arg3);", 
                     "C_call_list": "arg1, arg2, arg3", 
@@ -597,7 +597,6 @@
             }, 
             {
                 "_PTR_F_C_index": 6, 
-                "_decl": "char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -687,6 +686,7 @@
                     ]
                 }, 
                 "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
+                "declgen": "char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))", 
                 "format": {
                     "C_call_code": "char * SHT_rv = Function4a(arg1, arg2);", 
                     "C_call_list": "arg1, arg2", 
@@ -715,7 +715,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 5, 
-                "_decl": "void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -851,6 +850,7 @@
                     ]
                 }, 
                 "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
+                "declgen": "void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "format": {
                     "C_call_code": "char * SHT_rv = Function4a(SH_arg1, SH_arg2);", 
                     "C_call_list": "SH_arg1, SH_arg2", 

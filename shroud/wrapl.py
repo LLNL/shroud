@@ -408,7 +408,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             cls_function = 'method'
         else:
             cls_function = 'function'
-        self.log.write("Lua {0} {1._decl}\n".format(cls_function, node))
+        self.log.write("Lua {0} {1.declgen}\n".format(cls_function, node))
 
 #        fmt_func = node.fmtdict
         fmtargs = node._fmtargs

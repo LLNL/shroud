@@ -642,10 +642,10 @@ class GenFunctions(object):
                 used_types[argtype] = typedef
 
     def gen_functions_decl(self, functions):
-        """ Generate _decl for generated all functions.
+        """ Generate declgen for generated all functions.
         """
         for node in functions:
-            node._decl = node.ast.gen_decl()
+            node.declgen = node.ast.gen_decl()
 
 
 class Namify(object):

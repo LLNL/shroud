@@ -24,7 +24,6 @@
                 }, 
                 "methods": [
                     {
-                        "_decl": "void method1()", 
                         "_function_index": 0, 
                         "_subprogram": "subroutine", 
                         "ast": {
@@ -42,6 +41,7 @@
                             ]
                         }, 
                         "decl": "void method1()", 
+                        "declgen": "void method1()", 
                         "format": {
                             "C_call_code": "SH_this->method1();", 
                             "C_call_list": "", 
@@ -70,7 +70,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "void method2()", 
                         "_function_index": 1, 
                         "_subprogram": "subroutine", 
                         "ast": {
@@ -88,6 +87,7 @@
                             ]
                         }, 
                         "decl": "void method2()", 
+                        "declgen": "void method2()", 
                         "format": {
                             "CXX_this": "SH_this2", 
                             "C_call_code": "SH_this->method2();", 
@@ -260,7 +260,6 @@
         }, 
         "functions": [
             {
-                "_decl": "void function1()", 
                 "_function_index": 2, 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -278,6 +277,7 @@
                     ]
                 }, 
                 "decl": "void function1()", 
+                "declgen": "void function1()", 
                 "format": {
                     "C_call_code": "function1();", 
                     "C_call_list": "", 
@@ -303,7 +303,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "void function2()", 
                 "_function_index": 3, 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -321,6 +320,7 @@
                     ]
                 }, 
                 "decl": "void function2()", 
+                "declgen": "void function2()", 
                 "format": {
                     "C_call_code": "function2();", 
                     "C_call_list": "", 
@@ -350,7 +350,6 @@
                     4, 
                     5
                 ], 
-                "_decl": "void function3a(int i +intent(in)+value)", 
                 "_fmtargs": {
                     "i": {
                         "fmtc": {
@@ -407,6 +406,7 @@
                     ]
                 }, 
                 "decl": "void function3a(int i)", 
+                "declgen": "void function3a(int i +intent(in)+value)", 
                 "format": {
                     "C_call_code": "function3a(i);", 
                     "C_call_list": "i", 
@@ -437,7 +437,6 @@
                     4, 
                     5
                 ], 
-                "_decl": "void function3a(long i +intent(in)+value)", 
                 "_fmtargs": {
                     "i": {
                         "fmtc": {
@@ -494,6 +493,7 @@
                     ]
                 }, 
                 "decl": "void function3a(long i)", 
+                "declgen": "void function3a(long i +intent(in)+value)", 
                 "format": {
                     "C_call_code": "function3a(i);", 
                     "C_call_list": "i", 
@@ -521,7 +521,6 @@
             }, 
             {
                 "_PTR_F_C_index": 8, 
-                "_decl": "int function4(const std::string & rv +intent(in))", 
                 "_fmtargs": {
                     "rv": {
                         "fmtc": {
@@ -584,6 +583,7 @@
                     ]
                 }, 
                 "decl": "int function4(const std::string &rv)", 
+                "declgen": "int function4(const std::string & rv +intent(in))", 
                 "format": {
                     "C_call_code": "int SHT_rv = function4(SH_rv);", 
                     "C_call_list": "SH_rv", 
@@ -612,7 +612,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 6, 
-                "_decl": "int function4(const std::string & rv +intent(in)+len_trim(Lrv))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "rv": {
@@ -675,6 +674,7 @@
                     ]
                 }, 
                 "decl": "int function4(const std::string &rv)", 
+                "declgen": "int function4(const std::string & rv +intent(in)+len_trim(Lrv))", 
                 "format": {
                     "C_call_code": "int SHT_rv = function4(SH_rv);", 
                     "C_call_list": "SH_rv", 
@@ -697,7 +697,6 @@
                 }
             }, 
             {
-                "_decl": "void function5() +name(fiveplus)", 
                 "_function_index": 7, 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -717,6 +716,7 @@
                     ]
                 }, 
                 "decl": "void function5() +name(fiveplus)", 
+                "declgen": "void function5() +name(fiveplus)", 
                 "format": {
                     "C_call_code": "fiveplus();", 
                     "C_call_list": "", 

@@ -316,7 +316,7 @@ class Wrapc(util.WrapperMixin):
             cls_function = 'method'
         else:
             cls_function = 'function'
-        self.log.write("C {0} {1._decl}\n".format(cls_function, node))
+        self.log.write("C {0} {1.declgen}\n".format(cls_function, node))
 
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
@@ -670,7 +670,7 @@ class Wrapc(util.WrapperMixin):
             impl = self.impl
             impl.append('')
             if options.debug:
-                impl.append('// %s' % node._decl)
+                impl.append('// %s' % node.declgen)
                 impl.append('// function_index=%d' % node._function_index)
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)

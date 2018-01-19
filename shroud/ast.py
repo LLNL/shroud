@@ -462,8 +462,6 @@ class FunctionNode(AstNode):
       }
     }
 
-    _decl            - generated declaration.
-                       Includes computed attributes
     _function_index  - sequence number function,
                        used in lieu of a pointer
     _generated       - who generated this function
@@ -491,7 +489,7 @@ class FunctionNode(AstNode):
         self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
         self._cxx_overload = None
-        self._decl = None
+        self.declgen = None              #  generated declaration.
         self._default_funcs = []         #  generated default value functions  (unused?)
         self._function_index = None
         self._error_pattern_suffix = ''
@@ -596,14 +594,14 @@ class FunctionNode(AstNode):
             format=self.fmtdict,
             options=self.options,
         )
-        for key in ['cxx_template', 'default_arg_suffix', 'doxygen', 
+        for key in ['cxx_template', 'default_arg_suffix',
+                    'declgen', 'doxygen', 
                     'fortran_generic', 'return_this',
                     'C_error_pattern', 'PY_error_pattern',
                     '_PTR_C_CXX_index', '_PTR_F_C_index',
                     '_CXX_return_templated',
                     '_cxx_overload', '_error_pattern_suffix',
-                    '_decl', '_default_funcs', 
-                    '_fmtargs', '_fmtresult',
+                    '_default_funcs', '_fmtargs', '_fmtresult',
                     '_generated', '_has_default_arg',
                     '_nargs', '_overloaded', '_subprogram']:
             value = getattr(self,key)

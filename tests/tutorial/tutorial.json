@@ -28,7 +28,6 @@
                 }, 
                 "methods": [
                     {
-                        "_decl": "Class1() +name(new)", 
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_rv_decl": "Class1 * SHT_rv", 
@@ -52,6 +51,7 @@
                             ]
                         }, 
                         "decl": "Class1() +name(new)", 
+                        "declgen": "Class1() +name(new)", 
                         "format": {
                             "C_call_code": "Class1 * SHT_rv = new Class1();", 
                             "C_call_list": "", 
@@ -79,7 +79,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "~Class1() +name(delete)", 
                         "_function_index": 1, 
                         "_subprogram": "function", 
                         "ast": {
@@ -97,6 +96,7 @@
                             ]
                         }, 
                         "decl": "~Class1() +name(delete)", 
+                        "declgen": "~Class1() +name(delete)", 
                         "format": {
                             "C_call_code": "delete SH_this;", 
                             "C_call_list": "", 
@@ -127,7 +127,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "void Method1()", 
                         "_function_index": 2, 
                         "_subprogram": "subroutine", 
                         "ast": {
@@ -145,6 +144,7 @@
                             ]
                         }, 
                         "decl": "void Method1()", 
+                        "declgen": "void Method1()", 
                         "format": {
                             "C_call_code": "SH_this->Method1();", 
                             "C_call_list": "", 
@@ -292,7 +292,6 @@
         }, 
         "functions": [
             {
-                "_decl": "void Function1()", 
                 "_function_index": 3, 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -310,6 +309,7 @@
                     ]
                 }, 
                 "decl": "void Function1()", 
+                "declgen": "void Function1()", 
                 "format": {
                     "C_call_code": "Function1();", 
                     "C_call_list": "", 
@@ -337,7 +337,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -452,6 +451,7 @@
                     ]
                 }, 
                 "decl": "double Function2(double arg1, int arg2)", 
+                "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "format": {
                     "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
                     "C_call_list": "arg1, arg2", 
@@ -480,7 +480,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
                 "_fmtargs": {
                     "len": {
                         "fmtc": {
@@ -593,6 +592,7 @@
                     ]
                 }, 
                 "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
+                "declgen": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
                 "format": {
                     "C_call_code": "Sum(len, values, result);", 
                     "C_call_list": "len, values, result", 
@@ -620,7 +620,6 @@
                 }
             }, 
             {
-                "_decl": "long long TypeLongLong(long long arg1 +intent(in)+value)", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -684,6 +683,7 @@
                     ]
                 }, 
                 "decl": "long long TypeLongLong(long long arg1)", 
+                "declgen": "long long TypeLongLong(long long arg1 +intent(in)+value)", 
                 "format": {
                     "C_call_code": "long long SHT_rv = TypeLongLong(arg1);", 
                     "C_call_list": "arg1", 
@@ -712,7 +712,6 @@
                 }
             }, 
             {
-                "_decl": "bool Function3(bool arg +intent(in)+value)", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -783,6 +782,7 @@
                     ]
                 }, 
                 "decl": "bool Function3(bool arg)", 
+                "declgen": "bool Function3(bool arg +intent(in)+value)", 
                 "format": {
                     "C_call_code": "bool SHT_rv = Function3(arg);", 
                     "C_call_list": "arg", 
@@ -811,7 +811,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -923,6 +922,7 @@
                     ]
                 }, 
                 "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
+                "declgen": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "format": {
                     "C_call_code": "Function3b(arg1, arg2, arg3);", 
                     "C_call_list": "arg1, arg2, arg3", 
@@ -951,7 +951,6 @@
             }, 
             {
                 "_PTR_F_C_index": 41, 
-                "_decl": "const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtl": {
@@ -1050,6 +1049,7 @@
                     ]
                 }, 
                 "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
+                "declgen": "const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
                 "format": {
                     "F_C_call": "c_function4a_bufferify", 
                     "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), SHT_rv, len(SHT_rv, kind=C_INT)", 
@@ -1074,7 +1074,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 9, 
-                "_decl": "void Function4a +len(30)(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -1208,6 +1207,7 @@
                     ]
                 }, 
                 "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
+                "declgen": "void Function4a +len(30)(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "format": {
                     "C_call_code": "const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);", 
                     "C_call_list": "SH_arg1, SH_arg2", 
@@ -1231,7 +1231,6 @@
                 }
             }, 
             {
-                "_decl": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -1356,6 +1355,7 @@
                     ]
                 }, 
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
+                "declgen": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
                 "format": {
                     "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
                     "C_call_list": "SH_arg1, SH_arg2", 
@@ -1379,7 +1379,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 10, 
-                "_decl": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg1": {
@@ -1511,6 +1510,7 @@
                     ]
                 }, 
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
+                "declgen": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
                 "format": {
                     "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
                     "C_call_list": "SH_arg1, SH_arg2", 
@@ -1537,7 +1537,6 @@
             {
                 "_PTR_C_CXX_index": 10, 
                 "_PTR_F_C_index": 42, 
-                "_decl": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_function_index": 43, 
                 "_generated": "arg_to_buffer", 
@@ -1618,6 +1617,7 @@
                     ]
                 }, 
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
+                "declgen": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
                 "format": {
                     "F_C_call": "c_function4b_bufferify", 
                     "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), arg2, len_trim(arg2, kind=C_INT), output, len(output, kind=C_INT)", 
@@ -1641,7 +1641,6 @@
                 }
             }, 
             {
-                "_decl": "double Function5()", 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "double SHT_rv", 
@@ -1667,6 +1666,7 @@
                     ]
                 }, 
                 "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
+                "declgen": "double Function5()", 
                 "default_arg_suffix": [
                     "", 
                     "_arg1", 
@@ -1703,7 +1703,6 @@
                 }
             }, 
             {
-                "_decl": "double Function5(double arg1=3.1415 +intent(in)+value)", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -1760,6 +1759,7 @@
                     ]
                 }, 
                 "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
+                "declgen": "double Function5(double arg1=3.1415 +intent(in)+value)", 
                 "default_arg_suffix": [
                     "", 
                     "_arg1", 
@@ -1796,7 +1796,6 @@
                 }
             }, 
             {
-                "_decl": "double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)", 
                 "_default_funcs": [
                     31, 
                     32
@@ -1923,6 +1922,7 @@
                     ]
                 }, 
                 "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
+                "declgen": "double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)", 
                 "default_arg_suffix": [
                     "", 
                     "_arg1", 
@@ -1962,7 +1962,6 @@
                     12, 
                     13
                 ], 
-                "_decl": "void Function6(const std::string & name +intent(in))", 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -2029,6 +2028,7 @@
                     ]
                 }, 
                 "decl": "void Function6(const std::string& name)", 
+                "declgen": "void Function6(const std::string & name +intent(in))", 
                 "format": {
                     "C_call_code": "Function6(SH_name);", 
                     "C_call_list": "SH_name", 
@@ -2063,7 +2063,6 @@
                     12, 
                     13
                 ], 
-                "_decl": "void Function6(const std::string & name +intent(in)+len_trim(Lname))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
@@ -2121,6 +2120,7 @@
                     ]
                 }, 
                 "decl": "void Function6(const std::string& name)", 
+                "declgen": "void Function6(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
                     "C_call_code": "Function6(SH_name);", 
                     "C_call_list": "SH_name", 
@@ -2147,7 +2147,6 @@
                     12, 
                     13
                 ], 
-                "_decl": "void Function6(int indx +intent(in)+value)", 
                 "_fmtargs": {
                     "indx": {
                         "fmtc": {
@@ -2213,6 +2212,7 @@
                     ]
                 }, 
                 "decl": "void Function6(int indx)", 
+                "declgen": "void Function6(int indx +intent(in)+value)", 
                 "format": {
                     "C_call_code": "Function6(indx);", 
                     "C_call_list": "indx", 
@@ -2239,7 +2239,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "void Function7(ArgType arg +intent(in)+value)", 
                 "_function_index": 14, 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
@@ -2279,6 +2278,7 @@
                     ]
                 }, 
                 "decl": "void Function7(ArgType arg)", 
+                "declgen": "void Function7(ArgType arg +intent(in)+value)", 
                 "format": {
                     "function_name": "Function7", 
                     "underscore_name": "function7"
@@ -2291,7 +2291,6 @@
                 }
             }, 
             {
-                "_decl": "void Function7(int arg +intent(in)+value)", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -2341,6 +2340,7 @@
                     ]
                 }, 
                 "decl": "void Function7(ArgType arg)", 
+                "declgen": "void Function7(int arg +intent(in)+value)", 
                 "format": {
                     "CXX_template": "<int>", 
                     "C_call_code": "Function7<int>(arg);", 
@@ -2372,7 +2372,6 @@
                 }
             }, 
             {
-                "_decl": "void Function7(double arg +intent(in)+value)", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -2422,6 +2421,7 @@
                     ]
                 }, 
                 "decl": "void Function7(ArgType arg)", 
+                "declgen": "void Function7(double arg +intent(in)+value)", 
                 "format": {
                     "CXX_template": "<double>", 
                     "C_call_code": "Function7<double>(arg);", 
@@ -2453,7 +2453,6 @@
                 }
             }, 
             {
-                "_decl": "RetType Function8()", 
                 "_function_index": 15, 
                 "_overloaded": true, 
                 "_subprogram": "function", 
@@ -2478,6 +2477,7 @@
                     ]
                 }, 
                 "decl": "RetType Function8()", 
+                "declgen": "RetType Function8()", 
                 "format": {
                     "function_name": "Function8", 
                     "underscore_name": "function8"
@@ -2491,7 +2491,6 @@
             }, 
             {
                 "_CXX_return_templated": true, 
-                "_decl": "int Function8()", 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "int SHT_rv", 
@@ -2517,6 +2516,7 @@
                     ]
                 }, 
                 "decl": "RetType Function8()", 
+                "declgen": "int Function8()", 
                 "format": {
                     "CXX_template": "<int>", 
                     "C_call_code": "int SHT_rv = Function8<int>();", 
@@ -2550,7 +2550,6 @@
             }, 
             {
                 "_CXX_return_templated": true, 
-                "_decl": "double Function8()", 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "double SHT_rv", 
@@ -2576,6 +2575,7 @@
                     ]
                 }, 
                 "decl": "RetType Function8()", 
+                "declgen": "double Function8()", 
                 "format": {
                     "CXX_template": "<double>", 
                     "C_call_code": "double SHT_rv = Function8<double>();", 
@@ -2608,7 +2608,6 @@
                 }
             }, 
             {
-                "_decl": "void Function9(double arg +intent(in)+value)", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -2674,6 +2673,7 @@
                     ]
                 }, 
                 "decl": "void Function9(double arg)", 
+                "declgen": "void Function9(double arg +intent(in)+value)", 
                 "format": {
                     "C_call_code": "Function9(arg);", 
                     "C_call_list": "arg", 
@@ -2701,7 +2701,6 @@
             }, 
             {
                 "_PTR_F_C_index": 16, 
-                "_decl": "void Function9(float arg +intent(in)+value)", 
                 "_function_index": 53, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
@@ -2736,6 +2735,7 @@
                     ]
                 }, 
                 "decl": "void Function9(double arg)", 
+                "declgen": "void Function9(float arg +intent(in)+value)", 
                 "format": {
                     "F_C_call": "c_function9", 
                     "F_arg_c_call": "real(arg, C_DOUBLE)", 
@@ -2759,7 +2759,6 @@
             }, 
             {
                 "_PTR_F_C_index": 16, 
-                "_decl": "void Function9(double arg +intent(in)+value)", 
                 "_function_index": 54, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
@@ -2794,6 +2793,7 @@
                     ]
                 }, 
                 "decl": "void Function9(double arg)", 
+                "declgen": "void Function9(double arg +intent(in)+value)", 
                 "format": {
                     "F_C_call": "c_function9", 
                     "F_arg_c_call": "arg", 
@@ -2820,7 +2820,6 @@
                     17, 
                     18
                 ], 
-                "_decl": "void Function10()", 
                 "_function_index": 17, 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
@@ -2839,6 +2838,7 @@
                     ]
                 }, 
                 "decl": "void Function10()", 
+                "declgen": "void Function10()", 
                 "format": {
                     "C_call_code": "Function10();", 
                     "C_call_list": "", 
@@ -2872,7 +2872,6 @@
                     17, 
                     18
                 ], 
-                "_decl": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
                 "_fmtargs": {
                     "arg2": {
                         "fmtc": {
@@ -2979,6 +2978,7 @@
                     ]
                 }, 
                 "decl": "void Function10(const std::string &name, double arg2)", 
+                "declgen": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
                 "format": {
                     "C_call_code": "Function10(SH_name, arg2);", 
                     "C_call_list": "SH_name, arg2", 
@@ -3011,7 +3011,6 @@
                     17, 
                     18
                 ], 
-                "_decl": "void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)", 
                 "_function_index": 55, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
@@ -3065,6 +3064,7 @@
                     ]
                 }, 
                 "decl": "void Function10(const std::string &name, double arg2)", 
+                "declgen": "void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)", 
                 "format": {
                     "F_C_call": "c_function10_1_bufferify", 
                     "F_arg_c_call": "name, len_trim(name, kind=C_INT), real(arg2, C_DOUBLE)", 
@@ -3093,7 +3093,6 @@
                     17, 
                     18
                 ], 
-                "_decl": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
                 "_function_index": 56, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
@@ -3147,6 +3146,7 @@
                     ]
                 }, 
                 "decl": "void Function10(const std::string &name, double arg2)", 
+                "declgen": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
                 "format": {
                     "F_C_call": "c_function10_1_bufferify", 
                     "F_arg_c_call": "name, len_trim(name, kind=C_INT), arg2", 
@@ -3175,7 +3175,6 @@
                     17, 
                     18
                 ], 
-                "_decl": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg2": {
@@ -3260,6 +3259,7 @@
                     ]
                 }, 
                 "decl": "void Function10(const std::string &name, double arg2)", 
+                "declgen": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)", 
                 "format": {
                     "C_call_code": "Function10(SH_name, arg2);", 
                     "C_call_list": "SH_name, arg2", 
@@ -3293,7 +3293,6 @@
                     19, 
                     20
                 ], 
-                "_decl": "int overload1(int num +intent(in)+value)", 
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
@@ -3349,6 +3348,7 @@
                     ]
                 }, 
                 "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
+                "declgen": "int overload1(int num +intent(in)+value)", 
                 "default_arg_suffix": [
                     "_num", 
                     "_num_offset", 
@@ -3389,7 +3389,6 @@
                     19, 
                     20
                 ], 
-                "_decl": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)", 
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
@@ -3473,6 +3472,7 @@
                     ]
                 }, 
                 "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
+                "declgen": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)", 
                 "default_arg_suffix": [
                     "_num", 
                     "_num_offset", 
@@ -3513,7 +3513,6 @@
                     19, 
                     20
                 ], 
-                "_decl": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
                 "_default_funcs": [
                     37, 
                     38
@@ -3684,6 +3683,7 @@
                     ]
                 }, 
                 "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
+                "declgen": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
                 "default_arg_suffix": [
                     "_num", 
                     "_num_offset", 
@@ -3722,7 +3722,6 @@
                     19, 
                     20
                 ], 
-                "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
@@ -3805,6 +3804,7 @@
                     ]
                 }, 
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
+                "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
                 "format": {
                     "C_call_code": "int SHT_rv = overload1(type, num);", 
                     "C_call_list": "type, num", 
@@ -3840,7 +3840,6 @@
                     19, 
                     20
                 ], 
-                "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
@@ -3951,6 +3950,7 @@
                     ]
                 }, 
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
+                "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
                 "format": {
                     "C_call_code": "int SHT_rv = overload1(type, num, offset);", 
                     "C_call_list": "type, num, offset", 
@@ -3986,7 +3986,6 @@
                     19, 
                     20
                 ], 
-                "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
                 "_default_funcs": [
                     39, 
                     40
@@ -4201,6 +4200,7 @@
                     ]
                 }, 
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
+                "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
                 "format": {
                     "C_call_code": "int SHT_rv = overload1(type, num, offset, stride);", 
                     "C_call_list": "type, num, offset, stride", 
@@ -4228,7 +4228,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "TypeID typefunc(TypeID arg +intent(in)+value)", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -4299,6 +4298,7 @@
                     ]
                 }, 
                 "decl": "TypeID typefunc(TypeID arg)", 
+                "declgen": "TypeID typefunc(TypeID arg +intent(in)+value)", 
                 "format": {
                     "C_call_code": "TypeID SHT_rv = typefunc(arg);", 
                     "C_call_list": "arg", 
@@ -4327,7 +4327,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -4401,6 +4400,7 @@
                     ]
                 }, 
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
+                "declgen": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
                 "format": {
                     "C_call_code": "EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));", 
                     "C_call_list": "static_cast<EnumTypeID>(arg)", 
@@ -4429,7 +4429,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "void useclass(const Class1 * arg1 +intent(in)+value)", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -4490,6 +4489,7 @@
                     ]
                 }, 
                 "decl": "void useclass(const Class1 *arg1)", 
+                "declgen": "void useclass(const Class1 * arg1 +intent(in)+value)", 
                 "format": {
                     "C_call_code": "useclass(static_cast<const Class1 *>(static_cast<const void *>(arg1)));", 
                     "C_call_list": "static_cast<const Class1 *>(static_cast<const void *>(arg1))", 
@@ -4518,7 +4518,6 @@
             }, 
             {
                 "_PTR_F_C_index": 46, 
-                "_decl": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))", 
                 "_function_index": 24, 
                 "_subprogram": "function", 
                 "ast": {
@@ -4558,6 +4557,7 @@
                     ]
                 }, 
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
+                "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))", 
                 "format": {
                     "F_C_call": "c_vector_sum_bufferify", 
                     "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
@@ -4580,7 +4580,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 24, 
-                "_decl": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
@@ -4646,6 +4645,7 @@
                     ]
                 }, 
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
+                "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))", 
                 "format": {
                     "C_call_code": "int SHT_rv = vector_sum(SH_arg);", 
                     "C_call_list": "SH_arg", 
@@ -4669,7 +4669,6 @@
             }, 
             {
                 "_PTR_F_C_index": 47, 
-                "_decl": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))", 
                 "_function_index": 25, 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -4709,6 +4708,7 @@
                     ]
                 }, 
                 "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
+                "declgen": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))", 
                 "format": {
                     "F_C_call": "c_vector_iota_bufferify", 
                     "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
@@ -4730,7 +4730,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 25, 
-                "_decl": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out)+size(Sarg))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
@@ -4791,6 +4790,7 @@
                     ]
                 }, 
                 "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
+                "declgen": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out)+size(Sarg))", 
                 "format": {
                     "C_call_code": "vector_iota(SH_arg);", 
                     "C_call_list": "SH_arg", 
@@ -4815,7 +4815,6 @@
             }, 
             {
                 "_PTR_F_C_index": 48, 
-                "_decl": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))", 
                 "_function_index": 26, 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -4855,6 +4854,7 @@
                     ]
                 }, 
                 "decl": "void vector_increment(std::vector<int> &arg)", 
+                "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))", 
                 "format": {
                     "F_C_call": "c_vector_increment_bufferify", 
                     "F_arg_c_call": "arg, size(arg, kind=C_LONG)", 
@@ -4876,7 +4876,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 26, 
-                "_decl": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
@@ -4937,6 +4936,7 @@
                     ]
                 }, 
                 "decl": "void vector_increment(std::vector<int> &arg)", 
+                "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))", 
                 "format": {
                     "C_call_code": "vector_increment(SH_arg);", 
                     "C_call_list": "SH_arg", 
@@ -4961,7 +4961,6 @@
             }, 
             {
                 "_PTR_F_C_index": 49, 
-                "_decl": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))", 
                 "_function_index": 27, 
                 "_subprogram": "function", 
                 "ast": {
@@ -5001,6 +5000,7 @@
                     ]
                 }, 
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))", 
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings", 
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -5027,7 +5027,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 27, 
-                "_decl": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
@@ -5095,6 +5094,7 @@
                     ]
                 }, 
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))", 
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings", 
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -5122,7 +5122,6 @@
             }, 
             {
                 "_PTR_F_C_index": 50, 
-                "_decl": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))", 
                 "_function_index": 28, 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -5162,6 +5161,7 @@
                     ]
                 }, 
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
+                "declgen": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))", 
                 "doxygen": {
                     "brief": "Fill in arg with some animal names", 
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
@@ -5191,7 +5191,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 28, 
-                "_decl": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
@@ -5254,6 +5253,7 @@
                     ]
                 }, 
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
+                "declgen": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg))", 
                 "doxygen": {
                     "brief": "Fill in arg with some animal names", 
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
@@ -5283,7 +5283,6 @@
             }, 
             {
                 "_PTR_F_C_index": 51, 
-                "_decl": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))", 
                 "_function_index": 29, 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -5323,6 +5322,7 @@
                     ]
                 }, 
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
+                "declgen": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))", 
                 "doxygen": {
                     "brief": "append '-like' to names."
                 }, 
@@ -5347,7 +5347,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 29, 
-                "_decl": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
@@ -5410,6 +5409,7 @@
                     ]
                 }, 
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
+                "declgen": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))", 
                 "doxygen": {
                     "brief": "append '-like' to names."
                 }, 
@@ -5436,7 +5436,6 @@
                 }
             }, 
             {
-                "_decl": "const std::string & LastFunctionCalled() +pure", 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * XSHT_rv", 
@@ -5470,6 +5469,7 @@
                     ]
                 }, 
                 "decl": "const std::string& LastFunctionCalled() +pure", 
+                "declgen": "const std::string & LastFunctionCalled() +pure", 
                 "format": {
                     "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 
                     "C_call_list": "", 
@@ -5500,7 +5500,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 30, 
-                "_decl": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -5562,6 +5561,7 @@
                     ]
                 }, 
                 "decl": "const std::string& LastFunctionCalled() +pure", 
+                "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
                 "format": {
                     "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 
                     "C_call_list": "", 

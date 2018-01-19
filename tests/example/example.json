@@ -28,7 +28,6 @@
                             0, 
                             1
                         ], 
-                        "_decl": "ExClass1()", 
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_rv_decl": "ExClass1 * SHT_rv", 
@@ -52,6 +51,7 @@
                             ]
                         }, 
                         "decl": "ExClass1()", 
+                        "declgen": "ExClass1()", 
                         "format": {
                             "C_call_code": "ExClass1 * SHT_rv = new ExClass1();", 
                             "C_call_list": "", 
@@ -85,7 +85,6 @@
                             0, 
                             1
                         ], 
-                        "_decl": "ExClass1(const string * name +intent(in))", 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -140,6 +139,7 @@
                             ]
                         }, 
                         "decl": "ExClass1( const string *name )", 
+                        "declgen": "ExClass1(const string * name +intent(in))", 
                         "doxygen": {
                             "brief": "constructor", 
                             "description": "longer description\nusually multiple lines\n", 
@@ -177,7 +177,6 @@
                             0, 
                             1
                         ], 
-                        "_decl": "ExClass1(const string * name +intent(in)+len_trim(Lname))", 
                         "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "name": {
@@ -240,6 +239,7 @@
                             ]
                         }, 
                         "decl": "ExClass1( const string *name )", 
+                        "declgen": "ExClass1(const string * name +intent(in)+len_trim(Lname))", 
                         "doxygen": {
                             "brief": "constructor", 
                             "description": "longer description\nusually multiple lines\n", 
@@ -267,7 +267,6 @@
                         }
                     }, 
                     {
-                        "_decl": "~ExClass1()", 
                         "_function_index": 2, 
                         "_subprogram": "function", 
                         "ast": {
@@ -284,6 +283,7 @@
                             ]
                         }, 
                         "decl": "~ExClass1()", 
+                        "declgen": "~ExClass1()", 
                         "doxygen": {
                             "brief": "destructor", 
                             "description": "longer description joined with previous line"
@@ -316,7 +316,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "int incrementCount(int incr +intent(in)+value)", 
                         "_fmtargs": {
                             "incr": {
                                 "fmtc": {
@@ -378,6 +377,7 @@
                             ]
                         }, 
                         "decl": "int incrementCount(int incr)", 
+                        "declgen": "int incrementCount(int incr +intent(in)+value)", 
                         "format": {
                             "C_call_code": "int SHT_rv = SH_this->incrementCount(incr);", 
                             "C_call_list": "incr", 
@@ -410,7 +410,6 @@
                         "C_error_pattern": "C_invalid_name", 
                         "PY_error_pattern": "PY_invalid_name", 
                         "_PTR_F_C_index": 15, 
-                        "_decl": "const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const", 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * XSHT_rv", 
@@ -444,6 +443,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
+                        "declgen": "const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const", 
                         "format": {
                             "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                             "C_call_list": "", 
@@ -478,7 +478,6 @@
                         "C_error_pattern": "C_invalid_name", 
                         "PY_error_pattern": "PY_invalid_name", 
                         "_PTR_C_CXX_index": 4, 
-                        "_decl": "void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
@@ -544,6 +543,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
+                        "declgen": "void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
                             "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                             "C_call_list": "", 
@@ -569,7 +569,6 @@
                         }
                     }, 
                     {
-                        "_decl": "int GetNameLength() const", 
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_rv_decl": "int SHT_rv", 
@@ -593,6 +592,7 @@
                             ]
                         }, 
                         "decl": "int GetNameLength() const", 
+                        "declgen": "int GetNameLength() const", 
                         "doxygen": {
                             "brief": "helper function for Fortran to get length of name."
                         }, 
@@ -625,7 +625,6 @@
                     }, 
                     {
                         "_PTR_F_C_index": 16, 
-                        "_decl": "const string & getNameErrorCheck() const", 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * XSHT_rv", 
@@ -657,6 +656,7 @@
                             ]
                         }, 
                         "decl": "const string& getNameErrorCheck() const", 
+                        "declgen": "const string & getNameErrorCheck() const", 
                         "format": {
                             "C_call_code": "const std::string & SHT_rv = SH_this->getNameErrorCheck();", 
                             "C_call_list": "", 
@@ -688,7 +688,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 6, 
-                        "_decl": "void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
@@ -752,6 +751,7 @@
                             ]
                         }, 
                         "decl": "const string& getNameErrorCheck() const", 
+                        "declgen": "void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
                             "C_call_code": "const std::string & SHT_rv = SH_this->getNameErrorCheck();", 
                             "C_call_list": "", 
@@ -777,7 +777,6 @@
                         }
                     }, 
                     {
-                        "_decl": "const string & getNameArg() const", 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * XSHT_rv", 
@@ -809,6 +808,7 @@
                             ]
                         }, 
                         "decl": "const string& getNameArg() const", 
+                        "declgen": "const string & getNameArg() const", 
                         "format": {
                             "C_call_code": "const std::string & SHT_rv = SH_this->getNameArg();", 
                             "C_call_list": "", 
@@ -832,7 +832,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 7, 
-                        "_decl": "void getNameArg(string & name +intent(out)+len(Nname)) const", 
                         "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "name": {
@@ -896,6 +895,7 @@
                             ]
                         }, 
                         "decl": "const string& getNameArg() const", 
+                        "declgen": "void getNameArg(string & name +intent(out)+len(Nname)) const", 
                         "format": {
                             "C_call_code": "const std::string & SHT_rv = SH_this->getNameArg();", 
                             "C_call_list": "", 
@@ -924,7 +924,6 @@
                     {
                         "_PTR_C_CXX_index": 7, 
                         "_PTR_F_C_index": 17, 
-                        "_decl": "void getNameArg(string & name +intent(out)+len(Nname)) const", 
                         "_error_pattern_suffix": "_as_buffer", 
                         "_function_index": 18, 
                         "_generated": "arg_to_buffer", 
@@ -965,6 +964,7 @@
                             ]
                         }, 
                         "decl": "const string& getNameArg() const", 
+                        "declgen": "void getNameArg(string & name +intent(out)+len(Nname)) const", 
                         "format": {
                             "F_C_call": "c_exclass1_get_name_arg_bufferify", 
                             "F_arg_c_call": "obj%voidptr, name, len(name, kind=C_INT)", 
@@ -988,7 +988,6 @@
                         }
                     }, 
                     {
-                        "_decl": "ExClass2 * getRoot()", 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "AA_exclass2 * XSHT_rv", 
@@ -1020,6 +1019,7 @@
                             ]
                         }, 
                         "decl": "ExClass2 *getRoot()", 
+                        "declgen": "ExClass2 * getRoot()", 
                         "format": {
                             "C_call_code": "ExClass2 * SHT_rv = SH_this->getRoot();", 
                             "C_call_list": "", 
@@ -1053,7 +1053,6 @@
                             9, 
                             10
                         ], 
-                        "_decl": "int getValue(int value +intent(in)+value)", 
                         "_fmtargs": {
                             "value": {
                                 "fmtc": {
@@ -1116,6 +1115,7 @@
                             ]
                         }, 
                         "decl": "int  getValue(int value)", 
+                        "declgen": "int getValue(int value +intent(in)+value)", 
                         "format": {
                             "C_call_code": "int SHT_rv = SH_this->getValue(value);", 
                             "C_call_list": "value", 
@@ -1150,7 +1150,6 @@
                             9, 
                             10
                         ], 
-                        "_decl": "long getValue(long value +intent(in)+value)", 
                         "_fmtargs": {
                             "value": {
                                 "fmtc": {
@@ -1213,6 +1212,7 @@
                             ]
                         }, 
                         "decl": "long getValue(long value)", 
+                        "declgen": "long getValue(long value +intent(in)+value)", 
                         "format": {
                             "C_call_code": "long SHT_rv = SH_this->getValue(value);", 
                             "C_call_list": "value", 
@@ -1243,7 +1243,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "void * getAddr()", 
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_rv_decl": "void * SHT_rv", 
@@ -1272,6 +1271,7 @@
                             ]
                         }, 
                         "decl": "void *getAddr()", 
+                        "declgen": "void * getAddr()", 
                         "format": {
                             "C_call_code": "void * SHT_rv = SH_this->getAddr();", 
                             "C_call_list": "", 
@@ -1301,7 +1301,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "bool hasAddr(bool in +intent(in)+value)", 
                         "_fmtargs": {
                             "in": {
                                 "fmtc": {
@@ -1363,6 +1362,7 @@
                             ]
                         }, 
                         "decl": "bool hasAddr(bool in)", 
+                        "declgen": "bool hasAddr(bool in +intent(in)+value)", 
                         "format": {
                             "C_call_code": "bool SHT_rv = SH_this->hasAddr(in);", 
                             "C_call_list": "in", 
@@ -1392,7 +1392,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "void SplicerSpecial()", 
                         "_function_index": 13, 
                         "_subprogram": "subroutine", 
                         "ast": {
@@ -1410,6 +1409,7 @@
                             ]
                         }, 
                         "decl": "void SplicerSpecial()", 
+                        "declgen": "void SplicerSpecial()", 
                         "format": {
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_splicer_special", 
@@ -1469,7 +1469,6 @@
                 "methods": [
                     {
                         "_PTR_F_C_index": 39, 
-                        "_decl": "ExClass2(const string * name +intent(in)+random(2))", 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -1524,6 +1523,7 @@
                             ]
                         }, 
                         "decl": "ExClass2(const string *name)", 
+                        "declgen": "ExClass2(const string * name +intent(in)+random(2))", 
                         "doxygen": {
                             "brief": "constructor"
                         }, 
@@ -1554,7 +1554,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 19, 
-                        "_decl": "ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))", 
                         "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "name": {
@@ -1617,6 +1616,7 @@
                             ]
                         }, 
                         "decl": "ExClass2(const string *name)", 
+                        "declgen": "ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))", 
                         "doxygen": {
                             "brief": "constructor"
                         }, 
@@ -1642,7 +1642,6 @@
                         }
                     }, 
                     {
-                        "_decl": "~ExClass2()", 
                         "_function_index": 20, 
                         "_subprogram": "function", 
                         "ast": {
@@ -1659,6 +1658,7 @@
                             ]
                         }, 
                         "decl": "~ExClass2()", 
+                        "declgen": "~ExClass2()", 
                         "doxygen": {
                             "brief": "destructor"
                         }, 
@@ -1691,7 +1691,6 @@
                     }, 
                     {
                         "_PTR_F_C_index": 40, 
-                        "_decl": "const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const", 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * XSHT_rv", 
@@ -1725,6 +1724,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
+                        "declgen": "const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const", 
                         "format": {
                             "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                             "C_call_list": "", 
@@ -1756,7 +1756,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 21, 
-                        "_decl": "void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
@@ -1822,6 +1821,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
+                        "declgen": "void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
                             "C_call_code": "const std::string & SHT_rv = SH_this->getName();", 
                             "C_call_list": "", 
@@ -1848,7 +1848,6 @@
                     }, 
                     {
                         "_PTR_F_C_index": 41, 
-                        "_decl": "const string & getName2()", 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * XSHT_rv", 
@@ -1880,6 +1879,7 @@
                             ]
                         }, 
                         "decl": "const string& getName2()", 
+                        "declgen": "const string & getName2()", 
                         "format": {
                             "C_call_code": "const std::string & SHT_rv = SH_this->getName2();", 
                             "C_call_list": "", 
@@ -1911,7 +1911,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 22, 
-                        "_decl": "void getName2(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                         "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
@@ -1975,6 +1974,7 @@
                             ]
                         }, 
                         "decl": "const string& getName2()", 
+                        "declgen": "void getName2(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                         "format": {
                             "C_call_code": "const std::string & SHT_rv = SH_this->getName2();", 
                             "C_call_list": "", 
@@ -2001,7 +2001,6 @@
                     }, 
                     {
                         "_PTR_F_C_index": 42, 
-                        "_decl": "string & getName3() const", 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "char * XSHT_rv", 
@@ -2033,6 +2032,7 @@
                             ]
                         }, 
                         "decl": "string& getName3() const", 
+                        "declgen": "string & getName3() const", 
                         "format": {
                             "C_call_code": "std::string & SHT_rv = SH_this->getName3();", 
                             "C_call_list": "", 
@@ -2064,7 +2064,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 23, 
-                        "_decl": "void getName3(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
@@ -2128,6 +2127,7 @@
                             ]
                         }, 
                         "decl": "string& getName3() const", 
+                        "declgen": "void getName3(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
                             "C_call_code": "std::string & SHT_rv = SH_this->getName3();", 
                             "C_call_list": "", 
@@ -2154,7 +2154,6 @@
                     }, 
                     {
                         "_PTR_F_C_index": 43, 
-                        "_decl": "string & getName4()", 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "char * XSHT_rv", 
@@ -2186,6 +2185,7 @@
                             ]
                         }, 
                         "decl": "string& getName4()", 
+                        "declgen": "string & getName4()", 
                         "format": {
                             "C_call_code": "std::string & SHT_rv = SH_this->getName4();", 
                             "C_call_list": "", 
@@ -2217,7 +2217,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 24, 
-                        "_decl": "void getName4(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                         "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
@@ -2281,6 +2280,7 @@
                             ]
                         }, 
                         "decl": "string& getName4()", 
+                        "declgen": "void getName4(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                         "format": {
                             "C_call_code": "std::string & SHT_rv = SH_this->getName4();", 
                             "C_call_list": "", 
@@ -2306,7 +2306,6 @@
                         }
                     }, 
                     {
-                        "_decl": "int GetNameLength() const", 
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_rv_decl": "int SHT_rv", 
@@ -2330,6 +2329,7 @@
                             ]
                         }, 
                         "decl": "int GetNameLength() const", 
+                        "declgen": "int GetNameLength() const", 
                         "doxygen": {
                             "brief": "helper function for Fortran"
                         }, 
@@ -2361,7 +2361,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)", 
                         "_fmtargs": {
                             "in": {
                                 "fmtc": {
@@ -2436,6 +2435,7 @@
                             ]
                         }, 
                         "decl": "ExClass1 *get_class1(const ExClass1 *in)", 
+                        "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)", 
                         "format": {
                             "C_call_code": "ExClass1 * SHT_rv = SH_this->get_class1(static_cast<const ExClass1 *>(static_cast<const void *>(in)));", 
                             "C_call_list": "static_cast<const ExClass1 *>(static_cast<const void *>(in))", 
@@ -2465,7 +2465,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "void * declare(TypeID type +intent(in)+value)", 
                         "_fmtargs": {
                             "type": {
                                 "fmtc": {
@@ -2520,6 +2519,7 @@
                             ]
                         }, 
                         "decl": "void* declare(TypeID type, SidreLength len = 1)", 
+                        "declgen": "void * declare(TypeID type +intent(in)+value)", 
                         "format": {
                             "C_call_code": "SH_this->declare(getTypeID(type));", 
                             "C_call_list": "getTypeID(type)", 
@@ -2552,7 +2552,6 @@
                     }, 
                     {
                         "_PTR_F_C_index": 32, 
-                        "_decl": "void * declare(TypeID type +intent(in)+value)", 
                         "_function_index": 44, 
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
@@ -2592,6 +2591,7 @@
                             ]
                         }, 
                         "decl": "void* declare(TypeID type, SidreLength len = 1)", 
+                        "declgen": "void * declare(TypeID type +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_0", 
                             "F_arg_c_call": "obj%voidptr, type", 
@@ -2616,7 +2616,6 @@
                     }, 
                     {
                         "_PTR_F_C_index": 32, 
-                        "_decl": "void * declare(TypeID type +intent(in)+value)", 
                         "_function_index": 45, 
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
@@ -2656,6 +2655,7 @@
                             ]
                         }, 
                         "decl": "void* declare(TypeID type, SidreLength len = 1)", 
+                        "declgen": "void * declare(TypeID type +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_0", 
                             "F_arg_c_call": "obj%voidptr, type", 
@@ -2679,7 +2679,6 @@
                         "return_this": true
                     }, 
                     {
-                        "_decl": "void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)", 
                         "_default_funcs": [
                             32
                         ], 
@@ -2785,6 +2784,7 @@
                             ]
                         }, 
                         "decl": "void* declare(TypeID type, SidreLength len = 1)", 
+                        "declgen": "void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)", 
                         "format": {
                             "C_call_code": "SH_this->declare(getTypeID(type), len);", 
                             "C_call_list": "getTypeID(type), len", 
@@ -2815,7 +2815,6 @@
                     }, 
                     {
                         "_PTR_F_C_index": 27, 
-                        "_decl": "void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)", 
                         "_default_funcs": [
                             32
                         ], 
@@ -2878,6 +2877,7 @@
                             ]
                         }, 
                         "decl": "void* declare(TypeID type, SidreLength len = 1)", 
+                        "declgen": "void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_1", 
                             "F_arg_c_call": "obj%voidptr, type, int(len, C_LONG)", 
@@ -2902,7 +2902,6 @@
                     }, 
                     {
                         "_PTR_F_C_index": 27, 
-                        "_decl": "void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)", 
                         "_default_funcs": [
                             32
                         ], 
@@ -2965,6 +2964,7 @@
                             ]
                         }, 
                         "decl": "void* declare(TypeID type, SidreLength len = 1)", 
+                        "declgen": "void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_1", 
                             "F_arg_c_call": "obj%voidptr, type, int(len, C_LONG)", 
@@ -2988,7 +2988,6 @@
                         "return_this": true
                     }, 
                     {
-                        "_decl": "void destroyall()", 
                         "_function_index": 28, 
                         "_subprogram": "subroutine", 
                         "ast": {
@@ -3006,6 +3005,7 @@
                             ]
                         }, 
                         "decl": "void destroyall()", 
+                        "declgen": "void destroyall()", 
                         "format": {
                             "C_call_code": "SH_this->destroyall();", 
                             "C_call_list": "", 
@@ -3034,7 +3034,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "TypeID getTypeID() const", 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "int XSHT_rv", 
@@ -3061,6 +3060,7 @@
                             ]
                         }, 
                         "decl": "TypeID getTypeID() const", 
+                        "declgen": "TypeID getTypeID() const", 
                         "format": {
                             "C_call_code": "TypeID SHT_rv = SH_this->getTypeID();", 
                             "C_call_list": "", 
@@ -3090,7 +3090,6 @@
                         "options": {}
                     }, 
                     {
-                        "_decl": "void setValue(ValueType value +intent(in)+value)", 
                         "_function_index": 30, 
                         "_overloaded": true, 
                         "_subprogram": "subroutine", 
@@ -3132,6 +3131,7 @@
                             ]
                         }, 
                         "decl": "void setValue(ValueType value)", 
+                        "declgen": "void setValue(ValueType value +intent(in)+value)", 
                         "format": {
                             "function_name": "setValue", 
                             "underscore_name": "set_value"
@@ -3144,7 +3144,6 @@
                         }
                     }, 
                     {
-                        "_decl": "void setValue(int value +intent(in)+value)", 
                         "_fmtargs": {
                             "value": {
                                 "fmtc": {
@@ -3194,6 +3193,7 @@
                             ]
                         }, 
                         "decl": "void setValue(ValueType value)", 
+                        "declgen": "void setValue(int value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<int>", 
                             "C_call_code": "SH_this->setValue<int>(value);", 
@@ -3228,7 +3228,6 @@
                         }
                     }, 
                     {
-                        "_decl": "void setValue(long value +intent(in)+value)", 
                         "_fmtargs": {
                             "value": {
                                 "fmtc": {
@@ -3278,6 +3277,7 @@
                             ]
                         }, 
                         "decl": "void setValue(ValueType value)", 
+                        "declgen": "void setValue(long value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<long>", 
                             "C_call_code": "SH_this->setValue<long>(value);", 
@@ -3312,7 +3312,6 @@
                         }
                     }, 
                     {
-                        "_decl": "void setValue(float value +intent(in)+value)", 
                         "_fmtargs": {
                             "value": {
                                 "fmtc": {
@@ -3362,6 +3361,7 @@
                             ]
                         }, 
                         "decl": "void setValue(ValueType value)", 
+                        "declgen": "void setValue(float value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<float>", 
                             "C_call_code": "SH_this->setValue<float>(value);", 
@@ -3396,7 +3396,6 @@
                         }
                     }, 
                     {
-                        "_decl": "void setValue(double value +intent(in)+value)", 
                         "_fmtargs": {
                             "value": {
                                 "fmtc": {
@@ -3446,6 +3445,7 @@
                             ]
                         }, 
                         "decl": "void setValue(ValueType value)", 
+                        "declgen": "void setValue(double value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<double>", 
                             "C_call_code": "SH_this->setValue<double>(value);", 
@@ -3480,7 +3480,6 @@
                         }
                     }, 
                     {
-                        "_decl": "ValueType getValue()", 
                         "_function_index": 31, 
                         "_overloaded": true, 
                         "_subprogram": "function", 
@@ -3505,6 +3504,7 @@
                             ]
                         }, 
                         "decl": "ValueType getValue()", 
+                        "declgen": "ValueType getValue()", 
                         "format": {
                             "function_name": "getValue", 
                             "underscore_name": "get_value"
@@ -3518,7 +3518,6 @@
                     }, 
                     {
                         "_CXX_return_templated": true, 
-                        "_decl": "int getValue()", 
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_rv_decl": "int SHT_rv", 
@@ -3544,6 +3543,7 @@
                             ]
                         }, 
                         "decl": "ValueType getValue()", 
+                        "declgen": "int getValue()", 
                         "format": {
                             "CXX_template": "<int>", 
                             "C_call_code": "int SHT_rv = SH_this->getValue<int>();", 
@@ -3580,7 +3580,6 @@
                     }, 
                     {
                         "_CXX_return_templated": true, 
-                        "_decl": "double getValue()", 
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_rv_decl": "double SHT_rv", 
@@ -3606,6 +3605,7 @@
                             ]
                         }, 
                         "decl": "ValueType getValue()", 
+                        "declgen": "double getValue()", 
                         "format": {
                             "CXX_template": "<double>", 
                             "C_call_code": "double SHT_rv = SH_this->getValue<double>();", 
@@ -3681,7 +3681,6 @@
                 }, 
                 "methods": [
                     {
-                        "_decl": "void exfunc()", 
                         "_function_index": 48, 
                         "_subprogram": "subroutine", 
                         "ast": {
@@ -3699,6 +3698,7 @@
                             ]
                         }, 
                         "decl": "void exfunc()", 
+                        "declgen": "void exfunc()", 
                         "format": {
                             "C_call_code": "SH_this->exfunc();", 
                             "C_call_list": "", 
@@ -3838,7 +3838,6 @@
         }, 
         "functions": [
             {
-                "_decl": "void local_function1()", 
                 "_function_index": 49, 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -3856,6 +3855,7 @@
                     ]
                 }, 
                 "decl": "void local_function1()", 
+                "declgen": "void local_function1()", 
                 "format": {
                     "C_call_code": "local_function1();", 
                     "C_call_list": "", 
@@ -3882,7 +3882,6 @@
             }, 
             {
                 "_PTR_F_C_index": 62, 
-                "_decl": "bool isNameValid(const std::string & name +intent(in))", 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -3945,6 +3944,7 @@
                     ]
                 }, 
                 "decl": "bool isNameValid(const std::string& name)", 
+                "declgen": "bool isNameValid(const std::string & name +intent(in))", 
                 "format": {
                     "C_call_list": "SH_name", 
                     "C_code": "return name != NULL;", 
@@ -3972,7 +3972,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 50, 
-                "_decl": "bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
@@ -4035,6 +4034,7 @@
                     ]
                 }, 
                 "decl": "bool isNameValid(const std::string& name)", 
+                "declgen": "bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
                     "C_call_list": "SH_name", 
                     "C_code": "return name != NULL;", 
@@ -4057,7 +4057,6 @@
                 }
             }, 
             {
-                "_decl": "bool isInitialized()", 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "bool SHT_rv", 
@@ -4081,6 +4080,7 @@
                     ]
                 }, 
                 "decl": "bool isInitialized()", 
+                "declgen": "bool isInitialized()", 
                 "format": {
                     "C_call_code": "bool SHT_rv = isInitialized();", 
                     "C_call_list": "", 
@@ -4107,7 +4107,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -4247,6 +4246,7 @@
                     ]
                 }, 
                 "decl": "void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))", 
+                "declgen": "void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "format": {
                     "C_call_code": "checkBool(arg1, arg2, arg3);", 
                     "C_call_list": "arg1, arg2, arg3", 
@@ -4277,7 +4277,6 @@
                     53, 
                     54
                 ], 
-                "_decl": "void test_names(const std::string & name +intent(in))", 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4335,6 +4334,7 @@
                     ]
                 }, 
                 "decl": "void test_names(const std::string &name)", 
+                "declgen": "void test_names(const std::string & name +intent(in))", 
                 "format": {
                     "C_call_code": "test_names(SH_name);", 
                     "C_call_list": "SH_name", 
@@ -4367,7 +4367,6 @@
                     53, 
                     54
                 ], 
-                "_decl": "void test_names(const std::string & name +intent(in)+len_trim(Lname))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
@@ -4425,6 +4424,7 @@
                     ]
                 }, 
                 "decl": "void test_names(const std::string &name)", 
+                "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
                     "C_call_code": "test_names(SH_name);", 
                     "C_call_list": "SH_name", 
@@ -4452,7 +4452,6 @@
                     53, 
                     54
                 ], 
-                "_decl": "void test_names(const std::string & name +intent(in), int flag +intent(in)+value)", 
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
@@ -4541,6 +4540,7 @@
                     ]
                 }, 
                 "decl": "void test_names(const std::string &name, int flag)", 
+                "declgen": "void test_names(const std::string & name +intent(in), int flag +intent(in)+value)", 
                 "format": {
                     "C_call_code": "test_names(SH_name, flag);", 
                     "C_call_list": "SH_name, flag", 
@@ -4573,7 +4573,6 @@
                     53, 
                     54
                 ], 
-                "_decl": "void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "flag": {
@@ -4658,6 +4657,7 @@
                     ]
                 }, 
                 "decl": "void test_names(const std::string &name, int flag)", 
+                "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)", 
                 "format": {
                     "C_call_code": "test_names(SH_name, flag);", 
                     "C_call_list": "SH_name, flag", 
@@ -4680,7 +4680,6 @@
                 }
             }, 
             {
-                "_decl": "void testoptional()", 
                 "_function_index": 60, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
@@ -4700,6 +4699,7 @@
                     ]
                 }, 
                 "decl": "void testoptional(int i = 1, long j=2)", 
+                "declgen": "void testoptional()", 
                 "format": {
                     "C_call_code": "testoptional();", 
                     "C_call_list": "", 
@@ -4730,7 +4730,6 @@
                 }
             }, 
             {
-                "_decl": "void testoptional(int i=1 +intent(in)+value)", 
                 "_fmtargs": {
                     "i": {
                         "fmtc": {
@@ -4781,6 +4780,7 @@
                     ]
                 }, 
                 "decl": "void testoptional(int i = 1, long j=2)", 
+                "declgen": "void testoptional(int i=1 +intent(in)+value)", 
                 "format": {
                     "C_call_code": "testoptional(i);", 
                     "C_call_list": "i", 
@@ -4811,7 +4811,6 @@
                 }
             }, 
             {
-                "_decl": "void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)", 
                 "_default_funcs": [
                     60, 
                     61
@@ -4914,6 +4913,7 @@
                     ]
                 }, 
                 "decl": "void testoptional(int i = 1, long j=2)", 
+                "declgen": "void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)", 
                 "format": {
                     "C_call_code": "testoptional(i, j);", 
                     "C_call_list": "i, j", 
@@ -4940,7 +4940,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "size_t test_size_t()", 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "size_t SHT_rv", 
@@ -4964,6 +4963,7 @@
                     ]
                 }, 
                 "decl": "size_t test_size_t()", 
+                "declgen": "size_t test_size_t()", 
                 "format": {
                     "C_call_code": "size_t SHT_rv = test_size_t();", 
                     "C_call_list": "", 
@@ -4990,7 +4990,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "void testmpi(MPI_Comm comm +intent(in)+value)", 
                 "_fmtargs": {
                     "comm": {
                         "fmtc": {
@@ -5046,6 +5045,7 @@
                     ]
                 }, 
                 "decl": "void testmpi(MPI_Comm comm)", 
+                "declgen": "void testmpi(MPI_Comm comm +intent(in)+value)", 
                 "format": {
                     "C_call_code": "testmpi(MPI_Comm_f2c(comm));", 
                     "C_call_list": "MPI_Comm_f2c(comm)", 
@@ -5071,7 +5071,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "void testgroup1(DataGroup * grp +intent(in)+value)", 
                 "_fmtargs": {
                     "grp": {
                         "fmtc": {
@@ -5132,6 +5131,7 @@
                     ]
                 }, 
                 "decl": "void testgroup1(DataGroup * grp)", 
+                "declgen": "void testgroup1(DataGroup * grp +intent(in)+value)", 
                 "format": {
                     "C_call_code": "testgroup1(SH_grp);", 
                     "C_call_list": "SH_grp", 
@@ -5158,7 +5158,6 @@
                 "options": {}
             }, 
             {
-                "_decl": "void testgroup2(const DataGroup * grp +intent(in)+value)", 
                 "_fmtargs": {
                     "grp": {
                         "fmtc": {
@@ -5219,6 +5218,7 @@
                     ]
                 }, 
                 "decl": "void testgroup2(const DataGroup * grp)", 
+                "declgen": "void testgroup2(const DataGroup * grp +intent(in)+value)", 
                 "format": {
                     "C_call_code": "testgroup2(SH_grp);", 
                     "C_call_list": "SH_grp", 
