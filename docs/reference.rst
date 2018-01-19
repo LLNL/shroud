@@ -1156,6 +1156,9 @@ C_error_pattern_as_buffer
     for functions with string arguments.
     Format is evaluated in the context of the result argument.
 
+PY_error_pattern
+    Inserted into Python wrapper.
+
 
 .. ......................................................................
 

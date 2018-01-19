@@ -74,9 +74,9 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, i
     free(SH_arg1);
     free(SH_arg2);
     if (SHT_rv == NULL) {
-      memset(SHF_rv, ' ', NSHF_rv);
+        memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
     }
     {
         // C_finalize

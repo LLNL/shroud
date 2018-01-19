@@ -652,6 +652,19 @@ def clean_dictionary(dd):
             if key in dd0 and dd0[key] is None:
                 dd0[key] = ''
 
+def clean_list(lst):
+    """Fix up blank lines in a YAML line
+    copyright:
+    -  line one
+    -
+    -  next line
+
+    YAML sets copyright[1] as null, change to empty string
+    """
+    for i, line in enumerate(lst):
+        if line is None:
+            lst[i] = ''
+
 def is_options_only(node):
     """Detect an options only node.
 
@@ -711,6 +724,9 @@ def create_library_from_dictionary(node):
     Do some checking on the input.
     Every class must have a name.
     """
+
+    if 'copyright' in node:
+        clean_list(node['copyright'])
 
     if 'types' in node:
         types_dict = node['types']

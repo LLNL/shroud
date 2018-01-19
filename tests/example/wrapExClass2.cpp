@@ -132,9 +132,9 @@ void AA_exclass2_get_name_bufferify(const AA_exclass2 * self, char * SHF_rv, int
     const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));
     const std::string & SHT_rv = SH_this->getName();
     if (SHT_rv.empty()) {
-      std::memset(SHF_rv, ' ', NSHF_rv);
+        std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name_bufferify
@@ -160,9 +160,9 @@ void AA_exclass2_get_name2_bufferify(AA_exclass2 * self, char * SHF_rv, int NSHF
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));
     const std::string & SHT_rv = SH_this->getName2();
     if (SHT_rv.empty()) {
-      std::memset(SHF_rv, ' ', NSHF_rv);
+        std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name2_bufferify
@@ -188,9 +188,9 @@ void AA_exclass2_get_name3_bufferify(const AA_exclass2 * self, char * SHF_rv, in
     const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));
     std::string & SHT_rv = SH_this->getName3();
     if (SHT_rv.empty()) {
-      std::memset(SHF_rv, ' ', NSHF_rv);
+        std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name3_bufferify
@@ -216,9 +216,9 @@ void AA_exclass2_get_name4_bufferify(AA_exclass2 * self, char * SHF_rv, int NSHF
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));
     std::string & SHT_rv = SH_this->getName4();
     if (SHT_rv.empty()) {
-      std::memset(SHF_rv, ' ', NSHF_rv);
+        std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name4_bufferify
