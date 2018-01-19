@@ -51,9 +51,10 @@ One C++ file will be created for the library and one file for each C++ class.
 
 By default, Fortran will create one file per class similar to the way
 C is handled.
-If one class makes use of another class in a library,
+If classes refer to each other in a library,
 it is necessary to put all of the classes
-into a single file using the *F_module_per_class* option.
+into a single file using the *F_module_per_class* option
+since Fortran does not support the idea of forward reference.
 
 Each Fortran file will only contain one module to make it easier to
 create makefile dependencies using pattern rules::
@@ -61,17 +62,19 @@ create makefile dependencies using pattern rules::
     %.o %.mod : %.f
 
 File names for the header and implementation files can be set
-explicitly by setting variables in the global or class scope::
+explicitly by setting variables in the format of the global or class scope::
 
-    C_header_filename: top.h
-    C_impl_filename: top.cpp
-    F_impl_filename: top.f
+    format:
+      C_header_filename: top.h
+      C_impl_filename: top.cpp
+      F_impl_filename: top.f
 
     classes:
       - name: Names
-        C_header_filename: foo.h
-        C_impl_filename: foo.cpp
-        F_impl_filename: foo.f
+        format:
+          C_header_filename: foo.h
+          C_impl_filename: foo.cpp
+          F_impl_filename: foo.f
  
 
 The default file names are controlled by global options.
@@ -100,7 +103,7 @@ How names are created
 
 Shroud attempts to provide user control of names while providing
 reasonable defaults.
-Each name is based on the library, class, method or argument name
+Each name is based on the library, class, function or argument name
 in the current scope.  Most names have a template which may be used
 to control how the names are generated on a global scale.  Many names
 may also be explicitly specified by a field.
@@ -124,13 +127,13 @@ be desirable to rename the Fortran wrapper to something more specific.
 The name of the Fortran implementation wrapper can be changed
 by setting *F_name_impl*::
 
-  options:
-    library: library
-    namespace: library
+  library: library
+  namespace: library
 
   function:
   -  decl: void initialize
-     F_name_impl: library_initialize
+     format:
+       F_name_impl: library_initialize
 
 To rename all functions, set the template in the toplevel *options*::     
 
@@ -429,13 +432,13 @@ will blank fill the result::
 
     const char * STR_get_string2()
     {
-        const std::string & SH_rv = getString2();
+        const std::string & SHT_rv = getString2();
         // C_error_pattern
-        if (SH_rv.empty()) {
+        if (SHT_rv.empty()) {
             return NULL;
         }
-        const char * XSH_rv = SH_rv.c_str();
-        return XSH_rv;
+        const char * XSHT_rv = SHT_rv.c_str();
+        return XSHT_rv;
     }
 
 

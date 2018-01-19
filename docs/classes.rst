@@ -62,7 +62,7 @@ To wrap the class add the lines to the YAML file::
 
     classes:
     - name: Class1
-      methods:
+      functions:
       - decl: Class1 new()  +name(new)
       - decl: ~Class1()  +name(delete)
       - decl: void Method1()

@@ -38,6 +38,8 @@
 ..
 .. #######################################################################
 
+.. _TypesAnchor:
+
 Types
 =====
 
@@ -110,9 +112,6 @@ overloaded function is generated so that a ``C_INT`` or ``C_LONG``
 argument may be passed to a C++ function function expecting a
 ``long``.  The **f_cast** field is used to convert the argument to the
 type expected by the C++ function.
-
-
-
 
 
 Bool
@@ -321,9 +320,9 @@ The type map::
                     cxx_header: <cstring>
                     post_call:
                       - if ({cxx_var} == NULL) {{
-                      -   std::memset({c_var}, ' ', {c_var_len});
+                      -     std::memset({c_var}, ' ', {c_var_len});
                       - }} else {{
-                      -   ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});
+                      -     ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});
                       - }}
 
             f_type: character(*)
@@ -343,13 +342,13 @@ The type map::
 The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
 statement ``dest = src``::
 
-    - decl: void passCharPtr(char *dest, const char *src)
+    - decl: void passCharPtr(char *dest+intent(out), const char *src)
 
 .. from tests/strings.cpp
 
-The intent of the arguments is inferred from the declaration.
-``dest`` is *intent(out)* since it is a pointer.  ``src`` is
-*intent(in)* since it is ``const``.
+The intent of ``dest`` must be explicit.  It defaults to *intent(inout)*
+since it is a pointer.
+``src`` is implied to be *intent(in)* since it is ``const``.
 
 This single line will create five different wrappers.  The first is the 
 pure C version.  The only feature this provides to Fortran is the ability
@@ -388,14 +387,14 @@ And generates::
 
     void STR_pass_char_ptr_bufferify(char * dest, int Ndest, const char * src, int Lsrc)
     {
-        char * SH_dest = new char [Ndest + 1];
-        char * SH_src = new char [Lsrc + 1];
-        std::strncpy(SH_src, src, Lsrc);
+        char * SH_dest = (char *) malloc(Ndest + 1);
+        char * SH_src = (char *) malloc(Lsrc + 1);
+        std::memcpy(SH_src, src, Lsrc);
         SH_src[Lsrc] = '\0';
         passCharPtr(SH_dest, SH_src);
         ShroudStrCopy(dest, Ndest, SH_dest);
-        delete [] SH_dest;
-        delete [] SH_src;
+        free(SH_dest);
+        free(SH_src);
         return;
     }
 
@@ -616,13 +615,13 @@ copies the result into a buffer of known length::
         return SH_rv;
     }
 
-    void STR_get_char1_bufferify(char * SH_F_rv, int NSH_F_rv)
+    void STR_get_char1_bufferify(char * SHF_rv, int NSHF_rv)
     {
-        const char * SH_rv = getChar1();
-        if (SH_rv == NULL) {
-           std::memset(SH_F_rv, ' ', NSH_F_rv);
+        const char * SHT_rv = getChar1();
+        if (SHT_rv == NULL) {
+            std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
-          ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
         }
         return;
     }
@@ -647,10 +646,10 @@ variable length.  The *pure* annotation tells the compiler there are
 no side effects which is important because it will be called twice.
 You'd also want the C++ function to be fast::
 
-    function get_char1() result(SH_rv)
+    function get_char1() result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        character(kind=C_CHAR, len=strlen_ptr(c_get_char1())) :: SH_rv
-        SH_rv = fstr(c_get_char1())
+        character(kind=C_CHAR, len=strlen_ptr(c_get_char1())) :: SHT_rv
+        SHT_rv = fstr(c_get_char1())
     end function get_char1
 
 If you know the maximum size of string that you expect the function to
@@ -659,12 +658,12 @@ advantage is that the C function is only called once.  The downside is
 that any result which is longer than the length will be silently
 truncated::
 
-    function get_char2() result(SH_rv)
+    function get_char2() result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
-        character(kind=C_CHAR, len=30) :: SH_rv
+        character(kind=C_CHAR, len=30) :: SHT_rv
         call c_get_char2_bufferify(  &
-            SH_rv,  &
-            len(SH_rv, kind=C_INT))
+            SHT_rv,  &
+            len(SHT_rv, kind=C_INT))
     end function get_char2
 
 The third option gives the best of both worlds.  The C wrapper is only
@@ -695,26 +694,31 @@ The generated wrappers are::
 
     const char * STR_get_string1()
     {
-        const std::string & SH_rv = getString1();
-        const char * XSH_rv = SH_rv.c_str();
-        return XSH_rv;
+        const std::string & SHT_rv = getString1();
+        const char * XSHT_rv = SHT_rv.c_str();
+        return XSHT_rv;
     }
     
-    void STR_get_string1_bufferify(char * SH_F_rv, int NSH_F_rv)
+    void STR_get_string1_bufferify(char * SHF_rv, int NSHF_rv)
     {
-        const std::string & SH_rv = getString1();
-        if (SH_rv.empty()) {
-          std::memset(SH_F_rv, ' ', NSH_F_rv);
+        const std::string & SHT_rv = getString1();
+        if (SHT_rv.empty()) {
+            std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
-          ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
         }
         return;
     }
 
-.. note:: These example assume that a pointer to an existing string is returned.
-          If the C++ function allocates a string, the C wrapper should deallocate
-          it after copying the contents. Shroud does not deal with this case
-          and will result in leaked memory.
+These example assume that a pointer to an existing string is returned.
+If the C++ function allocates a string, the C wrapper should deallocate
+it after copying the contents to avoid leaking memory.
+This can be dealt with by adding the **C_finalize** format string::
+
+    - decl: const string& getString1()  +pure
+      format:
+         C_finalize:  free 
+
 
 std::vector
 -----------
@@ -734,11 +738,11 @@ Are wrapped with the YAML input::
 ``intent(in)`` is implied for the *vector_sum* argument since it is ``const``.
 The Fortran wrapper passes the array and the size to C::
 
-    function vector_sum(arg) result(SH_rv)
+    function vector_sum(arg) result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), intent(IN) :: arg(:)
-        integer(C_INT) :: SH_rv
-        SH_rv = c_vector_sum_bufferify(  &
+        integer(C_INT) :: SHT_rv
+        SHT_rv = c_vector_sum_bufferify(  &
             arg,  &
             size(arg, kind=C_LONG))
     end function vector_sum
@@ -765,19 +769,20 @@ The C wrapper then creates a ``std::vector``::
         std::vector<int> SH_arg(Sarg);
         vector_iota(SH_arg);
         {
-          std::vector<int>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-          SHT_n = std::min(SH_arg.size(), SHT_n);
-          for(; SHT_i < SHT_n; SHT_i++) {
-            arg[SHT_i] = SH_arg[SHT_i];
-          }
+            std::vector<int>::size_type
+                SHT_i = 0,
+                SHT_n = Sarg;
+            SHT_n = std::min(SH_arg.size(), SHT_n);
+            for(; SHT_i < SHT_n; SHT_i++) {
+                arg[SHT_i] = SH_arg[SHT_i];
+            }
         }
         return;
     }
 
-On ``intent(in)``, the ``std::vector`` constructor copies the values from the input pointer.
-With ``intent(out)``, the values are copied after calling the function.
+On ``intent(in)``, the ``std::vector`` constructor copies the values
+from the input pointer.  With ``intent(out)``, the values are copied
+after calling the function.
 
 .. note:: With ``intent(out)``, if *vector_iota* changes the size of ``arg`` to be longer than
           the original size of the Fortran argument, the additional values will not be copied. 
@@ -882,8 +887,8 @@ memory. But if the caller of the C++ function wants to transfer
 ownership of the pointer to its caller, the C++ wrapper will leak the
 memory.
 
-The **C_post_call** variable may be used to insert code before
-returning from the wrapper.  Use **C_post_call_buf** for the buffer
+The **C_finalize** variable may be used to insert code before
+returning from the wrapper.  Use **C_finalize_buf** for the buffer
 version of wrapped functions.
 
 .. note:: Reference counting and garbage collection are still a work in progress

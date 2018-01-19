@@ -84,13 +84,319 @@ sitedir
        Return the installation directory of shroud and exit.
        This path can be used to find cmake/SetupShroud.cmake.
 
+Global Fields
+-------------
 
-Format Dictionary
------------------
+copyright
+   A list of lines to add to the top of each generate file.
+   Do not include any language specific comment characters since
+   Shroud will add the appropriate comment delimiters for each language.
 
-Each scope has its own format dictionary.  If a value is not found in
-the dictionary, then the parent dictionaries will be recursively
-searched.
+classes
+  A list of classes.  Each class may have fields as detailed in 
+  `Class Fields`_.
+
+cxx_header
+  Blank delimited list of header files which
+  will be included in the implementation file.
+
+format
+   Dictionary of Format fields for the library.
+   Described in `Format Fields`_.
+
+language
+  The language of the library to wrap.
+  Valid values are ``c`` and ``c++``.
+  The default is ``c++``.
+
+library
+  The name of the library.
+  Used to name output files and modules.
+  The first three letters are used as the default for **C_prefix** option.
+  Defaults to *default_library*.
+  Each YAML file is intended to wrap a single library.
+
+namespace
+  Blank delimited list of namespaces for **cxx_header**.
+  The namespaces will be nested.
+
+options
+   Dictionary of option fields for the library.
+   Described in `Options Fields`_
+
+patterns
+   Code blocks to insert into generated code.
+   Described in `Patterns`_.
+
+splicer
+   A dictionary mapping file suffix to a list of splicer files
+   to read::
+
+      splicer:
+        c:
+        -  filename1.c
+        -  filename2.c
+
+types
+   A dictionary of user define types.
+   Each type is a dictionary for members describing how to
+   map a type between languages.
+   Described in :ref:`TypesAnchor` and `Types Map`_.
+
+.. _ClassFields:
+
+Class Fields
+------------
+
+cxx_header
+  C++ header file name which will be included in the implementation file.
+  If unset then the global *cxx_header* will be used.
+
+format
+   Format fields for the class.
+   Creates scope within library.
+   Described in `Format Fields`_.
+
+functions
+   A list of functions in the class. Each function is defined by `Function Fields`_
+
+options
+   Options fields for the class.
+   Creates scope within library.
+   Described in `Options Fields`_
+
+namespace
+  Blank delimited list of namespaces for **cxx_header**.
+  The namespaces will be nested.
+  If not defined then the global *namespace* will be used.
+  If it starts with a ``-`` then no namespace will be used.
+
+
+Function Fields
+---------------
+
+Each function can define fields to define the function
+and how it should be wrapped.  These fields apply only
+to a single function i.e. they are not inherited.
+
+C_prototype
+   XXX  override prototype of generated C function
+
+cxx_template
+   A dictionary of lists that define how each templated argument
+   should be instantiated::
+
+      decl: void Function7(ArgType arg)
+      cxx_template:
+        ArgType:
+        - int
+        - double
+
+decl
+   Function declaration.
+   Parsed to extract function name, type and arguments descriptions.
+
+default_arg_suffix
+   A list of suffixes to apply to C and Fortran functions generated when
+   wrapping a C++ function with default arguments.  The first entry is for
+   the function with the fewest arguments and the final entry should be for
+   all of the arguments.
+
+format
+   Format fields for the function.
+   Creates scope within container (library or class).
+   Described in `Format Fields`_.
+
+fortran_generic
+    A dictionary of lists that define generic functions which will be
+    created.  This allows different types to be passed to the function.
+    This feature is provided by C which will promote arguments.
+
+      decl: void Function9(double arg)
+      fortran_generic:
+         arg:
+         -  float
+         -  double
+
+options
+   Options fields for the function.
+   Creates scope within container (library or class).
+   Described in `Options Fields`_
+
+return_this
+   If true, the method returns a reference to ``this``.  This idiom can be used
+   to chain calls in C++.  This idiom does not translate to C and Fortran.
+   Instead the *C_return_type* format is set to ``void``.
+
+
+Options Fields
+--------------
+
+debug
+  Print additional comments in generated files that may 
+  be useful for debugging.
+  Defaults to *false*.
+
+C_extern_C
+   Set to *true* when the C++ routine is ``extern "C"``.
+   Defaults to *false*.
+
+F_string_len_trim
+  For each function with a ``std::string`` argument, create another C
+  function which accepts a buffer and length.  The C wrapper will call
+  the ``std::string`` constructor, instead of the Fortran wrapper
+  creating a ``NULL`` terminated string using ``trim``.  This avoids
+  copying the string in the Fortran wrapper.
+  Defaults to *true*.
+
+.. bufferify
+
+F_force_wrapper
+  If *true*, always create an explicit Fortran wrapper.
+  If *false*, only create the wrapper when there is work for it to do;
+  otherwise, call the C function directly.
+  For example, a function which only deals with native
+  numeric types does not need a wrapper since it can be called
+  directly by defining the correct interface.
+  The default is *false*.
+
+show_splicer_comments
+    If ``true`` show comments which delineate the splicer blocks;
+    else, do not show the comments.
+    Only the global level option is used.
+
+wrap_c
+  If *true*, create C wrappers.
+  Defaults to *true*.
+
+wrap_fortran
+  If *true*, create Fortran wrappers.
+  Defaults to *true*.
+
+wrap_python
+  If *true*, create Python wrappers.
+  Defaults to *false*.
+
+wrap_lua
+  If *true*, create Lua wrappers.
+  Defaults to *false*.
+
+
+Option Templates
+^^^^^^^^^^^^^^^^
+
+Templates are set in options then expanded to assign to the format 
+dictionary.
+
+C_header_filename_class_template
+    ``wrap{cxx_class}.{C_header_filename_suffix}``
+
+C_header_filename_library_template
+   ``wrap{library}.{C_header_filename_suffix}``
+
+C_impl_filename_class_template
+    ``wrap{cxx_class}.{C_impl_filename_suffix}``
+
+C_impl_filename_library_template
+    ``wrap{library}.{C_impl_filename_suffix}``
+
+C_name_template
+    ``{C_prefix}{class_prefix}{underscore_name}{function_suffix}``
+
+C_var_len_template
+    Format for variable created with *len* annotation.
+    Default ``N{c_var}``
+
+C_var_size_template
+    Format for variable created with *size* annotation.
+    Default ``S{c_var}``
+
+C_var_trim_template
+    Format for variable created with *len_trim* annotation.
+    Default ``L{c_var}``
+
+class_prefix_template
+    Class component for function names.
+    Will be blank if the function is not in a class.
+    ``{class_lower}_``
+
+F_C_name_template
+    ``{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}``
+
+F_name_generic_template
+    ``{underscore_name}``
+
+F_impl_filename_class_template
+    ``wrapf{cxx_class}.{F_filename_suffix}``
+
+F_impl_filename_library_template
+    ``wrapf{library_lower}.{F_filename_suffix}``
+
+F_name_impl_template
+    ``{class_prefix}{underscore_name}{function_suffix}``
+
+F_module_name_class_template
+    ``{class_lower}_mod``
+
+F_module_name_library_template
+    ``{library_lower}_mod``
+
+F_name_function_template
+    ``{underscore_name}{function_suffix}``
+
+LUA_class_reg_template
+    Name of `luaL_Reg` array of function names for a class.
+    ``{LUA_prefix}{cxx_class}_Reg``
+
+LUA_ctor_name_template
+    Name of constructor for a class.
+    Added to the library's table.
+    ``{cxx_class}``
+
+LUA_header_filename_template
+    ``lua{library}module.{LUA_header_filename_suffix}``
+
+LUA_metadata_template
+    Name of metatable for a class.
+    ``{cxx_class}.metatable``
+
+LUA_module_filename_template
+    ``lua{library}module.{LUA_impl_filename_suffix}``
+
+LUA_module_reg_template
+    Name of `luaL_Reg` array of function names for a library.
+    ``{LUA_prefix}{library}_Reg``
+
+LUA_name_impl_template
+    Name of implementation function.
+    All overloaded function use the same Lua wrapper so 
+    *function_suffix* is not needed.
+    ``{LUA_prefix}{class_prefix}{underscore_name}``
+
+LUA_name_template
+    Name of function as know by Lua.
+    All overloaded function use the same Lua wrapper so 
+    *function_suffix* is not needed.
+    ``{function_name}``
+
+LUA_userdata_type_template
+    ``{LUA_prefix}{cxx_class}_Type``
+
+LUA_userdata_member_template
+    Name of pointer to class instance in userdata.
+    ``self``
+
+YAML_type_filename_template
+    Default value for global field YAML_type_filename
+    ``{library_lower}_types.yaml``
+
+
+Format Fields
+-------------
+
+Each scope (library, class, function) has its own format dictionary.
+If a value is not found in the dictionary, then the parent
+scope will be recursively searched.
 
 Library
 ^^^^^^^
@@ -121,7 +427,7 @@ C_impl_filename_suffix:
 C_result
     The name of the C wrapper's result variable.
     It must not be the same as any of the routines arguments.
-    It defaults to *SH_rv*  (Shroud return value).
+    It defaults to *{c_temp}_rv* -- ``SHT_rv`` (Shroud temporary return value).
 
 C_string_result_as_arg
     The name of the output argument for string results.
@@ -130,7 +436,7 @@ C_string_result_as_arg
     See also *F_string_result_as_arg*.
 
 c_temp
-    Prefix for wrapper working variables.
+    Prefix for wrapper temporary working variables.
     Defaults to *SHT_*.
 
 C_this
@@ -310,8 +616,6 @@ C_prefix
     Prefix for C wrapper functions.
     The prefix helps to ensure unique global names.
     Defaults to the first three letters of *library_upper*.
-
-
 
 
 Function
@@ -496,212 +800,6 @@ Result
 cxx_rv_decl
     Declaration of variable to hold return value for function.
 
-
-Global Fields
--------------
-
-copyright
-   A list of lines to add to the top of each generate file.
-   Do not include any language specific comment characters since
-   Shroud will add the appropriate comment delimiters for each language.
-
-cxx_header
-  C++ header file name which will be included in the implementation file.
-
-format
-   Format fields for the library.
-
-langauge
-  The language of the library to wrap.
-  Valid values are ``c`` and ``c++``.
-  The default is ``c++``.
-
-library
-  The name of the library.
-  Used to name output files and modules.
-  The first three letters are used as the default for **C_prefix** option.
-  Defaults to *default_library*.
-  Each YAML file is intended to wrap a single library.
-
-namespace
-  Blank delimited list of namespaces for **cxx_header**.
-  The namespaces will be nested.
-
-options
-   Options fields for the library.
-
-patterns
-   Code blocks to insert into generated code.
-
-splicers
-   A dictionary mapping file suffix to a list of splicer files
-   to read.
-
-types
-   A dictionary of user define types.
-   Each type is a dictionary for members describing how to
-   map a type between languages.
-
-Options
--------
-
-debug
-  Print additional comments in generated files that may 
-  be useful for debugging.
-  Defaults to *false*.
-
-C_extern_C
-   Set to *true* when the C++ routine is ``extern "C"``.
-   Defaults to *false*.
-
-F_string_len_trim
-  For each function with a ``std::string`` argument, create another C
-  function which accepts a buffer and length.  The C wrapper will call
-  the ``std::string`` constructor, instead of the Fortran wrapper
-  creating a ``NULL`` terminated string using ``trim``.  This avoids
-  copying the string in the Fortran wrapper.
-  Defaults to *true*.
-
-.. bufferify
-
-F_force_wrapper
-  If *true*, always create an explicit Fortran wrapper.
-  If *false*, only create the wrapper when there is work for it to do;
-  otherwise, call the C function directly.
-  For example, a function which only deals with native
-  numeric types does not need a wrapper since it can be called
-  directly by defining the correct interface.
-  The default is *false*.
-
-show_splicer_comments
-    If ``true`` show comments which delineate the splicer blocks;
-    else, do not show the comments.
-    Only the global level option is used.
-
-wrap_c
-  If *true*, create C wrappers.
-  Defaults to *true*.
-
-wrap_fortran
-  If *true*, create Fortran wrappers.
-  Defaults to *true*.
-
-wrap_python
-  If *true*, create Python wrappers.
-  Defaults to *false*.
-
-wrap_lua
-  If *true*, create Lua wrappers.
-  Defaults to *false*.
-
-
-Option Templates
-^^^^^^^^^^^^^^^^
-
-Templates are set in options then expanded to assign to the format 
-dictionary.
-
-C_header_filename_class_template
-    ``wrap{cxx_class}.{C_header_filename_suffix}``
-
-C_header_filename_library_template
-   ``wrap{library}.{C_header_filename_suffix}``
-
-C_impl_filename_class_template
-    ``wrap{cxx_class}.{C_impl_filename_suffix}``
-
-C_impl_filename_library_template
-    ``wrap{library}.{C_impl_filename_suffix}``
-
-C_name_template
-    ``{C_prefix}{class_prefix}{underscore_name}{function_suffix}``
-
-C_var_len_template
-    Format for variable created with *len* annotation.
-    Default ``N{c_var}``
-
-C_var_size_template
-    Format for variable created with *size* annotation.
-    Default ``S{c_var}``
-
-C_var_trim_template
-    Format for variable created with *len_trim* annotation.
-    Default ``L{c_var}``
-
-class_prefix_template
-    Class component for function names.
-    Will be blank if the function is not in a class.
-    ``{class_lower}_``
-
-F_C_name_template
-    ``{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}``
-
-F_name_generic_template
-    ``{underscore_name}``
-
-F_impl_filename_class_template
-    ``wrapf{cxx_class}.{F_filename_suffix}``
-
-F_impl_filename_library_template
-    ``wrapf{library_lower}.{F_filename_suffix}``
-
-F_name_impl_template
-    ``{class_prefix}{underscore_name}{function_suffix}``
-
-F_module_name_class_template
-    ``{class_lower}_mod``
-
-F_module_name_library_template
-    ``{library_lower}_mod``
-
-F_name_function_template
-    ``{underscore_name}{function_suffix}``
-
-LUA_class_reg_template
-    Name of `luaL_Reg` array of function names for a class.
-    ``{LUA_prefix}{cxx_class}_Reg``
-
-LUA_ctor_name_template
-    Name of constructor for a class.
-    Added to the library's table.
-    ``{cxx_class}``
-
-LUA_header_filename_template
-    ``lua{library}module.{LUA_header_filename_suffix}``
-
-LUA_metadata_template
-    Name of metatable for a class.
-    ``{cxx_class}.metatable``
-
-LUA_module_filename_template
-    ``lua{library}module.{LUA_impl_filename_suffix}``
-
-LUA_module_reg_template
-    Name of `luaL_Reg` array of function names for a library.
-    ``{LUA_prefix}{library}_Reg``
-
-LUA_name_impl_template
-    Name of implementation function.
-    All overloaded function use the same Lua wrapper so 
-    *function_suffix* is not needed.
-    ``{LUA_prefix}{class_prefix}{underscore_name}``
-
-LUA_name_template
-    Name of function as know by Lua.
-    All overloaded function use the same Lua wrapper so 
-    *function_suffix* is not needed.
-    ``{function_name}``
-
-LUA_userdata_type_template
-    ``{LUA_prefix}{cxx_class}_Type``
-
-LUA_userdata_member_template
-    Name of pointer to class instance in userdata.
-    ``self``
-
-YAML_type_filename_template
-    Default value for global field YAML_type_filename
-    ``{library_lower}_types.yaml``
 
 
 Types Map
@@ -1020,62 +1118,6 @@ py_statement
            True if a local C++ variable is created.
            This is the case when C and C++ are not directly compatible.
            Usually a C++ constructor is involved.
-
-
-Class Fields
-------------
-
-cxx_header
-  C++ header file name which will be included in the implementation file.
-  If unset then the global *cxx_header* will be used.
-
-format
-   Format fields for the class.
-   Creates scope within library.
-
-options
-   Options fields for the class.
-   Creates scope within library.
-
-namespace
-  Blank delimited list of namespaces for **cxx_header**.
-  The namespaces will be nested.
-  If not defined then the global *namespace* will be used.
-  If it starts with a ``-`` then no namespace will be used.
-
-
-Function Fields
----------------
-
-Each function can define fields to define the function
-and how it should be wrapped.  These fields apply only
-to a single function i.e. they are not inherited.
-
-C_prototype
-   XXX  override prototype of generated C function
-
-decl
-   Function declaration.
-   Parsed to extract function name, type and arguments descriptions.
-
-default_arg_suffix
-   A list of suffixes to apply to C and Fortran functions generated when
-   wrapping a C++ function with default arguments.  The first entry is for
-   the function with the fewest arguments and the final entry should be for
-   all of the arguments.
-
-format
-   Format fields for the function.
-   Creates scope within container (library or class).
-
-options
-   Options fields for the function.
-   Creates scope within container (library or class).
-
-return_this
-   If true, the method returns a reference to ``this``.  This idiom can be used
-   to chain calls in C++.  This idiom does not translate to C and Fortran.
-   Instead the *C_return_type* format is set to ``void``.
 
 
 Annotations

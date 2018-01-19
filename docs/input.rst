@@ -59,7 +59,7 @@ separated by a colon::
 
     classes:
     - name: Class1
-      methods:
+      functions:
       - decl: void Method1()
 
 Shroud use curly braces for format strings.
@@ -105,11 +105,10 @@ controls the default value of *C_name*::
 
     classes:
       - name: Names
-        C_header_filename: foo.h
-        C_impl_filename: foo.cpp
-        methods:
+        cxx_header: names.hpp
+        namespace: work
+        functions:
         -  decl: void method1
-           C_name: testmethod1
 
 Annotations
 ^^^^^^^^^^^
@@ -142,12 +141,19 @@ This allows the user to modify behavior for all functions or just a single one::
     #    option_a = false     # inherited
          option_b = true
     #    option_c = false     # inherited
-      methods:
+      functions:
       - decl: void function1
         options:
     #     option_a = false    # inherited
     #     option_b = true     # inherited
           option_c = true
+
+Format
+------
+
+A format dictionary contains strings which can be inserted into
+generated code.  Generated filenames are also entries in the format
+dictionary.
 
 How code is formatted
 ---------------------

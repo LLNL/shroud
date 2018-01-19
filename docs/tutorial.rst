@@ -53,7 +53,7 @@ The simplest item to wrap is a function in the file ``tutorial.hpp``::
      void Function1(void);
    }
 
-This is wrapped using a YAML input file ``tut.yaml``::
+This is wrapped using a YAML input file ``tutorial.yaml``::
 
   library: Tutorial
   cxx_header: tutorial.hpp
@@ -73,7 +73,7 @@ is a sequence of mappings which describe the functions to wrap.
 
 Process the file with *Shroud*::
 
-    % shroud tut.yaml
+    % shroud tutorial.yaml
     Wrote wrapTutorial.h
     Wrote wrapTutorial.cpp
     Wrote wrapftutorial.f
@@ -97,7 +97,10 @@ The generated C function in file ``wrapTutorial.cpp`` is::
 
 To help control the scope of C names, all externals add a prefix.
 It defaults to the first three letters of the
-**library** but may be changed by setting the option **C_prefix**.
+**library** but may be changed by setting the format **C_prefix**::
+
+    format:
+      C_prefix: NEW_
 
 The Fortran module in ``wrapftutorial.f`` contains an interface
 which allows the C wrapper to be called directly by Fortran::
@@ -117,7 +120,9 @@ which allows the C wrapper to be called directly by Fortran::
 
 In other cases a Fortran wrapper will also be created which will 
 do some type conversion on arguments or results 
-before or after calling the C wrapper.
+before or after calling the C wrapper.  It may also be used
+to pass additional information to the C wrapper such as a ``CHARACTER``
+variable ``LEN`` or an array's ``SIZE``.
 
 The C++ code to call the function::
 
@@ -271,8 +276,6 @@ within an existing Fortran application.
 
 Character
 ^^^^^^^^^
-
-.. XXX document len annotation
 
 Character variables have significant differences between C and
 Fortran.  The Fortran interoperability with C feature treats a
@@ -458,13 +461,13 @@ Fortran usage::
            the C++ compilers.
            For example, ``function5(arg2=.false.)``
 
-           Fortran has nothing similar to varargs.
+           Fortran has nothing similar to variadic functions.
 
 Overloaded Functions
 --------------------
 
 C++ allows function names to be overloaded.  Fortran supports this
-using a ``generic`` interface.  The C and Fortran wrappers will
+by using a ``generic`` interface.  The C and Fortran wrappers will
 generated a wrapper for each C++ function but must mangle the name to
 distinguish the names.
 
@@ -534,9 +537,9 @@ These routines can then be called as::
 Templates
 ---------
 
-C++ template are handled by creating a wrapper for each type that may
-be used with the template.  The C and Fortran names are mangled by
-adding a type suffix to the function name.
+C++ template are handled by creating a wrapper for each instantiation 
+of the function defined by the **cxx_template** field.
+The C and Fortran names are mangled by adding a type suffix to the function name.
 
 C++::
 
@@ -784,7 +787,7 @@ To wrap the class add the lines to the YAML file::
 
     classes:
     - name: Class1
-      methods:
+      functions:
       - decl: Class1()  +name(new)
       - decl: ~Class1() +name(delete)
       - decl: void Method1()
@@ -792,7 +795,7 @@ To wrap the class add the lines to the YAML file::
 The constructor and destructor have no method name associated with
 them.  They default to **ctor** and **dtor**.  The names can be
 overridden by supplying the **+name** annotation.  These declarations
-will create wrappers over the ``new`` and ``delete`` keywords.
+will create wrappers over the ``new`` and ``delete`` C++ keywords.
 
 The file ``wrapClass1.h`` will have an opaque struct for the class.
 This is to allows some measure of type safety over using ``void``
