@@ -218,7 +218,7 @@ class LibraryNode(AstNode):
 
             C_bufferify_suffix='_bufferify',
             C_prefix = self.library.upper()[:3] + '_',
-            C_result = 'SHT_rv',
+            C_result = 'SHT_rv',        # {c_temp}_rv   return valuex
             c_temp = 'SHT_',
             C_this = 'self',
 

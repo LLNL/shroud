@@ -141,6 +141,18 @@ functions:
 
 ########################################
 
+##-- decl: string * getString7+len=30()
+##-#  C_error_pattern: C_invalid_name
+##-  doxygen:
+##-    brief: return a 'const string *' as character(*)
+##-  description: |
+##-      It is the caller's responsibility to release the string
+##-      created by the C++ library.
+##-  format:
+##-    C_finalize_buf: free({C_result});
+
+########################################
+
 - decl: void acceptStringConstReference(const std::string & arg1)
   doxygen:
     brief: Accept a const string reference

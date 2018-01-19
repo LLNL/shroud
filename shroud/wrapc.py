@@ -554,21 +554,6 @@ class Wrapc(util.WrapperMixin):
         else:
             fmt_func.C_return_type = ast.gen_arg_as_c(name=None)
 
-        if fmt_func.inlocal('C_finalize' + intent_grp):
-            # maybe check C_finalize up chain for accumulative code
-            # i.e. per class, per library.
-            finalize_line = fmt_func.get('C_finalize' + intent_grp)
-            need_wrapper = True
-            post_call.append('{')
-            post_call.append('    // C_finalize')
-            util.append_format_indent(post_call, finalize_line, fmt_func)
-            post_call.append('}')
-
-        if pre_call:
-            fmt_func.C_pre_call = '\n'.join(pre_call)
-        if post_call:
-            fmt_func.C_post_call = '\n'.join(post_call)
-
         post_call_pattern = []
         if node.C_error_pattern is not None:
             C_error_pattern = node.C_error_pattern + node._error_pattern_suffix
@@ -580,7 +565,80 @@ class Wrapc(util.WrapperMixin):
             need_wrapper = True
             fmt_func.C_post_call_pattern = '\n'.join(post_call_pattern)
 
-        # body of function
+        # generate the C body
+        C_return_code = 'return;'
+        if is_ctor:
+            fmt_func.C_call_code = wformat('{cxx_rv_decl} = new {cxx_class}'
+                           '({C_call_list});', fmt_result)
+            C_return_code = ('return {};'.format(
+                wformat(result_typedef.cxx_to_c, fmt_result)))
+        elif is_dtor:
+            fmt_func.C_call_code = 'delete %s;' % fmt_func.CXX_this
+        elif CXX_subprogram == 'subroutine':
+            fmt_func.C_call_code = wformat(
+                '{CXX_this_call}{function_name}'
+                '{CXX_template}({C_call_list});',
+                fmt_func)
+        else:
+            fmt_func.C_call_code = wformat(
+                '{cxx_rv_decl} = {CXX_this_call}{function_name}'
+                '{CXX_template}({C_call_list});',
+                fmt_result)
+
+            if not result_arg:
+                # The result is not passed back in an argument
+                c_statements = result_typedef.c_statements
+                intent_blk = c_statements.get('result', {})
+                if result_typedef.cxx_to_c != '{cxx_var}':
+                    # Make intermediate c_var value if a conversion
+                    # is required i.e. not the same as cxx_var.
+                    have_c_local_var = True
+                else:
+                    have_c_local_var = intent_blk.get('c_local_var', False)
+                if have_c_local_var:
+                    # XXX need better mangling than 'X'
+                    fmt_result.c_var = 'X' + fmt_func.C_result
+                    fmt_result.c_rv_decl = CXX_result.gen_arg_as_c(
+                        name=fmt_result.c_var)
+                    fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
+                    append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
+                    return_lang = '{c_var}'
+
+                cmd_list = intent_blk.get('post_call', [])
+                for cmd in cmd_list:
+                    append_format(post_call, cmd, fmt_result)
+                # XXX release rv if necessary
+                if 'c_helper' in intent_blk:
+                    for helper in intent_blk['c_helper'].split():
+                        self.c_helper[helper] = True
+
+            if subprogram == 'function':
+                # Note: A C function may be converted into a Fortran subroutine subprogram
+                # when the result is returned in an argument.
+                C_return_code = 'return {};'.format(
+                    wformat(return_lang, fmt_result))
+
+        if fmt_func.inlocal('C_finalize' + intent_grp):
+            # maybe check C_finalize up chain for accumulative code
+            # i.e. per class, per library.
+            finalize_line = fmt_func.get('C_finalize' + intent_grp)
+            need_wrapper = True
+            post_call.append('{')
+            post_call.append('    // C_finalize')
+            util.append_format_indent(post_call, finalize_line, fmt_func)
+            post_call.append('}')
+
+        if fmt_func.inlocal('C_return_code'):
+            need_wrapper = True
+            C_return_code = wformat(fmt_func.C_return_code, fmt_func)
+        else:
+            fmt_func.C_return_code = C_return_code
+
+        if pre_call:
+            fmt_func.C_pre_call = '\n'.join(pre_call)
+        if post_call:
+            fmt_func.C_post_call = '\n'.join(post_call)
+
         splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
         if fmt_func.inlocal('C_code'):
             need_wrapper = True
@@ -589,65 +647,6 @@ class Wrapc(util.WrapperMixin):
             need_wrapper = True
             C_code = splicer_code
         else:
-            # generate the C body
-            C_return_code = 'return;'
-            if is_ctor:
-                fmt_func.C_call_code = wformat('{cxx_rv_decl} = new {cxx_class}'
-                               '({C_call_list});', fmt_result)
-                C_return_code = ('return {};'.format(
-                    wformat(result_typedef.cxx_to_c, fmt_result)))
-            elif is_dtor:
-                fmt_func.C_call_code = 'delete %s;' % fmt_func.CXX_this
-            elif CXX_subprogram == 'subroutine':
-                fmt_func.C_call_code = wformat(
-                    '{CXX_this_call}{function_name}'
-                    '{CXX_template}({C_call_list});',
-                    fmt_func)
-            else:
-                fmt_func.C_call_code = wformat(
-                    '{cxx_rv_decl} = {CXX_this_call}{function_name}'
-                    '{CXX_template}({C_call_list});',
-                    fmt_result)
-
-                if not result_arg:
-                    # The result is not passed back in an argument
-                    c_statements = result_typedef.c_statements
-                    intent_blk = c_statements.get('result', {})
-                    if result_typedef.cxx_to_c != '{cxx_var}':
-                        # Make intermediate c_var value if a conversion
-                        # is required i.e. not the same as cxx_var.
-                        have_c_local_var = True
-                    else:
-                        have_c_local_var = intent_blk.get('c_local_var', False)
-                    if have_c_local_var:
-                        # XXX need better mangling than 'X'
-                        fmt_result.c_var = 'X' + fmt_func.C_result
-                        fmt_result.c_rv_decl = CXX_result.gen_arg_as_c(
-                            name=fmt_result.c_var)
-                        fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
-                        append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
-                        return_lang = '{c_var}'
-
-                    cmd_list = intent_blk.get('post_call', [])
-                    for cmd in cmd_list:
-                        append_format(post_call, cmd, fmt_result)
-                    # XXX release rv if necessary
-                    if 'c_helper' in intent_blk:
-                        for helper in intent_blk['c_helper'].split():
-                            self.c_helper[helper] = True
-
-                if subprogram == 'function':
-                    # Note: A C function may be converted into a Fortran subroutine subprogram
-                    # when the result is returned in an argument.
-                    C_return_code = 'return {};'.format(
-                        wformat(return_lang, fmt_result))
- 
-            if fmt_func.inlocal('C_return_code'):
-                need_wrapper = True
-                C_return_code = wformat(fmt_func.C_return_code, fmt_func)
-            else:
-                fmt_func.C_return_code = C_return_code
-
             # copy-out values, clean up
             C_code = [1]
             C_code.extend(pre_call)
