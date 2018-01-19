@@ -307,7 +307,7 @@ return 1;""", fmt)
         overloaded_methods = {}
         for function in functions:
             flist = overloaded_methods. \
-                setdefault(function._ast.name, [])
+                setdefault(function.ast.name, [])
             if not function._cxx_overload:
                 continue
             if not function.options.wrap_python:
@@ -351,7 +351,7 @@ return 1;""", fmt)
 
         CXX_subprogram = node._subprogram
 
-        ast = node._ast
+        ast = node.ast
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
@@ -825,7 +825,7 @@ return 1;""", fmt)
                                 % overload._nargs)
                 else:
                     body.append('if (SH_nargs == %d) {' %
-                                len(overload._ast.params))
+                                len(overload.ast.params))
                 body.append(1)
                 append_format(body,
                               'rvobj = {PY_name_impl}(self, args, kwds);',

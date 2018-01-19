@@ -343,11 +343,11 @@ class Wrapc(util.WrapperMixin):
             CXX_node = self.newlibrary.function_index[CXX_node._PTR_C_CXX_index]
             if CXX_node._generated:
                 generated.append(CXX_node._generated)
-        CXX_result = CXX_node._ast
+        CXX_result = CXX_node.ast
         CXX_subprogram = CXX_node._subprogram
 
         # C return type
-        ast = node._ast
+        ast = node.ast
         result_type = ast.typename
         subprogram = node._subprogram
         intent_grp = ''
@@ -685,4 +685,4 @@ class Wrapc(util.WrapperMixin):
                 self.impl.append('#endif  // ' + node.cpp_if)
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = node._ast.name
+            fmt_func.C_name = node.ast.name

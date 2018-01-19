@@ -527,7 +527,7 @@ class FunctionNode(AstNode):
         ast = declast.check_decl(decl,
                                  current_class=cls_name,
                                  template_types=template_types)
-        self._ast = ast
+        self.ast = ast
 
         # add any attributes from YAML files to the ast
         if 'attrs' in kwargs:
@@ -590,7 +590,7 @@ class FunctionNode(AstNode):
         Used by util.ExpandedEncoder.
         """
         d = dict(
-            _ast=self._ast,
+            ast=self.ast,
             _function_index=self._function_index,
             decl=self.decl,
             format=self.fmtdict,
@@ -623,7 +623,7 @@ class FunctionNode(AstNode):
         new.options = self.options.clone()
     
         # deep copy dictionaries
-        new._ast = copy.deepcopy(self._ast)
+        new.ast = copy.deepcopy(self.ast)
         new._fmtargs = copy.deepcopy(self._fmtargs)
         new._fmtresult = copy.deepcopy(self._fmtresult)
     

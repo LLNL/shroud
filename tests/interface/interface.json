@@ -96,7 +96,10 @@
         }, 
         "functions": [
             {
-                "_ast": {
+                "_decl": "void Function1()", 
+                "_function_index": 0, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [], 
                     "attrs": {}, 
                     "const": false, 
@@ -110,9 +113,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void Function1()", 
-                "_function_index": 0, 
-                "_subprogram": "subroutine", 
                 "decl": "void Function1()", 
                 "format": {
                     "C_call_code": "Function1();", 
@@ -138,7 +138,44 @@
                 "options": {}
             }, 
             {
-                "_ast": {
+                "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cxx_type": "double", 
+                            "cxx_var": "arg1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }
+                    }, 
+                    "arg2": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg2", 
+                            "cxx_type": "int", 
+                            "cxx_var": "arg2"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg2", 
+                            "f_var": "arg2"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_rv_decl": "double SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 1, 
+                "_subprogram": "function", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -181,43 +218,6 @@
                         "double"
                     ]
                 }, 
-                "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
-                "_fmtargs": {
-                    "arg1": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cxx_type": "double", 
-                            "cxx_var": "arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg1", 
-                            "f_var": "arg1"
-                        }
-                    }, 
-                    "arg2": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cxx_type": "int", 
-                            "cxx_var": "arg2"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg2", 
-                            "f_var": "arg2"
-                        }
-                    }
-                }, 
-                "_fmtresult": {
-                    "fmtc": {
-                        "cxx_rv_decl": "double SHT_rv", 
-                        "cxx_var": "SHT_rv"
-                    }
-                }, 
-                "_function_index": 1, 
-                "_subprogram": "function", 
                 "decl": "double Function2(double arg1, int arg2)", 
                 "format": {
                     "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 

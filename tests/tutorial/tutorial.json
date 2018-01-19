@@ -28,7 +28,16 @@
                 }, 
                 "methods": [
                     {
-                        "_ast": {
+                        "_decl": "Class1() +name(new)", 
+                        "_fmtresult": {
+                            "fmtc": {
+                                "cxx_rv_decl": "Class1 * SHT_rv", 
+                                "cxx_var": "SHT_rv"
+                            }
+                        }, 
+                        "_function_index": 0, 
+                        "_subprogram": "function", 
+                        "ast": {
                             "args": [], 
                             "attrs": {}, 
                             "const": false, 
@@ -42,15 +51,6 @@
                                 "Class1"
                             ]
                         }, 
-                        "_decl": "Class1() +name(new)", 
-                        "_fmtresult": {
-                            "fmtc": {
-                                "cxx_rv_decl": "Class1 * SHT_rv", 
-                                "cxx_var": "SHT_rv"
-                            }
-                        }, 
-                        "_function_index": 0, 
-                        "_subprogram": "function", 
                         "decl": "Class1() +name(new)", 
                         "format": {
                             "C_call_code": "Class1 * SHT_rv = new Class1();", 
@@ -79,7 +79,10 @@
                         "options": {}
                     }, 
                     {
-                        "_ast": {
+                        "_decl": "~Class1() +name(delete)", 
+                        "_function_index": 1, 
+                        "_subprogram": "function", 
+                        "ast": {
                             "args": [], 
                             "attrs": {}, 
                             "const": false, 
@@ -93,9 +96,6 @@
                                 "Class1"
                             ]
                         }, 
-                        "_decl": "~Class1() +name(delete)", 
-                        "_function_index": 1, 
-                        "_subprogram": "function", 
                         "decl": "~Class1() +name(delete)", 
                         "format": {
                             "C_call_code": "delete SH_this;", 
@@ -127,7 +127,10 @@
                         "options": {}
                     }, 
                     {
-                        "_ast": {
+                        "_decl": "void Method1()", 
+                        "_function_index": 2, 
+                        "_subprogram": "subroutine", 
+                        "ast": {
                             "args": [], 
                             "attrs": {}, 
                             "const": false, 
@@ -141,9 +144,6 @@
                                 "void"
                             ]
                         }, 
-                        "_decl": "void Method1()", 
-                        "_function_index": 2, 
-                        "_subprogram": "subroutine", 
                         "decl": "void Method1()", 
                         "format": {
                             "C_call_code": "SH_this->Method1();", 
@@ -292,7 +292,10 @@
         }, 
         "functions": [
             {
-                "_ast": {
+                "_decl": "void Function1()", 
+                "_function_index": 3, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [], 
                     "attrs": {}, 
                     "const": false, 
@@ -306,9 +309,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void Function1()", 
-                "_function_index": 3, 
-                "_subprogram": "subroutine", 
                 "decl": "void Function1()", 
                 "format": {
                     "C_call_code": "Function1();", 
@@ -337,49 +337,6 @@
                 "options": {}
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg1", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "double"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg2", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "int"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function2", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "double"
-                    ]
-                }, 
                 "_decl": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "_fmtargs": {
                     "arg1": {
@@ -451,6 +408,49 @@
                 }, 
                 "_function_index": 4, 
                 "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg2", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function2", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "double"
+                    ]
+                }, 
                 "decl": "double Function2(double arg1, int arg2)", 
                 "format": {
                     "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
@@ -480,7 +480,51 @@
                 "options": {}
             }, 
             {
-                "_ast": {
+                "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
+                "_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "len", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len"
+                        }, 
+                        "fmtf": {
+                            "c_var": "len", 
+                            "f_var": "len"
+                        }
+                    }, 
+                    "result": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "result", 
+                            "cxx_type": "int", 
+                            "cxx_var": "result"
+                        }, 
+                        "fmtf": {
+                            "c_var": "result", 
+                            "f_var": "result"
+                        }
+                    }, 
+                    "values": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "values", 
+                            "cxx_type": "int", 
+                            "cxx_var": "values"
+                        }, 
+                        "fmtf": {
+                            "c_var": "values", 
+                            "f_var": "values"
+                        }
+                    }
+                }, 
+                "_function_index": 5, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -548,50 +592,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
-                "_fmtargs": {
-                    "len": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "len", 
-                            "cxx_type": "int", 
-                            "cxx_var": "len"
-                        }, 
-                        "fmtf": {
-                            "c_var": "len", 
-                            "f_var": "len"
-                        }
-                    }, 
-                    "result": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "result", 
-                            "cxx_type": "int", 
-                            "cxx_var": "result"
-                        }, 
-                        "fmtf": {
-                            "c_var": "result", 
-                            "f_var": "result"
-                        }
-                    }, 
-                    "values": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "values", 
-                            "cxx_type": "int", 
-                            "cxx_var": "values"
-                        }, 
-                        "fmtf": {
-                            "c_var": "values", 
-                            "f_var": "values"
-                        }
-                    }
-                }, 
-                "_function_index": 5, 
-                "_subprogram": "subroutine", 
                 "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
                 "format": {
                     "C_call_code": "Sum(len, values, result);", 
@@ -620,37 +620,6 @@
                 }
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg1", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "long", 
-                                "long"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "TypeLongLong", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "long", 
-                        "long"
-                    ]
-                }, 
                 "_decl": "long long TypeLongLong(long long arg1 +intent(in)+value)", 
                 "_fmtargs": {
                     "arg1": {
@@ -683,6 +652,37 @@
                 }, 
                 "_function_index": 6, 
                 "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "long", 
+                                "long"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "TypeLongLong", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "long", 
+                        "long"
+                    ]
+                }, 
                 "decl": "long long TypeLongLong(long long arg1)", 
                 "format": {
                     "C_call_code": "long long SHT_rv = TypeLongLong(arg1);", 
@@ -712,35 +712,6 @@
                 }
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "bool"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function3", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "bool"
-                    ]
-                }, 
                 "_decl": "bool Function3(bool arg +intent(in)+value)", 
                 "_fmtargs": {
                     "arg": {
@@ -782,6 +753,35 @@
                 }, 
                 "_function_index": 7, 
                 "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "bool"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function3", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "bool"
+                    ]
+                }, 
                 "decl": "bool Function3(bool arg)", 
                 "format": {
                     "C_call_code": "bool SHT_rv = Function3(arg);", 
@@ -811,7 +811,51 @@
                 "options": {}
             }, 
             {
-                "_ast": {
+                "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cxx_type": "bool", 
+                            "cxx_var": "arg1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SH_arg1", 
+                            "f_var": "arg1"
+                        }
+                    }, 
+                    "arg2": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arg2", 
+                            "cxx_type": "bool", 
+                            "cxx_var": "arg2"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SH_arg2", 
+                            "f_var": "arg2"
+                        }
+                    }, 
+                    "arg3": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arg3", 
+                            "cxx_type": "bool", 
+                            "cxx_var": "arg3"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SH_arg3", 
+                            "f_var": "arg3"
+                        }
+                    }
+                }, 
+                "_function_index": 8, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -878,50 +922,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
-                "_fmtargs": {
-                    "arg1": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cxx_type": "bool", 
-                            "cxx_var": "arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "SH_arg1", 
-                            "f_var": "arg1"
-                        }
-                    }, 
-                    "arg2": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "arg2", 
-                            "cxx_type": "bool", 
-                            "cxx_var": "arg2"
-                        }, 
-                        "fmtf": {
-                            "c_var": "SH_arg2", 
-                            "f_var": "arg2"
-                        }
-                    }, 
-                    "arg3": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "arg3", 
-                            "cxx_type": "bool", 
-                            "cxx_var": "arg3"
-                        }, 
-                        "fmtf": {
-                            "c_var": "SH_arg3", 
-                            "f_var": "arg3"
-                        }
-                    }
-                }, 
-                "_function_index": 8, 
-                "_subprogram": "subroutine", 
                 "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
                 "format": {
                     "C_call_code": "Function3b(arg1, arg2, arg3);", 
@@ -951,7 +951,50 @@
             }, 
             {
                 "_PTR_F_C_index": 41, 
-                "_ast": {
+                "_decl": "const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_var": "lua_tostring(L, 1)", 
+                            "c_var_len": "Larg1", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "arg1", 
+                            "lua_var": "SH_Lua_arg1", 
+                            "ptr": ""
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_arg1", 
+                            "py_var": "SH_Py_arg1"
+                        }
+                    }, 
+                    "arg2": {
+                        "fmtl": {
+                            "LUA_index": 2, 
+                            "c_var": "lua_tostring(L, 2)", 
+                            "c_var_len": "Larg2", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "arg2", 
+                            "lua_var": "SH_Lua_arg2", 
+                            "ptr": ""
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "arg2", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_arg2", 
+                            "py_var": "SH_Py_arg2"
+                        }
+                    }
+                }, 
+                "_function_index": 9, 
+                "_subprogram": "function", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -1006,49 +1049,6 @@
                         "std::string"
                     ]
                 }, 
-                "_decl": "const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
-                "_fmtargs": {
-                    "arg1": {
-                        "fmtl": {
-                            "LUA_index": 1, 
-                            "c_var": "lua_tostring(L, 1)", 
-                            "c_var_len": "Larg1", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "arg1", 
-                            "lua_var": "SH_Lua_arg1", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1", 
-                            "py_var": "SH_Py_arg1"
-                        }
-                    }, 
-                    "arg2": {
-                        "fmtl": {
-                            "LUA_index": 2, 
-                            "c_var": "lua_tostring(L, 2)", 
-                            "c_var_len": "Larg2", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "arg2", 
-                            "lua_var": "SH_Lua_arg2", 
-                            "ptr": ""
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg2", 
-                            "py_var": "SH_Py_arg2"
-                        }
-                    }
-                }, 
-                "_function_index": 9, 
-                "_subprogram": "function", 
                 "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
                 "format": {
                     "F_C_call": "c_function4a_bufferify", 
@@ -1074,7 +1074,63 @@
             }, 
             {
                 "_PTR_C_CXX_index": 9, 
-                "_ast": {
+                "_decl": "void Function4a +len(30)(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "_error_pattern_suffix": "_as_buffer", 
+                "_fmtargs": {
+                    "SHF_rv": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SHT_rv.c_str()", 
+                            "cxx_var": "SHT_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "f_var": "SHT_rv"
+                        }
+                    }, 
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "c_var_trim": "Larg1", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_arg1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }
+                    }, 
+                    "arg2": {
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "arg2", 
+                            "c_var_trim": "Larg2", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_arg2"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg2", 
+                            "f_var": "arg2"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_rv_decl": "const std::string SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 41, 
+                "_generated": "arg_to_buffer", 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -1151,62 +1207,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void Function4a +len(30)(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
-                "_error_pattern_suffix": "_as_buffer", 
-                "_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
-                            "cxx_type": "std::string", 
-                            "cxx_val": "SHT_rv.c_str()", 
-                            "cxx_var": "SHT_rv"
-                        }, 
-                        "fmtf": {
-                            "c_var": "SHT_rv", 
-                            "f_var": "SHT_rv"
-                        }
-                    }, 
-                    "arg1": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "c_var_trim": "Larg1", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg1", 
-                            "f_var": "arg1"
-                        }
-                    }, 
-                    "arg2": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "c_var_trim": "Larg2", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg2"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg2", 
-                            "f_var": "arg2"
-                        }
-                    }
-                }, 
-                "_fmtresult": {
-                    "fmtc": {
-                        "cxx_rv_decl": "const std::string SHT_rv", 
-                        "cxx_var": "SHT_rv"
-                    }
-                }, 
-                "_function_index": 41, 
-                "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
                 "format": {
                     "C_call_code": "const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);", 
@@ -1231,64 +1231,6 @@
                 }
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "arg1", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::string"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "arg2", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::string"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": true, 
-                    "declarator": {
-                        "name": "Function4b", 
-                        "pointer": [
-                            {
-                                "const": false, 
-                                "ptr": "&"
-                            }
-                        ]
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "std::string"
-                    ]
-                }, 
                 "_decl": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
                 "_fmtargs": {
                     "arg1": {
@@ -1355,6 +1297,64 @@
                 }, 
                 "_function_index": 10, 
                 "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": false
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::string"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": false
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "arg2", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::string"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": true, 
+                    "declarator": {
+                        "name": "Function4b", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "&"
+                            }
+                        ]
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "std::string"
+                    ]
+                }, 
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "format": {
                     "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
@@ -1379,81 +1379,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 10, 
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "len_trim": "Larg1", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "arg1", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::string"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "len_trim": "Larg2", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "arg2", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::string"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "_is_result": true, 
-                                "intent": "out", 
-                                "len": "Noutput"
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "output", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::string"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function4b", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
                 "_decl": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
@@ -1510,34 +1435,7 @@
                 "_function_index": 42, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
-                "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
-                "format": {
-                    "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
-                    "C_call_list": "SH_arg1, SH_arg2", 
-                    "C_name": "TUT_function4b_bufferify", 
-                    "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
-                    "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
-                    "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * output, int Noutput", 
-                    "C_return_code": "return;", 
-                    "C_return_type": "void", 
-                    "F_C_name": "c_function4b_bufferify", 
-                    "F_string_result_as_arg": "output", 
-                    "c_const": "", 
-                    "function_name": "Function4b", 
-                    "function_suffix": "_bufferify", 
-                    "underscore_name": "function4b"
-                }, 
-                "options": {
-                    "wrap_c": true, 
-                    "wrap_fortran": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_PTR_C_CXX_index": 10, 
-                "_PTR_F_C_index": 42, 
-                "_ast": {
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -1612,11 +1510,113 @@
                         "void"
                     ]
                 }, 
+                "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
+                "format": {
+                    "C_call_code": "const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);", 
+                    "C_call_list": "SH_arg1, SH_arg2", 
+                    "C_name": "TUT_function4b_bufferify", 
+                    "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
+                    "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
+                    "C_prototype": "const char * arg1, int Larg1, const char * arg2, int Larg2, char * output, int Noutput", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_name": "c_function4b_bufferify", 
+                    "F_string_result_as_arg": "output", 
+                    "c_const": "", 
+                    "function_name": "Function4b", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "function4b"
+                }, 
+                "options": {
+                    "wrap_c": true, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_PTR_C_CXX_index": 10, 
+                "_PTR_F_C_index": 42, 
                 "_decl": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_function_index": 43, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "len_trim": "Larg1", 
+                                "value": false
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::string"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "len_trim": "Larg2", 
+                                "value": false
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "arg2", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::string"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "_is_result": true, 
+                                "intent": "out", 
+                                "len": "Noutput"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "output", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::string"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function4b", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "format": {
                     "F_C_call": "c_function4b_bufferify", 
@@ -1641,7 +1641,18 @@
                 }
             }, 
             {
-                "_ast": {
+                "_decl": "double Function5()", 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_rv_decl": "double SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 31, 
+                "_generated": "has_default_arg", 
+                "_overloaded": true, 
+                "_subprogram": "function", 
+                "ast": {
                     "args": [], 
                     "attrs": {}, 
                     "const": false, 
@@ -1655,17 +1666,6 @@
                         "double"
                     ]
                 }, 
-                "_decl": "double Function5()", 
-                "_fmtresult": {
-                    "fmtc": {
-                        "cxx_rv_decl": "double SHT_rv", 
-                        "cxx_var": "SHT_rv"
-                    }
-                }, 
-                "_function_index": 31, 
-                "_generated": "has_default_arg", 
-                "_overloaded": true, 
-                "_subprogram": "function", 
                 "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
                 "default_arg_suffix": [
                     "", 
@@ -1703,7 +1703,33 @@
                 }
             }, 
             {
-                "_ast": {
+                "_decl": "double Function5(double arg1=3.1415 +intent(in)+value)", 
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cxx_type": "double", 
+                            "cxx_var": "arg1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_rv_decl": "double SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 32, 
+                "_generated": "has_default_arg", 
+                "_overloaded": true, 
+                "_subprogram": "function", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -1733,32 +1759,6 @@
                         "double"
                     ]
                 }, 
-                "_decl": "double Function5(double arg1=3.1415 +intent(in)+value)", 
-                "_fmtargs": {
-                    "arg1": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg1", 
-                            "cxx_type": "double", 
-                            "cxx_var": "arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg1", 
-                            "f_var": "arg1"
-                        }
-                    }
-                }, 
-                "_fmtresult": {
-                    "fmtc": {
-                        "cxx_rv_decl": "double SHT_rv", 
-                        "cxx_var": "SHT_rv"
-                    }
-                }, 
-                "_function_index": 32, 
-                "_generated": "has_default_arg", 
-                "_overloaded": true, 
-                "_subprogram": "function", 
                 "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
                 "default_arg_suffix": [
                     "", 
@@ -1796,51 +1796,6 @@
                 }
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg1", 
-                                "pointer": []
-                            }, 
-                            "init": 3.1415, 
-                            "specifier": [
-                                "double"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg2", 
-                                "pointer": []
-                            }, 
-                            "init": "true", 
-                            "specifier": [
-                                "bool"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function5", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "double"
-                    ]
-                }, 
                 "_decl": "double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)", 
                 "_default_funcs": [
                     31, 
@@ -1922,6 +1877,51 @@
                 ], 
                 "_overloaded": true, 
                 "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "init": 3.1415, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg2", 
+                                "pointer": []
+                            }, 
+                            "init": "true", 
+                            "specifier": [
+                                "bool"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function5", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "double"
+                    ]
+                }, 
                 "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
                 "default_arg_suffix": [
                     "", 
@@ -1958,40 +1958,6 @@
             }, 
             {
                 "_PTR_F_C_index": 44, 
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "name", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::string"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function6", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
                 "_cxx_overload": [
                     12, 
                     13
@@ -2028,6 +1994,40 @@
                 "_function_index": 12, 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": false
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "name", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::string"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function6", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
                 "decl": "void Function6(const std::string& name)", 
                 "format": {
                     "C_call_code": "Function6(SH_name);", 
@@ -2059,7 +2059,33 @@
             }, 
             {
                 "_PTR_C_CXX_index": 12, 
-                "_ast": {
+                "_cxx_overload": [
+                    12, 
+                    13
+                ], 
+                "_decl": "void Function6(const std::string & name +intent(in)+len_trim(Lname))", 
+                "_error_pattern_suffix": "_as_buffer", 
+                "_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "name", 
+                            "c_var_trim": "Lname", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_name"
+                        }, 
+                        "fmtf": {
+                            "c_var": "name", 
+                            "f_var": "name"
+                        }
+                    }
+                }, 
+                "_function_index": 44, 
+                "_generated": "arg_to_buffer", 
+                "_overloaded": true, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -2094,32 +2120,6 @@
                         "void"
                     ]
                 }, 
-                "_cxx_overload": [
-                    12, 
-                    13
-                ], 
-                "_decl": "void Function6(const std::string & name +intent(in)+len_trim(Lname))", 
-                "_error_pattern_suffix": "_as_buffer", 
-                "_fmtargs": {
-                    "name": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "name", 
-                            "c_var_trim": "Lname", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
-                        }, 
-                        "fmtf": {
-                            "c_var": "name", 
-                            "f_var": "name"
-                        }
-                    }
-                }, 
-                "_function_index": 44, 
-                "_generated": "arg_to_buffer", 
-                "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "decl": "void Function6(const std::string& name)", 
                 "format": {
                     "C_call_code": "Function6(SH_name);", 
@@ -2143,35 +2143,6 @@
                 }
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "indx", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "int"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function6", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
                 "_cxx_overload": [
                     12, 
                     13
@@ -2212,6 +2183,35 @@
                 "_function_index": 13, 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "indx", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function6", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
                 "decl": "void Function6(int indx)", 
                 "format": {
                     "C_call_code": "Function6(indx);", 
@@ -2239,7 +2239,11 @@
                 "options": {}
             }, 
             {
-                "_ast": {
+                "_decl": "void Function7(ArgType arg +intent(in)+value)", 
+                "_function_index": 14, 
+                "_overloaded": true, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -2268,10 +2272,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void Function7(ArgType arg +intent(in)+value)", 
-                "_function_index": 14, 
-                "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "cxx_template": {
                     "ArgType": [
                         "int", 
@@ -2291,7 +2291,27 @@
                 }
             }, 
             {
-                "_ast": {
+                "_decl": "void Function7(int arg +intent(in)+value)", 
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg", 
+                            "cxx_type": "int", 
+                            "cxx_var": "arg"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg", 
+                            "f_var": "arg"
+                        }
+                    }
+                }, 
+                "_function_index": 33, 
+                "_generated": "cxx_template", 
+                "_overloaded": true, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -2320,26 +2340,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void Function7(int arg +intent(in)+value)", 
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cxx_type": "int", 
-                            "cxx_var": "arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }
-                    }
-                }, 
-                "_function_index": 33, 
-                "_generated": "cxx_template", 
-                "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "decl": "void Function7(ArgType arg)", 
                 "format": {
                     "CXX_template": "<int>", 
@@ -2372,7 +2372,27 @@
                 }
             }, 
             {
-                "_ast": {
+                "_decl": "void Function7(double arg +intent(in)+value)", 
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg", 
+                            "cxx_type": "double", 
+                            "cxx_var": "arg"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg", 
+                            "f_var": "arg"
+                        }
+                    }
+                }, 
+                "_function_index": 34, 
+                "_generated": "cxx_template", 
+                "_overloaded": true, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -2401,26 +2421,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void Function7(double arg +intent(in)+value)", 
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "cxx_type": "double", 
-                            "cxx_var": "arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }
-                    }
-                }, 
-                "_function_index": 34, 
-                "_generated": "cxx_template", 
-                "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "decl": "void Function7(ArgType arg)", 
                 "format": {
                     "CXX_template": "<double>", 
@@ -2453,7 +2453,11 @@
                 }
             }, 
             {
-                "_ast": {
+                "_decl": "RetType Function8()", 
+                "_function_index": 15, 
+                "_overloaded": true, 
+                "_subprogram": "function", 
+                "ast": {
                     "args": [], 
                     "attrs": {}, 
                     "const": false, 
@@ -2467,10 +2471,6 @@
                         "RetType"
                     ]
                 }, 
-                "_decl": "RetType Function8()", 
-                "_function_index": 15, 
-                "_overloaded": true, 
-                "_subprogram": "function", 
                 "cxx_template": {
                     "RetType": [
                         "int", 
@@ -2491,7 +2491,18 @@
             }, 
             {
                 "_CXX_return_templated": true, 
-                "_ast": {
+                "_decl": "int Function8()", 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_rv_decl": "int SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 35, 
+                "_generated": "cxx_template", 
+                "_overloaded": true, 
+                "_subprogram": "function", 
+                "ast": {
                     "args": [], 
                     "attrs": {}, 
                     "const": false, 
@@ -2505,17 +2516,6 @@
                         "int"
                     ]
                 }, 
-                "_decl": "int Function8()", 
-                "_fmtresult": {
-                    "fmtc": {
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
-                    }
-                }, 
-                "_function_index": 35, 
-                "_generated": "cxx_template", 
-                "_overloaded": true, 
-                "_subprogram": "function", 
                 "decl": "RetType Function8()", 
                 "format": {
                     "CXX_template": "<int>", 
@@ -2550,7 +2550,18 @@
             }, 
             {
                 "_CXX_return_templated": true, 
-                "_ast": {
+                "_decl": "double Function8()", 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_rv_decl": "double SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 36, 
+                "_generated": "cxx_template", 
+                "_overloaded": true, 
+                "_subprogram": "function", 
+                "ast": {
                     "args": [], 
                     "attrs": {}, 
                     "const": false, 
@@ -2564,17 +2575,6 @@
                         "double"
                     ]
                 }, 
-                "_decl": "double Function8()", 
-                "_fmtresult": {
-                    "fmtc": {
-                        "cxx_rv_decl": "double SHT_rv", 
-                        "cxx_var": "SHT_rv"
-                    }
-                }, 
-                "_function_index": 36, 
-                "_generated": "cxx_template", 
-                "_overloaded": true, 
-                "_subprogram": "function", 
                 "decl": "RetType Function8()", 
                 "format": {
                     "CXX_template": "<double>", 
@@ -2608,35 +2608,6 @@
                 }
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "double"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function9", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
                 "_decl": "void Function9(double arg +intent(in)+value)", 
                 "_fmtargs": {
                     "arg": {
@@ -2673,93 +2644,7 @@
                 "_function_index": 16, 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
-                "decl": "void Function9(double arg)", 
-                "format": {
-                    "C_call_code": "Function9(arg);", 
-                    "C_call_list": "arg", 
-                    "C_name": "TUT_function9", 
-                    "C_prototype": "double arg", 
-                    "C_return_code": "return;", 
-                    "C_return_type": "void", 
-                    "F_C_name": "c_function9", 
-                    "LUA_name": "Function9", 
-                    "LUA_name_impl": "l_function9", 
-                    "PY_name_impl": "PY_function9", 
-                    "c_const": "", 
-                    "function_name": "Function9", 
-                    "underscore_name": "function9"
-                }, 
-                "fortran_generic": {
-                    "arg": [
-                        "float", 
-                        "double"
-                    ]
-                }, 
-                "options": {
-                    "wrap_fortran": false
-                }
-            }, 
-            {
-                "_PTR_F_C_index": 16, 
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "float"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function9", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
-                "_decl": "void Function9(float arg +intent(in)+value)", 
-                "_function_index": 53, 
-                "_generated": "fortran_generic", 
-                "_overloaded": true, 
-                "_subprogram": "subroutine", 
-                "decl": "void Function9(double arg)", 
-                "format": {
-                    "F_C_call": "c_function9", 
-                    "F_arg_c_call": "real(arg, C_DOUBLE)", 
-                    "F_arg_c_call_tab": "\treal(arg, C_DOUBLE)", 
-                    "F_arguments": "arg", 
-                    "F_call_code": "call c_function9(\treal(arg, C_DOUBLE))", 
-                    "F_name_function": "function9_float", 
-                    "F_name_generic": "function9", 
-                    "F_name_impl": "function9_float", 
-                    "F_subprogram": "subroutine", 
-                    "function_name": "Function9", 
-                    "function_suffix": "_float", 
-                    "underscore_name": "function9"
-                }, 
-                "options": {
-                    "wrap_c": false, 
-                    "wrap_fortran": true, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_PTR_F_C_index": 16, 
-                "_ast": {
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -2788,11 +2673,126 @@
                         "void"
                     ]
                 }, 
+                "decl": "void Function9(double arg)", 
+                "format": {
+                    "C_call_code": "Function9(arg);", 
+                    "C_call_list": "arg", 
+                    "C_name": "TUT_function9", 
+                    "C_prototype": "double arg", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_name": "c_function9", 
+                    "LUA_name": "Function9", 
+                    "LUA_name_impl": "l_function9", 
+                    "PY_name_impl": "PY_function9", 
+                    "c_const": "", 
+                    "function_name": "Function9", 
+                    "underscore_name": "function9"
+                }, 
+                "fortran_generic": {
+                    "arg": [
+                        "float", 
+                        "double"
+                    ]
+                }, 
+                "options": {
+                    "wrap_fortran": false
+                }
+            }, 
+            {
+                "_PTR_F_C_index": 16, 
+                "_decl": "void Function9(float arg +intent(in)+value)", 
+                "_function_index": 53, 
+                "_generated": "fortran_generic", 
+                "_overloaded": true, 
+                "_subprogram": "subroutine", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "float"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function9", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void Function9(double arg)", 
+                "format": {
+                    "F_C_call": "c_function9", 
+                    "F_arg_c_call": "real(arg, C_DOUBLE)", 
+                    "F_arg_c_call_tab": "\treal(arg, C_DOUBLE)", 
+                    "F_arguments": "arg", 
+                    "F_call_code": "call c_function9(\treal(arg, C_DOUBLE))", 
+                    "F_name_function": "function9_float", 
+                    "F_name_generic": "function9", 
+                    "F_name_impl": "function9_float", 
+                    "F_subprogram": "subroutine", 
+                    "function_name": "Function9", 
+                    "function_suffix": "_float", 
+                    "underscore_name": "function9"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": true, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_PTR_F_C_index": 16, 
                 "_decl": "void Function9(double arg +intent(in)+value)", 
                 "_function_index": 54, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function9", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
                 "decl": "void Function9(double arg)", 
                 "format": {
                     "F_C_call": "c_function9", 
@@ -2816,7 +2816,15 @@
                 }
             }, 
             {
-                "_ast": {
+                "_cxx_overload": [
+                    17, 
+                    18
+                ], 
+                "_decl": "void Function10()", 
+                "_function_index": 17, 
+                "_overloaded": true, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [], 
                     "attrs": {}, 
                     "const": false, 
@@ -2830,14 +2838,6 @@
                         "void"
                     ]
                 }, 
-                "_cxx_overload": [
-                    17, 
-                    18
-                ], 
-                "_decl": "void Function10()", 
-                "_function_index": 17, 
-                "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "decl": "void Function10()", 
                 "format": {
                     "C_call_code": "Function10();", 
@@ -2868,54 +2868,6 @@
             }, 
             {
                 "_PTR_F_C_index": 45, 
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "name", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::string"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg2", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "double"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function10", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
                 "_cxx_overload": [
                     17, 
                     18
@@ -2978,118 +2930,7 @@
                 "_function_index": 18, 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
-                "decl": "void Function10(const std::string &name, double arg2)", 
-                "format": {
-                    "C_call_code": "Function10(SH_name, arg2);", 
-                    "C_call_list": "SH_name, arg2", 
-                    "C_name": "TUT_function10_1", 
-                    "C_pre_call": "const std::string SH_name(name);", 
-                    "C_prototype": "const char * name, double arg2", 
-                    "C_return_code": "return;", 
-                    "C_return_type": "void", 
-                    "F_C_name": "c_function10_1", 
-                    "PY_name_impl": "PY_function10_1", 
-                    "c_const": "", 
-                    "function_name": "Function10", 
-                    "function_suffix": "_1", 
-                    "underscore_name": "function10"
-                }, 
-                "fortran_generic": {
-                    "arg2": [
-                        "float", 
-                        "double"
-                    ]
-                }, 
-                "options": {
-                    "F_string_len_trim": true, 
-                    "wrap_fortran": false
-                }
-            }, 
-            {
-                "_PTR_F_C_index": 18, 
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "name", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::string"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg2", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "float"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function10", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
-                "_cxx_overload": [
-                    17, 
-                    18
-                ], 
-                "_decl": "void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)", 
-                "_function_index": 55, 
-                "_generated": "fortran_generic", 
-                "_overloaded": true, 
-                "_subprogram": "subroutine", 
-                "decl": "void Function10(const std::string &name, double arg2)", 
-                "format": {
-                    "F_C_call": "c_function10_1_bufferify", 
-                    "F_arg_c_call": "name, len_trim(name, kind=C_INT), real(arg2, C_DOUBLE)", 
-                    "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)\treal(arg2, C_DOUBLE)", 
-                    "F_arguments": "name, arg2", 
-                    "F_call_code": "call c_function10_1_bufferify(\tname\tlen_trim(name, kind=C_INT)\treal(arg2, C_DOUBLE))", 
-                    "F_name_function": "function10_1_float", 
-                    "F_name_generic": "function10", 
-                    "F_name_impl": "function10_1_float", 
-                    "F_subprogram": "subroutine", 
-                    "function_name": "Function10", 
-                    "function_suffix": "_1_float", 
-                    "underscore_name": "function10"
-                }, 
-                "options": {
-                    "F_string_len_trim": true, 
-                    "wrap_c": false, 
-                    "wrap_fortran": true, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_PTR_F_C_index": 18, 
-                "_ast": {
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -3137,6 +2978,117 @@
                         "void"
                     ]
                 }, 
+                "decl": "void Function10(const std::string &name, double arg2)", 
+                "format": {
+                    "C_call_code": "Function10(SH_name, arg2);", 
+                    "C_call_list": "SH_name, arg2", 
+                    "C_name": "TUT_function10_1", 
+                    "C_pre_call": "const std::string SH_name(name);", 
+                    "C_prototype": "const char * name, double arg2", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_name": "c_function10_1", 
+                    "PY_name_impl": "PY_function10_1", 
+                    "c_const": "", 
+                    "function_name": "Function10", 
+                    "function_suffix": "_1", 
+                    "underscore_name": "function10"
+                }, 
+                "fortran_generic": {
+                    "arg2": [
+                        "float", 
+                        "double"
+                    ]
+                }, 
+                "options": {
+                    "F_string_len_trim": true, 
+                    "wrap_fortran": false
+                }
+            }, 
+            {
+                "_PTR_F_C_index": 18, 
+                "_cxx_overload": [
+                    17, 
+                    18
+                ], 
+                "_decl": "void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)", 
+                "_function_index": 55, 
+                "_generated": "fortran_generic", 
+                "_overloaded": true, 
+                "_subprogram": "subroutine", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": false
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "name", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::string"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg2", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "float"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function10", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void Function10(const std::string &name, double arg2)", 
+                "format": {
+                    "F_C_call": "c_function10_1_bufferify", 
+                    "F_arg_c_call": "name, len_trim(name, kind=C_INT), real(arg2, C_DOUBLE)", 
+                    "F_arg_c_call_tab": "\tname\tlen_trim(name, kind=C_INT)\treal(arg2, C_DOUBLE)", 
+                    "F_arguments": "name, arg2", 
+                    "F_call_code": "call c_function10_1_bufferify(\tname\tlen_trim(name, kind=C_INT)\treal(arg2, C_DOUBLE))", 
+                    "F_name_function": "function10_1_float", 
+                    "F_name_generic": "function10", 
+                    "F_name_impl": "function10_1_float", 
+                    "F_subprogram": "subroutine", 
+                    "function_name": "Function10", 
+                    "function_suffix": "_1_float", 
+                    "underscore_name": "function10"
+                }, 
+                "options": {
+                    "F_string_len_trim": true, 
+                    "wrap_c": false, 
+                    "wrap_fortran": true, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_PTR_F_C_index": 18, 
                 "_cxx_overload": [
                     17, 
                     18
@@ -3146,6 +3098,54 @@
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "_subprogram": "subroutine", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": false
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "name", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::string"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg2", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function10", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "format": {
                     "F_C_call": "c_function10_1_bufferify", 
@@ -3171,7 +3171,46 @@
             }, 
             {
                 "_PTR_C_CXX_index": 18, 
-                "_ast": {
+                "_cxx_overload": [
+                    17, 
+                    18
+                ], 
+                "_decl": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)", 
+                "_error_pattern_suffix": "_as_buffer", 
+                "_fmtargs": {
+                    "arg2": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg2", 
+                            "cxx_type": "double", 
+                            "cxx_var": "arg2"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg2", 
+                            "f_var": "arg2"
+                        }
+                    }, 
+                    "name": {
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "name", 
+                            "c_var_trim": "Lname", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_name"
+                        }, 
+                        "fmtf": {
+                            "c_var": "name", 
+                            "f_var": "name"
+                        }
+                    }
+                }, 
+                "_function_index": 45, 
+                "_generated": "arg_to_buffer", 
+                "_overloaded": true, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -3220,45 +3259,6 @@
                         "void"
                     ]
                 }, 
-                "_cxx_overload": [
-                    17, 
-                    18
-                ], 
-                "_decl": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)", 
-                "_error_pattern_suffix": "_as_buffer", 
-                "_fmtargs": {
-                    "arg2": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg2", 
-                            "cxx_type": "double", 
-                            "cxx_var": "arg2"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg2", 
-                            "f_var": "arg2"
-                        }
-                    }, 
-                    "name": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "name", 
-                            "c_var_trim": "Lname", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
-                        }, 
-                        "fmtf": {
-                            "c_var": "name", 
-                            "f_var": "name"
-                        }
-                    }
-                }, 
-                "_function_index": 45, 
-                "_generated": "arg_to_buffer", 
-                "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "format": {
                     "C_call_code": "Function10(SH_name, arg2);", 
@@ -3289,35 +3289,6 @@
                 }
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "num", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "int"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "overload1", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "int"
-                    ]
-                }, 
                 "_cxx_overload": [
                     19, 
                     20
@@ -3348,6 +3319,35 @@
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "num", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "overload1", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
                 "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
                 "default_arg_suffix": [
                     "_num", 
@@ -3385,50 +3385,6 @@
                 }
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "num", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "int"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "offset", 
-                                "pointer": []
-                            }, 
-                            "init": 0, 
-                            "specifier": [
-                                "int"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "overload1", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "int"
-                    ]
-                }, 
                 "_cxx_overload": [
                     19, 
                     20
@@ -3472,6 +3428,50 @@
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "num", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "offset", 
+                                "pointer": []
+                            }, 
+                            "init": 0, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "overload1", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
                 "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
                 "default_arg_suffix": [
                     "_num", 
@@ -3509,65 +3509,6 @@
                 }
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "num", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "int"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "offset", 
-                                "pointer": []
-                            }, 
-                            "init": 0, 
-                            "specifier": [
-                                "int"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "stride", 
-                                "pointer": []
-                            }, 
-                            "init": 1, 
-                            "specifier": [
-                                "int"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "overload1", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "int"
-                    ]
-                }, 
                 "_cxx_overload": [
                     19, 
                     20
@@ -3683,321 +3624,8 @@
                 ], 
                 "_overloaded": true, 
                 "_subprogram": "function", 
-                "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
-                "default_arg_suffix": [
-                    "_num", 
-                    "_num_offset", 
-                    "_num_offset_stride"
-                ], 
-                "format": {
-                    "C_call_code": "int SHT_rv = overload1(num, offset, stride);", 
-                    "C_call_list": "num, offset, stride", 
-                    "C_name": "TUT_overload1_num_offset_stride", 
-                    "C_prototype": "int num, int offset, int stride", 
-                    "C_return_code": "return SHT_rv;", 
-                    "C_return_type": "int", 
-                    "F_C_call": "c_overload1_num_offset_stride", 
-                    "F_C_name": "c_overload1_num_offset_stride", 
-                    "F_arg_c_call": "num, offset, stride", 
-                    "F_arg_c_call_tab": "\tnum\toffset\tstride", 
-                    "F_arguments": "num, offset, stride", 
-                    "F_call_code": "SHT_rv = c_overload1_num_offset_stride(\tnum\toffset\tstride)", 
-                    "F_name_function": "overload1_num_offset_stride", 
-                    "F_name_generic": "overload1", 
-                    "F_name_impl": "overload1_num_offset_stride", 
-                    "F_result_clause": " result(SHT_rv)", 
-                    "F_subprogram": "function", 
-                    "LUA_name": "overload1", 
-                    "LUA_name_impl": "l_overload1", 
-                    "PY_name_impl": "PY_overload1_num_offset_stride", 
-                    "c_const": "", 
-                    "function_name": "overload1", 
-                    "function_suffix": "_num_offset_stride", 
-                    "underscore_name": "overload1"
-                }, 
-                "options": {}
-            }, 
-            {
-                "_ast": {
+                "ast": {
                     "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "type", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "double"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "num", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "int"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "overload1", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "int"
-                    ]
-                }, 
-                "_cxx_overload": [
-                    19, 
-                    20
-                ], 
-                "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
-                "_fmtargs": {
-                    "num": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "num", 
-                            "cxx_type": "int", 
-                            "cxx_var": "num"
-                        }, 
-                        "fmtf": {
-                            "c_var": "num", 
-                            "f_var": "num"
-                        }
-                    }, 
-                    "type": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "type", 
-                            "cxx_type": "double", 
-                            "cxx_var": "type"
-                        }, 
-                        "fmtf": {
-                            "c_var": "type", 
-                            "f_var": "type"
-                        }
-                    }
-                }, 
-                "_fmtresult": {
-                    "fmtc": {
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
-                    }
-                }, 
-                "_function_index": 39, 
-                "_generated": "has_default_arg", 
-                "_overloaded": true, 
-                "_subprogram": "function", 
-                "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
-                "format": {
-                    "C_call_code": "int SHT_rv = overload1(type, num);", 
-                    "C_call_list": "type, num", 
-                    "C_name": "TUT_overload1_3", 
-                    "C_prototype": "double type, int num", 
-                    "C_return_code": "return SHT_rv;", 
-                    "C_return_type": "int", 
-                    "F_C_call": "c_overload1_3", 
-                    "F_C_name": "c_overload1_3", 
-                    "F_arg_c_call": "type, num", 
-                    "F_arg_c_call_tab": "\ttype\tnum", 
-                    "F_arguments": "type, num", 
-                    "F_call_code": "SHT_rv = c_overload1_3(\ttype\tnum)", 
-                    "F_name_function": "overload1_3", 
-                    "F_name_generic": "overload1", 
-                    "F_name_impl": "overload1_3", 
-                    "F_result_clause": " result(SHT_rv)", 
-                    "F_subprogram": "function", 
-                    "c_const": "", 
-                    "function_name": "overload1", 
-                    "function_suffix": "_3", 
-                    "underscore_name": "overload1"
-                }, 
-                "options": {
-                    "wrap_c": true, 
-                    "wrap_fortran": true, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "type", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "double"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "num", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "int"
-                            ]
-                        }, 
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "offset", 
-                                "pointer": []
-                            }, 
-                            "init": 0, 
-                            "specifier": [
-                                "int"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "overload1", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "int"
-                    ]
-                }, 
-                "_cxx_overload": [
-                    19, 
-                    20
-                ], 
-                "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
-                "_fmtargs": {
-                    "num": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "num", 
-                            "cxx_type": "int", 
-                            "cxx_var": "num"
-                        }, 
-                        "fmtf": {
-                            "c_var": "num", 
-                            "f_var": "num"
-                        }
-                    }, 
-                    "offset": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "offset", 
-                            "cxx_type": "int", 
-                            "cxx_var": "offset"
-                        }, 
-                        "fmtf": {
-                            "c_var": "offset", 
-                            "f_var": "offset"
-                        }
-                    }, 
-                    "type": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "type", 
-                            "cxx_type": "double", 
-                            "cxx_var": "type"
-                        }, 
-                        "fmtf": {
-                            "c_var": "type", 
-                            "f_var": "type"
-                        }
-                    }
-                }, 
-                "_fmtresult": {
-                    "fmtc": {
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
-                    }
-                }, 
-                "_function_index": 40, 
-                "_generated": "has_default_arg", 
-                "_overloaded": true, 
-                "_subprogram": "function", 
-                "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
-                "format": {
-                    "C_call_code": "int SHT_rv = overload1(type, num, offset);", 
-                    "C_call_list": "type, num, offset", 
-                    "C_name": "TUT_overload1_4", 
-                    "C_prototype": "double type, int num, int offset", 
-                    "C_return_code": "return SHT_rv;", 
-                    "C_return_type": "int", 
-                    "F_C_call": "c_overload1_4", 
-                    "F_C_name": "c_overload1_4", 
-                    "F_arg_c_call": "type, num, offset", 
-                    "F_arg_c_call_tab": "\ttype\tnum\toffset", 
-                    "F_arguments": "type, num, offset", 
-                    "F_call_code": "SHT_rv = c_overload1_4(\ttype\tnum\toffset)", 
-                    "F_name_function": "overload1_4", 
-                    "F_name_generic": "overload1", 
-                    "F_name_impl": "overload1_4", 
-                    "F_result_clause": " result(SHT_rv)", 
-                    "F_subprogram": "function", 
-                    "c_const": "", 
-                    "function_name": "overload1", 
-                    "function_suffix": "_4", 
-                    "underscore_name": "overload1"
-                }, 
-                "options": {
-                    "wrap_c": true, 
-                    "wrap_fortran": true, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "type", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "double"
-                            ]
-                        }, 
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -4055,6 +3683,305 @@
                         "int"
                     ]
                 }, 
+                "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
+                "default_arg_suffix": [
+                    "_num", 
+                    "_num_offset", 
+                    "_num_offset_stride"
+                ], 
+                "format": {
+                    "C_call_code": "int SHT_rv = overload1(num, offset, stride);", 
+                    "C_call_list": "num, offset, stride", 
+                    "C_name": "TUT_overload1_num_offset_stride", 
+                    "C_prototype": "int num, int offset, int stride", 
+                    "C_return_code": "return SHT_rv;", 
+                    "C_return_type": "int", 
+                    "F_C_call": "c_overload1_num_offset_stride", 
+                    "F_C_name": "c_overload1_num_offset_stride", 
+                    "F_arg_c_call": "num, offset, stride", 
+                    "F_arg_c_call_tab": "\tnum\toffset\tstride", 
+                    "F_arguments": "num, offset, stride", 
+                    "F_call_code": "SHT_rv = c_overload1_num_offset_stride(\tnum\toffset\tstride)", 
+                    "F_name_function": "overload1_num_offset_stride", 
+                    "F_name_generic": "overload1", 
+                    "F_name_impl": "overload1_num_offset_stride", 
+                    "F_result_clause": " result(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "LUA_name": "overload1", 
+                    "LUA_name_impl": "l_overload1", 
+                    "PY_name_impl": "PY_overload1_num_offset_stride", 
+                    "c_const": "", 
+                    "function_name": "overload1", 
+                    "function_suffix": "_num_offset_stride", 
+                    "underscore_name": "overload1"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_cxx_overload": [
+                    19, 
+                    20
+                ], 
+                "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
+                "_fmtargs": {
+                    "num": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "num", 
+                            "cxx_type": "int", 
+                            "cxx_var": "num"
+                        }, 
+                        "fmtf": {
+                            "c_var": "num", 
+                            "f_var": "num"
+                        }
+                    }, 
+                    "type": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "type", 
+                            "cxx_type": "double", 
+                            "cxx_var": "type"
+                        }, 
+                        "fmtf": {
+                            "c_var": "type", 
+                            "f_var": "type"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_rv_decl": "int SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 39, 
+                "_generated": "has_default_arg", 
+                "_overloaded": true, 
+                "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "type", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "num", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "overload1", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
+                "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
+                "format": {
+                    "C_call_code": "int SHT_rv = overload1(type, num);", 
+                    "C_call_list": "type, num", 
+                    "C_name": "TUT_overload1_3", 
+                    "C_prototype": "double type, int num", 
+                    "C_return_code": "return SHT_rv;", 
+                    "C_return_type": "int", 
+                    "F_C_call": "c_overload1_3", 
+                    "F_C_name": "c_overload1_3", 
+                    "F_arg_c_call": "type, num", 
+                    "F_arg_c_call_tab": "\ttype\tnum", 
+                    "F_arguments": "type, num", 
+                    "F_call_code": "SHT_rv = c_overload1_3(\ttype\tnum)", 
+                    "F_name_function": "overload1_3", 
+                    "F_name_generic": "overload1", 
+                    "F_name_impl": "overload1_3", 
+                    "F_result_clause": " result(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "c_const": "", 
+                    "function_name": "overload1", 
+                    "function_suffix": "_3", 
+                    "underscore_name": "overload1"
+                }, 
+                "options": {
+                    "wrap_c": true, 
+                    "wrap_fortran": true, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_cxx_overload": [
+                    19, 
+                    20
+                ], 
+                "_decl": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
+                "_fmtargs": {
+                    "num": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "num", 
+                            "cxx_type": "int", 
+                            "cxx_var": "num"
+                        }, 
+                        "fmtf": {
+                            "c_var": "num", 
+                            "f_var": "num"
+                        }
+                    }, 
+                    "offset": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "offset", 
+                            "cxx_type": "int", 
+                            "cxx_var": "offset"
+                        }, 
+                        "fmtf": {
+                            "c_var": "offset", 
+                            "f_var": "offset"
+                        }
+                    }, 
+                    "type": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "type", 
+                            "cxx_type": "double", 
+                            "cxx_var": "type"
+                        }, 
+                        "fmtf": {
+                            "c_var": "type", 
+                            "f_var": "type"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_rv_decl": "int SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 40, 
+                "_generated": "has_default_arg", 
+                "_overloaded": true, 
+                "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "type", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "num", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "offset", 
+                                "pointer": []
+                            }, 
+                            "init": 0, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "overload1", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
+                "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
+                "format": {
+                    "C_call_code": "int SHT_rv = overload1(type, num, offset);", 
+                    "C_call_list": "type, num, offset", 
+                    "C_name": "TUT_overload1_4", 
+                    "C_prototype": "double type, int num, int offset", 
+                    "C_return_code": "return SHT_rv;", 
+                    "C_return_type": "int", 
+                    "F_C_call": "c_overload1_4", 
+                    "F_C_name": "c_overload1_4", 
+                    "F_arg_c_call": "type, num, offset", 
+                    "F_arg_c_call_tab": "\ttype\tnum\toffset", 
+                    "F_arguments": "type, num, offset", 
+                    "F_call_code": "SHT_rv = c_overload1_4(\ttype\tnum\toffset)", 
+                    "F_name_function": "overload1_4", 
+                    "F_name_generic": "overload1", 
+                    "F_name_impl": "overload1_4", 
+                    "F_result_clause": " result(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "c_const": "", 
+                    "function_name": "overload1", 
+                    "function_suffix": "_4", 
+                    "underscore_name": "overload1"
+                }, 
+                "options": {
+                    "wrap_c": true, 
+                    "wrap_fortran": true, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
                 "_cxx_overload": [
                     19, 
                     20
@@ -4200,6 +4127,79 @@
                 ], 
                 "_overloaded": true, 
                 "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "type", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "num", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "offset", 
+                                "pointer": []
+                            }, 
+                            "init": 0, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "stride", 
+                                "pointer": []
+                            }, 
+                            "init": 1, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "overload1", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "format": {
                     "C_call_code": "int SHT_rv = overload1(type, num, offset, stride);", 
@@ -4228,35 +4228,6 @@
                 "options": {}
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "TypeID"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "typefunc", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "TypeID"
-                    ]
-                }, 
                 "_decl": "TypeID typefunc(TypeID arg +intent(in)+value)", 
                 "_fmtargs": {
                     "arg": {
@@ -4298,6 +4269,35 @@
                 }, 
                 "_function_index": 21, 
                 "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "TypeID"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "typefunc", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "TypeID"
+                    ]
+                }, 
                 "decl": "TypeID typefunc(TypeID arg)", 
                 "format": {
                     "C_call_code": "TypeID SHT_rv = typefunc(arg);", 
@@ -4327,35 +4327,6 @@
                 "options": {}
             }, 
             {
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "intent": "in", 
-                                "value": true
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "EnumTypeID"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "enumfunc", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "EnumTypeID"
-                    ]
-                }, 
                 "_decl": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
                 "_fmtargs": {
                     "arg": {
@@ -4400,6 +4371,35 @@
                 }, 
                 "_function_index": 22, 
                 "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "EnumTypeID"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "enumfunc", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "EnumTypeID"
+                    ]
+                }, 
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
                 "format": {
                     "C_call_code": "EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));", 
@@ -4429,7 +4429,33 @@
                 "options": {}
             }, 
             {
-                "_ast": {
+                "_decl": "void useclass(const Class1 * arg1 +intent(in)+value)", 
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "arg1", 
+                            "cxx_type": "Class1", 
+                            "cxx_var": "arg1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "arg1", 
+                            "cxx_type": "Class1", 
+                            "cxx_var": "arg1", 
+                            "py_var": "SH_Py_arg1"
+                        }
+                    }
+                }, 
+                "_function_index": 23, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -4463,32 +4489,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void useclass(const Class1 * arg1 +intent(in)+value)", 
-                "_fmtargs": {
-                    "arg1": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": " *", 
-                            "c_var": "arg1", 
-                            "cxx_type": "Class1", 
-                            "cxx_var": "arg1"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg1", 
-                            "f_var": "arg1"
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": " *", 
-                            "c_var": "arg1", 
-                            "cxx_type": "Class1", 
-                            "cxx_var": "arg1", 
-                            "py_var": "SH_Py_arg1"
-                        }
-                    }
-                }, 
-                "_function_index": 23, 
-                "_subprogram": "subroutine", 
                 "decl": "void useclass(const Class1 *arg1)", 
                 "format": {
                     "C_call_code": "useclass(static_cast<const Class1 *>(static_cast<const void *>(arg1)));", 
@@ -4518,7 +4518,10 @@
             }, 
             {
                 "_PTR_F_C_index": 46, 
-                "_ast": {
+                "_decl": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))", 
+                "_function_index": 24, 
+                "_subprogram": "function", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -4554,9 +4557,6 @@
                         "int"
                     ]
                 }, 
-                "_decl": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))", 
-                "_function_index": 24, 
-                "_subprogram": "function", 
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
                 "format": {
                     "F_C_call": "c_vector_sum_bufferify", 
@@ -4580,43 +4580,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 24, 
-                "_ast": {
-                    "args": [
-                        {
-                            "attrs": {
-                                "dimension": "(:)", 
-                                "intent": "in", 
-                                "size": "Sarg", 
-                                "template": "int", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::vector"
-                            ]
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "vector_sum", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
-                    "specifier": [
-                        "int"
-                    ]
-                }, 
                 "_decl": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))", 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
@@ -4645,6 +4608,43 @@
                 "_function_index": 46, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "function", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "dimension": "(:)", 
+                                "intent": "in", 
+                                "size": "Sarg", 
+                                "template": "int", 
+                                "value": false
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::vector"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "vector_sum", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
                 "format": {
                     "C_call_code": "int SHT_rv = vector_sum(SH_arg);", 
@@ -4669,7 +4669,10 @@
             }, 
             {
                 "_PTR_F_C_index": 47, 
-                "_ast": {
+                "_decl": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))", 
+                "_function_index": 25, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -4705,9 +4708,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))", 
-                "_function_index": 25, 
-                "_subprogram": "subroutine", 
                 "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
                 "format": {
                     "F_C_call": "c_vector_iota_bufferify", 
@@ -4730,7 +4730,30 @@
             }, 
             {
                 "_PTR_C_CXX_index": 25, 
-                "_ast": {
+                "_decl": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out)+size(Sarg))", 
+                "_error_pattern_suffix": "_as_buffer", 
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg", 
+                            "c_var_size": "Sarg", 
+                            "cxx_T": "int", 
+                            "cxx_type": "int", 
+                            "cxx_val": "SH_arg", 
+                            "cxx_var": "SH_arg"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg", 
+                            "f_var": "arg"
+                        }
+                    }
+                }, 
+                "_function_index": 47, 
+                "_generated": "arg_to_buffer", 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -4767,29 +4790,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out)+size(Sarg))", 
-                "_error_pattern_suffix": "_as_buffer", 
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "c_var_size": "Sarg", 
-                            "cxx_T": "int", 
-                            "cxx_type": "int", 
-                            "cxx_val": "SH_arg", 
-                            "cxx_var": "SH_arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }
-                    }
-                }, 
-                "_function_index": 47, 
-                "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
                 "format": {
                     "C_call_code": "vector_iota(SH_arg);", 
@@ -4815,7 +4815,10 @@
             }, 
             {
                 "_PTR_F_C_index": 48, 
-                "_ast": {
+                "_decl": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))", 
+                "_function_index": 26, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -4851,9 +4854,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))", 
-                "_function_index": 26, 
-                "_subprogram": "subroutine", 
                 "decl": "void vector_increment(std::vector<int> &arg)", 
                 "format": {
                     "F_C_call": "c_vector_increment_bufferify", 
@@ -4876,7 +4876,30 @@
             }, 
             {
                 "_PTR_C_CXX_index": 26, 
-                "_ast": {
+                "_decl": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))", 
+                "_error_pattern_suffix": "_as_buffer", 
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg", 
+                            "c_var_size": "Sarg", 
+                            "cxx_T": "int", 
+                            "cxx_type": "int", 
+                            "cxx_val": "SH_arg", 
+                            "cxx_var": "SH_arg"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg", 
+                            "f_var": "arg"
+                        }
+                    }
+                }, 
+                "_function_index": 48, 
+                "_generated": "arg_to_buffer", 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -4913,29 +4936,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))", 
-                "_error_pattern_suffix": "_as_buffer", 
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "c_var_size": "Sarg", 
-                            "cxx_T": "int", 
-                            "cxx_type": "int", 
-                            "cxx_val": "SH_arg", 
-                            "cxx_var": "SH_arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }
-                    }
-                }, 
-                "_function_index": 48, 
-                "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "decl": "void vector_increment(std::vector<int> &arg)", 
                 "format": {
                     "C_call_code": "vector_increment(SH_arg);", 
@@ -4961,7 +4961,10 @@
             }, 
             {
                 "_PTR_F_C_index": 49, 
-                "_ast": {
+                "_decl": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))", 
+                "_function_index": 27, 
+                "_subprogram": "function", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -4997,9 +5000,6 @@
                         "int"
                     ]
                 }, 
-                "_decl": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))", 
-                "_function_index": 27, 
-                "_subprogram": "function", 
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings", 
@@ -5027,7 +5027,36 @@
             }, 
             {
                 "_PTR_C_CXX_index": 27, 
-                "_ast": {
+                "_decl": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))", 
+                "_error_pattern_suffix": "_as_buffer", 
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "arg", 
+                            "c_var_len": "Narg", 
+                            "c_var_size": "Sarg", 
+                            "cxx_T": "std::string", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_arg"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg", 
+                            "f_var": "arg"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_rv_decl": "int SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 49, 
+                "_generated": "arg_to_buffer", 
+                "_subprogram": "function", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -5065,35 +5094,6 @@
                         "int"
                     ]
                 }, 
-                "_decl": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))", 
-                "_error_pattern_suffix": "_as_buffer", 
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "c_var_len": "Narg", 
-                            "c_var_size": "Sarg", 
-                            "cxx_T": "std::string", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }
-                    }
-                }, 
-                "_fmtresult": {
-                    "fmtc": {
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
-                    }
-                }, 
-                "_function_index": 49, 
-                "_generated": "arg_to_buffer", 
-                "_subprogram": "function", 
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings", 
@@ -5122,7 +5122,10 @@
             }, 
             {
                 "_PTR_F_C_index": 50, 
-                "_ast": {
+                "_decl": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))", 
+                "_function_index": 28, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -5158,9 +5161,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))", 
-                "_function_index": 28, 
-                "_subprogram": "subroutine", 
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
                 "doxygen": {
                     "brief": "Fill in arg with some animal names", 
@@ -5191,7 +5191,31 @@
             }, 
             {
                 "_PTR_C_CXX_index": 28, 
-                "_ast": {
+                "_decl": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg))", 
+                "_error_pattern_suffix": "_as_buffer", 
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg", 
+                            "c_var_len": "Narg", 
+                            "c_var_size": "Sarg", 
+                            "cxx_T": "std::string", 
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SH_arg.c_str()", 
+                            "cxx_var": "SH_arg"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg", 
+                            "f_var": "arg"
+                        }
+                    }
+                }, 
+                "_function_index": 50, 
+                "_generated": "arg_to_buffer", 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -5229,30 +5253,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg))", 
-                "_error_pattern_suffix": "_as_buffer", 
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "c_var_len": "Narg", 
-                            "c_var_size": "Sarg", 
-                            "cxx_T": "std::string", 
-                            "cxx_type": "std::string", 
-                            "cxx_val": "SH_arg.c_str()", 
-                            "cxx_var": "SH_arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }
-                    }
-                }, 
-                "_function_index": 50, 
-                "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
                 "doxygen": {
                     "brief": "Fill in arg with some animal names", 
@@ -5283,7 +5283,10 @@
             }, 
             {
                 "_PTR_F_C_index": 51, 
-                "_ast": {
+                "_decl": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))", 
+                "_function_index": 29, 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -5319,9 +5322,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))", 
-                "_function_index": 29, 
-                "_subprogram": "subroutine", 
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
                 "doxygen": {
                     "brief": "append '-like' to names."
@@ -5347,7 +5347,31 @@
             }, 
             {
                 "_PTR_C_CXX_index": 29, 
-                "_ast": {
+                "_decl": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))", 
+                "_error_pattern_suffix": "_as_buffer", 
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg", 
+                            "c_var_len": "Narg", 
+                            "c_var_size": "Sarg", 
+                            "cxx_T": "std::string", 
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SH_arg.c_str()", 
+                            "cxx_var": "SH_arg"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg", 
+                            "f_var": "arg"
+                        }
+                    }
+                }, 
+                "_function_index": 51, 
+                "_generated": "arg_to_buffer", 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -5385,30 +5409,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))", 
-                "_error_pattern_suffix": "_as_buffer", 
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "arg", 
-                            "c_var_len": "Narg", 
-                            "c_var_size": "Sarg", 
-                            "cxx_T": "std::string", 
-                            "cxx_type": "std::string", 
-                            "cxx_val": "SH_arg.c_str()", 
-                            "cxx_var": "SH_arg"
-                        }, 
-                        "fmtf": {
-                            "c_var": "arg", 
-                            "f_var": "arg"
-                        }
-                    }
-                }, 
-                "_function_index": 51, 
-                "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
                 "doxygen": {
                     "brief": "append '-like' to names."
@@ -5436,7 +5436,19 @@
                 }
             }, 
             {
-                "_ast": {
+                "_decl": "const std::string & LastFunctionCalled() +pure", 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_rv_decl": "const char * XSHT_rv", 
+                        "c_val": "SHT_rv.c_str()", 
+                        "c_var": "XSHT_rv", 
+                        "cxx_rv_decl": "const std::string & SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 30, 
+                "_subprogram": "function", 
+                "ast": {
                     "args": [], 
                     "attrs": {}, 
                     "const": true, 
@@ -5457,18 +5469,6 @@
                         "std::string"
                     ]
                 }, 
-                "_decl": "const std::string & LastFunctionCalled() +pure", 
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_rv_decl": "const char * XSHT_rv", 
-                        "c_val": "SHT_rv.c_str()", 
-                        "c_var": "XSHT_rv", 
-                        "cxx_rv_decl": "const std::string & SHT_rv", 
-                        "cxx_var": "SHT_rv"
-                    }
-                }, 
-                "_function_index": 30, 
-                "_subprogram": "function", 
                 "decl": "const std::string& LastFunctionCalled() +pure", 
                 "format": {
                     "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 
@@ -5500,7 +5500,31 @@
             }, 
             {
                 "_PTR_C_CXX_index": 30, 
-                "_ast": {
+                "_decl": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
+                "_error_pattern_suffix": "_as_buffer", 
+                "_fmtargs": {
+                    "SHF_rv": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SHT_rv.c_str()", 
+                            "cxx_var": "SHT_rv"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_rv_decl": "const std::string & SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 52, 
+                "_generated": "arg_to_buffer", 
+                "_subprogram": "subroutine", 
+                "ast": {
                     "args": [
                         {
                             "attrs": {
@@ -5537,30 +5561,6 @@
                         "void"
                     ]
                 }, 
-                "_decl": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
-                "_error_pattern_suffix": "_as_buffer", 
-                "_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_ptr": "", 
-                            "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
-                            "cxx_type": "std::string", 
-                            "cxx_val": "SHT_rv.c_str()", 
-                            "cxx_var": "SHT_rv"
-                        }
-                    }
-                }, 
-                "_fmtresult": {
-                    "fmtc": {
-                        "cxx_rv_decl": "const std::string & SHT_rv", 
-                        "cxx_var": "SHT_rv"
-                    }
-                }, 
-                "_function_index": 52, 
-                "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "decl": "const std::string& LastFunctionCalled() +pure", 
                 "format": {
                     "C_call_code": "const std::string & SHT_rv = LastFunctionCalled();", 

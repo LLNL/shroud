@@ -169,7 +169,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for function in functions:
             if not function.options.wrap_lua:
                 continue
-            name = function._ast.name
+            name = function.ast.name
             if name in overloaded_methods:
                 overloaded_methods[name].append(function)
             else:
@@ -196,7 +196,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # First overload defines options
         node = overloads[0]
 
-        ast = node._ast
+        ast = node.ast
         function_name = ast.name
         fmt_func = node.fmtdict
         fmt = util.Scope(fmt_func)
@@ -205,7 +205,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         CXX_subprogram = node._subprogram
 
-        # XXX       ast = node._ast
+        # XXX       ast = node.ast
         # XXX       result_type = ast.typename
         # XXX       result_is_ptr = ast.is_pointer()
         # XXX       result_is_ref = ast.is_reference()
@@ -240,7 +240,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             in_args = []
             out_args = []
             found_default = False
-            for arg in function._ast.params:
+            for arg in function.ast.params:
                 arg_typedef = typemap.Typedef.lookup(arg.typename)
                 attrs = arg.attrs
                 if arg.init is not None:
@@ -419,7 +419,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         CXX_subprogram = node._subprogram
 
-        ast = node._ast
+        ast = node.ast
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)

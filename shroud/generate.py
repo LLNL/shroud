@@ -79,7 +79,7 @@ class VerifyAttrs(object):
             return
 
         # cache subprogram type
-        ast = node._ast
+        ast = node.ast
         result_type = ast.typename
         result_is_ptr = ast.is_pointer()
         #  'void'=subroutine   'void *'=function
@@ -237,7 +237,7 @@ class GenFunctions(object):
         for function in functions:
             self.append_function_index(function)
             cxx_overload. \
-                setdefault(function._ast.name, []). \
+                setdefault(function.ast.name, []). \
                 append(function._function_index)
 
         # keep track of which function are overloaded in C++.
@@ -264,7 +264,7 @@ class GenFunctions(object):
             if function.cxx_template:
                 continue
             overloaded_functions.setdefault(
-                function._ast.name, []).append(function)
+                function.ast.name, []).append(function)
 
         # look for function overload and compute function_suffix
         for mname, overloads in overloaded_functions.items():
@@ -319,10 +319,10 @@ class GenFunctions(object):
                 options.wrap_lua = False
                 # Convert typename to type
                 fmt.CXX_template = '<{}>'.format(type)
-                if new._ast.typename == typename:
-                    new._ast.typename = type
+                if new.ast.typename == typename:
+                    new.ast.typename = type
                     new._CXX_return_templated = True
-                for arg in new._ast.params:
+                for arg in new.ast.params:
                     if arg.typename == typename:
                         arg.typename = type
 
@@ -359,7 +359,7 @@ class GenFunctions(object):
                 options.wrap_python = False
                 options.wrap_lua = False
                 # Convert typename to type
-                for arg in new._ast.params:
+                for arg in new.ast.params:
                     if arg.name == argname:
                         # Convert any typedef to native type with f_type
                         argtype = arg.typename
@@ -394,14 +394,14 @@ class GenFunctions(object):
         ndefault = 0
 
         min_args = 0
-        for i, arg in enumerate(node._ast.params):
+        for i, arg in enumerate(node.ast.params):
             if arg.init is None:
                 min_args += 1
                 continue
             new = node.clone()
             self.append_function_index(new)
             new._generated = 'has_default_arg'
-            del new._ast.params[i:]  # remove trailing arguments
+            del new.ast.params[i:]  # remove trailing arguments
             new._has_default_arg = False
             options = new.options
             options.wrap_c = True
@@ -421,7 +421,7 @@ class GenFunctions(object):
 
         # keep track of generated default value functions
         node._default_funcs = default_funcs
-        node._nargs = (min_args, len(node._ast.params))
+        node._nargs = (min_args, len(node.ast.params))
         # The last name calls with all arguments (the original decl)
         try:
             node.fmtdict.function_suffix = default_arg_suffix[ndefault]
@@ -441,7 +441,7 @@ class GenFunctions(object):
         # the default wrapper will not compile since the wrapper
         # will be declared as char. It will also want to return the
         # c_str of a stack variable. Warn and turn off the wrapper.
-        ast = node._ast
+        ast = node.ast
         result_type = ast.typename
         result_typedef = typemap.Typedef.lookup(result_type)
         # wrapped classes have not been added yet.
@@ -518,7 +518,7 @@ class GenFunctions(object):
         C_new._PTR_C_CXX_index = node._function_index
 
         newargs = []
-        for arg in C_new._ast.params:
+        for arg in C_new.ast.params:
             attrs = arg.attrs
             argtype = arg.typename
             arg_typedef = typemap.Typedef.lookup(argtype)
@@ -553,7 +553,7 @@ class GenFunctions(object):
 
         if has_string_result:
             # Add additional argument to hold result
-            ast = C_new._ast
+            ast = C_new.ast
             result_as_string = ast.result_as_arg(result_name)
             attrs = result_as_string.attrs
             attrs['len'] = options.C_var_len_template.format(c_var=result_name)
@@ -623,7 +623,7 @@ class GenFunctions(object):
             # XXX - Maybe dummy it out
             # XXX - process templated types
             return
-        ast = node._ast
+        ast = node.ast
         rv_type = ast.typename
         typedef = typemap.Typedef.lookup(rv_type)
         if typedef is None:
@@ -645,7 +645,7 @@ class GenFunctions(object):
         """ Generate _decl for generated all functions.
         """
         for node in functions:
-            node._decl = node._ast.gen_decl()
+            node._decl = node.ast.gen_decl()
 
 
 class Namify(object):

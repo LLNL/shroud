@@ -473,7 +473,7 @@ class Wrapf(util.WrapperMixin):
         fmt_func = node.fmtdict
         fmt = util.Scope(fmt_func)
 
-        ast = node._ast
+        ast = node.ast
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
@@ -641,7 +641,7 @@ class Wrapf(util.WrapperMixin):
         fmtargs = C_node._fmtargs
 
         # Fortran return type
-        ast = node._ast
+        ast = node.ast
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
@@ -666,7 +666,7 @@ class Wrapf(util.WrapperMixin):
             result_type = fmt_func.C_custom_return_type
             subprogram = 'function'
             c_subprogram = 'function'
-            ast = copy.deepcopy(node._ast)
+            ast = copy.deepcopy(node.ast)
             ast.typename = result_type
 
         result_typedef = typemap.Typedef.lookup(result_type)
@@ -717,7 +717,7 @@ class Wrapf(util.WrapperMixin):
         post_call = []
         f_args = ast.params
         f_index = -1       # index into f_args
-        for c_arg in C_node._ast.params:
+        for c_arg in C_node.ast.params:
             arg_name = c_arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg  = fmt_arg0.setdefault('fmtf', util.Scope(fmt_func))
