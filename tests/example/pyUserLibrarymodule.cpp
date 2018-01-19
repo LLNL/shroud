@@ -294,7 +294,7 @@ PP_testgroup1(
     {
         return NULL;
     }
-    SH_grp = SH_Py_grp ? SH_Py_grp->BBB : NULL;
+    SH_grp = SH_Py_grp ? SH_Py_grp->obj : NULL;
     axom::sidre::Group * SH_grp = static_cast<axom::sidre::Group *>(static_cast<void *>(grp));
     testgroup1(SH_grp);
     Py_RETURN_NONE;
@@ -322,7 +322,7 @@ PP_testgroup2(
     {
         return NULL;
     }
-    SH_grp = SH_Py_grp ? SH_Py_grp->BBB : NULL;
+    SH_grp = SH_Py_grp ? SH_Py_grp->obj : NULL;
     const axom::sidre::Group * SH_grp = static_cast<const axom::sidre::Group *>(static_cast<const void *>(grp));
     testgroup2(SH_grp);
     Py_RETURN_NONE;

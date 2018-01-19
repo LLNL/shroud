@@ -3774,7 +3774,6 @@
             "#######################################################################"
         ], 
         "format": {
-            "BBB": "BBB", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
             "CXX_this_call": "", 
@@ -3818,6 +3817,7 @@
             "PY_library_doc": "library documentation", 
             "PY_module_filename": "pyUserLibrarymodule.cpp", 
             "PY_module_name": "userlibrary", 
+            "PY_obj": "obj", 
             "PY_param_args": "args", 
             "PY_param_kwds": "kwds", 
             "PY_param_self": "self", 
@@ -5344,13 +5344,13 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{BBB} : NULL;"
+                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "ctor": [
                         "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{BBB} = {cxx_var};"
+                        "{py_var}->{PY_obj} = {cxx_var};"
                     ]
                 }
             }
@@ -5393,13 +5393,13 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{BBB} : NULL;"
+                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "ctor": [
                         "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{BBB} = {cxx_var};"
+                        "{py_var}->{PY_obj} = {cxx_var};"
                     ]
                 }
             }
@@ -5442,13 +5442,13 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{BBB} : NULL;"
+                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "ctor": [
                         "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{BBB} = {cxx_var};"
+                        "{py_var}->{PY_obj} = {cxx_var};"
                     ]
                 }
             }
@@ -5487,13 +5487,13 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{BBB} : NULL;"
+                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "ctor": [
                         "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{BBB} = {cxx_var};"
+                        "{py_var}->{PY_obj} = {cxx_var};"
                     ]
                 }
             }

@@ -852,14 +852,14 @@ def typedef_wrapped_defaults(typedef):
     typedef.py_statements=dict(
         intent_in=dict(
             post_parse=[
-                '{cxx_var} = {py_var} ? {py_var}->{BBB} : NULL;',
+                '{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;',
             ],
         ),
         intent_out=dict(
             ctor=[
                 ('{PyObject} * {py_var} = '
                  'PyObject_New({PyObject}, &{PyTypeObject});'),
-                '{py_var}->{BBB} = {cxx_var};',
+                '{py_var}->{PY_obj} = {cxx_var};',
             ]
         ),
     )

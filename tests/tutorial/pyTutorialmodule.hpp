@@ -65,7 +65,7 @@ int PP_Class1_from_Object(PyObject *obj, void **addr);
 
 typedef struct {
 PyObject_HEAD
-    Class1 * BBB;
+    Class1 * obj;
     // splicer begin class.Class1.C_object
     // splicer end class.Class1.C_object
 } PY_Class1;

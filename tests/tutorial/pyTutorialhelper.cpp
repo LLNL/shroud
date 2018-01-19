@@ -70,7 +70,7 @@ int PP_Class1_from_Object(PyObject *obj, void **addr)
         return 0;
     }
     PY_Class1 * self = (PY_Class1 *) obj;
-    *addr = self->BBB;
+    *addr = self->obj;
     return 1;
     // splicer end class.Class1.helper.from_object
 }

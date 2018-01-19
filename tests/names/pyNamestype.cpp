@@ -59,7 +59,7 @@ PY_names_method1(
   PyObject *)  // kwds unused
 {
 // splicer begin class.Names.method.method1
-    self->BBB->method1();
+    self->obj->method1();
     Py_RETURN_NONE;
 // splicer end class.Names.method.method1
 }
@@ -75,7 +75,7 @@ PY_names_method2(
   PyObject *)  // kwds unused
 {
 // splicer begin class.Names.method.method2
-    self->BBB->method2();
+    self->obj->method2();
     Py_RETURN_NONE;
 // splicer end class.Names.method.method2
 }

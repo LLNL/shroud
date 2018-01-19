@@ -497,7 +497,7 @@ PY_useclass(
     {
         return NULL;
     }
-    arg1 = SH_Py_arg1 ? SH_Py_arg1->BBB : NULL;
+    arg1 = SH_Py_arg1 ? SH_Py_arg1->obj : NULL;
     useclass(arg1);
     Py_RETURN_NONE;
 // splicer end function.useclass

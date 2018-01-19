@@ -71,7 +71,7 @@ int PP_ExClass1_from_Object(PyObject *obj, void **addr)
         return 0;
     }
     PP_ExClass1 * self = (PP_ExClass1 *) obj;
-    *addr = self->BBB;
+    *addr = self->obj;
     return 1;
     // splicer end class.ExClass1.helper.from_object
 }
@@ -100,7 +100,7 @@ int PP_ExClass2_from_Object(PyObject *obj, void **addr)
         return 0;
     }
     PP_ExClass2 * self = (PP_ExClass2 *) obj;
-    *addr = self->BBB;
+    *addr = self->obj;
     return 1;
     // splicer end class.ExClass2.helper.from_object
 }

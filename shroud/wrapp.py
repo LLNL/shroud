@@ -88,7 +88,7 @@ class Wrapp(util.WrapperMixin):
         newlibrary.eval_template('PY_module_filename')
         newlibrary.eval_template('PY_header_filename')
         newlibrary.eval_template('PY_helper_filename')
-        fmt_library.BBB = 'BBB'   # name of cpp class pointer in PyObject
+        fmt_library.PY_obj = 'obj'   # name of cpp class pointer in PyObject
         fmt_library.PY_PyObject = 'PyObject'
         fmt_library.PY_param_self = 'self'
         fmt_library.PY_param_args = 'args'
@@ -183,7 +183,7 @@ class Wrapp(util.WrapperMixin):
         self.py_type_structs.append('typedef struct {')
         self.py_type_structs.append('PyObject_HEAD')
         self.py_type_structs.append(1)
-        append_format(self.py_type_structs, '{cxx_class} * {BBB};', fmt_class)
+        append_format(self.py_type_structs, '{cxx_class} * {PY_obj};', fmt_class)
         self._create_splicer('C_object', self.py_type_structs)
         self.py_type_structs.append(-1)
         self.py_type_structs.append(wformat('}} {PY_PyObject};', fmt_class))
@@ -239,7 +239,7 @@ return rv;""", fmt)
     return 0;
 }}
 {PY_PyObject} * self = ({PY_PyObject} *) obj;
-*addr = self->{BBB};
+*addr = self->{PY_obj};
 return 1;""", fmt)
         from_object = from_object.split('\n')
 
@@ -546,7 +546,7 @@ return 1;""", fmt)
             #  template = '{c_const}{cxx_class} *{C_this}obj = static_cast<{c_const}{cxx_class} *>(static_cast<{c_const}void *>({C_this}));'
             #  fmt_func.C_object = wformat(template, fmt_func)
             # call method syntax
-            fmt.PY_this_call = wformat('self->{BBB}->', fmt)
+            fmt.PY_this_call = wformat('self->{PY_obj}->', fmt)
         else:
             fmt.PY_this_call = ''  # call function syntax
 
@@ -572,8 +572,8 @@ return 1;""", fmt)
             PY_code.extend(post_parse[:len_post_parse])
 
             if is_dtor:
-                append_format(PY_code, 'delete self->{BBB};', fmt)
-                append_format(PY_code, 'self->{BBB} = NULL;', fmt)
+                append_format(PY_code, 'delete self->{PY_obj};', fmt)
+                append_format(PY_code, 'self->{PY_obj} = NULL;', fmt)
             elif CXX_subprogram == 'subroutine':
                 line = wformat(
                     '{PY_this_call}{function_name}({call_list});', fmt)
