@@ -243,9 +243,9 @@ class CheckAst(unittest.TestCase):
 
         generate.generate_functions(library, None)
         self.assertEqual(len(library.functions), 2)
-        self.assertEqual(library.functions[0]._decl,
+        self.assertEqual(library.functions[0].declgen,
                          'void func1(char * arg +intent(inout))')
-        self.assertEqual(library.functions[1]._decl,
+        self.assertEqual(library.functions[1].declgen,
                          'void func1(char * arg +intent(inout)+len(Narg)+len_trim(Larg))')
 
 #        import json

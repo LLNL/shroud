@@ -135,6 +135,10 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("std::string *var1")
         s = r.gen_decl()
         self.assertEqual("std::string * var1", s)
+        s = r.gen_arg_as_cxx()
+        self.assertEqual("std::string * var1", s)
+        s = r.gen_arg_as_c()
+        self.assertEqual("char * var1", s)
 
         r = declast.check_decl("std::string &var1")
         s = r.gen_decl()
