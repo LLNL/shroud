@@ -432,7 +432,7 @@ return 1;""", fmt)
                 arg_typedef = typemap.Typedef.lookup(arg.typename)
                 fmt_arg.cxx_type = arg_typedef.cxx_type
                 py_statements = arg_typedef.py_statements
-                have_cxx_local_var = arg_typedef.cxx_local_var
+                have_cxx_local_var = False
                 if attrs['intent'] in ['inout', 'in']:
                     # names to PyArg_ParseTupleAndKeywords
                     arg_names.append(arg_name)
@@ -463,9 +463,10 @@ return 1;""", fmt)
                     # add argument to call to PyArg_ParseTypleAndKeywords
                     parse_vargs.append('&' + arg_name)
 
-                    have_cxx_local_var = (have_cxx_local_var or
-                                          py_statements.get('intent_in', {})
-                                          .get('cxx_local_var', False))
+                    stmts = 'intent_in'  # XXX -  + attrs['intent'] ?
+                    intent_blk = py_statements.get(stmts, {})
+
+                    have_cxx_local_var = intent_blk.get('cxx_local_var', False)
                     if have_cxx_local_var:
                         fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
                     cmd_list = py_statements.get(
@@ -488,19 +489,6 @@ return 1;""", fmt)
                     PY_decl.append(arg.gen_arg_as_c() + ';')
                 else:
                     PY_decl.append(arg.gen_arg_as_cxx() + ';')
-
-                if arg_typedef.cxx_local_var:
-                    # cxx_local_var should only be set if
-                    # py_statements are not used
-# XXX this test is wrong, need to investigate the relationship with cxx_local_var
-#                    if py_statements:
-#                        raise RuntimeError(
-#                            'py_statements and cxx_local_var are '
-#                            'both defined for {}'
-#                            .format(arg_typedef.name))
-                    append_format(post_parse,
-                                  '{c_const}{cxx_type}{c_ptr} {cxx_var} = '
-                                  + arg_typedef.c_to_cxx + ';', fmt_arg)
 
                 if arg_typedef.PY_PyTypeObject:
                     # A Python Object which must be converted to C++ type.

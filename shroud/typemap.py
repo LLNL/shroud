@@ -61,7 +61,6 @@ class Typedef(object):
         ('cxx_to_c', '{cxx_var}'), # Expression to convert from C++ to C
         ('cxx_header', None),     # Name of C++ header file required for implementation
                                   # For example, if cxx_to_c was a function
-        ('cxx_local_var', False), # True if c_to_cxx requires a local C variable
 
         ('c_type', None),         # Name of type in C
         ('c_header', None),       # Name of C header file required for type

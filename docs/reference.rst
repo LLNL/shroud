@@ -854,19 +854,6 @@ cxx_header
     Only used with *language=c++*.
     Defaults to *None*.
 
-cxx_local_var
-    If true then a local variable will be created instead of passing the argument
-    directly to the function.
-    The variable will be assigned a value using *c_to_cxx*.
-    If *c_to_cxx* is a large expression it is sometimes convenient to have a local variable
-    for debugging purposes.
-    It can also be used to create cleaner code when *c_to_cxx* will generate a very long statement.
-    When *c_to_cxx* is not sufficient to assign a value, *c_statements* can be used to 
-    add multiple statements into the wrapper.  *c_statements* and *cxx_local_var* cannot
-    be used together.
-
-..  {c_const}{cxx_type}{ptr} = c_to_cxx ;
-
 c_type
     name of type in C.
     Defaults to *None*.
@@ -923,7 +910,7 @@ c_statements
         cxx_local_var
            True if a local C++ variable is created.
            This is the case when C and C++ are not directly compatible.
-           Usually a C++ constructor is involved.
+           Usually a C++ constructor or cast is involved.
            This sets *cxx_var* is set to ``SH_{c_var}``.
 
         c_helper
