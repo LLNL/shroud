@@ -345,7 +345,7 @@ return 1;""", fmt)
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
         fmt = util.Scope(fmt_func)
-        fmt.doc_string = 'documentation'
+        fmt.PY_doc_string = 'documentation'
         if cls:
             fmt.PY_used_param_self = True
 
@@ -374,7 +374,7 @@ return 1;""", fmt)
 #            is_const = False
 #        else:
 #            is_const = None
-        fmt.rv_decl = ast.gen_arg_as_cxx(name=fmt.PY_result)  # return value
+        fmt.PY_rv_decl = ast.gen_arg_as_cxx(name=fmt.PY_result)  # return value
 
         PY_decl = []     # variables for function
         PY_code = []
@@ -404,9 +404,9 @@ return 1;""", fmt)
 
         args = ast.params
         if not args:
-            fmt.ml_flags = 'METH_NOARGS'
+            fmt.PY_ml_flags = 'METH_NOARGS'
         else:
-            fmt.ml_flags = 'METH_VARARGS|METH_KEYWORDS'
+            fmt.PY_ml_flags = 'METH_VARARGS|METH_KEYWORDS'
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
             arg_names = []
@@ -555,10 +555,10 @@ return 1;""", fmt)
         # If multiple calls, declare return value once
         # Else delare on call line.
         if found_default:
-            fmt.rv_asgn = 'rv = '
+            fmt.PY_rv_asgn = 'rv = '
             PY_code.append('switch (SH_nargs) {')
         else:
-            fmt.rv_asgn = fmt.rv_decl + ' = '
+            fmt.PY_rv_asgn = fmt.PY_rv_decl + ' = '
         need_rv = False
 
         for nargs, len_post_parse, call_list in default_calls:
@@ -566,7 +566,7 @@ return 1;""", fmt)
                 PY_code.append('case %d:' % nargs)
                 PY_code.append(1)
 
-            fmt.call_list = call_list
+            fmt.PY_call_list = call_list
             PY_code.extend(post_parse[:len_post_parse])
 
             if is_dtor:
@@ -574,12 +574,12 @@ return 1;""", fmt)
                 append_format(PY_code, 'self->{PY_obj} = NULL;', fmt)
             elif CXX_subprogram == 'subroutine':
                 line = wformat(
-                    '{PY_this_call}{function_name}({call_list});', fmt)
+                    '{PY_this_call}{function_name}({PY_call_list});', fmt)
                 PY_code.append(line)
             else:
                 need_rv = True
                 line = wformat(
-                    '{rv_asgn}{PY_this_call}{function_name}({call_list});',
+                    '{PY_rv_asgn}{PY_this_call}{function_name}({PY_call_list});',
                     fmt)
                 PY_code.append(line)
 
@@ -603,7 +603,7 @@ return 1;""", fmt)
             need_rv = False
 
         if need_rv:
-            PY_decl.append(fmt.rv_decl + ';')
+            PY_decl.append(fmt.PY_rv_decl + ';')
         if len(PY_decl):
             PY_decl.append('')
 
@@ -670,7 +670,7 @@ return 1;""", fmt)
             body.extend([
                     '',
                     wformat('static char {PY_name_impl}__doc__[] =', fmt),
-                    '"%s"' % fmt.doc_string,
+                    '"%s"' % fmt.PY_doc_string,
                     ';',
                     ])
 
@@ -712,13 +712,13 @@ return 1;""", fmt)
             self.PyMethodDef.append(
                 wformat('{{"{function_name}{function_suffix}", '
                         '(PyCFunction){PY_name_impl}, '
-                        '{ml_flags}, '
+                        '{PY_ml_flags}, '
                         '{PY_name_impl}__doc__}},', fmt))
 #        elif expose is not False:
 #            # override name
 #            fmt = util.Scope(fmt)
 #            fmt.expose = expose
-#            self.PyMethodDef.append( wformat('{{"{expose}", (PyCFunction){PY_name_impl}, {ml_flags}, {PY_name_impl}__doc__}},', fmt))
+#            self.PyMethodDef.append( wformat('{{"{expose}", (PyCFunction){PY_name_impl}, {PY_ml_flags}, {PY_name_impl}__doc__}},', fmt))
 
     def write_tp_func(self, node, fmt, fmt_type, output):
         # fmt is a dictiony here.
@@ -806,8 +806,8 @@ return 1;""", fmt)
             fmt_func = methods[0].fmtdict
             fmt = util.Scope(fmt_func)
             fmt.function_suffix = ''
-            fmt.doc_string = 'documentation'
-            fmt.ml_flags = 'METH_VARARGS|METH_KEYWORDS'
+            fmt.PY_doc_string = 'documentation'
+            fmt.PY_ml_flags = 'METH_VARARGS|METH_KEYWORDS'
             fmt.PY_used_param_self = True
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
