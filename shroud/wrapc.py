@@ -511,8 +511,6 @@ class Wrapc(util.WrapperMixin):
             cmd_list = intent_blk.get('post_call', [])
             if cmd_list:
                 need_wrapper = True
-                # pick up c_str() from cxx_to_c
-                fmt_arg.cxx_val = wformat(arg_typedef.cxx_to_c, fmt_arg)
                 for cmd in cmd_list:
                     append_format(post_call, cmd, fmt_arg)
 

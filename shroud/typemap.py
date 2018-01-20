@@ -351,8 +351,6 @@ def initialize():
         char=Typedef(
             'char',
             cxx_type='char',
-            # cxx_header='<string>',
-            # cxx_to_c='{cxx_var}.c_str()',  # . or ->
 
             c_type='char',    # XXX - char *
 
@@ -381,7 +379,7 @@ def initialize():
                         'char * {cxx_var} = (char *) malloc({c_var_len} + 1);',
                         ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});',
+                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});',
                         'free({cxx_var});',
                         ],
                     ),
@@ -397,7 +395,7 @@ def initialize():
                         '{cxx_var}[{c_var_trim}] = \'\\0\';'
                         ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});',
+                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});',
                         'free({cxx_var});',
                         ],
                     ),
@@ -442,8 +440,6 @@ def initialize():
         char_scalar=Typedef(
             'char_scalar',
             cxx_type='char',
-            # cxx_header='<string>',
-            # cxx_to_c='{cxx_var}.c_str()',  # . or ->
 
             c_type='char',    # XXX - char *
 
@@ -497,8 +493,7 @@ def initialize():
                         ],
                     post_call=[
                         # This may overwrite c_var if cxx_val is too long
-                        'strcpy({c_var}, {cxx_val});'
-#                        'ShroudStrCopy({c_var}, {c_var_trim}, {cxx_val});'
+                        'strcpy({c_var}, {cxx_var}{cxx_deref}c_str());'
                     ],
                 ),
                 intent_inout=dict(
@@ -509,8 +504,7 @@ def initialize():
                         ],
                     post_call=[
                         # This may overwrite c_var if cxx_val is too long
-                        'strcpy({c_var}, {cxx_val});'
-#                        'ShroudStrCopy({c_var}, {c_var_trim}, {cxx_val});'
+                        'strcpy({c_var}, {cxx_var}{cxx_deref}c_str());'
                     ],
                 ),
                 intent_in_buf=dict(
@@ -529,7 +523,7 @@ def initialize():
                         'std::string {cxx_var};'
                     ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});'
+                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());'
                     ],
                 ),
                 intent_inout_buf=dict(
@@ -540,7 +534,7 @@ def initialize():
                         'std::string {cxx_var}({c_var}, {c_var_trim});'
                     ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});'
+                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());'
                     ],
                 ),
                 result_buf=dict(
@@ -647,7 +641,7 @@ def initialize():
 #                        'if ({cxx_var}.empty()) {{',
 #                        '  std::memset({c_var}, \' \', {c_var_len});',
 #                        '}} else {{',
-#                        '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});',
+#                        '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());',
 #                        '}}',
 #                    ],
 #                ),
@@ -732,7 +726,7 @@ def initialize():
 #                            'if ({cxx_var}.empty()) {{',
 #                            '  std::memset({c_var}, \' \', {c_var_len});',
 #                            '}} else {{',
-#                            '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});',
+#                            '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());',
 #                            '}}',
 #                        ],
 #                    ),

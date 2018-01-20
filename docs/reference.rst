@@ -790,9 +790,6 @@ cxx_type
 cxx_var
     Name of the C++ variable.
 
-cxx_val
-    Evaluation of cxx_to_c for the arguments typedef.
-
 f_var
     Fortran variable name for argument.
 

@@ -697,7 +697,7 @@
                     "cxx_header": "<stdlib.h> <cstring>", 
                     "cxx_local_var": "pointer", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});", 
                         "free({cxx_var});"
                     ], 
                     "pre_call": [
@@ -715,7 +715,7 @@
                     "cxx_header": "<stdlib.h>", 
                     "cxx_local_var": "pointer", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});", 
                         "free({cxx_var});"
                     ], 
                     "pre_call": [
@@ -904,7 +904,7 @@
                     "cxx_header": "<cstring>", 
                     "cxx_local_var": "object", 
                     "post_call": [
-                        "strcpy({c_var}, {cxx_val});"
+                        "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
                     ], 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var});"
@@ -918,7 +918,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "object", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var}({c_var}, {c_var_trim});"
@@ -928,7 +928,7 @@
                     "cxx_header": "<cstring>", 
                     "cxx_local_var": "object", 
                     "post_call": [
-                        "strcpy({c_var}, {cxx_val});"
+                        "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
                     ], 
                     "pre_call": [
                         "{c_const}std::string {cxx_var};"
@@ -941,7 +941,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "object", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var};"
