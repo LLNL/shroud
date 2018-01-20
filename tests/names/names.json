@@ -368,6 +368,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "i", 
+                            "cxx_decl": "int i", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "i", 
@@ -457,6 +458,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "i", 
+                            "cxx_decl": "long i", 
                             "cxx_deref": ".", 
                             "cxx_type": "long", 
                             "cxx_var": "i", 
@@ -539,6 +541,7 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "rv", 
+                            "cxx_decl": "const std::string & rv", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_rv", 
@@ -871,7 +874,7 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
@@ -928,7 +931,7 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {

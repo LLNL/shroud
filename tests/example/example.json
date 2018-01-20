@@ -339,6 +339,7 @@
                                     "c_const": "", 
                                     "c_ptr": "", 
                                     "c_var": "incr", 
+                                    "cxx_decl": "int incr", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "int", 
                                     "cxx_var": "incr", 
@@ -1093,6 +1094,7 @@
                                     "c_const": "", 
                                     "c_ptr": "", 
                                     "c_var": "value", 
+                                    "cxx_decl": "int value", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "int", 
                                     "cxx_var": "value", 
@@ -1193,6 +1195,7 @@
                                     "c_const": "", 
                                     "c_ptr": "", 
                                     "c_var": "value", 
+                                    "cxx_decl": "long value", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "long", 
                                     "cxx_var": "value", 
@@ -1348,6 +1351,7 @@
                                     "c_const": "", 
                                     "c_ptr": "", 
                                     "c_var": "in", 
+                                    "cxx_decl": "bool in", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "bool", 
                                     "cxx_var": "in", 
@@ -2432,6 +2436,7 @@
                                     "c_const": "const ", 
                                     "c_ptr": " *", 
                                     "c_var": "in", 
+                                    "cxx_decl": "const ExClass1 * in", 
                                     "cxx_deref": "->", 
                                     "cxx_type": "ExClass1", 
                                     "cxx_var": "in", 
@@ -2758,6 +2763,7 @@
                                     "c_const": "", 
                                     "c_ptr": "", 
                                     "c_var": "len", 
+                                    "cxx_decl": "SidreLength len", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "SidreLength", 
                                     "cxx_var": "len", 
@@ -2781,6 +2787,7 @@
                                     "c_const": "", 
                                     "c_ptr": "", 
                                     "c_var": "type", 
+                                    "cxx_decl": "TypeID type", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "TypeID", 
                                     "cxx_var": "type", 
@@ -3966,6 +3973,7 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "name", 
+                            "cxx_decl": "const std::string & name", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name", 
@@ -4205,6 +4213,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_decl": "bool arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg1", 
@@ -4230,6 +4239,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "arg2", 
+                            "cxx_decl": "bool * arg2", 
                             "cxx_deref": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg2", 
@@ -4255,6 +4265,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "arg3", 
+                            "cxx_decl": "bool * arg3", 
                             "cxx_deref": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg3", 
@@ -4377,6 +4388,7 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "name", 
+                            "cxx_decl": "const std::string & name", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name", 
@@ -4555,6 +4567,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "flag", 
+                            "cxx_decl": "int flag", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "flag", 
@@ -4574,6 +4587,7 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "name", 
+                            "cxx_decl": "const std::string & name", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name", 
@@ -4929,6 +4943,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "i", 
+                            "cxx_decl": "int i", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "i", 
@@ -4952,6 +4967,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "j", 
+                            "cxx_decl": "long j", 
                             "cxx_deref": ".", 
                             "cxx_type": "long", 
                             "cxx_var": "j", 
@@ -5109,6 +5125,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "comm", 
+                            "cxx_decl": "MPI_Comm comm", 
                             "cxx_deref": ".", 
                             "cxx_type": "MPI_Comm", 
                             "cxx_var": "comm", 
@@ -5192,6 +5209,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "grp", 
+                            "cxx_decl": "axom::sidre::Group * grp", 
                             "cxx_deref": "->", 
                             "cxx_type": "axom::sidre::Group", 
                             "cxx_var": "grp", 
@@ -5281,6 +5299,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "grp", 
+                            "cxx_decl": "const axom::sidre::Group * grp", 
                             "cxx_deref": "->", 
                             "cxx_type": "axom::sidre::Group", 
                             "cxx_var": "grp", 
@@ -5458,7 +5477,7 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
@@ -5515,7 +5534,7 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
@@ -5572,7 +5591,7 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
@@ -5625,7 +5644,7 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {

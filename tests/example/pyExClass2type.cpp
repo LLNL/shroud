@@ -290,7 +290,6 @@ PP_exclass2_get_class1(
   PyObject *kwds)
 {
 // splicer begin class.ExClass2.method.get_class1
-    const ExClass1 * in;
     PP_ExClass1 * SH_Py_in;
     const char *SH_kwcpp = "in";
     char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
@@ -300,7 +299,7 @@ PP_exclass2_get_class1(
     {
         return NULL;
     }
-    in = SH_Py_in ? SH_Py_in->obj : NULL;
+    const ExClass1 * in = SH_Py_in ? SH_Py_in->obj : NULL;
     ExClass1 * rv = self->obj->get_class1(in);
     PP_ExClass1 * SH_Py_rv = PyObject_New(PP_ExClass1, &PP_ExClass1_Type);
     SH_Py_rv->obj = rv;

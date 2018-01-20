@@ -284,7 +284,6 @@ PP_testgroup1(
   PyObject *kwds)
 {
 // splicer begin function.testgroup1
-    axom::sidre::Group * grp;
     PyObject * SH_Py_grp;
     const char *SH_kwcpp = "grp";
     char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
@@ -294,7 +293,7 @@ PP_testgroup1(
     {
         return NULL;
     }
-    grp = SH_Py_grp ? SH_Py_grp->obj : NULL;
+    axom::sidre::Group * grp = SH_Py_grp ? SH_Py_grp->obj : NULL;
     testgroup1(grp);
     Py_RETURN_NONE;
 // splicer end function.testgroup1
@@ -311,7 +310,6 @@ PP_testgroup2(
   PyObject *kwds)
 {
 // splicer begin function.testgroup2
-    const axom::sidre::Group * grp;
     PyObject * SH_Py_grp;
     const char *SH_kwcpp = "grp";
     char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
@@ -321,7 +319,7 @@ PP_testgroup2(
     {
         return NULL;
     }
-    grp = SH_Py_grp ? SH_Py_grp->obj : NULL;
+    const axom::sidre::Group * grp = SH_Py_grp ? SH_Py_grp->obj : NULL;
     testgroup2(grp);
     Py_RETURN_NONE;
 // splicer end function.testgroup2

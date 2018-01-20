@@ -433,6 +433,8 @@ return 1;""", fmt)
 
                 arg_typedef = typemap.Typedef.lookup(arg.typename)
                 fmt_arg.cxx_type = arg_typedef.cxx_type
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
+
                 py_statements = arg_typedef.py_statements
                 cxx_local_var = ''
                 if attrs['intent'] in ['inout', 'in']:
@@ -489,6 +491,10 @@ return 1;""", fmt)
                 if arg_typedef.base == 'string':
                     # C++ will coerce char * to std::string
                     PY_decl.append(arg.gen_arg_as_c() + ';')
+                elif arg_typedef.base == 'wrapped':
+                    # defined as part of py_statements.intent_in.post_parse
+                    # XXX - Not sure about intent_out
+                    pass
                 else:
                     PY_decl.append(arg.gen_arg_as_cxx() + ';')
 

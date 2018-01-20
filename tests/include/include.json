@@ -518,7 +518,7 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
@@ -571,7 +571,7 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
