@@ -114,6 +114,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "status", 
+                            "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status"
                         }, 
@@ -125,6 +126,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "status", 
+                            "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status", 
                             "py_var": "SH_Py_status"
@@ -192,9 +194,10 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 22, 
+                "_PTR_F_C_index": 23, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "char SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -255,6 +258,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_val": "SHT_rv", 
                             "cxx_var": "SHT_rv"
@@ -267,11 +271,12 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "char SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 22, 
+                "_function_index": 23, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -336,13 +341,14 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 23, 
+                "_PTR_F_C_index": 24, 
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "dest", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "dest"
                         }, 
@@ -352,6 +358,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "dest", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "dest", 
                             "py_var": "SH_Py_dest"
@@ -362,6 +369,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "src", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "src"
                         }, 
@@ -369,6 +377,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "src", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "src", 
                             "py_var": "SH_Py_src"
@@ -470,6 +479,7 @@
                             "c_ptr": " *", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SH_dest", 
                             "cxx_var": "SH_dest"
@@ -485,6 +495,7 @@
                             "c_ptr": " *", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SH_src", 
                             "cxx_var": "SH_src"
@@ -495,7 +506,7 @@
                         }
                     }
                 }, 
-                "_function_index": 23, 
+                "_function_index": 24, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -582,13 +593,14 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 24, 
+                "_PTR_F_C_index": 25, 
                 "_fmtargs": {
                     "s": {
                         "fmtc": {
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "s", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "s"
                         }, 
@@ -598,6 +610,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "s", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "s", 
                             "py_var": "SH_Py_s"
@@ -680,6 +693,7 @@
                             "c_var": "s", 
                             "c_var_len": "Ns", 
                             "c_var_trim": "Ls", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SH_s", 
                             "cxx_var": "SH_s"
@@ -690,7 +704,7 @@
                         }
                     }
                 }, 
-                "_function_index": 24, 
+                "_function_index": 25, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -759,6 +773,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": "->", 
                         "cxx_rv_decl": "const char * SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -827,6 +842,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SHT_rv", 
                             "cxx_var": "SHT_rv"
@@ -835,11 +851,12 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": "->", 
                         "cxx_rv_decl": "const char * SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 25, 
+                "_function_index": 26, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -906,9 +923,10 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 26, 
+                "_PTR_F_C_index": 27, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": "->", 
                         "cxx_rv_decl": "const char * SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -977,6 +995,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SHT_rv", 
                             "cxx_var": "SHT_rv"
@@ -989,11 +1008,12 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": "->", 
                         "cxx_rv_decl": "const char * SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 26, 
+                "_function_index": 27, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1062,6 +1082,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": "->", 
                         "cxx_rv_decl": "const char * SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1120,6 +1141,7 @@
                             "c_ptr": " *", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SHT_rv", 
                             "cxx_var": "SHT_rv"
@@ -1132,11 +1154,12 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": "->", 
                         "cxx_rv_decl": "const char * SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 27, 
+                "_function_index": 28, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1203,9 +1226,9 @@
             }, 
             {
                 "_PTR_C_CXX_index": 6, 
-                "_PTR_F_C_index": 27, 
+                "_PTR_F_C_index": 28, 
                 "_error_pattern_suffix": "_as_buffer", 
-                "_function_index": 28, 
+                "_function_index": 29, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1276,6 +1299,7 @@
                         "c_rv_decl": "const char * XSHT_rv", 
                         "c_val": "SHT_rv.c_str()", 
                         "c_var": "XSHT_rv", 
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1345,6 +1369,7 @@
                             "c_ptr": "", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SHT_rv.c_str()", 
                             "cxx_var": "SHT_rv"
@@ -1353,11 +1378,12 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 29, 
+                "_function_index": 30, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1425,12 +1451,13 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_F_C_index": 30, 
+                "_PTR_F_C_index": 31, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * XSHT_rv", 
                         "c_val": "SHT_rv.c_str()", 
                         "c_var": "XSHT_rv", 
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1502,6 +1529,7 @@
                             "c_ptr": "", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SHT_rv.c_str()", 
                             "cxx_var": "SHT_rv"
@@ -1514,11 +1542,12 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 30, 
+                "_function_index": 31, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1591,6 +1620,7 @@
                         "c_rv_decl": "const char * XSHT_rv", 
                         "c_val": "SHT_rv.c_str()", 
                         "c_var": "XSHT_rv", 
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1652,6 +1682,7 @@
                             "c_ptr": "", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SHT_rv.c_str()", 
                             "cxx_var": "SHT_rv"
@@ -1664,11 +1695,12 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 31, 
+                "_function_index": 32, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1736,9 +1768,9 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 9, 
-                "_PTR_F_C_index": 31, 
+                "_PTR_F_C_index": 32, 
                 "_error_pattern_suffix": "_as_buffer", 
-                "_function_index": 32, 
+                "_function_index": 33, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1805,12 +1837,13 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_F_C_index": 33, 
+                "_PTR_F_C_index": 34, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * XSHT_rv", 
                         "c_val": "SHT_rv.c_str()", 
                         "c_var": "XSHT_rv", 
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1882,6 +1915,7 @@
                             "c_ptr": "", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SHT_rv.c_str()", 
                             "cxx_var": "SHT_rv"
@@ -1894,11 +1928,12 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 33, 
+                "_function_index": 34, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1966,7 +2001,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_F_C_index": 34, 
+                "_PTR_F_C_index": 35, 
                 "_function_index": 11, 
                 "_subprogram": "function", 
                 "ast": {
@@ -2021,6 +2056,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SHT_rv.c_str()", 
                             "cxx_var": "SHT_rv"
@@ -2033,11 +2069,12 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 34, 
+                "_function_index": 35, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2148,6 +2185,7 @@
                             "c_ptr": " *", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SHT_rv.c_str()", 
                             "cxx_var": "SHT_rv"
@@ -2160,11 +2198,12 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 35, 
+                "_function_index": 36, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2232,9 +2271,9 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 12, 
-                "_PTR_F_C_index": 35, 
+                "_PTR_F_C_index": 36, 
                 "_error_pattern_suffix": "_as_buffer", 
-                "_function_index": 36, 
+                "_function_index": 37, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2300,13 +2339,177 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 37, 
+                "_PTR_F_C_index": 38, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_rv_decl": "const char * XSHT_rv", 
+                        "c_val": "SHT_rv->c_str()", 
+                        "c_var": "XSHT_rv", 
+                        "cxx_deref": "->", 
+                        "cxx_rv_decl": "const std::string * SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 13, 
+                "_subprogram": "function", 
+                "ast": {
+                    "args": [], 
+                    "attrs": {
+                        "len": 30
+                    }, 
+                    "const": true, 
+                    "declarator": {
+                        "name": "getString7", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "string"
+                    ]
+                }, 
+                "decl": "const string * getString7+len=30()", 
+                "declgen": "const string * getString7 +len(30)()", 
+                "doxygen": {
+                    "brief": "return a 'const string *' as character(*)"
+                }, 
+                "format": {
+                    "C_call_code": "const std::string * SHT_rv = getString7();", 
+                    "C_call_list": "", 
+                    "C_finalize_buf": "delete {C_result};", 
+                    "C_name": "STR_get_string7", 
+                    "C_post_call": "const char * XSHT_rv = SHT_rv->c_str();", 
+                    "C_prototype": "", 
+                    "C_return_code": "return XSHT_rv;", 
+                    "C_return_type": "const char *", 
+                    "F_C_call": "c_get_string7_bufferify", 
+                    "F_C_name": "c_get_string7", 
+                    "F_arg_c_call": "SHT_rv, len(SHT_rv, kind=C_INT)", 
+                    "F_arg_c_call_tab": "\tSHT_rv\tlen(SHT_rv, kind=C_INT)", 
+                    "F_arguments": "", 
+                    "F_call_code": "call c_get_string7_bufferify(\tSHT_rv\tlen(SHT_rv, kind=C_INT))", 
+                    "F_name_function": "get_string7", 
+                    "F_name_generic": "get_string7", 
+                    "F_name_impl": "get_string7", 
+                    "F_result_clause": " result(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_get_string7", 
+                    "c_const": "const ", 
+                    "c_var_len": "30", 
+                    "function_name": "getString7", 
+                    "underscore_name": "get_string7"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_PTR_C_CXX_index": 13, 
+                "_error_pattern_suffix": "_as_buffer", 
+                "_fmtargs": {
+                    "SHF_rv": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SHT_rv->c_str()", 
+                            "cxx_var": "SHT_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "f_var": "SHT_rv"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_deref": "->", 
+                        "cxx_rv_decl": "const std::string * SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 38, 
+                "_generated": "arg_to_buffer", 
+                "_subprogram": "subroutine", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "_is_result": true, 
+                                "intent": "out", 
+                                "len": "NSHF_rv"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "SHF_rv", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "string"
+                            ]
+                        }
+                    ], 
+                    "attrs": {
+                        "len": 30
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "getString7", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "const string * getString7+len=30()", 
+                "declgen": "void getString7 +len(30)(string * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "doxygen": {
+                    "brief": "return a 'const string *' as character(*)"
+                }, 
+                "format": {
+                    "C_call_code": "const std::string * SHT_rv = getString7();", 
+                    "C_call_list": "", 
+                    "C_finalize_buf": "delete {C_result};", 
+                    "C_name": "STR_get_string7_bufferify", 
+                    "C_post_call": "if (SHT_rv->empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv->c_str());\n}\n{\n    // C_finalize\n    delete SHT_rv;\n}", 
+                    "C_prototype": "char * SHF_rv, int NSHF_rv", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_name": "c_get_string7_bufferify", 
+                    "c_const": "", 
+                    "function_name": "getString7", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_string7"
+                }, 
+                "options": {
+                    "wrap_c": true, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_PTR_F_C_index": 39, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -2314,13 +2517,14 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
                 }, 
-                "_function_index": 13, 
+                "_function_index": 14, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -2388,7 +2592,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 13, 
+                "_PTR_C_CXX_index": 14, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg1": {
@@ -2397,6 +2601,7 @@
                             "c_ptr": "", 
                             "c_var": "arg1", 
                             "c_var_trim": "Larg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -2406,7 +2611,7 @@
                         }
                     }
                 }, 
-                "_function_index": 37, 
+                "_function_index": 39, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2472,13 +2677,14 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 38, 
+                "_PTR_F_C_index": 40, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SH_arg1.c_str()", 
                             "cxx_var": "SH_arg1"
@@ -2489,13 +2695,14 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1.c_str()", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "arg1", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
                 }, 
-                "_function_index": 14, 
+                "_function_index": 15, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -2564,7 +2771,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 14, 
+                "_PTR_C_CXX_index": 15, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg1": {
@@ -2573,6 +2780,7 @@
                             "c_ptr": "", 
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SH_arg1.c_str()", 
                             "cxx_var": "SH_arg1"
@@ -2583,7 +2791,7 @@
                         }
                     }
                 }, 
-                "_function_index": 38, 
+                "_function_index": 40, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2650,13 +2858,14 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 39, 
+                "_PTR_F_C_index": 41, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SH_arg1.c_str()", 
                             "cxx_var": "SH_arg1"
@@ -2667,13 +2876,14 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "SH_arg1.c_str()", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
                 }, 
-                "_function_index": 15, 
+                "_function_index": 16, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -2742,7 +2952,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 15, 
+                "_PTR_C_CXX_index": 16, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg1": {
@@ -2752,6 +2962,7 @@
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "c_var_trim": "Larg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SH_arg1.c_str()", 
                             "cxx_var": "SH_arg1"
@@ -2762,7 +2973,7 @@
                         }
                     }
                 }, 
-                "_function_index": 39, 
+                "_function_index": 41, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2830,13 +3041,14 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 40, 
+                "_PTR_F_C_index": 42, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SH_arg1.c_str()", 
                             "cxx_var": "SH_arg1"
@@ -2846,14 +3058,15 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_ptr": " *", 
-                            "c_var": "SH_arg1.c_str()", 
+                            "c_var": "SH_arg1->c_str()", 
+                            "cxx_deref": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
                 }, 
-                "_function_index": 16, 
+                "_function_index": 17, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -2921,7 +3134,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 16, 
+                "_PTR_C_CXX_index": 17, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg1": {
@@ -2931,6 +3144,7 @@
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "c_var_trim": "Larg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SH_arg1.c_str()", 
                             "cxx_var": "SH_arg1"
@@ -2941,7 +3155,7 @@
                         }
                     }
                 }, 
-                "_function_index": 40, 
+                "_function_index": 42, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -3008,13 +3222,14 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 41, 
+                "_PTR_F_C_index": 43, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "name", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name"
                         }, 
@@ -3022,13 +3237,14 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "name", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name", 
                             "py_var": "SH_Py_name"
                         }
                     }
                 }, 
-                "_function_index": 17, 
+                "_function_index": 18, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -3093,7 +3309,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 17, 
+                "_PTR_C_CXX_index": 18, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
@@ -3102,6 +3318,7 @@
                             "c_ptr": " *", 
                             "c_var": "name", 
                             "c_var_trim": "AAlen", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SH_name", 
                             "cxx_var": "SH_name"
@@ -3112,7 +3329,7 @@
                         }
                     }
                 }, 
-                "_function_index": 41, 
+                "_function_index": 43, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -3176,13 +3393,14 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 42, 
+                "_PTR_F_C_index": 44, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "name", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name"
                         }, 
@@ -3192,13 +3410,14 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "name", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name", 
                             "py_var": "SH_Py_name"
                         }
                     }
                 }, 
-                "_function_index": 18, 
+                "_function_index": 19, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -3262,7 +3481,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 18, 
+                "_PTR_C_CXX_index": 19, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
@@ -3271,6 +3490,7 @@
                             "c_ptr": " *", 
                             "c_var": "name", 
                             "c_var_len": "AAtrim", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SH_name", 
                             "cxx_var": "SH_name"
@@ -3281,7 +3501,7 @@
                         }
                     }
                 }, 
-                "_function_index": 42, 
+                "_function_index": 44, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -3350,6 +3570,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "status", 
+                            "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status"
                         }, 
@@ -3361,13 +3582,14 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "status", 
+                            "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status", 
                             "py_var": "SH_Py_status"
                         }
                     }
                 }, 
-                "_function_index": 19, 
+                "_function_index": 20, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -3430,14 +3652,15 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 43, 
+                "_PTR_F_C_index": 45, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "char SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 20, 
+                "_function_index": 21, 
                 "_subprogram": "function", 
                 "ast": {
                     "args": [], 
@@ -3486,7 +3709,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 20, 
+                "_PTR_C_CXX_index": 21, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -3495,6 +3718,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_val": "SHT_rv", 
                             "cxx_var": "SHT_rv"
@@ -3507,11 +3731,12 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "char SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 43, 
+                "_function_index": 45, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -3577,13 +3802,14 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 44, 
+                "_PTR_F_C_index": 46, 
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "dest", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "dest"
                         }, 
@@ -3593,6 +3819,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "dest", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "dest", 
                             "py_var": "SH_Py_dest"
@@ -3603,6 +3830,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "src", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "src"
                         }, 
@@ -3610,13 +3838,14 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "src", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "src", 
                             "py_var": "SH_Py_src"
                         }
                     }
                 }, 
-                "_function_index": 21, 
+                "_function_index": 22, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -3704,7 +3933,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 21, 
+                "_PTR_C_CXX_index": 22, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "dest": {
@@ -3713,6 +3942,7 @@
                             "c_ptr": " *", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SH_dest", 
                             "cxx_var": "SH_dest"
@@ -3728,6 +3958,7 @@
                             "c_ptr": " *", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SH_src", 
                             "cxx_var": "SH_src"
@@ -3738,7 +3969,7 @@
                         }
                     }
                 }, 
-                "_function_index": 44, 
+                "_function_index": 46, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -4240,17 +4471,17 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cxx_var}.empty()) {{", 
+                        "if ({cxx_var}{cxx_deref}empty()) {{", 
                         "    {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
+                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());", 
                         "}}"
                     ]
                 }
             }, 
             "c_type": "char", 
             "cxx_header": "<string>", 
-            "cxx_to_c": "{cxx_var}.c_str()", 
+            "cxx_to_c": "{cxx_var}{cxx_deref}c_str()", 
             "cxx_type": "std::string", 
             "f_c_module": {
                 "iso_c_binding": [

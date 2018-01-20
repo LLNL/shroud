@@ -486,7 +486,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_arg.cxx_var = arg_name
             fmt_arg.lua_var = 'SH_Lua_' + arg_name
             fmt_arg.c_var_len = 'L' + arg_name
-            fmt_arg.ptr = ' *' if arg.is_pointer() else ''
+            if arg.is_pointer():
+                fmt_arg.c_ptr = ' *'
+                fmt_arg.cxx_deref = '->'
+            else:
+                fmt_arg.c_ptr = ''
+                fmt_arg.cxx_deref = '.'
             attrs = arg.attrs
 
             lua_pop = None
@@ -590,6 +595,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # Compute return value
         if CXX_subprogram == 'function' and not is_ctor:
+            if ast.is_pointer():
+                fmt.cxx_deref = '->'
+            else:
+                fmt.cxx_deref = '.'
             fmt.cxx_var = fmt.LUA_result
             fmt.c_var = wformat(result_typedef.cxx_to_c, fmt)  # if C++
             fmt.LUA_used_param_state = True

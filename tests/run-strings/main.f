@@ -178,6 +178,13 @@ contains
  
 !--------------------------------------------------
 
+    ! string_result_as_arg
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_string7()
+    call assert_true( str == "Hello")
+ 
+!--------------------------------------------------
+
     call accept_string_const_reference("cat")
 !    call assert_true( rv_char == "dog")
 

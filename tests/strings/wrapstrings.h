@@ -107,6 +107,10 @@ void STR_get_string5_bufferify(char * SHF_rv, int NSHF_rv);
 
 void STR_get_string6_bufferify(char * output, int Noutput);
 
+const char * STR_get_string7();
+
+void STR_get_string7_bufferify(char * SHF_rv, int NSHF_rv);
+
 void STR_accept_string_const_reference(const char * arg1);
 
 void STR_accept_string_const_reference_bufferify(const char * arg1, int Larg1);

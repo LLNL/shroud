@@ -391,6 +391,10 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
             fmt_result.cxx_var = fmt_func.C_result
             fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_cxx(name=fmt_func.C_result)
+            if CXX_result.is_pointer():
+                fmt_result.cxx_deref = '->'
+            else:
+                fmt_result.cxx_deref = '.'
             fmt_pattern = fmt_result
 
         proto_list = []
@@ -445,8 +449,10 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_const = ''
             if arg.is_pointer():
                 fmt_arg.c_ptr = ' *'
+                fmt_arg.cxx_deref = '->'
             else:
                 fmt_arg.c_ptr = ''
+                fmt_arg.cxx_deref = '.'
             fmt_arg.cxx_type = arg_typedef.cxx_type
 
             proto_list.append(arg.gen_arg_as_c())
@@ -458,6 +464,10 @@ class Wrapc(util.WrapperMixin):
                 result_arg = arg
                 stmts = 'result' + intent_grp
                 need_wrapper = True
+                if CXX_result.is_pointer():
+                    fmt_arg.cxx_deref = '->'
+                else:
+                    fmt_arg.cxx_deref = '.'
             else:
                 arg_call = arg
                 fmt_arg.cxx_var = fmt_arg.c_var      # name in c++ call.
@@ -485,6 +495,10 @@ class Wrapc(util.WrapperMixin):
             cxx_local_var = intent_blk.get('cxx_local_var', '')
             if cxx_local_var:
                 fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
+                if cxx_local_var == 'object':
+                    fmt_arg.cxx_deref = '.'
+                elif cxx_local_var == 'pointer':
+                    fmt_arg.cxx_deref = '->'
 
             # Add code for intent of argument
             # pre_call.append('// intent=%s' % intent)
@@ -513,6 +527,7 @@ class Wrapc(util.WrapperMixin):
                     self.header_impl_include[h] = True
 
             if arg_call:
+                # Skips result_as_arg argument
                 if cxx_local_var == 'object':
                     if arg.is_pointer():
                         call_list.append('&' + fmt_arg.cxx_var)
@@ -581,7 +596,7 @@ class Wrapc(util.WrapperMixin):
                 '{CXX_template}({C_call_list});',
                 fmt_result)
 
-            if not result_arg:
+            if result_arg is None:
                 # The result is not passed back in an argument
                 c_statements = result_typedef.c_statements
                 intent_blk = c_statements.get('result', {})
@@ -591,6 +606,8 @@ class Wrapc(util.WrapperMixin):
                     have_c_local_var = True
                 else:
                     have_c_local_var = intent_blk.get('c_local_var', False)
+                    if have_c_local_var:
+                        raise RuntimeError  # XXX dead code
                 if have_c_local_var:
                     # XXX need better mangling than 'X'
                     fmt_result.c_var = 'X' + fmt_func.C_result
@@ -609,8 +626,8 @@ class Wrapc(util.WrapperMixin):
                         self.c_helper[helper] = True
 
             if subprogram == 'function':
-                # Note: A C function may be converted into a Fortran subroutine subprogram
-                # when the result is returned in an argument.
+                # Note: A C function may be converted into a Fortran subroutine
+                # subprogram when the result is returned in an argument.
                 C_return_code = 'return {};'.format(
                     wformat(return_lang, fmt_result))
 

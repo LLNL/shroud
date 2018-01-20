@@ -754,6 +754,9 @@ Argument
 c_const
     ``const`` if argument has the *const* attribute.
 
+c_ptr
+    `` * `` if argument is a pointer.
+
 c_var
     The C name of the argument.
 
@@ -772,6 +775,11 @@ c_var_trim
     Used with char/string arguments.
     Set from option **C_var_trim_template**.
 
+cxx_deref
+    Syntax to dereference argument.
+    If *cxx_local_var* is *object*, then set to ``.``;
+    if *pointer*, then set to ``->``.
+
 cxx_T
     The template parameter for std::vector arguments.
     ``std::vector<cxx_T>``
@@ -788,11 +796,6 @@ cxx_val
 f_var
     Fortran variable name for argument.
 
-c_ptr
-    `` * `` if argument is a pointer.
-
-len_var
-    TODO
 
 Result
 ------

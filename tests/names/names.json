@@ -356,6 +356,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "i", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "i"
                         }, 
@@ -367,6 +368,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "i", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "i", 
                             "py_var": "SH_Py_i"
@@ -443,6 +445,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "i", 
+                            "cxx_deref": ".", 
                             "cxx_type": "long", 
                             "cxx_var": "i"
                         }, 
@@ -454,6 +457,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "i", 
+                            "cxx_deref": ".", 
                             "cxx_type": "long", 
                             "cxx_var": "i", 
                             "py_var": "SH_Py_i"
@@ -527,6 +531,7 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "rv", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_rv"
                         }, 
@@ -534,6 +539,7 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "rv", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_rv", 
                             "py_var": "SH_Py_rv"
@@ -542,6 +548,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "int SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -620,6 +627,7 @@
                             "c_ptr": "", 
                             "c_var": "rv", 
                             "c_var_trim": "Lrv", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_rv"
                         }, 
@@ -631,6 +639,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "int SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1270,17 +1279,17 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cxx_var}.empty()) {{", 
+                        "if ({cxx_var}{cxx_deref}empty()) {{", 
                         "    {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
+                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());", 
                         "}}"
                     ]
                 }
             }, 
             "c_type": "char", 
             "cxx_header": "<string>", 
-            "cxx_to_c": "{cxx_var}.c_str()", 
+            "cxx_to_c": "{cxx_var}{cxx_deref}c_str()", 
             "cxx_type": "std::string", 
             "f_c_module": {
                 "iso_c_binding": [

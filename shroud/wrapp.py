@@ -425,8 +425,10 @@ return 1;""", fmt)
                     fmt_arg.c_const = ''
                 if arg.is_pointer():
                     fmt_arg.c_ptr = ' *'
+                    fmt_arg.cxx_deref = '->'
                 else:
                     fmt_arg.c_ptr = ''
+                    fmt_arg.cxx_deref = '.'
                 attrs = arg.attrs
 
                 arg_typedef = typemap.Typedef.lookup(arg.typename)
@@ -607,6 +609,10 @@ return 1;""", fmt)
 
         # Compute return value
         if CXX_subprogram == 'function':
+            if ast.is_pointer():
+                fmt.cxx_deref = '->'
+            else:
+                fmt.cxx_deref = '.'
             fmt.c_var = fmt.PY_result
             fmt.cxx_var = fmt.PY_result
             fmt.py_var = 'SH_Py_' + fmt.cxx_var

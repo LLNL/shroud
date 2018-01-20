@@ -30,6 +30,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "cxx_deref": ".", 
                                 "cxx_rv_decl": "Class1 * SHT_rv", 
                                 "cxx_var": "SHT_rv"
                             }
@@ -343,6 +344,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg1"
                         }, 
@@ -352,17 +354,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tonumber(L, 1)", 
                             "c_var_len": "Larg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg1", 
-                            "lua_var": "SH_Lua_arg1", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg1"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg1", 
                             "py_var": "SH_Py_arg1"
@@ -373,6 +377,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "arg2"
                         }, 
@@ -382,17 +387,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 2, 
+                            "c_ptr": "", 
                             "c_var": "lua_tointeger(L, 2)", 
                             "c_var_len": "Larg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "arg2", 
-                            "lua_var": "SH_Lua_arg2", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg2"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "arg2", 
                             "py_var": "SH_Py_arg2"
@@ -401,6 +408,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "double SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -486,6 +494,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "len", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "len"
                         }, 
@@ -499,6 +508,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "result", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "result"
                         }, 
@@ -512,6 +522,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "values", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "values"
                         }, 
@@ -626,6 +637,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "long long", 
                             "cxx_var": "arg1"
                         }, 
@@ -637,6 +649,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "long long", 
                             "cxx_var": "arg1", 
                             "py_var": "SH_Py_arg1"
@@ -645,6 +658,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "long long SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -718,6 +732,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg"
                         }, 
@@ -727,17 +742,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_toboolean(L, 1)", 
                             "c_var_len": "Larg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg", 
-                            "lua_var": "SH_Lua_arg", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg", 
                             "py_var": "SH_Py_arg"
@@ -746,6 +763,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "bool SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -817,6 +835,7 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg1"
                         }, 
@@ -830,6 +849,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "arg2", 
+                            "cxx_deref": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg2"
                         }, 
@@ -843,6 +863,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "arg3", 
+                            "cxx_deref": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg3"
                         }, 
@@ -955,17 +976,19 @@
                     "arg1": {
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tostring(L, 1)", 
                             "c_var_len": "Larg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "arg1", 
-                            "lua_var": "SH_Lua_arg1", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg1"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
                             "py_var": "SH_Py_arg1"
@@ -974,17 +997,19 @@
                     "arg2": {
                         "fmtl": {
                             "LUA_index": 2, 
+                            "c_ptr": "", 
                             "c_var": "lua_tostring(L, 2)", 
                             "c_var_len": "Larg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "arg2", 
-                            "lua_var": "SH_Lua_arg2", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg2"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg2", 
                             "py_var": "SH_Py_arg2"
@@ -1082,6 +1107,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SHT_rv.c_str()", 
                             "cxx_var": "SHT_rv"
@@ -1097,6 +1123,7 @@
                             "c_ptr": "", 
                             "c_var": "arg1", 
                             "c_var_trim": "Larg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -1111,6 +1138,7 @@
                             "c_ptr": "", 
                             "c_var": "arg2", 
                             "c_var_trim": "Larg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg2"
                         }, 
@@ -1122,6 +1150,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1237,22 +1266,25 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tostring(L, 1)", 
                             "c_var_len": "Larg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "arg1", 
-                            "lua_var": "SH_Lua_arg1", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg1"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
                             "py_var": "SH_Py_arg1"
@@ -1263,22 +1295,25 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg2"
                         }, 
                         "fmtl": {
                             "LUA_index": 2, 
+                            "c_ptr": "", 
                             "c_var": "lua_tostring(L, 2)", 
                             "c_var_len": "Larg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "arg2", 
-                            "lua_var": "SH_Lua_arg2", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg2"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg2", 
                             "py_var": "SH_Py_arg2"
@@ -1290,6 +1325,7 @@
                         "c_rv_decl": "const char * XSHT_rv", 
                         "c_val": "SHT_rv.c_str()", 
                         "c_var": "XSHT_rv", 
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1388,6 +1424,7 @@
                             "c_ptr": "", 
                             "c_var": "arg1", 
                             "c_var_trim": "Larg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -1402,6 +1439,7 @@
                             "c_ptr": "", 
                             "c_var": "arg2", 
                             "c_var_trim": "Larg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg2"
                         }, 
@@ -1416,6 +1454,7 @@
                             "c_ptr": "", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SHT_rv.c_str()", 
                             "cxx_var": "SHT_rv"
@@ -1428,6 +1467,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1644,6 +1684,7 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "double SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1710,6 +1751,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg1"
                         }, 
@@ -1721,6 +1763,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "double SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1807,6 +1850,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg1"
                         }, 
@@ -1816,17 +1860,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tonumber(L, 1)", 
                             "c_var_len": "Larg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg1", 
-                            "lua_var": "SH_Lua_arg1", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg1"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg1", 
                             "py_var": "SH_Py_arg1"
@@ -1837,6 +1883,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg2"
                         }, 
@@ -1846,17 +1893,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 2, 
+                            "c_ptr": "", 
                             "c_var": "lua_toboolean(L, 2)", 
                             "c_var_len": "Larg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg2", 
-                            "lua_var": "SH_Lua_arg2", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg2"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg2", 
                             "py_var": "SH_Py_arg2"
@@ -1865,6 +1914,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "double SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1969,22 +2019,25 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "name", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tostring(L, 1)", 
                             "c_var_len": "Lname", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "name", 
-                            "lua_var": "SH_Lua_name", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_name"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "name", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name", 
                             "py_var": "SH_Py_name"
@@ -2072,6 +2125,7 @@
                             "c_ptr": "", 
                             "c_var": "name", 
                             "c_var_trim": "Lname", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
                         }, 
@@ -2154,6 +2208,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "indx", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "indx"
                         }, 
@@ -2163,17 +2218,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tointeger(L, 1)", 
                             "c_var_len": "Lindx", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "indx", 
-                            "lua_var": "SH_Lua_indx", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_indx"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "indx", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "indx", 
                             "py_var": "SH_Py_indx"
@@ -2298,6 +2355,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "arg"
                         }, 
@@ -2379,6 +2437,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg"
                         }, 
@@ -2494,6 +2553,7 @@
                 "_CXX_return_templated": true, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "int SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -2553,6 +2613,7 @@
                 "_CXX_return_templated": true, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "double SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -2615,6 +2676,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg"
                         }, 
@@ -2624,17 +2686,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tonumber(L, 1)", 
                             "c_var_len": "Larg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg", 
-                            "lua_var": "SH_Lua_arg", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg", 
                             "py_var": "SH_Py_arg"
@@ -2879,22 +2943,25 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg2"
                         }, 
                         "fmtl": {
                             "LUA_index": 2, 
+                            "c_ptr": "", 
                             "c_var": "lua_tonumber(L, 2)", 
                             "c_var_len": "Larg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg2", 
-                            "lua_var": "SH_Lua_arg2", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg2"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg2", 
                             "py_var": "SH_Py_arg2"
@@ -2905,22 +2972,25 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "name", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tostring(L, 1)", 
                             "c_var_len": "Lname", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "name", 
-                            "lua_var": "SH_Lua_name", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_name"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "name", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name", 
                             "py_var": "SH_Py_name"
@@ -3183,6 +3253,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg2"
                         }, 
@@ -3197,6 +3268,7 @@
                             "c_ptr": "", 
                             "c_var": "name", 
                             "c_var_trim": "Lname", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
                         }, 
@@ -3300,6 +3372,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "num", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "num"
                         }, 
@@ -3311,6 +3384,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "int SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -3396,6 +3470,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "num", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "num"
                         }, 
@@ -3409,6 +3484,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "offset", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "offset"
                         }, 
@@ -3420,6 +3496,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "int SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -3524,6 +3601,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "num", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "num"
                         }, 
@@ -3533,17 +3611,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tointeger(L, 1)", 
                             "c_var_len": "Lnum", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "num", 
-                            "lua_var": "SH_Lua_num", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_num"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "num", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "num", 
                             "py_var": "SH_Py_num"
@@ -3554,6 +3634,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "offset", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "offset"
                         }, 
@@ -3563,17 +3644,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 2, 
+                            "c_ptr": "", 
                             "c_var": "lua_tointeger(L, 2)", 
                             "c_var_len": "Loffset", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "offset", 
-                            "lua_var": "SH_Lua_offset", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_offset"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "offset", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "offset", 
                             "py_var": "SH_Py_offset"
@@ -3584,6 +3667,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "stride", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "stride"
                         }, 
@@ -3593,17 +3677,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 3, 
+                            "c_ptr": "", 
                             "c_var": "lua_tointeger(L, 3)", 
                             "c_var_len": "Lstride", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "stride", 
-                            "lua_var": "SH_Lua_stride", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_stride"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "stride", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "stride", 
                             "py_var": "SH_Py_stride"
@@ -3612,6 +3698,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "int SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -3729,6 +3816,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "num", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "num"
                         }, 
@@ -3742,6 +3830,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "type", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "type"
                         }, 
@@ -3753,6 +3842,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "int SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -3847,6 +3937,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "num", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "num"
                         }, 
@@ -3860,6 +3951,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "offset", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "offset"
                         }, 
@@ -3873,6 +3965,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "type", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "type"
                         }, 
@@ -3884,6 +3977,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "int SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -3997,6 +4091,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "num", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "num"
                         }, 
@@ -4006,17 +4101,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 2, 
+                            "c_ptr": "", 
                             "c_var": "lua_tointeger(L, 2)", 
                             "c_var_len": "Lnum", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "num", 
-                            "lua_var": "SH_Lua_num", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_num"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "num", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "num", 
                             "py_var": "SH_Py_num"
@@ -4027,6 +4124,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "offset", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "offset"
                         }, 
@@ -4036,17 +4134,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 3, 
+                            "c_ptr": "", 
                             "c_var": "lua_tointeger(L, 3)", 
                             "c_var_len": "Loffset", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "offset", 
-                            "lua_var": "SH_Lua_offset", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_offset"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "offset", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "offset", 
                             "py_var": "SH_Py_offset"
@@ -4057,6 +4157,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "stride", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "stride"
                         }, 
@@ -4066,17 +4167,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 4, 
+                            "c_ptr": "", 
                             "c_var": "lua_tointeger(L, 4)", 
                             "c_var_len": "Lstride", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "stride", 
-                            "lua_var": "SH_Lua_stride", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_stride"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "stride", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "stride", 
                             "py_var": "SH_Py_stride"
@@ -4087,6 +4190,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "type", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "type"
                         }, 
@@ -4096,17 +4200,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tonumber(L, 1)", 
                             "c_var_len": "Ltype", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "type", 
-                            "lua_var": "SH_Lua_type", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_type"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "type", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "type", 
                             "py_var": "SH_Py_type"
@@ -4115,6 +4221,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "int SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -4235,6 +4342,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "TypeID", 
                             "cxx_var": "arg"
                         }, 
@@ -4244,17 +4352,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tointeger(L, 1)", 
                             "c_var_len": "Larg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "TypeID", 
                             "cxx_var": "arg", 
-                            "lua_var": "SH_Lua_arg", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "TypeID", 
                             "cxx_var": "arg", 
                             "py_var": "SH_Py_arg"
@@ -4263,6 +4373,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "TypeID SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -4334,6 +4445,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "EnumTypeID", 
                             "cxx_var": "arg"
                         }, 
@@ -4343,17 +4455,19 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
+                            "c_ptr": "", 
                             "c_var": "lua_tointeger(L, 1)", 
                             "c_var_len": "Larg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "EnumTypeID", 
                             "cxx_var": "arg", 
-                            "lua_var": "SH_Lua_arg", 
-                            "ptr": ""
+                            "lua_var": "SH_Lua_arg"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "EnumTypeID", 
                             "cxx_var": "arg", 
                             "py_var": "SH_Py_arg"
@@ -4365,6 +4479,7 @@
                         "c_rv_decl": "int XSHT_rv", 
                         "c_val": "static_cast<int>(SHT_rv)", 
                         "c_var": "XSHT_rv", 
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "EnumTypeID SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -4437,6 +4552,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "arg1", 
+                            "cxx_deref": "->", 
                             "cxx_type": "Class1", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -4448,6 +4564,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "arg1", 
+                            "cxx_deref": "->", 
                             "cxx_type": "Class1", 
                             "cxx_var": "arg1", 
                             "py_var": "SH_Py_arg1"
@@ -4592,6 +4709,7 @@
                             "c_var": "arg", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "int", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "SH_arg"
                         }, 
@@ -4603,6 +4721,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "int SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -4742,6 +4861,7 @@
                             "c_var": "arg", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "int", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_val": "SH_arg", 
                             "cxx_var": "SH_arg"
@@ -4888,6 +5008,7 @@
                             "c_var": "arg", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "int", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_val": "SH_arg", 
                             "cxx_var": "SH_arg"
@@ -5040,6 +5161,7 @@
                             "c_var_len": "Narg", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "std::string", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg"
                         }, 
@@ -5051,6 +5173,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "int SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -5204,6 +5327,7 @@
                             "c_var_len": "Narg", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "std::string", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SH_arg.c_str()", 
                             "cxx_var": "SH_arg"
@@ -5360,6 +5484,7 @@
                             "c_var_len": "Narg", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "std::string", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SH_arg.c_str()", 
                             "cxx_var": "SH_arg"
@@ -5444,6 +5569,7 @@
                         "c_rv_decl": "const char * XSHT_rv", 
                         "c_val": "SHT_rv.c_str()", 
                         "c_var": "XSHT_rv", 
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -5512,6 +5638,7 @@
                             "c_ptr": "", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_val": "SHT_rv.c_str()", 
                             "cxx_var": "SHT_rv"
@@ -5520,6 +5647,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -6094,17 +6222,17 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cxx_var}.empty()) {{", 
+                        "if ({cxx_var}{cxx_deref}empty()) {{", 
                         "    {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
+                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());", 
                         "}}"
                     ]
                 }
             }, 
             "c_type": "char", 
             "cxx_header": "<string>", 
-            "cxx_to_c": "{cxx_var}.c_str()", 
+            "cxx_to_c": "{cxx_var}{cxx_deref}c_str()", 
             "cxx_type": "std::string", 
             "f_c_module": {
                 "iso_c_binding": [

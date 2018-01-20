@@ -475,7 +475,7 @@ def initialize():
             'string',
             cxx_type='std::string',
             cxx_header='<string>',
-            cxx_to_c='{cxx_var}.c_str()',  # . or ->
+            cxx_to_c='{cxx_var}{cxx_deref}c_str()',  # cxx_deref is . or ->
 
             c_type='char',    # XXX - char *
 
@@ -548,10 +548,10 @@ def initialize():
                     cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
                     post_call=[
-                        'if ({cxx_var}.empty()) {{',
+                        'if ({cxx_var}{cxx_deref}empty()) {{',
                         '    {stdlib}memset({c_var}, \' \', {c_var_len});',
                         '}} else {{',
-                        '    ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});',
+                        '    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());',
                         '}}',
                     ],
                 ),

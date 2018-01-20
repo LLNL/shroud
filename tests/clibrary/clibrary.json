@@ -144,6 +144,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg1"
                         }, 
@@ -157,6 +158,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg2", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "arg2"
                         }, 
@@ -168,6 +170,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "double SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -250,6 +253,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "len", 
+                            "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "len"
                         }, 
@@ -263,6 +267,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "result", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "result"
                         }, 
@@ -276,6 +281,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "values", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "values"
                         }, 
@@ -387,6 +393,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg"
                         }, 
@@ -398,6 +405,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": ".", 
                         "cxx_rv_decl": "bool SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -466,6 +474,7 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
+                            "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg1"
                         }, 
@@ -479,6 +488,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "arg2", 
+                            "cxx_deref": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg2"
                         }, 
@@ -492,6 +502,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "arg3", 
+                            "cxx_deref": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg3"
                         }, 
@@ -603,6 +614,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "arg1", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "arg1"
                         }
@@ -612,6 +624,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "arg2", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "arg2"
                         }
@@ -619,6 +632,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": "->", 
                         "cxx_rv_decl": "char * SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -723,6 +737,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SHT_rv", 
                             "cxx_var": "SHT_rv"
@@ -738,6 +753,7 @@
                             "c_ptr": " *", 
                             "c_var": "arg1", 
                             "c_var_trim": "Larg1", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SH_arg1", 
                             "cxx_var": "SH_arg1"
@@ -753,6 +769,7 @@
                             "c_ptr": " *", 
                             "c_var": "arg2", 
                             "c_var_trim": "Larg2", 
+                            "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_val": "SH_arg2", 
                             "cxx_var": "SH_arg2"
@@ -765,6 +782,7 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "cxx_deref": "->", 
                         "cxx_rv_decl": "char * SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
@@ -1323,17 +1341,17 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cxx_var}.empty()) {{", 
+                        "if ({cxx_var}{cxx_deref}empty()) {{", 
                         "    {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
+                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());", 
                         "}}"
                     ]
                 }
             }, 
             "c_type": "char", 
             "cxx_header": "<string>", 
-            "cxx_to_c": "{cxx_var}.c_str()", 
+            "cxx_to_c": "{cxx_var}{cxx_deref}c_str()", 
             "cxx_type": "std::string", 
             "f_c_module": {
                 "iso_c_binding": [

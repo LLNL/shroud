@@ -24,6 +24,7 @@
                                     "c_const": "", 
                                     "c_ptr": "", 
                                     "c_var": "arg1", 
+                                    "cxx_deref": ".", 
                                     "cxx_type": "int", 
                                     "cxx_var": "arg1"
                                 }, 
@@ -120,6 +121,7 @@
                                     "c_const": "", 
                                     "c_ptr": "", 
                                     "c_var": "comm", 
+                                    "cxx_deref": ".", 
                                     "cxx_type": "MPI_Comm", 
                                     "cxx_var": "comm"
                                 }, 
@@ -195,6 +197,7 @@
                                     "c_const": "", 
                                     "c_ptr": " *", 
                                     "c_var": "c2", 
+                                    "cxx_deref": "->", 
                                     "cxx_type": "Class1", 
                                     "cxx_var": "SH_c2"
                                 }, 
@@ -951,17 +954,17 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cxx_var}.empty()) {{", 
+                        "if ({cxx_var}{cxx_deref}empty()) {{", 
                         "    {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
+                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());", 
                         "}}"
                     ]
                 }
             }, 
             "c_type": "char", 
             "cxx_header": "<string>", 
-            "cxx_to_c": "{cxx_var}.c_str()", 
+            "cxx_to_c": "{cxx_var}{cxx_deref}c_str()", 
             "cxx_type": "std::string", 
             "f_c_module": {
                 "iso_c_binding": [

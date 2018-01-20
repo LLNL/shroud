@@ -299,6 +299,23 @@ PY_get_string6(
 // splicer end function.get_string6
 }
 
+static char PY_get_string7__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_get_string7(
+  PyObject *,  // self unused
+  PyObject *,  // args unused
+  PyObject *)  // kwds unused
+{
+// splicer begin function.get_string7
+    const std::string * rv = getString7();
+    PyObject * SH_Py_rv = PyString_FromString(rv->c_str());
+    return (PyObject *) SH_Py_rv;
+// splicer end function.get_string7
+}
+
 static char PY_accept_string_const_reference__doc__[] =
 "documentation"
 ;
@@ -400,7 +417,7 @@ PY_accept_string_pointer(
     }
     std::string SH_arg1(arg1);
     acceptStringPointer(&SH_arg1);
-    PyObject * SH_Py_arg1 = PyString_FromString(SH_arg1.c_str());
+    PyObject * SH_Py_arg1 = PyString_FromString(SH_arg1->c_str());
     return (PyObject *) *SH_Py_arg1;
 // splicer end function.accept_string_pointer
 }
@@ -538,6 +555,7 @@ static PyMethodDef PY_methods[] = {
 {"getString2_empty", (PyCFunction)PY_get_string2_empty, METH_NOARGS, PY_get_string2_empty__doc__},
 {"getString5", (PyCFunction)PY_get_string5, METH_NOARGS, PY_get_string5__doc__},
 {"getString6", (PyCFunction)PY_get_string6, METH_NOARGS, PY_get_string6__doc__},
+{"getString7", (PyCFunction)PY_get_string7, METH_NOARGS, PY_get_string7__doc__},
 {"acceptStringConstReference", (PyCFunction)PY_accept_string_const_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_const_reference__doc__},
 {"acceptStringReferenceOut", (PyCFunction)PY_accept_string_reference_out, METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference_out__doc__},
 {"acceptStringReference", (PyCFunction)PY_accept_string_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference__doc__},

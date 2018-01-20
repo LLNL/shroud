@@ -241,6 +241,22 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: Noutput
         end subroutine c_get_string6_bufferify
 
+        function c_get_string7() &
+                result(SHT_rv) &
+                bind(C, name="STR_get_string7")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_get_string7
+
+        subroutine c_get_string7_bufferify(SHF_rv, NSHF_rv) &
+                bind(C, name="STR_get_string7_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
+            integer(C_INT), value, intent(IN) :: NSHF_rv
+        end subroutine c_get_string7_bufferify
+
         subroutine c_accept_string_const_reference(arg1) &
                 bind(C, name="STR_accept_string_const_reference")
             use iso_c_binding, only : C_CHAR
@@ -480,7 +496,7 @@ contains
 
     ! void getChar3(char * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=28
+    ! function_index=29
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -528,7 +544,7 @@ contains
 
     ! void getString3(string & output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=32
+    ! function_index=33
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -579,7 +595,7 @@ contains
 
     ! void getString6(string * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=36
+    ! function_index=37
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -594,9 +610,26 @@ contains
         ! splicer end function.get_string6
     end subroutine get_string6
 
-    ! void acceptStringConstReference(const std::string & arg1 +intent(in))
+    ! const string * getString7 +len(30)()
     ! arg_to_buffer
     ! function_index=13
+    !>
+    !! \brief return a 'const string *' as character(*)
+    !!
+    !<
+    function get_string7() result(SHT_rv)
+        use iso_c_binding, only : C_CHAR, C_INT
+        character(kind=C_CHAR, len=30) :: SHT_rv
+        ! splicer begin function.get_string7
+        call c_get_string7_bufferify(  &
+            SHT_rv,  &
+            len(SHT_rv, kind=C_INT))
+        ! splicer end function.get_string7
+    end function get_string7
+
+    ! void acceptStringConstReference(const std::string & arg1 +intent(in))
+    ! arg_to_buffer
+    ! function_index=14
     !>
     !! \brief Accept a const string reference
     !!
@@ -616,7 +649,7 @@ contains
 
     ! void acceptStringReferenceOut(std::string & arg1 +intent(out))
     ! arg_to_buffer
-    ! function_index=14
+    ! function_index=15
     !>
     !! \brief Accept a string reference
     !!
@@ -636,7 +669,7 @@ contains
 
     ! void acceptStringReference(std::string & arg1 +intent(inout))
     ! arg_to_buffer
-    ! function_index=15
+    ! function_index=16
     !>
     !! \brief Accept a string reference
     !!
@@ -657,7 +690,7 @@ contains
 
     ! void acceptStringPointer(std::string * arg1 +intent(inout))
     ! arg_to_buffer
-    ! function_index=16
+    ! function_index=17
     !>
     !! \brief Accept a string pointer
     !!
@@ -675,7 +708,7 @@ contains
 
     ! void explicit1(char * name +intent(in)+len_trim(AAlen))
     ! arg_to_buffer
-    ! function_index=17
+    ! function_index=18
     subroutine explicit1(name)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
@@ -688,7 +721,7 @@ contains
 
     ! void explicit2(char * name +intent(out)+len(AAtrim))
     ! arg_to_buffer
-    ! function_index=18
+    ! function_index=19
     subroutine explicit2(name)
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: name
@@ -701,7 +734,7 @@ contains
 
     ! char_scalar CreturnChar()
     ! arg_to_buffer
-    ! function_index=20
+    ! function_index=21
     !>
     !! \brief return a char argument (non-pointer), extern "C"
     !!
@@ -718,7 +751,7 @@ contains
 
     ! void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))
     ! arg_to_buffer
-    ! function_index=21
+    ! function_index=22
     !>
     !! \brief strcpy like behavior
     !!
