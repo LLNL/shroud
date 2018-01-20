@@ -210,7 +210,7 @@ format
 fortran_generic
     A dictionary of lists that define generic functions which will be
     created.  This allows different types to be passed to the function.
-    This feature is provided by C which will promote arguments.
+    This feature is provided by C which will promote arguments::
 
       decl: void Function9(double arg)
       fortran_generic:
