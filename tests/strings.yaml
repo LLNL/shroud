@@ -140,6 +140,7 @@ functions:
     F_string_result_as_arg: output
 
 ########################################
+# return std::string *
 
 ##-- decl: string * getString7+len=30()
 ##-#  C_error_pattern: C_invalid_name

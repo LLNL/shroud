@@ -418,7 +418,8 @@ int TUT_enumfunc(int arg)
 void TUT_useclass(const TUT_class1 * arg1)
 {
 // splicer begin function.useclass
-    useclass(static_cast<const Class1 *>(static_cast<const void *>(arg1)));
+    const Class1 *SH_arg1 = static_cast<const Class1 *>(static_cast<const void *>(arg1));
+    useclass(SH_arg1);
     return;
 // splicer end function.useclass
 }

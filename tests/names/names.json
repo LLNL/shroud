@@ -824,6 +824,14 @@
             "PY_from_object": "PP_Names_from_Object", 
             "PY_to_object": "PP_Names_to_Object", 
             "base": "wrapped", 
+            "c_statements": {
+                "intent_in": {
+                    "cxx_local_var": true, 
+                    "pre_call": [
+                        "{c_const}Names{c_ptr}{cxx_var} = static_cast<{c_const}Names{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                    ]
+                }
+            }, 
             "c_to_cxx": "static_cast<{c_const}Names{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
             "c_type": "TES_names", 
             "cxx_to_c": "static_cast<{c_const}TES_names *>(static_cast<{c_const}void *>({cxx_var}))", 
@@ -873,6 +881,14 @@
             "PY_from_object": "PP_Names2_from_Object", 
             "PY_to_object": "PP_Names2_to_Object", 
             "base": "wrapped", 
+            "c_statements": {
+                "intent_in": {
+                    "cxx_local_var": true, 
+                    "pre_call": [
+                        "{c_const}Names2{c_ptr}{cxx_var} = static_cast<{c_const}Names2{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                    ]
+                }
+            }, 
             "c_to_cxx": "static_cast<{c_const}Names2{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
             "c_type": "TES_names2", 
             "cxx_to_c": "static_cast<{c_const}TES_names2 *>(static_cast<{c_const}void *>({cxx_var}))", 

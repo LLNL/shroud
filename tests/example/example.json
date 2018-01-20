@@ -2382,7 +2382,7 @@
                                     "c_ptr": " *", 
                                     "c_var": "in", 
                                     "cxx_type": "ExClass1", 
-                                    "cxx_var": "in"
+                                    "cxx_var": "SH_in"
                                 }, 
                                 "fmtf": {
                                     "c_var": "in", 
@@ -2451,11 +2451,11 @@
                         "decl": "ExClass1 *get_class1(const ExClass1 *in)", 
                         "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "ExClass1 * SHT_rv = SH_this->get_class1(static_cast<const ExClass1 *>(static_cast<const void *>(in)));", 
-                            "C_call_list": "static_cast<const ExClass1 *>(static_cast<const void *>(in))", 
+                            "C_call_code": "ExClass1 * SHT_rv = SH_this->get_class1(SH_in);", 
+                            "C_call_list": "SH_in", 
                             "C_name": "AA_exclass2_get_class1", 
                             "C_post_call": "AA_exclass1 * XSHT_rv = static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));\nconst ExClass1 *SH_in = static_cast<const ExClass1 *>(static_cast<const void *>(in));", 
                             "C_prototype": "AA_exclass2 * self, const AA_exclass1 * in", 
                             "C_return_code": "return XSHT_rv;", 
                             "C_return_type": "AA_exclass1 *", 
@@ -5109,7 +5109,7 @@
                             "c_ptr": " *", 
                             "c_var": "grp", 
                             "cxx_type": "axom::sidre::Group", 
-                            "cxx_var": "SH_grp", 
+                            "cxx_var": "grp", 
                             "py_var": "SH_Py_grp"
                         }
                     }
@@ -5156,7 +5156,7 @@
                     "C_call_code": "testgroup1(SH_grp);", 
                     "C_call_list": "SH_grp", 
                     "C_name": "AA_testgroup1", 
-                    "C_pre_call": "axom::sidre::Group * SH_grp = static_cast<axom::sidre::Group *>(static_cast<void *>(grp));", 
+                    "C_pre_call": "axom::sidre::Group *SH_grp = static_cast<axom::sidre::Group *>(static_cast<void *>(grp));", 
                     "C_prototype": "SIDRE_group * grp", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5196,7 +5196,7 @@
                             "c_ptr": " *", 
                             "c_var": "grp", 
                             "cxx_type": "axom::sidre::Group", 
-                            "cxx_var": "SH_grp", 
+                            "cxx_var": "grp", 
                             "py_var": "SH_Py_grp"
                         }
                     }
@@ -5243,7 +5243,7 @@
                     "C_call_code": "testgroup2(SH_grp);", 
                     "C_call_list": "SH_grp", 
                     "C_name": "AA_testgroup2", 
-                    "C_pre_call": "const axom::sidre::Group * SH_grp = static_cast<const axom::sidre::Group *>(static_cast<const void *>(grp));", 
+                    "C_pre_call": "const axom::sidre::Group *SH_grp = static_cast<const axom::sidre::Group *>(static_cast<const void *>(grp));", 
                     "C_prototype": "const SIDRE_group * grp", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5332,10 +5332,17 @@
             "PY_PyTypeObject": "FillInTypeForGroup", 
             "base": "wrapped", 
             "c_header": "sidre/wrapGroup.h", 
+            "c_statements": {
+                "intent_in": {
+                    "cxx_local_var": true, 
+                    "pre_call": [
+                        "{c_const}axom::sidre::Group{c_ptr}{cxx_var} = static_cast<{c_const}axom::sidre::Group{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                    ]
+                }
+            }, 
             "c_to_cxx": "static_cast<{c_const}axom::sidre::Group{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
             "c_type": "SIDRE_group", 
             "cxx_header": "sidre/Group.hpp", 
-            "cxx_local_var": true, 
             "cxx_to_c": "static_cast<{c_const}SIDRE_group *>(static_cast<{c_const}void *>({cxx_var}))", 
             "cxx_type": "axom::sidre::Group", 
             "f_c_module": {
@@ -5383,6 +5390,14 @@
             "PY_from_object": "PP_ExClass1_from_Object", 
             "PY_to_object": "PP_ExClass1_to_Object", 
             "base": "wrapped", 
+            "c_statements": {
+                "intent_in": {
+                    "cxx_local_var": true, 
+                    "pre_call": [
+                        "{c_const}ExClass1{c_ptr}{cxx_var} = static_cast<{c_const}ExClass1{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                    ]
+                }
+            }, 
             "c_to_cxx": "static_cast<{c_const}ExClass1{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
             "c_type": "AA_exclass1", 
             "cxx_to_c": "static_cast<{c_const}AA_exclass1 *>(static_cast<{c_const}void *>({cxx_var}))", 
@@ -5432,6 +5447,14 @@
             "PY_from_object": "PP_ExClass2_from_Object", 
             "PY_to_object": "PP_ExClass2_to_Object", 
             "base": "wrapped", 
+            "c_statements": {
+                "intent_in": {
+                    "cxx_local_var": true, 
+                    "pre_call": [
+                        "{c_const}ExClass2{c_ptr}{cxx_var} = static_cast<{c_const}ExClass2{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                    ]
+                }
+            }, 
             "c_to_cxx": "static_cast<{c_const}ExClass2{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
             "c_type": "AA_exclass2", 
             "cxx_to_c": "static_cast<{c_const}AA_exclass2 *>(static_cast<{c_const}void *>({cxx_var}))", 
@@ -5477,6 +5500,14 @@
             "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "wrapped", 
+            "c_statements": {
+                "intent_in": {
+                    "cxx_local_var": true, 
+                    "pre_call": [
+                        "{c_const}ExClass3{c_ptr}{cxx_var} = static_cast<{c_const}ExClass3{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                    ]
+                }
+            }, 
             "c_to_cxx": "static_cast<{c_const}ExClass3{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
             "c_type": "AA_exclass3", 
             "cxx_to_c": "static_cast<{c_const}AA_exclass3 *>(static_cast<{c_const}void *>({cxx_var}))", 

@@ -196,7 +196,7 @@
                                     "c_ptr": " *", 
                                     "c_var": "c2", 
                                     "cxx_type": "Class1", 
-                                    "cxx_var": "c2"
+                                    "cxx_var": "SH_c2"
                                 }, 
                                 "fmtf": {
                                     "c_var": "c2", 
@@ -243,10 +243,10 @@
                         "decl": "void method2(Class1 * c2)", 
                         "declgen": "void method2(Class1 * c2 +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "SH_this->method2(static_cast<Class1 *>(static_cast<void *>(c2)));", 
-                            "C_call_list": "static_cast<Class1 *>(static_cast<void *>(c2))", 
+                            "C_call_code": "SH_this->method2(SH_c2);", 
+                            "C_call_list": "SH_c2", 
                             "C_name": "DEF_class2_method2", 
-                            "C_pre_call": "Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));\nClass1 *SH_c2 = static_cast<Class1 *>(static_cast<void *>(c2));", 
                             "C_prototype": "DEF_class2 * self, DEF_class1 * c2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -477,6 +477,14 @@
             "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "wrapped", 
+            "c_statements": {
+                "intent_in": {
+                    "cxx_local_var": true, 
+                    "pre_call": [
+                        "{c_const}Class1{c_ptr}{cxx_var} = static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                    ]
+                }
+            }, 
             "c_to_cxx": "static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
             "c_type": "DEF_class1", 
             "cxx_to_c": "static_cast<{c_const}DEF_class1 *>(static_cast<{c_const}void *>({cxx_var}))", 
@@ -522,6 +530,14 @@
             "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "wrapped", 
+            "c_statements": {
+                "intent_in": {
+                    "cxx_local_var": true, 
+                    "pre_call": [
+                        "{c_const}Class2{c_ptr}{cxx_var} = static_cast<{c_const}Class2{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                    ]
+                }
+            }, 
             "c_to_cxx": "static_cast<{c_const}Class2{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
             "c_type": "DEF_class2", 
             "cxx_to_c": "static_cast<{c_const}DEF_class2 *>(static_cast<{c_const}void *>({cxx_var}))", 

@@ -4438,7 +4438,7 @@
                             "c_ptr": " *", 
                             "c_var": "arg1", 
                             "cxx_type": "Class1", 
-                            "cxx_var": "arg1"
+                            "cxx_var": "SH_arg1"
                         }, 
                         "fmtf": {
                             "c_var": "arg1", 
@@ -4493,9 +4493,10 @@
                 "decl": "void useclass(const Class1 *arg1)", 
                 "declgen": "void useclass(const Class1 * arg1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "useclass(static_cast<const Class1 *>(static_cast<const void *>(arg1)));", 
-                    "C_call_list": "static_cast<const Class1 *>(static_cast<const void *>(arg1))", 
+                    "C_call_code": "useclass(SH_arg1);", 
+                    "C_call_list": "SH_arg1", 
                     "C_name": "TUT_useclass", 
+                    "C_pre_call": "const Class1 *SH_arg1 = static_cast<const Class1 *>(static_cast<const void *>(arg1));", 
                     "C_prototype": "const TUT_class1 * arg1", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5656,6 +5657,14 @@
             "PY_from_object": "PP_Class1_from_Object", 
             "PY_to_object": "PP_Class1_to_Object", 
             "base": "wrapped", 
+            "c_statements": {
+                "intent_in": {
+                    "cxx_local_var": true, 
+                    "pre_call": [
+                        "{c_const}Class1{c_ptr}{cxx_var} = static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                    ]
+                }
+            }, 
             "c_to_cxx": "static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
             "c_type": "TUT_class1", 
             "cxx_to_c": "static_cast<{c_const}TUT_class1 *>(static_cast<{c_const}void *>({cxx_var}))", 

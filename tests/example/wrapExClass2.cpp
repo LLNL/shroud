@@ -245,7 +245,8 @@ AA_exclass1 * AA_exclass2_get_class1(AA_exclass2 * self, const AA_exclass1 * in)
 {
 // splicer begin class.ExClass2.method.get_class1
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));
-    ExClass1 * SHT_rv = SH_this->get_class1(static_cast<const ExClass1 *>(static_cast<const void *>(in)));
+    const ExClass1 *SH_in = static_cast<const ExClass1 *>(static_cast<const void *>(in));
+    ExClass1 * SHT_rv = SH_this->get_class1(SH_in);
     AA_exclass1 * XSHT_rv = static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));
     return XSHT_rv;
 // splicer end class.ExClass2.method.get_class1
