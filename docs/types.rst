@@ -282,7 +282,7 @@ The type map::
                 intent_in_buf:
                     buf_args:
                     - len_trim
-                    cxx_local_var: True
+                    cxx_local_var: pointer
                     cxx_header: <cstring>
                     pre_call:
                       - char * {cxx_var} = new char [{c_var_trim} + 1];
@@ -294,7 +294,7 @@ The type map::
                     buf_args:
                     - len
                     c_helper: ShroudStrCopy
-                    cxx_local_var: True
+                    cxx_local_var: pointer
                     pre_call:
                       - char * {cxx_var} = new char [{c_var_len} + 1];
                     post_call:
@@ -305,7 +305,7 @@ The type map::
                     - len_trim
                     - len
                     c_helper: ShroudStrCopy
-                    cxx_local_var: True
+                    cxx_local_var: pointer
                     cxx_header: <cstring>
                     pre_call:
                       - char * {cxx_var} = new char [{c_var_trim} + 1];
@@ -464,7 +464,7 @@ additional sections to convert between ``char *`` and ``std::string``::
     
             c_statements:
                 intent_in:
-                    cxx_local_var: true
+                    cxx_local_var: object
                     pre_call:
                       - {c_const}std::string {cxx_var}({c_var});
                 intent_out:
@@ -481,7 +481,7 @@ additional sections to convert between ``char *`` and ``std::string``::
                 intent_in_buf:
                     buf_args:
                     - len_trim
-                    cxx_local_var: True
+                    cxx_local_var: object
                     pre_call:
                       - {c_const}std::string {cxx_var}({c_var}, {c_var_trim});
                 intent_out_buf:
@@ -495,7 +495,7 @@ additional sections to convert between ``char *`` and ``std::string``::
                     buf_args:
                     - len_trim
                     - len
-                    cxx_local_var: True
+                    cxx_local_var: object
                     pre_call:
                       - std::string {cxx_var}({c_var}, {c_var_trim});
                     post_call:

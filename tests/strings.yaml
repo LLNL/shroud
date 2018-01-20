@@ -178,9 +178,9 @@ functions:
        arg1 is assumed to be intent(INOUT)
        Must copy in and copy out.
 
-#- decl: void acceptStringPointer(std::string * arg1)
-#  doxygen:
-#    brief: Accept a string pointer
+- decl: void acceptStringPointer(std::string * arg1)
+  doxygen:
+    brief: Accept a string pointer
 
 #- decl: void acceptStringInstance(std::string arg1)
 #  doxygen:

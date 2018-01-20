@@ -197,6 +197,10 @@ contains
     call assert_true( str(1:6) == "catdog")
     call assert_true( str(7:7) == C_NULL_CHAR)
 
+    str = "bird"
+    call accept_string_pointer(str)
+    call assert_true( str == "birddog")
+
   end subroutine test_functions
 
 end program tester

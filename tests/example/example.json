@@ -146,8 +146,8 @@
                             "return": "return new instance"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1(SH_name);", 
-                            "C_call_list": "SH_name", 
+                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1(&SH_name);", 
+                            "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
@@ -246,8 +246,8 @@
                             "return": "return new instance"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1(SH_name);", 
-                            "C_call_list": "SH_name", 
+                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1(&SH_name);", 
+                            "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1_bufferify", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
                             "C_prototype": "const char * name, int Lname", 
@@ -1536,8 +1536,8 @@
                             "brief": "constructor"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass2 * SHT_rv = new ExClass2(SH_name);", 
-                            "C_call_list": "SH_name", 
+                            "C_call_code": "ExClass2 * SHT_rv = new ExClass2(&SH_name);", 
+                            "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
@@ -1629,8 +1629,8 @@
                             "brief": "constructor"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass2 * SHT_rv = new ExClass2(SH_name);", 
-                            "C_call_list": "SH_name", 
+                            "C_call_code": "ExClass2 * SHT_rv = new ExClass2(&SH_name);", 
+                            "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor_bufferify", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
                             "C_prototype": "const char * name, int Lname", 
@@ -5334,7 +5334,7 @@
             "c_header": "sidre/wrapGroup.h", 
             "c_statements": {
                 "intent_in": {
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "pre_call": [
                         "{c_const}axom::sidre::Group{c_ptr}{cxx_var} = static_cast<{c_const}axom::sidre::Group{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
                     ]
@@ -5392,7 +5392,7 @@
             "base": "wrapped", 
             "c_statements": {
                 "intent_in": {
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "pre_call": [
                         "{c_const}ExClass1{c_ptr}{cxx_var} = static_cast<{c_const}ExClass1{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
                     ]
@@ -5449,7 +5449,7 @@
             "base": "wrapped", 
             "c_statements": {
                 "intent_in": {
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "pre_call": [
                         "{c_const}ExClass2{c_ptr}{cxx_var} = static_cast<{c_const}ExClass2{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
                     ]
@@ -5502,7 +5502,7 @@
             "base": "wrapped", 
             "c_statements": {
                 "intent_in": {
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "pre_call": [
                         "{c_const}ExClass3{c_ptr}{cxx_var} = static_cast<{c_const}ExClass3{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
                     ]
@@ -5663,7 +5663,7 @@
                     ], 
                     "c_header": "<stdlib.h> <string.h>", 
                     "cxx_header": "<stdlib.h> <cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "post_call": [
                         "free({cxx_var});"
                     ], 
@@ -5681,7 +5681,7 @@
                     "c_header": "<stdlib.h> <string.h>", 
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<stdlib.h> <cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
                         "free({cxx_var});"
@@ -5699,7 +5699,7 @@
                     "c_header": "<stdlib.h>", 
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<stdlib.h>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
                         "free({cxx_var});"
@@ -5875,7 +5875,7 @@
             "base": "string", 
             "c_statements": {
                 "intent_in": {
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
@@ -5884,14 +5884,14 @@
                     "buf_args": [
                         "len_trim"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_header": "<cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "strcpy({c_var}, {cxx_val});"
                     ], 
@@ -5905,7 +5905,7 @@
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});"
                     ], 
@@ -5915,7 +5915,7 @@
                 }, 
                 "intent_out": {
                     "cxx_header": "<cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "strcpy({c_var}, {cxx_val});"
                     ], 
@@ -5928,7 +5928,7 @@
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});"
                     ], 
@@ -5973,7 +5973,7 @@
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_parse": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
@@ -5987,7 +5987,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
                     ]
@@ -5996,7 +5996,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "{{", 
                         "    std::vector<{cxx_T}>::size_type", 
@@ -6016,7 +6016,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "{{", 
                         "    std::vector<{cxx_T}>::size_type", 
@@ -6041,7 +6041,7 @@
                             "len"
                         ], 
                         "c_helper": "ShroudLenTrim", 
-                        "cxx_local_var": true, 
+                        "cxx_local_var": "object", 
                         "pre_call": [
                             "std::vector<{cxx_T}> {cxx_var};", 
                             "{{", 
@@ -6061,7 +6061,7 @@
                             "size", 
                             "len"
                         ], 
-                        "cxx_local_var": true, 
+                        "cxx_local_var": "object", 
                         "post_call": [
                             "{{", 
                             "    char * BBB = {c_var};", 
@@ -6095,7 +6095,7 @@
                             "len"
                         ], 
                         "c_helper": "ShroudLenTrim", 
-                        "cxx_local_var": true, 
+                        "cxx_local_var": "object", 
                         "post_call": [
                             "{{", 
                             "    char * BBB = {c_var};", 

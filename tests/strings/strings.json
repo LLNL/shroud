@@ -192,7 +192,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 21, 
+                "_PTR_F_C_index": 22, 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "char SHT_rv", 
@@ -271,7 +271,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 21, 
+                "_function_index": 22, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -336,7 +336,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 22, 
+                "_PTR_F_C_index": 23, 
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
@@ -495,7 +495,7 @@
                         }
                     }
                 }, 
-                "_function_index": 22, 
+                "_function_index": 23, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -582,7 +582,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 23, 
+                "_PTR_F_C_index": 24, 
                 "_fmtargs": {
                     "s": {
                         "fmtc": {
@@ -690,7 +690,7 @@
                         }
                     }
                 }, 
-                "_function_index": 23, 
+                "_function_index": 24, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -839,7 +839,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 24, 
+                "_function_index": 25, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -906,7 +906,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 25, 
+                "_PTR_F_C_index": 26, 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "const char * SHT_rv", 
@@ -993,7 +993,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 25, 
+                "_function_index": 26, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1136,7 +1136,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 26, 
+                "_function_index": 27, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1203,9 +1203,9 @@
             }, 
             {
                 "_PTR_C_CXX_index": 6, 
-                "_PTR_F_C_index": 26, 
+                "_PTR_F_C_index": 27, 
                 "_error_pattern_suffix": "_as_buffer", 
-                "_function_index": 27, 
+                "_function_index": 28, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1357,7 +1357,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 28, 
+                "_function_index": 29, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1425,7 +1425,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_F_C_index": 29, 
+                "_PTR_F_C_index": 30, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * XSHT_rv", 
@@ -1518,7 +1518,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 29, 
+                "_function_index": 30, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1668,7 +1668,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 30, 
+                "_function_index": 31, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1736,9 +1736,9 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 9, 
-                "_PTR_F_C_index": 30, 
+                "_PTR_F_C_index": 31, 
                 "_error_pattern_suffix": "_as_buffer", 
-                "_function_index": 31, 
+                "_function_index": 32, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1805,7 +1805,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_F_C_index": 32, 
+                "_PTR_F_C_index": 33, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * XSHT_rv", 
@@ -1898,7 +1898,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 32, 
+                "_function_index": 33, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -1966,7 +1966,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_F_C_index": 33, 
+                "_PTR_F_C_index": 34, 
                 "_function_index": 11, 
                 "_subprogram": "function", 
                 "ast": {
@@ -2037,7 +2037,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 33, 
+                "_function_index": 34, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2164,7 +2164,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 34, 
+                "_function_index": 35, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2232,9 +2232,9 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 12, 
-                "_PTR_F_C_index": 34, 
+                "_PTR_F_C_index": 35, 
                 "_error_pattern_suffix": "_as_buffer", 
-                "_function_index": 35, 
+                "_function_index": 36, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2300,7 +2300,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 36, 
+                "_PTR_F_C_index": 37, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2406,7 +2406,7 @@
                         }
                     }
                 }, 
-                "_function_index": 36, 
+                "_function_index": 37, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2472,7 +2472,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 37, 
+                "_PTR_F_C_index": 38, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2583,7 +2583,7 @@
                         }
                     }
                 }, 
-                "_function_index": 37, 
+                "_function_index": 38, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2650,7 +2650,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 38, 
+                "_PTR_F_C_index": 39, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2762,7 +2762,7 @@
                         }
                     }
                 }, 
-                "_function_index": 38, 
+                "_function_index": 39, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2830,7 +2830,185 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 39, 
+                "_PTR_F_C_index": 40, 
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arg1", 
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SH_arg1.c_str()", 
+                            "cxx_var": "SH_arg1"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "SH_arg1.c_str()", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SH_arg1", 
+                            "py_var": "SH_Py_arg1"
+                        }
+                    }
+                }, 
+                "_function_index": 16, 
+                "_subprogram": "subroutine", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "inout", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::string"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "acceptStringPointer", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void acceptStringPointer(std::string * arg1)", 
+                "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout))", 
+                "doxygen": {
+                    "brief": "Accept a string pointer"
+                }, 
+                "format": {
+                    "C_call_code": "acceptStringPointer(&SH_arg1);", 
+                    "C_call_list": "&SH_arg1", 
+                    "C_name": "STR_accept_string_pointer", 
+                    "C_post_call": "strcpy(arg1, SH_arg1.c_str());", 
+                    "C_pre_call": "std::string SH_arg1(arg1);", 
+                    "C_prototype": "char * arg1", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_accept_string_pointer_bufferify", 
+                    "F_C_name": "c_accept_string_pointer", 
+                    "F_arg_c_call": "arg1, len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT)", 
+                    "F_arg_c_call_tab": "\targ1\tlen_trim(arg1, kind=C_INT)\tlen(arg1, kind=C_INT)", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "call c_accept_string_pointer_bufferify(\targ1\tlen_trim(arg1, kind=C_INT)\tlen(arg1, kind=C_INT))", 
+                    "F_name_function": "accept_string_pointer", 
+                    "F_name_generic": "accept_string_pointer", 
+                    "F_name_impl": "accept_string_pointer", 
+                    "F_subprogram": "subroutine", 
+                    "PY_name_impl": "PY_accept_string_pointer", 
+                    "c_const": "", 
+                    "function_name": "acceptStringPointer", 
+                    "underscore_name": "accept_string_pointer"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_PTR_C_CXX_index": 16, 
+                "_error_pattern_suffix": "_as_buffer", 
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arg1", 
+                            "c_var_len": "Narg1", 
+                            "c_var_trim": "Larg1", 
+                            "cxx_type": "std::string", 
+                            "cxx_val": "SH_arg1.c_str()", 
+                            "cxx_var": "SH_arg1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }
+                    }
+                }, 
+                "_function_index": 40, 
+                "_generated": "arg_to_buffer", 
+                "_subprogram": "subroutine", 
+                "ast": {
+                    "args": [
+                        {
+                            "attrs": {
+                                "intent": "inout", 
+                                "len": "Narg1", 
+                                "len_trim": "Larg1", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::string"
+                            ]
+                        }
+                    ], 
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "acceptStringPointer", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void acceptStringPointer(std::string * arg1)", 
+                "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))", 
+                "doxygen": {
+                    "brief": "Accept a string pointer"
+                }, 
+                "format": {
+                    "C_call_code": "acceptStringPointer(&SH_arg1);", 
+                    "C_call_list": "&SH_arg1", 
+                    "C_name": "STR_accept_string_pointer_bufferify", 
+                    "C_post_call": "ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());", 
+                    "C_pre_call": "std::string SH_arg1(arg1, Larg1);", 
+                    "C_prototype": "char * arg1, int Larg1, int Narg1", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_name": "c_accept_string_pointer_bufferify", 
+                    "c_const": "", 
+                    "function_name": "acceptStringPointer", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "accept_string_pointer"
+                }, 
+                "options": {
+                    "wrap_c": true, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_PTR_F_C_index": 41, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -2850,7 +3028,7 @@
                         }
                     }
                 }, 
-                "_function_index": 16, 
+                "_function_index": 17, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -2915,7 +3093,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 16, 
+                "_PTR_C_CXX_index": 17, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
@@ -2934,7 +3112,7 @@
                         }
                     }
                 }, 
-                "_function_index": 39, 
+                "_function_index": 41, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -2998,7 +3176,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 40, 
+                "_PTR_F_C_index": 42, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -3020,7 +3198,7 @@
                         }
                     }
                 }, 
-                "_function_index": 17, 
+                "_function_index": 18, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -3084,7 +3262,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 17, 
+                "_PTR_C_CXX_index": 18, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
@@ -3103,7 +3281,7 @@
                         }
                     }
                 }, 
-                "_function_index": 40, 
+                "_function_index": 42, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -3189,7 +3367,7 @@
                         }
                     }
                 }, 
-                "_function_index": 18, 
+                "_function_index": 19, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -3252,14 +3430,14 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 41, 
+                "_PTR_F_C_index": 43, 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_rv_decl": "char SHT_rv", 
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 19, 
+                "_function_index": 20, 
                 "_subprogram": "function", 
                 "ast": {
                     "args": [], 
@@ -3308,7 +3486,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 19, 
+                "_PTR_C_CXX_index": 20, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
@@ -3333,7 +3511,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 41, 
+                "_function_index": 43, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -3399,7 +3577,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 42, 
+                "_PTR_F_C_index": 44, 
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
@@ -3438,7 +3616,7 @@
                         }
                     }
                 }, 
-                "_function_index": 20, 
+                "_function_index": 21, 
                 "_subprogram": "subroutine", 
                 "ast": {
                     "args": [
@@ -3526,7 +3704,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 20, 
+                "_PTR_C_CXX_index": 21, 
                 "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "dest": {
@@ -3560,7 +3738,7 @@
                         }
                     }
                 }, 
-                "_function_index": 42, 
+                "_function_index": 44, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
                 "ast": {
@@ -3785,7 +3963,7 @@
                     ], 
                     "c_header": "<stdlib.h> <string.h>", 
                     "cxx_header": "<stdlib.h> <cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "post_call": [
                         "free({cxx_var});"
                     ], 
@@ -3803,7 +3981,7 @@
                     "c_header": "<stdlib.h> <string.h>", 
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<stdlib.h> <cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
                         "free({cxx_var});"
@@ -3821,7 +3999,7 @@
                     "c_header": "<stdlib.h>", 
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<stdlib.h>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
                         "free({cxx_var});"
@@ -3994,7 +4172,7 @@
             "base": "string", 
             "c_statements": {
                 "intent_in": {
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
@@ -4003,14 +4181,14 @@
                     "buf_args": [
                         "len_trim"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_header": "<cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "strcpy({c_var}, {cxx_val});"
                     ], 
@@ -4024,7 +4202,7 @@
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});"
                     ], 
@@ -4034,7 +4212,7 @@
                 }, 
                 "intent_out": {
                     "cxx_header": "<cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "strcpy({c_var}, {cxx_val});"
                     ], 
@@ -4047,7 +4225,7 @@
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});"
                     ], 
@@ -4092,7 +4270,7 @@
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_parse": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
@@ -4106,7 +4284,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
                     ]
@@ -4115,7 +4293,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "{{", 
                         "    std::vector<{cxx_T}>::size_type", 
@@ -4135,7 +4313,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "{{", 
                         "    std::vector<{cxx_T}>::size_type", 
@@ -4160,7 +4338,7 @@
                             "len"
                         ], 
                         "c_helper": "ShroudLenTrim", 
-                        "cxx_local_var": true, 
+                        "cxx_local_var": "object", 
                         "pre_call": [
                             "std::vector<{cxx_T}> {cxx_var};", 
                             "{{", 
@@ -4180,7 +4358,7 @@
                             "size", 
                             "len"
                         ], 
-                        "cxx_local_var": true, 
+                        "cxx_local_var": "object", 
                         "post_call": [
                             "{{", 
                             "    char * BBB = {c_var};", 
@@ -4214,7 +4392,7 @@
                             "len"
                         ], 
                         "c_helper": "ShroudLenTrim", 
-                        "cxx_local_var": true, 
+                        "cxx_local_var": "object", 
                         "post_call": [
                             "{{", 
                             "    char * BBB = {c_var};", 

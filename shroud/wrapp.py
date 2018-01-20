@@ -432,7 +432,7 @@ return 1;""", fmt)
                 arg_typedef = typemap.Typedef.lookup(arg.typename)
                 fmt_arg.cxx_type = arg_typedef.cxx_type
                 py_statements = arg_typedef.py_statements
-                have_cxx_local_var = False
+                cxx_local_var = ''
                 if attrs['intent'] in ['inout', 'in']:
                     # names to PyArg_ParseTupleAndKeywords
                     arg_names.append(arg_name)
@@ -466,8 +466,8 @@ return 1;""", fmt)
                     stmts = 'intent_in'  # XXX -  + attrs['intent'] ?
                     intent_blk = py_statements.get(stmts, {})
 
-                    have_cxx_local_var = intent_blk.get('cxx_local_var', False)
-                    if have_cxx_local_var:
+                    cxx_local_var = intent_blk.get('cxx_local_var', '')
+                    if cxx_local_var:
                         fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
                     cmd_list = py_statements.get(
                         'intent_in', {}).get('post_parse', [])
@@ -498,8 +498,16 @@ return 1;""", fmt)
                 elif arg_typedef.PY_from_object:
                     # already a C++ type
                     cxx_call_list.append(fmt_arg.cxx_var)
-                elif have_cxx_local_var:
-                    cxx_call_list.append(fmt_arg.cxx_var)
+                elif cxx_local_var == 'object':
+                    if arg.is_pointer():
+                        cxx_call_list.append('&' + fmt_arg.cxx_var)
+                    else:
+                        cxx_call_list.append(fmt_arg.cxx_var)
+                elif cxx_local_var == 'pointer':
+                    if arg.is_pointer():
+                        cxx_call_list.append(fmt_arg.cxx_var)
+                    else:
+                        cxx_call_list.append('*' + fmt_arg.cxx_var)
                 else:
                     # convert to C++ type
                     append_format(cxx_call_list, arg_typedef.c_to_cxx, fmt_arg)

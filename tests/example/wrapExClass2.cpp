@@ -77,7 +77,7 @@ AA_exclass2 * AA_exclass2_ctor(const char * name)
 {
 // splicer begin class.ExClass2.method.ctor
     const std::string SH_name(name);
-    ExClass2 * SHT_rv = new ExClass2(SH_name);
+    ExClass2 * SHT_rv = new ExClass2(&SH_name);
     return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));
 // splicer end class.ExClass2.method.ctor
 }
@@ -92,7 +92,7 @@ AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name, int Lname)
 {
 // splicer begin class.ExClass2.method.ctor_bufferify
     const std::string SH_name(name, Lname);
-    ExClass2 * SHT_rv = new ExClass2(SH_name);
+    ExClass2 * SHT_rv = new ExClass2(&SH_name);
     return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));
 // splicer end class.ExClass2.method.ctor_bufferify
 }

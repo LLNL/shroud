@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - All 'functions' to be used in YAML in place of 'methods'.
   'methods' still works but only one should be provided. 
 
+## Fixed
+- Allow `std:string *` arguments.
+
 ## Changed
 - All cpp_ prefixes for options and fmt have changed to cxx_.
 

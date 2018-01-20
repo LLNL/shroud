@@ -119,6 +119,10 @@ void STR_accept_string_reference(char * arg1);
 
 void STR_accept_string_reference_bufferify(char * arg1, int Larg1, int Narg1);
 
+void STR_accept_string_pointer(char * arg1);
+
+void STR_accept_string_pointer_bufferify(char * arg1, int Larg1, int Narg1);
+
 void STR_explicit1(char * name);
 
 void STR_explicit1_BUFFER(char * name, int AAlen);

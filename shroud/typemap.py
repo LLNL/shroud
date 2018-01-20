@@ -359,7 +359,7 @@ def initialize():
             c_statements=dict(
                 intent_in_buf=dict(
                     buf_args = [ 'len_trim' ],
-                    cxx_local_var=True,
+                    cxx_local_var='pointer',
                     c_header='<stdlib.h> <string.h>',
                     cxx_header='<stdlib.h> <cstring>',
                     pre_call=[
@@ -373,7 +373,7 @@ def initialize():
                     ),
                 intent_out_buf=dict(
                     buf_args = [ 'len' ],
-                    cxx_local_var=True,
+                    cxx_local_var='pointer',
                     c_header='<stdlib.h>',
                     cxx_header='<stdlib.h>',
                     c_helper='ShroudStrCopy',
@@ -387,7 +387,7 @@ def initialize():
                     ),
                 intent_inout_buf=dict(
                     buf_args = [ 'len_trim', 'len' ],
-                    cxx_local_var=True,
+                    cxx_local_var='pointer',
                     c_helper='ShroudStrCopy',
                     c_header='<stdlib.h> <string.h>',
                     cxx_header='<stdlib.h> <cstring>',
@@ -481,7 +481,7 @@ def initialize():
 
             c_statements=dict(
                 intent_in=dict(
-                    cxx_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
                         '{c_const}std::string {cxx_var}({c_var});'
                         ],
@@ -491,7 +491,7 @@ def initialize():
 #                    pre_call=[
 #                        'int {c_var_trim} = strlen({c_var});',
 #                        ],
-                    cxx_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
                         '{c_const}std::string {cxx_var};'
                         ],
@@ -503,7 +503,7 @@ def initialize():
                 ),
                 intent_inout=dict(
                     cxx_header='<cstring>',
-                    cxx_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
                         '{c_const}std::string {cxx_var}({c_var});'
                         ],
@@ -515,7 +515,7 @@ def initialize():
                 ),
                 intent_in_buf=dict(
                     buf_args = [ 'len_trim' ],
-                    cxx_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
                         ('{c_const}std::string '
                          '{cxx_var}({c_var}, {c_var_trim});')
@@ -524,7 +524,7 @@ def initialize():
                 intent_out_buf=dict(
                     buf_args = [ 'len' ],
                     c_helper='ShroudStrCopy',
-                    cxx_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
                         'std::string {cxx_var};'
                     ],
@@ -535,7 +535,7 @@ def initialize():
                 intent_inout_buf=dict(
                     buf_args = [ 'len_trim', 'len' ],
                     c_helper='ShroudStrCopy',
-                    cxx_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
                         'std::string {cxx_var}({c_var}, {c_var_trim});'
                     ],
@@ -573,7 +573,7 @@ def initialize():
 
             py_statements=dict(
                 intent_in=dict(
-                    cxx_local_var=True,
+                    cxx_local_var='object',
                     post_parse=[
                         '{c_const}std::string {cxx_var}({c_var});'
                         ],
@@ -598,7 +598,7 @@ def initialize():
             c_statements=dict(
                 intent_in_buf=dict(
                     buf_args = [ 'size' ],
-                    cxx_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
                         ('{c_const}std::vector<{cxx_T}> '
                          '{cxx_var}({c_var}, {c_var} + {c_var_size});')
@@ -606,7 +606,7 @@ def initialize():
                 ),
                 intent_out_buf=dict(
                     buf_args = [ 'size' ],
-                    cxx_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
                         '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var_size});'
                     ],
@@ -624,7 +624,7 @@ def initialize():
                 ),
                 intent_inout_buf=dict(
                     buf_args = [ 'size' ],
-                    cxx_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
                         'std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
                     ],
@@ -660,7 +660,7 @@ def initialize():
                     intent_in_buf=dict(
                         buf_args = [ 'size', 'len' ],
                         c_helper='ShroudLenTrim',
-                        cxx_local_var=True,
+                        cxx_local_var='object',
                         pre_call=[
                             'std::vector<{cxx_T}> {cxx_var};',
                             '{{',
@@ -678,7 +678,7 @@ def initialize():
                     intent_out_buf=dict(
                         buf_args = [ 'size', 'len' ],
                         c_helper='ShroudLenTrim',
-                        cxx_local_var=True,
+                        cxx_local_var='object',
                         pre_call=[
                             '{c_const}std::vector<{cxx_T}> {cxx_var};'
                         ],
@@ -698,7 +698,7 @@ def initialize():
                     ),
                     intent_inout_buf=dict(
                         buf_args = [ 'size', 'len' ],
-                        cxx_local_var=True,
+                        cxx_local_var='object',
                         pre_call=[
                             'std::vector<{cxx_T}> {cxx_var};',
                             '{{',
@@ -837,7 +837,7 @@ def typedef_wrapped_defaults(typedef):
 
     typedef.c_statements = dict(
         intent_in=dict(
-            cxx_local_var = True,
+            cxx_local_var = 'pointer',
             pre_call = [
                 '{c_const}%s{c_ptr}{cxx_var} = static_cast<{c_const}%s{c_ptr}>('
                 'static_cast<{c_const}void *>({c_var}));' % (

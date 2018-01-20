@@ -896,21 +896,23 @@ c_statements
            bufferified version of a function.
 
            len
-              Fortran intrinsic `LEN`, of type *int*.
+              Fortran intrinsic ``LEN``, of type *int*.
 
            len_trim
-              Fortran intrinsic `LEN_TRIM`, of type *int*.
+              Fortran intrinsic ``LEN_TRIM``, of type *int*.
 
            size
-              Fortran intrinsic `SIZE`, of type *long*.
+              Fortran intrinsic ``SIZE``, of type *long*.
 
         cxx_header
            string of blank delimited header names
 
         cxx_local_var
-           True if a local C++ variable is created.
+           Set if a local C++ variable is created.
            This is the case when C and C++ are not directly compatible.
            Usually a C++ constructor or cast is involved.
+           Set to **object** when a class is instantiated, for example ``std::string``.
+           Or set to **pointer** when used with a pointer, for example ``char *``.
            This sets *cxx_var* is set to ``SH_{c_var}``.
 
         c_helper
@@ -1104,7 +1106,7 @@ py_statement
         cxx_local_var
            True if a local C++ variable is created.
            This is the case when C and C++ are not directly compatible.
-           Usually a C++ constructor is involved.
+           Usually a C++ constructor or cast is involved.
 
 
 Annotations

@@ -230,7 +230,7 @@
                     ], 
                     "c_header": "<stdlib.h> <string.h>", 
                     "cxx_header": "<stdlib.h> <cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "post_call": [
                         "free({cxx_var});"
                     ], 
@@ -248,7 +248,7 @@
                     "c_header": "<stdlib.h> <string.h>", 
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<stdlib.h> <cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
                         "free({cxx_var});"
@@ -266,7 +266,7 @@
                     "c_header": "<stdlib.h>", 
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<stdlib.h>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "pointer", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});", 
                         "free({cxx_var});"
@@ -439,7 +439,7 @@
             "base": "string", 
             "c_statements": {
                 "intent_in": {
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
@@ -448,14 +448,14 @@
                     "buf_args": [
                         "len_trim"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_header": "<cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "strcpy({c_var}, {cxx_val});"
                     ], 
@@ -469,7 +469,7 @@
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});"
                     ], 
@@ -479,7 +479,7 @@
                 }, 
                 "intent_out": {
                     "cxx_header": "<cstring>", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "strcpy({c_var}, {cxx_val});"
                     ], 
@@ -492,7 +492,7 @@
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});"
                     ], 
@@ -537,7 +537,7 @@
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_parse": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
@@ -551,7 +551,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
                     ]
@@ -560,7 +560,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "{{", 
                         "    std::vector<{cxx_T}>::size_type", 
@@ -580,7 +580,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": true, 
+                    "cxx_local_var": "object", 
                     "post_call": [
                         "{{", 
                         "    std::vector<{cxx_T}>::size_type", 
@@ -605,7 +605,7 @@
                             "len"
                         ], 
                         "c_helper": "ShroudLenTrim", 
-                        "cxx_local_var": true, 
+                        "cxx_local_var": "object", 
                         "pre_call": [
                             "std::vector<{cxx_T}> {cxx_var};", 
                             "{{", 
@@ -625,7 +625,7 @@
                             "size", 
                             "len"
                         ], 
-                        "cxx_local_var": true, 
+                        "cxx_local_var": "object", 
                         "post_call": [
                             "{{", 
                             "    char * BBB = {c_var};", 
@@ -659,7 +659,7 @@
                             "len"
                         ], 
                         "c_helper": "ShroudLenTrim", 
-                        "cxx_local_var": true, 
+                        "cxx_local_var": "object", 
                         "post_call": [
                             "{{", 
                             "    char * BBB = {c_var};", 
