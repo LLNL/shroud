@@ -622,7 +622,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 6, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "rv": {
                         "fmtc": {

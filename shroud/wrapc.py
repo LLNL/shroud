@@ -565,7 +565,7 @@ class Wrapc(util.WrapperMixin):
 
         post_call_pattern = []
         if node.C_error_pattern is not None:
-            C_error_pattern = node.C_error_pattern + node._error_pattern_suffix
+            C_error_pattern = node.C_error_pattern + intent_grp
             if C_error_pattern in self.patterns:
                 post_call_pattern.append('// C_error_pattern')
                 append_format(

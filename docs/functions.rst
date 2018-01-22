@@ -419,11 +419,11 @@ They are defined in the input YAML file::
 The **C_error_pattern** will insert code after the call to the C++
 function in the C wrapper and before any post_call sections from the
 types. The bufferified version of a function will append
-``_as_buffer`` to the **C_error_pattern** value.  The *pattern* is
+``_buf`` to the **C_error_pattern** value.  The *pattern* is
 formatted using the context of the return argument if present,
 otherwise the context of the function is used.  This means that
 *c_var* and *c_var_len* refer to the argument which is added to
-contain the function result for the ``_as_buffer`` pattern.
+contain the function result for the ``_buf`` pattern.
 
 The function ``getString2`` is returning a ``std::string`` reference.
 Since C and Fortran cannot deal with this directly, the empty string

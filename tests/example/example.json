@@ -180,7 +180,6 @@
                             0, 
                             1
                         ], 
-                        "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -489,7 +488,6 @@
                         "C_error_pattern": "C_invalid_name", 
                         "PY_error_pattern": "PY_invalid_name", 
                         "_PTR_C_CXX_index": 4, 
-                        "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -705,7 +703,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 6, 
-                        "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -852,7 +849,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 7, 
-                        "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -945,7 +941,6 @@
                     {
                         "_PTR_C_CXX_index": 7, 
                         "_PTR_F_C_index": 17, 
-                        "_error_pattern_suffix": "_as_buffer", 
                         "_function_index": 18, 
                         "_generated": "arg_to_buffer", 
                         "_subprogram": "subroutine", 
@@ -1594,7 +1589,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 19, 
-                        "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -1800,7 +1794,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 21, 
-                        "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -1958,7 +1951,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 22, 
-                        "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -2114,7 +2106,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 23, 
-                        "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -2270,7 +2261,6 @@
                     }, 
                     {
                         "_PTR_C_CXX_index": 24, 
-                        "_error_pattern_suffix": "_as_buffer", 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -4055,7 +4045,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 50, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4467,7 +4456,6 @@
                     53, 
                     54
                 ], 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4680,7 +4668,6 @@
                     53, 
                     54
                 ], 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {

@@ -1182,7 +1182,7 @@ C_error_pattern
     Format is evaluated in the context of the result argument.
     *c_var*, *c_var_len* refer to the result argument.
 
-C_error_pattern_as_buffer
+C_error_pattern_buf
     Inserted after the call to the C++ function in the buffer C wrapper
     for functions with string arguments.
     Format is evaluated in the context of the result argument.

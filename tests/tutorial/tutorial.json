@@ -1105,7 +1105,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 9, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -1423,7 +1422,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 10, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -1584,7 +1582,6 @@
             {
                 "_PTR_C_CXX_index": 10, 
                 "_PTR_F_C_index": 42, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_function_index": 43, 
                 "_generated": "arg_to_buffer", 
                 "_subprogram": "subroutine", 
@@ -2126,7 +2123,6 @@
                     12, 
                     13
                 ], 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -3259,7 +3255,6 @@
                     17, 
                     18
                 ], 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg2": {
                         "fmtc": {
@@ -4723,7 +4718,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 24, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -4875,7 +4869,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 25, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5021,7 +5014,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 26, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5172,7 +5164,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 27, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5338,7 +5329,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 28, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5494,7 +5484,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 29, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5649,7 +5638,6 @@
             }, 
             {
                 "_PTR_C_CXX_index": 30, 
-                "_error_pattern_suffix": "_as_buffer", 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {

@@ -492,7 +492,6 @@ class FunctionNode(AstNode):
         self.declgen = None              #  generated declaration.
         self._default_funcs = []         #  generated default value functions  (unused?)
         self._function_index = None
-        self._error_pattern_suffix = ''
         self._fmtargs = {}
         self._fmtresult = {}
         self._function_index = None
@@ -600,7 +599,7 @@ class FunctionNode(AstNode):
                     'C_error_pattern', 'PY_error_pattern',
                     '_PTR_C_CXX_index', '_PTR_F_C_index',
                     '_CXX_return_templated',
-                    '_cxx_overload', '_error_pattern_suffix',
+                    '_cxx_overload',
                     '_default_funcs', '_fmtargs', '_fmtresult',
                     '_generated', '_has_default_arg',
                     '_nargs', '_overloaded', '_subprogram']:
