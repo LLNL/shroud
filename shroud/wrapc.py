@@ -350,9 +350,9 @@ class Wrapc(util.WrapperMixin):
         ast = node.ast
         result_type = ast.typename
         subprogram = node._subprogram
-        intent_grp = ''
+        generated_suffix = ''
         if node._generated == 'arg_to_buffer':
-            intent_grp = '_buf'
+            generated_suffix = '_buf'
 
         result_typedef = typemap.Typedef.lookup(result_type)
         result_is_const = ast.const
@@ -462,7 +462,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.cxx_var = fmt_arg.C_result
                 fmt_pattern = fmt_arg
                 result_arg = arg
-                stmts = 'result' + intent_grp
+                stmts = 'result' + generated_suffix
                 need_wrapper = True
                 if CXX_result.is_pointer():
                     fmt_arg.cxx_deref = '->'
@@ -471,7 +471,7 @@ class Wrapc(util.WrapperMixin):
             else:
                 arg_call = arg
                 fmt_arg.cxx_var = fmt_arg.c_var      # name in c++ call.
-                stmts = 'intent_' + c_attrs['intent'] + intent_grp
+                stmts = 'intent_' + c_attrs['intent'] + generated_suffix
 
             intent_blk = c_statements.get(stmts, {})
 
@@ -565,7 +565,7 @@ class Wrapc(util.WrapperMixin):
 
         post_call_pattern = []
         if node.C_error_pattern is not None:
-            C_error_pattern = node.C_error_pattern + intent_grp
+            C_error_pattern = node.C_error_pattern + generated_suffix
             if C_error_pattern in self.patterns:
                 post_call_pattern.append('// C_error_pattern')
                 append_format(
@@ -629,10 +629,10 @@ class Wrapc(util.WrapperMixin):
                 C_return_code = 'return {};'.format(
                     wformat(return_lang, fmt_result))
 
-        if fmt_func.inlocal('C_finalize' + intent_grp):
+        if fmt_func.inlocal('C_finalize' + generated_suffix):
             # maybe check C_finalize up chain for accumulative code
             # i.e. per class, per library.
-            finalize_line = fmt_func.get('C_finalize' + intent_grp)
+            finalize_line = fmt_func.get('C_finalize' + generated_suffix)
             need_wrapper = True
             post_call.append('{')
             post_call.append('    // C_finalize')

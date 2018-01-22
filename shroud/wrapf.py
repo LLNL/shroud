@@ -482,9 +482,9 @@ class Wrapf(util.WrapperMixin):
         subprogram = node._subprogram
 
         if node._generated == 'arg_to_buffer':
-            intent_grp = '_buf'
+            generated_suffix = '_buf'
         else:
-            intent_grp = ''
+            generated_suffix = ''
 
         if is_dtor or node.return_this:
             result_type = 'void'
@@ -545,9 +545,9 @@ class Wrapf(util.WrapperMixin):
                 arg_c_decl.append(arg.bind_c())
 
             if attrs.get('_is_result', False):
-                c_stmts = 'result' + intent_grp
+                c_stmts = 'result' + generated_suffix
             else:
-                c_stmts = 'intent_' + intent + intent_grp
+                c_stmts = 'intent_' + intent + generated_suffix
 
             c_intent_blk = c_statements.get(c_stmts, {})
 
@@ -650,9 +650,9 @@ class Wrapf(util.WrapperMixin):
         c_subprogram = C_node._subprogram
 
         if C_node._generated == 'arg_to_buffer':
-            intent_grp = '_buf'
+            generated_suffix = '_buf'
         else:
-            intent_grp = ''
+            generated_suffix = ''
 
         if is_dtor or node.return_this:
             result_type = 'void'
@@ -674,13 +674,13 @@ class Wrapf(util.WrapperMixin):
             raise RuntimeError("Unknown type {} in {}",
                                result_type, fmt_func.function_name)
 
-        result_intent_grp = ''
+        result_generated_suffix = ''
         if is_pure:
-            result_intent_grp = '_pure'
+            result_generated_suffix = '_pure'
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        if result_typedef.f_statements.get('result' + result_intent_grp, {}) \
+        if result_typedef.f_statements.get('result' + result_generated_suffix, {}) \
                                       .get('need_wrapper', False):
             need_wrapper = True
 
@@ -728,7 +728,7 @@ class Wrapf(util.WrapperMixin):
             c_attrs = c_arg.attrs
             intent = c_attrs['intent']
             if c_attrs.get('_is_result', False):
-                c_stmts = 'result' + intent_grp
+                c_stmts = 'result' + generated_suffix
                 result_as_arg = fmt_func.F_string_result_as_arg
                 if not result_as_arg:
                     # passing Fortran function result variable down to C
@@ -737,7 +737,7 @@ class Wrapf(util.WrapperMixin):
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = 'intent_' + intent + intent_grp
+                c_stmts = 'intent_' + intent + generated_suffix
 
             if f_arg:
                 # An argument to the C and Fortran function
@@ -888,7 +888,7 @@ class Wrapf(util.WrapperMixin):
                 self.append_method_arguments(F_code, fmt_func.F_call_code)
             elif c_subprogram == 'function':
                 f_statements = result_typedef.f_statements
-                intent_blk = f_statements.get('result' + result_intent_grp,{})
+                intent_blk = f_statements.get('result' + result_generated_suffix,{})
                 cmd_list = intent_blk.get('call', [
                         '{F_result} = {F_C_call}({F_arg_c_call_tab})'])
 #                for cmd in cmd_list:  # only allow a single statment for now
