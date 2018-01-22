@@ -10,12 +10,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - cpp_if will add an #if directive around a class or function.
 - Allow 'functions' to be used in YAML in place of 'methods'.
   'methods' still works but only one should be provided. 
+- Allow format fields to be set by directly in YAML.
 
 ## Fixed
 - Allow `std:string *` arguments and results.
 
 ## Changed
 - All cpp_ prefixes for options and fmt have changed to cxx_.
+- Moved many options and fields into format.  This eliminates
+  copying options and fields into format and makes it clearer
+  where to set formats.
 
 ## Fixed
 - Respect wrap_* options for classes.

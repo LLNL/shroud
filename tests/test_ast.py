@@ -86,7 +86,7 @@ class CheckAst(unittest.TestCase):
     def test_b_function1(self):
         """Add a function to library"""
         library = ast.LibraryNode()
-        library.add_function(decl='void func1()')
+        library.add_function('void func1()')
 
         self.assertEqual(len(library.functions), 1)
 
@@ -176,11 +176,11 @@ class CheckAst(unittest.TestCase):
         library = ast.LibraryNode()
 
         cls1 = library.add_class('Class1')
-        cls1.add_function(decl='void c1func1()')
-        cls1.add_function(decl='void c1func2()')
+        cls1.add_function('void c1func1()')
+        cls1.add_function('void c1func2()')
 
         cls2 = library.add_class('Class2')
-        cls2.add_function(decl='void c2func1()')
+        cls2.add_function('void c2func1()')
 
         self.assertEqual(len(library.classes), 2)
         self.assertEqual(len(library.classes[0].functions), 2)
@@ -238,7 +238,7 @@ class CheckAst(unittest.TestCase):
         Geneate an additional function with len and len_trim attributes.
         """
         library = ast.LibraryNode()
-        library.add_function(decl='void func1(char * arg)')
+        library.add_function('void func1(char * arg)')
         self.assertEqual(len(library.functions), 1)
 
         generate.generate_functions(library, None)

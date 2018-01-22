@@ -318,10 +318,11 @@ class LibraryNode(AstNode):
         self.eval_template('F_module_name', '_library')
         self.eval_template('F_impl_filename', '_library')
 
-    def add_function(self, parentoptions=None, **kwargs):
+    def add_function(self, decl, parentoptions=None, **kwargs):
         """Add a function.
         """
-        fcnnode = FunctionNode(self, parentoptions=parentoptions, **kwargs)
+        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
+                               **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
 
@@ -413,10 +414,11 @@ class ClassNode(AstNode):
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
 
-    def add_function(self, parentoptions=None, **kwargs):
+    def add_function(self, decl, parentoptions=None, **kwargs):
         """Add a function.
         """
-        fcnnode = FunctionNode(self, parentoptions=parentoptions, **kwargs)
+        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
+                               **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
 
@@ -472,13 +474,12 @@ class FunctionNode(AstNode):
     _subprogram      - subroutine or function
 
     """
-    def __init__(self, parent,
-                 decl=None,
+    def __init__(self, decl, parent,
                  format=None,
                  parentoptions=None,
                  options=None,
                  **kwargs):
-        self.options = util.Scope(parent= parentoptions or parent.options)
+        self.options = util.Scope(parent=parentoptions or parent.options)
         if options:
             self.options.update(options, replace=True)
 
@@ -705,8 +706,14 @@ def add_functions(parent, functions):
         if is_options_only(node):
             options = util.Scope(options, **node['options'])
         else:
-            clean_dictionary(node)
-            parent.add_function(parentoptions=options, **node)
+            # copy before clean to avoid changing input dict
+            d = copy.copy(node)
+            clean_dictionary(d)
+            if 'decl' not in d:
+                raise RuntimeError('Missing required dict fields for function')
+            decl = d['decl']
+            del d['decl']
+            parent.add_function(decl, parentoptions=options, **d)
 
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.
