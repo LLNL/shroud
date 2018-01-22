@@ -68,7 +68,7 @@ int PP_ExClass2_from_Object(PyObject *obj, void **addr);
 
 typedef struct {
 PyObject_HEAD
-    ExClass1 * BBB;
+    ExClass1 * obj;
     // splicer begin class.ExClass1.C_object
     // splicer end class.ExClass1.C_object
 } PP_ExClass1;
@@ -77,7 +77,7 @@ PyObject_HEAD
 
 typedef struct {
 PyObject_HEAD
-    ExClass2 * BBB;
+    ExClass2 * obj;
     // splicer begin class.ExClass2.C_object
     // splicer end class.ExClass2.C_object
 } PP_ExClass2;

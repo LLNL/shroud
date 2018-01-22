@@ -52,14 +52,14 @@ separated by a colon::
     types:
       TypeID:
         typedef  : int
-        cpp_type : TypeID
+        cxx_type : TypeID
     
     functions:
     - decl: void Function1
 
     classes:
     - name: Class1
-      methods:
+      functions:
       - decl: void Method1()
 
 Shroud use curly braces for format strings.
@@ -79,13 +79,13 @@ Some values consist of blocks of code.  The pipe, ``|``, is used to indicate tha
 the string will span several lines and that newlines should be preserved::
 
     C_invalid_name: |
-        if (! isNameValid({cpp_var})) {{
+        if (! isNameValid({cxx_var})) {{
             return NULL;
         }}
 
 Note that to insert a literal ``{``, a double brace, ``{{``, is
 required since single braces are used for variable expansion.
-``{cpp_var}`` in this example.
+``{cxx_var}`` in this example.
 
 
 
@@ -105,11 +105,10 @@ controls the default value of *C_name*::
 
     classes:
       - name: Names
-        C_header_filename: foo.h
-        C_impl_filename: foo.cpp
-        methods:
+        cxx_header: names.hpp
+        namespace: work
+        functions:
         -  decl: void method1
-           C_name: testmethod1
 
 Annotations
 ^^^^^^^^^^^
@@ -119,8 +118,7 @@ They describe semantic behavior for an argument.
 An attribute may be set to true by listing its name or
 it may have a value in parens::
 
-    - decl: Class1 *new()  +constructor
-    - decl: void delete()  +destructor
+    - decl: Class1 new()  +name(new)
     - decl: void Sum(int len, int *values+dimension+intent(in))
 
 Options
@@ -143,12 +141,19 @@ This allows the user to modify behavior for all functions or just a single one::
     #    option_a = false     # inherited
          option_b = true
     #    option_c = false     # inherited
-      methods:
+      functions:
       - decl: void function1
         options:
     #     option_a = false    # inherited
     #     option_b = true     # inherited
           option_c = true
+
+Format
+------
+
+A format dictionary contains strings which can be inserted into
+generated code.  Generated filenames are also entries in the format
+dictionary.
 
 How code is formatted
 ---------------------

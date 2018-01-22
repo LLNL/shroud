@@ -66,11 +66,9 @@ class Wrapl(util.WrapperMixin):
     def wrap_library(self):
         newlibrary = self.newlibrary
         options = newlibrary.options
-        fmt_library = newlibrary._fmt
+        fmt_library = newlibrary.fmtdict
 
         # Format variables
-        fmt_library.LUA_prefix = options.get('LUA_prefix', 'l_')
-        fmt_library.LUA_state_var = 'L'
         fmt_library.LUA_used_param_state = False
         newlibrary.eval_template('LUA_module_name')
         newlibrary.eval_template('LUA_module_reg')
@@ -85,6 +83,8 @@ class Wrapl(util.WrapperMixin):
 
         self._push_splicer('class')
         for node in newlibrary.classes:
+            if not node.options.wrap_lua:
+                continue
             name = node.name
             self.reset_file()
             self._push_splicer(name)
@@ -105,7 +105,7 @@ class Wrapl(util.WrapperMixin):
 
     def wrap_class(self, node):
         options = node.options
-        fmt_class = node._fmt
+        fmt_class = node.fmtdict
 
         fmt_class.LUA_userdata_var = 'SH_this'
         node.eval_template('LUA_userdata_type')
@@ -119,7 +119,7 @@ class Wrapl(util.WrapperMixin):
         self.lua_type_structs.append('typedef struct {')
         self.lua_type_structs.append(1)
         append_format(self.lua_type_structs,
-                      '{namespace_scope}{cpp_class} * {LUA_userdata_member};',
+                      '{namespace_scope}{cxx_class} * {LUA_userdata_member};',
                       fmt_class)
         self._create_splicer('C_object', self.lua_type_structs)
         self.lua_type_structs.append(-1)
@@ -169,7 +169,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for function in functions:
             if not function.options.wrap_lua:
                 continue
-            name = function._ast.name
+            name = function.ast.name
             if name in overloaded_methods:
                 overloaded_methods[name].append(function)
             else:
@@ -190,22 +190,22 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         overloads - a list of functions to wrap.
 
         fmt.c_var   - name of variable in PyArg_ParseTupleAndKeywords
-        fmt.cpp_var - name of variable in c++ call.
+        fmt.cxx_var - name of variable in c++ call.
         """
 
         # First overload defines options
         node = overloads[0]
 
-        ast = node._ast
+        ast = node.ast
         function_name = ast.name
-        fmt_func = node._fmt
-        fmt = util.Options(fmt_func)
+        fmt_func = node.fmtdict
+        fmt = util.Scope(fmt_func)
         node.eval_template('LUA_name')
         node.eval_template('LUA_name_impl')
 
-        CPP_subprogram = node._subprogram
+        CXX_subprogram = node._subprogram
 
-        # XXX       ast = node._ast
+        # XXX       ast = node.ast
         # XXX       result_type = ast.typename
         # XXX       result_is_ptr = ast.is_pointer()
         # XXX       result_is_ref = ast.is_reference()
@@ -213,13 +213,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         if node.return_this:
             # XXX           result_type = 'void'
             # XXX           result_is_ptr = False
-            CPP_subprogram = 'subroutine'
+            CXX_subprogram = 'subroutine'
 
         # XXX       result_typedef = typemap.Typedef.lookup(result_type)
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
         if is_dtor:
-            CPP_subprogram = 'subroutine'
+            CXX_subprogram = 'subroutine'
             fmt.LUA_name = '__gc'
 
         if cls:
@@ -240,17 +240,17 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             in_args = []
             out_args = []
             found_default = False
-            for arg in function._ast.params:
+            for arg in function.ast.params:
                 arg_typedef = typemap.Typedef.lookup(arg.typename)
                 attrs = arg.attrs
                 if arg.init is not None:
                     all_calls.append(lua_function(
-                        function, CPP_subprogram, in_args[:], out_args))
+                        function, CXX_subprogram, in_args[:], out_args))
                     found_default = True
                 in_args.append(arg)
             # no defaults, use all arguments
             all_calls.append(lua_function(
-                function, CPP_subprogram, in_args[:], out_args))
+                function, CXX_subprogram, in_args[:], out_args))
             maxargs = max(maxargs, len(in_args))
 
         # Gather calls by number of arguments
@@ -408,25 +408,25 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             cls_function = 'method'
         else:
             cls_function = 'function'
-        self.log.write("Lua {0} {1._decl}\n".format(cls_function, node))
+        self.log.write("Lua {0} {1.declgen}\n".format(cls_function, node))
 
-#        fmt_func = node._fmt
+#        fmt_func = node.fmtdict
         fmtargs = node._fmtargs
-#        fmt = util.Options(fmt_func)
+#        fmt = util.Scope(fmt_func)
 #        fmt.doc_string = 'documentation'
 #        node.eval_template('LUA_name')
 #        node.eval_template('LUA_name_impl')
 
-        CPP_subprogram = node._subprogram
+        CXX_subprogram = node._subprogram
 
-        ast = node._ast
+        ast = node.ast
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
 
         if is_dtor or node.return_this:
             result_type = 'void'
-            CPP_subprogram = 'subroutine'
+            CXX_subprogram = 'subroutine'
 
         result_typedef = typemap.Typedef.lookup(result_type)
         #        is_const = ast.const
@@ -444,15 +444,15 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 #            is_const = None
         # return value
 #        fmt.rv_decl = self.std_c_decl(
-#            'cpp_type', ast, name=fmt.LUA_result, const=is_const)
-        fmt.rv_decl = ast.gen_arg_as_cpp(name=fmt.LUA_result)
+#            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
+        fmt.rv_decl = ast.gen_arg_as_cxx(name=fmt.LUA_result)
 
         LUA_decl = []  # declare variables and pop values
         LUA_code = []  # call C++ function
         LUA_push = []  # push results
 
         # post_parse = []
-        cpp_call_list = []
+        cxx_call_list = []
 
         # find class object
         if cls:
@@ -474,31 +474,36 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # Only process nargs.
         # Each variation of default-arguments produces a new call.
-        fmt_arg = util.Options(fmt)
+        fmt_arg = util.Scope(fmt)
         LUA_index = 1
         for iarg in range(luafcn.nargs):
             arg = ast.params[iarg]
             arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault('fmtl', util.Options(fmt))
+            fmt_arg = fmt_arg0.setdefault('fmtl', util.Scope(fmt))
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
-            fmt_arg.cpp_var = arg_name
+            fmt_arg.cxx_var = arg_name
             fmt_arg.lua_var = 'SH_Lua_' + arg_name
             fmt_arg.c_var_len = 'L' + arg_name
-            fmt_arg.ptr = ' *' if arg.is_pointer() else ''
+            if arg.is_pointer():
+                fmt_arg.c_ptr = ' *'
+                fmt_arg.cxx_deref = '->'
+            else:
+                fmt_arg.c_ptr = ''
+                fmt_arg.cxx_deref = '.'
             attrs = arg.attrs
 
             lua_pop = None
 
             arg_typedef = typemap.Typedef.lookup(arg.typename)
-            fmt_arg.cpp_type = arg_typedef.cpp_type
+            fmt_arg.cxx_type = arg_typedef.cxx_type
             LUA_statements = arg_typedef.LUA_statements
             if attrs['intent'] in ['inout', 'in']:
                 # XXX lua_pop = wformat(arg_typedef.LUA_pop, fmt_arg)
                 # lua_pop is a C++ expression
                 fmt_arg.c_var = wformat(arg_typedef.LUA_pop, fmt_arg)
-                lua_pop = wformat(arg_typedef.c_to_cpp, fmt_arg)
+                lua_pop = wformat(arg_typedef.c_to_cxx, fmt_arg)
                 LUA_index += 1
 
             if attrs['intent'] in ['inout', 'out']:
@@ -516,7 +521,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             # argument for C++ function
 # This has been replaced by gen_arg methods, but not sure about const.
-#            lang = 'cpp_type'
+#            lang = 'cxx_type'
 #            arg_const = False
 #            if arg_typedef.base == 'string':
 #                # C++ will coerce char * to std::string
@@ -536,12 +541,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             if arg_typedef.base == 'string':
                 LUA_decl.append(arg.gen_arg_as_c() + decl_suffix)
             else:
-                LUA_decl.append(arg.gen_arg_as_cpp() + decl_suffix)
+                LUA_decl.append(arg.gen_arg_as_cxx() + decl_suffix)
 
-            cpp_call_list.append(fmt_arg.cpp_var)
+            cxx_call_list.append(fmt_arg.cxx_var)
 
         # call with arguments
-        fmt.cpp_call_list = ', '.join(cpp_call_list)
+        fmt.cxx_call_list = ', '.join(cxx_call_list)
         fmt.rv_asgn = fmt.rv_decl + ' = '
 #        LUA_code.extend(post_parse)
 
@@ -555,7 +560,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                         fmt),
                     wformat(
                         '{LUA_userdata_var}->{LUA_userdata_member} = '
-                        'new {cpp_class}({cpp_call_list});', fmt),
+                        'new {cxx_class}({cxx_call_list});', fmt),
                     '/* Add the metatable to the stack. */',
                     wformat('luaL_getmetatable(L, "{LUA_metadata}");', fmt),
                     '/* Set the metatable on the userdata. */',
@@ -571,27 +576,31 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                         '{LUA_userdata_var}->{LUA_userdata_member} = NULL;',
                         fmt),
                     ])
-        elif CPP_subprogram == 'subroutine':
+        elif CXX_subprogram == 'subroutine':
             line = wformat(
-                '{LUA_this_call}{function_name}({cpp_call_list});', fmt)
+                '{LUA_this_call}{function_name}({cxx_call_list});', fmt)
             LUA_code.append(line)
         else:
             line = wformat(
-                '{rv_asgn}{LUA_this_call}{function_name}({cpp_call_list});',
+                '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});',
                 fmt)
             LUA_code.append(line)
 
 #        if 'LUA_error_pattern' in node:
-#            lfmt = util.Options(fmt)
+#            lfmt = util.Scope(fmt)
 #            lfmt.c_var = fmt.LUA_result
-#            lfmt.cpp_var = fmt.LUA_result
+#            lfmt.cxx_var = fmt.LUA_result
 #            append_format(LUA_code,
 #                 self.patterns[node['PY_error_pattern']], lfmt)
 
         # Compute return value
-        if CPP_subprogram == 'function' and not is_ctor:
-            fmt.cpp_var = fmt.LUA_result
-            fmt.c_var = wformat(result_typedef.cpp_to_c, fmt)  # if C++
+        if CXX_subprogram == 'function' and not is_ctor:
+            if ast.is_pointer():
+                fmt.cxx_deref = '->'
+            else:
+                fmt.cxx_deref = '.'
+            fmt.cxx_var = fmt.LUA_result
+            fmt.c_var = wformat(result_typedef.cxx_to_c, fmt)  # if C++
             fmt.LUA_used_param_state = True
             tmp = wformat(result_typedef.LUA_push, fmt)
             LUA_push.append(tmp + ';')
@@ -604,7 +613,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
     def write_header(self, node):
         options = node.options
-        fmt = node._fmt
+        fmt = node.fmtdict
         fname = fmt.LUA_header_filename
 
         output = []
@@ -617,7 +626,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 ])
         util.extern_C(output, 'begin')
 
-        for include in node.cpp_header.split():
+        for include in node.cxx_header.split():
             output.append('#include "%s"' % include)
 
         output.append('#include "lua.h"')
@@ -650,12 +659,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
     def write_module(self, node):
         # node is library
         options = node.options
-        fmt = node._fmt
+        fmt = node.fmtdict
         fname = fmt.LUA_module_filename
 
         output = []
 
-        for include in node.cpp_header.split():
+        for include in node.cxx_header.split():
             output.append('#include "{}"'.format(include))
         output.append(wformat('#include "{LUA_header_filename}"', fmt))
 

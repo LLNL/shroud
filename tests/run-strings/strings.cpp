@@ -135,6 +135,13 @@ const std::string getString6()
     return static_str;
 }
 
+std::string * getString7()
+{
+    // Caller is responsible to free string
+    std::string * rv = new std::string("Hello");
+    return rv;
+}
+
 //----------------------------------------
 
 void acceptStringConstReference(const std::string & arg1)
@@ -154,7 +161,7 @@ void acceptStringReference(std::string & arg1)
 
 void acceptStringPointer(std::string * arg1)
 {
-    global_str = *arg1;
+  arg1->append("dog");
 }
 
 //----------------------------------------

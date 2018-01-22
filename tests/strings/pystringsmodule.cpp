@@ -299,6 +299,23 @@ PY_get_string6(
 // splicer end function.get_string6
 }
 
+static char PY_get_string7__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_get_string7(
+  PyObject *,  // self unused
+  PyObject *,  // args unused
+  PyObject *)  // kwds unused
+{
+// splicer begin function.get_string7
+    const std::string * rv = getString7();
+    PyObject * SH_Py_rv = PyString_FromString(rv->c_str());
+    return (PyObject *) SH_Py_rv;
+// splicer end function.get_string7
+}
+
 static char PY_accept_string_const_reference__doc__[] =
 "documentation"
 ;
@@ -376,6 +393,33 @@ PY_accept_string_reference(
     PyObject * SH_Py_arg1 = PyString_FromString(SH_arg1.c_str());
     return (PyObject *) *SH_Py_arg1;
 // splicer end function.accept_string_reference
+}
+
+static char PY_accept_string_pointer__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_accept_string_pointer(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.accept_string_pointer
+    char * arg1;
+    const char *SH_kwcpp = "arg1";
+    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:acceptStringPointer", SH_kw_list,
+        &arg1))
+    {
+        return NULL;
+    }
+    std::string SH_arg1(arg1);
+    acceptStringPointer(&SH_arg1);
+    PyObject * SH_Py_arg1 = PyString_FromString(SH_arg1->c_str());
+    return (PyObject *) *SH_Py_arg1;
+// splicer end function.accept_string_pointer
 }
 
 static char PY_explicit1__doc__[] =
@@ -511,9 +555,11 @@ static PyMethodDef PY_methods[] = {
 {"getString2_empty", (PyCFunction)PY_get_string2_empty, METH_NOARGS, PY_get_string2_empty__doc__},
 {"getString5", (PyCFunction)PY_get_string5, METH_NOARGS, PY_get_string5__doc__},
 {"getString6", (PyCFunction)PY_get_string6, METH_NOARGS, PY_get_string6__doc__},
+{"getString7", (PyCFunction)PY_get_string7, METH_NOARGS, PY_get_string7__doc__},
 {"acceptStringConstReference", (PyCFunction)PY_accept_string_const_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_const_reference__doc__},
 {"acceptStringReferenceOut", (PyCFunction)PY_accept_string_reference_out, METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference_out__doc__},
 {"acceptStringReference", (PyCFunction)PY_accept_string_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference__doc__},
+{"acceptStringPointer", (PyCFunction)PY_accept_string_pointer, METH_VARARGS|METH_KEYWORDS, PY_accept_string_pointer__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS, PY_explicit1__doc__},
 {"explicit2", (PyCFunction)PY_explicit2, METH_VARARGS|METH_KEYWORDS, PY_explicit2__doc__},
 {"CpassChar", (PyCFunction)PY_cpass_char, METH_VARARGS|METH_KEYWORDS, PY_cpass_char__doc__},

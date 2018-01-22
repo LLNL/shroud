@@ -57,17 +57,16 @@ class Typedef(object):
         ('forward', None),        # Forward declaration
         ('typedef', None),        # Initialize from existing type
 
-        ('cpp_type', None),       # Name of type in C++
-        ('cpp_to_c', '{cpp_var}'), # Expression to convert from C++ to C
-        ('cpp_header', None),     # Name of C++ header file required for implementation
-                                  # For example, if cpp_to_c was a function
-        ('cpp_local_var', False), # True if c_to_cpp requires a local C variable
+        ('cxx_type', None),       # Name of type in C++
+        ('cxx_to_c', '{cxx_var}'), # Expression to convert from C++ to C
+        ('cxx_header', None),     # Name of C++ header file required for implementation
+                                  # For example, if cxx_to_c was a function
 
         ('c_type', None),         # Name of type in C
         ('c_header', None),       # Name of C header file required for type
-        ('c_to_cpp', '{c_var}'),  # Expression to convert from C to C++
+        ('c_to_cxx', '{c_var}'),  # Expression to convert from C to C++
         ('c_statements', {}),
-        ('c_templates', {}),      # c_statements for cpp_T
+        ('c_templates', {}),      # c_statements for cxx_T
         ('c_return_code', None),
 
         ('f_c_args', None),       # List of argument names to F_C routine
@@ -169,8 +168,8 @@ class Typedef(object):
         """
         util.as_yaml(self, [
             'base',
-            'cpp_header',
-            'cpp_type',
+            'cxx_header',
+            'cxx_type',
             'c_type',
             'c_header',
             'f_derived_type',
@@ -214,16 +213,16 @@ def initialize():
         void=Typedef(
             'void',
             c_type='void',
-            cpp_type='void',
+            cxx_type='void',
             # fortran='subroutine',
             f_type='type(C_PTR)',
             f_module=dict(iso_c_binding=['C_PTR']),
-            PY_ctor='PyCapsule_New({cpp_var}, NULL, NULL)',
+            PY_ctor='PyCapsule_New({cxx_var}, NULL, NULL)',
             ),
         int=Typedef(
             'int',
             c_type='int',
-            cpp_type='int',
+            cxx_type='int',
             f_cast='int({f_var}, C_INT)',
             f_type='integer(C_INT)',
             f_module=dict(iso_c_binding=['C_INT']),
@@ -235,7 +234,7 @@ def initialize():
         long=Typedef(
             'long',
             c_type='long',
-            cpp_type='long',
+            cxx_type='long',
             f_cast='int({f_var}, C_LONG)',
             f_type='integer(C_LONG)',
             f_module=dict(iso_c_binding=['C_LONG']),
@@ -247,7 +246,7 @@ def initialize():
         long_long=Typedef(
             'long_long',
             c_type='long long',
-            cpp_type='long long',
+            cxx_type='long long',
             f_cast='int({f_var}, C_LONG_LONG)',
             f_type='integer(C_LONG_LONG)',
             f_module=dict(iso_c_binding=['C_LONG_LONG']),
@@ -259,7 +258,7 @@ def initialize():
         size_t=Typedef(
             'size_t',
             c_type='size_t',
-            cpp_type='size_t',
+            cxx_type='size_t',
             c_header='stdlib.h',
             f_cast='int({f_var}, C_SIZE_T)',
             f_type='integer(C_SIZE_T)',
@@ -273,7 +272,7 @@ def initialize():
         float=Typedef(
             'float',
             c_type='float',
-            cpp_type='float',
+            cxx_type='float',
             f_cast='real({f_var}, C_FLOAT)',
             f_type='real(C_FLOAT)',
             f_module=dict(iso_c_binding=['C_FLOAT']),
@@ -285,7 +284,7 @@ def initialize():
         double=Typedef(
             'double',
             c_type='double',
-            cpp_type='double',
+            cxx_type='double',
             f_cast='real({f_var}, C_DOUBLE)',
             f_type='real(C_DOUBLE)',
             f_module=dict(iso_c_binding=['C_DOUBLE']),
@@ -298,7 +297,7 @@ def initialize():
         bool=Typedef(
             'bool',
             c_type='bool',
-            cpp_type='bool',
+            cxx_type='bool',
 
             f_type='logical',
             f_c_type='logical(C_BOOL)',
@@ -335,7 +334,7 @@ def initialize():
             py_statements=dict(
                 intent_in=dict(
                     post_parse=[
-                        '{cpp_var} = PyObject_IsTrue({py_var});',
+                        '{cxx_var} = PyObject_IsTrue({py_var});',
                         ],
                     ),
                 ),
@@ -351,67 +350,65 @@ def initialize():
         # implies null terminated string
         char=Typedef(
             'char',
-            cpp_type='char',
-            # cpp_header='<string>',
-            # cpp_to_c='{cpp_var}.c_str()',  # . or ->
+            cxx_type='char',
 
             c_type='char',    # XXX - char *
 
             c_statements=dict(
                 intent_in_buf=dict(
                     buf_args = [ 'len_trim' ],
-                    cpp_local_var=True,
+                    cxx_local_var='pointer',
                     c_header='<stdlib.h> <string.h>',
-                    cpp_header='<stdlib.h> <cstring>',
+                    cxx_header='<stdlib.h> <cstring>',
                     pre_call=[
-                        'char * {cpp_var} = (char *) malloc({c_var_trim} + 1);',
-                        '{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});',
-                        '{cpp_var}[{c_var_trim}] = \'\\0\';'
+                        'char * {cxx_var} = (char *) malloc({c_var_trim} + 1);',
+                        '{stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});',
+                        '{cxx_var}[{c_var_trim}] = \'\\0\';'
                         ],
                     post_call=[
-                        'free({cpp_var});'
+                        'free({cxx_var});'
                         ],
                     ),
                 intent_out_buf=dict(
                     buf_args = [ 'len' ],
-                    cpp_local_var=True,
+                    cxx_local_var='pointer',
                     c_header='<stdlib.h>',
-                    cpp_header='<stdlib.h>',
+                    cxx_header='<stdlib.h>',
                     c_helper='ShroudStrCopy',
                     pre_call=[
-                        'char * {cpp_var} = (char *) malloc({c_var_len} + 1);',
+                        'char * {cxx_var} = (char *) malloc({c_var_len} + 1);',
                         ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-                        'free({cpp_var});',
+                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});',
+                        'free({cxx_var});',
                         ],
                     ),
                 intent_inout_buf=dict(
                     buf_args = [ 'len_trim', 'len' ],
-                    cpp_local_var=True,
+                    cxx_local_var='pointer',
                     c_helper='ShroudStrCopy',
                     c_header='<stdlib.h> <string.h>',
-                    cpp_header='<stdlib.h> <cstring>',
+                    cxx_header='<stdlib.h> <cstring>',
                     pre_call=[
-                        'char * {cpp_var} = (char *) malloc({c_var_len} + 1);',
-                        '{stdlib}memcpy({cpp_var}, {c_var}, {c_var_trim});',
-                        '{cpp_var}[{c_var_trim}] = \'\\0\';'
+                        'char * {cxx_var} = (char *) malloc({c_var_len} + 1);',
+                        '{stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});',
+                        '{cxx_var}[{c_var_trim}] = \'\\0\';'
                         ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
-                        'free({cpp_var});',
+                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});',
+                        'free({cxx_var});',
                         ],
                     ),
                 result_buf=dict(
                     buf_args = [ 'len' ],
                     c_header='<string.h>',
-                    cpp_header='<cstring>',
+                    cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
                     post_call=[
-                        'if ({cpp_var} == NULL) {{',
-                        '  {stdlib}memset({c_var}, \' \', {c_var_len});',
+                        'if ({cxx_var} == NULL) {{',
+                        '    {stdlib}memset({c_var}, \' \', {c_var_len});',
                         '}} else {{',
-                        '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});',
+                        '    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});',
                         '}}',
                         ],
                     ),
@@ -442,9 +439,7 @@ def initialize():
         # char scalar
         char_scalar=Typedef(
             'char_scalar',
-            cpp_type='char',
-            # cpp_header='<string>',
-            # cpp_to_c='{cpp_var}.c_str()',  # . or ->
+            cxx_type='char',
 
             c_type='char',    # XXX - char *
 
@@ -452,10 +447,10 @@ def initialize():
                 result_buf=dict(
                     buf_args = [ 'len' ],
                     c_header='<string.h>',
-                    cpp_header='<cstring>',
+                    cxx_header='<cstring>',
                     post_call=[
                         '{stdlib}memset({c_var}, \' \', {c_var_len});',
-                        '{c_var}[0] = {cpp_var};',
+                        '{c_var}[0] = {cxx_var};',
                     ],
                 ),
             ),
@@ -474,85 +469,83 @@ def initialize():
         # C++ std::string
         string=Typedef(
             'string',
-            cpp_type='std::string',
-            cpp_header='<string>',
-            cpp_to_c='{cpp_var}.c_str()',  # . or ->
+            cxx_type='std::string',
+            cxx_header='<string>',
+            cxx_to_c='{cxx_var}{cxx_deref}c_str()',  # cxx_deref is . or ->
 
             c_type='char',    # XXX - char *
 
             c_statements=dict(
                 intent_in=dict(
-                    cpp_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
-                        '{c_const}std::string {cpp_var}({c_var});'
+                        '{c_const}std::string {cxx_var}({c_var});'
                         ],
                 ),
                 intent_out=dict(
-                    cpp_header='<cstring>',
+                    cxx_header='<cstring>',
 #                    pre_call=[
 #                        'int {c_var_trim} = strlen({c_var});',
 #                        ],
-                    cpp_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
-                        '{c_const}std::string {cpp_var};'
+                        '{c_const}std::string {cxx_var};'
                         ],
                     post_call=[
-                        # This may overwrite c_var if cpp_val is too long
-                        'strcpy({c_var}, {cpp_val});'
-#                        'ShroudStrCopy({c_var}, {c_var_trim}, {cpp_val});'
+                        # This may overwrite c_var if cxx_val is too long
+                        'strcpy({c_var}, {cxx_var}{cxx_deref}c_str());'
                     ],
                 ),
                 intent_inout=dict(
-                    cpp_header='<cstring>',
-                    cpp_local_var=True,
+                    cxx_header='<cstring>',
+                    cxx_local_var='object',
                     pre_call=[
-                        '{c_const}std::string {cpp_var}({c_var});'
+                        '{c_const}std::string {cxx_var}({c_var});'
                         ],
                     post_call=[
-                        # This may overwrite c_var if cpp_val is too long
-                        'strcpy({c_var}, {cpp_val});'
-#                        'ShroudStrCopy({c_var}, {c_var_trim}, {cpp_val});'
+                        # This may overwrite c_var if cxx_val is too long
+                        'strcpy({c_var}, {cxx_var}{cxx_deref}c_str());'
                     ],
                 ),
                 intent_in_buf=dict(
                     buf_args = [ 'len_trim' ],
-                    cpp_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
                         ('{c_const}std::string '
-                         '{cpp_var}({c_var}, {c_var_trim});')
+                         '{cxx_var}({c_var}, {c_var_trim});')
                     ],
                 ),
                 intent_out_buf=dict(
                     buf_args = [ 'len' ],
                     c_helper='ShroudStrCopy',
-                    cpp_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
-                        'std::string {cpp_var};'
+                        'std::string {cxx_var};'
                     ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});'
+                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());'
                     ],
                 ),
                 intent_inout_buf=dict(
                     buf_args = [ 'len_trim', 'len' ],
                     c_helper='ShroudStrCopy',
-                    cpp_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
-                        'std::string {cpp_var}({c_var}, {c_var_trim});'
+                        'std::string {cxx_var}({c_var}, {c_var_trim});'
                     ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});'
+                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());'
                     ],
                 ),
                 result_buf=dict(
                     buf_args = [ 'len' ],
-                    cpp_header='<cstring>',
+                    cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
                     post_call=[
-                        'if ({cpp_var}.empty()) {{',
-                        '  {stdlib}memset({c_var}, \' \', {c_var_len});',
+                        'if ({cxx_var}{cxx_deref}empty()) {{',
+                        '    {stdlib}memset({c_var}, \' \', {c_var_len});',
                         '}} else {{',
-                        '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
+                        '    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());',
                         '}}',
                     ],
                 ),
@@ -574,9 +567,9 @@ def initialize():
 
             py_statements=dict(
                 intent_in=dict(
-                    cpp_local_var=True,
+                    cxx_local_var='object',
                     post_parse=[
-                        '{c_const}std::string {cpp_var}({c_var});'
+                        '{c_const}std::string {cxx_var}({c_var});'
                         ],
                     ),
                 ),
@@ -592,52 +585,52 @@ def initialize():
         # No c_type or f_type, use attr[template]
         vector=Typedef(
             'vector',
-            cpp_type='std::vector<{cpp_T}>',
-            cpp_header='<vector>',
-#            cpp_to_c='{cpp_var}.data()',  # C++11
+            cxx_type='std::vector<{cxx_T}>',
+            cxx_header='<vector>',
+#            cxx_to_c='{cxx_var}.data()',  # C++11
 
             c_statements=dict(
                 intent_in_buf=dict(
                     buf_args = [ 'size' ],
-                    cpp_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
-                        ('{c_const}std::vector<{cpp_T}> '
-                         '{cpp_var}({c_var}, {c_var} + {c_var_size});')
+                        ('{c_const}std::vector<{cxx_T}> '
+                         '{cxx_var}({c_var}, {c_var} + {c_var_size});')
                     ],
                 ),
                 intent_out_buf=dict(
                     buf_args = [ 'size' ],
-                    cpp_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
-                        '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var_size});'
+                        '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var_size});'
                     ],
                     post_call=[
                         '{{',
-                        '  std::vector<{cpp_T}>::size_type',
-                        '    {c_temp}i = 0,',
-                        '    {c_temp}n = {c_var_size};',
-                        '  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);',
-                        '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                        '    {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];',
-                        '  }}',
+                        '    std::vector<{cxx_T}>::size_type',
+                        '        {c_temp}i = 0,',
+                        '        {c_temp}n = {c_var_size};',
+                        '    {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);',
+                        '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
+                        '        {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];',
+                        '    }}',
                         '}}'
                     ],
                 ),
                 intent_inout_buf=dict(
                     buf_args = [ 'size' ],
-                    cpp_local_var=True,
+                    cxx_local_var='object',
                     pre_call=[
-                        'std::vector<{cpp_T}> {cpp_var}({c_var}, {c_var} + {c_var_size});'
+                        'std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
                     ],
                     post_call=[
                         '{{',
-                        '  std::vector<{cpp_T}>::size_type',
-                        '    {c_temp}i = 0,',
-                        '    {c_temp}n = {c_var_size};',
-                        '  {c_temp}n = std::min({cpp_var}.size(), {c_temp}n);',
-                        '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                        '      {c_var}[{c_temp}i] = {cpp_var}[{c_temp}i];',
-                        '  }}',
+                        '    std::vector<{cxx_T}>::size_type',
+                        '        {c_temp}i = 0,',
+                        '        {c_temp}n = {c_var_size};',
+                        '    {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);',
+                        '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
+                        '          {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];',
+                        '    }}',
                         '}}'
                     ],
                 ),
@@ -645,10 +638,10 @@ def initialize():
 #                    buf_args = [ 'size' ],
 #                    c_helper='ShroudStrCopy',
 #                    post_call=[
-#                        'if ({cpp_var}.empty()) {{',
+#                        'if ({cxx_var}.empty()) {{',
 #                        '  std::memset({c_var}, \' \', {c_var_len});',
 #                        '}} else {{',
-#                        '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
+#                        '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());',
 #                        '}}',
 #                    ],
 #                ),
@@ -661,79 +654,79 @@ def initialize():
                     intent_in_buf=dict(
                         buf_args = [ 'size', 'len' ],
                         c_helper='ShroudLenTrim',
-                        cpp_local_var=True,
+                        cxx_local_var='object',
                         pre_call=[
-                            'std::vector<{cpp_T}> {cpp_var};',
+                            'std::vector<{cxx_T}> {cxx_var};',
                             '{{',
-                            '  {c_const}char * BBB = {c_var};',
-                            '  std::vector<{cpp_T}>::size_type',
-                            '    {c_temp}i = 0,',
-                            '    {c_temp}n = {c_var_size};',
-                            '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                            '    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));',
-                            '    BBB += {c_var_len};',
-                            '  }}',
+                            '      {c_const}char * BBB = {c_var};',
+                            '      std::vector<{cxx_T}>::size_type',
+                            '        {c_temp}i = 0,',
+                            '        {c_temp}n = {c_var_size};',
+                            '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
+                            '        {cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));',
+                            '        BBB += {c_var_len};',
+                            '    }}',
                             '}}'
                         ],
                     ),
                     intent_out_buf=dict(
                         buf_args = [ 'size', 'len' ],
                         c_helper='ShroudLenTrim',
-                        cpp_local_var=True,
+                        cxx_local_var='object',
                         pre_call=[
-                            '{c_const}std::vector<{cpp_T}> {cpp_var};'
+                            '{c_const}std::vector<{cxx_T}> {cxx_var};'
                         ],
                         post_call=[
                             '{{',
-                            '  char * BBB = {c_var};',
-                            '  std::vector<{cpp_T}>::size_type',
-                            '    {c_temp}i = 0,',
-                            '    {c_temp}n = {c_var_size};',
-                            '  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);',
-                            '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                            '    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());',
-                            '    BBB += {c_var_len};',
-                            '  }}',
+                            '    char * BBB = {c_var};',
+                            '    std::vector<{cxx_T}>::size_type',
+                            '        {c_temp}i = 0,',
+                            '        {c_temp}n = {c_var_size};',
+                            '    {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);',
+                            '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
+                            '        ShroudStrCopy(BBB, {c_var_len}, {cxx_var}[{c_temp}i].c_str());',
+                            '        BBB += {c_var_len};',
+                            '    }}',
                             '}}'
                         ],
                     ),
                     intent_inout_buf=dict(
                         buf_args = [ 'size', 'len' ],
-                        cpp_local_var=True,
+                        cxx_local_var='object',
                         pre_call=[
-                            'std::vector<{cpp_T}> {cpp_var};',
+                            'std::vector<{cxx_T}> {cxx_var};',
                             '{{',
-                            '  {c_const}char * BBB = {c_var};',
-                            '  std::vector<{cpp_T}>::size_type',
-                            '    {c_temp}i = 0,',
-                            '    {c_temp}n = {c_var_size};',
-                            '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                            '    {cpp_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));',
-                            '    BBB += {c_var_len};',
-                            '  }}',
+                            '    {c_const}char * BBB = {c_var};',
+                            '    std::vector<{cxx_T}>::size_type',
+                            '        {c_temp}i = 0,',
+                            '        {c_temp}n = {c_var_size};',
+                            '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
+                            '        {cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));',
+                            '        BBB += {c_var_len};',
+                            '    }}',
                             '}}'
                         ],
                         post_call=[
                             '{{',
-                            '  char * BBB = {c_var};',
-                            '  std::vector<{cpp_T}>::size_type',
-                            '    {c_temp}i = 0,',
-                            '    {c_temp}n = {c_var_size};',
-                            '  {c_temp}n = std::min({cpp_var}.size(),{c_temp}n);',
-                            '  for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                            '    ShroudStrCopy(BBB, {c_var_len}, {cpp_var}[{c_temp}i].c_str());',
-                            '    BBB += {c_var_len};',
-                            '  }}',
+                            '    char * BBB = {c_var};',
+                            '    std::vector<{cxx_T}>::size_type',
+                            '        {c_temp}i = 0,',
+                            '        {c_temp}n = {c_var_size};',
+                            '    {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);',
+                            '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
+                            '        ShroudStrCopy(BBB, {c_var_len}, {cxx_var}[{c_temp}i].c_str());',
+                            '        BBB += {c_var_len};',
+                            '    }}',
                             '}}'
                         ],
                     ),
 #                    result_buf=dict(
 #                        c_helper='ShroudStrCopy',
 #                        post_call=[
-#                            'if ({cpp_var}.empty()) {{',
+#                            'if ({cxx_var}.empty()) {{',
 #                            '  std::memset({c_var}, \' \', {c_var_len});',
 #                            '}} else {{',
-#                            '  ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});',
+#                            '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());',
 #                            '}}',
 #                        ],
 #                    ),
@@ -745,9 +738,9 @@ def initialize():
 
 #            py_statements=dict(
 #                intent_in=dict(
-#                    cpp_local_var=True,
+#                    cxx_local_var=True,
 #                    post_parse=[
-#                        '{c_const}std::vector<{cpp_T}> {cpp_var}({c_var});'
+#                        '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var});'
 #                        ],
 #                    ),
 #                ),
@@ -761,15 +754,15 @@ def initialize():
 
         MPI_Comm=Typedef(
             'MPI_Comm',
-            cpp_type='MPI_Comm',
+            cxx_type='MPI_Comm',
             c_header='mpi.h',
             c_type='MPI_Fint',
             # usually, MPI_Fint will be equivalent to int
             f_type='integer',
             f_c_type='integer(C_INT)',
             f_c_module=dict(iso_c_binding=['C_INT']),
-            cpp_to_c='MPI_Comm_c2f({cpp_var})',
-            c_to_cpp='MPI_Comm_f2c({c_var})',
+            cxx_to_c='MPI_Comm_c2f({cxx_var})',
+            c_to_cxx='MPI_Comm_f2c({c_var})',
             ),
         )
 
@@ -790,8 +783,7 @@ def initialize():
 
 def create_class_typedef(cls):
     name = cls.name
-    fmt_class = cls._fmt
-    options = cls.options
+    fmt_class = cls.fmtdict
 
     typedef = Typedef.lookup(name)
     if typedef is None:
@@ -801,11 +793,11 @@ def create_class_typedef(cls):
         typedef = Typedef(
             name,
             base='wrapped',
-            cpp_type=name,
+            cxx_type=name,
             c_type=cname,
-            f_derived_type=cls.F_derived_name or unname,
+            f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[unname]},
-            f_to_c = '{f_var}%%%s()' % options.F_name_instance_get,
+            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
             )
         typedef_wrapped_defaults(typedef)
         Typedef.register(name, typedef)
@@ -822,20 +814,31 @@ def typedef_wrapped_defaults(typedef):
     if typedef.base != 'wrapped':
         return
 
-    typedef.cpp_to_c=('static_cast<{c_const}%s *>('
-                      'static_cast<{c_const}void *>({cpp_var}))' %
+    typedef.cxx_to_c=('static_cast<{c_const}%s *>('
+                      'static_cast<{c_const}void *>({cxx_var}))' %
                       typedef.c_type)
 
     # opaque pointer -> void pointer -> class instance pointer
-    typedef.c_to_cpp=('static_cast<{c_const}%s{c_ptr}>('
+    typedef.c_to_cxx=('static_cast<{c_const}%s{c_ptr}>('
                       'static_cast<{c_const}void *>({c_var}))' %
-                      typedef.cpp_type)
+                      typedef.cxx_type)
 
     typedef.f_type='type(%s)' % typedef.f_derived_type
     typedef.f_c_type='type(C_PTR)'
 
     # XXX module name may not conflict with type name
 #    typedef.f_module={fmt_class.F_module_name:[unname]}
+
+    typedef.c_statements = dict(
+        intent_in=dict(
+            cxx_local_var = 'pointer',
+            pre_call = [
+                '{c_const}%s{c_ptr}{cxx_var} = static_cast<{c_const}%s{c_ptr}>('
+                'static_cast<{c_const}void *>({c_var}));' % (
+                    typedef.cxx_type, typedef.cxx_type)
+                ],
+        )
+    )
 
     # return from C function
     # f_c_return_decl='type(CPTR)' % unname,
@@ -853,14 +856,14 @@ def typedef_wrapped_defaults(typedef):
     typedef.py_statements=dict(
         intent_in=dict(
             post_parse=[
-                '{cpp_var} = {py_var} ? {py_var}->{BBB} : NULL;',
+                '{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;',
             ],
         ),
         intent_out=dict(
             ctor=[
                 ('{PyObject} * {py_var} = '
                  'PyObject_New({PyObject}, &{PyTypeObject});'),
-                '{py_var}->{BBB} = {cpp_var};',
+                '{py_var}->{PY_obj} = {cxx_var};',
             ]
         ),
     )
@@ -873,7 +876,7 @@ def typedef_wrapped_defaults(typedef):
     # typedef.LUA_statements={}
 
     # allow forward declarations to avoid recursive headers
-    typedef.forward=typedef.cpp_type
+    typedef.forward=typedef.cxx_type
 
 
 def lookup_c_statements(arg):
@@ -887,9 +890,9 @@ def lookup_c_statements(arg):
 
     c_statements = arg_typedef.c_statements
     if 'template' in attrs:
-        cpp_T = attrs['template']
-        cpp_T = Typedef.resolve_alias(cpp_T)
+        cxx_T = attrs['template']
+        cxx_T = Typedef.resolve_alias(cxx_T)
         c_statements = arg_typedef.c_templates.get(
-            cpp_T, c_statements)
-        arg_typedef = Typedef.lookup(cpp_T)
+            cxx_T, c_statements)
+        arg_typedef = Typedef.lookup(cxx_T)
     return arg_typedef, c_statements

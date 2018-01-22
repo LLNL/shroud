@@ -126,7 +126,7 @@ class Wrapf(util.WrapperMixin):
     def wrap_library(self):
         newlibrary = self.newlibrary
         options = newlibrary.options
-        fmt_library = newlibrary._fmt
+        fmt_library = newlibrary.fmtdict
         fmt_library.F_result_clause = ''
         fmt_library.F_pure_clause = ''
         fmt_library.F_C_result_clause = ''
@@ -136,6 +136,8 @@ class Wrapf(util.WrapperMixin):
         self._begin_output_file()
         self._push_splicer('class')
         for node in newlibrary.classes:
+            if not node.options.wrap_fortran:
+                continue
             self._begin_class()
 
             name = node.name
@@ -201,12 +203,12 @@ class Wrapf(util.WrapperMixin):
         unname = util.un_camel(name)
         typedef = typemap.Typedef.lookup(name)
 
-        fmt_class = node._fmt
+        fmt_class = node.fmtdict
 
         fmt_class.F_derived_name = typedef.f_derived_type
 
         # wrap methods
-        self._push_splicer(fmt_class.cpp_class)
+        self._push_splicer(fmt_class.cxx_class)
         self._create_splicer('module_use', self.use_stmts)
         self._push_splicer('method')
         for method in node.functions:
@@ -215,11 +217,11 @@ class Wrapf(util.WrapperMixin):
         self.write_object_get_set(node, fmt_class)
         self.impl.append('')
         self._create_splicer('additional_functions', self.impl)
-        self._pop_splicer(fmt_class.cpp_class)
+        self._pop_splicer(fmt_class.cxx_class)
 
         # type declaration
         self.f_type_decl.append('')
-        self._push_splicer(fmt_class.cpp_class)
+        self._push_splicer(fmt_class.cxx_class)
         self._create_splicer('module_top', self.f_type_decl)
         self.f_type_decl.extend([
                 '',
@@ -258,7 +260,7 @@ class Wrapf(util.WrapperMixin):
         self.c_interface.append('')
         self._create_splicer('additional_interfaces', self.c_interface)
 
-        self._pop_splicer(fmt_class.cpp_class)
+        self._pop_splicer(fmt_class.cxx_class)
 
         # overload operators
         self.overload_compare(
@@ -281,14 +283,13 @@ class Wrapf(util.WrapperMixin):
         """
         options = node.options
         impl = self.impl
-        fmt = util.Options(fmt_class)
+        fmt = util.Scope(fmt_class)
 
         # get
-        fmt.underscore_name = options['F_name_instance_get']
+        fmt.underscore_name = fmt_class.F_name_instance_get
         if fmt.underscore_name:
-            fmt.underscore_name = options['F_name_instance_get']
-            fmt.F_name_function = wformat(options['F_name_function_template'], fmt)
-            fmt.F_name_impl = wformat(options['F_name_impl_template'], fmt)
+            fmt.F_name_function = wformat(options.F_name_function_template, fmt)
+            fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
             self.type_bound_part.append('procedure :: %s => %s' % (
                     fmt.F_name_function, fmt.F_name_impl))
@@ -307,10 +308,10 @@ class Wrapf(util.WrapperMixin):
             append_format(impl, 'end function {F_name_impl}', fmt)
 
         # set
-        fmt.underscore_name = options['F_name_instance_set']
+        fmt.underscore_name = fmt_class.F_name_instance_set
         if fmt.underscore_name:
-            fmt.F_name_function = wformat(options['F_name_function_template'], fmt)
-            fmt.F_name_impl = wformat(options['F_name_impl_template'], fmt)
+            fmt.F_name_function = wformat(options.F_name_function_template, fmt)
+            fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
             self.type_bound_part.append('procedure :: %s => %s' % (
                     fmt.F_name_function, fmt.F_name_impl))
@@ -331,10 +332,10 @@ class Wrapf(util.WrapperMixin):
             append_format(impl, 'end subroutine {F_name_impl}', fmt)
 
         # associated
-        fmt.underscore_name = options['F_name_associated']
+        fmt.underscore_name = fmt_class.F_name_associated
         if fmt.underscore_name:
-            fmt.F_name_function = wformat(options['F_name_function_template'], fmt)
-            fmt.F_name_impl = wformat(options['F_name_impl_template'], fmt)
+            fmt.F_name_function = wformat(options.F_name_function_template, fmt)
+            fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
             self.type_bound_part.append('procedure :: %s => %s' % (
                     fmt.F_name_function, fmt.F_name_impl))
@@ -354,7 +355,7 @@ class Wrapf(util.WrapperMixin):
     def overload_compare(self, fmt_class, operator, procedure, predicate):
         """ Overload .eq. and .eq.
         """
-        fmt = util.Options(fmt_class)
+        fmt = util.Scope(fmt_class)
         fmt.procedure = procedure
         fmt.predicate = predicate
 
@@ -410,7 +411,7 @@ class Wrapf(util.WrapperMixin):
             return
 
         self.log.write(', '.join(wrap))
-        self.log.write(" {0} {1._decl}\n".format(cls_function, node))
+        self.log.write(" {0} {1.declgen}\n".format(cls_function, node))
 
         # Create fortran wrappers first.
         # If no real work to do, call the C function directly.
@@ -469,10 +470,10 @@ class Wrapf(util.WrapperMixin):
         multiple Fortran wrappers.
         """
         options = node.options
-        fmt_func = node._fmt
-        fmt = util.Options(fmt_func)
+        fmt_func = node.fmtdict
+        fmt = util.Scope(fmt_func)
 
-        ast = node._ast
+        ast = node.ast
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
@@ -481,15 +482,15 @@ class Wrapf(util.WrapperMixin):
         subprogram = node._subprogram
 
         if node._generated == 'arg_to_buffer':
-            intent_grp = '_buf'
+            generated_suffix = '_buf'
         else:
-            intent_grp = ''
+            generated_suffix = ''
 
         if is_dtor or node.return_this:
             result_type = 'void'
             subprogram = 'subroutine'
-        elif node.C_return_type is not None:
-            result_type = node.C_return_type
+        elif fmt_func.C_custom_return_type:
+            result_type = fmt_func.C_custom_return_type
             subprogram = 'function'
 
         result_typedef = typemap.Typedef.lookup(result_type)
@@ -544,9 +545,9 @@ class Wrapf(util.WrapperMixin):
                 arg_c_decl.append(arg.bind_c())
 
             if attrs.get('_is_result', False):
-                c_stmts = 'result' + intent_grp
+                c_stmts = 'result' + generated_suffix
             else:
-                c_stmts = 'intent_' + intent + intent_grp
+                c_stmts = 'intent_' + intent + generated_suffix
 
             c_intent_blk = c_statements.get(c_stmts, {})
 
@@ -616,7 +617,7 @@ class Wrapf(util.WrapperMixin):
         Wrap implementation of Fortran function
         """
         options = node.options
-        fmt_func = node._fmt
+        fmt_func = node.fmtdict
 
         # Assume that the C function can be called directly.
         # If the wrapper does any work, then set need_wraper to True
@@ -636,11 +637,11 @@ class Wrapf(util.WrapperMixin):
 #        if len(node.params) != len(C_node.params):
 #            raise RuntimeError("Argument mismatch between Fortran and C functions")
 
-        fmt_func.F_C_call = C_node._fmt.F_C_name
+        fmt_func.F_C_call = C_node.fmtdict.F_C_name
         fmtargs = C_node._fmtargs
 
         # Fortran return type
-        ast = node._ast
+        ast = node.ast
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
@@ -649,34 +650,37 @@ class Wrapf(util.WrapperMixin):
         c_subprogram = C_node._subprogram
 
         if C_node._generated == 'arg_to_buffer':
-            intent_grp = '_buf'
+            generated_suffix = '_buf'
         else:
-            intent_grp = ''
+            generated_suffix = ''
 
         if is_dtor or node.return_this:
             result_type = 'void'
             subprogram = 'subroutine'
             c_subprogram = 'subroutine'
-        elif node.C_return_type is not None:
+        elif fmt_func.C_custom_return_type:
             # User has changed the return type of the C function
             # TODO: probably needs to be more clever about
             # setting pointer or reference fields too.
             # Maybe parse result_type instead of copy.
-            result_type = node.C_return_type
+            result_type = fmt_func.C_custom_return_type
             subprogram = 'function'
             c_subprogram = 'function'
-            ast = copy.deepcopy(node._ast)
+            ast = copy.deepcopy(node.ast)
             ast.typename = result_type
 
         result_typedef = typemap.Typedef.lookup(result_type)
+        if not result_typedef:
+            raise RuntimeError("Unknown type {} in {}",
+                               result_type, fmt_func.function_name)
 
-        result_intent_grp = ''
+        result_generated_suffix = ''
         if is_pure:
-            result_intent_grp = '_pure'
+            result_generated_suffix = '_pure'
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        if result_typedef.f_statements.get('result' + result_intent_grp, {}) \
+        if result_typedef.f_statements.get('result' + result_generated_suffix, {}) \
                                       .get('need_wrapper', False):
             need_wrapper = True
 
@@ -713,10 +717,10 @@ class Wrapf(util.WrapperMixin):
         post_call = []
         f_args = ast.params
         f_index = -1       # index into f_args
-        for c_arg in C_node._ast.params:
+        for c_arg in C_node.ast.params:
             arg_name = c_arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg  = fmt_arg0.setdefault('fmtf', util.Options(fmt_func))
+            fmt_arg  = fmt_arg0.setdefault('fmtf', util.Scope(fmt_func))
             fmt_arg.f_var = arg_name
             fmt_arg.c_var = arg_name
 
@@ -724,7 +728,7 @@ class Wrapf(util.WrapperMixin):
             c_attrs = c_arg.attrs
             intent = c_attrs['intent']
             if c_attrs.get('_is_result', False):
-                c_stmts = 'result' + intent_grp
+                c_stmts = 'result' + generated_suffix
                 result_as_arg = fmt_func.F_string_result_as_arg
                 if not result_as_arg:
                     # passing Fortran function result variable down to C
@@ -733,7 +737,7 @@ class Wrapf(util.WrapperMixin):
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = 'intent_' + intent + intent_grp
+                c_stmts = 'intent_' + intent + generated_suffix
 
             if f_arg:
                 # An argument to the C and Fortran function
@@ -748,8 +752,8 @@ class Wrapf(util.WrapperMixin):
                 base_typedef = arg_typedef
                 if 'template' in c_attrs:
                     # If a template, use its type
-                    cpp_T = c_attrs['template']
-                    arg_typedef = typemap.Typedef.lookup(cpp_T)
+                    cxx_T = c_attrs['template']
+                    arg_typedef = typemap.Typedef.lookup(cxx_T)
 
                 f_statements = arg_typedef.f_statements
                 f_stmts = 'intent_' + intent
@@ -852,7 +856,7 @@ class Wrapf(util.WrapperMixin):
             # Add method to derived type
             if node._overloaded:
                 need_wrapper = True
-            if not node._CPP_return_templated:
+            if not node._CXX_return_templated:
                 # if return type is templated in C++,
                 # then do not set up generic since only the
                 # return type may be different (ex. getValue<T>())
@@ -869,9 +873,9 @@ class Wrapf(util.WrapperMixin):
         # XXX sname = fmt_func.F_name_impl
         sname = fmt_func.F_name_function
         splicer_code = self.splicer_stack[-1].get(sname, None)
-        if node.F_code is not None:
+        if fmt_func.inlocal('F_code'):
             need_wrapper = True
-            F_code = [wformat(node.F_code, fmt_func)]
+            F_code = [wformat(fmt_func.F_code, fmt_func)]
         elif splicer_code:
             need_wrapper = True
             F_code = splicer_code
@@ -884,7 +888,7 @@ class Wrapf(util.WrapperMixin):
                 self.append_method_arguments(F_code, fmt_func.F_call_code)
             elif c_subprogram == 'function':
                 f_statements = result_typedef.f_statements
-                intent_blk = f_statements.get('result' + result_intent_grp,{})
+                intent_blk = f_statements.get('result' + result_generated_suffix,{})
                 cmd_list = intent_blk.get('call', [
                         '{F_result} = {F_C_call}({F_arg_c_call_tab})'])
 #                for cmd in cmd_list:  # only allow a single statment for now
@@ -915,7 +919,7 @@ class Wrapf(util.WrapperMixin):
             impl = self.impl
             impl.append('')
             if options.debug:
-                impl.append('! %s' % node._decl)
+                impl.append('! %s' % node.declgen)
                 if generated:
                     impl.append('! %s' % ' - '.join(generated))
                 impl.append('! function_index=%d' % node._function_index)
@@ -959,7 +963,7 @@ class Wrapf(util.WrapperMixin):
         """
         node = cls or library
         options = node.options
-        fmt_node = node._fmt
+        fmt_node = node.fmtdict
         fname = fmt_node.F_impl_filename
         module_name = fmt_node.F_module_name
 

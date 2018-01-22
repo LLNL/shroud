@@ -284,7 +284,6 @@ PP_testgroup1(
   PyObject *kwds)
 {
 // splicer begin function.testgroup1
-    axom::sidre::Group * grp;
     PyObject * SH_Py_grp;
     const char *SH_kwcpp = "grp";
     char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
@@ -294,9 +293,8 @@ PP_testgroup1(
     {
         return NULL;
     }
-    SH_grp = SH_Py_grp ? SH_Py_grp->BBB : NULL;
-    axom::sidre::Group * SH_grp = static_cast<axom::sidre::Group *>(static_cast<void *>(grp));
-    testgroup1(SH_grp);
+    axom::sidre::Group * grp = SH_Py_grp ? SH_Py_grp->obj : NULL;
+    testgroup1(grp);
     Py_RETURN_NONE;
 // splicer end function.testgroup1
 }
@@ -312,7 +310,6 @@ PP_testgroup2(
   PyObject *kwds)
 {
 // splicer begin function.testgroup2
-    const axom::sidre::Group * grp;
     PyObject * SH_Py_grp;
     const char *SH_kwcpp = "grp";
     char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
@@ -322,9 +319,8 @@ PP_testgroup2(
     {
         return NULL;
     }
-    SH_grp = SH_Py_grp ? SH_Py_grp->BBB : NULL;
-    const axom::sidre::Group * SH_grp = static_cast<const axom::sidre::Group *>(static_cast<const void *>(grp));
-    testgroup2(SH_grp);
+    const axom::sidre::Group * grp = SH_Py_grp ? SH_Py_grp->obj : NULL;
+    testgroup2(grp);
     Py_RETURN_NONE;
 // splicer end function.testgroup2
 }

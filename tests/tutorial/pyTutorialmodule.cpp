@@ -487,7 +487,6 @@ PY_useclass(
   PyObject *kwds)
 {
 // splicer begin function.useclass
-    const Class1 * arg1;
     PY_Class1 * SH_Py_arg1;
     const char *SH_kwcpp = "arg1";
     char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
@@ -497,7 +496,7 @@ PY_useclass(
     {
         return NULL;
     }
-    arg1 = SH_Py_arg1 ? SH_Py_arg1->BBB : NULL;
+    const Class1 * arg1 = SH_Py_arg1 ? SH_Py_arg1->obj : NULL;
     useclass(arg1);
     Py_RETURN_NONE;
 // splicer end function.useclass

@@ -57,11 +57,11 @@ class UtilCase(unittest.TestCase):
                          'get_http_response_code')
 
 
-class OptionCase(unittest.TestCase):
+class ScopeCase(unittest.TestCase):
 
     def setUp(self):
-        self.lev0 = util.Options(None, a=1, b=2, c=3)
-        self.lev1 = util.Options(self.lev0, x=100, y=1, z=102)
+        self.lev0 = util.Scope(None, a=1, b=2, c=3)
+        self.lev1 = util.Scope(self.lev0, x=100, y=1, z=102)
 
     def test_access01(self):
         # 'a' accessable from both

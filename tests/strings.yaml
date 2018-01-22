@@ -44,7 +44,7 @@ copyright:
 #
 
 library: strings
-cpp_header: strings.hpp
+cxx_header: strings.hpp
 
 options:
   debug: True
@@ -90,7 +90,7 @@ functions:
 #  C_error_pattern: C_char_invalid_name
   doxygen:
     brief: return a 'const char *' as argument
-  options:
+  format:
     F_string_result_as_arg: output
 
 ########################################
@@ -110,7 +110,7 @@ functions:
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string&' as argument
-  options:
+  format:
     F_string_result_as_arg: output
 
 - decl: const string& getString2_empty+len=30()
@@ -136,8 +136,21 @@ functions:
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
-  options:
+  format:
     F_string_result_as_arg: output
+
+########################################
+# return std::string *
+
+- decl: const string * getString7+len=30()
+#  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const string *' as character(*)
+  description: |
+      It is the caller's responsibility to release the string
+      created by the C++ library.
+  format:
+    C_finalize_buf: delete {C_result};
 
 ########################################
 
@@ -165,9 +178,9 @@ functions:
        arg1 is assumed to be intent(INOUT)
        Must copy in and copy out.
 
-#- decl: void acceptStringPointer(std::string * arg1)
-#  doxygen:
-#    brief: Accept a string pointer
+- decl: void acceptStringPointer(std::string * arg1)
+  doxygen:
+    brief: Accept a string pointer
 
 #- decl: void acceptStringInstance(std::string arg1)
 #  doxygen:
@@ -179,7 +192,7 @@ functions:
 # local declarations shadow parameter
 
 - decl: void explicit1(char * name+len_trim(AAlen)+intent(in))
-  options:
+  format:
     C_bufferify_suffix: _BUFFER
 # len_trim is added for free because intent(in)
 
@@ -220,12 +233,12 @@ functions:
 ########################################
 patterns:
     C_invalid_name: |
-        if ({cpp_var}.empty()) {{
+        if ({cxx_var}.empty()) {{
             return NULL;
         }}
     # return a blank field string if an error occurs
-#    C_invalid_name_as_buffer: |
-#        if ({cpp_var}.empty()) {{
+#    C_invalid_name_buf: |
+#        if ({cxx_var}.empty()) {{
 #            std::memset({c_var}, ' ', {c_var_len});
 #            return;
 #        }}

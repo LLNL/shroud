@@ -1,6 +1,5 @@
-// wrapClass1.cpp
+// wrapExClass3.h
 // This is generated code, do not edit
-// #######################################################################
 // Copyright (c) 2017, Lawrence Livermore National Security, LLC.
 // Produced at the Lawrence Livermore National Laboratory
 //
@@ -40,23 +39,35 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-#include "wrapClass1.h"
-#include "class_header.hpp"
-#include "type_header.hpp"
+/**
+ * \file wrapExClass3.h
+ * \brief Shroud generated wrapper for ExClass3 class
+ */
+// For C users and C++ implementation
 
-namespace three {
+#ifndef WRAPEXCLASS3_H
+#define WRAPEXCLASS3_H
+#ifdef USE_CLASS3
 
+// splicer begin class.ExClass3.CXX_declarations
+// splicer end class.ExClass3.CXX_declarations
 
+#ifdef __cplusplus
 extern "C" {
+#endif
 
+// declaration of wrapped types
+struct s_AA_exclass3;
+typedef struct s_AA_exclass3 AA_exclass3;
 
-void DEF_class1_method1(DEF_class1 * self, int arg1)
-{
-    Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
-    SH_this->method1(arg1);
-    return;
+// splicer begin class.ExClass3.C_declarations
+// splicer end class.ExClass3.C_declarations
+
+void AA_exclass3_exfunc(AA_exclass3 * self);
+
+#ifdef __cplusplus
 }
+#endif
+#endif  // ifdef USE_CLASS3
 
-}  // extern "C"
-
-}  // namespace three
+#endif  // WRAPEXCLASS3_H

@@ -1,6 +1,5 @@
-! foo.f
+! wrapfExClass3.f
 ! This is generated code, do not edit
-! #######################################################################
 ! Copyright (c) 2017, Lawrence Livermore National Security, LLC.
 ! Produced at the Lawrence Livermore National Laboratory
 !
@@ -41,128 +40,103 @@
 !
 ! #######################################################################
 !>
-!! \file foo.f
-!! \brief Shroud generated wrapper for Names class
+!! \file wrapfExClass3.f
+!! \brief Shroud generated wrapper for ExClass3 class
 !<
 ! splicer begin file_top
 ! splicer end file_top
-module name_module
+module exclass3_mod
     use iso_c_binding, only : C_PTR
-    ! splicer begin class.Names.module_use
-    ! splicer end class.Names.module_use
+    ! splicer begin class.ExClass3.module_use
+    ! splicer end class.ExClass3.module_use
     implicit none
 
 
-    ! splicer begin class.Names.module_top
-    ! splicer end class.Names.module_top
+    ! splicer begin class.ExClass3.module_top
+    ! splicer end class.ExClass3.module_top
 
-    type FNames
+    type exclass3
         type(C_PTR), private :: voidptr
-        ! splicer begin class.Names.component_part
-        ! splicer end class.Names.component_part
+        ! splicer begin class.ExClass3.component_part
+        ! splicer end class.ExClass3.component_part
     contains
-        procedure :: type_method1 => names_method1
-        procedure :: method2 => names_method2
-        procedure :: get_instance => names_get_instance
-        procedure :: set_instance => names_set_instance
-        procedure :: associated => names_associated
-        ! splicer begin class.Names.type_bound_procedure_part
-        ! splicer end class.Names.type_bound_procedure_part
-    end type FNames
+        procedure :: exfunc => exclass3_exfunc
+        procedure :: yadda => exclass3_yadda
+        procedure :: associated => exclass3_associated
+        ! splicer begin class.ExClass3.type_bound_procedure_part
+        ! splicer end class.ExClass3.type_bound_procedure_part
+    end type exclass3
 
 
     interface operator (.eq.)
-        module procedure names_eq
+        module procedure exclass3_eq
     end interface
 
     interface operator (.ne.)
-        module procedure names_ne
+        module procedure exclass3_ne
     end interface
 
     interface
 
-        subroutine xxx_tes_names_method1(self) &
-                bind(C, name="XXX_TES_names_method1")
+        subroutine c_exclass3_exfunc(self) &
+                bind(C, name="AA_exclass3_exfunc")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: self
-        end subroutine xxx_tes_names_method1
+        end subroutine c_exclass3_exfunc
 
-        subroutine xxx_tes_names_method2(self2) &
-                bind(C, name="XXX_TES_names_method2")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), value, intent(IN) :: self2
-        end subroutine xxx_tes_names_method2
-
-        ! splicer begin class.Names.additional_interfaces
-        ! splicer end class.Names.additional_interfaces
+        ! splicer begin class.ExClass3.additional_interfaces
+        ! splicer end class.ExClass3.additional_interfaces
     end interface
 
 contains
 
-    ! void method1()
-    ! function_index=0
-    subroutine names_method1(obj)
-        class(FNames) :: obj
-        ! splicer begin class.Names.method.type_method1
-        call xxx_tes_names_method1(obj%voidptr)
-        ! splicer end class.Names.method.type_method1
-    end subroutine names_method1
+    ! void exfunc()
+    ! function_index=48
+    subroutine exclass3_exfunc(obj)
+        class(exclass3) :: obj
+        ! splicer begin class.ExClass3.method.exfunc
+        call c_exclass3_exfunc(obj%voidptr)
+        ! splicer end class.ExClass3.method.exfunc
+    end subroutine exclass3_exfunc
 
-    ! void method2()
-    ! function_index=1
-    subroutine names_method2(obj2)
-        class(FNames) :: obj2
-        ! splicer begin class.Names.method.method2
-        call xxx_tes_names_method2(obj2%voidptr)
-        ! splicer end class.Names.method.method2
-    end subroutine names_method2
-
-    function names_get_instance(obj) result (voidptr)
+    function exclass3_yadda(obj) result (voidptr)
         use iso_c_binding, only: C_PTR
-        class(FNames), intent(IN) :: obj
+        class(exclass3), intent(IN) :: obj
         type(C_PTR) :: voidptr
         voidptr = obj%voidptr
-    end function names_get_instance
+    end function exclass3_yadda
 
-    subroutine names_set_instance(obj, voidptr)
-        use iso_c_binding, only: C_PTR
-        class(FNames), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: voidptr
-        obj%voidptr = voidptr
-    end subroutine names_set_instance
-
-    function names_associated(obj) result (rv)
+    function exclass3_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(FNames), intent(IN) :: obj
+        class(exclass3), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%voidptr)
-    end function names_associated
+    end function exclass3_associated
 
-    ! splicer begin class.Names.additional_functions
-    ! splicer end class.Names.additional_functions
+    ! splicer begin class.ExClass3.additional_functions
+    ! splicer end class.ExClass3.additional_functions
 
-    function names_eq(a,b) result (rv)
+    function exclass3_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(FNames), intent(IN) ::a,b
+        type(exclass3), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%voidptr, b%voidptr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function names_eq
+    end function exclass3_eq
 
-    function names_ne(a,b) result (rv)
+    function exclass3_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(FNames), intent(IN) ::a,b
+        type(exclass3), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%voidptr, b%voidptr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function names_ne
+    end function exclass3_ne
 
-end module name_module
+end module exclass3_mod

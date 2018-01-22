@@ -809,12 +809,12 @@ class Declaration(Node):
                 decl.append('{}({})'.format(attr, value))
             space = ''
 
-    def gen_arg_as_cpp(self, **kwargs):
+    def gen_arg_as_cxx(self, **kwargs):
         """Generate C++ declaration of variable.
         No parameters or attributes.
         """
         decl = []
-        self.gen_arg_work(decl, lang='cpp_type', **kwargs)
+        self.gen_arg_work(decl, lang='cxx_type', **kwargs)
         return ''.join(decl)
 
     def gen_arg_as_c(self, **kwargs):
@@ -828,7 +828,7 @@ class Declaration(Node):
         """Generate an argument for the C wrapper.
         C++ types are converted to C types using typemap.
 
-        lang = c_type or cpp_type
+        lang = c_type or cxx_type
 
         If a templated type, assume std::vector.
         The C argument will be a pointer to the template type.

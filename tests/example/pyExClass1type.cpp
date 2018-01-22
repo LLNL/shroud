@@ -83,8 +83,8 @@ PP_exclass1_dtor(
   PyObject *)  // kwds unused
 {
 // splicer begin class.ExClass1.method.dtor
-    delete self->BBB;
-    self->BBB = NULL;
+    delete self->obj;
+    self->obj = NULL;
     Py_RETURN_NONE;
 // splicer end class.ExClass1.method.dtor
 }
@@ -109,7 +109,7 @@ PP_exclass1_increment_count(
     {
         return NULL;
     }
-    int rv = self->BBB->incrementCount(incr);
+    int rv = self->obj->incrementCount(incr);
     return Py_BuildValue("i", rv);
 // splicer end class.ExClass1.method.increment_count
 }
@@ -125,7 +125,7 @@ PP_exclass1_get_name(
   PyObject *)  // kwds unused
 {
 // splicer begin class.ExClass1.method.get_name
-    const std::string & rv = self->BBB->getName();
+    const std::string & rv = self->obj->getName();
     if (! isNameValid(rv)) {
         PyErr_SetString(PyExc_KeyError, "XXX need value of name");
         return NULL;
@@ -147,7 +147,7 @@ PP_exclass1_get_name_length(
   PyObject *)  // kwds unused
 {
 // splicer begin class.ExClass1.method.get_name_length
-    int rv = self->BBB->GetNameLength();
+    int rv = self->obj->GetNameLength();
     return Py_BuildValue("i", rv);
 // splicer end class.ExClass1.method.get_name_length
 }
@@ -163,7 +163,7 @@ PP_exclass1_get_name_error_check(
   PyObject *)  // kwds unused
 {
 // splicer begin class.ExClass1.method.get_name_error_check
-    const std::string & rv = self->BBB->getNameErrorCheck();
+    const std::string & rv = self->obj->getNameErrorCheck();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
     return (PyObject *) SH_Py_rv;
 // splicer end class.ExClass1.method.get_name_error_check
@@ -180,7 +180,7 @@ PP_exclass1_get_name_arg(
   PyObject *)  // kwds unused
 {
 // splicer begin class.ExClass1.method.get_name_arg
-    const std::string & rv = self->BBB->getNameArg();
+    const std::string & rv = self->obj->getNameArg();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
     return (PyObject *) SH_Py_rv;
 // splicer end class.ExClass1.method.get_name_arg
@@ -197,9 +197,9 @@ PP_exclass1_get_root(
   PyObject *)  // kwds unused
 {
 // splicer begin class.ExClass1.method.get_root
-    ExClass2 * rv = self->BBB->getRoot();
+    ExClass2 * rv = self->obj->getRoot();
     PP_ExClass2 * SH_Py_rv = PyObject_New(PP_ExClass2, &PP_ExClass2_Type);
-    SH_Py_rv->BBB = rv;
+    SH_Py_rv->obj = rv;
     return (PyObject *) SH_Py_rv;
 // splicer end class.ExClass1.method.get_root
 }
@@ -220,7 +220,7 @@ PP_exclass1_get_value_from_int(
     {
         return NULL;
     }
-    int rv = self->BBB->getValue(value);
+    int rv = self->obj->getValue(value);
     return Py_BuildValue("i", rv);
 // splicer end class.ExClass1.method.get_value_from_int
 }
@@ -241,7 +241,7 @@ PP_exclass1_get_value_1(
     {
         return NULL;
     }
-    long rv = self->BBB->getValue(value);
+    long rv = self->obj->getValue(value);
     return Py_BuildValue("l", rv);
 // splicer end class.ExClass1.method.get_value_1
 }
@@ -257,7 +257,7 @@ PP_exclass1_get_addr(
   PyObject *)  // kwds unused
 {
 // splicer begin class.ExClass1.method.get_addr
-    void * rv = self->BBB->getAddr();
+    void * rv = self->obj->getAddr();
     PyObject * SH_Py_rv = PyCapsule_New(rv, NULL, NULL);
     return (PyObject *) SH_Py_rv;
 // splicer end class.ExClass1.method.get_addr
@@ -285,7 +285,7 @@ PP_exclass1_has_addr(
         return NULL;
     }
     in = PyObject_IsTrue(SH_Py_in);
-    bool rv = self->BBB->hasAddr(in);
+    bool rv = self->obj->hasAddr(in);
     PyObject * SH_Py_rv = PyBool_FromLong(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end class.ExClass1.method.has_addr
@@ -302,7 +302,7 @@ PP_exclass1_splicer_special(
   PyObject *)  // kwds unused
 {
 // splicer begin class.ExClass1.method.splicer_special
-    self->BBB->SplicerSpecial();
+    self->obj->SplicerSpecial();
     Py_RETURN_NONE;
 // splicer end class.ExClass1.method.splicer_special
 }

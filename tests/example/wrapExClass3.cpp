@@ -1,6 +1,5 @@
-// wrapClass1.cpp
+// wrapExClass3.cpp
 // This is generated code, do not edit
-// #######################################################################
 // Copyright (c) 2017, Lawrence Livermore National Security, LLC.
 // Produced at the Lawrence Livermore National Laboratory
 //
@@ -40,23 +39,33 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-#include "wrapClass1.h"
-#include "class_header.hpp"
-#include "type_header.hpp"
+#ifdef USE_CLASS3
+#include "wrapExClass3.h"
 
-namespace three {
+namespace example {
+namespace nested {
 
+// splicer begin class.ExClass3.CXX_definitions
+// splicer end class.ExClass3.CXX_definitions
 
 extern "C" {
 
+// splicer begin class.ExClass3.C_definitions
+// splicer end class.ExClass3.C_definitions
 
-void DEF_class1_method1(DEF_class1 * self, int arg1)
+// void exfunc()
+// function_index=48
+void AA_exclass3_exfunc(AA_exclass3 * self)
 {
-    Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
-    SH_this->method1(arg1);
+// splicer begin class.ExClass3.method.exfunc
+    ExClass3 *SH_this = static_cast<ExClass3 *>(static_cast<void *>(self));
+    SH_this->exfunc();
     return;
+// splicer end class.ExClass3.method.exfunc
 }
 
 }  // extern "C"
 
-}  // namespace three
+}  // namespace nested
+}  // namespace example
+#endif  // ifdef USE_CLASS3

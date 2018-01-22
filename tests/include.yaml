@@ -42,10 +42,10 @@ copyright:
 
 # Test fields
 #
-#  cpp_header  namespace
+#  cxx_header  namespace
 
 
-cpp_header: global_header.hpp
+cxx_header: global_header.hpp
 namespace: one two
 
 options:
@@ -55,17 +55,17 @@ types:
    CustomType:
       typedef : int
       c_header : type_header.h
-      cpp_header : type_header.hpp
+      cxx_header : type_header.hpp
 
 classes:
   - name: Class1
-    cpp_header: class_header.hpp
+    cxx_header: class_header.hpp
     namespace: three
     methods:
     -  decl: void method1(CustomType arg1)
 
   - name: Class2
-#    cpp_header: no header, will use global.cpp_header
+#    cxx_header: no header, will use global.cxx_header
     namespace: -no namespace
     methods:
              # do not use CustomType to avoid header file

@@ -61,8 +61,8 @@ PY_class1_delete(
   PyObject *)  // kwds unused
 {
 // splicer begin class.Class1.method.delete
-    delete self->BBB;
-    self->BBB = NULL;
+    delete self->obj;
+    self->obj = NULL;
     Py_RETURN_NONE;
 // splicer end class.Class1.method.delete
 }
@@ -78,7 +78,7 @@ PY_class1_method1(
   PyObject *)  // kwds unused
 {
 // splicer begin class.Class1.method.method1
-    self->BBB->Method1();
+    self->obj->Method1();
     Py_RETURN_NONE;
 // splicer end class.Class1.method.method1
 }

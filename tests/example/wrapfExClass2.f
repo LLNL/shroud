@@ -529,7 +529,7 @@ contains
     end function exclass2_get_type_id
 
     ! void setValue(int value +intent(in)+value)
-    ! cpp_template
+    ! cxx_template
     ! function_index=33
     subroutine exclass2_set_value_int(obj, value)
         use iso_c_binding, only : C_INT
@@ -543,7 +543,7 @@ contains
     end subroutine exclass2_set_value_int
 
     ! void setValue(long value +intent(in)+value)
-    ! cpp_template
+    ! cxx_template
     ! function_index=34
     subroutine exclass2_set_value_long(obj, value)
         use iso_c_binding, only : C_LONG
@@ -557,7 +557,7 @@ contains
     end subroutine exclass2_set_value_long
 
     ! void setValue(float value +intent(in)+value)
-    ! cpp_template
+    ! cxx_template
     ! function_index=35
     subroutine exclass2_set_value_float(obj, value)
         use iso_c_binding, only : C_FLOAT
@@ -571,7 +571,7 @@ contains
     end subroutine exclass2_set_value_float
 
     ! void setValue(double value +intent(in)+value)
-    ! cpp_template
+    ! cxx_template
     ! function_index=36
     subroutine exclass2_set_value_double(obj, value)
         use iso_c_binding, only : C_DOUBLE
@@ -585,7 +585,7 @@ contains
     end subroutine exclass2_set_value_double
 
     ! int getValue()
-    ! cpp_template
+    ! cxx_template
     ! function_index=37
     function exclass2_get_value_int(obj) result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -597,7 +597,7 @@ contains
     end function exclass2_get_value_int
 
     ! double getValue()
-    ! cpp_template
+    ! cxx_template
     ! function_index=38
     function exclass2_get_value_double(obj) result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE

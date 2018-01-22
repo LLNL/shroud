@@ -50,34 +50,36 @@ from . import declast
 from . import typemap
 
 class AstNode(object):
-    def option_to_fmt(self):
+    def option_to_fmt(self, fmtdict):
         """Set fmt based on options dictionary.
         """
-        for name in ['C_prefix', 'F_C_prefix', 
-                     'C_this', 'C_result', 'CPP_this',
-                     'F_this', 'F_result', 'F_derived_member',
+        for name in ['C_prefix', 'F_C_prefix',
+                     'C_result', 'F_result', 'F_derived_member',
+                     'PY_result', 'LUA_result',
+                     'C_this', 'CXX_this', 'F_this',
                      'C_string_result_as_arg', 'F_string_result_as_arg',
                      'C_header_filename_suffix',
                      'C_impl_filename_suffix',
                      'F_filename_suffix',
+                     'PY_prefix',
                      'PY_header_filename_suffix',
                      'PY_impl_filename_suffix',
-                     'PY_result',
+                     'LUA_prefix',
                      'LUA_header_filename_suffix',
                      'LUA_impl_filename_suffix',
-                     'LUA_result']:
+        ]:
             if self.options.inlocal(name):
-                setattr(self._fmt, name, self.options[name])
+                raise DeprecationWarning("Setting option {} for {}, change to format group".format(
+                    name, self.__class__.__name__))
 
     def eval_template(self, name, tname='', fmt=None):
-        """fmt[name] = self.name or option[name + tname + '_template']
+        """fmt[name] = fmt.name or option[name + tname + '_template']
+
+        If a format has not been explicitly set, set from template
         """
         if fmt is None:
-            fmt = self._fmt
-        value = getattr(self, name)
-        if value is not None:
-            setattr(fmt, name, value)
-        else:
+            fmt = self.fmtdict
+        if not fmt.inlocal(name):
             tname = name + tname + '_template'
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
@@ -85,7 +87,8 @@ class AstNode(object):
 
 class LibraryNode(AstNode):
     def __init__(self,
-                 cpp_header='',
+                 cxx_header='',
+                 format=None,
                  language='c++',
                  library='default_library',
                  namespace='',
@@ -100,7 +103,7 @@ class LibraryNode(AstNode):
 
         """
         # From arguments
-        self.cpp_header = cpp_header
+        self.cxx_header = cxx_header
         self.language = language.lower()
         if self.language not in ['c', 'c++']:
             raise RuntimeError("language must be 'c' or 'c++'")
@@ -120,27 +123,11 @@ class LibraryNode(AstNode):
         self.copyright = kwargs.setdefault('copyright', [])
         self.patterns = kwargs.setdefault('patterns', [])
 
-        for n in ['C_header_filename', 'C_impl_filename',
-                  'F_module_name', 'F_impl_filename',
-                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
-                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
-                  'YAML_type_filename']:
-            setattr(self, n, kwargs.get(n, None))
-
-        self.default_format()
-        self.option_to_fmt()
-
-        # default some options based on other options
-        self.eval_template('C_header_filename', '_library')
-        self.eval_template('C_impl_filename', '_library')
-        # All class/methods and functions may go into this file or
-        # just functions.
-        self.eval_template('F_module_name', '_library')
-        self.eval_template('F_impl_filename', '_library')
+        self.default_format(format, kwargs)
 
     def default_options(self):
         """default options."""
-        def_options = util.Options(
+        def_options = util.Scope(
             parent=None,
             debug=False,   # print additional debug info
 
@@ -164,19 +151,17 @@ class LibraryNode(AstNode):
             C_header_filename_library_template='wrap{library}.{C_header_filename_suffix}',
             C_impl_filename_library_template='wrap{library}.{C_impl_filename_suffix}',
 
-            C_header_filename_class_template='wrap{cpp_class}.{C_header_filename_suffix}',
-            C_impl_filename_class_template='wrap{cpp_class}.{C_impl_filename_suffix}',
+            C_header_filename_class_template='wrap{cxx_class}.{C_header_filename_suffix}',
+            C_impl_filename_class_template='wrap{cxx_class}.{C_impl_filename_suffix}',
 
             C_name_template=(
                 '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
 
-            C_bufferify_suffix='_bufferify',
             C_var_len_template = 'N{c_var}',         # argument for result of len(arg)
             C_var_trim_template = 'L{c_var}',        # argument for result of len_trim(arg)
             C_var_size_template = 'S{c_var}',        # argument for result of size(arg)
 
             # Fortran's names for C functions
-            F_C_prefix='c_',
             F_C_name_template=(
                 '{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
 
@@ -190,23 +175,19 @@ class LibraryNode(AstNode):
             F_impl_filename_library_template='wrapf{library_lower}.{F_filename_suffix}',
 
             F_module_name_class_template='{class_lower}_mod',
-            F_impl_filename_class_template='wrapf{cpp_class}.{F_filename_suffix}',
-
-            F_name_instance_get='get_instance',
-            F_name_instance_set='set_instance',
-            F_name_associated='associated',
+            F_impl_filename_class_template='wrapf{cxx_class}.{F_filename_suffix}',
 
             LUA_module_name_template='{library_lower}',
             LUA_module_filename_template=(
                 'lua{library}module.{LUA_impl_filename_suffix}'),
             LUA_header_filename_template=(
                 'lua{library}module.{LUA_header_filename_suffix}'),
-            LUA_userdata_type_template='{LUA_prefix}{cpp_class}_Type',
+            LUA_userdata_type_template='{LUA_prefix}{cxx_class}_Type',
             LUA_userdata_member_template='self',
             LUA_module_reg_template='{LUA_prefix}{library}_Reg',
-            LUA_class_reg_template='{LUA_prefix}{cpp_class}_Reg',
-            LUA_metadata_template='{cpp_class}.metatable',
-            LUA_ctor_name_template='{cpp_class}',
+            LUA_class_reg_template='{LUA_prefix}{cxx_class}_Reg',
+            LUA_metadata_template='{cxx_class}.metatable',
+            LUA_ctor_name_template='{cxx_class}',
             LUA_name_template='{function_name}',
             LUA_name_impl_template='{LUA_prefix}{class_prefix}{underscore_name}',
 
@@ -216,63 +197,78 @@ class LibraryNode(AstNode):
                 'py{library}module.{PY_header_filename_suffix}'),
             PY_helper_filename_template=(
                 'py{library}helper.{PY_impl_filename_suffix}'),
-            PY_PyTypeObject_template='{PY_prefix}{cpp_class}_Type',
-            PY_PyObject_template='{PY_prefix}{cpp_class}',
+            PY_PyTypeObject_template='{PY_prefix}{cxx_class}_Type',
+            PY_PyObject_template='{PY_prefix}{cxx_class}',
             PY_type_filename_template=(
-                'py{cpp_class}type.{PY_impl_filename_suffix}'),
+                'py{cxx_class}type.{PY_impl_filename_suffix}'),
             PY_name_impl_template=(
                 '{PY_prefix}{class_prefix}{underscore_name}{function_suffix}'),
             )
         return def_options
 
-    def default_format(self):
+    def default_format(self, format, kwargs):
         """Set format dictionary.
+
+        Values based off of library variables and
+        format templates in options.
         """
 
-        self._fmt = util.Options(None)
-        fmt_library = self._fmt
+        fmt_library = util.Scope(
+            parent=None,
 
-        fmt_library.library = self.library
-        fmt_library.library_lower = fmt_library.library.lower()
-        fmt_library.library_upper = fmt_library.library.upper()
-        fmt_library.function_suffix = ''   # assume no suffix
-        fmt_library.C_prefix = self.options.get(
-            'C_prefix', fmt_library.library_upper[:3] + '_')
-        fmt_library.F_C_prefix = self.options['F_C_prefix']
+            C_bufferify_suffix='_bufferify',
+            C_prefix = self.library.upper()[:3] + '_',
+            C_result = 'SHT_rv',        # {c_temp}_rv   return valuex
+            c_temp = 'SHT_',
+            C_this = 'self',
+
+            C_custom_return_type = '',  # assume no value
+
+            CXX_this = 'SH_this',
+
+            F_C_prefix='c_',
+            F_derived_member = 'voidptr',
+            F_name_associated = 'associated',
+            F_name_instance_get = 'get_instance',
+            F_name_instance_set = 'set_instance',
+            F_result = 'SHT_rv',
+            F_this = 'obj',
+
+            C_string_result_as_arg = 'SHF_rv',
+            F_string_result_as_arg = '',
+
+            # don't have to worry about argument names in Python wrappers
+            # so skip the SH_ prefix by default.
+            PY_result = 'rv',
+            LUA_result = 'rv',
+
+            LUA_prefix = 'l_',
+            LUA_state_var = 'L',
+
+            PY_prefix = 'PY_',
+            PY_module_name = self.library.lower(),
+
+            library = self.library,
+            library_lower = self.library.lower(),
+            library_upper = self.library.upper(),
+
+        # set default values for fields which may be unset.
+            class_prefix = '',   # expand to blanks for library
+#           c_ptr = '',
+#           c_const = '',
+            CXX_this_call = '',
+            CXX_template = '',
+            C_pre_call = '',
+            C_post_call = '',
+            function_suffix = '',   # assume no suffix
+            namespace_scope = '',
+        )
+
         if self.namespace:
             fmt_library.namespace_scope = (
                 '::'.join(self.namespace.split()) + '::')
-        else:
-            fmt_library.namespace_scope = ''
-
-        # set default values for fields which may be unset.
-        fmt_library.class_prefix = ''
-#        fmt_library.c_ptr = ''
-#        fmt_library.c_const = ''
-        fmt_library.CPP_this_call = ''
-        fmt_library.CPP_template = ''
-        fmt_library.C_pre_call = ''
-        fmt_library.C_post_call = ''
-
-        fmt_library.C_this = 'self'
-        fmt_library.C_result = 'SHT_rv'
-        fmt_library.c_temp = 'SHT_'
-
-        fmt_library.CPP_this = 'SH_this'
-
-        fmt_library.F_this = 'obj'
-        fmt_library.F_result = 'SHT_rv'
-        fmt_library.F_derived_member = 'voidptr'
-
-        fmt_library.C_string_result_as_arg = 'SHF_rv'
-        fmt_library.F_string_result_as_arg = ''
 
         fmt_library.F_filename_suffix = 'f'
-
-        # don't have to worry about argument names in Python wrappers
-        # so skip the SH_ prefix by default.
-        fmt_library.PY_result = 'rv'
-        fmt_library.LUA_result = 'rv'
 
         if self.language == 'c':
             fmt_library.C_header_filename_suffix = 'h'
@@ -297,10 +293,36 @@ class LibraryNode(AstNode):
 
             fmt_library.stdlib  = 'std::'
 
-    def add_function(self, parentoptions=None, **kwargs):
+        for n in ['C_header_filename', 'C_impl_filename',
+                  'F_module_name', 'F_impl_filename',
+                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
+                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
+                  'YAML_type_filename'
+        ]:
+            if n in kwargs:
+                raise DeprecationWarning("Setting field {} in library, change to format group".format(
+                    n))
+
+        self.option_to_fmt(fmt_library)
+
+        if format:
+            fmt_library.update(format, replace=True)
+
+        self.fmtdict = fmt_library
+
+        # default some format strings based on other format strings
+        self.eval_template('C_header_filename', '_library')
+        self.eval_template('C_impl_filename', '_library')
+        # All class/methods and functions may go into this file or
+        # just functions.
+        self.eval_template('F_module_name', '_library')
+        self.eval_template('F_impl_filename', '_library')
+
+    def add_function(self, decl, parentoptions=None, **kwargs):
         """Add a function.
         """
-        fcnnode = FunctionNode(self, parentoptions=parentoptions, **kwargs)
+        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
+                               **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
 
@@ -316,11 +338,11 @@ class LibraryNode(AstNode):
         Used by util.ExpandedEncoder.
         """
         d = dict(
-            _fmt=self._fmt,
+            format=self.fmtdict,
             options=self.options,
         )
 
-        for key in [ 'classes', 'copyright', 'cpp_header',
+        for key in [ 'classes', 'copyright', 'cxx_header',
                      'functions', 'language', 'namespace' ]:
             value = getattr(self,key)
             if value:
@@ -332,7 +354,8 @@ class LibraryNode(AstNode):
 
 class ClassNode(AstNode):
     def __init__(self, name, parent,
-                 cpp_header='',
+                 cxx_header='',
+                 format=None,
                  namespace='',
                  options=None,
                  **kwargs):
@@ -340,30 +363,47 @@ class ClassNode(AstNode):
         """
         # From arguments
         self.name = name
-        self.cpp_header = cpp_header
+        self.cxx_header = cxx_header
         self.namespace = namespace
 
         self.functions = []
 
         self.python = kwargs.get('python', {})
+        self.cpp_if = kwargs.get('cpp_if', None)
+
+        self.options = util.Scope(parent=parent.options)
+        if options:
+            self.options.update(options, replace=True)
+
+        self.default_format(parent, format, kwargs)
+
+    def default_format(self, parent, format, kwargs):
+        """Set format dictionary."""
 
         for n in ['C_header_filename', 'C_impl_filename',
                   'F_derived_name', 'F_impl_filename', 'F_module_name',
                   'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
                   'LUA_metadata', 'LUA_ctor_name',
                   'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
-                  'class_prefix']:
-            setattr(self, n, kwargs.get(n, None))
+                  'class_prefix'
+        ]:
+            if n in kwargs:
+                raise DeprecationWarning("Setting field {} in class {}, change to format group".format(
+                    n, self.name))
 
-        self.options = util.Options(parent=parent.options)
-        if options:
-            self.options.update(options, replace=True)
+        self.fmtdict = util.Scope(
+            parent = parent.fmtdict,
 
-        self._fmt = util.Options(parent._fmt)
-        fmt_class = self._fmt
-        fmt_class.cpp_class = name
-        fmt_class.class_lower = name.lower()
-        fmt_class.class_upper = name.upper()
+            cxx_class = self.name,
+            class_lower = self.name.lower(),
+            class_upper = self.name.upper(),
+
+            F_derived_name = self.name.lower(),
+        )
+
+        if format:
+            self.fmtdict.update(format, replace=True)
+
         self.eval_template('class_prefix')
 
         # Only one file per class for C.
@@ -374,10 +414,11 @@ class ClassNode(AstNode):
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
 
-    def add_function(self, parentoptions=None, **kwargs):
+    def add_function(self, decl, parentoptions=None, **kwargs):
         """Add a function.
         """
-        fcnnode = FunctionNode(self, parentoptions=parentoptions, **kwargs)
+        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
+                               **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
 
@@ -386,8 +427,8 @@ class ClassNode(AstNode):
         Used by util.ExpandedEncoder.
         """
         d = dict(
-            _fmt = self._fmt,
-            cpp_header=self.cpp_header,
+            cxx_header=self.cxx_header,
+            format = self.fmtdict,
             methods=self.functions,
             name=self.name,
             options=self.options,
@@ -395,11 +436,6 @@ class ClassNode(AstNode):
         for key in ['namespace', 'python']:
             value = getattr(self,key)
             if value:
-                d[key] = value
-        for key in ['C_header_filename', 'C_impl_filename',
-                    'F_derived_name', 'F_impl_filename', 'F_module_name']:
-            value = getattr(self,key)
-            if value is not None:
                 d[key] = value
         return d
 
@@ -410,56 +446,53 @@ class FunctionNode(AstNode):
     """
 
     - decl:
-      cpp_template:
+      cxx_template:
         ArgType:
         - int
         - double
 
 
-    _fmtfunc = Option()
+    _fmtfunc = Scope()
 
     _fmtresult = {
-       'fmtc': Option(_fmtfunc)
+       'fmtc': Scope(_fmtfunc)
     }
     _fmtargs = {
       'arg1': {
-        'fmtc': Option(_fmtfunc),
-        'fmtf': Option(_fmtfunc)
+        'fmtc': Scope(_fmtfunc),
+        'fmtf': Scope(_fmtfunc)
       }
     }
 
-    _decl            - generated declaration.
-                       Includes computed attributes
     _function_index  - sequence number function,
                        used in lieu of a pointer
     _generated       - who generated this function
     _PTR_F_C_index   - Used by fortran wrapper to find index of
                        C function to call
-    _PTR_C_CPP_index - Used by C wrapper to find index of C++ function
+    _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
                        to call
     _subprogram      - subroutine or function
 
     """
-    def __init__(self, parent,
-                 decl=None,
+    def __init__(self, decl, parent,
+                 format=None,
                  parentoptions=None,
                  options=None,
                  **kwargs):
-        self.options = util.Options(parent= parentoptions or parent.options)
+        self.options = util.Scope(parent=parentoptions or parent.options)
         if options:
             self.options.update(options, replace=True)
 
-        self._fmt = util.Options(parent._fmt)
-        self.option_to_fmt()
+        self.default_format(parent, format, kwargs)
 
         # working variables
-        self._CPP_return_templated = False
-        self._PTR_C_CPP_index = None
+        self._CXX_return_templated = False
+        self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
-        self._cpp_overload = None
+        self._cxx_overload = None
+        self.declgen = None              #  generated declaration.
         self._default_funcs = []         #  generated default value functions  (unused?)
         self._function_index = None
-        self._error_pattern_suffix = ''
         self._fmtargs = {}
         self._fmtresult = {}
         self._function_index = None
@@ -471,26 +504,13 @@ class FunctionNode(AstNode):
 
 #        self.function_index = []
 
-        # Move fields from kwargs into instance
-        for n in [
-                'C_code', 'C_error_pattern', 'C_name',
-                'C_post_call', 'C_post_call_buf',
-                'C_return_code', 'C_return_type',
-                'F_C_name', 'F_code',
-                'F_name_function', 'F_name_generic', 'F_name_impl',
-                'LUA_name', 'LUA_name_impl',
-                'PY_error_pattern', 'PY_name_impl',
-                'docs', 'function_suffix', 'return_this']:
-            setattr(self, n, kwargs.get(n, None))
-
         self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
-        self.cpp_template = kwargs.get('cpp_template', {})
+        self.cpp_if = kwargs.get('cpp_if', None)
+        self.cxx_template = kwargs.get('cxx_template', {})
         self.doxygen = kwargs.get('doxygen', {})
         self.fortran_generic = kwargs.get('fortran_generic', {})
+        self.return_this = kwargs.get('return_this', False)
 
-        # referenced explicity (not via fmt)
-        # C_code, C_return_code, C_return_type, F_code
-        
         if not decl:
             raise RuntimeError("Missing decl")
 
@@ -499,13 +519,13 @@ class FunctionNode(AstNode):
             cls_name = parent.name
         else:
             cls_name = None
-        template_types = self.cpp_template.keys()
+        template_types = self.cxx_template.keys()
 
         self.decl = decl
         ast = declast.check_decl(decl,
                                  current_class=cls_name,
                                  template_types=template_types)
-        self._ast = ast
+        self.ast = ast
 
         # add any attributes from YAML files to the ast
         if 'attrs' in kwargs:
@@ -522,42 +542,70 @@ class FunctionNode(AstNode):
             # 'void foo' instead of 'void foo()'
             raise RuntimeError("Missing arguments:", ast.gen_decl())
 
-        fmt_func = self._fmt
+        fmt_func = self.fmtdict
         fmt_func.function_name = ast.name
         fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
+
+    def default_format(self, parent, format, kwargs):
+
+        # Move fields from kwargs into instance
+        for n in [
+                'C_code',
+#               'C_error_pattern',
+                 'C_name',
+                'C_post_call', 'C_post_call_buf',
+                'C_return_code', 'C_return_type',
+                'F_C_name',
+                'F_code',
+                'F_name_function', 'F_name_generic', 'F_name_impl',
+                'LUA_name', 'LUA_name_impl',
+#                'PY_error_pattern',
+                'PY_name_impl',
+                'function_suffix'
+        ]:
+            if n in kwargs:
+                raise DeprecationWarning("Setting field {} in function, change to format group".format(
+                    n))
+
+        # Move fields from kwargs into instance
+        for n in [
+                'C_error_pattern', 'PY_error_pattern',
+        ]:
+            setattr(self, n, kwargs.get(n, None))
+
+        self.fmtdict = util.Scope(parent.fmtdict)
+
+        self.option_to_fmt(self.fmtdict)
+        if format:
+            self.fmtdict.update(format, replace=True)
+            if 'C_return_type' in format:
+                # wrapc.py will overwrite C_return_type.
+                # keep original value for wrapf.py.
+                self.fmtdict.C_custom_return_type = format['C_return_type']
 
     def _to_dict(self):
         """Convert to dictionary.
         Used by util.ExpandedEncoder.
         """
         d = dict(
-            _ast=self._ast,
-            _fmt=self._fmt,
+            ast=self.ast,
             _function_index=self._function_index,
             decl=self.decl,
+            format=self.fmtdict,
             options=self.options,
         )
-        for key in ['cpp_template', 'default_arg_suffix', 'docs', 'doxygen', 
+        for key in ['cxx_template', 'default_arg_suffix',
+                    'declgen', 'doxygen', 
                     'fortran_generic', 'return_this',
-                    'C_code', 'C_error_pattern', 'C_name',
-                    'C_post_call', 'C_post_call_buf', 
-                    'C_return_code', 'C_return_type',
-                    'F_C_name', 'F_code', 'F_name_function', 'F_name_generic', 'F_name_impl',
-                    'PY_error_pattern',
-                    '_PTR_C_CPP_index', '_PTR_F_C_index',
-                    '_CPP_return_templated',
-                    '_cpp_overload', '_error_pattern_suffix',
-                    '_decl', '_default_funcs', 
-                    '_fmtargs', '_fmtresult',
+                    'C_error_pattern', 'PY_error_pattern',
+                    '_PTR_C_CXX_index', '_PTR_F_C_index',
+                    '_CXX_return_templated',
+                    '_cxx_overload',
+                    '_default_funcs', '_fmtargs', '_fmtresult',
                     '_generated', '_has_default_arg',
                     '_nargs', '_overloaded', '_subprogram']:
             value = getattr(self,key)
             if value:
-                d[key] = value
-
-        for key in ['function_suffix']:
-            value = getattr(self,key)
-            if value is not None:   # '' is OK
                 d[key] = value
         return d
 
@@ -568,12 +616,12 @@ class FunctionNode(AstNode):
         # Shallow copy everything
         new = copy.copy(self)
 
-        # new layer of Options
-        new._fmt = util.Options(self._fmt)
-        new.options = util.Options(self.options)
+        # new Scope with same inlocal and parent
+        new.fmtdict = self.fmtdict.clone()
+        new.options = self.options.clone()
     
         # deep copy dictionaries
-        new._ast = copy.deepcopy(self._ast)
+        new.ast = copy.deepcopy(self.ast)
         new._fmtargs = copy.deepcopy(self._fmtargs)
         new._fmtresult = copy.deepcopy(self._fmtresult)
     
@@ -584,8 +632,7 @@ def clean_dictionary(dd):
     """YAML converts some blank fields to None,
     but we want blank.
     """
-    for key in ['cpp_header', 'namespace',
-                'function_suffix']:
+    for key in ['cxx_header', 'namespace']:
         if key in dd and dd[key] is None:
             dd[key] = ''
 
@@ -597,6 +644,24 @@ def clean_dictionary(dd):
             if value is None:
                 dd['default_arg_suffix'][i] = ''
 
+    if 'format' in dd:
+        dd0 = dd['format']
+        for key in ['function_suffix']:
+            if key in dd0 and dd0[key] is None:
+                dd0[key] = ''
+
+def clean_list(lst):
+    """Fix up blank lines in a YAML line
+    copyright:
+    -  line one
+    -
+    -  next line
+
+    YAML sets copyright[1] as null, change to empty string
+    """
+    for i, line in enumerate(lst):
+        if line is None:
+            lst[i] = ''
 
 def is_options_only(node):
     """Detect an options only node.
@@ -639,10 +704,16 @@ def add_functions(parent, functions):
     options = parent.options
     for node in functions:
         if is_options_only(node):
-            options = util.Options(options, **node['options'])
+            options = util.Scope(options, **node['options'])
         else:
-            clean_dictionary(node)
-            parent.add_function(parentoptions=options, **node)
+            # copy before clean to avoid changing input dict
+            d = copy.copy(node)
+            clean_dictionary(d)
+            if 'decl' not in d:
+                raise RuntimeError('Missing required dict fields for function')
+            decl = d['decl']
+            del d['decl']
+            parent.add_function(decl, parentoptions=options, **d)
 
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.
@@ -657,6 +728,9 @@ def create_library_from_dictionary(node):
     Do some checking on the input.
     Every class must have a name.
     """
+
+    if 'copyright' in node:
+        clean_list(node['copyright'])
 
     if 'types' in node:
         types_dict = node['types']
@@ -705,6 +779,8 @@ def create_library_from_dictionary(node):
             clsnode = library.add_class(**cls)
             if 'methods' in cls:
                 add_functions(clsnode, cls['methods'])
+            elif 'functions' in cls:
+                add_functions(clsnode, cls['functions'])
 
     if 'functions' in node:
         add_functions(library, node['functions'])

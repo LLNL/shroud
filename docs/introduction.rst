@@ -114,7 +114,7 @@ does not parse C++ code to extract the API. That was considered a
 large task and not needed for the size of the API of the library that
 inspired Shroud's development. In addition, there is a lot of semantic
 information which must be provided by the user that may be difficult
-to infer from the source alone.  However, the task of created the
+to infer from the source alone.  However, the task of creating the
 input file is simplified since the C++ declaration can be
 cut-and-pasted into the YAML file.
 
@@ -133,10 +133,9 @@ Requirements
 Fortran wrappers are generated as free-form source and require a Fortran 2003 compiler.
 
 Shroud is written in Python and has been tested with version 2.7 and 3.6.
-It requires the modules:
+It requires the module:
 
   * PyYAML https://pypi.python.org/pypi/PyYAML/3.11
-  * Parsley https://pypi.python.org/pypi/Parsley
 
 
 XKCD

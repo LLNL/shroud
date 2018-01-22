@@ -86,10 +86,12 @@ class Wrapc(util.WrapperMixin):
 
     def wrap_library(self):
         newlibrary = self.newlibrary
-        fmt_library = newlibrary._fmt
+        fmt_library = newlibrary.fmtdict
 
         self._push_splicer('class')
         for node in newlibrary.classes:
+            if not node.options.wrap_c:
+                continue
             self._push_splicer(node.name)
             self.write_file(newlibrary, node)
             self._pop_splicer(node.name)
@@ -103,7 +105,7 @@ class Wrapc(util.WrapperMixin):
         a class and its methods.
         """
         node = cls or library
-        fmt = node._fmt
+        fmt = node.fmtdict
         self._begin_output_file()
         if cls:
             self.wrap_class(cls)
@@ -141,6 +143,9 @@ class Wrapc(util.WrapperMixin):
                 '#ifndef %s' % guard,
                 '#define %s' % guard,
                 ])
+        if cls and cls.cpp_if:
+            output.append('#' + node.cpp_if)
+
         # headers required by typedefs
         if self.header_typedef_include:
             # output.append('// header_typedef_include')
@@ -182,9 +187,11 @@ class Wrapc(util.WrapperMixin):
                     '}',
                     '#endif'
                     ])
+        if cls and cls.cpp_if:
+            output.append('#endif  // ' + node.cpp_if)
         output.extend([
                 '',
-                '#endif  // %s' % guard
+                '#endif  // ' + guard
                 ])
 
         if write_file:
@@ -201,7 +208,8 @@ class Wrapc(util.WrapperMixin):
         # If no C wrappers are required, do not write the file
         write_file = False
         output = []
-        output.append('// ' + fname)
+        if cls and cls.cpp_if:
+            output.append('#' + node.cpp_if)
 
         # Insert any helper functions needed
         helper_source = []
@@ -212,8 +220,8 @@ class Wrapc(util.WrapperMixin):
                 lang_header = 'c_header'
                 lang_source = 'c_source'
             else:
-                lang_header = 'cpp_header'
-                lang_source = 'cpp_source'
+                lang_header = 'cxx_header'
+                lang_source = 'cxx_source'
             for helper in helpers:
                 helper_info = helperdict[helper]
                 if lang_header in helper_info:
@@ -227,11 +235,11 @@ class Wrapc(util.WrapperMixin):
         output.append('#include "%s"' % hname)
 
         # Use headers from class if they exist or else library
-        if cls and cls.cpp_header:
-            for include in cls.cpp_header.split():
+        if cls and cls.cxx_header:
+            for include in cls.cxx_header.split():
                 self.header_impl_include[include] = True
         else:
-            for include in library.cpp_header.split():
+            for include in library.cxx_header.split():
                 self.header_impl_include[include] = True
 
         # headers required by implementation
@@ -261,6 +269,9 @@ class Wrapc(util.WrapperMixin):
             output.append('}  // extern "C"')
         self.namespace(library, cls, 'end', output)
 
+        if cls and cls.cpp_if:
+            output.append('#endif  // ' + node.cpp_if)
+
         if write_file:
             self.config.cfiles.append(
                 os.path.join(self.config.c_fortran_dir, fname))
@@ -279,11 +290,9 @@ class Wrapc(util.WrapperMixin):
         typedef = typemap.Typedef.lookup(name)
         cname = typedef.c_type
 
-        fmt_class = node._fmt
+        fmt_class = node.fmtdict
         # call method syntax
-        fmt_class.CPP_this_call = fmt_class.CPP_this + '->'
-#        fmt_class.update(dict(
-#                ))
+        fmt_class.CXX_this_call = fmt_class.CXX_this + '->'
 
         # create a forward declaration for this type
         self.header_forward[cname] = True
@@ -307,9 +316,9 @@ class Wrapc(util.WrapperMixin):
             cls_function = 'method'
         else:
             cls_function = 'function'
-        self.log.write("C {0} {1._decl}\n".format(cls_function, node))
+        self.log.write("C {0} {1.declgen}\n".format(cls_function, node))
 
-        fmt_func = node._fmt
+        fmt_func = node.fmtdict
         fmtargs = node._fmtargs
 
         if self.language == 'c' or options.get('C_extern_C',False):
@@ -322,47 +331,47 @@ class Wrapc(util.WrapperMixin):
         if self.language == 'c':
             lang_header = 'c_header'
         else:
-            lang_header = 'cpp_header'
+            lang_header = 'cxx_header'
 
         # Look for C++ routine to wrap
         # Usually the same node unless it is generated (i.e. bufferified)
-        CPP_node = node
+        CXX_node = node
         generated = []
-        if CPP_node._generated:
-            generated.append(CPP_node._generated)
-        while CPP_node._PTR_C_CPP_index is not None:
-            CPP_node = self.newlibrary.function_index[CPP_node._PTR_C_CPP_index]
-            if CPP_node._generated:
-                generated.append(CPP_node._generated)
-        CPP_result = CPP_node._ast
-        CPP_subprogram = CPP_node._subprogram
+        if CXX_node._generated:
+            generated.append(CXX_node._generated)
+        while CXX_node._PTR_C_CXX_index is not None:
+            CXX_node = self.newlibrary.function_index[CXX_node._PTR_C_CXX_index]
+            if CXX_node._generated:
+                generated.append(CXX_node._generated)
+        CXX_result = CXX_node.ast
+        CXX_subprogram = CXX_node._subprogram
 
         # C return type
-        ast = node._ast
+        ast = node.ast
         result_type = ast.typename
         subprogram = node._subprogram
-        intent_grp = ''
+        generated_suffix = ''
         if node._generated == 'arg_to_buffer':
-            intent_grp = '_buf'
+            generated_suffix = '_buf'
 
         result_typedef = typemap.Typedef.lookup(result_type)
         result_is_const = ast.const
-        is_ctor = CPP_result.fattrs.get('_constructor', False)
-        is_dtor = CPP_result.fattrs.get('_destructor', False)
+        is_ctor = CXX_result.fattrs.get('_constructor', False)
+        is_dtor = CXX_result.fattrs.get('_destructor', False)
         is_const = ast.func_const
 
         # C++ functions which return 'this',
         # are easier to call from Fortran if they are subroutines.
         # There is no way to chain in Fortran:  obj->doA()->doB();
         if node.return_this or is_dtor:
-            CPP_subprogram = 'subroutine'
+            CXX_subprogram = 'subroutine'
 
         if result_typedef.c_header:
             # include any dependent header in generated header
             self.header_typedef_include[result_typedef.c_header] = True
-        if result_typedef.cpp_header:
+        if result_typedef.cxx_header:
             # include any dependent header in generated source
-            self.header_impl_include[result_typedef.cpp_header] = True
+            self.header_impl_include[result_typedef.cxx_header] = True
         if result_typedef.forward:
             # create forward references for other types being wrapped
             # i.e. This method returns a wrapped type
@@ -373,15 +382,19 @@ class Wrapc(util.WrapperMixin):
         else:
             fmt_func.c_const = ''
 
-        return_lang = '{cpp_var}'  # Assume C and C++ types are compatiable
-        if CPP_subprogram == 'subroutine':
+        return_lang = '{cxx_var}'  # Assume C and C++ types are compatiable
+        if CXX_subprogram == 'subroutine':
             fmt_result = fmt_func
             fmt_pattern = fmt_func
         else:
             fmt_result0 = node._fmtresult
-            fmt_result = fmt_result0.setdefault('fmtc', util.Options(fmt_func))
-            fmt_result.cpp_var = fmt_func.C_result
-            fmt_result.cpp_rv_decl = CPP_result.gen_arg_as_cpp(name=fmt_func.C_result)
+            fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
+            fmt_result.cxx_var = fmt_func.C_result
+            fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_cxx(name=fmt_func.C_result)
+            if CXX_result.is_pointer():
+                fmt_result.cxx_deref = '->'
+            else:
+                fmt_result.cxx_deref = '.'
             fmt_pattern = fmt_result
 
         proto_list = []
@@ -406,27 +419,27 @@ class Wrapc(util.WrapperMixin):
                 fmt_func.c_const = ''
             fmt_func.c_ptr = ' *'
             fmt_func.c_var = fmt_func.C_this
-            # LHS is class' cpp_to_c
+            # LHS is class' cxx_to_c
             cls_typedef = typemap.Typedef.lookup(cls.name)
             append_format(pre_call, 
-                          '{c_const}{cpp_class} *{CPP_this} = ' +
-                          cls_typedef.c_to_cpp + ';', fmt_func)
+                          '{c_const}{cxx_class} *{CXX_this} = ' +
+                          cls_typedef.c_to_cxx + ';', fmt_func)
 
 #    c_var      - argument to C function  (wrapper function)
 #    c_var_trim - variable with trimmed length of c_var
 #    c_var_len  - variable with length of c_var
-#    cpp_var    - argument to C++ function  (wrapped function).
+#    cxx_var    - argument to C++ function  (wrapped function).
 #                 Usually same as c_var but may be a new local variable
 #                 or the funtion result variable.
 
         for arg in ast.params:
             arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault('fmtc', util.Options(fmt_func))
+            fmt_arg = fmt_arg0.setdefault('fmtc', util.Scope(fmt_func))
             c_attrs = arg.attrs
             arg_typedef, c_statements = typemap.lookup_c_statements(arg)
             if 'template' in c_attrs:
-                fmt_arg.cpp_T = c_attrs['template']
+                fmt_arg.cxx_T = c_attrs['template']
 
             fmt_arg.c_var = arg_name
 
@@ -436,23 +449,29 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_const = ''
             if arg.is_pointer():
                 fmt_arg.c_ptr = ' *'
+                fmt_arg.cxx_deref = '->'
             else:
                 fmt_arg.c_ptr = ''
-            fmt_arg.cpp_type = arg_typedef.cpp_type
+                fmt_arg.cxx_deref = '.'
+            fmt_arg.cxx_type = arg_typedef.cxx_type
 
             proto_list.append(arg.gen_arg_as_c())
 
             if c_attrs.get('_is_result', False):
                 arg_call = False
-                fmt_arg.cpp_var = fmt_arg.C_result
+                fmt_arg.cxx_var = fmt_arg.C_result
                 fmt_pattern = fmt_arg
                 result_arg = arg
-                stmts = 'result' + intent_grp
+                stmts = 'result' + generated_suffix
                 need_wrapper = True
+                if CXX_result.is_pointer():
+                    fmt_arg.cxx_deref = '->'
+                else:
+                    fmt_arg.cxx_deref = '.'
             else:
                 arg_call = arg
-                fmt_arg.cpp_var = fmt_arg.c_var      # name in c++ call.
-                stmts = 'intent_' + c_attrs['intent'] + intent_grp
+                fmt_arg.cxx_var = fmt_arg.c_var      # name in c++ call.
+                stmts = 'intent_' + c_attrs['intent'] + generated_suffix
 
             intent_blk = c_statements.get(stmts, {})
 
@@ -473,10 +492,13 @@ class Wrapc(util.WrapperMixin):
             # Usually to convert types.
             # For example, convert char * to std::string
             # Skip input arguments generated by F_string_result_as_arg
-            have_cpp_local_var = arg_typedef.cpp_local_var or \
-                intent_blk.get('cpp_local_var', False)
-            if have_cpp_local_var:
-                fmt_arg.cpp_var = 'SH_' + fmt_arg.c_var
+            cxx_local_var = intent_blk.get('cxx_local_var', '')
+            if cxx_local_var:
+                fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
+                if cxx_local_var == 'object':
+                    fmt_arg.cxx_deref = '.'
+                elif cxx_local_var == 'pointer':
+                    fmt_arg.cxx_deref = '->'
 
             # Add code for intent of argument
             # pre_call.append('// intent=%s' % intent)
@@ -489,8 +511,6 @@ class Wrapc(util.WrapperMixin):
             cmd_list = intent_blk.get('post_call', [])
             if cmd_list:
                 need_wrapper = True
-                # pick up c_str() from cpp_to_c
-                fmt_arg.cpp_val = wformat(arg_typedef.cpp_to_c, fmt_arg)
                 for cmd in cmd_list:
                     append_format(post_call, cmd, fmt_arg)
 
@@ -498,36 +518,34 @@ class Wrapc(util.WrapperMixin):
                 for helper in intent_blk['c_helper'].split():
                     self.c_helper[helper] = True
 
-            cpp_header = intent_blk.get(lang_header, None)
+            cxx_header = intent_blk.get(lang_header, None)
             # include any dependent header in generated source
-            if cpp_header:
-                for h in cpp_header.split():
+            if cxx_header:
+                for h in cxx_header.split():
                     self.header_impl_include[h] = True
 
-            if arg_typedef.cpp_local_var:
-                # cpp_local_var should only be set if c_statements are not used
-                if arg_typedef.c_statements:
-                    raise RuntimeError(
-                        'c_statements and cpp_local_var are both '
-                        'defined for {}'
-                        .format(arg_typedef.name))
-                append_format(pre_call,
-                              '{c_const}{cpp_type}{c_ptr} {cpp_var} = ' +
-                              arg_typedef.c_to_cpp + ';', fmt_arg)
-
             if arg_call:
-                if have_cpp_local_var:
-                    call_list.append(fmt_arg.cpp_var)
+                # Skips result_as_arg argument
+                if cxx_local_var == 'object':
+                    if arg.is_pointer():
+                        call_list.append('&' + fmt_arg.cxx_var)
+                    else:
+                        call_list.append(fmt_arg.cxx_var)
+                elif cxx_local_var == 'pointer':
+                    if arg.is_pointer():
+                        call_list.append(fmt_arg.cxx_var)
+                    else:
+                        call_list.append('*' + fmt_arg.cxx_var)
                 else:
                     # convert C argument to C++
-                    append_format(call_list, arg_typedef.c_to_cpp, fmt_arg)
+                    append_format(call_list, arg_typedef.c_to_cxx, fmt_arg)
 
             if arg_typedef.c_header:
                 # include any dependent header in generated header
                 self.header_typedef_include[arg_typedef.c_header] = True
-            if arg_typedef.cpp_header:
+            if arg_typedef.cxx_header:
                 # include any dependent header in generated source
-                self.header_impl_include[arg_typedef.cpp_header] = True
+                self.header_impl_include[arg_typedef.cxx_header] = True
             if arg_typedef.forward:
                 # create forward references for other types being wrapped
                 # i.e. This argument is another wrapped type
@@ -540,20 +558,14 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = 'void'
         elif is_dtor:
             fmt_func.C_return_type = 'void'
-        elif node.C_return_type is not None:
-            fmt_func.C_return_type = node.C_return_type
+        elif fmt_func.C_custom_return_type:
+            pass
         else:
-            fmt_func.C_return_type = options.get(
-                'C_return_type', ast.gen_arg_as_c(name=None))
-
-        if pre_call:
-            fmt_func.C_pre_call = '\n'.join(pre_call)
-        if post_call:
-            fmt_func.C_post_call = '\n'.join(post_call)
+            fmt_func.C_return_type = ast.gen_arg_as_c(name=None)
 
         post_call_pattern = []
         if node.C_error_pattern is not None:
-            C_error_pattern = node.C_error_pattern + node._error_pattern_suffix
+            C_error_pattern = node.C_error_pattern + generated_suffix
             if C_error_pattern in self.patterns:
                 post_call_pattern.append('// C_error_pattern')
                 append_format(
@@ -562,82 +574,90 @@ class Wrapc(util.WrapperMixin):
             need_wrapper = True
             fmt_func.C_post_call_pattern = '\n'.join(post_call_pattern)
 
-        # body of function
-        splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
-        if node.C_code is not None:
+        # generate the C body
+        C_return_code = 'return;'
+        if is_ctor:
+            fmt_func.C_call_code = wformat('{cxx_rv_decl} = new {cxx_class}'
+                           '({C_call_list});', fmt_result)
+            C_return_code = ('return {};'.format(
+                wformat(result_typedef.cxx_to_c, fmt_result)))
+        elif is_dtor:
+            fmt_func.C_call_code = 'delete %s;' % fmt_func.CXX_this
+        elif CXX_subprogram == 'subroutine':
+            fmt_func.C_call_code = wformat(
+                '{CXX_this_call}{function_name}'
+                '{CXX_template}({C_call_list});',
+                fmt_func)
+        else:
+            fmt_func.C_call_code = wformat(
+                '{cxx_rv_decl} = {CXX_this_call}{function_name}'
+                '{CXX_template}({C_call_list});',
+                fmt_result)
+
+            if result_arg is None:
+                # The result is not passed back in an argument
+                c_statements = result_typedef.c_statements
+                intent_blk = c_statements.get('result', {})
+                if result_typedef.cxx_to_c != '{cxx_var}':
+                    # Make intermediate c_var value if a conversion
+                    # is required i.e. not the same as cxx_var.
+                    have_c_local_var = True
+                else:
+                    have_c_local_var = intent_blk.get('c_local_var', False)
+                    if have_c_local_var:
+                        raise RuntimeError  # XXX dead code
+                if have_c_local_var:
+                    # XXX need better mangling than 'X'
+                    fmt_result.c_var = 'X' + fmt_func.C_result
+                    fmt_result.c_rv_decl = CXX_result.gen_arg_as_c(
+                        name=fmt_result.c_var)
+                    fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
+                    append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
+                    return_lang = '{c_var}'
+
+                cmd_list = intent_blk.get('post_call', [])
+                for cmd in cmd_list:
+                    append_format(post_call, cmd, fmt_result)
+                # XXX release rv if necessary
+                if 'c_helper' in intent_blk:
+                    for helper in intent_blk['c_helper'].split():
+                        self.c_helper[helper] = True
+
+            if subprogram == 'function':
+                # Note: A C function may be converted into a Fortran subroutine
+                # subprogram when the result is returned in an argument.
+                C_return_code = 'return {};'.format(
+                    wformat(return_lang, fmt_result))
+
+        if fmt_func.inlocal('C_finalize' + generated_suffix):
+            # maybe check C_finalize up chain for accumulative code
+            # i.e. per class, per library.
+            finalize_line = fmt_func.get('C_finalize' + generated_suffix)
             need_wrapper = True
-            C_code = [1, wformat(node.C_code, fmt_func), -1]
+            post_call.append('{')
+            post_call.append('    // C_finalize')
+            util.append_format_indent(post_call, finalize_line, fmt_func)
+            post_call.append('}')
+
+        if fmt_func.inlocal('C_return_code'):
+            need_wrapper = True
+            C_return_code = wformat(fmt_func.C_return_code, fmt_func)
+        else:
+            fmt_func.C_return_code = C_return_code
+
+        if pre_call:
+            fmt_func.C_pre_call = '\n'.join(pre_call)
+        if post_call:
+            fmt_func.C_post_call = '\n'.join(post_call)
+
+        splicer_code = self.splicer_stack[-1].get(fmt_func.function_name, None)
+        if fmt_func.inlocal('C_code'):
+            need_wrapper = True
+            C_code = [1, wformat(fmt_func.C_code, fmt_func), -1]
         elif splicer_code:
             need_wrapper = True
             C_code = splicer_code
         else:
-            # generate the C body
-            fmt_func.C_return_code = 'return;'
-            if is_ctor:
-                fmt_func.C_call_code = wformat('{cpp_rv_decl} = new {cpp_class}'
-                               '({C_call_list});', fmt_result)
-                fmt_func.C_return_code = ('return '
-                               + wformat(result_typedef.cpp_to_c, fmt_result)
-                               + ';')
-            elif is_dtor:
-                fmt_func.C_call_code = 'delete %s;' % fmt_func.CPP_this
-            elif CPP_subprogram == 'subroutine':
-                fmt_func.C_call_code = wformat(
-                    '{CPP_this_call}{function_name}'
-                    '{CPP_template}({C_call_list});',
-                    fmt_func)
-            else:
-                fmt_func.C_call_code = wformat(
-                    '{cpp_rv_decl} = {CPP_this_call}{function_name}'
-                    '{CPP_template}({C_call_list});',
-                    fmt_result)
-
-                if not result_arg:
-                    # The result is not passed back in an argument
-                    c_statements = result_typedef.c_statements
-                    intent_blk = c_statements.get('result', {})
-                    if result_typedef.cpp_to_c != '{cpp_var}':
-                        # Make intermediate c_var value if a conversion
-                        # is required i.e. not the same as cpp_var.
-                        have_c_local_var = True
-                    else:
-                        have_c_local_var = intent_blk.get('c_local_var', False)
-                    if have_c_local_var:
-                        # XXX need better mangling than 'X'
-                        fmt_result.c_var = 'X' + fmt_func.C_result
-                        fmt_result.c_rv_decl = CPP_result.gen_arg_as_c(
-                            name=fmt_result.c_var)
-                        fmt_result.c_val = wformat(result_typedef.cpp_to_c, fmt_result)
-                        append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
-                        return_lang = '{c_var}'
-
-                    cmd_list = intent_blk.get('post_call', [])
-                    for cmd in cmd_list:
-                        append_format(post_call, cmd, fmt_result)
-                    # XXX release rv if necessary
-                    if 'c_helper' in intent_blk:
-                        for helper in intent_blk['c_helper'].split():
-                            self.c_helper[helper] = True
-
-                if subprogram == 'function':
-                    # Note: A C function may be converted into a Fortran subroutine subprogram
-                    # when the result is returned in an argument.
-                    fmt_func.C_return_code = ('return '
-                                            + wformat(return_lang, fmt_result)
-                                            + ';')
-
-            if node.C_post_call is not None:
-                need_wrapper = True
-                post_call.append('{')
-                post_call.append('// C_post_call')
-                append_format(post_call, node.C_post_call, fmt_func)
-                post_call.append('}')
-
-            if node.C_return_code is not None:
-                # override any computed return code.
-                need_wrapper = True
-                fmt_func.C_return_code = wformat(node.C_return_code, fmt_func)
-
             # copy-out values, clean up
             C_code = [1]
             C_code.extend(pre_call)
@@ -649,45 +669,30 @@ class Wrapc(util.WrapperMixin):
 
         if need_wrapper:
             self.header_proto_c.append('')
+            if node.cpp_if:
+                self.header_proto_c.append('#' + node.cpp_if)
             self.header_proto_c.append(
                 wformat('{C_return_type} {C_name}({C_prototype});',
                         fmt_func))
+            if node.cpp_if:
+                self.header_proto_c.append('#endif')
 
             impl = self.impl
             impl.append('')
             if options.debug:
-                impl.append('// %s' % node._decl)
+                impl.append('// %s' % node.declgen)
                 impl.append('// function_index=%d' % node._function_index)
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
+            if node.cpp_if:
+                self.impl.append('#' + node.cpp_if)
             impl.append(wformat('{C_return_type} {C_name}({C_prototype})', fmt_func))
             impl.append('{')
             self._create_splicer(fmt_func.underscore_name +
                                  fmt_func.function_suffix, impl, C_code)
             impl.append('}')
+            if node.cpp_if:
+                self.impl.append('#endif  // ' + node.cpp_if)
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = node._ast.name
-
-
-    def XXXget_intent(self, intent_blk, block):
-        # Maybe later...
-        """Get a language specific block of code.
-        block = pre_call, post_call
-
-        intent_in={
-            pre_call_c = []
-            pre_call_cpp = []
-        }
-        -- or --
-        intent_in={
-            pre_call = []
-        }
-        """
-        name = block + '_' + self.language
-        if name in intent_blk:
-            return intent_blk[name]
-        elif block in intent_blk:
-            return intent_blk[block]
-        else:
-            return []
+            fmt_func.C_name = node.ast.name

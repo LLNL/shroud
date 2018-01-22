@@ -51,8 +51,8 @@ fmt = string.Formatter()
 default_template = dict(
     # C_name='{C_prefix}{class_lower}_{underscore_name}{function_suffix}',
 
-    # C_header_filename = 'wrap{cpp_class}.h',
-    # C_impl_filename = 'wrap{cpp_class}.cpp',
+    # C_header_filename = 'wrap{cxx_class}.h',
+    # C_impl_filename = 'wrap{cxx_class}.cpp',
 
     # F_name_impl = '{class_lower}_{underscore_name}{function_suffix}',
     # F_name_function = '{underscore_name}{function_suffix}',
@@ -73,6 +73,12 @@ def append_format(lst, template, dct):
     # shorthand, wrap fmt.vformat
     lst.append(wformat(template, dct))
 
+def append_format_indent(lst, template, dct, indent='    '):
+    """Split lines, indent each by 4 blanks, append to out. 
+    """
+    lines = wformat(template, dct)
+    for line in lines.split("\n"):
+        lst.append(indent + line)
 
 # http://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-camel-case
 def un_camel(text):
@@ -336,9 +342,10 @@ class WrapperMixin(object):
         output.append(self.doxygen_end)
 
 
-class Options(object):
+class Scope(object):
     """
-    If attribute is not found, look in parent's.
+    Create a scoped namespace.
+    If item is not found, look in parent.
     A replacement for a dictionary to allow obj.name syntax.
     It will automatically look in __parent for attribute if not found to allow
     A nesting of options.
@@ -384,7 +391,7 @@ class Options(object):
         return self.__dict__.get(key, value)
 
     def update(self, d, replace=True):
-        """Add options from dictionary to self.
+        """Add attributes from dictionary to self.
         """
         for key, value in d.items():
             if replace:
@@ -397,6 +404,15 @@ class Options(object):
         i.e. does not check parent.
         """
         return key in self.__dict__
+
+    def clone(self):
+        """return new Scope with same inlocal and parent"""
+        new = Scope(self.__parent)
+        skip = '_' + self.__class__.__name__ + '__'   # __name is skipped
+        for key, value in self.__dict__.items():
+            if not key.startswith(skip):
+                new.__dict__[key] = value
+        return new
 
     def _to_dict(self):
         d = {}

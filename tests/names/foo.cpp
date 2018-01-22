@@ -40,7 +40,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// foo.cpp
 #include "foo.h"
 
 // splicer begin class.Names.CXX_definitions
@@ -64,10 +63,10 @@ void XXX_TES_names_method1(TES_names * self)
 
 // void method2()
 // function_index=1
-void XXX_TES_names_method2(TES_names * self)
+void XXX_TES_names_method2(TES_names * self2)
 {
 // splicer begin class.Names.method.method2
-    Names *SH_this = static_cast<Names *>(static_cast<void *>(self));
+    Names *SH_this2 = static_cast<Names *>(static_cast<void *>(self2));
     SH_this->method2();
     return;
 // splicer end class.Names.method.method2

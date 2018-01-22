@@ -39,7 +39,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// wrapExClass2.cpp
 #include "wrapExClass2.h"
 #include <cstring>
 #include <string>
@@ -78,7 +77,7 @@ AA_exclass2 * AA_exclass2_ctor(const char * name)
 {
 // splicer begin class.ExClass2.method.ctor
     const std::string SH_name(name);
-    ExClass2 * SHT_rv = new ExClass2(SH_name);
+    ExClass2 * SHT_rv = new ExClass2(&SH_name);
     return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));
 // splicer end class.ExClass2.method.ctor
 }
@@ -93,7 +92,7 @@ AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name, int Lname)
 {
 // splicer begin class.ExClass2.method.ctor_bufferify
     const std::string SH_name(name, Lname);
-    ExClass2 * SHT_rv = new ExClass2(SH_name);
+    ExClass2 * SHT_rv = new ExClass2(&SH_name);
     return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));
 // splicer end class.ExClass2.method.ctor_bufferify
 }
@@ -133,9 +132,9 @@ void AA_exclass2_get_name_bufferify(const AA_exclass2 * self, char * SHF_rv, int
     const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));
     const std::string & SHT_rv = SH_this->getName();
     if (SHT_rv.empty()) {
-      std::memset(SHF_rv, ' ', NSHF_rv);
+        std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name_bufferify
@@ -161,9 +160,9 @@ void AA_exclass2_get_name2_bufferify(AA_exclass2 * self, char * SHF_rv, int NSHF
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));
     const std::string & SHT_rv = SH_this->getName2();
     if (SHT_rv.empty()) {
-      std::memset(SHF_rv, ' ', NSHF_rv);
+        std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name2_bufferify
@@ -189,9 +188,9 @@ void AA_exclass2_get_name3_bufferify(const AA_exclass2 * self, char * SHF_rv, in
     const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));
     std::string & SHT_rv = SH_this->getName3();
     if (SHT_rv.empty()) {
-      std::memset(SHF_rv, ' ', NSHF_rv);
+        std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name3_bufferify
@@ -217,9 +216,9 @@ void AA_exclass2_get_name4_bufferify(AA_exclass2 * self, char * SHF_rv, int NSHF
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));
     std::string & SHT_rv = SH_this->getName4();
     if (SHT_rv.empty()) {
-      std::memset(SHF_rv, ' ', NSHF_rv);
+        std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end class.ExClass2.method.get_name4_bufferify
@@ -246,7 +245,8 @@ AA_exclass1 * AA_exclass2_get_class1(AA_exclass2 * self, const AA_exclass1 * in)
 {
 // splicer begin class.ExClass2.method.get_class1
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));
-    ExClass1 * SHT_rv = SH_this->get_class1(static_cast<const ExClass1 *>(static_cast<const void *>(in)));
+    const ExClass1 *SH_in = static_cast<const ExClass1 *>(static_cast<const void *>(in));
+    ExClass1 * SHT_rv = SH_this->get_class1(SH_in);
     AA_exclass1 * XSHT_rv = static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));
     return XSHT_rv;
 // splicer end class.ExClass2.method.get_class1

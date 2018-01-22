@@ -56,7 +56,7 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(library.options.wrap_c, True)
         self.assertEqual(library.options.wrap_fortran, True)
 
-        fmt = library._fmt
+        fmt = library.fmtdict
         self.assertEqual(fmt.C_prefix, 'DEF_')
 
 
@@ -66,21 +66,27 @@ class CheckAst(unittest.TestCase):
             language='c',
             options=dict(
                 wrap_c=False,
+            ),
+            format=dict(
                 C_prefix='XXX_',
+                fmt1='fmt1value',
+                fmt2='fmt2value',
             )
         )
 
         self.assertEqual(library.language, 'c')              # updated from dict
         self.assertEqual(library.options.wrap_c, False)      # updated from dict
         self.assertEqual(library.options.wrap_fortran, True)
+        self.assertEqual(library.fmtdict.fmt1, 'fmt1value')
+        self.assertEqual(library.fmtdict.fmt2, 'fmt2value')
 
-        fmt = library._fmt
+        fmt = library.fmtdict
         self.assertEqual(fmt.C_prefix, 'XXX_')
 
     def test_b_function1(self):
         """Add a function to library"""
         library = ast.LibraryNode()
-        library.add_function(decl='void func1()')
+        library.add_function('void func1()')
 
         self.assertEqual(len(library.functions), 1)
 
@@ -91,18 +97,30 @@ class CheckAst(unittest.TestCase):
                 'testa': 'a',
                 'testb': 'b',
             },
+            format={
+                'fmt1': 'f1',
+                'fmt2': 'f2',
+            },
             functions=[
                 {
                     'decl': 'void func1()',
                     'options': {
                         'testc': 'c',
-                    }
+                    },
+                    'format': {
+                        'fmt3': 'f3',
+                    },
                 },{
                     'options': {
                         'testb': 'bb',
                         'testd': 'd',
                         'teste': 'e',
                     },
+#                    'format': {
+#                        'fmt2': 'f22',
+#                        'fmt4': 'f4',
+#                        'fmt5': 'f5',
+#                    },
                 },{
                     'decl': 'void func2()',
                     'options': {
@@ -116,10 +134,15 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(len(library.functions), 2)
         self.assertEqual(library.options.testa, 'a')
         self.assertEqual(library.options.testb, 'b')
+        self.assertEqual(library.fmtdict.fmt1, 'f1')
+        self.assertEqual(library.fmtdict.fmt2, 'f2')
 
         self.assertEqual(library.functions[0].options.testa, 'a')
         self.assertEqual(library.functions[0].options.testb, 'b')
         self.assertEqual(library.functions[0].options.testc, 'c')
+        self.assertEqual(library.functions[0].fmtdict.fmt1, 'f1')
+        self.assertEqual(library.functions[0].fmtdict.fmt2, 'f2')
+        self.assertEqual(library.functions[0].fmtdict.fmt3, 'f3')
 
         self.assertEqual(library.functions[1].options.testa, 'a')
         self.assertEqual(library.functions[1].options.testb, 'bb')
@@ -129,21 +152,35 @@ class CheckAst(unittest.TestCase):
 
     def test_c_class1(self):
         """Add a class to library"""
-        library = ast.LibraryNode()
-        library.add_class('Class1')
+        library = ast.LibraryNode(
+            format=dict(
+                fmt1='f1',
+                fmt2='f2')
+        )
+        library.add_class('Class1',
+                          format=dict(
+                              fmt2='f2',
+                              fmt3='f3')
+        )
 
+        self.assertEqual(library.fmtdict.fmt1, 'f1')
+        self.assertEqual(library.fmtdict.fmt2, 'f2')
         self.assertEqual(len(library.classes), 1)
+
+        self.assertEqual(library.classes[0].fmtdict.fmt1, 'f1')
+        self.assertEqual(library.classes[0].fmtdict.fmt2, 'f2')
+        self.assertEqual(library.classes[0].fmtdict.fmt3, 'f3')
 
     def test_c_class2(self):
         """Add a classes with functions to library"""
         library = ast.LibraryNode()
 
         cls1 = library.add_class('Class1')
-        cls1.add_function(decl='void c1func1()')
-        cls1.add_function(decl='void c1func2()')
+        cls1.add_function('void c1func1()')
+        cls1.add_function('void c1func2()')
 
         cls2 = library.add_class('Class2')
-        cls2.add_function(decl='void c2func1()')
+        cls2.add_function('void c2func1()')
 
         self.assertEqual(len(library.classes), 2)
         self.assertEqual(len(library.classes[0].functions), 2)
@@ -201,14 +238,14 @@ class CheckAst(unittest.TestCase):
         Geneate an additional function with len and len_trim attributes.
         """
         library = ast.LibraryNode()
-        library.add_function(decl='void func1(char * arg)')
+        library.add_function('void func1(char * arg)')
         self.assertEqual(len(library.functions), 1)
 
         generate.generate_functions(library, None)
         self.assertEqual(len(library.functions), 2)
-        self.assertEqual(library.functions[0]._decl,
+        self.assertEqual(library.functions[0].declgen,
                          'void func1(char * arg +intent(inout))')
-        self.assertEqual(library.functions[1]._decl,
+        self.assertEqual(library.functions[1].declgen,
                          'void func1(char * arg +intent(inout)+len(Narg)+len_trim(Larg))')
 
 #        import json

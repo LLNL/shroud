@@ -178,6 +178,13 @@ contains
  
 !--------------------------------------------------
 
+    ! string_result_as_arg
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_string7()
+    call assert_true( str == "Hello")
+ 
+!--------------------------------------------------
+
     call accept_string_const_reference("cat")
 !    call assert_true( rv_char == "dog")
 
@@ -196,6 +203,10 @@ contains
     call c_accept_string_reference(str)
     call assert_true( str(1:6) == "catdog")
     call assert_true( str(7:7) == C_NULL_CHAR)
+
+    str = "bird"
+    call accept_string_pointer(str)
+    call assert_true( str == "birddog")
 
   end subroutine test_functions
 

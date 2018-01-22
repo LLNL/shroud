@@ -38,6 +38,8 @@
 ..
 .. #######################################################################
 
+.. _TypesAnchor:
+
 Types
 =====
 
@@ -56,7 +58,7 @@ format variables to describe the context.  These variables are
 c_var
     The C name of the argument.
 
-cpp_var
+cxx_var
     Name of the C++ variable.
 
 f_var
@@ -97,7 +99,7 @@ for wrappers::
     types:
       int:
         c_type: int 
-        cpp_type: int
+        cxx_type: int
         f_type: integer(C_INT)
         f_module:
           iso_c_binding:
@@ -110,9 +112,6 @@ overloaded function is generated so that a ``C_INT`` or ``C_LONG``
 argument may be passed to a C++ function function expecting a
 ``long``.  The **f_cast** field is used to convert the argument to the
 type expected by the C++ function.
-
-
-
 
 
 Bool
@@ -129,7 +128,7 @@ The type map is defined as::
     types:
       bool:
         c_type: bool 
-        cpp_type: bool 
+        cxx_type: bool 
         f_type: logical 
         f_c_type: logical(C_BOOL) 
         f_module:
@@ -277,53 +276,53 @@ The type map::
     types:
         char:
             base: string
-            cpp_type: char
+            cxx_type: char
             c_type: char
             c_statements:
                 intent_in_buf:
                     buf_args:
                     - len_trim
-                    cpp_local_var: True
-                    cpp_header: <cstring>
+                    cxx_local_var: pointer
+                    cxx_header: <cstring>
                     pre_call:
-                      - char * {cpp_var} = new char [{c_var_trim} + 1];
-                      - std::strncpy({cpp_var}, {c_var}, {c_var_trim});
-                      - {cpp_var}[{c_var_trim}] = '\0';
+                      - char * {cxx_var} = new char [{c_var_trim} + 1];
+                      - std::strncpy({cxx_var}, {c_var}, {c_var_trim});
+                      - {cxx_var}[{c_var_trim}] = '\0';
                     post_call:
-                      -  delete [] {cpp_var};
+                      -  delete [] {cxx_var};
                 intent_out_buf:
                     buf_args:
                     - len
                     c_helper: ShroudStrCopy
-                    cpp_local_var: True
+                    cxx_local_var: pointer
                     pre_call:
-                      - char * {cpp_var} = new char [{c_var_len} + 1];
+                      - char * {cxx_var} = new char [{c_var_len} + 1];
                     post_call:
-                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
-                      - delete [] {cpp_var};
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
+                      - delete [] {cxx_var};
                 intent_inout_buf:
                     buf_args:
                     - len_trim
                     - len
                     c_helper: ShroudStrCopy
-                    cpp_local_var: True
-                    cpp_header: <cstring>
+                    cxx_local_var: pointer
+                    cxx_header: <cstring>
                     pre_call:
-                      - char * {cpp_var} = new char [{c_var_trim} + 1];
-                      - std::strncpy({cpp_var}, {c_var}, {c_var_trim});
-                      - {cpp_var}[{c_var_trim}] = '\0';
+                      - char * {cxx_var} = new char [{c_var_trim} + 1];
+                      - std::strncpy({cxx_var}, {c_var}, {c_var_trim});
+                      - {cxx_var}[{c_var_trim}] = '\0';
                     post_call:
-                      -  delete [] {cpp_var};
+                      -  delete [] {cxx_var};
                 result_buf:
                     buf_args:
                     - len
                     c_helper: ShroudStrCopy
-                    cpp_header: <cstring>
+                    cxx_header: <cstring>
                     post_call:
-                      - if ({cpp_var} == NULL) {{
-                      -   std::memset({c_var}, ' ', {c_var_len});
+                      - if ({cxx_var} == NULL) {{
+                      -     std::memset({c_var}, ' ', {c_var_len});
                       - }} else {{
-                      -   ShroudStrCopy({c_var}, {c_var_len}, {cpp_var});
+                      -     ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});
                       - }}
 
             f_type: character(*)
@@ -343,13 +342,13 @@ The type map::
 The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
 statement ``dest = src``::
 
-    - decl: void passCharPtr(char *dest, const char *src)
+    - decl: void passCharPtr(char *dest+intent(out), const char *src)
 
 .. from tests/strings.cpp
 
-The intent of the arguments is inferred from the declaration.
-``dest`` is *intent(out)* since it is a pointer.  ``src`` is
-*intent(in)* since it is ``const``.
+The intent of ``dest`` must be explicit.  It defaults to *intent(inout)*
+since it is a pointer.
+``src`` is implied to be *intent(in)* since it is ``const``.
 
 This single line will create five different wrappers.  The first is the 
 pure C version.  The only feature this provides to Fortran is the ability
@@ -388,14 +387,14 @@ And generates::
 
     void STR_pass_char_ptr_bufferify(char * dest, int Ndest, const char * src, int Lsrc)
     {
-        char * SH_dest = new char [Ndest + 1];
-        char * SH_src = new char [Lsrc + 1];
-        std::strncpy(SH_src, src, Lsrc);
+        char * SH_dest = (char *) malloc(Ndest + 1);
+        char * SH_src = (char *) malloc(Lsrc + 1);
+        std::memcpy(SH_src, src, Lsrc);
         SH_src[Lsrc] = '\0';
         passCharPtr(SH_dest, SH_src);
         ShroudStrCopy(dest, Ndest, SH_dest);
-        delete [] SH_dest;
-        delete [] SH_src;
+        free(SH_dest);
+        free(SH_src);
         return;
     }
 
@@ -458,58 +457,58 @@ additional sections to convert between ``char *`` and ``std::string``::
     types:
         string:
             base: string
-            cpp_type: std::string
-            cpp_header: <string>
-            cpp_to_c: {cpp_var}.c_str()
+            cxx_type: std::string
+            cxx_header: <string>
+            cxx_to_c: {cxx_var}.c_str()
             c_type: char
     
             c_statements:
                 intent_in:
-                    cpp_local_var: true
+                    cxx_local_var: object
                     pre_call:
-                      - {c_const}std::string {cpp_var}({c_var});
+                      - {c_const}std::string {cxx_var}({c_var});
                 intent_out:
-                    cpp_header: <cstring>
+                    cxx_header: <cstring>
                     post_call:
-                      - strcpy({c_var}, {cpp_val});
+                      - strcpy({c_var}, {cxx_val});
                 intent_inout:
-                    cpp_header: <cstring>
+                    cxx_header: <cstring>
                     pre_call:
-                      - {c_const}std::string {cpp_var}({c_var});
+                      - {c_const}std::string {cxx_var}({c_var});
                     post_call:
-                      - strcpy({c_var}, {cpp_val});
+                      - strcpy({c_var}, {cxx_val});
 
                 intent_in_buf:
                     buf_args:
                     - len_trim
-                    cpp_local_var: True
+                    cxx_local_var: object
                     pre_call:
-                      - {c_const}std::string {cpp_var}({c_var}, {c_var_trim});
+                      - {c_const}std::string {cxx_var}({c_var}, {c_var_trim});
                 intent_out_buf:
                     buf_args:
                     - len
                     pre_call:
-                      - {c_const}std::string {cpp_var};
+                      - {c_const}std::string {cxx_var};
                     post_call:
-                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
                 intent_inout_buf:
                     buf_args:
                     - len_trim
                     - len
-                    cpp_local_var: True
+                    cxx_local_var: object
                     pre_call:
-                      - std::string {cpp_var}({c_var}, {c_var_trim});
+                      - std::string {cxx_var}({c_var}, {c_var_trim});
                     post_call:
-                      - ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
+                      - ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
                 result_buf:
                     buf_args:
                     - len
-                    cpp_header: <cstring>
+                    cxx_header: <cstring>
                     post_call:
-                       - if ({cpp_var}.empty()) {{
+                       - if ({cxx_var}.empty()) {{
                        -   std::memset({c_var}, ' ', {c_var_len});
                        - }} else {{
-                       -   ShroudStrCopy({c_var}, {c_var_len}, {cpp_val});
+                       -   ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
                        - }}
     
             f_type: character(*)
@@ -604,7 +603,7 @@ wrapped differently::
     - decl: const char * getChar1()  +pure
     - decl: const char * getChar2+len(30)()
     - decl: const char * getChar3()
-      options:
+      format:
          F_string_result_as_arg: output
 
 All of the generated C wrappers are very similar.  The buffer version
@@ -616,13 +615,13 @@ copies the result into a buffer of known length::
         return SH_rv;
     }
 
-    void STR_get_char1_bufferify(char * SH_F_rv, int NSH_F_rv)
+    void STR_get_char1_bufferify(char * SHF_rv, int NSHF_rv)
     {
-        const char * SH_rv = getChar1();
-        if (SH_rv == NULL) {
-           std::memset(SH_F_rv, ' ', NSH_F_rv);
+        const char * SHT_rv = getChar1();
+        if (SHT_rv == NULL) {
+            std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
-          ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv);
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
         }
         return;
     }
@@ -647,10 +646,10 @@ variable length.  The *pure* annotation tells the compiler there are
 no side effects which is important because it will be called twice.
 You'd also want the C++ function to be fast::
 
-    function get_char1() result(SH_rv)
+    function get_char1() result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        character(kind=C_CHAR, len=strlen_ptr(c_get_char1())) :: SH_rv
-        SH_rv = fstr(c_get_char1())
+        character(kind=C_CHAR, len=strlen_ptr(c_get_char1())) :: SHT_rv
+        SHT_rv = fstr(c_get_char1())
     end function get_char1
 
 If you know the maximum size of string that you expect the function to
@@ -659,17 +658,17 @@ advantage is that the C function is only called once.  The downside is
 that any result which is longer than the length will be silently
 truncated::
 
-    function get_char2() result(SH_rv)
+    function get_char2() result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
-        character(kind=C_CHAR, len=30) :: SH_rv
+        character(kind=C_CHAR, len=30) :: SHT_rv
         call c_get_char2_bufferify(  &
-            SH_rv,  &
-            len(SH_rv, kind=C_INT))
+            SHT_rv,  &
+            len(SHT_rv, kind=C_INT))
     end function get_char2
 
 The third option gives the best of both worlds.  The C wrapper is only
 called once and any size result can be returned.  The result of the C
-function will be returned in the Fortran argument named by option
+function will be returned in the Fortran argument named by format string
 **F_string_result_as_arg**.  The potential downside is that a Fortran
 subroutine is generated instead of a function::
 
@@ -695,26 +694,31 @@ The generated wrappers are::
 
     const char * STR_get_string1()
     {
-        const std::string & SH_rv = getString1();
-        const char * XSH_rv = SH_rv.c_str();
-        return XSH_rv;
+        const std::string & SHT_rv = getString1();
+        const char * XSHT_rv = SHT_rv.c_str();
+        return XSHT_rv;
     }
     
-    void STR_get_string1_bufferify(char * SH_F_rv, int NSH_F_rv)
+    void STR_get_string1_bufferify(char * SHF_rv, int NSHF_rv)
     {
-        const std::string & SH_rv = getString1();
-        if (SH_rv.empty()) {
-          std::memset(SH_F_rv, ' ', NSH_F_rv);
+        const std::string & SHT_rv = getString1();
+        if (SHT_rv.empty()) {
+            std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
-          ShroudStrCopy(SH_F_rv, NSH_F_rv, SH_rv.c_str());
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
         }
         return;
     }
 
-.. note:: These example assume that a pointer to an existing string is returned.
-          If the C++ function allocates a string, the C wrapper should deallocate
-          it after copying the contents. Shroud does not deal with this case
-          and will result in leaked memory.
+These example assume that a pointer to an existing string is returned.
+If the C++ function allocates a string, the C wrapper should deallocate
+it after copying the contents to avoid leaking memory.
+This can be dealt with by adding the **C_finalize** format string::
+
+    - decl: const string& getString1()  +pure
+      format:
+         C_finalize:  free 
+
 
 std::vector
 -----------
@@ -734,11 +738,11 @@ Are wrapped with the YAML input::
 ``intent(in)`` is implied for the *vector_sum* argument since it is ``const``.
 The Fortran wrapper passes the array and the size to C::
 
-    function vector_sum(arg) result(SH_rv)
+    function vector_sum(arg) result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), intent(IN) :: arg(:)
-        integer(C_INT) :: SH_rv
-        SH_rv = c_vector_sum_bufferify(  &
+        integer(C_INT) :: SHT_rv
+        SHT_rv = c_vector_sum_bufferify(  &
             arg,  &
             size(arg, kind=C_LONG))
     end function vector_sum
@@ -765,19 +769,20 @@ The C wrapper then creates a ``std::vector``::
         std::vector<int> SH_arg(Sarg);
         vector_iota(SH_arg);
         {
-          std::vector<int>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-          SHT_n = std::min(SH_arg.size(), SHT_n);
-          for(; SHT_i < SHT_n; SHT_i++) {
-            arg[SHT_i] = SH_arg[SHT_i];
-          }
+            std::vector<int>::size_type
+                SHT_i = 0,
+                SHT_n = Sarg;
+            SHT_n = std::min(SH_arg.size(), SHT_n);
+            for(; SHT_i < SHT_n; SHT_i++) {
+                arg[SHT_i] = SH_arg[SHT_i];
+            }
         }
         return;
     }
 
-On ``intent(in)``, the ``std::vector`` constructor copies the values from the input pointer.
-With ``intent(out)``, the values are copied after calling the function.
+On ``intent(in)``, the ``std::vector`` constructor copies the values
+from the input pointer.  With ``intent(out)``, the values are copied
+after calling the function.
 
 .. note:: With ``intent(out)``, if *vector_iota* changes the size of ``arg`` to be longer than
           the original size of the Fortran argument, the additional values will not be copied. 
@@ -792,7 +797,7 @@ how to use these routines::
 
     types:
         MPI_Comm:
-            cpp_type: MPI_Comm
+            cxx_type: MPI_Comm
             c_header: mpi.h
             c_type: MPI_Fint
             f_type: integer
@@ -800,8 +805,8 @@ how to use these routines::
             f_c_module:
                 iso_c_binding:
                   - C_INT
-            cpp_to_c: MPI_Comm_c2f({cpp_var})
-            c_to_cpp: MPI_Comm_f2c({c_var})
+            cxx_to_c: MPI_Comm_c2f({cxx_var})
+            c_to_cxx: MPI_Comm_f2c({c_var})
 
 
 This mapping makes the assumption that ``integer`` and
@@ -825,7 +830,7 @@ generated ``get_instance`` function to return the pointer which will
 be passed to C.
 
 In C an opaque typedef for a struct is created as the type for the C++
-instance pointer.  The *c_to_cpp* and *cpp_to_c* fields casts this
+instance pointer.  The *c_to_cxx* and *cxx_to_c* fields casts this
 pointer to C++ and back to C.
 
 The class example from the tutorial is::
@@ -839,9 +844,9 @@ Shroud will generate a type map for this class as::
       Class1:
         base: wrapped
         c_type: TUT_class1
-        cpp_type: Class1
-        c_to_cpp: static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}))
-        cpp_to_c: static_cast<{c_const}TUT_class1 *>(static_cast<{c_const}void *>({cpp_var}))
+        cxx_type: Class1
+        c_to_cxx: static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}))
+        cxx_to_c: static_cast<{c_const}TUT_class1 *>(static_cast<{c_const}void *>({cxx_var}))
 
         f_type: type(class1)
         f_derived_type: class1
@@ -882,8 +887,8 @@ memory. But if the caller of the C++ function wants to transfer
 ownership of the pointer to its caller, the C++ wrapper will leak the
 memory.
 
-The **C_post_call** variable may be used to insert code before
-returning from the wrapper.  Use **C_post_call_buf** for the buffer
+The **C_finalize** variable may be used to insert code before
+returning from the wrapper.  Use **C_finalize_buf** for the buffer
 version of wrapped functions.
 
 .. note:: Reference counting and garbage collection are still a work in progress

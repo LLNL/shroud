@@ -40,7 +40,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// wrapTutorial.cpp
 #include "wrapTutorial.h"
 #include <cstring>
 #include <string>
@@ -151,9 +150,9 @@ void TUT_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, i
     const std::string SH_arg2(arg2, Larg2);
     const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);
     if (SHT_rv.empty()) {
-      std::memset(SHF_rv, ' ', NSHF_rv);
+        std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end function.function4a_bufferify
@@ -181,9 +180,9 @@ void TUT_function4b_bufferify(const char * arg1, int Larg1, const char * arg2, i
     const std::string SH_arg2(arg2, Larg2);
     const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);
     if (SHT_rv.empty()) {
-      std::memset(output, ' ', Noutput);
+        std::memset(output, ' ', Noutput);
     } else {
-      ShroudStrCopy(output, Noutput, SHT_rv.c_str());
+        ShroudStrCopy(output, Noutput, SHT_rv.c_str());
     }
     return;
 // splicer end function.function4b_bufferify
@@ -419,7 +418,8 @@ int TUT_enumfunc(int arg)
 void TUT_useclass(const TUT_class1 * arg1)
 {
 // splicer begin function.useclass
-    useclass(static_cast<const Class1 *>(static_cast<const void *>(arg1)));
+    const Class1 *SH_arg1 = static_cast<const Class1 *>(static_cast<const void *>(arg1));
+    useclass(SH_arg1);
     return;
 // splicer end function.useclass
 }
@@ -443,13 +443,13 @@ void TUT_vector_iota_bufferify(int * arg, long Sarg)
     std::vector<int> SH_arg(Sarg);
     vector_iota(SH_arg);
     {
-      std::vector<int>::size_type
-        SHT_i = 0,
-        SHT_n = Sarg;
-      SHT_n = std::min(SH_arg.size(), SHT_n);
-      for(; SHT_i < SHT_n; SHT_i++) {
-        arg[SHT_i] = SH_arg[SHT_i];
-      }
+        std::vector<int>::size_type
+            SHT_i = 0,
+            SHT_n = Sarg;
+        SHT_n = std::min(SH_arg.size(), SHT_n);
+        for(; SHT_i < SHT_n; SHT_i++) {
+            arg[SHT_i] = SH_arg[SHT_i];
+        }
     }
     return;
 // splicer end function.vector_iota_bufferify
@@ -463,13 +463,13 @@ void TUT_vector_increment_bufferify(int * arg, long Sarg)
     std::vector<int> SH_arg(arg, arg + Sarg);
     vector_increment(SH_arg);
     {
-      std::vector<int>::size_type
-        SHT_i = 0,
-        SHT_n = Sarg;
-      SHT_n = std::min(SH_arg.size(), SHT_n);
-      for(; SHT_i < SHT_n; SHT_i++) {
-          arg[SHT_i] = SH_arg[SHT_i];
-      }
+        std::vector<int>::size_type
+            SHT_i = 0,
+            SHT_n = Sarg;
+        SHT_n = std::min(SH_arg.size(), SHT_n);
+        for(; SHT_i < SHT_n; SHT_i++) {
+              arg[SHT_i] = SH_arg[SHT_i];
+        }
     }
     return;
 // splicer end function.vector_increment_bufferify
@@ -486,14 +486,14 @@ int TUT_vector_string_count_bufferify(const char * arg, long Sarg, int Narg)
 // splicer begin function.vector_string_count_bufferify
     std::vector<std::string> SH_arg;
     {
-      const char * BBB = arg;
-      std::vector<std::string>::size_type
-        SHT_i = 0,
-        SHT_n = Sarg;
-      for(; SHT_i < SHT_n; SHT_i++) {
-        SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
-        BBB += Narg;
-      }
+          const char * BBB = arg;
+          std::vector<std::string>::size_type
+            SHT_i = 0,
+            SHT_n = Sarg;
+        for(; SHT_i < SHT_n; SHT_i++) {
+            SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
+            BBB += Narg;
+        }
     }
     int SHT_rv = vector_string_count(SH_arg);
     return SHT_rv;
@@ -514,15 +514,15 @@ int TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg)
     std::vector<std::string> SH_arg;
     vector_string_fill(SH_arg);
     {
-      char * BBB = arg;
-      std::vector<std::string>::size_type
-        SHT_i = 0,
-        SHT_n = Sarg;
-      SHT_n = std::min(SH_arg.size(),SHT_n);
-      for(; SHT_i < SHT_n; SHT_i++) {
-        ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());
-        BBB += Narg;
-      }
+        char * BBB = arg;
+        std::vector<std::string>::size_type
+            SHT_i = 0,
+            SHT_n = Sarg;
+        SHT_n = std::min(SH_arg.size(),SHT_n);
+        for(; SHT_i < SHT_n; SHT_i++) {
+            ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());
+            BBB += Narg;
+        }
     }
     return SH_arg.size();
 // splicer end function.vector_string_fill_bufferify
@@ -539,26 +539,26 @@ void TUT_vector_string_append_bufferify(char * arg, long Sarg, int Narg)
 // splicer begin function.vector_string_append_bufferify
     std::vector<std::string> SH_arg;
     {
-      char * BBB = arg;
-      std::vector<std::string>::size_type
-        SHT_i = 0,
-        SHT_n = Sarg;
-      for(; SHT_i < SHT_n; SHT_i++) {
-        SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
-        BBB += Narg;
-      }
+        char * BBB = arg;
+        std::vector<std::string>::size_type
+            SHT_i = 0,
+            SHT_n = Sarg;
+        for(; SHT_i < SHT_n; SHT_i++) {
+            SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
+            BBB += Narg;
+        }
     }
     vector_string_append(SH_arg);
     {
-      char * BBB = arg;
-      std::vector<std::string>::size_type
-        SHT_i = 0,
-        SHT_n = Sarg;
-      SHT_n = std::min(SH_arg.size(),SHT_n);
-      for(; SHT_i < SHT_n; SHT_i++) {
-        ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());
-        BBB += Narg;
-      }
+        char * BBB = arg;
+        std::vector<std::string>::size_type
+            SHT_i = 0,
+            SHT_n = Sarg;
+        SHT_n = std::min(SH_arg.size(),SHT_n);
+        for(; SHT_i < SHT_n; SHT_i++) {
+            ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());
+            BBB += Narg;
+        }
     }
     return;
 // splicer end function.vector_string_append_bufferify
@@ -582,9 +582,9 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer begin function.last_function_called_bufferify
     const std::string & SHT_rv = LastFunctionCalled();
     if (SHT_rv.empty()) {
-      std::memset(SHF_rv, ' ', NSHF_rv);
+        std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-      ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
     }
     return;
 // splicer end function.last_function_called_bufferify

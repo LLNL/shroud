@@ -66,7 +66,7 @@ int PP_Names2_from_Object(PyObject *obj, void **addr);
 
 typedef struct {
 PyObject_HEAD
-    Names * BBB;
+    Names * obj;
     // splicer begin class.Names.C_object
     // splicer end class.Names.C_object
 } PY_Names;
@@ -75,7 +75,7 @@ PyObject_HEAD
 
 typedef struct {
 PyObject_HEAD
-    Names2 * BBB;
+    Names2 * obj;
     // splicer begin class.Names2.C_object
     // splicer end class.Names2.C_object
 } PY_Names2;

@@ -3,10 +3,13 @@ Wrote wrapExClass1.h
 Wrote wrapExClass1.cpp
 Wrote wrapExClass2.h
 Wrote wrapExClass2.cpp
+Wrote wrapExClass3.h
+Wrote wrapExClass3.cpp
 Wrote wrapUserLibrary.h
 Wrote wrapUserLibrary.cpp
 Wrote wrapfExClass1.f
 Wrote wrapfExClass2.f
+Wrote wrapfExClass3.f
 Wrote wrapfuserlibrary.f
 Wrote pyExClass1type.cpp
 Wrote pyExClass2type.cpp

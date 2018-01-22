@@ -50,6 +50,10 @@ C method int getValue()
 C method double getValue()
 Close wrapExClass2.h
 Close wrapExClass2.cpp
+class ExClass3
+C method void exfunc()
+Close wrapExClass3.h
+Close wrapExClass3.cpp
 C function void local_function1()
 C function bool isNameValid(const std::string & name +intent(in))
 C function bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
@@ -118,6 +122,9 @@ C-interface, Fortran method void setValue(double value +intent(in)+value)
 C-interface, Fortran method int getValue()
 C-interface, Fortran method double getValue()
 Close wrapfExClass2.f
+class ExClass3
+C-interface, Fortran method void exfunc()
+Close wrapfExClass3.f
 C-interface, Fortran function void local_function1()
 C-interface, Fortran function bool isNameValid(const std::string & name +intent(in))
 C-interface function bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
