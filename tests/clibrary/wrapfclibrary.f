@@ -153,10 +153,7 @@ contains
         SH_arg1 = arg1  ! coerce to C_BOOL
         SH_arg3 = arg3  ! coerce to C_BOOL
         ! splicer begin function.function3b
-        call c_function3b(  &
-            SH_arg1,  &
-            SH_arg2,  &
-            SH_arg3)
+        call c_function3b(SH_arg1, SH_arg2, SH_arg3)
         ! splicer end function.function3b
         arg2 = SH_arg2  ! coerce to logical
         arg3 = SH_arg3  ! coerce to logical
@@ -171,12 +168,8 @@ contains
         character(*), intent(IN) :: arg2
         character(kind=C_CHAR, len=30) :: SHT_rv
         ! splicer begin function.function4a
-        call c_function4a_bufferify(  &
-            arg1,  &
-            len_trim(arg1, kind=C_INT),  &
-            arg2,  &
-            len_trim(arg2, kind=C_INT),  &
-            SHT_rv,  &
+        call c_function4a_bufferify(arg1, len_trim(arg1, kind=C_INT),  &
+            arg2, len_trim(arg2, kind=C_INT), SHT_rv,  &
             len(SHT_rv, kind=C_INT))
         ! splicer end function.function4a
     end function function4a

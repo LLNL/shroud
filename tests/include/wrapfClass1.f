@@ -86,9 +86,7 @@ contains
         use iso_c_binding, only : C_INT
         class(class1) :: obj
         integer(C_INT), value, intent(IN) :: arg1
-        call c_class1_method1(  &
-            obj%voidptr,  &
-            arg1)
+        call c_class1_method1(obj%voidptr, arg1)
     end subroutine class1_method1
 
     function class1_get_instance(obj) result (voidptr)

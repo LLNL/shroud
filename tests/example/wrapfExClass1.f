@@ -292,8 +292,7 @@ contains
         character(*), intent(IN) :: name
         type(exclass1) :: SHT_rv
         ! splicer begin class.ExClass1.method.ctor_1
-        SHT_rv%voidptr = c_exclass1_ctor_1_bufferify(  &
-            name,  &
+        SHT_rv%voidptr = c_exclass1_ctor_1_bufferify(name,  &
             len_trim(name, kind=C_INT))
         ! splicer end class.ExClass1.method.ctor_1
     end function exclass1_ctor_1
@@ -322,9 +321,7 @@ contains
         integer(C_INT), value, intent(IN) :: incr
         integer(C_INT) :: SHT_rv
         ! splicer begin class.ExClass1.method.increment_count
-        SHT_rv = c_exclass1_increment_count(  &
-            obj%voidptr,  &
-            incr)
+        SHT_rv = c_exclass1_increment_count(obj%voidptr, incr)
         ! splicer end class.ExClass1.method.increment_count
     end function exclass1_increment_count
 
@@ -334,11 +331,10 @@ contains
     function exclass1_get_name(obj) result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         class(exclass1) :: obj
-        character(kind=C_CHAR, len=aa_exclass1_get_name_length(obj%voidptr)) :: SHT_rv
+        character(kind=C_CHAR, &
+             len=aa_exclass1_get_name_length(obj%voidptr)) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_name
-        call c_exclass1_get_name_bufferify(  &
-            obj%voidptr,  &
-            SHT_rv,  &
+        call c_exclass1_get_name_bufferify(obj%voidptr, SHT_rv,  &
             len(SHT_rv, kind=C_INT))
         ! splicer end class.ExClass1.method.get_name
     end function exclass1_get_name
@@ -364,15 +360,12 @@ contains
     function exclass1_get_name_error_check(obj) result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         class(exclass1) :: obj
-        character(kind=C_CHAR, len=strlen_ptr(c_exclass1_get_name_error_check_bufferify(  &
-            obj%voidptr,  &
-            SHT_rv,  &
-            len(SHT_rv, kind=C_INT)))) :: SHT_rv
+        character(kind=C_CHAR, len=strlen_ptr( &
+            c_exclass1_get_name_error_check_bufferify(obj%voidptr,  &
+            SHT_rv, len(SHT_rv, kind=C_INT)))) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_name_error_check
-        call c_exclass1_get_name_error_check_bufferify(  &
-            obj%voidptr,  &
-            SHT_rv,  &
-            len(SHT_rv, kind=C_INT))
+        call c_exclass1_get_name_error_check_bufferify(obj%voidptr,  &
+            SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end class.ExClass1.method.get_name_error_check
     end function exclass1_get_name_error_check
 
@@ -384,9 +377,7 @@ contains
         class(exclass1) :: obj
         character(*), intent(OUT) :: name
         ! splicer begin class.ExClass1.method.get_name_arg
-        call c_exclass1_get_name_arg_bufferify(  &
-            obj%voidptr,  &
-            name,  &
+        call c_exclass1_get_name_arg_bufferify(obj%voidptr, name,  &
             len(name, kind=C_INT))
         ! splicer end class.ExClass1.method.get_name_arg
     end subroutine exclass1_get_name_arg
@@ -410,9 +401,7 @@ contains
         integer(C_INT), value, intent(IN) :: value
         integer(C_INT) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_value_from_int
-        SHT_rv = c_exclass1_get_value_from_int(  &
-            obj%voidptr,  &
-            value)
+        SHT_rv = c_exclass1_get_value_from_int(obj%voidptr, value)
         ! splicer end class.ExClass1.method.get_value_from_int
     end function exclass1_get_value_from_int
 
@@ -424,9 +413,7 @@ contains
         integer(C_LONG), value, intent(IN) :: value
         integer(C_LONG) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_value_1
-        SHT_rv = c_exclass1_get_value_1(  &
-            obj%voidptr,  &
-            value)
+        SHT_rv = c_exclass1_get_value_1(obj%voidptr, value)
         ! splicer end class.ExClass1.method.get_value_1
     end function exclass1_get_value_1
 
@@ -451,9 +438,7 @@ contains
         logical :: SHT_rv
         SH_in = in  ! coerce to C_BOOL
         ! splicer begin class.ExClass1.method.has_addr
-        SHT_rv = c_exclass1_has_addr(  &
-            obj%voidptr,  &
-            SH_in)
+        SHT_rv = c_exclass1_has_addr(obj%voidptr, SH_in)
         ! splicer end class.ExClass1.method.has_addr
     end function exclass1_has_addr
 

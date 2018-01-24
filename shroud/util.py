@@ -284,6 +284,12 @@ class WrapperMixin(object):
                 # convert None to blank line
                 fp.write(self.comment + '\n')
 
+    def break_into_continuations(self, out, cont, tail, indent, line):
+        """Tab marks potential linebreak.
+        """
+        parts = line.split('\t')
+        out.append((cont, tail, indent, parts))
+
     def continued_line(self, cont, tail, indent, *args):
         """Create a line which will be split into continued parts
         by write_lines.
@@ -328,8 +334,8 @@ class WrapperMixin(object):
                 tail = line[1]
                 indent = line[2]
                 subline = '    ' * self.indent
-                size = len(subline)
                 delimiter = ''
+                nparts = 0
                 for part in line[3]:
                     if part == ' ' or part == '\n':
                         # save delimiter for next part
@@ -340,13 +346,15 @@ class WrapperMixin(object):
                         #  ' '  'result(rv)'
                         delimiter = ''
                         continue
-                    elif delimiter == '\n' or size + len(part) > 72:
-                        fp.write(subline + cont + '\n')
-                        subline = '    ' * (self.indent + indent)
-                        size = len(subline)
+                    elif delimiter == '\n' or len(subline) + len(part) > 72:
+                        # if the first part causes an overflow, there
+                        # will not be anything to continue yet.
+                        if nparts > 0:
+                            fp.write(subline + cont + '\n')
+                            subline = '    ' * (self.indent + indent)
                         delimiter = ''
                     subline += delimiter + part
-                    size = len(subline)
+                    nparts += 1
                     delimiter = ''
                 fp.write(subline + tail + '\n')
             elif isinstance(line, int):

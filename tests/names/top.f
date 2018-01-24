@@ -159,8 +159,7 @@ contains
         character(*), intent(IN) :: rv
         integer(C_INT) :: SHT_rv
         ! splicer begin function.function4
-        SHT_rv = yyy_tes_function4_bufferify(  &
-            rv,  &
+        SHT_rv = yyy_tes_function4_bufferify(rv,  &
             len_trim(rv, kind=C_INT))
         ! splicer end function.function4
     end function testnames_function4

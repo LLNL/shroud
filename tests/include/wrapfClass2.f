@@ -94,18 +94,14 @@ contains
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
         integer, value, intent(IN) :: comm
-        call c_class2_method1(  &
-            obj%voidptr,  &
-            comm)
+        call c_class2_method1(obj%voidptr, comm)
     end subroutine class2_method1
 
     subroutine class2_method2(obj, c2)
         use class1_mod, only : class1
         class(class2) :: obj
         type(class1), value, intent(IN) :: c2
-        call c_class2_method2(  &
-            obj%voidptr,  &
-            c2%get_instance())
+        call c_class2_method2(obj%voidptr, c2%get_instance())
     end subroutine class2_method2
 
     function class2_get_instance(obj) result (voidptr)

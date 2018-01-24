@@ -419,9 +419,7 @@ contains
         use iso_c_binding, only : C_INT
         character :: SHT_rv
         ! splicer begin function.return_char
-        call c_return_char_bufferify(  &
-            SHT_rv,  &
-            len(SHT_rv, kind=C_INT))
+        call c_return_char_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end function.return_char
     end function return_char
 
@@ -439,11 +437,8 @@ contains
         character(*), intent(OUT) :: dest
         character(*), intent(IN) :: src
         ! splicer begin function.pass_char_ptr
-        call c_pass_char_ptr_bufferify(  &
-            dest,  &
-            len(dest, kind=C_INT),  &
-            src,  &
-            len_trim(src, kind=C_INT))
+        call c_pass_char_ptr_bufferify(dest, len(dest, kind=C_INT),  &
+            src, len_trim(src, kind=C_INT))
         ! splicer end function.pass_char_ptr
     end subroutine pass_char_ptr
 
@@ -458,10 +453,8 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(INOUT) :: s
         ! splicer begin function.pass_char_ptr_in_out
-        call c_pass_char_ptr_in_out_bufferify(  &
-            s,  &
-            len_trim(s, kind=C_INT),  &
-            len(s, kind=C_INT))
+        call c_pass_char_ptr_in_out_bufferify(s,  &
+            len_trim(s, kind=C_INT), len(s, kind=C_INT))
         ! splicer end function.pass_char_ptr_in_out
     end subroutine pass_char_ptr_in_out
 
@@ -490,9 +483,7 @@ contains
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
         ! splicer begin function.get_char2
-        call c_get_char2_bufferify(  &
-            SHT_rv,  &
-            len(SHT_rv, kind=C_INT))
+        call c_get_char2_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end function.get_char2
     end function get_char2
 
@@ -507,9 +498,7 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: output
         ! splicer begin function.get_char3
-        call c_get_char3_bufferify(  &
-            output,  &
-            len(output, kind=C_INT))
+        call c_get_char3_bufferify(output, len(output, kind=C_INT))
         ! splicer end function.get_char3
     end subroutine get_char3
 
@@ -521,7 +510,8 @@ contains
     !<
     function get_string1() result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        character(kind=C_CHAR, len=strlen_ptr(c_get_string1())) :: SHT_rv
+        character(kind=C_CHAR, len=strlen_ptr(c_get_string1())) &
+             :: SHT_rv
         ! splicer begin function.get_string1
         SHT_rv = fstr_ptr(c_get_string1())
         ! splicer end function.get_string1
@@ -538,9 +528,7 @@ contains
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
         ! splicer begin function.get_string2
-        call c_get_string2_bufferify(  &
-            SHT_rv,  &
-            len(SHT_rv, kind=C_INT))
+        call c_get_string2_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end function.get_string2
     end function get_string2
 
@@ -555,9 +543,7 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: output
         ! splicer begin function.get_string3
-        call c_get_string3_bufferify(  &
-            output,  &
-            len(output, kind=C_INT))
+        call c_get_string3_bufferify(output, len(output, kind=C_INT))
         ! splicer end function.get_string3
     end subroutine get_string3
 
@@ -572,8 +558,7 @@ contains
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
         ! splicer begin function.get_string2_empty
-        call c_get_string2_empty_bufferify(  &
-            SHT_rv,  &
+        call c_get_string2_empty_bufferify(SHT_rv,  &
             len(SHT_rv, kind=C_INT))
         ! splicer end function.get_string2_empty
     end function get_string2_empty
@@ -589,9 +574,7 @@ contains
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
         ! splicer begin function.get_string5
-        call c_get_string5_bufferify(  &
-            SHT_rv,  &
-            len(SHT_rv, kind=C_INT))
+        call c_get_string5_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end function.get_string5
     end function get_string5
 
@@ -606,9 +589,7 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: output
         ! splicer begin function.get_string6
-        call c_get_string6_bufferify(  &
-            output,  &
-            len(output, kind=C_INT))
+        call c_get_string6_bufferify(output, len(output, kind=C_INT))
         ! splicer end function.get_string6
     end subroutine get_string6
 
@@ -623,9 +604,7 @@ contains
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
         ! splicer begin function.get_string7
-        call c_get_string7_bufferify(  &
-            SHT_rv,  &
-            len(SHT_rv, kind=C_INT))
+        call c_get_string7_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end function.get_string7
     end function get_string7
 
@@ -643,8 +622,7 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: arg1
         ! splicer begin function.accept_string_const_reference
-        call c_accept_string_const_reference_bufferify(  &
-            arg1,  &
+        call c_accept_string_const_reference_bufferify(arg1,  &
             len_trim(arg1, kind=C_INT))
         ! splicer end function.accept_string_const_reference
     end subroutine accept_string_const_reference
@@ -663,8 +641,7 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: arg1
         ! splicer begin function.accept_string_reference_out
-        call c_accept_string_reference_out_bufferify(  &
-            arg1,  &
+        call c_accept_string_reference_out_bufferify(arg1,  &
             len(arg1, kind=C_INT))
         ! splicer end function.accept_string_reference_out
     end subroutine accept_string_reference_out
@@ -683,10 +660,8 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(INOUT) :: arg1
         ! splicer begin function.accept_string_reference
-        call c_accept_string_reference_bufferify(  &
-            arg1,  &
-            len_trim(arg1, kind=C_INT),  &
-            len(arg1, kind=C_INT))
+        call c_accept_string_reference_bufferify(arg1,  &
+            len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT))
         ! splicer end function.accept_string_reference
     end subroutine accept_string_reference
 
@@ -701,10 +676,8 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(INOUT) :: arg1
         ! splicer begin function.accept_string_pointer
-        call c_accept_string_pointer_bufferify(  &
-            arg1,  &
-            len_trim(arg1, kind=C_INT),  &
-            len(arg1, kind=C_INT))
+        call c_accept_string_pointer_bufferify(arg1,  &
+            len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT))
         ! splicer end function.accept_string_pointer
     end subroutine accept_string_pointer
 
@@ -715,9 +688,7 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
         ! splicer begin function.explicit1
-        call c_explicit1_buffer(  &
-            name,  &
-            len_trim(name, kind=C_INT))
+        call c_explicit1_buffer(name, len_trim(name, kind=C_INT))
         ! splicer end function.explicit1
     end subroutine explicit1
 
@@ -728,9 +699,7 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: name
         ! splicer begin function.explicit2
-        call c_explicit2_bufferify(  &
-            name,  &
-            len(name, kind=C_INT))
+        call c_explicit2_bufferify(name, len(name, kind=C_INT))
         ! splicer end function.explicit2
     end subroutine explicit2
 
@@ -745,9 +714,7 @@ contains
         use iso_c_binding, only : C_INT
         character :: SHT_rv
         ! splicer begin function.creturn_char
-        call c_creturn_char_bufferify(  &
-            SHT_rv,  &
-            len(SHT_rv, kind=C_INT))
+        call c_creturn_char_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end function.creturn_char
     end function creturn_char
 
@@ -766,11 +733,8 @@ contains
         character(*), intent(OUT) :: dest
         character(*), intent(IN) :: src
         ! splicer begin function.cpass_char_ptr
-        call c_cpass_char_ptr_bufferify(  &
-            dest,  &
-            len(dest, kind=C_INT),  &
-            src,  &
-            len_trim(src, kind=C_INT))
+        call c_cpass_char_ptr_bufferify(dest, len(dest, kind=C_INT),  &
+            src, len_trim(src, kind=C_INT))
         ! splicer end function.cpass_char_ptr
     end subroutine cpass_char_ptr
 

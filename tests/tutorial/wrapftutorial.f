@@ -599,10 +599,7 @@ contains
         SH_arg1 = arg1  ! coerce to C_BOOL
         SH_arg3 = arg3  ! coerce to C_BOOL
         ! splicer begin function.function3b
-        call c_function3b(  &
-            SH_arg1,  &
-            SH_arg2,  &
-            SH_arg3)
+        call c_function3b(SH_arg1, SH_arg2, SH_arg3)
         ! splicer end function.function3b
         arg2 = SH_arg2  ! coerce to logical
         arg3 = SH_arg3  ! coerce to logical
@@ -617,12 +614,8 @@ contains
         character(*), intent(IN) :: arg2
         character(kind=C_CHAR, len=30) :: SHT_rv
         ! splicer begin function.function4a
-        call c_function4a_bufferify(  &
-            arg1,  &
-            len_trim(arg1, kind=C_INT),  &
-            arg2,  &
-            len_trim(arg2, kind=C_INT),  &
-            SHT_rv,  &
+        call c_function4a_bufferify(arg1, len_trim(arg1, kind=C_INT),  &
+            arg2, len_trim(arg2, kind=C_INT), SHT_rv,  &
             len(SHT_rv, kind=C_INT))
         ! splicer end function.function4a
     end function function4a
@@ -636,12 +629,8 @@ contains
         character(*), intent(IN) :: arg2
         character(*), intent(OUT) :: output
         ! splicer begin function.function4b
-        call c_function4b_bufferify(  &
-            arg1,  &
-            len_trim(arg1, kind=C_INT),  &
-            arg2,  &
-            len_trim(arg2, kind=C_INT),  &
-            output,  &
+        call c_function4b_bufferify(arg1, len_trim(arg1, kind=C_INT),  &
+            arg2, len_trim(arg2, kind=C_INT), output,  &
             len(output, kind=C_INT))
         ! splicer end function.function4b
     end subroutine function4b
@@ -679,9 +668,7 @@ contains
         real(C_DOUBLE) :: SHT_rv
         SH_arg2 = arg2  ! coerce to C_BOOL
         ! splicer begin function.function5_arg1_arg2
-        SHT_rv = c_function5_arg1_arg2(  &
-            arg1,  &
-            SH_arg2)
+        SHT_rv = c_function5_arg1_arg2(arg1, SH_arg2)
         ! splicer end function.function5_arg1_arg2
     end function function5_arg1_arg2
 
@@ -692,8 +679,7 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
         ! splicer begin function.function6_from_name
-        call c_function6_from_name_bufferify(  &
-            name,  &
+        call c_function6_from_name_bufferify(name,  &
             len_trim(name, kind=C_INT))
         ! splicer end function.function6_from_name
     end subroutine function6_from_name
@@ -790,9 +776,7 @@ contains
         character(*), intent(IN) :: name
         real(C_FLOAT), value, intent(IN) :: arg2
         ! splicer begin function.function10_1_float
-        call c_function10_1_bufferify(  &
-            name,  &
-            len_trim(name, kind=C_INT),  &
+        call c_function10_1_bufferify(name, len_trim(name, kind=C_INT),  &
             real(arg2, C_DOUBLE))
         ! splicer end function.function10_1_float
     end subroutine function10_1_float
@@ -805,9 +789,7 @@ contains
         character(*), intent(IN) :: name
         real(C_DOUBLE), value, intent(IN) :: arg2
         ! splicer begin function.function10_1_double
-        call c_function10_1_bufferify(  &
-            name,  &
-            len_trim(name, kind=C_INT),  &
+        call c_function10_1_bufferify(name, len_trim(name, kind=C_INT),  &
             arg2)
         ! splicer end function.function10_1_double
     end subroutine function10_1_double
@@ -833,9 +815,7 @@ contains
         integer(C_INT), value, intent(IN) :: offset
         integer(C_INT) :: SHT_rv
         ! splicer begin function.overload1_num_offset
-        SHT_rv = c_overload1_num_offset(  &
-            num,  &
-            offset)
+        SHT_rv = c_overload1_num_offset(num, offset)
         ! splicer end function.overload1_num_offset
     end function overload1_num_offset
 
@@ -849,10 +829,7 @@ contains
         integer(C_INT), value, intent(IN) :: stride
         integer(C_INT) :: SHT_rv
         ! splicer begin function.overload1_num_offset_stride
-        SHT_rv = c_overload1_num_offset_stride(  &
-            num,  &
-            offset,  &
-            stride)
+        SHT_rv = c_overload1_num_offset_stride(num, offset, stride)
         ! splicer end function.overload1_num_offset_stride
     end function overload1_num_offset_stride
 
@@ -865,9 +842,7 @@ contains
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT) :: SHT_rv
         ! splicer begin function.overload1_3
-        SHT_rv = c_overload1_3(  &
-            type,  &
-            num)
+        SHT_rv = c_overload1_3(type, num)
         ! splicer end function.overload1_3
     end function overload1_3
 
@@ -881,10 +856,7 @@ contains
         integer(C_INT), value, intent(IN) :: offset
         integer(C_INT) :: SHT_rv
         ! splicer begin function.overload1_4
-        SHT_rv = c_overload1_4(  &
-            type,  &
-            num,  &
-            offset)
+        SHT_rv = c_overload1_4(type, num, offset)
         ! splicer end function.overload1_4
     end function overload1_4
 
@@ -898,11 +870,7 @@ contains
         integer(C_INT), value, intent(IN) :: stride
         integer(C_INT) :: SHT_rv
         ! splicer begin function.overload1_5
-        SHT_rv = c_overload1_5(  &
-            type,  &
-            num,  &
-            offset,  &
-            stride)
+        SHT_rv = c_overload1_5(type, num, offset, stride)
         ! splicer end function.overload1_5
     end function overload1_5
 
@@ -923,9 +891,7 @@ contains
         integer(C_INT), intent(IN) :: arg(:)
         integer(C_INT) :: SHT_rv
         ! splicer begin function.vector_sum
-        SHT_rv = c_vector_sum_bufferify(  &
-            arg,  &
-            size(arg, kind=C_LONG))
+        SHT_rv = c_vector_sum_bufferify(arg, size(arg, kind=C_LONG))
         ! splicer end function.vector_sum
     end function vector_sum
 
@@ -936,9 +902,7 @@ contains
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), intent(OUT) :: arg(:)
         ! splicer begin function.vector_iota
-        call c_vector_iota_bufferify(  &
-            arg,  &
-            size(arg, kind=C_LONG))
+        call c_vector_iota_bufferify(arg, size(arg, kind=C_LONG))
         ! splicer end function.vector_iota
     end subroutine vector_iota
 
@@ -949,9 +913,7 @@ contains
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), intent(INOUT) :: arg(:)
         ! splicer begin function.vector_increment
-        call c_vector_increment_bufferify(  &
-            arg,  &
-            size(arg, kind=C_LONG))
+        call c_vector_increment_bufferify(arg, size(arg, kind=C_LONG))
         ! splicer end function.vector_increment
     end subroutine vector_increment
 
@@ -967,10 +929,8 @@ contains
         character(*), intent(IN) :: arg(:)
         integer(C_INT) :: SHT_rv
         ! splicer begin function.vector_string_count
-        SHT_rv = c_vector_string_count_bufferify(  &
-            arg,  &
-            size(arg, kind=C_LONG),  &
-            len(arg, kind=C_INT))
+        SHT_rv = c_vector_string_count_bufferify(arg,  &
+            size(arg, kind=C_LONG), len(arg, kind=C_INT))
         ! splicer end function.vector_string_count
     end function vector_string_count
 
@@ -988,10 +948,8 @@ contains
         character(*), intent(OUT) :: arg(:)
         integer(C_INT) :: SHT_rv
         ! splicer begin function.vector_string_fill
-        SHT_rv = c_vector_string_fill_bufferify(  &
-            arg,  &
-            size(arg, kind=C_LONG),  &
-            len(arg, kind=C_INT))
+        SHT_rv = c_vector_string_fill_bufferify(arg,  &
+            size(arg, kind=C_LONG), len(arg, kind=C_INT))
         ! splicer end function.vector_string_fill
     end function vector_string_fill
 
@@ -1006,10 +964,8 @@ contains
         use iso_c_binding, only : C_INT, C_LONG
         character(*), intent(INOUT) :: arg(:)
         ! splicer begin function.vector_string_append
-        call c_vector_string_append_bufferify(  &
-            arg,  &
-            size(arg, kind=C_LONG),  &
-            len(arg, kind=C_INT))
+        call c_vector_string_append_bufferify(arg,  &
+            size(arg, kind=C_LONG), len(arg, kind=C_INT))
         ! splicer end function.vector_string_append
     end subroutine vector_string_append
 
@@ -1017,7 +973,8 @@ contains
     ! function_index=30
     function last_function_called() result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        character(kind=C_CHAR, len=strlen_ptr(c_last_function_called())) :: SHT_rv
+        character(kind=C_CHAR, len=strlen_ptr(c_last_function_called())) &
+             :: SHT_rv
         ! splicer begin function.last_function_called
         SHT_rv = fstr_ptr(c_last_function_called())
         ! splicer end function.last_function_called

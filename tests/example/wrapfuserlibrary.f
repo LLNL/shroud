@@ -229,10 +229,7 @@ contains
         SH_arg1 = arg1  ! coerce to C_BOOL
         SH_arg3 = arg3  ! coerce to C_BOOL
         ! splicer begin function.check_bool
-        call c_check_bool(  &
-            SH_arg1,  &
-            SH_arg2,  &
-            SH_arg3)
+        call c_check_bool(SH_arg1, SH_arg2, SH_arg3)
         ! splicer end function.check_bool
         arg2 = SH_arg2  ! coerce to logical
         arg3 = SH_arg3  ! coerce to logical
@@ -245,9 +242,7 @@ contains
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
         ! splicer begin function.test_names
-        call c_test_names_bufferify(  &
-            name,  &
-            len_trim(name, kind=C_INT))
+        call c_test_names_bufferify(name, len_trim(name, kind=C_INT))
         ! splicer end function.test_names
     end subroutine test_names
 
@@ -259,10 +254,8 @@ contains
         character(*), intent(IN) :: name
         integer(C_INT), value, intent(IN) :: flag
         ! splicer begin function.test_names_flag
-        call c_test_names_flag_bufferify(  &
-            name,  &
-            len_trim(name, kind=C_INT),  &
-            flag)
+        call c_test_names_flag_bufferify(name,  &
+            len_trim(name, kind=C_INT), flag)
         ! splicer end function.test_names_flag
     end subroutine test_names_flag
 
@@ -293,9 +286,7 @@ contains
         integer(C_INT), value, intent(IN) :: i
         integer(C_LONG), value, intent(IN) :: j
         ! splicer begin function.testoptional_2
-        call c_testoptional_2(  &
-            i,  &
-            j)
+        call c_testoptional_2(i, j)
         ! splicer end function.testoptional_2
     end subroutine testoptional_2
 
