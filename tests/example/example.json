@@ -11,6 +11,12 @@
                     "F_derived_name": "exclass1", 
                     "F_impl_filename": "wrapfExClass1.f", 
                     "F_module_name": "exclass1_mod", 
+                    "LUA_class_reg": "l_ExClass1_Reg", 
+                    "LUA_ctor_name": "ExClass1", 
+                    "LUA_metadata": "ExClass1.metatable", 
+                    "LUA_userdata_member": "self", 
+                    "LUA_userdata_type": "l_ExClass1_Type", 
+                    "LUA_userdata_var": "SH_this", 
                     "PY_PyObject": "PP_ExClass1", 
                     "PY_PyTypeObject": "PP_ExClass1_Type", 
                     "PY_capsule_name": "PY_ExClass1_capsule_name", 
@@ -70,6 +76,8 @@
                             "F_name_impl": "exclass1_ctor_0", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "ctor", 
+                            "LUA_name_impl": "l_exclass1_ctor", 
                             "c_const": "", 
                             "function_name": "ctor", 
                             "function_suffix": "_0", 
@@ -94,6 +102,16 @@
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SH_name"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": " *", 
+                                    "c_var": "lua_tostring(L, 1)", 
+                                    "c_var_len": "Lname", 
+                                    "cxx_deref": "->", 
+                                    "cxx_type": "std::string", 
+                                    "cxx_var": "name", 
+                                    "lua_var": "SH_Lua_name"
                                 }
                             }
                         }, 
@@ -307,6 +325,8 @@
                             "F_name_generic": "dtor", 
                             "F_name_impl": "exclass1_dtor", 
                             "F_subprogram": "subroutine", 
+                            "LUA_name": "dtor", 
+                            "LUA_name_impl": "l_exclass1_dtor", 
                             "PY_name_impl": "PP_exclass1_dtor", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -330,6 +350,16 @@
                                 "fmtf": {
                                     "c_var": "incr", 
                                     "f_var": "incr"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": "", 
+                                    "c_var": "lua_tointeger(L, 1)", 
+                                    "c_var_len": "Lincr", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "int", 
+                                    "cxx_var": "incr", 
+                                    "lua_var": "SH_Lua_incr"
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
@@ -401,6 +431,8 @@
                             "F_name_impl": "exclass1_increment_count", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "incrementCount", 
+                            "LUA_name_impl": "l_exclass1_increment_count", 
                             "PY_name_impl": "PP_exclass1_increment_count", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -469,6 +501,8 @@
                             "F_name_impl": "exclass1_get_name", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "getName", 
+                            "LUA_name_impl": "l_exclass1_get_name", 
                             "PY_name_impl": "PP_exclass1_get_name", 
                             "c_const": "const ", 
                             "c_ptr": " *", 
@@ -621,6 +655,8 @@
                             "F_name_impl": "exclass1_get_name_length", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "GetNameLength", 
+                            "LUA_name_impl": "l_exclass1_get_name_length", 
                             "PY_name_impl": "PP_exclass1_get_name_length", 
                             "c_const": "const ", 
                             "c_ptr": " *", 
@@ -684,6 +720,8 @@
                             "F_name_impl": "exclass1_get_name_error_check", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "getNameErrorCheck", 
+                            "LUA_name_impl": "l_exclass1_get_name_error_check", 
                             "PY_name_impl": "PP_exclass1_get_name_error_check", 
                             "c_const": "const ", 
                             "c_ptr": " *", 
@@ -829,6 +867,8 @@
                             "C_return_type": "const char *", 
                             "F_C_name": "c_exclass1_get_name_arg", 
                             "F_string_result_as_arg": "name", 
+                            "LUA_name": "getNameArg", 
+                            "LUA_name_impl": "l_exclass1_get_name_arg", 
                             "PY_name_impl": "PP_exclass1_get_name_arg", 
                             "c_const": "const ", 
                             "c_ptr": " *", 
@@ -1048,6 +1088,8 @@
                             "F_name_impl": "exclass1_get_root", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "getRoot", 
+                            "LUA_name_impl": "l_exclass1_get_root", 
                             "PY_name_impl": "PP_exclass1_get_root", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -1075,6 +1117,16 @@
                                 "fmtf": {
                                     "c_var": "value", 
                                     "f_var": "value"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": "", 
+                                    "c_var": "lua_tointeger(L, 1)", 
+                                    "c_var_len": "Lvalue", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "int", 
+                                    "cxx_var": "value", 
+                                    "lua_var": "SH_Lua_value"
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
@@ -1147,6 +1199,8 @@
                             "F_name_impl": "exclass1_get_value_from_int", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "getValue", 
+                            "LUA_name_impl": "l_exclass1_get_value", 
                             "PY_name_impl": "PP_exclass1_get_value_from_int", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -1175,6 +1229,16 @@
                                 "fmtf": {
                                     "c_var": "value", 
                                     "f_var": "value"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": "", 
+                                    "c_var": "lua_tointeger(L, 1)", 
+                                    "c_var_len": "Lvalue", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "long", 
+                                    "cxx_var": "value", 
+                                    "lua_var": "SH_Lua_value"
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
@@ -1306,6 +1370,8 @@
                             "F_name_impl": "exclass1_get_addr", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "getAddr", 
+                            "LUA_name_impl": "l_exclass1_get_addr", 
                             "PY_name_impl": "PP_exclass1_get_addr", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -1329,6 +1395,16 @@
                                 "fmtf": {
                                     "c_var": "SH_in", 
                                     "f_var": "in"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": "", 
+                                    "c_var": "lua_toboolean(L, 1)", 
+                                    "c_var_len": "Lin", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "bool", 
+                                    "cxx_var": "in", 
+                                    "lua_var": "SH_Lua_in"
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
@@ -1400,6 +1476,8 @@
                             "F_name_impl": "exclass1_has_addr", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "hasAddr", 
+                            "LUA_name_impl": "l_exclass1_has_addr", 
                             "PY_name_impl": "PP_exclass1_has_addr", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -1444,6 +1522,8 @@
                             "F_name_generic": "splicer_special", 
                             "F_name_impl": "exclass1_splicer_special", 
                             "F_subprogram": "subroutine", 
+                            "LUA_name": "SplicerSpecial", 
+                            "LUA_name_impl": "l_exclass1_splicer_special", 
                             "PY_name_impl": "PP_exclass1_splicer_special", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -1474,6 +1554,12 @@
                     "F_derived_name": "exclass2", 
                     "F_impl_filename": "wrapfExClass2.f", 
                     "F_module_name": "exclass2_mod", 
+                    "LUA_class_reg": "l_ExClass2_Reg", 
+                    "LUA_ctor_name": "ExClass2", 
+                    "LUA_metadata": "ExClass2.metatable", 
+                    "LUA_userdata_member": "self", 
+                    "LUA_userdata_type": "l_ExClass2_Type", 
+                    "LUA_userdata_var": "SH_this", 
                     "PY_PyObject": "PP_ExClass2", 
                     "PY_PyTypeObject": "PP_ExClass2_Type", 
                     "PY_capsule_name": "PY_ExClass2_capsule_name", 
@@ -1497,6 +1583,16 @@
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SH_name"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": " *", 
+                                    "c_var": "lua_tostring(L, 1)", 
+                                    "c_var_len": "Lname", 
+                                    "cxx_deref": "->", 
+                                    "cxx_type": "std::string", 
+                                    "cxx_var": "name", 
+                                    "lua_var": "SH_Lua_name"
                                 }
                             }
                         }, 
@@ -1566,6 +1662,8 @@
                             "F_name_impl": "exclass2_ctor", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "ctor", 
+                            "LUA_name_impl": "l_exclass2_ctor", 
                             "c_const": "", 
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
@@ -1700,6 +1798,8 @@
                             "F_name_generic": "dtor", 
                             "F_name_impl": "exclass2_dtor", 
                             "F_subprogram": "subroutine", 
+                            "LUA_name": "dtor", 
+                            "LUA_name_impl": "l_exclass2_dtor", 
                             "PY_name_impl": "PP_exclass2_dtor", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -1765,6 +1865,8 @@
                             "F_name_impl": "exclass2_get_name", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "getName", 
+                            "LUA_name_impl": "l_exclass2_get_name", 
                             "PY_name_impl": "PP_exclass2_get_name", 
                             "c_const": "const ", 
                             "c_ptr": " *", 
@@ -1921,6 +2023,8 @@
                             "F_name_impl": "exclass2_get_name2", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "getName2", 
+                            "LUA_name_impl": "l_exclass2_get_name2", 
                             "PY_name_impl": "PP_exclass2_get_name2", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -2075,6 +2179,8 @@
                             "F_name_impl": "exclass2_get_name3", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "getName3", 
+                            "LUA_name_impl": "l_exclass2_get_name3", 
                             "PY_name_impl": "PP_exclass2_get_name3", 
                             "c_const": "const ", 
                             "c_ptr": " *", 
@@ -2229,6 +2335,8 @@
                             "F_name_impl": "exclass2_get_name4", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "getName4", 
+                            "LUA_name_impl": "l_exclass2_get_name4", 
                             "PY_name_impl": "PP_exclass2_get_name4", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -2377,6 +2485,8 @@
                             "F_name_impl": "exclass2_get_name_length", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "GetNameLength", 
+                            "LUA_name_impl": "l_exclass2_get_name_length", 
                             "PY_name_impl": "PP_exclass2_get_name_length", 
                             "c_const": "const ", 
                             "c_ptr": " *", 
@@ -2400,6 +2510,16 @@
                                 "fmtf": {
                                     "c_var": "in", 
                                     "f_var": "in"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": " *", 
+                                    "c_var": "(l_ExClass2_Type *)luaL_checkudata(L, 1, \"ExClass2.metatable\")", 
+                                    "c_var_len": "Lin", 
+                                    "cxx_deref": "->", 
+                                    "cxx_type": "ExClass1", 
+                                    "cxx_var": "in", 
+                                    "lua_var": "SH_Lua_in"
                                 }, 
                                 "fmtpy": {
                                     "c_const": "const ", 
@@ -2485,6 +2605,8 @@
                             "F_name_impl": "exclass2_get_class1", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "get_class1", 
+                            "LUA_name_impl": "l_exclass2_get_class1", 
                             "PY_name_impl": "PP_exclass2_get_class1", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -2725,6 +2847,16 @@
                                     "c_var": "len", 
                                     "f_var": "len"
                                 }, 
+                                "fmtl": {
+                                    "LUA_index": 2, 
+                                    "c_ptr": "", 
+                                    "c_var": "lua_tointeger(L, 2)", 
+                                    "c_var_len": "Llen", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "SidreLength", 
+                                    "cxx_var": "len", 
+                                    "lua_var": "SH_Lua_len"
+                                }, 
                                 "fmtpy": {
                                     "c_const": "", 
                                     "c_ptr": "", 
@@ -2748,6 +2880,16 @@
                                 "fmtf": {
                                     "c_var": "type", 
                                     "f_var": "type"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": "", 
+                                    "c_var": "lua_tointeger(L, 1)", 
+                                    "c_var_len": "Ltype", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "TypeID", 
+                                    "cxx_var": "type", 
+                                    "lua_var": "SH_Lua_type"
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
@@ -2829,6 +2971,8 @@
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_name": "c_exclass2_declare_1", 
+                            "LUA_name": "declare", 
+                            "LUA_name_impl": "l_exclass2_declare", 
                             "PY_name_impl": "PP_exclass2_declare_1", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -3056,6 +3200,8 @@
                             "F_name_generic": "destroyall", 
                             "F_name_impl": "exclass2_destroyall", 
                             "F_subprogram": "subroutine", 
+                            "LUA_name": "destroyall", 
+                            "LUA_name_impl": "l_exclass2_destroyall", 
                             "PY_name_impl": "PP_exclass2_destroyall", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -3113,6 +3259,8 @@
                             "F_name_impl": "exclass2_get_type_id", 
                             "F_result_clause": "\nresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "getTypeID", 
+                            "LUA_name_impl": "l_exclass2_get_type_id", 
                             "PY_name_impl": "PP_exclass2_get_type_id", 
                             "c_const": "const ", 
                             "c_ptr": " *", 
@@ -3707,6 +3855,12 @@
                     "F_derived_name": "exclass3", 
                     "F_impl_filename": "wrapfExClass3.f", 
                     "F_module_name": "exclass3_mod", 
+                    "LUA_class_reg": "l_ExClass3_Reg", 
+                    "LUA_ctor_name": "ExClass3", 
+                    "LUA_metadata": "ExClass3.metatable", 
+                    "LUA_userdata_member": "self", 
+                    "LUA_userdata_type": "l_ExClass3_Type", 
+                    "LUA_userdata_var": "SH_this", 
                     "class_lower": "exclass3", 
                     "class_prefix": "exclass3_", 
                     "class_upper": "EXCLASS3", 
@@ -3749,6 +3903,8 @@
                             "F_name_generic": "exfunc", 
                             "F_name_impl": "exclass3_exfunc", 
                             "F_subprogram": "subroutine", 
+                            "LUA_name": "exfunc", 
+                            "LUA_name_impl": "l_exclass3_exfunc", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
@@ -3836,11 +3992,18 @@
             "F_result_clause": "", 
             "F_string_result_as_arg": "", 
             "F_this": "obj", 
+            "LUA_header_filename": "luaUserLibrarymodule.hpp", 
             "LUA_header_filename_suffix": "hpp", 
             "LUA_impl_filename_suffix": "cpp", 
+            "LUA_metadata": "XXLUA_metadata", 
+            "LUA_module_filename": "luaUserLibrarymodule.cpp", 
+            "LUA_module_name": "userlibrary", 
+            "LUA_module_reg": "l_UserLibrary_Reg", 
             "LUA_prefix": "l_", 
             "LUA_result": "rv", 
             "LUA_state_var": "L", 
+            "LUA_used_param_state": false, 
+            "LUA_userdata_type": "XXLUA_userdata_type", 
             "PY_PyObject": "PyObject", 
             "PY_header_filename": "pyUserLibrarymodule.hpp", 
             "PY_header_filename_suffix": "hpp", 
@@ -3904,6 +4067,8 @@
                     "F_name_generic": "local_function1", 
                     "F_name_impl": "local_function1", 
                     "F_subprogram": "subroutine", 
+                    "LUA_name": "local_function1", 
+                    "LUA_name_impl": "l_local_function1", 
                     "PY_name_impl": "PP_local_function1", 
                     "c_const": "", 
                     "function_name": "local_function1", 
@@ -3922,6 +4087,16 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tostring(L, 1)", 
+                            "c_var_len": "Lname", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "name", 
+                            "lua_var": "SH_Lua_name"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
@@ -3999,6 +4174,8 @@
                     "F_name_impl": "is_name_valid", 
                     "F_result_clause": "\nresult(SHT_rv)", 
                     "F_subprogram": "function", 
+                    "LUA_name": "isNameValid", 
+                    "LUA_name_impl": "l_is_name_valid", 
                     "PY_name_impl": "PP_is_name_valid", 
                     "c_const": "", 
                     "function_name": "isNameValid", 
@@ -4138,6 +4315,8 @@
                     "F_name_impl": "is_initialized", 
                     "F_result_clause": "\nresult(SHT_rv)", 
                     "F_subprogram": "function", 
+                    "LUA_name": "isInitialized", 
+                    "LUA_name_impl": "l_is_initialized", 
                     "PY_name_impl": "PP_is_initialized", 
                     "c_const": "", 
                     "function_name": "isInitialized", 
@@ -4159,6 +4338,16 @@
                         "fmtf": {
                             "c_var": "SH_arg1", 
                             "f_var": "arg1"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_toboolean(L, 1)", 
+                            "c_var_len": "Larg1", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "bool", 
+                            "cxx_var": "arg1", 
+                            "lua_var": "SH_Lua_arg1"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -4183,6 +4372,16 @@
                         "fmtf": {
                             "c_var": "SH_arg2", 
                             "f_var": "arg2"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 2, 
+                            "c_ptr": " *", 
+                            "c_var": "arg2", 
+                            "c_var_len": "Larg2", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "bool", 
+                            "cxx_var": "arg2", 
+                            "lua_var": "SH_Lua_arg2"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -4209,6 +4408,16 @@
                         "fmtf": {
                             "c_var": "SH_arg3", 
                             "f_var": "arg3"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 2, 
+                            "c_ptr": " *", 
+                            "c_var": "lua_toboolean(L, 2)", 
+                            "c_var_len": "Larg3", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "bool", 
+                            "cxx_var": "arg3", 
+                            "lua_var": "SH_Lua_arg3"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -4311,6 +4520,8 @@
                     "F_name_generic": "check_bool", 
                     "F_name_impl": "check_bool", 
                     "F_subprogram": "subroutine", 
+                    "LUA_name": "checkBool", 
+                    "LUA_name_impl": "l_check_bool", 
                     "PY_name_impl": "PP_check_bool", 
                     "c_const": "", 
                     "function_name": "checkBool", 
@@ -4333,6 +4544,16 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tostring(L, 1)", 
+                            "c_var_len": "Lname", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "name", 
+                            "lua_var": "SH_Lua_name"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
@@ -4402,6 +4623,8 @@
                     "F_name_generic": "test_names", 
                     "F_name_impl": "test_names", 
                     "F_subprogram": "subroutine", 
+                    "LUA_name": "test_names", 
+                    "LUA_name_impl": "l_test_names", 
                     "PY_name_impl": "PP_test_names", 
                     "c_const": "", 
                     "function_name": "test_names", 
@@ -4511,6 +4734,16 @@
                             "cxx_type": "int", 
                             "cxx_var": "flag"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 2, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 2)", 
+                            "c_var_len": "Lflag", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "flag", 
+                            "lua_var": "SH_Lua_flag"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -4530,6 +4763,16 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tostring(L, 1)", 
+                            "c_var_len": "Lname", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "name", 
+                            "lua_var": "SH_Lua_name"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
@@ -4883,6 +5126,16 @@
                             "c_var": "i", 
                             "f_var": "i"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 1)", 
+                            "c_var_len": "Li", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "i", 
+                            "lua_var": "SH_Lua_i"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -4906,6 +5159,16 @@
                         "fmtf": {
                             "c_var": "j", 
                             "f_var": "j"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 2, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 2)", 
+                            "c_var_len": "Lj", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "long", 
+                            "cxx_var": "j", 
+                            "lua_var": "SH_Lua_j"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -4990,6 +5253,8 @@
                     "F_name_generic": "testoptional", 
                     "F_name_impl": "testoptional_2", 
                     "F_subprogram": "subroutine", 
+                    "LUA_name": "testoptional", 
+                    "LUA_name_impl": "l_testoptional", 
                     "PY_name_impl": "PP_testoptional_2", 
                     "c_const": "", 
                     "function_name": "testoptional", 
@@ -5041,6 +5306,8 @@
                     "F_name_impl": "test_size_t", 
                     "F_result_clause": "\nresult(SHT_rv)", 
                     "F_subprogram": "function", 
+                    "LUA_name": "test_size_t", 
+                    "LUA_name_impl": "l_test_size_t", 
                     "PY_name_impl": "PP_test_size_t", 
                     "c_const": "", 
                     "function_name": "test_size_t", 
@@ -5062,6 +5329,16 @@
                         "fmtf": {
                             "c_var": "comm", 
                             "f_var": "comm"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "POP", 
+                            "c_var_len": "Lcomm", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "MPI_Comm", 
+                            "cxx_var": "comm", 
+                            "lua_var": "SH_Lua_comm"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -5124,6 +5401,8 @@
                     "F_name_generic": "testmpi", 
                     "F_name_impl": "testmpi", 
                     "F_subprogram": "subroutine", 
+                    "LUA_name": "testmpi", 
+                    "LUA_name_impl": "l_testmpi", 
                     "PY_name_impl": "PP_testmpi", 
                     "c_const": "", 
                     "function_name": "testmpi", 
@@ -5145,6 +5424,16 @@
                         "fmtf": {
                             "c_var": "grp", 
                             "f_var": "grp"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": " *", 
+                            "c_var": "(XXLUA_userdata_type *)luaL_checkudata(L, 1, \"XXLUA_metadata\")", 
+                            "c_var_len": "Lgrp", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "axom::sidre::Group", 
+                            "cxx_var": "grp", 
+                            "lua_var": "SH_Lua_grp"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -5213,6 +5502,8 @@
                     "F_name_generic": "testgroup1", 
                     "F_name_impl": "testgroup1", 
                     "F_subprogram": "subroutine", 
+                    "LUA_name": "testgroup1", 
+                    "LUA_name_impl": "l_testgroup1", 
                     "PY_name_impl": "PP_testgroup1", 
                     "c_const": "", 
                     "function_name": "testgroup1", 
@@ -5234,6 +5525,16 @@
                         "fmtf": {
                             "c_var": "grp", 
                             "f_var": "grp"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": " *", 
+                            "c_var": "(XXLUA_userdata_type *)luaL_checkudata(L, 1, \"XXLUA_metadata\")", 
+                            "c_var_len": "Lgrp", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "axom::sidre::Group", 
+                            "cxx_var": "grp", 
+                            "lua_var": "SH_Lua_grp"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
@@ -5302,6 +5603,8 @@
                     "F_name_generic": "testgroup2", 
                     "F_name_impl": "testgroup2", 
                     "F_subprogram": "subroutine", 
+                    "LUA_name": "testgroup2", 
+                    "LUA_name_impl": "l_testgroup2", 
                     "PY_name_impl": "PP_testgroup2", 
                     "c_const": "", 
                     "function_name": "testgroup2", 
@@ -5323,6 +5626,16 @@
                         "fmtf": {
                             "c_var": "verylongname1", 
                             "f_var": "verylongname1"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 1)", 
+                            "c_var_len": "Lverylongname1", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname1", 
+                            "lua_var": "SH_Lua_verylongname1"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -5348,6 +5661,16 @@
                             "c_var": "verylongname10", 
                             "f_var": "verylongname10"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 10, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 10)", 
+                            "c_var_len": "Lverylongname10", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname10", 
+                            "lua_var": "SH_Lua_verylongname10"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -5371,6 +5694,16 @@
                         "fmtf": {
                             "c_var": "verylongname2", 
                             "f_var": "verylongname2"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 2, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 2)", 
+                            "c_var_len": "Lverylongname2", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname2", 
+                            "lua_var": "SH_Lua_verylongname2"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -5396,6 +5729,16 @@
                             "c_var": "verylongname3", 
                             "f_var": "verylongname3"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 3, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 3)", 
+                            "c_var_len": "Lverylongname3", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname3", 
+                            "lua_var": "SH_Lua_verylongname3"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -5419,6 +5762,16 @@
                         "fmtf": {
                             "c_var": "verylongname4", 
                             "f_var": "verylongname4"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 4, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 4)", 
+                            "c_var_len": "Lverylongname4", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname4", 
+                            "lua_var": "SH_Lua_verylongname4"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -5444,6 +5797,16 @@
                             "c_var": "verylongname5", 
                             "f_var": "verylongname5"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 5, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 5)", 
+                            "c_var_len": "Lverylongname5", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname5", 
+                            "lua_var": "SH_Lua_verylongname5"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -5467,6 +5830,16 @@
                         "fmtf": {
                             "c_var": "verylongname6", 
                             "f_var": "verylongname6"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 6, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 6)", 
+                            "c_var_len": "Lverylongname6", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname6", 
+                            "lua_var": "SH_Lua_verylongname6"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -5492,6 +5865,16 @@
                             "c_var": "verylongname7", 
                             "f_var": "verylongname7"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 7, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 7)", 
+                            "c_var_len": "Lverylongname7", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname7", 
+                            "lua_var": "SH_Lua_verylongname7"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -5516,6 +5899,16 @@
                             "c_var": "verylongname8", 
                             "f_var": "verylongname8"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 8, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 8)", 
+                            "c_var_len": "Lverylongname8", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname8", 
+                            "lua_var": "SH_Lua_verylongname8"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -5539,6 +5932,16 @@
                         "fmtf": {
                             "c_var": "verylongname9", 
                             "f_var": "verylongname9"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 9, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 9)", 
+                            "c_var_len": "Lverylongname9", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname9", 
+                            "lua_var": "SH_Lua_verylongname9"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -5727,6 +6130,8 @@
                     "F_name_generic": "verlongfunctionname1", 
                     "F_name_impl": "verlongfunctionname1", 
                     "F_subprogram": "subroutine", 
+                    "LUA_name": "verlongfunctionname1", 
+                    "LUA_name_impl": "l_verlongfunctionname1", 
                     "PY_name_impl": "PP_verlongfunctionname1", 
                     "c_const": "", 
                     "function_name": "verlongfunctionname1", 
@@ -5750,6 +6155,16 @@
                         "fmtf": {
                             "c_var": "verylongname1", 
                             "f_var": "verylongname1"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 1)", 
+                            "c_var_len": "Lverylongname1", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname1", 
+                            "lua_var": "SH_Lua_verylongname1"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -5775,6 +6190,16 @@
                             "c_var": "verylongname10", 
                             "f_var": "verylongname10"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 10, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 10)", 
+                            "c_var_len": "Lverylongname10", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname10", 
+                            "lua_var": "SH_Lua_verylongname10"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -5798,6 +6223,16 @@
                         "fmtf": {
                             "c_var": "verylongname2", 
                             "f_var": "verylongname2"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 2, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 2)", 
+                            "c_var_len": "Lverylongname2", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname2", 
+                            "lua_var": "SH_Lua_verylongname2"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -5823,6 +6258,16 @@
                             "c_var": "verylongname3", 
                             "f_var": "verylongname3"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 3, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 3)", 
+                            "c_var_len": "Lverylongname3", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname3", 
+                            "lua_var": "SH_Lua_verylongname3"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -5846,6 +6291,16 @@
                         "fmtf": {
                             "c_var": "verylongname4", 
                             "f_var": "verylongname4"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 4, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 4)", 
+                            "c_var_len": "Lverylongname4", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname4", 
+                            "lua_var": "SH_Lua_verylongname4"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -5871,6 +6326,16 @@
                             "c_var": "verylongname5", 
                             "f_var": "verylongname5"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 5, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 5)", 
+                            "c_var_len": "Lverylongname5", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname5", 
+                            "lua_var": "SH_Lua_verylongname5"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -5894,6 +6359,16 @@
                         "fmtf": {
                             "c_var": "verylongname6", 
                             "f_var": "verylongname6"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 6, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 6)", 
+                            "c_var_len": "Lverylongname6", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname6", 
+                            "lua_var": "SH_Lua_verylongname6"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -5919,6 +6394,16 @@
                             "c_var": "verylongname7", 
                             "f_var": "verylongname7"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 7, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 7)", 
+                            "c_var_len": "Lverylongname7", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname7", 
+                            "lua_var": "SH_Lua_verylongname7"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -5943,6 +6428,16 @@
                             "c_var": "verylongname8", 
                             "f_var": "verylongname8"
                         }, 
+                        "fmtl": {
+                            "LUA_index": 8, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 8)", 
+                            "c_var_len": "Lverylongname8", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname8", 
+                            "lua_var": "SH_Lua_verylongname8"
+                        }, 
                         "fmtpy": {
                             "c_const": "", 
                             "c_ptr": "", 
@@ -5966,6 +6461,16 @@
                         "fmtf": {
                             "c_var": "verylongname9", 
                             "f_var": "verylongname9"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 9, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 9)", 
+                            "c_var_len": "Lverylongname9", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "verylongname9", 
+                            "lua_var": "SH_Lua_verylongname9"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -6154,6 +6659,8 @@
                     "F_name_generic": "verlongfunctionname2", 
                     "F_name_impl": "verlongfunctionname2", 
                     "F_subprogram": "subroutine", 
+                    "LUA_name": "verlongfunctionname2", 
+                    "LUA_name_impl": "l_verlongfunctionname2", 
                     "PY_name_impl": "PP_verlongfunctionname2", 
                     "c_const": "", 
                     "function_name": "verlongfunctionname2", 
@@ -6215,7 +6722,7 @@
             "show_splicer_comments": true, 
             "wrap_c": true, 
             "wrap_fortran": true, 
-            "wrap_lua": false, 
+            "wrap_lua": true, 
             "wrap_python": true
         }
     }, 
