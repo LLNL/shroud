@@ -55,11 +55,13 @@ module userlibrary_mod
 
     interface
 
-        subroutine local_function1() bind(C, name="AA_local_function1")
+        subroutine local_function1() &
+                bind(C, name="AA_local_function1")
             implicit none
         end subroutine local_function1
 
-        function c_is_name_valid(name) result(SHT_rv) &
+        function c_is_name_valid(name) &
+                result(SHT_rv) &
                 bind(C, name="AA_is_name_valid")
             use iso_c_binding, only : C_BOOL, C_CHAR
             implicit none
@@ -67,7 +69,8 @@ module userlibrary_mod
             logical(C_BOOL) :: SHT_rv
         end function c_is_name_valid
 
-        function c_is_name_valid_bufferify(name, Lname) result(SHT_rv) &
+        function c_is_name_valid_bufferify(name, Lname) &
+                result(SHT_rv) &
                 bind(C, name="AA_is_name_valid_bufferify")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
             implicit none
@@ -76,7 +79,8 @@ module userlibrary_mod
             logical(C_BOOL) :: SHT_rv
         end function c_is_name_valid_bufferify
 
-        function c_is_initialized() result(SHT_rv) &
+        function c_is_initialized() &
+                result(SHT_rv) &
                 bind(C, name="AA_is_initialized")
             use iso_c_binding, only : C_BOOL
             implicit none
@@ -92,7 +96,8 @@ module userlibrary_mod
             logical(C_BOOL), intent(INOUT) :: arg3
         end subroutine c_check_bool
 
-        subroutine c_test_names(name) bind(C, name="AA_test_names")
+        subroutine c_test_names(name) &
+                bind(C, name="AA_test_names")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -123,11 +128,13 @@ module userlibrary_mod
             integer(C_INT), value, intent(IN) :: flag
         end subroutine c_test_names_flag_bufferify
 
-        subroutine c_testoptional_0() bind(C, name="AA_testoptional_0")
+        subroutine c_testoptional_0() &
+                bind(C, name="AA_testoptional_0")
             implicit none
         end subroutine c_testoptional_0
 
-        subroutine c_testoptional_1(i) bind(C, name="AA_testoptional_1")
+        subroutine c_testoptional_1(i) &
+                bind(C, name="AA_testoptional_1")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: i
@@ -141,26 +148,30 @@ module userlibrary_mod
             integer(C_LONG), value, intent(IN) :: j
         end subroutine c_testoptional_2
 
-        function test_size_t() result(SHT_rv) &
+        function test_size_t() &
+                result(SHT_rv) &
                 bind(C, name="AA_test_size_t")
             use iso_c_binding, only : C_SIZE_T
             implicit none
             integer(C_SIZE_T) :: SHT_rv
         end function test_size_t
 
-        subroutine testmpi(comm) bind(C, name="AA_testmpi")
+        subroutine testmpi(comm) &
+                bind(C, name="AA_testmpi")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: comm
         end subroutine testmpi
 
-        subroutine c_testgroup1(grp) bind(C, name="AA_testgroup1")
+        subroutine c_testgroup1(grp) &
+                bind(C, name="AA_testgroup1")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: grp
         end subroutine c_testgroup1
 
-        subroutine c_testgroup2(grp) bind(C, name="AA_testgroup2")
+        subroutine c_testgroup2(grp) &
+                bind(C, name="AA_testgroup2")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: grp
@@ -186,7 +197,8 @@ contains
     ! bool isNameValid(const std::string & name +intent(in))
     ! arg_to_buffer
     ! function_index=50
-    function is_name_valid(name) result(SHT_rv)
+    function is_name_valid(name) &
+            result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT
         character(*), intent(IN) :: name
         logical :: SHT_rv
@@ -197,7 +209,8 @@ contains
 
     ! bool isInitialized()
     ! function_index=51
-    function is_initialized() result(SHT_rv)
+    function is_initialized() &
+            result(SHT_rv)
         use iso_c_binding, only : C_BOOL
         logical :: SHT_rv
         ! splicer begin function.is_initialized

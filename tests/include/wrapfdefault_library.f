@@ -50,7 +50,8 @@ module default_library_mod
 
     interface
 
-        subroutine function1() bind(C, name="DEF_function1")
+        subroutine function1() &
+                bind(C, name="DEF_function1")
             implicit none
         end subroutine function1
 

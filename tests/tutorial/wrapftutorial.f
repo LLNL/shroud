@@ -83,7 +83,8 @@ module tutorial_mod
 
     interface
 
-        function c_class1_new() result(SHT_rv) &
+        function c_class1_new() &
+                result(SHT_rv) &
                 bind(C, name="TUT_class1_new")
             use iso_c_binding, only : C_PTR
             implicit none
@@ -107,11 +108,13 @@ module tutorial_mod
         ! splicer begin class.Class1.additional_interfaces
         ! splicer end class.Class1.additional_interfaces
 
-        subroutine function1() bind(C, name="TUT_function1")
+        subroutine function1() &
+                bind(C, name="TUT_function1")
             implicit none
         end subroutine function1
 
-        function function2(arg1, arg2) result(SHT_rv) &
+        function function2(arg1, arg2) &
+                result(SHT_rv) &
                 bind(C, name="TUT_function2")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
@@ -120,7 +123,8 @@ module tutorial_mod
             real(C_DOUBLE) :: SHT_rv
         end function function2
 
-        subroutine sum(len, values, result) bind(C, name="TUT_sum")
+        subroutine sum(len, values, result) &
+                bind(C, name="TUT_sum")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: len
@@ -128,7 +132,8 @@ module tutorial_mod
             integer(C_INT), intent(OUT) :: result
         end subroutine sum
 
-        function type_long_long(arg1) result(SHT_rv) &
+        function type_long_long(arg1) &
+                result(SHT_rv) &
                 bind(C, name="TUT_type_long_long")
             use iso_c_binding, only : C_LONG_LONG
             implicit none
@@ -136,7 +141,8 @@ module tutorial_mod
             integer(C_LONG_LONG) :: SHT_rv
         end function type_long_long
 
-        function c_function3(arg) result(SHT_rv) &
+        function c_function3(arg) &
+                result(SHT_rv) &
                 bind(C, name="TUT_function3")
             use iso_c_binding, only : C_BOOL
             implicit none
@@ -166,7 +172,8 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
 
-        function c_function4b(arg1, arg2) result(SHT_rv) &
+        function c_function4b(arg1, arg2) &
+                result(SHT_rv) &
                 bind(C, name="TUT_function4b")
             use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
@@ -188,14 +195,16 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: Noutput
         end subroutine c_function4b_bufferify
 
-        function c_function5() result(SHT_rv) &
+        function c_function5() &
+                result(SHT_rv) &
                 bind(C, name="TUT_function5")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE) :: SHT_rv
         end function c_function5
 
-        function c_function5_arg1(arg1) result(SHT_rv) &
+        function c_function5_arg1(arg1) &
+                result(SHT_rv) &
                 bind(C, name="TUT_function5_arg1")
             use iso_c_binding, only : C_DOUBLE
             implicit none
@@ -203,7 +212,8 @@ module tutorial_mod
             real(C_DOUBLE) :: SHT_rv
         end function c_function5_arg1
 
-        function c_function5_arg1_arg2(arg1, arg2) result(SHT_rv) &
+        function c_function5_arg1_arg2(arg1, arg2) &
+                result(SHT_rv) &
                 bind(C, name="TUT_function5_arg1_arg2")
             use iso_c_binding, only : C_BOOL, C_DOUBLE
             implicit none
@@ -248,27 +258,31 @@ module tutorial_mod
             real(C_DOUBLE), value, intent(IN) :: arg
         end subroutine c_function7_double
 
-        function c_function8_int() result(SHT_rv) &
+        function c_function8_int() &
+                result(SHT_rv) &
                 bind(C, name="TUT_function8_int")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
         end function c_function8_int
 
-        function c_function8_double() result(SHT_rv) &
+        function c_function8_double() &
+                result(SHT_rv) &
                 bind(C, name="TUT_function8_double")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE) :: SHT_rv
         end function c_function8_double
 
-        subroutine c_function9(arg) bind(C, name="TUT_function9")
+        subroutine c_function9(arg) &
+                bind(C, name="TUT_function9")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg
         end subroutine c_function9
 
-        subroutine c_function10_0() bind(C, name="TUT_function10_0")
+        subroutine c_function10_0() &
+                bind(C, name="TUT_function10_0")
             implicit none
         end subroutine c_function10_0
 
@@ -289,7 +303,8 @@ module tutorial_mod
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_function10_1_bufferify
 
-        function c_overload1_num(num) result(SHT_rv) &
+        function c_overload1_num(num) &
+                result(SHT_rv) &
                 bind(C, name="TUT_overload1_num")
             use iso_c_binding, only : C_INT
             implicit none
@@ -297,7 +312,8 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function c_overload1_num
 
-        function c_overload1_num_offset(num, offset) result(SHT_rv) &
+        function c_overload1_num_offset(num, offset) &
+                result(SHT_rv) &
                 bind(C, name="TUT_overload1_num_offset")
             use iso_c_binding, only : C_INT
             implicit none
@@ -317,7 +333,8 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function c_overload1_num_offset_stride
 
-        function c_overload1_3(type, num) result(SHT_rv) &
+        function c_overload1_3(type, num) &
+                result(SHT_rv) &
                 bind(C, name="TUT_overload1_3")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
@@ -326,7 +343,8 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function c_overload1_3
 
-        function c_overload1_4(type, num, offset) result(SHT_rv) &
+        function c_overload1_4(type, num, offset) &
+                result(SHT_rv) &
                 bind(C, name="TUT_overload1_4")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
@@ -336,7 +354,8 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function c_overload1_4
 
-        function c_overload1_5(type, num, offset, stride) result(SHT_rv) &
+        function c_overload1_5(type, num, offset, stride) &
+                result(SHT_rv) &
                 bind(C, name="TUT_overload1_5")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
@@ -347,7 +366,8 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function c_overload1_5
 
-        function typefunc(arg) result(SHT_rv) &
+        function typefunc(arg) &
+                result(SHT_rv) &
                 bind(C, name="TUT_typefunc")
             use iso_c_binding, only : C_INT
             implicit none
@@ -355,7 +375,8 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function typefunc
 
-        function enumfunc(arg) result(SHT_rv) &
+        function enumfunc(arg) &
+                result(SHT_rv) &
                 bind(C, name="TUT_enumfunc")
             use iso_c_binding, only : C_INT
             implicit none
@@ -363,13 +384,15 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function enumfunc
 
-        subroutine c_useclass(arg1) bind(C, name="TUT_useclass")
+        subroutine c_useclass(arg1) &
+                bind(C, name="TUT_useclass")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: arg1
         end subroutine c_useclass
 
-        function c_vector_sum_bufferify(arg, Sarg) result(SHT_rv) &
+        function c_vector_sum_bufferify(arg, Sarg) &
+                result(SHT_rv) &
                 bind(C, name="TUT_vector_sum_bufferify")
             use iso_c_binding, only : C_INT, C_LONG
             implicit none
@@ -425,7 +448,8 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: Narg
         end subroutine c_vector_string_append_bufferify
 
-        pure function c_last_function_called() result(SHT_rv) &
+        pure function c_last_function_called() &
+                result(SHT_rv) &
                 bind(C, name="TUT_last_function_called")
             use iso_c_binding, only : C_PTR
             implicit none
@@ -498,7 +522,8 @@ contains
 
     ! Class1() +name(new)
     ! function_index=0
-    function class1_new() result(SHT_rv)
+    function class1_new() &
+            result(SHT_rv)
         type(class1) :: SHT_rv
         ! splicer begin class.Class1.method.new
         SHT_rv%voidptr = c_class1_new()
@@ -551,7 +576,8 @@ contains
 
     ! bool Function3(bool arg +intent(in)+value)
     ! function_index=7
-    function function3(arg) result(SHT_rv)
+    function function3(arg) &
+            result(SHT_rv)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg
         logical(C_BOOL) SH_arg
@@ -584,7 +610,8 @@ contains
     ! const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
     ! arg_to_buffer
     ! function_index=9
-    function function4a(arg1, arg2) result(SHT_rv)
+    function function4a(arg1, arg2) &
+            result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(*), intent(IN) :: arg1
         character(*), intent(IN) :: arg2
@@ -614,7 +641,8 @@ contains
     ! double Function5()
     ! has_default_arg
     ! function_index=31
-    function function5() result(SHT_rv)
+    function function5() &
+            result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE) :: SHT_rv
         ! splicer begin function.function5
@@ -625,7 +653,8 @@ contains
     ! double Function5(double arg1=3.1415 +intent(in)+value)
     ! has_default_arg
     ! function_index=32
-    function function5_arg1(arg1) result(SHT_rv)
+    function function5_arg1(arg1) &
+            result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg1
         real(C_DOUBLE) :: SHT_rv
@@ -636,7 +665,8 @@ contains
 
     ! double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
     ! function_index=11
-    function function5_arg1_arg2(arg1, arg2) result(SHT_rv)
+    function function5_arg1_arg2(arg1, arg2) &
+            result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg1
         logical, value, intent(IN) :: arg2
@@ -695,7 +725,8 @@ contains
     ! int Function8()
     ! cxx_template
     ! function_index=35
-    function function8_int() result(SHT_rv)
+    function function8_int() &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.function8_int
@@ -706,7 +737,8 @@ contains
     ! double Function8()
     ! cxx_template
     ! function_index=36
-    function function8_double() result(SHT_rv)
+    function function8_double() &
+            result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE) :: SHT_rv
         ! splicer begin function.function8_double
@@ -773,7 +805,8 @@ contains
     ! int overload1(int num +intent(in)+value)
     ! has_default_arg
     ! function_index=37
-    function overload1_num(num) result(SHT_rv)
+    function overload1_num(num) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT) :: SHT_rv
@@ -785,7 +818,8 @@ contains
     ! int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
     ! function_index=38
-    function overload1_num_offset(num, offset) result(SHT_rv)
+    function overload1_num_offset(num, offset) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT), value, intent(IN) :: offset
@@ -812,7 +846,8 @@ contains
     ! int overload1(double type +intent(in)+value, int num +intent(in)+value)
     ! has_default_arg
     ! function_index=39
-    function overload1_3(type, num) result(SHT_rv)
+    function overload1_3(type, num) &
+            result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: num
@@ -825,7 +860,8 @@ contains
     ! int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
     ! function_index=40
-    function overload1_4(type, num, offset) result(SHT_rv)
+    function overload1_4(type, num, offset) &
+            result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: num
@@ -838,7 +874,8 @@ contains
 
     ! int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
     ! function_index=20
-    function overload1_5(type, num, offset, stride) result(SHT_rv)
+    function overload1_5(type, num, offset, stride) &
+            result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: num
@@ -862,7 +899,8 @@ contains
     ! int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
     ! arg_to_buffer
     ! function_index=24
-    function vector_sum(arg) result(SHT_rv)
+    function vector_sum(arg) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), intent(IN) :: arg(:)
         integer(C_INT) :: SHT_rv
@@ -900,7 +938,8 @@ contains
     !! \brief count number of underscore in vector of strings
     !!
     !<
-    function vector_string_count(arg) result(SHT_rv)
+    function vector_string_count(arg) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
         character(*), intent(IN) :: arg(:)
         integer(C_INT) :: SHT_rv
@@ -919,7 +958,8 @@ contains
     !! The C++ function returns void. But the C and Fortran wrappers return
     !! an int with the number of items added to arg.
     !<
-    function vector_string_fill(arg) result(SHT_rv)
+    function vector_string_fill(arg) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
         character(*), intent(OUT) :: arg(:)
         integer(C_INT) :: SHT_rv
@@ -947,7 +987,8 @@ contains
 
     ! const std::string & LastFunctionCalled() +pure
     ! function_index=30
-    function last_function_called() result(SHT_rv)
+    function last_function_called() &
+            result(SHT_rv)
         use iso_c_binding, only : C_CHAR
         character(kind=C_CHAR, len=strlen_ptr(c_last_function_called())) &
             :: SHT_rv

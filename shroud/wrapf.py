@@ -506,7 +506,7 @@ class Wrapf(util.WrapperMixin):
             fmt.F_C_subprogram = 'subroutine'
         else:
             fmt.F_C_subprogram = 'function'
-            fmt.F_C_result_clause = ' result(%s)' % fmt.F_result
+            fmt.F_C_result_clause = '\nresult(%s)' % fmt.F_result
 
         if cls:
             # Add 'this' argument
@@ -599,8 +599,8 @@ class Wrapf(util.WrapperMixin):
         self.break_into_continuations(
             c_interface, ' &', '', 2,
             wformat('{F_C_pure_clause}{F_C_subprogram} {F_C_name}'
-                    '(\t{F_C_arguments_tab})\t{F_C_result_clause}'
-                    '\t bind(C, name="{C_name}")', fmt))
+                    '(\t{F_C_arguments_tab}){F_C_result_clause}'
+                    '\nbind(C, name="{C_name}")', fmt))
         c_interface.append(1)
         c_interface.extend(arg_f_use)
         c_interface.append('implicit none')
@@ -687,7 +687,7 @@ class Wrapf(util.WrapperMixin):
         modules = {}   # indexed as [module][variable]
 
         if subprogram == 'function':
-            fmt_func.F_result_clause = ' result(%s)' % fmt_func.F_result
+            fmt_func.F_result_clause = '\nresult(%s)' % fmt_func.F_result
         fmt_func.F_subprogram = subprogram
 
         if cls:

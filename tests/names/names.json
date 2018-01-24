@@ -632,7 +632,7 @@
                     "F_name_function": "function4", 
                     "F_name_generic": "function4", 
                     "F_name_impl": "testnames_function4", 
-                    "F_result_clause": " result(SHT_rv)", 
+                    "F_result_clause": "\nresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_function4", 
                     "c_const": "", 

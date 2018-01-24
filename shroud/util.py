@@ -285,20 +285,36 @@ class WrapperMixin(object):
                 fp.write(self.comment + '\n')
 
     def break_into_continuations(self, out, cont, tail, indent, line):
-        """Tab marks potential linebreak
+        """Break line into parts to control continuations.
 
-        Add to out a tuple while tells write_lines where to add
+        Tab marks potential linebreak, newlines mark explicit 
+        linebreak.
+
+        Add to out a tuple which tells write_lines where to add
         continuations.
 
         Return a tuple
          ( cont, tail, indent, [ 'part1', 'part2', ..., 'partn' ]
 
                 fortran    c
-        cont     ' &'      ''
-        tail     ''        '' or ';'
-        indent   2         1
+        cont     ' &'      ''           continuation string
+        tail     ''        '' or ';'    trailing string
+        indent   2         1            indent level for continued lines
         """
-        parts = line.split('\t')
+        parts = []
+        part = ''
+        for ch in line:
+            if ch == '\t':
+                parts.append(part)
+                part = ''
+            elif ch == '\n':
+                parts.append(part)
+                part = ''
+                parts.append('\n')
+            else:
+                part += ch
+        if part:
+            parts.append(part)
         out.append((cont, tail, indent, parts))
 
     def write_lines(self, fp, lines):
@@ -314,14 +330,9 @@ class WrapperMixin(object):
                 delimiter = ''
                 nparts = 0
                 for part in line[3]:
-                    if part == ' ' or part == '\n':
+                    if part == '\n':
                         # save delimiter for next part
                         delimiter = part
-                        continue
-                    elif part == '':
-                        # optional part is not present, remove delimiter too
-                        #  ' '  'result(rv)'
-                        delimiter = ''
                         continue
                     elif delimiter == '\n' or len(subline) + len(part) > 72:
                         # if the first part causes an overflow, there
@@ -330,10 +341,9 @@ class WrapperMixin(object):
                             fp.write(subline + cont + '\n')
                             subline = '    ' * (self.indent + indent)
                             part = part.lstrip()
-                        delimiter = ''
-                    subline += delimiter + part
-                    nparts += 1
                     delimiter = ''
+                    subline += part
+                    nparts += 1
                 fp.write(subline + tail + '\n')
             elif isinstance(line, int):
                 self.indent += int(line)

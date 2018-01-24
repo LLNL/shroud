@@ -56,11 +56,13 @@ module interface_mod
 
     interface
 
-        subroutine function1() bind(C, name="Function1")
+        subroutine function1() &
+                bind(C, name="Function1")
             implicit none
         end subroutine function1
 
-        function function2(arg1, arg2) result(SHT_rv) &
+        function function2(arg1, arg2) &
+                result(SHT_rv) &
                 bind(C, name="Function2")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none

@@ -56,11 +56,13 @@ module clibrary_mod
 
     interface
 
-        subroutine function1() bind(C, name="Function1")
+        subroutine function1() &
+                bind(C, name="Function1")
             implicit none
         end subroutine function1
 
-        function function2(arg1, arg2) result(SHT_rv) &
+        function function2(arg1, arg2) &
+                result(SHT_rv) &
                 bind(C, name="Function2")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
@@ -69,7 +71,8 @@ module clibrary_mod
             real(C_DOUBLE) :: SHT_rv
         end function function2
 
-        subroutine sum(len, values, result) bind(C, name="Sum")
+        subroutine sum(len, values, result) &
+                bind(C, name="Sum")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: len
@@ -77,7 +80,8 @@ module clibrary_mod
             integer(C_INT), intent(OUT) :: result
         end subroutine sum
 
-        function c_function3(arg) result(SHT_rv) &
+        function c_function3(arg) &
+                result(SHT_rv) &
                 bind(C, name="Function3")
             use iso_c_binding, only : C_BOOL
             implicit none
@@ -94,7 +98,8 @@ module clibrary_mod
             logical(C_BOOL), intent(INOUT) :: arg3
         end subroutine c_function3b
 
-        function c_function4a(arg1, arg2) result(SHT_rv) &
+        function c_function4a(arg1, arg2) &
+                result(SHT_rv) &
                 bind(C, name="Function4a")
             use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
@@ -124,7 +129,8 @@ contains
 
     ! bool Function3(bool arg +intent(in)+value)
     ! function_index=3
-    function function3(arg) result(SHT_rv)
+    function function3(arg) &
+            result(SHT_rv)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg
         logical(C_BOOL) SH_arg
@@ -157,7 +163,8 @@ contains
     ! char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))
     ! arg_to_buffer
     ! function_index=5
-    function function4a(arg1, arg2) result(SHT_rv)
+    function function4a(arg1, arg2) &
+            result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(*), intent(IN) :: arg1
         character(*), intent(IN) :: arg2
