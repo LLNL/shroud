@@ -638,8 +638,12 @@ Function
 C_call_list
     Comma delimited list of function arguments.
 
+.. uses tabs
+
 C_call_code
     Code used to call function in C wrapper.
+
+.. uses tabs
 
 C_code
     User supplied wrapper code for the C wrapper for a function.
@@ -672,6 +676,8 @@ C_prototype
     This will include any arguments required by annotations or options,
     such as length or **F_string_result_as_arg**.  
 
+.. uses tabs
+
 C_return_code
     Code used to return from C wrapper.
 
@@ -692,15 +698,17 @@ CXX_this_call
 F_arg_c_call
     Comma delimited arguments to call C function from Fortran.
 
-F_arg_c_call_tab
-    Tab delimited version *F_arg_c_call*.
-    Used to avoid long lines.
+.. uses tabs
 
 F_arguments
     Set from option *F_arguments* or generated from YAML decl.
 
+.. uses tabs
+
 F_C_arguments
     Argument names to the ``bind(C)`` interface for the subprogram.
+
+.. uses tabs
 
 F_C_call
     The name of the C function to call.  Usually *F_C_name*, but it may
@@ -719,6 +727,11 @@ F_C_result_clause
 
 F_C_subprogram
     ``subroutine`` or ``function``.
+
+F_call_code
+    Code used to call function in Fortran wrapper.
+
+.. uses tabs
 
 F_code
     User supplied wrapper code for the Fortran wrapper for a function.
@@ -1035,7 +1048,7 @@ f_statement
 
     call
         Code used to call the function.
-        Defaults to ``{F_result} = {F_C_call}({F_arg_c_call_tab})``
+        Defaults to ``{F_result} = {F_C_call}({F_arg_c_call})``
 
     post_call
         Statement to execute after call.

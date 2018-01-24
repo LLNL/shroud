@@ -423,7 +423,7 @@ def initialize():
                     need_wrapper=True,
                     f_helper='fstr_ptr',
                     call=[
-                        '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))',
+                        '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))',
                         ],
                     )
                 ),
@@ -560,7 +560,7 @@ def initialize():
                     need_wrapper=True,
                     f_helper='fstr_ptr',
                     call=[
-                        '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))',
+                        '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))',
                         ],
                     )
                 ),
@@ -847,7 +847,7 @@ def typedef_wrapped_defaults(typedef):
             need_wrapper=True,
             call=[
                 ('{F_result}%{F_derived_member} = '
-                 '{F_C_call}({F_arg_c_call_tab})')
+                 '{F_C_call}({F_arg_c_call})')
                 ],
             )
         )

@@ -550,11 +550,9 @@ class Wrapc(util.WrapperMixin):
                 # create forward references for other types being wrapped
                 # i.e. This argument is another wrapped type
                 self.header_forward[arg_typedef.c_type] = True
-        fmt_func.C_call_list = ', '.join(call_list)
-        fmt_func.C_call_list_tab = ',\t '.join(call_list)
+        fmt_func.C_call_list = ',\t '.join(call_list)
 
-        fmt_func.C_prototype = options.get('C_prototype', ', '.join(proto_list))
-        fmt_func.C_prototype_tab = options.get('C_prototype_tab', ',\t '.join(proto_list))
+        fmt_func.C_prototype = options.get('C_prototype', ',\t '.join(proto_list))
 
         if node.return_this:
             fmt_func.C_return_type = 'void'
@@ -580,7 +578,7 @@ class Wrapc(util.WrapperMixin):
         C_return_code = 'return;'
         if is_ctor:
             fmt_func.C_call_code = wformat('{cxx_rv_decl} = new {cxx_class}'
-                                           '({C_call_list_tab})', fmt_result)
+                                           '({C_call_list})', fmt_result)
             C_return_code = ('return {};'.format(
                 wformat(result_typedef.cxx_to_c, fmt_result)))
         elif is_dtor:
@@ -588,12 +586,12 @@ class Wrapc(util.WrapperMixin):
         elif CXX_subprogram == 'subroutine':
             fmt_func.C_call_code = wformat(
                 '{CXX_this_call}{function_name}'
-                '{CXX_template}(\t{C_call_list_tab})',
+                '{CXX_template}(\t{C_call_list})',
                 fmt_func)
         else:
             fmt_func.C_call_code = wformat(
                 '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'
-                '{CXX_template}(\t{C_call_list_tab})',
+                '{CXX_template}(\t{C_call_list})',
                 fmt_result)
 
             if result_arg is None:
@@ -677,7 +675,7 @@ class Wrapc(util.WrapperMixin):
                 self.header_proto_c.append('#' + node.cpp_if)
             self.break_into_continuations(
                 self.header_proto_c, options, 'c', ';', 1,
-                wformat('{C_return_type} {C_name}(\t{C_prototype_tab})',
+                wformat('{C_return_type} {C_name}(\t{C_prototype})',
                         fmt_func))
             if node.cpp_if:
                 self.header_proto_c.append('#endif')
@@ -693,7 +691,7 @@ class Wrapc(util.WrapperMixin):
                 self.impl.append('#' + node.cpp_if)
             self.break_into_continuations(
                 impl, options, 'c', '', 1,
-                wformat('{C_return_type} {C_name}(\t{C_prototype_tab})',
+                wformat('{C_return_type} {C_name}(\t{C_prototype})',
                         fmt_func))
             impl.append('{')
             self._create_splicer(fmt_func.underscore_name +

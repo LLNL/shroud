@@ -304,7 +304,7 @@
             "f_statements": {
                 "result_pure": {
                     "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
                     ], 
                     "f_helper": "fstr_ptr", 
                     "need_wrapper": true
@@ -530,7 +530,7 @@
             "f_statements": {
                 "result_pure": {
                     "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
                     ], 
                     "f_helper": "fstr_ptr", 
                     "need_wrapper": true

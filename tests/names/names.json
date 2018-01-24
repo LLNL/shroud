@@ -45,19 +45,15 @@
                         "format": {
                             "C_call_code": "SH_this->method1(\t)", 
                             "C_call_list": "", 
-                            "C_call_list_tab": "", 
                             "C_name": "XXX_TES_names_method1", 
                             "C_pre_call": "Names *SH_this = static_cast<Names *>(static_cast<void *>(self));", 
                             "C_prototype": "TES_names * self", 
-                            "C_prototype_tab": "TES_names * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_call": "xxx_tes_names_method1", 
                             "F_C_name": "xxx_tes_names_method1", 
                             "F_arg_c_call": "obj%voidptr", 
-                            "F_arg_c_call_tab": "obj%voidptr", 
                             "F_arguments": "obj", 
-                            "F_arguments_tab": "obj", 
                             "F_call_code": "call xxx_tes_names_method1(obj%voidptr)", 
                             "F_name_function": "type_method1", 
                             "F_name_generic": "method1", 
@@ -95,20 +91,16 @@
                             "CXX_this": "SH_this2", 
                             "C_call_code": "SH_this->method2(\t)", 
                             "C_call_list": "", 
-                            "C_call_list_tab": "", 
                             "C_name": "XXX_TES_names_method2", 
                             "C_pre_call": "Names *SH_this2 = static_cast<Names *>(static_cast<void *>(self2));", 
                             "C_prototype": "TES_names * self2", 
-                            "C_prototype_tab": "TES_names * self2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "C_this": "self2", 
                             "F_C_call": "xxx_tes_names_method2", 
                             "F_C_name": "xxx_tes_names_method2", 
                             "F_arg_c_call": "obj2%voidptr", 
-                            "F_arg_c_call_tab": "obj2%voidptr", 
                             "F_arguments": "obj2", 
-                            "F_arguments_tab": "obj2", 
                             "F_call_code": "call xxx_tes_names_method2(obj2%voidptr)", 
                             "F_name_function": "method2", 
                             "F_name_generic": "method2", 
@@ -287,18 +279,14 @@
                 "format": {
                     "C_call_code": "function1(\t)", 
                     "C_call_list": "", 
-                    "C_call_list_tab": "", 
                     "C_name": "YYY_TES_function1", 
                     "C_prototype": "", 
-                    "C_prototype_tab": "", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_call": "yyy_tes_function1", 
                     "F_C_name": "yyy_tes_function1", 
                     "F_arg_c_call": "", 
-                    "F_arg_c_call_tab": "", 
                     "F_arguments": "", 
-                    "F_arguments_tab": "", 
                     "F_call_code": "call yyy_tes_function1()", 
                     "F_name_function": "function1", 
                     "F_name_generic": "function1", 
@@ -333,18 +321,14 @@
                 "format": {
                     "C_call_code": "function2(\t)", 
                     "C_call_list": "", 
-                    "C_call_list_tab": "", 
                     "C_name": "c_name_special", 
                     "C_prototype": "", 
-                    "C_prototype_tab": "", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_call": "f_c_name_special", 
                     "F_C_name": "f_c_name_special", 
                     "F_arg_c_call": "", 
-                    "F_arg_c_call_tab": "", 
                     "F_arguments": "", 
-                    "F_arguments_tab": "", 
                     "F_call_code": "call f_c_name_special()", 
                     "F_name_function": "function2", 
                     "F_name_generic": "function2", 
@@ -425,18 +409,14 @@
                 "format": {
                     "C_call_code": "function3a(\ti)", 
                     "C_call_list": "i", 
-                    "C_call_list_tab": "i", 
                     "C_name": "YYY_TES_function3a_0", 
                     "C_prototype": "int i", 
-                    "C_prototype_tab": "int i", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_call": "yyy_tes_function3a_0", 
                     "F_C_name": "yyy_tes_function3a_0", 
                     "F_arg_c_call": "i", 
-                    "F_arg_c_call_tab": "i", 
                     "F_arguments": "i", 
-                    "F_arguments_tab": "i", 
                     "F_call_code": "call yyy_tes_function3a_0(i)", 
                     "F_name_function": "function3a_0", 
                     "F_name_generic": "generic3", 
@@ -518,18 +498,14 @@
                 "format": {
                     "C_call_code": "function3a(\ti)", 
                     "C_call_list": "i", 
-                    "C_call_list_tab": "i", 
                     "C_name": "YYY_TES_function3a_1", 
                     "C_prototype": "long i", 
-                    "C_prototype_tab": "long i", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_call": "yyy_tes_function3a_1", 
                     "F_C_name": "yyy_tes_function3a_1", 
                     "F_arg_c_call": "i", 
-                    "F_arg_c_call_tab": "i", 
                     "F_arguments": "i", 
-                    "F_arguments_tab": "i", 
                     "F_call_code": "call yyy_tes_function3a_1(i)", 
                     "F_name_function": "function3a_1", 
                     "F_name_generic": "generic3", 
@@ -615,19 +591,15 @@
                 "format": {
                     "C_call_code": "int SHT_rv =\t function4(\tSH_rv)", 
                     "C_call_list": "SH_rv", 
-                    "C_call_list_tab": "SH_rv", 
                     "C_name": "YYY_TES_function4", 
                     "C_pre_call": "const std::string SH_rv(rv);", 
                     "C_prototype": "const char * rv", 
-                    "C_prototype_tab": "const char * rv", 
                     "C_return_code": "return SHT_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "yyy_tes_function4_bufferify", 
                     "F_C_name": "yyy_tes_function4", 
-                    "F_arg_c_call": "rv, len_trim(rv, kind=C_INT)", 
-                    "F_arg_c_call_tab": "rv,\t len_trim(rv, kind=C_INT)", 
+                    "F_arg_c_call": "rv,\t len_trim(rv, kind=C_INT)", 
                     "F_arguments": "rv", 
-                    "F_arguments_tab": "rv", 
                     "F_call_code": "SHT_rv = yyy_tes_function4_bufferify(rv,\t len_trim(rv, kind=C_INT))", 
                     "F_name_function": "function4", 
                     "F_name_generic": "function4", 
@@ -710,11 +682,9 @@
                 "format": {
                     "C_call_code": "int SHT_rv =\t function4(\tSH_rv)", 
                     "C_call_list": "SH_rv", 
-                    "C_call_list_tab": "SH_rv", 
                     "C_name": "YYY_TES_function4_bufferify", 
                     "C_pre_call": "const std::string SH_rv(rv, Lrv);", 
-                    "C_prototype": "const char * rv, int Lrv", 
-                    "C_prototype_tab": "const char * rv,\t int Lrv", 
+                    "C_prototype": "const char * rv,\t int Lrv", 
                     "C_return_code": "return SHT_rv;", 
                     "C_return_type": "int", 
                     "F_C_name": "yyy_tes_function4_bufferify", 
@@ -754,18 +724,14 @@
                 "format": {
                     "C_call_code": "fiveplus(\t)", 
                     "C_call_list": "", 
-                    "C_call_list_tab": "", 
                     "C_name": "YYY_TES_fiveplus", 
                     "C_prototype": "", 
-                    "C_prototype_tab": "", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_call": "yyy_tes_fiveplus", 
                     "F_C_name": "yyy_tes_fiveplus", 
                     "F_arg_c_call": "", 
-                    "F_arg_c_call_tab": "", 
                     "F_arguments": "", 
-                    "F_arguments_tab": "", 
                     "F_call_code": "call yyy_tes_fiveplus()", 
                     "F_name_function": "fiveplus", 
                     "F_name_generic": "fiveplus", 
@@ -890,7 +856,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }
@@ -947,7 +913,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }
@@ -1104,7 +1070,7 @@
             "f_statements": {
                 "result_pure": {
                     "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
                     ], 
                     "f_helper": "fstr_ptr", 
                     "need_wrapper": true
@@ -1330,7 +1296,7 @@
             "f_statements": {
                 "result_pure": {
                     "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
                     ], 
                     "f_helper": "fstr_ptr", 
                     "need_wrapper": true
