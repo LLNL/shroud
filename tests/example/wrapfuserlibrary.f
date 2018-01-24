@@ -177,6 +177,44 @@ module userlibrary_mod
             type(C_PTR), value, intent(IN) :: grp
         end subroutine c_testgroup2
 
+        subroutine c_verlongfunctionname1(verylongname1, verylongname2, &
+                verylongname3, verylongname4, verylongname5, &
+                verylongname6, verylongname7, verylongname8, &
+                verylongname9, verylongname10) &
+                bind(C, name="AA_verlongfunctionname1")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: verylongname1
+            integer(C_INT), value, intent(IN) :: verylongname2
+            integer(C_INT), value, intent(IN) :: verylongname3
+            integer(C_INT), value, intent(IN) :: verylongname4
+            integer(C_INT), value, intent(IN) :: verylongname5
+            integer(C_INT), value, intent(IN) :: verylongname6
+            integer(C_INT), value, intent(IN) :: verylongname7
+            integer(C_INT), value, intent(IN) :: verylongname8
+            integer(C_INT), value, intent(IN) :: verylongname9
+            integer(C_INT), value, intent(IN) :: verylongname10
+        end subroutine c_verlongfunctionname1
+
+        subroutine c_verlongfunctionname2(verylongname1, verylongname2, &
+                verylongname3, verylongname4, verylongname5, &
+                verylongname6, verylongname7, verylongname8, &
+                verylongname9, verylongname10) &
+                bind(C, name="AA_verlongfunctionname2")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: verylongname1
+            integer(C_INT), value, intent(IN) :: verylongname2
+            integer(C_INT), value, intent(IN) :: verylongname3
+            integer(C_INT), value, intent(IN) :: verylongname4
+            integer(C_INT), value, intent(IN) :: verylongname5
+            integer(C_INT), value, intent(IN) :: verylongname6
+            integer(C_INT), value, intent(IN) :: verylongname7
+            integer(C_INT), value, intent(IN) :: verylongname8
+            integer(C_INT), value, intent(IN) :: verylongname9
+            integer(C_INT), value, intent(IN) :: verylongname10
+        end subroutine c_verlongfunctionname2
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -263,7 +301,7 @@ contains
 
     ! void testoptional()
     ! has_default_arg
-    ! function_index=60
+    ! function_index=62
     subroutine testoptional_0()
         ! splicer begin function.testoptional_0
         call c_testoptional_0()
@@ -272,7 +310,7 @@ contains
 
     ! void testoptional(int i=1 +intent(in)+value)
     ! has_default_arg
-    ! function_index=61
+    ! function_index=63
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -311,6 +349,52 @@ contains
         call c_testgroup2(grp%get_instance())
         ! splicer end function.testgroup2
     end subroutine testgroup2
+
+    ! void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+    ! function_index=60
+    subroutine verlongfunctionname1(verylongname1, verylongname2, &
+            verylongname3, verylongname4, verylongname5, verylongname6, &
+            verylongname7, verylongname8, verylongname9, verylongname10)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: verylongname1
+        integer(C_INT), value, intent(IN) :: verylongname2
+        integer(C_INT), value, intent(IN) :: verylongname3
+        integer(C_INT), value, intent(IN) :: verylongname4
+        integer(C_INT), value, intent(IN) :: verylongname5
+        integer(C_INT), value, intent(IN) :: verylongname6
+        integer(C_INT), value, intent(IN) :: verylongname7
+        integer(C_INT), value, intent(IN) :: verylongname8
+        integer(C_INT), value, intent(IN) :: verylongname9
+        integer(C_INT), value, intent(IN) :: verylongname10
+        ! splicer begin function.verlongfunctionname1
+        call c_verlongfunctionname1(verylongname1, verylongname2, &
+            verylongname3, verylongname4, verylongname5, verylongname6, &
+            verylongname7, verylongname8, verylongname9, verylongname10)
+        ! splicer end function.verlongfunctionname1
+    end subroutine verlongfunctionname1
+
+    ! void verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+    ! function_index=61
+    subroutine verlongfunctionname2(verylongname1, verylongname2, &
+            verylongname3, verylongname4, verylongname5, verylongname6, &
+            verylongname7, verylongname8, verylongname9, verylongname10)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: verylongname1
+        integer(C_INT), value, intent(IN) :: verylongname2
+        integer(C_INT), value, intent(IN) :: verylongname3
+        integer(C_INT), value, intent(IN) :: verylongname4
+        integer(C_INT), value, intent(IN) :: verylongname5
+        integer(C_INT), value, intent(IN) :: verylongname6
+        integer(C_INT), value, intent(IN) :: verylongname7
+        integer(C_INT), value, intent(IN) :: verylongname8
+        integer(C_INT), value, intent(IN) :: verylongname9
+        integer(C_INT), value, intent(IN) :: verylongname10
+        ! splicer begin function.verlongfunctionname2
+        call c_verlongfunctionname2(verylongname1, verylongname2, &
+            verylongname3, verylongname4, verylongname5, verylongname6, &
+            verylongname7, verylongname8, verylongname9, verylongname10)
+        ! splicer end function.verlongfunctionname2
+    end subroutine verlongfunctionname2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
