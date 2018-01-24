@@ -506,7 +506,7 @@ class Wrapf(util.WrapperMixin):
             fmt.F_C_subprogram = 'subroutine'
         else:
             fmt.F_C_subprogram = 'function'
-            fmt.F_C_result_clause = 'result(%s)' % fmt.F_result
+            fmt.F_C_result_clause = ' result(%s)' % fmt.F_result
 
         if cls:
             # Add 'this' argument
@@ -576,6 +576,8 @@ class Wrapf(util.WrapperMixin):
 
         fmt.F_C_arguments = options.get(
             'F_C_arguments', ', '.join(arg_c_names))
+        fmt.F_C_arguments_tab = options.get(
+            'F_C_arguments_tab', ',\t '.join(arg_c_names))
 
         if fmt.F_C_subprogram == 'function':
             if result_typedef.base == 'string':
@@ -594,13 +596,11 @@ class Wrapf(util.WrapperMixin):
         c_interface = self.c_interface
         c_interface.append('')
 
-        c_interface.append(self.continued_line(
-            ' &', '', 2,
-            fmt.F_C_pure_clause, fmt.F_C_subprogram,
-            ' ', fmt.F_C_name,
-            arg_c_names,
-            '\n', fmt.F_C_result_clause,
-            '\n', wformat('bind(C, name="{C_name}")', fmt)))
+        self.break_into_continuations(
+            c_interface, ' &', '', 2,
+            wformat('{F_C_pure_clause}{F_C_subprogram} {F_C_name}'
+                    '(\t{F_C_arguments_tab})\t{F_C_result_clause}'
+                    '\t bind(C, name="{C_name}")', fmt))
         c_interface.append(1)
         c_interface.extend(arg_f_use)
         c_interface.append('implicit none')
@@ -687,7 +687,7 @@ class Wrapf(util.WrapperMixin):
         modules = {}   # indexed as [module][variable]
 
         if subprogram == 'function':
-            fmt_func.F_result_clause = 'result(%s)' % fmt_func.F_result
+            fmt_func.F_result_clause = ' result(%s)' % fmt_func.F_result
         fmt_func.F_subprogram = subprogram
 
         if cls:
@@ -820,8 +820,9 @@ class Wrapf(util.WrapperMixin):
 
         fmt_func.F_arg_c_call = ', '.join(arg_c_call)
         # use tabs to insert continuations
-        fmt_func.F_arg_c_call_tab = ', \t'.join(arg_c_call)
+        fmt_func.F_arg_c_call_tab = ',\t '.join(arg_c_call)
         fmt_func.F_arguments = options.get('F_arguments', ', '.join(arg_f_names))
+        fmt_func.F_arguments_tab = options.get('F_arguments', ',\t '.join(arg_f_names))
 
         # declare function return value after arguments
         # since arguments may be used to compute return value
@@ -925,10 +926,11 @@ class Wrapf(util.WrapperMixin):
                 impl.append('! function_index=%d' % node._function_index)
                 if options.doxygen and node.doxygen:
                     self.write_doxygen(impl, node.doxygen)
-            impl.append(self.continued_line(
-                ' &', '', 2,
-                fmt_func.F_subprogram, ' ', fmt_func.F_name_impl,
-                arg_f_names, ' ', fmt_func.F_result_clause))
+            self.break_into_continuations(
+                impl, ' &', '', 2,
+                wformat('{F_subprogram} {F_name_impl}(\t'
+                        '{F_arguments_tab})\t{F_result_clause}',
+                        fmt_func))
             impl.append(1)
             impl.extend(arg_f_use)
             impl.extend(arg_f_decl)

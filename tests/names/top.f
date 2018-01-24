@@ -56,13 +56,11 @@ module top_module
 
     interface
 
-        subroutine yyy_tes_function1() &
-                bind(C, name="YYY_TES_function1")
+        subroutine yyy_tes_function1() bind(C, name="YYY_TES_function1")
             implicit none
         end subroutine yyy_tes_function1
 
-        subroutine f_c_name_special() &
-                bind(C, name="c_name_special")
+        subroutine f_c_name_special() bind(C, name="c_name_special")
             implicit none
         end subroutine f_c_name_special
 
@@ -80,8 +78,7 @@ module top_module
             integer(C_LONG), value, intent(IN) :: i
         end subroutine yyy_tes_function3a_1
 
-        function yyy_tes_function4(rv) &
-                result(SHT_rv) &
+        function yyy_tes_function4(rv) result(SHT_rv) &
                 bind(C, name="YYY_TES_function4")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
@@ -89,8 +86,7 @@ module top_module
             integer(C_INT) :: SHT_rv
         end function yyy_tes_function4
 
-        function yyy_tes_function4_bufferify(rv, Lrv) &
-                result(SHT_rv) &
+        function yyy_tes_function4_bufferify(rv, Lrv) result(SHT_rv) &
                 bind(C, name="YYY_TES_function4_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
@@ -99,8 +95,7 @@ module top_module
             integer(C_INT) :: SHT_rv
         end function yyy_tes_function4_bufferify
 
-        subroutine yyy_tes_fiveplus() &
-                bind(C, name="YYY_TES_fiveplus")
+        subroutine yyy_tes_fiveplus() bind(C, name="YYY_TES_fiveplus")
             implicit none
         end subroutine yyy_tes_fiveplus
 
@@ -159,7 +154,7 @@ contains
         character(*), intent(IN) :: rv
         integer(C_INT) :: SHT_rv
         ! splicer begin function.function4
-        SHT_rv = yyy_tes_function4_bufferify(rv,  &
+        SHT_rv = yyy_tes_function4_bufferify(rv, &
             len_trim(rv, kind=C_INT))
         ! splicer end function.function4
     end function testnames_function4

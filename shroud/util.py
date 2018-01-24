@@ -285,16 +285,10 @@ class WrapperMixin(object):
                 fp.write(self.comment + '\n')
 
     def break_into_continuations(self, out, cont, tail, indent, line):
-        """Tab marks potential linebreak.
-        """
-        parts = line.split('\t')
-        out.append((cont, tail, indent, parts))
+        """Tab marks potential linebreak
 
-    def continued_line(self, cont, tail, indent, *args):
-        """Create a line which will be split into continued parts
-        by write_lines.
-
-        If an entry is a list, create a parenthesized, comma delimited list
+        Add to out a tuple while tells write_lines where to add
+        continuations.
 
         Return a tuple
          ( cont, tail, indent, [ 'part1', 'part2', ..., 'partn' ]
@@ -304,25 +298,8 @@ class WrapperMixin(object):
         tail     ''        '' or ';'
         indent   2         1
         """
-        parts = []
-        for part in args:
-            if isinstance(part, list):
-                # A continuation will only be added after a part
-                # so keep some punctuation together with part.
-                if len(part) == 0:
-                    parts.append('()')
-                elif len(part) == 1:
-                    parts.append('(')
-                    parts.append(part[0] + ')')
-                elif len(part) > 1:
-                    parts.append('(')
-                    parts.append(part[0] + ', ')
-                    for entry in part[1:-1]:
-                        parts.append(entry + ', ')
-                    parts.append(part[-1] + ')')
-            else:
-                parts.append(part)
-        return (cont, tail, indent, parts)
+        parts = line.split('\t')
+        out.append((cont, tail, indent, parts))
 
     def write_lines(self, fp, lines):
         """ Write lines with indention and newlines.
@@ -352,6 +329,7 @@ class WrapperMixin(object):
                         if nparts > 0:
                             fp.write(subline + cont + '\n')
                             subline = '    ' * (self.indent + indent)
+                            part = part.lstrip()
                         delimiter = ''
                     subline += delimiter + part
                     nparts += 1

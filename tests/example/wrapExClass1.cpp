@@ -160,7 +160,7 @@ const char * AA_exclass1_get_name(const AA_exclass1 * self)
 
 // void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
 // function_index=15
-void AA_exclass1_get_name_bufferify(const AA_exclass1 * self, 
+void AA_exclass1_get_name_bufferify(const AA_exclass1 * self,
     char * SHF_rv, int NSHF_rv)
 {
 // splicer begin class.ExClass1.method.get_name_bufferify
@@ -233,7 +233,7 @@ const char * AA_exclass1_get_name_arg(const AA_exclass1 * self)
 
 // void getNameArg(string & name +intent(out)+len(Nname)) const
 // function_index=17
-void AA_exclass1_get_name_arg_bufferify(const AA_exclass1 * self, 
+void AA_exclass1_get_name_arg_bufferify(const AA_exclass1 * self,
     char * name, int Nname)
 {
 // splicer begin class.ExClass1.method.get_name_arg_bufferify

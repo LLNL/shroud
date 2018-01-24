@@ -54,7 +54,7 @@
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void CLI_function4a_bufferify(const char * arg1, int Larg1, 
+void CLI_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
 
 #endif  // WRAPCLIBRARY_H
