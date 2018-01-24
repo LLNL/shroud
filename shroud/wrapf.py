@@ -595,7 +595,7 @@ class Wrapf(util.WrapperMixin):
         c_interface.append('')
 
         c_interface.append(self.continued_line(
-            ' &', '',
+            ' &', '', 2,
             fmt.F_C_pure_clause, fmt.F_C_subprogram,
             ' ', fmt.F_C_name,
             arg_c_names,
@@ -922,7 +922,7 @@ class Wrapf(util.WrapperMixin):
                 if options.doxygen and node.doxygen:
                     self.write_doxygen(impl, node.doxygen)
             impl.append(self.continued_line(
-                ' &', '',
+                ' &', '', 2,
                 fmt_func.F_subprogram, ' ', fmt_func.F_name_impl,
                 arg_f_names, ' ', fmt_func.F_result_clause))
             impl.append(1)

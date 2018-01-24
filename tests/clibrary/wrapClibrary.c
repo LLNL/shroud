@@ -62,7 +62,7 @@ static void ShroudStrCopy(char *a, int la, const char *s)
 // void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=6
 void CLI_function4a_bufferify(const char * arg1, int Larg1, 
-        const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
+    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.function4a_bufferify
     char * SH_arg1 = (char *) malloc(Larg1 + 1);

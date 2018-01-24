@@ -669,7 +669,7 @@ class Wrapc(util.WrapperMixin):
             # copy-out values, clean up
             C_code = [1]
             C_code.extend(pre_call)
-            C_code.append(self.continued_line('', ';', *call_code))
+            C_code.append(self.continued_line('', ';', 1, *call_code))
 
             C_code.extend(post_call_pattern)
             C_code.extend(post_call)
@@ -681,7 +681,8 @@ class Wrapc(util.WrapperMixin):
             if node.cpp_if:
                 self.header_proto_c.append('#' + node.cpp_if)
             self.header_proto_c.append(self.continued_line(
-                '', ';', fmt_func.C_return_type, ' ', fmt_func.C_name,
+                '', ';', 1,
+                fmt_func.C_return_type, ' ', fmt_func.C_name,
                 proto_list))
             if node.cpp_if:
                 self.header_proto_c.append('#endif')
@@ -696,7 +697,8 @@ class Wrapc(util.WrapperMixin):
             if node.cpp_if:
                 self.impl.append('#' + node.cpp_if)
             impl.append(self.continued_line(
-                '', '', fmt_func.C_return_type, ' ', fmt_func.C_name,
+                '', '', 1,
+                fmt_func.C_return_type, ' ', fmt_func.C_name,
                 proto_list))
             impl.append('{')
             self._create_splicer(fmt_func.underscore_name +

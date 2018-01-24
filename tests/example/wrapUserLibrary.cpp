@@ -138,7 +138,7 @@ void AA_test_names_flag(const char * name, int flag)
 // void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)
 // function_index=64
 void AA_test_names_flag_bufferify(const char * name, int Lname, 
-        int flag)
+    int flag)
 {
 // splicer begin function.test_names_flag_bufferify
     const std::string SH_name(name, Lname);

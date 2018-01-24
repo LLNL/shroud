@@ -284,14 +284,19 @@ class WrapperMixin(object):
                 # convert None to blank line
                 fp.write(self.comment + '\n')
 
-    def continued_line(self, cont, tail, *args):
+    def continued_line(self, cont, tail, indent, *args):
         """Create a line which will be split into continued parts
         by write_lines.
 
         If an entry is a list, create a parenthesized, comma delimited list
 
         Return a tuple
-         ( 'fortran', [ 'part1', 'part2', ..., 'partn' ]
+         ( cont, tail, indent, [ 'part1', 'part2', ..., 'partn' ]
+
+                fortran    c
+        cont     ' &'      ''
+        tail     ''        '' or ';'
+        indent   2         1
         """
         parts = []
         for part in args:
@@ -301,15 +306,17 @@ class WrapperMixin(object):
                 if len(part) == 0:
                     parts.append('()')
                 elif len(part) == 1:
-                    parts.append('(' + part[0] + ')')
+                    parts.append('(')
+                    parts.append(part[0] + ')')
                 elif len(part) > 1:
-                    parts.append('(' + part[0] + ', ')
+                    parts.append('(')
+                    parts.append(part[0] + ', ')
                     for entry in part[1:-1]:
                         parts.append(entry + ', ')
                     parts.append(part[-1] + ')')
             else:
                 parts.append(part)
-        return (cont, tail, parts)
+        return (cont, tail, indent, parts)
 
     def write_lines(self, fp, lines):
         """ Write lines with indention and newlines.
@@ -319,10 +326,11 @@ class WrapperMixin(object):
                 # A tuple created by continued_line
                 cont = line[0]
                 tail = line[1]
+                indent = line[2]
                 subline = '    ' * self.indent
                 size = len(subline)
                 delimiter = ''
-                for part in line[2]:
+                for part in line[3]:
                     if part == ' ' or part == '\n':
                         # save delimiter for next part
                         delimiter = part
@@ -334,7 +342,7 @@ class WrapperMixin(object):
                         continue
                     elif delimiter == '\n' or size + len(part) > 72:
                         fp.write(subline + cont + '\n')
-                        subline = '    ' * (self.indent + 2)
+                        subline = '    ' * (self.indent + indent)
                         size = len(subline)
                         delimiter = ''
                     subline += delimiter + part

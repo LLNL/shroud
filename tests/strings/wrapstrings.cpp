@@ -134,7 +134,7 @@ void STR_pass_char_ptr(char * dest, const char * src)
  * This avoid a copy-in on dest.
  */
 void STR_pass_char_ptr_bufferify(char * dest, int Ndest, 
-        const char * src, int Lsrc)
+    const char * src, int Lsrc)
 {
 // splicer begin function.pass_char_ptr_bufferify
     char * SH_dest = (char *) malloc(Ndest + 1);
@@ -536,7 +536,7 @@ void STR_accept_string_const_reference(const char * arg1)
  * Will copy in.
  */
 void STR_accept_string_const_reference_bufferify(const char * arg1, 
-        int Larg1)
+    int Larg1)
 {
 // splicer begin function.accept_string_const_reference_bufferify
     const std::string SH_arg1(arg1, Larg1);
@@ -612,7 +612,7 @@ void STR_accept_string_reference(char * arg1)
  * Must copy in and copy out.
  */
 void STR_accept_string_reference_bufferify(char * arg1, int Larg1, 
-        int Narg1)
+    int Narg1)
 {
 // splicer begin function.accept_string_reference_bufferify
     std::string SH_arg1(arg1, Larg1);
@@ -645,7 +645,7 @@ void STR_accept_string_pointer(char * arg1)
  *
  */
 void STR_accept_string_pointer_bufferify(char * arg1, int Larg1, 
-        int Narg1)
+    int Narg1)
 {
 // splicer begin function.accept_string_pointer_bufferify
     std::string SH_arg1(arg1, Larg1);
@@ -728,7 +728,7 @@ void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
  * extern "C"
  */
 void STR_cpass_char_ptr_bufferify(char * dest, int Ndest, 
-        const char * src, int Lsrc)
+    const char * src, int Lsrc)
 {
 // splicer begin function.cpass_char_ptr_bufferify
     char * SH_dest = (char *) malloc(Ndest + 1);
