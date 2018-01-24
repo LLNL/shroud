@@ -64,7 +64,9 @@ PY_pass_char(
 // splicer begin function.pass_char
     char status;
     const char *SH_kwcpp = "status";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passChar", SH_kw_list,
         &status))
@@ -107,7 +109,9 @@ PY_pass_char_ptr(
     char * dest;
     const char * src;
     const char *SH_kwcpp = "src";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtr", SH_kw_list,
         &src))
@@ -133,7 +137,9 @@ PY_pass_char_ptr_in_out(
 // splicer begin function.pass_char_ptr_in_out
     char * s;
     const char *SH_kwcpp = "s";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtrInOut", SH_kw_list,
         &s))
@@ -329,7 +335,9 @@ PY_accept_string_const_reference(
 // splicer begin function.accept_string_const_reference
     const char * arg1;
     const char *SH_kwcpp = "arg1";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:acceptStringConstReference", SH_kw_list,
         &arg1))
@@ -354,8 +362,11 @@ PY_accept_string_reference_out(
 {
 // splicer begin function.accept_string_reference_out
     char * arg1;
-    const char *SH_kwcpp = "";
-    char *SH_kw_list[] = { , NULL };
+    const char *SH_kwcpp =
+        "";
+    char *SH_kw_list[] = {
+        ,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, ":acceptStringReferenceOut", SH_kw_list,
         ))
@@ -381,7 +392,9 @@ PY_accept_string_reference(
 // splicer begin function.accept_string_reference
     char * arg1;
     const char *SH_kwcpp = "arg1";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:acceptStringReference", SH_kw_list,
         &arg1))
@@ -408,7 +421,9 @@ PY_accept_string_pointer(
 // splicer begin function.accept_string_pointer
     char * arg1;
     const char *SH_kwcpp = "arg1";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:acceptStringPointer", SH_kw_list,
         &arg1))
@@ -435,7 +450,9 @@ PY_explicit1(
 // splicer begin function.explicit1
     char * name;
     const char *SH_kwcpp = "name";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:explicit1", SH_kw_list,
         &name))
@@ -459,8 +476,11 @@ PY_explicit2(
 {
 // splicer begin function.explicit2
     char * name;
-    const char *SH_kwcpp = "";
-    char *SH_kw_list[] = { , NULL };
+    const char *SH_kwcpp =
+        "";
+    char *SH_kw_list[] = {
+        ,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, ":explicit2", SH_kw_list,
         ))
@@ -486,7 +506,9 @@ PY_cpass_char(
 // splicer begin function.cpass_char
     char status;
     const char *SH_kwcpp = "status";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:CpassChar", SH_kw_list,
         &status))
@@ -529,7 +551,9 @@ PY_cpass_char_ptr(
     char * dest;
     const char * src;
     const char *SH_kwcpp = "src";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:CpassCharPtr", SH_kw_list,
         &src))

@@ -59,6 +59,7 @@ class Wrapp(util.WrapperMixin):
 
     def __init__(self, newlibrary, config, splicers):
         self.newlibrary = newlibrary
+        self.language = newlibrary.language
         self.patterns = self.newlibrary.patterns
         self.config = config
         self.log = config.log
@@ -451,7 +452,7 @@ return 1;""", fmt)
                         # call for default arguments  (num args, arg string)
                         default_calls.append(
                             (len(cxx_call_list), len(post_parse),
-                             ', '.join(cxx_call_list)))
+                             ',\t '.join(cxx_call_list)))
 
                     parse_format.append(arg_typedef.PY_format)
                     if arg_typedef.PY_PyTypeObject:
@@ -520,30 +521,38 @@ return 1;""", fmt)
                     # convert to C++ type
                     append_format(cxx_call_list, arg_typedef.c_to_cxx, fmt_arg)
 
-            if True:
+            if self.language == 'c++':
                 # jump through some hoops for char ** const correctness for C++
                 # warning: deprecated conversion from string constant
                 #    to 'char*' [-Wwrite-strings]
-                PY_decl.append(
-                    'const char *SH_kwcpp = "%s";' % '\\0'.join(arg_names))
-                PY_decl.append(
-                    'char *SH_kw_list[] = { ' + ','.join(arg_offsets)
-                    + ', NULL };')
+                if len(arg_names) == 1:
+                    PY_decl.append(
+                        'const char *SH_kwcpp = "%s";' % '\\0'.join(arg_names))
+                else:
+                    self.break_into_continuations(
+                        PY_decl, options, 'c', ';', 1,
+                        'const char *SH_kwcpp =\n"' +
+                        '\\0"\n"'.join(arg_names) + '"' )
+                self.break_into_continuations(
+                    PY_decl, options, 'c', ';', 1,
+                    'char *SH_kw_list[] = {\n' + ',\n'.join(arg_offsets)
+                    + ',\nNULL }')
             else:
-                PY_decl.append(
-                    'char * SH_kw_list[] = { "' + '", "'.join(arg_names)
-                    + ', NULL" };')
+                self.break_into_continuations(
+                    PY_decl, options, 'c', ';', 1,
+                    'char *SH_kw_list[] = {\n"' +
+                    '",\n"'.join(arg_names)
+                    + '",\nNULL }')
             parse_format.extend([':', fmt.function_name])
             fmt.PyArg_format = ''.join(parse_format)
-            fmt.PyArg_vargs = ', '.join(parse_vargs)
-            PY_code.append(wformat(
-                'if (!PyArg_ParseTupleAndKeywords'
-                '({PY_param_args}, {PY_param_kwds}, '
-                '"{PyArg_format}", SH_kw_list,',
-                fmt))
-            PY_code.append(1)
-            PY_code.append(wformat('{PyArg_vargs}))', fmt))
-            PY_code.append(-1)
+            fmt.PyArg_vargs = ',\t '.join(parse_vargs)
+            self.break_into_continuations(
+                PY_code, options, 'c', '', 1,
+                wformat(
+                    'if (!PyArg_ParseTupleAndKeywords'
+                    '({PY_param_args}, {PY_param_kwds}, '
+                    '"{PyArg_format}", SH_kw_list,'
+                    '\n{PyArg_vargs}))', fmt))
             PY_code.extend(['{', 1, 'return NULL;', -1, '}'])
 
         if cls:
@@ -556,7 +565,7 @@ return 1;""", fmt)
 
         # call with all arguments
         default_calls.append(
-            (len(cxx_call_list),  len(post_parse), ', '.join(cxx_call_list)))
+            (len(cxx_call_list),  len(post_parse), ',\t '.join(cxx_call_list)))
 
         # If multiple calls, declare return value once
         # Else delare on call line.
@@ -581,13 +590,15 @@ return 1;""", fmt)
             elif CXX_subprogram == 'subroutine':
                 line = wformat(
                     '{PY_this_call}{function_name}({PY_call_list});', fmt)
-                PY_code.append(line)
+                self.break_into_continuations(
+                    PY_code, options, 'c', '', 1, line)
             else:
                 need_rv = True
                 line = wformat(
                     '{PY_rv_asgn}{PY_this_call}{function_name}({PY_call_list});',
                     fmt)
-                PY_code.append(line)
+                self.break_into_continuations(
+                    PY_code, options, 'c', '', 1, line)
 
             if node.PY_error_pattern:
                 lfmt = util.Scope(fmt)
