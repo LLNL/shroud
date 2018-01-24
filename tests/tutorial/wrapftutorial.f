@@ -159,7 +159,8 @@ module tutorial_mod
             logical(C_BOOL), intent(INOUT) :: arg3
         end subroutine c_function3b
 
-        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, SHF_rv, NSHF_rv) &
+        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2,  &
+                SHF_rv, NSHF_rv) &
                 bind(C, name="TUT_function4a_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
@@ -181,7 +182,8 @@ module tutorial_mod
             type(C_PTR) SHT_rv
         end function c_function4b
 
-        subroutine c_function4b_bufferify(arg1, Larg1, arg2, Larg2, output, Noutput) &
+        subroutine c_function4b_bufferify(arg1, Larg1, arg2, Larg2,  &
+                output, Noutput) &
                 bind(C, name="TUT_function4b_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
@@ -839,7 +841,8 @@ contains
 
     ! int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
     ! function_index=19
-    function overload1_num_offset_stride(num, offset, stride) result(SHT_rv)
+    function overload1_num_offset_stride(num, offset, stride) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT), value, intent(IN) :: offset

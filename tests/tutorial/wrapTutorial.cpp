@@ -143,7 +143,8 @@ void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
 
 // void Function4a +len(30)(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=41
-void TUT_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
+void TUT_function4a_bufferify(const char * arg1, int Larg1, 
+        const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.function4a_bufferify
     const std::string SH_arg1(arg1, Larg1);
@@ -173,7 +174,8 @@ const char * TUT_function4b(const char * arg1, const char * arg2)
 
 // void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
 // function_index=42
-void TUT_function4b_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * output, int Noutput)
+void TUT_function4b_bufferify(const char * arg1, int Larg1, 
+        const char * arg2, int Larg2, char * output, int Noutput)
 {
 // splicer begin function.function4b_bufferify
     const std::string SH_arg1(arg1, Larg1);
@@ -323,7 +325,8 @@ void TUT_function10_1(const char * name, double arg2)
 
 // void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)
 // function_index=45
-void TUT_function10_1_bufferify(const char * name, int Lname, double arg2)
+void TUT_function10_1_bufferify(const char * name, int Lname, 
+        double arg2)
 {
 // splicer begin function.function10_1_bufferify
     const std::string SH_name(name, Lname);
@@ -481,7 +484,8 @@ void TUT_vector_increment_bufferify(int * arg, long Sarg)
  * \brief count number of underscore in vector of strings
  *
  */
-int TUT_vector_string_count_bufferify(const char * arg, long Sarg, int Narg)
+int TUT_vector_string_count_bufferify(const char * arg, long Sarg, 
+        int Narg)
 {
 // splicer begin function.vector_string_count_bufferify
     std::vector<std::string> SH_arg;

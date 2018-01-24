@@ -579,20 +579,28 @@ class Wrapc(util.WrapperMixin):
         if is_ctor:
             fmt_func.C_call_code = wformat('{cxx_rv_decl} = new {cxx_class}'
                            '({C_call_list});', fmt_result)
+            call_code = [ fmt_result.cxx_rv_decl, ' = new ',
+                          fmt_result.cxx_class, call_list ]
             C_return_code = ('return {};'.format(
                 wformat(result_typedef.cxx_to_c, fmt_result)))
         elif is_dtor:
             fmt_func.C_call_code = 'delete %s;' % fmt_func.CXX_this
+            call_code = [ 'delete %s' % fmt_func.CXX_this ]
         elif CXX_subprogram == 'subroutine':
             fmt_func.C_call_code = wformat(
                 '{CXX_this_call}{function_name}'
                 '{CXX_template}({C_call_list});',
                 fmt_func)
+            call_code = [ fmt_func.CXX_this_call, fmt_func.function_name,
+                          fmt_func.CXX_template, call_list ]
         else:
             fmt_func.C_call_code = wformat(
                 '{cxx_rv_decl} = {CXX_this_call}{function_name}'
                 '{CXX_template}({C_call_list});',
                 fmt_result)
+            call_code = [ fmt_result.cxx_rv_decl, ' = ',
+                          fmt_result.CXX_this_call, fmt_result.function_name,
+                          fmt_result.CXX_template, call_list ]
 
             if result_arg is None:
                 # The result is not passed back in an argument
@@ -661,7 +669,8 @@ class Wrapc(util.WrapperMixin):
             # copy-out values, clean up
             C_code = [1]
             C_code.extend(pre_call)
-            C_code.append(fmt_func.C_call_code)
+            C_code.append(self.continued_line('', ';', *call_code))
+
             C_code.extend(post_call_pattern)
             C_code.extend(post_call)
             C_code.append(fmt_func.C_return_code)
@@ -671,9 +680,9 @@ class Wrapc(util.WrapperMixin):
             self.header_proto_c.append('')
             if node.cpp_if:
                 self.header_proto_c.append('#' + node.cpp_if)
-            self.header_proto_c.append(
-                wformat('{C_return_type} {C_name}({C_prototype});',
-                        fmt_func))
+            self.header_proto_c.append(self.continued_line(
+                '', ';', fmt_func.C_return_type, ' ', fmt_func.C_name,
+                proto_list))
             if node.cpp_if:
                 self.header_proto_c.append('#endif')
 
@@ -686,7 +695,9 @@ class Wrapc(util.WrapperMixin):
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
                 self.impl.append('#' + node.cpp_if)
-            impl.append(wformat('{C_return_type} {C_name}({C_prototype})', fmt_func))
+            impl.append(self.continued_line(
+                '', '', fmt_func.C_return_type, ' ', fmt_func.C_name,
+                proto_list))
             impl.append('{')
             self._create_splicer(fmt_func.underscore_name +
                                  fmt_func.function_suffix, impl, C_code)

@@ -264,7 +264,8 @@ module strings_mod
             character(kind=C_CHAR), intent(IN) :: arg1(*)
         end subroutine c_accept_string_const_reference
 
-        subroutine c_accept_string_const_reference_bufferify(arg1, Larg1) &
+        subroutine c_accept_string_const_reference_bufferify(arg1,  &
+                Larg1) &
                 bind(C, name="STR_accept_string_const_reference_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
@@ -294,7 +295,8 @@ module strings_mod
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
         end subroutine c_accept_string_reference
 
-        subroutine c_accept_string_reference_bufferify(arg1, Larg1, Narg1) &
+        subroutine c_accept_string_reference_bufferify(arg1, Larg1,  &
+                Narg1) &
                 bind(C, name="STR_accept_string_reference_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none

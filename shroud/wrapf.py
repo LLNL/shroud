@@ -593,19 +593,15 @@ class Wrapf(util.WrapperMixin):
 
         c_interface = self.c_interface
         c_interface.append('')
-        c_interface.append(wformat(
-            '{F_C_pure_clause}{F_C_subprogram} {F_C_name}'
-            '({F_C_arguments}) &',
-            fmt))
-        c_interface.append(2)  # extra indent for continued line
-        if fmt.F_C_result_clause:
-            c_interface.append(wformat(
-                    '{F_C_result_clause} &',
-                    fmt))
-        c_interface.append(wformat(
-                'bind(C, name="{C_name}")',
-                fmt))
-        c_interface.append(-1)
+
+        c_interface.append(self.continued_line(
+            ' &', '',
+            fmt.F_C_pure_clause, fmt.F_C_subprogram,
+            ' ', fmt.F_C_name,
+            arg_c_names,
+            '\n', fmt.F_C_result_clause,
+            '\n', wformat('bind(C, name="{C_name}")', fmt)))
+        c_interface.append(1)
         c_interface.extend(arg_f_use)
         c_interface.append('implicit none')
         c_interface.extend(arg_c_decl)
@@ -691,7 +687,7 @@ class Wrapf(util.WrapperMixin):
         modules = {}   # indexed as [module][variable]
 
         if subprogram == 'function':
-            fmt_func.F_result_clause = ' result(%s)' % fmt_func.F_result
+            fmt_func.F_result_clause = 'result(%s)' % fmt_func.F_result
         fmt_func.F_subprogram = subprogram
 
         if cls:
@@ -925,9 +921,10 @@ class Wrapf(util.WrapperMixin):
                 impl.append('! function_index=%d' % node._function_index)
                 if options.doxygen and node.doxygen:
                     self.write_doxygen(impl, node.doxygen)
-            impl.append(wformat(
-                '{F_subprogram} {F_name_impl}'
-                '({F_arguments}){F_result_clause}', fmt_func))
+            impl.append(self.continued_line(
+                ' &', '',
+                fmt_func.F_subprogram, ' ', fmt_func.F_name_impl,
+                arg_f_names, ' ', fmt_func.F_result_clause))
             impl.append(1)
             impl.extend(arg_f_use)
             impl.extend(arg_f_decl)

@@ -178,7 +178,8 @@ module exclass1_mod
             type(C_PTR) SHT_rv
         end function c_exclass1_get_name_error_check
 
-        subroutine c_exclass1_get_name_error_check_bufferify(self, SHF_rv, NSHF_rv) &
+        subroutine c_exclass1_get_name_error_check_bufferify(self,  &
+                SHF_rv, NSHF_rv) &
                 bind(C, name="AA_exclass1_get_name_error_check_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none

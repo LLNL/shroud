@@ -284,11 +284,64 @@ class WrapperMixin(object):
                 # convert None to blank line
                 fp.write(self.comment + '\n')
 
+    def continued_line(self, cont, tail, *args):
+        """Create a line which will be split into continued parts
+        by write_lines.
+
+        If an entry is a list, create a parenthesized, comma delimited list
+
+        Return a tuple
+         ( 'fortran', [ 'part1', 'part2', ..., 'partn' ]
+        """
+        parts = []
+        for part in args:
+            if isinstance(part, list):
+                # A continuation will only be added after a part
+                # so keep some punctuation together with part.
+                if len(part) == 0:
+                    parts.append('()')
+                elif len(part) == 1:
+                    parts.append('(' + part[0] + ')')
+                elif len(part) > 1:
+                    parts.append('(' + part[0] + ', ')
+                    for entry in part[1:-1]:
+                        parts.append(entry + ', ')
+                    parts.append(part[-1] + ')')
+            else:
+                parts.append(part)
+        return (cont, tail, parts)
+
     def write_lines(self, fp, lines):
         """ Write lines with indention and newlines.
         """
         for line in lines:
-            if isinstance(line, int):
+            if isinstance(line, tuple):
+                # A tuple created by continued_line
+                cont = line[0]
+                tail = line[1]
+                subline = '    ' * self.indent
+                size = len(subline)
+                delimiter = ''
+                for part in line[2]:
+                    if part == ' ' or part == '\n':
+                        # save delimiter for next part
+                        delimiter = part
+                        continue
+                    elif part == '':
+                        # optional part is not present, remove delimiter too
+                        #  ' '  'result(rv)'
+                        delimiter = ''
+                        continue
+                    elif delimiter == '\n' or size + len(part) > 72:
+                        fp.write(subline + cont + '\n')
+                        subline = '    ' * (self.indent + 2)
+                        size = len(subline)
+                        delimiter = ''
+                    subline += delimiter + part
+                    size = len(subline)
+                    delimiter = ''
+                fp.write(subline + tail + '\n')
+            elif isinstance(line, int):
                 self.indent += int(line)
             else:
                 for subline in line.split("\n"):

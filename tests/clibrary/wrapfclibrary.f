@@ -108,7 +108,8 @@ module clibrary_mod
             type(C_PTR) SHT_rv
         end function c_function4a
 
-        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, SHF_rv, NSHF_rv) &
+        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2,  &
+                SHF_rv, NSHF_rv) &
                 bind(C, name="CLI_function4a_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
