@@ -115,7 +115,7 @@
                 "decl": "void Function1()", 
                 "declgen": "void Function1()", 
                 "format": {
-                    "C_call_code": "Function1();", 
+                    "C_call_code": "Function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "Function1", 
                     "C_prototype": "", 
@@ -124,9 +124,8 @@
                     "F_C_call": "c_function1", 
                     "F_C_name": "function1", 
                     "F_arg_c_call": "", 
-                    "F_arg_c_call_tab": "\t", 
                     "F_arguments": "", 
-                    "F_call_code": "call c_function1(\t)", 
+                    "F_call_code": "call c_function1()", 
                     "F_name_function": "function1", 
                     "F_name_generic": "function1", 
                     "F_name_impl": "function1", 
@@ -223,22 +222,21 @@
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "double SHT_rv = Function2(arg1, arg2);", 
-                    "C_call_list": "arg1, arg2", 
+                    "C_call_code": "double SHT_rv =\t Function2(\targ1,\t arg2);", 
+                    "C_call_list": "arg1,\t arg2", 
                     "C_name": "Function2", 
-                    "C_prototype": "double arg1, int arg2", 
+                    "C_prototype": "double arg1,\t int arg2", 
                     "C_return_code": "return SHT_rv;", 
                     "C_return_type": "double", 
                     "F_C_call": "c_function2", 
                     "F_C_name": "function2", 
-                    "F_arg_c_call": "arg1, arg2", 
-                    "F_arg_c_call_tab": "\targ1\targ2", 
-                    "F_arguments": "arg1, arg2", 
-                    "F_call_code": "SHT_rv = c_function2(\targ1\targ2)", 
+                    "F_arg_c_call": "arg1,\t arg2", 
+                    "F_arguments": "arg1,\t arg2", 
+                    "F_call_code": "SHT_rv = c_function2(arg1,\t arg2)", 
                     "F_name_function": "function2", 
                     "F_name_generic": "function2", 
                     "F_name_impl": "function2", 
-                    "F_result_clause": " result(SHT_rv)", 
+                    "F_result_clause": "\nresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
                     "function_name": "Function2", 
@@ -253,6 +251,7 @@
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
+            "C_line_length": 72, 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "C_var_len_template": "N{c_var}", 
             "C_var_size_template": "S{c_var}", 
@@ -261,6 +260,7 @@
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 
+            "F_line_length": 72, 
             "F_module_name_class_template": "{class_lower}_mod", 
             "F_module_name_library_template": "{library_lower}_mod", 
             "F_module_per_class": true, 
@@ -456,7 +456,7 @@
             "f_statements": {
                 "result_pure": {
                     "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
                     ], 
                     "f_helper": "fstr_ptr", 
                     "need_wrapper": true
@@ -682,7 +682,7 @@
             "f_statements": {
                 "result_pure": {
                     "call": [
-                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))"
+                        "{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))"
                     ], 
                     "f_helper": "fstr_ptr", 
                     "need_wrapper": true

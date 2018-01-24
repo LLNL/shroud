@@ -82,7 +82,8 @@ void AA_test_names_bufferify(const char * name, int Lname);
 
 void AA_test_names_flag(const char * name, int flag);
 
-void AA_test_names_flag_bufferify(const char * name, int Lname, int flag);
+void AA_test_names_flag_bufferify(const char * name, int Lname,
+    int flag);
 
 void AA_testoptional_0();
 
@@ -99,6 +100,23 @@ void AA_testmpi(MPI_Fint comm);
 void AA_testgroup1(SIDRE_group * grp);
 
 void AA_testgroup2(const SIDRE_group * grp);
+
+void AA_verlongfunctionname1(int verylongname1, int verylongname2,
+    int verylongname3, int verylongname4, int verylongname5,
+    int verylongname6, int verylongname7, int verylongname8,
+    int verylongname9, int verylongname10);
+
+void AA_verlongfunctionname2(
+    int verylongname1,
+    int verylongname2,
+    int verylongname3,
+    int verylongname4,
+    int verylongname5,
+    int verylongname6,
+    int verylongname7,
+    int verylongname8,
+    int verylongname9,
+    int verylongname10);
 
 #ifdef __cplusplus
 }

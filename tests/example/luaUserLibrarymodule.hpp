@@ -1,6 +1,5 @@
-// wrapClibrary.c
+// luaUserLibrarymodule.hpp
 // This is generated code, do not edit
-// #######################################################################
 // Copyright (c) 2017, Lawrence Livermore National Security, LLC.
 // Produced at the Lawrence Livermore National Laboratory
 //
@@ -40,52 +39,40 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-#include "wrapClibrary.h"
-#include <stdlib.h>
-#include <string.h>
-#include "clibrary.h"
+#ifndef LUAUSERLIBRARYMODULE_HPP
+#define LUAUSERLIBRARYMODULE_HPP
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "lua.h"
+// splicer begin class.ExClass1.C_declaration
+// splicer end class.ExClass1.C_declaration
 
-// Copy s into a, blank fill to la characters
-// Truncate if a is too short.
-static void ShroudStrCopy(char *a, int la, const char *s)
-{
-   int ls,nm;
-   ls = strlen(s);
-   nm = ls < la ? ls : la;
-   memcpy(a,s,nm);
-   if(la > nm) memset(a+nm,' ',la-nm);
+typedef struct {
+    example::nested::ExClass1 * self;
+    // splicer begin class.ExClass1.C_object
+    // splicer end class.ExClass1.C_object
+} l_ExClass1_Type;
+// splicer begin class.ExClass2.C_declaration
+// splicer end class.ExClass2.C_declaration
+
+typedef struct {
+    example::nested::ExClass2 * self;
+    // splicer begin class.ExClass2.C_object
+    // splicer end class.ExClass2.C_object
+} l_ExClass2_Type;
+// splicer begin class.ExClass3.C_declaration
+// splicer end class.ExClass3.C_declaration
+
+typedef struct {
+    example::nested::ExClass3 * self;
+    // splicer begin class.ExClass3.C_object
+    // splicer end class.ExClass3.C_object
+} l_ExClass3_Type;
+
+int luaopen_userlibrary(lua_State *L);
+
+#ifdef __cplusplus
 }
-
-// splicer begin C_definitions
-// splicer end C_definitions
-
-// void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))
-// function_index=6
-void CLI_function4a_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
-{
-// splicer begin function.function4a_bufferify
-    char * SH_arg1 = (char *) malloc(Larg1 + 1);
-    memcpy(SH_arg1, arg1, Larg1);
-    SH_arg1[Larg1] = '\0';
-    char * SH_arg2 = (char *) malloc(Larg2 + 1);
-    memcpy(SH_arg2, arg2, Larg2);
-    SH_arg2[Larg2] = '\0';
-    char * SHT_rv = Function4a(SH_arg1, SH_arg2);
-    free(SH_arg1);
-    free(SH_arg2);
-    if (SHT_rv == NULL) {
-        memset(SHF_rv, ' ', NSHF_rv);
-    } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
-    }
-    {
-        // C_finalize
-        // Function4a allocates memory which must be released after it is copied
-        // into the Fortran argument or else it will leak.
-        free(SHT_rv);
-        
-    }
-    return;
-// splicer end function.function4a_bufferify
-}
+#endif
+#endif  /* LUAUSERLIBRARYMODULE_HPP */

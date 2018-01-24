@@ -241,15 +241,19 @@ C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
    Defaults to *false*.
 
-F_string_len_trim
-  For each function with a ``std::string`` argument, create another C
-  function which accepts a buffer and length.  The C wrapper will call
-  the ``std::string`` constructor, instead of the Fortran wrapper
-  creating a ``NULL`` terminated string using ``trim``.  This avoids
-  copying the string in the Fortran wrapper.
-  Defaults to *true*.
+C_line_length
+  Control length of output line for generated C.
+  This is not an exact line width, but is instead a hint of where
+  to break lines.
+  A value of 0 will give the shortest possible lines.
+  Defaults to 72.
 
-.. bufferify
+F_line_length
+  Control length of output line for generated Fortran.
+  This is not an exact line width, but is instead a hint of where
+  to break lines.
+  A value of 0 will give the shortest possible lines.
+  Defaults to 72.
 
 F_force_wrapper
   If *true*, always create an explicit Fortran wrapper.
@@ -259,6 +263,16 @@ F_force_wrapper
   numeric types does not need a wrapper since it can be called
   directly by defining the correct interface.
   The default is *false*.
+
+F_string_len_trim
+  For each function with a ``std::string`` argument, create another C
+  function which accepts a buffer and length.  The C wrapper will call
+  the ``std::string`` constructor, instead of the Fortran wrapper
+  creating a ``NULL`` terminated string using ``trim``.  This avoids
+  copying the string in the Fortran wrapper.
+  Defaults to *true*.
+
+.. bufferify
 
 show_splicer_comments
     If ``true`` show comments which delineate the splicer blocks;
@@ -624,8 +638,12 @@ Function
 C_call_list
     Comma delimited list of function arguments.
 
+.. uses tabs
+
 C_call_code
     Code used to call function in C wrapper.
+
+.. uses tabs
 
 C_code
     User supplied wrapper code for the C wrapper for a function.
@@ -658,6 +676,8 @@ C_prototype
     This will include any arguments required by annotations or options,
     such as length or **F_string_result_as_arg**.  
 
+.. uses tabs
+
 C_return_code
     Code used to return from C wrapper.
 
@@ -678,15 +698,17 @@ CXX_this_call
 F_arg_c_call
     Comma delimited arguments to call C function from Fortran.
 
-F_arg_c_call_tab
-    Tab delimited version *F_arg_c_call*.
-    Used to avoid long lines.
+.. uses tabs
 
 F_arguments
     Set from option *F_arguments* or generated from YAML decl.
 
+.. uses tabs
+
 F_C_arguments
     Argument names to the ``bind(C)`` interface for the subprogram.
+
+.. uses tabs
 
 F_C_call
     The name of the C function to call.  Usually *F_C_name*, but it may
@@ -705,6 +727,11 @@ F_C_result_clause
 
 F_C_subprogram
     ``subroutine`` or ``function``.
+
+F_call_code
+    Code used to call function in Fortran wrapper.
+
+.. uses tabs
 
 F_code
     User supplied wrapper code for the Fortran wrapper for a function.
@@ -1021,7 +1048,7 @@ f_statement
 
     call
         Code used to call the function.
-        Defaults to ``{F_result} = {F_C_call}({F_arg_c_call_tab})``
+        Defaults to ``{F_result} = {F_C_call}({F_arg_c_call})``
 
     post_call
         Statement to execute after call.

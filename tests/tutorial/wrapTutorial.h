@@ -75,11 +75,13 @@ bool TUT_function3(bool arg);
 
 void TUT_function3b(const bool arg1, bool * arg2, bool * arg3);
 
-void TUT_function4a_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
+void TUT_function4a_bufferify(const char * arg1, int Larg1,
+    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
 
 const char * TUT_function4b(const char * arg1, const char * arg2);
 
-void TUT_function4b_bufferify(const char * arg1, int Larg1, const char * arg2, int Larg2, char * output, int Noutput);
+void TUT_function4b_bufferify(const char * arg1, int Larg1,
+    const char * arg2, int Larg2, char * output, int Noutput);
 
 double TUT_function5();
 
@@ -107,7 +109,8 @@ void TUT_function10_0();
 
 void TUT_function10_1(const char * name, double arg2);
 
-void TUT_function10_1_bufferify(const char * name, int Lname, double arg2);
+void TUT_function10_1_bufferify(const char * name, int Lname,
+    double arg2);
 
 int TUT_overload1_num(int num);
 
@@ -133,11 +136,13 @@ void TUT_vector_iota_bufferify(int * arg, long Sarg);
 
 void TUT_vector_increment_bufferify(int * arg, long Sarg);
 
-int TUT_vector_string_count_bufferify(const char * arg, long Sarg, int Narg);
+int TUT_vector_string_count_bufferify(const char * arg, long Sarg,
+    int Narg);
 
 int TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg);
 
-void TUT_vector_string_append_bufferify(char * arg, long Sarg, int Narg);
+void TUT_vector_string_append_bufferify(char * arg, long Sarg,
+    int Narg);
 
 const char * TUT_last_function_called();
 

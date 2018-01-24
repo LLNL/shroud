@@ -82,8 +82,13 @@ PY_function2(
 // splicer begin function.function2
     double arg1;
     int arg2;
-    const char *SH_kwcpp = "arg1\0arg2";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0,(char *) SH_kwcpp+5, NULL };
+    const char *SH_kwcpp =
+        "arg1\0"
+        "arg2";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+5,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2", SH_kw_list,
         &arg1, &arg2))
@@ -108,7 +113,9 @@ PY_type_long_long(
 // splicer begin function.type_long_long
     long long arg1;
     const char *SH_kwcpp = "arg1";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:TypeLongLong", SH_kw_list,
         &arg1))
@@ -134,7 +141,9 @@ PY_function3(
     bool arg;
     PyObject * SH_Py_arg;
     const char *SH_kwcpp = "arg";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3", SH_kw_list,
         &PyBool_Type, &SH_Py_arg))
@@ -161,8 +170,13 @@ PY_function4a(
 // splicer begin function.function4a
     const char * arg1;
     const char * arg2;
-    const char *SH_kwcpp = "arg1\0arg2";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0,(char *) SH_kwcpp+5, NULL };
+    const char *SH_kwcpp =
+        "arg1\0"
+        "arg2";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+5,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a", SH_kw_list,
         &arg1, &arg2))
@@ -190,8 +204,13 @@ PY_function4b(
 // splicer begin function.function4b
     const char * arg1;
     const char * arg2;
-    const char *SH_kwcpp = "arg1\0arg2";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0,(char *) SH_kwcpp+5, NULL };
+    const char *SH_kwcpp =
+        "arg1\0"
+        "arg2";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+5,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4b", SH_kw_list,
         &arg1, &arg2))
@@ -221,8 +240,13 @@ PY_function5_arg1_arg2(
     double arg1;
     bool arg2;
     PyObject * SH_Py_arg2;
-    const char *SH_kwcpp = "arg1\0arg2";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0,(char *) SH_kwcpp+5, NULL };
+    const char *SH_kwcpp =
+        "arg1\0"
+        "arg2";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+5,
+        NULL };
     double rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
@@ -257,7 +281,9 @@ PY_function6_from_name(
 // splicer begin function.function6_from_name
     const char * name;
     const char *SH_kwcpp = "name";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:Function6", SH_kw_list,
         &name))
@@ -279,7 +305,9 @@ PY_function6_from_index(
 // splicer begin function.function6_from_index
     int indx;
     const char *SH_kwcpp = "indx";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function6", SH_kw_list,
         &indx))
@@ -304,7 +332,9 @@ PY_function9(
 // splicer begin function.function9
     double arg;
     const char *SH_kwcpp = "arg";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function9", SH_kw_list,
         &arg))
@@ -337,8 +367,13 @@ PY_function10_1(
 // splicer begin function.function10_1
     const char * name;
     double arg2;
-    const char *SH_kwcpp = "name\0arg2";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0,(char *) SH_kwcpp+5, NULL };
+    const char *SH_kwcpp =
+        "name\0"
+        "arg2";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+5,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "sd:Function10", SH_kw_list,
         &name, &arg2))
@@ -362,8 +397,15 @@ PY_overload1_num_offset_stride(
     int num;
     int offset;
     int stride;
-    const char *SH_kwcpp = "num\0offset\0stride";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0,(char *) SH_kwcpp+4,(char *) SH_kwcpp+11, NULL };
+    const char *SH_kwcpp =
+        "num\0"
+        "offset\0"
+        "stride";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+4,
+        (char *) SH_kwcpp+11,
+        NULL };
     int rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
@@ -400,8 +442,17 @@ PY_overload1_5(
     int num;
     int offset;
     int stride;
-    const char *SH_kwcpp = "type\0num\0offset\0stride";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0,(char *) SH_kwcpp+5,(char *) SH_kwcpp+9,(char *) SH_kwcpp+16, NULL };
+    const char *SH_kwcpp =
+        "type\0"
+        "num\0"
+        "offset\0"
+        "stride";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+5,
+        (char *) SH_kwcpp+9,
+        (char *) SH_kwcpp+16,
+        NULL };
     int rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
@@ -439,7 +490,9 @@ PY_typefunc(
 // splicer begin function.typefunc
     TypeID arg;
     const char *SH_kwcpp = "arg";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:typefunc", SH_kw_list,
         &arg))
@@ -464,7 +517,9 @@ PY_enumfunc(
 // splicer begin function.enumfunc
     EnumTypeID arg;
     const char *SH_kwcpp = "arg";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:enumfunc", SH_kw_list,
         &arg))
@@ -489,7 +544,9 @@ PY_useclass(
 // splicer begin function.useclass
     PY_Class1 * SH_Py_arg1;
     const char *SH_kwcpp = "arg1";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass", SH_kw_list,
         &PY_Class1_Type, &SH_Py_arg1))

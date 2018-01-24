@@ -82,7 +82,9 @@ PP_is_name_valid(
 // splicer begin function.is_name_valid
     const char * name;
     const char *SH_kwcpp = "name";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:isNameValid", SH_kw_list,
         &name))
@@ -130,8 +132,13 @@ PP_check_bool(
     PyObject * SH_Py_arg2;
     bool * arg3;
     PyObject * SH_Py_arg3;
-    const char *SH_kwcpp = "arg1\0arg3";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0,(char *) SH_kwcpp+5, NULL };
+    const char *SH_kwcpp =
+        "arg1\0"
+        "arg3";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+5,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:checkBool", SH_kw_list,
         &PyBool_Type, &SH_Py_arg1, &PyBool_Type, &SH_Py_arg3))
@@ -156,7 +163,9 @@ PP_test_names(
 // splicer begin function.test_names
     const char * name;
     const char *SH_kwcpp = "name";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:test_names", SH_kw_list,
         &name))
@@ -178,8 +187,13 @@ PP_test_names_flag(
 // splicer begin function.test_names_flag
     const char * name;
     int flag;
-    const char *SH_kwcpp = "name\0flag";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0,(char *) SH_kwcpp+5, NULL };
+    const char *SH_kwcpp =
+        "name\0"
+        "flag";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+5,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "si:test_names", SH_kw_list,
         &name, &flag))
@@ -206,8 +220,13 @@ PP_testoptional_2(
     Py_ssize_t SH_nargs = 0;
     int i;
     long j;
-    const char *SH_kwcpp = "i\0j";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0,(char *) SH_kwcpp+2, NULL };
+    const char *SH_kwcpp =
+        "i\0"
+        "j";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+2,
+        NULL };
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -261,7 +280,9 @@ PP_testmpi(
 // splicer begin function.testmpi
     MPI_Comm comm;
     const char *SH_kwcpp = "comm";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:testmpi", SH_kw_list,
         &comm))
@@ -286,7 +307,9 @@ PP_testgroup1(
 // splicer begin function.testgroup1
     PyObject * SH_Py_grp;
     const char *SH_kwcpp = "grp";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup1", SH_kw_list,
         &FillInTypeForGroup, &SH_Py_grp))
@@ -312,7 +335,9 @@ PP_testgroup2(
 // splicer begin function.testgroup2
     PyObject * SH_Py_grp;
     const char *SH_kwcpp = "grp";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup2", SH_kw_list,
         &FillInTypeForGroup, &SH_Py_grp))
@@ -323,6 +348,138 @@ PP_testgroup2(
     testgroup2(grp);
     Py_RETURN_NONE;
 // splicer end function.testgroup2
+}
+
+static char PP_verlongfunctionname1__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_verlongfunctionname1(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.verlongfunctionname1
+    int verylongname1;
+    int verylongname2;
+    int verylongname3;
+    int verylongname4;
+    int verylongname5;
+    int verylongname6;
+    int verylongname7;
+    int verylongname8;
+    int verylongname9;
+    int verylongname10;
+    const char *SH_kwcpp =
+        "verylongname1\0"
+        "verylongname2\0"
+        "verylongname3\0"
+        "verylongname4\0"
+        "verylongname5\0"
+        "verylongname6\0"
+        "verylongname7\0"
+        "verylongname8\0"
+        "verylongname9\0"
+        "verylongname10";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+14,
+        (char *) SH_kwcpp+28,
+        (char *) SH_kwcpp+42,
+        (char *) SH_kwcpp+56,
+        (char *) SH_kwcpp+70,
+        (char *) SH_kwcpp+84,
+        (char *) SH_kwcpp+98,
+        (char *) SH_kwcpp+112,
+        (char *) SH_kwcpp+126,
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "iiiiiiiiii:verlongfunctionname1", SH_kw_list,
+        &verylongname1, &verylongname2, &verylongname3, &verylongname4,
+        &verylongname5, &verylongname6, &verylongname7, &verylongname8,
+        &verylongname9, &verylongname10))
+    {
+        return NULL;
+    }
+    verlongfunctionname1(verylongname1, verylongname2, verylongname3,
+        verylongname4, verylongname5, verylongname6, verylongname7,
+        verylongname8, verylongname9, verylongname10);
+    Py_RETURN_NONE;
+// splicer end function.verlongfunctionname1
+}
+
+static char PP_verlongfunctionname2__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_verlongfunctionname2(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.verlongfunctionname2
+    int verylongname1;
+    int verylongname2;
+    int verylongname3;
+    int verylongname4;
+    int verylongname5;
+    int verylongname6;
+    int verylongname7;
+    int verylongname8;
+    int verylongname9;
+    int verylongname10;
+    const char *SH_kwcpp =
+        "verylongname1\0"
+        "verylongname2\0"
+        "verylongname3\0"
+        "verylongname4\0"
+        "verylongname5\0"
+        "verylongname6\0"
+        "verylongname7\0"
+        "verylongname8\0"
+        "verylongname9\0"
+        "verylongname10";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        (char *) SH_kwcpp+14,
+        (char *) SH_kwcpp+28,
+        (char *) SH_kwcpp+42,
+        (char *) SH_kwcpp+56,
+        (char *) SH_kwcpp+70,
+        (char *) SH_kwcpp+84,
+        (char *) SH_kwcpp+98,
+        (char *) SH_kwcpp+112,
+        (char *) SH_kwcpp+126,
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "iiiiiiiiii:verlongfunctionname2", SH_kw_list,
+        &verylongname1,
+        &verylongname2,
+        &verylongname3,
+        &verylongname4,
+        &verylongname5,
+        &verylongname6,
+        &verylongname7,
+        &verylongname8,
+        &verylongname9,
+        &verylongname10))
+    {
+        return NULL;
+    }
+    verlongfunctionname2(verylongname1,
+        verylongname2,
+        verylongname3,
+        verylongname4,
+        verylongname5,
+        verylongname6,
+        verylongname7,
+        verylongname8,
+        verylongname9,
+        verylongname10);
+    Py_RETURN_NONE;
+// splicer end function.verlongfunctionname2
 }
 
 static char PP_test_names__doc__[] =
@@ -372,6 +529,8 @@ static PyMethodDef PP_methods[] = {
 {"testmpi", (PyCFunction)PP_testmpi, METH_VARARGS|METH_KEYWORDS, PP_testmpi__doc__},
 {"testgroup1", (PyCFunction)PP_testgroup1, METH_VARARGS|METH_KEYWORDS, PP_testgroup1__doc__},
 {"testgroup2", (PyCFunction)PP_testgroup2, METH_VARARGS|METH_KEYWORDS, PP_testgroup2__doc__},
+{"verlongfunctionname1", (PyCFunction)PP_verlongfunctionname1, METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname1__doc__},
+{"verlongfunctionname2", (PyCFunction)PP_verlongfunctionname2, METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname2__doc__},
 {"test_names", (PyCFunction)PP_test_names, METH_VARARGS|METH_KEYWORDS, PP_test_names__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };

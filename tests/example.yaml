@@ -63,6 +63,7 @@ options:
   F_module_per_class: True
   # include files to add to module
   wrap_python: True
+  wrap_lua: True
 
 types:
   other:
@@ -310,6 +311,36 @@ functions:
 
   - decl: void testgroup1(DataGroup * grp)
   - decl: void testgroup2(const DataGroup * grp)
+
+  - decl: void verlongfunctionname1(int verylongname1, 
+                                    int verylongname2, 
+                                    int verylongname3, 
+                                    int verylongname4, 
+                                    int verylongname5, 
+                                    int verylongname6, 
+                                    int verylongname7, 
+                                    int verylongname8, 
+                                    int verylongname9, 
+                                    int verylongname10)
+    options:
+      # Force wrapper to test interface line lengths
+      F_force_wrapper: True
+
+  - decl: void verlongfunctionname2(int verylongname1, 
+                                    int verylongname2, 
+                                    int verylongname3, 
+                                    int verylongname4, 
+                                    int verylongname5, 
+                                    int verylongname6, 
+                                    int verylongname7, 
+                                    int verylongname8, 
+                                    int verylongname9, 
+                                    int verylongname10)
+    options:
+      # Force wrapper to test interface line lengths
+      F_force_wrapper: True
+      F_line_length: 0
+      C_line_length: 0
 
 ######################################################################
 patterns:

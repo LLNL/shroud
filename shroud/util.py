@@ -284,11 +284,75 @@ class WrapperMixin(object):
                 # convert None to blank line
                 fp.write(self.comment + '\n')
 
+    def break_into_continuations(self, out, options, 
+                                 lang, indent, line):
+        """Break line into parts to control continuations.
+
+        Tab marks potential linebreak, newlines mark explicit 
+        linebreak.
+
+        Add to out a tuple which tells write_lines where to add
+        continuations.
+
+        Return a tuple
+         ( cont, indent, line_length, [ 'part1', 'part2', ..., 'partn' ]
+
+                fortran    c
+        cont     ' &'      ''           continuation string
+        indent   2         1            indent level for continued lines
+        """
+
+        if lang == 'c':
+            cont = ''
+            linelen = options.C_line_length
+        else:
+            cont = ' &'
+            linelen = options.F_line_length
+
+        parts = []
+        part = ''
+        for ch in line:
+            if ch == '\t':
+                parts.append(part)
+                part = ''
+            elif ch == '\n':
+                parts.append(part)
+                part = ''
+                parts.append('\n')
+            else:
+                part += ch
+        if part:
+            parts.append(part)
+        out.append((cont, indent, linelen, parts))
+
     def write_lines(self, fp, lines):
         """ Write lines with indention and newlines.
         """
         for line in lines:
-            if isinstance(line, int):
+            if isinstance(line, tuple):
+                # A tuple created by continued_line
+                cont, indent, linelen, parts = line
+                subline = '    ' * self.indent
+                delimiter = ''
+                nparts = 0
+                for part in parts:
+                    if part == '\n':
+                        # save delimiter for next part
+                        delimiter = part
+                        continue
+                    elif delimiter == '\n' or (
+                            len(subline) + len(part) > linelen):
+                        # if the first part causes an overflow, there
+                        # will not be anything to continue yet.
+                        if nparts > 0:
+                            fp.write(subline + cont + '\n')
+                            subline = '    ' * (self.indent + indent)
+                            part = part.lstrip()
+                    delimiter = ''
+                    subline += part
+                    nparts += 1
+                fp.write(subline + '\n')
+            elif isinstance(line, int):
                 self.indent += int(line)
             else:
                 for subline in line.split("\n"):

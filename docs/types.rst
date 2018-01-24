@@ -198,10 +198,7 @@ The resulting wrappers are::
             SH_arg1 = arg1  ! coerce to C_BOOL
             SH_arg3 = arg3  ! coerce to C_BOOL
             ! splicer begin check_bool
-            call c_check_bool(  &
-                SH_arg1,  &
-                SH_arg2,  &
-                SH_arg3)
+            call c_check_bool(SH_arg1, SH_arg2, SH_arg3)
             ! splicer end check_bool
             arg2 = SH_arg2  ! coerce to logical
             arg3 = SH_arg3  ! coerce to logical
@@ -385,7 +382,8 @@ An additional C function is automatically declared which is summarized as::
 
 And generates::
 
-    void STR_pass_char_ptr_bufferify(char * dest, int Ndest, const char * src, int Lsrc)
+    void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
+                                     const char * src, int Lsrc)
     {
         char * SH_dest = (char *) malloc(Ndest + 1);
         char * SH_src = (char *) malloc(Lsrc + 1);
@@ -435,10 +433,7 @@ And finally, the Fortran wrapper with calls to ``len`` and ``len_trim``::
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: dest
         character(*), intent(IN) :: src
-        call c_pass_char_ptr_bufferify(  &
-            dest,  &
-            len(dest, kind=C_INT),  &
-            src,  &
+        call c_pass_char_ptr_bufferify(dest, len(dest, kind=C_INT), src,  &
             len_trim(src, kind=C_INT))
     end subroutine pass_char_ptr
 
@@ -549,7 +544,8 @@ short for the new string value::
         return;
     }
 
-    void STR_accept_string_reference_bufferify(char * arg1, int Larg1, int Narg1)
+    void STR_accept_string_reference_bufferify(char * arg1,
+                                               int Larg1, int Narg1)
     {
         std::string SH_arg1(arg1, Larg1);
         acceptStringReference(SH_arg1);
@@ -582,10 +578,8 @@ And the Fortran wrapper provides the correct values for the *len* and
         use iso_c_binding, only : C_INT
         character(*), intent(INOUT) :: arg1
         ! splicer begin accept_string_reference
-        call c_accept_string_reference_bufferify(  &
-            arg1,  &
-            len_trim(arg1, kind=C_INT),  &
-            len(arg1, kind=C_INT))
+        call c_accept_string_reference_bufferify(arg1,  &
+            len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT))
         ! splicer end accept_string_reference
     end subroutine accept_string_reference
 
@@ -646,7 +640,8 @@ variable length.  The *pure* annotation tells the compiler there are
 no side effects which is important because it will be called twice.
 You'd also want the C++ function to be fast::
 
-    function get_char1() result(SHT_rv)
+    function get_char1() &
+            result(SHT_rv)
         use iso_c_binding, only : C_CHAR
         character(kind=C_CHAR, len=strlen_ptr(c_get_char1())) :: SHT_rv
         SHT_rv = fstr(c_get_char1())
@@ -658,12 +653,11 @@ advantage is that the C function is only called once.  The downside is
 that any result which is longer than the length will be silently
 truncated::
 
-    function get_char2() result(SHT_rv)
+    function get_char2() &
+            result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
-        call c_get_char2_bufferify(  &
-            SHT_rv,  &
-            len(SHT_rv, kind=C_INT))
+        call c_get_char2_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
     end function get_char2
 
 The third option gives the best of both worlds.  The C wrapper is only
@@ -675,9 +669,7 @@ subroutine is generated instead of a function::
     subroutine get_char3(output)
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: output
-        call c_get_char3_bufferify(  &
-            output,  &
-            len(output, kind=C_INT))
+        call c_get_char3_bufferify(output, len(output, kind=C_INT))
     end subroutine get_char3
 
 .. char ** not supported
@@ -738,21 +730,18 @@ Are wrapped with the YAML input::
 ``intent(in)`` is implied for the *vector_sum* argument since it is ``const``.
 The Fortran wrapper passes the array and the size to C::
 
-    function vector_sum(arg) result(SHT_rv)
+    function vector_sum(arg) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), intent(IN) :: arg(:)
         integer(C_INT) :: SHT_rv
-        SHT_rv = c_vector_sum_bufferify(  &
-            arg,  &
-            size(arg, kind=C_LONG))
+        SHT_rv = c_vector_sum_bufferify(arg, size(arg, kind=C_LONG))
     end function vector_sum
 
     subroutine vector_iota(arg)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), intent(OUT) :: arg(:)
-        call c_vector_iota_bufferify(  &
-            arg,  &
-            size(arg, kind=C_LONG))
+        call c_vector_iota_bufferify(arg, size(arg, kind=C_LONG))
     end subroutine vector_iota
 
 The C wrapper then creates a ``std::vector``::

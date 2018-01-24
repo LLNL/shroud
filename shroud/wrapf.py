@@ -66,7 +66,7 @@ module {F_module_name}
 contains
 
   {F_pure_clause} {F_subprogram} {F_name_impl}({F_arguments}){F_result_clause}
-      {F_C_name}({F_arg_c_call_tab})
+      {F_C_name}({F_arg_c_call})
      {F_code}
   end {F_subprogram} {F_name_impl}
 
@@ -506,7 +506,7 @@ class Wrapf(util.WrapperMixin):
             fmt.F_C_subprogram = 'subroutine'
         else:
             fmt.F_C_subprogram = 'function'
-            fmt.F_C_result_clause = 'result(%s)' % fmt.F_result
+            fmt.F_C_result_clause = '\nresult(%s)' % fmt.F_result
 
         if cls:
             # Add 'this' argument
@@ -575,7 +575,7 @@ class Wrapf(util.WrapperMixin):
             fmt.F_C_pure_clause = 'pure '
 
         fmt.F_C_arguments = options.get(
-            'F_C_arguments', ', '.join(arg_c_names))
+            'F_C_arguments', ',\t '.join(arg_c_names))
 
         if fmt.F_C_subprogram == 'function':
             if result_typedef.base == 'string':
@@ -593,19 +593,13 @@ class Wrapf(util.WrapperMixin):
 
         c_interface = self.c_interface
         c_interface.append('')
-        c_interface.append(wformat(
-            '{F_C_pure_clause}{F_C_subprogram} {F_C_name}'
-            '({F_C_arguments}) &',
-            fmt))
-        c_interface.append(2)  # extra indent for continued line
-        if fmt.F_C_result_clause:
-            c_interface.append(wformat(
-                    '{F_C_result_clause} &',
-                    fmt))
-        c_interface.append(wformat(
-                'bind(C, name="{C_name}")',
-                fmt))
-        c_interface.append(-1)
+
+        self.break_into_continuations(
+            c_interface, options, 'fortran', 2,
+            wformat('{F_C_pure_clause}{F_C_subprogram} {F_C_name}'
+                    '(\t{F_C_arguments}){F_C_result_clause}'
+                    '\nbind(C, name="{C_name}")', fmt))
+        c_interface.append(1)
         c_interface.extend(arg_f_use)
         c_interface.append('implicit none')
         c_interface.extend(arg_c_decl)
@@ -691,7 +685,7 @@ class Wrapf(util.WrapperMixin):
         modules = {}   # indexed as [module][variable]
 
         if subprogram == 'function':
-            fmt_func.F_result_clause = ' result(%s)' % fmt_func.F_result
+            fmt_func.F_result_clause = '\nresult(%s)' % fmt_func.F_result
         fmt_func.F_subprogram = subprogram
 
         if cls:
@@ -822,10 +816,9 @@ class Wrapf(util.WrapperMixin):
                     append_format(arg_c_call, 'len({f_var}, kind=C_INT)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
 
-        fmt_func.F_arg_c_call = ', '.join(arg_c_call)
         # use tabs to insert continuations
-        fmt_func.F_arg_c_call_tab = '\t' + '\t'.join(arg_c_call)
-        fmt_func.F_arguments = options.get('F_arguments', ', '.join(arg_f_names))
+        fmt_func.F_arg_c_call = ',\t '.join(arg_c_call)
+        fmt_func.F_arguments = options.get('F_arguments', ',\t '.join(arg_f_names))
 
         # declare function return value after arguments
         # since arguments may be used to compute return value
@@ -838,15 +831,16 @@ class Wrapf(util.WrapperMixin):
                 rvlen = ast.attrs.get('len', None)
                 if rvlen is None:
                     rvlen = wformat(
-                        'strlen_ptr({F_C_call}({F_arg_c_call_tab}))',
+                        'strlen_ptr(\t{F_C_call}(\t{F_arg_c_call}))',
                         fmt_func)
                 else:
                     rvlen = str(rvlen)  # convert integers
                 fmt_func.c_var_len = wformat(rvlen, fmt_func)
                 line1 = wformat(
-                    'character(kind=C_CHAR, len={c_var_len}) :: {F_result}',
+                    'character(kind=C_CHAR,\t len={c_var_len})\t :: {F_result}',
                     fmt_func)
-                self.append_method_arguments(arg_f_decl, line1)
+                self.break_into_continuations(
+                    arg_f_decl, options, 'fortran', 1, line1)
                 self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
             else:
                 arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
@@ -884,25 +878,28 @@ class Wrapf(util.WrapperMixin):
             if is_ctor:
                 fmt_func.F_call_code = wformat(
                     '{F_result}%{F_derived_member} = '
-                    '{F_C_call}({F_arg_c_call_tab})', fmt_func)
-                self.append_method_arguments(F_code, fmt_func.F_call_code)
+                    '{F_C_call}({F_arg_c_call})', fmt_func)
+                self.break_into_continuations(
+                    F_code, options, 'fortran', 1, fmt_func.F_call_code)
             elif c_subprogram == 'function':
                 f_statements = result_typedef.f_statements
                 intent_blk = f_statements.get('result' + result_generated_suffix,{})
                 cmd_list = intent_blk.get('call', [
-                        '{F_result} = {F_C_call}({F_arg_c_call_tab})'])
+                        '{F_result} = {F_C_call}({F_arg_c_call})'])
 #                for cmd in cmd_list:  # only allow a single statment for now
 #                    append_format(pre_call, cmd, fmt_arg)
                 fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
-                self.append_method_arguments(F_code, fmt_func.F_call_code)
+                self.break_into_continuations(
+                    F_code, options, 'fortran', 1, fmt_func.F_call_code)
 
                 # Find any helper routines needed
                 if 'f_helper' in intent_blk:
                     for helper in intent_blk['f_helper'].split():
                         self.f_helper[helper] = True
             else:
-                fmt_func.F_call_code = wformat('call {F_C_call}({F_arg_c_call_tab})', fmt_func)
-                self.append_method_arguments(F_code, fmt_func.F_call_code)
+                fmt_func.F_call_code = wformat('call {F_C_call}({F_arg_c_call})', fmt_func)
+                self.break_into_continuations(
+                    F_code, options, 'fortran', 1, fmt_func.F_call_code)
 
 #            if result_typedef.f_post_call:
 #                need_wrapper = True
@@ -925,9 +922,11 @@ class Wrapf(util.WrapperMixin):
                 impl.append('! function_index=%d' % node._function_index)
                 if options.doxygen and node.doxygen:
                     self.write_doxygen(impl, node.doxygen)
-            impl.append(wformat(
-                '{F_subprogram} {F_name_impl}'
-                '({F_arguments}){F_result_clause}', fmt_func))
+            self.break_into_continuations(
+                impl, options, 'fortran', 2,
+                wformat('{F_subprogram} {F_name_impl}(\t'
+                        '{F_arguments})\t{F_result_clause}',
+                        fmt_func))
             impl.append(1)
             impl.extend(arg_f_use)
             impl.extend(arg_f_decl)
@@ -938,25 +937,6 @@ class Wrapf(util.WrapperMixin):
             impl.append(wformat('end {F_subprogram} {F_name_impl}', fmt_func))
         else:
             fmt_func.F_C_name = fmt_func.F_name_impl
-
-    def append_method_arguments(self, F_code, line1):
-        """Append each argument in line1 as a line in the function.
-        Must account for continuations
-        Replace tabs in line1 with continuations.
-        """
-        # part[0] = beginning
-        # part[1] = first argument
-        parts = line1.split('\t')
-
-        if len(parts) < 3:
-            F_code.append(''.join(parts))
-        else:
-            F_code.append(parts[0] + '  &')
-            F_code.append(1)
-            for arg in parts[1:-1]:
-                F_code.append(arg + ',  &')
-            F_code.append(parts[-1])
-            F_code.append(-1)
 
     def write_module(self, library, cls):
         """ Write Fortran wrapper module.

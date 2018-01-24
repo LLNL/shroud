@@ -324,13 +324,13 @@ contains
     !! \brief constructor
     !!
     !<
-    function exclass2_ctor(name) result(SHT_rv)
+    function exclass2_ctor(name) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
         type(exclass2) :: SHT_rv
         ! splicer begin class.ExClass2.method.ctor
-        SHT_rv%voidptr = c_exclass2_ctor_bufferify(  &
-            name,  &
+        SHT_rv%voidptr = c_exclass2_ctor_bufferify(name, &
             len_trim(name, kind=C_INT))
         ! splicer end class.ExClass2.method.ctor
     end function exclass2_ctor
@@ -353,14 +353,14 @@ contains
     ! const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
     ! arg_to_buffer
     ! function_index=21
-    function exclass2_get_name(obj) result(SHT_rv)
+    function exclass2_get_name(obj) &
+            result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         class(exclass2) :: obj
-        character(kind=C_CHAR, len=aa_exclass2_get_name_length(obj%voidptr)) :: SHT_rv
+        character(kind=C_CHAR, &
+            len=aa_exclass2_get_name_length(obj%voidptr)) :: SHT_rv
         ! splicer begin class.ExClass2.method.get_name
-        call c_exclass2_get_name_bufferify(  &
-            obj%voidptr,  &
-            SHT_rv,  &
+        call c_exclass2_get_name_bufferify(obj%voidptr, SHT_rv, &
             len(SHT_rv, kind=C_INT))
         ! splicer end class.ExClass2.method.get_name
     end function exclass2_get_name
@@ -368,17 +368,15 @@ contains
     ! const string & getName2()
     ! arg_to_buffer
     ! function_index=22
-    function exclass2_get_name2(obj) result(SHT_rv)
+    function exclass2_get_name2(obj) &
+            result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         class(exclass2) :: obj
-        character(kind=C_CHAR, len=strlen_ptr(c_exclass2_get_name2_bufferify(  &
-            obj%voidptr,  &
-            SHT_rv,  &
+        character(kind=C_CHAR, len=strlen_ptr( &
+            c_exclass2_get_name2_bufferify(obj%voidptr, SHT_rv, &
             len(SHT_rv, kind=C_INT)))) :: SHT_rv
         ! splicer begin class.ExClass2.method.get_name2
-        call c_exclass2_get_name2_bufferify(  &
-            obj%voidptr,  &
-            SHT_rv,  &
+        call c_exclass2_get_name2_bufferify(obj%voidptr, SHT_rv, &
             len(SHT_rv, kind=C_INT))
         ! splicer end class.ExClass2.method.get_name2
     end function exclass2_get_name2
@@ -386,17 +384,15 @@ contains
     ! string & getName3() const
     ! arg_to_buffer
     ! function_index=23
-    function exclass2_get_name3(obj) result(SHT_rv)
+    function exclass2_get_name3(obj) &
+            result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         class(exclass2) :: obj
-        character(kind=C_CHAR, len=strlen_ptr(c_exclass2_get_name3_bufferify(  &
-            obj%voidptr,  &
-            SHT_rv,  &
+        character(kind=C_CHAR, len=strlen_ptr( &
+            c_exclass2_get_name3_bufferify(obj%voidptr, SHT_rv, &
             len(SHT_rv, kind=C_INT)))) :: SHT_rv
         ! splicer begin class.ExClass2.method.get_name3
-        call c_exclass2_get_name3_bufferify(  &
-            obj%voidptr,  &
-            SHT_rv,  &
+        call c_exclass2_get_name3_bufferify(obj%voidptr, SHT_rv, &
             len(SHT_rv, kind=C_INT))
         ! splicer end class.ExClass2.method.get_name3
     end function exclass2_get_name3
@@ -404,17 +400,15 @@ contains
     ! string & getName4()
     ! arg_to_buffer
     ! function_index=24
-    function exclass2_get_name4(obj) result(SHT_rv)
+    function exclass2_get_name4(obj) &
+            result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         class(exclass2) :: obj
-        character(kind=C_CHAR, len=strlen_ptr(c_exclass2_get_name4_bufferify(  &
-            obj%voidptr,  &
-            SHT_rv,  &
+        character(kind=C_CHAR, len=strlen_ptr( &
+            c_exclass2_get_name4_bufferify(obj%voidptr, SHT_rv, &
             len(SHT_rv, kind=C_INT)))) :: SHT_rv
         ! splicer begin class.ExClass2.method.get_name4
-        call c_exclass2_get_name4_bufferify(  &
-            obj%voidptr,  &
-            SHT_rv,  &
+        call c_exclass2_get_name4_bufferify(obj%voidptr, SHT_rv, &
             len(SHT_rv, kind=C_INT))
         ! splicer end class.ExClass2.method.get_name4
     end function exclass2_get_name4
@@ -425,7 +419,8 @@ contains
     !! \brief helper function for Fortran
     !!
     !<
-    function exclass2_get_name_length(obj) result(SHT_rv)
+    function exclass2_get_name_length(obj) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT
         class(exclass2) :: obj
         integer(C_INT) :: SHT_rv
@@ -436,15 +431,14 @@ contains
 
     ! ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
     ! function_index=26
-    function exclass2_get_class1(obj, in) result(SHT_rv)
+    function exclass2_get_class1(obj, in) &
+            result(SHT_rv)
         use exclass1_mod, only : exclass1
         class(exclass2) :: obj
         type(exclass1), value, intent(IN) :: in
         type(exclass1) :: SHT_rv
         ! splicer begin class.ExClass2.method.get_class1
-        SHT_rv%voidptr = c_exclass2_get_class1(  &
-            obj%voidptr,  &
-            in%yadda())
+        SHT_rv%voidptr = c_exclass2_get_class1(obj%voidptr, in%yadda())
         ! splicer end class.ExClass2.method.get_class1
     end function exclass2_get_class1
 
@@ -456,9 +450,7 @@ contains
         class(exclass2) :: obj
         integer(C_INT), value, intent(IN) :: type
         ! splicer begin class.ExClass2.method.declare_0_int
-        call c_exclass2_declare_0(  &
-            obj%voidptr,  &
-            type)
+        call c_exclass2_declare_0(obj%voidptr, type)
         ! splicer end class.ExClass2.method.declare_0_int
     end subroutine exclass2_declare_0_int
 
@@ -470,9 +462,7 @@ contains
         class(exclass2) :: obj
         integer(C_INT), value, intent(IN) :: type
         ! splicer begin class.ExClass2.method.declare_0_long
-        call c_exclass2_declare_0(  &
-            obj%voidptr,  &
-            type)
+        call c_exclass2_declare_0(obj%voidptr, type)
         ! splicer end class.ExClass2.method.declare_0_long
     end subroutine exclass2_declare_0_long
 
@@ -485,10 +475,7 @@ contains
         integer(C_INT), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: len
         ! splicer begin class.ExClass2.method.declare_1_int
-        call c_exclass2_declare_1(  &
-            obj%voidptr,  &
-            type,  &
-            int(len, C_LONG))
+        call c_exclass2_declare_1(obj%voidptr, type, int(len, C_LONG))
         ! splicer end class.ExClass2.method.declare_1_int
     end subroutine exclass2_declare_1_int
 
@@ -501,10 +488,7 @@ contains
         integer(C_INT), value, intent(IN) :: type
         integer(C_LONG), value, intent(IN) :: len
         ! splicer begin class.ExClass2.method.declare_1_long
-        call c_exclass2_declare_1(  &
-            obj%voidptr,  &
-            type,  &
-            int(len, C_LONG))
+        call c_exclass2_declare_1(obj%voidptr, type, int(len, C_LONG))
         ! splicer end class.ExClass2.method.declare_1_long
     end subroutine exclass2_declare_1_long
 
@@ -519,7 +503,8 @@ contains
 
     ! TypeID getTypeID() const
     ! function_index=29
-    function exclass2_get_type_id(obj) result(SHT_rv)
+    function exclass2_get_type_id(obj) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT
         class(exclass2) :: obj
         integer(C_INT) :: SHT_rv
@@ -536,9 +521,7 @@ contains
         class(exclass2) :: obj
         integer(C_INT), value, intent(IN) :: value
         ! splicer begin class.ExClass2.method.set_value_int
-        call c_exclass2_set_value_int(  &
-            obj%voidptr,  &
-            value)
+        call c_exclass2_set_value_int(obj%voidptr, value)
         ! splicer end class.ExClass2.method.set_value_int
     end subroutine exclass2_set_value_int
 
@@ -550,9 +533,7 @@ contains
         class(exclass2) :: obj
         integer(C_LONG), value, intent(IN) :: value
         ! splicer begin class.ExClass2.method.set_value_long
-        call c_exclass2_set_value_long(  &
-            obj%voidptr,  &
-            value)
+        call c_exclass2_set_value_long(obj%voidptr, value)
         ! splicer end class.ExClass2.method.set_value_long
     end subroutine exclass2_set_value_long
 
@@ -564,9 +545,7 @@ contains
         class(exclass2) :: obj
         real(C_FLOAT), value, intent(IN) :: value
         ! splicer begin class.ExClass2.method.set_value_float
-        call c_exclass2_set_value_float(  &
-            obj%voidptr,  &
-            value)
+        call c_exclass2_set_value_float(obj%voidptr, value)
         ! splicer end class.ExClass2.method.set_value_float
     end subroutine exclass2_set_value_float
 
@@ -578,16 +557,15 @@ contains
         class(exclass2) :: obj
         real(C_DOUBLE), value, intent(IN) :: value
         ! splicer begin class.ExClass2.method.set_value_double
-        call c_exclass2_set_value_double(  &
-            obj%voidptr,  &
-            value)
+        call c_exclass2_set_value_double(obj%voidptr, value)
         ! splicer end class.ExClass2.method.set_value_double
     end subroutine exclass2_set_value_double
 
     ! int getValue()
     ! cxx_template
     ! function_index=37
-    function exclass2_get_value_int(obj) result(SHT_rv)
+    function exclass2_get_value_int(obj) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT
         class(exclass2) :: obj
         integer(C_INT) :: SHT_rv
@@ -599,7 +577,8 @@ contains
     ! double getValue()
     ! cxx_template
     ! function_index=38
-    function exclass2_get_value_double(obj) result(SHT_rv)
+    function exclass2_get_value_double(obj) &
+            result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         class(exclass2) :: obj
         real(C_DOUBLE) :: SHT_rv

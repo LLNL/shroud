@@ -102,7 +102,9 @@ PP_exclass1_increment_count(
 // splicer begin class.ExClass1.method.increment_count
     int incr;
     const char *SH_kwcpp = "incr";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:incrementCount", SH_kw_list,
         &incr))
@@ -213,7 +215,9 @@ PP_exclass1_get_value_from_int(
 // splicer begin class.ExClass1.method.get_value_from_int
     int value;
     const char *SH_kwcpp = "value";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:getValue", SH_kw_list,
         &value))
@@ -234,7 +238,9 @@ PP_exclass1_get_value_1(
 // splicer begin class.ExClass1.method.get_value_1
     long value;
     const char *SH_kwcpp = "value";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:getValue", SH_kw_list,
         &value))
@@ -277,7 +283,9 @@ PP_exclass1_has_addr(
     bool in;
     PyObject * SH_Py_in;
     const char *SH_kwcpp = "in";
-    char *SH_kw_list[] = { (char *) SH_kwcpp+0, NULL };
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:hasAddr", SH_kw_list,
         &PyBool_Type, &SH_Py_in))

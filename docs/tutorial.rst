@@ -166,7 +166,8 @@ are pass-by-value and cannot return a value.
 The C wrapper can be called directly by Fortran using the interface::
 
      interface
-        function function2(arg1, arg2) result(SHT_rv) &
+        function function2(arg1, arg2) &
+                result(SHT_rv) &
                 bind(C, name="TUT_function2")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
@@ -250,7 +251,8 @@ In this case a Fortran wrapper is created in addition to the interface.
 The wrapper convert the logical's value before calling the C wrapper::
 
      interface
-        function c_function3(arg) result(SHT_rv) &
+        function c_function3(arg) &
+                result(SHT_rv) &
                 bind(C, name="TUT_function3")
             use iso_c_binding, only : C_BOOL
             implicit none
@@ -259,7 +261,8 @@ The wrapper convert the logical's value before calling the C wrapper::
         end function c_function3
     end interface
 
-    function function3(arg) result(SHT_rv)
+    function function3(arg) &
+            result(SHT_rv)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg
         logical(C_BOOL) SH_arg
@@ -334,9 +337,9 @@ computed using ``len``::
         const std::string SH_arg2(arg2, Larg2);
         const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);
         if (SHT_rv.empty()) {
-          std::memset(SHF_rv, ' ', NSHF_rv);
+            std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
-          ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
         }
         return;
     }
@@ -347,15 +350,15 @@ Before the C wrapper returns, ``SHT_rv`` will be deleted.
 
 The Fortran wrapper::
 
-    function function4a(arg1, arg2) result(SHT_rv)
+    function function4a(arg1, arg2) &
+            result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(*), intent(IN) :: arg1
         character(*), intent(IN) :: arg2
         character(kind=C_CHAR, len=30) :: rv
-        call c_function4a_bufferify(  &
-            arg1, len_trim(arg1, kind=C_INT),  &
-            arg2, len_trim(arg2, kind=C_INT),  &
-            SHT_rv, len(SHT_rv, kind=C_INT)))
+        call c_function4a_bufferify(arg1, len_trim(arg1, kind=C_INT),  &
+            arg2, len_trim(arg2, kind=C_INT), SHT_rv, &
+            len(SHT_rv, kind=C_INT)))
     end function function4a
 
 The function is called as::
@@ -392,20 +395,20 @@ C wrappers::
 
     double TUT_function5()
     {
-      double SHT_rv = Function5();
-      return SHT_rv;
+        double SHT_rv = Function5();
+        return SHT_rv;
     }
     
     double TUT_function5_arg1(double arg1)
     {
-      double SHT_rv = Function5(arg1);
-      return SHT_rv;
+        double SHT_rv = Function5(arg1);
+        return SHT_rv;
     }
     
     double TUT_function5_arg1_arg2(double arg1, bool arg2)
     {
-      double SHT_rv = Function5(arg1, arg2);
-      return SHT_rv;
+        double SHT_rv = Function5(arg1, arg2);
+        return SHT_rv;
     }
 
 
@@ -419,20 +422,23 @@ Fortran wrapper::
 
     contains
 
-    function function5() result(SHT_rv)
+    function function5() &
+            result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE) :: SHT_rv
         SHT_rv = c_function5()
     end function function5
     
-    function function5_arg1(arg1) result(SHT_rv)
+    function function5_arg1(arg1) &
+            result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg1
         real(C_DOUBLE) :: SHT_rv
         SHT_rv = c_function5_arg1(arg1)
     end function function5_arg1
     
-    function function5_arg1_arg2(arg1, arg2) result(SHT_rv)
+    function function5_arg1_arg2(arg1, arg2) &
+            result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg1
         logical, value, intent(IN) :: arg2
@@ -604,14 +610,14 @@ C wrapper::
 
     int TUT_function8_int()
     {
-      int SHT_rv = Function8<int>();
-      return SHT_rv;
+        int SHT_rv = Function8<int>();
+        return SHT_rv;
     }
 
     double TUT_function8_double()
     {
-      double SHT_rv = Function8<double>();
-      return SHT_rv;
+        double SHT_rv = Function8<double>();
+        return SHT_rv;
     }
 
 Generic Functions
@@ -835,7 +841,8 @@ For Fortran a derived type is created::
 
 And the subroutines::
 
-    function class1_new() result(SHT_rv)
+    function class1_new() &
+            result(SHT_rv)
         type(class1) :: SHT_rv
         SHT_rv%voidptr = c_class1_new()
     end function class1_new

@@ -108,7 +108,8 @@ module clibrary_mod
             type(C_PTR) SHT_rv
         end function c_function4a
 
-        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, SHF_rv, NSHF_rv) &
+        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, &
+                SHF_rv, NSHF_rv) &
                 bind(C, name="CLI_function4a_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
@@ -128,7 +129,8 @@ contains
 
     ! bool Function3(bool arg +intent(in)+value)
     ! function_index=3
-    function function3(arg) result(SHT_rv)
+    function function3(arg) &
+            result(SHT_rv)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg
         logical(C_BOOL) SH_arg
@@ -152,10 +154,7 @@ contains
         SH_arg1 = arg1  ! coerce to C_BOOL
         SH_arg3 = arg3  ! coerce to C_BOOL
         ! splicer begin function.function3b
-        call c_function3b(  &
-            SH_arg1,  &
-            SH_arg2,  &
-            SH_arg3)
+        call c_function3b(SH_arg1, SH_arg2, SH_arg3)
         ! splicer end function.function3b
         arg2 = SH_arg2  ! coerce to logical
         arg3 = SH_arg3  ! coerce to logical
@@ -164,18 +163,15 @@ contains
     ! char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))
     ! arg_to_buffer
     ! function_index=5
-    function function4a(arg1, arg2) result(SHT_rv)
+    function function4a(arg1, arg2) &
+            result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(*), intent(IN) :: arg1
         character(*), intent(IN) :: arg2
         character(kind=C_CHAR, len=30) :: SHT_rv
         ! splicer begin function.function4a
-        call c_function4a_bufferify(  &
-            arg1,  &
-            len_trim(arg1, kind=C_INT),  &
-            arg2,  &
-            len_trim(arg2, kind=C_INT),  &
-            SHT_rv,  &
+        call c_function4a_bufferify(arg1, len_trim(arg1, kind=C_INT), &
+            arg2, len_trim(arg2, kind=C_INT), SHT_rv, &
             len(SHT_rv, kind=C_INT))
         ! splicer end function.function4a
     end function function4a

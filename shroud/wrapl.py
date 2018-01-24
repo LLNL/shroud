@@ -75,6 +75,10 @@ class Wrapl(util.WrapperMixin):
         newlibrary.eval_template('LUA_module_filename')
         newlibrary.eval_template('LUA_header_filename')
 
+        # Some kludges, need to compute correct value in wrapl.py
+        fmt_library.LUA_metadata = 'XXLUA_metadata'
+        fmt_library.LUA_userdata_type = 'XXLUA_userdata_type'
+
         # Variables to accumulate output lines
         self.luaL_Reg_module = []
         self.body_lines = []
@@ -403,6 +407,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         fmt - local format dictionary
         """
         node = luafcn.function
+        options = node.options
+#        if not options.wrap_lua:
+#            return
 
         if cls:
             cls_function = 'method'
@@ -546,26 +553,29 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             cxx_call_list.append(fmt_arg.cxx_var)
 
         # call with arguments
-        fmt.cxx_call_list = ', '.join(cxx_call_list)
+        fmt.cxx_call_list = ',\t '.join(cxx_call_list)
         fmt.rv_asgn = fmt.rv_decl + ' = '
 #        LUA_code.extend(post_parse)
 
         if is_ctor:
             fmt.LUA_used_param_state = True
+            LUA_code.append(
+                wformat(
+                    '{LUA_userdata_type} * {LUA_userdata_var} = '
+                    '({LUA_userdata_type} *) lua_newuserdata'
+                    '({LUA_state_var}, sizeof(*{LUA_userdata_var}));',
+                    fmt))
+            self.break_into_continuations(
+                LUA_code, options, 'c', 1,
+                wformat(
+                    '{LUA_userdata_var}->{LUA_userdata_member} = '
+                    'new {cxx_class}({cxx_call_list});', fmt))
             LUA_code.extend([
-                    wformat(
-                        '{LUA_userdata_type} * {LUA_userdata_var} = '
-                        '({LUA_userdata_type} *) lua_newuserdata'
-                        '({LUA_state_var}, sizeof(*{LUA_userdata_var}));',
-                        fmt),
-                    wformat(
-                        '{LUA_userdata_var}->{LUA_userdata_member} = '
-                        'new {cxx_class}({cxx_call_list});', fmt),
-                    '/* Add the metatable to the stack. */',
-                    wformat('luaL_getmetatable(L, "{LUA_metadata}");', fmt),
-                    '/* Set the metatable on the userdata. */',
-                    'lua_setmetatable(L, -2);',
-                    ])
+                '/* Add the metatable to the stack. */',
+                wformat('luaL_getmetatable(L, "{LUA_metadata}");', fmt),
+                '/* Set the metatable on the userdata. */',
+                'lua_setmetatable(L, -2);',
+            ])
         elif is_dtor:
             fmt.LUA_used_param_state = True
             LUA_code.extend([
@@ -579,19 +589,21 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         elif CXX_subprogram == 'subroutine':
             line = wformat(
                 '{LUA_this_call}{function_name}({cxx_call_list});', fmt)
-            LUA_code.append(line)
+            self.break_into_continuations(
+                LUA_code, options, 'c', 1, line)
         else:
             line = wformat(
                 '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});',
                 fmt)
-            LUA_code.append(line)
+            self.break_into_continuations(
+                LUA_code, options, 'c', 1, line)
 
 #        if 'LUA_error_pattern' in node:
 #            lfmt = util.Scope(fmt)
 #            lfmt.c_var = fmt.LUA_result
 #            lfmt.cxx_var = fmt.LUA_result
 #            append_format(LUA_code,
-#                 self.patterns[node['PY_error_pattern']], lfmt)
+#                 self.patterns[node['LUA_error_pattern']], lfmt)
 
         # Compute return value
         if CXX_subprogram == 'function' and not is_ctor:
