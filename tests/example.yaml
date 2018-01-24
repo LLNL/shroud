@@ -338,7 +338,8 @@ functions:
     options:
       # Force wrapper to test interface line lengths
       F_force_wrapper: True
-
+      F_line_length: 0
+      C_line_length: 0
 
 ######################################################################
 patterns:

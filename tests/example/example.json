@@ -6380,7 +6380,9 @@
                     "underscore_name": "verlongfunctionname2"
                 }, 
                 "options": {
-                    "F_force_wrapper": true
+                    "C_line_length": 0, 
+                    "F_force_wrapper": true, 
+                    "F_line_length": 0
                 }
             }
         ], 
@@ -6391,6 +6393,7 @@
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
+            "C_line_length": 72, 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "C_var_len_template": "N{c_var}", 
             "C_var_size_template": "S{c_var}", 
@@ -6399,6 +6402,7 @@
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 
+            "F_line_length": 72, 
             "F_module_name_class_template": "{class_lower}_mod", 
             "F_module_name_library_template": "{library_lower}_mod", 
             "F_module_per_class": true, 

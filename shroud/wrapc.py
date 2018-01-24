@@ -664,7 +664,7 @@ class Wrapc(util.WrapperMixin):
             C_code = [1]
             C_code.extend(pre_call)
             self.break_into_continuations(
-                C_code, '', ';', 1, fmt_func.C_call_code)
+                C_code, options, 'c', ';', 1, fmt_func.C_call_code)
 
             C_code.extend(post_call_pattern)
             C_code.extend(post_call)
@@ -676,7 +676,7 @@ class Wrapc(util.WrapperMixin):
             if node.cpp_if:
                 self.header_proto_c.append('#' + node.cpp_if)
             self.break_into_continuations(
-                self.header_proto_c, '', ';', 1,
+                self.header_proto_c, options, 'c', ';', 1,
                 wformat('{C_return_type} {C_name}(\t{C_prototype_tab})',
                         fmt_func))
             if node.cpp_if:
@@ -692,7 +692,7 @@ class Wrapc(util.WrapperMixin):
             if node.cpp_if:
                 self.impl.append('#' + node.cpp_if)
             self.break_into_continuations(
-                impl, '', '', 1,
+                impl, options, 'c', '', 1,
                 wformat('{C_return_type} {C_name}(\t{C_prototype_tab})',
                         fmt_func))
             impl.append('{')

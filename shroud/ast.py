@@ -130,7 +130,9 @@ class LibraryNode(AstNode):
         def_options = util.Scope(
             parent=None,
             debug=False,   # print additional debug info
+            C_line_length=72,
 
+            F_line_length=72,
             F_module_per_class=True,
             F_string_len_trim=True,
             F_force_wrapper=False,

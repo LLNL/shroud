@@ -284,7 +284,8 @@ class WrapperMixin(object):
                 # convert None to blank line
                 fp.write(self.comment + '\n')
 
-    def break_into_continuations(self, out, cont, tail, indent, line):
+    def break_into_continuations(self, out, options, 
+                                 lang, tail, indent, line):
         """Break line into parts to control continuations.
 
         Tab marks potential linebreak, newlines mark explicit 
@@ -301,6 +302,14 @@ class WrapperMixin(object):
         tail     ''        '' or ';'    trailing string
         indent   2         1            indent level for continued lines
         """
+
+        if lang == 'c':
+            cont = ''
+            linelen = options.C_line_length
+        else:
+            cont = ' &'
+            linelen = options.F_line_length
+
         parts = []
         part = ''
         for ch in line:
@@ -315,7 +324,7 @@ class WrapperMixin(object):
                 part += ch
         if part:
             parts.append(part)
-        out.append((cont, tail, indent, parts))
+        out.append((cont, tail, indent, linelen, parts))
 
     def write_lines(self, fp, lines):
         """ Write lines with indention and newlines.
@@ -323,18 +332,17 @@ class WrapperMixin(object):
         for line in lines:
             if isinstance(line, tuple):
                 # A tuple created by continued_line
-                cont = line[0]
-                tail = line[1]
-                indent = line[2]
+                cont, tail, indent, linelen, parts = line
                 subline = '    ' * self.indent
                 delimiter = ''
                 nparts = 0
-                for part in line[3]:
+                for part in parts:
                     if part == '\n':
                         # save delimiter for next part
                         delimiter = part
                         continue
-                    elif delimiter == '\n' or len(subline) + len(part) > 72:
+                    elif delimiter == '\n' or (
+                            len(subline) + len(part) > linelen):
                         # if the first part causes an overflow, there
                         # will not be anything to continue yet.
                         if nparts > 0:

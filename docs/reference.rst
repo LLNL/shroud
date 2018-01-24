@@ -241,15 +241,19 @@ C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
    Defaults to *false*.
 
-F_string_len_trim
-  For each function with a ``std::string`` argument, create another C
-  function which accepts a buffer and length.  The C wrapper will call
-  the ``std::string`` constructor, instead of the Fortran wrapper
-  creating a ``NULL`` terminated string using ``trim``.  This avoids
-  copying the string in the Fortran wrapper.
-  Defaults to *true*.
+C_line_length
+  Control length of output line for generated C.
+  This is not an exact line width, but is instead a hint of where
+  to break lines.
+  A value of 0 will give the shortest possible lines.
+  Defaults to 72.
 
-.. bufferify
+F_line_length
+  Control length of output line for generated Fortran.
+  This is not an exact line width, but is instead a hint of where
+  to break lines.
+  A value of 0 will give the shortest possible lines.
+  Defaults to 72.
 
 F_force_wrapper
   If *true*, always create an explicit Fortran wrapper.
@@ -259,6 +263,16 @@ F_force_wrapper
   numeric types does not need a wrapper since it can be called
   directly by defining the correct interface.
   The default is *false*.
+
+F_string_len_trim
+  For each function with a ``std::string`` argument, create another C
+  function which accepts a buffer and length.  The C wrapper will call
+  the ``std::string`` constructor, instead of the Fortran wrapper
+  creating a ``NULL`` terminated string using ``trim``.  This avoids
+  copying the string in the Fortran wrapper.
+  Defaults to *true*.
+
+.. bufferify
 
 show_splicer_comments
     If ``true`` show comments which delineate the splicer blocks;
