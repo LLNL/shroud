@@ -68,7 +68,7 @@
                         "decl": "void method1(CustomType arg1)", 
                         "declgen": "void method1(CustomType arg1 +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "SH_this->method1(\targ1)", 
+                            "C_call_code": "SH_this->method1(\targ1);", 
                             "C_call_list": "arg1", 
                             "C_name": "DEF_class1_method1", 
                             "C_pre_call": "Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));", 
@@ -164,7 +164,7 @@
                         "decl": "void method1(MPI_Comm comm)", 
                         "declgen": "void method1(MPI_Comm comm +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "SH_this->method1(\tMPI_Comm_f2c(comm))", 
+                            "C_call_code": "SH_this->method1(\tMPI_Comm_f2c(comm));", 
                             "C_call_list": "MPI_Comm_f2c(comm)", 
                             "C_name": "DEF_class2_method1", 
                             "C_pre_call": "Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));", 
@@ -244,7 +244,7 @@
                         "decl": "void method2(Class1 * c2)", 
                         "declgen": "void method2(Class1 * c2 +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "SH_this->method2(\tSH_c2)", 
+                            "C_call_code": "SH_this->method2(\tSH_c2);", 
                             "C_call_list": "SH_c2", 
                             "C_name": "DEF_class2_method2", 
                             "C_pre_call": "Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));\nClass1 *SH_c2 = static_cast<Class1 *>(static_cast<void *>(c2));", 
@@ -389,7 +389,7 @@
                 "decl": "void function1()", 
                 "declgen": "void function1()", 
                 "format": {
-                    "C_call_code": "function1(\t)", 
+                    "C_call_code": "function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "DEF_function1", 
                     "C_prototype": "", 

@@ -171,7 +171,7 @@
                     "brief": "pass a single char argument as a scalar."
                 }, 
                 "format": {
-                    "C_call_code": "passChar(\tstatus)", 
+                    "C_call_code": "passChar(\tstatus);", 
                     "C_call_list": "status", 
                     "C_name": "STR_pass_char", 
                     "C_prototype": "char status", 
@@ -224,7 +224,7 @@
                     "brief": "return a char argument (non-pointer)"
                 }, 
                 "format": {
-                    "C_call_code": "char SHT_rv =\t returnChar(\t)", 
+                    "C_call_code": "char SHT_rv =\t returnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_return_char", 
                     "C_prototype": "", 
@@ -317,7 +317,7 @@
                     "brief": "return a char argument (non-pointer)"
                 }, 
                 "format": {
-                    "C_call_code": "char SHT_rv =\t returnChar(\t)", 
+                    "C_call_code": "char SHT_rv =\t returnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_return_char_bufferify", 
                     "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHT_rv;", 
@@ -445,7 +445,7 @@
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
                 }, 
                 "format": {
-                    "C_call_code": "passCharPtr(\tdest,\t src)", 
+                    "C_call_code": "passCharPtr(\tdest,\t src);", 
                     "C_call_list": "dest,\t src", 
                     "C_name": "STR_pass_char_ptr", 
                     "C_prototype": "char * dest,\t const char * src", 
@@ -566,7 +566,7 @@
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
                 }, 
                 "format": {
-                    "C_call_code": "passCharPtr(\tSH_dest,\t SH_src)", 
+                    "C_call_code": "passCharPtr(\tSH_dest,\t SH_src);", 
                     "C_call_list": "SH_dest,\t SH_src", 
                     "C_name": "STR_pass_char_ptr_bufferify", 
                     "C_post_call": "ShroudStrCopy(dest, Ndest, SH_dest);\nfree(SH_dest);\nfree(SH_src);", 
@@ -655,7 +655,7 @@
                     "brief": "Change a string in-place"
                 }, 
                 "format": {
-                    "C_call_code": "passCharPtrInOut(\ts)", 
+                    "C_call_code": "passCharPtrInOut(\ts);", 
                     "C_call_list": "s", 
                     "C_name": "STR_pass_char_ptr_in_out", 
                     "C_prototype": "char * s", 
@@ -742,7 +742,7 @@
                     "brief": "Change a string in-place"
                 }, 
                 "format": {
-                    "C_call_code": "passCharPtrInOut(\tSH_s)", 
+                    "C_call_code": "passCharPtrInOut(\tSH_s);", 
                     "C_call_list": "SH_s", 
                     "C_name": "STR_pass_char_ptr_in_out_bufferify", 
                     "C_post_call": "ShroudStrCopy(s, Ns, SH_s);\nfree(SH_s);", 
@@ -800,7 +800,7 @@
                     "brief": "return a 'const char *' as character(*)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar1(\t)", 
+                    "C_call_code": "const char * SHT_rv =\t getChar1(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char1", 
                     "C_prototype": "", 
@@ -892,7 +892,7 @@
                     "brief": "return a 'const char *' as character(*)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar1(\t)", 
+                    "C_call_code": "const char * SHT_rv =\t getChar1(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char1_bufferify", 
                     "C_post_call": "if (SHT_rv == NULL) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
@@ -950,7 +950,7 @@
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar2(\t)", 
+                    "C_call_code": "const char * SHT_rv =\t getChar2(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char2", 
                     "C_prototype": "", 
@@ -1046,7 +1046,7 @@
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar2(\t)", 
+                    "C_call_code": "const char * SHT_rv =\t getChar2(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char2_bufferify", 
                     "C_post_call": "if (SHT_rv == NULL) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
@@ -1101,7 +1101,7 @@
                     "brief": "return a 'const char *' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar3(\t)", 
+                    "C_call_code": "const char * SHT_rv =\t getChar3(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char3", 
                     "C_prototype": "", 
@@ -1188,7 +1188,7 @@
                     "brief": "return a 'const char *' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar3(\t)", 
+                    "C_call_code": "const char * SHT_rv =\t getChar3(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char3_bufferify", 
                     "C_post_call": "if (SHT_rv == NULL) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHT_rv);\n}", 
@@ -1316,7 +1316,7 @@
                     "brief": "return a 'const string&' as character(*)"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t getString1(\t)", 
+                    "C_call_code": "const std::string & SHT_rv =\t getString1(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_string1", 
                     "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
@@ -1409,7 +1409,7 @@
                     "brief": "return a 'const string&' as character(*)"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t getString1(\t)", 
+                    "C_call_code": "const std::string & SHT_rv =\t getString1(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_string1_bufferify", 
                     "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
@@ -1471,7 +1471,7 @@
                     "brief": "return 'const string&' with fixed size (len=30)"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t getString2(\t)", 
+                    "C_call_code": "const std::string & SHT_rv =\t getString2(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_string2", 
                     "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
@@ -1570,7 +1570,7 @@
                     "brief": "return 'const string&' with fixed size (len=30)"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t getString2(\t)", 
+                    "C_call_code": "const std::string & SHT_rv =\t getString2(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_string2_bufferify", 
                     "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
@@ -1629,7 +1629,7 @@
                     "brief": "return a 'const string&' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t getString3(\t)", 
+                    "C_call_code": "const std::string & SHT_rv =\t getString3(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_string3", 
                     "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
@@ -1719,7 +1719,7 @@
                     "brief": "return a 'const string&' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t getString3(\t)", 
+                    "C_call_code": "const std::string & SHT_rv =\t getString3(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_string3_bufferify", 
                     "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
@@ -1850,7 +1850,7 @@
                     "brief": "Test returning empty string reference"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t getString2_empty(\t)", 
+                    "C_call_code": "const std::string & SHT_rv =\t getString2_empty(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_string2_empty", 
                     "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
@@ -1949,7 +1949,7 @@
                     "brief": "Test returning empty string reference"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t getString2_empty(\t)", 
+                    "C_call_code": "const std::string & SHT_rv =\t getString2_empty(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_string2_empty_bufferify", 
                     "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
@@ -2087,7 +2087,7 @@
                     "brief": "return a 'const string' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string SHT_rv =\t getString5(\t)", 
+                    "C_call_code": "const std::string SHT_rv =\t getString5(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_string5_bufferify", 
                     "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
@@ -2212,7 +2212,7 @@
                     "brief": "return a 'const string' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string SHT_rv =\t getString6(\t)", 
+                    "C_call_code": "const std::string SHT_rv =\t getString6(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_string6_bufferify", 
                     "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
@@ -2342,7 +2342,7 @@
                     "brief": "return a 'const string *' as character(*)"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string * SHT_rv =\t getString7(\t)", 
+                    "C_call_code": "const std::string * SHT_rv =\t getString7(\t);", 
                     "C_call_list": "", 
                     "C_finalize_buf": "delete {C_result};", 
                     "C_name": "STR_get_string7", 
@@ -2440,7 +2440,7 @@
                     "brief": "return a 'const string *' as character(*)"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string * SHT_rv =\t getString7(\t)", 
+                    "C_call_code": "const std::string * SHT_rv =\t getString7(\t);", 
                     "C_call_list": "", 
                     "C_finalize_buf": "delete {C_result};", 
                     "C_name": "STR_get_string7_bufferify", 
@@ -2528,7 +2528,7 @@
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 }, 
                 "format": {
-                    "C_call_code": "acceptStringConstReference(\tSH_arg1)", 
+                    "C_call_code": "acceptStringConstReference(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_const_reference", 
                     "C_pre_call": "const std::string SH_arg1(arg1);", 
@@ -2615,7 +2615,7 @@
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 }, 
                 "format": {
-                    "C_call_code": "acceptStringConstReference(\tSH_arg1)", 
+                    "C_call_code": "acceptStringConstReference(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_const_reference_bufferify", 
                     "C_pre_call": "const std::string SH_arg1(arg1, Larg1);", 
@@ -2704,7 +2704,7 @@
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 }, 
                 "format": {
-                    "C_call_code": "acceptStringReferenceOut(\tSH_arg1)", 
+                    "C_call_code": "acceptStringReferenceOut(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_reference_out", 
                     "C_post_call": "strcpy(arg1, SH_arg1.c_str());", 
@@ -2792,7 +2792,7 @@
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 }, 
                 "format": {
-                    "C_call_code": "acceptStringReferenceOut(\tSH_arg1)", 
+                    "C_call_code": "acceptStringReferenceOut(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_reference_out_bufferify", 
                     "C_post_call": "ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());", 
@@ -2882,7 +2882,7 @@
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 }, 
                 "format": {
-                    "C_call_code": "acceptStringReference(\tSH_arg1)", 
+                    "C_call_code": "acceptStringReference(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_reference", 
                     "C_post_call": "strcpy(arg1, SH_arg1.c_str());", 
@@ -2972,7 +2972,7 @@
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 }, 
                 "format": {
-                    "C_call_code": "acceptStringReference(\tSH_arg1)", 
+                    "C_call_code": "acceptStringReference(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_reference_bufferify", 
                     "C_post_call": "ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());", 
@@ -3061,7 +3061,7 @@
                     "brief": "Accept a string pointer"
                 }, 
                 "format": {
-                    "C_call_code": "acceptStringPointer(\t&SH_arg1)", 
+                    "C_call_code": "acceptStringPointer(\t&SH_arg1);", 
                     "C_call_list": "&SH_arg1", 
                     "C_name": "STR_accept_string_pointer", 
                     "C_post_call": "strcpy(arg1, SH_arg1.c_str());", 
@@ -3150,7 +3150,7 @@
                     "brief": "Accept a string pointer"
                 }, 
                 "format": {
-                    "C_call_code": "acceptStringPointer(\t&SH_arg1)", 
+                    "C_call_code": "acceptStringPointer(\t&SH_arg1);", 
                     "C_call_list": "&SH_arg1", 
                     "C_name": "STR_accept_string_pointer_bufferify", 
                     "C_post_call": "ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());", 
@@ -3236,7 +3236,7 @@
                 "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
                 "format": {
                     "C_bufferify_suffix": "_BUFFER", 
-                    "C_call_code": "explicit1(\tname)", 
+                    "C_call_code": "explicit1(\tname);", 
                     "C_call_list": "name", 
                     "C_name": "STR_explicit1", 
                     "C_prototype": "char * name", 
@@ -3319,7 +3319,7 @@
                 "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
                 "format": {
                     "C_bufferify_suffix": "_BUFFER", 
-                    "C_call_code": "explicit1(\tSH_name)", 
+                    "C_call_code": "explicit1(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "STR_explicit1_BUFFER", 
                     "C_post_call": "free(SH_name);", 
@@ -3406,7 +3406,7 @@
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))", 
                 "format": {
-                    "C_call_code": "explicit2(\tname)", 
+                    "C_call_code": "explicit2(\tname);", 
                     "C_call_list": "name", 
                     "C_name": "STR_explicit2", 
                     "C_prototype": "char * name", 
@@ -3488,7 +3488,7 @@
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))", 
                 "format": {
-                    "C_call_code": "explicit2(\tSH_name)", 
+                    "C_call_code": "explicit2(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "STR_explicit2_bufferify", 
                     "C_post_call": "ShroudStrCopy(name, AAtrim, SH_name);\nfree(SH_name);", 
@@ -3573,7 +3573,7 @@
                     "brief": "pass a single char argument as a scalar, extern \"C\""
                 }, 
                 "format": {
-                    "C_call_code": "CpassChar(\tstatus)", 
+                    "C_call_code": "CpassChar(\tstatus);", 
                     "C_call_list": "status", 
                     "C_name": "CpassChar", 
                     "C_prototype": "char status", 
@@ -3628,7 +3628,7 @@
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 }, 
                 "format": {
-                    "C_call_code": "char SHT_rv =\t CreturnChar(\t)", 
+                    "C_call_code": "char SHT_rv =\t CreturnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "CreturnChar", 
                     "C_prototype": "", 
@@ -3723,7 +3723,7 @@
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 }, 
                 "format": {
-                    "C_call_code": "char SHT_rv =\t CreturnChar(\t)", 
+                    "C_call_code": "char SHT_rv =\t CreturnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_creturn_char_bufferify", 
                     "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHT_rv;", 
@@ -3852,7 +3852,7 @@
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 }, 
                 "format": {
-                    "C_call_code": "CpassCharPtr(\tdest,\t src)", 
+                    "C_call_code": "CpassCharPtr(\tdest,\t src);", 
                     "C_call_list": "dest,\t src", 
                     "C_name": "CpassCharPtr", 
                     "C_prototype": "char * dest,\t const char * src", 
@@ -3975,7 +3975,7 @@
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 }, 
                 "format": {
-                    "C_call_code": "CpassCharPtr(\tSH_dest,\t SH_src)", 
+                    "C_call_code": "CpassCharPtr(\tSH_dest,\t SH_src);", 
                     "C_call_list": "SH_dest,\t SH_src", 
                     "C_name": "STR_cpass_char_ptr_bufferify", 
                     "C_post_call": "ShroudStrCopy(dest, Ndest, SH_dest);\nfree(SH_dest);\nfree(SH_src);", 

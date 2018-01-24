@@ -285,7 +285,7 @@ class WrapperMixin(object):
                 fp.write(self.comment + '\n')
 
     def break_into_continuations(self, out, options, 
-                                 lang, tail, indent, line):
+                                 lang, indent, line):
         """Break line into parts to control continuations.
 
         Tab marks potential linebreak, newlines mark explicit 
@@ -295,11 +295,10 @@ class WrapperMixin(object):
         continuations.
 
         Return a tuple
-         ( cont, tail, indent, [ 'part1', 'part2', ..., 'partn' ]
+         ( cont, indent, line_length, [ 'part1', 'part2', ..., 'partn' ]
 
                 fortran    c
         cont     ' &'      ''           continuation string
-        tail     ''        '' or ';'    trailing string
         indent   2         1            indent level for continued lines
         """
 
@@ -324,7 +323,7 @@ class WrapperMixin(object):
                 part += ch
         if part:
             parts.append(part)
-        out.append((cont, tail, indent, linelen, parts))
+        out.append((cont, indent, linelen, parts))
 
     def write_lines(self, fp, lines):
         """ Write lines with indention and newlines.
@@ -332,7 +331,7 @@ class WrapperMixin(object):
         for line in lines:
             if isinstance(line, tuple):
                 # A tuple created by continued_line
-                cont, tail, indent, linelen, parts = line
+                cont, indent, linelen, parts = line
                 subline = '    ' * self.indent
                 delimiter = ''
                 nparts = 0
@@ -352,7 +351,7 @@ class WrapperMixin(object):
                     delimiter = ''
                     subline += part
                     nparts += 1
-                fp.write(subline + tail + '\n')
+                fp.write(subline + '\n')
             elif isinstance(line, int):
                 self.indent += int(line)
             else:

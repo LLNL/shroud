@@ -530,24 +530,24 @@ return 1;""", fmt)
                         'const char *SH_kwcpp = "%s";' % '\\0'.join(arg_names))
                 else:
                     self.break_into_continuations(
-                        PY_decl, options, 'c', ';', 1,
+                        PY_decl, options, 'c', 1,
                         'const char *SH_kwcpp =\n"' +
-                        '\\0"\n"'.join(arg_names) + '"' )
+                        '\\0"\n"'.join(arg_names) + '";' )
                 self.break_into_continuations(
-                    PY_decl, options, 'c', ';', 1,
+                    PY_decl, options, 'c', 1,
                     'char *SH_kw_list[] = {\n' + ',\n'.join(arg_offsets)
-                    + ',\nNULL }')
+                    + ',\nNULL };')
             else:
                 self.break_into_continuations(
-                    PY_decl, options, 'c', ';', 1,
+                    PY_decl, options, 'c', 1,
                     'char *SH_kw_list[] = {\n"' +
                     '",\n"'.join(arg_names)
-                    + '",\nNULL }')
+                    + '",\nNULL };')
             parse_format.extend([':', fmt.function_name])
             fmt.PyArg_format = ''.join(parse_format)
             fmt.PyArg_vargs = ',\t '.join(parse_vargs)
             self.break_into_continuations(
-                PY_code, options, 'c', '', 1,
+                PY_code, options, 'c', 1,
                 wformat(
                     'if (!PyArg_ParseTupleAndKeywords'
                     '({PY_param_args}, {PY_param_kwds}, '
@@ -591,14 +591,14 @@ return 1;""", fmt)
                 line = wformat(
                     '{PY_this_call}{function_name}({PY_call_list});', fmt)
                 self.break_into_continuations(
-                    PY_code, options, 'c', '', 1, line)
+                    PY_code, options, 'c', 1, line)
             else:
                 need_rv = True
                 line = wformat(
                     '{PY_rv_asgn}{PY_this_call}{function_name}({PY_call_list});',
                     fmt)
                 self.break_into_continuations(
-                    PY_code, options, 'c', '', 1, line)
+                    PY_code, options, 'c', 1, line)
 
             if node.PY_error_pattern:
                 lfmt = util.Scope(fmt)

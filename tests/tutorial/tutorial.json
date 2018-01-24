@@ -54,7 +54,7 @@
                         "decl": "Class1() +name(new)", 
                         "declgen": "Class1() +name(new)", 
                         "format": {
-                            "C_call_code": "Class1 * SHT_rv = new Class1()", 
+                            "C_call_code": "Class1 * SHT_rv = new Class1();", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_new", 
                             "C_prototype": "", 
@@ -98,7 +98,7 @@
                         "decl": "~Class1() +name(delete)", 
                         "declgen": "~Class1() +name(delete)", 
                         "format": {
-                            "C_call_code": "delete SH_this", 
+                            "C_call_code": "delete SH_this;", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_delete", 
                             "C_pre_call": "Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));", 
@@ -145,7 +145,7 @@
                         "decl": "void Method1()", 
                         "declgen": "void Method1()", 
                         "format": {
-                            "C_call_code": "SH_this->Method1(\t)", 
+                            "C_call_code": "SH_this->Method1(\t);", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_method1", 
                             "C_pre_call": "Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));", 
@@ -311,7 +311,7 @@
                 "decl": "void Function1()", 
                 "declgen": "void Function1()", 
                 "format": {
-                    "C_call_code": "Function1(\t)", 
+                    "C_call_code": "Function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function1", 
                     "C_prototype": "", 
@@ -461,7 +461,7 @@
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "double SHT_rv =\t Function2(\targ1,\t arg2)", 
+                    "C_call_code": "double SHT_rv =\t Function2(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "TUT_function2", 
                     "C_prototype": "double arg1,\t int arg2", 
@@ -604,7 +604,7 @@
                 "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
                 "declgen": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
                 "format": {
-                    "C_call_code": "Sum(\tlen,\t values,\t result)", 
+                    "C_call_code": "Sum(\tlen,\t values,\t result);", 
                     "C_call_list": "len,\t values,\t result", 
                     "C_name": "TUT_sum", 
                     "C_prototype": "int len,\t int * values,\t int * result", 
@@ -698,7 +698,7 @@
                 "decl": "long long TypeLongLong(long long arg1)", 
                 "declgen": "long long TypeLongLong(long long arg1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "long long SHT_rv =\t TypeLongLong(\targ1)", 
+                    "C_call_code": "long long SHT_rv =\t TypeLongLong(\targ1);", 
                     "C_call_list": "arg1", 
                     "C_name": "TUT_type_long_long", 
                     "C_prototype": "long long arg1", 
@@ -801,7 +801,7 @@
                 "decl": "bool Function3(bool arg)", 
                 "declgen": "bool Function3(bool arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "bool SHT_rv =\t Function3(\targ)", 
+                    "C_call_code": "bool SHT_rv =\t Function3(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function3", 
                     "C_prototype": "bool arg", 
@@ -943,7 +943,7 @@
                 "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
                 "declgen": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "format": {
-                    "C_call_code": "Function3b(\targ1,\t arg2,\t arg3)", 
+                    "C_call_code": "Function3b(\targ1,\t arg2,\t arg3);", 
                     "C_call_list": "arg1,\t arg2,\t arg3", 
                     "C_name": "TUT_function3b", 
                     "C_prototype": "const bool arg1,\t bool * arg2,\t bool * arg3", 
@@ -1234,7 +1234,7 @@
                 "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "void Function4a +len(30)(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "format": {
-                    "C_call_code": "const std::string SHT_rv =\t Function4a(\tSH_arg1,\t SH_arg2)", 
+                    "C_call_code": "const std::string SHT_rv =\t Function4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4a_bufferify", 
                     "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
@@ -1391,7 +1391,7 @@
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t Function4b(\tSH_arg1,\t SH_arg2)", 
+                    "C_call_code": "const std::string & SHT_rv =\t Function4b(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4b", 
                     "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
@@ -1549,7 +1549,7 @@
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t Function4b(\tSH_arg1,\t SH_arg2)", 
+                    "C_call_code": "const std::string & SHT_rv =\t Function4b(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4b_bufferify", 
                     "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
@@ -1709,7 +1709,7 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHT_rv =\t Function5(\t)", 
+                    "C_call_code": "double SHT_rv =\t Function5(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function5", 
                     "C_prototype": "", 
@@ -1803,7 +1803,7 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHT_rv =\t Function5(\targ1)", 
+                    "C_call_code": "double SHT_rv =\t Function5(\targ1);", 
                     "C_call_list": "arg1", 
                     "C_name": "TUT_function5_arg1", 
                     "C_prototype": "double arg1", 
@@ -1974,7 +1974,7 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHT_rv =\t Function5(\targ1,\t arg2)", 
+                    "C_call_code": "double SHT_rv =\t Function5(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "TUT_function5_arg1_arg2", 
                     "C_prototype": "double arg1,\t bool arg2", 
@@ -2078,7 +2078,7 @@
                 "decl": "void Function6(const std::string& name)", 
                 "declgen": "void Function6(const std::string & name +intent(in))", 
                 "format": {
-                    "C_call_code": "Function6(\tSH_name)", 
+                    "C_call_code": "Function6(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "TUT_function6_from_name", 
                     "C_pre_call": "const std::string SH_name(name);", 
@@ -2169,7 +2169,7 @@
                 "decl": "void Function6(const std::string& name)", 
                 "declgen": "void Function6(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
-                    "C_call_code": "Function6(\tSH_name)", 
+                    "C_call_code": "Function6(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "TUT_function6_from_name_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -2265,7 +2265,7 @@
                 "decl": "void Function6(int indx)", 
                 "declgen": "void Function6(int indx +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "Function6(\tindx)", 
+                    "C_call_code": "Function6(\tindx);", 
                     "C_call_list": "indx", 
                     "C_name": "TUT_function6_from_index", 
                     "C_prototype": "int indx", 
@@ -2394,7 +2394,7 @@
                 "declgen": "void Function7(int arg +intent(in)+value)", 
                 "format": {
                     "CXX_template": "<int>", 
-                    "C_call_code": "Function7<int>(\targ)", 
+                    "C_call_code": "Function7<int>(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function7_int", 
                     "C_prototype": "int arg", 
@@ -2475,7 +2475,7 @@
                 "declgen": "void Function7(double arg +intent(in)+value)", 
                 "format": {
                     "CXX_template": "<double>", 
-                    "C_call_code": "Function7<double>(\targ)", 
+                    "C_call_code": "Function7<double>(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function7_double", 
                     "C_prototype": "double arg", 
@@ -2570,7 +2570,7 @@
                 "declgen": "int Function8()", 
                 "format": {
                     "CXX_template": "<int>", 
-                    "C_call_code": "int SHT_rv =\t Function8<int>(\t)", 
+                    "C_call_code": "int SHT_rv =\t Function8<int>(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function8_int", 
                     "C_prototype": "", 
@@ -2629,7 +2629,7 @@
                 "declgen": "double Function8()", 
                 "format": {
                     "CXX_template": "<double>", 
-                    "C_call_code": "double SHT_rv =\t Function8<double>(\t)", 
+                    "C_call_code": "double SHT_rv =\t Function8<double>(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function8_double", 
                     "C_prototype": "", 
@@ -2729,7 +2729,7 @@
                 "decl": "void Function9(double arg)", 
                 "declgen": "void Function9(double arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "Function9(\targ)", 
+                    "C_call_code": "Function9(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function9", 
                     "C_prototype": "double arg", 
@@ -2892,7 +2892,7 @@
                 "decl": "void Function10()", 
                 "declgen": "void Function10()", 
                 "format": {
-                    "C_call_code": "Function10(\t)", 
+                    "C_call_code": "Function10(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function10_0", 
                     "C_prototype": "", 
@@ -3039,7 +3039,7 @@
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "declgen": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "Function10(\tSH_name,\t arg2)", 
+                    "C_call_code": "Function10(\tSH_name,\t arg2);", 
                     "C_call_list": "SH_name,\t arg2", 
                     "C_name": "TUT_function10_1", 
                     "C_pre_call": "const std::string SH_name(name);", 
@@ -3319,7 +3319,7 @@
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "declgen": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "Function10(\tSH_name,\t arg2)", 
+                    "C_call_code": "Function10(\tSH_name,\t arg2);", 
                     "C_call_list": "SH_name,\t arg2", 
                     "C_name": "TUT_function10_1_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -3415,7 +3415,7 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\tnum)", 
+                    "C_call_code": "int SHT_rv =\t overload1(\tnum);", 
                     "C_call_list": "num", 
                     "C_name": "TUT_overload1_num", 
                     "C_prototype": "int num", 
@@ -3541,7 +3541,7 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\tnum,\t offset)", 
+                    "C_call_code": "int SHT_rv =\t overload1(\tnum,\t offset);", 
                     "C_call_list": "num,\t offset", 
                     "C_name": "TUT_overload1_num_offset", 
                     "C_prototype": "int num,\t int offset", 
@@ -3764,7 +3764,7 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\tnum,\t offset,\t stride)", 
+                    "C_call_code": "int SHT_rv =\t overload1(\tnum,\t offset,\t stride);", 
                     "C_call_list": "num,\t offset,\t stride", 
                     "C_name": "TUT_overload1_num_offset_stride", 
                     "C_prototype": "int num,\t int offset,\t int stride", 
@@ -3882,7 +3882,7 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\ttype,\t num)", 
+                    "C_call_code": "int SHT_rv =\t overload1(\ttype,\t num);", 
                     "C_call_list": "type,\t num", 
                     "C_name": "TUT_overload1_3", 
                     "C_prototype": "double type,\t int num", 
@@ -4031,7 +4031,7 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\ttype,\t num,\t offset)", 
+                    "C_call_code": "int SHT_rv =\t overload1(\ttype,\t num,\t offset);", 
                     "C_call_list": "type,\t num,\t offset", 
                     "C_name": "TUT_overload1_4", 
                     "C_prototype": "double type,\t int num,\t int offset", 
@@ -4297,7 +4297,7 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\ttype,\t num,\t offset,\t stride)", 
+                    "C_call_code": "int SHT_rv =\t overload1(\ttype,\t num,\t offset,\t stride);", 
                     "C_call_list": "type,\t num,\t offset,\t stride", 
                     "C_name": "TUT_overload1_5", 
                     "C_prototype": "double type,\t int num,\t int offset,\t int stride", 
@@ -4399,7 +4399,7 @@
                 "decl": "TypeID typefunc(TypeID arg)", 
                 "declgen": "TypeID typefunc(TypeID arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "TypeID SHT_rv =\t typefunc(\targ)", 
+                    "C_call_code": "TypeID SHT_rv =\t typefunc(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_typefunc", 
                     "C_prototype": "int arg", 
@@ -4505,7 +4505,7 @@
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
                 "declgen": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "EnumTypeID SHT_rv =\t enumfunc(\tstatic_cast<EnumTypeID>(arg))", 
+                    "C_call_code": "EnumTypeID SHT_rv =\t enumfunc(\tstatic_cast<EnumTypeID>(arg));", 
                     "C_call_list": "static_cast<EnumTypeID>(arg)", 
                     "C_name": "TUT_enumfunc", 
                     "C_post_call": "int XSHT_rv = static_cast<int>(SHT_rv);", 
@@ -4597,7 +4597,7 @@
                 "decl": "void useclass(const Class1 *arg1)", 
                 "declgen": "void useclass(const Class1 * arg1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "useclass(\tSH_arg1)", 
+                    "C_call_code": "useclass(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "TUT_useclass", 
                     "C_pre_call": "const Class1 *SH_arg1 = static_cast<const Class1 *>(static_cast<const void *>(arg1));", 
@@ -4753,7 +4753,7 @@
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
                 "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))", 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t vector_sum(\tSH_arg)", 
+                    "C_call_code": "int SHT_rv =\t vector_sum(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_sum_bufferify", 
                     "C_pre_call": "const std::vector<int> SH_arg(arg, arg + Sarg);", 
@@ -4896,7 +4896,7 @@
                 "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
                 "declgen": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out)+size(Sarg))", 
                 "format": {
-                    "C_call_code": "vector_iota(\tSH_arg)", 
+                    "C_call_code": "vector_iota(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_iota_bufferify", 
                     "C_post_call": "{\n    std::vector<int>::size_type\n        SHT_i = 0,\n        SHT_n = Sarg;\n    SHT_n = std::min(SH_arg.size(), SHT_n);\n    for(; SHT_i < SHT_n; SHT_i++) {\n        arg[SHT_i] = SH_arg[SHT_i];\n    }\n}", 
@@ -5040,7 +5040,7 @@
                 "decl": "void vector_increment(std::vector<int> &arg)", 
                 "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))", 
                 "format": {
-                    "C_call_code": "vector_increment(\tSH_arg)", 
+                    "C_call_code": "vector_increment(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_increment_bufferify", 
                     "C_post_call": "{\n    std::vector<int>::size_type\n        SHT_i = 0,\n        SHT_n = Sarg;\n    SHT_n = std::min(SH_arg.size(), SHT_n);\n    for(; SHT_i < SHT_n; SHT_i++) {\n          arg[SHT_i] = SH_arg[SHT_i];\n    }\n}", 
@@ -5202,7 +5202,7 @@
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 }, 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t vector_string_count(\tSH_arg)", 
+                    "C_call_code": "int SHT_rv =\t vector_string_count(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_string_count_bufferify", 
                     "C_pre_call": "std::vector<std::string> SH_arg;\n{\n      const char * BBB = arg;\n      std::vector<std::string>::size_type\n        SHT_i = 0,\n        SHT_n = Sarg;\n    for(; SHT_i < SHT_n; SHT_i++) {\n        SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n        BBB += Narg;\n    }\n}", 
@@ -5359,7 +5359,7 @@
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 }, 
                 "format": {
-                    "C_call_code": "vector_string_fill(\tSH_arg)", 
+                    "C_call_code": "vector_string_fill(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_custom_return_type": "int", 
                     "C_name": "TUT_vector_string_fill_bufferify", 
@@ -5512,7 +5512,7 @@
                     "brief": "append '-like' to names."
                 }, 
                 "format": {
-                    "C_call_code": "vector_string_append(\tSH_arg)", 
+                    "C_call_code": "vector_string_append(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_string_append_bufferify", 
                     "C_post_call": "{\n    char * BBB = arg;\n    std::vector<std::string>::size_type\n        SHT_i = 0,\n        SHT_n = Sarg;\n    SHT_n = std::min(SH_arg.size(),SHT_n);\n    for(; SHT_i < SHT_n; SHT_i++) {\n        ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());\n        BBB += Narg;\n    }\n}", 
@@ -5570,7 +5570,7 @@
                 "decl": "const std::string& LastFunctionCalled() +pure", 
                 "declgen": "const std::string & LastFunctionCalled() +pure", 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t LastFunctionCalled(\t)", 
+                    "C_call_code": "const std::string & SHT_rv =\t LastFunctionCalled(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_last_function_called", 
                     "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
@@ -5662,7 +5662,7 @@
                 "decl": "const std::string& LastFunctionCalled() +pure", 
                 "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t LastFunctionCalled(\t)", 
+                    "C_call_code": "const std::string & SHT_rv =\t LastFunctionCalled(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_last_function_called_bufferify", 
                     "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 

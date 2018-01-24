@@ -68,7 +68,8 @@ AA_exclass1 * AA_exclass1_ctor_0();
 
 AA_exclass1 * AA_exclass1_ctor_1(const char * name);
 
-AA_exclass1 * AA_exclass1_ctor_1_bufferify(const char * name, int Lname);
+AA_exclass1 * AA_exclass1_ctor_1_bufferify(const char * name,
+    int Lname);
 
 void AA_exclass1_dtor(AA_exclass1 * self);
 

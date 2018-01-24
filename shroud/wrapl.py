@@ -566,7 +566,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     '({LUA_state_var}, sizeof(*{LUA_userdata_var}));',
                     fmt))
             self.break_into_continuations(
-                LUA_code, options, 'c', '', 1,
+                LUA_code, options, 'c', 1,
                 wformat(
                     '{LUA_userdata_var}->{LUA_userdata_member} = '
                     'new {cxx_class}({cxx_call_list});', fmt))
@@ -590,13 +590,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             line = wformat(
                 '{LUA_this_call}{function_name}({cxx_call_list});', fmt)
             self.break_into_continuations(
-                LUA_code, options, 'c', '', 1, line)
+                LUA_code, options, 'c', 1, line)
         else:
             line = wformat(
                 '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});',
                 fmt)
             self.break_into_continuations(
-                LUA_code, options, 'c', '', 1, line)
+                LUA_code, options, 'c', 1, line)
 
 #        if 'LUA_error_pattern' in node:
 #            lfmt = util.Scope(fmt)

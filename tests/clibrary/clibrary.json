@@ -115,7 +115,7 @@
                 "decl": "void Function1()", 
                 "declgen": "void Function1()", 
                 "format": {
-                    "C_call_code": "Function1(\t)", 
+                    "C_call_code": "Function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "Function1", 
                     "C_prototype": "", 
@@ -222,7 +222,7 @@
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "double SHT_rv =\t Function2(\targ1,\t arg2)", 
+                    "C_call_code": "double SHT_rv =\t Function2(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "Function2", 
                     "C_prototype": "double arg1,\t int arg2", 
@@ -362,7 +362,7 @@
                 "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
                 "declgen": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
                 "format": {
-                    "C_call_code": "Sum(\tlen,\t values,\t result)", 
+                    "C_call_code": "Sum(\tlen,\t values,\t result);", 
                     "C_call_list": "len,\t values,\t result", 
                     "C_name": "Sum", 
                     "C_prototype": "int len,\t int * values,\t int * result", 
@@ -441,7 +441,7 @@
                 "decl": "bool Function3(bool arg)", 
                 "declgen": "bool Function3(bool arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "bool SHT_rv =\t Function3(\targ)", 
+                    "C_call_code": "bool SHT_rv =\t Function3(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "Function3", 
                     "C_prototype": "bool arg", 
@@ -580,7 +580,7 @@
                 "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
                 "declgen": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "format": {
-                    "C_call_code": "Function3b(\targ1,\t arg2,\t arg3)", 
+                    "C_call_code": "Function3b(\targ1,\t arg2,\t arg3);", 
                     "C_call_list": "arg1,\t arg2,\t arg3", 
                     "C_name": "Function3b", 
                     "C_prototype": "const bool arg1,\t bool * arg2,\t bool * arg3", 
@@ -697,7 +697,7 @@
                 "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
                 "declgen": "char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))", 
                 "format": {
-                    "C_call_code": "char * SHT_rv =\t Function4a(\targ1,\t arg2)", 
+                    "C_call_code": "char * SHT_rv =\t Function4a(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_finalize_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
                     "C_name": "Function4a", 
@@ -860,7 +860,7 @@
                 "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
                 "declgen": "void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "format": {
-                    "C_call_code": "char * SHT_rv =\t Function4a(\tSH_arg1,\t SH_arg2)", 
+                    "C_call_code": "char * SHT_rv =\t Function4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_finalize_buf": "// Function4a allocates memory which must be released after it is copied\n// into the Fortran argument or else it will leak.\nfree({C_result});\n", 
                     "C_name": "CLI_function4a_bufferify", 

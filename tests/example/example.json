@@ -60,7 +60,7 @@
                         "decl": "ExClass1()", 
                         "declgen": "ExClass1()", 
                         "format": {
-                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1()", 
+                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1();", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_ctor_0", 
                             "C_prototype": "", 
@@ -166,7 +166,7 @@
                             "return": "return new instance"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1(&SH_name)", 
+                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1", 
                             "C_pre_call": "const std::string SH_name(name);", 
@@ -266,7 +266,7 @@
                             "return": "return new instance"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1(&SH_name)", 
+                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1_bufferify", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -309,7 +309,7 @@
                             "description": "longer description joined with previous line"
                         }, 
                         "format": {
-                            "C_call_code": "delete SH_this", 
+                            "C_call_code": "delete SH_this;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_dtor", 
                             "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
@@ -414,7 +414,7 @@
                         "decl": "int incrementCount(int incr)", 
                         "declgen": "int incrementCount(int incr +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "int SHT_rv =\t SH_this->incrementCount(\tincr)", 
+                            "C_call_code": "int SHT_rv =\t SH_this->incrementCount(\tincr);", 
                             "C_call_list": "incr", 
                             "C_name": "AA_exclass1_increment_count", 
                             "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
@@ -482,7 +482,7 @@
                         "decl": "const string& getName() const", 
                         "declgen": "const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t)", 
+                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name", 
                             "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
@@ -584,7 +584,7 @@
                         "decl": "const string& getName() const", 
                         "declgen": "void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t)", 
+                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
@@ -637,7 +637,7 @@
                             "brief": "helper function for Fortran to get length of name."
                         }, 
                         "format": {
-                            "C_call_code": "int SHT_rv =\t SH_this->GetNameLength(\t)", 
+                            "C_call_code": "int SHT_rv =\t SH_this->GetNameLength(\t);", 
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n", 
                             "C_name": "AA_exclass1_get_name_length", 
@@ -702,7 +702,7 @@
                         "decl": "const string& getNameErrorCheck() const", 
                         "declgen": "const string & getNameErrorCheck() const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameErrorCheck(\t)", 
+                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameErrorCheck(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_check", 
                             "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
@@ -799,7 +799,7 @@
                         "decl": "const string& getNameErrorCheck() const", 
                         "declgen": "void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameErrorCheck(\t)", 
+                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameErrorCheck(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_check_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
@@ -857,7 +857,7 @@
                         "decl": "const string& getNameArg() const", 
                         "declgen": "const string & getNameArg() const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameArg(\t)", 
+                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameArg(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_arg", 
                             "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
@@ -947,7 +947,7 @@
                         "decl": "const string& getNameArg() const", 
                         "declgen": "void getNameArg(string & name +intent(out)+len(Nname)) const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameArg(\t)", 
+                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameArg(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_arg_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(name, ' ', Nname);\n} else {\n    ShroudStrCopy(name, Nname, SHT_rv.c_str());\n}", 
@@ -1070,7 +1070,7 @@
                         "decl": "ExClass2 *getRoot()", 
                         "declgen": "ExClass2 * getRoot()", 
                         "format": {
-                            "C_call_code": "ExClass2 * SHT_rv =\t SH_this->getRoot(\t)", 
+                            "C_call_code": "ExClass2 * SHT_rv =\t SH_this->getRoot(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_root", 
                             "C_post_call": "AA_exclass2 * XSHT_rv = static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));", 
@@ -1182,7 +1182,7 @@
                         "decl": "int  getValue(int value)", 
                         "declgen": "int getValue(int value +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "int SHT_rv =\t SH_this->getValue(\tvalue)", 
+                            "C_call_code": "int SHT_rv =\t SH_this->getValue(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass1_get_value_from_int", 
                             "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
@@ -1294,7 +1294,7 @@
                         "decl": "long getValue(long value)", 
                         "declgen": "long getValue(long value +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "long SHT_rv =\t SH_this->getValue(\tvalue)", 
+                            "C_call_code": "long SHT_rv =\t SH_this->getValue(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass1_get_value_1", 
                             "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
@@ -1353,7 +1353,7 @@
                         "decl": "void *getAddr()", 
                         "declgen": "void * getAddr()", 
                         "format": {
-                            "C_call_code": "void * SHT_rv =\t SH_this->getAddr(\t)", 
+                            "C_call_code": "void * SHT_rv =\t SH_this->getAddr(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_addr", 
                             "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
@@ -1459,7 +1459,7 @@
                         "decl": "bool hasAddr(bool in)", 
                         "declgen": "bool hasAddr(bool in +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "bool SHT_rv =\t SH_this->hasAddr(\tin)", 
+                            "C_call_code": "bool SHT_rv =\t SH_this->hasAddr(\tin);", 
                             "C_call_list": "in", 
                             "C_name": "AA_exclass1_has_addr", 
                             "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
@@ -1507,7 +1507,7 @@
                         "decl": "void SplicerSpecial()", 
                         "declgen": "void SplicerSpecial()", 
                         "format": {
-                            "C_call_code": "SH_this->SplicerSpecial(\t)", 
+                            "C_call_code": "SH_this->SplicerSpecial(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_splicer_special", 
                             "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
@@ -1645,7 +1645,7 @@
                             "brief": "constructor"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass2 * SHT_rv = new ExClass2(&SH_name)", 
+                            "C_call_code": "ExClass2 * SHT_rv = new ExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor", 
                             "C_pre_call": "const std::string SH_name(name);", 
@@ -1740,7 +1740,7 @@
                             "brief": "constructor"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass2 * SHT_rv = new ExClass2(&SH_name)", 
+                            "C_call_code": "ExClass2 * SHT_rv = new ExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor_bufferify", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -1782,7 +1782,7 @@
                             "brief": "destructor"
                         }, 
                         "format": {
-                            "C_call_code": "delete SH_this", 
+                            "C_call_code": "delete SH_this;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_dtor", 
                             "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
@@ -1847,7 +1847,7 @@
                         "decl": "const string& getName() const", 
                         "declgen": "const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t)", 
+                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name", 
                             "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
@@ -1946,7 +1946,7 @@
                         "decl": "const string& getName() const", 
                         "declgen": "void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t)", 
+                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
@@ -2005,7 +2005,7 @@
                         "decl": "const string& getName2()", 
                         "declgen": "const string & getName2()", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName2(\t)", 
+                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName2(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name2", 
                             "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
@@ -2102,7 +2102,7 @@
                         "decl": "const string& getName2()", 
                         "declgen": "void getName2(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName2(\t)", 
+                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName2(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name2_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
@@ -2161,7 +2161,7 @@
                         "decl": "string& getName3() const", 
                         "declgen": "string & getName3() const", 
                         "format": {
-                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName3(\t)", 
+                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName3(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name3", 
                             "C_post_call": "char * XSHT_rv = SHT_rv.c_str();", 
@@ -2258,7 +2258,7 @@
                         "decl": "string& getName3() const", 
                         "declgen": "void getName3(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
-                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName3(\t)", 
+                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName3(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name3_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
@@ -2317,7 +2317,7 @@
                         "decl": "string& getName4()", 
                         "declgen": "string & getName4()", 
                         "format": {
-                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName4(\t)", 
+                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName4(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name4", 
                             "C_post_call": "char * XSHT_rv = SHT_rv.c_str();", 
@@ -2414,7 +2414,7 @@
                         "decl": "string& getName4()", 
                         "declgen": "void getName4(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                         "format": {
-                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName4(\t)", 
+                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName4(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name4_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
@@ -2467,7 +2467,7 @@
                             "brief": "helper function for Fortran"
                         }, 
                         "format": {
-                            "C_call_code": "int SHT_rv =\t SH_this->GetNameLength(\t)", 
+                            "C_call_code": "int SHT_rv =\t SH_this->GetNameLength(\t);", 
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n", 
                             "C_name": "AA_exclass2_get_name_length", 
@@ -2587,7 +2587,7 @@
                         "decl": "ExClass1 *get_class1(const ExClass1 *in)", 
                         "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "ExClass1 * SHT_rv =\t SH_this->get_class1(\tSH_in)", 
+                            "C_call_code": "ExClass1 * SHT_rv =\t SH_this->get_class1(\tSH_in);", 
                             "C_call_list": "SH_in", 
                             "C_name": "AA_exclass2_get_class1", 
                             "C_post_call": "AA_exclass1 * XSHT_rv = static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));", 
@@ -2674,7 +2674,7 @@
                         "decl": "void* declare(TypeID type, SidreLength len = 1)", 
                         "declgen": "void * declare(TypeID type +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "SH_this->declare(\tgetTypeID(type))", 
+                            "C_call_code": "SH_this->declare(\tgetTypeID(type));", 
                             "C_call_list": "getTypeID(type)", 
                             "C_name": "AA_exclass2_declare_0", 
                             "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
@@ -2963,7 +2963,7 @@
                         "decl": "void* declare(TypeID type, SidreLength len = 1)", 
                         "declgen": "void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "SH_this->declare(\tgetTypeID(type),\t len)", 
+                            "C_call_code": "SH_this->declare(\tgetTypeID(type),\t len);", 
                             "C_call_list": "getTypeID(type),\t len", 
                             "C_name": "AA_exclass2_declare_1", 
                             "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
@@ -3184,7 +3184,7 @@
                         "decl": "void destroyall()", 
                         "declgen": "void destroyall()", 
                         "format": {
-                            "C_call_code": "SH_this->destroyall(\t)", 
+                            "C_call_code": "SH_this->destroyall(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_destroyall", 
                             "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
@@ -3241,7 +3241,7 @@
                         "decl": "TypeID getTypeID() const", 
                         "declgen": "TypeID getTypeID() const", 
                         "format": {
-                            "C_call_code": "TypeID SHT_rv =\t SH_this->getTypeID(\t)", 
+                            "C_call_code": "TypeID SHT_rv =\t SH_this->getTypeID(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_type_id", 
                             "C_post_call": "int XSHT_rv = static_cast<int>(SHT_rv);", 
@@ -3378,7 +3378,7 @@
                         "declgen": "void setValue(int value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<int>", 
-                            "C_call_code": "SH_this->setValue<int>(\tvalue)", 
+                            "C_call_code": "SH_this->setValue<int>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_int", 
                             "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
@@ -3462,7 +3462,7 @@
                         "declgen": "void setValue(long value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<long>", 
-                            "C_call_code": "SH_this->setValue<long>(\tvalue)", 
+                            "C_call_code": "SH_this->setValue<long>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_long", 
                             "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
@@ -3546,7 +3546,7 @@
                         "declgen": "void setValue(float value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<float>", 
-                            "C_call_code": "SH_this->setValue<float>(\tvalue)", 
+                            "C_call_code": "SH_this->setValue<float>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_float", 
                             "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
@@ -3630,7 +3630,7 @@
                         "declgen": "void setValue(double value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<double>", 
-                            "C_call_code": "SH_this->setValue<double>(\tvalue)", 
+                            "C_call_code": "SH_this->setValue<double>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_double", 
                             "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
@@ -3728,7 +3728,7 @@
                         "declgen": "int getValue()", 
                         "format": {
                             "CXX_template": "<int>", 
-                            "C_call_code": "int SHT_rv =\t SH_this->getValue<int>(\t)", 
+                            "C_call_code": "int SHT_rv =\t SH_this->getValue<int>(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_value_int", 
                             "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
@@ -3790,7 +3790,7 @@
                         "declgen": "double getValue()", 
                         "format": {
                             "CXX_template": "<double>", 
-                            "C_call_code": "double SHT_rv =\t SH_this->getValue<double>(\t)", 
+                            "C_call_code": "double SHT_rv =\t SH_this->getValue<double>(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_value_double", 
                             "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
@@ -3887,7 +3887,7 @@
                         "decl": "void exfunc()", 
                         "declgen": "void exfunc()", 
                         "format": {
-                            "C_call_code": "SH_this->exfunc(\t)", 
+                            "C_call_code": "SH_this->exfunc(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass3_exfunc", 
                             "C_pre_call": "ExClass3 *SH_this = static_cast<ExClass3 *>(static_cast<void *>(self));", 
@@ -4052,7 +4052,7 @@
                 "decl": "void local_function1()", 
                 "declgen": "void local_function1()", 
                 "format": {
-                    "C_call_code": "local_function1(\t)", 
+                    "C_call_code": "local_function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_local_function1", 
                     "C_prototype": "", 
@@ -4156,7 +4156,7 @@
                 "decl": "bool isNameValid(const std::string& name)", 
                 "declgen": "bool isNameValid(const std::string & name +intent(in))", 
                 "format": {
-                    "C_call_code": "bool SHT_rv =\t isNameValid(\tSH_name)", 
+                    "C_call_code": "bool SHT_rv =\t isNameValid(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_code": "return name != NULL;", 
                     "C_name": "AA_is_name_valid", 
@@ -4250,7 +4250,7 @@
                 "decl": "bool isNameValid(const std::string& name)", 
                 "declgen": "bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
-                    "C_call_code": "bool SHT_rv =\t isNameValid(\tSH_name)", 
+                    "C_call_code": "bool SHT_rv =\t isNameValid(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_code": "return name != NULL;", 
                     "C_name": "AA_is_name_valid_bufferify", 
@@ -4299,7 +4299,7 @@
                 "decl": "bool isInitialized()", 
                 "declgen": "bool isInitialized()", 
                 "format": {
-                    "C_call_code": "bool SHT_rv =\t isInitialized(\t)", 
+                    "C_call_code": "bool SHT_rv =\t isInitialized(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_is_initialized", 
                     "C_prototype": "", 
@@ -4505,7 +4505,7 @@
                 "decl": "void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))", 
                 "declgen": "void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "format": {
-                    "C_call_code": "checkBool(\targ1,\t arg2,\t arg3)", 
+                    "C_call_code": "checkBool(\targ1,\t arg2,\t arg3);", 
                     "C_call_list": "arg1,\t arg2,\t arg3", 
                     "C_name": "AA_check_bool", 
                     "C_prototype": "bool arg1,\t bool * arg2,\t bool * arg3", 
@@ -4607,7 +4607,7 @@
                 "decl": "void test_names(const std::string &name)", 
                 "declgen": "void test_names(const std::string & name +intent(in))", 
                 "format": {
-                    "C_call_code": "test_names(\tSH_name)", 
+                    "C_call_code": "test_names(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "AA_test_names", 
                     "C_pre_call": "const std::string SH_name(name);", 
@@ -4698,7 +4698,7 @@
                 "decl": "void test_names(const std::string &name)", 
                 "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
-                    "C_call_code": "test_names(\tSH_name)", 
+                    "C_call_code": "test_names(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "AA_test_names_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -4840,7 +4840,7 @@
                 "decl": "void test_names(const std::string &name, int flag)", 
                 "declgen": "void test_names(const std::string & name +intent(in), int flag +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "test_names(\tSH_name,\t flag)", 
+                    "C_call_code": "test_names(\tSH_name,\t flag);", 
                     "C_call_list": "SH_name,\t flag", 
                     "C_name": "AA_test_names_flag", 
                     "C_pre_call": "const std::string SH_name(name);", 
@@ -4957,7 +4957,7 @@
                 "decl": "void test_names(const std::string &name, int flag)", 
                 "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "test_names(\tSH_name,\t flag)", 
+                    "C_call_code": "test_names(\tSH_name,\t flag);", 
                     "C_call_list": "SH_name,\t flag", 
                     "C_name": "AA_test_names_flag_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -4999,7 +4999,7 @@
                 "decl": "void testoptional(int i = 1, long j=2)", 
                 "declgen": "void testoptional()", 
                 "format": {
-                    "C_call_code": "testoptional(\t)", 
+                    "C_call_code": "testoptional(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_testoptional_0", 
                     "C_prototype": "", 
@@ -5080,7 +5080,7 @@
                 "decl": "void testoptional(int i = 1, long j=2)", 
                 "declgen": "void testoptional(int i=1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "testoptional(\ti)", 
+                    "C_call_code": "testoptional(\ti);", 
                     "C_call_list": "i", 
                     "C_name": "AA_testoptional_1", 
                     "C_prototype": "int i", 
@@ -5238,7 +5238,7 @@
                 "decl": "void testoptional(int i = 1, long j=2)", 
                 "declgen": "void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "testoptional(\ti,\t j)", 
+                    "C_call_code": "testoptional(\ti,\t j);", 
                     "C_call_list": "i,\t j", 
                     "C_name": "AA_testoptional_2", 
                     "C_prototype": "int i,\t long j", 
@@ -5290,7 +5290,7 @@
                 "decl": "size_t test_size_t()", 
                 "declgen": "size_t test_size_t()", 
                 "format": {
-                    "C_call_code": "size_t SHT_rv =\t test_size_t(\t)", 
+                    "C_call_code": "size_t SHT_rv =\t test_size_t(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_test_size_t", 
                     "C_prototype": "", 
@@ -5386,7 +5386,7 @@
                 "decl": "void testmpi(MPI_Comm comm)", 
                 "declgen": "void testmpi(MPI_Comm comm +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "testmpi(\tMPI_Comm_f2c(comm))", 
+                    "C_call_code": "testmpi(\tMPI_Comm_f2c(comm));", 
                     "C_call_list": "MPI_Comm_f2c(comm)", 
                     "C_name": "AA_testmpi", 
                     "C_prototype": "MPI_Fint comm", 
@@ -5486,7 +5486,7 @@
                 "decl": "void testgroup1(DataGroup * grp)", 
                 "declgen": "void testgroup1(DataGroup * grp +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "testgroup1(\tSH_grp)", 
+                    "C_call_code": "testgroup1(\tSH_grp);", 
                     "C_call_list": "SH_grp", 
                     "C_name": "AA_testgroup1", 
                     "C_pre_call": "axom::sidre::Group *SH_grp = static_cast<axom::sidre::Group *>(static_cast<void *>(grp));", 
@@ -5587,7 +5587,7 @@
                 "decl": "void testgroup2(const DataGroup * grp)", 
                 "declgen": "void testgroup2(const DataGroup * grp +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "testgroup2(\tSH_grp)", 
+                    "C_call_code": "testgroup2(\tSH_grp);", 
                     "C_call_list": "SH_grp", 
                     "C_name": "AA_testgroup2", 
                     "C_pre_call": "const axom::sidre::Group *SH_grp = static_cast<const axom::sidre::Group *>(static_cast<const void *>(grp));", 
@@ -6115,7 +6115,7 @@
                 "decl": "void verlongfunctionname1(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
                 "declgen": "void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "verlongfunctionname1(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)", 
+                    "C_call_code": "verlongfunctionname1(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
                     "C_name": "AA_verlongfunctionname1", 
                     "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10", 
@@ -6644,7 +6644,7 @@
                 "decl": "void verlongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
                 "declgen": "void verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "verlongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)", 
+                    "C_call_code": "verlongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
                     "C_name": "AA_verlongfunctionname2", 
                     "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10", 
