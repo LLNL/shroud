@@ -236,9 +236,9 @@ void AA_verlongfunctionname1(int verylongname1, int verylongname2,
 // splicer end function.verlongfunctionname1
 }
 
-// void verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+// int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
 // function_index=61
-void AA_verlongfunctionname2(
+int AA_verlongfunctionname2(
     int verylongname1,
     int verylongname2,
     int verylongname3,
@@ -251,7 +251,8 @@ void AA_verlongfunctionname2(
     int verylongname10)
 {
 // splicer begin function.verlongfunctionname2
-    verlongfunctionname2(
+    int SHT_rv =
+        verlongfunctionname2(
         verylongname1,
         verylongname2,
         verylongname3,
@@ -262,7 +263,7 @@ void AA_verlongfunctionname2(
         verylongname8,
         verylongname9,
         verylongname10);
-    return;
+    return SHT_rv;
 // splicer end function.verlongfunctionname2
 }
 

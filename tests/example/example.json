@@ -6484,8 +6484,15 @@
                         }
                     }
                 }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_deref": ".", 
+                        "cxx_rv_decl": "int SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
                 "_function_index": 61, 
-                "_subprogram": "subroutine", 
+                "_subprogram": "function", 
                 "ast": {
                     "args": [
                         {
@@ -6638,27 +6645,28 @@
                     "fattrs": {}, 
                     "func_const": false, 
                     "specifier": [
-                        "void"
+                        "int"
                     ]
                 }, 
-                "decl": "void verlongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
-                "declgen": "void verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)", 
+                "decl": "int verlongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
+                "declgen": "int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "verlongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
+                    "C_call_code": "int SHT_rv =\t verlongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
                     "C_name": "AA_verlongfunctionname2", 
                     "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10", 
-                    "C_return_code": "return;", 
-                    "C_return_type": "void", 
+                    "C_return_code": "return SHT_rv;", 
+                    "C_return_type": "int", 
                     "F_C_call": "c_verlongfunctionname2", 
                     "F_C_name": "c_verlongfunctionname2", 
                     "F_arg_c_call": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
                     "F_arguments": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
-                    "F_call_code": "call c_verlongfunctionname2(verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)", 
+                    "F_call_code": "SHT_rv = c_verlongfunctionname2(verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)", 
                     "F_name_function": "verlongfunctionname2", 
                     "F_name_generic": "verlongfunctionname2", 
                     "F_name_impl": "verlongfunctionname2", 
-                    "F_subprogram": "subroutine", 
+                    "F_result_clause": "\nresult(SHT_rv)", 
+                    "F_subprogram": "function", 
                     "LUA_name": "verlongfunctionname2", 
                     "LUA_name_impl": "l_verlongfunctionname2", 
                     "PY_name_impl": "PP_verlongfunctionname2", 

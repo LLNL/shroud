@@ -196,7 +196,7 @@ module userlibrary_mod
             integer(C_INT), value, intent(IN) :: verylongname10
         end subroutine c_verlongfunctionname1
 
-        subroutine c_verlongfunctionname2( &
+        function c_verlongfunctionname2( &
                 verylongname1, &
                 verylongname2, &
                 verylongname3, &
@@ -207,6 +207,7 @@ module userlibrary_mod
                 verylongname8, &
                 verylongname9, &
                 verylongname10) &
+                result(SHT_rv) &
                 bind(C, name="AA_verlongfunctionname2")
             use iso_c_binding, only : C_INT
             implicit none
@@ -220,7 +221,8 @@ module userlibrary_mod
             integer(C_INT), value, intent(IN) :: verylongname8
             integer(C_INT), value, intent(IN) :: verylongname9
             integer(C_INT), value, intent(IN) :: verylongname10
-        end subroutine c_verlongfunctionname2
+            integer(C_INT) :: SHT_rv
+        end function c_verlongfunctionname2
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -380,9 +382,9 @@ contains
         ! splicer end function.verlongfunctionname1
     end subroutine verlongfunctionname1
 
-    ! void verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+    ! int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
     ! function_index=61
-    subroutine verlongfunctionname2( &
+    function verlongfunctionname2( &
             verylongname1, &
             verylongname2, &
             verylongname3, &
@@ -392,7 +394,8 @@ contains
             verylongname7, &
             verylongname8, &
             verylongname9, &
-            verylongname10)
+            verylongname10) &
+            result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: verylongname1
         integer(C_INT), value, intent(IN) :: verylongname2
@@ -404,8 +407,9 @@ contains
         integer(C_INT), value, intent(IN) :: verylongname8
         integer(C_INT), value, intent(IN) :: verylongname9
         integer(C_INT), value, intent(IN) :: verylongname10
+        integer(C_INT) :: SHT_rv
         ! splicer begin function.verlongfunctionname2
-        call c_verlongfunctionname2(verylongname1, &
+        SHT_rv = c_verlongfunctionname2(verylongname1, &
             verylongname2, &
             verylongname3, &
             verylongname4, &
@@ -416,7 +420,7 @@ contains
             verylongname9, &
             verylongname10)
         ! splicer end function.verlongfunctionname2
-    end subroutine verlongfunctionname2
+    end function verlongfunctionname2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

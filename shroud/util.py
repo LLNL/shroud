@@ -313,10 +313,12 @@ class WrapperMixin(object):
         part = ''
         for ch in line:
             if ch == '\t':
-                parts.append(part)
+                if part:
+                    parts.append(part)
                 part = ''
             elif ch == '\n':
-                parts.append(part)
+                if part:
+                    parts.append(part)
                 part = ''
                 parts.append('\n')
             else:
@@ -333,24 +335,32 @@ class WrapperMixin(object):
                 # A tuple created by continued_line
                 cont, indent, linelen, parts = line
                 subline = '    ' * self.indent
-                delimiter = ''
                 nparts = 0
                 for part in parts:
-                    if part == '\n':
-                        # save delimiter for next part
-                        delimiter = part
+                    if not part:
+                        # \t\n results in 
                         continue
-                    elif delimiter == '\n' or (
-                            len(subline) + len(part) > linelen):
-                        # if the first part causes an overflow, there
-                        # will not be anything to continue yet.
+                    dump = False
+                    save = True
+                    if part == '\n':
+                        # write out line now, this must not be the last part
+                        dump = True
+                        save = False   # don't save newline
+                    elif len(subline) + len(part) > linelen:
+                        # Next line will be too long, dump line now
+                        # unless part by itself is exceeds linelen
                         if nparts > 0:
-                            fp.write(subline + cont + '\n')
-                            subline = '    ' * (self.indent + indent)
-                            part = part.lstrip()
-                    delimiter = ''
-                    subline += part
-                    nparts += 1
+                            dump = True
+                    if dump:
+                        fp.write(subline + cont + '\n')
+                        subline = '    ' * (self.indent + indent)
+                        nparts = 0
+                        part = part.lstrip()
+                        if not part:
+                            save = False
+                    if save:
+                        subline += part
+                        nparts += 1
                 fp.write(subline + '\n')
             elif isinstance(line, int):
                 self.indent += int(line)

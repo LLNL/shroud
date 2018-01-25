@@ -468,7 +468,7 @@ PP_verlongfunctionname2(
     {
         return NULL;
     }
-    verlongfunctionname2(verylongname1,
+    int rv = verlongfunctionname2(verylongname1,
         verylongname2,
         verylongname3,
         verylongname4,
@@ -478,7 +478,7 @@ PP_verlongfunctionname2(
         verylongname8,
         verylongname9,
         verylongname10);
-    Py_RETURN_NONE;
+    return Py_BuildValue("i", rv);
 // splicer end function.verlongfunctionname2
 }
 

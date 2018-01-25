@@ -925,7 +925,7 @@ class Wrapf(util.WrapperMixin):
             self.break_into_continuations(
                 impl, options, 'fortran', 2,
                 wformat('{F_subprogram} {F_name_impl}(\t'
-                        '{F_arguments})\t{F_result_clause}',
+                        '{F_arguments}){F_result_clause}',
                         fmt_func))
             impl.append(1)
             impl.extend(arg_f_use)
