@@ -704,7 +704,7 @@ class Declaration(Node):
         if self.storage:
             d['storage'] = self.storage
         if self.params is not None:
-            d['args'] = [ x._to_dict() for x in self.params]
+            d['params'] = [ x._to_dict() for x in self.params]
             d['fattrs'] = self.fattrs
             d['func_const'] = self.func_const
         else:

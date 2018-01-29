@@ -99,7 +99,6 @@
                 "_function_index": 0, 
                 "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [], 
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
@@ -108,6 +107,7 @@
                     }, 
                     "fattrs": {}, 
                     "func_const": false, 
+                    "params": [], 
                     "specifier": [
                         "void"
                     ]
@@ -177,7 +177,15 @@
                 "_function_index": 1, 
                 "_subprogram": "function", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function2", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -207,14 +215,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function2", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "double"
                     ]
