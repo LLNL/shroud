@@ -375,7 +375,8 @@ return 1;""", fmt)
 #            is_const = False
 #        else:
 #            is_const = None
-        fmt.PY_rv_decl = ast.gen_arg_as_cxx(name=fmt.PY_result)  # return value
+        fmt.PY_rv_decl = ast.gen_arg_as_cxx(
+            name=fmt.PY_result, params=None)  # return value
 
         PY_decl = []     # variables for function
         PY_code = []

@@ -452,7 +452,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # return value
 #        fmt.rv_decl = self.std_c_decl(
 #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
-        fmt.rv_decl = ast.gen_arg_as_cxx(name=fmt.LUA_result)
+        fmt.rv_decl = ast.gen_arg_as_cxx(
+            name=fmt.LUA_result, params=None)
 
         LUA_decl = []  # declare variables and pop values
         LUA_code = []  # call C++ function

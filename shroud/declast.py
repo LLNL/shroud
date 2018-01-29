@@ -643,6 +643,18 @@ class Declaration(Node):
                 nlevels += 1
         return nlevels
 
+    def is_function_pointer(self):
+        """Return number of levels of pointers.
+        """
+        nlevels = 0
+        if self.declarator is None:
+            return False
+        if self.declarator.func is None:
+            return False
+        if not self.declarator.func.pointer:
+            return False
+        return True
+
     def _as_arg(self, name):
         """Create an argument to hold the function result.
         This is intended for pointer arguments, char or string.
@@ -814,17 +826,17 @@ class Declaration(Node):
         No parameters or attributes.
         """
         decl = []
-        self.gen_arg_work(decl, lang='cxx_type', **kwargs)
+        self.gen_arg_as_lang(decl, lang='cxx_type', **kwargs)
         return ''.join(decl)
 
     def gen_arg_as_c(self, **kwargs):
         """Return a string of the unparsed declaration.
         """
         decl = []
-        self.gen_arg_work(decl, lang='c_type', **kwargs)
+        self.gen_arg_as_lang(decl, lang='c_type', **kwargs)
         return ''.join(decl)
 
-    def gen_arg_work(self, decl, lang, **kwargs):
+    def gen_arg_as_lang(self, decl, lang, **kwargs):
         """Generate an argument for the C wrapper.
         C++ types are converted to C types using typemap.
 
@@ -862,6 +874,17 @@ class Declaration(Node):
         else:
             declarator.gen_decl_work(decl, **kwargs)
 
+        params = kwargs.get('params', self.params)
+        if params is not None:
+            decl.append('(')
+            comma = ''
+            for arg in params:
+                decl.append(comma)
+                arg.gen_decl_work(decl, attrs=None)
+                comma = ', ' 
+            decl.append(')')
+            if self.func_const:
+                decl.append(' const')
 
 ##############
 
