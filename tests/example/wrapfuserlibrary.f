@@ -68,7 +68,10 @@ module userlibrary_mod
             type(C_PTR) :: func3
         end function func3_get
 
-        subroutine func4_get(verylongname1, verylongname2, verylongname3, verylongname4, verylongname5, verylongname6, verylongname7, verylongname8, verylongname9, verylongname10) bind(C)
+        subroutine func4_get(verylongname1, verylongname2, &
+            verylongname3, verylongname4, verylongname5, verylongname6, &
+            verylongname7, verylongname8, verylongname9, &
+            verylongname10) bind(C)
             integer(C_INT) :: verylongname1
             integer(C_INT) :: verylongname2
             integer(C_INT) :: verylongname3
@@ -258,17 +261,10 @@ module userlibrary_mod
             integer(C_INT), value, intent(IN) :: verylongname10
         end subroutine c_verlongfunctionname1
 
-        function c_verlongfunctionname2( &
-                verylongname1, &
-                verylongname2, &
-                verylongname3, &
-                verylongname4, &
-                verylongname5, &
-                verylongname6, &
-                verylongname7, &
-                verylongname8, &
-                verylongname9, &
-                verylongname10) &
+        function c_verlongfunctionname2(verylongname1, verylongname2, &
+                verylongname3, verylongname4, verylongname5, &
+                verylongname6, verylongname7, verylongname8, &
+                verylongname9, verylongname10) &
                 result(SHT_rv) &
                 bind(C, name="AA_verlongfunctionname2")
             use iso_c_binding, only : C_INT
@@ -459,17 +455,9 @@ contains
 
     ! int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
     ! function_index=65
-    function verlongfunctionname2( &
-            verylongname1, &
-            verylongname2, &
-            verylongname3, &
-            verylongname4, &
-            verylongname5, &
-            verylongname6, &
-            verylongname7, &
-            verylongname8, &
-            verylongname9, &
-            verylongname10) &
+    function verlongfunctionname2(verylongname1, verylongname2, &
+            verylongname3, verylongname4, verylongname5, verylongname6, &
+            verylongname7, verylongname8, verylongname9, verylongname10) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: verylongname1
@@ -484,16 +472,9 @@ contains
         integer(C_INT), value, intent(IN) :: verylongname10
         integer(C_INT) :: SHT_rv
         ! splicer begin function.verlongfunctionname2
-        SHT_rv = c_verlongfunctionname2(verylongname1, &
-            verylongname2, &
-            verylongname3, &
-            verylongname4, &
-            verylongname5, &
-            verylongname6, &
-            verylongname7, &
-            verylongname8, &
-            verylongname9, &
-            verylongname10)
+        SHT_rv = c_verlongfunctionname2(verylongname1, verylongname2, &
+            verylongname3, verylongname4, verylongname5, verylongname6, &
+            verylongname7, verylongname8, verylongname9, verylongname10)
         ! splicer end function.verlongfunctionname2
     end function verlongfunctionname2
 

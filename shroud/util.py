@@ -284,48 +284,64 @@ class WrapperMixin(object):
                 # convert None to blank line
                 fp.write(self.comment + '\n')
 
-    def break_into_continuations(self, out, options, 
-                                 lang, indent, line):
-        """Break line into parts to control continuations.
-
-        Tab marks potential linebreak, newlines mark explicit 
-        linebreak.
-
-        Add to out a tuple which tells write_lines where to add
-        continuations.
-
-        Return a tuple
-         ( cont, indent, line_length, [ 'part1', 'part2', ..., 'partn' ]
-
-                fortran    c
-        cont     ' &'      ''           continuation string
-        indent   2         1            indent level for continued lines
+    def write_continue(self, fp, line):
         """
+        If the line starts with \r, then double the indent.
+        Helpful for Fortran declarations.
+        """
+        linelen = self.linelen
+        indent = 1
+        subline = '    ' * self.indent
+        nparts = 0
 
-        if lang == 'c':
-            cont = ''
-            linelen = options.C_line_length
-        else:
-            cont = ' &'
-            linelen = options.F_line_length
+        if line[0] == '\r':
+            indent = 2
+            line = line[1:]
 
+        # Find tabs and formfeeds
         parts = []
         part = ''
         for ch in line:
             if ch == '\t':
                 if part:
                     parts.append(part)
-                part = ''
-            elif ch == '\n':
+                    part = ''
+            elif ch == '\f':
                 if part:
                     parts.append(part)
-                part = ''
-                parts.append('\n')
+                    part = ''
+                parts.append('\f')
             else:
                 part += ch
         if part:
             parts.append(part)
-        out.append((cont, indent, linelen, parts))
+
+        for part in parts:
+            if not part:
+                # \t\f results in 
+                continue
+            dump = False
+            save = True
+            if part == '\f':  # formfeed
+                # write out line now, this must not be the last part
+                dump = True
+                save = False   # don't save newline
+            elif len(subline) + len(part) > linelen:
+                # Next line will be too long, dump line now
+                # unless part by itself is exceeds linelen
+                if nparts > 0:
+                    dump = True
+            if dump:
+                fp.write(subline + self.cont + '\n')
+                subline = '    ' * (self.indent + indent)
+                nparts = 0
+                part = part.lstrip()
+                if not part:
+                    save = False
+            if save:
+                subline += part
+                nparts += 1
+        fp.write(subline + '\n')
 
     def write_lines(self, fp, lines):
         """ Write lines with indention and newlines.
@@ -365,7 +381,6 @@ class WrapperMixin(object):
             elif isinstance(line, int):
                 self.indent += int(line)
             else:
-                line = line.replace('\t', '') # strip out continuation markers
                 for subline in line.split("\n"):
                     if len(subline) == 0:
                         fp.write('\n')
@@ -374,9 +389,7 @@ class WrapperMixin(object):
                         fp.write(subline)
                         fp.write('\n')
                     else:
-                        fp.write('    ' * self.indent)
-                        fp.write(subline)
-                        fp.write('\n')
+                        self.write_continue(fp, subline)
 
     def write_doxygen_file(self, output, fname, library, cls):
         """ Write a doxygen comment block for a file.

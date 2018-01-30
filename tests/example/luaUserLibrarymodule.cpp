@@ -660,16 +660,9 @@ static int l_verlongfunctionname2(lua_State *L)
     int verylongname8 = lua_tointeger(L, 8);
     int verylongname9 = lua_tointeger(L, 9);
     int verylongname10 = lua_tointeger(L, 10);
-    int rv = verlongfunctionname2(verylongname1,
-        verylongname2,
-        verylongname3,
-        verylongname4,
-        verylongname5,
-        verylongname6,
-        verylongname7,
-        verylongname8,
-        verylongname9,
-        verylongname10);
+    int rv = verlongfunctionname2(verylongname1, verylongname2,
+        verylongname3, verylongname4, verylongname5, verylongname6,
+        verylongname7, verylongname8, verylongname9, verylongname10);
     lua_pushinteger(L, rv);
     return 1;
     // splicer end function.verlongfunctionname2

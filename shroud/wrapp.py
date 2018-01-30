@@ -65,6 +65,8 @@ class Wrapp(util.WrapperMixin):
         self.log = config.log
         self._init_splicer(splicers)
         self.comment = '//'
+        self.cont = ''
+        self.linelen = newlibrary.options.C_line_length
 
     def XXX_begin_output_file(self):
         """Start a new class for output"""
@@ -529,30 +531,26 @@ return 1;""", fmt)
                     PY_decl.append(
                         'const char *SH_kwcpp = "%s";' % '\\0'.join(arg_names))
                 else:
-                    self.break_into_continuations(
-                        PY_decl, options, 'c', 1,
-                        'const char *SH_kwcpp =\n"' +
-                        '\\0"\n"'.join(arg_names) + '";' )
-                self.break_into_continuations(
-                    PY_decl, options, 'c', 1,
-                    'char *SH_kw_list[] = {\n' + ',\n'.join(arg_offsets)
-                    + ',\nNULL };')
+                    PY_decl.append(
+                        'const char *SH_kwcpp =\f"' +
+                        '\\0"\f"'.join(arg_names) + '";' )
+                PY_decl.append(
+                    'char *SH_kw_list[] = {\f' + ',\f'.join(arg_offsets)
+                    + ',\fNULL };')
             else:
-                self.break_into_continuations(
-                    PY_decl, options, 'c', 1,
-                    'char *SH_kw_list[] = {\n"' +
-                    '",\n"'.join(arg_names)
-                    + '",\nNULL };')
+                PY_decl.append(
+                    'char *SH_kw_list[] = {\f"' +
+                    '",\f"'.join(arg_names)
+                    + '",\fNULL };')
             parse_format.extend([':', fmt.function_name])
             fmt.PyArg_format = ''.join(parse_format)
             fmt.PyArg_vargs = ',\t '.join(parse_vargs)
-            self.break_into_continuations(
-                PY_code, options, 'c', 1,
+            PY_code.append(
                 wformat(
                     'if (!PyArg_ParseTupleAndKeywords'
                     '({PY_param_args}, {PY_param_kwds}, '
                     '"{PyArg_format}", SH_kw_list,'
-                    '\n{PyArg_vargs}))', fmt))
+                    '\f{PyArg_vargs}))', fmt))
             PY_code.extend(['{', 1, 'return NULL;', -1, '}'])
 
         if cls:
@@ -590,15 +588,13 @@ return 1;""", fmt)
             elif CXX_subprogram == 'subroutine':
                 line = wformat(
                     '{PY_this_call}{function_name}({PY_call_list});', fmt)
-                self.break_into_continuations(
-                    PY_code, options, 'c', 1, line)
+                PY_code.append(line)
             else:
                 need_rv = True
                 line = wformat(
                     '{PY_rv_asgn}{PY_this_call}{function_name}({PY_call_list});',
                     fmt)
-                self.break_into_continuations(
-                    PY_code, options, 'c', 1, line)
+                PY_code.append(line)
 
             if node.PY_error_pattern:
                 lfmt = util.Scope(fmt)

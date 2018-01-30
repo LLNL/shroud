@@ -68,6 +68,8 @@ class Wrapc(util.WrapperMixin):
         self.log = config.log
         self._init_splicer(splicers)
         self.comment = '//'
+        self.cont = ''
+        self.linelen = newlibrary.options.C_line_length
         self.doxygen_begin = '/**'
         self.doxygen_cont = ' *'
         self.doxygen_end = ' */'
@@ -662,9 +664,7 @@ class Wrapc(util.WrapperMixin):
             # copy-out values, clean up
             C_code = [1]
             C_code.extend(pre_call)
-            self.break_into_continuations(
-                C_code, options, 'c', 1, fmt_func.C_call_code)
-
+            C_code.append(fmt_func.C_call_code)
             C_code.extend(post_call_pattern)
             C_code.extend(post_call)
             C_code.append(fmt_func.C_return_code)
@@ -674,8 +674,7 @@ class Wrapc(util.WrapperMixin):
             self.header_proto_c.append('')
             if node.cpp_if:
                 self.header_proto_c.append('#' + node.cpp_if)
-            self.break_into_continuations(
-                self.header_proto_c, options, 'c', 1,
+            self.header_proto_c.append(
                 wformat('{C_return_type} {C_name}(\t{C_prototype});',
                         fmt_func))
             if node.cpp_if:
@@ -690,8 +689,7 @@ class Wrapc(util.WrapperMixin):
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
                 self.impl.append('#' + node.cpp_if)
-            self.break_into_continuations(
-                impl, options, 'c', 1,
+            impl.append(
                 wformat('{C_return_type} {C_name}(\t{C_prototype})',
                         fmt_func))
             impl.append('{')

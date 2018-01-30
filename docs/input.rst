@@ -87,9 +87,9 @@ Note that to insert a literal ``{``, a double brace, ``{{``, is
 required since single braces are used for variable expansion.
 ``{cxx_var}`` in this example.
 
-.. some format strings can use a tab to hint that it would be
-   convient to add a continuation if necessary.
-   A newline will force a continuation.
+Format strings can use a tab to hint that it would be convenient to
+add a continuation if necessary.  A formfeed will force a
+continuation.
 
 Customizing Behavior in the YAML file
 -------------------------------------

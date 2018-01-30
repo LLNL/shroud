@@ -234,7 +234,7 @@
                     "F_name_function": "function2", 
                     "F_name_generic": "function2", 
                     "F_name_impl": "function2", 
-                    "F_result_clause": "\nresult(SHT_rv)", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
                     "function_name": "Function2", 

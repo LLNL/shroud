@@ -563,29 +563,15 @@ PP_verlongfunctionname2(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "iiiiiiiiii:verlongfunctionname2", SH_kw_list,
-        &verylongname1,
-        &verylongname2,
-        &verylongname3,
-        &verylongname4,
-        &verylongname5,
-        &verylongname6,
-        &verylongname7,
-        &verylongname8,
-        &verylongname9,
-        &verylongname10))
+        &verylongname1, &verylongname2, &verylongname3, &verylongname4,
+        &verylongname5, &verylongname6, &verylongname7, &verylongname8,
+        &verylongname9, &verylongname10))
     {
         return NULL;
     }
-    int rv = verlongfunctionname2(verylongname1,
-        verylongname2,
-        verylongname3,
-        verylongname4,
-        verylongname5,
-        verylongname6,
-        verylongname7,
-        verylongname8,
-        verylongname9,
-        verylongname10);
+    int rv = verlongfunctionname2(verylongname1, verylongname2,
+        verylongname3, verylongname4, verylongname5, verylongname6,
+        verylongname7, verylongname8, verylongname9, verylongname10);
     return Py_BuildValue("i", rv);
 // splicer end function.verlongfunctionname2
 }

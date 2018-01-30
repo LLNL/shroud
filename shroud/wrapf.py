@@ -97,6 +97,8 @@ class Wrapf(util.WrapperMixin):
         self.log = config.log
         self._init_splicer(splicers)
         self.comment = '!'
+        self.cont = ' &'
+        self.linelen = newlibrary.options.F_line_length
         self.doxygen_begin = '!>'
         self.doxygen_cont = '!!'
         self.doxygen_end = '!<'
@@ -562,7 +564,7 @@ class Wrapf(util.WrapperMixin):
             fmt.F_C_subprogram = 'subroutine'
         else:
             fmt.F_C_subprogram = 'function'
-            fmt.F_C_result_clause = '\nresult(%s)' % fmt.F_result
+            fmt.F_C_result_clause = '\fresult(%s)' % fmt.F_result
 
         if cls:
             # Add 'this' argument
@@ -656,11 +658,10 @@ class Wrapf(util.WrapperMixin):
         c_interface = self.c_interface
         c_interface.append('')
 
-        self.break_into_continuations(
-            c_interface, options, 'fortran', 2,
-            wformat('{F_C_pure_clause}{F_C_subprogram} {F_C_name}'
+        c_interface.append(
+            wformat('\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}'
                     '(\t{F_C_arguments}){F_C_result_clause}'
-                    '\nbind(C, name="{C_name}")', fmt))
+                    '\fbind(C, name="{C_name}")', fmt))
         c_interface.append(1)
         c_interface.extend(arg_f_use)
         if imports:
@@ -749,7 +750,7 @@ class Wrapf(util.WrapperMixin):
         modules = {}   # indexed as [module][variable]
 
         if subprogram == 'function':
-            fmt_func.F_result_clause = '\nresult(%s)' % fmt_func.F_result
+            fmt_func.F_result_clause = '\fresult(%s)' % fmt_func.F_result
         fmt_func.F_subprogram = subprogram
 
         if cls:
@@ -912,8 +913,7 @@ class Wrapf(util.WrapperMixin):
                 line1 = wformat(
                     'character(kind=C_CHAR,\t len={c_var_len})\t :: {F_result}',
                     fmt_func)
-                self.break_into_continuations(
-                    arg_f_decl, options, 'fortran', 1, line1)
+                arg_f_decl.append(line1)
                 self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
             else:
                 arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
@@ -952,8 +952,7 @@ class Wrapf(util.WrapperMixin):
                 fmt_func.F_call_code = wformat(
                     '{F_result}%{F_derived_member} = '
                     '{F_C_call}({F_arg_c_call})', fmt_func)
-                self.break_into_continuations(
-                    F_code, options, 'fortran', 1, fmt_func.F_call_code)
+                F_code.append(fmt_func.F_call_code)
             elif c_subprogram == 'function':
                 f_statements = result_typedef.f_statements
                 intent_blk = f_statements.get('result' + result_generated_suffix,{})
@@ -962,8 +961,7 @@ class Wrapf(util.WrapperMixin):
 #                for cmd in cmd_list:  # only allow a single statment for now
 #                    append_format(pre_call, cmd, fmt_arg)
                 fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
-                self.break_into_continuations(
-                    F_code, options, 'fortran', 1, fmt_func.F_call_code)
+                F_code.append(fmt_func.F_call_code)
 
                 # Find any helper routines needed
                 if 'f_helper' in intent_blk:
@@ -971,8 +969,7 @@ class Wrapf(util.WrapperMixin):
                         self.f_helper[helper] = True
             else:
                 fmt_func.F_call_code = wformat('call {F_C_call}({F_arg_c_call})', fmt_func)
-                self.break_into_continuations(
-                    F_code, options, 'fortran', 1, fmt_func.F_call_code)
+                F_code.append(fmt_func.F_call_code)
 
 #            if result_typedef.f_post_call:
 #                need_wrapper = True
@@ -995,9 +992,8 @@ class Wrapf(util.WrapperMixin):
                 impl.append('! function_index=%d' % node._function_index)
                 if options.doxygen and node.doxygen:
                     self.write_doxygen(impl, node.doxygen)
-            self.break_into_continuations(
-                impl, options, 'fortran', 2,
-                wformat('{F_subprogram} {F_name_impl}(\t'
+            impl.append(
+                wformat('\r{F_subprogram} {F_name_impl}(\t'
                         '{F_arguments}){F_result_clause}',
                         fmt_func))
             impl.append(1)
