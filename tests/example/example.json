@@ -5838,7 +5838,9 @@
                             "func_const": false, 
                             "params": [
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "name": "i", 
@@ -5849,7 +5851,9 @@
                                     ]
                                 }, 
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "pointer": []
@@ -5869,7 +5873,7 @@
                     ]
                 }, 
                 "decl": "void func3(double (*get)(int i, int));", 
-                "declgen": "void func3(double ( * get) +intent(in)+value(int i, int))", 
+                "declgen": "void func3(double ( * get) +intent(in)+value(int i +value, int +value))", 
                 "doxygen": {
                     "brief": "abstract argument"
                 }, 
@@ -5970,7 +5974,9 @@
                             "func_const": false, 
                             "params": [
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "name": "verylongname1", 
@@ -5981,7 +5987,9 @@
                                     ]
                                 }, 
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "name": "verylongname2", 
@@ -5992,7 +6000,9 @@
                                     ]
                                 }, 
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "name": "verylongname3", 
@@ -6003,7 +6013,9 @@
                                     ]
                                 }, 
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "name": "verylongname4", 
@@ -6014,7 +6026,9 @@
                                     ]
                                 }, 
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "name": "verylongname5", 
@@ -6025,7 +6039,9 @@
                                     ]
                                 }, 
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "name": "verylongname6", 
@@ -6036,7 +6052,9 @@
                                     ]
                                 }, 
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "name": "verylongname7", 
@@ -6047,7 +6065,9 @@
                                     ]
                                 }, 
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "name": "verylongname8", 
@@ -6058,7 +6078,9 @@
                                     ]
                                 }, 
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "name": "verylongname9", 
@@ -6069,7 +6091,9 @@
                                     ]
                                 }, 
                                 {
-                                    "attrs": {}, 
+                                    "attrs": {
+                                        "value": true
+                                    }, 
                                     "const": false, 
                                     "declarator": {
                                         "name": "verylongname10", 
@@ -6090,7 +6114,7 @@
                     ]
                 }, 
                 "decl": "void func4(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))", 
-                "declgen": "void func4(void ( * get) +intent(in)+value(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))", 
+                "declgen": "void func4(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))", 
                 "format": {
                     "C_call_code": "func4(\tget);", 
                     "C_call_list": "get", 

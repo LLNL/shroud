@@ -63,126 +63,135 @@ class VerifyAttrs(object):
 
         for cls in newlibrary.classes:
             for func in cls.functions:
-                self.check_arg_attrs(func)
+                self.check_fcn_attrs(func)
 
         for func in newlibrary.functions:
-            self.check_arg_attrs(func)
+            self.check_fcn_attrs(func)
 
-    def check_arg_attrs(self, node):
-        """Regularize attributes
-        intent: lower case, no parens, must be in, out, or inout
-        value: if pointer, default to False (pass-by-reference;
-               else True (pass-by-value).
-        """
+    def check_fcn_attrs(self, node):
         options = node.options
         if not options.wrap_fortran and not options.wrap_c:
             return
 
         ast = node.ast
-        found_default = False
+        node._has_found_default = False
         for arg in ast.params:
-            argname = arg.name
-            argtype = arg.typename
-            typedef = typemap.Typedef.lookup(argtype)
-            if typedef is None:
-                # if the type does not exist, make sure it is defined by cxx_template
-                #- decl: void Function7(ArgType arg)
-                #  cxx_template:
-                #    ArgType:
-                #    - int
-                #    - double
-                if argtype not in node.cxx_template:
-                    raise RuntimeError("No such type %s: %s" % (
-                            argtype, arg.gen_decl()))
+            self.check_arg_attrs(node, arg)
 
-            is_ptr = arg.is_indirect()
-            attrs = arg.attrs
-
-            # intent
-            intent = attrs.get('intent', None)
-            if intent is None:
-                if not is_ptr:
-                    attrs['intent'] = 'in'
-                elif arg.const:
-                    attrs['intent'] = 'in'
-                elif typedef.base == 'string':
-                    attrs['intent'] = 'inout'
-                elif typedef.base == 'vector':
-                    attrs['intent'] = 'inout'
-                else:
-                    # void *
-                    attrs['intent'] = 'in'  # XXX must coordinate with VALUE
-            else:
-                intent = intent.lower()
-                if intent in ['in', 'out', 'inout']:
-                    attrs['intent'] = intent
-                else:
-                    raise RuntimeError(
-                        "Bad value for intent: " + attrs['intent'])
-
-            # value
-            value = attrs.get('value', None)
-            if value is None:
-                if is_ptr:
-                    if (typedef.f_c_type or typedef.f_type) == 'type(C_PTR)':
-                        # This causes Fortran to dereference the C_PTR
-                        # Otherwise a void * argument becomes void **
-                        attrs['value'] = True
-                    else:
-                        attrs['value'] = False
-                else:
-                    attrs['value'] = True
-
-            # dimension
-            dimension = attrs.get('dimension', None)
-            if dimension:
-                if attrs.get('value', False):
-                    raise RuntimeError("argument must not have value=True")
-                if not is_ptr:
-                    raise RuntimeError("dimension attribute can only be "
-                                       "used on pointer and references")
-                if dimension is True:
-                    # No value was provided, provide default
-                    attrs['dimension'] = '(*)'
-                else:
-                    # Put parens around dimension
-                    attrs['dimension'] = '(' + attrs['dimension'] + ')'
-            elif typedef and typedef.base == 'vector':
-                # default to 1-d assumed shape 
-                attrs['dimension'] = '(:)'
-
-            if arg.init is not None:
-                found_default = True
-                node._has_default_arg = True
-            elif found_default is True:
-                raise RuntimeError("Expected default value for %s" % argname)
-
-            # compute argument names for some attributes
-            # XXX make sure they don't conflict with other names
-            len_name = attrs.get('len', False)
-            if len_name is True:
-                attrs['len'] = options.C_var_len_template.format(c_var=argname)
-            len_name = attrs.get('len_trim', False)
-            if len_name is True:
-                attrs['len_trim'] = options.C_var_trim_template.format(c_var=argname)
-            size_name = attrs.get('size', False)
-            if size_name is True:
-                attrs['size'] = options.C_var_size_template.format(c_var=argname)
-
-            # Check template attribute
-            temp = attrs.get('template', None)
-            if typedef and typedef.base == 'vector':
-                if not temp:
-                    raise RuntimeError("std::vector must have template argument: %s" % (
-                            arg.gen_decl()))
-                typedef = typemap.Typedef.lookup(temp)
-                if typedef is None:
-                    raise RuntimeError("No such type %s for template: %s" % (
-                            temp, arg.gen_decl()))
-            elif temp is not None:
-                raise RuntimeError("Type '%s' may not supply template argument: %s" % (
+    def check_arg_attrs(self, node, arg):
+        """Regularize attributes
+        intent: lower case, no parens, must be in, out, or inout
+        value: if pointer, default to False (pass-by-reference;
+               else True (pass-by-value).
+        """
+        argname = arg.name
+        argtype = arg.typename
+        typedef = typemap.Typedef.lookup(argtype)
+        if typedef is None:
+            # if the type does not exist, make sure it is defined by cxx_template
+            #- decl: void Function7(ArgType arg)
+            #  cxx_template:
+            #    ArgType:
+            #    - int
+            #    - double
+            if argtype not in node.cxx_template:
+                raise RuntimeError("No such type %s: %s" % (
                         argtype, arg.gen_decl()))
 
+        is_ptr = arg.is_indirect()
+        attrs = arg.attrs
+
+        # intent
+        intent = attrs.get('intent', None)
+        if intent is None:
+            if node is None:
+                # do not default intent for function pointers
+                pass
+            elif not is_ptr:
+                attrs['intent'] = 'in'
+            elif arg.const:
+                attrs['intent'] = 'in'
+            elif typedef.base == 'string':
+                attrs['intent'] = 'inout'
+            elif typedef.base == 'vector':
+                attrs['intent'] = 'inout'
+            else:
+                # void *
+                attrs['intent'] = 'in'  # XXX must coordinate with VALUE
+        else:
+            intent = intent.lower()
+            if intent in ['in', 'out', 'inout']:
+                attrs['intent'] = intent
+            else:
+                raise RuntimeError(
+                    "Bad value for intent: " + attrs['intent'])
+
+        # value
+        value = attrs.get('value', None)
+        if value is None:
+            if is_ptr:
+                if (typedef.f_c_type or typedef.f_type) == 'type(C_PTR)':
+                    # This causes Fortran to dereference the C_PTR
+                    # Otherwise a void * argument becomes void **
+                    attrs['value'] = True
+                else:
+                    attrs['value'] = False
+            else:
+                attrs['value'] = True
+
+        # dimension
+        dimension = attrs.get('dimension', None)
+        if dimension:
+            if attrs.get('value', False):
+                raise RuntimeError("argument must not have value=True")
+            if not is_ptr:
+                raise RuntimeError("dimension attribute can only be "
+                                   "used on pointer and references")
+            if dimension is True:
+                # No value was provided, provide default
+                attrs['dimension'] = '(*)'
+            else:
+                # Put parens around dimension
+                attrs['dimension'] = '(' + attrs['dimension'] + ')'
+        elif typedef and typedef.base == 'vector':
+            # default to 1-d assumed shape 
+            attrs['dimension'] = '(:)'
+
+        if node:
+            if arg.init is not None:
+                node._has_default_arg = True
+            elif node._has_found_default is True:
+                raise RuntimeError("Expected default value for %s" % argname)
+
+        # compute argument names for some attributes
+        # XXX make sure they don't conflict with other names
+        len_name = attrs.get('len', False)
+        if len_name is True:
+            attrs['len'] = options.C_var_len_template.format(c_var=argname)
+        len_name = attrs.get('len_trim', False)
+        if len_name is True:
+            attrs['len_trim'] = options.C_var_trim_template.format(c_var=argname)
+        size_name = attrs.get('size', False)
+        if size_name is True:
+            attrs['size'] = options.C_var_size_template.format(c_var=argname)
+
+        # Check template attribute
+        temp = attrs.get('template', None)
+        if typedef and typedef.base == 'vector':
+            if not temp:
+                raise RuntimeError("std::vector must have template argument: %s" % (
+                        arg.gen_decl()))
+            typedef = typemap.Typedef.lookup(temp)
+            if typedef is None:
+                raise RuntimeError("No such type %s for template: %s" % (
+                        temp, arg.gen_decl()))
+        elif temp is not None:
+            raise RuntimeError("Type '%s' may not supply template argument: %s" % (
+                    argtype, arg.gen_decl()))
+
+        if arg.is_function_pointer():
+            for arg1 in arg.params:
+                self.check_arg_attrs(None, arg1)
 
 class GenFunctions(object):
     """

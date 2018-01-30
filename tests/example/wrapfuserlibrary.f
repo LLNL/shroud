@@ -56,35 +56,41 @@ module userlibrary_mod
     abstract interface
 
         subroutine func1_get() bind(C)
+            implicit none
         end subroutine func1_get
 
         function func2_get() bind(C)
-            type(C_PTR) :: func2
+            implicit none
+            type(C_PTR) :: func2_get
         end function func2_get
 
         function func3_get(i, arg1) bind(C)
-            integer(C_INT) :: i
-            integer(C_INT) :: arg1
-            type(C_PTR) :: func3
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value :: i
+            integer(C_INT), value :: arg1
+            type(C_PTR) :: func3_get
         end function func3_get
 
         subroutine func4_get(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, &
             verylongname10) bind(C)
-            integer(C_INT) :: verylongname1
-            integer(C_INT) :: verylongname2
-            integer(C_INT) :: verylongname3
-            integer(C_INT) :: verylongname4
-            integer(C_INT) :: verylongname5
-            integer(C_INT) :: verylongname6
-            integer(C_INT) :: verylongname7
-            integer(C_INT) :: verylongname8
-            integer(C_INT) :: verylongname9
-            integer(C_INT) :: verylongname10
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value :: verylongname1
+            integer(C_INT), value :: verylongname2
+            integer(C_INT), value :: verylongname3
+            integer(C_INT), value :: verylongname4
+            integer(C_INT), value :: verylongname5
+            integer(C_INT), value :: verylongname6
+            integer(C_INT), value :: verylongname7
+            integer(C_INT), value :: verylongname8
+            integer(C_INT), value :: verylongname9
+            integer(C_INT), value :: verylongname10
         end subroutine func4_get
 
-    end abstract interface
+    end interface
 
     interface
 
@@ -417,7 +423,7 @@ contains
         ! splicer end function.testgroup2
     end subroutine testgroup2
 
-    ! void func3(double ( * get) +intent(in)+value(int i, int))
+    ! void func3(double ( * get) +intent(in)+value(int i +value, int +value))
     ! function_index=62
     !>
     !! \brief abstract argument

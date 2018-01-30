@@ -249,7 +249,7 @@ void AA_func2(double * ( * get)())
 // splicer end function.func2
 }
 
-// void func3(double ( * get) +intent(in)+value(int i, int))
+// void func3(double ( * get) +intent(in)+value(int i +value, int +value))
 // function_index=62
 /**
  * \brief abstract argument
@@ -263,7 +263,7 @@ void AA_func3(double ( * get)(int i, int))
 // splicer end function.func3
 }
 
-// void func4(void ( * get) +intent(in)+value(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))
+// void func4(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
 // function_index=63
 void AA_func4(
     void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))

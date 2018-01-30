@@ -46,6 +46,7 @@ C function void vector_increment(std::vector<int> & arg +dimension(:)+intent(ino
 C function int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
 C function void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg))
 C function void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))
+C function int callback1(int in +intent(in)+value, int ( * incr) +intent(in)+value(int +value))
 C function const std::string & LastFunctionCalled() +pure
 C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
 Close wrapTutorial.h
@@ -104,6 +105,7 @@ Fortran function void vector_string_fill(std::vector<std::string> & arg +dimensi
 C-interface function void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg))
 Fortran function void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))
 C-interface function void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))
+C-interface, Fortran function int callback1(int in +intent(in)+value, int ( * incr) +intent(in)+value(int +value))
 C-interface, Fortran function const std::string & LastFunctionCalled() +pure
 C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
 Close wrapftutorial.f

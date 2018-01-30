@@ -310,6 +310,13 @@ void vector_string_append(std::vector< std::string > &arg)
 
 //----------------------------------------------------------------------
 
+int callback1(int in, int (*incr)(int))
+{
+  return incr(in);
+}
+
+//----------------------------------------------------------------------
+
 const std::string& LastFunctionCalled()
 {
     return last_function_called;

@@ -906,7 +906,6 @@ class Declaration(Node):
         if 'template' in attrs:
             # If a template, use its type
             typedef = typemap.Typedef.lookup(attrs['template'])
-        intent = attrs.get('intent', None)
 
         typ = typedef.f_c_type or typedef.f_type
         if typ is None:
@@ -914,6 +913,7 @@ class Declaration(Node):
         t.append(typ)
         if attrs.get('value', False):
             t.append('value')
+        intent = attrs.get('intent', None)
         if intent:
             t.append('intent(%s)' % intent.upper())
 

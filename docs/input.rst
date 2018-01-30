@@ -90,6 +90,7 @@ required since single braces are used for variable expansion.
 Format strings can use a tab to hint that it would be convenient to
 add a continuation if necessary.  A formfeed will force a
 continuation.
+Line lengths are controlled by the options *C_line_length* and *F_line_length*.
 
 Customizing Behavior in the YAML file
 -------------------------------------

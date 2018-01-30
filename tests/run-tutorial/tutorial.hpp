@@ -116,6 +116,8 @@ int vector_string_count(const std::vector< std::string > &arg);
 void vector_string_fill(std::vector< std::string > &arg);
 void vector_string_append(std::vector< std::string > &arg);
 
+int callback1(int in, int (*incr)(int));
+
 } /* end namespace tutorial */
 
 #endif // TUTORIAL_HPP

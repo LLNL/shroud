@@ -496,24 +496,33 @@ class Wrapf(util.WrapperMixin):
                 iface.append('')
                 arg_f_names = []
                 arg_c_decl = []
+                modules = {}   # indexed as [module][variable]
                 for i, param in enumerate(arg.params):
                     name = param.name
                     if name is None:
                         name = 'arg{}'.format(i)
                     arg_f_names.append(name)
                     arg_c_decl.append(param.bind_c(name=name))
+
+                    arg_typedef, c_statements = typemap.lookup_c_statements(param)
+                    self.update_f_module(modules,
+                                         arg_typedef.f_c_module or arg_typedef.f_module)
+
                 if subprogram == 'function':
-                    arg_c_decl.append(ast.bind_c(params=None))
+                    arg_c_decl.append(ast.bind_c(name=key, params=None))
                 arguments = ',\t '.join(arg_f_names)
                 iface.append('{} {}({}) bind(C)'.format(
                     subprogram, key, arguments))
                 iface.append(1)
+                arg_f_use = self.sort_module_info(modules, None)
+                iface.extend(arg_f_use)
+                iface.append('implicit none')
                 iface.extend(arg_c_decl)
                 iface.append(-1)
                 iface.append('end {} {}'.format(subprogram, key))
             iface.append(-1)
             iface.append('')
-            iface.append('end abstract interface')
+            iface.append('end interface')
         self._pop_splicer('abstract')
 
     def wrap_function_interface(self, cls, node):

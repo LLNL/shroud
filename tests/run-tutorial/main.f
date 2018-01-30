@@ -59,6 +59,8 @@ program tester
 
   call test_vector
 
+  call test_callback
+
   call test_class1
 
   call fruit_summary
@@ -200,6 +202,21 @@ contains
     call assert_true( names(3) == "-like")
  
   end subroutine test_vector
+
+  function incr2(input) bind(C)
+    integer(c_int), value :: input
+    integer(c_int) :: incr2
+    incr2 = input + 20
+  end function incr2
+
+  subroutine test_callback
+
+    integer irv
+
+    irv = callback1(2, incr2)
+    call assert_true(irv == 22)
+
+  end subroutine test_callback
 
   subroutine test_class1
     type(class1) obj

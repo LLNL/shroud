@@ -144,6 +144,8 @@ int TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg);
 void TUT_vector_string_append_bufferify(char * arg, long Sarg,
     int Narg);
 
+int TUT_callback1(int in, int ( * incr)(int));
+
 const char * TUT_last_function_called();
 
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv);
