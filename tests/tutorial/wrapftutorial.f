@@ -72,7 +72,6 @@ module tutorial_mod
         ! splicer end class.Class1.type_bound_procedure_part
     end type class1
 
-
     interface operator (.eq.)
         module procedure class1_eq
     end interface

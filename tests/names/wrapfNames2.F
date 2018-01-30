@@ -68,7 +68,6 @@ module names2_mod
         ! splicer end class.Names2.type_bound_procedure_part
     end type names2
 
-
     interface operator (.eq.)
         module procedure names2_eq
     end interface

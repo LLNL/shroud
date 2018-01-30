@@ -365,6 +365,7 @@ class WrapperMixin(object):
             elif isinstance(line, int):
                 self.indent += int(line)
             else:
+                line = line.replace('\t', '') # strip out continuation markers
                 for subline in line.split("\n"):
                     if len(subline) == 0:
                         fp.write('\n')

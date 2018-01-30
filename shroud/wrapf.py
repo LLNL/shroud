@@ -106,13 +106,16 @@ class Wrapf(util.WrapperMixin):
         self.use_stmts = []
         self.f_type_decl = []
         self.c_interface = []
+        self.abstract_interface = []
         self.generic_interface = []
         self.impl = []          # implementation, after contains
         self.operator_impl = []
         self.operator_map = {}  # list of function names by operator
         # {'.eq.': [ 'abc', 'def'] }
+        self.c_interface.append('')
         self.c_interface.append('interface')
         self.c_interface.append(1)
+        self.f_abstract_interface = {}
         self.f_helper = {}
 
     def _end_output_file(self):
@@ -166,7 +169,9 @@ class Wrapf(util.WrapperMixin):
             self.impl.append('')
             self._create_splicer('additional_functions', self.impl)
 
-            # Look for generics
+            self.dump_abstract_interfaces()
+
+            # Look for generic interfaces
             # splicer to extend generic
             self._push_splicer('generic')
             iface = self.generic_interface
@@ -459,6 +464,54 @@ class Wrapf(util.WrapperMixin):
                 arg_f_use.append('use %s' % mname)
         return arg_f_use
 
+    def add_abstract_interface(self, node, arg):
+        """Record an abstract interface.
+
+        Function pointers are converted to abstract interfaces.
+        The interface is named after the function and the argument.
+        """
+        ast = node.ast
+        name = ast.name + '_' + arg.name
+        entry = self.f_abstract_interface.get(name)
+        if entry is None:
+            self.f_abstract_interface[name] = (node, arg)
+        return name
+
+    def dump_abstract_interfaces(self):
+        """Generate code for abstract interfaces
+        """
+        self._push_splicer('abstract')
+        if len(self.f_abstract_interface) > 0:
+            iface = self.abstract_interface
+            iface.append('')
+            iface.append('abstract interface')
+            iface.append(1)
+
+            for key in sorted(self.f_abstract_interface.keys()):
+                node, arg = self.f_abstract_interface[key]
+                ast = node.ast
+                subprogram = node._subprogram
+                iface.append('')
+                arg_f_names = []
+                arg_c_decl = []
+                for i, param in enumerate(arg.params):
+                    name = param.name
+                    if name is None:
+                        name = 'arg{}'.format(i)
+                    arg_f_names.append(name)
+                    arg_c_decl.append(param.bind_c(name=name))
+                arguments = ',\t '.join(arg_f_names)
+                iface.append('subroutine {}({}) bind(C)'.format(
+                    subprogram, key, arguments))
+                iface.append(1)
+                iface.extend(arg_c_decl)
+                iface.append(-1)
+                iface.append('end {} {}'.format(subprogram, key))
+            iface.append(-1)
+            iface.append('')
+            iface.append('end abstract interface')
+        self._pop_splicer('abstract')
+
     def wrap_function_interface(self, cls, node):
         """
         Write Fortran interface for C function
@@ -538,7 +591,13 @@ class Wrapf(util.WrapperMixin):
                 arg_c_names.append(arg.name)
 
             # argument declarations
-            if arg_typedef.f_c_argdecl:
+            if arg.is_function_pointer():
+                absiface = self.add_abstract_interface(node, arg)
+                arg_c_decl.append(
+                    'procedure({}) :: {}'.format(
+                        absiface, arg.name))
+#                import.append(absiface)
+            elif arg_typedef.f_c_argdecl:
                 for argdecl in arg_typedef.f_c_argdecl:
                     append_format(arg_c_decl, argdecl, fmt)
             else:
@@ -973,7 +1032,6 @@ class Wrapf(util.WrapperMixin):
         # XXX output.append('! splicer push class')
         output.extend(self.f_type_decl)
         # XXX  output.append('! splicer pop class')
-        output.append('')
 
         # Interfaces for operator overloads
         if self.operator_map:
@@ -986,8 +1044,8 @@ class Wrapf(util.WrapperMixin):
                     output.append('module procedure %s' % opfcn)
                 output.append(-1)
                 output.append('end interface')
-            output.append('')
 
+        output.extend(self.abstract_interface)
         output.extend(self.c_interface)
         output.extend(self.generic_interface)
 
