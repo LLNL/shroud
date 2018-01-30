@@ -490,7 +490,7 @@ class Wrapf(util.WrapperMixin):
             for key in sorted(self.f_abstract_interface.keys()):
                 node, arg = self.f_abstract_interface[key]
                 ast = node.ast
-                subprogram = node._subprogram
+                subprogram = arg.get_subprogram()
                 iface.append('')
                 arg_f_names = []
                 arg_c_decl = []
@@ -501,7 +501,7 @@ class Wrapf(util.WrapperMixin):
                     arg_f_names.append(name)
                     arg_c_decl.append(param.bind_c(name=name))
                 arguments = ',\t '.join(arg_f_names)
-                iface.append('subroutine {}({}) bind(C)'.format(
+                iface.append('{}({}) bind(C)'.format(
                     subprogram, key, arguments))
                 iface.append(1)
                 iface.extend(arg_c_decl)
@@ -532,7 +532,7 @@ class Wrapf(util.WrapperMixin):
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
         func_is_const = ast.func_const
-        subprogram = node._subprogram
+        subprogram = ast.get_subprogram()
 
         if node._generated == 'arg_to_buffer':
             generated_suffix = '_buf'
@@ -551,6 +551,7 @@ class Wrapf(util.WrapperMixin):
         arg_c_names = []  # argument names for functions
         arg_c_decl = []   # declaraion of argument names
         modules = {}   # indexed as [module][variable]
+        imports = {}   # indexed as [name]
 
         # find subprogram type
         # compute first to get order of arguments correct.
@@ -596,7 +597,7 @@ class Wrapf(util.WrapperMixin):
                 arg_c_decl.append(
                     'procedure({}) :: {}'.format(
                         absiface, arg.name))
-#                import.append(absiface)
+                imports[absiface] = True
             elif arg_typedef.f_c_argdecl:
                 for argdecl in arg_typedef.f_c_argdecl:
                     append_format(arg_c_decl, argdecl, fmt)
@@ -660,6 +661,8 @@ class Wrapf(util.WrapperMixin):
                     '\nbind(C, name="{C_name}")', fmt))
         c_interface.append(1)
         c_interface.extend(arg_f_use)
+        if imports:
+            c_interface.append('import :: ' + ', '.join(sorted(imports.keys())))
         c_interface.append('implicit none')
         c_interface.extend(arg_c_decl)
         c_interface.append(-1)
@@ -699,8 +702,8 @@ class Wrapf(util.WrapperMixin):
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
-        subprogram = node._subprogram
-        c_subprogram = C_node._subprogram
+        subprogram = ast.get_subprogram()
+        c_subprogram = C_node.ast.get_subprogram()
 
         if C_node._generated == 'arg_to_buffer':
             generated_suffix = '_buf'

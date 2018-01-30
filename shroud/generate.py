@@ -78,16 +78,7 @@ class VerifyAttrs(object):
         if not options.wrap_fortran and not options.wrap_c:
             return
 
-        # cache subprogram type
         ast = node.ast
-        result_type = ast.typename
-        result_is_ptr = ast.is_pointer()
-        #  'void'=subroutine   'void *'=function
-        if result_type == 'void' and not result_is_ptr:
-            node._subprogram = 'subroutine'
-        else:
-            node._subprogram = 'function'
-
         found_default = False
         for arg in ast.params:
             argname = arg.name

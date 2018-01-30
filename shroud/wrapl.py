@@ -207,7 +207,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         node.eval_template('LUA_name')
         node.eval_template('LUA_name_impl')
 
-        CXX_subprogram = node._subprogram
+        CXX_subprogram = ast.get_subprogram()
 
         # XXX       ast = node.ast
         # XXX       result_type = ast.typename
@@ -424,9 +424,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 #        node.eval_template('LUA_name')
 #        node.eval_template('LUA_name_impl')
 
-        CXX_subprogram = node._subprogram
-
         ast = node.ast
+        CXX_subprogram = ast.get_subprogram()
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)

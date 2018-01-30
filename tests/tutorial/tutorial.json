@@ -36,7 +36,6 @@
                             }
                         }, 
                         "_function_index": 0, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -80,7 +79,6 @@
                     }, 
                     {
                         "_function_index": 1, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -127,7 +125,6 @@
                     }, 
                     {
                         "_function_index": 2, 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -293,7 +290,6 @@
         "functions": [
             {
                 "_function_index": 3, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -414,7 +410,6 @@
                     }
                 }, 
                 "_function_index": 4, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -532,7 +527,6 @@
                     }
                 }, 
                 "_function_index": 5, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -663,7 +657,6 @@
                     }
                 }, 
                 "_function_index": 6, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -768,7 +761,6 @@
                     }
                 }, 
                 "_function_index": 7, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -872,7 +864,6 @@
                     }
                 }, 
                 "_function_index": 8, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1016,7 +1007,6 @@
                     }
                 }, 
                 "_function_index": 9, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {
                         "len": "30"
@@ -1153,7 +1143,6 @@
                 }, 
                 "_function_index": 41, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {
                         "len": "30"
@@ -1329,7 +1318,6 @@
                     }
                 }, 
                 "_function_index": 10, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -1470,7 +1458,6 @@
                 }, 
                 "_function_index": 42, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1576,7 +1563,6 @@
                 "_PTR_F_C_index": 42, 
                 "_function_index": 43, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1686,7 +1672,6 @@
                 "_function_index": 31, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1764,7 +1749,6 @@
                 "_function_index": 32, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1920,7 +1904,6 @@
                     2
                 ], 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2040,7 +2023,6 @@
                 }, 
                 "_function_index": 12, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2130,7 +2112,6 @@
                 "_function_index": 44, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2232,7 +2213,6 @@
                 }, 
                 "_function_index": 13, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2291,7 +2271,6 @@
             {
                 "_function_index": 14, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2360,7 +2339,6 @@
                 "_function_index": 33, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2441,7 +2419,6 @@
                 "_function_index": 34, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2505,7 +2482,6 @@
             {
                 "_function_index": 15, 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2551,7 +2527,6 @@
                 "_function_index": 35, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2610,7 +2585,6 @@
                 "_function_index": 36, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2696,7 +2670,6 @@
                 }, 
                 "_function_index": 16, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2758,7 +2731,6 @@
                 "_function_index": 53, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2815,7 +2787,6 @@
                 "_function_index": 54, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2874,7 +2845,6 @@
                 ], 
                 "_function_index": 17, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2987,7 +2957,6 @@
                 }, 
                 "_function_index": 18, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3073,7 +3042,6 @@
                 "_function_index": 55, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3154,7 +3122,6 @@
                 "_function_index": 56, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3266,7 +3233,6 @@
                 "_function_index": 45, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3377,7 +3343,6 @@
                 "_function_index": 37, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3488,7 +3453,6 @@
                 "_function_index": 38, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3696,7 +3660,6 @@
                     3
                 ], 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3835,7 +3798,6 @@
                 "_function_index": 39, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3969,7 +3931,6 @@
                 "_function_index": 40, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4220,7 +4181,6 @@
                     4
                 ], 
                 "_overloaded": true, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4366,7 +4326,6 @@
                     }
                 }, 
                 "_function_index": 21, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4472,7 +4431,6 @@
                     }
                 }, 
                 "_function_index": 22, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4559,7 +4517,6 @@
                     }
                 }, 
                 "_function_index": 23, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4625,7 +4582,6 @@
             {
                 "_PTR_F_C_index": 46, 
                 "_function_index": 24, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4712,7 +4668,6 @@
                 }, 
                 "_function_index": 46, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4776,7 +4731,6 @@
             {
                 "_PTR_F_C_index": 47, 
                 "_function_index": 25, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4855,7 +4809,6 @@
                 }, 
                 "_function_index": 47, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4920,7 +4873,6 @@
             {
                 "_PTR_F_C_index": 48, 
                 "_function_index": 26, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4999,7 +4951,6 @@
                 }, 
                 "_function_index": 48, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5064,7 +5015,6 @@
             {
                 "_PTR_F_C_index": 49, 
                 "_function_index": 27, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5156,7 +5106,6 @@
                 }, 
                 "_function_index": 49, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5225,7 +5174,6 @@
             {
                 "_PTR_F_C_index": 50, 
                 "_function_index": 28, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5313,7 +5261,6 @@
                 }, 
                 "_function_index": 50, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5384,7 +5331,6 @@
             {
                 "_PTR_F_C_index": 51, 
                 "_function_index": 29, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5467,7 +5413,6 @@
                 }, 
                 "_function_index": 51, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5545,7 +5490,6 @@
                     }
                 }, 
                 "_function_index": 30, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -5621,7 +5565,6 @@
                 }, 
                 "_function_index": 52, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 

@@ -350,9 +350,8 @@ return 1;""", fmt)
         if cls:
             fmt.PY_used_param_self = True
 
-        CXX_subprogram = node._subprogram
-
         ast = node.ast
+        CXX_subprogram = ast.get_subprogram()
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)

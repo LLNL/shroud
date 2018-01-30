@@ -97,7 +97,6 @@
         "functions": [
             {
                 "_function_index": 0, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -175,7 +174,6 @@
                     }
                 }, 
                 "_function_index": 1, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -290,7 +288,6 @@
                     }
                 }, 
                 "_function_index": 2, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -408,7 +405,6 @@
                     }
                 }, 
                 "_function_index": 3, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -509,7 +505,6 @@
                     }
                 }, 
                 "_function_index": 4, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -633,7 +628,6 @@
                     }
                 }, 
                 "_function_index": 5, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {
                         "len": "30"
@@ -779,7 +773,6 @@
                 }, 
                 "_function_index": 6, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {
                         "len": "30"

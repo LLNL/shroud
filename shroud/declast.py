@@ -655,6 +655,14 @@ class Declaration(Node):
             return False
         return True
 
+    def get_subprogram(self):
+        """Return Fortran subprogram - subroutine or function"""
+        if self.typename != 'void':
+            return 'function'
+        if self.is_pointer():
+            return 'function'
+        return 'subroutine'
+
     def _as_arg(self, name):
         """Create an argument to hold the function result.
         This is intended for pointer arguments, char or string.

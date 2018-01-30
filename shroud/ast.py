@@ -473,7 +473,6 @@ class FunctionNode(AstNode):
                        C function to call
     _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
                        to call
-    _subprogram      - subroutine or function
 
     """
     def __init__(self, decl, parent,
@@ -502,7 +501,6 @@ class FunctionNode(AstNode):
         self._has_default_arg = False
         self._nargs = None
         self._overloaded = False
-        self._subprogram = 'XXX-subprogram'
 
 #        self.function_index = []
 
@@ -605,7 +603,7 @@ class FunctionNode(AstNode):
                     '_cxx_overload',
                     '_default_funcs', '_fmtargs', '_fmtresult',
                     '_generated', '_has_default_arg',
-                    '_nargs', '_overloaded', '_subprogram']:
+                    '_nargs', '_overloaded']:
             value = getattr(self,key)
             if value:
                 d[key] = value

@@ -344,12 +344,12 @@ class Wrapc(util.WrapperMixin):
             if CXX_node._generated:
                 generated.append(CXX_node._generated)
         CXX_result = CXX_node.ast
-        CXX_subprogram = CXX_node._subprogram
+        CXX_subprogram = CXX_node.ast.get_subprogram()
 
         # C return type
         ast = node.ast
         result_type = ast.typename
-        subprogram = node._subprogram
+        subprogram = ast.get_subprogram()
         generated_suffix = ''
         if node._generated == 'arg_to_buffer':
             generated_suffix = '_buf'

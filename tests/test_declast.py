@@ -173,6 +173,10 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl(name='newname', params=None)
         self.assertEqual("int newname", s)
 
+        self.assertEqual('int', r.typename)
+        self.assertFalse(r.is_pointer())
+        self.assertEqual('function', r.get_subprogram())
+
     def test_type_function_pointer1(self):
         """Function pointer
         """
@@ -331,20 +335,28 @@ class CheckParse(unittest.TestCase):
             ], 
         })
         self.assertEqual("foo", r.get_name())
+        self.assertEqual('void', r.typename)
+        self.assertFalse(r.is_pointer())
+        self.assertEqual('subroutine', r.get_subprogram())
 
     def test_decl04(self):
         """const method"""
-        r = declast.check_decl("void foo() const")
+        r = declast.check_decl("void *foo() const")
 
         s = r.gen_decl()
-        self.assertEqual("void foo() const", s)
+        self.assertEqual("void * foo() const", s)
 
         self.assertEqual(r._to_dict(),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
                 "name": "foo", 
-                "pointer": []
+                "pointer": [ 
+                    {
+                        "const": False, 
+                        "ptr": "*"
+                    }
+                ]
             }, 
             "fattrs": {}, 
             "func_const": True, 
@@ -354,6 +366,9 @@ class CheckParse(unittest.TestCase):
             ], 
         })
         self.assertEqual("foo", r.get_name())
+        self.assertEqual('void', r.typename)
+        self.assertTrue(r.is_pointer())
+        self.assertEqual('function', r.get_subprogram())
 
     def test_decl05(self):
         """Single argument"""

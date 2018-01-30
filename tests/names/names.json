@@ -25,7 +25,6 @@
                 "methods": [
                     {
                         "_function_index": 0, 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -70,7 +69,6 @@
                     }, 
                     {
                         "_function_index": 1, 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -259,7 +257,6 @@
         "functions": [
             {
                 "_function_index": 2, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -301,7 +298,6 @@
             }, 
             {
                 "_function_index": 3, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -374,7 +370,6 @@
                 }, 
                 "_function_index": 4, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -463,7 +458,6 @@
                 }, 
                 "_function_index": 5, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -551,7 +545,6 @@
                     }
                 }, 
                 "_function_index": 6, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -641,7 +634,6 @@
                 }, 
                 "_function_index": 8, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -702,7 +694,6 @@
             }, 
             {
                 "_function_index": 7, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 

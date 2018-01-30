@@ -43,7 +43,6 @@
                         }, 
                         "_function_index": 0, 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -124,7 +123,6 @@
                         }, 
                         "_function_index": 1, 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -223,7 +221,6 @@
                         "_function_index": 14, 
                         "_generated": "arg_to_buffer", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -288,7 +285,6 @@
                     }, 
                     {
                         "_function_index": 2, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -381,7 +377,6 @@
                             }
                         }, 
                         "_function_index": 3, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -457,7 +452,6 @@
                             }
                         }, 
                         "_function_index": 4, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {
                                 "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
@@ -543,7 +537,6 @@
                         }, 
                         "_function_index": 15, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {
                                 "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
@@ -616,7 +609,6 @@
                             }
                         }, 
                         "_function_index": 5, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -679,7 +671,6 @@
                             }
                         }, 
                         "_function_index": 6, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": true, 
@@ -760,7 +751,6 @@
                         }, 
                         "_function_index": 16, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -834,7 +824,6 @@
                             }
                         }, 
                         "_function_index": 7, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": true, 
@@ -908,7 +897,6 @@
                         }, 
                         "_function_index": 17, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -976,7 +964,6 @@
                         "_PTR_F_C_index": 17, 
                         "_function_index": 18, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -1047,7 +1034,6 @@
                             }
                         }, 
                         "_function_index": 8, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -1149,7 +1135,6 @@
                         }, 
                         "_function_index": 9, 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -1261,7 +1246,6 @@
                         }, 
                         "_function_index": 10, 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -1330,7 +1314,6 @@
                             }
                         }, 
                         "_function_index": 11, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -1426,7 +1409,6 @@
                             }
                         }, 
                         "_function_index": 12, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -1489,7 +1471,6 @@
                     }, 
                     {
                         "_function_index": 13, 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -1604,7 +1585,6 @@
                             }
                         }, 
                         "_function_index": 19, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -1698,7 +1678,6 @@
                         }, 
                         "_function_index": 39, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -1762,7 +1741,6 @@
                     }, 
                     {
                         "_function_index": 20, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -1822,7 +1800,6 @@
                             }
                         }, 
                         "_function_index": 21, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {
                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
@@ -1905,7 +1882,6 @@
                         }, 
                         "_function_index": 40, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {
                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
@@ -1982,7 +1958,6 @@
                             }
                         }, 
                         "_function_index": 22, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": true, 
@@ -2063,7 +2038,6 @@
                         }, 
                         "_function_index": 41, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -2138,7 +2112,6 @@
                             }
                         }, 
                         "_function_index": 23, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -2219,7 +2192,6 @@
                         }, 
                         "_function_index": 42, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -2294,7 +2266,6 @@
                             }
                         }, 
                         "_function_index": 24, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -2375,7 +2346,6 @@
                         }, 
                         "_function_index": 43, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -2446,7 +2416,6 @@
                             }
                         }, 
                         "_function_index": 25, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -2544,7 +2513,6 @@
                             }
                         }, 
                         "_function_index": 26, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -2636,7 +2604,6 @@
                         "_function_index": 32, 
                         "_generated": "has_default_arg", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -2708,7 +2675,6 @@
                         "_function_index": 44, 
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -2771,7 +2737,6 @@
                         "_function_index": 45, 
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -2910,7 +2875,6 @@
                             2
                         ], 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3005,7 +2969,6 @@
                             2
                         ], 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3091,7 +3054,6 @@
                             2
                         ], 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3166,7 +3128,6 @@
                     }, 
                     {
                         "_function_index": 28, 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3223,7 +3184,6 @@
                             }
                         }, 
                         "_function_index": 29, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3273,7 +3233,6 @@
                     {
                         "_function_index": 30, 
                         "_overloaded": true, 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3344,7 +3303,6 @@
                         "_function_index": 33, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3428,7 +3386,6 @@
                         "_function_index": 34, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3512,7 +3469,6 @@
                         "_function_index": 35, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3596,7 +3552,6 @@
                         "_function_index": 36, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3663,7 +3618,6 @@
                     {
                         "_function_index": 31, 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3709,7 +3663,6 @@
                         "_function_index": 37, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3771,7 +3724,6 @@
                         "_function_index": 38, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -3869,7 +3821,6 @@
                 "methods": [
                     {
                         "_function_index": 48, 
-                        "_subprogram": "subroutine", 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -4034,7 +3985,6 @@
         "functions": [
             {
                 "_function_index": 49, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4118,7 +4068,6 @@
                     }
                 }, 
                 "_function_index": 50, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4211,7 +4160,6 @@
                 }, 
                 "_function_index": 64, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4281,7 +4229,6 @@
                     }
                 }, 
                 "_function_index": 51, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4434,7 +4381,6 @@
                     }
                 }, 
                 "_function_index": 52, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4569,7 +4515,6 @@
                 }, 
                 "_function_index": 53, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4659,7 +4604,6 @@
                 "_function_index": 65, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4788,7 +4732,6 @@
                 }, 
                 "_function_index": 54, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4904,7 +4847,6 @@
                 "_function_index": 66, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4981,7 +4923,6 @@
                 "_function_index": 62, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5046,7 +4987,6 @@
                 "_function_index": 63, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5189,7 +5129,6 @@
                     2
                 ], 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5272,7 +5211,6 @@
                     }
                 }, 
                 "_function_index": 56, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5353,7 +5291,6 @@
                     }
                 }, 
                 "_function_index": 57, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5448,7 +5385,6 @@
                     }
                 }, 
                 "_function_index": 58, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5549,7 +5485,6 @@
                     }
                 }, 
                 "_function_index": 59, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5956,7 +5891,6 @@
                     }
                 }, 
                 "_function_index": 60, 
-                "_subprogram": "subroutine", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -6492,7 +6426,6 @@
                     }
                 }, 
                 "_function_index": 61, 
-                "_subprogram": "function", 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
