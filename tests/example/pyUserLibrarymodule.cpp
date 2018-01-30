@@ -350,6 +350,114 @@ PP_testgroup2(
 // splicer end function.testgroup2
 }
 
+static char PP_func1__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_func1(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.func1
+    void ( * get)();
+    const char *SH_kwcpp = "get";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:func1", SH_kw_list,
+        &get))
+    {
+        return NULL;
+    }
+    func1(get);
+    Py_RETURN_NONE;
+// splicer end function.func1
+}
+
+static char PP_func2__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_func2(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.func2
+    double * ( * get)();
+    const char *SH_kwcpp = "get";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:func2", SH_kw_list,
+        &get))
+    {
+        return NULL;
+    }
+    func2(get);
+    Py_RETURN_NONE;
+// splicer end function.func2
+}
+
+static char PP_func3__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_func3(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.func3
+    double ( * get)(int i, int);
+    const char *SH_kwcpp = "get";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:func3", SH_kw_list,
+        &get))
+    {
+        return NULL;
+    }
+    func3(get);
+    Py_RETURN_NONE;
+// splicer end function.func3
+}
+
+static char PP_func4__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_func4(
+  PyObject *,  // self unused
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.func4
+    void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10);
+    const char *SH_kwcpp = "get";
+    char *SH_kw_list[] = {
+        (char *) SH_kwcpp+0,
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:func4", SH_kw_list,
+        &get))
+    {
+        return NULL;
+    }
+    func4(get);
+    Py_RETURN_NONE;
+// splicer end function.func4
+}
+
 static char PP_verlongfunctionname1__doc__[] =
 "documentation"
 ;
@@ -529,6 +637,10 @@ static PyMethodDef PP_methods[] = {
 {"testmpi", (PyCFunction)PP_testmpi, METH_VARARGS|METH_KEYWORDS, PP_testmpi__doc__},
 {"testgroup1", (PyCFunction)PP_testgroup1, METH_VARARGS|METH_KEYWORDS, PP_testgroup1__doc__},
 {"testgroup2", (PyCFunction)PP_testgroup2, METH_VARARGS|METH_KEYWORDS, PP_testgroup2__doc__},
+{"func1", (PyCFunction)PP_func1, METH_VARARGS|METH_KEYWORDS, PP_func1__doc__},
+{"func2", (PyCFunction)PP_func2, METH_VARARGS|METH_KEYWORDS, PP_func2__doc__},
+{"func3", (PyCFunction)PP_func3, METH_VARARGS|METH_KEYWORDS, PP_func3__doc__},
+{"func4", (PyCFunction)PP_func4, METH_VARARGS|METH_KEYWORDS, PP_func4__doc__},
 {"verlongfunctionname1", (PyCFunction)PP_verlongfunctionname1, METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname1__doc__},
 {"verlongfunctionname2", (PyCFunction)PP_verlongfunctionname2, METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname2__doc__},
 {"test_names", (PyCFunction)PP_test_names, METH_VARARGS|METH_KEYWORDS, PP_test_names__doc__},

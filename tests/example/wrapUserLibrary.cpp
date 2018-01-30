@@ -74,7 +74,7 @@ bool AA_is_name_valid(const char * name)
 }
 
 // bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=64
+// function_index=68
 bool AA_is_name_valid_bufferify(const char * name, int Lname)
 {
 // splicer begin function.is_name_valid_bufferify
@@ -114,7 +114,7 @@ void AA_test_names(const char * name)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=65
+// function_index=69
 void AA_test_names_bufferify(const char * name, int Lname)
 {
 // splicer begin function.test_names_bufferify
@@ -136,7 +136,7 @@ void AA_test_names_flag(const char * name, int flag)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)
-// function_index=66
+// function_index=70
 void AA_test_names_flag_bufferify(const char * name, int Lname,
     int flag)
 {
@@ -148,7 +148,7 @@ void AA_test_names_flag_bufferify(const char * name, int Lname,
 }
 
 // void testoptional()
-// function_index=62
+// function_index=66
 void AA_testoptional_0()
 {
 // splicer begin function.testoptional_0
@@ -158,7 +158,7 @@ void AA_testoptional_0()
 }
 
 // void testoptional(int i=1 +intent(in)+value)
-// function_index=63
+// function_index=67
 void AA_testoptional_1(int i)
 {
 // splicer begin function.testoptional_1
@@ -221,8 +221,61 @@ void AA_testgroup2(const SIDRE_group * grp)
 // splicer end function.testgroup2
 }
 
-// void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+// void func1(void ( * get) +intent(in)+value())
 // function_index=60
+/**
+ * \brief subroutine
+ *
+ */
+void AA_func1(void ( * get)())
+{
+// splicer begin function.func1
+    func1(get);
+    return;
+// splicer end function.func1
+}
+
+// void func2(double * ( * get) +intent(in)())
+// function_index=61
+/**
+ * \brief return a pointer
+ *
+ */
+void AA_func2(double * ( * get)())
+{
+// splicer begin function.func2
+    func2(get);
+    return;
+// splicer end function.func2
+}
+
+// void func3(double ( * get) +intent(in)+value(int i, int))
+// function_index=62
+/**
+ * \brief abstract argument
+ *
+ */
+void AA_func3(double ( * get)(int i, int))
+{
+// splicer begin function.func3
+    func3(get);
+    return;
+// splicer end function.func3
+}
+
+// void func4(void ( * get) +intent(in)+value(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))
+// function_index=63
+void AA_func4(
+    void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))
+{
+// splicer begin function.func4
+    func4(get);
+    return;
+// splicer end function.func4
+}
+
+// void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+// function_index=64
 void AA_verlongfunctionname1(int verylongname1, int verylongname2,
     int verylongname3, int verylongname4, int verylongname5,
     int verylongname6, int verylongname7, int verylongname8,
@@ -237,7 +290,7 @@ void AA_verlongfunctionname1(int verylongname1, int verylongname2,
 }
 
 // int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-// function_index=61
+// function_index=65
 int AA_verlongfunctionname2(
     int verylongname1,
     int verylongname2,

@@ -313,10 +313,27 @@ functions:
   - decl: void testgroup2(const DataGroup * grp)
 
 # function pointers
-#  - decl: void func1(void (*get)());
-#  - decl: void func2(double * (*get)());
-#  - decl: void func1(double (*get)(int i, int));
-
+  - decl: void func1(void (*get)());
+    doxygen:
+      brief: subroutine
+  - decl: void func2(double * (*get)());
+    doxygen:
+      brief: return a pointer
+  - decl: void func3(double (*get)(int i, int));
+    doxygen:
+      brief: abstract argument
+    options:
+      F_force_wrapper: True
+  - decl: void func4(void (*get)(int verylongname1, 
+                                 int verylongname2, 
+                                 int verylongname3, 
+                                 int verylongname4, 
+                                 int verylongname5, 
+                                 int verylongname6, 
+                                 int verylongname7, 
+                                 int verylongname8, 
+                                 int verylongname9, 
+                                 int verylongname10))
 
   - decl: void verlongfunctionname1(int verylongname1, 
                                     int verylongname2, 

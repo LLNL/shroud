@@ -4027,7 +4027,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 64, 
+                "_PTR_F_C_index": 68, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4158,7 +4158,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 64, 
+                "_function_index": 68, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -4476,7 +4476,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 65, 
+                "_PTR_F_C_index": 69, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -4601,7 +4601,7 @@
                         }
                     }
                 }, 
-                "_function_index": 65, 
+                "_function_index": 69, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -4663,7 +4663,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 66, 
+                "_PTR_F_C_index": 70, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -4844,7 +4844,7 @@
                         }
                     }
                 }, 
-                "_function_index": 66, 
+                "_function_index": 70, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -4920,7 +4920,7 @@
                 }
             }, 
             {
-                "_function_index": 62, 
+                "_function_index": 66, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4984,7 +4984,7 @@
                         }
                     }
                 }, 
-                "_function_index": 63, 
+                "_function_index": 67, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5049,8 +5049,8 @@
             }, 
             {
                 "_default_funcs": [
-                    62, 
-                    63
+                    66, 
+                    67
                 ], 
                 "_fmtargs": {
                     "i": {
@@ -5549,6 +5549,575 @@
             }, 
             {
                 "_fmtargs": {
+                    "get": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get"
+                        }, 
+                        "fmtf": {
+                            "c_var": "get", 
+                            "f_var": "get"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "POP", 
+                            "c_var_len": "Lget", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get", 
+                            "lua_var": "SH_Lua_get"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_decl": "void ( * get)()", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get", 
+                            "py_var": "SH_Py_get"
+                        }
+                    }
+                }, 
+                "_function_index": 60, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "func1", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "func": {
+                                    "name": "get", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [], 
+                            "specifier": [
+                                "void"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void func1(void (*get)());", 
+                "declgen": "void func1(void ( * get) +intent(in)+value())", 
+                "doxygen": {
+                    "brief": "subroutine"
+                }, 
+                "format": {
+                    "C_call_code": "func1(\tget);", 
+                    "C_call_list": "get", 
+                    "C_name": "AA_func1", 
+                    "C_prototype": "void ( * get)()", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_func1", 
+                    "F_C_name": "func1", 
+                    "F_arg_c_call": "get", 
+                    "F_arguments": "get", 
+                    "F_call_code": "call c_func1(get)", 
+                    "F_name_function": "func1", 
+                    "F_name_generic": "func1", 
+                    "F_name_impl": "func1", 
+                    "F_subprogram": "subroutine", 
+                    "LUA_name": "func1", 
+                    "LUA_name_impl": "l_func1", 
+                    "PY_name_impl": "PP_func1", 
+                    "c_const": "", 
+                    "function_name": "func1", 
+                    "underscore_name": "func1"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "get": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "get", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get"
+                        }, 
+                        "fmtf": {
+                            "c_var": "get", 
+                            "f_var": "get"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": " *", 
+                            "c_var": "lua_tonumber(L, 1)", 
+                            "c_var_len": "Lget", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get", 
+                            "lua_var": "SH_Lua_get"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "get", 
+                            "cxx_decl": "double * ( * get)()", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get", 
+                            "py_var": "SH_Py_get"
+                        }
+                    }
+                }, 
+                "_function_index": 61, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "func2", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "func": {
+                                    "name": "get", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [], 
+                            "specifier": [
+                                "double"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void func2(double * (*get)());", 
+                "declgen": "void func2(double * ( * get) +intent(in)())", 
+                "doxygen": {
+                    "brief": "return a pointer"
+                }, 
+                "format": {
+                    "C_call_code": "func2(\tget);", 
+                    "C_call_list": "get", 
+                    "C_name": "AA_func2", 
+                    "C_prototype": "double * ( * get)()", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_func2", 
+                    "F_C_name": "func2", 
+                    "F_arg_c_call": "get", 
+                    "F_arguments": "get", 
+                    "F_call_code": "call c_func2(get)", 
+                    "F_name_function": "func2", 
+                    "F_name_generic": "func2", 
+                    "F_name_impl": "func2", 
+                    "F_subprogram": "subroutine", 
+                    "LUA_name": "func2", 
+                    "LUA_name_impl": "l_func2", 
+                    "PY_name_impl": "PP_func2", 
+                    "c_const": "", 
+                    "function_name": "func2", 
+                    "underscore_name": "func2"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "get": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get"
+                        }, 
+                        "fmtf": {
+                            "c_var": "get", 
+                            "f_var": "get"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tonumber(L, 1)", 
+                            "c_var_len": "Lget", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get", 
+                            "lua_var": "SH_Lua_get"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_decl": "double ( * get)(int i, int)", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get", 
+                            "py_var": "SH_Py_get"
+                        }
+                    }
+                }, 
+                "_function_index": 62, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "func3", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "func": {
+                                    "name": "get", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "i", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }
+                            ], 
+                            "specifier": [
+                                "double"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void func3(double (*get)(int i, int));", 
+                "declgen": "void func3(double ( * get) +intent(in)+value(int i, int))", 
+                "doxygen": {
+                    "brief": "abstract argument"
+                }, 
+                "format": {
+                    "C_call_code": "func3(\tget);", 
+                    "C_call_list": "get", 
+                    "C_name": "AA_func3", 
+                    "C_prototype": "double ( * get)(int i, int)", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_func3", 
+                    "F_C_name": "c_func3", 
+                    "F_arg_c_call": "get", 
+                    "F_arguments": "get", 
+                    "F_call_code": "call c_func3(get)", 
+                    "F_name_function": "func3", 
+                    "F_name_generic": "func3", 
+                    "F_name_impl": "func3", 
+                    "F_subprogram": "subroutine", 
+                    "LUA_name": "func3", 
+                    "LUA_name_impl": "l_func3", 
+                    "PY_name_impl": "PP_func3", 
+                    "c_const": "", 
+                    "function_name": "func3", 
+                    "underscore_name": "func3"
+                }, 
+                "options": {
+                    "F_force_wrapper": true
+                }
+            }, 
+            {
+                "_fmtargs": {
+                    "get": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get"
+                        }, 
+                        "fmtf": {
+                            "c_var": "get", 
+                            "f_var": "get"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "POP", 
+                            "c_var_len": "Lget", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get", 
+                            "lua_var": "SH_Lua_get"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_decl": "void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get", 
+                            "py_var": "SH_Py_get"
+                        }
+                    }
+                }, 
+                "_function_index": 63, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "func4", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "func": {
+                                    "name": "get", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname1", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname2", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname3", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname4", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname5", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname6", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname7", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname8", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname9", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {}, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname10", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }
+                            ], 
+                            "specifier": [
+                                "void"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void func4(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))", 
+                "declgen": "void func4(void ( * get) +intent(in)+value(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))", 
+                "format": {
+                    "C_call_code": "func4(\tget);", 
+                    "C_call_list": "get", 
+                    "C_name": "AA_func4", 
+                    "C_prototype": "void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_func4", 
+                    "F_C_name": "func4", 
+                    "F_arg_c_call": "get", 
+                    "F_arguments": "get", 
+                    "F_call_code": "call c_func4(get)", 
+                    "F_name_function": "func4", 
+                    "F_name_generic": "func4", 
+                    "F_name_impl": "func4", 
+                    "F_subprogram": "subroutine", 
+                    "LUA_name": "func4", 
+                    "LUA_name_impl": "l_func4", 
+                    "PY_name_impl": "PP_func4", 
+                    "c_const": "", 
+                    "function_name": "func4", 
+                    "underscore_name": "func4"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
                     "verylongname1": {
                         "fmtc": {
                             "c_const": "", 
@@ -5890,7 +6459,7 @@
                         }
                     }
                 }, 
-                "_function_index": 60, 
+                "_function_index": 64, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -6425,7 +6994,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 61, 
+                "_function_index": 65, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 

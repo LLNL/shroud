@@ -500,8 +500,10 @@ class Wrapf(util.WrapperMixin):
                         name = 'arg{}'.format(i)
                     arg_f_names.append(name)
                     arg_c_decl.append(param.bind_c(name=name))
+                if subprogram == 'function':
+                    arg_c_decl.append(ast.bind_c(params=None))
                 arguments = ',\t '.join(arg_f_names)
-                iface.append('{}({}) bind(C)'.format(
+                iface.append('{} {}({}) bind(C)'.format(
                     subprogram, key, arguments))
                 iface.append(1)
                 iface.extend(arg_c_decl)
@@ -801,6 +803,15 @@ class Wrapf(util.WrapperMixin):
                 f_index += 1
                 f_arg = f_args[f_index]
                 arg_f_names.append(fmt_arg.f_var)
+                if f_arg.is_function_pointer():
+                    absiface = self.add_abstract_interface(node, f_arg)
+                    arg_f_decl.append(
+                        'procedure({}) :: {}'.format(
+                            absiface, f_arg.name))
+                    arg_c_call.append(f_arg.name)
+                    # function pointers are pass thru without any change
+                    continue
+
                 arg_f_decl.append(f_arg.gen_arg_as_fortran())
 
                 arg_type = f_arg.typename
