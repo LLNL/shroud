@@ -433,8 +433,6 @@ return 1;""", fmt)
             fmt_arg.cxx_type = arg_typedef.cxx_type
             fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
 
-            py_statements = arg_typedef.py_statements
-            cxx_local_var = ''
             if attrs['intent'] in ['inout', 'in']:
                 # names to PyArg_ParseTupleAndKeywords
                 arg_names.append(arg_name)
@@ -465,18 +463,6 @@ return 1;""", fmt)
                 # add argument to call to PyArg_ParseTypleAndKeywords
                 parse_vargs.append('&' + arg_name)
 
-                stmts = 'intent_in'  # XXX -  + attrs['intent'] ?
-                intent_blk = py_statements.get(stmts, {})
-
-                cxx_local_var = intent_blk.get('cxx_local_var', '')
-                if cxx_local_var:
-                    fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
-                cmd_list = py_statements.get(
-                    'intent_in', {}).get('post_parse', [])
-                if cmd_list:
-                    for cmd in cmd_list:
-                        append_format(post_parse, cmd, fmt_arg)
-
             if attrs['intent'] in ['inout', 'out']:
                 # output variable must be a pointer
                 # XXX - fix up for strings
@@ -490,17 +476,27 @@ return 1;""", fmt)
 #                    raise RuntimeError("XXXX")
 #                    build_vargs.append('*' + vargs)
 
-                stmts = 'intent_out'  # XXX -  + attrs['intent'] ?
-                intent_blk = py_statements.get(stmts, {})
+            py_statements = arg_typedef.py_statements
+            stmts = 'intent_' + attrs['intent']
+            intent_blk = py_statements.get(stmts, {})
 
-                cxx_local_var = intent_blk.get('cxx_local_var', '')
-                if cxx_local_var:
-                    fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
-                cmd_list = py_statements.get(
-                    'intent_out', {}).get('pre_call', [])
-                if cmd_list:
-                    for cmd in cmd_list:
-                        append_format(pre_call, cmd, fmt_arg)
+            cxx_local_var = intent_blk.get('cxx_local_var', '')
+            if cxx_local_var:
+                fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
+                if cxx_local_var == 'object':
+                    fmt_arg.cxx_deref = '.'
+                elif cxx_local_var == 'pointer':
+                    fmt_arg.cxx_deref = '->'
+
+            cmd_list = intent_blk.get('pre_call', [])
+            if cmd_list:
+                for cmd in cmd_list:
+                    append_format(pre_call, cmd, fmt_arg)
+
+            cmd_list = intent_blk.get('post_parse', [])
+            if cmd_list:
+                for cmd in cmd_list:
+                    append_format(post_parse, cmd, fmt_arg)
 
             # argument for C++ function
             if arg_typedef.base == 'string':

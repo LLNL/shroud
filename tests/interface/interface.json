@@ -367,6 +367,11 @@
                     "post_parse": [
                         "{cxx_var} = PyObject_IsTrue({py_var});"
                     ]
+                }, 
+                "intent_inout": {
+                    "post_parse": [
+                        "{cxx_var} = PyObject_IsTrue({py_var});"
+                    ]
                 }
             }
         }, 
@@ -691,6 +696,12 @@
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
+                    "cxx_local_var": "object", 
+                    "post_parse": [
+                        "{c_const}std::string {cxx_var}({c_var});"
+                    ]
+                }, 
+                "intent_inout": {
                     "cxx_local_var": "object", 
                     "post_parse": [
                         "{c_const}std::string {cxx_var}({c_var});"

@@ -335,9 +335,14 @@ def initialize():
                 intent_in=dict(
                     post_parse=[
                         '{cxx_var} = PyObject_IsTrue({py_var});',
-                        ],
-                    ),
+                    ],
                 ),
+                intent_inout=dict(
+                    post_parse=[
+                        '{cxx_var} = PyObject_IsTrue({py_var});',
+                    ],
+                ),
+            ),
 
             # XXX PY_format='p',  # Python 3.3 or greater
             PY_ctor='PyBool_FromLong({c_var})',
@@ -567,6 +572,12 @@ def initialize():
 
             py_statements=dict(
                 intent_in=dict(
+                    cxx_local_var='object',
+                    post_parse=[
+                        '{c_const}std::string {cxx_var}({c_var});'
+                    ],
+                ),
+                intent_inout=dict(
                     cxx_local_var='object',
                     post_parse=[
                         '{c_const}std::string {cxx_var}({c_var});'
@@ -861,6 +872,11 @@ def typedef_wrapped_defaults(typedef):
 
     typedef.py_statements=dict(
         intent_in=dict(
+            post_parse=[
+                '{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;',
+            ],
+        ),
+        intent_inout=dict(
             post_parse=[
                 '{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;',
             ],

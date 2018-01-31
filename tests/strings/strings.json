@@ -2796,11 +2796,11 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_ptr": "", 
-                            "c_var": "SH_arg1.c_str()", 
+                            "c_var": "arg1.c_str()", 
                             "cxx_decl": "std::string & arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_SH_arg1.c_str()", 
+                            "cxx_var": "SH_arg1.c_str()", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
@@ -2974,11 +2974,11 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_ptr": " *", 
-                            "c_var": "SH_arg1->c_str()", 
+                            "c_var": "arg1->c_str()", 
                             "cxx_decl": "std::string * arg1", 
-                            "cxx_deref": "->", 
+                            "cxx_deref": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_SH_arg1->c_str()", 
+                            "cxx_var": "SH_arg1->c_str()", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
@@ -4075,6 +4075,11 @@
                     "post_parse": [
                         "{cxx_var} = PyObject_IsTrue({py_var});"
                     ]
+                }, 
+                "intent_inout": {
+                    "post_parse": [
+                        "{cxx_var} = PyObject_IsTrue({py_var});"
+                    ]
                 }
             }
         }, 
@@ -4399,6 +4404,12 @@
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
+                    "cxx_local_var": "object", 
+                    "post_parse": [
+                        "{c_const}std::string {cxx_var}({c_var});"
+                    ]
+                }, 
+                "intent_inout": {
                     "cxx_local_var": "object", 
                     "post_parse": [
                         "{c_const}std::string {cxx_var}({c_var});"
