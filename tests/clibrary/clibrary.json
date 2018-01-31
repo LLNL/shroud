@@ -1135,7 +1135,7 @@
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
-            "PY_ctor": "PyString_FromString({c_var})", 
+            "PY_ctor": "PyString_FromStringAndSize(&{c_var}, 1)", 
             "PY_format": "s", 
             "c_statements": {
                 "result_buf": {
@@ -1361,6 +1361,12 @@
                     "cxx_local_var": "object", 
                     "post_parse": [
                         "{c_const}std::string {cxx_var}({c_var});"
+                    ]
+                }, 
+                "intent_out": {
+                    "cxx_local_var": "object", 
+                    "pre_call": [
+                        "{c_const}std::string {cxx_var};"
                     ]
                 }
             }

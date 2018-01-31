@@ -390,6 +390,7 @@ return 1;""", fmt)
         # arguments to Py_BuildValue
         build_format = []
         build_vargs = []
+        pre_call = []
         post_call = []
 
         cxx_call_list = []
@@ -406,122 +407,141 @@ return 1;""", fmt)
                     ])
 
         args = ast.params
-        if not args:
+        arg_names = []
+        arg_offsets = []
+        offset = 0
+        for arg in args:
+            arg_name = arg.name
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault('fmtpy', util.Scope(fmt))
+            fmt_arg.c_var = arg_name
+            fmt_arg.cxx_var = arg_name
+            fmt_arg.py_var = 'SH_Py_' + arg_name
+            if arg.const:
+                fmt_arg.c_const = 'const '
+            else:
+                fmt_arg.c_const = ''
+            if arg.is_pointer():
+                fmt_arg.c_ptr = ' *'
+                fmt_arg.cxx_deref = '->'
+            else:
+                fmt_arg.c_ptr = ''
+                fmt_arg.cxx_deref = '.'
+            attrs = arg.attrs
+
+            arg_typedef = typemap.Typedef.lookup(arg.typename)
+            fmt_arg.cxx_type = arg_typedef.cxx_type
+            fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
+
+            py_statements = arg_typedef.py_statements
+            cxx_local_var = ''
+            if attrs['intent'] in ['inout', 'in']:
+                # names to PyArg_ParseTupleAndKeywords
+                arg_names.append(arg_name)
+                arg_offsets.append('(char *) SH_kwcpp+%d' % offset)
+                offset += len(arg_name) + 1
+
+                # XXX default should be handled differently
+                if arg.init is not None:
+                    if not found_default:
+                        parse_format.append('|')  # add once
+                        found_default = True
+                    # call for default arguments  (num args, arg string)
+                    default_calls.append(
+                        (len(cxx_call_list), len(post_parse),
+                         ',\t '.join(cxx_call_list)))
+
+                parse_format.append(arg_typedef.PY_format)
+                if arg_typedef.PY_PyTypeObject:
+                    # Expect object of given type
+                    parse_format.append('!')
+                    parse_vargs.append('&' + arg_typedef.PY_PyTypeObject)
+                    arg_name = fmt_arg.py_var
+                elif arg_typedef.PY_from_object:
+                    # Use function to convert object
+                    parse_format.append('&')
+                    parse_vargs.append(arg_typedef.PY_from_object)
+
+                # add argument to call to PyArg_ParseTypleAndKeywords
+                parse_vargs.append('&' + arg_name)
+
+                stmts = 'intent_in'  # XXX -  + attrs['intent'] ?
+                intent_blk = py_statements.get(stmts, {})
+
+                cxx_local_var = intent_blk.get('cxx_local_var', '')
+                if cxx_local_var:
+                    fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
+                cmd_list = py_statements.get(
+                    'intent_in', {}).get('post_parse', [])
+                if cmd_list:
+                    for cmd in cmd_list:
+                        append_format(post_parse, cmd, fmt_arg)
+
+            if attrs['intent'] in ['inout', 'out']:
+                # output variable must be a pointer
+                # XXX - fix up for strings
+                format, vargs = self.intent_out(
+                    arg_typedef, fmt_arg, post_call)
+                build_format.append(format)
+                build_vargs.append(vargs)
+#                if format == 'O':
+#                    build_vargs.append(vargs)
+#                else:
+#                    raise RuntimeError("XXXX")
+#                    build_vargs.append('*' + vargs)
+
+                stmts = 'intent_out'  # XXX -  + attrs['intent'] ?
+                intent_blk = py_statements.get(stmts, {})
+
+                cxx_local_var = intent_blk.get('cxx_local_var', '')
+                if cxx_local_var:
+                    fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
+                cmd_list = py_statements.get(
+                    'intent_out', {}).get('pre_call', [])
+                if cmd_list:
+                    for cmd in cmd_list:
+                        append_format(pre_call, cmd, fmt_arg)
+
+            # argument for C++ function
+            if arg_typedef.base == 'string':
+                # C++ will coerce char * to std::string
+                PY_decl.append(arg.gen_arg_as_c() + ';')
+            elif arg_typedef.base == 'wrapped':
+                # defined as part of py_statements.intent_in.post_parse
+                # XXX - Not sure about intent_out
+                pass
+            else:
+                PY_decl.append(arg.gen_arg_as_cxx() + ';')
+
+            if arg_typedef.PY_PyTypeObject:
+                # A Python Object which must be converted to C++ type.
+                objtype = arg_typedef.PY_PyObject or 'PyObject'
+                PY_decl.append(objtype + ' * ' + fmt_arg.py_var + ';')
+                cxx_call_list.append(fmt_arg.cxx_var)
+            elif arg_typedef.PY_from_object:
+                # already a C++ type
+                cxx_call_list.append(fmt_arg.cxx_var)
+            elif cxx_local_var == 'object':
+                if arg.is_pointer():
+                    cxx_call_list.append('&' + fmt_arg.cxx_var)
+                else:
+                    cxx_call_list.append(fmt_arg.cxx_var)
+            elif cxx_local_var == 'pointer':
+                if arg.is_pointer():
+                    cxx_call_list.append(fmt_arg.cxx_var)
+                else:
+                    cxx_call_list.append('*' + fmt_arg.cxx_var)
+            else:
+                # convert to C++ type
+                append_format(cxx_call_list, arg_typedef.c_to_cxx, fmt_arg)
+
+        if not arg_names:
+            # no input arguments
             fmt.PY_ml_flags = 'METH_NOARGS'
         else:
             fmt.PY_ml_flags = 'METH_VARARGS|METH_KEYWORDS'
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
-            arg_names = []
-            arg_offsets = []
-            offset = 0
-            for arg in args:
-                arg_name = arg.name
-                fmt_arg0 = fmtargs.setdefault(arg_name, {})
-                fmt_arg = fmt_arg0.setdefault('fmtpy', util.Scope(fmt))
-                fmt_arg.c_var = arg_name
-                fmt_arg.cxx_var = arg_name
-                fmt_arg.py_var = 'SH_Py_' + arg_name
-                if arg.const:
-                    fmt_arg.c_const = 'const '
-                else:
-                    fmt_arg.c_const = ''
-                if arg.is_pointer():
-                    fmt_arg.c_ptr = ' *'
-                    fmt_arg.cxx_deref = '->'
-                else:
-                    fmt_arg.c_ptr = ''
-                    fmt_arg.cxx_deref = '.'
-                attrs = arg.attrs
-
-                arg_typedef = typemap.Typedef.lookup(arg.typename)
-                fmt_arg.cxx_type = arg_typedef.cxx_type
-                fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
-
-                py_statements = arg_typedef.py_statements
-                cxx_local_var = ''
-                if attrs['intent'] in ['inout', 'in']:
-                    # names to PyArg_ParseTupleAndKeywords
-                    arg_names.append(arg_name)
-                    arg_offsets.append('(char *) SH_kwcpp+%d' % offset)
-                    offset += len(arg_name) + 1
-
-                    # XXX default should be handled differently
-                    if arg.init is not None:
-                        if not found_default:
-                            parse_format.append('|')  # add once
-                            found_default = True
-                        # call for default arguments  (num args, arg string)
-                        default_calls.append(
-                            (len(cxx_call_list), len(post_parse),
-                             ',\t '.join(cxx_call_list)))
-
-                    parse_format.append(arg_typedef.PY_format)
-                    if arg_typedef.PY_PyTypeObject:
-                        # Expect object of given type
-                        parse_format.append('!')
-                        parse_vargs.append('&' + arg_typedef.PY_PyTypeObject)
-                        arg_name = fmt_arg.py_var
-                    elif arg_typedef.PY_from_object:
-                        # Use function to convert object
-                        parse_format.append('&')
-                        parse_vargs.append(arg_typedef.PY_from_object)
-
-                    # add argument to call to PyArg_ParseTypleAndKeywords
-                    parse_vargs.append('&' + arg_name)
-
-                    stmts = 'intent_in'  # XXX -  + attrs['intent'] ?
-                    intent_blk = py_statements.get(stmts, {})
-
-                    cxx_local_var = intent_blk.get('cxx_local_var', '')
-                    if cxx_local_var:
-                        fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
-                    cmd_list = py_statements.get(
-                        'intent_in', {}).get('post_parse', [])
-                    if cmd_list:
-                        for cmd in cmd_list:
-                            append_format(post_parse, cmd, fmt_arg)
-
-                if attrs['intent'] in ['inout', 'out']:
-                    # output variable must be a pointer
-                    # XXX - fix up for strings
-                    format, vargs = self.intent_out(
-                        arg_typedef, fmt_arg, post_call)
-                    build_format.append(format)
-                    build_vargs.append('*' + vargs)
-
-                # argument for C++ function
-                if arg_typedef.base == 'string':
-                    # C++ will coerce char * to std::string
-                    PY_decl.append(arg.gen_arg_as_c() + ';')
-                elif arg_typedef.base == 'wrapped':
-                    # defined as part of py_statements.intent_in.post_parse
-                    # XXX - Not sure about intent_out
-                    pass
-                else:
-                    PY_decl.append(arg.gen_arg_as_cxx() + ';')
-
-                if arg_typedef.PY_PyTypeObject:
-                    # A Python Object which must be converted to C++ type.
-                    objtype = arg_typedef.PY_PyObject or 'PyObject'
-                    PY_decl.append(objtype + ' * ' + fmt_arg.py_var + ';')
-                    cxx_call_list.append(fmt_arg.cxx_var)
-                elif arg_typedef.PY_from_object:
-                    # already a C++ type
-                    cxx_call_list.append(fmt_arg.cxx_var)
-                elif cxx_local_var == 'object':
-                    if arg.is_pointer():
-                        cxx_call_list.append('&' + fmt_arg.cxx_var)
-                    else:
-                        cxx_call_list.append(fmt_arg.cxx_var)
-                elif cxx_local_var == 'pointer':
-                    if arg.is_pointer():
-                        cxx_call_list.append(fmt_arg.cxx_var)
-                    else:
-                        cxx_call_list.append('*' + fmt_arg.cxx_var)
-                else:
-                    # convert to C++ type
-                    append_format(cxx_call_list, arg_typedef.c_to_cxx, fmt_arg)
 
             if self.language == 'c++':
                 # jump through some hoops for char ** const correctness for C++
@@ -581,6 +601,7 @@ return 1;""", fmt)
 
             fmt.PY_call_list = call_list
             PY_code.extend(post_parse[:len_post_parse])
+            PY_code.extend(pre_call)
 
             if is_dtor:
                 append_format(PY_code, 'delete self->{PY_obj};', fmt)

@@ -459,7 +459,7 @@ def initialize():
             f_c_type='character(kind=C_CHAR)',
             f_c_module=dict(iso_c_binding=['C_CHAR']),
             PY_format='s',
-            PY_ctor='PyString_FromString({c_var})',
+            PY_ctor='PyString_FromStringAndSize(&{c_var}, 1)',
             LUA_type='LUA_TSTRING',
             LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
@@ -570,9 +570,15 @@ def initialize():
                     cxx_local_var='object',
                     post_parse=[
                         '{c_const}std::string {cxx_var}({c_var});'
-                        ],
-                    ),
+                    ],
                 ),
+                intent_out=dict(
+                    cxx_local_var='object',
+                    pre_call=[
+                        '{c_const}std::string {cxx_var};'
+                    ],
+                ),
+            ),
             PY_format='s',
             PY_ctor='PyString_FromString({c_var})',
             LUA_type='LUA_TSTRING',

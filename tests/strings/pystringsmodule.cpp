@@ -90,7 +90,7 @@ PY_return_char(
 {
 // splicer begin function.return_char
     char rv = returnChar();
-    PyObject * SH_Py_rv = PyString_FromString(rv);
+    PyObject * SH_Py_rv = PyString_FromStringAndSize(&rv, 1);
     return (PyObject *) SH_Py_rv;
 // splicer end function.return_char
 }
@@ -120,7 +120,7 @@ PY_pass_char_ptr(
     }
     passCharPtr(dest, src);
     PyObject * SH_Py_dest = PyString_FromString(dest);
-    return (PyObject *) *SH_Py_dest;
+    return (PyObject *) SH_Py_dest;
 // splicer end function.pass_char_ptr
 }
 
@@ -148,7 +148,7 @@ PY_pass_char_ptr_in_out(
     }
     passCharPtrInOut(s);
     PyObject * SH_Py_s = PyString_FromString(s);
-    return (PyObject *) *SH_Py_s;
+    return (PyObject *) SH_Py_s;
 // splicer end function.pass_char_ptr_in_out
 }
 
@@ -357,25 +357,16 @@ static char PY_accept_string_reference_out__doc__[] =
 static PyObject *
 PY_accept_string_reference_out(
   PyObject *,  // self unused
-  PyObject *args,
-  PyObject *kwds)
+  PyObject *,  // args unused
+  PyObject *)  // kwds unused
 {
 // splicer begin function.accept_string_reference_out
     char * arg1;
-    const char *SH_kwcpp =
-        "";
-    char *SH_kw_list[] = {
-        ,
-        NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, ":acceptStringReferenceOut", SH_kw_list,
-        ))
-    {
-        return NULL;
-    }
-    acceptStringReferenceOut(arg1.c_str());
+    std::string SH_arg1.c_str();
+    acceptStringReferenceOut(SH_arg1.c_str());
     PyObject * SH_Py_arg1 = PyString_FromString(arg1.c_str());
-    return (PyObject *) *SH_Py_arg1;
+    return (PyObject *) SH_Py_arg1;
 // splicer end function.accept_string_reference_out
 }
 
@@ -402,9 +393,10 @@ PY_accept_string_reference(
         return NULL;
     }
     std::string SH_arg1(arg1);
-    acceptStringReference(SH_arg1);
+    std::string SH_SH_arg1.c_str();
+    acceptStringReference(SH_SH_arg1.c_str());
     PyObject * SH_Py_arg1 = PyString_FromString(SH_arg1.c_str());
-    return (PyObject *) *SH_Py_arg1;
+    return (PyObject *) SH_Py_arg1;
 // splicer end function.accept_string_reference
 }
 
@@ -431,9 +423,10 @@ PY_accept_string_pointer(
         return NULL;
     }
     std::string SH_arg1(arg1);
-    acceptStringPointer(&SH_arg1);
+    std::string SH_SH_arg1->c_str();
+    acceptStringPointer(&SH_SH_arg1->c_str());
     PyObject * SH_Py_arg1 = PyString_FromString(SH_arg1->c_str());
-    return (PyObject *) *SH_Py_arg1;
+    return (PyObject *) SH_Py_arg1;
 // splicer end function.accept_string_pointer
 }
 
@@ -471,25 +464,15 @@ static char PY_explicit2__doc__[] =
 static PyObject *
 PY_explicit2(
   PyObject *,  // self unused
-  PyObject *args,
-  PyObject *kwds)
+  PyObject *,  // args unused
+  PyObject *)  // kwds unused
 {
 // splicer begin function.explicit2
     char * name;
-    const char *SH_kwcpp =
-        "";
-    char *SH_kw_list[] = {
-        ,
-        NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, ":explicit2", SH_kw_list,
-        ))
-    {
-        return NULL;
-    }
     explicit2(name);
     PyObject * SH_Py_name = PyString_FromString(name);
-    return (PyObject *) *SH_Py_name;
+    return (PyObject *) SH_Py_name;
 // splicer end function.explicit2
 }
 
@@ -532,7 +515,7 @@ PY_creturn_char(
 {
 // splicer begin function.creturn_char
     char rv = CreturnChar();
-    PyObject * SH_Py_rv = PyString_FromString(rv);
+    PyObject * SH_Py_rv = PyString_FromStringAndSize(&rv, 1);
     return (PyObject *) SH_Py_rv;
 // splicer end function.creturn_char
 }
@@ -562,7 +545,7 @@ PY_cpass_char_ptr(
     }
     CpassCharPtr(dest, src);
     PyObject * SH_Py_dest = PyString_FromString(dest);
-    return (PyObject *) *SH_Py_dest;
+    return (PyObject *) SH_Py_dest;
 // splicer end function.cpass_char_ptr
 }
 static PyMethodDef PY_methods[] = {
@@ -581,11 +564,11 @@ static PyMethodDef PY_methods[] = {
 {"getString6", (PyCFunction)PY_get_string6, METH_NOARGS, PY_get_string6__doc__},
 {"getString7", (PyCFunction)PY_get_string7, METH_NOARGS, PY_get_string7__doc__},
 {"acceptStringConstReference", (PyCFunction)PY_accept_string_const_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_const_reference__doc__},
-{"acceptStringReferenceOut", (PyCFunction)PY_accept_string_reference_out, METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference_out__doc__},
+{"acceptStringReferenceOut", (PyCFunction)PY_accept_string_reference_out, METH_NOARGS, PY_accept_string_reference_out__doc__},
 {"acceptStringReference", (PyCFunction)PY_accept_string_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference__doc__},
 {"acceptStringPointer", (PyCFunction)PY_accept_string_pointer, METH_VARARGS|METH_KEYWORDS, PY_accept_string_pointer__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS, PY_explicit1__doc__},
-{"explicit2", (PyCFunction)PY_explicit2, METH_VARARGS|METH_KEYWORDS, PY_explicit2__doc__},
+{"explicit2", (PyCFunction)PY_explicit2, METH_NOARGS, PY_explicit2__doc__},
 {"CpassChar", (PyCFunction)PY_cpass_char, METH_VARARGS|METH_KEYWORDS, PY_cpass_char__doc__},
 {"CreturnChar", (PyCFunction)PY_creturn_char, METH_NOARGS, PY_creturn_char__doc__},
 {"CpassCharPtr", (PyCFunction)PY_cpass_char_ptr, METH_VARARGS|METH_KEYWORDS, PY_cpass_char_ptr__doc__},

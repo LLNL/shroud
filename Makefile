@@ -107,6 +107,7 @@ TESTDIRS = \
     $(tempdir)/run-tutorial/python/.. \
     $(tempdir)/run-tutorial/lua/.. \
     $(tempdir)/run-strings/.. \
+    $(tempdir)/run-strings/python/.. \
     $(tempdir)/run-clibrary/..
 
 testdirs : $(TESTDIRS)
@@ -131,6 +132,12 @@ py-tutorial : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-tutorial/python \
 	    -f $(top)/tests/run-tutorial/python/Makefile \
+	    PYTHON=$(PYTHON) top=$(top) all
+
+py-strings : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run-strings/python \
+	    -f $(top)/tests/run-strings/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 # Run the Python tests
