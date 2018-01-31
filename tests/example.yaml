@@ -319,11 +319,20 @@ functions:
   - decl: void func2(double * (*get)());
     doxygen:
       brief: return a pointer
-  - decl: void func3(double (*get)(int i, int));
+  - decl: void FuncPtr3(double (*get)(int i, int));
     doxygen:
       brief: abstract argument
     options:
       F_force_wrapper: True
+  - decl: void FuncPtr3a(double (*get)(double, int));
+    doxygen:
+      brief: abstract argument
+    options:
+      wrap_lua: False
+      wrap_python: False
+      F_force_wrapper: True
+      F_abstract_interface_subprogram_template: custom_funptr
+      F_abstract_interface_argument_template: XX{index}arg
   - decl: void func4(void (*get)(int verylongname1, 
                                  int verylongname2, 
                                  int verylongname3, 

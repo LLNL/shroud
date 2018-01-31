@@ -55,6 +55,14 @@ module userlibrary_mod
 
     abstract interface
 
+        function custom_funptr(XX0arg, XX1arg) bind(C)
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), value :: XX0arg
+            integer(C_INT), value :: XX1arg
+            type(C_PTR) :: custom_funptr
+        end function custom_funptr
+
         subroutine func1_get() bind(C)
             implicit none
         end subroutine func1_get
@@ -63,14 +71,6 @@ module userlibrary_mod
             implicit none
             type(C_PTR) :: func2_get
         end function func2_get
-
-        function func3_get(i, arg1) bind(C)
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT), value :: i
-            integer(C_INT), value :: arg1
-            type(C_PTR) :: func3_get
-        end function func3_get
 
         subroutine func4_get(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
@@ -89,6 +89,14 @@ module userlibrary_mod
             integer(C_INT), value :: verylongname9
             integer(C_INT), value :: verylongname10
         end subroutine func4_get
+
+        function func_ptr3_get(i, arg1) bind(C)
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value :: i
+            integer(C_INT), value :: arg1
+            type(C_PTR) :: func_ptr3_get
+        end function func_ptr3_get
 
     end interface
 
@@ -232,13 +240,21 @@ module userlibrary_mod
             procedure(func2_get) :: get
         end subroutine func2
 
-        subroutine c_func3(get) &
-                bind(C, name="AA_func3")
+        subroutine c_func_ptr3(get) &
+                bind(C, name="AA_func_ptr3")
             use iso_c_binding, only : C_DOUBLE
-            import :: func3_get
+            import :: func_ptr3_get
             implicit none
-            procedure(func3_get) :: get
-        end subroutine c_func3
+            procedure(func_ptr3_get) :: get
+        end subroutine c_func_ptr3
+
+        subroutine c_func_ptr3a(get) &
+                bind(C, name="AA_func_ptr3a")
+            use iso_c_binding, only : C_DOUBLE
+            import :: custom_funptr
+            implicit none
+            procedure(custom_funptr) :: get
+        end subroutine c_func_ptr3a
 
         subroutine func4(get) &
                 bind(C, name="AA_func4")
@@ -374,7 +390,7 @@ contains
 
     ! void testoptional()
     ! has_default_arg
-    ! function_index=66
+    ! function_index=67
     subroutine testoptional_0()
         ! splicer begin function.testoptional_0
         call c_testoptional_0()
@@ -383,7 +399,7 @@ contains
 
     ! void testoptional(int i=1 +intent(in)+value)
     ! has_default_arg
-    ! function_index=67
+    ! function_index=68
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -423,21 +439,34 @@ contains
         ! splicer end function.testgroup2
     end subroutine testgroup2
 
-    ! void func3(double ( * get) +intent(in)+value(int i +value, int +value))
+    ! void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
     ! function_index=62
     !>
     !! \brief abstract argument
     !!
     !<
-    subroutine func3(get)
-        procedure(func3_get) :: get
-        ! splicer begin function.func3
-        call c_func3(get)
-        ! splicer end function.func3
-    end subroutine func3
+    subroutine func_ptr3(get)
+        procedure(func_ptr3_get) :: get
+        ! splicer begin function.func_ptr3
+        call c_func_ptr3(get)
+        ! splicer end function.func_ptr3
+    end subroutine func_ptr3
+
+    ! void FuncPtr3a(double ( * get) +intent(in)+value(double +value, int +value))
+    ! function_index=63
+    !>
+    !! \brief abstract argument
+    !!
+    !<
+    subroutine func_ptr3a(get)
+        procedure(custom_funptr) :: get
+        ! splicer begin function.func_ptr3a
+        call c_func_ptr3a(get)
+        ! splicer end function.func_ptr3a
+    end subroutine func_ptr3a
 
     ! void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-    ! function_index=64
+    ! function_index=65
     subroutine verlongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
@@ -460,7 +489,7 @@ contains
     end subroutine verlongfunctionname1
 
     ! int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-    ! function_index=65
+    ! function_index=66
     function verlongfunctionname2(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10) &

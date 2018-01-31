@@ -4027,7 +4027,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 68, 
+                "_PTR_F_C_index": 69, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4158,7 +4158,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 68, 
+                "_function_index": 69, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -4476,7 +4476,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 69, 
+                "_PTR_F_C_index": 70, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -4601,7 +4601,7 @@
                         }
                     }
                 }, 
-                "_function_index": 69, 
+                "_function_index": 70, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -4663,7 +4663,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 70, 
+                "_PTR_F_C_index": 71, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -4844,7 +4844,7 @@
                         }
                     }
                 }, 
-                "_function_index": 70, 
+                "_function_index": 71, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -4920,7 +4920,7 @@
                 }
             }, 
             {
-                "_function_index": 66, 
+                "_function_index": 67, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4984,7 +4984,7 @@
                         }
                     }
                 }, 
-                "_function_index": 67, 
+                "_function_index": 68, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5049,8 +5049,8 @@
             }, 
             {
                 "_default_funcs": [
-                    66, 
-                    67
+                    67, 
+                    68
                 ], 
                 "_fmtargs": {
                     "i": {
@@ -5810,7 +5810,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "func3", 
+                        "name": "FuncPtr3", 
                         "pointer": []
                     }, 
                     "fattrs": {}, 
@@ -5872,36 +5872,152 @@
                         "void"
                     ]
                 }, 
-                "decl": "void func3(double (*get)(int i, int));", 
-                "declgen": "void func3(double ( * get) +intent(in)+value(int i +value, int +value))", 
+                "decl": "void FuncPtr3(double (*get)(int i, int));", 
+                "declgen": "void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))", 
                 "doxygen": {
                     "brief": "abstract argument"
                 }, 
                 "format": {
-                    "C_call_code": "func3(\tget);", 
+                    "C_call_code": "FuncPtr3(\tget);", 
                     "C_call_list": "get", 
-                    "C_name": "AA_func3", 
+                    "C_name": "AA_func_ptr3", 
                     "C_prototype": "double ( * get)(int i, int)", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_call": "c_func3", 
-                    "F_C_name": "c_func3", 
+                    "F_C_call": "c_func_ptr3", 
+                    "F_C_name": "c_func_ptr3", 
                     "F_arg_c_call": "get", 
                     "F_arguments": "get", 
-                    "F_call_code": "call c_func3(get)", 
-                    "F_name_function": "func3", 
-                    "F_name_generic": "func3", 
-                    "F_name_impl": "func3", 
+                    "F_call_code": "call c_func_ptr3(get)", 
+                    "F_name_function": "func_ptr3", 
+                    "F_name_generic": "func_ptr3", 
+                    "F_name_impl": "func_ptr3", 
                     "F_subprogram": "subroutine", 
-                    "LUA_name": "func3", 
-                    "LUA_name_impl": "l_func3", 
-                    "PY_name_impl": "PP_func3", 
+                    "LUA_name": "FuncPtr3", 
+                    "LUA_name_impl": "l_func_ptr3", 
+                    "PY_name_impl": "PP_func_ptr3", 
                     "c_const": "", 
-                    "function_name": "func3", 
-                    "underscore_name": "func3"
+                    "function_name": "FuncPtr3", 
+                    "underscore_name": "func_ptr3"
                 }, 
                 "options": {
                     "F_force_wrapper": true
+                }
+            }, 
+            {
+                "_fmtargs": {
+                    "get": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get"
+                        }, 
+                        "fmtf": {
+                            "c_var": "get", 
+                            "f_var": "get"
+                        }
+                    }
+                }, 
+                "_function_index": 63, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "FuncPtr3a", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "func": {
+                                    "name": "get", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "double"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }
+                            ], 
+                            "specifier": [
+                                "double"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void FuncPtr3a(double (*get)(double, int));", 
+                "declgen": "void FuncPtr3a(double ( * get) +intent(in)+value(double +value, int +value))", 
+                "doxygen": {
+                    "brief": "abstract argument"
+                }, 
+                "format": {
+                    "C_call_code": "FuncPtr3a(\tget);", 
+                    "C_call_list": "get", 
+                    "C_name": "AA_func_ptr3a", 
+                    "C_prototype": "double ( * get)(double, int)", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_func_ptr3a", 
+                    "F_C_name": "c_func_ptr3a", 
+                    "F_arg_c_call": "get", 
+                    "F_arguments": "get", 
+                    "F_call_code": "call c_func_ptr3a(get)", 
+                    "F_name_function": "func_ptr3a", 
+                    "F_name_generic": "func_ptr3a", 
+                    "F_name_impl": "func_ptr3a", 
+                    "F_subprogram": "subroutine", 
+                    "c_const": "", 
+                    "function_name": "FuncPtr3a", 
+                    "underscore_name": "func_ptr3a"
+                }, 
+                "options": {
+                    "F_abstract_interface_argument_template": "XX{index}arg", 
+                    "F_abstract_interface_subprogram_template": "custom_funptr", 
+                    "F_force_wrapper": true, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
                 }
             }, 
             {
@@ -5941,7 +6057,7 @@
                         }
                     }
                 }, 
-                "_function_index": 63, 
+                "_function_index": 64, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -6483,7 +6599,7 @@
                         }
                     }
                 }, 
-                "_function_index": 64, 
+                "_function_index": 65, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -7018,7 +7134,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 65, 
+                "_function_index": 66, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -7220,6 +7336,8 @@
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "F_abstract_interface_argument_template": "arg{index}", 
+            "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 

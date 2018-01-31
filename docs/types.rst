@@ -809,6 +809,68 @@ This mapping makes the assumption that ``integer`` and
 .. Derived Types
    -------------
 
+.. _TypesAnchor_Function_Pointers:
+
+Function Pointers
+-----------------
+
+C or C++ arguments which are pointers to functions are supported.
+The function pointer type is wrapped using a Fortran ``abstract interface``.
+Only C compatible arguments in the function pointer are supported since
+no wrapper for the function pointer is created.  It must be callable 
+directly from Fortran.
+
+The function is wrapped as usual::
+
+    functions:
+    -  decl: int callback1(int in, int (*incr)(int));
+
+The main addition is the creation of an abstract interface in Fortran::
+
+    abstract interface
+        function callback1_incr(arg0) bind(C)
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value :: arg0
+            integer(C_INT) :: callback1_incr
+        end function callback1_incr
+    end interface
+
+    interface
+        function callback1(in, incr) &
+                result(SHT_rv) &
+                bind(C, name="TUT_callback1")
+            use iso_c_binding, only : C_INT
+            import :: callback1_incr
+            implicit none
+            integer(C_INT), value, intent(IN) :: in
+            procedure(callback1_incr) :: incr
+            integer(C_INT) :: SHT_rv
+        end function callback1
+    end interface
+
+The ``abstract interface`` is named from option
+**F_abstract_interface_subprogram_template** which defaults to
+``{underscore_name}_{argname}`` where *argname* is the name of the
+function argument.
+
+If the function pointer uses an abstract declarator
+(no argument name), the argument name is created from option
+**F_abstract_interface_argument_template** which defaults to
+``arg{index}`` where *index* is the 0-based argument index.
+When a name is given to a function pointer argument,
+it is always used in the ``abstract interface``.
+
+To change the name of the subprogram or argument, change the option.
+There are no format fields **F_abstract_interface_subprogram** or
+**F_abstract_interface_argument** since they vary by argument (or
+argument to an argument)::
+
+    options:
+      F_abstract_interface_subprogram_template: custom_funptr
+      F_abstract_interface_argument_template: XX{index}arg
+
+
 Class Type
 ----------
 

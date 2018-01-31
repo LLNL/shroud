@@ -473,10 +473,13 @@ class Wrapf(util.WrapperMixin):
         The interface is named after the function and the argument.
         """
         ast = node.ast
-        name = ast.name + '_' + arg.name
+        fmt = util.Scope(node.fmtdict)
+        fmt.argname = arg.name
+        name = wformat(
+            node.options.F_abstract_interface_subprogram_template, fmt)
         entry = self.f_abstract_interface.get(name)
         if entry is None:
-            self.f_abstract_interface[name] = (node, arg)
+            self.f_abstract_interface[name] = (node, fmt, arg)
         return name
 
     def dump_abstract_interfaces(self):
@@ -490,7 +493,7 @@ class Wrapf(util.WrapperMixin):
             iface.append(1)
 
             for key in sorted(self.f_abstract_interface.keys()):
-                node, arg = self.f_abstract_interface[key]
+                node, fmt, arg = self.f_abstract_interface[key]
                 ast = node.ast
                 subprogram = arg.get_subprogram()
                 iface.append('')
@@ -500,7 +503,9 @@ class Wrapf(util.WrapperMixin):
                 for i, param in enumerate(arg.params):
                     name = param.name
                     if name is None:
-                        name = 'arg{}'.format(i)
+                        fmt.index = str(i)
+                        name = wformat(
+                            node.options.F_abstract_interface_argument_template, fmt)
                     arg_f_names.append(name)
                     arg_c_decl.append(param.bind_c(name=name))
 

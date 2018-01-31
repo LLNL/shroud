@@ -73,10 +73,7 @@ class AstNode(object):
                     name, self.__class__.__name__))
 
     def eval_template(self, name, tname='', fmt=None):
-        """fmt[name] = fmt.name or option[name + tname + '_template']
-
-        If a format has not been explicitly set, set from template
-        """
+        """If a format has not been explicitly set, set from template."""
         if fmt is None:
             fmt = self.fmtdict
         if not fmt.inlocal(name):
@@ -178,6 +175,8 @@ class LibraryNode(AstNode):
 
             F_module_name_class_template='{class_lower}_mod',
             F_impl_filename_class_template='wrapf{cxx_class}.{F_filename_suffix}',
+            F_abstract_interface_subprogram_template='{underscore_name}_{argname}',
+            F_abstract_interface_argument_template='arg{index}',
 
             LUA_module_name_template='{library_lower}',
             LUA_module_filename_template=(

@@ -609,13 +609,13 @@ static int l_func2(lua_State *L)
     // splicer end function.func2
 }
 
-static int l_func3(lua_State *L)
+static int l_func_ptr3(lua_State *L)
 {
-    // splicer begin function.func3
+    // splicer begin function.FuncPtr3
     double ( * get)(int i, int) = lua_tonumber(L, 1);
-    func3(get);
+    FuncPtr3(get);
     return 0;
-    // splicer end function.func3
+    // splicer end function.FuncPtr3
 }
 
 static int l_func4(lua_State *L)
@@ -686,7 +686,7 @@ static const struct luaL_Reg l_UserLibrary_Reg [] = {
     {"testgroup2", l_testgroup2},
     {"func1", l_func1},
     {"func2", l_func2},
-    {"func3", l_func3},
+    {"FuncPtr3", l_func_ptr3},
     {"func4", l_func4},
     {"verlongfunctionname1", l_verlongfunctionname1},
     {"verlongfunctionname2", l_verlongfunctionname2},

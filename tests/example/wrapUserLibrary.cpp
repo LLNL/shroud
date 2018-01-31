@@ -74,7 +74,7 @@ bool AA_is_name_valid(const char * name)
 }
 
 // bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=68
+// function_index=69
 bool AA_is_name_valid_bufferify(const char * name, int Lname)
 {
 // splicer begin function.is_name_valid_bufferify
@@ -114,7 +114,7 @@ void AA_test_names(const char * name)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=69
+// function_index=70
 void AA_test_names_bufferify(const char * name, int Lname)
 {
 // splicer begin function.test_names_bufferify
@@ -136,7 +136,7 @@ void AA_test_names_flag(const char * name, int flag)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)
-// function_index=70
+// function_index=71
 void AA_test_names_flag_bufferify(const char * name, int Lname,
     int flag)
 {
@@ -148,7 +148,7 @@ void AA_test_names_flag_bufferify(const char * name, int Lname,
 }
 
 // void testoptional()
-// function_index=66
+// function_index=67
 void AA_testoptional_0()
 {
 // splicer begin function.testoptional_0
@@ -158,7 +158,7 @@ void AA_testoptional_0()
 }
 
 // void testoptional(int i=1 +intent(in)+value)
-// function_index=67
+// function_index=68
 void AA_testoptional_1(int i)
 {
 // splicer begin function.testoptional_1
@@ -249,22 +249,36 @@ void AA_func2(double * ( * get)())
 // splicer end function.func2
 }
 
-// void func3(double ( * get) +intent(in)+value(int i +value, int +value))
+// void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
 // function_index=62
 /**
  * \brief abstract argument
  *
  */
-void AA_func3(double ( * get)(int i, int))
+void AA_func_ptr3(double ( * get)(int i, int))
 {
-// splicer begin function.func3
-    func3(get);
+// splicer begin function.func_ptr3
+    FuncPtr3(get);
     return;
-// splicer end function.func3
+// splicer end function.func_ptr3
+}
+
+// void FuncPtr3a(double ( * get) +intent(in)+value(double +value, int +value))
+// function_index=63
+/**
+ * \brief abstract argument
+ *
+ */
+void AA_func_ptr3a(double ( * get)(double, int))
+{
+// splicer begin function.func_ptr3a
+    FuncPtr3a(get);
+    return;
+// splicer end function.func_ptr3a
 }
 
 // void func4(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
-// function_index=63
+// function_index=64
 void AA_func4(
     void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))
 {
@@ -275,7 +289,7 @@ void AA_func4(
 }
 
 // void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-// function_index=64
+// function_index=65
 void AA_verlongfunctionname1(int verylongname1, int verylongname2,
     int verylongname3, int verylongname4, int verylongname5,
     int verylongname6, int verylongname7, int verylongname8,
@@ -290,7 +304,7 @@ void AA_verlongfunctionname1(int verylongname1, int verylongname2,
 }
 
 // int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-// function_index=65
+// function_index=66
 int AA_verlongfunctionname2(int verylongname1, int verylongname2,
     int verylongname3, int verylongname4, int verylongname5,
     int verylongname6, int verylongname7, int verylongname8,
