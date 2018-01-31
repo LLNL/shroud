@@ -488,7 +488,7 @@ PY_typefunc(
   PyObject *kwds)
 {
 // splicer begin function.typefunc
-    TypeID arg;
+    int arg;
     const char *SH_kwcpp = "arg";
     char *SH_kw_list[] = {
         (char *) SH_kwcpp+0,
@@ -515,7 +515,7 @@ PY_enumfunc(
   PyObject *kwds)
 {
 // splicer begin function.enumfunc
-    EnumTypeID arg;
+    int arg;
     const char *SH_kwcpp = "arg";
     char *SH_kw_list[] = {
         (char *) SH_kwcpp+0,

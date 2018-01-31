@@ -321,8 +321,8 @@ PP_exclass2_declare_1(
 {
 // splicer begin class.ExClass2.method.declare
     Py_ssize_t SH_nargs = 0;
-    TypeID type;
-    SidreLength len;
+    int type;
+    SIDRE_SidreLength len;
     const char *SH_kwcpp =
         "type\0"
         "len";

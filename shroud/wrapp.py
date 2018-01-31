@@ -493,15 +493,13 @@ return 1;""", fmt)
                     append_format(post_parse, cmd, fmt_arg)
 
             # argument for C++ function
-            if arg_typedef.base == 'string':
-                # C++ will coerce char * to std::string
-                PY_decl.append(arg.gen_arg_as_c() + ';')
-            elif arg_typedef.base == 'wrapped':
+            if arg_typedef.base == 'wrapped':
                 # defined as part of py_statements.intent_in.post_parse
                 # XXX - Not sure about intent_out
                 pass
             else:
-                PY_decl.append(arg.gen_arg_as_cxx() + ';')
+                # PyArg_ParseTupleAndKeywords wants C types.
+                PY_decl.append(arg.gen_arg_as_c() + ';')
 
             if arg_typedef.PY_PyTypeObject:
                 # A Python Object which must be converted to C++ type.

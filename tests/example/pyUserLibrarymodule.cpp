@@ -278,7 +278,7 @@ PP_testmpi(
   PyObject *kwds)
 {
 // splicer begin function.testmpi
-    MPI_Comm comm;
+    MPI_Fint comm;
     const char *SH_kwcpp = "comm";
     char *SH_kw_list[] = {
         (char *) SH_kwcpp+0,
