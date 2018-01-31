@@ -390,7 +390,6 @@ return 1;""", fmt)
         # arguments to Py_BuildValue
         build_format = []
         build_vargs = []
-        pre_call = []
         post_call = []
 
         cxx_call_list = []
@@ -488,11 +487,6 @@ return 1;""", fmt)
                 elif cxx_local_var == 'pointer':
                     fmt_arg.cxx_deref = '->'
 
-            cmd_list = intent_blk.get('pre_call', [])
-            if cmd_list:
-                for cmd in cmd_list:
-                    append_format(pre_call, cmd, fmt_arg)
-
             cmd_list = intent_blk.get('post_parse', [])
             if cmd_list:
                 for cmd in cmd_list:
@@ -579,7 +573,8 @@ return 1;""", fmt)
 
         # call with all arguments
         default_calls.append(
-            (len(cxx_call_list),  len(post_parse), ',\t '.join(cxx_call_list)))
+            (len(cxx_call_list), len(post_parse),
+             ',\t '.join(cxx_call_list)))
 
         # If multiple calls, declare return value once
         # Else delare on call line.
@@ -597,7 +592,6 @@ return 1;""", fmt)
 
             fmt.PY_call_list = call_list
             PY_code.extend(post_parse[:len_post_parse])
-            PY_code.extend(pre_call)
 
             if is_dtor:
                 append_format(PY_code, 'delete self->{PY_obj};', fmt)

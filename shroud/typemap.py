@@ -585,7 +585,7 @@ def initialize():
                 ),
                 intent_out=dict(
                     cxx_local_var='object',
-                    pre_call=[
+                    post_parse=[
                         '{c_const}std::string {cxx_var};'
                     ],
                 ),
