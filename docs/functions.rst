@@ -292,8 +292,8 @@ The generated C wrapper will use the *C_code* provided for the body::
 
     int AA_exclass1_get_name_length(const AA_exclass1 * self)
     {
-        const ExClass1 *SH_this =
-            static_cast<const ExClass1 *>(static_cast<const void *>(self));
+        const ExClass1 *SH_this = static_cast<const ExClass1 *>(
+            static_cast<const void *>(self));
         return SH_this->getName().length();
     }
 
