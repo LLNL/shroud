@@ -86,7 +86,8 @@ PP_is_name_valid(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:isNameValid", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:isNameValid",
+        SH_kw_list,
         &name))
     {
         return NULL;
@@ -140,7 +141,8 @@ PP_check_bool(
         (char *) SH_kwcpp+5,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:checkBool", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:checkBool",
+        SH_kw_list,
         &PyBool_Type, &SH_Py_arg1, &PyBool_Type, &SH_Py_arg3))
     {
         return NULL;
@@ -167,7 +169,8 @@ PP_test_names(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:test_names", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:test_names",
+        SH_kw_list,
         &name))
     {
         return NULL;
@@ -195,7 +198,8 @@ PP_test_names_flag(
         (char *) SH_kwcpp+5,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "si:test_names", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "si:test_names",
+        SH_kw_list,
         &name, &flag))
     {
         return NULL;
@@ -230,7 +234,8 @@ PP_testoptional_2(
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|il:testoptional", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|il:testoptional",
+        SH_kw_list,
         &i, &j))
     {
         return NULL;
@@ -284,7 +289,8 @@ PP_testmpi(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:testmpi", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:testmpi",
+        SH_kw_list,
         &comm))
     {
         return NULL;
@@ -311,7 +317,8 @@ PP_testgroup1(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup1", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup1",
+        SH_kw_list,
         &FillInTypeForGroup, &SH_Py_grp))
     {
         return NULL;
@@ -339,7 +346,8 @@ PP_testgroup2(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup2", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup2",
+        SH_kw_list,
         &FillInTypeForGroup, &SH_Py_grp))
     {
         return NULL;
@@ -421,7 +429,8 @@ PP_func_ptr3(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FuncPtr3", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FuncPtr3",
+        SH_kw_list,
         &get))
     {
         return NULL;
@@ -503,7 +512,8 @@ PP_verlongfunctionname1(
         (char *) SH_kwcpp+126,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "iiiiiiiiii:verlongfunctionname1", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "iiiiiiiiii:verlongfunctionname1", SH_kw_list,
         &verylongname1, &verylongname2, &verylongname3, &verylongname4,
         &verylongname5, &verylongname6, &verylongname7, &verylongname8,
         &verylongname9, &verylongname10))
@@ -562,7 +572,8 @@ PP_verlongfunctionname2(
         (char *) SH_kwcpp+126,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "iiiiiiiiii:verlongfunctionname2", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "iiiiiiiiii:verlongfunctionname2", SH_kw_list,
         &verylongname1, &verylongname2, &verylongname3, &verylongname4,
         &verylongname5, &verylongname6, &verylongname7, &verylongname8,
         &verylongname9, &verylongname10))
@@ -614,22 +625,38 @@ PP_test_names(
 // splicer end function.test_names
 }
 static PyMethodDef PP_methods[] = {
-{"local_function1", (PyCFunction)PP_local_function1, METH_NOARGS, PP_local_function1__doc__},
-{"isNameValid", (PyCFunction)PP_is_name_valid, METH_VARARGS|METH_KEYWORDS, PP_is_name_valid__doc__},
-{"isInitialized", (PyCFunction)PP_is_initialized, METH_NOARGS, PP_is_initialized__doc__},
-{"checkBool", (PyCFunction)PP_check_bool, METH_VARARGS|METH_KEYWORDS, PP_check_bool__doc__},
-{"testoptional", (PyCFunction)PP_testoptional_2, METH_VARARGS|METH_KEYWORDS, PP_testoptional_2__doc__},
-{"test_size_t", (PyCFunction)PP_test_size_t, METH_NOARGS, PP_test_size_t__doc__},
-{"testmpi", (PyCFunction)PP_testmpi, METH_VARARGS|METH_KEYWORDS, PP_testmpi__doc__},
-{"testgroup1", (PyCFunction)PP_testgroup1, METH_VARARGS|METH_KEYWORDS, PP_testgroup1__doc__},
-{"testgroup2", (PyCFunction)PP_testgroup2, METH_VARARGS|METH_KEYWORDS, PP_testgroup2__doc__},
-{"func1", (PyCFunction)PP_func1, METH_VARARGS|METH_KEYWORDS, PP_func1__doc__},
-{"func2", (PyCFunction)PP_func2, METH_VARARGS|METH_KEYWORDS, PP_func2__doc__},
-{"FuncPtr3", (PyCFunction)PP_func_ptr3, METH_VARARGS|METH_KEYWORDS, PP_func_ptr3__doc__},
-{"func4", (PyCFunction)PP_func4, METH_VARARGS|METH_KEYWORDS, PP_func4__doc__},
-{"verlongfunctionname1", (PyCFunction)PP_verlongfunctionname1, METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname1__doc__},
-{"verlongfunctionname2", (PyCFunction)PP_verlongfunctionname2, METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname2__doc__},
-{"test_names", (PyCFunction)PP_test_names, METH_VARARGS|METH_KEYWORDS, PP_test_names__doc__},
+{"local_function1", (PyCFunction)PP_local_function1, METH_NOARGS,
+    PP_local_function1__doc__},
+{"isNameValid", (PyCFunction)PP_is_name_valid,
+    METH_VARARGS|METH_KEYWORDS, PP_is_name_valid__doc__},
+{"isInitialized", (PyCFunction)PP_is_initialized, METH_NOARGS,
+    PP_is_initialized__doc__},
+{"checkBool", (PyCFunction)PP_check_bool, METH_VARARGS|METH_KEYWORDS,
+    PP_check_bool__doc__},
+{"testoptional", (PyCFunction)PP_testoptional_2,
+    METH_VARARGS|METH_KEYWORDS, PP_testoptional_2__doc__},
+{"test_size_t", (PyCFunction)PP_test_size_t, METH_NOARGS,
+    PP_test_size_t__doc__},
+{"testmpi", (PyCFunction)PP_testmpi, METH_VARARGS|METH_KEYWORDS,
+    PP_testmpi__doc__},
+{"testgroup1", (PyCFunction)PP_testgroup1, METH_VARARGS|METH_KEYWORDS,
+    PP_testgroup1__doc__},
+{"testgroup2", (PyCFunction)PP_testgroup2, METH_VARARGS|METH_KEYWORDS,
+    PP_testgroup2__doc__},
+{"func1", (PyCFunction)PP_func1, METH_VARARGS|METH_KEYWORDS,
+    PP_func1__doc__},
+{"func2", (PyCFunction)PP_func2, METH_VARARGS|METH_KEYWORDS,
+    PP_func2__doc__},
+{"FuncPtr3", (PyCFunction)PP_func_ptr3, METH_VARARGS|METH_KEYWORDS,
+    PP_func_ptr3__doc__},
+{"func4", (PyCFunction)PP_func4, METH_VARARGS|METH_KEYWORDS,
+    PP_func4__doc__},
+{"verlongfunctionname1", (PyCFunction)PP_verlongfunctionname1,
+    METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname1__doc__},
+{"verlongfunctionname2", (PyCFunction)PP_verlongfunctionname2,
+    METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname2__doc__},
+{"test_names", (PyCFunction)PP_test_names, METH_VARARGS|METH_KEYWORDS,
+    PP_test_names__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

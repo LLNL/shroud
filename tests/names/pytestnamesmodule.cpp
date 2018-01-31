@@ -96,7 +96,8 @@ PY_function3a_0(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:function3a", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:function3a",
+        SH_kw_list,
         &i))
     {
         return NULL;
@@ -119,7 +120,8 @@ PY_function3a_1(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:function3a", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:function3a",
+        SH_kw_list,
         &i))
     {
         return NULL;
@@ -146,7 +148,8 @@ PY_function4(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:function4", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:function4",
+        SH_kw_list,
         &rv))
     {
         return NULL;
@@ -211,11 +214,15 @@ PY_function3a(
 // splicer end function.function3a
 }
 static PyMethodDef PY_methods[] = {
-{"function1", (PyCFunction)PY_function1, METH_NOARGS, PY_function1__doc__},
-{"function2", (PyCFunction)PY_function2, METH_NOARGS, PY_function2__doc__},
-{"function4", (PyCFunction)PY_function4, METH_VARARGS|METH_KEYWORDS, PY_function4__doc__},
+{"function1", (PyCFunction)PY_function1, METH_NOARGS,
+    PY_function1__doc__},
+{"function2", (PyCFunction)PY_function2, METH_NOARGS,
+    PY_function2__doc__},
+{"function4", (PyCFunction)PY_function4, METH_VARARGS|METH_KEYWORDS,
+    PY_function4__doc__},
 {"fiveplus", (PyCFunction)PY_fiveplus, METH_NOARGS, PY_fiveplus__doc__},
-{"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS, PY_function3a__doc__},
+{"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS,
+    PY_function3a__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

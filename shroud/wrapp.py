@@ -556,8 +556,8 @@ return 1;""", fmt)
             PY_code.append(
                 wformat(
                     'if (!PyArg_ParseTupleAndKeywords'
-                    '({PY_param_args}, {PY_param_kwds}, '
-                    '"{PyArg_format}", SH_kw_list,'
+                    '({PY_param_args}, {PY_param_kwds},\t '
+                    '"{PyArg_format}",\t SH_kw_list,'
                     '\f{PyArg_vargs}))', fmt))
             PY_code.extend(['{', 1, 'return NULL;', -1, '}'])
 
@@ -732,9 +732,9 @@ return 1;""", fmt)
         if expose is True:
             # default name
             self.PyMethodDef.append(
-                wformat('{{"{function_name}{function_suffix}", '
-                        '(PyCFunction){PY_name_impl}, '
-                        '{PY_ml_flags}, '
+                wformat('{{"{function_name}{function_suffix}",\t '
+                        '(PyCFunction){PY_name_impl},\t '
+                        '{PY_ml_flags},\t '
                         '{PY_name_impl}__doc__}},', fmt))
 #        elif expose is not False:
 #            # override name

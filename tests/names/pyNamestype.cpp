@@ -82,8 +82,10 @@ PY_names_method2(
 // splicer begin class.Names.impl.after_methods
 // splicer end class.Names.impl.after_methods
 static PyMethodDef PY_Names_methods[] = {
-{"method1", (PyCFunction)PY_names_method1, METH_NOARGS, PY_names_method1__doc__},
-{"method2", (PyCFunction)PY_names_method2, METH_NOARGS, PY_names_method2__doc__},
+{"method1", (PyCFunction)PY_names_method1, METH_NOARGS,
+    PY_names_method1__doc__},
+{"method2", (PyCFunction)PY_names_method2, METH_NOARGS,
+    PY_names_method2__doc__},
 // splicer begin class.Names.PyMethodDef
 // splicer end class.Names.PyMethodDef
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

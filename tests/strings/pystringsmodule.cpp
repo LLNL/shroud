@@ -68,7 +68,8 @@ PY_pass_char(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passChar", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passChar",
+        SH_kw_list,
         &status))
     {
         return NULL;
@@ -113,7 +114,8 @@ PY_pass_char_ptr(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtr", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtr",
+        SH_kw_list,
         &src))
     {
         return NULL;
@@ -141,7 +143,8 @@ PY_pass_char_ptr_in_out(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtrInOut", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtrInOut",
+        SH_kw_list,
         &s))
     {
         return NULL;
@@ -339,7 +342,8 @@ PY_accept_string_const_reference(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:acceptStringConstReference", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "s:acceptStringConstReference", SH_kw_list,
         &arg1))
     {
         return NULL;
@@ -387,7 +391,8 @@ PY_accept_string_reference(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:acceptStringReference", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "s:acceptStringReference", SH_kw_list,
         &arg1))
     {
         return NULL;
@@ -416,7 +421,8 @@ PY_accept_string_pointer(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:acceptStringPointer", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "s:acceptStringPointer", SH_kw_list,
         &arg1))
     {
         return NULL;
@@ -445,7 +451,8 @@ PY_explicit1(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:explicit1", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:explicit1",
+        SH_kw_list,
         &name))
     {
         return NULL;
@@ -491,7 +498,8 @@ PY_cpass_char(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:CpassChar", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:CpassChar",
+        SH_kw_list,
         &status))
     {
         return NULL;
@@ -536,7 +544,8 @@ PY_cpass_char_ptr(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:CpassCharPtr", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:CpassCharPtr",
+        SH_kw_list,
         &src))
     {
         return NULL;
@@ -547,29 +556,55 @@ PY_cpass_char_ptr(
 // splicer end function.cpass_char_ptr
 }
 static PyMethodDef PY_methods[] = {
-{"passChar", (PyCFunction)PY_pass_char, METH_VARARGS|METH_KEYWORDS, PY_pass_char__doc__},
-{"returnChar", (PyCFunction)PY_return_char, METH_NOARGS, PY_return_char__doc__},
-{"passCharPtr", (PyCFunction)PY_pass_char_ptr, METH_VARARGS|METH_KEYWORDS, PY_pass_char_ptr__doc__},
-{"passCharPtrInOut", (PyCFunction)PY_pass_char_ptr_in_out, METH_VARARGS|METH_KEYWORDS, PY_pass_char_ptr_in_out__doc__},
-{"getChar1", (PyCFunction)PY_get_char1, METH_NOARGS, PY_get_char1__doc__},
-{"getChar2", (PyCFunction)PY_get_char2, METH_NOARGS, PY_get_char2__doc__},
-{"getChar3", (PyCFunction)PY_get_char3, METH_NOARGS, PY_get_char3__doc__},
-{"getString1", (PyCFunction)PY_get_string1, METH_NOARGS, PY_get_string1__doc__},
-{"getString2", (PyCFunction)PY_get_string2, METH_NOARGS, PY_get_string2__doc__},
-{"getString3", (PyCFunction)PY_get_string3, METH_NOARGS, PY_get_string3__doc__},
-{"getString2_empty", (PyCFunction)PY_get_string2_empty, METH_NOARGS, PY_get_string2_empty__doc__},
-{"getString5", (PyCFunction)PY_get_string5, METH_NOARGS, PY_get_string5__doc__},
-{"getString6", (PyCFunction)PY_get_string6, METH_NOARGS, PY_get_string6__doc__},
-{"getString7", (PyCFunction)PY_get_string7, METH_NOARGS, PY_get_string7__doc__},
-{"acceptStringConstReference", (PyCFunction)PY_accept_string_const_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_const_reference__doc__},
-{"acceptStringReferenceOut", (PyCFunction)PY_accept_string_reference_out, METH_NOARGS, PY_accept_string_reference_out__doc__},
-{"acceptStringReference", (PyCFunction)PY_accept_string_reference, METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference__doc__},
-{"acceptStringPointer", (PyCFunction)PY_accept_string_pointer, METH_VARARGS|METH_KEYWORDS, PY_accept_string_pointer__doc__},
-{"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS, PY_explicit1__doc__},
-{"explicit2", (PyCFunction)PY_explicit2, METH_NOARGS, PY_explicit2__doc__},
-{"CpassChar", (PyCFunction)PY_cpass_char, METH_VARARGS|METH_KEYWORDS, PY_cpass_char__doc__},
-{"CreturnChar", (PyCFunction)PY_creturn_char, METH_NOARGS, PY_creturn_char__doc__},
-{"CpassCharPtr", (PyCFunction)PY_cpass_char_ptr, METH_VARARGS|METH_KEYWORDS, PY_cpass_char_ptr__doc__},
+{"passChar", (PyCFunction)PY_pass_char, METH_VARARGS|METH_KEYWORDS,
+    PY_pass_char__doc__},
+{"returnChar", (PyCFunction)PY_return_char, METH_NOARGS,
+    PY_return_char__doc__},
+{"passCharPtr", (PyCFunction)PY_pass_char_ptr,
+    METH_VARARGS|METH_KEYWORDS, PY_pass_char_ptr__doc__},
+{"passCharPtrInOut", (PyCFunction)PY_pass_char_ptr_in_out,
+    METH_VARARGS|METH_KEYWORDS, PY_pass_char_ptr_in_out__doc__},
+{"getChar1", (PyCFunction)PY_get_char1, METH_NOARGS,
+    PY_get_char1__doc__},
+{"getChar2", (PyCFunction)PY_get_char2, METH_NOARGS,
+    PY_get_char2__doc__},
+{"getChar3", (PyCFunction)PY_get_char3, METH_NOARGS,
+    PY_get_char3__doc__},
+{"getString1", (PyCFunction)PY_get_string1, METH_NOARGS,
+    PY_get_string1__doc__},
+{"getString2", (PyCFunction)PY_get_string2, METH_NOARGS,
+    PY_get_string2__doc__},
+{"getString3", (PyCFunction)PY_get_string3, METH_NOARGS,
+    PY_get_string3__doc__},
+{"getString2_empty", (PyCFunction)PY_get_string2_empty, METH_NOARGS,
+    PY_get_string2_empty__doc__},
+{"getString5", (PyCFunction)PY_get_string5, METH_NOARGS,
+    PY_get_string5__doc__},
+{"getString6", (PyCFunction)PY_get_string6, METH_NOARGS,
+    PY_get_string6__doc__},
+{"getString7", (PyCFunction)PY_get_string7, METH_NOARGS,
+    PY_get_string7__doc__},
+{"acceptStringConstReference",
+    (PyCFunction)PY_accept_string_const_reference,
+    METH_VARARGS|METH_KEYWORDS,
+    PY_accept_string_const_reference__doc__},
+{"acceptStringReferenceOut",
+    (PyCFunction)PY_accept_string_reference_out, METH_NOARGS,
+    PY_accept_string_reference_out__doc__},
+{"acceptStringReference", (PyCFunction)PY_accept_string_reference,
+    METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference__doc__},
+{"acceptStringPointer", (PyCFunction)PY_accept_string_pointer,
+    METH_VARARGS|METH_KEYWORDS, PY_accept_string_pointer__doc__},
+{"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS,
+    PY_explicit1__doc__},
+{"explicit2", (PyCFunction)PY_explicit2, METH_NOARGS,
+    PY_explicit2__doc__},
+{"CpassChar", (PyCFunction)PY_cpass_char, METH_VARARGS|METH_KEYWORDS,
+    PY_cpass_char__doc__},
+{"CreturnChar", (PyCFunction)PY_creturn_char, METH_NOARGS,
+    PY_creturn_char__doc__},
+{"CpassCharPtr", (PyCFunction)PY_cpass_char_ptr,
+    METH_VARARGS|METH_KEYWORDS, PY_cpass_char_ptr__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

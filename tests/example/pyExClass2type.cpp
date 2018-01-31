@@ -296,7 +296,8 @@ PP_exclass2_get_class1(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:get_class1", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:get_class1",
+        SH_kw_list,
         &PP_ExClass1_Type, &SH_Py_in))
     {
         return NULL;
@@ -333,7 +334,8 @@ PP_exclass2_declare_1(
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|l:declare", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|l:declare",
+        SH_kw_list,
         &type, &len))
     {
         return NULL;
@@ -384,16 +386,26 @@ PP_exclass2_get_type_id(
 // splicer begin class.ExClass2.impl.after_methods
 // splicer end class.ExClass2.impl.after_methods
 static PyMethodDef PP_ExClass2_methods[] = {
-{"dtor", (PyCFunction)PP_exclass2_dtor, METH_NOARGS, PP_exclass2_dtor__doc__},
-{"getName", (PyCFunction)PP_exclass2_get_name, METH_NOARGS, PP_exclass2_get_name__doc__},
-{"getName2", (PyCFunction)PP_exclass2_get_name2, METH_NOARGS, PP_exclass2_get_name2__doc__},
-{"getName3", (PyCFunction)PP_exclass2_get_name3, METH_NOARGS, PP_exclass2_get_name3__doc__},
-{"getName4", (PyCFunction)PP_exclass2_get_name4, METH_NOARGS, PP_exclass2_get_name4__doc__},
-{"GetNameLength", (PyCFunction)PP_exclass2_get_name_length, METH_NOARGS, PP_exclass2_get_name_length__doc__},
-{"get_class1", (PyCFunction)PP_exclass2_get_class1, METH_VARARGS|METH_KEYWORDS, PP_exclass2_get_class1__doc__},
-{"declare", (PyCFunction)PP_exclass2_declare_1, METH_VARARGS|METH_KEYWORDS, PP_exclass2_declare_1__doc__},
-{"destroyall", (PyCFunction)PP_exclass2_destroyall, METH_NOARGS, PP_exclass2_destroyall__doc__},
-{"getTypeID", (PyCFunction)PP_exclass2_get_type_id, METH_NOARGS, PP_exclass2_get_type_id__doc__},
+{"dtor", (PyCFunction)PP_exclass2_dtor, METH_NOARGS,
+    PP_exclass2_dtor__doc__},
+{"getName", (PyCFunction)PP_exclass2_get_name, METH_NOARGS,
+    PP_exclass2_get_name__doc__},
+{"getName2", (PyCFunction)PP_exclass2_get_name2, METH_NOARGS,
+    PP_exclass2_get_name2__doc__},
+{"getName3", (PyCFunction)PP_exclass2_get_name3, METH_NOARGS,
+    PP_exclass2_get_name3__doc__},
+{"getName4", (PyCFunction)PP_exclass2_get_name4, METH_NOARGS,
+    PP_exclass2_get_name4__doc__},
+{"GetNameLength", (PyCFunction)PP_exclass2_get_name_length, METH_NOARGS,
+    PP_exclass2_get_name_length__doc__},
+{"get_class1", (PyCFunction)PP_exclass2_get_class1,
+    METH_VARARGS|METH_KEYWORDS, PP_exclass2_get_class1__doc__},
+{"declare", (PyCFunction)PP_exclass2_declare_1,
+    METH_VARARGS|METH_KEYWORDS, PP_exclass2_declare_1__doc__},
+{"destroyall", (PyCFunction)PP_exclass2_destroyall, METH_NOARGS,
+    PP_exclass2_destroyall__doc__},
+{"getTypeID", (PyCFunction)PP_exclass2_get_type_id, METH_NOARGS,
+    PP_exclass2_get_type_id__doc__},
 // splicer begin class.ExClass2.PyMethodDef
 // splicer end class.ExClass2.PyMethodDef
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

@@ -90,7 +90,8 @@ PY_function2(
         (char *) SH_kwcpp+5,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
+        SH_kw_list,
         &arg1, &arg2))
     {
         return NULL;
@@ -117,7 +118,8 @@ PY_type_long_long(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:TypeLongLong", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:TypeLongLong",
+        SH_kw_list,
         &arg1))
     {
         return NULL;
@@ -145,7 +147,8 @@ PY_function3(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
+        SH_kw_list,
         &PyBool_Type, &SH_Py_arg))
     {
         return NULL;
@@ -178,7 +181,8 @@ PY_function4a(
         (char *) SH_kwcpp+5,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
+        SH_kw_list,
         &arg1, &arg2))
     {
         return NULL;
@@ -212,7 +216,8 @@ PY_function4b(
         (char *) SH_kwcpp+5,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4b", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4b",
+        SH_kw_list,
         &arg1, &arg2))
     {
         return NULL;
@@ -251,7 +256,8 @@ PY_function5_arg1_arg2(
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|dO!:Function5", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|dO!:Function5",
+        SH_kw_list,
         &arg1, &PyBool_Type, &SH_Py_arg2))
     {
         return NULL;
@@ -285,7 +291,8 @@ PY_function6_from_name(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:Function6", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:Function6",
+        SH_kw_list,
         &name))
     {
         return NULL;
@@ -309,7 +316,8 @@ PY_function6_from_index(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function6", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function6",
+        SH_kw_list,
         &indx))
     {
         return NULL;
@@ -336,7 +344,8 @@ PY_function9(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function9", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function9",
+        SH_kw_list,
         &arg))
     {
         return NULL;
@@ -375,7 +384,8 @@ PY_function10_1(
         (char *) SH_kwcpp+5,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "sd:Function10", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "sd:Function10",
+        SH_kw_list,
         &name, &arg2))
     {
         return NULL;
@@ -410,7 +420,8 @@ PY_overload1_num_offset_stride(
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|ii:overload1", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|ii:overload1",
+        SH_kw_list,
         &num, &offset, &stride))
     {
         return NULL;
@@ -457,7 +468,8 @@ PY_overload1_5(
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di|ii:overload1", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di|ii:overload1",
+        SH_kw_list,
         &type, &num, &offset, &stride))
     {
         return NULL;
@@ -494,7 +506,8 @@ PY_typefunc(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:typefunc", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:typefunc",
+        SH_kw_list,
         &arg))
     {
         return NULL;
@@ -521,7 +534,8 @@ PY_enumfunc(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:enumfunc", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:enumfunc",
+        SH_kw_list,
         &arg))
     {
         return NULL;
@@ -548,7 +562,8 @@ PY_useclass(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass",
+        SH_kw_list,
         &PY_Class1_Type, &SH_Py_arg1))
     {
         return NULL;
@@ -690,21 +705,36 @@ PY_overload1(
 // splicer end function.overload1
 }
 static PyMethodDef PY_methods[] = {
-{"Function1", (PyCFunction)PY_function1, METH_NOARGS, PY_function1__doc__},
-{"Function2", (PyCFunction)PY_function2, METH_VARARGS|METH_KEYWORDS, PY_function2__doc__},
-{"TypeLongLong", (PyCFunction)PY_type_long_long, METH_VARARGS|METH_KEYWORDS, PY_type_long_long__doc__},
-{"Function3", (PyCFunction)PY_function3, METH_VARARGS|METH_KEYWORDS, PY_function3__doc__},
-{"Function4a", (PyCFunction)PY_function4a, METH_VARARGS|METH_KEYWORDS, PY_function4a__doc__},
-{"Function4b", (PyCFunction)PY_function4b, METH_VARARGS|METH_KEYWORDS, PY_function4b__doc__},
-{"Function5", (PyCFunction)PY_function5_arg1_arg2, METH_VARARGS|METH_KEYWORDS, PY_function5_arg1_arg2__doc__},
-{"Function9", (PyCFunction)PY_function9, METH_VARARGS|METH_KEYWORDS, PY_function9__doc__},
-{"typefunc", (PyCFunction)PY_typefunc, METH_VARARGS|METH_KEYWORDS, PY_typefunc__doc__},
-{"enumfunc", (PyCFunction)PY_enumfunc, METH_VARARGS|METH_KEYWORDS, PY_enumfunc__doc__},
-{"useclass", (PyCFunction)PY_useclass, METH_VARARGS|METH_KEYWORDS, PY_useclass__doc__},
-{"LastFunctionCalled", (PyCFunction)PY_last_function_called, METH_NOARGS, PY_last_function_called__doc__},
-{"Function10", (PyCFunction)PY_function10, METH_VARARGS|METH_KEYWORDS, PY_function10__doc__},
-{"Function6", (PyCFunction)PY_function6, METH_VARARGS|METH_KEYWORDS, PY_function6__doc__},
-{"overload1", (PyCFunction)PY_overload1, METH_VARARGS|METH_KEYWORDS, PY_overload1__doc__},
+{"Function1", (PyCFunction)PY_function1, METH_NOARGS,
+    PY_function1__doc__},
+{"Function2", (PyCFunction)PY_function2, METH_VARARGS|METH_KEYWORDS,
+    PY_function2__doc__},
+{"TypeLongLong", (PyCFunction)PY_type_long_long,
+    METH_VARARGS|METH_KEYWORDS, PY_type_long_long__doc__},
+{"Function3", (PyCFunction)PY_function3, METH_VARARGS|METH_KEYWORDS,
+    PY_function3__doc__},
+{"Function4a", (PyCFunction)PY_function4a, METH_VARARGS|METH_KEYWORDS,
+    PY_function4a__doc__},
+{"Function4b", (PyCFunction)PY_function4b, METH_VARARGS|METH_KEYWORDS,
+    PY_function4b__doc__},
+{"Function5", (PyCFunction)PY_function5_arg1_arg2,
+    METH_VARARGS|METH_KEYWORDS, PY_function5_arg1_arg2__doc__},
+{"Function9", (PyCFunction)PY_function9, METH_VARARGS|METH_KEYWORDS,
+    PY_function9__doc__},
+{"typefunc", (PyCFunction)PY_typefunc, METH_VARARGS|METH_KEYWORDS,
+    PY_typefunc__doc__},
+{"enumfunc", (PyCFunction)PY_enumfunc, METH_VARARGS|METH_KEYWORDS,
+    PY_enumfunc__doc__},
+{"useclass", (PyCFunction)PY_useclass, METH_VARARGS|METH_KEYWORDS,
+    PY_useclass__doc__},
+{"LastFunctionCalled", (PyCFunction)PY_last_function_called,
+    METH_NOARGS, PY_last_function_called__doc__},
+{"Function10", (PyCFunction)PY_function10, METH_VARARGS|METH_KEYWORDS,
+    PY_function10__doc__},
+{"Function6", (PyCFunction)PY_function6, METH_VARARGS|METH_KEYWORDS,
+    PY_function6__doc__},
+{"overload1", (PyCFunction)PY_overload1, METH_VARARGS|METH_KEYWORDS,
+    PY_overload1__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
