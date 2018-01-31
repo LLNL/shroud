@@ -25,9 +25,7 @@
                 "methods": [
                     {
                         "_function_index": 0, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -36,6 +34,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "void"
                             ]
@@ -46,7 +45,7 @@
                             "C_call_code": "SH_this->method1(\t);", 
                             "C_call_list": "", 
                             "C_name": "XXX_TES_names_method1", 
-                            "C_pre_call": "Names *SH_this = static_cast<Names *>(static_cast<void *>(self));", 
+                            "C_pre_call": "Names *SH_this = \tstatic_cast<Names *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "TES_names * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -70,9 +69,7 @@
                     }, 
                     {
                         "_function_index": 1, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -81,6 +78,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "void"
                             ]
@@ -92,7 +90,7 @@
                             "C_call_code": "SH_this->method2(\t);", 
                             "C_call_list": "", 
                             "C_name": "XXX_TES_names_method2", 
-                            "C_pre_call": "Names *SH_this2 = static_cast<Names *>(static_cast<void *>(self2));", 
+                            "C_pre_call": "Names *SH_this2 = \tstatic_cast<Names *>(\tstatic_cast<void *>(\tself2));", 
                             "C_prototype": "TES_names * self2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -259,9 +257,7 @@
         "functions": [
             {
                 "_function_index": 2, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [], 
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
@@ -270,6 +266,7 @@
                     }, 
                     "fattrs": {}, 
                     "func_const": false, 
+                    "params": [], 
                     "specifier": [
                         "void"
                     ]
@@ -301,9 +298,7 @@
             }, 
             {
                 "_function_index": 3, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [], 
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
@@ -312,6 +307,7 @@
                     }, 
                     "fattrs": {}, 
                     "func_const": false, 
+                    "params": [], 
                     "specifier": [
                         "void"
                     ]
@@ -374,9 +370,16 @@
                 }, 
                 "_function_index": 4, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "function3a", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -392,14 +395,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "function3a", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -463,9 +458,16 @@
                 }, 
                 "_function_index": 5, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "function3a", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -481,14 +483,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "function3a", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -551,9 +545,16 @@
                     }
                 }, 
                 "_function_index": 6, 
-                "_subprogram": "function", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "function4", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -574,14 +575,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "function4", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "int"
                     ]
@@ -604,7 +597,7 @@
                     "F_name_function": "function4", 
                     "F_name_generic": "function4", 
                     "F_name_impl": "testnames_function4", 
-                    "F_result_clause": "\nresult(SHT_rv)", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_function4", 
                     "c_const": "", 
@@ -641,9 +634,16 @@
                 }, 
                 "_function_index": 8, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "function", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "function4", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -665,14 +665,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "function4", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "int"
                     ]
@@ -702,9 +694,7 @@
             }, 
             {
                 "_function_index": 7, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [], 
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
@@ -715,6 +705,7 @@
                         "name": "fiveplus"
                     }, 
                     "func_const": false, 
+                    "params": [], 
                     "specifier": [
                         "void"
                     ]
@@ -757,6 +748,8 @@
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "F_abstract_interface_argument_template": "arg{index}", 
+            "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
             "F_force_wrapper": true, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 
@@ -822,7 +815,7 @@
             "f_type": "integer"
         }, 
         "Names": {
-            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "PY_PyObject": "PY_Names", 
             "PY_PyTypeObject": "PY_Names_Type", 
@@ -833,13 +826,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "pre_call": [
-                        "{c_const}Names{c_ptr}{cxx_var} = static_cast<{c_const}Names{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                        "{c_const}Names{c_ptr}{cxx_var} = static_cast<{c_const}Names{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
                     ]
                 }
             }, 
-            "c_to_cxx": "static_cast<{c_const}Names{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}Names{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TES_names", 
-            "cxx_to_c": "static_cast<{c_const}TES_names *>(static_cast<{c_const}void *>({cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}TES_names *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "Names", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -879,7 +872,7 @@
             }
         }, 
         "Names2": {
-            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "PY_PyObject": "PY_Names2", 
             "PY_PyTypeObject": "PY_Names2_Type", 
@@ -890,13 +883,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "pre_call": [
-                        "{c_const}Names2{c_ptr}{cxx_var} = static_cast<{c_const}Names2{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                        "{c_const}Names2{c_ptr}{cxx_var} = static_cast<{c_const}Names2{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
                     ]
                 }
             }, 
-            "c_to_cxx": "static_cast<{c_const}Names2{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}Names2{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TES_names2", 
-            "cxx_to_c": "static_cast<{c_const}TES_names2 *>(static_cast<{c_const}void *>({cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}TES_names2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "Names2", 
             "f_c_module": {
                 "iso_c_binding": [

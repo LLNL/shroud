@@ -59,6 +59,8 @@ class Wrapl(util.WrapperMixin):
         self.log = config.log
         self._init_splicer(splicers)
         self.comment = '//'
+        self.cont = ''
+        self.linelen = newlibrary.options.C_line_length
 
     def reset_file(self):
         pass
@@ -207,7 +209,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         node.eval_template('LUA_name')
         node.eval_template('LUA_name_impl')
 
-        CXX_subprogram = node._subprogram
+        CXX_subprogram = ast.get_subprogram()
 
         # XXX       ast = node.ast
         # XXX       result_type = ast.typename
@@ -424,9 +426,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 #        node.eval_template('LUA_name')
 #        node.eval_template('LUA_name_impl')
 
-        CXX_subprogram = node._subprogram
-
         ast = node.ast
+        CXX_subprogram = ast.get_subprogram()
         result_type = ast.typename
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
@@ -452,7 +453,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # return value
 #        fmt.rv_decl = self.std_c_decl(
 #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
-        fmt.rv_decl = ast.gen_arg_as_cxx(name=fmt.LUA_result)
+        fmt.rv_decl = ast.gen_arg_as_cxx(
+            name=fmt.LUA_result, params=None)
 
         LUA_decl = []  # declare variables and pop values
         LUA_code = []  # call C++ function
@@ -565,8 +567,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     '({LUA_userdata_type} *) lua_newuserdata'
                     '({LUA_state_var}, sizeof(*{LUA_userdata_var}));',
                     fmt))
-            self.break_into_continuations(
-                LUA_code, options, 'c', 1,
+            LUA_code.append(
                 wformat(
                     '{LUA_userdata_var}->{LUA_userdata_member} = '
                     'new {cxx_class}({cxx_call_list});', fmt))
@@ -589,14 +590,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         elif CXX_subprogram == 'subroutine':
             line = wformat(
                 '{LUA_this_call}{function_name}({cxx_call_list});', fmt)
-            self.break_into_continuations(
-                LUA_code, options, 'c', 1, line)
+            LUA_code.append(line)
         else:
             line = wformat(
                 '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});',
                 fmt)
-            self.break_into_continuations(
-                LUA_code, options, 'c', 1, line)
+            LUA_code.append(line)
 
 #        if 'LUA_error_pattern' in node:
 #            lfmt = util.Scope(fmt)

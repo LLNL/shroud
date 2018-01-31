@@ -59,7 +59,6 @@ module class1_mod
         procedure :: associated => class1_associated
     end type class1
 
-
     interface operator (.eq.)
         module procedure class1_eq
     end interface

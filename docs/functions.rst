@@ -229,6 +229,12 @@ be controlled directly by the input file::
         generic :: {F_name_generic} => {F_name_function}, ...
       end type {F_derived_name}
 
+      abstract interface
+         subprogram {F_abstract_interface_subprogram_template}
+            type :: {F_abstract_interface_argument_template}
+         end subprogram
+      end interface
+
       interface
         {F_C_pure_clause} {F_C_subprogram} {F_C_name}
              {F_C_result_clause} bind(C, name="{C_name}")
@@ -286,8 +292,8 @@ The generated C wrapper will use the *C_code* provided for the body::
 
     int AA_exclass1_get_name_length(const AA_exclass1 * self)
     {
-        const ExClass1 *SH_this =
-            static_cast<const ExClass1 *>(static_cast<const void *>(self));
+        const ExClass1 *SH_this = static_cast<const ExClass1 *>(
+            static_cast<const void *>(self));
         return SH_this->getName().length();
     }
 

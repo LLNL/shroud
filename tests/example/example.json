@@ -43,9 +43,7 @@
                         }, 
                         "_function_index": 0, 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "fattrs": {
@@ -53,6 +51,7 @@
                                 "_name": "ctor"
                             }, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "ExClass1"
                             ]
@@ -64,7 +63,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_ctor_0", 
                             "C_prototype": "", 
-                            "C_return_code": "return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHT_rv));", 
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_call": "c_exclass1_ctor_0", 
                             "F_C_name": "c_exclass1_ctor_0", 
@@ -74,7 +73,7 @@
                             "F_name_function": "ctor_0", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass1_ctor_0", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "ctor", 
                             "LUA_name_impl": "l_exclass1_ctor", 
@@ -124,9 +123,15 @@
                         }, 
                         "_function_index": 1, 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "fattrs": {
+                                "_constructor": true, 
+                                "_name": "ctor"
+                            }, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -147,13 +152,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_constructor": true, 
-                                "_name": "ctor"
-                            }, 
-                            "func_const": false, 
                             "specifier": [
                                 "ExClass1"
                             ]
@@ -171,7 +169,7 @@
                             "C_name": "AA_exclass1_ctor_1", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
-                            "C_return_code": "return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHT_rv));", 
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_call": "c_exclass1_ctor_1_bufferify", 
                             "F_C_name": "c_exclass1_ctor_1", 
@@ -181,7 +179,7 @@
                             "F_name_function": "ctor_1", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass1_ctor_1", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "c_const": "", 
                             "function_name": "ctor", 
@@ -223,9 +221,15 @@
                         "_function_index": 14, 
                         "_generated": "arg_to_buffer", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "fattrs": {
+                                "_constructor": true, 
+                                "_name": "ctor"
+                            }, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -247,13 +251,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_constructor": true, 
-                                "_name": "ctor"
-                            }, 
-                            "func_const": false, 
                             "specifier": [
                                 "ExClass1"
                             ]
@@ -271,7 +268,7 @@
                             "C_name": "AA_exclass1_ctor_1_bufferify", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
                             "C_prototype": "const char * name,\t int Lname", 
-                            "C_return_code": "return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHT_rv));", 
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_name": "c_exclass1_ctor_1_bufferify", 
                             "c_const": "", 
@@ -288,9 +285,7 @@
                     }, 
                     {
                         "_function_index": 2, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "fattrs": {
@@ -298,6 +293,7 @@
                                 "_name": "dtor"
                             }, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "ExClass1"
                             ]
@@ -312,7 +308,7 @@
                             "C_call_code": "delete SH_this;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_dtor", 
-                            "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -381,9 +377,16 @@
                             }
                         }, 
                         "_function_index": 3, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "incrementCount", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -399,14 +402,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "incrementCount", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "int"
                             ]
@@ -417,7 +412,7 @@
                             "C_call_code": "int SHT_rv =\t SH_this->incrementCount(\tincr);", 
                             "C_call_list": "incr", 
                             "C_name": "AA_exclass1_increment_count", 
-                            "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t int incr", 
                             "C_return_code": "return SHT_rv;", 
                             "C_return_type": "int", 
@@ -429,7 +424,7 @@
                             "F_name_function": "increment_count", 
                             "F_name_generic": "increment_count", 
                             "F_name_impl": "exclass1_increment_count", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "incrementCount", 
                             "LUA_name_impl": "l_exclass1_increment_count", 
@@ -457,9 +452,7 @@
                             }
                         }, 
                         "_function_index": 4, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {
                                 "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
                             }, 
@@ -475,6 +468,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": true, 
+                            "params": [], 
                             "specifier": [
                                 "string"
                             ]
@@ -487,7 +481,7 @@
                             "C_name": "AA_exclass1_get_name", 
                             "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
                             "C_post_call_pattern": "// C_error_pattern\nif (! isNameValid(SHT_rv)) {\n    return NULL;\n}\n", 
-                            "C_pre_call": "const ExClass1 *SH_this = static_cast<const ExClass1 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self", 
                             "C_return_code": "return XSHT_rv;", 
                             "C_return_type": "const char *", 
@@ -499,7 +493,7 @@
                             "F_name_function": "get_name", 
                             "F_name_generic": "get_name", 
                             "F_name_impl": "exclass1_get_name", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "getName", 
                             "LUA_name_impl": "l_exclass1_get_name", 
@@ -543,9 +537,18 @@
                         }, 
                         "_function_index": 15, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {
+                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "getName", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": true, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "_is_result": true, 
@@ -567,16 +570,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {
-                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "getName", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": true, 
                             "specifier": [
                                 "void"
                             ]
@@ -588,7 +581,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                            "C_pre_call": "const ExClass1 *SH_this = static_cast<const ExClass1 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -616,9 +609,7 @@
                             }
                         }, 
                         "_function_index": 5, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -627,6 +618,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": true, 
+                            "params": [], 
                             "specifier": [
                                 "int"
                             ]
@@ -641,7 +633,7 @@
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n", 
                             "C_name": "AA_exclass1_get_name_length", 
-                            "C_pre_call": "const ExClass1 *SH_this = static_cast<const ExClass1 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self", 
                             "C_return_code": "return SHT_rv;", 
                             "C_return_type": "int", 
@@ -653,7 +645,7 @@
                             "F_name_function": "get_name_length", 
                             "F_name_generic": "get_name_length", 
                             "F_name_impl": "exclass1_get_name_length", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "GetNameLength", 
                             "LUA_name_impl": "l_exclass1_get_name_length", 
@@ -679,9 +671,7 @@
                             }
                         }, 
                         "_function_index": 6, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": true, 
                             "declarator": {
@@ -695,6 +685,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": true, 
+                            "params": [], 
                             "specifier": [
                                 "string"
                             ]
@@ -706,7 +697,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_check", 
                             "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
-                            "C_pre_call": "const ExClass1 *SH_this = static_cast<const ExClass1 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self", 
                             "C_return_code": "return XSHT_rv;", 
                             "C_return_type": "const char *", 
@@ -718,7 +709,7 @@
                             "F_name_function": "get_name_error_check", 
                             "F_name_generic": "get_name_error_check", 
                             "F_name_impl": "exclass1_get_name_error_check", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "getNameErrorCheck", 
                             "LUA_name_impl": "l_exclass1_get_name_error_check", 
@@ -760,9 +751,16 @@
                         }, 
                         "_function_index": 16, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "getNameErrorCheck", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": true, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "_is_result": true, 
@@ -784,14 +782,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "getNameErrorCheck", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": true, 
                             "specifier": [
                                 "void"
                             ]
@@ -803,7 +793,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_check_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                            "C_pre_call": "const ExClass1 *SH_this = static_cast<const ExClass1 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -834,9 +824,7 @@
                             }
                         }, 
                         "_function_index": 7, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": true, 
                             "declarator": {
@@ -850,6 +838,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": true, 
+                            "params": [], 
                             "specifier": [
                                 "string"
                             ]
@@ -861,7 +850,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_arg", 
                             "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
-                            "C_pre_call": "const ExClass1 *SH_this = static_cast<const ExClass1 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self", 
                             "C_return_code": "return XSHT_rv;", 
                             "C_return_type": "const char *", 
@@ -908,9 +897,16 @@
                         }, 
                         "_function_index": 17, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "getNameArg", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": true, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "_is_result": true, 
@@ -932,14 +928,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "getNameArg", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": true, 
                             "specifier": [
                                 "void"
                             ]
@@ -951,7 +939,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_arg_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(name, ' ', Nname);\n} else {\n    ShroudStrCopy(name, Nname, SHT_rv.c_str());\n}", 
-                            "C_pre_call": "const ExClass1 *SH_this = static_cast<const ExClass1 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self,\t char * name,\t int Nname", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -976,9 +964,16 @@
                         "_PTR_F_C_index": 17, 
                         "_function_index": 18, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "getNameArg", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": true, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "_is_result": true, 
@@ -1000,14 +995,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "getNameArg", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": true, 
                             "specifier": [
                                 "void"
                             ]
@@ -1039,7 +1026,7 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "AA_exclass2 * XSHT_rv", 
-                                "c_val": "static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv))", 
+                                "c_val": "\tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHT_rv))", 
                                 "c_var": "XSHT_rv", 
                                 "cxx_deref": "->", 
                                 "cxx_rv_decl": "ExClass2 * SHT_rv", 
@@ -1047,9 +1034,7 @@
                             }
                         }, 
                         "_function_index": 8, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -1063,6 +1048,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "ExClass2"
                             ]
@@ -1073,8 +1059,8 @@
                             "C_call_code": "ExClass2 * SHT_rv =\t SH_this->getRoot(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_root", 
-                            "C_post_call": "AA_exclass2 * XSHT_rv = static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));", 
-                            "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
+                            "C_post_call": "AA_exclass2 * XSHT_rv = \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHT_rv));", 
+                            "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return XSHT_rv;", 
                             "C_return_type": "AA_exclass2 *", 
@@ -1086,7 +1072,7 @@
                             "F_name_function": "get_root", 
                             "F_name_generic": "get_root", 
                             "F_name_impl": "exclass1_get_root", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "getRoot", 
                             "LUA_name_impl": "l_exclass1_get_root", 
@@ -1149,9 +1135,16 @@
                         }, 
                         "_function_index": 9, 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "getValue", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -1167,14 +1160,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "getValue", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "int"
                             ]
@@ -1185,7 +1170,7 @@
                             "C_call_code": "int SHT_rv =\t SH_this->getValue(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass1_get_value_from_int", 
-                            "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t int value", 
                             "C_return_code": "return SHT_rv;", 
                             "C_return_type": "int", 
@@ -1197,7 +1182,7 @@
                             "F_name_function": "get_value_from_int", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass1_get_value_from_int", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "getValue", 
                             "LUA_name_impl": "l_exclass1_get_value", 
@@ -1261,9 +1246,16 @@
                         }, 
                         "_function_index": 10, 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "getValue", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -1279,14 +1271,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "getValue", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "long"
                             ]
@@ -1297,7 +1281,7 @@
                             "C_call_code": "long SHT_rv =\t SH_this->getValue(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass1_get_value_1", 
-                            "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t long value", 
                             "C_return_code": "return SHT_rv;", 
                             "C_return_type": "long", 
@@ -1309,7 +1293,7 @@
                             "F_name_function": "get_value_1", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass1_get_value_1", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "PY_name_impl": "PP_exclass1_get_value_1", 
                             "c_const": "", 
@@ -1330,9 +1314,7 @@
                             }
                         }, 
                         "_function_index": 11, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -1346,6 +1328,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "void"
                             ]
@@ -1356,7 +1339,7 @@
                             "C_call_code": "void * SHT_rv =\t SH_this->getAddr(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_addr", 
-                            "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return SHT_rv;", 
                             "C_return_type": "void *", 
@@ -1368,7 +1351,7 @@
                             "F_name_function": "get_addr", 
                             "F_name_generic": "get_addr", 
                             "F_name_impl": "exclass1_get_addr", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "getAddr", 
                             "LUA_name_impl": "l_exclass1_get_addr", 
@@ -1426,9 +1409,16 @@
                             }
                         }, 
                         "_function_index": 12, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "hasAddr", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -1444,14 +1434,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "hasAddr", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "bool"
                             ]
@@ -1462,7 +1444,7 @@
                             "C_call_code": "bool SHT_rv =\t SH_this->hasAddr(\tin);", 
                             "C_call_list": "in", 
                             "C_name": "AA_exclass1_has_addr", 
-                            "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t bool in", 
                             "C_return_code": "return SHT_rv;", 
                             "C_return_type": "bool", 
@@ -1474,7 +1456,7 @@
                             "F_name_function": "has_addr", 
                             "F_name_generic": "has_addr", 
                             "F_name_impl": "exclass1_has_addr", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "hasAddr", 
                             "LUA_name_impl": "l_exclass1_has_addr", 
@@ -1489,9 +1471,7 @@
                     }, 
                     {
                         "_function_index": 13, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -1500,6 +1480,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "void"
                             ]
@@ -1510,7 +1491,7 @@
                             "C_call_code": "SH_this->SplicerSpecial(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_splicer_special", 
-                            "C_pre_call": "ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -1604,9 +1585,15 @@
                             }
                         }, 
                         "_function_index": 19, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "fattrs": {
+                                "_constructor": true, 
+                                "_name": "ctor"
+                            }, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -1628,13 +1615,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_constructor": true, 
-                                "_name": "ctor"
-                            }, 
-                            "func_const": false, 
                             "specifier": [
                                 "ExClass2"
                             ]
@@ -1650,7 +1630,7 @@
                             "C_name": "AA_exclass2_ctor", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
-                            "C_return_code": "return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHT_rv));", 
                             "C_return_type": "AA_exclass2 *", 
                             "F_C_call": "c_exclass2_ctor_bufferify", 
                             "F_C_name": "c_exclass2_ctor", 
@@ -1660,7 +1640,7 @@
                             "F_name_function": "ctor", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass2_ctor", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "ctor", 
                             "LUA_name_impl": "l_exclass2_ctor", 
@@ -1698,9 +1678,15 @@
                         }, 
                         "_function_index": 39, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "fattrs": {
+                                "_constructor": true, 
+                                "_name": "ctor"
+                            }, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -1723,13 +1709,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_constructor": true, 
-                                "_name": "ctor"
-                            }, 
-                            "func_const": false, 
                             "specifier": [
                                 "ExClass2"
                             ]
@@ -1745,7 +1724,7 @@
                             "C_name": "AA_exclass2_ctor_bufferify", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
                             "C_prototype": "const char * name,\t int Lname", 
-                            "C_return_code": "return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHT_rv));", 
                             "C_return_type": "AA_exclass2 *", 
                             "F_C_name": "c_exclass2_ctor_bufferify", 
                             "c_const": "", 
@@ -1762,9 +1741,7 @@
                     }, 
                     {
                         "_function_index": 20, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "fattrs": {
@@ -1772,6 +1749,7 @@
                                 "_name": "dtor"
                             }, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "ExClass2"
                             ]
@@ -1785,7 +1763,7 @@
                             "C_call_code": "delete SH_this;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_dtor", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -1822,9 +1800,7 @@
                             }
                         }, 
                         "_function_index": 21, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {
                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                             }, 
@@ -1840,6 +1816,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": true, 
+                            "params": [], 
                             "specifier": [
                                 "string"
                             ]
@@ -1851,7 +1828,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name", 
                             "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
-                            "C_pre_call": "const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self", 
                             "C_return_code": "return XSHT_rv;", 
                             "C_return_type": "const char *", 
@@ -1863,7 +1840,7 @@
                             "F_name_function": "get_name", 
                             "F_name_generic": "get_name", 
                             "F_name_impl": "exclass2_get_name", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "getName", 
                             "LUA_name_impl": "l_exclass2_get_name", 
@@ -1905,9 +1882,18 @@
                         }, 
                         "_function_index": 40, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {
+                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "getName", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": true, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "_is_result": true, 
@@ -1929,16 +1915,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {
-                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "getName", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": true, 
                             "specifier": [
                                 "void"
                             ]
@@ -1950,7 +1926,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                            "C_pre_call": "const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -1982,9 +1958,7 @@
                             }
                         }, 
                         "_function_index": 22, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": true, 
                             "declarator": {
@@ -1998,6 +1972,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "string"
                             ]
@@ -2009,7 +1984,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name2", 
                             "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return XSHT_rv;", 
                             "C_return_type": "const char *", 
@@ -2021,7 +1996,7 @@
                             "F_name_function": "get_name2", 
                             "F_name_generic": "get_name2", 
                             "F_name_impl": "exclass2_get_name2", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "getName2", 
                             "LUA_name_impl": "l_exclass2_get_name2", 
@@ -2063,9 +2038,16 @@
                         }, 
                         "_function_index": 41, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "getName2", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "_is_result": true, 
@@ -2087,14 +2069,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "getName2", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -2106,7 +2080,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name2_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -2138,9 +2112,7 @@
                             }
                         }, 
                         "_function_index": 23, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -2154,6 +2126,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": true, 
+                            "params": [], 
                             "specifier": [
                                 "string"
                             ]
@@ -2165,7 +2138,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name3", 
                             "C_post_call": "char * XSHT_rv = SHT_rv.c_str();", 
-                            "C_pre_call": "const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self", 
                             "C_return_code": "return XSHT_rv;", 
                             "C_return_type": "char *", 
@@ -2177,7 +2150,7 @@
                             "F_name_function": "get_name3", 
                             "F_name_generic": "get_name3", 
                             "F_name_impl": "exclass2_get_name3", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "getName3", 
                             "LUA_name_impl": "l_exclass2_get_name3", 
@@ -2219,9 +2192,16 @@
                         }, 
                         "_function_index": 42, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "getName3", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": true, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "_is_result": true, 
@@ -2243,14 +2223,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "getName3", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": true, 
                             "specifier": [
                                 "void"
                             ]
@@ -2262,7 +2234,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name3_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                            "C_pre_call": "const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -2294,9 +2266,7 @@
                             }
                         }, 
                         "_function_index": 24, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -2310,6 +2280,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "string"
                             ]
@@ -2321,7 +2292,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name4", 
                             "C_post_call": "char * XSHT_rv = SHT_rv.c_str();", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return XSHT_rv;", 
                             "C_return_type": "char *", 
@@ -2333,7 +2304,7 @@
                             "F_name_function": "get_name4", 
                             "F_name_generic": "get_name4", 
                             "F_name_impl": "exclass2_get_name4", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "getName4", 
                             "LUA_name_impl": "l_exclass2_get_name4", 
@@ -2375,9 +2346,16 @@
                         }, 
                         "_function_index": 43, 
                         "_generated": "arg_to_buffer", 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "getName4", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "_is_result": true, 
@@ -2399,14 +2377,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "getName4", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -2418,7 +2388,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name4_bufferify", 
                             "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -2446,9 +2416,7 @@
                             }
                         }, 
                         "_function_index": 25, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -2457,6 +2425,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": true, 
+                            "params": [], 
                             "specifier": [
                                 "int"
                             ]
@@ -2471,7 +2440,7 @@
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n", 
                             "C_name": "AA_exclass2_get_name_length", 
-                            "C_pre_call": "const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self", 
                             "C_return_code": "return SHT_rv;", 
                             "C_return_type": "int", 
@@ -2483,7 +2452,7 @@
                             "F_name_function": "get_name_length", 
                             "F_name_generic": "get_name_length", 
                             "F_name_impl": "exclass2_get_name_length", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "GetNameLength", 
                             "LUA_name_impl": "l_exclass2_get_name_length", 
@@ -2514,7 +2483,7 @@
                                 "fmtl": {
                                     "LUA_index": 1, 
                                     "c_ptr": " *", 
-                                    "c_var": "(l_ExClass2_Type *)luaL_checkudata(L, 1, \"ExClass2.metatable\")", 
+                                    "c_var": "\t(l_ExClass2_Type *)\t luaL_checkudata(\tL, 1, \"ExClass2.metatable\")", 
                                     "c_var_len": "Lin", 
                                     "cxx_deref": "->", 
                                     "cxx_type": "ExClass1", 
@@ -2536,7 +2505,7 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "AA_exclass1 * XSHT_rv", 
-                                "c_val": "static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv))", 
+                                "c_val": "\tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHT_rv))", 
                                 "c_var": "XSHT_rv", 
                                 "cxx_deref": "->", 
                                 "cxx_rv_decl": "ExClass1 * SHT_rv", 
@@ -2544,9 +2513,21 @@
                             }
                         }, 
                         "_function_index": 26, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "get_class1", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -2567,19 +2548,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "get_class1", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
-                                    }
-                                ]
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "ExClass1"
                             ]
@@ -2590,8 +2558,8 @@
                             "C_call_code": "ExClass1 * SHT_rv =\t SH_this->get_class1(\tSH_in);", 
                             "C_call_list": "SH_in", 
                             "C_name": "AA_exclass2_get_class1", 
-                            "C_post_call": "AA_exclass1 * XSHT_rv = static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));\nconst ExClass1 *SH_in = static_cast<const ExClass1 *>(static_cast<const void *>(in));", 
+                            "C_post_call": "AA_exclass1 * XSHT_rv = \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHT_rv));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));\nconst ExClass1 *SH_in = static_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tin));", 
                             "C_prototype": "AA_exclass2 * self,\t const AA_exclass1 * in", 
                             "C_return_code": "return XSHT_rv;", 
                             "C_return_type": "AA_exclass1 *", 
@@ -2603,7 +2571,7 @@
                             "F_name_function": "get_class1", 
                             "F_name_generic": "get_class1", 
                             "F_name_impl": "exclass2_get_class1", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "get_class1", 
                             "LUA_name_impl": "l_exclass2_get_class1", 
@@ -2636,9 +2604,21 @@
                         "_function_index": 32, 
                         "_generated": "has_default_arg", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "declare", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -2654,19 +2634,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "declare", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
-                                    }
-                                ]
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -2677,7 +2644,7 @@
                             "C_call_code": "SH_this->declare(\tgetTypeID(type));", 
                             "C_call_list": "getTypeID(type)", 
                             "C_name": "AA_exclass2_declare_0", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self,\t int type", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -2708,9 +2675,21 @@
                         "_function_index": 44, 
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "declare", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -2726,19 +2705,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "declare", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
-                                    }
-                                ]
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -2771,9 +2737,21 @@
                         "_function_index": 45, 
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "declare", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -2789,19 +2767,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "declare", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
-                                    }
-                                ]
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -2910,9 +2875,21 @@
                             2
                         ], 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "declare", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -2943,19 +2920,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "declare", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
-                                    }
-                                ]
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -2966,7 +2930,7 @@
                             "C_call_code": "SH_this->declare(\tgetTypeID(type),\t len);", 
                             "C_call_list": "getTypeID(type),\t len", 
                             "C_name": "AA_exclass2_declare_1", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self,\t int type,\t SIDRE_SidreLength len", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3005,9 +2969,21 @@
                             2
                         ], 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "declare", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -3038,19 +3014,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "declare", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
-                                    }
-                                ]
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -3091,9 +3054,21 @@
                             2
                         ], 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "declare", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -3124,19 +3099,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "declare", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
-                                    }
-                                ]
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -3166,9 +3128,7 @@
                     }, 
                     {
                         "_function_index": 28, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -3177,6 +3137,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "void"
                             ]
@@ -3187,7 +3148,7 @@
                             "C_call_code": "SH_this->destroyall(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_destroyall", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3223,9 +3184,7 @@
                             }
                         }, 
                         "_function_index": 29, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -3234,6 +3193,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": true, 
+                            "params": [], 
                             "specifier": [
                                 "TypeID"
                             ]
@@ -3245,7 +3205,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_type_id", 
                             "C_post_call": "int XSHT_rv = static_cast<int>(SHT_rv);", 
-                            "C_pre_call": "const ExClass2 *SH_this = static_cast<const ExClass2 *>(static_cast<const void *>(self));", 
+                            "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self", 
                             "C_return_code": "return XSHT_rv;", 
                             "C_return_type": "int", 
@@ -3257,7 +3217,7 @@
                             "F_name_function": "get_type_id", 
                             "F_name_generic": "get_type_id", 
                             "F_name_impl": "exclass2_get_type_id", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "getTypeID", 
                             "LUA_name_impl": "l_exclass2_get_type_id", 
@@ -3273,9 +3233,16 @@
                     {
                         "_function_index": 30, 
                         "_overloaded": true, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "setValue", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -3291,14 +3258,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "setValue", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -3344,9 +3303,16 @@
                         "_function_index": 33, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "setValue", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -3362,14 +3328,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "setValue", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -3381,7 +3339,7 @@
                             "C_call_code": "SH_this->setValue<int>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_int", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self,\t int value", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3428,9 +3386,16 @@
                         "_function_index": 34, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "setValue", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -3446,14 +3411,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "setValue", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -3465,7 +3422,7 @@
                             "C_call_code": "SH_this->setValue<long>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_long", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self,\t long value", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3512,9 +3469,16 @@
                         "_function_index": 35, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "setValue", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -3530,14 +3494,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "setValue", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -3549,7 +3505,7 @@
                             "C_call_code": "SH_this->setValue<float>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_float", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self,\t float value", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3596,9 +3552,16 @@
                         "_function_index": 36, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "setValue", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -3614,14 +3577,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "setValue", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -3633,7 +3588,7 @@
                             "C_call_code": "SH_this->setValue<double>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_double", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self,\t double value", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3663,9 +3618,7 @@
                     {
                         "_function_index": 31, 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -3674,6 +3627,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "ValueType"
                             ]
@@ -3709,9 +3663,7 @@
                         "_function_index": 37, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -3720,6 +3672,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "int"
                             ]
@@ -3731,7 +3684,7 @@
                             "C_call_code": "int SHT_rv =\t SH_this->getValue<int>(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_value_int", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return SHT_rv;", 
                             "C_return_type": "int", 
@@ -3743,7 +3696,7 @@
                             "F_name_function": "get_value_int", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass2_get_value_int", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -3771,9 +3724,7 @@
                         "_function_index": 38, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
-                        "_subprogram": "function", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -3782,6 +3733,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "double"
                             ]
@@ -3793,7 +3745,7 @@
                             "C_call_code": "double SHT_rv =\t SH_this->getValue<double>(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_value_double", 
-                            "C_pre_call": "ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return SHT_rv;", 
                             "C_return_type": "double", 
@@ -3805,7 +3757,7 @@
                             "F_name_function": "get_value_double", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass2_get_value_double", 
-                            "F_result_clause": "\nresult(SHT_rv)", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "c_const": "", 
                             "c_ptr": " *", 
@@ -3869,9 +3821,7 @@
                 "methods": [
                     {
                         "_function_index": 48, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [], 
                             "attrs": {}, 
                             "const": false, 
                             "declarator": {
@@ -3880,6 +3830,7 @@
                             }, 
                             "fattrs": {}, 
                             "func_const": false, 
+                            "params": [], 
                             "specifier": [
                                 "void"
                             ]
@@ -3890,7 +3841,7 @@
                             "C_call_code": "SH_this->exfunc(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass3_exfunc", 
-                            "C_pre_call": "ExClass3 *SH_this = static_cast<ExClass3 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "ExClass3 *SH_this = \tstatic_cast<ExClass3 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass3 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -4034,9 +3985,7 @@
         "functions": [
             {
                 "_function_index": 49, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [], 
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
@@ -4045,6 +3994,7 @@
                     }, 
                     "fattrs": {}, 
                     "func_const": false, 
+                    "params": [], 
                     "specifier": [
                         "void"
                     ]
@@ -4077,7 +4027,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 64, 
+                "_PTR_F_C_index": 69, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4118,9 +4068,16 @@
                     }
                 }, 
                 "_function_index": 50, 
-                "_subprogram": "function", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "isNameValid", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -4141,14 +4098,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "isNameValid", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "bool"
                     ]
@@ -4172,7 +4121,7 @@
                     "F_name_function": "is_name_valid", 
                     "F_name_generic": "is_name_valid", 
                     "F_name_impl": "is_name_valid", 
-                    "F_result_clause": "\nresult(SHT_rv)", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "LUA_name": "isNameValid", 
                     "LUA_name_impl": "l_is_name_valid", 
@@ -4209,11 +4158,18 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 64, 
+                "_function_index": 69, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "function", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "isNameValid", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -4235,14 +4191,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "isNameValid", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "bool"
                     ]
@@ -4281,9 +4229,7 @@
                     }
                 }, 
                 "_function_index": 51, 
-                "_subprogram": "function", 
                 "ast": {
-                    "args": [], 
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
@@ -4292,6 +4238,7 @@
                     }, 
                     "fattrs": {}, 
                     "func_const": false, 
+                    "params": [], 
                     "specifier": [
                         "bool"
                     ]
@@ -4313,7 +4260,7 @@
                     "F_name_function": "is_initialized", 
                     "F_name_generic": "is_initialized", 
                     "F_name_impl": "is_initialized", 
-                    "F_result_clause": "\nresult(SHT_rv)", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "LUA_name": "isInitialized", 
                     "LUA_name_impl": "l_is_initialized", 
@@ -4434,9 +4381,16 @@
                     }
                 }, 
                 "_function_index": 52, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "checkBool", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -4490,14 +4444,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "checkBool", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -4530,7 +4476,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 65, 
+                "_PTR_F_C_index": 70, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -4569,9 +4515,16 @@
                 }, 
                 "_function_index": 53, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "test_names", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -4592,14 +4545,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "test_names", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -4656,12 +4601,19 @@
                         }
                     }
                 }, 
-                "_function_index": 65, 
+                "_function_index": 70, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "test_names", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -4683,14 +4635,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "test_names", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -4719,7 +4663,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 66, 
+                "_PTR_F_C_index": 71, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -4788,9 +4732,16 @@
                 }, 
                 "_function_index": 54, 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "test_names", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -4825,14 +4776,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "test_names", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -4901,12 +4844,19 @@
                         }
                     }
                 }, 
-                "_function_index": 66, 
+                "_function_index": 71, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "test_names", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -4942,14 +4892,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "test_names", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -4978,12 +4920,10 @@
                 }
             }, 
             {
-                "_function_index": 62, 
+                "_function_index": 67, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [], 
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
@@ -4992,6 +4932,7 @@
                     }, 
                     "fattrs": {}, 
                     "func_const": false, 
+                    "params": [], 
                     "specifier": [
                         "void"
                     ]
@@ -5043,12 +4984,19 @@
                         }
                     }
                 }, 
-                "_function_index": 63, 
+                "_function_index": 68, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "testoptional", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -5065,14 +5013,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "testoptional", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -5109,8 +5049,8 @@
             }, 
             {
                 "_default_funcs": [
-                    62, 
-                    63
+                    67, 
+                    68
                 ], 
                 "_fmtargs": {
                     "i": {
@@ -5189,9 +5129,16 @@
                     2
                 ], 
                 "_overloaded": true, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "testoptional", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -5223,14 +5170,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "testoptional", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -5272,9 +5211,7 @@
                     }
                 }, 
                 "_function_index": 56, 
-                "_subprogram": "function", 
                 "ast": {
-                    "args": [], 
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
@@ -5283,6 +5220,7 @@
                     }, 
                     "fattrs": {}, 
                     "func_const": false, 
+                    "params": [], 
                     "specifier": [
                         "size_t"
                     ]
@@ -5304,7 +5242,7 @@
                     "F_name_function": "test_size_t", 
                     "F_name_generic": "test_size_t", 
                     "F_name_impl": "test_size_t", 
-                    "F_result_clause": "\nresult(SHT_rv)", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "LUA_name": "test_size_t", 
                     "LUA_name_impl": "l_test_size_t", 
@@ -5353,9 +5291,16 @@
                     }
                 }, 
                 "_function_index": 57, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "testmpi", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -5371,14 +5316,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "testmpi", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -5428,7 +5365,7 @@
                         "fmtl": {
                             "LUA_index": 1, 
                             "c_ptr": " *", 
-                            "c_var": "(XXLUA_userdata_type *)luaL_checkudata(L, 1, \"XXLUA_metadata\")", 
+                            "c_var": "\t(XXLUA_userdata_type *)\t luaL_checkudata(\tL, 1, \"XXLUA_metadata\")", 
                             "c_var_len": "Lgrp", 
                             "cxx_deref": "->", 
                             "cxx_type": "axom::sidre::Group", 
@@ -5448,9 +5385,16 @@
                     }
                 }, 
                 "_function_index": 58, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "testgroup1", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -5471,14 +5415,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "testgroup1", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -5489,7 +5425,7 @@
                     "C_call_code": "testgroup1(\tSH_grp);", 
                     "C_call_list": "SH_grp", 
                     "C_name": "AA_testgroup1", 
-                    "C_pre_call": "axom::sidre::Group *SH_grp = static_cast<axom::sidre::Group *>(static_cast<void *>(grp));", 
+                    "C_pre_call": "axom::sidre::Group *SH_grp = static_cast<axom::sidre::Group *>(\tstatic_cast<void *>(\tgrp));", 
                     "C_prototype": "SIDRE_group * grp", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5529,7 +5465,7 @@
                         "fmtl": {
                             "LUA_index": 1, 
                             "c_ptr": " *", 
-                            "c_var": "(XXLUA_userdata_type *)luaL_checkudata(L, 1, \"XXLUA_metadata\")", 
+                            "c_var": "\t(XXLUA_userdata_type *)\t luaL_checkudata(\tL, 1, \"XXLUA_metadata\")", 
                             "c_var_len": "Lgrp", 
                             "cxx_deref": "->", 
                             "cxx_type": "axom::sidre::Group", 
@@ -5549,9 +5485,16 @@
                     }
                 }, 
                 "_function_index": 59, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "testgroup2", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -5572,14 +5515,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "testgroup2", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -5590,7 +5525,7 @@
                     "C_call_code": "testgroup2(\tSH_grp);", 
                     "C_call_list": "SH_grp", 
                     "C_name": "AA_testgroup2", 
-                    "C_pre_call": "const axom::sidre::Group *SH_grp = static_cast<const axom::sidre::Group *>(static_cast<const void *>(grp));", 
+                    "C_pre_call": "const axom::sidre::Group *SH_grp = static_cast<const axom::sidre::Group *>(\tstatic_cast<const void *>(\tgrp));", 
                     "C_prototype": "const SIDRE_group * grp", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5609,6 +5544,715 @@
                     "c_const": "", 
                     "function_name": "testgroup2", 
                     "underscore_name": "testgroup2"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "get": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get"
+                        }, 
+                        "fmtf": {
+                            "c_var": "get", 
+                            "f_var": "get"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "POP", 
+                            "c_var_len": "Lget", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get", 
+                            "lua_var": "SH_Lua_get"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_decl": "void ( * get)()", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get", 
+                            "py_var": "SH_Py_get"
+                        }
+                    }
+                }, 
+                "_function_index": 60, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "func1", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "func": {
+                                    "name": "get", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [], 
+                            "specifier": [
+                                "void"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void func1(void (*get)());", 
+                "declgen": "void func1(void ( * get) +intent(in)+value())", 
+                "doxygen": {
+                    "brief": "subroutine"
+                }, 
+                "format": {
+                    "C_call_code": "func1(\tget);", 
+                    "C_call_list": "get", 
+                    "C_name": "AA_func1", 
+                    "C_prototype": "void ( * get)(\t)", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_func1", 
+                    "F_C_name": "func1", 
+                    "F_arg_c_call": "get", 
+                    "F_arguments": "get", 
+                    "F_call_code": "call c_func1(get)", 
+                    "F_name_function": "func1", 
+                    "F_name_generic": "func1", 
+                    "F_name_impl": "func1", 
+                    "F_subprogram": "subroutine", 
+                    "LUA_name": "func1", 
+                    "LUA_name_impl": "l_func1", 
+                    "PY_name_impl": "PP_func1", 
+                    "c_const": "", 
+                    "function_name": "func1", 
+                    "underscore_name": "func1"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "get": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "get", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get"
+                        }, 
+                        "fmtf": {
+                            "c_var": "get", 
+                            "f_var": "get"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": " *", 
+                            "c_var": "lua_tonumber(L, 1)", 
+                            "c_var_len": "Lget", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get", 
+                            "lua_var": "SH_Lua_get"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "get", 
+                            "cxx_decl": "double * ( * get)()", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get", 
+                            "py_var": "SH_Py_get"
+                        }
+                    }
+                }, 
+                "_function_index": 61, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "func2", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "func": {
+                                    "name": "get", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [], 
+                            "specifier": [
+                                "double"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void func2(double * (*get)());", 
+                "declgen": "void func2(double * ( * get) +intent(in)())", 
+                "doxygen": {
+                    "brief": "return a pointer"
+                }, 
+                "format": {
+                    "C_call_code": "func2(\tget);", 
+                    "C_call_list": "get", 
+                    "C_name": "AA_func2", 
+                    "C_prototype": "double * ( * get)(\t)", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_func2", 
+                    "F_C_name": "func2", 
+                    "F_arg_c_call": "get", 
+                    "F_arguments": "get", 
+                    "F_call_code": "call c_func2(get)", 
+                    "F_name_function": "func2", 
+                    "F_name_generic": "func2", 
+                    "F_name_impl": "func2", 
+                    "F_subprogram": "subroutine", 
+                    "LUA_name": "func2", 
+                    "LUA_name_impl": "l_func2", 
+                    "PY_name_impl": "PP_func2", 
+                    "c_const": "", 
+                    "function_name": "func2", 
+                    "underscore_name": "func2"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "get": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get"
+                        }, 
+                        "fmtf": {
+                            "c_var": "get", 
+                            "f_var": "get"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tonumber(L, 1)", 
+                            "c_var_len": "Lget", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get", 
+                            "lua_var": "SH_Lua_get"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_decl": "double ( * get)(int i, int)", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get", 
+                            "py_var": "SH_Py_get"
+                        }
+                    }
+                }, 
+                "_function_index": 62, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "FuncPtr3", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "func": {
+                                    "name": "get", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "i", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }
+                            ], 
+                            "specifier": [
+                                "double"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void FuncPtr3(double (*get)(int i, int));", 
+                "declgen": "void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))", 
+                "doxygen": {
+                    "brief": "abstract argument"
+                }, 
+                "format": {
+                    "C_call_code": "FuncPtr3(\tget);", 
+                    "C_call_list": "get", 
+                    "C_name": "AA_func_ptr3", 
+                    "C_prototype": "double ( * get)(\tint i,\t int)", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_func_ptr3", 
+                    "F_C_name": "c_func_ptr3", 
+                    "F_arg_c_call": "get", 
+                    "F_arguments": "get", 
+                    "F_call_code": "call c_func_ptr3(get)", 
+                    "F_name_function": "func_ptr3", 
+                    "F_name_generic": "func_ptr3", 
+                    "F_name_impl": "func_ptr3", 
+                    "F_subprogram": "subroutine", 
+                    "LUA_name": "FuncPtr3", 
+                    "LUA_name_impl": "l_func_ptr3", 
+                    "PY_name_impl": "PP_func_ptr3", 
+                    "c_const": "", 
+                    "function_name": "FuncPtr3", 
+                    "underscore_name": "func_ptr3"
+                }, 
+                "options": {
+                    "F_force_wrapper": true
+                }
+            }, 
+            {
+                "_fmtargs": {
+                    "get": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "get"
+                        }, 
+                        "fmtf": {
+                            "c_var": "get", 
+                            "f_var": "get"
+                        }
+                    }
+                }, 
+                "_function_index": 63, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "FuncPtr3a", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "func": {
+                                    "name": "get", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "double"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }
+                            ], 
+                            "specifier": [
+                                "double"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void FuncPtr3a(double (*get)(double, int));", 
+                "declgen": "void FuncPtr3a(double ( * get) +intent(in)+value(double +value, int +value))", 
+                "doxygen": {
+                    "brief": "abstract argument"
+                }, 
+                "format": {
+                    "C_call_code": "FuncPtr3a(\tget);", 
+                    "C_call_list": "get", 
+                    "C_name": "AA_func_ptr3a", 
+                    "C_prototype": "double ( * get)(\tdouble,\t int)", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_func_ptr3a", 
+                    "F_C_name": "c_func_ptr3a", 
+                    "F_arg_c_call": "get", 
+                    "F_arguments": "get", 
+                    "F_call_code": "call c_func_ptr3a(get)", 
+                    "F_name_function": "func_ptr3a", 
+                    "F_name_generic": "func_ptr3a", 
+                    "F_name_impl": "func_ptr3a", 
+                    "F_subprogram": "subroutine", 
+                    "c_const": "", 
+                    "function_name": "FuncPtr3a", 
+                    "underscore_name": "func_ptr3a"
+                }, 
+                "options": {
+                    "F_abstract_interface_argument_template": "XX{index}arg", 
+                    "F_abstract_interface_subprogram_template": "custom_funptr", 
+                    "F_force_wrapper": true, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_fmtargs": {
+                    "get": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get"
+                        }, 
+                        "fmtf": {
+                            "c_var": "get", 
+                            "f_var": "get"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "POP", 
+                            "c_var_len": "Lget", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get", 
+                            "lua_var": "SH_Lua_get"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "get", 
+                            "cxx_decl": "void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "void", 
+                            "cxx_var": "get", 
+                            "py_var": "SH_Py_get"
+                        }
+                    }
+                }, 
+                "_function_index": 64, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "func4", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "func": {
+                                    "name": "get", 
+                                    "pointer": [
+                                        {
+                                            "const": false, 
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                }, 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname1", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname2", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname3", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname4", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname5", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname6", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname7", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname8", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname9", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "verylongname10", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }
+                            ], 
+                            "specifier": [
+                                "void"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void func4(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))", 
+                "declgen": "void func4(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))", 
+                "format": {
+                    "C_call_code": "func4(\tget);", 
+                    "C_call_list": "get", 
+                    "C_name": "AA_func4", 
+                    "C_prototype": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_func4", 
+                    "F_C_name": "func4", 
+                    "F_arg_c_call": "get", 
+                    "F_arguments": "get", 
+                    "F_call_code": "call c_func4(get)", 
+                    "F_name_function": "func4", 
+                    "F_name_generic": "func4", 
+                    "F_name_impl": "func4", 
+                    "F_subprogram": "subroutine", 
+                    "LUA_name": "func4", 
+                    "LUA_name_impl": "l_func4", 
+                    "PY_name_impl": "PP_func4", 
+                    "c_const": "", 
+                    "function_name": "func4", 
+                    "underscore_name": "func4"
                 }, 
                 "options": {}
             }, 
@@ -5955,10 +6599,17 @@
                         }
                     }
                 }, 
-                "_function_index": 60, 
-                "_subprogram": "subroutine", 
+                "_function_index": 65, 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "verlongfunctionname1", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -6100,14 +6751,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "verlongfunctionname1", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -6484,10 +7127,24 @@
                         }
                     }
                 }, 
-                "_function_index": 61, 
-                "_subprogram": "subroutine", 
+                "_fmtresult": {
+                    "fmtc": {
+                        "cxx_deref": ".", 
+                        "cxx_rv_decl": "int SHT_rv", 
+                        "cxx_var": "SHT_rv"
+                    }
+                }, 
+                "_function_index": 66, 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "verlongfunctionname2", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -6629,36 +7286,29 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "verlongfunctionname2", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
-                        "void"
+                        "int"
                     ]
                 }, 
-                "decl": "void verlongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
-                "declgen": "void verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)", 
+                "decl": "int verlongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
+                "declgen": "int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "verlongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
+                    "C_call_code": "int SHT_rv =\t verlongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
                     "C_name": "AA_verlongfunctionname2", 
                     "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10", 
-                    "C_return_code": "return;", 
-                    "C_return_type": "void", 
+                    "C_return_code": "return SHT_rv;", 
+                    "C_return_type": "int", 
                     "F_C_call": "c_verlongfunctionname2", 
                     "F_C_name": "c_verlongfunctionname2", 
                     "F_arg_c_call": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
                     "F_arguments": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
-                    "F_call_code": "call c_verlongfunctionname2(verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)", 
+                    "F_call_code": "SHT_rv = c_verlongfunctionname2(verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)", 
                     "F_name_function": "verlongfunctionname2", 
                     "F_name_generic": "verlongfunctionname2", 
                     "F_name_impl": "verlongfunctionname2", 
-                    "F_subprogram": "subroutine", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
                     "LUA_name": "verlongfunctionname2", 
                     "LUA_name_impl": "l_verlongfunctionname2", 
                     "PY_name_impl": "PP_verlongfunctionname2", 
@@ -6686,6 +7336,8 @@
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "F_abstract_interface_argument_template": "arg{index}", 
+            "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 
@@ -6737,7 +7389,7 @@
     }, 
     "types": {
         "DataGroup": {
-            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "PY_PyTypeObject": "FillInTypeForGroup", 
             "base": "wrapped", 
@@ -6746,14 +7398,14 @@
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "pre_call": [
-                        "{c_const}axom::sidre::Group{c_ptr}{cxx_var} = static_cast<{c_const}axom::sidre::Group{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                        "{c_const}axom::sidre::Group{c_ptr}{cxx_var} = static_cast<{c_const}axom::sidre::Group{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
                     ]
                 }
             }, 
-            "c_to_cxx": "static_cast<{c_const}axom::sidre::Group{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}axom::sidre::Group{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "SIDRE_group", 
             "cxx_header": "sidre/Group.hpp", 
-            "cxx_to_c": "static_cast<{c_const}SIDRE_group *>(static_cast<{c_const}void *>({cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}SIDRE_group *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "axom::sidre::Group", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -6793,7 +7445,7 @@
             }
         }, 
         "ExClass1": {
-            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "PY_PyObject": "PP_ExClass1", 
             "PY_PyTypeObject": "PP_ExClass1_Type", 
@@ -6804,13 +7456,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "pre_call": [
-                        "{c_const}ExClass1{c_ptr}{cxx_var} = static_cast<{c_const}ExClass1{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                        "{c_const}ExClass1{c_ptr}{cxx_var} = static_cast<{c_const}ExClass1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
                     ]
                 }
             }, 
-            "c_to_cxx": "static_cast<{c_const}ExClass1{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}ExClass1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "AA_exclass1", 
-            "cxx_to_c": "static_cast<{c_const}AA_exclass1 *>(static_cast<{c_const}void *>({cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}AA_exclass1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "ExClass1", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -6850,7 +7502,7 @@
             }
         }, 
         "ExClass2": {
-            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "PY_PyObject": "PP_ExClass2", 
             "PY_PyTypeObject": "PP_ExClass2_Type", 
@@ -6861,13 +7513,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "pre_call": [
-                        "{c_const}ExClass2{c_ptr}{cxx_var} = static_cast<{c_const}ExClass2{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                        "{c_const}ExClass2{c_ptr}{cxx_var} = static_cast<{c_const}ExClass2{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
                     ]
                 }
             }, 
-            "c_to_cxx": "static_cast<{c_const}ExClass2{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}ExClass2{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "AA_exclass2", 
-            "cxx_to_c": "static_cast<{c_const}AA_exclass2 *>(static_cast<{c_const}void *>({cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}AA_exclass2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "ExClass2", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -6907,20 +7559,20 @@
             }
         }, 
         "ExClass3": {
-            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "wrapped", 
             "c_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "pre_call": [
-                        "{c_const}ExClass3{c_ptr}{cxx_var} = static_cast<{c_const}ExClass3{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                        "{c_const}ExClass3{c_ptr}{cxx_var} = static_cast<{c_const}ExClass3{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
                     ]
                 }
             }, 
-            "c_to_cxx": "static_cast<{c_const}ExClass3{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}ExClass3{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "AA_exclass3", 
-            "cxx_to_c": "static_cast<{c_const}AA_exclass3 *>(static_cast<{c_const}void *>({cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}AA_exclass3 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "ExClass3", 
             "f_c_module": {
                 "iso_c_binding": [

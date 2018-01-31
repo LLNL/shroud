@@ -337,6 +337,18 @@ class_prefix_template
 F_C_name_template
     ``{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}``
 
+F_abstract_interface_argument_template
+   The name of arguments for an abstract interface used with function pointers.
+   Defaults to ``{underscore_name}_{argname}``
+   where *argname* is the name of the function argument.
+   see :ref:`TypesAnchor_Function_Pointers`.
+
+F_abstract_interface_subprogram_template
+   The name of the abstract interface subprogram which represents a
+   function pointer.
+   Defaults to ``arg{index}`` where *index* is the 0-based argument index.
+   see :ref:`TypesAnchor_Function_Pointers`.
+
 F_name_generic_template
     ``{underscore_name}``
 

@@ -233,6 +233,13 @@ functions:
 
 ##################################################
 
+-  decl: int callback1(int in, int (*incr)(int));
+   options:
+     wrap_lua: False
+     wrap_python: False
+
+##################################################
+
 # Used with testing
 - decl: const std::string& LastFunctionCalled() +pure
 

@@ -72,7 +72,8 @@ static int l_class1_new(lua_State *L)
 static int l_class1_delete(lua_State *L)
 {
     // splicer begin class.Class1.method.__gc
-    l_Class1_Type * SH_this = (l_Class1_Type *)luaL_checkudata(L, 1, "Class1.metatable");
+    l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
+        L, 1, "Class1.metatable");
     delete SH_this->self;
     SH_this->self = NULL;
     return 0;
@@ -82,7 +83,8 @@ static int l_class1_delete(lua_State *L)
 static int l_class1_method1(lua_State *L)
 {
     // splicer begin class.Class1.method.Method1
-    l_Class1_Type * SH_this = (l_Class1_Type *)luaL_checkudata(L, 1, "Class1.metatable");
+    l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
+        L, 1, "Class1.metatable");
     SH_this->self->Method1();
     return 0;
     // splicer end class.Class1.method.Method1

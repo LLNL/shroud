@@ -67,7 +67,6 @@ module exclass3_mod
         ! splicer end class.ExClass3.type_bound_procedure_part
     end type exclass3
 
-
     interface operator (.eq.)
         module procedure exclass3_eq
     end interface

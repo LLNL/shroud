@@ -643,6 +643,26 @@ class Declaration(Node):
                 nlevels += 1
         return nlevels
 
+    def is_function_pointer(self):
+        """Return number of levels of pointers.
+        """
+        nlevels = 0
+        if self.declarator is None:
+            return False
+        if self.declarator.func is None:
+            return False
+        if not self.declarator.func.pointer:
+            return False
+        return True
+
+    def get_subprogram(self):
+        """Return Fortran subprogram - subroutine or function"""
+        if self.typename != 'void':
+            return 'function'
+        if self.is_pointer():
+            return 'function'
+        return 'subroutine'
+
     def _as_arg(self, name):
         """Create an argument to hold the function result.
         This is intended for pointer arguments, char or string.
@@ -692,7 +712,7 @@ class Declaration(Node):
         if self.storage:
             d['storage'] = self.storage
         if self.params is not None:
-            d['args'] = [ x._to_dict() for x in self.params]
+            d['params'] = [ x._to_dict() for x in self.params]
             d['fattrs'] = self.fattrs
             d['func_const'] = self.func_const
         else:
@@ -814,21 +834,24 @@ class Declaration(Node):
         No parameters or attributes.
         """
         decl = []
-        self.gen_arg_work(decl, lang='cxx_type', **kwargs)
+        self.gen_arg_as_lang(decl, lang='cxx_type', **kwargs)
         return ''.join(decl)
 
     def gen_arg_as_c(self, **kwargs):
         """Return a string of the unparsed declaration.
         """
         decl = []
-        self.gen_arg_work(decl, lang='c_type', **kwargs)
+        self.gen_arg_as_lang(decl, lang='c_type', **kwargs)
         return ''.join(decl)
 
-    def gen_arg_work(self, decl, lang, **kwargs):
+    def gen_arg_as_lang(self, decl, lang,
+                        continuation=False,
+                        **kwargs):
         """Generate an argument for the C wrapper.
         C++ types are converted to C types using typemap.
 
         lang = c_type or cxx_type
+        continuation = True - insert tabs to aid continuations
 
         If a templated type, assume std::vector.
         The C argument will be a pointer to the template type.
@@ -862,6 +885,22 @@ class Declaration(Node):
         else:
             declarator.gen_decl_work(decl, **kwargs)
 
+        params = kwargs.get('params', self.params)
+        if params is not None:
+            decl.append('(')
+            if continuation:
+                decl.append('\t')
+            comma = ''
+            for arg in params:
+                decl.append(comma)
+                arg.gen_decl_work(decl, attrs=None, continuation=continuation)
+                if continuation:
+                    comma = ',\t '
+                else:
+                    comma = ', '
+            decl.append(')')
+            if self.func_const:
+                decl.append(' const')
 
 ##############
 
@@ -875,7 +914,6 @@ class Declaration(Node):
         if 'template' in attrs:
             # If a template, use its type
             typedef = typemap.Typedef.lookup(attrs['template'])
-        intent = attrs.get('intent', None)
 
         typ = typedef.f_c_type or typedef.f_type
         if typ is None:
@@ -883,6 +921,7 @@ class Declaration(Node):
         t.append(typ)
         if attrs.get('value', False):
             t.append('value')
+        intent = attrs.get('intent', None)
         if intent:
             t.append('intent(%s)' % intent.upper())
 

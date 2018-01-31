@@ -97,9 +97,7 @@
         "functions": [
             {
                 "_function_index": 0, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [], 
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
@@ -108,6 +106,7 @@
                     }, 
                     "fattrs": {}, 
                     "func_const": false, 
+                    "params": [], 
                     "specifier": [
                         "void"
                     ]
@@ -175,9 +174,16 @@
                     }
                 }, 
                 "_function_index": 1, 
-                "_subprogram": "function", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function2", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -207,14 +213,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function2", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "double"
                     ]
@@ -236,7 +234,7 @@
                     "F_name_function": "function2", 
                     "F_name_generic": "function2", 
                     "F_name_impl": "function2", 
-                    "F_result_clause": "\nresult(SHT_rv)", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
                     "function_name": "Function2", 
@@ -290,9 +288,16 @@
                     }
                 }, 
                 "_function_index": 2, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Sum", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -347,14 +352,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Sum", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -408,9 +405,16 @@
                     }
                 }, 
                 "_function_index": 3, 
-                "_subprogram": "function", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function3", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -426,14 +430,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function3", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "bool"
                     ]
@@ -455,7 +451,7 @@
                     "F_name_function": "function3", 
                     "F_name_generic": "function3", 
                     "F_name_impl": "function3", 
-                    "F_result_clause": "\nresult(SHT_rv)", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
                     "function_name": "Function3", 
@@ -509,9 +505,16 @@
                     }
                 }, 
                 "_function_index": 4, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function3b", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -565,14 +568,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function3b", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -633,9 +628,23 @@
                     }
                 }, 
                 "_function_index": 5, 
-                "_subprogram": "function", 
                 "ast": {
-                    "args": [
+                    "attrs": {
+                        "len": "30"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function4a", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -675,21 +684,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {
-                        "len": "30"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function4a", 
-                        "pointer": [
-                            {
-                                "const": false, 
-                                "ptr": "*"
-                            }
-                        ]
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "char"
                     ]
@@ -712,7 +706,7 @@
                     "F_name_function": "function4a", 
                     "F_name_generic": "function4a", 
                     "F_name_impl": "function4a", 
-                    "F_result_clause": "\nresult(SHT_rv)", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
                     "c_var_len": "30", 
@@ -779,9 +773,18 @@
                 }, 
                 "_function_index": 6, 
                 "_generated": "arg_to_buffer", 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [
+                    "attrs": {
+                        "len": "30"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "Function4a", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
                         {
                             "attrs": {
                                 "intent": "in", 
@@ -843,16 +846,6 @@
                             ]
                         }
                     ], 
-                    "attrs": {
-                        "len": "30"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "Function4a", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": false, 
                     "specifier": [
                         "void"
                     ]
@@ -895,6 +888,8 @@
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "F_abstract_interface_argument_template": "arg{index}", 
+            "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 

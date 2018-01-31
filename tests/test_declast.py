@@ -173,6 +173,103 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl(name='newname', params=None)
         self.assertEqual("int newname", s)
 
+        self.assertEqual('int', r.typename)
+        self.assertFalse(r.is_pointer())
+        self.assertEqual('function', r.get_subprogram())
+
+    def test_type_function_pointer1(self):
+        """Function pointer
+        """
+        r = declast.check_decl("int (*func)(int)")
+
+        s = r.gen_decl()
+        self.assertEqual("int ( * func)(int)", s)
+
+        self.assertEqual("int", r.typename)
+        self.assertEqual("func", r.name)
+        self.assertFalse(r.is_pointer())
+        self.assertFalse(r.is_reference())
+        self.assertTrue(r.is_function_pointer())
+
+        self.assertNotEqual(None, r.params)
+        self.assertEqual(1, len(r.params))
+
+        param0 = r.params[0]
+        s = param0.gen_decl()
+        self.assertEqual("int", s)
+        self.assertEqual("int", param0.typename)
+        self.assertEqual(None, param0.name)
+        self.assertFalse(param0.is_pointer())
+        self.assertFalse(param0.is_reference())
+        self.assertFalse(param0.is_function_pointer())
+
+        s = r.gen_decl()
+        self.assertEqual("int ( * func)(int)", s)
+        s = r.gen_arg_as_c()
+        self.assertEqual("int ( * func)(int)", s)
+        s = r.gen_arg_as_cxx()
+        self.assertEqual("int ( * func)(int)", s)
+
+        self.assertEqual(r._to_dict(),{
+            "attrs": {}, 
+            "const": False, 
+            "declarator": {
+                "func": {
+                    "name": "func", 
+                    "pointer": [
+                        {
+                            "const": False, 
+                            "ptr": "*"
+                        }
+                    ]
+                }, 
+                "pointer": []
+            }, 
+            "fattrs": {}, 
+            "func_const": False, 
+            "params": [
+                {
+                    "attrs": {}, 
+                    "const": False, 
+                    "declarator": {
+                        "pointer": []
+                    }, 
+                    "specifier": [
+                        "int"
+                    ]
+                }
+            ], 
+            "specifier": [
+                "int"
+            ]
+        })
+       
+    def test_type_function_pointer2(self):
+        """Function pointer
+        """
+        r = declast.check_decl("int *(*func)(int *arg)")
+
+        s = r.gen_decl()
+        self.assertEqual("int * ( * func)(int * arg)", s)
+
+        self.assertEqual("int", r.typename)
+        self.assertEqual("func", r.name)
+        self.assertTrue(r.is_pointer())
+        self.assertFalse(r.is_reference())
+        self.assertTrue(r.is_function_pointer())
+
+        self.assertNotEqual(None, r.params)
+        self.assertEqual(1, len(r.params))
+
+        param0 = r.params[0]
+        s = param0.gen_decl()
+        self.assertEqual("int * arg", s)
+        self.assertEqual("int", param0.typename)
+        self.assertEqual("arg", param0.name)
+        self.assertTrue(param0.is_pointer())
+        self.assertFalse(param0.is_reference())
+        self.assertFalse(param0.is_function_pointer())
+
     # decl
     def test_decl01(self):
         """Simple declaration"""
@@ -224,7 +321,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void foo()", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [], 
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -233,34 +329,46 @@ class CheckParse(unittest.TestCase):
             }, 
             "fattrs": {}, 
             "func_const": False, 
+            "params": [], 
             "specifier": [
                 "void"
             ], 
         })
         self.assertEqual("foo", r.get_name())
+        self.assertEqual('void', r.typename)
+        self.assertFalse(r.is_pointer())
+        self.assertEqual('subroutine', r.get_subprogram())
 
     def test_decl04(self):
         """const method"""
-        r = declast.check_decl("void foo() const")
+        r = declast.check_decl("void *foo() const")
 
         s = r.gen_decl()
-        self.assertEqual("void foo() const", s)
+        self.assertEqual("void * foo() const", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [], 
             "attrs": {}, 
             "const": False, 
             "declarator": {
                 "name": "foo", 
-                "pointer": []
+                "pointer": [ 
+                    {
+                        "const": False, 
+                        "ptr": "*"
+                    }
+                ]
             }, 
             "fattrs": {}, 
             "func_const": True, 
+            "params": [], 
             "specifier": [
                 "void"
             ], 
         })
         self.assertEqual("foo", r.get_name())
+        self.assertEqual('void', r.typename)
+        self.assertTrue(r.is_pointer())
+        self.assertEqual('function', r.get_subprogram())
 
     def test_decl05(self):
         """Single argument"""
@@ -270,7 +378,15 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void foo(int arg1)", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [
+            "attrs": {}, 
+            "const": False, 
+            "declarator": {
+                "name": "foo", 
+                "pointer": []
+            }, 
+            "fattrs": {}, 
+            "func_const": False, 
+            "params": [
                 {
                     "attrs": {}, 
                     "const": False, 
@@ -283,14 +399,6 @@ class CheckParse(unittest.TestCase):
                     ], 
                 }
             ], 
-            "attrs": {}, 
-            "const": False, 
-            "declarator": {
-                "name": "foo", 
-                "pointer": []
-            }, 
-            "fattrs": {}, 
-            "func_const": False, 
             "specifier": [
                 "void"
             ], 
@@ -305,7 +413,15 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void foo(int arg1, double arg2)", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [
+            "attrs": {}, 
+            "const": False, 
+            "declarator": {
+                "name": "foo", 
+                "pointer": []
+            }, 
+            "fattrs": {}, 
+            "func_const": False, 
+            "params": [
                 {
                     "attrs": {}, 
                     "const": False, 
@@ -329,14 +445,6 @@ class CheckParse(unittest.TestCase):
                     ], 
                 }
             ], 
-            "attrs": {}, 
-            "const": False, 
-            "declarator": {
-                "name": "foo", 
-                "pointer": []
-            }, 
-            "fattrs": {}, 
-            "func_const": False, 
             "specifier": [
                 "void"
             ], 
@@ -351,7 +459,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("const std::string & getName() const", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [], 
             "attrs": {}, 
             "const": True, 
             "declarator": {
@@ -365,6 +472,7 @@ class CheckParse(unittest.TestCase):
             }, 
             "fattrs": {}, 
             "func_const": True, 
+            "params": [], 
             "specifier": [
                 "std::string"
             ], 
@@ -384,7 +492,20 @@ class CheckParse(unittest.TestCase):
                          " +attr2(True)", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [
+            "attrs": {
+                "attr1": "30", 
+                "len": 30
+            }, 
+            "const": True, 
+            "declarator": {
+                "name": "foo", 
+                "pointer": []
+            }, 
+            "fattrs": {
+                "attr2": "True"
+            }, 
+            "func_const": False, 
+            "params": [
                 {
                     "attrs": {
                         "in": True
@@ -412,19 +533,6 @@ class CheckParse(unittest.TestCase):
                     ], 
                 }
             ], 
-            "attrs": {
-                "attr1": "30", 
-                "len": 30
-            }, 
-            "const": True, 
-            "declarator": {
-                "name": "foo", 
-                "pointer": []
-            }, 
-            "fattrs": {
-                "attr2": "True"
-            }, 
-            "func_const": False, 
             "specifier": [
                 "void"
             ], 
@@ -440,7 +548,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("Class1()", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [],
             "attrs": {},
             "const": False,
             "fattrs": {
@@ -448,6 +555,7 @@ class CheckParse(unittest.TestCase):
                 "_name": "ctor",
             },
             "func_const": False,
+            "params": [],
             "specifier": [
                 "Class1"
             ]
@@ -456,8 +564,8 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         # must provide the name since the ctor has no name
-        self.assertEqual('Class1 * ctor', r.gen_arg_as_cxx())
-        self.assertEqual('CC_class1 * ctor', r.gen_arg_as_c())
+        self.assertEqual('Class1 * ctor()', r.gen_arg_as_cxx())
+        self.assertEqual('CC_class1 * ctor', r.gen_arg_as_c(params=None))
 
     def test_decl09b(self):
         """Test constructor +name
@@ -468,7 +576,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("Class1() +name(new)", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [],
             "attrs": {},
             "const": False,
             "fattrs": {
@@ -477,6 +584,7 @@ class CheckParse(unittest.TestCase):
                 "name": "new",
             },
             "func_const": False,
+            "params": [],
             "specifier": [
                 "Class1"
             ]
@@ -485,8 +593,8 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         self.assertFalse(r.is_indirect())
-        self.assertEqual('Class1 * new', r.gen_arg_as_cxx())
-        self.assertEqual('CC_class1 * new', r.gen_arg_as_c())
+        self.assertEqual('Class1 * new', r.gen_arg_as_cxx(params=None))
+        self.assertEqual('CC_class1 * new()', r.gen_arg_as_c())
 
     def test_decl09c(self):
         """Test destructor
@@ -498,13 +606,13 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(r._to_dict(),{
             "attrs": {},
-            "args": [],
             "const": False,
             "fattrs": {
                 "_destructor": True,
                 "_name": "dtor",
             },
             "func_const": False,
+            "params": [],
             "specifier": [
                 "Class1"
             ]
@@ -513,8 +621,8 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         self.assertFalse(r.is_indirect())
-        self.assertEqual('Class1 * dtor', r.gen_arg_as_cxx())
-        self.assertEqual('CC_class1 * dtor', r.gen_arg_as_c())
+        self.assertEqual('Class1 * dtor()', r.gen_arg_as_cxx())
+        self.assertEqual('CC_class1 * dtor()', r.gen_arg_as_c())
 
     def test_decl09d(self):
         """Return pointer to Class instance
@@ -525,7 +633,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("Class1 * make()", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [],
             "attrs": {},
             "const": False,
             "declarator": {
@@ -539,6 +646,7 @@ class CheckParse(unittest.TestCase):
             },
             "fattrs": {},
             "func_const": False,
+            "params": [],
             "specifier": [
                 "Class1"
             ]
@@ -560,7 +668,15 @@ class CheckParse(unittest.TestCase):
                          "bool arg4=true)", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [
+            "attrs": {}, 
+            "const": False, 
+            "declarator": {
+                "name": "name", 
+                "pointer": []
+            }, 
+            "fattrs": {}, 
+            "func_const": False, 
+            "params": [
                 {
                     "attrs": {}, 
                     "const": False, 
@@ -610,14 +726,6 @@ class CheckParse(unittest.TestCase):
                     ], 
                 }
             ], 
-            "attrs": {}, 
-            "const": False, 
-            "declarator": {
-                "name": "name", 
-                "pointer": []
-            }, 
-            "fattrs": {}, 
-            "func_const": False, 
             "specifier": [
                 "void"
             ], 
@@ -633,7 +741,15 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void decl11(ArgType arg)", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [
+            "attrs": {}, 
+            "const": False, 
+            "declarator": {
+                "name": "decl11", 
+                "pointer": []
+            }, 
+            "fattrs": {}, 
+            "func_const": False, 
+            "params": [
                 {
                     "attrs": {}, 
                     "const": False, 
@@ -646,14 +762,6 @@ class CheckParse(unittest.TestCase):
                     ], 
                 }
             ], 
-            "attrs": {}, 
-            "const": False, 
-            "declarator": {
-                "name": "decl11", 
-                "pointer": []
-            }, 
-            "fattrs": {}, 
-            "func_const": False, 
             "specifier": [
                 "void"
             ], 
@@ -670,7 +778,15 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void decl12(std::vector<std::string> arg1, string arg2)", s)
 
         self.assertEqual(r._to_dict(),{
-            "args": [
+            "attrs": {}, 
+            "const": False, 
+            "declarator": {
+                "name": "decl12", 
+                "pointer": []
+            }, 
+            "fattrs": {}, 
+            "func_const": False, 
+            "params": [
                 {
                     "attrs": {
                         "template": "std::string"
@@ -696,14 +812,6 @@ class CheckParse(unittest.TestCase):
                     ], 
                 }
             ], 
-            "attrs": {}, 
-            "const": False, 
-            "declarator": {
-                "name": "decl12", 
-                "pointer": []
-            }, 
-            "fattrs": {}, 
-            "func_const": False, 
             "specifier": [
                 "void"
             ], 
@@ -721,63 +829,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("long_int", r.params[0].typename)
         self.assertEqual("long_long", r.params[1].typename)
         self.assertEqual("unsigned_int", r.params[2].typename)
-
-    def test_decl14(self):
-        """Function pointer
-        """
-        r = declast.check_decl("int CallBack1(  int (*func)(int) )")
-
-        s = r.gen_decl()
-        self.assertEqual("int CallBack1(int ( * func)(int))", s)
-
-        self.assertEqual(r._to_dict(),{
-            "args": [
-                {
-                    "args": [
-                        {
-                            "attrs": {}, 
-                            "const": False, 
-                            "declarator": {
-                                "pointer": []
-                            }, 
-                            "specifier": [
-                                "int"
-                            ], 
-                        }
-                    ], 
-                    "attrs": {}, 
-                    "const": False, 
-                    "declarator": {
-                        "func": {
-                            "name": "func", 
-                            "pointer": [
-                                {
-                                    "const": False, 
-                                    "ptr": "*"
-                                }
-                            ]
-                        }, 
-                        "pointer": []
-                    }, 
-                    "fattrs": {}, 
-                    "func_const": False, 
-                    "specifier": [
-                        "int"
-                    ], 
-                }
-            ], 
-            "attrs": {}, 
-            "const": False, 
-            "declarator": {
-                "name": "CallBack1", 
-                "pointer": []
-            }, 
-            "fattrs": {}, 
-            "func_const": False, 
-            "specifier": [
-                "int"
-            ], 
-        })
 
     def test_asarg(self):
         r = declast.check_decl("const std::string& getName() const")

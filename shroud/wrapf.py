@@ -97,6 +97,8 @@ class Wrapf(util.WrapperMixin):
         self.log = config.log
         self._init_splicer(splicers)
         self.comment = '!'
+        self.cont = ' &'
+        self.linelen = newlibrary.options.F_line_length
         self.doxygen_begin = '!>'
         self.doxygen_cont = '!!'
         self.doxygen_end = '!<'
@@ -106,13 +108,16 @@ class Wrapf(util.WrapperMixin):
         self.use_stmts = []
         self.f_type_decl = []
         self.c_interface = []
+        self.abstract_interface = []
         self.generic_interface = []
         self.impl = []          # implementation, after contains
         self.operator_impl = []
         self.operator_map = {}  # list of function names by operator
         # {'.eq.': [ 'abc', 'def'] }
+        self.c_interface.append('')
         self.c_interface.append('interface')
         self.c_interface.append(1)
+        self.f_abstract_interface = {}
         self.f_helper = {}
 
     def _end_output_file(self):
@@ -166,7 +171,9 @@ class Wrapf(util.WrapperMixin):
             self.impl.append('')
             self._create_splicer('additional_functions', self.impl)
 
-            # Look for generics
+            self.dump_abstract_interfaces()
+
+            # Look for generic interfaces
             # splicer to extend generic
             self._push_splicer('generic')
             iface = self.generic_interface
@@ -459,6 +466,70 @@ class Wrapf(util.WrapperMixin):
                 arg_f_use.append('use %s' % mname)
         return arg_f_use
 
+    def add_abstract_interface(self, node, arg):
+        """Record an abstract interface.
+
+        Function pointers are converted to abstract interfaces.
+        The interface is named after the function and the argument.
+        """
+        ast = node.ast
+        fmt = util.Scope(node.fmtdict)
+        fmt.argname = arg.name
+        name = wformat(
+            node.options.F_abstract_interface_subprogram_template, fmt)
+        entry = self.f_abstract_interface.get(name)
+        if entry is None:
+            self.f_abstract_interface[name] = (node, fmt, arg)
+        return name
+
+    def dump_abstract_interfaces(self):
+        """Generate code for abstract interfaces
+        """
+        self._push_splicer('abstract')
+        if len(self.f_abstract_interface) > 0:
+            iface = self.abstract_interface
+            iface.append('')
+            iface.append('abstract interface')
+            iface.append(1)
+
+            for key in sorted(self.f_abstract_interface.keys()):
+                node, fmt, arg = self.f_abstract_interface[key]
+                ast = node.ast
+                subprogram = arg.get_subprogram()
+                iface.append('')
+                arg_f_names = []
+                arg_c_decl = []
+                modules = {}   # indexed as [module][variable]
+                for i, param in enumerate(arg.params):
+                    name = param.name
+                    if name is None:
+                        fmt.index = str(i)
+                        name = wformat(
+                            node.options.F_abstract_interface_argument_template, fmt)
+                    arg_f_names.append(name)
+                    arg_c_decl.append(param.bind_c(name=name))
+
+                    arg_typedef, c_statements = typemap.lookup_c_statements(param)
+                    self.update_f_module(modules,
+                                         arg_typedef.f_c_module or arg_typedef.f_module)
+
+                if subprogram == 'function':
+                    arg_c_decl.append(ast.bind_c(name=key, params=None))
+                arguments = ',\t '.join(arg_f_names)
+                iface.append('{} {}({}) bind(C)'.format(
+                    subprogram, key, arguments))
+                iface.append(1)
+                arg_f_use = self.sort_module_info(modules, None)
+                iface.extend(arg_f_use)
+                iface.append('implicit none')
+                iface.extend(arg_c_decl)
+                iface.append(-1)
+                iface.append('end {} {}'.format(subprogram, key))
+            iface.append(-1)
+            iface.append('')
+            iface.append('end interface')
+        self._pop_splicer('abstract')
+
     def wrap_function_interface(self, cls, node):
         """
         Write Fortran interface for C function
@@ -479,7 +550,7 @@ class Wrapf(util.WrapperMixin):
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
         func_is_const = ast.func_const
-        subprogram = node._subprogram
+        subprogram = ast.get_subprogram()
 
         if node._generated == 'arg_to_buffer':
             generated_suffix = '_buf'
@@ -498,6 +569,7 @@ class Wrapf(util.WrapperMixin):
         arg_c_names = []  # argument names for functions
         arg_c_decl = []   # declaraion of argument names
         modules = {}   # indexed as [module][variable]
+        imports = {}   # indexed as [name]
 
         # find subprogram type
         # compute first to get order of arguments correct.
@@ -506,7 +578,7 @@ class Wrapf(util.WrapperMixin):
             fmt.F_C_subprogram = 'subroutine'
         else:
             fmt.F_C_subprogram = 'function'
-            fmt.F_C_result_clause = '\nresult(%s)' % fmt.F_result
+            fmt.F_C_result_clause = '\fresult(%s)' % fmt.F_result
 
         if cls:
             # Add 'this' argument
@@ -538,7 +610,13 @@ class Wrapf(util.WrapperMixin):
                 arg_c_names.append(arg.name)
 
             # argument declarations
-            if arg_typedef.f_c_argdecl:
+            if arg.is_function_pointer():
+                absiface = self.add_abstract_interface(node, arg)
+                arg_c_decl.append(
+                    'procedure({}) :: {}'.format(
+                        absiface, arg.name))
+                imports[absiface] = True
+            elif arg_typedef.f_c_argdecl:
                 for argdecl in arg_typedef.f_c_argdecl:
                     append_format(arg_c_decl, argdecl, fmt)
             else:
@@ -594,13 +672,14 @@ class Wrapf(util.WrapperMixin):
         c_interface = self.c_interface
         c_interface.append('')
 
-        self.break_into_continuations(
-            c_interface, options, 'fortran', 2,
-            wformat('{F_C_pure_clause}{F_C_subprogram} {F_C_name}'
+        c_interface.append(
+            wformat('\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}'
                     '(\t{F_C_arguments}){F_C_result_clause}'
-                    '\nbind(C, name="{C_name}")', fmt))
+                    '\fbind(C, name="{C_name}")', fmt))
         c_interface.append(1)
         c_interface.extend(arg_f_use)
+        if imports:
+            c_interface.append('import :: ' + ', '.join(sorted(imports.keys())))
         c_interface.append('implicit none')
         c_interface.extend(arg_c_decl)
         c_interface.append(-1)
@@ -640,8 +719,8 @@ class Wrapf(util.WrapperMixin):
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
-        subprogram = node._subprogram
-        c_subprogram = C_node._subprogram
+        subprogram = ast.get_subprogram()
+        c_subprogram = C_node.ast.get_subprogram()
 
         if C_node._generated == 'arg_to_buffer':
             generated_suffix = '_buf'
@@ -685,7 +764,7 @@ class Wrapf(util.WrapperMixin):
         modules = {}   # indexed as [module][variable]
 
         if subprogram == 'function':
-            fmt_func.F_result_clause = '\nresult(%s)' % fmt_func.F_result
+            fmt_func.F_result_clause = '\fresult(%s)' % fmt_func.F_result
         fmt_func.F_subprogram = subprogram
 
         if cls:
@@ -739,6 +818,15 @@ class Wrapf(util.WrapperMixin):
                 f_index += 1
                 f_arg = f_args[f_index]
                 arg_f_names.append(fmt_arg.f_var)
+                if f_arg.is_function_pointer():
+                    absiface = self.add_abstract_interface(node, f_arg)
+                    arg_f_decl.append(
+                        'procedure({}) :: {}'.format(
+                            absiface, f_arg.name))
+                    arg_c_call.append(f_arg.name)
+                    # function pointers are pass thru without any change
+                    continue
+
                 arg_f_decl.append(f_arg.gen_arg_as_fortran())
 
                 arg_type = f_arg.typename
@@ -839,8 +927,7 @@ class Wrapf(util.WrapperMixin):
                 line1 = wformat(
                     'character(kind=C_CHAR,\t len={c_var_len})\t :: {F_result}',
                     fmt_func)
-                self.break_into_continuations(
-                    arg_f_decl, options, 'fortran', 1, line1)
+                arg_f_decl.append(line1)
                 self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
             else:
                 arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
@@ -879,8 +966,7 @@ class Wrapf(util.WrapperMixin):
                 fmt_func.F_call_code = wformat(
                     '{F_result}%{F_derived_member} = '
                     '{F_C_call}({F_arg_c_call})', fmt_func)
-                self.break_into_continuations(
-                    F_code, options, 'fortran', 1, fmt_func.F_call_code)
+                F_code.append(fmt_func.F_call_code)
             elif c_subprogram == 'function':
                 f_statements = result_typedef.f_statements
                 intent_blk = f_statements.get('result' + result_generated_suffix,{})
@@ -889,8 +975,7 @@ class Wrapf(util.WrapperMixin):
 #                for cmd in cmd_list:  # only allow a single statment for now
 #                    append_format(pre_call, cmd, fmt_arg)
                 fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
-                self.break_into_continuations(
-                    F_code, options, 'fortran', 1, fmt_func.F_call_code)
+                F_code.append(fmt_func.F_call_code)
 
                 # Find any helper routines needed
                 if 'f_helper' in intent_blk:
@@ -898,8 +983,7 @@ class Wrapf(util.WrapperMixin):
                         self.f_helper[helper] = True
             else:
                 fmt_func.F_call_code = wformat('call {F_C_call}({F_arg_c_call})', fmt_func)
-                self.break_into_continuations(
-                    F_code, options, 'fortran', 1, fmt_func.F_call_code)
+                F_code.append(fmt_func.F_call_code)
 
 #            if result_typedef.f_post_call:
 #                need_wrapper = True
@@ -922,10 +1006,9 @@ class Wrapf(util.WrapperMixin):
                 impl.append('! function_index=%d' % node._function_index)
                 if options.doxygen and node.doxygen:
                     self.write_doxygen(impl, node.doxygen)
-            self.break_into_continuations(
-                impl, options, 'fortran', 2,
-                wformat('{F_subprogram} {F_name_impl}(\t'
-                        '{F_arguments})\t{F_result_clause}',
+            impl.append(
+                wformat('\r{F_subprogram} {F_name_impl}(\t'
+                        '{F_arguments}){F_result_clause}',
                         fmt_func))
             impl.append(1)
             impl.extend(arg_f_use)
@@ -973,7 +1056,6 @@ class Wrapf(util.WrapperMixin):
         # XXX output.append('! splicer push class')
         output.extend(self.f_type_decl)
         # XXX  output.append('! splicer pop class')
-        output.append('')
 
         # Interfaces for operator overloads
         if self.operator_map:
@@ -986,8 +1068,8 @@ class Wrapf(util.WrapperMixin):
                     output.append('module procedure %s' % opfcn)
                 output.append(-1)
                 output.append('end interface')
-            output.append('')
 
+        output.extend(self.abstract_interface)
         output.extend(self.c_interface)
         output.extend(self.generic_interface)
 

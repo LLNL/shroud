@@ -35,9 +35,16 @@
                             }
                         }, 
                         "_function_index": 0, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "method1", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -53,14 +60,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "method1", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -71,7 +70,7 @@
                             "C_call_code": "SH_this->method1(\targ1);", 
                             "C_call_list": "arg1", 
                             "C_name": "DEF_class1_method1", 
-                            "C_pre_call": "Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "Class1 *SH_this = \tstatic_cast<Class1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "DEF_class1 * self,\t int arg1", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -131,9 +130,16 @@
                             }
                         }, 
                         "_function_index": 1, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "method1", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -149,14 +155,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "method1", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -167,7 +165,7 @@
                             "C_call_code": "SH_this->method1(\tMPI_Comm_f2c(comm));", 
                             "C_call_list": "MPI_Comm_f2c(comm)", 
                             "C_name": "DEF_class2_method1", 
-                            "C_pre_call": "Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "DEF_class2 * self,\t MPI_Fint comm", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -206,9 +204,16 @@
                             }
                         }, 
                         "_function_index": 2, 
-                        "_subprogram": "subroutine", 
                         "ast": {
-                            "args": [
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "method2", 
+                                "pointer": []
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [
                                 {
                                     "attrs": {
                                         "intent": "in", 
@@ -229,14 +234,6 @@
                                     ]
                                 }
                             ], 
-                            "attrs": {}, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "method2", 
-                                "pointer": []
-                            }, 
-                            "fattrs": {}, 
-                            "func_const": false, 
                             "specifier": [
                                 "void"
                             ]
@@ -247,7 +244,7 @@
                             "C_call_code": "SH_this->method2(\tSH_c2);", 
                             "C_call_list": "SH_c2", 
                             "C_name": "DEF_class2_method2", 
-                            "C_pre_call": "Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));\nClass1 *SH_c2 = static_cast<Class1 *>(static_cast<void *>(c2));", 
+                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(\tstatic_cast<void *>(\tself));\nClass1 *SH_c2 = static_cast<Class1 *>(\tstatic_cast<void *>(\tc2));", 
                             "C_prototype": "DEF_class2 * self,\t DEF_class1 * c2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -371,9 +368,7 @@
         "functions": [
             {
                 "_function_index": 3, 
-                "_subprogram": "subroutine", 
                 "ast": {
-                    "args": [], 
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
@@ -382,6 +377,7 @@
                     }, 
                     "fattrs": {}, 
                     "func_const": false, 
+                    "params": [], 
                     "specifier": [
                         "void"
                     ]
@@ -424,6 +420,8 @@
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "F_abstract_interface_argument_template": "arg{index}", 
+            "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 
@@ -475,20 +473,20 @@
     }, 
     "types": {
         "Class1": {
-            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "wrapped", 
             "c_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "pre_call": [
-                        "{c_const}Class1{c_ptr}{cxx_var} = static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                        "{c_const}Class1{c_ptr}{cxx_var} = static_cast<{c_const}Class1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
                     ]
                 }
             }, 
-            "c_to_cxx": "static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}Class1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "DEF_class1", 
-            "cxx_to_c": "static_cast<{c_const}DEF_class1 *>(static_cast<{c_const}void *>({cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}DEF_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "Class1", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -528,20 +526,20 @@
             }
         }, 
         "Class2": {
-            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "wrapped", 
             "c_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "pre_call": [
-                        "{c_const}Class2{c_ptr}{cxx_var} = static_cast<{c_const}Class2{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                        "{c_const}Class2{c_ptr}{cxx_var} = static_cast<{c_const}Class2{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
                     ]
                 }
             }, 
-            "c_to_cxx": "static_cast<{c_const}Class2{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}Class2{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "DEF_class2", 
-            "cxx_to_c": "static_cast<{c_const}DEF_class2 *>(static_cast<{c_const}void *>({cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}DEF_class2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "Class2", 
             "f_c_module": {
                 "iso_c_binding": [

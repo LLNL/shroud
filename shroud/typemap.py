@@ -814,13 +814,13 @@ def typedef_wrapped_defaults(typedef):
     if typedef.base != 'wrapped':
         return
 
-    typedef.cxx_to_c=('static_cast<{c_const}%s *>('
-                      'static_cast<{c_const}void *>({cxx_var}))' %
+    typedef.cxx_to_c=('\tstatic_cast<{c_const}%s *>('
+                      '\tstatic_cast<{c_const}void *>(\t{cxx_var}))' %
                       typedef.c_type)
 
     # opaque pointer -> void pointer -> class instance pointer
-    typedef.c_to_cxx=('static_cast<{c_const}%s{c_ptr}>('
-                      'static_cast<{c_const}void *>({c_var}))' %
+    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s{c_ptr}>('
+                      '\tstatic_cast<{c_const}void *>(\t{c_var}))' %
                       typedef.cxx_type)
 
     typedef.f_type='type(%s)' % typedef.f_derived_type
@@ -834,7 +834,7 @@ def typedef_wrapped_defaults(typedef):
             cxx_local_var = 'pointer',
             pre_call = [
                 '{c_const}%s{c_ptr}{cxx_var} = static_cast<{c_const}%s{c_ptr}>('
-                'static_cast<{c_const}void *>({c_var}));' % (
+                '\tstatic_cast<{c_const}void *>(\t{c_var}));' % (
                     typedef.cxx_type, typedef.cxx_type)
                 ],
         )
@@ -870,8 +870,8 @@ def typedef_wrapped_defaults(typedef):
     # typedef.PY_ctor='PyObject_New({PyObject}, &{PyTypeObject})'
 
     typedef.LUA_type='LUA_TUSERDATA'
-    typedef.LUA_pop=('({LUA_userdata_type} *)luaL_checkudata'
-                     '({LUA_state_var}, 1, "{LUA_metadata}")')
+    typedef.LUA_pop=('\t({LUA_userdata_type} *)\t luaL_checkudata'
+                     '(\t{LUA_state_var}, 1, "{LUA_metadata}")')
     # typedef.LUA_push=None  # XXX create a userdata object with metatable
     # typedef.LUA_statements={}
 

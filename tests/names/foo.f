@@ -70,7 +70,6 @@ module name_module
         ! splicer end class.Names.type_bound_procedure_part
     end type FNames
 
-
     interface operator (.eq.)
         module procedure names_eq
     end interface

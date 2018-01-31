@@ -80,6 +80,8 @@ class TypeOut(util.WrapperMixin):
         self.config = config
         self.log = config.log
         self.comment = '#'
+        self.cont = ''
+        self.linelen = 1000
 
     def write_types(self):
         """Write out types into a file.

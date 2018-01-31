@@ -73,10 +73,7 @@ class AstNode(object):
                     name, self.__class__.__name__))
 
     def eval_template(self, name, tname='', fmt=None):
-        """fmt[name] = fmt.name or option[name + tname + '_template']
-
-        If a format has not been explicitly set, set from template
-        """
+        """If a format has not been explicitly set, set from template."""
         if fmt is None:
             fmt = self.fmtdict
         if not fmt.inlocal(name):
@@ -178,6 +175,8 @@ class LibraryNode(AstNode):
 
             F_module_name_class_template='{class_lower}_mod',
             F_impl_filename_class_template='wrapf{cxx_class}.{F_filename_suffix}',
+            F_abstract_interface_subprogram_template='{underscore_name}_{argname}',
+            F_abstract_interface_argument_template='arg{index}',
 
             LUA_module_name_template='{library_lower}',
             LUA_module_filename_template=(
@@ -473,7 +472,6 @@ class FunctionNode(AstNode):
                        C function to call
     _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
                        to call
-    _subprogram      - subroutine or function
 
     """
     def __init__(self, decl, parent,
@@ -502,7 +500,6 @@ class FunctionNode(AstNode):
         self._has_default_arg = False
         self._nargs = None
         self._overloaded = False
-        self._subprogram = 'XXX-subprogram'
 
 #        self.function_index = []
 
@@ -605,7 +602,7 @@ class FunctionNode(AstNode):
                     '_cxx_overload',
                     '_default_funcs', '_fmtargs', '_fmtresult',
                     '_generated', '_has_default_arg',
-                    '_nargs', '_overloaded', '_subprogram']:
+                    '_nargs', '_overloaded']:
             value = getattr(self,key)
             if value:
                 d[key] = value
