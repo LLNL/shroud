@@ -58,7 +58,8 @@ extern "C" {
 void AA_exclass3_exfunc(AA_exclass3 * self)
 {
 // splicer begin class.ExClass3.method.exfunc
-    ExClass3 *SH_this = static_cast<ExClass3 *>(static_cast<void *>(self));
+    ExClass3 *SH_this = static_cast<ExClass3 *>(static_cast<void *>(
+        self));
     SH_this->exfunc();
     return;
 // splicer end class.ExClass3.method.exfunc

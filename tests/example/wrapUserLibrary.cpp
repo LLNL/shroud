@@ -204,7 +204,8 @@ void AA_testmpi(MPI_Fint comm)
 void AA_testgroup1(SIDRE_group * grp)
 {
 // splicer begin function.testgroup1
-    axom::sidre::Group *SH_grp = static_cast<axom::sidre::Group *>(static_cast<void *>(grp));
+    axom::sidre::Group *SH_grp = static_cast<axom::sidre::Group *>(
+        static_cast<void *>(grp));
     testgroup1(SH_grp);
     return;
 // splicer end function.testgroup1
@@ -215,7 +216,8 @@ void AA_testgroup1(SIDRE_group * grp)
 void AA_testgroup2(const SIDRE_group * grp)
 {
 // splicer begin function.testgroup2
-    const axom::sidre::Group *SH_grp = static_cast<const axom::sidre::Group *>(static_cast<const void *>(grp));
+    const axom::sidre::Group *SH_grp = static_cast<const axom::sidre::Group *>(
+        static_cast<const void *>(grp));
     testgroup2(SH_grp);
     return;
 // splicer end function.testgroup2
@@ -279,8 +281,10 @@ void AA_func_ptr3a(double ( * get)(double, int))
 
 // void func4(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
 // function_index=64
-void AA_func4(
-    void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))
+void AA_func4(void ( * get)(int verylongname1, int verylongname2,
+    int verylongname3, int verylongname4, int verylongname5,
+    int verylongname6, int verylongname7, int verylongname8,
+    int verylongname9, int verylongname10))
 {
 // splicer begin function.func4
     func4(get);

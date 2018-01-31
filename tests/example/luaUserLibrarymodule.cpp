@@ -99,7 +99,8 @@ static int l_exclass1_ctor(lua_State *L)
 static int l_exclass1_dtor(lua_State *L)
 {
     // splicer begin class.ExClass1.method.__gc
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
+        L, 1, "ExClass1.metatable");
     delete SH_this->self;
     SH_this->self = NULL;
     return 0;
@@ -110,7 +111,8 @@ static int l_exclass1_increment_count(lua_State *L)
 {
     // splicer begin class.ExClass1.method.incrementCount
     int incr = lua_tointeger(L, 1);
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
+        L, 1, "ExClass1.metatable");
     int rv = SH_this->self->incrementCount(incr);
     lua_pushinteger(L, rv);
     return 1;
@@ -120,7 +122,8 @@ static int l_exclass1_increment_count(lua_State *L)
 static int l_exclass1_get_name(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getName
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
+        L, 1, "ExClass1.metatable");
     const std::string & rv = SH_this->self->getName();
     lua_pushstring(L, rv.c_str());
     return 1;
@@ -130,7 +133,8 @@ static int l_exclass1_get_name(lua_State *L)
 static int l_exclass1_get_name_length(lua_State *L)
 {
     // splicer begin class.ExClass1.method.GetNameLength
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
+        L, 1, "ExClass1.metatable");
     int rv = SH_this->self->GetNameLength();
     lua_pushinteger(L, rv);
     return 1;
@@ -140,7 +144,8 @@ static int l_exclass1_get_name_length(lua_State *L)
 static int l_exclass1_get_name_error_check(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameErrorCheck
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
+        L, 1, "ExClass1.metatable");
     const std::string & rv = SH_this->self->getNameErrorCheck();
     lua_pushstring(L, rv.c_str());
     return 1;
@@ -150,7 +155,8 @@ static int l_exclass1_get_name_error_check(lua_State *L)
 static int l_exclass1_get_name_arg(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameArg
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
+        L, 1, "ExClass1.metatable");
     const std::string & rv = SH_this->self->getNameArg();
     lua_pushstring(L, rv.c_str());
     return 1;
@@ -160,7 +166,8 @@ static int l_exclass1_get_name_arg(lua_State *L)
 static int l_exclass1_get_root(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getRoot
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
+        L, 1, "ExClass1.metatable");
     ExClass2 * rv = SH_this->self->getRoot();
     PUSH;
     return 1;
@@ -177,14 +184,16 @@ static int l_exclass1_get_value(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TNUMBER) {
             int value = lua_tointeger(L, 1);
-            l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+            l_ExClass1_Type * SH_this = (l_ExClass1_Type *)
+                luaL_checkudata(L, 1, "ExClass1.metatable");
             int rv = SH_this->self->getValue(value);
             lua_pushinteger(L, rv);
             SH_nresult = 1;
         }
         else if (SH_itype1 == LUA_TNUMBER) {
             long value = lua_tointeger(L, 1);
-            l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+            l_ExClass1_Type * SH_this = (l_ExClass1_Type *)
+                luaL_checkudata(L, 1, "ExClass1.metatable");
             long rv = SH_this->self->getValue(value);
             lua_pushinteger(L, rv);
             SH_nresult = 1;
@@ -204,7 +213,8 @@ static int l_exclass1_get_value(lua_State *L)
 static int l_exclass1_get_addr(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getAddr
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
+        L, 1, "ExClass1.metatable");
     void * rv = SH_this->self->getAddr();
     PUSH;
     return 1;
@@ -215,7 +225,8 @@ static int l_exclass1_has_addr(lua_State *L)
 {
     // splicer begin class.ExClass1.method.hasAddr
     bool in = lua_toboolean(L, 1);
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
+        L, 1, "ExClass1.metatable");
     bool rv = SH_this->self->hasAddr(in);
     lua_pushboolean(L, rv);
     return 1;
@@ -225,7 +236,8 @@ static int l_exclass1_has_addr(lua_State *L)
 static int l_exclass1_splicer_special(lua_State *L)
 {
     // splicer begin class.ExClass1.method.SplicerSpecial
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *)luaL_checkudata(L, 1, "ExClass1.metatable");
+    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
+        L, 1, "ExClass1.metatable");
     SH_this->self->SplicerSpecial();
     return 0;
     // splicer end class.ExClass1.method.SplicerSpecial
@@ -268,7 +280,8 @@ static int l_exclass2_ctor(lua_State *L)
 static int l_exclass2_dtor(lua_State *L)
 {
     // splicer begin class.ExClass2.method.__gc
-    l_ExClass2_Type * SH_this = (l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable");
+    l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
+        L, 1, "ExClass2.metatable");
     delete SH_this->self;
     SH_this->self = NULL;
     return 0;
@@ -278,7 +291,8 @@ static int l_exclass2_dtor(lua_State *L)
 static int l_exclass2_get_name(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName
-    l_ExClass2_Type * SH_this = (l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable");
+    l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
+        L, 1, "ExClass2.metatable");
     const std::string & rv = SH_this->self->getName();
     lua_pushstring(L, rv.c_str());
     return 1;
@@ -288,7 +302,8 @@ static int l_exclass2_get_name(lua_State *L)
 static int l_exclass2_get_name2(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName2
-    l_ExClass2_Type * SH_this = (l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable");
+    l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
+        L, 1, "ExClass2.metatable");
     const std::string & rv = SH_this->self->getName2();
     lua_pushstring(L, rv.c_str());
     return 1;
@@ -298,7 +313,8 @@ static int l_exclass2_get_name2(lua_State *L)
 static int l_exclass2_get_name3(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName3
-    l_ExClass2_Type * SH_this = (l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable");
+    l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
+        L, 1, "ExClass2.metatable");
     std::string & rv = SH_this->self->getName3();
     lua_pushstring(L, rv.c_str());
     return 1;
@@ -308,7 +324,8 @@ static int l_exclass2_get_name3(lua_State *L)
 static int l_exclass2_get_name4(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName4
-    l_ExClass2_Type * SH_this = (l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable");
+    l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
+        L, 1, "ExClass2.metatable");
     std::string & rv = SH_this->self->getName4();
     lua_pushstring(L, rv.c_str());
     return 1;
@@ -318,7 +335,8 @@ static int l_exclass2_get_name4(lua_State *L)
 static int l_exclass2_get_name_length(lua_State *L)
 {
     // splicer begin class.ExClass2.method.GetNameLength
-    l_ExClass2_Type * SH_this = (l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable");
+    l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
+        L, 1, "ExClass2.metatable");
     int rv = SH_this->self->GetNameLength();
     lua_pushinteger(L, rv);
     return 1;
@@ -328,8 +346,11 @@ static int l_exclass2_get_name_length(lua_State *L)
 static int l_exclass2_get_class1(lua_State *L)
 {
     // splicer begin class.ExClass2.method.get_class1
-    const ExClass1 * in = static_cast<ExClass1 *>(static_cast<void *>((l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable")));
-    l_ExClass2_Type * SH_this = (l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable");
+    const ExClass1 * in = static_cast<ExClass1 *>(static_cast<void *>(
+        (l_ExClass2_Type *) luaL_checkudata(
+        L, 1, "ExClass2.metatable")));
+    l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
+        L, 1, "ExClass2.metatable");
     ExClass1 * rv = SH_this->self->get_class1(in);
     PUSH;
     return 1;
@@ -347,7 +368,8 @@ static int l_exclass2_declare(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TNUMBER) {
             TypeID type = getTypeID(lua_tointeger(L, 1));
-            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable");
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
             SH_this->self->declare(type);
             SH_nresult = 0;
         }
@@ -360,7 +382,8 @@ static int l_exclass2_declare(lua_State *L)
             SH_itype2 == LUA_TNUMBER) {
             TypeID type = getTypeID(lua_tointeger(L, 1));
             SidreLength len = lua_tointeger(L, 2);
-            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable");
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
             SH_this->self->declare(type, len);
             SH_nresult = 0;
         }
@@ -379,7 +402,8 @@ static int l_exclass2_declare(lua_State *L)
 static int l_exclass2_destroyall(lua_State *L)
 {
     // splicer begin class.ExClass2.method.destroyall
-    l_ExClass2_Type * SH_this = (l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable");
+    l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
+        L, 1, "ExClass2.metatable");
     SH_this->self->destroyall();
     return 0;
     // splicer end class.ExClass2.method.destroyall
@@ -388,7 +412,8 @@ static int l_exclass2_destroyall(lua_State *L)
 static int l_exclass2_get_type_id(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getTypeID
-    l_ExClass2_Type * SH_this = (l_ExClass2_Type *)luaL_checkudata(L, 1, "ExClass2.metatable");
+    l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
+        L, 1, "ExClass2.metatable");
     TypeID rv = SH_this->self->getTypeID();
     lua_pushinteger(L, static_cast<int>(rv));
     return 1;
@@ -417,7 +442,8 @@ static const struct luaL_Reg l_ExClass2_Reg [] = {
 static int l_exclass3_exfunc(lua_State *L)
 {
     // splicer begin class.ExClass3.method.exfunc
-    l_ExClass3_Type * SH_this = (l_ExClass3_Type *)luaL_checkudata(L, 1, "ExClass3.metatable");
+    l_ExClass3_Type * SH_this = (l_ExClass3_Type *) luaL_checkudata(
+        L, 1, "ExClass3.metatable");
     SH_this->self->exfunc();
     return 0;
     // splicer end class.ExClass3.method.exfunc
@@ -576,7 +602,9 @@ static int l_testmpi(lua_State *L)
 static int l_testgroup1(lua_State *L)
 {
     // splicer begin function.testgroup1
-    axom::sidre::Group * grp = static_cast<axom::sidre::Group *>(static_cast<void *>((XXLUA_userdata_type *)luaL_checkudata(L, 1, "XXLUA_metadata")));
+    axom::sidre::Group * grp = static_cast<axom::sidre::Group *>(
+        static_cast<void *>((XXLUA_userdata_type *) luaL_checkudata(
+        L, 1, "XXLUA_metadata")));
     testgroup1(grp);
     return 0;
     // splicer end function.testgroup1
@@ -585,7 +613,9 @@ static int l_testgroup1(lua_State *L)
 static int l_testgroup2(lua_State *L)
 {
     // splicer begin function.testgroup2
-    const axom::sidre::Group * grp = static_cast<axom::sidre::Group *>(static_cast<void *>((XXLUA_userdata_type *)luaL_checkudata(L, 1, "XXLUA_metadata")));
+    const axom::sidre::Group * grp = static_cast<axom::sidre::Group *>(
+        static_cast<void *>((XXLUA_userdata_type *) luaL_checkudata(
+        L, 1, "XXLUA_metadata")));
     testgroup2(grp);
     return 0;
     // splicer end function.testgroup2

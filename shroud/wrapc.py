@@ -393,7 +393,7 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
             fmt_result.cxx_var = fmt_func.C_result
             fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
-                name=fmt_func.C_result, params=None)
+                name=fmt_func.C_result, params=None, continuation=True)
             if CXX_result.is_pointer():
                 fmt_result.cxx_deref = '->'
             else:
@@ -407,7 +407,7 @@ class Wrapc(util.WrapperMixin):
             # object pointer
             rvast = declast.create_this_arg(fmt_func.C_this, cls.name, is_const)
             if not is_ctor:
-                arg = rvast.gen_arg_as_c()
+                arg = rvast.gen_arg_as_c(continuation=True)
                 proto_list.append(arg)
 
         # indicate which argument contains function result, usually none
@@ -458,7 +458,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.cxx_deref = '.'
             fmt_arg.cxx_type = arg_typedef.cxx_type
 
-            proto_list.append(arg.gen_arg_as_c())
+            proto_list.append(arg.gen_arg_as_c(continuation=True))
 
             if c_attrs.get('_is_result', False):
                 arg_call = False
@@ -564,7 +564,8 @@ class Wrapc(util.WrapperMixin):
         elif fmt_func.C_custom_return_type:
             pass
         else:
-            fmt_func.C_return_type = ast.gen_arg_as_c(name=None, params=None)
+            fmt_func.C_return_type = ast.gen_arg_as_c(
+                name=None, params=None, continuation=True)
 
         post_call_pattern = []
         if node.C_error_pattern is not None:
@@ -613,7 +614,7 @@ class Wrapc(util.WrapperMixin):
                     # XXX need better mangling than 'X'
                     fmt_result.c_var = 'X' + fmt_func.C_result
                     fmt_result.c_rv_decl = CXX_result.gen_arg_as_c(
-                        name=fmt_result.c_var, params=None)
+                        name=fmt_result.c_var, params=None, continuation=True)
                     fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
                     append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
                     return_lang = '{c_var}'

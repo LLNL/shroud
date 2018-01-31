@@ -57,7 +57,7 @@
                             "C_call_list": "", 
                             "C_name": "TUT_class1_new", 
                             "C_prototype": "", 
-                            "C_return_code": "return static_cast<TUT_class1 *>(static_cast<void *>(SHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHT_rv));", 
                             "C_return_type": "TUT_class1 *", 
                             "F_C_call": "c_class1_new", 
                             "F_C_name": "c_class1_new", 
@@ -99,7 +99,7 @@
                             "C_call_code": "delete SH_this;", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_delete", 
-                            "C_pre_call": "Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "Class1 *SH_this = \tstatic_cast<Class1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "TUT_class1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -145,7 +145,7 @@
                             "C_call_code": "SH_this->Method1(\t);", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_method1", 
-                            "C_pre_call": "Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));", 
+                            "C_pre_call": "Class1 *SH_this = \tstatic_cast<Class1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "TUT_class1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -4557,7 +4557,7 @@
                     "C_call_code": "useclass(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "TUT_useclass", 
-                    "C_pre_call": "const Class1 *SH_arg1 = static_cast<const Class1 *>(static_cast<const void *>(arg1));", 
+                    "C_pre_call": "const Class1 *SH_arg1 = static_cast<const Class1 *>(\tstatic_cast<const void *>(\targ1));", 
                     "C_prototype": "const TUT_class1 * arg1", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5590,7 +5590,7 @@
                     "C_call_code": "int SHT_rv =\t callback1(\tin,\t incr);", 
                     "C_call_list": "in,\t incr", 
                     "C_name": "TUT_callback1", 
-                    "C_prototype": "int in,\t int ( * incr)(int)", 
+                    "C_prototype": "int in,\t int ( * incr)(\tint)", 
                     "C_return_code": "return SHT_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_callback1", 
@@ -5826,7 +5826,7 @@
     }, 
     "types": {
         "Class1": {
-            "LUA_pop": "({LUA_userdata_type} *)luaL_checkudata({LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "PY_PyObject": "PY_Class1", 
             "PY_PyTypeObject": "PY_Class1_Type", 
@@ -5837,13 +5837,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "pre_call": [
-                        "{c_const}Class1{c_ptr}{cxx_var} = static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}));"
+                        "{c_const}Class1{c_ptr}{cxx_var} = static_cast<{c_const}Class1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
                     ]
                 }
             }, 
-            "c_to_cxx": "static_cast<{c_const}Class1{c_ptr}>(static_cast<{c_const}void *>({c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}Class1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TUT_class1", 
-            "cxx_to_c": "static_cast<{c_const}TUT_class1 *>(static_cast<{c_const}void *>({cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}TUT_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "Class1", 
             "f_c_module": {
                 "iso_c_binding": [

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Add continuations to long lines.
   This helps Fortran which has a line length limit.
+- Support function pointer arguments.
 
 ## v0.7.0 - 2018-01-22
 ### Added
