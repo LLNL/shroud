@@ -2620,11 +2620,11 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_ptr": "", 
-                            "c_var": "arg1.c_str()", 
+                            "c_var": "arg1", 
                             "cxx_decl": "std::string & arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1.c_str()", 
+                            "cxx_var": "SH_arg1", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
@@ -2796,11 +2796,11 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_ptr": "", 
-                            "c_var": "arg1.c_str()", 
+                            "c_var": "arg1", 
                             "cxx_decl": "std::string & arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1.c_str()", 
+                            "cxx_var": "SH_arg1", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
@@ -2974,11 +2974,11 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_ptr": " *", 
-                            "c_var": "arg1->c_str()", 
+                            "c_var": "arg1", 
                             "cxx_decl": "std::string * arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1->c_str()", 
+                            "cxx_var": "SH_arg1", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
@@ -4301,7 +4301,7 @@
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
-            "PY_ctor": "PyString_FromString({c_var})", 
+            "PY_ctor": "PyString_FromString({cxx_var}{cxx_deref}c_str())", 
             "PY_format": "s", 
             "base": "string", 
             "c_statements": {

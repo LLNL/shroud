@@ -367,8 +367,8 @@ PY_accept_string_reference_out(
 // splicer begin function.accept_string_reference_out
     char * arg1;
 
-    std::string SH_arg1.c_str();
-    acceptStringReferenceOut(SH_arg1.c_str());
+    std::string SH_arg1;
+    acceptStringReferenceOut(SH_arg1);
     PyObject * SH_Py_arg1 = PyString_FromString(arg1.c_str());
     return (PyObject *) SH_Py_arg1;
 // splicer end function.accept_string_reference_out
@@ -397,8 +397,8 @@ PY_accept_string_reference(
     {
         return NULL;
     }
-    std::string SH_arg1.c_str()(arg1.c_str());
-    acceptStringReference(SH_arg1.c_str());
+    std::string SH_arg1(arg1);
+    acceptStringReference(SH_arg1);
     PyObject * SH_Py_arg1 = PyString_FromString(arg1.c_str());
     return (PyObject *) SH_Py_arg1;
 // splicer end function.accept_string_reference
@@ -427,8 +427,8 @@ PY_accept_string_pointer(
     {
         return NULL;
     }
-    std::string SH_arg1->c_str()(arg1->c_str());
-    acceptStringPointer(&SH_arg1->c_str());
+    std::string SH_arg1(arg1);
+    acceptStringPointer(&SH_arg1);
     PyObject * SH_Py_arg1 = PyString_FromString(arg1->c_str());
     return (PyObject *) SH_Py_arg1;
 // splicer end function.accept_string_pointer

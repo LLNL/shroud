@@ -282,7 +282,6 @@ return 1;""", fmt)
             vargs = fmt.py_var
 
         elif typedef.PY_ctor:
-            fmt.c_var = wformat(typedef.cxx_to_c, fmt)  # if C++
             append_format(output,
                           '{PyObject} * {py_var} = ' + typedef.PY_ctor
                           + ';', fmt)

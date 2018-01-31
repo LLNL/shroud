@@ -591,7 +591,7 @@ def initialize():
                 ),
             ),
             PY_format='s',
-            PY_ctor='PyString_FromString({c_var})',
+            PY_ctor='PyString_FromString({cxx_var}{cxx_deref}c_str())',
 
             LUA_type='LUA_TSTRING',
             LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',

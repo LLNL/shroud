@@ -892,7 +892,7 @@
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
-            "PY_ctor": "PyString_FromString({c_var})", 
+            "PY_ctor": "PyString_FromString({cxx_var}{cxx_deref}c_str())", 
             "PY_format": "s", 
             "base": "string", 
             "c_statements": {
