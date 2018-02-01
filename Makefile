@@ -108,7 +108,8 @@ TESTDIRS = \
     $(tempdir)/run-tutorial/lua/.. \
     $(tempdir)/run-strings/.. \
     $(tempdir)/run-strings/python/.. \
-    $(tempdir)/run-clibrary/..
+    $(tempdir)/run-clibrary/.. \
+    $(tempdir)/run-clibrary/python/..
 
 testdirs : $(TESTDIRS)
 
@@ -140,6 +141,12 @@ py-strings : testdirs
 	    -f $(top)/tests/run-strings/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
+py-clibrary : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run-clibrary/python \
+	    -f $(top)/tests/run-clibrary/python/Makefile \
+	    PYTHON=$(PYTHON) top=$(top) all
+
 # Run the Python tests
 test-python-tutorial : py-tutorial
 	export PYTHONPATH=$(top)/$(tempdir)/run-tutorial/python; \
@@ -148,6 +155,10 @@ test-python-tutorial : py-tutorial
 test-python-strings : py-strings
 	export PYTHONPATH=$(top)/$(tempdir)/run-strings/python; \
 	$(PYTHON_BIN) $(top)/tests/run-strings/python/test.py
+
+test-python-clibrary : py-clibrary
+	export PYTHONPATH=$(top)/$(tempdir)/run-clibrary/python; \
+	$(PYTHON_BIN) $(top)/tests/run-clibrary/python/test.py
 
 test-python : test-python-tutorial test-python-strings
 
@@ -208,6 +219,7 @@ distclean:
 .PHONY : test-python
 .PHONY : py-tutorial test-python-tutorial
 .PHONY : py-strings  test-python-strings
+.PHONY : py-clibrary test-python-clibrary
 .PHONY : test-lua lua-tutorial
 .PHONY : test-all test-clean
 .PHONY : do-test do-test-replace print-debug

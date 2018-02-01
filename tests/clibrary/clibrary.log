@@ -16,3 +16,12 @@ C-interface, Fortran function void Function3b(const bool arg1 +intent(in)+value,
 C-interface, Fortran function char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))
 C-interface function void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))
 Close wrapfclibrary.f
+Python function void Function1()
+Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+Python function void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))
+Python function bool Function3(bool arg +intent(in)+value)
+Python function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
+Python function char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))
+Close pyClibrarymodule.h
+Close pyClibrarymodule.c
+Close pyClibraryhelper.c

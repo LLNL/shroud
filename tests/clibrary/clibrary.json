@@ -79,11 +79,23 @@
             "LUA_prefix": "l_", 
             "LUA_result": "rv", 
             "LUA_state_var": "L", 
+            "PY_PyObject": "PyObject", 
+            "PY_header_filename": "pyClibrarymodule.h", 
             "PY_header_filename_suffix": "h", 
+            "PY_helper_filename": "pyClibraryhelper.c", 
             "PY_impl_filename_suffix": "c", 
+            "PY_library_doc": "library documentation", 
+            "PY_module_filename": "pyClibrarymodule.c", 
             "PY_module_name": "clibrary", 
+            "PY_obj": "obj", 
+            "PY_param_args": "args", 
+            "PY_param_kwds": "kwds", 
+            "PY_param_self": "self", 
             "PY_prefix": "PY_", 
             "PY_result": "rv", 
+            "PY_used_param_args": false, 
+            "PY_used_param_kwds": false, 
+            "PY_used_param_self": false, 
             "YAML_type_filename": "clibrary_types.yaml", 
             "c_temp": "SHT_", 
             "class_prefix": "", 
@@ -129,6 +141,7 @@
                     "F_name_generic": "function1", 
                     "F_name_impl": "function1", 
                     "F_subprogram": "subroutine", 
+                    "PY_name_impl": "PY_function1", 
                     "c_const": "", 
                     "function_name": "Function1", 
                     "underscore_name": "function1"
@@ -149,6 +162,16 @@
                         "fmtf": {
                             "c_var": "arg1", 
                             "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cxx_decl": "double arg1", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "arg1", 
+                            "py_var": "SH_Py_arg1"
                         }
                     }, 
                     "arg2": {
@@ -163,6 +186,16 @@
                         "fmtf": {
                             "c_var": "arg2", 
                             "f_var": "arg2"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg2", 
+                            "cxx_decl": "int arg2", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "arg2", 
+                            "py_var": "SH_Py_arg2"
                         }
                     }
                 }, 
@@ -236,6 +269,7 @@
                     "F_name_impl": "function2", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
+                    "PY_name_impl": "PY_function2", 
                     "c_const": "", 
                     "function_name": "Function2", 
                     "underscore_name": "function2"
@@ -256,6 +290,16 @@
                         "fmtf": {
                             "c_var": "len", 
                             "f_var": "len"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "len", 
+                            "cxx_decl": "int len", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len", 
+                            "py_var": "SH_Py_len"
                         }
                     }, 
                     "result": {
@@ -270,6 +314,18 @@
                         "fmtf": {
                             "c_var": "result", 
                             "f_var": "result"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "result", 
+                            "cxx_decl": "int * result", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "result", 
+                            "py_var": "SH_Py_result"
                         }
                     }, 
                     "values": {
@@ -284,6 +340,16 @@
                         "fmtf": {
                             "c_var": "values", 
                             "f_var": "values"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "values", 
+                            "cxx_decl": "int * values", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "values", 
+                            "py_var": "SH_Py_values"
                         }
                     }
                 }, 
@@ -374,6 +440,7 @@
                     "F_name_generic": "sum", 
                     "F_name_impl": "sum", 
                     "F_subprogram": "subroutine", 
+                    "PY_name_impl": "PY_sum", 
                     "c_const": "", 
                     "function_name": "Sum", 
                     "underscore_name": "sum"
@@ -394,6 +461,16 @@
                         "fmtf": {
                             "c_var": "SH_arg", 
                             "f_var": "arg"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg", 
+                            "cxx_decl": "bool arg", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "bool", 
+                            "cxx_var": "arg", 
+                            "py_var": "SH_Py_arg"
                         }
                     }
                 }, 
@@ -453,6 +530,7 @@
                     "F_name_impl": "function3", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
+                    "PY_name_impl": "PY_function3", 
                     "c_const": "", 
                     "function_name": "Function3", 
                     "underscore_name": "function3"
@@ -473,6 +551,16 @@
                         "fmtf": {
                             "c_var": "SH_arg1", 
                             "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "arg1", 
+                            "cxx_decl": "const bool arg1", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "bool", 
+                            "cxx_var": "arg1", 
+                            "py_var": "SH_Py_arg1"
                         }
                     }, 
                     "arg2": {
@@ -487,6 +575,18 @@
                         "fmtf": {
                             "c_var": "SH_arg2", 
                             "f_var": "arg2"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": "PyBool_Type", 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arg2", 
+                            "cxx_decl": "bool * arg2", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "bool", 
+                            "cxx_var": "arg2", 
+                            "py_var": "SH_Py_arg2"
                         }
                     }, 
                     "arg3": {
@@ -501,6 +601,18 @@
                         "fmtf": {
                             "c_var": "SH_arg3", 
                             "f_var": "arg3"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": "PyBool_Type", 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arg3", 
+                            "cxx_decl": "bool * arg3", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "bool", 
+                            "cxx_var": "arg3", 
+                            "py_var": "SH_Py_arg3"
                         }
                     }
                 }, 
@@ -590,6 +702,7 @@
                     "F_name_generic": "function3b", 
                     "F_name_impl": "function3b", 
                     "F_subprogram": "subroutine", 
+                    "PY_name_impl": "PY_function3b", 
                     "c_const": "", 
                     "function_name": "Function3b", 
                     "underscore_name": "function3b"
@@ -607,6 +720,16 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "arg1", 
+                            "cxx_decl": "const char * arg1", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "char", 
+                            "cxx_var": "arg1", 
+                            "py_var": "SH_Py_arg1"
                         }
                     }, 
                     "arg2": {
@@ -617,6 +740,16 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "arg2"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "arg2", 
+                            "cxx_decl": "const char * arg2", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "char", 
+                            "cxx_var": "arg2", 
+                            "py_var": "SH_Py_arg2"
                         }
                     }
                 }, 
@@ -708,6 +841,7 @@
                     "F_name_impl": "function4a", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
+                    "PY_name_impl": "PY_function4a", 
                     "c_const": "", 
                     "c_var_len": "30", 
                     "function_name": "Function4a", 
@@ -927,7 +1061,7 @@
             "wrap_c": true, 
             "wrap_fortran": true, 
             "wrap_lua": false, 
-            "wrap_python": false
+            "wrap_python": true
         }
     }, 
     "typealias": {
