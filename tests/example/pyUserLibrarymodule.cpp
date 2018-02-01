@@ -59,9 +59,9 @@ static char PP_local_function1__doc__[] =
 
 static PyObject *
 PP_local_function1(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.local_function1
     local_function1();
@@ -75,7 +75,7 @@ static char PP_is_name_valid__doc__[] =
 
 static PyObject *
 PP_is_name_valid(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -105,9 +105,9 @@ static char PP_is_initialized__doc__[] =
 
 static PyObject *
 PP_is_initialized(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.is_initialized
     bool rv = isInitialized();
@@ -122,7 +122,7 @@ static char PP_check_bool__doc__[] =
 
 static PyObject *
 PP_check_bool(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -158,7 +158,7 @@ PP_check_bool(
 
 static PyObject *
 PP_test_names(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -183,7 +183,7 @@ PP_test_names(
 
 static PyObject *
 PP_test_names_flag(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -216,7 +216,7 @@ static char PP_testoptional_2__doc__[] =
 
 static PyObject *
 PP_testoptional_2(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -261,9 +261,9 @@ static char PP_test_size_t__doc__[] =
 
 static PyObject *
 PP_test_size_t(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.test_size_t
     size_t rv = test_size_t();
@@ -278,7 +278,7 @@ static char PP_testmpi__doc__[] =
 
 static PyObject *
 PP_testmpi(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -306,7 +306,7 @@ static char PP_testgroup1__doc__[] =
 
 static PyObject *
 PP_testgroup1(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -335,7 +335,7 @@ static char PP_testgroup2__doc__[] =
 
 static PyObject *
 PP_testgroup2(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -364,7 +364,7 @@ static char PP_func1__doc__[] =
 
 static PyObject *
 PP_func1(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -391,7 +391,7 @@ static char PP_func2__doc__[] =
 
 static PyObject *
 PP_func2(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -418,7 +418,7 @@ static char PP_func_ptr3__doc__[] =
 
 static PyObject *
 PP_func_ptr3(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -446,7 +446,7 @@ static char PP_func4__doc__[] =
 
 static PyObject *
 PP_func4(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -473,7 +473,7 @@ static char PP_verlongfunctionname1__doc__[] =
 
 static PyObject *
 PP_verlongfunctionname1(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -535,7 +535,7 @@ static char PP_verlongfunctionname2__doc__[] =
 
 static PyObject *
 PP_verlongfunctionname2(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {

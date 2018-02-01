@@ -57,9 +57,9 @@ static char PY_function1__doc__[] =
 
 static PyObject *
 PY_function1(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.function1
     Function1();
@@ -73,7 +73,7 @@ static char PY_function2__doc__[] =
 
 static PyObject *
 PY_function2(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -103,7 +103,7 @@ static char PY_sum__doc__[] =
 
 static PyObject *
 PY_sum(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -133,7 +133,7 @@ static char PY_function3__doc__[] =
 
 static PyObject *
 PY_function3(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -163,7 +163,7 @@ static char PY_function3b__doc__[] =
 
 static PyObject *
 PY_function3b(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -200,7 +200,7 @@ static char PY_function4a__doc__[] =
 
 static PyObject *
 PY_function4a(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {

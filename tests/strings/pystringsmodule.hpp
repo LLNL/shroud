@@ -47,6 +47,13 @@
 #define IS_PY3K
 #endif
 #include "strings.hpp"
+
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
 // splicer begin header.include
 // splicer end header.include
 // splicer begin header.C_declaration

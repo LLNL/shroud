@@ -57,9 +57,9 @@ static char PY_function1__doc__[] =
 
 static PyObject *
 PY_function1(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.function1
     function1();
@@ -73,9 +73,9 @@ static char PY_function2__doc__[] =
 
 static PyObject *
 PY_function2(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.function2
     function2();
@@ -85,7 +85,7 @@ PY_function2(
 
 static PyObject *
 PY_function3a_0(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -109,7 +109,7 @@ PY_function3a_0(
 
 static PyObject *
 PY_function3a_1(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -137,7 +137,7 @@ static char PY_function4__doc__[] =
 
 static PyObject *
 PY_function4(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -167,9 +167,9 @@ static char PY_fiveplus__doc__[] =
 
 static PyObject *
 PY_fiveplus(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.fiveplus
     fiveplus();

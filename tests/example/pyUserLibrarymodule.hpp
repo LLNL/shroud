@@ -45,6 +45,13 @@
 #if PY_MAJOR_VERSION >= 3
 #define IS_PY3K
 #endif
+
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
 // splicer begin header.include
 // splicer end header.include
 

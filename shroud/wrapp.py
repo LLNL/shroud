@@ -711,19 +711,19 @@ return 1;""", fmt)
                 '  {PY_PyObject} *{PY_param_self},', fmt))
         else:
             body.append(wformat(
-                '  PyObject *,  // {PY_param_self} unused', fmt))
+                '  PyObject *SHROUD_UNUSED({PY_param_self}),', fmt))
         if fmt.PY_used_param_args:
             body.append(wformat(
                 '  PyObject *{PY_param_args},', fmt))
         else:
             body.append(wformat(
-                '  PyObject *,  // {PY_param_args} unused', fmt))
+                '  PyObject *SHROUD_UNUSED({PY_param_args}),', fmt)),
         if fmt.PY_used_param_args:
             body.append(wformat(
                 '  PyObject *{PY_param_kwds})', fmt))
         else:
             body.append(wformat(
-                '  PyObject *)  // {PY_param_kwds} unused', fmt))
+                '  PyObject *SHROUD_UNUSED({PY_param_kwds}))', fmt))
 
         body.append('{')
 # use function_suffix in splicer name since a single C++ function may
@@ -906,6 +906,7 @@ return 1;""", fmt)
         for include in node.cxx_header.split():
             output.append('#include "%s"' % include)
 
+        output.append(cpp_boilerplate)
         self._push_splicer('header')
         self._create_splicer('include', output)
         self.namespace(node, None, 'begin', output)
@@ -1014,6 +1015,15 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
 
 
 # --- Python boiler plate
+
+# Avoid warning errors about unused parameters
+cpp_boilerplate = """
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+"""
 
 typenames = [
     'dealloc', 'print', 'compare',

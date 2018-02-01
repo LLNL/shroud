@@ -55,8 +55,8 @@ static char PY_names_method1__doc__[] =
 static PyObject *
 PY_names_method1(
   PY_Names *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.Names.method.method1
     self->obj->method1();
@@ -71,8 +71,8 @@ static char PY_names_method2__doc__[] =
 static PyObject *
 PY_names_method2(
   PY_Names *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.Names.method.method2
     self->obj->method2();

@@ -57,8 +57,8 @@ static char PY_class1_delete__doc__[] =
 static PyObject *
 PY_class1_delete(
   PY_Class1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.Class1.method.delete
     delete self->obj;
@@ -74,8 +74,8 @@ static char PY_class1_method1__doc__[] =
 static PyObject *
 PY_class1_method1(
   PY_Class1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.Class1.method.method1
     self->obj->Method1();

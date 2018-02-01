@@ -57,7 +57,7 @@ static char PY_pass_char__doc__[] =
 
 static PyObject *
 PY_pass_char(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -85,9 +85,9 @@ static char PY_return_char__doc__[] =
 
 static PyObject *
 PY_return_char(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_char
     char rv = returnChar();
@@ -102,7 +102,7 @@ static char PY_pass_char_ptr_in_out__doc__[] =
 
 static PyObject *
 PY_pass_char_ptr_in_out(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -131,9 +131,9 @@ static char PY_get_char1__doc__[] =
 
 static PyObject *
 PY_get_char1(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_char1
     const char * rv = getChar1();
@@ -148,9 +148,9 @@ static char PY_get_char2__doc__[] =
 
 static PyObject *
 PY_get_char2(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_char2
     const char * rv = getChar2();
@@ -165,9 +165,9 @@ static char PY_get_char3__doc__[] =
 
 static PyObject *
 PY_get_char3(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_char3
     const char * rv = getChar3();
@@ -182,9 +182,9 @@ static char PY_get_string1__doc__[] =
 
 static PyObject *
 PY_get_string1(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_string1
     const std::string & rv = getString1();
@@ -199,9 +199,9 @@ static char PY_get_string2__doc__[] =
 
 static PyObject *
 PY_get_string2(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_string2
     const std::string & rv = getString2();
@@ -216,9 +216,9 @@ static char PY_get_string3__doc__[] =
 
 static PyObject *
 PY_get_string3(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_string3
     const std::string & rv = getString3();
@@ -233,9 +233,9 @@ static char PY_get_string2_empty__doc__[] =
 
 static PyObject *
 PY_get_string2_empty(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_string2_empty
     const std::string & rv = getString2_empty();
@@ -250,9 +250,9 @@ static char PY_get_string5__doc__[] =
 
 static PyObject *
 PY_get_string5(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_string5
     const std::string rv = getString5();
@@ -267,9 +267,9 @@ static char PY_get_string6__doc__[] =
 
 static PyObject *
 PY_get_string6(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_string6
     const std::string rv = getString6();
@@ -284,9 +284,9 @@ static char PY_get_string7__doc__[] =
 
 static PyObject *
 PY_get_string7(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_string7
     const std::string * rv = getString7();
@@ -301,7 +301,7 @@ static char PY_accept_string_const_reference__doc__[] =
 
 static PyObject *
 PY_accept_string_const_reference(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -330,9 +330,9 @@ static char PY_accept_string_reference_out__doc__[] =
 
 static PyObject *
 PY_accept_string_reference_out(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.accept_string_reference_out
     std::string SH_arg1;
@@ -348,7 +348,7 @@ static char PY_accept_string_reference__doc__[] =
 
 static PyObject *
 PY_accept_string_reference(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -378,7 +378,7 @@ static char PY_accept_string_pointer__doc__[] =
 
 static PyObject *
 PY_accept_string_pointer(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -408,9 +408,9 @@ static char PY_return_strings__doc__[] =
 
 static PyObject *
 PY_return_strings(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_strings
     std::string SH_arg1;
@@ -426,7 +426,7 @@ static char PY_explicit1__doc__[] =
 
 static PyObject *
 PY_explicit1(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -454,7 +454,7 @@ static char PY_cpass_char__doc__[] =
 
 static PyObject *
 PY_cpass_char(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
@@ -482,9 +482,9 @@ static char PY_creturn_char__doc__[] =
 
 static PyObject *
 PY_creturn_char(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.creturn_char
     char rv = CreturnChar();

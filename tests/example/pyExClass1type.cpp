@@ -79,8 +79,8 @@ static char PP_exclass1_dtor__doc__[] =
 static PyObject *
 PP_exclass1_dtor(
   PP_ExClass1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.ExClass1.method.dtor
     delete self->obj;
@@ -125,8 +125,8 @@ static char PP_exclass1_get_name__doc__[] =
 static PyObject *
 PP_exclass1_get_name(
   PP_ExClass1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.ExClass1.method.get_name
     const std::string & rv = self->obj->getName();
@@ -147,8 +147,8 @@ static char PP_exclass1_get_name_length__doc__[] =
 static PyObject *
 PP_exclass1_get_name_length(
   PP_ExClass1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.ExClass1.method.get_name_length
     int rv = self->obj->GetNameLength();
@@ -164,8 +164,8 @@ static char PP_exclass1_get_name_error_check__doc__[] =
 static PyObject *
 PP_exclass1_get_name_error_check(
   PP_ExClass1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.ExClass1.method.get_name_error_check
     const std::string & rv = self->obj->getNameErrorCheck();
@@ -181,8 +181,8 @@ static char PP_exclass1_get_name_arg__doc__[] =
 static PyObject *
 PP_exclass1_get_name_arg(
   PP_ExClass1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.ExClass1.method.get_name_arg
     const std::string & rv = self->obj->getNameArg();
@@ -198,8 +198,8 @@ static char PP_exclass1_get_root__doc__[] =
 static PyObject *
 PP_exclass1_get_root(
   PP_ExClass1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.ExClass1.method.get_root
     ExClass2 * rv = self->obj->getRoot();
@@ -266,8 +266,8 @@ static char PP_exclass1_get_addr__doc__[] =
 static PyObject *
 PP_exclass1_get_addr(
   PP_ExClass1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.ExClass1.method.get_addr
     void * rv = self->obj->getAddr();
@@ -314,8 +314,8 @@ static char PP_exclass1_splicer_special__doc__[] =
 static PyObject *
 PP_exclass1_splicer_special(
   PP_ExClass1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.ExClass1.method.splicer_special
     self->obj->SplicerSpecial();
