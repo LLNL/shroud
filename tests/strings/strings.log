@@ -94,7 +94,6 @@ C-interface function void CpassCharPtr(char * dest +intent(out)+len(Ndest), cons
 Close wrapfstrings.f
 Python function void passChar(char_scalar status +intent(in)+value)
 Python function char_scalar returnChar()
-Python function void passCharPtr(char * dest +intent(out), const char * src +intent(in))
 Python function void passCharPtrInOut(char * s +intent(inout))
 Python function const char * getChar1() +pure
 Python function const char * getChar2 +len(30)()
@@ -111,10 +110,8 @@ Python function void acceptStringReferenceOut(std::string & arg1 +intent(out))
 Python function void acceptStringReference(std::string & arg1 +intent(inout))
 Python function void acceptStringPointer(std::string * arg1 +intent(inout))
 Python function void explicit1(char * name +intent(in)+len_trim(AAlen))
-Python function void explicit2(char * name +intent(out)+len(AAtrim))
 Python function void CpassChar(char_scalar status +intent(in)+value)
 Python function char_scalar CreturnChar()
-Python function void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))
 Close pystringsmodule.hpp
 Close pystringsmodule.cpp
 Close pystringshelper.cpp

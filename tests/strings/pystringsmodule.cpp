@@ -96,36 +96,6 @@ PY_return_char(
 // splicer end function.return_char
 }
 
-static char PY_pass_char_ptr__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_pass_char_ptr(
-  PyObject *,  // self unused
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin function.pass_char_ptr
-    char * dest;
-    const char * src;
-    const char *SH_kwcpp = "src";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtr",
-        SH_kw_list,
-        &src))
-    {
-        return NULL;
-    }
-    passCharPtr(dest, src);
-    PyObject * SH_Py_dest = PyString_FromString(dest);
-    return (PyObject *) SH_Py_dest;
-// splicer end function.pass_char_ptr
-}
-
 static char PY_pass_char_ptr_in_out__doc__[] =
 "documentation"
 ;
@@ -462,25 +432,6 @@ PY_explicit1(
 // splicer end function.explicit1
 }
 
-static char PY_explicit2__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_explicit2(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
-{
-// splicer begin function.explicit2
-    char * name;
-
-    explicit2(name);
-    PyObject * SH_Py_name = PyString_FromString(name);
-    return (PyObject *) SH_Py_name;
-// splicer end function.explicit2
-}
-
 static char PY_cpass_char__doc__[] =
 "documentation"
 ;
@@ -525,43 +476,11 @@ PY_creturn_char(
     return (PyObject *) SH_Py_rv;
 // splicer end function.creturn_char
 }
-
-static char PY_cpass_char_ptr__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_cpass_char_ptr(
-  PyObject *,  // self unused
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin function.cpass_char_ptr
-    char * dest;
-    const char * src;
-    const char *SH_kwcpp = "src";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:CpassCharPtr",
-        SH_kw_list,
-        &src))
-    {
-        return NULL;
-    }
-    CpassCharPtr(dest, src);
-    PyObject * SH_Py_dest = PyString_FromString(dest);
-    return (PyObject *) SH_Py_dest;
-// splicer end function.cpass_char_ptr
-}
 static PyMethodDef PY_methods[] = {
 {"passChar", (PyCFunction)PY_pass_char, METH_VARARGS|METH_KEYWORDS,
     PY_pass_char__doc__},
 {"returnChar", (PyCFunction)PY_return_char, METH_NOARGS,
     PY_return_char__doc__},
-{"passCharPtr", (PyCFunction)PY_pass_char_ptr,
-    METH_VARARGS|METH_KEYWORDS, PY_pass_char_ptr__doc__},
 {"passCharPtrInOut", (PyCFunction)PY_pass_char_ptr_in_out,
     METH_VARARGS|METH_KEYWORDS, PY_pass_char_ptr_in_out__doc__},
 {"getChar1", (PyCFunction)PY_get_char1, METH_NOARGS,
@@ -597,14 +516,10 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_accept_string_pointer__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS,
     PY_explicit1__doc__},
-{"explicit2", (PyCFunction)PY_explicit2, METH_NOARGS,
-    PY_explicit2__doc__},
 {"CpassChar", (PyCFunction)PY_cpass_char, METH_VARARGS|METH_KEYWORDS,
     PY_cpass_char__doc__},
 {"CreturnChar", (PyCFunction)PY_creturn_char, METH_NOARGS,
     PY_creturn_char__doc__},
-{"CpassCharPtr", (PyCFunction)PY_cpass_char_ptr,
-    METH_VARARGS|METH_KEYWORDS, PY_cpass_char_ptr__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

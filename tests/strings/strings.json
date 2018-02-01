@@ -345,18 +345,6 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "dest"
-                        }, 
-                        "fmtpy": {
-                            "PyObject": "PyObject", 
-                            "PyTypeObject": null, 
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "dest", 
-                            "cxx_decl": "char * dest", 
-                            "cxx_deref": "->", 
-                            "cxx_type": "char", 
-                            "cxx_var": "dest", 
-                            "py_var": "SH_Py_dest"
                         }
                     }, 
                     "src": {
@@ -367,16 +355,6 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "src"
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": " *", 
-                            "c_var": "src", 
-                            "cxx_decl": "const char * src", 
-                            "cxx_deref": "->", 
-                            "cxx_type": "char", 
-                            "cxx_var": "src", 
-                            "py_var": "SH_Py_src"
                         }
                     }
                 }, 
@@ -456,12 +434,14 @@
                     "F_name_generic": "pass_char_ptr", 
                     "F_name_impl": "pass_char_ptr", 
                     "F_subprogram": "subroutine", 
-                    "PY_name_impl": "PY_pass_char_ptr", 
                     "c_const": "", 
                     "function_name": "passCharPtr", 
                     "underscore_name": "pass_char_ptr"
                 }, 
-                "options": {}
+                "options": {
+                    "wrap_Lua": false, 
+                    "wrap_python": false
+                }
             }, 
             {
                 "_PTR_C_CXX_index": 2, 
@@ -576,6 +556,7 @@
                     "underscore_name": "pass_char_ptr"
                 }, 
                 "options": {
+                    "wrap_Lua": false, 
                     "wrap_c": true, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -646,7 +627,8 @@
                 "decl": "void passCharPtrInOut(char * s+intent(inout))", 
                 "declgen": "void passCharPtrInOut(char * s +intent(inout))", 
                 "doxygen": {
-                    "brief": "Change a string in-place"
+                    "brief": "toupper", 
+                    "description": "Change a string in-place.\nFor Python, return a new string since strings are inmutable.\n"
                 }, 
                 "format": {
                     "C_call_code": "passCharPtrInOut(\ts);", 
@@ -732,7 +714,8 @@
                 "decl": "void passCharPtrInOut(char * s+intent(inout))", 
                 "declgen": "void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))", 
                 "doxygen": {
-                    "brief": "Change a string in-place"
+                    "brief": "toupper", 
+                    "description": "Change a string in-place.\nFor Python, return a new string since strings are inmutable.\n"
                 }, 
                 "format": {
                     "C_call_code": "passCharPtrInOut(\tSH_s);", 
@@ -3311,18 +3294,6 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name"
-                        }, 
-                        "fmtpy": {
-                            "PyObject": "PyObject", 
-                            "PyTypeObject": null, 
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "name", 
-                            "cxx_decl": "char * name", 
-                            "cxx_deref": "->", 
-                            "cxx_type": "char", 
-                            "cxx_var": "name", 
-                            "py_var": "SH_Py_name"
                         }
                     }
                 }, 
@@ -3380,12 +3351,14 @@
                     "F_name_generic": "explicit2", 
                     "F_name_impl": "explicit2", 
                     "F_subprogram": "subroutine", 
-                    "PY_name_impl": "PY_explicit2", 
                     "c_const": "", 
                     "function_name": "explicit2", 
                     "underscore_name": "explicit2"
                 }, 
-                "options": {}
+                "options": {
+                    "wrap_Lua": false, 
+                    "wrap_python": false
+                }
             }, 
             {
                 "_PTR_C_CXX_index": 19, 
@@ -3461,6 +3434,7 @@
                     "underscore_name": "explicit2"
                 }, 
                 "options": {
+                    "wrap_Lua": false, 
                     "wrap_c": true, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -3710,18 +3684,6 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "dest"
-                        }, 
-                        "fmtpy": {
-                            "PyObject": "PyObject", 
-                            "PyTypeObject": null, 
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "dest", 
-                            "cxx_decl": "char * dest", 
-                            "cxx_deref": "->", 
-                            "cxx_type": "char", 
-                            "cxx_var": "dest", 
-                            "py_var": "SH_Py_dest"
                         }
                     }, 
                     "src": {
@@ -3732,16 +3694,6 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "src"
-                        }, 
-                        "fmtpy": {
-                            "c_const": "const ", 
-                            "c_ptr": " *", 
-                            "c_var": "src", 
-                            "cxx_decl": "const char * src", 
-                            "cxx_deref": "->", 
-                            "cxx_type": "char", 
-                            "cxx_var": "src", 
-                            "py_var": "SH_Py_src"
                         }
                     }
                 }, 
@@ -3821,13 +3773,14 @@
                     "F_name_generic": "cpass_char_ptr", 
                     "F_name_impl": "cpass_char_ptr", 
                     "F_subprogram": "subroutine", 
-                    "PY_name_impl": "PY_cpass_char_ptr", 
                     "c_const": "", 
                     "function_name": "CpassCharPtr", 
                     "underscore_name": "cpass_char_ptr"
                 }, 
                 "options": {
-                    "C_extern_C": true
+                    "C_extern_C": true, 
+                    "wrap_Lua": false, 
+                    "wrap_python": false
                 }
             }, 
             {
@@ -3944,6 +3897,7 @@
                 }, 
                 "options": {
                     "C_extern_C": true, 
+                    "wrap_Lua": false, 
                     "wrap_c": true, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 

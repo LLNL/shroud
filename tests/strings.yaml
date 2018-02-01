@@ -69,10 +69,18 @@ functions:
     description: |
       dest is marked intent(OUT) to override the intent(INOUT) default
       This avoid a copy-in on dest.
+  options:
+    # This copies into 'dest' which must be allocated first
+    # and does not work with Python
+    wrap_python: False
+    wrap_Lua: False
 
 - decl: void passCharPtrInOut(char * s+intent(inout))
   doxygen:
-    brief: Change a string in-place
+    brief: toupper
+    description: |
+      Change a string in-place.
+      For Python, return a new string since strings are inmutable.
 
 ########################################
 
@@ -140,7 +148,7 @@ functions:
     F_string_result_as_arg: output
 
 ########################################
-# return std::string *
+# return std::string pointer
 
 - decl: const string * getString7+len=30()
 #  C_error_pattern: C_invalid_name
@@ -198,6 +206,11 @@ functions:
 
 - decl: void explicit2(char * name+len(AAtrim)+intent(out))
 # len is added for free because intent(out)
+  options:
+    # This copies into 'name' which must be allocated first
+    # and does not work with Python
+    wrap_python: False
+    wrap_Lua: False
 
 #- decl: void explicit3(char * name+len(AAlen)+len_trim(AAtrim))
 # set names for len/len_trim annotations
@@ -223,6 +236,10 @@ functions:
 - decl: void CpassCharPtr(char * dest+intent(out), const char *src)
   options:
     C_extern_C: true
+    # This copies into 'dest' which must be allocated first
+    # and does not work with Python
+    wrap_python: False
+    wrap_Lua: False
   doxygen:
     brief: strcpy like behavior
     description: |

@@ -102,9 +102,9 @@ contains
 
     call set_case_name("test_charargs_c")
 
-    call pass_char("w")
+    call cpass_char("w")
 
-    ch = return_char()
+    ch = creturn_char()
     call assert_true( ch == "w")
 
     ! character(*) function

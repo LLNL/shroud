@@ -141,9 +141,15 @@ py-strings : testdirs
 	    PYTHON=$(PYTHON) top=$(top) all
 
 # Run the Python tests
-test-python : py-tutorial
+test-python-tutorial : py-tutorial
 	export PYTHONPATH=$(top)/$(tempdir)/run-tutorial/python; \
-	$(PYTHON_BIN) $(top)/tests/run-tutorial/python/test.py	
+	$(PYTHON_BIN) $(top)/tests/run-tutorial/python/test.py
+
+test-python-strings : py-strings
+	export PYTHONPATH=$(top)/$(tempdir)/run-strings/python; \
+	$(PYTHON_BIN) $(top)/tests/run-strings/python/test.py
+
+test-python : test-python-tutorial test-python-strings
 
 # Compile the geneated Lua wrapper
 lua-tutorial : testdirs
@@ -199,7 +205,9 @@ distclean:
 
 .PHONY : virtualenv develop docs test testdirs
 .PHONY : fortran test-fortran tutorial strings
-.PHONY : test-python py-tutorial
+.PHONY : test-python
+.PHONY : py-tutorial test-python-tutorial
+.PHONY : py-strings  test-python-strings
 .PHONY : test-lua lua-tutorial
 .PHONY : test-all test-clean
 .PHONY : do-test do-test-replace print-debug

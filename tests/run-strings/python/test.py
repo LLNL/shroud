@@ -42,7 +42,11 @@
 #
 
 import unittest
-import tutorial
+import strings
+
+# value from strings.cpp
+static_char = 'bird'
+static_str  = 'dog'
 
 class NotTrue:
     """Test bool arguments errors"""
@@ -64,109 +68,62 @@ class Tutorial(unittest.TestCase):
         ## do something...
         print "FooTest:tearDown_:end"
      
-    # test routine A
-    def testFunction1(self):
-        tutorial.Function1()
+    def testpassChar(self):
+        strings.passChar('w')
 
-    def testFunction2(self):
-        rv_double = tutorial.Function2(1.0, 4)
-        self.assertEqual(rv_double, 5.0)#, "A is not equal to B")
+    def testreturnChar(self):
+        self.assertEqual('w', strings.returnChar())
 
-    def testFunction3(self):
-        rv_logical = tutorial.Function3(False)
-        self.assertTrue(rv_logical)
+    def testpassCharPtrInOut(self):
+        """char * +intent(out)"""
+        self.assertEqual('DOG', strings.passCharPtrInOut('dog'))
 
-        self.assertRaises(TypeError, tutorial.Function3, 0)
-#rv_logical = tutorial.Function3(NotTrue())
+    def testgetChar(self):
+        # The variations are useful for the Fortran API,
+        # but really no difference in the Python API.
+        self.assertEqual(static_char, strings.getChar1())
+        self.assertEqual(static_char, strings.getChar2())
+        self.assertEqual(static_char, strings.getChar3())
 
-    def testFunction4a(self):
-        rv_char = tutorial.Function4a("dog", "cat")
-        self.assertEqual(rv_char, "dogcat")
-#
-#    call function4b("dog", "cat", rv_char)
-#    call assert_true( rv_char == "dogcat")
-#
-    def testFunction5(self):
-        rv_double = tutorial.Function5()
-        self.assertAlmostEqual(rv_double, 13.1415)
-        rv_double = tutorial.Function5(1.0)
-        self.assertAlmostEqual(rv_double, 11.0)
+    def testgetString1(self):
+        """return std::string reference"""
+        # The variations are useful for the Fortran API,
+        # but really no difference in the Python API.
+        self.assertEqual(static_str, strings.getString1())
+        self.assertEqual(static_str, strings.getString2())
+        self.assertEqual(static_str, strings.getString3())
 
-        # XXX fix bool argument
-        rv_double = tutorial.Function5(1.0, False)
-        self.assertAlmostEqual(rv_double, 1.0)
-#, 1.d0)
-#
-    def testFunction6(self):
-        tutorial.Function6("name")
-        self.assertEqual(tutorial.LastFunctionCalled(), "Function6(string)")
+        self.assertEqual('', strings.getString2_empty())
 
-        tutorial.Function6(1)
-        self.assertEqual(tutorial.LastFunctionCalled(), "Function6(int)")
+    def testgetString5(self):
+        """return std::string"""
+        self.assertEqual(static_str, strings.getString5())
+        self.assertEqual(static_str, strings.getString6())
 
-        self.assertRaises(TypeError, tutorial.Function6, 1.0)
+    def testgetString7(self):
+        """return std::string pointer"""
+        self.assertEqual('Hello', strings.getString7())
 
+    def testacceptStringConstReference(self):
+        self.assertEqual(None, strings.acceptStringConstReference('cat'))
 
-#
-#    call function7(1)
-#    call assert_true(last_function_called() == "Function7<int>")
-#    call function7(10.d0)
-#    call assert_true(last_function_called() == "Function7<double>")
-#
-#    ! return values set by calls to function7
-#    rv_integer = function8_int()
-#    call assert_true(rv_integer == 1)
-#    rv_double = function8_double()
-#    call assert_true(rv_double == 10.d0)
-#
-#    call function9(1.0)
-#    call assert_true(.true.)
-#    call function9(1.d0)
-#    call assert_true(.true.)
-#
-#    call function10()
-#    call assert_true(.true.)
-#    call function10("foo", 1.0e0)
-#    call assert_true(.true.)
-#    call function10("bar", 2.0d0)
-#    call assert_true(.true.)
-#
-#    call sum(5, [1,2,3,4,5], rv_int)
-#    call assert_true(rv_int .eq. 15)
-#
-#    rv_int = overload1(10)
-#    call assert_true(rv_int .eq. 10)
-#    rv_int = overload1(1d0, 10)
-#    call assert_true(rv_int .eq. 10)
-#
-#    rv_int = overload1(10, 11, 12)
-#    call assert_true(rv_int .eq. 142)
-#    rv_int = overload1(1d0, 10, 11, 12)
-#    call assert_true(rv_int .eq. 142)
-#
-#    rv_int = typefunc(2)
-#    call assert_true(rv_int .eq. 2)
-#
-#    rv_int = enumfunc(1)
-#    call assert_true(rv_int .eq. 2)
-#
-#  end subroutine test_functions
-#
-#  subroutine test_class1
-#    type(class1) obj
-#
-#    obj = class1_new()
-#    call assert_true(c_associated(obj%voidptr), "class1_new")
-#
-#    call obj%method1()
-#    call assert_true(.true.)
-#
-#    call useclass(obj)
-#
-#    call obj%delete()
-#    call assert_true(.not. c_associated(obj%voidptr), "class1_delete")
-#  end subroutine test_class1
-#
+    def testacceptStringReferenceOut(self):
+        self.assertEqual('dog', strings.acceptStringReferenceOut())
+
+    def testacceptStringReference(self):
+        self.assertEqual('catdog', strings.acceptStringReference('cat'))
+
+    def testacceptStringPointer(self):
+        self.assertEqual('birddog', strings.acceptStringPointer('bird'))
+
+    #- decl: void acceptStringInstance(std::string arg1)
+
+    def testCpassChar(self):
+        strings.CpassChar('w')
+
+    def testCreturnChar(self):
+        self.assertEqual('w', strings.CreturnChar())
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

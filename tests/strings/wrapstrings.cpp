@@ -152,8 +152,10 @@ void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
 // void passCharPtrInOut(char * s +intent(inout))
 // function_index=3
 /**
- * \brief Change a string in-place
+ * \brief toupper
  *
+ * Change a string in-place.
+ * For Python, return a new string since strings are inmutable.
  */
 void STR_pass_char_ptr_in_out(char * s)
 {
@@ -166,8 +168,10 @@ void STR_pass_char_ptr_in_out(char * s)
 // void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))
 // function_index=25
 /**
- * \brief Change a string in-place
+ * \brief toupper
  *
+ * Change a string in-place.
+ * For Python, return a new string since strings are inmutable.
  */
 void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 {

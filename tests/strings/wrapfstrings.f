@@ -447,8 +447,10 @@ contains
     ! arg_to_buffer
     ! function_index=3
     !>
-    !! \brief Change a string in-place
+    !! \brief toupper
     !!
+    !! Change a string in-place.
+    !! For Python, return a new string since strings are inmutable.
     !<
     subroutine pass_char_ptr_in_out(s)
         use iso_c_binding, only : C_INT
