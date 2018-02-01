@@ -234,7 +234,8 @@ class Tester:
     def do_compare(self):
         status = True  # assume it passes
 
-        cmp = filecmp.dircmp(self.ref_dir, self.result_dir)
+        cmp = filecmp.dircmp(self.ref_dir, self.result_dir,
+                             ignore=['pybindgen'])
         if not os.path.exists(self.ref_dir):
             logging.info('Reference directory does not exist: ' + self.ref_dir)
             return False
