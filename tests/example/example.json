@@ -6261,9 +6261,9 @@
                     "verylongname1": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname1", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname1"
                         }, 
@@ -6273,20 +6273,22 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "lua_tointeger(L, 1)", 
                             "c_var_len": "Lverylongname1", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname1", 
                             "lua_var": "SH_Lua_verylongname1"
                         }, 
                         "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname1", 
-                            "cxx_decl": "int verylongname1", 
-                            "cxx_deref": ".", 
+                            "cxx_decl": "int * verylongname1", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname1", 
                             "py_var": "SH_Py_verylongname1"
@@ -6295,9 +6297,9 @@
                     "verylongname10": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname10", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname10"
                         }, 
@@ -6307,20 +6309,22 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 10, 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "lua_tointeger(L, 10)", 
                             "c_var_len": "Lverylongname10", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname10", 
                             "lua_var": "SH_Lua_verylongname10"
                         }, 
                         "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname10", 
-                            "cxx_decl": "int verylongname10", 
-                            "cxx_deref": ".", 
+                            "cxx_decl": "int * verylongname10", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname10", 
                             "py_var": "SH_Py_verylongname10"
@@ -6329,9 +6333,9 @@
                     "verylongname2": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname2", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname2"
                         }, 
@@ -6341,20 +6345,22 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 2, 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "lua_tointeger(L, 2)", 
                             "c_var_len": "Lverylongname2", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname2", 
                             "lua_var": "SH_Lua_verylongname2"
                         }, 
                         "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname2", 
-                            "cxx_decl": "int verylongname2", 
-                            "cxx_deref": ".", 
+                            "cxx_decl": "int * verylongname2", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname2", 
                             "py_var": "SH_Py_verylongname2"
@@ -6363,9 +6369,9 @@
                     "verylongname3": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname3", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname3"
                         }, 
@@ -6375,20 +6381,22 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 3, 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "lua_tointeger(L, 3)", 
                             "c_var_len": "Lverylongname3", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname3", 
                             "lua_var": "SH_Lua_verylongname3"
                         }, 
                         "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname3", 
-                            "cxx_decl": "int verylongname3", 
-                            "cxx_deref": ".", 
+                            "cxx_decl": "int * verylongname3", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname3", 
                             "py_var": "SH_Py_verylongname3"
@@ -6397,9 +6405,9 @@
                     "verylongname4": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname4", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname4"
                         }, 
@@ -6409,20 +6417,22 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 4, 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "lua_tointeger(L, 4)", 
                             "c_var_len": "Lverylongname4", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname4", 
                             "lua_var": "SH_Lua_verylongname4"
                         }, 
                         "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname4", 
-                            "cxx_decl": "int verylongname4", 
-                            "cxx_deref": ".", 
+                            "cxx_decl": "int * verylongname4", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname4", 
                             "py_var": "SH_Py_verylongname4"
@@ -6431,9 +6441,9 @@
                     "verylongname5": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname5", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname5"
                         }, 
@@ -6443,20 +6453,22 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 5, 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "lua_tointeger(L, 5)", 
                             "c_var_len": "Lverylongname5", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname5", 
                             "lua_var": "SH_Lua_verylongname5"
                         }, 
                         "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname5", 
-                            "cxx_decl": "int verylongname5", 
-                            "cxx_deref": ".", 
+                            "cxx_decl": "int * verylongname5", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname5", 
                             "py_var": "SH_Py_verylongname5"
@@ -6465,9 +6477,9 @@
                     "verylongname6": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname6", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname6"
                         }, 
@@ -6477,20 +6489,22 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 6, 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "lua_tointeger(L, 6)", 
                             "c_var_len": "Lverylongname6", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname6", 
                             "lua_var": "SH_Lua_verylongname6"
                         }, 
                         "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname6", 
-                            "cxx_decl": "int verylongname6", 
-                            "cxx_deref": ".", 
+                            "cxx_decl": "int * verylongname6", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname6", 
                             "py_var": "SH_Py_verylongname6"
@@ -6499,9 +6513,9 @@
                     "verylongname7": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname7", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname7"
                         }, 
@@ -6511,20 +6525,22 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 7, 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "lua_tointeger(L, 7)", 
                             "c_var_len": "Lverylongname7", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname7", 
                             "lua_var": "SH_Lua_verylongname7"
                         }, 
                         "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname7", 
-                            "cxx_decl": "int verylongname7", 
-                            "cxx_deref": ".", 
+                            "cxx_decl": "int * verylongname7", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname7", 
                             "py_var": "SH_Py_verylongname7"
@@ -6533,9 +6549,9 @@
                     "verylongname8": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname8", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname8"
                         }, 
@@ -6545,20 +6561,22 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 8, 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "lua_tointeger(L, 8)", 
                             "c_var_len": "Lverylongname8", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname8", 
                             "lua_var": "SH_Lua_verylongname8"
                         }, 
                         "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname8", 
-                            "cxx_decl": "int verylongname8", 
-                            "cxx_deref": ".", 
+                            "cxx_decl": "int * verylongname8", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname8", 
                             "py_var": "SH_Py_verylongname8"
@@ -6567,9 +6585,9 @@
                     "verylongname9": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname9", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname9"
                         }, 
@@ -6579,20 +6597,22 @@
                         }, 
                         "fmtl": {
                             "LUA_index": 9, 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "lua_tointeger(L, 9)", 
                             "c_var_len": "Lverylongname9", 
-                            "cxx_deref": ".", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname9", 
                             "lua_var": "SH_Lua_verylongname9"
                         }, 
                         "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_ptr": " *", 
                             "c_var": "verylongname9", 
-                            "cxx_decl": "int verylongname9", 
-                            "cxx_deref": ".", 
+                            "cxx_decl": "int * verylongname9", 
+                            "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname9", 
                             "py_var": "SH_Py_verylongname9"
@@ -6612,13 +6632,18 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "value": true
+                                "intent": "inout", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
                                 "name": "verylongname1", 
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
                             }, 
                             "specifier": [
                                 "int"
@@ -6626,13 +6651,18 @@
                         }, 
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "value": true
+                                "intent": "inout", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
                                 "name": "verylongname2", 
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
                             }, 
                             "specifier": [
                                 "int"
@@ -6640,13 +6670,18 @@
                         }, 
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "value": true
+                                "intent": "inout", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
                                 "name": "verylongname3", 
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
                             }, 
                             "specifier": [
                                 "int"
@@ -6654,13 +6689,18 @@
                         }, 
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "value": true
+                                "intent": "inout", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
                                 "name": "verylongname4", 
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
                             }, 
                             "specifier": [
                                 "int"
@@ -6668,13 +6708,18 @@
                         }, 
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "value": true
+                                "intent": "inout", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
                                 "name": "verylongname5", 
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
                             }, 
                             "specifier": [
                                 "int"
@@ -6682,13 +6727,18 @@
                         }, 
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "value": true
+                                "intent": "inout", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
                                 "name": "verylongname6", 
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
                             }, 
                             "specifier": [
                                 "int"
@@ -6696,13 +6746,18 @@
                         }, 
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "value": true
+                                "intent": "inout", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
                                 "name": "verylongname7", 
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
                             }, 
                             "specifier": [
                                 "int"
@@ -6710,13 +6765,18 @@
                         }, 
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "value": true
+                                "intent": "inout", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
                                 "name": "verylongname8", 
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
                             }, 
                             "specifier": [
                                 "int"
@@ -6724,13 +6784,18 @@
                         }, 
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "value": true
+                                "intent": "inout", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
                                 "name": "verylongname9", 
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
                             }, 
                             "specifier": [
                                 "int"
@@ -6738,13 +6803,18 @@
                         }, 
                         {
                             "attrs": {
-                                "intent": "in", 
-                                "value": true
+                                "intent": "inout", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
                                 "name": "verylongname10", 
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
                             }, 
                             "specifier": [
                                 "int"
@@ -6755,13 +6825,13 @@
                         "void"
                     ]
                 }, 
-                "decl": "void verlongfunctionname1(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
-                "declgen": "void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)", 
+                "decl": "void verlongfunctionname1(int *verylongname1 +intent(inout), int *verylongname2 +intent(inout), int *verylongname3 +intent(inout), int *verylongname4 +intent(inout), int *verylongname5 +intent(inout), int *verylongname6 +intent(inout), int *verylongname7 +intent(inout), int *verylongname8 +intent(inout), int *verylongname9 +intent(inout), int *verylongname10 +intent(inout))", 
+                "declgen": "void verlongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))", 
                 "format": {
                     "C_call_code": "verlongfunctionname1(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
                     "C_name": "AA_verlongfunctionname1", 
-                    "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10", 
+                    "C_prototype": "int * verylongname1,\t int * verylongname2,\t int * verylongname3,\t int * verylongname4,\t int * verylongname5,\t int * verylongname6,\t int * verylongname7,\t int * verylongname8,\t int * verylongname9,\t int * verylongname10", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_call": "c_verlongfunctionname1", 

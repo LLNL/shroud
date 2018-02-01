@@ -478,16 +478,16 @@ PP_verlongfunctionname1(
   PyObject *kwds)
 {
 // splicer begin function.verlongfunctionname1
-    int verylongname1;
-    int verylongname2;
-    int verylongname3;
-    int verylongname4;
-    int verylongname5;
-    int verylongname6;
-    int verylongname7;
-    int verylongname8;
-    int verylongname9;
-    int verylongname10;
+    int * verylongname1;
+    int * verylongname2;
+    int * verylongname3;
+    int * verylongname4;
+    int * verylongname5;
+    int * verylongname6;
+    int * verylongname7;
+    int * verylongname8;
+    int * verylongname9;
+    int * verylongname10;
     const char *SH_kwcpp =
         "verylongname1\0"
         "verylongname2\0"
@@ -523,7 +523,9 @@ PP_verlongfunctionname1(
     verlongfunctionname1(verylongname1, verylongname2, verylongname3,
         verylongname4, verylongname5, verylongname6, verylongname7,
         verylongname8, verylongname9, verylongname10);
-    Py_RETURN_NONE;
+    return Py_BuildValue("iiiiiiiiii", verylongname1, verylongname2,
+        verylongname3, verylongname4, verylongname5, verylongname6,
+        verylongname7, verylongname8, verylongname9, verylongname10);
 // splicer end function.verlongfunctionname1
 }
 

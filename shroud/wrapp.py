@@ -664,9 +664,9 @@ return 1;""", fmt)
         else:
             # create tuple object
             fmt.PyBuild_format = ''.join([ttt.format for ttt in build_tuples])
-            fmt.PyBuild_vargs = ', '.join([ttt.vargs for ttt in build_tuples])
+            fmt.PyBuild_vargs = ',\t '.join([ttt.vargs for ttt in build_tuples])
             PY_code.append(wformat(
-                'return Py_BuildValue("{PyBuild_format}", {PyBuild_vargs});',
+                'return Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});',
                 fmt))
 
         PY_impl = [1] + PY_decl + PY_code + [-1]

@@ -114,10 +114,10 @@ void AA_func4(void ( * get)(int verylongname1, int verylongname2,
     int verylongname6, int verylongname7, int verylongname8,
     int verylongname9, int verylongname10));
 
-void AA_verlongfunctionname1(int verylongname1, int verylongname2,
-    int verylongname3, int verylongname4, int verylongname5,
-    int verylongname6, int verylongname7, int verylongname8,
-    int verylongname9, int verylongname10);
+void AA_verlongfunctionname1(int * verylongname1, int * verylongname2,
+    int * verylongname3, int * verylongname4, int * verylongname5,
+    int * verylongname6, int * verylongname7, int * verylongname8,
+    int * verylongname9, int * verylongname10);
 
 int AA_verlongfunctionname2(int verylongname1, int verylongname2,
     int verylongname3, int verylongname4, int verylongname5,

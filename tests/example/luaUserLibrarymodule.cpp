@@ -660,19 +660,29 @@ static int l_func4(lua_State *L)
 static int l_verlongfunctionname1(lua_State *L)
 {
     // splicer begin function.verlongfunctionname1
-    int verylongname1 = lua_tointeger(L, 1);
-    int verylongname2 = lua_tointeger(L, 2);
-    int verylongname3 = lua_tointeger(L, 3);
-    int verylongname4 = lua_tointeger(L, 4);
-    int verylongname5 = lua_tointeger(L, 5);
-    int verylongname6 = lua_tointeger(L, 6);
-    int verylongname7 = lua_tointeger(L, 7);
-    int verylongname8 = lua_tointeger(L, 8);
-    int verylongname9 = lua_tointeger(L, 9);
-    int verylongname10 = lua_tointeger(L, 10);
+    int * verylongname1 = lua_tointeger(L, 1);
+    int * verylongname2 = lua_tointeger(L, 2);
+    int * verylongname3 = lua_tointeger(L, 3);
+    int * verylongname4 = lua_tointeger(L, 4);
+    int * verylongname5 = lua_tointeger(L, 5);
+    int * verylongname6 = lua_tointeger(L, 6);
+    int * verylongname7 = lua_tointeger(L, 7);
+    int * verylongname8 = lua_tointeger(L, 8);
+    int * verylongname9 = lua_tointeger(L, 9);
+    int * verylongname10 = lua_tointeger(L, 10);
     verlongfunctionname1(verylongname1, verylongname2, verylongname3,
         verylongname4, verylongname5, verylongname6, verylongname7,
         verylongname8, verylongname9, verylongname10);
+    lua_pushinteger(L, lua_tointeger(L, 1));
+    lua_pushinteger(L, lua_tointeger(L, 2));
+    lua_pushinteger(L, lua_tointeger(L, 3));
+    lua_pushinteger(L, lua_tointeger(L, 4));
+    lua_pushinteger(L, lua_tointeger(L, 5));
+    lua_pushinteger(L, lua_tointeger(L, 6));
+    lua_pushinteger(L, lua_tointeger(L, 7));
+    lua_pushinteger(L, lua_tointeger(L, 8));
+    lua_pushinteger(L, lua_tointeger(L, 9));
+    lua_pushinteger(L, lua_tointeger(L, 10));
     return 0;
     // splicer end function.verlongfunctionname1
 }
