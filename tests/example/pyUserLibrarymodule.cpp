@@ -151,7 +151,7 @@ PP_check_bool(
     arg3 = PyObject_IsTrue(SH_Py_arg3);
     checkBool(arg1, arg2, arg3);
     PyObject * SH_Py_arg2 = PyBool_FromLong(arg2);
-    PyObject * SH_Py_arg3 = PyBool_FromLong(arg3);
+    SH_Py_arg3 = PyBool_FromLong(arg3);
     return Py_BuildValue("OO", SH_Py_arg2, SH_Py_arg3);
 // splicer end function.check_bool
 }

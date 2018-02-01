@@ -266,7 +266,7 @@ return 1;""", fmt)
 
         self._pop_splicer('helper')
 
-    def intent_out(self, typedef, fmt, post_call):
+    def intent_out(self, typedef, intent_blk, fmt, post_call):
         """Create PyObject from C++ value.
 
         typedef - typedef of C++ variable.
@@ -279,7 +279,7 @@ return 1;""", fmt)
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        cmd_list = typedef.py_statements.get('intent_out', {}).get('ctor', [])
+        cmd_list = intent_blk.get('ctor', [])
         if cmd_list:
             # must create py_var from cxx_var.
             # XXX fmt.cxx_var = 'SH_' + fmt.c_var
@@ -487,7 +487,7 @@ return 1;""", fmt)
             if intent in ['inout', 'out']:
                 # output variable must be a pointer
                 build_tuples.append(self.intent_out(
-                    arg_typedef, fmt_arg, post_call))
+                    arg_typedef, intent_blk, fmt_arg, post_call))
 
             cmd_list = intent_blk.get('post_parse', [])
             if cmd_list:
@@ -505,7 +505,8 @@ return 1;""", fmt)
                 pass
             else:
                 # PyArg_ParseTupleAndKeywords wants C types.
-                PY_decl.append(arg.gen_arg_as_c() + ';')
+                # Can not be 'const' since must be assignable.
+                PY_decl.append(arg.gen_arg_as_c(asgn_value=True) + ';')
 
             if arg_typedef.PY_PyTypeObject:
                 # A Python Object which must be converted to C++ type.
@@ -644,7 +645,10 @@ return 1;""", fmt)
             fmt.c_var = fmt.PY_result
             fmt.cxx_var = fmt.PY_result
             fmt.py_var = 'SH_Py_' + fmt.cxx_var
-            ttt = self.intent_out(result_typedef, fmt, post_call)
+            # XXX - wrapc uses result instead of intent_out
+            result_blk = result_typedef.py_statements.get('intent_out', {})
+            ttt = self.intent_out(result_typedef, result_blk,
+                                  fmt, post_call)
             # Add result to front of result tuple
             build_tuples.insert(0, ttt)
 

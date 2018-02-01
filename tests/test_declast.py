@@ -86,6 +86,10 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("const int var1")
         s = r.gen_decl()
         self.assertEqual("const int var1", s)
+        self.assertEqual("const int var1", r.gen_arg_as_c())
+        self.assertEqual(      "int var1", r.gen_arg_as_c(asgn_value=True))
+        self.assertEqual("const int var1", r.gen_arg_as_cxx())
+        self.assertEqual(      "int var1", r.gen_arg_as_cxx(asgn_value=True))
 
         r = declast.check_decl("int const var1")
         s = r.gen_decl()
@@ -94,6 +98,14 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("int *var1")
         s = r.gen_decl()
         self.assertEqual("int * var1", s)
+
+        r = declast.check_decl("const int * var1")
+        s = r.gen_decl()
+        self.assertEqual("const int * var1", s)
+        self.assertEqual("const int * var1", r.gen_arg_as_c())
+        self.assertEqual("const int * var1", r.gen_arg_as_c(asgn_value=True))
+        self.assertEqual("const int * var1", r.gen_arg_as_cxx())
+        self.assertEqual("const int * var1", r.gen_arg_as_cxx(asgn_value=True))
 
         r = declast.check_decl("int * const var1")
         s = r.gen_decl()

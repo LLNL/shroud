@@ -846,12 +846,15 @@ class Declaration(Node):
 
     def gen_arg_as_lang(self, decl, lang,
                         continuation=False,
+                        asgn_value=False,
                         **kwargs):
         """Generate an argument for the C wrapper.
         C++ types are converted to C types using typemap.
 
         lang = c_type or cxx_type
         continuation = True - insert tabs to aid continuations
+        asgn_value = If True, make sure the value can be assigned
+                     by removing const.
 
         If a templated type, assume std::vector.
         The C argument will be a pointer to the template type.
@@ -859,7 +862,9 @@ class Declaration(Node):
         The length info is lost but will be provided as another argument
         to the C wrapper.
         """
+        const_index = None
         if self.const:
+            const_index = len(decl)
             decl.append('const ')
 
         if 'template' in self.attrs:
@@ -880,6 +885,11 @@ class Declaration(Node):
             declarator.name = self.name
         else:
             declarator = self.declarator
+
+        if asgn_value and const_index is not None and not self.is_indirect():
+            # Remove 'const' do the variable can be assigned to.
+            decl[const_index] = ''
+
         if lang == 'c_type':
             declarator.gen_decl_work(decl, as_c=True, **kwargs)
         else:
@@ -893,7 +903,8 @@ class Declaration(Node):
             comma = ''
             for arg in params:
                 decl.append(comma)
-                arg.gen_decl_work(decl, attrs=None, continuation=continuation)
+                arg.gen_decl_work(decl, attrs=None,
+                                  continuation=continuation)
                 if continuation:
                     comma = ',\t '
                 else:

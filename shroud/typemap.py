@@ -347,8 +347,9 @@ def initialize():
                     post_parse=[
                         '{cxx_var} = PyObject_IsTrue({py_var});',
                     ],
+                    # py_var is already declared for inout
                     ctor=[
-                        '{PyObject} * {py_var} = PyBool_FromLong({c_var});',
+                        '{py_var} = PyBool_FromLong({c_var});',
                     ],
                 ),
                 intent_out=dict(
