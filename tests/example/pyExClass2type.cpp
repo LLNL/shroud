@@ -275,7 +275,7 @@ PP_exclass2_get_name_length(
 {
 // splicer begin class.ExClass2.method.get_name_length
     int rv = self->obj->GetNameLength();
-    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = PyInt_FromLong(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end class.ExClass2.method.get_name_length
 }
@@ -381,7 +381,7 @@ PP_exclass2_get_type_id(
 {
 // splicer begin class.ExClass2.method.get_type_id
     TypeID rv = self->obj->getTypeID();
-    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = PyInt_FromLong(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end class.ExClass2.method.get_type_id
 }

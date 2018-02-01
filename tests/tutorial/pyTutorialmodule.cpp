@@ -97,7 +97,7 @@ PY_function2(
         return NULL;
     }
     double rv = Function2(arg1, arg2);
-    PyObject * SH_Py_rv = Py_BuildValue("d", rv);
+    PyObject * SH_Py_rv = PyFloat_FromDouble(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end function.function2
 }
@@ -276,7 +276,7 @@ PY_function5_arg1_arg2(
         rv = Function5(arg1, arg2);
         break;
     }
-    PyObject * SH_Py_rv = Py_BuildValue("d", rv);
+    PyObject * SH_Py_rv = PyFloat_FromDouble(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end function.function5
 }
@@ -440,7 +440,7 @@ PY_overload1_num_offset_stride(
         rv = overload1(num, offset, stride);
         break;
     }
-    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = PyInt_FromLong(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end function.overload1_num_offset_stride
 }
@@ -489,7 +489,7 @@ PY_overload1_5(
         rv = overload1(type, num, offset, stride);
         break;
     }
-    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = PyInt_FromLong(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end function.overload1_5
 }
@@ -518,7 +518,7 @@ PY_typefunc(
         return NULL;
     }
     TypeID rv = typefunc(arg);
-    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = PyInt_FromLong(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end function.typefunc
 }
@@ -547,7 +547,7 @@ PY_enumfunc(
         return NULL;
     }
     EnumTypeID rv = enumfunc(static_cast<EnumTypeID>(arg));
-    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = PyInt_FromLong(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end function.enumfunc
 }

@@ -267,7 +267,7 @@ PP_test_size_t(
 {
 // splicer begin function.test_size_t
     size_t rv = test_size_t();
-    PyObject * SH_Py_rv = PyInt_FromLong(rv);
+    PyObject * SH_Py_rv = PyInt_FromSize_t(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end function.test_size_t
 }
@@ -583,7 +583,7 @@ PP_verlongfunctionname2(
     int rv = verlongfunctionname2(verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
         verylongname7, verylongname8, verylongname9, verylongname10);
-    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = PyInt_FromLong(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end function.verlongfunctionname2
 }
