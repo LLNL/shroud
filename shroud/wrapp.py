@@ -432,7 +432,8 @@ return 1;""", fmt)
             fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
 
             py_statements = arg_typedef.py_statements
-            stmts = 'intent_' + attrs['intent']
+            intent = attrs['intent']
+            stmts = 'intent_' + intent
             intent_blk = py_statements.get(stmts, {})
 
             cxx_local_var = intent_blk.get('cxx_local_var', '')
@@ -443,7 +444,7 @@ return 1;""", fmt)
                 elif cxx_local_var == 'pointer':
                     fmt_arg.cxx_deref = '->'
 
-            if attrs['intent'] in ['inout', 'in']:
+            if intent in ['inout', 'in']:
                 # names to PyArg_ParseTupleAndKeywords
                 arg_names.append(arg_name)
                 arg_offsets.append('(char *) SH_kwcpp+%d' % offset)
@@ -473,7 +474,7 @@ return 1;""", fmt)
                 # add argument to call to PyArg_ParseTypleAndKeywords
                 parse_vargs.append('&' + arg_name)
 
-            if attrs['intent'] in ['inout', 'out']:
+            if intent in ['inout', 'out']:
                 # output variable must be a pointer
                 # XXX - fix up for strings
                 format, vargs = self.intent_out(
@@ -495,6 +496,10 @@ return 1;""", fmt)
             if arg_typedef.base == 'wrapped':
                 # defined as part of py_statements.intent_in.post_parse
                 # XXX - Not sure about intent_out
+                pass
+            elif intent == 'out' and cxx_local_var:
+                # not needed for PyArg_ParseTupleAndKeywords and
+                # defined as part of py_statements.intent_out.post_parse
                 pass
             else:
                 # PyArg_ParseTupleAndKeywords wants C types.

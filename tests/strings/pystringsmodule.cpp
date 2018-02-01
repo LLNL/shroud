@@ -335,8 +335,6 @@ PY_accept_string_reference_out(
   PyObject *)  // kwds unused
 {
 // splicer begin function.accept_string_reference_out
-    char * arg1;
-
     std::string SH_arg1;
     acceptStringReferenceOut(SH_arg1);
     PyObject * SH_Py_arg1 = PyString_FromString(SH_arg1.c_str());
