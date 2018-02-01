@@ -110,7 +110,6 @@ PY_sum(
 // splicer begin function.sum
     int len;
     int * values;
-    int * result;
     char *SH_kw_list[] = {
         "len",
         "values",
@@ -121,6 +120,7 @@ PY_sum(
     {
         return NULL;
     }
+    int * result;  // intent(out)
     Sum(len, values, result);
     PyObject * SH_Py_result = PyInt_FromLong(result);
     return (PyObject *) SH_Py_result;
@@ -170,7 +170,6 @@ PY_function3b(
 // splicer begin function.function3b
     bool arg1;
     PyObject * SH_Py_arg1;
-    bool * arg2;
     bool * arg3;
     PyObject * SH_Py_arg3;
     char *SH_kw_list[] = {
@@ -185,6 +184,7 @@ PY_function3b(
         return NULL;
     }
     arg1 = PyObject_IsTrue(SH_Py_arg1);
+    bool * arg2;  // intent(out)
     arg3 = PyObject_IsTrue(SH_Py_arg3);
     Function3b(arg1, arg2, arg3);
     PyObject * SH_Py_arg2 = PyBool_FromLong(arg2);

@@ -499,10 +499,12 @@ return 1;""", fmt)
                 # defined as part of py_statements.intent_in.post_parse
                 # XXX - Not sure about intent_out
                 pass
-            elif intent == 'out' and cxx_local_var:
-                # not needed for PyArg_ParseTupleAndKeywords and
-                # defined as part of py_statements.intent_out.post_parse
-                pass
+            elif intent == 'out':
+                # not needed for PyArg_ParseTupleAndKeywords.
+                # cxx_local_var defined by py_statements.intent_out.post_parse.
+                if not cxx_local_var:
+                    post_parse.append(arg.gen_arg_as_c(asgn_value=True) +
+                                      ';  // intent(out)')
             else:
                 # PyArg_ParseTupleAndKeywords wants C types.
                 # Can not be 'const' since must be assignable.
