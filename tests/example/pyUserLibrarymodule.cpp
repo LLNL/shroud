@@ -127,9 +127,7 @@ PP_check_bool(
   PyObject *kwds)
 {
 // splicer begin function.check_bool
-    bool arg1;
     PyObject * SH_Py_arg1;
-    bool * arg3;
     PyObject * SH_Py_arg3;
     const char *SH_kwcpp =
         "arg1\0"
@@ -145,9 +143,9 @@ PP_check_bool(
     {
         return NULL;
     }
-    arg1 = PyObject_IsTrue(SH_Py_arg1);
+    bool arg1 = PyObject_IsTrue(SH_Py_arg1);
     bool * arg2;  // intent(out)
-    arg3 = PyObject_IsTrue(SH_Py_arg3);
+    bool arg3 = PyObject_IsTrue(SH_Py_arg3);
     checkBool(arg1, arg2, arg3);
     PyObject * SH_Py_arg2 = PyBool_FromLong(arg2);
     SH_Py_arg3 = PyBool_FromLong(arg3);

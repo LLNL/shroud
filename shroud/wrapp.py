@@ -495,27 +495,24 @@ return 1;""", fmt)
                     append_format(post_parse, cmd, fmt_arg)
 
             # argument for C++ function
-            if arg_typedef.base == 'wrapped':
-                # defined as part of py_statements.intent_in.post_parse
-                # XXX - Not sure about intent_out
-                pass
-            elif intent == 'out':
+            if intent == 'out':
                 # not needed for PyArg_ParseTupleAndKeywords.
                 # cxx_local_var defined by py_statements.intent_out.post_parse.
                 if not cxx_local_var:
                     post_parse.append(arg.gen_arg_as_c(asgn_value=True) +
                                       ';  // intent(out)')
+            elif arg_typedef.PY_PyTypeObject:
+                # A Python Object which must be converted to C++ type.
+                # cxx_var is declared by py_statements.intent_out.post_parse.
+                objtype = arg_typedef.PY_PyObject or 'PyObject'
+                PY_decl.append(objtype + ' * ' + fmt_arg.py_var + ';')
             else:
                 # PyArg_ParseTupleAndKeywords wants C types.
                 # Can not be 'const' since must be assignable.
                 PY_decl.append(arg.gen_arg_as_c(asgn_value=True) + ';')
 
+            # Arguments to call
             if arg_typedef.PY_PyTypeObject:
-                if intent != 'out':
-                    # A Python Object which must be converted to C++ type.
-                    # 'out' is declared by py_statements.intent_out.ctor.
-                    objtype = arg_typedef.PY_PyObject or 'PyObject'
-                    PY_decl.append(objtype + ' * ' + fmt_arg.py_var + ';')
                 cxx_call_list.append(fmt_arg.cxx_var)
             elif arg_typedef.PY_from_object:
                 # already a C++ type

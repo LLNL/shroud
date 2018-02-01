@@ -287,7 +287,6 @@ PP_exclass1_has_addr(
   PyObject *kwds)
 {
 // splicer begin class.ExClass1.method.has_addr
-    bool in;
     PyObject * SH_Py_in;
     const char *SH_kwcpp = "in";
     char *SH_kw_list[] = {
@@ -300,7 +299,7 @@ PP_exclass1_has_addr(
     {
         return NULL;
     }
-    in = PyObject_IsTrue(SH_Py_in);
+    bool in = PyObject_IsTrue(SH_Py_in);
     bool rv = self->obj->hasAddr(in);
     PyObject * SH_Py_rv = PyBool_FromLong(rv);
     return (PyObject *) SH_Py_rv;

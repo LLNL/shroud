@@ -340,12 +340,12 @@ def initialize():
             py_statements=dict(
                 intent_in=dict(
                     post_parse=[
-                        '{cxx_var} = PyObject_IsTrue({py_var});',
+                        'bool {cxx_var} = PyObject_IsTrue({py_var});',
                     ],
                 ),
                 intent_inout=dict(
                     post_parse=[
-                        '{cxx_var} = PyObject_IsTrue({py_var});',
+                        'bool {cxx_var} = PyObject_IsTrue({py_var});',
                     ],
                     # py_var is already declared for inout
                     ctor=[
@@ -365,6 +365,7 @@ def initialize():
 # from Py_BuildValue.
 #            PY_ctor='PyBool_FromLong({c_var})',
             PY_PyTypeObject='PyBool_Type',
+
             LUA_type='LUA_TBOOLEAN',
             LUA_pop='lua_toboolean({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushboolean({LUA_state_var}, {c_var})',
@@ -915,6 +916,8 @@ def typedef_wrapped_defaults(typedef):
             ]
         ),
     )
+#    if not typedef.PY_PyTypeObject:
+#        typedef.PY_PyTypeObject='UUU'
     # typedef.PY_ctor='PyObject_New({PyObject}, &{PyTypeObject})'
 
     typedef.LUA_type='LUA_TUSERDATA'

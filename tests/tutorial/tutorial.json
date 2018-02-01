@@ -5980,7 +5980,7 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_var} = PyObject_IsTrue({py_var});"
+                        "bool {cxx_var} = PyObject_IsTrue({py_var});"
                     ]
                 }, 
                 "intent_inout": {
@@ -5988,7 +5988,7 @@
                         "{py_var} = PyBool_FromLong({c_var});"
                     ], 
                     "post_parse": [
-                        "{cxx_var} = PyObject_IsTrue({py_var});"
+                        "bool {cxx_var} = PyObject_IsTrue({py_var});"
                     ]
                 }, 
                 "intent_out": {

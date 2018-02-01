@@ -138,7 +138,6 @@ PY_function3(
   PyObject *kwds)
 {
 // splicer begin function.function3
-    bool arg;
     PyObject * SH_Py_arg;
     char *SH_kw_list[] = {
         "arg",
@@ -150,7 +149,7 @@ PY_function3(
     {
         return NULL;
     }
-    arg = PyObject_IsTrue(SH_Py_arg);
+    bool arg = PyObject_IsTrue(SH_Py_arg);
     bool rv = Function3(arg);
     PyObject * SH_Py_rv = PyBool_FromLong(rv);
     return (PyObject *) SH_Py_rv;
@@ -168,9 +167,7 @@ PY_function3b(
   PyObject *kwds)
 {
 // splicer begin function.function3b
-    bool arg1;
     PyObject * SH_Py_arg1;
-    bool * arg3;
     PyObject * SH_Py_arg3;
     char *SH_kw_list[] = {
         "arg1",
@@ -183,9 +180,9 @@ PY_function3b(
     {
         return NULL;
     }
-    arg1 = PyObject_IsTrue(SH_Py_arg1);
+    bool arg1 = PyObject_IsTrue(SH_Py_arg1);
     bool * arg2;  // intent(out)
-    arg3 = PyObject_IsTrue(SH_Py_arg3);
+    bool arg3 = PyObject_IsTrue(SH_Py_arg3);
     Function3b(arg1, arg2, arg3);
     PyObject * SH_Py_arg2 = PyBool_FromLong(arg2);
     SH_Py_arg3 = PyBool_FromLong(arg3);
