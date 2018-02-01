@@ -109,6 +109,7 @@ Python function void acceptStringConstReference(const std::string & arg1 +intent
 Python function void acceptStringReferenceOut(std::string & arg1 +intent(out))
 Python function void acceptStringReference(std::string & arg1 +intent(inout))
 Python function void acceptStringPointer(std::string * arg1 +intent(inout))
+Python function void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))
 Python function void explicit1(char * name +intent(in)+len_trim(AAlen))
 Python function void CpassChar(char_scalar status +intent(in)+value)
 Python function char_scalar CreturnChar()

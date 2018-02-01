@@ -164,6 +164,12 @@ void acceptStringPointer(std::string * arg1)
   arg1->append("dog");
 }
 
+void returnStrings(std::string & arg1, std::string & arg2)
+{
+  arg1 = "up";
+  arg2 = "down";
+}
+
 //----------------------------------------
 
 char *keep_explicit1;

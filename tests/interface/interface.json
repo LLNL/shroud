@@ -474,7 +474,7 @@
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
             "PY_ctor": "PyString_FromStringAndSize(&{c_var}, 1)", 
-            "PY_format": "s", 
+            "PY_format": "c", 
             "c_statements": {
                 "result_buf": {
                     "buf_args": [

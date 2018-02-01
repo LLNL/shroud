@@ -84,6 +84,24 @@ typedef enum _PyBindGenWrapperFlags {
 
 
 PyObject *
+_wrap_strings_returnStrings()
+{
+    PyObject *py_retval;
+    const char *arg1 = NULL;
+    Py_ssize_t arg1_len;
+    std::string arg1_std;
+    const char *arg2 = NULL;
+    Py_ssize_t arg2_len;
+    std::string arg2_std;
+
+    returnStrings(arg1_std, arg2_std);
+    py_retval = Py_BuildValue((char *) "s#s#", (arg1_std).c_str(), (arg1_std).size(), (arg2_std).c_str(), (arg2_std).size());
+    return py_retval;
+}
+PyObject * _wrap_strings_returnStrings();
+
+
+PyObject *
 _wrap_strings_passChar(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
@@ -114,6 +132,7 @@ _wrap_strings_returnChar()
 PyObject * _wrap_strings_returnChar();
 
 static PyMethodDef strings_functions[] = {
+    {(char *) "returnStrings", (PyCFunction) _wrap_strings_returnStrings, METH_NOARGS, "returnStrings(arg1, arg2)\n\ntype: arg1: std::string &\ntype: arg2: std::string &" },
     {(char *) "passChar", (PyCFunction) _wrap_strings_passChar, METH_KEYWORDS|METH_VARARGS, "passChar(status)\n\ntype: status: char" },
     {(char *) "returnChar", (PyCFunction) _wrap_strings_returnChar, METH_NOARGS, "returnChar()\n\n" },
     {NULL, NULL, 0, NULL}

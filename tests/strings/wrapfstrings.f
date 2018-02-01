@@ -494,7 +494,7 @@ contains
 
     ! void getChar3(char * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=29
+    ! function_index=30
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -541,7 +541,7 @@ contains
 
     ! void getString3(string & output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=33
+    ! function_index=34
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -589,7 +589,7 @@ contains
 
     ! void getString6(string * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=37
+    ! function_index=38
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -693,7 +693,7 @@ contains
 
     ! void explicit1(char * name +intent(in)+len_trim(AAlen))
     ! arg_to_buffer
-    ! function_index=18
+    ! function_index=19
     subroutine explicit1(name)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
@@ -704,7 +704,7 @@ contains
 
     ! void explicit2(char * name +intent(out)+len(AAtrim))
     ! arg_to_buffer
-    ! function_index=19
+    ! function_index=20
     subroutine explicit2(name)
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: name
@@ -715,7 +715,7 @@ contains
 
     ! char_scalar CreturnChar()
     ! arg_to_buffer
-    ! function_index=21
+    ! function_index=22
     !>
     !! \brief return a char argument (non-pointer), extern "C"
     !!
@@ -731,7 +731,7 @@ contains
 
     ! void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))
     ! arg_to_buffer
-    ! function_index=22
+    ! function_index=23
     !>
     !! \brief strcpy like behavior
     !!

@@ -116,6 +116,9 @@ class Tutorial(unittest.TestCase):
     def testacceptStringPointer(self):
         self.assertEqual('birddog', strings.acceptStringPointer('bird'))
 
+    def testreturnStrings(self):
+        self.assertEqual(('up', 'down'), strings.returnStrings())
+
     #- decl: void acceptStringInstance(std::string arg1)
 
     def testCpassChar(self):

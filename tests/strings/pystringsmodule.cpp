@@ -68,7 +68,7 @@ PY_pass_char(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passChar",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "c:passChar",
         SH_kw_list,
         &status))
     {
@@ -402,6 +402,26 @@ PY_accept_string_pointer(
 // splicer end function.accept_string_pointer
 }
 
+static char PY_return_strings__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_return_strings(
+  PyObject *,  // self unused
+  PyObject *,  // args unused
+  PyObject *)  // kwds unused
+{
+// splicer begin function.return_strings
+    std::string SH_arg1;
+    std::string SH_arg2;
+    returnStrings(SH_arg1, SH_arg2);
+    PyObject * SH_Py_arg1 = PyString_FromString(SH_arg1.c_str());
+    PyObject * SH_Py_arg2 = PyString_FromString(SH_arg2.c_str());
+    return Py_BuildValue("(OO)", SH_Py_arg1, SH_Py_arg2);
+// splicer end function.return_strings
+}
+
 static char PY_explicit1__doc__[] =
 "documentation"
 ;
@@ -447,7 +467,7 @@ PY_cpass_char(
         (char *) SH_kwcpp+0,
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:CpassChar",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "c:CpassChar",
         SH_kw_list,
         &status))
     {
@@ -512,6 +532,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference__doc__},
 {"acceptStringPointer", (PyCFunction)PY_accept_string_pointer,
     METH_VARARGS|METH_KEYWORDS, PY_accept_string_pointer__doc__},
+{"returnStrings", (PyCFunction)PY_return_strings, METH_NOARGS,
+    PY_return_strings__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS,
     PY_explicit1__doc__},
 {"CpassChar", (PyCFunction)PY_cpass_char, METH_VARARGS|METH_KEYWORDS,

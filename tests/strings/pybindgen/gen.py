@@ -42,11 +42,15 @@ Generate a module for strings using PyBindGen
 """
 
 import pybindgen
+from pybindgen import Parameter
 
 def generate(fp):
     mod = pybindgen.Module('strings')
     mod.add_include('"strings.hpp"')
     mod.add_function('passChar', None, 
-                     [pybindgen.param ('char', 'status')])
+                     [pybindgen.param('char', 'status')])
     mod.add_function('returnChar', pybindgen.retval('char'), [])
+    mod.add_function('returnStrings', None,
+                     [Parameter.new('std::string &', 'arg1', direction=Parameter.DIRECTION_OUT),
+                      Parameter.new('std::string &', 'arg2', direction=Parameter.DIRECTION_OUT)])
     mod.generate(fp)

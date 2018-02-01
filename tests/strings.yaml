@@ -194,6 +194,16 @@ functions:
 #  doxygen:
 #    brief: Accept a string instance
 
+- decl: void returnStrings(std::string & arg1 +intent(out),
+                           std::string & arg2 +intent(out))
+  doxygen:
+    description: |
+       Test Python returning multiple char * arguments.
+       Returns pointers to static variables.
+  options:
+    wrap_c: false
+    wrap_fortran: false
+
 ########################################
 # explicit annotations
 # Currently explicit len/len_trim conflict with auto generated one and do not compile

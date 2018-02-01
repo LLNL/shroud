@@ -77,6 +77,8 @@ void acceptStringReference(std::string & arg1);
 
 void acceptStringPointer(std::string * arg1);
 
+void returnStrings(std::string & arg1, std::string & arg2);
+
 void explicit1(char * name);
 void explicit2(char * name);
 
