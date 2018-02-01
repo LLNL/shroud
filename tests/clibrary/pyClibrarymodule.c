@@ -171,7 +171,6 @@ PY_function3b(
     bool arg1;
     PyObject * SH_Py_arg1;
     bool * arg2;
-    PyObject * SH_Py_arg2;
     bool * arg3;
     PyObject * SH_Py_arg3;
     char *SH_kw_list[] = {

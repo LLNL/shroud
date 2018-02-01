@@ -130,7 +130,6 @@ PP_check_bool(
     bool arg1;
     PyObject * SH_Py_arg1;
     bool * arg2;
-    PyObject * SH_Py_arg2;
     bool * arg3;
     PyObject * SH_Py_arg3;
     const char *SH_kwcpp =

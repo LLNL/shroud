@@ -509,9 +509,11 @@ return 1;""", fmt)
                 PY_decl.append(arg.gen_arg_as_c(asgn_value=True) + ';')
 
             if arg_typedef.PY_PyTypeObject:
-                # A Python Object which must be converted to C++ type.
-                objtype = arg_typedef.PY_PyObject or 'PyObject'
-                PY_decl.append(objtype + ' * ' + fmt_arg.py_var + ';')
+                if intent != 'out':
+                    # A Python Object which must be converted to C++ type.
+                    # 'out' is declared by py_statements.intent_out.ctor.
+                    objtype = arg_typedef.PY_PyObject or 'PyObject'
+                    PY_decl.append(objtype + ' * ' + fmt_arg.py_var + ';')
                 cxx_call_list.append(fmt_arg.cxx_var)
             elif arg_typedef.PY_from_object:
                 # already a C++ type
