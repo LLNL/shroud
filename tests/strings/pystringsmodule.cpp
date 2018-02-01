@@ -416,9 +416,7 @@ PY_return_strings(
     std::string SH_arg1;
     std::string SH_arg2;
     returnStrings(SH_arg1, SH_arg2);
-    PyObject * SH_Py_arg1 = PyString_FromString(SH_arg1.c_str());
-    PyObject * SH_Py_arg2 = PyString_FromString(SH_arg2.c_str());
-    return Py_BuildValue("(OO)", SH_Py_arg1, SH_Py_arg2);
+    return Py_BuildValue("ss", SH_arg1.c_str(), SH_arg2.c_str());
 // splicer end function.return_strings
 }
 

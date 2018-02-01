@@ -97,7 +97,8 @@ PY_function2(
         return NULL;
     }
     double rv = Function2(arg1, arg2);
-    return Py_BuildValue("d", rv);
+    PyObject * SH_Py_rv = Py_BuildValue("d", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end function.function2
 }
 
@@ -125,7 +126,8 @@ PY_type_long_long(
         return NULL;
     }
     long long rv = TypeLongLong(arg1);
-    return Py_BuildValue("L", rv);
+    PyObject * SH_Py_rv = Py_BuildValue("L", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end function.type_long_long
 }
 
@@ -274,7 +276,8 @@ PY_function5_arg1_arg2(
         rv = Function5(arg1, arg2);
         break;
     }
-    return Py_BuildValue("d", rv);
+    PyObject * SH_Py_rv = Py_BuildValue("d", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end function.function5
 }
 
@@ -437,7 +440,8 @@ PY_overload1_num_offset_stride(
         rv = overload1(num, offset, stride);
         break;
     }
-    return Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end function.overload1_num_offset_stride
 }
 
@@ -485,7 +489,8 @@ PY_overload1_5(
         rv = overload1(type, num, offset, stride);
         break;
     }
-    return Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end function.overload1_5
 }
 
@@ -513,7 +518,8 @@ PY_typefunc(
         return NULL;
     }
     TypeID rv = typefunc(arg);
-    return Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end function.typefunc
 }
 
@@ -541,7 +547,8 @@ PY_enumfunc(
         return NULL;
     }
     EnumTypeID rv = enumfunc(static_cast<EnumTypeID>(arg));
-    return Py_BuildValue("i", static_cast<int>(rv));
+    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end function.enumfunc
 }
 

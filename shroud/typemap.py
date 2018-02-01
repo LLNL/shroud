@@ -93,6 +93,7 @@ class Typedef(object):
                                   # ex. PyBool_FromLong({rv})
         ('PY_to_object', None),   # PyBuild - object'=converter(address)
         ('PY_from_object', None), # PyArg_Parse - status=converter(object, address);
+        ('PY_build_arg', None),   # argument for Py_BuildValue
         ('py_statements', {}),
 
         # Lua
@@ -341,11 +342,22 @@ def initialize():
                     post_parse=[
                         '{cxx_var} = PyObject_IsTrue({py_var});',
                     ],
+                    ctor=[
+                        '{PyObject} * {py_var} = PyBool_FromLong({c_var});',
+                    ],
+                ),
+                intent_out=dict(
+                    ctor=[
+                        '{PyObject} * {py_var} = PyBool_FromLong({c_var});',
+                    ],
                 ),
             ),
 
             # XXX PY_format='p',  # Python 3.3 or greater
-            PY_ctor='PyBool_FromLong({c_var})',
+# Use py_statements.x.ctor instead of PY_ctor. This code will always be
+# added.  Older version of Python can not create a bool directly from
+# from Py_BuildValue.
+#            PY_ctor='PyBool_FromLong({c_var})',
             PY_PyTypeObject='PyBool_Type',
             LUA_type='LUA_TBOOLEAN',
             LUA_pop='lua_toboolean({LUA_state_var}, {LUA_index})',
@@ -466,6 +478,9 @@ def initialize():
             PY_format='c',
 #            PY_ctor='Py_BuildValue("c", (int) {c_var})',
             PY_ctor='PyString_FromStringAndSize(&{c_var}, 1)',
+#            PY_build_format='c',
+            PY_build_arg='(int) {cxx_var}',
+
             LUA_type='LUA_TSTRING',
             LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
@@ -593,6 +608,7 @@ def initialize():
             ),
             PY_format='s',
             PY_ctor='PyString_FromString({cxx_var}{cxx_deref}c_str())',
+            PY_build_arg='{cxx_var}{cxx_deref}c_str()',
 
             LUA_type='LUA_TSTRING',
             LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',

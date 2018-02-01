@@ -4136,7 +4136,6 @@
             "LUA_push": "lua_pushboolean({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TBOOLEAN", 
             "PY_PyTypeObject": "PyBool_Type", 
-            "PY_ctor": "PyBool_FromLong({c_var})", 
             "c_type": "bool", 
             "cxx_type": "bool", 
             "f_c_type": "logical(C_BOOL)", 
@@ -4179,8 +4178,16 @@
                     ]
                 }, 
                 "intent_inout": {
+                    "ctor": [
+                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
+                    ], 
                     "post_parse": [
                         "{cxx_var} = PyObject_IsTrue({py_var});"
+                    ]
+                }, 
+                "intent_out": {
+                    "ctor": [
+                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
                     ]
                 }
             }
@@ -4283,6 +4290,7 @@
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
+            "PY_build_arg": "(int) {cxx_var}", 
             "PY_ctor": "PyString_FromStringAndSize(&{c_var}, 1)", 
             "PY_format": "c", 
             "c_statements": {
@@ -4403,6 +4411,7 @@
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
+            "PY_build_arg": "{cxx_var}{cxx_deref}c_str()", 
             "PY_ctor": "PyString_FromString({cxx_var}{cxx_deref}c_str())", 
             "PY_format": "s", 
             "base": "string", 

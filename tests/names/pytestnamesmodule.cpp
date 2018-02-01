@@ -156,7 +156,8 @@ PY_function4(
     }
     const std::string SH_rv(rv);
     int rv = function4(SH_rv);
-    return Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end function.function4
 }
 

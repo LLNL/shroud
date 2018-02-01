@@ -113,7 +113,8 @@ PP_exclass1_increment_count(
         return NULL;
     }
     int rv = self->obj->incrementCount(incr);
-    return Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end class.ExClass1.method.increment_count
 }
 
@@ -151,7 +152,8 @@ PP_exclass1_get_name_length(
 {
 // splicer begin class.ExClass1.method.get_name_length
     int rv = self->obj->GetNameLength();
-    return Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end class.ExClass1.method.get_name_length
 }
 
@@ -227,7 +229,8 @@ PP_exclass1_get_value_from_int(
         return NULL;
     }
     int rv = self->obj->getValue(value);
-    return Py_BuildValue("i", rv);
+    PyObject * SH_Py_rv = Py_BuildValue("i", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end class.ExClass1.method.get_value_from_int
 }
 
@@ -251,7 +254,8 @@ PP_exclass1_get_value_1(
         return NULL;
     }
     long rv = self->obj->getValue(value);
-    return Py_BuildValue("l", rv);
+    PyObject * SH_Py_rv = Py_BuildValue("l", rv);
+    return (PyObject *) SH_Py_rv;
 // splicer end class.ExClass1.method.get_value_1
 }
 

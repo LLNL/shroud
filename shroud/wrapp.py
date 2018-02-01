@@ -48,9 +48,14 @@ One Extension module per class
 from __future__ import print_function
 from __future__ import absolute_import
 
+import collections
+
 from . import typemap
 from . import util
 from .util import wformat, append_format
+
+BuildTuple = collections.namedtuple(
+    'BuildTuple', 'format vargs ctor ctorvar')
 
 
 class Wrapp(util.WrapperMixin):
@@ -261,12 +266,14 @@ return 1;""", fmt)
 
         self._pop_splicer('helper')
 
-    def intent_out(self, typedef, fmt, output):
+    def intent_out(self, typedef, fmt, post_call):
         """Create PyObject from C++ value.
 
         typedef - typedef of C++ variable.
         fmt - format dictionary
-        post_parse - output lines.
+        post_call   - always called to construct objects
+
+        Return a BuildTuple instance.
         """
 
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
@@ -277,29 +284,33 @@ return 1;""", fmt)
             # must create py_var from cxx_var.
             # XXX fmt.cxx_var = 'SH_' + fmt.c_var
             for cmd in cmd_list:
-                append_format(output, cmd, fmt)
+                append_format(post_call, cmd, fmt)
             format = 'O'
             vargs = fmt.py_var
-
-        elif typedef.PY_ctor:
-            append_format(output,
-                          '{PyObject} * {py_var} = ' + typedef.PY_ctor
-                          + ';', fmt)
-            format = 'O'
-            vargs = fmt.py_var
+            ctor = None
+            ctorvar = fmt.py_var
 
         else:
+            # Decide values for Py_BuildValue
             format = typedef.PY_format
-            if format == 'O':
-                raise RuntimeError(
-                    "PY_format should not be 'O' for " + typedef.name)
-            vargs = ''
-            if typedef.PY_to_object:
-                format += '&'
-                vargs = typedef.PY_to_object
-            vargs += wformat(typedef.cxx_to_c, fmt)  # if C++
+            vargs = typedef.PY_build_arg
+            if not vargs:
+                vargs = '{cxx_var}'
+            vargs = wformat(vargs, fmt)
 
-        return format, vargs
+            if typedef.PY_ctor:
+                ctor = wformat('{PyObject} * {py_var} = ' + typedef.PY_ctor
+                           + ';', fmt)
+                ctorvar = fmt.py_var
+            else:
+                fmt.PY_format = format
+                fmt.vargs = vargs
+                ctor = wformat(
+                    '{PyObject} * {py_var} = '
+                    'Py_BuildValue("{PY_format}", {vargs});', fmt)
+                ctorvar = fmt.py_var
+                
+        return BuildTuple(format, vargs, ctor, ctorvar)
 
     def wrap_functions(self, cls, functions):
         """Wrap functions for a library or class.
@@ -387,9 +398,8 @@ return 1;""", fmt)
         post_parse = []
 
         # arguments to Py_BuildValue
-        build_format = []
-        build_vargs = []
-        post_call = []
+        build_tuples = []
+        post_call = []    # Create objects passed to PyBuildValue
 
         cxx_call_list = []
 
@@ -476,16 +486,8 @@ return 1;""", fmt)
 
             if intent in ['inout', 'out']:
                 # output variable must be a pointer
-                # XXX - fix up for strings
-                format, vargs = self.intent_out(
-                    arg_typedef, fmt_arg, post_call)
-                build_format.append(format)
-                build_vargs.append(vargs)
-#                if format == 'O':
-#                    build_vargs.append(vargs)
-#                else:
-#                    raise RuntimeError("XXXX")
-#                    build_vargs.append('*' + vargs)
+                build_tuples.append(self.intent_out(
+                    arg_typedef, fmt_arg, post_call))
 
             cmd_list = intent_blk.get('post_parse', [])
             if cmd_list:
@@ -642,31 +644,30 @@ return 1;""", fmt)
             fmt.c_var = fmt.PY_result
             fmt.cxx_var = fmt.PY_result
             fmt.py_var = 'SH_Py_' + fmt.cxx_var
-            format, vargs = self.intent_out(result_typedef, fmt, PY_code)
+            ttt = self.intent_out(result_typedef, fmt, post_call)
             # Add result to front of result tuple
-            build_format.insert(0, format)
-            build_vargs.insert(0, vargs)
+            build_tuples.insert(0, ttt)
 
         PY_code.extend(post_call)
 
-        # may be multiple return values using intent(OUT)
-        fmt.PyArg_format = ''.join(build_format)
-        fmt.PyArg_vargs = ', '.join(build_vargs)
-        if not build_format:
+        # If only one return value, return the ctor
+        # else create a tuple with Py_BuildValue.
+        if not build_tuples:
             PY_code.append('Py_RETURN_NONE;')
-        elif len(build_format) > 1:
-            # return tuple
-            PY_code.append(wformat(
-                'return Py_BuildValue("({PyArg_format})", {PyArg_vargs});',
-                fmt))
-        elif build_format[0] == 'O':
-            # return a single object already created
-            fmt.py_var = build_vargs[0]
+        elif len(build_tuples) == 1:
+            # return a single object already created in build_stmts
+            ctor = build_tuples[0].ctor
+            if ctor:
+                PY_code.append(ctor)
+            fmt.py_var = build_tuples[0].ctorvar
             append_format(PY_code, 'return (PyObject *) {py_var};', fmt)
         else:
-            # create object
+            # create tuple object
+            fmt.PyBuild_format = ''.join([ttt.format for ttt in build_tuples])
+            fmt.PyBuild_vargs = ', '.join([ttt.vargs for ttt in build_tuples])
             PY_code.append(wformat(
-                'return Py_BuildValue("{PyArg_format}", {PyArg_vargs});', fmt))
+                'return Py_BuildValue("{PyBuild_format}", {PyBuild_vargs});',
+                fmt))
 
         PY_impl = [1] + PY_decl + PY_code + [-1]
 
