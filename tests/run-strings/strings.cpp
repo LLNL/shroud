@@ -170,6 +170,12 @@ void returnStrings(std::string & arg1, std::string & arg2)
   arg2 = "down";
 }
 
+char returnMany(int * arg1)
+{
+  *arg1 = 100;
+  return 'a';
+}
+
 //----------------------------------------
 
 char *keep_explicit1;

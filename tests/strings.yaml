@@ -197,10 +197,17 @@ functions:
 - decl: void returnStrings(std::string & arg1 +intent(out),
                            std::string & arg2 +intent(out))
   doxygen:
-    description: |
-       Test Python returning multiple char * arguments.
-       Returns pointers to static variables.
+    brief: Test Python returning multiple std::string arguments.
   options:
+    wrap_c: false
+    wrap_fortran: false
+
+- decl: char returnMany(int *arg1 +intent(out))
+  doxygen:
+    description: |
+       Test Py_BuildValue with multiple values.
+  options:
+    wrap_python: false
     wrap_c: false
     wrap_fortran: false
 
