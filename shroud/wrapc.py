@@ -424,6 +424,9 @@ class Wrapc(util.WrapperMixin):
             fmt_func.c_var = fmt_func.C_this
             # LHS is class' cxx_to_c
             cls_typedef = typemap.Typedef.lookup(cls.name)
+            if cls_typedef.c_to_cxx is None:
+                # This should be set in typemap.typedef_wrapped_defaults
+                raise RuntimeError("Wappped class does not have c_to_cxx set")
             append_format(pre_call, 
                           '{c_const}{cxx_class} *{CXX_this} = ' +
                           cls_typedef.c_to_cxx + ';', fmt_func)
@@ -539,6 +542,8 @@ class Wrapc(util.WrapperMixin):
                         call_list.append(fmt_arg.cxx_var)
                     else:
                         call_list.append('*' + fmt_arg.cxx_var)
+                elif arg_typedef.c_to_cxx is None:
+                    call_list.append(fmt_arg.c_var)
                 else:
                     # convert C argument to C++
                     append_format(call_list, arg_typedef.c_to_cxx, fmt_arg)

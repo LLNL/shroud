@@ -512,7 +512,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 # XXX lua_pop = wformat(arg_typedef.LUA_pop, fmt_arg)
                 # lua_pop is a C++ expression
                 fmt_arg.c_var = wformat(arg_typedef.LUA_pop, fmt_arg)
-                lua_pop = wformat(arg_typedef.c_to_cxx, fmt_arg)
+                if arg_typedef.c_to_cxx is None:
+                    lua_pop = fmt_arg.c_var
+                else:
+                    lua_pop = wformat(arg_typedef.c_to_cxx, fmt_arg)
                 LUA_index += 1
 
             if attrs['intent'] in ['inout', 'out']:

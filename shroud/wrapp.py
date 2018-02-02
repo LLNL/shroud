@@ -527,6 +527,8 @@ return 1;""", fmt)
                     cxx_call_list.append(fmt_arg.cxx_var)
                 else:
                     cxx_call_list.append('*' + fmt_arg.cxx_var)
+            elif arg_typedef.c_to_cxx is None:
+                cxx_call_list.append(fmt_arg.c_var)
             else:
                 # convert to C++ type
                 append_format(cxx_call_list, arg_typedef.c_to_cxx, fmt_arg)
