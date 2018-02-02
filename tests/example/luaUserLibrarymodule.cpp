@@ -621,22 +621,22 @@ static int l_testgroup2(lua_State *L)
     // splicer end function.testgroup2
 }
 
-static int l_func1(lua_State *L)
+static int l_func_ptr1(lua_State *L)
 {
-    // splicer begin function.func1
+    // splicer begin function.FuncPtr1
     void ( * get)() = POP;
-    func1(get);
+    FuncPtr1(get);
     return 0;
-    // splicer end function.func1
+    // splicer end function.FuncPtr1
 }
 
-static int l_func2(lua_State *L)
+static int l_func_ptr2(lua_State *L)
 {
-    // splicer begin function.func2
+    // splicer begin function.FuncPtr2
     double * ( * get)() = lua_tonumber(L, 1);
-    func2(get);
+    FuncPtr2(get);
     return 0;
-    // splicer end function.func2
+    // splicer end function.FuncPtr2
 }
 
 static int l_func_ptr3(lua_State *L)
@@ -648,13 +648,13 @@ static int l_func_ptr3(lua_State *L)
     // splicer end function.FuncPtr3
 }
 
-static int l_func4(lua_State *L)
+static int l_func_ptr5(lua_State *L)
 {
-    // splicer begin function.func4
+    // splicer begin function.FuncPtr5
     void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10) = POP;
-    func4(get);
+    FuncPtr5(get);
     return 0;
-    // splicer end function.func4
+    // splicer end function.FuncPtr5
 }
 
 static int l_verlongfunctionname1(lua_State *L)
@@ -724,10 +724,10 @@ static const struct luaL_Reg l_UserLibrary_Reg [] = {
     {"testmpi", l_testmpi},
     {"testgroup1", l_testgroup1},
     {"testgroup2", l_testgroup2},
-    {"func1", l_func1},
-    {"func2", l_func2},
+    {"FuncPtr1", l_func_ptr1},
+    {"FuncPtr2", l_func_ptr2},
     {"FuncPtr3", l_func_ptr3},
-    {"func4", l_func4},
+    {"FuncPtr5", l_func_ptr5},
     {"verlongfunctionname1", l_verlongfunctionname1},
     {"verlongfunctionname2", l_verlongfunctionname2},
     // splicer begin register

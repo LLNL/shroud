@@ -5589,7 +5589,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "func1", 
+                        "name": "FuncPtr1", 
                         "pointer": []
                     }, 
                     "fattrs": {}, 
@@ -5625,33 +5625,33 @@
                         "void"
                     ]
                 }, 
-                "decl": "void func1(void (*get)());", 
-                "declgen": "void func1(void ( * get) +intent(in)+value())", 
+                "decl": "void FuncPtr1(void (*get)());", 
+                "declgen": "void FuncPtr1(void ( * get) +intent(in)+value())", 
                 "doxygen": {
                     "brief": "subroutine"
                 }, 
                 "format": {
-                    "C_call_code": "func1(\tget);", 
+                    "C_call_code": "FuncPtr1(\tget);", 
                     "C_call_list": "get", 
-                    "C_name": "AA_func1", 
+                    "C_name": "AA_func_ptr1", 
                     "C_prototype": "void ( * get)(\t)", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_call": "c_func1", 
-                    "F_C_name": "func1", 
+                    "F_C_call": "c_func_ptr1", 
+                    "F_C_name": "func_ptr1", 
                     "F_arg_c_call": "get", 
                     "F_arguments": "get", 
-                    "F_call_code": "call c_func1(get)", 
-                    "F_name_function": "func1", 
-                    "F_name_generic": "func1", 
-                    "F_name_impl": "func1", 
+                    "F_call_code": "call c_func_ptr1(get)", 
+                    "F_name_function": "func_ptr1", 
+                    "F_name_generic": "func_ptr1", 
+                    "F_name_impl": "func_ptr1", 
                     "F_subprogram": "subroutine", 
-                    "LUA_name": "func1", 
-                    "LUA_name_impl": "l_func1", 
-                    "PY_name_impl": "PP_func1", 
+                    "LUA_name": "FuncPtr1", 
+                    "LUA_name_impl": "l_func_ptr1", 
+                    "PY_name_impl": "PP_func_ptr1", 
                     "c_const": "", 
-                    "function_name": "func1", 
-                    "underscore_name": "func1"
+                    "function_name": "FuncPtr1", 
+                    "underscore_name": "func_ptr1"
                 }, 
                 "options": {}
             }, 
@@ -5697,7 +5697,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "func2", 
+                        "name": "FuncPtr2", 
                         "pointer": []
                     }, 
                     "fattrs": {}, 
@@ -5738,33 +5738,33 @@
                         "void"
                     ]
                 }, 
-                "decl": "void func2(double * (*get)());", 
-                "declgen": "void func2(double * ( * get) +intent(in)())", 
+                "decl": "void FuncPtr2(double * (*get)());", 
+                "declgen": "void FuncPtr2(double * ( * get) +intent(in)())", 
                 "doxygen": {
                     "brief": "return a pointer"
                 }, 
                 "format": {
-                    "C_call_code": "func2(\tget);", 
+                    "C_call_code": "FuncPtr2(\tget);", 
                     "C_call_list": "get", 
-                    "C_name": "AA_func2", 
+                    "C_name": "AA_func_ptr2", 
                     "C_prototype": "double * ( * get)(\t)", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_call": "c_func2", 
-                    "F_C_name": "func2", 
+                    "F_C_call": "c_func_ptr2", 
+                    "F_C_name": "func_ptr2", 
                     "F_arg_c_call": "get", 
                     "F_arguments": "get", 
-                    "F_call_code": "call c_func2(get)", 
-                    "F_name_function": "func2", 
-                    "F_name_generic": "func2", 
-                    "F_name_impl": "func2", 
+                    "F_call_code": "call c_func_ptr2(get)", 
+                    "F_name_function": "func_ptr2", 
+                    "F_name_generic": "func_ptr2", 
+                    "F_name_impl": "func_ptr2", 
                     "F_subprogram": "subroutine", 
-                    "LUA_name": "func2", 
-                    "LUA_name_impl": "l_func2", 
-                    "PY_name_impl": "PP_func2", 
+                    "LUA_name": "FuncPtr2", 
+                    "LUA_name_impl": "l_func_ptr2", 
+                    "PY_name_impl": "PP_func_ptr2", 
                     "c_const": "", 
-                    "function_name": "func2", 
-                    "underscore_name": "func2"
+                    "function_name": "FuncPtr2", 
+                    "underscore_name": "func_ptr2"
                 }, 
                 "options": {}
             }, 
@@ -5926,7 +5926,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "FuncPtr3a", 
+                        "name": "FuncPtr4", 
                         "pointer": []
                     }, 
                     "fattrs": {}, 
@@ -5987,30 +5987,30 @@
                         "void"
                     ]
                 }, 
-                "decl": "void FuncPtr3a(double (*get)(double, int));", 
-                "declgen": "void FuncPtr3a(double ( * get) +intent(in)+value(double +value, int +value))", 
+                "decl": "void FuncPtr4(double (*get)(double, int));", 
+                "declgen": "void FuncPtr4(double ( * get) +intent(in)+value(double +value, int +value))", 
                 "doxygen": {
                     "brief": "abstract argument"
                 }, 
                 "format": {
-                    "C_call_code": "FuncPtr3a(\tget);", 
+                    "C_call_code": "FuncPtr4(\tget);", 
                     "C_call_list": "get", 
-                    "C_name": "AA_func_ptr3a", 
+                    "C_name": "AA_func_ptr4", 
                     "C_prototype": "double ( * get)(\tdouble,\t int)", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_call": "c_func_ptr3a", 
-                    "F_C_name": "c_func_ptr3a", 
+                    "F_C_call": "c_func_ptr4", 
+                    "F_C_name": "c_func_ptr4", 
                     "F_arg_c_call": "get", 
                     "F_arguments": "get", 
-                    "F_call_code": "call c_func_ptr3a(get)", 
-                    "F_name_function": "func_ptr3a", 
-                    "F_name_generic": "func_ptr3a", 
-                    "F_name_impl": "func_ptr3a", 
+                    "F_call_code": "call c_func_ptr4(get)", 
+                    "F_name_function": "func_ptr4", 
+                    "F_name_generic": "func_ptr4", 
+                    "F_name_impl": "func_ptr4", 
                     "F_subprogram": "subroutine", 
                     "c_const": "", 
-                    "function_name": "FuncPtr3a", 
-                    "underscore_name": "func_ptr3a"
+                    "function_name": "FuncPtr4", 
+                    "underscore_name": "func_ptr4"
                 }, 
                 "options": {
                     "F_abstract_interface_argument_template": "XX{index}arg", 
@@ -6062,7 +6062,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "func4", 
+                        "name": "FuncPtr5", 
                         "pointer": []
                     }, 
                     "fattrs": {}, 
@@ -6229,30 +6229,30 @@
                         "void"
                     ]
                 }, 
-                "decl": "void func4(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))", 
-                "declgen": "void func4(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))", 
+                "decl": "void FuncPtr5(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))", 
+                "declgen": "void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))", 
                 "format": {
-                    "C_call_code": "func4(\tget);", 
+                    "C_call_code": "FuncPtr5(\tget);", 
                     "C_call_list": "get", 
-                    "C_name": "AA_func4", 
+                    "C_name": "AA_func_ptr5", 
                     "C_prototype": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_call": "c_func4", 
-                    "F_C_name": "func4", 
+                    "F_C_call": "c_func_ptr5", 
+                    "F_C_name": "func_ptr5", 
                     "F_arg_c_call": "get", 
                     "F_arguments": "get", 
-                    "F_call_code": "call c_func4(get)", 
-                    "F_name_function": "func4", 
-                    "F_name_generic": "func4", 
-                    "F_name_impl": "func4", 
+                    "F_call_code": "call c_func_ptr5(get)", 
+                    "F_name_function": "func_ptr5", 
+                    "F_name_generic": "func_ptr5", 
+                    "F_name_impl": "func_ptr5", 
                     "F_subprogram": "subroutine", 
-                    "LUA_name": "func4", 
-                    "LUA_name_impl": "l_func4", 
-                    "PY_name_impl": "PP_func4", 
+                    "LUA_name": "FuncPtr5", 
+                    "LUA_name_impl": "l_func_ptr5", 
+                    "PY_name_impl": "PP_func_ptr5", 
                     "c_const": "", 
-                    "function_name": "func4", 
-                    "underscore_name": "func4"
+                    "function_name": "FuncPtr5", 
+                    "underscore_name": "func_ptr5"
                 }, 
                 "options": {}
             }, 

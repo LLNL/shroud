@@ -313,10 +313,10 @@ functions:
   - decl: void testgroup2(const DataGroup * grp)
 
 # function pointers
-  - decl: void func1(void (*get)());
+  - decl: void FuncPtr1(void (*get)());
     doxygen:
       brief: subroutine
-  - decl: void func2(double * (*get)());
+  - decl: void FuncPtr2(double * (*get)());
     doxygen:
       brief: return a pointer
   - decl: void FuncPtr3(double (*get)(int i, int));
@@ -324,7 +324,7 @@ functions:
       brief: abstract argument
     options:
       F_force_wrapper: True
-  - decl: void FuncPtr3a(double (*get)(double, int));
+  - decl: void FuncPtr4(double (*get)(double, int));
     doxygen:
       brief: abstract argument
     options:
@@ -333,7 +333,7 @@ functions:
       F_force_wrapper: True
       F_abstract_interface_subprogram_template: custom_funptr
       F_abstract_interface_argument_template: XX{index}arg
-  - decl: void func4(void (*get)(int verylongname1, 
+  - decl: void FuncPtr5(void (*get)(int verylongname1, 
                                  int verylongname2, 
                                  int verylongname3, 
                                  int verylongname4, 

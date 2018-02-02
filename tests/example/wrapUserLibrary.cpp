@@ -223,32 +223,32 @@ void AA_testgroup2(const SIDRE_group * grp)
 // splicer end function.testgroup2
 }
 
-// void func1(void ( * get) +intent(in)+value())
+// void FuncPtr1(void ( * get) +intent(in)+value())
 // function_index=60
 /**
  * \brief subroutine
  *
  */
-void AA_func1(void ( * get)())
+void AA_func_ptr1(void ( * get)())
 {
-// splicer begin function.func1
-    func1(get);
+// splicer begin function.func_ptr1
+    FuncPtr1(get);
     return;
-// splicer end function.func1
+// splicer end function.func_ptr1
 }
 
-// void func2(double * ( * get) +intent(in)())
+// void FuncPtr2(double * ( * get) +intent(in)())
 // function_index=61
 /**
  * \brief return a pointer
  *
  */
-void AA_func2(double * ( * get)())
+void AA_func_ptr2(double * ( * get)())
 {
-// splicer begin function.func2
-    func2(get);
+// splicer begin function.func_ptr2
+    FuncPtr2(get);
     return;
-// splicer end function.func2
+// splicer end function.func_ptr2
 }
 
 // void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
@@ -265,31 +265,31 @@ void AA_func_ptr3(double ( * get)(int i, int))
 // splicer end function.func_ptr3
 }
 
-// void FuncPtr3a(double ( * get) +intent(in)+value(double +value, int +value))
+// void FuncPtr4(double ( * get) +intent(in)+value(double +value, int +value))
 // function_index=63
 /**
  * \brief abstract argument
  *
  */
-void AA_func_ptr3a(double ( * get)(double, int))
+void AA_func_ptr4(double ( * get)(double, int))
 {
-// splicer begin function.func_ptr3a
-    FuncPtr3a(get);
+// splicer begin function.func_ptr4
+    FuncPtr4(get);
     return;
-// splicer end function.func_ptr3a
+// splicer end function.func_ptr4
 }
 
-// void func4(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
+// void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
 // function_index=64
-void AA_func4(void ( * get)(int verylongname1, int verylongname2,
+void AA_func_ptr5(void ( * get)(int verylongname1, int verylongname2,
     int verylongname3, int verylongname4, int verylongname5,
     int verylongname6, int verylongname7, int verylongname8,
     int verylongname9, int verylongname10))
 {
-// splicer begin function.func4
-    func4(get);
+// splicer begin function.func_ptr5
+    FuncPtr5(get);
     return;
-// splicer end function.func4
+// splicer end function.func_ptr5
 }
 
 // void verlongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))

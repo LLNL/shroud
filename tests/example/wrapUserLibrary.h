@@ -101,15 +101,15 @@ void AA_testgroup1(SIDRE_group * grp);
 
 void AA_testgroup2(const SIDRE_group * grp);
 
-void AA_func1(void ( * get)());
+void AA_func_ptr1(void ( * get)());
 
-void AA_func2(double * ( * get)());
+void AA_func_ptr2(double * ( * get)());
 
 void AA_func_ptr3(double ( * get)(int i, int));
 
-void AA_func_ptr3a(double ( * get)(double, int));
+void AA_func_ptr4(double ( * get)(double, int));
 
-void AA_func4(void ( * get)(int verylongname1, int verylongname2,
+void AA_func_ptr5(void ( * get)(int verylongname1, int verylongname2,
     int verylongname3, int verylongname4, int verylongname5,
     int verylongname6, int verylongname7, int verylongname8,
     int verylongname9, int verylongname10));
