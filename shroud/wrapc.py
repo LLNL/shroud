@@ -684,7 +684,7 @@ class Wrapc(util.WrapperMixin):
             impl = self.impl
             impl.append('')
             if options.debug:
-                impl.append('// %s' % node.declgen)
+                impl.append('// ' + node.declgen)
                 impl.append('// function_index=%d' % node._function_index)
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)

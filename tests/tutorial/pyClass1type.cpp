@@ -60,6 +60,7 @@ PY_class1_delete(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// ~Class1() +name(delete)
 // splicer begin class.Class1.method.delete
     delete self->obj;
     self->obj = NULL;
@@ -77,6 +78,7 @@ PY_class1_method1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void Method1()
 // splicer begin class.Class1.method.method1
     self->obj->Method1();
     Py_RETURN_NONE;

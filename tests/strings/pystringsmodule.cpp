@@ -61,6 +61,7 @@ PY_pass_char(
   PyObject *args,
   PyObject *kwds)
 {
+// void passChar(char_scalar status +intent(in)+value)
 // splicer begin function.pass_char
     char status;
     const char *SH_kwcpp = "status";
@@ -89,6 +90,7 @@ PY_return_char(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// char_scalar returnChar()
 // splicer begin function.return_char
     char rv = returnChar();
     PyObject * SH_Py_rv = PyString_FromStringAndSize(&rv, 1);
@@ -106,6 +108,7 @@ PY_pass_char_ptr_in_out(
   PyObject *args,
   PyObject *kwds)
 {
+// void passCharPtrInOut(char * s +intent(inout))
 // splicer begin function.pass_char_ptr_in_out
     char * s;
     const char *SH_kwcpp = "s";
@@ -135,6 +138,7 @@ PY_get_char1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const char * getChar1() +pure
 // splicer begin function.get_char1
     const char * rv = getChar1();
     PyObject * SH_Py_rv = PyString_FromString(rv);
@@ -152,6 +156,7 @@ PY_get_char2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const char * getChar2 +len(30)()
 // splicer begin function.get_char2
     const char * rv = getChar2();
     PyObject * SH_Py_rv = PyString_FromString(rv);
@@ -169,6 +174,7 @@ PY_get_char3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const char * getChar3()
 // splicer begin function.get_char3
     const char * rv = getChar3();
     PyObject * SH_Py_rv = PyString_FromString(rv);
@@ -186,6 +192,7 @@ PY_get_string1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string & getString1() +pure
 // splicer begin function.get_string1
     const std::string & rv = getString1();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -203,6 +210,7 @@ PY_get_string2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string & getString2 +len(30)()
 // splicer begin function.get_string2
     const std::string & rv = getString2();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -220,6 +228,7 @@ PY_get_string3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string & getString3()
 // splicer begin function.get_string3
     const std::string & rv = getString3();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -237,6 +246,7 @@ PY_get_string2_empty(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string & getString2_empty +len(30)()
 // splicer begin function.get_string2_empty
     const std::string & rv = getString2_empty();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -254,6 +264,7 @@ PY_get_string5(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string getString5 +len(30)()
 // splicer begin function.get_string5
     const std::string rv = getString5();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -271,6 +282,7 @@ PY_get_string6(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string getString6()
 // splicer begin function.get_string6
     const std::string rv = getString6();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -288,6 +300,7 @@ PY_get_string7(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string * getString7 +len(30)()
 // splicer begin function.get_string7
     const std::string * rv = getString7();
     PyObject * SH_Py_rv = PyString_FromString(rv->c_str());
@@ -305,6 +318,7 @@ PY_accept_string_const_reference(
   PyObject *args,
   PyObject *kwds)
 {
+// void acceptStringConstReference(const std::string & arg1 +intent(in))
 // splicer begin function.accept_string_const_reference
     const char * arg1;
     const char *SH_kwcpp = "arg1";
@@ -334,6 +348,7 @@ PY_accept_string_reference_out(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void acceptStringReferenceOut(std::string & arg1 +intent(out))
 // splicer begin function.accept_string_reference_out
     std::string SH_arg1;
     acceptStringReferenceOut(SH_arg1);
@@ -352,6 +367,7 @@ PY_accept_string_reference(
   PyObject *args,
   PyObject *kwds)
 {
+// void acceptStringReference(std::string & arg1 +intent(inout))
 // splicer begin function.accept_string_reference
     char * arg1;
     const char *SH_kwcpp = "arg1";
@@ -382,6 +398,7 @@ PY_accept_string_pointer(
   PyObject *args,
   PyObject *kwds)
 {
+// void acceptStringPointer(std::string * arg1 +intent(inout))
 // splicer begin function.accept_string_pointer
     char * arg1;
     const char *SH_kwcpp = "arg1";
@@ -412,6 +429,7 @@ PY_return_strings(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))
 // splicer begin function.return_strings
     std::string SH_arg1;
     std::string SH_arg2;
@@ -430,6 +448,7 @@ PY_explicit1(
   PyObject *args,
   PyObject *kwds)
 {
+// void explicit1(char * name +intent(in)+len_trim(AAlen))
 // splicer begin function.explicit1
     char * name;
     const char *SH_kwcpp = "name";
@@ -458,6 +477,7 @@ PY_cpass_char(
   PyObject *args,
   PyObject *kwds)
 {
+// void CpassChar(char_scalar status +intent(in)+value)
 // splicer begin function.cpass_char
     char status;
     const char *SH_kwcpp = "status";
@@ -486,6 +506,7 @@ PY_creturn_char(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// char_scalar CreturnChar()
 // splicer begin function.creturn_char
     char rv = CreturnChar();
     PyObject * SH_Py_rv = PyString_FromStringAndSize(&rv, 1);

@@ -61,6 +61,7 @@ PY_function1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void Function1()
 // splicer begin function.function1
     Function1();
     Py_RETURN_NONE;
@@ -77,6 +78,7 @@ PY_function2(
   PyObject *args,
   PyObject *kwds)
 {
+// double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 // splicer begin function.function2
     double arg1;
     int arg2;
@@ -107,6 +109,7 @@ PY_sum(
   PyObject *args,
   PyObject *kwds)
 {
+// void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))
 // splicer begin function.sum
     int len;
     int * values;
@@ -137,6 +140,7 @@ PY_function3(
   PyObject *args,
   PyObject *kwds)
 {
+// bool Function3(bool arg +intent(in)+value)
 // splicer begin function.function3
     PyObject * SH_Py_arg;
     char *SH_kw_list[] = {
@@ -166,6 +170,7 @@ PY_function3b(
   PyObject *args,
   PyObject *kwds)
 {
+// void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 // splicer begin function.function3b
     PyObject * SH_Py_arg1;
     PyObject * SH_Py_arg3;
@@ -200,6 +205,7 @@ PY_function4a(
   PyObject *args,
   PyObject *kwds)
 {
+// char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))
 // splicer begin function.function4a
     const char * arg1;
     const char * arg2;

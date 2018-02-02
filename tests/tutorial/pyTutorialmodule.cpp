@@ -63,6 +63,7 @@ PY_function1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void Function1()
 // splicer begin function.function1
     Function1();
     Py_RETURN_NONE;
@@ -79,6 +80,7 @@ PY_function2(
   PyObject *args,
   PyObject *kwds)
 {
+// double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 // splicer begin function.function2
     double arg1;
     int arg2;
@@ -112,6 +114,7 @@ PY_type_long_long(
   PyObject *args,
   PyObject *kwds)
 {
+// long long TypeLongLong(long long arg1 +intent(in)+value)
 // splicer begin function.type_long_long
     long long arg1;
     const char *SH_kwcpp = "arg1";
@@ -141,6 +144,7 @@ PY_function3(
   PyObject *args,
   PyObject *kwds)
 {
+// bool Function3(bool arg +intent(in)+value)
 // splicer begin function.function3
     PyObject * SH_Py_arg;
     const char *SH_kwcpp = "arg";
@@ -171,6 +175,7 @@ PY_function4a(
   PyObject *args,
   PyObject *kwds)
 {
+// const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
 // splicer begin function.function4a
     const char * arg1;
     const char * arg2;
@@ -206,6 +211,7 @@ PY_function4b(
   PyObject *args,
   PyObject *kwds)
 {
+// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
 // splicer begin function.function4b
     const char * arg1;
     const char * arg2;
@@ -241,6 +247,7 @@ PY_function5_arg1_arg2(
   PyObject *args,
   PyObject *kwds)
 {
+// double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
 // splicer begin function.function5
     Py_ssize_t SH_nargs = 0;
     double arg1;
@@ -285,6 +292,7 @@ PY_function6_from_name(
   PyObject *args,
   PyObject *kwds)
 {
+// void Function6(const std::string & name +intent(in))
 // splicer begin function.function6_from_name
     const char * name;
     const char *SH_kwcpp = "name";
@@ -310,6 +318,7 @@ PY_function6_from_index(
   PyObject *args,
   PyObject *kwds)
 {
+// void Function6(int indx +intent(in)+value)
 // splicer begin function.function6_from_index
     int indx;
     const char *SH_kwcpp = "indx";
@@ -338,6 +347,7 @@ PY_function9(
   PyObject *args,
   PyObject *kwds)
 {
+// void Function9(double arg +intent(in)+value)
 // splicer begin function.function9
     double arg;
     const char *SH_kwcpp = "arg";
@@ -362,6 +372,7 @@ PY_function10_0(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void Function10()
 // splicer begin function.function10_0
     Function10();
     Py_RETURN_NONE;
@@ -374,6 +385,7 @@ PY_function10_1(
   PyObject *args,
   PyObject *kwds)
 {
+// void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
 // splicer begin function.function10_1
     const char * name;
     double arg2;
@@ -403,6 +415,7 @@ PY_overload1_num_offset_stride(
   PyObject *args,
   PyObject *kwds)
 {
+// int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
 // splicer begin function.overload1_num_offset_stride
     Py_ssize_t SH_nargs = 0;
     int num;
@@ -449,6 +462,7 @@ PY_overload1_5(
   PyObject *args,
   PyObject *kwds)
 {
+// int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
 // splicer begin function.overload1_5
     Py_ssize_t SH_nargs = 0;
     double type;
@@ -502,6 +516,7 @@ PY_typefunc(
   PyObject *args,
   PyObject *kwds)
 {
+// TypeID typefunc(TypeID arg +intent(in)+value)
 // splicer begin function.typefunc
     int arg;
     const char *SH_kwcpp = "arg";
@@ -531,6 +546,7 @@ PY_enumfunc(
   PyObject *args,
   PyObject *kwds)
 {
+// EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
 // splicer begin function.enumfunc
     int arg;
     const char *SH_kwcpp = "arg";
@@ -560,6 +576,7 @@ PY_useclass(
   PyObject *args,
   PyObject *kwds)
 {
+// void useclass(const Class1 * arg1 +intent(in)+value)
 // splicer begin function.useclass
     PY_Class1 * SH_Py_arg1;
     const char *SH_kwcpp = "arg1";
@@ -589,6 +606,7 @@ PY_last_function_called(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const std::string & LastFunctionCalled() +pure
 // splicer begin function.last_function_called
     const std::string & rv = LastFunctionCalled();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());

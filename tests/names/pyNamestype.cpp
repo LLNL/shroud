@@ -58,6 +58,7 @@ PY_names_method1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void method1()
 // splicer begin class.Names.method.method1
     self->obj->method1();
     Py_RETURN_NONE;
@@ -74,6 +75,7 @@ PY_names_method2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void method2()
 // splicer begin class.Names.method.method2
     self->obj->method2();
     Py_RETURN_NONE;

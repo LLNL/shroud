@@ -188,6 +188,7 @@ PP_exclass2_dtor(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// ~ExClass2()
 // splicer begin class.ExClass2.method.dtor
     delete self->obj;
     self->obj = NULL;
@@ -205,6 +206,7 @@ PP_exclass2_get_name(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 // splicer begin class.ExClass2.method.get_name
     const std::string & rv = self->obj->getName();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -222,6 +224,7 @@ PP_exclass2_get_name2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string & getName2()
 // splicer begin class.ExClass2.method.get_name2
     const std::string & rv = self->obj->getName2();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -239,6 +242,7 @@ PP_exclass2_get_name3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// string & getName3() const
 // splicer begin class.ExClass2.method.get_name3
     std::string & rv = self->obj->getName3();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -256,6 +260,7 @@ PP_exclass2_get_name4(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// string & getName4()
 // splicer begin class.ExClass2.method.get_name4
     std::string & rv = self->obj->getName4();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -273,6 +278,7 @@ PP_exclass2_get_name_length(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// int GetNameLength() const
 // splicer begin class.ExClass2.method.get_name_length
     int rv = self->obj->GetNameLength();
     PyObject * SH_Py_rv = PyInt_FromLong(rv);
@@ -290,6 +296,7 @@ PP_exclass2_get_class1(
   PyObject *args,
   PyObject *kwds)
 {
+// ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
 // splicer begin class.ExClass2.method.get_class1
     PP_ExClass1 * SH_Py_in;
     const char *SH_kwcpp = "in";
@@ -321,6 +328,7 @@ PP_exclass2_declare_1(
   PyObject *args,
   PyObject *kwds)
 {
+// void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
 // splicer begin class.ExClass2.method.declare
     Py_ssize_t SH_nargs = 0;
     int type;
@@ -363,6 +371,7 @@ PP_exclass2_destroyall(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void destroyall()
 // splicer begin class.ExClass2.method.destroyall
     self->obj->destroyall();
     Py_RETURN_NONE;
@@ -379,6 +388,7 @@ PP_exclass2_get_type_id(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// TypeID getTypeID() const
 // splicer begin class.ExClass2.method.get_type_id
     TypeID rv = self->obj->getTypeID();
     PyObject * SH_Py_rv = PyInt_FromLong(rv);

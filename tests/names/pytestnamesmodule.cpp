@@ -61,6 +61,7 @@ PY_function1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void function1()
 // splicer begin function.function1
     function1();
     Py_RETURN_NONE;
@@ -77,6 +78,7 @@ PY_function2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void function2()
 // splicer begin function.function2
     function2();
     Py_RETURN_NONE;
@@ -89,6 +91,7 @@ PY_function3a_0(
   PyObject *args,
   PyObject *kwds)
 {
+// void function3a(int i +intent(in)+value)
 // splicer begin function.function3a_0
     int i;
     const char *SH_kwcpp = "i";
@@ -113,6 +116,7 @@ PY_function3a_1(
   PyObject *args,
   PyObject *kwds)
 {
+// void function3a(long i +intent(in)+value)
 // splicer begin function.function3a_1
     long i;
     const char *SH_kwcpp = "i";
@@ -141,6 +145,7 @@ PY_function4(
   PyObject *args,
   PyObject *kwds)
 {
+// int function4(const std::string & rv +intent(in))
 // splicer begin function.function4
     const char * rv;
     const char *SH_kwcpp = "rv";
@@ -171,6 +176,7 @@ PY_fiveplus(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void function5() +name(fiveplus)
 // splicer begin function.fiveplus
     fiveplus();
     Py_RETURN_NONE;

@@ -82,6 +82,7 @@ PP_exclass1_dtor(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// ~ExClass1()
 // splicer begin class.ExClass1.method.dtor
     delete self->obj;
     self->obj = NULL;
@@ -99,6 +100,7 @@ PP_exclass1_increment_count(
   PyObject *args,
   PyObject *kwds)
 {
+// int incrementCount(int incr +intent(in)+value)
 // splicer begin class.ExClass1.method.increment_count
     int incr;
     const char *SH_kwcpp = "incr";
@@ -128,6 +130,7 @@ PP_exclass1_get_name(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const
 // splicer begin class.ExClass1.method.get_name
     const std::string & rv = self->obj->getName();
     if (! isNameValid(rv)) {
@@ -150,6 +153,7 @@ PP_exclass1_get_name_length(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// int GetNameLength() const
 // splicer begin class.ExClass1.method.get_name_length
     int rv = self->obj->GetNameLength();
     PyObject * SH_Py_rv = PyInt_FromLong(rv);
@@ -167,6 +171,7 @@ PP_exclass1_get_name_error_check(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string & getNameErrorCheck() const
 // splicer begin class.ExClass1.method.get_name_error_check
     const std::string & rv = self->obj->getNameErrorCheck();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -184,6 +189,7 @@ PP_exclass1_get_name_arg(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// const string & getNameArg() const
 // splicer begin class.ExClass1.method.get_name_arg
     const std::string & rv = self->obj->getNameArg();
     PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
@@ -201,6 +207,7 @@ PP_exclass1_get_root(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// ExClass2 * getRoot()
 // splicer begin class.ExClass1.method.get_root
     ExClass2 * rv = self->obj->getRoot();
     PP_ExClass2 * SH_Py_rv = PyObject_New(PP_ExClass2, &PP_ExClass2_Type);
@@ -215,6 +222,7 @@ PP_exclass1_get_value_from_int(
   PyObject *args,
   PyObject *kwds)
 {
+// int getValue(int value +intent(in)+value)
 // splicer begin class.ExClass1.method.get_value_from_int
     int value;
     const char *SH_kwcpp = "value";
@@ -240,6 +248,7 @@ PP_exclass1_get_value_1(
   PyObject *args,
   PyObject *kwds)
 {
+// long getValue(long value +intent(in)+value)
 // splicer begin class.ExClass1.method.get_value_1
     long value;
     const char *SH_kwcpp = "value";
@@ -269,6 +278,7 @@ PP_exclass1_get_addr(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void * getAddr()
 // splicer begin class.ExClass1.method.get_addr
     void * rv = self->obj->getAddr();
     PyObject * SH_Py_rv = PyCapsule_New(rv, NULL, NULL);
@@ -286,6 +296,7 @@ PP_exclass1_has_addr(
   PyObject *args,
   PyObject *kwds)
 {
+// bool hasAddr(bool in +intent(in)+value)
 // splicer begin class.ExClass1.method.has_addr
     PyObject * SH_Py_in;
     const char *SH_kwcpp = "in";
@@ -316,6 +327,7 @@ PP_exclass1_splicer_special(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void SplicerSpecial()
 // splicer begin class.ExClass1.method.splicer_special
     self->obj->SplicerSpecial();
     Py_RETURN_NONE;

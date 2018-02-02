@@ -63,6 +63,7 @@ PP_local_function1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// void local_function1()
 // splicer begin function.local_function1
     local_function1();
     Py_RETURN_NONE;
@@ -79,6 +80,7 @@ PP_is_name_valid(
   PyObject *args,
   PyObject *kwds)
 {
+// bool isNameValid(const std::string & name +intent(in))
 // splicer begin function.is_name_valid
     const char * name;
     const char *SH_kwcpp = "name";
@@ -109,6 +111,7 @@ PP_is_initialized(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// bool isInitialized()
 // splicer begin function.is_initialized
     bool rv = isInitialized();
     PyObject * SH_Py_rv = PyBool_FromLong(rv);
@@ -126,6 +129,7 @@ PP_check_bool(
   PyObject *args,
   PyObject *kwds)
 {
+// void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 // splicer begin function.check_bool
     PyObject * SH_Py_arg1;
     PyObject * SH_Py_arg3;
@@ -159,6 +163,7 @@ PP_test_names(
   PyObject *args,
   PyObject *kwds)
 {
+// void test_names(const std::string & name +intent(in))
 // splicer begin function.test_names
     const char * name;
     const char *SH_kwcpp = "name";
@@ -184,6 +189,7 @@ PP_test_names_flag(
   PyObject *args,
   PyObject *kwds)
 {
+// void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
 // splicer begin function.test_names_flag
     const char * name;
     int flag;
@@ -217,6 +223,7 @@ PP_testoptional_2(
   PyObject *args,
   PyObject *kwds)
 {
+// void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
 // splicer begin function.testoptional
     Py_ssize_t SH_nargs = 0;
     int i;
@@ -262,6 +269,7 @@ PP_test_size_t(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
+// size_t test_size_t()
 // splicer begin function.test_size_t
     size_t rv = test_size_t();
     PyObject * SH_Py_rv = PyInt_FromSize_t(rv);
@@ -279,6 +287,7 @@ PP_testmpi(
   PyObject *args,
   PyObject *kwds)
 {
+// void testmpi(MPI_Comm comm +intent(in)+value)
 // splicer begin function.testmpi
     MPI_Fint comm;
     const char *SH_kwcpp = "comm";
@@ -307,6 +316,7 @@ PP_testgroup1(
   PyObject *args,
   PyObject *kwds)
 {
+// void testgroup1(DataGroup * grp +intent(in)+value)
 // splicer begin function.testgroup1
     PyObject * SH_Py_grp;
     const char *SH_kwcpp = "grp";
@@ -336,6 +346,7 @@ PP_testgroup2(
   PyObject *args,
   PyObject *kwds)
 {
+// void testgroup2(const DataGroup * grp +intent(in)+value)
 // splicer begin function.testgroup2
     PyObject * SH_Py_grp;
     const char *SH_kwcpp = "grp";
@@ -365,6 +376,7 @@ PP_func_ptr1(
   PyObject *args,
   PyObject *kwds)
 {
+// void FuncPtr1(void ( * get) +intent(in)+value())
 // splicer begin function.func_ptr1
     void ( * get)();
     const char *SH_kwcpp = "get";
@@ -393,6 +405,7 @@ PP_func_ptr2(
   PyObject *args,
   PyObject *kwds)
 {
+// void FuncPtr2(double * ( * get) +intent(in)())
 // splicer begin function.func_ptr2
     double * ( * get)();
     const char *SH_kwcpp = "get";
@@ -421,6 +434,7 @@ PP_func_ptr3(
   PyObject *args,
   PyObject *kwds)
 {
+// void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
 // splicer begin function.func_ptr3
     double ( * get)(int i, int);
     const char *SH_kwcpp = "get";
@@ -449,6 +463,7 @@ PP_func_ptr5(
   PyObject *args,
   PyObject *kwds)
 {
+// void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
 // splicer begin function.func_ptr5
     void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10);
     const char *SH_kwcpp = "get";
@@ -477,6 +492,7 @@ PP_verlongfunctionname1(
   PyObject *args,
   PyObject *kwds)
 {
+// void verlongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
 // splicer begin function.verlongfunctionname1
     int * verylongname1;
     int * verylongname2;
@@ -539,6 +555,7 @@ PP_verlongfunctionname2(
   PyObject *args,
   PyObject *kwds)
 {
+// int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
 // splicer begin function.verlongfunctionname2
     int verylongname1;
     int verylongname2;

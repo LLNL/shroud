@@ -331,7 +331,7 @@ return 1;""", fmt)
         for function in functions:
             self.wrap_function(cls, function)
 
-        self.multi_dispatch(cls, functions)
+        self.multi_dispatch(functions)
 
     def wrap_function(self, cls, node):
         """Write a Python wrapper for a C++ function.
@@ -688,11 +688,11 @@ return 1;""", fmt)
             fmt = util.Scope(fmt)
             fmt.function_suffix = ''
 
-        self.create_method(cls, expose, fmt, PY_impl)
+        self.create_method(node, expose, fmt, PY_impl)
 
-    def create_method(self, cls, expose, fmt, PY_impl):
+    def create_method(self, node, expose, fmt, PY_impl):
         """Format the function.
-        cls     = True if class
+        node    = function node to wrap
         expose  = True if expose to user
         fmt     = dictionary of format values
         PY_impl = list of implementation lines
@@ -735,6 +735,8 @@ return 1;""", fmt)
 # produce several methods.
 # XXX - make splicer name customizable?
 #        self._create_splicer(fmt.function_name, self.PyMethodBody, PY_impl)
+        if node and node.options.debug:
+            self.PyMethodBody.append('// ' + node.declgen)
         self._create_splicer(fmt.underscore_name + fmt.function_suffix,
                              self.PyMethodBody, PY_impl)
         self.PyMethodBody.append('}')
@@ -825,7 +827,7 @@ return 1;""", fmt)
 
         self.write_output_file(fname, self.config.python_dir, output)
 
-    def multi_dispatch(self, cls, methods):
+    def multi_dispatch(self, methods):
         """Look for overloaded methods.
         When found, create a method which will call each of the
         overloaded methods looking for the one which will accept
@@ -885,7 +887,7 @@ return 1;""", fmt)
 
             methods[0].eval_template('PY_name_impl', fmt=fmt)
 
-            self.create_method(cls, True, fmt, body)
+            self.create_method(None, True, fmt, body)
 
     def write_header(self, node):
         # node is library
