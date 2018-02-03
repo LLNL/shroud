@@ -614,7 +614,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             else:
                 fmt.cxx_deref = '.'
             fmt.cxx_var = fmt.LUA_result
-            fmt.c_var = wformat(result_typedef.cxx_to_c, fmt)  # if C++
+            if result_typedef.cxx_to_c:
+                fmt.c_var = wformat(result_typedef.cxx_to_c, fmt)  # if C++
+            else:
+                fmt.c_var = fmt.cxx_var
             fmt.LUA_used_param_state = True
             tmp = wformat(result_typedef.LUA_push, fmt)
             LUA_push.append(tmp + ';')

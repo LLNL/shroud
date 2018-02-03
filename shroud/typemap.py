@@ -58,7 +58,8 @@ class Typedef(object):
         ('typedef', None),        # Initialize from existing type
 
         ('cxx_type', None),       # Name of type in C++
-        ('cxx_to_c', '{cxx_var}'), # Expression to convert from C++ to C
+        ('cxx_to_c', None),       # Expression to convert from C++ to C
+                                  # None implies {cxx_var} i.e. no conversion
         ('cxx_header', None),     # Name of C++ header file required for implementation
                                   # For example, if cxx_to_c was a function
 

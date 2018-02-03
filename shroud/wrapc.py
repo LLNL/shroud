@@ -607,7 +607,7 @@ class Wrapc(util.WrapperMixin):
                 # The result is not passed back in an argument
                 c_statements = result_typedef.c_statements
                 intent_blk = c_statements.get('result', {})
-                if result_typedef.cxx_to_c != '{cxx_var}':
+                if result_typedef.cxx_to_c is not None:
                     # Make intermediate c_var value if a conversion
                     # is required i.e. not the same as cxx_var.
                     have_c_local_var = True
