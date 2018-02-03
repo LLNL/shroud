@@ -2860,10 +2860,11 @@
                                     "c_const": "", 
                                     "c_ptr": "", 
                                     "c_var": "type", 
-                                    "cxx_decl": "TypeID type", 
+                                    "cxx_decl": "TypeID SH_type", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "TypeID", 
-                                    "cxx_var": "type", 
+                                    "cxx_val": "getTypeID(type)", 
+                                    "cxx_var": "SH_type", 
                                     "py_var": "SH_Py_type"
                                 }
                             }
@@ -5282,10 +5283,11 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "comm", 
-                            "cxx_decl": "MPI_Comm comm", 
+                            "cxx_decl": "MPI_Comm SH_comm", 
                             "cxx_deref": ".", 
                             "cxx_type": "MPI_Comm", 
-                            "cxx_var": "comm", 
+                            "cxx_val": "MPI_Comm_f2c(comm)", 
+                            "cxx_var": "SH_comm", 
                             "py_var": "SH_Py_comm"
                         }
                     }

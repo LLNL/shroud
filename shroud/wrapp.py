@@ -438,8 +438,15 @@ return 1;""", fmt)
             attrs = arg.attrs
 
             arg_typedef = typemap.Typedef.lookup(arg.typename)
-            fmt_arg.cxx_type = arg_typedef.cxx_type
+            # Add formats used by py_statements
+            fmt_arg.cxx_type = arg_typedef.cxx_type  # used?
             fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
+
+            # non-strings should be scalars
+#            if arg_typedef.base == 'string':
+#                as_scalar = False
+#            else:
+#                as_scalar = True
 
             py_statements = arg_typedef.py_statements
             intent = attrs['intent']
@@ -470,19 +477,20 @@ return 1;""", fmt)
                         (len(cxx_call_list), len(post_parse),
                          ',\t '.join(cxx_call_list)))
 
+                # add argument to call to PyArg_ParseTypleAndKeywords
                 parse_format.append(arg_typedef.PY_format)
                 if arg_typedef.PY_PyTypeObject:
                     # Expect object of given type
                     parse_format.append('!')
                     parse_vargs.append('&' + arg_typedef.PY_PyTypeObject)
-                    arg_name = fmt_arg.py_var
+                    parse_vargs.append('&' + fmt_arg.py_var)
                 elif arg_typedef.PY_from_object:
                     # Use function to convert object
                     parse_format.append('&')
                     parse_vargs.append(arg_typedef.PY_from_object)
-
-                # add argument to call to PyArg_ParseTypleAndKeywords
-                parse_vargs.append('&' + arg_name)
+                    parse_vargs.append('&' + fmt_arg.cxx_var)
+                else:
+                    parse_vargs.append('&' + fmt_arg.c_var)
 
             if intent in ['inout', 'out']:
                 # output variable must be a pointer
@@ -527,11 +535,29 @@ return 1;""", fmt)
                     cxx_call_list.append(fmt_arg.cxx_var)
                 else:
                     cxx_call_list.append('*' + fmt_arg.cxx_var)
-            elif arg_typedef.c_to_cxx is None:
-                cxx_call_list.append(fmt_arg.c_var)
+            elif arg_typedef.c_to_cxx:
+                # Make intermediate C++ variable
+                # Helpful need to pass address of variable
+                fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
+                        name=fmt_arg.cxx_var, params=None, continuation=True)
+                fmt_arg.cxx_val = wformat(arg_typedef.c_to_cxx, fmt_arg)
+                append_format(post_parse, '{cxx_decl} = {cxx_val};', fmt_arg)
+                cxx_call_list.append(fmt_arg.cxx_var)
+                # If no need for intermediate, pass directly?
+                # append_format(cxx_call_list, fmt_arg.cxx_val)
             else:
-                # convert to C++ type
-                append_format(cxx_call_list, arg_typedef.c_to_cxx, fmt_arg)
+                cxx_call_list.append(fmt_arg.c_var)
+
+            """
+            elif as_scalar:
+                # cxx_var is a scalar
+                # XXX - convert to C++ type
+                if arg.is_pointer():
+                    cxx_call_list.append('&' + fmt_arg.cxx_var)
+                else:
+                    cxx_call_list.append(fmt_arg.cxx_var)
+"""
 
         if not arg_names:
             # no input arguments
@@ -597,9 +623,12 @@ return 1;""", fmt)
             if found_default:
                 PY_code.append('case %d:' % nargs)
                 PY_code.append(1)
-
-            fmt.PY_call_list = call_list
+                if len_post_parse:
+                    # Only add scope if necessary
+                    PY_code.append('{')
+                    PY_code.append(1)
             PY_code.extend(post_parse[:len_post_parse])
+            fmt.PY_call_list = call_list
 
             if is_dtor:
                 append_format(PY_code, 'delete self->{PY_obj};', fmt)
@@ -625,6 +654,9 @@ return 1;""", fmt)
             if found_default:
                 PY_code.append('break;')
                 PY_code.append(-1)
+                if len_post_parse:
+                    PY_code.append('}')
+                    PY_code.append(-1)
         if found_default:
             # PY_code.append('default:')
             # PY_code.append(1)

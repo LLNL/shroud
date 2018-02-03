@@ -301,7 +301,8 @@ PP_testmpi(
     {
         return NULL;
     }
-    testmpi(MPI_Comm_f2c(comm));
+    MPI_Comm SH_comm = MPI_Comm_f2c(comm);
+    testmpi(SH_comm);
     Py_RETURN_NONE;
 // splicer end function.testmpi
 }

@@ -4412,10 +4412,11 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
-                            "cxx_decl": "EnumTypeID arg", 
+                            "cxx_decl": "EnumTypeID SH_arg", 
                             "cxx_deref": ".", 
                             "cxx_type": "EnumTypeID", 
-                            "cxx_var": "arg", 
+                            "cxx_val": "static_cast<EnumTypeID>(arg)", 
+                            "cxx_var": "SH_arg", 
                             "py_var": "SH_Py_arg"
                         }
                     }

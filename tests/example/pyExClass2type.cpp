@@ -351,11 +351,17 @@ PP_exclass2_declare_1(
     }
     switch (SH_nargs) {
     case 1:
-        self->obj->declare(getTypeID(type));
-        break;
+        {
+            TypeID SH_type = getTypeID(type);
+            self->obj->declare(SH_type);
+            break;
+        }
     case 2:
-        self->obj->declare(getTypeID(type), len);
-        break;
+        {
+            TypeID SH_type = getTypeID(type);
+            self->obj->declare(SH_type, len);
+            break;
+        }
     }
     Py_RETURN_NONE;
 // splicer end class.ExClass2.method.declare

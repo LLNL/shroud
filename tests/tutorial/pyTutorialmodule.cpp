@@ -277,9 +277,11 @@ PY_function5_arg1_arg2(
         rv = Function5(arg1);
         break;
     case 2:
-        bool arg2 = PyObject_IsTrue(SH_Py_arg2);
-        rv = Function5(arg1, arg2);
-        break;
+        {
+            bool arg2 = PyObject_IsTrue(SH_Py_arg2);
+            rv = Function5(arg1, arg2);
+            break;
+        }
     }
     PyObject * SH_Py_rv = PyFloat_FromDouble(rv);
     return (PyObject *) SH_Py_rv;
@@ -560,7 +562,8 @@ PY_enumfunc(
     {
         return NULL;
     }
-    EnumTypeID rv = enumfunc(static_cast<EnumTypeID>(arg));
+    EnumTypeID SH_arg = static_cast<EnumTypeID>(arg);
+    EnumTypeID rv = enumfunc(SH_arg);
     PyObject * SH_Py_rv = PyInt_FromLong(rv);
     return (PyObject *) SH_Py_rv;
 // splicer end function.enumfunc
