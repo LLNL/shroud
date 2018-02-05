@@ -41,6 +41,7 @@ copyright:
 - '#######################################################################'
 
 # Wrap a C library
+# Many of the same function as Tutorial, but for C.
 
 library: Clibrary
 cxx_header: clibrary.h
@@ -226,6 +227,11 @@ functions:
 ##-   doxygen:
 ##-     brief: append '-like' to names.
 ##-
+
+-  decl: void  intargs(const int argin +intent(in),
+                             int * arginout +intent(inout),
+                             int * argout +intent(out))
+ 
 ##-##################################################
 ##-
 ##-# Used with testing

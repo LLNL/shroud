@@ -613,7 +613,7 @@ return 1;""", fmt)
         # If multiple calls, declare return value once
         # Else delare on call line.
         if found_default:
-            fmt.PY_rv_asgn = 'rv = '
+            fmt.PY_rv_asgn = fmt.PY_result + ' = '
             PY_code.append('switch (SH_nargs) {')
         else:
             fmt.PY_rv_asgn = fmt.PY_rv_decl + ' = '

@@ -121,6 +121,15 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
 
+        subroutine intargs(argin, arginout, argout) &
+                bind(C, name="intargs")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: argin
+            integer(C_INT), intent(INOUT) :: arginout
+            integer(C_INT), intent(OUT) :: argout
+        end subroutine intargs
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface

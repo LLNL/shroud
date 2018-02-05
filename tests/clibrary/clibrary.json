@@ -710,7 +710,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 6, 
+                "_PTR_F_C_index": 7, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -905,7 +905,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 6, 
+                "_function_index": 7, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -1008,6 +1008,178 @@
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
+            }, 
+            {
+                "_fmtargs": {
+                    "argin": {
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "argin", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "argin"
+                        }, 
+                        "fmtf": {
+                            "c_var": "argin", 
+                            "f_var": "argin"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "const ", 
+                            "c_ptr": "", 
+                            "c_var": "argin", 
+                            "cxx_decl": "const int argin", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "argin", 
+                            "py_var": "SH_Py_argin"
+                        }
+                    }, 
+                    "arginout": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arginout", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "arginout"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arginout", 
+                            "f_var": "arginout"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "arginout", 
+                            "cxx_decl": "int * arginout", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "arginout", 
+                            "py_var": "SH_Py_arginout"
+                        }
+                    }, 
+                    "argout": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "argout", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "argout"
+                        }, 
+                        "fmtf": {
+                            "c_var": "argout", 
+                            "f_var": "argout"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "argout", 
+                            "cxx_decl": "int * argout", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "argout", 
+                            "py_var": "SH_Py_argout"
+                        }
+                    }
+                }, 
+                "_function_index": 6, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "intargs", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "argin", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "inout", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arginout", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "intent": "out", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "argout", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void  intargs(const int argin +intent(in), int * arginout +intent(inout), int * argout +intent(out))", 
+                "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))", 
+                "format": {
+                    "C_call_code": "intargs(\targin,\t arginout,\t argout);", 
+                    "C_call_list": "argin,\t arginout,\t argout", 
+                    "C_name": "intargs", 
+                    "C_prototype": "const int argin,\t int * arginout,\t int * argout", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_intargs", 
+                    "F_C_name": "intargs", 
+                    "F_arg_c_call": "argin,\t arginout,\t argout", 
+                    "F_arguments": "argin,\t arginout,\t argout", 
+                    "F_call_code": "call c_intargs(argin,\t arginout,\t argout)", 
+                    "F_name_function": "intargs", 
+                    "F_name_generic": "intargs", 
+                    "F_name_impl": "intargs", 
+                    "F_subprogram": "subroutine", 
+                    "PY_name_impl": "PY_intargs", 
+                    "c_const": "", 
+                    "function_name": "intargs", 
+                    "underscore_name": "intargs"
+                }, 
+                "options": {}
             }
         ], 
         "language": "c", 

@@ -72,6 +72,7 @@ program tester
 contains
 
   subroutine test_functions
+    integer(c_int) iargin, iarginout, iargout
 
     call set_case_name("test_functions")
 
@@ -130,6 +131,13 @@ contains
 !
 !    rv_int = enumfunc(1)
 !    call assert_true(rv_int .eq. 2)
+
+    iargin    = 1
+    iarginout = 2
+    iargout   = -1
+    call intargs(iargin, iarginout, iargout)
+    call assert_true(iarginout == 1)
+    call assert_true(iargout   == 2)
 
   end subroutine test_functions
 

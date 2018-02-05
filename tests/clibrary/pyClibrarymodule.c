@@ -225,6 +225,37 @@ PY_function4a(
     return (PyObject *) SH_Py_rv;
 // splicer end function.function4a
 }
+
+static char PY_intargs__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_intargs(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
+// splicer begin function.intargs
+    int argin;
+    int * arginout;
+    char *SH_kw_list[] = {
+        "argin",
+        "arginout",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ii:intargs",
+        SH_kw_list,
+        &argin, &arginout))
+    {
+        return NULL;
+    }
+    int * argout;  // intent(out)
+    intargs(argin, arginout, argout);
+    return Py_BuildValue("ii", arginout, argout);
+// splicer end function.intargs
+}
 static PyMethodDef PY_methods[] = {
 {"Function1", (PyCFunction)PY_function1, METH_NOARGS,
     PY_function1__doc__},
@@ -237,6 +268,8 @@ static PyMethodDef PY_methods[] = {
     PY_function3b__doc__},
 {"Function4a", (PyCFunction)PY_function4a, METH_VARARGS|METH_KEYWORDS,
     PY_function4a__doc__},
+{"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
+    PY_intargs__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

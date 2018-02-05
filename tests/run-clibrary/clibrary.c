@@ -254,6 +254,13 @@ void vector_string_append(std::vector< std::string > &arg)
 #endif
 //----------------------------------------------------------------------
 
+void intargs(const int argin, int * arginout, int * argout)
+{
+  *argout = *arginout;
+  *arginout = argin;
+}
+
+//----------------------------------------------------------------------
 const char *LastFunctionCalled()
 {
     return last_function_called;
