@@ -124,7 +124,7 @@ PY_sum(
         return NULL;
     }
     int result;  // intent(out)
-    Sum(len, values, result);
+    Sum(len, &values, &result);
     PyObject * SH_Py_result = PyInt_FromLong(result);
     return (PyObject *) SH_Py_result;
 // splicer end function.sum
@@ -188,7 +188,7 @@ PY_function3b(
     bool arg1 = PyObject_IsTrue(SH_Py_arg1);
     bool arg2;  // intent(out)
     bool arg3 = PyObject_IsTrue(SH_Py_arg3);
-    Function3b(arg1, arg2, arg3);
+    Function3b(arg1, &arg2, &arg3);
     PyObject * SH_Py_arg2 = PyBool_FromLong(arg2);
     SH_Py_arg3 = PyBool_FromLong(arg3);
     return Py_BuildValue("OO", SH_Py_arg2, SH_Py_arg3);
@@ -252,7 +252,7 @@ PY_intargs(
         return NULL;
     }
     int argout;  // intent(out)
-    intargs(argin, arginout, argout);
+    intargs(argin, &arginout, &argout);
     return Py_BuildValue("ii", arginout, argout);
 // splicer end function.intargs
 }

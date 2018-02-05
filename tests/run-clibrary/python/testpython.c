@@ -43,7 +43,7 @@
 //#include <pyTutorialmodule.hpp>
 #include <stdio.h>
 
-PyMODINIT_FUNC initstrings(void);
+PyMODINIT_FUNC initclibrary(void);
 
 int main(int argc, char** argv)  
 {
@@ -51,7 +51,7 @@ int main(int argc, char** argv)
     FILE* fp;
 
     Py_Initialize();
-    initstrings();
+    initclibrary();
     
     fp = fopen(filename, "r");
     PyRun_SimpleFile(fp, filename);

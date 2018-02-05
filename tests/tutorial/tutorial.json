@@ -5924,11 +5924,13 @@
             "forward": "Class1", 
             "py_statements": {
                 "intent_in": {
+                    "cxx_local_var": "pointer", 
                     "post_parse": [
                         "{c_const}Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
+                    "cxx_local_var": "pointer", 
                     "post_parse": [
                         "{c_const}Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]

@@ -150,7 +150,7 @@ PP_check_bool(
     bool arg1 = PyObject_IsTrue(SH_Py_arg1);
     bool arg2;  // intent(out)
     bool arg3 = PyObject_IsTrue(SH_Py_arg3);
-    checkBool(arg1, arg2, arg3);
+    checkBool(arg1, &arg2, &arg3);
     PyObject * SH_Py_arg2 = PyBool_FromLong(arg2);
     SH_Py_arg3 = PyBool_FromLong(arg3);
     return Py_BuildValue("OO", SH_Py_arg2, SH_Py_arg3);
@@ -540,9 +540,9 @@ PP_verlongfunctionname1(
     {
         return NULL;
     }
-    verlongfunctionname1(verylongname1, verylongname2, verylongname3,
-        verylongname4, verylongname5, verylongname6, verylongname7,
-        verylongname8, verylongname9, verylongname10);
+    verlongfunctionname1(&verylongname1, &verylongname2, &verylongname3,
+        &verylongname4, &verylongname5, &verylongname6, &verylongname7,
+        &verylongname8, &verylongname9, &verylongname10);
     return Py_BuildValue("iiiiiiiiii", verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
         verylongname7, verylongname8, verylongname9, verylongname10);

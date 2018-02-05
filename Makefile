@@ -160,7 +160,7 @@ test-python-clibrary : py-clibrary
 	export PYTHONPATH=$(top)/$(tempdir)/run-clibrary/python; \
 	$(PYTHON_BIN) $(top)/tests/run-clibrary/python/test.py
 
-test-python : test-python-tutorial test-python-strings
+test-python : test-python-tutorial test-python-strings test-python-clibrary
 
 # Compile the geneated Lua wrapper
 lua-tutorial : testdirs

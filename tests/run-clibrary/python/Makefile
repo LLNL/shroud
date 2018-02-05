@@ -57,7 +57,7 @@ OBJS = \
     pyClibrarymodule.o \
     pyClibraryhelper.o
 
-CXXFLAGS += $(SHARED)
+CFLAGS += $(SHARED)
 
 all : clibrary.so simple
 

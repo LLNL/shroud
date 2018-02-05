@@ -899,14 +899,14 @@ def typedef_wrapped_defaults(typedef):
 
     typedef.py_statements=dict(
         intent_in=dict(
-#            cxx_local_var='object',
+            cxx_local_var='pointer',
             post_parse=[
                 '{c_const}%s * {cxx_var} = '
                 '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,
             ],
         ),
         intent_inout=dict(
-#            cxx_local_var='object',
+            cxx_local_var='pointer',
             post_parse=[
                 '{c_const}%s * {cxx_var} = '
                 '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,

@@ -7596,11 +7596,13 @@
             "forward": "axom::sidre::Group", 
             "py_statements": {
                 "intent_in": {
+                    "cxx_local_var": "pointer", 
                     "post_parse": [
                         "{c_const}axom::sidre::Group * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
+                    "cxx_local_var": "pointer", 
                     "post_parse": [
                         "{c_const}axom::sidre::Group * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
@@ -7658,11 +7660,13 @@
             "forward": "ExClass1", 
             "py_statements": {
                 "intent_in": {
+                    "cxx_local_var": "pointer", 
                     "post_parse": [
                         "{c_const}ExClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
+                    "cxx_local_var": "pointer", 
                     "post_parse": [
                         "{c_const}ExClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
@@ -7720,11 +7724,13 @@
             "forward": "ExClass2", 
             "py_statements": {
                 "intent_in": {
+                    "cxx_local_var": "pointer", 
                     "post_parse": [
                         "{c_const}ExClass2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
+                    "cxx_local_var": "pointer", 
                     "post_parse": [
                         "{c_const}ExClass2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
@@ -7778,11 +7784,13 @@
             "forward": "ExClass3", 
             "py_statements": {
                 "intent_in": {
+                    "cxx_local_var": "pointer", 
                     "post_parse": [
                         "{c_const}ExClass3 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
+                    "cxx_local_var": "pointer", 
                     "post_parse": [
                         "{c_const}ExClass3 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]

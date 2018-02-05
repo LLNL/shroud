@@ -444,21 +444,24 @@ return 1;""", fmt)
             fmt_arg.cxx_type = arg_typedef.cxx_type
 
             # non-strings should be scalars
-            need_c_decl = True
-            need_cxx_decl = True
+            pass_var = fmt_arg.c_var  # The variable to pass to the function
+            # local_var - 'funcptr', 'pointer', or 'object'
             if arg.is_function_pointer():
                 fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
                 # not sure how function pointers work with Python.
+                local_var = 'funcptr'
             elif arg_typedef.base == 'string':
                 fmt_arg.c_decl = wformat('{c_const}char * {c_var}', fmt_arg)
 #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
-                as_scalar = False
+                have_scalar = False
+                local_var = 'pointer'
             else:
                 fmt_arg.c_decl = wformat('{c_type} {c_var}', fmt_arg)
                 fmt_arg.cxx_decl = wformat('{cxx_type} {cxx_var}', fmt_arg)
-                as_scalar = True
+                have_scalar = True
+                local_var = 'object'
 
             py_statements = arg_typedef.py_statements
             intent = attrs['intent']
@@ -467,7 +470,12 @@ return 1;""", fmt)
 
             cxx_local_var = intent_blk.get('cxx_local_var', '')
             if cxx_local_var:
-                fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
+                # With PY_PyTypeObject, there is no c_var, only cxx_var
+                if not arg_typedef.PY_PyTypeObject:
+                    fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
+                local_var = cxx_local_var
+                pass_var = fmt_arg.cxx_var
+                # cxx_deref used with typedef fields like PY_ctor.
                 if cxx_local_var == 'object':
                     fmt_arg.cxx_deref = '.'
                 elif cxx_local_var == 'pointer':
@@ -497,12 +505,15 @@ return 1;""", fmt)
                     # cxx_var is declared by py_statements.intent_out.post_parse.
                     fmt_arg.py_type = arg_typedef.PY_PyObject or 'PyObject'
                     append_format(PY_decl, '{py_type} * {py_var};', fmt_arg)
+                    pass_var = fmt_arg.cxx_var
                     parse_format.append('!')
                     parse_vargs.append('&' + arg_typedef.PY_PyTypeObject)
                     parse_vargs.append('&' + fmt_arg.py_var)
                 elif arg_typedef.PY_from_object:
                     # Use function to convert object
+                    # cxx_var created directly (no c_var)
                     append_format(PY_decl, '{cxx_decl};', fmt_arg)
+                    pass_var = fmt_arg.cxx_var
                     parse_format.append('&')
                     parse_vargs.append(arg_typedef.PY_from_object)
                     parse_vargs.append('&' + fmt_arg.cxx_var)
@@ -513,6 +524,7 @@ return 1;""", fmt)
             if intent in ['inout', 'out']:
                 if intent == 'out':
                     if not cxx_local_var:
+                        pass_var = fmt_arg.cxx_var
                         append_format(post_parse,
                                       '{cxx_decl};  // intent(out)',
                                       fmt_arg)
@@ -527,45 +539,32 @@ return 1;""", fmt)
                 for cmd in cmd_list:
                     append_format(post_parse, cmd, fmt_arg)
 
-            # Arguments to call
-            if arg_typedef.PY_PyTypeObject:
-                cxx_call_list.append(fmt_arg.cxx_var)
-            elif arg_typedef.PY_from_object:
-                # already a C++ type
-                cxx_call_list.append(fmt_arg.cxx_var)
-            elif cxx_local_var == 'object':
-                if arg.is_pointer():
-                    cxx_call_list.append('&' + fmt_arg.cxx_var)
-                else:
-                    cxx_call_list.append(fmt_arg.cxx_var)
-            elif cxx_local_var == 'pointer':
-                if arg.is_pointer():
-                    cxx_call_list.append(fmt_arg.cxx_var)
-                else:
-                    cxx_call_list.append('*' + fmt_arg.cxx_var)
-            elif arg_typedef.c_to_cxx:
+            if intent != 'out' and not cxx_local_var and arg_typedef.c_to_cxx:
                 # Make intermediate C++ variable
-                # Helpful need to pass address of variable
+                # Needed to pass address of variable
+                # Helpful with debugging.
                 fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
-                        name=fmt_arg.cxx_var, params=None, continuation=True)
+                    name=fmt_arg.cxx_var, params=None, continuation=True)
                 fmt_arg.cxx_val = wformat(arg_typedef.c_to_cxx, fmt_arg)
                 append_format(post_parse, '{cxx_decl} = {cxx_val};', fmt_arg)
-                cxx_call_list.append(fmt_arg.cxx_var)
-                # If no need for intermediate, pass directly?
-                # append_format(cxx_call_list, fmt_arg.cxx_val)
-            else:
-                cxx_call_list.append(fmt_arg.c_var)
+                pass_var = fmt_arg.cxx_var
 
-            """
-            elif as_scalar:
-                # cxx_var is a scalar
-                # XXX - convert to C++ type
+            # Pass correct value to wrapped function.
+            if local_var == 'object':
                 if arg.is_pointer():
-                    cxx_call_list.append('&' + fmt_arg.cxx_var)
+                    cxx_call_list.append('&' + pass_var)
                 else:
-                    cxx_call_list.append(fmt_arg.cxx_var)
-"""
+                    cxx_call_list.append(pass_var)
+            elif local_var == 'pointer':
+                if arg.is_pointer():
+                    cxx_call_list.append(pass_var)
+                else:
+                    cxx_call_list.append('*' + pass_var)
+            elif local_var == 'funcptr':
+                cxx_call_list.append(pass_var)
+            else:
+                raise RuntimeError("unexpected value of local_var")
 
         if not arg_names:
             # no input arguments

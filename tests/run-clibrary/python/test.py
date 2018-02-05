@@ -66,16 +66,19 @@ class Tutorial(unittest.TestCase):
         print "FooTest:tearDown_:end"
      
     def testfunction2(self):
-        self.assertEqual(5.0, clibrary.function2(1.0, 4))
+        self.assertEqual(5.0, clibrary.Function2(1.0, 4))
 
     def testfunction3(self):
-        self.assertEqual(True, clibrary.function3(False))
+        self.assertEqual(True, clibrary.Function3(False))
 
     def testfunction3b(self):
-        self.assertEqual((False, False), clibrary.function3b(True, True))
+        self.assertEqual((False, False), clibrary.Function3b(True, True))
 
     def testfunction4a(self):
-        self.assertEqual('dogcat', clibrary.function3a('dog', 'cat'))
+        self.assertEqual('dogcat', clibrary.Function4a('dog', 'cat'))
+
+    def testintargs(self):
+        self.assertEqual((1, 2), clibrary.intargs(1, 2))
 
 
 # creating a new test suite
