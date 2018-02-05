@@ -507,7 +507,7 @@ def initialize():
 
             c_statements=dict(
                 intent_in=dict(
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         '{c_const}std::string {cxx_var}({c_var});'
                         ],
@@ -517,7 +517,7 @@ def initialize():
 #                    pre_call=[
 #                        'int {c_var_trim} = strlen({c_var});',
 #                        ],
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         '{c_const}std::string {cxx_var};'
                         ],
@@ -528,7 +528,7 @@ def initialize():
                 ),
                 intent_inout=dict(
                     cxx_header='<cstring>',
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         '{c_const}std::string {cxx_var}({c_var});'
                         ],
@@ -539,7 +539,7 @@ def initialize():
                 ),
                 intent_in_buf=dict(
                     buf_args = [ 'len_trim' ],
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         ('{c_const}std::string '
                          '{cxx_var}({c_var}, {c_var_trim});')
@@ -548,7 +548,7 @@ def initialize():
                 intent_out_buf=dict(
                     buf_args = [ 'len' ],
                     c_helper='ShroudStrCopy',
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         'std::string {cxx_var};'
                     ],
@@ -559,7 +559,7 @@ def initialize():
                 intent_inout_buf=dict(
                     buf_args = [ 'len_trim', 'len' ],
                     c_helper='ShroudStrCopy',
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         'std::string {cxx_var}({c_var}, {c_var_trim});'
                     ],
@@ -597,19 +597,19 @@ def initialize():
 
             py_statements=dict(
                 intent_in=dict(
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     post_parse=[
                         '{c_const}std::string {cxx_var}({c_var});'
                     ],
                 ),
                 intent_inout=dict(
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     post_parse=[
                         '{c_const}std::string {cxx_var}({c_var});'
                     ],
                 ),
                 intent_out=dict(
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     post_parse=[
                         '{c_const}std::string {cxx_var};'
                     ],
@@ -636,7 +636,7 @@ def initialize():
             c_statements=dict(
                 intent_in_buf=dict(
                     buf_args = [ 'size' ],
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         ('{c_const}std::vector<{cxx_T}> '
                          '{cxx_var}({c_var}, {c_var} + {c_var_size});')
@@ -644,7 +644,7 @@ def initialize():
                 ),
                 intent_out_buf=dict(
                     buf_args = [ 'size' ],
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var_size});'
                     ],
@@ -662,7 +662,7 @@ def initialize():
                 ),
                 intent_inout_buf=dict(
                     buf_args = [ 'size' ],
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         'std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
                     ],
@@ -698,7 +698,7 @@ def initialize():
                     intent_in_buf=dict(
                         buf_args = [ 'size', 'len' ],
                         c_helper='ShroudLenTrim',
-                        cxx_local_var='object',
+                        cxx_local_var='scalar',
                         pre_call=[
                             'std::vector<{cxx_T}> {cxx_var};',
                             '{{',
@@ -716,7 +716,7 @@ def initialize():
                     intent_out_buf=dict(
                         buf_args = [ 'size', 'len' ],
                         c_helper='ShroudLenTrim',
-                        cxx_local_var='object',
+                        cxx_local_var='scalar',
                         pre_call=[
                             '{c_const}std::vector<{cxx_T}> {cxx_var};'
                         ],
@@ -736,7 +736,7 @@ def initialize():
                     ),
                     intent_inout_buf=dict(
                         buf_args = [ 'size', 'len' ],
-                        cxx_local_var='object',
+                        cxx_local_var='scalar',
                         pre_call=[
                             'std::vector<{cxx_T}> {cxx_var};',
                             '{{',

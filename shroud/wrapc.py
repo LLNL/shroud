@@ -501,7 +501,7 @@ class Wrapc(util.WrapperMixin):
             cxx_local_var = intent_blk.get('cxx_local_var', '')
             if cxx_local_var:
                 fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
-                if cxx_local_var == 'object':
+                if cxx_local_var == 'scalar':
                     fmt_arg.cxx_deref = '.'
                 elif cxx_local_var == 'pointer':
                     fmt_arg.cxx_deref = '->'
@@ -532,7 +532,7 @@ class Wrapc(util.WrapperMixin):
 
             if arg_call:
                 # Skips result_as_arg argument
-                if cxx_local_var == 'object':
+                if cxx_local_var == 'scalar':
                     if arg.is_pointer():
                         call_list.append('&' + fmt_arg.cxx_var)
                     else:

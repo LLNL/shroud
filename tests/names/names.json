@@ -1238,7 +1238,7 @@
             "base": "string", 
             "c_statements": {
                 "intent_in": {
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
@@ -1247,14 +1247,14 @@
                     "buf_args": [
                         "len_trim"
                     ], 
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_header": "<cstring>", 
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "post_call": [
                         "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
                     ], 
@@ -1268,7 +1268,7 @@
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());"
                     ], 
@@ -1278,7 +1278,7 @@
                 }, 
                 "intent_out": {
                     "cxx_header": "<cstring>", 
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "post_call": [
                         "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
                     ], 
@@ -1291,7 +1291,7 @@
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());"
                     ], 
@@ -1336,19 +1336,19 @@
             "f_type": "character(*)", 
             "py_statements": {
                 "intent_in": {
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "post_parse": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
                 }, 
                 "intent_inout": {
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "post_parse": [
                         "{c_const}std::string {cxx_var}({c_var});"
                     ]
                 }, 
                 "intent_out": {
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "post_parse": [
                         "{c_const}std::string {cxx_var};"
                     ]
@@ -1362,7 +1362,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
                     ]
@@ -1371,7 +1371,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "post_call": [
                         "{{", 
                         "    std::vector<{cxx_T}>::size_type", 
@@ -1391,7 +1391,7 @@
                     "buf_args": [
                         "size"
                     ], 
-                    "cxx_local_var": "object", 
+                    "cxx_local_var": "scalar", 
                     "post_call": [
                         "{{", 
                         "    std::vector<{cxx_T}>::size_type", 
@@ -1416,7 +1416,7 @@
                             "len"
                         ], 
                         "c_helper": "ShroudLenTrim", 
-                        "cxx_local_var": "object", 
+                        "cxx_local_var": "scalar", 
                         "pre_call": [
                             "std::vector<{cxx_T}> {cxx_var};", 
                             "{{", 
@@ -1436,7 +1436,7 @@
                             "size", 
                             "len"
                         ], 
-                        "cxx_local_var": "object", 
+                        "cxx_local_var": "scalar", 
                         "post_call": [
                             "{{", 
                             "    char * BBB = {c_var};", 
@@ -1470,7 +1470,7 @@
                             "len"
                         ], 
                         "c_helper": "ShroudLenTrim", 
-                        "cxx_local_var": "object", 
+                        "cxx_local_var": "scalar", 
                         "post_call": [
                             "{{", 
                             "    char * BBB = {c_var};", 

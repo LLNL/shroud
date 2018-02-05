@@ -445,7 +445,7 @@ return 1;""", fmt)
 
             # non-strings should be scalars
             pass_var = fmt_arg.c_var  # The variable to pass to the function
-            # local_var - 'funcptr', 'pointer', or 'object'
+            # local_var - 'funcptr', 'pointer', or 'scalar'
             if arg.is_function_pointer():
                 fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
@@ -461,7 +461,7 @@ return 1;""", fmt)
                 fmt_arg.c_decl = wformat('{c_type} {c_var}', fmt_arg)
                 fmt_arg.cxx_decl = wformat('{cxx_type} {cxx_var}', fmt_arg)
                 have_scalar = True
-                local_var = 'object'
+                local_var = 'scalar'
 
             py_statements = arg_typedef.py_statements
             intent = attrs['intent']
@@ -476,7 +476,7 @@ return 1;""", fmt)
                 local_var = cxx_local_var
                 pass_var = fmt_arg.cxx_var
                 # cxx_deref used with typedef fields like PY_ctor.
-                if cxx_local_var == 'object':
+                if cxx_local_var == 'scalar':
                     fmt_arg.cxx_deref = '.'
                 elif cxx_local_var == 'pointer':
                     fmt_arg.cxx_deref = '->'
@@ -551,7 +551,7 @@ return 1;""", fmt)
                 pass_var = fmt_arg.cxx_var
 
             # Pass correct value to wrapped function.
-            if local_var == 'object':
+            if local_var == 'scalar':
                 if arg.is_pointer():
                     cxx_call_list.append('&' + pass_var)
                 else:
