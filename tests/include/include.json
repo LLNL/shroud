@@ -514,12 +514,12 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
@@ -572,12 +572,12 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Class2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Class2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {

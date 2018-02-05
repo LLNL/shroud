@@ -358,7 +358,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "double arg1", 
                             "c_ptr": "", 
+                            "c_type": "double", 
                             "c_var": "arg1", 
                             "cxx_decl": "double arg1", 
                             "cxx_deref": ".", 
@@ -392,7 +394,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int arg2", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "arg2", 
                             "cxx_decl": "int arg2", 
                             "cxx_deref": ".", 
@@ -639,7 +643,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "long long arg1", 
                             "c_ptr": "", 
+                            "c_type": "long long", 
                             "c_var": "arg1", 
                             "cxx_decl": "long long arg1", 
                             "cxx_deref": ".", 
@@ -743,12 +749,15 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "bool arg", 
                             "c_ptr": "", 
+                            "c_type": "bool", 
                             "c_var": "arg", 
                             "cxx_decl": "bool arg", 
                             "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg", 
+                            "py_type": "PyObject", 
                             "py_var": "SH_Py_arg"
                         }
                     }
@@ -974,7 +983,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "const char * arg1", 
                             "c_ptr": "", 
+                            "c_type": "char", 
                             "c_var": "arg1", 
                             "cxx_decl": "const std::string & arg1", 
                             "cxx_deref": ".", 
@@ -996,7 +1007,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "const char * arg2", 
                             "c_ptr": "", 
+                            "c_type": "char", 
                             "c_var": "arg2", 
                             "cxx_decl": "const std::string & arg2", 
                             "cxx_deref": ".", 
@@ -1267,7 +1280,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "const char * arg1", 
                             "c_ptr": "", 
+                            "c_type": "char", 
                             "c_var": "arg1", 
                             "cxx_decl": "const std::string & arg1", 
                             "cxx_deref": ".", 
@@ -1297,7 +1312,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "const char * arg2", 
                             "c_ptr": "", 
+                            "c_type": "char", 
                             "c_var": "arg2", 
                             "cxx_decl": "const std::string & arg2", 
                             "cxx_deref": ".", 
@@ -1846,7 +1863,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "double arg1", 
                             "c_ptr": "", 
+                            "c_type": "double", 
                             "c_var": "arg1", 
                             "cxx_decl": "double arg1", 
                             "cxx_deref": ".", 
@@ -1880,12 +1899,15 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "bool arg2", 
                             "c_ptr": "", 
+                            "c_type": "bool", 
                             "c_var": "arg2", 
                             "cxx_decl": "bool arg2", 
                             "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg2", 
+                            "py_type": "PyObject", 
                             "py_var": "SH_Py_arg2"
                         }
                     }
@@ -2011,7 +2033,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "const char * name", 
                             "c_ptr": "", 
+                            "c_type": "char", 
                             "c_var": "name", 
                             "cxx_decl": "const std::string & name", 
                             "cxx_deref": ".", 
@@ -2201,7 +2225,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int indx", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "indx", 
                             "cxx_decl": "int indx", 
                             "cxx_deref": ".", 
@@ -2658,7 +2684,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "double arg", 
                             "c_ptr": "", 
+                            "c_type": "double", 
                             "c_var": "arg", 
                             "cxx_decl": "double arg", 
                             "cxx_deref": ".", 
@@ -2915,7 +2943,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "double arg2", 
                             "c_ptr": "", 
+                            "c_type": "double", 
                             "c_var": "arg2", 
                             "cxx_decl": "double arg2", 
                             "cxx_deref": ".", 
@@ -2945,7 +2975,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "const char * name", 
                             "c_ptr": "", 
+                            "c_type": "char", 
                             "c_var": "name", 
                             "cxx_decl": "const std::string & name", 
                             "cxx_deref": ".", 
@@ -3568,7 +3600,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int num", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "num", 
                             "cxx_decl": "int num", 
                             "cxx_deref": ".", 
@@ -3602,7 +3636,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int offset", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "offset", 
                             "cxx_decl": "int offset", 
                             "cxx_deref": ".", 
@@ -3636,7 +3672,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int stride", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "stride", 
                             "cxx_decl": "int stride", 
                             "cxx_deref": ".", 
@@ -4055,7 +4093,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int num", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "num", 
                             "cxx_decl": "int num", 
                             "cxx_deref": ".", 
@@ -4089,7 +4129,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int offset", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "offset", 
                             "cxx_decl": "int offset", 
                             "cxx_deref": ".", 
@@ -4123,7 +4165,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int stride", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "stride", 
                             "cxx_decl": "int stride", 
                             "cxx_deref": ".", 
@@ -4157,7 +4201,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "double type", 
                             "c_ptr": "", 
+                            "c_type": "double", 
                             "c_var": "type", 
                             "cxx_decl": "double type", 
                             "cxx_deref": ".", 
@@ -4308,7 +4354,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int arg", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "arg", 
                             "cxx_decl": "TypeID arg", 
                             "cxx_deref": ".", 
@@ -4410,7 +4458,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int arg", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "arg", 
                             "cxx_decl": "EnumTypeID SH_arg", 
                             "cxx_deref": ".", 
@@ -4507,12 +4557,15 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "TUT_class1 arg1", 
                             "c_ptr": " *", 
+                            "c_type": "TUT_class1", 
                             "c_var": "arg1", 
-                            "cxx_decl": "const Class1 * arg1", 
+                            "cxx_decl": "Class1 arg1", 
                             "cxx_deref": "->", 
                             "cxx_type": "Class1", 
                             "cxx_var": "arg1", 
+                            "py_type": "PY_Class1", 
                             "py_var": "SH_Py_arg1"
                         }
                     }
@@ -5872,12 +5925,12 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {

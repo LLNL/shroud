@@ -358,7 +358,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int i", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "i", 
                             "cxx_decl": "int i", 
                             "cxx_deref": ".", 
@@ -446,7 +448,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "long i", 
                             "c_ptr": "", 
+                            "c_type": "long", 
                             "c_var": "i", 
                             "cxx_decl": "long i", 
                             "cxx_deref": ".", 
@@ -527,7 +531,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "const char * rv", 
                             "c_ptr": "", 
+                            "c_type": "char", 
                             "c_var": "rv", 
                             "cxx_decl": "const std::string & rv", 
                             "cxx_deref": ".", 
@@ -860,12 +866,12 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Names * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Names * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
@@ -922,12 +928,12 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Names2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Names2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {

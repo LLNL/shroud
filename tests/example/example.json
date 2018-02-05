@@ -359,7 +359,9 @@
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
+                                    "c_decl": "int incr", 
                                     "c_ptr": "", 
+                                    "c_type": "int", 
                                     "c_var": "incr", 
                                     "cxx_decl": "int incr", 
                                     "cxx_deref": ".", 
@@ -1116,7 +1118,9 @@
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
+                                    "c_decl": "int value", 
                                     "c_ptr": "", 
+                                    "c_type": "int", 
                                     "c_var": "value", 
                                     "cxx_decl": "int value", 
                                     "cxx_deref": ".", 
@@ -1227,7 +1231,9 @@
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
+                                    "c_decl": "long value", 
                                     "c_ptr": "", 
+                                    "c_type": "long", 
                                     "c_var": "value", 
                                     "cxx_decl": "long value", 
                                     "cxx_deref": ".", 
@@ -1391,12 +1397,15 @@
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
+                                    "c_decl": "bool in", 
                                     "c_ptr": "", 
+                                    "c_type": "bool", 
                                     "c_var": "in", 
                                     "cxx_decl": "bool in", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "bool", 
                                     "cxx_var": "in", 
+                                    "py_type": "PyObject", 
                                     "py_var": "SH_Py_in"
                                 }
                             }
@@ -2492,12 +2501,15 @@
                                 }, 
                                 "fmtpy": {
                                     "c_const": "const ", 
+                                    "c_decl": "AA_exclass1 in", 
                                     "c_ptr": " *", 
+                                    "c_type": "AA_exclass1", 
                                     "c_var": "in", 
-                                    "cxx_decl": "const ExClass1 * in", 
+                                    "cxx_decl": "ExClass1 in", 
                                     "cxx_deref": "->", 
                                     "cxx_type": "ExClass1", 
                                     "cxx_var": "in", 
+                                    "py_type": "PP_ExClass1", 
                                     "py_var": "SH_Py_in"
                                 }
                             }
@@ -2824,7 +2836,9 @@
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
+                                    "c_decl": "SIDRE_SidreLength len", 
                                     "c_ptr": "", 
+                                    "c_type": "SIDRE_SidreLength", 
                                     "c_var": "len", 
                                     "cxx_decl": "SidreLength len", 
                                     "cxx_deref": ".", 
@@ -2858,7 +2872,9 @@
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
+                                    "c_decl": "int type", 
                                     "c_ptr": "", 
+                                    "c_type": "int", 
                                     "c_var": "type", 
                                     "cxx_decl": "TypeID SH_type", 
                                     "cxx_deref": ".", 
@@ -4051,7 +4067,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "const char * name", 
                             "c_ptr": "", 
+                            "c_type": "char", 
                             "c_var": "name", 
                             "cxx_decl": "const std::string & name", 
                             "cxx_deref": ".", 
@@ -4299,12 +4317,15 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "bool arg1", 
                             "c_ptr": "", 
+                            "c_type": "bool", 
                             "c_var": "arg1", 
                             "cxx_decl": "bool arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg1", 
+                            "py_type": "PyObject", 
                             "py_var": "SH_Py_arg1"
                         }
                     }, 
@@ -4335,9 +4356,11 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": "PyBool_Type", 
                             "c_const": "", 
+                            "c_decl": "bool arg2", 
                             "c_ptr": " *", 
+                            "c_type": "bool", 
                             "c_var": "arg2", 
-                            "cxx_decl": "bool * arg2", 
+                            "cxx_decl": "bool arg2", 
                             "cxx_deref": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg2", 
@@ -4371,12 +4394,15 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": "PyBool_Type", 
                             "c_const": "", 
+                            "c_decl": "bool arg3", 
                             "c_ptr": " *", 
+                            "c_type": "bool", 
                             "c_var": "arg3", 
-                            "cxx_decl": "bool * arg3", 
+                            "cxx_decl": "bool arg3", 
                             "cxx_deref": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg3", 
+                            "py_type": "PyObject", 
                             "py_var": "SH_Py_arg3"
                         }
                     }
@@ -4504,7 +4530,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "const char * name", 
                             "c_ptr": "", 
+                            "c_type": "char", 
                             "c_var": "name", 
                             "cxx_decl": "const std::string & name", 
                             "cxx_deref": ".", 
@@ -4691,7 +4719,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int flag", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "flag", 
                             "cxx_decl": "int flag", 
                             "cxx_deref": ".", 
@@ -4721,7 +4751,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "const char * name", 
                             "c_ptr": "", 
+                            "c_type": "char", 
                             "c_var": "name", 
                             "cxx_decl": "const std::string & name", 
                             "cxx_deref": ".", 
@@ -5079,7 +5111,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int i", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "i", 
                             "cxx_decl": "int i", 
                             "cxx_deref": ".", 
@@ -5113,7 +5147,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "long j", 
                             "c_ptr": "", 
+                            "c_type": "long", 
                             "c_var": "j", 
                             "cxx_decl": "long j", 
                             "cxx_deref": ".", 
@@ -5281,7 +5317,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "MPI_Fint comm", 
                             "c_ptr": "", 
+                            "c_type": "MPI_Fint", 
                             "c_var": "comm", 
                             "cxx_decl": "MPI_Comm SH_comm", 
                             "cxx_deref": ".", 
@@ -5376,12 +5414,15 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "SIDRE_group grp", 
                             "c_ptr": " *", 
+                            "c_type": "SIDRE_group", 
                             "c_var": "grp", 
-                            "cxx_decl": "axom::sidre::Group * grp", 
+                            "cxx_decl": "axom::sidre::Group grp", 
                             "cxx_deref": "->", 
                             "cxx_type": "axom::sidre::Group", 
                             "cxx_var": "grp", 
+                            "py_type": "PyObject", 
                             "py_var": "SH_Py_grp"
                         }
                     }
@@ -5476,12 +5517,15 @@
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
+                            "c_decl": "SIDRE_group grp", 
                             "c_ptr": " *", 
+                            "c_type": "SIDRE_group", 
                             "c_var": "grp", 
-                            "cxx_decl": "const axom::sidre::Group * grp", 
+                            "cxx_decl": "axom::sidre::Group grp", 
                             "cxx_deref": "->", 
                             "cxx_type": "axom::sidre::Group", 
                             "cxx_var": "grp", 
+                            "py_type": "PyObject", 
                             "py_var": "SH_Py_grp"
                         }
                     }
@@ -5576,9 +5620,11 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "void ( * get)(\t)", 
                             "c_ptr": "", 
+                            "c_type": "void", 
                             "c_var": "get", 
-                            "cxx_decl": "void ( * get)()", 
+                            "cxx_decl": "void ( * get)(\t)", 
                             "cxx_deref": ".", 
                             "cxx_type": "void", 
                             "cxx_var": "get", 
@@ -5684,9 +5730,11 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "double * ( * get)(\t)", 
                             "c_ptr": " *", 
+                            "c_type": "double", 
                             "c_var": "get", 
-                            "cxx_decl": "double * ( * get)()", 
+                            "cxx_decl": "double * ( * get)(\t)", 
                             "cxx_deref": "->", 
                             "cxx_type": "double", 
                             "cxx_var": "get", 
@@ -5797,9 +5845,11 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "double ( * get)(\tint i,\t int)", 
                             "c_ptr": "", 
+                            "c_type": "double", 
                             "c_var": "get", 
-                            "cxx_decl": "double ( * get)(int i, int)", 
+                            "cxx_decl": "double ( * get)(\tint i,\t int)", 
                             "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "get", 
@@ -6049,9 +6099,11 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)", 
                             "c_ptr": "", 
+                            "c_type": "void", 
                             "c_var": "get", 
-                            "cxx_decl": "void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
+                            "cxx_decl": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)", 
                             "cxx_deref": ".", 
                             "cxx_type": "void", 
                             "cxx_var": "get", 
@@ -6287,9 +6339,11 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": null, 
                             "c_const": "", 
+                            "c_decl": "int verylongname1", 
                             "c_ptr": " *", 
+                            "c_type": "int", 
                             "c_var": "verylongname1", 
-                            "cxx_decl": "int * verylongname1", 
+                            "cxx_decl": "int verylongname1", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname1", 
@@ -6323,9 +6377,11 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": null, 
                             "c_const": "", 
+                            "c_decl": "int verylongname10", 
                             "c_ptr": " *", 
+                            "c_type": "int", 
                             "c_var": "verylongname10", 
-                            "cxx_decl": "int * verylongname10", 
+                            "cxx_decl": "int verylongname10", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname10", 
@@ -6359,9 +6415,11 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": null, 
                             "c_const": "", 
+                            "c_decl": "int verylongname2", 
                             "c_ptr": " *", 
+                            "c_type": "int", 
                             "c_var": "verylongname2", 
-                            "cxx_decl": "int * verylongname2", 
+                            "cxx_decl": "int verylongname2", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname2", 
@@ -6395,9 +6453,11 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": null, 
                             "c_const": "", 
+                            "c_decl": "int verylongname3", 
                             "c_ptr": " *", 
+                            "c_type": "int", 
                             "c_var": "verylongname3", 
-                            "cxx_decl": "int * verylongname3", 
+                            "cxx_decl": "int verylongname3", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname3", 
@@ -6431,9 +6491,11 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": null, 
                             "c_const": "", 
+                            "c_decl": "int verylongname4", 
                             "c_ptr": " *", 
+                            "c_type": "int", 
                             "c_var": "verylongname4", 
-                            "cxx_decl": "int * verylongname4", 
+                            "cxx_decl": "int verylongname4", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname4", 
@@ -6467,9 +6529,11 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": null, 
                             "c_const": "", 
+                            "c_decl": "int verylongname5", 
                             "c_ptr": " *", 
+                            "c_type": "int", 
                             "c_var": "verylongname5", 
-                            "cxx_decl": "int * verylongname5", 
+                            "cxx_decl": "int verylongname5", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname5", 
@@ -6503,9 +6567,11 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": null, 
                             "c_const": "", 
+                            "c_decl": "int verylongname6", 
                             "c_ptr": " *", 
+                            "c_type": "int", 
                             "c_var": "verylongname6", 
-                            "cxx_decl": "int * verylongname6", 
+                            "cxx_decl": "int verylongname6", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname6", 
@@ -6539,9 +6605,11 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": null, 
                             "c_const": "", 
+                            "c_decl": "int verylongname7", 
                             "c_ptr": " *", 
+                            "c_type": "int", 
                             "c_var": "verylongname7", 
-                            "cxx_decl": "int * verylongname7", 
+                            "cxx_decl": "int verylongname7", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname7", 
@@ -6575,9 +6643,11 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": null, 
                             "c_const": "", 
+                            "c_decl": "int verylongname8", 
                             "c_ptr": " *", 
+                            "c_type": "int", 
                             "c_var": "verylongname8", 
-                            "cxx_decl": "int * verylongname8", 
+                            "cxx_decl": "int verylongname8", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname8", 
@@ -6611,9 +6681,11 @@
                             "PyObject": "PyObject", 
                             "PyTypeObject": null, 
                             "c_const": "", 
+                            "c_decl": "int verylongname9", 
                             "c_ptr": " *", 
+                            "c_type": "int", 
                             "c_var": "verylongname9", 
-                            "cxx_decl": "int * verylongname9", 
+                            "cxx_decl": "int verylongname9", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname9", 
@@ -6883,7 +6955,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int verylongname1", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "verylongname1", 
                             "cxx_decl": "int verylongname1", 
                             "cxx_deref": ".", 
@@ -6917,7 +6991,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int verylongname10", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "verylongname10", 
                             "cxx_decl": "int verylongname10", 
                             "cxx_deref": ".", 
@@ -6951,7 +7027,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int verylongname2", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "verylongname2", 
                             "cxx_decl": "int verylongname2", 
                             "cxx_deref": ".", 
@@ -6985,7 +7063,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int verylongname3", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "verylongname3", 
                             "cxx_decl": "int verylongname3", 
                             "cxx_deref": ".", 
@@ -7019,7 +7099,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int verylongname4", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "verylongname4", 
                             "cxx_decl": "int verylongname4", 
                             "cxx_deref": ".", 
@@ -7053,7 +7135,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int verylongname5", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "verylongname5", 
                             "cxx_decl": "int verylongname5", 
                             "cxx_deref": ".", 
@@ -7087,7 +7171,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int verylongname6", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "verylongname6", 
                             "cxx_decl": "int verylongname6", 
                             "cxx_deref": ".", 
@@ -7121,7 +7207,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int verylongname7", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "verylongname7", 
                             "cxx_decl": "int verylongname7", 
                             "cxx_deref": ".", 
@@ -7155,7 +7243,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int verylongname8", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "verylongname8", 
                             "cxx_decl": "int verylongname8", 
                             "cxx_deref": ".", 
@@ -7189,7 +7279,9 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
+                            "c_decl": "int verylongname9", 
                             "c_ptr": "", 
+                            "c_type": "int", 
                             "c_var": "verylongname9", 
                             "cxx_decl": "int verylongname9", 
                             "cxx_deref": ".", 
@@ -7505,12 +7597,12 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}axom::sidre::Group * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}axom::sidre::Group * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
@@ -7567,12 +7659,12 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}ExClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}ExClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
@@ -7629,12 +7721,12 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}ExClass2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}ExClass2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
@@ -7687,12 +7779,12 @@
             "py_statements": {
                 "intent_in": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}ExClass3 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "post_parse": [
-                        "{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}ExClass3 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {

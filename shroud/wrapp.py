@@ -267,7 +267,8 @@ return 1;""", fmt)
         self._pop_splicer('helper')
 
     def intent_out(self, typedef, intent_blk, fmt, post_call):
-        """Create PyObject from C++ value.
+        """Add code for post-call.
+        Create PyObject from C++ value to return.
 
         typedef - typedef of C++ variable.
         fmt - format dictionary
@@ -439,14 +440,25 @@ return 1;""", fmt)
 
             arg_typedef = typemap.Typedef.lookup(arg.typename)
             # Add formats used by py_statements
-            fmt_arg.cxx_type = arg_typedef.cxx_type  # used?
-            fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
+            fmt_arg.c_type = arg_typedef.c_type
+            fmt_arg.cxx_type = arg_typedef.cxx_type
 
             # non-strings should be scalars
-#            if arg_typedef.base == 'string':
-#                as_scalar = False
-#            else:
-#                as_scalar = True
+            need_c_decl = True
+            need_cxx_decl = True
+            if arg.is_function_pointer():
+                fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
+                # not sure how function pointers work with Python.
+            elif arg_typedef.base == 'string':
+                fmt_arg.c_decl = wformat('{c_const}char * {c_var}', fmt_arg)
+#                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
+                as_scalar = False
+            else:
+                fmt_arg.c_decl = wformat('{c_type} {c_var}', fmt_arg)
+                fmt_arg.cxx_decl = wformat('{cxx_type} {cxx_var}', fmt_arg)
+                as_scalar = True
 
             py_statements = arg_typedef.py_statements
             intent = attrs['intent']
@@ -477,47 +489,43 @@ return 1;""", fmt)
                         (len(cxx_call_list), len(post_parse),
                          ',\t '.join(cxx_call_list)))
 
+                # Declare C variable - may be PyObject.
                 # add argument to call to PyArg_ParseTypleAndKeywords
                 parse_format.append(arg_typedef.PY_format)
                 if arg_typedef.PY_PyTypeObject:
                     # Expect object of given type
+                    # cxx_var is declared by py_statements.intent_out.post_parse.
+                    fmt_arg.py_type = arg_typedef.PY_PyObject or 'PyObject'
+                    append_format(PY_decl, '{py_type} * {py_var};', fmt_arg)
                     parse_format.append('!')
                     parse_vargs.append('&' + arg_typedef.PY_PyTypeObject)
                     parse_vargs.append('&' + fmt_arg.py_var)
                 elif arg_typedef.PY_from_object:
                     # Use function to convert object
+                    append_format(PY_decl, '{cxx_decl};', fmt_arg)
                     parse_format.append('&')
                     parse_vargs.append(arg_typedef.PY_from_object)
                     parse_vargs.append('&' + fmt_arg.cxx_var)
                 else:
+                    append_format(PY_decl, '{c_decl};', fmt_arg)
                     parse_vargs.append('&' + fmt_arg.c_var)
 
             if intent in ['inout', 'out']:
+                if intent == 'out':
+                    if not cxx_local_var:
+                        append_format(post_parse,
+                                      '{cxx_decl};  // intent(out)',
+                                      fmt_arg)
+
                 # output variable must be a pointer
                 build_tuples.append(self.intent_out(
                     arg_typedef, intent_blk, fmt_arg, post_call))
 
+            # Code to convert parsed values (C or Python) to C++.
             cmd_list = intent_blk.get('post_parse', [])
             if cmd_list:
                 for cmd in cmd_list:
                     append_format(post_parse, cmd, fmt_arg)
-
-            # argument for C++ function
-            if intent == 'out':
-                # not needed for PyArg_ParseTupleAndKeywords.
-                # cxx_local_var defined by py_statements.intent_out.post_parse.
-                if not cxx_local_var:
-                    post_parse.append(arg.gen_arg_as_c(asgn_value=True) +
-                                      ';  // intent(out)')
-            elif arg_typedef.PY_PyTypeObject:
-                # A Python Object which must be converted to C++ type.
-                # cxx_var is declared by py_statements.intent_out.post_parse.
-                objtype = arg_typedef.PY_PyObject or 'PyObject'
-                PY_decl.append(objtype + ' * ' + fmt_arg.py_var + ';')
-            else:
-                # PyArg_ParseTupleAndKeywords wants C types.
-                # Can not be 'const' since must be assignable.
-                PY_decl.append(arg.gen_arg_as_c(asgn_value=True) + ';')
 
             # Arguments to call
             if arg_typedef.PY_PyTypeObject:

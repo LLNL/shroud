@@ -148,7 +148,7 @@ PP_check_bool(
         return NULL;
     }
     bool arg1 = PyObject_IsTrue(SH_Py_arg1);
-    bool * arg2;  // intent(out)
+    bool arg2;  // intent(out)
     bool arg3 = PyObject_IsTrue(SH_Py_arg3);
     checkBool(arg1, arg2, arg3);
     PyObject * SH_Py_arg2 = PyBool_FromLong(arg2);
@@ -466,7 +466,10 @@ PP_func_ptr5(
 {
 // void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
 // splicer begin function.func_ptr5
-    void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10);
+    void ( * get)(int verylongname1, int verylongname2,
+        int verylongname3, int verylongname4, int verylongname5,
+        int verylongname6, int verylongname7, int verylongname8,
+        int verylongname9, int verylongname10);
     const char *SH_kwcpp = "get";
     char *SH_kw_list[] = {
         (char *) SH_kwcpp+0,
@@ -495,16 +498,16 @@ PP_verlongfunctionname1(
 {
 // void verlongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
 // splicer begin function.verlongfunctionname1
-    int * verylongname1;
-    int * verylongname2;
-    int * verylongname3;
-    int * verylongname4;
-    int * verylongname5;
-    int * verylongname6;
-    int * verylongname7;
-    int * verylongname8;
-    int * verylongname9;
-    int * verylongname10;
+    int verylongname1;
+    int verylongname2;
+    int verylongname3;
+    int verylongname4;
+    int verylongname5;
+    int verylongname6;
+    int verylongname7;
+    int verylongname8;
+    int verylongname9;
+    int verylongname10;
     const char *SH_kwcpp =
         "verylongname1\0"
         "verylongname2\0"
