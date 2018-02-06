@@ -126,7 +126,8 @@ PY_sum(
     {
         return NULL;
     }
-    SH_arr_values = PyArray_FROM_OTF(SH_Py_values, NPY_INT, NPY_ARRAY_IN_ARRAY);
+    SH_arr_values = (PyArrayObject *) PyArray_FROM_OTF(SH_Py_values,
+        NPY_INT, NPY_ARRAY_IN_ARRAY);
     if (SH_arr_values == NULL) {
         PyErr_SetString(PyExc_ValueError, "values must be a 1-D array of int");
         goto fail;
@@ -135,6 +136,7 @@ PY_sum(
     int result;  // intent(out)
     Sum(len, values, &result);
     PyObject * SH_Py_result = PyInt_FromLong(result);
+    Py_DECREF(SH_arr_values);
     return (PyObject *) SH_Py_result;
 
 fail:
@@ -204,7 +206,8 @@ PY_function3b(
     Function3b(arg1, &arg2, &arg3);
     PyObject * SH_Py_arg2 = PyBool_FromLong(arg2);
     SH_Py_arg3 = PyBool_FromLong(arg3);
-    return Py_BuildValue("OO", SH_Py_arg2, SH_Py_arg3);
+    PyObject * SHT_rv = Py_BuildValue("OO", SH_Py_arg2, SH_Py_arg3);
+    return SHT_rv;
 // splicer end function.function3b
 }
 
@@ -266,7 +269,8 @@ PY_intargs(
     }
     int argout;  // intent(out)
     intargs(argin, &arginout, &argout);
-    return Py_BuildValue("ii", arginout, argout);
+    PyObject * SHT_rv = Py_BuildValue("ii", arginout, argout);
+    return SHT_rv;
 // splicer end function.intargs
 }
 static PyMethodDef PY_methods[] = {

@@ -434,7 +434,9 @@ PY_return_strings(
     std::string SH_arg1;
     std::string SH_arg2;
     returnStrings(SH_arg1, SH_arg2);
-    return Py_BuildValue("ss", SH_arg1.c_str(), SH_arg2.c_str());
+    PyObject * SHT_rv = Py_BuildValue("ss", SH_arg1.c_str(),
+        SH_arg2.c_str());
+    return SHT_rv;
 // splicer end function.return_strings
 }
 

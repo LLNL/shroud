@@ -424,6 +424,7 @@ return 1;""", fmt)
         # arguments to Py_BuildValue
         build_tuples = []
         post_call = []    # Create objects passed to PyBuildValue
+        cleanup_code = []
 
         cxx_call_list = []
 
@@ -494,7 +495,8 @@ return 1;""", fmt)
             stmts = 'intent_' + intent
             intent_blk = py_statements.get(stmts, {})
 
-            fail_cmd_list = []
+            cleanup_cmd = []
+            fail_cmd = []
             cmd_list = None
             cxx_local_var = intent_blk.get('cxx_local_var', '')
             if cxx_local_var:
@@ -542,14 +544,18 @@ return 1;""", fmt)
                     else:
                         fmt_arg.numpy_intent = 'NPY_ARRAY_INOUT_ARRAY'
                     cmd_list = [
-                        '{numpy_var} = PyArray_FROM_OTF({py_var}, {numpy_type}, {numpy_intent});',
+                        '{numpy_var} = (PyArrayObject *)\t PyArray_FROM_OTF'
+                        '(\t{py_var},\t {numpy_type},\t {numpy_intent});',
                         'if ({numpy_var} == NULL) {{',
                         '    PyErr_SetString(PyExc_ValueError, "{c_var} must be a 1-D array of {c_type}");',
                         '    goto fail;',
                         '}}',
                         '{cxx_decl} = PyArray_DATA({numpy_var});',
                     ]
-                    fail_cmd_list = [
+                    cleanup_cmd = [
+                        'Py_DECREF({numpy_var});'
+                    ]
+                    fail_cmd = [
                         'Py_XDECREF({numpy_var});'
                     ]
 
@@ -595,7 +601,9 @@ return 1;""", fmt)
             if cmd_list:
                 for cmd in cmd_list:
                     append_format(post_parse, cmd, fmt_arg)
-            for cmd in fail_cmd_list:
+            for cmd in cleanup_cmd:
+                append_format(cleanup_code, cmd, fmt_arg)
+            for cmd in fail_cmd:
                 append_format(fail_code, cmd, fmt_arg)
 
             if intent != 'out' and not cxx_local_var and arg_typedef.c_to_cxx:
@@ -758,21 +766,26 @@ return 1;""", fmt)
         # If only one return value, return the ctor
         # else create a tuple with Py_BuildValue.
         if not build_tuples:
-            PY_code.append('Py_RETURN_NONE;')
+            return_code = 'Py_RETURN_NONE;'
         elif len(build_tuples) == 1:
             # return a single object already created in build_stmts
             ctor = build_tuples[0].ctor
             if ctor:
                 PY_code.append(ctor)
             fmt.py_var = build_tuples[0].ctorvar
-            append_format(PY_code, 'return (PyObject *) {py_var};', fmt)
+            return_code = wformat('return (PyObject *) {py_var};', fmt)
         else:
             # create tuple object
             fmt.PyBuild_format = ''.join([ttt.format for ttt in build_tuples])
             fmt.PyBuild_vargs = ',\t '.join([ttt.vargs for ttt in build_tuples])
-            PY_code.append(wformat(
-                'return Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});',
-                fmt))
+            append_format(
+                PY_code, 'PyObject * {PY_result} = '
+                'Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});',
+                fmt)
+            return_code = wformat('return {PY_result};', fmt)
+        
+        PY_code.extend(cleanup_code)
+        PY_code.append(return_code)
 
         if fail_code:
             PY_code.extend(['', '\0fail:'])
