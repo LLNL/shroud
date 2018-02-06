@@ -240,7 +240,7 @@ class LibraryNode(AstNode):
 
             # don't have to worry about argument names in Python wrappers
             # so skip the SH_ prefix by default.
-            PY_result = 'rv',
+            PY_result = 'SHT_rv',
             LUA_result = 'rv',
 
             LUA_prefix = 'l_',

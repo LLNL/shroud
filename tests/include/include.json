@@ -354,7 +354,7 @@
             "PY_impl_filename_suffix": "cpp", 
             "PY_module_name": "default_library", 
             "PY_prefix": "PY_", 
-            "PY_result": "rv", 
+            "PY_result": "SHT_rv", 
             "YAML_type_filename": "default_library_types.yaml", 
             "c_temp": "SHT_", 
             "class_prefix": "", 

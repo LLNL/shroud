@@ -95,9 +95,9 @@ PY_function2(
     {
         return NULL;
     }
-    double rv = Function2(arg1, arg2);
-    PyObject * SH_Py_rv = PyFloat_FromDouble(rv);
-    return (PyObject *) SH_Py_rv;
+    double SHT_rv = Function2(arg1, arg2);
+    PyObject * SH_Py_SHT_rv = PyFloat_FromDouble(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.function2
 }
 
@@ -167,9 +167,9 @@ PY_function3(
         return NULL;
     }
     bool arg = PyObject_IsTrue(SH_Py_arg);
-    bool rv = Function3(arg);
-    PyObject * SH_Py_rv = PyBool_FromLong(rv);
-    return (PyObject *) SH_Py_rv;
+    bool SHT_rv = Function3(arg);
+    PyObject * SH_Py_SHT_rv = PyBool_FromLong(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.function3
 }
 
@@ -233,9 +233,9 @@ PY_function4a(
     {
         return NULL;
     }
-    char * rv = Function4a(arg1, arg2);
-    PyObject * SH_Py_rv = PyString_FromString(rv);
-    return (PyObject *) SH_Py_rv;
+    char * SHT_rv = Function4a(arg1, arg2);
+    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.function4a
 }
 

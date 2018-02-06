@@ -98,9 +98,9 @@ PY_function2(
     {
         return NULL;
     }
-    double rv = Function2(arg1, arg2);
-    PyObject * SH_Py_rv = PyFloat_FromDouble(rv);
-    return (PyObject *) SH_Py_rv;
+    double SHT_rv = Function2(arg1, arg2);
+    PyObject * SH_Py_SHT_rv = PyFloat_FromDouble(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.function2
 }
 
@@ -128,9 +128,9 @@ PY_type_long_long(
     {
         return NULL;
     }
-    long long rv = TypeLongLong(arg1);
-    PyObject * SH_Py_rv = Py_BuildValue("L", rv);
-    return (PyObject *) SH_Py_rv;
+    long long SHT_rv = TypeLongLong(arg1);
+    PyObject * SH_Py_SHT_rv = Py_BuildValue("L", SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.type_long_long
 }
 
@@ -159,9 +159,9 @@ PY_function3(
         return NULL;
     }
     bool arg = PyObject_IsTrue(SH_Py_arg);
-    bool rv = Function3(arg);
-    PyObject * SH_Py_rv = PyBool_FromLong(rv);
-    return (PyObject *) SH_Py_rv;
+    bool SHT_rv = Function3(arg);
+    PyObject * SH_Py_SHT_rv = PyBool_FromLong(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.function3
 }
 
@@ -195,9 +195,9 @@ PY_function4a(
     }
     const std::string SH_arg1(arg1);
     const std::string SH_arg2(arg2);
-    const std::string rv = Function4a(SH_arg1, SH_arg2);
-    PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
-    return (PyObject *) SH_Py_rv;
+    const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);
+    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv.c_str());
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.function4a
 }
 
@@ -231,9 +231,9 @@ PY_function4b(
     }
     const std::string SH_arg1(arg1);
     const std::string SH_arg2(arg2);
-    const std::string & rv = Function4b(SH_arg1, SH_arg2);
-    PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
-    return (PyObject *) SH_Py_rv;
+    const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);
+    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv.c_str());
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.function4b
 }
 
@@ -259,7 +259,7 @@ PY_function5_arg1_arg2(
         (char *) SH_kwcpp+0,
         (char *) SH_kwcpp+5,
         NULL };
-    double rv;
+    double SHT_rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -271,20 +271,20 @@ PY_function5_arg1_arg2(
     }
     switch (SH_nargs) {
     case 0:
-        rv = Function5();
+        SHT_rv = Function5();
         break;
     case 1:
-        rv = Function5(arg1);
+        SHT_rv = Function5(arg1);
         break;
     case 2:
         {
             bool arg2 = PyObject_IsTrue(SH_Py_arg2);
-            rv = Function5(arg1, arg2);
+            SHT_rv = Function5(arg1, arg2);
             break;
         }
     }
-    PyObject * SH_Py_rv = PyFloat_FromDouble(rv);
-    return (PyObject *) SH_Py_rv;
+    PyObject * SH_Py_SHT_rv = PyFloat_FromDouble(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.function5
 }
 
@@ -432,7 +432,7 @@ PY_overload1_num_offset_stride(
         (char *) SH_kwcpp+4,
         (char *) SH_kwcpp+11,
         NULL };
-    int rv;
+    int SHT_rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -444,17 +444,17 @@ PY_overload1_num_offset_stride(
     }
     switch (SH_nargs) {
     case 1:
-        rv = overload1(num);
+        SHT_rv = overload1(num);
         break;
     case 2:
-        rv = overload1(num, offset);
+        SHT_rv = overload1(num, offset);
         break;
     case 3:
-        rv = overload1(num, offset, stride);
+        SHT_rv = overload1(num, offset, stride);
         break;
     }
-    PyObject * SH_Py_rv = PyInt_FromLong(rv);
-    return (PyObject *) SH_Py_rv;
+    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.overload1_num_offset_stride
 }
 
@@ -482,7 +482,7 @@ PY_overload1_5(
         (char *) SH_kwcpp+9,
         (char *) SH_kwcpp+16,
         NULL };
-    int rv;
+    int SHT_rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -494,17 +494,17 @@ PY_overload1_5(
     }
     switch (SH_nargs) {
     case 2:
-        rv = overload1(type, num);
+        SHT_rv = overload1(type, num);
         break;
     case 3:
-        rv = overload1(type, num, offset);
+        SHT_rv = overload1(type, num, offset);
         break;
     case 4:
-        rv = overload1(type, num, offset, stride);
+        SHT_rv = overload1(type, num, offset, stride);
         break;
     }
-    PyObject * SH_Py_rv = PyInt_FromLong(rv);
-    return (PyObject *) SH_Py_rv;
+    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.overload1_5
 }
 
@@ -532,9 +532,9 @@ PY_typefunc(
     {
         return NULL;
     }
-    TypeID rv = typefunc(arg);
-    PyObject * SH_Py_rv = PyInt_FromLong(rv);
-    return (PyObject *) SH_Py_rv;
+    TypeID SHT_rv = typefunc(arg);
+    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.typefunc
 }
 
@@ -563,9 +563,9 @@ PY_enumfunc(
         return NULL;
     }
     EnumTypeID SH_arg = static_cast<EnumTypeID>(arg);
-    EnumTypeID rv = enumfunc(SH_arg);
-    PyObject * SH_Py_rv = PyInt_FromLong(rv);
-    return (PyObject *) SH_Py_rv;
+    EnumTypeID SHT_rv = enumfunc(SH_arg);
+    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.enumfunc
 }
 
@@ -611,9 +611,9 @@ PY_last_function_called(
 {
 // const std::string & LastFunctionCalled() +pure
 // splicer begin function.last_function_called
-    const std::string & rv = LastFunctionCalled();
-    PyObject * SH_Py_rv = PyString_FromString(rv.c_str());
-    return (PyObject *) SH_Py_rv;
+    const std::string & SHT_rv = LastFunctionCalled();
+    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv.c_str());
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.last_function_called
 }
 

@@ -95,9 +95,9 @@ PP_is_name_valid(
         return NULL;
     }
     const std::string SH_name(name);
-    bool rv = isNameValid(SH_name);
-    PyObject * SH_Py_rv = PyBool_FromLong(rv);
-    return (PyObject *) SH_Py_rv;
+    bool SHT_rv = isNameValid(SH_name);
+    PyObject * SH_Py_SHT_rv = PyBool_FromLong(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.is_name_valid
 }
 
@@ -113,9 +113,9 @@ PP_is_initialized(
 {
 // bool isInitialized()
 // splicer begin function.is_initialized
-    bool rv = isInitialized();
-    PyObject * SH_Py_rv = PyBool_FromLong(rv);
-    return (PyObject *) SH_Py_rv;
+    bool SHT_rv = isInitialized();
+    PyObject * SH_Py_SHT_rv = PyBool_FromLong(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.is_initialized
 }
 
@@ -271,9 +271,9 @@ PP_test_size_t(
 {
 // size_t test_size_t()
 // splicer begin function.test_size_t
-    size_t rv = test_size_t();
-    PyObject * SH_Py_rv = PyInt_FromSize_t(rv);
-    return (PyObject *) SH_Py_rv;
+    size_t SHT_rv = test_size_t();
+    PyObject * SH_Py_SHT_rv = PyInt_FromSize_t(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.test_size_t
 }
 
@@ -603,11 +603,11 @@ PP_verlongfunctionname2(
     {
         return NULL;
     }
-    int rv = verlongfunctionname2(verylongname1, verylongname2,
+    int SHT_rv = verlongfunctionname2(verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
         verylongname7, verylongname8, verylongname9, verylongname10);
-    PyObject * SH_Py_rv = PyInt_FromLong(rv);
-    return (PyObject *) SH_Py_rv;
+    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SH_Py_SHT_rv;
 // splicer end function.verlongfunctionname2
 }
 
