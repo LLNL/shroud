@@ -94,13 +94,12 @@ PY_function3a_0(
 // void function3a(int i +intent(in)+value)
 // splicer begin function.function3a_0
     int i;
-    const char *SH_kwcpp = "i";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "i",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:function3a",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &i))
     {
         return NULL;
@@ -119,13 +118,12 @@ PY_function3a_1(
 // void function3a(long i +intent(in)+value)
 // splicer begin function.function3a_1
     long i;
-    const char *SH_kwcpp = "i";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "i",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:function3a",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &i))
     {
         return NULL;
@@ -148,13 +146,12 @@ PY_function4(
 // int function4(const std::string & rv +intent(in))
 // splicer begin function.function4
     const char * rv;
-    const char *SH_kwcpp = "rv";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "rv",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:function4",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &rv))
     {
         return NULL;

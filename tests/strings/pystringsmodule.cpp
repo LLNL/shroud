@@ -64,13 +64,12 @@ PY_pass_char(
 // void passChar(char_scalar status +intent(in)+value)
 // splicer begin function.pass_char
     char status;
-    const char *SH_kwcpp = "status";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "status",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "c:passChar",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &status))
     {
         return NULL;
@@ -111,13 +110,12 @@ PY_pass_char_ptr_in_out(
 // void passCharPtrInOut(char * s +intent(inout))
 // splicer begin function.pass_char_ptr_in_out
     char * s;
-    const char *SH_kwcpp = "s";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "s",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtrInOut",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &s))
     {
         return NULL;
@@ -321,13 +319,12 @@ PY_accept_string_const_reference(
 // void acceptStringConstReference(const std::string & arg1 +intent(in))
 // splicer begin function.accept_string_const_reference
     const char * arg1;
-    const char *SH_kwcpp = "arg1";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "arg1",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "s:acceptStringConstReference", SH_kw_list,
+        "s:acceptStringConstReference", const_cast<char **>(SHT_kwlist),
         &arg1))
     {
         return NULL;
@@ -370,13 +367,12 @@ PY_accept_string_reference(
 // void acceptStringReference(std::string & arg1 +intent(inout))
 // splicer begin function.accept_string_reference
     char * arg1;
-    const char *SH_kwcpp = "arg1";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "arg1",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "s:acceptStringReference", SH_kw_list,
+        "s:acceptStringReference", const_cast<char **>(SHT_kwlist),
         &arg1))
     {
         return NULL;
@@ -401,13 +397,12 @@ PY_accept_string_pointer(
 // void acceptStringPointer(std::string * arg1 +intent(inout))
 // splicer begin function.accept_string_pointer
     char * arg1;
-    const char *SH_kwcpp = "arg1";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "arg1",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "s:acceptStringPointer", SH_kw_list,
+        "s:acceptStringPointer", const_cast<char **>(SHT_kwlist),
         &arg1))
     {
         return NULL;
@@ -453,13 +448,12 @@ PY_explicit1(
 // void explicit1(char * name +intent(in)+len_trim(AAlen))
 // splicer begin function.explicit1
     char * name;
-    const char *SH_kwcpp = "name";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "name",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:explicit1",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &name))
     {
         return NULL;
@@ -482,13 +476,12 @@ PY_cpass_char(
 // void CpassChar(char_scalar status +intent(in)+value)
 // splicer begin function.cpass_char
     char status;
-    const char *SH_kwcpp = "status";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "status",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "c:CpassChar",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &status))
     {
         return NULL;

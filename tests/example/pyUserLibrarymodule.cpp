@@ -83,13 +83,12 @@ PP_is_name_valid(
 // bool isNameValid(const std::string & name +intent(in))
 // splicer begin function.is_name_valid
     const char * name;
-    const char *SH_kwcpp = "name";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "name",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:isNameValid",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &name))
     {
         return NULL;
@@ -133,16 +132,13 @@ PP_check_bool(
 // splicer begin function.check_bool
     PyObject * SHPy_arg1;
     PyObject * SHPy_arg3;
-    const char *SH_kwcpp =
-        "arg1\0"
-        "arg3";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+5,
+    const char *SHT_kwlist[] = {
+        "arg1",
+        "arg3",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:checkBool",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &PyBool_Type, &SHPy_arg1, &PyBool_Type, &SHPy_arg3))
     {
         return NULL;
@@ -167,13 +163,12 @@ PP_test_names(
 // void test_names(const std::string & name +intent(in))
 // splicer begin function.test_names
     const char * name;
-    const char *SH_kwcpp = "name";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "name",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:test_names",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &name))
     {
         return NULL;
@@ -194,16 +189,13 @@ PP_test_names_flag(
 // splicer begin function.test_names_flag
     const char * name;
     int flag;
-    const char *SH_kwcpp =
-        "name\0"
-        "flag";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+5,
+    const char *SHT_kwlist[] = {
+        "name",
+        "flag",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "si:test_names",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &name, &flag))
     {
         return NULL;
@@ -229,18 +221,15 @@ PP_testoptional_2(
     Py_ssize_t SH_nargs = 0;
     int i;
     long j;
-    const char *SH_kwcpp =
-        "i\0"
-        "j";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+2,
+    const char *SHT_kwlist[] = {
+        "i",
+        "j",
         NULL };
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|il:testoptional",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &i, &j))
     {
         return NULL;
@@ -291,13 +280,12 @@ PP_testmpi(
 // void testmpi(MPI_Comm comm +intent(in)+value)
 // splicer begin function.testmpi
     MPI_Fint comm;
-    const char *SH_kwcpp = "comm";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "comm",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:testmpi",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &comm))
     {
         return NULL;
@@ -321,13 +309,12 @@ PP_testgroup1(
 // void testgroup1(DataGroup * grp +intent(in)+value)
 // splicer begin function.testgroup1
     PyObject * SHPy_grp;
-    const char *SH_kwcpp = "grp";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "grp",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup1",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &FillInTypeForGroup, &SHPy_grp))
     {
         return NULL;
@@ -351,13 +338,12 @@ PP_testgroup2(
 // void testgroup2(const DataGroup * grp +intent(in)+value)
 // splicer begin function.testgroup2
     PyObject * SHPy_grp;
-    const char *SH_kwcpp = "grp";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "grp",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup2",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &FillInTypeForGroup, &SHPy_grp))
     {
         return NULL;
@@ -381,13 +367,12 @@ PP_func_ptr1(
 // void FuncPtr1(void ( * get) +intent(in)+value())
 // splicer begin function.func_ptr1
     void ( * get)();
-    const char *SH_kwcpp = "get";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "get",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:FuncPtr1",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &get))
     {
         return NULL;
@@ -410,13 +395,12 @@ PP_func_ptr2(
 // void FuncPtr2(double * ( * get) +intent(in)())
 // splicer begin function.func_ptr2
     double * ( * get)();
-    const char *SH_kwcpp = "get";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "get",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FuncPtr2",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &get))
     {
         return NULL;
@@ -439,13 +423,12 @@ PP_func_ptr3(
 // void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
 // splicer begin function.func_ptr3
     double ( * get)(int i, int);
-    const char *SH_kwcpp = "get";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "get",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FuncPtr3",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &get))
     {
         return NULL;
@@ -471,13 +454,12 @@ PP_func_ptr5(
         int verylongname3, int verylongname4, int verylongname5,
         int verylongname6, int verylongname7, int verylongname8,
         int verylongname9, int verylongname10);
-    const char *SH_kwcpp = "get";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "get",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:FuncPtr5",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &get))
     {
         return NULL;
@@ -509,32 +491,22 @@ PP_verlongfunctionname1(
     int verylongname8;
     int verylongname9;
     int verylongname10;
-    const char *SH_kwcpp =
-        "verylongname1\0"
-        "verylongname2\0"
-        "verylongname3\0"
-        "verylongname4\0"
-        "verylongname5\0"
-        "verylongname6\0"
-        "verylongname7\0"
-        "verylongname8\0"
-        "verylongname9\0"
-        "verylongname10";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+14,
-        (char *) SH_kwcpp+28,
-        (char *) SH_kwcpp+42,
-        (char *) SH_kwcpp+56,
-        (char *) SH_kwcpp+70,
-        (char *) SH_kwcpp+84,
-        (char *) SH_kwcpp+98,
-        (char *) SH_kwcpp+112,
-        (char *) SH_kwcpp+126,
+    const char *SHT_kwlist[] = {
+        "verylongname1",
+        "verylongname2",
+        "verylongname3",
+        "verylongname4",
+        "verylongname5",
+        "verylongname6",
+        "verylongname7",
+        "verylongname8",
+        "verylongname9",
+        "verylongname10",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "iiiiiiiiii:verlongfunctionname1", SH_kw_list,
+        "iiiiiiiiii:verlongfunctionname1",
+        const_cast<char **>(SHT_kwlist),
         &verylongname1, &verylongname2, &verylongname3, &verylongname4,
         &verylongname5, &verylongname6, &verylongname7, &verylongname8,
         &verylongname9, &verylongname10))
@@ -574,32 +546,22 @@ PP_verlongfunctionname2(
     int verylongname8;
     int verylongname9;
     int verylongname10;
-    const char *SH_kwcpp =
-        "verylongname1\0"
-        "verylongname2\0"
-        "verylongname3\0"
-        "verylongname4\0"
-        "verylongname5\0"
-        "verylongname6\0"
-        "verylongname7\0"
-        "verylongname8\0"
-        "verylongname9\0"
-        "verylongname10";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+14,
-        (char *) SH_kwcpp+28,
-        (char *) SH_kwcpp+42,
-        (char *) SH_kwcpp+56,
-        (char *) SH_kwcpp+70,
-        (char *) SH_kwcpp+84,
-        (char *) SH_kwcpp+98,
-        (char *) SH_kwcpp+112,
-        (char *) SH_kwcpp+126,
+    const char *SHT_kwlist[] = {
+        "verylongname1",
+        "verylongname2",
+        "verylongname3",
+        "verylongname4",
+        "verylongname5",
+        "verylongname6",
+        "verylongname7",
+        "verylongname8",
+        "verylongname9",
+        "verylongname10",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "iiiiiiiiii:verlongfunctionname2", SH_kw_list,
+        "iiiiiiiiii:verlongfunctionname2",
+        const_cast<char **>(SHT_kwlist),
         &verylongname1, &verylongname2, &verylongname3, &verylongname4,
         &verylongname5, &verylongname6, &verylongname7, &verylongname8,
         &verylongname9, &verylongname10))

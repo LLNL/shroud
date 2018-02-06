@@ -84,16 +84,13 @@ PY_function2(
 // splicer begin function.function2
     double arg1;
     int arg2;
-    const char *SH_kwcpp =
-        "arg1\0"
-        "arg2";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+5,
+    const char *SHT_kwlist[] = {
+        "arg1",
+        "arg2",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &arg1, &arg2))
     {
         return NULL;
@@ -117,13 +114,12 @@ PY_type_long_long(
 // long long TypeLongLong(long long arg1 +intent(in)+value)
 // splicer begin function.type_long_long
     long long arg1;
-    const char *SH_kwcpp = "arg1";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "arg1",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:TypeLongLong",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &arg1))
     {
         return NULL;
@@ -147,13 +143,12 @@ PY_function3(
 // bool Function3(bool arg +intent(in)+value)
 // splicer begin function.function3
     PyObject * SHPy_arg;
-    const char *SH_kwcpp = "arg";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "arg",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &PyBool_Type, &SHPy_arg))
     {
         return NULL;
@@ -179,16 +174,13 @@ PY_function4a(
 // splicer begin function.function4a
     const char * arg1;
     const char * arg2;
-    const char *SH_kwcpp =
-        "arg1\0"
-        "arg2";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+5,
+    const char *SHT_kwlist[] = {
+        "arg1",
+        "arg2",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &arg1, &arg2))
     {
         return NULL;
@@ -215,16 +207,13 @@ PY_function4b(
 // splicer begin function.function4b
     const char * arg1;
     const char * arg2;
-    const char *SH_kwcpp =
-        "arg1\0"
-        "arg2";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+5,
+    const char *SHT_kwlist[] = {
+        "arg1",
+        "arg2",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4b",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &arg1, &arg2))
     {
         return NULL;
@@ -252,19 +241,16 @@ PY_function5_arg1_arg2(
     Py_ssize_t SH_nargs = 0;
     double arg1;
     PyObject * SHPy_arg2;
-    const char *SH_kwcpp =
-        "arg1\0"
-        "arg2";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+5,
+    const char *SHT_kwlist[] = {
+        "arg1",
+        "arg2",
         NULL };
     double SHT_rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|dO!:Function5",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &arg1, &PyBool_Type, &SHPy_arg2))
     {
         return NULL;
@@ -297,13 +283,12 @@ PY_function6_from_name(
 // void Function6(const std::string & name +intent(in))
 // splicer begin function.function6_from_name
     const char * name;
-    const char *SH_kwcpp = "name";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "name",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:Function6",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &name))
     {
         return NULL;
@@ -323,13 +308,12 @@ PY_function6_from_index(
 // void Function6(int indx +intent(in)+value)
 // splicer begin function.function6_from_index
     int indx;
-    const char *SH_kwcpp = "indx";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "indx",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function6",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &indx))
     {
         return NULL;
@@ -352,13 +336,12 @@ PY_function9(
 // void Function9(double arg +intent(in)+value)
 // splicer begin function.function9
     double arg;
-    const char *SH_kwcpp = "arg";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "arg",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function9",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &arg))
     {
         return NULL;
@@ -391,16 +374,13 @@ PY_function10_1(
 // splicer begin function.function10_1
     const char * name;
     double arg2;
-    const char *SH_kwcpp =
-        "name\0"
-        "arg2";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+5,
+    const char *SHT_kwlist[] = {
+        "name",
+        "arg2",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "sd:Function10",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &name, &arg2))
     {
         return NULL;
@@ -423,21 +403,17 @@ PY_overload1_num_offset_stride(
     int num;
     int offset;
     int stride;
-    const char *SH_kwcpp =
-        "num\0"
-        "offset\0"
-        "stride";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+4,
-        (char *) SH_kwcpp+11,
+    const char *SHT_kwlist[] = {
+        "num",
+        "offset",
+        "stride",
         NULL };
     int SHT_rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|ii:overload1",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &num, &offset, &stride))
     {
         return NULL;
@@ -471,23 +447,18 @@ PY_overload1_5(
     int num;
     int offset;
     int stride;
-    const char *SH_kwcpp =
-        "type\0"
-        "num\0"
-        "offset\0"
-        "stride";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
-        (char *) SH_kwcpp+5,
-        (char *) SH_kwcpp+9,
-        (char *) SH_kwcpp+16,
+    const char *SHT_kwlist[] = {
+        "type",
+        "num",
+        "offset",
+        "stride",
         NULL };
     int SHT_rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di|ii:overload1",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &type, &num, &offset, &stride))
     {
         return NULL;
@@ -521,13 +492,12 @@ PY_typefunc(
 // TypeID typefunc(TypeID arg +intent(in)+value)
 // splicer begin function.typefunc
     int arg;
-    const char *SH_kwcpp = "arg";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "arg",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:typefunc",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &arg))
     {
         return NULL;
@@ -551,13 +521,12 @@ PY_enumfunc(
 // EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
 // splicer begin function.enumfunc
     int arg;
-    const char *SH_kwcpp = "arg";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "arg",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:enumfunc",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &arg))
     {
         return NULL;
@@ -582,13 +551,12 @@ PY_useclass(
 // void useclass(const Class1 * arg1 +intent(in)+value)
 // splicer begin function.useclass
     PY_Class1 * SHPy_arg1;
-    const char *SH_kwcpp = "arg1";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "arg1",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &PY_Class1_Type, &SHPy_arg1))
     {
         return NULL;

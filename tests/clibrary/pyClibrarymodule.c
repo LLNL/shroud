@@ -84,13 +84,13 @@ PY_function2(
 // splicer begin function.function2
     double arg1;
     int arg2;
-    char *SH_kw_list[] = {
+    char *SHT_kwlist[] = {
         "arg1",
         "arg2",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
-        SH_kw_list,
+        SHT_kwlist,
         &arg1, &arg2))
     {
         return NULL;
@@ -116,12 +116,12 @@ PY_sum(
     int len;
     PyObject * SHPy_values;
     PyArrayObject * SHAPy_values = NULL;
-    char *SH_kw_list[] = {
+    char *SHT_kwlist[] = {
         "len",
         "values",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "iO:Sum", SH_kw_list,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "iO:Sum", SHT_kwlist,
         &len, &SHPy_values))
     {
         return NULL;
@@ -158,12 +158,12 @@ PY_function3(
 // bool Function3(bool arg +intent(in)+value)
 // splicer begin function.function3
     PyObject * SHPy_arg;
-    char *SH_kw_list[] = {
+    char *SHT_kwlist[] = {
         "arg",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
-        SH_kw_list,
+        SHT_kwlist,
         &PyBool_Type, &SHPy_arg))
     {
         return NULL;
@@ -189,13 +189,13 @@ PY_function3b(
 // splicer begin function.function3b
     PyObject * SHPy_arg1;
     PyObject * SHPy_arg3;
-    char *SH_kw_list[] = {
+    char *SHT_kwlist[] = {
         "arg1",
         "arg3",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:Function3b",
-        SH_kw_list,
+        SHT_kwlist,
         &PyBool_Type, &SHPy_arg1, &PyBool_Type, &SHPy_arg3))
     {
         return NULL;
@@ -225,13 +225,13 @@ PY_function4a(
 // splicer begin function.function4a
     const char * arg1;
     const char * arg2;
-    char *SH_kw_list[] = {
+    char *SHT_kwlist[] = {
         "arg1",
         "arg2",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
-        SH_kw_list,
+        SHT_kwlist,
         &arg1, &arg2))
     {
         return NULL;
@@ -256,13 +256,13 @@ PY_intargs(
 // splicer begin function.intargs
     int argin;
     int arginout;
-    char *SH_kw_list[] = {
+    char *SHT_kwlist[] = {
         "argin",
         "arginout",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ii:intargs",
-        SH_kw_list,
+        SHT_kwlist,
         &argin, &arginout))
     {
         return NULL;

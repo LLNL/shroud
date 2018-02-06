@@ -103,13 +103,12 @@ PP_exclass1_increment_count(
 // int incrementCount(int incr +intent(in)+value)
 // splicer begin class.ExClass1.method.increment_count
     int incr;
-    const char *SH_kwcpp = "incr";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "incr",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:incrementCount",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &incr))
     {
         return NULL;
@@ -225,13 +224,12 @@ PP_exclass1_get_value_from_int(
 // int getValue(int value +intent(in)+value)
 // splicer begin class.ExClass1.method.get_value_from_int
     int value;
-    const char *SH_kwcpp = "value";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "value",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:getValue",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &value))
     {
         return NULL;
@@ -251,13 +249,12 @@ PP_exclass1_get_value_1(
 // long getValue(long value +intent(in)+value)
 // splicer begin class.ExClass1.method.get_value_1
     long value;
-    const char *SH_kwcpp = "value";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "value",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:getValue",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &value))
     {
         return NULL;
@@ -299,13 +296,12 @@ PP_exclass1_has_addr(
 // bool hasAddr(bool in +intent(in)+value)
 // splicer begin class.ExClass1.method.has_addr
     PyObject * SHPy_in;
-    const char *SH_kwcpp = "in";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "in",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:hasAddr",
-        SH_kw_list,
+        const_cast<char **>(SHT_kwlist),
         &PyBool_Type, &SHPy_in))
     {
         return NULL;
