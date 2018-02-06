@@ -950,7 +950,7 @@ c_statements
            Set if a local C++ variable is created.
            This is the case when C and C++ are not directly compatible.
            Usually a C++ constructor or cast is involved.
-           Set to **object** when a class is instantiated, for example ``std::string``.
+           Set to **scalar** when a local variable is being created, for example ``std::string``.
            Or set to **pointer** when used with a pointer, for example ``char *``.
            This sets *cxx_var* is set to ``SH_{c_var}``.
 

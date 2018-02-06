@@ -99,8 +99,8 @@ PY_function2(
         return NULL;
     }
     double SHT_rv = Function2(arg1, arg2);
-    PyObject * SH_Py_SHT_rv = PyFloat_FromDouble(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyFloat_FromDouble(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.function2
 }
 
@@ -129,8 +129,8 @@ PY_type_long_long(
         return NULL;
     }
     long long SHT_rv = TypeLongLong(arg1);
-    PyObject * SH_Py_SHT_rv = Py_BuildValue("L", SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = Py_BuildValue("L", SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.type_long_long
 }
 
@@ -146,7 +146,7 @@ PY_function3(
 {
 // bool Function3(bool arg +intent(in)+value)
 // splicer begin function.function3
-    PyObject * SH_Py_arg;
+    PyObject * SHPy_arg;
     const char *SH_kwcpp = "arg";
     char *SH_kw_list[] = {
         (char *) SH_kwcpp+0,
@@ -154,14 +154,14 @@ PY_function3(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
         SH_kw_list,
-        &PyBool_Type, &SH_Py_arg))
+        &PyBool_Type, &SHPy_arg))
     {
         return NULL;
     }
-    bool arg = PyObject_IsTrue(SH_Py_arg);
+    bool arg = PyObject_IsTrue(SHPy_arg);
     bool SHT_rv = Function3(arg);
-    PyObject * SH_Py_SHT_rv = PyBool_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyBool_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.function3
 }
 
@@ -196,8 +196,8 @@ PY_function4a(
     const std::string SH_arg1(arg1);
     const std::string SH_arg2(arg2);
     const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);
-    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv.c_str());
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyString_FromString(SHT_rv.c_str());
+    return (PyObject *) SHTPy_rv;
 // splicer end function.function4a
 }
 
@@ -232,8 +232,8 @@ PY_function4b(
     const std::string SH_arg1(arg1);
     const std::string SH_arg2(arg2);
     const std::string & SHT_rv = Function4b(SH_arg1, SH_arg2);
-    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv.c_str());
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyString_FromString(SHT_rv.c_str());
+    return (PyObject *) SHTPy_rv;
 // splicer end function.function4b
 }
 
@@ -251,7 +251,7 @@ PY_function5_arg1_arg2(
 // splicer begin function.function5
     Py_ssize_t SH_nargs = 0;
     double arg1;
-    PyObject * SH_Py_arg2;
+    PyObject * SHPy_arg2;
     const char *SH_kwcpp =
         "arg1\0"
         "arg2";
@@ -265,7 +265,7 @@ PY_function5_arg1_arg2(
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|dO!:Function5",
         SH_kw_list,
-        &arg1, &PyBool_Type, &SH_Py_arg2))
+        &arg1, &PyBool_Type, &SHPy_arg2))
     {
         return NULL;
     }
@@ -278,13 +278,13 @@ PY_function5_arg1_arg2(
         break;
     case 2:
         {
-            bool arg2 = PyObject_IsTrue(SH_Py_arg2);
+            bool arg2 = PyObject_IsTrue(SHPy_arg2);
             SHT_rv = Function5(arg1, arg2);
             break;
         }
     }
-    PyObject * SH_Py_SHT_rv = PyFloat_FromDouble(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyFloat_FromDouble(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.function5
 }
 
@@ -453,8 +453,8 @@ PY_overload1_num_offset_stride(
         SHT_rv = overload1(num, offset, stride);
         break;
     }
-    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.overload1_num_offset_stride
 }
 
@@ -503,8 +503,8 @@ PY_overload1_5(
         SHT_rv = overload1(type, num, offset, stride);
         break;
     }
-    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.overload1_5
 }
 
@@ -533,8 +533,8 @@ PY_typefunc(
         return NULL;
     }
     TypeID SHT_rv = typefunc(arg);
-    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.typefunc
 }
 
@@ -564,8 +564,8 @@ PY_enumfunc(
     }
     EnumTypeID SH_arg = static_cast<EnumTypeID>(arg);
     EnumTypeID SHT_rv = enumfunc(SH_arg);
-    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.enumfunc
 }
 
@@ -581,7 +581,7 @@ PY_useclass(
 {
 // void useclass(const Class1 * arg1 +intent(in)+value)
 // splicer begin function.useclass
-    PY_Class1 * SH_Py_arg1;
+    PY_Class1 * SHPy_arg1;
     const char *SH_kwcpp = "arg1";
     char *SH_kw_list[] = {
         (char *) SH_kwcpp+0,
@@ -589,11 +589,11 @@ PY_useclass(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass",
         SH_kw_list,
-        &PY_Class1_Type, &SH_Py_arg1))
+        &PY_Class1_Type, &SHPy_arg1))
     {
         return NULL;
     }
-    const Class1 * arg1 = SH_Py_arg1 ? SH_Py_arg1->obj : NULL;
+    const Class1 * arg1 = SHPy_arg1 ? SHPy_arg1->obj : NULL;
     useclass(arg1);
     Py_RETURN_NONE;
 // splicer end function.useclass
@@ -612,8 +612,8 @@ PY_last_function_called(
 // const std::string & LastFunctionCalled() +pure
 // splicer begin function.last_function_called
     const std::string & SHT_rv = LastFunctionCalled();
-    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv.c_str());
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyString_FromString(SHT_rv.c_str());
+    return (PyObject *) SHTPy_rv;
 // splicer end function.last_function_called
 }
 

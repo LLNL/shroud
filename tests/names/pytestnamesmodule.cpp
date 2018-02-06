@@ -161,8 +161,8 @@ PY_function4(
     }
     const std::string SH_rv(rv);
     int SHT_rv = function4(SH_rv);
-    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.function4
 }
 

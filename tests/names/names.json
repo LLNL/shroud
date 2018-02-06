@@ -240,7 +240,7 @@
             "PY_param_kwds": "kwds", 
             "PY_param_self": "self", 
             "PY_prefix": "PY_", 
-            "PY_result": "SHT_rv", 
+            "PY_result": "SHTPy_rv", 
             "PY_used_param_args": false, 
             "PY_used_param_kwds": false, 
             "PY_used_param_self": false, 
@@ -366,7 +366,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "i", 
-                            "py_var": "SH_Py_i"
+                            "py_var": "SHPy_i"
                         }
                     }
                 }, 
@@ -456,7 +456,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "long", 
                             "cxx_var": "i", 
-                            "py_var": "SH_Py_i"
+                            "py_var": "SHPy_i"
                         }
                     }
                 }, 
@@ -539,7 +539,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_rv", 
-                            "py_var": "SH_Py_rv"
+                            "py_var": "SHPy_rv"
                         }
                     }
                 }, 

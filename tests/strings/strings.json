@@ -92,7 +92,7 @@
             "PY_param_kwds": "kwds", 
             "PY_param_self": "self", 
             "PY_prefix": "PY_", 
-            "PY_result": "SHT_rv", 
+            "PY_result": "SHTPy_rv", 
             "PY_used_param_args": false, 
             "PY_used_param_kwds": false, 
             "PY_used_param_self": false, 
@@ -132,7 +132,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status", 
-                            "py_var": "SH_Py_status"
+                            "py_var": "SHPy_status"
                         }
                     }
                 }, 
@@ -589,7 +589,7 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "s", 
-                            "py_var": "SH_Py_s"
+                            "py_var": "SHPy_s"
                         }
                     }
                 }, 
@@ -2440,7 +2440,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
-                            "py_var": "SH_Py_arg1"
+                            "py_var": "SHPy_arg1"
                         }
                     }
                 }, 
@@ -2616,7 +2616,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
-                            "py_var": "SH_Py_arg1"
+                            "py_var": "SHPy_arg1"
                         }
                     }
                 }, 
@@ -2794,7 +2794,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
-                            "py_var": "SH_Py_arg1"
+                            "py_var": "SHPy_arg1"
                         }
                     }
                 }, 
@@ -2974,7 +2974,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
-                            "py_var": "SH_Py_arg1"
+                            "py_var": "SHPy_arg1"
                         }
                     }
                 }, 
@@ -3143,7 +3143,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
-                            "py_var": "SH_Py_arg1"
+                            "py_var": "SHPy_arg1"
                         }
                     }, 
                     "arg2": {
@@ -3159,7 +3159,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg2", 
-                            "py_var": "SH_Py_arg2"
+                            "py_var": "SHPy_arg2"
                         }
                     }
                 }, 
@@ -3302,7 +3302,7 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name", 
-                            "py_var": "SH_Py_name"
+                            "py_var": "SHPy_name"
                         }
                     }
                 }, 
@@ -3632,7 +3632,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status", 
-                            "py_var": "SH_Py_status"
+                            "py_var": "SHPy_status"
                         }
                     }
                 }, 

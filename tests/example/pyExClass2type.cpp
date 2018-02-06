@@ -209,8 +209,8 @@ PP_exclass2_get_name(
 // const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 // splicer begin class.ExClass2.method.get_name
     const std::string & SHT_rv = self->obj->getName();
-    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv.c_str());
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyString_FromString(SHT_rv.c_str());
+    return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name
 }
 
@@ -227,8 +227,8 @@ PP_exclass2_get_name2(
 // const string & getName2()
 // splicer begin class.ExClass2.method.get_name2
     const std::string & SHT_rv = self->obj->getName2();
-    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv.c_str());
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyString_FromString(SHT_rv.c_str());
+    return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name2
 }
 
@@ -245,8 +245,8 @@ PP_exclass2_get_name3(
 // string & getName3() const
 // splicer begin class.ExClass2.method.get_name3
     std::string & SHT_rv = self->obj->getName3();
-    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv.c_str());
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyString_FromString(SHT_rv.c_str());
+    return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name3
 }
 
@@ -263,8 +263,8 @@ PP_exclass2_get_name4(
 // string & getName4()
 // splicer begin class.ExClass2.method.get_name4
     std::string & SHT_rv = self->obj->getName4();
-    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv.c_str());
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyString_FromString(SHT_rv.c_str());
+    return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name4
 }
 
@@ -281,8 +281,8 @@ PP_exclass2_get_name_length(
 // int GetNameLength() const
 // splicer begin class.ExClass2.method.get_name_length
     int SHT_rv = self->obj->GetNameLength();
-    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name_length
 }
 
@@ -298,7 +298,7 @@ PP_exclass2_get_class1(
 {
 // ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
 // splicer begin class.ExClass2.method.get_class1
-    PP_ExClass1 * SH_Py_in;
+    PP_ExClass1 * SHPy_in;
     const char *SH_kwcpp = "in";
     char *SH_kw_list[] = {
         (char *) SH_kwcpp+0,
@@ -306,15 +306,15 @@ PP_exclass2_get_class1(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:get_class1",
         SH_kw_list,
-        &PP_ExClass1_Type, &SH_Py_in))
+        &PP_ExClass1_Type, &SHPy_in))
     {
         return NULL;
     }
-    const ExClass1 * in = SH_Py_in ? SH_Py_in->obj : NULL;
+    const ExClass1 * in = SHPy_in ? SHPy_in->obj : NULL;
     ExClass1 * SHT_rv = self->obj->get_class1(in);
-    PP_ExClass1 * SH_Py_SHT_rv = PyObject_New(PP_ExClass1, &PP_ExClass1_Type);
-    SH_Py_SHT_rv->obj = SHT_rv;
-    return (PyObject *) SH_Py_SHT_rv;
+    PP_ExClass1 * SHTPy_rv = PyObject_New(PP_ExClass1, &PP_ExClass1_Type);
+    SHTPy_rv->obj = SHT_rv;
+    return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_class1
 }
 
@@ -397,8 +397,8 @@ PP_exclass2_get_type_id(
 // TypeID getTypeID() const
 // splicer begin class.ExClass2.method.get_type_id
     TypeID SHT_rv = self->obj->getTypeID();
-    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_type_id
 }
 // splicer begin class.ExClass2.impl.after_methods

@@ -96,8 +96,8 @@ PP_is_name_valid(
     }
     const std::string SH_name(name);
     bool SHT_rv = isNameValid(SH_name);
-    PyObject * SH_Py_SHT_rv = PyBool_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyBool_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.is_name_valid
 }
 
@@ -114,8 +114,8 @@ PP_is_initialized(
 // bool isInitialized()
 // splicer begin function.is_initialized
     bool SHT_rv = isInitialized();
-    PyObject * SH_Py_SHT_rv = PyBool_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyBool_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.is_initialized
 }
 
@@ -131,8 +131,8 @@ PP_check_bool(
 {
 // void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 // splicer begin function.check_bool
-    PyObject * SH_Py_arg1;
-    PyObject * SH_Py_arg3;
+    PyObject * SHPy_arg1;
+    PyObject * SHPy_arg3;
     const char *SH_kwcpp =
         "arg1\0"
         "arg3";
@@ -143,18 +143,18 @@ PP_check_bool(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:checkBool",
         SH_kw_list,
-        &PyBool_Type, &SH_Py_arg1, &PyBool_Type, &SH_Py_arg3))
+        &PyBool_Type, &SHPy_arg1, &PyBool_Type, &SHPy_arg3))
     {
         return NULL;
     }
-    bool arg1 = PyObject_IsTrue(SH_Py_arg1);
+    bool arg1 = PyObject_IsTrue(SHPy_arg1);
     bool arg2;  // intent(out)
-    bool arg3 = PyObject_IsTrue(SH_Py_arg3);
+    bool arg3 = PyObject_IsTrue(SHPy_arg3);
     checkBool(arg1, &arg2, &arg3);
-    PyObject * SH_Py_arg2 = PyBool_FromLong(arg2);
-    SH_Py_arg3 = PyBool_FromLong(arg3);
-    PyObject * SHT_rv = Py_BuildValue("OO", SH_Py_arg2, SH_Py_arg3);
-    return SHT_rv;
+    PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
+    SHPy_arg3 = PyBool_FromLong(arg3);
+    PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
+    return SHTPy_rv;
 // splicer end function.check_bool
 }
 
@@ -273,8 +273,8 @@ PP_test_size_t(
 // size_t test_size_t()
 // splicer begin function.test_size_t
     size_t SHT_rv = test_size_t();
-    PyObject * SH_Py_SHT_rv = PyInt_FromSize_t(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyInt_FromSize_t(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.test_size_t
 }
 
@@ -320,7 +320,7 @@ PP_testgroup1(
 {
 // void testgroup1(DataGroup * grp +intent(in)+value)
 // splicer begin function.testgroup1
-    PyObject * SH_Py_grp;
+    PyObject * SHPy_grp;
     const char *SH_kwcpp = "grp";
     char *SH_kw_list[] = {
         (char *) SH_kwcpp+0,
@@ -328,11 +328,11 @@ PP_testgroup1(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup1",
         SH_kw_list,
-        &FillInTypeForGroup, &SH_Py_grp))
+        &FillInTypeForGroup, &SHPy_grp))
     {
         return NULL;
     }
-    axom::sidre::Group * grp = SH_Py_grp ? SH_Py_grp->obj : NULL;
+    axom::sidre::Group * grp = SHPy_grp ? SHPy_grp->obj : NULL;
     testgroup1(grp);
     Py_RETURN_NONE;
 // splicer end function.testgroup1
@@ -350,7 +350,7 @@ PP_testgroup2(
 {
 // void testgroup2(const DataGroup * grp +intent(in)+value)
 // splicer begin function.testgroup2
-    PyObject * SH_Py_grp;
+    PyObject * SHPy_grp;
     const char *SH_kwcpp = "grp";
     char *SH_kw_list[] = {
         (char *) SH_kwcpp+0,
@@ -358,11 +358,11 @@ PP_testgroup2(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup2",
         SH_kw_list,
-        &FillInTypeForGroup, &SH_Py_grp))
+        &FillInTypeForGroup, &SHPy_grp))
     {
         return NULL;
     }
-    const axom::sidre::Group * grp = SH_Py_grp ? SH_Py_grp->obj : NULL;
+    const axom::sidre::Group * grp = SHPy_grp ? SHPy_grp->obj : NULL;
     testgroup2(grp);
     Py_RETURN_NONE;
 // splicer end function.testgroup2
@@ -544,11 +544,11 @@ PP_verlongfunctionname1(
     verlongfunctionname1(&verylongname1, &verylongname2, &verylongname3,
         &verylongname4, &verylongname5, &verylongname6, &verylongname7,
         &verylongname8, &verylongname9, &verylongname10);
-    PyObject * SHT_rv = Py_BuildValue("iiiiiiiiii", verylongname1,
+    PyObject * SHTPy_rv = Py_BuildValue("iiiiiiiiii", verylongname1,
         verylongname2, verylongname3, verylongname4, verylongname5,
         verylongname6, verylongname7, verylongname8, verylongname9,
         verylongname10);
-    return SHT_rv;
+    return SHTPy_rv;
 // splicer end function.verlongfunctionname1
 }
 
@@ -609,8 +609,8 @@ PP_verlongfunctionname2(
     int SHT_rv = verlongfunctionname2(verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
         verylongname7, verylongname8, verylongname9, verylongname10);
-    PyObject * SH_Py_SHT_rv = PyInt_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.verlongfunctionname2
 }
 

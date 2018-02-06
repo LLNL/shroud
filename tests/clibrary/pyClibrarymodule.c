@@ -96,8 +96,8 @@ PY_function2(
         return NULL;
     }
     double SHT_rv = Function2(arg1, arg2);
-    PyObject * SH_Py_SHT_rv = PyFloat_FromDouble(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyFloat_FromDouble(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.function2
 }
 
@@ -114,33 +114,33 @@ PY_sum(
 // void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))
 // splicer begin function.sum
     int len;
-    PyObject * SH_Py_values;
-    PyArrayObject * SH_arr_values = NULL;
+    PyObject * SHPy_values;
+    PyArrayObject * SHAPy_values = NULL;
     char *SH_kw_list[] = {
         "len",
         "values",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "iO:Sum", SH_kw_list,
-        &len, &SH_Py_values))
+        &len, &SHPy_values))
     {
         return NULL;
     }
-    SH_arr_values = (PyArrayObject *) PyArray_FROM_OTF(SH_Py_values,
+    SHAPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHPy_values,
         NPY_INT, NPY_ARRAY_IN_ARRAY);
-    if (SH_arr_values == NULL) {
+    if (SHAPy_values == NULL) {
         PyErr_SetString(PyExc_ValueError, "values must be a 1-D array of int");
         goto fail;
     }
-    int * values = PyArray_DATA(SH_arr_values);
+    int * values = PyArray_DATA(SHAPy_values);
     int result;  // intent(out)
     Sum(len, values, &result);
-    PyObject * SH_Py_result = PyInt_FromLong(result);
-    Py_DECREF(SH_arr_values);
-    return (PyObject *) SH_Py_result;
+    PyObject * SHPy_result = PyInt_FromLong(result);
+    Py_DECREF(SHAPy_values);
+    return (PyObject *) SHPy_result;
 
 fail:
-    Py_XDECREF(SH_arr_values);
+    Py_XDECREF(SHAPy_values);
     return NULL;
 // splicer end function.sum
 }
@@ -157,21 +157,21 @@ PY_function3(
 {
 // bool Function3(bool arg +intent(in)+value)
 // splicer begin function.function3
-    PyObject * SH_Py_arg;
+    PyObject * SHPy_arg;
     char *SH_kw_list[] = {
         "arg",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
         SH_kw_list,
-        &PyBool_Type, &SH_Py_arg))
+        &PyBool_Type, &SHPy_arg))
     {
         return NULL;
     }
-    bool arg = PyObject_IsTrue(SH_Py_arg);
+    bool arg = PyObject_IsTrue(SHPy_arg);
     bool SHT_rv = Function3(arg);
-    PyObject * SH_Py_SHT_rv = PyBool_FromLong(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyBool_FromLong(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.function3
 }
 
@@ -187,8 +187,8 @@ PY_function3b(
 {
 // void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 // splicer begin function.function3b
-    PyObject * SH_Py_arg1;
-    PyObject * SH_Py_arg3;
+    PyObject * SHPy_arg1;
+    PyObject * SHPy_arg3;
     char *SH_kw_list[] = {
         "arg1",
         "arg3",
@@ -196,18 +196,18 @@ PY_function3b(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:Function3b",
         SH_kw_list,
-        &PyBool_Type, &SH_Py_arg1, &PyBool_Type, &SH_Py_arg3))
+        &PyBool_Type, &SHPy_arg1, &PyBool_Type, &SHPy_arg3))
     {
         return NULL;
     }
-    bool arg1 = PyObject_IsTrue(SH_Py_arg1);
+    bool arg1 = PyObject_IsTrue(SHPy_arg1);
     bool arg2;  // intent(out)
-    bool arg3 = PyObject_IsTrue(SH_Py_arg3);
+    bool arg3 = PyObject_IsTrue(SHPy_arg3);
     Function3b(arg1, &arg2, &arg3);
-    PyObject * SH_Py_arg2 = PyBool_FromLong(arg2);
-    SH_Py_arg3 = PyBool_FromLong(arg3);
-    PyObject * SHT_rv = Py_BuildValue("OO", SH_Py_arg2, SH_Py_arg3);
-    return SHT_rv;
+    PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
+    SHPy_arg3 = PyBool_FromLong(arg3);
+    PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
+    return SHTPy_rv;
 // splicer end function.function3b
 }
 
@@ -237,8 +237,8 @@ PY_function4a(
         return NULL;
     }
     char * SHT_rv = Function4a(arg1, arg2);
-    PyObject * SH_Py_SHT_rv = PyString_FromString(SHT_rv);
-    return (PyObject *) SH_Py_SHT_rv;
+    PyObject * SHTPy_rv = PyString_FromString(SHT_rv);
+    return (PyObject *) SHTPy_rv;
 // splicer end function.function4a
 }
 
@@ -269,8 +269,8 @@ PY_intargs(
     }
     int argout;  // intent(out)
     intargs(argin, &arginout, &argout);
-    PyObject * SHT_rv = Py_BuildValue("ii", arginout, argout);
-    return SHT_rv;
+    PyObject * SHTPy_rv = Py_BuildValue("ii", arginout, argout);
+    return SHTPy_rv;
 // splicer end function.intargs
 }
 static PyMethodDef PY_methods[] = {

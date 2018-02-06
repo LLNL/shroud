@@ -409,8 +409,8 @@ return 1;""", fmt)
 #            is_const = False
 #        else:
 #            is_const = None
-        fmt.PY_rv_decl = ast.gen_arg_as_cxx(
-            name=fmt.PY_result, params=None)  # return value
+        fmt.C_rv_decl = ast.gen_arg_as_cxx(
+            name=fmt.C_result, params=None)  # return value
 
         PY_decl = []     # variables for function
         PY_code = []
@@ -449,7 +449,7 @@ return 1;""", fmt)
             fmt_arg = fmt_arg0.setdefault('fmtpy', util.Scope(fmt))
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
-            fmt_arg.py_var = 'SH_Py_' + arg_name
+            fmt_arg.py_var = 'SHPy_' + arg_name
             if arg.const:
                 fmt_arg.c_const = 'const '
             else:
@@ -531,7 +531,7 @@ return 1;""", fmt)
                 # add argument to call to PyArg_ParseTypleAndKeywords
                 if dimension:
                     self.need_numpy = True
-                    fmt_arg.numpy_var = 'SH_arr_' + fmt_arg.c_var
+                    fmt_arg.numpy_var = 'SHAPy_' + fmt_arg.c_var
                     fmt_arg.py_type = 'PyObject'
                     append_format(PY_decl, '{py_type} * {py_var};', fmt_arg)
                     append_format(PY_decl, 'PyArrayObject * {numpy_var} = NULL;', fmt_arg)
@@ -687,10 +687,10 @@ return 1;""", fmt)
         # If multiple calls, declare return value once
         # Else delare on call line.
         if found_default:
-            fmt.PY_rv_asgn = fmt.PY_result + ' = '
+            fmt.PY_rv_asgn = fmt.C_result + ' = '
             PY_code.append('switch (SH_nargs) {')
         else:
-            fmt.PY_rv_asgn = fmt.PY_rv_decl + ' = '
+            fmt.PY_rv_asgn = fmt.C_rv_decl + ' = '
         need_rv = False
 
         for nargs, len_post_parse, call_list in default_calls:
@@ -720,8 +720,8 @@ return 1;""", fmt)
 
             if node.PY_error_pattern:
                 lfmt = util.Scope(fmt)
-                lfmt.c_var = fmt.PY_result
-                lfmt.cxx_var = fmt.PY_result
+                lfmt.c_var = fmt.C_result
+                lfmt.cxx_var = fmt.C_result
                 append_format(PY_code,
                               self.patterns[node.PY_error_pattern], lfmt)
 
@@ -741,7 +741,7 @@ return 1;""", fmt)
             need_rv = False
 
         if need_rv:
-            PY_decl.append(fmt.PY_rv_decl + ';')
+            PY_decl.append(fmt.C_rv_decl + ';')
         if len(PY_decl):
             PY_decl.append('')
 
@@ -751,9 +751,9 @@ return 1;""", fmt)
                 fmt.cxx_deref = '->'
             else:
                 fmt.cxx_deref = '.'
-            fmt.c_var = fmt.PY_result
-            fmt.cxx_var = fmt.PY_result
-            fmt.py_var = 'SH_Py_' + fmt.cxx_var
+            fmt.c_var = fmt.C_result
+            fmt.cxx_var = fmt.C_result
+            fmt.py_var = fmt.PY_result
             # XXX - wrapc uses result instead of intent_out
             result_blk = result_typedef.py_statements.get('intent_out', {})
             ttt = self.intent_out(result_typedef, result_blk,
