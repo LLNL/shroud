@@ -351,14 +351,18 @@
                         }, 
                         "fmtpy": {
                             "c_const": "", 
-                            "c_decl": "int values", 
+                            "c_decl": "int * values", 
                             "c_ptr": " *", 
                             "c_type": "int", 
                             "c_var": "values", 
-                            "cxx_decl": "int values", 
+                            "cxx_decl": "int * values", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "values", 
+                            "numpy_intent": "NPY_ARRAY_IN_ARRAY", 
+                            "numpy_type": "NPY_INT", 
+                            "numpy_var": "SH_arr_values", 
+                            "py_type": "PyObject", 
                             "py_var": "SH_Py_values"
                         }
                     }

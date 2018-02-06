@@ -1,5 +1,5 @@
 #!/bin/env python
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
 # 
 # LLNL-CODE-738041.
@@ -375,6 +375,10 @@ class WrapperMixin(object):
                     elif subline[0] == '#':
                         # preprocessing directives work better in column 1
                         fp.write(subline)
+                        fp.write('\n')
+                    elif subline[0] == '\0':
+                        # line start in column 1 (like labels)
+                        fp.write(subline[1:])
                         fp.write('\n')
                     else:
                         self.write_continue(fp, subline)

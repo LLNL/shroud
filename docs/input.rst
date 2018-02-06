@@ -1,4 +1,4 @@
-.. Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+.. Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 .. Produced at the Lawrence Livermore National Laboratory 
 ..
 .. LLNL-CODE-738041.
@@ -90,7 +90,8 @@ required since single braces are used for variable expansion.
 Literal newlines, ``/n``, are respected.  Format strings can use a
 tab, ``/t``, to hint where it would be convenient to add a
 continuation if necessary.  A formfeed, ``/f``, will force a
-continuation.  Line lengths are controlled by the options
+continuation.  Lines which start with ``\0`` are not indented.  This
+can be used with labels.  Line lengths are controlled by the options
 *C_line_length* and *F_line_length* and default to 72.
 
 The only formatting option is to control output line lengths.  This is

@@ -1,5 +1,4 @@
-#!/bin/env python3
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 # 
 # LLNL-CODE-738041.
@@ -57,6 +56,28 @@ from .util import wformat, append_format
 BuildTuple = collections.namedtuple(
     'BuildTuple', 'format vargs ctor ctorvar')
 
+# map c types to numpy types
+c_to_numpy = dict(
+#    'NPY_BOOL',
+#    'NPY_BYTE',
+#    'NPY_UBYTE',
+#    'NPY_SHORT',
+#    'NPY_USHORT',
+    int='NPY_INT',
+#    'NPY_UINT',
+    long='NPY_LONG',
+#    'NPY_ULONG',
+#    'NPY_LONGLONG',
+#    'NPY_ULONGLONG',
+    float='NPY_FLOAT',
+    double='NPY_DOUBLE',
+#    'NPY_LONGDOUBLE',
+#    'NPY_CFLOAT',
+#    'NPY_CDOUBLE',
+#    'NPY_CLONGDOUBLE',
+#    'NPY_OBJECT',
+)
+
 
 class Wrapp(util.WrapperMixin):
     """Generate Python bindings.
@@ -72,6 +93,7 @@ class Wrapp(util.WrapperMixin):
         self.comment = '//'
         self.cont = ''
         self.linelen = newlibrary.options.C_line_length
+        self.need_numpy = False
 
     def XXX_begin_output_file(self):
         """Start a new class for output"""
@@ -397,6 +419,7 @@ return 1;""", fmt)
         parse_format = []
         parse_vargs = []
         post_parse = []
+        fail_code = []
 
         # arguments to Py_BuildValue
         build_tuples = []
@@ -444,6 +467,7 @@ return 1;""", fmt)
             fmt_arg.cxx_type = arg_typedef.cxx_type
 
             # non-strings should be scalars
+            dimension = arg.attrs.get('dimension', False)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             # local_var - 'funcptr', 'pointer', or 'scalar'
             if arg.is_function_pointer():
@@ -455,12 +479,14 @@ return 1;""", fmt)
                 fmt_arg.c_decl = wformat('{c_const}char * {c_var}', fmt_arg)
 #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
-                have_scalar = False
+                local_var = 'pointer'
+            elif arg.attrs.get('dimension', False):
+                fmt_arg.c_decl = wformat('{c_type} * {c_var}', fmt_arg)
+                fmt_arg.cxx_decl = wformat('{cxx_type} * {cxx_var}', fmt_arg)
                 local_var = 'pointer'
             else:
                 fmt_arg.c_decl = wformat('{c_type} {c_var}', fmt_arg)
                 fmt_arg.cxx_decl = wformat('{cxx_type} {cxx_var}', fmt_arg)
-                have_scalar = True
                 local_var = 'scalar'
 
             py_statements = arg_typedef.py_statements
@@ -468,6 +494,8 @@ return 1;""", fmt)
             stmts = 'intent_' + intent
             intent_blk = py_statements.get(stmts, {})
 
+            fail_cmd_list = []
+            cmd_list = None
             cxx_local_var = intent_blk.get('cxx_local_var', '')
             if cxx_local_var:
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
@@ -499,13 +527,39 @@ return 1;""", fmt)
 
                 # Declare C variable - may be PyObject.
                 # add argument to call to PyArg_ParseTypleAndKeywords
-                parse_format.append(arg_typedef.PY_format)
-                if arg_typedef.PY_PyTypeObject:
+                if dimension:
+                    self.need_numpy = True
+                    fmt_arg.numpy_var = 'SH_arr_' + fmt_arg.c_var
+                    fmt_arg.py_type = 'PyObject'
+                    append_format(PY_decl, '{py_type} * {py_var};', fmt_arg)
+                    append_format(PY_decl, 'PyArrayObject * {numpy_var} = NULL;', fmt_arg)
+                    pass_var = fmt_arg.cxx_var
+                    parse_format.append('O')
+                    parse_vargs.append('&' + fmt_arg.py_var)
+                    fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
+                    if intent == 'in':
+                        fmt_arg.numpy_intent = 'NPY_ARRAY_IN_ARRAY'
+                    else:
+                        fmt_arg.numpy_intent = 'NPY_ARRAY_INOUT_ARRAY'
+                    cmd_list = [
+                        '{numpy_var} = PyArray_FROM_OTF({py_var}, {numpy_type}, {numpy_intent});',
+                        'if ({numpy_var} == NULL) {{',
+                        '    PyErr_SetString(PyExc_ValueError, "{c_var} must be a 1-D array of {c_type}");',
+                        '    goto fail;',
+                        '}}',
+                        '{cxx_decl} = PyArray_DATA({numpy_var});',
+                    ]
+                    fail_cmd_list = [
+                        'Py_XDECREF({numpy_var});'
+                    ]
+
+                elif arg_typedef.PY_PyTypeObject:
                     # Expect object of given type
                     # cxx_var is declared by py_statements.intent_out.post_parse.
                     fmt_arg.py_type = arg_typedef.PY_PyObject or 'PyObject'
                     append_format(PY_decl, '{py_type} * {py_var};', fmt_arg)
                     pass_var = fmt_arg.cxx_var
+                    parse_format.append(arg_typedef.PY_format)
                     parse_format.append('!')
                     parse_vargs.append('&' + arg_typedef.PY_PyTypeObject)
                     parse_vargs.append('&' + fmt_arg.py_var)
@@ -514,11 +568,13 @@ return 1;""", fmt)
                     # cxx_var created directly (no c_var)
                     append_format(PY_decl, '{cxx_decl};', fmt_arg)
                     pass_var = fmt_arg.cxx_var
+                    parse_format.append(arg_typedef.PY_format)
                     parse_format.append('&')
                     parse_vargs.append(arg_typedef.PY_from_object)
                     parse_vargs.append('&' + fmt_arg.cxx_var)
                 else:
                     append_format(PY_decl, '{c_decl};', fmt_arg)
+                    parse_format.append(arg_typedef.PY_format)
                     parse_vargs.append('&' + fmt_arg.c_var)
 
             if intent in ['inout', 'out']:
@@ -534,10 +590,13 @@ return 1;""", fmt)
                     arg_typedef, intent_blk, fmt_arg, post_call))
 
             # Code to convert parsed values (C or Python) to C++.
-            cmd_list = intent_blk.get('post_parse', [])
+            if cmd_list is None:
+                cmd_list = intent_blk.get('post_parse', [])
             if cmd_list:
                 for cmd in cmd_list:
                     append_format(post_parse, cmd, fmt_arg)
+            for cmd in fail_cmd_list:
+                append_format(fail_code, cmd, fmt_arg)
 
             if intent != 'out' and not cxx_local_var and arg_typedef.c_to_cxx:
                 # Make intermediate C++ variable
@@ -714,6 +773,11 @@ return 1;""", fmt)
             PY_code.append(wformat(
                 'return Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});',
                 fmt))
+
+        if fail_code:
+            PY_code.extend(['', '\0fail:'])
+            PY_code.extend(fail_code)
+            PY_code.append('return NULL;')
 
         PY_impl = [1] + PY_decl + PY_code + [-1]
 
@@ -1000,6 +1064,9 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
         output = []
 
         output.append(wformat('#include "{PY_header_filename}"', fmt))
+        if self.need_numpy:
+            output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
+            output.append('#include "numpy/arrayobject.h"')
         output.append('')
         self._create_splicer('include', output)
         self.namespace(node, None, 'begin', output)
@@ -1023,6 +1090,8 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
         output.append(wformat(module_begin, fmt))
         self._create_splicer('C_init_locals', output)
         output.append(wformat(module_middle, fmt))
+        if self.need_numpy:
+            output.append('    import_array();')
         output.extend(self.py_type_object_creation)
         output.append(wformat(module_middle2, fmt))
         self._create_splicer('C_init_body', output)

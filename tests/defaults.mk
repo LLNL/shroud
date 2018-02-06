@@ -1,6 +1,6 @@
 # shroud/tests/defaults.mk
 
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -81,8 +81,9 @@ endif
 PYTHON_VER := $(shell $(PYTHON) -c "import sys;sys.stdout.write('{v[0]}.{v[1]}'.format(v=sys.version_info))")
 PLATFORM := $(shell $(PYTHON) -c "import sys, sysconfig;sys.stdout.write(sysconfig.get_platform())")
 PYTHON_PREFIX := $(shell $(PYTHON) -c "import sys;sys.stdout.write(sys.exec_prefix)")
+PYTHON_NUMPY := $(shell $(PYTHON) -c "import sys, numpy;sys.stdout.write(numpy.get_include())")
 PYTHON_BIN := $(PYTHON)
-PYTHON_INC := -I$(PYTHON_PREFIX)/include/python$(PYTHON_VER)
+PYTHON_INC := -I$(PYTHON_PREFIX)/include/python$(PYTHON_VER) -I$(PYTHON_NUMPY)
 PYTHON_LIB := -L$(PYTHON_PREFIX)/lib/python$(PYTHON_VER)/config -lpython$(PYTHON_VER) -ldl -lutil
 
 LUA_PREFIX = $(abspath $(dir $(LUA))/..)

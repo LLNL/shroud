@@ -41,6 +41,8 @@
 //
 // #######################################################################
 #include "pyClibrarymodule.h"
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 
 // splicer begin include
 // splicer end include
@@ -112,21 +114,32 @@ PY_sum(
 // void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))
 // splicer begin function.sum
     int len;
-    int values;
+    PyObject * SH_Py_values;
+    PyArrayObject * SH_arr_values = NULL;
     char *SH_kw_list[] = {
         "len",
         "values",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ii:Sum", SH_kw_list,
-        &len, &values))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "iO:Sum", SH_kw_list,
+        &len, &SH_Py_values))
     {
         return NULL;
     }
+    SH_arr_values = PyArray_FROM_OTF(SH_Py_values, NPY_INT, NPY_ARRAY_IN_ARRAY);
+    if (SH_arr_values == NULL) {
+        PyErr_SetString(PyExc_ValueError, "values must be a 1-D array of int");
+        goto fail;
+    }
+    int * values = PyArray_DATA(SH_arr_values);
     int result;  // intent(out)
-    Sum(len, &values, &result);
+    Sum(len, values, &result);
     PyObject * SH_Py_result = PyInt_FromLong(result);
     return (PyObject *) SH_Py_result;
+
+fail:
+    Py_XDECREF(SH_arr_values);
+    return NULL;
 // splicer end function.sum
 }
 
@@ -347,6 +360,7 @@ MOD_INITBASIS(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
+    import_array();
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
