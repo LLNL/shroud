@@ -238,10 +238,8 @@ class LibraryNode(AstNode):
             C_string_result_as_arg = 'SHF_rv',
             F_string_result_as_arg = '',
 
-            # don't have to worry about argument names in Python wrappers
-            # so skip the SH_ prefix by default.
             PY_result = 'SHTPy_rv',      # Create PyObject for result
-            LUA_result = 'rv',
+            LUA_result = 'SHT_rv',
 
             LUA_prefix = 'l_',
             LUA_state_var = 'L',

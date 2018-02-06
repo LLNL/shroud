@@ -3968,7 +3968,7 @@
             "LUA_module_name": "userlibrary", 
             "LUA_module_reg": "l_UserLibrary_Reg", 
             "LUA_prefix": "l_", 
-            "LUA_result": "rv", 
+            "LUA_result": "SHT_rv", 
             "LUA_state_var": "L", 
             "LUA_used_param_state": false, 
             "LUA_userdata_type": "XXLUA_userdata_type", 

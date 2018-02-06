@@ -225,7 +225,7 @@
             "LUA_impl_filename_suffix": "cpp", 
             "LUA_module_name": "lua_module_name", 
             "LUA_prefix": "l_", 
-            "LUA_result": "rv", 
+            "LUA_result": "SHT_rv", 
             "LUA_state_var": "L", 
             "PY_PyObject": "PyObject", 
             "PY_header_filename": "pytestnamesmodule.hpp", 

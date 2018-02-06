@@ -77,7 +77,7 @@
             "LUA_header_filename_suffix": "h", 
             "LUA_impl_filename_suffix": "c", 
             "LUA_prefix": "l_", 
-            "LUA_result": "rv", 
+            "LUA_result": "SHT_rv", 
             "LUA_state_var": "L", 
             "PY_header_filename_suffix": "h", 
             "PY_impl_filename_suffix": "c", 
