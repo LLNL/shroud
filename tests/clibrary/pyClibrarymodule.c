@@ -111,18 +111,16 @@ PY_sum(
   PyObject *args,
   PyObject *kwds)
 {
-// void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))
+// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // splicer begin function.sum
-    int len;
     PyObject * SHPy_values;
     PyArrayObject * SHAPy_values = NULL;
     char *SHT_kwlist[] = {
-        "len",
         "values",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "iO:Sum", SHT_kwlist,
-        &len, &SHPy_values))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum", SHT_kwlist,
+        &SHPy_values))
     {
         return NULL;
     }
@@ -134,6 +132,7 @@ PY_sum(
     }
     int * values = PyArray_DATA(SHAPy_values);
     int result;  // intent(out)
+    int len = PyArray_SIZE(SHAPy_values);
     Sum(len, values, &result);
     PyObject * SHPy_result = PyInt_FromLong(result);
     Py_DECREF(SHAPy_values);
@@ -201,8 +200,8 @@ PY_function3b(
         return NULL;
     }
     bool arg1 = PyObject_IsTrue(SHPy_arg1);
-    bool arg2;  // intent(out)
     bool arg3 = PyObject_IsTrue(SHPy_arg3);
+    bool arg2;  // intent(out)
     Function3b(arg1, &arg2, &arg3);
     PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
     SHPy_arg3 = PyBool_FromLong(arg3);

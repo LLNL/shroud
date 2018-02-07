@@ -685,6 +685,18 @@ class Wrapf(util.WrapperMixin):
         c_interface.append(-1)
         c_interface.append(wformat('end {F_C_subprogram} {F_C_name}', fmt))
 
+    def intent_implied(self, arg, fmt):
+        """Add the implied attribute to the pre_call block.
+        """
+        init = arg.attrs.get('implied', None)
+        blk = {}
+        if init:
+            fmt.pre_call_intent = init
+            blk['pre_call'] = [
+                '{f_var} = {pre_call_intent}'
+            ]
+        return blk
+
     def wrap_function_impl(self, cls, node):
         """
         Wrap implementation of Fortran function
@@ -799,6 +811,7 @@ class Wrapf(util.WrapperMixin):
 
             f_arg = True   # assume C and Fortran arguments match
             c_attrs = c_arg.attrs
+            implied = c_attrs.get('implied', False)
             intent = c_attrs['intent']
             if c_attrs.get('_is_result', False):
                 c_stmts = 'result' + generated_suffix
@@ -817,8 +830,8 @@ class Wrapf(util.WrapperMixin):
                 # result_arguments are not processed here
                 f_index += 1
                 f_arg = f_args[f_index]
-                arg_f_names.append(fmt_arg.f_var)
                 if f_arg.is_function_pointer():
+                    arg_f_names.append(fmt_arg.f_var)
                     absiface = self.add_abstract_interface(node, f_arg)
                     arg_f_decl.append(
                         'procedure({}) :: {}'.format(
@@ -826,8 +839,13 @@ class Wrapf(util.WrapperMixin):
                     arg_c_call.append(f_arg.name)
                     # function pointers are pass thru without any change
                     continue
-
-                arg_f_decl.append(f_arg.gen_arg_as_fortran())
+                elif implied:
+                    # An implied argument is not passed into Fortran
+                    # it is computed then passed to C++
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True))
+                else:
+                    arg_f_names.append(fmt_arg.f_var)
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran())
 
                 arg_type = f_arg.typename
                 arg_typedef = typemap.Typedef.lookup(arg_type)
@@ -837,9 +855,12 @@ class Wrapf(util.WrapperMixin):
                     cxx_T = c_attrs['template']
                     arg_typedef = typemap.Typedef.lookup(cxx_T)
 
-                f_statements = arg_typedef.f_statements
-                f_stmts = 'intent_' + intent
-                f_intent_blk = f_statements.get(f_stmts, {})
+                if implied:
+                    f_intent_blk = self.intent_implied(f_arg, fmt_arg)
+                else:
+                    f_statements = arg_typedef.f_statements
+                    f_stmts = 'intent_' + intent
+                    f_intent_blk = f_statements.get(f_stmts, {})
 
                 # Create a local variable for C if necessary
                 have_c_local_var = f_intent_blk.get('c_local_var', False)

@@ -68,11 +68,11 @@ types:
 functions:
 - decl: void Function1()
 - decl: double Function2(double arg1, int arg2)
-- decl: void Sum(int len, int *values+dimension(len)+intent(in),
+- decl: void Sum(int len +implied(size(values)),
+                 int *values+dimension(:)+intent(in),
                  int *result+intent(out))
   options:
     # unable to deal with dimension
-    wrap_python: False
     wrap_lua: False
 
 - decl: long long TypeLongLong(long long arg1)

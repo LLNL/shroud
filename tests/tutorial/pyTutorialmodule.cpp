@@ -41,6 +41,8 @@
 //
 // #######################################################################
 #include "pyTutorialmodule.hpp"
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 
 // splicer begin include
 // splicer end include
@@ -99,6 +101,52 @@ PY_function2(
     PyObject * SHTPy_rv = PyFloat_FromDouble(SHT_rv);
     return (PyObject *) SHTPy_rv;
 // splicer end function.function2
+}
+
+static char PY_sum__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_sum(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+// splicer begin function.sum
+    PyObject * SHPy_values;
+    PyArrayObject * SHAPy_values = NULL;
+    const char *SHT_kwlist[] = {
+        "values",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
+        const_cast<char **>(SHT_kwlist),
+        &SHPy_values))
+    {
+        return NULL;
+    }
+    SHAPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHPy_values,
+        NPY_INT, NPY_ARRAY_IN_ARRAY);
+    if (SHAPy_values == NULL) {
+        PyErr_SetString(PyExc_ValueError, "values must be a 1-D array of int");
+        goto fail;
+    }
+    {
+        int * values = static_cast<int *>(PyArray_DATA(SHAPy_values));
+        int result;  // intent(out)
+        int len = PyArray_SIZE(SHAPy_values);
+        Sum(len, values, &result);
+        PyObject * SHPy_result = PyInt_FromLong(result);
+        Py_DECREF(SHAPy_values);
+        return (PyObject *) SHPy_result;
+    }
+
+fail:
+    Py_XDECREF(SHAPy_values);
+    return NULL;
+// splicer end function.sum
 }
 
 static char PY_type_long_long__doc__[] =
@@ -703,6 +751,7 @@ static PyMethodDef PY_methods[] = {
     PY_function1__doc__},
 {"Function2", (PyCFunction)PY_function2, METH_VARARGS|METH_KEYWORDS,
     PY_function2__doc__},
+{"Sum", (PyCFunction)PY_sum, METH_VARARGS|METH_KEYWORDS, PY_sum__doc__},
 {"TypeLongLong", (PyCFunction)PY_type_long_long,
     METH_VARARGS|METH_KEYWORDS, PY_type_long_long__doc__},
 {"Function3", (PyCFunction)PY_function3, METH_VARARGS|METH_KEYWORDS,
@@ -806,6 +855,7 @@ MOD_INITBASIS(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
+    import_array();
 
 // Class1
     PY_Class1_Type.tp_new   = PyType_GenericNew;

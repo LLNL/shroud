@@ -293,7 +293,8 @@
                         }, 
                         "fmtf": {
                             "c_var": "len", 
-                            "f_var": "len"
+                            "f_var": "len", 
+                            "pre_call_intent": "size(values)"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -305,6 +306,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "len", 
+                            "pre_call_intent": "PyArray_SIZE(SHAPy_values)", 
                             "py_var": "SHPy_len"
                         }
                     }, 
@@ -380,6 +382,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "implied": "size(values)", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -394,7 +397,7 @@
                         }, 
                         {
                             "attrs": {
-                                "dimension": "(len)", 
+                                "dimension": "(:)", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -436,8 +439,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "void Sum(int len, int *values+dimension(len)+intent(in), int *result+intent(out))", 
-                "declgen": "void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))", 
+                "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))", 
+                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))", 
                 "format": {
                     "C_call_code": "Sum(\tlen,\t values,\t result);", 
                     "C_call_list": "len,\t values,\t result", 
@@ -446,9 +449,9 @@
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_call": "c_sum", 
-                    "F_C_name": "sum", 
+                    "F_C_name": "c_sum", 
                     "F_arg_c_call": "len,\t values,\t result", 
-                    "F_arguments": "len,\t values,\t result", 
+                    "F_arguments": "values,\t result", 
                     "F_call_code": "call c_sum(len,\t values,\t result)", 
                     "F_name_function": "sum", 
                     "F_name_generic": "sum", 
@@ -459,7 +462,9 @@
                     "function_name": "Sum", 
                     "underscore_name": "sum"
                 }, 
-                "options": {}
+                "options": {
+                    "wrap_lua": false
+                }
             }, 
             {
                 "_fmtargs": {

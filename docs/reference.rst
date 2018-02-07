@@ -1171,6 +1171,12 @@ name
 value
    If true, pass-by-value; else, pass-by-reference.
 
+implied
+   Used to compute value of argument to C++ based on argument
+   to Fortran or Python wrapper.  Useful with array sizes::
+
+       Sum(int * array +intent(in), int len +implied(size(array))
+
 intent
    Valid valid values are ``in``, ``out``, ``inout``.
    If the argument is ``const``, the default is ``in``.

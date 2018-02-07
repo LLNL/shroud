@@ -133,14 +133,14 @@ module tutorial_mod
             real(C_DOUBLE) :: SHT_rv
         end function function2
 
-        subroutine sum(len, values, result) &
+        subroutine c_sum(len, values, result) &
                 bind(C, name="TUT_sum")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: len
-            integer(C_INT), intent(IN) :: values(len)
+            integer(C_INT), intent(IN) :: values(*)
             integer(C_INT), intent(OUT) :: result
-        end subroutine sum
+        end subroutine c_sum
 
         function type_long_long(arg1) &
                 result(SHT_rv) &
@@ -594,6 +594,19 @@ contains
 
     ! splicer begin class.Class1.additional_functions
     ! splicer end class.Class1.additional_functions
+
+    ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+    ! function_index=5
+    subroutine sum(values, result)
+        use iso_c_binding, only : C_INT
+        integer(C_INT) :: len
+        integer(C_INT), intent(IN) :: values(:)
+        integer(C_INT), intent(OUT) :: result
+        len = size(values)
+        ! splicer begin function.sum
+        call c_sum(len, values, result)
+        ! splicer end function.sum
+    end subroutine sum
 
     ! bool Function3(bool arg +intent(in)+value)
     ! function_index=7

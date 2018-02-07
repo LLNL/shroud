@@ -81,7 +81,7 @@ class Tutorial(unittest.TestCase):
         self.assertEqual((1, 2), clibrary.intargs(1, 2))
 
     def testsum(self):
-        self.assertEqual(15, clibrary.Sum(5, [1, 2, 3, 4, 5]))
+        self.assertEqual(15, clibrary.Sum([1, 2, 3, 4, 5]))
 
 
 # creating a new test suite

@@ -288,6 +288,23 @@ return 1;""", fmt)
 
         self._pop_splicer('helper')
 
+    def intent_implied(self, arg, fmtargs, pre_call):
+        """Add the implied attribute to the pre_call block.
+
+        Called after all input arguments have their fmtpy dictionary
+        updated.
+        Added into wrapper after post_parse code is inserted --
+        i.e. all intent in,inout arguments have been evaluated
+        and PyArrayObjects created.
+        """
+        implied = arg.attrs.get('implied', None)
+        if implied:
+            fmt = fmtargs[arg.name]['fmtpy']
+            # XXX - this is very custom code, assumes 'size(values)'
+            fmt.pre_call_intent = wformat(
+                'PyArray_SIZE({numpy_var})', fmtargs['values']['fmtpy'])
+            append_format(pre_call, '{cxx_decl} = {pre_call_intent};', fmt)
+
     def intent_out(self, typedef, intent_blk, fmt, post_call):
         """Add code for post-call.
         Create PyObject from C++ value to return.
@@ -419,6 +436,7 @@ return 1;""", fmt)
         parse_format = []
         parse_vargs = []
         post_parse = []
+        pre_call = []
         fail_code = []
 
         # arguments to Py_BuildValue
@@ -442,6 +460,7 @@ return 1;""", fmt)
         args = ast.params
         arg_names = []
         arg_offsets = []
+        arg_implied = []  # Collect implied arguments
         offset = 0
         for arg in args:
             arg_name = arg.name
@@ -450,6 +469,11 @@ return 1;""", fmt)
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
             fmt_arg.py_var = 'SHPy_' + arg_name
+
+            arg_typedef = typemap.Typedef.lookup(arg.typename)
+            # Add formats used by py_statements
+            fmt_arg.c_type = arg_typedef.c_type
+            fmt_arg.cxx_type = arg_typedef.cxx_type
             if arg.const:
                 fmt_arg.c_const = 'const '
             else:
@@ -461,11 +485,6 @@ return 1;""", fmt)
                 fmt_arg.c_ptr = ''
                 fmt_arg.cxx_deref = '.'
             attrs = arg.attrs
-
-            arg_typedef = typemap.Typedef.lookup(arg.typename)
-            # Add formats used by py_statements
-            fmt_arg.c_type = arg_typedef.c_type
-            fmt_arg.cxx_type = arg_typedef.cxx_type
 
             # non-strings should be scalars
             dimension = arg.attrs.get('dimension', False)
@@ -490,11 +509,18 @@ return 1;""", fmt)
                 fmt_arg.cxx_decl = wformat('{cxx_type} {cxx_var}', fmt_arg)
                 local_var = 'scalar'
 
-            py_statements = arg_typedef.py_statements
-            intent = attrs['intent']
-            stmts = 'intent_' + intent
-            intent_blk = py_statements.get(stmts, {})
+            implied = attrs.get('implied', False)
+            if implied:
+                arg_implied.append(arg)
+                intent = 'implied'
+                intent_blk = {}
+            else:
+                py_statements = arg_typedef.py_statements
+                intent = attrs['intent']
+                stmts = 'intent_' + intent
+                intent_blk = py_statements.get(stmts, {})
 
+            pre_call_cmd = []
             cleanup_cmd = []
             fail_cmd = []
             cmd_list = None
@@ -511,7 +537,9 @@ return 1;""", fmt)
                 elif cxx_local_var == 'pointer':
                     fmt_arg.cxx_deref = '->'
 
-            if intent in ['inout', 'in']:
+            if implied:
+                pass
+            elif intent in ['inout', 'in']:
                 # names to PyArg_ParseTupleAndKeywords
                 arg_names.append(arg_name)
                 arg_offsets.append('(char *) SH_kwcpp+%d' % offset)
@@ -550,8 +578,15 @@ return 1;""", fmt)
                         '    PyErr_SetString(PyExc_ValueError, "{c_var} must be a 1-D array of {c_type}");',
                         '    goto fail;',
                         '}}',
-                        '{cxx_decl} = PyArray_DATA({numpy_var});',
                     ]
+                    if self.language == 'c++':
+                        pre_call_cmd  = [
+                            '{cxx_decl} = static_cast<{cxx_type} *>(PyArray_DATA({numpy_var}));',
+                        ]
+                    else:
+                        pre_call_cmd  = [
+                            '{cxx_decl} = PyArray_DATA({numpy_var});',
+                        ]
                     cleanup_cmd = [
                         'Py_DECREF({numpy_var});'
                     ]
@@ -587,7 +622,7 @@ return 1;""", fmt)
                 if intent == 'out':
                     if not cxx_local_var:
                         pass_var = fmt_arg.cxx_var
-                        append_format(post_parse,
+                        append_format(pre_call,
                                       '{cxx_decl};  // intent(out)',
                                       fmt_arg)
 
@@ -601,6 +636,8 @@ return 1;""", fmt)
             if cmd_list:
                 for cmd in cmd_list:
                     append_format(post_parse, cmd, fmt_arg)
+            for cmd in pre_call_cmd:
+                append_format(pre_call, cmd, fmt_arg)
             for cmd in cleanup_cmd:
                 append_format(cleanup_code, cmd, fmt_arg)
             for cmd in fail_cmd:
@@ -632,6 +669,10 @@ return 1;""", fmt)
                 cxx_call_list.append(pass_var)
             else:
                 raise RuntimeError("unexpected value of local_var")
+
+        # Add implied argument initialization to pre_call code
+        for arg in arg_implied:
+            intent_blk = self.intent_implied(arg, fmtargs, pre_call)
 
         if not arg_names:
             # no input arguments
@@ -708,6 +749,17 @@ return 1;""", fmt)
                     PY_code.append('{')
                     PY_code.append(1)
             PY_code.extend(post_parse[:len_post_parse])
+
+            if self.language == 'c++' and fail_code:
+                # Need an extra scope to deal with C++ error
+                # error: jump to label 'fail' crosses initialization of ...
+                PY_code.append('{')
+                PY_code.append(1)
+                fail_scope = True
+            else:
+                fail_scope = False
+            
+            PY_code.extend(pre_call)
             fmt.PY_call_list = call_list
 
             if is_dtor:
@@ -793,6 +845,9 @@ return 1;""", fmt)
         PY_code.extend(cleanup_code)
         PY_code.append(return_code)
 
+        if fail_scope:
+            PY_code.append(-1)
+            PY_code.append('}')
         if fail_code:
             PY_code.extend(['', '\0fail:'])
             PY_code.extend(fail_code)

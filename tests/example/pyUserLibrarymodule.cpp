@@ -144,8 +144,8 @@ PP_check_bool(
         return NULL;
     }
     bool arg1 = PyObject_IsTrue(SHPy_arg1);
-    bool arg2;  // intent(out)
     bool arg3 = PyObject_IsTrue(SHPy_arg3);
+    bool arg2;  // intent(out)
     checkBool(arg1, &arg2, &arg3);
     PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
     SHPy_arg3 = PyBool_FromLong(arg3);

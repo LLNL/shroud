@@ -1,5 +1,4 @@
-#!/bin/env python3
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
 # 
 # LLNL-CODE-738041.
@@ -946,13 +945,14 @@ class Declaration(Node):
             decl.append(self.name)
 
         if basedef.base == 'vector':
-            dimension = '(*)'  # is array
+            decl.append('(*)') # is array
         elif typedef.base == 'string':
-            dimension = '(*)'  # is array
+            decl.append('(*)')
         else:
-            # XXX should C always have dimensions of '(*)'?
             dimension = attrs.get('dimension', '')
-        decl.append(dimension)
+            if dimension:
+                # Any dimension is changed to assumed length.
+                decl.append('(*)')
         return ''.join(decl)
 
     def gen_arg_as_fortran(self, local=False, **kwargs):

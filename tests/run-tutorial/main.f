@@ -137,7 +137,7 @@ contains
     call function10("bar", 2.0d0)
     call assert_true(.true.)
 
-    call sum(5, [1,2,3,4,5], rv_int)
+    call sum([1,2,3,4,5], rv_int)
     call assert_true(rv_int .eq. 15)
 
     rv_ll = type_long_long( 2_c_long_long)

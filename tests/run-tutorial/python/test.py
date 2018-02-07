@@ -1,4 +1,4 @@
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -130,10 +130,10 @@ class Tutorial(unittest.TestCase):
 #    call assert_true(.true.)
 #    call function10("bar", 2.0d0)
 #    call assert_true(.true.)
-#
-#    call sum(5, [1,2,3,4,5], rv_int)
-#    call assert_true(rv_int .eq. 15)
-#
+
+    def testsum(self):
+        self.assertEqual(15, tutorial.Sum([1, 2, 3, 4, 5]))
+
 #    rv_int = overload1(10)
 #    call assert_true(rv_int .eq. 10)
 #    rv_int = overload1(1d0, 10)
