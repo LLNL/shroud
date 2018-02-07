@@ -1,5 +1,4 @@
-#!/bin/env python3
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
 # 
 # LLNL-CODE-738041.
@@ -350,12 +349,12 @@ def initialize():
                         'bool {cxx_var} = PyObject_IsTrue({py_var});',
                     ],
                     # py_var is already declared for inout
-                    ctor=[
+                    post_call=[
                         '{py_var} = PyBool_FromLong({c_var});',
                     ],
                 ),
                 intent_out=dict(
-                    ctor=[
+                    post_call=[
                         '{PyObject} * {py_var} = PyBool_FromLong({c_var});',
                     ],
                 ),
@@ -913,7 +912,7 @@ def typedef_wrapped_defaults(typedef):
             ],
         ),
         intent_out=dict(
-            ctor=[
+            post_call=[
                 ('{PyObject} * {py_var} = '
                  'PyObject_New({PyObject}, &{PyTypeObject});'),
                 '{py_var}->{PY_obj} = {cxx_var};',

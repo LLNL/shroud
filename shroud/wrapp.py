@@ -322,7 +322,8 @@ return 1;""", fmt)
         )
         if self.language == 'c++':
             blk['pre_call'] = [
-                '{cxx_decl} = static_cast<{cxx_type} *>(PyArray_DATA({numpy_var}));',
+                '{cxx_decl} = static_cast<{cxx_type} *>('
+                'PyArray_DATA({numpy_var}));',
             ]
         return blk
 
@@ -357,7 +358,7 @@ return 1;""", fmt)
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        cmd_list = intent_blk.get('ctor', [])
+        cmd_list = intent_blk.get('post_call', [])
         if cmd_list:
             # must create py_var from cxx_var.
             # XXX fmt.cxx_var = 'SH_' + fmt.c_var
@@ -524,7 +525,6 @@ return 1;""", fmt)
                 fmt_arg.cxx_deref = '.'
             attrs = arg.attrs
 
-            # non-strings should be scalars
             dimension = arg.attrs.get('dimension', False)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             # local_var - 'funcptr', 'pointer', or 'scalar'
@@ -543,6 +543,7 @@ return 1;""", fmt)
                 fmt_arg.cxx_decl = wformat('{cxx_type} * {cxx_var}', fmt_arg)
                 local_var = 'pointer'
             else:
+                # non-strings should be scalars
                 fmt_arg.c_decl = wformat('{c_type} {c_var}', fmt_arg)
                 fmt_arg.cxx_decl = wformat('{cxx_type} {cxx_var}', fmt_arg)
                 local_var = 'scalar'
@@ -593,6 +594,7 @@ return 1;""", fmt)
                 # Declare C variable - may be PyObject.
                 # add argument to call to PyArg_ParseTypleAndKeywords
                 if dimension:
+                    # Use NumPy with dimensioned arguments
                     append_format(PY_decl, '{py_type} * {py_var};', fmt_arg)
                     append_format(PY_decl, 'PyArrayObject * {numpy_var} = NULL;', fmt_arg)
                     pass_var = fmt_arg.cxx_var

@@ -4198,7 +4198,7 @@
                     ]
                 }, 
                 "intent_inout": {
-                    "ctor": [
+                    "post_call": [
                         "{py_var} = PyBool_FromLong({c_var});"
                     ], 
                     "pre_call": [
@@ -4206,7 +4206,7 @@
                     ]
                 }, 
                 "intent_out": {
-                    "ctor": [
+                    "post_call": [
                         "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
                     ]
                 }
