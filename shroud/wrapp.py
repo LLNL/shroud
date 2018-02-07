@@ -520,7 +520,7 @@ return 1;""", fmt)
                 stmts = 'intent_' + intent
                 intent_blk = py_statements.get(stmts, {})
 
-            pre_call_cmd = []
+            pre_call_cmd = None
             cleanup_cmd = []
             fail_cmd = []
             cmd_list = None
@@ -552,7 +552,7 @@ return 1;""", fmt)
                         found_default = True
                     # call for default arguments  (num args, arg string)
                     default_calls.append(
-                        (len(cxx_call_list), len(post_parse),
+                        (len(cxx_call_list), len(post_parse), len(pre_call),
                          ',\t '.join(cxx_call_list)))
 
                 # Declare C variable - may be PyObject.
@@ -636,6 +636,8 @@ return 1;""", fmt)
             if cmd_list:
                 for cmd in cmd_list:
                     append_format(post_parse, cmd, fmt_arg)
+            if pre_call_cmd is None:
+                pre_call_cmd = intent_blk.get('pre_call', [])
             for cmd in pre_call_cmd:
                 append_format(pre_call, cmd, fmt_arg)
             for cmd in cleanup_cmd:
@@ -728,7 +730,7 @@ return 1;""", fmt)
 
         # call with all arguments
         default_calls.append(
-            (len(cxx_call_list), len(post_parse),
+            (len(cxx_call_list), len(post_parse), len(pre_call),
              ',\t '.join(cxx_call_list)))
 
         # If multiple calls, declare return value once
@@ -740,14 +742,17 @@ return 1;""", fmt)
             fmt.PY_rv_asgn = fmt.C_rv_decl + ' = '
         need_rv = False
 
-        for nargs, len_post_parse, call_list in default_calls:
+        for nargs, len_post_parse, len_pre_call, call_list in default_calls:
             if found_default:
                 PY_code.append('case %d:' % nargs)
                 PY_code.append(1)
-                if len_post_parse:
+                if len_post_parse or len_pre_call:
                     # Only add scope if necessary
                     PY_code.append('{')
                     PY_code.append(1)
+                    extra_scope = True
+                else:
+                    extra_scope = False
             PY_code.extend(post_parse[:len_post_parse])
 
             if self.language == 'c++' and fail_code:
@@ -759,7 +764,7 @@ return 1;""", fmt)
             else:
                 fail_scope = False
             
-            PY_code.extend(pre_call)
+            PY_code.extend(pre_call[:len_pre_call])
             fmt.PY_call_list = call_list
 
             if is_dtor:
@@ -786,7 +791,7 @@ return 1;""", fmt)
             if found_default:
                 PY_code.append('break;')
                 PY_code.append(-1)
-                if len_post_parse:
+                if extra_scope:
                     PY_code.append('}')
                     PY_code.append(-1)
         if found_default:

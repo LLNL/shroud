@@ -341,12 +341,12 @@ def initialize():
 
             py_statements=dict(
                 intent_in=dict(
-                    post_parse=[
+                    pre_call=[
                         'bool {cxx_var} = PyObject_IsTrue({py_var});',
                     ],
                 ),
                 intent_inout=dict(
-                    post_parse=[
+                    pre_call=[
                         'bool {cxx_var} = PyObject_IsTrue({py_var});',
                     ],
                     # py_var is already declared for inout

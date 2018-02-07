@@ -6080,7 +6080,7 @@
             "f_type": "logical", 
             "py_statements": {
                 "intent_in": {
-                    "post_parse": [
+                    "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
                     ]
                 }, 
@@ -6088,7 +6088,7 @@
                     "ctor": [
                         "{py_var} = PyBool_FromLong({c_var});"
                     ], 
-                    "post_parse": [
+                    "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
                     ]
                 }, 

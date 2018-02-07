@@ -200,8 +200,8 @@ PY_function3b(
         return NULL;
     }
     bool arg1 = PyObject_IsTrue(SHPy_arg1);
-    bool arg3 = PyObject_IsTrue(SHPy_arg3);
     bool arg2;  // intent(out)
+    bool arg3 = PyObject_IsTrue(SHPy_arg3);
     Function3b(arg1, &arg2, &arg3);
     PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
     SHPy_arg3 = PyBool_FromLong(arg3);
