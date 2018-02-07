@@ -302,6 +302,10 @@ return 1;""", fmt)
         else:
             fmt_arg.numpy_intent = 'NPY_ARRAY_INOUT_ARRAY'
         blk = dict(
+            decl = [
+                '{py_type} * {py_var};',
+                'PyArrayObject * {numpy_var} = NULL;',
+            ],
             post_parse = [
                 '{numpy_var} = (PyArrayObject *)\t PyArray_FROM_OTF'
                 '(\t{py_var},\t {numpy_type},\t {numpy_intent});',
@@ -595,8 +599,6 @@ return 1;""", fmt)
                 # add argument to call to PyArg_ParseTypleAndKeywords
                 if dimension:
                     # Use NumPy with dimensioned arguments
-                    append_format(PY_decl, '{py_type} * {py_var};', fmt_arg)
-                    append_format(PY_decl, 'PyArrayObject * {numpy_var} = NULL;', fmt_arg)
                     pass_var = fmt_arg.cxx_var
                     parse_format.append('O')
                     parse_vargs.append('&' + fmt_arg.py_var)
@@ -637,6 +639,9 @@ return 1;""", fmt)
                     arg_typedef, intent_blk, fmt_arg, post_call))
 
             # Code to convert parsed values (C or Python) to C++.
+            cmd_list = intent_blk.get('decl', [])
+            for cmd in cmd_list:
+                append_format(PY_decl, cmd, fmt_arg)
             cmd_list = intent_blk.get('post_parse', [])
             for cmd in cmd_list:
                 append_format(post_parse, cmd, fmt_arg)
