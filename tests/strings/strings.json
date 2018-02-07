@@ -2932,7 +2932,7 @@
                     "C_call_code": "acceptStringReference(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_reference_bufferify", 
-                    "C_post_call": "ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());", 
+                    "C_post_call": "ShroudStrCopy(arg1, Narg1,\t SH_arg1.c_str());", 
                     "C_pre_call": "std::string SH_arg1(arg1, Larg1);", 
                     "C_prototype": "char * arg1,\t int Larg1,\t int Narg1", 
                     "C_return_code": "return;", 
@@ -3110,7 +3110,7 @@
                     "C_call_code": "acceptStringPointer(\t&SH_arg1);", 
                     "C_call_list": "&SH_arg1", 
                     "C_name": "STR_accept_string_pointer_bufferify", 
-                    "C_post_call": "ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());", 
+                    "C_post_call": "ShroudStrCopy(arg1, Narg1,\t SH_arg1.c_str());", 
                     "C_pre_call": "std::string SH_arg1(arg1, Larg1);", 
                     "C_prototype": "char * arg1,\t int Larg1,\t int Narg1", 
                     "C_return_code": "return;", 
@@ -4473,7 +4473,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_deref}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var}({c_var}, {c_var_trim});"
@@ -4576,18 +4576,18 @@
                     ], 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "{{", 
-                        "    std::vector<{cxx_T}>::size_type", 
-                        "        {c_temp}i = 0,", 
-                        "        {c_temp}n = {c_var_size};", 
-                        "    {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
-                        "    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                        "          {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
-                        "    }}", 
-                        "}}"
+                        "{{+", 
+                        "std::vector<{cxx_T}>::size_type+", 
+                        "{c_temp}i = 0,", 
+                        "{c_temp}n = {c_var_size};", 
+                        "-{c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
+                        "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+", 
+                        "{c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
+                        "-}}", 
+                        "-}}"
                     ], 
                     "pre_call": [
-                        "std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
+                        "std::vector<{cxx_T}> {cxx_var}(\t{c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
                 "intent_out_buf": {
@@ -4607,7 +4607,7 @@
                         "}}"
                     ], 
                     "pre_call": [
-                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var_size});"
+                        "{c_const}std::vector<{cxx_T}>\t {cxx_var}({c_var_size});"
                     ]
                 }
             }, 

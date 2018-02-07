@@ -90,9 +90,16 @@ required since single braces are used for variable expansion.
 Literal newlines, ``/n``, are respected.  Format strings can use a
 tab, ``/t``, to hint where it would be convenient to add a
 continuation if necessary.  A formfeed, ``/f``, will force a
-continuation.  Lines which start with ``\0`` are not indented.  This
-can be used with labels.  Line lengths are controlled by the options
-*C_line_length* and *F_line_length* and default to 72.
+continuation.  Lines which start with ``0`` are not indented.  This
+can be used with labels.  A trailing ``+`` will indent then next line
+a level and a leading
+``-`` will deindent. Line lengths are controlled by the options
+*C_line_length* and *F_line_length* and default to 72.::
+
+    C_invalid_name: |
+        if (! isNameValid({cxx_var})) {{+
+        return NULL;
+        -}}
 
 The only formatting option is to control output line lengths.  This is
 required for Fortran which has a maximum line length of 132 in free

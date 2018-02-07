@@ -309,10 +309,11 @@ return 1;""", fmt)
             post_parse = [
                 '{numpy_var} = (PyArrayObject *)\t PyArray_FROM_OTF'
                 '(\t{py_var},\t {numpy_type},\t {numpy_intent});',
-                'if ({numpy_var} == NULL) {{',
-                '    PyErr_SetString(PyExc_ValueError, "{c_var} must be a 1-D array of {c_type}");',
-                '    goto fail;',
-                '}}',
+                'if ({numpy_var} == NULL) {{+',
+                'PyErr_SetString(PyExc_ValueError,'
+                '\t "{c_var} must be a 1-D array of {c_type}");',
+                'goto fail;',
+                '-}}',
             ],
             pre_call  = [
                 '{cxx_decl} = PyArray_DATA({numpy_var});',
@@ -864,7 +865,7 @@ return 1;""", fmt)
             PY_code.append(-1)
             PY_code.append('}')
         if fail_code:
-            PY_code.extend(['', '\0fail:'])
+            PY_code.extend(['', '0fail:'])
             PY_code.extend(fail_code)
             PY_code.append('return NULL;')
 

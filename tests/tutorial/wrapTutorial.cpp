@@ -472,7 +472,7 @@ void TUT_vector_increment_bufferify(int * arg, long Sarg)
             SHT_n = Sarg;
         SHT_n = std::min(SH_arg.size(), SHT_n);
         for(; SHT_i < SHT_n; SHT_i++) {
-              arg[SHT_i] = SH_arg[SHT_i];
+            arg[SHT_i] = SH_arg[SHT_i];
         }
     }
     return;

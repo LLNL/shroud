@@ -563,7 +563,8 @@ def initialize():
                         'std::string {cxx_var}({c_var}, {c_var_trim});'
                     ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());'
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var}{cxx_deref}c_str());'
                     ],
                 ),
                 result_buf=dict(
@@ -645,7 +646,8 @@ def initialize():
                     buf_args = [ 'size' ],
                     cxx_local_var='scalar',
                     pre_call=[
-                        '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var_size});'
+                        '{c_const}std::vector<{cxx_T}>'
+                        '\t {cxx_var}({c_var_size});'
                     ],
                     post_call=[
                         '{{',
@@ -663,18 +665,19 @@ def initialize():
                     buf_args = [ 'size' ],
                     cxx_local_var='scalar',
                     pre_call=[
-                        'std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+                        'std::vector<{cxx_T}> {cxx_var}('
+                        '\t{c_var}, {c_var} + {c_var_size});'
                     ],
                     post_call=[
-                        '{{',
-                        '    std::vector<{cxx_T}>::size_type',
-                        '        {c_temp}i = 0,',
-                        '        {c_temp}n = {c_var_size};',
-                        '    {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);',
-                        '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                        '          {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];',
-                        '    }}',
-                        '}}'
+                        '{{+',
+                        'std::vector<{cxx_T}>::size_type+',
+                        '{c_temp}i = 0,',
+                        '{c_temp}n = {c_var_size};',
+                        '-{c_temp}n = std::min({cxx_var}.size(), {c_temp}n);',
+                        'for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+',
+                        '{c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];',
+                        '-}}',
+                        '-}}'
                     ],
                 ),
 #                result_buf=dict(

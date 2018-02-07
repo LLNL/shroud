@@ -4952,7 +4952,7 @@
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_iota_bufferify", 
                     "C_post_call": "{\n    std::vector<int>::size_type\n        SHT_i = 0,\n        SHT_n = Sarg;\n    SHT_n = std::min(SH_arg.size(), SHT_n);\n    for(; SHT_i < SHT_n; SHT_i++) {\n        arg[SHT_i] = SH_arg[SHT_i];\n    }\n}", 
-                    "C_pre_call": "std::vector<int> SH_arg(Sarg);", 
+                    "C_pre_call": "std::vector<int>\t SH_arg(Sarg);", 
                     "C_prototype": "int * arg,\t long Sarg", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5093,8 +5093,8 @@
                     "C_call_code": "vector_increment(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_increment_bufferify", 
-                    "C_post_call": "{\n    std::vector<int>::size_type\n        SHT_i = 0,\n        SHT_n = Sarg;\n    SHT_n = std::min(SH_arg.size(), SHT_n);\n    for(; SHT_i < SHT_n; SHT_i++) {\n          arg[SHT_i] = SH_arg[SHT_i];\n    }\n}", 
-                    "C_pre_call": "std::vector<int> SH_arg(arg, arg + Sarg);", 
+                    "C_post_call": "{+\nstd::vector<int>::size_type+\nSHT_i = 0,\nSHT_n = Sarg;\n-SHT_n = std::min(SH_arg.size(), SHT_n);\nfor(; SHT_i < SHT_n; SHT_i++) {+\narg[SHT_i] = SH_arg[SHT_i];\n-}\n-}", 
+                    "C_pre_call": "std::vector<int> SH_arg(\targ, arg + Sarg);", 
                     "C_prototype": "int * arg,\t long Sarg", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -6360,7 +6360,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_deref}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var}({c_var}, {c_var_trim});"
@@ -6463,18 +6463,18 @@
                     ], 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "{{", 
-                        "    std::vector<{cxx_T}>::size_type", 
-                        "        {c_temp}i = 0,", 
-                        "        {c_temp}n = {c_var_size};", 
-                        "    {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
-                        "    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                        "          {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
-                        "    }}", 
-                        "}}"
+                        "{{+", 
+                        "std::vector<{cxx_T}>::size_type+", 
+                        "{c_temp}i = 0,", 
+                        "{c_temp}n = {c_var_size};", 
+                        "-{c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
+                        "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+", 
+                        "{c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
+                        "-}}", 
+                        "-}}"
                     ], 
                     "pre_call": [
-                        "std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
+                        "std::vector<{cxx_T}> {cxx_var}(\t{c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
                 "intent_out_buf": {
@@ -6494,7 +6494,7 @@
                         "}}"
                     ], 
                     "pre_call": [
-                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var_size});"
+                        "{c_const}std::vector<{cxx_T}>\t {cxx_var}({c_var_size});"
                     ]
                 }
             }, 

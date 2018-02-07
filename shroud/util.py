@@ -335,38 +335,7 @@ class WrapperMixin(object):
         """ Write lines with indention and newlines.
         """
         for line in lines:
-            if isinstance(line, tuple):
-                # A tuple created by continued_line
-                cont, indent, linelen, parts = line
-                subline = '    ' * self.indent
-                nparts = 0
-                for part in parts:
-                    if not part:
-                        # \t\n results in 
-                        continue
-                    dump = False
-                    save = True
-                    if part == '\n':
-                        # write out line now, this must not be the last part
-                        dump = True
-                        save = False   # don't save newline
-                    elif len(subline) + len(part) > linelen:
-                        # Next line will be too long, dump line now
-                        # unless part by itself is exceeds linelen
-                        if nparts > 0:
-                            dump = True
-                    if dump:
-                        fp.write(subline + cont + '\n')
-                        subline = '    ' * (self.indent + indent)
-                        nparts = 0
-                        part = part.lstrip()
-                        if not part:
-                            save = False
-                    if save:
-                        subline += part
-                        nparts += 1
-                fp.write(subline + '\n')
-            elif isinstance(line, int):
+            if isinstance(line, int):
                 self.indent += int(line)
             else:
                 for subline in line.split("\n"):
@@ -376,11 +345,20 @@ class WrapperMixin(object):
                         # preprocessing directives work better in column 1
                         fp.write(subline)
                         fp.write('\n')
-                    elif subline[0] == '\0':
+                    elif subline[0] == '0':
                         # line start in column 1 (like labels)
                         fp.write(subline[1:])
                         fp.write('\n')
+                    elif subline[0] == '+':
+                        self.indent += 1
+                        self.write_continue(fp, subline[1:])
+                    elif subline[-1] == '+':
+                        self.write_continue(fp, subline[:-1])
+                        self.indent += 1
                     else:
+                        while subline[0] == '-':
+                            self.indent -= 1
+                            subline = subline[1:]
                         self.write_continue(fp, subline)
 
     def write_doxygen_file(self, output, fname, library, cls):

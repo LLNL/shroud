@@ -127,7 +127,8 @@ PY_sum(
     SHAPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHPy_values,
         NPY_INT, NPY_ARRAY_IN_ARRAY);
     if (SHAPy_values == NULL) {
-        PyErr_SetString(PyExc_ValueError, "values must be a 1-D array of int");
+        PyErr_SetString(PyExc_ValueError,
+            "values must be a 1-D array of int");
         goto fail;
     }
     int * values = PyArray_DATA(SHAPy_values);
