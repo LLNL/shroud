@@ -288,7 +288,42 @@ return 1;""", fmt)
 
         self._pop_splicer('helper')
 
-    def intent_implied(self, arg, fmtargs, pre_call):
+    def numpy_blk(self, arg, fmt_arg):
+        """Create code needed for a dimensioned array.
+        Convert it to use Numpy.
+        """
+        intent = arg.attrs['intent']
+        fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
+        if intent == 'in':
+            fmt_arg.numpy_intent = 'NPY_ARRAY_IN_ARRAY'
+        else:
+            fmt_arg.numpy_intent = 'NPY_ARRAY_INOUT_ARRAY'
+        blk = dict(
+            post_parse = [
+                '{numpy_var} = (PyArrayObject *)\t PyArray_FROM_OTF'
+                '(\t{py_var},\t {numpy_type},\t {numpy_intent});',
+                'if ({numpy_var} == NULL) {{',
+                '    PyErr_SetString(PyExc_ValueError, "{c_var} must be a 1-D array of {c_type}");',
+                '    goto fail;',
+                '}}',
+            ],
+            pre_call  = [
+                '{cxx_decl} = PyArray_DATA({numpy_var});',
+            ],
+            cleanup = [
+                'Py_DECREF({numpy_var});'
+            ],
+            fail = [
+                'Py_XDECREF({numpy_var});'
+            ],
+        )
+        if self.language == 'c++':
+            blk['pre_call'] = [
+                '{cxx_decl} = static_cast<{cxx_type} *>(PyArray_DATA({numpy_var}));',
+            ]
+        return blk
+
+    def implied_blk(self, arg, fmtargs, pre_call):
         """Add the implied attribute to the pre_call block.
 
         Called after all input arguments have their fmtpy dictionary
@@ -510,20 +545,17 @@ return 1;""", fmt)
                 local_var = 'scalar'
 
             implied = attrs.get('implied', False)
+            intent = attrs['intent']
             if implied:
                 arg_implied.append(arg)
-                intent = 'implied'
                 intent_blk = {}
+            elif dimension:
+                intent_blk = self.numpy_blk(arg, fmt_arg)
             else:
                 py_statements = arg_typedef.py_statements
-                intent = attrs['intent']
                 stmts = 'intent_' + intent
                 intent_blk = py_statements.get(stmts, {})
 
-            pre_call_cmd = None
-            cleanup_cmd = []
-            fail_cmd = []
-            cmd_list = None
             cxx_local_var = intent_blk.get('cxx_local_var', '')
             if cxx_local_var:
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
@@ -566,34 +598,6 @@ return 1;""", fmt)
                     pass_var = fmt_arg.cxx_var
                     parse_format.append('O')
                     parse_vargs.append('&' + fmt_arg.py_var)
-                    fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
-                    if intent == 'in':
-                        fmt_arg.numpy_intent = 'NPY_ARRAY_IN_ARRAY'
-                    else:
-                        fmt_arg.numpy_intent = 'NPY_ARRAY_INOUT_ARRAY'
-                    cmd_list = [
-                        '{numpy_var} = (PyArrayObject *)\t PyArray_FROM_OTF'
-                        '(\t{py_var},\t {numpy_type},\t {numpy_intent});',
-                        'if ({numpy_var} == NULL) {{',
-                        '    PyErr_SetString(PyExc_ValueError, "{c_var} must be a 1-D array of {c_type}");',
-                        '    goto fail;',
-                        '}}',
-                    ]
-                    if self.language == 'c++':
-                        pre_call_cmd  = [
-                            '{cxx_decl} = static_cast<{cxx_type} *>(PyArray_DATA({numpy_var}));',
-                        ]
-                    else:
-                        pre_call_cmd  = [
-                            '{cxx_decl} = PyArray_DATA({numpy_var});',
-                        ]
-                    cleanup_cmd = [
-                        'Py_DECREF({numpy_var});'
-                    ]
-                    fail_cmd = [
-                        'Py_XDECREF({numpy_var});'
-                    ]
-
                 elif arg_typedef.PY_PyTypeObject:
                     # Expect object of given type
                     # cxx_var is declared by py_statements.intent_out.post_parse.
@@ -631,18 +635,17 @@ return 1;""", fmt)
                     arg_typedef, intent_blk, fmt_arg, post_call))
 
             # Code to convert parsed values (C or Python) to C++.
-            if cmd_list is None:
-                cmd_list = intent_blk.get('post_parse', [])
-            if cmd_list:
-                for cmd in cmd_list:
-                    append_format(post_parse, cmd, fmt_arg)
-            if pre_call_cmd is None:
-                pre_call_cmd = intent_blk.get('pre_call', [])
-            for cmd in pre_call_cmd:
+            cmd_list = intent_blk.get('post_parse', [])
+            for cmd in cmd_list:
+                append_format(post_parse, cmd, fmt_arg)
+            cmd_list = intent_blk.get('pre_call', [])
+            for cmd in cmd_list:
                 append_format(pre_call, cmd, fmt_arg)
-            for cmd in cleanup_cmd:
+            cmd_list = intent_blk.get('cleanup', [])
+            for cmd in cmd_list:
                 append_format(cleanup_code, cmd, fmt_arg)
-            for cmd in fail_cmd:
+            cmd_list = intent_blk.get('fail', [])
+            for cmd in cmd_list:
                 append_format(fail_code, cmd, fmt_arg)
 
             if intent != 'out' and not cxx_local_var and arg_typedef.c_to_cxx:
@@ -674,7 +677,7 @@ return 1;""", fmt)
 
         # Add implied argument initialization to pre_call code
         for arg in arg_implied:
-            intent_blk = self.intent_implied(arg, fmtargs, pre_call)
+            intent_blk = self.implied_blk(arg, fmtargs, pre_call)
 
         if not arg_names:
             # no input arguments
