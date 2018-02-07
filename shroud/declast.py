@@ -136,7 +136,61 @@ def add_typemap():
 #        return wrapper
 #    return wrap
 
-class Parser(object):
+class RecursiveDescent(object):
+    """Recursive Descent Parsing helper functions.
+    """
+    def peek(self, typ):
+        return self.token.typ == typ
+
+    def next(self):
+        """Get next token."""
+        try:
+            self.token = next(self.tokenizer)
+        except StopIteration:
+            self.token = Token('EOF', None, 0, 0)
+        self.info("next", self.token)
+
+    def have(self, typ):
+        """Peek at token, if found consume."""
+        if self.token.typ == typ:
+            self.next()
+            return True
+        else:
+            return False
+
+    def mustbe(self, typ):
+        """Consume a token of type typ"""
+        token = self.token
+        if self.token.typ == typ:
+            self.next()
+            return token
+        else:
+            self.error_msg("Expected {}, found {}", typ, self.token.typ)
+
+    def error_msg(self, format, *args):
+        msg = format.format(*args)
+        ptr = ' '*self.token.column + '^'
+        raise RuntimeError('\n'.join(["Parse Error", self.decl, ptr, msg]))
+
+    def enter(self, name, *args):
+        """Print message when entering a function."""
+        if self.trace:
+            print(' ' * self.indent, 'enter', name, *args)
+            self.indent += 4
+
+    def exit(self, name, *args):
+        """Print message when exiting a function."""
+        if self.trace:
+            self.indent -= 4
+            print(' ' * self.indent, 'exit', name, *args)
+
+    def info(self, *args):
+        """Print debug message during parse."""
+        if self.trace:
+            print(' ' * self.indent, *args)
+
+
+class Parser(RecursiveDescent):
     """
     Parse a C/C++ declaration with Shroud annotations.
 
@@ -150,7 +204,7 @@ class Parser(object):
         self.indent = 0
         self.token = None
         self.tokenizer = tokenize(decl)
-        self.next()
+        self.next()  # load first token
 
     def parameter_list(self):
         # look for ... var arg at end
@@ -400,54 +454,6 @@ class Parser(object):
             else:
                 attrs[name] = True
         self.exit('attribute', attrs)
-
-    def next(self):
-        """Get next token."""
-        try:
-            self.token = next(self.tokenizer)
-        except StopIteration:
-            self.token = Token('EOF', None, 0, 0)
-        self.info("next", self.token)
-
-    def have(self, typ):
-        """Peek at token, if found consume."""
-        if self.token.typ == typ:
-            self.next()
-            return True
-        else:
-            return False
-
-    def mustbe(self, typ):
-        """Consume a token of type typ"""
-        token = self.token
-        if self.token.typ == typ:
-            self.next()
-            return token
-        else:
-            self.error_msg("Expected {}, found {}", typ, self.token.typ)
-
-    def error_msg(self, format, *args):
-        msg = format.format(*args)
-        ptr = ' '*self.token.column + '^'
-        raise RuntimeError('\n'.join(["Parse Error", self.decl, ptr, msg]))
-
-    def enter(self, name, *args):
-        """Print message when entering a function."""
-        if self.trace:
-            print(' ' * self.indent, 'enter', name, *args)
-            self.indent += 4
-
-    def exit(self, name, *args):
-        """Print message when exiting a function."""
-        if self.trace:
-            self.indent -= 4
-            print(' ' * self.indent, 'exit', name, *args)
-
-    def info(self, *args):
-        """Print debug message during parse."""
-        if self.trace:
-            print(' ' * self.indent, *args)
-
 
 class Node(object):
     pass
@@ -1016,3 +1022,77 @@ def create_this_arg(name, typ, const=True):
     arg.declarator.pointer = [ Ptr('*') ]
     arg.specifier = [ typ ]
     return arg
+
+
+######################################################################
+
+class Identifier(Node):
+    def __init__(self, name, args=None):
+        self.name = name
+        self.args = args
+
+    def _to_dict(self):
+        """Convert to dictionary.
+        Used by util.ExpandedEncoder.
+        """
+        d = dict(
+            name = self.name,
+        )
+        if self.args != None:
+            d['args'] = [ arg._to_dict() for arg in self.args]
+        return d
+
+
+class ExprParser(RecursiveDescent):
+    """
+    Parse implied attribute expressions.
+    Expand functions into Fortran or Python.
+
+    Examples:
+      size(var)
+    """
+
+    def __init__(self, expr, trace=False):
+        self.decl = expr
+        self.expr = expr
+        self.trace = trace
+        self.indent = 0
+        self.token = None
+        self.tokenizer = tokenize(expr)
+        self.next()  # load first token
+
+    def identifier(self):
+        """
+        <expr> ::= name '(' arglist ')'
+        """
+        self.enter('name')
+        name = self.mustbe('ID').value
+        if self.peek('LPAREN'):
+            args = self.argument_list()
+            node = Identifier(name, args)
+        else:
+            node = Identifier(name)
+        self.exit('name')
+        return node
+
+    def argument_list(self):
+        """
+        <argument-list> ::= '(' <name>?  [ , <name ]* ')'
+
+        """
+        self.enter('argument_list')
+        params = []
+        self.next()  # consume LPAREN peeked at in caller
+        while self.token.typ != 'RPAREN':
+            node = self.identifier()
+            params.append(node)
+            if not self.have('COMMA'):
+                break
+        self.mustbe('RPAREN')
+        self.exit('argument_list', str(params))
+        return params
+
+
+def check_expr(expr, trace=False):
+    a = ExprParser(expr, trace=trace).identifier()
+    return a

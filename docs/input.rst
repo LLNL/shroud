@@ -92,9 +92,9 @@ tab, ``/t``, to hint where it would be convenient to add a
 continuation if necessary.  A formfeed, ``/f``, will force a
 continuation.  Lines which start with ``0`` are not indented.  This
 can be used with labels.  A trailing ``+`` will indent then next line
-a level and a leading
-``-`` will deindent. Line lengths are controlled by the options
-*C_line_length* and *F_line_length* and default to 72.::
+a level and a leading ``-`` will deindent. Line lengths are controlled
+by the options *C_line_length* and *F_line_length* and default to
+72.::
 
     C_invalid_name: |
         if (! isNameValid({cxx_var})) {{+

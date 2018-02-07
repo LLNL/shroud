@@ -1,5 +1,5 @@
 """
-Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 Produced at the Lawrence Livermore National Laboratory 
 
 LLNL-CODE-738041.
@@ -883,6 +883,26 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(r2.name, 'newname')
 
 
+class CheckExpr(unittest.TestCase):
+    def test_identifier1(self):
+        r = declast.check_expr('id')
+        self.assertEqual(r._to_dict(),{
+            'name' : 'id',
+        })
+
+    def test_identifier_no_args(self):
+        r = declast.check_expr('id()')
+        self.assertEqual(r._to_dict(),{
+            'name' : 'id',
+            'args': [],
+        })
+
+    def test_identifier_with_args(self):
+        r = declast.check_expr('id(arg1)')
+        self.assertEqual(r._to_dict(),{
+            'name' : 'id',
+            'args' : [ { 'name' : 'arg1' } ]
+        })
                          
 if __name__ == '__main__':
     unittest.main()

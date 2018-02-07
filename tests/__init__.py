@@ -1,4 +1,4 @@
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -56,6 +56,7 @@ test_cases = (
     test_util.UtilCase,
     test_util.ScopeCase,
     test_declast.CheckParse,
+    test_declast.CheckExpr,
     test_ast.CheckAst,
 #    test_shroud.MainCase,
 )
