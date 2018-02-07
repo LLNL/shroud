@@ -397,7 +397,7 @@
                         }, 
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "in", 
                                 "value": false
                             }, 

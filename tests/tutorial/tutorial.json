@@ -602,7 +602,7 @@
                         }, 
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -4693,7 +4693,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "in", 
                                 "template": "int", 
                                 "value": false
@@ -4779,7 +4779,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "in", 
                                 "size": "Sarg", 
                                 "template": "int", 
@@ -4842,7 +4842,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "out", 
                                 "template": "int", 
                                 "value": false
@@ -4920,7 +4920,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "out", 
                                 "size": "Sarg", 
                                 "template": "int", 
@@ -4984,7 +4984,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "inout", 
                                 "template": "int", 
                                 "value": false
@@ -5062,7 +5062,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "inout", 
                                 "size": "Sarg", 
                                 "template": "int", 
@@ -5126,7 +5126,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "in", 
                                 "template": "std::string", 
                                 "value": false
@@ -5217,7 +5217,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "in", 
                                 "len": "Narg", 
                                 "size": "Sarg", 
@@ -5285,7 +5285,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "out", 
                                 "template": "std::string", 
                                 "value": false
@@ -5372,7 +5372,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "out", 
                                 "len": "Narg", 
                                 "size": "Sarg", 
@@ -5442,7 +5442,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "inout", 
                                 "template": "std::string", 
                                 "value": false
@@ -5524,7 +5524,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "(:)", 
+                                "dimension": ":", 
                                 "intent": "inout", 
                                 "len": "Narg", 
                                 "size": "Sarg", 
