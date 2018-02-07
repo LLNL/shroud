@@ -1,4 +1,4 @@
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
 # 
 # LLNL-CODE-738041.
@@ -149,13 +149,10 @@ class VerifyAttrs(object):
                                    "used on pointer and references")
             if dimension is True:
                 # No value was provided, provide default
-                attrs['dimension'] = '(*)'
-            else:
-                # Put parens around dimension
-                attrs['dimension'] = '(' + attrs['dimension'] + ')'
+                attrs['dimension'] = '*'
         elif typedef and typedef.base == 'vector':
             # default to 1-d assumed shape 
-            attrs['dimension'] = '(:)'
+            attrs['dimension'] = ':'
 
         if node:
             if arg.init is not None:

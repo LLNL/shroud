@@ -820,10 +820,6 @@ class Declaration(Node):
             decl.append('+')
             if value is True:
                 decl.append(attr)
-            elif attr == 'dimension':
-                # dimension already has parens
-                decl.append(attr)
-                decl.append(value)
             else:
                 decl.append('{}({})'.format(attr, value))
             space = ''
@@ -987,7 +983,8 @@ class Declaration(Node):
             decl.append(self.name)
 
         dimension = attrs.get('dimension', '')
-        decl.append(dimension)
+        if dimension:
+            decl.append('(' + dimension + ')')
 
         return ''.join(decl)
 

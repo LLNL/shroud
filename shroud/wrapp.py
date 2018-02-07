@@ -288,12 +288,15 @@ return 1;""", fmt)
 
         self._pop_splicer('helper')
 
-    def numpy_blk(self, arg, fmt_arg):
+    def dimension_blk(self, arg, fmt_arg):
         """Create code needed for a dimensioned array.
         Convert it to use Numpy.
         """
-        intent = arg.attrs['intent']
+        self.need_numpy = True
+        fmt_arg.numpy_var = 'SHAPy_' + fmt_arg.c_var
+        fmt_arg.py_type = 'PyObject'
         fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
+        intent = arg.attrs['intent']
         if intent == 'in':
             fmt_arg.numpy_intent = 'NPY_ARRAY_IN_ARRAY'
         else:
@@ -550,7 +553,7 @@ return 1;""", fmt)
                 arg_implied.append(arg)
                 intent_blk = {}
             elif dimension:
-                intent_blk = self.numpy_blk(arg, fmt_arg)
+                intent_blk = self.dimension_blk(arg, fmt_arg)
             else:
                 py_statements = arg_typedef.py_statements
                 stmts = 'intent_' + intent
@@ -590,9 +593,6 @@ return 1;""", fmt)
                 # Declare C variable - may be PyObject.
                 # add argument to call to PyArg_ParseTypleAndKeywords
                 if dimension:
-                    self.need_numpy = True
-                    fmt_arg.numpy_var = 'SHAPy_' + fmt_arg.c_var
-                    fmt_arg.py_type = 'PyObject'
                     append_format(PY_decl, '{py_type} * {py_var};', fmt_arg)
                     append_format(PY_decl, 'PyArrayObject * {numpy_var} = NULL;', fmt_arg)
                     pass_var = fmt_arg.cxx_var

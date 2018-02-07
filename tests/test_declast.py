@@ -97,11 +97,10 @@ class CheckParse(unittest.TestCase):
 
         r = declast.check_decl("int *var1 +dimension(:)")
         s = r.gen_decl()
-        self.assertEqual("int * var1 +dimension:", s)
+        self.assertEqual("int * var1 +dimension(:)", s)
         self.assertEqual("int * var1", r.gen_arg_as_c())
         self.assertEqual("int * var1", r.gen_arg_as_cxx())
-        # generate.py puts parens around the dimensions
-        self.assertEqual("integer(C_INT) :: var1:", r.gen_arg_as_fortran())
+        self.assertEqual("integer(C_INT) :: var1(:)", r.gen_arg_as_fortran())
         self.assertEqual("integer(C_INT) :: var1(*)", r.bind_c())
 
         r = declast.check_decl("const int * var1")
