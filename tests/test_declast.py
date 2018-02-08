@@ -44,6 +44,7 @@ from __future__ import print_function
 
 from shroud import ast
 from shroud import declast
+from shroud import todict
 from shroud import typemap
 from shroud import util
 
@@ -226,7 +227,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_arg_as_cxx()
         self.assertEqual("int ( * func)(int)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -294,7 +295,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -314,7 +315,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo +alias(junk)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {
                 "alias": "junk"
             }, 
@@ -336,7 +337,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo()", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -362,7 +363,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void * foo() const", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -393,7 +394,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo(int arg1)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -428,7 +429,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo(int arg1, double arg2)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -474,7 +475,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("const std::string & getName() const", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": True, 
             "declarator": {
@@ -507,7 +508,7 @@ class CheckParse(unittest.TestCase):
                          "int arg1 +in, double arg2 +out)"
                          " +attr2(True)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {
                 "attr1": "30", 
                 "len": 30
@@ -563,7 +564,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("Class1()", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {},
             "const": False,
             "fattrs": {
@@ -591,7 +592,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("Class1() +name(new)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {},
             "const": False,
             "fattrs": {
@@ -620,7 +621,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("~Class1()", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {},
             "const": False,
             "fattrs": {
@@ -648,7 +649,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("Class1 * make()", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {},
             "const": False,
             "declarator": {
@@ -683,7 +684,7 @@ class CheckParse(unittest.TestCase):
                          "std::string arg3=\"name\", "
                          "bool arg4=true)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -756,7 +757,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void decl11(ArgType arg)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -793,7 +794,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void decl12(std::vector<std::string> arg1, string arg2)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -886,20 +887,20 @@ class CheckParse(unittest.TestCase):
 class CheckExpr(unittest.TestCase):
     def test_identifier1(self):
         r = declast.check_expr('id')
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             'name' : 'id',
         })
 
     def test_identifier_no_args(self):
         r = declast.check_expr('id()')
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             'name' : 'id',
             'args': [],
         })
 
     def test_identifier_with_args(self):
         r = declast.check_expr('id(arg1)')
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r), {
             'name' : 'id',
             'args' : [ { 'name' : 'arg1' } ]
         })

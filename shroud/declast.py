@@ -455,6 +455,7 @@ class Parser(RecursiveDescent):
                 attrs[name] = True
         self.exit('attribute', attrs)
 
+
 class Node(object):
     pass
 
@@ -480,17 +481,6 @@ class Ptr(Node):
             decl.append(' const')
         if self.volatile:
             decl.append(' volatile')
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            ptr = self.ptr,
-            const = self.const,
-#            volatile = self.volatile,
-        )
-        return d
 
     def __str__(self):
         if self.const:
@@ -528,19 +518,6 @@ class Declarator(Node):
         elif self.name:
             decl.append(' ')
             decl.append(self.name)
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            pointer = [p._to_dict() for p in self.pointer],
-        )
-        if self.name:
-            d['name'] = self.name
-        elif self.func:
-            d['func'] = self.func._to_dict()
-        return d
 
     def __str__(self):
         out = ''
@@ -699,33 +676,6 @@ class Declaration(Node):
         self.params.append(newarg)
         self._set_to_void()
         return newarg
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            specifier = self.specifier,
-            const = self.const,
-#            volatile = self.volatile,
-#            self.array,
-            attrs = self.attrs,
-        )
-        if self.declarator:
-            # ctor and dtor have no declarator
-            d['declarator'] = self.declarator._to_dict()
-        if self.storage:
-            d['storage'] = self.storage
-        if self.params is not None:
-            d['params'] = [ x._to_dict() for x in self.params]
-            d['fattrs'] = self.fattrs
-            d['func_const'] = self.func_const
-        else:
-            if self.fattrs:
-                raise RuntimeError("fattrs is not empty for non-function")
-        if self.init is not None:
-            d['init'] = self.init
-        return d
 
     def __str__(self):
         out = []
@@ -1030,17 +980,6 @@ class Identifier(Node):
     def __init__(self, name, args=None):
         self.name = name
         self.args = args
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            name = self.name,
-        )
-        if self.args != None:
-            d['args'] = [ arg._to_dict() for arg in self.args]
-        return d
 
 
 class ExprParser(RecursiveDescent):

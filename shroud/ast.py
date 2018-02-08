@@ -1,4 +1,4 @@
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
 # 
 # LLNL-CODE-738041.
@@ -332,23 +332,6 @@ class LibraryNode(AstNode):
         self.classes.append(clsnode)
         return clsnode
 
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            format=self.fmtdict,
-            options=self.options,
-        )
-
-        for key in [ 'classes', 'copyright', 'cxx_header',
-                     'functions', 'language', 'namespace' ]:
-            value = getattr(self,key)
-            if value:
-                d[key] = value
-
-        return d
-
 ######################################################################
 
 class ClassNode(AstNode):
@@ -420,24 +403,6 @@ class ClassNode(AstNode):
                                **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            cxx_header=self.cxx_header,
-            format = self.fmtdict,
-            methods=self.functions,
-            name=self.name,
-            options=self.options,
-        )
-        for key in ['namespace', 'python']:
-            value = getattr(self,key)
-            if value:
-                d[key] = value
-        return d
-
 
 ######################################################################
 
@@ -579,32 +544,6 @@ class FunctionNode(AstNode):
                 # wrapc.py will overwrite C_return_type.
                 # keep original value for wrapf.py.
                 self.fmtdict.C_custom_return_type = format['C_return_type']
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            ast=self.ast,
-            _function_index=self._function_index,
-            decl=self.decl,
-            format=self.fmtdict,
-            options=self.options,
-        )
-        for key in ['cxx_template', 'default_arg_suffix',
-                    'declgen', 'doxygen', 
-                    'fortran_generic', 'return_this',
-                    'C_error_pattern', 'PY_error_pattern',
-                    '_PTR_C_CXX_index', '_PTR_F_C_index',
-                    '_CXX_return_templated',
-                    '_cxx_overload',
-                    '_default_funcs', '_fmtargs', '_fmtresult',
-                    '_generated', '_has_default_arg',
-                    '_nargs', '_overloaded']:
-            value = getattr(self,key)
-            if value:
-                d[key] = value
-        return d
 
     def clone(self):
         """Create a copy of a function node to use with C++ template

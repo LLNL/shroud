@@ -490,17 +490,6 @@ class Scope(object):
         return d
 
 
-class ExpandedEncoder(json.JSONEncoder):
-    """Jason handler to convert objects into a dictionary when they have
-    a _to_dict method.
-    """
-    def default(self, obj):
-        if hasattr(obj, '_to_dict'):
-            return obj._to_dict()
-        # Let the base class default method raise the TypeError
-        return json.JSONEncoder.default(self, obj)
-
-
 if __name__ == '__main__':
     # Argument
     print("Test Typedef")
