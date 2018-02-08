@@ -49,8 +49,10 @@ from __future__ import absolute_import
 
 import collections
 
+from . import declast
 from . import typemap
 from . import util
+from . import visitor
 from .util import wformat, append_format
 
 BuildTuple = collections.namedtuple(
@@ -344,9 +346,7 @@ return 1;""", fmt)
         implied = arg.attrs.get('implied', None)
         if implied:
             fmt = fmtargs[arg.name]['fmtpy']
-            # XXX - this is very custom code, assumes 'size(values)'
-            fmt.pre_call_intent = wformat(
-                'PyArray_SIZE({numpy_var})', fmtargs['values']['fmtpy'])
+            fmt.pre_call_intent = py_implied(implied, fmtargs)
             append_format(pre_call, '{cxx_decl} = {pre_call_intent};', fmt)
 
     def intent_out(self, typedef, intent_blk, fmt, post_call):
@@ -1485,3 +1485,41 @@ module_end = """
 }}
 #endif
 """
+
+
+class ToImplied(object):
+    def __init__(self, expr, fmtargs):
+        self.expr = expr
+        self.fmtargs = fmtargs
+
+    @visitor.on('node')
+    def visit(self, node):
+        pass
+
+    @visitor.when(declast.Identifier)
+    def visit(self, node):
+        # Look for functions
+        if node.args != None:
+            if node.name == 'size':
+                if len(node.args) != 1:
+                    raise RuntimeError("Too many arguments to 'size': "
+                                       .format(self.expr))
+                arg = node.args[0].name
+                if arg not in self.fmtargs:
+                    raise RuntimeError("Unknown argument '{}': {}"
+                                       .format(arg, self.expr))
+
+                fmt = self.fmtargs[arg]['fmtpy']
+                return wformat('PyArray_SIZE({numpy_var})', fmt)
+
+            else:
+                raise RuntimeError("Unexpected function '{}' in expression: "
+                                   .format(node.name, self.expr))
+
+
+def py_implied(expr, fmtargs):
+    """Convert string to Python code.
+    """
+    node = declast.ExprParser(expr).identifier()
+    visitor = ToImplied(expr, fmtargs)
+    return visitor.visit(node)
