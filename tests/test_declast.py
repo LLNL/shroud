@@ -904,6 +904,32 @@ class CheckExpr(unittest.TestCase):
             'name' : 'id',
             'args' : [ { 'name' : 'arg1' } ]
         })
+
+    def test_constant(self):
+        r = declast.check_expr('1 + 2.345')
+        self.assertEqual(todict.to_dict(r),{
+            "left": {
+                "value": "1"
+            }, 
+            "op": "+", 
+            "right": {
+                "value": "2.345"
+            }
+        })
+
+    def Xtest_binary(self):
+        r = declast.check_expr('a + b * c', trace=True)
+        self.assertEqual(todict.to_dict(r),{
+            'left' : {
+                'name' : 'a',
+            },
+            'op' : '+',
+            'right' : {
+                'name' : 'b',
+            },
+        })
+
+
                          
 if __name__ == '__main__':
     unittest.main()

@@ -72,6 +72,8 @@ token_specification = [
     ('EQUALS',    r'='),
     ('REF',       r'\&'),
     ('PLUS',      r'\+'),
+    ('MINUS',     r'\-'),
+    ('SLASH',     r'/'),
     ('COMMA',     r','),
     ('SEMICOLON', r';'),
     ('LT',        r'<'),
@@ -982,6 +984,29 @@ class Identifier(Node):
         self.args = args
 
 
+class BinaryOp(Node):
+    def __init__(self, left, op, right):
+        self.left = left
+        self.op = op
+        self.right = right
+
+
+class UnaryOp(Node):
+    def __init__(self, op, node):
+        self.op = op
+        self.node = node
+
+
+class ParenExpr(Node):
+    def __init__(self, node):
+        self.node = node
+
+
+class Constant(Node):
+    def __init__(self, value):
+        self.value = value
+
+
 class ExprParser(RecursiveDescent):
     """
     Parse implied attribute expressions.
@@ -1000,18 +1025,50 @@ class ExprParser(RecursiveDescent):
         self.tokenizer = tokenize(expr)
         self.next()  # load first token
 
+    def expression(self):
+        self.enter('expression')
+        left = self.primary()
+        op = self.token.typ
+        while op in ['PLUS', 'MINUS', 'STAR', 'SLASH' ]:
+            value = self.token.value
+            self.next()
+            left = BinaryOp(left, value, self.primary())
+            op = self.token.typ
+        self.exit('expression')
+        return left
+
+    def primary(self):
+        self.enter('primary')
+        if self.peek('ID'):
+            node = self.identifier()
+        elif self.token.typ in ['REAL', 'INTEGER']:
+            node = Constant(self.token.value)
+            self.next()
+        elif self.have('LPAREN'):
+            self.next()
+            node = ParenExpr(self.expression())
+            self.mustbe('RPAREN')
+        elif self.token.typ in ['PLUS', 'MINUS']:
+            value = self.token.value
+            self.next()
+            node = UnaryOp(value, self.primary())
+        else:
+            self.error_msg("Unexpected token {}", self.token.value)
+        self.exit('primary')
+        return node
+
     def identifier(self):
         """
         <expr> ::= name '(' arglist ')'
         """
-        self.enter('name')
+        self.enter('identifier')
         name = self.mustbe('ID').value
         if self.peek('LPAREN'):
             args = self.argument_list()
             node = Identifier(name, args)
         else:
             node = Identifier(name)
-        self.exit('name')
+        self.exit('identifier')
         return node
 
     def argument_list(self):
@@ -1033,5 +1090,5 @@ class ExprParser(RecursiveDescent):
 
 
 def check_expr(expr, trace=False):
-    a = ExprParser(expr, trace=trace).identifier()
+    a = ExprParser(expr, trace=trace).expression()
     return a

@@ -124,6 +124,37 @@ class ToDict(object):
             d['args'] = self.visit(node.args)
         return d
 
+    @visitor.when(declast.BinaryOp)
+    def visit(self, node):
+        d = dict(
+            left = self.visit(node.left),
+            op = node.op,
+            right = self.visit(node.right)
+        )
+        return d
+
+    @visitor.when(declast.UnaryOp)
+    def visit(self, node):
+        d = dict(
+            op = node.op,
+            node = self.visit(node.node)
+        )
+        return d
+
+    @visitor.when(declast.ParenExpr)
+    def visit(self, node):
+        d = dict(
+            node = self.visit(node.node)
+        )
+        return d
+
+    @visitor.when(declast.Constant)
+    def visit(self, node):
+        d = dict(
+            value = node.value
+        )
+        return d
+
 ######################################################################
 
     @visitor.when(util.Scope)
