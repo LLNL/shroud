@@ -74,6 +74,12 @@ class CheckImplied(unittest.TestCase):
     def test_implied1(self):
         self.assertEqual('PyArray_SIZE(SHAPy_array)',
                          wrapp.py_implied('size(array)', self.fmtargs))
+        self.assertEqual('PyArray_SIZE(SHAPy_array)+2',
+                         wrapp.py_implied('size(array) + 2', self.fmtargs))
+
+    def test_expr1(self):
+        self.assertEqual('size+n',
+                         wrapp.py_implied('size+n', self.fmtargs))
 
 
 if __name__ == '__main__':

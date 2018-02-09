@@ -1488,6 +1488,11 @@ module_end = """
 
 
 class ToImplied(object):
+    """Convert implied expression to Python wrapper code.
+
+    Convert functions:
+      size  -  PyArray_SIZE
+    """
     def __init__(self, expr, fmtargs):
         self.expr = expr
         self.fmtargs = fmtargs
@@ -1499,27 +1504,44 @@ class ToImplied(object):
     @visitor.when(declast.Identifier)
     def visit(self, node):
         # Look for functions
-        if node.args != None:
-            if node.name == 'size':
-                if len(node.args) != 1:
-                    raise RuntimeError("Too many arguments to 'size': "
-                                       .format(self.expr))
-                arg = node.args[0].name
-                if arg not in self.fmtargs:
-                    raise RuntimeError("Unknown argument '{}': {}"
-                                       .format(arg, self.expr))
+        if node.args == None:
+            return node.name
+        elif node.name == 'size':
+            # size(arg)
+            if len(node.args) != 1:
+                raise RuntimeError("Too many arguments to 'size': "
+                                   .format(self.expr))
+            arg = node.args[0].name
+            if arg not in self.fmtargs:
+                raise RuntimeError("Unknown argument '{}': {}"
+                                   .format(arg, self.expr))
+                
+            fmt = self.fmtargs[arg]['fmtpy']
+            return wformat('PyArray_SIZE({numpy_var})', fmt)
+        else:
+            raise RuntimeError("Unexpected function '{}' in expression: {}"
+                               .format(node.name, self.expr))
 
-                fmt = self.fmtargs[arg]['fmtpy']
-                return wformat('PyArray_SIZE({numpy_var})', fmt)
+    @visitor.when(declast.BinaryOp)
+    def visit(self, node):
+        return self.visit(node.left) + node.op + self.visit(node.right)
 
-            else:
-                raise RuntimeError("Unexpected function '{}' in expression: "
-                                   .format(node.name, self.expr))
+    @visitor.when(declast.UnaryOp)
+    def visit(self, node):
+        return node.op + self.visit(node.node)
+
+    @visitor.when(declast.ParenExpr)
+    def visit(self, node):
+        return '(' + self.visit(node.node) + ')'
+
+    @visitor.when(declast.Constant)
+    def visit(self, node):
+        return node.value
 
 
 def py_implied(expr, fmtargs):
     """Convert string to Python code.
     """
-    node = declast.ExprParser(expr).identifier()
+    node = declast.ExprParser(expr).expression()
     visitor = ToImplied(expr, fmtargs)
     return visitor.visit(node)

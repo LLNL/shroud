@@ -62,8 +62,8 @@ storage_class = { 'auto', 'register', 'static', 'extern', 'typedef' }
 namespace = { 'std' }
 
 token_specification = [
-    ('REAL',      r'[+-]?((((\d+[.]\d*)|(\d*[.]\d+))([Ee][+-]?\d+)?)|(\d+[Ee][+-]?\d+))'),
-    ('INTEGER',   r'[+-]?\d+'),
+    ('REAL',      r'((((\d+[.]\d*)|(\d*[.]\d+))([Ee][+-]?\d+)?)|(\d+[Ee][+-]?\d+))'),
+    ('INTEGER',   r'\d+'),
     ('DQUOTE',    r'["][^"]*["]'),  # double quoted string
     ('SQUOTE',    r"['][^']*[']"),  # single quoted string
     ('LPAREN',    r'\('),

@@ -960,6 +960,12 @@ class CheckExpr(unittest.TestCase):
             }
         })
 
+
+    def test_others(self):
+        e = 'size+2'
+        r = declast.check_expr(e)
+        self.assertEqual(e, todict.print_node(r))
+
                          
 if __name__ == '__main__':
     unittest.main()
