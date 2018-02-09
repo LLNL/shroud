@@ -248,3 +248,47 @@ def to_dict(node):
     """
     visitor = ToDict()
     return visitor.visit(node)
+
+######################################################################
+
+class PrintNode(object):
+    @visitor.on('node')
+    def visit(self, node):
+        pass
+
+    @visitor.when(declast.Identifier)
+    def visit(self, node):
+        if node.args == None:
+            return node.name
+        elif node.args:
+            n = [node.name, '(']
+            for arg in node.args:
+                n.append(self.visit(arg))
+                n.append(',')
+            n[-1] = ')'
+            return ''.join(n)
+        else:
+            return node.name+ '()'
+
+    @visitor.when(declast.BinaryOp)
+    def visit(self, node):
+        return self.visit(node.left) + node.op + self.visit(node.right)
+
+    @visitor.when(declast.UnaryOp)
+    def visit(self, node):
+        return node.op + self.visit(node.node)
+
+    @visitor.when(declast.ParenExpr)
+    def visit(self, node):
+        return '(' + self.visit(node.node) + ')'
+
+    @visitor.when(declast.Constant)
+    def visit(self, node):
+        return node.value
+
+
+def print_node(node):
+    """Convert node to original string.
+    """
+    visitor = PrintNode()
+    return visitor.visit(node)

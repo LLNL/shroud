@@ -887,12 +887,14 @@ class CheckParse(unittest.TestCase):
 class CheckExpr(unittest.TestCase):
     def test_identifier1(self):
         r = declast.check_expr('id')
+        self.assertEqual('id', todict.print_node(r))
         self.assertEqual(todict.to_dict(r),{
             'name' : 'id',
         })
 
     def test_identifier_no_args(self):
         r = declast.check_expr('id()')
+        self.assertEqual('id()', todict.print_node(r))
         self.assertEqual(todict.to_dict(r),{
             'name' : 'id',
             'args': [],
@@ -900,6 +902,7 @@ class CheckExpr(unittest.TestCase):
 
     def test_identifier_with_args(self):
         r = declast.check_expr('id(arg1)')
+        self.assertEqual('id(arg1)', todict.print_node(r))
         self.assertEqual(todict.to_dict(r), {
             'name' : 'id',
             'args' : [ { 'name' : 'arg1' } ]
@@ -907,6 +910,7 @@ class CheckExpr(unittest.TestCase):
 
     def test_constant(self):
         r = declast.check_expr('1 + 2.345')
+        self.assertEqual('1+2.345', todict.print_node(r))
         self.assertEqual(todict.to_dict(r),{
             "left": {
                 "value": "1"
@@ -919,6 +923,7 @@ class CheckExpr(unittest.TestCase):
 
     def test_binary(self):
         r = declast.check_expr('a + b * c')
+        self.assertEqual('a+b*c', todict.print_node(r))
         self.assertEqual(todict.to_dict(r),{
             "left": {
                 "name": "a"
@@ -936,6 +941,7 @@ class CheckExpr(unittest.TestCase):
         })
 
         r = declast.check_expr('(a + b) * c')
+        self.assertEqual('(a+b)*c', todict.print_node(r))
         self.assertEqual(todict.to_dict(r),{
             "left": {
                 "node": {
