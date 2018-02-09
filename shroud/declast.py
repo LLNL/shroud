@@ -1007,6 +1007,17 @@ class Constant(Node):
         self.value = value
 
 
+# For each operator, a (precedence, associativity) pair.
+OpInfo = collections.namedtuple('OpInfo', 'prec assoc')
+
+OPINFO_MAP = {
+    '+':    OpInfo(1, 'LEFT'),
+    '-':    OpInfo(1, 'LEFT'),
+    '*':    OpInfo(2, 'LEFT'),
+    '/':    OpInfo(2, 'LEFT'),
+#    '^':    OpInfo(3, 'RIGHT'),
+}
+
 class ExprParser(RecursiveDescent):
     """
     Parse implied attribute expressions.
@@ -1025,30 +1036,52 @@ class ExprParser(RecursiveDescent):
         self.tokenizer = tokenize(expr)
         self.next()  # load first token
 
-    def expression(self):
+    def expression(self, min_prec=0):
+        """Parse expressions.
+        Preserves precedence and associativity.
+
+        https://eli.thegreenplace.net/2012/08/02/parsing-expressions-by-precedence-climbing
+        """
         self.enter('expression')
-        left = self.primary()
-        op = self.token.typ
-        while op in ['PLUS', 'MINUS', 'STAR', 'SLASH' ]:
-            value = self.token.value
+        atom_lhs = self.primary()
+
+        while True:
+            op = self.token.value
+            if (op not in OPINFO_MAP
+                or OPINFO_MAP[op].prec < min_prec):
+                break
+
+            # Inside this loop the current token is a binary operator
+
+            # Get the operator's precedence and associativity, and compute a
+            # minimal precedence for the recursive call
+            prec, assoc = OPINFO_MAP[op]
+            next_min_prec = prec + 1 if assoc == 'LEFT' else prec
+
+            # Consume the current token and prepare the next one for the
+            # recursive call
             self.next()
-            left = BinaryOp(left, value, self.primary())
-            op = self.token.typ
+            atom_rhs = self.expression(next_min_prec)
+
+            # Update lhs with the new value
+            atom_lhs = BinaryOp(atom_lhs, op, atom_rhs)
+
         self.exit('expression')
-        return left
+        return atom_lhs
 
     def primary(self):
         self.enter('primary')
         if self.peek('ID'):
             node = self.identifier()
         elif self.token.typ in ['REAL', 'INTEGER']:
+            self.enter('constant')
             node = Constant(self.token.value)
             self.next()
         elif self.have('LPAREN'):
-            self.next()
             node = ParenExpr(self.expression())
             self.mustbe('RPAREN')
         elif self.token.typ in ['PLUS', 'MINUS']:
+            self.enter('unary')
             value = self.token.value
             self.next()
             node = UnaryOp(value, self.primary())

@@ -917,18 +917,42 @@ class CheckExpr(unittest.TestCase):
             }
         })
 
-    def Xtest_binary(self):
-        r = declast.check_expr('a + b * c', trace=True)
+    def test_binary(self):
+        r = declast.check_expr('a + b * c')
         self.assertEqual(todict.to_dict(r),{
-            'left' : {
-                'name' : 'a',
-            },
-            'op' : '+',
-            'right' : {
-                'name' : 'b',
-            },
+            "left": {
+                "name": "a"
+            }, 
+            "op": "+", 
+            "right": {
+                "left": {
+                    "name": "b"
+                }, 
+                "op": "*", 
+                "right": {
+                    "name": "c"
+                }
+            }
         })
 
+        r = declast.check_expr('(a + b) * c')
+        self.assertEqual(todict.to_dict(r),{
+            "left": {
+                "node": {
+                    "left": {
+                        "name": "a"
+                    }, 
+                    "op": "+", 
+                    "right": {
+                        "name": "b"
+                    }
+                }
+            }, 
+            "op": "*", 
+            "right": {
+                "name": "c"
+            }
+        })
 
                          
 if __name__ == '__main__':
