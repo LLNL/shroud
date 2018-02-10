@@ -67,7 +67,7 @@ extern "C" {
 // splicer begin class.ExClass2.C_definitions
 // splicer end class.ExClass2.C_definitions
 
-// ExClass2(const string * name +intent(in)+random(2))
+// ExClass2(const string * name +intent(in)+len_trim(trim_name))
 // function_index=19
 /**
  * \brief constructor
@@ -82,16 +82,17 @@ AA_exclass2 * AA_exclass2_ctor(const char * name)
 // splicer end class.ExClass2.method.ctor
 }
 
-// ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))
+// ExClass2(const string * name +intent(in)+len_trim(trim_name))
 // function_index=39
 /**
  * \brief constructor
  *
  */
-AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name, int Lname)
+AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name,
+    int trim_name)
 {
 // splicer begin class.ExClass2.method.ctor_bufferify
-    const std::string SH_name(name, Lname);
+    const std::string SH_name(name, trim_name);
     ExClass2 * SHT_rv = new ExClass2(&SH_name);
     return static_cast<AA_exclass2 *>(static_cast<void *>(SHT_rv));
 // splicer end class.ExClass2.method.ctor_bufferify

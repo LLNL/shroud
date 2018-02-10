@@ -235,7 +235,8 @@ class Tester:
         status = True  # assume it passes
 
         cmp = filecmp.dircmp(self.ref_dir, self.result_dir,
-                             ignore=['pybindgen'])
+                             # ignore directories with code for other wrappers
+                             ignore=['pybindgen', 'cython', 'swig'])
         if not os.path.exists(self.ref_dir):
             logging.info('Reference directory does not exist: ' + self.ref_dir)
             return False

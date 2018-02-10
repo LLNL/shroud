@@ -25,8 +25,8 @@ C method void SplicerSpecial()
 Close wrapExClass1.h
 Close wrapExClass1.cpp
 class ExClass2
-C method ExClass2(const string * name +intent(in)+random(2))
-C method ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))
+C method ExClass2(const string * name +intent(in)+len_trim(trim_name))
+C method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 C method ~ExClass2()
 C method const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 C method void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
@@ -101,8 +101,8 @@ C-interface, Fortran method bool hasAddr(bool in +intent(in)+value)
 C-interface, Fortran method void SplicerSpecial()
 Close wrapfExClass1.f
 class ExClass2
-C-interface, Fortran method ExClass2(const string * name +intent(in)+random(2))
-C-interface method ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))
+C-interface, Fortran method ExClass2(const string * name +intent(in)+len_trim(trim_name))
+C-interface method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 C-interface, Fortran method ~ExClass2()
 C-interface, Fortran method const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 C-interface method void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
@@ -172,7 +172,7 @@ Python method bool hasAddr(bool in +intent(in)+value)
 Python method void SplicerSpecial()
 Close pyExClass1type.cpp
 class ExClass2
-Python method ExClass2(const string * name +intent(in)+random(2))
+Python method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 Python method ~ExClass2()
 Python method const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 Python method const string & getName2()
@@ -218,7 +218,7 @@ Lua method long getValue(long value +intent(in)+value)
 Lua method void * getAddr()
 Lua method bool hasAddr(bool in +intent(in)+value)
 Lua method void SplicerSpecial()
-Lua method ExClass2(const string * name +intent(in)+random(2))
+Lua method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 Lua method ~ExClass2()
 Lua method const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 Lua method const string & getName2()

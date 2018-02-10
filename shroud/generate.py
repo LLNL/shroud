@@ -85,6 +85,20 @@ class VerifyAttrs(object):
                else True (pass-by-value).
         """
         argname = arg.name
+
+        for attr in arg.attrs:
+            if attr not in [
+                    'dimension',
+                    'implied',
+                    'intent',
+                    'len', 'len_trim', 'size',
+                    'template',
+                    'value',
+                    ]:
+                raise RuntimeError(
+                    "Illegal attribute '{}' for argument {} in {}"
+                    .format(attr, argname, node.decl))
+
         argtype = arg.typename
         typedef = typemap.Typedef.lookup(argtype)
         if typedef is None:

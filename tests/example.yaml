@@ -191,7 +191,7 @@ classes:
       # test annotating arguments
       attrs:
         name:
-          random: 2
+          len_trim: trim_name
 
     - decl: ~ExClass2()
       format:
