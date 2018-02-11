@@ -73,6 +73,7 @@ contains
 
   subroutine test_functions
     integer(c_int) iargin, iarginout, iargout
+    real(c_double), allocatable :: outa(:)
 
     call set_case_name("test_functions")
 
@@ -138,6 +139,9 @@ contains
     call intargs(iargin, iarginout, iargout)
     call assert_true(iarginout == 1)
     call assert_true(iargout   == 2)
+
+    call cos_doubles([1.d0, 2.d0, 3.d0, 4.d0], outa)
+    call assert_true(all(outa == [2.d0, 4.d0, 6.d0, 8.d0]))
 
   end subroutine test_functions
 

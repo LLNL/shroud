@@ -74,7 +74,7 @@ bool AA_is_name_valid(const char * name)
 }
 
 // bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=69
+// function_index=70
 bool AA_is_name_valid_bufferify(const char * name, int Lname)
 {
 // splicer begin function.is_name_valid_bufferify
@@ -114,7 +114,7 @@ void AA_test_names(const char * name)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=70
+// function_index=71
 void AA_test_names_bufferify(const char * name, int Lname)
 {
 // splicer begin function.test_names_bufferify
@@ -136,7 +136,7 @@ void AA_test_names_flag(const char * name, int flag)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)
-// function_index=71
+// function_index=72
 void AA_test_names_flag_bufferify(const char * name, int Lname,
     int flag)
 {
@@ -148,7 +148,7 @@ void AA_test_names_flag_bufferify(const char * name, int Lname,
 }
 
 // void testoptional()
-// function_index=67
+// function_index=68
 void AA_testoptional_0()
 {
 // splicer begin function.testoptional_0
@@ -158,7 +158,7 @@ void AA_testoptional_0()
 }
 
 // void testoptional(int i=1 +intent(in)+value)
-// function_index=68
+// function_index=69
 void AA_testoptional_1(int i)
 {
 // splicer begin function.testoptional_1
@@ -320,6 +320,20 @@ int AA_verlongfunctionname2(int verylongname1, int verylongname2,
         verylongname7, verylongname8, verylongname9, verylongname10);
     return SHT_rv;
 // splicer end function.verlongfunctionname2
+}
+
+// void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// function_index=67
+/**
+ * \brief Test multidimensional arrays with allocatable
+ *
+ */
+void AA_cos_doubles(double * in, double * out, int sizein)
+{
+// splicer begin function.cos_doubles
+    cos_doubles(in, out, sizein);
+    return;
+// splicer end function.cos_doubles
 }
 
 }  // extern "C"

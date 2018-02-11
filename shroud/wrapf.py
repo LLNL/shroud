@@ -77,6 +77,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 import copy
+import re
 import os
 
 from . import declast
@@ -685,7 +686,42 @@ class Wrapf(util.WrapperMixin):
         c_interface.append(-1)
         c_interface.append(wformat('end {F_C_subprogram} {F_C_name}', fmt))
 
-    def intent_implied(self, arg, fmt):
+    def attr_allocatable(self, allocatable, node, arg, pre_call):
+        """Add the allocatable attribute to the pre_call block.
+
+        Valid values of allocatable:
+           mold=name
+        """
+        fmtargs = node._fmtargs
+
+        p = re.compile('mold\s*=\s*(\w+)')
+        m = p.match(allocatable)
+        if m is not None:
+            moldvar = m.group(1)
+            if moldvar not in fmtargs:
+                raise RuntimeError("Mold argument {} does not exist: {}"
+                                   .format(moldvar, allocatable))
+            for moldarg in node.ast.params:
+                if moldarg.name == moldvar:
+                    break
+            if 'dimension' not in moldarg.attrs:
+                raise RuntimeError("Mold argument {} must have dimension attribute"
+                                   .format(moldvar))
+            fmt = fmtargs[arg.name]['fmtf']
+            if True:
+                rank = len(moldarg.attrs['dimension'].split(','))
+                bounds = []
+                for i in range(1, rank+1):
+                    bounds.append('lbound({var},{dim}):ubound({var},{dim})'.
+                                  format(var=moldvar, dim=i))
+                fmt.mold = ','.join(bounds)  
+                append_format(pre_call, 'allocate({f_var}({mold}))', fmt)
+            else:
+                # f2008 supports the mold option which makes this easier
+                fmt.mold = m.group(0)
+                append_format(pre_call, 'allocate({f_var}, {mold})', fmt)
+
+    def attr_implied(self, arg, fmt):
         """Add the implied attribute to the pre_call block.
         """
         init = arg.attrs.get('implied', None)
@@ -811,6 +847,7 @@ class Wrapf(util.WrapperMixin):
 
             f_arg = True   # assume C and Fortran arguments match
             c_attrs = c_arg.attrs
+            allocatable = c_attrs.get('allocatable', False)
             implied = c_attrs.get('implied', False)
             intent = c_attrs['intent']
             if c_attrs.get('_is_result', False):
@@ -856,7 +893,7 @@ class Wrapf(util.WrapperMixin):
                     arg_typedef = typemap.Typedef.lookup(cxx_T)
 
                 if implied:
-                    f_intent_blk = self.intent_implied(f_arg, fmt_arg)
+                    f_intent_blk = self.attr_implied(f_arg, fmt_arg)
                 else:
                     f_statements = arg_typedef.f_statements
                     f_stmts = 'intent_' + intent
@@ -890,6 +927,9 @@ class Wrapf(util.WrapperMixin):
                         append_format(post_call, cmd, fmt_arg)
 
                 self.update_f_module(modules, arg_typedef.f_module)
+
+                if allocatable:
+                    attr_allocatable(allocatable, C_node, f_arg, pre_call)
 
             # Now C function arguments
             # May have different types, like generic
@@ -1139,3 +1179,44 @@ class Wrapf(util.WrapperMixin):
         """ Write C helper functions that will be used by the wrappers.
         """
         pass
+
+
+def attr_allocatable(allocatable, node, arg, pre_call):
+    """Add the allocatable attribute to the pre_call block.
+
+    Valid values of allocatable:
+       mold=name
+    """
+    fmtargs = node._fmtargs
+
+    p = re.compile('mold\s*=\s*(\w+)')
+    m = p.match(allocatable)
+    if m is not None:
+        moldvar = m.group(1)
+        found = None
+        for moldarg in node.ast.params:
+            if moldarg.name == moldvar:
+                found = moldarg
+                break
+        if found is None:
+            raise RuntimeError(
+                "Mold argument '{}' does not exist: {}"
+                .format(moldvar, allocatable))
+        if 'dimension' not in found.attrs:
+            raise RuntimeError(
+                "Mold argument '{}' must have dimension attribute: {}"
+                .format(moldvar, allocatable))
+        fmt = fmtargs[arg.name]['fmtf']
+        if node.options.F_standard >= 2008:
+            # f2008 supports the mold option which makes this easier
+            fmt.mold = m.group(0)
+            append_format(pre_call, 'allocate({f_var}, {mold})', fmt)
+        else:
+            rank = len(moldarg.attrs['dimension'].split(','))
+            bounds = []
+            for i in range(1, rank+1):
+                bounds.append('lbound({var},{dim}):ubound({var},{dim})'.
+                              format(var=moldvar, dim=i))
+            fmt.mold = ','.join(bounds)  
+            append_format(pre_call, 'allocate({f_var}({mold}))', fmt)
+

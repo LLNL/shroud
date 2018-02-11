@@ -124,6 +124,8 @@ int AA_verlongfunctionname2(int verylongname1, int verylongname2,
     int verylongname6, int verylongname7, int verylongname8,
     int verylongname9, int verylongname10);
 
+void AA_cos_doubles(double * in, double * out, int sizein);
+
 #ifdef __cplusplus
 }
 #endif

@@ -1517,6 +1517,10 @@ class ToImplied(object):
                                    .format(arg, self.expr))
                 
             fmt = self.fmtargs[arg]['fmtpy']
+            if 'numpy_var' not in fmt:
+                raise RuntimeError(
+                    "Argument '{}' must have dimension attribute: {}"
+                    .format(arg, self.expr))
             return wformat('PyArray_SIZE({numpy_var})', fmt)
         else:
             raise RuntimeError("Unexpected function '{}' in expression: {}"

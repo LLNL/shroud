@@ -88,6 +88,7 @@ class VerifyAttrs(object):
 
         for attr in arg.attrs:
             if attr not in [
+                    'allocatable',
                     'dimension',
                     'implied',
                     'intent',
@@ -157,13 +158,17 @@ class VerifyAttrs(object):
         dimension = attrs.get('dimension', None)
         if dimension:
             if attrs.get('value', False):
-                raise RuntimeError("argument must not have value=True")
+                raise RuntimeError("argument must not have value=True"
+                                   "because it has the dimension attribute.")
             if not is_ptr:
                 raise RuntimeError("dimension attribute can only be "
                                    "used on pointer and references")
             if dimension is True:
                 # No value was provided, provide default
-                attrs['dimension'] = '*'
+                if 'allocatable' in attrs:
+                    attrs['dimension'] = ':'
+                else:
+                    attrs['dimension'] = '*'
         elif typedef and typedef.base == 'vector':
             # default to 1-d assumed shape 
             attrs['dimension'] = ':'

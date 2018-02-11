@@ -4043,7 +4043,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 69, 
+                "_PTR_F_C_index": 70, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4176,7 +4176,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 69, 
+                "_function_index": 70, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -4502,7 +4502,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 70, 
+                "_PTR_F_C_index": 71, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -4629,7 +4629,7 @@
                         }
                     }
                 }, 
-                "_function_index": 70, 
+                "_function_index": 71, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -4691,7 +4691,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 71, 
+                "_PTR_F_C_index": 72, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -4876,7 +4876,7 @@
                         }
                     }
                 }, 
-                "_function_index": 71, 
+                "_function_index": 72, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -4952,7 +4952,7 @@
                 }
             }, 
             {
-                "_function_index": 67, 
+                "_function_index": 68, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5016,7 +5016,7 @@
                         }
                     }
                 }, 
-                "_function_index": 68, 
+                "_function_index": 69, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5081,8 +5081,8 @@
             }, 
             {
                 "_default_funcs": [
-                    67, 
-                    68
+                    68, 
+                    69
                 ], 
                 "_fmtargs": {
                     "i": {
@@ -7484,6 +7484,234 @@
                     "F_force_wrapper": true, 
                     "F_line_length": 0
                 }
+            }, 
+            {
+                "_fmtargs": {
+                    "in": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "in", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "in"
+                        }, 
+                        "fmtf": {
+                            "c_var": "in", 
+                            "f_var": "in"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": " *", 
+                            "c_var": "lua_tonumber(L, 1)", 
+                            "c_var_len": "Lin", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "in", 
+                            "lua_var": "SH_Lua_in"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "double * in", 
+                            "c_ptr": " *", 
+                            "c_type": "double", 
+                            "c_var": "in", 
+                            "cxx_decl": "double * in", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "in", 
+                            "numpy_intent": "NPY_ARRAY_IN_ARRAY", 
+                            "numpy_type": "NPY_DOUBLE", 
+                            "numpy_var": "SHAPy_in", 
+                            "py_type": "PyObject", 
+                            "py_var": "SHPy_in"
+                        }
+                    }, 
+                    "out": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "out", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "out"
+                        }, 
+                        "fmtf": {
+                            "c_var": "out", 
+                            "f_var": "out", 
+                            "mold": "mold=in"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 2, 
+                            "c_ptr": " *", 
+                            "c_var": "out", 
+                            "c_var_len": "Lout", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "out", 
+                            "lua_var": "SH_Lua_out"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_decl": "double * out", 
+                            "c_ptr": " *", 
+                            "c_type": "double", 
+                            "c_var": "out", 
+                            "cxx_decl": "double * out", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "out", 
+                            "numpy_intent": "NPY_ARRAY_INOUT_ARRAY", 
+                            "numpy_type": "NPY_DOUBLE", 
+                            "numpy_var": "SHAPy_out", 
+                            "py_type": "PyObject", 
+                            "py_var": "SHPy_out"
+                        }
+                    }, 
+                    "sizein": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "sizein", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "sizein"
+                        }, 
+                        "fmtf": {
+                            "c_var": "sizein", 
+                            "f_var": "sizein", 
+                            "pre_call_intent": "size(in)"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 2, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 2)", 
+                            "c_var_len": "Lsizein", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "sizein", 
+                            "lua_var": "SH_Lua_sizein"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int sizein", 
+                            "c_ptr": "", 
+                            "c_type": "int", 
+                            "c_var": "sizein", 
+                            "cxx_decl": "int sizein", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "sizein", 
+                            "pre_call_intent": "PyArray_SIZE(SHAPy_in)", 
+                            "py_var": "SHPy_sizein"
+                        }
+                    }
+                }, 
+                "_function_index": 67, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "cos_doubles", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":,:", 
+                                "intent": "in", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "in", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "allocatable": "mold=in", 
+                                "dimension": ":,:", 
+                                "intent": "out", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "out", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "implied": "size(in)", 
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "sizein", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void cos_doubles( double * in   +intent(in)  +dimension(:,:), double * out  +intent(out) +dimension(:,:)+allocatable(mold=in), int      sizein +implied(size(in)))", 
+                "declgen": "void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
+                "doxygen": {
+                    "brief": "Test multidimensional arrays with allocatable"
+                }, 
+                "format": {
+                    "C_call_code": "cos_doubles(\tin,\t out,\t sizein);", 
+                    "C_call_list": "in,\t out,\t sizein", 
+                    "C_name": "AA_cos_doubles", 
+                    "C_prototype": "double * in,\t double * out,\t int sizein", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_cos_doubles", 
+                    "F_C_name": "c_cos_doubles", 
+                    "F_arg_c_call": "in,\t out,\t sizein", 
+                    "F_arguments": "in,\t out", 
+                    "F_call_code": "call c_cos_doubles(in,\t out,\t sizein)", 
+                    "F_name_function": "cos_doubles", 
+                    "F_name_generic": "cos_doubles", 
+                    "F_name_impl": "cos_doubles", 
+                    "F_subprogram": "subroutine", 
+                    "LUA_name": "cos_doubles", 
+                    "LUA_name_impl": "l_cos_doubles", 
+                    "PY_name_impl": "PP_cos_doubles", 
+                    "c_const": "", 
+                    "function_name": "cos_doubles", 
+                    "underscore_name": "cos_doubles"
+                }, 
+                "options": {
+                    "F_standard": 2008
+                }
             }
         ], 
         "language": "c++", 
@@ -7511,6 +7739,7 @@
             "F_name_function_template": "{underscore_name}{function_suffix}", 
             "F_name_generic_template": "{underscore_name}", 
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}", 
+            "F_standard": 2003, 
             "F_string_len_trim": true, 
             "LUA_class_reg_template": "{LUA_prefix}{cxx_class}_Reg", 
             "LUA_ctor_name_template": "{cxx_class}", 

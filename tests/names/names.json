@@ -766,6 +766,7 @@
             "F_name_function_template": "{underscore_name}{function_suffix}", 
             "F_name_generic_template": "{underscore_name}", 
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}", 
+            "F_standard": 2003, 
             "F_string_len_trim": true, 
             "LUA_class_reg_template": "{LUA_prefix}{cxx_class}_Reg", 
             "LUA_ctor_name_template": "{cxx_class}", 

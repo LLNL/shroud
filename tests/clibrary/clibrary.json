@@ -740,7 +740,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 7, 
+                "_PTR_F_C_index": 8, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -939,7 +939,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 7, 
+                "_function_index": 8, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -1220,6 +1220,150 @@
                     "underscore_name": "intargs"
                 }, 
                 "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "in": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "in", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "in"
+                        }, 
+                        "fmtf": {
+                            "c_var": "in", 
+                            "f_var": "in"
+                        }
+                    }, 
+                    "out": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "out", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "out"
+                        }, 
+                        "fmtf": {
+                            "c_var": "out", 
+                            "f_var": "out", 
+                            "mold": "lbound(in,1):ubound(in,1)"
+                        }
+                    }, 
+                    "sizein": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "sizein", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "sizein"
+                        }, 
+                        "fmtf": {
+                            "c_var": "sizein", 
+                            "f_var": "sizein", 
+                            "pre_call_intent": "size(in)"
+                        }
+                    }
+                }, 
+                "_function_index": 7, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "cos_doubles", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":", 
+                                "intent": "in", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "in", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "allocatable": "mold=in", 
+                                "intent": "out", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "out", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "implied": "size(in)", 
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "sizein", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void cos_doubles(double * in   +intent(in)  +dimension(:), double * out  +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
+                "declgen": "void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
+                "format": {
+                    "C_call_code": "cos_doubles(\tin,\t out,\t sizein);", 
+                    "C_call_list": "in,\t out,\t sizein", 
+                    "C_name": "cos_doubles", 
+                    "C_prototype": "double * in,\t double * out,\t int sizein", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_cos_doubles", 
+                    "F_C_name": "c_cos_doubles", 
+                    "F_arg_c_call": "in,\t out,\t sizein", 
+                    "F_arguments": "in,\t out", 
+                    "F_call_code": "call c_cos_doubles(in,\t out,\t sizein)", 
+                    "F_name_function": "cos_doubles", 
+                    "F_name_generic": "cos_doubles", 
+                    "F_name_impl": "cos_doubles", 
+                    "F_subprogram": "subroutine", 
+                    "c_const": "", 
+                    "function_name": "cos_doubles", 
+                    "underscore_name": "cos_doubles"
+                }, 
+                "options": {
+                    "wrap_python": false
+                }
             }
         ], 
         "language": "c", 
@@ -1246,6 +1390,7 @@
             "F_name_function_template": "{underscore_name}{function_suffix}", 
             "F_name_generic_template": "{underscore_name}", 
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}", 
+            "F_standard": 2003, 
             "F_string_len_trim": true, 
             "LUA_class_reg_template": "{LUA_prefix}{cxx_class}_Reg", 
             "LUA_ctor_name_template": "{cxx_class}", 

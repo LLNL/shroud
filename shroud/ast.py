@@ -133,6 +133,7 @@ class LibraryNode(AstNode):
             F_module_per_class=True,
             F_string_len_trim=True,
             F_force_wrapper=False,
+            F_standard=2003,
 
             wrap_c=True,
             wrap_fortran=True,

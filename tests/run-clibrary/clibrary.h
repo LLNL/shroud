@@ -96,4 +96,6 @@ void vector_string_append(std::vector< std::string > &arg);
 
 void intargs(const int argin, int * argout, int * arginout);
 
+void cos_doubles(double * in, double * out, int sizein);
+
 #endif // CLIBRARY_HPP

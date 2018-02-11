@@ -902,11 +902,12 @@ class Declaration(Node):
             decl.append('(*)') # is array
         elif typedef.base == 'string':
             decl.append('(*)')
-        else:
-            dimension = attrs.get('dimension', '')
-            if dimension:
-                # Any dimension is changed to assumed length.
-                decl.append('(*)')
+        elif attrs.get('dimension', False):
+            # Any dimension is changed to assumed length.
+            decl.append('(*)')
+        elif attrs.get('allocatable', False):
+            # allocatable assumes dimension
+            decl.append('(*)')
         return ''.join(decl)
 
     def gen_arg_as_fortran(self, local=False, **kwargs):
@@ -931,6 +932,10 @@ class Declaration(Node):
             if intent:
                 t.append('intent(%s)' % intent.upper())
 
+        allocatable = attrs.get('allocatable', False)
+        if allocatable:
+            t.append('allocatable')
+
         decl = []
         decl.append(', '.join(t))
         decl.append(' :: ')
@@ -943,6 +948,9 @@ class Declaration(Node):
         dimension = attrs.get('dimension', '')
         if dimension:
             decl.append('(' + dimension + ')')
+        elif allocatable:
+            # Assume 1-d.
+            decl.append('(:)')
 
         return ''.join(decl)
 

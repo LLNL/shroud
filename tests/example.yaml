@@ -374,6 +374,16 @@ functions:
       F_line_length: 0
       C_line_length: 0
 
+  - decl: void cos_doubles(
+             double * in   +intent(in)  +dimension(:,:),
+             double * out  +intent(out) +dimension(:,:)+allocatable(mold=in),
+             int      sizein +implied(size(in)))
+    doxygen:
+      brief: Test multidimensional arrays with allocatable
+    options:
+       F_standard: 2008
+
+
 ######################################################################
 patterns:
     C_invalid_name: |

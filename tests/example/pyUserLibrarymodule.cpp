@@ -40,6 +40,8 @@
 //
 // #######################################################################
 #include "pyUserLibrarymodule.hpp"
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 
 // splicer begin include
 // splicer end include
@@ -576,6 +578,65 @@ PP_verlongfunctionname2(
 // splicer end function.verlongfunctionname2
 }
 
+static char PP_cos_doubles__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_cos_doubles(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// splicer begin function.cos_doubles
+    PyObject * SHPy_in;
+    PyArrayObject * SHAPy_in = NULL;
+    PyObject * SHPy_out;
+    PyArrayObject * SHAPy_out = NULL;
+    const char *SHT_kwlist[] = {
+        "in",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:cos_doubles",
+        const_cast<char **>(SHT_kwlist),
+        &SHPy_in))
+    {
+        return NULL;
+    }
+    SHAPy_in = (PyArrayObject *) PyArray_FROM_OTF(SHPy_in, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (SHAPy_in == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "in must be a 1-D array of double");
+        goto fail;
+    }
+    SHAPy_out = (PyArrayObject *) PyArray_FROM_OTF(SHPy_out, NPY_DOUBLE,
+        NPY_ARRAY_INOUT_ARRAY);
+    if (SHAPy_out == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "out must be a 1-D array of double");
+        goto fail;
+    }
+    {
+        double * in = static_cast<double *>(PyArray_DATA(SHAPy_in));
+        double * out;  // intent(out)
+        double * out = static_cast<double *>(PyArray_DATA(SHAPy_out));
+        int sizein = PyArray_SIZE(SHAPy_in);
+        cos_doubles(in, out, sizein);
+        PyObject * SHPy_out = PyFloat_FromDouble(out);
+        Py_DECREF(SHAPy_in);
+        Py_DECREF(SHAPy_out);
+        return (PyObject *) SHPy_out;
+    }
+
+fail:
+    Py_XDECREF(SHAPy_in);
+    Py_XDECREF(SHAPy_out);
+    return NULL;
+// splicer end function.cos_doubles
+}
+
 static char PP_test_names__doc__[] =
 "documentation"
 ;
@@ -644,6 +705,8 @@ static PyMethodDef PP_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname1__doc__},
 {"verlongfunctionname2", (PyCFunction)PP_verlongfunctionname2,
     METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname2__doc__},
+{"cos_doubles", (PyCFunction)PP_cos_doubles, METH_VARARGS|METH_KEYWORDS,
+    PP_cos_doubles__doc__},
 {"test_names", (PyCFunction)PP_test_names, METH_VARARGS|METH_KEYWORDS,
     PP_test_names__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
@@ -723,6 +786,7 @@ MOD_INITBASIS(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
+    import_array();
 
 // ExClass1
     PP_ExClass1_Type.tp_new   = PyType_GenericNew;

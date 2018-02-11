@@ -130,6 +130,15 @@ module clibrary_mod
             integer(C_INT), intent(OUT) :: argout
         end subroutine intargs
 
+        subroutine c_cos_doubles(in, out, sizein) &
+                bind(C, name="cos_doubles")
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), intent(IN) :: in(*)
+            real(C_DOUBLE), intent(OUT) :: out(*)
+            integer(C_INT), value, intent(IN) :: sizein
+        end subroutine c_cos_doubles
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -197,6 +206,20 @@ contains
             len(SHT_rv, kind=C_INT))
         ! splicer end function.function4a
     end function function4a
+
+    ! void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+    ! function_index=7
+    subroutine cos_doubles(in, out)
+        use iso_c_binding, only : C_DOUBLE, C_INT
+        real(C_DOUBLE), intent(IN) :: in(:)
+        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
+        integer(C_INT) :: sizein
+        allocate(out(lbound(in,1):ubound(in,1)))
+        sizein = size(in)
+        ! splicer begin function.cos_doubles
+        call c_cos_doubles(in, out, sizein)
+        ! splicer end function.cos_doubles
+    end subroutine cos_doubles
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -261,6 +261,20 @@ void intargs(const int argin, int * arginout, int * argout)
 }
 
 //----------------------------------------------------------------------
+
+//#include <math.h>
+/*  Compute the cosine of each element in in_array, storing the result in
+ *  out_array. */
+// replace cos with simpler function
+void cos_doubles(double *in, double *out, int size)
+{
+  int i;
+  for(i=0; i<size; i++){
+    out[i] = in[i] * 2.;
+  }
+}
+
+//----------------------------------------------------------------------
 const char *LastFunctionCalled()
 {
     return last_function_called;

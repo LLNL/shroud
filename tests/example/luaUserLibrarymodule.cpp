@@ -708,6 +708,18 @@ static int l_verlongfunctionname2(lua_State *L)
     // splicer end function.verlongfunctionname2
 }
 
+static int l_cos_doubles(lua_State *L)
+{
+    // splicer begin function.cos_doubles
+    double * in = lua_tonumber(L, 1);
+    double * out;
+    int sizein = lua_tointeger(L, 2);
+    cos_doubles(in, out, sizein);
+    lua_pushnumber(L, out);
+    return 0;
+    // splicer end function.cos_doubles
+}
+
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -730,6 +742,7 @@ static const struct luaL_Reg l_UserLibrary_Reg [] = {
     {"FuncPtr5", l_func_ptr5},
     {"verlongfunctionname1", l_verlongfunctionname1},
     {"verlongfunctionname2", l_verlongfunctionname2},
+    {"cos_doubles", l_cos_doubles},
     // splicer begin register
     // splicer end register
     {NULL, NULL}   /*sentinel */

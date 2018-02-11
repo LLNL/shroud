@@ -41,55 +41,94 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 from __future__ import print_function
 
+from shroud import ast
 from shroud import util
-from shroud import wrapp
+from shroud import wrapf
 
 import unittest
 
-class CheckImplied(unittest.TestCase):
+class CheckAllocatable(unittest.TestCase):
     def setUp(self):
         # Create a dictionary of parsed arguments
-        self.fmtargs = dict(
-            array = dict(
-                fmtpy = util.Scope(
+        self.library = ast.LibraryNode()
+        node = self.library.add_function(
+            'void func1('
+            'int *in1 +intent(in)+dimension(:),'
+            'int *in2 +intent(in)+dimension(:,:),'
+            'int *out +intent(out),'
+            'int flag)')
+
+        node._fmtargs = dict(
+            in1 = dict(
+                fmtf = util.Scope(
                     None,
-                    numpy_var='SHAPy_array'
+                    f_var='in1'
                 ),
             ),
-            scalar = dict(
-                fmtpy = util.Scope(
+            in2 = dict(
+                fmtf = util.Scope(
                     None,
+                    f_var='in2',
                 ),
+            ),
+            out = dict(
+                fmtf = util.Scope(
+                    None,
+                    f_var='out',
+                )
+            ),
+            flag = dict(
+                fmtf = util.Scope(
+                    None,
+                    f_var='flag',
+                )
             ),
         )
+        self.func1 = node
 
     def test_errors(self):
-        with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied( 'bad(array)', self.fmtargs)
-        self.assertTrue('Unexpected function' in str(context.exception))
+        self.library.options.F_standard=2003
+        pre_call = []
 
         with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied('size(array,n2)', self.fmtargs)
-        self.assertTrue('Too many arguments' in str(context.exception))
+            wrapf.attr_allocatable(
+                'mold=none', self.func1, self.func1.ast.params[2], pre_call)
+        self.assertTrue('does not exist' in str(context.exception))
 
         with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied('size(array2)', self.fmtargs)
-        self.assertTrue('Unknown argument' in str(context.exception))
-
-        with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied('size(scalar)', self.fmtargs)
+            wrapf.attr_allocatable(
+                'mold=flag', self.func1, self.func1.ast.params[2], pre_call)
         self.assertTrue('must have dimension attribute'
                         in str(context.exception))
 
-    def test_implied1(self):
-        self.assertEqual('PyArray_SIZE(SHAPy_array)',
-                         wrapp.py_implied('size(array)', self.fmtargs))
-        self.assertEqual('PyArray_SIZE(SHAPy_array)+2',
-                         wrapp.py_implied('size(array) + 2', self.fmtargs))
+    def test_allocatable1d(self):
+        self.library.options.F_standard=2003
+        pre_call = []
+        wrapf.attr_allocatable(
+            'mold=in1', self.func1, self.func1.ast.params[2], pre_call)
+        self.assertEqual('allocate(out(lbound(in1,1):ubound(in1,1)))',
+                         pre_call[0])
 
-    def test_expr1(self):
-        self.assertEqual('size+n',
-                         wrapp.py_implied('size+n', self.fmtargs))
+        self.library.options.F_standard=2008
+        pre_call = []
+        wrapf.attr_allocatable(
+            'mold=in1', self.func1, self.func1.ast.params[2], pre_call)
+        self.assertEqual('allocate(out, mold=in1)', pre_call[0])
+
+    def test_allocatable2d(self):
+        self.library.options.F_standard=2003
+        pre_call = []
+        wrapf.attr_allocatable(
+            'mold=in2', self.func1, self.func1.ast.params[2], pre_call)
+        self.assertEqual('allocate(out(lbound(in2,1):ubound(in2,1),'
+                         'lbound(in2,2):ubound(in2,2)))',
+                         pre_call[0])
+
+        self.library.options.F_standard=2008
+        pre_call = []
+        wrapf.attr_allocatable(
+            'mold=in2', self.func1, self.func1.ast.params[2], pre_call)
+        self.assertEqual('allocate(out, mold=in2)', pre_call[0])
 
 
 if __name__ == '__main__':
