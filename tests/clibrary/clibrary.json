@@ -1279,7 +1279,6 @@
                             "cxx_deref": "->", 
                             "cxx_type": "double", 
                             "cxx_var": "out", 
-                            "numpy_intent": "NPY_ARRAY_INOUT_ARRAY", 
                             "numpy_type": "NPY_DOUBLE", 
                             "numpy_var": "SHAPy_out", 
                             "py_type": "PyObject", 

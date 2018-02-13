@@ -48,6 +48,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 import collections
+import re
 
 from . import declast
 from . import typemap
@@ -290,7 +291,7 @@ return 1;""", fmt)
 
         self._pop_splicer('helper')
 
-    def allocatable_blk(self, arg, fmt_arg):
+    def allocatable_blk(self, allocatable, node, arg, fmt_arg):
         """Allocate NumPy Array.
         Assumes intent(out)
         """
@@ -298,23 +299,14 @@ return 1;""", fmt)
         fmt_arg.numpy_var = 'SHAPy_' + fmt_arg.c_var
         fmt_arg.py_type = 'PyObject'
         fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
-        intent = arg.attrs['intent']
-        if intent == 'in':
-            fmt_arg.numpy_intent = 'NPY_ARRAY_IN_ARRAY'
-        else:
-            fmt_arg.numpy_intent = 'NPY_ARRAY_INOUT_ARRAY'
 
-        # pass numpy_var??
         if self.language == 'c++':
             cast = ('{cxx_decl} = static_cast<{cxx_type} *>('
                     'PyArray_DATA({py_var}));')
         else:
             cast = '{cxx_decl} = PyArray_DATA({py_var});'
 
-        prototype = 'SHAPy_in'
-        order = 'NPY_ANYORDER'
-        descr = 'NULL'
-        subok = '0'
+        allocargs = attr_allocatable(allocatable, node, arg)
 
         blk = dict(
 #             cxx_local_var = 'pointer',
@@ -332,7 +324,7 @@ return 1;""", fmt)
 #                '-}}',
 #            ],
             pre_call  = [
-                'PyObject * {py_var} = PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s);' % (prototype, order, descr, subok),
+                'PyObject * {py_var} = PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s);' % allocargs,
                 cast,
             ],
             post_call = [
@@ -631,7 +623,7 @@ return 1;""", fmt)
                 arg_implied.append(arg)
                 intent_blk = {}
             elif allocatable:
-                intent_blk = self.allocatable_blk(arg, fmt_arg)
+                intent_blk = self.allocatable_blk(allocatable, node, arg, fmt_arg)
             elif dimension:
                 intent_blk = self.dimension_blk(arg, fmt_arg)
             else:
@@ -1625,3 +1617,40 @@ def py_implied(expr, fmtargs):
     node = declast.ExprParser(expr).expression()
     visitor = ToImplied(expr, fmtargs)
     return visitor.visit(node)
+
+def attr_allocatable(allocatable, node, arg):
+    """parse allocatable and return tuple of 
+      (prototype, order, descr, subok)
+
+    Valid values of allocatable:
+       mold=name
+    """
+    fmtargs = node._fmtargs
+
+    prototype = '--NONE--'
+    order = 'NPY_ANYORDER'
+    descr = 'NULL'
+    subok = '0'
+
+    p = re.compile('mold\s*=\s*(\w+)')
+    m = p.match(allocatable)
+    if m is not None:
+        moldvar = m.group(1)
+        found = None
+        for moldarg in node.ast.params:
+            if moldarg.name == moldvar:
+                found = moldarg
+                break
+        if found is None:
+            raise RuntimeError(
+                "Mold argument '{}' does not exist: {}"
+                .format(moldvar, allocatable))
+        if 'dimension' not in found.attrs:
+            raise RuntimeError(
+                "Mold argument '{}' must have dimension attribute: {}"
+                .format(moldvar, allocatable))
+        fmt = fmtargs[moldvar]['fmtpy']
+        # copy from the numpy array for the argument
+        prototype = fmt.numpy_var
+
+    return (prototype, order, descr, subok)
