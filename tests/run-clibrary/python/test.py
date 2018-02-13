@@ -41,6 +41,7 @@
 # test the tutorial module
 #
 
+import numpy
 import unittest
 import clibrary
 
@@ -83,6 +84,10 @@ class Tutorial(unittest.TestCase):
     def testsum(self):
         self.assertEqual(15, clibrary.Sum([1, 2, 3, 4, 5]))
 
+    def testcos_doubles(self):
+        rv = clibrary.cos_doubles([1., 2., 3., 4.])
+        self.assertTrue(isinstance(rv, numpy.ndarray))
+        self.assertTrue(numpy.allclose(rv, [2.,4.,6.,8.]))
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

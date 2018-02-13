@@ -116,6 +116,11 @@ class VerifyAttrs(object):
         is_ptr = arg.is_indirect()
         attrs = arg.attrs
 
+        allocatable = attrs.get('allocatable', False)
+        if allocatable:
+            if not is_ptr:
+                raise RuntimeError("Allocatable may only be used with pointer variables")
+
         # intent
         intent = attrs.get('intent', None)
         if intent is None:

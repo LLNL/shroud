@@ -290,6 +290,63 @@ return 1;""", fmt)
 
         self._pop_splicer('helper')
 
+    def allocatable_blk(self, arg, fmt_arg):
+        """Allocate NumPy Array.
+        Assumes intent(out)
+        """
+        self.need_numpy = True
+        fmt_arg.numpy_var = 'SHAPy_' + fmt_arg.c_var
+        fmt_arg.py_type = 'PyObject'
+        fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
+        intent = arg.attrs['intent']
+        if intent == 'in':
+            fmt_arg.numpy_intent = 'NPY_ARRAY_IN_ARRAY'
+        else:
+            fmt_arg.numpy_intent = 'NPY_ARRAY_INOUT_ARRAY'
+
+        # pass numpy_var??
+        if self.language == 'c++':
+            cast = ('{cxx_decl} = static_cast<{cxx_type} *>('
+                    'PyArray_DATA({py_var}));')
+        else:
+            cast = '{cxx_decl} = PyArray_DATA({py_var});'
+
+        prototype = 'SHAPy_in'
+        order = 'NPY_ANYORDER'
+        descr = 'NULL'
+        subok = '0'
+
+        blk = dict(
+#             cxx_local_var = 'pointer',
+#            decl = [
+#                '{py_type} * {py_var};',
+#                'PyArrayObject * {numpy_var} = NULL;',
+#            ],
+#            post_parse = [
+#                '{numpy_var} = (PyArrayObject *)\t PyArray_FROM_OTF'
+#                '(\t{py_var},\t {numpy_type},\t {numpy_intent});',
+#                'if ({numpy_var} == NULL) {{+',
+#                'PyErr_SetString(PyExc_ValueError,'
+#                '\t "{c_var} must be a 1-D array of {c_type}");',
+#                'goto fail;',
+#                '-}}',
+#            ],
+            pre_call  = [
+                'PyObject * {py_var} = PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s);' % (prototype, order, descr, subok),
+                cast,
+            ],
+            post_call = [
+                '// item already created',  # fool intent_out
+            ]
+#            cleanup = [
+#                'Py_DECREF({numpy_var});'
+#            ],
+#            fail = [
+#                'Py_XDECREF({numpy_var});'
+#            ],
+        )
+        return blk
+
     def dimension_blk(self, arg, fmt_arg):
         """Create code needed for a dimensioned array.
         Convert it to use Numpy.
@@ -303,7 +360,15 @@ return 1;""", fmt)
             fmt_arg.numpy_intent = 'NPY_ARRAY_IN_ARRAY'
         else:
             fmt_arg.numpy_intent = 'NPY_ARRAY_INOUT_ARRAY'
+
+        if self.language == 'c++':
+            cast = ('{cxx_decl} = static_cast<{cxx_type} *>('
+                    'PyArray_DATA({numpy_var}));')
+        else:
+            cast = '{cxx_decl} = PyArray_DATA({numpy_var});'
+
         blk = dict(
+            # Declare variables here that are used by parse or referenced in fail.
             decl = [
                 '{py_type} * {py_var};',
                 'PyArrayObject * {numpy_var} = NULL;',
@@ -318,7 +383,7 @@ return 1;""", fmt)
                 '-}}',
             ],
             pre_call  = [
-                '{cxx_decl} = PyArray_DATA({numpy_var});',
+                cast,
             ],
             cleanup = [
                 'Py_DECREF({numpy_var});'
@@ -473,20 +538,22 @@ return 1;""", fmt)
         fmt.C_rv_decl = ast.gen_arg_as_cxx(
             name=fmt.C_result, params=None)  # return value
 
-        PY_decl = []     # variables for function
         PY_code = []
 
         # arguments to PyArg_ParseTupleAndKeywords
         parse_format = []
         parse_vargs = []
-        post_parse = []
-        pre_call = []
-        fail_code = []
 
         # arguments to Py_BuildValue
         build_tuples = []
+
+        # Code blocks
+        PY_decl = []      # variables for function
+        post_parse = []
+        pre_call = []
         post_call = []    # Create objects passed to PyBuildValue
         cleanup_code = []
+        fail_code = []
 
         cxx_call_list = []
 
@@ -543,6 +610,10 @@ return 1;""", fmt)
 #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
                 local_var = 'pointer'
+            elif arg.attrs.get('allocatable', False):
+                fmt_arg.c_decl = wformat('{c_type} * {c_var}', fmt_arg)
+                fmt_arg.cxx_decl = wformat('{cxx_type} * {cxx_var}', fmt_arg)
+                local_var = 'pointer'
             elif arg.attrs.get('dimension', False):
                 fmt_arg.c_decl = wformat('{c_type} * {c_var}', fmt_arg)
                 fmt_arg.cxx_decl = wformat('{cxx_type} * {cxx_var}', fmt_arg)
@@ -553,11 +624,14 @@ return 1;""", fmt)
                 fmt_arg.cxx_decl = wformat('{cxx_type} {cxx_var}', fmt_arg)
                 local_var = 'scalar'
 
+            allocatable = attrs.get('allocatable', False)
             implied = attrs.get('implied', False)
             intent = attrs['intent']
             if implied:
                 arg_implied.append(arg)
                 intent_blk = {}
+            elif allocatable:
+                intent_blk = self.allocatable_blk(arg, fmt_arg)
             elif dimension:
                 intent_blk = self.dimension_blk(arg, fmt_arg)
             else:
@@ -629,7 +703,9 @@ return 1;""", fmt)
 
             if intent in ['inout', 'out']:
                 if intent == 'out':
-                    if not cxx_local_var:
+                    if allocatable:
+                        pass
+                    elif not cxx_local_var:
                         pass_var = fmt_arg.cxx_var
                         append_format(pre_call,
                                       '{cxx_decl};  // intent(out)',

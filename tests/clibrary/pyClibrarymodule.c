@@ -273,6 +273,53 @@ PY_intargs(
     return SHTPy_rv;
 // splicer end function.intargs
 }
+
+static char PY_cos_doubles__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_cos_doubles(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// splicer begin function.cos_doubles
+    PyObject * SHPy_in;
+    PyArrayObject * SHAPy_in = NULL;
+    char *SHT_kwlist[] = {
+        "in",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:cos_doubles",
+        SHT_kwlist,
+        &SHPy_in))
+    {
+        return NULL;
+    }
+    SHAPy_in = (PyArrayObject *) PyArray_FROM_OTF(SHPy_in, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (SHAPy_in == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "in must be a 1-D array of double");
+        goto fail;
+    }
+    double * in = PyArray_DATA(SHAPy_in);
+    PyObject * SHPy_out = PyArray_NewLikeArray(SHAPy_in, NPY_ANYORDER,
+        NULL, 0);
+    double * out = PyArray_DATA(SHPy_out);
+    int sizein = PyArray_SIZE(SHAPy_in);
+    cos_doubles(in, out, sizein);
+    // item already created
+    Py_DECREF(SHAPy_in);
+    return (PyObject *) SHPy_out;
+
+fail:
+    Py_XDECREF(SHAPy_in);
+    return NULL;
+// splicer end function.cos_doubles
+}
 static PyMethodDef PY_methods[] = {
 {"Function1", (PyCFunction)PY_function1, METH_NOARGS,
     PY_function1__doc__},
@@ -287,6 +334,8 @@ static PyMethodDef PY_methods[] = {
     PY_function4a__doc__},
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
+{"cos_doubles", (PyCFunction)PY_cos_doubles, METH_VARARGS|METH_KEYWORDS,
+    PY_cos_doubles__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

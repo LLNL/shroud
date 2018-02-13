@@ -27,6 +27,7 @@ Python function bool Function3(bool arg +intent(in)+value)
 Python function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 Python function char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))
 Python function void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
+Python function void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close pyClibrarymodule.h
 Close pyClibrarymodule.c
 Close pyClibraryhelper.c

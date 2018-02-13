@@ -231,8 +231,6 @@ functions:
 -  decl: void cos_doubles(double * in   +intent(in)  +dimension(:),
                           double * out  +intent(out) +allocatable(mold=in),
                           int      sizein +implied(size(in)))
-   options:
-     wrap_python: false
  
 ##-##################################################
 ##-

@@ -592,8 +592,6 @@ PP_cos_doubles(
 // splicer begin function.cos_doubles
     PyObject * SHPy_in;
     PyArrayObject * SHAPy_in = NULL;
-    PyObject * SHPy_out;
-    PyArrayObject * SHAPy_out = NULL;
     const char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -611,28 +609,20 @@ PP_cos_doubles(
             "in must be a 1-D array of double");
         goto fail;
     }
-    SHAPy_out = (PyArrayObject *) PyArray_FROM_OTF(SHPy_out, NPY_DOUBLE,
-        NPY_ARRAY_INOUT_ARRAY);
-    if (SHAPy_out == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "out must be a 1-D array of double");
-        goto fail;
-    }
     {
         double * in = static_cast<double *>(PyArray_DATA(SHAPy_in));
-        double * out;  // intent(out)
-        double * out = static_cast<double *>(PyArray_DATA(SHAPy_out));
+        PyObject * SHPy_out = PyArray_NewLikeArray(SHAPy_in,
+            NPY_ANYORDER, NULL, 0);
+        double * out = static_cast<double *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHAPy_in);
         cos_doubles(in, out, sizein);
-        PyObject * SHPy_out = PyFloat_FromDouble(out);
+        // item already created
         Py_DECREF(SHAPy_in);
-        Py_DECREF(SHAPy_out);
         return (PyObject *) SHPy_out;
     }
 
 fail:
     Py_XDECREF(SHAPy_in);
-    Py_XDECREF(SHAPy_out);
     return NULL;
 // splicer end function.cos_doubles
 }
