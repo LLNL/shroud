@@ -301,7 +301,7 @@ return 1;""", fmt)
 
         allocargs = attr_allocatable(self.language, allocatable, node, arg)
 
-        asgn = ('PyArrayObject * {py_var} = %s;' %
+        asgn = ('{py_var} = %s;' %
                 do_cast(
                     self.language, 'reinterpret', 'PyArrayObject *',
                     'PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s)' % allocargs))
@@ -314,24 +314,24 @@ return 1;""", fmt)
 
         blk = dict(
 #             cxx_local_var = 'pointer',
-#            decl = [
-#                '{py_type} * {py_var};',
-#                'PyArrayObject * {pytmp_var} = NULL;',
-#            ],
+            decl = [
+                'PyArrayObject * {py_var} = NULL;',
+            ],
 #float_descr = PyArray_DescrFromType(NPY_FLOAT32);
             pre_call  = [
                 asgn,
+                'if ({py_var} == NULL)', '+goto fail;-',
                 cast,
             ],
             post_call = [
                 '// item already created',  # fool intent_out
-            ]
+            ],
 #            cleanup = [
 #                'Py_DECREF({pytmp_var});'
 #            ],
-#            fail = [
-#                'Py_XDECREF({pytmp_var});'
-#            ],
+            fail = [
+                'Py_XDECREF({py_var});'
+            ],
         )
         return blk
 

@@ -351,7 +351,12 @@ class WrapperMixin(object):
                         fp.write('\n')
                     elif subline[0] == '+':
                         self.indent += 1
-                        self.write_continue(fp, subline[1:])
+                        if subline[-1] == '-':
+                            # indent a single line
+                            self.write_continue(fp, subline[1:-1])
+                            self.indent -= 1
+                        else:
+                            self.write_continue(fp, subline[1:])
                     elif subline[-1] == '+':
                         self.write_continue(fp, subline[:-1])
                         self.indent += 1

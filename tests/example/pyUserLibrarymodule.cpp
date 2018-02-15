@@ -637,6 +637,7 @@ PP_cos_doubles(
 // splicer begin function.cos_doubles
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = NULL;
+    PyArrayObject * SHPy_out = NULL;
     const char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -659,8 +660,10 @@ PP_cos_doubles(
     {
         // pre_call
         double * in = static_cast<double *>(PyArray_DATA(SHPy_in));
-        PyArrayObject * SHPy_out = reinterpret_cast<PyArrayObject *>
+        SHPy_out = reinterpret_cast<PyArrayObject *>
             (PyArray_NewLikeArray(SHPy_in, NPY_ANYORDER, NULL, 0));
+        if (SHPy_out == NULL)
+            goto fail;
         double * out = static_cast<double *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHPy_in);
 
@@ -677,6 +680,7 @@ PP_cos_doubles(
 
 fail:
     Py_XDECREF(SHPy_in);
+    Py_XDECREF(SHPy_out);
     return NULL;
 // splicer end function.cos_doubles
 }
