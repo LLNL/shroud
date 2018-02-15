@@ -511,7 +511,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "len", 
-                            "pre_call_intent": "PyArray_SIZE(SHAPy_values)", 
+                            "pre_call_intent": "PyArray_SIZE(SHPy_values)", 
                             "py_var": "SHPy_len"
                         }
                     }, 
@@ -568,9 +568,9 @@
                             "cxx_var": "values", 
                             "numpy_intent": "NPY_ARRAY_IN_ARRAY", 
                             "numpy_type": "NPY_INT", 
-                            "numpy_var": "SHAPy_values", 
                             "py_type": "PyObject", 
-                            "py_var": "SHPy_values"
+                            "py_var": "SHPy_values", 
+                            "pytmp_var": "SHTPy_values"
                         }
                     }
                 }, 

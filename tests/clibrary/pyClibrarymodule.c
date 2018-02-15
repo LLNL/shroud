@@ -113,34 +113,34 @@ PY_sum(
 {
 // void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // splicer begin function.sum
-    PyObject * SHPy_values;
-    PyArrayObject * SHAPy_values = NULL;
+    PyObject * SHTPy_values;
+    PyArrayObject * SHPy_values = NULL;
     char *SHT_kwlist[] = {
         "values",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum", SHT_kwlist,
-        &SHPy_values))
+        &SHTPy_values))
     {
         return NULL;
     }
-    SHAPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHPy_values,
+    SHPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_values,
         NPY_INT, NPY_ARRAY_IN_ARRAY);
-    if (SHAPy_values == NULL) {
+    if (SHPy_values == NULL) {
         PyErr_SetString(PyExc_ValueError,
             "values must be a 1-D array of int");
         goto fail;
     }
-    int * values = PyArray_DATA(SHAPy_values);
+    int * values = PyArray_DATA(SHPy_values);
     int result;  // intent(out)
-    int len = PyArray_SIZE(SHAPy_values);
+    int len = PyArray_SIZE(SHPy_values);
     Sum(len, values, &result);
     PyObject * SHPy_result = PyInt_FromLong(result);
-    Py_DECREF(SHAPy_values);
+    Py_DECREF(SHPy_values);
     return (PyObject *) SHPy_result;
 
 fail:
-    Py_XDECREF(SHAPy_values);
+    Py_XDECREF(SHPy_values);
     return NULL;
 // splicer end function.sum
 }
@@ -286,37 +286,37 @@ PY_cos_doubles(
 {
 // void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // splicer begin function.cos_doubles
-    PyObject * SHPy_in;
-    PyArrayObject * SHAPy_in = NULL;
+    PyObject * SHTPy_in;
+    PyArrayObject * SHPy_in = NULL;
     char *SHT_kwlist[] = {
         "in",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:cos_doubles",
         SHT_kwlist,
-        &SHPy_in))
+        &SHTPy_in))
     {
         return NULL;
     }
-    SHAPy_in = (PyArrayObject *) PyArray_FROM_OTF(SHPy_in, NPY_DOUBLE,
+    SHPy_in = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_in, NPY_DOUBLE,
         NPY_ARRAY_IN_ARRAY);
-    if (SHAPy_in == NULL) {
+    if (SHPy_in == NULL) {
         PyErr_SetString(PyExc_ValueError,
             "in must be a 1-D array of double");
         goto fail;
     }
-    double * in = PyArray_DATA(SHAPy_in);
-    PyObject * SHPy_out = PyArray_NewLikeArray(SHAPy_in, NPY_ANYORDER,
-        NULL, 0);
+    double * in = PyArray_DATA(SHPy_in);
+    PyArrayObject * SHPy_out = (PyArrayObject *) PyArray_NewLikeArray(
+        SHPy_in, NPY_ANYORDER, NULL, 0);
     double * out = PyArray_DATA(SHPy_out);
-    int sizein = PyArray_SIZE(SHAPy_in);
+    int sizein = PyArray_SIZE(SHPy_in);
     cos_doubles(in, out, sizein);
     // item already created
-    Py_DECREF(SHAPy_in);
+    Py_DECREF(SHPy_in);
     return (PyObject *) SHPy_out;
 
 fail:
-    Py_XDECREF(SHAPy_in);
+    Py_XDECREF(SHPy_in);
     return NULL;
 // splicer end function.cos_doubles
 }

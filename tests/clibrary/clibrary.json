@@ -306,7 +306,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "len", 
-                            "pre_call_intent": "PyArray_SIZE(SHAPy_values)", 
+                            "pre_call_intent": "PyArray_SIZE(SHPy_values)", 
                             "py_var": "SHPy_len"
                         }
                     }, 
@@ -363,9 +363,9 @@
                             "cxx_var": "values", 
                             "numpy_intent": "NPY_ARRAY_IN_ARRAY", 
                             "numpy_type": "NPY_INT", 
-                            "numpy_var": "SHAPy_values", 
                             "py_type": "PyObject", 
-                            "py_var": "SHPy_values"
+                            "py_var": "SHPy_values", 
+                            "pytmp_var": "SHTPy_values"
                         }
                     }
                 }, 
@@ -1248,9 +1248,9 @@
                             "cxx_var": "in", 
                             "numpy_intent": "NPY_ARRAY_IN_ARRAY", 
                             "numpy_type": "NPY_DOUBLE", 
-                            "numpy_var": "SHAPy_in", 
                             "py_type": "PyObject", 
-                            "py_var": "SHPy_in"
+                            "py_var": "SHPy_in", 
+                            "pytmp_var": "SHTPy_in"
                         }
                     }, 
                     "out": {
@@ -1280,7 +1280,6 @@
                             "cxx_type": "double", 
                             "cxx_var": "out", 
                             "numpy_type": "NPY_DOUBLE", 
-                            "numpy_var": "SHAPy_out", 
                             "py_type": "PyObject", 
                             "py_var": "SHPy_out"
                         }
@@ -1309,7 +1308,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "sizein", 
-                            "pre_call_intent": "PyArray_SIZE(SHAPy_in)", 
+                            "pre_call_intent": "PyArray_SIZE(SHPy_in)", 
                             "py_var": "SHPy_sizein"
                         }
                     }

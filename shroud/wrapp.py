@@ -296,45 +296,41 @@ return 1;""", fmt)
         Assumes intent(out)
         """
         self.need_numpy = True
-        fmt_arg.numpy_var = 'SHAPy_' + fmt_arg.c_var
         fmt_arg.py_type = 'PyObject'
         fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
 
-        if self.language == 'c++':
-            cast = ('{cxx_decl} = static_cast<{cxx_type} *>('
-                    'PyArray_DATA({py_var}));')
-        else:
-            cast = '{cxx_decl} = PyArray_DATA({py_var});'
+        allocargs = attr_allocatable(self.language, allocatable, node, arg)
 
-        allocargs = attr_allocatable(allocatable, node, arg)
+        asgn = ('PyArrayObject * {py_var} = %s;' %
+                do_cast(
+                    self.language, 'PyArrayObject *',
+                    'PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s)' % allocargs))
+        if self.language == 'c++':
+            cast = '{cxx_decl} = %s;' % do_cast(
+                self.language, '{cxx_type} *', 'PyArray_DATA({py_var})')
+        else:
+            # No cast needed for void * in C
+            cast = '{cxx_decl} = PyArray_DATA({py_var});'
 
         blk = dict(
 #             cxx_local_var = 'pointer',
 #            decl = [
 #                '{py_type} * {py_var};',
-#                'PyArrayObject * {numpy_var} = NULL;',
+#                'PyArrayObject * {pytmp_var} = NULL;',
 #            ],
-#            post_parse = [
-#                '{numpy_var} = (PyArrayObject *)\t PyArray_FROM_OTF'
-#                '(\t{py_var},\t {numpy_type},\t {numpy_intent});',
-#                'if ({numpy_var} == NULL) {{+',
-#                'PyErr_SetString(PyExc_ValueError,'
-#                '\t "{c_var} must be a 1-D array of {c_type}");',
-#                'goto fail;',
-#                '-}}',
-#            ],
+#float_descr = PyArray_DescrFromType(NPY_FLOAT32);
             pre_call  = [
-                'PyObject * {py_var} = PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s);' % allocargs,
+                asgn,
                 cast,
             ],
             post_call = [
                 '// item already created',  # fool intent_out
             ]
 #            cleanup = [
-#                'Py_DECREF({numpy_var});'
+#                'Py_DECREF({pytmp_var});'
 #            ],
 #            fail = [
-#                'Py_XDECREF({numpy_var});'
+#                'Py_XDECREF({pytmp_var});'
 #            ],
         )
         return blk
@@ -344,7 +340,7 @@ return 1;""", fmt)
         Convert it to use Numpy.
         """
         self.need_numpy = True
-        fmt_arg.numpy_var = 'SHAPy_' + fmt_arg.c_var
+        fmt_arg.pytmp_var = 'SHTPy_' + fmt_arg.c_var
         fmt_arg.py_type = 'PyObject'
         fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
         intent = arg.attrs['intent']
@@ -354,21 +350,23 @@ return 1;""", fmt)
             fmt_arg.numpy_intent = 'NPY_ARRAY_INOUT_ARRAY'
 
         if self.language == 'c++':
-            cast = ('{cxx_decl} = static_cast<{cxx_type} *>('
-                    'PyArray_DATA({numpy_var}));')
+            cast = '{cxx_decl} = %s;' % do_cast(
+                self.language, '{cxx_type} *', 'PyArray_DATA({py_var})')
         else:
-            cast = '{cxx_decl} = PyArray_DATA({numpy_var});'
+            # No cast needed for void * in C
+            cast = '{cxx_decl} = PyArray_DATA({py_var});'
 
         blk = dict(
             # Declare variables here that are used by parse or referenced in fail.
             decl = [
-                '{py_type} * {py_var};',
-                'PyArrayObject * {numpy_var} = NULL;',
+                '{py_type} * {pytmp_var};',
+                'PyArrayObject * {py_var} = NULL;',
             ],
             post_parse = [
-                '{numpy_var} = (PyArrayObject *)\t PyArray_FROM_OTF'
-                '(\t{py_var},\t {numpy_type},\t {numpy_intent});',
-                'if ({numpy_var} == NULL) {{+',
+                # XXX - C++ does not like a static_cast here, use reinterpret_cast?
+                '{py_var} = (PyArrayObject *)\t PyArray_FROM_OTF('
+                '\t{pytmp_var},\t {numpy_type},\t {numpy_intent});',
+                'if ({py_var} == NULL) {{+',
                 'PyErr_SetString(PyExc_ValueError,'
                 '\t "{c_var} must be a 1-D array of {c_type}");',
                 'goto fail;',
@@ -378,17 +376,12 @@ return 1;""", fmt)
                 cast,
             ],
             cleanup = [
-                'Py_DECREF({numpy_var});'
+                'Py_DECREF({py_var});'
             ],
             fail = [
-                'Py_XDECREF({numpy_var});'
+                'Py_XDECREF({py_var});'
             ],
         )
-        if self.language == 'c++':
-            blk['pre_call'] = [
-                '{cxx_decl} = static_cast<{cxx_type} *>('
-                'PyArray_DATA({numpy_var}));',
-            ]
         return blk
 
     def implied_blk(self, arg, fmtargs, pre_call):
@@ -668,7 +661,7 @@ return 1;""", fmt)
                     # Use NumPy with dimensioned arguments
                     pass_var = fmt_arg.cxx_var
                     parse_format.append('O')
-                    parse_vargs.append('&' + fmt_arg.py_var)
+                    parse_vargs.append('&' + fmt_arg.pytmp_var)
                 elif arg_typedef.PY_PyTypeObject:
                     # Expect object of given type
                     # cxx_var is declared by py_statements.intent_out.post_parse.
@@ -1585,11 +1578,11 @@ class ToImplied(object):
                                    .format(arg, self.expr))
                 
             fmt = self.fmtargs[arg]['fmtpy']
-            if 'numpy_var' not in fmt:
+            if 'py_var' not in fmt:
                 raise RuntimeError(
                     "Argument '{}' must have dimension attribute: {}"
                     .format(arg, self.expr))
-            return wformat('PyArray_SIZE({numpy_var})', fmt)
+            return wformat('PyArray_SIZE({py_var})', fmt)
         else:
             raise RuntimeError("Unexpected function '{}' in expression: {}"
                                .format(node.name, self.expr))
@@ -1618,7 +1611,7 @@ def py_implied(expr, fmtargs):
     visitor = ToImplied(expr, fmtargs)
     return visitor.visit(node)
 
-def attr_allocatable(allocatable, node, arg):
+def attr_allocatable(language, allocatable, node, arg):
     """parse allocatable and return tuple of 
       (prototype, order, descr, subok)
 
@@ -1651,6 +1644,14 @@ def attr_allocatable(allocatable, node, arg):
                 .format(moldvar, allocatable))
         fmt = fmtargs[moldvar]['fmtpy']
         # copy from the numpy array for the argument
-        prototype = fmt.numpy_var
+        prototype = fmt.py_var
 
     return (prototype, order, descr, subok)
+
+
+def do_cast(lang, typ, var):
+    """Do cast based on language."""
+    if lang == 'c':
+        return '(%s) %s' % (typ, var)
+    else:
+        return 'static_cast<%s>\t(%s)' % (typ, var)

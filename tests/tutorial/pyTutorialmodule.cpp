@@ -115,37 +115,37 @@ PY_sum(
 {
 // void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // splicer begin function.sum
-    PyObject * SHPy_values;
-    PyArrayObject * SHAPy_values = NULL;
+    PyObject * SHTPy_values;
+    PyArrayObject * SHPy_values = NULL;
     const char *SHT_kwlist[] = {
         "values",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
         const_cast<char **>(SHT_kwlist),
-        &SHPy_values))
+        &SHTPy_values))
     {
         return NULL;
     }
-    SHAPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHPy_values,
+    SHPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_values,
         NPY_INT, NPY_ARRAY_IN_ARRAY);
-    if (SHAPy_values == NULL) {
+    if (SHPy_values == NULL) {
         PyErr_SetString(PyExc_ValueError,
             "values must be a 1-D array of int");
         goto fail;
     }
     {
-        int * values = static_cast<int *>(PyArray_DATA(SHAPy_values));
+        int * values = static_cast<int *>(PyArray_DATA(SHPy_values));
         int result;  // intent(out)
-        int len = PyArray_SIZE(SHAPy_values);
+        int len = PyArray_SIZE(SHPy_values);
         Sum(len, values, &result);
         PyObject * SHPy_result = PyInt_FromLong(result);
-        Py_DECREF(SHAPy_values);
+        Py_DECREF(SHPy_values);
         return (PyObject *) SHPy_result;
     }
 
 fail:
-    Py_XDECREF(SHAPy_values);
+    Py_XDECREF(SHPy_values);
     return NULL;
 // splicer end function.sum
 }
