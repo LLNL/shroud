@@ -647,6 +647,15 @@ class Declaration(Node):
             return 'function'
         return 'subroutine'
 
+    def find_arg_by_name(self, name):
+        """Find argument in params with name."""
+        if self.params is None:
+            return None
+        for param in self.params:
+            if param.name == name:
+                return param
+        return None
+
     def _as_arg(self, name):
         """Create an argument to hold the function result.
         This is intended for pointer arguments, char or string.

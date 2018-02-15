@@ -194,6 +194,9 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertEqual('function', r.get_subprogram())
 
+        self.assertIsNotNone(r.find_arg_by_name('arg1'))
+        self.assertIsNone(r.find_arg_by_name('argnone'))
+
     def test_type_function_pointer1(self):
         """Function pointer
         """
@@ -355,6 +358,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual('void', r.typename)
         self.assertFalse(r.is_pointer())
         self.assertEqual('subroutine', r.get_subprogram())
+        self.assertIsNone(r.find_arg_by_name('argnone'))
 
     def test_decl04(self):
         """const method"""
@@ -467,6 +471,10 @@ class CheckParse(unittest.TestCase):
             ], 
         })
         self.assertEqual("foo", r.get_name())
+
+        self.assertIsNotNone(r.find_arg_by_name('arg1'))
+        self.assertIsNotNone(r.find_arg_by_name('arg2'))
+        self.assertIsNone(r.find_arg_by_name('argnone'))
 
     def test_decl07(self):
         """Return string"""

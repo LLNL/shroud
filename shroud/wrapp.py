@@ -386,7 +386,7 @@ return 1;""", fmt)
         )
         return blk
 
-    def implied_blk(self, arg, fmtargs, pre_call):
+    def implied_blk(self, node, arg, pre_call):
         """Add the implied attribute to the pre_call block.
 
         Called after all input arguments have their fmtpy dictionary
@@ -397,8 +397,8 @@ return 1;""", fmt)
         """
         implied = arg.attrs.get('implied', None)
         if implied:
-            fmt = fmtargs[arg.name]['fmtpy']
-            fmt.pre_call_intent = py_implied(implied, fmtargs)
+            fmt = node._fmtargs[arg.name]['fmtpy']
+            fmt.pre_call_intent = py_implied(implied, node)
             append_format(pre_call, '{cxx_decl} = {pre_call_intent};', fmt)
 
     def intent_out(self, typedef, intent_blk, fmt, post_call):
@@ -748,7 +748,7 @@ return 1;""", fmt)
 
         # Add implied argument initialization to pre_call code
         for arg in arg_implied:
-            intent_blk = self.implied_blk(arg, fmtargs, pre_call)
+            intent_blk = self.implied_blk(node, arg, pre_call)
 
         if not arg_names:
             # no input arguments
@@ -1556,9 +1556,9 @@ class ToImplied(object):
     Convert functions:
       size  -  PyArray_SIZE
     """
-    def __init__(self, expr, fmtargs):
+    def __init__(self, expr, func):
         self.expr = expr
-        self.fmtargs = fmtargs
+        self.func = func
 
     @visitor.on('node')
     def visit(self, node):
@@ -1574,16 +1574,16 @@ class ToImplied(object):
             if len(node.args) != 1:
                 raise RuntimeError("Too many arguments to 'size': "
                                    .format(self.expr))
-            arg = node.args[0].name
-            if arg not in self.fmtargs:
+            argname = node.args[0].name
+            arg = self.func.ast.find_arg_by_name(argname)
+            if arg is None:
                 raise RuntimeError("Unknown argument '{}': {}"
-                                   .format(arg, self.expr))
-                
-            fmt = self.fmtargs[arg]['fmtpy']
-            if 'pytmp_var' not in fmt:
+                                   .format(argname, self.expr))
+            if 'dimension' not in arg.attrs:
                 raise RuntimeError(
                     "Argument '{}' must have dimension attribute: {}"
-                    .format(arg, self.expr))
+                    .format(argname, self.expr))
+            fmt = self.func._fmtargs[argname]['fmtpy']
             return wformat('PyArray_SIZE({py_var})', fmt)
         else:
             raise RuntimeError("Unexpected function '{}' in expression: {}"
@@ -1606,11 +1606,11 @@ class ToImplied(object):
         return node.value
 
 
-def py_implied(expr, fmtargs):
+def py_implied(expr, func):
     """Convert string to Python code.
     """
     node = declast.ExprParser(expr).expression()
-    visitor = ToImplied(expr, fmtargs)
+    visitor = ToImplied(expr, func)
     return visitor.visit(node)
 
 def attr_allocatable(language, allocatable, node, arg):
@@ -1631,16 +1631,12 @@ def attr_allocatable(language, allocatable, node, arg):
     m = p.match(allocatable)
     if m is not None:
         moldvar = m.group(1)
-        found = None
-        for moldarg in node.ast.params:
-            if moldarg.name == moldvar:
-                found = moldarg
-                break
-        if found is None:
+        moldarg = node.ast.find_arg_by_name(moldvar)
+        if moldarg is None:
             raise RuntimeError(
                 "Mold argument '{}' does not exist: {}"
                 .format(moldvar, allocatable))
-        if 'dimension' not in found.attrs:
+        if 'dimension' not in moldarg.attrs:
             raise RuntimeError(
                 "Mold argument '{}' must have dimension attribute: {}"
                 .format(moldvar, allocatable))

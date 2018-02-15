@@ -41,6 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 from __future__ import print_function
 
+from shroud import ast
 from shroud import util
 from shroud import wrapp
 
@@ -49,48 +50,56 @@ import unittest
 class CheckImplied(unittest.TestCase):
     def setUp(self):
         # Create a dictionary of parsed arguments
-        self.fmtargs = dict(
+        self.library = ast.LibraryNode()
+        node = self.library.add_function(
+            'void func1('
+                'int *array  +intent(in)+dimension(:),'
+                'int  scalar +intent(in)+implied(size(array))'
+            ')')
+
+        node._fmtargs = dict(
             array = dict(
                 fmtpy = util.Scope(
                     None,
                     py_var = 'SHPy_array',
-                    pytmp_var = 'SHTPy_array'
                 ),
             ),
             scalar = dict(
                 fmtpy = util.Scope(
                     None,
+                    py_var = 'SHPy_scalar',
                 ),
             ),
         )
+        self.func1 = node
 
     def test_errors(self):
         with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied( 'bad(array)', self.fmtargs)
+            wrapp.py_implied( 'bad(array)', self.func1)
         self.assertTrue('Unexpected function' in str(context.exception))
 
         with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied('size(array,n2)', self.fmtargs)
+            wrapp.py_implied('size(array,n2)', self.func1)
         self.assertTrue('Too many arguments' in str(context.exception))
 
         with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied('size(array2)', self.fmtargs)
+            wrapp.py_implied('size(array2)', self.func1)
         self.assertTrue('Unknown argument' in str(context.exception))
 
         with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied('size(scalar)', self.fmtargs)
+            wrapp.py_implied('size(scalar)', self.func1)
         self.assertTrue('must have dimension attribute'
                         in str(context.exception))
 
     def test_implied1(self):
         self.assertEqual('PyArray_SIZE(SHPy_array)',
-                         wrapp.py_implied('size(array)', self.fmtargs))
+                         wrapp.py_implied('size(array)', self.func1))
         self.assertEqual('PyArray_SIZE(SHPy_array)+2',
-                         wrapp.py_implied('size(array) + 2', self.fmtargs))
+                         wrapp.py_implied('size(array) + 2', self.func1))
 
     def test_expr1(self):
         self.assertEqual('size+n',
-                         wrapp.py_implied('size+n', self.fmtargs))
+                         wrapp.py_implied('size+n', self.func1))
 
 
 if __name__ == '__main__':

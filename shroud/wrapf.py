@@ -1193,16 +1193,12 @@ def attr_allocatable(allocatable, node, arg, pre_call):
     m = p.match(allocatable)
     if m is not None:
         moldvar = m.group(1)
-        found = None
-        for moldarg in node.ast.params:
-            if moldarg.name == moldvar:
-                found = moldarg
-                break
-        if found is None:
+        moldarg = node.ast.find_arg_by_name(moldvar)
+        if moldarg is None:
             raise RuntimeError(
                 "Mold argument '{}' does not exist: {}"
                 .format(moldvar, allocatable))
-        if 'dimension' not in found.attrs:
+        if 'dimension' not in moldarg.attrs:
             raise RuntimeError(
                 "Mold argument '{}' must have dimension attribute: {}"
                 .format(moldvar, allocatable))
