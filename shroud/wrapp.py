@@ -303,11 +303,11 @@ return 1;""", fmt)
 
         asgn = ('PyArrayObject * {py_var} = %s;' %
                 do_cast(
-                    self.language, 'PyArrayObject *',
+                    self.language, 'reinterpret', 'PyArrayObject *',
                     'PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s)' % allocargs))
         if self.language == 'c++':
             cast = '{cxx_decl} = %s;' % do_cast(
-                self.language, '{cxx_type} *', 'PyArray_DATA({py_var})')
+                self.language, 'static', '{cxx_type} *', 'PyArray_DATA({py_var})')
         else:
             # No cast needed for void * in C
             cast = '{cxx_decl} = PyArray_DATA({py_var});'
@@ -349,9 +349,13 @@ return 1;""", fmt)
         else:
             fmt_arg.numpy_intent = 'NPY_ARRAY_INOUT_ARRAY'
 
+        asgn = ('{py_var} = %s;' %
+                do_cast(self.language, 'reinterpret', 'PyArrayObject *', 'PyArray_FROM_OTF('
+                        '\t{pytmp_var},\t {numpy_type},\t {numpy_intent})'))
+
         if self.language == 'c++':
             cast = '{cxx_decl} = %s;' % do_cast(
-                self.language, '{cxx_type} *', 'PyArray_DATA({py_var})')
+                self.language, 'static', '{cxx_type} *', 'PyArray_DATA({py_var})')
         else:
             # No cast needed for void * in C
             cast = '{cxx_decl} = PyArray_DATA({py_var});'
@@ -363,9 +367,7 @@ return 1;""", fmt)
                 'PyArrayObject * {py_var} = NULL;',
             ],
             post_parse = [
-                # XXX - C++ does not like a static_cast here, use reinterpret_cast?
-                '{py_var} = (PyArrayObject *)\t PyArray_FROM_OTF('
-                '\t{pytmp_var},\t {numpy_type},\t {numpy_intent});',
+                asgn,
                 'if ({py_var} == NULL) {{+',
                 'PyErr_SetString(PyExc_ValueError,'
                 '\t "{c_var} must be a 1-D array of {c_type}");',
@@ -1578,7 +1580,7 @@ class ToImplied(object):
                                    .format(arg, self.expr))
                 
             fmt = self.fmtargs[arg]['fmtpy']
-            if 'py_var' not in fmt:
+            if 'pytmp_var' not in fmt:
                 raise RuntimeError(
                     "Argument '{}' must have dimension attribute: {}"
                     .format(arg, self.expr))
@@ -1649,9 +1651,11 @@ def attr_allocatable(language, allocatable, node, arg):
     return (prototype, order, descr, subok)
 
 
-def do_cast(lang, typ, var):
-    """Do cast based on language."""
+def do_cast(lang, kind, typ, var):
+    """Do cast based on language.
+    kind = reinterpret, static
+    """
     if lang == 'c':
         return '(%s) %s' % (typ, var)
     else:
-        return 'static_cast<%s>\t(%s)' % (typ, var)
+        return '%s_cast<%s>\t(%s)' % (kind, typ, var)

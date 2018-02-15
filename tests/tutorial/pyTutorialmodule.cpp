@@ -127,8 +127,8 @@ PY_sum(
     {
         return NULL;
     }
-    SHPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_values,
-        NPY_INT, NPY_ARRAY_IN_ARRAY);
+    SHPy_values = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
+        SHTPy_values, NPY_INT, NPY_ARRAY_IN_ARRAY));
     if (SHPy_values == NULL) {
         PyErr_SetString(PyExc_ValueError,
             "values must be a 1-D array of int");

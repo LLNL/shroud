@@ -602,8 +602,8 @@ PP_cos_doubles(
     {
         return NULL;
     }
-    SHPy_in = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_in, NPY_DOUBLE,
-        NPY_ARRAY_IN_ARRAY);
+    SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
+        SHTPy_in, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY));
     if (SHPy_in == NULL) {
         PyErr_SetString(PyExc_ValueError,
             "in must be a 1-D array of double");
@@ -611,7 +611,7 @@ PP_cos_doubles(
     }
     {
         double * in = static_cast<double *>(PyArray_DATA(SHPy_in));
-        PyArrayObject * SHPy_out = static_cast<PyArrayObject *>
+        PyArrayObject * SHPy_out = reinterpret_cast<PyArrayObject *>
             (PyArray_NewLikeArray(SHPy_in, NPY_ANYORDER, NULL, 0));
         double * out = static_cast<double *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHPy_in);

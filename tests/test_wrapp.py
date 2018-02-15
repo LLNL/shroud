@@ -53,7 +53,8 @@ class CheckImplied(unittest.TestCase):
             array = dict(
                 fmtpy = util.Scope(
                     None,
-                    numpy_var='SHAPy_array'
+                    py_var = 'SHPy_array',
+                    pytmp_var = 'SHTPy_array'
                 ),
             ),
             scalar = dict(
@@ -82,9 +83,9 @@ class CheckImplied(unittest.TestCase):
                         in str(context.exception))
 
     def test_implied1(self):
-        self.assertEqual('PyArray_SIZE(SHAPy_array)',
+        self.assertEqual('PyArray_SIZE(SHPy_array)',
                          wrapp.py_implied('size(array)', self.fmtargs))
-        self.assertEqual('PyArray_SIZE(SHAPy_array)+2',
+        self.assertEqual('PyArray_SIZE(SHPy_array)+2',
                          wrapp.py_implied('size(array) + 2', self.fmtargs))
 
     def test_expr1(self):
