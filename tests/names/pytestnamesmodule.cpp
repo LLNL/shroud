@@ -104,6 +104,7 @@ PY_function3a_0(
     {
         return NULL;
     }
+
     function3a(i);
     Py_RETURN_NONE;
 // splicer end function.function3a_0
@@ -128,6 +129,7 @@ PY_function3a_1(
     {
         return NULL;
     }
+
     function3a(i);
     Py_RETURN_NONE;
 // splicer end function.function3a_1
@@ -156,9 +158,15 @@ PY_function4(
     {
         return NULL;
     }
+
+    // post_parse
     const std::string SH_rv(rv);
+
     int SHT_rv = function4(SH_rv);
+
+    // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
+
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4
 }

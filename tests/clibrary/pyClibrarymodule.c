@@ -95,8 +95,12 @@ PY_function2(
     {
         return NULL;
     }
+
     double SHT_rv = Function2(arg1, arg2);
+
+    // post_call
     PyObject * SHTPy_rv = PyFloat_FromDouble(SHT_rv);
+
     return (PyObject *) SHTPy_rv;
 // splicer end function.function2
 }
@@ -124,6 +128,8 @@ PY_sum(
     {
         return NULL;
     }
+
+    // post_parse
     SHPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_values,
         NPY_INT, NPY_ARRAY_IN_ARRAY);
     if (SHPy_values == NULL) {
@@ -131,12 +137,20 @@ PY_sum(
             "values must be a 1-D array of int");
         goto fail;
     }
+
+    // pre_call
     int * values = PyArray_DATA(SHPy_values);
     int result;  // intent(out)
     int len = PyArray_SIZE(SHPy_values);
+
     Sum(len, values, &result);
+
+    // post_call
     PyObject * SHPy_result = PyInt_FromLong(result);
+
+    // cleanup
     Py_DECREF(SHPy_values);
+
     return (PyObject *) SHPy_result;
 
 fail:
@@ -168,9 +182,15 @@ PY_function3(
     {
         return NULL;
     }
+
+    // pre_call
     bool arg = PyObject_IsTrue(SHPy_arg);
+
     bool SHT_rv = Function3(arg);
+
+    // post_call
     PyObject * SHTPy_rv = PyBool_FromLong(SHT_rv);
+
     return (PyObject *) SHTPy_rv;
 // splicer end function.function3
 }
@@ -200,13 +220,19 @@ PY_function3b(
     {
         return NULL;
     }
+
+    // pre_call
     bool arg1 = PyObject_IsTrue(SHPy_arg1);
     bool arg2;  // intent(out)
     bool arg3 = PyObject_IsTrue(SHPy_arg3);
+
     Function3b(arg1, &arg2, &arg3);
+
+    // post_call
     PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
     SHPy_arg3 = PyBool_FromLong(arg3);
     PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
+
     return SHTPy_rv;
 // splicer end function.function3b
 }
@@ -236,8 +262,12 @@ PY_function4a(
     {
         return NULL;
     }
+
     char * SHT_rv = Function4a(arg1, arg2);
+
+    // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHT_rv);
+
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4a
 }
@@ -267,9 +297,15 @@ PY_intargs(
     {
         return NULL;
     }
+
+    // pre_call
     int argout;  // intent(out)
+
     intargs(argin, &arginout, &argout);
+
+    // post_call
     PyObject * SHTPy_rv = Py_BuildValue("ii", arginout, argout);
+
     return SHTPy_rv;
 // splicer end function.intargs
 }
@@ -298,6 +334,8 @@ PY_cos_doubles(
     {
         return NULL;
     }
+
+    // post_parse
     SHPy_in = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_in, NPY_DOUBLE,
         NPY_ARRAY_IN_ARRAY);
     if (SHPy_in == NULL) {
@@ -305,14 +343,22 @@ PY_cos_doubles(
             "in must be a 1-D array of double");
         goto fail;
     }
+
+    // pre_call
     double * in = PyArray_DATA(SHPy_in);
     PyArrayObject * SHPy_out = (PyArrayObject *) PyArray_NewLikeArray(
         SHPy_in, NPY_ANYORDER, NULL, 0);
     double * out = PyArray_DATA(SHPy_out);
     int sizein = PyArray_SIZE(SHPy_in);
+
     cos_doubles(in, out, sizein);
+
+    // post_call
     // item already created
+
+    // cleanup
     Py_DECREF(SHPy_in);
+
     return (PyObject *) SHPy_out;
 
 fail:

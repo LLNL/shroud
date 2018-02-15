@@ -95,9 +95,15 @@ PP_is_name_valid(
     {
         return NULL;
     }
+
+    // post_parse
     const std::string SH_name(name);
+
     bool SHT_rv = isNameValid(SH_name);
+
+    // post_call
     PyObject * SHTPy_rv = PyBool_FromLong(SHT_rv);
+
     return (PyObject *) SHTPy_rv;
 // splicer end function.is_name_valid
 }
@@ -115,7 +121,10 @@ PP_is_initialized(
 // bool isInitialized()
 // splicer begin function.is_initialized
     bool SHT_rv = isInitialized();
+
+    // post_call
     PyObject * SHTPy_rv = PyBool_FromLong(SHT_rv);
+
     return (PyObject *) SHTPy_rv;
 // splicer end function.is_initialized
 }
@@ -145,13 +154,19 @@ PP_check_bool(
     {
         return NULL;
     }
+
+    // pre_call
     bool arg1 = PyObject_IsTrue(SHPy_arg1);
     bool arg2;  // intent(out)
     bool arg3 = PyObject_IsTrue(SHPy_arg3);
+
     checkBool(arg1, &arg2, &arg3);
+
+    // post_call
     PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
     SHPy_arg3 = PyBool_FromLong(arg3);
     PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
+
     return SHTPy_rv;
 // splicer end function.check_bool
 }
@@ -175,7 +190,10 @@ PP_test_names(
     {
         return NULL;
     }
+
+    // post_parse
     const std::string SH_name(name);
+
     test_names(SH_name);
     Py_RETURN_NONE;
 // splicer end function.test_names
@@ -202,7 +220,10 @@ PP_test_names_flag(
     {
         return NULL;
     }
+
+    // post_parse
     const std::string SH_name(name);
+
     test_names(SH_name, flag);
     Py_RETURN_NONE;
 // splicer end function.test_names_flag
@@ -264,7 +285,10 @@ PP_test_size_t(
 // size_t test_size_t()
 // splicer begin function.test_size_t
     size_t SHT_rv = test_size_t();
+
+    // post_call
     PyObject * SHTPy_rv = PyInt_FromSize_t(SHT_rv);
+
     return (PyObject *) SHTPy_rv;
 // splicer end function.test_size_t
 }
@@ -292,7 +316,10 @@ PP_testmpi(
     {
         return NULL;
     }
+
+    // post_parse
     MPI_Comm SH_comm = MPI_Comm_f2c(comm);
+
     testmpi(SH_comm);
     Py_RETURN_NONE;
 // splicer end function.testmpi
@@ -321,7 +348,10 @@ PP_testgroup1(
     {
         return NULL;
     }
+
+    // post_parse
     axom::sidre::Group * grp = SHPy_grp ? SHPy_grp->obj : NULL;
+
     testgroup1(grp);
     Py_RETURN_NONE;
 // splicer end function.testgroup1
@@ -350,7 +380,10 @@ PP_testgroup2(
     {
         return NULL;
     }
+
+    // post_parse
     const axom::sidre::Group * grp = SHPy_grp ? SHPy_grp->obj : NULL;
+
     testgroup2(grp);
     Py_RETURN_NONE;
 // splicer end function.testgroup2
@@ -379,6 +412,7 @@ PP_func_ptr1(
     {
         return NULL;
     }
+
     FuncPtr1(get);
     Py_RETURN_NONE;
 // splicer end function.func_ptr1
@@ -407,6 +441,7 @@ PP_func_ptr2(
     {
         return NULL;
     }
+
     FuncPtr2(get);
     Py_RETURN_NONE;
 // splicer end function.func_ptr2
@@ -435,6 +470,7 @@ PP_func_ptr3(
     {
         return NULL;
     }
+
     FuncPtr3(get);
     Py_RETURN_NONE;
 // splicer end function.func_ptr3
@@ -466,6 +502,7 @@ PP_func_ptr5(
     {
         return NULL;
     }
+
     FuncPtr5(get);
     Py_RETURN_NONE;
 // splicer end function.func_ptr5
@@ -515,13 +552,17 @@ PP_verlongfunctionname1(
     {
         return NULL;
     }
+
     verlongfunctionname1(&verylongname1, &verylongname2, &verylongname3,
         &verylongname4, &verylongname5, &verylongname6, &verylongname7,
         &verylongname8, &verylongname9, &verylongname10);
+
+    // post_call
     PyObject * SHTPy_rv = Py_BuildValue("iiiiiiiiii", verylongname1,
         verylongname2, verylongname3, verylongname4, verylongname5,
         verylongname6, verylongname7, verylongname8, verylongname9,
         verylongname10);
+
     return SHTPy_rv;
 // splicer end function.verlongfunctionname1
 }
@@ -570,10 +611,14 @@ PP_verlongfunctionname2(
     {
         return NULL;
     }
+
     int SHT_rv = verlongfunctionname2(verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
         verylongname7, verylongname8, verylongname9, verylongname10);
+
+    // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
+
     return (PyObject *) SHTPy_rv;
 // splicer end function.verlongfunctionname2
 }
@@ -602,6 +647,8 @@ PP_cos_doubles(
     {
         return NULL;
     }
+
+    // post_parse
     SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
         SHTPy_in, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY));
     if (SHPy_in == NULL) {
@@ -610,14 +657,21 @@ PP_cos_doubles(
         goto fail;
     }
     {
+        // pre_call
         double * in = static_cast<double *>(PyArray_DATA(SHPy_in));
         PyArrayObject * SHPy_out = reinterpret_cast<PyArrayObject *>
             (PyArray_NewLikeArray(SHPy_in, NPY_ANYORDER, NULL, 0));
         double * out = static_cast<double *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHPy_in);
+
         cos_doubles(in, out, sizein);
+
+        // post_call
         // item already created
+
+        // cleanup
         Py_DECREF(SHPy_in);
+
         return (PyObject *) SHPy_out;
     }
 

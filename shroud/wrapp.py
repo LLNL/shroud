@@ -750,6 +750,7 @@ return 1;""", fmt)
         for arg in arg_implied:
             intent_blk = self.implied_blk(node, arg, pre_call)
 
+        need_blank = False  # needed before next debug header
         if not arg_names:
             # no input arguments
             fmt.PY_ml_flags = 'METH_NOARGS'
@@ -757,6 +758,7 @@ return 1;""", fmt)
             fmt.PY_ml_flags = 'METH_VARARGS|METH_KEYWORDS'
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
+            need_blank = True
 
             if False:
                 # jump through some hoops for char ** const correctness for C++
@@ -816,10 +818,12 @@ return 1;""", fmt)
             fmt.PY_rv_asgn = fmt.C_rv_decl + ' = '
         need_rv = False
 
+        # build up code for a function
         for nargs, len_post_parse, len_pre_call, call_list in default_calls:
             if found_default:
                 PY_code.append('case %d:' % nargs)
                 PY_code.append(1)
+                need_blank = False
                 if len_post_parse or len_pre_call:
                     # Only add scope if necessary
                     PY_code.append('{')
@@ -827,7 +831,14 @@ return 1;""", fmt)
                     extra_scope = True
                 else:
                     extra_scope = False
-            PY_code.extend(post_parse[:len_post_parse])
+
+            if len_post_parse:
+                if options.debug:
+                    if need_blank:
+                        PY_code.append('')
+                    PY_code.append('// post_parse')
+                PY_code.extend(post_parse[:len_post_parse])
+                need_blank = True
 
             if self.language == 'c++' and fail_code:
                 # Need an extra scope to deal with C++ error
@@ -835,11 +846,21 @@ return 1;""", fmt)
                 PY_code.append('{')
                 PY_code.append(1)
                 fail_scope = True
+                need_blank = False
             else:
                 fail_scope = False
             
-            PY_code.extend(pre_call[:len_pre_call])
+            if len_pre_call:
+                if options.debug:
+                    if need_blank:
+                        PY_code.append('')
+                    PY_code.append('// pre_call')
+                PY_code.extend(pre_call[:len_pre_call])
+                need_blank = True
             fmt.PY_call_list = call_list
+
+            if options.debug and need_blank:
+                PY_code.append('')
 
             if is_dtor:
                 append_format(PY_code, 'delete self->{PY_obj};', fmt)
@@ -868,6 +889,7 @@ return 1;""", fmt)
                 if extra_scope:
                     PY_code.append('}')
                     PY_code.append(-1)
+                    need_blank = False
         if found_default:
             # PY_code.append('default:')
             # PY_code.append(1)
@@ -898,8 +920,6 @@ return 1;""", fmt)
             # Add result to front of result tuple
             build_tuples.insert(0, ttt)
 
-        PY_code.extend(post_call)
-
         # If only one return value, return the ctor
         # else create a tuple with Py_BuildValue.
         if not build_tuples:
@@ -908,7 +928,7 @@ return 1;""", fmt)
             # return a single object already created in build_stmts
             ctor = build_tuples[0].ctor
             if ctor:
-                PY_code.append(ctor)
+                post_call.append(ctor)
             fmt.py_var = build_tuples[0].ctorvar
             return_code = wformat('return (PyObject *) {py_var};', fmt)
         else:
@@ -916,12 +936,28 @@ return 1;""", fmt)
             fmt.PyBuild_format = ''.join([ttt.format for ttt in build_tuples])
             fmt.PyBuild_vargs = ',\t '.join([ttt.vargs for ttt in build_tuples])
             append_format(
-                PY_code, 'PyObject * {PY_result} = '
+                post_call, 'PyObject * {PY_result} = '
                 'Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});',
                 fmt)
             return_code = wformat('return {PY_result};', fmt)
-        
-        PY_code.extend(cleanup_code)
+
+        need_blank = False  # put return right after call
+        if post_call:
+            if options.debug:
+                PY_code.append('')
+                PY_code.append('// post_call')
+            PY_code.extend(post_call)
+            need_blank = True
+
+        if cleanup_code:
+            if options.debug:
+                PY_code.append('')
+                PY_code.append('// cleanup')
+            PY_code.extend(cleanup_code)
+            need_blank = True
+
+        if options.debug and need_blank:
+            PY_code.append('')
         PY_code.append(return_code)
 
         if fail_scope:
@@ -1650,6 +1686,7 @@ def attr_allocatable(language, allocatable, node, arg):
 def do_cast(lang, kind, typ, var):
     """Do cast based on language.
     kind = reinterpret, static
+    reinterpret_cast or static_cast
     """
     if lang == 'c':
         return '(%s) %s' % (typ, var)
