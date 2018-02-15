@@ -1196,7 +1196,7 @@
                         "void"
                     ]
                 }, 
-                "decl": "void  intargs(const int argin +intent(in), int * arginout +intent(inout), int * argout +intent(out))", 
+                "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))", 
                 "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))", 
                 "format": {
                     "C_call_code": "intargs(\targin,\t arginout,\t argout);", 
@@ -1384,7 +1384,7 @@
                         "void"
                     ]
                 }, 
-                "decl": "void cos_doubles(double * in   +intent(in)  +dimension(:), double * out  +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
+                "decl": "void cos_doubles(double * in     +intent(in)  +dimension(:), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
                 "declgen": "void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
                 "format": {
                     "C_call_code": "cos_doubles(\tin,\t out,\t sizein);", 
@@ -1572,7 +1572,7 @@
                         "void"
                     ]
                 }, 
-                "decl": "void truncate_to_int(double * in   +intent(in)  +dimension(:), int * out  +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
+                "decl": "void truncate_to_int(double * in     +intent(in)  +dimension(:), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
                 "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
                 "doxygen": {
                     "brief": "truncate IN argument", 

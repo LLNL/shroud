@@ -631,7 +631,7 @@ PP_cos_doubles(
         // pre_call
         double * in = static_cast<double *>(PyArray_DATA(SHPy_in));
         SHPy_out = reinterpret_cast<PyArrayObject *>
-            (PyArray_NewLikeArray(SHPy_in, NPY_ANYORDER, NULL, 0));
+            (PyArray_NewLikeArray(SHPy_in, NPY_CORDER, NULL, 0));
         if (SHPy_out == NULL)
             goto fail;
         double * out = static_cast<double *>(PyArray_DATA(SHPy_out));

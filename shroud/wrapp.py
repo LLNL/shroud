@@ -1658,7 +1658,7 @@ def attr_allocatable(language, allocatable, node, arg):
     fmtargs = node._fmtargs
 
     prototype = '--NONE--'
-    order = 'NPY_ANYORDER'
+    order = 'NPY_CORDER'
     descr = 'NULL'
     subok = '0'
     descr_code = ''
