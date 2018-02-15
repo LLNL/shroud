@@ -92,9 +92,7 @@ PP_is_name_valid(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:isNameValid",
         const_cast<char **>(SHT_kwlist),
         &name))
-    {
         return NULL;
-    }
 
     // post_parse
     const std::string SH_name(name);
@@ -151,9 +149,7 @@ PP_check_bool(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:checkBool",
         const_cast<char **>(SHT_kwlist),
         &PyBool_Type, &SHPy_arg1, &PyBool_Type, &SHPy_arg3))
-    {
         return NULL;
-    }
 
     // pre_call
     bool arg1 = PyObject_IsTrue(SHPy_arg1);
@@ -187,9 +183,7 @@ PP_test_names(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:test_names",
         const_cast<char **>(SHT_kwlist),
         &name))
-    {
         return NULL;
-    }
 
     // post_parse
     const std::string SH_name(name);
@@ -217,9 +211,7 @@ PP_test_names_flag(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "si:test_names",
         const_cast<char **>(SHT_kwlist),
         &name, &flag))
-    {
         return NULL;
-    }
 
     // post_parse
     const std::string SH_name(name);
@@ -254,9 +246,7 @@ PP_testoptional_2(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|il:testoptional",
         const_cast<char **>(SHT_kwlist),
         &i, &j))
-    {
         return NULL;
-    }
     switch (SH_nargs) {
     case 0:
         testoptional();
@@ -313,9 +303,7 @@ PP_testmpi(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:testmpi",
         const_cast<char **>(SHT_kwlist),
         &comm))
-    {
         return NULL;
-    }
 
     // post_parse
     MPI_Comm SH_comm = MPI_Comm_f2c(comm);
@@ -345,9 +333,7 @@ PP_testgroup1(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup1",
         const_cast<char **>(SHT_kwlist),
         &FillInTypeForGroup, &SHPy_grp))
-    {
         return NULL;
-    }
 
     // post_parse
     axom::sidre::Group * grp = SHPy_grp ? SHPy_grp->obj : NULL;
@@ -377,9 +363,7 @@ PP_testgroup2(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup2",
         const_cast<char **>(SHT_kwlist),
         &FillInTypeForGroup, &SHPy_grp))
-    {
         return NULL;
-    }
 
     // post_parse
     const axom::sidre::Group * grp = SHPy_grp ? SHPy_grp->obj : NULL;
@@ -409,9 +393,7 @@ PP_func_ptr1(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:FuncPtr1",
         const_cast<char **>(SHT_kwlist),
         &get))
-    {
         return NULL;
-    }
 
     FuncPtr1(get);
     Py_RETURN_NONE;
@@ -438,9 +420,7 @@ PP_func_ptr2(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FuncPtr2",
         const_cast<char **>(SHT_kwlist),
         &get))
-    {
         return NULL;
-    }
 
     FuncPtr2(get);
     Py_RETURN_NONE;
@@ -467,9 +447,7 @@ PP_func_ptr3(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FuncPtr3",
         const_cast<char **>(SHT_kwlist),
         &get))
-    {
         return NULL;
-    }
 
     FuncPtr3(get);
     Py_RETURN_NONE;
@@ -499,9 +477,7 @@ PP_func_ptr5(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:FuncPtr5",
         const_cast<char **>(SHT_kwlist),
         &get))
-    {
         return NULL;
-    }
 
     FuncPtr5(get);
     Py_RETURN_NONE;
@@ -549,9 +525,7 @@ PP_verlongfunctionname1(
         &verylongname1, &verylongname2, &verylongname3, &verylongname4,
         &verylongname5, &verylongname6, &verylongname7, &verylongname8,
         &verylongname9, &verylongname10))
-    {
         return NULL;
-    }
 
     verlongfunctionname1(&verylongname1, &verylongname2, &verylongname3,
         &verylongname4, &verylongname5, &verylongname6, &verylongname7,
@@ -608,9 +582,7 @@ PP_verlongfunctionname2(
         &verylongname1, &verylongname2, &verylongname3, &verylongname4,
         &verylongname5, &verylongname6, &verylongname7, &verylongname8,
         &verylongname9, &verylongname10))
-    {
         return NULL;
-    }
 
     int SHT_rv = verlongfunctionname2(verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
@@ -645,9 +617,7 @@ PP_cos_doubles(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:cos_doubles",
         const_cast<char **>(SHT_kwlist),
         &SHTPy_in))
-    {
         return NULL;
-    }
 
     // post_parse
     SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(

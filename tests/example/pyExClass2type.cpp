@@ -321,9 +321,7 @@ PP_exclass2_get_class1(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:get_class1",
         const_cast<char **>(SHT_kwlist),
         &PP_ExClass1_Type, &SHPy_in))
-    {
         return NULL;
-    }
 
     // post_parse
     const ExClass1 * in = SHPy_in ? SHPy_in->obj : NULL;
@@ -363,9 +361,7 @@ PP_exclass2_declare_1(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|l:declare",
         const_cast<char **>(SHT_kwlist),
         &type, &len))
-    {
         return NULL;
-    }
     switch (SH_nargs) {
     case 1:
         {

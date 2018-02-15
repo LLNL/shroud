@@ -794,7 +794,7 @@ return 1;""", fmt)
                     '({PY_param_args}, {PY_param_kwds},\t '
                     '"{PyArg_format}",\t {PyArg_kwlist},'
                     '\f{PyArg_vargs}))', fmt))
-            PY_code.extend(['{', 1, 'return NULL;', -1, '}'])
+            PY_code.append('+return NULL;-')
 
         if cls:
             #  template = '{c_const}{cxx_class} *{C_this}obj = static_cast<{c_const}{cxx_class} *>(static_cast<{c_const}void *>({C_this}));'

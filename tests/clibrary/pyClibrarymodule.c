@@ -92,9 +92,7 @@ PY_function2(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
         SHT_kwlist,
         &arg1, &arg2))
-    {
         return NULL;
-    }
 
     double SHT_rv = Function2(arg1, arg2);
 
@@ -125,9 +123,7 @@ PY_sum(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum", SHT_kwlist,
         &SHTPy_values))
-    {
         return NULL;
-    }
 
     // post_parse
     SHPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_values,
@@ -179,9 +175,7 @@ PY_function3(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
         SHT_kwlist,
         &PyBool_Type, &SHPy_arg))
-    {
         return NULL;
-    }
 
     // pre_call
     bool arg = PyObject_IsTrue(SHPy_arg);
@@ -217,9 +211,7 @@ PY_function3b(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:Function3b",
         SHT_kwlist,
         &PyBool_Type, &SHPy_arg1, &PyBool_Type, &SHPy_arg3))
-    {
         return NULL;
-    }
 
     // pre_call
     bool arg1 = PyObject_IsTrue(SHPy_arg1);
@@ -259,9 +251,7 @@ PY_function4a(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
         SHT_kwlist,
         &arg1, &arg2))
-    {
         return NULL;
-    }
 
     char * SHT_rv = Function4a(arg1, arg2);
 
@@ -294,9 +284,7 @@ PY_intargs(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ii:intargs",
         SHT_kwlist,
         &argin, &arginout))
-    {
         return NULL;
-    }
 
     // pre_call
     int argout;  // intent(out)
@@ -332,9 +320,7 @@ PY_cos_doubles(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:cos_doubles",
         SHT_kwlist,
         &SHTPy_in))
-    {
         return NULL;
-    }
 
     // post_parse
     SHPy_in = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_in, NPY_DOUBLE,

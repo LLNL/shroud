@@ -94,9 +94,7 @@ PY_function2(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
         const_cast<char **>(SHT_kwlist),
         &arg1, &arg2))
-    {
         return NULL;
-    }
 
     double SHT_rv = Function2(arg1, arg2);
 
@@ -128,9 +126,7 @@ PY_sum(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
         const_cast<char **>(SHT_kwlist),
         &SHTPy_values))
-    {
         return NULL;
-    }
 
     // post_parse
     SHPy_values = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
@@ -183,9 +179,7 @@ PY_type_long_long(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:TypeLongLong",
         const_cast<char **>(SHT_kwlist),
         &arg1))
-    {
         return NULL;
-    }
 
     long long SHT_rv = TypeLongLong(arg1);
 
@@ -216,9 +210,7 @@ PY_function3(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
         const_cast<char **>(SHT_kwlist),
         &PyBool_Type, &SHPy_arg))
-    {
         return NULL;
-    }
 
     // pre_call
     bool arg = PyObject_IsTrue(SHPy_arg);
@@ -254,9 +246,7 @@ PY_function4a(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
         const_cast<char **>(SHT_kwlist),
         &arg1, &arg2))
-    {
         return NULL;
-    }
 
     // post_parse
     const std::string SH_arg1(arg1);
@@ -293,9 +283,7 @@ PY_function4b(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4b",
         const_cast<char **>(SHT_kwlist),
         &arg1, &arg2))
-    {
         return NULL;
-    }
 
     // post_parse
     const std::string SH_arg1(arg1);
@@ -336,9 +324,7 @@ PY_function5_arg1_arg2(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|dO!:Function5",
         const_cast<char **>(SHT_kwlist),
         &arg1, &PyBool_Type, &SHPy_arg2))
-    {
         return NULL;
-    }
     switch (SH_nargs) {
     case 0:
         SHT_rv = Function5();
@@ -379,9 +365,7 @@ PY_function6_from_name(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:Function6",
         const_cast<char **>(SHT_kwlist),
         &name))
-    {
         return NULL;
-    }
 
     // post_parse
     const std::string SH_name(name);
@@ -407,9 +391,7 @@ PY_function6_from_index(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function6",
         const_cast<char **>(SHT_kwlist),
         &indx))
-    {
         return NULL;
-    }
 
     Function6(indx);
     Py_RETURN_NONE;
@@ -436,9 +418,7 @@ PY_function9(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function9",
         const_cast<char **>(SHT_kwlist),
         &arg))
-    {
         return NULL;
-    }
 
     Function9(arg);
     Py_RETURN_NONE;
@@ -476,9 +456,7 @@ PY_function10_1(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "sd:Function10",
         const_cast<char **>(SHT_kwlist),
         &name, &arg2))
-    {
         return NULL;
-    }
 
     // post_parse
     const std::string SH_name(name);
@@ -512,9 +490,7 @@ PY_overload1_num_offset_stride(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|ii:overload1",
         const_cast<char **>(SHT_kwlist),
         &num, &offset, &stride))
-    {
         return NULL;
-    }
     switch (SH_nargs) {
     case 1:
         SHT_rv = overload1(num);
@@ -560,9 +536,7 @@ PY_overload1_5(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di|ii:overload1",
         const_cast<char **>(SHT_kwlist),
         &type, &num, &offset, &stride))
-    {
         return NULL;
-    }
     switch (SH_nargs) {
     case 2:
         SHT_rv = overload1(type, num);
@@ -602,9 +576,7 @@ PY_typefunc(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:typefunc",
         const_cast<char **>(SHT_kwlist),
         &arg))
-    {
         return NULL;
-    }
 
     TypeID SHT_rv = typefunc(arg);
 
@@ -635,9 +607,7 @@ PY_enumfunc(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:enumfunc",
         const_cast<char **>(SHT_kwlist),
         &arg))
-    {
         return NULL;
-    }
 
     // post_parse
     EnumTypeID SH_arg = static_cast<EnumTypeID>(arg);
@@ -671,9 +641,7 @@ PY_useclass(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass",
         const_cast<char **>(SHT_kwlist),
         &PY_Class1_Type, &SHPy_arg1))
-    {
         return NULL;
-    }
 
     // post_parse
     const Class1 * arg1 = SHPy_arg1 ? SHPy_arg1->obj : NULL;

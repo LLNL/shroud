@@ -110,9 +110,7 @@ PP_exclass1_increment_count(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:incrementCount",
         const_cast<char **>(SHT_kwlist),
         &incr))
-    {
         return NULL;
-    }
 
     int SHT_rv = self->obj->incrementCount(incr);
 
@@ -250,9 +248,7 @@ PP_exclass1_get_value_from_int(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:getValue",
         const_cast<char **>(SHT_kwlist),
         &value))
-    {
         return NULL;
-    }
 
     int SHT_rv = self->obj->getValue(value);
 
@@ -279,9 +275,7 @@ PP_exclass1_get_value_1(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:getValue",
         const_cast<char **>(SHT_kwlist),
         &value))
-    {
         return NULL;
-    }
 
     long SHT_rv = self->obj->getValue(value);
 
@@ -333,9 +327,7 @@ PP_exclass1_has_addr(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:hasAddr",
         const_cast<char **>(SHT_kwlist),
         &PyBool_Type, &SHPy_in))
-    {
         return NULL;
-    }
 
     // pre_call
     bool in = PyObject_IsTrue(SHPy_in);

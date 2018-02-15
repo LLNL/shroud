@@ -71,9 +71,7 @@ PY_pass_char(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "c:passChar",
         const_cast<char **>(SHT_kwlist),
         &status))
-    {
         return NULL;
-    }
 
     passChar(status);
     Py_RETURN_NONE;
@@ -121,9 +119,7 @@ PY_pass_char_ptr_in_out(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtrInOut",
         const_cast<char **>(SHT_kwlist),
         &s))
-    {
         return NULL;
-    }
 
     passCharPtrInOut(s);
 
@@ -364,9 +360,7 @@ PY_accept_string_const_reference(
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "s:acceptStringConstReference", const_cast<char **>(SHT_kwlist),
         &arg1))
-    {
         return NULL;
-    }
 
     // post_parse
     const std::string SH_arg1(arg1);
@@ -420,9 +414,7 @@ PY_accept_string_reference(
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "s:acceptStringReference", const_cast<char **>(SHT_kwlist),
         &arg1))
-    {
         return NULL;
-    }
 
     // post_parse
     std::string SH_arg1(arg1);
@@ -456,9 +448,7 @@ PY_accept_string_pointer(
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "s:acceptStringPointer", const_cast<char **>(SHT_kwlist),
         &arg1))
-    {
         return NULL;
-    }
 
     // post_parse
     std::string SH_arg1(arg1);
@@ -518,9 +508,7 @@ PY_explicit1(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:explicit1",
         const_cast<char **>(SHT_kwlist),
         &name))
-    {
         return NULL;
-    }
 
     explicit1(name);
     Py_RETURN_NONE;
@@ -547,9 +535,7 @@ PY_cpass_char(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "c:CpassChar",
         const_cast<char **>(SHT_kwlist),
         &status))
-    {
         return NULL;
-    }
 
     CpassChar(status);
     Py_RETURN_NONE;
