@@ -740,7 +740,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 8, 
+                "_PTR_F_C_index": 9, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -939,7 +939,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 8, 
+                "_function_index": 9, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -1406,6 +1406,198 @@
                     "c_const": "", 
                     "function_name": "cos_doubles", 
                     "underscore_name": "cos_doubles"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "in": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "in", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "in"
+                        }, 
+                        "fmtf": {
+                            "c_var": "in", 
+                            "f_var": "in"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "double * in", 
+                            "c_ptr": " *", 
+                            "c_type": "double", 
+                            "c_var": "in", 
+                            "cxx_decl": "double * in", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "double", 
+                            "cxx_var": "in", 
+                            "numpy_intent": "NPY_ARRAY_IN_ARRAY", 
+                            "numpy_type": "NPY_DOUBLE", 
+                            "py_type": "PyObject", 
+                            "py_var": "SHPy_in", 
+                            "pytmp_var": "SHTPy_in"
+                        }
+                    }, 
+                    "out": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "out", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "out"
+                        }, 
+                        "fmtf": {
+                            "c_var": "out", 
+                            "f_var": "out", 
+                            "mold": "lbound(in,1):ubound(in,1)"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_decl": "int * out", 
+                            "c_ptr": " *", 
+                            "c_type": "int", 
+                            "c_var": "out", 
+                            "cxx_decl": "int * out", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "out", 
+                            "numpy_type": "NPY_INT", 
+                            "py_type": "PyObject", 
+                            "py_var": "SHPy_out"
+                        }
+                    }, 
+                    "sizein": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "sizein", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "sizein"
+                        }, 
+                        "fmtf": {
+                            "c_var": "sizein", 
+                            "f_var": "sizein", 
+                            "pre_call_intent": "size(in)"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int sizein", 
+                            "c_ptr": "", 
+                            "c_type": "int", 
+                            "c_var": "sizein", 
+                            "cxx_decl": "int sizein", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "sizein", 
+                            "pre_call_intent": "PyArray_SIZE(SHPy_in)", 
+                            "py_var": "SHPy_sizein"
+                        }
+                    }
+                }, 
+                "_function_index": 8, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "truncate_to_int", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":", 
+                                "intent": "in", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "in", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "allocatable": "mold=in", 
+                                "intent": "out", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "out", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "implied": "size(in)", 
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "sizein", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void truncate_to_int(double * in   +intent(in)  +dimension(:), int * out  +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
+                "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
+                "doxygen": {
+                    "brief": "truncate IN argument", 
+                    "description": "Different types for in and out."
+                }, 
+                "format": {
+                    "C_call_code": "truncate_to_int(\tin,\t out,\t sizein);", 
+                    "C_call_list": "in,\t out,\t sizein", 
+                    "C_name": "truncate_to_int", 
+                    "C_prototype": "double * in,\t int * out,\t int sizein", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_truncate_to_int", 
+                    "F_C_name": "c_truncate_to_int", 
+                    "F_arg_c_call": "in,\t out,\t sizein", 
+                    "F_arguments": "in,\t out", 
+                    "F_call_code": "call c_truncate_to_int(in,\t out,\t sizein)", 
+                    "F_name_function": "truncate_to_int", 
+                    "F_name_generic": "truncate_to_int", 
+                    "F_name_impl": "truncate_to_int", 
+                    "F_subprogram": "subroutine", 
+                    "PY_name_impl": "PY_truncate_to_int", 
+                    "c_const": "", 
+                    "function_name": "truncate_to_int", 
+                    "underscore_name": "truncate_to_int"
                 }, 
                 "options": {}
             }

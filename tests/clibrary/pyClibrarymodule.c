@@ -356,6 +356,66 @@ fail:
     return NULL;
 // splicer end function.cos_doubles
 }
+
+static char PY_truncate_to_int__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_truncate_to_int(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+// splicer begin function.truncate_to_int
+    PyObject * SHTPy_in;
+    PyArrayObject * SHPy_in = NULL;
+    PyArrayObject * SHPy_out = NULL;
+    char *SHT_kwlist[] = {
+        "in",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:truncate_to_int",
+        SHT_kwlist,
+        &SHTPy_in))
+        return NULL;
+
+    // post_parse
+    SHPy_in = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_in, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (SHPy_in == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "in must be a 1-D array of double");
+        goto fail;
+    }
+
+    // pre_call
+    double * in = PyArray_DATA(SHPy_in);
+    PyArray_Descr * SHDPy_out = PyArray_DescrFromType(NPY_INT);
+    SHPy_out = (PyArrayObject *) PyArray_NewLikeArray(SHPy_in,
+        NPY_ANYORDER, SHDPy_out, 0);
+    if (SHPy_out == NULL)
+        goto fail;
+    int * out = PyArray_DATA(SHPy_out);
+    int sizein = PyArray_SIZE(SHPy_in);
+
+    truncate_to_int(in, out, sizein);
+
+    // post_call
+    // item already created
+
+    // cleanup
+    Py_DECREF(SHPy_in);
+
+    return (PyObject *) SHPy_out;
+
+fail:
+    Py_XDECREF(SHPy_in);
+    Py_XDECREF(SHPy_out);
+    return NULL;
+// splicer end function.truncate_to_int
+}
 static PyMethodDef PY_methods[] = {
 {"Function1", (PyCFunction)PY_function1, METH_NOARGS,
     PY_function1__doc__},
@@ -372,6 +432,8 @@ static PyMethodDef PY_methods[] = {
     PY_intargs__doc__},
 {"cos_doubles", (PyCFunction)PY_cos_doubles, METH_VARARGS|METH_KEYWORDS,
     PY_cos_doubles__doc__},
+{"truncate_to_int", (PyCFunction)PY_truncate_to_int,
+    METH_VARARGS|METH_KEYWORDS, PY_truncate_to_int__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

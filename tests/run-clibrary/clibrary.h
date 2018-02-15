@@ -1,4 +1,4 @@
-/* Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+/* Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
  * Produced at the Lawrence Livermore National Laboratory 
  *
  * LLNL-CODE-738041.
@@ -97,5 +97,7 @@ void vector_string_append(std::vector< std::string > &arg);
 void intargs(const int argin, int * argout, int * arginout);
 
 void cos_doubles(double * in, double * out, int sizein);
+
+void truncate_to_int(double *in, int *out, int size);
 
 #endif // CLIBRARY_HPP

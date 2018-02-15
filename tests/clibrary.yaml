@@ -224,13 +224,21 @@ functions:
 ##-     brief: append '-like' to names.
 ##-
 
--  decl: void  intargs(const int argin +intent(in),
+-  decl: void  intargs(const int argin      +intent(in),
                              int * arginout +intent(inout),
-                             int * argout +intent(out))
+                             int * argout   +intent(out))
 
--  decl: void cos_doubles(double * in   +intent(in)  +dimension(:),
-                          double * out  +intent(out) +allocatable(mold=in),
+-  decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
+                          double * out    +intent(out) +allocatable(mold=in),
                           int      sizein +implied(size(in)))
+
+-  decl: void truncate_to_int(double * in     +intent(in)  +dimension(:),
+                              int *    out    +intent(out) +allocatable(mold=in),
+                              int      sizein +implied(size(in)))
+   doxygen:
+     brief: truncate IN argument
+     description:
+       Different types for in and out.
  
 ##-##################################################
 ##-

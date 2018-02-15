@@ -299,7 +299,7 @@ return 1;""", fmt)
         fmt_arg.py_type = 'PyObject'
         fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
 
-        allocargs = attr_allocatable(self.language, allocatable, node, arg)
+        allocargs, descr_code = attr_allocatable(self.language, allocatable, node, arg)
 
         asgn = ('{py_var} = %s;' %
                 do_cast(
@@ -317,9 +317,8 @@ return 1;""", fmt)
             decl = [
                 'PyArrayObject * {py_var} = NULL;',
             ],
-#float_descr = PyArray_DescrFromType(NPY_FLOAT32);
             pre_call  = [
-                asgn,
+                descr_code + asgn,
                 'if ({py_var} == NULL)', '+goto fail;-',
                 cast,
             ],
@@ -1662,6 +1661,7 @@ def attr_allocatable(language, allocatable, node, arg):
     order = 'NPY_ANYORDER'
     descr = 'NULL'
     subok = '0'
+    descr_code = ''
 
     p = re.compile('mold\s*=\s*(\w+)')
     m = p.match(allocatable)
@@ -1680,7 +1680,14 @@ def attr_allocatable(language, allocatable, node, arg):
         # copy from the numpy array for the argument
         prototype = fmt.py_var
 
-    return (prototype, order, descr, subok)
+        # Create Descr if types are different
+        if arg.typename != moldarg.typename:
+            descr = 'SHDPy_' + arg.name
+            descr_code = ('PyArray_Descr * {} = '
+                          'PyArray_DescrFromType({});\n'
+                          .format(descr, c_to_numpy[arg.typename]))
+
+    return (prototype, order, descr, subok), descr_code
 
 
 def do_cast(lang, kind, typ, var):

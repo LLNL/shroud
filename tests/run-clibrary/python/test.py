@@ -87,7 +87,14 @@ class Tutorial(unittest.TestCase):
     def testcos_doubles(self):
         rv = clibrary.cos_doubles([1., 2., 3., 4.])
         self.assertTrue(isinstance(rv, numpy.ndarray))
+        self.assertEqual('float64', rv.dtype.name)
         self.assertTrue(numpy.allclose(rv, [2.,4.,6.,8.]))
+
+    def test_truncate(self):
+        rv = clibrary.truncate_to_int([1.2, 2.3, 3.4, 4.5])
+        self.assertTrue(isinstance(rv, numpy.ndarray))
+        self.assertEqual('int32', rv.dtype.name)
+        self.assertTrue(numpy.allclose(rv, [1, 2, 3, 4]))
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

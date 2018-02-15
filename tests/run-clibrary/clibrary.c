@@ -1,4 +1,4 @@
-/* Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+/* Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
  * Produced at the Lawrence Livermore National Laboratory 
  *
  * LLNL-CODE-738041.
@@ -271,6 +271,17 @@ void cos_doubles(double *in, double *out, int size)
   int i;
   for(i=0; i<size; i++){
     out[i] = in[i] * 2.;
+  }
+}
+
+//----------------------------------------------------------------------
+// convert from double to int.
+
+void truncate_to_int(double *in, int *out, int size)
+{
+  int i;
+  for(i=0; i<size; i++){
+    out[i] = in[i];
   }
 }
 

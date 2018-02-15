@@ -8,6 +8,7 @@ C function char * Function4a +len(30)(const char * arg1 +intent(in), const char 
 C function void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))
 C function void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
 C function void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+C function void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close wrapClibrary.h
 Close wrapClibrary.c
 C-interface, Fortran function void Function1()
@@ -19,6 +20,7 @@ C-interface, Fortran function char * Function4a +len(30)(const char * arg1 +inte
 C-interface function void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))
 C-interface, Fortran function void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
 C-interface, Fortran function void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+C-interface, Fortran function void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close wrapfclibrary.f
 Python function void Function1()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
@@ -28,6 +30,7 @@ Python function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +
 Python function char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))
 Python function void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
 Python function void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+Python function void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close pyClibrarymodule.h
 Close pyClibrarymodule.c
 Close pyClibraryhelper.c

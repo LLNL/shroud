@@ -139,6 +139,15 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: sizein
         end subroutine c_cos_doubles
 
+        subroutine c_truncate_to_int(in, out, sizein) &
+                bind(C, name="truncate_to_int")
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), intent(IN) :: in(*)
+            integer(C_INT), intent(OUT) :: out(*)
+            integer(C_INT), value, intent(IN) :: sizein
+        end subroutine c_truncate_to_int
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -220,6 +229,25 @@ contains
         call c_cos_doubles(in, out, sizein)
         ! splicer end function.cos_doubles
     end subroutine cos_doubles
+
+    ! void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+    ! function_index=8
+    !>
+    !! \brief truncate IN argument
+    !!
+    !! Different types for in and out.
+    !<
+    subroutine truncate_to_int(in, out)
+        use iso_c_binding, only : C_DOUBLE, C_INT
+        real(C_DOUBLE), intent(IN) :: in(:)
+        integer(C_INT), intent(OUT), allocatable :: out(:)
+        integer(C_INT) :: sizein
+        allocate(out(lbound(in,1):ubound(in,1)))
+        sizein = size(in)
+        ! splicer begin function.truncate_to_int
+        call c_truncate_to_int(in, out, sizein)
+        ! splicer end function.truncate_to_int
+    end subroutine truncate_to_int
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
