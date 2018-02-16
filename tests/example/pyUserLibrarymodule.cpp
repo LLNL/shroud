@@ -639,9 +639,6 @@ PP_cos_doubles(
 
         cos_doubles(in, out, sizein);
 
-        // post_call
-        // item already created
-
         // cleanup
         Py_DECREF(SHPy_in);
 

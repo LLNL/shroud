@@ -342,9 +342,6 @@ PY_cos_doubles(
 
     cos_doubles(in, out, sizein);
 
-    // post_call
-    // item already created
-
     // cleanup
     Py_DECREF(SHPy_in);
 
@@ -402,9 +399,6 @@ PY_truncate_to_int(
 
     truncate_to_int(in, out, sizein);
 
-    // post_call
-    // item already created
-
     // cleanup
     Py_DECREF(SHPy_in);
 
@@ -454,10 +448,6 @@ PY_increment(
     int sizein = PyArray_SIZE(SHPy_array);
 
     increment(array, sizein);
-
-    // post_call
-    // post_call place holder
-
     return (PyObject *) SHPy_array;
 
 fail:

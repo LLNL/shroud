@@ -44,8 +44,7 @@ Entire library in a single header.
 One Extension module per class
 
 
-Variables prefixes used by generated code
-
+Variables prefixes used by generated code:
 SH_     C or C++ version of argument
 SHPy_   Python object which corresponds to the argument
 SHTPy_  A temporary object, usually from PyArg_Parse
@@ -65,6 +64,13 @@ from . import util
 from . import visitor
 from .util import wformat, append_format
 
+# If multiple values are returned, save up into to build a tuple to return.
+# else build value from ctor, then return ctorvar.
+# The value may be built earlier (bool, array), if so ctor will be None.
+# format   - Format arg to PyBuild_Tuple
+# vargs    - Variable for PyBuild_Tuple
+# ctor     - Code to construct a Python object
+# ctorvar  - Variable created by ctor
 BuildTuple = collections.namedtuple(
     'BuildTuple', 'format vargs ctor ctorvar')
 
@@ -332,9 +338,7 @@ return 1;""", fmt)
                 'if ({py_var} == NULL)', '+goto fail;-',
                 cast,
             ],
-            post_call = [
-                '// item already created',  # fool intent_out
-            ],
+            post_call = None,   # Object already created
 #            cleanup = [
 #                'Py_DECREF({pytmp_var});'
 #            ],
@@ -393,7 +397,7 @@ return 1;""", fmt)
             blk['cleanup'] = ['Py_DECREF({py_var});']
             blk['fail'] = ['Py_XDECREF({py_var});']
         else:
-            blk['post_call'] = ['// post_call place holder'] # sets args for BuildTuple
+            blk['post_call'] = None   # Object already created
 
         return blk
 
@@ -426,17 +430,16 @@ return 1;""", fmt)
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        cmd_list = intent_blk.get('post_call', [])
-        if cmd_list:
-            # must create py_var from cxx_var.
-            # XXX fmt.cxx_var = 'SH_' + fmt.c_var
-            for cmd in cmd_list:
-                append_format(post_call, cmd, fmt)
+        if 'post_call' in intent_blk:
+            cmd_list = intent_blk['post_call']
+            # If post_call is None, the Object has already been created
+            if cmd_list is not None:
+                for cmd in cmd_list:
+                    append_format(post_call, cmd, fmt)
             format = 'O'
             vargs = fmt.py_var
             ctor = None
             ctorvar = fmt.py_var
-
         else:
             # Decide values for Py_BuildValue
             format = typedef.PY_format
