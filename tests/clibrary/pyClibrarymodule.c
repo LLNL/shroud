@@ -461,7 +461,6 @@ PY_increment(
     return (PyObject *) SHPy_array;
 
 fail:
-    // fail place holder
     return NULL;
 // splicer end function.increment
 }

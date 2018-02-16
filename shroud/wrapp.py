@@ -323,6 +323,7 @@ return 1;""", fmt)
 
         blk = dict(
 #             cxx_local_var = 'pointer',
+            goto_fail = True,
             decl = [
                 'PyArrayObject * {py_var} = NULL;',
             ],
@@ -370,6 +371,7 @@ return 1;""", fmt)
 
         blk = dict(
             # Declare variables here that are used by parse or referenced in fail.
+            goto_fail = True,
             decl = [
                 '{py_type} * {pytmp_var};',
                 'PyArrayObject * {py_var} = NULL;',
@@ -392,7 +394,6 @@ return 1;""", fmt)
             blk['fail'] = ['Py_XDECREF({py_var});']
         else:
             blk['post_call'] = ['// post_call place holder'] # sets args for BuildTuple
-            blk['fail'] = ['// fail place holder']
 
         return blk
 
@@ -565,6 +566,7 @@ return 1;""", fmt)
                     'if (kwds != NULL) SH_nargs += PyDict_Size(args);',
                     ])
 
+        goto_fail = False
         args = ast.params
         arg_names = []
         arg_offsets = []
@@ -636,6 +638,7 @@ return 1;""", fmt)
                 stmts = 'intent_' + intent
                 intent_blk = py_statements.get(stmts, {})
 
+            goto_fail = goto_fail or intent_blk.get('goto_fail', False)
             cxx_local_var = intent_blk.get('cxx_local_var', '')
             if cxx_local_var:
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
@@ -850,7 +853,7 @@ return 1;""", fmt)
                 PY_code.extend(post_parse[:len_post_parse])
                 need_blank = True
 
-            if self.language == 'c++' and fail_code:
+            if self.language == 'c++' and goto_fail:
                 # Need an extra scope to deal with C++ error
                 # error: jump to label 'fail' crosses initialization of ...
                 PY_code.append('{')
@@ -973,7 +976,7 @@ return 1;""", fmt)
         if fail_scope:
             PY_code.append(-1)
             PY_code.append('}')
-        if fail_code:
+        if goto_fail:
             PY_code.extend(['', '0fail:'])
             PY_code.extend(fail_code)
             PY_code.append('return NULL;')
