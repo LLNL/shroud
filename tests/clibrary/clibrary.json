@@ -740,7 +740,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 9, 
+                "_PTR_F_C_index": 10, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -939,7 +939,7 @@
                         "cxx_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 9, 
+                "_function_index": 10, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -1386,6 +1386,10 @@
                 }, 
                 "decl": "void cos_doubles(double * in     +intent(in)  +dimension(:), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
                 "declgen": "void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
+                "doxygen": {
+                    "brief": "compute cos of IN and save in OUT", 
+                    "description": "allocate OUT same type as IN implied size of array"
+                }, 
                 "format": {
                     "C_call_code": "cos_doubles(\tin,\t out,\t sizein);", 
                     "C_call_list": "in,\t out,\t sizein", 
@@ -1575,8 +1579,8 @@
                 "decl": "void truncate_to_int(double * in     +intent(in)  +dimension(:), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
                 "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
                 "doxygen": {
-                    "brief": "truncate IN argument", 
-                    "description": "Different types for in and out."
+                    "brief": "truncate IN argument and save in OUT", 
+                    "description": "allocate OUT different type as IN\nimplied size of array\n"
                 }, 
                 "format": {
                     "C_call_code": "truncate_to_int(\tin,\t out,\t sizein);", 
@@ -1598,6 +1602,149 @@
                     "c_const": "", 
                     "function_name": "truncate_to_int", 
                     "underscore_name": "truncate_to_int"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "array": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "array", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "array"
+                        }, 
+                        "fmtf": {
+                            "c_var": "array", 
+                            "f_var": "array"
+                        }, 
+                        "fmtpy": {
+                            "PyObject": "PyObject", 
+                            "PyTypeObject": null, 
+                            "c_const": "", 
+                            "c_decl": "int * array", 
+                            "c_ptr": " *", 
+                            "c_type": "int", 
+                            "c_var": "array", 
+                            "cxx_decl": "int * array", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "array", 
+                            "numpy_intent": "NPY_ARRAY_INOUT_ARRAY", 
+                            "numpy_type": "NPY_INT", 
+                            "py_type": "PyObject", 
+                            "py_var": "SHPy_array", 
+                            "pytmp_var": "SHTPy_array"
+                        }
+                    }, 
+                    "sizein": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "sizein", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "sizein"
+                        }, 
+                        "fmtf": {
+                            "c_var": "sizein", 
+                            "f_var": "sizein", 
+                            "pre_call_intent": "size(array)"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int sizein", 
+                            "c_ptr": "", 
+                            "c_type": "int", 
+                            "c_var": "sizein", 
+                            "cxx_decl": "int sizein", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "sizein", 
+                            "pre_call_intent": "PyArray_SIZE(SHPy_array)", 
+                            "py_var": "SHPy_sizein"
+                        }
+                    }
+                }, 
+                "_function_index": 9, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "increment", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":", 
+                                "intent": "inout", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "array", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "implied": "size(array)", 
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "sizein", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void increment(int * array  +intent(inout)  +dimension(:), int   sizein +implied(size(array)))", 
+                "declgen": "void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)", 
+                "doxygen": {
+                    "brief": null, 
+                    "description": "array with intent(INOUT)\n"
+                }, 
+                "format": {
+                    "C_call_code": "increment(\tarray,\t sizein);", 
+                    "C_call_list": "array,\t sizein", 
+                    "C_name": "increment", 
+                    "C_prototype": "int * array,\t int sizein", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_increment", 
+                    "F_C_name": "c_increment", 
+                    "F_arg_c_call": "array,\t sizein", 
+                    "F_arguments": "array", 
+                    "F_call_code": "call c_increment(array,\t sizein)", 
+                    "F_name_function": "increment", 
+                    "F_name_generic": "increment", 
+                    "F_name_impl": "increment", 
+                    "F_subprogram": "subroutine", 
+                    "PY_name_impl": "PY_increment", 
+                    "c_const": "", 
+                    "function_name": "increment", 
+                    "underscore_name": "increment"
                 }, 
                 "options": {}
             }

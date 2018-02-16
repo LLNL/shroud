@@ -148,6 +148,14 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: sizein
         end subroutine c_truncate_to_int
 
+        subroutine c_increment(array, sizein) &
+                bind(C, name="increment")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(INOUT) :: array(*)
+            integer(C_INT), value, intent(IN) :: sizein
+        end subroutine c_increment
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -218,6 +226,11 @@ contains
 
     ! void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
     ! function_index=7
+    !>
+    !! \brief compute cos of IN and save in OUT
+    !!
+    !! allocate OUT same type as IN implied size of array
+    !<
     subroutine cos_doubles(in, out)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:)
@@ -233,9 +246,10 @@ contains
     ! void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
     ! function_index=8
     !>
-    !! \brief truncate IN argument
+    !! \brief truncate IN argument and save in OUT
     !!
-    !! Different types for in and out.
+    !! allocate OUT different type as IN
+    !! implied size of array
     !<
     subroutine truncate_to_int(in, out)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -248,6 +262,23 @@ contains
         call c_truncate_to_int(in, out, sizein)
         ! splicer end function.truncate_to_int
     end subroutine truncate_to_int
+
+    ! void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+    ! function_index=9
+    !>
+    !! \brief None
+    !!
+    !! array with intent(INOUT)
+    !<
+    subroutine increment(array)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(INOUT) :: array(:)
+        integer(C_INT) :: sizein
+        sizein = size(array)
+        ! splicer begin function.increment
+        call c_increment(array, sizein)
+        ! splicer end function.increment
+    end subroutine increment
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -416,6 +416,55 @@ fail:
     return NULL;
 // splicer end function.truncate_to_int
 }
+
+static char PY_increment__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_increment(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+// splicer begin function.increment
+    PyObject * SHTPy_array;
+    PyArrayObject * SHPy_array = NULL;
+    char *SHT_kwlist[] = {
+        "array",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:increment",
+        SHT_kwlist,
+        &SHTPy_array))
+        return NULL;
+
+    // post_parse
+    SHPy_array = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_array,
+        NPY_INT, NPY_ARRAY_INOUT_ARRAY);
+    if (SHPy_array == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "array must be a 1-D array of int");
+        goto fail;
+    }
+
+    // pre_call
+    int * array = PyArray_DATA(SHPy_array);
+    int sizein = PyArray_SIZE(SHPy_array);
+
+    increment(array, sizein);
+
+    // post_call
+    // post_call place holder
+
+    return (PyObject *) SHPy_array;
+
+fail:
+    // fail place holder
+    return NULL;
+// splicer end function.increment
+}
 static PyMethodDef PY_methods[] = {
 {"Function1", (PyCFunction)PY_function1, METH_NOARGS,
     PY_function1__doc__},
@@ -434,6 +483,8 @@ static PyMethodDef PY_methods[] = {
     PY_cos_doubles__doc__},
 {"truncate_to_int", (PyCFunction)PY_truncate_to_int,
     METH_VARARGS|METH_KEYWORDS, PY_truncate_to_int__doc__},
+{"increment", (PyCFunction)PY_increment, METH_VARARGS|METH_KEYWORDS,
+    PY_increment__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

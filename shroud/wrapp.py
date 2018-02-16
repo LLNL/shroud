@@ -43,6 +43,15 @@ Generate Python module for C++ code.
 Entire library in a single header.
 One Extension module per class
 
+
+Variables prefixes used by generated code
+
+SH_     C or C++ version of argument
+SHPy_   Python object which corresponds to the argument
+SHTPy_  A temporary object, usually from PyArg_Parse
+        to be converted to SHPy_ object.
+SHDPy_  PyArray_Descr object
+
 """
 from __future__ import print_function
 from __future__ import absolute_import
@@ -376,13 +385,15 @@ return 1;""", fmt)
             pre_call  = [
                 cast,
             ],
-            cleanup = [
-                'Py_DECREF({py_var});'
-            ],
-            fail = [
-                'Py_XDECREF({py_var});'
-            ],
         )
+
+        if intent == 'in':
+            blk['cleanup'] = ['Py_DECREF({py_var});']
+            blk['fail'] = ['Py_XDECREF({py_var});']
+        else:
+            blk['post_call'] = ['// post_call place holder'] # sets args for BuildTuple
+            blk['fail'] = ['// fail place holder']
+
         return blk
 
     def implied_blk(self, node, arg, pre_call):

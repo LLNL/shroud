@@ -286,6 +286,16 @@ void truncate_to_int(double *in, int *out, int size)
 }
 
 //----------------------------------------------------------------------
+
+void increment(int *array, int size)
+{
+  int i;
+  for(i=0; i<size; i++){
+    array[i] += 1;
+  }
+}
+
+//----------------------------------------------------------------------
 const char *LastFunctionCalled()
 {
     return last_function_called;

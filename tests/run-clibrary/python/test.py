@@ -41,7 +41,7 @@
 # test the tutorial module
 #
 
-import numpy
+import numpy as np
 import unittest
 import clibrary
 
@@ -86,15 +86,30 @@ class Tutorial(unittest.TestCase):
 
     def testcos_doubles(self):
         rv = clibrary.cos_doubles([1., 2., 3., 4.])
-        self.assertTrue(isinstance(rv, numpy.ndarray))
+        self.assertTrue(isinstance(rv, np.ndarray))
         self.assertEqual('float64', rv.dtype.name)
-        self.assertTrue(numpy.allclose(rv, [2.,4.,6.,8.]))
+        self.assertTrue(np.allclose(rv, [2.,4.,6.,8.]))
 
     def test_truncate(self):
         rv = clibrary.truncate_to_int([1.2, 2.3, 3.4, 4.5])
-        self.assertTrue(isinstance(rv, numpy.ndarray))
+        self.assertTrue(isinstance(rv, np.ndarray))
         self.assertEqual('int32', rv.dtype.name)
-        self.assertTrue(numpy.allclose(rv, [1, 2, 3, 4]))
+        self.assertTrue(np.equal(rv, [1, 2, 3, 4]).all())
+
+    def test_increment(self):
+        # the argument is return as the result because intent(INOUT)
+        array = np.array([2,4,6,8], dtype=np.intc)  # int32
+        out = clibrary.increment(array)
+        self.assertIs(array, out)
+        self.assertTrue(isinstance(out, np.ndarray))
+        self.assertEqual('int32', out.dtype.name)
+        self.assertTrue(np.equal(out, [3,5,7,9]).all())
+
+        with self.assertRaises(ValueError) as context:
+            array = np.array([2,4,6,8], dtype=np.float)
+            out = clibrary.increment(array)
+        self.assertTrue('array must be' in str(context.exception))
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

@@ -100,4 +100,6 @@ void cos_doubles(double * in, double * out, int sizein);
 
 void truncate_to_int(double *in, int *out, int size);
 
+void increment(int *array, int size);
+
 #endif // CLIBRARY_HPP
