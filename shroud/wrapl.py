@@ -195,7 +195,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         cls  - class node or None for functions
         overloads - a list of functions to wrap.
 
-        fmt.c_var   - name of variable in PyArg_ParseTupleAndKeywords
+        fmt.c_var   - name of variable from lua stack.
         fmt.cxx_var - name of variable in c++ call.
         """
 
