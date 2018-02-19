@@ -268,10 +268,10 @@ void intargs(const int argin, int * arginout, int * argout)
 // replace cos with simpler function
 void cos_doubles(double *in, double *out, int size)
 {
-  int i;
-  for(i=0; i<size; i++){
-    out[i] = in[i] * 2.;
-  }
+    int i;
+    for(i = 0; i < size; i++) {
+        out[i] = in[i] * 2.;
+    }
 }
 
 //----------------------------------------------------------------------
@@ -279,20 +279,20 @@ void cos_doubles(double *in, double *out, int size)
 
 void truncate_to_int(double *in, int *out, int size)
 {
-  int i;
-  for(i=0; i<size; i++){
-    out[i] = in[i];
-  }
+    int i;
+    for(i = 0; i < size; i++) {
+        out[i] = in[i];
+    }
 }
 
 //----------------------------------------------------------------------
 
 void increment(int *array, int size)
 {
-  int i;
-  for(i=0; i<size; i++){
-    array[i] += 1;
-  }
+    int i;
+    for(i = 0; i < size; i++) {
+       array[i] += 1;
+    }
 }
 
 //----------------------------------------------------------------------

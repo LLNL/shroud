@@ -1,4 +1,4 @@
-.. Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+.. Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 .. Produced at the Lawrence Livermore National Laboratory 
 ..
 .. LLNL-CODE-738041.
@@ -122,7 +122,7 @@ namespace
 
 options
    Dictionary of option fields for the library.
-   Described in `Options Fields`_
+   Described in `Options`_
 
 patterns
    Code blocks to insert into generated code.
@@ -163,7 +163,7 @@ functions
 options
    Options fields for the class.
    Creates scope within library.
-   Described in `Options Fields`_
+   Described in `Options`_
 
 namespace
   Blank delimited list of namespaces for **cxx_header**.
@@ -221,7 +221,7 @@ fortran_generic
 options
    Options fields for the function.
    Creates scope within container (library or class).
-   Described in `Options Fields`_
+   Described in `Options`_
 
 return_this
    If true, the method returns a reference to ``this``.  This idiom can be used
@@ -229,8 +229,8 @@ return_this
    Instead the *C_return_type* format is set to ``void``.
 
 
-Options Fields
---------------
+Options
+-------
 
 debug
   Print additional comments in generated files that may 
@@ -263,6 +263,10 @@ F_force_wrapper
   numeric types does not need a wrapper since it can be called
   directly by defining the correct interface.
   The default is *false*.
+
+F_standard
+  The fortran standard.  Defaults to *2003*.
+  This effects the ``mold`` argument of the ``allocate`` statement.
 
 F_string_len_trim
   For each function with a ``std::string`` argument, create another C
@@ -544,7 +548,7 @@ LUA_prefix
 
 LUA_result
     The name of the Lua wrapper's result variable.
-    It defaults to *rv*  (return value).
+    It defaults to *SHT_<rv*  (return value).
 
 LUA_state_var
     Name of argument in Lua wrapper functions for lua_State pointer.
@@ -574,7 +578,7 @@ PY_prefix
 
 PY_result
     The name of the Python wrapper's result variable.
-    It defaults to *rv*  (return value).
+    It defaults to *SHTPy_rv*  (return value).
 
 stdlib
     Name of C++ standard library prefix.
@@ -1095,8 +1099,16 @@ result_as_arg
     Override fields when result should be treated as an argument.
     Defaults to *None*.
 
+PY_build_arg
+    Argument for Py_BuildValue.  Defaults to *{cxx_var}*.
+    This field can be used to turn the argument into an expression such as
+    *(int) {cxx_var}*  or *{cxx_var}{cxx_deref}c_str()*
+    *PY_format* is used as the format:: 
+
+       Py_BuildValue("{PY_format}", {PY_build_arg});
+
 PY_format
-    'format unit' for PyArg_Parse.
+    'format unit' for PyArg_Parse and Py_BuildValue.
     Defaults to *O*
 
 PY_PyTypeObject
@@ -1155,8 +1167,14 @@ An annotation can be used to provide semantic information for a function or argu
 
 .. a.k.a. attributes
 
-pure
-   Sets the Fortran PURE attribute.
+allocatable
+   Adds the Fortran ``allocatable`` attribute to an argument and adds an
+   ``allocate`` statement.
+   see :ref:`TypesAnchor_Allocatable_array`.
+
+default
+   Default value for C++ function argument.
+   This value is implied by C++ default argument syntax.
 
 dimension
    Sets the Fortran DIMENSION attribute.
@@ -1168,9 +1186,6 @@ name
    Name of the method.
    Useful for constructor and destructor methods which have no names.
 
-value
-   If true, pass-by-value; else, pass-by-reference.
-
 implied
    Used to compute value of argument to C++ based on argument
    to Fortran or Python wrapper.  Useful with array sizes::
@@ -1180,9 +1195,6 @@ implied
 intent
    Valid valid values are ``in``, ``out``, ``inout``.
    If the argument is ``const``, the default is ``in``.
-
-default
-   Default value for C++ function argument.
 
 len
    For a string argument, pass an additional argument to the
@@ -1202,6 +1214,13 @@ len_trim
    If a value for the attribute is provided it will be the name
    of the extra argument.  If no value is provided then the
    argument name defaults to option *C_var_trim_template*.
+
+pure
+   Sets the Fortran PURE attribute.
+
+value
+   If true, pass-by-value; else, pass-by-reference.
+   This attribute is implied when the argument is not a pointer or reference.
 
 
 Doxygen

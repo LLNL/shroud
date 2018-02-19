@@ -1,4 +1,4 @@
-.. Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+.. Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 .. Produced at the Lawrence Livermore National Laboratory 
 ..
 .. LLNL-CODE-738041.
@@ -932,7 +932,7 @@ Shroud generated C wrappers do not explicitly delete any memory.
 However a destructor may be automatically called for some C++ stl
 classes.  For example, a function which returns a ``std::string``
 will have its value copied into Fortran memory since the function's
-returned object will be destructed when the C++ wrapper returns.  If a
+returned object will be destroyed when the C++ wrapper returns.  If a
 function returns a ``char *`` value, it will also be copied into Fortran
 memory. But if the caller of the C++ function wants to transfer
 ownership of the pointer to its caller, the C++ wrapper will leak the
@@ -942,4 +942,113 @@ The **C_finalize** variable may be used to insert code before
 returning from the wrapper.  Use **C_finalize_buf** for the buffer
 version of wrapped functions.
 
+For example, a function which returns a new string will have to 
+``delete`` it before the C wrapper returns::
+
+    std::string * getString7()
+    {
+        // Caller is responsible to free string
+        std::string * rv = new std::string("Hello");
+        return rv;
+    }
+
+Wrapped as::
+
+    - decl: const string * getString7+len=30()
+      format:
+        C_finalize_buf: delete {C_result};
+
+The C buffer version of the wrapper is::
+
+    void STR_get_string7_bufferify(char * SHF_rv, int NSHF_rv)
+    {
+        const std::string * SHT_rv = getString7();
+        if (SHT_rv->empty()) {
+            std::memset(SHF_rv, ' ', NSHF_rv);
+        } else {
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv->c_str());
+        }
+        {
+            // C_finalize
+            delete SHT_rv;
+        }
+        return;
+    }
+
+The unbuffer version of the function cannot ``destroy`` the string since
+only a pointer to the contents of the string is returned.  It would
+leak memory when called::
+
+    const char * STR_get_string7()
+    {
+        const std::string * SHT_rv = getString7();
+        const char * XSHT_rv = SHT_rv->c_str();
+        return XSHT_rv;
+    }
+
+
+
 .. note:: Reference counting and garbage collection are still a work in progress
+
+.. _TypesAnchor_Implied_argument:
+
+Implied argument
+----------------
+
+The value of an arguments to the C++ function may be implied by other arguments.
+If so the *implied* attribute can be used to assign the value to the argument and 
+it will not be included in the wrapped API.
+See the example in the next section.
+
+.. _TypesAnchor_Allocatable_array:
+
+Allocatable array
+-----------------
+
+Sometimes it is more convient to have the wrapper allocate an
+``intent(out)`` array before passing it to the C++ function.  This can
+be accomplished by adding the *allocatable* attribute.  For example the
+C++ function ``cos_doubles`` takes the cosine of an ``intent(in)``
+argument and assigns it to an ``intent(out)`` argument::
+
+    void cos_doubles(double *in, double *out, int size)
+    {
+        for(int i = 0; i < size; i++) {
+            out[i] = in[i] * 2.;
+        }
+    }
+
+This is wrapped as::
+
+    decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
+                           double * out    +intent(out) +allocatable(mold=in),
+                           int      sizein +implied(size(in)))
+
+The *mold* argument is similar to the *mold* argument in the Fortran
+``allocate`` statement, it will allocate ``out`` as the same shape as
+``in``.  Also notice the use of the *implied* attribute on the
+``size`` argument.  This argument is not added to the Fortran API
+since its value is *implied* to be the size of argument ``in``.
+``size`` is the Fortran intrinsic which returns the number of items
+allocated by its argument.
+
+The Fortran wrapper produced is::
+
+    subroutine cos_doubles(in, out)
+        use iso_c_binding, only : C_DOUBLE, C_INT
+        real(C_DOUBLE), intent(IN) :: in(:)
+        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
+        integer(C_INT) :: sizein
+        allocate(out, mold=in)
+        sizein = size(in)
+        call c_cos_doubles(in, out, sizein)
+    end subroutine cos_doubles
+
+The mold argument was added to the Fortran 2008 standard.  If the
+option **F_standard** is not 2008 then the allocate statement will be::
+
+        allocate(out(lbound(in,1):ubound(in,1)))
+
+
+
+
