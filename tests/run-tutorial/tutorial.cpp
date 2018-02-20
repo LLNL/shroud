@@ -90,7 +90,7 @@ const std::string Function4a(const std::string& arg1, const std::string& arg2)
 const std::string& Function4b(const std::string& arg1, const std::string& arg2)
 {
     last_function_called = "Function4b";
-    return global_str = arg1 + arg2;
+    global_str = arg1 + arg2;
     return global_str;
 }
 

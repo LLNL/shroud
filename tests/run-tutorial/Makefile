@@ -67,3 +67,7 @@ clean :
 	rm -f $(OBJS) *.mod tutorial
 
 main.o : wrapftutorial.o
+
+# useful to isolate load error with just C++ code
+maincpp : maincpp.o wrapTutorial.o wrapClass1.o tutorial.o
+	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@

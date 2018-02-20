@@ -127,6 +127,7 @@ contains
 
     call set_case_name("test_functions")
 
+    ! problem with pgi
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_char1()
@@ -144,6 +145,7 @@ contains
  
 !--------------------------------------------------
 
+    ! problem with pgi
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_string1()

@@ -68,6 +68,31 @@ SHARED = -fPIC
 LD_SHARED = -shared
 endif
 
+ifeq ($(compiler),pgi)
+CC = pgcc
+CFLAGS = -g
+CXX = pgc++
+CXXFLAGS = -g 
+FC = pgf90
+FFLAGS = -g -Mfree
+LIBS = -lstdc++
+SHARED = -fPIC
+LD_SHARED = -shared
+endif
+
+ifeq ($(compiler),ibm)
+CC = xlc
+CFLAGS = -g
+CXX = xlc
+CXXFLAGS = -g 
+FC = xlf2003
+FFLAGS = -g -qfree=f90
+#LIBS = -lstdc++ -L/opt/ibmcmp/lib64/bg -libmc++
+LIBS = -lstdc++
+SHARED = -fPIC
+LD_SHARED = -shared
+endif
+
 # 2.7
 PYTHON_VER := $(shell $(PYTHON) -c "import sys;sys.stdout.write('{v[0]}.{v[1]}'.format(v=sys.version_info))")
 PLATFORM := $(shell $(PYTHON) -c "import sys, sysconfig;sys.stdout.write(sysconfig.get_platform())")

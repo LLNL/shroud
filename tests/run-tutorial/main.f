@@ -231,6 +231,7 @@ contains
 
     call set_case_name("test_class1")
 
+    ! problem with pgi
     obj = class1_new()
     call assert_true(c_associated(obj%get_instance()), "class1_new")
 
