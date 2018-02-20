@@ -1245,11 +1245,11 @@ extern PyObject *{PY_prefix}error_obj;
 extern "C" {{
 #endif
 #ifdef IS_PY3K
-#define MOD_INITBASIS PyInit_{PY_module_name}
+#define SHROUD_MOD_INIT PyInit_{PY_module_name}
 #else
-#define MOD_INITBASIS init{PY_module_name}
+#define SHROUD_MOD_INIT init{PY_module_name}
 #endif
-PyMODINIT_FUNC MOD_INITBASIS(void);
+PyMODINIT_FUNC SHROUD_MOD_INIT(void);
 #ifdef __cplusplus
 }}
 #endif
@@ -1561,7 +1561,7 @@ static struct PyModuleDef moduledef = {{
 extern "C" {{
 #endif
 PyMODINIT_FUNC
-MOD_INITBASIS(void)
+SHROUD_MOD_INIT(void)
 {{
     PyObject *m = NULL;
     const char * error_name = "{library_lower}.Error";

@@ -530,7 +530,7 @@ static struct PyModuleDef moduledef = {
 extern "C" {
 #endif
 PyMODINIT_FUNC
-MOD_INITBASIS(void)
+SHROUD_MOD_INIT(void)
 {
     PyObject *m = NULL;
     const char * error_name = "clibrary.Error";

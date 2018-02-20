@@ -95,11 +95,11 @@ extern PyObject *PP_error_obj;
 extern "C" {
 #endif
 #ifdef IS_PY3K
-#define MOD_INITBASIS PyInit_userlibrary
+#define SHROUD_MOD_INIT PyInit_userlibrary
 #else
-#define MOD_INITBASIS inituserlibrary
+#define SHROUD_MOD_INIT inituserlibrary
 #endif
-PyMODINIT_FUNC MOD_INITBASIS(void);
+PyMODINIT_FUNC SHROUD_MOD_INIT(void);
 #ifdef __cplusplus
 }
 #endif

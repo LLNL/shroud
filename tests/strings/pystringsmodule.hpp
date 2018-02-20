@@ -68,11 +68,11 @@ extern PyObject *PY_error_obj;
 extern "C" {
 #endif
 #ifdef IS_PY3K
-#define MOD_INITBASIS PyInit_strings
+#define SHROUD_MOD_INIT PyInit_strings
 #else
-#define MOD_INITBASIS initstrings
+#define SHROUD_MOD_INIT initstrings
 #endif
-PyMODINIT_FUNC MOD_INITBASIS(void);
+PyMODINIT_FUNC SHROUD_MOD_INIT(void);
 #ifdef __cplusplus
 }
 #endif
