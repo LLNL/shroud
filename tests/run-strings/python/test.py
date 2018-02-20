@@ -81,9 +81,9 @@ class Tutorial(unittest.TestCase):
     def testgetChar(self):
         # The variations are useful for the Fortran API,
         # but really no difference in the Python API.
-        self.assertEqual(static_char, strings.getChar1())
-        self.assertEqual(static_char, strings.getChar2())
-        self.assertEqual(static_char, strings.getChar3())
+        self.assertEqual(static_char, strings.getCharPtr1())
+        self.assertEqual(static_char, strings.getCharPtr2())
+        self.assertEqual(static_char, strings.getCharPtr3())
 
     def testgetString1(self):
         """return std::string reference"""

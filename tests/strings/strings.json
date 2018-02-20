@@ -756,7 +756,7 @@
                     "attrs": {}, 
                     "const": true, 
                     "declarator": {
-                        "name": "getChar1", 
+                        "name": "getCharPtr1", 
                         "pointer": [
                             {
                                 "const": false, 
@@ -773,33 +773,33 @@
                         "char"
                     ]
                 }, 
-                "decl": "const char * getChar1()  +pure", 
-                "declgen": "const char * getChar1() +pure", 
+                "decl": "const char * getCharPtr1()  +pure", 
+                "declgen": "const char * getCharPtr1() +pure", 
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar1(\t);", 
+                    "C_call_code": "const char * SHT_rv =\t getCharPtr1(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_char1", 
+                    "C_name": "STR_get_char_ptr1", 
                     "C_prototype": "", 
                     "C_return_code": "return SHT_rv;", 
                     "C_return_type": "const char *", 
-                    "F_C_call": "c_get_char1", 
-                    "F_C_name": "c_get_char1", 
+                    "F_C_call": "c_get_char_ptr1", 
+                    "F_C_name": "c_get_char_ptr1", 
                     "F_arg_c_call": "", 
                     "F_arguments": "", 
-                    "F_call_code": "SHT_rv = fstr_ptr(c_get_char1())", 
-                    "F_name_function": "get_char1", 
-                    "F_name_generic": "get_char1", 
-                    "F_name_impl": "get_char1", 
+                    "F_call_code": "SHT_rv = fstr_ptr(c_get_char_ptr1())", 
+                    "F_name_function": "get_char_ptr1", 
+                    "F_name_generic": "get_char_ptr1", 
+                    "F_name_impl": "get_char_ptr1", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
-                    "PY_name_impl": "PY_get_char1", 
+                    "PY_name_impl": "PY_get_char_ptr1", 
                     "c_const": "const ", 
-                    "c_var_len": "strlen_ptr(\tc_get_char1(\t))", 
-                    "function_name": "getChar1", 
-                    "underscore_name": "get_char1"
+                    "c_var_len": "strlen_ptr(\tc_get_char_ptr1(\t))", 
+                    "function_name": "getCharPtr1", 
+                    "underscore_name": "get_char_ptr1"
                 }, 
                 "options": {}
             }, 
@@ -831,7 +831,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "getChar1", 
+                        "name": "getCharPtr1", 
                         "pointer": []
                     }, 
                     "fattrs": {
@@ -864,24 +864,24 @@
                         "void"
                     ]
                 }, 
-                "decl": "const char * getChar1()  +pure", 
-                "declgen": "void getChar1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
+                "decl": "const char * getCharPtr1()  +pure", 
+                "declgen": "void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar1(\t);", 
+                    "C_call_code": "const char * SHT_rv =\t getCharPtr1(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_char1_bufferify", 
+                    "C_name": "STR_get_char_ptr1_bufferify", 
                     "C_post_call": "if (SHT_rv == NULL) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_get_char1_bufferify", 
+                    "F_C_name": "c_get_char_ptr1_bufferify", 
                     "c_const": "", 
-                    "function_name": "getChar1", 
+                    "function_name": "getCharPtr1", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "get_char1"
+                    "underscore_name": "get_char_ptr1"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -906,7 +906,7 @@
                     }, 
                     "const": true, 
                     "declarator": {
-                        "name": "getChar2", 
+                        "name": "getCharPtr2", 
                         "pointer": [
                             {
                                 "const": false, 
@@ -921,33 +921,33 @@
                         "char"
                     ]
                 }, 
-                "decl": "const char * getChar2+len(30)()", 
-                "declgen": "const char * getChar2 +len(30)()", 
+                "decl": "const char * getCharPtr2+len(30)()", 
+                "declgen": "const char * getCharPtr2 +len(30)()", 
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar2(\t);", 
+                    "C_call_code": "const char * SHT_rv =\t getCharPtr2(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_char2", 
+                    "C_name": "STR_get_char_ptr2", 
                     "C_prototype": "", 
                     "C_return_code": "return SHT_rv;", 
                     "C_return_type": "const char *", 
-                    "F_C_call": "c_get_char2_bufferify", 
-                    "F_C_name": "c_get_char2", 
+                    "F_C_call": "c_get_char_ptr2_bufferify", 
+                    "F_C_name": "c_get_char_ptr2", 
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                     "F_arguments": "", 
-                    "F_call_code": "call c_get_char2_bufferify(SHT_rv,\t len(SHT_rv, kind=C_INT))", 
-                    "F_name_function": "get_char2", 
-                    "F_name_generic": "get_char2", 
-                    "F_name_impl": "get_char2", 
+                    "F_call_code": "call c_get_char_ptr2_bufferify(SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                    "F_name_function": "get_char_ptr2", 
+                    "F_name_generic": "get_char_ptr2", 
+                    "F_name_impl": "get_char_ptr2", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
-                    "PY_name_impl": "PY_get_char2", 
+                    "PY_name_impl": "PY_get_char_ptr2", 
                     "c_const": "const ", 
                     "c_var_len": "30", 
-                    "function_name": "getChar2", 
-                    "underscore_name": "get_char2"
+                    "function_name": "getCharPtr2", 
+                    "underscore_name": "get_char_ptr2"
                 }, 
                 "options": {}
             }, 
@@ -985,7 +985,7 @@
                     }, 
                     "const": false, 
                     "declarator": {
-                        "name": "getChar2", 
+                        "name": "getCharPtr2", 
                         "pointer": []
                     }, 
                     "fattrs": {}, 
@@ -1016,24 +1016,24 @@
                         "void"
                     ]
                 }, 
-                "decl": "const char * getChar2+len(30)()", 
-                "declgen": "void getChar2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "decl": "const char * getCharPtr2+len(30)()", 
+                "declgen": "void getCharPtr2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar2(\t);", 
+                    "C_call_code": "const char * SHT_rv =\t getCharPtr2(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_char2_bufferify", 
+                    "C_name": "STR_get_char_ptr2_bufferify", 
                     "C_post_call": "if (SHT_rv == NULL) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);\n}", 
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_get_char2_bufferify", 
+                    "F_C_name": "c_get_char_ptr2_bufferify", 
                     "c_const": "", 
-                    "function_name": "getChar2", 
+                    "function_name": "getCharPtr2", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "get_char2"
+                    "underscore_name": "get_char_ptr2"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -1055,7 +1055,7 @@
                     "attrs": {}, 
                     "const": true, 
                     "declarator": {
-                        "name": "getChar3", 
+                        "name": "getCharPtr3", 
                         "pointer": [
                             {
                                 "const": false, 
@@ -1070,24 +1070,24 @@
                         "char"
                     ]
                 }, 
-                "decl": "const char * getChar3()", 
-                "declgen": "const char * getChar3()", 
+                "decl": "const char * getCharPtr3()", 
+                "declgen": "const char * getCharPtr3()", 
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar3(\t);", 
+                    "C_call_code": "const char * SHT_rv =\t getCharPtr3(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_char3", 
+                    "C_name": "STR_get_char_ptr3", 
                     "C_prototype": "", 
                     "C_return_code": "return SHT_rv;", 
                     "C_return_type": "const char *", 
-                    "F_C_name": "c_get_char3", 
+                    "F_C_name": "c_get_char_ptr3", 
                     "F_string_result_as_arg": "output", 
-                    "PY_name_impl": "PY_get_char3", 
+                    "PY_name_impl": "PY_get_char_ptr3", 
                     "c_const": "const ", 
-                    "function_name": "getChar3", 
-                    "underscore_name": "get_char3"
+                    "function_name": "getCharPtr3", 
+                    "underscore_name": "get_char_ptr3"
                 }, 
                 "options": {
                     "wrap_fortran": false
@@ -1125,7 +1125,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "getChar3", 
+                        "name": "getCharPtr3", 
                         "pointer": []
                     }, 
                     "fattrs": {}, 
@@ -1156,25 +1156,25 @@
                         "void"
                     ]
                 }, 
-                "decl": "const char * getChar3()", 
-                "declgen": "void getChar3(char * output +intent(out)+len(Noutput))", 
+                "decl": "const char * getCharPtr3()", 
+                "declgen": "void getCharPtr3(char * output +intent(out)+len(Noutput))", 
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHT_rv =\t getChar3(\t);", 
+                    "C_call_code": "const char * SHT_rv =\t getCharPtr3(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_char3_bufferify", 
+                    "C_name": "STR_get_char_ptr3_bufferify", 
                     "C_post_call": "if (SHT_rv == NULL) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHT_rv);\n}", 
                     "C_prototype": "char * output,\t int Noutput", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_get_char3_bufferify", 
+                    "F_C_name": "c_get_char_ptr3_bufferify", 
                     "F_string_result_as_arg": "output", 
                     "c_const": "", 
-                    "function_name": "getChar3", 
+                    "function_name": "getCharPtr3", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "get_char3"
+                    "underscore_name": "get_char_ptr3"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -1192,7 +1192,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "getChar3", 
+                        "name": "getCharPtr3", 
                         "pointer": []
                     }, 
                     "fattrs": {}, 
@@ -1223,24 +1223,24 @@
                         "void"
                     ]
                 }, 
-                "decl": "const char * getChar3()", 
-                "declgen": "void getChar3(char * output +intent(out)+len(Noutput))", 
+                "decl": "const char * getCharPtr3()", 
+                "declgen": "void getCharPtr3(char * output +intent(out)+len(Noutput))", 
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 }, 
                 "format": {
-                    "F_C_call": "c_get_char3_bufferify", 
+                    "F_C_call": "c_get_char_ptr3_bufferify", 
                     "F_arg_c_call": "output,\t len(output, kind=C_INT)", 
                     "F_arguments": "output", 
-                    "F_call_code": "call c_get_char3_bufferify(output,\t len(output, kind=C_INT))", 
-                    "F_name_function": "get_char3", 
-                    "F_name_generic": "get_char3", 
-                    "F_name_impl": "get_char3", 
+                    "F_call_code": "call c_get_char_ptr3_bufferify(output,\t len(output, kind=C_INT))", 
+                    "F_name_function": "get_char_ptr3", 
+                    "F_name_generic": "get_char_ptr3", 
+                    "F_name_impl": "get_char_ptr3", 
                     "F_string_result_as_arg": "output", 
                     "F_subprogram": "subroutine", 
-                    "function_name": "getChar3", 
+                    "function_name": "getCharPtr3", 
                     "function_suffix": "", 
-                    "underscore_name": "get_char3"
+                    "underscore_name": "get_char_ptr3"
                 }, 
                 "options": {
                     "wrap_c": false, 

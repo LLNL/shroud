@@ -130,67 +130,67 @@ PY_pass_char_ptr_in_out(
 // splicer end function.pass_char_ptr_in_out
 }
 
-static char PY_get_char1__doc__[] =
+static char PY_get_char_ptr1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_char1(
+PY_get_char_ptr1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const char * getChar1() +pure
-// splicer begin function.get_char1
-    const char * SHT_rv = getChar1();
+// const char * getCharPtr1() +pure
+// splicer begin function.get_char_ptr1
+    const char * SHT_rv = getCharPtr1();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHT_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_char1
+// splicer end function.get_char_ptr1
 }
 
-static char PY_get_char2__doc__[] =
+static char PY_get_char_ptr2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_char2(
+PY_get_char_ptr2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const char * getChar2 +len(30)()
-// splicer begin function.get_char2
-    const char * SHT_rv = getChar2();
+// const char * getCharPtr2 +len(30)()
+// splicer begin function.get_char_ptr2
+    const char * SHT_rv = getCharPtr2();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHT_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_char2
+// splicer end function.get_char_ptr2
 }
 
-static char PY_get_char3__doc__[] =
+static char PY_get_char_ptr3__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_char3(
+PY_get_char_ptr3(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const char * getChar3()
-// splicer begin function.get_char3
-    const char * SHT_rv = getChar3();
+// const char * getCharPtr3()
+// splicer begin function.get_char_ptr3
+    const char * SHT_rv = getCharPtr3();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHT_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_char3
+// splicer end function.get_char_ptr3
 }
 
 static char PY_get_string1__doc__[] =
@@ -569,12 +569,12 @@ static PyMethodDef PY_methods[] = {
     PY_return_char__doc__},
 {"passCharPtrInOut", (PyCFunction)PY_pass_char_ptr_in_out,
     METH_VARARGS|METH_KEYWORDS, PY_pass_char_ptr_in_out__doc__},
-{"getChar1", (PyCFunction)PY_get_char1, METH_NOARGS,
-    PY_get_char1__doc__},
-{"getChar2", (PyCFunction)PY_get_char2, METH_NOARGS,
-    PY_get_char2__doc__},
-{"getChar3", (PyCFunction)PY_get_char3, METH_NOARGS,
-    PY_get_char3__doc__},
+{"getCharPtr1", (PyCFunction)PY_get_char_ptr1, METH_NOARGS,
+    PY_get_char_ptr1__doc__},
+{"getCharPtr2", (PyCFunction)PY_get_char_ptr2, METH_NOARGS,
+    PY_get_char_ptr2__doc__},
+{"getCharPtr3", (PyCFunction)PY_get_char_ptr3, METH_NOARGS,
+    PY_get_char_ptr3__doc__},
 {"getString1", (PyCFunction)PY_get_string1, METH_NOARGS,
     PY_get_string1__doc__},
 {"getString2", (PyCFunction)PY_get_string2, METH_NOARGS,

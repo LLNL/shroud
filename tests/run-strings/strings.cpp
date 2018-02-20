@@ -83,17 +83,17 @@ void passCharPtrInOut(char *s)
 
 //----------------------------------------
 
-const char * getChar1()
+const char * getCharPtr1()
 {
     return static_char;
 }
 
-const char * getChar2()
+const char * getCharPtr2()
 {
     return static_char;
 }
 
-const char * getChar3()
+const char * getCharPtr3()
 {
     return static_char;
 }

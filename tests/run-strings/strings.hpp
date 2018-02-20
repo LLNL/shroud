@@ -52,9 +52,9 @@ char returnChar();
 void passCharPtr(char * dest, const char *src);
 void passCharPtrInOut(char * s);
 
-const char * getChar1();
-const char * getChar2();
-const char * getChar3();
+const char * getCharPtr1();
+const char * getCharPtr2();
+const char * getCharPtr3();
 
 const std::string& getString1();
 const std::string& getString2();

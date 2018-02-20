@@ -84,17 +84,17 @@ functions:
 
 ########################################
 
-- decl: const char * getChar1()  +pure
+- decl: const char * getCharPtr1()  +pure
 #  C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const char *' as character(*)
 
-- decl: const char * getChar2+len(30)()
+- decl: const char * getCharPtr2+len(30)()
 #  C_error_pattern: C_char_invalid_name
   doxygen:
     brief: return 'const char *' with fixed size (len=30)
 
-- decl: const char * getChar3() # +pure
+- decl: const char * getCharPtr3() # +pure
 #  C_error_pattern: C_char_invalid_name
   doxygen:
     brief: return a 'const char *' as argument
