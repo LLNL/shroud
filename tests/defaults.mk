@@ -41,24 +41,15 @@
 ########################################################################
 
 
-compiler = gcc
+#compiler = gcc
 #compiler = intel
 
-# paths need the trailing slash
-# LC
-gcc.path = /usr/apps/gnu/4.7.1/bin/
-gcc.path = /usr/apps/gnu/4.9.3/bin/
-intel.path = /usr/local/tools/ic-15.0.187/bin/
-intel.path = /usr/local/tools/ic-16.0.109/bin/
-
-gcc.path := $(dir $(shell which gcc))
-
 ifeq ($(compiler),gcc)
-CC = $(gcc.path)gcc
+CC = gcc
 CFLAGS = -g -Wall
-CXX = $(gcc.path)g++
+CXX = g++
 CXXFLAGS = -g -Wall
-FC = $(gcc.path)gfortran
+FC = gfortran
 FFLAGS = -g -Wall -ffree-form
 LIBS = -lstdc++
 SHARED = -fPIC
@@ -66,11 +57,11 @@ LD_SHARED = -shared
 endif
 
 ifeq ($(compiler),intel)
-CC = $(intel.path)icc
+CC = icc
 CFLAGS = -g
-CXX = $(intel.path)icpc
+CXX = icpc
 CXXFLAGS = -g 
-FC = $(intel.path)ifort
+FC = ifort
 FFLAGS = -g -free
 LIBS = -lstdc++
 SHARED = -fPIC
@@ -83,7 +74,11 @@ PLATFORM := $(shell $(PYTHON) -c "import sys, sysconfig;sys.stdout.write(sysconf
 PYTHON_PREFIX := $(shell $(PYTHON) -c "import sys;sys.stdout.write(sys.exec_prefix)")
 PYTHON_NUMPY := $(shell $(PYTHON) -c "import sys, numpy;sys.stdout.write(numpy.get_include())")
 PYTHON_BIN := $(PYTHON)
+ifeq ($(PYTHONEXE),python2)
 PYTHON_INC := -I$(PYTHON_PREFIX)/include/python$(PYTHON_VER) -I$(PYTHON_NUMPY)
+else
+PYTHON_INC := -I$(PYTHON_PREFIX)/include/python$(PYTHON_VER)m -I$(PYTHON_NUMPY)
+endif
 PYTHON_LIB := -L$(PYTHON_PREFIX)/lib/python$(PYTHON_VER)/config -lpython$(PYTHON_VER) -ldl -lutil
 
 LUA_PREFIX = $(abspath $(dir $(LUA))/..)
@@ -92,13 +87,13 @@ LUA_INC = -I$(LUA_PREFIX)/include
 LUA_LIB = -L$(LUA_PREFIX)/lib -llua -ldl
 
 %.o : %.c
-	$(CC) $(CFLAGS) $(INCLUDE) -c -o $*.o $^
+	$(CC) $(CFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o : %.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $^
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o %.mod  : %.f
-	$(FC) $(FFLAGS) $(INCLUDE) -c -o $*.o $^
+	$(FC) $(FFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o %.mod  : %.f90
-	$(FC) $(FFLAGS) $(INCLUDE) -c -o $*.o $^
+	$(FC) $(FFLAGS) $(INCLUDE) -c -o $*.o $<

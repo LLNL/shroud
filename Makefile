@@ -65,8 +65,11 @@ python.dir := $(venv.dir)/bin
 PYTHON := $(venv.dir)/bin/$(PYTHONEXE)
 endif
 
-export PYTHON
+export PYTHON PYTHONEXE
 export LUA
+
+compiler = gcc
+export compiler
 
 ########################################################################
 # For development:
