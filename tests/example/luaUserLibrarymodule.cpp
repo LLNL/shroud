@@ -657,9 +657,9 @@ static int l_func_ptr5(lua_State *L)
     // splicer end function.FuncPtr5
 }
 
-static int l_verlongfunctionname1(lua_State *L)
+static int l_verylongfunctionname1(lua_State *L)
 {
-    // splicer begin function.verlongfunctionname1
+    // splicer begin function.verylongfunctionname1
     int * verylongname1 = lua_tointeger(L, 1);
     int * verylongname2 = lua_tointeger(L, 2);
     int * verylongname3 = lua_tointeger(L, 3);
@@ -670,7 +670,7 @@ static int l_verlongfunctionname1(lua_State *L)
     int * verylongname8 = lua_tointeger(L, 8);
     int * verylongname9 = lua_tointeger(L, 9);
     int * verylongname10 = lua_tointeger(L, 10);
-    verlongfunctionname1(verylongname1, verylongname2, verylongname3,
+    verylongfunctionname1(verylongname1, verylongname2, verylongname3,
         verylongname4, verylongname5, verylongname6, verylongname7,
         verylongname8, verylongname9, verylongname10);
     lua_pushinteger(L, lua_tointeger(L, 1));
@@ -684,12 +684,12 @@ static int l_verlongfunctionname1(lua_State *L)
     lua_pushinteger(L, lua_tointeger(L, 9));
     lua_pushinteger(L, lua_tointeger(L, 10));
     return 0;
-    // splicer end function.verlongfunctionname1
+    // splicer end function.verylongfunctionname1
 }
 
-static int l_verlongfunctionname2(lua_State *L)
+static int l_verylongfunctionname2(lua_State *L)
 {
-    // splicer begin function.verlongfunctionname2
+    // splicer begin function.verylongfunctionname2
     int verylongname1 = lua_tointeger(L, 1);
     int verylongname2 = lua_tointeger(L, 2);
     int verylongname3 = lua_tointeger(L, 3);
@@ -700,12 +700,12 @@ static int l_verlongfunctionname2(lua_State *L)
     int verylongname8 = lua_tointeger(L, 8);
     int verylongname9 = lua_tointeger(L, 9);
     int verylongname10 = lua_tointeger(L, 10);
-    int SHT_rv = verlongfunctionname2(verylongname1, verylongname2,
+    int SHT_rv = verylongfunctionname2(verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
         verylongname7, verylongname8, verylongname9, verylongname10);
     lua_pushinteger(L, SHT_rv);
     return 1;
-    // splicer end function.verlongfunctionname2
+    // splicer end function.verylongfunctionname2
 }
 
 static int l_cos_doubles(lua_State *L)
@@ -740,8 +740,8 @@ static const struct luaL_Reg l_UserLibrary_Reg [] = {
     {"FuncPtr2", l_func_ptr2},
     {"FuncPtr3", l_func_ptr3},
     {"FuncPtr5", l_func_ptr5},
-    {"verlongfunctionname1", l_verlongfunctionname1},
-    {"verlongfunctionname2", l_verlongfunctionname2},
+    {"verylongfunctionname1", l_verylongfunctionname1},
+    {"verylongfunctionname2", l_verylongfunctionname2},
     {"cos_doubles", l_cos_doubles},
     // splicer begin register
     // splicer end register

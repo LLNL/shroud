@@ -264,11 +264,11 @@ module userlibrary_mod
             procedure(func_ptr5_get) :: get
         end subroutine func_ptr5
 
-        subroutine c_verlongfunctionname1(verylongname1, verylongname2, &
+        subroutine c_verylongfunctionname1(verylongname1, verylongname2, &
                 verylongname3, verylongname4, verylongname5, &
                 verylongname6, verylongname7, verylongname8, &
                 verylongname9, verylongname10) &
-                bind(C, name="AA_verlongfunctionname1")
+                bind(C, name="AA_verylongfunctionname1")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(INOUT) :: verylongname1
@@ -281,14 +281,14 @@ module userlibrary_mod
             integer(C_INT), intent(INOUT) :: verylongname8
             integer(C_INT), intent(INOUT) :: verylongname9
             integer(C_INT), intent(INOUT) :: verylongname10
-        end subroutine c_verlongfunctionname1
+        end subroutine c_verylongfunctionname1
 
-        function c_verlongfunctionname2(verylongname1, verylongname2, &
+        function c_verylongfunctionname2(verylongname1, verylongname2, &
                 verylongname3, verylongname4, verylongname5, &
                 verylongname6, verylongname7, verylongname8, &
                 verylongname9, verylongname10) &
                 result(SHT_rv) &
-                bind(C, name="AA_verlongfunctionname2")
+                bind(C, name="AA_verylongfunctionname2")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: verylongname1
@@ -302,7 +302,7 @@ module userlibrary_mod
             integer(C_INT), value, intent(IN) :: verylongname9
             integer(C_INT), value, intent(IN) :: verylongname10
             integer(C_INT) :: SHT_rv
-        end function c_verlongfunctionname2
+        end function c_verylongfunctionname2
 
         subroutine c_cos_doubles(in, out, sizein) &
                 bind(C, name="AA_cos_doubles")
@@ -474,9 +474,9 @@ contains
         ! splicer end function.func_ptr4
     end subroutine func_ptr4
 
-    ! void verlongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
+    ! void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
     ! function_index=65
-    subroutine verlongfunctionname1(verylongname1, verylongname2, &
+    subroutine verylongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
         use iso_c_binding, only : C_INT
@@ -490,16 +490,16 @@ contains
         integer(C_INT), intent(INOUT) :: verylongname8
         integer(C_INT), intent(INOUT) :: verylongname9
         integer(C_INT), intent(INOUT) :: verylongname10
-        ! splicer begin function.verlongfunctionname1
-        call c_verlongfunctionname1(verylongname1, verylongname2, &
+        ! splicer begin function.verylongfunctionname1
+        call c_verylongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
-        ! splicer end function.verlongfunctionname1
-    end subroutine verlongfunctionname1
+        ! splicer end function.verylongfunctionname1
+    end subroutine verylongfunctionname1
 
-    ! int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+    ! int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
     ! function_index=66
-    function verlongfunctionname2(verylongname1, verylongname2, &
+    function verylongfunctionname2(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10) &
             result(SHT_rv)
@@ -515,12 +515,12 @@ contains
         integer(C_INT), value, intent(IN) :: verylongname9
         integer(C_INT), value, intent(IN) :: verylongname10
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.verlongfunctionname2
-        SHT_rv = c_verlongfunctionname2(verylongname1, verylongname2, &
+        ! splicer begin function.verylongfunctionname2
+        SHT_rv = c_verylongfunctionname2(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
-        ! splicer end function.verlongfunctionname2
-    end function verlongfunctionname2
+        ! splicer end function.verylongfunctionname2
+    end function verylongfunctionname2
 
     ! void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
     ! function_index=67

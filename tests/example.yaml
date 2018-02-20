@@ -344,30 +344,30 @@ functions:
                                  int verylongname9, 
                                  int verylongname10))
 
-  - decl: void verlongfunctionname1(int *verylongname1 +intent(inout), 
-                                    int *verylongname2 +intent(inout), 
-                                    int *verylongname3 +intent(inout), 
-                                    int *verylongname4 +intent(inout), 
-                                    int *verylongname5 +intent(inout), 
-                                    int *verylongname6 +intent(inout), 
-                                    int *verylongname7 +intent(inout), 
-                                    int *verylongname8 +intent(inout), 
-                                    int *verylongname9 +intent(inout), 
-                                    int *verylongname10 +intent(inout))
+  - decl: void verylongfunctionname1(int *verylongname1 +intent(inout), 
+                                     int *verylongname2 +intent(inout), 
+                                     int *verylongname3 +intent(inout), 
+                                     int *verylongname4 +intent(inout), 
+                                     int *verylongname5 +intent(inout), 
+                                     int *verylongname6 +intent(inout), 
+                                     int *verylongname7 +intent(inout), 
+                                     int *verylongname8 +intent(inout), 
+                                     int *verylongname9 +intent(inout), 
+                                     int *verylongname10 +intent(inout))
     options:
       # Force wrapper to test interface line lengths
       F_force_wrapper: True
 
-  - decl: int verlongfunctionname2(int verylongname1, 
-                                   int verylongname2, 
-                                   int verylongname3, 
-                                   int verylongname4, 
-                                   int verylongname5, 
-                                   int verylongname6, 
-                                   int verylongname7, 
-                                   int verylongname8, 
-                                   int verylongname9, 
-                                   int verylongname10)
+  - decl: int verylongfunctionname2(int verylongname1, 
+                                    int verylongname2, 
+                                    int verylongname3, 
+                                    int verylongname4, 
+                                    int verylongname5, 
+                                    int verylongname6, 
+                                    int verylongname7, 
+                                    int verylongname8, 
+                                    int verylongname9, 
+                                    int verylongname10)
     options:
       # Force wrapper to test interface line lengths
       F_force_wrapper: True

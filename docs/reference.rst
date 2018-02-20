@@ -889,7 +889,7 @@ cxx_type
 
 cxx_to_c
     Expression to convert from C++ to C.
-    Defaults to *None* which impies *{cxx_var}*.  i.e. no conversion required.
+    Defaults to *None* which implies *{cxx_var}*.  i.e. no conversion required.
 
 cxx_header
     Name of C++ header file required for implementation.

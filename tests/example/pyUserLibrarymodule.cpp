@@ -484,18 +484,18 @@ PP_func_ptr5(
 // splicer end function.func_ptr5
 }
 
-static char PP_verlongfunctionname1__doc__[] =
+static char PP_verylongfunctionname1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_verlongfunctionname1(
+PP_verylongfunctionname1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void verlongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
-// splicer begin function.verlongfunctionname1
+// void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
+// splicer begin function.verylongfunctionname1
     int verylongname1;
     int verylongname2;
     int verylongname3;
@@ -520,16 +520,17 @@ PP_verlongfunctionname1(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "iiiiiiiiii:verlongfunctionname1",
+        "iiiiiiiiii:verylongfunctionname1",
         const_cast<char **>(SHT_kwlist),
         &verylongname1, &verylongname2, &verylongname3, &verylongname4,
         &verylongname5, &verylongname6, &verylongname7, &verylongname8,
         &verylongname9, &verylongname10))
         return NULL;
 
-    verlongfunctionname1(&verylongname1, &verylongname2, &verylongname3,
-        &verylongname4, &verylongname5, &verylongname6, &verylongname7,
-        &verylongname8, &verylongname9, &verylongname10);
+    verylongfunctionname1(&verylongname1, &verylongname2,
+        &verylongname3, &verylongname4, &verylongname5, &verylongname6,
+        &verylongname7, &verylongname8, &verylongname9,
+        &verylongname10);
 
     // post_call
     PyObject * SHTPy_rv = Py_BuildValue("iiiiiiiiii", verylongname1,
@@ -538,21 +539,21 @@ PP_verlongfunctionname1(
         verylongname10);
 
     return SHTPy_rv;
-// splicer end function.verlongfunctionname1
+// splicer end function.verylongfunctionname1
 }
 
-static char PP_verlongfunctionname2__doc__[] =
+static char PP_verylongfunctionname2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_verlongfunctionname2(
+PP_verylongfunctionname2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-// splicer begin function.verlongfunctionname2
+// int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+// splicer begin function.verylongfunctionname2
     int verylongname1;
     int verylongname2;
     int verylongname3;
@@ -577,14 +578,14 @@ PP_verlongfunctionname2(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "iiiiiiiiii:verlongfunctionname2",
+        "iiiiiiiiii:verylongfunctionname2",
         const_cast<char **>(SHT_kwlist),
         &verylongname1, &verylongname2, &verylongname3, &verylongname4,
         &verylongname5, &verylongname6, &verylongname7, &verylongname8,
         &verylongname9, &verylongname10))
         return NULL;
 
-    int SHT_rv = verlongfunctionname2(verylongname1, verylongname2,
+    int SHT_rv = verylongfunctionname2(verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
         verylongname7, verylongname8, verylongname9, verylongname10);
 
@@ -592,7 +593,7 @@ PP_verlongfunctionname2(
     PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.verlongfunctionname2
+// splicer end function.verylongfunctionname2
 }
 
 static char PP_cos_doubles__doc__[] =
@@ -716,10 +717,10 @@ static PyMethodDef PP_methods[] = {
     PP_func_ptr3__doc__},
 {"FuncPtr5", (PyCFunction)PP_func_ptr5, METH_VARARGS|METH_KEYWORDS,
     PP_func_ptr5__doc__},
-{"verlongfunctionname1", (PyCFunction)PP_verlongfunctionname1,
-    METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname1__doc__},
-{"verlongfunctionname2", (PyCFunction)PP_verlongfunctionname2,
-    METH_VARARGS|METH_KEYWORDS, PP_verlongfunctionname2__doc__},
+{"verylongfunctionname1", (PyCFunction)PP_verylongfunctionname1,
+    METH_VARARGS|METH_KEYWORDS, PP_verylongfunctionname1__doc__},
+{"verylongfunctionname2", (PyCFunction)PP_verylongfunctionname2,
+    METH_VARARGS|METH_KEYWORDS, PP_verylongfunctionname2__doc__},
 {"cos_doubles", (PyCFunction)PP_cos_doubles, METH_VARARGS|METH_KEYWORDS,
     PP_cos_doubles__doc__},
 {"test_names", (PyCFunction)PP_test_names, METH_VARARGS|METH_KEYWORDS,

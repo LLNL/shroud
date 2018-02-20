@@ -292,34 +292,34 @@ void AA_func_ptr5(void ( * get)(int verylongname1, int verylongname2,
 // splicer end function.func_ptr5
 }
 
-// void verlongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
+// void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
 // function_index=65
-void AA_verlongfunctionname1(int * verylongname1, int * verylongname2,
+void AA_verylongfunctionname1(int * verylongname1, int * verylongname2,
     int * verylongname3, int * verylongname4, int * verylongname5,
     int * verylongname6, int * verylongname7, int * verylongname8,
     int * verylongname9, int * verylongname10)
 {
-// splicer begin function.verlongfunctionname1
-    verlongfunctionname1(verylongname1, verylongname2, verylongname3,
+// splicer begin function.verylongfunctionname1
+    verylongfunctionname1(verylongname1, verylongname2, verylongname3,
         verylongname4, verylongname5, verylongname6, verylongname7,
         verylongname8, verylongname9, verylongname10);
     return;
-// splicer end function.verlongfunctionname1
+// splicer end function.verylongfunctionname1
 }
 
-// int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+// int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
 // function_index=66
-int AA_verlongfunctionname2(int verylongname1, int verylongname2,
+int AA_verylongfunctionname2(int verylongname1, int verylongname2,
     int verylongname3, int verylongname4, int verylongname5,
     int verylongname6, int verylongname7, int verylongname8,
     int verylongname9, int verylongname10)
 {
-// splicer begin function.verlongfunctionname2
-    int SHT_rv = verlongfunctionname2(verylongname1, verylongname2,
+// splicer begin function.verylongfunctionname2
+    int SHT_rv = verylongfunctionname2(verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
         verylongname7, verylongname8, verylongname9, verylongname10);
     return SHT_rv;
-// splicer end function.verlongfunctionname2
+// splicer end function.verylongfunctionname2
 }
 
 // void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
