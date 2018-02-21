@@ -424,29 +424,29 @@ PP_exclass2_getTypeID(
 // splicer begin class.ExClass2.impl.after_methods
 // splicer end class.ExClass2.impl.after_methods
 static PyMethodDef PP_ExClass2_methods[] = {
-{"dtor", (PyCFunction)PP_exclass2_dtor, METH_NOARGS,
-    PP_exclass2_dtor__doc__},
-{"getName", (PyCFunction)PP_exclass2_getName, METH_NOARGS,
-    PP_exclass2_getName__doc__},
-{"getName2", (PyCFunction)PP_exclass2_getName2, METH_NOARGS,
-    PP_exclass2_getName2__doc__},
-{"getName3", (PyCFunction)PP_exclass2_getName3, METH_NOARGS,
-    PP_exclass2_getName3__doc__},
-{"getName4", (PyCFunction)PP_exclass2_getName4, METH_NOARGS,
-    PP_exclass2_getName4__doc__},
-{"GetNameLength", (PyCFunction)PP_exclass2_GetNameLength, METH_NOARGS,
-    PP_exclass2_GetNameLength__doc__},
-{"get_class1", (PyCFunction)PP_exclass2_get_class1,
-    METH_VARARGS|METH_KEYWORDS, PP_exclass2_get_class1__doc__},
-{"declare", (PyCFunction)PP_exclass2_declare_1,
-    METH_VARARGS|METH_KEYWORDS, PP_exclass2_declare_1__doc__},
-{"destroyall", (PyCFunction)PP_exclass2_destroyall, METH_NOARGS,
-    PP_exclass2_destroyall__doc__},
-{"getTypeID", (PyCFunction)PP_exclass2_getTypeID, METH_NOARGS,
-    PP_exclass2_getTypeID__doc__},
-// splicer begin class.ExClass2.PyMethodDef
-// splicer end class.ExClass2.PyMethodDef
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {"dtor", (PyCFunction)PP_exclass2_dtor, METH_NOARGS,
+        PP_exclass2_dtor__doc__},
+    {"getName", (PyCFunction)PP_exclass2_getName, METH_NOARGS,
+        PP_exclass2_getName__doc__},
+    {"getName2", (PyCFunction)PP_exclass2_getName2, METH_NOARGS,
+        PP_exclass2_getName2__doc__},
+    {"getName3", (PyCFunction)PP_exclass2_getName3, METH_NOARGS,
+        PP_exclass2_getName3__doc__},
+    {"getName4", (PyCFunction)PP_exclass2_getName4, METH_NOARGS,
+        PP_exclass2_getName4__doc__},
+    {"GetNameLength", (PyCFunction)PP_exclass2_GetNameLength,
+        METH_NOARGS, PP_exclass2_GetNameLength__doc__},
+    {"get_class1", (PyCFunction)PP_exclass2_get_class1,
+        METH_VARARGS|METH_KEYWORDS, PP_exclass2_get_class1__doc__},
+    {"declare", (PyCFunction)PP_exclass2_declare_1,
+        METH_VARARGS|METH_KEYWORDS, PP_exclass2_declare_1__doc__},
+    {"destroyall", (PyCFunction)PP_exclass2_destroyall, METH_NOARGS,
+        PP_exclass2_destroyall__doc__},
+    {"getTypeID", (PyCFunction)PP_exclass2_getTypeID, METH_NOARGS,
+        PP_exclass2_getTypeID__doc__},
+    // splicer begin class.ExClass2.PyMethodDef
+    // splicer end class.ExClass2.PyMethodDef
+    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
 static char ExClass2__doc__[] =

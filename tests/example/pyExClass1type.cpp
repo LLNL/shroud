@@ -398,31 +398,31 @@ PP_exclass1_getValue(
 // splicer begin class.ExClass1.impl.after_methods
 // splicer end class.ExClass1.impl.after_methods
 static PyMethodDef PP_ExClass1_methods[] = {
-{"dtor", (PyCFunction)PP_exclass1_dtor, METH_NOARGS,
-    PP_exclass1_dtor__doc__},
-{"incrementCount", (PyCFunction)PP_exclass1_incrementCount,
-    METH_VARARGS|METH_KEYWORDS, PP_exclass1_incrementCount__doc__},
-{"getName", (PyCFunction)PP_exclass1_getName, METH_NOARGS,
-    PP_exclass1_getName__doc__},
-{"GetNameLength", (PyCFunction)PP_exclass1_GetNameLength, METH_NOARGS,
-    PP_exclass1_GetNameLength__doc__},
-{"getNameErrorCheck", (PyCFunction)PP_exclass1_getNameErrorCheck,
-    METH_NOARGS, PP_exclass1_getNameErrorCheck__doc__},
-{"getNameArg", (PyCFunction)PP_exclass1_getNameArg, METH_NOARGS,
-    PP_exclass1_getNameArg__doc__},
-{"getRoot", (PyCFunction)PP_exclass1_getRoot, METH_NOARGS,
-    PP_exclass1_getRoot__doc__},
-{"getAddr", (PyCFunction)PP_exclass1_getAddr, METH_NOARGS,
-    PP_exclass1_getAddr__doc__},
-{"hasAddr", (PyCFunction)PP_exclass1_hasAddr,
-    METH_VARARGS|METH_KEYWORDS, PP_exclass1_hasAddr__doc__},
-{"SplicerSpecial", (PyCFunction)PP_exclass1_SplicerSpecial, METH_NOARGS,
-    PP_exclass1_SplicerSpecial__doc__},
-{"getValue", (PyCFunction)PP_exclass1_getValue,
-    METH_VARARGS|METH_KEYWORDS, PP_exclass1_getValue__doc__},
-// splicer begin class.ExClass1.PyMethodDef
-// splicer end class.ExClass1.PyMethodDef
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {"dtor", (PyCFunction)PP_exclass1_dtor, METH_NOARGS,
+        PP_exclass1_dtor__doc__},
+    {"incrementCount", (PyCFunction)PP_exclass1_incrementCount,
+        METH_VARARGS|METH_KEYWORDS, PP_exclass1_incrementCount__doc__},
+    {"getName", (PyCFunction)PP_exclass1_getName, METH_NOARGS,
+        PP_exclass1_getName__doc__},
+    {"GetNameLength", (PyCFunction)PP_exclass1_GetNameLength,
+        METH_NOARGS, PP_exclass1_GetNameLength__doc__},
+    {"getNameErrorCheck", (PyCFunction)PP_exclass1_getNameErrorCheck,
+        METH_NOARGS, PP_exclass1_getNameErrorCheck__doc__},
+    {"getNameArg", (PyCFunction)PP_exclass1_getNameArg, METH_NOARGS,
+        PP_exclass1_getNameArg__doc__},
+    {"getRoot", (PyCFunction)PP_exclass1_getRoot, METH_NOARGS,
+        PP_exclass1_getRoot__doc__},
+    {"getAddr", (PyCFunction)PP_exclass1_getAddr, METH_NOARGS,
+        PP_exclass1_getAddr__doc__},
+    {"hasAddr", (PyCFunction)PP_exclass1_hasAddr,
+        METH_VARARGS|METH_KEYWORDS, PP_exclass1_hasAddr__doc__},
+    {"SplicerSpecial", (PyCFunction)PP_exclass1_SplicerSpecial,
+        METH_NOARGS, PP_exclass1_SplicerSpecial__doc__},
+    {"getValue", (PyCFunction)PP_exclass1_getValue,
+        METH_VARARGS|METH_KEYWORDS, PP_exclass1_getValue__doc__},
+    // splicer begin class.ExClass1.PyMethodDef
+    // splicer end class.ExClass1.PyMethodDef
+    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
 static char ExClass1__doc__[] =

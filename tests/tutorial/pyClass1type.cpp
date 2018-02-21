@@ -87,13 +87,13 @@ PY_class1_Method1(
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods
 static PyMethodDef PY_Class1_methods[] = {
-{"delete", (PyCFunction)PY_class1_delete, METH_NOARGS,
-    PY_class1_delete__doc__},
-{"Method1", (PyCFunction)PY_class1_Method1, METH_NOARGS,
-    PY_class1_Method1__doc__},
-// splicer begin class.Class1.PyMethodDef
-// splicer end class.Class1.PyMethodDef
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {"delete", (PyCFunction)PY_class1_delete, METH_NOARGS,
+        PY_class1_delete__doc__},
+    {"Method1", (PyCFunction)PY_class1_Method1, METH_NOARGS,
+        PY_class1_Method1__doc__},
+    // splicer begin class.Class1.PyMethodDef
+    // splicer end class.Class1.PyMethodDef
+    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
 static char Class1__doc__[] =

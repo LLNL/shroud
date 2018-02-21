@@ -1120,12 +1120,12 @@ return 1;""", fmt)
 
         fmt_type['tp_methods'] = wformat('{PY_prefix}{cxx_class}_methods', fmt)
         output.append(
-            wformat('static PyMethodDef {tp_methods}[] = {{', fmt_type))
+            wformat('static PyMethodDef {tp_methods}[] = {{+', fmt_type))
         output.extend(self.PyMethodDef)
         self._create_splicer('PyMethodDef', output)
         output.append('{NULL,   (PyCFunction)NULL, 0, NULL}'
                       '            /* sentinel */')
-        output.append('};')
+        output.append('-};')
 
         output.append(wformat(PyTypeObject_template, fmt_type))
         self.namespace(library, node, 'end', output)

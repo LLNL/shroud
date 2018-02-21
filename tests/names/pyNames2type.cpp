@@ -50,9 +50,9 @@
 // splicer begin class.Names2.impl.after_methods
 // splicer end class.Names2.impl.after_methods
 static PyMethodDef PY_Names2_methods[] = {
-// splicer begin class.Names2.PyMethodDef
-// splicer end class.Names2.PyMethodDef
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    // splicer begin class.Names2.PyMethodDef
+    // splicer end class.Names2.PyMethodDef
+    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
 static char Names2__doc__[] =
