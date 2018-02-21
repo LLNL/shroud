@@ -195,6 +195,7 @@
             "CXX_template": "", 
             "CXX_this": "SH_this", 
             "CXX_this_call": "", 
+            "C_argument": "ARG_", 
             "C_bufferify_suffix": "_bufferify", 
             "C_custom_return_type": "", 
             "C_header_filename": "top.h", 
@@ -529,7 +530,7 @@
                             "c_var": "rv", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_rv"
+                            "cxx_var": "ARG_rv"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
@@ -598,10 +599,10 @@
                 "decl": "int function4(const std::string &rv)", 
                 "declgen": "int function4(const std::string & rv +intent(in))", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t function4(\tSH_rv);", 
-                    "C_call_list": "SH_rv", 
+                    "C_call_code": "int SHC_rv =\t function4(\tARG_rv);", 
+                    "C_call_list": "ARG_rv", 
                     "C_name": "YYY_TES_function4", 
-                    "C_pre_call": "const std::string SH_rv(rv);", 
+                    "C_pre_call": "const std::string ARG_rv(rv);", 
                     "C_prototype": "const char * rv", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int", 
@@ -634,7 +635,7 @@
                             "c_var_trim": "Lrv", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_rv"
+                            "cxx_var": "ARG_rv"
                         }, 
                         "fmtf": {
                             "c_var": "rv", 
@@ -689,10 +690,10 @@
                 "decl": "int function4(const std::string &rv)", 
                 "declgen": "int function4(const std::string & rv +intent(in)+len_trim(Lrv))", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t function4(\tSH_rv);", 
-                    "C_call_list": "SH_rv", 
+                    "C_call_code": "int SHC_rv =\t function4(\tARG_rv);", 
+                    "C_call_list": "ARG_rv", 
                     "C_name": "YYY_TES_function4_bufferify", 
-                    "C_pre_call": "const std::string SH_rv(rv, Lrv);", 
+                    "C_pre_call": "const std::string ARG_rv(rv, Lrv);", 
                     "C_prototype": "const char * rv,\t int Lrv", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int", 

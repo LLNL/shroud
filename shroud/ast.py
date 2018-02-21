@@ -221,6 +221,7 @@ class LibraryNode(AstNode):
             C_bufferify_suffix='_bufferify',
             C_prefix = self.library.upper()[:3] + '_',  # function prefix
             C_result = 'rv',        # return value
+            C_argument = 'SH_',
             c_temp = 'SHT_',
             C_local = 'SHC_',
             C_this = 'self',

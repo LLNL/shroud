@@ -52,6 +52,7 @@ options:
   wrap_python: True
 
 format:
+  C_argument: ARG_
   C_header_filename_suffix: hh
   C_impl_filename_suffix: cc
   F_filename_suffix: F
