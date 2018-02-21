@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Support function pointer arguments.
+- Support for function pointer arguments.
 - Improve support for Python wrappers, including NumPy support.
 - Added implied attribute used to compute value of an argument which
   is in the C++ API but does not need to be explicit in the Fortran API.

@@ -42,3 +42,5 @@ It is also linked here:
 - [LICENSE](./LICENSE)
 
 `LLNL-CODE-738041`  `OCEC-17-143`
+
+File shroud/visitor.py has a MIT license.
