@@ -555,9 +555,9 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
-                        "c_var": "SHCXX_rv", 
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_var": "SHCXX_rv", 
+                        "cxx_var": "SHC_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 

@@ -90,10 +90,10 @@ PY_return_char(
 {
 // char_scalar returnChar()
 // splicer begin function.return_char
-    char SHCXX_rv = returnChar();
+    char SHC_rv = returnChar();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(&SHCXX_rv, 1);
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(&SHC_rv, 1);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_char
@@ -142,10 +142,10 @@ PY_get_char_ptr1(
 {
 // const char * getCharPtr1() +pure
 // splicer begin function.get_char_ptr1
-    const char * SHCXX_rv = getCharPtr1();
+    const char * SHC_rv = getCharPtr1();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv);
+    PyObject * SHTPy_rv = PyString_FromString(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_char_ptr1
@@ -163,10 +163,10 @@ PY_get_char_ptr2(
 {
 // const char * getCharPtr2 +len(30)()
 // splicer begin function.get_char_ptr2
-    const char * SHCXX_rv = getCharPtr2();
+    const char * SHC_rv = getCharPtr2();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv);
+    PyObject * SHTPy_rv = PyString_FromString(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_char_ptr2
@@ -184,10 +184,10 @@ PY_get_char_ptr3(
 {
 // const char * getCharPtr3()
 // splicer begin function.get_char_ptr3
-    const char * SHCXX_rv = getCharPtr3();
+    const char * SHC_rv = getCharPtr3();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv);
+    PyObject * SHTPy_rv = PyString_FromString(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_char_ptr3
@@ -554,10 +554,10 @@ PY_creturn_char(
 {
 // char_scalar CreturnChar()
 // splicer begin function.creturn_char
-    char SHCXX_rv = CreturnChar();
+    char SHC_rv = CreturnChar();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(&SHCXX_rv, 1);
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(&SHC_rv, 1);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.creturn_char

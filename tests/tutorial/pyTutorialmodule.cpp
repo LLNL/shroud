@@ -96,10 +96,10 @@ PY_function2(
         &arg1, &arg2))
         return NULL;
 
-    double SHCXX_rv = Function2(arg1, arg2);
+    double SHC_rv = Function2(arg1, arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
+    PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function2
@@ -181,10 +181,10 @@ PY_type_long_long(
         &arg1))
         return NULL;
 
-    long long SHCXX_rv = TypeLongLong(arg1);
+    long long SHC_rv = TypeLongLong(arg1);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("L", SHCXX_rv);
+    PyObject * SHTPy_rv = Py_BuildValue("L", SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.type_long_long
@@ -215,10 +215,10 @@ PY_function3(
     // pre_call
     bool arg = PyObject_IsTrue(SHPy_arg);
 
-    bool SHCXX_rv = Function3(arg);
+    bool SHC_rv = Function3(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHCXX_rv);
+    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function3
@@ -317,7 +317,7 @@ PY_function5_arg1_arg2(
         "arg1",
         "arg2",
         NULL };
-    double SHCXX_rv;
+    double SHC_rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -327,23 +327,23 @@ PY_function5_arg1_arg2(
         return NULL;
     switch (SH_nargs) {
     case 0:
-        SHCXX_rv = Function5();
+        SHC_rv = Function5();
         break;
     case 1:
-        SHCXX_rv = Function5(arg1);
+        SHC_rv = Function5(arg1);
         break;
     case 2:
         {
             // pre_call
             bool arg2 = PyObject_IsTrue(SHPy_arg2);
 
-            SHCXX_rv = Function5(arg1, arg2);
+            SHC_rv = Function5(arg1, arg2);
             break;
         }
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
+    PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function5
@@ -483,7 +483,7 @@ PY_overload1_num_offset_stride(
         "offset",
         "stride",
         NULL };
-    int SHCXX_rv;
+    int SHC_rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -493,18 +493,18 @@ PY_overload1_num_offset_stride(
         return NULL;
     switch (SH_nargs) {
     case 1:
-        SHCXX_rv = overload1(num);
+        SHC_rv = overload1(num);
         break;
     case 2:
-        SHCXX_rv = overload1(num, offset);
+        SHC_rv = overload1(num, offset);
         break;
     case 3:
-        SHCXX_rv = overload1(num, offset, stride);
+        SHC_rv = overload1(num, offset, stride);
         break;
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.overload1_num_offset_stride
@@ -529,7 +529,7 @@ PY_overload1_5(
         "offset",
         "stride",
         NULL };
-    int SHCXX_rv;
+    int SHC_rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -539,18 +539,18 @@ PY_overload1_5(
         return NULL;
     switch (SH_nargs) {
     case 2:
-        SHCXX_rv = overload1(type, num);
+        SHC_rv = overload1(type, num);
         break;
     case 3:
-        SHCXX_rv = overload1(type, num, offset);
+        SHC_rv = overload1(type, num, offset);
         break;
     case 4:
-        SHCXX_rv = overload1(type, num, offset, stride);
+        SHC_rv = overload1(type, num, offset, stride);
         break;
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.overload1_5
@@ -578,10 +578,10 @@ PY_typefunc(
         &arg))
         return NULL;
 
-    TypeID SHCXX_rv = typefunc(arg);
+    TypeID SHC_rv = typefunc(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.typefunc

@@ -292,10 +292,10 @@ PP_exclass2_get_name_length(
 {
 // int GetNameLength() const
 // splicer begin class.ExClass2.method.get_name_length
-    int SHCXX_rv = self->obj->GetNameLength();
+    int SHC_rv = self->obj->GetNameLength();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name_length

@@ -112,10 +112,10 @@ PP_exclass1_increment_count(
         &incr))
         return NULL;
 
-    int SHCXX_rv = self->obj->incrementCount(incr);
+    int SHC_rv = self->obj->incrementCount(incr);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass1.method.increment_count
@@ -159,10 +159,10 @@ PP_exclass1_get_name_length(
 {
 // int GetNameLength() const
 // splicer begin class.ExClass1.method.get_name_length
-    int SHCXX_rv = self->obj->GetNameLength();
+    int SHC_rv = self->obj->GetNameLength();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass1.method.get_name_length
@@ -250,10 +250,10 @@ PP_exclass1_get_value_from_int(
         &value))
         return NULL;
 
-    int SHCXX_rv = self->obj->getValue(value);
+    int SHC_rv = self->obj->getValue(value);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass1.method.get_value_from_int
@@ -277,10 +277,10 @@ PP_exclass1_get_value_1(
         &value))
         return NULL;
 
-    long SHCXX_rv = self->obj->getValue(value);
+    long SHC_rv = self->obj->getValue(value);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass1.method.get_value_1
@@ -298,10 +298,10 @@ PP_exclass1_get_addr(
 {
 // void * getAddr()
 // splicer begin class.ExClass1.method.get_addr
-    void * SHCXX_rv = self->obj->getAddr();
+    void * SHC_rv = self->obj->getAddr();
 
     // post_call
-    PyObject * SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
+    PyObject * SHTPy_rv = PyCapsule_New(SHC_rv, NULL, NULL);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass1.method.get_addr
@@ -332,10 +332,10 @@ PP_exclass1_has_addr(
     // pre_call
     bool in = PyObject_IsTrue(SHPy_in);
 
-    bool SHCXX_rv = self->obj->hasAddr(in);
+    bool SHC_rv = self->obj->hasAddr(in);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHCXX_rv);
+    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass1.method.has_addr
