@@ -92,8 +92,7 @@ PY_Function2(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
-        const_cast<char **>(SHT_kwlist),
-        &arg1, &arg2))
+        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
 
     double SHC_rv = Function2(arg1, arg2);
@@ -124,8 +123,7 @@ PY_Sum(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
-        const_cast<char **>(SHT_kwlist),
-        &SHTPy_values))
+        const_cast<char **>(SHT_kwlist), &SHTPy_values))
         return NULL;
 
     // post_parse
@@ -177,8 +175,7 @@ PY_TypeLongLong(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:TypeLongLong",
-        const_cast<char **>(SHT_kwlist),
-        &arg1))
+        const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
     long long SHC_rv = TypeLongLong(arg1);
@@ -208,8 +205,7 @@ PY_Function3(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
-        const_cast<char **>(SHT_kwlist),
-        &PyBool_Type, &SHPy_arg))
+        const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_arg))
         return NULL;
 
     // pre_call
@@ -244,8 +240,7 @@ PY_Function4a(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
-        const_cast<char **>(SHT_kwlist),
-        &arg1, &arg2))
+        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
 
     // post_parse
@@ -281,8 +276,7 @@ PY_Function4b(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4b",
-        const_cast<char **>(SHT_kwlist),
-        &arg1, &arg2))
+        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
 
     // post_parse
@@ -322,8 +316,8 @@ PY_Function5_arg1_arg2(
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|dO!:Function5",
-        const_cast<char **>(SHT_kwlist),
-        &arg1, &PyBool_Type, &SHPy_arg2))
+        const_cast<char **>(SHT_kwlist), &arg1, &PyBool_Type,
+        &SHPy_arg2))
         return NULL;
     switch (SH_nargs) {
     case 0:
@@ -363,8 +357,7 @@ PY_Function6_from_name(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:Function6",
-        const_cast<char **>(SHT_kwlist),
-        &name))
+        const_cast<char **>(SHT_kwlist), &name))
         return NULL;
 
     // post_parse
@@ -389,8 +382,7 @@ PY_Function6_from_index(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function6",
-        const_cast<char **>(SHT_kwlist),
-        &indx))
+        const_cast<char **>(SHT_kwlist), &indx))
         return NULL;
 
     Function6(indx);
@@ -416,8 +408,7 @@ PY_Function9(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function9",
-        const_cast<char **>(SHT_kwlist),
-        &arg))
+        const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
     Function9(arg);
@@ -454,8 +445,7 @@ PY_Function10_1(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "sd:Function10",
-        const_cast<char **>(SHT_kwlist),
-        &name, &arg2))
+        const_cast<char **>(SHT_kwlist), &name, &arg2))
         return NULL;
 
     // post_parse
@@ -488,8 +478,7 @@ PY_overload1_num_offset_stride(
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|ii:overload1",
-        const_cast<char **>(SHT_kwlist),
-        &num, &offset, &stride))
+        const_cast<char **>(SHT_kwlist), &num, &offset, &stride))
         return NULL;
     switch (SH_nargs) {
     case 1:
@@ -534,8 +523,7 @@ PY_overload1_5(
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di|ii:overload1",
-        const_cast<char **>(SHT_kwlist),
-        &type, &num, &offset, &stride))
+        const_cast<char **>(SHT_kwlist), &type, &num, &offset, &stride))
         return NULL;
     switch (SH_nargs) {
     case 2:
@@ -574,8 +562,7 @@ PY_typefunc(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:typefunc",
-        const_cast<char **>(SHT_kwlist),
-        &arg))
+        const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
     TypeID SHC_rv = typefunc(arg);
@@ -605,8 +592,7 @@ PY_enumfunc(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:enumfunc",
-        const_cast<char **>(SHT_kwlist),
-        &arg))
+        const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
     // post_parse
@@ -639,8 +625,7 @@ PY_useclass(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass",
-        const_cast<char **>(SHT_kwlist),
-        &PY_Class1_Type, &SHPy_arg1))
+        const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg1))
         return NULL;
 
     // post_parse

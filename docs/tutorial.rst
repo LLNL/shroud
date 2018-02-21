@@ -147,8 +147,8 @@ Integer and Real
 ^^^^^^^^^^^^^^^^
 
 Integer and real types are handled using the ``iso_c_binding`` module
-which match them directly to the corresponding types in C++. To wrap
-``Function2``::
+which match them directly to the corresponding types in C++.
+To wrap ``Function2``::
 
     double Function2(double arg1, int arg2)
     {

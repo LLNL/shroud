@@ -90,8 +90,7 @@ PY_Function2(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
-        SHT_kwlist,
-        &arg1, &arg2))
+        SHT_kwlist, &arg1, &arg2))
         return NULL;
 
     double SHC_rv = Function2(arg1, arg2);
@@ -121,7 +120,7 @@ PY_Sum(
         "values",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum", SHT_kwlist,
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum", SHT_kwlist, 
         &SHTPy_values))
         return NULL;
 
@@ -173,8 +172,7 @@ PY_Function3(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
-        SHT_kwlist,
-        &PyBool_Type, &SHPy_arg))
+        SHT_kwlist, &PyBool_Type, &SHPy_arg))
         return NULL;
 
     // pre_call
@@ -209,8 +207,7 @@ PY_Function3b(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:Function3b",
-        SHT_kwlist,
-        &PyBool_Type, &SHPy_arg1, &PyBool_Type, &SHPy_arg3))
+        SHT_kwlist, &PyBool_Type, &SHPy_arg1, &PyBool_Type, &SHPy_arg3))
         return NULL;
 
     // pre_call
@@ -249,8 +246,7 @@ PY_Function4a(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
-        SHT_kwlist,
-        &arg1, &arg2))
+        SHT_kwlist, &arg1, &arg2))
         return NULL;
 
     char * SHC_rv = Function4a(arg1, arg2);
@@ -282,8 +278,7 @@ PY_intargs(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ii:intargs",
-        SHT_kwlist,
-        &argin, &arginout))
+        SHT_kwlist, &argin, &arginout))
         return NULL;
 
     // pre_call
@@ -318,8 +313,7 @@ PY_cos_doubles(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:cos_doubles",
-        SHT_kwlist,
-        &SHTPy_in))
+        SHT_kwlist, &SHTPy_in))
         return NULL;
 
     // post_parse
@@ -374,8 +368,7 @@ PY_truncate_to_int(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:truncate_to_int",
-        SHT_kwlist,
-        &SHTPy_in))
+        SHT_kwlist, &SHTPy_in))
         return NULL;
 
     // post_parse
@@ -430,8 +423,7 @@ PY_increment(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:increment",
-        SHT_kwlist,
-        &SHTPy_array))
+        SHT_kwlist, &SHTPy_array))
         return NULL;
 
     // post_parse

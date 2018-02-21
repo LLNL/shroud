@@ -319,8 +319,7 @@ PP_exclass2_get_class1(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:get_class1",
-        const_cast<char **>(SHT_kwlist),
-        &PP_ExClass1_Type, &SHPy_in))
+        const_cast<char **>(SHT_kwlist), &PP_ExClass1_Type, &SHPy_in))
         return NULL;
 
     // post_parse
@@ -359,8 +358,7 @@ PP_exclass2_declare_1(
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|l:declare",
-        const_cast<char **>(SHT_kwlist),
-        &type, &len))
+        const_cast<char **>(SHT_kwlist), &type, &len))
         return NULL;
     switch (SH_nargs) {
     case 1:

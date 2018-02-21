@@ -99,8 +99,7 @@ PY_function3a_0(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:function3a",
-        const_cast<char **>(SHT_kwlist),
-        &i))
+        const_cast<char **>(SHT_kwlist), &i))
         return NULL;
 
     function3a(i);
@@ -122,8 +121,7 @@ PY_function3a_1(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:function3a",
-        const_cast<char **>(SHT_kwlist),
-        &i))
+        const_cast<char **>(SHT_kwlist), &i))
         return NULL;
 
     function3a(i);
@@ -149,8 +147,7 @@ PY_function4(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:function4",
-        const_cast<char **>(SHT_kwlist),
-        &rv))
+        const_cast<char **>(SHT_kwlist), &rv))
         return NULL;
 
     // post_parse

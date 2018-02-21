@@ -808,8 +808,8 @@ return 1;""", fmt)
                 wformat(
                     'if (!PyArg_ParseTupleAndKeywords'
                     '({PY_param_args}, {PY_param_kwds},\t '
-                    '"{PyArg_format}",\t {PyArg_kwlist},'
-                    '\f{PyArg_vargs}))', fmt))
+                    '"{PyArg_format}",\t {PyArg_kwlist}, '
+                    '\t{PyArg_vargs}))', fmt))
             PY_code.append('+return NULL;-')
 
         if cls:

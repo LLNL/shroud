@@ -90,8 +90,7 @@ PP_isNameValid(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:isNameValid",
-        const_cast<char **>(SHT_kwlist),
-        &name))
+        const_cast<char **>(SHT_kwlist), &name))
         return NULL;
 
     // post_parse
@@ -147,8 +146,8 @@ PP_checkBool(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:checkBool",
-        const_cast<char **>(SHT_kwlist),
-        &PyBool_Type, &SHPy_arg1, &PyBool_Type, &SHPy_arg3))
+        const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_arg1,
+        &PyBool_Type, &SHPy_arg3))
         return NULL;
 
     // pre_call
@@ -181,8 +180,7 @@ PP_test_names(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:test_names",
-        const_cast<char **>(SHT_kwlist),
-        &name))
+        const_cast<char **>(SHT_kwlist), &name))
         return NULL;
 
     // post_parse
@@ -209,8 +207,7 @@ PP_test_names_flag(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "si:test_names",
-        const_cast<char **>(SHT_kwlist),
-        &name, &flag))
+        const_cast<char **>(SHT_kwlist), &name, &flag))
         return NULL;
 
     // post_parse
@@ -244,8 +241,7 @@ PP_testoptional_2(
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|il:testoptional",
-        const_cast<char **>(SHT_kwlist),
-        &i, &j))
+        const_cast<char **>(SHT_kwlist), &i, &j))
         return NULL;
     switch (SH_nargs) {
     case 0:
@@ -301,8 +297,7 @@ PP_testmpi(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:testmpi",
-        const_cast<char **>(SHT_kwlist),
-        &comm))
+        const_cast<char **>(SHT_kwlist), &comm))
         return NULL;
 
     // post_parse
@@ -331,8 +326,8 @@ PP_testgroup1(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup1",
-        const_cast<char **>(SHT_kwlist),
-        &FillInTypeForGroup, &SHPy_grp))
+        const_cast<char **>(SHT_kwlist), &FillInTypeForGroup,
+        &SHPy_grp))
         return NULL;
 
     // post_parse
@@ -361,8 +356,8 @@ PP_testgroup2(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:testgroup2",
-        const_cast<char **>(SHT_kwlist),
-        &FillInTypeForGroup, &SHPy_grp))
+        const_cast<char **>(SHT_kwlist), &FillInTypeForGroup,
+        &SHPy_grp))
         return NULL;
 
     // post_parse
@@ -391,8 +386,7 @@ PP_FuncPtr1(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:FuncPtr1",
-        const_cast<char **>(SHT_kwlist),
-        &get))
+        const_cast<char **>(SHT_kwlist), &get))
         return NULL;
 
     FuncPtr1(get);
@@ -418,8 +412,7 @@ PP_FuncPtr2(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FuncPtr2",
-        const_cast<char **>(SHT_kwlist),
-        &get))
+        const_cast<char **>(SHT_kwlist), &get))
         return NULL;
 
     FuncPtr2(get);
@@ -445,8 +438,7 @@ PP_FuncPtr3(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FuncPtr3",
-        const_cast<char **>(SHT_kwlist),
-        &get))
+        const_cast<char **>(SHT_kwlist), &get))
         return NULL;
 
     FuncPtr3(get);
@@ -475,8 +467,7 @@ PP_FuncPtr5(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:FuncPtr5",
-        const_cast<char **>(SHT_kwlist),
-        &get))
+        const_cast<char **>(SHT_kwlist), &get))
         return NULL;
 
     FuncPtr5(get);
@@ -521,10 +512,10 @@ PP_verylongfunctionname1(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "iiiiiiiiii:verylongfunctionname1",
-        const_cast<char **>(SHT_kwlist),
-        &verylongname1, &verylongname2, &verylongname3, &verylongname4,
-        &verylongname5, &verylongname6, &verylongname7, &verylongname8,
-        &verylongname9, &verylongname10))
+        const_cast<char **>(SHT_kwlist), &verylongname1, &verylongname2,
+        &verylongname3, &verylongname4, &verylongname5, &verylongname6,
+        &verylongname7, &verylongname8, &verylongname9,
+        &verylongname10))
         return NULL;
 
     verylongfunctionname1(&verylongname1, &verylongname2,
@@ -579,10 +570,10 @@ PP_verylongfunctionname2(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "iiiiiiiiii:verylongfunctionname2",
-        const_cast<char **>(SHT_kwlist),
-        &verylongname1, &verylongname2, &verylongname3, &verylongname4,
-        &verylongname5, &verylongname6, &verylongname7, &verylongname8,
-        &verylongname9, &verylongname10))
+        const_cast<char **>(SHT_kwlist), &verylongname1, &verylongname2,
+        &verylongname3, &verylongname4, &verylongname5, &verylongname6,
+        &verylongname7, &verylongname8, &verylongname9,
+        &verylongname10))
         return NULL;
 
     int SHC_rv = verylongfunctionname2(verylongname1, verylongname2,
@@ -616,8 +607,7 @@ PP_cos_doubles(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:cos_doubles",
-        const_cast<char **>(SHT_kwlist),
-        &SHTPy_in))
+        const_cast<char **>(SHT_kwlist), &SHTPy_in))
         return NULL;
 
     // post_parse

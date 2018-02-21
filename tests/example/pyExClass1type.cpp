@@ -108,8 +108,7 @@ PP_exclass1_incrementCount(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:incrementCount",
-        const_cast<char **>(SHT_kwlist),
-        &incr))
+        const_cast<char **>(SHT_kwlist), &incr))
         return NULL;
 
     int SHC_rv = self->obj->incrementCount(incr);
@@ -246,8 +245,7 @@ PP_exclass1_getValue_from_int(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:getValue",
-        const_cast<char **>(SHT_kwlist),
-        &value))
+        const_cast<char **>(SHT_kwlist), &value))
         return NULL;
 
     int SHC_rv = self->obj->getValue(value);
@@ -273,8 +271,7 @@ PP_exclass1_getValue_1(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:getValue",
-        const_cast<char **>(SHT_kwlist),
-        &value))
+        const_cast<char **>(SHT_kwlist), &value))
         return NULL;
 
     long SHC_rv = self->obj->getValue(value);
@@ -325,8 +322,7 @@ PP_exclass1_hasAddr(
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:hasAddr",
-        const_cast<char **>(SHT_kwlist),
-        &PyBool_Type, &SHPy_in))
+        const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_in))
         return NULL;
 
     // pre_call
