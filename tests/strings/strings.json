@@ -79,7 +79,7 @@
             "LUA_header_filename_suffix": "hpp", 
             "LUA_impl_filename_suffix": "cpp", 
             "LUA_prefix": "l_", 
-            "LUA_result": "SHT_rv", 
+            "LUA_result": "rv", 
             "LUA_state_var": "L", 
             "PY_PyObject": "PyObject", 
             "PY_header_filename": "pystringsmodule.hpp", 

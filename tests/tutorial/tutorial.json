@@ -33,6 +33,11 @@
                                 "cxx_deref": ".", 
                                 "cxx_rv_decl": "Class1 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtl": {
+                                "c_var": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 0, 
@@ -258,7 +263,7 @@
             "LUA_module_name": "tutorial", 
             "LUA_module_reg": "l_Tutorial_Reg", 
             "LUA_prefix": "l_", 
-            "LUA_result": "SHT_rv", 
+            "LUA_result": "rv", 
             "LUA_state_var": "L", 
             "LUA_used_param_state": false, 
             "LUA_userdata_type": "XXLUA_userdata_type", 
@@ -412,6 +417,11 @@
                     "fmtc": {
                         "cxx_deref": ".", 
                         "cxx_rv_decl": "double SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtl": {
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -833,6 +843,11 @@
                         "cxx_rv_decl": "bool SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }, 
+                    "fmtl": {
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": "PyBool_Type", 
@@ -1093,6 +1108,11 @@
                     }
                 }, 
                 "_fmtresult": {
+                    "fmtl": {
+                        "c_var": "SHCXX_rv.c_str()", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -1414,6 +1434,11 @@
                         "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtl": {
+                        "c_var": "SHCXX_rv.c_str()", 
+                        "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -2007,6 +2032,11 @@
                     "fmtc": {
                         "cxx_deref": ".", 
                         "cxx_rv_decl": "double SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtl": {
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -3789,6 +3819,11 @@
                         "cxx_rv_decl": "int SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }, 
+                    "fmtl": {
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -4326,6 +4361,11 @@
                         "cxx_rv_decl": "int SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }, 
+                    "fmtl": {
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -4487,6 +4527,11 @@
                         "cxx_rv_decl": "TypeID SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }, 
+                    "fmtl": {
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -4601,6 +4646,11 @@
                         "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
                         "cxx_rv_decl": "EnumTypeID SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtl": {
+                        "c_var": "static_cast<int>(SHCXX_rv)", 
+                        "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -5805,6 +5855,11 @@
                         "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
                         "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtl": {
+                        "c_var": "SHCXX_rv.c_str()", 
+                        "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {

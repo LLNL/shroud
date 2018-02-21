@@ -242,7 +242,7 @@ class LibraryNode(AstNode):
             F_string_result_as_arg = '',
 
             PY_result = 'SHTPy_rv',      # Create PyObject for result
-            LUA_result = 'SHT_rv',
+            LUA_result = 'rv',
 
             LUA_prefix = 'l_',
             LUA_state_var = 'L',

@@ -556,7 +556,7 @@ LUA_prefix
 
 LUA_result
     The name of the Lua wrapper's result variable.
-    It defaults to *SHT_<rv*  (return value).
+    It defaults to *rv*  (return value).
 
 LUA_state_var
     Name of argument in Lua wrapper functions for lua_State pointer.

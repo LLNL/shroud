@@ -453,8 +453,23 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # return value
 #        fmt.rv_decl = self.std_c_decl(
 #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
-        fmt.rv_decl = ast.gen_arg_as_cxx(
-            name=fmt.LUA_result, params=None)
+
+        if CXX_subprogram == 'function':
+            fmt_result0 = node._fmtresult
+            fmt_result = fmt_result0.setdefault('fmtl', util.Scope(fmt))
+            fmt_result.cxx_var = wformat('{CXX_local}{LUA_result}', fmt_result)
+            if ast.is_pointer():
+                fmt_result.cxx_deref = '->'
+            else:
+                fmt_result.cxx_deref = '.'
+            if result_typedef.cxx_to_c:
+                fmt_result.c_var = wformat(result_typedef.cxx_to_c, fmt_result)  # if C++
+            else:
+                fmt_result.c_var = fmt_result.cxx_var
+
+            fmt.rv_decl = ast.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None)
+            fmt.rv_asgn = fmt.rv_decl + ' = '
 
         LUA_decl = []  # declare variables and pop values
         LUA_code = []  # call C++ function
@@ -559,7 +574,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # call with arguments
         fmt.cxx_call_list = ',\t '.join(cxx_call_list)
-        fmt.rv_asgn = fmt.rv_decl + ' = '
 #        LUA_code.extend(post_parse)
 
         if is_ctor:
@@ -609,17 +623,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # Compute return value
         if CXX_subprogram == 'function' and not is_ctor:
-            if ast.is_pointer():
-                fmt.cxx_deref = '->'
-            else:
-                fmt.cxx_deref = '.'
-            fmt.cxx_var = fmt.LUA_result
-            if result_typedef.cxx_to_c:
-                fmt.c_var = wformat(result_typedef.cxx_to_c, fmt)  # if C++
-            else:
-                fmt.c_var = fmt.cxx_var
             fmt.LUA_used_param_state = True
-            tmp = wformat(result_typedef.LUA_push, fmt)
+            tmp = wformat(result_typedef.LUA_push, fmt_result)
             LUA_push.append(tmp + ';')
 
         lines = self.splicer_lines
