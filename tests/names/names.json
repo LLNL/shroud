@@ -798,7 +798,7 @@
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}", 
             "PY_helper_filename_template": "py{library}helper.{PY_impl_filename_suffix}", 
             "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}", 
-            "PY_name_impl_template": "{PY_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}", 
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 

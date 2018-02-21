@@ -55,12 +55,12 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-static char PY_function1__doc__[] =
+static char PY_Function1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function1(
+PY_Function1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -72,12 +72,12 @@ PY_function1(
 // splicer end function.function1
 }
 
-static char PY_function2__doc__[] =
+static char PY_Function2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function2(
+PY_Function2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -105,12 +105,12 @@ PY_function2(
 // splicer end function.function2
 }
 
-static char PY_sum__doc__[] =
+static char PY_Sum__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_sum(
+PY_Sum(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -159,12 +159,12 @@ fail:
 // splicer end function.sum
 }
 
-static char PY_type_long_long__doc__[] =
+static char PY_TypeLongLong__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_type_long_long(
+PY_TypeLongLong(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -190,12 +190,12 @@ PY_type_long_long(
 // splicer end function.type_long_long
 }
 
-static char PY_function3__doc__[] =
+static char PY_Function3__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function3(
+PY_Function3(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -224,12 +224,12 @@ PY_function3(
 // splicer end function.function3
 }
 
-static char PY_function4a__doc__[] =
+static char PY_Function4a__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function4a(
+PY_Function4a(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -261,12 +261,12 @@ PY_function4a(
 // splicer end function.function4a
 }
 
-static char PY_function4b__doc__[] =
+static char PY_Function4b__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function4b(
+PY_Function4b(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -298,12 +298,12 @@ PY_function4b(
 // splicer end function.function4b
 }
 
-static char PY_function5_arg1_arg2__doc__[] =
+static char PY_Function5_arg1_arg2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function5_arg1_arg2(
+PY_Function5_arg1_arg2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -350,7 +350,7 @@ PY_function5_arg1_arg2(
 }
 
 static PyObject *
-PY_function6_from_name(
+PY_Function6_from_name(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -376,7 +376,7 @@ PY_function6_from_name(
 }
 
 static PyObject *
-PY_function6_from_index(
+PY_Function6_from_index(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -398,12 +398,12 @@ PY_function6_from_index(
 // splicer end function.function6_from_index
 }
 
-static char PY_function9__doc__[] =
+static char PY_Function9__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function9(
+PY_Function9(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -426,7 +426,7 @@ PY_function9(
 }
 
 static PyObject *
-PY_function10_0(
+PY_Function10_0(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -439,7 +439,7 @@ PY_function10_0(
 }
 
 static PyObject *
-PY_function10_1(
+PY_Function10_1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -651,12 +651,12 @@ PY_useclass(
 // splicer end function.useclass
 }
 
-static char PY_last_function_called__doc__[] =
+static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_last_function_called(
+PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -672,12 +672,12 @@ PY_last_function_called(
 // splicer end function.last_function_called
 }
 
-static char PY_function10__doc__[] =
+static char PY_Function10__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function10(
+PY_Function10(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
@@ -688,7 +688,7 @@ PY_function10(
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SH_nargs == 0) {
-        rvobj = PY_function10_0(self, args, kwds);
+        rvobj = PY_Function10_0(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -697,7 +697,7 @@ PY_function10(
         PyErr_Clear();
     }
     if (SH_nargs == 2) {
-        rvobj = PY_function10_1(self, args, kwds);
+        rvobj = PY_Function10_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -710,12 +710,12 @@ PY_function10(
 // splicer end function.function10
 }
 
-static char PY_function6__doc__[] =
+static char PY_Function6__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function6(
+PY_Function6(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
@@ -726,7 +726,7 @@ PY_function6(
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SH_nargs == 1) {
-        rvobj = PY_function6_from_name(self, args, kwds);
+        rvobj = PY_Function6_from_name(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -735,7 +735,7 @@ PY_function6(
         PyErr_Clear();
     }
     if (SH_nargs == 1) {
-        rvobj = PY_function6_from_index(self, args, kwds);
+        rvobj = PY_Function6_from_index(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -786,35 +786,35 @@ PY_overload1(
 // splicer end function.overload1
 }
 static PyMethodDef PY_methods[] = {
-{"Function1", (PyCFunction)PY_function1, METH_NOARGS,
-    PY_function1__doc__},
-{"Function2", (PyCFunction)PY_function2, METH_VARARGS|METH_KEYWORDS,
-    PY_function2__doc__},
-{"Sum", (PyCFunction)PY_sum, METH_VARARGS|METH_KEYWORDS, PY_sum__doc__},
-{"TypeLongLong", (PyCFunction)PY_type_long_long,
-    METH_VARARGS|METH_KEYWORDS, PY_type_long_long__doc__},
-{"Function3", (PyCFunction)PY_function3, METH_VARARGS|METH_KEYWORDS,
-    PY_function3__doc__},
-{"Function4a", (PyCFunction)PY_function4a, METH_VARARGS|METH_KEYWORDS,
-    PY_function4a__doc__},
-{"Function4b", (PyCFunction)PY_function4b, METH_VARARGS|METH_KEYWORDS,
-    PY_function4b__doc__},
-{"Function5", (PyCFunction)PY_function5_arg1_arg2,
-    METH_VARARGS|METH_KEYWORDS, PY_function5_arg1_arg2__doc__},
-{"Function9", (PyCFunction)PY_function9, METH_VARARGS|METH_KEYWORDS,
-    PY_function9__doc__},
+{"Function1", (PyCFunction)PY_Function1, METH_NOARGS,
+    PY_Function1__doc__},
+{"Function2", (PyCFunction)PY_Function2, METH_VARARGS|METH_KEYWORDS,
+    PY_Function2__doc__},
+{"Sum", (PyCFunction)PY_Sum, METH_VARARGS|METH_KEYWORDS, PY_Sum__doc__},
+{"TypeLongLong", (PyCFunction)PY_TypeLongLong,
+    METH_VARARGS|METH_KEYWORDS, PY_TypeLongLong__doc__},
+{"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,
+    PY_Function3__doc__},
+{"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,
+    PY_Function4a__doc__},
+{"Function4b", (PyCFunction)PY_Function4b, METH_VARARGS|METH_KEYWORDS,
+    PY_Function4b__doc__},
+{"Function5", (PyCFunction)PY_Function5_arg1_arg2,
+    METH_VARARGS|METH_KEYWORDS, PY_Function5_arg1_arg2__doc__},
+{"Function9", (PyCFunction)PY_Function9, METH_VARARGS|METH_KEYWORDS,
+    PY_Function9__doc__},
 {"typefunc", (PyCFunction)PY_typefunc, METH_VARARGS|METH_KEYWORDS,
     PY_typefunc__doc__},
 {"enumfunc", (PyCFunction)PY_enumfunc, METH_VARARGS|METH_KEYWORDS,
     PY_enumfunc__doc__},
 {"useclass", (PyCFunction)PY_useclass, METH_VARARGS|METH_KEYWORDS,
     PY_useclass__doc__},
-{"LastFunctionCalled", (PyCFunction)PY_last_function_called,
-    METH_NOARGS, PY_last_function_called__doc__},
-{"Function10", (PyCFunction)PY_function10, METH_VARARGS|METH_KEYWORDS,
-    PY_function10__doc__},
-{"Function6", (PyCFunction)PY_function6, METH_VARARGS|METH_KEYWORDS,
-    PY_function6__doc__},
+{"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,
+    PY_LastFunctionCalled__doc__},
+{"Function10", (PyCFunction)PY_Function10, METH_VARARGS|METH_KEYWORDS,
+    PY_Function10__doc__},
+{"Function6", (PyCFunction)PY_Function6, METH_VARARGS|METH_KEYWORDS,
+    PY_Function6__doc__},
 {"overload1", (PyCFunction)PY_overload1, METH_VARARGS|METH_KEYWORDS,
     PY_overload1__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

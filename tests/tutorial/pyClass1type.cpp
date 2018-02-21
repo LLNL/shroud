@@ -68,12 +68,12 @@ PY_class1_delete(
 // splicer end class.Class1.method.delete
 }
 
-static char PY_class1_method1__doc__[] =
+static char PY_class1_Method1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_class1_method1(
+PY_class1_Method1(
   PY_Class1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -89,8 +89,8 @@ PY_class1_method1(
 static PyMethodDef PY_Class1_methods[] = {
 {"delete", (PyCFunction)PY_class1_delete, METH_NOARGS,
     PY_class1_delete__doc__},
-{"Method1", (PyCFunction)PY_class1_method1, METH_NOARGS,
-    PY_class1_method1__doc__},
+{"Method1", (PyCFunction)PY_class1_Method1, METH_NOARGS,
+    PY_class1_Method1__doc__},
 // splicer begin class.Class1.PyMethodDef
 // splicer end class.Class1.PyMethodDef
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

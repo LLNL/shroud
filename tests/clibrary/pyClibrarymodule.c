@@ -53,12 +53,12 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-static char PY_function1__doc__[] =
+static char PY_Function1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function1(
+PY_Function1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -70,12 +70,12 @@ PY_function1(
 // splicer end function.function1
 }
 
-static char PY_function2__doc__[] =
+static char PY_Function2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function2(
+PY_Function2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -103,12 +103,12 @@ PY_function2(
 // splicer end function.function2
 }
 
-static char PY_sum__doc__[] =
+static char PY_Sum__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_sum(
+PY_Sum(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -155,12 +155,12 @@ fail:
 // splicer end function.sum
 }
 
-static char PY_function3__doc__[] =
+static char PY_Function3__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function3(
+PY_Function3(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -189,12 +189,12 @@ PY_function3(
 // splicer end function.function3
 }
 
-static char PY_function3b__doc__[] =
+static char PY_Function3b__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function3b(
+PY_Function3b(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -229,12 +229,12 @@ PY_function3b(
 // splicer end function.function3b
 }
 
-static char PY_function4a__doc__[] =
+static char PY_Function4a__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_function4a(
+PY_Function4a(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -455,17 +455,17 @@ fail:
 // splicer end function.increment
 }
 static PyMethodDef PY_methods[] = {
-{"Function1", (PyCFunction)PY_function1, METH_NOARGS,
-    PY_function1__doc__},
-{"Function2", (PyCFunction)PY_function2, METH_VARARGS|METH_KEYWORDS,
-    PY_function2__doc__},
-{"Sum", (PyCFunction)PY_sum, METH_VARARGS|METH_KEYWORDS, PY_sum__doc__},
-{"Function3", (PyCFunction)PY_function3, METH_VARARGS|METH_KEYWORDS,
-    PY_function3__doc__},
-{"Function3b", (PyCFunction)PY_function3b, METH_VARARGS|METH_KEYWORDS,
-    PY_function3b__doc__},
-{"Function4a", (PyCFunction)PY_function4a, METH_VARARGS|METH_KEYWORDS,
-    PY_function4a__doc__},
+{"Function1", (PyCFunction)PY_Function1, METH_NOARGS,
+    PY_Function1__doc__},
+{"Function2", (PyCFunction)PY_Function2, METH_VARARGS|METH_KEYWORDS,
+    PY_Function2__doc__},
+{"Sum", (PyCFunction)PY_Sum, METH_VARARGS|METH_KEYWORDS, PY_Sum__doc__},
+{"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,
+    PY_Function3__doc__},
+{"Function3b", (PyCFunction)PY_Function3b, METH_VARARGS|METH_KEYWORDS,
+    PY_Function3b__doc__},
+{"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,
+    PY_Function4a__doc__},
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
 {"cos_doubles", (PyCFunction)PY_cos_doubles, METH_VARARGS|METH_KEYWORDS,

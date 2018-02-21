@@ -196,12 +196,12 @@ PP_exclass2_dtor(
 // splicer end class.ExClass2.method.dtor
 }
 
-static char PP_exclass2_get_name__doc__[] =
+static char PP_exclass2_getName__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass2_get_name(
+PP_exclass2_getName(
   PP_ExClass2 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -217,12 +217,12 @@ PP_exclass2_get_name(
 // splicer end class.ExClass2.method.get_name
 }
 
-static char PP_exclass2_get_name2__doc__[] =
+static char PP_exclass2_getName2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass2_get_name2(
+PP_exclass2_getName2(
   PP_ExClass2 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -238,12 +238,12 @@ PP_exclass2_get_name2(
 // splicer end class.ExClass2.method.get_name2
 }
 
-static char PP_exclass2_get_name3__doc__[] =
+static char PP_exclass2_getName3__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass2_get_name3(
+PP_exclass2_getName3(
   PP_ExClass2 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -259,12 +259,12 @@ PP_exclass2_get_name3(
 // splicer end class.ExClass2.method.get_name3
 }
 
-static char PP_exclass2_get_name4__doc__[] =
+static char PP_exclass2_getName4__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass2_get_name4(
+PP_exclass2_getName4(
   PP_ExClass2 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -280,12 +280,12 @@ PP_exclass2_get_name4(
 // splicer end class.ExClass2.method.get_name4
 }
 
-static char PP_exclass2_get_name_length__doc__[] =
+static char PP_exclass2_GetNameLength__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass2_get_name_length(
+PP_exclass2_GetNameLength(
   PP_ExClass2 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -401,12 +401,12 @@ PP_exclass2_destroyall(
 // splicer end class.ExClass2.method.destroyall
 }
 
-static char PP_exclass2_get_type_id__doc__[] =
+static char PP_exclass2_getTypeID__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass2_get_type_id(
+PP_exclass2_getTypeID(
   PP_ExClass2 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -426,24 +426,24 @@ PP_exclass2_get_type_id(
 static PyMethodDef PP_ExClass2_methods[] = {
 {"dtor", (PyCFunction)PP_exclass2_dtor, METH_NOARGS,
     PP_exclass2_dtor__doc__},
-{"getName", (PyCFunction)PP_exclass2_get_name, METH_NOARGS,
-    PP_exclass2_get_name__doc__},
-{"getName2", (PyCFunction)PP_exclass2_get_name2, METH_NOARGS,
-    PP_exclass2_get_name2__doc__},
-{"getName3", (PyCFunction)PP_exclass2_get_name3, METH_NOARGS,
-    PP_exclass2_get_name3__doc__},
-{"getName4", (PyCFunction)PP_exclass2_get_name4, METH_NOARGS,
-    PP_exclass2_get_name4__doc__},
-{"GetNameLength", (PyCFunction)PP_exclass2_get_name_length, METH_NOARGS,
-    PP_exclass2_get_name_length__doc__},
+{"getName", (PyCFunction)PP_exclass2_getName, METH_NOARGS,
+    PP_exclass2_getName__doc__},
+{"getName2", (PyCFunction)PP_exclass2_getName2, METH_NOARGS,
+    PP_exclass2_getName2__doc__},
+{"getName3", (PyCFunction)PP_exclass2_getName3, METH_NOARGS,
+    PP_exclass2_getName3__doc__},
+{"getName4", (PyCFunction)PP_exclass2_getName4, METH_NOARGS,
+    PP_exclass2_getName4__doc__},
+{"GetNameLength", (PyCFunction)PP_exclass2_GetNameLength, METH_NOARGS,
+    PP_exclass2_GetNameLength__doc__},
 {"get_class1", (PyCFunction)PP_exclass2_get_class1,
     METH_VARARGS|METH_KEYWORDS, PP_exclass2_get_class1__doc__},
 {"declare", (PyCFunction)PP_exclass2_declare_1,
     METH_VARARGS|METH_KEYWORDS, PP_exclass2_declare_1__doc__},
 {"destroyall", (PyCFunction)PP_exclass2_destroyall, METH_NOARGS,
     PP_exclass2_destroyall__doc__},
-{"getTypeID", (PyCFunction)PP_exclass2_get_type_id, METH_NOARGS,
-    PP_exclass2_get_type_id__doc__},
+{"getTypeID", (PyCFunction)PP_exclass2_getTypeID, METH_NOARGS,
+    PP_exclass2_getTypeID__doc__},
 // splicer begin class.ExClass2.PyMethodDef
 // splicer end class.ExClass2.PyMethodDef
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

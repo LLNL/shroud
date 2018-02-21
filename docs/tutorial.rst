@@ -1,4 +1,4 @@
-.. Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+.. Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 .. Produced at the Lawrence Livermore National Laboratory 
 ..
 .. LLNL-CODE-738041.
@@ -38,8 +38,8 @@
 ..
 .. #######################################################################
 
-Tutorial
-========
+Fortran Tutorial
+================
 
 This tutorial will walk through the steps required to create a Fortran
 wrapper for a simple C++ library.

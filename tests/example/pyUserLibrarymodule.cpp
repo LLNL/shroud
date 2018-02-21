@@ -72,12 +72,12 @@ PP_local_function1(
 // splicer end function.local_function1
 }
 
-static char PP_is_name_valid__doc__[] =
+static char PP_isNameValid__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_is_name_valid(
+PP_isNameValid(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -106,12 +106,12 @@ PP_is_name_valid(
 // splicer end function.is_name_valid
 }
 
-static char PP_is_initialized__doc__[] =
+static char PP_isInitialized__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_is_initialized(
+PP_isInitialized(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -127,12 +127,12 @@ PP_is_initialized(
 // splicer end function.is_initialized
 }
 
-static char PP_check_bool__doc__[] =
+static char PP_checkBool__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_check_bool(
+PP_checkBool(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -373,12 +373,12 @@ PP_testgroup2(
 // splicer end function.testgroup2
 }
 
-static char PP_func_ptr1__doc__[] =
+static char PP_FuncPtr1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_func_ptr1(
+PP_FuncPtr1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -400,12 +400,12 @@ PP_func_ptr1(
 // splicer end function.func_ptr1
 }
 
-static char PP_func_ptr2__doc__[] =
+static char PP_FuncPtr2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_func_ptr2(
+PP_FuncPtr2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -427,12 +427,12 @@ PP_func_ptr2(
 // splicer end function.func_ptr2
 }
 
-static char PP_func_ptr3__doc__[] =
+static char PP_FuncPtr3__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_func_ptr3(
+PP_FuncPtr3(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -454,12 +454,12 @@ PP_func_ptr3(
 // splicer end function.func_ptr3
 }
 
-static char PP_func_ptr5__doc__[] =
+static char PP_FuncPtr5__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_func_ptr5(
+PP_FuncPtr5(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -693,12 +693,12 @@ PP_test_names(
 static PyMethodDef PP_methods[] = {
 {"local_function1", (PyCFunction)PP_local_function1, METH_NOARGS,
     PP_local_function1__doc__},
-{"isNameValid", (PyCFunction)PP_is_name_valid,
-    METH_VARARGS|METH_KEYWORDS, PP_is_name_valid__doc__},
-{"isInitialized", (PyCFunction)PP_is_initialized, METH_NOARGS,
-    PP_is_initialized__doc__},
-{"checkBool", (PyCFunction)PP_check_bool, METH_VARARGS|METH_KEYWORDS,
-    PP_check_bool__doc__},
+{"isNameValid", (PyCFunction)PP_isNameValid, METH_VARARGS|METH_KEYWORDS,
+    PP_isNameValid__doc__},
+{"isInitialized", (PyCFunction)PP_isInitialized, METH_NOARGS,
+    PP_isInitialized__doc__},
+{"checkBool", (PyCFunction)PP_checkBool, METH_VARARGS|METH_KEYWORDS,
+    PP_checkBool__doc__},
 {"testoptional", (PyCFunction)PP_testoptional_2,
     METH_VARARGS|METH_KEYWORDS, PP_testoptional_2__doc__},
 {"test_size_t", (PyCFunction)PP_test_size_t, METH_NOARGS,
@@ -709,14 +709,14 @@ static PyMethodDef PP_methods[] = {
     PP_testgroup1__doc__},
 {"testgroup2", (PyCFunction)PP_testgroup2, METH_VARARGS|METH_KEYWORDS,
     PP_testgroup2__doc__},
-{"FuncPtr1", (PyCFunction)PP_func_ptr1, METH_VARARGS|METH_KEYWORDS,
-    PP_func_ptr1__doc__},
-{"FuncPtr2", (PyCFunction)PP_func_ptr2, METH_VARARGS|METH_KEYWORDS,
-    PP_func_ptr2__doc__},
-{"FuncPtr3", (PyCFunction)PP_func_ptr3, METH_VARARGS|METH_KEYWORDS,
-    PP_func_ptr3__doc__},
-{"FuncPtr5", (PyCFunction)PP_func_ptr5, METH_VARARGS|METH_KEYWORDS,
-    PP_func_ptr5__doc__},
+{"FuncPtr1", (PyCFunction)PP_FuncPtr1, METH_VARARGS|METH_KEYWORDS,
+    PP_FuncPtr1__doc__},
+{"FuncPtr2", (PyCFunction)PP_FuncPtr2, METH_VARARGS|METH_KEYWORDS,
+    PP_FuncPtr2__doc__},
+{"FuncPtr3", (PyCFunction)PP_FuncPtr3, METH_VARARGS|METH_KEYWORDS,
+    PP_FuncPtr3__doc__},
+{"FuncPtr5", (PyCFunction)PP_FuncPtr5, METH_VARARGS|METH_KEYWORDS,
+    PP_FuncPtr5__doc__},
 {"verylongfunctionname1", (PyCFunction)PP_verylongfunctionname1,
     METH_VARARGS|METH_KEYWORDS, PP_verylongfunctionname1__doc__},
 {"verylongfunctionname2", (PyCFunction)PP_verylongfunctionname2,

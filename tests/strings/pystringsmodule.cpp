@@ -51,12 +51,12 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-static char PY_pass_char__doc__[] =
+static char PY_passChar__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_pass_char(
+PY_passChar(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -78,12 +78,12 @@ PY_pass_char(
 // splicer end function.pass_char
 }
 
-static char PY_return_char__doc__[] =
+static char PY_returnChar__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_return_char(
+PY_returnChar(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -99,12 +99,12 @@ PY_return_char(
 // splicer end function.return_char
 }
 
-static char PY_pass_char_ptr_in_out__doc__[] =
+static char PY_passCharPtrInOut__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_pass_char_ptr_in_out(
+PY_passCharPtrInOut(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -130,12 +130,12 @@ PY_pass_char_ptr_in_out(
 // splicer end function.pass_char_ptr_in_out
 }
 
-static char PY_get_char_ptr1__doc__[] =
+static char PY_getCharPtr1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_char_ptr1(
+PY_getCharPtr1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -151,12 +151,12 @@ PY_get_char_ptr1(
 // splicer end function.get_char_ptr1
 }
 
-static char PY_get_char_ptr2__doc__[] =
+static char PY_getCharPtr2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_char_ptr2(
+PY_getCharPtr2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -172,12 +172,12 @@ PY_get_char_ptr2(
 // splicer end function.get_char_ptr2
 }
 
-static char PY_get_char_ptr3__doc__[] =
+static char PY_getCharPtr3__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_char_ptr3(
+PY_getCharPtr3(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -193,12 +193,12 @@ PY_get_char_ptr3(
 // splicer end function.get_char_ptr3
 }
 
-static char PY_get_string1__doc__[] =
+static char PY_getString1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_string1(
+PY_getString1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -214,12 +214,12 @@ PY_get_string1(
 // splicer end function.get_string1
 }
 
-static char PY_get_string2__doc__[] =
+static char PY_getString2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_string2(
+PY_getString2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -235,12 +235,12 @@ PY_get_string2(
 // splicer end function.get_string2
 }
 
-static char PY_get_string3__doc__[] =
+static char PY_getString3__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_string3(
+PY_getString3(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -256,12 +256,12 @@ PY_get_string3(
 // splicer end function.get_string3
 }
 
-static char PY_get_string2_empty__doc__[] =
+static char PY_getString2_empty__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_string2_empty(
+PY_getString2_empty(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -277,12 +277,12 @@ PY_get_string2_empty(
 // splicer end function.get_string2_empty
 }
 
-static char PY_get_string5__doc__[] =
+static char PY_getString5__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_string5(
+PY_getString5(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -298,12 +298,12 @@ PY_get_string5(
 // splicer end function.get_string5
 }
 
-static char PY_get_string6__doc__[] =
+static char PY_getString6__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_string6(
+PY_getString6(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -319,12 +319,12 @@ PY_get_string6(
 // splicer end function.get_string6
 }
 
-static char PY_get_string7__doc__[] =
+static char PY_getString7__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_get_string7(
+PY_getString7(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -340,12 +340,12 @@ PY_get_string7(
 // splicer end function.get_string7
 }
 
-static char PY_accept_string_const_reference__doc__[] =
+static char PY_acceptStringConstReference__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_accept_string_const_reference(
+PY_acceptStringConstReference(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -370,12 +370,12 @@ PY_accept_string_const_reference(
 // splicer end function.accept_string_const_reference
 }
 
-static char PY_accept_string_reference_out__doc__[] =
+static char PY_acceptStringReferenceOut__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_accept_string_reference_out(
+PY_acceptStringReferenceOut(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -394,12 +394,12 @@ PY_accept_string_reference_out(
 // splicer end function.accept_string_reference_out
 }
 
-static char PY_accept_string_reference__doc__[] =
+static char PY_acceptStringReference__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_accept_string_reference(
+PY_acceptStringReference(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -428,12 +428,12 @@ PY_accept_string_reference(
 // splicer end function.accept_string_reference
 }
 
-static char PY_accept_string_pointer__doc__[] =
+static char PY_acceptStringPointer__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_accept_string_pointer(
+PY_acceptStringPointer(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -462,12 +462,12 @@ PY_accept_string_pointer(
 // splicer end function.accept_string_pointer
 }
 
-static char PY_return_strings__doc__[] =
+static char PY_returnStrings__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_return_strings(
+PY_returnStrings(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -515,12 +515,12 @@ PY_explicit1(
 // splicer end function.explicit1
 }
 
-static char PY_cpass_char__doc__[] =
+static char PY_CpassChar__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_cpass_char(
+PY_CpassChar(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
@@ -542,12 +542,12 @@ PY_cpass_char(
 // splicer end function.cpass_char
 }
 
-static char PY_creturn_char__doc__[] =
+static char PY_CreturnChar__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_creturn_char(
+PY_CreturnChar(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -563,51 +563,49 @@ PY_creturn_char(
 // splicer end function.creturn_char
 }
 static PyMethodDef PY_methods[] = {
-{"passChar", (PyCFunction)PY_pass_char, METH_VARARGS|METH_KEYWORDS,
-    PY_pass_char__doc__},
-{"returnChar", (PyCFunction)PY_return_char, METH_NOARGS,
-    PY_return_char__doc__},
-{"passCharPtrInOut", (PyCFunction)PY_pass_char_ptr_in_out,
-    METH_VARARGS|METH_KEYWORDS, PY_pass_char_ptr_in_out__doc__},
-{"getCharPtr1", (PyCFunction)PY_get_char_ptr1, METH_NOARGS,
-    PY_get_char_ptr1__doc__},
-{"getCharPtr2", (PyCFunction)PY_get_char_ptr2, METH_NOARGS,
-    PY_get_char_ptr2__doc__},
-{"getCharPtr3", (PyCFunction)PY_get_char_ptr3, METH_NOARGS,
-    PY_get_char_ptr3__doc__},
-{"getString1", (PyCFunction)PY_get_string1, METH_NOARGS,
-    PY_get_string1__doc__},
-{"getString2", (PyCFunction)PY_get_string2, METH_NOARGS,
-    PY_get_string2__doc__},
-{"getString3", (PyCFunction)PY_get_string3, METH_NOARGS,
-    PY_get_string3__doc__},
-{"getString2_empty", (PyCFunction)PY_get_string2_empty, METH_NOARGS,
-    PY_get_string2_empty__doc__},
-{"getString5", (PyCFunction)PY_get_string5, METH_NOARGS,
-    PY_get_string5__doc__},
-{"getString6", (PyCFunction)PY_get_string6, METH_NOARGS,
-    PY_get_string6__doc__},
-{"getString7", (PyCFunction)PY_get_string7, METH_NOARGS,
-    PY_get_string7__doc__},
+{"passChar", (PyCFunction)PY_passChar, METH_VARARGS|METH_KEYWORDS,
+    PY_passChar__doc__},
+{"returnChar", (PyCFunction)PY_returnChar, METH_NOARGS,
+    PY_returnChar__doc__},
+{"passCharPtrInOut", (PyCFunction)PY_passCharPtrInOut,
+    METH_VARARGS|METH_KEYWORDS, PY_passCharPtrInOut__doc__},
+{"getCharPtr1", (PyCFunction)PY_getCharPtr1, METH_NOARGS,
+    PY_getCharPtr1__doc__},
+{"getCharPtr2", (PyCFunction)PY_getCharPtr2, METH_NOARGS,
+    PY_getCharPtr2__doc__},
+{"getCharPtr3", (PyCFunction)PY_getCharPtr3, METH_NOARGS,
+    PY_getCharPtr3__doc__},
+{"getString1", (PyCFunction)PY_getString1, METH_NOARGS,
+    PY_getString1__doc__},
+{"getString2", (PyCFunction)PY_getString2, METH_NOARGS,
+    PY_getString2__doc__},
+{"getString3", (PyCFunction)PY_getString3, METH_NOARGS,
+    PY_getString3__doc__},
+{"getString2_empty", (PyCFunction)PY_getString2_empty, METH_NOARGS,
+    PY_getString2_empty__doc__},
+{"getString5", (PyCFunction)PY_getString5, METH_NOARGS,
+    PY_getString5__doc__},
+{"getString6", (PyCFunction)PY_getString6, METH_NOARGS,
+    PY_getString6__doc__},
+{"getString7", (PyCFunction)PY_getString7, METH_NOARGS,
+    PY_getString7__doc__},
 {"acceptStringConstReference",
-    (PyCFunction)PY_accept_string_const_reference,
-    METH_VARARGS|METH_KEYWORDS,
-    PY_accept_string_const_reference__doc__},
-{"acceptStringReferenceOut",
-    (PyCFunction)PY_accept_string_reference_out, METH_NOARGS,
-    PY_accept_string_reference_out__doc__},
-{"acceptStringReference", (PyCFunction)PY_accept_string_reference,
-    METH_VARARGS|METH_KEYWORDS, PY_accept_string_reference__doc__},
-{"acceptStringPointer", (PyCFunction)PY_accept_string_pointer,
-    METH_VARARGS|METH_KEYWORDS, PY_accept_string_pointer__doc__},
-{"returnStrings", (PyCFunction)PY_return_strings, METH_NOARGS,
-    PY_return_strings__doc__},
+    (PyCFunction)PY_acceptStringConstReference,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptStringConstReference__doc__},
+{"acceptStringReferenceOut", (PyCFunction)PY_acceptStringReferenceOut,
+    METH_NOARGS, PY_acceptStringReferenceOut__doc__},
+{"acceptStringReference", (PyCFunction)PY_acceptStringReference,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptStringReference__doc__},
+{"acceptStringPointer", (PyCFunction)PY_acceptStringPointer,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptStringPointer__doc__},
+{"returnStrings", (PyCFunction)PY_returnStrings, METH_NOARGS,
+    PY_returnStrings__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS,
     PY_explicit1__doc__},
-{"CpassChar", (PyCFunction)PY_cpass_char, METH_VARARGS|METH_KEYWORDS,
-    PY_cpass_char__doc__},
-{"CreturnChar", (PyCFunction)PY_creturn_char, METH_NOARGS,
-    PY_creturn_char__doc__},
+{"CpassChar", (PyCFunction)PY_CpassChar, METH_VARARGS|METH_KEYWORDS,
+    PY_CpassChar__doc__},
+{"CreturnChar", (PyCFunction)PY_CreturnChar, METH_NOARGS,
+    PY_CreturnChar__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

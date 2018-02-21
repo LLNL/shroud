@@ -579,7 +579,8 @@ PY_module_name
     Defaults to library name.
 
 PY_name_impl
-    PY_class1_method1
+    Name of Python wrapper implemenation function.
+    Defaults to *{PY_prefix}{class_prefix}{function_name}{function_suffix}*.
 
 PY_prefix
     Prefix added to Python wrapper functions.
