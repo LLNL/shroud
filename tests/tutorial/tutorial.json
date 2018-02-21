@@ -31,8 +31,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "Class1 * SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "Class1 * SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 0, 
@@ -53,11 +53,11 @@
                         "decl": "Class1() +name(new)", 
                         "declgen": "Class1() +name(new)", 
                         "format": {
-                            "C_call_code": "Class1 * SHT_rv = new Class1();", 
+                            "C_call_code": "Class1 * SHCXX_rv = new Class1();", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_new", 
                             "C_prototype": "", 
-                            "C_return_code": "return \tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_return_type": "TUT_class1 *", 
                             "F_C_call": "c_class1_new", 
                             "F_C_name": "c_class1_new", 
@@ -218,6 +218,7 @@
         ], 
         "cxx_header": "tutorial.hpp", 
         "format": {
+            "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
             "CXX_this_call": "", 
@@ -227,10 +228,11 @@
             "C_header_filename_suffix": "h", 
             "C_impl_filename": "wrapTutorial.cpp", 
             "C_impl_filename_suffix": "cpp", 
+            "C_local": "SHC_", 
             "C_post_call": "", 
             "C_pre_call": "", 
             "C_prefix": "TUT_", 
-            "C_result": "SHT_rv", 
+            "C_result": "rv", 
             "C_string_result_as_arg": "SHF_rv", 
             "C_this": "self", 
             "F_C_prefix": "c_", 
@@ -409,8 +411,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "double SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "double SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 4, 
@@ -460,11 +470,11 @@
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "double SHT_rv =\t Function2(\targ1,\t arg2);", 
+                    "C_call_code": "double SHCXX_rv =\t Function2(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "TUT_function2", 
                     "C_prototype": "double arg1,\t int arg2", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "double", 
                     "F_C_call": "c_function2", 
                     "F_C_name": "function2", 
@@ -703,8 +713,18 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "long long SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "long long SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PY_format": "L", 
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv", 
+                        "vargs": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 6, 
@@ -742,11 +762,11 @@
                 "decl": "long long TypeLongLong(long long arg1)", 
                 "declgen": "long long TypeLongLong(long long arg1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "long long SHT_rv =\t TypeLongLong(\targ1);", 
+                    "C_call_code": "long long SHCXX_rv =\t TypeLongLong(\targ1);", 
                     "C_call_list": "arg1", 
                     "C_name": "TUT_type_long_long", 
                     "C_prototype": "long long arg1", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "long long", 
                     "F_C_call": "c_type_long_long", 
                     "F_C_name": "type_long_long", 
@@ -810,8 +830,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "bool SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "bool SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": "PyBool_Type", 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 7, 
@@ -847,11 +875,11 @@
                 "decl": "bool Function3(bool arg)", 
                 "declgen": "bool Function3(bool arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "bool SHT_rv =\t Function3(\targ);", 
+                    "C_call_code": "bool SHCXX_rv =\t Function3(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function3", 
                     "C_prototype": "bool arg", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "bool", 
                     "F_C_call": "c_function3", 
                     "F_C_name": "c_function3", 
@@ -1064,6 +1092,16 @@
                         }
                     }
                 }, 
+                "_fmtresult": {
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
                 "_function_index": 9, 
                 "ast": {
                     "attrs": {
@@ -1154,7 +1192,7 @@
                             "c_var_len": "NSHF_rv", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHT_rv"
+                            "cxx_var": "SHCXX_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -1195,8 +1233,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 42, 
@@ -1281,10 +1319,10 @@
                 "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "void Function4a +len(30)(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "format": {
-                    "C_call_code": "const std::string SHT_rv =\t Function4a(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "const std::string SHCXX_rv =\t Function4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4a_bufferify", 
-                    "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                    "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
                     "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
                     "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t char * SHF_rv,\t int NSHF_rv", 
                     "C_return_code": "return;", 
@@ -1371,12 +1409,20 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "c_rv_decl": "const char * XSHT_rv", 
-                        "c_val": "SHT_rv.c_str()", 
-                        "c_var": "XSHT_rv", 
+                        "c_rv_decl": "const char * SHC_rv", 
+                        "c_val": "SHCXX_rv.c_str()", 
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 10, 
@@ -1441,13 +1487,13 @@
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t Function4b(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t Function4b(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4b", 
-                    "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
+                    "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
                     "C_pre_call": "const std::string SH_arg1(arg1);\nconst std::string SH_arg2(arg2);", 
                     "C_prototype": "const char * arg1,\t const char * arg2", 
-                    "C_return_code": "return XSHT_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
                     "F_C_name": "c_function4b", 
                     "F_string_result_as_arg": "output", 
@@ -1503,7 +1549,7 @@
                             "c_var_len": "Noutput", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHT_rv"
+                            "cxx_var": "SHCXX_rv"
                         }, 
                         "fmtf": {
                             "c_var": "output", 
@@ -1514,8 +1560,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 43, 
@@ -1598,10 +1644,10 @@
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t Function4b(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t Function4b(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4b_bufferify", 
-                    "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHT_rv.c_str());\n}", 
+                    "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHCXX_rv.c_str());\n}", 
                     "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
                     "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t char * output,\t int Noutput", 
                     "C_return_code": "return;", 
@@ -1727,8 +1773,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "double SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "double SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 32, 
@@ -1756,11 +1802,11 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHT_rv =\t Function5(\t);", 
+                    "C_call_code": "double SHCXX_rv =\t Function5(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function5", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "double", 
                     "F_C_call": "c_function5", 
                     "F_C_name": "c_function5", 
@@ -1804,8 +1850,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "double SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "double SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 33, 
@@ -1849,11 +1895,11 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHT_rv =\t Function5(\targ1);", 
+                    "C_call_code": "double SHCXX_rv =\t Function5(\targ1);", 
                     "C_call_list": "arg1", 
                     "C_name": "TUT_function5_arg1", 
                     "C_prototype": "double arg1", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "double", 
                     "F_C_call": "c_function5_arg1", 
                     "F_C_name": "c_function5_arg1", 
@@ -1960,8 +2006,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "double SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "double SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 11, 
@@ -2024,11 +2078,11 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHT_rv =\t Function5(\targ1,\t arg2);", 
+                    "C_call_code": "double SHCXX_rv =\t Function5(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "TUT_function5_arg1_arg2", 
                     "C_prototype": "double arg1,\t bool arg2", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "double", 
                     "F_C_call": "c_function5_arg1_arg2", 
                     "F_C_name": "c_function5_arg1_arg2", 
@@ -2591,8 +2645,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "int SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 36, 
@@ -2616,11 +2670,11 @@
                 "declgen": "int Function8()", 
                 "format": {
                     "CXX_template": "<int>", 
-                    "C_call_code": "int SHT_rv =\t Function8<int>(\t);", 
+                    "C_call_code": "int SHCXX_rv =\t Function8<int>(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function8_int", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_function8_int", 
                     "F_C_name": "c_function8_int", 
@@ -2649,8 +2703,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "double SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "double SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 37, 
@@ -2674,11 +2728,11 @@
                 "declgen": "double Function8()", 
                 "format": {
                     "CXX_template": "<double>", 
-                    "C_call_code": "double SHT_rv =\t Function8<double>(\t);", 
+                    "C_call_code": "double SHCXX_rv =\t Function8<double>(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function8_double", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "double", 
                     "F_C_call": "c_function8_double", 
                     "F_C_name": "c_function8_double", 
@@ -3413,8 +3467,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "int SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 38, 
@@ -3457,11 +3511,11 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\tnum);", 
+                    "C_call_code": "int SHCXX_rv =\t overload1(\tnum);", 
                     "C_call_list": "num", 
                     "C_name": "TUT_overload1_num", 
                     "C_prototype": "int num", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_overload1_num", 
                     "F_C_name": "c_overload1_num", 
@@ -3523,8 +3577,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "int SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 39, 
@@ -3582,11 +3636,11 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\tnum,\t offset);", 
+                    "C_call_code": "int SHCXX_rv =\t overload1(\tnum,\t offset);", 
                     "C_call_list": "num,\t offset", 
                     "C_name": "TUT_overload1_num_offset", 
                     "C_prototype": "int num,\t int offset", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_overload1_num_offset", 
                     "F_C_name": "c_overload1_num_offset", 
@@ -3732,8 +3786,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "int SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 19, 
@@ -3810,11 +3872,11 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\tnum,\t offset,\t stride);", 
+                    "C_call_code": "int SHCXX_rv =\t overload1(\tnum,\t offset,\t stride);", 
                     "C_call_list": "num,\t offset,\t stride", 
                     "C_name": "TUT_overload1_num_offset_stride", 
                     "C_prototype": "int num,\t int offset,\t int stride", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_overload1_num_offset_stride", 
                     "F_C_name": "c_overload1_num_offset_stride", 
@@ -3874,8 +3936,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "int SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 40, 
@@ -3927,11 +3989,11 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\ttype,\t num);", 
+                    "C_call_code": "int SHCXX_rv =\t overload1(\ttype,\t num);", 
                     "C_call_list": "type,\t num", 
                     "C_name": "TUT_overload1_3", 
                     "C_prototype": "double type,\t int num", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_overload1_3", 
                     "F_C_name": "c_overload1_3", 
@@ -4007,8 +4069,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "int SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 41, 
@@ -4075,11 +4137,11 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\ttype,\t num,\t offset);", 
+                    "C_call_code": "int SHCXX_rv =\t overload1(\ttype,\t num,\t offset);", 
                     "C_call_list": "type,\t num,\t offset", 
                     "C_name": "TUT_overload1_4", 
                     "C_prototype": "double type,\t int num,\t int offset", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_overload1_4", 
                     "F_C_name": "c_overload1_4", 
@@ -4261,8 +4323,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "int SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 20, 
@@ -4348,11 +4418,11 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t overload1(\ttype,\t num,\t offset,\t stride);", 
+                    "C_call_code": "int SHCXX_rv =\t overload1(\ttype,\t num,\t offset,\t stride);", 
                     "C_call_list": "type,\t num,\t offset,\t stride", 
                     "C_name": "TUT_overload1_5", 
                     "C_prototype": "double type,\t int num,\t int offset,\t int stride", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_overload1_5", 
                     "F_C_name": "c_overload1_5", 
@@ -4414,8 +4484,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "TypeID SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "TypeID SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 21, 
@@ -4451,11 +4529,11 @@
                 "decl": "TypeID typefunc(TypeID arg)", 
                 "declgen": "TypeID typefunc(TypeID arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "TypeID SHT_rv =\t typefunc(\targ);", 
+                    "C_call_code": "TypeID SHCXX_rv =\t typefunc(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_typefunc", 
                     "C_prototype": "int arg", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_typefunc", 
                     "F_C_name": "typefunc", 
@@ -4518,12 +4596,20 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
-                        "c_rv_decl": "int XSHT_rv", 
-                        "c_val": "static_cast<int>(SHT_rv)", 
-                        "c_var": "XSHT_rv", 
+                        "c_rv_decl": "int SHC_rv", 
+                        "c_val": "static_cast<int>(SHCXX_rv)", 
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "EnumTypeID SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "EnumTypeID SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 22, 
@@ -4559,12 +4645,12 @@
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
                 "declgen": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "EnumTypeID SHT_rv =\t enumfunc(\tstatic_cast<EnumTypeID>(arg));", 
+                    "C_call_code": "EnumTypeID SHCXX_rv =\t enumfunc(\tstatic_cast<EnumTypeID>(arg));", 
                     "C_call_list": "static_cast<EnumTypeID>(arg)", 
                     "C_name": "TUT_enumfunc", 
-                    "C_post_call": "int XSHT_rv = static_cast<int>(SHT_rv);", 
+                    "C_post_call": "int SHC_rv = static_cast<int>(SHCXX_rv);", 
                     "C_prototype": "int arg", 
-                    "C_return_code": "return XSHT_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_enumfunc", 
                     "F_C_name": "enumfunc", 
@@ -4761,8 +4847,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "int SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 47, 
@@ -4807,12 +4893,12 @@
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
                 "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))", 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t vector_sum(\tSH_arg);", 
+                    "C_call_code": "int SHCXX_rv =\t vector_sum(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_sum_bufferify", 
                     "C_pre_call": "const std::vector<int> SH_arg(arg, arg + Sarg);", 
                     "C_prototype": "const int * arg,\t long Sarg", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_name": "c_vector_sum_bufferify", 
                     "c_const": "", 
@@ -5199,8 +5285,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "int SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 50, 
@@ -5250,12 +5336,12 @@
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 }, 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t vector_string_count(\tSH_arg);", 
+                    "C_call_code": "int SHCXX_rv =\t vector_string_count(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_string_count_bufferify", 
                     "C_pre_call": "std::vector<std::string> SH_arg;\n{\n      const char * BBB = arg;\n      std::vector<std::string>::size_type\n        SHT_i = 0,\n        SHT_n = Sarg;\n    for(; SHT_i < SHT_n; SHT_i++) {\n        SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n        BBB += Narg;\n    }\n}", 
                     "C_prototype": "const char * arg,\t long Sarg,\t int Narg", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_name": "c_vector_string_count_bufferify", 
                     "c_const": "", 
@@ -5611,8 +5697,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "int SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 30, 
@@ -5686,11 +5772,11 @@
                 "decl": "int callback1(int in, int (*incr)(int));", 
                 "declgen": "int callback1(int in +intent(in)+value, int ( * incr) +intent(in)+value(int +value))", 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t callback1(\tin,\t incr);", 
+                    "C_call_code": "int SHCXX_rv =\t callback1(\tin,\t incr);", 
                     "C_call_list": "in,\t incr", 
                     "C_name": "TUT_callback1", 
                     "C_prototype": "int in,\t int ( * incr)(\tint)", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_callback1", 
                     "F_C_name": "callback1", 
@@ -5714,12 +5800,20 @@
             {
                 "_fmtresult": {
                     "fmtc": {
-                        "c_rv_decl": "const char * XSHT_rv", 
-                        "c_val": "SHT_rv.c_str()", 
-                        "c_var": "XSHT_rv", 
+                        "c_rv_decl": "const char * SHC_rv", 
+                        "c_val": "SHCXX_rv.c_str()", 
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 31, 
@@ -5747,12 +5841,12 @@
                 "decl": "const std::string& LastFunctionCalled() +pure", 
                 "declgen": "const std::string & LastFunctionCalled() +pure", 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t LastFunctionCalled(\t);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t LastFunctionCalled(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_last_function_called", 
-                    "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
+                    "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
                     "C_prototype": "", 
-                    "C_return_code": "return XSHT_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
                     "F_C_call": "c_last_function_called", 
                     "F_C_name": "c_last_function_called", 
@@ -5785,15 +5879,15 @@
                             "c_var_len": "NSHF_rv", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHT_rv"
+                            "cxx_var": "SHCXX_rv"
                         }
                     }
                 }, 
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 53, 
@@ -5838,10 +5932,10 @@
                 "decl": "const std::string& LastFunctionCalled() +pure", 
                 "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
                 "format": {
-                    "C_call_code": "const std::string & SHT_rv =\t LastFunctionCalled(\t);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t LastFunctionCalled(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_last_function_called_bufferify", 
-                    "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                    "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 

@@ -391,9 +391,9 @@ class Wrapc(util.WrapperMixin):
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
-            fmt_result.cxx_var = fmt_func.C_result
+            fmt_result.cxx_var = wformat('{CXX_local}{C_result}', fmt_result)
             fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
-                name=fmt_func.C_result, params=None, continuation=True)
+                name=fmt_result.cxx_var, params=None, continuation=True)
             if CXX_result.is_pointer():
                 fmt_result.cxx_deref = '->'
             else:
@@ -465,7 +465,7 @@ class Wrapc(util.WrapperMixin):
 
             if c_attrs.get('_is_result', False):
                 arg_call = False
-                fmt_arg.cxx_var = fmt_arg.C_result
+                fmt_arg.cxx_var = wformat('{CXX_local}{C_result}', fmt_arg)
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 stmts = 'result' + generated_suffix
@@ -616,8 +616,7 @@ class Wrapc(util.WrapperMixin):
                     if have_c_local_var:
                         raise RuntimeError  # XXX dead code
                 if have_c_local_var:
-                    # XXX need better mangling than 'X'
-                    fmt_result.c_var = 'X' + fmt_func.C_result
+                    fmt_result.c_var = wformat('{C_local}{C_result}', fmt_result)
                     fmt_result.c_rv_decl = CXX_result.gen_arg_as_c(
                         name=fmt_result.c_var, params=None, continuation=True)
                     fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
@@ -645,7 +644,7 @@ class Wrapc(util.WrapperMixin):
             need_wrapper = True
             post_call.append('{')
             post_call.append('    // C_finalize')
-            util.append_format_indent(post_call, finalize_line, fmt_func)
+            util.append_format_indent(post_call, finalize_line, fmt_result)
             post_call.append('}')
 
         if fmt_func.inlocal('C_return_code'):

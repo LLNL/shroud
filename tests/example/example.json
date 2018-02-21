@@ -37,8 +37,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "ExClass1 * SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 0, 
@@ -59,11 +59,11 @@
                         "decl": "ExClass1()", 
                         "declgen": "ExClass1()", 
                         "format": {
-                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1();", 
+                            "C_call_code": "ExClass1 * SHCXX_rv = new ExClass1();", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_ctor_0", 
                             "C_prototype": "", 
-                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_call": "c_exclass1_ctor_0", 
                             "F_C_name": "c_exclass1_ctor_0", 
@@ -117,8 +117,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "ExClass1 * SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 1, 
@@ -164,12 +164,12 @@
                             "return": "return new instance"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1(&SH_name);", 
+                            "C_call_code": "ExClass1 * SHCXX_rv = new ExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
-                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_call": "c_exclass1_ctor_1_bufferify", 
                             "F_C_name": "c_exclass1_ctor_1", 
@@ -214,8 +214,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "ExClass1 * SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 14, 
@@ -263,12 +263,12 @@
                             "return": "return new instance"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass1 * SHT_rv = new ExClass1(&SH_name);", 
+                            "C_call_code": "ExClass1 * SHCXX_rv = new ExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1_bufferify", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
                             "C_prototype": "const char * name,\t int Lname", 
-                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_name": "c_exclass1_ctor_1_bufferify", 
                             "c_const": "", 
@@ -374,8 +374,16 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "int SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "int SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 3, 
@@ -411,12 +419,12 @@
                         "decl": "int incrementCount(int incr)", 
                         "declgen": "int incrementCount(int incr +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "int SHT_rv =\t SH_this->incrementCount(\tincr);", 
+                            "C_call_code": "int SHCXX_rv =\t SH_this->incrementCount(\tincr);", 
                             "C_call_list": "incr", 
                             "C_name": "AA_exclass1_increment_count", 
                             "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t int incr", 
-                            "C_return_code": "return SHT_rv;", 
+                            "C_return_code": "return SHCXX_rv;", 
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_increment_count", 
                             "F_C_name": "c_exclass1_increment_count", 
@@ -445,12 +453,20 @@
                         "_PTR_F_C_index": 15, 
                         "_fmtresult": {
                             "fmtc": {
-                                "c_rv_decl": "const char * XSHT_rv", 
-                                "c_val": "SHT_rv.c_str()", 
-                                "c_var": "XSHT_rv", 
+                                "c_rv_decl": "const char * SHC_rv", 
+                                "c_val": "SHCXX_rv.c_str()", 
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 4, 
@@ -478,14 +494,14 @@
                         "decl": "const string& getName() const", 
                         "declgen": "const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name", 
-                            "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
-                            "C_post_call_pattern": "// C_error_pattern\nif (! isNameValid(SHT_rv)) {\n    return NULL;\n}\n", 
+                            "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
+                            "C_post_call_pattern": "// C_error_pattern\nif (! isNameValid(SHCXX_rv)) {\n    return NULL;\n}\n", 
                             "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self", 
-                            "C_return_code": "return XSHT_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass1_get_name_bufferify", 
                             "F_C_name": "c_exclass1_get_name", 
@@ -522,7 +538,7 @@
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHT_rv"
+                                    "cxx_var": "SHCXX_rv"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -533,8 +549,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 15, 
@@ -579,10 +595,10 @@
                         "decl": "const string& getName() const", 
                         "declgen": "void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_bufferify", 
-                            "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
                             "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
@@ -606,8 +622,16 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "int SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "int SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 5, 
@@ -631,13 +655,13 @@
                             "brief": "helper function for Fortran to get length of name."
                         }, 
                         "format": {
-                            "C_call_code": "int SHT_rv =\t SH_this->GetNameLength(\t);", 
+                            "C_call_code": "int SHCXX_rv =\t SH_this->GetNameLength(\t);", 
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n", 
                             "C_name": "AA_exclass1_get_name_length", 
                             "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self", 
-                            "C_return_code": "return SHT_rv;", 
+                            "C_return_code": "return SHCXX_rv;", 
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_get_name_length", 
                             "F_C_name": "c_exclass1_get_name_length", 
@@ -664,12 +688,20 @@
                         "_PTR_F_C_index": 16, 
                         "_fmtresult": {
                             "fmtc": {
-                                "c_rv_decl": "const char * XSHT_rv", 
-                                "c_val": "SHT_rv.c_str()", 
-                                "c_var": "XSHT_rv", 
+                                "c_rv_decl": "const char * SHC_rv", 
+                                "c_val": "SHCXX_rv.c_str()", 
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 6, 
@@ -695,13 +727,13 @@
                         "decl": "const string& getNameErrorCheck() const", 
                         "declgen": "const string & getNameErrorCheck() const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameErrorCheck(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorCheck(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_check", 
-                            "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
+                            "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
                             "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self", 
-                            "C_return_code": "return XSHT_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass1_get_name_error_check_bufferify", 
                             "F_C_name": "c_exclass1_get_name_error_check", 
@@ -736,7 +768,7 @@
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHT_rv"
+                                    "cxx_var": "SHCXX_rv"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -747,8 +779,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 16, 
@@ -791,10 +823,10 @@
                         "decl": "const string& getNameErrorCheck() const", 
                         "declgen": "void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameErrorCheck(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorCheck(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_check_bufferify", 
-                            "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
                             "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
@@ -817,12 +849,20 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
-                                "c_rv_decl": "const char * XSHT_rv", 
-                                "c_val": "SHT_rv.c_str()", 
-                                "c_var": "XSHT_rv", 
+                                "c_rv_decl": "const char * SHC_rv", 
+                                "c_val": "SHCXX_rv.c_str()", 
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 7, 
@@ -848,13 +888,13 @@
                         "decl": "const string& getNameArg() const", 
                         "declgen": "const string & getNameArg() const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameArg(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameArg(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_arg", 
-                            "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
+                            "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
                             "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self", 
-                            "C_return_code": "return XSHT_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "const char *", 
                             "F_C_name": "c_exclass1_get_name_arg", 
                             "F_string_result_as_arg": "name", 
@@ -882,7 +922,7 @@
                                     "c_var_len": "Nname", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHT_rv"
+                                    "cxx_var": "SHCXX_rv"
                                 }, 
                                 "fmtf": {
                                     "c_var": "name", 
@@ -893,8 +933,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 17, 
@@ -937,10 +977,10 @@
                         "decl": "const string& getNameArg() const", 
                         "declgen": "void getNameArg(string & name +intent(out)+len(Nname)) const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getNameArg(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameArg(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_arg_bufferify", 
-                            "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(name, ' ', Nname);\n} else {\n    ShroudStrCopy(name, Nname, SHT_rv.c_str());\n}", 
+                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(name, ' ', Nname);\n} else {\n    ShroudStrCopy(name, Nname, SHCXX_rv.c_str());\n}", 
                             "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self,\t char * name,\t int Nname", 
                             "C_return_code": "return;", 
@@ -1027,12 +1067,20 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
-                                "c_rv_decl": "AA_exclass2 * XSHT_rv", 
-                                "c_val": "\tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHT_rv))", 
-                                "c_var": "XSHT_rv", 
+                                "c_rv_decl": "AA_exclass2 * SHC_rv", 
+                                "c_val": "\tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": "->", 
-                                "cxx_rv_decl": "ExClass2 * SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PP_ExClass2", 
+                                "PyTypeObject": "PP_ExClass2_Type", 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": "->", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 8, 
@@ -1058,13 +1106,13 @@
                         "decl": "ExClass2 *getRoot()", 
                         "declgen": "ExClass2 * getRoot()", 
                         "format": {
-                            "C_call_code": "ExClass2 * SHT_rv =\t SH_this->getRoot(\t);", 
+                            "C_call_code": "ExClass2 * SHCXX_rv =\t SH_this->getRoot(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_root", 
-                            "C_post_call": "AA_exclass2 * XSHT_rv = \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHT_rv));", 
+                            "C_post_call": "AA_exclass2 * SHC_rv = \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self", 
-                            "C_return_code": "return XSHT_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "AA_exclass2 *", 
                             "F_C_call": "c_exclass1_get_root", 
                             "F_C_name": "c_exclass1_get_root", 
@@ -1133,8 +1181,16 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "int SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "int SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 9, 
@@ -1171,12 +1227,12 @@
                         "decl": "int  getValue(int value)", 
                         "declgen": "int getValue(int value +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "int SHT_rv =\t SH_this->getValue(\tvalue);", 
+                            "C_call_code": "int SHCXX_rv =\t SH_this->getValue(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass1_get_value_from_int", 
                             "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t int value", 
-                            "C_return_code": "return SHT_rv;", 
+                            "C_return_code": "return SHCXX_rv;", 
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_get_value_from_int", 
                             "F_C_name": "c_exclass1_get_value_from_int", 
@@ -1246,8 +1302,16 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "long SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "long SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 10, 
@@ -1284,12 +1348,12 @@
                         "decl": "long getValue(long value)", 
                         "declgen": "long getValue(long value +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "long SHT_rv =\t SH_this->getValue(\tvalue);", 
+                            "C_call_code": "long SHCXX_rv =\t SH_this->getValue(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass1_get_value_1", 
                             "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t long value", 
-                            "C_return_code": "return SHT_rv;", 
+                            "C_return_code": "return SHCXX_rv;", 
                             "C_return_type": "long", 
                             "F_C_call": "c_exclass1_get_value_1", 
                             "F_C_name": "c_exclass1_get_value_1", 
@@ -1315,8 +1379,16 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": "->", 
-                                "cxx_rv_decl": "void * SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "void * SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": "->", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 11, 
@@ -1342,12 +1414,12 @@
                         "decl": "void *getAddr()", 
                         "declgen": "void * getAddr()", 
                         "format": {
-                            "C_call_code": "void * SHT_rv =\t SH_this->getAddr(\t);", 
+                            "C_call_code": "void * SHCXX_rv =\t SH_this->getAddr(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_addr", 
                             "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self", 
-                            "C_return_code": "return SHT_rv;", 
+                            "C_return_code": "return SHCXX_rv;", 
                             "C_return_type": "void *", 
                             "F_C_call": "c_exclass1_get_addr", 
                             "F_C_name": "c_exclass1_get_addr", 
@@ -1413,8 +1485,16 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "bool SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "bool SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": "PyBool_Type", 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 12, 
@@ -1450,12 +1530,12 @@
                         "decl": "bool hasAddr(bool in)", 
                         "declgen": "bool hasAddr(bool in +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "bool SHT_rv =\t SH_this->hasAddr(\tin);", 
+                            "C_call_code": "bool SHCXX_rv =\t SH_this->hasAddr(\tin);", 
                             "C_call_list": "in", 
                             "C_name": "AA_exclass1_has_addr", 
                             "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t bool in", 
-                            "C_return_code": "return SHT_rv;", 
+                            "C_return_code": "return SHCXX_rv;", 
                             "C_return_type": "bool", 
                             "F_C_call": "c_exclass1_has_addr", 
                             "F_C_name": "c_exclass1_has_addr", 
@@ -1589,8 +1669,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "ExClass2 * SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 19, 
@@ -1634,12 +1714,12 @@
                             "brief": "constructor"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass2 * SHT_rv = new ExClass2(&SH_name);", 
+                            "C_call_code": "ExClass2 * SHCXX_rv = new ExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
-                            "C_return_code": "return \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_return_type": "AA_exclass2 *", 
                             "F_C_call": "c_exclass2_ctor_bufferify", 
                             "F_C_name": "c_exclass2_ctor", 
@@ -1681,8 +1761,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "ExClass2 * SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 39, 
@@ -1727,12 +1807,12 @@
                             "brief": "constructor"
                         }, 
                         "format": {
-                            "C_call_code": "ExClass2 * SHT_rv = new ExClass2(&SH_name);", 
+                            "C_call_code": "ExClass2 * SHCXX_rv = new ExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor_bufferify", 
                             "C_pre_call": "const std::string SH_name(name, trim_name);", 
                             "C_prototype": "const char * name,\t int trim_name", 
-                            "C_return_code": "return \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHT_rv));", 
+                            "C_return_code": "return \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_return_type": "AA_exclass2 *", 
                             "F_C_name": "c_exclass2_ctor_bufferify", 
                             "c_const": "", 
@@ -1799,12 +1879,20 @@
                         "_PTR_F_C_index": 40, 
                         "_fmtresult": {
                             "fmtc": {
-                                "c_rv_decl": "const char * XSHT_rv", 
-                                "c_val": "SHT_rv.c_str()", 
-                                "c_var": "XSHT_rv", 
+                                "c_rv_decl": "const char * SHC_rv", 
+                                "c_val": "SHCXX_rv.c_str()", 
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 21, 
@@ -1832,13 +1920,13 @@
                         "decl": "const string& getName() const", 
                         "declgen": "const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name", 
-                            "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
+                            "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
                             "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self", 
-                            "C_return_code": "return XSHT_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass2_get_name_bufferify", 
                             "F_C_name": "c_exclass2_get_name", 
@@ -1873,7 +1961,7 @@
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHT_rv"
+                                    "cxx_var": "SHCXX_rv"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -1884,8 +1972,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 40, 
@@ -1930,10 +2018,10 @@
                         "decl": "const string& getName() const", 
                         "declgen": "void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name_bufferify", 
-                            "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
                             "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
@@ -1957,12 +2045,20 @@
                         "_PTR_F_C_index": 41, 
                         "_fmtresult": {
                             "fmtc": {
-                                "c_rv_decl": "const char * XSHT_rv", 
-                                "c_val": "SHT_rv.c_str()", 
-                                "c_var": "XSHT_rv", 
+                                "c_rv_decl": "const char * SHC_rv", 
+                                "c_val": "SHCXX_rv.c_str()", 
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 22, 
@@ -1988,13 +2084,13 @@
                         "decl": "const string& getName2()", 
                         "declgen": "const string & getName2()", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName2(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName2(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name2", 
-                            "C_post_call": "const char * XSHT_rv = SHT_rv.c_str();", 
+                            "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
                             "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
-                            "C_return_code": "return XSHT_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass2_get_name2_bufferify", 
                             "F_C_name": "c_exclass2_get_name2", 
@@ -2029,7 +2125,7 @@
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHT_rv"
+                                    "cxx_var": "SHCXX_rv"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -2040,8 +2136,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 41, 
@@ -2084,10 +2180,10 @@
                         "decl": "const string& getName2()", 
                         "declgen": "void getName2(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                         "format": {
-                            "C_call_code": "const std::string & SHT_rv =\t SH_this->getName2(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName2(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name2_bufferify", 
-                            "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
                             "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
@@ -2111,12 +2207,20 @@
                         "_PTR_F_C_index": 42, 
                         "_fmtresult": {
                             "fmtc": {
-                                "c_rv_decl": "char * XSHT_rv", 
-                                "c_val": "SHT_rv.c_str()", 
-                                "c_var": "XSHT_rv", 
+                                "c_rv_decl": "char * SHC_rv", 
+                                "c_val": "SHCXX_rv.c_str()", 
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 23, 
@@ -2142,13 +2246,13 @@
                         "decl": "string& getName3() const", 
                         "declgen": "string & getName3() const", 
                         "format": {
-                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName3(\t);", 
+                            "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName3(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name3", 
-                            "C_post_call": "char * XSHT_rv = SHT_rv.c_str();", 
+                            "C_post_call": "char * SHC_rv = SHCXX_rv.c_str();", 
                             "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self", 
-                            "C_return_code": "return XSHT_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "char *", 
                             "F_C_call": "c_exclass2_get_name3_bufferify", 
                             "F_C_name": "c_exclass2_get_name3", 
@@ -2183,7 +2287,7 @@
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHT_rv"
+                                    "cxx_var": "SHCXX_rv"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -2194,8 +2298,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 42, 
@@ -2238,10 +2342,10 @@
                         "decl": "string& getName3() const", 
                         "declgen": "void getName3(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
                         "format": {
-                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName3(\t);", 
+                            "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName3(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name3_bufferify", 
-                            "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
                             "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
@@ -2265,12 +2369,20 @@
                         "_PTR_F_C_index": 43, 
                         "_fmtresult": {
                             "fmtc": {
-                                "c_rv_decl": "char * XSHT_rv", 
-                                "c_val": "SHT_rv.c_str()", 
-                                "c_var": "XSHT_rv", 
+                                "c_rv_decl": "char * SHC_rv", 
+                                "c_val": "SHCXX_rv.c_str()", 
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 24, 
@@ -2296,13 +2408,13 @@
                         "decl": "string& getName4()", 
                         "declgen": "string & getName4()", 
                         "format": {
-                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName4(\t);", 
+                            "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName4(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name4", 
-                            "C_post_call": "char * XSHT_rv = SHT_rv.c_str();", 
+                            "C_post_call": "char * SHC_rv = SHCXX_rv.c_str();", 
                             "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
-                            "C_return_code": "return XSHT_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "char *", 
                             "F_C_call": "c_exclass2_get_name4_bufferify", 
                             "F_C_name": "c_exclass2_get_name4", 
@@ -2337,7 +2449,7 @@
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHT_rv"
+                                    "cxx_var": "SHCXX_rv"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -2348,8 +2460,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "std::string & SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "std::string & SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 43, 
@@ -2392,10 +2504,10 @@
                         "decl": "string& getName4()", 
                         "declgen": "void getName4(string & SHF_rv +intent(out)+len(NSHF_rv))", 
                         "format": {
-                            "C_call_code": "std::string & SHT_rv =\t SH_this->getName4(\t);", 
+                            "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName4(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name4_bufferify", 
-                            "C_post_call": "if (SHT_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());\n}", 
+                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
                             "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
@@ -2419,8 +2531,16 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "int SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "int SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 25, 
@@ -2444,13 +2564,13 @@
                             "brief": "helper function for Fortran"
                         }, 
                         "format": {
-                            "C_call_code": "int SHT_rv =\t SH_this->GetNameLength(\t);", 
+                            "C_call_code": "int SHCXX_rv =\t SH_this->GetNameLength(\t);", 
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n", 
                             "C_name": "AA_exclass2_get_name_length", 
                             "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self", 
-                            "C_return_code": "return SHT_rv;", 
+                            "C_return_code": "return SHCXX_rv;", 
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass2_get_name_length", 
                             "F_C_name": "c_exclass2_get_name_length", 
@@ -2515,12 +2635,20 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
-                                "c_rv_decl": "AA_exclass1 * XSHT_rv", 
-                                "c_val": "\tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHT_rv))", 
-                                "c_var": "XSHT_rv", 
+                                "c_rv_decl": "AA_exclass1 * SHC_rv", 
+                                "c_val": "\tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": "->", 
-                                "cxx_rv_decl": "ExClass1 * SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PP_ExClass1", 
+                                "PyTypeObject": "PP_ExClass1_Type", 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": "->", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 26, 
@@ -2566,13 +2694,13 @@
                         "decl": "ExClass1 *get_class1(const ExClass1 *in)", 
                         "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "ExClass1 * SHT_rv =\t SH_this->get_class1(\tSH_in);", 
+                            "C_call_code": "ExClass1 * SHCXX_rv =\t SH_this->get_class1(\tSH_in);", 
                             "C_call_list": "SH_in", 
                             "C_name": "AA_exclass2_get_class1", 
-                            "C_post_call": "AA_exclass1 * XSHT_rv = \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHT_rv));", 
+                            "C_post_call": "AA_exclass1 * SHC_rv = \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));\nconst ExClass1 *SH_in = static_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tin));", 
                             "C_prototype": "AA_exclass2 * self,\t const AA_exclass1 * in", 
-                            "C_return_code": "return XSHT_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_call": "c_exclass2_get_class1", 
                             "F_C_name": "c_exclass2_get_class1", 
@@ -3191,12 +3319,20 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
-                                "c_rv_decl": "int XSHT_rv", 
-                                "c_val": "static_cast<int>(SHT_rv)", 
-                                "c_var": "XSHT_rv", 
+                                "c_rv_decl": "int SHC_rv", 
+                                "c_val": "static_cast<int>(SHCXX_rv)", 
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "TypeID SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "TypeID SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 29, 
@@ -3217,13 +3353,13 @@
                         "decl": "TypeID getTypeID() const", 
                         "declgen": "TypeID getTypeID() const", 
                         "format": {
-                            "C_call_code": "TypeID SHT_rv =\t SH_this->getTypeID(\t);", 
+                            "C_call_code": "TypeID SHCXX_rv =\t SH_this->getTypeID(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_type_id", 
-                            "C_post_call": "int XSHT_rv = static_cast<int>(SHT_rv);", 
+                            "C_post_call": "int SHC_rv = static_cast<int>(SHCXX_rv);", 
                             "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self", 
-                            "C_return_code": "return XSHT_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass2_get_type_id", 
                             "F_C_name": "c_exclass2_get_type_id", 
@@ -3672,8 +3808,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "int SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "int SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 37, 
@@ -3697,12 +3833,12 @@
                         "declgen": "int getValue()", 
                         "format": {
                             "CXX_template": "<int>", 
-                            "C_call_code": "int SHT_rv =\t SH_this->getValue<int>(\t);", 
+                            "C_call_code": "int SHCXX_rv =\t SH_this->getValue<int>(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_value_int", 
                             "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
-                            "C_return_code": "return SHT_rv;", 
+                            "C_return_code": "return SHCXX_rv;", 
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass2_get_value_int", 
                             "F_C_name": "c_exclass2_get_value_int", 
@@ -3733,8 +3869,8 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "double SHT_rv", 
-                                "cxx_var": "SHT_rv"
+                                "cxx_rv_decl": "double SHCXX_rv", 
+                                "cxx_var": "SHCXX_rv"
                             }
                         }, 
                         "_function_index": 38, 
@@ -3758,12 +3894,12 @@
                         "declgen": "double getValue()", 
                         "format": {
                             "CXX_template": "<double>", 
-                            "C_call_code": "double SHT_rv =\t SH_this->getValue<double>(\t);", 
+                            "C_call_code": "double SHCXX_rv =\t SH_this->getValue<double>(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_value_double", 
                             "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
-                            "C_return_code": "return SHT_rv;", 
+                            "C_return_code": "return SHCXX_rv;", 
                             "C_return_type": "double", 
                             "F_C_call": "c_exclass2_get_value_double", 
                             "F_C_name": "c_exclass2_get_value_double", 
@@ -3929,6 +4065,7 @@
             "#######################################################################"
         ], 
         "format": {
+            "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
             "CXX_this_call": "", 
@@ -3938,10 +4075,11 @@
             "C_header_filename_suffix": "h", 
             "C_impl_filename": "wrapUserLibrary.cpp", 
             "C_impl_filename_suffix": "cpp", 
+            "C_local": "SHC_", 
             "C_post_call": "", 
             "C_pre_call": "", 
             "C_prefix": "AA_", 
-            "C_result": "SHT_rv", 
+            "C_result": "rv", 
             "C_string_result_as_arg": "SHF_rv", 
             "C_this": "self", 
             "F_C_prefix": "c_", 
@@ -4081,8 +4219,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "bool SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "bool SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": "PyBool_Type", 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 50, 
@@ -4123,13 +4269,13 @@
                 "decl": "bool isNameValid(const std::string& name)", 
                 "declgen": "bool isNameValid(const std::string & name +intent(in))", 
                 "format": {
-                    "C_call_code": "bool SHT_rv =\t isNameValid(\tSH_name);", 
+                    "C_call_code": "bool SHCXX_rv =\t isNameValid(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_code": "return name != NULL;", 
                     "C_name": "AA_is_name_valid", 
                     "C_pre_call": "const std::string SH_name(name);", 
                     "C_prototype": "const char * name", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "bool", 
                     "F_C_call": "c_is_name_valid_bufferify", 
                     "F_C_name": "c_is_name_valid", 
@@ -4172,8 +4318,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "bool SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "bool SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 70, 
@@ -4216,13 +4362,13 @@
                 "decl": "bool isNameValid(const std::string& name)", 
                 "declgen": "bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
-                    "C_call_code": "bool SHT_rv =\t isNameValid(\tSH_name);", 
+                    "C_call_code": "bool SHCXX_rv =\t isNameValid(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_code": "return name != NULL;", 
                     "C_name": "AA_is_name_valid_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
                     "C_prototype": "const char * name,\t int Lname", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "bool", 
                     "F_C_name": "c_is_name_valid_bufferify", 
                     "F_code": "rv = name .ne. \" \"", 
@@ -4242,8 +4388,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "bool SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "bool SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": "PyBool_Type", 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 51, 
@@ -4264,11 +4418,11 @@
                 "decl": "bool isInitialized()", 
                 "declgen": "bool isInitialized()", 
                 "format": {
-                    "C_call_code": "bool SHT_rv =\t isInitialized(\t);", 
+                    "C_call_code": "bool SHCXX_rv =\t isInitialized(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_is_initialized", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "bool", 
                     "F_C_call": "c_is_initialized", 
                     "F_C_name": "c_is_initialized", 
@@ -5242,8 +5396,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "size_t SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "size_t SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 56, 
@@ -5264,11 +5426,11 @@
                 "decl": "size_t test_size_t()", 
                 "declgen": "size_t test_size_t()", 
                 "format": {
-                    "C_call_code": "size_t SHT_rv =\t test_size_t(\t);", 
+                    "C_call_code": "size_t SHCXX_rv =\t test_size_t(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_test_size_t", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "size_t", 
                     "F_C_call": "c_test_size_t", 
                     "F_C_name": "test_size_t", 
@@ -7293,8 +7455,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "int SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 66, 
@@ -7456,11 +7626,11 @@
                 "decl": "int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
                 "declgen": "int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHT_rv =\t verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
+                    "C_call_code": "int SHCXX_rv =\t verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
                     "C_name": "AA_verylongfunctionname2", 
                     "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_verylongfunctionname2", 
                     "F_C_name": "c_verylongfunctionname2", 

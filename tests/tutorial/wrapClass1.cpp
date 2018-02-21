@@ -58,8 +58,8 @@ extern "C" {
 TUT_class1 * TUT_class1_new()
 {
 // splicer begin class.Class1.method.new
-    Class1 * SHT_rv = new Class1();
-    return static_cast<TUT_class1 *>(static_cast<void *>(SHT_rv));
+    Class1 * SHCXX_rv = new Class1();
+    return static_cast<TUT_class1 *>(static_cast<void *>(SHCXX_rv));
 // splicer end class.Class1.method.new
 }
 

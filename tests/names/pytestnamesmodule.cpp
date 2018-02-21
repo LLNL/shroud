@@ -156,10 +156,10 @@ PY_function4(
     // post_parse
     const std::string SH_rv(rv);
 
-    int SHT_rv = function4(SH_rv);
+    int SHCXX_rv = function4(SH_rv);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHT_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4

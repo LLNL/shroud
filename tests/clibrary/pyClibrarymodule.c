@@ -94,10 +94,10 @@ PY_function2(
         &arg1, &arg2))
         return NULL;
 
-    double SHT_rv = Function2(arg1, arg2);
+    double SHCXX_rv = Function2(arg1, arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(SHT_rv);
+    PyObject * SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function2
@@ -180,10 +180,10 @@ PY_function3(
     // pre_call
     bool arg = PyObject_IsTrue(SHPy_arg);
 
-    bool SHT_rv = Function3(arg);
+    bool SHCXX_rv = Function3(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHT_rv);
+    PyObject * SHTPy_rv = PyBool_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function3
@@ -253,10 +253,10 @@ PY_function4a(
         &arg1, &arg2))
         return NULL;
 
-    char * SHT_rv = Function4a(arg1, arg2);
+    char * SHCXX_rv = Function4a(arg1, arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHT_rv);
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4a

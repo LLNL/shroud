@@ -536,8 +536,20 @@ return 1;""", fmt)
 #            is_const = False
 #        else:
 #            is_const = None
-        fmt.C_rv_decl = ast.gen_arg_as_cxx(
-            name=fmt.C_result, params=None)  # return value
+        if CXX_subprogram == 'function':
+            fmt_result0 = node._fmtresult
+            fmt_result = fmt_result0.setdefault('fmtpy', util.Scope(fmt)) # fmt_func
+            fmt_result.cxx_var = wformat('{CXX_local}{C_result}', fmt_result)
+            CXX_result = ast
+            fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None, continuation=True)
+            if CXX_result.is_pointer():
+                fmt_result.cxx_deref = '->'
+            else:
+                fmt_result.cxx_deref = '.'
+            fmt_result.c_var = fmt_result.cxx_var
+            fmt_result.py_var = fmt.PY_result
+#            fmt_pattern = fmt_result
 
         PY_code = []
 
@@ -828,10 +840,12 @@ return 1;""", fmt)
         # If multiple calls, declare return value once
         # Else delare on call line.
         if found_default:
-            fmt.PY_rv_asgn = fmt.C_result + ' = '
+            if CXX_subprogram == 'function':
+                fmt.PY_rv_asgn = fmt_result.cxx_var + ' = '
             PY_code.append('switch (SH_nargs) {')
         else:
-            fmt.PY_rv_asgn = fmt.C_rv_decl + ' = '
+            if CXX_subprogram == 'function':
+                fmt.PY_rv_asgn = fmt.C_rv_decl + ' = '
         need_rv = False
 
         # build up code for a function
@@ -922,17 +936,10 @@ return 1;""", fmt)
 
         # Compute return value
         if CXX_subprogram == 'function':
-            if ast.is_pointer():
-                fmt.cxx_deref = '->'
-            else:
-                fmt.cxx_deref = '.'
-            fmt.c_var = fmt.C_result
-            fmt.cxx_var = fmt.C_result
-            fmt.py_var = fmt.PY_result
             # XXX - wrapc uses result instead of intent_out
             result_blk = result_typedef.py_statements.get('intent_out', {})
             ttt = self.intent_out(result_typedef, result_blk,
-                                  fmt, post_call)
+                                  fmt_result, post_call)
             # Add result to front of result tuple
             build_tuples.insert(0, ttt)
 

@@ -87,8 +87,8 @@ bool AA_is_name_valid_bufferify(const char * name, int Lname)
 bool AA_is_initialized()
 {
 // splicer begin function.is_initialized
-    bool SHT_rv = isInitialized();
-    return SHT_rv;
+    bool SHCXX_rv = isInitialized();
+    return SHCXX_rv;
 // splicer end function.is_initialized
 }
 
@@ -182,8 +182,8 @@ void AA_testoptional_2(int i, long j)
 size_t AA_test_size_t()
 {
 // splicer begin function.test_size_t
-    size_t SHT_rv = test_size_t();
-    return SHT_rv;
+    size_t SHCXX_rv = test_size_t();
+    return SHCXX_rv;
 // splicer end function.test_size_t
 }
 
@@ -315,10 +315,10 @@ int AA_verylongfunctionname2(int verylongname1, int verylongname2,
     int verylongname9, int verylongname10)
 {
 // splicer begin function.verylongfunctionname2
-    int SHT_rv = verylongfunctionname2(verylongname1, verylongname2,
+    int SHCXX_rv = verylongfunctionname2(verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
         verylongname7, verylongname8, verylongname9, verylongname10);
-    return SHT_rv;
+    return SHCXX_rv;
 // splicer end function.verylongfunctionname2
 }
 

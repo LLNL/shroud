@@ -87,7 +87,7 @@ functions:
     C_finalize_buf: |
        // Function4a allocates memory which must be released after it is copied
        // into the Fortran argument or else it will leak.
-       free({C_result});
+       free({cxx_var});
 # +pure
 
 ##-- decl: const std::string& Function4b(

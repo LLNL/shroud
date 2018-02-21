@@ -43,6 +43,7 @@
             "#######################################################################"
         ], 
         "format": {
+            "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
             "CXX_this_call": "", 
@@ -52,10 +53,11 @@
             "C_header_filename_suffix": "h", 
             "C_impl_filename": "wrapdefault_library.cpp", 
             "C_impl_filename_suffix": "cpp", 
+            "C_local": "SHC_", 
             "C_post_call": "", 
             "C_pre_call": "", 
             "C_prefix": "DEF_", 
-            "C_result": "SHT_rv", 
+            "C_result": "rv", 
             "C_string_result_as_arg": "SHF_rv", 
             "C_this": "self", 
             "F_C_prefix": "c_", 

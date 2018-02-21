@@ -44,6 +44,7 @@
         ], 
         "cxx_header": "interface.h", 
         "format": {
+            "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
             "CXX_this_call": "", 
@@ -53,10 +54,11 @@
             "C_header_filename_suffix": "h", 
             "C_impl_filename": "wrapInterface.c", 
             "C_impl_filename_suffix": "c", 
+            "C_local": "SHC_", 
             "C_post_call": "", 
             "C_pre_call": "", 
             "C_prefix": "INT_", 
-            "C_result": "SHT_rv", 
+            "C_result": "rv", 
             "C_string_result_as_arg": "SHF_rv", 
             "C_this": "self", 
             "F_C_prefix": "c_", 
@@ -169,8 +171,8 @@
                 "_fmtresult": {
                     "fmtc": {
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "double SHT_rv", 
-                        "cxx_var": "SHT_rv"
+                        "cxx_rv_decl": "double SHCXX_rv", 
+                        "cxx_var": "SHCXX_rv"
                     }
                 }, 
                 "_function_index": 1, 
@@ -220,11 +222,11 @@
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "double SHT_rv =\t Function2(\targ1,\t arg2);", 
+                    "C_call_code": "double SHCXX_rv =\t Function2(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "Function2", 
                     "C_prototype": "double arg1,\t int arg2", 
-                    "C_return_code": "return SHT_rv;", 
+                    "C_return_code": "return SHCXX_rv;", 
                     "C_return_type": "double", 
                     "F_C_call": "c_function2", 
                     "F_C_name": "function2", 

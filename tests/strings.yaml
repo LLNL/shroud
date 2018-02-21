@@ -158,7 +158,7 @@ functions:
       It is the caller's responsibility to release the string
       created by the C++ library.
   format:
-    C_finalize_buf: delete {C_result};
+    C_finalize_buf: delete {cxx_var};
 
 ########################################
 

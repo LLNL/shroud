@@ -454,10 +454,14 @@ C_impl_filename_suffix:
    Defaults to ``cpp``.
    Other useful values might be ``cc`` or ``cxx``.
 
+C_local
+    Prefix for C compatible local variable.
+    Defaults to *SHC_*.
+
 C_result
     The name of the C wrapper's result variable.
     It must not be the same as any of the routines arguments.
-    It defaults to *{c_temp}_rv* -- ``SHT_rv`` (Shroud temporary return value).
+    It defaults to *rv*.
 
 C_string_result_as_arg
     The name of the output argument for string results.
@@ -472,6 +476,10 @@ c_temp
 C_this
     Name of the C object argument.  Defaults to ``self``.
     It may be necessary to set this if it conflicts with an argument name.
+
+CXX_local
+    Prefix for C++ compatible local variable.
+    Defaults to *SHCXX_*.
 
 CXX_this
     Name of the C++ object pointer set from the *C_this* argument.
@@ -668,6 +676,8 @@ C_finalize
     User supplied code to perform any function finialization.
     Code added after all of the argument's *post_call* code.
     Can be used to free memory in the C wrapper.
+
+.. evaluated in context of fmt_result
 
 C_finalize_buf
     Identical to **C_finalize** but only applies to the buffer version of the

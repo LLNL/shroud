@@ -219,14 +219,16 @@ class LibraryNode(AstNode):
             parent=None,
 
             C_bufferify_suffix='_bufferify',
-            C_prefix = self.library.upper()[:3] + '_',
-            C_result = 'SHT_rv',        # {c_temp}_rv   return valuex
+            C_prefix = self.library.upper()[:3] + '_',  # function prefix
+            C_result = 'rv',        # return value
             c_temp = 'SHT_',
+            C_local = 'SHC_',
             C_this = 'self',
 
             C_custom_return_type = '',  # assume no value
 
             CXX_this = 'SH_this',
+            CXX_local = 'SHCXX_',
 
             F_C_prefix='c_',
             F_derived_member = 'voidptr',
