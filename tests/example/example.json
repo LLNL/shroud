@@ -36,6 +36,7 @@
                         ], 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
@@ -121,6 +122,7 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
@@ -223,6 +225,7 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
@@ -1728,6 +1731,7 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
@@ -1825,6 +1829,7 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"

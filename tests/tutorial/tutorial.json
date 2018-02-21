@@ -30,6 +30,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_rv_decl": "Class1 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"

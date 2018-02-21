@@ -391,9 +391,19 @@ class Wrapc(util.WrapperMixin):
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
-            fmt_result.cxx_var = wformat('{CXX_local}{C_result}', fmt_result)
-            fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
-                name=fmt_result.cxx_var, params=None, continuation=True)
+            if self.language == 'c':
+                fmt_result.c_var = wformat('{C_local}{C_result}', fmt_result)
+                # cxx_var is used in some typemaps
+                fmt_result.cxx_var = fmt_result.c_var
+                fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_c(
+                    name=fmt_result.c_var, params=None, continuation=True)
+            else:
+                fmt_result.cxx_var = wformat('{CXX_local}{C_result}', fmt_result)
+                fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
+                    name=fmt_result.cxx_var, params=None, continuation=True)
+                if result_typedef.cxx_to_c is not None:
+                    # c_var is used when convert to C before return
+                    fmt_result.c_var = wformat('{C_local}{C_result}', fmt_result)
             if CXX_result.is_pointer():
                 fmt_result.cxx_deref = '->'
             else:
@@ -465,7 +475,7 @@ class Wrapc(util.WrapperMixin):
 
             if c_attrs.get('_is_result', False):
                 arg_call = False
-                fmt_arg.cxx_var = wformat('{CXX_local}{C_result}', fmt_arg)
+                fmt_arg.cxx_var = fmt_result.cxx_var
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 stmts = 'result' + generated_suffix
@@ -607,16 +617,11 @@ class Wrapc(util.WrapperMixin):
                 # The result is not passed back in an argument
                 c_statements = result_typedef.c_statements
                 intent_blk = c_statements.get('result', {})
-                if result_typedef.cxx_to_c is not None:
+                if self.language == 'c':
+                    pass
+                elif result_typedef.cxx_to_c is not None:
                     # Make intermediate c_var value if a conversion
                     # is required i.e. not the same as cxx_var.
-                    have_c_local_var = True
-                else:
-                    have_c_local_var = intent_blk.get('c_local_var', False)
-                    if have_c_local_var:
-                        raise RuntimeError  # XXX dead code
-                if have_c_local_var:
-                    fmt_result.c_var = wformat('{C_local}{C_result}', fmt_result)
                     fmt_result.c_rv_decl = CXX_result.gen_arg_as_c(
                         name=fmt_result.c_var, params=None, continuation=True)
                     fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)

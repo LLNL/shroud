@@ -170,9 +170,10 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "double SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_rv_decl": "double SHC_rv", 
+                        "cxx_var": "SHC_rv"
                     }
                 }, 
                 "_function_index": 1, 
@@ -222,11 +223,11 @@
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "double SHCXX_rv =\t Function2(\targ1,\t arg2);", 
+                    "C_call_code": "double SHC_rv =\t Function2(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "Function2", 
                     "C_prototype": "double arg1,\t int arg2", 
-                    "C_return_code": "return SHCXX_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "double", 
                     "F_C_call": "c_function2", 
                     "F_C_name": "function2", 
