@@ -384,7 +384,6 @@ class Wrapc(util.WrapperMixin):
         else:
             fmt_func.c_const = ''
 
-        return_lang = '{cxx_var}'  # Assume C and C++ types are compatiable
         if CXX_subprogram == 'subroutine':
             fmt_result = fmt_func
             fmt_pattern = fmt_func
@@ -639,7 +638,6 @@ class Wrapc(util.WrapperMixin):
                         name=fmt_result.c_var, params=None, continuation=True)
                     fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
                     append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
-                    return_lang = '{c_var}'
 
                 cmd_list = intent_blk.get('post_call', [])
                 for cmd in cmd_list:
@@ -652,8 +650,7 @@ class Wrapc(util.WrapperMixin):
             if subprogram == 'function':
                 # Note: A C function may be converted into a Fortran subroutine
                 # subprogram when the result is returned in an argument.
-                C_return_code = 'return {};'.format(
-                    wformat(return_lang, fmt_result))
+                C_return_code = wformat('return {c_var};', fmt_result)
 
         if fmt_func.inlocal('C_finalize' + generated_suffix):
             # maybe check C_finalize up chain for accumulative code
