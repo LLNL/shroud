@@ -250,12 +250,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 arg_typedef = typemap.Typedef.lookup(arg.typename)
                 attrs = arg.attrs
                 if arg.init is not None:
-                    all_calls.append(lua_function(
+                    all_calls.append(LuaFunction(
                         function, CXX_subprogram, in_args[:], out_args))
                     found_default = True
                 in_args.append(arg)
             # no defaults, use all arguments
-            all_calls.append(lua_function(
+            all_calls.append(LuaFunction(
                 function, CXX_subprogram, in_args[:], out_args))
             maxargs = max(maxargs, len(in_args))
 
@@ -371,6 +371,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         body = self.body_lines
         body.append('')
+        if node.options.debug:
+            for node in overloads:
+                body.append('// ' + node.declgen)
         if fmt.LUA_used_param_state:
             append_format(body,
                           'static int {LUA_name_impl}'
@@ -732,7 +735,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         self.write_output_file(fname, self.config.lua_dir, output)
 
 
-class lua_function(object):
+class LuaFunction(object):
     """Gather information used to write a wrapper for
     and overloaded/default-argument function
     """

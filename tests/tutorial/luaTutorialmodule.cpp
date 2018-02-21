@@ -56,6 +56,7 @@ namespace tutorial {
 // splicer begin C_definition
 // splicer end C_definition
 
+// Class1() +name(new)
 static int l_class1_new(lua_State *L)
 {
     // splicer begin class.Class1.method.new
@@ -69,6 +70,7 @@ static int l_class1_new(lua_State *L)
     // splicer end class.Class1.method.new
 }
 
+// ~Class1() +name(delete)
 static int l_class1_delete(lua_State *L)
 {
     // splicer begin class.Class1.method.__gc
@@ -80,6 +82,7 @@ static int l_class1_delete(lua_State *L)
     // splicer end class.Class1.method.__gc
 }
 
+// void Method1()
 static int l_class1_method1(lua_State *L)
 {
     // splicer begin class.Class1.method.Method1
@@ -101,6 +104,7 @@ static const struct luaL_Reg l_Class1_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
+// void Function1()
 static int l_function1(lua_State *)
 {
     // splicer begin function.Function1
@@ -109,6 +113,7 @@ static int l_function1(lua_State *)
     // splicer end function.Function1
 }
 
+// double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 static int l_function2(lua_State *L)
 {
     // splicer begin function.Function2
@@ -120,6 +125,7 @@ static int l_function2(lua_State *L)
     // splicer end function.Function2
 }
 
+// bool Function3(bool arg +intent(in)+value)
 static int l_function3(lua_State *L)
 {
     // splicer begin function.Function3
@@ -130,6 +136,7 @@ static int l_function3(lua_State *L)
     // splicer end function.Function3
 }
 
+// const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
 static int l_function4a(lua_State *L)
 {
     // splicer begin function.Function4a
@@ -141,6 +148,7 @@ static int l_function4a(lua_State *L)
     // splicer end function.Function4a
 }
 
+// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
 static int l_function4b(lua_State *L)
 {
     // splicer begin function.Function4b
@@ -152,6 +160,7 @@ static int l_function4b(lua_State *L)
     // splicer end function.Function4b
 }
 
+// double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
 static int l_function5(lua_State *L)
 {
     // splicer begin function.Function5
@@ -199,6 +208,8 @@ static int l_function5(lua_State *L)
     // splicer end function.Function5
 }
 
+// void Function6(const std::string & name +intent(in))
+// void Function6(int indx +intent(in)+value)
 static int l_function6(lua_State *L)
 {
     // splicer begin function.Function6
@@ -229,6 +240,7 @@ static int l_function6(lua_State *L)
     // splicer end function.Function6
 }
 
+// void Function9(double arg +intent(in)+value)
 static int l_function9(lua_State *L)
 {
     // splicer begin function.Function9
@@ -238,6 +250,8 @@ static int l_function9(lua_State *L)
     // splicer end function.Function9
 }
 
+// void Function10()
+// void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
 static int l_function10(lua_State *L)
 {
     // splicer begin function.Function10
@@ -272,6 +286,8 @@ static int l_function10(lua_State *L)
     // splicer end function.Function10
 }
 
+// int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+// int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
 static int l_overload1(lua_State *L)
 {
     // splicer begin function.overload1
@@ -364,6 +380,7 @@ static int l_overload1(lua_State *L)
     // splicer end function.overload1
 }
 
+// TypeID typefunc(TypeID arg +intent(in)+value)
 static int l_typefunc(lua_State *L)
 {
     // splicer begin function.typefunc
@@ -374,6 +391,7 @@ static int l_typefunc(lua_State *L)
     // splicer end function.typefunc
 }
 
+// EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
 static int l_enumfunc(lua_State *L)
 {
     // splicer begin function.enumfunc
@@ -384,6 +402,7 @@ static int l_enumfunc(lua_State *L)
     // splicer end function.enumfunc
 }
 
+// const std::string & LastFunctionCalled() +pure
 static int l_last_function_called(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled

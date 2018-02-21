@@ -55,6 +55,8 @@ namespace nested {
 // splicer begin C_definition
 // splicer end C_definition
 
+// ExClass1()
+// ExClass1(const string * name +intent(in))
 static int l_exclass1_ctor(lua_State *L)
 {
     // splicer begin class.ExClass1.method.ctor
@@ -96,6 +98,7 @@ static int l_exclass1_ctor(lua_State *L)
     // splicer end class.ExClass1.method.ctor
 }
 
+// ~ExClass1()
 static int l_exclass1_dtor(lua_State *L)
 {
     // splicer begin class.ExClass1.method.__gc
@@ -107,6 +110,7 @@ static int l_exclass1_dtor(lua_State *L)
     // splicer end class.ExClass1.method.__gc
 }
 
+// int incrementCount(int incr +intent(in)+value)
 static int l_exclass1_increment_count(lua_State *L)
 {
     // splicer begin class.ExClass1.method.incrementCount
@@ -119,6 +123,7 @@ static int l_exclass1_increment_count(lua_State *L)
     // splicer end class.ExClass1.method.incrementCount
 }
 
+// const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const
 static int l_exclass1_get_name(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getName
@@ -130,6 +135,7 @@ static int l_exclass1_get_name(lua_State *L)
     // splicer end class.ExClass1.method.getName
 }
 
+// int GetNameLength() const
 static int l_exclass1_get_name_length(lua_State *L)
 {
     // splicer begin class.ExClass1.method.GetNameLength
@@ -141,6 +147,7 @@ static int l_exclass1_get_name_length(lua_State *L)
     // splicer end class.ExClass1.method.GetNameLength
 }
 
+// const string & getNameErrorCheck() const
 static int l_exclass1_get_name_error_check(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameErrorCheck
@@ -152,6 +159,7 @@ static int l_exclass1_get_name_error_check(lua_State *L)
     // splicer end class.ExClass1.method.getNameErrorCheck
 }
 
+// const string & getNameArg() const
 static int l_exclass1_get_name_arg(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameArg
@@ -163,6 +171,7 @@ static int l_exclass1_get_name_arg(lua_State *L)
     // splicer end class.ExClass1.method.getNameArg
 }
 
+// ExClass2 * getRoot()
 static int l_exclass1_get_root(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getRoot
@@ -174,6 +183,8 @@ static int l_exclass1_get_root(lua_State *L)
     // splicer end class.ExClass1.method.getRoot
 }
 
+// int getValue(int value +intent(in)+value)
+// long getValue(long value +intent(in)+value)
 static int l_exclass1_get_value(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getValue
@@ -210,6 +221,7 @@ static int l_exclass1_get_value(lua_State *L)
     // splicer end class.ExClass1.method.getValue
 }
 
+// void * getAddr()
 static int l_exclass1_get_addr(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getAddr
@@ -221,6 +233,7 @@ static int l_exclass1_get_addr(lua_State *L)
     // splicer end class.ExClass1.method.getAddr
 }
 
+// bool hasAddr(bool in +intent(in)+value)
 static int l_exclass1_has_addr(lua_State *L)
 {
     // splicer begin class.ExClass1.method.hasAddr
@@ -233,6 +246,7 @@ static int l_exclass1_has_addr(lua_State *L)
     // splicer end class.ExClass1.method.hasAddr
 }
 
+// void SplicerSpecial()
 static int l_exclass1_splicer_special(lua_State *L)
 {
     // splicer begin class.ExClass1.method.SplicerSpecial
@@ -263,6 +277,7 @@ static const struct luaL_Reg l_ExClass1_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
+// ExClass2(const string * name +intent(in)+len_trim(trim_name))
 static int l_exclass2_ctor(lua_State *L)
 {
     // splicer begin class.ExClass2.method.ctor
@@ -277,6 +292,7 @@ static int l_exclass2_ctor(lua_State *L)
     // splicer end class.ExClass2.method.ctor
 }
 
+// ~ExClass2()
 static int l_exclass2_dtor(lua_State *L)
 {
     // splicer begin class.ExClass2.method.__gc
@@ -288,6 +304,7 @@ static int l_exclass2_dtor(lua_State *L)
     // splicer end class.ExClass2.method.__gc
 }
 
+// const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 static int l_exclass2_get_name(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName
@@ -299,6 +316,7 @@ static int l_exclass2_get_name(lua_State *L)
     // splicer end class.ExClass2.method.getName
 }
 
+// const string & getName2()
 static int l_exclass2_get_name2(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName2
@@ -310,6 +328,7 @@ static int l_exclass2_get_name2(lua_State *L)
     // splicer end class.ExClass2.method.getName2
 }
 
+// string & getName3() const
 static int l_exclass2_get_name3(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName3
@@ -321,6 +340,7 @@ static int l_exclass2_get_name3(lua_State *L)
     // splicer end class.ExClass2.method.getName3
 }
 
+// string & getName4()
 static int l_exclass2_get_name4(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName4
@@ -332,6 +352,7 @@ static int l_exclass2_get_name4(lua_State *L)
     // splicer end class.ExClass2.method.getName4
 }
 
+// int GetNameLength() const
 static int l_exclass2_get_name_length(lua_State *L)
 {
     // splicer begin class.ExClass2.method.GetNameLength
@@ -343,6 +364,7 @@ static int l_exclass2_get_name_length(lua_State *L)
     // splicer end class.ExClass2.method.GetNameLength
 }
 
+// ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
 static int l_exclass2_get_class1(lua_State *L)
 {
     // splicer begin class.ExClass2.method.get_class1
@@ -357,6 +379,7 @@ static int l_exclass2_get_class1(lua_State *L)
     // splicer end class.ExClass2.method.get_class1
 }
 
+// void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
 static int l_exclass2_declare(lua_State *L)
 {
     // splicer begin class.ExClass2.method.declare
@@ -399,6 +422,7 @@ static int l_exclass2_declare(lua_State *L)
     // splicer end class.ExClass2.method.declare
 }
 
+// void destroyall()
 static int l_exclass2_destroyall(lua_State *L)
 {
     // splicer begin class.ExClass2.method.destroyall
@@ -409,6 +433,7 @@ static int l_exclass2_destroyall(lua_State *L)
     // splicer end class.ExClass2.method.destroyall
 }
 
+// TypeID getTypeID() const
 static int l_exclass2_get_type_id(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getTypeID
@@ -439,6 +464,7 @@ static const struct luaL_Reg l_ExClass2_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
+// void exfunc()
 static int l_exclass3_exfunc(lua_State *L)
 {
     // splicer begin class.ExClass3.method.exfunc
@@ -459,6 +485,7 @@ static const struct luaL_Reg l_ExClass3_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
+// void local_function1()
 static int l_local_function1(lua_State *)
 {
     // splicer begin function.local_function1
@@ -467,6 +494,7 @@ static int l_local_function1(lua_State *)
     // splicer end function.local_function1
 }
 
+// bool isNameValid(const std::string & name +intent(in))
 static int l_is_name_valid(lua_State *L)
 {
     // splicer begin function.isNameValid
@@ -477,6 +505,7 @@ static int l_is_name_valid(lua_State *L)
     // splicer end function.isNameValid
 }
 
+// bool isInitialized()
 static int l_is_initialized(lua_State *L)
 {
     // splicer begin function.isInitialized
@@ -486,6 +515,7 @@ static int l_is_initialized(lua_State *L)
     // splicer end function.isInitialized
 }
 
+// void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 static int l_check_bool(lua_State *L)
 {
     // splicer begin function.checkBool
@@ -499,6 +529,8 @@ static int l_check_bool(lua_State *L)
     // splicer end function.checkBool
 }
 
+// void test_names(const std::string & name +intent(in))
+// void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
 static int l_test_names(lua_State *L)
 {
     // splicer begin function.test_names
@@ -537,6 +569,7 @@ static int l_test_names(lua_State *L)
     // splicer end function.test_names
 }
 
+// void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
 static int l_testoptional(lua_State *L)
 {
     // splicer begin function.testoptional
@@ -581,6 +614,7 @@ static int l_testoptional(lua_State *L)
     // splicer end function.testoptional
 }
 
+// size_t test_size_t()
 static int l_test_size_t(lua_State *L)
 {
     // splicer begin function.test_size_t
@@ -590,6 +624,7 @@ static int l_test_size_t(lua_State *L)
     // splicer end function.test_size_t
 }
 
+// void testmpi(MPI_Comm comm +intent(in)+value)
 static int l_testmpi(lua_State *L)
 {
     // splicer begin function.testmpi
@@ -599,6 +634,7 @@ static int l_testmpi(lua_State *L)
     // splicer end function.testmpi
 }
 
+// void testgroup1(DataGroup * grp +intent(in)+value)
 static int l_testgroup1(lua_State *L)
 {
     // splicer begin function.testgroup1
@@ -610,6 +646,7 @@ static int l_testgroup1(lua_State *L)
     // splicer end function.testgroup1
 }
 
+// void testgroup2(const DataGroup * grp +intent(in)+value)
 static int l_testgroup2(lua_State *L)
 {
     // splicer begin function.testgroup2
@@ -621,6 +658,7 @@ static int l_testgroup2(lua_State *L)
     // splicer end function.testgroup2
 }
 
+// void FuncPtr1(void ( * get) +intent(in)+value())
 static int l_func_ptr1(lua_State *L)
 {
     // splicer begin function.FuncPtr1
@@ -630,6 +668,7 @@ static int l_func_ptr1(lua_State *L)
     // splicer end function.FuncPtr1
 }
 
+// void FuncPtr2(double * ( * get) +intent(in)())
 static int l_func_ptr2(lua_State *L)
 {
     // splicer begin function.FuncPtr2
@@ -639,6 +678,7 @@ static int l_func_ptr2(lua_State *L)
     // splicer end function.FuncPtr2
 }
 
+// void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
 static int l_func_ptr3(lua_State *L)
 {
     // splicer begin function.FuncPtr3
@@ -648,6 +688,7 @@ static int l_func_ptr3(lua_State *L)
     // splicer end function.FuncPtr3
 }
 
+// void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
 static int l_func_ptr5(lua_State *L)
 {
     // splicer begin function.FuncPtr5
@@ -657,6 +698,7 @@ static int l_func_ptr5(lua_State *L)
     // splicer end function.FuncPtr5
 }
 
+// void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
 static int l_verylongfunctionname1(lua_State *L)
 {
     // splicer begin function.verylongfunctionname1
@@ -687,6 +729,7 @@ static int l_verylongfunctionname1(lua_State *L)
     // splicer end function.verylongfunctionname1
 }
 
+// int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
 static int l_verylongfunctionname2(lua_State *L)
 {
     // splicer begin function.verylongfunctionname2
@@ -708,6 +751,7 @@ static int l_verylongfunctionname2(lua_State *L)
     // splicer end function.verylongfunctionname2
 }
 
+// void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 static int l_cos_doubles(lua_State *L)
 {
     // splicer begin function.cos_doubles
