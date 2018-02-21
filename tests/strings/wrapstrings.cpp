@@ -155,7 +155,7 @@ void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
  * \brief toupper
  *
  * Change a string in-place.
- * For Python, return a new string since strings are inmutable.
+ * For Python, return a new string since strings are immutable.
  */
 void STR_pass_char_ptr_in_out(char * s)
 {
@@ -171,7 +171,7 @@ void STR_pass_char_ptr_in_out(char * s)
  * \brief toupper
  *
  * Change a string in-place.
- * For Python, return a new string since strings are inmutable.
+ * For Python, return a new string since strings are immutable.
  */
 void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 {

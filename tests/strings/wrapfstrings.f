@@ -450,7 +450,7 @@ contains
     !! \brief toupper
     !!
     !! Change a string in-place.
-    !! For Python, return a new string since strings are inmutable.
+    !! For Python, return a new string since strings are immutable.
     !<
     subroutine pass_char_ptr_in_out(s)
         use iso_c_binding, only : C_INT
