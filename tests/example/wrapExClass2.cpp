@@ -376,8 +376,8 @@ int AA_exclass2_get_value_int(AA_exclass2 * self)
 // splicer begin class.ExClass2.method.get_value_int
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(
         self));
-    int SHCXX_rv = SH_this->getValue<int>();
-    return SHCXX_rv;
+    int SHC_rv = SH_this->getValue<int>();
+    return SHC_rv;
 // splicer end class.ExClass2.method.get_value_int
 }
 
@@ -388,8 +388,8 @@ double AA_exclass2_get_value_double(AA_exclass2 * self)
 // splicer begin class.ExClass2.method.get_value_double
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(
         self));
-    double SHCXX_rv = SH_this->getValue<double>();
-    return SHCXX_rv;
+    double SHC_rv = SH_this->getValue<double>();
+    return SHC_rv;
 // splicer end class.ExClass2.method.get_value_double
 }
 

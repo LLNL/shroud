@@ -138,8 +138,8 @@ int AA_exclass1_increment_count(AA_exclass1 * self, int incr)
 // splicer begin class.ExClass1.method.increment_count
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(
         self));
-    int SHCXX_rv = SH_this->incrementCount(incr);
-    return SHCXX_rv;
+    int SHC_rv = SH_this->incrementCount(incr);
+    return SHC_rv;
 // splicer end class.ExClass1.method.increment_count
 }
 
@@ -278,8 +278,8 @@ int AA_exclass1_get_value_from_int(AA_exclass1 * self, int value)
 // splicer begin class.ExClass1.method.get_value_from_int
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(
         self));
-    int SHCXX_rv = SH_this->getValue(value);
-    return SHCXX_rv;
+    int SHC_rv = SH_this->getValue(value);
+    return SHC_rv;
 // splicer end class.ExClass1.method.get_value_from_int
 }
 
@@ -290,8 +290,8 @@ long AA_exclass1_get_value_1(AA_exclass1 * self, long value)
 // splicer begin class.ExClass1.method.get_value_1
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(
         self));
-    long SHCXX_rv = SH_this->getValue(value);
-    return SHCXX_rv;
+    long SHC_rv = SH_this->getValue(value);
+    return SHC_rv;
 // splicer end class.ExClass1.method.get_value_1
 }
 
@@ -302,8 +302,8 @@ void * AA_exclass1_get_addr(AA_exclass1 * self)
 // splicer begin class.ExClass1.method.get_addr
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(
         self));
-    void * SHCXX_rv = SH_this->getAddr();
-    return SHCXX_rv;
+    void * SHC_rv = SH_this->getAddr();
+    return SHC_rv;
 // splicer end class.ExClass1.method.get_addr
 }
 
@@ -314,8 +314,8 @@ bool AA_exclass1_has_addr(AA_exclass1 * self, bool in)
 // splicer begin class.ExClass1.method.has_addr
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(
         self));
-    bool SHCXX_rv = SH_this->hasAddr(in);
-    return SHCXX_rv;
+    bool SHC_rv = SH_this->hasAddr(in);
+    return SHC_rv;
 // splicer end class.ExClass1.method.has_addr
 }
 

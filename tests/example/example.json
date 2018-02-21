@@ -38,7 +38,6 @@
                             "fmtc": {
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -84,6 +83,7 @@
                             "LUA_name": "ctor", 
                             "LUA_name_impl": "l_exclass1_ctor", 
                             "c_const": "", 
+                            "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_0", 
                             "underscore_name": "ctor"
@@ -124,7 +124,6 @@
                             "fmtc": {
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -194,6 +193,7 @@
                             "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "c_const": "", 
+                            "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_1", 
                             "underscore_name": "ctor"
@@ -227,7 +227,6 @@
                             "fmtc": {
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }
                         }, 
@@ -285,6 +284,7 @@
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_name": "c_exclass1_ctor_1_bufferify", 
                             "c_const": "", 
+                            "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_1_bufferify", 
                             "underscore_name": "ctor"
@@ -386,9 +386,9 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "int SHCXX_rv", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHC_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -437,12 +437,12 @@
                         "decl": "int incrementCount(int incr)", 
                         "declgen": "int incrementCount(int incr +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "int SHCXX_rv =\t SH_this->incrementCount(\tincr);", 
+                            "C_call_code": "int SHC_rv =\t SH_this->incrementCount(\tincr);", 
                             "C_call_list": "incr", 
                             "C_name": "AA_exclass1_increment_count", 
                             "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t int incr", 
-                            "C_return_code": "return SHCXX_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_increment_count", 
                             "F_C_name": "c_exclass1_increment_count", 
@@ -460,6 +460,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "int SHC_rv", 
                             "function_name": "incrementCount", 
                             "underscore_name": "increment_count"
                         }, 
@@ -475,7 +476,6 @@
                                 "c_val": "SHCXX_rv.c_str()", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -543,6 +543,7 @@
                             "c_ptr": " *", 
                             "c_var": "self", 
                             "c_var_len": "aa_exclass1_get_name_length(obj%voidptr)", 
+                            "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getName", 
                             "underscore_name": "get_name"
                         }, 
@@ -571,8 +572,8 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }
                         }, 
@@ -630,6 +631,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getName", 
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name"
@@ -644,9 +646,9 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "int SHCXX_rv", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHC_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -683,13 +685,13 @@
                             "brief": "helper function for Fortran to get length of name."
                         }, 
                         "format": {
-                            "C_call_code": "int SHCXX_rv =\t SH_this->GetNameLength(\t);", 
+                            "C_call_code": "int SHC_rv =\t SH_this->GetNameLength(\t);", 
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n", 
                             "C_name": "AA_exclass1_get_name_length", 
                             "C_pre_call": "const ExClass1 *SH_this = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self", 
-                            "C_return_code": "return SHCXX_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_get_name_length", 
                             "F_C_name": "c_exclass1_get_name_length", 
@@ -707,6 +709,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "int SHC_rv", 
                             "function_name": "GetNameLength", 
                             "underscore_name": "get_name_length"
                         }, 
@@ -720,7 +723,6 @@
                                 "c_val": "SHCXX_rv.c_str()", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -785,6 +787,7 @@
                             "c_ptr": " *", 
                             "c_var": "self", 
                             "c_var_len": "strlen_ptr(\tc_exclass1_get_name_error_check_bufferify(\tobj%voidptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
+                            "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getNameErrorCheck", 
                             "underscore_name": "get_name_error_check"
                         }, 
@@ -811,8 +814,8 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }
                         }, 
@@ -868,6 +871,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getNameErrorCheck", 
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name_error_check"
@@ -886,7 +890,6 @@
                                 "c_val": "SHCXX_rv.c_str()", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -942,6 +945,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getNameArg", 
                             "underscore_name": "get_name_arg"
                         }, 
@@ -970,8 +974,8 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }
                         }, 
@@ -1028,6 +1032,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getNameArg", 
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name_arg"
@@ -1109,7 +1114,6 @@
                                 "c_val": "\tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": "->", 
-                                "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -1173,6 +1177,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
                             "function_name": "getRoot", 
                             "underscore_name": "get_root"
                         }, 
@@ -1223,9 +1228,9 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "int SHCXX_rv", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHC_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1275,12 +1280,12 @@
                         "decl": "int  getValue(int value)", 
                         "declgen": "int getValue(int value +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "int SHCXX_rv =\t SH_this->getValue(\tvalue);", 
+                            "C_call_code": "int SHC_rv =\t SH_this->getValue(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass1_get_value_from_int", 
                             "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t int value", 
-                            "C_return_code": "return SHCXX_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_get_value_from_int", 
                             "F_C_name": "c_exclass1_get_value_from_int", 
@@ -1298,6 +1303,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "int SHC_rv", 
                             "function_name": "getValue", 
                             "function_suffix": "_from_int", 
                             "underscore_name": "get_value"
@@ -1349,9 +1355,9 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "long SHCXX_rv", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHC_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1401,12 +1407,12 @@
                         "decl": "long getValue(long value)", 
                         "declgen": "long getValue(long value +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "long SHCXX_rv =\t SH_this->getValue(\tvalue);", 
+                            "C_call_code": "long SHC_rv =\t SH_this->getValue(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass1_get_value_1", 
                             "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t long value", 
-                            "C_return_code": "return SHCXX_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "long", 
                             "F_C_call": "c_exclass1_get_value_1", 
                             "F_C_name": "c_exclass1_get_value_1", 
@@ -1422,6 +1428,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "long SHC_rv", 
                             "function_name": "getValue", 
                             "function_suffix": "_1", 
                             "underscore_name": "get_value"
@@ -1431,9 +1438,9 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": "->", 
-                                "cxx_rv_decl": "void * SHCXX_rv", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHC_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1472,12 +1479,12 @@
                         "decl": "void *getAddr()", 
                         "declgen": "void * getAddr()", 
                         "format": {
-                            "C_call_code": "void * SHCXX_rv =\t SH_this->getAddr(\t);", 
+                            "C_call_code": "void * SHC_rv =\t SH_this->getAddr(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_addr", 
                             "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self", 
-                            "C_return_code": "return SHCXX_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "void *", 
                             "F_C_call": "c_exclass1_get_addr", 
                             "F_C_name": "c_exclass1_get_addr", 
@@ -1495,6 +1502,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "void * SHC_rv", 
                             "function_name": "getAddr", 
                             "underscore_name": "get_addr"
                         }, 
@@ -1542,9 +1550,9 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "bool SHCXX_rv", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHC_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1593,12 +1601,12 @@
                         "decl": "bool hasAddr(bool in)", 
                         "declgen": "bool hasAddr(bool in +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "bool SHCXX_rv =\t SH_this->hasAddr(\tin);", 
+                            "C_call_code": "bool SHC_rv =\t SH_this->hasAddr(\tin);", 
                             "C_call_list": "in", 
                             "C_name": "AA_exclass1_has_addr", 
                             "C_pre_call": "ExClass1 *SH_this = \tstatic_cast<ExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self,\t bool in", 
-                            "C_return_code": "return SHCXX_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "bool", 
                             "F_C_call": "c_exclass1_has_addr", 
                             "F_C_name": "c_exclass1_has_addr", 
@@ -1616,6 +1624,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "bool SHC_rv", 
                             "function_name": "hasAddr", 
                             "underscore_name": "has_addr"
                         }, 
@@ -1733,7 +1742,6 @@
                             "fmtc": {
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -1803,6 +1811,7 @@
                             "LUA_name": "ctor", 
                             "LUA_name_impl": "l_exclass2_ctor", 
                             "c_const": "", 
+                            "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
@@ -1831,7 +1840,6 @@
                             "fmtc": {
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }
                         }, 
@@ -1886,6 +1894,7 @@
                             "C_return_type": "AA_exclass2 *", 
                             "F_C_name": "c_exclass2_ctor_bufferify", 
                             "c_const": "", 
+                            "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_bufferify", 
                             "underscore_name": "ctor"
@@ -1953,7 +1962,6 @@
                                 "c_val": "SHCXX_rv.c_str()", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -2020,6 +2028,7 @@
                             "c_ptr": " *", 
                             "c_var": "self", 
                             "c_var_len": "aa_exclass2_get_name_length(obj%voidptr)", 
+                            "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getName", 
                             "underscore_name": "get_name"
                         }, 
@@ -2046,8 +2055,8 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }
                         }, 
@@ -2105,6 +2114,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getName", 
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name"
@@ -2124,7 +2134,6 @@
                                 "c_val": "SHCXX_rv.c_str()", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -2189,6 +2198,7 @@
                             "c_ptr": " *", 
                             "c_var": "self", 
                             "c_var_len": "strlen_ptr(\tc_exclass2_get_name2_bufferify(\tobj%voidptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
+                            "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getName2", 
                             "underscore_name": "get_name2"
                         }, 
@@ -2215,8 +2225,8 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "const std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }
                         }, 
@@ -2272,6 +2282,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getName2", 
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name2"
@@ -2291,7 +2302,6 @@
                                 "c_val": "SHCXX_rv.c_str()", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -2356,6 +2366,7 @@
                             "c_ptr": " *", 
                             "c_var": "self", 
                             "c_var_len": "strlen_ptr(\tc_exclass2_get_name3_bufferify(\tobj%voidptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
+                            "cxx_rv_decl": "std::string & SHCXX_rv", 
                             "function_name": "getName3", 
                             "underscore_name": "get_name3"
                         }, 
@@ -2382,8 +2393,8 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }
                         }, 
@@ -2439,6 +2450,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "std::string & SHCXX_rv", 
                             "function_name": "getName3", 
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name3"
@@ -2458,7 +2470,6 @@
                                 "c_val": "SHCXX_rv.c_str()", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -2523,6 +2534,7 @@
                             "c_ptr": " *", 
                             "c_var": "self", 
                             "c_var_len": "strlen_ptr(\tc_exclass2_get_name4_bufferify(\tobj%voidptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
+                            "cxx_rv_decl": "std::string & SHCXX_rv", 
                             "function_name": "getName4", 
                             "underscore_name": "get_name4"
                         }, 
@@ -2549,8 +2561,8 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "std::string & SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }
                         }, 
@@ -2606,6 +2618,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "std::string & SHCXX_rv", 
                             "function_name": "getName4", 
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name4"
@@ -2620,9 +2633,9 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "int SHCXX_rv", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHC_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -2659,13 +2672,13 @@
                             "brief": "helper function for Fortran"
                         }, 
                         "format": {
-                            "C_call_code": "int SHCXX_rv =\t SH_this->GetNameLength(\t);", 
+                            "C_call_code": "int SHC_rv =\t SH_this->GetNameLength(\t);", 
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n", 
                             "C_name": "AA_exclass2_get_name_length", 
                             "C_pre_call": "const ExClass2 *SH_this = \tstatic_cast<const ExClass2 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass2 * self", 
-                            "C_return_code": "return SHCXX_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass2_get_name_length", 
                             "F_C_name": "c_exclass2_get_name_length", 
@@ -2683,6 +2696,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "int SHC_rv", 
                             "function_name": "GetNameLength", 
                             "underscore_name": "get_name_length"
                         }, 
@@ -2734,7 +2748,6 @@
                                 "c_val": "\tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": "->", 
-                                "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -2818,6 +2831,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                             "function_name": "get_class1", 
                             "underscore_name": "get_class1"
                         }, 
@@ -3423,7 +3437,6 @@
                                 "c_val": "static_cast<int>(SHCXX_rv)", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "TypeID SHCXX_rv", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
@@ -3482,6 +3495,7 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "TypeID SHCXX_rv", 
                             "function_name": "getTypeID", 
                             "underscore_name": "get_type_id"
                         }, 
@@ -3912,9 +3926,9 @@
                         "_CXX_return_templated": true, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "int SHCXX_rv", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHC_rv"
                             }
                         }, 
                         "_function_index": 37, 
@@ -3938,12 +3952,12 @@
                         "declgen": "int getValue()", 
                         "format": {
                             "CXX_template": "<int>", 
-                            "C_call_code": "int SHCXX_rv =\t SH_this->getValue<int>(\t);", 
+                            "C_call_code": "int SHC_rv =\t SH_this->getValue<int>(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_value_int", 
                             "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
-                            "C_return_code": "return SHCXX_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass2_get_value_int", 
                             "F_C_name": "c_exclass2_get_value_int", 
@@ -3958,6 +3972,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "int SHC_rv", 
                             "function_name": "getValue", 
                             "function_suffix": "_int", 
                             "underscore_name": "get_value"
@@ -3973,9 +3988,9 @@
                         "_CXX_return_templated": true, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
-                                "cxx_rv_decl": "double SHCXX_rv", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHC_rv"
                             }
                         }, 
                         "_function_index": 38, 
@@ -3999,12 +4014,12 @@
                         "declgen": "double getValue()", 
                         "format": {
                             "CXX_template": "<double>", 
-                            "C_call_code": "double SHCXX_rv =\t SH_this->getValue<double>(\t);", 
+                            "C_call_code": "double SHC_rv =\t SH_this->getValue<double>(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_value_double", 
                             "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass2 * self", 
-                            "C_return_code": "return SHCXX_rv;", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "double", 
                             "F_C_call": "c_exclass2_get_value_double", 
                             "F_C_name": "c_exclass2_get_value_double", 
@@ -4019,6 +4034,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
+                            "cxx_rv_decl": "double SHC_rv", 
                             "function_name": "getValue", 
                             "function_suffix": "_double", 
                             "underscore_name": "get_value"
@@ -4323,9 +4339,9 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "bool SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -4379,13 +4395,13 @@
                 "decl": "bool isNameValid(const std::string& name)", 
                 "declgen": "bool isNameValid(const std::string & name +intent(in))", 
                 "format": {
-                    "C_call_code": "bool SHCXX_rv =\t isNameValid(\tSH_name);", 
+                    "C_call_code": "bool SHC_rv =\t isNameValid(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_code": "return name != NULL;", 
                     "C_name": "AA_is_name_valid", 
                     "C_pre_call": "const std::string SH_name(name);", 
                     "C_prototype": "const char * name", 
-                    "C_return_code": "return SHCXX_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "bool", 
                     "F_C_call": "c_is_name_valid_bufferify", 
                     "F_C_name": "c_is_name_valid", 
@@ -4401,6 +4417,7 @@
                     "LUA_name_impl": "l_is_name_valid", 
                     "PY_name_impl": "PP_is_name_valid", 
                     "c_const": "", 
+                    "cxx_rv_decl": "bool SHC_rv", 
                     "function_name": "isNameValid", 
                     "underscore_name": "is_name_valid"
                 }, 
@@ -4427,9 +4444,9 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "bool SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }
                 }, 
                 "_function_index": 70, 
@@ -4472,17 +4489,18 @@
                 "decl": "bool isNameValid(const std::string& name)", 
                 "declgen": "bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
-                    "C_call_code": "bool SHCXX_rv =\t isNameValid(\tSH_name);", 
+                    "C_call_code": "bool SHC_rv =\t isNameValid(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_code": "return name != NULL;", 
                     "C_name": "AA_is_name_valid_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
                     "C_prototype": "const char * name,\t int Lname", 
-                    "C_return_code": "return SHCXX_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "bool", 
                     "F_C_name": "c_is_name_valid_bufferify", 
                     "F_code": "rv = name .ne. \" \"", 
                     "c_const": "", 
+                    "cxx_rv_decl": "bool SHC_rv", 
                     "function_name": "isNameValid", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "is_name_valid"
@@ -4497,9 +4515,9 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "bool SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -4533,11 +4551,11 @@
                 "decl": "bool isInitialized()", 
                 "declgen": "bool isInitialized()", 
                 "format": {
-                    "C_call_code": "bool SHCXX_rv =\t isInitialized(\t);", 
+                    "C_call_code": "bool SHC_rv =\t isInitialized(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_is_initialized", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHCXX_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "bool", 
                     "F_C_call": "c_is_initialized", 
                     "F_C_name": "c_is_initialized", 
@@ -4553,6 +4571,7 @@
                     "LUA_name_impl": "l_is_initialized", 
                     "PY_name_impl": "PP_is_initialized", 
                     "c_const": "", 
+                    "cxx_rv_decl": "bool SHC_rv", 
                     "function_name": "isInitialized", 
                     "underscore_name": "is_initialized"
                 }, 
@@ -5510,9 +5529,9 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "size_t SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -5546,11 +5565,11 @@
                 "decl": "size_t test_size_t()", 
                 "declgen": "size_t test_size_t()", 
                 "format": {
-                    "C_call_code": "size_t SHCXX_rv =\t test_size_t(\t);", 
+                    "C_call_code": "size_t SHC_rv =\t test_size_t(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_test_size_t", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHCXX_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "size_t", 
                     "F_C_call": "c_test_size_t", 
                     "F_C_name": "test_size_t", 
@@ -5566,6 +5585,7 @@
                     "LUA_name_impl": "l_test_size_t", 
                     "PY_name_impl": "PP_test_size_t", 
                     "c_const": "", 
+                    "cxx_rv_decl": "size_t SHC_rv", 
                     "function_name": "test_size_t", 
                     "underscore_name": "test_size_t"
                 }, 
@@ -7574,9 +7594,9 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "int SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -7751,11 +7771,11 @@
                 "decl": "int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
                 "declgen": "int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHCXX_rv =\t verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
+                    "C_call_code": "int SHC_rv =\t verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
                     "C_name": "AA_verylongfunctionname2", 
                     "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10", 
-                    "C_return_code": "return SHCXX_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int", 
                     "F_C_call": "c_verylongfunctionname2", 
                     "F_C_name": "c_verylongfunctionname2", 
@@ -7771,6 +7791,7 @@
                     "LUA_name_impl": "l_verylongfunctionname2", 
                     "PY_name_impl": "PP_verylongfunctionname2", 
                     "c_const": "", 
+                    "cxx_rv_decl": "int SHC_rv", 
                     "function_name": "verylongfunctionname2", 
                     "underscore_name": "verylongfunctionname2"
                 }, 

@@ -209,7 +209,6 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "double SHC_rv", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
@@ -286,6 +285,7 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_function2", 
                     "c_const": "", 
+                    "cxx_rv_decl": "double SHC_rv", 
                     "function_name": "Function2", 
                     "underscore_name": "function2"
                 }, 
@@ -511,7 +511,6 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "bool SHC_rv", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
@@ -574,6 +573,7 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_function3", 
                     "c_const": "", 
+                    "cxx_rv_decl": "bool SHC_rv", 
                     "function_name": "Function3", 
                     "underscore_name": "function3"
                 }, 
@@ -811,7 +811,6 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_deref": "->", 
-                        "cxx_rv_decl": "char * SHC_rv", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
@@ -907,6 +906,7 @@
                     "PY_name_impl": "PY_function4a", 
                     "c_const": "", 
                     "c_var_len": "30", 
+                    "cxx_rv_decl": "char * SHC_rv", 
                     "function_name": "Function4a", 
                     "underscore_name": "function4a"
                 }, 
@@ -965,7 +965,6 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_deref": "->", 
-                        "cxx_rv_decl": "char * SHC_rv", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
@@ -1062,6 +1061,7 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_function4a_bufferify", 
                     "c_const": "", 
+                    "cxx_rv_decl": "char * SHC_rv", 
                     "function_name": "Function4a", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "function4a"

@@ -200,9 +200,9 @@
                 "_PTR_F_C_index": 25, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "char SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -234,11 +234,11 @@
                     "brief": "return a char argument (non-pointer)"
                 }, 
                 "format": {
-                    "C_call_code": "char SHCXX_rv =\t returnChar(\t);", 
+                    "C_call_code": "char SHC_rv =\t returnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_return_char", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHCXX_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "char", 
                     "F_C_call": "c_return_char_bufferify", 
                     "F_C_name": "c_return_char", 
@@ -252,6 +252,7 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_return_char", 
                     "c_const": "", 
+                    "cxx_rv_decl": "char SHC_rv", 
                     "function_name": "returnChar", 
                     "underscore_name": "return_char"
                 }, 
@@ -268,7 +269,7 @@
                             "c_var_len": "NSHF_rv", 
                             "cxx_deref": ".", 
                             "cxx_type": "char", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHC_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -278,9 +279,9 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "char SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }
                 }, 
                 "_function_index": 25, 
@@ -326,15 +327,16 @@
                     "brief": "return a char argument (non-pointer)"
                 }, 
                 "format": {
-                    "C_call_code": "char SHCXX_rv =\t returnChar(\t);", 
+                    "C_call_code": "char SHC_rv =\t returnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_return_char_bufferify", 
-                    "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHCXX_rv;", 
+                    "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHC_rv;", 
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_return_char_bufferify", 
                     "c_const": "", 
+                    "cxx_rv_decl": "char SHC_rv", 
                     "function_name": "returnChar", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "return_char"
@@ -756,9 +758,9 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": "->", 
-                        "cxx_rv_decl": "const char * SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -797,11 +799,11 @@
                     "brief": "return a 'const char *' as character(*)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHCXX_rv =\t getCharPtr1(\t);", 
+                    "C_call_code": "const char * SHC_rv =\t getCharPtr1(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr1", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHCXX_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
                     "F_C_call": "c_get_char_ptr1", 
                     "F_C_name": "c_get_char_ptr1", 
@@ -816,6 +818,7 @@
                     "PY_name_impl": "PY_get_char_ptr1", 
                     "c_const": "const ", 
                     "c_var_len": "strlen_ptr(\tc_get_char_ptr1(\t))", 
+                    "cxx_rv_decl": "const char * SHC_rv", 
                     "function_name": "getCharPtr1", 
                     "underscore_name": "get_char_ptr1"
                 }, 
@@ -832,15 +835,15 @@
                             "c_var_len": "NSHF_rv", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHC_rv"
                         }
                     }
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": "->", 
-                        "cxx_rv_decl": "const char * SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }
                 }, 
                 "_function_index": 28, 
@@ -888,15 +891,16 @@
                     "brief": "return a 'const char *' as character(*)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHCXX_rv =\t getCharPtr1(\t);", 
+                    "C_call_code": "const char * SHC_rv =\t getCharPtr1(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr1_bufferify", 
-                    "C_post_call": "if (SHCXX_rv == NULL) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv);\n}", 
+                    "C_post_call": "if (SHC_rv == NULL) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv);\n}", 
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_char_ptr1_bufferify", 
                     "c_const": "", 
+                    "cxx_rv_decl": "const char * SHC_rv", 
                     "function_name": "getCharPtr1", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_char_ptr1"
@@ -912,9 +916,9 @@
                 "_PTR_F_C_index": 29, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": "->", 
-                        "cxx_rv_decl": "const char * SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -953,11 +957,11 @@
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHCXX_rv =\t getCharPtr2(\t);", 
+                    "C_call_code": "const char * SHC_rv =\t getCharPtr2(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr2", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHCXX_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
                     "F_C_call": "c_get_char_ptr2_bufferify", 
                     "F_C_name": "c_get_char_ptr2", 
@@ -972,6 +976,7 @@
                     "PY_name_impl": "PY_get_char_ptr2", 
                     "c_const": "const ", 
                     "c_var_len": "30", 
+                    "cxx_rv_decl": "const char * SHC_rv", 
                     "function_name": "getCharPtr2", 
                     "underscore_name": "get_char_ptr2"
                 }, 
@@ -988,7 +993,7 @@
                             "c_var_len": "NSHF_rv", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHC_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -998,9 +1003,9 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": "->", 
-                        "cxx_rv_decl": "const char * SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }
                 }, 
                 "_function_index": 29, 
@@ -1048,15 +1053,16 @@
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHCXX_rv =\t getCharPtr2(\t);", 
+                    "C_call_code": "const char * SHC_rv =\t getCharPtr2(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr2_bufferify", 
-                    "C_post_call": "if (SHCXX_rv == NULL) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv);\n}", 
+                    "C_post_call": "if (SHC_rv == NULL) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv);\n}", 
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_char_ptr2_bufferify", 
                     "c_const": "", 
+                    "cxx_rv_decl": "const char * SHC_rv", 
                     "function_name": "getCharPtr2", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_char_ptr2"
@@ -1071,9 +1077,9 @@
             {
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": "->", 
-                        "cxx_rv_decl": "const char * SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -1110,16 +1116,17 @@
                     "brief": "return a 'const char *' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHCXX_rv =\t getCharPtr3(\t);", 
+                    "C_call_code": "const char * SHC_rv =\t getCharPtr3(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr3", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHCXX_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
                     "F_C_name": "c_get_char_ptr3", 
                     "F_string_result_as_arg": "output", 
                     "PY_name_impl": "PY_get_char_ptr3", 
                     "c_const": "const ", 
+                    "cxx_rv_decl": "const char * SHC_rv", 
                     "function_name": "getCharPtr3", 
                     "underscore_name": "get_char_ptr3"
                 }, 
@@ -1138,7 +1145,7 @@
                             "c_var_len": "Noutput", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHC_rv"
                         }, 
                         "fmtf": {
                             "c_var": "output", 
@@ -1148,9 +1155,9 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": "->", 
-                        "cxx_rv_decl": "const char * SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }
                 }, 
                 "_function_index": 30, 
@@ -1196,16 +1203,17 @@
                     "brief": "return a 'const char *' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const char * SHCXX_rv =\t getCharPtr3(\t);", 
+                    "C_call_code": "const char * SHC_rv =\t getCharPtr3(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr3_bufferify", 
-                    "C_post_call": "if (SHCXX_rv == NULL) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHCXX_rv);\n}", 
+                    "C_post_call": "if (SHC_rv == NULL) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHC_rv);\n}", 
                     "C_prototype": "char * output,\t int Noutput", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_char_ptr3_bufferify", 
                     "F_string_result_as_arg": "output", 
                     "c_const": "", 
+                    "cxx_rv_decl": "const char * SHC_rv", 
                     "function_name": "getCharPtr3", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_char_ptr3"
@@ -1290,7 +1298,6 @@
                         "c_val": "SHCXX_rv.c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -1350,6 +1357,7 @@
                     "PY_name_impl": "PY_get_string1", 
                     "c_const": "const ", 
                     "c_var_len": "strlen_ptr(\tc_get_string1(\t))", 
+                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "getString1", 
                     "underscore_name": "get_string1"
                 }, 
@@ -1372,8 +1380,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -1431,6 +1439,7 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string1_bufferify", 
                     "c_const": "", 
+                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "getString1", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_string1"
@@ -1451,7 +1460,6 @@
                         "c_val": "SHCXX_rv.c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -1512,6 +1520,7 @@
                     "PY_name_impl": "PY_get_string2", 
                     "c_const": "const ", 
                     "c_var_len": "30", 
+                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "getString2", 
                     "underscore_name": "get_string2"
                 }, 
@@ -1539,8 +1548,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -1598,6 +1607,7 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string2_bufferify", 
                     "c_const": "", 
+                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "getString2", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_string2"
@@ -1617,7 +1627,6 @@
                         "c_val": "SHCXX_rv.c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -1667,6 +1676,7 @@
                     "F_string_result_as_arg": "output", 
                     "PY_name_impl": "PY_get_string3", 
                     "c_const": "const ", 
+                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "getString3", 
                     "underscore_name": "get_string3"
                 }, 
@@ -1696,8 +1706,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -1754,6 +1764,7 @@
                     "F_C_name": "c_get_string3_bufferify", 
                     "F_string_result_as_arg": "output", 
                     "c_const": "", 
+                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "getString3", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_string3"
@@ -1841,7 +1852,6 @@
                         "c_val": "SHCXX_rv.c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -1902,6 +1912,7 @@
                     "PY_name_impl": "PY_get_string2_empty", 
                     "c_const": "const ", 
                     "c_var_len": "30", 
+                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "getString2_empty", 
                     "underscore_name": "get_string2_empty"
                 }, 
@@ -1929,8 +1940,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string & SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -1988,6 +1999,7 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string2_empty_bufferify", 
                     "c_const": "", 
+                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "getString2_empty", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_string2_empty"
@@ -2075,8 +2087,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -2134,6 +2146,7 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string5_bufferify", 
                     "c_const": "", 
+                    "cxx_rv_decl": "const std::string SHCXX_rv", 
                     "function_name": "getString5", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_string5"
@@ -2210,8 +2223,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "const std::string SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -2268,6 +2281,7 @@
                     "F_C_name": "c_get_string6_bufferify", 
                     "F_string_result_as_arg": "output", 
                     "c_const": "", 
+                    "cxx_rv_decl": "const std::string SHCXX_rv", 
                     "function_name": "getString6", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_string6"
@@ -2354,7 +2368,6 @@
                         "c_val": "SHCXX_rv->c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_deref": "->", 
-                        "cxx_rv_decl": "const std::string * SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -2415,6 +2428,7 @@
                     "PY_name_impl": "PY_get_string7", 
                     "c_const": "const ", 
                     "c_var_len": "30", 
+                    "cxx_rv_decl": "const std::string * SHCXX_rv", 
                     "function_name": "getString7", 
                     "underscore_name": "get_string7"
                 }, 
@@ -2441,8 +2455,8 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": "->", 
-                        "cxx_rv_decl": "const std::string * SHCXX_rv", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -2501,6 +2515,7 @@
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string7_bufferify", 
                     "c_const": "", 
+                    "cxx_rv_decl": "const std::string * SHCXX_rv", 
                     "function_name": "getString7", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_string7"
@@ -3794,9 +3809,9 @@
                 "_PTR_F_C_index": 47, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "char SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -3828,11 +3843,11 @@
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 }, 
                 "format": {
-                    "C_call_code": "char SHCXX_rv =\t CreturnChar(\t);", 
+                    "C_call_code": "char SHC_rv =\t CreturnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "CreturnChar", 
                     "C_prototype": "", 
-                    "C_return_code": "return SHCXX_rv;", 
+                    "C_return_code": "return SHC_rv;", 
                     "C_return_type": "char", 
                     "F_C_call": "c_creturn_char_bufferify", 
                     "F_C_name": "c_creturn_char", 
@@ -3846,6 +3861,7 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_creturn_char", 
                     "c_const": "", 
+                    "cxx_rv_decl": "char SHC_rv", 
                     "function_name": "CreturnChar", 
                     "underscore_name": "creturn_char"
                 }, 
@@ -3864,7 +3880,7 @@
                             "c_var_len": "NSHF_rv", 
                             "cxx_deref": ".", 
                             "cxx_type": "char", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHC_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -3874,9 +3890,9 @@
                 }, 
                 "_fmtresult": {
                     "fmtc": {
+                        "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "char SHCXX_rv", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHC_rv"
                     }
                 }, 
                 "_function_index": 47, 
@@ -3922,15 +3938,16 @@
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 }, 
                 "format": {
-                    "C_call_code": "char SHCXX_rv =\t CreturnChar(\t);", 
+                    "C_call_code": "char SHC_rv =\t CreturnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_creturn_char_bufferify", 
-                    "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHCXX_rv;", 
+                    "C_post_call": "std::memset(SHF_rv, ' ', NSHF_rv);\nSHF_rv[0] = SHC_rv;", 
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_creturn_char_bufferify", 
                     "c_const": "", 
+                    "cxx_rv_decl": "char SHC_rv", 
                     "function_name": "CreturnChar", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "creturn_char"

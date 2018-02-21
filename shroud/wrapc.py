@@ -391,19 +391,15 @@ class Wrapc(util.WrapperMixin):
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
-            if self.language == 'c':
+            if result_typedef.cxx_to_c is None:
+                # C and C++ are compatible
                 fmt_result.c_var = wformat('{C_local}{C_result}', fmt_result)
-                # cxx_var is used in some typemaps
                 fmt_result.cxx_var = fmt_result.c_var
-                fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_c(
-                    name=fmt_result.c_var, params=None, continuation=True)
             else:
+                fmt_result.c_var = wformat('{C_local}{C_result}', fmt_result)
                 fmt_result.cxx_var = wformat('{CXX_local}{C_result}', fmt_result)
-                fmt_result.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
-                    name=fmt_result.cxx_var, params=None, continuation=True)
-                if result_typedef.cxx_to_c is not None:
-                    # c_var is used when convert to C before return
-                    fmt_result.c_var = wformat('{C_local}{C_result}', fmt_result)
+            fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None, continuation=True)
             if CXX_result.is_pointer():
                 fmt_result.cxx_deref = '->'
             else:
@@ -475,7 +471,17 @@ class Wrapc(util.WrapperMixin):
 
             if c_attrs.get('_is_result', False):
                 arg_call = False
-                fmt_arg.cxx_var = fmt_result.cxx_var
+
+                # Note that result_type is void, so use arg_typedef.
+                if arg_typedef.cxx_to_c is None:
+                    fmt_arg.cxx_var = wformat('{C_local}{C_result}', fmt_func)
+                else:
+                    fmt_arg.cxx_var = wformat('{CXX_local}{C_result}', fmt_func)
+                # Set cxx_var for C_finalize which evalutes in fmt_result context
+                fmt_result.cxx_var = fmt_arg.cxx_var
+                fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
+                    name=fmt_arg.cxx_var, params=None, continuation=True)
+
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 stmts = 'result' + generated_suffix
@@ -597,7 +603,7 @@ class Wrapc(util.WrapperMixin):
         C_return_code = 'return;'
         if is_ctor:
             fmt_func.C_call_code = wformat('{cxx_rv_decl} = new {cxx_class}'
-                                           '({C_call_list});', fmt_result)
+                                           '({C_call_list});', fmt_func)
             C_return_code = ('return {};'.format(
                 wformat(result_typedef.cxx_to_c, fmt_result)))
         elif is_dtor:
@@ -611,7 +617,7 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_call_code = wformat(
                 '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'
                 '{CXX_template}(\t{C_call_list});',
-                fmt_result)
+                fmt_func)
 
             if result_arg is None:
                 # The result is not passed back in an argument

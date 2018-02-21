@@ -99,8 +99,8 @@ int YYY_TES_function4(const char * rv)
 {
 // splicer begin function.function4
     const std::string SH_rv(rv);
-    int SHCXX_rv = function4(SH_rv);
-    return SHCXX_rv;
+    int SHC_rv = function4(SH_rv);
+    return SHC_rv;
 // splicer end function.function4
 }
 
@@ -110,8 +110,8 @@ int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 {
 // splicer begin function.function4_bufferify
     const std::string SH_rv(rv, Lrv);
-    int SHCXX_rv = function4(SH_rv);
-    return SHCXX_rv;
+    int SHC_rv = function4(SH_rv);
+    return SHC_rv;
 // splicer end function.function4_bufferify
 }
 

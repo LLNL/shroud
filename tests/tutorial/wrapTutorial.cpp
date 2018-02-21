@@ -96,8 +96,8 @@ void TUT_function1()
 double TUT_function2(double arg1, int arg2)
 {
 // splicer begin function.function2
-    double SHCXX_rv = Function2(arg1, arg2);
-    return SHCXX_rv;
+    double SHC_rv = Function2(arg1, arg2);
+    return SHC_rv;
 // splicer end function.function2
 }
 
@@ -116,8 +116,8 @@ void TUT_sum(int len, int * values, int * result)
 long long TUT_type_long_long(long long arg1)
 {
 // splicer begin function.type_long_long
-    long long SHCXX_rv = TypeLongLong(arg1);
-    return SHCXX_rv;
+    long long SHC_rv = TypeLongLong(arg1);
+    return SHC_rv;
 // splicer end function.type_long_long
 }
 
@@ -126,8 +126,8 @@ long long TUT_type_long_long(long long arg1)
 bool TUT_function3(bool arg)
 {
 // splicer begin function.function3
-    bool SHCXX_rv = Function3(arg);
-    return SHCXX_rv;
+    bool SHC_rv = Function3(arg);
+    return SHC_rv;
 // splicer end function.function3
 }
 
@@ -195,8 +195,8 @@ void TUT_function4b_bufferify(const char * arg1, int Larg1,
 double TUT_function5()
 {
 // splicer begin function.function5
-    double SHCXX_rv = Function5();
-    return SHCXX_rv;
+    double SHC_rv = Function5();
+    return SHC_rv;
 // splicer end function.function5
 }
 
@@ -205,8 +205,8 @@ double TUT_function5()
 double TUT_function5_arg1(double arg1)
 {
 // splicer begin function.function5_arg1
-    double SHCXX_rv = Function5(arg1);
-    return SHCXX_rv;
+    double SHC_rv = Function5(arg1);
+    return SHC_rv;
 // splicer end function.function5_arg1
 }
 
@@ -215,8 +215,8 @@ double TUT_function5_arg1(double arg1)
 double TUT_function5_arg1_arg2(double arg1, bool arg2)
 {
 // splicer begin function.function5_arg1_arg2
-    double SHCXX_rv = Function5(arg1, arg2);
-    return SHCXX_rv;
+    double SHC_rv = Function5(arg1, arg2);
+    return SHC_rv;
 // splicer end function.function5_arg1_arg2
 }
 
@@ -277,8 +277,8 @@ void TUT_function7_double(double arg)
 int TUT_function8_int()
 {
 // splicer begin function.function8_int
-    int SHCXX_rv = Function8<int>();
-    return SHCXX_rv;
+    int SHC_rv = Function8<int>();
+    return SHC_rv;
 // splicer end function.function8_int
 }
 
@@ -287,8 +287,8 @@ int TUT_function8_int()
 double TUT_function8_double()
 {
 // splicer begin function.function8_double
-    double SHCXX_rv = Function8<double>();
-    return SHCXX_rv;
+    double SHC_rv = Function8<double>();
+    return SHC_rv;
 // splicer end function.function8_double
 }
 
@@ -340,8 +340,8 @@ void TUT_function10_1_bufferify(const char * name, int Lname,
 int TUT_overload1_num(int num)
 {
 // splicer begin function.overload1_num
-    int SHCXX_rv = overload1(num);
-    return SHCXX_rv;
+    int SHC_rv = overload1(num);
+    return SHC_rv;
 // splicer end function.overload1_num
 }
 
@@ -350,8 +350,8 @@ int TUT_overload1_num(int num)
 int TUT_overload1_num_offset(int num, int offset)
 {
 // splicer begin function.overload1_num_offset
-    int SHCXX_rv = overload1(num, offset);
-    return SHCXX_rv;
+    int SHC_rv = overload1(num, offset);
+    return SHC_rv;
 // splicer end function.overload1_num_offset
 }
 
@@ -360,8 +360,8 @@ int TUT_overload1_num_offset(int num, int offset)
 int TUT_overload1_num_offset_stride(int num, int offset, int stride)
 {
 // splicer begin function.overload1_num_offset_stride
-    int SHCXX_rv = overload1(num, offset, stride);
-    return SHCXX_rv;
+    int SHC_rv = overload1(num, offset, stride);
+    return SHC_rv;
 // splicer end function.overload1_num_offset_stride
 }
 
@@ -370,8 +370,8 @@ int TUT_overload1_num_offset_stride(int num, int offset, int stride)
 int TUT_overload1_3(double type, int num)
 {
 // splicer begin function.overload1_3
-    int SHCXX_rv = overload1(type, num);
-    return SHCXX_rv;
+    int SHC_rv = overload1(type, num);
+    return SHC_rv;
 // splicer end function.overload1_3
 }
 
@@ -380,8 +380,8 @@ int TUT_overload1_3(double type, int num)
 int TUT_overload1_4(double type, int num, int offset)
 {
 // splicer begin function.overload1_4
-    int SHCXX_rv = overload1(type, num, offset);
-    return SHCXX_rv;
+    int SHC_rv = overload1(type, num, offset);
+    return SHC_rv;
 // splicer end function.overload1_4
 }
 
@@ -390,8 +390,8 @@ int TUT_overload1_4(double type, int num, int offset)
 int TUT_overload1_5(double type, int num, int offset, int stride)
 {
 // splicer begin function.overload1_5
-    int SHCXX_rv = overload1(type, num, offset, stride);
-    return SHCXX_rv;
+    int SHC_rv = overload1(type, num, offset, stride);
+    return SHC_rv;
 // splicer end function.overload1_5
 }
 
@@ -400,8 +400,8 @@ int TUT_overload1_5(double type, int num, int offset, int stride)
 int TUT_typefunc(int arg)
 {
 // splicer begin function.typefunc
-    TypeID SHCXX_rv = typefunc(arg);
-    return SHCXX_rv;
+    TypeID SHC_rv = typefunc(arg);
+    return SHC_rv;
 // splicer end function.typefunc
 }
 
@@ -434,8 +434,8 @@ int TUT_vector_sum_bufferify(const int * arg, long Sarg)
 {
 // splicer begin function.vector_sum_bufferify
     const std::vector<int> SH_arg(arg, arg + Sarg);
-    int SHCXX_rv = vector_sum(SH_arg);
-    return SHCXX_rv;
+    int SHC_rv = vector_sum(SH_arg);
+    return SHC_rv;
 // splicer end function.vector_sum_bufferify
 }
 
@@ -500,8 +500,8 @@ int TUT_vector_string_count_bufferify(const char * arg, long Sarg,
             BBB += Narg;
         }
     }
-    int SHCXX_rv = vector_string_count(SH_arg);
-    return SHCXX_rv;
+    int SHC_rv = vector_string_count(SH_arg);
+    return SHC_rv;
 // splicer end function.vector_string_count_bufferify
 }
 
@@ -574,8 +574,8 @@ void TUT_vector_string_append_bufferify(char * arg, long Sarg, int Narg)
 int TUT_callback1(int in, int ( * incr)(int))
 {
 // splicer begin function.callback1
-    int SHCXX_rv = callback1(in, incr);
-    return SHCXX_rv;
+    int SHC_rv = callback1(in, incr);
+    return SHC_rv;
 // splicer end function.callback1
 }
 

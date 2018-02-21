@@ -172,7 +172,6 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_deref": ".", 
-                        "cxx_rv_decl": "double SHC_rv", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
@@ -240,6 +239,7 @@
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
+                    "cxx_rv_decl": "double SHC_rv", 
                     "function_name": "Function2", 
                     "underscore_name": "function2"
                 }, 
