@@ -791,31 +791,16 @@ return 1;""", fmt)
             fmt.PY_used_param_kwds = True
             need_blank = True
 
-            if False:
-                # jump through some hoops for char ** const correctness for C++
-                # warning: deprecated conversion from string constant
-                #    to 'char*' [-Wwrite-strings]
-                if len(arg_names) == 1:
-                    PY_decl.append(
-                        'const char *SH_kwcpp = "%s";' % '\\0'.join(arg_names))
-                else:
-                    PY_decl.append(
-                        'const char *SH_kwcpp =\f"' +
-                        '\\0"\f"'.join(arg_names) + '";' )
-                PY_decl.append(
-                    'char *SH_kw_list[] = {\f' + ',\f'.join(arg_offsets)
-                    + ',\fNULL };')
+            if self.language == 'c++':
+                kw_const = 'const '
+                fmt.PyArg_kwlist = 'const_cast<char **>(SHT_kwlist)'
             else:
-                if self.language == 'c++':
-                    kw_const = 'const '
-                    fmt.PyArg_kwlist = 'const_cast<char **>(SHT_kwlist)'
-                else:
-                    kw_const = ''
-                    fmt.PyArg_kwlist = 'SHT_kwlist'
-                PY_decl.append(
-                    kw_const + 'char *SHT_kwlist[] = {\f"' +
-                    '",\f"'.join(arg_names)
-                    + '",\fNULL };')
+                kw_const = ''
+                fmt.PyArg_kwlist = 'SHT_kwlist'
+            PY_decl.append(
+                kw_const + 'char *SHT_kwlist[] = {\f"' +
+                '",\f"'.join(arg_names)
+                + '",\fNULL };')
             parse_format.extend([':', fmt.function_name])
             fmt.PyArg_format = ''.join(parse_format)
             fmt.PyArg_vargs = ',\t '.join(parse_vargs)
