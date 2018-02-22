@@ -66,11 +66,10 @@ extern PyObject *PY_error_obj;
 
 extern "C" {
 #ifdef IS_PY3K
-#define SHROUD_MOD_INIT PyInit_strings
+PyMODINIT_FUNC PyInit_strings(void);
 #else
-#define SHROUD_MOD_INIT initstrings
+PyMODINIT_FUNC initstrings(void);
 #endif
-PyMODINIT_FUNC SHROUD_MOD_INIT(void);
 }   // extern "C"
 
 #endif  /* PYSTRINGSMODULE_HPP */

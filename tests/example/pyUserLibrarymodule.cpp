@@ -769,7 +769,11 @@ static struct PyModuleDef moduledef = {
 
 extern "C" {
 PyMODINIT_FUNC
-SHROUD_MOD_INIT(void)
+#ifdef IS_PY3K
+PyInit_userlibrary(void)
+#else
+inituserlibrary(void)
+#endif
 {
     PyObject *m = NULL;
     const char * error_name = "userlibrary.Error";

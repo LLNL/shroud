@@ -1248,11 +1248,10 @@ return 1;""", fmt)
 extern PyObject *{PY_prefix}error_obj;
 
 {PY_extern_C_begin}#ifdef IS_PY3K
-#define SHROUD_MOD_INIT PyInit_{PY_module_name}
+PyMODINIT_FUNC PyInit_{PY_module_name}(void);
 #else
-#define SHROUD_MOD_INIT init{PY_module_name}
+PyMODINIT_FUNC init{PY_module_name}(void);
 #endif
-PyMODINIT_FUNC SHROUD_MOD_INIT(void);
 {PY_extern_C_end}""", fmt))
         self.namespace(node, None, 'end', output)
         output.append('#endif  /* %s */' % guard)
@@ -1558,7 +1557,11 @@ static struct PyModuleDef moduledef = {{
 #endif
 
 {PY_extern_C_begin}PyMODINIT_FUNC
-SHROUD_MOD_INIT(void)
+#ifdef IS_PY3K
+PyInit_{PY_module_name}(void)
+#else
+init{PY_module_name}(void)
+#endif
 {{
     PyObject *m = NULL;
     const char * error_name = "{library_lower}.Error";

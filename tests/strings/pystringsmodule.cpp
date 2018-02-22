@@ -656,7 +656,11 @@ static struct PyModuleDef moduledef = {
 
 extern "C" {
 PyMODINIT_FUNC
-SHROUD_MOD_INIT(void)
+#ifdef IS_PY3K
+PyInit_strings(void)
+#else
+initstrings(void)
+#endif
 {
     PyObject *m = NULL;
     const char * error_name = "strings.Error";

@@ -81,11 +81,10 @@ extern PyObject *PY_error_obj;
 
 extern "C" {
 #ifdef IS_PY3K
-#define SHROUD_MOD_INIT PyInit_tutorial
+PyMODINIT_FUNC PyInit_tutorial(void);
 #else
-#define SHROUD_MOD_INIT inittutorial
+PyMODINIT_FUNC inittutorial(void);
 #endif
-PyMODINIT_FUNC SHROUD_MOD_INIT(void);
 }   // extern "C"
 
 

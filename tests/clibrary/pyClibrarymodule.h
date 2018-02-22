@@ -65,10 +65,9 @@
 extern PyObject *PY_error_obj;
 
 #ifdef IS_PY3K
-#define SHROUD_MOD_INIT PyInit_clibrary
+PyMODINIT_FUNC PyInit_clibrary(void);
 #else
-#define SHROUD_MOD_INIT initclibrary
+PyMODINIT_FUNC initclibrary(void);
 #endif
-PyMODINIT_FUNC SHROUD_MOD_INIT(void);
 
 #endif  /* PYCLIBRARYMODULE_H */

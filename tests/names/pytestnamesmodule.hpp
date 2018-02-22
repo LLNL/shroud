@@ -91,11 +91,10 @@ extern PyObject *PY_error_obj;
 
 extern "C" {
 #ifdef IS_PY3K
-#define SHROUD_MOD_INIT PyInit_testnames
+PyMODINIT_FUNC PyInit_testnames(void);
 #else
-#define SHROUD_MOD_INIT inittestnames
+PyMODINIT_FUNC inittestnames(void);
 #endif
-PyMODINIT_FUNC SHROUD_MOD_INIT(void);
 }   // extern "C"
 
 #endif  /* PYTESTNAMESMODULE_HPP */

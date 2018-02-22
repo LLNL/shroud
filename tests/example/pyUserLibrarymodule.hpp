@@ -93,11 +93,10 @@ extern PyObject *PP_error_obj;
 
 extern "C" {
 #ifdef IS_PY3K
-#define SHROUD_MOD_INIT PyInit_userlibrary
+PyMODINIT_FUNC PyInit_userlibrary(void);
 #else
-#define SHROUD_MOD_INIT inituserlibrary
+PyMODINIT_FUNC inituserlibrary(void);
 #endif
-PyMODINIT_FUNC SHROUD_MOD_INIT(void);
 }   // extern "C"
 
 
