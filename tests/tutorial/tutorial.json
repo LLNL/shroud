@@ -4631,9 +4631,11 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_decl": "EnumTypeID SHCXX_arg", 
                             "cxx_deref": ".", 
                             "cxx_type": "EnumTypeID", 
-                            "cxx_var": "arg"
+                            "cxx_val": "static_cast<EnumTypeID>(arg)", 
+                            "cxx_var": "SHCXX_arg"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -4719,10 +4721,11 @@
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
                 "declgen": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "EnumTypeID SHCXX_rv =\t enumfunc(\tstatic_cast<EnumTypeID>(arg));", 
-                    "C_call_list": "static_cast<EnumTypeID>(arg)", 
+                    "C_call_code": "EnumTypeID SHCXX_rv =\t enumfunc(\tSHCXX_arg);", 
+                    "C_call_list": "SHCXX_arg", 
                     "C_name": "TUT_enumfunc", 
                     "C_post_call": "int SHC_rv = static_cast<int>(SHCXX_rv);", 
+                    "C_pre_call": "EnumTypeID SHCXX_arg = static_cast<EnumTypeID>(arg);", 
                     "C_prototype": "int arg", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int", 
@@ -4753,9 +4756,11 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "arg1", 
+                            "cxx_decl": "const Class1 * SHCXX_arg1", 
                             "cxx_deref": "->", 
                             "cxx_type": "Class1", 
-                            "cxx_var": "SH_arg1"
+                            "cxx_val": "\tstatic_cast<const Class1 *>(\tstatic_cast<const void *>(\targ1))", 
+                            "cxx_var": "SHCXX_arg1"
                         }, 
                         "fmtf": {
                             "c_var": "arg1", 
@@ -4814,10 +4819,10 @@
                 "decl": "void useclass(const Class1 *arg1)", 
                 "declgen": "void useclass(const Class1 * arg1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "useclass(\tSH_arg1);", 
-                    "C_call_list": "SH_arg1", 
+                    "C_call_code": "useclass(\tSHCXX_arg1);", 
+                    "C_call_list": "SHCXX_arg1", 
                     "C_name": "TUT_useclass", 
-                    "C_pre_call": "const Class1 *SH_arg1 = static_cast<const Class1 *>(\tstatic_cast<const void *>(\targ1));", 
+                    "C_pre_call": "const Class1 * SHCXX_arg1 = \tstatic_cast<const Class1 *>(\tstatic_cast<const void *>(\targ1));", 
                     "C_prototype": "const TUT_class1 * arg1", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -6111,14 +6116,6 @@
             "PY_from_object": "PP_Class1_from_Object", 
             "PY_to_object": "PP_Class1_to_Object", 
             "base": "wrapped", 
-            "c_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer", 
-                    "pre_call": [
-                        "{c_const}Class1{c_ptr}{cxx_var} = static_cast<{c_const}Class1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
-                    ]
-                }
-            }, 
             "c_to_cxx": "\tstatic_cast<{c_const}Class1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TUT_class1", 
             "cxx_to_c": "\tstatic_cast<{c_const}TUT_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 

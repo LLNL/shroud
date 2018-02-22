@@ -266,9 +266,9 @@ AA_exclass1 * AA_exclass2_get_class1(AA_exclass2 * self,
 // splicer begin class.ExClass2.method.get_class1
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(
         self));
-    const ExClass1 *SH_in = static_cast<const ExClass1 *>(
+    const ExClass1 * SHCXX_in = static_cast<const ExClass1 *>(
         static_cast<const void *>(in));
-    ExClass1 * SHCXX_rv = SH_this->get_class1(SH_in);
+    ExClass1 * SHCXX_rv = SH_this->get_class1(SHCXX_in);
     AA_exclass1 * SHC_rv = static_cast<AA_exclass1 *>(
         static_cast<void *>(SHCXX_rv));
     return SHC_rv;
@@ -282,7 +282,8 @@ void AA_exclass2_declare_0(AA_exclass2 * self, int type)
 // splicer begin class.ExClass2.method.declare_0
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(
         self));
-    SH_this->declare(getTypeID(type));
+    TypeID SHCXX_type = getTypeID(type);
+    SH_this->declare(SHCXX_type);
     return;
 // splicer end class.ExClass2.method.declare_0
 }
@@ -295,7 +296,8 @@ void AA_exclass2_declare_1(AA_exclass2 * self, int type,
 // splicer begin class.ExClass2.method.declare_1
     ExClass2 *SH_this = static_cast<ExClass2 *>(static_cast<void *>(
         self));
-    SH_this->declare(getTypeID(type), len);
+    TypeID SHCXX_type = getTypeID(type);
+    SH_this->declare(SHCXX_type, len);
     return;
 // splicer end class.ExClass2.method.declare_1
 }

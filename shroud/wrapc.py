@@ -441,7 +441,7 @@ class Wrapc(util.WrapperMixin):
 #    c_var_len  - variable with length of c_var
 #    cxx_var    - argument to C++ function  (wrapped function).
 #                 Usually same as c_var but may be a new local variable
-#                 or the funtion result variable.
+#                 or the function result variable.
 
         for arg in ast.params:
             arg_name = arg.name
@@ -491,7 +491,15 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_deref = '.'
             else:
                 arg_call = arg
-                fmt_arg.cxx_var = fmt_arg.c_var      # name in c++ call.
+                if arg_typedef.c_to_cxx is None:
+                    fmt_arg.cxx_var = fmt_arg.c_var      # compatible
+                else:
+                    # convert C argument to C++
+                    fmt_arg.cxx_var = wformat('{CXX_local}{c_var}', fmt_arg)
+                    fmt_arg.cxx_val = wformat(arg_typedef.c_to_cxx, fmt_arg)
+                    fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
+                        name=fmt_arg.cxx_var, params=None, continuation=True)
+                    append_format(pre_call, '{cxx_decl} = {cxx_val};', fmt_arg)
                 stmts = 'intent_' + c_attrs['intent'] + generated_suffix
 
             intent_blk = c_statements.get(stmts, {})
@@ -564,11 +572,8 @@ class Wrapc(util.WrapperMixin):
                         call_list.append(fmt_arg.cxx_var)
                     else:
                         call_list.append('*' + fmt_arg.cxx_var)
-                elif arg_typedef.c_to_cxx is None:
-                    call_list.append(fmt_arg.c_var)
                 else:
-                    # convert C argument to C++
-                    append_format(call_list, arg_typedef.c_to_cxx, fmt_arg)
+                    call_list.append(fmt_arg.cxx_var)
 
             if arg_typedef.c_header:
                 # include any dependent header in generated header

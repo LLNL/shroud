@@ -410,7 +410,8 @@ int TUT_typefunc(int arg)
 int TUT_enumfunc(int arg)
 {
 // splicer begin function.enumfunc
-    EnumTypeID SHCXX_rv = enumfunc(static_cast<EnumTypeID>(arg));
+    EnumTypeID SHCXX_arg = static_cast<EnumTypeID>(arg);
+    EnumTypeID SHCXX_rv = enumfunc(SHCXX_arg);
     int SHC_rv = static_cast<int>(SHCXX_rv);
     return SHC_rv;
 // splicer end function.enumfunc
@@ -421,9 +422,9 @@ int TUT_enumfunc(int arg)
 void TUT_useclass(const TUT_class1 * arg1)
 {
 // splicer begin function.useclass
-    const Class1 *SH_arg1 = static_cast<const Class1 *>(
+    const Class1 * SHCXX_arg1 = static_cast<const Class1 *>(
         static_cast<const void *>(arg1));
-    useclass(SH_arg1);
+    useclass(SHCXX_arg1);
     return;
 // splicer end function.useclass
 }

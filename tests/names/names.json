@@ -845,14 +845,6 @@
             "PY_from_object": "PP_Names_from_Object", 
             "PY_to_object": "PP_Names_to_Object", 
             "base": "wrapped", 
-            "c_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer", 
-                    "pre_call": [
-                        "{c_const}Names{c_ptr}{cxx_var} = static_cast<{c_const}Names{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
-                    ]
-                }
-            }, 
             "c_to_cxx": "\tstatic_cast<{c_const}Names{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TES_names", 
             "cxx_to_c": "\tstatic_cast<{c_const}TES_names *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
@@ -909,14 +901,6 @@
             "PY_from_object": "PP_Names2_from_Object", 
             "PY_to_object": "PP_Names2_to_Object", 
             "base": "wrapped", 
-            "c_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer", 
-                    "pre_call": [
-                        "{c_const}Names2{c_ptr}{cxx_var} = static_cast<{c_const}Names2{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
-                    ]
-                }
-            }, 
             "c_to_cxx": "\tstatic_cast<{c_const}Names2{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TES_names2", 
             "cxx_to_c": "\tstatic_cast<{c_const}TES_names2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 

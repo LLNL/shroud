@@ -2725,9 +2725,11 @@
                                     "c_const": "const ", 
                                     "c_ptr": " *", 
                                     "c_var": "in", 
+                                    "cxx_decl": "const ExClass1 * SHCXX_in", 
                                     "cxx_deref": "->", 
                                     "cxx_type": "ExClass1", 
-                                    "cxx_var": "SH_in"
+                                    "cxx_val": "\tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tin))", 
+                                    "cxx_var": "SHCXX_in"
                                 }, 
                                 "fmtf": {
                                     "c_var": "in", 
@@ -2823,11 +2825,11 @@
                         "decl": "ExClass1 *get_class1(const ExClass1 *in)", 
                         "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "ExClass1 * SHCXX_rv =\t SH_this->get_class1(\tSH_in);", 
-                            "C_call_list": "SH_in", 
+                            "C_call_code": "ExClass1 * SHCXX_rv =\t SH_this->get_class1(\tSHCXX_in);", 
+                            "C_call_list": "SHCXX_in", 
                             "C_name": "AA_exclass2_get_class1", 
                             "C_post_call": "AA_exclass1 * SHC_rv = \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
-                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));\nconst ExClass1 *SH_in = static_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tin));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));\nconst ExClass1 * SHCXX_in = \tstatic_cast<const ExClass1 *>(\tstatic_cast<const void *>(\tin));", 
                             "C_prototype": "AA_exclass2 * self,\t const AA_exclass1 * in", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "AA_exclass1 *", 
@@ -2860,9 +2862,11 @@
                                     "c_const": "", 
                                     "c_ptr": "", 
                                     "c_var": "type", 
+                                    "cxx_decl": "TypeID SHCXX_type", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "TypeID", 
-                                    "cxx_var": "type"
+                                    "cxx_val": "getTypeID(type)", 
+                                    "cxx_var": "SHCXX_type"
                                 }, 
                                 "fmtf": {
                                     "c_var": "type", 
@@ -2910,10 +2914,10 @@
                         "decl": "void* declare(TypeID type, SidreLength len = 1)", 
                         "declgen": "void * declare(TypeID type +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "SH_this->declare(\tgetTypeID(type));", 
-                            "C_call_list": "getTypeID(type)", 
+                            "C_call_code": "SH_this->declare(\tSHCXX_type);", 
+                            "C_call_list": "SHCXX_type", 
                             "C_name": "AA_exclass2_declare_0", 
-                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));\nTypeID SHCXX_type = getTypeID(type);", 
                             "C_prototype": "AA_exclass2 * self,\t int type", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3109,9 +3113,11 @@
                                     "c_const": "", 
                                     "c_ptr": "", 
                                     "c_var": "type", 
+                                    "cxx_decl": "TypeID SHCXX_type", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "TypeID", 
-                                    "cxx_var": "type"
+                                    "cxx_val": "getTypeID(type)", 
+                                    "cxx_var": "SHCXX_type"
                                 }, 
                                 "fmtf": {
                                     "c_var": "type", 
@@ -3201,10 +3207,10 @@
                         "decl": "void* declare(TypeID type, SidreLength len = 1)", 
                         "declgen": "void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "SH_this->declare(\tgetTypeID(type),\t len);", 
-                            "C_call_list": "getTypeID(type),\t len", 
+                            "C_call_code": "SH_this->declare(\tSHCXX_type,\t len);", 
+                            "C_call_list": "SHCXX_type,\t len", 
                             "C_name": "AA_exclass2_declare_1", 
-                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));", 
+                            "C_pre_call": "ExClass2 *SH_this = \tstatic_cast<ExClass2 *>(\tstatic_cast<void *>(\tself));\nTypeID SHCXX_type = getTypeID(type);", 
                             "C_prototype": "AA_exclass2 * self,\t int type,\t SIDRE_SidreLength len", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -5617,9 +5623,11 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "comm", 
+                            "cxx_decl": "MPI_Comm SHCXX_comm", 
                             "cxx_deref": ".", 
                             "cxx_type": "MPI_Comm", 
-                            "cxx_var": "comm"
+                            "cxx_val": "MPI_Comm_f2c(comm)", 
+                            "cxx_var": "SHCXX_comm"
                         }, 
                         "fmtf": {
                             "c_var": "comm", 
@@ -5683,9 +5691,10 @@
                 "decl": "void testmpi(MPI_Comm comm)", 
                 "declgen": "void testmpi(MPI_Comm comm +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "testmpi(\tMPI_Comm_f2c(comm));", 
-                    "C_call_list": "MPI_Comm_f2c(comm)", 
+                    "C_call_code": "testmpi(\tSHCXX_comm);", 
+                    "C_call_list": "SHCXX_comm", 
                     "C_name": "AA_testmpi", 
+                    "C_pre_call": "MPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);", 
                     "C_prototype": "MPI_Fint comm", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5714,9 +5723,11 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "grp", 
+                            "cxx_decl": "axom::sidre::Group * SHCXX_grp", 
                             "cxx_deref": "->", 
                             "cxx_type": "axom::sidre::Group", 
-                            "cxx_var": "SH_grp"
+                            "cxx_val": "\tstatic_cast<axom::sidre::Group *>(\tstatic_cast<void *>(\tgrp))", 
+                            "cxx_var": "SHCXX_grp"
                         }, 
                         "fmtf": {
                             "c_var": "grp", 
@@ -5785,10 +5796,10 @@
                 "decl": "void testgroup1(DataGroup * grp)", 
                 "declgen": "void testgroup1(DataGroup * grp +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "testgroup1(\tSH_grp);", 
-                    "C_call_list": "SH_grp", 
+                    "C_call_code": "testgroup1(\tSHCXX_grp);", 
+                    "C_call_list": "SHCXX_grp", 
                     "C_name": "AA_testgroup1", 
-                    "C_pre_call": "axom::sidre::Group *SH_grp = static_cast<axom::sidre::Group *>(\tstatic_cast<void *>(\tgrp));", 
+                    "C_pre_call": "axom::sidre::Group * SHCXX_grp = \tstatic_cast<axom::sidre::Group *>(\tstatic_cast<void *>(\tgrp));", 
                     "C_prototype": "SIDRE_group * grp", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5817,9 +5828,11 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "grp", 
+                            "cxx_decl": "const axom::sidre::Group * SHCXX_grp", 
                             "cxx_deref": "->", 
                             "cxx_type": "axom::sidre::Group", 
-                            "cxx_var": "SH_grp"
+                            "cxx_val": "\tstatic_cast<const axom::sidre::Group *>(\tstatic_cast<const void *>(\tgrp))", 
+                            "cxx_var": "SHCXX_grp"
                         }, 
                         "fmtf": {
                             "c_var": "grp", 
@@ -5888,10 +5901,10 @@
                 "decl": "void testgroup2(const DataGroup * grp)", 
                 "declgen": "void testgroup2(const DataGroup * grp +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "testgroup2(\tSH_grp);", 
-                    "C_call_list": "SH_grp", 
+                    "C_call_code": "testgroup2(\tSHCXX_grp);", 
+                    "C_call_list": "SHCXX_grp", 
                     "C_name": "AA_testgroup2", 
-                    "C_pre_call": "const axom::sidre::Group *SH_grp = static_cast<const axom::sidre::Group *>(\tstatic_cast<const void *>(\tgrp));", 
+                    "C_pre_call": "const axom::sidre::Group * SHCXX_grp = \tstatic_cast<const axom::sidre::Group *>(\tstatic_cast<const void *>(\tgrp));", 
                     "C_prototype": "const SIDRE_group * grp", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -8119,14 +8132,6 @@
             "PY_PyTypeObject": "FillInTypeForGroup", 
             "base": "wrapped", 
             "c_header": "sidre/wrapGroup.h", 
-            "c_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer", 
-                    "pre_call": [
-                        "{c_const}axom::sidre::Group{c_ptr}{cxx_var} = static_cast<{c_const}axom::sidre::Group{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
-                    ]
-                }
-            }, 
             "c_to_cxx": "\tstatic_cast<{c_const}axom::sidre::Group{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "SIDRE_group", 
             "cxx_header": "sidre/Group.hpp", 
@@ -8184,14 +8189,6 @@
             "PY_from_object": "PP_ExClass1_from_Object", 
             "PY_to_object": "PP_ExClass1_to_Object", 
             "base": "wrapped", 
-            "c_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer", 
-                    "pre_call": [
-                        "{c_const}ExClass1{c_ptr}{cxx_var} = static_cast<{c_const}ExClass1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
-                    ]
-                }
-            }, 
             "c_to_cxx": "\tstatic_cast<{c_const}ExClass1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "AA_exclass1", 
             "cxx_to_c": "\tstatic_cast<{c_const}AA_exclass1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
@@ -8248,14 +8245,6 @@
             "PY_from_object": "PP_ExClass2_from_Object", 
             "PY_to_object": "PP_ExClass2_to_Object", 
             "base": "wrapped", 
-            "c_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer", 
-                    "pre_call": [
-                        "{c_const}ExClass2{c_ptr}{cxx_var} = static_cast<{c_const}ExClass2{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
-                    ]
-                }
-            }, 
             "c_to_cxx": "\tstatic_cast<{c_const}ExClass2{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "AA_exclass2", 
             "cxx_to_c": "\tstatic_cast<{c_const}AA_exclass2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
@@ -8308,14 +8297,6 @@
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "wrapped", 
-            "c_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer", 
-                    "pre_call": [
-                        "{c_const}ExClass3{c_ptr}{cxx_var} = static_cast<{c_const}ExClass3{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}));"
-                    ]
-                }
-            }, 
             "c_to_cxx": "\tstatic_cast<{c_const}ExClass3{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "AA_exclass3", 
             "cxx_to_c": "\tstatic_cast<{c_const}AA_exclass3 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 

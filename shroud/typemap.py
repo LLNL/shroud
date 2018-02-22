@@ -875,17 +875,6 @@ def typedef_wrapped_defaults(typedef):
     # XXX module name may not conflict with type name
 #    typedef.f_module={fmt_class.F_module_name:[unname]}
 
-    typedef.c_statements = dict(
-        intent_in=dict(
-            cxx_local_var = 'pointer',
-            pre_call = [
-                '{c_const}%s{c_ptr}{cxx_var} = static_cast<{c_const}%s{c_ptr}>('
-                '\tstatic_cast<{c_const}void *>(\t{c_var}));' % (
-                    typedef.cxx_type, typedef.cxx_type)
-                ],
-        )
-    )
-
     # return from C function
     # f_c_return_decl='type(CPTR)' % unname,
     typedef.f_statements = dict(
