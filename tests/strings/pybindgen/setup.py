@@ -52,15 +52,17 @@ with open(module_fname, "wt") as fp:
     print("Generating file {}".format(module_fname))
     generate(fp)
 
-strings = Extension('strings',
-                    sources = [module_fname, '../../run-strings/strings.cpp'],
-                    include_dirs=['../../run-strings'])
+strings = Extension(
+    'strings',
+    sources = [module_fname, '../../run-strings/strings.cpp'],
+    include_dirs=['../../run-strings']
+)
 
-setup(name='PyBindGen-strings',
-      version="0.0",
-      description='PyBindGen strings',
-      author='xxx',
-      author_email='yyy@zz',
-      ext_modules=[strings],
-     )
-
+setup(
+    name='PyBindGen-strings',
+    version="0.0",
+    description='PyBindGen strings',
+    author='xxx',
+    author_email='yyy@zz',
+    ext_modules=[strings],
+)
