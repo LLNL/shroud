@@ -46,13 +46,34 @@ from pybindgen import Parameter
 
 def generate(fp):
     mod = pybindgen.Module('tutorial')
+    mod.add_include('"tutorial.hpp"')
     namespace = mod.add_cpp_namespace('tutorial')
-    namespace.add_include('"tutorial.hpp"')
+
+    # default arguments
+    namespace.add_function(
+        'Function5', 'double',
+        [pybindgen.param('double', 'arg1', default_value='3.1415'),
+         pybindgen.param('bool', 'arg2', default_value='true')])
+
+    # overloaded
     namespace.add_function(
         'Function6', None, 
         [pybindgen.param('const std::string &', 'name')])
     namespace.add_function(
         'Function6', None, 
         [pybindgen.param('int', 'index')])
+
+    # overloaded with default arguments
+    namespace.add_function(
+        'overload1', 'int',
+        [pybindgen.param('int', 'num'),
+         pybindgen.param('int', 'offset', default_value='0'),
+         pybindgen.param('int', 'stride', default_value='1')])
+    namespace.add_function(
+        'overload1', 'int',
+        [pybindgen.param('double', 'type'),
+         pybindgen.param('int', 'num'),
+         pybindgen.param('int', 'offset', default_value='0'),
+         pybindgen.param('int', 'stride', default_value='1')])
 
     mod.generate(fp)
