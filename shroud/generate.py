@@ -427,6 +427,7 @@ class GenFunctions(object):
             options = new.options
             options.wrap_c = True
             options.wrap_fortran = True
+            # Python and Lua both deal with default args in their own way
             options.wrap_python = False
             options.wrap_lua = False
             fmt = new.fmtdict

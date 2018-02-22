@@ -226,15 +226,15 @@ passes a pointer::
 .. note:: Multiply pointered arguments ( ``char **`` ) do not 
           map to Fortran directly and require ``type(C_PTR)``.
 
-Logical
-^^^^^^^
+Bool
+^^^^
 
-Logical variables require a conversion since they are not directly
-compatible with C.  In addition, how ``.true.`` and ``.false.`` are
+bool variables require a conversion since they are not directly
+compatible with Fortran.  In addition, how ``.true.`` and ``.false.`` are
 represented internally is compiler dependent.  Some compilers use 1 for
 ``.true.`` while other use -1.
 
-A simple C++ function which accepts and returns a boolean argument::
+A simple C++ function which accepts and returns a ``bool`` argument::
 
     bool Function3(bool arg)
     {

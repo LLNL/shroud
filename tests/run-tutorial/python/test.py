@@ -82,21 +82,19 @@ class Tutorial(unittest.TestCase):
     def testFunction4a(self):
         rv_char = tutorial.Function4a("dog", "cat")
         self.assertEqual(rv_char, "dogcat")
-#
+
 #    call function4b("dog", "cat", rv_char)
 #    call assert_true( rv_char == "dogcat")
-#
+
     def testFunction5(self):
         rv_double = tutorial.Function5()
         self.assertAlmostEqual(rv_double, 13.1415)
         rv_double = tutorial.Function5(1.0)
         self.assertAlmostEqual(rv_double, 11.0)
 
-        # XXX fix bool argument
         rv_double = tutorial.Function5(1.0, False)
         self.assertAlmostEqual(rv_double, 1.0)
-#, 1.d0)
-#
+
     def testFunction6(self):
         tutorial.Function6("name")
         self.assertEqual(tutorial.LastFunctionCalled(), "Function6(string)")
