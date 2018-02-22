@@ -82,8 +82,6 @@
             "LUA_prefix": "l_", 
             "LUA_result": "rv", 
             "LUA_state_var": "L", 
-            "PY_header_filename_suffix": "hpp", 
-            "PY_impl_filename_suffix": "cpp", 
             "PY_module_name": "default_library", 
             "PY_prefix": "PY_", 
             "PY_result": "SHTPy_rv", 

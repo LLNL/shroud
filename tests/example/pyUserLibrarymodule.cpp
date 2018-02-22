@@ -767,9 +767,7 @@ static struct PyModuleDef moduledef = {
 #define INITERROR return
 #endif
 
-#ifdef __cplusplus
 extern "C" {
-#endif
 PyMODINIT_FUNC
 SHROUD_MOD_INIT(void)
 {
@@ -826,9 +824,8 @@ SHROUD_MOD_INIT(void)
         Py_FatalError("can't initialize module userlibrary");
     return RETVAL;
 }
-#ifdef __cplusplus
-}
-#endif
+}   // extern "C"
+
 
 
 }  // namespace nested

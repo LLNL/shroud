@@ -277,9 +277,6 @@ class LibraryNode(AstNode):
             fmt_library.C_header_filename_suffix = 'h'
             fmt_library.C_impl_filename_suffix = 'c'
 
-            fmt_library.PY_header_filename_suffix = 'h'
-            fmt_library.PY_impl_filename_suffix = 'c'
-
             fmt_library.LUA_header_filename_suffix = 'h'
             fmt_library.LUA_impl_filename_suffix = 'c'
 
@@ -287,9 +284,6 @@ class LibraryNode(AstNode):
         else:
             fmt_library.C_header_filename_suffix = 'h'
             fmt_library.C_impl_filename_suffix = 'cpp'
-
-            fmt_library.PY_header_filename_suffix = 'hpp'
-            fmt_library.PY_impl_filename_suffix = 'cpp'
 
             fmt_library.LUA_header_filename_suffix = 'hpp'
             fmt_library.LUA_impl_filename_suffix = 'cpp'

@@ -132,6 +132,17 @@ class Wrapp(util.WrapperMixin):
         options = newlibrary.options
         fmt_library = newlibrary.fmtdict
 
+        if self.language == 'c':
+            fmt_library.PY_header_filename_suffix = 'h'
+            fmt_library.PY_impl_filename_suffix = 'c'
+            fmt_library.PY_extern_C_begin = ''
+            fmt_library.PY_extern_C_end = ''
+        else:
+            fmt_library.PY_header_filename_suffix = 'hpp'
+            fmt_library.PY_impl_filename_suffix = 'cpp'
+            fmt_library.PY_extern_C_begin = 'extern "C" {\n'
+            fmt_library.PY_extern_C_end = '}   // extern "C"\n'
+
         # Format variables
         newlibrary.eval_template('PY_module_filename')
         newlibrary.eval_template('PY_header_filename')
@@ -1236,19 +1247,13 @@ return 1;""", fmt)
         output.append(wformat("""
 extern PyObject *{PY_prefix}error_obj;
 
-#ifdef __cplusplus
-extern "C" {{
-#endif
-#ifdef IS_PY3K
+{PY_extern_C_begin}#ifdef IS_PY3K
 #define SHROUD_MOD_INIT PyInit_{PY_module_name}
 #else
 #define SHROUD_MOD_INIT init{PY_module_name}
 #endif
 PyMODINIT_FUNC SHROUD_MOD_INIT(void);
-#ifdef __cplusplus
-}}
-#endif
-""", fmt))
+{PY_extern_C_end}""", fmt))
         self.namespace(node, None, 'end', output)
         output.append('#endif  /* %s */' % guard)
         self.write_output_file(fname, self.config.python_dir, output)
@@ -1552,10 +1557,7 @@ static struct PyModuleDef moduledef = {{
 #define INITERROR return
 #endif
 
-#ifdef __cplusplus
-extern "C" {{
-#endif
-PyMODINIT_FUNC
+{PY_extern_C_begin}PyMODINIT_FUNC
 SHROUD_MOD_INIT(void)
 {{
     PyObject *m = NULL;
@@ -1591,9 +1593,7 @@ module_end = """
         Py_FatalError("can't initialize module {PY_module_name}");
     return RETVAL;
 }}
-#ifdef __cplusplus
-}}
-#endif
+{PY_extern_C_end}
 """
 
 

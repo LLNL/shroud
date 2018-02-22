@@ -64,17 +64,11 @@
 
 extern PyObject *PY_error_obj;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 #ifdef IS_PY3K
 #define SHROUD_MOD_INIT PyInit_clibrary
 #else
 #define SHROUD_MOD_INIT initclibrary
 #endif
 PyMODINIT_FUNC SHROUD_MOD_INIT(void);
-#ifdef __cplusplus
-}
-#endif
 
 #endif  /* PYCLIBRARYMODULE_H */

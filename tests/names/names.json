@@ -232,6 +232,8 @@
             "LUA_result": "rv", 
             "LUA_state_var": "L", 
             "PY_PyObject": "PyObject", 
+            "PY_extern_C_begin": "extern \"C\" {\n", 
+            "PY_extern_C_end": "}   // extern \"C\"\n", 
             "PY_header_filename": "pytestnamesmodule.hpp", 
             "PY_header_filename_suffix": "hpp", 
             "PY_helper_filename": "pytestnameshelper.cpp", 

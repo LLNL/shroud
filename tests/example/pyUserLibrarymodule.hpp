@@ -91,18 +91,14 @@ PyObject_HEAD
 
 extern PyObject *PP_error_obj;
 
-#ifdef __cplusplus
 extern "C" {
-#endif
 #ifdef IS_PY3K
 #define SHROUD_MOD_INIT PyInit_userlibrary
 #else
 #define SHROUD_MOD_INIT inituserlibrary
 #endif
 PyMODINIT_FUNC SHROUD_MOD_INIT(void);
-#ifdef __cplusplus
-}
-#endif
+}   // extern "C"
 
 
 }  // namespace nested
