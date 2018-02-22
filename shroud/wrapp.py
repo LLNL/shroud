@@ -61,7 +61,7 @@ import re
 from . import declast
 from . import typemap
 from . import util
-from . import visitor
+from . import todict
 from .util import wformat, append_format
 
 # If multiple values are returned, save up into to build a tuple to return.
@@ -1600,22 +1600,18 @@ module_end = """
 """
 
 
-class ToImplied(object):
+class ToImplied(todict.PrintNode):
     """Convert implied expression to Python wrapper code.
 
     Convert functions:
       size  -  PyArray_SIZE
     """
     def __init__(self, expr, func):
+        super(ToImplied, self).__init__()
         self.expr = expr
         self.func = func
 
-    @visitor.on('node')
-    def visit(self, node):
-        pass
-
-    @visitor.when(declast.Identifier)
-    def visit(self, node):
+    def visit_Identifier(self, node):
         # Look for functions
         if node.args == None:
             return node.name
@@ -1638,23 +1634,6 @@ class ToImplied(object):
         else:
             raise RuntimeError("Unexpected function '{}' in expression: {}"
                                .format(node.name, self.expr))
-
-    @visitor.when(declast.BinaryOp)
-    def visit(self, node):
-        return self.visit(node.left) + node.op + self.visit(node.right)
-
-    @visitor.when(declast.UnaryOp)
-    def visit(self, node):
-        return node.op + self.visit(node.node)
-
-    @visitor.when(declast.ParenExpr)
-    def visit(self, node):
-        return '(' + self.visit(node.node) + ')'
-
-    @visitor.when(declast.Constant)
-    def visit(self, node):
-        return node.value
-
 
 def py_implied(expr, func):
     """Convert string to Python code.

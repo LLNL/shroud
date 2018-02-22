@@ -49,29 +49,19 @@ from . import typemap
 from . import util
 from . import visitor
 
-class ToDict(object):
+class ToDict(visitor.Visitor):
     """Convert to dictionary.
-    Used by util.ExpandedEncoder.
     """
 
-    @visitor.on('node') # Note the name of the parameter in the on decorator
-    def visit(self, node):
-        pass
-
-######################################################################
-
-    @visitor.when(list)
-    def visit(self, node):
+    def visit_list(self, node):
         return [ self.visit(n) for n in node ]
 
-    @visitor.when(dict)
-    def visit(self, node):
+    def visit_dict(self, node):
         return {key:self.visit(value) for (key,value) in node.items()}
 
 ######################################################################
 
-    @visitor.when(declast.Ptr)
-    def visit(self, node):
+    def visit_Ptr(self, node):
         d = dict(
             ptr = node.ptr,
             const = node.const,
@@ -79,8 +69,7 @@ class ToDict(object):
         )
         return d
 
-    @visitor.when(declast.Declarator)
-    def visit(self, node):
+    def visit_Declarator(self, node):
         d = dict(
             pointer = self.visit(node.pointer)
         )
@@ -90,8 +79,7 @@ class ToDict(object):
             d['func'] = self.visit(node.func)
         return d
 
-    @visitor.when(declast.Declaration)
-    def visit(self, node):
+    def visit_Declaration(self, node):
         d = dict(
             specifier = node.specifier,
             const = node.const,
@@ -115,8 +103,7 @@ class ToDict(object):
             d['init'] = node.init
         return d
 
-    @visitor.when(declast.Identifier)
-    def visit(self, node):
+    def visit_Identifier(self, node):
         d = dict(
             name = node.name,
         )
@@ -124,8 +111,7 @@ class ToDict(object):
             d['args'] = self.visit(node.args)
         return d
 
-    @visitor.when(declast.BinaryOp)
-    def visit(self, node):
+    def visit_BinaryOp(self, node):
         d = dict(
             left = self.visit(node.left),
             op = node.op,
@@ -133,23 +119,20 @@ class ToDict(object):
         )
         return d
 
-    @visitor.when(declast.UnaryOp)
-    def visit(self, node):
+    def visit_UnaryOp(self, node):
         d = dict(
             op = node.op,
             node = self.visit(node.node)
         )
         return d
 
-    @visitor.when(declast.ParenExpr)
-    def visit(self, node):
+    def visit_ParenExpr(self, node):
         d = dict(
             node = self.visit(node.node)
         )
         return d
 
-    @visitor.when(declast.Constant)
-    def visit(self, node):
+    def visit_Constant(self, node):
         d = dict(
             value = node.value
         )
@@ -157,8 +140,7 @@ class ToDict(object):
 
 ######################################################################
 
-    @visitor.when(util.Scope)
-    def visit(self, node):
+    def visit_Scope(self, node):
         d = {}
         skip = '_' + node.__class__.__name__ + '__'   # __name is skipped
         for key, value in node.__dict__.items():
@@ -168,8 +150,7 @@ class ToDict(object):
 
 ######################################################################
 
-    @visitor.when(typemap.Typedef)
-    def visit(self, node):
+    def visit_Typedef(self, node):
         # only export non-default values
         a = {}
         for key, defvalue in node.defaults.items():
@@ -180,8 +161,7 @@ class ToDict(object):
 
 ######################################################################
 
-    @visitor.when(ast.LibraryNode)
-    def visit(self, node):
+    def visit_LibraryNode(self, node):
         d = dict(
             format=self.visit(node.fmtdict),
             options=self.visit(node.options),
@@ -198,8 +178,7 @@ class ToDict(object):
                 d[key] = self.visit(value)
         return d
 
-    @visitor.when(ast.ClassNode)
-    def visit(self, node):
+    def visit_ClassNode(self, node):
         d = dict(
             cxx_header=node.cxx_header,
             format = self.visit(node.fmtdict),
@@ -213,8 +192,7 @@ class ToDict(object):
         d['methods'] = self.visit(node.functions)
         return d
 
-    @visitor.when(ast.FunctionNode)
-    def visit(self, node):
+    def visit_FunctionNode(self, node):
         d = dict(
             ast=self.visit(node.ast),
             _function_index=node._function_index,
@@ -251,13 +229,9 @@ def to_dict(node):
 
 ######################################################################
 
-class PrintNode(object):
-    @visitor.on('node')
-    def visit(self, node):
-        pass
+class PrintNode(visitor.Visitor):
 
-    @visitor.when(declast.Identifier)
-    def visit(self, node):
+    def visit_Identifier(self, node):
         if node.args == None:
             return node.name
         elif node.args:
@@ -270,20 +244,16 @@ class PrintNode(object):
         else:
             return node.name+ '()'
 
-    @visitor.when(declast.BinaryOp)
-    def visit(self, node):
+    def visit_BinaryOp(self, node):
         return self.visit(node.left) + node.op + self.visit(node.right)
 
-    @visitor.when(declast.UnaryOp)
-    def visit(self, node):
+    def visit_UnaryOp(self, node):
         return node.op + self.visit(node.node)
 
-    @visitor.when(declast.ParenExpr)
-    def visit(self, node):
+    def visit_ParenExpr(self, node):
         return '(' + self.visit(node.node) + ')'
 
-    @visitor.when(declast.Constant)
-    def visit(self, node):
+    def visit_Constant(self, node):
         return node.value
 
 

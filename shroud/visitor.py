@@ -1,79 +1,33 @@
-# The MIT License (MIT)
-#
-# Copyright (c) 2013 Curtis Schlak
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
-#
-# source: https://github.com/realistschuckle/pyvisitor
-
-import inspect
-
-__all__ = ['on', 'when']
-
-def on(param_name):
-  def f(fn):
-    dispatcher = Dispatcher(param_name, fn)
-    return dispatcher
-  return f
 
 
-def when(param_type):
-  def f(fn):
-    frame = inspect.currentframe().f_back
-    func_name = fn.func_name if 'func_name' in dir(fn) else fn.__name__
-    dispatcher = frame.f_locals[func_name]
-    if not isinstance(dispatcher, Dispatcher):
-      dispatcher = dispatcher.dispatcher
-    dispatcher.add_target(param_type, fn)
-    def ff(*args, **kw):
-      return dispatcher(*args, **kw)
-    ff.dispatcher = dispatcher
-    return ff
-  return f
+# derived from 
+# http://peter-hoffmann.com/2010/extrinsic-visitor-pattern-python-inheritance.html
+# with caching from http://peak.telecommunity.com/DevCenter/VisitorRevisited
 
+class Visitor(object):
+    """
+    Subclasses of Visitor need to have methods like:
+    def visit_Class(self, node)
+       # work on instances of Class
+    """
+    def __init__(self):
+        self._cache = {}
 
-class Dispatcher(object):
-  def __init__(self, param_name, fn):
-    frame = inspect.currentframe().f_back.f_back
-    top_level = frame.f_locals == frame.f_globals
-    self.param_index = self.__argspec(fn).args.index(param_name)
-    self.param_name = param_name
-    self.targets = {}
+    def visit(self, node, *args, **kwargs):
+        meth = None
+        klass = node.__class__
+        meth = self._cache.get(klass, None)
+        if meth is None:
+            for cls in node.__class__.__mro__:
+                meth_name = 'visit_'+cls.__name__
+                meth = getattr(self, meth_name, None)
+                if meth:
+                    break
 
-  def __call__(self, *args, **kw):
-    typ = args[self.param_index].__class__
-    d = self.targets.get(typ)
-    if d is not None:
-      return d(*args, **kw)
-    else:
-      issub = issubclass
-      t = self.targets
-      ks = t.iterkeys()
-      return [t[k](*args, **kw) for k in ks if issub(typ, k)]
+            if not meth:
+                meth = self.generic_visit
+            self._cache[klass] = meth
+        return meth(node, *args, **kwargs)
 
-  def add_target(self, typ, target):
-    self.targets[typ] = target
-
-  @staticmethod
-  def __argspec(fn):
-    # Support for Python 3 type hints requires inspect.getfullargspec
-    if hasattr(inspect, 'getfullargspec'):
-      return inspect.getfullargspec(fn)
-    else:
-      return inspect.getargspec(fn)
+    def generic_visit(self, node, *args, **kwargs):
+        raise NotImplementedError("Visitor.generic_visit")
