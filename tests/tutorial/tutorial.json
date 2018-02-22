@@ -31,6 +31,7 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
+                                "c_val": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
@@ -62,8 +63,9 @@
                             "C_call_code": "Class1 * SHCXX_rv = new Class1();", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_new", 
+                            "C_post_call": "TUT_class1 * SHC_rv = \tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_prototype": "", 
-                            "C_return_code": "return \tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_class1 *", 
                             "F_C_call": "c_class1_new", 
                             "F_C_name": "c_class1_new", 
@@ -78,6 +80,7 @@
                             "LUA_name": "new", 
                             "LUA_name_impl": "l_class1_new", 
                             "c_const": "", 
+                            "c_rv_decl": "TUT_class1 * SHC_rv", 
                             "cxx_rv_decl": "Class1 * SHCXX_rv", 
                             "function_name": "new", 
                             "underscore_name": "new"

@@ -594,33 +594,33 @@ Shroud provides several options to provide a more idiomatic usage.
 Each of these declaration call identical C++ functions but they are
 wrapped differently::
 
-    - decl: const char * getChar1()  +pure
-    - decl: const char * getChar2+len(30)()
-    - decl: const char * getChar3()
+    - decl: const char * getCharPtr1()  +pure
+    - decl: const char * getCharPtr2+len(30)()
+    - decl: const char * getCharPtr3()
       format:
          F_string_result_as_arg: output
 
 All of the generated C wrappers are very similar.  The buffer version
 copies the result into a buffer of known length::
 
-    const char * STR_get_char1()
+    const char * STR_get_char_ptr1()
     {
-        const char * SH_rv = getChar1();
-        return SH_rv;
+        const char * SHC_rv = getChar1();
+        return SHC_rv;
     }
 
     void STR_get_char1_bufferify(char * SHF_rv, int NSHF_rv)
     {
-        const char * SHT_rv = getChar1();
-        if (SHT_rv == NULL) {
+        const char * SHC_rv = getChar1();
+        if (SHC_rv == NULL) {
             std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
-            ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv);
         }
         return;
     }
 
-``getChar1`` adds the pure annotation.  This annotation is passed to
+``getCharPtr1`` adds the pure annotation.  This annotation is passed to
 the Fortran interface where it declares the function as ``pure``::
 
         pure function c_get_char1() &
@@ -640,12 +640,12 @@ variable length.  The *pure* annotation tells the compiler there are
 no side effects which is important because it will be called twice.
 You'd also want the C++ function to be fast::
 
-    function get_char1() &
+    function get_char_ptr1() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        character(kind=C_CHAR, len=strlen_ptr(c_get_char1())) :: SHT_rv
-        SHT_rv = fstr(c_get_char1())
-    end function get_char1
+        character(kind=C_CHAR, len=strlen_ptr(c_get_char_ptr1())) :: SHT_rv
+        SHT_rv = fstr(c_get_char_ptr1())
+    end function get_char_ptr1
 
 If you know the maximum size of string that you expect the function to
 return, then the *len* attribute is used to declare the length.  The
@@ -653,12 +653,12 @@ advantage is that the C function is only called once.  The downside is
 that any result which is longer than the length will be silently
 truncated::
 
-    function get_char2() &
+    function get_char_ptr2() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
-        call c_get_char2_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
-    end function get_char2
+        call c_get_char_ptr2_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
+    end function get_char_ptr2
 
 The third option gives the best of both worlds.  The C wrapper is only
 called once and any size result can be returned.  The result of the C
@@ -666,11 +666,11 @@ function will be returned in the Fortran argument named by format string
 **F_string_result_as_arg**.  The potential downside is that a Fortran
 subroutine is generated instead of a function::
 
-    subroutine get_char3(output)
+    subroutine get_char_ptr3(output)
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: output
-        call c_get_char3_bufferify(output, len(output, kind=C_INT))
-    end subroutine get_char3
+        call c_get_char_ptr3_bufferify(output, len(output, kind=C_INT))
+    end subroutine get_char_ptr3
 
 .. char ** not supported
 
@@ -686,18 +686,18 @@ The generated wrappers are::
 
     const char * STR_get_string1()
     {
-        const std::string & SHT_rv = getString1();
-        const char * XSHT_rv = SHT_rv.c_str();
-        return XSHT_rv;
+        const std::string & SHCXX_rv = getString1();
+        const char * SHC_rv = SHCXX_rv.c_str();
+        return SHC_rv;
     }
     
     void STR_get_string1_bufferify(char * SHF_rv, int NSHF_rv)
     {
-        const std::string & SHT_rv = getString1();
-        if (SHT_rv.empty()) {
+        const std::string & SHCXX_rv = getString1();
+        if (SHCXX_rv.empty()) {
             std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
-            ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
         }
         return;
     }
@@ -749,8 +749,8 @@ The C wrapper then creates a ``std::vector``::
     int TUT_vector_sum_bufferify(const int * arg, long Sarg)
     {
         const std::vector<int> SH_arg(arg, arg + Sarg);
-        int SH_rv = vector_sum(SH_arg);
-        return SH_rv;
+        int SHC_rv = vector_sum(SH_arg);
+        return SHC_rv;
     }
     
     void TUT_vector_iota_bufferify(int * arg, long Sarg)
@@ -962,15 +962,15 @@ The C buffer version of the wrapper is::
 
     void STR_get_string7_bufferify(char * SHF_rv, int NSHF_rv)
     {
-        const std::string * SHT_rv = getString7();
-        if (SHT_rv->empty()) {
+        const std::string * SHCXX_rv = getString7();
+        if (SHCXX_rv->empty()) {
             std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
-            ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv->c_str());
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv->c_str());
         }
         {
             // C_finalize
-            delete SHT_rv;
+            delete SHCXX_rv;
         }
         return;
     }
@@ -981,14 +981,13 @@ leak memory when called::
 
     const char * STR_get_string7()
     {
-        const std::string * SHT_rv = getString7();
-        const char * XSHT_rv = SHT_rv->c_str();
-        return XSHT_rv;
+        const std::string * SHCXX_rv = getString7();
+        const char * SHC_rv = SHCXX_rv->c_str();
+        return SHC_rv;
     }
 
-
-
 .. note:: Reference counting and garbage collection are still a work in progress
+
 
 .. _TypesAnchor_Implied_argument:
 
@@ -1048,7 +1047,3 @@ The mold argument was added to the Fortran 2008 standard.  If the
 option **F_standard** is not 2008 then the allocate statement will be::
 
         allocate(out(lbound(in,1):ubound(in,1)))
-
-
-
-

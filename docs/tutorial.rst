@@ -395,20 +395,20 @@ C wrappers::
 
     double TUT_function5()
     {
-        double SHT_rv = Function5();
-        return SHT_rv;
+        double SHC_rv = Function5();
+        return SHC_rv;
     }
     
     double TUT_function5_arg1(double arg1)
     {
-        double SHT_rv = Function5(arg1);
-        return SHT_rv;
+        double SHC_rv = Function5(arg1);
+        return SHC_rv;
     }
     
     double TUT_function5_arg1_arg2(double arg1, bool arg2)
     {
-        double SHT_rv = Function5(arg1, arg2);
-        return SHT_rv;
+        double SHC_rv = Function5(arg1, arg2);
+        return SHC_rv;
     }
 
 
@@ -610,14 +610,14 @@ C wrapper::
 
     int TUT_function8_int()
     {
-        int SHT_rv = Function8<int>();
-        return SHT_rv;
+        int SHC_rv = Function8<int>();
+        return SHC_rv;
     }
 
     double TUT_function8_double()
     {
-        double SHT_rv = Function8<double>();
-        return SHT_rv;
+        double SHC_rv = Function8<double>();
+        return SHC_rv;
     }
 
 Generic Functions
@@ -710,8 +710,8 @@ The C wrapper will use ``int``::
 
   int TUT_typefunc(int arg)
   {
-    int SHT_rv = typefunc(arg);
-    return SHT_rv;
+    int SHC_rv = typefunc(arg);
+    return SHC_rv;
   }
 
 Enumerations
@@ -751,9 +751,9 @@ return type is explicitly converted to a C type in the generated wrapper::
 
   int TUT_enumfunc(int arg)
   {
-    EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));
-    int XSHT_rv = static_cast<int>(SHT_rv);
-    return XSHT_rv;
+    EnumTypeID SHCXX_rv = enumfunc(static_cast<EnumTypeID>(arg));
+    int SHC_rv = static_cast<int>(SHCXX_rv);
+    return SHC_rv;
   }
 
 Without the explicit conversion you're likely to get an error such as::
@@ -813,8 +813,10 @@ pointers for every instance::
 
     TUT_class1 * TUT_class1_new()
     {
-        Class1 *SHT_rv = new Class1();
-        return static_cast<TUT_class1 *>(static_cast<void *>(SHT_rv));
+        Class1 * SHCXX_rv = new Class1();
+        TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(
+            static_cast<void *>(SHCXX_rv));
+        return SHC_rv;
     }
 
     void TUT_class1_delete(TUT_class1 * self)

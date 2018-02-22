@@ -610,8 +610,12 @@ class Wrapc(util.WrapperMixin):
         if is_ctor:
             fmt_func.C_call_code = wformat('{cxx_rv_decl} = new {cxx_class}'
                                            '({C_call_list});', fmt_func)
-            C_return_code = ('return {};'.format(
-                wformat(result_typedef.cxx_to_c, fmt_result)))
+            if result_typedef.cxx_to_c is not None:
+                fmt_func.c_rv_decl = CXX_result.gen_arg_as_c(
+                    name=fmt_result.c_var, params=None, continuation=True)
+                fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
+            append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
+            C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:
             fmt_func.C_call_code = 'delete %s;' % fmt_func.CXX_this
         elif CXX_subprogram == 'subroutine':

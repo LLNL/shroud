@@ -37,6 +37,7 @@
                         ], 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_val": "\tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
@@ -68,8 +69,9 @@
                             "C_call_code": "ExClass1 * SHCXX_rv = new ExClass1();", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_ctor_0", 
+                            "C_post_call": "AA_exclass1 * SHC_rv = \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_prototype": "", 
-                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_call": "c_exclass1_ctor_0", 
                             "F_C_name": "c_exclass1_ctor_0", 
@@ -84,6 +86,7 @@
                             "LUA_name": "ctor", 
                             "LUA_name_impl": "l_exclass1_ctor", 
                             "c_const": "", 
+                            "c_rv_decl": "AA_exclass1 * SHC_rv", 
                             "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_0", 
@@ -123,6 +126,7 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_val": "\tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
@@ -179,9 +183,10 @@
                             "C_call_code": "ExClass1 * SHCXX_rv = new ExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1", 
+                            "C_post_call": "AA_exclass1 * SHC_rv = \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
-                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_call": "c_exclass1_ctor_1_bufferify", 
                             "F_C_name": "c_exclass1_ctor_1", 
@@ -194,6 +199,7 @@
                             "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "c_const": "", 
+                            "c_rv_decl": "AA_exclass1 * SHC_rv", 
                             "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_1", 
@@ -226,6 +232,7 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_val": "\tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
@@ -279,12 +286,14 @@
                             "C_call_code": "ExClass1 * SHCXX_rv = new ExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1_bufferify", 
+                            "C_post_call": "AA_exclass1 * SHC_rv = \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
                             "C_prototype": "const char * name,\t int Lname", 
-                            "C_return_code": "return \tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "AA_exclass1 *", 
                             "F_C_name": "c_exclass1_ctor_1_bufferify", 
                             "c_const": "", 
+                            "c_rv_decl": "AA_exclass1 * SHC_rv", 
                             "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_1_bufferify", 
@@ -1741,6 +1750,7 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_val": "\tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
@@ -1795,9 +1805,10 @@
                             "C_call_code": "ExClass2 * SHCXX_rv = new ExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor", 
+                            "C_post_call": "AA_exclass2 * SHC_rv = \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
-                            "C_return_code": "return \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "AA_exclass2 *", 
                             "F_C_call": "c_exclass2_ctor_bufferify", 
                             "F_C_name": "c_exclass2_ctor", 
@@ -1812,6 +1823,7 @@
                             "LUA_name": "ctor", 
                             "LUA_name_impl": "l_exclass2_ctor", 
                             "c_const": "", 
+                            "c_rv_decl": "AA_exclass2 * SHC_rv", 
                             "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
@@ -1839,6 +1851,7 @@
                         }, 
                         "_fmtresult": {
                             "fmtc": {
+                                "c_val": "\tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
@@ -1889,12 +1902,14 @@
                             "C_call_code": "ExClass2 * SHCXX_rv = new ExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor_bufferify", 
+                            "C_post_call": "AA_exclass2 * SHC_rv = \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_pre_call": "const std::string SH_name(name, trim_name);", 
                             "C_prototype": "const char * name,\t int trim_name", 
-                            "C_return_code": "return \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
+                            "C_return_code": "return SHC_rv;", 
                             "C_return_type": "AA_exclass2 *", 
                             "F_C_name": "c_exclass2_ctor_bufferify", 
                             "c_const": "", 
+                            "c_rv_decl": "AA_exclass2 * SHC_rv", 
                             "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_bufferify", 
