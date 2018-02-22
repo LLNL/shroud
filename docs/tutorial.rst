@@ -178,54 +178,6 @@ The C wrapper can be called directly by Fortran using the interface::
      end interface
 
 
-Pointer arguments
------------------
-
-When a C++ routine accepts a pointer argument it may mean
-several things
-
- * output a scalar
- * input or output an array
- * pass-by-reference for a struct or class.
-
-In this example, ``len`` and ``values`` are an input array and
-``result`` is an output scalar::
-
-    void Sum(int len, int *values, int *result)
-    {
-        int sum = 0;
-        for (int i=0; i < len; i++) {
-          sum += values[i];
-        }
-        *result = sum;
-        return;
-    }
-
-When this function is wrapped it is necessary to give some annotations
-in the YAML file to describe how the variables should be mapped to
-Fortran::
-
-  - decl: void Sum(int len, int *values+dimension(len)+intent(in),
-                   int *result+intent(out))
-
-In the ``BIND(C)`` interface only *len* uses the ``value`` attribute.
-Without the attribute Fortran defaults to pass-by-reference i.e.
-passes a pointer::
-
-    interface
-        subroutine sum(len, values, result) &
-                bind(C, name="TUT_sum")
-            use iso_c_binding
-            implicit none
-            integer(C_INT), value, intent(IN) :: len
-            integer(C_INT), intent(IN) :: values(len)
-            integer(C_INT), intent(OUT) :: result
-        end subroutine sum
-    end interface
-
-.. note:: Multiply pointered arguments ( ``char **`` ) do not 
-          map to Fortran directly and require ``type(C_PTR)``.
-
 Bool
 ^^^^
 
@@ -275,6 +227,80 @@ The wrapper routine uses the compiler to coerce type using an assignment.
 It is possible to call ``c_function3`` directly from Fortran, but the
 wrapper does the type conversion necessary to make it easier to use
 within an existing Fortran application.
+
+
+Pointer arguments
+-----------------
+
+When a C++ routine accepts a pointer argument it may mean
+several things
+
+ * output a scalar
+ * input or output an array
+ * pass-by-reference for a struct or class.
+
+In this example, ``len`` and ``values`` are an input array and
+``result`` is an output scalar::
+
+    void Sum(int len, int *values, int *result)
+    {
+        int sum = 0;
+        for (int i=0; i < len; i++) {
+          sum += values[i];
+        }
+        *result = sum;
+        return;
+    }
+
+When this function is wrapped it is necessary to give some annotations
+in the YAML file to describe how the variables should be mapped to
+Fortran::
+
+  - decl: void Sum(int  len    +implied(size(values)),
+                   int *values +dimension(:)+intent(in),
+                   int *result +intent(out))
+
+In the ``BIND(C)`` interface only *len* uses the ``value`` attribute.
+Without the attribute Fortran defaults to pass-by-reference
+i.e. passes a pointer.
+The ``dimension`` attribute defines the variable as a one dimensional,
+assumed-shape array.  In the C interface this maps to an 
+assumed-length array.  C pointers, like assumed-length arrays, have no
+idea how many values they point to.  This information is passed
+by the *len* argument::
+
+    interface
+        subroutine c_sum(len, values, result) &
+                bind(C, name="TUT_sum")
+            use iso_c_binding
+            implicit none
+            integer(C_INT), value, intent(IN) :: len
+            integer(C_INT), intent(IN) :: values(*)
+            integer(C_INT), intent(OUT) :: result
+        end subroutine c_sum
+    end interface
+
+The *len* argument defines the ``implied`` attribute.  This argument
+is not part of the Fortran API since its presence is *implied* from the
+expression ``size(values)``. This uses the Fortran intrinsic ``size``
+to compute the total number of elements in the array.  It then passes
+this value to the C wrapper::
+
+    subroutine sum(values, result)
+        use iso_c_binding, only : C_INT
+        integer(C_INT) :: len
+        integer(C_INT), intent(IN) :: values(:)
+        integer(C_INT), intent(OUT) :: result
+        len = size(values)
+        call c_sum(len, values, result)
+    end subroutine sum
+
+.. note:: If the *len* argument were named *size*, this would
+          present a problem since the ``size`` intrinsic function
+          is also used.  The generated code would not compile.
+
+.. note:: Multiply pointered arguments ( ``char **`` ) do not 
+          map to Fortran directly and require ``type(C_PTR)``.
 
 
 Character

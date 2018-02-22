@@ -227,44 +227,11 @@ The return value of the function is converted into a ``PyObject``
 in the *post_call* section of the wrapper.
 
 
-Pointer arguments
------------------
-
-When a C++ routine accepts a pointer argument it may mean
-several things
-
- * output a scalar
- * input or output an array
- * pass-by-reference for a struct or class.
-
-In this example, ``len`` and ``values`` are an input array and
-``result`` is an output scalar::
-
-    void Sum(int len, int *values, int *result)
-    {
-        int sum = 0;
-        for (int i=0; i < len; i++) {
-          sum += values[i];
-        }
-        *result = sum;
-        return;
-    }
-
-When this function is wrapped it is necessary to give some annotations
-in the YAML file to describe how the variables should be mapped to
-Fortran::
-
-  - decl: void Sum(int len, +implied(size(values)),
-                   int *values+dimension(:)+intent(in),
-                   int *result+intent(out))
-
-
-
 Bool
 ^^^^
 
 ``PyArg_ParseTupleAndKeywords`` did not support boolean directly
-until version 3.3. To deal with older version of Python a ``PyObject``
+until version 3.3. To deal with older versions of Python a ``PyObject``
 is taken from the arguments then converted into a bool 
 with ``PyObject_IsTrue`` during the *pre_call* phase.
 
@@ -306,6 +273,96 @@ This will produce the wrapper::
         PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
     
         return (PyObject *) SHTPy_rv;
+    }
+
+
+Pointer arguments
+-----------------
+
+When a C++ routine accepts a pointer argument it may mean
+several things
+
+ * output a scalar
+ * input or output an array
+ * pass-by-reference for a struct or class.
+
+In this example, ``len`` and ``values`` are an input array and
+``result`` is an output scalar::
+
+    void Sum(int len, int *values, int *result)
+    {
+        int sum = 0;
+        for (int i=0; i < len; i++) {
+          sum += values[i];
+        }
+        *result = sum;
+        return;
+    }
+
+When this function is wrapped it is necessary to give some annotations
+in the YAML file to describe how the variables should be mapped to
+Fortran::
+
+  - decl: void Sum(int  len,   +implied(size(values)),
+                   int *values +dimension(:)+intent(in),
+                   int *result +intent(out))
+
+The ``dimension`` attribute defines the variable as a one dimensional
+array.  NumPy is used to create an array from the argument
+to the Python function. C pointers have no
+idea how many values they point to.  This information is passed
+by the *len* argument.
+
+The *len* argument defines the ``implied`` attribute.  This argument
+is not part of the Python API since its presence is *implied* from the
+expression ``size(values)``. This uses the NumPy
+to compute the total number of elements in the array.  It then passes
+this value to the C wrapper::
+
+    static PyObject *
+    PY_Sum(
+      PyObject *SHROUD_UNUSED(self),
+      PyObject *args,
+      PyObject *kwds)
+    {
+        PyObject * SHTPy_values;
+        PyArrayObject * SHPy_values = NULL;
+        const char *SHT_kwlist[] = {
+            "values",
+            NULL };
+    
+        if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
+            const_cast<char **>(SHT_kwlist), &SHTPy_values))
+            return NULL;
+    
+        // post_parse
+        SHPy_values = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
+            SHTPy_values, NPY_INT, NPY_ARRAY_IN_ARRAY));
+        if (SHPy_values == NULL) {
+            PyErr_SetString(PyExc_ValueError,
+                "values must be a 1-D array of int");
+            goto fail;
+        }
+        {
+            // pre_call
+            int * values = static_cast<int *>(PyArray_DATA(SHPy_values));
+            int result;  // intent(out)
+            int len = PyArray_SIZE(SHPy_values);
+    
+            Sum(len, values, &result);
+    
+            // post_call
+            PyObject * SHPy_result = PyInt_FromLong(result);
+    
+            // cleanup
+            Py_DECREF(SHPy_values);
+    
+            return (PyObject *) SHPy_result;
+        }
+    
+    fail:
+        Py_XDECREF(SHPy_values);
+        return NULL;
     }
 
 
@@ -626,68 +683,7 @@ C wrapper::
         return SHT_rv;
     }
 
-Generic Functions
------------------
-
-C and C++ provide a type promotion feature when calling functions
-which Fortran does not support::
-
-    void Function9(double arg);
-
-    Function9(1.0f);
-    Function9(2.0);
-
-When Function9 is wrapped in Fortran it may only be used with the correct arguments::
-
-    call function9(1.)
-                   1
-  Error: Type mismatch in argument 'arg' at (1); passed REAL(4) to REAL(8)
-
-It would be possible to create a version of the routine in C++ which
-accepts floats, but that would require changes to the library being
-wrapped.  Instead it is possible to create a generic interface to the
-routine by defining which variables need their types changed.  This is
-similar to templates in C++ but will only impact the Fortran wrapper.
-Instead of specify the Type which changes, you specify the argument which changes::
-
-  - decl: void Function9(double arg)
-    fortran_generic:
-       arg:
-       -  float
-       -  double
-
-This will generate only one C wrapper which accepts a double::
-
-  void TUT_function9(double arg)
-  {
-      Function9(arg);
-      return;
-  }
-
-But it will generate two Fortran wrappers and a generic interface
-block.  Each wrapper will coerce the argument to the correct type::
-
-    interface function9
-        module procedure function9_float
-        module procedure function9_double
-    end interface function9
-
-    subroutine function9_float(arg)
-        use iso_c_binding, only : C_DOUBLE, C_FLOAT
-        real(C_FLOAT), value, intent(IN) :: arg
-        call c_function9(real(arg, C_DOUBLE))
-    end subroutine function9_float
-    
-    subroutine function9_double(arg)
-        use iso_c_binding, only : C_DOUBLE
-        real(C_DOUBLE), value, intent(IN) :: arg
-        call c_function9(arg)
-    end subroutine function9_double
-
-It may now be used with single or double precision arguments::
-
-  call function9(1.0)
-  call function9(1.0d0)
+.. Generic Functions is only needed for Fortran.
 
 
 Types
@@ -782,8 +778,8 @@ TODO
 Classes
 -------
 
-Each class is wrapped in a Fortran derived type which holds a
-``type(C_PTR)`` pointer to an C++ instance of the class.  Class
+Each class is wrapped in an extension type which holds a
+pointer to an C++ instance of the class.  Class
 methods are wrapped using Fortran's type-bound procedures.  This makes
 Fortran usage very similar to C++.
 
@@ -809,13 +805,23 @@ them.  They default to **ctor** and **dtor**.  The names can be
 overridden by supplying the **+name** annotation.  These declarations
 will create wrappers over the ``new`` and ``delete`` C++ keywords.
 
-The file ``wrapClass1.h`` will have an opaque struct for the class.
-This is to allows some measure of type safety over using ``void``
-pointers for every instance::
+The file ``pyTutorialmodule.hpp`` will have a struct for the class::
 
-    struct s_TUT_class1;
-    typedef struct s_TUT_class1 TUT_class1;
+    typedef struct {
+    PyObject_HEAD
+        Class1 * obj;
+    } PY_Class1;
 
+And the class is defined in the module initialization function::
+
+    PY_Class1_Type.tp_new   = PyType_GenericNew;
+    PY_Class1_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Class1_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Class1_Type);
+    PyModule_AddObject(m, "Class1", (PyObject *)&PY_Class1_Type);
+
+old::
 
     TUT_class1 * TUT_class1_new()
     {
@@ -830,11 +836,14 @@ pointers for every instance::
         return;
     }
 
-    void TUT_class1_method1(TUT_class1 * self)
+    static PyObject *
+    PY_class1_Method1(
+      PY_Class1 *self,
+      PyObject *SHROUD_UNUSED(args),
+      PyObject *SHROUD_UNUSED(kwds))
     {
-        Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
-        SH_this->Method1();
-        return;
+        self->obj->Method1();
+        Py_RETURN_NONE;
     }
 
 For Fortran a derived type is created::

@@ -673,7 +673,7 @@
                         "void"
                     ]
                 }, 
-                "decl": "void Sum(int len +implied(size(values)), int *values+dimension(:)+intent(in), int *result+intent(out))", 
+                "decl": "void Sum(int  len    +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))", 
                 "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))", 
                 "format": {
                     "C_call_code": "Sum(\tlen,\t values,\t result);", 

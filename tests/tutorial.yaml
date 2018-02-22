@@ -68,9 +68,9 @@ types:
 functions:
 - decl: void Function1()
 - decl: double Function2(double arg1, int arg2)
-- decl: void Sum(int len +implied(size(values)),
-                 int *values+dimension(:)+intent(in),
-                 int *result+intent(out))
+- decl: void Sum(int  len    +implied(size(values)),
+                 int *values +dimension(:)+intent(in),
+                 int *result +intent(out))
   options:
     # unable to deal with dimension
     wrap_lua: False
