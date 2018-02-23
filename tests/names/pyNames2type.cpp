@@ -47,14 +47,6 @@
 // splicer end class.Names2.impl.C_definition
 // splicer begin class.Names2.impl.additional_methods
 // splicer end class.Names2.impl.additional_methods
-static int
-PY_Names2_tp_init (PY_Names2 *self, PyObject *args, PyObject *kwds)
-{
-// splicer begin class.Names2.type.init
-    PyErr_SetString(PyExc_NotImplementedError, "init");
-    return -1;
-// splicer end class.Names2.type.init
-}
 static void
 PY_Names2_tp_del (PY_Names2 *self)
 {
@@ -130,7 +122,7 @@ PyTypeObject PY_Names2_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)PY_Names2_tp_init,                   /* tp_init */
+        (initproc)None,                   /* tp_init */
         (allocfunc)0,                  /* tp_alloc */
         (newfunc)0,                    /* tp_new */
         (freefunc)0,                   /* tp_free */

@@ -93,22 +93,22 @@ module tutorial_mod
 
     interface
 
-        function c_class1_new() &
+        function c_class1_new_default() &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_new")
+                bind(C, name="TUT_class1_new_default")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) :: SHT_rv
-        end function c_class1_new
+        end function c_class1_new_default
 
-        function c_class1_newflag(flag) &
+        function c_class1_new_flag(flag) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_newflag")
+                bind(C, name="TUT_class1_new_flag")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(C_PTR) :: SHT_rv
-        end function c_class1_newflag
+        end function c_class1_new_flag
 
         subroutine c_class1_delete(self) &
                 bind(C, name="TUT_class1_delete")
@@ -552,25 +552,25 @@ contains
 
     ! Class1() +name(new)
     ! function_index=0
-    function class1_new() &
+    function class1_new_default() &
             result(SHT_rv)
         type(class1) :: SHT_rv
-        ! splicer begin class.Class1.method.new
-        SHT_rv%voidptr = c_class1_new()
-        ! splicer end class.Class1.method.new
-    end function class1_new
+        ! splicer begin class.Class1.method.new_default
+        SHT_rv%voidptr = c_class1_new_default()
+        ! splicer end class.Class1.method.new_default
+    end function class1_new_default
 
-    ! Class1(int flag +intent(in)+value) +name(newflag)
+    ! Class1(int flag +intent(in)+value) +name(new)
     ! function_index=1
-    function class1_newflag(flag) &
+    function class1_new_flag(flag) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        ! splicer begin class.Class1.method.newflag
-        SHT_rv%voidptr = c_class1_newflag(flag)
-        ! splicer end class.Class1.method.newflag
-    end function class1_newflag
+        ! splicer begin class.Class1.method.new_flag
+        SHT_rv%voidptr = c_class1_new_flag(flag)
+        ! splicer end class.Class1.method.new_flag
+    end function class1_new_flag
 
     ! ~Class1() +name(delete)
     ! function_index=2

@@ -159,6 +159,7 @@ C-interface, Fortran function int verylongfunctionname2(int verylongname1 +inten
 C-interface, Fortran function void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close wrapfuserlibrary.f
 class ExClass1
+Python method ExClass1()
 Python method ExClass1(const string * name +intent(in))
 Python method ~ExClass1()
 Python method int incrementCount(int incr +intent(in)+value)

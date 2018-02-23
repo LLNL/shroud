@@ -49,14 +49,6 @@ namespace tutorial {
 // splicer end class.Class1.impl.C_definition
 // splicer begin class.Class1.impl.additional_methods
 // splicer end class.Class1.impl.additional_methods
-static int
-PY_Class1_tp_init (PY_Class1 *self, PyObject *args, PyObject *kwds)
-{
-// splicer begin class.Class1.type.init
-    PyErr_SetString(PyExc_NotImplementedError, "init");
-    return -1;
-// splicer end class.Class1.type.init
-}
 static void
 PY_Class1_tp_del (PY_Class1 *self)
 {
@@ -64,6 +56,41 @@ PY_Class1_tp_del (PY_Class1 *self)
     PyErr_SetString(PyExc_NotImplementedError, "del");
     return ;
 // splicer end class.Class1.type.del
+}
+
+static int
+PY_class1_new_default(
+  PY_Class1 *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// Class1() +name(new)
+// splicer begin class.Class1.method.new_default
+    self->obj = new Class1();
+    return 0;
+// splicer end class.Class1.method.new_default
+}
+
+static int
+PY_class1_new_flag(
+  PY_Class1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// Class1(int flag +intent(in)+value) +name(new)
+// splicer begin class.Class1.method.new_flag
+    int flag;
+    const char *SHT_kwlist[] = {
+        "flag",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:new",
+        const_cast<char **>(SHT_kwlist), &flag))
+        return -1;
+
+    self->obj = new Class1(flag);
+    return 0;
+// splicer end class.Class1.method.new_flag
 }
 
 static char PY_class1_Method1__doc__[] =
@@ -81,6 +108,44 @@ PY_class1_Method1(
     self->obj->Method1();
     Py_RETURN_NONE;
 // splicer end class.Class1.method.method1
+}
+
+static char PY_class1_new__doc__[] =
+"documentation"
+;
+
+static int
+PY_class1_new(
+  PY_Class1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin class.Class1.method.new
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    int rv;
+    if (SHT_nargs == 0) {
+        rv = PY_class1_new_default(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rv;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rv;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 1) {
+        rv = PY_class1_new_flag(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rv;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rv;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return -1;
+// splicer end class.Class1.method.new
 }
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods
@@ -151,7 +216,7 @@ PyTypeObject PY_Class1_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)PY_Class1_tp_init,                   /* tp_init */
+        (initproc)PY_class1_new,                   /* tp_init */
         (allocfunc)0,                  /* tp_alloc */
         (newfunc)0,                    /* tp_new */
         (freefunc)0,                   /* tp_free */

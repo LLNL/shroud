@@ -923,9 +923,12 @@ wrapped libraries.  The file is named by the global field
 **YAML_type_filename**. This file will only list some of the fields
 show above with the remainder set to default values by Shroud.
 
-
-
-    
+The default name of the constructor is ``ctor``.  The name can 
+be specified with the **name** attribute.
+If the constructor is overloaded, each constructor must be given the
+same **name** attribute.
+The *function_suffix* must not be explicitly set to blank since the name
+is used by the ``generic`` interface.
 
 ..  chained function calls
 

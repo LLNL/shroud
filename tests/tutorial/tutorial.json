@@ -29,6 +29,10 @@
                 }, 
                 "methods": [
                     {
+                        "_cxx_overload": [
+                            0, 
+                            1
+                        ], 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_val": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
@@ -40,9 +44,18 @@
                                 "c_var": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PY_Class1", 
+                                "PyTypeObject": "PY_Class1_Type", 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 0, 
+                        "_overloaded": true, 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -62,32 +75,38 @@
                         "format": {
                             "C_call_code": "Class1 * SHCXX_rv = new Class1();", 
                             "C_call_list": "", 
-                            "C_name": "TUT_class1_new", 
+                            "C_name": "TUT_class1_new_default", 
                             "C_post_call": "TUT_class1 * SHC_rv = \tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_class1 *", 
-                            "F_C_call": "c_class1_new", 
-                            "F_C_name": "c_class1_new", 
+                            "F_C_call": "c_class1_new_default", 
+                            "F_C_name": "c_class1_new_default", 
                             "F_arg_c_call": "", 
                             "F_arguments": "", 
-                            "F_call_code": "SHT_rv%voidptr = c_class1_new()", 
-                            "F_name_function": "new", 
+                            "F_call_code": "SHT_rv%voidptr = c_class1_new_default()", 
+                            "F_name_function": "new_default", 
                             "F_name_generic": "new", 
-                            "F_name_impl": "class1_new", 
+                            "F_name_impl": "class1_new_default", 
                             "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "LUA_name": "new", 
                             "LUA_name_impl": "l_class1_new", 
+                            "PY_name_impl": "PY_class1_new_default", 
                             "c_const": "", 
                             "c_rv_decl": "TUT_class1 * SHC_rv", 
                             "cxx_rv_decl": "Class1 * SHCXX_rv", 
                             "function_name": "new", 
+                            "function_suffix": "_default", 
                             "underscore_name": "new"
                         }, 
                         "options": {}
                     }, 
                     {
+                        "_cxx_overload": [
+                            0, 
+                            1
+                        ], 
                         "_fmtargs": {
                             "flag": {
                                 "fmtc": {
@@ -111,6 +130,18 @@
                                     "cxx_type": "int", 
                                     "cxx_var": "flag", 
                                     "lua_var": "SH_Lua_flag"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_decl": "int flag", 
+                                    "c_ptr": "", 
+                                    "c_type": "int", 
+                                    "c_var": "flag", 
+                                    "cxx_decl": "int flag", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "int", 
+                                    "cxx_var": "flag", 
+                                    "py_var": "SHPy_flag"
                                 }
                             }
                         }, 
@@ -125,16 +156,25 @@
                                 "c_var": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PY_Class1", 
+                                "PyTypeObject": "PY_Class1_Type", 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 1, 
+                        "_overloaded": true, 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
                             "fattrs": {
                                 "_constructor": true, 
                                 "_name": "ctor", 
-                                "name": "newflag"
+                                "name": "new"
                             }, 
                             "func_const": false, 
                             "params": [
@@ -157,33 +197,33 @@
                                 "Class1"
                             ]
                         }, 
-                        "decl": "Class1(int flag) +name(newflag)", 
-                        "declgen": "Class1(int flag +intent(in)+value) +name(newflag)", 
+                        "decl": "Class1(int flag) +name(new)", 
+                        "declgen": "Class1(int flag +intent(in)+value) +name(new)", 
                         "format": {
                             "C_call_code": "Class1 * SHCXX_rv = new Class1(flag);", 
                             "C_call_list": "flag", 
-                            "C_name": "TUT_class1_newflag", 
+                            "C_name": "TUT_class1_new_flag", 
                             "C_post_call": "TUT_class1 * SHC_rv = \tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_prototype": "int flag", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_class1 *", 
-                            "F_C_call": "c_class1_newflag", 
-                            "F_C_name": "c_class1_newflag", 
+                            "F_C_call": "c_class1_new_flag", 
+                            "F_C_name": "c_class1_new_flag", 
                             "F_arg_c_call": "flag", 
                             "F_arguments": "flag", 
-                            "F_call_code": "SHT_rv%voidptr = c_class1_newflag(flag)", 
-                            "F_name_function": "newflag", 
-                            "F_name_generic": "newflag", 
-                            "F_name_impl": "class1_newflag", 
+                            "F_call_code": "SHT_rv%voidptr = c_class1_new_flag(flag)", 
+                            "F_name_function": "new_flag", 
+                            "F_name_generic": "new", 
+                            "F_name_impl": "class1_new_flag", 
                             "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
-                            "LUA_name": "newflag", 
-                            "LUA_name_impl": "l_class1_newflag", 
+                            "PY_name_impl": "PY_class1_new_flag", 
                             "c_const": "", 
                             "c_rv_decl": "TUT_class1 * SHC_rv", 
                             "cxx_rv_decl": "Class1 * SHCXX_rv", 
-                            "function_name": "newflag", 
-                            "underscore_name": "newflag"
+                            "function_name": "new", 
+                            "function_suffix": "_flag", 
+                            "underscore_name": "new"
                         }, 
                         "options": {}
                     }, 
@@ -203,7 +243,7 @@
                                 "Class1"
                             ]
                         }, 
-                        "decl": "~Class1() +name(delete)", 
+                        "decl": "~Class1()        +name(delete)", 
                         "declgen": "~Class1() +name(delete)", 
                         "format": {
                             "C_call_code": "delete SH_this;", 
@@ -224,6 +264,7 @@
                             "F_subprogram": "subroutine", 
                             "LUA_name": "delete", 
                             "LUA_name_impl": "l_class1_delete", 
+                            "PY_name_impl": "PY_class1_delete", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 

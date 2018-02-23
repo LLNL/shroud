@@ -654,11 +654,11 @@ PP_test_names(
   PyObject *kwds)
 {
 // splicer begin function.test_names
-    Py_ssize_t SH_nargs = 0;
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
-    if (SH_nargs == 1) {
+    if (SHT_nargs == 1) {
         rvobj = PP_test_names(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -667,7 +667,7 @@ PP_test_names(
         }
         PyErr_Clear();
     }
-    if (SH_nargs == 2) {
+    if (SHT_nargs == 2) {
         rvobj = PP_test_names_flag(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;

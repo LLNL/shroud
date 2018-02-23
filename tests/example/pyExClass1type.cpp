@@ -56,13 +56,6 @@ PP_ExClass1_tp_repr (PP_ExClass1 *self)
     repr code
 // splicer end class.ExClass1.type.repr
 }
-static int
-PP_ExClass1_tp_init (PP_ExClass1 *self, PyObject *args, PyObject *kwds)
-{
-// splicer begin class.ExClass1.type.init
-    init code
-// splicer end class.ExClass1.type.init
-}
 static void
 PP_ExClass1_tp_del (PP_ExClass1 *self)
 {
@@ -78,6 +71,44 @@ PP_ExClass1_tp_richcompare (PP_ExClass1 *self, PyObject *other, int opid)
 Py_INCREF(Py_NotImplemented);
 return Py_NotImplemented;
 // splicer end class.ExClass1.type.richcompare
+}
+
+static int
+PP_exclass1_ctor_0(
+  PP_ExClass1 *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// ExClass1()
+// splicer begin class.ExClass1.method.ctor_0
+    self->obj = new ExClass1();
+    return 0;
+// splicer end class.ExClass1.method.ctor_0
+}
+
+static int
+PP_exclass1_ctor_1(
+  PP_ExClass1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// ExClass1(const string * name +intent(in))
+// splicer begin class.ExClass1.method.ctor_1
+    const char * name;
+    const char *SHT_kwlist[] = {
+        "name",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:ctor",
+        const_cast<char **>(SHT_kwlist), &name))
+        return -1;
+
+    // post_parse
+    const std::string SH_name(name);
+
+    self->obj = new ExClass1(&SH_name);
+    return 0;
+// splicer end class.ExClass1.method.ctor_1
 }
 
 static char PP_exclass1_incrementCount__doc__[] =
@@ -355,11 +386,11 @@ PP_exclass1_getValue(
   PyObject *kwds)
 {
 // splicer begin class.ExClass1.method.get_value
-    Py_ssize_t SH_nargs = 0;
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
-    if (SH_nargs == 1) {
+    if (SHT_nargs == 1) {
         rvobj = PP_exclass1_getValue_from_int(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -368,7 +399,7 @@ PP_exclass1_getValue(
         }
         PyErr_Clear();
     }
-    if (SH_nargs == 1) {
+    if (SHT_nargs == 1) {
         rvobj = PP_exclass1_getValue_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -380,6 +411,44 @@ PP_exclass1_getValue(
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
 // splicer end class.ExClass1.method.get_value
+}
+
+static char PP_exclass1_ctor__doc__[] =
+"documentation"
+;
+
+static int
+PP_exclass1_ctor(
+  PP_ExClass1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin class.ExClass1.method.ctor
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    int rv;
+    if (SHT_nargs == 0) {
+        rv = PP_exclass1_ctor_0(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rv;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rv;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 1) {
+        rv = PP_exclass1_ctor_1(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rv;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rv;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return -1;
+// splicer end class.ExClass1.method.ctor
 }
 // splicer begin class.ExClass1.impl.after_methods
 // splicer end class.ExClass1.impl.after_methods
@@ -468,7 +537,7 @@ PyTypeObject PP_ExClass1_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)PP_ExClass1_tp_init,                   /* tp_init */
+        (initproc)PP_exclass1_ctor,                   /* tp_init */
         (allocfunc)0,                  /* tp_alloc */
         (newfunc)0,                    /* tp_new */
         (freefunc)0,                   /* tp_free */

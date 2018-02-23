@@ -248,6 +248,7 @@ class Wrapp(util.WrapperMixin):
         self.py_type_structs.append(wformat('}} {PY_PyObject};', fmt_class))
 
         # wrap methods
+        self.tp_init_default = None
         self._push_splicer('method')
         self.wrap_functions(node, node.functions)
         self._pop_splicer('method')
@@ -503,8 +504,13 @@ return 1;""", fmt)
         fmt.c_var   - name of variable in PyArg_ParseTupleAndKeywords
         fmt.cxx_var - name of variable in c++ call.
         fmt.py_var  - name of PyObject variable
+
+        # Used to prevent compiler warnings about unused variables.
         fmt.PY_used_param_args - True/False if parameter args is used
         fmt.PY_used_param_kwds - True/False if parameter kwds is used
+
+        fmt.PY_error_return - 'NULL' for all wrappers except constructors
+                              which are called via tp_init and require -1.
         """
         options = node.options
         if not options.wrap_python:
@@ -530,7 +536,15 @@ return 1;""", fmt)
         is_dtor = ast.fattrs.get('_destructor', False)
 #        is_const = ast.const
 
-        if is_ctor or is_dtor:
+        node.eval_template('PY_name_impl')
+
+        if is_ctor:
+            self.tp_init_default = fmt.PY_name_impl
+            fmt.PY_error_return = '-1'
+        else:
+            fmt.PY_error_return = 'NULL'
+
+        if is_dtor:
             # XXX - have explicit delete
             # need code in __init__ and __del__
             return
@@ -821,7 +835,7 @@ return 1;""", fmt)
                     '({PY_param_args}, {PY_param_kwds},\t '
                     '"{PyArg_format}",\t {PyArg_kwlist}, '
                     '\t{PyArg_vargs}))', fmt))
-            PY_code.append('+return NULL;-')
+            append_format(PY_code, '+return {PY_error_return};-', fmt)
 
         if cls:
             #  template = '{c_const}{cxx_class} *{C_this}obj = static_cast<{c_const}{cxx_class} *>(static_cast<{c_const}void *>({C_this}));'
@@ -891,9 +905,11 @@ return 1;""", fmt)
             if options.debug and need_blank:
                 PY_code.append('')
 
-            if is_dtor:
-                append_format(PY_code, 'delete self->{PY_obj};', fmt)
-                append_format(PY_code, 'self->{PY_obj} = NULL;', fmt)
+            if is_ctor:
+                append_format(PY_code, 'self->{PY_obj} = new {cxx_class}({PY_call_list});', fmt)
+#            if is_dtor:
+#                append_format(PY_code, 'delete self->{PY_obj};', fmt)
+#                append_format(PY_code, 'self->{PY_obj} = NULL;', fmt)
             elif CXX_subprogram == 'subroutine':
                 line = wformat(
                     '{PY_this_call}{function_name}({PY_call_list});', fmt)
@@ -944,7 +960,9 @@ return 1;""", fmt)
 
         # If only one return value, return the ctor
         # else create a tuple with Py_BuildValue.
-        if not build_tuples:
+        if is_ctor:
+            return_code = 'return 0;'
+        elif not build_tuples:
             return_code = 'Py_RETURN_NONE;'
         elif len(build_tuples) == 1:
             # return a single object already created in build_stmts
@@ -964,7 +982,8 @@ return 1;""", fmt)
             return_code = wformat('return {PY_result};', fmt)
 
         need_blank = False  # put return right after call
-        if post_call:
+        if post_call and not is_ctor:
+            # ctor does not need to build return values
             if options.debug:
                 PY_code.append('')
                 PY_code.append('// post_call')
@@ -988,11 +1007,9 @@ return 1;""", fmt)
         if goto_fail:
             PY_code.extend(['', '0fail:'])
             PY_code.extend(fail_code)
-            PY_code.append('return NULL;')
+            append_format(PY_code, 'return {PY_error_return};', fmt)
 
         PY_impl = [1] + PY_decl + PY_code + [-1]
-
-        node.eval_template('PY_name_impl')
 
         expose = True
         if len(self.overloaded_methods[ast.name]) > 1:
@@ -1004,12 +1021,13 @@ return 1;""", fmt)
             fmt = util.Scope(fmt)
             fmt.function_suffix = ''
 
-        self.create_method(node, expose, fmt, PY_impl)
+        self.create_method(node, expose, is_ctor, fmt, PY_impl)
 
-    def create_method(self, node, expose, fmt, PY_impl):
+    def create_method(self, node, expose, is_ctor, fmt, PY_impl):
         """Format the function.
         node    = function node to wrap
         expose  = True if expose to user
+        is_ctor = True if this is a constructor
         fmt     = dictionary of format values
         PY_impl = list of implementation lines
         """
@@ -1022,11 +1040,14 @@ return 1;""", fmt)
                     ';',
                     ])
 
-        body.extend([
-                '',
-                'static PyObject *',
-                wformat('{PY_name_impl}(', fmt)
-                ])
+        body.append('')
+        if is_ctor:
+            body.append('static int')
+            expose = False
+        else:
+            body.append('static PyObject *')
+        body.append(wformat('{PY_name_impl}(', fmt))
+
         if fmt.PY_used_param_self:
             body.append(wformat(
                 '  {PY_PyObject} *{PY_param_self},', fmt))
@@ -1083,12 +1104,12 @@ return 1;""", fmt)
         PyObj = fmt.PY_PyObject
         if 'type' in node.python:
             selected = node.python['type'][:]
-            for auto in [ 'init', 'del']:
+            for auto in [ 'del']:
                 # Make some methods are there
                 if auto not in selected:
                     selected.append(auto)
         else:
-            selected = [ 'init', 'del' ]
+            selected = [ 'del' ]
             
         # Dictionary of methods for bodies
         default_body = dict(
@@ -1096,13 +1117,15 @@ return 1;""", fmt)
         )
 
         # look for constructor and destructor
-
-#        default_body['init'] = 
 #        default_body['del'] = 
 
         self._push_splicer('type')
         for typename in typenames:
             tp_name = 'tp_' + typename
+            if typename == 'init':
+                # The constructor method is used for tp_init
+                fmt_type[tp_name] = self.tp_init_default
+                continue
             if typename not in selected:
                 fmt_type[tp_name] = '0'
                 continue
@@ -1179,35 +1202,48 @@ return 1;""", fmt)
             fmt.PY_used_param_self = True
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
+            methods[0].eval_template('PY_name_impl', fmt=fmt)
+
+            is_ctor = methods[0].ast.fattrs.get('_constructor', False)
 
             body = []
             body.append(1)
-            body.append('Py_ssize_t SH_nargs = 0;')
+            body.append('Py_ssize_t SHT_nargs = 0;')
             body.extend([
-                    'if (args != NULL) SH_nargs += PyTuple_Size(args);',
-                    'if (kwds != NULL) SH_nargs += PyDict_Size(args);',
+                    'if (args != NULL) SHT_nargs += PyTuple_Size(args);',
+                    'if (kwds != NULL) SHT_nargs += PyDict_Size(args);',
                     ])
-            body.append('PyObject *rvobj;')
+            if is_ctor:
+                return_code = 'return rv;'
+                return_arg = 'rv'
+                fmt.PY_error_return = '-1'
+                self.tp_init_default = fmt.PY_name_impl
+                body.append('int rv;')
+            else:
+                return_code = 'return rvobj;'
+                return_arg = 'rvobj'
+                fmt.PY_error_return = 'NULL'
+                body.append('PyObject *rvobj;')
 
             for overload in methods:
                 if overload._nargs:
-                    body.append('if (SH_nargs >= %d && SH_nargs <= %d) {'
+                    body.append('if (SHT_nargs >= %d && SHT_nargs <= %d) {'
                                 % overload._nargs)
                 else:
-                    body.append('if (SH_nargs == %d) {' %
+                    body.append('if (SHT_nargs == %d) {' %
                                 len(overload.ast.params))
                 body.append(1)
                 append_format(body,
-                              'rvobj = {PY_name_impl}(self, args, kwds);',
+                              return_arg + ' = {PY_name_impl}(self, args, kwds);',
                               overload.fmtdict)
                 body.append('if (!PyErr_Occurred()) {')
                 body.append(1)
-                body.append('return rvobj;')
+                body.append(return_code)
                 body.append(-1)
                 body.append('} else if (! PyErr_ExceptionMatches'
                             '(PyExc_TypeError)) {')
                 body.append(1)
-                body.append('return rvobj;')
+                body.append(return_code)
                 body.append(-1)
                 body.append('}')
                 body.append('PyErr_Clear();')
@@ -1216,12 +1252,10 @@ return 1;""", fmt)
 
             body.append('PyErr_SetString(PyExc_TypeError, '
                         '"wrong arguments multi-dispatch");')
-            body.append('return NULL;')
+            append_format(body, 'return {PY_error_return};', fmt)
             body.append(-1)
 
-            methods[0].eval_template('PY_name_impl', fmt=fmt)
-
-            self.create_method(None, True, fmt, body)
+            self.create_method(None, True, is_ctor, fmt, body)
 
     def write_header(self, node):
         # node is library

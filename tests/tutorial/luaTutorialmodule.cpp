@@ -57,32 +57,46 @@ namespace tutorial {
 // splicer end C_definition
 
 // Class1() +name(new)
+// Class1(int flag +intent(in)+value) +name(new)
 static int l_class1_new(lua_State *L)
 {
     // splicer begin class.Class1.method.new
-    l_Class1_Type * SH_this = (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
-    SH_this->self = new Class1();
-    /* Add the metatable to the stack. */
-    luaL_getmetatable(L, "Class1.metatable");
-    /* Set the metatable on the userdata. */
-    lua_setmetatable(L, -2);
-    return 1;
+    int SH_nresult = 0;
+    int SH_nargs = lua_gettop(L);
+    int SH_itype1 = lua_type(L, 1);
+    switch (SH_nargs) {
+    case 0:
+        {
+            l_Class1_Type * SH_this = (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
+            SH_this->self = new Class1();
+            /* Add the metatable to the stack. */
+            luaL_getmetatable(L, "Class1.metatable");
+            /* Set the metatable on the userdata. */
+            lua_setmetatable(L, -2);
+            SH_nresult = 1;
+        }
+        break;
+    case 1:
+        if (SH_itype1 == LUA_TNUMBER) {
+            int flag = lua_tointeger(L, 1);
+            l_Class1_Type * SH_this = (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
+            SH_this->self = new Class1(flag);
+            /* Add the metatable to the stack. */
+            luaL_getmetatable(L, "Class1.metatable");
+            /* Set the metatable on the userdata. */
+            lua_setmetatable(L, -2);
+            SH_nresult = 1;
+        }
+        else {
+            luaL_error(L, "error with arguments");
+        }
+        break;
+    default:
+        luaL_error(L, "error with arguments");
+        break;
+    }
+    return SH_nresult;
     // splicer end class.Class1.method.new
-}
-
-// Class1(int flag +intent(in)+value) +name(newflag)
-static int l_class1_newflag(lua_State *L)
-{
-    // splicer begin class.Class1.method.newflag
-    int flag = lua_tointeger(L, 1);
-    l_Class1_Type * SH_this = (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
-    SH_this->self = new Class1(flag);
-    /* Add the metatable to the stack. */
-    luaL_getmetatable(L, "Class1.metatable");
-    /* Set the metatable on the userdata. */
-    lua_setmetatable(L, -2);
-    return 1;
-    // splicer end class.Class1.method.newflag
 }
 
 // ~Class1() +name(delete)
@@ -431,8 +445,7 @@ static int l_last_function_called(lua_State *L)
 // splicer end additional_functions
 
 static const struct luaL_Reg l_Tutorial_Reg [] = {
-    {"Class1", l_class1_new},
-    {"Class1", l_class1_newflag},
+    {"Class1_default", l_class1_new},
     {"Function1", l_function1},
     {"Function2", l_function2},
     {"Function3", l_function3},

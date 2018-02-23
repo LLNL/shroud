@@ -249,8 +249,12 @@ classes:
 - name: Class1
   methods:
   - decl: Class1()         +name(new)
-  - decl: Class1(int flag) +name(newflag)
-  - decl: ~Class1() +name(delete)
+    format:
+      function_suffix: _default
+  - decl: Class1(int flag) +name(new)
+    format:
+      function_suffix: _flag
+  - decl: ~Class1()        +name(delete)
   - decl: void Method1()
 
 

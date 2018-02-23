@@ -46,6 +46,14 @@
                                 "c_var": "\tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PP_ExClass1", 
+                                "PyTypeObject": "PP_ExClass1_Type", 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 0, 
@@ -85,6 +93,7 @@
                             "F_subprogram": "function", 
                             "LUA_name": "ctor", 
                             "LUA_name_impl": "l_exclass1_ctor", 
+                            "PY_name_impl": "PP_exclass1_ctor_0", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass1 * SHC_rv", 
                             "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
@@ -92,9 +101,7 @@
                             "function_suffix": "_0", 
                             "underscore_name": "ctor"
                         }, 
-                        "options": {
-                            "wrap_python": false
-                        }
+                        "options": {}
                     }, 
                     {
                         "_PTR_F_C_index": 14, 
@@ -121,6 +128,18 @@
                                     "cxx_type": "std::string", 
                                     "cxx_var": "name", 
                                     "lua_var": "SH_Lua_name"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "const ", 
+                                    "c_decl": "const char * name", 
+                                    "c_ptr": " *", 
+                                    "c_type": "char", 
+                                    "c_var": "name", 
+                                    "cxx_decl": "const std::string * name", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "std::string", 
+                                    "cxx_var": "SH_name", 
+                                    "py_var": "SHPy_name"
                                 }
                             }
                         }, 
@@ -135,6 +154,14 @@
                                 "c_var": "\tstatic_cast<AA_exclass1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PP_ExClass1", 
+                                "PyTypeObject": "PP_ExClass1_Type", 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 1, 
@@ -198,6 +225,7 @@
                             "F_name_impl": "exclass1_ctor_1", 
                             "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "PY_name_impl": "PP_exclass1_ctor_1", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass1 * SHC_rv", 
                             "cxx_rv_decl": "ExClass1 * SHCXX_rv", 
@@ -346,6 +374,7 @@
                             "F_subprogram": "subroutine", 
                             "LUA_name": "dtor", 
                             "LUA_name_impl": "l_exclass1_dtor", 
+                            "PY_name_impl": "PP_exclass1_dtor", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
@@ -1744,6 +1773,18 @@
                                     "cxx_type": "std::string", 
                                     "cxx_var": "name", 
                                     "lua_var": "SH_Lua_name"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "const ", 
+                                    "c_decl": "const char * name", 
+                                    "c_ptr": " *", 
+                                    "c_type": "char", 
+                                    "c_var": "name", 
+                                    "cxx_decl": "const std::string * name", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "std::string", 
+                                    "cxx_var": "SH_name", 
+                                    "py_var": "SHPy_name"
                                 }
                             }
                         }, 
@@ -1758,6 +1799,14 @@
                                 "c_var": "\tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PP_ExClass2", 
+                                "PyTypeObject": "PP_ExClass2_Type", 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 19, 
@@ -1821,6 +1870,7 @@
                             "F_subprogram": "function", 
                             "LUA_name": "ctor", 
                             "LUA_name_impl": "l_exclass2_ctor", 
+                            "PY_name_impl": "PP_exclass2_ctor", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass2 * SHC_rv", 
                             "cxx_rv_decl": "ExClass2 * SHCXX_rv", 
@@ -1960,6 +2010,7 @@
                             "F_subprogram": "subroutine", 
                             "LUA_name": "dtor", 
                             "LUA_name_impl": "l_exclass2_dtor", 
+                            "PY_name_impl": "PP_exclass2_dtor", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 

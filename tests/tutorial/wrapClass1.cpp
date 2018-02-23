@@ -55,26 +55,26 @@ extern "C" {
 
 // Class1() +name(new)
 // function_index=0
-TUT_class1 * TUT_class1_new()
+TUT_class1 * TUT_class1_new_default()
 {
-// splicer begin class.Class1.method.new
+// splicer begin class.Class1.method.new_default
     Class1 * SHCXX_rv = new Class1();
     TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(static_cast<void *>(
         SHCXX_rv));
     return SHC_rv;
-// splicer end class.Class1.method.new
+// splicer end class.Class1.method.new_default
 }
 
-// Class1(int flag +intent(in)+value) +name(newflag)
+// Class1(int flag +intent(in)+value) +name(new)
 // function_index=1
-TUT_class1 * TUT_class1_newflag(int flag)
+TUT_class1 * TUT_class1_new_flag(int flag)
 {
-// splicer begin class.Class1.method.newflag
+// splicer begin class.Class1.method.new_flag
     Class1 * SHCXX_rv = new Class1(flag);
     TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(static_cast<void *>(
         SHCXX_rv));
     return SHC_rv;
-// splicer end class.Class1.method.newflag
+// splicer end class.Class1.method.new_flag
 }
 
 // ~Class1() +name(delete)

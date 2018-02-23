@@ -137,14 +137,6 @@ PP_ExClass2_tp_str (PP_ExClass2 *self)
     return NULL;
 // splicer end class.ExClass2.type.str
 }
-static int
-PP_ExClass2_tp_init (PP_ExClass2 *self, PyObject *args, PyObject *kwds)
-{
-// splicer begin class.ExClass2.type.init
-    PyErr_SetString(PyExc_NotImplementedError, "init");
-    return -1;
-// splicer end class.ExClass2.type.init
-}
 static PyObject *
 PP_ExClass2_tp_alloc (PyTypeObject *type, Py_ssize_t nitems)
 {
@@ -176,6 +168,35 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
     PyErr_SetString(PyExc_NotImplementedError, "del");
     return ;
 // splicer end class.ExClass2.type.del
+}
+
+static char PP_exclass2_ctor__doc__[] =
+"documentation"
+;
+
+static int
+PP_exclass2_ctor(
+  PP_ExClass2 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// ExClass2(const string * name +intent(in)+len_trim(trim_name))
+// splicer begin class.ExClass2.method.ctor
+    const char * name;
+    const char *SHT_kwlist[] = {
+        "name",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:ctor",
+        const_cast<char **>(SHT_kwlist), &name))
+        return -1;
+
+    // post_parse
+    const std::string SH_name(name);
+
+    self->obj = new ExClass2(&SH_name);
+    return 0;
+// splicer end class.ExClass2.method.ctor
 }
 
 static char PP_exclass2_getName__doc__[] =
@@ -486,7 +507,7 @@ PyTypeObject PP_ExClass2_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)PP_ExClass2_tp_init,                   /* tp_init */
+        (initproc)PP_exclass2_ctor,                   /* tp_init */
         (allocfunc)PP_ExClass2_tp_alloc,                  /* tp_alloc */
         (newfunc)PP_ExClass2_tp_new,                    /* tp_new */
         (freefunc)PP_ExClass2_tp_free,                   /* tp_free */

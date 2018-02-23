@@ -151,12 +151,17 @@ class Tutorial(unittest.TestCase):
 #  end subroutine test_functions
 #
 
-    def Xtest_class1_create(self):
+    def test_class1_create1(self):
         obj = tutorial.Class1()
         self.assertTrue(isinstance(obj, tutorial.Class1))
         del obj
 
-    def Xtest_class1_method1(self):
+    def test_class1_create2(self):
+        obj = tutorial.Class1("name")
+        self.assertTrue(isinstance(obj, tutorial.Class1))
+        del obj
+
+    def test_class1_method1(self):
         obj = tutorial.Class1()
         obj1.Method1()
 

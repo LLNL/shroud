@@ -668,11 +668,11 @@ PY_Function10(
   PyObject *kwds)
 {
 // splicer begin function.function10
-    Py_ssize_t SH_nargs = 0;
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
-    if (SH_nargs == 0) {
+    if (SHT_nargs == 0) {
         rvobj = PY_Function10_0(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -681,7 +681,7 @@ PY_Function10(
         }
         PyErr_Clear();
     }
-    if (SH_nargs == 2) {
+    if (SHT_nargs == 2) {
         rvobj = PY_Function10_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -706,11 +706,11 @@ PY_Function6(
   PyObject *kwds)
 {
 // splicer begin function.function6
-    Py_ssize_t SH_nargs = 0;
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
-    if (SH_nargs == 1) {
+    if (SHT_nargs == 1) {
         rvobj = PY_Function6_from_name(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -719,7 +719,7 @@ PY_Function6(
         }
         PyErr_Clear();
     }
-    if (SH_nargs == 1) {
+    if (SHT_nargs == 1) {
         rvobj = PY_Function6_from_index(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -744,11 +744,11 @@ PY_overload1(
   PyObject *kwds)
 {
 // splicer begin function.overload1
-    Py_ssize_t SH_nargs = 0;
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
-    if (SH_nargs >= 1 && SH_nargs <= 3) {
+    if (SHT_nargs >= 1 && SHT_nargs <= 3) {
         rvobj = PY_overload1_num_offset_stride(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -757,7 +757,7 @@ PY_overload1(
         }
         PyErr_Clear();
     }
-    if (SH_nargs >= 2 && SH_nargs <= 4) {
+    if (SHT_nargs >= 2 && SHT_nargs <= 4) {
         rvobj = PY_overload1_5(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
