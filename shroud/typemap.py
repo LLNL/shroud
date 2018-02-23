@@ -74,8 +74,9 @@ class Typedef(object):
         ('f_c_argdecl', None),    # List of declarations to F_C routine
         ('f_c_module', None),     # Fortran modules needed for interface  (dictionary)
 
-        ('f_type', None),         # Name of type in Fortran
-        ('f_c_type', None),       # Type for C interface
+        ('f_type', None),         # Name of type in Fortran -- integer(C_INT)
+        ('f_kind', None),         # Fortran kind            -- C_INT
+        ('f_c_type', None),       # Type for C interface    -- int
         ('f_to_c', None),         # Expression to convert from Fortran to C
         ('f_derived_type', None), # Fortran derived type name
         ('f_args', None),         # Argument in Fortran wrapper to call C.
@@ -227,6 +228,7 @@ def initialize():
             cxx_type='int',
             f_cast='int({f_var}, C_INT)',
             f_type='integer(C_INT)',
+            f_kind='C_INT',
             f_module=dict(iso_c_binding=['C_INT']),
             PY_format='i',
             PY_ctor='PyInt_FromLong({c_var})',
@@ -240,6 +242,7 @@ def initialize():
             cxx_type='long',
             f_cast='int({f_var}, C_LONG)',
             f_type='integer(C_LONG)',
+            f_kind='C_LONG',
             f_module=dict(iso_c_binding=['C_LONG']),
             PY_format='l',
             PY_ctor='PyInt_FromLong({c_var})',
@@ -253,6 +256,7 @@ def initialize():
             cxx_type='long long',
             f_cast='int({f_var}, C_LONG_LONG)',
             f_type='integer(C_LONG_LONG)',
+            f_kind='C_LONG_LONG',
             f_module=dict(iso_c_binding=['C_LONG_LONG']),
             PY_format='L',
 #            PY_ctor='PyInt_FromLong({c_var})',
@@ -267,6 +271,7 @@ def initialize():
             c_header='stdlib.h',
             f_cast='int({f_var}, C_SIZE_T)',
             f_type='integer(C_SIZE_T)',
+            f_kind='C_SIZE_T',
             f_module=dict(iso_c_binding=['C_SIZE_T']),
             PY_ctor='PyInt_FromSize_t({c_var})',
             LUA_type='LUA_TNUMBER',
@@ -280,6 +285,7 @@ def initialize():
             cxx_type='float',
             f_cast='real({f_var}, C_FLOAT)',
             f_type='real(C_FLOAT)',
+            f_kind='C_FLOAT',
             f_module=dict(iso_c_binding=['C_FLOAT']),
             PY_format='f',
             PY_ctor='PyFloat_FromDouble({c_var})',
@@ -293,6 +299,7 @@ def initialize():
             cxx_type='double',
             f_cast='real({f_var}, C_DOUBLE)',
             f_type='real(C_DOUBLE)',
+            f_kind='C_DOUBLE',
             f_module=dict(iso_c_binding=['C_DOUBLE']),
             PY_format='d',
             PY_ctor='PyFloat_FromDouble({c_var})',
@@ -307,6 +314,7 @@ def initialize():
             cxx_type='bool',
 
             f_type='logical',
+            f_kind='C_BOOL',
             f_c_type='logical(C_BOOL)',
             f_module=dict(iso_c_binding=['C_BOOL']),
 
@@ -440,6 +448,7 @@ def initialize():
                 ),
 
             f_type='character(*)',
+            f_kind='C_CHAR',
             f_c_type='character(kind=C_CHAR)',
             f_c_module=dict(iso_c_binding=['C_CHAR']),
 
@@ -481,6 +490,7 @@ def initialize():
             ),
 
             f_type='character',
+            f_kind='C_CHAR',
             f_c_type='character(kind=C_CHAR)',
             f_c_module=dict(iso_c_binding=['C_CHAR']),
             PY_format='c',
@@ -582,6 +592,7 @@ def initialize():
             ),
 
             f_type='character(*)',
+            f_kind='C_CHAR',
             f_c_type='character(kind=C_CHAR)',
             f_c_module=dict(iso_c_binding=['C_CHAR']),
 
@@ -805,6 +816,7 @@ def initialize():
             c_type='MPI_Fint',
             # usually, MPI_Fint will be equivalent to int
             f_type='integer',
+            f_kind='C_INT',
             f_c_type='integer(C_INT)',
             f_c_module=dict(iso_c_binding=['C_INT']),
             cxx_to_c='MPI_Comm_c2f({cxx_var})',

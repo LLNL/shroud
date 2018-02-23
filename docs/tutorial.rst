@@ -291,7 +291,7 @@ this value to the C wrapper::
         integer(C_INT) :: len
         integer(C_INT), intent(IN) :: values(:)
         integer(C_INT), intent(OUT) :: result
-        len = size(values)
+        len = size(values,kind=C_INT)
         call c_sum(len, values, result)
     end subroutine sum
 

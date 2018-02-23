@@ -323,6 +323,7 @@
                 ]
             }, 
             "f_c_type": "integer(C_INT)", 
+            "f_kind": "C_INT", 
             "f_type": "integer"
         }, 
         "bool": {
@@ -333,6 +334,7 @@
             "c_type": "bool", 
             "cxx_type": "bool", 
             "f_c_type": "logical(C_BOOL)", 
+            "f_kind": "C_BOOL", 
             "f_module": {
                 "iso_c_binding": [
                     "C_BOOL"
@@ -469,6 +471,7 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
+            "f_kind": "C_CHAR", 
             "f_statements": {
                 "result_pure": {
                     "call": [
@@ -508,6 +511,7 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
+            "f_kind": "C_CHAR", 
             "f_type": "character"
         }, 
         "double": {
@@ -519,6 +523,7 @@
             "c_type": "double", 
             "cxx_type": "double", 
             "f_cast": "real({f_var}, C_DOUBLE)", 
+            "f_kind": "C_DOUBLE", 
             "f_module": {
                 "iso_c_binding": [
                     "C_DOUBLE"
@@ -535,6 +540,7 @@
             "c_type": "float", 
             "cxx_type": "float", 
             "f_cast": "real({f_var}, C_FLOAT)", 
+            "f_kind": "C_FLOAT", 
             "f_module": {
                 "iso_c_binding": [
                     "C_FLOAT"
@@ -551,6 +557,7 @@
             "c_type": "int", 
             "cxx_type": "int", 
             "f_cast": "int({f_var}, C_INT)", 
+            "f_kind": "C_INT", 
             "f_module": {
                 "iso_c_binding": [
                     "C_INT"
@@ -567,6 +574,7 @@
             "c_type": "long", 
             "cxx_type": "long", 
             "f_cast": "int({f_var}, C_LONG)", 
+            "f_kind": "C_LONG", 
             "f_module": {
                 "iso_c_binding": [
                     "C_LONG"
@@ -582,6 +590,7 @@
             "c_type": "long long", 
             "cxx_type": "long long", 
             "f_cast": "int({f_var}, C_LONG_LONG)", 
+            "f_kind": "C_LONG_LONG", 
             "f_module": {
                 "iso_c_binding": [
                     "C_LONG_LONG"
@@ -598,6 +607,7 @@
             "c_type": "size_t", 
             "cxx_type": "size_t", 
             "f_cast": "int({f_var}, C_SIZE_T)", 
+            "f_kind": "C_SIZE_T", 
             "f_module": {
                 "iso_c_binding": [
                     "C_SIZE_T"
@@ -701,6 +711,7 @@
                 ]
             }, 
             "f_c_type": "character(kind=C_CHAR)", 
+            "f_kind": "C_CHAR", 
             "f_statements": {
                 "result_pure": {
                     "call": [

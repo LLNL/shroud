@@ -534,7 +534,7 @@ contains
         real(C_DOUBLE), intent(OUT), allocatable :: out(:,:)
         integer(C_INT) :: sizein
         allocate(out, mold=in)
-        sizein = size(in)
+        sizein = size(in,kind=C_INT)
         ! splicer begin function.cos_doubles
         call c_cos_doubles(in, out, sizein)
         ! splicer end function.cos_doubles

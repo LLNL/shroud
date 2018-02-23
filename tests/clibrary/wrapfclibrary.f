@@ -169,7 +169,7 @@ contains
         integer(C_INT) :: len
         integer(C_INT), intent(IN) :: values(:)
         integer(C_INT), intent(OUT) :: result
-        len = size(values)
+        len = size(values,kind=C_INT)
         ! splicer begin function.sum
         call c_sum(len, values, result)
         ! splicer end function.sum
@@ -237,7 +237,7 @@ contains
         real(C_DOUBLE), intent(OUT), allocatable :: out(:)
         integer(C_INT) :: sizein
         allocate(out(lbound(in,1):ubound(in,1)))
-        sizein = size(in)
+        sizein = size(in,kind=C_INT)
         ! splicer begin function.cos_doubles
         call c_cos_doubles(in, out, sizein)
         ! splicer end function.cos_doubles
@@ -257,7 +257,7 @@ contains
         integer(C_INT), intent(OUT), allocatable :: out(:)
         integer(C_INT) :: sizein
         allocate(out(lbound(in,1):ubound(in,1)))
-        sizein = size(in)
+        sizein = size(in,kind=C_INT)
         ! splicer begin function.truncate_to_int
         call c_truncate_to_int(in, out, sizein)
         ! splicer end function.truncate_to_int
@@ -274,7 +274,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(INOUT) :: array(:)
         integer(C_INT) :: sizein
-        sizein = size(array)
+        sizein = size(array,kind=C_INT)
         ! splicer begin function.increment
         call c_increment(array, sizein)
         ! splicer end function.increment

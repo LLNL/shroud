@@ -602,7 +602,7 @@ contains
         integer(C_INT) :: len
         integer(C_INT), intent(IN) :: values(:)
         integer(C_INT), intent(OUT) :: result
-        len = size(values)
+        len = size(values,kind=C_INT)
         ! splicer begin function.sum
         call c_sum(len, values, result)
         ! splicer end function.sum

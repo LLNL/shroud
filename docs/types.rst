@@ -101,6 +101,7 @@ for wrappers::
         c_type: int 
         cxx_type: int
         f_type: integer(C_INT)
+        f_kind: C_INT
         f_module:
           iso_c_binding:
           - C_INT
@@ -130,6 +131,7 @@ The type map is defined as::
         c_type: bool 
         cxx_type: bool 
         f_type: logical 
+        f_kind: C_BOOL
         f_c_type: logical(C_BOOL) 
         f_module:
             iso_c_binding:
@@ -323,6 +325,7 @@ The type map::
                       - }}
 
             f_type: character(*)
+            f_kind: C_CHAR
             f_c_type: character(kind=C_CHAR)
             f_c_module:
                 iso_c_binding:
@@ -507,6 +510,7 @@ additional sections to convert between ``char *`` and ``std::string``::
                        - }}
     
             f_type: character(*)
+            f_kind: C_CHAR
             f_c_type: character(kind=C_CHAR)
             f_c_module:
                 iso_c_binding:
@@ -790,6 +794,7 @@ how to use these routines::
             c_header: mpi.h
             c_type: MPI_Fint
             f_type: integer
+            f_kind: C_INT
             f_c_type: integer(C_INT)
             f_c_module:
                 iso_c_binding:

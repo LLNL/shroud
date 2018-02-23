@@ -81,6 +81,7 @@ import re
 import os
 
 from . import declast
+from . import todict
 from . import typemap
 from . import whelpers
 from . import util
@@ -721,13 +722,13 @@ class Wrapf(util.WrapperMixin):
                 fmt.mold = m.group(0)
                 append_format(pre_call, 'allocate({f_var}, {mold})', fmt)
 
-    def attr_implied(self, arg, fmt):
+    def attr_implied(self, node, arg, fmt):
         """Add the implied attribute to the pre_call block.
         """
         init = arg.attrs.get('implied', None)
         blk = {}
         if init:
-            fmt.pre_call_intent = init
+            fmt.pre_call_intent = ftn_implied(init, node, arg)
             blk['pre_call'] = [
                 '{f_var} = {pre_call_intent}'
             ]
@@ -893,7 +894,7 @@ class Wrapf(util.WrapperMixin):
                     arg_typedef = typemap.Typedef.lookup(cxx_T)
 
                 if implied:
-                    f_intent_blk = self.attr_implied(f_arg, fmt_arg)
+                    f_intent_blk = self.attr_implied(node, f_arg, fmt_arg)
                 else:
                     f_statements = arg_typedef.f_statements
                     f_stmts = 'intent_' + intent
@@ -1179,6 +1180,40 @@ class Wrapf(util.WrapperMixin):
         """ Write C helper functions that will be used by the wrappers.
         """
         pass
+
+class ToImplied(todict.PrintNode):
+    """Convert implied expression to Python wrapper code.
+
+    expression has already been checked for errors by generate.check_implied.
+    Convert functions:
+      size  -  PyArray_SIZE
+    """
+    def __init__(self, expr, func, arg):
+        super(ToImplied, self).__init__()
+        self.expr = expr
+        self.func = func
+        self.arg = arg
+
+    def visit_Identifier(self, node):
+        # Look for functions
+        if node.args == None:
+            return node.name
+        elif node.name == 'size':
+            # size(arg)
+            # This expected to be assigned to a C_INT or C_LONG
+            # add KIND argument to the size intrinsic
+            argname = node.args[0].name
+            arg_typedef = typemap.Typedef.lookup(self.arg.typename)
+            return 'size({},kind={})'.format(argname, arg_typedef.f_kind)
+        else:
+            return self.param_list(node)
+
+def ftn_implied(expr, func, arg):
+    """Convert string to Fortran code.
+    """
+    node = declast.ExprParser(expr).expression()
+    visitor = ToImplied(expr, func, arg)
+    return visitor.visit(node)
 
 
 def attr_allocatable(allocatable, node, arg, pre_call):

@@ -1003,6 +1003,10 @@ f_c_type
     Type declaration for ``bind(C)`` interface.
     Defaults to *None* which will then use *f_type*.
 
+f_kind
+    Fortran kind of type. For example, ``C_INT`` or ``C_LONG``.
+    Defaults to *None*.
+
 f_type
     Name of type in Fortran.
     Defaults to *None*.
