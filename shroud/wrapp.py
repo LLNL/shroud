@@ -536,15 +536,17 @@ return 1;""", fmt)
         is_dtor = ast.fattrs.get('_destructor', False)
 #        is_const = ast.const
 
-        node.eval_template('PY_name_impl')
-
         if is_dtor:
             # Added in tp_del from write_tp_func.
             return
         elif is_ctor:
-            self.tp_init_default = fmt.PY_name_impl
+            fmt_func.PY_type_method = 'tp_init'
+            node.eval_template('PY_type_impl')
+            fmt_func.PY_name_impl = fmt_func.PY_type_impl
+            self.tp_init_default = fmt_func.PY_type_impl
             fmt.PY_error_return = '-1'
         else:
+            node.eval_template('PY_name_impl')
             fmt.PY_error_return = 'NULL'
 
         if node.return_this:
@@ -1008,6 +1010,8 @@ return 1;""", fmt)
         PY_impl = [1] + PY_decl + PY_code + [-1]
 
         expose = True
+        if is_ctor:
+            expose = False
         if len(self.overloaded_methods[ast.name]) > 1:
             # Only expose a multi-dispatch name, not each overload
             expose = False
@@ -1039,7 +1043,6 @@ return 1;""", fmt)
         body.append('')
         if is_ctor:
             body.append('static int')
-            expose = False
         else:
             body.append('static PyObject *')
         body.append(wformat('{PY_name_impl}(', fmt))
@@ -1101,8 +1104,10 @@ return 1;""", fmt)
         # Type bodies must be filled in by user, no real way to guess
         # how to implement.
         # Except tp_init (constructor) and tp_del (destructor).
-        fmt = node.fmtdict
-        PyObj = fmt.PY_PyObject
+        fmt_func = node.fmtdict
+        fmt = util.Scope(fmt_func)
+        template = node.options.PY_type_impl_template
+        PyObj = fmt_func.PY_PyObject
         if 'type' in node.python:
             selected = node.python['type'][:]
             for auto in [ 'del']:
@@ -1128,11 +1133,12 @@ return 1;""", fmt)
             if typename not in selected:
                 fmt_type[tp_name] = '0'
                 continue
-            func_name = wformat('{PY_prefix}{cxx_class}_tp_', fmt) + typename
+            fmt.PY_type_method = tp_name
+            func_name = wformat(template, fmt)
             fmt_type[tp_name] = func_name
             tup = typefuncs[typename]
             output.append('static ' + tup[0])
-            output.append(('{name} ' + tup[1])
+            output.append(('{name} ' + tup[1])  # object used by tup[1]
                           .format(name=func_name, object=PyObj))
             output.append('{')
             default = default_body.get(typename, self.not_implemented_error)
@@ -1141,7 +1147,7 @@ return 1;""", fmt)
             # format and indent default bodies
             fmted = [1]
             for line in default:
-                append_format(fmted, line, fmt)
+                append_format(fmted, line, fmt_func)
             fmted.append(-1)
 
             self._create_splicer(typename, output, fmted)
@@ -1200,7 +1206,8 @@ return 1;""", fmt)
             if len(methods) < 2:
                 continue  # not overloaded
 
-            fmt_func = methods[0].fmtdict
+            node = methods[0]
+            fmt_func = node.fmtdict
             fmt = util.Scope(fmt_func)
             fmt.function_suffix = ''
             fmt.PY_doc_string = 'documentation'
@@ -1208,9 +1215,8 @@ return 1;""", fmt)
             fmt.PY_used_param_self = True
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
-            methods[0].eval_template('PY_name_impl', fmt=fmt)
 
-            is_ctor = methods[0].ast.fattrs.get('_constructor', False)
+            is_ctor = node.ast.fattrs.get('_constructor', False)
 
             body = []
             body.append(1)
@@ -1220,16 +1226,25 @@ return 1;""", fmt)
                     'if (kwds != NULL) SHT_nargs += PyDict_Size(args);',
                     ])
             if is_ctor:
+                fmt.PY_type_method = 'tp_init'
+                fmt.PY_name_impl = wformat(
+                    node.options.PY_type_impl_template, fmt)
+                fmt.PY_type_impl = fmt.PY_name_impl
+                self.tp_init_default = fmt.PY_type_impl
                 return_code = 'return rv;'
                 return_arg = 'rv'
                 fmt.PY_error_return = '-1'
                 self.tp_init_default = fmt.PY_name_impl
                 body.append('int rv;')
+                expose = False
             else:
+                fmt.PY_name_impl = wformat(
+                    node.options.PY_name_impl_template, fmt)
                 return_code = 'return rvobj;'
                 return_arg = 'rvobj'
                 fmt.PY_error_return = 'NULL'
                 body.append('PyObject *rvobj;')
+                expose = True
 
             for overload in methods:
                 if overload._nargs:
@@ -1261,7 +1276,7 @@ return 1;""", fmt)
             append_format(body, 'return {PY_error_return};', fmt)
             body.append(-1)
 
-            self.create_method(None, True, is_ctor, fmt, body)
+            self.create_method(None, expose, is_ctor, fmt, body)
 
     def write_header(self, node):
         # node is library

@@ -59,7 +59,7 @@ PY_Class1_tp_del (PY_Class1 *self)
 }
 
 static int
-PY_class1_new_default(
+PY_Class1_tp_init_default(
   PY_Class1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -72,7 +72,7 @@ PY_class1_new_default(
 }
 
 static int
-PY_class1_new_flag(
+PY_Class1_tp_init_flag(
   PY_Class1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -110,12 +110,8 @@ PY_class1_Method1(
 // splicer end class.Class1.method.method1
 }
 
-static char PY_class1_new__doc__[] =
-"documentation"
-;
-
 static int
-PY_class1_new(
+PY_Class1_tp_init(
   PY_Class1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -126,7 +122,7 @@ PY_class1_new(
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     int rv;
     if (SHT_nargs == 0) {
-        rv = PY_class1_new_default(self, args, kwds);
+        rv = PY_Class1_tp_init_default(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rv;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -135,7 +131,7 @@ PY_class1_new(
         PyErr_Clear();
     }
     if (SHT_nargs == 1) {
-        rv = PY_class1_new_flag(self, args, kwds);
+        rv = PY_Class1_tp_init_flag(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rv;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -216,7 +212,7 @@ PyTypeObject PY_Class1_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)PY_class1_new,                   /* tp_init */
+        (initproc)PY_Class1_tp_init,                   /* tp_init */
         (allocfunc)0,                  /* tp_alloc */
         (newfunc)0,                    /* tp_new */
         (freefunc)0,                   /* tp_free */

@@ -802,6 +802,7 @@
             "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}", 
             "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}", 
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 
+            "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}", 
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 

@@ -170,12 +170,8 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // splicer end class.ExClass2.type.del
 }
 
-static char PP_exclass2_ctor__doc__[] =
-"documentation"
-;
-
 static int
-PP_exclass2_ctor(
+PP_ExClass2_tp_init(
   PP_ExClass2 *self,
   PyObject *args,
   PyObject *kwds)
@@ -507,7 +503,7 @@ PyTypeObject PP_ExClass2_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)PP_exclass2_ctor,                   /* tp_init */
+        (initproc)PP_ExClass2_tp_init,                   /* tp_init */
         (allocfunc)PP_ExClass2_tp_alloc,                  /* tp_alloc */
         (newfunc)PP_ExClass2_tp_new,                    /* tp_new */
         (freefunc)PP_ExClass2_tp_free,                   /* tp_free */

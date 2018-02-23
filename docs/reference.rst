@@ -416,6 +416,33 @@ LUA_userdata_member_template
     Name of pointer to class instance in userdata.
     ``self``
 
+
+PY_module_filename_template
+    ``py{library}module.{PY_impl_filename_suffix}``
+
+PY_header_filename_template
+    ``py{library}module.{PY_header_filename_suffix}``
+
+PY_helper_filename_template
+    ``py{library}helper.{PY_impl_filename_suffix}``
+
+PY_PyTypeObject_template
+    ``{PY_prefix}{cxx_class}_Type``
+
+PY_PyObject_template
+    ``{PY_prefix}{cxx_class}``
+
+PY_type_filename_template
+    ``py{cxx_class}type.{PY_impl_filename_suffix}``
+
+PY_name_impl_template
+    ``{PY_prefix}{class_prefix}{function_name}{function_suffix}``
+
+PY_type_impl_template
+    Names of functions for type methods such as ``tp_init``.
+    ``{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}``
+
+
 YAML_type_filename_template
     Default value for global field YAML_type_filename
     ``{library_lower}_types.yaml``

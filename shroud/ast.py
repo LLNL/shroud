@@ -205,6 +205,9 @@ class LibraryNode(AstNode):
                 'py{cxx_class}type.{PY_impl_filename_suffix}'),
             PY_name_impl_template=(
                 '{PY_prefix}{class_prefix}{function_name}{function_suffix}'),
+            # names for type methods (tp_init)
+            PY_type_impl_template=(
+                '{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}'),
             )
         return def_options
 

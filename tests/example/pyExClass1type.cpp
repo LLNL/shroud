@@ -74,7 +74,7 @@ PP_ExClass1_tp_richcompare (PP_ExClass1 *self, PyObject *other, int opid)
 }
 
 static int
-PP_exclass1_ctor_0(
+PP_ExClass1_tp_init_0(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -87,7 +87,7 @@ PP_exclass1_ctor_0(
 }
 
 static int
-PP_exclass1_ctor_1(
+PP_ExClass1_tp_init_1(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -413,12 +413,8 @@ PP_exclass1_getValue(
 // splicer end class.ExClass1.method.get_value
 }
 
-static char PP_exclass1_ctor__doc__[] =
-"documentation"
-;
-
 static int
-PP_exclass1_ctor(
+PP_ExClass1_tp_init(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -429,7 +425,7 @@ PP_exclass1_ctor(
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     int rv;
     if (SHT_nargs == 0) {
-        rv = PP_exclass1_ctor_0(self, args, kwds);
+        rv = PP_ExClass1_tp_init_0(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rv;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -438,7 +434,7 @@ PP_exclass1_ctor(
         PyErr_Clear();
     }
     if (SHT_nargs == 1) {
-        rv = PP_exclass1_ctor_1(self, args, kwds);
+        rv = PP_ExClass1_tp_init_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rv;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -537,7 +533,7 @@ PyTypeObject PP_ExClass1_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)PP_exclass1_ctor,                   /* tp_init */
+        (initproc)PP_ExClass1_tp_init,                   /* tp_init */
         (allocfunc)0,                  /* tp_alloc */
         (newfunc)0,                    /* tp_new */
         (freefunc)0,                   /* tp_free */
