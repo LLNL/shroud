@@ -77,7 +77,12 @@ def generate(fp):
          pybindgen.param('int', 'stride', default_value='1')])
 
     class1 = namespace.add_class('Class1')
+    class1.add_constructor([pybindgen.param('int', 'flag')])
     class1.add_constructor([])
     class1.add_method('Method1', None, [])
 
     mod.generate(fp)
+
+if __name__ == '__main__':
+    import sys
+    generate(sys.stdout)

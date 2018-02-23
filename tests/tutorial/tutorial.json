@@ -57,7 +57,7 @@
                                 "Class1"
                             ]
                         }, 
-                        "decl": "Class1() +name(new)", 
+                        "decl": "Class1()         +name(new)", 
                         "declgen": "Class1() +name(new)", 
                         "format": {
                             "C_call_code": "Class1 * SHCXX_rv = new Class1();", 
@@ -88,7 +88,107 @@
                         "options": {}
                     }, 
                     {
+                        "_fmtargs": {
+                            "flag": {
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_ptr": "", 
+                                    "c_var": "flag", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "int", 
+                                    "cxx_var": "flag"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "flag", 
+                                    "f_var": "flag"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": "", 
+                                    "c_var": "lua_tointeger(L, 1)", 
+                                    "c_var_len": "Lflag", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "int", 
+                                    "cxx_var": "flag", 
+                                    "lua_var": "SH_Lua_flag"
+                                }
+                            }
+                        }, 
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_val": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
+                                "c_var": "SHC_rv", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtl": {
+                                "c_var": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv"
+                            }
+                        }, 
                         "_function_index": 1, 
+                        "ast": {
+                            "attrs": {}, 
+                            "const": false, 
+                            "fattrs": {
+                                "_constructor": true, 
+                                "_name": "ctor", 
+                                "name": "newflag"
+                            }, 
+                            "func_const": false, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in", 
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "flag", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ]
+                                }
+                            ], 
+                            "specifier": [
+                                "Class1"
+                            ]
+                        }, 
+                        "decl": "Class1(int flag) +name(newflag)", 
+                        "declgen": "Class1(int flag +intent(in)+value) +name(newflag)", 
+                        "format": {
+                            "C_call_code": "Class1 * SHCXX_rv = new Class1(flag);", 
+                            "C_call_list": "flag", 
+                            "C_name": "TUT_class1_newflag", 
+                            "C_post_call": "TUT_class1 * SHC_rv = \tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
+                            "C_prototype": "int flag", 
+                            "C_return_code": "return SHC_rv;", 
+                            "C_return_type": "TUT_class1 *", 
+                            "F_C_call": "c_class1_newflag", 
+                            "F_C_name": "c_class1_newflag", 
+                            "F_arg_c_call": "flag", 
+                            "F_arguments": "flag", 
+                            "F_call_code": "SHT_rv%voidptr = c_class1_newflag(flag)", 
+                            "F_name_function": "newflag", 
+                            "F_name_generic": "newflag", 
+                            "F_name_impl": "class1_newflag", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
+                            "F_subprogram": "function", 
+                            "LUA_name": "newflag", 
+                            "LUA_name_impl": "l_class1_newflag", 
+                            "c_const": "", 
+                            "c_rv_decl": "TUT_class1 * SHC_rv", 
+                            "cxx_rv_decl": "Class1 * SHCXX_rv", 
+                            "function_name": "newflag", 
+                            "underscore_name": "newflag"
+                        }, 
+                        "options": {}
+                    }, 
+                    {
+                        "_function_index": 2, 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -133,7 +233,7 @@
                         "options": {}
                     }, 
                     {
-                        "_function_index": 2, 
+                        "_function_index": 3, 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -303,7 +403,7 @@
         }, 
         "functions": [
             {
-                "_function_index": 3, 
+                "_function_index": 4, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -440,7 +540,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 4, 
+                "_function_index": 5, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -602,7 +702,7 @@
                         }
                     }
                 }, 
-                "_function_index": 5, 
+                "_function_index": 6, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -745,7 +845,7 @@
                         "vargs": "SHC_rv"
                     }
                 }, 
-                "_function_index": 6, 
+                "_function_index": 7, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -866,7 +966,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 7, 
+                "_function_index": 8, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -970,7 +1070,7 @@
                         }
                     }
                 }, 
-                "_function_index": 8, 
+                "_function_index": 9, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1066,7 +1166,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 42, 
+                "_PTR_F_C_index": 43, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtl": {
@@ -1132,7 +1232,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 9, 
+                "_function_index": 10, 
                 "ast": {
                     "attrs": {
                         "len": "30"
@@ -1212,7 +1312,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 9, 
+                "_PTR_C_CXX_index": 10, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -1267,7 +1367,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 42, 
+                "_function_index": 43, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -1460,7 +1560,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 10, 
+                "_function_index": 11, 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -1545,7 +1645,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 10, 
+                "_PTR_C_CXX_index": 11, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -1600,7 +1700,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 43, 
+                "_function_index": 44, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -1704,9 +1804,9 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 10, 
-                "_PTR_F_C_index": 43, 
-                "_function_index": 44, 
+                "_PTR_C_CXX_index": 11, 
+                "_PTR_F_C_index": 44, 
+                "_function_index": 45, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -1814,7 +1914,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 32, 
+                "_function_index": 33, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -1892,7 +1992,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 33, 
+                "_function_index": 34, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -1964,8 +2064,8 @@
             }, 
             {
                 "_default_funcs": [
-                    32, 
-                    33
+                    33, 
+                    34
                 ], 
                 "_fmtargs": {
                     "arg1": {
@@ -2062,7 +2162,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 11, 
+                "_function_index": 12, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     0, 
@@ -2150,10 +2250,10 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 45, 
+                "_PTR_F_C_index": 46, 
                 "_cxx_overload": [
-                    12, 
-                    13
+                    13, 
+                    14
                 ], 
                 "_fmtargs": {
                     "name": {
@@ -2189,7 +2289,7 @@
                         }
                     }
                 }, 
-                "_function_index": 12, 
+                "_function_index": 13, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -2255,10 +2355,10 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 12, 
+                "_PTR_C_CXX_index": 13, 
                 "_cxx_overload": [
-                    12, 
-                    13
+                    13, 
+                    14
                 ], 
                 "_fmtargs": {
                     "name": {
@@ -2277,7 +2377,7 @@
                         }
                     }
                 }, 
-                "_function_index": 45, 
+                "_function_index": 46, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -2340,8 +2440,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    12, 
-                    13
+                    13, 
+                    14
                 ], 
                 "_fmtargs": {
                     "indx": {
@@ -2381,7 +2481,7 @@
                         }
                     }
                 }, 
-                "_function_index": 13, 
+                "_function_index": 14, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -2439,7 +2539,7 @@
                 "options": {}
             }, 
             {
-                "_function_index": 14, 
+                "_function_index": 15, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -2506,7 +2606,7 @@
                         }
                     }
                 }, 
-                "_function_index": 34, 
+                "_function_index": 35, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -2586,7 +2686,7 @@
                         }
                     }
                 }, 
-                "_function_index": 35, 
+                "_function_index": 36, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -2650,7 +2750,7 @@
                 }
             }, 
             {
-                "_function_index": 15, 
+                "_function_index": 16, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -2694,7 +2794,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 36, 
+                "_function_index": 37, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -2753,7 +2853,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 37, 
+                "_function_index": 38, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -2842,7 +2942,7 @@
                         }
                     }
                 }, 
-                "_function_index": 16, 
+                "_function_index": 17, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -2901,8 +3001,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 16, 
-                "_function_index": 54, 
+                "_PTR_F_C_index": 17, 
+                "_function_index": 55, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -2957,8 +3057,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 16, 
-                "_function_index": 55, 
+                "_PTR_F_C_index": 17, 
+                "_function_index": 56, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3014,10 +3114,10 @@
             }, 
             {
                 "_cxx_overload": [
-                    17, 
-                    18
+                    18, 
+                    19
                 ], 
-                "_function_index": 17, 
+                "_function_index": 18, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -3062,10 +3162,10 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 46, 
+                "_PTR_F_C_index": 47, 
                 "_cxx_overload": [
-                    17, 
-                    18
+                    18, 
+                    19
                 ], 
                 "_fmtargs": {
                     "arg2": {
@@ -3133,7 +3233,7 @@
                         }
                     }
                 }, 
-                "_function_index": 18, 
+                "_function_index": 19, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -3212,12 +3312,12 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 18, 
+                "_PTR_F_C_index": 19, 
                 "_cxx_overload": [
-                    17, 
-                    18
+                    18, 
+                    19
                 ], 
-                "_function_index": 56, 
+                "_function_index": 57, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3292,12 +3392,12 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 18, 
+                "_PTR_F_C_index": 19, 
                 "_cxx_overload": [
-                    17, 
-                    18
+                    18, 
+                    19
                 ], 
-                "_function_index": 57, 
+                "_function_index": 58, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3372,10 +3472,10 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 18, 
+                "_PTR_C_CXX_index": 19, 
                 "_cxx_overload": [
-                    17, 
-                    18
+                    18, 
+                    19
                 ], 
                 "_fmtargs": {
                     "arg2": {
@@ -3408,7 +3508,7 @@
                         }
                     }
                 }, 
-                "_function_index": 46, 
+                "_function_index": 47, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -3492,8 +3592,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    19, 
-                    20
+                    20, 
+                    21
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -3518,7 +3618,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 38, 
+                "_function_index": 39, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -3589,8 +3689,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    19, 
-                    20
+                    20, 
+                    21
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -3629,7 +3729,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 39, 
+                "_function_index": 40, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -3715,12 +3815,12 @@
             }, 
             {
                 "_cxx_overload": [
-                    19, 
-                    20
+                    20, 
+                    21
                 ], 
                 "_default_funcs": [
-                    38, 
-                    39
+                    39, 
+                    40
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -3852,7 +3952,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 19, 
+                "_function_index": 20, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     1, 
@@ -3955,8 +4055,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    19, 
-                    20
+                    20, 
+                    21
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -3995,7 +4095,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 40, 
+                "_function_index": 41, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4075,8 +4175,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    19, 
-                    20
+                    20, 
+                    21
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -4129,7 +4229,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 41, 
+                "_function_index": 42, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4224,12 +4324,12 @@
             }, 
             {
                 "_cxx_overload": [
-                    19, 
-                    20
+                    20, 
+                    21
                 ], 
                 "_default_funcs": [
-                    40, 
-                    41
+                    41, 
+                    42
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -4397,7 +4497,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 20, 
+                "_function_index": 21, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     2, 
@@ -4564,7 +4664,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 21, 
+                "_function_index": 22, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4687,7 +4787,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 22, 
+                "_function_index": 23, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4780,7 +4880,7 @@
                         }
                     }
                 }, 
-                "_function_index": 23, 
+                "_function_index": 24, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4844,8 +4944,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 47, 
-                "_function_index": 24, 
+                "_PTR_F_C_index": 48, 
+                "_function_index": 25, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4904,7 +5004,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 24, 
+                "_PTR_C_CXX_index": 25, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -4930,7 +5030,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 47, 
+                "_function_index": 48, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -4994,8 +5094,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 48, 
-                "_function_index": 25, 
+                "_PTR_F_C_index": 49, 
+                "_function_index": 26, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5053,7 +5153,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 25, 
+                "_PTR_C_CXX_index": 26, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5072,7 +5172,7 @@
                         }
                     }
                 }, 
-                "_function_index": 48, 
+                "_function_index": 49, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -5136,8 +5236,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 49, 
-                "_function_index": 26, 
+                "_PTR_F_C_index": 50, 
+                "_function_index": 27, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5195,7 +5295,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 26, 
+                "_PTR_C_CXX_index": 27, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5214,7 +5314,7 @@
                         }
                     }
                 }, 
-                "_function_index": 49, 
+                "_function_index": 50, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -5278,8 +5378,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 50, 
-                "_function_index": 27, 
+                "_PTR_F_C_index": 51, 
+                "_function_index": 28, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5342,7 +5442,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 27, 
+                "_PTR_C_CXX_index": 28, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5369,7 +5469,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 50, 
+                "_function_index": 51, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -5438,8 +5538,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 51, 
-                "_function_index": 28, 
+                "_PTR_F_C_index": 52, 
+                "_function_index": 29, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5505,7 +5605,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 28, 
+                "_PTR_C_CXX_index": 29, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5525,7 +5625,7 @@
                         }
                     }
                 }, 
-                "_function_index": 51, 
+                "_function_index": 52, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -5595,8 +5695,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 52, 
-                "_function_index": 29, 
+                "_PTR_F_C_index": 53, 
+                "_function_index": 30, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5657,7 +5757,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 29, 
+                "_PTR_C_CXX_index": 30, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5677,7 +5777,7 @@
                         }
                     }
                 }, 
-                "_function_index": 52, 
+                "_function_index": 53, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -5782,7 +5882,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 30, 
+                "_function_index": 31, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5902,7 +6002,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 31, 
+                "_function_index": 32, 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -5956,7 +6056,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 31, 
+                "_PTR_C_CXX_index": 32, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -5977,7 +6077,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 53, 
+                "_function_index": 54, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 

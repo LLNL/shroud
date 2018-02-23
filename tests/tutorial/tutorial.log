@@ -4,6 +4,7 @@ Read splicer ftutorialsplicer.f
 Close tutorial_types.yaml
 class Class1
 C method Class1() +name(new)
+C method Class1(int flag +intent(in)+value) +name(newflag)
 C method ~Class1() +name(delete)
 C method void Method1()
 Close wrapClass1.h
@@ -53,6 +54,7 @@ Close wrapTutorial.h
 Close wrapTutorial.cpp
 class Class1
 C-interface, Fortran method Class1() +name(new)
+C-interface, Fortran method Class1(int flag +intent(in)+value) +name(newflag)
 C-interface, Fortran method ~Class1() +name(delete)
 C-interface, Fortran method void Method1()
 C-interface, Fortran function void Function1()
@@ -111,6 +113,7 @@ C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+l
 Close wrapftutorial.f
 class Class1
 Python method Class1() +name(new)
+Python method Class1(int flag +intent(in)+value) +name(newflag)
 Python method ~Class1() +name(delete)
 Python method void Method1()
 Close pyClass1type.cpp
@@ -137,6 +140,7 @@ Close pyTutorialmodule.hpp
 Close pyTutorialmodule.cpp
 Close pyTutorialhelper.cpp
 Lua method Class1() +name(new)
+Lua method Class1(int flag +intent(in)+value) +name(newflag)
 Lua method ~Class1() +name(delete)
 Lua method void Method1()
 Lua function void Function1()

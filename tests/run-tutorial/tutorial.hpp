@@ -101,7 +101,10 @@ const std::string& LastFunctionCalled();
 
 class Class1
 {
+   int m_flag;
 public:
+    Class1() {};
+    Class1(int flag) : m_flag(flag) {};
     void Method1();
 };
 

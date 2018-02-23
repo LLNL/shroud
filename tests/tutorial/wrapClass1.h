@@ -65,6 +65,8 @@ typedef struct s_TUT_class1 TUT_class1;
 
 TUT_class1 * TUT_class1_new();
 
+TUT_class1 * TUT_class1_newflag(int flag);
+
 void TUT_class1_delete(TUT_class1 * self);
 
 void TUT_class1_method1(TUT_class1 * self);

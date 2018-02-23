@@ -70,6 +70,21 @@ static int l_class1_new(lua_State *L)
     // splicer end class.Class1.method.new
 }
 
+// Class1(int flag +intent(in)+value) +name(newflag)
+static int l_class1_newflag(lua_State *L)
+{
+    // splicer begin class.Class1.method.newflag
+    int flag = lua_tointeger(L, 1);
+    l_Class1_Type * SH_this = (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
+    SH_this->self = new Class1(flag);
+    /* Add the metatable to the stack. */
+    luaL_getmetatable(L, "Class1.metatable");
+    /* Set the metatable on the userdata. */
+    lua_setmetatable(L, -2);
+    return 1;
+    // splicer end class.Class1.method.newflag
+}
+
 // ~Class1() +name(delete)
 static int l_class1_delete(lua_State *L)
 {
@@ -417,6 +432,7 @@ static int l_last_function_called(lua_State *L)
 
 static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"Class1", l_class1_new},
+    {"Class1", l_class1_newflag},
     {"Function1", l_function1},
     {"Function2", l_function2},
     {"Function3", l_function3},

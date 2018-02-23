@@ -65,8 +65,20 @@ TUT_class1 * TUT_class1_new()
 // splicer end class.Class1.method.new
 }
 
-// ~Class1() +name(delete)
+// Class1(int flag +intent(in)+value) +name(newflag)
 // function_index=1
+TUT_class1 * TUT_class1_newflag(int flag)
+{
+// splicer begin class.Class1.method.newflag
+    Class1 * SHCXX_rv = new Class1(flag);
+    TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(static_cast<void *>(
+        SHCXX_rv));
+    return SHC_rv;
+// splicer end class.Class1.method.newflag
+}
+
+// ~Class1() +name(delete)
+// function_index=2
 void TUT_class1_delete(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.delete
@@ -77,7 +89,7 @@ void TUT_class1_delete(TUT_class1 * self)
 }
 
 // void Method1()
-// function_index=2
+// function_index=3
 void TUT_class1_method1(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.method1
