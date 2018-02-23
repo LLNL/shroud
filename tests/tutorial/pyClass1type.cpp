@@ -53,8 +53,8 @@ static void
 PY_Class1_tp_del (PY_Class1 *self)
 {
 // splicer begin class.Class1.type.del
-    PyErr_SetString(PyExc_NotImplementedError, "del");
-    return ;
+    delete self->obj;
+    self->obj = NULL;
 // splicer end class.Class1.type.del
 }
 

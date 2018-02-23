@@ -209,7 +209,6 @@ class WrapperMixin(object):
         # The prefix is needed when two different sets of output
         # are being create and they are not in sync.
         # Creating methods and derived types together.
-        added_code = False
         show_splicer_comments = self.newlibrary.options.show_splicer_comments
         if show_splicer_comments:
             out.append('%s splicer begin %s%s' % (
@@ -218,6 +217,8 @@ class WrapperMixin(object):
         if code:
             added_code = True
             out.extend(code)
+        else:
+            added_code = False
         if show_splicer_comments:
             out.append('%s splicer end %s%s' % (
                 self.comment, self.splicer_path, name))

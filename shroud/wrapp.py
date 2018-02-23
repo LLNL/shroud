@@ -538,16 +538,15 @@ return 1;""", fmt)
 
         node.eval_template('PY_name_impl')
 
-        if is_ctor:
+        if is_dtor:
+            # Added in tp_del from write_tp_func.
+            return
+        elif is_ctor:
             self.tp_init_default = fmt.PY_name_impl
             fmt.PY_error_return = '-1'
         else:
             fmt.PY_error_return = 'NULL'
 
-        if is_dtor:
-            # XXX - have explicit delete
-            # need code in __init__ and __del__
-            return
         if node.return_this:
             result_type = 'void'
             CXX_subprogram = 'subroutine'
@@ -907,9 +906,6 @@ return 1;""", fmt)
 
             if is_ctor:
                 append_format(PY_code, 'self->{PY_obj} = new {cxx_class}({PY_call_list});', fmt)
-#            if is_dtor:
-#                append_format(PY_code, 'delete self->{PY_obj};', fmt)
-#                append_format(PY_code, 'self->{PY_obj} = NULL;', fmt)
             elif CXX_subprogram == 'subroutine':
                 line = wformat(
                     '{PY_this_call}{function_name}({PY_call_list});', fmt)
@@ -1091,16 +1087,21 @@ return 1;""", fmt)
 #            fmt.expose = expose
 #            self.PyMethodDef.append( wformat('{{"{expose}", (PyCFunction){PY_name_impl}, {PY_ml_flags}, {PY_name_impl}__doc__}},', fmt))
 
-    def write_tp_func(self, node, fmt, fmt_type, output):
+    def write_tp_func(self, node, fmt_type, output):
         """Create functions for tp_init et.al.
+
+        fmt_type - dictionary used with PyTypeObject_template
+                   to fill in type function names.
+        output - list for generated functions.
 
         python:
           type: [ repr, str ]
 
         """
-        # fmt is a dictiony here.
-        # update with type function names
-        # type bodies must be filled in by user, no real way to guess
+        # Type bodies must be filled in by user, no real way to guess
+        # how to implement.
+        # Except tp_init (constructor) and tp_del (destructor).
+        fmt = node.fmtdict
         PyObj = fmt.PY_PyObject
         if 'type' in node.python:
             selected = node.python['type'][:]
@@ -1115,9 +1116,7 @@ return 1;""", fmt)
         default_body = dict(
             richcompare=self.not_implemented
         )
-
-        # look for constructor and destructor
-#        default_body['del'] = 
+        default_body['del'] = self.tp_del
 
         self._push_splicer('type')
         for typename in typenames:
@@ -1138,7 +1137,14 @@ return 1;""", fmt)
             output.append('{')
             default = default_body.get(typename, self.not_implemented_error)
             default = default(typename, tup[2])
-            self._create_splicer(typename, output, default)
+
+            # format and indent default bodies
+            fmted = [1]
+            for line in default:
+                append_format(fmted, line, fmt)
+            fmted.append(-1)
+
+            self._create_splicer(typename, output, fmted)
             output.append('}')
         self._pop_splicer('type')
 
@@ -1162,7 +1168,7 @@ return 1;""", fmt)
             PY_PyTypeObject=fmt.PY_PyTypeObject,
             cxx_class=fmt.cxx_class,
             )
-        self.write_tp_func(node, fmt, fmt_type, output)
+        self.write_tp_func(node, fmt_type, output)
 
         output.extend(self.PyMethodBody)
 
@@ -1371,12 +1377,16 @@ PyMODINIT_FUNC init{PY_module_name}(void);
 
     def not_implemented_error(self, msg, ret):
         '''A standard splicer for unimplemented code
-        ret is the return value (NULL or -1)
+        ret is the return value (NULL or -1 or '')
         '''
-        return [
-            "    PyErr_SetString(PyExc_NotImplementedError, \"%s\");" % msg,
-            "    return %s;" % ret
+        lines = [
+            "PyErr_SetString(PyExc_NotImplementedError, \"%s\");" % msg,
             ]
+        if ret:
+            lines.append("return %s;" % ret)
+        else:
+            lines.append('return;')
+        return lines
 
     def not_implemented(self, msg, ret):
         '''A standard splicer for rich comparison
@@ -1386,6 +1396,15 @@ PyMODINIT_FUNC init{PY_module_name}(void);
             'return Py_NotImplemented;'
             ]
 
+    def tp_del(self, msg, ret):
+        """default method for tp_del.
+          msg = 'del'
+          ret = ''
+        """
+        return [
+            'delete self->{PY_obj};',
+            'self->{PY_obj} = NULL;',
+        ]
 
 # --- Python boiler plate
 

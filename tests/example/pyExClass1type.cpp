@@ -60,16 +60,16 @@ static void
 PP_ExClass1_tp_del (PP_ExClass1 *self)
 {
 // splicer begin class.ExClass1.type.del
-    PyErr_SetString(PyExc_NotImplementedError, "del");
-    return ;
+    delete self->obj;
+    self->obj = NULL;
 // splicer end class.ExClass1.type.del
 }
 static PyObject *
 PP_ExClass1_tp_richcompare (PP_ExClass1 *self, PyObject *other, int opid)
 {
 // splicer begin class.ExClass1.type.richcompare
-Py_INCREF(Py_NotImplemented);
-return Py_NotImplemented;
+    Py_INCREF(Py_NotImplemented);
+    return Py_NotImplemented;
 // splicer end class.ExClass1.type.richcompare
 }
 

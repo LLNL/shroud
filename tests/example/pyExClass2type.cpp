@@ -54,7 +54,7 @@ PP_ExClass2_tp_dealloc (PP_ExClass2 *self)
 {
 // splicer begin class.ExClass2.type.dealloc
     PyErr_SetString(PyExc_NotImplementedError, "dealloc");
-    return ;
+    return;
 // splicer end class.ExClass2.type.dealloc
 }
 static int
@@ -158,15 +158,15 @@ PP_ExClass2_tp_free (void *op)
 {
 // splicer begin class.ExClass2.type.free
     PyErr_SetString(PyExc_NotImplementedError, "free");
-    return ;
+    return;
 // splicer end class.ExClass2.type.free
 }
 static void
 PP_ExClass2_tp_del (PP_ExClass2 *self)
 {
 // splicer begin class.ExClass2.type.del
-    PyErr_SetString(PyExc_NotImplementedError, "del");
-    return ;
+    delete self->obj;
+    self->obj = NULL;
 // splicer end class.ExClass2.type.del
 }
 

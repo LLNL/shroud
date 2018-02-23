@@ -51,8 +51,8 @@ static void
 PY_Names_tp_del (PY_Names *self)
 {
 // splicer begin class.Names.type.del
-    PyErr_SetString(PyExc_NotImplementedError, "del");
-    return ;
+    delete self->obj;
+    self->obj = NULL;
 // splicer end class.Names.type.del
 }
 

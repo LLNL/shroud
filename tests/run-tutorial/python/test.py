@@ -157,13 +157,13 @@ class Tutorial(unittest.TestCase):
         del obj
 
     def test_class1_create2(self):
-        obj = tutorial.Class1("name")
+        obj = tutorial.Class1(1)
         self.assertTrue(isinstance(obj, tutorial.Class1))
         del obj
 
     def test_class1_method1(self):
         obj = tutorial.Class1()
-        obj1.Method1()
+        obj.Method1()
 
 #  subroutine test_class1
 #    type(class1) obj
