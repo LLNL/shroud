@@ -49,23 +49,21 @@ namespace tutorial {
 // splicer end class.Class1.impl.C_definition
 // splicer begin class.Class1.impl.additional_methods
 // splicer end class.Class1.impl.additional_methods
-
-static char PY_class1_delete__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_class1_delete(
-  PY_Class1 *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
+static int
+PY_Class1_tp_init (PY_Class1 *self, PyObject *args, PyObject *kwds)
 {
-// ~Class1() +name(delete)
-// splicer begin class.Class1.method.delete
-    delete self->obj;
-    self->obj = NULL;
-    Py_RETURN_NONE;
-// splicer end class.Class1.method.delete
+// splicer begin class.Class1.type.init
+    PyErr_SetString(PyExc_NotImplementedError, "init");
+    return -1;
+// splicer end class.Class1.type.init
+}
+static void
+PY_Class1_tp_del (PY_Class1 *self)
+{
+// splicer begin class.Class1.type.del
+    PyErr_SetString(PyExc_NotImplementedError, "del");
+    return ;
+// splicer end class.Class1.type.del
 }
 
 static char PY_class1_Method1__doc__[] =
@@ -87,8 +85,6 @@ PY_class1_Method1(
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods
 static PyMethodDef PY_Class1_methods[] = {
-    {"delete", (PyCFunction)PY_class1_delete, METH_NOARGS,
-        PY_class1_delete__doc__},
     {"Method1", (PyCFunction)PY_class1_Method1, METH_NOARGS,
         PY_class1_Method1__doc__},
     // splicer begin class.Class1.PyMethodDef
@@ -155,7 +151,7 @@ PyTypeObject PY_Class1_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)0,                   /* tp_init */
+        (initproc)PY_Class1_tp_init,                   /* tp_init */
         (allocfunc)0,                  /* tp_alloc */
         (newfunc)0,                    /* tp_new */
         (freefunc)0,                   /* tp_free */
@@ -165,7 +161,7 @@ PyTypeObject PY_Class1_Type = {
         0,                              /* tp_cache */
         0,                              /* tp_subclasses */
         0,                              /* tp_weaklist */
-        (destructor)0,                 /* tp_del */
+        (destructor)PY_Class1_tp_del,                 /* tp_del */
         0,                              /* tp_version_tag */
 #ifdef IS_PY3K
         (destructor)0,                  /* tp_finalize */

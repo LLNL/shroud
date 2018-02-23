@@ -63,6 +63,14 @@ PP_ExClass1_tp_init (PP_ExClass1 *self, PyObject *args, PyObject *kwds)
     init code
 // splicer end class.ExClass1.type.init
 }
+static void
+PP_ExClass1_tp_del (PP_ExClass1 *self)
+{
+// splicer begin class.ExClass1.type.del
+    PyErr_SetString(PyExc_NotImplementedError, "del");
+    return ;
+// splicer end class.ExClass1.type.del
+}
 static PyObject *
 PP_ExClass1_tp_richcompare (PP_ExClass1 *self, PyObject *other, int opid)
 {
@@ -70,24 +78,6 @@ PP_ExClass1_tp_richcompare (PP_ExClass1 *self, PyObject *other, int opid)
 Py_INCREF(Py_NotImplemented);
 return Py_NotImplemented;
 // splicer end class.ExClass1.type.richcompare
-}
-
-static char PP_exclass1_dtor__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_exclass1_dtor(
-  PP_ExClass1 *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// ~ExClass1()
-// splicer begin class.ExClass1.method.dtor
-    delete self->obj;
-    self->obj = NULL;
-    Py_RETURN_NONE;
-// splicer end class.ExClass1.method.dtor
 }
 
 static char PP_exclass1_incrementCount__doc__[] =
@@ -394,8 +384,6 @@ PP_exclass1_getValue(
 // splicer begin class.ExClass1.impl.after_methods
 // splicer end class.ExClass1.impl.after_methods
 static PyMethodDef PP_ExClass1_methods[] = {
-    {"dtor", (PyCFunction)PP_exclass1_dtor, METH_NOARGS,
-        PP_exclass1_dtor__doc__},
     {"incrementCount", (PyCFunction)PP_exclass1_incrementCount,
         METH_VARARGS|METH_KEYWORDS, PP_exclass1_incrementCount__doc__},
     {"getName", (PyCFunction)PP_exclass1_getName, METH_NOARGS,
@@ -490,7 +478,7 @@ PyTypeObject PP_ExClass1_Type = {
         0,                              /* tp_cache */
         0,                              /* tp_subclasses */
         0,                              /* tp_weaklist */
-        (destructor)0,                 /* tp_del */
+        (destructor)PP_ExClass1_tp_del,                 /* tp_del */
         0,                              /* tp_version_tag */
 #ifdef IS_PY3K
         (destructor)0,                  /* tp_finalize */

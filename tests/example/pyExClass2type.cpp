@@ -178,24 +178,6 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // splicer end class.ExClass2.type.del
 }
 
-static char PP_exclass2_dtor__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_exclass2_dtor(
-  PP_ExClass2 *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// ~ExClass2()
-// splicer begin class.ExClass2.method.dtor
-    delete self->obj;
-    self->obj = NULL;
-    Py_RETURN_NONE;
-// splicer end class.ExClass2.method.dtor
-}
-
 static char PP_exclass2_getName__doc__[] =
 "documentation"
 ;
@@ -422,8 +404,6 @@ PP_exclass2_getTypeID(
 // splicer begin class.ExClass2.impl.after_methods
 // splicer end class.ExClass2.impl.after_methods
 static PyMethodDef PP_ExClass2_methods[] = {
-    {"dtor", (PyCFunction)PP_exclass2_dtor, METH_NOARGS,
-        PP_exclass2_dtor__doc__},
     {"getName", (PyCFunction)PP_exclass2_getName, METH_NOARGS,
         PP_exclass2_getName__doc__},
     {"getName2", (PyCFunction)PP_exclass2_getName2, METH_NOARGS,

@@ -124,7 +124,6 @@
                             "F_subprogram": "subroutine", 
                             "LUA_name": "delete", 
                             "LUA_name_impl": "l_class1_delete", 
-                            "PY_name_impl": "PY_class1_delete", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 

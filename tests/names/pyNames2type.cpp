@@ -47,6 +47,22 @@
 // splicer end class.Names2.impl.C_definition
 // splicer begin class.Names2.impl.additional_methods
 // splicer end class.Names2.impl.additional_methods
+static int
+PY_Names2_tp_init (PY_Names2 *self, PyObject *args, PyObject *kwds)
+{
+// splicer begin class.Names2.type.init
+    PyErr_SetString(PyExc_NotImplementedError, "init");
+    return -1;
+// splicer end class.Names2.type.init
+}
+static void
+PY_Names2_tp_del (PY_Names2 *self)
+{
+// splicer begin class.Names2.type.del
+    PyErr_SetString(PyExc_NotImplementedError, "del");
+    return ;
+// splicer end class.Names2.type.del
+}
 // splicer begin class.Names2.impl.after_methods
 // splicer end class.Names2.impl.after_methods
 static PyMethodDef PY_Names2_methods[] = {
@@ -114,7 +130,7 @@ PyTypeObject PY_Names2_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)0,                   /* tp_init */
+        (initproc)PY_Names2_tp_init,                   /* tp_init */
         (allocfunc)0,                  /* tp_alloc */
         (newfunc)0,                    /* tp_new */
         (freefunc)0,                   /* tp_free */
@@ -124,7 +140,7 @@ PyTypeObject PY_Names2_Type = {
         0,                              /* tp_cache */
         0,                              /* tp_subclasses */
         0,                              /* tp_weaklist */
-        (destructor)0,                 /* tp_del */
+        (destructor)PY_Names2_tp_del,                 /* tp_del */
         0,                              /* tp_version_tag */
 #ifdef IS_PY3K
         (destructor)0,                  /* tp_finalize */

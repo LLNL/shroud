@@ -530,11 +530,11 @@ return 1;""", fmt)
         is_dtor = ast.fattrs.get('_destructor', False)
 #        is_const = ast.const
 
-        if is_ctor:   # or is_dtor:
+        if is_ctor or is_dtor:
             # XXX - have explicit delete
             # need code in __init__ and __del__
             return
-        if is_dtor or node.return_this:
+        if node.return_this:
             result_type = 'void'
             CXX_subprogram = 'subroutine'
 
@@ -1071,16 +1071,34 @@ return 1;""", fmt)
 #            self.PyMethodDef.append( wformat('{{"{expose}", (PyCFunction){PY_name_impl}, {PY_ml_flags}, {PY_name_impl}__doc__}},', fmt))
 
     def write_tp_func(self, node, fmt, fmt_type, output):
+        """Create functions for tp_init et.al.
+
+        python:
+          type: [ repr, str ]
+
+        """
         # fmt is a dictiony here.
         # update with type function names
         # type bodies must be filled in by user, no real way to guess
         PyObj = fmt.PY_PyObject
-        selected = node.python.get('type', [])
-
+        if 'type' in node.python:
+            selected = node.python['type'][:]
+            for auto in [ 'init', 'del']:
+                # Make some methods are there
+                if auto not in selected:
+                    selected.append(auto)
+        else:
+            selected = [ 'init', 'del' ]
+            
         # Dictionary of methods for bodies
         default_body = dict(
             richcompare=self.not_implemented
         )
+
+        # look for constructor and destructor
+
+#        default_body['init'] = 
+#        default_body['del'] = 
 
         self._push_splicer('type')
         for typename in typenames:

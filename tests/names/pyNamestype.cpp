@@ -47,6 +47,22 @@
 // splicer end class.Names.impl.C_definition
 // splicer begin class.Names.impl.additional_methods
 // splicer end class.Names.impl.additional_methods
+static int
+PY_Names_tp_init (PY_Names *self, PyObject *args, PyObject *kwds)
+{
+// splicer begin class.Names.type.init
+    PyErr_SetString(PyExc_NotImplementedError, "init");
+    return -1;
+// splicer end class.Names.type.init
+}
+static void
+PY_Names_tp_del (PY_Names *self)
+{
+// splicer begin class.Names.type.del
+    PyErr_SetString(PyExc_NotImplementedError, "del");
+    return ;
+// splicer end class.Names.type.del
+}
 
 static char PY_names_method1__doc__[] =
 "documentation"
@@ -152,7 +168,7 @@ PyTypeObject PY_Names_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)0,                   /* tp_init */
+        (initproc)PY_Names_tp_init,                   /* tp_init */
         (allocfunc)0,                  /* tp_alloc */
         (newfunc)0,                    /* tp_new */
         (freefunc)0,                   /* tp_free */
@@ -162,7 +178,7 @@ PyTypeObject PY_Names_Type = {
         0,                              /* tp_cache */
         0,                              /* tp_subclasses */
         0,                              /* tp_weaklist */
-        (destructor)0,                 /* tp_del */
+        (destructor)PY_Names_tp_del,                 /* tp_del */
         0,                              /* tp_version_tag */
 #ifdef IS_PY3K
         (destructor)0,                  /* tp_finalize */
