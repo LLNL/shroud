@@ -1603,6 +1603,7 @@ module_end = """
 class ToImplied(todict.PrintNode):
     """Convert implied expression to Python wrapper code.
 
+    expression has already been checked for errors by generate.check_implied.
     Convert functions:
       size  -  PyArray_SIZE
     """
@@ -1617,23 +1618,12 @@ class ToImplied(todict.PrintNode):
             return node.name
         elif node.name == 'size':
             # size(arg)
-            if len(node.args) != 1:
-                raise RuntimeError("Too many arguments to 'size': "
-                                   .format(self.expr))
             argname = node.args[0].name
             arg = self.func.ast.find_arg_by_name(argname)
-            if arg is None:
-                raise RuntimeError("Unknown argument '{}': {}"
-                                   .format(argname, self.expr))
-            if 'dimension' not in arg.attrs:
-                raise RuntimeError(
-                    "Argument '{}' must have dimension attribute: {}"
-                    .format(argname, self.expr))
             fmt = self.func._fmtargs[argname]['fmtpy']
             return wformat('PyArray_SIZE({py_var})', fmt)
         else:
-            raise RuntimeError("Unexpected function '{}' in expression: {}"
-                               .format(node.name, self.expr))
+            return self.param_list(node)
 
 def py_implied(expr, func):
     """Convert string to Python code.

@@ -231,16 +231,19 @@ def to_dict(node):
 
 class PrintNode(visitor.Visitor):
 
+    def param_list(self, node):
+        n = [node.name, '(']
+        for arg in node.args:
+            n.append(self.visit(arg))
+            n.append(',')
+            n[-1] = ')'
+        return ''.join(n)
+
     def visit_Identifier(self, node):
         if node.args == None:
             return node.name
         elif node.args:
-            n = [node.name, '(']
-            for arg in node.args:
-                n.append(self.visit(arg))
-                n.append(',')
-            n[-1] = ')'
-            return ''.join(n)
+            return self.param_list(node)
         else:
             return node.name+ '()'
 

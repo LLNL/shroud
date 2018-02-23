@@ -73,24 +73,6 @@ class CheckImplied(unittest.TestCase):
         )
         self.func1 = node
 
-    def test_errors(self):
-        with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied( 'bad(array)', self.func1)
-        self.assertTrue('Unexpected function' in str(context.exception))
-
-        with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied('size(array,n2)', self.func1)
-        self.assertTrue('Too many arguments' in str(context.exception))
-
-        with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied('size(array2)', self.func1)
-        self.assertTrue('Unknown argument' in str(context.exception))
-
-        with self.assertRaises(RuntimeError) as context:
-            wrapp.py_implied('size(scalar)', self.func1)
-        self.assertTrue('must have dimension attribute'
-                        in str(context.exception))
-
     def test_implied1(self):
         self.assertEqual('PyArray_SIZE(SHPy_array)',
                          wrapp.py_implied('size(array)', self.func1))

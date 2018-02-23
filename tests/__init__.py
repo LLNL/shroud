@@ -46,8 +46,9 @@ from __future__ import absolute_import
 
 import unittest
 
-from . import test_declast
 from . import test_ast
+from . import test_declast
+from . import test_generate
 from . import test_util
 from . import test_wrapf
 from . import test_wrapp
@@ -60,6 +61,7 @@ test_cases = (
     test_declast.CheckParse,
     test_declast.CheckExpr,
     test_ast.CheckAst,
+    test_generate.CheckImplied,
     test_wrapf.CheckAllocatable,
     test_wrapp.CheckImplied,
 #    test_shroud.MainCase,

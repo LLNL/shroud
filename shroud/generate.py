@@ -43,6 +43,8 @@ Generate additional functions required to create wrappers.
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import declast
+from . import todict
 from . import typemap
 
 
@@ -183,6 +185,9 @@ class VerifyAttrs(object):
                 node._has_default_arg = True
             elif node._has_found_default is True:
                 raise RuntimeError("Expected default value for %s" % argname)
+
+            if 'implied' in attrs:
+                check_implied(attrs['implied'], node)
 
         # compute argument names for some attributes
         # XXX make sure they don't conflict with other names
@@ -486,7 +491,9 @@ class GenFunctions(object):
         if options.F_string_len_trim is False:  # XXX what about vector
             return
 
-        # Is result or any argument a string?
+        # Is result or any argument a string or vector?
+        # If so, additional arguments will be passed down so
+        # create buffer version of function.
         has_implied_arg = False
         for arg in ast.params:
             argtype = arg.typename
@@ -738,3 +745,44 @@ def generate_functions(library, config):
     VerifyAttrs(library, config).verify_attrs()
     GenFunctions(library, config).gen_library()
     Namify(library, config).name_library()
+
+######################################################################
+
+class CheckImplied(todict.PrintNode):
+    """Check arguments in the implied attribute.
+    """
+    def __init__(self, expr, func):
+        super(CheckImplied, self).__init__()
+        self.expr = expr
+        self.func = func
+
+    def visit_Identifier(self, node):
+        """Check arguments to size function.
+        """
+        if node.args == None:
+            return node.name
+        elif node.name == 'size':
+            # size(arg)
+            if len(node.args) != 1:
+                raise RuntimeError("Too many arguments to 'size': "
+                                   .format(self.expr))
+            argname = node.args[0].name
+            arg = self.func.ast.find_arg_by_name(argname)
+            if arg is None:
+                raise RuntimeError("Unknown argument '{}': {}"
+                                   .format(argname, self.expr))
+            if 'dimension' not in arg.attrs:
+                raise RuntimeError(
+                    "Argument '{}' must have dimension attribute: {}"
+                    .format(argname, self.expr))
+            return 'size'
+        else:
+            raise RuntimeError("Unexpected function '{}' in expression: {}"
+                               .format(node.name, self.expr))
+
+def check_implied(expr, func):
+    """Check implied attribute expression for errors.
+    """
+    node = declast.ExprParser(expr).expression()
+    visitor = CheckImplied(expr, func)
+    return visitor.visit(node)
