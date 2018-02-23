@@ -43,6 +43,7 @@ Generate additional functions required to create wrappers.
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import ast
 from . import declast
 from . import todict
 from . import typemap
@@ -221,7 +222,7 @@ class VerifyAttrs(object):
 
 class GenFunctions(object):
     """
-    Generate types from class.
+    Generate Typedef from class.
     Generate functions based on overload/template/generic/attributes
     Computes fmt.function_suffix.
     """
@@ -238,7 +239,8 @@ class GenFunctions(object):
         self.function_index = newlibrary.function_index
 
         for cls in newlibrary.classes:
-            cls.functions = self.define_function_suffix(cls.functions)
+            added = self.default_ctor_and_dtor(cls)
+            cls.functions = self.define_function_suffix(added)
         newlibrary.functions = self.define_function_suffix(newlibrary.functions)
 
 # No longer need this, but keep code for now in case some other dependency checking is needed
@@ -253,9 +255,39 @@ class GenFunctions(object):
 #        node.fmtdict.function_index = str(len(ilist)) # debugging
         ilist.append(node)
 
+    def default_ctor_and_dtor(self, cls):
+        """Wrap default constructor and destructor.
+
+        Needed when the ctor or dtor is not explicily in the input.
+        """
+        found_ctor = False
+        found_dtor = False
+        for node in cls.functions:
+            fattrs = node.ast.fattrs
+            found_ctor = found_ctor or fattrs.get('_constructor', False)
+            found_dtor = found_dtor or fattrs.get('_destructor', False)
+            
+        if found_ctor and found_dtor:
+            return cls.functions
+
+        added = cls.functions[:]
+
+        if not found_ctor:
+            added.append(ast.FunctionNode(
+                '{}()'.format(cls.name),
+                parent=cls, parentoptions=cls.options))
+        if not found_dtor:
+            added.append(ast.FunctionNode(
+                '~{}()'.format(cls.name),
+                parent=cls, parentoptions=cls.options))
+
+        return added
+
     def define_function_suffix(self, functions):
         """
         Return a new list with generated function inserted.
+
+        functions - list of functions
         """
 
         # Look for overloaded functions

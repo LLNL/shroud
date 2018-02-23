@@ -65,6 +65,10 @@ typedef struct s_AA_exclass3 AA_exclass3;
 
 void AA_exclass3_exfunc(AA_exclass3 * self);
 
+AA_exclass3 * AA_exclass3_ctor();
+
+void AA_exclass3_dtor(AA_exclass3 * self);
+
 #ifdef __cplusplus
 }
 #endif

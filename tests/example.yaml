@@ -116,6 +116,7 @@ classes:
       type: [ init, repr, richcompare ]
 
     methods:
+    # overloaded constructor
     - decl: ExClass1()
     - decl: ExClass1( const string *name )
       doxygen:
@@ -257,6 +258,7 @@ classes:
       wrap_python: False
     cpp_if: ifdef USE_CLASS3
     functions:
+    # default ctor and dtor will be automatically wrapped
     - decl: void exfunc()
 
 functions:

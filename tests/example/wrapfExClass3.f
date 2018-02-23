@@ -61,6 +61,7 @@ module exclass3_mod
         ! splicer end class.ExClass3.component_part
     contains
         procedure :: exfunc => exclass3_exfunc
+        procedure :: dtor => exclass3_dtor
         procedure :: yadda => exclass3_yadda
         procedure :: associated => exclass3_associated
         ! splicer begin class.ExClass3.type_bound_procedure_part
@@ -84,6 +85,21 @@ module exclass3_mod
             type(C_PTR), value, intent(IN) :: self
         end subroutine c_exclass3_exfunc
 
+        function c_exclass3_ctor() &
+                result(SHT_rv) &
+                bind(C, name="AA_exclass3_ctor")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) :: SHT_rv
+        end function c_exclass3_ctor
+
+        subroutine c_exclass3_dtor(self) &
+                bind(C, name="AA_exclass3_dtor")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), value, intent(IN) :: self
+        end subroutine c_exclass3_dtor
+
         ! splicer begin class.ExClass3.additional_interfaces
         ! splicer end class.ExClass3.additional_interfaces
     end interface
@@ -98,6 +114,27 @@ contains
         call c_exclass3_exfunc(obj%voidptr)
         ! splicer end class.ExClass3.method.exfunc
     end subroutine exclass3_exfunc
+
+    ! ExClass3()
+    ! function_index=49
+    function exclass3_ctor() &
+            result(SHT_rv)
+        type(exclass3) :: SHT_rv
+        ! splicer begin class.ExClass3.method.ctor
+        SHT_rv%voidptr = c_exclass3_ctor()
+        ! splicer end class.ExClass3.method.ctor
+    end function exclass3_ctor
+
+    ! ~ExClass3()
+    ! function_index=50
+    subroutine exclass3_dtor(obj)
+        use iso_c_binding, only : C_NULL_PTR
+        class(exclass3) :: obj
+        ! splicer begin class.ExClass3.method.dtor
+        call c_exclass3_dtor(obj%voidptr)
+        obj%voidptr = C_NULL_PTR
+        ! splicer end class.ExClass3.method.dtor
+    end subroutine exclass3_dtor
 
     function exclass3_yadda(obj) result (voidptr)
         use iso_c_binding, only: C_PTR
