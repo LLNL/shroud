@@ -101,9 +101,9 @@ double TUT_function2(double arg1, int arg2)
 // splicer end function.function2
 }
 
-// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+// void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // function_index=5
-void TUT_sum(int len, int * values, int * result)
+void TUT_sum(size_t len, int * values, int * result)
 {
 // splicer begin function.sum
     Sum(len, values, result);

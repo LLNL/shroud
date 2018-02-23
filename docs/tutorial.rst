@@ -242,10 +242,10 @@ several things
 In this example, ``len`` and ``values`` are an input array and
 ``result`` is an output scalar::
 
-    void Sum(int len, int *values, int *result)
+    void Sum(size_t len, int *values, int *result)
     {
         int sum = 0;
-        for (int i=0; i < len; i++) {
+        for (size_t i=0; i < len; i++) {
           sum += values[i];
         }
         *result = sum;
@@ -256,7 +256,7 @@ When this function is wrapped it is necessary to give some annotations
 in the YAML file to describe how the variables should be mapped to
 Fortran::
 
-  - decl: void Sum(int  len    +implied(size(values)),
+  - decl: void Sum(size_t len  +implied(size(values)),
                    int *values +dimension(:)+intent(in),
                    int *result +intent(out))
 
@@ -274,7 +274,7 @@ by the *len* argument::
                 bind(C, name="TUT_sum")
             use iso_c_binding
             implicit none
-            integer(C_INT), value, intent(IN) :: len
+            integer(C_SIZE_T), value, intent(IN) :: len
             integer(C_INT), intent(IN) :: values(*)
             integer(C_INT), intent(OUT) :: result
         end subroutine c_sum
@@ -288,10 +288,10 @@ this value to the C wrapper::
 
     subroutine sum(values, result)
         use iso_c_binding, only : C_INT
-        integer(C_INT) :: len
+        integer(C_SIZE_T) :: len
         integer(C_INT), intent(IN) :: values(:)
         integer(C_INT), intent(OUT) :: result
-        len = size(values,kind=C_INT)
+        len = size(values,kind=C_SIZE_T)
         call c_sum(len, values, result)
     end subroutine sum
 

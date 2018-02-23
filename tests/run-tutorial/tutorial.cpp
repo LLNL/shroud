@@ -164,12 +164,12 @@ void Function10(const std::string &name, double arg2)
     global_double = arg2;
 }
 
-void Sum(int len, int *values, int *result)
+void Sum(size_t len, int *values, int *result)
 {
     last_function_called = "Sum";
 
     int sum = 0;
-    for (int i=0; i < len; i++) {
+    for (size_t i=0; i < len; i++) {
 	sum += values[i];
     }
     *result = sum;

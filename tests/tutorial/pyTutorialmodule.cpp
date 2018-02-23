@@ -114,7 +114,7 @@ PY_Sum(
   PyObject *args,
   PyObject *kwds)
 {
-// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+// void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // splicer begin function.sum
     PyObject * SHTPy_values;
     PyArrayObject * SHPy_values = NULL;
@@ -138,7 +138,7 @@ PY_Sum(
         // pre_call
         int * values = static_cast<int *>(PyArray_DATA(SHPy_values));
         int result;  // intent(out)
-        int len = PyArray_SIZE(SHPy_values);
+        size_t len = PyArray_SIZE(SHPy_values);
 
         Sum(len, values, &result);
 

@@ -135,9 +135,9 @@ module tutorial_mod
 
         subroutine c_sum(len, values, result) &
                 bind(C, name="TUT_sum")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
-            integer(C_INT), value, intent(IN) :: len
+            integer(C_SIZE_T), value, intent(IN) :: len
             integer(C_INT), intent(IN) :: values(*)
             integer(C_INT), intent(OUT) :: result
         end subroutine c_sum
@@ -595,14 +595,14 @@ contains
     ! splicer begin class.Class1.additional_functions
     ! splicer end class.Class1.additional_functions
 
-    ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+    ! void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
     ! function_index=5
     subroutine sum(values, result)
-        use iso_c_binding, only : C_INT
-        integer(C_INT) :: len
+        use iso_c_binding, only : C_INT, C_SIZE_T
+        integer(C_SIZE_T) :: len
         integer(C_INT), intent(IN) :: values(:)
         integer(C_INT), intent(OUT) :: result
-        len = size(values,kind=C_INT)
+        len = size(values,kind=C_SIZE_T)
         ! splicer begin function.sum
         call c_sum(len, values, result)
         ! splicer end function.sum

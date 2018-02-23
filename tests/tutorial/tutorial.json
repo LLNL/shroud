@@ -522,23 +522,23 @@
                             "c_ptr": "", 
                             "c_var": "len", 
                             "cxx_deref": ".", 
-                            "cxx_type": "int", 
+                            "cxx_type": "size_t", 
                             "cxx_var": "len"
                         }, 
                         "fmtf": {
                             "c_var": "len", 
                             "f_var": "len", 
-                            "pre_call_intent": "size(values,kind=C_INT)"
+                            "pre_call_intent": "size(values,kind=C_SIZE_T)"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
-                            "c_decl": "int len", 
+                            "c_decl": "size_t len", 
                             "c_ptr": "", 
-                            "c_type": "int", 
+                            "c_type": "size_t", 
                             "c_var": "len", 
-                            "cxx_decl": "int len", 
+                            "cxx_decl": "size_t len", 
                             "cxx_deref": ".", 
-                            "cxx_type": "int", 
+                            "cxx_type": "size_t", 
                             "cxx_var": "len", 
                             "pre_call_intent": "PyArray_SIZE(SHPy_values)", 
                             "py_var": "SHPy_len"
@@ -626,7 +626,7 @@
                                 "pointer": []
                             }, 
                             "specifier": [
-                                "int"
+                                "size_t"
                             ]
                         }, 
                         {
@@ -673,13 +673,13 @@
                         "void"
                     ]
                 }, 
-                "decl": "void Sum(int  len    +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))", 
-                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))", 
+                "decl": "void Sum(size_t len  +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))", 
+                "declgen": "void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))", 
                 "format": {
                     "C_call_code": "Sum(\tlen,\t values,\t result);", 
                     "C_call_list": "len,\t values,\t result", 
                     "C_name": "TUT_sum", 
-                    "C_prototype": "int len,\t int * values,\t int * result", 
+                    "C_prototype": "size_t len,\t int * values,\t int * result", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_call": "c_sum", 
