@@ -253,14 +253,14 @@ struct module_state {
     PyObject *error;
 };
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 #define GETSTATE(m) ((struct module_state*)PyModule_GetState(m))
 #else
 #define GETSTATE(m) (&_state)
 static struct module_state _state;
 #endif
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 static int testnames_traverse(PyObject *m, visitproc visit, void *arg) {
     Py_VISIT(GETSTATE(m)->error);
     return 0;
@@ -292,7 +292,7 @@ static struct PyModuleDef moduledef = {
 
 extern "C" {
 PyMODINIT_FUNC
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyInit_testnames(void)
 #else
 inittestnames(void)
@@ -306,7 +306,7 @@ inittestnames(void)
 
 
     /* Create the module and add the functions */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
     m = Py_InitModule4("testnames", PY_methods,

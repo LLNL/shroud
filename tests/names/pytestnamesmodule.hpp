@@ -43,9 +43,6 @@
 #ifndef PYTESTNAMESMODULE_HPP
 #define PYTESTNAMESMODULE_HPP
 #include <Python.h>
-#if PY_MAJOR_VERSION >= 3
-#define IS_PY3K
-#endif
 // splicer begin header.include
 // splicer end header.include
 extern PyTypeObject PY_Names_Type;
@@ -83,7 +80,7 @@ PyObject_HEAD
 extern PyObject *PY_error_obj;
 
 extern "C" {
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyMODINIT_FUNC PyInit_testnames(void);
 #else
 PyMODINIT_FUNC inittestnames(void);

@@ -43,9 +43,6 @@
 #ifndef PYSTRINGSMODULE_HPP
 #define PYSTRINGSMODULE_HPP
 #include <Python.h>
-#if PY_MAJOR_VERSION >= 3
-#define IS_PY3K
-#endif
 #include "strings.hpp"
 // splicer begin header.include
 // splicer end header.include
@@ -58,7 +55,7 @@
 extern PyObject *PY_error_obj;
 
 extern "C" {
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyMODINIT_FUNC PyInit_strings(void);
 #else
 PyMODINIT_FUNC initstrings(void);

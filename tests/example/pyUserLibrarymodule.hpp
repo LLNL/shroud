@@ -42,9 +42,6 @@
 #ifndef PYUSERLIBRARYMODULE_HPP
 #define PYUSERLIBRARYMODULE_HPP
 #include <Python.h>
-#if PY_MAJOR_VERSION >= 3
-#define IS_PY3K
-#endif
 // splicer begin header.include
 // splicer end header.include
 
@@ -85,7 +82,7 @@ PyObject_HEAD
 extern PyObject *PP_error_obj;
 
 extern "C" {
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyMODINIT_FUNC PyInit_userlibrary(void);
 #else
 PyMODINIT_FUNC inituserlibrary(void);

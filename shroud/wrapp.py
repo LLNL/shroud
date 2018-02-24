@@ -1294,11 +1294,7 @@ return 1;""", fmt)
                 '#define %s' % guard,
                 ])
 
-        output.extend([
-                '#include <Python.h>',
-                '#if PY_MAJOR_VERSION >= 3',
-                '#define IS_PY3K',
-                '#endif'])
+        output.append('#include <Python.h>')
 
         for include in node.cxx_header.split():
             output.append('#include "%s"' % include)
@@ -1320,7 +1316,7 @@ return 1;""", fmt)
         output.append(wformat("""
 extern PyObject *{PY_prefix}error_obj;
 
-{PY_extern_C_begin}#ifdef IS_PY3K
+{PY_extern_C_begin}#if PY_MAJOR_VERSION >= 3
 PyMODINIT_FUNC PyInit_{PY_module_name}(void);
 #else
 PyMODINIT_FUNC init{PY_module_name}(void);
@@ -1538,7 +1534,7 @@ PyTypeObject {PY_PyTypeObject} = {{
         (printfunc){tp_print},                   /* tp_print */
         (getattrfunc){tp_getattr},                 /* tp_getattr */
         (setattrfunc){tp_setattr},                 /* tp_setattr */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
         0,                               /* tp_reserved */
 #else
         (cmpfunc){tp_compare},                     /* tp_compare */
@@ -1594,7 +1590,7 @@ PyTypeObject {PY_PyTypeObject} = {{
         0,                              /* tp_weaklist */
         (destructor){tp_del},                 /* tp_del */
         0,                              /* tp_version_tag */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
         (destructor)0,                  /* tp_finalize */
 #endif
 }};"""
@@ -1613,14 +1609,14 @@ struct module_state {{
     PyObject *error;
 }};
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 #define GETSTATE(m) ((struct module_state*)PyModule_GetState(m))
 #else
 #define GETSTATE(m) (&_state)
 static struct module_state _state;
 #endif
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 static int {library_lower}_traverse(PyObject *m, visitproc visit, void *arg) {{
     Py_VISIT(GETSTATE(m)->error);
     return 0;
@@ -1651,7 +1647,7 @@ static struct PyModuleDef moduledef = {{
 #endif
 
 {PY_extern_C_begin}PyMODINIT_FUNC
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyInit_{PY_module_name}(void)
 #else
 init{PY_module_name}(void)
@@ -1664,7 +1660,7 @@ init{PY_module_name}(void)
 module_middle = """
 
     /* Create the module and add the functions */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
     m = Py_InitModule4("{PY_module_name}", {PY_prefix}methods,

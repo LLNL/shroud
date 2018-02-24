@@ -103,7 +103,7 @@ PyTypeObject PY_Names2_Type = {
         (printfunc)0,                   /* tp_print */
         (getattrfunc)0,                 /* tp_getattr */
         (setattrfunc)0,                 /* tp_setattr */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
         0,                               /* tp_reserved */
 #else
         (cmpfunc)0,                     /* tp_compare */
@@ -159,7 +159,7 @@ PyTypeObject PY_Names2_Type = {
         0,                              /* tp_weaklist */
         (destructor)PY_Names2_tp_del,                 /* tp_del */
         0,                              /* tp_version_tag */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
         (destructor)0,                  /* tp_finalize */
 #endif
 };

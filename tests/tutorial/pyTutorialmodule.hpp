@@ -43,9 +43,6 @@
 #ifndef PYTUTORIALMODULE_HPP
 #define PYTUTORIALMODULE_HPP
 #include <Python.h>
-#if PY_MAJOR_VERSION >= 3
-#define IS_PY3K
-#endif
 #include "tutorial.hpp"
 // splicer begin header.include
 // splicer end header.include
@@ -73,7 +70,7 @@ PyObject_HEAD
 extern PyObject *PY_error_obj;
 
 extern "C" {
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyMODINIT_FUNC PyInit_tutorial(void);
 #else
 PyMODINIT_FUNC inittutorial(void);

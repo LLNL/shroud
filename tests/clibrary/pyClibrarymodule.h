@@ -43,9 +43,6 @@
 #ifndef PYCLIBRARYMODULE_H
 #define PYCLIBRARYMODULE_H
 #include <Python.h>
-#if PY_MAJOR_VERSION >= 3
-#define IS_PY3K
-#endif
 #include "clibrary.h"
 // splicer begin header.include
 // splicer end header.include
@@ -57,7 +54,7 @@
 
 extern PyObject *PY_error_obj;
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyMODINIT_FUNC PyInit_clibrary(void);
 #else
 PyMODINIT_FUNC initclibrary(void);
