@@ -130,7 +130,11 @@ int TUT_typefunc(int arg);
 
 int TUT_enumfunc(int arg);
 
-void TUT_useclass(const TUT_class1 * arg1);
+int TUT_useclass(const TUT_class1 * arg1);
+
+const TUT_class1 * TUT_getclass2();
+
+TUT_class1 * TUT_getclass3();
 
 int TUT_vector_sum_bufferify(const int * arg, long Sarg);
 

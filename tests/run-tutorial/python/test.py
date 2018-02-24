@@ -162,24 +162,26 @@ class Tutorial(unittest.TestCase):
         del obj
 
     def test_class1_method1(self):
-        obj = tutorial.Class1()
-        obj.Method1()
+        obj0 = tutorial.Class1()
+        self.assertEqual(0, obj0.Method1())
 
-#  subroutine test_class1
-#    type(class1) obj
-#
-#    obj = class1_new()
-#    call assert_true(c_associated(obj%voidptr), "class1_new")
-#
-#    call obj%method1()
-#    call assert_true(.true.)
-#
-#    call useclass(obj)
-#
-#    call obj%delete()
-#    call assert_true(.not. c_associated(obj%voidptr), "class1_delete")
-#  end subroutine test_class1
-#
+        obj1 = tutorial.Class1(1)
+        self.assertEqual(1, obj1.Method1())
+
+    def test_class1_useclass(self):
+        obj0 = tutorial.Class1()
+        self.assertEqual(0, tutorial.useclass(obj0))
+
+        # getclass2 is const, not wrapped yet
+
+        obj0a = tutorial.getclass3()
+        self.assertTrue(isinstance(obj0a, tutorial.Class1))
+
+    def test_class1_useclass_error(self):
+        """Pass illegal argument to useclass"""
+        obj0 = tutorial.Class1()
+        self.assertRaises(TypeError, tutorial.useclass(obj0))
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

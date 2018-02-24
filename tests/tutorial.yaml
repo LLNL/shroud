@@ -180,7 +180,7 @@ functions:
 - decl: TypeID typefunc(TypeID arg)
 - decl: EnumTypeID enumfunc(EnumTypeID arg)
 
-- decl: void useclass(const Class1 *arg1) 
+- decl: int useclass(const Class1 *arg1) 
   options:
     wrap_lua: False
 
@@ -189,6 +189,17 @@ functions:
 #  options:
 #    wrap_python: False
 #    wrap_lua: False
+
+- decl: const Class1 *getclass2() 
+  options:
+    # const issues with python
+    wrap_python: False
+    wrap_lua: False
+
+- decl: Class1 *getclass3() 
+  options:
+#    wrap_python: False
+    wrap_lua: False
 
 # test std::vector
 # const implies intent(in)
@@ -255,7 +266,9 @@ classes:
     format:
       function_suffix: _flag
   - decl: ~Class1()        +name(delete)
-  - decl: void Method1()
+  - decl: int Method1()
+    doxygen:
+       brief: returns the value of flag member
 
 
 

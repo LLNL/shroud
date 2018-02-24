@@ -111,14 +111,15 @@ static int l_class1_delete(lua_State *L)
     // splicer end class.Class1.method.__gc
 }
 
-// void Method1()
+// int Method1()
 static int l_class1_method1(lua_State *L)
 {
     // splicer begin class.Class1.method.Method1
     l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
         L, 1, "Class1.metatable");
-    SH_this->self->Method1();
-    return 0;
+    int SHCXX_rv = SH_this->self->Method1();
+    lua_pushinteger(L, SHCXX_rv);
+    return 1;
     // splicer end class.Class1.method.Method1
 }
 

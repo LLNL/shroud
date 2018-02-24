@@ -617,7 +617,7 @@ PY_useclass(
   PyObject *args,
   PyObject *kwds)
 {
-// void useclass(const Class1 * arg1 +intent(in)+value)
+// int useclass(const Class1 * arg1 +intent(in)+value)
 // splicer begin function.useclass
     PY_Class1 * SHPy_arg1;
     const char *SHT_kwlist[] = {
@@ -631,9 +631,35 @@ PY_useclass(
     // post_parse
     const Class1 * arg1 = SHPy_arg1 ? SHPy_arg1->obj : NULL;
 
-    useclass(arg1);
-    Py_RETURN_NONE;
+    int SHC_rv = useclass(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
 // splicer end function.useclass
+}
+
+static char PY_getclass3__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getclass3(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// Class1 * getclass3()
+// splicer begin function.getclass3
+    Class1 * SHCXX_rv = getclass3();
+
+    // post_call
+    PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);
+    SHTPy_rv->obj = SHCXX_rv;
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.getclass3
 }
 
 static char PY_LastFunctionCalled__doc__[] =
@@ -794,6 +820,8 @@ static PyMethodDef PY_methods[] = {
     PY_enumfunc__doc__},
 {"useclass", (PyCFunction)PY_useclass, METH_VARARGS|METH_KEYWORDS,
     PY_useclass__doc__},
+{"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,
+    PY_getclass3__doc__},
 {"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,
     PY_LastFunctionCalled__doc__},
 {"Function10", (PyCFunction)PY_Function10, METH_VARARGS|METH_KEYWORDS,

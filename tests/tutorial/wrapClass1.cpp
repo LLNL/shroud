@@ -88,14 +88,18 @@ void TUT_class1_delete(TUT_class1 * self)
 // splicer end class.Class1.method.delete
 }
 
-// void Method1()
+// int Method1()
 // function_index=3
-void TUT_class1_method1(TUT_class1 * self)
+/**
+ * \brief returns the value of flag member
+ *
+ */
+int TUT_class1_method1(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.method1
     Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
-    SH_this->Method1();
-    return;
+    int SHC_rv = SH_this->Method1();
+    return SHC_rv;
 // splicer end class.Class1.method.method1
 }
 

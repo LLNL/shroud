@@ -101,15 +101,17 @@ const std::string& LastFunctionCalled();
 
 class Class1
 {
-   int m_flag;
 public:
-    Class1() {};
+    int m_flag;
+    Class1()         : m_flag(0)    {};
     Class1(int flag) : m_flag(flag) {};
-    void Method1();
+    int Method1();
 };
 
-void useclass(const Class1 *arg);
+int useclass(const Class1 *arg);
 void getclass(const Class1 **arg);
+const Class1 * getclass2();
+Class1 * getclass3();
 
 int vector_sum(const std::vector<int> &arg);
 void vector_iota(std::vector<int> &arg);

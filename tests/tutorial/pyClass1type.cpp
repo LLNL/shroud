@@ -103,10 +103,14 @@ PY_class1_Method1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void Method1()
+// int Method1()
 // splicer begin class.Class1.method.method1
-    self->obj->Method1();
-    Py_RETURN_NONE;
+    int SHC_rv = self->obj->Method1();
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
 // splicer end class.Class1.method.method1
 }
 
