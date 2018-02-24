@@ -41,6 +41,7 @@ copyright:
 - '#######################################################################'
 
 # Wrap a C library
+# Many of the same function as Tutorial, but for C.
 
 library: Clibrary
 cxx_header: clibrary.h
@@ -50,7 +51,7 @@ language: c
 options:
   debug: True
   F_module_per_class: False
-  wrap_python: False
+  wrap_python: True
   wrap_lua: False
 
 
@@ -69,19 +70,15 @@ types:
 functions:
 - decl: void Function1()
 - decl: double Function2(double arg1, int arg2)
-- decl: void Sum(int len, int *values+dimension(len)+intent(in),
-                 int *result+intent(out))
-##-  options:
-##-    # unable to deal with dimension
-##-    wrap_python: False
-##-    wrap_lua: False
+- decl: void Sum(int len +implied(size(values)),
+                 int *values +dimension(:)+intent(in),
+                 int *result +intent(out))
+  options:
+    # unable to deal with dimension
+    wrap_lua: False
 
 - decl: bool Function3(bool arg)
 - decl: void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
-##-  options:
-##-    # check out arguments
-##-    wrap_python: False
-##-    wrap_lua: False
 
 - decl: char *Function4a+len(30)(
     const char *arg1,
@@ -90,7 +87,7 @@ functions:
     C_finalize_buf: |
        // Function4a allocates memory which must be released after it is copied
        // into the Fortran argument or else it will leak.
-       free({C_result});
+       free({cxx_var});
 # +pure
 
 ##-- decl: const std::string& Function4b(
@@ -226,6 +223,37 @@ functions:
 ##-   doxygen:
 ##-     brief: append '-like' to names.
 ##-
+
+-  decl: void  intargs(const int argin      +intent(in),
+                             int * arginout +intent(inout),
+                             int * argout   +intent(out))
+
+-  decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
+                          double * out    +intent(out) +allocatable(mold=in),
+                          int      sizein +implied(size(in)))
+   doxygen:
+     brief: compute cos of IN and save in OUT
+     description:
+       allocate OUT same type as IN
+       implied size of array
+
+-  decl: void truncate_to_int(double * in     +intent(in)  +dimension(:),
+                              int *    out    +intent(out) +allocatable(mold=in),
+                              int      sizein +implied(size(in)))
+   doxygen:
+     brief: truncate IN argument and save in OUT
+     description: |
+       allocate OUT different type as IN
+       implied size of array
+
+-  decl: void increment(int * array  +intent(inout)  +dimension(:),
+                        int   sizein +implied(size(array)))
+   doxygen:
+     brief: 
+     description: |
+       array with intent(INOUT)
+
+ 
 ##-##################################################
 ##-
 ##-# Used with testing

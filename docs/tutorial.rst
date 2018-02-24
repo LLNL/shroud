@@ -1,4 +1,4 @@
-.. Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+.. Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 .. Produced at the Lawrence Livermore National Laboratory 
 ..
 .. LLNL-CODE-738041.
@@ -38,8 +38,8 @@
 ..
 .. #######################################################################
 
-Tutorial
-========
+Fortran Tutorial
+================
 
 This tutorial will walk through the steps required to create a Fortran
 wrapper for a simple C++ library.
@@ -147,8 +147,8 @@ Integer and Real
 ^^^^^^^^^^^^^^^^
 
 Integer and real types are handled using the ``iso_c_binding`` module
-which match them directly to the corresponding types in C++. To wrap
-``Function2``::
+which match them directly to the corresponding types in C++.
+To wrap ``Function2``::
 
     double Function2(double arg1, int arg2)
     {
@@ -178,63 +178,15 @@ The C wrapper can be called directly by Fortran using the interface::
      end interface
 
 
-Pointer arguments
------------------
+Bool
+^^^^
 
-When a C++ routine accepts a pointer argument it may mean
-several things
-
- * output a scalar
- * input or output an array
- * pass-by-reference for a struct or class.
-
-In this example, ``len`` and ``values`` are an input array and
-``result`` is an output scalar::
-
-    void Sum(int len, int *values, int *result)
-    {
-        int sum = 0;
-        for (int i=0; i < len; i++) {
-          sum += values[i];
-        }
-        *result = sum;
-        return;
-    }
-
-When this function is wrapped it is necessary to give some annotations
-in the YAML file to describe how the variables should be mapped to
-Fortran::
-
-  - decl: void Sum(int len, int *values+dimension(len)+intent(in),
-                   int *result+intent(out))
-
-In the ``BIND(C)`` interface only *len* uses the ``value`` attribute.
-Without the attribute Fortran defaults to pass-by-reference i.e.
-passes a pointer::
-
-    interface
-        subroutine sum(len, values, result) &
-                bind(C, name="TUT_sum")
-            use iso_c_binding
-            implicit none
-            integer(C_INT), value, intent(IN) :: len
-            integer(C_INT), intent(IN) :: values(len)
-            integer(C_INT), intent(OUT) :: result
-        end subroutine sum
-    end interface
-
-.. note:: Multiply pointered arguments ( ``char **`` ) do not 
-          map to Fortran directly and require ``type(C_PTR)``.
-
-Logical
-^^^^^^^
-
-Logical variables require a conversion since they are not directly
-compatible with C.  In addition, how ``.true.`` and ``.false.`` are
+bool variables require a conversion since they are not directly
+compatible with Fortran.  In addition, how ``.true.`` and ``.false.`` are
 represented internally is compiler dependent.  Some compilers use 1 for
 ``.true.`` while other use -1.
 
-A simple C++ function which accepts and returns a boolean argument::
+A simple C++ function which accepts and returns a ``bool`` argument::
 
     bool Function3(bool arg)
     {
@@ -275,6 +227,80 @@ The wrapper routine uses the compiler to coerce type using an assignment.
 It is possible to call ``c_function3`` directly from Fortran, but the
 wrapper does the type conversion necessary to make it easier to use
 within an existing Fortran application.
+
+
+Pointer arguments
+-----------------
+
+When a C++ routine accepts a pointer argument it may mean
+several things
+
+ * output a scalar
+ * input or output an array
+ * pass-by-reference for a struct or class.
+
+In this example, ``len`` and ``values`` are an input array and
+``result`` is an output scalar::
+
+    void Sum(size_t len, int *values, int *result)
+    {
+        int sum = 0;
+        for (size_t i=0; i < len; i++) {
+          sum += values[i];
+        }
+        *result = sum;
+        return;
+    }
+
+When this function is wrapped it is necessary to give some annotations
+in the YAML file to describe how the variables should be mapped to
+Fortran::
+
+  - decl: void Sum(size_t len  +implied(size(values)),
+                   int *values +dimension(:)+intent(in),
+                   int *result +intent(out))
+
+In the ``BIND(C)`` interface only *len* uses the ``value`` attribute.
+Without the attribute Fortran defaults to pass-by-reference
+i.e. passes a pointer.
+The ``dimension`` attribute defines the variable as a one dimensional,
+assumed-shape array.  In the C interface this maps to an 
+assumed-length array.  C pointers, like assumed-length arrays, have no
+idea how many values they point to.  This information is passed
+by the *len* argument::
+
+    interface
+        subroutine c_sum(len, values, result) &
+                bind(C, name="TUT_sum")
+            use iso_c_binding
+            implicit none
+            integer(C_SIZE_T), value, intent(IN) :: len
+            integer(C_INT), intent(IN) :: values(*)
+            integer(C_INT), intent(OUT) :: result
+        end subroutine c_sum
+    end interface
+
+The *len* argument defines the ``implied`` attribute.  This argument
+is not part of the Fortran API since its presence is *implied* from the
+expression ``size(values)``. This uses the Fortran intrinsic ``size``
+to compute the total number of elements in the array.  It then passes
+this value to the C wrapper::
+
+    subroutine sum(values, result)
+        use iso_c_binding, only : C_INT
+        integer(C_SIZE_T) :: len
+        integer(C_INT), intent(IN) :: values(:)
+        integer(C_INT), intent(OUT) :: result
+        len = size(values,kind=C_SIZE_T)
+        call c_sum(len, values, result)
+    end subroutine sum
+
+.. note:: If the *len* argument were named *size*, this would
+          present a problem since the ``size`` intrinsic function
+          is also used.  The generated code would not compile.
+
+.. note:: Multiply pointered arguments ( ``char **`` ) do not 
+          map to Fortran directly and require ``type(C_PTR)``.
 
 
 Character
@@ -395,20 +421,20 @@ C wrappers::
 
     double TUT_function5()
     {
-        double SHT_rv = Function5();
-        return SHT_rv;
+        double SHC_rv = Function5();
+        return SHC_rv;
     }
     
     double TUT_function5_arg1(double arg1)
     {
-        double SHT_rv = Function5(arg1);
-        return SHT_rv;
+        double SHC_rv = Function5(arg1);
+        return SHC_rv;
     }
     
     double TUT_function5_arg1_arg2(double arg1, bool arg2)
     {
-        double SHT_rv = Function5(arg1, arg2);
-        return SHT_rv;
+        double SHC_rv = Function5(arg1, arg2);
+        return SHC_rv;
     }
 
 
@@ -610,14 +636,14 @@ C wrapper::
 
     int TUT_function8_int()
     {
-        int SHT_rv = Function8<int>();
-        return SHT_rv;
+        int SHC_rv = Function8<int>();
+        return SHC_rv;
     }
 
     double TUT_function8_double()
     {
-        double SHT_rv = Function8<double>();
-        return SHT_rv;
+        double SHC_rv = Function8<double>();
+        return SHC_rv;
     }
 
 Generic Functions
@@ -710,8 +736,8 @@ The C wrapper will use ``int``::
 
   int TUT_typefunc(int arg)
   {
-    int SHT_rv = typefunc(arg);
-    return SHT_rv;
+    int SHC_rv = typefunc(arg);
+    return SHC_rv;
   }
 
 Enumerations
@@ -751,9 +777,9 @@ return type is explicitly converted to a C type in the generated wrapper::
 
   int TUT_enumfunc(int arg)
   {
-    EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));
-    int XSHT_rv = static_cast<int>(SHT_rv);
-    return XSHT_rv;
+    EnumTypeID SHCXX_rv = enumfunc(static_cast<EnumTypeID>(arg));
+    int SHC_rv = static_cast<int>(SHCXX_rv);
+    return SHC_rv;
   }
 
 Without the explicit conversion you're likely to get an error such as::
@@ -813,8 +839,10 @@ pointers for every instance::
 
     TUT_class1 * TUT_class1_new()
     {
-        Class1 *SHT_rv = new Class1();
-        return static_cast<TUT_class1 *>(static_cast<void *>(SHT_rv));
+        Class1 * SHCXX_rv = new Class1();
+        TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(
+            static_cast<void *>(SHCXX_rv));
+        return SHC_rv;
     }
 
     void TUT_class1_delete(TUT_class1 * self)

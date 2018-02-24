@@ -195,7 +195,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         cls  - class node or None for functions
         overloads - a list of functions to wrap.
 
-        fmt.c_var   - name of variable in PyArg_ParseTupleAndKeywords
+        fmt.c_var   - name of variable from lua stack.
         fmt.cxx_var - name of variable in c++ call.
         """
 
@@ -250,12 +250,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 arg_typedef = typemap.Typedef.lookup(arg.typename)
                 attrs = arg.attrs
                 if arg.init is not None:
-                    all_calls.append(lua_function(
+                    all_calls.append(LuaFunction(
                         function, CXX_subprogram, in_args[:], out_args))
                     found_default = True
                 in_args.append(arg)
             # no defaults, use all arguments
-            all_calls.append(lua_function(
+            all_calls.append(LuaFunction(
                 function, CXX_subprogram, in_args[:], out_args))
             maxargs = max(maxargs, len(in_args))
 
@@ -371,6 +371,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         body = self.body_lines
         body.append('')
+        if node.options.debug:
+            for node in overloads:
+                body.append('// ' + node.declgen)
         if fmt.LUA_used_param_state:
             append_format(body,
                           'static int {LUA_name_impl}'
@@ -453,8 +456,23 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # return value
 #        fmt.rv_decl = self.std_c_decl(
 #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
-        fmt.rv_decl = ast.gen_arg_as_cxx(
-            name=fmt.LUA_result, params=None)
+
+        if CXX_subprogram == 'function':
+            fmt_result0 = node._fmtresult
+            fmt_result = fmt_result0.setdefault('fmtl', util.Scope(fmt))
+            fmt_result.cxx_var = wformat('{CXX_local}{LUA_result}', fmt_result)
+            if ast.is_pointer():
+                fmt_result.cxx_deref = '->'
+            else:
+                fmt_result.cxx_deref = '.'
+            if result_typedef.cxx_to_c:
+                fmt_result.c_var = wformat(result_typedef.cxx_to_c, fmt_result)  # if C++
+            else:
+                fmt_result.c_var = fmt_result.cxx_var
+
+            fmt.rv_decl = ast.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None)
+            fmt.rv_asgn = fmt.rv_decl + ' = '
 
         LUA_decl = []  # declare variables and pop values
         LUA_code = []  # call C++ function
@@ -512,7 +530,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 # XXX lua_pop = wformat(arg_typedef.LUA_pop, fmt_arg)
                 # lua_pop is a C++ expression
                 fmt_arg.c_var = wformat(arg_typedef.LUA_pop, fmt_arg)
-                lua_pop = wformat(arg_typedef.c_to_cxx, fmt_arg)
+                if arg_typedef.c_to_cxx is None:
+                    lua_pop = fmt_arg.c_var
+                else:
+                    lua_pop = wformat(arg_typedef.c_to_cxx, fmt_arg)
                 LUA_index += 1
 
             if attrs['intent'] in ['inout', 'out']:
@@ -556,7 +577,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # call with arguments
         fmt.cxx_call_list = ',\t '.join(cxx_call_list)
-        fmt.rv_asgn = fmt.rv_decl + ' = '
 #        LUA_code.extend(post_parse)
 
         if is_ctor:
@@ -606,14 +626,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # Compute return value
         if CXX_subprogram == 'function' and not is_ctor:
-            if ast.is_pointer():
-                fmt.cxx_deref = '->'
-            else:
-                fmt.cxx_deref = '.'
-            fmt.cxx_var = fmt.LUA_result
-            fmt.c_var = wformat(result_typedef.cxx_to_c, fmt)  # if C++
             fmt.LUA_used_param_state = True
-            tmp = wformat(result_typedef.LUA_push, fmt)
+            tmp = wformat(result_typedef.LUA_push, fmt_result)
             LUA_push.append(tmp + ';')
 
         lines = self.splicer_lines
@@ -721,7 +735,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         self.write_output_file(fname, self.config.lua_dir, output)
 
 
-class lua_function(object):
+class LuaFunction(object):
     """Gather information used to write a wrapper for
     and overloaded/default-argument function
     """

@@ -47,6 +47,14 @@
 // splicer end class.Names.impl.C_definition
 // splicer begin class.Names.impl.additional_methods
 // splicer end class.Names.impl.additional_methods
+static void
+PY_Names_tp_del (PY_Names *self)
+{
+// splicer begin class.Names.type.del
+    delete self->obj;
+    self->obj = NULL;
+// splicer end class.Names.type.del
+}
 
 static char PY_names_method1__doc__[] =
 "documentation"
@@ -55,9 +63,10 @@ static char PY_names_method1__doc__[] =
 static PyObject *
 PY_names_method1(
   PY_Names *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
+// void method1()
 // splicer begin class.Names.method.method1
     self->obj->method1();
     Py_RETURN_NONE;
@@ -71,22 +80,38 @@ static char PY_names_method2__doc__[] =
 static PyObject *
 PY_names_method2(
   PY_Names *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
+// void method2()
 // splicer begin class.Names.method.method2
     self->obj->method2();
     Py_RETURN_NONE;
 // splicer end class.Names.method.method2
 }
+
+static int
+PY_Names_tp_init(
+  PY_Names *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// Names()
+// splicer begin class.Names.method.ctor
+    self->obj = new Names();
+    return 0;
+// splicer end class.Names.method.ctor
+}
 // splicer begin class.Names.impl.after_methods
 // splicer end class.Names.impl.after_methods
 static PyMethodDef PY_Names_methods[] = {
-{"method1", (PyCFunction)PY_names_method1, METH_NOARGS, PY_names_method1__doc__},
-{"method2", (PyCFunction)PY_names_method2, METH_NOARGS, PY_names_method2__doc__},
-// splicer begin class.Names.PyMethodDef
-// splicer end class.Names.PyMethodDef
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {"method1", (PyCFunction)PY_names_method1, METH_NOARGS,
+        PY_names_method1__doc__},
+    {"method2", (PyCFunction)PY_names_method2, METH_NOARGS,
+        PY_names_method2__doc__},
+    // splicer begin class.Names.PyMethodDef
+    // splicer end class.Names.PyMethodDef
+    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
 static char Names__doc__[] =
@@ -148,7 +173,7 @@ PyTypeObject PY_Names_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)0,                   /* tp_init */
+        (initproc)PY_Names_tp_init,                   /* tp_init */
         (allocfunc)0,                  /* tp_alloc */
         (newfunc)0,                    /* tp_new */
         (freefunc)0,                   /* tp_free */
@@ -158,7 +183,7 @@ PyTypeObject PY_Names_Type = {
         0,                              /* tp_cache */
         0,                              /* tp_subclasses */
         0,                              /* tp_weaklist */
-        (destructor)0,                 /* tp_del */
+        (destructor)PY_Names_tp_del,                 /* tp_del */
         0,                              /* tp_version_tag */
 #ifdef IS_PY3K
         (destructor)0,                  /* tp_finalize */

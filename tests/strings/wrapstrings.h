@@ -76,17 +76,17 @@ void STR_pass_char_ptr_in_out(char * s);
 
 void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns);
 
-const char * STR_get_char1();
+const char * STR_get_char_ptr1();
 
-void STR_get_char1_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_char_ptr1_bufferify(char * SHF_rv, int NSHF_rv);
 
-const char * STR_get_char2();
+const char * STR_get_char_ptr2();
 
-void STR_get_char2_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv);
 
-const char * STR_get_char3();
+const char * STR_get_char_ptr3();
 
-void STR_get_char3_bufferify(char * output, int Noutput);
+void STR_get_char_ptr3_bufferify(char * output, int Noutput);
 
 const char * STR_get_string1();
 

@@ -8,12 +8,12 @@ C function void passCharPtr(char * dest +intent(out), const char * src +intent(i
 C function void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))
 C function void passCharPtrInOut(char * s +intent(inout))
 C function void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))
-C function const char * getChar1() +pure
-C function void getChar1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure
-C function const char * getChar2 +len(30)()
-C function void getChar2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))
-C function const char * getChar3()
-C function void getChar3(char * output +intent(out)+len(Noutput))
+C function const char * getCharPtr1() +pure
+C function void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure
+C function const char * getCharPtr2 +len(30)()
+C function void getCharPtr2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))
+C function const char * getCharPtr3()
+C function void getCharPtr3(char * output +intent(out)+len(Noutput))
 C function const string & getString1() +pure
 C function void getString1(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
 C function const string & getString2 +len(30)()
@@ -52,13 +52,13 @@ C-interface, Fortran function void passCharPtr(char * dest +intent(out), const c
 C-interface function void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))
 C-interface, Fortran function void passCharPtrInOut(char * s +intent(inout))
 C-interface function void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))
-C-interface, Fortran function const char * getChar1() +pure
-C-interface function void getChar1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure
-C-interface, Fortran function const char * getChar2 +len(30)()
-C-interface function void getChar2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))
-C-interface function const char * getChar3()
-C-interface function void getChar3(char * output +intent(out)+len(Noutput))
-Fortran function void getChar3(char * output +intent(out)+len(Noutput))
+C-interface, Fortran function const char * getCharPtr1() +pure
+C-interface function void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure
+C-interface, Fortran function const char * getCharPtr2 +len(30)()
+C-interface function void getCharPtr2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))
+C-interface function const char * getCharPtr3()
+C-interface function void getCharPtr3(char * output +intent(out)+len(Noutput))
+Fortran function void getCharPtr3(char * output +intent(out)+len(Noutput))
 C-interface, Fortran function const string & getString1() +pure
 C-interface function void getString1(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
 C-interface, Fortran function const string & getString2 +len(30)()
@@ -94,11 +94,10 @@ C-interface function void CpassCharPtr(char * dest +intent(out)+len(Ndest), cons
 Close wrapfstrings.f
 Python function void passChar(char_scalar status +intent(in)+value)
 Python function char_scalar returnChar()
-Python function void passCharPtr(char * dest +intent(out), const char * src +intent(in))
 Python function void passCharPtrInOut(char * s +intent(inout))
-Python function const char * getChar1() +pure
-Python function const char * getChar2 +len(30)()
-Python function const char * getChar3()
+Python function const char * getCharPtr1() +pure
+Python function const char * getCharPtr2 +len(30)()
+Python function const char * getCharPtr3()
 Python function const string & getString1() +pure
 Python function const string & getString2 +len(30)()
 Python function const string & getString3()
@@ -110,11 +109,10 @@ Python function void acceptStringConstReference(const std::string & arg1 +intent
 Python function void acceptStringReferenceOut(std::string & arg1 +intent(out))
 Python function void acceptStringReference(std::string & arg1 +intent(inout))
 Python function void acceptStringPointer(std::string * arg1 +intent(inout))
+Python function void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))
 Python function void explicit1(char * name +intent(in)+len_trim(AAlen))
-Python function void explicit2(char * name +intent(out)+len(AAtrim))
 Python function void CpassChar(char_scalar status +intent(in)+value)
 Python function char_scalar CreturnChar()
-Python function void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))
 Close pystringsmodule.hpp
 Close pystringsmodule.cpp
 Close pystringshelper.cpp

@@ -6,10 +6,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Support for function pointer arguments.
+- Improve support for Python wrappers, including NumPy support.
+  Use constructor and destructor with extension types.
+- Added implied attribute used to compute value of an argument which
+  is in the C++ API but does not need to be explicit in the Fortran API.
+- Added allocatable attribute used to allocate arrays with intent(out).
+  Use the mold attribute to define shape of allocated array.
+
 ### Fixed
 - Add continuations to long lines.
   This helps Fortran which has a line length limit.
-- Support function pointer arguments.
+- Write generic interface for overloaded constructors.
 
 ## v0.7.0 - 2018-01-22
 ### Added

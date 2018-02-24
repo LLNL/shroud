@@ -47,6 +47,13 @@
 #define IS_PY3K
 #endif
 #include "tutorial.hpp"
+
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
 // splicer begin header.include
 // splicer end header.include
 
@@ -72,18 +79,13 @@ PyObject_HEAD
 
 extern PyObject *PY_error_obj;
 
-#ifdef __cplusplus
 extern "C" {
-#endif
 #ifdef IS_PY3K
-#define MOD_INITBASIS PyInit_tutorial
+PyMODINIT_FUNC PyInit_tutorial(void);
 #else
-#define MOD_INITBASIS inittutorial
+PyMODINIT_FUNC inittutorial(void);
 #endif
-PyMODINIT_FUNC MOD_INITBASIS(void);
-#ifdef __cplusplus
-}
-#endif
+}   // extern "C"
 
 
 }  // namespace tutorial

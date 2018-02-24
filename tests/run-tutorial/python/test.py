@@ -1,4 +1,4 @@
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -82,21 +82,19 @@ class Tutorial(unittest.TestCase):
     def testFunction4a(self):
         rv_char = tutorial.Function4a("dog", "cat")
         self.assertEqual(rv_char, "dogcat")
-#
+
 #    call function4b("dog", "cat", rv_char)
 #    call assert_true( rv_char == "dogcat")
-#
+
     def testFunction5(self):
         rv_double = tutorial.Function5()
         self.assertAlmostEqual(rv_double, 13.1415)
         rv_double = tutorial.Function5(1.0)
         self.assertAlmostEqual(rv_double, 11.0)
 
-        # XXX fix bool argument
         rv_double = tutorial.Function5(1.0, False)
         self.assertAlmostEqual(rv_double, 1.0)
-#, 1.d0)
-#
+
     def testFunction6(self):
         tutorial.Function6("name")
         self.assertEqual(tutorial.LastFunctionCalled(), "Function6(string)")
@@ -130,10 +128,10 @@ class Tutorial(unittest.TestCase):
 #    call assert_true(.true.)
 #    call function10("bar", 2.0d0)
 #    call assert_true(.true.)
-#
-#    call sum(5, [1,2,3,4,5], rv_int)
-#    call assert_true(rv_int .eq. 15)
-#
+
+    def testsum(self):
+        self.assertEqual(15, tutorial.Sum([1, 2, 3, 4, 5]))
+
 #    rv_int = overload1(10)
 #    call assert_true(rv_int .eq. 10)
 #    rv_int = overload1(1d0, 10)
@@ -152,21 +150,38 @@ class Tutorial(unittest.TestCase):
 #
 #  end subroutine test_functions
 #
-#  subroutine test_class1
-#    type(class1) obj
-#
-#    obj = class1_new()
-#    call assert_true(c_associated(obj%voidptr), "class1_new")
-#
-#    call obj%method1()
-#    call assert_true(.true.)
-#
-#    call useclass(obj)
-#
-#    call obj%delete()
-#    call assert_true(.not. c_associated(obj%voidptr), "class1_delete")
-#  end subroutine test_class1
-#
+
+    def test_class1_create1(self):
+        obj = tutorial.Class1()
+        self.assertTrue(isinstance(obj, tutorial.Class1))
+        del obj
+
+    def test_class1_create2(self):
+        obj = tutorial.Class1(1)
+        self.assertTrue(isinstance(obj, tutorial.Class1))
+        del obj
+
+    def test_class1_method1(self):
+        obj0 = tutorial.Class1()
+        self.assertEqual(0, obj0.Method1())
+
+        obj1 = tutorial.Class1(1)
+        self.assertEqual(1, obj1.Method1())
+
+    def test_class1_useclass(self):
+        obj0 = tutorial.Class1()
+        self.assertEqual(0, tutorial.useclass(obj0))
+
+        # getclass2 is const, not wrapped yet
+
+        obj0a = tutorial.getclass3()
+        self.assertTrue(isinstance(obj0a, tutorial.Class1))
+
+    def test_class1_useclass_error(self):
+        """Pass illegal argument to useclass"""
+        obj0 = tutorial.Class1()
+        self.assertRaises(TypeError, tutorial.useclass(obj0))
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

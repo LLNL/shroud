@@ -1,5 +1,4 @@
-#!/bin/env python3
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 # 
 # LLNL-CODE-738041.
@@ -44,13 +43,58 @@ Generate Python module for C++ code.
 Entire library in a single header.
 One Extension module per class
 
+
+Variables prefixes used by generated code:
+SH_     C or C++ version of argument
+SHPy_   Python object which corresponds to the argument
+SHTPy_  A temporary object, usually from PyArg_Parse
+        to be converted to SHPy_ object.
+SHDPy_  PyArray_Descr object
+
 """
 from __future__ import print_function
 from __future__ import absolute_import
 
+import collections
+import re
+
+from . import declast
 from . import typemap
 from . import util
+from . import todict
 from .util import wformat, append_format
+
+# If multiple values are returned, save up into to build a tuple to return.
+# else build value from ctor, then return ctorvar.
+# The value may be built earlier (bool, array), if so ctor will be None.
+# format   - Format arg to PyBuild_Tuple
+# vargs    - Variable for PyBuild_Tuple
+# ctor     - Code to construct a Python object
+# ctorvar  - Variable created by ctor
+BuildTuple = collections.namedtuple(
+    'BuildTuple', 'format vargs ctor ctorvar')
+
+# map c types to numpy types
+c_to_numpy = dict(
+#    'NPY_BOOL',
+#    'NPY_BYTE',
+#    'NPY_UBYTE',
+#    'NPY_SHORT',
+#    'NPY_USHORT',
+    int='NPY_INT',
+#    'NPY_UINT',
+    long='NPY_LONG',
+#    'NPY_ULONG',
+#    'NPY_LONGLONG',
+#    'NPY_ULONGLONG',
+    float='NPY_FLOAT',
+    double='NPY_DOUBLE',
+#    'NPY_LONGDOUBLE',
+#    'NPY_CFLOAT',
+#    'NPY_CDOUBLE',
+#    'NPY_CLONGDOUBLE',
+#    'NPY_OBJECT',
+)
 
 
 class Wrapp(util.WrapperMixin):
@@ -67,6 +111,7 @@ class Wrapp(util.WrapperMixin):
         self.comment = '//'
         self.cont = ''
         self.linelen = newlibrary.options.C_line_length
+        self.need_numpy = False
 
     def XXX_begin_output_file(self):
         """Start a new class for output"""
@@ -86,6 +131,17 @@ class Wrapp(util.WrapperMixin):
         newlibrary = self.newlibrary
         options = newlibrary.options
         fmt_library = newlibrary.fmtdict
+
+        if self.language == 'c':
+            fmt_library.PY_header_filename_suffix = 'h'
+            fmt_library.PY_impl_filename_suffix = 'c'
+            fmt_library.PY_extern_C_begin = ''
+            fmt_library.PY_extern_C_end = ''
+        else:
+            fmt_library.PY_header_filename_suffix = 'hpp'
+            fmt_library.PY_impl_filename_suffix = 'cpp'
+            fmt_library.PY_extern_C_begin = 'extern "C" {\n'
+            fmt_library.PY_extern_C_end = '}   // extern "C"\n'
 
         # Format variables
         newlibrary.eval_template('PY_module_filename')
@@ -192,6 +248,7 @@ class Wrapp(util.WrapperMixin):
         self.py_type_structs.append(wformat('}} {PY_PyObject};', fmt_class))
 
         # wrap methods
+        self.tp_init_default = None
         self._push_splicer('method')
         self.wrap_functions(node, node.functions)
         self._pop_splicer('method')
@@ -261,46 +318,161 @@ return 1;""", fmt)
 
         self._pop_splicer('helper')
 
-    def intent_out(self, typedef, fmt, output):
-        """Create PyObject from C++ value.
+    def allocatable_blk(self, allocatable, node, arg, fmt_arg):
+        """Allocate NumPy Array.
+        Assumes intent(out)
+        """
+        self.need_numpy = True
+        fmt_arg.py_type = 'PyObject'
+        fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
+
+        allocargs, descr_code = attr_allocatable(self.language, allocatable, node, arg)
+
+        asgn = ('{py_var} = %s;' %
+                do_cast(
+                    self.language, 'reinterpret', 'PyArrayObject *',
+                    'PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s)' % allocargs))
+        if self.language == 'c++':
+            cast = '{cxx_decl} = %s;' % do_cast(
+                self.language, 'static', '{cxx_type} *', 'PyArray_DATA({py_var})')
+        else:
+            # No cast needed for void * in C
+            cast = '{cxx_decl} = PyArray_DATA({py_var});'
+
+        blk = dict(
+#             cxx_local_var = 'pointer',
+            goto_fail = True,
+            decl = [
+                'PyArrayObject * {py_var} = NULL;',
+            ],
+            pre_call  = [
+                descr_code + asgn,
+                'if ({py_var} == NULL)', '+goto fail;-',
+                cast,
+            ],
+            post_call = None,   # Object already created
+#            cleanup = [
+#                'Py_DECREF({pytmp_var});'
+#            ],
+            fail = [
+                'Py_XDECREF({py_var});'
+            ],
+        )
+        return blk
+
+    def dimension_blk(self, arg, fmt_arg):
+        """Create code needed for a dimensioned array.
+        Convert it to use Numpy.
+        """
+        self.need_numpy = True
+        fmt_arg.pytmp_var = 'SHTPy_' + fmt_arg.c_var
+        fmt_arg.py_type = 'PyObject'
+        fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
+        intent = arg.attrs['intent']
+        if intent == 'in':
+            fmt_arg.numpy_intent = 'NPY_ARRAY_IN_ARRAY'
+        else:
+            fmt_arg.numpy_intent = 'NPY_ARRAY_INOUT_ARRAY'
+
+        asgn = ('{py_var} = %s;' %
+                do_cast(self.language, 'reinterpret', 'PyArrayObject *', 'PyArray_FROM_OTF('
+                        '\t{pytmp_var},\t {numpy_type},\t {numpy_intent})'))
+
+        if self.language == 'c++':
+            cast = '{cxx_decl} = %s;' % do_cast(
+                self.language, 'static', '{cxx_type} *', 'PyArray_DATA({py_var})')
+        else:
+            # No cast needed for void * in C
+            cast = '{cxx_decl} = PyArray_DATA({py_var});'
+
+        blk = dict(
+            # Declare variables here that are used by parse or referenced in fail.
+            goto_fail = True,
+            decl = [
+                '{py_type} * {pytmp_var};',
+                'PyArrayObject * {py_var} = NULL;',
+            ],
+            post_parse = [
+                asgn,
+                'if ({py_var} == NULL) {{+',
+                'PyErr_SetString(PyExc_ValueError,'
+                '\t "{c_var} must be a 1-D array of {c_type}");',
+                'goto fail;',
+                '-}}',
+            ],
+            pre_call  = [
+                cast,
+            ],
+        )
+
+        if intent == 'in':
+            blk['cleanup'] = ['Py_DECREF({py_var});']
+            blk['fail'] = ['Py_XDECREF({py_var});']
+        else:
+            blk['post_call'] = None   # Object already created
+
+        return blk
+
+    def implied_blk(self, node, arg, pre_call):
+        """Add the implied attribute to the pre_call block.
+
+        Called after all input arguments have their fmtpy dictionary
+        updated.
+        Added into wrapper after post_parse code is inserted --
+        i.e. all intent in,inout arguments have been evaluated
+        and PyArrayObjects created.
+        """
+        implied = arg.attrs.get('implied', None)
+        if implied:
+            fmt = node._fmtargs[arg.name]['fmtpy']
+            fmt.pre_call_intent = py_implied(implied, node)
+            append_format(pre_call, '{cxx_decl} = {pre_call_intent};', fmt)
+
+    def intent_out(self, typedef, intent_blk, fmt, post_call):
+        """Add code for post-call.
+        Create PyObject from C++ value to return.
 
         typedef - typedef of C++ variable.
         fmt - format dictionary
-        post_parse - output lines.
+        post_call   - always called to construct objects
+
+        Return a BuildTuple instance.
         """
 
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        cmd_list = typedef.py_statements.get('intent_out', {}).get('ctor', [])
-        if cmd_list:
-            # must create py_var from cxx_var.
-            # XXX fmt.cxx_var = 'SH_' + fmt.c_var
-            for cmd in cmd_list:
-                append_format(output, cmd, fmt)
+        if 'post_call' in intent_blk:
+            cmd_list = intent_blk['post_call']
+            # If post_call is None, the Object has already been created
+            if cmd_list is not None:
+                for cmd in cmd_list:
+                    append_format(post_call, cmd, fmt)
             format = 'O'
             vargs = fmt.py_var
-
-        elif typedef.PY_ctor:
-            fmt.c_var = wformat(typedef.cxx_to_c, fmt)  # if C++
-            append_format(output,
-                          '{PyObject} * {py_var} = ' + typedef.PY_ctor
-                          + ';', fmt)
-            format = 'O'
-            vargs = fmt.py_var
-
+            ctor = None
+            ctorvar = fmt.py_var
         else:
+            # Decide values for Py_BuildValue
             format = typedef.PY_format
-            if format == 'O':
-                raise RuntimeError(
-                    "PY_format should not be 'O' for " + typedef.name)
-            vargs = ''
-            if typedef.PY_to_object:
-                format += '&'
-                vargs = typedef.PY_to_object
-            vargs += wformat(typedef.cxx_to_c, fmt)  # if C++
+            vargs = typedef.PY_build_arg
+            if not vargs:
+                vargs = '{cxx_var}'
+            vargs = wformat(vargs, fmt)
 
-        return format, vargs
+            if typedef.PY_ctor:
+                ctor = wformat('{PyObject} * {py_var} = ' + typedef.PY_ctor
+                           + ';', fmt)
+                ctorvar = fmt.py_var
+            else:
+                fmt.PY_format = format
+                fmt.vargs = vargs
+                ctor = wformat(
+                    '{PyObject} * {py_var} = '
+                    'Py_BuildValue("{PY_format}", {vargs});', fmt)
+                ctorvar = fmt.py_var
+                
+        return BuildTuple(format, vargs, ctor, ctorvar)
 
     def wrap_functions(self, cls, functions):
         """Wrap functions for a library or class.
@@ -321,7 +493,7 @@ return 1;""", fmt)
         for function in functions:
             self.wrap_function(cls, function)
 
-        self.multi_dispatch(cls, functions)
+        self.multi_dispatch(functions)
 
     def wrap_function(self, cls, node):
         """Write a Python wrapper for a C++ function.
@@ -332,8 +504,13 @@ return 1;""", fmt)
         fmt.c_var   - name of variable in PyArg_ParseTupleAndKeywords
         fmt.cxx_var - name of variable in c++ call.
         fmt.py_var  - name of PyObject variable
+
+        # Used to prevent compiler warnings about unused variables.
         fmt.PY_used_param_args - True/False if parameter args is used
         fmt.PY_used_param_kwds - True/False if parameter kwds is used
+
+        fmt.PY_error_return - 'NULL' for all wrappers except constructors
+                              which are called via tp_init and require -1.
         """
         options = node.options
         if not options.wrap_python:
@@ -359,11 +536,20 @@ return 1;""", fmt)
         is_dtor = ast.fattrs.get('_destructor', False)
 #        is_const = ast.const
 
-        if is_ctor:   # or is_dtor:
-            # XXX - have explicit delete
-            # need code in __init__ and __del__
+        if is_dtor:
+            # Added in tp_del from write_tp_func.
             return
-        if is_dtor or node.return_this:
+        elif is_ctor:
+            fmt_func.PY_type_method = 'tp_init'
+            node.eval_template('PY_type_impl')
+            fmt_func.PY_name_impl = fmt_func.PY_type_impl
+            self.tp_init_default = fmt_func.PY_type_impl
+            fmt.PY_error_return = '-1'
+        else:
+            node.eval_template('PY_name_impl')
+            fmt.PY_error_return = 'NULL'
+
+        if node.return_this:
             result_type = 'void'
             CXX_subprogram = 'subroutine'
 
@@ -376,21 +562,40 @@ return 1;""", fmt)
 #            is_const = False
 #        else:
 #            is_const = None
-        fmt.PY_rv_decl = ast.gen_arg_as_cxx(
-            name=fmt.PY_result, params=None)  # return value
+        if CXX_subprogram == 'function':
+            fmt_result0 = node._fmtresult
+            fmt_result = fmt_result0.setdefault('fmtpy', util.Scope(fmt)) # fmt_func
+            if result_typedef.cxx_to_c is None:
+                fmt_result.cxx_var = wformat('{C_local}{C_result}', fmt_result)
+            else:
+                fmt_result.cxx_var = wformat('{CXX_local}{C_result}', fmt_result)
+            CXX_result = ast
+            fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None, continuation=True)
+            if CXX_result.is_pointer():
+                fmt_result.cxx_deref = '->'
+            else:
+                fmt_result.cxx_deref = '.'
+            fmt_result.c_var = fmt_result.cxx_var
+            fmt_result.py_var = fmt.PY_result
+#            fmt_pattern = fmt_result
 
-        PY_decl = []     # variables for function
         PY_code = []
 
         # arguments to PyArg_ParseTupleAndKeywords
         parse_format = []
         parse_vargs = []
-        post_parse = []
 
         # arguments to Py_BuildValue
-        build_format = []
-        build_vargs = []
-        post_call = []
+        build_tuples = []
+
+        # Code blocks
+        PY_decl = []      # variables for function
+        post_parse = []
+        pre_call = []
+        post_call = []    # Create objects passed to PyBuildValue
+        cleanup_code = []
+        fail_code = []
 
         cxx_call_list = []
 
@@ -405,153 +610,233 @@ return 1;""", fmt)
                     'if (kwds != NULL) SH_nargs += PyDict_Size(args);',
                     ])
 
+        goto_fail = False
         args = ast.params
-        if not args:
+        arg_names = []
+        arg_offsets = []
+        arg_implied = []  # Collect implied arguments
+        offset = 0
+        for arg in args:
+            arg_name = arg.name
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault('fmtpy', util.Scope(fmt))
+            fmt_arg.c_var = arg_name
+            fmt_arg.cxx_var = arg_name
+            fmt_arg.py_var = 'SHPy_' + arg_name
+
+            arg_typedef = typemap.Typedef.lookup(arg.typename)
+            # Add formats used by py_statements
+            fmt_arg.c_type = arg_typedef.c_type
+            fmt_arg.cxx_type = arg_typedef.cxx_type
+            if arg.const:
+                fmt_arg.c_const = 'const '
+            else:
+                fmt_arg.c_const = ''
+            if arg.is_pointer():
+                fmt_arg.c_ptr = ' *'
+                fmt_arg.cxx_deref = '->'
+            else:
+                fmt_arg.c_ptr = ''
+                fmt_arg.cxx_deref = '.'
+            attrs = arg.attrs
+
+            dimension = arg.attrs.get('dimension', False)
+            pass_var = fmt_arg.c_var  # The variable to pass to the function
+            # local_var - 'funcptr', 'pointer', or 'scalar'
+            if arg.is_function_pointer():
+                fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
+                # not sure how function pointers work with Python.
+                local_var = 'funcptr'
+            elif arg_typedef.base == 'string':
+                fmt_arg.c_decl = wformat('{c_const}char * {c_var}', fmt_arg)
+#                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
+                local_var = 'pointer'
+            elif arg.attrs.get('allocatable', False):
+                fmt_arg.c_decl = wformat('{c_type} * {c_var}', fmt_arg)
+                fmt_arg.cxx_decl = wformat('{cxx_type} * {cxx_var}', fmt_arg)
+                local_var = 'pointer'
+            elif arg.attrs.get('dimension', False):
+                fmt_arg.c_decl = wformat('{c_type} * {c_var}', fmt_arg)
+                fmt_arg.cxx_decl = wformat('{cxx_type} * {cxx_var}', fmt_arg)
+                local_var = 'pointer'
+            else:
+                # non-strings should be scalars
+                fmt_arg.c_decl = wformat('{c_type} {c_var}', fmt_arg)
+                fmt_arg.cxx_decl = wformat('{cxx_type} {cxx_var}', fmt_arg)
+                local_var = 'scalar'
+
+            allocatable = attrs.get('allocatable', False)
+            implied = attrs.get('implied', False)
+            intent = attrs['intent']
+            if implied:
+                arg_implied.append(arg)
+                intent_blk = {}
+            elif allocatable:
+                intent_blk = self.allocatable_blk(allocatable, node, arg, fmt_arg)
+            elif dimension:
+                intent_blk = self.dimension_blk(arg, fmt_arg)
+            else:
+                py_statements = arg_typedef.py_statements
+                stmts = 'intent_' + intent
+                intent_blk = py_statements.get(stmts, {})
+
+            goto_fail = goto_fail or intent_blk.get('goto_fail', False)
+            cxx_local_var = intent_blk.get('cxx_local_var', '')
+            if cxx_local_var:
+                # With PY_PyTypeObject, there is no c_var, only cxx_var
+                if not arg_typedef.PY_PyTypeObject:
+                    fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
+                local_var = cxx_local_var
+                pass_var = fmt_arg.cxx_var
+                # cxx_deref used with typedef fields like PY_ctor.
+                if cxx_local_var == 'scalar':
+                    fmt_arg.cxx_deref = '.'
+                elif cxx_local_var == 'pointer':
+                    fmt_arg.cxx_deref = '->'
+
+            if implied:
+                pass
+            elif intent in ['inout', 'in']:
+                # names to PyArg_ParseTupleAndKeywords
+                arg_names.append(arg_name)
+                arg_offsets.append('(char *) SH_kwcpp+%d' % offset)
+                offset += len(arg_name) + 1
+
+                # XXX default should be handled differently
+                if arg.init is not None:
+                    if not found_default:
+                        parse_format.append('|')  # add once
+                        found_default = True
+                    # call for default arguments  (num args, arg string)
+                    default_calls.append(
+                        (len(cxx_call_list), len(post_parse), len(pre_call),
+                         ',\t '.join(cxx_call_list)))
+
+                # Declare C variable - may be PyObject.
+                # add argument to call to PyArg_ParseTypleAndKeywords
+                if dimension:
+                    # Use NumPy with dimensioned arguments
+                    pass_var = fmt_arg.cxx_var
+                    parse_format.append('O')
+                    parse_vargs.append('&' + fmt_arg.pytmp_var)
+                elif arg_typedef.PY_PyTypeObject:
+                    # Expect object of given type
+                    # cxx_var is declared by py_statements.intent_out.post_parse.
+                    fmt_arg.py_type = arg_typedef.PY_PyObject or 'PyObject'
+                    append_format(PY_decl, '{py_type} * {py_var};', fmt_arg)
+                    pass_var = fmt_arg.cxx_var
+                    parse_format.append(arg_typedef.PY_format)
+                    parse_format.append('!')
+                    parse_vargs.append('&' + arg_typedef.PY_PyTypeObject)
+                    parse_vargs.append('&' + fmt_arg.py_var)
+                elif arg_typedef.PY_from_object:
+                    # Use function to convert object
+                    # cxx_var created directly (no c_var)
+                    append_format(PY_decl, '{cxx_decl};', fmt_arg)
+                    pass_var = fmt_arg.cxx_var
+                    parse_format.append(arg_typedef.PY_format)
+                    parse_format.append('&')
+                    parse_vargs.append(arg_typedef.PY_from_object)
+                    parse_vargs.append('&' + fmt_arg.cxx_var)
+                else:
+                    append_format(PY_decl, '{c_decl};', fmt_arg)
+                    parse_format.append(arg_typedef.PY_format)
+                    parse_vargs.append('&' + fmt_arg.c_var)
+
+            if intent in ['inout', 'out']:
+                if intent == 'out':
+                    if allocatable:
+                        pass
+                    elif not cxx_local_var:
+                        pass_var = fmt_arg.cxx_var
+                        append_format(pre_call,
+                                      '{cxx_decl};  // intent(out)',
+                                      fmt_arg)
+
+                # output variable must be a pointer
+                build_tuples.append(self.intent_out(
+                    arg_typedef, intent_blk, fmt_arg, post_call))
+
+            # Code to convert parsed values (C or Python) to C++.
+            cmd_list = intent_blk.get('decl', [])
+            for cmd in cmd_list:
+                append_format(PY_decl, cmd, fmt_arg)
+            cmd_list = intent_blk.get('post_parse', [])
+            for cmd in cmd_list:
+                append_format(post_parse, cmd, fmt_arg)
+            cmd_list = intent_blk.get('pre_call', [])
+            for cmd in cmd_list:
+                append_format(pre_call, cmd, fmt_arg)
+            cmd_list = intent_blk.get('cleanup', [])
+            for cmd in cmd_list:
+                append_format(cleanup_code, cmd, fmt_arg)
+            cmd_list = intent_blk.get('fail', [])
+            for cmd in cmd_list:
+                append_format(fail_code, cmd, fmt_arg)
+
+            if intent != 'out' and not cxx_local_var and arg_typedef.c_to_cxx:
+                # Make intermediate C++ variable
+                # Needed to pass address of variable
+                # Helpful with debugging.
+                fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
+                    name=fmt_arg.cxx_var, params=None, continuation=True)
+                fmt_arg.cxx_val = wformat(arg_typedef.c_to_cxx, fmt_arg)
+                append_format(post_parse, '{cxx_decl} = {cxx_val};', fmt_arg)
+                pass_var = fmt_arg.cxx_var
+
+            # Pass correct value to wrapped function.
+            if local_var == 'scalar':
+                if arg.is_pointer():
+                    cxx_call_list.append('&' + pass_var)
+                else:
+                    cxx_call_list.append(pass_var)
+            elif local_var == 'pointer':
+                if arg.is_pointer():
+                    cxx_call_list.append(pass_var)
+                else:
+                    cxx_call_list.append('*' + pass_var)
+            elif local_var == 'funcptr':
+                cxx_call_list.append(pass_var)
+            else:
+                raise RuntimeError("unexpected value of local_var")
+
+        # Add implied argument initialization to pre_call code
+        for arg in arg_implied:
+            intent_blk = self.implied_blk(node, arg, pre_call)
+
+        need_blank = False  # needed before next debug header
+        if not arg_names:
+            # no input arguments
             fmt.PY_ml_flags = 'METH_NOARGS'
         else:
             fmt.PY_ml_flags = 'METH_VARARGS|METH_KEYWORDS'
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
-            arg_names = []
-            arg_offsets = []
-            offset = 0
-            for arg in args:
-                arg_name = arg.name
-                fmt_arg0 = fmtargs.setdefault(arg_name, {})
-                fmt_arg = fmt_arg0.setdefault('fmtpy', util.Scope(fmt))
-                fmt_arg.c_var = arg_name
-                fmt_arg.cxx_var = arg_name
-                fmt_arg.py_var = 'SH_Py_' + arg_name
-                if arg.const:
-                    fmt_arg.c_const = 'const '
-                else:
-                    fmt_arg.c_const = ''
-                if arg.is_pointer():
-                    fmt_arg.c_ptr = ' *'
-                    fmt_arg.cxx_deref = '->'
-                else:
-                    fmt_arg.c_ptr = ''
-                    fmt_arg.cxx_deref = '.'
-                attrs = arg.attrs
-
-                arg_typedef = typemap.Typedef.lookup(arg.typename)
-                fmt_arg.cxx_type = arg_typedef.cxx_type
-                fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
-
-                py_statements = arg_typedef.py_statements
-                cxx_local_var = ''
-                if attrs['intent'] in ['inout', 'in']:
-                    # names to PyArg_ParseTupleAndKeywords
-                    arg_names.append(arg_name)
-                    arg_offsets.append('(char *) SH_kwcpp+%d' % offset)
-                    offset += len(arg_name) + 1
-
-                    # XXX default should be handled differently
-                    if arg.init is not None:
-                        if not found_default:
-                            parse_format.append('|')  # add once
-                            found_default = True
-                        # call for default arguments  (num args, arg string)
-                        default_calls.append(
-                            (len(cxx_call_list), len(post_parse),
-                             ',\t '.join(cxx_call_list)))
-
-                    parse_format.append(arg_typedef.PY_format)
-                    if arg_typedef.PY_PyTypeObject:
-                        # Expect object of given type
-                        parse_format.append('!')
-                        parse_vargs.append('&' + arg_typedef.PY_PyTypeObject)
-                        arg_name = fmt_arg.py_var
-                    elif arg_typedef.PY_from_object:
-                        # Use function to convert object
-                        parse_format.append('&')
-                        parse_vargs.append(arg_typedef.PY_from_object)
-
-                    # add argument to call to PyArg_ParseTypleAndKeywords
-                    parse_vargs.append('&' + arg_name)
-
-                    stmts = 'intent_in'  # XXX -  + attrs['intent'] ?
-                    intent_blk = py_statements.get(stmts, {})
-
-                    cxx_local_var = intent_blk.get('cxx_local_var', '')
-                    if cxx_local_var:
-                        fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
-                    cmd_list = py_statements.get(
-                        'intent_in', {}).get('post_parse', [])
-                    if cmd_list:
-                        for cmd in cmd_list:
-                            append_format(post_parse, cmd, fmt_arg)
-
-                if attrs['intent'] in ['inout', 'out']:
-                    # output variable must be a pointer
-                    # XXX - fix up for strings
-                    format, vargs = self.intent_out(
-                        arg_typedef, fmt_arg, post_call)
-                    build_format.append(format)
-                    build_vargs.append('*' + vargs)
-
-                # argument for C++ function
-                if arg_typedef.base == 'string':
-                    # C++ will coerce char * to std::string
-                    PY_decl.append(arg.gen_arg_as_c() + ';')
-                elif arg_typedef.base == 'wrapped':
-                    # defined as part of py_statements.intent_in.post_parse
-                    # XXX - Not sure about intent_out
-                    pass
-                else:
-                    PY_decl.append(arg.gen_arg_as_cxx() + ';')
-
-                if arg_typedef.PY_PyTypeObject:
-                    # A Python Object which must be converted to C++ type.
-                    objtype = arg_typedef.PY_PyObject or 'PyObject'
-                    PY_decl.append(objtype + ' * ' + fmt_arg.py_var + ';')
-                    cxx_call_list.append(fmt_arg.cxx_var)
-                elif arg_typedef.PY_from_object:
-                    # already a C++ type
-                    cxx_call_list.append(fmt_arg.cxx_var)
-                elif cxx_local_var == 'object':
-                    if arg.is_pointer():
-                        cxx_call_list.append('&' + fmt_arg.cxx_var)
-                    else:
-                        cxx_call_list.append(fmt_arg.cxx_var)
-                elif cxx_local_var == 'pointer':
-                    if arg.is_pointer():
-                        cxx_call_list.append(fmt_arg.cxx_var)
-                    else:
-                        cxx_call_list.append('*' + fmt_arg.cxx_var)
-                else:
-                    # convert to C++ type
-                    append_format(cxx_call_list, arg_typedef.c_to_cxx, fmt_arg)
+            need_blank = True
 
             if self.language == 'c++':
-                # jump through some hoops for char ** const correctness for C++
-                # warning: deprecated conversion from string constant
-                #    to 'char*' [-Wwrite-strings]
-                if len(arg_names) == 1:
-                    PY_decl.append(
-                        'const char *SH_kwcpp = "%s";' % '\\0'.join(arg_names))
-                else:
-                    PY_decl.append(
-                        'const char *SH_kwcpp =\f"' +
-                        '\\0"\f"'.join(arg_names) + '";' )
-                PY_decl.append(
-                    'char *SH_kw_list[] = {\f' + ',\f'.join(arg_offsets)
-                    + ',\fNULL };')
+                kw_const = 'const '
+                fmt.PyArg_kwlist = 'const_cast<char **>(SHT_kwlist)'
             else:
-                PY_decl.append(
-                    'char *SH_kw_list[] = {\f"' +
-                    '",\f"'.join(arg_names)
-                    + '",\fNULL };')
+                kw_const = ''
+                fmt.PyArg_kwlist = 'SHT_kwlist'
+            PY_decl.append(
+                kw_const + 'char *SHT_kwlist[] = {\f"' +
+                '",\f"'.join(arg_names)
+                + '",\fNULL };')
             parse_format.extend([':', fmt.function_name])
             fmt.PyArg_format = ''.join(parse_format)
             fmt.PyArg_vargs = ',\t '.join(parse_vargs)
             PY_code.append(
                 wformat(
                     'if (!PyArg_ParseTupleAndKeywords'
-                    '({PY_param_args}, {PY_param_kwds}, '
-                    '"{PyArg_format}", SH_kw_list,'
-                    '\f{PyArg_vargs}))', fmt))
-            PY_code.extend(['{', 1, 'return NULL;', -1, '}'])
+                    '({PY_param_args}, {PY_param_kwds},\t '
+                    '"{PyArg_format}",\t {PyArg_kwlist}, '
+                    '\t{PyArg_vargs}))', fmt))
+            append_format(PY_code, '+return {PY_error_return};-', fmt)
 
         if cls:
             #  template = '{c_const}{cxx_class} *{C_this}obj = static_cast<{c_const}{cxx_class} *>(static_cast<{c_const}void *>({C_this}));'
@@ -563,28 +848,66 @@ return 1;""", fmt)
 
         # call with all arguments
         default_calls.append(
-            (len(cxx_call_list),  len(post_parse), ',\t '.join(cxx_call_list)))
+            (len(cxx_call_list), len(post_parse), len(pre_call),
+             ',\t '.join(cxx_call_list)))
 
         # If multiple calls, declare return value once
         # Else delare on call line.
         if found_default:
-            fmt.PY_rv_asgn = 'rv = '
+            if CXX_subprogram == 'function':
+                fmt.PY_rv_asgn = fmt_result.cxx_var + ' = '
             PY_code.append('switch (SH_nargs) {')
         else:
-            fmt.PY_rv_asgn = fmt.PY_rv_decl + ' = '
+            if CXX_subprogram == 'function':
+                fmt.PY_rv_asgn = fmt.C_rv_decl + ' = '
         need_rv = False
 
-        for nargs, len_post_parse, call_list in default_calls:
+        # build up code for a function
+        for nargs, len_post_parse, len_pre_call, call_list in default_calls:
             if found_default:
                 PY_code.append('case %d:' % nargs)
                 PY_code.append(1)
+                need_blank = False
+                if len_post_parse or len_pre_call:
+                    # Only add scope if necessary
+                    PY_code.append('{')
+                    PY_code.append(1)
+                    extra_scope = True
+                else:
+                    extra_scope = False
 
+            if len_post_parse:
+                if options.debug:
+                    if need_blank:
+                        PY_code.append('')
+                    PY_code.append('// post_parse')
+                PY_code.extend(post_parse[:len_post_parse])
+                need_blank = True
+
+            if self.language == 'c++' and goto_fail:
+                # Need an extra scope to deal with C++ error
+                # error: jump to label 'fail' crosses initialization of ...
+                PY_code.append('{')
+                PY_code.append(1)
+                fail_scope = True
+                need_blank = False
+            else:
+                fail_scope = False
+            
+            if len_pre_call:
+                if options.debug:
+                    if need_blank:
+                        PY_code.append('')
+                    PY_code.append('// pre_call')
+                PY_code.extend(pre_call[:len_pre_call])
+                need_blank = True
             fmt.PY_call_list = call_list
-            PY_code.extend(post_parse[:len_post_parse])
 
-            if is_dtor:
-                append_format(PY_code, 'delete self->{PY_obj};', fmt)
-                append_format(PY_code, 'self->{PY_obj} = NULL;', fmt)
+            if options.debug and need_blank:
+                PY_code.append('')
+
+            if is_ctor:
+                append_format(PY_code, 'self->{PY_obj} = new {cxx_class}({PY_call_list});', fmt)
             elif CXX_subprogram == 'subroutine':
                 line = wformat(
                     '{PY_this_call}{function_name}({PY_call_list});', fmt)
@@ -598,14 +921,18 @@ return 1;""", fmt)
 
             if node.PY_error_pattern:
                 lfmt = util.Scope(fmt)
-                lfmt.c_var = fmt.PY_result
-                lfmt.cxx_var = fmt.PY_result
+                lfmt.c_var = fmt.C_result
+                lfmt.cxx_var = fmt.C_result
                 append_format(PY_code,
                               self.patterns[node.PY_error_pattern], lfmt)
 
             if found_default:
                 PY_code.append('break;')
                 PY_code.append(-1)
+                if extra_scope:
+                    PY_code.append('}')
+                    PY_code.append(-1)
+                    need_blank = False
         if found_default:
             # PY_code.append('default:')
             # PY_code.append(1)
@@ -616,50 +943,75 @@ return 1;""", fmt)
             need_rv = False
 
         if need_rv:
-            PY_decl.append(fmt.PY_rv_decl + ';')
+            PY_decl.append(fmt.C_rv_decl + ';')
         if len(PY_decl):
             PY_decl.append('')
 
         # Compute return value
         if CXX_subprogram == 'function':
-            if ast.is_pointer():
-                fmt.cxx_deref = '->'
-            else:
-                fmt.cxx_deref = '.'
-            fmt.c_var = fmt.PY_result
-            fmt.cxx_var = fmt.PY_result
-            fmt.py_var = 'SH_Py_' + fmt.cxx_var
-            format, vargs = self.intent_out(result_typedef, fmt, PY_code)
+            # XXX - wrapc uses result instead of intent_out
+            result_blk = result_typedef.py_statements.get('intent_out', {})
+            ttt = self.intent_out(result_typedef, result_blk,
+                                  fmt_result, post_call)
             # Add result to front of result tuple
-            build_format.insert(0, format)
-            build_vargs.insert(0, vargs)
+            build_tuples.insert(0, ttt)
 
-        PY_code.extend(post_call)
-
-        # may be multiple return values using intent(OUT)
-        fmt.PyArg_format = ''.join(build_format)
-        fmt.PyArg_vargs = ', '.join(build_vargs)
-        if not build_format:
-            PY_code.append('Py_RETURN_NONE;')
-        elif len(build_format) > 1:
-            # return tuple
-            PY_code.append(wformat(
-                'return Py_BuildValue("({PyArg_format})", {PyArg_vargs});',
-                fmt))
-        elif build_format[0] == 'O':
-            # return a single object already created
-            fmt.py_var = build_vargs[0]
-            append_format(PY_code, 'return (PyObject *) {py_var};', fmt)
+        # If only one return value, return the ctor
+        # else create a tuple with Py_BuildValue.
+        if is_ctor:
+            return_code = 'return 0;'
+        elif not build_tuples:
+            return_code = 'Py_RETURN_NONE;'
+        elif len(build_tuples) == 1:
+            # return a single object already created in build_stmts
+            ctor = build_tuples[0].ctor
+            if ctor:
+                post_call.append(ctor)
+            fmt.py_var = build_tuples[0].ctorvar
+            return_code = wformat('return (PyObject *) {py_var};', fmt)
         else:
-            # create object
-            PY_code.append(wformat(
-                'return Py_BuildValue("{PyArg_format}", {PyArg_vargs});', fmt))
+            # create tuple object
+            fmt.PyBuild_format = ''.join([ttt.format for ttt in build_tuples])
+            fmt.PyBuild_vargs = ',\t '.join([ttt.vargs for ttt in build_tuples])
+            append_format(
+                post_call, 'PyObject * {PY_result} = '
+                'Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});',
+                fmt)
+            return_code = wformat('return {PY_result};', fmt)
+
+        need_blank = False  # put return right after call
+        if post_call and not is_ctor:
+            # ctor does not need to build return values
+            if options.debug:
+                PY_code.append('')
+                PY_code.append('// post_call')
+            PY_code.extend(post_call)
+            need_blank = True
+
+        if cleanup_code:
+            if options.debug:
+                PY_code.append('')
+                PY_code.append('// cleanup')
+            PY_code.extend(cleanup_code)
+            need_blank = True
+
+        if options.debug and need_blank:
+            PY_code.append('')
+        PY_code.append(return_code)
+
+        if fail_scope:
+            PY_code.append(-1)
+            PY_code.append('}')
+        if goto_fail:
+            PY_code.extend(['', '0fail:'])
+            PY_code.extend(fail_code)
+            append_format(PY_code, 'return {PY_error_return};', fmt)
 
         PY_impl = [1] + PY_decl + PY_code + [-1]
 
-        node.eval_template('PY_name_impl')
-
         expose = True
+        if is_ctor:
+            expose = False
         if len(self.overloaded_methods[ast.name]) > 1:
             # Only expose a multi-dispatch name, not each overload
             expose = False
@@ -669,12 +1021,13 @@ return 1;""", fmt)
             fmt = util.Scope(fmt)
             fmt.function_suffix = ''
 
-        self.create_method(cls, expose, fmt, PY_impl)
+        self.create_method(node, expose, is_ctor, fmt, PY_impl)
 
-    def create_method(self, cls, expose, fmt, PY_impl):
+    def create_method(self, node, expose, is_ctor, fmt, PY_impl):
         """Format the function.
-        cls     = True if class
+        node    = function node to wrap
         expose  = True if expose to user
+        is_ctor = True if this is a constructor
         fmt     = dictionary of format values
         PY_impl = list of implementation lines
         """
@@ -687,35 +1040,39 @@ return 1;""", fmt)
                     ';',
                     ])
 
-        body.extend([
-                '',
-                'static PyObject *',
-                wformat('{PY_name_impl}(', fmt)
-                ])
+        body.append('')
+        if is_ctor:
+            body.append('static int')
+        else:
+            body.append('static PyObject *')
+        body.append(wformat('{PY_name_impl}(', fmt))
+
         if fmt.PY_used_param_self:
             body.append(wformat(
                 '  {PY_PyObject} *{PY_param_self},', fmt))
         else:
             body.append(wformat(
-                '  PyObject *,  // {PY_param_self} unused', fmt))
+                '  PyObject *SHROUD_UNUSED({PY_param_self}),', fmt))
         if fmt.PY_used_param_args:
             body.append(wformat(
                 '  PyObject *{PY_param_args},', fmt))
         else:
             body.append(wformat(
-                '  PyObject *,  // {PY_param_args} unused', fmt))
+                '  PyObject *SHROUD_UNUSED({PY_param_args}),', fmt)),
         if fmt.PY_used_param_args:
             body.append(wformat(
                 '  PyObject *{PY_param_kwds})', fmt))
         else:
             body.append(wformat(
-                '  PyObject *)  // {PY_param_kwds} unused', fmt))
+                '  PyObject *SHROUD_UNUSED({PY_param_kwds}))', fmt))
 
         body.append('{')
 # use function_suffix in splicer name since a single C++ function may
 # produce several methods.
 # XXX - make splicer name customizable?
 #        self._create_splicer(fmt.function_name, self.PyMethodBody, PY_impl)
+        if node and node.options.debug:
+            self.PyMethodBody.append('// ' + node.declgen)
         self._create_splicer(fmt.underscore_name + fmt.function_suffix,
                              self.PyMethodBody, PY_impl)
         self.PyMethodBody.append('}')
@@ -723,9 +1080,9 @@ return 1;""", fmt)
         if expose is True:
             # default name
             self.PyMethodDef.append(
-                wformat('{{"{function_name}{function_suffix}", '
-                        '(PyCFunction){PY_name_impl}, '
-                        '{PY_ml_flags}, '
+                wformat('{{"{function_name}{function_suffix}",\t '
+                        '(PyCFunction){PY_name_impl},\t '
+                        '{PY_ml_flags},\t '
                         '{PY_name_impl}__doc__}},', fmt))
 #        elif expose is not False:
 #            # override name
@@ -733,34 +1090,67 @@ return 1;""", fmt)
 #            fmt.expose = expose
 #            self.PyMethodDef.append( wformat('{{"{expose}", (PyCFunction){PY_name_impl}, {PY_ml_flags}, {PY_name_impl}__doc__}},', fmt))
 
-    def write_tp_func(self, node, fmt, fmt_type, output):
-        # fmt is a dictiony here.
-        # update with type function names
-        # type bodies must be filled in by user, no real way to guess
-        PyObj = fmt.PY_PyObject
-        selected = node.python.get('type', [])
+    def write_tp_func(self, node, fmt_type, output):
+        """Create functions for tp_init et.al.
 
+        fmt_type - dictionary used with PyTypeObject_template
+                   to fill in type function names.
+        output - list for generated functions.
+
+        python:
+          type: [ repr, str ]
+
+        """
+        # Type bodies must be filled in by user, no real way to guess
+        # how to implement.
+        # Except tp_init (constructor) and tp_del (destructor).
+        fmt_func = node.fmtdict
+        fmt = util.Scope(fmt_func)
+        template = node.options.PY_type_impl_template
+        PyObj = fmt_func.PY_PyObject
+        if 'type' in node.python:
+            selected = node.python['type'][:]
+            for auto in [ 'del']:
+                # Make some methods are there
+                if auto not in selected:
+                    selected.append(auto)
+        else:
+            selected = [ 'del' ]
+            
         # Dictionary of methods for bodies
         default_body = dict(
             richcompare=self.not_implemented
         )
+        default_body['del'] = self.tp_del
 
         self._push_splicer('type')
         for typename in typenames:
             tp_name = 'tp_' + typename
+            if typename == 'init':
+                # The constructor method is used for tp_init
+                fmt_type[tp_name] = self.tp_init_default
+                continue
             if typename not in selected:
                 fmt_type[tp_name] = '0'
                 continue
-            func_name = wformat('{PY_prefix}{cxx_class}_tp_', fmt) + typename
+            fmt.PY_type_method = tp_name
+            func_name = wformat(template, fmt)
             fmt_type[tp_name] = func_name
             tup = typefuncs[typename]
             output.append('static ' + tup[0])
-            output.append(('{name} ' + tup[1])
+            output.append(('{name} ' + tup[1])  # object used by tup[1]
                           .format(name=func_name, object=PyObj))
             output.append('{')
             default = default_body.get(typename, self.not_implemented_error)
             default = default(typename, tup[2])
-            self._create_splicer(typename, output, default)
+
+            # format and indent default bodies
+            fmted = [1]
+            for line in default:
+                append_format(fmted, line, fmt_func)
+            fmted.append(-1)
+
+            self._create_splicer(typename, output, fmted)
             output.append('}')
         self._pop_splicer('type')
 
@@ -784,7 +1174,7 @@ return 1;""", fmt)
             PY_PyTypeObject=fmt.PY_PyTypeObject,
             cxx_class=fmt.cxx_class,
             )
-        self.write_tp_func(node, fmt, fmt_type, output)
+        self.write_tp_func(node, fmt_type, output)
 
         output.extend(self.PyMethodBody)
 
@@ -794,19 +1184,19 @@ return 1;""", fmt)
 
         fmt_type['tp_methods'] = wformat('{PY_prefix}{cxx_class}_methods', fmt)
         output.append(
-            wformat('static PyMethodDef {tp_methods}[] = {{', fmt_type))
+            wformat('static PyMethodDef {tp_methods}[] = {{+', fmt_type))
         output.extend(self.PyMethodDef)
         self._create_splicer('PyMethodDef', output)
         output.append('{NULL,   (PyCFunction)NULL, 0, NULL}'
                       '            /* sentinel */')
-        output.append('};')
+        output.append('-};')
 
         output.append(wformat(PyTypeObject_template, fmt_type))
         self.namespace(library, node, 'end', output)
 
         self.write_output_file(fname, self.config.python_dir, output)
 
-    def multi_dispatch(self, cls, methods):
+    def multi_dispatch(self, methods):
         """Look for overloaded methods.
         When found, create a method which will call each of the
         overloaded methods looking for the one which will accept
@@ -816,7 +1206,8 @@ return 1;""", fmt)
             if len(methods) < 2:
                 continue  # not overloaded
 
-            fmt_func = methods[0].fmtdict
+            node = methods[0]
+            fmt_func = node.fmtdict
             fmt = util.Scope(fmt_func)
             fmt.function_suffix = ''
             fmt.PY_doc_string = 'documentation'
@@ -825,34 +1216,55 @@ return 1;""", fmt)
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
 
+            is_ctor = node.ast.fattrs.get('_constructor', False)
+
             body = []
             body.append(1)
-            body.append('Py_ssize_t SH_nargs = 0;')
+            body.append('Py_ssize_t SHT_nargs = 0;')
             body.extend([
-                    'if (args != NULL) SH_nargs += PyTuple_Size(args);',
-                    'if (kwds != NULL) SH_nargs += PyDict_Size(args);',
+                    'if (args != NULL) SHT_nargs += PyTuple_Size(args);',
+                    'if (kwds != NULL) SHT_nargs += PyDict_Size(args);',
                     ])
-            body.append('PyObject *rvobj;')
+            if is_ctor:
+                fmt.PY_type_method = 'tp_init'
+                fmt.PY_name_impl = wformat(
+                    node.options.PY_type_impl_template, fmt)
+                fmt.PY_type_impl = fmt.PY_name_impl
+                self.tp_init_default = fmt.PY_type_impl
+                return_code = 'return rv;'
+                return_arg = 'rv'
+                fmt.PY_error_return = '-1'
+                self.tp_init_default = fmt.PY_name_impl
+                body.append('int rv;')
+                expose = False
+            else:
+                fmt.PY_name_impl = wformat(
+                    node.options.PY_name_impl_template, fmt)
+                return_code = 'return rvobj;'
+                return_arg = 'rvobj'
+                fmt.PY_error_return = 'NULL'
+                body.append('PyObject *rvobj;')
+                expose = True
 
             for overload in methods:
                 if overload._nargs:
-                    body.append('if (SH_nargs >= %d && SH_nargs <= %d) {'
+                    body.append('if (SHT_nargs >= %d && SHT_nargs <= %d) {'
                                 % overload._nargs)
                 else:
-                    body.append('if (SH_nargs == %d) {' %
+                    body.append('if (SHT_nargs == %d) {' %
                                 len(overload.ast.params))
                 body.append(1)
                 append_format(body,
-                              'rvobj = {PY_name_impl}(self, args, kwds);',
+                              return_arg + ' = {PY_name_impl}(self, args, kwds);',
                               overload.fmtdict)
                 body.append('if (!PyErr_Occurred()) {')
                 body.append(1)
-                body.append('return rvobj;')
+                body.append(return_code)
                 body.append(-1)
                 body.append('} else if (! PyErr_ExceptionMatches'
                             '(PyExc_TypeError)) {')
                 body.append(1)
-                body.append('return rvobj;')
+                body.append(return_code)
                 body.append(-1)
                 body.append('}')
                 body.append('PyErr_Clear();')
@@ -861,12 +1273,10 @@ return 1;""", fmt)
 
             body.append('PyErr_SetString(PyExc_TypeError, '
                         '"wrong arguments multi-dispatch");')
-            body.append('return NULL;')
+            append_format(body, 'return {PY_error_return};', fmt)
             body.append(-1)
 
-            methods[0].eval_template('PY_name_impl', fmt=fmt)
-
-            self.create_method(cls, True, fmt, body)
+            self.create_method(None, expose, is_ctor, fmt, body)
 
     def write_header(self, node):
         # node is library
@@ -892,6 +1302,7 @@ return 1;""", fmt)
         for include in node.cxx_header.split():
             output.append('#include "%s"' % include)
 
+        output.append(cpp_boilerplate)
         self._push_splicer('header')
         self._create_splicer('include', output)
         self.namespace(node, None, 'begin', output)
@@ -909,19 +1320,12 @@ return 1;""", fmt)
         output.append(wformat("""
 extern PyObject *{PY_prefix}error_obj;
 
-#ifdef __cplusplus
-extern "C" {{
-#endif
-#ifdef IS_PY3K
-#define MOD_INITBASIS PyInit_{PY_module_name}
+{PY_extern_C_begin}#ifdef IS_PY3K
+PyMODINIT_FUNC PyInit_{PY_module_name}(void);
 #else
-#define MOD_INITBASIS init{PY_module_name}
+PyMODINIT_FUNC init{PY_module_name}(void);
 #endif
-PyMODINIT_FUNC MOD_INITBASIS(void);
-#ifdef __cplusplus
-}}
-#endif
-""", fmt))
+{PY_extern_C_end}""", fmt))
         self.namespace(node, None, 'end', output)
         output.append('#endif  /* %s */' % guard)
         self.write_output_file(fname, self.config.python_dir, output)
@@ -937,6 +1341,9 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
         output = []
 
         output.append(wformat('#include "{PY_header_filename}"', fmt))
+        if self.need_numpy:
+            output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
+            output.append('#include "numpy/arrayobject.h"')
         output.append('')
         self._create_splicer('include', output)
         self.namespace(node, None, 'begin', output)
@@ -960,6 +1367,8 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
         output.append(wformat(module_begin, fmt))
         self._create_splicer('C_init_locals', output)
         output.append(wformat(module_middle, fmt))
+        if self.need_numpy:
+            output.append('    import_array();')
         output.extend(self.py_type_object_creation)
         output.append(wformat(module_middle2, fmt))
         self._create_splicer('C_init_body', output)
@@ -983,12 +1392,16 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
 
     def not_implemented_error(self, msg, ret):
         '''A standard splicer for unimplemented code
-        ret is the return value (NULL or -1)
+        ret is the return value (NULL or -1 or '')
         '''
-        return [
-            "    PyErr_SetString(PyExc_NotImplementedError, \"%s\");" % msg,
-            "    return %s;" % ret
+        lines = [
+            "PyErr_SetString(PyExc_NotImplementedError, \"%s\");" % msg,
             ]
+        if ret:
+            lines.append("return %s;" % ret)
+        else:
+            lines.append('return;')
+        return lines
 
     def not_implemented(self, msg, ret):
         '''A standard splicer for rich comparison
@@ -998,8 +1411,26 @@ PyMODINIT_FUNC MOD_INITBASIS(void);
             'return Py_NotImplemented;'
             ]
 
+    def tp_del(self, msg, ret):
+        """default method for tp_del.
+          msg = 'del'
+          ret = ''
+        """
+        return [
+            'delete self->{PY_obj};',
+            'self->{PY_obj} = NULL;',
+        ]
 
 # --- Python boiler plate
+
+# Avoid warning errors about unused parameters
+cpp_boilerplate = """
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+"""
 
 typenames = [
     'dealloc', 'print', 'compare',
@@ -1211,11 +1642,12 @@ static struct PyModuleDef moduledef = {{
 #define INITERROR return
 #endif
 
-#ifdef __cplusplus
-extern "C" {{
+{PY_extern_C_begin}PyMODINIT_FUNC
+#ifdef IS_PY3K
+PyInit_{PY_module_name}(void)
+#else
+init{PY_module_name}(void)
 #endif
-PyMODINIT_FUNC
-MOD_INITBASIS(void)
 {{
     PyObject *m = NULL;
     const char * error_name = "{library_lower}.Error";
@@ -1250,7 +1682,90 @@ module_end = """
         Py_FatalError("can't initialize module {PY_module_name}");
     return RETVAL;
 }}
-#ifdef __cplusplus
-}}
-#endif
+{PY_extern_C_end}
 """
+
+
+class ToImplied(todict.PrintNode):
+    """Convert implied expression to Python wrapper code.
+
+    expression has already been checked for errors by generate.check_implied.
+    Convert functions:
+      size  -  PyArray_SIZE
+    """
+    def __init__(self, expr, func):
+        super(ToImplied, self).__init__()
+        self.expr = expr
+        self.func = func
+
+    def visit_Identifier(self, node):
+        # Look for functions
+        if node.args == None:
+            return node.name
+        elif node.name == 'size':
+            # size(arg)
+            argname = node.args[0].name
+            arg = self.func.ast.find_arg_by_name(argname)
+            fmt = self.func._fmtargs[argname]['fmtpy']
+            return wformat('PyArray_SIZE({py_var})', fmt)
+        else:
+            return self.param_list(node)
+
+def py_implied(expr, func):
+    """Convert string to Python code.
+    """
+    node = declast.ExprParser(expr).expression()
+    visitor = ToImplied(expr, func)
+    return visitor.visit(node)
+
+def attr_allocatable(language, allocatable, node, arg):
+    """parse allocatable and return tuple of 
+      (prototype, order, descr, subok)
+
+    Valid values of allocatable:
+       mold=name
+    """
+    fmtargs = node._fmtargs
+
+    prototype = '--NONE--'
+    order = 'NPY_CORDER'
+    descr = 'NULL'
+    subok = '0'
+    descr_code = ''
+
+    p = re.compile('mold\s*=\s*(\w+)')
+    m = p.match(allocatable)
+    if m is not None:
+        moldvar = m.group(1)
+        moldarg = node.ast.find_arg_by_name(moldvar)
+        if moldarg is None:
+            raise RuntimeError(
+                "Mold argument '{}' does not exist: {}"
+                .format(moldvar, allocatable))
+        if 'dimension' not in moldarg.attrs:
+            raise RuntimeError(
+                "Mold argument '{}' must have dimension attribute: {}"
+                .format(moldvar, allocatable))
+        fmt = fmtargs[moldvar]['fmtpy']
+        # copy from the numpy array for the argument
+        prototype = fmt.py_var
+
+        # Create Descr if types are different
+        if arg.typename != moldarg.typename:
+            descr = 'SHDPy_' + arg.name
+            descr_code = ('PyArray_Descr * {} = '
+                          'PyArray_DescrFromType({});\n'
+                          .format(descr, c_to_numpy[arg.typename]))
+
+    return (prototype, order, descr, subok), descr_code
+
+
+def do_cast(lang, kind, typ, var):
+    """Do cast based on language.
+    kind = reinterpret, static
+    reinterpret_cast or static_cast
+    """
+    if lang == 'c':
+        return '(%s) %s' % (typ, var)
+    else:
+        return '%s_cast<%s>\t(%s)' % (kind, typ, var)

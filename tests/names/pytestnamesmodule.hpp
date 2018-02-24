@@ -46,6 +46,13 @@
 #if PY_MAJOR_VERSION >= 3
 #define IS_PY3K
 #endif
+
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
 // splicer begin header.include
 // splicer end header.include
 extern PyTypeObject PY_Names_Type;
@@ -82,17 +89,12 @@ PyObject_HEAD
 
 extern PyObject *PY_error_obj;
 
-#ifdef __cplusplus
 extern "C" {
-#endif
 #ifdef IS_PY3K
-#define MOD_INITBASIS PyInit_testnames
+PyMODINIT_FUNC PyInit_testnames(void);
 #else
-#define MOD_INITBASIS inittestnames
+PyMODINIT_FUNC inittestnames(void);
 #endif
-PyMODINIT_FUNC MOD_INITBASIS(void);
-#ifdef __cplusplus
-}
-#endif
+}   // extern "C"
 
 #endif  /* PYTESTNAMESMODULE_HPP */

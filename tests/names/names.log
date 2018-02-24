@@ -3,9 +3,13 @@ Close testnames_types.yaml
 class Names
 C method void method1()
 C method void method2()
+C method Names()
+C method ~Names()
 Close foo.h
 Close foo.cpp
 class Names2
+C method Names2()
+C method ~Names2()
 Close wrapNames2.hh
 Close wrapNames2.cc
 C function void function1()
@@ -20,8 +24,12 @@ Close top.cpp
 class Names
 C-interface, Fortran method void method1()
 C-interface, Fortran method void method2()
+C-interface, Fortran method Names()
+C-interface, Fortran method ~Names()
 Close foo.f
 class Names2
+C-interface, Fortran method Names2()
+C-interface, Fortran method ~Names2()
 Close wrapfNames2.F
 C-interface, Fortran function void function1()
 C-interface, Fortran function void function2()
@@ -34,8 +42,12 @@ Close top.f
 class Names
 Python method void method1()
 Python method void method2()
+Python method Names()
+Python method ~Names()
 Close pyNamestype.cpp
 class Names2
+Python method Names2()
+Python method ~Names2()
 Close pyNames2type.cpp
 Python function void function1()
 Python function void function2()

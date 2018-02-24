@@ -45,6 +45,13 @@
 #if PY_MAJOR_VERSION >= 3
 #define IS_PY3K
 #endif
+
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
 // splicer begin header.include
 // splicer end header.include
 
@@ -84,18 +91,13 @@ PyObject_HEAD
 
 extern PyObject *PP_error_obj;
 
-#ifdef __cplusplus
 extern "C" {
-#endif
 #ifdef IS_PY3K
-#define MOD_INITBASIS PyInit_userlibrary
+PyMODINIT_FUNC PyInit_userlibrary(void);
 #else
-#define MOD_INITBASIS inituserlibrary
+PyMODINIT_FUNC inituserlibrary(void);
 #endif
-PyMODINIT_FUNC MOD_INITBASIS(void);
-#ifdef __cplusplus
-}
-#endif
+}   // extern "C"
 
 
 }  // namespace nested

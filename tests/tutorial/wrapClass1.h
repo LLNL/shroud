@@ -63,11 +63,13 @@ typedef struct s_TUT_class1 TUT_class1;
 // splicer begin class.Class1.C_declarations
 // splicer end class.Class1.C_declarations
 
-TUT_class1 * TUT_class1_new();
+TUT_class1 * TUT_class1_new_default();
+
+TUT_class1 * TUT_class1_new_flag(int flag);
 
 void TUT_class1_delete(TUT_class1 * self);
 
-void TUT_class1_method1(TUT_class1 * self);
+int TUT_class1_method1(TUT_class1 * self);
 
 #ifdef __cplusplus
 }

@@ -1,4 +1,4 @@
-.. Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+.. Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 .. Produced at the Lawrence Livermore National Laboratory 
 ..
 .. LLNL-CODE-738041.
@@ -46,7 +46,7 @@ It does this by using C as the lingua franca.
 C++ can communicate with C via a common heritage and the ``extern "C"`` keyword.
 Fortran uses the interoperability with C features introduced in Fortran 2003
 including the ``iso_c_binding`` module and the ``bind`` and ``value`` keywords.
-A C API for C++ API is produced as a byproduct of the Fortran wrapping.
+A C API for the C++ API is produced as a byproduct of the Fortran wrapping.
 
 Goals
 -----
@@ -119,7 +119,7 @@ input file is simplified since the C++ declaration can be
 cut-and-pasted into the YAML file.
 
 In some sense, Shroud can be thought of as a fancy macro processor.
-It takes the function declarations from the YAML file and break them
+It takes the function declarations from the YAML file, breaks them
 down into a series of contexts (library, class, function, argument)
 and defines a dictionary of format macros of the form key=value.
 There are then a series of macro templates which are expanded to

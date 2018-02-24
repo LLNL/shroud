@@ -47,6 +47,13 @@
 #define IS_PY3K
 #endif
 #include "strings.hpp"
+
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
 // splicer begin header.include
 // splicer end header.include
 // splicer begin header.C_declaration
@@ -57,17 +64,12 @@
 
 extern PyObject *PY_error_obj;
 
-#ifdef __cplusplus
 extern "C" {
-#endif
 #ifdef IS_PY3K
-#define MOD_INITBASIS PyInit_strings
+PyMODINIT_FUNC PyInit_strings(void);
 #else
-#define MOD_INITBASIS initstrings
+PyMODINIT_FUNC initstrings(void);
 #endif
-PyMODINIT_FUNC MOD_INITBASIS(void);
-#ifdef __cplusplus
-}
-#endif
+}   // extern "C"
 
 #endif  /* PYSTRINGSMODULE_HPP */

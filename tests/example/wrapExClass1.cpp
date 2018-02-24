@@ -71,8 +71,10 @@ extern "C" {
 AA_exclass1 * AA_exclass1_ctor_0()
 {
 // splicer begin class.ExClass1.method.ctor_0
-    ExClass1 * SHT_rv = new ExClass1();
-    return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));
+    ExClass1 * SHCXX_rv = new ExClass1();
+    AA_exclass1 * SHC_rv = static_cast<AA_exclass1 *>(
+        static_cast<void *>(SHCXX_rv));
+    return SHC_rv;
 // splicer end class.ExClass1.method.ctor_0
 }
 
@@ -90,8 +92,10 @@ AA_exclass1 * AA_exclass1_ctor_1(const char * name)
 {
 // splicer begin class.ExClass1.method.ctor_1
     const std::string SH_name(name);
-    ExClass1 * SHT_rv = new ExClass1(&SH_name);
-    return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));
+    ExClass1 * SHCXX_rv = new ExClass1(&SH_name);
+    AA_exclass1 * SHC_rv = static_cast<AA_exclass1 *>(
+        static_cast<void *>(SHCXX_rv));
+    return SHC_rv;
 // splicer end class.ExClass1.method.ctor_1
 }
 
@@ -109,8 +113,10 @@ AA_exclass1 * AA_exclass1_ctor_1_bufferify(const char * name, int Lname)
 {
 // splicer begin class.ExClass1.method.ctor_1_bufferify
     const std::string SH_name(name, Lname);
-    ExClass1 * SHT_rv = new ExClass1(&SH_name);
-    return static_cast<AA_exclass1 *>(static_cast<void *>(SHT_rv));
+    ExClass1 * SHCXX_rv = new ExClass1(&SH_name);
+    AA_exclass1 * SHC_rv = static_cast<AA_exclass1 *>(
+        static_cast<void *>(SHCXX_rv));
+    return SHC_rv;
 // splicer end class.ExClass1.method.ctor_1_bufferify
 }
 
@@ -138,8 +144,8 @@ int AA_exclass1_increment_count(AA_exclass1 * self, int incr)
 // splicer begin class.ExClass1.method.increment_count
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(
         self));
-    int SHT_rv = SH_this->incrementCount(incr);
-    return SHT_rv;
+    int SHC_rv = SH_this->incrementCount(incr);
+    return SHC_rv;
 // splicer end class.ExClass1.method.increment_count
 }
 
@@ -150,14 +156,14 @@ const char * AA_exclass1_get_name(const AA_exclass1 * self)
 // splicer begin class.ExClass1.method.get_name
     const ExClass1 *SH_this = static_cast<const ExClass1 *>(
         static_cast<const void *>(self));
-    const std::string & SHT_rv = SH_this->getName();
+    const std::string & SHCXX_rv = SH_this->getName();
     // C_error_pattern
-    if (! isNameValid(SHT_rv)) {
+    if (! isNameValid(SHCXX_rv)) {
         return NULL;
     }
 
-    const char * XSHT_rv = SHT_rv.c_str();
-    return XSHT_rv;
+    const char * SHC_rv = SHCXX_rv.c_str();
+    return SHC_rv;
 // splicer end class.ExClass1.method.get_name
 }
 
@@ -169,11 +175,11 @@ void AA_exclass1_get_name_bufferify(const AA_exclass1 * self,
 // splicer begin class.ExClass1.method.get_name_bufferify
     const ExClass1 *SH_this = static_cast<const ExClass1 *>(
         static_cast<const void *>(self));
-    const std::string & SHT_rv = SH_this->getName();
-    if (SHT_rv.empty()) {
+    const std::string & SHCXX_rv = SH_this->getName();
+    if (SHCXX_rv.empty()) {
         std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
     }
     return;
 // splicer end class.ExClass1.method.get_name_bufferify
@@ -202,9 +208,9 @@ const char * AA_exclass1_get_name_error_check(const AA_exclass1 * self)
 // splicer begin class.ExClass1.method.get_name_error_check
     const ExClass1 *SH_this = static_cast<const ExClass1 *>(
         static_cast<const void *>(self));
-    const std::string & SHT_rv = SH_this->getNameErrorCheck();
-    const char * XSHT_rv = SHT_rv.c_str();
-    return XSHT_rv;
+    const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
+    const char * SHC_rv = SHCXX_rv.c_str();
+    return SHC_rv;
 // splicer end class.ExClass1.method.get_name_error_check
 }
 
@@ -216,11 +222,11 @@ void AA_exclass1_get_name_error_check_bufferify(
 // splicer begin class.ExClass1.method.get_name_error_check_bufferify
     const ExClass1 *SH_this = static_cast<const ExClass1 *>(
         static_cast<const void *>(self));
-    const std::string & SHT_rv = SH_this->getNameErrorCheck();
-    if (SHT_rv.empty()) {
+    const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
+    if (SHCXX_rv.empty()) {
         std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
     }
     return;
 // splicer end class.ExClass1.method.get_name_error_check_bufferify
@@ -233,9 +239,9 @@ const char * AA_exclass1_get_name_arg(const AA_exclass1 * self)
 // splicer begin class.ExClass1.method.get_name_arg
     const ExClass1 *SH_this = static_cast<const ExClass1 *>(
         static_cast<const void *>(self));
-    const std::string & SHT_rv = SH_this->getNameArg();
-    const char * XSHT_rv = SHT_rv.c_str();
-    return XSHT_rv;
+    const std::string & SHCXX_rv = SH_this->getNameArg();
+    const char * SHC_rv = SHCXX_rv.c_str();
+    return SHC_rv;
 // splicer end class.ExClass1.method.get_name_arg
 }
 
@@ -247,11 +253,11 @@ void AA_exclass1_get_name_arg_bufferify(const AA_exclass1 * self,
 // splicer begin class.ExClass1.method.get_name_arg_bufferify
     const ExClass1 *SH_this = static_cast<const ExClass1 *>(
         static_cast<const void *>(self));
-    const std::string & SHT_rv = SH_this->getNameArg();
-    if (SHT_rv.empty()) {
+    const std::string & SHCXX_rv = SH_this->getNameArg();
+    if (SHCXX_rv.empty()) {
         std::memset(name, ' ', Nname);
     } else {
-        ShroudStrCopy(name, Nname, SHT_rv.c_str());
+        ShroudStrCopy(name, Nname, SHCXX_rv.c_str());
     }
     return;
 // splicer end class.ExClass1.method.get_name_arg_bufferify
@@ -264,10 +270,10 @@ AA_exclass2 * AA_exclass1_get_root(AA_exclass1 * self)
 // splicer begin class.ExClass1.method.get_root
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(
         self));
-    ExClass2 * SHT_rv = SH_this->getRoot();
-    AA_exclass2 * XSHT_rv = static_cast<AA_exclass2 *>(
-        static_cast<void *>(SHT_rv));
-    return XSHT_rv;
+    ExClass2 * SHCXX_rv = SH_this->getRoot();
+    AA_exclass2 * SHC_rv = static_cast<AA_exclass2 *>(
+        static_cast<void *>(SHCXX_rv));
+    return SHC_rv;
 // splicer end class.ExClass1.method.get_root
 }
 
@@ -278,8 +284,8 @@ int AA_exclass1_get_value_from_int(AA_exclass1 * self, int value)
 // splicer begin class.ExClass1.method.get_value_from_int
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(
         self));
-    int SHT_rv = SH_this->getValue(value);
-    return SHT_rv;
+    int SHC_rv = SH_this->getValue(value);
+    return SHC_rv;
 // splicer end class.ExClass1.method.get_value_from_int
 }
 
@@ -290,8 +296,8 @@ long AA_exclass1_get_value_1(AA_exclass1 * self, long value)
 // splicer begin class.ExClass1.method.get_value_1
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(
         self));
-    long SHT_rv = SH_this->getValue(value);
-    return SHT_rv;
+    long SHC_rv = SH_this->getValue(value);
+    return SHC_rv;
 // splicer end class.ExClass1.method.get_value_1
 }
 
@@ -302,8 +308,8 @@ void * AA_exclass1_get_addr(AA_exclass1 * self)
 // splicer begin class.ExClass1.method.get_addr
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(
         self));
-    void * SHT_rv = SH_this->getAddr();
-    return SHT_rv;
+    void * SHC_rv = SH_this->getAddr();
+    return SHC_rv;
 // splicer end class.ExClass1.method.get_addr
 }
 
@@ -314,8 +320,8 @@ bool AA_exclass1_has_addr(AA_exclass1 * self, bool in)
 // splicer begin class.ExClass1.method.has_addr
     ExClass1 *SH_this = static_cast<ExClass1 *>(static_cast<void *>(
         self));
-    bool SHT_rv = SH_this->hasAddr(in);
-    return SHT_rv;
+    bool SHC_rv = SH_this->hasAddr(in);
+    return SHC_rv;
 // splicer end class.ExClass1.method.has_addr
 }
 

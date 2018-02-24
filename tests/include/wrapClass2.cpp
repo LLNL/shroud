@@ -50,15 +50,31 @@ extern "C" {
 void DEF_class2_method1(DEF_class2 * self, MPI_Fint comm)
 {
     Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));
-    SH_this->method1(MPI_Comm_f2c(comm));
+    MPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);
+    SH_this->method1(SHCXX_comm);
     return;
 }
 
 void DEF_class2_method2(DEF_class2 * self, DEF_class1 * c2)
 {
     Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));
-    Class1 *SH_c2 = static_cast<Class1 *>(static_cast<void *>(c2));
-    SH_this->method2(SH_c2);
+    Class1 * SHCXX_c2 = static_cast<Class1 *>(static_cast<void *>(c2));
+    SH_this->method2(SHCXX_c2);
+    return;
+}
+
+DEF_class2 * DEF_class2_ctor()
+{
+    Class2 * SHCXX_rv = new Class2();
+    DEF_class2 * SHC_rv = static_cast<DEF_class2 *>(static_cast<void *>(
+        SHCXX_rv));
+    return SHC_rv;
+}
+
+void DEF_class2_dtor(DEF_class2 * self)
+{
+    Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));
+    delete SH_this;
     return;
 }
 

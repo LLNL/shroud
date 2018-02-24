@@ -68,11 +68,11 @@ types:
 functions:
 - decl: void Function1()
 - decl: double Function2(double arg1, int arg2)
-- decl: void Sum(int len, int *values+dimension(len)+intent(in),
-                 int *result+intent(out))
+- decl: void Sum(size_t len  +implied(size(values)),
+                 int *values +dimension(:)+intent(in),
+                 int *result +intent(out))
   options:
     # unable to deal with dimension
-    wrap_python: False
     wrap_lua: False
 
 - decl: long long TypeLongLong(long long arg1)
@@ -180,7 +180,7 @@ functions:
 - decl: TypeID typefunc(TypeID arg)
 - decl: EnumTypeID enumfunc(EnumTypeID arg)
 
-- decl: void useclass(const Class1 *arg1) 
+- decl: int useclass(const Class1 *arg1) 
   options:
     wrap_lua: False
 
@@ -189,6 +189,17 @@ functions:
 #  options:
 #    wrap_python: False
 #    wrap_lua: False
+
+- decl: const Class1 *getclass2() 
+  options:
+    # const issues with python
+    wrap_python: False
+    wrap_lua: False
+
+- decl: Class1 *getclass3() 
+  options:
+#    wrap_python: False
+    wrap_lua: False
 
 # test std::vector
 # const implies intent(in)
@@ -248,9 +259,16 @@ functions:
 classes:
 - name: Class1
   methods:
-  - decl: Class1() +name(new)
-  - decl: ~Class1() +name(delete)
-  - decl: void Method1()
+  - decl: Class1()         +name(new)
+    format:
+      function_suffix: _default
+  - decl: Class1(int flag) +name(new)
+    format:
+      function_suffix: _flag
+  - decl: ~Class1()        +name(delete)
+  - decl: int Method1()
+    doxygen:
+       brief: returns the value of flag member
 
 
 

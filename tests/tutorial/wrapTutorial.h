@@ -49,6 +49,8 @@
 #ifndef WRAPTUTORIAL_H
 #define WRAPTUTORIAL_H
 
+#include "stdlib.h"
+
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
 
@@ -67,7 +69,7 @@ void TUT_function1();
 
 double TUT_function2(double arg1, int arg2);
 
-void TUT_sum(int len, int * values, int * result);
+void TUT_sum(size_t len, int * values, int * result);
 
 long long TUT_type_long_long(long long arg1);
 
@@ -128,7 +130,11 @@ int TUT_typefunc(int arg);
 
 int TUT_enumfunc(int arg);
 
-void TUT_useclass(const TUT_class1 * arg1);
+int TUT_useclass(const TUT_class1 * arg1);
+
+const TUT_class1 * TUT_getclass2();
+
+TUT_class1 * TUT_getclass3();
 
 int TUT_vector_sum_bufferify(const int * arg, long Sarg);
 

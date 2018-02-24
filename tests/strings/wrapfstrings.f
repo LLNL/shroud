@@ -113,53 +113,53 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: Ns
         end subroutine c_pass_char_ptr_in_out_bufferify
 
-        pure function c_get_char1() &
+        pure function c_get_char_ptr1() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_char1")
+                bind(C, name="STR_get_char_ptr1")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_get_char1
+        end function c_get_char_ptr1
 
-        subroutine c_get_char1_bufferify(SHF_rv, NSHF_rv) &
-                bind(C, name="STR_get_char1_bufferify")
+        subroutine c_get_char_ptr1_bufferify(SHF_rv, NSHF_rv) &
+                bind(C, name="STR_get_char_ptr1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_get_char1_bufferify
+        end subroutine c_get_char_ptr1_bufferify
 
-        function c_get_char2() &
+        function c_get_char_ptr2() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_char2")
+                bind(C, name="STR_get_char_ptr2")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_get_char2
+        end function c_get_char_ptr2
 
-        subroutine c_get_char2_bufferify(SHF_rv, NSHF_rv) &
-                bind(C, name="STR_get_char2_bufferify")
+        subroutine c_get_char_ptr2_bufferify(SHF_rv, NSHF_rv) &
+                bind(C, name="STR_get_char_ptr2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_get_char2_bufferify
+        end subroutine c_get_char_ptr2_bufferify
 
-        function c_get_char3() &
+        function c_get_char_ptr3() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_char3")
+                bind(C, name="STR_get_char_ptr3")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_get_char3
+        end function c_get_char_ptr3
 
-        subroutine c_get_char3_bufferify(output, Noutput) &
-                bind(C, name="STR_get_char3_bufferify")
+        subroutine c_get_char_ptr3_bufferify(output, Noutput) &
+                bind(C, name="STR_get_char_ptr3_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
             integer(C_INT), value, intent(IN) :: Noutput
-        end subroutine c_get_char3_bufferify
+        end subroutine c_get_char_ptr3_bufferify
 
         pure function c_get_string1() &
                 result(SHT_rv) &
@@ -447,8 +447,10 @@ contains
     ! arg_to_buffer
     ! function_index=3
     !>
-    !! \brief Change a string in-place
+    !! \brief toupper
     !!
+    !! Change a string in-place.
+    !! For Python, return a new string since strings are immutable.
     !<
     subroutine pass_char_ptr_in_out(s)
         use iso_c_binding, only : C_INT
@@ -459,51 +461,52 @@ contains
         ! splicer end function.pass_char_ptr_in_out
     end subroutine pass_char_ptr_in_out
 
-    ! const char * getChar1() +pure
+    ! const char * getCharPtr1() +pure
     ! function_index=4
     !>
     !! \brief return a 'const char *' as character(*)
     !!
     !<
-    function get_char1() &
+    function get_char_ptr1() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        character(kind=C_CHAR, len=strlen_ptr(c_get_char1())) :: SHT_rv
-        ! splicer begin function.get_char1
-        SHT_rv = fstr_ptr(c_get_char1())
-        ! splicer end function.get_char1
-    end function get_char1
+        character(kind=C_CHAR, len=strlen_ptr(c_get_char_ptr1())) &
+            :: SHT_rv
+        ! splicer begin function.get_char_ptr1
+        SHT_rv = fstr_ptr(c_get_char_ptr1())
+        ! splicer end function.get_char_ptr1
+    end function get_char_ptr1
 
-    ! const char * getChar2 +len(30)()
+    ! const char * getCharPtr2 +len(30)()
     ! arg_to_buffer
     ! function_index=5
     !>
     !! \brief return 'const char *' with fixed size (len=30)
     !!
     !<
-    function get_char2() &
+    function get_char_ptr2() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
-        ! splicer begin function.get_char2
-        call c_get_char2_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
-        ! splicer end function.get_char2
-    end function get_char2
+        ! splicer begin function.get_char_ptr2
+        call c_get_char_ptr2_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
+        ! splicer end function.get_char_ptr2
+    end function get_char_ptr2
 
-    ! void getChar3(char * output +intent(out)+len(Noutput))
+    ! void getCharPtr3(char * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=29
+    ! function_index=31
     !>
     !! \brief return a 'const char *' as argument
     !!
     !<
-    subroutine get_char3(output)
+    subroutine get_char_ptr3(output)
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: output
-        ! splicer begin function.get_char3
-        call c_get_char3_bufferify(output, len(output, kind=C_INT))
-        ! splicer end function.get_char3
-    end subroutine get_char3
+        ! splicer begin function.get_char_ptr3
+        call c_get_char_ptr3_bufferify(output, len(output, kind=C_INT))
+        ! splicer end function.get_char_ptr3
+    end subroutine get_char_ptr3
 
     ! const string & getString1() +pure
     ! function_index=7
@@ -539,7 +542,7 @@ contains
 
     ! void getString3(string & output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=33
+    ! function_index=35
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -587,7 +590,7 @@ contains
 
     ! void getString6(string * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=37
+    ! function_index=39
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -691,7 +694,7 @@ contains
 
     ! void explicit1(char * name +intent(in)+len_trim(AAlen))
     ! arg_to_buffer
-    ! function_index=18
+    ! function_index=20
     subroutine explicit1(name)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
@@ -702,7 +705,7 @@ contains
 
     ! void explicit2(char * name +intent(out)+len(AAtrim))
     ! arg_to_buffer
-    ! function_index=19
+    ! function_index=21
     subroutine explicit2(name)
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: name
@@ -713,7 +716,7 @@ contains
 
     ! char_scalar CreturnChar()
     ! arg_to_buffer
-    ! function_index=21
+    ! function_index=23
     !>
     !! \brief return a char argument (non-pointer), extern "C"
     !!
@@ -729,7 +732,7 @@ contains
 
     ! void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))
     ! arg_to_buffer
-    ! function_index=22
+    ! function_index=24
     !>
     !! \brief strcpy like behavior
     !!

@@ -67,6 +67,10 @@ void XXX_TES_names_method1(TES_names * self);
 
 void XXX_TES_names_method2(TES_names * self2);
 
+TES_names * XXX_TES_names_ctor();
+
+void XXX_TES_names_dtor(TES_names * self);
+
 #ifdef __cplusplus
 }
 #endif

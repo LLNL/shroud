@@ -83,17 +83,17 @@ void passCharPtrInOut(char *s)
 
 //----------------------------------------
 
-const char * getChar1()
+const char * getCharPtr1()
 {
     return static_char;
 }
 
-const char * getChar2()
+const char * getCharPtr2()
 {
     return static_char;
 }
 
-const char * getChar3()
+const char * getCharPtr3()
 {
     return static_char;
 }
@@ -162,6 +162,18 @@ void acceptStringReference(std::string & arg1)
 void acceptStringPointer(std::string * arg1)
 {
   arg1->append("dog");
+}
+
+void returnStrings(std::string & arg1, std::string & arg2)
+{
+  arg1 = "up";
+  arg2 = "down";
+}
+
+char returnMany(int * arg1)
+{
+  *arg1 = 100;
+  return 'a';
 }
 
 //----------------------------------------

@@ -58,6 +58,7 @@ Contents:
 
    introduction
    tutorial
+   pytutorial
    input
    types
    functions

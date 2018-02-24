@@ -1,4 +1,4 @@
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -65,3 +65,9 @@ tutorial : $(OBJS)
 
 clean :
 	rm -f $(OBJS) *.mod tutorial
+
+main.o : wrapftutorial.o
+
+# useful to isolate load error with just C++ code
+maincpp : maincpp.o wrapTutorial.o wrapClass1.o tutorial.o
+	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@

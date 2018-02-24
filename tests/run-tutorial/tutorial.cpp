@@ -90,7 +90,7 @@ const std::string Function4a(const std::string& arg1, const std::string& arg2)
 const std::string& Function4b(const std::string& arg1, const std::string& arg2)
 {
     last_function_called = "Function4b";
-    return global_str = arg1 + arg2;
+    global_str = arg1 + arg2;
     return global_str;
 }
 
@@ -164,12 +164,12 @@ void Function10(const std::string &name, double arg2)
     global_double = arg2;
 }
 
-void Sum(int len, int *values, int *result)
+void Sum(size_t len, int *values, int *result)
 {
     last_function_called = "Sum";
 
     int sum = 0;
-    for (int i=0; i < len; i++) {
+    for (size_t i=0; i < len; i++) {
 	sum += values[i];
     }
     *result = sum;
@@ -211,10 +211,11 @@ EnumTypeID enumfunc(EnumTypeID arg)
     }
 }
 
-void useclass(const Class1 *arg)
+int useclass(const Class1 *arg)
 {
     last_function_called = "useclass";
     global_class1 = arg;
+    return arg->m_flag;
 }
 
 void getclass(const Class1 **arg)
@@ -223,12 +224,24 @@ void getclass(const Class1 **arg)
     *arg = global_class1;
 }
 
+const Class1 * getclass2()
+{
+    last_function_called = "getclass";
+    return global_class1;
+}
+
+Class1 * getclass3()
+{
+    last_function_called = "getclass";
+    return const_cast<Class1 *>(global_class1);
+}
+
 //----------------------------------------------------------------------
 
-void Class1::Method1()
+int Class1::Method1()
 {
     last_function_called = "Class1::Method1";
-    return;
+    return m_flag;
 }
 
 //----------------------------------------------------------------------

@@ -1,4 +1,4 @@
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
 # 
 # LLNL-CODE-738041.
@@ -43,6 +43,9 @@ Generate additional functions required to create wrappers.
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import ast
+from . import declast
+from . import todict
 from . import typemap
 
 
@@ -85,6 +88,21 @@ class VerifyAttrs(object):
                else True (pass-by-value).
         """
         argname = arg.name
+
+        for attr in arg.attrs:
+            if attr not in [
+                    'allocatable',
+                    'dimension',
+                    'implied',
+                    'intent',
+                    'len', 'len_trim', 'size',
+                    'template',
+                    'value',
+                    ]:
+                raise RuntimeError(
+                    "Illegal attribute '{}' for argument {} in {}"
+                    .format(attr, argname, node.decl))
+
         argtype = arg.typename
         typedef = typemap.Typedef.lookup(argtype)
         if typedef is None:
@@ -100,6 +118,11 @@ class VerifyAttrs(object):
 
         is_ptr = arg.is_indirect()
         attrs = arg.attrs
+
+        allocatable = attrs.get('allocatable', False)
+        if allocatable:
+            if not is_ptr:
+                raise RuntimeError("Allocatable may only be used with pointer variables")
 
         # intent
         intent = attrs.get('intent', None)
@@ -143,25 +166,29 @@ class VerifyAttrs(object):
         dimension = attrs.get('dimension', None)
         if dimension:
             if attrs.get('value', False):
-                raise RuntimeError("argument must not have value=True")
+                raise RuntimeError("argument must not have value=True"
+                                   "because it has the dimension attribute.")
             if not is_ptr:
                 raise RuntimeError("dimension attribute can only be "
                                    "used on pointer and references")
             if dimension is True:
                 # No value was provided, provide default
-                attrs['dimension'] = '(*)'
-            else:
-                # Put parens around dimension
-                attrs['dimension'] = '(' + attrs['dimension'] + ')'
+                if 'allocatable' in attrs:
+                    attrs['dimension'] = ':'
+                else:
+                    attrs['dimension'] = '*'
         elif typedef and typedef.base == 'vector':
             # default to 1-d assumed shape 
-            attrs['dimension'] = '(:)'
+            attrs['dimension'] = ':'
 
         if node:
             if arg.init is not None:
                 node._has_default_arg = True
             elif node._has_found_default is True:
                 raise RuntimeError("Expected default value for %s" % argname)
+
+            if 'implied' in attrs:
+                check_implied(attrs['implied'], node)
 
         # compute argument names for some attributes
         # XXX make sure they don't conflict with other names
@@ -195,7 +222,7 @@ class VerifyAttrs(object):
 
 class GenFunctions(object):
     """
-    Generate types from class.
+    Generate Typedef from class.
     Generate functions based on overload/template/generic/attributes
     Computes fmt.function_suffix.
     """
@@ -212,7 +239,8 @@ class GenFunctions(object):
         self.function_index = newlibrary.function_index
 
         for cls in newlibrary.classes:
-            cls.functions = self.define_function_suffix(cls.functions)
+            added = self.default_ctor_and_dtor(cls)
+            cls.functions = self.define_function_suffix(added)
         newlibrary.functions = self.define_function_suffix(newlibrary.functions)
 
 # No longer need this, but keep code for now in case some other dependency checking is needed
@@ -227,9 +255,39 @@ class GenFunctions(object):
 #        node.fmtdict.function_index = str(len(ilist)) # debugging
         ilist.append(node)
 
+    def default_ctor_and_dtor(self, cls):
+        """Wrap default constructor and destructor.
+
+        Needed when the ctor or dtor is not explicily in the input.
+        """
+        found_ctor = False
+        found_dtor = False
+        for node in cls.functions:
+            fattrs = node.ast.fattrs
+            found_ctor = found_ctor or fattrs.get('_constructor', False)
+            found_dtor = found_dtor or fattrs.get('_destructor', False)
+            
+        if found_ctor and found_dtor:
+            return cls.functions
+
+        added = cls.functions[:]
+
+        if not found_ctor:
+            added.append(ast.FunctionNode(
+                '{}()'.format(cls.name),
+                parent=cls, parentoptions=cls.options))
+        if not found_dtor:
+            added.append(ast.FunctionNode(
+                '~{}()'.format(cls.name),
+                parent=cls, parentoptions=cls.options))
+
+        return added
+
     def define_function_suffix(self, functions):
         """
         Return a new list with generated function inserted.
+
+        functions - list of functions
         """
 
         # Look for overloaded functions
@@ -406,6 +464,7 @@ class GenFunctions(object):
             options = new.options
             options.wrap_c = True
             options.wrap_fortran = True
+            # Python and Lua both deal with default args in their own way
             options.wrap_python = False
             options.wrap_lua = False
             fmt = new.fmtdict
@@ -464,7 +523,9 @@ class GenFunctions(object):
         if options.F_string_len_trim is False:  # XXX what about vector
             return
 
-        # Is result or any argument a string?
+        # Is result or any argument a string or vector?
+        # If so, additional arguments will be passed down so
+        # create buffer version of function.
         has_implied_arg = False
         for arg in ast.params:
             argtype = arg.typename
@@ -716,3 +777,44 @@ def generate_functions(library, config):
     VerifyAttrs(library, config).verify_attrs()
     GenFunctions(library, config).gen_library()
     Namify(library, config).name_library()
+
+######################################################################
+
+class CheckImplied(todict.PrintNode):
+    """Check arguments in the implied attribute.
+    """
+    def __init__(self, expr, func):
+        super(CheckImplied, self).__init__()
+        self.expr = expr
+        self.func = func
+
+    def visit_Identifier(self, node):
+        """Check arguments to size function.
+        """
+        if node.args == None:
+            return node.name
+        elif node.name == 'size':
+            # size(arg)
+            if len(node.args) != 1:
+                raise RuntimeError("Too many arguments to 'size': "
+                                   .format(self.expr))
+            argname = node.args[0].name
+            arg = self.func.ast.find_arg_by_name(argname)
+            if arg is None:
+                raise RuntimeError("Unknown argument '{}': {}"
+                                   .format(argname, self.expr))
+            if 'dimension' not in arg.attrs:
+                raise RuntimeError(
+                    "Argument '{}' must have dimension attribute: {}"
+                    .format(argname, self.expr))
+            return 'size'
+        else:
+            raise RuntimeError("Unexpected function '{}' in expression: {}"
+                               .format(node.name, self.expr))
+
+def check_implied(expr, func):
+    """Check implied attribute expression for errors.
+    """
+    node = declast.ExprParser(expr).expression()
+    visitor = CheckImplied(expr, func)
+    return visitor.visit(node)

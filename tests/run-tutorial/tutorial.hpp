@@ -86,7 +86,7 @@ void Function9(double arg);
 void Function10();
 void Function10(const std::string &name, double arg2);
 
-void Sum(int len, int * values, int *result);
+void Sum(size_t len, int * values, int *result);
 
 long long TypeLongLong(long long arg1);
 
@@ -102,11 +102,16 @@ const std::string& LastFunctionCalled();
 class Class1
 {
 public:
-    void Method1();
+    int m_flag;
+    Class1()         : m_flag(0)    {};
+    Class1(int flag) : m_flag(flag) {};
+    int Method1();
 };
 
-void useclass(const Class1 *arg);
+int useclass(const Class1 *arg);
 void getclass(const Class1 **arg);
+const Class1 * getclass2();
+Class1 * getclass3();
 
 int vector_sum(const std::vector<int> &arg);
 void vector_iota(std::vector<int> &arg);

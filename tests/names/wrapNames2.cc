@@ -51,4 +51,27 @@ extern "C" {
 int write_file;
 // splicer end class.Names2.C_definitions
 
+// Names2()
+// function_index=4
+TES_names2 * TES_names2_ctor()
+{
+// splicer begin class.Names2.method.ctor
+    Names2 * SHCXX_rv = new Names2();
+    TES_names2 * SHC_rv = static_cast<TES_names2 *>(static_cast<void *>(
+        SHCXX_rv));
+    return SHC_rv;
+// splicer end class.Names2.method.ctor
+}
+
+// ~Names2()
+// function_index=5
+void TES_names2_dtor(TES_names2 * self)
+{
+// splicer begin class.Names2.method.dtor
+    Names2 *SH_this = static_cast<Names2 *>(static_cast<void *>(self));
+    delete SH_this;
+    return;
+// splicer end class.Names2.method.dtor
+}
+
 }  // extern "C"

@@ -1,5 +1,4 @@
-#!/bin/env python3
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
 # 
 # LLNL-CODE-738041.
@@ -63,8 +62,8 @@ storage_class = { 'auto', 'register', 'static', 'extern', 'typedef' }
 namespace = { 'std' }
 
 token_specification = [
-    ('REAL',      r'[+-]?((((\d+[.]\d*)|(\d*[.]\d+))([Ee][+-]?\d+)?)|(\d+[Ee][+-]?\d+))'),
-    ('INTEGER',   r'[+-]?\d+'),
+    ('REAL',      r'((((\d+[.]\d*)|(\d*[.]\d+))([Ee][+-]?\d+)?)|(\d+[Ee][+-]?\d+))'),
+    ('INTEGER',   r'\d+'),
     ('DQUOTE',    r'["][^"]*["]'),  # double quoted string
     ('SQUOTE',    r"['][^']*[']"),  # single quoted string
     ('LPAREN',    r'\('),
@@ -73,6 +72,8 @@ token_specification = [
     ('EQUALS',    r'='),
     ('REF',       r'\&'),
     ('PLUS',      r'\+'),
+    ('MINUS',     r'\-'),
+    ('SLASH',     r'/'),
     ('COMMA',     r','),
     ('SEMICOLON', r';'),
     ('LT',        r'<'),
@@ -137,7 +138,61 @@ def add_typemap():
 #        return wrapper
 #    return wrap
 
-class Parser(object):
+class RecursiveDescent(object):
+    """Recursive Descent Parsing helper functions.
+    """
+    def peek(self, typ):
+        return self.token.typ == typ
+
+    def next(self):
+        """Get next token."""
+        try:
+            self.token = next(self.tokenizer)
+        except StopIteration:
+            self.token = Token('EOF', None, 0, 0)
+        self.info("next", self.token)
+
+    def have(self, typ):
+        """Peek at token, if found consume."""
+        if self.token.typ == typ:
+            self.next()
+            return True
+        else:
+            return False
+
+    def mustbe(self, typ):
+        """Consume a token of type typ"""
+        token = self.token
+        if self.token.typ == typ:
+            self.next()
+            return token
+        else:
+            self.error_msg("Expected {}, found {}", typ, self.token.typ)
+
+    def error_msg(self, format, *args):
+        msg = format.format(*args)
+        ptr = ' '*self.token.column + '^'
+        raise RuntimeError('\n'.join(["Parse Error", self.decl, ptr, msg]))
+
+    def enter(self, name, *args):
+        """Print message when entering a function."""
+        if self.trace:
+            print(' ' * self.indent, 'enter', name, *args)
+            self.indent += 4
+
+    def exit(self, name, *args):
+        """Print message when exiting a function."""
+        if self.trace:
+            self.indent -= 4
+            print(' ' * self.indent, 'exit', name, *args)
+
+    def info(self, *args):
+        """Print debug message during parse."""
+        if self.trace:
+            print(' ' * self.indent, *args)
+
+
+class Parser(RecursiveDescent):
     """
     Parse a C/C++ declaration with Shroud annotations.
 
@@ -151,7 +206,7 @@ class Parser(object):
         self.indent = 0
         self.token = None
         self.tokenizer = tokenize(decl)
-        self.next()
+        self.next()  # load first token
 
     def parameter_list(self):
         # look for ... var arg at end
@@ -402,53 +457,6 @@ class Parser(object):
                 attrs[name] = True
         self.exit('attribute', attrs)
 
-    def next(self):
-        """Get next token."""
-        try:
-            self.token = next(self.tokenizer)
-        except StopIteration:
-            self.token = Token('EOF', None, 0, 0)
-        self.info("next", self.token)
-
-    def have(self, typ):
-        """Peek at token, if found consume."""
-        if self.token.typ == typ:
-            self.next()
-            return True
-        else:
-            return False
-
-    def mustbe(self, typ):
-        """Consume a token of type typ"""
-        token = self.token
-        if self.token.typ == typ:
-            self.next()
-            return token
-        else:
-            self.error_msg("Expected {}, found {}", typ, self.token.typ)
-
-    def error_msg(self, format, *args):
-        msg = format.format(*args)
-        ptr = ' '*self.token.column + '^'
-        raise RuntimeError('\n'.join(["Parse Error", self.decl, ptr, msg]))
-
-    def enter(self, name, *args):
-        """Print message when entering a function."""
-        if self.trace:
-            print(' ' * self.indent, 'enter', name, *args)
-            self.indent += 4
-
-    def exit(self, name, *args):
-        """Print message when exiting a function."""
-        if self.trace:
-            self.indent -= 4
-            print(' ' * self.indent, 'exit', name, *args)
-
-    def info(self, *args):
-        """Print debug message during parse."""
-        if self.trace:
-            print(' ' * self.indent, *args)
-
 
 class Node(object):
     pass
@@ -475,17 +483,6 @@ class Ptr(Node):
             decl.append(' const')
         if self.volatile:
             decl.append(' volatile')
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            ptr = self.ptr,
-            const = self.const,
-#            volatile = self.volatile,
-        )
-        return d
 
     def __str__(self):
         if self.const:
@@ -523,19 +520,6 @@ class Declarator(Node):
         elif self.name:
             decl.append(' ')
             decl.append(self.name)
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            pointer = [p._to_dict() for p in self.pointer],
-        )
-        if self.name:
-            d['name'] = self.name
-        elif self.func:
-            d['func'] = self.func._to_dict()
-        return d
 
     def __str__(self):
         out = ''
@@ -663,6 +647,15 @@ class Declaration(Node):
             return 'function'
         return 'subroutine'
 
+    def find_arg_by_name(self, name):
+        """Find argument in params with name."""
+        if self.params is None:
+            return None
+        for param in self.params:
+            if param.name == name:
+                return param
+        return None
+
     def _as_arg(self, name):
         """Create an argument to hold the function result.
         This is intended for pointer arguments, char or string.
@@ -694,33 +687,6 @@ class Declaration(Node):
         self.params.append(newarg)
         self._set_to_void()
         return newarg
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            specifier = self.specifier,
-            const = self.const,
-#            volatile = self.volatile,
-#            self.array,
-            attrs = self.attrs,
-        )
-        if self.declarator:
-            # ctor and dtor have no declarator
-            d['declarator'] = self.declarator._to_dict()
-        if self.storage:
-            d['storage'] = self.storage
-        if self.params is not None:
-            d['params'] = [ x._to_dict() for x in self.params]
-            d['fattrs'] = self.fattrs
-            d['func_const'] = self.func_const
-        else:
-            if self.fattrs:
-                raise RuntimeError("fattrs is not empty for non-function")
-        if self.init is not None:
-            d['init'] = self.init
-        return d
 
     def __str__(self):
         out = []
@@ -821,10 +787,6 @@ class Declaration(Node):
             decl.append('+')
             if value is True:
                 decl.append(attr)
-            elif attr == 'dimension':
-                # dimension already has parens
-                decl.append(attr)
-                decl.append(value)
             else:
                 decl.append('{}({})'.format(attr, value))
             space = ''
@@ -846,12 +808,15 @@ class Declaration(Node):
 
     def gen_arg_as_lang(self, decl, lang,
                         continuation=False,
+                        asgn_value=False,
                         **kwargs):
         """Generate an argument for the C wrapper.
         C++ types are converted to C types using typemap.
 
         lang = c_type or cxx_type
         continuation = True - insert tabs to aid continuations
+        asgn_value = If True, make sure the value can be assigned
+                     by removing const.
 
         If a templated type, assume std::vector.
         The C argument will be a pointer to the template type.
@@ -859,7 +824,9 @@ class Declaration(Node):
         The length info is lost but will be provided as another argument
         to the C wrapper.
         """
+        const_index = None
         if self.const:
+            const_index = len(decl)
             decl.append('const ')
 
         if 'template' in self.attrs:
@@ -880,6 +847,11 @@ class Declaration(Node):
             declarator.name = self.name
         else:
             declarator = self.declarator
+
+        if asgn_value and const_index is not None and not self.is_indirect():
+            # Remove 'const' do the variable can be assigned to.
+            decl[const_index] = ''
+
         if lang == 'c_type':
             declarator.gen_decl_work(decl, as_c=True, **kwargs)
         else:
@@ -893,7 +865,8 @@ class Declaration(Node):
             comma = ''
             for arg in params:
                 decl.append(comma)
-                arg.gen_decl_work(decl, attrs=None, continuation=continuation)
+                arg.gen_decl_work(decl, attrs=None,
+                                  continuation=continuation)
                 if continuation:
                     comma = ',\t '
                 else:
@@ -935,13 +908,15 @@ class Declaration(Node):
             decl.append(self.name)
 
         if basedef.base == 'vector':
-            dimension = '(*)'  # is array
+            decl.append('(*)') # is array
         elif typedef.base == 'string':
-            dimension = '(*)'  # is array
-        else:
-            # XXX should C always have dimensions of '(*)'?
-            dimension = attrs.get('dimension', '')
-        decl.append(dimension)
+            decl.append('(*)')
+        elif attrs.get('dimension', False):
+            # Any dimension is changed to assumed length.
+            decl.append('(*)')
+        elif attrs.get('allocatable', False):
+            # allocatable assumes dimension
+            decl.append('(*)')
         return ''.join(decl)
 
     def gen_arg_as_fortran(self, local=False, **kwargs):
@@ -966,6 +941,10 @@ class Declaration(Node):
             if intent:
                 t.append('intent(%s)' % intent.upper())
 
+        allocatable = attrs.get('allocatable', False)
+        if allocatable:
+            t.append('allocatable')
+
         decl = []
         decl.append(', '.join(t))
         decl.append(' :: ')
@@ -976,7 +955,11 @@ class Declaration(Node):
             decl.append(self.name)
 
         dimension = attrs.get('dimension', '')
-        decl.append(dimension)
+        if dimension:
+            decl.append('(' + dimension + ')')
+        elif allocatable:
+            # Assume 1-d.
+            decl.append('(:)')
 
         return ''.join(decl)
 
@@ -1008,3 +991,154 @@ def create_this_arg(name, typ, const=True):
     arg.declarator.pointer = [ Ptr('*') ]
     arg.specifier = [ typ ]
     return arg
+
+
+######################################################################
+
+class Identifier(Node):
+    def __init__(self, name, args=None):
+        self.name = name
+        self.args = args
+
+
+class BinaryOp(Node):
+    def __init__(self, left, op, right):
+        self.left = left
+        self.op = op
+        self.right = right
+
+
+class UnaryOp(Node):
+    def __init__(self, op, node):
+        self.op = op
+        self.node = node
+
+
+class ParenExpr(Node):
+    def __init__(self, node):
+        self.node = node
+
+
+class Constant(Node):
+    def __init__(self, value):
+        self.value = value
+
+
+# For each operator, a (precedence, associativity) pair.
+OpInfo = collections.namedtuple('OpInfo', 'prec assoc')
+
+OPINFO_MAP = {
+    '+':    OpInfo(1, 'LEFT'),
+    '-':    OpInfo(1, 'LEFT'),
+    '*':    OpInfo(2, 'LEFT'),
+    '/':    OpInfo(2, 'LEFT'),
+#    '^':    OpInfo(3, 'RIGHT'),
+}
+
+class ExprParser(RecursiveDescent):
+    """
+    Parse implied attribute expressions.
+    Expand functions into Fortran or Python.
+
+    Examples:
+      size(var)
+    """
+
+    def __init__(self, expr, trace=False):
+        self.decl = expr
+        self.expr = expr
+        self.trace = trace
+        self.indent = 0
+        self.token = None
+        self.tokenizer = tokenize(expr)
+        self.next()  # load first token
+
+    def expression(self, min_prec=0):
+        """Parse expressions.
+        Preserves precedence and associativity.
+
+        https://eli.thegreenplace.net/2012/08/02/parsing-expressions-by-precedence-climbing
+        """
+        self.enter('expression')
+        atom_lhs = self.primary()
+
+        while True:
+            op = self.token.value
+            if (op not in OPINFO_MAP
+                or OPINFO_MAP[op].prec < min_prec):
+                break
+
+            # Inside this loop the current token is a binary operator
+
+            # Get the operator's precedence and associativity, and compute a
+            # minimal precedence for the recursive call
+            prec, assoc = OPINFO_MAP[op]
+            next_min_prec = prec + 1 if assoc == 'LEFT' else prec
+
+            # Consume the current token and prepare the next one for the
+            # recursive call
+            self.next()
+            atom_rhs = self.expression(next_min_prec)
+
+            # Update lhs with the new value
+            atom_lhs = BinaryOp(atom_lhs, op, atom_rhs)
+
+        self.exit('expression')
+        return atom_lhs
+
+    def primary(self):
+        self.enter('primary')
+        if self.peek('ID'):
+            node = self.identifier()
+        elif self.token.typ in ['REAL', 'INTEGER']:
+            self.enter('constant')
+            node = Constant(self.token.value)
+            self.next()
+        elif self.have('LPAREN'):
+            node = ParenExpr(self.expression())
+            self.mustbe('RPAREN')
+        elif self.token.typ in ['PLUS', 'MINUS']:
+            self.enter('unary')
+            value = self.token.value
+            self.next()
+            node = UnaryOp(value, self.primary())
+        else:
+            self.error_msg("Unexpected token {}", self.token.value)
+        self.exit('primary')
+        return node
+
+    def identifier(self):
+        """
+        <expr> ::= name '(' arglist ')'
+        """
+        self.enter('identifier')
+        name = self.mustbe('ID').value
+        if self.peek('LPAREN'):
+            args = self.argument_list()
+            node = Identifier(name, args)
+        else:
+            node = Identifier(name)
+        self.exit('identifier')
+        return node
+
+    def argument_list(self):
+        """
+        <argument-list> ::= '(' <name>?  [ , <name ]* ')'
+
+        """
+        self.enter('argument_list')
+        params = []
+        self.next()  # consume LPAREN peeked at in caller
+        while self.token.typ != 'RPAREN':
+            node = self.identifier()
+            params.append(node)
+            if not self.have('COMMA'):
+                break
+        self.mustbe('RPAREN')
+        self.exit('argument_list', str(params))
+        return params
+
+
+def check_expr(expr, trace=False):
+    a = ExprParser(expr, trace=trace).expression()
+    return a

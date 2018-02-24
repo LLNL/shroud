@@ -102,9 +102,9 @@ contains
 
     call set_case_name("test_charargs_c")
 
-    call pass_char("w")
+    call cpass_char("w")
 
-    ch = return_char()
+    ch = creturn_char()
     call assert_true( ch == "w")
 
     ! character(*) function
@@ -127,23 +127,25 @@ contains
 
     call set_case_name("test_functions")
 
+    ! problem with pgi
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_char1()
+    str = get_char_ptr1()
     call assert_true( str == "bird")
 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_char2()
+    str = get_char_ptr2()
     call assert_true( str == "bird")
 
     ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_char3(str)
+    call get_char_ptr3(str)
     call assert_true( str == "bird")
  
 !--------------------------------------------------
 
+    ! problem with pgi
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_string1()

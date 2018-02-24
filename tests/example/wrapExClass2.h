@@ -68,7 +68,8 @@ typedef struct s_AA_exclass2 AA_exclass2;
 
 AA_exclass2 * AA_exclass2_ctor(const char * name);
 
-AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name, int Lname);
+AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name,
+    int trim_name);
 
 void AA_exclass2_dtor(AA_exclass2 * self);
 

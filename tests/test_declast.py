@@ -1,5 +1,5 @@
 """
-Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 Produced at the Lawrence Livermore National Laboratory 
 
 LLNL-CODE-738041.
@@ -44,6 +44,7 @@ from __future__ import print_function
 
 from shroud import ast
 from shroud import declast
+from shroud import todict
 from shroud import typemap
 from shroud import util
 
@@ -86,14 +87,30 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("const int var1")
         s = r.gen_decl()
         self.assertEqual("const int var1", s)
+        self.assertEqual("const int var1", r.gen_arg_as_c())
+        self.assertEqual(      "int var1", r.gen_arg_as_c(asgn_value=True))
+        self.assertEqual("const int var1", r.gen_arg_as_cxx())
+        self.assertEqual(      "int var1", r.gen_arg_as_cxx(asgn_value=True))
 
         r = declast.check_decl("int const var1")
         s = r.gen_decl()
         self.assertEqual("const int var1", s)
 
-        r = declast.check_decl("int *var1")
+        r = declast.check_decl("int *var1 +dimension(:)")
         s = r.gen_decl()
-        self.assertEqual("int * var1", s)
+        self.assertEqual("int * var1 +dimension(:)", s)
+        self.assertEqual("int * var1", r.gen_arg_as_c())
+        self.assertEqual("int * var1", r.gen_arg_as_cxx())
+        self.assertEqual("integer(C_INT) :: var1(:)", r.gen_arg_as_fortran())
+        self.assertEqual("integer(C_INT) :: var1(*)", r.bind_c())
+
+        r = declast.check_decl("const int * var1")
+        s = r.gen_decl()
+        self.assertEqual("const int * var1", s)
+        self.assertEqual("const int * var1", r.gen_arg_as_c())
+        self.assertEqual("const int * var1", r.gen_arg_as_c(asgn_value=True))
+        self.assertEqual("const int * var1", r.gen_arg_as_cxx())
+        self.assertEqual("const int * var1", r.gen_arg_as_cxx(asgn_value=True))
 
         r = declast.check_decl("int * const var1")
         s = r.gen_decl()
@@ -177,6 +194,9 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertEqual('function', r.get_subprogram())
 
+        self.assertIsNotNone(r.find_arg_by_name('arg1'))
+        self.assertIsNone(r.find_arg_by_name('argnone'))
+
     def test_type_function_pointer1(self):
         """Function pointer
         """
@@ -210,7 +230,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_arg_as_cxx()
         self.assertEqual("int ( * func)(int)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -278,7 +298,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -298,7 +318,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo +alias(junk)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {
                 "alias": "junk"
             }, 
@@ -320,7 +340,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo()", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -338,6 +358,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual('void', r.typename)
         self.assertFalse(r.is_pointer())
         self.assertEqual('subroutine', r.get_subprogram())
+        self.assertIsNone(r.find_arg_by_name('argnone'))
 
     def test_decl04(self):
         """const method"""
@@ -346,7 +367,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void * foo() const", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -377,7 +398,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo(int arg1)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -412,7 +433,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo(int arg1, double arg2)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -451,6 +472,10 @@ class CheckParse(unittest.TestCase):
         })
         self.assertEqual("foo", r.get_name())
 
+        self.assertIsNotNone(r.find_arg_by_name('arg1'))
+        self.assertIsNotNone(r.find_arg_by_name('arg2'))
+        self.assertIsNone(r.find_arg_by_name('argnone'))
+
     def test_decl07(self):
         """Return string"""
         r = declast.check_decl("const std::string& getName() const")
@@ -458,7 +483,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("const std::string & getName() const", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": True, 
             "declarator": {
@@ -491,7 +516,7 @@ class CheckParse(unittest.TestCase):
                          "int arg1 +in, double arg2 +out)"
                          " +attr2(True)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {
                 "attr1": "30", 
                 "len": 30
@@ -547,7 +572,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("Class1()", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {},
             "const": False,
             "fattrs": {
@@ -575,7 +600,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("Class1() +name(new)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {},
             "const": False,
             "fattrs": {
@@ -604,7 +629,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("~Class1()", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {},
             "const": False,
             "fattrs": {
@@ -632,7 +657,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("Class1 * make()", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {},
             "const": False,
             "declarator": {
@@ -667,7 +692,7 @@ class CheckParse(unittest.TestCase):
                          "std::string arg3=\"name\", "
                          "bool arg4=true)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -740,7 +765,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void decl11(ArgType arg)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -777,7 +802,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void decl12(std::vector<std::string> arg1, string arg2)", s)
 
-        self.assertEqual(r._to_dict(),{
+        self.assertEqual(todict.to_dict(r),{
             "attrs": {}, 
             "const": False, 
             "declarator": {
@@ -866,6 +891,88 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(r.name, 'Function4b')  # first is unchanged
         self.assertEqual(r2.name, 'newname')
 
+
+class CheckExpr(unittest.TestCase):
+    def test_identifier1(self):
+        r = declast.check_expr('id')
+        self.assertEqual('id', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            'name' : 'id',
+        })
+
+    def test_identifier_no_args(self):
+        r = declast.check_expr('id()')
+        self.assertEqual('id()', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            'name' : 'id',
+            'args': [],
+        })
+
+    def test_identifier_with_args(self):
+        r = declast.check_expr('id(arg1)')
+        self.assertEqual('id(arg1)', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r), {
+            'name' : 'id',
+            'args' : [ { 'name' : 'arg1' } ]
+        })
+
+    def test_constant(self):
+        r = declast.check_expr('1 + 2.345')
+        self.assertEqual('1+2.345', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            "left": {
+                "value": "1"
+            }, 
+            "op": "+", 
+            "right": {
+                "value": "2.345"
+            }
+        })
+
+    def test_binary(self):
+        r = declast.check_expr('a + b * c')
+        self.assertEqual('a+b*c', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            "left": {
+                "name": "a"
+            }, 
+            "op": "+", 
+            "right": {
+                "left": {
+                    "name": "b"
+                }, 
+                "op": "*", 
+                "right": {
+                    "name": "c"
+                }
+            }
+        })
+
+        r = declast.check_expr('(a + b) * c')
+        self.assertEqual('(a+b)*c', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            "left": {
+                "node": {
+                    "left": {
+                        "name": "a"
+                    }, 
+                    "op": "+", 
+                    "right": {
+                        "name": "b"
+                    }
+                }
+            }, 
+            "op": "*", 
+            "right": {
+                "name": "c"
+            }
+        })
+
+
+    def test_others(self):
+        e = 'size+2'
+        r = declast.check_expr(e)
+        self.assertEqual(e, todict.print_node(r))
 
                          
 if __name__ == '__main__':

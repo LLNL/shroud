@@ -57,10 +57,11 @@ static char PY_function1__doc__[] =
 
 static PyObject *
 PY_function1(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
+// void function1()
 // splicer begin function.function1
     function1();
     Py_RETURN_NONE;
@@ -73,10 +74,11 @@ static char PY_function2__doc__[] =
 
 static PyObject *
 PY_function2(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
+// void function2()
 // splicer begin function.function2
     function2();
     Py_RETURN_NONE;
@@ -85,22 +87,21 @@ PY_function2(
 
 static PyObject *
 PY_function3a_0(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
+// void function3a(int i +intent(in)+value)
 // splicer begin function.function3a_0
     int i;
-    const char *SH_kwcpp = "i";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "i",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:function3a", SH_kw_list,
-        &i))
-    {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:function3a",
+        const_cast<char **>(SHT_kwlist), &i))
         return NULL;
-    }
+
     function3a(i);
     Py_RETURN_NONE;
 // splicer end function.function3a_0
@@ -108,22 +109,21 @@ PY_function3a_0(
 
 static PyObject *
 PY_function3a_1(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
+// void function3a(long i +intent(in)+value)
 // splicer begin function.function3a_1
     long i;
-    const char *SH_kwcpp = "i";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "i",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:function3a", SH_kw_list,
-        &i))
-    {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:function3a",
+        const_cast<char **>(SHT_kwlist), &i))
         return NULL;
-    }
+
     function3a(i);
     Py_RETURN_NONE;
 // splicer end function.function3a_1
@@ -135,25 +135,30 @@ static char PY_function4__doc__[] =
 
 static PyObject *
 PY_function4(
-  PyObject *,  // self unused
+  PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
+// int function4(const std::string & rv +intent(in))
 // splicer begin function.function4
     const char * rv;
-    const char *SH_kwcpp = "rv";
-    char *SH_kw_list[] = {
-        (char *) SH_kwcpp+0,
+    const char *SHT_kwlist[] = {
+        "rv",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:function4", SH_kw_list,
-        &rv))
-    {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:function4",
+        const_cast<char **>(SHT_kwlist), &rv))
         return NULL;
-    }
+
+    // post_parse
     const std::string SH_rv(rv);
-    int rv = function4(SH_rv);
-    return Py_BuildValue("i", rv);
+
+    int SHC_rv = function4(SH_rv);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
 // splicer end function.function4
 }
 
@@ -163,10 +168,11 @@ static char PY_fiveplus__doc__[] =
 
 static PyObject *
 PY_fiveplus(
-  PyObject *,  // self unused
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
+// void function5() +name(fiveplus)
 // splicer begin function.fiveplus
     fiveplus();
     Py_RETURN_NONE;
@@ -184,11 +190,11 @@ PY_function3a(
   PyObject *kwds)
 {
 // splicer begin function.function3a
-    Py_ssize_t SH_nargs = 0;
-    if (args != NULL) SH_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
-    if (SH_nargs == 1) {
+    if (SHT_nargs == 1) {
         rvobj = PY_function3a_0(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -197,7 +203,7 @@ PY_function3a(
         }
         PyErr_Clear();
     }
-    if (SH_nargs == 1) {
+    if (SHT_nargs == 1) {
         rvobj = PY_function3a_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -211,11 +217,15 @@ PY_function3a(
 // splicer end function.function3a
 }
 static PyMethodDef PY_methods[] = {
-{"function1", (PyCFunction)PY_function1, METH_NOARGS, PY_function1__doc__},
-{"function2", (PyCFunction)PY_function2, METH_NOARGS, PY_function2__doc__},
-{"function4", (PyCFunction)PY_function4, METH_VARARGS|METH_KEYWORDS, PY_function4__doc__},
+{"function1", (PyCFunction)PY_function1, METH_NOARGS,
+    PY_function1__doc__},
+{"function2", (PyCFunction)PY_function2, METH_NOARGS,
+    PY_function2__doc__},
+{"function4", (PyCFunction)PY_function4, METH_VARARGS|METH_KEYWORDS,
+    PY_function4__doc__},
 {"fiveplus", (PyCFunction)PY_fiveplus, METH_NOARGS, PY_fiveplus__doc__},
-{"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS, PY_function3a__doc__},
+{"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS,
+    PY_function3a__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
@@ -268,11 +278,13 @@ static struct PyModuleDef moduledef = {
 #define INITERROR return
 #endif
 
-#ifdef __cplusplus
 extern "C" {
-#endif
 PyMODINIT_FUNC
-MOD_INITBASIS(void)
+#ifdef IS_PY3K
+PyInit_testnames(void)
+#else
+inittestnames(void)
+#endif
 {
     PyObject *m = NULL;
     const char * error_name = "testnames.Error";
@@ -326,7 +338,6 @@ MOD_INITBASIS(void)
         Py_FatalError("can't initialize module testnames");
     return RETVAL;
 }
-#ifdef __cplusplus
-}
-#endif
+}   // extern "C"
+
 

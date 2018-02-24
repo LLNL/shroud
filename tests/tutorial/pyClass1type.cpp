@@ -49,47 +49,112 @@ namespace tutorial {
 // splicer end class.Class1.impl.C_definition
 // splicer begin class.Class1.impl.additional_methods
 // splicer end class.Class1.impl.additional_methods
-
-static char PY_class1_delete__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_class1_delete(
-  PY_Class1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+static void
+PY_Class1_tp_del (PY_Class1 *self)
 {
-// splicer begin class.Class1.method.delete
+// splicer begin class.Class1.type.del
     delete self->obj;
     self->obj = NULL;
-    Py_RETURN_NONE;
-// splicer end class.Class1.method.delete
+// splicer end class.Class1.type.del
 }
 
-static char PY_class1_method1__doc__[] =
+static int
+PY_Class1_tp_init_default(
+  PY_Class1 *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// Class1() +name(new)
+// splicer begin class.Class1.method.new_default
+    self->obj = new Class1();
+    return 0;
+// splicer end class.Class1.method.new_default
+}
+
+static int
+PY_Class1_tp_init_flag(
+  PY_Class1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// Class1(int flag +intent(in)+value) +name(new)
+// splicer begin class.Class1.method.new_flag
+    int flag;
+    const char *SHT_kwlist[] = {
+        "flag",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:new",
+        const_cast<char **>(SHT_kwlist), &flag))
+        return -1;
+
+    self->obj = new Class1(flag);
+    return 0;
+// splicer end class.Class1.method.new_flag
+}
+
+static char PY_class1_Method1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_class1_method1(
+PY_class1_Method1(
   PY_Class1 *self,
-  PyObject *,  // args unused
-  PyObject *)  // kwds unused
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
 {
+// int Method1()
 // splicer begin class.Class1.method.method1
-    self->obj->Method1();
-    Py_RETURN_NONE;
+    int SHC_rv = self->obj->Method1();
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
 // splicer end class.Class1.method.method1
+}
+
+static int
+PY_Class1_tp_init(
+  PY_Class1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin class.Class1.method.new
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    int rv;
+    if (SHT_nargs == 0) {
+        rv = PY_Class1_tp_init_default(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rv;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rv;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 1) {
+        rv = PY_Class1_tp_init_flag(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rv;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rv;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return -1;
+// splicer end class.Class1.method.new
 }
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods
 static PyMethodDef PY_Class1_methods[] = {
-{"delete", (PyCFunction)PY_class1_delete, METH_NOARGS, PY_class1_delete__doc__},
-{"Method1", (PyCFunction)PY_class1_method1, METH_NOARGS, PY_class1_method1__doc__},
-// splicer begin class.Class1.PyMethodDef
-// splicer end class.Class1.PyMethodDef
-{NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
+    {"Method1", (PyCFunction)PY_class1_Method1, METH_NOARGS,
+        PY_class1_Method1__doc__},
+    // splicer begin class.Class1.PyMethodDef
+    // splicer end class.Class1.PyMethodDef
+    {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
 static char Class1__doc__[] =
@@ -151,7 +216,7 @@ PyTypeObject PY_Class1_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)0,                   /* tp_init */
+        (initproc)PY_Class1_tp_init,                   /* tp_init */
         (allocfunc)0,                  /* tp_alloc */
         (newfunc)0,                    /* tp_new */
         (freefunc)0,                   /* tp_free */
@@ -161,7 +226,7 @@ PyTypeObject PY_Class1_Type = {
         0,                              /* tp_cache */
         0,                              /* tp_subclasses */
         0,                              /* tp_weaklist */
-        (destructor)0,                 /* tp_del */
+        (destructor)PY_Class1_tp_del,                 /* tp_del */
         0,                              /* tp_version_tag */
 #ifdef IS_PY3K
         (destructor)0,                  /* tp_finalize */

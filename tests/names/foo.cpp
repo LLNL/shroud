@@ -72,4 +72,27 @@ void XXX_TES_names_method2(TES_names * self2)
 // splicer end class.Names.method.method2
 }
 
+// Names()
+// function_index=2
+TES_names * XXX_TES_names_ctor()
+{
+// splicer begin class.Names.method.ctor
+    Names * SHCXX_rv = new Names();
+    TES_names * SHC_rv = static_cast<TES_names *>(static_cast<void *>(
+        SHCXX_rv));
+    return SHC_rv;
+// splicer end class.Names.method.ctor
+}
+
+// ~Names()
+// function_index=3
+void XXX_TES_names_dtor(TES_names * self)
+{
+// splicer begin class.Names.method.dtor
+    Names *SH_this = static_cast<Names *>(static_cast<void *>(self));
+    delete SH_this;
+    return;
+// splicer end class.Names.method.dtor
+}
+
 }  // extern "C"

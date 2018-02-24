@@ -1,4 +1,4 @@
-.. Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+.. Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 .. Produced at the Lawrence Livermore National Laboratory 
 ..
 .. LLNL-CODE-738041.
@@ -101,6 +101,7 @@ for wrappers::
         c_type: int 
         cxx_type: int
         f_type: integer(C_INT)
+        f_kind: C_INT
         f_module:
           iso_c_binding:
           - C_INT
@@ -130,6 +131,7 @@ The type map is defined as::
         c_type: bool 
         cxx_type: bool 
         f_type: logical 
+        f_kind: C_BOOL
         f_c_type: logical(C_BOOL) 
         f_module:
             iso_c_binding:
@@ -323,6 +325,7 @@ The type map::
                       - }}
 
             f_type: character(*)
+            f_kind: C_CHAR
             f_c_type: character(kind=C_CHAR)
             f_c_module:
                 iso_c_binding:
@@ -507,6 +510,7 @@ additional sections to convert between ``char *`` and ``std::string``::
                        - }}
     
             f_type: character(*)
+            f_kind: C_CHAR
             f_c_type: character(kind=C_CHAR)
             f_c_module:
                 iso_c_binding:
@@ -594,33 +598,33 @@ Shroud provides several options to provide a more idiomatic usage.
 Each of these declaration call identical C++ functions but they are
 wrapped differently::
 
-    - decl: const char * getChar1()  +pure
-    - decl: const char * getChar2+len(30)()
-    - decl: const char * getChar3()
+    - decl: const char * getCharPtr1()  +pure
+    - decl: const char * getCharPtr2+len(30)()
+    - decl: const char * getCharPtr3()
       format:
          F_string_result_as_arg: output
 
 All of the generated C wrappers are very similar.  The buffer version
 copies the result into a buffer of known length::
 
-    const char * STR_get_char1()
+    const char * STR_get_char_ptr1()
     {
-        const char * SH_rv = getChar1();
-        return SH_rv;
+        const char * SHC_rv = getChar1();
+        return SHC_rv;
     }
 
     void STR_get_char1_bufferify(char * SHF_rv, int NSHF_rv)
     {
-        const char * SHT_rv = getChar1();
-        if (SHT_rv == NULL) {
+        const char * SHC_rv = getChar1();
+        if (SHC_rv == NULL) {
             std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
-            ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv);
         }
         return;
     }
 
-``getChar1`` adds the pure annotation.  This annotation is passed to
+``getCharPtr1`` adds the pure annotation.  This annotation is passed to
 the Fortran interface where it declares the function as ``pure``::
 
         pure function c_get_char1() &
@@ -640,12 +644,12 @@ variable length.  The *pure* annotation tells the compiler there are
 no side effects which is important because it will be called twice.
 You'd also want the C++ function to be fast::
 
-    function get_char1() &
+    function get_char_ptr1() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        character(kind=C_CHAR, len=strlen_ptr(c_get_char1())) :: SHT_rv
-        SHT_rv = fstr(c_get_char1())
-    end function get_char1
+        character(kind=C_CHAR, len=strlen_ptr(c_get_char_ptr1())) :: SHT_rv
+        SHT_rv = fstr(c_get_char_ptr1())
+    end function get_char_ptr1
 
 If you know the maximum size of string that you expect the function to
 return, then the *len* attribute is used to declare the length.  The
@@ -653,12 +657,12 @@ advantage is that the C function is only called once.  The downside is
 that any result which is longer than the length will be silently
 truncated::
 
-    function get_char2() &
+    function get_char_ptr2() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
-        call c_get_char2_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
-    end function get_char2
+        call c_get_char_ptr2_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
+    end function get_char_ptr2
 
 The third option gives the best of both worlds.  The C wrapper is only
 called once and any size result can be returned.  The result of the C
@@ -666,11 +670,11 @@ function will be returned in the Fortran argument named by format string
 **F_string_result_as_arg**.  The potential downside is that a Fortran
 subroutine is generated instead of a function::
 
-    subroutine get_char3(output)
+    subroutine get_char_ptr3(output)
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: output
-        call c_get_char3_bufferify(output, len(output, kind=C_INT))
-    end subroutine get_char3
+        call c_get_char_ptr3_bufferify(output, len(output, kind=C_INT))
+    end subroutine get_char_ptr3
 
 .. char ** not supported
 
@@ -686,18 +690,18 @@ The generated wrappers are::
 
     const char * STR_get_string1()
     {
-        const std::string & SHT_rv = getString1();
-        const char * XSHT_rv = SHT_rv.c_str();
-        return XSHT_rv;
+        const std::string & SHCXX_rv = getString1();
+        const char * SHC_rv = SHCXX_rv.c_str();
+        return SHC_rv;
     }
     
     void STR_get_string1_bufferify(char * SHF_rv, int NSHF_rv)
     {
-        const std::string & SHT_rv = getString1();
-        if (SHT_rv.empty()) {
+        const std::string & SHCXX_rv = getString1();
+        if (SHCXX_rv.empty()) {
             std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
-            ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv.c_str());
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
         }
         return;
     }
@@ -749,8 +753,8 @@ The C wrapper then creates a ``std::vector``::
     int TUT_vector_sum_bufferify(const int * arg, long Sarg)
     {
         const std::vector<int> SH_arg(arg, arg + Sarg);
-        int SH_rv = vector_sum(SH_arg);
-        return SH_rv;
+        int SHC_rv = vector_sum(SH_arg);
+        return SHC_rv;
     }
     
     void TUT_vector_iota_bufferify(int * arg, long Sarg)
@@ -790,6 +794,7 @@ how to use these routines::
             c_header: mpi.h
             c_type: MPI_Fint
             f_type: integer
+            f_kind: C_INT
             f_c_type: integer(C_INT)
             f_c_module:
                 iso_c_binding:
@@ -918,9 +923,15 @@ wrapped libraries.  The file is named by the global field
 **YAML_type_filename**. This file will only list some of the fields
 show above with the remainder set to default values by Shroud.
 
+The default name of the constructor is ``ctor``.  The name can 
+be specified with the **name** attribute.
+If the constructor is overloaded, each constructor must be given the
+same **name** attribute.
+The *function_suffix* must not be explicitly set to blank since the name
+is used by the ``generic`` interface.
 
-
-    
+If a constructor or destructor is not explicitly supplied in the YAML
+file then the default constructor or destructor will be wrapped.
 
 ..  chained function calls
 
@@ -932,7 +943,7 @@ Shroud generated C wrappers do not explicitly delete any memory.
 However a destructor may be automatically called for some C++ stl
 classes.  For example, a function which returns a ``std::string``
 will have its value copied into Fortran memory since the function's
-returned object will be destructed when the C++ wrapper returns.  If a
+returned object will be destroyed when the C++ wrapper returns.  If a
 function returns a ``char *`` value, it will also be copied into Fortran
 memory. But if the caller of the C++ function wants to transfer
 ownership of the pointer to its caller, the C++ wrapper will leak the
@@ -942,4 +953,108 @@ The **C_finalize** variable may be used to insert code before
 returning from the wrapper.  Use **C_finalize_buf** for the buffer
 version of wrapped functions.
 
+For example, a function which returns a new string will have to 
+``delete`` it before the C wrapper returns::
+
+    std::string * getString7()
+    {
+        // Caller is responsible to free string
+        std::string * rv = new std::string("Hello");
+        return rv;
+    }
+
+Wrapped as::
+
+    - decl: const string * getString7+len=30()
+      format:
+        C_finalize_buf: delete {C_result};
+
+The C buffer version of the wrapper is::
+
+    void STR_get_string7_bufferify(char * SHF_rv, int NSHF_rv)
+    {
+        const std::string * SHCXX_rv = getString7();
+        if (SHCXX_rv->empty()) {
+            std::memset(SHF_rv, ' ', NSHF_rv);
+        } else {
+            ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv->c_str());
+        }
+        {
+            // C_finalize
+            delete SHCXX_rv;
+        }
+        return;
+    }
+
+The unbuffer version of the function cannot ``destroy`` the string since
+only a pointer to the contents of the string is returned.  It would
+leak memory when called::
+
+    const char * STR_get_string7()
+    {
+        const std::string * SHCXX_rv = getString7();
+        const char * SHC_rv = SHCXX_rv->c_str();
+        return SHC_rv;
+    }
+
 .. note:: Reference counting and garbage collection are still a work in progress
+
+
+.. _TypesAnchor_Implied_argument:
+
+Implied argument
+----------------
+
+The value of an arguments to the C++ function may be implied by other arguments.
+If so the *implied* attribute can be used to assign the value to the argument and 
+it will not be included in the wrapped API.
+See the example in the next section.
+
+.. _TypesAnchor_Allocatable_array:
+
+Allocatable array
+-----------------
+
+Sometimes it is more convient to have the wrapper allocate an
+``intent(out)`` array before passing it to the C++ function.  This can
+be accomplished by adding the *allocatable* attribute.  For example the
+C++ function ``cos_doubles`` takes the cosine of an ``intent(in)``
+argument and assigns it to an ``intent(out)`` argument::
+
+    void cos_doubles(double *in, double *out, int size)
+    {
+        for(int i = 0; i < size; i++) {
+            out[i] = in[i] * 2.;
+        }
+    }
+
+This is wrapped as::
+
+    decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
+                           double * out    +intent(out) +allocatable(mold=in),
+                           int      sizein +implied(size(in)))
+
+The *mold* argument is similar to the *mold* argument in the Fortran
+``allocate`` statement, it will allocate ``out`` as the same shape as
+``in``.  Also notice the use of the *implied* attribute on the
+``size`` argument.  This argument is not added to the Fortran API
+since its value is *implied* to be the size of argument ``in``.
+``size`` is the Fortran intrinsic which returns the number of items
+allocated by its argument.
+
+The Fortran wrapper produced is::
+
+    subroutine cos_doubles(in, out)
+        use iso_c_binding, only : C_DOUBLE, C_INT
+        real(C_DOUBLE), intent(IN) :: in(:)
+        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
+        integer(C_INT) :: sizein
+        allocate(out, mold=in)
+        sizein = size(in)
+        call c_cos_doubles(in, out, sizein)
+    end subroutine cos_doubles
+
+The mold argument was added to the Fortran 2008 standard.  If the
+option **F_standard** is not 2008 then the allocate statement will be::
+
+        allocate(out(lbound(in,1):ubound(in,1)))

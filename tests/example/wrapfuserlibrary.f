@@ -63,16 +63,24 @@ module userlibrary_mod
             type(C_PTR) :: custom_funptr
         end function custom_funptr
 
-        subroutine func1_get() bind(C)
+        subroutine func_ptr1_get() bind(C)
             implicit none
-        end subroutine func1_get
+        end subroutine func_ptr1_get
 
-        function func2_get() bind(C)
+        function func_ptr2_get() bind(C)
             implicit none
-            type(C_PTR) :: func2_get
-        end function func2_get
+            type(C_PTR) :: func_ptr2_get
+        end function func_ptr2_get
 
-        subroutine func4_get(verylongname1, verylongname2, &
+        function func_ptr3_get(i, arg1) bind(C)
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value :: i
+            integer(C_INT), value :: arg1
+            type(C_PTR) :: func_ptr3_get
+        end function func_ptr3_get
+
+        subroutine func_ptr5_get(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, &
             verylongname10) bind(C)
@@ -88,15 +96,7 @@ module userlibrary_mod
             integer(C_INT), value :: verylongname8
             integer(C_INT), value :: verylongname9
             integer(C_INT), value :: verylongname10
-        end subroutine func4_get
-
-        function func_ptr3_get(i, arg1) bind(C)
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT), value :: i
-            integer(C_INT), value :: arg1
-            type(C_PTR) :: func_ptr3_get
-        end function func_ptr3_get
+        end subroutine func_ptr5_get
 
     end interface
 
@@ -224,21 +224,21 @@ module userlibrary_mod
             type(C_PTR), value, intent(IN) :: grp
         end subroutine c_testgroup2
 
-        subroutine func1(get) &
-                bind(C, name="AA_func1")
+        subroutine func_ptr1(get) &
+                bind(C, name="AA_func_ptr1")
             use iso_c_binding, only : C_PTR
-            import :: func1_get
+            import :: func_ptr1_get
             implicit none
-            procedure(func1_get) :: get
-        end subroutine func1
+            procedure(func_ptr1_get) :: get
+        end subroutine func_ptr1
 
-        subroutine func2(get) &
-                bind(C, name="AA_func2")
+        subroutine func_ptr2(get) &
+                bind(C, name="AA_func_ptr2")
             use iso_c_binding, only : C_DOUBLE
-            import :: func2_get
+            import :: func_ptr2_get
             implicit none
-            procedure(func2_get) :: get
-        end subroutine func2
+            procedure(func_ptr2_get) :: get
+        end subroutine func_ptr2
 
         subroutine c_func_ptr3(get) &
                 bind(C, name="AA_func_ptr3")
@@ -248,47 +248,47 @@ module userlibrary_mod
             procedure(func_ptr3_get) :: get
         end subroutine c_func_ptr3
 
-        subroutine c_func_ptr3a(get) &
-                bind(C, name="AA_func_ptr3a")
+        subroutine c_func_ptr4(get) &
+                bind(C, name="AA_func_ptr4")
             use iso_c_binding, only : C_DOUBLE
             import :: custom_funptr
             implicit none
             procedure(custom_funptr) :: get
-        end subroutine c_func_ptr3a
+        end subroutine c_func_ptr4
 
-        subroutine func4(get) &
-                bind(C, name="AA_func4")
+        subroutine func_ptr5(get) &
+                bind(C, name="AA_func_ptr5")
             use iso_c_binding, only : C_PTR
-            import :: func4_get
+            import :: func_ptr5_get
             implicit none
-            procedure(func4_get) :: get
-        end subroutine func4
+            procedure(func_ptr5_get) :: get
+        end subroutine func_ptr5
 
-        subroutine c_verlongfunctionname1(verylongname1, verylongname2, &
+        subroutine c_verylongfunctionname1(verylongname1, verylongname2, &
                 verylongname3, verylongname4, verylongname5, &
                 verylongname6, verylongname7, verylongname8, &
                 verylongname9, verylongname10) &
-                bind(C, name="AA_verlongfunctionname1")
+                bind(C, name="AA_verylongfunctionname1")
             use iso_c_binding, only : C_INT
             implicit none
-            integer(C_INT), value, intent(IN) :: verylongname1
-            integer(C_INT), value, intent(IN) :: verylongname2
-            integer(C_INT), value, intent(IN) :: verylongname3
-            integer(C_INT), value, intent(IN) :: verylongname4
-            integer(C_INT), value, intent(IN) :: verylongname5
-            integer(C_INT), value, intent(IN) :: verylongname6
-            integer(C_INT), value, intent(IN) :: verylongname7
-            integer(C_INT), value, intent(IN) :: verylongname8
-            integer(C_INT), value, intent(IN) :: verylongname9
-            integer(C_INT), value, intent(IN) :: verylongname10
-        end subroutine c_verlongfunctionname1
+            integer(C_INT), intent(INOUT) :: verylongname1
+            integer(C_INT), intent(INOUT) :: verylongname2
+            integer(C_INT), intent(INOUT) :: verylongname3
+            integer(C_INT), intent(INOUT) :: verylongname4
+            integer(C_INT), intent(INOUT) :: verylongname5
+            integer(C_INT), intent(INOUT) :: verylongname6
+            integer(C_INT), intent(INOUT) :: verylongname7
+            integer(C_INT), intent(INOUT) :: verylongname8
+            integer(C_INT), intent(INOUT) :: verylongname9
+            integer(C_INT), intent(INOUT) :: verylongname10
+        end subroutine c_verylongfunctionname1
 
-        function c_verlongfunctionname2(verylongname1, verylongname2, &
+        function c_verylongfunctionname2(verylongname1, verylongname2, &
                 verylongname3, verylongname4, verylongname5, &
                 verylongname6, verylongname7, verylongname8, &
                 verylongname9, verylongname10) &
                 result(SHT_rv) &
-                bind(C, name="AA_verlongfunctionname2")
+                bind(C, name="AA_verylongfunctionname2")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: verylongname1
@@ -302,7 +302,16 @@ module userlibrary_mod
             integer(C_INT), value, intent(IN) :: verylongname9
             integer(C_INT), value, intent(IN) :: verylongname10
             integer(C_INT) :: SHT_rv
-        end function c_verlongfunctionname2
+        end function c_verylongfunctionname2
+
+        subroutine c_cos_doubles(in, out, sizein) &
+                bind(C, name="AA_cos_doubles")
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), intent(IN) :: in(*)
+            real(C_DOUBLE), intent(OUT) :: out(*)
+            integer(C_INT), value, intent(IN) :: sizein
+        end subroutine c_cos_doubles
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -323,7 +332,7 @@ contains
 
     ! bool isNameValid(const std::string & name +intent(in))
     ! arg_to_buffer
-    ! function_index=50
+    ! function_index=52
     function is_name_valid(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT
@@ -335,7 +344,7 @@ contains
     end function is_name_valid
 
     ! bool isInitialized()
-    ! function_index=51
+    ! function_index=53
     function is_initialized() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -346,7 +355,7 @@ contains
     end function is_initialized
 
     ! void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-    ! function_index=52
+    ! function_index=54
     subroutine check_bool(arg1, arg2, arg3)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg1
@@ -366,7 +375,7 @@ contains
 
     ! void test_names(const std::string & name +intent(in))
     ! arg_to_buffer
-    ! function_index=53
+    ! function_index=55
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
@@ -377,7 +386,7 @@ contains
 
     ! void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
     ! arg_to_buffer
-    ! function_index=54
+    ! function_index=56
     subroutine test_names_flag(name, flag)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
@@ -390,7 +399,7 @@ contains
 
     ! void testoptional()
     ! has_default_arg
-    ! function_index=67
+    ! function_index=70
     subroutine testoptional_0()
         ! splicer begin function.testoptional_0
         call c_testoptional_0()
@@ -399,7 +408,7 @@ contains
 
     ! void testoptional(int i=1 +intent(in)+value)
     ! has_default_arg
-    ! function_index=68
+    ! function_index=71
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -409,7 +418,7 @@ contains
     end subroutine testoptional_1
 
     ! void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
-    ! function_index=55
+    ! function_index=57
     subroutine testoptional_2(i, j)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), value, intent(IN) :: i
@@ -420,7 +429,7 @@ contains
     end subroutine testoptional_2
 
     ! void testgroup1(DataGroup * grp +intent(in)+value)
-    ! function_index=58
+    ! function_index=60
     subroutine testgroup1(grp)
         use sidre_mod, only : group
         type(datagroup), value, intent(IN) :: grp
@@ -430,7 +439,7 @@ contains
     end subroutine testgroup1
 
     ! void testgroup2(const DataGroup * grp +intent(in)+value)
-    ! function_index=59
+    ! function_index=61
     subroutine testgroup2(grp)
         use sidre_mod, only : group
         type(datagroup), value, intent(IN) :: grp
@@ -440,7 +449,7 @@ contains
     end subroutine testgroup2
 
     ! void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
-    ! function_index=62
+    ! function_index=64
     !>
     !! \brief abstract argument
     !!
@@ -452,45 +461,45 @@ contains
         ! splicer end function.func_ptr3
     end subroutine func_ptr3
 
-    ! void FuncPtr3a(double ( * get) +intent(in)+value(double +value, int +value))
-    ! function_index=63
+    ! void FuncPtr4(double ( * get) +intent(in)+value(double +value, int +value))
+    ! function_index=65
     !>
     !! \brief abstract argument
     !!
     !<
-    subroutine func_ptr3a(get)
+    subroutine func_ptr4(get)
         procedure(custom_funptr) :: get
-        ! splicer begin function.func_ptr3a
-        call c_func_ptr3a(get)
-        ! splicer end function.func_ptr3a
-    end subroutine func_ptr3a
+        ! splicer begin function.func_ptr4
+        call c_func_ptr4(get)
+        ! splicer end function.func_ptr4
+    end subroutine func_ptr4
 
-    ! void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-    ! function_index=65
-    subroutine verlongfunctionname1(verylongname1, verylongname2, &
+    ! void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
+    ! function_index=67
+    subroutine verylongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
         use iso_c_binding, only : C_INT
-        integer(C_INT), value, intent(IN) :: verylongname1
-        integer(C_INT), value, intent(IN) :: verylongname2
-        integer(C_INT), value, intent(IN) :: verylongname3
-        integer(C_INT), value, intent(IN) :: verylongname4
-        integer(C_INT), value, intent(IN) :: verylongname5
-        integer(C_INT), value, intent(IN) :: verylongname6
-        integer(C_INT), value, intent(IN) :: verylongname7
-        integer(C_INT), value, intent(IN) :: verylongname8
-        integer(C_INT), value, intent(IN) :: verylongname9
-        integer(C_INT), value, intent(IN) :: verylongname10
-        ! splicer begin function.verlongfunctionname1
-        call c_verlongfunctionname1(verylongname1, verylongname2, &
+        integer(C_INT), intent(INOUT) :: verylongname1
+        integer(C_INT), intent(INOUT) :: verylongname2
+        integer(C_INT), intent(INOUT) :: verylongname3
+        integer(C_INT), intent(INOUT) :: verylongname4
+        integer(C_INT), intent(INOUT) :: verylongname5
+        integer(C_INT), intent(INOUT) :: verylongname6
+        integer(C_INT), intent(INOUT) :: verylongname7
+        integer(C_INT), intent(INOUT) :: verylongname8
+        integer(C_INT), intent(INOUT) :: verylongname9
+        integer(C_INT), intent(INOUT) :: verylongname10
+        ! splicer begin function.verylongfunctionname1
+        call c_verylongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
-        ! splicer end function.verlongfunctionname1
-    end subroutine verlongfunctionname1
+        ! splicer end function.verylongfunctionname1
+    end subroutine verylongfunctionname1
 
-    ! int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-    ! function_index=66
-    function verlongfunctionname2(verylongname1, verylongname2, &
+    ! int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+    ! function_index=68
+    function verylongfunctionname2(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10) &
             result(SHT_rv)
@@ -506,12 +515,30 @@ contains
         integer(C_INT), value, intent(IN) :: verylongname9
         integer(C_INT), value, intent(IN) :: verylongname10
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.verlongfunctionname2
-        SHT_rv = c_verlongfunctionname2(verylongname1, verylongname2, &
+        ! splicer begin function.verylongfunctionname2
+        SHT_rv = c_verylongfunctionname2(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
-        ! splicer end function.verlongfunctionname2
-    end function verlongfunctionname2
+        ! splicer end function.verylongfunctionname2
+    end function verylongfunctionname2
+
+    ! void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+    ! function_index=69
+    !>
+    !! \brief Test multidimensional arrays with allocatable
+    !!
+    !<
+    subroutine cos_doubles(in, out)
+        use iso_c_binding, only : C_DOUBLE, C_INT
+        real(C_DOUBLE), intent(IN) :: in(:,:)
+        real(C_DOUBLE), intent(OUT), allocatable :: out(:,:)
+        integer(C_INT) :: sizein
+        allocate(out, mold=in)
+        sizein = size(in,kind=C_INT)
+        ! splicer begin function.cos_doubles
+        call c_cos_doubles(in, out, sizein)
+        ! splicer end function.cos_doubles
+    end subroutine cos_doubles
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -400,8 +400,23 @@ Shroud also generates some code which requires local variables such as
 loop indexes.  These are prefixed with *SHT_*.  This name is controlled 
 by the format variable *c_temp*.
 
-
 Results are named from *fmt.C_result* or *fmt.F_result*.
+
+Format variable which control names are
+
+* c_temp
+* C_local
+* C_this
+* CXX_local
+* CXX_this
+* C_result
+
+* F_result
+* F_this
+
+* LUA_result
+
+* PY_result
 
 
 Patterns
@@ -438,13 +453,13 @@ will blank fill the result::
 
     const char * STR_get_string2()
     {
-        const std::string & SHT_rv = getString2();
+        const std::string & SHCXX_rv = getString2();
         // C_error_pattern
-        if (SHT_rv.empty()) {
+        if (SHCXX_rv.empty()) {
             return NULL;
         }
-        const char * XSHT_rv = SHT_rv.c_str();
-        return XSHT_rv;
+        const char * SHC_rv = SHCXX_rv.c_str();
+        return SHC_rv;
     }
 
 

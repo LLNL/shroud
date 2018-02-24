@@ -1,5 +1,4 @@
-#!/bin/env python3
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
 # 
 # LLNL-CODE-738041.
@@ -58,13 +57,15 @@ class Typedef(object):
         ('typedef', None),        # Initialize from existing type
 
         ('cxx_type', None),       # Name of type in C++
-        ('cxx_to_c', '{cxx_var}'), # Expression to convert from C++ to C
+        ('cxx_to_c', None),       # Expression to convert from C++ to C
+                                  # None implies {cxx_var} i.e. no conversion
         ('cxx_header', None),     # Name of C++ header file required for implementation
                                   # For example, if cxx_to_c was a function
 
         ('c_type', None),         # Name of type in C
         ('c_header', None),       # Name of C header file required for type
-        ('c_to_cxx', '{c_var}'),  # Expression to convert from C to C++
+        ('c_to_cxx', None),       # Expression to convert from C to C++
+                                  # None implies {c_var}  i.e. no conversion
         ('c_statements', {}),
         ('c_templates', {}),      # c_statements for cxx_T
         ('c_return_code', None),
@@ -73,8 +74,9 @@ class Typedef(object):
         ('f_c_argdecl', None),    # List of declarations to F_C routine
         ('f_c_module', None),     # Fortran modules needed for interface  (dictionary)
 
-        ('f_type', None),         # Name of type in Fortran
-        ('f_c_type', None),       # Type for C interface
+        ('f_type', None),         # Name of type in Fortran -- integer(C_INT)
+        ('f_kind', None),         # Fortran kind            -- C_INT
+        ('f_c_type', None),       # Type for C interface    -- int
         ('f_to_c', None),         # Expression to convert from Fortran to C
         ('f_derived_type', None), # Fortran derived type name
         ('f_args', None),         # Argument in Fortran wrapper to call C.
@@ -93,6 +95,7 @@ class Typedef(object):
                                   # ex. PyBool_FromLong({rv})
         ('PY_to_object', None),   # PyBuild - object'=converter(address)
         ('PY_from_object', None), # PyArg_Parse - status=converter(object, address);
+        ('PY_build_arg', None),   # argument for Py_BuildValue
         ('py_statements', {}),
 
         # Lua
@@ -225,8 +228,10 @@ def initialize():
             cxx_type='int',
             f_cast='int({f_var}, C_INT)',
             f_type='integer(C_INT)',
+            f_kind='C_INT',
             f_module=dict(iso_c_binding=['C_INT']),
             PY_format='i',
+            PY_ctor='PyInt_FromLong({c_var})',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -237,8 +242,10 @@ def initialize():
             cxx_type='long',
             f_cast='int({f_var}, C_LONG)',
             f_type='integer(C_LONG)',
+            f_kind='C_LONG',
             f_module=dict(iso_c_binding=['C_LONG']),
             PY_format='l',
+            PY_ctor='PyInt_FromLong({c_var})',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -249,8 +256,10 @@ def initialize():
             cxx_type='long long',
             f_cast='int({f_var}, C_LONG_LONG)',
             f_type='integer(C_LONG_LONG)',
+            f_kind='C_LONG_LONG',
             f_module=dict(iso_c_binding=['C_LONG_LONG']),
             PY_format='L',
+#            PY_ctor='PyInt_FromLong({c_var})',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -262,8 +271,9 @@ def initialize():
             c_header='stdlib.h',
             f_cast='int({f_var}, C_SIZE_T)',
             f_type='integer(C_SIZE_T)',
+            f_kind='C_SIZE_T',
             f_module=dict(iso_c_binding=['C_SIZE_T']),
-            PY_ctor='PyInt_FromLong({c_var})',
+            PY_ctor='PyInt_FromSize_t({c_var})',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -275,8 +285,10 @@ def initialize():
             cxx_type='float',
             f_cast='real({f_var}, C_FLOAT)',
             f_type='real(C_FLOAT)',
+            f_kind='C_FLOAT',
             f_module=dict(iso_c_binding=['C_FLOAT']),
             PY_format='f',
+            PY_ctor='PyFloat_FromDouble({c_var})',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
@@ -287,8 +299,10 @@ def initialize():
             cxx_type='double',
             f_cast='real({f_var}, C_DOUBLE)',
             f_type='real(C_DOUBLE)',
+            f_kind='C_DOUBLE',
             f_module=dict(iso_c_binding=['C_DOUBLE']),
             PY_format='d',
+            PY_ctor='PyFloat_FromDouble({c_var})',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
@@ -300,6 +314,7 @@ def initialize():
             cxx_type='bool',
 
             f_type='logical',
+            f_kind='C_BOOL',
             f_c_type='logical(C_BOOL)',
             f_module=dict(iso_c_binding=['C_BOOL']),
 
@@ -333,15 +348,33 @@ def initialize():
 
             py_statements=dict(
                 intent_in=dict(
-                    post_parse=[
-                        '{cxx_var} = PyObject_IsTrue({py_var});',
-                        ],
-                    ),
+                    pre_call=[
+                        'bool {cxx_var} = PyObject_IsTrue({py_var});',
+                    ],
                 ),
+                intent_inout=dict(
+                    pre_call=[
+                        'bool {cxx_var} = PyObject_IsTrue({py_var});',
+                    ],
+                    # py_var is already declared for inout
+                    post_call=[
+                        '{py_var} = PyBool_FromLong({c_var});',
+                    ],
+                ),
+                intent_out=dict(
+                    post_call=[
+                        '{PyObject} * {py_var} = PyBool_FromLong({c_var});',
+                    ],
+                ),
+            ),
 
             # XXX PY_format='p',  # Python 3.3 or greater
-            PY_ctor='PyBool_FromLong({c_var})',
+# Use py_statements.x.ctor instead of PY_ctor. This code will always be
+# added.  Older version of Python can not create a bool directly from
+# from Py_BuildValue.
+#            PY_ctor='PyBool_FromLong({c_var})',
             PY_PyTypeObject='PyBool_Type',
+
             LUA_type='LUA_TBOOLEAN',
             LUA_pop='lua_toboolean({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushboolean({LUA_state_var}, {c_var})',
@@ -415,6 +448,7 @@ def initialize():
                 ),
 
             f_type='character(*)',
+            f_kind='C_CHAR',
             f_c_type='character(kind=C_CHAR)',
             f_c_module=dict(iso_c_binding=['C_CHAR']),
 
@@ -456,10 +490,15 @@ def initialize():
             ),
 
             f_type='character',
+            f_kind='C_CHAR',
             f_c_type='character(kind=C_CHAR)',
             f_c_module=dict(iso_c_binding=['C_CHAR']),
-            PY_format='s',
-            PY_ctor='PyString_FromString({c_var})',
+            PY_format='c',
+#            PY_ctor='Py_BuildValue("c", (int) {c_var})',
+            PY_ctor='PyString_FromStringAndSize(&{c_var}, 1)',
+#            PY_build_format='c',
+            PY_build_arg='(int) {cxx_var}',
+
             LUA_type='LUA_TSTRING',
             LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
@@ -477,7 +516,7 @@ def initialize():
 
             c_statements=dict(
                 intent_in=dict(
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         '{c_const}std::string {cxx_var}({c_var});'
                         ],
@@ -487,7 +526,7 @@ def initialize():
 #                    pre_call=[
 #                        'int {c_var_trim} = strlen({c_var});',
 #                        ],
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         '{c_const}std::string {cxx_var};'
                         ],
@@ -498,7 +537,7 @@ def initialize():
                 ),
                 intent_inout=dict(
                     cxx_header='<cstring>',
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         '{c_const}std::string {cxx_var}({c_var});'
                         ],
@@ -509,7 +548,7 @@ def initialize():
                 ),
                 intent_in_buf=dict(
                     buf_args = [ 'len_trim' ],
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         ('{c_const}std::string '
                          '{cxx_var}({c_var}, {c_var_trim});')
@@ -518,7 +557,7 @@ def initialize():
                 intent_out_buf=dict(
                     buf_args = [ 'len' ],
                     c_helper='ShroudStrCopy',
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         'std::string {cxx_var};'
                     ],
@@ -529,12 +568,13 @@ def initialize():
                 intent_inout_buf=dict(
                     buf_args = [ 'len_trim', 'len' ],
                     c_helper='ShroudStrCopy',
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         'std::string {cxx_var}({c_var}, {c_var_trim});'
                     ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());'
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var}{cxx_deref}c_str());'
                     ],
                 ),
                 result_buf=dict(
@@ -552,6 +592,7 @@ def initialize():
             ),
 
             f_type='character(*)',
+            f_kind='C_CHAR',
             f_c_type='character(kind=C_CHAR)',
             f_c_module=dict(iso_c_binding=['C_CHAR']),
 
@@ -567,14 +608,28 @@ def initialize():
 
             py_statements=dict(
                 intent_in=dict(
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     post_parse=[
                         '{c_const}std::string {cxx_var}({c_var});'
-                        ],
-                    ),
+                    ],
                 ),
+                intent_inout=dict(
+                    cxx_local_var='scalar',
+                    post_parse=[
+                        '{c_const}std::string {cxx_var}({c_var});'
+                    ],
+                ),
+                intent_out=dict(
+                    cxx_local_var='scalar',
+                    post_parse=[
+                        '{c_const}std::string {cxx_var};'
+                    ],
+                ),
+            ),
             PY_format='s',
-            PY_ctor='PyString_FromString({c_var})',
+            PY_ctor='PyString_FromString({cxx_var}{cxx_deref}c_str())',
+            PY_build_arg='{cxx_var}{cxx_deref}c_str()',
+
             LUA_type='LUA_TSTRING',
             LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
@@ -592,7 +647,7 @@ def initialize():
             c_statements=dict(
                 intent_in_buf=dict(
                     buf_args = [ 'size' ],
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
                         ('{c_const}std::vector<{cxx_T}> '
                          '{cxx_var}({c_var}, {c_var} + {c_var_size});')
@@ -600,9 +655,10 @@ def initialize():
                 ),
                 intent_out_buf=dict(
                     buf_args = [ 'size' ],
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
-                        '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var_size});'
+                        '{c_const}std::vector<{cxx_T}>'
+                        '\t {cxx_var}({c_var_size});'
                     ],
                     post_call=[
                         '{{',
@@ -618,20 +674,21 @@ def initialize():
                 ),
                 intent_inout_buf=dict(
                     buf_args = [ 'size' ],
-                    cxx_local_var='object',
+                    cxx_local_var='scalar',
                     pre_call=[
-                        'std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+                        'std::vector<{cxx_T}> {cxx_var}('
+                        '\t{c_var}, {c_var} + {c_var_size});'
                     ],
                     post_call=[
-                        '{{',
-                        '    std::vector<{cxx_T}>::size_type',
-                        '        {c_temp}i = 0,',
-                        '        {c_temp}n = {c_var_size};',
-                        '    {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);',
-                        '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                        '          {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];',
-                        '    }}',
-                        '}}'
+                        '{{+',
+                        'std::vector<{cxx_T}>::size_type+',
+                        '{c_temp}i = 0,',
+                        '{c_temp}n = {c_var_size};',
+                        '-{c_temp}n = std::min({cxx_var}.size(), {c_temp}n);',
+                        'for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+',
+                        '{c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];',
+                        '-}}',
+                        '-}}'
                     ],
                 ),
 #                result_buf=dict(
@@ -654,7 +711,7 @@ def initialize():
                     intent_in_buf=dict(
                         buf_args = [ 'size', 'len' ],
                         c_helper='ShroudLenTrim',
-                        cxx_local_var='object',
+                        cxx_local_var='scalar',
                         pre_call=[
                             'std::vector<{cxx_T}> {cxx_var};',
                             '{{',
@@ -672,7 +729,7 @@ def initialize():
                     intent_out_buf=dict(
                         buf_args = [ 'size', 'len' ],
                         c_helper='ShroudLenTrim',
-                        cxx_local_var='object',
+                        cxx_local_var='scalar',
                         pre_call=[
                             '{c_const}std::vector<{cxx_T}> {cxx_var};'
                         ],
@@ -692,7 +749,7 @@ def initialize():
                     ),
                     intent_inout_buf=dict(
                         buf_args = [ 'size', 'len' ],
-                        cxx_local_var='object',
+                        cxx_local_var='scalar',
                         pre_call=[
                             'std::vector<{cxx_T}> {cxx_var};',
                             '{{',
@@ -759,6 +816,7 @@ def initialize():
             c_type='MPI_Fint',
             # usually, MPI_Fint will be equivalent to int
             f_type='integer',
+            f_kind='C_INT',
             f_c_type='integer(C_INT)',
             f_c_module=dict(iso_c_binding=['C_INT']),
             cxx_to_c='MPI_Comm_c2f({cxx_var})',
@@ -829,17 +887,6 @@ def typedef_wrapped_defaults(typedef):
     # XXX module name may not conflict with type name
 #    typedef.f_module={fmt_class.F_module_name:[unname]}
 
-    typedef.c_statements = dict(
-        intent_in=dict(
-            cxx_local_var = 'pointer',
-            pre_call = [
-                '{c_const}%s{c_ptr}{cxx_var} = static_cast<{c_const}%s{c_ptr}>('
-                '\tstatic_cast<{c_const}void *>(\t{c_var}));' % (
-                    typedef.cxx_type, typedef.cxx_type)
-                ],
-        )
-    )
-
     # return from C function
     # f_c_return_decl='type(CPTR)' % unname,
     typedef.f_statements = dict(
@@ -855,18 +902,29 @@ def typedef_wrapped_defaults(typedef):
 
     typedef.py_statements=dict(
         intent_in=dict(
+            cxx_local_var='pointer',
             post_parse=[
-                '{cxx_decl} = {py_var} ? {py_var}->{PY_obj} : NULL;',
+                '{c_const}%s * {cxx_var} = '
+                '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,
+            ],
+        ),
+        intent_inout=dict(
+            cxx_local_var='pointer',
+            post_parse=[
+                '{c_const}%s * {cxx_var} = '
+                '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,
             ],
         ),
         intent_out=dict(
-            ctor=[
+            post_call=[
                 ('{PyObject} * {py_var} = '
                  'PyObject_New({PyObject}, &{PyTypeObject});'),
                 '{py_var}->{PY_obj} = {cxx_var};',
             ]
         ),
     )
+#    if not typedef.PY_PyTypeObject:
+#        typedef.PY_PyTypeObject='UUU'
     # typedef.PY_ctor='PyObject_New({PyObject}, &{PyTypeObject})'
 
     typedef.LUA_type='LUA_TUSERDATA'

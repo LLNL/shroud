@@ -55,16 +55,30 @@ extern "C" {
 
 // Class1() +name(new)
 // function_index=0
-TUT_class1 * TUT_class1_new()
+TUT_class1 * TUT_class1_new_default()
 {
-// splicer begin class.Class1.method.new
-    Class1 * SHT_rv = new Class1();
-    return static_cast<TUT_class1 *>(static_cast<void *>(SHT_rv));
-// splicer end class.Class1.method.new
+// splicer begin class.Class1.method.new_default
+    Class1 * SHCXX_rv = new Class1();
+    TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(static_cast<void *>(
+        SHCXX_rv));
+    return SHC_rv;
+// splicer end class.Class1.method.new_default
+}
+
+// Class1(int flag +intent(in)+value) +name(new)
+// function_index=1
+TUT_class1 * TUT_class1_new_flag(int flag)
+{
+// splicer begin class.Class1.method.new_flag
+    Class1 * SHCXX_rv = new Class1(flag);
+    TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(static_cast<void *>(
+        SHCXX_rv));
+    return SHC_rv;
+// splicer end class.Class1.method.new_flag
 }
 
 // ~Class1() +name(delete)
-// function_index=1
+// function_index=2
 void TUT_class1_delete(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.delete
@@ -74,14 +88,18 @@ void TUT_class1_delete(TUT_class1 * self)
 // splicer end class.Class1.method.delete
 }
 
-// void Method1()
-// function_index=2
-void TUT_class1_method1(TUT_class1 * self)
+// int Method1()
+// function_index=3
+/**
+ * \brief returns the value of flag member
+ *
+ */
+int TUT_class1_method1(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.method1
     Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
-    SH_this->Method1();
-    return;
+    int SHC_rv = SH_this->Method1();
+    return SHC_rv;
 // splicer end class.Class1.method.method1
 }
 

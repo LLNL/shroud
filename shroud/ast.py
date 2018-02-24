@@ -1,4 +1,4 @@
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
 # 
 # LLNL-CODE-738041.
@@ -133,6 +133,7 @@ class LibraryNode(AstNode):
             F_module_per_class=True,
             F_string_len_trim=True,
             F_force_wrapper=False,
+            F_standard=2003,
 
             wrap_c=True,
             wrap_fortran=True,
@@ -203,7 +204,10 @@ class LibraryNode(AstNode):
             PY_type_filename_template=(
                 'py{cxx_class}type.{PY_impl_filename_suffix}'),
             PY_name_impl_template=(
-                '{PY_prefix}{class_prefix}{underscore_name}{function_suffix}'),
+                '{PY_prefix}{class_prefix}{function_name}{function_suffix}'),
+            # names for type methods (tp_init)
+            PY_type_impl_template=(
+                '{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}'),
             )
         return def_options
 
@@ -218,14 +222,17 @@ class LibraryNode(AstNode):
             parent=None,
 
             C_bufferify_suffix='_bufferify',
-            C_prefix = self.library.upper()[:3] + '_',
-            C_result = 'SHT_rv',        # {c_temp}_rv   return valuex
+            C_prefix = self.library.upper()[:3] + '_',  # function prefix
+            C_result = 'rv',        # return value
+            C_argument = 'SH_',
             c_temp = 'SHT_',
+            C_local = 'SHC_',
             C_this = 'self',
 
             C_custom_return_type = '',  # assume no value
 
             CXX_this = 'SH_this',
+            CXX_local = 'SHCXX_',
 
             F_C_prefix='c_',
             F_derived_member = 'voidptr',
@@ -238,9 +245,7 @@ class LibraryNode(AstNode):
             C_string_result_as_arg = 'SHF_rv',
             F_string_result_as_arg = '',
 
-            # don't have to worry about argument names in Python wrappers
-            # so skip the SH_ prefix by default.
-            PY_result = 'rv',
+            PY_result = 'SHTPy_rv',      # Create PyObject for result
             LUA_result = 'rv',
 
             LUA_prefix = 'l_',
@@ -275,9 +280,6 @@ class LibraryNode(AstNode):
             fmt_library.C_header_filename_suffix = 'h'
             fmt_library.C_impl_filename_suffix = 'c'
 
-            fmt_library.PY_header_filename_suffix = 'h'
-            fmt_library.PY_impl_filename_suffix = 'c'
-
             fmt_library.LUA_header_filename_suffix = 'h'
             fmt_library.LUA_impl_filename_suffix = 'c'
 
@@ -285,9 +287,6 @@ class LibraryNode(AstNode):
         else:
             fmt_library.C_header_filename_suffix = 'h'
             fmt_library.C_impl_filename_suffix = 'cpp'
-
-            fmt_library.PY_header_filename_suffix = 'hpp'
-            fmt_library.PY_impl_filename_suffix = 'cpp'
 
             fmt_library.LUA_header_filename_suffix = 'hpp'
             fmt_library.LUA_impl_filename_suffix = 'cpp'
@@ -333,23 +332,6 @@ class LibraryNode(AstNode):
         clsnode = ClassNode(name, self, **kwargs)
         self.classes.append(clsnode)
         return clsnode
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            format=self.fmtdict,
-            options=self.options,
-        )
-
-        for key in [ 'classes', 'copyright', 'cxx_header',
-                     'functions', 'language', 'namespace' ]:
-            value = getattr(self,key)
-            if value:
-                d[key] = value
-
-        return d
 
 ######################################################################
 
@@ -422,24 +404,6 @@ class ClassNode(AstNode):
                                **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            cxx_header=self.cxx_header,
-            format = self.fmtdict,
-            methods=self.functions,
-            name=self.name,
-            options=self.options,
-        )
-        for key in ['namespace', 'python']:
-            value = getattr(self,key)
-            if value:
-                d[key] = value
-        return d
-
 
 ######################################################################
 
@@ -581,32 +545,6 @@ class FunctionNode(AstNode):
                 # wrapc.py will overwrite C_return_type.
                 # keep original value for wrapf.py.
                 self.fmtdict.C_custom_return_type = format['C_return_type']
-
-    def _to_dict(self):
-        """Convert to dictionary.
-        Used by util.ExpandedEncoder.
-        """
-        d = dict(
-            ast=self.ast,
-            _function_index=self._function_index,
-            decl=self.decl,
-            format=self.fmtdict,
-            options=self.options,
-        )
-        for key in ['cxx_template', 'default_arg_suffix',
-                    'declgen', 'doxygen', 
-                    'fortran_generic', 'return_this',
-                    'C_error_pattern', 'PY_error_pattern',
-                    '_PTR_C_CXX_index', '_PTR_F_C_index',
-                    '_CXX_return_templated',
-                    '_cxx_overload',
-                    '_default_funcs', '_fmtargs', '_fmtresult',
-                    '_generated', '_has_default_arg',
-                    '_nargs', '_overloaded']:
-            value = getattr(self,key)
-            if value:
-                d[key] = value
-        return d
 
     def clone(self):
         """Create a copy of a function node to use with C++ template

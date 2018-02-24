@@ -1,4 +1,4 @@
-# Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -65,8 +65,11 @@ python.dir := $(venv.dir)/bin
 PYTHON := $(venv.dir)/bin/$(PYTHONEXE)
 endif
 
-export PYTHON
+export PYTHON PYTHONEXE
 export LUA
+
+compiler = gcc
+export compiler
 
 ########################################################################
 # For development:
@@ -74,9 +77,10 @@ export LUA
 # make develop
 
 # Create a virtual environment.
+# Include system site-packages to get numpy
 virtualenv : $(venv.dir)
 $(venv.dir) :
-	$(venv) $(venv.dir)
+	$(venv) --system-site-packages $(venv.dir)
 
 develop :
 	$(PYTHON) setup.py develop
@@ -107,7 +111,9 @@ TESTDIRS = \
     $(tempdir)/run-tutorial/python/.. \
     $(tempdir)/run-tutorial/lua/.. \
     $(tempdir)/run-strings/.. \
-    $(tempdir)/run-clibrary/..
+    $(tempdir)/run-strings/python/.. \
+    $(tempdir)/run-clibrary/.. \
+    $(tempdir)/run-clibrary/python/..
 
 testdirs : $(TESTDIRS)
 
@@ -133,10 +139,32 @@ py-tutorial : testdirs
 	    -f $(top)/tests/run-tutorial/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
+py-strings : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run-strings/python \
+	    -f $(top)/tests/run-strings/python/Makefile \
+	    PYTHON=$(PYTHON) top=$(top) all
+
+py-clibrary : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run-clibrary/python \
+	    -f $(top)/tests/run-clibrary/python/Makefile \
+	    PYTHON=$(PYTHON) top=$(top) all
+
 # Run the Python tests
-test-python : py-tutorial
+test-python-tutorial : py-tutorial
 	export PYTHONPATH=$(top)/$(tempdir)/run-tutorial/python; \
-	$(PYTHON_BIN) $(top)/tests/run-tutorial/python/test.py	
+	$(PYTHON_BIN) $(top)/tests/run-tutorial/python/test.py
+
+test-python-strings : py-strings
+	export PYTHONPATH=$(top)/$(tempdir)/run-strings/python; \
+	$(PYTHON_BIN) $(top)/tests/run-strings/python/test.py
+
+test-python-clibrary : py-clibrary
+	export PYTHONPATH=$(top)/$(tempdir)/run-clibrary/python; \
+	$(PYTHON_BIN) $(top)/tests/run-clibrary/python/test.py
+
+test-python : test-python-tutorial test-python-strings test-python-clibrary
 
 # Compile the geneated Lua wrapper
 lua-tutorial : testdirs
@@ -192,7 +220,10 @@ distclean:
 
 .PHONY : virtualenv develop docs test testdirs
 .PHONY : fortran test-fortran tutorial strings
-.PHONY : test-python py-tutorial
+.PHONY : test-python
+.PHONY : py-tutorial test-python-tutorial
+.PHONY : py-strings  test-python-strings
+.PHONY : py-clibrary test-python-clibrary
 .PHONY : test-lua lua-tutorial
 .PHONY : test-all test-clean
 .PHONY : do-test do-test-replace print-debug

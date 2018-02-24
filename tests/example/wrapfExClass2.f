@@ -119,13 +119,13 @@ module exclass2_mod
             type(C_PTR) :: SHT_rv
         end function c_exclass2_ctor
 
-        function c_exclass2_ctor_bufferify(name, Lname) &
+        function c_exclass2_ctor_bufferify(name, trim_name) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass2_ctor_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: trim_name
             type(C_PTR) :: SHT_rv
         end function c_exclass2_ctor_bufferify
 
@@ -316,7 +316,7 @@ module exclass2_mod
 
 contains
 
-    ! ExClass2(const string * name +intent(in)+random(2))
+    ! ExClass2(const string * name +intent(in)+len_trim(trim_name))
     ! arg_to_buffer
     ! function_index=19
     !>

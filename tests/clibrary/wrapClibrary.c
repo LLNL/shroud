@@ -60,7 +60,7 @@ static void ShroudStrCopy(char *a, int la, const char *s)
 // splicer end C_definitions
 
 // void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))
-// function_index=6
+// function_index=10
 void CLI_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
 {
@@ -71,19 +71,19 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
     char * SH_arg2 = (char *) malloc(Larg2 + 1);
     memcpy(SH_arg2, arg2, Larg2);
     SH_arg2[Larg2] = '\0';
-    char * SHT_rv = Function4a(SH_arg1, SH_arg2);
+    char * SHC_rv = Function4a(SH_arg1, SH_arg2);
     free(SH_arg1);
     free(SH_arg2);
-    if (SHT_rv == NULL) {
+    if (SHC_rv == NULL) {
         memset(SHF_rv, ' ', NSHF_rv);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHT_rv);
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv);
     }
     {
         // C_finalize
         // Function4a allocates memory which must be released after it is copied
         // into the Fortran argument or else it will leak.
-        free(SHT_rv);
+        free(SHC_rv);
         
     }
     return;

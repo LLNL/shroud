@@ -1,4 +1,4 @@
-! Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+! Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 ! Produced at the Lawrence Livermore National Laboratory 
 !
 ! LLNL-CODE-738041.
@@ -72,6 +72,10 @@ program tester
 contains
 
   subroutine test_functions
+    integer(c_int) iargin, iarginout, iargout
+    real(c_double), allocatable :: out_double(:)
+    integer(c_int), allocatable :: out_int(:)
+    integer(c_int) :: incr(4)
 
     call set_case_name("test_functions")
 
@@ -122,7 +126,7 @@ contains
 !    call function10("bar", 2.0d0)
 !    call assert_true(.true.)
 
-    call sum(5, [1,2,3,4,5], rv_int)
+    call sum([1,2,3,4,5], rv_int)
     call assert_true(rv_int .eq. 15)
 
 !    rv_int = typefunc(2)
@@ -130,6 +134,27 @@ contains
 !
 !    rv_int = enumfunc(1)
 !    call assert_true(rv_int .eq. 2)
+
+    iargin    = 1
+    iarginout = 2
+    iargout   = -1
+    call intargs(iargin, iarginout, iargout)
+    call assert_true(iarginout == 1)
+    call assert_true(iargout   == 2)
+
+    call assert_false(allocated(out_double))
+    call cos_doubles([1.d0, 2.d0, 3.d0, 4.d0], out_double)
+    call assert_true(allocated(out_double))
+    call assert_true(all(out_double == [2.d0, 4.d0, 6.d0, 8.d0]))
+
+    call assert_false(allocated(out_int))
+    call truncate_to_int([1.2d0, 2.3d0, 3.4d0, 4.5d0], out_int)
+    call assert_true(allocated(out_int))
+    call assert_true(all(out_int == [1, 2, 3, 4]))
+
+    incr = [2, 4, 6, 8]
+    call increment(incr)
+    call assert_true(all(incr == [3, 5, 7, 9]))
 
   end subroutine test_functions
 

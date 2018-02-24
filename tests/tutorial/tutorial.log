@@ -4,13 +4,14 @@ Read splicer ftutorialsplicer.f
 Close tutorial_types.yaml
 class Class1
 C method Class1() +name(new)
+C method Class1(int flag +intent(in)+value) +name(new)
 C method ~Class1() +name(delete)
-C method void Method1()
+C method int Method1()
 Close wrapClass1.h
 Close wrapClass1.cpp
 C function void Function1()
 C function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-C function void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))
+C function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 C function long long TypeLongLong(long long arg1 +intent(in)+value)
 C function bool Function3(bool arg +intent(in)+value)
 C function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
@@ -39,7 +40,9 @@ C function int overload1(double type +intent(in)+value, int num +intent(in)+valu
 C function int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
 C function TypeID typefunc(TypeID arg +intent(in)+value)
 C function EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
-C function void useclass(const Class1 * arg1 +intent(in)+value)
+C function int useclass(const Class1 * arg1 +intent(in)+value)
+C function const Class1 * getclass2()
+C function Class1 * getclass3()
 C function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
 C function void vector_iota(std::vector<int> & arg +dimension(:)+intent(out)+size(Sarg))
 C function void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))
@@ -53,11 +56,12 @@ Close wrapTutorial.h
 Close wrapTutorial.cpp
 class Class1
 C-interface, Fortran method Class1() +name(new)
+C-interface, Fortran method Class1(int flag +intent(in)+value) +name(new)
 C-interface, Fortran method ~Class1() +name(delete)
-C-interface, Fortran method void Method1()
+C-interface, Fortran method int Method1()
 C-interface, Fortran function void Function1()
 C-interface, Fortran function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-C-interface, Fortran function void Sum(int len +intent(in)+value, int * values +dimension(len)+intent(in), int * result +intent(out))
+C-interface, Fortran function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 C-interface, Fortran function long long TypeLongLong(long long arg1 +intent(in)+value)
 C-interface, Fortran function bool Function3(bool arg +intent(in)+value)
 C-interface, Fortran function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
@@ -92,7 +96,9 @@ C-interface, Fortran function int overload1(double type +intent(in)+value, int n
 C-interface, Fortran function int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
 C-interface, Fortran function TypeID typefunc(TypeID arg +intent(in)+value)
 C-interface, Fortran function EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
-C-interface, Fortran function void useclass(const Class1 * arg1 +intent(in)+value)
+C-interface, Fortran function int useclass(const Class1 * arg1 +intent(in)+value)
+C-interface, Fortran function const Class1 * getclass2()
+C-interface, Fortran function Class1 * getclass3()
 Fortran function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
 C-interface function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
 Fortran function void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))
@@ -111,11 +117,13 @@ C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+l
 Close wrapftutorial.f
 class Class1
 Python method Class1() +name(new)
+Python method Class1(int flag +intent(in)+value) +name(new)
 Python method ~Class1() +name(delete)
-Python method void Method1()
+Python method int Method1()
 Close pyClass1type.cpp
 Python function void Function1()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+Python function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 Python function long long TypeLongLong(long long arg1 +intent(in)+value)
 Python function bool Function3(bool arg +intent(in)+value)
 Python function const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
@@ -130,14 +138,16 @@ Python function int overload1(int num +intent(in)+value, int offset=0 +intent(in
 Python function int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
 Python function TypeID typefunc(TypeID arg +intent(in)+value)
 Python function EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
-Python function void useclass(const Class1 * arg1 +intent(in)+value)
+Python function int useclass(const Class1 * arg1 +intent(in)+value)
+Python function Class1 * getclass3()
 Python function const std::string & LastFunctionCalled() +pure
 Close pyTutorialmodule.hpp
 Close pyTutorialmodule.cpp
 Close pyTutorialhelper.cpp
 Lua method Class1() +name(new)
+Lua method Class1(int flag +intent(in)+value) +name(new)
 Lua method ~Class1() +name(delete)
-Lua method void Method1()
+Lua method int Method1()
 Lua function void Function1()
 Lua function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 Lua function bool Function3(bool arg +intent(in)+value)

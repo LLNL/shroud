@@ -77,9 +77,11 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 import copy
+import re
 import os
 
 from . import declast
+from . import todict
 from . import typemap
 from . import whelpers
 from . import util
@@ -117,6 +119,7 @@ class Wrapf(util.WrapperMixin):
         self.c_interface.append('')
         self.c_interface.append('interface')
         self.c_interface.append(1)
+        self.f_function_generic = {}  # look for generic functions
         self.f_abstract_interface = {}
         self.f_helper = {}
 
@@ -170,26 +173,6 @@ class Wrapf(util.WrapperMixin):
             self._create_splicer('additional_interfaces', self.c_interface)
             self.impl.append('')
             self._create_splicer('additional_functions', self.impl)
-
-            self.dump_abstract_interfaces()
-
-            # Look for generic interfaces
-            # splicer to extend generic
-            self._push_splicer('generic')
-            iface = self.generic_interface
-            for key in sorted(self.f_type_generic.keys()):
-                generics = self.f_type_generic[key]
-                if len(generics) > 1:
-                    self._push_splicer(key)
-                    iface.append('')
-                    iface.append('interface ' + key)
-                    iface.append(1)
-                    for genname in generics:
-                        iface.append('module procedure ' + genname)
-                    iface.append(-1)
-                    iface.append('end interface ' + key)
-                    self._pop_splicer(key)
-            self._pop_splicer('generic')
 
             if options.F_module_per_class:
                 # library module
@@ -466,6 +449,27 @@ class Wrapf(util.WrapperMixin):
                 arg_f_use.append('use %s' % mname)
         return arg_f_use
 
+    def dump_generic_interfaces(self):
+        """Generate code for generic interfaces into self.generic_interface
+        """
+        # Look for generic interfaces
+        # splicer to extend generic
+        self._push_splicer('generic')
+        iface = self.generic_interface
+        for key in sorted(self.f_function_generic.keys()):
+            generics = self.f_function_generic[key]
+            if len(generics) > 1:
+                self._push_splicer(key)
+                iface.append('')
+                iface.append('interface ' + key)
+                iface.append(1)
+                for genname in generics:
+                    iface.append('module procedure ' + genname)
+                iface.append(-1)
+                iface.append('end interface ' + key)
+                self._pop_splicer(key)
+        self._pop_splicer('generic')
+
     def add_abstract_interface(self, node, arg):
         """Record an abstract interface.
 
@@ -685,6 +689,53 @@ class Wrapf(util.WrapperMixin):
         c_interface.append(-1)
         c_interface.append(wformat('end {F_C_subprogram} {F_C_name}', fmt))
 
+    def attr_allocatable(self, allocatable, node, arg, pre_call):
+        """Add the allocatable attribute to the pre_call block.
+
+        Valid values of allocatable:
+           mold=name
+        """
+        fmtargs = node._fmtargs
+
+        p = re.compile('mold\s*=\s*(\w+)')
+        m = p.match(allocatable)
+        if m is not None:
+            moldvar = m.group(1)
+            if moldvar not in fmtargs:
+                raise RuntimeError("Mold argument {} does not exist: {}"
+                                   .format(moldvar, allocatable))
+            for moldarg in node.ast.params:
+                if moldarg.name == moldvar:
+                    break
+            if 'dimension' not in moldarg.attrs:
+                raise RuntimeError("Mold argument {} must have dimension attribute"
+                                   .format(moldvar))
+            fmt = fmtargs[arg.name]['fmtf']
+            if True:
+                rank = len(moldarg.attrs['dimension'].split(','))
+                bounds = []
+                for i in range(1, rank+1):
+                    bounds.append('lbound({var},{dim}):ubound({var},{dim})'.
+                                  format(var=moldvar, dim=i))
+                fmt.mold = ','.join(bounds)  
+                append_format(pre_call, 'allocate({f_var}({mold}))', fmt)
+            else:
+                # f2008 supports the mold option which makes this easier
+                fmt.mold = m.group(0)
+                append_format(pre_call, 'allocate({f_var}, {mold})', fmt)
+
+    def attr_implied(self, node, arg, fmt):
+        """Add the implied attribute to the pre_call block.
+        """
+        init = arg.attrs.get('implied', None)
+        blk = {}
+        if init:
+            fmt.pre_call_intent = ftn_implied(init, node, arg)
+            blk['pre_call'] = [
+                '{f_var} = {pre_call_intent}'
+            ]
+        return blk
+
     def wrap_function_impl(self, cls, node):
         """
         Wrap implementation of Fortran function
@@ -695,6 +746,9 @@ class Wrapf(util.WrapperMixin):
         # Assume that the C function can be called directly.
         # If the wrapper does any work, then set need_wraper to True
         need_wrapper = options['F_force_wrapper']
+        if node._overloaded:
+            # need wrapper for generic interface
+            need_wrapper = True
 
         # Look for C routine to wrap
         # Usually the same node unless it is a generic function
@@ -799,6 +853,8 @@ class Wrapf(util.WrapperMixin):
 
             f_arg = True   # assume C and Fortran arguments match
             c_attrs = c_arg.attrs
+            allocatable = c_attrs.get('allocatable', False)
+            implied = c_attrs.get('implied', False)
             intent = c_attrs['intent']
             if c_attrs.get('_is_result', False):
                 c_stmts = 'result' + generated_suffix
@@ -817,8 +873,8 @@ class Wrapf(util.WrapperMixin):
                 # result_arguments are not processed here
                 f_index += 1
                 f_arg = f_args[f_index]
-                arg_f_names.append(fmt_arg.f_var)
                 if f_arg.is_function_pointer():
+                    arg_f_names.append(fmt_arg.f_var)
                     absiface = self.add_abstract_interface(node, f_arg)
                     arg_f_decl.append(
                         'procedure({}) :: {}'.format(
@@ -826,8 +882,13 @@ class Wrapf(util.WrapperMixin):
                     arg_c_call.append(f_arg.name)
                     # function pointers are pass thru without any change
                     continue
-
-                arg_f_decl.append(f_arg.gen_arg_as_fortran())
+                elif implied:
+                    # An implied argument is not passed into Fortran
+                    # it is computed then passed to C++
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True))
+                else:
+                    arg_f_names.append(fmt_arg.f_var)
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran())
 
                 arg_type = f_arg.typename
                 arg_typedef = typemap.Typedef.lookup(arg_type)
@@ -837,9 +898,12 @@ class Wrapf(util.WrapperMixin):
                     cxx_T = c_attrs['template']
                     arg_typedef = typemap.Typedef.lookup(cxx_T)
 
-                f_statements = arg_typedef.f_statements
-                f_stmts = 'intent_' + intent
-                f_intent_blk = f_statements.get(f_stmts, {})
+                if implied:
+                    f_intent_blk = self.attr_implied(node, f_arg, fmt_arg)
+                else:
+                    f_statements = arg_typedef.f_statements
+                    f_stmts = 'intent_' + intent
+                    f_intent_blk = f_statements.get(f_stmts, {})
 
                 # Create a local variable for C if necessary
                 have_c_local_var = f_intent_blk.get('c_local_var', False)
@@ -869,6 +933,9 @@ class Wrapf(util.WrapperMixin):
                         append_format(post_call, cmd, fmt_arg)
 
                 self.update_f_module(modules, arg_typedef.f_module)
+
+                if allocatable:
+                    attr_allocatable(allocatable, C_node, f_arg, pre_call)
 
             # Now C function arguments
             # May have different types, like generic
@@ -933,22 +1000,22 @@ class Wrapf(util.WrapperMixin):
                 arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
             self.update_f_module(modules, result_typedef.f_module)
 
-        if not is_ctor:
-            # Add method to derived type
-            if node._overloaded:
-                need_wrapper = True
-            if not node._CXX_return_templated:
-                # if return type is templated in C++,
-                # then do not set up generic since only the
-                # return type may be different (ex. getValue<T>())
-                if cls:
-                    gname = fmt_func.F_name_function
-                else:
-                    gname = fmt_func.F_name_impl
+        if not node._CXX_return_templated:
+            # if return type is templated in C++,
+            # then do not set up generic since only the
+            # return type may be different (ex. getValue<T>())
+            if cls and not is_ctor:
+                gname = fmt_func.F_name_function
                 self.f_type_generic.setdefault(
                     fmt_func.F_name_generic, []).append(gname)
+            else:
+                gname = fmt_func.F_name_impl
+                self.f_function_generic.setdefault(
+                    fmt_func.F_name_generic, []).append(gname)
+        if cls and not is_ctor:
+            # Add procedure to derived type
             self.type_bound_part.append('procedure :: %s => %s' % (
-                    fmt_func.F_name_function, fmt_func.F_name_impl))
+                fmt_func.F_name_function, fmt_func.F_name_impl))
 
         # body of function
         # XXX sname = fmt_func.F_name_impl
@@ -1069,6 +1136,9 @@ class Wrapf(util.WrapperMixin):
                 output.append(-1)
                 output.append('end interface')
 
+        self.dump_abstract_interfaces()
+        self.dump_generic_interfaces()
+
         output.extend(self.abstract_interface)
         output.extend(self.c_interface)
         output.extend(self.generic_interface)
@@ -1118,3 +1188,74 @@ class Wrapf(util.WrapperMixin):
         """ Write C helper functions that will be used by the wrappers.
         """
         pass
+
+class ToImplied(todict.PrintNode):
+    """Convert implied expression to Python wrapper code.
+
+    expression has already been checked for errors by generate.check_implied.
+    Convert functions:
+      size  -  PyArray_SIZE
+    """
+    def __init__(self, expr, func, arg):
+        super(ToImplied, self).__init__()
+        self.expr = expr
+        self.func = func
+        self.arg = arg
+
+    def visit_Identifier(self, node):
+        # Look for functions
+        if node.args == None:
+            return node.name
+        elif node.name == 'size':
+            # size(arg)
+            # This expected to be assigned to a C_INT or C_LONG
+            # add KIND argument to the size intrinsic
+            argname = node.args[0].name
+            arg_typedef = typemap.Typedef.lookup(self.arg.typename)
+            return 'size({},kind={})'.format(argname, arg_typedef.f_kind)
+        else:
+            return self.param_list(node)
+
+def ftn_implied(expr, func, arg):
+    """Convert string to Fortran code.
+    """
+    node = declast.ExprParser(expr).expression()
+    visitor = ToImplied(expr, func, arg)
+    return visitor.visit(node)
+
+
+def attr_allocatable(allocatable, node, arg, pre_call):
+    """Add the allocatable attribute to the pre_call block.
+
+    Valid values of allocatable:
+       mold=name
+    """
+    fmtargs = node._fmtargs
+
+    p = re.compile('mold\s*=\s*(\w+)')
+    m = p.match(allocatable)
+    if m is not None:
+        moldvar = m.group(1)
+        moldarg = node.ast.find_arg_by_name(moldvar)
+        if moldarg is None:
+            raise RuntimeError(
+                "Mold argument '{}' does not exist: {}"
+                .format(moldvar, allocatable))
+        if 'dimension' not in moldarg.attrs:
+            raise RuntimeError(
+                "Mold argument '{}' must have dimension attribute: {}"
+                .format(moldvar, allocatable))
+        fmt = fmtargs[arg.name]['fmtf']
+        if node.options.F_standard >= 2008:
+            # f2008 supports the mold option which makes this easier
+            fmt.mold = m.group(0)
+            append_format(pre_call, 'allocate({f_var}, {mold})', fmt)
+        else:
+            rank = len(moldarg.attrs['dimension'].split(','))
+            bounds = []
+            for i in range(1, rank+1):
+                bounds.append('lbound({var},{dim}):ubound({var},{dim})'.
+                              format(var=moldvar, dim=i))
+            fmt.mold = ','.join(bounds)  
+            append_format(pre_call, 'allocate({f_var}({mold}))', fmt)
+

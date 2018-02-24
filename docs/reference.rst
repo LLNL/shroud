@@ -1,4 +1,4 @@
-.. Copyright (c) 2017, Lawrence Livermore National Security, LLC. 
+.. Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 .. Produced at the Lawrence Livermore National Laboratory 
 ..
 .. LLNL-CODE-738041.
@@ -122,7 +122,7 @@ namespace
 
 options
    Dictionary of option fields for the library.
-   Described in `Options Fields`_
+   Described in `Options`_
 
 patterns
    Code blocks to insert into generated code.
@@ -163,7 +163,7 @@ functions
 options
    Options fields for the class.
    Creates scope within library.
-   Described in `Options Fields`_
+   Described in `Options`_
 
 namespace
   Blank delimited list of namespaces for **cxx_header**.
@@ -221,7 +221,7 @@ fortran_generic
 options
    Options fields for the function.
    Creates scope within container (library or class).
-   Described in `Options Fields`_
+   Described in `Options`_
 
 return_this
    If true, the method returns a reference to ``this``.  This idiom can be used
@@ -229,8 +229,8 @@ return_this
    Instead the *C_return_type* format is set to ``void``.
 
 
-Options Fields
---------------
+Options
+-------
 
 debug
   Print additional comments in generated files that may 
@@ -263,6 +263,10 @@ F_force_wrapper
   numeric types does not need a wrapper since it can be called
   directly by defining the correct interface.
   The default is *false*.
+
+F_standard
+  The fortran standard.  Defaults to *2003*.
+  This effects the ``mold`` argument of the ``allocate`` statement.
 
 F_string_len_trim
   For each function with a ``std::string`` argument, create another C
@@ -412,6 +416,33 @@ LUA_userdata_member_template
     Name of pointer to class instance in userdata.
     ``self``
 
+
+PY_module_filename_template
+    ``py{library}module.{PY_impl_filename_suffix}``
+
+PY_header_filename_template
+    ``py{library}module.{PY_header_filename_suffix}``
+
+PY_helper_filename_template
+    ``py{library}helper.{PY_impl_filename_suffix}``
+
+PY_PyTypeObject_template
+    ``{PY_prefix}{cxx_class}_Type``
+
+PY_PyObject_template
+    ``{PY_prefix}{cxx_class}``
+
+PY_type_filename_template
+    ``py{cxx_class}type.{PY_impl_filename_suffix}``
+
+PY_name_impl_template
+    ``{PY_prefix}{class_prefix}{function_name}{function_suffix}``
+
+PY_type_impl_template
+    Names of functions for type methods such as ``tp_init``.
+    ``{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}``
+
+
 YAML_type_filename_template
     Default value for global field YAML_type_filename
     ``{library_lower}_types.yaml``
@@ -450,10 +481,14 @@ C_impl_filename_suffix:
    Defaults to ``cpp``.
    Other useful values might be ``cc`` or ``cxx``.
 
+C_local
+    Prefix for C compatible local variable.
+    Defaults to *SHC_*.
+
 C_result
     The name of the C wrapper's result variable.
     It must not be the same as any of the routines arguments.
-    It defaults to *{c_temp}_rv* -- ``SHT_rv`` (Shroud temporary return value).
+    It defaults to *rv*.
 
 C_string_result_as_arg
     The name of the output argument for string results.
@@ -468,6 +503,10 @@ c_temp
 C_this
     Name of the C object argument.  Defaults to ``self``.
     It may be necessary to set this if it conflicts with an argument name.
+
+CXX_local
+    Prefix for C++ compatible local variable.
+    Defaults to *SHCXX_*.
 
 CXX_this
     Name of the C++ object pointer set from the *C_this* argument.
@@ -567,14 +606,15 @@ PY_module_name
     Defaults to library name.
 
 PY_name_impl
-    PY_class1_method1
+    Name of Python wrapper implemenation function.
+    Defaults to *{PY_prefix}{class_prefix}{function_name}{function_suffix}*.
 
 PY_prefix
     Prefix added to Python wrapper functions.
 
 PY_result
     The name of the Python wrapper's result variable.
-    It defaults to *rv*  (return value).
+    It defaults to *SHTPy_rv*  (return value).
 
 stdlib
     Name of C++ standard library prefix.
@@ -664,6 +704,8 @@ C_finalize
     User supplied code to perform any function finialization.
     Code added after all of the argument's *post_call* code.
     Can be used to free memory in the C wrapper.
+
+.. evaluated in context of fmt_result
 
 C_finalize_buf
     Identical to **C_finalize** but only applies to the buffer version of the
@@ -885,7 +927,7 @@ cxx_type
 
 cxx_to_c
     Expression to convert from C++ to C.
-    Defaults to *{cxx_var}*.  i.e. no conversion required.
+    Defaults to *None* which implies *{cxx_var}*.  i.e. no conversion required.
 
 cxx_header
     Name of C++ header file required for implementation.
@@ -904,7 +946,7 @@ c_header
 
 c_to_cxx
     Expression to convert from C to C++.
-    Defaults to *{c_var}*.  i.e. no conversion required.
+    Defaults to *None* which implies *{c_var}*.  i.e. no conversion required.
 
 c_statements
     A nested dictionary of code template to add.
@@ -950,7 +992,7 @@ c_statements
            Set if a local C++ variable is created.
            This is the case when C and C++ are not directly compatible.
            Usually a C++ constructor or cast is involved.
-           Set to **object** when a class is instantiated, for example ``std::string``.
+           Set to **scalar** when a local variable is being created, for example ``std::string``.
            Or set to **pointer** when used with a pointer, for example ``char *``.
            This sets *cxx_var* is set to ``SH_{c_var}``.
 
@@ -987,6 +1029,10 @@ f_c_module
 f_c_type
     Type declaration for ``bind(C)`` interface.
     Defaults to *None* which will then use *f_type*.
+
+f_kind
+    Fortran kind of type. For example, ``C_INT`` or ``C_LONG``.
+    Defaults to *None*.
 
 f_type
     Name of type in Fortran.
@@ -1095,8 +1141,16 @@ result_as_arg
     Override fields when result should be treated as an argument.
     Defaults to *None*.
 
+PY_build_arg
+    Argument for Py_BuildValue.  Defaults to *{cxx_var}*.
+    This field can be used to turn the argument into an expression such as
+    *(int) {cxx_var}*  or *{cxx_var}{cxx_deref}c_str()*
+    *PY_format* is used as the format:: 
+
+       Py_BuildValue("{PY_format}", {PY_build_arg});
+
 PY_format
-    'format unit' for PyArg_Parse.
+    'format unit' for PyArg_Parse and Py_BuildValue.
     Defaults to *O*
 
 PY_PyTypeObject
@@ -1155,8 +1209,14 @@ An annotation can be used to provide semantic information for a function or argu
 
 .. a.k.a. attributes
 
-pure
-   Sets the Fortran PURE attribute.
+allocatable
+   Adds the Fortran ``allocatable`` attribute to an argument and adds an
+   ``allocate`` statement.
+   see :ref:`TypesAnchor_Allocatable_array`.
+
+default
+   Default value for C++ function argument.
+   This value is implied by C++ default argument syntax.
 
 dimension
    Sets the Fortran DIMENSION attribute.
@@ -1168,15 +1228,15 @@ name
    Name of the method.
    Useful for constructor and destructor methods which have no names.
 
-value
-   If true, pass-by-value; else, pass-by-reference.
+implied
+   Used to compute value of argument to C++ based on argument
+   to Fortran or Python wrapper.  Useful with array sizes::
+
+       Sum(int * array +intent(in), int len +implied(size(array))
 
 intent
    Valid valid values are ``in``, ``out``, ``inout``.
    If the argument is ``const``, the default is ``in``.
-
-default
-   Default value for C++ function argument.
 
 len
    For a string argument, pass an additional argument to the
@@ -1196,6 +1256,13 @@ len_trim
    If a value for the attribute is provided it will be the name
    of the extra argument.  If no value is provided then the
    argument name defaults to option *C_var_trim_template*.
+
+pure
+   Sets the Fortran PURE attribute.
+
+value
+   If true, pass-by-value; else, pass-by-reference.
+   This attribute is implied when the argument is not a pointer or reference.
 
 
 Doxygen

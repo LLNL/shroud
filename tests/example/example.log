@@ -25,8 +25,8 @@ C method void SplicerSpecial()
 Close wrapExClass1.h
 Close wrapExClass1.cpp
 class ExClass2
-C method ExClass2(const string * name +intent(in)+random(2))
-C method ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))
+C method ExClass2(const string * name +intent(in)+len_trim(trim_name))
+C method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 C method ~ExClass2()
 C method const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 C method void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
@@ -52,6 +52,8 @@ Close wrapExClass2.h
 Close wrapExClass2.cpp
 class ExClass3
 C method void exfunc()
+C method ExClass3()
+C method ~ExClass3()
 Close wrapExClass3.h
 Close wrapExClass3.cpp
 C function void local_function1()
@@ -70,13 +72,14 @@ C function size_t test_size_t()
 C function void testmpi(MPI_Comm comm +intent(in)+value)
 C function void testgroup1(DataGroup * grp +intent(in)+value)
 C function void testgroup2(const DataGroup * grp +intent(in)+value)
-C function void func1(void ( * get) +intent(in)+value())
-C function void func2(double * ( * get) +intent(in)())
+C function void FuncPtr1(void ( * get) +intent(in)+value())
+C function void FuncPtr2(double * ( * get) +intent(in)())
 C function void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
-C function void FuncPtr3a(double ( * get) +intent(in)+value(double +value, int +value))
-C function void func4(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
-C function void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-C function int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+C function void FuncPtr4(double ( * get) +intent(in)+value(double +value, int +value))
+C function void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
+C function void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
+C function int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+C function void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close wrapUserLibrary.h
 Close wrapUserLibrary.cpp
 class ExClass1
@@ -101,8 +104,8 @@ C-interface, Fortran method bool hasAddr(bool in +intent(in)+value)
 C-interface, Fortran method void SplicerSpecial()
 Close wrapfExClass1.f
 class ExClass2
-C-interface, Fortran method ExClass2(const string * name +intent(in)+random(2))
-C-interface method ExClass2(const string * name +intent(in)+len_trim(Lname)+random(2))
+C-interface, Fortran method ExClass2(const string * name +intent(in)+len_trim(trim_name))
+C-interface method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 C-interface, Fortran method ~ExClass2()
 C-interface, Fortran method const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 C-interface method void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
@@ -131,6 +134,8 @@ C-interface, Fortran method double getValue()
 Close wrapfExClass2.f
 class ExClass3
 C-interface, Fortran method void exfunc()
+C-interface, Fortran method ExClass3()
+C-interface, Fortran method ~ExClass3()
 Close wrapfExClass3.f
 C-interface, Fortran function void local_function1()
 C-interface, Fortran function bool isNameValid(const std::string & name +intent(in))
@@ -148,15 +153,17 @@ C-interface, Fortran function size_t test_size_t()
 C-interface, Fortran function void testmpi(MPI_Comm comm +intent(in)+value)
 C-interface, Fortran function void testgroup1(DataGroup * grp +intent(in)+value)
 C-interface, Fortran function void testgroup2(const DataGroup * grp +intent(in)+value)
-C-interface, Fortran function void func1(void ( * get) +intent(in)+value())
-C-interface, Fortran function void func2(double * ( * get) +intent(in)())
+C-interface, Fortran function void FuncPtr1(void ( * get) +intent(in)+value())
+C-interface, Fortran function void FuncPtr2(double * ( * get) +intent(in)())
 C-interface, Fortran function void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
-C-interface, Fortran function void FuncPtr3a(double ( * get) +intent(in)+value(double +value, int +value))
-C-interface, Fortran function void func4(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
-C-interface, Fortran function void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-C-interface, Fortran function int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+C-interface, Fortran function void FuncPtr4(double ( * get) +intent(in)+value(double +value, int +value))
+C-interface, Fortran function void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
+C-interface, Fortran function void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
+C-interface, Fortran function int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+C-interface, Fortran function void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close wrapfuserlibrary.f
 class ExClass1
+Python method ExClass1()
 Python method ExClass1(const string * name +intent(in))
 Python method ~ExClass1()
 Python method int incrementCount(int incr +intent(in)+value)
@@ -172,7 +179,7 @@ Python method bool hasAddr(bool in +intent(in)+value)
 Python method void SplicerSpecial()
 Close pyExClass1type.cpp
 class ExClass2
-Python method ExClass2(const string * name +intent(in)+random(2))
+Python method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 Python method ~ExClass2()
 Python method const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 Python method const string & getName2()
@@ -195,12 +202,13 @@ Python function size_t test_size_t()
 Python function void testmpi(MPI_Comm comm +intent(in)+value)
 Python function void testgroup1(DataGroup * grp +intent(in)+value)
 Python function void testgroup2(const DataGroup * grp +intent(in)+value)
-Python function void func1(void ( * get) +intent(in)+value())
-Python function void func2(double * ( * get) +intent(in)())
+Python function void FuncPtr1(void ( * get) +intent(in)+value())
+Python function void FuncPtr2(double * ( * get) +intent(in)())
 Python function void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
-Python function void func4(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
-Python function void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-Python function int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+Python function void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
+Python function void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
+Python function int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+Python function void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close pyUserLibrarymodule.hpp
 Close pyUserLibrarymodule.cpp
 Close pyUserLibraryhelper.cpp
@@ -218,7 +226,7 @@ Lua method long getValue(long value +intent(in)+value)
 Lua method void * getAddr()
 Lua method bool hasAddr(bool in +intent(in)+value)
 Lua method void SplicerSpecial()
-Lua method ExClass2(const string * name +intent(in)+random(2))
+Lua method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 Lua method ~ExClass2()
 Lua method const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
 Lua method const string & getName2()
@@ -231,6 +239,8 @@ Lua method void * declare(TypeID type +intent(in)+value, SidreLength len=1 +inte
 Lua method void destroyall()
 Lua method TypeID getTypeID() const
 Lua method void exfunc()
+Lua method ExClass3()
+Lua method ~ExClass3()
 Lua function void local_function1()
 Lua function bool isNameValid(const std::string & name +intent(in))
 Lua function bool isInitialized()
@@ -244,11 +254,12 @@ Lua function size_t test_size_t()
 Lua function void testmpi(MPI_Comm comm +intent(in)+value)
 Lua function void testgroup1(DataGroup * grp +intent(in)+value)
 Lua function void testgroup2(const DataGroup * grp +intent(in)+value)
-Lua function void func1(void ( * get) +intent(in)+value())
-Lua function void func2(double * ( * get) +intent(in)())
+Lua function void FuncPtr1(void ( * get) +intent(in)+value())
+Lua function void FuncPtr2(double * ( * get) +intent(in)())
 Lua function void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
-Lua function void func4(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
-Lua function void verlongfunctionname1(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-Lua function int verlongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+Lua function void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
+Lua function void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
+Lua function int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
+Lua function void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close luaUserLibrarymodule.hpp
 Close luaUserLibrarymodule.cpp
