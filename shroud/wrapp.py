@@ -1163,6 +1163,7 @@ return 1;""", fmt)
         output.append(wformat('#include "{PY_header_filename}"', fmt))
         self._push_splicer('impl')
         self._create_splicer('include', output)
+        output.append(cpp_boilerplate)
         self.namespace(library, node, 'begin', output)
         self._create_splicer('C_definition', output)
         self._create_splicer('additional_methods', output)
@@ -1302,7 +1303,6 @@ return 1;""", fmt)
         for include in node.cxx_header.split():
             output.append('#include "%s"' % include)
 
-        output.append(cpp_boilerplate)
         self._push_splicer('header')
         self._create_splicer('include', output)
         self.namespace(node, None, 'begin', output)
@@ -1347,6 +1347,7 @@ PyMODINIT_FUNC init{PY_module_name}(void);
         output.append('')
         self._create_splicer('include', output)
         self.namespace(node, None, 'begin', output)
+        output.append(cpp_boilerplate)
         output.append('')
         self._create_splicer('C_definition', output)
 
@@ -1424,6 +1425,8 @@ PyMODINIT_FUNC init{PY_module_name}(void);
 # --- Python boiler plate
 
 # Avoid warning errors about unused parameters
+# Include in each source file and not the header file because
+# we don't want to pollute the user's files.
 cpp_boilerplate = """
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -1435,8 +1438,7 @@ cpp_boilerplate = """
 #define PyInt_FromLong PyLong_FromLong
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
-#endif
-"""
+#endif"""
 
 typenames = [
     'dealloc', 'print', 'compare',

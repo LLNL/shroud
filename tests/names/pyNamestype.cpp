@@ -43,6 +43,18 @@
 #include "pytestnamesmodule.hpp"
 // splicer begin class.Names.impl.include
 // splicer end class.Names.impl.include
+
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
+#if PY_MAJOR_VERSION >= 3
+#define PyInt_FromLong PyLong_FromLong
+#define PyString_FromString PyUnicode_FromString
+#define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+#endif
 // splicer begin class.Names.impl.C_definition
 // splicer end class.Names.impl.C_definition
 // splicer begin class.Names.impl.additional_methods

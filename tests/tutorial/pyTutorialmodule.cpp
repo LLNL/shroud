@@ -49,6 +49,18 @@
 
 namespace tutorial {
 
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
+#if PY_MAJOR_VERSION >= 3
+#define PyInt_FromLong PyLong_FromLong
+#define PyString_FromString PyUnicode_FromString
+#define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+#endif
+
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
