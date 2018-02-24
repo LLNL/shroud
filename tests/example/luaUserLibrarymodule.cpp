@@ -795,7 +795,7 @@ static int l_cos_doubles(lua_State *L)
 // splicer end additional_functions
 
 static const struct luaL_Reg l_UserLibrary_Reg [] = {
-    {"ExClass1_0", l_exclass1_ctor},
+    {"ExClass1", l_exclass1_ctor},
     {"ExClass2", l_exclass2_ctor},
     {"ExClass3", l_exclass3_ctor},
     {"local_function1", l_local_function1},

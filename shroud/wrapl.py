@@ -394,7 +394,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         if cls:
             if is_ctor:
                 self.luaL_Reg_module.append(wformat(
-                    '{{"{LUA_ctor_name}{function_suffix}", '
+                    '{{"{LUA_ctor_name}", '
                     '{LUA_name_impl}}},', fmt))
             else:
                 self.luaL_Reg_class.append(wformat(
