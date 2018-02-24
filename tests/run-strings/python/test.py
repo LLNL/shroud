@@ -38,8 +38,9 @@
 #
 # #######################################################################
 #
-# test the tutorial module
+# test the strings module
 #
+from __future__ import print_function
 
 import unittest
 import strings
@@ -58,15 +59,15 @@ class Tutorial(unittest.TestCase):
      
     def XXsetUp(self):
         """ Setting up for the test """
-        print "FooTest:setUp_:begin"
+        print("FooTest:setUp_:begin")
         ## do something...
-        print "FooTest:setUp_:end"
+        print("FooTest:setUp_:end")
      
     def XXtearDown(self):
         """Cleaning up after the test"""
-        print "FooTest:tearDown_:begin"
+        print("FooTest:tearDown_:begin")
         ## do something...
-        print "FooTest:tearDown_:end"
+        print("FooTest:tearDown_:end")
      
     def testpassChar(self):
         strings.passChar('w')
