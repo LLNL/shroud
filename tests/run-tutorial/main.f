@@ -227,16 +227,16 @@ contains
   end subroutine test_callback
 
   subroutine test_class1
-    type(class1) obj1
+    type(class1) obj1, obj2
 
     call set_case_name("test_class1")
 
     ! Test generic constructor
+    obj1 = new()
+    call assert_true(c_associated(obj1%get_instance()), "class1_new obj1")
 
-    ! Test specific functions
-    ! problem with pgi
-    obj1 = class1_new_default()
-    call assert_true(c_associated(obj1%get_instance()), "class1_new")
+    obj2 = new(1)
+    call assert_true(c_associated(obj2%get_instance()), "class1_new obj2")
 
     call obj1%method1
     call assert_true(.true.)
@@ -244,7 +244,12 @@ contains
     call useclass(obj1)
 
     call obj1%delete
-    call assert_true(.not. c_associated(obj1%get_instance()), "class1_delete")
+    call assert_true(.not. c_associated(obj1%get_instance()), &
+         "class1_delete obj1")
+
+    call obj2%delete
+    call assert_true(.not. c_associated(obj2%get_instance()), &
+         "class1_delete obj2")
   end subroutine test_class1
 
 end program tester

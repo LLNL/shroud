@@ -119,6 +119,7 @@ class Wrapf(util.WrapperMixin):
         self.c_interface.append('')
         self.c_interface.append('interface')
         self.c_interface.append(1)
+        self.f_function_generic = {}  # look for generic functions
         self.f_abstract_interface = {}
         self.f_helper = {}
 
@@ -172,26 +173,6 @@ class Wrapf(util.WrapperMixin):
             self._create_splicer('additional_interfaces', self.c_interface)
             self.impl.append('')
             self._create_splicer('additional_functions', self.impl)
-
-            self.dump_abstract_interfaces()
-
-            # Look for generic interfaces
-            # splicer to extend generic
-            self._push_splicer('generic')
-            iface = self.generic_interface
-            for key in sorted(self.f_type_generic.keys()):
-                generics = self.f_type_generic[key]
-                if len(generics) > 1:
-                    self._push_splicer(key)
-                    iface.append('')
-                    iface.append('interface ' + key)
-                    iface.append(1)
-                    for genname in generics:
-                        iface.append('module procedure ' + genname)
-                    iface.append(-1)
-                    iface.append('end interface ' + key)
-                    self._pop_splicer(key)
-            self._pop_splicer('generic')
 
             if options.F_module_per_class:
                 # library module
@@ -467,6 +448,27 @@ class Wrapf(util.WrapperMixin):
             else:
                 arg_f_use.append('use %s' % mname)
         return arg_f_use
+
+    def dump_generic_interfaces(self):
+        """Generate code for generic interfaces into self.generic_interface
+        """
+        # Look for generic interfaces
+        # splicer to extend generic
+        self._push_splicer('generic')
+        iface = self.generic_interface
+        for key in sorted(self.f_function_generic.keys()):
+            generics = self.f_function_generic[key]
+            if len(generics) > 1:
+                self._push_splicer(key)
+                iface.append('')
+                iface.append('interface ' + key)
+                iface.append(1)
+                for genname in generics:
+                    iface.append('module procedure ' + genname)
+                iface.append(-1)
+                iface.append('end interface ' + key)
+                self._pop_splicer(key)
+        self._pop_splicer('generic')
 
     def add_abstract_interface(self, node, arg):
         """Record an abstract interface.
@@ -744,6 +746,9 @@ class Wrapf(util.WrapperMixin):
         # Assume that the C function can be called directly.
         # If the wrapper does any work, then set need_wraper to True
         need_wrapper = options['F_force_wrapper']
+        if node._overloaded:
+            # need wrapper for generic interface
+            need_wrapper = True
 
         # Look for C routine to wrap
         # Usually the same node unless it is a generic function
@@ -995,22 +1000,22 @@ class Wrapf(util.WrapperMixin):
                 arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
             self.update_f_module(modules, result_typedef.f_module)
 
-        if not is_ctor:
-            # Add method to derived type
-            if node._overloaded:
-                need_wrapper = True
-            if not node._CXX_return_templated:
-                # if return type is templated in C++,
-                # then do not set up generic since only the
-                # return type may be different (ex. getValue<T>())
-                if cls:
-                    gname = fmt_func.F_name_function
-                else:
-                    gname = fmt_func.F_name_impl
+        if not node._CXX_return_templated:
+            # if return type is templated in C++,
+            # then do not set up generic since only the
+            # return type may be different (ex. getValue<T>())
+            if cls and not is_ctor:
+                gname = fmt_func.F_name_function
                 self.f_type_generic.setdefault(
                     fmt_func.F_name_generic, []).append(gname)
+            else:
+                gname = fmt_func.F_name_impl
+                self.f_function_generic.setdefault(
+                    fmt_func.F_name_generic, []).append(gname)
+        if cls and not is_ctor:
+            # Add procedure to derived type
             self.type_bound_part.append('procedure :: %s => %s' % (
-                    fmt_func.F_name_function, fmt_func.F_name_impl))
+                fmt_func.F_name_function, fmt_func.F_name_impl))
 
         # body of function
         # XXX sname = fmt_func.F_name_impl
@@ -1130,6 +1135,9 @@ class Wrapf(util.WrapperMixin):
                     output.append('module procedure %s' % opfcn)
                 output.append(-1)
                 output.append('end interface')
+
+        self.dump_abstract_interfaces()
+        self.dump_generic_interfaces()
 
         output.extend(self.abstract_interface)
         output.extend(self.c_interface)

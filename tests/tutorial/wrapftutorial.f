@@ -529,6 +529,11 @@ module tutorial_mod
         module procedure function9_double
     end interface function9
 
+    interface new
+        module procedure class1_new_default
+        module procedure class1_new_flag
+    end interface new
+
     interface overload1
         module procedure overload1_num
         module procedure overload1_num_offset
