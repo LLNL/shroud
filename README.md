@@ -29,7 +29,7 @@ The generated Fortran requires a Fortran 2003 compiler.
 
 ## Release
 
-Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 
 Produced at the Lawrence Livermore National Laboratory.
 
