@@ -252,7 +252,7 @@ functions:
 ##################################################
 
 # Used with testing
-- decl: const std::string& LastFunctionCalled() +pure
+- decl: const std::string& LastFunctionCalled +len(30)()
 
 ##################################################
 

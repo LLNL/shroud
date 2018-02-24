@@ -498,7 +498,7 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function callback1
 
-        pure function c_last_function_called() &
+        function c_last_function_called() &
                 result(SHT_rv) &
                 bind(C, name="TUT_last_function_called")
             use iso_c_binding, only : C_PTR
@@ -562,16 +562,6 @@ module tutorial_mod
         module procedure overload1_4
         module procedure overload1_5
     end interface overload1
-
-    private fstr_ptr, strlen_ptr
-
-    interface
-       pure function strlen_ptr(s) result(result) bind(c,name="strlen")
-         use, intrinsic :: iso_c_binding
-         integer(c_int) :: result
-         type(c_ptr), value, intent(in) :: s
-       end function strlen_ptr
-    end interface
 
 contains
 
@@ -1095,15 +1085,16 @@ contains
         ! splicer end function.vector_string_append
     end subroutine vector_string_append
 
-    ! const std::string & LastFunctionCalled() +pure
+    ! const std::string & LastFunctionCalled +len(30)()
+    ! arg_to_buffer
     ! function_index=34
     function last_function_called() &
             result(SHT_rv)
-        use iso_c_binding, only : C_CHAR
-        character(kind=C_CHAR, len=strlen_ptr(c_last_function_called())) &
-            :: SHT_rv
+        use iso_c_binding, only : C_CHAR, C_INT
+        character(kind=C_CHAR, len=30) :: SHT_rv
         ! splicer begin function.last_function_called
-        SHT_rv = fstr_ptr(c_last_function_called())
+        call c_last_function_called_bufferify(SHT_rv, &
+            len(SHT_rv, kind=C_INT))
         ! splicer end function.last_function_called
     end function last_function_called
 
@@ -1131,18 +1122,5 @@ contains
             rv = .false.
         endif
     end function class1_ne
-
-    ! Convert a null-terminated C "char *" pointer to a Fortran string.
-    function fstr_ptr(s) result(fs)
-      use, intrinsic :: iso_c_binding, only: c_char, c_ptr, c_f_pointer
-      type(c_ptr), intent(in) :: s
-      character(kind=c_char, len=strlen_ptr(s)) :: fs
-      character(kind=c_char), pointer :: cptr(:)
-      integer :: i
-      call c_f_pointer(s, cptr, [len(fs)])
-      do i=1, len(fs)
-         fs(i:i) = cptr(i)
-      enddo
-    end function fstr_ptr
 
 end module tutorial_mod

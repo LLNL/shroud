@@ -50,8 +50,8 @@ C function int vector_string_count(const std::vector<std::string> & arg +dimensi
 C function void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg))
 C function void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))
 C function int callback1(int in +intent(in)+value, int ( * incr) +intent(in)+value(int +value))
-C function const std::string & LastFunctionCalled() +pure
-C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
+C function const std::string & LastFunctionCalled +len(30)()
+C function void LastFunctionCalled +len(30)(std::string & SHF_rv +intent(out)+len(NSHF_rv))
 Close wrapTutorial.h
 Close wrapTutorial.cpp
 class Class1
@@ -112,8 +112,8 @@ C-interface function void vector_string_fill(std::vector<std::string> & arg +dim
 Fortran function void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))
 C-interface function void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))
 C-interface, Fortran function int callback1(int in +intent(in)+value, int ( * incr) +intent(in)+value(int +value))
-C-interface, Fortran function const std::string & LastFunctionCalled() +pure
-C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
+C-interface, Fortran function const std::string & LastFunctionCalled +len(30)()
+C-interface function void LastFunctionCalled +len(30)(std::string & SHF_rv +intent(out)+len(NSHF_rv))
 Close wrapftutorial.f
 class Class1
 Python method Class1() +name(new)
@@ -140,7 +140,7 @@ Python function TypeID typefunc(TypeID arg +intent(in)+value)
 Python function EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
 Python function int useclass(const Class1 * arg1 +intent(in)+value)
 Python function Class1 * getclass3()
-Python function const std::string & LastFunctionCalled() +pure
+Python function const std::string & LastFunctionCalled +len(30)()
 Close pyTutorialmodule.hpp
 Close pyTutorialmodule.cpp
 Close pyTutorialhelper.cpp
@@ -169,6 +169,6 @@ Lua function int overload1(double type +intent(in)+value, int num +intent(in)+va
 Lua function int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
 Lua function TypeID typefunc(TypeID arg +intent(in)+value)
 Lua function EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
-Lua function const std::string & LastFunctionCalled() +pure
+Lua function const std::string & LastFunctionCalled +len(30)()
 Close luaTutorialmodule.hpp
 Close luaTutorialmodule.cpp

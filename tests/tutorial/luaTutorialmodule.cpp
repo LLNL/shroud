@@ -432,7 +432,7 @@ static int l_enumfunc(lua_State *L)
     // splicer end function.enumfunc
 }
 
-// const std::string & LastFunctionCalled() +pure
+// const std::string & LastFunctionCalled +len(30)()
 static int l_last_function_called(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled

@@ -604,7 +604,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 // splicer end function.callback1
 }
 
-// const std::string & LastFunctionCalled() +pure
+// const std::string & LastFunctionCalled +len(30)()
 // function_index=34
 const char * TUT_last_function_called()
 {
@@ -615,7 +615,7 @@ const char * TUT_last_function_called()
 // splicer end function.last_function_called
 }
 
-// void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
+// void LastFunctionCalled +len(30)(std::string & SHF_rv +intent(out)+len(NSHF_rv))
 // function_index=56
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {

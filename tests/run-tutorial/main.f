@@ -230,40 +230,44 @@ contains
     integer iflag
     type(class1) obj0, obj1
     type(class1) obj0a
+    type(c_ptr) ptr
 
     call set_case_name("test_class1")
 
     ! Test generic constructor
     obj0 = new()
-    call assert_true(c_associated(obj0%get_instance()), "class1_new obj0")
+    ptr = obj0%get_instance()
+    call assert_true(c_associated(ptr), "class1_new obj0")
 
     obj1 = new(1)
-    call assert_true(c_associated(obj1%get_instance()), "class1_new obj1")
+    ptr = obj1%get_instance()
+    call assert_true(c_associated(ptr), "class1_new obj1")
 
     iflag = obj0%method1()
-    call assert_equals(iflag, 0)
+    call assert_equals(iflag, 0, "method1 0")
 
     iflag = obj1%method1()
-    call assert_equals(iflag, 1)
+    call assert_equals(iflag, 1, "method1 1")
 
-    call assert_true(obj0 .eq. obj0)
-    call assert_true(obj0 .ne. obj1)
+    call assert_true(obj0 .eq. obj0, "obj0 .eq obj0")
+    call assert_true(obj0 .ne. obj1, "obj0 .ne. obj1")
 
     ! use class assigns global_class1 returned by getclass
     iflag = useclass(obj0)
-    call assert_equals(iflag, 0)
+    call assert_equals(iflag, 0, "useclass")
 
     obj0a = getclass2()
-    call assert_true(c_associated(obj0a%get_instance()), "getclass2 obj0a")
-    call assert_true(obj0 .eq. obj0a)
+    ptr = obj0a%get_instance()
+    call assert_true(c_associated(ptr), "getclass2 obj0a")
+    call assert_true(obj0 .eq. obj0a, "obj0 .eq. obj0a")
 
     call obj0%delete
-    call assert_true(.not. c_associated(obj0%get_instance()), &
-         "class1_delete obj0")
+    ptr = obj0%get_instance()
+    call assert_true(.not. c_associated(ptr), "class1_delete obj0")
 
     call obj1%delete
-    call assert_true(.not. c_associated(obj1%get_instance()), &
-         "class1_delete obj1")
+    ptr = obj1%get_instance()
+    call assert_true(.not. c_associated(ptr), "class1_delete obj1")
 
     ! obj0a has a dangling reference to a deleted object
   end subroutine test_class1

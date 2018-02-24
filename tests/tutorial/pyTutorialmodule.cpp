@@ -684,7 +684,7 @@ PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string & LastFunctionCalled() +pure
+// const std::string & LastFunctionCalled +len(30)()
 // splicer begin function.last_function_called
     const std::string & SHCXX_rv = LastFunctionCalled();
 
