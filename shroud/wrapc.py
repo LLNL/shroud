@@ -278,13 +278,6 @@ class Wrapc(util.WrapperMixin):
                 os.path.join(self.config.c_fortran_dir, fname))
             self.write_output_file(fname, self.config.c_fortran_dir, output)
 
-    def write_headers(self, headers, output):
-        for header in sorted(headers):
-            if header[0] == '<':
-                output.append('#include %s' % header)
-            else:
-                output.append('#include "%s"' % header)
-
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
         name = node.name

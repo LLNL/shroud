@@ -43,12 +43,16 @@
 #ifndef PYTUTORIALMODULE_HPP
 #define PYTUTORIALMODULE_HPP
 #include <Python.h>
-#include "tutorial.hpp"
 // splicer begin header.include
 // splicer end header.include
 
 namespace tutorial {
+
+// forward declare classes
+class Class1;
+
 extern PyTypeObject PY_Class1_Type;
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 

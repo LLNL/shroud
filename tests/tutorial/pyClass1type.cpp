@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "pyTutorialmodule.hpp"
+#include "tutorial.hpp"
 // splicer begin class.Class1.impl.include
 // splicer end class.Class1.impl.include
 

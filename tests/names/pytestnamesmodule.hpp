@@ -45,8 +45,14 @@
 #include <Python.h>
 // splicer begin header.include
 // splicer end header.include
+
+// forward declare classes
+class Names;
+class Names2;
+
 extern PyTypeObject PY_Names_Type;
 extern PyTypeObject PY_Names2_Type;
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 

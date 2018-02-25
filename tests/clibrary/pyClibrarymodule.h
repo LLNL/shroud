@@ -43,9 +43,9 @@
 #ifndef PYCLIBRARYMODULE_H
 #define PYCLIBRARYMODULE_H
 #include <Python.h>
-#include "clibrary.h"
 // splicer begin header.include
 // splicer end header.include
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 

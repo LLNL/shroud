@@ -244,6 +244,14 @@ class WrapperMixin(object):
             lst.reverse()
             for name in lst:
                 output.append('}  // namespace %s' % name)
+
+    def write_headers(self, headers, output):
+        for header in sorted(headers):
+            if header[0] == '<':
+                output.append('#include %s' % header)
+            else:
+                output.append('#include "%s"' % header)
+
 #####
 
     def write_output_file(self, fname, directory, output):

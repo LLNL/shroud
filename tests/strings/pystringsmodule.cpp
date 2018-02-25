@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "pystringsmodule.hpp"
+#include "strings.hpp"
 
 // splicer begin include
 // splicer end include

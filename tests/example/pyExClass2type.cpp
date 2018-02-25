@@ -40,6 +40,7 @@
 //
 // #######################################################################
 #include "pyUserLibrarymodule.hpp"
+#include "ExClass2.hpp"
 // splicer begin class.ExClass2.impl.include
 // splicer end class.ExClass2.impl.include
 

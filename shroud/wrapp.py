@@ -1162,6 +1162,17 @@ return 1;""", fmt)
 
         output.append(wformat('#include "{PY_header_filename}"', fmt))
         self._push_splicer('impl')
+
+        # Use headers from class if they exist or else library
+        header_impl_include = {}
+        if node and node.cxx_header:
+            for include in node.cxx_header.split():
+                header_impl_include[include] = True
+        else:
+            for include in library.cxx_header.split():
+                header_impl_include[include] = True
+        self.write_headers(header_impl_include, output)
+
         self._create_splicer('include', output)
         output.append(cpp_boilerplate)
         self.namespace(library, node, 'begin', output)
@@ -1296,13 +1307,24 @@ return 1;""", fmt)
 
         output.append('#include <Python.h>')
 
-        for include in node.cxx_header.split():
-            output.append('#include "%s"' % include)
-
         self._push_splicer('header')
         self._create_splicer('include', output)
         self.namespace(node, None, 'begin', output)
-        output.extend(self.py_type_extern)
+
+        # forward declare classes for helpers
+        blank = True
+        for cls in node.classes:
+            if cls.options.wrap_python:
+                if blank:
+                    output.append('')
+                    output.append('// forward declare classes')
+                    blank = False
+                output.append('class {};'.format(cls.name))
+
+        if self.py_type_extern:
+            output.append('')
+            output.extend(self.py_type_extern)
+        output.append('')
         self._create_splicer('C_declaration', output)
         self._pop_splicer('header')
 
@@ -1340,6 +1362,8 @@ PyMODINIT_FUNC init{PY_module_name}(void);
         if self.need_numpy:
             output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
             output.append('#include "numpy/arrayobject.h"')
+        for include in node.cxx_header.split():
+            output.append('#include "%s"' % include)
         output.append('')
         self._create_splicer('include', output)
         self.namespace(node, None, 'begin', output)

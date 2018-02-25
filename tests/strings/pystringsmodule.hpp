@@ -43,9 +43,9 @@
 #ifndef PYSTRINGSMODULE_HPP
 #define PYSTRINGSMODULE_HPP
 #include <Python.h>
-#include "strings.hpp"
 // splicer begin header.include
 // splicer end header.include
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 

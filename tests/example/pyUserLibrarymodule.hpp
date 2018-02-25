@@ -47,8 +47,14 @@
 
 namespace example {
 namespace nested {
+
+// forward declare classes
+class ExClass1;
+class ExClass2;
+
 extern PyTypeObject PP_ExClass1_Type;
 extern PyTypeObject PP_ExClass2_Type;
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 
