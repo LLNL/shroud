@@ -493,12 +493,12 @@ class FunctionNode(AstNode):
         # add any attributes from YAML files to the ast
         if 'attrs' in kwargs:
             attrs = kwargs['attrs']
-            if 'result' in attrs:
-                ast.attrs.update(attrs['result'])
             for arg in ast.params:
                 name = arg.name
                 if name in attrs:
                     arg.attrs.update(attrs[name])
+        if 'fattrs' in kwargs:
+            ast.fattrs.update(kwargs['fattrs'])
         # XXX - waring about unused fields in attrs
                                     
         if ast.params is None:

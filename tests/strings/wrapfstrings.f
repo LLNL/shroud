@@ -477,7 +477,7 @@ contains
         ! splicer end function.get_char_ptr1
     end function get_char_ptr1
 
-    ! const char * getCharPtr2 +len(30)()
+    ! const char * getCharPtr2() +len(30)
     ! arg_to_buffer
     ! function_index=5
     !>
@@ -524,7 +524,7 @@ contains
         ! splicer end function.get_string1
     end function get_string1
 
-    ! const string & getString2 +len(30)()
+    ! const string & getString2() +len(30)
     ! arg_to_buffer
     ! function_index=8
     !>
@@ -555,7 +555,7 @@ contains
         ! splicer end function.get_string3
     end subroutine get_string3
 
-    ! const string & getString2_empty +len(30)()
+    ! const string & getString2_empty() +len(30)
     ! arg_to_buffer
     ! function_index=10
     !>
@@ -572,7 +572,7 @@ contains
         ! splicer end function.get_string2_empty
     end function get_string2_empty
 
-    ! const string getString5 +len(30)()
+    ! const string getString5() +len(30)
     ! arg_to_buffer
     ! function_index=11
     !>
@@ -603,7 +603,7 @@ contains
         ! splicer end function.get_string6
     end subroutine get_string6
 
-    ! const string * getString7 +len(30)()
+    ! const string * getString7() +len(30)
     ! arg_to_buffer
     ! function_index=13
     !>

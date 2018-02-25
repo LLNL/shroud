@@ -137,8 +137,21 @@ They describe semantic behavior for an argument.
 An attribute may be set to true by listing its name or
 it may have a value in parens::
 
-    - decl: Class1 new()  +name(new)
+    - decl: Class1()  +name(new)
     - decl: void Sum(int len, int *values+dimension+intent(in))
+    - decl: const std::string getName() +len(30)
+
+Attributes may also be added external to *decl*::
+
+    - decl: void Sum(int len, int *values)
+      attrs:
+          values:
+              dimension: True
+              intent: in  
+    - decl: const std::string getName()
+      fattrs:
+          len: 30
+  
 
 Options
 ^^^^^^^

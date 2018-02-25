@@ -720,7 +720,7 @@ contains
         arg3 = SH_arg3  ! coerce to logical
     end subroutine function3b
 
-    ! const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
+    ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)
     ! arg_to_buffer
     ! function_index=11
     function function4a(arg1, arg2) &
@@ -1121,7 +1121,7 @@ contains
         ! splicer end function.vector_string_append
     end subroutine vector_string_append
 
-    ! const std::string & LastFunctionCalled +len(30)()
+    ! const std::string & LastFunctionCalled() +len(30)
     ! arg_to_buffer
     ! function_index=36
     function last_function_called() &

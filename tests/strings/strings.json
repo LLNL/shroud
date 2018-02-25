@@ -935,9 +935,7 @@
                 }, 
                 "_function_index": 5, 
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    }, 
+                    "attrs": {}, 
                     "const": true, 
                     "declarator": {
                         "name": "getCharPtr2", 
@@ -948,15 +946,17 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": "30"
+                    }, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "char"
                     ]
                 }, 
-                "decl": "const char * getCharPtr2+len(30)()", 
-                "declgen": "const char * getCharPtr2 +len(30)()", 
+                "decl": "const char * getCharPtr2() +len(30)", 
+                "declgen": "const char * getCharPtr2() +len(30)", 
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
@@ -1015,15 +1015,15 @@
                 "_function_index": 29, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    }, 
+                    "attrs": {}, 
                     "const": false, 
                     "declarator": {
                         "name": "getCharPtr2", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": "30"
+                    }, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1051,8 +1051,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "const char * getCharPtr2+len(30)()", 
-                "declgen": "void getCharPtr2 +len(30)(char * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "decl": "const char * getCharPtr2() +len(30)", 
+                "declgen": "void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
@@ -1477,9 +1477,7 @@
                 }, 
                 "_function_index": 8, 
                 "ast": {
-                    "attrs": {
-                        "len": 30
-                    }, 
+                    "attrs": {}, 
                     "const": true, 
                     "declarator": {
                         "name": "getString2", 
@@ -1490,15 +1488,17 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": 30
+                    }, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "string"
                     ]
                 }, 
-                "decl": "const string& getString2+len=30()", 
-                "declgen": "const string & getString2 +len(30)()", 
+                "decl": "const string& getString2() +len=30", 
+                "declgen": "const string & getString2() +len(30)", 
                 "doxygen": {
                     "brief": "return 'const string&' with fixed size (len=30)"
                 }, 
@@ -1560,15 +1560,15 @@
                 "_function_index": 33, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "len": 30
-                    }, 
+                    "attrs": {}, 
                     "const": false, 
                     "declarator": {
                         "name": "getString2", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": 30
+                    }, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1596,8 +1596,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "const string& getString2+len=30()", 
-                "declgen": "void getString2 +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))", 
+                "decl": "const string& getString2() +len=30", 
+                "declgen": "void getString2(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "doxygen": {
                     "brief": "return 'const string&' with fixed size (len=30)"
                 }, 
@@ -1869,9 +1869,7 @@
                 }, 
                 "_function_index": 10, 
                 "ast": {
-                    "attrs": {
-                        "len": 30
-                    }, 
+                    "attrs": {}, 
                     "const": true, 
                     "declarator": {
                         "name": "getString2_empty", 
@@ -1882,15 +1880,17 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": 30
+                    }, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "string"
                     ]
                 }, 
-                "decl": "const string& getString2_empty+len=30()", 
-                "declgen": "const string & getString2_empty +len(30)()", 
+                "decl": "const string& getString2_empty() +len=30", 
+                "declgen": "const string & getString2_empty() +len(30)", 
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 }, 
@@ -1952,15 +1952,15 @@
                 "_function_index": 36, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "len": 30
-                    }, 
+                    "attrs": {}, 
                     "const": false, 
                     "declarator": {
                         "name": "getString2_empty", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": 30
+                    }, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1988,8 +1988,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "const string& getString2_empty+len=30()", 
-                "declgen": "void getString2_empty +len(30)(string & SHF_rv +intent(out)+len(NSHF_rv))", 
+                "decl": "const string& getString2_empty() +len=30", 
+                "declgen": "void getString2_empty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 }, 
@@ -2030,23 +2030,23 @@
                 }, 
                 "_function_index": 11, 
                 "ast": {
-                    "attrs": {
-                        "len": 30
-                    }, 
+                    "attrs": {}, 
                     "const": true, 
                     "declarator": {
                         "name": "getString5", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": 30
+                    }, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "string"
                     ]
                 }, 
-                "decl": "const string getString5+len=30()", 
-                "declgen": "const string getString5 +len(30)()", 
+                "decl": "const string getString5() +len=30", 
+                "declgen": "const string getString5() +len(30)", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
@@ -2099,15 +2099,15 @@
                 "_function_index": 37, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "len": 30
-                    }, 
+                    "attrs": {}, 
                     "const": false, 
                     "declarator": {
                         "name": "getString5", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": 30
+                    }, 
                     "func_const": false, 
                     "params": [
                         {
@@ -2135,8 +2135,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "const string getString5+len=30()", 
-                "declgen": "void getString5 +len(30)(string * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "decl": "const string getString5() +len=30", 
+                "declgen": "void getString5(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
@@ -2385,9 +2385,7 @@
                 }, 
                 "_function_index": 13, 
                 "ast": {
-                    "attrs": {
-                        "len": 30
-                    }, 
+                    "attrs": {}, 
                     "const": true, 
                     "declarator": {
                         "name": "getString7", 
@@ -2398,15 +2396,17 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": 30
+                    }, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "string"
                     ]
                 }, 
-                "decl": "const string * getString7+len=30()", 
-                "declgen": "const string * getString7 +len(30)()", 
+                "decl": "const string * getString7() +len=30", 
+                "declgen": "const string * getString7() +len(30)", 
                 "doxygen": {
                     "brief": "return a 'const string *' as character(*)"
                 }, 
@@ -2467,15 +2467,15 @@
                 "_function_index": 40, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "len": 30
-                    }, 
+                    "attrs": {}, 
                     "const": false, 
                     "declarator": {
                         "name": "getString7", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": 30
+                    }, 
                     "func_const": false, 
                     "params": [
                         {
@@ -2503,8 +2503,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "const string * getString7+len=30()", 
-                "declgen": "void getString7 +len(30)(string * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "decl": "const string * getString7() +len=30", 
+                "declgen": "void getString7(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "doxygen": {
                     "brief": "return a 'const string *' as character(*)"
                 }, 

@@ -828,9 +828,7 @@
                 }, 
                 "_function_index": 5, 
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    }, 
+                    "attrs": {}, 
                     "const": false, 
                     "declarator": {
                         "name": "Function4a", 
@@ -841,7 +839,9 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": "30"
+                    }, 
                     "func_const": false, 
                     "params": [
                         {
@@ -887,8 +887,8 @@
                         "char"
                     ]
                 }, 
-                "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
-                "declgen": "char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))", 
+                "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)", 
+                "declgen": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +len(30)", 
                 "format": {
                     "C_call_code": "char * SHC_rv =\t Function4a(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
@@ -975,15 +975,15 @@
                 "_function_index": 10, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    }, 
+                    "attrs": {}, 
                     "const": false, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": "30"
+                    }, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1051,8 +1051,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "char *Function4a+len(30)( const char *arg1, const char *arg2 )", 
-                "declgen": "void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)", 
+                "declgen": "void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "format": {
                     "C_call_code": "char * SHC_rv =\t Function4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 

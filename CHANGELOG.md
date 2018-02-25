@@ -20,6 +20,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   This helps Fortran which has a line length limit.
 - Write generic interface for overloaded constructors.
 
+### Changed
+- Attributes for a function now go at the end.
+  void Foo+len=30 ()   =>  void Foo() +len(30)
+  Fixes an ambiguity in attributes without values: Foo +attr(int i)
+
 ## v0.7.0 - 2018-01-22
 ### Added
 - cpp_if will add an #if directive around a class or function.

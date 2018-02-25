@@ -87,9 +87,9 @@ functions:
     wrap_python: False
     wrap_lua: False
 
-- decl: const std::string Function4a+len(30)(
+- decl: const std::string Function4a(
     const std::string& arg1,
-    const std::string& arg2 )
+    const std::string& arg2 ) +len(30)
 # +pure
 #  attrs:
 #    result:
@@ -258,7 +258,7 @@ functions:
 ##################################################
 
 # Used with testing
-- decl: const std::string& LastFunctionCalled +len(30)()
+- decl: const std::string& LastFunctionCalled() +len(30)
 
 ##################################################
 

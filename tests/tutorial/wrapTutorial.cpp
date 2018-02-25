@@ -141,7 +141,7 @@ void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
 // splicer end function.function3b
 }
 
-// void Function4a +len(30)(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))
+// void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 // function_index=47
 void TUT_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
@@ -618,7 +618,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 // splicer end function.callback1
 }
 
-// const std::string & LastFunctionCalled +len(30)()
+// const std::string & LastFunctionCalled() +len(30)
 // function_index=36
 const char * TUT_last_function_called()
 {
@@ -629,7 +629,7 @@ const char * TUT_last_function_called()
 // splicer end function.last_function_called
 }
 
-// void LastFunctionCalled +len(30)(std::string & SHF_rv +intent(out)+len(NSHF_rv))
+// void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 // function_index=58
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {

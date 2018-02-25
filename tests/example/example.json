@@ -535,9 +535,7 @@
                         }, 
                         "_function_index": 4, 
                         "ast": {
-                            "attrs": {
-                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
-                            }, 
+                            "attrs": {}, 
                             "const": true, 
                             "declarator": {
                                 "name": "getName", 
@@ -548,7 +546,9 @@
                                     }
                                 ]
                             }, 
-                            "fattrs": {}, 
+                            "fattrs": {
+                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
+                            }, 
                             "func_const": true, 
                             "params": [], 
                             "specifier": [
@@ -556,7 +556,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
-                        "declgen": "const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const", 
+                        "declgen": "const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
@@ -621,15 +621,15 @@
                         "_function_index": 15, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
-                            "attrs": {
-                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
-                            }, 
+                            "attrs": {}, 
                             "const": false, 
                             "declarator": {
                                 "name": "getName", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
+                            "fattrs": {
+                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
+                            }, 
                             "func_const": true, 
                             "params": [
                                 {
@@ -658,7 +658,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
-                        "declgen": "void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
+                        "declgen": "void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
@@ -2049,9 +2049,7 @@
                         }, 
                         "_function_index": 21, 
                         "ast": {
-                            "attrs": {
-                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
-                            }, 
+                            "attrs": {}, 
                             "const": true, 
                             "declarator": {
                                 "name": "getName", 
@@ -2062,7 +2060,9 @@
                                     }
                                 ]
                             }, 
-                            "fattrs": {}, 
+                            "fattrs": {
+                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
+                            }, 
                             "func_const": true, 
                             "params": [], 
                             "specifier": [
@@ -2070,7 +2070,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
-                        "declgen": "const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const", 
+                        "declgen": "const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
@@ -2132,15 +2132,15 @@
                         "_function_index": 40, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
-                            "attrs": {
-                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
-                            }, 
+                            "attrs": {}, 
                             "const": false, 
                             "declarator": {
                                 "name": "getName", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
+                            "fattrs": {
+                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
+                            }, 
                             "func_const": true, 
                             "params": [
                                 {
@@ -2169,7 +2169,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
-                        "declgen": "void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
+                        "declgen": "void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 

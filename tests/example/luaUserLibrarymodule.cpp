@@ -123,7 +123,7 @@ static int l_exclass1_increment_count(lua_State *L)
     // splicer end class.ExClass1.method.incrementCount
 }
 
-// const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const
+// const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 static int l_exclass1_get_name(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getName
@@ -304,7 +304,7 @@ static int l_exclass2_dtor(lua_State *L)
     // splicer end class.ExClass2.method.__gc
 }
 
-// const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
+// const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 static int l_exclass2_get_name(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName

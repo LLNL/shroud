@@ -172,7 +172,7 @@ PY_getCharPtr2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const char * getCharPtr2 +len(30)()
+// const char * getCharPtr2() +len(30)
 // splicer begin function.get_char_ptr2
     const char * SHC_rv = getCharPtr2();
 
@@ -235,7 +235,7 @@ PY_getString2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getString2 +len(30)()
+// const string & getString2() +len(30)
 // splicer begin function.get_string2
     const std::string & SHCXX_rv = getString2();
 
@@ -277,7 +277,7 @@ PY_getString2_empty(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getString2_empty +len(30)()
+// const string & getString2_empty() +len(30)
 // splicer begin function.get_string2_empty
     const std::string & SHCXX_rv = getString2_empty();
 
@@ -298,7 +298,7 @@ PY_getString5(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string getString5 +len(30)()
+// const string getString5() +len(30)
 // splicer begin function.get_string5
     const std::string SHCXX_rv = getString5();
 
@@ -340,7 +340,7 @@ PY_getString7(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string * getString7 +len(30)()
+// const string * getString7() +len(30)
 // splicer begin function.get_string7
     const std::string * SHCXX_rv = getString7();
 

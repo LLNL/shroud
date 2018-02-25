@@ -59,7 +59,7 @@ static void ShroudStrCopy(char *a, int la, const char *s)
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void Function4a +len(30)(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv))
+// void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 // function_index=10
 void CLI_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)

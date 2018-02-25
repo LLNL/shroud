@@ -1258,7 +1258,7 @@ len_trim
    argument name defaults to option *C_var_trim_template*.
 
 pure
-   Sets the Fortran PURE attribute.
+   Sets the Fortran PURE attribute for the function.
 
 value
    If true, pass-by-value; else, pass-by-reference.

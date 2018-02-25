@@ -982,7 +982,7 @@ class Wrapf(util.WrapperMixin):
             #     fmt_func.F_pure_clause = 'pure '
             if result_typedef.base == 'string':
                 # special case returning a string
-                rvlen = ast.attrs.get('len', None)
+                rvlen = ast.fattrs.get('len', None)
                 if rvlen is None:
                     rvlen = wformat(
                         'strlen_ptr(\t{F_C_call}(\t{F_arg_c_call}))',

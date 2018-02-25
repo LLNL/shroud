@@ -1420,15 +1420,15 @@
                 }, 
                 "_function_index": 11, 
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    }, 
+                    "attrs": {}, 
                     "const": true, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": "30"
+                    }, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1474,8 +1474,8 @@
                         "std::string"
                     ]
                 }, 
-                "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
-                "declgen": "const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
+                "decl": "const std::string Function4a( const std::string& arg1, const std::string& arg2 ) +len(30)", 
+                "declgen": "const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)", 
                 "format": {
                     "F_C_call": "c_function4a_bufferify", 
                     "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
@@ -1556,15 +1556,15 @@
                 "_function_index": 47, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    }, 
+                    "attrs": {}, 
                     "const": false, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": "30"
+                    }, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1632,8 +1632,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "const std::string Function4a+len(30)( const std::string& arg1, const std::string& arg2 )", 
-                "declgen": "void Function4a +len(30)(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "decl": "const std::string Function4a( const std::string& arg1, const std::string& arg2 ) +len(30)", 
+                "declgen": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "format": {
                     "C_call_code": "const std::string SHCXX_rv =\t Function4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
@@ -6479,9 +6479,7 @@
                 }, 
                 "_function_index": 36, 
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    }, 
+                    "attrs": {}, 
                     "const": true, 
                     "declarator": {
                         "name": "LastFunctionCalled", 
@@ -6492,15 +6490,17 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": "30"
+                    }, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "std::string"
                     ]
                 }, 
-                "decl": "const std::string& LastFunctionCalled +len(30)()", 
-                "declgen": "const std::string & LastFunctionCalled +len(30)()", 
+                "decl": "const std::string& LastFunctionCalled() +len(30)", 
+                "declgen": "const std::string & LastFunctionCalled() +len(30)", 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t LastFunctionCalled(\t);", 
                     "C_call_list": "", 
@@ -6559,15 +6559,15 @@
                 "_function_index": 58, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    }, 
+                    "attrs": {}, 
                     "const": false, 
                     "declarator": {
                         "name": "LastFunctionCalled", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
+                    "fattrs": {
+                        "len": "30"
+                    }, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6595,8 +6595,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "const std::string& LastFunctionCalled +len(30)()", 
-                "declgen": "void LastFunctionCalled +len(30)(std::string & SHF_rv +intent(out)+len(NSHF_rv))", 
+                "decl": "const std::string& LastFunctionCalled() +len(30)", 
+                "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t LastFunctionCalled(\t);", 
                     "C_call_list": "", 

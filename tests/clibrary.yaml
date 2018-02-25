@@ -80,9 +80,9 @@ functions:
 - decl: bool Function3(bool arg)
 - decl: void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
 
-- decl: char *Function4a+len(30)(
+- decl: char *Function4a(
     const char *arg1,
-    const char *arg2 )
+    const char *arg2 ) +len(30)
   format:
     C_finalize_buf: |
        // Function4a allocates memory which must be released after it is copied
