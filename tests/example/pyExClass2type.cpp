@@ -40,8 +40,21 @@
 //
 // #######################################################################
 #include "pyUserLibrarymodule.hpp"
+#include "ExClass2.hpp"
 // splicer begin class.ExClass2.impl.include
 // splicer end class.ExClass2.impl.include
+
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
+#if PY_MAJOR_VERSION >= 3
+#define PyInt_FromLong PyLong_FromLong
+#define PyString_FromString PyUnicode_FromString
+#define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+#endif
 
 namespace example {
 namespace nested {
@@ -459,7 +472,7 @@ PyTypeObject PP_ExClass2_Type = {
         (printfunc)PP_ExClass2_tp_print,                   /* tp_print */
         (getattrfunc)PP_ExClass2_tp_getattr,                 /* tp_getattr */
         (setattrfunc)PP_ExClass2_tp_setattr,                 /* tp_setattr */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
         0,                               /* tp_reserved */
 #else
         (cmpfunc)PP_ExClass2_tp_compare,                     /* tp_compare */
@@ -515,7 +528,7 @@ PyTypeObject PP_ExClass2_Type = {
         0,                              /* tp_weaklist */
         (destructor)PP_ExClass2_tp_del,                 /* tp_del */
         0,                              /* tp_version_tag */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
         (destructor)0,                  /* tp_finalize */
 #endif
 };

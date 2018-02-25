@@ -43,7 +43,12 @@
 //#include <pyTutorialmodule.hpp>
 #include <stdio.h>
 
-PyMODINIT_FUNC initclibrary(void);
+#if PY_MAJOR_VERSION >= 3
+#define MODINIT  PyInit_clibrary
+#else
+#define MODINIT  initclibrary
+#endif
+PyMODINIT_FUNC MODINIT(void);
 
 int main(int argc, char** argv)  
 {
@@ -51,7 +56,7 @@ int main(int argc, char** argv)
     FILE* fp;
 
     Py_Initialize();
-    initclibrary();
+    MODINIT();
     
     fp = fopen(filename, "r");
     PyRun_SimpleFile(fp, filename);

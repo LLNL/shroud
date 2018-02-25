@@ -74,7 +74,7 @@ CFLAGS = -g
 CXX = pgc++
 CXXFLAGS = -g 
 FC = pgf90
-FFLAGS = -g -Mfree
+FFLAGS = -g -Mfree -Mstandard
 LIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
@@ -101,10 +101,11 @@ PYTHON_NUMPY := $(shell $(PYTHON) -c "import sys, numpy;sys.stdout.write(numpy.g
 PYTHON_BIN := $(PYTHON)
 ifeq ($(PYTHONEXE),python2)
 PYTHON_INC := -I$(PYTHON_PREFIX)/include/python$(PYTHON_VER) -I$(PYTHON_NUMPY)
+PYTHON_LIB := -L$(PYTHON_PREFIX)/lib/python$(PYTHON_VER)/config -lpython$(PYTHON_VER) -ldl -lutil
 else
 PYTHON_INC := -I$(PYTHON_PREFIX)/include/python$(PYTHON_VER)m -I$(PYTHON_NUMPY)
+PYTHON_LIB := -L$(PYTHON_PREFIX)/lib -lpython$(PYTHON_VER)m -ldl -lutil
 endif
-PYTHON_LIB := -L$(PYTHON_PREFIX)/lib/python$(PYTHON_VER)/config -lpython$(PYTHON_VER) -ldl -lutil
 
 LUA_PREFIX = $(abspath $(dir $(LUA))/..)
 LUA_BIN = $(LUA)

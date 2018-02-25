@@ -43,19 +43,9 @@
 #ifndef PYCLIBRARYMODULE_H
 #define PYCLIBRARYMODULE_H
 #include <Python.h>
-#if PY_MAJOR_VERSION >= 3
-#define IS_PY3K
-#endif
-#include "clibrary.h"
-
-#ifdef __cplusplus
-#define SHROUD_UNUSED(param)
-#else
-#define SHROUD_UNUSED(param) param
-#endif
-
 // splicer begin header.include
 // splicer end header.include
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 
@@ -64,7 +54,7 @@
 
 extern PyObject *PY_error_obj;
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyMODINIT_FUNC PyInit_clibrary(void);
 #else
 PyMODINIT_FUNC initclibrary(void);

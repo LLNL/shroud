@@ -43,19 +43,9 @@
 #ifndef PYSTRINGSMODULE_HPP
 #define PYSTRINGSMODULE_HPP
 #include <Python.h>
-#if PY_MAJOR_VERSION >= 3
-#define IS_PY3K
-#endif
-#include "strings.hpp"
-
-#ifdef __cplusplus
-#define SHROUD_UNUSED(param)
-#else
-#define SHROUD_UNUSED(param) param
-#endif
-
 // splicer begin header.include
 // splicer end header.include
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 
@@ -65,7 +55,7 @@
 extern PyObject *PY_error_obj;
 
 extern "C" {
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyMODINIT_FUNC PyInit_strings(void);
 #else
 PyMODINIT_FUNC initstrings(void);

@@ -182,7 +182,10 @@ test-lua : lua-tutorial
 test-all : test-fortran test-python test-lua
 
 test-clean :
-	rm -rf $(tempdir)
+	rm -rf $(tempdir)/test
+	rm -rf $(tempdir)/run-tutorial
+	rm -rf $(tempdir)/run-strings
+	rm -rf $(tempdir)/run-clibrary
 
 ########################################################################
 #

@@ -6194,6 +6194,7 @@
                 }
             }, 
             {
+                "_PTR_F_C_index": 56, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
@@ -6218,7 +6219,9 @@
                 }, 
                 "_function_index": 34, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "len": "30"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "LastFunctionCalled", 
@@ -6229,17 +6232,15 @@
                             }
                         ]
                     }, 
-                    "fattrs": {
-                        "pure": true
-                    }, 
+                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "std::string"
                     ]
                 }, 
-                "decl": "const std::string& LastFunctionCalled() +pure", 
-                "declgen": "const std::string & LastFunctionCalled() +pure", 
+                "decl": "const std::string& LastFunctionCalled +len(30)()", 
+                "declgen": "const std::string & LastFunctionCalled +len(30)()", 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t LastFunctionCalled(\t);", 
                     "C_call_list": "", 
@@ -6248,11 +6249,11 @@
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
-                    "F_C_call": "c_last_function_called", 
+                    "F_C_call": "c_last_function_called_bufferify", 
                     "F_C_name": "c_last_function_called", 
-                    "F_arg_c_call": "", 
+                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                     "F_arguments": "", 
-                    "F_call_code": "SHT_rv = fstr_ptr(c_last_function_called())", 
+                    "F_call_code": "call c_last_function_called_bufferify(SHT_rv,\t len(SHT_rv, kind=C_INT))", 
                     "F_name_function": "last_function_called", 
                     "F_name_generic": "last_function_called", 
                     "F_name_impl": "last_function_called", 
@@ -6262,7 +6263,7 @@
                     "LUA_name_impl": "l_last_function_called", 
                     "PY_name_impl": "PY_LastFunctionCalled", 
                     "c_const": "const ", 
-                    "c_var_len": "strlen_ptr(\tc_last_function_called(\t))", 
+                    "c_var_len": "30", 
                     "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "LastFunctionCalled", 
                     "underscore_name": "last_function_called"
@@ -6281,6 +6282,10 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "f_var": "SHT_rv"
                         }
                     }
                 }, 
@@ -6294,15 +6299,15 @@
                 "_function_index": 56, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "len": "30"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "LastFunctionCalled", 
                         "pointer": []
                     }, 
-                    "fattrs": {
-                        "pure": true
-                    }, 
+                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6330,8 +6335,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "const std::string& LastFunctionCalled() +pure", 
-                "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
+                "decl": "const std::string& LastFunctionCalled +len(30)()", 
+                "declgen": "void LastFunctionCalled +len(30)(std::string & SHF_rv +intent(out)+len(NSHF_rv))", 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t LastFunctionCalled(\t);", 
                     "C_call_list": "", 

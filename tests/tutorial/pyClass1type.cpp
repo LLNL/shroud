@@ -41,8 +41,21 @@
 //
 // #######################################################################
 #include "pyTutorialmodule.hpp"
+#include "tutorial.hpp"
 // splicer begin class.Class1.impl.include
 // splicer end class.Class1.impl.include
+
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
+#if PY_MAJOR_VERSION >= 3
+#define PyInt_FromLong PyLong_FromLong
+#define PyString_FromString PyUnicode_FromString
+#define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+#endif
 
 namespace tutorial {
 // splicer begin class.Class1.impl.C_definition
@@ -172,7 +185,7 @@ PyTypeObject PY_Class1_Type = {
         (printfunc)0,                   /* tp_print */
         (getattrfunc)0,                 /* tp_getattr */
         (setattrfunc)0,                 /* tp_setattr */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
         0,                               /* tp_reserved */
 #else
         (cmpfunc)0,                     /* tp_compare */
@@ -228,7 +241,7 @@ PyTypeObject PY_Class1_Type = {
         0,                              /* tp_weaklist */
         (destructor)PY_Class1_tp_del,                 /* tp_del */
         0,                              /* tp_version_tag */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
         (destructor)0,                  /* tp_finalize */
 #endif
 };

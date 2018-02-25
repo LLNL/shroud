@@ -43,11 +43,24 @@
 #include "pyTutorialmodule.hpp"
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
+#include "tutorial.hpp"
 
 // splicer begin include
 // splicer end include
 
 namespace tutorial {
+
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
+#if PY_MAJOR_VERSION >= 3
+#define PyInt_FromLong PyLong_FromLong
+#define PyString_FromString PyUnicode_FromString
+#define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+#endif
 
 // splicer begin C_definition
 // splicer end C_definition
@@ -672,7 +685,7 @@ PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string & LastFunctionCalled() +pure
+// const std::string & LastFunctionCalled +len(30)()
 // splicer begin function.last_function_called
     const std::string & SHCXX_rv = LastFunctionCalled();
 
@@ -845,14 +858,14 @@ struct module_state {
     PyObject *error;
 };
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 #define GETSTATE(m) ((struct module_state*)PyModule_GetState(m))
 #else
 #define GETSTATE(m) (&_state)
 static struct module_state _state;
 #endif
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 static int tutorial_traverse(PyObject *m, visitproc visit, void *arg) {
     Py_VISIT(GETSTATE(m)->error);
     return 0;
@@ -884,7 +897,7 @@ static struct PyModuleDef moduledef = {
 
 extern "C" {
 PyMODINIT_FUNC
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyInit_tutorial(void)
 #else
 inittutorial(void)
@@ -898,7 +911,7 @@ inittutorial(void)
 
 
     /* Create the module and add the functions */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
     m = Py_InitModule4("tutorial", PY_methods,

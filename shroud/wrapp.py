@@ -1162,7 +1162,19 @@ return 1;""", fmt)
 
         output.append(wformat('#include "{PY_header_filename}"', fmt))
         self._push_splicer('impl')
+
+        # Use headers from class if they exist or else library
+        header_impl_include = {}
+        if node and node.cxx_header:
+            for include in node.cxx_header.split():
+                header_impl_include[include] = True
+        else:
+            for include in library.cxx_header.split():
+                header_impl_include[include] = True
+        self.write_headers(header_impl_include, output)
+
         self._create_splicer('include', output)
+        output.append(cpp_boilerplate)
         self.namespace(library, node, 'begin', output)
         self._create_splicer('C_definition', output)
         self._create_splicer('additional_methods', output)
@@ -1293,20 +1305,26 @@ return 1;""", fmt)
                 '#define %s' % guard,
                 ])
 
-        output.extend([
-                '#include <Python.h>',
-                '#if PY_MAJOR_VERSION >= 3',
-                '#define IS_PY3K',
-                '#endif'])
+        output.append('#include <Python.h>')
 
-        for include in node.cxx_header.split():
-            output.append('#include "%s"' % include)
-
-        output.append(cpp_boilerplate)
         self._push_splicer('header')
         self._create_splicer('include', output)
         self.namespace(node, None, 'begin', output)
-        output.extend(self.py_type_extern)
+
+        # forward declare classes for helpers
+        blank = True
+        for cls in node.classes:
+            if cls.options.wrap_python:
+                if blank:
+                    output.append('')
+                    output.append('// forward declare classes')
+                    blank = False
+                output.append('class {};'.format(cls.name))
+
+        if self.py_type_extern:
+            output.append('')
+            output.extend(self.py_type_extern)
+        output.append('')
         self._create_splicer('C_declaration', output)
         self._pop_splicer('header')
 
@@ -1320,7 +1338,7 @@ return 1;""", fmt)
         output.append(wformat("""
 extern PyObject *{PY_prefix}error_obj;
 
-{PY_extern_C_begin}#ifdef IS_PY3K
+{PY_extern_C_begin}#if PY_MAJOR_VERSION >= 3
 PyMODINIT_FUNC PyInit_{PY_module_name}(void);
 #else
 PyMODINIT_FUNC init{PY_module_name}(void);
@@ -1344,9 +1362,12 @@ PyMODINIT_FUNC init{PY_module_name}(void);
         if self.need_numpy:
             output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
             output.append('#include "numpy/arrayobject.h"')
+        for include in node.cxx_header.split():
+            output.append('#include "%s"' % include)
         output.append('')
         self._create_splicer('include', output)
         self.namespace(node, None, 'begin', output)
+        output.append(cpp_boilerplate)
         output.append('')
         self._create_splicer('C_definition', output)
 
@@ -1424,13 +1445,20 @@ PyMODINIT_FUNC init{PY_module_name}(void);
 # --- Python boiler plate
 
 # Avoid warning errors about unused parameters
+# Include in each source file and not the header file because
+# we don't want to pollute the user's files.
 cpp_boilerplate = """
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
 #else
 #define SHROUD_UNUSED(param) param
 #endif
-"""
+
+#if PY_MAJOR_VERSION >= 3
+#define PyInt_FromLong PyLong_FromLong
+#define PyString_FromString PyUnicode_FromString
+#define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+#endif"""
 
 typenames = [
     'dealloc', 'print', 'compare',
@@ -1530,7 +1558,7 @@ PyTypeObject {PY_PyTypeObject} = {{
         (printfunc){tp_print},                   /* tp_print */
         (getattrfunc){tp_getattr},                 /* tp_getattr */
         (setattrfunc){tp_setattr},                 /* tp_setattr */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
         0,                               /* tp_reserved */
 #else
         (cmpfunc){tp_compare},                     /* tp_compare */
@@ -1586,7 +1614,7 @@ PyTypeObject {PY_PyTypeObject} = {{
         0,                              /* tp_weaklist */
         (destructor){tp_del},                 /* tp_del */
         0,                              /* tp_version_tag */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
         (destructor)0,                  /* tp_finalize */
 #endif
 }};"""
@@ -1605,14 +1633,14 @@ struct module_state {{
     PyObject *error;
 }};
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 #define GETSTATE(m) ((struct module_state*)PyModule_GetState(m))
 #else
 #define GETSTATE(m) (&_state)
 static struct module_state _state;
 #endif
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 static int {library_lower}_traverse(PyObject *m, visitproc visit, void *arg) {{
     Py_VISIT(GETSTATE(m)->error);
     return 0;
@@ -1643,7 +1671,7 @@ static struct PyModuleDef moduledef = {{
 #endif
 
 {PY_extern_C_begin}PyMODINIT_FUNC
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyInit_{PY_module_name}(void)
 #else
 init{PY_module_name}(void)
@@ -1656,7 +1684,7 @@ init{PY_module_name}(void)
 module_middle = """
 
     /* Create the module and add the functions */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
     m = Py_InitModule4("{PY_module_name}", {PY_prefix}methods,

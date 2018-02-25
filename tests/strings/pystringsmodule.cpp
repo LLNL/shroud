@@ -41,9 +41,22 @@
 //
 // #######################################################################
 #include "pystringsmodule.hpp"
+#include "strings.hpp"
 
 // splicer begin include
 // splicer end include
+
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
+#if PY_MAJOR_VERSION >= 3
+#define PyInt_FromLong PyLong_FromLong
+#define PyString_FromString PyUnicode_FromString
+#define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+#endif
 
 // splicer begin C_definition
 // splicer end C_definition
@@ -617,14 +630,14 @@ struct module_state {
     PyObject *error;
 };
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 #define GETSTATE(m) ((struct module_state*)PyModule_GetState(m))
 #else
 #define GETSTATE(m) (&_state)
 static struct module_state _state;
 #endif
 
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 static int strings_traverse(PyObject *m, visitproc visit, void *arg) {
     Py_VISIT(GETSTATE(m)->error);
     return 0;
@@ -656,7 +669,7 @@ static struct PyModuleDef moduledef = {
 
 extern "C" {
 PyMODINIT_FUNC
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyInit_strings(void)
 #else
 initstrings(void)
@@ -670,7 +683,7 @@ initstrings(void)
 
 
     /* Create the module and add the functions */
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
     m = Py_InitModule4("strings", PY_methods,

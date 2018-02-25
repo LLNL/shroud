@@ -42,23 +42,19 @@
 #ifndef PYUSERLIBRARYMODULE_HPP
 #define PYUSERLIBRARYMODULE_HPP
 #include <Python.h>
-#if PY_MAJOR_VERSION >= 3
-#define IS_PY3K
-#endif
-
-#ifdef __cplusplus
-#define SHROUD_UNUSED(param)
-#else
-#define SHROUD_UNUSED(param) param
-#endif
-
 // splicer begin header.include
 // splicer end header.include
 
 namespace example {
 namespace nested {
+
+// forward declare classes
+class ExClass1;
+class ExClass2;
+
 extern PyTypeObject PP_ExClass1_Type;
 extern PyTypeObject PP_ExClass2_Type;
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 
@@ -92,7 +88,7 @@ PyObject_HEAD
 extern PyObject *PP_error_obj;
 
 extern "C" {
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyMODINIT_FUNC PyInit_userlibrary(void);
 #else
 PyMODINIT_FUNC inituserlibrary(void);

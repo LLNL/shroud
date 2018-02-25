@@ -43,22 +43,16 @@
 #ifndef PYTUTORIALMODULE_HPP
 #define PYTUTORIALMODULE_HPP
 #include <Python.h>
-#if PY_MAJOR_VERSION >= 3
-#define IS_PY3K
-#endif
-#include "tutorial.hpp"
-
-#ifdef __cplusplus
-#define SHROUD_UNUSED(param)
-#else
-#define SHROUD_UNUSED(param) param
-#endif
-
 // splicer begin header.include
 // splicer end header.include
 
 namespace tutorial {
+
+// forward declare classes
+class Class1;
+
 extern PyTypeObject PY_Class1_Type;
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 
@@ -80,7 +74,7 @@ PyObject_HEAD
 extern PyObject *PY_error_obj;
 
 extern "C" {
-#ifdef IS_PY3K
+#if PY_MAJOR_VERSION >= 3
 PyMODINIT_FUNC PyInit_tutorial(void);
 #else
 PyMODINIT_FUNC inittutorial(void);

@@ -432,7 +432,7 @@ static int l_enumfunc(lua_State *L)
     // splicer end function.enumfunc
 }
 
-// const std::string & LastFunctionCalled() +pure
+// const std::string & LastFunctionCalled +len(30)()
 static int l_last_function_called(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled
@@ -446,7 +446,7 @@ static int l_last_function_called(lua_State *L)
 // splicer end additional_functions
 
 static const struct luaL_Reg l_Tutorial_Reg [] = {
-    {"Class1_default", l_class1_new},
+    {"Class1", l_class1_new},
     {"Function1", l_function1},
     {"Function2", l_function2},
     {"Function3", l_function3},
