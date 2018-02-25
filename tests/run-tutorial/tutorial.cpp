@@ -182,6 +182,8 @@ long long TypeLongLong(long long arg1)
 }
 
 
+// default values and overloaded
+// int overload1(int num, int offset = 0, int stride = 1);
 int overload1(int num, int offset, int stride)
 {
     last_function_called = "overload1_0";
@@ -189,6 +191,8 @@ int overload1(int num, int offset, int stride)
     
 }
 
+// default values and overloaded
+// int overload1(double type, int num, int offset = 0, int stride = 1);
 int overload1(double type, int num, int offset, int stride)
 {
     last_function_called = "overload1_1";
