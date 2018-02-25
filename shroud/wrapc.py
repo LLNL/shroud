@@ -495,8 +495,7 @@ class Wrapc(util.WrapperMixin):
                     append_format(pre_call, '{cxx_decl} = {cxx_val};', fmt_arg)
 
                     if arg.is_indirect():
-                        # For base==wrapped, only pointers can be passed in which
-                        # must cast to another pointer.
+                        # Only pointers can be passed in and must cast to another pointer.
                         # By setting cxx_local_var=pointer, it will be dereferenced
                         # correctly when passed to C++.
                         # base==string will have a pre_call block which sets cxx_local_var
