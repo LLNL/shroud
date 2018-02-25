@@ -162,6 +162,8 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("std::string & var1", s)
         s = r.gen_arg_as_cxx()
         self.assertEqual("std::string & var1", s)
+        s = r.gen_arg_as_cxx(as_ptr=True)
+        self.assertEqual("std::string * var1", s)
         s = r.gen_arg_as_c()
         self.assertEqual("char * var1", s)
 
@@ -507,19 +509,17 @@ class CheckParse(unittest.TestCase):
     def test_decl08(self):
         """Test attributes.
         """
-        r = declast.check_decl("const void foo+attr1(30)+len=30("
+        r = declast.check_decl("const void foo("
                                "int arg1+in, double arg2+out)"
-                               "+attr2(True)" )
+                               "+len=30 +attr2(True)" )
 
         s = r.gen_decl()
-        self.assertEqual("const void foo +attr1(30)+len(30)("
+        self.assertEqual("const void foo("
                          "int arg1 +in, double arg2 +out)"
-                         " +attr2(True)", s)
+                         " +attr2(True)+len(30)", s)
 
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
-                "attr1": "30", 
-                "len": 30
             }, 
             "const": True, 
             "declarator": {
@@ -527,7 +527,8 @@ class CheckParse(unittest.TestCase):
                 "pointer": []
             }, 
             "fattrs": {
-                "attr2": "True"
+                "attr2": "True",
+                "len": 30
             }, 
             "func_const": False, 
             "params": [

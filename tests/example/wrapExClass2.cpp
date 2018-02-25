@@ -118,7 +118,7 @@ void AA_exclass2_dtor(AA_exclass2 * self)
 // splicer end class.ExClass2.method.dtor
 }
 
-// const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
+// const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // function_index=21
 const char * AA_exclass2_get_name(const AA_exclass2 * self)
 {
@@ -131,7 +131,7 @@ const char * AA_exclass2_get_name(const AA_exclass2 * self)
 // splicer end class.ExClass2.method.get_name
 }
 
-// void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
+// void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // function_index=40
 void AA_exclass2_get_name_bufferify(const AA_exclass2 * self,
     char * SHF_rv, int NSHF_rv)

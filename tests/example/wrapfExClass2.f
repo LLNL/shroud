@@ -349,7 +349,7 @@ contains
         ! splicer end class.ExClass2.method.delete
     end subroutine exclass2_dtor
 
-    ! const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
+    ! const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! arg_to_buffer
     ! function_index=21
     function exclass2_get_name(obj) &

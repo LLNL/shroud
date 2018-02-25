@@ -249,7 +249,7 @@ PY_Function4a(
   PyObject *args,
   PyObject *kwds)
 {
-// char * Function4a +len(30)(const char * arg1 +intent(in), const char * arg2 +intent(in))
+// char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +len(30)
 // splicer begin function.function4a
     const char * arg1;
     const char * arg2;

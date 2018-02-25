@@ -243,7 +243,7 @@ PY_Function4a(
   PyObject *args,
   PyObject *kwds)
 {
-// const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
+// const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)
 // splicer begin function.function4a
     const char * arg1;
     const char * arg2;
@@ -620,6 +620,31 @@ PY_enumfunc(
 // splicer end function.enumfunc
 }
 
+static char PY_getMinMax__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getMinMax(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// void getMinMax(int & min +intent(out), int & max +intent(out))
+// splicer begin function.get_min_max
+    // pre_call
+    int min;  // intent(out)
+    int max;  // intent(out)
+
+    getMinMax(min, max);
+
+    // post_call
+    PyObject * SHTPy_rv = Py_BuildValue("ii", min, max);
+
+    return SHTPy_rv;
+// splicer end function.get_min_max
+}
+
 static char PY_useclass__doc__[] =
 "documentation"
 ;
@@ -685,7 +710,7 @@ PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string & LastFunctionCalled +len(30)()
+// const std::string & LastFunctionCalled() +len(30)
 // splicer begin function.last_function_called
     const std::string & SHCXX_rv = LastFunctionCalled();
 
@@ -831,6 +856,8 @@ static PyMethodDef PY_methods[] = {
     PY_typefunc__doc__},
 {"enumfunc", (PyCFunction)PY_enumfunc, METH_VARARGS|METH_KEYWORDS,
     PY_enumfunc__doc__},
+{"getMinMax", (PyCFunction)PY_getMinMax, METH_NOARGS,
+    PY_getMinMax__doc__},
 {"useclass", (PyCFunction)PY_useclass, METH_VARARGS|METH_KEYWORDS,
     PY_useclass__doc__},
 {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,

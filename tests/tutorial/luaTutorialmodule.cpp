@@ -166,7 +166,7 @@ static int l_function3(lua_State *L)
     // splicer end function.Function3
 }
 
-// const std::string Function4a +len(30)(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
+// const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)
 static int l_function4a(lua_State *L)
 {
     // splicer begin function.Function4a
@@ -432,7 +432,7 @@ static int l_enumfunc(lua_State *L)
     // splicer end function.enumfunc
 }
 
-// const std::string & LastFunctionCalled +len(30)()
+// const std::string & LastFunctionCalled() +len(30)
 static int l_last_function_called(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled

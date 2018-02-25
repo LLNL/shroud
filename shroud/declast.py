@@ -338,7 +338,6 @@ class Parser(RecursiveDescent):
         node = Declaration()
         if self.declaration_specifier(node):
             node.declarator = self.declarator()
-        self.attribute(node.attrs)  # this is ambiguous   'void foo+attr(int arg1)'
 
         if self.token.typ == 'LPAREN':     # peek
             node.params = self.parameter_list()
@@ -352,9 +351,11 @@ class Parser(RecursiveDescent):
                     raise RuntimeError(
                         "'{}' unexpected after function declaration"
                         .format(self.token.value))
+            self.attribute(node.fattrs)   # function attributes
 #        elif self.token.typ == 'LBRACKET':
 #            node.array  = self.constant_expression()
-        self.attribute(node.fattrs)
+        else:
+            self.attribute(node.attrs)    # variable attributes
 
         if self.have('EQUALS'):
             node.init = self.initializer()
@@ -476,6 +477,9 @@ class Ptr(Node):
             decl.append(' ')
             if kwargs.get('as_c', False):
                 # references become pointers with as_c
+                decl.append('*')
+            elif kwargs.get('as_ptr', False):
+                # Change reference to pointer
                 decl.append('*')
             else:
                 decl.append(self.ptr)

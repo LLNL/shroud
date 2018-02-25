@@ -569,9 +569,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             else:
                 decl_suffix = ';'
             if arg_typedef.base == 'string':
-                LUA_decl.append(arg.gen_arg_as_c() + decl_suffix)
+                LUA_decl.append(arg.gen_arg_as_c(continuation=True) + decl_suffix)
             else:
-                LUA_decl.append(arg.gen_arg_as_cxx() + decl_suffix)
+                LUA_decl.append(arg.gen_arg_as_cxx(as_ptr=True, continuation=True) + decl_suffix)
 
             cxx_call_list.append(fmt_arg.cxx_var)
 

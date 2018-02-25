@@ -877,7 +877,7 @@ def typedef_wrapped_defaults(typedef):
                       typedef.c_type)
 
     # opaque pointer -> void pointer -> class instance pointer
-    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s{c_ptr}>('
+    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s *>('
                       '\tstatic_cast<{c_const}void *>(\t{c_var}))' %
                       typedef.cxx_type)
 

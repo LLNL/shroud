@@ -127,6 +127,39 @@ PY_class1_Method1(
 // splicer end class.Class1.method.method1
 }
 
+static char PY_class1_equivalent__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_class1_equivalent(
+  PY_Class1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// bool equivalent(const Class1 & obj2 +intent(in)+value) const
+// splicer begin class.Class1.method.equivalent
+    PY_Class1 * SHPy_obj2;
+    const char *SHT_kwlist[] = {
+        "obj2",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:equivalent",
+        const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_obj2))
+        return NULL;
+
+    // post_parse
+    const Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : NULL;
+
+    bool SHC_rv = self->obj->equivalent(*obj2);
+
+    // post_call
+    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end class.Class1.method.equivalent
+}
+
 static int
 PY_Class1_tp_init(
   PY_Class1 *self,
@@ -165,6 +198,8 @@ PY_Class1_tp_init(
 static PyMethodDef PY_Class1_methods[] = {
     {"Method1", (PyCFunction)PY_class1_Method1, METH_NOARGS,
         PY_class1_Method1__doc__},
+    {"equivalent", (PyCFunction)PY_class1_equivalent,
+        METH_VARARGS|METH_KEYWORDS, PY_class1_equivalent__doc__},
     // splicer begin class.Class1.PyMethodDef
     // splicer end class.Class1.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

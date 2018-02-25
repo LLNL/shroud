@@ -149,7 +149,7 @@ int AA_exclass1_increment_count(AA_exclass1 * self, int incr)
 // splicer end class.ExClass1.method.increment_count
 }
 
-// const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const
+// const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 // function_index=4
 const char * AA_exclass1_get_name(const AA_exclass1 * self)
 {
@@ -167,7 +167,7 @@ const char * AA_exclass1_get_name(const AA_exclass1 * self)
 // splicer end class.ExClass1.method.get_name
 }
 
-// void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const
+// void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 // function_index=15
 void AA_exclass1_get_name_bufferify(const AA_exclass1 * self,
     char * SHF_rv, int NSHF_rv)

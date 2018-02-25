@@ -138,9 +138,8 @@ classes:
     - decl: int incrementCount(int incr)
 
     - decl: const string& getName() const
-      attrs:
-        result:
-            len: aa_exclass1_get_name_length({F_this}%{F_derived_member})
+      fattrs:
+        len: aa_exclass1_get_name_length({F_this}%{F_derived_member})
       C_error_pattern: C_invalid_name
       PY_error_pattern: PY_invalid_name
 
@@ -198,9 +197,8 @@ classes:
 
     - decl: const string& getName() const
       # test annotating result
-      attrs:
-         result:
-            len: aa_exclass2_get_name_length({F_this}%{F_derived_member})
+      fattrs:
+        len: aa_exclass2_get_name_length({F_this}%{F_derived_member})
 
 # test variations of const for result and method
     - decl: const string& getName2()
@@ -332,15 +330,15 @@ functions:
       F_abstract_interface_subprogram_template: custom_funptr
       F_abstract_interface_argument_template: XX{index}arg
   - decl: void FuncPtr5(void (*get)(int verylongname1, 
-                                 int verylongname2, 
-                                 int verylongname3, 
-                                 int verylongname4, 
-                                 int verylongname5, 
-                                 int verylongname6, 
-                                 int verylongname7, 
-                                 int verylongname8, 
-                                 int verylongname9, 
-                                 int verylongname10))
+                                    int verylongname2, 
+                                    int verylongname3, 
+                                    int verylongname4, 
+                                    int verylongname5, 
+                                    int verylongname6, 
+                                    int verylongname7, 
+                                    int verylongname8, 
+                                    int verylongname9, 
+                                    int verylongname10))
 
   - decl: void verylongfunctionname1(int *verylongname1 +intent(inout), 
                                      int *verylongname2 +intent(inout), 

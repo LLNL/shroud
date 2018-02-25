@@ -535,9 +535,7 @@
                         }, 
                         "_function_index": 4, 
                         "ast": {
-                            "attrs": {
-                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
-                            }, 
+                            "attrs": {}, 
                             "const": true, 
                             "declarator": {
                                 "name": "getName", 
@@ -548,7 +546,9 @@
                                     }
                                 ]
                             }, 
-                            "fattrs": {}, 
+                            "fattrs": {
+                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
+                            }, 
                             "func_const": true, 
                             "params": [], 
                             "specifier": [
@@ -556,7 +556,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
-                        "declgen": "const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const", 
+                        "declgen": "const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
@@ -621,15 +621,15 @@
                         "_function_index": 15, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
-                            "attrs": {
-                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
-                            }, 
+                            "attrs": {}, 
                             "const": false, 
                             "declarator": {
                                 "name": "getName", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
+                            "fattrs": {
+                                "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
+                            }, 
                             "func_const": true, 
                             "params": [
                                 {
@@ -658,7 +658,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
-                        "declgen": "void getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
+                        "declgen": "void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
@@ -2049,9 +2049,7 @@
                         }, 
                         "_function_index": 21, 
                         "ast": {
-                            "attrs": {
-                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
-                            }, 
+                            "attrs": {}, 
                             "const": true, 
                             "declarator": {
                                 "name": "getName", 
@@ -2062,7 +2060,9 @@
                                     }
                                 ]
                             }, 
-                            "fattrs": {}, 
+                            "fattrs": {
+                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
+                            }, 
                             "func_const": true, 
                             "params": [], 
                             "specifier": [
@@ -2070,7 +2070,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
-                        "declgen": "const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const", 
+                        "declgen": "const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
@@ -2132,15 +2132,15 @@
                         "_function_index": 40, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
-                            "attrs": {
-                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
-                            }, 
+                            "attrs": {}, 
                             "const": false, 
                             "declarator": {
                                 "name": "getName", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
+                            "fattrs": {
+                                "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
+                            }, 
                             "func_const": true, 
                             "params": [
                                 {
@@ -2169,7 +2169,7 @@
                             ]
                         }, 
                         "decl": "const string& getName() const", 
-                        "declgen": "void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
+                        "declgen": "void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
@@ -8288,7 +8288,7 @@
             "PY_PyTypeObject": "FillInTypeForGroup", 
             "base": "wrapped", 
             "c_header": "sidre/wrapGroup.h", 
-            "c_to_cxx": "\tstatic_cast<{c_const}axom::sidre::Group{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}axom::sidre::Group *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "SIDRE_group", 
             "cxx_header": "sidre/Group.hpp", 
             "cxx_to_c": "\tstatic_cast<{c_const}SIDRE_group *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
@@ -8345,7 +8345,7 @@
             "PY_from_object": "PP_ExClass1_from_Object", 
             "PY_to_object": "PP_ExClass1_to_Object", 
             "base": "wrapped", 
-            "c_to_cxx": "\tstatic_cast<{c_const}ExClass1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}ExClass1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "AA_exclass1", 
             "cxx_to_c": "\tstatic_cast<{c_const}AA_exclass1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "ExClass1", 
@@ -8401,7 +8401,7 @@
             "PY_from_object": "PP_ExClass2_from_Object", 
             "PY_to_object": "PP_ExClass2_to_Object", 
             "base": "wrapped", 
-            "c_to_cxx": "\tstatic_cast<{c_const}ExClass2{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}ExClass2 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "AA_exclass2", 
             "cxx_to_c": "\tstatic_cast<{c_const}AA_exclass2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "ExClass2", 
@@ -8453,7 +8453,7 @@
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "wrapped", 
-            "c_to_cxx": "\tstatic_cast<{c_const}ExClass3{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}ExClass3 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "AA_exclass3", 
             "cxx_to_c": "\tstatic_cast<{c_const}AA_exclass3 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
             "cxx_type": "ExClass3", 

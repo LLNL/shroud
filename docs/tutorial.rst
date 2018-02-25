@@ -324,9 +324,9 @@ C++ routine::
 YAML input::
 
     functions
-    - decl: const std::string Function4a+len(30)(
+    - decl: const std::string Function4a(
         const std::string& arg1,
-        const std::string& arg2 )
+        const std::string& arg2 ) +len(30)
 
 This is the C++ prototype with the addition of **+len(30)**.  This
 attribute defines the declared length of the returned string.  Since

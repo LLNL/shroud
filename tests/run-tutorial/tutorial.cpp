@@ -182,6 +182,8 @@ long long TypeLongLong(long long arg1)
 }
 
 
+// default values and overloaded
+// int overload1(int num, int offset = 0, int stride = 1);
 int overload1(int num, int offset, int stride)
 {
     last_function_called = "overload1_0";
@@ -189,6 +191,8 @@ int overload1(int num, int offset, int stride)
     
 }
 
+// default values and overloaded
+// int overload1(double type, int num, int offset = 0, int stride = 1);
 int overload1(double type, int num, int offset, int stride)
 {
     last_function_called = "overload1_1";
@@ -209,6 +213,12 @@ EnumTypeID enumfunc(EnumTypeID arg)
     default:
 	return ENUM2;
     }
+}
+
+void getMinMax(int &min, int &max)
+{
+  min = -1;
+  max = 100;
 }
 
 int useclass(const Class1 *arg)
@@ -237,11 +247,17 @@ Class1 * getclass3()
 }
 
 //----------------------------------------------------------------------
+// class methods
 
 int Class1::Method1()
 {
     last_function_called = "Class1::Method1";
     return m_flag;
+}
+
+bool Class1::equivalent(Class1 const &obj2) const
+{
+  return m_flag == obj2.m_flag;
 }
 
 //----------------------------------------------------------------------

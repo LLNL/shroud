@@ -164,7 +164,7 @@ PP_exclass1_getName(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const
+// const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 // splicer begin class.ExClass1.method.get_name
     const std::string & SHCXX_rv = self->obj->getName();
     if (! isNameValid(rv)) {

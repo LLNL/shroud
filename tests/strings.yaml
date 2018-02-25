@@ -89,7 +89,7 @@ functions:
   doxygen:
     brief: return a 'const char *' as character(*)
 
-- decl: const char * getCharPtr2+len(30)()
+- decl: const char * getCharPtr2() +len(30)
 #  C_error_pattern: C_char_invalid_name
   doxygen:
     brief: return 'const char *' with fixed size (len=30)
@@ -109,7 +109,7 @@ functions:
   doxygen:
     brief: return a 'const string&' as character(*)
 
-- decl: const string& getString2+len=30()
+- decl: const string& getString2() +len=30
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return 'const string&' with fixed size (len=30)
@@ -121,7 +121,7 @@ functions:
   format:
     F_string_result_as_arg: output
 
-- decl: const string& getString2_empty+len=30()
+- decl: const string& getString2_empty() +len=30
   C_error_pattern: C_invalid_name
   doxygen:
     brief: Test returning empty string reference
@@ -135,7 +135,7 @@ functions:
 #  doxygen:
 #    brief: return a 'const string' as argument
 
-- decl: const string getString5+len=30() # +pure
+- decl: const string getString5() +len=30 # +pure
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
@@ -150,7 +150,7 @@ functions:
 ########################################
 # return std::string pointer
 
-- decl: const string * getString7+len=30()
+- decl: const string * getString7() +len=30
 #  C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string *' as character(*)

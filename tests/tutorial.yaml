@@ -87,9 +87,9 @@ functions:
     wrap_python: False
     wrap_lua: False
 
-- decl: const std::string Function4a+len(30)(
+- decl: const std::string Function4a(
     const std::string& arg1,
-    const std::string& arg2 )
+    const std::string& arg2 ) +len(30)
 # +pure
 #  attrs:
 #    result:
@@ -180,6 +180,12 @@ functions:
 - decl: TypeID typefunc(TypeID arg)
 - decl: EnumTypeID enumfunc(EnumTypeID arg)
 
+- decl: void getMinMax(int &min +intent(out), int &max +intent(out))
+  doxygen:
+     brief: Pass in reference to scalar
+  options:
+    wrap_lua: False
+
 - decl: int useclass(const Class1 *arg1) 
   options:
     wrap_lua: False
@@ -252,7 +258,7 @@ functions:
 ##################################################
 
 # Used with testing
-- decl: const std::string& LastFunctionCalled +len(30)()
+- decl: const std::string& LastFunctionCalled() +len(30)
 
 ##################################################
 
@@ -270,6 +276,13 @@ classes:
     doxygen:
        brief: returns the value of flag member
 
+  - decl: bool equivalent(Class1 const &obj2) const;
+    # Note that Fortran adds an obj argument
+    doxygen:
+       brief: Pass in reference to instance
+    options:
+       # Need to fix fmt.cxx_deref
+       wrap_lua: False
 
 
 

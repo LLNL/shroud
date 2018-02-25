@@ -77,13 +77,15 @@ class Tutorial(unittest.TestCase):
         rv_logical = tutorial.Function3(False)
         self.assertTrue(rv_logical)
 
+        # Should any object which resolved to True or False be accepted?
+        # if 0:    is legal
         self.assertRaises(TypeError, tutorial.Function3, 0)
-#rv_logical = tutorial.Function3(NotTrue())
 
     def testFunction4a(self):
         rv_char = tutorial.Function4a("dog", "cat")
         self.assertEqual(rv_char, "dogcat")
 
+        # result as argument not needed for Python
 #    call function4b("dog", "cat", rv_char)
 #    call assert_true( rv_char == "dogcat")
 
@@ -105,49 +107,52 @@ class Tutorial(unittest.TestCase):
 
         self.assertRaises(TypeError, tutorial.Function6, 1.0)
 
+    def XXX_test_Function7_8(self):
+        tutorial.Function7(1)
+        self.assertEqual(tutorial.LastFunctionCalled(), "Function7<int>")
+        tutorial.Function7(10.0)
+        self.assertEqual(tutorial.LastFunctionCalled(), "Function7<double>")
 
-#
-#    call function7(1)
-#    call assert_true(last_function_called() == "Function7<int>")
-#    call function7(10.d0)
-#    call assert_true(last_function_called() == "Function7<double>")
-#
-#    ! return values set by calls to function7
-#    rv_integer = function8_int()
-#    call assert_true(rv_integer == 1)
-#    rv_double = function8_double()
-#    call assert_true(rv_double == 10.d0)
-#
-#    call function9(1.0)
-#    call assert_true(.true.)
-#    call function9(1.d0)
-#    call assert_true(.true.)
-#
-#    call function10()
-#    call assert_true(.true.)
-#    call function10("foo", 1.0e0)
-#    call assert_true(.true.)
-#    call function10("bar", 2.0d0)
-#    call assert_true(.true.)
+        # return values set by calls to function7
+        rv = tutorial.Function8_int()
+        self.assertEqual(rv, 1)
+        rv = tutorial.Function8_double()
+        self.assertEqual(rv, 10.0)
+
+    def test_Function9(self):
+        # This has fortran_generic attribute but you get that for free in Python
+        tutorial.Function9(1)
+        tutorial.Function9(1.0)
+
+    def test_Function10(self):
+        # overloaded (no default args)
+        tutorial.Function10()
+        tutorial.Function10("foo", 1.0)
+        tutorial.Function10("bar", 1.0)
 
     def testsum(self):
         self.assertEqual(15, tutorial.Sum([1, 2, 3, 4, 5]))
 
-#    rv_int = overload1(10)
-#    call assert_true(rv_int .eq. 10)
-#    rv_int = overload1(1d0, 10)
-#    call assert_true(rv_int .eq. 10)
-#
-#    rv_int = overload1(10, 11, 12)
-#    call assert_true(rv_int .eq. 142)
-#    rv_int = overload1(1d0, 10, 11, 12)
-#    call assert_true(rv_int .eq. 142)
-#
-#    rv_int = typefunc(2)
-#    call assert_true(rv_int .eq. 2)
-#
-#    rv_int = enumfunc(1)
-#    call assert_true(rv_int .eq. 2)
+    def test_overload1(self):
+        self.assertEqual(10, tutorial.overload1(10))
+        self.assertEqual(10, tutorial.overload1(1., 10))
+
+        self.assertEqual(142, tutorial.overload1(10,11,12))
+        self.assertEqual(142, tutorial.overload1(1., 10,11,12))
+
+        self.assertRaises(TypeError, tutorial.overload1, 1.0)
+        self.assertRaises(TypeError, tutorial.overload1, "dog")
+        
+    def test_typefunc(self):
+        self.assertEqual(2, tutorial.typefunc(2))
+
+    def test_enumfunc(self):
+        self.assertEqual(2, tutorial.enumfunc(1))
+
+    def test_getMinMax(self):
+        r = tutorial.getMinMax()
+        self.assertEqual((-1,100), r)
+
 #
 #  end subroutine test_functions
 #
@@ -168,6 +173,12 @@ class Tutorial(unittest.TestCase):
 
         obj1 = tutorial.Class1(1)
         self.assertEqual(1, obj1.Method1())
+
+    def test_class1_equivalent(self):
+        obj0 = tutorial.Class1()
+        obj1 = tutorial.Class1(1)
+        self.assertTrue(obj0.equivalent(obj0))
+        self.assertFalse(obj0.equivalent(obj1))
 
     def test_class1_useclass(self):
         obj0 = tutorial.Class1()

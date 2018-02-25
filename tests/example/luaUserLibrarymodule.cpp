@@ -123,7 +123,7 @@ static int l_exclass1_increment_count(lua_State *L)
     // splicer end class.ExClass1.method.incrementCount
 }
 
-// const string & getName +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))() const
+// const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 static int l_exclass1_get_name(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getName
@@ -304,7 +304,7 @@ static int l_exclass2_dtor(lua_State *L)
     // splicer end class.ExClass2.method.__gc
 }
 
-// const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))() const
+// const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 static int l_exclass2_get_name(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName
@@ -719,7 +719,10 @@ static int l_func_ptr3(lua_State *L)
 static int l_func_ptr5(lua_State *L)
 {
     // splicer begin function.FuncPtr5
-    void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10) = POP;
+    void ( * get)(int verylongname1, int verylongname2,
+        int verylongname3, int verylongname4, int verylongname5,
+        int verylongname6, int verylongname7, int verylongname8,
+        int verylongname9, int verylongname10) = POP;
     FuncPtr5(get);
     return 0;
     // splicer end function.FuncPtr5
