@@ -211,6 +211,12 @@ EnumTypeID enumfunc(EnumTypeID arg)
     }
 }
 
+void getMinMax(int &min, int &max)
+{
+  min = -1;
+  max = 100;
+}
+
 int useclass(const Class1 *arg)
 {
     last_function_called = "useclass";

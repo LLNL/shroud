@@ -576,6 +576,9 @@ class Wrapc(util.WrapperMixin):
                         call_list.append(fmt_arg.cxx_var)
                     else:
                         call_list.append('*' + fmt_arg.cxx_var)
+                elif arg.is_reference():
+                    # reference to scalar  i.e. double &max
+                    call_list.append('*' + fmt_arg.cxx_var)
                 else:
                     call_list.append(fmt_arg.cxx_var)
 

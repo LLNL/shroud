@@ -83,6 +83,7 @@ contains
   subroutine test_functions
 
     integer(C_LONG_LONG) :: rv_ll
+    integer(C_INT) :: minout, maxout
 
     call set_case_name("test_functions")
 
@@ -165,6 +166,10 @@ contains
 
     rv_int = enumfunc(1)
     call assert_true(rv_int .eq. 2)
+
+    call get_min_max(minout, maxout)
+    call assert_equals(-1, minout)
+    call assert_equals(100, maxout)
 
   end subroutine test_functions
 

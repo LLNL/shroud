@@ -180,6 +180,12 @@ functions:
 - decl: TypeID typefunc(TypeID arg)
 - decl: EnumTypeID enumfunc(EnumTypeID arg)
 
+- decl: void getMinMax(int &min +intent(out), int &max +intent(out))
+  doxygen:
+     brief: Pass in reference to scalar
+  options:
+    wrap_lua: False
+
 - decl: int useclass(const Class1 *arg1) 
   options:
     wrap_lua: False

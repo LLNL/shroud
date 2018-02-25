@@ -130,6 +130,8 @@ int TUT_typefunc(int arg);
 
 int TUT_enumfunc(int arg);
 
+void TUT_get_min_max(int * min, int * max);
+
 int TUT_useclass(const TUT_class1 * arg1);
 
 const TUT_class1 * TUT_getclass2();

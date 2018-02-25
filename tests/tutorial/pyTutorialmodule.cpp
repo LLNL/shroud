@@ -620,6 +620,31 @@ PY_enumfunc(
 // splicer end function.enumfunc
 }
 
+static char PY_getMinMax__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getMinMax(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// void getMinMax(int & min +intent(out), int & max +intent(out))
+// splicer begin function.get_min_max
+    // pre_call
+    int min;  // intent(out)
+    int max;  // intent(out)
+
+    getMinMax(min, max);
+
+    // post_call
+    PyObject * SHTPy_rv = Py_BuildValue("ii", min, max);
+
+    return SHTPy_rv;
+// splicer end function.get_min_max
+}
+
 static char PY_useclass__doc__[] =
 "documentation"
 ;
@@ -831,6 +856,8 @@ static PyMethodDef PY_methods[] = {
     PY_typefunc__doc__},
 {"enumfunc", (PyCFunction)PY_enumfunc, METH_VARARGS|METH_KEYWORDS,
     PY_enumfunc__doc__},
+{"getMinMax", (PyCFunction)PY_getMinMax, METH_NOARGS,
+    PY_getMinMax__doc__},
 {"useclass", (PyCFunction)PY_useclass, METH_VARARGS|METH_KEYWORDS,
     PY_useclass__doc__},
 {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,

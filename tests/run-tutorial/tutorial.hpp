@@ -97,6 +97,8 @@ TypeID typefunc(TypeID arg);
 
 EnumTypeID enumfunc(EnumTypeID arg);
 
+void getMinMax(int &min, int &max);
+
 const std::string& LastFunctionCalled();
 
 class Class1
