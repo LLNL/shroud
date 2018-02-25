@@ -856,7 +856,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("long_long", r.params[1].typename)
         self.assertEqual("unsigned_int", r.params[2].typename)
 
-    def test_asarg(self):
+    def test_as_arg(self):
         r = declast.check_decl("const std::string& getName() const")
 
         s = r.gen_decl()
@@ -865,6 +865,16 @@ class CheckParse(unittest.TestCase):
         r.result_as_arg('output')
         s = r.gen_decl()
         self.assertEqual("void getName(std::string & output) const", s)
+
+    def test_as_voidstarstar(self):
+        r = declast.check_decl("const std::string& getName() const")
+
+        s = r.gen_decl()
+        self.assertEqual("const std::string & getName() const", s)
+
+        r.result_as_voidstarstar('output')
+        s = r.gen_decl()
+        self.assertEqual("void getName(void * * output) const", s)
                          
     def test_thisarg01(self):
         """Create an argument for const this"""
