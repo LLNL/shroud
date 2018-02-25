@@ -270,6 +270,13 @@ classes:
     doxygen:
        brief: returns the value of flag member
 
+  - decl: bool equivalent(Class1 const &obj2) const;
+    # Note that Fortran adds an obj argument
+    doxygen:
+       brief: Pass in reference to instance
+    options:
+       # Need to fix fmt.cxx_deref
+       wrap_lua: False
 
 
 

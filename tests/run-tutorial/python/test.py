@@ -169,6 +169,12 @@ class Tutorial(unittest.TestCase):
         obj1 = tutorial.Class1(1)
         self.assertEqual(1, obj1.Method1())
 
+    def test_class1_equivalent(self):
+        obj0 = tutorial.Class1()
+        obj1 = tutorial.Class1(1)
+        self.assertTrue(obj0.equivalent(obj0))
+        self.assertFalse(obj0.equivalent(obj1))
+
     def test_class1_useclass(self):
         obj0 = tutorial.Class1()
         self.assertEqual(0, tutorial.useclass(obj0))

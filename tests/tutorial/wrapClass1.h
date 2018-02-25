@@ -71,6 +71,9 @@ void TUT_class1_delete(TUT_class1 * self);
 
 int TUT_class1_method1(TUT_class1 * self);
 
+bool TUT_class1_equivalent(const TUT_class1 * self,
+    const TUT_class1 * obj2);
+
 #ifdef __cplusplus
 }
 #endif

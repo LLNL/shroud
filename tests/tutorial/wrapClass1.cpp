@@ -103,6 +103,25 @@ int TUT_class1_method1(TUT_class1 * self)
 // splicer end class.Class1.method.method1
 }
 
+// bool equivalent(const Class1 & obj2 +intent(in)+value) const
+// function_index=4
+/**
+ * \brief Pass in reference to instance
+ *
+ */
+bool TUT_class1_equivalent(const TUT_class1 * self,
+    const TUT_class1 * obj2)
+{
+// splicer begin class.Class1.method.equivalent
+    const Class1 *SH_this = static_cast<const Class1 *>(
+        static_cast<const void *>(self));
+    const Class1 * SHCXX_obj2 = static_cast<const Class1 *>(
+        static_cast<const void *>(obj2));
+    bool SHC_rv = SH_this->equivalent(*SHCXX_obj2);
+    return SHC_rv;
+// splicer end class.Class1.method.equivalent
+}
+
 }  // extern "C"
 
 }  // namespace tutorial

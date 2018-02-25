@@ -162,6 +162,8 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("std::string & var1", s)
         s = r.gen_arg_as_cxx()
         self.assertEqual("std::string & var1", s)
+        s = r.gen_arg_as_cxx(as_ptr=True)
+        self.assertEqual("std::string * var1", s)
         s = r.gen_arg_as_c()
         self.assertEqual("char * var1", s)
 

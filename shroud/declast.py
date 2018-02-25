@@ -477,6 +477,9 @@ class Ptr(Node):
             if kwargs.get('as_c', False):
                 # references become pointers with as_c
                 decl.append('*')
+            elif kwargs.get('as_ptr', False):
+                # Change reference to pointer
+                decl.append('*')
             else:
                 decl.append(self.ptr)
         if self.const:

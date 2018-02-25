@@ -252,6 +252,9 @@ contains
     call assert_true(obj0 .eq. obj0, "obj0 .eq obj0")
     call assert_true(obj0 .ne. obj1, "obj0 .ne. obj1")
 
+    call assert_true(obj0%equivalent(obj0))
+    call assert_false(obj0%equivalent(obj1))
+
     ! use class assigns global_class1 returned by getclass
     iflag = useclass(obj0)
     call assert_equals(iflag, 0, "useclass")

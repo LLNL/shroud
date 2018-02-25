@@ -237,11 +237,17 @@ Class1 * getclass3()
 }
 
 //----------------------------------------------------------------------
+// class methods
 
 int Class1::Method1()
 {
     last_function_called = "Class1::Method1";
     return m_flag;
+}
+
+bool Class1::equivalent(Class1 const &obj2) const
+{
+  return m_flag == obj2.m_flag;
 }
 
 //----------------------------------------------------------------------

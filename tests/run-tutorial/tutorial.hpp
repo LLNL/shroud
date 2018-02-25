@@ -106,6 +106,7 @@ public:
     Class1()         : m_flag(0)    {};
     Class1(int flag) : m_flag(flag) {};
     int Method1();
+    bool equivalent(Class1 const &obj2) const;
 };
 
 int useclass(const Class1 *arg);
