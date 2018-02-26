@@ -722,7 +722,8 @@ def initialize():
                     need_wrapper=True,
                     post_call=[
 #                        '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))',
-                        'allocate(character(len={f_var_len}, kind=C_CHAR): {f_var})',
+#                        'allocate(character(len={f_var_len}, kind=C_CHAR): {f_var})',
+                        'allocate(character(len=xxxx, kind=C_CHAR): {f_var})',
                         'call SHROUD_string_copy_and_free(bb, {f_var})',
                         ],
                     )

@@ -633,7 +633,7 @@
                 "result_buf": {
                     "need_wrapper": true, 
                     "post_call": [
-                        "allocate(character(len={f_var_len}, kind=C_CHAR): {f_var})", 
+                        "allocate(character(len=xxxx, kind=C_CHAR): {f_var})", 
                         "call SHROUD_string_copy_and_free(bb, {f_var})"
                     ]
                 }

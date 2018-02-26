@@ -866,34 +866,32 @@ class Wrapf(util.WrapperMixin):
             fmt_arg.f_var = arg_name
             fmt_arg.c_var = arg_name
 
-            f_arg = True   # assume C and Fortran arguments match
+            is_f_arg = True   # assume C and Fortran arguments match
             c_attrs = c_arg.attrs
             allocatable = c_attrs.get('allocatable', False)
             implied = c_attrs.get('implied', False)
             intent = c_attrs['intent']
+
+            # string C functions may have their results copied
+            # into an argument passed in, F_string_result_as_arg.
+            # Or the wrapper may provide an argument in the Fortran API
+            # to hold the result.
             if c_attrs.get('_is_result', False):
-                # This argument only exists in the C call, not the Fortran call
+                # This argument is the C function result
                 c_stmts = 'result' + generated_suffix
-                result_as_arg = fmt_func.F_string_result_as_arg
-
-                arg_type = c_arg.typename
-                arg_typedef = typemap.Typedef.lookup(arg_type)
-                f_statements = arg_typedef.f_statements
                 f_stmts = 'result' + generated_suffix
-                f_intent_blk = f_statements.get(f_stmts, {})
-
-                if not result_as_arg:
-                    # passing Fortran function result variable down to C
-                    f_arg = False
+                if not fmt_func.F_string_result_as_arg:
+                    # It is not in the Fortran API
+                    is_f_arg = False
                     fmt_arg.c_var = fmt_func.F_result
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
                 c_stmts = 'intent_' + intent + generated_suffix
+                f_stmts = 'intent_' + intent
 
-            if f_arg:
+            if is_f_arg:
                 # An argument to the C and Fortran function
-                # result_arguments are not processed here
                 f_index += 1
                 f_arg = f_args[f_index]
                 if f_arg.is_function_pointer():
@@ -902,8 +900,8 @@ class Wrapf(util.WrapperMixin):
                     arg_f_decl.append(
                         'procedure({}) :: {}'.format(
                             absiface, f_arg.name))
-                    arg_c_call.append(f_arg.name)
                     # function pointers are pass thru without any change
+                    arg_c_call.append(f_arg.name)
                     continue
                 elif implied:
                     # An implied argument is not passed into Fortran
@@ -912,59 +910,55 @@ class Wrapf(util.WrapperMixin):
                 else:
                     arg_f_names.append(fmt_arg.f_var)
                     arg_f_decl.append(f_arg.gen_arg_as_fortran())
+            else:
+                # Pass result as an argument to the C++ function.
+                f_arg = c_arg
 
-                arg_type = f_arg.typename
-                arg_typedef = typemap.Typedef.lookup(arg_type)
-                base_typedef = arg_typedef
-                if 'template' in c_attrs:
-                    # If a template, use its type
-                    cxx_T = c_attrs['template']
-                    arg_typedef = typemap.Typedef.lookup(cxx_T)
+            arg_type = f_arg.typename
+            arg_typedef = typemap.Typedef.lookup(arg_type)
+            base_typedef = arg_typedef
+            if 'template' in c_attrs:
+                # If a template, use its type
+                cxx_T = c_attrs['template']
+                arg_typedef = typemap.Typedef.lookup(cxx_T)
 
-                if implied:
-                    f_intent_blk = self.attr_implied(node, f_arg, fmt_arg)
-                else:
-                    f_statements = arg_typedef.f_statements
-                    f_stmts = 'intent_' + intent
-                    f_intent_blk = f_statements.get(f_stmts, {})
+            if implied:
+                f_intent_blk = self.attr_implied(node, f_arg, fmt_arg)
+            else:
+                f_statements = arg_typedef.f_statements
+                f_intent_blk = f_statements.get(f_stmts, {})
 
-                # Create a local variable for C if necessary
-                have_c_local_var = f_intent_blk.get('c_local_var', False)
-                if have_c_local_var:
-                    fmt_arg.c_var = 'SH_' + fmt_arg.f_var
-                    arg_f_decl.append('{} {}'.format(
-                        arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
+            # Create a local variable for C if necessary
+            have_c_local_var = f_intent_blk.get('c_local_var', False)
+            if have_c_local_var:
+                fmt_arg.c_var = 'SH_' + fmt_arg.f_var
+                arg_f_decl.append('{} {}'.format(
+                    arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
 
-                # Add code for intent of argument
-                cmd_list = f_intent_blk.get('declare', [])
-                if cmd_list:
-                    need_wrapper = True
-                    fmt_arg.c_var = 'SH_' + fmt_arg.f_var
-                    for cmd in cmd_list:
-                        append_format(arg_f_decl, cmd, fmt_arg)
+            # Add code for intent of argument
+            cmd_list = f_intent_blk.get('declare', [])
+            if cmd_list:
+                need_wrapper = True
+                fmt_arg.c_var = 'SH_' + fmt_arg.f_var
+                for cmd in cmd_list:
+                    append_format(arg_f_decl, cmd, fmt_arg)
 
-                cmd_list = f_intent_blk.get('pre_call', [])
-                if cmd_list:
-                    need_wrapper = True
-                    for cmd in cmd_list:
-                        append_format(pre_call, cmd, fmt_arg)
+            cmd_list = f_intent_blk.get('pre_call', [])
+            if cmd_list:
+                need_wrapper = True
+                for cmd in cmd_list:
+                    append_format(pre_call, cmd, fmt_arg)
 
-                cmd_list = f_intent_blk.get('post_call', [])
-                if cmd_list:
-                    need_wrapper = True
-                    for cmd in cmd_list:
-                        append_format(post_call, cmd, fmt_arg)
+            cmd_list = f_intent_blk.get('post_call', [])
+            if cmd_list:
+                need_wrapper = True
+                for cmd in cmd_list:
+                    append_format(post_call, cmd, fmt_arg)
 
-                self.update_f_module(modules, arg_typedef.f_module)
+            self.update_f_module(modules, arg_typedef.f_module)
 
-                if allocatable:
-                    attr_allocatable(allocatable, C_node, f_arg, pre_call)
-            else:  # not f_arg
-                cmd_list = f_intent_blk.get('post_call', [])
-                if cmd_list:
-                    need_wrapper = True
-                    for cmd in cmd_list:
-                        append_format(post_call, cmd, fmt_arg)
+            if allocatable:
+                attr_allocatable(allocatable, C_node, f_arg, pre_call)
 
             # Now C function arguments
             # May have different types, like generic
