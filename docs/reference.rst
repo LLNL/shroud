@@ -545,7 +545,7 @@ F_result
 
 F_string_result_as_arg
     The name of the output argument.
-    Function which return a ``char *`` will instead by converted to a
+    Function which return a ``char *`` will instead be converted to a
     subroutine which require an additional argument for the result.
     See also *C_string_result_as_arg*.
 
