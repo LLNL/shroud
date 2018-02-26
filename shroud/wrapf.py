@@ -922,43 +922,13 @@ class Wrapf(util.WrapperMixin):
                 cxx_T = c_attrs['template']
                 arg_typedef = typemap.Typedef.lookup(cxx_T)
 
+            self.update_f_module(modules, arg_typedef.f_module)
+
             if implied:
                 f_intent_blk = self.attr_implied(node, f_arg, fmt_arg)
             else:
                 f_statements = arg_typedef.f_statements
                 f_intent_blk = f_statements.get(f_stmts, {})
-
-            # Create a local variable for C if necessary
-            have_c_local_var = f_intent_blk.get('c_local_var', False)
-            if have_c_local_var:
-                fmt_arg.c_var = 'SH_' + fmt_arg.f_var
-                arg_f_decl.append('{} {}'.format(
-                    arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
-
-            # Add code for intent of argument
-            cmd_list = f_intent_blk.get('declare', [])
-            if cmd_list:
-                need_wrapper = True
-                fmt_arg.c_var = 'SH_' + fmt_arg.f_var
-                for cmd in cmd_list:
-                    append_format(arg_f_decl, cmd, fmt_arg)
-
-            cmd_list = f_intent_blk.get('pre_call', [])
-            if cmd_list:
-                need_wrapper = True
-                for cmd in cmd_list:
-                    append_format(pre_call, cmd, fmt_arg)
-
-            cmd_list = f_intent_blk.get('post_call', [])
-            if cmd_list:
-                need_wrapper = True
-                for cmd in cmd_list:
-                    append_format(post_call, cmd, fmt_arg)
-
-            self.update_f_module(modules, arg_typedef.f_module)
-
-            if allocatable:
-                attr_allocatable(allocatable, C_node, f_arg, pre_call)
 
             # Now C function arguments
             # May have different types, like generic
@@ -966,6 +936,13 @@ class Wrapf(util.WrapperMixin):
             arg_typedef = typemap.Typedef.lookup(c_arg.typename)
             arg_typedef, c_statements = typemap.lookup_c_statements(c_arg)
             c_intent_blk = c_statements.get(c_stmts, {})
+
+            # Create a local variable for C if necessary
+            have_c_local_var = f_intent_blk.get('c_local_var', False)
+            if have_c_local_var:
+                fmt_arg.c_var = 'SH_' + fmt_arg.f_var
+                arg_f_decl.append('{} {}'.format(
+                    arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
 
             # Attributes   None=skip, True=use default, else use value
             if arg_typedef.f_args:
@@ -982,6 +959,7 @@ class Wrapf(util.WrapperMixin):
             else:
                 append_format(arg_c_call, '{c_var}', fmt_arg)
 
+            # Add any buffer arguments
             for buf_arg in c_intent_blk.get('buf_args', []):
                 need_wrapper = True
                 buf_arg_name = c_attrs[buf_arg]
@@ -1003,6 +981,28 @@ class Wrapf(util.WrapperMixin):
                 else:
                     raise RuntimeError("wrap_function_impl: unhandled case {}"
                                        .format(buf_arg))
+
+            # Add code for intent of argument
+            cmd_list = f_intent_blk.get('declare', [])
+            if cmd_list:
+                need_wrapper = True
+                for cmd in cmd_list:
+                    append_format(arg_f_decl, cmd, fmt_arg)
+
+            cmd_list = f_intent_blk.get('pre_call', [])
+            if cmd_list:
+                need_wrapper = True
+                for cmd in cmd_list:
+                    append_format(pre_call, cmd, fmt_arg)
+
+            cmd_list = f_intent_blk.get('post_call', [])
+            if cmd_list:
+                need_wrapper = True
+                for cmd in cmd_list:
+                    append_format(post_call, cmd, fmt_arg)
+
+            if allocatable:
+                attr_allocatable(allocatable, C_node, f_arg, pre_call)
 
         # use tabs to insert continuations
         fmt_func.F_arg_c_call = ',\t '.join(arg_c_call)
