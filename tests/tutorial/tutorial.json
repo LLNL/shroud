@@ -7213,6 +7213,53 @@
                 }
             }
         }, 
+        "stringout": {
+            "base": "string", 
+            "c_statements": {
+                "intent_out_buf": {
+                    "buf_args": [
+                        "lenout"
+                    ], 
+                    "c_helper": "ShroudStrCopy", 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        " post_call intent_out_buf"
+                    ], 
+                    "pre_call": [
+                        "std::string * {cxx_var};"
+                    ]
+                }, 
+                "result_buf": {
+                    "buf_args": [
+                        "lenout"
+                    ], 
+                    "post_call": [
+                        "*{c_var} = static_cast<void *>({cxx_var});", 
+                        "*{c_var_len} = {cxx_var}{cxx_deref}size()"
+                    ]
+                }
+            }, 
+            "c_type": "void", 
+            "cxx_header": "<string>", 
+            "cxx_to_c": "static_cast<void *>({cxx_var})", 
+            "cxx_type": "std::string", 
+            "f_c_module": {
+                "iso_c_binding": [
+                    "C_PTR"
+                ]
+            }, 
+            "f_c_type": "type(C_PTR)", 
+            "f_statements": {
+                "result_buf": {
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "allocate(character(len={f_var_len}, kind=C_CHAR): {f_var})", 
+                        "call SHROUD_string_copy_and_free(bb, {f_var})"
+                    ]
+                }
+            }, 
+            "f_type": "type(C_PTR)YY"
+        }, 
         "vector": {
             "base": "vector", 
             "c_statements": {

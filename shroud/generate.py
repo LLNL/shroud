@@ -614,9 +614,14 @@ class GenFunctions(object):
         if has_string_result:
             # Add additional argument to hold result
             ast = C_new.ast
-            result_as_string = ast.result_as_arg(result_name)
-            attrs = result_as_string.attrs
-            attrs['len'] = options.C_var_len_template.format(c_var=result_name)
+            if ast.fattrs.get('allocatable', False):
+                result_as_string = ast.result_as_voidstarstar('stringout', result_name)
+                attrs = result_as_string.attrs
+                attrs['lenout'] = options.C_var_len_template.format(c_var=result_name)
+            else:
+                result_as_string = ast.result_as_arg(result_name)
+                attrs = result_as_string.attrs
+                attrs['len'] = options.C_var_len_template.format(c_var=result_name)
             attrs['intent'] = 'out'
             attrs['_is_result'] = True
             # convert to subroutine

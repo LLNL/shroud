@@ -872,7 +872,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("const std::string & getName() const", s)
 
-        r.result_as_voidstarstar('output')
+        r.result_as_voidstarstar('void', 'output')
         s = r.gen_decl()
         self.assertEqual("void getName(void * * output) const", s)
                          

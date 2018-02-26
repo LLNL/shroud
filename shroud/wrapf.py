@@ -552,6 +552,7 @@ class Wrapf(util.WrapperMixin):
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
+        is_allocatable = ast.fattrs.get('allocatable', False)
         func_is_const = ast.func_const
         subprogram = ast.get_subprogram()
 
@@ -634,6 +635,11 @@ class Wrapf(util.WrapperMixin):
 
             # Add implied buffer arguments to prototype
             for buf_arg in c_intent_blk.get('buf_args', []):
+                if buf_arg not in attrs:
+                    raise RuntimeError("{} is missing from {} for {}"
+                                       .format(buf_arg,
+                                               str(c_intent_blk['buf_args']),
+                                               node.declgen))
                 buf_arg_name = attrs[buf_arg]
                 if buf_arg == 'size':
                     arg_c_names.append(buf_arg_name)
@@ -650,6 +656,15 @@ class Wrapf(util.WrapperMixin):
                     arg_c_decl.append(
                         'integer(C_INT), value, intent(IN) :: %s' % buf_arg_name)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+                elif buf_arg == 'lenout':
+                    # result of allocatable std::string or std::vector
+                    arg_c_names.append(buf_arg_name)
+                    arg_c_decl.append(
+                        'integer(C_SIZE_T), intent(OUT) :: %s' % buf_arg_name)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_SIZE_T')
+                else:
+                    raise RuntimeError("wrap_function_interface: unhandled case {}"
+                                       .format(buf_arg))
 
         if (subprogram == 'function' and
                 (is_pure or (func_is_const and args_all_in))):
@@ -772,6 +787,7 @@ class Wrapf(util.WrapperMixin):
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
+        is_allocatable = ast.fattrs.get('allocatable', False)
         subprogram = ast.get_subprogram()
         c_subprogram = C_node.ast.get_subprogram()
 
@@ -856,8 +872,16 @@ class Wrapf(util.WrapperMixin):
             implied = c_attrs.get('implied', False)
             intent = c_attrs['intent']
             if c_attrs.get('_is_result', False):
+                # This argument only exists in the C call, not the Fortran call
                 c_stmts = 'result' + generated_suffix
                 result_as_arg = fmt_func.F_string_result_as_arg
+
+                arg_type = c_arg.typename
+                arg_typedef = typemap.Typedef.lookup(arg_type)
+                f_statements = arg_typedef.f_statements
+                f_stmts = 'result' + generated_suffix
+                f_intent_blk = f_statements.get(f_stmts, {})
+
                 if not result_as_arg:
                     # passing Fortran function result variable down to C
                     f_arg = False
@@ -935,6 +959,12 @@ class Wrapf(util.WrapperMixin):
 
                 if allocatable:
                     attr_allocatable(allocatable, C_node, f_arg, pre_call)
+            else:  # not f_arg
+                cmd_list = f_intent_blk.get('post_call', [])
+                if cmd_list:
+                    need_wrapper = True
+                    for cmd in cmd_list:
+                        append_format(post_call, cmd, fmt_arg)
 
             # Now C function arguments
             # May have different types, like generic
@@ -960,6 +990,7 @@ class Wrapf(util.WrapperMixin):
 
             for buf_arg in c_intent_blk.get('buf_args', []):
                 need_wrapper = True
+                buf_arg_name = c_attrs[buf_arg]
                 if buf_arg == 'size':
                     append_format(arg_c_call, 'size({f_var}, kind=C_LONG)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
@@ -969,6 +1000,15 @@ class Wrapf(util.WrapperMixin):
                 elif buf_arg == 'len':
                     append_format(arg_c_call, 'len({f_var}, kind=C_INT)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+                elif buf_arg == 'lenout':
+                    fmt_arg.f_var_len = c_attrs['lenout']
+                    append_format(arg_f_decl, 'integer(C_SIZE_T) :: {f_var_len}',
+                                  fmt_arg)
+                    append_format(arg_c_call, '{f_var_len}', fmt_arg)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_SIZE_T')
+                else:
+                    raise RuntimeError("wrap_function_impl: unhandled case {}"
+                                       .format(buf_arg))
 
         # use tabs to insert continuations
         fmt_func.F_arg_c_call = ',\t '.join(arg_c_call)
@@ -981,19 +1021,24 @@ class Wrapf(util.WrapperMixin):
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '
             if result_typedef.base == 'string':
-                # special case returning a string
-                rvlen = ast.fattrs.get('len', None)
-                if rvlen is None:
-                    rvlen = wformat(
-                        'strlen_ptr(\t{F_C_call}(\t{F_arg_c_call}))',
-                        fmt_func)
+                if is_allocatable:
+                    append_format(arg_f_decl,
+                                  'character(len=:,kind=C_CHAR), allocatable :: {F_result}',
+                                  fmt_func)
                 else:
-                    rvlen = str(rvlen)  # convert integers
-                fmt_func.c_var_len = wformat(rvlen, fmt_func)
-                line1 = wformat(
-                    'character(kind=C_CHAR,\t len={c_var_len})\t :: {F_result}',
-                    fmt_func)
-                arg_f_decl.append(line1)
+                    # special case returning a string
+                    rvlen = ast.fattrs.get('len', None)
+                    if rvlen is None:
+                        rvlen = wformat(
+                            'strlen_ptr(\t{F_C_call}(\t{F_arg_c_call}))',
+                            fmt_func)
+                    else:
+                        rvlen = str(rvlen)  # convert integers
+                    fmt_func.c_var_len = wformat(rvlen, fmt_func)
+                    line1 = wformat(
+                        'character(kind=C_CHAR,\t len={c_var_len})\t :: {F_result}',
+                        fmt_func)
+                    arg_f_decl.append(line1)
                 self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
             else:
                 arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
