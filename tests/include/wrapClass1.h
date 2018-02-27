@@ -63,10 +63,6 @@ typedef struct s_DEF_class1 DEF_class1;
 
 void DEF_class1_method1(DEF_class1 * self, int arg1);
 
-DEF_class1 * DEF_class1_ctor();
-
-void DEF_class1_dtor(DEF_class1 * self);
-
 #ifdef __cplusplus
 }
 #endif

@@ -67,10 +67,6 @@ void DEF_class2_method1(DEF_class2 * self, MPI_Fint comm);
 
 void DEF_class2_method2(DEF_class2 * self, DEF_class1 * c2);
 
-DEF_class2 * DEF_class2_ctor();
-
-void DEF_class2_dtor(DEF_class2 * self);
-
 #ifdef __cplusplus
 }
 #endif

@@ -475,38 +475,11 @@ static int l_exclass3_exfunc(lua_State *L)
     // splicer end class.ExClass3.method.exfunc
 }
 
-// ExClass3()
-static int l_exclass3_ctor(lua_State *L)
-{
-    // splicer begin class.ExClass3.method.ctor
-    l_ExClass3_Type * SH_this = (l_ExClass3_Type *) lua_newuserdata(L, sizeof(*SH_this));
-    SH_this->self = new ExClass3();
-    /* Add the metatable to the stack. */
-    luaL_getmetatable(L, "ExClass3.metatable");
-    /* Set the metatable on the userdata. */
-    lua_setmetatable(L, -2);
-    return 1;
-    // splicer end class.ExClass3.method.ctor
-}
-
-// ~ExClass3()
-static int l_exclass3_dtor(lua_State *L)
-{
-    // splicer begin class.ExClass3.method.__gc
-    l_ExClass3_Type * SH_this = (l_ExClass3_Type *) luaL_checkudata(
-        L, 1, "ExClass3.metatable");
-    delete SH_this->self;
-    SH_this->self = NULL;
-    return 0;
-    // splicer end class.ExClass3.method.__gc
-}
-
 // splicer begin class.ExClass3.additional_functions
 // splicer end class.ExClass3.additional_functions
 
 static const struct luaL_Reg l_ExClass3_Reg [] = {
     {"exfunc", l_exclass3_exfunc},
-    {"__gc", l_exclass3_dtor},
     // splicer begin class.ExClass3.register
     // splicer end class.ExClass3.register
     {NULL, NULL}   /*sentinel */
@@ -810,7 +783,6 @@ static int l_get_string2(lua_State *L)
 static const struct luaL_Reg l_UserLibrary_Reg [] = {
     {"ExClass1", l_exclass1_ctor},
     {"ExClass2", l_exclass2_ctor},
-    {"ExClass3", l_exclass3_ctor},
     {"local_function1", l_local_function1},
     {"isNameValid", l_is_name_valid},
     {"isInitialized", l_is_initialized},

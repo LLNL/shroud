@@ -54,7 +54,6 @@ module class1_mod
         type(C_PTR), private :: voidptr
     contains
         procedure :: method1 => class1_method1
-        procedure :: dtor => class1_dtor
         procedure :: get_instance => class1_get_instance
         procedure :: set_instance => class1_set_instance
         procedure :: associated => class1_associated
@@ -78,21 +77,6 @@ module class1_mod
             integer(C_INT), value, intent(IN) :: arg1
         end subroutine c_class1_method1
 
-        function c_class1_ctor() &
-                result(SHT_rv) &
-                bind(C, name="DEF_class1_ctor")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_class1_ctor
-
-        subroutine c_class1_dtor(self) &
-                bind(C, name="DEF_class1_dtor")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), value, intent(IN) :: self
-        end subroutine c_class1_dtor
-
     end interface
 
 contains
@@ -103,19 +87,6 @@ contains
         integer(C_INT), value, intent(IN) :: arg1
         call c_class1_method1(obj%voidptr, arg1)
     end subroutine class1_method1
-
-    function class1_ctor() &
-            result(SHT_rv)
-        type(class1) :: SHT_rv
-        SHT_rv%voidptr = c_class1_ctor()
-    end function class1_ctor
-
-    subroutine class1_dtor(obj)
-        use iso_c_binding, only : C_NULL_PTR
-        class(class1) :: obj
-        call c_class1_dtor(obj%voidptr)
-        obj%voidptr = C_NULL_PTR
-    end subroutine class1_dtor
 
     function class1_get_instance(obj) result (voidptr)
         use iso_c_binding, only: C_PTR

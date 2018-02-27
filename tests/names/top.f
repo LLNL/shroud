@@ -116,7 +116,7 @@ module top_module
 contains
 
     ! void function1()
-    ! function_index=6
+    ! function_index=2
     subroutine testnames_function1()
         ! splicer begin function.function1
         call yyy_tes_function1()
@@ -124,7 +124,7 @@ contains
     end subroutine testnames_function1
 
     ! void function2()
-    ! function_index=7
+    ! function_index=3
     subroutine f_name_special()
         ! splicer begin function.function2
         call f_c_name_special()
@@ -132,7 +132,7 @@ contains
     end subroutine f_name_special
 
     ! void function3a(int i +intent(in)+value)
-    ! function_index=8
+    ! function_index=4
     subroutine F_name_function3a_int(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -142,7 +142,7 @@ contains
     end subroutine F_name_function3a_int
 
     ! void function3a(long i +intent(in)+value)
-    ! function_index=9
+    ! function_index=5
     subroutine F_name_function3a_long(i)
         use iso_c_binding, only : C_LONG
         integer(C_LONG), value, intent(IN) :: i
@@ -153,7 +153,7 @@ contains
 
     ! int function4(const std::string & rv +intent(in))
     ! arg_to_buffer
-    ! function_index=10
+    ! function_index=6
     function testnames_function4(rv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -166,7 +166,7 @@ contains
     end function testnames_function4
 
     ! void function5() +name(fiveplus)
-    ! function_index=11
+    ! function_index=7
     subroutine testnames_fiveplus()
         ! splicer begin function.fiveplus
         call yyy_tes_fiveplus()

@@ -67,19 +67,6 @@ PY_Names2_tp_del (PY_Names2 *self)
     self->obj = NULL;
 // splicer end class.Names2.type.del
 }
-
-static int
-PY_Names2_tp_init(
-  PY_Names2 *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// Names2()
-// splicer begin class.Names2.method.ctor
-    self->obj = new Names2();
-    return 0;
-// splicer end class.Names2.method.ctor
-}
 // splicer begin class.Names2.impl.after_methods
 // splicer end class.Names2.impl.after_methods
 static PyMethodDef PY_Names2_methods[] = {
@@ -147,7 +134,7 @@ PyTypeObject PY_Names2_Type = {
         (descrgetfunc)0,                /* tp_descr_get */
         (descrsetfunc)0,                /* tp_descr_set */
         0,                              /* tp_dictoffset */
-        (initproc)PY_Names2_tp_init,                   /* tp_init */
+        (initproc)None,                   /* tp_init */
         (allocfunc)0,                  /* tp_alloc */
         (newfunc)0,                    /* tp_new */
         (freefunc)0,                   /* tp_free */
