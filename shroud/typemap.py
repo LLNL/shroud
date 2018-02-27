@@ -636,6 +636,103 @@ def initialize():
             base='string',
             ),
 
+        # C++ std::string
+        # Uses a two part call to copy results of std::string into a 
+        # allocatable Fortran array.
+        #    c_step1(stringout **out, int lenout)
+        #    allocate(character(len=lenout): Fout)
+        #    c_step2(Fout, out)
+        # only used with bufferifed routines and intent(out) or result
+        stringout=Typedef(
+            'stringout',
+            cxx_type='std::string',
+            cxx_header='<string>',
+            cxx_to_c='static_cast<void *>({cxx_var})',
+
+            c_type='void',
+
+            c_statements=dict(
+#--                intent_in=dict(
+#--                    cxx_local_var='scalar',
+#--                    pre_call=[
+#--                        '{c_const}std::string {cxx_var}({c_var});'
+#--                        ],
+#--                ),
+#--                intent_out=dict(
+#--                    cxx_header='<cstring>',
+#--#                    pre_call=[
+#--#                        'int {c_var_trim} = strlen({c_var});',
+#--#                        ],
+#--                    cxx_local_var='scalar',
+#--                    pre_call=[
+#--                        '{c_const}std::string {cxx_var};'
+#--                        ],
+#--                    post_call=[
+#--                        # This may overwrite c_var if cxx_val is too long
+#--                        'strcpy({c_var}, {cxx_var}{cxx_deref}c_str());'
+#--                    ],
+#--                ),
+#--                intent_inout=dict(
+#--                    cxx_header='<cstring>',
+#--                    cxx_local_var='scalar',
+#--                    pre_call=[
+#--                        '{c_const}std::string {cxx_var}({c_var});'
+#--                        ],
+#--                    post_call=[
+#--                        # This may overwrite c_var if cxx_val is too long
+#--                        'strcpy({c_var}, {cxx_var}{cxx_deref}c_str());'
+#--                    ],
+#--                ),
+#--                intent_in_buf=dict(
+#--                    buf_args = [ 'len_trim' ],
+#--                    cxx_local_var='scalar',
+#--                    pre_call=[
+#--                        ('{c_const}std::string '
+#--                         '{cxx_var}({c_var}, {c_var_trim});')
+#--                    ],
+#--                ),
+                intent_out_buf=dict(
+                    buf_args = [ 'lenout' ],
+                    c_helper='copy_string',
+                    cxx_local_var='scalar',
+                    pre_call=[
+                        'std::string * {cxx_var};'
+                    ],
+                    post_call=[
+                        ' post_call intent_out_buf'
+                    ],
+                ),
+                result_buf=dict(
+                    # pass address of string and length back to Fortran
+                    buf_args = [ 'lenout' ],
+                    c_helper='copy_string',
+                    post_call=[
+#                        '*{c_var} = static_cast<void *>({cxx_var});',
+                        '*{c_var} = {cxx_var};',
+                        '*{c_var_len} = {cxx_var}{cxx_deref}size();',
+                    ],
+                ),
+            ),
+
+            f_type='type(C_PTR)YY',
+#            f_kind='C_CHAR',
+            f_c_type='type(C_PTR)',
+            f_c_module=dict(iso_c_binding=['C_PTR']),
+
+            f_statements=dict(
+                result_buf=dict(
+                    need_wrapper=True,
+                    f_helper='copy_string',
+                    post_call=[
+                        'allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})',
+                        'call SHROUD_string_copy_and_free({f_cptr}, {f_var})',
+                        ],
+                    )
+                ),
+
+            base='string',
+            ),
+
         # C++ std::vector
         # No c_type or f_type, use attr[template]
         vector=Typedef(

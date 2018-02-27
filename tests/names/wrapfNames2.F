@@ -61,7 +61,6 @@ module names2_mod
         ! splicer begin class.Names2.component_part
         ! splicer end class.Names2.component_part
     contains
-        procedure :: dtor => names2_dtor
         procedure :: get_instance => names2_get_instance
         procedure :: set_instance => names2_set_instance
         procedure :: associated => names2_associated
@@ -79,47 +78,11 @@ module names2_mod
 
     interface
 
-        function c_names2_ctor() &
-                result(SHT_rv) &
-                bind(C, name="TES_names2_ctor")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_names2_ctor
-
-        subroutine c_names2_dtor(self) &
-                bind(C, name="TES_names2_dtor")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), value, intent(IN) :: self
-        end subroutine c_names2_dtor
-
         ! splicer begin class.Names2.additional_interfaces
         ! splicer end class.Names2.additional_interfaces
     end interface
 
 contains
-
-    ! Names2()
-    ! function_index=4
-    function names2_ctor() &
-            result(SHT_rv)
-        type(names2) :: SHT_rv
-        ! splicer begin class.Names2.method.ctor
-        SHT_rv%voidptr = c_names2_ctor()
-        ! splicer end class.Names2.method.ctor
-    end function names2_ctor
-
-    ! ~Names2()
-    ! function_index=5
-    subroutine names2_dtor(obj)
-        use iso_c_binding, only : C_NULL_PTR
-        class(names2) :: obj
-        ! splicer begin class.Names2.method.dtor
-        call c_names2_dtor(obj%voidptr)
-        obj%voidptr = C_NULL_PTR
-        ! splicer end class.Names2.method.dtor
-    end subroutine names2_dtor
 
     function names2_get_instance(obj) result (voidptr)
         use iso_c_binding, only: C_PTR

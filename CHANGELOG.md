@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## v0.8.0 - 2018-02-26
 ### Added
 - Support for function pointer arguments.
 - Improve support for Python wrappers, including NumPy support.
@@ -24,6 +26,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Attributes for a function now go at the end.
   void Foo+len=30 ()   =>  void Foo() +len(30)
   Fixes an ambiguity in attributes without values: Foo +attr(int i)
+- Change prefix of local variables to SHC_ or SHCXX_ to indicate their usage.
+- Added more local variables to convert between languages instead of doing
+  conversion in-line  (in the call or return statements)
 
 ## v0.7.0 - 2018-01-22
 ### Added

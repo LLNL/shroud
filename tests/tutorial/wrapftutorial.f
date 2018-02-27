@@ -541,6 +541,11 @@ module tutorial_mod
         ! splicer end additional_interfaces
     end interface
 
+    interface class1_new
+        module procedure class1_new_default
+        module procedure class1_new_flag
+    end interface class1_new
+
     interface function10
         module procedure function10_0
         module procedure function10_1_float
@@ -567,11 +572,6 @@ module tutorial_mod
         module procedure function9_float
         module procedure function9_double
     end interface function9
-
-    interface new
-        module procedure class1_new_default
-        module procedure class1_new_flag
-    end interface new
 
     interface overload1
         module procedure overload1_num

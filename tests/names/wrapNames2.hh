@@ -63,10 +63,6 @@ typedef struct s_TES_names2 TES_names2;
 // splicer begin class.Names2.C_declarations
 // splicer end class.Names2.C_declarations
 
-TES_names2 * TES_names2_ctor();
-
-void TES_names2_dtor(TES_names2 * self);
-
 #ifdef __cplusplus
 }
 #endif

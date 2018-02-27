@@ -91,99 +91,6 @@
                             "underscore_name": "method1"
                         }, 
                         "options": {}
-                    }, 
-                    {
-                        "_fmtresult": {
-                            "fmtc": {
-                                "c_val": "\tstatic_cast<DEF_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
-                                "c_var": "SHC_rv", 
-                                "cxx_deref": ".", 
-                                "cxx_var": "SHCXX_rv"
-                            }
-                        }, 
-                        "_function_index": 1, 
-                        "ast": {
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_constructor": true, 
-                                "_name": "ctor"
-                            }, 
-                            "func_const": false, 
-                            "params": [], 
-                            "specifier": [
-                                "Class1"
-                            ]
-                        }, 
-                        "decl": "Class1()", 
-                        "declgen": "Class1()", 
-                        "format": {
-                            "C_call_code": "Class1 * SHCXX_rv = new Class1();", 
-                            "C_call_list": "", 
-                            "C_name": "DEF_class1_ctor", 
-                            "C_post_call": "DEF_class1 * SHC_rv = \tstatic_cast<DEF_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
-                            "C_prototype": "", 
-                            "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "DEF_class1 *", 
-                            "F_C_call": "c_class1_ctor", 
-                            "F_C_name": "c_class1_ctor", 
-                            "F_arg_c_call": "", 
-                            "F_arguments": "", 
-                            "F_call_code": "SHT_rv%voidptr = c_class1_ctor()", 
-                            "F_name_function": "ctor", 
-                            "F_name_generic": "ctor", 
-                            "F_name_impl": "class1_ctor", 
-                            "F_result_clause": "\fresult(SHT_rv)", 
-                            "F_subprogram": "function", 
-                            "c_const": "", 
-                            "c_rv_decl": "DEF_class1 * SHC_rv", 
-                            "cxx_rv_decl": "Class1 * SHCXX_rv", 
-                            "function_name": "ctor", 
-                            "underscore_name": "ctor"
-                        }, 
-                        "options": {}
-                    }, 
-                    {
-                        "_function_index": 2, 
-                        "ast": {
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_destructor": true, 
-                                "_name": "dtor"
-                            }, 
-                            "func_const": false, 
-                            "params": [], 
-                            "specifier": [
-                                "Class1"
-                            ]
-                        }, 
-                        "decl": "~Class1()", 
-                        "declgen": "~Class1()", 
-                        "format": {
-                            "C_call_code": "delete SH_this;", 
-                            "C_call_list": "", 
-                            "C_name": "DEF_class1_dtor", 
-                            "C_pre_call": "Class1 *SH_this = \tstatic_cast<Class1 *>(\tstatic_cast<void *>(\tself));", 
-                            "C_prototype": "DEF_class1 * self", 
-                            "C_return_code": "return;", 
-                            "C_return_type": "void", 
-                            "F_C_call": "c_class1_dtor", 
-                            "F_C_name": "c_class1_dtor", 
-                            "F_arg_c_call": "obj%voidptr", 
-                            "F_arguments": "obj", 
-                            "F_call_code": "call c_class1_dtor(obj%voidptr)", 
-                            "F_name_function": "dtor", 
-                            "F_name_generic": "dtor", 
-                            "F_name_impl": "class1_dtor", 
-                            "F_subprogram": "subroutine", 
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "self", 
-                            "function_name": "dtor", 
-                            "underscore_name": "dtor"
-                        }, 
-                        "options": {}
                     }
                 ], 
                 "name": "Class1", 
@@ -225,7 +132,7 @@
                                 }
                             }
                         }, 
-                        "_function_index": 3, 
+                        "_function_index": 1, 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -301,7 +208,7 @@
                                 }
                             }
                         }, 
-                        "_function_index": 4, 
+                        "_function_index": 2, 
                         "ast": {
                             "attrs": {}, 
                             "const": false, 
@@ -360,99 +267,6 @@
                             "c_var": "self", 
                             "function_name": "method2", 
                             "underscore_name": "method2"
-                        }, 
-                        "options": {}
-                    }, 
-                    {
-                        "_fmtresult": {
-                            "fmtc": {
-                                "c_val": "\tstatic_cast<DEF_class2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
-                                "c_var": "SHC_rv", 
-                                "cxx_deref": ".", 
-                                "cxx_var": "SHCXX_rv"
-                            }
-                        }, 
-                        "_function_index": 5, 
-                        "ast": {
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_constructor": true, 
-                                "_name": "ctor"
-                            }, 
-                            "func_const": false, 
-                            "params": [], 
-                            "specifier": [
-                                "Class2"
-                            ]
-                        }, 
-                        "decl": "Class2()", 
-                        "declgen": "Class2()", 
-                        "format": {
-                            "C_call_code": "Class2 * SHCXX_rv = new Class2();", 
-                            "C_call_list": "", 
-                            "C_name": "DEF_class2_ctor", 
-                            "C_post_call": "DEF_class2 * SHC_rv = \tstatic_cast<DEF_class2 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
-                            "C_prototype": "", 
-                            "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "DEF_class2 *", 
-                            "F_C_call": "c_class2_ctor", 
-                            "F_C_name": "c_class2_ctor", 
-                            "F_arg_c_call": "", 
-                            "F_arguments": "", 
-                            "F_call_code": "SHT_rv%voidptr = c_class2_ctor()", 
-                            "F_name_function": "ctor", 
-                            "F_name_generic": "ctor", 
-                            "F_name_impl": "class2_ctor", 
-                            "F_result_clause": "\fresult(SHT_rv)", 
-                            "F_subprogram": "function", 
-                            "c_const": "", 
-                            "c_rv_decl": "DEF_class2 * SHC_rv", 
-                            "cxx_rv_decl": "Class2 * SHCXX_rv", 
-                            "function_name": "ctor", 
-                            "underscore_name": "ctor"
-                        }, 
-                        "options": {}
-                    }, 
-                    {
-                        "_function_index": 6, 
-                        "ast": {
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_destructor": true, 
-                                "_name": "dtor"
-                            }, 
-                            "func_const": false, 
-                            "params": [], 
-                            "specifier": [
-                                "Class2"
-                            ]
-                        }, 
-                        "decl": "~Class2()", 
-                        "declgen": "~Class2()", 
-                        "format": {
-                            "C_call_code": "delete SH_this;", 
-                            "C_call_list": "", 
-                            "C_name": "DEF_class2_dtor", 
-                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(\tstatic_cast<void *>(\tself));", 
-                            "C_prototype": "DEF_class2 * self", 
-                            "C_return_code": "return;", 
-                            "C_return_type": "void", 
-                            "F_C_call": "c_class2_dtor", 
-                            "F_C_name": "c_class2_dtor", 
-                            "F_arg_c_call": "obj%voidptr", 
-                            "F_arguments": "obj", 
-                            "F_call_code": "call c_class2_dtor(obj%voidptr)", 
-                            "F_name_function": "dtor", 
-                            "F_name_generic": "dtor", 
-                            "F_name_impl": "class2_dtor", 
-                            "F_subprogram": "subroutine", 
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "self", 
-                            "function_name": "dtor", 
-                            "underscore_name": "dtor"
                         }, 
                         "options": {}
                     }
@@ -559,7 +373,7 @@
         }, 
         "functions": [
             {
-                "_function_index": 7, 
+                "_function_index": 3, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1221,6 +1035,55 @@
                     ]
                 }
             }
+        }, 
+        "stringout": {
+            "base": "string", 
+            "c_statements": {
+                "intent_out_buf": {
+                    "buf_args": [
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        " post_call intent_out_buf"
+                    ], 
+                    "pre_call": [
+                        "std::string * {cxx_var};"
+                    ]
+                }, 
+                "result_buf": {
+                    "buf_args": [
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "post_call": [
+                        "*{c_var} = {cxx_var};", 
+                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
+                    ]
+                }
+            }, 
+            "c_type": "void", 
+            "cxx_header": "<string>", 
+            "cxx_to_c": "static_cast<void *>({cxx_var})", 
+            "cxx_type": "std::string", 
+            "f_c_module": {
+                "iso_c_binding": [
+                    "C_PTR"
+                ]
+            }, 
+            "f_c_type": "type(C_PTR)", 
+            "f_statements": {
+                "result_buf": {
+                    "f_helper": "copy_string", 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})", 
+                        "call SHROUD_string_copy_and_free({f_cptr}, {f_var})"
+                    ]
+                }
+            }, 
+            "f_type": "type(C_PTR)YY"
         }, 
         "vector": {
             "base": "vector", 

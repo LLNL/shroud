@@ -686,8 +686,18 @@ class Declaration(Node):
 
     def result_as_arg(self, name):
         """Pass the function result as an argument.
+        Change function result to 'void'.
         """
         newarg = self._as_arg(name)
+        self.params.append(newarg)
+        self._set_to_void()
+        return newarg
+
+    def result_as_voidstarstar(self, typ, name):
+        """Add an 'typ**' argument to return pointer to result.
+        Change function result to 'void'.
+        """
+        newarg = create_voidstarstar(typ, name)
         self.params.append(newarg)
         self._set_to_void()
         return newarg
@@ -986,13 +996,25 @@ def check_decl(decl, current_class=None, template_types=[],trace=False):
 
 
 def create_this_arg(name, typ, const=True):
-    """Create a Declaration for an argument for the 'this' argument.
+    """Create a Declaration for an argument for the 'this' argument
+    as 'typ *name'
     """
     arg = Declaration()
     arg.const = const
     arg.declarator = Declarator()
     arg.declarator.name = name
     arg.declarator.pointer = [ Ptr('*') ]
+    arg.specifier = [ typ ]
+    return arg
+
+def create_voidstarstar(typ, name):
+    """Create a Declaration for an argument for the argument
+    as 'typ **name'.
+    """
+    arg = Declaration()
+    arg.declarator = Declarator()
+    arg.declarator.name = name
+    arg.declarator.pointer = [ Ptr('*'), Ptr('*') ]
     arg.specifier = [ typ ]
     return arg
 

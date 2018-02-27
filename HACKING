@@ -1,6 +1,36 @@
 
+Run unittest
+------------
 
+    make test
+
+The tests are in the ``tests`` directory.
+
+Regression tests
+----------------
+
+    make do-test
+
+Run the script test/do-test.py over some yaml files.
+
+The output is saved in build/temp.linux-x86_64-2.7/run
+
+Update fiducials
+
+    make do-test-replace
 
 Running a single test
-  make do-test test-args=tutorial
-  
+
+    make do-test test-args=tutorial
+
+Test generated code
+-------------------
+
+    make test-all
+
+Compile the generated code (after do-test-replace) and run some unit
+tests.  These tests are in tests/run and contains a small library
+which is wrapped by the corresponding yaml file
+(i.e. tests/tutorial.yaml wraps run/tutorial)
+
+test/default.mk has compiler flags

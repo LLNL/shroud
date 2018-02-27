@@ -114,110 +114,6 @@
                             "underscore_name": "method2"
                         }, 
                         "options": {}
-                    }, 
-                    {
-                        "_fmtresult": {
-                            "fmtc": {
-                                "c_val": "\tstatic_cast<TES_names *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
-                                "c_var": "SHC_rv", 
-                                "cxx_deref": ".", 
-                                "cxx_var": "SHCXX_rv"
-                            }, 
-                            "fmtpy": {
-                                "PyObject": "PY_Names", 
-                                "PyTypeObject": "PY_Names_Type", 
-                                "c_var": "SHCXX_rv", 
-                                "cxx_deref": ".", 
-                                "cxx_var": "SHCXX_rv", 
-                                "py_var": "SHTPy_rv"
-                            }
-                        }, 
-                        "_function_index": 2, 
-                        "ast": {
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_constructor": true, 
-                                "_name": "ctor"
-                            }, 
-                            "func_const": false, 
-                            "params": [], 
-                            "specifier": [
-                                "Names"
-                            ]
-                        }, 
-                        "decl": "Names()", 
-                        "declgen": "Names()", 
-                        "format": {
-                            "C_call_code": "Names * SHCXX_rv = new Names();", 
-                            "C_call_list": "", 
-                            "C_name": "XXX_TES_names_ctor", 
-                            "C_post_call": "TES_names * SHC_rv = \tstatic_cast<TES_names *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
-                            "C_prototype": "", 
-                            "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "TES_names *", 
-                            "F_C_call": "xxx_tes_names_ctor", 
-                            "F_C_name": "xxx_tes_names_ctor", 
-                            "F_arg_c_call": "", 
-                            "F_arguments": "", 
-                            "F_call_code": "SHT_rv%voidptr = xxx_tes_names_ctor()", 
-                            "F_name_function": "ctor", 
-                            "F_name_generic": "ctor", 
-                            "F_name_impl": "names_ctor", 
-                            "F_result_clause": "\fresult(SHT_rv)", 
-                            "F_subprogram": "function", 
-                            "PY_name_impl": "PY_Names_tp_init", 
-                            "PY_type_impl": "PY_Names_tp_init", 
-                            "PY_type_method": "tp_init", 
-                            "c_const": "", 
-                            "c_rv_decl": "TES_names * SHC_rv", 
-                            "cxx_rv_decl": "Names * SHCXX_rv", 
-                            "function_name": "ctor", 
-                            "underscore_name": "ctor"
-                        }, 
-                        "options": {}
-                    }, 
-                    {
-                        "_function_index": 3, 
-                        "ast": {
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_destructor": true, 
-                                "_name": "dtor"
-                            }, 
-                            "func_const": false, 
-                            "params": [], 
-                            "specifier": [
-                                "Names"
-                            ]
-                        }, 
-                        "decl": "~Names()", 
-                        "declgen": "~Names()", 
-                        "format": {
-                            "C_call_code": "delete SH_this;", 
-                            "C_call_list": "", 
-                            "C_name": "XXX_TES_names_dtor", 
-                            "C_pre_call": "Names *SH_this = \tstatic_cast<Names *>(\tstatic_cast<void *>(\tself));", 
-                            "C_prototype": "TES_names * self", 
-                            "C_return_code": "return;", 
-                            "C_return_type": "void", 
-                            "F_C_call": "xxx_tes_names_dtor", 
-                            "F_C_name": "xxx_tes_names_dtor", 
-                            "F_arg_c_call": "obj%voidptr", 
-                            "F_arguments": "obj", 
-                            "F_call_code": "call xxx_tes_names_dtor(obj%voidptr)", 
-                            "F_name_function": "dtor", 
-                            "F_name_generic": "dtor", 
-                            "F_name_impl": "names_dtor", 
-                            "F_subprogram": "subroutine", 
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "self", 
-                            "function_name": "dtor", 
-                            "underscore_name": "dtor"
-                        }, 
-                        "options": {}
                     }
                 ], 
                 "name": "Names", 
@@ -248,112 +144,7 @@
                     "class_upper": "NAMES2", 
                     "cxx_class": "Names2"
                 }, 
-                "methods": [
-                    {
-                        "_fmtresult": {
-                            "fmtc": {
-                                "c_val": "\tstatic_cast<TES_names2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
-                                "c_var": "SHC_rv", 
-                                "cxx_deref": ".", 
-                                "cxx_var": "SHCXX_rv"
-                            }, 
-                            "fmtpy": {
-                                "PyObject": "PY_Names2", 
-                                "PyTypeObject": "PY_Names2_Type", 
-                                "c_var": "SHCXX_rv", 
-                                "cxx_deref": ".", 
-                                "cxx_var": "SHCXX_rv", 
-                                "py_var": "SHTPy_rv"
-                            }
-                        }, 
-                        "_function_index": 4, 
-                        "ast": {
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_constructor": true, 
-                                "_name": "ctor"
-                            }, 
-                            "func_const": false, 
-                            "params": [], 
-                            "specifier": [
-                                "Names2"
-                            ]
-                        }, 
-                        "decl": "Names2()", 
-                        "declgen": "Names2()", 
-                        "format": {
-                            "C_call_code": "Names2 * SHCXX_rv = new Names2();", 
-                            "C_call_list": "", 
-                            "C_name": "TES_names2_ctor", 
-                            "C_post_call": "TES_names2 * SHC_rv = \tstatic_cast<TES_names2 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
-                            "C_prototype": "", 
-                            "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "TES_names2 *", 
-                            "F_C_call": "c_names2_ctor", 
-                            "F_C_name": "c_names2_ctor", 
-                            "F_arg_c_call": "", 
-                            "F_arguments": "", 
-                            "F_call_code": "SHT_rv%voidptr = c_names2_ctor()", 
-                            "F_name_function": "ctor", 
-                            "F_name_generic": "ctor", 
-                            "F_name_impl": "names2_ctor", 
-                            "F_result_clause": "\fresult(SHT_rv)", 
-                            "F_subprogram": "function", 
-                            "PY_name_impl": "PY_Names2_tp_init", 
-                            "PY_type_impl": "PY_Names2_tp_init", 
-                            "PY_type_method": "tp_init", 
-                            "c_const": "", 
-                            "c_rv_decl": "TES_names2 * SHC_rv", 
-                            "cxx_rv_decl": "Names2 * SHCXX_rv", 
-                            "function_name": "ctor", 
-                            "underscore_name": "ctor"
-                        }, 
-                        "options": {}
-                    }, 
-                    {
-                        "_function_index": 5, 
-                        "ast": {
-                            "attrs": {}, 
-                            "const": false, 
-                            "fattrs": {
-                                "_destructor": true, 
-                                "_name": "dtor"
-                            }, 
-                            "func_const": false, 
-                            "params": [], 
-                            "specifier": [
-                                "Names2"
-                            ]
-                        }, 
-                        "decl": "~Names2()", 
-                        "declgen": "~Names2()", 
-                        "format": {
-                            "C_call_code": "delete SH_this;", 
-                            "C_call_list": "", 
-                            "C_name": "TES_names2_dtor", 
-                            "C_pre_call": "Names2 *SH_this = \tstatic_cast<Names2 *>(\tstatic_cast<void *>(\tself));", 
-                            "C_prototype": "TES_names2 * self", 
-                            "C_return_code": "return;", 
-                            "C_return_type": "void", 
-                            "F_C_call": "c_names2_dtor", 
-                            "F_C_name": "c_names2_dtor", 
-                            "F_arg_c_call": "obj%voidptr", 
-                            "F_arguments": "obj", 
-                            "F_call_code": "call c_names2_dtor(obj%voidptr)", 
-                            "F_name_function": "dtor", 
-                            "F_name_generic": "dtor", 
-                            "F_name_impl": "names2_dtor", 
-                            "F_subprogram": "subroutine", 
-                            "c_const": "", 
-                            "c_ptr": " *", 
-                            "c_var": "self", 
-                            "function_name": "dtor", 
-                            "underscore_name": "dtor"
-                        }, 
-                        "options": {}
-                    }
-                ], 
+                "methods": [], 
                 "name": "Names2", 
                 "options": {}
             }
@@ -471,7 +262,7 @@
         }, 
         "functions": [
             {
-                "_function_index": 6, 
+                "_function_index": 2, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -512,7 +303,7 @@
                 "options": {}
             }, 
             {
-                "_function_index": 7, 
+                "_function_index": 3, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -554,8 +345,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    8, 
-                    9
+                    4, 
+                    5
                 ], 
                 "_fmtargs": {
                     "i": {
@@ -585,7 +376,7 @@
                         }
                     }
                 }, 
-                "_function_index": 8, 
+                "_function_index": 4, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -644,8 +435,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    8, 
-                    9
+                    4, 
+                    5
                 ], 
                 "_fmtargs": {
                     "i": {
@@ -675,7 +466,7 @@
                         }
                     }
                 }, 
-                "_function_index": 9, 
+                "_function_index": 5, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -733,7 +524,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 12, 
+                "_PTR_F_C_index": 8, 
                 "_fmtargs": {
                     "rv": {
                         "fmtc": {
@@ -773,7 +564,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 10, 
+                "_function_index": 6, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -837,7 +628,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 10, 
+                "_PTR_C_CXX_index": 6, 
                 "_fmtargs": {
                     "rv": {
                         "fmtc": {
@@ -862,7 +653,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 12, 
+                "_function_index": 8, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -924,7 +715,7 @@
                 }
             }, 
             {
-                "_function_index": 11, 
+                "_function_index": 7, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1576,6 +1367,55 @@
                     ]
                 }
             }
+        }, 
+        "stringout": {
+            "base": "string", 
+            "c_statements": {
+                "intent_out_buf": {
+                    "buf_args": [
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        " post_call intent_out_buf"
+                    ], 
+                    "pre_call": [
+                        "std::string * {cxx_var};"
+                    ]
+                }, 
+                "result_buf": {
+                    "buf_args": [
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "post_call": [
+                        "*{c_var} = {cxx_var};", 
+                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
+                    ]
+                }
+            }, 
+            "c_type": "void", 
+            "cxx_header": "<string>", 
+            "cxx_to_c": "static_cast<void *>({cxx_var})", 
+            "cxx_type": "std::string", 
+            "f_c_module": {
+                "iso_c_binding": [
+                    "C_PTR"
+                ]
+            }, 
+            "f_c_type": "type(C_PTR)", 
+            "f_statements": {
+                "result_buf": {
+                    "f_helper": "copy_string", 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})", 
+                        "call SHROUD_string_copy_and_free({f_cptr}, {f_var})"
+                    ]
+                }
+            }, 
+            "f_type": "type(C_PTR)YY"
         }, 
         "vector": {
             "base": "vector", 

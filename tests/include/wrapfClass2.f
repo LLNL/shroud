@@ -55,7 +55,6 @@ module class2_mod
     contains
         procedure :: method1 => class2_method1
         procedure :: method2 => class2_method2
-        procedure :: dtor => class2_dtor
         procedure :: get_instance => class2_get_instance
         procedure :: set_instance => class2_set_instance
         procedure :: associated => class2_associated
@@ -87,21 +86,6 @@ module class2_mod
             type(C_PTR), value, intent(IN) :: c2
         end subroutine c_class2_method2
 
-        function c_class2_ctor() &
-                result(SHT_rv) &
-                bind(C, name="DEF_class2_ctor")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_class2_ctor
-
-        subroutine c_class2_dtor(self) &
-                bind(C, name="DEF_class2_dtor")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), value, intent(IN) :: self
-        end subroutine c_class2_dtor
-
     end interface
 
 contains
@@ -118,19 +102,6 @@ contains
         type(class1), value, intent(IN) :: c2
         call c_class2_method2(obj%voidptr, c2%get_instance())
     end subroutine class2_method2
-
-    function class2_ctor() &
-            result(SHT_rv)
-        type(class2) :: SHT_rv
-        SHT_rv%voidptr = c_class2_ctor()
-    end function class2_ctor
-
-    subroutine class2_dtor(obj)
-        use iso_c_binding, only : C_NULL_PTR
-        class(class2) :: obj
-        call c_class2_dtor(obj%voidptr)
-        obj%voidptr = C_NULL_PTR
-    end subroutine class2_dtor
 
     function class2_get_instance(obj) result (voidptr)
         use iso_c_binding, only: C_PTR

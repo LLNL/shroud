@@ -63,7 +63,6 @@ module name_module
     contains
         procedure :: type_method1 => names_method1
         procedure :: method2 => names_method2
-        procedure :: dtor => names_dtor
         procedure :: get_instance => names_get_instance
         procedure :: set_instance => names_set_instance
         procedure :: associated => names_associated
@@ -95,21 +94,6 @@ module name_module
             type(C_PTR), value, intent(IN) :: self2
         end subroutine xxx_tes_names_method2
 
-        function xxx_tes_names_ctor() &
-                result(SHT_rv) &
-                bind(C, name="XXX_TES_names_ctor")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function xxx_tes_names_ctor
-
-        subroutine xxx_tes_names_dtor(self) &
-                bind(C, name="XXX_TES_names_dtor")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), value, intent(IN) :: self
-        end subroutine xxx_tes_names_dtor
-
         ! splicer begin class.Names.additional_interfaces
         ! splicer end class.Names.additional_interfaces
     end interface
@@ -133,27 +117,6 @@ contains
         call xxx_tes_names_method2(obj2%voidptr)
         ! splicer end class.Names.method.method2
     end subroutine names_method2
-
-    ! Names()
-    ! function_index=2
-    function names_ctor() &
-            result(SHT_rv)
-        type(FNames) :: SHT_rv
-        ! splicer begin class.Names.method.ctor
-        SHT_rv%voidptr = xxx_tes_names_ctor()
-        ! splicer end class.Names.method.ctor
-    end function names_ctor
-
-    ! ~Names()
-    ! function_index=3
-    subroutine names_dtor(obj)
-        use iso_c_binding, only : C_NULL_PTR
-        class(FNames) :: obj
-        ! splicer begin class.Names.method.dtor
-        call xxx_tes_names_dtor(obj%voidptr)
-        obj%voidptr = C_NULL_PTR
-        ! splicer end class.Names.method.dtor
-    end subroutine names_dtor
 
     function names_get_instance(obj) result (voidptr)
         use iso_c_binding, only: C_PTR

@@ -113,6 +113,9 @@ contains
     call function4b("dog", "cat", rv_char)
     call assert_true( rv_char == "dogcat")
 
+! work-in-progress   allocatable function
+!    call assert_true( function4c("dog", "cat") == "dogcat")
+
     call assert_equals(function5(), 13.1415d0)
     call assert_equals(function5(1.d0), 11.d0)
     call assert_equals(function5(1.d0, .false.), 1.d0)
@@ -240,11 +243,11 @@ contains
     call set_case_name("test_class1")
 
     ! Test generic constructor
-    obj0 = new()
+    obj0 = class1_new()
     ptr = obj0%get_instance()
     call assert_true(c_associated(ptr), "class1_new obj0")
 
-    obj1 = new(1)
+    obj1 = class1_new(1)
     ptr = obj1%get_instance()
     call assert_true(c_associated(ptr), "class1_new obj1")
 

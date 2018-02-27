@@ -57,21 +57,6 @@ void DEF_class1_method1(DEF_class1 * self, int arg1)
     return;
 }
 
-DEF_class1 * DEF_class1_ctor()
-{
-    Class1 * SHCXX_rv = new Class1();
-    DEF_class1 * SHC_rv = static_cast<DEF_class1 *>(static_cast<void *>(
-        SHCXX_rv));
-    return SHC_rv;
-}
-
-void DEF_class1_dtor(DEF_class1 * self)
-{
-    Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
-    delete SH_this;
-    return;
-}
-
 }  // extern "C"
 
 }  // namespace three

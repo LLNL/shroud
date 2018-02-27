@@ -930,8 +930,8 @@ same **name** attribute.
 The *function_suffix* must not be explicitly set to blank since the name
 is used by the ``generic`` interface.
 
-If a constructor or destructor is not explicitly supplied in the YAML
-file then the default constructor or destructor will be wrapped.
+The constructor and destructor will only be wrapped if explicitly added
+to the YAML file to avoid wrapping ``private`` constructors.
 
 ..  chained function calls
 

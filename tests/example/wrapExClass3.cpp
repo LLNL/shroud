@@ -65,30 +65,6 @@ void AA_exclass3_exfunc(AA_exclass3 * self)
 // splicer end class.ExClass3.method.exfunc
 }
 
-// ExClass3()
-// function_index=49
-AA_exclass3 * AA_exclass3_ctor()
-{
-// splicer begin class.ExClass3.method.ctor
-    ExClass3 * SHCXX_rv = new ExClass3();
-    AA_exclass3 * SHC_rv = static_cast<AA_exclass3 *>(
-        static_cast<void *>(SHCXX_rv));
-    return SHC_rv;
-// splicer end class.ExClass3.method.ctor
-}
-
-// ~ExClass3()
-// function_index=50
-void AA_exclass3_dtor(AA_exclass3 * self)
-{
-// splicer begin class.ExClass3.method.dtor
-    ExClass3 *SH_this = static_cast<ExClass3 *>(static_cast<void *>(
-        self));
-    delete SH_this;
-    return;
-// splicer end class.ExClass3.method.dtor
-}
-
 }  // extern "C"
 
 }  // namespace nested

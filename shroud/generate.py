@@ -239,8 +239,8 @@ class GenFunctions(object):
         self.function_index = newlibrary.function_index
 
         for cls in newlibrary.classes:
-            added = self.default_ctor_and_dtor(cls)
-            cls.functions = self.define_function_suffix(added)
+#            added = self.default_ctor_and_dtor(cls)
+            cls.functions = self.define_function_suffix(cls.functions)
         newlibrary.functions = self.define_function_suffix(newlibrary.functions)
 
 # No longer need this, but keep code for now in case some other dependency checking is needed
@@ -259,6 +259,8 @@ class GenFunctions(object):
         """Wrap default constructor and destructor.
 
         Needed when the ctor or dtor is not explicily in the input.
+
+        XXX - do not wrap by default because they may be private.
         """
         found_ctor = False
         found_dtor = False
@@ -614,9 +616,14 @@ class GenFunctions(object):
         if has_string_result:
             # Add additional argument to hold result
             ast = C_new.ast
-            result_as_string = ast.result_as_arg(result_name)
-            attrs = result_as_string.attrs
-            attrs['len'] = options.C_var_len_template.format(c_var=result_name)
+            if ast.fattrs.get('allocatable', False):
+                result_as_string = ast.result_as_voidstarstar('stringout', result_name)
+                attrs = result_as_string.attrs
+                attrs['lenout'] = options.C_var_len_template.format(c_var=result_name)
+            else:
+                result_as_string = ast.result_as_arg(result_name)
+                attrs = result_as_string.attrs
+                attrs['len'] = options.C_var_len_template.format(c_var=result_name)
             attrs['intent'] = 'out'
             attrs['_is_result'] = True
             # convert to subroutine
