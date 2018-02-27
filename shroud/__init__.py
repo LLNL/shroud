@@ -50,6 +50,6 @@ def print_as_json(node, fp):
     
 
 
-__version__ = "0.7.0"
-version_info = (0,7,0,"beta",0)
+__version__ = "0.8.0"
+version_info = (0,8,0,"beta",0)
 # 'alpha', 'beta', 'candidate', or 'final'.
