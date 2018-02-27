@@ -1069,7 +1069,7 @@ class Wrapf(util.WrapperMixin):
             else:
                 gname = fmt_func.F_name_impl
                 self.f_function_generic.setdefault(
-                    fmt_func.F_name_generic, []).append(gname)
+                    fmt_func.class_prefix + fmt_func.F_name_generic, []).append(gname)
         if cls and not is_ctor:
             # Add procedure to derived type
             self.type_bound_part.append('procedure :: %s => %s' % (

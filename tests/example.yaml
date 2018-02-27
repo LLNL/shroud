@@ -256,7 +256,7 @@ classes:
       wrap_python: False
     cpp_if: ifdef USE_CLASS3
     functions:
-    # default ctor and dtor will be automatically wrapped
+    # default ctor and dtor will not be automatically wrapped
     - decl: void exfunc()
 
 functions:

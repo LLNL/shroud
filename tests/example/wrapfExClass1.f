@@ -264,10 +264,10 @@ module exclass1_mod
         ! splicer end class.ExClass1.additional_interfaces
     end interface
 
-    interface ctor
+    interface exclass1_ctor
         module procedure exclass1_ctor_0
         module procedure exclass1_ctor_1
-    end interface ctor
+    end interface exclass1_ctor
 
 contains
 

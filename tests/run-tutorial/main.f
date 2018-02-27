@@ -243,11 +243,11 @@ contains
     call set_case_name("test_class1")
 
     ! Test generic constructor
-    obj0 = new()
+    obj0 = class1_new()
     ptr = obj0%get_instance()
     call assert_true(c_associated(ptr), "class1_new obj0")
 
-    obj1 = new(1)
+    obj1 = class1_new(1)
     ptr = obj1%get_instance()
     call assert_true(c_associated(ptr), "class1_new obj1")
 
