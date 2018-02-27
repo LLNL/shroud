@@ -693,7 +693,7 @@ def initialize():
 #--                ),
                 intent_out_buf=dict(
                     buf_args = [ 'lenout' ],
-                    c_helper='ShroudStrCopy',
+                    c_helper='copy_string',
                     cxx_local_var='scalar',
                     pre_call=[
                         'std::string * {cxx_var};'
@@ -705,6 +705,7 @@ def initialize():
                 result_buf=dict(
                     # pass address of string and length back to Fortran
                     buf_args = [ 'lenout' ],
+                    c_helper='copy_string',
                     post_call=[
                         '*{c_var} = static_cast<void *>({cxx_var});',
                         '*{c_var_len} = {cxx_var}{cxx_deref}size()',
@@ -720,11 +721,10 @@ def initialize():
             f_statements=dict(
                 result_buf=dict(
                     need_wrapper=True,
+                    f_helper='copy_string',
                     post_call=[
-#                        '{F_result} = fstr_ptr({F_C_call}({F_arg_c_call}))',
-#                        'allocate(character(len={f_var_len}, kind=C_CHAR): {f_var})',
-                        'allocate(character(len=xxxx, kind=C_CHAR): {f_var})',
-                        'call SHROUD_string_copy_and_free(bb, {f_var})',
+                        'allocate(character(len={f_var_len}, kind=C_CHAR): {f_var})',
+                        'call SHROUD_string_copy_and_free({f_cptr}, {f_var})',
                         ],
                     )
                 ),

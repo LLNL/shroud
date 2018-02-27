@@ -877,6 +877,7 @@ class Wrapf(util.WrapperMixin):
             # Or the wrapper may provide an argument in the Fortran API
             # to hold the result.
             if c_attrs.get('_is_result', False):
+                # XXX - _is_result implies a string result for now
                 # This argument is the C function result
                 c_stmts = 'result' + generated_suffix
                 f_stmts = 'result' + generated_suffix
@@ -895,11 +896,11 @@ class Wrapf(util.WrapperMixin):
                 f_index += 1
                 f_arg = f_args[f_index]
                 if f_arg.is_function_pointer():
-                    arg_f_names.append(fmt_arg.f_var)
                     absiface = self.add_abstract_interface(node, f_arg)
                     arg_f_decl.append(
                         'procedure({}) :: {}'.format(
                             absiface, f_arg.name))
+                    arg_f_names.append(fmt_arg.f_var)
                     # function pointers are pass thru without any change
                     arg_c_call.append(f_arg.name)
                     continue
@@ -908,11 +909,16 @@ class Wrapf(util.WrapperMixin):
                     # it is computed then passed to C++
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True))
                 else:
-                    arg_f_names.append(fmt_arg.f_var)
                     arg_f_decl.append(f_arg.gen_arg_as_fortran())
+                    arg_f_names.append(fmt_arg.f_var)
             else:
                 # Pass result as an argument to the C++ function.
                 f_arg = c_arg
+                if is_allocatable:
+                    # character allocatable function
+                    fmt_arg.f_cptr = 'SHP_' + arg_name
+                    append_format(arg_f_decl, 'type(C_PTR) :: {f_cptr}',
+                                  fmt_arg)
 
             arg_type = f_arg.typename
             arg_typedef = typemap.Typedef.lookup(arg_type)
@@ -945,7 +951,9 @@ class Wrapf(util.WrapperMixin):
                     arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
 
             # Attributes   None=skip, True=use default, else use value
-            if arg_typedef.f_args:
+            if is_allocatable:
+                arg_c_call.append(fmt_arg.f_cptr)
+            elif arg_typedef.f_args:
                 # TODO - Not sure if this is still needed.
                 need_wrapper = True
                 append_format(arg_c_call, arg_typedef.f_args, fmt_arg)
@@ -957,7 +965,7 @@ class Wrapf(util.WrapperMixin):
                 append_format(arg_c_call, arg_typedef.f_cast, fmt_arg)
                 self.update_f_module(modules, arg_typedef.f_module)
             else:
-                append_format(arg_c_call, '{c_var}', fmt_arg)
+                arg_c_call.append(fmt_arg.c_var)
 
             # Add any buffer arguments
             for buf_arg in c_intent_blk.get('buf_args', []):
@@ -1000,6 +1008,11 @@ class Wrapf(util.WrapperMixin):
                 need_wrapper = True
                 for cmd in cmd_list:
                     append_format(post_call, cmd, fmt_arg)
+
+            # Find any helper routines needed
+            if 'f_helper' in f_intent_blk:
+                for helper in f_intent_blk['f_helper'].split():
+                    self.f_helper[helper] = True
 
             if allocatable:
                 attr_allocatable(allocatable, C_node, f_arg, pre_call)
