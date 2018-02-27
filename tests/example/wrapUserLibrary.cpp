@@ -43,6 +43,15 @@
 #include <string>
 #include "sidre/Group.hpp"
 
+// Called by Fortran to deal with allocatable character
+extern "C" void ShroudStringCopyAndFree(void *cptr, char *str) {
+    std::string * cxxstr = static_cast<std::string *>(cptr);
+
+    strncpy(str, cxxstr->data(), cxxstr->size());
+    // free the string?
+}
+
+
 namespace example {
 namespace nested {
 
@@ -74,7 +83,7 @@ bool AA_is_name_valid(const char * name)
 }
 
 // bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=72
+// function_index=73
 bool AA_is_name_valid_bufferify(const char * name, int Lname)
 {
 // splicer begin function.is_name_valid_bufferify
@@ -114,7 +123,7 @@ void AA_test_names(const char * name)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=73
+// function_index=74
 void AA_test_names_bufferify(const char * name, int Lname)
 {
 // splicer begin function.test_names_bufferify
@@ -136,7 +145,7 @@ void AA_test_names_flag(const char * name, int flag)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)
-// function_index=74
+// function_index=75
 void AA_test_names_flag_bufferify(const char * name, int Lname,
     int flag)
 {
@@ -148,7 +157,7 @@ void AA_test_names_flag_bufferify(const char * name, int Lname,
 }
 
 // void testoptional()
-// function_index=70
+// function_index=71
 void AA_testoptional_0()
 {
 // splicer begin function.testoptional_0
@@ -158,7 +167,7 @@ void AA_testoptional_0()
 }
 
 // void testoptional(int i=1 +intent(in)+value)
-// function_index=71
+// function_index=72
 void AA_testoptional_1(int i)
 {
 // splicer begin function.testoptional_1
@@ -336,6 +345,29 @@ void AA_cos_doubles(double * in, double * out, int sizein)
     cos_doubles(in, out, sizein);
     return;
 // splicer end function.cos_doubles
+}
+
+// const std::string & getString2() +allocatable
+// function_index=70
+const char * AA_get_string2()
+{
+// splicer begin function.get_string2
+    const std::string & SHCXX_rv = getString2();
+    const char * SHC_rv = SHCXX_rv.c_str();
+    return SHC_rv;
+// splicer end function.get_string2
+}
+
+// void getString2(stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+// function_index=76
+void AA_get_string2_bufferify(void * * SHF_rv, size_t *NSHF_rv)
+{
+// splicer begin function.get_string2_bufferify
+    const std::string & SHCXX_rv = getString2();
+    *SHF_rv = SHCXX_rv;
+    *NSHF_rv = SHCXX_rv.size();
+    return;
+// splicer end function.get_string2_bufferify
 }
 
 }  // extern "C"

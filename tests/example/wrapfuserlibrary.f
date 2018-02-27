@@ -313,6 +313,22 @@ module userlibrary_mod
             integer(C_INT), value, intent(IN) :: sizein
         end subroutine c_cos_doubles
 
+        function c_get_string2() &
+                result(SHT_rv) &
+                bind(C, name="AA_get_string2")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_get_string2
+
+        subroutine c_get_string2_bufferify(SHF_rv, NSHF_rv) &
+                bind(C, name="AA_get_string2_bufferify")
+            use iso_c_binding, only : C_PTR, C_SIZE_T
+            implicit none
+            type(C_PTR), intent(OUT) :: SHF_rv
+            integer(C_SIZE_T), intent(OUT) :: NSHF_rv
+        end subroutine c_get_string2_bufferify
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -327,6 +343,15 @@ module userlibrary_mod
         module procedure testoptional_1
         module procedure testoptional_2
     end interface testoptional
+
+    interface
+       subroutine SHROUD_string_copy_and_free(cptr, str) &
+         bind(c,name="ShroudStringCopyAndFree")
+         use, intrinsic :: iso_c_binding, only : C_PTR, C_CHAR
+         type(C_PTR), value, intent(in) :: cptr
+         character(kind=C_CHAR) :: str(*)
+       end subroutine SHROUD_string_copy_and_free
+    end interface
 
 contains
 
@@ -399,7 +424,7 @@ contains
 
     ! void testoptional()
     ! has_default_arg
-    ! function_index=70
+    ! function_index=71
     subroutine testoptional_0()
         ! splicer begin function.testoptional_0
         call c_testoptional_0()
@@ -408,7 +433,7 @@ contains
 
     ! void testoptional(int i=1 +intent(in)+value)
     ! has_default_arg
-    ! function_index=71
+    ! function_index=72
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -539,6 +564,22 @@ contains
         call c_cos_doubles(in, out, sizein)
         ! splicer end function.cos_doubles
     end subroutine cos_doubles
+
+    ! const std::string & getString2() +allocatable
+    ! arg_to_buffer
+    ! function_index=70
+    function get_string2() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_CHAR, C_SIZE_T
+        type(C_PTR) :: SHP_SHF_rv
+        integer(C_SIZE_T) :: NSHF_rv
+        character(len=:,kind=C_CHAR), allocatable :: SHT_rv
+        ! splicer begin function.get_string2
+        call c_get_string2_bufferify(SHP_SHF_rv, NSHF_rv)
+        ! splicer end function.get_string2
+        allocate(character(len=NSHF_rv, kind=C_CHAR):: SHT_rv)
+        call SHROUD_string_copy_and_free(SHP_SHF_rv, SHT_rv)
+    end function get_string2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

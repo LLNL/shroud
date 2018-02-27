@@ -379,6 +379,10 @@ functions:
     options:
        F_standard: 2008
 
+  # function with allocatable character result
+  - decl: const std::string& getString2() +allocatable
+
+
 
 ######################################################################
 patterns:

@@ -707,8 +707,9 @@ def initialize():
                     buf_args = [ 'lenout' ],
                     c_helper='copy_string',
                     post_call=[
-                        '*{c_var} = static_cast<void *>({cxx_var});',
-                        '*{c_var_len} = {cxx_var}{cxx_deref}size()',
+#                        '*{c_var} = static_cast<void *>({cxx_var});',
+                        '*{c_var} = {cxx_var};',
+                        '*{c_var_len} = {cxx_var}{cxx_deref}size();',
                     ],
                 ),
             ),
@@ -723,7 +724,7 @@ def initialize():
                     need_wrapper=True,
                     f_helper='copy_string',
                     post_call=[
-                        'allocate(character(len={f_var_len}, kind=C_CHAR): {f_var})',
+                        'allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})',
                         'call SHROUD_string_copy_and_free({f_cptr}, {f_var})',
                         ],
                     )

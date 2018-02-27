@@ -614,7 +614,11 @@ class Wrapf(util.WrapperMixin):
                 arg_c_names.append(arg.name)
 
             # argument declarations
-            if arg.is_function_pointer():
+            if attrs.get('_is_result', False) and is_allocatable:
+                arg_c_decl.append(
+                    'type(C_PTR), intent(OUT) :: {}'.format(
+                        arg.name))
+            elif arg.is_function_pointer():
                 absiface = self.add_abstract_interface(node, arg)
                 arg_c_decl.append(
                     'procedure({}) :: {}'.format(
@@ -871,6 +875,7 @@ class Wrapf(util.WrapperMixin):
             allocatable = c_attrs.get('allocatable', False)
             implied = c_attrs.get('implied', False)
             intent = c_attrs['intent']
+            allocatable_result = False  # XXX - kludgeish
 
             # string C functions may have their results copied
             # into an argument passed in, F_string_result_as_arg.
@@ -879,6 +884,8 @@ class Wrapf(util.WrapperMixin):
             if c_attrs.get('_is_result', False):
                 # XXX - _is_result implies a string result for now
                 # This argument is the C function result
+                if is_allocatable:
+                    allocatable_result = True
                 c_stmts = 'result' + generated_suffix
                 f_stmts = 'result' + generated_suffix
                 if not fmt_func.F_string_result_as_arg:
@@ -914,7 +921,7 @@ class Wrapf(util.WrapperMixin):
             else:
                 # Pass result as an argument to the C++ function.
                 f_arg = c_arg
-                if is_allocatable:
+                if allocatable_result:
                     # character allocatable function
                     fmt_arg.f_cptr = 'SHP_' + arg_name
                     append_format(arg_f_decl, 'type(C_PTR) :: {f_cptr}',
@@ -951,7 +958,7 @@ class Wrapf(util.WrapperMixin):
                     arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
 
             # Attributes   None=skip, True=use default, else use value
-            if is_allocatable:
+            if allocatable_result:
                 arg_c_call.append(fmt_arg.f_cptr)
             elif arg_typedef.f_args:
                 # TODO - Not sure if this is still needed.

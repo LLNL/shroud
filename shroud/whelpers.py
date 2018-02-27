@@ -179,10 +179,12 @@ int ShroudLenTrim(const char *s, int ls) {
 """
     ),
 
+    # Only used with std::string and thus C++
     copy_string=dict(
+        cxx_header='<string>',
         source="""
 // Called by Fortran to deal with allocatable character
-void int ShroudStringCopyAndFree(void *cptr, char *str) {
+extern "C" void ShroudStringCopyAndFree(void *cptr, char *str) {
     std::string * cxxstr = static_cast<std::string *>(cptr);
 
     strncpy(str, cxxstr->data(), cxxstr->size());
@@ -275,7 +277,6 @@ end interface"""
 
     # Deal with allocatable character
     copy_string=dict(
-        private=['SHROUD_string_copy_and_free'],
         interface="""
 interface
    subroutine SHROUD_string_copy_and_free(cptr, str) &
@@ -283,7 +284,7 @@ interface
      use, intrinsic :: iso_c_binding, only : C_PTR, C_CHAR
      type(C_PTR), value, intent(in) :: cptr
      character(kind=C_CHAR) :: str(*)
-   end function strlen_ptr
+   end subroutine SHROUD_string_copy_and_free
 end interface"""
         ),
     )
