@@ -524,31 +524,31 @@ void STR_get_const_string_alloc_bufferify(const void * * SHF_rv,
 // splicer end function.get_const_string_alloc_bufferify
 }
 
-// const string * getString7() +len(30)
+// const string * getConstStringPtrLen() +len(30)
 // function_index=15
 /**
  * \brief return a 'const string *' as character(*)
  *
  */
-const char * STR_get_string7()
+const char * STR_get_const_string_ptr_len()
 {
-// splicer begin function.get_string7
-    const std::string * SHCXX_rv = getString7();
+// splicer begin function.get_const_string_ptr_len
+    const std::string * SHCXX_rv = getConstStringPtrLen();
     const char * SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
-// splicer end function.get_string7
+// splicer end function.get_const_string_ptr_len
 }
 
-// void getString7(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+// void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 // function_index=45
 /**
  * \brief return a 'const string *' as character(*)
  *
  */
-void STR_get_string7_bufferify(char * SHF_rv, int NSHF_rv)
+void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
 {
-// splicer begin function.get_string7_bufferify
-    const std::string * SHCXX_rv = getString7();
+// splicer begin function.get_const_string_ptr_len_bufferify
+    const std::string * SHCXX_rv = getConstStringPtrLen();
     if (SHCXX_rv->empty()) {
         std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
@@ -559,7 +559,7 @@ void STR_get_string7_bufferify(char * SHF_rv, int NSHF_rv)
         delete SHCXX_rv;
     }
     return;
-// splicer end function.get_string7_bufferify
+// splicer end function.get_const_string_ptr_len_bufferify
 }
 
 // const std::string * getConstStringPtrAlloc() +allocatable

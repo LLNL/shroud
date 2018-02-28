@@ -269,21 +269,21 @@ module strings_mod
             integer(C_SIZE_T), intent(OUT) :: NSHF_rv
         end subroutine c_get_const_string_alloc_bufferify
 
-        function c_get_string7() &
+        function c_get_const_string_ptr_len() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_string7")
+                bind(C, name="STR_get_const_string_ptr_len")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_get_string7
+        end function c_get_const_string_ptr_len
 
-        subroutine c_get_string7_bufferify(SHF_rv, NSHF_rv) &
-                bind(C, name="STR_get_string7_bufferify")
+        subroutine c_get_const_string_ptr_len_bufferify(SHF_rv, NSHF_rv) &
+                bind(C, name="STR_get_const_string_ptr_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_get_string7_bufferify
+        end subroutine c_get_const_string_ptr_len_bufferify
 
         function c_get_const_string_ptr_alloc() &
                 result(SHT_rv) &
@@ -693,21 +693,22 @@ contains
         call SHROUD_string_copy_and_free(SHP_SHF_rv, SHT_rv)
     end function get_const_string_alloc
 
-    ! const string * getString7() +len(30)
+    ! const string * getConstStringPtrLen() +len(30)
     ! arg_to_buffer
     ! function_index=15
     !>
     !! \brief return a 'const string *' as character(*)
     !!
     !<
-    function get_string7() &
+    function get_const_string_ptr_len() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
-        ! splicer begin function.get_string7
-        call c_get_string7_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
-        ! splicer end function.get_string7
-    end function get_string7
+        ! splicer begin function.get_const_string_ptr_len
+        call c_get_const_string_ptr_len_bufferify(SHT_rv, &
+            len(SHT_rv, kind=C_INT))
+        ! splicer end function.get_const_string_ptr_len
+    end function get_const_string_ptr_len
 
     ! const std::string * getConstStringPtrAlloc() +allocatable
     ! arg_to_buffer

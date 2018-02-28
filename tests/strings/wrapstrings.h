@@ -121,9 +121,9 @@ void STR_get_const_string_as_arg_bufferify(char * output, int Noutput);
 void STR_get_const_string_alloc_bufferify(const void * * SHF_rv,
     size_t *NSHF_rv);
 
-const char * STR_get_string7();
+const char * STR_get_const_string_ptr_len();
 
-void STR_get_string7_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv);
 
 const char * STR_get_const_string_ptr_alloc();
 

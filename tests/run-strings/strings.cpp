@@ -149,10 +149,10 @@ const std::string getConstStringAlloc()
 
 // -----
 
-const std::string * getString7()
+const std::string * getConstStringPtrLen()
 {
     // Caller is responsible to free string
-    std::string * rv = new std::string("Hello");
+    std::string * rv = new std::string("getConstStringPtrLen");
     return rv;
 }
 

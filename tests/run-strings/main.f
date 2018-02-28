@@ -188,10 +188,11 @@ contains
  
 !--------------------------------------------------
 
-    ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string7()
-    call assert_true( str == "Hello")
+    str = get_const_string_ptr_len()
+    call assert_true(str == "getConstStringPtrLen", "getConstStringPtrLen")
+
+    ! string_result_as_arg
  
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ptr_alloc()
