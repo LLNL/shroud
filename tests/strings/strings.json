@@ -1872,7 +1872,7 @@
                     "attrs": {}, 
                     "const": true, 
                     "declarator": {
-                        "name": "getString2_empty", 
+                        "name": "getConstStringRefLenEmpty", 
                         "pointer": [
                             {
                                 "const": false, 
@@ -1889,36 +1889,36 @@
                         "string"
                     ]
                 }, 
-                "decl": "const string& getString2_empty() +len=30", 
-                "declgen": "const string & getString2_empty() +len(30)", 
+                "decl": "const string& getConstStringRefLenEmpty() +len=30", 
+                "declgen": "const string & getConstStringRefLenEmpty() +len(30)", 
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getString2_empty(\t);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLenEmpty(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_string2_empty", 
+                    "C_name": "STR_get_const_string_ref_len_empty", 
                     "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
                     "C_post_call_pattern": "// C_error_pattern\nif (SHCXX_rv.empty()) {\n    return NULL;\n}\n", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
-                    "F_C_call": "c_get_string2_empty_bufferify", 
-                    "F_C_name": "c_get_string2_empty", 
+                    "F_C_call": "c_get_const_string_ref_len_empty_bufferify", 
+                    "F_C_name": "c_get_const_string_ref_len_empty", 
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                     "F_arguments": "", 
-                    "F_call_code": "call c_get_string2_empty_bufferify(SHT_rv,\t len(SHT_rv, kind=C_INT))", 
-                    "F_name_function": "get_string2_empty", 
-                    "F_name_generic": "get_string2_empty", 
-                    "F_name_impl": "get_string2_empty", 
+                    "F_call_code": "call c_get_const_string_ref_len_empty_bufferify(SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                    "F_name_function": "get_const_string_ref_len_empty", 
+                    "F_name_generic": "get_const_string_ref_len_empty", 
+                    "F_name_impl": "get_const_string_ref_len_empty", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
-                    "PY_name_impl": "PY_getString2_empty", 
+                    "PY_name_impl": "PY_getConstStringRefLenEmpty", 
                     "c_const": "const ", 
                     "c_var_len": "30", 
                     "cxx_rv_decl": "const std::string & SHCXX_rv", 
-                    "function_name": "getString2_empty", 
-                    "underscore_name": "get_string2_empty"
+                    "function_name": "getConstStringRefLenEmpty", 
+                    "underscore_name": "get_const_string_ref_len_empty"
                 }, 
                 "options": {}
             }, 
@@ -1955,7 +1955,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "getString2_empty", 
+                        "name": "getConstStringRefLenEmpty", 
                         "pointer": []
                     }, 
                     "fattrs": {
@@ -1988,25 +1988,25 @@
                         "void"
                     ]
                 }, 
-                "decl": "const string& getString2_empty() +len=30", 
-                "declgen": "void getString2_empty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
+                "decl": "const string& getConstStringRefLenEmpty() +len=30", 
+                "declgen": "void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getString2_empty(\t);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLenEmpty(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_string2_empty_bufferify", 
+                    "C_name": "STR_get_const_string_ref_len_empty_bufferify", 
                     "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_get_string2_empty_bufferify", 
+                    "F_C_name": "c_get_const_string_ref_len_empty_bufferify", 
                     "c_const": "", 
                     "cxx_rv_decl": "const std::string & SHCXX_rv", 
-                    "function_name": "getString2_empty", 
+                    "function_name": "getConstStringRefLenEmpty", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "get_string2_empty"
+                    "underscore_name": "get_const_string_ref_len_empty"
                 }, 
                 "options": {
                     "wrap_c": true, 

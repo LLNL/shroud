@@ -407,16 +407,16 @@ void STR_get_const_string_ref_as_arg_bufferify(char * output,
 // splicer end function.get_const_string_ref_as_arg_bufferify
 }
 
-// const string & getString2_empty() +len(30)
+// const string & getConstStringRefLenEmpty() +len(30)
 // function_index=10
 /**
  * \brief Test returning empty string reference
  *
  */
-const char * STR_get_string2_empty()
+const char * STR_get_const_string_ref_len_empty()
 {
-// splicer begin function.get_string2_empty
-    const std::string & SHCXX_rv = getString2_empty();
+// splicer begin function.get_const_string_ref_len_empty
+    const std::string & SHCXX_rv = getConstStringRefLenEmpty();
     // C_error_pattern
     if (SHCXX_rv.empty()) {
         return NULL;
@@ -424,26 +424,27 @@ const char * STR_get_string2_empty()
 
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-// splicer end function.get_string2_empty
+// splicer end function.get_const_string_ref_len_empty
 }
 
-// void getString2_empty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+// void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 // function_index=39
 /**
  * \brief Test returning empty string reference
  *
  */
-void STR_get_string2_empty_bufferify(char * SHF_rv, int NSHF_rv)
+void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
+    int NSHF_rv)
 {
-// splicer begin function.get_string2_empty_bufferify
-    const std::string & SHCXX_rv = getString2_empty();
+// splicer begin function.get_const_string_ref_len_empty_bufferify
+    const std::string & SHCXX_rv = getConstStringRefLenEmpty();
     if (SHCXX_rv.empty()) {
         std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
     }
     return;
-// splicer end function.get_string2_empty_bufferify
+// splicer end function.get_const_string_ref_len_empty_bufferify
 }
 
 // const std::string & getStringRefAlloc() +allocatable

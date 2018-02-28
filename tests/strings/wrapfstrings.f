@@ -211,21 +211,22 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: Noutput
         end subroutine c_get_const_string_ref_as_arg_bufferify
 
-        function c_get_string2_empty() &
+        function c_get_const_string_ref_len_empty() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_string2_empty")
+                bind(C, name="STR_get_const_string_ref_len_empty")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_get_string2_empty
+        end function c_get_const_string_ref_len_empty
 
-        subroutine c_get_string2_empty_bufferify(SHF_rv, NSHF_rv) &
-                bind(C, name="STR_get_string2_empty_bufferify")
+        subroutine c_get_const_string_ref_len_empty_bufferify(SHF_rv, &
+                NSHF_rv) &
+                bind(C, name="STR_get_const_string_ref_len_empty_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_get_string2_empty_bufferify
+        end subroutine c_get_const_string_ref_len_empty_bufferify
 
         function c_get_string_ref_alloc() &
                 result(SHT_rv) &
@@ -608,22 +609,22 @@ contains
         ! splicer end function.get_const_string_ref_as_arg
     end subroutine get_const_string_ref_as_arg
 
-    ! const string & getString2_empty() +len(30)
+    ! const string & getConstStringRefLenEmpty() +len(30)
     ! arg_to_buffer
     ! function_index=10
     !>
     !! \brief Test returning empty string reference
     !!
     !<
-    function get_string2_empty() &
+    function get_const_string_ref_len_empty() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
-        ! splicer begin function.get_string2_empty
-        call c_get_string2_empty_bufferify(SHT_rv, &
+        ! splicer begin function.get_const_string_ref_len_empty
+        call c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
             len(SHT_rv, kind=C_INT))
-        ! splicer end function.get_string2_empty
-    end function get_string2_empty
+        ! splicer end function.get_const_string_ref_len_empty
+    end function get_const_string_ref_len_empty
 
     ! const std::string & getStringRefAlloc() +allocatable
     ! arg_to_buffer

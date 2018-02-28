@@ -115,7 +115,7 @@ const std::string& getConstStringRefAsArg()
     return static_str;
 }
 
-const std::string& getString2_empty()
+const std::string& getConstStringRefLenEmpty()
 {
     return static_str_empty;
 }

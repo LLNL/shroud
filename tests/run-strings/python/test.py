@@ -94,7 +94,7 @@ class Tutorial(unittest.TestCase):
         self.assertEqual(static_str, strings.getConstStringRefLen())
         self.assertEqual(static_str, strings.getConstStringRefAsArg())
 
-        self.assertEqual('', strings.getString2_empty())
+        self.assertEqual('', strings.getConstStringRefLenEmpty())
         self.assertEqual(static_str, strings.getStringRefAlloc())
 
     def testgetString5(self):

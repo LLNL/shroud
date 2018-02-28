@@ -163,8 +163,8 @@ contains
  
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string2_empty()
-    call assert_true( str == " ")
+    str = get_const_string_ref_len_empty()
+    call assert_true( str == " ", "getConstStringRefLenEmpty")
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_string_ref_alloc()

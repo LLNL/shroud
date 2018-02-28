@@ -104,9 +104,10 @@ const char * STR_get_const_string_ref_as_arg();
 void STR_get_const_string_ref_as_arg_bufferify(char * output,
     int Noutput);
 
-const char * STR_get_string2_empty();
+const char * STR_get_const_string_ref_len_empty();
 
-void STR_get_string2_empty_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
+    int NSHF_rv);
 
 const char * STR_get_string_ref_alloc();
 

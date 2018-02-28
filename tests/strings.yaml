@@ -121,7 +121,7 @@ functions:
   format:
     F_string_result_as_arg: output
 
-- decl: const string& getString2_empty() +len=30
+- decl: const string& getConstStringRefLenEmpty() +len=30
   C_error_pattern: C_invalid_name
   doxygen:
     brief: Test returning empty string reference
