@@ -245,13 +245,13 @@ module strings_mod
             integer(C_SIZE_T), intent(OUT) :: NSHF_rv
         end subroutine c_get_const_string_ref_alloc_bufferify
 
-        subroutine c_get_string5_bufferify(SHF_rv, NSHF_rv) &
-                bind(C, name="STR_get_string5_bufferify")
+        subroutine c_get_const_string_len_bufferify(SHF_rv, NSHF_rv) &
+                bind(C, name="STR_get_const_string_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_get_string5_bufferify
+        end subroutine c_get_const_string_len_bufferify
 
         subroutine c_get_string6_bufferify(output, Noutput) &
                 bind(C, name="STR_get_string6_bufferify")
@@ -644,21 +644,22 @@ contains
         call SHROUD_string_copy_and_free(SHP_SHF_rv, SHT_rv)
     end function get_const_string_ref_alloc
 
-    ! const string getString5() +len(30)
+    ! const string getConstStringLen() +len(30)
     ! arg_to_buffer
     ! function_index=12
     !>
     !! \brief return a 'const string' as argument
     !!
     !<
-    function get_string5() &
+    function get_const_string_len() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         character(kind=C_CHAR, len=30) :: SHT_rv
-        ! splicer begin function.get_string5
-        call c_get_string5_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
-        ! splicer end function.get_string5
-    end function get_string5
+        ! splicer begin function.get_const_string_len
+        call c_get_const_string_len_bufferify(SHT_rv, &
+            len(SHT_rv, kind=C_INT))
+        ! splicer end function.get_const_string_len
+    end function get_const_string_len
 
     ! void getString6(string * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer

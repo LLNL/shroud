@@ -2197,7 +2197,7 @@
                     "attrs": {}, 
                     "const": true, 
                     "declarator": {
-                        "name": "getString5", 
+                        "name": "getConstStringLen", 
                         "pointer": []
                     }, 
                     "fattrs": {
@@ -2209,25 +2209,25 @@
                         "string"
                     ]
                 }, 
-                "decl": "const string getString5() +len=30", 
-                "declgen": "const string getString5() +len(30)", 
+                "decl": "const string getConstStringLen() +len=30", 
+                "declgen": "const string getConstStringLen() +len(30)", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
                 "format": {
-                    "F_C_call": "c_get_string5_bufferify", 
+                    "F_C_call": "c_get_const_string_len_bufferify", 
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                     "F_arguments": "", 
-                    "F_call_code": "call c_get_string5_bufferify(SHT_rv,\t len(SHT_rv, kind=C_INT))", 
-                    "F_name_function": "get_string5", 
-                    "F_name_generic": "get_string5", 
-                    "F_name_impl": "get_string5", 
+                    "F_call_code": "call c_get_const_string_len_bufferify(SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                    "F_name_function": "get_const_string_len", 
+                    "F_name_generic": "get_const_string_len", 
+                    "F_name_impl": "get_const_string_len", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
-                    "PY_name_impl": "PY_getString5", 
+                    "PY_name_impl": "PY_getConstStringLen", 
                     "c_var_len": "30", 
-                    "function_name": "getString5", 
-                    "underscore_name": "get_string5"
+                    "function_name": "getConstStringLen", 
+                    "underscore_name": "get_const_string_len"
                 }, 
                 "options": {
                     "wrap_c": false
@@ -2266,7 +2266,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "getString5", 
+                        "name": "getConstStringLen", 
                         "pointer": []
                     }, 
                     "fattrs": {
@@ -2299,25 +2299,25 @@
                         "void"
                     ]
                 }, 
-                "decl": "const string getString5() +len=30", 
-                "declgen": "void getString5(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
+                "decl": "const string getConstStringLen() +len=30", 
+                "declgen": "void getConstStringLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string SHCXX_rv =\t getString5(\t);", 
+                    "C_call_code": "const std::string SHCXX_rv =\t getConstStringLen(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_string5_bufferify", 
+                    "C_name": "STR_get_const_string_len_bufferify", 
                     "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_get_string5_bufferify", 
+                    "F_C_name": "c_get_const_string_len_bufferify", 
                     "c_const": "", 
                     "cxx_rv_decl": "const std::string SHCXX_rv", 
-                    "function_name": "getString5", 
+                    "function_name": "getConstStringLen", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "get_string5"
+                    "underscore_name": "get_const_string_len"
                 }, 
                 "options": {
                     "wrap_c": true, 

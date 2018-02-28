@@ -132,7 +132,7 @@ const std::string getString4()
     return static_str;
 }
 
-const std::string getString5()
+const std::string getConstStringLen()
 {
     return static_str;
 }

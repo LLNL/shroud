@@ -174,8 +174,8 @@ contains
 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string5()
-    call assert_true( str == "dog")
+    str = get_const_string_len()
+    call assert_true( str == "dog", "getConstStringLen")
 
     ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'

@@ -137,7 +137,7 @@ functions:
 #  doxygen:
 #    brief: return a 'const string' as argument
 
-- decl: const string getString5() +len=30 # +pure
+- decl: const string getConstStringLen() +len=30 # +pure
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
