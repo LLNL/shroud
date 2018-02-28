@@ -410,6 +410,7 @@ class Wrapc(util.WrapperMixin):
         # indicate which argument contains function result, usually none
         result_arg = None
         pre_call = []      # list of temporary variable declarations
+        call_code = []
         post_call = []
 
         if cls and not is_ctor:
@@ -625,8 +626,7 @@ class Wrapc(util.WrapperMixin):
         # generate the C body
         C_return_code = 'return;'
         if is_ctor:
-            fmt_func.C_call_code = wformat('{cxx_rv_decl} = new {cxx_class}'
-                                           '({C_call_list});', fmt_func)
+            append_format(call_code, '{cxx_rv_decl} = new {cxx_class}({C_call_list});', fmt_func)
             if result_typedef.cxx_to_c is not None:
                 fmt_func.c_rv_decl = CXX_result.gen_arg_as_c(
                     name=fmt_result.c_var, params=None, continuation=True)
@@ -634,22 +634,15 @@ class Wrapc(util.WrapperMixin):
             append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:
-            fmt_func.C_call_code = 'delete %s;' % fmt_func.CXX_this
+            append_format(call_code, 'delete {CXX_this};', fmt_func)
         elif CXX_subprogram == 'subroutine':
-            fmt_func.C_call_code = wformat(
-                '{CXX_this_call}{function_name}'
-                '{CXX_template}(\t{C_call_list});',
-                fmt_func)
+            append_format(call_code, '{CXX_this_call}{function_name}'
+                          '{CXX_template}(\t{C_call_list});', fmt_func)
         else:
-            fmt_func.C_call_code = wformat(
-                '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'
-                '{CXX_template}(\t{C_call_list});',
-                fmt_func)
+            added_call_code = False
 
             if result_arg is None:
                 # The result is not passed back in an argument
-                c_statements = result_typedef.c_statements
-                intent_blk = c_statements.get('result', {})
                 if self.language == 'c':
                     pass
                 elif result_typedef.cxx_to_c is not None:
@@ -660,6 +653,8 @@ class Wrapc(util.WrapperMixin):
                     fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
                     append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
 
+                c_statements = result_typedef.c_statements
+                intent_blk = c_statements.get('result' + generated_suffix, {})
                 cmd_list = intent_blk.get('post_call', [])
                 for cmd in cmd_list:
                     append_format(post_call, cmd, fmt_result)
@@ -667,6 +662,22 @@ class Wrapc(util.WrapperMixin):
                 if 'c_helper' in intent_blk:
                     for helper in intent_blk['c_helper'].split():
                         self.c_helper[helper] = True
+            else:
+                c_statements = arg_typedef.c_statements
+                intent_blk = c_statements.get('result' + generated_suffix, {})
+                cmd_list = intent_blk.get('call_code', None)
+                if cmd_list:
+                    fmt_arg = fmtargs[result_arg.name]['fmtc']
+                    added_call_code = True
+                    need_wrapper = True
+                    for cmd in cmd_list:
+                        append_format(call_code, cmd, fmt_arg)
+                # post_call already added when result_arg is not None
+
+            if not added_call_code:
+                append_format(call_code, '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'
+                              '{CXX_template}(\t{C_call_list});', fmt_func)
+
 
             if subprogram == 'function':
                 # Note: A C function may be converted into a Fortran subroutine
@@ -691,6 +702,7 @@ class Wrapc(util.WrapperMixin):
 
         if pre_call:
             fmt_func.C_pre_call = '\n'.join(pre_call)
+        fmt_func.C_call_code = '\n'.join(call_code)
         if post_call:
             fmt_func.C_post_call = '\n'.join(post_call)
 
@@ -705,7 +717,7 @@ class Wrapc(util.WrapperMixin):
             # copy-out values, clean up
             C_code = [1]
             C_code.extend(pre_call)
-            C_code.append(fmt_func.C_call_code)
+            C_code.extend(call_code)
             C_code.extend(post_call_pattern)
             C_code.extend(post_call)
             C_code.append(fmt_func.C_return_code)

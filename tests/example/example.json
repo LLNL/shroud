@@ -8262,10 +8262,9 @@
                 "decl": "const std::string& getString2() +allocatable", 
                 "declgen": "void getString2(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getString2(\t);", 
+                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getString2(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
                     "C_call_list": "", 
                     "C_name": "AA_get_string2_bufferify", 
-                    "C_post_call": "*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv.size();", 
                     "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -9067,9 +9066,11 @@
                         "lenout"
                     ], 
                     "c_helper": "copy_string", 
-                    "post_call": [
+                    "call_code": [
+                        "std::string * {cxx_var} = new std::string;", 
+                        "*{cxx_var} = {CXX_this_call}{function_name}{CXX_template}(\t{C_call_list});", 
                         "*{c_var} = {cxx_var};", 
-                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
+                        "*{c_var_len} = {cxx_var}->size();"
                     ]
                 }
             }, 

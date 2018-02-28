@@ -363,9 +363,10 @@ const char * AA_get_string2()
 void AA_get_string2_bufferify(const void * * SHF_rv, size_t *NSHF_rv)
 {
 // splicer begin function.get_string2_bufferify
-    const std::string & SHCXX_rv = getString2();
+    std::string * SHCXX_rv = new std::string;
+    *SHCXX_rv = getString2();
     *SHF_rv = SHCXX_rv;
-    *NSHF_rv = SHCXX_rv.size();
+    *NSHF_rv = SHCXX_rv->size();
     return;
 // splicer end function.get_string2_bufferify
 }
