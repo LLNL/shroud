@@ -393,6 +393,27 @@ PY_getString7(
 // splicer end function.get_string7
 }
 
+static char PY_getStringPtrAlloc__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getStringPtrAlloc(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// const std::string * getStringPtrAlloc() +allocatable
+// splicer begin function.get_string_ptr_alloc
+    const std::string * SHCXX_rv = getStringPtrAlloc();
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_string_ptr_alloc
+}
+
 static char PY_acceptStringConstReference__doc__[] =
 "documentation"
 ;
@@ -644,6 +665,8 @@ static PyMethodDef PY_methods[] = {
     PY_getStringAlloc__doc__},
 {"getString7", (PyCFunction)PY_getString7, METH_NOARGS,
     PY_getString7__doc__},
+{"getStringPtrAlloc", (PyCFunction)PY_getStringPtrAlloc, METH_NOARGS,
+    PY_getStringPtrAlloc__doc__},
 {"acceptStringConstReference",
     (PyCFunction)PY_acceptStringConstReference,
     METH_VARARGS|METH_KEYWORDS, PY_acceptStringConstReference__doc__},

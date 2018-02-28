@@ -352,6 +352,7 @@ class Wrapc(util.WrapperMixin):
         result_is_const = ast.const
         is_ctor = CXX_result.fattrs.get('_constructor', False)
         is_dtor = CXX_result.fattrs.get('_destructor', False)
+        is_allocatable = CXX_result.fattrs.get('allocatable', False)
         is_const = ast.func_const
 
         # C++ functions which return 'this',
@@ -669,6 +670,16 @@ class Wrapc(util.WrapperMixin):
                 cmd_list = intent_blk.get('call_code', None)
                 if cmd_list:
                     fmt_arg = fmtargs[result_arg.name]['fmtc']
+
+                    # cxx_alloc is only used when function has allocatable attribute
+                    # always assign into a new string
+                    if is_allocatable:
+                        if CXX_node.ast.is_pointer():
+                            fmt_arg.cxx_alloc = ''
+                        else:
+                            fmt_arg.cxx_alloc = '*'
+                            fmt_arg.c_const = ''  # must be able to assign to new string
+
                     added_call_code = True
                     need_wrapper = True
                     for cmd in cmd_list:

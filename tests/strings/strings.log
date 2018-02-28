@@ -30,6 +30,8 @@ C function void getString6(string * output +intent(out)+len(Noutput))
 C function void getStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 C function const string * getString7() +len(30)
 C function void getString7(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C function const std::string * getStringPtrAlloc() +allocatable
+C function void getStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 C function void acceptStringConstReference(const std::string & arg1 +intent(in))
 C function void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))
 C function void acceptStringReferenceOut(std::string & arg1 +intent(out))
@@ -82,6 +84,8 @@ Fortran function const std::string getStringAlloc() +allocatable
 C-interface function void getStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 C-interface, Fortran function const string * getString7() +len(30)
 C-interface function void getString7(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C-interface, Fortran function const std::string * getStringPtrAlloc() +allocatable
+C-interface function void getStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 C-interface, Fortran function void acceptStringConstReference(const std::string & arg1 +intent(in))
 C-interface function void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))
 C-interface, Fortran function void acceptStringReferenceOut(std::string & arg1 +intent(out))
@@ -115,6 +119,7 @@ Python function const string getString5() +len(30)
 Python function const string getString6()
 Python function const std::string getStringAlloc() +allocatable
 Python function const string * getString7() +len(30)
+Python function const std::string * getStringPtrAlloc() +allocatable
 Python function void acceptStringConstReference(const std::string & arg1 +intent(in))
 Python function void acceptStringReferenceOut(std::string & arg1 +intent(out))
 Python function void acceptStringReference(std::string & arg1 +intent(inout))

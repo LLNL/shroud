@@ -106,6 +106,7 @@ class Tutorial(unittest.TestCase):
     def testgetString7(self):
         """return std::string pointer"""
         self.assertEqual('Hello', strings.getString7())
+        self.assertEqual('getStringPtrAlloc', strings.getStringPtrAlloc())
 
     def testacceptStringConstReference(self):
         self.assertEqual(None, strings.acceptStringConstReference('cat'))

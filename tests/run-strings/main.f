@@ -168,7 +168,7 @@ contains
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_string_ref_alloc()
-    call assert_true( str == "dog", "get_string_ref_alloc")
+    call assert_true( str == "dog", "getStringRefAlloc")
 
 !--------------------------------------------------
 
@@ -184,7 +184,7 @@ contains
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_string_alloc()
-    call assert_true( str == "getStringAlloc", "get_string_alloc")
+    call assert_true( str == "getStringAlloc", "getStringAlloc")
  
 !--------------------------------------------------
 
@@ -193,6 +193,10 @@ contains
     str = get_string7()
     call assert_true( str == "Hello")
  
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_string_ptr_alloc()
+    call assert_true( str == "getStringPtrAlloc", "getStringPtrAlloc")
+
 !--------------------------------------------------
 
     call accept_string_const_reference("cat")

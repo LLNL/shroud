@@ -67,7 +67,8 @@ const std::string getString5();
 const std::string getString6();
 const std::string getStringAlloc();
 
-std::string * getString7();
+const std::string * getString7();
+const std::string * getStringPtrAlloc();
 
 void acceptName_instance(std::string arg1);
 

@@ -164,6 +164,8 @@ functions:
   format:
     C_finalize_buf: delete {cxx_var};
 
+- decl: const std::string * getStringPtrAlloc() +allocatable
+
 ########################################
 
 - decl: void acceptStringConstReference(const std::string & arg1)
