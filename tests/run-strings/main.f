@@ -153,8 +153,8 @@ contains
 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string2()
-    call assert_true( str == "dog")
+    str = get_const_string_ref_len()
+    call assert_true( str == "dog", "getConstStringRefLen")
 
     ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'

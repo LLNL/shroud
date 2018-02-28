@@ -17,8 +17,8 @@ C function const char * getCharPtr3()
 C function void getCharPtr3(char * output +intent(out)+len(Noutput))
 C function const string & getConstStringRefPure() +pure
 C function void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
-C function const string & getString2() +len(30)
-C function void getString2(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C function const string & getConstStringRefLen() +len(30)
+C function void getConstStringRefLen(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function const string & getString3()
 C function void getString3(string & output +intent(out)+len(Noutput))
 C function const string & getString2_empty() +len(30)
@@ -67,8 +67,8 @@ C-interface function void getCharPtr3(char * output +intent(out)+len(Noutput))
 Fortran function void getCharPtr3(char * output +intent(out)+len(Noutput))
 C-interface, Fortran function const string & getConstStringRefPure() +pure
 C-interface function void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
-C-interface, Fortran function const string & getString2() +len(30)
-C-interface function void getString2(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C-interface, Fortran function const string & getConstStringRefLen() +len(30)
+C-interface function void getConstStringRefLen(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C-interface function const string & getString3()
 C-interface function void getString3(string & output +intent(out)+len(Noutput))
 Fortran function void getString3(string & output +intent(out)+len(Noutput))
@@ -111,7 +111,7 @@ Python function const char * getCharPtr1() +pure
 Python function const char * getCharPtr2() +len(30)
 Python function const char * getCharPtr3()
 Python function const string & getConstStringRefPure() +pure
-Python function const string & getString2() +len(30)
+Python function const string & getConstStringRefLen() +len(30)
 Python function const string & getString3()
 Python function const string & getString2_empty() +len(30)
 Python function const std::string & getStringRefAlloc() +allocatable

@@ -105,7 +105,7 @@ const std::string& getConstStringRefPure()
     return static_str;
 }
 
-const std::string& getString2()
+const std::string& getConstStringRefLen()
 {
     return static_str;
 }

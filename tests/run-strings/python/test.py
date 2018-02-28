@@ -91,7 +91,7 @@ class Tutorial(unittest.TestCase):
         # The variations are useful for the Fortran API,
         # but really no difference in the Python API.
         self.assertEqual(static_str, strings.getConstStringRefPure())
-        self.assertEqual(static_str, strings.getString2())
+        self.assertEqual(static_str, strings.getConstStringRefLen())
         self.assertEqual(static_str, strings.getString3())
 
         self.assertEqual('', strings.getString2_empty())

@@ -95,9 +95,9 @@ const char * STR_get_const_string_ref_pure();
 void STR_get_const_string_ref_pure_bufferify(char * SHF_rv,
     int NSHF_rv);
 
-const char * STR_get_string2();
+const char * STR_get_const_string_ref_len();
 
-void STR_get_string2_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv);
 
 const char * STR_get_string3();
 
