@@ -101,7 +101,10 @@ functions:
     F_string_result_as_arg: output
 
 # work-in-progress   allocatable function
-#- decl: const std::string& Function4c(
+#- decl: const std::string Function4a_alloc(
+#    const std::string& arg1,
+#    const std::string& arg2 ) +allocatable
+#- decl: const std::string& Function4b_alloc(
 #    const std::string& arg1,
 #    const std::string& arg2 ) +allocatable
 

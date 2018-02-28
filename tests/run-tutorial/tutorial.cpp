@@ -95,10 +95,17 @@ const std::string& Function4b(const std::string& arg1, const std::string& arg2)
     return global_str;
 }
 
-const std::string Function4c(const std::string& arg1, const std::string& arg2)
+const std::string Function4a_alloc(const std::string& arg1, const std::string& arg2)
 {
-    last_function_called = "Function4c";
+    last_function_called = "Function4a_alloc";
     return arg1 + arg2;
+}
+
+const std::string& Function4b_alloc(const std::string& arg1, const std::string& arg2)
+{
+    last_function_called = "Function4b_alloc";
+    global_str = arg1 + arg2;
+    return global_str;
 }
 
 double Function5(double arg1, bool arg2)
