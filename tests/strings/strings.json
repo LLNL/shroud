@@ -2343,7 +2343,7 @@
                     "attrs": {}, 
                     "const": true, 
                     "declarator": {
-                        "name": "getString6", 
+                        "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
                     "fattrs": {}, 
@@ -2353,16 +2353,16 @@
                         "string"
                     ]
                 }, 
-                "decl": "const string getString6()", 
-                "declgen": "const string getString6()", 
+                "decl": "const string getConstStringAsArg()", 
+                "declgen": "const string getConstStringAsArg()", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
                 "format": {
                     "F_string_result_as_arg": "output", 
-                    "PY_name_impl": "PY_getString6", 
-                    "function_name": "getString6", 
-                    "underscore_name": "get_string6"
+                    "PY_name_impl": "PY_getConstStringAsArg", 
+                    "function_name": "getConstStringAsArg", 
+                    "underscore_name": "get_const_string_as_arg"
                 }, 
                 "options": {
                     "wrap_c": false, 
@@ -2402,7 +2402,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "getString6", 
+                        "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
                     "fattrs": {}, 
@@ -2433,26 +2433,26 @@
                         "void"
                     ]
                 }, 
-                "decl": "const string getString6()", 
-                "declgen": "void getString6(string * output +intent(out)+len(Noutput))", 
+                "decl": "const string getConstStringAsArg()", 
+                "declgen": "void getConstStringAsArg(string * output +intent(out)+len(Noutput))", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string SHCXX_rv =\t getString6(\t);", 
+                    "C_call_code": "const std::string SHCXX_rv =\t getConstStringAsArg(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_string6_bufferify", 
+                    "C_name": "STR_get_const_string_as_arg_bufferify", 
                     "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHCXX_rv.c_str());\n}", 
                     "C_prototype": "char * output,\t int Noutput", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_get_string6_bufferify", 
+                    "F_C_name": "c_get_const_string_as_arg_bufferify", 
                     "F_string_result_as_arg": "output", 
                     "c_const": "", 
                     "cxx_rv_decl": "const std::string SHCXX_rv", 
-                    "function_name": "getString6", 
+                    "function_name": "getConstStringAsArg", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "get_string6"
+                    "underscore_name": "get_const_string_as_arg"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2471,7 +2471,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "getString6", 
+                        "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
                     "fattrs": {}, 
@@ -2502,24 +2502,24 @@
                         "void"
                     ]
                 }, 
-                "decl": "const string getString6()", 
-                "declgen": "void getString6(string * output +intent(out)+len(Noutput))", 
+                "decl": "const string getConstStringAsArg()", 
+                "declgen": "void getConstStringAsArg(string * output +intent(out)+len(Noutput))", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
                 "format": {
-                    "F_C_call": "c_get_string6_bufferify", 
+                    "F_C_call": "c_get_const_string_as_arg_bufferify", 
                     "F_arg_c_call": "output,\t len(output, kind=C_INT)", 
                     "F_arguments": "output", 
-                    "F_call_code": "call c_get_string6_bufferify(output,\t len(output, kind=C_INT))", 
-                    "F_name_function": "get_string6", 
-                    "F_name_generic": "get_string6", 
-                    "F_name_impl": "get_string6", 
+                    "F_call_code": "call c_get_const_string_as_arg_bufferify(output,\t len(output, kind=C_INT))", 
+                    "F_name_function": "get_const_string_as_arg", 
+                    "F_name_generic": "get_const_string_as_arg", 
+                    "F_name_impl": "get_const_string_as_arg", 
                     "F_string_result_as_arg": "output", 
                     "F_subprogram": "subroutine", 
-                    "function_name": "getString6", 
+                    "function_name": "getConstStringAsArg", 
                     "function_suffix": "", 
-                    "underscore_name": "get_string6"
+                    "underscore_name": "get_const_string_as_arg"
                 }, 
                 "options": {
                     "wrap_c": false, 

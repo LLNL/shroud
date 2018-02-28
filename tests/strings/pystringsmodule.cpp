@@ -330,25 +330,25 @@ PY_getConstStringLen(
 // splicer end function.get_const_string_len
 }
 
-static char PY_getString6__doc__[] =
+static char PY_getConstStringAsArg__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_getString6(
+PY_getConstStringAsArg(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string getString6()
-// splicer begin function.get_string6
-    const std::string SHCXX_rv = getString6();
+// const string getConstStringAsArg()
+// splicer begin function.get_const_string_as_arg
+    const std::string SHCXX_rv = getConstStringAsArg();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_string6
+// splicer end function.get_const_string_as_arg
 }
 
 static char PY_getConstStringAlloc__doc__[] =
@@ -659,8 +659,8 @@ static PyMethodDef PY_methods[] = {
     METH_NOARGS, PY_getConstStringRefAlloc__doc__},
 {"getConstStringLen", (PyCFunction)PY_getConstStringLen, METH_NOARGS,
     PY_getConstStringLen__doc__},
-{"getString6", (PyCFunction)PY_getString6, METH_NOARGS,
-    PY_getString6__doc__},
+{"getConstStringAsArg", (PyCFunction)PY_getConstStringAsArg,
+    METH_NOARGS, PY_getConstStringAsArg__doc__},
 {"getConstStringAlloc", (PyCFunction)PY_getConstStringAlloc,
     METH_NOARGS, PY_getConstStringAlloc__doc__},
 {"getString7", (PyCFunction)PY_getString7, METH_NOARGS,

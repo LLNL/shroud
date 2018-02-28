@@ -142,7 +142,7 @@ functions:
   doxygen:
     brief: return a 'const string' as argument
 
-- decl: const string getString6() # +pure
+- decl: const string getConstStringAsArg() # +pure
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument

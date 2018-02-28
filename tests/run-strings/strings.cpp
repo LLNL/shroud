@@ -137,7 +137,7 @@ const std::string getConstStringLen()
     return static_str;
 }
 
-const std::string getString6()
+const std::string getConstStringAsArg()
 {
     return static_str;
 }

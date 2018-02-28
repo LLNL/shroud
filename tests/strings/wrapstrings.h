@@ -116,7 +116,7 @@ void STR_get_const_string_ref_alloc_bufferify(const void * * SHF_rv,
 
 void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv);
 
-void STR_get_string6_bufferify(char * output, int Noutput);
+void STR_get_const_string_as_arg_bufferify(char * output, int Noutput);
 
 void STR_get_const_string_alloc_bufferify(const void * * SHF_rv,
     size_t *NSHF_rv);

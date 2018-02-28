@@ -64,7 +64,7 @@ const std::string& getConstStringRefAlloc();
 
 const std::string getString4();
 const std::string getConstStringLen();
-const std::string getString6();
+const std::string getConstStringAsArg();
 const std::string getConstStringAlloc();
 
 const std::string * getString7();

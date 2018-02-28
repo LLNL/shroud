@@ -491,23 +491,23 @@ void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_const_string_len_bufferify
 }
 
-// void getString6(string * output +intent(out)+len(Noutput))
+// void getConstStringAsArg(string * output +intent(out)+len(Noutput))
 // function_index=42
 /**
  * \brief return a 'const string' as argument
  *
  */
-void STR_get_string6_bufferify(char * output, int Noutput)
+void STR_get_const_string_as_arg_bufferify(char * output, int Noutput)
 {
-// splicer begin function.get_string6_bufferify
-    const std::string SHCXX_rv = getString6();
+// splicer begin function.get_const_string_as_arg_bufferify
+    const std::string SHCXX_rv = getConstStringAsArg();
     if (SHCXX_rv.empty()) {
         std::memset(output, ' ', Noutput);
     } else {
         ShroudStrCopy(output, Noutput, SHCXX_rv.c_str());
     }
     return;
-// splicer end function.get_string6_bufferify
+// splicer end function.get_const_string_as_arg_bufferify
 }
 
 // void getConstStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable

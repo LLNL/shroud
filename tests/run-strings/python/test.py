@@ -100,7 +100,7 @@ class Tutorial(unittest.TestCase):
     def testgetString5(self):
         """return std::string"""
         self.assertEqual(static_str, strings.getConstStringLen())
-        self.assertEqual(static_str, strings.getString6())
+        self.assertEqual(static_str, strings.getConstStringAsArg())
         self.assertEqual('getConstStringAlloc', strings.getConstStringAlloc())
 
     def testgetString7(self):

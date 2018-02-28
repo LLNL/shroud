@@ -175,16 +175,16 @@ contains
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_len()
-    call assert_true( str == "dog", "getConstStringLen")
+    call assert_true(str == "dog", "getConstStringLen")
 
     ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_string6(str)
-    call assert_true( str == "dog")
+    call get_const_string_as_arg(str)
+    call assert_true(str == "dog", "getConstStringAsArg")
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_alloc()
-    call assert_true( str == "getConstStringAlloc", "getConstStringAlloc")
+    call assert_true(str == "getConstStringAlloc", "getConstStringAlloc")
  
 !--------------------------------------------------
 
