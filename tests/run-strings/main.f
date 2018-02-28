@@ -167,8 +167,8 @@ contains
     call assert_true( str == " ", "getConstStringRefLenEmpty")
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string_ref_alloc()
-    call assert_true( str == "dog", "getStringRefAlloc")
+    str = get_const_string_ref_alloc()
+    call assert_true( str == "dog", "getConstStringRefAlloc")
 
 !--------------------------------------------------
 
@@ -183,8 +183,8 @@ contains
     call assert_true( str == "dog")
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string_alloc()
-    call assert_true( str == "getStringAlloc", "getStringAlloc")
+    str = get_const_string_alloc()
+    call assert_true( str == "getConstStringAlloc", "getConstStringAlloc")
  
 !--------------------------------------------------
 
@@ -194,8 +194,8 @@ contains
     call assert_true( str == "Hello")
  
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string_ptr_alloc()
-    call assert_true( str == "getStringPtrAlloc", "getStringPtrAlloc")
+    str = get_const_string_ptr_alloc()
+    call assert_true( str == "getConstStringPtrAlloc", "getConstStringPtrAlloc")
 
 !--------------------------------------------------
 

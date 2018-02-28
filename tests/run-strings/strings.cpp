@@ -120,7 +120,7 @@ const std::string& getConstStringRefLenEmpty()
     return static_str_empty;
 }
 
-const std::string& getStringRefAlloc()
+const std::string& getConstStringRefAlloc()
 {
     return static_str;
 }
@@ -142,9 +142,9 @@ const std::string getString6()
     return static_str;
 }
 
-const std::string getStringAlloc()
+const std::string getConstStringAlloc()
 {
-    return std::string("getStringAlloc");
+    return std::string("getConstStringAlloc");
 }
 
 // -----
@@ -156,10 +156,10 @@ const std::string * getString7()
     return rv;
 }
 
-const std::string * getStringPtrAlloc()
+const std::string * getConstStringPtrAlloc()
 {
     // Caller is responsible to free string
-    std::string * rv = new std::string("getStringPtrAlloc");
+    std::string * rv = new std::string("getConstStringPtrAlloc");
     return rv;
 }
 

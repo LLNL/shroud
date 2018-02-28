@@ -126,7 +126,7 @@ functions:
   doxygen:
     brief: Test returning empty string reference
 
-- decl: const std::string& getStringRefAlloc() +allocatable
+- decl: const std::string& getConstStringRefAlloc() +allocatable
 
 ########################################
 # return std::string
@@ -149,7 +149,7 @@ functions:
   format:
     F_string_result_as_arg: output
 
-- decl: const std::string getStringAlloc() +allocatable
+- decl: const std::string getConstStringAlloc() +allocatable
 
 ########################################
 # return std::string pointer
@@ -164,7 +164,7 @@ functions:
   format:
     C_finalize_buf: delete {cxx_var};
 
-- decl: const std::string * getStringPtrAlloc() +allocatable
+- decl: const std::string * getConstStringPtrAlloc() +allocatable
 
 ########################################
 

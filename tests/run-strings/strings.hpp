@@ -60,15 +60,15 @@ const std::string& getConstStringRefPure();
 const std::string& getConstStringRefLen();
 const std::string& getConstStringRefAsArg();
 const std::string& getConstStringRefLenEmpty();
-const std::string& getStringRefAlloc();
+const std::string& getConstStringRefAlloc();
 
 const std::string getString4();
 const std::string getString5();
 const std::string getString6();
-const std::string getStringAlloc();
+const std::string getConstStringAlloc();
 
 const std::string * getString7();
-const std::string * getStringPtrAlloc();
+const std::string * getConstStringPtrAlloc();
 
 void acceptName_instance(std::string arg1);
 

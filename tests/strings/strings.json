@@ -2039,7 +2039,7 @@
                     "attrs": {}, 
                     "const": true, 
                     "declarator": {
-                        "name": "getStringRefAlloc", 
+                        "name": "getConstStringRefAlloc", 
                         "pointer": [
                             {
                                 "const": false, 
@@ -2056,31 +2056,31 @@
                         "std::string"
                     ]
                 }, 
-                "decl": "const std::string& getStringRefAlloc() +allocatable", 
-                "declgen": "const std::string & getStringRefAlloc() +allocatable", 
+                "decl": "const std::string& getConstStringRefAlloc() +allocatable", 
+                "declgen": "const std::string & getConstStringRefAlloc() +allocatable", 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getStringRefAlloc(\t);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_string_ref_alloc", 
+                    "C_name": "STR_get_const_string_ref_alloc", 
                     "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
-                    "F_C_call": "c_get_string_ref_alloc_bufferify", 
-                    "F_C_name": "c_get_string_ref_alloc", 
+                    "F_C_call": "c_get_const_string_ref_alloc_bufferify", 
+                    "F_C_name": "c_get_const_string_ref_alloc", 
                     "F_arg_c_call": "SHP_SHF_rv,\t NSHF_rv", 
                     "F_arguments": "", 
-                    "F_call_code": "call c_get_string_ref_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
-                    "F_name_function": "get_string_ref_alloc", 
-                    "F_name_generic": "get_string_ref_alloc", 
-                    "F_name_impl": "get_string_ref_alloc", 
+                    "F_call_code": "call c_get_const_string_ref_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
+                    "F_name_function": "get_const_string_ref_alloc", 
+                    "F_name_generic": "get_const_string_ref_alloc", 
+                    "F_name_impl": "get_const_string_ref_alloc", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
-                    "PY_name_impl": "PY_getStringRefAlloc", 
+                    "PY_name_impl": "PY_getConstStringRefAlloc", 
                     "c_const": "const ", 
                     "cxx_rv_decl": "const std::string & SHCXX_rv", 
-                    "function_name": "getStringRefAlloc", 
-                    "underscore_name": "get_string_ref_alloc"
+                    "function_name": "getConstStringRefAlloc", 
+                    "underscore_name": "get_const_string_ref_alloc"
                 }, 
                 "options": {}
             }, 
@@ -2119,7 +2119,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "getStringRefAlloc", 
+                        "name": "getConstStringRefAlloc", 
                         "pointer": []
                     }, 
                     "fattrs": {
@@ -2156,21 +2156,21 @@
                         "void"
                     ]
                 }, 
-                "decl": "const std::string& getStringRefAlloc() +allocatable", 
-                "declgen": "void getStringRefAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
+                "decl": "const std::string& getConstStringRefAlloc() +allocatable", 
+                "declgen": "void getConstStringRefAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
                 "format": {
-                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getStringRefAlloc(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
+                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getConstStringRefAlloc(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_string_ref_alloc_bufferify", 
+                    "C_name": "STR_get_const_string_ref_alloc_bufferify", 
                     "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_get_string_ref_alloc_bufferify", 
+                    "F_C_name": "c_get_const_string_ref_alloc_bufferify", 
                     "c_const": "", 
                     "cxx_rv_decl": "const std::string & SHCXX_rv", 
-                    "function_name": "getStringRefAlloc", 
+                    "function_name": "getConstStringRefAlloc", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "get_string_ref_alloc"
+                    "underscore_name": "get_const_string_ref_alloc"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2545,7 +2545,7 @@
                     "attrs": {}, 
                     "const": true, 
                     "declarator": {
-                        "name": "getStringAlloc", 
+                        "name": "getConstStringAlloc", 
                         "pointer": []
                     }, 
                     "fattrs": {
@@ -2557,21 +2557,21 @@
                         "std::string"
                     ]
                 }, 
-                "decl": "const std::string getStringAlloc() +allocatable", 
-                "declgen": "const std::string getStringAlloc() +allocatable", 
+                "decl": "const std::string getConstStringAlloc() +allocatable", 
+                "declgen": "const std::string getConstStringAlloc() +allocatable", 
                 "format": {
-                    "F_C_call": "c_get_string_alloc_bufferify", 
+                    "F_C_call": "c_get_const_string_alloc_bufferify", 
                     "F_arg_c_call": "SHP_SHF_rv,\t NSHF_rv", 
                     "F_arguments": "", 
-                    "F_call_code": "call c_get_string_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
-                    "F_name_function": "get_string_alloc", 
-                    "F_name_generic": "get_string_alloc", 
-                    "F_name_impl": "get_string_alloc", 
+                    "F_call_code": "call c_get_const_string_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
+                    "F_name_function": "get_const_string_alloc", 
+                    "F_name_generic": "get_const_string_alloc", 
+                    "F_name_impl": "get_const_string_alloc", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
-                    "PY_name_impl": "PY_getStringAlloc", 
-                    "function_name": "getStringAlloc", 
-                    "underscore_name": "get_string_alloc"
+                    "PY_name_impl": "PY_getConstStringAlloc", 
+                    "function_name": "getConstStringAlloc", 
+                    "underscore_name": "get_const_string_alloc"
                 }, 
                 "options": {
                     "wrap_c": false
@@ -2612,7 +2612,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "getStringAlloc", 
+                        "name": "getConstStringAlloc", 
                         "pointer": []
                     }, 
                     "fattrs": {
@@ -2649,21 +2649,21 @@
                         "void"
                     ]
                 }, 
-                "decl": "const std::string getStringAlloc() +allocatable", 
-                "declgen": "void getStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
+                "decl": "const std::string getConstStringAlloc() +allocatable", 
+                "declgen": "void getConstStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
                 "format": {
-                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getStringAlloc(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
+                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getConstStringAlloc(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_string_alloc_bufferify", 
+                    "C_name": "STR_get_const_string_alloc_bufferify", 
                     "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_get_string_alloc_bufferify", 
+                    "F_C_name": "c_get_const_string_alloc_bufferify", 
                     "c_const": "", 
                     "cxx_rv_decl": "const std::string SHCXX_rv", 
-                    "function_name": "getStringAlloc", 
+                    "function_name": "getConstStringAlloc", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "get_string_alloc"
+                    "underscore_name": "get_const_string_alloc"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -2863,7 +2863,7 @@
                     "attrs": {}, 
                     "const": true, 
                     "declarator": {
-                        "name": "getStringPtrAlloc", 
+                        "name": "getConstStringPtrAlloc", 
                         "pointer": [
                             {
                                 "const": false, 
@@ -2880,31 +2880,31 @@
                         "std::string"
                     ]
                 }, 
-                "decl": "const std::string * getStringPtrAlloc() +allocatable", 
-                "declgen": "const std::string * getStringPtrAlloc() +allocatable", 
+                "decl": "const std::string * getConstStringPtrAlloc() +allocatable", 
+                "declgen": "const std::string * getConstStringPtrAlloc() +allocatable", 
                 "format": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t getStringPtrAlloc(\t);", 
+                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_string_ptr_alloc", 
+                    "C_name": "STR_get_const_string_ptr_alloc", 
                     "C_post_call": "const char * SHC_rv = SHCXX_rv->c_str();", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
-                    "F_C_call": "c_get_string_ptr_alloc_bufferify", 
-                    "F_C_name": "c_get_string_ptr_alloc", 
+                    "F_C_call": "c_get_const_string_ptr_alloc_bufferify", 
+                    "F_C_name": "c_get_const_string_ptr_alloc", 
                     "F_arg_c_call": "SHP_SHF_rv,\t NSHF_rv", 
                     "F_arguments": "", 
-                    "F_call_code": "call c_get_string_ptr_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
-                    "F_name_function": "get_string_ptr_alloc", 
-                    "F_name_generic": "get_string_ptr_alloc", 
-                    "F_name_impl": "get_string_ptr_alloc", 
+                    "F_call_code": "call c_get_const_string_ptr_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
+                    "F_name_function": "get_const_string_ptr_alloc", 
+                    "F_name_generic": "get_const_string_ptr_alloc", 
+                    "F_name_impl": "get_const_string_ptr_alloc", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
-                    "PY_name_impl": "PY_getStringPtrAlloc", 
+                    "PY_name_impl": "PY_getConstStringPtrAlloc", 
                     "c_const": "const ", 
                     "cxx_rv_decl": "const std::string * SHCXX_rv", 
-                    "function_name": "getStringPtrAlloc", 
-                    "underscore_name": "get_string_ptr_alloc"
+                    "function_name": "getConstStringPtrAlloc", 
+                    "underscore_name": "get_const_string_ptr_alloc"
                 }, 
                 "options": {}
             }, 
@@ -2943,7 +2943,7 @@
                     "attrs": {}, 
                     "const": false, 
                     "declarator": {
-                        "name": "getStringPtrAlloc", 
+                        "name": "getConstStringPtrAlloc", 
                         "pointer": []
                     }, 
                     "fattrs": {
@@ -2980,21 +2980,21 @@
                         "void"
                     ]
                 }, 
-                "decl": "const std::string * getStringPtrAlloc() +allocatable", 
-                "declgen": "void getStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
+                "decl": "const std::string * getConstStringPtrAlloc() +allocatable", 
+                "declgen": "void getConstStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
                 "format": {
-                    "C_call_code": "const std::string * SHCXX_rv = new std::string;\nSHCXX_rv = getStringPtrAlloc(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
+                    "C_call_code": "const std::string * SHCXX_rv = new std::string;\nSHCXX_rv = getConstStringPtrAlloc(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
                     "C_call_list": "", 
-                    "C_name": "STR_get_string_ptr_alloc_bufferify", 
+                    "C_name": "STR_get_const_string_ptr_alloc_bufferify", 
                     "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_get_string_ptr_alloc_bufferify", 
+                    "F_C_name": "c_get_const_string_ptr_alloc_bufferify", 
                     "c_const": "", 
                     "cxx_rv_decl": "const std::string * SHCXX_rv", 
-                    "function_name": "getStringPtrAlloc", 
+                    "function_name": "getConstStringPtrAlloc", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "get_string_ptr_alloc"
+                    "underscore_name": "get_const_string_ptr_alloc"
                 }, 
                 "options": {
                     "wrap_c": true, 

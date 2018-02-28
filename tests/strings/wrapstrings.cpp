@@ -447,29 +447,29 @@ void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
 // splicer end function.get_const_string_ref_len_empty_bufferify
 }
 
-// const std::string & getStringRefAlloc() +allocatable
+// const std::string & getConstStringRefAlloc() +allocatable
 // function_index=11
-const char * STR_get_string_ref_alloc()
+const char * STR_get_const_string_ref_alloc()
 {
-// splicer begin function.get_string_ref_alloc
-    const std::string & SHCXX_rv = getStringRefAlloc();
+// splicer begin function.get_const_string_ref_alloc
+    const std::string & SHCXX_rv = getConstStringRefAlloc();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-// splicer end function.get_string_ref_alloc
+// splicer end function.get_const_string_ref_alloc
 }
 
-// void getStringRefAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+// void getConstStringRefAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 // function_index=40
-void STR_get_string_ref_alloc_bufferify(const void * * SHF_rv,
+void STR_get_const_string_ref_alloc_bufferify(const void * * SHF_rv,
     size_t *NSHF_rv)
 {
-// splicer begin function.get_string_ref_alloc_bufferify
+// splicer begin function.get_const_string_ref_alloc_bufferify
     std::string * SHCXX_rv = new std::string;
-    *SHCXX_rv = getStringRefAlloc();
+    *SHCXX_rv = getConstStringRefAlloc();
     *SHF_rv = SHCXX_rv;
     *NSHF_rv = SHCXX_rv->size();
     return;
-// splicer end function.get_string_ref_alloc_bufferify
+// splicer end function.get_const_string_ref_alloc_bufferify
 }
 
 // void getString5(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
@@ -510,18 +510,18 @@ void STR_get_string6_bufferify(char * output, int Noutput)
 // splicer end function.get_string6_bufferify
 }
 
-// void getStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+// void getConstStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 // function_index=44
-void STR_get_string_alloc_bufferify(const void * * SHF_rv,
+void STR_get_const_string_alloc_bufferify(const void * * SHF_rv,
     size_t *NSHF_rv)
 {
-// splicer begin function.get_string_alloc_bufferify
+// splicer begin function.get_const_string_alloc_bufferify
     std::string * SHCXX_rv = new std::string;
-    *SHCXX_rv = getStringAlloc();
+    *SHCXX_rv = getConstStringAlloc();
     *SHF_rv = SHCXX_rv;
     *NSHF_rv = SHCXX_rv->size();
     return;
-// splicer end function.get_string_alloc_bufferify
+// splicer end function.get_const_string_alloc_bufferify
 }
 
 // const string * getString7() +len(30)
@@ -562,29 +562,29 @@ void STR_get_string7_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_string7_bufferify
 }
 
-// const std::string * getStringPtrAlloc() +allocatable
+// const std::string * getConstStringPtrAlloc() +allocatable
 // function_index=16
-const char * STR_get_string_ptr_alloc()
+const char * STR_get_const_string_ptr_alloc()
 {
-// splicer begin function.get_string_ptr_alloc
-    const std::string * SHCXX_rv = getStringPtrAlloc();
+// splicer begin function.get_const_string_ptr_alloc
+    const std::string * SHCXX_rv = getConstStringPtrAlloc();
     const char * SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
-// splicer end function.get_string_ptr_alloc
+// splicer end function.get_const_string_ptr_alloc
 }
 
-// void getStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+// void getConstStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 // function_index=46
-void STR_get_string_ptr_alloc_bufferify(const void * * SHF_rv,
+void STR_get_const_string_ptr_alloc_bufferify(const void * * SHF_rv,
     size_t *NSHF_rv)
 {
-// splicer begin function.get_string_ptr_alloc_bufferify
+// splicer begin function.get_const_string_ptr_alloc_bufferify
     const std::string * SHCXX_rv = new std::string;
-    SHCXX_rv = getStringPtrAlloc();
+    SHCXX_rv = getConstStringPtrAlloc();
     *SHF_rv = SHCXX_rv;
     *NSHF_rv = SHCXX_rv->size();
     return;
-// splicer end function.get_string_ptr_alloc_bufferify
+// splicer end function.get_const_string_ptr_alloc_bufferify
 }
 
 // void acceptStringConstReference(const std::string & arg1 +intent(in))
