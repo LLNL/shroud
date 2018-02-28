@@ -120,6 +120,13 @@ const std::string& getString2_empty()
     return static_str_empty;
 }
 
+const std::string& getStringRefAlloc()
+{
+    return static_str;
+}
+
+// -----
+
 const std::string getString4()
 {
     return static_str;
@@ -134,6 +141,13 @@ const std::string getString6()
 {
     return static_str;
 }
+
+const std::string getStringAlloc()
+{
+    return std::string("getStringAlloc");
+}
+
+// -----
 
 std::string * getString7()
 {

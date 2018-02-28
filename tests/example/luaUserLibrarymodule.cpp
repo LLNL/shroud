@@ -767,16 +767,6 @@ static int l_cos_doubles(lua_State *L)
     // splicer end function.cos_doubles
 }
 
-// const std::string & getString2() +allocatable
-static int l_get_string2(lua_State *L)
-{
-    // splicer begin function.getString2
-    const std::string & SHCXX_rv = getString2();
-    lua_pushstring(L, SHCXX_rv.c_str());
-    return 1;
-    // splicer end function.getString2
-}
-
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -800,7 +790,6 @@ static const struct luaL_Reg l_UserLibrary_Reg [] = {
     {"verylongfunctionname1", l_verylongfunctionname1},
     {"verylongfunctionname2", l_verylongfunctionname2},
     {"cos_doubles", l_cos_doubles},
-    {"getString2", l_get_string2},
     // splicer begin register
     // splicer end register
     {NULL, NULL}   /*sentinel */

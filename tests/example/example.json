@@ -4380,7 +4380,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 71, 
+                "_PTR_F_C_index": 70, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4527,7 +4527,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 71, 
+                "_function_index": 70, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -4868,7 +4868,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 72, 
+                "_PTR_F_C_index": 71, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -4995,7 +4995,7 @@
                         }
                     }
                 }, 
-                "_function_index": 72, 
+                "_function_index": 71, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -5057,7 +5057,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 73, 
+                "_PTR_F_C_index": 72, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -5242,7 +5242,7 @@
                         }
                     }
                 }, 
-                "_function_index": 73, 
+                "_function_index": 72, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -5318,7 +5318,7 @@
                 }
             }, 
             {
-                "_function_index": 69, 
+                "_function_index": 68, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5382,7 +5382,7 @@
                         }
                     }
                 }, 
-                "_function_index": 70, 
+                "_function_index": 69, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5447,8 +5447,8 @@
             }, 
             {
                 "_default_funcs": [
-                    69, 
-                    70
+                    68, 
+                    69
                 ], 
                 "_fmtargs": {
                     "i": {
@@ -8110,176 +8110,6 @@
                 }, 
                 "options": {
                     "F_standard": 2008
-                }
-            }, 
-            {
-                "_PTR_F_C_index": 74, 
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_rv_decl": "const char * SHC_rv", 
-                        "c_val": "SHCXX_rv.c_str()", 
-                        "c_var": "SHC_rv", 
-                        "cxx_deref": ".", 
-                        "cxx_var": "SHCXX_rv"
-                    }, 
-                    "fmtl": {
-                        "c_var": "SHCXX_rv.c_str()", 
-                        "cxx_deref": ".", 
-                        "cxx_var": "SHCXX_rv"
-                    }, 
-                    "fmtpy": {
-                        "PyObject": "PyObject", 
-                        "PyTypeObject": null, 
-                        "c_var": "SHCXX_rv", 
-                        "cxx_deref": ".", 
-                        "cxx_var": "SHCXX_rv", 
-                        "py_var": "SHTPy_rv"
-                    }
-                }, 
-                "_function_index": 68, 
-                "ast": {
-                    "attrs": {}, 
-                    "const": true, 
-                    "declarator": {
-                        "name": "getString2", 
-                        "pointer": [
-                            {
-                                "const": false, 
-                                "ptr": "&"
-                            }
-                        ]
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
-                    }, 
-                    "func_const": false, 
-                    "params": [], 
-                    "specifier": [
-                        "std::string"
-                    ]
-                }, 
-                "decl": "const std::string& getString2() +allocatable", 
-                "declgen": "const std::string & getString2() +allocatable", 
-                "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t getString2(\t);", 
-                    "C_call_list": "", 
-                    "C_name": "AA_get_string2", 
-                    "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
-                    "C_prototype": "", 
-                    "C_return_code": "return SHC_rv;", 
-                    "C_return_type": "const char *", 
-                    "F_C_call": "c_get_string2_bufferify", 
-                    "F_C_name": "c_get_string2", 
-                    "F_arg_c_call": "SHP_SHF_rv,\t NSHF_rv", 
-                    "F_arguments": "", 
-                    "F_call_code": "call c_get_string2_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
-                    "F_name_function": "get_string2", 
-                    "F_name_generic": "get_string2", 
-                    "F_name_impl": "get_string2", 
-                    "F_result_clause": "\fresult(SHT_rv)", 
-                    "F_subprogram": "function", 
-                    "LUA_name": "getString2", 
-                    "LUA_name_impl": "l_get_string2", 
-                    "PY_name_impl": "PP_getString2", 
-                    "c_const": "const ", 
-                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
-                    "function_name": "getString2", 
-                    "underscore_name": "get_string2"
-                }, 
-                "options": {}
-            }, 
-            {
-                "_PTR_C_CXX_index": 68, 
-                "_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_ptr": " *", 
-                            "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
-                            "cxx_deref": ".", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
-                        }, 
-                        "fmtf": {
-                            "c_var": "SHT_rv", 
-                            "f_cptr": "SHP_SHF_rv", 
-                            "f_var": "SHT_rv", 
-                            "f_var_len": "NSHF_rv"
-                        }
-                    }
-                }, 
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_var": "SHC_rv", 
-                        "cxx_deref": ".", 
-                        "cxx_var": "SHCXX_rv"
-                    }
-                }, 
-                "_function_index": 74, 
-                "_generated": "arg_to_buffer", 
-                "ast": {
-                    "attrs": {}, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "getString2", 
-                        "pointer": []
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
-                    }, 
-                    "func_const": false, 
-                    "params": [
-                        {
-                            "attrs": {
-                                "_is_result": true, 
-                                "intent": "out", 
-                                "lenout": "NSHF_rv"
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "SHF_rv", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "stringout"
-                            ]
-                        }
-                    ], 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
-                "decl": "const std::string& getString2() +allocatable", 
-                "declgen": "void getString2(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
-                "format": {
-                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getString2(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
-                    "C_call_list": "", 
-                    "C_name": "AA_get_string2_bufferify", 
-                    "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
-                    "C_return_code": "return;", 
-                    "C_return_type": "void", 
-                    "F_C_name": "c_get_string2_bufferify", 
-                    "c_const": "", 
-                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
-                    "function_name": "getString2", 
-                    "function_suffix": "_bufferify", 
-                    "underscore_name": "get_string2"
-                }, 
-                "options": {
-                    "wrap_c": true, 
-                    "wrap_fortran": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
                 }
             }
         ], 

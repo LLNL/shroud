@@ -288,6 +288,27 @@ PY_getString2_empty(
 // splicer end function.get_string2_empty
 }
 
+static char PY_getStringRefAlloc__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getStringRefAlloc(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// const std::string & getStringRefAlloc() +allocatable
+// splicer begin function.get_string_ref_alloc
+    const std::string & SHCXX_rv = getStringRefAlloc();
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_string_ref_alloc
+}
+
 static char PY_getString5__doc__[] =
 "documentation"
 ;
@@ -328,6 +349,27 @@ PY_getString6(
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_string6
+}
+
+static char PY_getStringAlloc__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getStringAlloc(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// const std::string getStringAlloc() +allocatable
+// splicer begin function.get_string_alloc
+    const std::string SHCXX_rv = getStringAlloc();
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_string_alloc
 }
 
 static char PY_getString7__doc__[] =
@@ -592,10 +634,14 @@ static PyMethodDef PY_methods[] = {
     PY_getString3__doc__},
 {"getString2_empty", (PyCFunction)PY_getString2_empty, METH_NOARGS,
     PY_getString2_empty__doc__},
+{"getStringRefAlloc", (PyCFunction)PY_getStringRefAlloc, METH_NOARGS,
+    PY_getStringRefAlloc__doc__},
 {"getString5", (PyCFunction)PY_getString5, METH_NOARGS,
     PY_getString5__doc__},
 {"getString6", (PyCFunction)PY_getString6, METH_NOARGS,
     PY_getString6__doc__},
+{"getStringAlloc", (PyCFunction)PY_getStringAlloc, METH_NOARGS,
+    PY_getStringAlloc__doc__},
 {"getString7", (PyCFunction)PY_getString7, METH_NOARGS,
     PY_getString7__doc__},
 {"acceptStringConstReference",

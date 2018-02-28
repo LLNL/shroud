@@ -126,10 +126,6 @@ int AA_verylongfunctionname2(int verylongname1, int verylongname2,
 
 void AA_cos_doubles(double * in, double * out, int sizein);
 
-const char * AA_get_string2();
-
-void AA_get_string2_bufferify(const void * * SHF_rv, size_t *NSHF_rv);
-
 #ifdef __cplusplus
 }
 #endif

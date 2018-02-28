@@ -49,6 +49,8 @@
 #ifndef WRAPSTRINGS_H
 #define WRAPSTRINGS_H
 
+#include <stddef.h>
+
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
 
@@ -104,9 +106,17 @@ const char * STR_get_string2_empty();
 
 void STR_get_string2_empty_bufferify(char * SHF_rv, int NSHF_rv);
 
+const char * STR_get_string_ref_alloc();
+
+void STR_get_string_ref_alloc_bufferify(const void * * SHF_rv,
+    size_t *NSHF_rv);
+
 void STR_get_string5_bufferify(char * SHF_rv, int NSHF_rv);
 
 void STR_get_string6_bufferify(char * output, int Noutput);
+
+void STR_get_string_alloc_bufferify(const void * * SHF_rv,
+    size_t *NSHF_rv);
 
 const char * STR_get_string7();
 

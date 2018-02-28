@@ -166,6 +166,10 @@ contains
     str = get_string2_empty()
     call assert_true( str == " ")
 
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_string_ref_alloc()
+    call assert_true( str == "dog", "get_string_ref_alloc")
+
 !--------------------------------------------------
 
     ! character(30) function
@@ -177,6 +181,10 @@ contains
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call get_string6(str)
     call assert_true( str == "dog")
+
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_string_alloc()
+    call assert_true( str == "getStringAlloc", "get_string_alloc")
  
 !--------------------------------------------------
 

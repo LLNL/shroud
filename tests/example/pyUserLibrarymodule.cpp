@@ -655,27 +655,6 @@ fail:
 // splicer end function.cos_doubles
 }
 
-static char PP_getString2__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_getString2(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// const std::string & getString2() +allocatable
-// splicer begin function.get_string2
-    const std::string & SHCXX_rv = getString2();
-
-    // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.get_string2
-}
-
 static char PP_test_names__doc__[] =
 "documentation"
 ;
@@ -746,8 +725,6 @@ static PyMethodDef PP_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PP_verylongfunctionname2__doc__},
 {"cos_doubles", (PyCFunction)PP_cos_doubles, METH_VARARGS|METH_KEYWORDS,
     PP_cos_doubles__doc__},
-{"getString2", (PyCFunction)PP_getString2, METH_NOARGS,
-    PP_getString2__doc__},
 {"test_names", (PyCFunction)PP_test_names, METH_VARARGS|METH_KEYWORDS,
     PP_test_names__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

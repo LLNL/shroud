@@ -225,6 +225,22 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_get_string2_empty_bufferify
 
+        function c_get_string_ref_alloc() &
+                result(SHT_rv) &
+                bind(C, name="STR_get_string_ref_alloc")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_get_string_ref_alloc
+
+        subroutine c_get_string_ref_alloc_bufferify(SHF_rv, NSHF_rv) &
+                bind(C, name="STR_get_string_ref_alloc_bufferify")
+            use iso_c_binding, only : C_PTR, C_SIZE_T
+            implicit none
+            type(C_PTR), intent(OUT) :: SHF_rv
+            integer(C_SIZE_T), intent(OUT) :: NSHF_rv
+        end subroutine c_get_string_ref_alloc_bufferify
+
         subroutine c_get_string5_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STR_get_string5_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -240,6 +256,14 @@ module strings_mod
             character(kind=C_CHAR), intent(OUT) :: output(*)
             integer(C_INT), value, intent(IN) :: Noutput
         end subroutine c_get_string6_bufferify
+
+        subroutine c_get_string_alloc_bufferify(SHF_rv, NSHF_rv) &
+                bind(C, name="STR_get_string_alloc_bufferify")
+            use iso_c_binding, only : C_PTR, C_SIZE_T
+            implicit none
+            type(C_PTR), intent(OUT) :: SHF_rv
+            integer(C_SIZE_T), intent(OUT) :: NSHF_rv
+        end subroutine c_get_string_alloc_bufferify
 
         function c_get_string7() &
                 result(SHT_rv) &
@@ -399,6 +423,15 @@ module strings_mod
     private fstr_ptr, strlen_ptr
 
     interface
+       subroutine SHROUD_string_copy_and_free(cptr, str) &
+         bind(c,name="ShroudStringCopyAndFree")
+         use, intrinsic :: iso_c_binding, only : C_PTR, C_CHAR
+         type(C_PTR), value, intent(in) :: cptr
+         character(kind=C_CHAR) :: str(*)
+       end subroutine SHROUD_string_copy_and_free
+    end interface
+
+    interface
        pure function strlen_ptr(s) result(result) bind(c,name="strlen")
          use, intrinsic :: iso_c_binding
          integer(c_int) :: result
@@ -495,7 +528,7 @@ contains
 
     ! void getCharPtr3(char * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=31
+    ! function_index=33
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -542,7 +575,7 @@ contains
 
     ! void getString3(string & output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=35
+    ! function_index=37
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -572,9 +605,25 @@ contains
         ! splicer end function.get_string2_empty
     end function get_string2_empty
 
-    ! const string getString5() +len(30)
+    ! const std::string & getStringRefAlloc() +allocatable
     ! arg_to_buffer
     ! function_index=11
+    function get_string_ref_alloc() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_CHAR, C_PTR, C_SIZE_T
+        type(C_PTR) :: SHP_SHF_rv
+        integer(C_SIZE_T) :: NSHF_rv
+        character(len=:,kind=C_CHAR), allocatable :: SHT_rv
+        ! splicer begin function.get_string_ref_alloc
+        call c_get_string_ref_alloc_bufferify(SHP_SHF_rv, NSHF_rv)
+        ! splicer end function.get_string_ref_alloc
+        allocate(character(len=NSHF_rv, kind=C_CHAR):: SHT_rv)
+        call SHROUD_string_copy_and_free(SHP_SHF_rv, SHT_rv)
+    end function get_string_ref_alloc
+
+    ! const string getString5() +len(30)
+    ! arg_to_buffer
+    ! function_index=12
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -590,7 +639,7 @@ contains
 
     ! void getString6(string * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=39
+    ! function_index=42
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -603,9 +652,25 @@ contains
         ! splicer end function.get_string6
     end subroutine get_string6
 
+    ! const std::string getStringAlloc() +allocatable
+    ! arg_to_buffer
+    ! function_index=14
+    function get_string_alloc() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_CHAR, C_PTR, C_SIZE_T
+        type(C_PTR) :: SHP_SHF_rv
+        integer(C_SIZE_T) :: NSHF_rv
+        character(len=:,kind=C_CHAR), allocatable :: SHT_rv
+        ! splicer begin function.get_string_alloc
+        call c_get_string_alloc_bufferify(SHP_SHF_rv, NSHF_rv)
+        ! splicer end function.get_string_alloc
+        allocate(character(len=NSHF_rv, kind=C_CHAR):: SHT_rv)
+        call SHROUD_string_copy_and_free(SHP_SHF_rv, SHT_rv)
+    end function get_string_alloc
+
     ! const string * getString7() +len(30)
     ! arg_to_buffer
-    ! function_index=13
+    ! function_index=15
     !>
     !! \brief return a 'const string *' as character(*)
     !!
@@ -621,7 +686,7 @@ contains
 
     ! void acceptStringConstReference(const std::string & arg1 +intent(in))
     ! arg_to_buffer
-    ! function_index=14
+    ! function_index=16
     !>
     !! \brief Accept a const string reference
     !!
@@ -640,7 +705,7 @@ contains
 
     ! void acceptStringReferenceOut(std::string & arg1 +intent(out))
     ! arg_to_buffer
-    ! function_index=15
+    ! function_index=17
     !>
     !! \brief Accept a string reference
     !!
@@ -659,7 +724,7 @@ contains
 
     ! void acceptStringReference(std::string & arg1 +intent(inout))
     ! arg_to_buffer
-    ! function_index=16
+    ! function_index=18
     !>
     !! \brief Accept a string reference
     !!
@@ -678,7 +743,7 @@ contains
 
     ! void acceptStringPointer(std::string * arg1 +intent(inout))
     ! arg_to_buffer
-    ! function_index=17
+    ! function_index=19
     !>
     !! \brief Accept a string pointer
     !!
@@ -694,7 +759,7 @@ contains
 
     ! void explicit1(char * name +intent(in)+len_trim(AAlen))
     ! arg_to_buffer
-    ! function_index=20
+    ! function_index=22
     subroutine explicit1(name)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
@@ -705,7 +770,7 @@ contains
 
     ! void explicit2(char * name +intent(out)+len(AAtrim))
     ! arg_to_buffer
-    ! function_index=21
+    ! function_index=23
     subroutine explicit2(name)
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: name
@@ -716,7 +781,7 @@ contains
 
     ! char_scalar CreturnChar()
     ! arg_to_buffer
-    ! function_index=23
+    ! function_index=25
     !>
     !! \brief return a char argument (non-pointer), extern "C"
     !!
@@ -732,7 +797,7 @@ contains
 
     ! void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))
     ! arg_to_buffer
-    ! function_index=24
+    ! function_index=26
     !>
     !! \brief strcpy like behavior
     !!

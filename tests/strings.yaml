@@ -126,6 +126,8 @@ functions:
   doxygen:
     brief: Test returning empty string reference
 
+- decl: const std::string& getStringRefAlloc() +allocatable
+
 ########################################
 # return std::string
 
@@ -146,6 +148,8 @@ functions:
     brief: return a 'const string' as argument
   format:
     F_string_result_as_arg: output
+
+- decl: const std::string getStringAlloc() +allocatable
 
 ########################################
 # return std::string pointer

@@ -201,7 +201,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 25, 
+                "_PTR_F_C_index": 27, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
@@ -288,7 +288,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 25, 
+                "_function_index": 27, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -353,7 +353,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 26, 
+                "_PTR_F_C_index": 28, 
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
@@ -495,7 +495,7 @@
                         }
                     }
                 }, 
-                "_function_index": 26, 
+                "_function_index": 28, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -582,7 +582,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 27, 
+                "_PTR_F_C_index": 29, 
                 "_fmtargs": {
                     "s": {
                         "fmtc": {
@@ -693,7 +693,7 @@
                         }
                     }
                 }, 
-                "_function_index": 27, 
+                "_function_index": 29, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -850,7 +850,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 28, 
+                "_function_index": 30, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -917,7 +917,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 29, 
+                "_PTR_F_C_index": 31, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
@@ -1012,7 +1012,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 29, 
+                "_function_index": 31, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -1164,7 +1164,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 30, 
+                "_function_index": 32, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -1231,8 +1231,8 @@
             }, 
             {
                 "_PTR_C_CXX_index": 6, 
-                "_PTR_F_C_index": 30, 
-                "_function_index": 31, 
+                "_PTR_F_C_index": 32, 
+                "_function_index": 33, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -1389,7 +1389,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 32, 
+                "_function_index": 34, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -1457,7 +1457,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_F_C_index": 33, 
+                "_PTR_F_C_index": 35, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
@@ -1557,7 +1557,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 33, 
+                "_function_index": 35, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -1715,7 +1715,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 34, 
+                "_function_index": 36, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -1783,8 +1783,8 @@
             {
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_C_CXX_index": 9, 
-                "_PTR_F_C_index": 34, 
-                "_function_index": 35, 
+                "_PTR_F_C_index": 36, 
+                "_function_index": 37, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -1849,7 +1849,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_F_C_index": 36, 
+                "_PTR_F_C_index": 38, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
@@ -1949,7 +1949,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 36, 
+                "_function_index": 38, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -2016,9 +2016,15 @@
                 }
             }, 
             {
-                "C_error_pattern": "C_invalid_name", 
-                "_PTR_F_C_index": 37, 
+                "_PTR_F_C_index": 39, 
                 "_fmtresult": {
+                    "fmtc": {
+                        "c_rv_decl": "const char * SHC_rv", 
+                        "c_val": "SHCXX_rv.c_str()", 
+                        "c_var": "SHC_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -2029,6 +2035,163 @@
                     }
                 }, 
                 "_function_index": 11, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": true, 
+                    "declarator": {
+                        "name": "getStringRefAlloc", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "&"
+                            }
+                        ]
+                    }, 
+                    "fattrs": {
+                        "allocatable": true
+                    }, 
+                    "func_const": false, 
+                    "params": [], 
+                    "specifier": [
+                        "std::string"
+                    ]
+                }, 
+                "decl": "const std::string& getStringRefAlloc() +allocatable", 
+                "declgen": "const std::string & getStringRefAlloc() +allocatable", 
+                "format": {
+                    "C_call_code": "const std::string & SHCXX_rv =\t getStringRefAlloc(\t);", 
+                    "C_call_list": "", 
+                    "C_name": "STR_get_string_ref_alloc", 
+                    "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
+                    "C_prototype": "", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "const char *", 
+                    "F_C_call": "c_get_string_ref_alloc_bufferify", 
+                    "F_C_name": "c_get_string_ref_alloc", 
+                    "F_arg_c_call": "SHP_SHF_rv,\t NSHF_rv", 
+                    "F_arguments": "", 
+                    "F_call_code": "call c_get_string_ref_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
+                    "F_name_function": "get_string_ref_alloc", 
+                    "F_name_generic": "get_string_ref_alloc", 
+                    "F_name_impl": "get_string_ref_alloc", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_getStringRefAlloc", 
+                    "c_const": "const ", 
+                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                    "function_name": "getStringRefAlloc", 
+                    "underscore_name": "get_string_ref_alloc"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_PTR_C_CXX_index": 11, 
+                "_fmtargs": {
+                    "SHF_rv": {
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SHCXX_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "f_cptr": "SHP_SHF_rv", 
+                            "f_var": "SHT_rv", 
+                            "f_var_len": "NSHF_rv"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv"
+                    }
+                }, 
+                "_function_index": 39, 
+                "_generated": "arg_to_buffer", 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "getStringRefAlloc", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {
+                        "allocatable": true
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_is_result": true, 
+                                "intent": "out", 
+                                "lenout": "NSHF_rv"
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "SHF_rv", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "stringout"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "const std::string& getStringRefAlloc() +allocatable", 
+                "declgen": "void getStringRefAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
+                "format": {
+                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getStringRefAlloc(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
+                    "C_call_list": "", 
+                    "C_name": "STR_get_string_ref_alloc_bufferify", 
+                    "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_name": "c_get_string_ref_alloc_bufferify", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                    "function_name": "getStringRefAlloc", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_string_ref_alloc"
+                }, 
+                "options": {
+                    "wrap_c": true, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "C_error_pattern": "C_invalid_name", 
+                "_PTR_F_C_index": 40, 
+                "_fmtresult": {
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "_function_index": 12, 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -2071,7 +2234,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_C_CXX_index": 11, 
+                "_PTR_C_CXX_index": 12, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -2096,7 +2259,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 37, 
+                "_function_index": 40, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -2174,7 +2337,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 12, 
+                "_function_index": 13, 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -2207,7 +2370,7 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_C_CXX_index": 12, 
+                "_PTR_C_CXX_index": 13, 
                 "_fmtargs": {
                     "output": {
                         "fmtc": {
@@ -2232,7 +2395,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 38, 
+                "_function_index": 41, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -2299,9 +2462,9 @@
             }, 
             {
                 "C_error_pattern": "C_invalid_name", 
-                "_PTR_C_CXX_index": 12, 
-                "_PTR_F_C_index": 38, 
-                "_function_index": 39, 
+                "_PTR_C_CXX_index": 13, 
+                "_PTR_F_C_index": 41, 
+                "_function_index": 42, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -2365,7 +2528,150 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 40, 
+                "_PTR_F_C_index": 43, 
+                "_fmtresult": {
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "_function_index": 14, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": true, 
+                    "declarator": {
+                        "name": "getStringAlloc", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {
+                        "allocatable": true
+                    }, 
+                    "func_const": false, 
+                    "params": [], 
+                    "specifier": [
+                        "std::string"
+                    ]
+                }, 
+                "decl": "const std::string getStringAlloc() +allocatable", 
+                "declgen": "const std::string getStringAlloc() +allocatable", 
+                "format": {
+                    "F_C_call": "c_get_string_alloc_bufferify", 
+                    "F_arg_c_call": "SHP_SHF_rv,\t NSHF_rv", 
+                    "F_arguments": "", 
+                    "F_call_code": "call c_get_string_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
+                    "F_name_function": "get_string_alloc", 
+                    "F_name_generic": "get_string_alloc", 
+                    "F_name_impl": "get_string_alloc", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_getStringAlloc", 
+                    "function_name": "getStringAlloc", 
+                    "underscore_name": "get_string_alloc"
+                }, 
+                "options": {
+                    "wrap_c": false
+                }
+            }, 
+            {
+                "_PTR_C_CXX_index": 14, 
+                "_fmtargs": {
+                    "SHF_rv": {
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_ptr": " *", 
+                            "c_var": "SHF_rv", 
+                            "c_var_len": "NSHF_rv", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SHCXX_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "f_cptr": "SHP_SHF_rv", 
+                            "f_var": "SHT_rv", 
+                            "f_var_len": "NSHF_rv"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv"
+                    }
+                }, 
+                "_function_index": 43, 
+                "_generated": "arg_to_buffer", 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "getStringAlloc", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {
+                        "allocatable": true
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_is_result": true, 
+                                "intent": "out", 
+                                "lenout": "NSHF_rv"
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "SHF_rv", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "stringout"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "const std::string getStringAlloc() +allocatable", 
+                "declgen": "void getStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
+                "format": {
+                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getStringAlloc(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
+                    "C_call_list": "", 
+                    "C_name": "STR_get_string_alloc_bufferify", 
+                    "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_name": "c_get_string_alloc_bufferify", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "const std::string SHCXX_rv", 
+                    "function_name": "getStringAlloc", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_string_alloc"
+                }, 
+                "options": {
+                    "wrap_c": true, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_PTR_F_C_index": 44, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
@@ -2383,7 +2689,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 13, 
+                "_function_index": 15, 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -2439,7 +2745,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 13, 
+                "_PTR_C_CXX_index": 15, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -2464,7 +2770,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 40, 
+                "_function_index": 44, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -2532,7 +2838,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 41, 
+                "_PTR_F_C_index": 45, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2557,7 +2863,7 @@
                         }
                     }
                 }, 
-                "_function_index": 14, 
+                "_function_index": 16, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2623,7 +2929,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 14, 
+                "_PTR_C_CXX_index": 16, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2641,7 +2947,7 @@
                         }
                     }
                 }, 
-                "_function_index": 41, 
+                "_function_index": 45, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -2706,7 +3012,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 42, 
+                "_PTR_F_C_index": 46, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2733,7 +3039,7 @@
                         }
                     }
                 }, 
-                "_function_index": 15, 
+                "_function_index": 17, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2800,7 +3106,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 15, 
+                "_PTR_C_CXX_index": 17, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2818,7 +3124,7 @@
                         }
                     }
                 }, 
-                "_function_index": 42, 
+                "_function_index": 46, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -2884,7 +3190,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 43, 
+                "_PTR_F_C_index": 47, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2911,7 +3217,7 @@
                         }
                     }
                 }, 
-                "_function_index": 16, 
+                "_function_index": 18, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -2978,7 +3284,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 16, 
+                "_PTR_C_CXX_index": 18, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -2997,7 +3303,7 @@
                         }
                     }
                 }, 
-                "_function_index": 43, 
+                "_function_index": 47, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -3064,7 +3370,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 44, 
+                "_PTR_F_C_index": 48, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -3091,7 +3397,7 @@
                         }
                     }
                 }, 
-                "_function_index": 17, 
+                "_function_index": 19, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3157,7 +3463,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 17, 
+                "_PTR_C_CXX_index": 19, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -3176,7 +3482,7 @@
                         }
                     }
                 }, 
-                "_function_index": 44, 
+                "_function_index": 48, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -3276,7 +3582,7 @@
                         }
                     }
                 }, 
-                "_function_index": 18, 
+                "_function_index": 20, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3344,7 +3650,7 @@
                 }
             }, 
             {
-                "_function_index": 19, 
+                "_function_index": 21, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3394,7 +3700,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 45, 
+                "_PTR_F_C_index": 49, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -3419,7 +3725,7 @@
                         }
                     }
                 }, 
-                "_function_index": 20, 
+                "_function_index": 22, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3482,7 +3788,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 20, 
+                "_PTR_C_CXX_index": 22, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -3500,7 +3806,7 @@
                         }
                     }
                 }, 
-                "_function_index": 45, 
+                "_function_index": 49, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -3563,7 +3869,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 46, 
+                "_PTR_F_C_index": 50, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -3576,7 +3882,7 @@
                         }
                     }
                 }, 
-                "_function_index": 21, 
+                "_function_index": 23, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3640,7 +3946,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 21, 
+                "_PTR_C_CXX_index": 23, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -3658,7 +3964,7 @@
                         }
                     }
                 }, 
-                "_function_index": 46, 
+                "_function_index": 50, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -3749,7 +4055,7 @@
                         }
                     }
                 }, 
-                "_function_index": 22, 
+                "_function_index": 24, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3810,7 +4116,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 47, 
+                "_PTR_F_C_index": 51, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
@@ -3826,7 +4132,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 23, 
+                "_function_index": 25, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -3874,7 +4180,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 23, 
+                "_PTR_C_CXX_index": 25, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -3899,7 +4205,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 47, 
+                "_function_index": 51, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -3965,7 +4271,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 48, 
+                "_PTR_F_C_index": 52, 
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
@@ -3988,7 +4294,7 @@
                         }
                     }
                 }, 
-                "_function_index": 24, 
+                "_function_index": 26, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4075,7 +4381,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 24, 
+                "_PTR_C_CXX_index": 26, 
                 "_fmtargs": {
                     "dest": {
                         "fmtc": {
@@ -4108,7 +4414,7 @@
                         }
                     }
                 }, 
-                "_function_index": 48, 
+                "_function_index": 52, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 

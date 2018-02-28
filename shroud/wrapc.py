@@ -521,6 +521,7 @@ class Wrapc(util.WrapperMixin):
                 elif buf_arg == 'lenout':
                     fmt_arg.c_var_len = c_attrs['lenout']
                     append_format(proto_list, 'size_t *{c_var_len}', fmt_arg)
+                    self.header_typedef_include['<stddef.h>'] = True
                 else:
                     raise RuntimeError("wrap_function: unhandled case {}"
                                        .format(buf_arg))

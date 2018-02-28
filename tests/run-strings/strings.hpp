@@ -60,10 +60,12 @@ const std::string& getString1();
 const std::string& getString2();
 const std::string& getString3();
 const std::string& getString2_empty();
+const std::string& getStringRefAlloc();
 
 const std::string getString4();
 const std::string getString5();
 const std::string getString6();
+const std::string getStringAlloc();
 
 std::string * getString7();
 
