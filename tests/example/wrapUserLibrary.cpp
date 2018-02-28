@@ -358,9 +358,9 @@ const char * AA_get_string2()
 // splicer end function.get_string2
 }
 
-// void getString2(stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+// void getString2(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 // function_index=74
-void AA_get_string2_bufferify(void * * SHF_rv, size_t *NSHF_rv)
+void AA_get_string2_bufferify(const void * * SHF_rv, size_t *NSHF_rv)
 {
 // splicer begin function.get_string2_bufferify
     const std::string & SHCXX_rv = getString2();

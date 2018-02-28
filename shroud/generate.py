@@ -617,7 +617,8 @@ class GenFunctions(object):
             # Add additional argument to hold result
             ast = C_new.ast
             if ast.fattrs.get('allocatable', False):
-                result_as_string = ast.result_as_voidstarstar('stringout', result_name)
+                result_as_string = ast.result_as_voidstarstar(
+                    'stringout', result_name, const=ast.const)
                 attrs = result_as_string.attrs
                 attrs['lenout'] = options.C_var_len_template.format(c_var=result_name)
             else:

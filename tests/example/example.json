@@ -8193,7 +8193,7 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
-                            "c_const": "", 
+                            "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
@@ -8236,7 +8236,7 @@
                                 "intent": "out", 
                                 "lenout": "NSHF_rv"
                             }, 
-                            "const": false, 
+                            "const": true, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
@@ -8260,13 +8260,13 @@
                     ]
                 }, 
                 "decl": "const std::string& getString2() +allocatable", 
-                "declgen": "void getString2(stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
+                "declgen": "void getString2(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getString2(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_get_string2_bufferify", 
                     "C_post_call": "*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv.size();", 
-                    "C_prototype": "void * * SHF_rv,\t size_t *NSHF_rv", 
+                    "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_string2_bufferify", 

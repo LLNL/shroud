@@ -693,11 +693,11 @@ class Declaration(Node):
         self._set_to_void()
         return newarg
 
-    def result_as_voidstarstar(self, typ, name):
+    def result_as_voidstarstar(self, typ, name, const=False):
         """Add an 'typ**' argument to return pointer to result.
         Change function result to 'void'.
         """
-        newarg = create_voidstarstar(typ, name)
+        newarg = create_voidstarstar(typ, name, const)
         self.params.append(newarg)
         self._set_to_void()
         return newarg
@@ -1007,11 +1007,12 @@ def create_this_arg(name, typ, const=True):
     arg.specifier = [ typ ]
     return arg
 
-def create_voidstarstar(typ, name):
+def create_voidstarstar(typ, name, const=False):
     """Create a Declaration for an argument for the argument
     as 'typ **name'.
     """
     arg = Declaration()
+    arg.const = const
     arg.declarator = Declarator()
     arg.declarator.name = name
     arg.declarator.pointer = [ Ptr('*'), Ptr('*') ]
