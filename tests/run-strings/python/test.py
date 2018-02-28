@@ -90,7 +90,7 @@ class Tutorial(unittest.TestCase):
         """return std::string reference"""
         # The variations are useful for the Fortran API,
         # but really no difference in the Python API.
-        self.assertEqual(static_str, strings.getString1())
+        self.assertEqual(static_str, strings.getConstStringRefPure())
         self.assertEqual(static_str, strings.getString2())
         self.assertEqual(static_str, strings.getString3())
 

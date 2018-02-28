@@ -104,7 +104,7 @@ functions:
 ########################################
 # return std::string reference
 
-- decl: const string& getString1()  +pure
+- decl: const string& getConstStringRefPure()  +pure
 #  C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string&' as character(*)

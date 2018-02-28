@@ -100,7 +100,7 @@ const char * getCharPtr3()
 
 //----------------------------------------
 
-const std::string& getString1()
+const std::string& getConstStringRefPure()
 {
     return static_str;
 }

@@ -161,21 +161,22 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: Noutput
         end subroutine c_get_char_ptr3_bufferify
 
-        pure function c_get_string1() &
+        pure function c_get_const_string_ref_pure() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_string1")
+                bind(C, name="STR_get_const_string_ref_pure")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_get_string1
+        end function c_get_const_string_ref_pure
 
-        subroutine c_get_string1_bufferify(SHF_rv, NSHF_rv) &
-                bind(C, name="STR_get_string1_bufferify")
+        subroutine c_get_const_string_ref_pure_bufferify(SHF_rv, &
+                NSHF_rv) &
+                bind(C, name="STR_get_const_string_ref_pure_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_get_string1_bufferify
+        end subroutine c_get_const_string_ref_pure_bufferify
 
         function c_get_string2() &
                 result(SHT_rv) &
@@ -557,21 +558,21 @@ contains
         ! splicer end function.get_char_ptr3
     end subroutine get_char_ptr3
 
-    ! const string & getString1() +pure
+    ! const string & getConstStringRefPure() +pure
     ! function_index=7
     !>
     !! \brief return a 'const string&' as character(*)
     !!
     !<
-    function get_string1() &
+    function get_const_string_ref_pure() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        character(kind=C_CHAR, len=strlen_ptr(c_get_string1())) &
-            :: SHT_rv
-        ! splicer begin function.get_string1
-        SHT_rv = fstr_ptr(c_get_string1())
-        ! splicer end function.get_string1
-    end function get_string1
+        character(kind=C_CHAR, len=strlen_ptr( &
+            c_get_const_string_ref_pure())) :: SHT_rv
+        ! splicer begin function.get_const_string_ref_pure
+        SHT_rv = fstr_ptr(c_get_const_string_ref_pure())
+        ! splicer end function.get_const_string_ref_pure
+    end function get_const_string_ref_pure
 
     ! const string & getString2() +len(30)
     ! arg_to_buffer

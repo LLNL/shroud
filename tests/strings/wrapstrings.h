@@ -90,9 +90,10 @@ const char * STR_get_char_ptr3();
 
 void STR_get_char_ptr3_bufferify(char * output, int Noutput);
 
-const char * STR_get_string1();
+const char * STR_get_const_string_ref_pure();
 
-void STR_get_string1_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_const_string_ref_pure_bufferify(char * SHF_rv,
+    int NSHF_rv);
 
 const char * STR_get_string2();
 

@@ -148,8 +148,8 @@ contains
     ! problem with pgi
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string1()
-    call assert_true( str == "dog")
+    str = get_const_string_ref_pure()
+    call assert_true( str == "dog", "getConstStringRefPure")
 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'

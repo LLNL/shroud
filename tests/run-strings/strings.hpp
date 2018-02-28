@@ -56,7 +56,7 @@ const char * getCharPtr1();
 const char * getCharPtr2();
 const char * getCharPtr3();
 
-const std::string& getString1();
+const std::string& getConstStringRefPure();
 const std::string& getString2();
 const std::string& getString3();
 const std::string& getString2_empty();
