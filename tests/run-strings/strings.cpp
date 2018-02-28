@@ -110,7 +110,7 @@ const std::string& getConstStringRefLen()
     return static_str;
 }
 
-const std::string& getString3()
+const std::string& getConstStringRefAsArg()
 {
     return static_str;
 }

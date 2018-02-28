@@ -367,16 +367,16 @@ void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_const_string_ref_len_bufferify
 }
 
-// const string & getString3()
+// const string & getConstStringRefAsArg()
 // function_index=9
 /**
  * \brief return a 'const string&' as argument
  *
  */
-const char * STR_get_string3()
+const char * STR_get_const_string_ref_as_arg()
 {
-// splicer begin function.get_string3
-    const std::string & SHCXX_rv = getString3();
+// splicer begin function.get_const_string_ref_as_arg
+    const std::string & SHCXX_rv = getConstStringRefAsArg();
     // C_error_pattern
     if (SHCXX_rv.empty()) {
         return NULL;
@@ -384,26 +384,27 @@ const char * STR_get_string3()
 
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-// splicer end function.get_string3
+// splicer end function.get_const_string_ref_as_arg
 }
 
-// void getString3(string & output +intent(out)+len(Noutput))
+// void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))
 // function_index=37
 /**
  * \brief return a 'const string&' as argument
  *
  */
-void STR_get_string3_bufferify(char * output, int Noutput)
+void STR_get_const_string_ref_as_arg_bufferify(char * output,
+    int Noutput)
 {
-// splicer begin function.get_string3_bufferify
-    const std::string & SHCXX_rv = getString3();
+// splicer begin function.get_const_string_ref_as_arg_bufferify
+    const std::string & SHCXX_rv = getConstStringRefAsArg();
     if (SHCXX_rv.empty()) {
         std::memset(output, ' ', Noutput);
     } else {
         ShroudStrCopy(output, Noutput, SHCXX_rv.c_str());
     }
     return;
-// splicer end function.get_string3_bufferify
+// splicer end function.get_const_string_ref_as_arg_bufferify
 }
 
 // const string & getString2_empty() +len(30)

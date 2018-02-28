@@ -114,7 +114,7 @@ functions:
   doxygen:
     brief: return 'const string&' with fixed size (len=30)
 
-- decl: const string& getString3() # +pure
+- decl: const string& getConstStringRefAsArg()
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string&' as argument

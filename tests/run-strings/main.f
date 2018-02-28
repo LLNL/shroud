@@ -158,8 +158,8 @@ contains
 
     ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_string3(str)
-    call assert_true( str == "dog")
+    call get_const_string_ref_as_arg(str)
+    call assert_true( str == "dog", "getConstStringRefAsArg")
  
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'

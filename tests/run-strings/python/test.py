@@ -92,7 +92,7 @@ class Tutorial(unittest.TestCase):
         # but really no difference in the Python API.
         self.assertEqual(static_str, strings.getConstStringRefPure())
         self.assertEqual(static_str, strings.getConstStringRefLen())
-        self.assertEqual(static_str, strings.getString3())
+        self.assertEqual(static_str, strings.getConstStringRefAsArg())
 
         self.assertEqual('', strings.getString2_empty())
         self.assertEqual(static_str, strings.getStringRefAlloc())

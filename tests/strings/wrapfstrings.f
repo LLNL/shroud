@@ -194,21 +194,22 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_get_const_string_ref_len_bufferify
 
-        function c_get_string3() &
+        function c_get_const_string_ref_as_arg() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_string3")
+                bind(C, name="STR_get_const_string_ref_as_arg")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_get_string3
+        end function c_get_const_string_ref_as_arg
 
-        subroutine c_get_string3_bufferify(output, Noutput) &
-                bind(C, name="STR_get_string3_bufferify")
+        subroutine c_get_const_string_ref_as_arg_bufferify(output, &
+                Noutput) &
+                bind(C, name="STR_get_const_string_ref_as_arg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
             integer(C_INT), value, intent(IN) :: Noutput
-        end subroutine c_get_string3_bufferify
+        end subroutine c_get_const_string_ref_as_arg_bufferify
 
         function c_get_string2_empty() &
                 result(SHT_rv) &
@@ -591,20 +592,21 @@ contains
         ! splicer end function.get_const_string_ref_len
     end function get_const_string_ref_len
 
-    ! void getString3(string & output +intent(out)+len(Noutput))
+    ! void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
     ! function_index=38
     !>
     !! \brief return a 'const string&' as argument
     !!
     !<
-    subroutine get_string3(output)
+    subroutine get_const_string_ref_as_arg(output)
         use iso_c_binding, only : C_INT
         character(*), intent(OUT) :: output
-        ! splicer begin function.get_string3
-        call c_get_string3_bufferify(output, len(output, kind=C_INT))
-        ! splicer end function.get_string3
-    end subroutine get_string3
+        ! splicer begin function.get_const_string_ref_as_arg
+        call c_get_const_string_ref_as_arg_bufferify(output, &
+            len(output, kind=C_INT))
+        ! splicer end function.get_const_string_ref_as_arg
+    end subroutine get_const_string_ref_as_arg
 
     ! const string & getString2_empty() +len(30)
     ! arg_to_buffer
