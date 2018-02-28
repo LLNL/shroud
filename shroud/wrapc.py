@@ -384,11 +384,11 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
             if result_typedef.cxx_to_c is None:
                 # C and C++ are compatible
-                fmt_result.c_var = wformat('{C_local}{C_result}', fmt_result)
+                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.c_var
             else:
-                fmt_result.c_var = wformat('{C_local}{C_result}', fmt_result)
-                fmt_result.cxx_var = wformat('{CXX_local}{C_result}', fmt_result)
+                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
+                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True)
             if CXX_result.is_pointer():
@@ -466,9 +466,9 @@ class Wrapc(util.WrapperMixin):
 
                 # Note that result_type is void, so use arg_typedef.
                 if arg_typedef.cxx_to_c is None:
-                    fmt_arg.cxx_var = wformat('{C_local}{C_result}', fmt_func)
+                    fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
                 else:
-                    fmt_arg.cxx_var = wformat('{CXX_local}{C_result}', fmt_func)
+                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
                 # Set cxx_var for C_finalize which evalutes in fmt_result context
                 fmt_result.cxx_var = fmt_arg.cxx_var
                 fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
@@ -488,7 +488,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_var = fmt_arg.c_var      # compatible
                 else:
                     # convert C argument to C++
-                    fmt_arg.cxx_var = wformat('{CXX_local}{c_var}', fmt_arg)
+                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
                     fmt_arg.cxx_val = wformat(arg_typedef.c_to_cxx, fmt_arg)
                     fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                         name=fmt_arg.cxx_var, params=None, as_ptr=True, continuation=True)
@@ -531,7 +531,7 @@ class Wrapc(util.WrapperMixin):
             if 'cxx_local_var' in intent_blk:
                 cxx_local_var = intent_blk['cxx_local_var']
                 fmt_arg.cxx_var = fmt_arg.C_argument + fmt_arg.c_var
-#                    fmt_arg.cxx_var = wformat('{CXX_local}{c_var}', fmt_arg)
+#                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
 # This uses C_local or CXX_local for arguments.
 #                if 'cxx_T' in fmt_arg:
 #                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_arg.c_var
