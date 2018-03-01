@@ -271,6 +271,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_addr": "&", 
                             "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
@@ -837,6 +838,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_addr": "", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
@@ -995,6 +997,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_addr": "", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
@@ -1147,6 +1150,7 @@
                             "c_ptr": " *", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
+                            "cxx_addr": "", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
@@ -1376,6 +1380,7 @@
                             "c_ptr": "", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_addr": "&", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -1540,6 +1545,7 @@
                             "c_ptr": "", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_addr": "&", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -1698,6 +1704,7 @@
                             "c_ptr": "", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
+                            "cxx_addr": "&", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -1932,6 +1939,7 @@
                             "c_ptr": "", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_addr": "&", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -2089,11 +2097,11 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
-                            "c_const": "", 
+                            "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
-                            "cxx_alloc": "*", 
+                            "cxx_addr": "&", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -2159,9 +2167,10 @@
                 "decl": "const std::string& getConstStringRefAlloc() +allocatable", 
                 "declgen": "void getConstStringRefAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
                 "format": {
-                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getConstStringRefAlloc(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_alloc_bufferify", 
+                    "C_post_call": "*SHF_rv = &SHCXX_rv;\n*NSHF_rv = SHCXX_rv.size();", 
                     "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -2243,6 +2252,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_addr": "&", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -2379,6 +2389,7 @@
                             "c_ptr": " *", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
+                            "cxx_addr": "&", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -2582,12 +2593,12 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
-                            "c_const": "", 
+                            "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
-                            "cxx_alloc": "*", 
-                            "cxx_deref": ".", 
+                            "cxx_addr": "", 
+                            "cxx_deref": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
@@ -2652,9 +2663,10 @@
                 "decl": "const std::string getConstStringAlloc() +allocatable", 
                 "declgen": "void getConstStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
                 "format": {
-                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getConstStringAlloc(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
+                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getConstStringAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_alloc_bufferify", 
+                    "C_post_call": "*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
                     "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -2755,6 +2767,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_addr": "", 
                             "cxx_deref": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -2917,7 +2930,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
-                            "cxx_alloc": "", 
+                            "cxx_addr": "", 
                             "cxx_deref": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -2983,9 +2996,10 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +allocatable", 
                 "declgen": "void getConstStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
                 "format": {
-                    "C_call_code": "const std::string * SHCXX_rv = new std::string;\nSHCXX_rv = getConstStringPtrAlloc(\t);\n*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
+                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify", 
+                    "C_post_call": "*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
                     "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -4354,6 +4368,7 @@
                             "c_ptr": " *", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
+                            "cxx_addr": "&", 
                             "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
@@ -5187,11 +5202,9 @@
                         "lenout"
                     ], 
                     "c_helper": "copy_string", 
-                    "call_code": [
-                        "{c_const}std::string * {cxx_var} = new std::string;", 
-                        "{cxx_alloc}{cxx_var} = {CXX_this_call}{function_name}{CXX_template}(\t{C_call_list});", 
-                        "*{c_var} = {cxx_var};", 
-                        "*{c_var_len} = {cxx_var}->size();"
+                    "post_call": [
+                        "*{c_var} = {cxx_addr}{cxx_var};", 
+                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
                     ]
                 }
             }, 

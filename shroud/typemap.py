@@ -706,15 +706,13 @@ def initialize():
                     # pass address of string and length back to Fortran
                     buf_args = [ 'lenout' ],
                     c_helper='copy_string',
-                    # evalued in context of buffer argument, not the function result
-                    # typedef will be stringout, not std::string
-                    # cxx_alloc = '*' or ''
-                    call_code=[
-                        '{c_const}std::string * {cxx_var} = new std::string;',
-                        '{cxx_alloc}{cxx_var} = {CXX_this_call}{function_name}{CXX_template}'
-                            '(\t{C_call_list});',
-                        '*{c_var} = {cxx_var};',
-                        '*{c_var_len} = {cxx_var}->size();',
+                    # Copy address of result into c_var and save length.
+                    # When returning a std::string (and not a reference or pointer)
+                    # an intermediate object is created to save the results
+                    # which will be passed to copy_string
+                    post_call=[
+                        '*{c_var} = {cxx_addr}{cxx_var};',
+                        '*{c_var_len} = {cxx_var}{cxx_deref}size();',
                     ],
                 ),
             ),

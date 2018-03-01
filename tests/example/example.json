@@ -601,6 +601,7 @@
                                     "c_ptr": "", 
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
+                                    "cxx_addr": "&", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -843,6 +844,7 @@
                                     "c_ptr": "", 
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
+                                    "cxx_addr": "&", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -1003,6 +1005,7 @@
                                     "c_ptr": "", 
                                     "c_var": "name", 
                                     "c_var_len": "Nname", 
+                                    "cxx_addr": "&", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -2112,6 +2115,7 @@
                                     "c_ptr": "", 
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
+                                    "cxx_addr": "&", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -2282,6 +2286,7 @@
                                     "c_ptr": "", 
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
+                                    "cxx_addr": "&", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -2450,6 +2455,7 @@
                                     "c_ptr": "", 
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
+                                    "cxx_addr": "&", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -2618,6 +2624,7 @@
                                     "c_ptr": "", 
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
+                                    "cxx_addr": "&", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -8896,11 +8903,9 @@
                         "lenout"
                     ], 
                     "c_helper": "copy_string", 
-                    "call_code": [
-                        "{c_const}std::string * {cxx_var} = new std::string;", 
-                        "{cxx_alloc}{cxx_var} = {CXX_this_call}{function_name}{CXX_template}(\t{C_call_list});", 
-                        "*{c_var} = {cxx_var};", 
-                        "*{c_var_len} = {cxx_var}->size();"
+                    "post_call": [
+                        "*{c_var} = {cxx_addr}{cxx_var};", 
+                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
                     ]
                 }
             }, 

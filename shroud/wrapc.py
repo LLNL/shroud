@@ -455,9 +455,11 @@ class Wrapc(util.WrapperMixin):
             if arg.is_pointer():
                 fmt_arg.c_ptr = ' *'
                 fmt_arg.cxx_deref = '->'
+#                fmt_arg.cxx_addr = ''
             else:
                 fmt_arg.c_ptr = ''
                 fmt_arg.cxx_deref = '.'
+#                fmt_arg.cxx_addr = '&'
             fmt_arg.cxx_type = arg_typedef.cxx_type
             cxx_local_var = ''
 
@@ -482,8 +484,17 @@ class Wrapc(util.WrapperMixin):
                 need_wrapper = True
                 if CXX_result.is_pointer():
                     fmt_arg.cxx_deref = '->'
+                    fmt_arg.cxx_addr = ''
                 else:
                     fmt_arg.cxx_deref = '.'
+                    fmt_arg.cxx_addr = '&'
+
+                if is_allocatable:
+                    if not CXX_result.is_indirect():
+                        # An intermediate string * is allocated
+                        # to save std::string result.
+                        fmt_arg.cxx_addr = ''
+                        fmt_arg.cxx_deref = '->'
             else:
                 arg_call = arg
                 if arg_typedef.c_to_cxx is None:
@@ -664,27 +675,15 @@ class Wrapc(util.WrapperMixin):
                 if 'c_helper' in intent_blk:
                     for helper in intent_blk['c_helper'].split():
                         self.c_helper[helper] = True
-            else:
-                c_statements = arg_typedef.c_statements
-                intent_blk = c_statements.get('result' + generated_suffix, {})
-                cmd_list = intent_blk.get('call_code', None)
-                if cmd_list:
+            elif is_allocatable:
+                if not CXX_node.ast.is_indirect():
+                    # Allocate intermediate string before calling function
                     fmt_arg = fmtargs[result_arg.name]['fmtc']
-
-                    # cxx_alloc is only used when function has allocatable attribute
-                    # always assign into a new string
-                    if is_allocatable:
-                        if CXX_node.ast.is_pointer():
-                            fmt_arg.cxx_alloc = ''
-                        else:
-                            fmt_arg.cxx_alloc = '*'
-                            fmt_arg.c_const = ''  # must be able to assign to new string
-
+                    append_format(call_code, # no const
+                                  'std::string * {cxx_var} = new std::string;\n'
+                                  '*{cxx_var} = {CXX_this_call}{function_name}{CXX_template}'
+                                  '(\t{C_call_list});', fmt_arg)
                     added_call_code = True
-                    need_wrapper = True
-                    for cmd in cmd_list:
-                        append_format(call_code, cmd, fmt_arg)
-                # post_call already added when result_arg is not None
 
             if not added_call_code:
                 append_format(call_code, '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'

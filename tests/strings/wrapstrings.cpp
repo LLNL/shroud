@@ -464,10 +464,9 @@ void STR_get_const_string_ref_alloc_bufferify(const void * * SHF_rv,
     size_t *NSHF_rv)
 {
 // splicer begin function.get_const_string_ref_alloc_bufferify
-    std::string * SHCXX_rv = new std::string;
-    *SHCXX_rv = getConstStringRefAlloc();
-    *SHF_rv = SHCXX_rv;
-    *NSHF_rv = SHCXX_rv->size();
+    const std::string & SHCXX_rv = getConstStringRefAlloc();
+    *SHF_rv = &SHCXX_rv;
+    *NSHF_rv = SHCXX_rv.size();
     return;
 // splicer end function.get_const_string_ref_alloc_bufferify
 }
@@ -579,8 +578,7 @@ void STR_get_const_string_ptr_alloc_bufferify(const void * * SHF_rv,
     size_t *NSHF_rv)
 {
 // splicer begin function.get_const_string_ptr_alloc_bufferify
-    const std::string * SHCXX_rv = new std::string;
-    SHCXX_rv = getConstStringPtrAlloc();
+    const std::string * SHCXX_rv = getConstStringPtrAlloc();
     *SHF_rv = SHCXX_rv;
     *NSHF_rv = SHCXX_rv->size();
     return;
