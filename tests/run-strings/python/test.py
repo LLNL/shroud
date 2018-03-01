@@ -86,7 +86,13 @@ class Tutorial(unittest.TestCase):
         self.assertEqual(static_char, strings.getCharPtr2())
         self.assertEqual(static_char, strings.getCharPtr3())
 
-    def testgetStringRef(self):
+    def testgetConstString(self):
+        """return std::string"""
+        self.assertEqual(static_str, strings.getConstStringLen())
+        self.assertEqual(static_str, strings.getConstStringAsArg())
+        self.assertEqual('getConstStringAlloc', strings.getConstStringAlloc())
+
+    def testgetConstStringRef(self):
         """return std::string reference"""
         # The variations are useful for the Fortran API,
         # but really no difference in the Python API.
@@ -97,13 +103,7 @@ class Tutorial(unittest.TestCase):
         self.assertEqual('', strings.getConstStringRefLenEmpty())
         self.assertEqual(static_str, strings.getConstStringRefAlloc())
 
-    def testgetString5(self):
-        """return std::string"""
-        self.assertEqual(static_str, strings.getConstStringLen())
-        self.assertEqual(static_str, strings.getConstStringAsArg())
-        self.assertEqual('getConstStringAlloc', strings.getConstStringAlloc())
-
-    def testgetString7(self):
+    def testgetConstStringPtr(self):
         """return std::string pointer"""
         self.assertEqual('getConstStringPtrLen', strings.getConstStringPtrLen())
         self.assertEqual('getConstStringPtrAlloc', strings.getConstStringPtrAlloc())

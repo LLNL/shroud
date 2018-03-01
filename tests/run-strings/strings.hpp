@@ -56,16 +56,16 @@ const char * getCharPtr1();
 const char * getCharPtr2();
 const char * getCharPtr3();
 
+const std::string getString4();
+const std::string getConstStringLen();
+const std::string getConstStringAsArg();
+const std::string getConstStringAlloc();
+
 const std::string& getConstStringRefPure();
 const std::string& getConstStringRefLen();
 const std::string& getConstStringRefAsArg();
 const std::string& getConstStringRefLenEmpty();
 const std::string& getConstStringRefAlloc();
-
-const std::string getString4();
-const std::string getConstStringLen();
-const std::string getConstStringAsArg();
-const std::string getConstStringAlloc();
 
 const std::string * getConstStringPtrLen();
 const std::string * getConstStringPtrAlloc();

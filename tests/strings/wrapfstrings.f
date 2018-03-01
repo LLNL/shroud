@@ -161,6 +161,30 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: Noutput
         end subroutine c_get_char_ptr3_bufferify
 
+        subroutine c_get_const_string_len_bufferify(SHF_rv, NSHF_rv) &
+                bind(C, name="STR_get_const_string_len_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
+            integer(C_INT), value, intent(IN) :: NSHF_rv
+        end subroutine c_get_const_string_len_bufferify
+
+        subroutine c_get_const_string_as_arg_bufferify(output, Noutput) &
+                bind(C, name="STR_get_const_string_as_arg_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: output(*)
+            integer(C_INT), value, intent(IN) :: Noutput
+        end subroutine c_get_const_string_as_arg_bufferify
+
+        subroutine c_get_const_string_alloc_bufferify(SHF_rv, NSHF_rv) &
+                bind(C, name="STR_get_const_string_alloc_bufferify")
+            use iso_c_binding, only : C_PTR, C_SIZE_T
+            implicit none
+            type(C_PTR), intent(OUT) :: SHF_rv
+            integer(C_SIZE_T), intent(OUT) :: NSHF_rv
+        end subroutine c_get_const_string_alloc_bufferify
+
         pure function c_get_const_string_ref_pure() &
                 result(SHT_rv) &
                 bind(C, name="STR_get_const_string_ref_pure")
@@ -244,30 +268,6 @@ module strings_mod
             type(C_PTR), intent(OUT) :: SHF_rv
             integer(C_SIZE_T), intent(OUT) :: NSHF_rv
         end subroutine c_get_const_string_ref_alloc_bufferify
-
-        subroutine c_get_const_string_len_bufferify(SHF_rv, NSHF_rv) &
-                bind(C, name="STR_get_const_string_len_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_get_const_string_len_bufferify
-
-        subroutine c_get_const_string_as_arg_bufferify(output, Noutput) &
-                bind(C, name="STR_get_const_string_as_arg_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: Noutput
-        end subroutine c_get_const_string_as_arg_bufferify
-
-        subroutine c_get_const_string_alloc_bufferify(SHF_rv, NSHF_rv) &
-                bind(C, name="STR_get_const_string_alloc_bufferify")
-            use iso_c_binding, only : C_PTR, C_SIZE_T
-            implicit none
-            type(C_PTR), intent(OUT) :: SHF_rv
-            integer(C_SIZE_T), intent(OUT) :: NSHF_rv
-        end subroutine c_get_const_string_alloc_bufferify
 
         function c_get_const_string_ptr_len() &
                 result(SHT_rv) &
@@ -562,91 +562,9 @@ contains
         ! splicer end function.get_char_ptr3
     end subroutine get_char_ptr3
 
-    ! const string & getConstStringRefPure() +pure
-    ! function_index=7
-    !>
-    !! \brief return a 'const string&' as character(*)
-    !!
-    !<
-    function get_const_string_ref_pure() &
-            result(SHT_rv)
-        use iso_c_binding, only : C_CHAR
-        character(kind=C_CHAR, len=strlen_ptr( &
-            c_get_const_string_ref_pure())) :: SHT_rv
-        ! splicer begin function.get_const_string_ref_pure
-        SHT_rv = fstr_ptr(c_get_const_string_ref_pure())
-        ! splicer end function.get_const_string_ref_pure
-    end function get_const_string_ref_pure
-
-    ! const string & getConstStringRefLen() +len(30)
-    ! arg_to_buffer
-    ! function_index=8
-    !>
-    !! \brief return 'const string&' with fixed size (len=30)
-    !!
-    !<
-    function get_const_string_ref_len() &
-            result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
-        character(kind=C_CHAR, len=30) :: SHT_rv
-        ! splicer begin function.get_const_string_ref_len
-        call c_get_const_string_ref_len_bufferify(SHT_rv, &
-            len(SHT_rv, kind=C_INT))
-        ! splicer end function.get_const_string_ref_len
-    end function get_const_string_ref_len
-
-    ! void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))
-    ! arg_to_buffer - arg_to_buffer
-    ! function_index=38
-    !>
-    !! \brief return a 'const string&' as argument
-    !!
-    !<
-    subroutine get_const_string_ref_as_arg(output)
-        use iso_c_binding, only : C_INT
-        character(*), intent(OUT) :: output
-        ! splicer begin function.get_const_string_ref_as_arg
-        call c_get_const_string_ref_as_arg_bufferify(output, &
-            len(output, kind=C_INT))
-        ! splicer end function.get_const_string_ref_as_arg
-    end subroutine get_const_string_ref_as_arg
-
-    ! const string & getConstStringRefLenEmpty() +len(30)
-    ! arg_to_buffer
-    ! function_index=10
-    !>
-    !! \brief Test returning empty string reference
-    !!
-    !<
-    function get_const_string_ref_len_empty() &
-            result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
-        character(kind=C_CHAR, len=30) :: SHT_rv
-        ! splicer begin function.get_const_string_ref_len_empty
-        call c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
-            len(SHT_rv, kind=C_INT))
-        ! splicer end function.get_const_string_ref_len_empty
-    end function get_const_string_ref_len_empty
-
-    ! const std::string & getConstStringRefAlloc() +allocatable
-    ! arg_to_buffer
-    ! function_index=11
-    function get_const_string_ref_alloc() &
-            result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_PTR, C_SIZE_T
-        type(C_PTR) :: SHP_SHF_rv
-        integer(C_SIZE_T) :: NSHF_rv
-        character(len=:,kind=C_CHAR), allocatable :: SHT_rv
-        ! splicer begin function.get_const_string_ref_alloc
-        call c_get_const_string_ref_alloc_bufferify(SHP_SHF_rv, NSHF_rv)
-        ! splicer end function.get_const_string_ref_alloc
-        allocate(character(len=NSHF_rv, kind=C_CHAR):: SHT_rv)
-        call SHROUD_string_copy_and_free(SHP_SHF_rv, SHT_rv)
-    end function get_const_string_ref_alloc
-
     ! const string getConstStringLen() +len(30)
     ! arg_to_buffer
-    ! function_index=12
+    ! function_index=7
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -663,7 +581,7 @@ contains
 
     ! void getConstStringAsArg(string * output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=43
+    ! function_index=37
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -679,7 +597,7 @@ contains
 
     ! const std::string getConstStringAlloc() +allocatable
     ! arg_to_buffer
-    ! function_index=14
+    ! function_index=9
     function get_const_string_alloc() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_PTR, C_SIZE_T
@@ -692,6 +610,88 @@ contains
         allocate(character(len=NSHF_rv, kind=C_CHAR):: SHT_rv)
         call SHROUD_string_copy_and_free(SHP_SHF_rv, SHT_rv)
     end function get_const_string_alloc
+
+    ! const string & getConstStringRefPure() +pure
+    ! function_index=10
+    !>
+    !! \brief return a 'const string&' as character(*)
+    !!
+    !<
+    function get_const_string_ref_pure() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_CHAR
+        character(kind=C_CHAR, len=strlen_ptr( &
+            c_get_const_string_ref_pure())) :: SHT_rv
+        ! splicer begin function.get_const_string_ref_pure
+        SHT_rv = fstr_ptr(c_get_const_string_ref_pure())
+        ! splicer end function.get_const_string_ref_pure
+    end function get_const_string_ref_pure
+
+    ! const string & getConstStringRefLen() +len(30)
+    ! arg_to_buffer
+    ! function_index=11
+    !>
+    !! \brief return 'const string&' with fixed size (len=30)
+    !!
+    !<
+    function get_const_string_ref_len() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_CHAR, C_INT
+        character(kind=C_CHAR, len=30) :: SHT_rv
+        ! splicer begin function.get_const_string_ref_len
+        call c_get_const_string_ref_len_bufferify(SHT_rv, &
+            len(SHT_rv, kind=C_INT))
+        ! splicer end function.get_const_string_ref_len
+    end function get_const_string_ref_len
+
+    ! void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))
+    ! arg_to_buffer - arg_to_buffer
+    ! function_index=42
+    !>
+    !! \brief return a 'const string&' as argument
+    !!
+    !<
+    subroutine get_const_string_ref_as_arg(output)
+        use iso_c_binding, only : C_INT
+        character(*), intent(OUT) :: output
+        ! splicer begin function.get_const_string_ref_as_arg
+        call c_get_const_string_ref_as_arg_bufferify(output, &
+            len(output, kind=C_INT))
+        ! splicer end function.get_const_string_ref_as_arg
+    end subroutine get_const_string_ref_as_arg
+
+    ! const string & getConstStringRefLenEmpty() +len(30)
+    ! arg_to_buffer
+    ! function_index=13
+    !>
+    !! \brief Test returning empty string reference
+    !!
+    !<
+    function get_const_string_ref_len_empty() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_CHAR, C_INT
+        character(kind=C_CHAR, len=30) :: SHT_rv
+        ! splicer begin function.get_const_string_ref_len_empty
+        call c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
+            len(SHT_rv, kind=C_INT))
+        ! splicer end function.get_const_string_ref_len_empty
+    end function get_const_string_ref_len_empty
+
+    ! const std::string & getConstStringRefAlloc() +allocatable
+    ! arg_to_buffer
+    ! function_index=14
+    function get_const_string_ref_alloc() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_CHAR, C_PTR, C_SIZE_T
+        type(C_PTR) :: SHP_SHF_rv
+        integer(C_SIZE_T) :: NSHF_rv
+        character(len=:,kind=C_CHAR), allocatable :: SHT_rv
+        ! splicer begin function.get_const_string_ref_alloc
+        call c_get_const_string_ref_alloc_bufferify(SHP_SHF_rv, NSHF_rv)
+        ! splicer end function.get_const_string_ref_alloc
+        allocate(character(len=NSHF_rv, kind=C_CHAR):: SHT_rv)
+        call SHROUD_string_copy_and_free(SHP_SHF_rv, SHT_rv)
+    end function get_const_string_ref_alloc
 
     ! const string * getConstStringPtrLen() +len(30)
     ! arg_to_buffer

@@ -145,6 +145,22 @@ contains
  
 !--------------------------------------------------
 
+    ! character(30) function
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_len()
+    call assert_true(str == "dog", "getConstStringLen")
+
+    ! string_result_as_arg
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call get_const_string_as_arg(str)
+    call assert_true(str == "dog", "getConstStringAsArg")
+
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_alloc()
+    call assert_true(str == "getConstStringAlloc", "getConstStringAlloc")
+ 
+!--------------------------------------------------
+
     ! problem with pgi
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
@@ -170,22 +186,6 @@ contains
     str = get_const_string_ref_alloc()
     call assert_true( str == "dog", "getConstStringRefAlloc")
 
-!--------------------------------------------------
-
-    ! character(30) function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_len()
-    call assert_true(str == "dog", "getConstStringLen")
-
-    ! string_result_as_arg
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_const_string_as_arg(str)
-    call assert_true(str == "dog", "getConstStringAsArg")
-
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_alloc()
-    call assert_true(str == "getConstStringAlloc", "getConstStringAlloc")
- 
 !--------------------------------------------------
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
