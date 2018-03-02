@@ -96,7 +96,7 @@ types:
   # This example is pulled from spio
   # DataGroup is a type which is provided by another shroud wrapped library
   DataGroup:
-    base: wrapped
+    base: shadow
     cxx_header: sidre/Group.hpp
     cxx_type: axom::sidre::Group
     c_header: sidre/wrapGroup.h

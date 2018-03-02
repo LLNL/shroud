@@ -449,7 +449,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.
 # This has been replaced by gen_arg methods, but not sure about const.
-#        if result_typedef.base == 'wrapped':
+#        if result_typedef.base == 'shadow':
 #            is_const = False
 #        else:
 #            is_const = None

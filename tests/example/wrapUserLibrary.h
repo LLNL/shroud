@@ -59,7 +59,7 @@
 extern "C" {
 #endif
 
-// declaration of wrapped types
+// declaration of shadow types
 struct s_SIDRE_group;
 typedef struct s_SIDRE_group SIDRE_group;
 

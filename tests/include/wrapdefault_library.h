@@ -54,7 +54,7 @@
 extern "C" {
 #endif
 
-// declaration of wrapped types
+// declaration of shadow types
 
 
 void DEF_function1();

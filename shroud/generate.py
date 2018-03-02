@@ -505,7 +505,7 @@ class GenFunctions(object):
         ast = node.ast
         result_type = ast.typename
         result_typedef = typemap.Typedef.lookup(result_type)
-        # wrapped classes have not been added yet.
+        # shadow classes have not been added yet.
         # Only care about string here.
         attrs = ast.attrs
         result_is_ptr = ast.is_indirect()
@@ -706,7 +706,7 @@ class GenFunctions(object):
             typedef = typemap.Typedef.lookup(argtype)
             if typedef is None:
                 raise RuntimeError("%s not defined" % argtype)
-            if typedef.base == 'wrapped':
+            if typedef.base == 'shadow':
                 used_types[argtype] = typedef
 
     def gen_functions_decl(self, functions):

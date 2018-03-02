@@ -56,7 +56,7 @@
 extern "C" {
 #endif
 
-// declaration of wrapped types
+// declaration of shadow types
 struct s_TES_names;
 typedef struct s_TES_names TES_names;
 

@@ -43,7 +43,7 @@
 types:
 
   ExClass1:
-    base: wrapped
+    base: shadow
     cxx_type: ExClass1
     c_type: AA_exclass1
     f_derived_type: exclass1
@@ -53,7 +53,7 @@ types:
       - exclass1
 
   ExClass2:
-    base: wrapped
+    base: shadow
     cxx_type: ExClass2
     c_type: AA_exclass2
     f_derived_type: exclass2
@@ -63,7 +63,7 @@ types:
       - exclass2
 
   ExClass3:
-    base: wrapped
+    base: shadow
     cxx_type: ExClass3
     c_type: AA_exclass3
     f_derived_type: exclass3

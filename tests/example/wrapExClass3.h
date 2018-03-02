@@ -56,7 +56,7 @@
 extern "C" {
 #endif
 
-// declaration of wrapped types
+// declaration of shadow types
 struct s_AA_exclass3;
 typedef struct s_AA_exclass3 AA_exclass3;
 

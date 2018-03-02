@@ -167,7 +167,7 @@ class Typedef(object):
 
     def __export_yaml__(self, indent, output):
         """Write out a subset of a wrapped type.
-        Other fields are set with typedef_wrapped_defaults.
+        Other fields are set with typedef_shadow_defaults.
         """
         util.as_yaml(self, [
             'base',
@@ -950,26 +950,26 @@ def create_class_typedef(cls):
         cname = fmt_class.C_prefix + unname
         typedef = Typedef(
             name,
-            base='wrapped',
+            base='shadow',
             cxx_type=name,
             c_type=cname,
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[unname]},
             f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
             )
-        typedef_wrapped_defaults(typedef)
+        typedef_shadow_defaults(typedef)
         Typedef.register(name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
 
 
-def typedef_wrapped_defaults(typedef):
+def typedef_shadow_defaults(typedef):
     """Add some defaults to typedef.
     When dumping typedefs to a file, only a subset is written
     since the rest are boilerplate.  This function restores
     the boilerplate.
     """
-    if typedef.base != 'wrapped':
+    if typedef.base != 'shadow':
         return
 
     typedef.cxx_to_c=('\tstatic_cast<{c_const}%s *>('

@@ -483,7 +483,7 @@
         "Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
-            "base": "wrapped", 
+            "base": "shadow", 
             "c_to_cxx": "\tstatic_cast<{c_const}Class1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "DEF_class1", 
             "cxx_to_c": "\tstatic_cast<{c_const}DEF_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
@@ -535,7 +535,7 @@
         "Class2": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
-            "base": "wrapped", 
+            "base": "shadow", 
             "c_to_cxx": "\tstatic_cast<{c_const}Class2 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "DEF_class2", 
             "cxx_to_c": "\tstatic_cast<{c_const}DEF_class2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 

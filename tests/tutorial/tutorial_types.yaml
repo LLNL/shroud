@@ -44,7 +44,7 @@
 types:
 
   Class1:
-    base: wrapped
+    base: shadow
     cxx_type: Class1
     c_type: TUT_class1
     f_derived_type: class1

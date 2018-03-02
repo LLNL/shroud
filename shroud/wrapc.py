@@ -166,7 +166,7 @@ class Wrapc(util.WrapperMixin):
                     ])
         output.extend([
                 '',
-                '// declaration of wrapped types'
+                '// declaration of shadow types'
                 ])
         names = sorted(self.header_forward.keys())
         for name in names:
@@ -424,7 +424,7 @@ class Wrapc(util.WrapperMixin):
             # LHS is class' cxx_to_c
             cls_typedef = typemap.Typedef.lookup(cls.name)
             if cls_typedef.c_to_cxx is None:
-                # This should be set in typemap.typedef_wrapped_defaults
+                # This should be set in typemap.typedef_shadow_defaults
                 raise RuntimeError("Wappped class does not have c_to_cxx set")
             append_format(pre_call, 
                           '{c_const}{cxx_class} *{CXX_this} = ' +

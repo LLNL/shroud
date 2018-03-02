@@ -679,6 +679,12 @@ def create_library_from_dictionary(node):
                 raise TypeError("types '%s' must be a dictionary" % key)
             declast.add_type(key)   # Add to parser
 
+            if 'base' in value:
+                base = value['base']
+                if base not in ['string', 'vector', 'shadow']:
+                    raise RuntimeError("Unknown base type {} for type {}"
+                                       .format(value['base'], key))
+
             if 'typedef' in value:
                 copy_type = value['typedef']
                 orig = def_types.get(copy_type, None)
@@ -692,7 +698,7 @@ def create_library_from_dictionary(node):
                 def_types[key].update(value)
             else:
                 def_types[key] = typemap.Typedef(key, **value)
-            typemap.typedef_wrapped_defaults(def_types[key])
+            typemap.typedef_shadow_defaults(def_types[key])
 
     clean_dictionary(node)
     library = LibraryNode(**node)

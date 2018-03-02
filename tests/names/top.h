@@ -56,7 +56,7 @@
 extern "C" {
 #endif
 
-// declaration of wrapped types
+// declaration of shadow types
 
 // splicer begin C_declarations
 // splicer end C_declarations

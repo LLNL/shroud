@@ -6697,7 +6697,7 @@
             "PY_PyTypeObject": "PY_Class1_Type", 
             "PY_from_object": "PP_Class1_from_Object", 
             "PY_to_object": "PP_Class1_to_Object", 
-            "base": "wrapped", 
+            "base": "shadow", 
             "c_to_cxx": "\tstatic_cast<{c_const}Class1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TUT_class1", 
             "cxx_to_c": "\tstatic_cast<{c_const}TUT_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
