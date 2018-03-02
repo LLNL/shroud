@@ -124,6 +124,7 @@ contains
   subroutine test_functions
 
     character(30) str
+    character(30), parameter :: static_str = "dog                         "
 
     call set_case_name("test_functions")
 
@@ -148,12 +149,12 @@ contains
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_len()
-    call assert_true(str == "dog", "getConstStringLen")
+    call assert_true(str == static_str, "getConstStringLen")
 
     ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call get_const_string_as_arg(str)
-    call assert_true(str == "dog", "getConstStringAsArg")
+    call assert_true(str == static_str, "getConstStringAsArg")
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_alloc()
@@ -165,17 +166,17 @@ contains
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ref_pure()
-    call assert_true( str == "dog", "getConstStringRefPure")
+    call assert_true( str == static_str, "getConstStringRefPure")
 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ref_len()
-    call assert_true( str == "dog", "getConstStringRefLen")
+    call assert_true( str == static_str, "getConstStringRefLen")
 
     ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call get_const_string_ref_as_arg(str)
-    call assert_true( str == "dog", "getConstStringRefAsArg")
+    call assert_true( str == static_str, "getConstStringRefAsArg")
  
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
@@ -184,7 +185,7 @@ contains
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ref_alloc()
-    call assert_true( str == "dog", "getConstStringRefAlloc")
+    call assert_true( str == static_str, "getConstStringRefAlloc")
 
 !--------------------------------------------------
 
@@ -196,12 +197,16 @@ contains
  
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ptr_alloc()
-    call assert_true( str == "getConstStringPtrAlloc", "getConstStringPtrAlloc")
+    call assert_true( str == static_str, "getConstStringPtrAlloc")
+
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_ptr_owns_alloc()
+    call assert_true( str == "getConstStringPtrOwnsAlloc", "getConstStringPtrOwnsAlloc")
 
 !--------------------------------------------------
 
     call accept_string_const_reference("cat")
-!    call assert_true( rv_char == "dog")
+!    check global_str == "cat"
 
     str = " "
     call accept_string_reference_out(str)

@@ -166,6 +166,8 @@ functions:
 
 - decl: const std::string * getConstStringPtrAlloc() +allocatable
 
+- decl: const std::string * getConstStringPtrOwnsAlloc() +allocatable
+
 ########################################
 
 - decl: void acceptStringConstReference(const std::string & arg1)

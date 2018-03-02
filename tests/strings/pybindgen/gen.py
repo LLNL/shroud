@@ -58,9 +58,8 @@ def generate(fp):
                      retval('const std::string'), [])
     mod.add_function('getConstStringRefAlloc',
                      retval('const std::string &'), [])
-#                     retval('const std::string &', is_const=True), [])
 #    mod.add_function('getConstStringPtrAlloc',
-#                     retval('std::string *'), [])
+#                     retval('const std::string *'), [])
 #pybindgen.typehandlers.base.TypeLookupError: ['std::string *']
 
 #    mod.add_class('Class1',

@@ -151,15 +151,22 @@ const std::string getConstStringAlloc()
 
 const std::string * getConstStringPtrLen()
 {
-    // Caller is responsible to free string
+    // caller_owns_return = True
+    // C_finalize_buf: delete {cxx_var};
     std::string * rv = new std::string("getConstStringPtrLen");
     return rv;
 }
 
 const std::string * getConstStringPtrAlloc()
 {
-    // Caller is responsible to free string
-    std::string * rv = new std::string("getConstStringPtrAlloc");
+    // caller_owns_return = False
+    return &static_str;
+}
+
+const std::string * getConstStringPtrOwnsAlloc()
+{
+    // caller_owns_return = True
+    std::string * rv = new std::string("getConstStringPtrOwnsAlloc");
     return rv;
 }
 
@@ -182,19 +189,19 @@ void acceptStringReference(std::string & arg1)
 
 void acceptStringPointer(std::string * arg1)
 {
-  arg1->append("dog");
+    arg1->append("dog");
 }
 
 void returnStrings(std::string & arg1, std::string & arg2)
 {
-  arg1 = "up";
-  arg2 = "down";
+    arg1 = "up";
+    arg2 = "down";
 }
 
 char returnMany(int * arg1)
 {
-  *arg1 = 100;
-  return 'a';
+    *arg1 = 100;
+    return 'a';
 }
 
 //----------------------------------------
@@ -202,12 +209,12 @@ char returnMany(int * arg1)
 char *keep_explicit1;
 void explicit1(char * name)
 {
-  keep_explicit1 = name;
+    keep_explicit1 = name;
 }
 
 void explicit2(char * name)
 {
-  *name = 'a';
+    *name = 'a';
 }
 
 //----------------------------------------

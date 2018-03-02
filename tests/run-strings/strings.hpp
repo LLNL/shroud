@@ -69,6 +69,7 @@ const std::string& getConstStringRefAlloc();
 
 const std::string * getConstStringPtrLen();
 const std::string * getConstStringPtrAlloc();
+const std::string * getConstStringPtrOwnsAlloc();
 
 void acceptName_instance(std::string arg1);
 
