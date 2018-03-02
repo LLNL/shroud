@@ -92,12 +92,10 @@ PyObject_HEAD
 
 extern PyObject *PP_error_obj;
 
-extern "C" {
 #if PY_MAJOR_VERSION >= 3
-PyMODINIT_FUNC PyInit_userlibrary(void);
+extern "C" PyMODINIT_FUNC PyInit_userlibrary(void);
 #else
-PyMODINIT_FUNC inituserlibrary(void);
+extern "C" PyMODINIT_FUNC inituserlibrary(void);
 #endif
-}   // extern "C"
 
 #endif  /* PYUSERLIBRARYMODULE_HPP */

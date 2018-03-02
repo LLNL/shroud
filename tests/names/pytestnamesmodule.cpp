@@ -290,8 +290,7 @@ static struct PyModuleDef moduledef = {
 #define INITERROR return
 #endif
 
-extern "C" {
-PyMODINIT_FUNC
+extern "C" PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
 PyInit_testnames(void)
 #else
@@ -350,6 +349,4 @@ inittestnames(void)
         Py_FatalError("can't initialize module testnames");
     return RETVAL;
 }
-}   // extern "C"
-
 

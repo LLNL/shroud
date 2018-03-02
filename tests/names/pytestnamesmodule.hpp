@@ -85,12 +85,10 @@ PyObject_HEAD
 
 extern PyObject *PY_error_obj;
 
-extern "C" {
 #if PY_MAJOR_VERSION >= 3
-PyMODINIT_FUNC PyInit_testnames(void);
+extern "C" PyMODINIT_FUNC PyInit_testnames(void);
 #else
-PyMODINIT_FUNC inittestnames(void);
+extern "C" PyMODINIT_FUNC inittestnames(void);
 #endif
-}   // extern "C"
 
 #endif  /* PYTESTNAMESMODULE_HPP */

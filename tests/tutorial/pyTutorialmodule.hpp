@@ -73,12 +73,10 @@ PyObject_HEAD
 
 extern PyObject *PY_error_obj;
 
-extern "C" {
 #if PY_MAJOR_VERSION >= 3
-PyMODINIT_FUNC PyInit_tutorial(void);
+extern "C" PyMODINIT_FUNC PyInit_tutorial(void);
 #else
-PyMODINIT_FUNC inittutorial(void);
+extern "C" PyMODINIT_FUNC inittutorial(void);
 #endif
-}   // extern "C"
 
 #endif  /* PYTUTORIALMODULE_HPP */

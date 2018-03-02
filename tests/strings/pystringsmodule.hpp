@@ -54,12 +54,10 @@
 
 extern PyObject *PY_error_obj;
 
-extern "C" {
 #if PY_MAJOR_VERSION >= 3
-PyMODINIT_FUNC PyInit_strings(void);
+extern "C" PyMODINIT_FUNC PyInit_strings(void);
 #else
-PyMODINIT_FUNC initstrings(void);
+extern "C" PyMODINIT_FUNC initstrings(void);
 #endif
-}   // extern "C"
 
 #endif  /* PYSTRINGSMODULE_HPP */

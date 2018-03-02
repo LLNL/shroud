@@ -777,8 +777,7 @@ static struct PyModuleDef moduledef = {
 #define INITERROR return
 #endif
 
-extern "C" {
-PyMODINIT_FUNC
+extern "C" PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
 PyInit_userlibrary(void)
 #else
@@ -838,6 +837,4 @@ inituserlibrary(void)
         Py_FatalError("can't initialize module userlibrary");
     return RETVAL;
 }
-}   // extern "C"
-
 

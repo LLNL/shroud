@@ -184,7 +184,10 @@ int ShroudLenTrim(const char *s, int ls) {
         cxx_header='<string>',
         source="""
 // Called by Fortran to deal with allocatable character
-extern "C" void ShroudStringCopyAndFree(void *cptr, char *str) {
+#ifdef __cplusplus
+extern "C"
+#endif
+void ShroudStringCopyAndFree(void *cptr, char *str) {
     std::string * cxxstr = static_cast<std::string *>(cptr);
 
     strncpy(str, cxxstr->data(), cxxstr->size());

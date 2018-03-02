@@ -136,12 +136,10 @@ class Wrapp(util.WrapperMixin):
             fmt_library.PY_header_filename_suffix = 'h'
             fmt_library.PY_impl_filename_suffix = 'c'
             fmt_library.PY_extern_C_begin = ''
-            fmt_library.PY_extern_C_end = ''
         else:
             fmt_library.PY_header_filename_suffix = 'hpp'
             fmt_library.PY_impl_filename_suffix = 'cpp'
-            fmt_library.PY_extern_C_begin = 'extern "C" {\n'
-            fmt_library.PY_extern_C_end = '}   // extern "C"\n'
+            fmt_library.PY_extern_C_begin = 'extern "C" '
 
         # Format variables
         newlibrary.eval_template('PY_module_filename')
@@ -1332,12 +1330,12 @@ return 1;""", fmt)
         output.append(wformat("""
 extern PyObject *{PY_prefix}error_obj;
 
-{PY_extern_C_begin}#if PY_MAJOR_VERSION >= 3
-PyMODINIT_FUNC PyInit_{PY_module_name}(void);
+#if PY_MAJOR_VERSION >= 3
+{PY_extern_C_begin}PyMODINIT_FUNC PyInit_{PY_module_name}(void);
 #else
-PyMODINIT_FUNC init{PY_module_name}(void);
+{PY_extern_C_begin}PyMODINIT_FUNC init{PY_module_name}(void);
 #endif
-{PY_extern_C_end}""", fmt))
+""", fmt))
         output.append('#endif  /* %s */' % guard)
         self.write_output_file(fname, self.config.python_dir, output)
 
@@ -1699,7 +1697,6 @@ module_end = """
         Py_FatalError("can't initialize module {PY_module_name}");
     return RETVAL;
 }}
-{PY_extern_C_end}
 """
 
 

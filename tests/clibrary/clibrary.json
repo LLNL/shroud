@@ -85,7 +85,6 @@
             "LUA_state_var": "L", 
             "PY_PyObject": "PyObject", 
             "PY_extern_C_begin": "", 
-            "PY_extern_C_end": "", 
             "PY_header_filename": "pyClibrarymodule.h", 
             "PY_header_filename_suffix": "h", 
             "PY_helper_filename": "pyClibraryhelper.c", 
