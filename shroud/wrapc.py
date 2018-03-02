@@ -164,17 +164,17 @@ class Wrapc(util.WrapperMixin):
                     'extern "C" {',
                     '#endif'
                     ])
-        output.extend([
+        if self.header_forward:
+            output.extend([
                 '',
                 '// declaration of shadow types'
-                ])
-        names = sorted(self.header_forward.keys())
-        for name in names:
-            write_file = True
-            output.append(
-                'struct s_{C_type_name};\n'
-                'typedef struct s_{C_type_name} {C_type_name};'.
-                format(C_type_name=name))
+            ])
+            for name in sorted(self.header_forward.keys()):
+                write_file = True
+                output.append(
+                    'struct s_{C_type_name};\n'
+                    'typedef struct s_{C_type_name} {C_type_name};'.
+                    format(C_type_name=name))
         output.append('')
         if self._create_splicer('C_declarations', output):
             write_file = True
@@ -252,7 +252,6 @@ class Wrapc(util.WrapperMixin):
             write_file = True
             output.extend(helper_source)
 
-        self.namespace(library, cls, 'begin', output)
         if self.language == 'c++':
             output.append('')
             if self._create_splicer('CXX_definitions', output):
@@ -268,7 +267,6 @@ class Wrapc(util.WrapperMixin):
         if self.language == 'c++':
             output.append('')
             output.append('}  // extern "C"')
-        self.namespace(library, cls, 'end', output)
 
         if cls and cls.cpp_if:
             output.append('#endif  // ' + node.cpp_if)
@@ -427,7 +425,7 @@ class Wrapc(util.WrapperMixin):
                 # This should be set in typemap.typedef_shadow_defaults
                 raise RuntimeError("Wappped class does not have c_to_cxx set")
             append_format(pre_call, 
-                          '{c_const}{cxx_class} *{CXX_this} = ' +
+                          '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
                           cls_typedef.c_to_cxx + ';', fmt_func)
 
 #    c_var      - argument to C function  (wrapper function)
@@ -639,7 +637,8 @@ class Wrapc(util.WrapperMixin):
         # generate the C body
         C_return_code = 'return;'
         if is_ctor:
-            append_format(call_code, '{cxx_rv_decl} = new {cxx_class}({C_call_list});', fmt_func)
+            append_format(call_code, '{cxx_rv_decl} = new {namespace_scope}'
+                          '{cxx_class}({C_call_list});', fmt_func)
             if result_typedef.cxx_to_c is not None:
                 fmt_func.c_rv_decl = CXX_result.gen_arg_as_c(
                     name=fmt_result.c_var, params=None, continuation=True)

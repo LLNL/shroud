@@ -46,10 +46,10 @@
 // splicer begin header.include
 // splicer end header.include
 
-namespace tutorial {
-
 // forward declare classes
-class Class1;
+namespace tutorial {
+    class Class1;
+}
 
 extern PyTypeObject PY_Class1_Type;
 
@@ -58,7 +58,7 @@ extern PyTypeObject PY_Class1_Type;
 
 // helper functions
 extern const char *PY_Class1_capsule_name;
-PyObject *PP_Class1_to_Object(Class1 *addr);
+PyObject *PP_Class1_to_Object(tutorial::Class1 *addr);
 int PP_Class1_from_Object(PyObject *obj, void **addr);
 
 // splicer begin class.Class1.C_declaration
@@ -66,7 +66,7 @@ int PP_Class1_from_Object(PyObject *obj, void **addr);
 
 typedef struct {
 PyObject_HEAD
-    Class1 * obj;
+    tutorial::Class1 * obj;
     // splicer begin class.Class1.C_object
     // splicer end class.Class1.C_object
 } PY_Class1;
@@ -81,6 +81,4 @@ PyMODINIT_FUNC inittutorial(void);
 #endif
 }   // extern "C"
 
-
-}  // namespace tutorial
 #endif  /* PYTUTORIALMODULE_HPP */

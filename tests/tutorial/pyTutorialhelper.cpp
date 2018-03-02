@@ -41,12 +41,10 @@
 //
 // #######################################################################
 #include "pyTutorialmodule.hpp"
-
-namespace tutorial {
 const char *PY_Class1_capsule_name = "Class1";
 
 
-PyObject *PP_Class1_to_Object(Class1 *addr)
+PyObject *PP_Class1_to_Object(tutorial::Class1 *addr)
 {
     // splicer begin class.Class1.helper.to_object
     PyObject *voidobj;
@@ -74,5 +72,3 @@ int PP_Class1_from_Object(PyObject *obj, void **addr)
     return 1;
     // splicer end class.Class1.helper.from_object
 }
-
-}  // namespace tutorial

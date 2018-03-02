@@ -49,8 +49,6 @@
 #ifndef WRAPCLIBRARY_H
 #define WRAPCLIBRARY_H
 
-// declaration of shadow types
-
 // splicer begin C_declarations
 // splicer end C_declarations
 

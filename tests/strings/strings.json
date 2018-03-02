@@ -99,6 +99,7 @@
             "PY_param_self": "self", 
             "PY_prefix": "PY_", 
             "PY_result": "SHTPy_rv", 
+            "PY_this_call": "", 
             "PY_used_param_args": false, 
             "PY_used_param_kwds": false, 
             "PY_used_param_self": false, 

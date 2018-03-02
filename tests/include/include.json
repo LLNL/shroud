@@ -15,7 +15,8 @@
                     "class_lower": "class1", 
                     "class_prefix": "class1_", 
                     "class_upper": "CLASS1", 
-                    "cxx_class": "Class1"
+                    "cxx_class": "Class1", 
+                    "namespace_scope": "three::\t"
                 }, 
                 "methods": [
                     {
@@ -71,7 +72,7 @@
                             "C_call_code": "SH_this->method1(\targ1);", 
                             "C_call_list": "arg1", 
                             "C_name": "DEF_class1_method1", 
-                            "C_pre_call": "Class1 *SH_this = \tstatic_cast<Class1 *>(\tstatic_cast<void *>(\tself));", 
+                            "C_pre_call": "three::\tClass1 *SH_this = \tstatic_cast<three::\tClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "DEF_class1 * self,\t int arg1", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -110,7 +111,8 @@
                     "class_lower": "class2", 
                     "class_prefix": "class2_", 
                     "class_upper": "CLASS2", 
-                    "cxx_class": "Class2"
+                    "cxx_class": "Class2", 
+                    "namespace_scope": ""
                 }, 
                 "methods": [
                     {
@@ -196,10 +198,10 @@
                                     "c_const": "", 
                                     "c_ptr": " *", 
                                     "c_var": "c2", 
-                                    "cxx_decl": "Class1 * SHCXX_c2", 
+                                    "cxx_decl": "three::\tClass1 * SHCXX_c2", 
                                     "cxx_deref": "->", 
-                                    "cxx_type": "Class1", 
-                                    "cxx_val": "\tstatic_cast<Class1 *>(\tstatic_cast<void *>(\tc2))", 
+                                    "cxx_type": "three::\tClass1", 
+                                    "cxx_val": "\tstatic_cast<three::\tClass1 *>(\tstatic_cast<void *>(\tc2))", 
                                     "cxx_var": "SHCXX_c2"
                                 }, 
                                 "fmtf": {
@@ -249,7 +251,7 @@
                             "C_call_code": "SH_this->method2(\tSHCXX_c2);", 
                             "C_call_list": "SHCXX_c2", 
                             "C_name": "DEF_class2_method2", 
-                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(\tstatic_cast<void *>(\tself));\nClass1 * SHCXX_c2 = \tstatic_cast<Class1 *>(\tstatic_cast<void *>(\tc2));", 
+                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(\tstatic_cast<void *>(\tself));\nthree::\tClass1 * SHCXX_c2 = \tstatic_cast<three::\tClass1 *>(\tstatic_cast<void *>(\tc2));", 
                             "C_prototype": "DEF_class2 * self,\t DEF_class1 * c2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -323,7 +325,7 @@
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
-            "CXX_this_call": "", 
+            "CXX_this_call": "one::two::\t", 
             "C_argument": "SH_", 
             "C_bufferify_suffix": "_bufferify", 
             "C_custom_return_type": "", 
@@ -368,7 +370,7 @@
             "library": "default_library", 
             "library_lower": "default_library", 
             "library_upper": "DEFAULT_LIBRARY", 
-            "namespace_scope": "one::two::", 
+            "namespace_scope": "one::two::\t", 
             "stdlib": "std::"
         }, 
         "functions": [
@@ -391,7 +393,7 @@
                 "decl": "void function1()", 
                 "declgen": "void function1()", 
                 "format": {
-                    "C_call_code": "function1(\t);", 
+                    "C_call_code": "one::two::\tfunction1(\t);", 
                     "C_call_list": "", 
                     "C_name": "DEF_function1", 
                     "C_prototype": "", 
@@ -484,10 +486,10 @@
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "shadow", 
-            "c_to_cxx": "\tstatic_cast<{c_const}Class1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}three::\tClass1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "DEF_class1", 
             "cxx_to_c": "\tstatic_cast<{c_const}DEF_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
-            "cxx_type": "Class1", 
+            "cxx_type": "three::\tClass1", 
             "f_c_module": {
                 "iso_c_binding": [
                     "C_PTR"
@@ -510,18 +512,18 @@
             }, 
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(class1)", 
-            "forward": "Class1", 
+            "forward": "three::\tClass1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}three::\tClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}three::\tClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {

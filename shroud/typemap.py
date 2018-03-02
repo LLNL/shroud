@@ -951,7 +951,7 @@ def create_class_typedef(cls):
         typedef = Typedef(
             name,
             base='shadow',
-            cxx_type=name,
+            cxx_type=fmt_class.namespace_scope + name,
             c_type=cname,
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[unname]},

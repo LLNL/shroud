@@ -51,8 +51,6 @@ extern "C" {
 #endif
 // splicer begin include
 // splicer end include
-
-namespace tutorial {
 // splicer begin C_definition
 // splicer end C_definition
 
@@ -68,7 +66,7 @@ static int l_class1_new(lua_State *L)
     case 0:
         {
             l_Class1_Type * SH_this = (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
-            SH_this->self = new Class1();
+            SH_this->self = new tutorial::Class1();
             /* Add the metatable to the stack. */
             luaL_getmetatable(L, "Class1.metatable");
             /* Set the metatable on the userdata. */
@@ -80,7 +78,7 @@ static int l_class1_new(lua_State *L)
         if (SH_itype1 == LUA_TNUMBER) {
             int flag = lua_tointeger(L, 1);
             l_Class1_Type * SH_this = (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
-            SH_this->self = new Class1(flag);
+            SH_this->self = new tutorial::Class1(flag);
             /* Add the metatable to the stack. */
             luaL_getmetatable(L, "Class1.metatable");
             /* Set the metatable on the userdata. */
@@ -138,7 +136,7 @@ static const struct luaL_Reg l_Class1_Reg [] = {
 static int l_function1(lua_State *)
 {
     // splicer begin function.Function1
-    Function1();
+    tutorial::Function1();
     return 0;
     // splicer end function.Function1
 }
@@ -149,7 +147,7 @@ static int l_function2(lua_State *L)
     // splicer begin function.Function2
     double arg1 = lua_tonumber(L, 1);
     int arg2 = lua_tointeger(L, 2);
-    double SHCXX_rv = Function2(arg1, arg2);
+    double SHCXX_rv = tutorial::Function2(arg1, arg2);
     lua_pushnumber(L, SHCXX_rv);
     return 1;
     // splicer end function.Function2
@@ -160,7 +158,7 @@ static int l_function3(lua_State *L)
 {
     // splicer begin function.Function3
     bool arg = lua_toboolean(L, 1);
-    bool SHCXX_rv = Function3(arg);
+    bool SHCXX_rv = tutorial::Function3(arg);
     lua_pushboolean(L, SHCXX_rv);
     return 1;
     // splicer end function.Function3
@@ -172,7 +170,7 @@ static int l_function4a(lua_State *L)
     // splicer begin function.Function4a
     const char * arg1 = lua_tostring(L, 1);
     const char * arg2 = lua_tostring(L, 2);
-    const std::string SHCXX_rv = Function4a(arg1, arg2);
+    const std::string SHCXX_rv = tutorial::Function4a(arg1, arg2);
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end function.Function4a
@@ -184,7 +182,7 @@ static int l_function4b(lua_State *L)
     // splicer begin function.Function4b
     const char * arg1 = lua_tostring(L, 1);
     const char * arg2 = lua_tostring(L, 2);
-    const std::string & SHCXX_rv = Function4b(arg1, arg2);
+    const std::string & SHCXX_rv = tutorial::Function4b(arg1, arg2);
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end function.Function4b
@@ -201,7 +199,7 @@ static int l_function5(lua_State *L)
     switch (SH_nargs) {
     case 0:
         {
-            double SHCXX_rv = Function5();
+            double SHCXX_rv = tutorial::Function5();
             lua_pushnumber(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -209,7 +207,7 @@ static int l_function5(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TNUMBER) {
             double arg1 = lua_tonumber(L, 1);
-            double SHCXX_rv = Function5(arg1);
+            double SHCXX_rv = tutorial::Function5(arg1);
             lua_pushnumber(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -222,7 +220,7 @@ static int l_function5(lua_State *L)
             SH_itype2 == LUA_TBOOLEAN) {
             double arg1 = lua_tonumber(L, 1);
             bool arg2 = lua_toboolean(L, 2);
-            double SHCXX_rv = Function5(arg1, arg2);
+            double SHCXX_rv = tutorial::Function5(arg1, arg2);
             lua_pushnumber(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -250,12 +248,12 @@ static int l_function6(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TSTRING) {
             const char * name = lua_tostring(L, 1);
-            Function6(name);
+            tutorial::Function6(name);
             SH_nresult = 0;
         }
         else if (SH_itype1 == LUA_TNUMBER) {
             int indx = lua_tointeger(L, 1);
-            Function6(indx);
+            tutorial::Function6(indx);
             SH_nresult = 0;
         }
         else {
@@ -275,7 +273,7 @@ static int l_function9(lua_State *L)
 {
     // splicer begin function.Function9
     double arg = lua_tonumber(L, 1);
-    Function9(arg);
+    tutorial::Function9(arg);
     return 0;
     // splicer end function.Function9
 }
@@ -292,7 +290,7 @@ static int l_function10(lua_State *L)
     switch (SH_nargs) {
     case 0:
         {
-            Function10();
+            tutorial::Function10();
             SH_nresult = 0;
         }
         break;
@@ -301,7 +299,7 @@ static int l_function10(lua_State *L)
             SH_itype2 == LUA_TNUMBER) {
             const char * name = lua_tostring(L, 1);
             double arg2 = lua_tonumber(L, 2);
-            Function10(name, arg2);
+            tutorial::Function10(name, arg2);
             SH_nresult = 0;
         }
         else {
@@ -331,7 +329,7 @@ static int l_overload1(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TNUMBER) {
             int num = lua_tointeger(L, 1);
-            int SHCXX_rv = overload1(num);
+            int SHCXX_rv = tutorial::overload1(num);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -344,7 +342,7 @@ static int l_overload1(lua_State *L)
             SH_itype2 == LUA_TNUMBER) {
             int num = lua_tointeger(L, 1);
             int offset = lua_tointeger(L, 2);
-            int SHCXX_rv = overload1(num, offset);
+            int SHCXX_rv = tutorial::overload1(num, offset);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -352,7 +350,7 @@ static int l_overload1(lua_State *L)
             SH_itype2 == LUA_TNUMBER) {
             double type = lua_tonumber(L, 1);
             int num = lua_tointeger(L, 2);
-            int SHCXX_rv = overload1(type, num);
+            int SHCXX_rv = tutorial::overload1(type, num);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -367,7 +365,7 @@ static int l_overload1(lua_State *L)
             int num = lua_tointeger(L, 1);
             int offset = lua_tointeger(L, 2);
             int stride = lua_tointeger(L, 3);
-            int SHCXX_rv = overload1(num, offset, stride);
+            int SHCXX_rv = tutorial::overload1(num, offset, stride);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -377,7 +375,7 @@ static int l_overload1(lua_State *L)
             double type = lua_tonumber(L, 1);
             int num = lua_tointeger(L, 2);
             int offset = lua_tointeger(L, 3);
-            int SHCXX_rv = overload1(type, num, offset);
+            int SHCXX_rv = tutorial::overload1(type, num, offset);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -394,7 +392,8 @@ static int l_overload1(lua_State *L)
             int num = lua_tointeger(L, 2);
             int offset = lua_tointeger(L, 3);
             int stride = lua_tointeger(L, 4);
-            int SHCXX_rv = overload1(type, num, offset, stride);
+            int SHCXX_rv = tutorial::overload1(type, num, offset,
+                stride);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -414,8 +413,8 @@ static int l_overload1(lua_State *L)
 static int l_typefunc(lua_State *L)
 {
     // splicer begin function.typefunc
-    TypeID arg = lua_tointeger(L, 1);
-    TypeID SHCXX_rv = typefunc(arg);
+    tutorial::TypeID arg = lua_tointeger(L, 1);
+    tutorial::TypeID SHCXX_rv = tutorial::typefunc(arg);
     lua_pushinteger(L, SHCXX_rv);
     return 1;
     // splicer end function.typefunc
@@ -425,8 +424,8 @@ static int l_typefunc(lua_State *L)
 static int l_enumfunc(lua_State *L)
 {
     // splicer begin function.enumfunc
-    EnumTypeID arg = static_cast<EnumTypeID>(lua_tointeger(L, 1));
-    EnumTypeID SHCXX_rv = enumfunc(arg);
+    tutorial::EnumTypeID arg = static_cast<tutorial::EnumTypeID>(lua_tointeger(L, 1));
+    tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(arg);
     lua_pushinteger(L, static_cast<int>(SHCXX_rv));
     return 1;
     // splicer end function.enumfunc
@@ -436,7 +435,7 @@ static int l_enumfunc(lua_State *L)
 static int l_last_function_called(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string & SHCXX_rv = LastFunctionCalled();
+    const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end function.LastFunctionCalled
@@ -500,5 +499,3 @@ int luaopen_tutorial(lua_State *L) {
 #ifdef __cplusplus
 }
 #endif
-
-}  // namespace tutorial

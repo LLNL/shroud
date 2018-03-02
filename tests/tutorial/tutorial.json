@@ -13,6 +13,7 @@
                     "LUA_class_reg": "l_Class1_Reg", 
                     "LUA_ctor_name": "Class1", 
                     "LUA_metadata": "Class1.metatable", 
+                    "LUA_this_call": "SH_this->self->", 
                     "LUA_userdata_member": "self", 
                     "LUA_userdata_type": "l_Class1_Type", 
                     "LUA_userdata_var": "SH_this", 
@@ -20,6 +21,7 @@
                     "PY_PyTypeObject": "PY_Class1_Type", 
                     "PY_capsule_name": "PY_Class1_capsule_name", 
                     "PY_from_object_func": "PP_Class1_from_Object", 
+                    "PY_this_call": "self->obj->", 
                     "PY_to_object_func": "PP_Class1_to_Object", 
                     "PY_type_filename": "pyClass1type.cpp", 
                     "class_lower": "class1", 
@@ -73,7 +75,7 @@
                         "decl": "Class1()         +name(new)", 
                         "declgen": "Class1() +name(new)", 
                         "format": {
-                            "C_call_code": "Class1 * SHCXX_rv = new Class1();", 
+                            "C_call_code": "tutorial::\tClass1 * SHCXX_rv = new tutorial::\tClass1();", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_new_default", 
                             "C_post_call": "TUT_class1 * SHC_rv = \tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
@@ -97,7 +99,7 @@
                             "PY_type_method": "tp_init", 
                             "c_const": "", 
                             "c_rv_decl": "TUT_class1 * SHC_rv", 
-                            "cxx_rv_decl": "Class1 * SHCXX_rv", 
+                            "cxx_rv_decl": "tutorial::\tClass1 * SHCXX_rv", 
                             "function_name": "new", 
                             "function_suffix": "_default", 
                             "underscore_name": "new"
@@ -202,7 +204,7 @@
                         "decl": "Class1(int flag) +name(new)", 
                         "declgen": "Class1(int flag +intent(in)+value) +name(new)", 
                         "format": {
-                            "C_call_code": "Class1 * SHCXX_rv = new Class1(flag);", 
+                            "C_call_code": "tutorial::\tClass1 * SHCXX_rv = new tutorial::\tClass1(flag);", 
                             "C_call_list": "flag", 
                             "C_name": "TUT_class1_new_flag", 
                             "C_post_call": "TUT_class1 * SHC_rv = \tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
@@ -224,7 +226,7 @@
                             "PY_type_method": "tp_init", 
                             "c_const": "", 
                             "c_rv_decl": "TUT_class1 * SHC_rv", 
-                            "cxx_rv_decl": "Class1 * SHCXX_rv", 
+                            "cxx_rv_decl": "tutorial::\tClass1 * SHCXX_rv", 
                             "function_name": "new", 
                             "function_suffix": "_flag", 
                             "underscore_name": "new"
@@ -253,7 +255,7 @@
                             "C_call_code": "delete SH_this;", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_delete", 
-                            "C_pre_call": "Class1 *SH_this = \tstatic_cast<Class1 *>(\tstatic_cast<void *>(\tself));", 
+                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "TUT_class1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -321,7 +323,7 @@
                             "C_call_code": "int SHC_rv =\t SH_this->Method1(\t);", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_method1", 
-                            "C_pre_call": "Class1 *SH_this = \tstatic_cast<Class1 *>(\tstatic_cast<void *>(\tself));", 
+                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "TUT_class1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
@@ -354,10 +356,10 @@
                                     "c_const": "const ", 
                                     "c_ptr": "", 
                                     "c_var": "obj2", 
-                                    "cxx_decl": "const Class1 * SHCXX_obj2", 
+                                    "cxx_decl": "const tutorial::\tClass1 * SHCXX_obj2", 
                                     "cxx_deref": "->", 
-                                    "cxx_type": "Class1", 
-                                    "cxx_val": "\tstatic_cast<const Class1 *>(\tstatic_cast<const void *>(\tobj2))", 
+                                    "cxx_type": "tutorial::\tClass1", 
+                                    "cxx_val": "\tstatic_cast<const tutorial::\tClass1 *>(\tstatic_cast<const void *>(\tobj2))", 
                                     "cxx_var": "SHCXX_obj2"
                                 }, 
                                 "fmtf": {
@@ -370,9 +372,9 @@
                                     "c_ptr": "", 
                                     "c_type": "TUT_class1", 
                                     "c_var": "obj2", 
-                                    "cxx_decl": "Class1 obj2", 
+                                    "cxx_decl": "tutorial::\tClass1 obj2", 
                                     "cxx_deref": "->", 
-                                    "cxx_type": "Class1", 
+                                    "cxx_type": "tutorial::\tClass1", 
                                     "cxx_var": "obj2", 
                                     "py_type": "PY_Class1", 
                                     "py_var": "SHPy_obj2"
@@ -438,7 +440,7 @@
                             "C_call_code": "bool SHC_rv =\t SH_this->equivalent(\t*SHCXX_obj2);", 
                             "C_call_list": "*SHCXX_obj2", 
                             "C_name": "TUT_class1_equivalent", 
-                            "C_pre_call": "const Class1 *SH_this = \tstatic_cast<const Class1 *>(\tstatic_cast<const void *>(\tself));\nconst Class1 * SHCXX_obj2 = \tstatic_cast<const Class1 *>(\tstatic_cast<const void *>(\tobj2));", 
+                            "C_pre_call": "const tutorial::\tClass1 *SH_this = \tstatic_cast<const tutorial::\tClass1 *>(\tstatic_cast<const void *>(\tself));\nconst tutorial::\tClass1 * SHCXX_obj2 = \tstatic_cast<const tutorial::\tClass1 *>(\tstatic_cast<const void *>(\tobj2));", 
                             "C_prototype": "const TUT_class1 * self,\t const TUT_class1 * obj2", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "bool", 
@@ -516,7 +518,7 @@
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
-            "CXX_this_call": "", 
+            "CXX_this_call": "tutorial::\t", 
             "C_argument": "SH_", 
             "C_bufferify_suffix": "_bufferify", 
             "C_custom_return_type": "", 
@@ -556,6 +558,7 @@
             "LUA_prefix": "l_", 
             "LUA_result": "rv", 
             "LUA_state_var": "L", 
+            "LUA_this_call": "tutorial::\t", 
             "LUA_used_param_state": false, 
             "LUA_userdata_type": "XXLUA_userdata_type", 
             "PY_PyObject": "PyObject", 
@@ -574,6 +577,7 @@
             "PY_param_self": "self", 
             "PY_prefix": "PY_", 
             "PY_result": "SHTPy_rv", 
+            "PY_this_call": "tutorial::\t", 
             "PY_used_param_args": false, 
             "PY_used_param_kwds": false, 
             "PY_used_param_self": false, 
@@ -584,7 +588,7 @@
             "library": "Tutorial", 
             "library_lower": "tutorial", 
             "library_upper": "TUTORIAL", 
-            "namespace_scope": "tutorial::", 
+            "namespace_scope": "tutorial::\t", 
             "stdlib": "std::"
         }, 
         "functions": [
@@ -607,7 +611,7 @@
                 "decl": "void Function1()", 
                 "declgen": "void Function1()", 
                 "format": {
-                    "C_call_code": "Function1(\t);", 
+                    "C_call_code": "tutorial::\tFunction1(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function1", 
                     "C_prototype": "", 
@@ -773,7 +777,7 @@
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t Function2(\targ1,\t arg2);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::\tFunction2(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "TUT_function2", 
                     "C_prototype": "double arg1,\t int arg2", 
@@ -961,7 +965,7 @@
                 "decl": "void Sum(size_t len  +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))", 
                 "declgen": "void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))", 
                 "format": {
-                    "C_call_code": "Sum(\tlen,\t values,\t result);", 
+                    "C_call_code": "tutorial::\tSum(\tlen,\t values,\t result);", 
                     "C_call_list": "len,\t values,\t result", 
                     "C_name": "TUT_sum", 
                     "C_prototype": "size_t len,\t int * values,\t int * result", 
@@ -1066,7 +1070,7 @@
                 "decl": "long long TypeLongLong(long long arg1)", 
                 "declgen": "long long TypeLongLong(long long arg1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "long long SHC_rv =\t TypeLongLong(\targ1);", 
+                    "C_call_code": "long long SHC_rv =\t tutorial::\tTypeLongLong(\targ1);", 
                     "C_call_list": "arg1", 
                     "C_name": "TUT_type_long_long", 
                     "C_prototype": "long long arg1", 
@@ -1185,7 +1189,7 @@
                 "decl": "bool Function3(bool arg)", 
                 "declgen": "bool Function3(bool arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "bool SHC_rv =\t Function3(\targ);", 
+                    "C_call_code": "bool SHC_rv =\t tutorial::\tFunction3(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function3", 
                     "C_prototype": "bool arg", 
@@ -1327,7 +1331,7 @@
                 "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
                 "declgen": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "format": {
-                    "C_call_code": "Function3b(\targ1,\t arg2,\t arg3);", 
+                    "C_call_code": "tutorial::\tFunction3b(\targ1,\t arg2,\t arg3);", 
                     "C_call_list": "arg1,\t arg2,\t arg3", 
                     "C_name": "TUT_function3b", 
                     "C_prototype": "const bool arg1,\t bool * arg2,\t bool * arg3", 
@@ -1636,7 +1640,7 @@
                 "decl": "const std::string Function4a( const std::string& arg1, const std::string& arg2 ) +len(30)", 
                 "declgen": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "format": {
-                    "C_call_code": "const std::string SHCXX_rv =\t Function4a(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "const std::string SHCXX_rv =\t tutorial::\tFunction4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4a_bufferify", 
                     "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
@@ -1809,7 +1813,7 @@
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t Function4b(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tFunction4b(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4b", 
                     "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
@@ -1968,7 +1972,7 @@
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t Function4b(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tFunction4b(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4b_bufferify", 
                     "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(output, ' ', Noutput);\n} else {\n    ShroudStrCopy(output, Noutput, SHCXX_rv.c_str());\n}", 
@@ -2127,7 +2131,7 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t Function5(\t);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::\tFunction5(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function5", 
                     "C_prototype": "", 
@@ -2221,7 +2225,7 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t Function5(\targ1);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::\tFunction5(\targ1);", 
                     "C_call_list": "arg1", 
                     "C_name": "TUT_function5_arg1", 
                     "C_prototype": "double arg1", 
@@ -2410,7 +2414,7 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t Function5(\targ1,\t arg2);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::\tFunction5(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "TUT_function5_arg1_arg2", 
                     "C_prototype": "double arg1,\t bool arg2", 
@@ -2516,7 +2520,7 @@
                 "decl": "void Function6(const std::string& name)", 
                 "declgen": "void Function6(const std::string & name +intent(in))", 
                 "format": {
-                    "C_call_code": "Function6(\tSH_name);", 
+                    "C_call_code": "tutorial::\tFunction6(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "TUT_function6_from_name", 
                     "C_pre_call": "const std::string SH_name(name);", 
@@ -2606,7 +2610,7 @@
                 "decl": "void Function6(const std::string& name)", 
                 "declgen": "void Function6(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
-                    "C_call_code": "Function6(\tSH_name);", 
+                    "C_call_code": "tutorial::\tFunction6(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "TUT_function6_from_name_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -2703,7 +2707,7 @@
                 "decl": "void Function6(int indx)", 
                 "declgen": "void Function6(int indx +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "Function6(\tindx);", 
+                    "C_call_code": "tutorial::\tFunction6(\tindx);", 
                     "C_call_list": "indx", 
                     "C_name": "TUT_function6_from_index", 
                     "C_prototype": "int indx", 
@@ -2830,7 +2834,7 @@
                 "declgen": "void Function7(int arg +intent(in)+value)", 
                 "format": {
                     "CXX_template": "<int>", 
-                    "C_call_code": "Function7<int>(\targ);", 
+                    "C_call_code": "tutorial::\tFunction7<int>(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function7_int", 
                     "C_prototype": "int arg", 
@@ -2910,7 +2914,7 @@
                 "declgen": "void Function7(double arg +intent(in)+value)", 
                 "format": {
                     "CXX_template": "<double>", 
-                    "C_call_code": "Function7<double>(\targ);", 
+                    "C_call_code": "tutorial::\tFunction7<double>(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function7_double", 
                     "C_prototype": "double arg", 
@@ -3003,7 +3007,7 @@
                 "declgen": "int Function8()", 
                 "format": {
                     "CXX_template": "<int>", 
-                    "C_call_code": "int SHC_rv =\t Function8<int>(\t);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::\tFunction8<int>(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function8_int", 
                     "C_prototype": "", 
@@ -3062,7 +3066,7 @@
                 "declgen": "double Function8()", 
                 "format": {
                     "CXX_template": "<double>", 
-                    "C_call_code": "double SHC_rv =\t Function8<double>(\t);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::\tFunction8<double>(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function8_double", 
                     "C_prototype": "", 
@@ -3164,7 +3168,7 @@
                 "decl": "void Function9(double arg)", 
                 "declgen": "void Function9(double arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "Function9(\targ);", 
+                    "C_call_code": "tutorial::\tFunction9(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function9", 
                     "C_prototype": "double arg", 
@@ -3324,7 +3328,7 @@
                 "decl": "void Function10()", 
                 "declgen": "void Function10()", 
                 "format": {
-                    "C_call_code": "Function10(\t);", 
+                    "C_call_code": "tutorial::\tFunction10(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function10_0", 
                     "C_prototype": "", 
@@ -3474,7 +3478,7 @@
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "declgen": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "Function10(\tSH_name,\t arg2);", 
+                    "C_call_code": "tutorial::\tFunction10(\tSH_name,\t arg2);", 
                     "C_call_list": "SH_name,\t arg2", 
                     "C_name": "TUT_function10_1", 
                     "C_pre_call": "const std::string SH_name(name);", 
@@ -3751,7 +3755,7 @@
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "declgen": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "Function10(\tSH_name,\t arg2);", 
+                    "C_call_code": "tutorial::\tFunction10(\tSH_name,\t arg2);", 
                     "C_call_list": "SH_name,\t arg2", 
                     "C_name": "TUT_function10_1_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -3846,7 +3850,7 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t overload1(\tnum);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\tnum);", 
                     "C_call_list": "num", 
                     "C_name": "TUT_overload1_num", 
                     "C_prototype": "int num", 
@@ -3972,7 +3976,7 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t overload1(\tnum,\t offset);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\tnum,\t offset);", 
                     "C_call_list": "num,\t offset", 
                     "C_name": "TUT_overload1_num_offset", 
                     "C_prototype": "int num,\t int offset", 
@@ -4214,7 +4218,7 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t overload1(\tnum,\t offset,\t stride);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\tnum,\t offset,\t stride);", 
                     "C_call_list": "num,\t offset,\t stride", 
                     "C_name": "TUT_overload1_num_offset_stride", 
                     "C_prototype": "int num,\t int offset,\t int stride", 
@@ -4332,7 +4336,7 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t overload1(\ttype,\t num);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\ttype,\t num);", 
                     "C_call_list": "type,\t num", 
                     "C_name": "TUT_overload1_3", 
                     "C_prototype": "double type,\t int num", 
@@ -4481,7 +4485,7 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t overload1(\ttype,\t num,\t offset);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\ttype,\t num,\t offset);", 
                     "C_call_list": "type,\t num,\t offset", 
                     "C_name": "TUT_overload1_4", 
                     "C_prototype": "double type,\t int num,\t int offset", 
@@ -4768,7 +4772,7 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t overload1(\ttype,\t num,\t offset,\t stride);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\ttype,\t num,\t offset,\t stride);", 
                     "C_call_list": "type,\t num,\t offset,\t stride", 
                     "C_name": "TUT_overload1_5", 
                     "C_prototype": "double type,\t int num,\t int offset,\t int stride", 
@@ -4801,7 +4805,7 @@
                             "c_ptr": "", 
                             "c_var": "arg", 
                             "cxx_deref": ".", 
-                            "cxx_type": "TypeID", 
+                            "cxx_type": "tutorial::TypeID", 
                             "cxx_var": "arg"
                         }, 
                         "fmtf": {
@@ -4814,7 +4818,7 @@
                             "c_var": "lua_tointeger(L, 1)", 
                             "c_var_len": "Larg", 
                             "cxx_deref": ".", 
-                            "cxx_type": "TypeID", 
+                            "cxx_type": "tutorial::TypeID", 
                             "cxx_var": "arg", 
                             "lua_var": "SH_Lua_arg"
                         }, 
@@ -4824,9 +4828,9 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "arg", 
-                            "cxx_decl": "TypeID arg", 
+                            "cxx_decl": "tutorial::TypeID arg", 
                             "cxx_deref": ".", 
-                            "cxx_type": "TypeID", 
+                            "cxx_type": "tutorial::TypeID", 
                             "cxx_var": "arg", 
                             "py_var": "SHPy_arg"
                         }
@@ -4885,7 +4889,7 @@
                 "decl": "TypeID typefunc(TypeID arg)", 
                 "declgen": "TypeID typefunc(TypeID arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "TypeID SHC_rv =\t typefunc(\targ);", 
+                    "C_call_code": "tutorial::TypeID SHC_rv =\t tutorial::\ttypefunc(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_typefunc", 
                     "C_prototype": "int arg", 
@@ -4905,7 +4909,7 @@
                     "LUA_name_impl": "l_typefunc", 
                     "PY_name_impl": "PY_typefunc", 
                     "c_const": "", 
-                    "cxx_rv_decl": "TypeID SHC_rv", 
+                    "cxx_rv_decl": "tutorial::TypeID SHC_rv", 
                     "function_name": "typefunc", 
                     "underscore_name": "typefunc"
                 }, 
@@ -4918,10 +4922,10 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
-                            "cxx_decl": "EnumTypeID SHCXX_arg", 
+                            "cxx_decl": "tutorial::EnumTypeID SHCXX_arg", 
                             "cxx_deref": ".", 
-                            "cxx_type": "EnumTypeID", 
-                            "cxx_val": "static_cast<EnumTypeID>(arg)", 
+                            "cxx_type": "tutorial::EnumTypeID", 
+                            "cxx_val": "static_cast<tutorial::EnumTypeID>(arg)", 
                             "cxx_var": "SHCXX_arg"
                         }, 
                         "fmtf": {
@@ -4934,7 +4938,7 @@
                             "c_var": "lua_tointeger(L, 1)", 
                             "c_var_len": "Larg", 
                             "cxx_deref": ".", 
-                            "cxx_type": "EnumTypeID", 
+                            "cxx_type": "tutorial::EnumTypeID", 
                             "cxx_var": "arg", 
                             "lua_var": "SH_Lua_arg"
                         }, 
@@ -4944,10 +4948,10 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "arg", 
-                            "cxx_decl": "EnumTypeID SH_arg", 
+                            "cxx_decl": "tutorial::EnumTypeID SH_arg", 
                             "cxx_deref": ".", 
-                            "cxx_type": "EnumTypeID", 
-                            "cxx_val": "static_cast<EnumTypeID>(arg)", 
+                            "cxx_type": "tutorial::EnumTypeID", 
+                            "cxx_val": "static_cast<tutorial::EnumTypeID>(arg)", 
                             "cxx_var": "SH_arg", 
                             "py_var": "SHPy_arg"
                         }
@@ -5008,11 +5012,11 @@
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
                 "declgen": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "EnumTypeID SHCXX_rv =\t enumfunc(\tSHCXX_arg);", 
+                    "C_call_code": "tutorial::EnumTypeID SHCXX_rv =\t tutorial::\tenumfunc(\tSHCXX_arg);", 
                     "C_call_list": "SHCXX_arg", 
                     "C_name": "TUT_enumfunc", 
                     "C_post_call": "int SHC_rv = static_cast<int>(SHCXX_rv);", 
-                    "C_pre_call": "EnumTypeID SHCXX_arg = static_cast<EnumTypeID>(arg);", 
+                    "C_pre_call": "tutorial::EnumTypeID SHCXX_arg = static_cast<tutorial::EnumTypeID>(arg);", 
                     "C_prototype": "int arg", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int", 
@@ -5030,7 +5034,7 @@
                     "LUA_name_impl": "l_enumfunc", 
                     "PY_name_impl": "PY_enumfunc", 
                     "c_const": "", 
-                    "cxx_rv_decl": "EnumTypeID SHCXX_rv", 
+                    "cxx_rv_decl": "tutorial::EnumTypeID SHCXX_rv", 
                     "function_name": "enumfunc", 
                     "underscore_name": "enumfunc"
                 }, 
@@ -5155,7 +5159,7 @@
                     "brief": "Pass in reference to scalar"
                 }, 
                 "format": {
-                    "C_call_code": "getMinMax(\t*min,\t *max);", 
+                    "C_call_code": "tutorial::\tgetMinMax(\t*min,\t *max);", 
                     "C_call_list": "*min,\t *max", 
                     "C_name": "TUT_get_min_max", 
                     "C_prototype": "int * min,\t int * max", 
@@ -5186,10 +5190,10 @@
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "arg1", 
-                            "cxx_decl": "const Class1 * SHCXX_arg1", 
+                            "cxx_decl": "const tutorial::\tClass1 * SHCXX_arg1", 
                             "cxx_deref": "->", 
-                            "cxx_type": "Class1", 
-                            "cxx_val": "\tstatic_cast<const Class1 *>(\tstatic_cast<const void *>(\targ1))", 
+                            "cxx_type": "tutorial::\tClass1", 
+                            "cxx_val": "\tstatic_cast<const tutorial::\tClass1 *>(\tstatic_cast<const void *>(\targ1))", 
                             "cxx_var": "SHCXX_arg1"
                         }, 
                         "fmtf": {
@@ -5202,9 +5206,9 @@
                             "c_ptr": " *", 
                             "c_type": "TUT_class1", 
                             "c_var": "arg1", 
-                            "cxx_decl": "Class1 arg1", 
+                            "cxx_decl": "tutorial::\tClass1 arg1", 
                             "cxx_deref": "->", 
-                            "cxx_type": "Class1", 
+                            "cxx_type": "tutorial::\tClass1", 
                             "cxx_var": "arg1", 
                             "py_type": "PY_Class1", 
                             "py_var": "SHPy_arg1"
@@ -5264,10 +5268,10 @@
                 "decl": "int useclass(const Class1 *arg1)", 
                 "declgen": "int useclass(const Class1 * arg1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t useclass(\tSHCXX_arg1);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::\tuseclass(\tSHCXX_arg1);", 
                     "C_call_list": "SHCXX_arg1", 
                     "C_name": "TUT_useclass", 
-                    "C_pre_call": "const Class1 * SHCXX_arg1 = \tstatic_cast<const Class1 *>(\tstatic_cast<const void *>(\targ1));", 
+                    "C_pre_call": "const tutorial::\tClass1 * SHCXX_arg1 = \tstatic_cast<const tutorial::\tClass1 *>(\tstatic_cast<const void *>(\targ1));", 
                     "C_prototype": "const TUT_class1 * arg1", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int", 
@@ -5324,7 +5328,7 @@
                 "decl": "const Class1 *getclass2()", 
                 "declgen": "const Class1 * getclass2()", 
                 "format": {
-                    "C_call_code": "const Class1 * SHCXX_rv =\t getclass2(\t);", 
+                    "C_call_code": "const tutorial::\tClass1 * SHCXX_rv =\t tutorial::\tgetclass2(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_getclass2", 
                     "C_post_call": "const TUT_class1 * SHC_rv = \tstatic_cast<const TUT_class1 *>(\tstatic_cast<const void *>(\tSHCXX_rv));", 
@@ -5342,7 +5346,7 @@
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "const ", 
-                    "cxx_rv_decl": "const Class1 * SHCXX_rv", 
+                    "cxx_rv_decl": "const tutorial::\tClass1 * SHCXX_rv", 
                     "function_name": "getclass2", 
                     "underscore_name": "getclass2"
                 }, 
@@ -5392,7 +5396,7 @@
                 "decl": "Class1 *getclass3()", 
                 "declgen": "Class1 * getclass3()", 
                 "format": {
-                    "C_call_code": "Class1 * SHCXX_rv =\t getclass3(\t);", 
+                    "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t tutorial::\tgetclass3(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_getclass3", 
                     "C_post_call": "TUT_class1 * SHC_rv = \tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
@@ -5411,7 +5415,7 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_getclass3", 
                     "c_const": "", 
-                    "cxx_rv_decl": "Class1 * SHCXX_rv", 
+                    "cxx_rv_decl": "tutorial::\tClass1 * SHCXX_rv", 
                     "function_name": "getclass3", 
                     "underscore_name": "getclass3"
                 }, 
@@ -5548,7 +5552,7 @@
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
                 "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t vector_sum(\tSH_arg);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::\tvector_sum(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_sum_bufferify", 
                     "C_pre_call": "const std::vector<int> SH_arg(arg, arg + Sarg);", 
@@ -5690,7 +5694,7 @@
                 "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
                 "declgen": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out)+size(Sarg))", 
                 "format": {
-                    "C_call_code": "vector_iota(\tSH_arg);", 
+                    "C_call_code": "tutorial::\tvector_iota(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_iota_bufferify", 
                     "C_post_call": "{\n    std::vector<int>::size_type\n        SHT_i = 0,\n        SHT_n = Sarg;\n    SHT_n = std::min(SH_arg.size(), SHT_n);\n    for(; SHT_i < SHT_n; SHT_i++) {\n        arg[SHT_i] = SH_arg[SHT_i];\n    }\n}", 
@@ -5832,7 +5836,7 @@
                 "decl": "void vector_increment(std::vector<int> &arg)", 
                 "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))", 
                 "format": {
-                    "C_call_code": "vector_increment(\tSH_arg);", 
+                    "C_call_code": "tutorial::\tvector_increment(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_increment_bufferify", 
                     "C_post_call": "{+\nstd::vector<int>::size_type+\nSHT_i = 0,\nSHT_n = Sarg;\n-SHT_n = std::min(SH_arg.size(), SHT_n);\nfor(; SHT_i < SHT_n; SHT_i++) {+\narg[SHT_i] = SH_arg[SHT_i];\n-}\n-}", 
@@ -5992,7 +5996,7 @@
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 }, 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t vector_string_count(\tSH_arg);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::\tvector_string_count(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_string_count_bufferify", 
                     "C_pre_call": "std::vector<std::string> SH_arg;\n{\n      const char * BBB = arg;\n      std::vector<std::string>::size_type\n        SHT_i = 0,\n        SHT_n = Sarg;\n    for(; SHT_i < SHT_n; SHT_i++) {\n        SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n        BBB += Narg;\n    }\n}", 
@@ -6148,7 +6152,7 @@
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 }, 
                 "format": {
-                    "C_call_code": "vector_string_fill(\tSH_arg);", 
+                    "C_call_code": "tutorial::\tvector_string_fill(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_custom_return_type": "int", 
                     "C_name": "TUT_vector_string_fill_bufferify", 
@@ -6299,7 +6303,7 @@
                     "brief": "append '-like' to names."
                 }, 
                 "format": {
-                    "C_call_code": "vector_string_append(\tSH_arg);", 
+                    "C_call_code": "tutorial::\tvector_string_append(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "TUT_vector_string_append_bufferify", 
                     "C_post_call": "{\n    char * BBB = arg;\n    std::vector<std::string>::size_type\n        SHT_i = 0,\n        SHT_n = Sarg;\n    SHT_n = std::min(SH_arg.size(),SHT_n);\n    for(; SHT_i < SHT_n; SHT_i++) {\n        ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());\n        BBB += Narg;\n    }\n}", 
@@ -6429,7 +6433,7 @@
                 "decl": "int callback1(int in, int (*incr)(int));", 
                 "declgen": "int callback1(int in +intent(in)+value, int ( * incr) +intent(in)+value(int +value))", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t callback1(\tin,\t incr);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::\tcallback1(\tin,\t incr);", 
                     "C_call_list": "in,\t incr", 
                     "C_name": "TUT_callback1", 
                     "C_prototype": "int in,\t int ( * incr)(\tint)", 
@@ -6504,7 +6508,7 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)", 
                 "declgen": "const std::string & LastFunctionCalled() +len(30)", 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t LastFunctionCalled(\t);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tLastFunctionCalled(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_last_function_called", 
                     "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
@@ -6601,7 +6605,7 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)", 
                 "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t LastFunctionCalled(\t);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tLastFunctionCalled(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_last_function_called_bufferify", 
                     "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
@@ -6698,10 +6702,10 @@
             "PY_from_object": "PP_Class1_from_Object", 
             "PY_to_object": "PP_Class1_to_Object", 
             "base": "shadow", 
-            "c_to_cxx": "\tstatic_cast<{c_const}Class1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_to_cxx": "\tstatic_cast<{c_const}tutorial::\tClass1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TUT_class1", 
             "cxx_to_c": "\tstatic_cast<{c_const}TUT_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
-            "cxx_type": "Class1", 
+            "cxx_type": "tutorial::\tClass1", 
             "f_c_module": {
                 "iso_c_binding": [
                     "C_PTR"
@@ -6724,18 +6728,18 @@
             }, 
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(class1)", 
-            "forward": "Class1", 
+            "forward": "tutorial::\tClass1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::\tClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::\tClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
@@ -6752,10 +6756,10 @@
             "LUA_type": "LUA_TNUMBER", 
             "PY_ctor": "PyInt_FromLong({c_var})", 
             "PY_format": "i", 
-            "c_to_cxx": "static_cast<EnumTypeID>({c_var})", 
+            "c_to_cxx": "static_cast<tutorial::EnumTypeID>({c_var})", 
             "c_type": "int", 
             "cxx_to_c": "static_cast<int>({cxx_var})", 
-            "cxx_type": "EnumTypeID", 
+            "cxx_type": "tutorial::EnumTypeID", 
             "f_cast": "int({f_var}, C_INT)", 
             "f_kind": "C_INT", 
             "f_module": {
@@ -6788,7 +6792,7 @@
             "PY_ctor": "PyInt_FromLong({c_var})", 
             "PY_format": "i", 
             "c_type": "int", 
-            "cxx_type": "TypeID", 
+            "cxx_type": "tutorial::TypeID", 
             "f_cast": "int({f_var}, C_INT)", 
             "f_kind": "C_INT", 
             "f_module": {

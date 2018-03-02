@@ -56,12 +56,12 @@ options:
 types:
   TypeID:
     typedef  : int
-    cxx_type : TypeID
+    cxx_type : tutorial::TypeID
 
   EnumTypeID:
     typedef  : int
-    cxx_type : EnumTypeID
-    c_to_cxx : static_cast<EnumTypeID>({c_var})
+    cxx_type : tutorial::EnumTypeID
+    c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
 

@@ -43,8 +43,6 @@
 #include "wrapClass1.h"
 #include "tutorial.hpp"
 
-namespace tutorial {
-
 // splicer begin class.Class1.CXX_definitions
 // splicer end class.Class1.CXX_definitions
 
@@ -58,7 +56,7 @@ extern "C" {
 TUT_class1 * TUT_class1_new_default()
 {
 // splicer begin class.Class1.method.new_default
-    Class1 * SHCXX_rv = new Class1();
+    tutorial::Class1 * SHCXX_rv = new tutorial::Class1();
     TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(static_cast<void *>(
         SHCXX_rv));
     return SHC_rv;
@@ -70,7 +68,7 @@ TUT_class1 * TUT_class1_new_default()
 TUT_class1 * TUT_class1_new_flag(int flag)
 {
 // splicer begin class.Class1.method.new_flag
-    Class1 * SHCXX_rv = new Class1(flag);
+    tutorial::Class1 * SHCXX_rv = new tutorial::Class1(flag);
     TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(static_cast<void *>(
         SHCXX_rv));
     return SHC_rv;
@@ -82,7 +80,8 @@ TUT_class1 * TUT_class1_new_flag(int flag)
 void TUT_class1_delete(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.delete
-    Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
+    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
+        static_cast<void *>(self));
     delete SH_this;
     return;
 // splicer end class.Class1.method.delete
@@ -97,7 +96,8 @@ void TUT_class1_delete(TUT_class1 * self)
 int TUT_class1_method1(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.method1
-    Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
+    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
+        static_cast<void *>(self));
     int SHC_rv = SH_this->Method1();
     return SHC_rv;
 // splicer end class.Class1.method.method1
@@ -113,15 +113,13 @@ bool TUT_class1_equivalent(const TUT_class1 * self,
     const TUT_class1 * obj2)
 {
 // splicer begin class.Class1.method.equivalent
-    const Class1 *SH_this = static_cast<const Class1 *>(
-        static_cast<const void *>(self));
-    const Class1 * SHCXX_obj2 = static_cast<const Class1 *>(
-        static_cast<const void *>(obj2));
+    const tutorial::Class1 *SH_this = static_cast<const tutorial::
+        Class1 *>(static_cast<const void *>(self));
+    const tutorial::Class1 * SHCXX_obj2 = static_cast<const tutorial::
+        Class1 *>(static_cast<const void *>(obj2));
     bool SHC_rv = SH_this->equivalent(*SHCXX_obj2);
     return SHC_rv;
 // splicer end class.Class1.method.equivalent
 }
 
 }  // extern "C"
-
-}  // namespace tutorial

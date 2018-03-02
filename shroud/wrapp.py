@@ -155,6 +155,7 @@ class Wrapp(util.WrapperMixin):
         fmt_library.PY_used_param_self = False
         fmt_library.PY_used_param_args = False
         fmt_library.PY_used_param_kwds = False
+        fmt_library.PY_this_call = fmt_library.namespace_scope
 
         # Variables to accumulate output lines
         self.py_type_object_creation = []
@@ -222,6 +223,7 @@ class Wrapp(util.WrapperMixin):
         fmt_class = node.fmtdict
 
         node.eval_template('PY_type_filename')
+        fmt_class.PY_this_call = wformat('self->{PY_obj}->', fmt_class)
 
         self.create_class_helper_functions(node)
 
@@ -242,7 +244,7 @@ class Wrapp(util.WrapperMixin):
         self.py_type_structs.append('typedef struct {')
         self.py_type_structs.append('PyObject_HEAD')
         self.py_type_structs.append(1)
-        append_format(self.py_type_structs, '{cxx_class} * {PY_obj};', fmt_class)
+        append_format(self.py_type_structs, '{namespace_scope}{cxx_class} * {PY_obj};', fmt_class)
         self._create_splicer('C_object', self.py_type_structs)
         self.py_type_structs.append(-1)
         self.py_type_structs.append(wformat('}} {PY_PyObject};', fmt_class))
@@ -282,7 +284,7 @@ return rv;""", fmt)
         to_object = to_object.split('\n')
 
         proto = wformat(
-            'PyObject *{PY_to_object_func}({cxx_class} *addr)', fmt)
+            'PyObject *{PY_to_object_func}({namespace_scope}{cxx_class} *addr)', fmt)
         self.py_helper_prototypes.append(proto + ';')
 
         self.py_helper_functions.append('')
@@ -838,14 +840,6 @@ return 1;""", fmt)
                     '\t{PyArg_vargs}))', fmt))
             append_format(PY_code, '+return {PY_error_return};-', fmt)
 
-        if cls:
-            #  template = '{c_const}{cxx_class} *{C_this}obj = static_cast<{c_const}{cxx_class} *>(static_cast<{c_const}void *>({C_this}));'
-            #  fmt_func.C_object = wformat(template, fmt_func)
-            # call method syntax
-            fmt.PY_this_call = wformat('self->{PY_obj}->', fmt)
-        else:
-            fmt.PY_this_call = ''  # call function syntax
-
         # call with all arguments
         default_calls.append(
             (len(cxx_call_list), len(post_parse), len(pre_call),
@@ -907,7 +901,8 @@ return 1;""", fmt)
                 PY_code.append('')
 
             if is_ctor:
-                append_format(PY_code, 'self->{PY_obj} = new {cxx_class}({PY_call_list});', fmt)
+                append_format(PY_code, 'self->{PY_obj} = new {namespace_scope}'
+                              '{cxx_class}({PY_call_list});', fmt)
             elif CXX_subprogram == 'subroutine':
                 line = wformat(
                     '{PY_this_call}{function_name}({PY_call_list});', fmt)
@@ -1175,7 +1170,6 @@ return 1;""", fmt)
 
         self._create_splicer('include', output)
         output.append(cpp_boilerplate)
-        self.namespace(library, node, 'begin', output)
         self._create_splicer('C_definition', output)
         self._create_splicer('additional_methods', output)
         self._pop_splicer('impl')
@@ -1204,7 +1198,6 @@ return 1;""", fmt)
         output.append('-};')
 
         output.append(wformat(PyTypeObject_template, fmt_type))
-        self.namespace(library, node, 'end', output)
 
         self.write_output_file(fname, self.config.python_dir, output)
 
@@ -1309,7 +1302,6 @@ return 1;""", fmt)
 
         self._push_splicer('header')
         self._create_splicer('include', output)
-        self.namespace(node, None, 'begin', output)
 
         # forward declare classes for helpers
         blank = True
@@ -1319,7 +1311,9 @@ return 1;""", fmt)
                     output.append('')
                     output.append('// forward declare classes')
                     blank = False
+                self.namespace(self.newlibrary, cls, 'begin', output)
                 output.append('class {};'.format(cls.name))
+                self.namespace(self.newlibrary, cls, 'end', output, comment=False)
 
         if self.py_type_extern:
             output.append('')
@@ -1344,7 +1338,6 @@ PyMODINIT_FUNC PyInit_{PY_module_name}(void);
 PyMODINIT_FUNC init{PY_module_name}(void);
 #endif
 {PY_extern_C_end}""", fmt))
-        self.namespace(node, None, 'end', output)
         output.append('#endif  /* %s */' % guard)
         self.write_output_file(fname, self.config.python_dir, output)
 
@@ -1366,7 +1359,6 @@ PyMODINIT_FUNC init{PY_module_name}(void);
             output.append('#include "%s"' % include)
         output.append('')
         self._create_splicer('include', output)
-        self.namespace(node, None, 'begin', output)
         output.append(cpp_boilerplate)
         output.append('')
         self._create_splicer('C_definition', output)
@@ -1394,7 +1386,6 @@ PyMODINIT_FUNC init{PY_module_name}(void);
         output.append(wformat(module_middle2, fmt))
         self._create_splicer('C_init_body', output)
         output.append(wformat(module_end, fmt))
-        self.namespace(node, None, 'end', output)
 
         self.write_output_file(fname, self.config.python_dir, output)
 
@@ -1403,11 +1394,9 @@ PyMODINIT_FUNC init{PY_module_name}(void);
         fmt = node.fmtdict
         output = []
         output.append(wformat('#include "{PY_header_filename}"', fmt))
-        self.namespace(node, None, 'begin', output)
         output.extend(self.py_helper_definition)
         output.append('')
         output.extend(self.py_helper_functions)
-        self.namespace(node, None, 'end', output)
         self.write_output_file(
             fmt.PY_helper_filename, self.config.python_dir, output)
 

@@ -40,14 +40,11 @@
 //
 // #######################################################################
 #include "pyUserLibrarymodule.hpp"
-
-namespace example {
-namespace nested {
 const char *PY_ExClass1_capsule_name = "ExClass1";
 const char *PY_ExClass2_capsule_name = "ExClass2";
 
 
-PyObject *PP_ExClass1_to_Object(ExClass1 *addr)
+PyObject *PP_ExClass1_to_Object(example::nested::ExClass1 *addr)
 {
     // splicer begin class.ExClass1.helper.to_object
     PyObject *voidobj;
@@ -76,7 +73,7 @@ int PP_ExClass1_from_Object(PyObject *obj, void **addr)
     // splicer end class.ExClass1.helper.from_object
 }
 
-PyObject *PP_ExClass2_to_Object(ExClass2 *addr)
+PyObject *PP_ExClass2_to_Object(example::nested::ExClass2 *addr)
 {
     // splicer begin class.ExClass2.helper.to_object
     PyObject *voidobj;
@@ -104,6 +101,3 @@ int PP_ExClass2_from_Object(PyObject *obj, void **addr)
     return 1;
     // splicer end class.ExClass2.helper.from_object
 }
-
-}  // namespace nested
-}  // namespace example

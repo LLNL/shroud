@@ -80,6 +80,7 @@ class Wrapl(util.WrapperMixin):
         # Some kludges, need to compute correct value in wrapl.py
         fmt_library.LUA_metadata = 'XXLUA_metadata'
         fmt_library.LUA_userdata_type = 'XXLUA_userdata_type'
+        fmt_library.LUA_this_call = fmt_library.namespace_scope
 
         # Variables to accumulate output lines
         self.luaL_Reg_module = []
@@ -119,6 +120,8 @@ class Wrapl(util.WrapperMixin):
         node.eval_template('LUA_class_reg')
         node.eval_template('LUA_metadata')
         node.eval_template('LUA_ctor_name')
+        fmt_class.LUA_this_call = wformat(
+            '{LUA_userdata_var}->{LUA_userdata_member}->', fmt_class)
 
         self._create_splicer('C_declaration', self.lua_type_structs)
         self.lua_type_structs.append('')
@@ -227,13 +230,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         if is_dtor:
             CXX_subprogram = 'subroutine'
             fmt.LUA_name = '__gc'
-
-        if cls:
-            # call method syntax
-            fmt.LUA_this_call = wformat(
-                '{LUA_userdata_var}->{LUA_userdata_member}->', fmt)
-        else:
-            fmt.LUA_this_call = ''  # call function syntax
 
         # Loop over all overloads and default argument and
         # sort by the number of arguments expected.
@@ -590,7 +586,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             LUA_code.append(
                 wformat(
                     '{LUA_userdata_var}->{LUA_userdata_member} = '
-                    'new {cxx_class}({cxx_call_list});', fmt))
+                    'new {namespace_scope}{cxx_class}({cxx_call_list});', fmt))
             LUA_code.extend([
                 '/* Add the metatable to the stack. */',
                 wformat('luaL_getmetatable(L, "{LUA_metadata}");', fmt),
@@ -699,7 +695,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         self._create_splicer('include', output)
 
-        self.namespace(node, None, 'begin', output)
         self._create_splicer('C_definition', output)
 
         output.extend(self.body_lines)
@@ -729,8 +724,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 '}'
                 ])
         util.extern_C(output, 'end')
-
-        self.namespace(node, None, 'end', output)
 
         self.write_output_file(fname, self.config.lua_dir, output)
 

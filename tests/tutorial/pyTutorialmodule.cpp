@@ -48,8 +48,6 @@
 // splicer begin include
 // splicer end include
 
-namespace tutorial {
-
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
 #else
@@ -80,7 +78,7 @@ PY_Function1(
 {
 // void Function1()
 // splicer begin function.function1
-    Function1();
+    tutorial::Function1();
     Py_RETURN_NONE;
 // splicer end function.function1
 }
@@ -108,7 +106,7 @@ PY_Function2(
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
 
-    double SHC_rv = Function2(arg1, arg2);
+    double SHC_rv = tutorial::Function2(arg1, arg2);
 
     // post_call
     PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
@@ -153,7 +151,7 @@ PY_Sum(
         int result;  // intent(out)
         size_t len = PyArray_SIZE(SHPy_values);
 
-        Sum(len, values, &result);
+        tutorial::Sum(len, values, &result);
 
         // post_call
         PyObject * SHPy_result = PyInt_FromLong(result);
@@ -191,7 +189,7 @@ PY_TypeLongLong(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    long long SHC_rv = TypeLongLong(arg1);
+    long long SHC_rv = tutorial::TypeLongLong(arg1);
 
     // post_call
     PyObject * SHTPy_rv = Py_BuildValue("L", SHC_rv);
@@ -224,7 +222,7 @@ PY_Function3(
     // pre_call
     bool arg = PyObject_IsTrue(SHPy_arg);
 
-    bool SHC_rv = Function3(arg);
+    bool SHC_rv = tutorial::Function3(arg);
 
     // post_call
     PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
@@ -260,7 +258,7 @@ PY_Function4a(
     const std::string SH_arg1(arg1);
     const std::string SH_arg2(arg2);
 
-    const std::string SHCXX_rv = Function4a(SH_arg1, SH_arg2);
+    const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
@@ -296,7 +294,8 @@ PY_Function4b(
     const std::string SH_arg1(arg1);
     const std::string SH_arg2(arg2);
 
-    const std::string & SHCXX_rv = Function4b(SH_arg1, SH_arg2);
+    const std::string & SHCXX_rv = tutorial::Function4b(SH_arg1,
+        SH_arg2);
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
@@ -334,17 +333,17 @@ PY_Function5_arg1_arg2(
         return NULL;
     switch (SH_nargs) {
     case 0:
-        SHC_rv = Function5();
+        SHC_rv = tutorial::Function5();
         break;
     case 1:
-        SHC_rv = Function5(arg1);
+        SHC_rv = tutorial::Function5(arg1);
         break;
     case 2:
         {
             // pre_call
             bool arg2 = PyObject_IsTrue(SHPy_arg2);
 
-            SHC_rv = Function5(arg1, arg2);
+            SHC_rv = tutorial::Function5(arg1, arg2);
             break;
         }
     }
@@ -376,7 +375,7 @@ PY_Function6_from_name(
     // post_parse
     const std::string SH_name(name);
 
-    Function6(SH_name);
+    tutorial::Function6(SH_name);
     Py_RETURN_NONE;
 // splicer end function.function6_from_name
 }
@@ -398,7 +397,7 @@ PY_Function6_from_index(
         const_cast<char **>(SHT_kwlist), &indx))
         return NULL;
 
-    Function6(indx);
+    tutorial::Function6(indx);
     Py_RETURN_NONE;
 // splicer end function.function6_from_index
 }
@@ -424,7 +423,7 @@ PY_Function9(
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    Function9(arg);
+    tutorial::Function9(arg);
     Py_RETURN_NONE;
 // splicer end function.function9
 }
@@ -437,7 +436,7 @@ PY_Function10_0(
 {
 // void Function10()
 // splicer begin function.function10_0
-    Function10();
+    tutorial::Function10();
     Py_RETURN_NONE;
 // splicer end function.function10_0
 }
@@ -464,7 +463,7 @@ PY_Function10_1(
     // post_parse
     const std::string SH_name(name);
 
-    Function10(SH_name, arg2);
+    tutorial::Function10(SH_name, arg2);
     Py_RETURN_NONE;
 // splicer end function.function10_1
 }
@@ -495,13 +494,13 @@ PY_overload1_num_offset_stride(
         return NULL;
     switch (SH_nargs) {
     case 1:
-        SHC_rv = overload1(num);
+        SHC_rv = tutorial::overload1(num);
         break;
     case 2:
-        SHC_rv = overload1(num, offset);
+        SHC_rv = tutorial::overload1(num, offset);
         break;
     case 3:
-        SHC_rv = overload1(num, offset, stride);
+        SHC_rv = tutorial::overload1(num, offset, stride);
         break;
     }
 
@@ -540,13 +539,13 @@ PY_overload1_5(
         return NULL;
     switch (SH_nargs) {
     case 2:
-        SHC_rv = overload1(type, num);
+        SHC_rv = tutorial::overload1(type, num);
         break;
     case 3:
-        SHC_rv = overload1(type, num, offset);
+        SHC_rv = tutorial::overload1(type, num, offset);
         break;
     case 4:
-        SHC_rv = overload1(type, num, offset, stride);
+        SHC_rv = tutorial::overload1(type, num, offset, stride);
         break;
     }
 
@@ -578,7 +577,7 @@ PY_typefunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    TypeID SHC_rv = typefunc(arg);
+    tutorial::TypeID SHC_rv = tutorial::typefunc(arg);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
@@ -609,9 +608,9 @@ PY_enumfunc(
         return NULL;
 
     // post_parse
-    EnumTypeID SH_arg = static_cast<EnumTypeID>(arg);
+    tutorial::EnumTypeID SH_arg = static_cast<tutorial::EnumTypeID>(arg);
 
-    EnumTypeID SHCXX_rv = enumfunc(SH_arg);
+    tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SH_arg);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
@@ -636,7 +635,7 @@ PY_getMinMax(
     int min;  // intent(out)
     int max;  // intent(out)
 
-    getMinMax(min, max);
+    tutorial::getMinMax(min, max);
 
     // post_call
     PyObject * SHTPy_rv = Py_BuildValue("ii", min, max);
@@ -667,9 +666,9 @@ PY_useclass(
         return NULL;
 
     // post_parse
-    const Class1 * arg1 = SHPy_arg1 ? SHPy_arg1->obj : NULL;
+    const tutorial::Class1 * arg1 = SHPy_arg1 ? SHPy_arg1->obj : NULL;
 
-    int SHC_rv = useclass(arg1);
+    int SHC_rv = tutorial::useclass(arg1);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
@@ -690,7 +689,7 @@ PY_getclass3(
 {
 // Class1 * getclass3()
 // splicer begin function.getclass3
-    Class1 * SHCXX_rv = getclass3();
+    tutorial::Class1 * SHCXX_rv = tutorial::getclass3();
 
     // post_call
     PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);
@@ -712,7 +711,7 @@ PY_LastFunctionCalled(
 {
 // const std::string & LastFunctionCalled() +len(30)
 // splicer begin function.last_function_called
-    const std::string & SHCXX_rv = LastFunctionCalled();
+    const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
@@ -977,5 +976,3 @@ inittutorial(void)
 }   // extern "C"
 
 
-
-}  // namespace tutorial

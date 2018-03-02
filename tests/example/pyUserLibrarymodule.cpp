@@ -46,9 +46,6 @@
 // splicer begin include
 // splicer end include
 
-namespace example {
-namespace nested {
-
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
 #else
@@ -79,7 +76,7 @@ PP_local_function1(
 {
 // void local_function1()
 // splicer begin function.local_function1
-    local_function1();
+    example::nested::local_function1();
     Py_RETURN_NONE;
 // splicer end function.local_function1
 }
@@ -108,7 +105,7 @@ PP_isNameValid(
     // post_parse
     const std::string SH_name(name);
 
-    bool SHC_rv = isNameValid(SH_name);
+    bool SHC_rv = example::nested::isNameValid(SH_name);
 
     // post_call
     PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
@@ -129,7 +126,7 @@ PP_isInitialized(
 {
 // bool isInitialized()
 // splicer begin function.is_initialized
-    bool SHC_rv = isInitialized();
+    bool SHC_rv = example::nested::isInitialized();
 
     // post_call
     PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
@@ -167,7 +164,7 @@ PP_checkBool(
     bool arg2;  // intent(out)
     bool arg3 = PyObject_IsTrue(SHPy_arg3);
 
-    checkBool(arg1, &arg2, &arg3);
+    example::nested::checkBool(arg1, &arg2, &arg3);
 
     // post_call
     PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
@@ -198,7 +195,7 @@ PP_test_names(
     // post_parse
     const std::string SH_name(name);
 
-    test_names(SH_name);
+    example::nested::test_names(SH_name);
     Py_RETURN_NONE;
 // splicer end function.test_names
 }
@@ -225,7 +222,7 @@ PP_test_names_flag(
     // post_parse
     const std::string SH_name(name);
 
-    test_names(SH_name, flag);
+    example::nested::test_names(SH_name, flag);
     Py_RETURN_NONE;
 // splicer end function.test_names_flag
 }
@@ -257,13 +254,13 @@ PP_testoptional_2(
         return NULL;
     switch (SH_nargs) {
     case 0:
-        testoptional();
+        example::nested::testoptional();
         break;
     case 1:
-        testoptional(i);
+        example::nested::testoptional(i);
         break;
     case 2:
-        testoptional(i, j);
+        example::nested::testoptional(i, j);
         break;
     }
     Py_RETURN_NONE;
@@ -282,7 +279,7 @@ PP_test_size_t(
 {
 // size_t test_size_t()
 // splicer begin function.test_size_t
-    size_t SHC_rv = test_size_t();
+    size_t SHC_rv = example::nested::test_size_t();
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromSize_t(SHC_rv);
@@ -315,7 +312,7 @@ PP_testmpi(
     // post_parse
     MPI_Comm SH_comm = MPI_Comm_f2c(comm);
 
-    testmpi(SH_comm);
+    example::nested::testmpi(SH_comm);
     Py_RETURN_NONE;
 // splicer end function.testmpi
 }
@@ -345,7 +342,7 @@ PP_testgroup1(
     // post_parse
     axom::sidre::Group * grp = SHPy_grp ? SHPy_grp->obj : NULL;
 
-    testgroup1(grp);
+    example::nested::testgroup1(grp);
     Py_RETURN_NONE;
 // splicer end function.testgroup1
 }
@@ -375,7 +372,7 @@ PP_testgroup2(
     // post_parse
     const axom::sidre::Group * grp = SHPy_grp ? SHPy_grp->obj : NULL;
 
-    testgroup2(grp);
+    example::nested::testgroup2(grp);
     Py_RETURN_NONE;
 // splicer end function.testgroup2
 }
@@ -401,7 +398,7 @@ PP_FuncPtr1(
         const_cast<char **>(SHT_kwlist), &get))
         return NULL;
 
-    FuncPtr1(get);
+    example::nested::FuncPtr1(get);
     Py_RETURN_NONE;
 // splicer end function.func_ptr1
 }
@@ -427,7 +424,7 @@ PP_FuncPtr2(
         const_cast<char **>(SHT_kwlist), &get))
         return NULL;
 
-    FuncPtr2(get);
+    example::nested::FuncPtr2(get);
     Py_RETURN_NONE;
 // splicer end function.func_ptr2
 }
@@ -453,7 +450,7 @@ PP_FuncPtr3(
         const_cast<char **>(SHT_kwlist), &get))
         return NULL;
 
-    FuncPtr3(get);
+    example::nested::FuncPtr3(get);
     Py_RETURN_NONE;
 // splicer end function.func_ptr3
 }
@@ -482,7 +479,7 @@ PP_FuncPtr5(
         const_cast<char **>(SHT_kwlist), &get))
         return NULL;
 
-    FuncPtr5(get);
+    example::nested::FuncPtr5(get);
     Py_RETURN_NONE;
 // splicer end function.func_ptr5
 }
@@ -530,9 +527,9 @@ PP_verylongfunctionname1(
         &verylongname10))
         return NULL;
 
-    verylongfunctionname1(&verylongname1, &verylongname2,
-        &verylongname3, &verylongname4, &verylongname5, &verylongname6,
-        &verylongname7, &verylongname8, &verylongname9,
+    example::nested::verylongfunctionname1(&verylongname1,
+        &verylongname2, &verylongname3, &verylongname4, &verylongname5,
+        &verylongname6, &verylongname7, &verylongname8, &verylongname9,
         &verylongname10);
 
     // post_call
@@ -588,9 +585,10 @@ PP_verylongfunctionname2(
         &verylongname10))
         return NULL;
 
-    int SHC_rv = verylongfunctionname2(verylongname1, verylongname2,
-        verylongname3, verylongname4, verylongname5, verylongname6,
-        verylongname7, verylongname8, verylongname9, verylongname10);
+    int SHC_rv = example::nested::verylongfunctionname2(verylongname1,
+        verylongname2, verylongname3, verylongname4, verylongname5,
+        verylongname6, verylongname7, verylongname8, verylongname9,
+        verylongname10);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
@@ -640,7 +638,7 @@ PP_cos_doubles(
         double * out = static_cast<double *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHPy_in);
 
-        cos_doubles(in, out, sizein);
+        example::nested::cos_doubles(in, out, sizein);
 
         // cleanup
         Py_DECREF(SHPy_in);
@@ -843,6 +841,3 @@ inituserlibrary(void)
 }   // extern "C"
 
 
-
-}  // namespace nested
-}  // namespace example

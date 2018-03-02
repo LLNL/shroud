@@ -54,8 +54,6 @@
 extern "C" {
 #endif
 
-// declaration of shadow types
-
 
 void DEF_function1();
 

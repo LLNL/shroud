@@ -56,8 +56,6 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-
-namespace tutorial {
 // splicer begin class.Class1.impl.C_definition
 // splicer end class.Class1.impl.C_definition
 // splicer begin class.Class1.impl.additional_methods
@@ -79,7 +77,7 @@ PY_Class1_tp_init_default(
 {
 // Class1() +name(new)
 // splicer begin class.Class1.method.new_default
-    self->obj = new Class1();
+    self->obj = new tutorial::Class1();
     return 0;
 // splicer end class.Class1.method.new_default
 }
@@ -101,7 +99,7 @@ PY_Class1_tp_init_flag(
         const_cast<char **>(SHT_kwlist), &flag))
         return -1;
 
-    self->obj = new Class1(flag);
+    self->obj = new tutorial::Class1(flag);
     return 0;
 // splicer end class.Class1.method.new_flag
 }
@@ -149,7 +147,7 @@ PY_class1_equivalent(
         return NULL;
 
     // post_parse
-    const Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : NULL;
+    const tutorial::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : NULL;
 
     bool SHC_rv = self->obj->equivalent(*obj2);
 
@@ -280,5 +278,3 @@ PyTypeObject PY_Class1_Type = {
         (destructor)0,                  /* tp_finalize */
 #endif
 };
-
-}  // namespace tutorial

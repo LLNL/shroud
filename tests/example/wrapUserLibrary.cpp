@@ -43,9 +43,6 @@
 #include <string>
 #include "sidre/Group.hpp"
 
-namespace example {
-namespace nested {
-
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
 
@@ -59,7 +56,7 @@ extern "C" {
 void AA_local_function1()
 {
 // splicer begin function.local_function1
-    local_function1();
+    example::nested::local_function1();
     return;
 // splicer end function.local_function1
 }
@@ -87,7 +84,7 @@ bool AA_is_name_valid_bufferify(const char * name, int Lname)
 bool AA_is_initialized()
 {
 // splicer begin function.is_initialized
-    bool SHC_rv = isInitialized();
+    bool SHC_rv = example::nested::isInitialized();
     return SHC_rv;
 // splicer end function.is_initialized
 }
@@ -97,7 +94,7 @@ bool AA_is_initialized()
 void AA_check_bool(bool arg1, bool * arg2, bool * arg3)
 {
 // splicer begin function.check_bool
-    checkBool(arg1, arg2, arg3);
+    example::nested::checkBool(arg1, arg2, arg3);
     return;
 // splicer end function.check_bool
 }
@@ -108,7 +105,7 @@ void AA_test_names(const char * name)
 {
 // splicer begin function.test_names
     const std::string SH_name(name);
-    test_names(SH_name);
+    example::nested::test_names(SH_name);
     return;
 // splicer end function.test_names
 }
@@ -119,7 +116,7 @@ void AA_test_names_bufferify(const char * name, int Lname)
 {
 // splicer begin function.test_names_bufferify
     const std::string SH_name(name, Lname);
-    test_names(SH_name);
+    example::nested::test_names(SH_name);
     return;
 // splicer end function.test_names_bufferify
 }
@@ -130,7 +127,7 @@ void AA_test_names_flag(const char * name, int flag)
 {
 // splicer begin function.test_names_flag
     const std::string SH_name(name);
-    test_names(SH_name, flag);
+    example::nested::test_names(SH_name, flag);
     return;
 // splicer end function.test_names_flag
 }
@@ -142,7 +139,7 @@ void AA_test_names_flag_bufferify(const char * name, int Lname,
 {
 // splicer begin function.test_names_flag_bufferify
     const std::string SH_name(name, Lname);
-    test_names(SH_name, flag);
+    example::nested::test_names(SH_name, flag);
     return;
 // splicer end function.test_names_flag_bufferify
 }
@@ -152,7 +149,7 @@ void AA_test_names_flag_bufferify(const char * name, int Lname,
 void AA_testoptional_0()
 {
 // splicer begin function.testoptional_0
-    testoptional();
+    example::nested::testoptional();
     return;
 // splicer end function.testoptional_0
 }
@@ -162,7 +159,7 @@ void AA_testoptional_0()
 void AA_testoptional_1(int i)
 {
 // splicer begin function.testoptional_1
-    testoptional(i);
+    example::nested::testoptional(i);
     return;
 // splicer end function.testoptional_1
 }
@@ -172,7 +169,7 @@ void AA_testoptional_1(int i)
 void AA_testoptional_2(int i, long j)
 {
 // splicer begin function.testoptional_2
-    testoptional(i, j);
+    example::nested::testoptional(i, j);
     return;
 // splicer end function.testoptional_2
 }
@@ -182,7 +179,7 @@ void AA_testoptional_2(int i, long j)
 size_t AA_test_size_t()
 {
 // splicer begin function.test_size_t
-    size_t SHC_rv = test_size_t();
+    size_t SHC_rv = example::nested::test_size_t();
     return SHC_rv;
 // splicer end function.test_size_t
 }
@@ -194,7 +191,7 @@ void AA_testmpi(MPI_Fint comm)
 {
 // splicer begin function.testmpi
     MPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);
-    testmpi(SHCXX_comm);
+    example::nested::testmpi(SHCXX_comm);
     return;
 // splicer end function.testmpi
 }
@@ -207,7 +204,7 @@ void AA_testgroup1(SIDRE_group * grp)
 // splicer begin function.testgroup1
     axom::sidre::Group * SHCXX_grp = static_cast<axom::sidre::Group *>(
         static_cast<void *>(grp));
-    testgroup1(SHCXX_grp);
+    example::nested::testgroup1(SHCXX_grp);
     return;
 // splicer end function.testgroup1
 }
@@ -220,7 +217,7 @@ void AA_testgroup2(const SIDRE_group * grp)
     const axom::sidre::Group * SHCXX_grp = 
         static_cast<const axom::sidre::Group *>(
         static_cast<const void *>(grp));
-    testgroup2(SHCXX_grp);
+    example::nested::testgroup2(SHCXX_grp);
     return;
 // splicer end function.testgroup2
 }
@@ -234,7 +231,7 @@ void AA_testgroup2(const SIDRE_group * grp)
 void AA_func_ptr1(void ( * get)())
 {
 // splicer begin function.func_ptr1
-    FuncPtr1(get);
+    example::nested::FuncPtr1(get);
     return;
 // splicer end function.func_ptr1
 }
@@ -248,7 +245,7 @@ void AA_func_ptr1(void ( * get)())
 void AA_func_ptr2(double * ( * get)())
 {
 // splicer begin function.func_ptr2
-    FuncPtr2(get);
+    example::nested::FuncPtr2(get);
     return;
 // splicer end function.func_ptr2
 }
@@ -262,7 +259,7 @@ void AA_func_ptr2(double * ( * get)())
 void AA_func_ptr3(double ( * get)(int i, int))
 {
 // splicer begin function.func_ptr3
-    FuncPtr3(get);
+    example::nested::FuncPtr3(get);
     return;
 // splicer end function.func_ptr3
 }
@@ -276,7 +273,7 @@ void AA_func_ptr3(double ( * get)(int i, int))
 void AA_func_ptr4(double ( * get)(double, int))
 {
 // splicer begin function.func_ptr4
-    FuncPtr4(get);
+    example::nested::FuncPtr4(get);
     return;
 // splicer end function.func_ptr4
 }
@@ -289,7 +286,7 @@ void AA_func_ptr5(void ( * get)(int verylongname1, int verylongname2,
     int verylongname9, int verylongname10))
 {
 // splicer begin function.func_ptr5
-    FuncPtr5(get);
+    example::nested::FuncPtr5(get);
     return;
 // splicer end function.func_ptr5
 }
@@ -302,9 +299,9 @@ void AA_verylongfunctionname1(int * verylongname1, int * verylongname2,
     int * verylongname9, int * verylongname10)
 {
 // splicer begin function.verylongfunctionname1
-    verylongfunctionname1(verylongname1, verylongname2, verylongname3,
-        verylongname4, verylongname5, verylongname6, verylongname7,
-        verylongname8, verylongname9, verylongname10);
+    example::nested::verylongfunctionname1(verylongname1, verylongname2,
+        verylongname3, verylongname4, verylongname5, verylongname6,
+        verylongname7, verylongname8, verylongname9, verylongname10);
     return;
 // splicer end function.verylongfunctionname1
 }
@@ -317,9 +314,10 @@ int AA_verylongfunctionname2(int verylongname1, int verylongname2,
     int verylongname9, int verylongname10)
 {
 // splicer begin function.verylongfunctionname2
-    int SHC_rv = verylongfunctionname2(verylongname1, verylongname2,
-        verylongname3, verylongname4, verylongname5, verylongname6,
-        verylongname7, verylongname8, verylongname9, verylongname10);
+    int SHC_rv = example::nested::verylongfunctionname2(verylongname1,
+        verylongname2, verylongname3, verylongname4, verylongname5,
+        verylongname6, verylongname7, verylongname8, verylongname9,
+        verylongname10);
     return SHC_rv;
 // splicer end function.verylongfunctionname2
 }
@@ -333,12 +331,9 @@ int AA_verylongfunctionname2(int verylongname1, int verylongname2,
 void AA_cos_doubles(double * in, double * out, int sizein)
 {
 // splicer begin function.cos_doubles
-    cos_doubles(in, out, sizein);
+    example::nested::cos_doubles(in, out, sizein);
     return;
 // splicer end function.cos_doubles
 }
 
 }  // extern "C"
-
-}  // namespace nested
-}  // namespace example

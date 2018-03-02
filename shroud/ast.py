@@ -272,7 +272,8 @@ class LibraryNode(AstNode):
 
         if self.namespace:
             fmt_library.namespace_scope = (
-                '::'.join(self.namespace.split()) + '::')
+                '::'.join(self.namespace.split()) + '::\t')
+            fmt_library.CXX_this_call = fmt_library.namespace_scope
 
         fmt_library.F_filename_suffix = 'f'
 
@@ -383,6 +384,14 @@ class ClassNode(AstNode):
 
             F_derived_name = self.name.lower(),
         )
+
+        fmt_class = self.fmtdict
+        if self.namespace:
+            if self.namespace.startswith('-'):
+                fmt_class.namespace_scope = ''
+            else:
+                fmt_class.namespace_scope = (
+                    '::'.join(self.namespace.split()) + '::\t')
 
         if format:
             self.fmtdict.update(format, replace=True)

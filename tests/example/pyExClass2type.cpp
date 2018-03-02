@@ -55,9 +55,6 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-
-namespace example {
-namespace nested {
 // splicer begin class.ExClass2.impl.C_definition
 // splicer end class.ExClass2.impl.C_definition
 // splicer begin class.ExClass2.impl.additional_methods
@@ -203,7 +200,7 @@ PP_ExClass2_tp_init(
     // post_parse
     const std::string SH_name(name);
 
-    self->obj = new ExClass2(&SH_name);
+    self->obj = new example::nested::ExClass2(&SH_name);
     return 0;
 // splicer end class.ExClass2.method.ctor
 }
@@ -335,9 +332,10 @@ PP_exclass2_get_class1(
         return NULL;
 
     // post_parse
-    const ExClass1 * in = SHPy_in ? SHPy_in->obj : NULL;
+    const example::nested::
+        ExClass1 * in = SHPy_in ? SHPy_in->obj : NULL;
 
-    ExClass1 * SHCXX_rv = self->obj->get_class1(in);
+    example::nested::ExClass1 * SHCXX_rv = self->obj->get_class1(in);
 
     // post_call
     PP_ExClass1 * SHTPy_rv = PyObject_New(PP_ExClass1, &PP_ExClass1_Type);
@@ -532,6 +530,3 @@ PyTypeObject PP_ExClass2_Type = {
         (destructor)0,                  /* tp_finalize */
 #endif
 };
-
-}  // namespace nested
-}  // namespace example
