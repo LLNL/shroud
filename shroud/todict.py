@@ -205,11 +205,10 @@ class ToDict(visitor.Visitor):
             value = getattr(node, key)
             if value:
                 d[key] = value
-        for key in [ 'enums' ]:
+        for key in [ 'enums', 'functions' ]:
             value = getattr(node, key)
             if value:
                 d[key] = self.visit(value)
-        d['methods'] = self.visit(node.functions)
         return d
 
     def visit_FunctionNode(self, node):

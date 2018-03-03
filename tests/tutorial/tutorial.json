@@ -29,7 +29,7 @@
                     "class_upper": "CLASS1", 
                     "cxx_class": "Class1"
                 }, 
-                "methods": [
+                "functions": [
                     {
                         "_cxx_overload": [
                             0, 
@@ -504,7 +504,7 @@
                     "cxx_class": "Singleton", 
                     "namespace_scope": ""
                 }, 
-                "methods": [
+                "functions": [
                     {
                         "_fmtresult": {
                             "fmtc": {

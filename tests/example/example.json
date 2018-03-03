@@ -55,7 +55,7 @@
                     "class_upper": "EXCLASS1", 
                     "cxx_class": "ExClass1"
                 }, 
-                "methods": [
+                "functions": [
                     {
                         "_cxx_overload": [
                             0, 
@@ -1830,7 +1830,7 @@
                     "class_upper": "EXCLASS2", 
                     "cxx_class": "ExClass2"
                 }, 
-                "methods": [
+                "functions": [
                     {
                         "_PTR_F_C_index": 39, 
                         "_fmtargs": {
@@ -4282,7 +4282,7 @@
                     "class_upper": "EXCLASS3", 
                     "cxx_class": "ExClass3"
                 }, 
-                "methods": [
+                "functions": [
                     {
                         "_function_index": 48, 
                         "ast": {

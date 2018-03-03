@@ -24,7 +24,7 @@
                     "class_upper": "NAMES", 
                     "cxx_class": "Names"
                 }, 
-                "methods": [
+                "functions": [
                     {
                         "_function_index": 0, 
                         "ast": {
@@ -146,7 +146,6 @@
                     "class_upper": "NAMES2", 
                     "cxx_class": "Names2"
                 }, 
-                "methods": [], 
                 "name": "Names2", 
                 "options": {}
             }
