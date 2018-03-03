@@ -617,6 +617,9 @@ class EnumNode(AstNode):
             self.options.update(options, replace=True)
 
 #        self.default_format(parent, format, kwargs)
+        self.fmtdict = util.Scope(
+            parent = parent.fmtdict,
+        )
 
         if not decl:
             raise RuntimeError("EnumNode missing decl")
@@ -625,6 +628,10 @@ class EnumNode(AstNode):
         ast = declast.check_enum(decl)
         self.ast = ast
 
+        fmt_enum = self.fmtdict
+        enum_name = ast.name,
+        enum_lower = ast.name.lower()
+        enum_upper = ast.name.upper()
 
 def clean_dictionary(dd):
     """YAML converts some blank fields to None,
@@ -679,6 +686,27 @@ def is_options_only(node):
     if not isinstance(node['options'], dict):
         raise TypeError("options must be a dictionary")
     return True
+
+def add_enums(parent, enums):
+    """ Add enums from list 'enums'.
+    Used with class methods and functions.
+    """
+    if not isinstance(enums, list):
+        raise TypeError("enums must be a list")
+
+    options = parent.options
+    for node in enums:
+        if is_options_only(node):
+            options = util.Scope(options, **node['options'])
+        else:
+            # copy before clean to avoid changing input dict
+            d = copy.copy(node)
+            clean_dictionary(d)
+            if 'decl' not in d:
+                raise RuntimeError('Missing required decl field for enums')
+            decl = d['decl']
+            del d['decl']
+            parent.add_enum(decl, parentoptions=options, **d)
 
 def add_functions(parent, functions):
     """ Add functions from list 'functions'.
@@ -781,10 +809,15 @@ def create_library_from_dictionary(node):
 
         for cls in classes:
             clsnode = library.add_class(**cls)
+            if 'enums' in cls:
+                add_enums(clsnode, cls['enums'])
             if 'methods' in cls:
                 add_functions(clsnode, cls['methods'])
             elif 'functions' in cls:
                 add_functions(clsnode, cls['functions'])
+
+    if 'enums' in node:
+        add_enums(library, node['enums'])
 
     if 'functions' in node:
         add_functions(library, node['functions'])

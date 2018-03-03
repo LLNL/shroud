@@ -141,9 +141,10 @@ class ToDict(visitor.Visitor):
 
     def visit_EnumValue(self, node):
         if node.value is None:
-            return dict(name=node.name)
+            d = dict(name=node.name)
         else:
-            return dict(name=node.name, value=self.visit(node.value))
+            d = dict(name=node.name, value=self.visit(node.value))
+        return d
 
     def visit_Enum(self, node):
         d = dict(
@@ -187,7 +188,7 @@ class ToDict(visitor.Visitor):
             value = getattr(node, key)
             if value:
                 d[key] = value
-        for key in [ 'classes', 'functions' ]:
+        for key in [ 'classes', 'enums', 'functions' ]:
             value = getattr(node, key)
             if value:
                 d[key] = self.visit(value)
@@ -204,6 +205,10 @@ class ToDict(visitor.Visitor):
             value = getattr(node, key)
             if value:
                 d[key] = value
+        for key in [ 'enums' ]:
+            value = getattr(node, key)
+            if value:
+                d[key] = self.visit(value)
         d['methods'] = self.visit(node.functions)
         return d
 
@@ -232,6 +237,15 @@ class ToDict(visitor.Visitor):
             value = getattr(node, key)
             if value:
                 d[key] = value
+        return d
+
+    def visit_EnumNode(self, node):
+        d = dict(
+            ast=self.visit(node.ast),
+            decl=node.decl,
+            format=self.visit(node.fmtdict),
+            options=self.visit(node.options),
+        )
         return d
 
 

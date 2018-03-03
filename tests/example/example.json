@@ -4,6 +4,30 @@
         "classes": [
             {
                 "cxx_header": "ExClass1.hpp", 
+                "enums": [
+                    {
+                        "ast": {
+                            "members": [
+                                {
+                                    "name": "UP", 
+                                    "value": {
+                                        "constant": "2"
+                                    }
+                                }, 
+                                {
+                                    "name": "DOWN", 
+                                    "value": {
+                                        "constant": "4"
+                                    }
+                                }
+                            ], 
+                            "name": "DIRECTION"
+                        }, 
+                        "decl": "enum DIRECTION { UP = 2, DOWN = 4 };", 
+                        "format": {}, 
+                        "options": {}
+                    }
+                ], 
                 "format": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapExClass1.h", 
@@ -4351,6 +4375,29 @@
             "SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.", 
             "", 
             "#######################################################################"
+        ], 
+        "enums": [
+            {
+                "ast": {
+                    "members": [
+                        {
+                            "name": "RED"
+                        }, 
+                        {
+                            "name": "BLUE"
+                        }, 
+                        {
+                            "name": "WHITE"
+                        }
+                    ], 
+                    "name": "Color"
+                }, 
+                "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n}\n", 
+                "format": {}, 
+                "options": {
+                    "bar": 4
+                }
+            }
         ], 
         "format": {
             "CXX_local": "SHCXX_", 
