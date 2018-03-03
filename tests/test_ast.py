@@ -238,6 +238,7 @@ class CheckAst(unittest.TestCase):
         Geneate an additional function with len and len_trim attributes.
         """
         library = ast.LibraryNode()
+        self.assertEqual(len(library.functions), 0)
         library.add_function('void func1(char * arg)')
         self.assertEqual(len(library.functions), 1)
 
@@ -253,3 +254,17 @@ class CheckAst(unittest.TestCase):
 #        print(json.dumps(library, cls=util.ExpandedEncoder, indent=4, sort_keys=True))
 
 
+    def test_e_enum1(self):
+        """Add an enum to a library"""
+        library = ast.LibraryNode()
+        self.assertEqual(len(library.enums), 0)
+        library.add_enum('enum Color{RED=1,BLUE,WHITE}')
+        self.assertEqual(len(library.enums), 1)
+
+    def test_e_enum2(self):
+        """Add an enum to a class"""
+        library = ast.LibraryNode()
+        cls = library.add_class('Class1')
+        self.assertEqual(len(cls.enums), 0)
+        cls.add_enum('enum Color{RED=1,BLUE,WHITE}')
+        self.assertEqual(len(cls.enums), 1)

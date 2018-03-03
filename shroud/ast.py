@@ -108,6 +108,7 @@ class LibraryNode(AstNode):
         self.namespace = namespace
 
         self.classes = []
+        self.enums = []
         self.functions = []
         # Each is given a _function_index when created.
         self.function_index = []
@@ -319,6 +320,14 @@ class LibraryNode(AstNode):
         self.eval_template('F_module_name', '_library')
         self.eval_template('F_impl_filename', '_library')
 
+    def add_enum(self, decl, parentoptions=None, **kwargs):
+        """Add an enumeration.
+        """
+        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
+                        **kwargs)
+        self.enums.append(node)
+        return node
+
     def add_function(self, decl, parentoptions=None, **kwargs):
         """Add a function.
         """
@@ -350,6 +359,7 @@ class ClassNode(AstNode):
         self.cxx_header = cxx_header
         self.namespace = namespace
 
+        self.enums = []
         self.functions = []
 
         self.python = kwargs.get('python', {})
@@ -405,6 +415,14 @@ class ClassNode(AstNode):
         if self.options.F_module_per_class:
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
+
+    def add_enum(self, decl, parentoptions=None, **kwargs):
+        """Add an enumeration.
+        """
+        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
+                        **kwargs)
+        self.enums.append(node)
+        return node
 
     def add_function(self, decl, parentoptions=None, **kwargs):
         """Add a function.
@@ -484,7 +502,7 @@ class FunctionNode(AstNode):
         self.return_this = kwargs.get('return_this', False)
 
         if not decl:
-            raise RuntimeError("Missing decl")
+            raise RuntimeError("FunctionNode missing decl")
 
         # parse decl and add to dictionary
         if isinstance(parent,ClassNode):
@@ -572,6 +590,40 @@ class FunctionNode(AstNode):
         new._fmtresult = copy.deepcopy(self._fmtresult)
     
         return new
+
+######################################################################
+
+class EnumNode(AstNode):
+    """
+        enums:
+        - decl: |
+              enum Color {
+                RED,
+                BLUE,
+                WHITE
+              }
+          options:
+             bar: 4
+          format:
+             baz: 4  
+    """
+    def __init__(self, decl, parent,
+                 format=None,
+                 parentoptions=None,
+                 options=None,
+                 **kwargs):
+        self.options = util.Scope(parent=parentoptions or parent.options)
+        if options:
+            self.options.update(options, replace=True)
+
+#        self.default_format(parent, format, kwargs)
+
+        if not decl:
+            raise RuntimeError("EnumNode missing decl")
+
+        self.decl = decl
+        ast = declast.check_enum(decl)
+        self.ast = ast
 
 
 def clean_dictionary(dd):
