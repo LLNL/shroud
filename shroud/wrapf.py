@@ -107,6 +107,7 @@ class Wrapf(util.WrapperMixin):
     def _begin_output_file(self):
         """Start a new class for output"""
         self.use_stmts = []
+        self.enum_impl = []
         self.f_type_decl = []
         self.c_interface = []
         self.abstract_interface = []
@@ -159,15 +160,19 @@ class Wrapf(util.WrapperMixin):
                 self._push_splicer('class')
         self._pop_splicer('class')
 
-        if newlibrary.functions:
+        if newlibrary.functions or newlibrary.enums:
             self._begin_class()  # clear out old class info
             if options.F_module_per_class:
                 self._begin_output_file()
             newlibrary.F_module_dependencies = []
+
+            self.wrap_enums(newlibrary)
+
             self._push_splicer('function')
             for node in newlibrary.functions:
                 self.wrap_function(None, node)
             self._pop_splicer('function')
+
             self.c_interface.append('')
             self._create_splicer('additional_interfaces', self.c_interface)
             self.impl.append('')
@@ -199,10 +204,14 @@ class Wrapf(util.WrapperMixin):
         # wrap methods
         self._push_splicer(fmt_class.cxx_class)
         self._create_splicer('module_use', self.use_stmts)
+
+        self.wrap_enums(node)
+
         self._push_splicer('method')
         for method in node.functions:
             self.wrap_function(node, method)
         self._pop_splicer('method')
+
         self.write_object_get_set(node, fmt_class)
         self.impl.append('')
         self._create_splicer('additional_functions', self.impl)
@@ -264,6 +273,31 @@ class Wrapf(util.WrapperMixin):
                 '(a%{F_derived_member}, b%{F_derived_member})',
                 fmt_class))
 #        self.overload_compare(fmt_class, '/=', fmt_class.class_lower + '_ne', None)
+
+    def wrap_enums(self, node):
+        """Wrap all enums in a splicer block"""
+        self._push_splicer('enum')
+        for node in node.enums:
+            self.wrap_enum(None, node)
+        self._pop_splicer('enum')
+
+    def wrap_enum(self, cls, node):
+        """Wrap an enumeration.
+        This largly echo the C++ code
+        For classes, it adds prefixes.
+        """
+        ast = node.ast
+        output = self.enum_impl
+
+        fmt_enum = node.fmtdict
+        output.append('')
+        append_format(output, '!  {enum_name}', fmt_enum)
+        evalue = 0
+        for member in ast.members:
+            if member.value is not None:
+                evalue = int(todict.print_node(member.value))
+            output.append('integer(C_INT), parameter :: {} = {}'.format(member.name, evalue))
+            evalue = evalue + 1
 
     def write_object_get_set(self, node, fmt_class):
         """Write get and set methods for instance pointer.
@@ -1190,6 +1224,8 @@ class Wrapf(util.WrapperMixin):
         output.append('')
         if cls is None:
             self._create_splicer('module_top', output)
+
+        output.extend(self.enum_impl)
 
         # XXX output.append('! splicer push class')
         output.extend(self.f_type_decl)

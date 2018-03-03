@@ -121,11 +121,11 @@ class Wrapc(util.WrapperMixin):
         self.write_impl(library, cls, c_header, c_impl)
 
     def wrap_enums(self, node):
-        # worker function for write_file
-        self._push_splicer('enums')
+        """Wrap all enums in a splicer block"""
+        self._push_splicer('enum')
         for node in node.enums:
             self.wrap_enum(None, node)
-        self._pop_splicer('enums')
+        self._pop_splicer('enum')
 
     def wrap_functions(self, library):
         # worker function for write_file
