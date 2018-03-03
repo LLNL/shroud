@@ -56,6 +56,12 @@ enum EnumTypeID {
     ENUM2
 };
 
+enum Color {
+    RED,
+    BLUE,
+    WHITE,
+};
+
 typedef int TypeID;
 
 void Function1();
@@ -112,6 +118,8 @@ public:
     Class1(int flag) : m_flag(flag) {};
     int Method1();
     bool equivalent(Class1 const &obj2) const;
+
+    enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 };
 
 int useclass(const Class1 *arg);

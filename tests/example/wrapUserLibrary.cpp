@@ -51,6 +51,13 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
+//  Color
+enum Color {
+    RED,
+    BLUE,
+    WHITE
+};
+
 // void local_function1()
 // function_index=49
 void AA_local_function1()

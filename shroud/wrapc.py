@@ -47,6 +47,7 @@ from __future__ import absolute_import
 import os
 
 from . import declast
+from . import todict
 from . import typemap
 from . import whelpers
 from . import util
@@ -83,6 +84,7 @@ class Wrapc(util.WrapperMixin):
         self.header_impl_include = {}
         self.header_proto_c = []
         self.impl = []
+        self.enum_impl = []
         self.c_helper = {}
 
     def wrap_library(self):
@@ -111,11 +113,19 @@ class Wrapc(util.WrapperMixin):
         if cls:
             self.wrap_class(cls)
         else:
+            self.wrap_enums(library)
             self.wrap_functions(library)
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
         self.write_header(library, cls, c_header)
         self.write_impl(library, cls, c_header, c_impl)
+
+    def wrap_enums(self, node):
+        # worker function for write_file
+        self._push_splicer('enums')
+        for node in node.enums:
+            self.wrap_enum(None, node)
+        self._pop_splicer('enums')
 
     def wrap_functions(self, library):
         # worker function for write_file
@@ -260,6 +270,9 @@ class Wrapc(util.WrapperMixin):
         output.append('')
         if self._create_splicer('C_definitions', output):
             write_file = True
+        if self.enum_impl:
+            write_file = True
+            output.extend(self.enum_impl)
         if self.impl:
             write_file = True
             output.extend(self.impl)
@@ -289,10 +302,32 @@ class Wrapc(util.WrapperMixin):
         # create a forward declaration for this type
         self.header_forward[cname] = True
 
+        self.wrap_enums(node)
+
         self._push_splicer('method')
         for method in node.functions:
             self.wrap_function(node, method)
         self._pop_splicer('method')
+
+    def wrap_enum(self, cls, node):
+        """Wrap an enumeration.
+        This largly echo the C++ code
+        For classes, it adds prefixes.
+        """
+        ast = node.ast
+        output = self.enum_impl
+
+        fmt_enum = node.fmtdict
+        output.append('')
+        append_format(output, '//  {enum_name}', fmt_enum)
+        append_format(output, 'enum {enum_name} {{+', fmt_enum)
+        for member in ast.members:
+            if member.value is not None:
+                output.append('{} = {},'.format(member.name, todict.print_node(member.value)))
+            else:
+                output.append('{},'.format(member.name))
+        output[-1] = output[-1][:-1]        # Avoid trailing comma for older compilers
+        append_format(output, '-}};', fmt_enum)
 
     def wrap_function(self, cls, node):
         """

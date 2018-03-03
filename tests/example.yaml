@@ -113,7 +113,7 @@ enums:
         RED,
         BLUE,
         WHITE
-      }
+      };
   options:
      bar: 4
   format:
@@ -128,7 +128,7 @@ classes:
       type: [ init, repr, richcompare ]
 
     enums:
-    - decl: enum DIRECTION { UP = 2, DOWN = 4 };
+    - decl: enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 
     methods:
     # overloaded constructor

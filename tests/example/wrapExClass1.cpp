@@ -63,6 +63,14 @@ extern "C" {
 // splicer begin class.ExClass1.C_definitions
 // splicer end class.ExClass1.C_definitions
 
+//  DIRECTION
+enum DIRECTION {
+    UP = 2,
+    DOWN,
+    LEFT = 100,
+    RIGHT
+};
+
 // ExClass1()
 // function_index=0
 AA_exclass1 * AA_exclass1_ctor_0()

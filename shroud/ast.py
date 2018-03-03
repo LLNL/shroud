@@ -629,9 +629,9 @@ class EnumNode(AstNode):
         self.ast = ast
 
         fmt_enum = self.fmtdict
-        enum_name = ast.name,
-        enum_lower = ast.name.lower()
-        enum_upper = ast.name.upper()
+        fmt_enum.enum_name = ast.name
+        fmt_enum.enum_lower = ast.name.lower()
+        fmt_enum.enum_upper = ast.name.upper()
 
 def clean_dictionary(dd):
     """YAML converts some blank fields to None,

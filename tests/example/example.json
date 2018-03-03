@@ -15,16 +15,26 @@
                                     }
                                 }, 
                                 {
-                                    "name": "DOWN", 
+                                    "name": "DOWN"
+                                }, 
+                                {
+                                    "name": "LEFT", 
                                     "value": {
-                                        "constant": "4"
+                                        "constant": "100"
                                     }
+                                }, 
+                                {
+                                    "name": "RIGHT"
                                 }
                             ], 
                             "name": "DIRECTION"
                         }, 
-                        "decl": "enum DIRECTION { UP = 2, DOWN = 4 };", 
-                        "format": {}, 
+                        "decl": "enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };", 
+                        "format": {
+                            "enum_lower": "direction", 
+                            "enum_name": "DIRECTION", 
+                            "enum_upper": "DIRECTION"
+                        }, 
                         "options": {}
                     }
                 ], 
@@ -4392,8 +4402,12 @@
                     ], 
                     "name": "Color"
                 }, 
-                "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n}\n", 
-                "format": {}, 
+                "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n", 
+                "format": {
+                    "enum_lower": "color", 
+                    "enum_name": "Color", 
+                    "enum_upper": "COLOR"
+                }, 
                 "options": {
                     "bar": 4
                 }
