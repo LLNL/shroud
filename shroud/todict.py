@@ -43,10 +43,6 @@ Convert some data structures into a dictionary.
 Useful for debugging and seralizing instances as json.
 """
 
-from . import ast
-from . import declast
-from . import typemap
-from . import util
 from . import visitor
 
 class ToDict(visitor.Visitor):
