@@ -939,11 +939,11 @@ class CheckExpr(unittest.TestCase):
         self.assertEqual('1+2.345', todict.print_node(r))
         self.assertEqual(todict.to_dict(r),{
             "left": {
-                "value": "1"
+                "constant": "1"
             }, 
             "op": "+", 
             "right": {
-                "value": "2.345"
+                "constant": "2.345"
             }
         })
 
@@ -995,17 +995,16 @@ class CheckExpr(unittest.TestCase):
 
 class CheckEnum(unittest.TestCase):
     def test_enum1(self):
-        r = declast.check_enum('enum Color { RED, BLUE, WHITE }')
-        self.assertEqual('enum Color { RED, BLUE, WHITE };', todict.print_node(r))
+        r = declast.check_enum('enum Color{RED=1,BLUE,WHITE}')
+        self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))
         self.assertEqual(todict.to_dict(r),{
             'name': 'Color',
             'members': [
-                {'name': 'RED'},
+                {'name': 'RED', 'value': { 'constant': '1' }},
                 {'name': 'BLUE'},
                 {'name': 'WHITE'}
             ]
         })
-
                          
 if __name__ == '__main__':
     unittest.main()

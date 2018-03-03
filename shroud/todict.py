@@ -135,7 +135,7 @@ class ToDict(visitor.Visitor):
 
     def visit_Constant(self, node):
         d = dict(
-            value = node.value
+            constant = node.value
         )
         return d
 
@@ -143,7 +143,7 @@ class ToDict(visitor.Visitor):
         if node.value is None:
             return dict(name=node.name)
         else:
-            return dict(name=node.name, members=self.visit(node.value))
+            return dict(name=node.name, value=self.visit(node.value))
 
     def visit_Enum(self, node):
         d = dict(

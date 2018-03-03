@@ -1201,9 +1201,10 @@ class EnumParser(ExprParser):
         members = node.members
         while self.token.typ != 'RCURLY':
             name = self.mustbe('ID')
-            value = None
-            if self.have('EQUAL'):
-                pass
+            if self.have('EQUALS'):
+                value = self.expression()
+            else:
+                value = None
             members.append(EnumValue(name.value, value))
             if not self.have('COMMA'):
                 break
