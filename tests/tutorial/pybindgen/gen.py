@@ -49,6 +49,9 @@ def generate(fp):
     mod.add_include('"tutorial.hpp"')
     namespace = mod.add_cpp_namespace('tutorial')
 
+    namespace.add_enum('Color', ['RED', 'BLUE', 'WHITE'])
+#    mod.add_function('AcceptEnum', None, [param('MyEnum_e', 'value')])
+
     # default arguments
     namespace.add_function(
         'Function5', 'double',
@@ -77,6 +80,9 @@ def generate(fp):
          param('int', 'stride', default_value='1')])
 
     class1 = namespace.add_class('Class1')
+    class1.add_enum('DIRECTION', ['UP', 'DOWN', 'LEFT', 'RIGHT'])
+#    class1.add_function('AcceptEnum', None, [param('MyEnum_e', 'value')])
+
     class1.add_constructor([param('int', 'flag')])
     class1.add_constructor([])
     class1.add_method('Method1', None, [])
@@ -84,9 +90,6 @@ def generate(fp):
     sclass = namespace.add_class("Singleton", is_singleton=True)
     sclass.add_method("instancePtr", retval("Singleton*", caller_owns_return=True), [],
                       is_static=True)
-
-    mod.add_enum('MyEnum_e', ['CONSTANT_A', 'CONSTANT_B', 'CONSTANT_C'])
-    mod.add_function('AcceptEnum', None, [param('MyEnum_e', 'value')])
 
     mod.generate(fp)
 

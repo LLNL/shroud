@@ -124,6 +124,7 @@ class Wrapp(util.WrapperMixin):
         pass
 
     def reset_file(self):
+        self.enum_impl = []
         self.PyMethodBody = []
         self.PyMethodDef = []
 
@@ -201,6 +202,8 @@ class Wrapp(util.WrapperMixin):
         self._pop_splicer('class')
 
         self.reset_file()
+        self.wrap_enums(None)
+
         if newlibrary.functions:
             self._push_splicer('function')
 #            self._begin_class()
@@ -210,6 +213,37 @@ class Wrapp(util.WrapperMixin):
         self.write_header(newlibrary)
         self.write_module(newlibrary)
         self.write_helper()
+
+    def wrap_enums(self, cls):
+        """Wrap enums for library or cls
+        """
+        if cls is None:
+            enums = self.newlibrary.enums
+        else:
+            enums = cls.enums
+        if not enums:
+            return
+        self._push_splicer('enums')
+        for enum in enums:
+            self.wrap_enum(enum, cls)
+        self._pop_splicer('enums')
+
+    def wrap_enum(self, node, cls):
+        fmt_enum = node.fmtdict
+        fmtmembers = node._fmtmembers
+
+        ast = node.ast
+        output = self.enum_impl
+        if cls is None:
+            # library enumerations
+            # m is module pointer from module_middle
+            output.append('')
+            append_format(output, '// enumeration {enum_name}', node.fmtdict)
+            for member in ast.members:
+                fmt_id = fmtmembers[member.name]
+                append_format(output,
+                              '    PyModule_AddIntConstant(m, "{enum_member_name}",'
+                              ' {namespace_scope}{enum_member_name});', fmt_id)
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
@@ -246,6 +280,8 @@ class Wrapp(util.WrapperMixin):
         self._create_splicer('C_object', self.py_type_structs)
         self.py_type_structs.append(-1)
         self.py_type_structs.append(wformat('}} {PY_PyObject};', fmt_class))
+
+        self.wrap_enums(node)
 
         # wrap methods
         self.tp_init_default = '0'
@@ -1392,6 +1428,7 @@ extern PyObject *{PY_prefix}error_obj;
         if self.need_numpy:
             output.append('    import_array();')
         output.extend(self.py_type_object_creation)
+        output.extend(self.enum_impl)
         output.append(wformat(module_middle2, fmt))
         self._create_splicer('C_init_body', output)
         output.append(wformat(module_end, fmt))

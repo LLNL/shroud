@@ -64,6 +64,11 @@ class Tutorial(unittest.TestCase):
         print("FooTest:tearDown_:begin")
         ## do something...
         print("FooTest:tearDown_:end")
+
+    def test_enum_color(self):
+        self.assertEqual(0, tutorial.RED)
+        self.assertEqual(1, tutorial.BLUE)
+        self.assertEqual(2, tutorial.WHITE)
      
     # test routine A
     def testFunction1(self):

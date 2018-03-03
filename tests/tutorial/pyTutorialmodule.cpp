@@ -967,6 +967,11 @@ inittutorial(void)
     PyModule_AddObject(m, "Singleton", (PyObject *)&PY_Singleton_Type);
 
 
+// enumeration Color
+    PyModule_AddIntConstant(m, "RED", tutorial::RED);
+    PyModule_AddIntConstant(m, "BLUE", tutorial::BLUE);
+    PyModule_AddIntConstant(m, "WHITE", tutorial::WHITE);
+
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
         return RETVAL;

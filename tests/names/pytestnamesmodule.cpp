@@ -335,6 +335,11 @@ inittestnames(void)
     PyModule_AddObject(m, "Names2", (PyObject *)&PY_Names2_Type);
 
 
+// enumeration Color
+    PyModule_AddIntConstant(m, "RED", RED);
+    PyModule_AddIntConstant(m, "BLUE", BLUE);
+    PyModule_AddIntConstant(m, "WHITE", WHITE);
+
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
         return RETVAL;
