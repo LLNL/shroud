@@ -196,21 +196,24 @@
             {
                 "_fmtmembers": {
                     "BLUE": {
-                        "F_enum_identifier": "color_blue", 
+                        "C_enum_member": "BLUE", 
+                        "F_enum_member": "color_blue", 
                         "enum_member_lower": "blue", 
                         "enum_member_name": "BLUE", 
                         "enum_member_upper": "BLUE", 
                         "evalue": 1
                     }, 
                     "RED": {
-                        "F_enum_identifier": "color_red", 
+                        "C_enum_member": "RED", 
+                        "F_enum_member": "color_red", 
                         "enum_member_lower": "red", 
                         "enum_member_name": "RED", 
                         "enum_member_upper": "RED", 
                         "evalue": 0
                     }, 
                     "WHITE": {
-                        "F_enum_identifier": "color_white", 
+                        "C_enum_member": "WHITE", 
+                        "F_enum_member": "color_white", 
                         "enum_member_lower": "white", 
                         "enum_member_name": "WHITE", 
                         "enum_member_upper": "WHITE", 
@@ -818,6 +821,7 @@
         ], 
         "language": "c++", 
         "options": {
+            "C_enum_member_template": "{enum_member_name}", 
             "C_enum_template": "{C_prefix}{class_prefix}{enum_name}", 
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
@@ -831,7 +835,7 @@
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
-            "F_enum_identifier_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
+            "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": true, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 

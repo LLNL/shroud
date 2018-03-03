@@ -62,6 +62,7 @@ program tester
 
   call init_fruit
 
+  call test_enums
   call test_functions
 
   call test_vector
@@ -80,6 +81,22 @@ program tester
   endif
 
 contains
+
+  subroutine test_enums
+    ! test values of enumerations
+
+    call set_case_name("test_enums")
+
+    call assert_equals(0, color_red)
+    call assert_equals(1, color_blue)
+    call assert_equals(2, color_white)
+
+    call assert_equals(2, class1_direction_up)
+    call assert_equals(3, class1_direction_down)
+    call assert_equals(100, class1_direction_left)
+    call assert_equals(101, class1_direction_right)
+
+  end subroutine test_enums
 
   subroutine test_functions
 
