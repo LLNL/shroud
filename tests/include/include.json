@@ -488,7 +488,7 @@
             "base": "shadow", 
             "c_to_cxx": "\tstatic_cast<{c_const}three::\tClass1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "DEF_class1", 
-            "cxx_to_c": "\tstatic_cast<{c_const}DEF_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}DEF_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
             "cxx_type": "three::\tClass1", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -529,7 +529,7 @@
                 "intent_out": {
                     "post_call": [
                         "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{PY_obj} = {cxx_var};"
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -540,7 +540,7 @@
             "base": "shadow", 
             "c_to_cxx": "\tstatic_cast<{c_const}Class2 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "DEF_class2", 
-            "cxx_to_c": "\tstatic_cast<{c_const}DEF_class2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}DEF_class2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
             "cxx_type": "Class2", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -581,7 +581,7 @@
                 "intent_out": {
                     "post_call": [
                         "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{PY_obj} = {cxx_var};"
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }

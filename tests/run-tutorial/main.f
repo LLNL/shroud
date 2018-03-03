@@ -69,6 +69,7 @@ program tester
   call test_callback
 
   call test_class1
+  call test_singleton
 
   call fruit_summary
   call fruit_finalize
@@ -279,5 +280,17 @@ contains
 
     ! obj0a has a dangling reference to a deleted object
   end subroutine test_class1
+
+  subroutine test_singleton
+    type(singleton) obj0, obj1
+
+    call set_case_name("test_singleton")
+
+    obj0 = obj0%get_reference()
+    obj1 = obj1%get_reference()
+
+    call assert_true(obj0 .eq. obj1, "obj0 .eq obj1")
+
+  end subroutine test_singleton
 
 end program tester

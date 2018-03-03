@@ -958,6 +958,15 @@ inittutorial(void)
     PyModule_AddObject(m, "Class1", (PyObject *)&PY_Class1_Type);
 
 
+// Singleton
+    PY_Singleton_Type.tp_new   = PyType_GenericNew;
+    PY_Singleton_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Singleton_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Singleton_Type);
+    PyModule_AddObject(m, "Singleton", (PyObject *)&PY_Singleton_Type);
+
+
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
         return RETVAL;

@@ -552,6 +552,7 @@ class Wrapf(util.WrapperMixin):
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
+        is_static = False
         is_allocatable = ast.fattrs.get('allocatable', False)
         func_is_const = ast.func_const
         subprogram = ast.get_subprogram()
@@ -585,8 +586,11 @@ class Wrapf(util.WrapperMixin):
             fmt.F_C_result_clause = '\fresult(%s)' % fmt.F_result
 
         if cls:
-            # Add 'this' argument
-            if not is_ctor:
+            is_static = 'static' in ast.storage
+            if is_ctor or is_static:
+                pass
+            else:
+                # Add 'this' argument
                 arg_c_names.append(fmt.C_this)
                 arg_c_decl.append(
                     'type(C_PTR), value, intent(IN) :: ' + fmt.C_this)
@@ -791,6 +795,7 @@ class Wrapf(util.WrapperMixin):
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
+        is_static = False
         is_allocatable = ast.fattrs.get('allocatable', False)
         subprogram = ast.get_subprogram()
         c_subprogram = C_node.ast.get_subprogram()
@@ -842,8 +847,11 @@ class Wrapf(util.WrapperMixin):
 
         if cls:
             need_wrapper = True
-            # Add 'this' argument
-            if not is_ctor:
+            is_static = 'static' in ast.storage
+            if is_ctor or is_static:
+                pass
+            else:
+                # Add 'this' argument
                 # could use {f_to_c} but I'd rather not hide the shadow class
                 arg_c_call.append(wformat('{F_this}%{F_derived_member}', fmt_func))
                 arg_f_names.append(fmt_func.F_this)
@@ -1071,10 +1079,14 @@ class Wrapf(util.WrapperMixin):
                 gname = fmt_func.F_name_impl
                 self.f_function_generic.setdefault(
                     fmt_func.class_prefix + fmt_func.F_name_generic, []).append(gname)
-        if cls and not is_ctor:
+        if cls:
             # Add procedure to derived type
-            self.type_bound_part.append('procedure :: %s => %s' % (
-                fmt_func.F_name_function, fmt_func.F_name_impl))
+            if is_static:
+                self.type_bound_part.append('procedure, nopass :: %s => %s' % (
+                    fmt_func.F_name_function, fmt_func.F_name_impl))
+            elif not is_ctor:
+                self.type_bound_part.append('procedure :: %s => %s' % (
+                    fmt_func.F_name_function, fmt_func.F_name_impl))
 
         # body of function
         # XXX sname = fmt_func.F_name_impl

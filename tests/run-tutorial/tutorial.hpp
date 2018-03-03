@@ -131,4 +131,46 @@ int callback1(int in, int (*incr)(int));
 
 } /* end namespace tutorial */
 
+
+#if 0
+class Singleton {
+public:
+    static Singleton* instancePtr() {
+      //        if (Singleton::m_InstancePtr == 0) {
+      //      Singleton::m_InstancePtr = new Singleton;
+        if (m_InstancePtr == 0) {
+            m_InstancePtr = new Singleton;
+        }
+        return m_InstancePtr;
+    }
+private:
+    Singleton();
+    Singleton(const Singleton& rhs);
+    Singleton& operator=(const Singleton& rhs);
+    static Singleton* m_InstancePtr;
+};
+#else
+class Singleton
+{
+    public:
+        static Singleton& getReference()
+        {
+            static Singleton    instance; // Guaranteed to be destroyed.
+                                          // Instantiated on first use.
+            return instance;
+        }
+    private:
+        Singleton() {}                    // Constructor? (the {} brackets) are needed here.
+
+        // C++ 03
+        // ========
+        // Don't forget to declare these two. You want to make sure they
+        // are unacceptable otherwise you may accidentally get copies of
+        // your singleton appearing.
+        Singleton(Singleton const&);           // Don't Implement
+        void operator=(Singleton const&);      // Don't implement
+};
+#endif
+
+
 #endif // TUTORIAL_HPP

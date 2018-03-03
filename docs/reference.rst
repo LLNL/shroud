@@ -856,6 +856,10 @@ c_var_trim
     Used with char/string arguments.
     Set from option **C_var_trim_template**.
 
+cxx_addr
+    Syntax to take address of argument.
+    ``&`` or blank.
+
 cxx_deref
     Syntax to dereference argument.
     If *cxx_local_var* is *object*, then set to ``.``;

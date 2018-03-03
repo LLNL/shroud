@@ -350,6 +350,7 @@ class Wrapc(util.WrapperMixin):
         result_is_const = ast.const
         is_ctor = CXX_result.fattrs.get('_constructor', False)
         is_dtor = CXX_result.fattrs.get('_destructor', False)
+        is_static = False
         is_allocatable = CXX_result.fattrs.get('allocatable', False)
         is_const = ast.func_const
 
@@ -390,21 +391,17 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True)
-            if CXX_result.is_pointer():
+            if is_ctor or CXX_result.is_pointer():
+                # The C wrapper always creates a pointer to the new in the ctor
                 fmt_result.cxx_deref = '->'
+                fmt_result.cxx_addr = ''
             else:
                 fmt_result.cxx_deref = '.'
+                fmt_result.cxx_addr = '&'
             fmt_pattern = fmt_result
 
-        proto_list = []
-        call_list = []
-        if cls:
-            need_wrapper = True
-            # object pointer
-            rvast = declast.create_this_arg(fmt_func.C_this, cls.name, is_const)
-            if not is_ctor:
-                arg = rvast.gen_arg_as_c(continuation=True)
-                proto_list.append(arg)
+        proto_list = []  # arguments for wrapper prototype
+        call_list = []   # arguments to call function
 
         # indicate which argument contains function result, usually none
         result_arg = None
@@ -412,21 +409,34 @@ class Wrapc(util.WrapperMixin):
         call_code = []
         post_call = []
 
-        if cls and not is_ctor:
-            if is_const:
-                fmt_func.c_const = 'const '
+        if cls:
+            need_wrapper = True
+            is_static = 'static' in ast.storage
+            if is_ctor:
+                pass
             else:
-                fmt_func.c_const = ''
-            fmt_func.c_ptr = ' *'
-            fmt_func.c_var = fmt_func.C_this
-            # LHS is class' cxx_to_c
-            cls_typedef = typemap.Typedef.lookup(cls.name)
-            if cls_typedef.c_to_cxx is None:
-                # This should be set in typemap.typedef_shadow_defaults
-                raise RuntimeError("Wappped class does not have c_to_cxx set")
-            append_format(pre_call, 
-                          '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
-                          cls_typedef.c_to_cxx + ';', fmt_func)
+                if is_const:
+                    fmt_func.c_const = 'const '
+                else:
+                    fmt_func.c_const = ''
+                fmt_func.c_ptr = ' *'
+                fmt_func.c_var = fmt_func.C_this
+                if is_static:
+                    fmt_func.CXX_this_call = fmt_func.namespace_scope + fmt_func.cxx_class + '::'
+                else:
+                    # 'this' argument
+                    rvast = declast.create_this_arg(fmt_func.C_this, cls.name, is_const)
+                    arg = rvast.gen_arg_as_c(continuation=True)
+                    proto_list.append(arg)
+
+                    # LHS is class' cxx_to_c
+                    cls_typedef = typemap.Typedef.lookup(cls.name)
+                    if cls_typedef.c_to_cxx is None:
+                        # This should be set in typemap.typedef_shadow_defaults
+                        raise RuntimeError("Wappped class does not have c_to_cxx set")
+                    append_format(pre_call, 
+                                  '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
+                                  cls_typedef.c_to_cxx + ';', fmt_func)
 
 #    c_var      - argument to C function  (wrapper function)
 #    c_var_trim - variable with trimmed length of c_var

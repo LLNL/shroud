@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Support class static methods.
+
 ### Changed
 - base name 'wrapped' changed to 'shadow'.  This may appear in YAML file.
 - Change generated code to prefix symbols with the namespace, `outer::function()`,

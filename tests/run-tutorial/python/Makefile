@@ -56,6 +56,7 @@ OBJS = \
     tutorial.o \
     pyTutorialmodule.o \
     pyClass1type.o \
+    pySingletontype.o \
     pyTutorialhelper.o
 
 CXXFLAGS += $(SHARED)

@@ -855,6 +855,7 @@ class Declaration(Node):
         decl.append(typ)
 
         if self.declarator is None:
+            # XXX - used with constructor but seems wrong for abstract arguments
             # The C wrapper wants a pointer to the type.
             declarator = Declarator()
             declarator.pointer = [ Ptr('*') ]

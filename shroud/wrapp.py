@@ -248,7 +248,7 @@ class Wrapp(util.WrapperMixin):
         self.py_type_structs.append(wformat('}} {PY_PyObject};', fmt_class))
 
         # wrap methods
-        self.tp_init_default = None
+        self.tp_init_default = '0'
         self._push_splicer('method')
         self.wrap_functions(node, node.functions)
         self._pop_splicer('method')
@@ -526,8 +526,6 @@ return 1;""", fmt)
         fmtargs = node._fmtargs
         fmt = util.Scope(fmt_func)
         fmt.PY_doc_string = 'documentation'
-        if cls:
-            fmt.PY_used_param_self = True
 
         ast = node.ast
         CXX_subprogram = ast.get_subprogram()
@@ -535,6 +533,13 @@ return 1;""", fmt)
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
 #        is_const = ast.const
+        ml_flags = []
+
+        if cls:
+            fmt.PY_used_param_self = True
+            if 'static' in ast.storage:
+                ml_flags.append('METH_STATIC')
+                fmt_func.PY_this_call = fmt_func.namespace_scope + fmt_func.cxx_class + '::'
 
         if is_dtor:
             # Added in tp_del from write_tp_func.
@@ -573,8 +578,10 @@ return 1;""", fmt)
             fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True)
             if CXX_result.is_pointer():
+                fmt_result.cxx_addr = ''
                 fmt_result.cxx_deref = '->'
             else:
+                fmt_result.cxx_addr = '&'
                 fmt_result.cxx_deref = '.'
             fmt_result.c_var = fmt_result.cxx_var
             fmt_result.py_var = fmt.PY_result
@@ -634,9 +641,11 @@ return 1;""", fmt)
                 fmt_arg.c_const = ''
             if arg.is_pointer():
                 fmt_arg.c_ptr = ' *'
+                fmt_arg.cxx_addr = ''
                 fmt_arg.cxx_deref = '->'
             else:
                 fmt_arg.c_ptr = ''
+                fmt_arg.cxx_addr = '&'
                 fmt_arg.cxx_deref = '.'
             attrs = arg.attrs
 
@@ -810,9 +819,10 @@ return 1;""", fmt)
         need_blank = False  # needed before next debug header
         if not arg_names:
             # no input arguments
-            fmt.PY_ml_flags = 'METH_NOARGS'
+            ml_flags.append('METH_NOARGS')
         else:
-            fmt.PY_ml_flags = 'METH_VARARGS|METH_KEYWORDS'
+            ml_flags.append('METH_VARARGS')
+            ml_flags.append('METH_KEYWORDS')
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
             need_blank = True
@@ -1014,6 +1024,7 @@ return 1;""", fmt)
             fmt = util.Scope(fmt)
             fmt.function_suffix = ''
 
+        fmt.PY_ml_flags = '|'.join(ml_flags)
         self.create_method(node, expose, is_ctor, fmt, PY_impl)
 
     def create_method(self, node, expose, is_ctor, fmt, PY_impl):

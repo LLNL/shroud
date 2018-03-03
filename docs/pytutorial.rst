@@ -888,3 +888,24 @@ And the Fortran version::
     cptr = class1_new()
     call cptr%method1
 
+Class static methods
+^^^^^^^^^^^^^^^^^^^^
+
+C++ class static methods are supported as Python class static method.
+To wrap the method::
+
+    class Singleton {
+        static Singleton& getReference();
+    }
+
+Use the YAML input::
+
+    - name: Singleton
+      functions:
+      - decl: static Singleton& getReference()
+
+This adds the ``METH_STATIC`` flags into the PyMethodsDef description
+of the function.  It can then be called from Python as a method on the class::
+
+        obj0 = tutorial.Singleton.getReference()
+

@@ -81,6 +81,10 @@ def generate(fp):
     class1.add_constructor([])
     class1.add_method('Method1', None, [])
 
+    sclass = namespace.add_class("Singleton", is_singleton=True)
+    sclass.add_method("instancePtr", retval("Singleton*", caller_owns_return=True), [],
+                      is_static=True)
+
     mod.generate(fp)
 
 if __name__ == '__main__':

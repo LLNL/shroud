@@ -901,3 +901,43 @@ And the Fortran version::
     cptr = class1_new()
     call cptr%method1
 
+Class static methods
+^^^^^^^^^^^^^^^^^^^^
+
+Class static methods are supported using the ``NOPASS`` keyword in Fortran.
+To wrap the method::
+
+    class Singleton {
+        static Singleton& getReference();
+    }
+
+Use the YAML input::
+
+    - name: Singleton
+      functions:
+      - decl: static Singleton& getReference()
+
+This produces the C code::
+
+    TUT_singleton * TUT_singleton_get_reference()
+    {
+        Singleton & SHCXX_rv = Singleton::getReference();
+        TUT_singleton * SHC_rv = static_cast<TUT_singleton *>(
+            static_cast<void *>(&SHCXX_rv));
+        return SHC_rv;
+    }
+
+The derived type has a function with the ``NOPASS`` keyword::
+
+    type singleton
+        type(C_PTR), private :: voidptr
+    contains
+        procedure, nopass :: get_reference => singleton_get_reference
+    end type singleton
+
+Called from Fortran as::
+
+    type(singleton) obj0
+    obj0 = obj0%get_reference()
+
+Note that obj0 is not assigned a value before the function ``get_reference`` is called.

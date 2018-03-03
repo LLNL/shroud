@@ -194,6 +194,12 @@ class Tutorial(unittest.TestCase):
         obj0 = tutorial.Class1()
         self.assertRaises(TypeError, tutorial.useclass(obj0))
 
+    def test_singleton(self):
+        # it'd be cool if obj0 is obj1
+        obj0 = tutorial.Singleton.getReference()
+        obj1 = tutorial.Singleton.getReference()
+
+        obj2 = obj0.getReference()
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

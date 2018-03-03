@@ -973,7 +973,7 @@ def typedef_shadow_defaults(typedef):
         return
 
     typedef.cxx_to_c=('\tstatic_cast<{c_const}%s *>('
-                      '\tstatic_cast<{c_const}void *>(\t{cxx_var}))' %
+                      '\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))' %
                       typedef.c_type)
 
     # opaque pointer -> void pointer -> class instance pointer
@@ -1019,7 +1019,7 @@ def typedef_shadow_defaults(typedef):
             post_call=[
                 ('{PyObject} * {py_var} = '
                  'PyObject_New({PyObject}, &{PyTypeObject});'),
-                '{py_var}->{PY_obj} = {cxx_var};',
+                '{py_var}->{PY_obj} = {cxx_addr}{cxx_var};',
             ]
         ),
     )

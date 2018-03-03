@@ -370,6 +370,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "i", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "int i", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
@@ -460,6 +461,7 @@
                             "c_ptr": "", 
                             "c_type": "long", 
                             "c_var": "i", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "long i", 
                             "cxx_deref": ".", 
                             "cxx_type": "long", 
@@ -543,6 +545,7 @@
                             "c_ptr": "", 
                             "c_type": "char", 
                             "c_var": "rv", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "const std::string & rv", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
@@ -554,6 +557,7 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
@@ -561,6 +565,7 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
                         "py_var": "SHTPy_rv"
@@ -651,6 +656,7 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
@@ -851,7 +857,7 @@
             "base": "shadow", 
             "c_to_cxx": "\tstatic_cast<{c_const}Names *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TES_names", 
-            "cxx_to_c": "\tstatic_cast<{c_const}TES_names *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}TES_names *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
             "cxx_type": "Names", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -892,7 +898,7 @@
                 "intent_out": {
                     "post_call": [
                         "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{PY_obj} = {cxx_var};"
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -907,7 +913,7 @@
             "base": "shadow", 
             "c_to_cxx": "\tstatic_cast<{c_const}Names2 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TES_names2", 
-            "cxx_to_c": "\tstatic_cast<{c_const}TES_names2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}TES_names2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
             "cxx_type": "Names2", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -948,7 +954,7 @@
                 "intent_out": {
                     "post_call": [
                         "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{PY_obj} = {cxx_var};"
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }

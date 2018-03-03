@@ -10,6 +10,10 @@ C method int Method1()
 C method bool equivalent(const Class1 & obj2 +intent(in)+value) const
 Close wrapClass1.h
 Close wrapClass1.cpp
+class Singleton
+C method Singleton & getReference()
+Close wrapSingleton.h
+Close wrapSingleton.cpp
 C function void Function1()
 C function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
@@ -62,6 +66,8 @@ C-interface, Fortran method Class1(int flag +intent(in)+value) +name(new)
 C-interface, Fortran method ~Class1() +name(delete)
 C-interface, Fortran method int Method1()
 C-interface, Fortran method bool equivalent(const Class1 & obj2 +intent(in)+value) const
+class Singleton
+C-interface, Fortran method Singleton & getReference()
 C-interface, Fortran function void Function1()
 C-interface, Fortran function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C-interface, Fortran function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
@@ -126,6 +132,9 @@ Python method ~Class1() +name(delete)
 Python method int Method1()
 Python method bool equivalent(const Class1 & obj2 +intent(in)+value) const
 Close pyClass1type.cpp
+class Singleton
+Python method Singleton & getReference()
+Close pySingletontype.cpp
 Python function void Function1()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 Python function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))

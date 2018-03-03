@@ -284,6 +284,15 @@ classes:
        # Need to fix fmt.cxx_deref
        wrap_lua: False
 
+##########
+
+- name: Singleton
+  namespace: -none-
+  options:
+    wrap_lua: false
+  functions:
+#  - decl: static Singleton* instancePtr()
+  - decl: static Singleton& getReference()
 
 
 ##################################################

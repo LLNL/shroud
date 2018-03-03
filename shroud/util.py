@@ -53,8 +53,9 @@ def wformat(template, dct):
     try:
         return fmt.vformat(template, None, dct)
     except AttributeError as e:
-        print(e)
-        raise SystemExit('Error with template: ' + template)
+#        raise
+        # use %r to avoid expanding tabs
+        raise SystemExit('Error with template: ' + '%r'%template)
 
 
 def append_format(lst, template, dct):

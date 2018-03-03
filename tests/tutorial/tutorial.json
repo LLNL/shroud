@@ -39,18 +39,21 @@
                             "fmtc": {
                                 "c_val": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
-                                "cxx_deref": ".", 
+                                "cxx_addr": "", 
+                                "cxx_deref": "->", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
-                                "cxx_deref": ".", 
+                                "cxx_addr": "", 
+                                "cxx_deref": "->", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtpy": {
                                 "PyObject": "PY_Class1", 
                                 "PyTypeObject": "PY_Class1_Type", 
                                 "c_var": "SHCXX_rv", 
+                                "cxx_addr": "&", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv", 
                                 "py_var": "SHTPy_rv"
@@ -141,6 +144,7 @@
                                     "c_ptr": "", 
                                     "c_type": "int", 
                                     "c_var": "flag", 
+                                    "cxx_addr": "&", 
                                     "cxx_decl": "int flag", 
                                     "cxx_deref": ".", 
                                     "cxx_type": "int", 
@@ -153,18 +157,21 @@
                             "fmtc": {
                                 "c_val": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
-                                "cxx_deref": ".", 
+                                "cxx_addr": "", 
+                                "cxx_deref": "->", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
-                                "cxx_deref": ".", 
+                                "cxx_addr": "", 
+                                "cxx_deref": "->", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtpy": {
                                 "PyObject": "PY_Class1", 
                                 "PyTypeObject": "PY_Class1_Type", 
                                 "c_var": "SHCXX_rv", 
+                                "cxx_addr": "&", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv", 
                                 "py_var": "SHTPy_rv"
@@ -282,11 +289,13 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_var": "SHC_rv", 
+                                "cxx_addr": "&", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHC_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
+                                "cxx_addr": "&", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
@@ -294,6 +303,7 @@
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
                                 "c_var": "SHC_rv", 
+                                "cxx_addr": "&", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHC_rv", 
                                 "py_var": "SHTPy_rv"
@@ -372,6 +382,7 @@
                                     "c_ptr": "", 
                                     "c_type": "TUT_class1", 
                                     "c_var": "obj2", 
+                                    "cxx_addr": "&", 
                                     "cxx_decl": "tutorial::\tClass1 obj2", 
                                     "cxx_deref": "->", 
                                     "cxx_type": "tutorial::\tClass1", 
@@ -384,6 +395,7 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_var": "SHC_rv", 
+                                "cxx_addr": "&", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHC_rv"
                             }, 
@@ -391,6 +403,7 @@
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": "PyBool_Type", 
                                 "c_var": "SHC_rv", 
+                                "cxx_addr": "&", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHC_rv", 
                                 "py_var": "SHTPy_rv"
@@ -469,6 +482,110 @@
                 ], 
                 "name": "Class1", 
                 "options": {}
+            }, 
+            {
+                "cxx_header": "", 
+                "format": {
+                    "CXX_this_call": "SH_this->", 
+                    "C_header_filename": "wrapSingleton.h", 
+                    "C_impl_filename": "wrapSingleton.cpp", 
+                    "C_type_name": "TUT_singleton", 
+                    "F_derived_name": "singleton", 
+                    "PY_PyObject": "PY_Singleton", 
+                    "PY_PyTypeObject": "PY_Singleton_Type", 
+                    "PY_capsule_name": "PY_Singleton_capsule_name", 
+                    "PY_from_object_func": "PP_Singleton_from_Object", 
+                    "PY_this_call": "self->obj->", 
+                    "PY_to_object_func": "PP_Singleton_to_Object", 
+                    "PY_type_filename": "pySingletontype.cpp", 
+                    "class_lower": "singleton", 
+                    "class_prefix": "singleton_", 
+                    "class_upper": "SINGLETON", 
+                    "cxx_class": "Singleton", 
+                    "namespace_scope": ""
+                }, 
+                "methods": [
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_rv_decl": "TUT_singleton * SHC_rv", 
+                                "c_val": "\tstatic_cast<TUT_singleton *>(\tstatic_cast<void *>(\t&SHCXX_rv))", 
+                                "c_var": "SHC_rv", 
+                                "cxx_addr": "&", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PY_Singleton", 
+                                "PyTypeObject": "PY_Singleton_Type", 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_addr": "&", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
+                            }
+                        }, 
+                        "_function_index": 5, 
+                        "ast": {
+                            "attrs": {}, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "getReference", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "fattrs": {}, 
+                            "func_const": false, 
+                            "params": [], 
+                            "specifier": [
+                                "Singleton"
+                            ], 
+                            "storage": [
+                                "static"
+                            ]
+                        }, 
+                        "decl": "static Singleton& getReference()", 
+                        "declgen": "Singleton & getReference()", 
+                        "format": {
+                            "CXX_this_call": "Singleton::", 
+                            "C_call_code": "Singleton & SHCXX_rv =\t Singleton::getReference(\t);", 
+                            "C_call_list": "", 
+                            "C_name": "TUT_singleton_get_reference", 
+                            "C_post_call": "TUT_singleton * SHC_rv = \tstatic_cast<TUT_singleton *>(\tstatic_cast<void *>(\t&SHCXX_rv));", 
+                            "C_prototype": "", 
+                            "C_return_code": "return SHC_rv;", 
+                            "C_return_type": "TUT_singleton *", 
+                            "F_C_call": "c_singleton_get_reference", 
+                            "F_C_name": "c_singleton_get_reference", 
+                            "F_arg_c_call": "", 
+                            "F_arguments": "", 
+                            "F_call_code": "SHT_rv%voidptr = c_singleton_get_reference()", 
+                            "F_name_function": "get_reference", 
+                            "F_name_generic": "get_reference", 
+                            "F_name_impl": "singleton_get_reference", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
+                            "F_subprogram": "function", 
+                            "PY_name_impl": "PY_singleton_getReference", 
+                            "PY_this_call": "Singleton::", 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "self", 
+                            "cxx_rv_decl": "Singleton & SHCXX_rv", 
+                            "function_name": "getReference", 
+                            "underscore_name": "get_reference"
+                        }, 
+                        "options": {}
+                    }
+                ], 
+                "name": "Singleton", 
+                "namespace": "-none-", 
+                "options": {
+                    "wrap_lua": false
+                }
             }
         ], 
         "copyright": [
@@ -592,7 +709,7 @@
         }, 
         "functions": [
             {
-                "_function_index": 5, 
+                "_function_index": 6, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -665,6 +782,7 @@
                             "c_ptr": "", 
                             "c_type": "double", 
                             "c_var": "arg1", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "double arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "double", 
@@ -701,6 +819,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "arg2", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "int arg2", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
@@ -712,11 +831,13 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
@@ -724,12 +845,13 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 6, 
+                "_function_index": 7, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -824,6 +946,7 @@
                             "c_ptr": "", 
                             "c_type": "size_t", 
                             "c_var": "len", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "size_t len", 
                             "cxx_deref": ".", 
                             "cxx_type": "size_t", 
@@ -853,6 +976,7 @@
                             "c_ptr": " *", 
                             "c_type": "int", 
                             "c_var": "result", 
+                            "cxx_addr": "", 
                             "cxx_decl": "int result", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
@@ -879,6 +1003,7 @@
                             "c_ptr": " *", 
                             "c_type": "int", 
                             "c_var": "values", 
+                            "cxx_addr": "", 
                             "cxx_decl": "int * values", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
@@ -891,7 +1016,7 @@
                         }
                     }
                 }, 
-                "_function_index": 7, 
+                "_function_index": 8, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1009,6 +1134,7 @@
                             "c_ptr": "", 
                             "c_type": "long long", 
                             "c_var": "arg1", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "long long arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "long long", 
@@ -1020,6 +1146,7 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
@@ -1028,13 +1155,14 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
                         "py_var": "SHTPy_rv", 
                         "vargs": "SHC_rv"
                     }
                 }, 
-                "_function_index": 8, 
+                "_function_index": 9, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1126,6 +1254,7 @@
                             "c_ptr": "", 
                             "c_type": "bool", 
                             "c_var": "arg", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "bool arg", 
                             "cxx_deref": ".", 
                             "cxx_type": "bool", 
@@ -1138,11 +1267,13 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
@@ -1150,12 +1281,13 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": "PyBool_Type", 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 9, 
+                "_function_index": 10, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1259,7 +1391,7 @@
                         }
                     }
                 }, 
-                "_function_index": 10, 
+                "_function_index": 11, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -1355,7 +1487,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 47, 
+                "_PTR_F_C_index": 48, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtl": {
@@ -1374,6 +1506,7 @@
                             "c_ptr": "", 
                             "c_type": "char", 
                             "c_var": "arg1", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "const std::string & arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
@@ -1398,6 +1531,7 @@
                             "c_ptr": "", 
                             "c_type": "char", 
                             "c_var": "arg2", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "const std::string & arg2", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
@@ -1409,6 +1543,7 @@
                 "_fmtresult": {
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
@@ -1416,12 +1551,13 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHCXX_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 11, 
+                "_function_index": 12, 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -1501,7 +1637,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 11, 
+                "_PTR_C_CXX_index": 12, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -1553,11 +1689,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 47, 
+                "_function_index": 48, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -1688,6 +1825,7 @@
                             "c_ptr": "", 
                             "c_type": "char", 
                             "c_var": "arg1", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "const std::string & arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
@@ -1720,6 +1858,7 @@
                             "c_ptr": "", 
                             "c_type": "char", 
                             "c_var": "arg2", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "const std::string & arg2", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
@@ -1733,11 +1872,13 @@
                         "c_rv_decl": "const char * SHC_rv", 
                         "c_val": "SHCXX_rv.c_str()", 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
@@ -1745,12 +1886,13 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHCXX_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 12, 
+                "_function_index": 13, 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -1835,7 +1977,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 12, 
+                "_PTR_C_CXX_index": 13, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -1887,11 +2029,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 48, 
+                "_function_index": 49, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -1995,9 +2138,9 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 12, 
-                "_PTR_F_C_index": 48, 
-                "_function_index": 49, 
+                "_PTR_C_CXX_index": 13, 
+                "_PTR_F_C_index": 49, 
+                "_function_index": 50, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -2101,11 +2244,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 37, 
+                "_function_index": 38, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -2179,11 +2323,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 38, 
+                "_function_index": 39, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -2255,8 +2400,8 @@
             }, 
             {
                 "_default_funcs": [
-                    37, 
-                    38
+                    38, 
+                    39
                 ], 
                 "_fmtargs": {
                     "arg1": {
@@ -2288,6 +2433,7 @@
                             "c_ptr": "", 
                             "c_type": "double", 
                             "c_var": "arg1", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "double arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "double", 
@@ -2324,6 +2470,7 @@
                             "c_ptr": "", 
                             "c_type": "bool", 
                             "c_var": "arg2", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "bool arg2", 
                             "cxx_deref": ".", 
                             "cxx_type": "bool", 
@@ -2336,11 +2483,13 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
@@ -2348,12 +2497,13 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 13, 
+                "_function_index": 14, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     0, 
@@ -2441,10 +2591,10 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 50, 
+                "_PTR_F_C_index": 51, 
                 "_cxx_overload": [
-                    14, 
-                    15
+                    15, 
+                    16
                 ], 
                 "_fmtargs": {
                     "name": {
@@ -2472,6 +2622,7 @@
                             "c_ptr": "", 
                             "c_type": "char", 
                             "c_var": "name", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "const std::string & name", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
@@ -2480,7 +2631,7 @@
                         }
                     }
                 }, 
-                "_function_index": 14, 
+                "_function_index": 15, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -2546,10 +2697,10 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 14, 
+                "_PTR_C_CXX_index": 15, 
                 "_cxx_overload": [
-                    14, 
-                    15
+                    15, 
+                    16
                 ], 
                 "_fmtargs": {
                     "name": {
@@ -2568,7 +2719,7 @@
                         }
                     }
                 }, 
-                "_function_index": 50, 
+                "_function_index": 51, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -2631,8 +2782,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    14, 
-                    15
+                    15, 
+                    16
                 ], 
                 "_fmtargs": {
                     "indx": {
@@ -2664,6 +2815,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "indx", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "int indx", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
@@ -2672,7 +2824,7 @@
                         }
                     }
                 }, 
-                "_function_index": 15, 
+                "_function_index": 16, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -2730,7 +2882,7 @@
                 "options": {}
             }, 
             {
-                "_function_index": 16, 
+                "_function_index": 17, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -2797,7 +2949,7 @@
                         }
                     }
                 }, 
-                "_function_index": 39, 
+                "_function_index": 40, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -2877,7 +3029,7 @@
                         }
                     }
                 }, 
-                "_function_index": 40, 
+                "_function_index": 41, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -2941,7 +3093,7 @@
                 }
             }, 
             {
-                "_function_index": 17, 
+                "_function_index": 18, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -2981,11 +3133,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 41, 
+                "_function_index": 42, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -3040,11 +3193,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 42, 
+                "_function_index": 43, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -3125,6 +3279,7 @@
                             "c_ptr": "", 
                             "c_type": "double", 
                             "c_var": "arg", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "double arg", 
                             "cxx_deref": ".", 
                             "cxx_type": "double", 
@@ -3133,7 +3288,7 @@
                         }
                     }
                 }, 
-                "_function_index": 18, 
+                "_function_index": 19, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -3192,8 +3347,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 18, 
-                "_function_index": 59, 
+                "_PTR_F_C_index": 19, 
+                "_function_index": 60, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3248,8 +3403,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 18, 
-                "_function_index": 60, 
+                "_PTR_F_C_index": 19, 
+                "_function_index": 61, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3305,10 +3460,10 @@
             }, 
             {
                 "_cxx_overload": [
-                    19, 
-                    20
+                    20, 
+                    21
                 ], 
-                "_function_index": 19, 
+                "_function_index": 20, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -3353,10 +3508,10 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 51, 
+                "_PTR_F_C_index": 52, 
                 "_cxx_overload": [
-                    19, 
-                    20
+                    20, 
+                    21
                 ], 
                 "_fmtargs": {
                     "arg2": {
@@ -3384,6 +3539,7 @@
                             "c_ptr": "", 
                             "c_type": "double", 
                             "c_var": "arg2", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "double arg2", 
                             "cxx_deref": ".", 
                             "cxx_type": "double", 
@@ -3416,6 +3572,7 @@
                             "c_ptr": "", 
                             "c_type": "char", 
                             "c_var": "name", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "const std::string & name", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
@@ -3424,7 +3581,7 @@
                         }
                     }
                 }, 
-                "_function_index": 20, 
+                "_function_index": 21, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {}, 
@@ -3503,12 +3660,12 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 20, 
+                "_PTR_F_C_index": 21, 
                 "_cxx_overload": [
-                    19, 
-                    20
+                    20, 
+                    21
                 ], 
-                "_function_index": 61, 
+                "_function_index": 62, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3583,12 +3740,12 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 20, 
+                "_PTR_F_C_index": 21, 
                 "_cxx_overload": [
-                    19, 
-                    20
+                    20, 
+                    21
                 ], 
-                "_function_index": 62, 
+                "_function_index": 63, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3663,10 +3820,10 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 20, 
+                "_PTR_C_CXX_index": 21, 
                 "_cxx_overload": [
-                    19, 
-                    20
+                    20, 
+                    21
                 ], 
                 "_fmtargs": {
                     "arg2": {
@@ -3699,7 +3856,7 @@
                         }
                     }
                 }, 
-                "_function_index": 51, 
+                "_function_index": 52, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -3783,8 +3940,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    21, 
-                    22
+                    22, 
+                    23
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -3805,11 +3962,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 43, 
+                "_function_index": 44, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -3880,8 +4038,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    21, 
-                    22
+                    22, 
+                    23
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -3916,11 +4074,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 44, 
+                "_function_index": 45, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4006,12 +4165,12 @@
             }, 
             {
                 "_cxx_overload": [
-                    21, 
-                    22
+                    22, 
+                    23
                 ], 
                 "_default_funcs": [
-                    43, 
-                    44
+                    44, 
+                    45
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -4043,6 +4202,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "num", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "int num", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
@@ -4079,6 +4239,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "offset", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "int offset", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
@@ -4115,6 +4276,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "stride", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "int stride", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
@@ -4126,11 +4288,13 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
@@ -4138,12 +4302,13 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 21, 
+                "_function_index": 22, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     1, 
@@ -4246,8 +4411,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    21, 
-                    22
+                    22, 
+                    23
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -4282,11 +4447,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 45, 
+                "_function_index": 46, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4366,8 +4532,8 @@
             }, 
             {
                 "_cxx_overload": [
-                    21, 
-                    22
+                    22, 
+                    23
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -4416,11 +4582,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 46, 
+                "_function_index": 47, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4515,12 +4682,12 @@
             }, 
             {
                 "_cxx_overload": [
-                    21, 
-                    22
+                    22, 
+                    23
                 ], 
                 "_default_funcs": [
-                    45, 
-                    46
+                    46, 
+                    47
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -4552,6 +4719,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "num", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "int num", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
@@ -4588,6 +4756,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "offset", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "int offset", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
@@ -4624,6 +4793,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "stride", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "int stride", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
@@ -4660,6 +4830,7 @@
                             "c_ptr": "", 
                             "c_type": "double", 
                             "c_var": "type", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "double type", 
                             "cxx_deref": ".", 
                             "cxx_type": "double", 
@@ -4671,11 +4842,13 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
@@ -4683,12 +4856,13 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 22, 
+                "_function_index": 23, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     2, 
@@ -4827,6 +5001,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "arg", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "tutorial::TypeID arg", 
                             "cxx_deref": ".", 
                             "cxx_type": "tutorial::TypeID", 
@@ -4838,11 +5013,13 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
@@ -4850,12 +5027,13 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 23, 
+                "_function_index": 24, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -4947,6 +5125,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "arg", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "tutorial::EnumTypeID SH_arg", 
                             "cxx_deref": ".", 
                             "cxx_type": "tutorial::EnumTypeID", 
@@ -4961,11 +5140,13 @@
                         "c_rv_decl": "int SHC_rv", 
                         "c_val": "static_cast<int>(SHCXX_rv)", 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtl": {
                         "c_var": "static_cast<int>(SHCXX_rv)", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
@@ -4973,12 +5154,13 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHCXX_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 24, 
+                "_function_index": 25, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5062,6 +5244,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "max", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "int max", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
@@ -5090,6 +5273,7 @@
                             "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "min", 
+                            "cxx_addr": "&", 
                             "cxx_decl": "int min", 
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
@@ -5098,7 +5282,7 @@
                         }
                     }
                 }, 
-                "_function_index": 25, 
+                "_function_index": 26, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5205,6 +5389,7 @@
                             "c_ptr": " *", 
                             "c_type": "TUT_class1", 
                             "c_var": "arg1", 
+                            "cxx_addr": "", 
                             "cxx_decl": "tutorial::\tClass1 arg1", 
                             "cxx_deref": "->", 
                             "cxx_type": "tutorial::\tClass1", 
@@ -5217,6 +5402,7 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
@@ -5224,12 +5410,13 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 26, 
+                "_function_index": 27, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5300,11 +5487,12 @@
                         "c_rv_decl": "const TUT_class1 * SHC_rv", 
                         "c_val": "\tstatic_cast<const TUT_class1 *>(\tstatic_cast<const void *>(\tSHCXX_rv))", 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 27, 
+                "_function_index": 28, 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -5360,6 +5548,7 @@
                         "c_rv_decl": "TUT_class1 * SHC_rv", 
                         "c_val": "\tstatic_cast<TUT_class1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHCXX_rv"
                     }, 
@@ -5367,12 +5556,13 @@
                         "PyObject": "PY_Class1", 
                         "PyTypeObject": "PY_Class1_Type", 
                         "c_var": "SHCXX_rv", 
+                        "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHCXX_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 28, 
+                "_function_index": 29, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5423,8 +5613,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 52, 
-                "_function_index": 29, 
+                "_PTR_F_C_index": 53, 
+                "_function_index": 30, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5483,7 +5673,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 29, 
+                "_PTR_C_CXX_index": 30, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5505,11 +5695,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 52, 
+                "_function_index": 53, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -5573,8 +5764,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 53, 
-                "_function_index": 30, 
+                "_PTR_F_C_index": 54, 
+                "_function_index": 31, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5632,7 +5823,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 30, 
+                "_PTR_C_CXX_index": 31, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5651,7 +5842,7 @@
                         }
                     }
                 }, 
-                "_function_index": 53, 
+                "_function_index": 54, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -5715,8 +5906,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 54, 
-                "_function_index": 31, 
+                "_PTR_F_C_index": 55, 
+                "_function_index": 32, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5774,7 +5965,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 31, 
+                "_PTR_C_CXX_index": 32, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5793,7 +5984,7 @@
                         }
                     }
                 }, 
-                "_function_index": 54, 
+                "_function_index": 55, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -5857,8 +6048,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 55, 
-                "_function_index": 32, 
+                "_PTR_F_C_index": 56, 
+                "_function_index": 33, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5921,7 +6112,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 32, 
+                "_PTR_C_CXX_index": 33, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5944,11 +6135,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 55, 
+                "_function_index": 56, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -6017,8 +6209,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 56, 
-                "_function_index": 33, 
+                "_PTR_F_C_index": 57, 
+                "_function_index": 34, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -6084,7 +6276,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 33, 
+                "_PTR_C_CXX_index": 34, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -6104,7 +6296,7 @@
                         }
                     }
                 }, 
-                "_function_index": 56, 
+                "_function_index": 57, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -6174,8 +6366,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 57, 
-                "_function_index": 34, 
+                "_PTR_F_C_index": 58, 
+                "_function_index": 35, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -6236,7 +6428,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 34, 
+                "_PTR_C_CXX_index": 35, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -6256,7 +6448,7 @@
                         }
                     }
                 }, 
-                "_function_index": 57, 
+                "_function_index": 58, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -6357,11 +6549,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 35, 
+                "_function_index": 36, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -6459,17 +6652,19 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 58, 
+                "_PTR_F_C_index": 59, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
                         "c_val": "SHCXX_rv.c_str()", 
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
@@ -6477,12 +6672,13 @@
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
                         "c_var": "SHCXX_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 36, 
+                "_function_index": 37, 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -6536,7 +6732,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 36, 
+                "_PTR_C_CXX_index": 37, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -6558,11 +6754,12 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 58, 
+                "_function_index": 59, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -6703,7 +6900,7 @@
             "base": "shadow", 
             "c_to_cxx": "\tstatic_cast<{c_const}tutorial::\tClass1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TUT_class1", 
-            "cxx_to_c": "\tstatic_cast<{c_const}TUT_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))", 
+            "cxx_to_c": "\tstatic_cast<{c_const}TUT_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
             "cxx_type": "tutorial::\tClass1", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -6744,7 +6941,7 @@
                 "intent_out": {
                     "post_call": [
                         "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{PY_obj} = {cxx_var};"
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -6783,6 +6980,62 @@
             "f_c_type": "integer(C_INT)", 
             "f_kind": "C_INT", 
             "f_type": "integer"
+        }, 
+        "Singleton": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_type": "LUA_TUSERDATA", 
+            "PY_PyObject": "PY_Singleton", 
+            "PY_PyTypeObject": "PY_Singleton_Type", 
+            "PY_from_object": "PP_Singleton_from_Object", 
+            "PY_to_object": "PP_Singleton_to_Object", 
+            "base": "shadow", 
+            "c_to_cxx": "\tstatic_cast<{c_const}Singleton *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_type": "TUT_singleton", 
+            "cxx_to_c": "\tstatic_cast<{c_const}TUT_singleton *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
+            "cxx_type": "Singleton", 
+            "f_c_module": {
+                "iso_c_binding": [
+                    "C_PTR"
+                ]
+            }, 
+            "f_c_type": "type(C_PTR)", 
+            "f_derived_type": "singleton", 
+            "f_module": {
+                "tutorial_mod": [
+                    "singleton"
+                ]
+            }, 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
+            "f_to_c": "{f_var}%get_instance()", 
+            "f_type": "type(singleton)", 
+            "forward": "Singleton", 
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}Singleton * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_inout": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}Singleton * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
         }, 
         "TypeID": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 

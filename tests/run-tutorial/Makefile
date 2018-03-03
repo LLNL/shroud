@@ -57,6 +57,7 @@ OBJS = \
     wrapftutorial.o \
     wrapTutorial.o \
     wrapClass1.o \
+    wrapSingleton.o \
     fruit.o \
     main.o
 
@@ -66,8 +67,12 @@ tutorial : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod tutorial
 
+tutorial.o : tutorial.hpp
+wrapTutorial.o : wrapTutorial.h tutorial.hpp
+wrapClass1.o : wrapClass1.h tutorial.hpp
+wrapSingleton.o : wrapSingleton.h tutorial.hpp
 main.o : wrapftutorial.o
 
 # useful to isolate load error with just C++ code
-maincpp : maincpp.o wrapTutorial.o wrapClass1.o tutorial.o
+maincpp : maincpp.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
