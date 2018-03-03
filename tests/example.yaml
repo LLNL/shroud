@@ -107,18 +107,6 @@ types:
       sidre_mod: [ group ]
     PY_PyTypeObject: FillInTypeForGroup
 
-enums:
-- decl: |
-      enum Color {
-        RED,
-        BLUE,
-        WHITE
-      };
-  options:
-     bar: 4
-  format:
-     baz: 4  
-
 classes:
   - name: ExClass1
     cxx_header: ExClass1.hpp
@@ -126,9 +114,6 @@ classes:
 
     python:
       type: [ init, repr, richcompare ]
-
-    enums:
-    - decl: enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 
     methods:
     # overloaded constructor

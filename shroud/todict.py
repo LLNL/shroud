@@ -245,6 +245,10 @@ class ToDict(visitor.Visitor):
             format=self.visit(node.fmtdict),
             options=self.visit(node.options),
         )
+        for key in [ '_fmtmembers' ]:
+            value = getattr(node, key)
+            if value:
+                d[key] = self.visit(value)
         return d
 
 

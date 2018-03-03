@@ -53,11 +53,6 @@ module userlibrary_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    !  Color
-    integer(C_INT), parameter :: RED = 0
-    integer(C_INT), parameter :: BLUE = 1
-    integer(C_INT), parameter :: WHITE = 2
-
     abstract interface
 
         function custom_funptr(XX0arg, XX1arg) bind(C)

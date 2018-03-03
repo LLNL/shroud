@@ -47,7 +47,7 @@ from . import ast
 from . import declast
 from . import todict
 from . import typemap
-
+from . import util
 
 class VerifyAttrs(object):
     """
@@ -733,8 +733,49 @@ class Namify(object):
         self.config = config
 
     def name_library(self):
+        """entry pointer for class"""
+
+        self.name_enums(self.newlibrary)
+        for cls in self.newlibrary.classes:
+            self.name_enums(cls)
+
         self.name_language(self.name_function_c)
         self.name_language(self.name_function_fortran)
+
+    def name_enums(self, node):
+        """Create format dictionary for enums"""
+        for enum in node.enums:
+            self.name_enum(enum)
+
+    def name_enum(self, node):
+        """Create format dictionary for a single enum"""
+        # This cannot be done in ast because of its dependency on todict
+        ast = node.ast
+
+        # format for enum
+        fmt_enum = node.fmtdict
+        fmt_enum.enum_name = ast.name
+        fmt_enum.enum_lower = ast.name.lower()
+        fmt_enum.enum_upper = ast.name.upper()
+
+        # format for each enum member
+        fmtmembers = {}
+        evalue = 0
+        for member in ast.members:
+            fmt = util.Scope(parent=fmt_enum)
+            fmt.enum_member_name = member.name
+            fmt.enum_member_lower = member.name.lower()
+            fmt.enum_member_upper = member.name.upper()
+
+            # evaluate value
+            if member.value is not None:
+                fmt.cxx_value = todict.print_node(member.value)
+                evalue = int(todict.print_node(member.value))
+            fmt.evalue = evalue
+            evalue = evalue + 1
+
+            fmtmembers[member.name] = fmt
+        node._fmtmembers = fmtmembers
 
     def name_language(self, handler):
         newlibrary = self.newlibrary

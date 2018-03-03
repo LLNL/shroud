@@ -286,18 +286,21 @@ class Wrapf(util.WrapperMixin):
         This largly echo the C++ code
         For classes, it adds prefixes.
         """
+        options = node.options
         ast = node.ast
         output = self.enum_impl
 
         fmt_enum = node.fmtdict
+        fmtmembers = node._fmtmembers
+
         output.append('')
         append_format(output, '!  {enum_name}', fmt_enum)
-        evalue = 0
         for member in ast.members:
-            if member.value is not None:
-                evalue = int(todict.print_node(member.value))
-            output.append('integer(C_INT), parameter :: {} = {}'.format(member.name, evalue))
-            evalue = evalue + 1
+            fmt_id = fmtmembers[member.name]
+            fmt_id.F_enum_member = wformat(options.F_enum_member_template, fmt_id)
+            append_format(output, 'integer(C_INT), parameter :: {F_enum_member} = {evalue}', 
+                          fmt_id)
+        self.set_f_module(self.module_use, 'iso_c_binding', 'C_INT')
 
     def write_object_get_set(self, node, fmt_class):
         """Write get and set methods for instance pointer.

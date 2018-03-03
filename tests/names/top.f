@@ -47,12 +47,18 @@
 ! splicer begin file_top
 ! splicer end file_top
 module top_module
+    use iso_c_binding, only : C_INT
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
+
+    !  Color
+    integer(C_INT), parameter :: color_red = 0
+    integer(C_INT), parameter :: color_blue = 1
+    integer(C_INT), parameter :: color_white = 2
 
     interface
 

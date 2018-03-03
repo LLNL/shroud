@@ -155,6 +155,9 @@ class LibraryNode(AstNode):
             C_header_filename_class_template='wrap{cxx_class}.{C_header_filename_suffix}',
             C_impl_filename_class_template='wrap{cxx_class}.{C_impl_filename_suffix}',
 
+            C_enum_template='{C_prefix}{class_prefix}{enum_name}',
+            C_enum_member_template='{enum_member_name}',
+
             C_name_template=(
                 '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
 
@@ -165,6 +168,9 @@ class LibraryNode(AstNode):
             # Fortran's names for C functions
             F_C_name_template=(
                 '{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
+
+            F_enum_member_template=(
+                '{class_prefix}{enum_lower}_{enum_member_lower}'),
 
             F_name_impl_template=(
                 '{class_prefix}{underscore_name}{function_suffix}'),
@@ -453,6 +459,8 @@ class FunctionNode(AstNode):
       'arg1': {
         'fmtc': Scope(_fmtfunc),
         'fmtf': Scope(_fmtfunc)
+        'fmtl': Scope(_fmtfunc)
+        'fmtpy': Scope(_fmtfunc)
       }
     }
 
@@ -606,6 +614,11 @@ class EnumNode(AstNode):
              bar: 4
           format:
              baz: 4  
+
+    _fmtmembers = {
+      'RED': Scope(_fmt_func)
+
+    }
     """
     def __init__(self, decl, parent,
                  format=None,
@@ -628,10 +641,7 @@ class EnumNode(AstNode):
         ast = declast.check_enum(decl)
         self.ast = ast
 
-        fmt_enum = self.fmtdict
-        fmt_enum.enum_name = ast.name
-        fmt_enum.enum_lower = ast.name.lower()
-        fmt_enum.enum_upper = ast.name.upper()
+######################################################################
 
 def clean_dictionary(dd):
     """YAML converts some blank fields to None,

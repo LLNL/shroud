@@ -64,6 +64,17 @@ types:
     c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
+enums:
+- decl: |
+      enum Color {
+        RED,
+        BLUE,
+        WHITE
+      };
+  options:
+     bar: 4
+  format:
+     baz: 4  
 
 functions:
 - decl: void Function1()
@@ -264,6 +275,10 @@ functions:
 
 classes:
 - name: Class1
+
+  enums:
+  - decl: enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
+
   methods:
   - decl: Class1()         +name(new)
     format:

@@ -47,7 +47,6 @@ from __future__ import absolute_import
 import os
 
 from . import declast
-from . import todict
 from . import typemap
 from . import whelpers
 from . import util
@@ -314,18 +313,24 @@ class Wrapc(util.WrapperMixin):
         This largly echo the C++ code
         For classes, it adds prefixes.
         """
+        options = node.options
         ast = node.ast
         output = self.enum_impl
 
+        node.eval_template('C_enum')
         fmt_enum = node.fmtdict
+        fmtmembers = node._fmtmembers
+
         output.append('')
         append_format(output, '//  {enum_name}', fmt_enum)
-        append_format(output, 'enum {enum_name} {{+', fmt_enum)
+        append_format(output, 'enum {C_enum} {{+', fmt_enum)
         for member in ast.members:
+            fmt_id = fmtmembers[member.name]
+            fmt_id.C_enum_member = wformat(options.C_enum_member_template, fmt_id)
             if member.value is not None:
-                output.append('{} = {},'.format(member.name, todict.print_node(member.value)))
+                append_format(output, '{C_enum_member} = {cxx_value},', fmt_id)
             else:
-                output.append('{},'.format(member.name))
+                append_format(output, '{C_enum_member},', fmt_id)
         output[-1] = output[-1][:-1]        # Avoid trailing comma for older compilers
         append_format(output, '-}};', fmt_enum)
 

@@ -4,40 +4,6 @@
         "classes": [
             {
                 "cxx_header": "ExClass1.hpp", 
-                "enums": [
-                    {
-                        "ast": {
-                            "members": [
-                                {
-                                    "name": "UP", 
-                                    "value": {
-                                        "constant": "2"
-                                    }
-                                }, 
-                                {
-                                    "name": "DOWN"
-                                }, 
-                                {
-                                    "name": "LEFT", 
-                                    "value": {
-                                        "constant": "100"
-                                    }
-                                }, 
-                                {
-                                    "name": "RIGHT"
-                                }
-                            ], 
-                            "name": "DIRECTION"
-                        }, 
-                        "decl": "enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };", 
-                        "format": {
-                            "enum_lower": "direction", 
-                            "enum_name": "DIRECTION", 
-                            "enum_upper": "DIRECTION"
-                        }, 
-                        "options": {}
-                    }
-                ], 
                 "format": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapExClass1.h", 
@@ -4386,33 +4352,6 @@
             "", 
             "#######################################################################"
         ], 
-        "enums": [
-            {
-                "ast": {
-                    "members": [
-                        {
-                            "name": "RED"
-                        }, 
-                        {
-                            "name": "BLUE"
-                        }, 
-                        {
-                            "name": "WHITE"
-                        }
-                    ], 
-                    "name": "Color"
-                }, 
-                "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n", 
-                "format": {
-                    "enum_lower": "color", 
-                    "enum_name": "Color", 
-                    "enum_upper": "COLOR"
-                }, 
-                "options": {
-                    "bar": 4
-                }
-            }
-        ], 
         "format": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
@@ -8322,6 +8261,7 @@
         "language": "c++", 
         "namespace": "example nested", 
         "options": {
+            "C_enum_template": "{C_prefix}{class_prefix}{enum_name}", 
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
@@ -8334,6 +8274,7 @@
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
+            "F_enum_identifier_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 

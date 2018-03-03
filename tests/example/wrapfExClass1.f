@@ -52,12 +52,6 @@ module exclass1_mod
     implicit none
 
 
-    !  DIRECTION
-    integer(C_INT), parameter :: UP = 2
-    integer(C_INT), parameter :: DOWN = 3
-    integer(C_INT), parameter :: LEFT = 100
-    integer(C_INT), parameter :: RIGHT = 101
-
     ! splicer begin class.ExClass1.module_top
     top of module splicer  1
     ! splicer end class.ExClass1.module_top

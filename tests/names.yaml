@@ -63,6 +63,20 @@ format:
   F_impl_filename: top.f
   LUA_module_name: lua_module_name
 
+enums:
+- decl: |
+      enum Color {
+        RED,
+        BLUE,
+        WHITE
+      };
+  options:
+     bar: 4
+  format:
+     baz: 4  
+
+
+
 classes:
   - name: Names
     options:

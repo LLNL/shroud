@@ -79,6 +79,13 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
+//  Color
+enum TUT_Color {
+    RED,
+    BLUE,
+    WHITE
+};
+
 // void Function1()
 // function_index=6
 void TUT_function1()
