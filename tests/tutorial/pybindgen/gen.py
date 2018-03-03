@@ -85,6 +85,9 @@ def generate(fp):
     sclass.add_method("instancePtr", retval("Singleton*", caller_owns_return=True), [],
                       is_static=True)
 
+    mod.add_enum('MyEnum_e', ['CONSTANT_A', 'CONSTANT_B', 'CONSTANT_C'])
+    mod.add_function('AcceptEnum', None, [param('MyEnum_e', 'value')])
+
     mod.generate(fp)
 
 if __name__ == '__main__':

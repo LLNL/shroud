@@ -60,6 +60,7 @@ test_cases = (
     test_util.ScopeCase,
     test_declast.CheckParse,
     test_declast.CheckExpr,
+    test_declast.CheckEnum,
     test_ast.CheckAst,
     test_generate.CheckImplied,
     test_wrapf.CheckAllocatable,

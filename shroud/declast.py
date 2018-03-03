@@ -68,6 +68,8 @@ token_specification = [
     ('SQUOTE',    r"['][^']*[']"),  # single quoted string
     ('LPAREN',    r'\('),
     ('RPAREN',    r'\)'),
+    ('LCURLY',    r'{'),
+    ('RCURLY',    r'}'),
     ('STAR',      r'\*'),
     ('EQUALS',    r'='),
     ('REF',       r'\&'),
@@ -107,6 +109,8 @@ def tokenize(s):
                     typ = 'TYPE_QUALIFIER'
                 elif val in storage_class:
                     typ = 'STORAGE_CLASS'
+                elif val in ['enum', 'struct']:
+                    typ = val.upper()
             yield Token(typ, val, line, mo.start()-line_start)
         pos = mo.end()
         mo = get_token(s, pos)
@@ -1131,7 +1135,7 @@ class ExprParser(RecursiveDescent):
             self.next()
             node = UnaryOp(value, self.primary())
         else:
-            self.error_msg("Unexpected token {}", self.token.value)
+            self.error_msg("Unexpected token {} in primary", self.token.value)
         self.exit('primary')
         return node
 
@@ -1169,4 +1173,46 @@ class ExprParser(RecursiveDescent):
 
 def check_expr(expr, trace=False):
     a = ExprParser(expr, trace=trace).expression()
+    return a
+
+######################################################################
+
+class Enum(Node):
+    """An enumeration statement.
+    enum Color { RED, BLUE, WHITE }
+    """
+    def __init__(self, name):
+        self.name = name
+        self.members = []
+
+class EnumValue(Node):
+    """A single name in an enum statment with optional value"""
+    def __init__(self, name, value=None):
+        self.name = name
+        self.value = value
+
+class EnumParser(ExprParser):
+    def enum_statement(self):
+        self.enter('enum_statement')
+        self.mustbe('ENUM')
+        name = self.mustbe('ID')
+        self.mustbe('LCURLY')
+        node = Enum(name.value)
+        members = node.members
+        while self.token.typ != 'RCURLY':
+            name = self.mustbe('ID')
+            value = None
+            if self.have('EQUAL'):
+                pass
+            members.append(EnumValue(name.value, value))
+            if not self.have('COMMA'):
+                break
+        self.mustbe('RCURLY')
+        self.have('SEMICOLON')
+        self.mustbe('EOF')
+        self.exit('enum_statement', str(members))
+        return node
+
+def check_enum(enum, trace=False):
+    a = EnumParser(enum, trace=trace).enum_statement()
     return a

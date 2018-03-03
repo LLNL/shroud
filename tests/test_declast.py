@@ -992,6 +992,20 @@ class CheckExpr(unittest.TestCase):
         r = declast.check_expr(e)
         self.assertEqual(e, todict.print_node(r))
 
+
+class CheckEnum(unittest.TestCase):
+    def test_enum1(self):
+        r = declast.check_enum('enum Color { RED, BLUE, WHITE }')
+        self.assertEqual('enum Color { RED, BLUE, WHITE };', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            'name': 'Color',
+            'members': [
+                {'name': 'RED'},
+                {'name': 'BLUE'},
+                {'name': 'WHITE'}
+            ]
+        })
+
                          
 if __name__ == '__main__':
     unittest.main()

@@ -139,6 +139,20 @@ class ToDict(visitor.Visitor):
         )
         return d
 
+    def visit_EnumValue(self, node):
+        if node.value is None:
+            return dict(name=node.name)
+        else:
+            return dict(name=node.name, members=self.visit(node.value))
+
+    def visit_Enum(self, node):
+        d = dict(
+            name=node.name,
+            members=self.visit(node.members)
+        )
+        return d
+        
+
 ######################################################################
 
     def visit_Scope(self, node):
@@ -231,6 +245,9 @@ def to_dict(node):
 ######################################################################
 
 class PrintNode(visitor.Visitor):
+    """Unparse Nodes.
+    Create a string from Nodes.
+    """
 
     def param_list(self, node):
         n = [node.name, '(']
@@ -240,13 +257,23 @@ class PrintNode(visitor.Visitor):
             n[-1] = ')'
         return ''.join(n)
 
+    def comma_list(self, lst):
+        if not lst:
+            return ''
+        n = []
+        for item in lst:
+            n.append(self.visit(item))
+            n.append(', ')
+        n.pop()
+        return ''.join(n)
+
     def visit_Identifier(self, node):
         if node.args == None:
             return node.name
         elif node.args:
             return self.param_list(node)
         else:
-            return node.name+ '()'
+            return node.name + '()'
 
     def visit_BinaryOp(self, node):
         return self.visit(node.left) + node.op + self.visit(node.right)
@@ -259,6 +286,16 @@ class PrintNode(visitor.Visitor):
 
     def visit_Constant(self, node):
         return node.value
+
+    def visit_EnumValue(self, node):
+        if node.value is None:
+            return node.name
+        else:
+            return '{} = {}'.format(node.name, self.visit(node.value))
+
+    def visit_Enum(self, node):
+        values = ''
+        return 'enum {} {{ {} }};'.format(node.name, self.comma_list(node.members))
 
 
 def print_node(node):

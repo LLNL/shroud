@@ -628,9 +628,34 @@ inittutorial_tutorial(void)
     PyModule_AddObject(m, (char *) "Singleton", (PyObject *) &PyTutorialSingleton_Type);
     return m;
 }
+/* --- module functions --- */
+
+
+PyObject *
+_wrap_tutorial_AcceptEnum(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    MyEnum_e value;
+    const char *keywords[] = {"value", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "i", (char **) keywords, &value)) {
+        return NULL;
+    }
+    AcceptEnum(value);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap_tutorial_AcceptEnum(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
 static PyMethodDef tutorial_functions[] = {
+    {(char *) "AcceptEnum", (PyCFunction) _wrap_tutorial_AcceptEnum, METH_KEYWORDS|METH_VARARGS, "AcceptEnum(value)\n\ntype: value: MyEnum_e" },
     {NULL, NULL, 0, NULL}
 };
+/* --- enumerations --- */
+
+
+
 #if PY_VERSION_HEX >= 0x03000000
 static struct PyModuleDef tutorial_moduledef = {
     PyModuleDef_HEAD_INIT,
@@ -671,6 +696,9 @@ MOD_INIT(tutorial)
     if (m == NULL) {
         return MOD_ERROR;
     }
+    PyModule_AddIntConstant(m, (char *) "CONSTANT_A", CONSTANT_A);
+    PyModule_AddIntConstant(m, (char *) "CONSTANT_B", CONSTANT_B);
+    PyModule_AddIntConstant(m, (char *) "CONSTANT_C", CONSTANT_C);
     submodule = inittutorial_tutorial();
     if (submodule == NULL) {
         return MOD_ERROR;
