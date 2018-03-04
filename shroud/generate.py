@@ -787,8 +787,6 @@ class Namify(object):
 
             options = cls.options
             fmt_class = cls.fmtdict
-            if 'F_this' in options:
-                fmt_class.F_this = options.F_this
 
         for func in newlibrary.functions:
             handler(None, func)
@@ -803,9 +801,6 @@ class Namify(object):
         node.eval_template('F_C_name')
         fmt_func.F_C_name = fmt_func.F_C_name.lower()
 
-        if 'C_this' in options:
-            fmt_func.C_this = options.C_this
-
     def name_function_fortran(self, cls, node):
         """ Must process C functions to generate their names.
         """
@@ -817,11 +812,6 @@ class Namify(object):
         node.eval_template('F_name_impl')
         node.eval_template('F_name_function')
         node.eval_template('F_name_generic')
-
-        if 'F_this' in options:
-            fmt_func.F_this = options.F_this
-        if 'F_result' in options:
-            fmt_func.F_result = options.F_result
 
 
 def generate_functions(library, config):
