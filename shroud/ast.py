@@ -200,8 +200,6 @@ class LibraryNode(AstNode):
             LUA_name_template='{function_name}',
             LUA_name_impl_template='{LUA_prefix}{class_prefix}{underscore_name}',
 
-            PY_enum_member_getter_template=(
-                '{PY_prefix}{class_prefix}{enum_name}_{enum_member_name}'),
             PY_module_filename_template=(
                 'py{library}module.{PY_impl_filename_suffix}'),
             PY_header_filename_template=(
