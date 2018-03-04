@@ -47,6 +47,7 @@ import copy
 
 from . import util
 from . import declast
+from . import todict
 from . import typemap
 
 class AstNode(object):
@@ -640,6 +641,34 @@ class EnumNode(AstNode):
         self.decl = decl
         ast = declast.check_enum(decl)
         self.ast = ast
+
+        # format for enum
+        fmt_enum = self.fmtdict
+        fmt_enum.enum_name = ast.name
+        fmt_enum.enum_lower = ast.name.lower()
+        fmt_enum.enum_upper = ast.name.upper()
+        if fmt_enum.get('cxx_class', None):
+            fmt_enum.namespace_scope =  fmt_enum.namespace_scope + fmt_enum.cxx_class + '::'
+
+        # format for each enum member
+        fmtmembers = {}
+        evalue = 0
+        for member in ast.members:
+            fmt = util.Scope(parent=fmt_enum)
+            fmt.enum_member_name = member.name
+            fmt.enum_member_lower = member.name.lower()
+            fmt.enum_member_upper = member.name.upper()
+
+            # evaluate value
+            if member.value is not None:
+                fmt.cxx_value = todict.print_node(member.value)
+                evalue = int(todict.print_node(member.value))
+            fmt.evalue = evalue
+            evalue = evalue + 1
+
+            fmtmembers[member.name] = fmt
+        self._fmtmembers = fmtmembers
+
 
 ######################################################################
 
