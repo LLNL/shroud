@@ -70,7 +70,7 @@ class Tutorial(unittest.TestCase):
         self.assertEqual(1, tutorial.BLUE)
         self.assertEqual(2, tutorial.WHITE)
 
-    def Xtest_enum_Direction(self):
+    def test_enum_Direction(self):
         self.assertEqual(2, tutorial.Class1.UP)
         self.assertEqual(3, tutorial.Class1.DOWN)
         self.assertEqual(100, tutorial.Class1.LEFT)

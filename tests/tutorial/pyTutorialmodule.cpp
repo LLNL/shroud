@@ -966,6 +966,22 @@ inittutorial(void)
     Py_INCREF(&PY_Singleton_Type);
     PyModule_AddObject(m, "Singleton", (PyObject *)&PY_Singleton_Type);
 
+{
+    // enumeration DIRECTION
+    PyObject *tmp_value;
+    tmp_value = PyLong_FromLong(tutorial::Class1::UP);
+    PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "UP", tmp_value);
+    Py_DECREF(tmp_value);
+    tmp_value = PyLong_FromLong(tutorial::Class1::DOWN);
+    PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "DOWN", tmp_value);
+    Py_DECREF(tmp_value);
+    tmp_value = PyLong_FromLong(tutorial::Class1::LEFT);
+    PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "LEFT", tmp_value);
+    Py_DECREF(tmp_value);
+    tmp_value = PyLong_FromLong(tutorial::Class1::RIGHT);
+    PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "RIGHT", tmp_value);
+    Py_DECREF(tmp_value);
+}
 
 // enumeration Color
     PyModule_AddIntConstant(m, "RED", tutorial::RED);

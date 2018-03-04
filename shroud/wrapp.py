@@ -112,6 +112,7 @@ class Wrapp(util.WrapperMixin):
         self.cont = ''
         self.linelen = newlibrary.options.C_line_length
         self.need_numpy = False
+        self.enum_impl = []
 
     def XXX_begin_output_file(self):
         """Start a new class for output"""
@@ -124,7 +125,6 @@ class Wrapp(util.WrapperMixin):
         pass
 
     def reset_file(self):
-        self.enum_impl = []
         self.PyMethodBody = []
         self.PyMethodDef = []
         self.PyGetSetBody = []
@@ -253,28 +253,20 @@ class Wrapp(util.WrapperMixin):
                               '    PyModule_AddIntConstant(m, "{enum_member_name}",'
                               ' {namespace_scope}{enum_member_name});', fmt_id)
         else:
+            output.append('{+')
+            append_format(output, '// enumeration {enum_name}', node.fmtdict)
+            output.append('PyObject *tmp_value;')
             for member in ast.members:
                 fmt_id = fmtmembers[member.name]
-                fmt_id.PY_enum_member_getter =  wformat(
-                    options.PY_enum_member_getter_template, fmt_id)
-                fmt_id.PY_enum_member_setter = 'NULL'  # read-only
-
-                append_format(self.PyGetSetBody,
-                              '\nstatic PyObject *'
-                              '{PY_enum_member_getter}('
-                              '{PY_PyObject} *SHROUD_UNUSED({PY_param_self}),'
-                              '\t void *SHROUD_UNUSED(closure))\n'
-                              '{{+\nstatic PyObject *rv = PyInt_FromLong('
+                append_format(output,
+                              'tmp_value = PyLong_FromLong('
                               '{namespace_scope}{enum_member_name});\n'
-                              'Py_INCREF(rv);\nreturn rv;\n'
-                              '\n-}}', fmt_id)
-                
-                self.PyGetSetDef.append(
-                    wformat('{{"{enum_member_name}",\t '
-                            '(getter){PY_enum_member_getter},\t '
-                            '(setter){PY_enum_member_setter},\t '
-                            'NULL, '               # doc
-                            'NULL}},', fmt_id))    # closure
+                              'PyDict_SetItemString('
+                              '(PyObject*) {PY_PyTypeObject}.tp_dict,'
+                              ' "{enum_member_name}", tmp_value);\n'
+                              'Py_DECREF(tmp_value);', fmt_id)
+            output.append('-}')
+
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))

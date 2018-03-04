@@ -10,8 +10,6 @@
                             "DOWN": {
                                 "C_enum_member": "DOWN", 
                                 "F_enum_member": "class1_direction_down", 
-                                "PY_enum_member_getter": "PY_class1_DIRECTION_DOWN", 
-                                "PY_enum_member_setter": "NULL", 
                                 "enum_member_lower": "down", 
                                 "enum_member_name": "DOWN", 
                                 "enum_member_upper": "DOWN", 
@@ -20,8 +18,6 @@
                             "LEFT": {
                                 "C_enum_member": "LEFT", 
                                 "F_enum_member": "class1_direction_left", 
-                                "PY_enum_member_getter": "PY_class1_DIRECTION_LEFT", 
-                                "PY_enum_member_setter": "NULL", 
                                 "cxx_value": "100", 
                                 "enum_member_lower": "left", 
                                 "enum_member_name": "LEFT", 
@@ -31,8 +27,6 @@
                             "RIGHT": {
                                 "C_enum_member": "RIGHT", 
                                 "F_enum_member": "class1_direction_right", 
-                                "PY_enum_member_getter": "PY_class1_DIRECTION_RIGHT", 
-                                "PY_enum_member_setter": "NULL", 
                                 "enum_member_lower": "right", 
                                 "enum_member_name": "RIGHT", 
                                 "enum_member_upper": "RIGHT", 
@@ -41,8 +35,6 @@
                             "UP": {
                                 "C_enum_member": "UP", 
                                 "F_enum_member": "class1_direction_up", 
-                                "PY_enum_member_getter": "PY_class1_DIRECTION_UP", 
-                                "PY_enum_member_setter": "NULL", 
                                 "cxx_value": "2", 
                                 "enum_member_lower": "up", 
                                 "enum_member_name": "UP", 
