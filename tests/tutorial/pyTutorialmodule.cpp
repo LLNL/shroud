@@ -931,8 +931,8 @@ inittutorial(void)
     PyObject *m = NULL;
     const char * error_name = "tutorial.Error";
 
-// splicer begin C_init_locals
-// splicer end C_init_locals
+    // splicer begin C_init_locals
+    // splicer end C_init_locals
 
 
     /* Create the module and add the functions */
@@ -940,8 +940,8 @@ inittutorial(void)
     m = PyModule_Create(&moduledef);
 #else
     m = Py_InitModule4("tutorial", PY_methods,
-                       PY__doc__,
-                       (PyObject*)NULL,PYTHON_API_VERSION);
+        PY__doc__,
+        (PyObject*)NULL,PYTHON_API_VERSION);
 #endif
     if (m == NULL)
         return RETVAL;
@@ -949,7 +949,7 @@ inittutorial(void)
 
     import_array();
 
-// Class1
+    // Class1
     PY_Class1_Type.tp_new   = PyType_GenericNew;
     PY_Class1_Type.tp_alloc = PyType_GenericAlloc;
     if (PyType_Ready(&PY_Class1_Type) < 0)
@@ -958,7 +958,7 @@ inittutorial(void)
     PyModule_AddObject(m, "Class1", (PyObject *)&PY_Class1_Type);
 
 
-// Singleton
+    // Singleton
     PY_Singleton_Type.tp_new   = PyType_GenericNew;
     PY_Singleton_Type.tp_alloc = PyType_GenericAlloc;
     if (PyType_Ready(&PY_Singleton_Type) < 0)
@@ -966,24 +966,24 @@ inittutorial(void)
     Py_INCREF(&PY_Singleton_Type);
     PyModule_AddObject(m, "Singleton", (PyObject *)&PY_Singleton_Type);
 
-{
-    // enumeration DIRECTION
-    PyObject *tmp_value;
-    tmp_value = PyLong_FromLong(tutorial::Class1::UP);
-    PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "UP", tmp_value);
-    Py_DECREF(tmp_value);
-    tmp_value = PyLong_FromLong(tutorial::Class1::DOWN);
-    PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "DOWN", tmp_value);
-    Py_DECREF(tmp_value);
-    tmp_value = PyLong_FromLong(tutorial::Class1::LEFT);
-    PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "LEFT", tmp_value);
-    Py_DECREF(tmp_value);
-    tmp_value = PyLong_FromLong(tutorial::Class1::RIGHT);
-    PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "RIGHT", tmp_value);
-    Py_DECREF(tmp_value);
-}
+    {
+        // enumeration DIRECTION
+        PyObject *tmp_value;
+        tmp_value = PyLong_FromLong(tutorial::Class1::UP);
+        PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "UP", tmp_value);
+        Py_DECREF(tmp_value);
+        tmp_value = PyLong_FromLong(tutorial::Class1::DOWN);
+        PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "DOWN", tmp_value);
+        Py_DECREF(tmp_value);
+        tmp_value = PyLong_FromLong(tutorial::Class1::LEFT);
+        PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "LEFT", tmp_value);
+        Py_DECREF(tmp_value);
+        tmp_value = PyLong_FromLong(tutorial::Class1::RIGHT);
+        PyDict_SetItemString((PyObject*) PY_Class1_Type.tp_dict, "RIGHT", tmp_value);
+        Py_DECREF(tmp_value);
+    }
 
-// enumeration Color
+    // enumeration Color
     PyModule_AddIntConstant(m, "RED", tutorial::RED);
     PyModule_AddIntConstant(m, "BLUE", tutorial::BLUE);
     PyModule_AddIntConstant(m, "WHITE", tutorial::WHITE);
@@ -994,8 +994,8 @@ inittutorial(void)
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);
 
-// splicer begin C_init_body
-// splicer end C_init_body
+    // splicer begin C_init_body
+    // splicer end C_init_body
 
     /* Check for errors */
     if (PyErr_Occurred())

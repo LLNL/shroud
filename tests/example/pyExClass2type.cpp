@@ -461,72 +461,72 @@ static char ExClass2__doc__[] =
 
 /* static */
 PyTypeObject PP_ExClass2_Type = {
-        PyVarObject_HEAD_INIT(NULL, 0)
-        "userlibrary.ExClass2",                       /* tp_name */
-        sizeof(PP_ExClass2),         /* tp_basicsize */
-        0,                              /* tp_itemsize */
-        /* Methods to implement standard operations */
-        (destructor)PP_ExClass2_tp_dealloc,                 /* tp_dealloc */
-        (printfunc)PP_ExClass2_tp_print,                   /* tp_print */
-        (getattrfunc)PP_ExClass2_tp_getattr,                 /* tp_getattr */
-        (setattrfunc)PP_ExClass2_tp_setattr,                 /* tp_setattr */
+    PyVarObject_HEAD_INIT(NULL, 0)
+    "userlibrary.ExClass2",                       /* tp_name */
+    sizeof(PP_ExClass2),         /* tp_basicsize */
+     0,                              /* tp_itemsize */
+    /* Methods to implement standard operations */
+    (destructor)PP_ExClass2_tp_dealloc,                 /* tp_dealloc */
+    (printfunc)PP_ExClass2_tp_print,                   /* tp_print */
+    (getattrfunc)PP_ExClass2_tp_getattr,                 /* tp_getattr */
+    (setattrfunc)PP_ExClass2_tp_setattr,                 /* tp_setattr */
 #if PY_MAJOR_VERSION >= 3
-        0,                               /* tp_reserved */
+     0,                               /* tp_reserved */
 #else
-        (cmpfunc)PP_ExClass2_tp_compare,                     /* tp_compare */
+    (cmpfunc)PP_ExClass2_tp_compare,                     /* tp_compare */
 #endif
-        (reprfunc)PP_ExClass2_tp_repr,                    /* tp_repr */
-        /* Method suites for standard classes */
-        0,                              /* tp_as_number */
-        0,                              /* tp_as_sequence */
-        0,                              /* tp_as_mapping */
-        /* More standard operations (here for binary compatibility) */
-        (hashfunc)PP_ExClass2_tp_hash,                    /* tp_hash */
-        (ternaryfunc)PP_ExClass2_tp_call,                 /* tp_call */
-        (reprfunc)PP_ExClass2_tp_str,                    /* tp_str */
-        (getattrofunc)PP_ExClass2_tp_getattro,                /* tp_getattro */
-        (setattrofunc)PP_ExClass2_tp_setattro,                /* tp_setattro */
-        /* Functions to access object as input/output buffer */
-        0,                              /* tp_as_buffer */
-        /* Flags to define presence of optional/expanded features */
-        Py_TPFLAGS_DEFAULT,             /* tp_flags */
-        ExClass2__doc__,         /* tp_doc */
-        /* Assigned meaning in release 2.0 */
-        /* call function for all accessible objects */
-        (traverseproc)0,                /* tp_traverse */
-        /* delete references to contained objects */
-        (inquiry)0,                     /* tp_clear */
-        /* Assigned meaning in release 2.1 */
-        /* rich comparisons */
-        (richcmpfunc)0,                 /* tp_richcompare */
-        /* weak reference enabler */
-        0,                              /* tp_weaklistoffset */
-        /* Added in release 2.2 */
-        /* Iterators */
-        (getiterfunc)0,                 /* tp_iter */
-        (iternextfunc)0,                /* tp_iternext */
-        /* Attribute descriptor and subclassing stuff */
-        PP_ExClass2_methods,                             /* tp_methods */
-        0,                              /* tp_members */
-        0,                             /* tp_getset */
-        0,                              /* tp_base */
-        0,                              /* tp_dict */
-        (descrgetfunc)0,                /* tp_descr_get */
-        (descrsetfunc)0,                /* tp_descr_set */
-        0,                              /* tp_dictoffset */
-        (initproc)PP_ExClass2_tp_init,                   /* tp_init */
-        (allocfunc)PP_ExClass2_tp_alloc,                  /* tp_alloc */
-        (newfunc)PP_ExClass2_tp_new,                    /* tp_new */
-        (freefunc)PP_ExClass2_tp_free,                   /* tp_free */
-        (inquiry)0,                     /* tp_is_gc */
-        0,                              /* tp_bases */
-        0,                              /* tp_mro */
-        0,                              /* tp_cache */
-        0,                              /* tp_subclasses */
-        0,                              /* tp_weaklist */
-        (destructor)PP_ExClass2_tp_del,                 /* tp_del */
-        0,                              /* tp_version_tag */
+    (reprfunc)PP_ExClass2_tp_repr,                    /* tp_repr */
+    /* Method suites for standard classes */
+     0,                              /* tp_as_number */
+     0,                              /* tp_as_sequence */
+     0,                              /* tp_as_mapping */
+    /* More standard operations (here for binary compatibility) */
+    (hashfunc)PP_ExClass2_tp_hash,                    /* tp_hash */
+    (ternaryfunc)PP_ExClass2_tp_call,                 /* tp_call */
+    (reprfunc)PP_ExClass2_tp_str,                    /* tp_str */
+    (getattrofunc)PP_ExClass2_tp_getattro,                /* tp_getattro */
+    (setattrofunc)PP_ExClass2_tp_setattro,                /* tp_setattro */
+    /* Functions to access object as input/output buffer */
+     0,                              /* tp_as_buffer */
+    /* Flags to define presence of optional/expanded features */
+    Py_TPFLAGS_DEFAULT,             /* tp_flags */
+    ExClass2__doc__,         /* tp_doc */
+    /* Assigned meaning in release 2.0 */
+    /* call function for all accessible objects */
+    (traverseproc) 0,                /* tp_traverse */
+    /* delete references to contained objects */
+    (inquiry) 0,                     /* tp_clear */
+    /* Assigned meaning in release 2.1 */
+    /* rich comparisons */
+    (richcmpfunc) 0,                 /* tp_richcompare */
+    /* weak reference enabler */
+     0,                              /* tp_weaklistoffset */
+    /* Added in release 2.2 */
+    /* Iterators */
+    (getiterfunc) 0,                 /* tp_iter */
+    (iternextfunc) 0,                /* tp_iternext */
+    /* Attribute descriptor and subclassing stuff */
+    PP_ExClass2_methods,                             /* tp_methods */
+     0,                              /* tp_members */
+     0,                             /* tp_getset */
+     0,                              /* tp_base */
+     0,                              /* tp_dict */
+    (descrgetfunc) 0,                /* tp_descr_get */
+    (descrsetfunc) 0,                /* tp_descr_set */
+     0,                              /* tp_dictoffset */
+    (initproc)PP_ExClass2_tp_init,                   /* tp_init */
+    (allocfunc)PP_ExClass2_tp_alloc,                  /* tp_alloc */
+    (newfunc)PP_ExClass2_tp_new,                    /* tp_new */
+    (freefunc)PP_ExClass2_tp_free,                   /* tp_free */
+    (inquiry) 0,                     /* tp_is_gc */
+     0,                              /* tp_bases */
+     0,                              /* tp_mro */
+     0,                              /* tp_cache */
+     0,                              /* tp_subclasses */
+     0,                              /* tp_weaklist */
+    (destructor)PP_ExClass2_tp_del,                 /* tp_del */
+     0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
-        (destructor)0,                  /* tp_finalize */
+    (destructor) 0,                  /* tp_finalize */
 #endif
 };

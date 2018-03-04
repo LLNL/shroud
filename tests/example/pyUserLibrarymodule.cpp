@@ -787,8 +787,8 @@ inituserlibrary(void)
     PyObject *m = NULL;
     const char * error_name = "userlibrary.Error";
 
-// splicer begin C_init_locals
-// splicer end C_init_locals
+    // splicer begin C_init_locals
+    // splicer end C_init_locals
 
 
     /* Create the module and add the functions */
@@ -796,8 +796,8 @@ inituserlibrary(void)
     m = PyModule_Create(&moduledef);
 #else
     m = Py_InitModule4("userlibrary", PP_methods,
-                       PP__doc__,
-                       (PyObject*)NULL,PYTHON_API_VERSION);
+        PP__doc__,
+        (PyObject*)NULL,PYTHON_API_VERSION);
 #endif
     if (m == NULL)
         return RETVAL;
@@ -805,7 +805,7 @@ inituserlibrary(void)
 
     import_array();
 
-// ExClass1
+    // ExClass1
     PP_ExClass1_Type.tp_new   = PyType_GenericNew;
     PP_ExClass1_Type.tp_alloc = PyType_GenericAlloc;
     if (PyType_Ready(&PP_ExClass1_Type) < 0)
@@ -814,7 +814,7 @@ inituserlibrary(void)
     PyModule_AddObject(m, "ExClass1", (PyObject *)&PP_ExClass1_Type);
 
 
-// ExClass2
+    // ExClass2
     PP_ExClass2_Type.tp_new   = PyType_GenericNew;
     PP_ExClass2_Type.tp_alloc = PyType_GenericAlloc;
     if (PyType_Ready(&PP_ExClass2_Type) < 0)
@@ -829,8 +829,8 @@ inituserlibrary(void)
     st->error = PP_error_obj;
     PyModule_AddObject(m, "Error", st->error);
 
-// splicer begin C_init_body
-// splicer end C_init_body
+    // splicer begin C_init_body
+    // splicer end C_init_body
 
     /* Check for errors */
     if (PyErr_Occurred())

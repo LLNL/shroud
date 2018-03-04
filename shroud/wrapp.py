@@ -250,7 +250,7 @@ class Wrapp(util.WrapperMixin):
             for member in ast.members:
                 fmt_id = fmtmembers[member.name]
                 append_format(output,
-                              '    PyModule_AddIntConstant(m, "{enum_member_name}",'
+                              'PyModule_AddIntConstant(m, "{enum_member_name}",'
                               ' {namespace_scope}{enum_member_name});', fmt_id)
         else:
             output.append('{+')
@@ -284,12 +284,12 @@ class Wrapp(util.WrapperMixin):
 
         self.py_type_object_creation.append(wformat("""
 // {cxx_class}
-    {PY_PyTypeObject}.tp_new   = PyType_GenericNew;
-    {PY_PyTypeObject}.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&{PY_PyTypeObject}) < 0)
-        return RETVAL;
-    Py_INCREF(&{PY_PyTypeObject});
-    PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});
+{PY_PyTypeObject}.tp_new   = PyType_GenericNew;
+{PY_PyTypeObject}.tp_alloc = PyType_GenericAlloc;
+if (PyType_Ready(&{PY_PyTypeObject}) < 0)
++return RETVAL;-
+Py_INCREF(&{PY_PyTypeObject});
+PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});
 """, fmt_class))
         self.py_type_extern.append(wformat(
             'extern PyTypeObject {PY_PyTypeObject};', fmt_class))
@@ -1194,7 +1194,7 @@ return 1;""", fmt)
                 fmt_type[tp_name] = self.tp_init_default
                 continue
             if typename not in selected:
-                fmt_type[tp_name] = '0'
+                fmt_type[tp_name] = fmt_type['nullptr']
                 continue
             fmt.PY_type_method = tp_name
             func_name = wformat(template, fmt)
@@ -1247,6 +1247,7 @@ return 1;""", fmt)
             PY_PyObject=fmt.PY_PyObject,
             PY_PyTypeObject=fmt.PY_PyTypeObject,
             cxx_class=fmt.cxx_class,
+            nullptr=' 0', #'NULL',   # 0 will confuse formatter (thinks no indent)
             )
         self.write_tp_func(node, fmt_type, output)
 
@@ -1266,7 +1267,7 @@ return 1;""", fmt)
             output.append('{NULL}            /* sentinel */')
             output.append('-};')
         else:
-            fmt_type['tp_getset'] = '0'
+            fmt_type['tp_getset'] = fmt_type['nullptr']
 
         fmt_type['tp_methods'] = wformat('{PY_prefix}{cxx_class}_methods', fmt)
         output.append(
@@ -1461,7 +1462,7 @@ extern PyObject *{PY_prefix}error_obj;
         self._create_splicer('C_init_locals', output)
         output.append(wformat(module_middle, fmt))
         if self.need_numpy:
-            output.append('    import_array();')
+            output.append('import_array();')
         output.extend(self.py_type_object_creation)
         output.extend(self.enum_impl)
         output.append(wformat(module_middle2, fmt))
@@ -1612,82 +1613,87 @@ typefuncs = {
         ''),
 }
 
+### Note that these strings have some format character to control indenting
+#  + indent
+#  - deindent
+#  0 noindention
+
 PyTypeObject_template = """
 static char {cxx_class}__doc__[] =
 "virtual class"
 ;
 
 /* static */
-PyTypeObject {PY_PyTypeObject} = {{
-        PyVarObject_HEAD_INIT(NULL, 0)
-        "{PY_module_name}.{cxx_class}",                       /* tp_name */
-        sizeof({PY_PyObject}),         /* tp_basicsize */
-        0,                              /* tp_itemsize */
-        /* Methods to implement standard operations */
-        (destructor){tp_dealloc},                 /* tp_dealloc */
-        (printfunc){tp_print},                   /* tp_print */
-        (getattrfunc){tp_getattr},                 /* tp_getattr */
-        (setattrfunc){tp_setattr},                 /* tp_setattr */
-#if PY_MAJOR_VERSION >= 3
-        0,                               /* tp_reserved */
-#else
-        (cmpfunc){tp_compare},                     /* tp_compare */
-#endif
-        (reprfunc){tp_repr},                    /* tp_repr */
-        /* Method suites for standard classes */
-        0,                              /* tp_as_number */
-        0,                              /* tp_as_sequence */
-        0,                              /* tp_as_mapping */
-        /* More standard operations (here for binary compatibility) */
-        (hashfunc){tp_hash},                    /* tp_hash */
-        (ternaryfunc){tp_call},                 /* tp_call */
-        (reprfunc){tp_str},                    /* tp_str */
-        (getattrofunc){tp_getattro},                /* tp_getattro */
-        (setattrofunc){tp_setattro},                /* tp_setattro */
-        /* Functions to access object as input/output buffer */
-        0,                              /* tp_as_buffer */
-        /* Flags to define presence of optional/expanded features */
-        Py_TPFLAGS_DEFAULT,             /* tp_flags */
-        {cxx_class}__doc__,         /* tp_doc */
-        /* Assigned meaning in release 2.0 */
-        /* call function for all accessible objects */
-        (traverseproc)0,                /* tp_traverse */
-        /* delete references to contained objects */
-        (inquiry)0,                     /* tp_clear */
-        /* Assigned meaning in release 2.1 */
-        /* rich comparisons */
-        (richcmpfunc){tp_richcompare},                 /* tp_richcompare */
-        /* weak reference enabler */
-        0,                              /* tp_weaklistoffset */
-        /* Added in release 2.2 */
-        /* Iterators */
-        (getiterfunc)0,                 /* tp_iter */
-        (iternextfunc)0,                /* tp_iternext */
-        /* Attribute descriptor and subclassing stuff */
-        {tp_methods},                             /* tp_methods */
-        0,                              /* tp_members */
-        {tp_getset},                             /* tp_getset */
-        0,                              /* tp_base */
-        0,                              /* tp_dict */
-        (descrgetfunc)0,                /* tp_descr_get */
-        (descrsetfunc)0,                /* tp_descr_set */
-        0,                              /* tp_dictoffset */
-        (initproc){tp_init},                   /* tp_init */
-        (allocfunc){tp_alloc},                  /* tp_alloc */
-        (newfunc){tp_new},                    /* tp_new */
-        (freefunc){tp_free},                   /* tp_free */
-        (inquiry)0,                     /* tp_is_gc */
-        0,                              /* tp_bases */
-        0,                              /* tp_mro */
-        0,                              /* tp_cache */
-        0,                              /* tp_subclasses */
-        0,                              /* tp_weaklist */
-        (destructor){tp_del},                 /* tp_del */
-        0,                              /* tp_version_tag */
-#if PY_MAJOR_VERSION >= 3
-        (destructor)0,                  /* tp_finalize */
-#endif
-}};"""
+PyTypeObject {PY_PyTypeObject} = {{+
+PyVarObject_HEAD_INIT(NULL, 0)
+"{PY_module_name}.{cxx_class}",                       /* tp_name */
+sizeof({PY_PyObject}),         /* tp_basicsize */
+{nullptr},                              /* tp_itemsize */
+/* Methods to implement standard operations */
+(destructor){tp_dealloc},                 /* tp_dealloc */
+(printfunc){tp_print},                   /* tp_print */
+(getattrfunc){tp_getattr},                 /* tp_getattr */
+(setattrfunc){tp_setattr},                 /* tp_setattr */
+0#if PY_MAJOR_VERSION >= 3
+{nullptr},                               /* tp_reserved */
+0#else
+(cmpfunc){tp_compare},                     /* tp_compare */
+0#endif
+(reprfunc){tp_repr},                    /* tp_repr */
+/* Method suites for standard classes */
+{nullptr},                              /* tp_as_number */
+{nullptr},                              /* tp_as_sequence */
+{nullptr},                              /* tp_as_mapping */
+/* More standard operations (here for binary compatibility) */
+(hashfunc){tp_hash},                    /* tp_hash */
+(ternaryfunc){tp_call},                 /* tp_call */
+(reprfunc){tp_str},                    /* tp_str */
+(getattrofunc){tp_getattro},                /* tp_getattro */
+(setattrofunc){tp_setattro},                /* tp_setattro */
+/* Functions to access object as input/output buffer */
+{nullptr},                              /* tp_as_buffer */
+/* Flags to define presence of optional/expanded features */
+Py_TPFLAGS_DEFAULT,             /* tp_flags */
+{cxx_class}__doc__,         /* tp_doc */
+/* Assigned meaning in release 2.0 */
+/* call function for all accessible objects */
+(traverseproc){nullptr},                /* tp_traverse */
+/* delete references to contained objects */
+(inquiry){nullptr},                     /* tp_clear */
+/* Assigned meaning in release 2.1 */
+/* rich comparisons */
+(richcmpfunc){tp_richcompare},                 /* tp_richcompare */
+/* weak reference enabler */
+{nullptr},                              /* tp_weaklistoffset */
+/* Added in release 2.2 */
+/* Iterators */
+(getiterfunc){nullptr},                 /* tp_iter */
+(iternextfunc){nullptr},                /* tp_iternext */
+/* Attribute descriptor and subclassing stuff */
+{tp_methods},                             /* tp_methods */
+{nullptr},                              /* tp_members */
+{tp_getset},                             /* tp_getset */
+{nullptr},                              /* tp_base */
+{nullptr},                              /* tp_dict */
+(descrgetfunc){nullptr},                /* tp_descr_get */
+(descrsetfunc){nullptr},                /* tp_descr_set */
+{nullptr},                              /* tp_dictoffset */
+(initproc){tp_init},                   /* tp_init */
+(allocfunc){tp_alloc},                  /* tp_alloc */
+(newfunc){tp_new},                    /* tp_new */
+(freefunc){tp_free},                   /* tp_free */
+(inquiry){nullptr},                     /* tp_is_gc */
+{nullptr},                              /* tp_bases */
+{nullptr},                              /* tp_mro */
+{nullptr},                              /* tp_cache */
+{nullptr},                              /* tp_subclasses */
+{nullptr},                              /* tp_weaklist */
+(destructor){tp_del},                 /* tp_del */
+{nullptr},                              /* tp_version_tag */
+0#if PY_MAJOR_VERSION >= 3
+(destructor){nullptr},                  /* tp_finalize */
+0#endif
+-}};"""
 
 
 module_begin = """
@@ -1746,40 +1752,40 @@ PyInit_{PY_module_name}(void)
 #else
 init{PY_module_name}(void)
 #endif
-{{
-    PyObject *m = NULL;
-    const char * error_name = "{library_lower}.Error";
+{{+
+PyObject *m = NULL;
+const char * error_name = "{library_lower}.Error";
 """
 
 module_middle = """
 
-    /* Create the module and add the functions */
-#if PY_MAJOR_VERSION >= 3
-    m = PyModule_Create(&moduledef);
-#else
-    m = Py_InitModule4("{PY_module_name}", {PY_prefix}methods,
-                       {PY_prefix}_doc__,
-                       (PyObject*)NULL,PYTHON_API_VERSION);
-#endif
-    if (m == NULL)
-        return RETVAL;
-    struct module_state *st = GETSTATE(m);
+/* Create the module and add the functions */
+0#if PY_MAJOR_VERSION >= 3
+m = PyModule_Create(&moduledef);
+0#else
+m = Py_InitModule4("{PY_module_name}", {PY_prefix}methods,\t
++{PY_prefix}_doc__,
+(PyObject*)NULL,PYTHON_API_VERSION);
+0#endif
+-if (m == NULL)
++return RETVAL;-
+struct module_state *st = GETSTATE(m);
 """
 
 module_middle2 = """
-    {PY_prefix}error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
-    if ({PY_prefix}error_obj == NULL)
-        return RETVAL;
-    st->error = {PY_prefix}error_obj;
-    PyModule_AddObject(m, "Error", st->error);
+{PY_prefix}error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
+if ({PY_prefix}error_obj == NULL)
++return RETVAL;-
+st->error = {PY_prefix}error_obj;
+PyModule_AddObject(m, "Error", st->error);
 """
 
 module_end = """
-    /* Check for errors */
-    if (PyErr_Occurred())
-        Py_FatalError("can't initialize module {PY_module_name}");
-    return RETVAL;
-}}
+/* Check for errors */
+if (PyErr_Occurred())
++Py_FatalError("can't initialize module {PY_module_name}");-
+return RETVAL;
+-}}
 """
 
 

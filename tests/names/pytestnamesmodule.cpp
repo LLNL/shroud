@@ -300,8 +300,8 @@ inittestnames(void)
     PyObject *m = NULL;
     const char * error_name = "testnames.Error";
 
-// splicer begin C_init_locals
-// splicer end C_init_locals
+    // splicer begin C_init_locals
+    // splicer end C_init_locals
 
 
     /* Create the module and add the functions */
@@ -309,15 +309,15 @@ inittestnames(void)
     m = PyModule_Create(&moduledef);
 #else
     m = Py_InitModule4("testnames", PY_methods,
-                       PY__doc__,
-                       (PyObject*)NULL,PYTHON_API_VERSION);
+        PY__doc__,
+        (PyObject*)NULL,PYTHON_API_VERSION);
 #endif
     if (m == NULL)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
 
-// Names
+    // Names
     PY_Names_Type.tp_new   = PyType_GenericNew;
     PY_Names_Type.tp_alloc = PyType_GenericAlloc;
     if (PyType_Ready(&PY_Names_Type) < 0)
@@ -326,7 +326,7 @@ inittestnames(void)
     PyModule_AddObject(m, "Names", (PyObject *)&PY_Names_Type);
 
 
-// Names2
+    // Names2
     PY_Names2_Type.tp_new   = PyType_GenericNew;
     PY_Names2_Type.tp_alloc = PyType_GenericAlloc;
     if (PyType_Ready(&PY_Names2_Type) < 0)
@@ -335,7 +335,7 @@ inittestnames(void)
     PyModule_AddObject(m, "Names2", (PyObject *)&PY_Names2_Type);
 
 
-// enumeration Color
+    // enumeration Color
     PyModule_AddIntConstant(m, "RED", RED);
     PyModule_AddIntConstant(m, "BLUE", BLUE);
     PyModule_AddIntConstant(m, "WHITE", WHITE);
@@ -346,8 +346,8 @@ inittestnames(void)
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);
 
-// splicer begin C_init_body
-// splicer end C_init_body
+    // splicer begin C_init_body
+    // splicer end C_init_body
 
     /* Check for errors */
     if (PyErr_Occurred())
