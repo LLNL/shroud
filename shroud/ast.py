@@ -641,6 +641,7 @@ class EnumNode(AstNode):
         self.decl = decl
         ast = declast.check_enum(decl)
         self.ast = ast
+        self.name = ast.name
 
         # format for enum
         fmt_enum = self.fmtdict
@@ -669,6 +670,7 @@ class EnumNode(AstNode):
             fmtmembers[member.name] = fmt
         self._fmtmembers = fmtmembers
 
+        typemap.create_enum_typedef(self)
 
 ######################################################################
 
@@ -745,7 +747,8 @@ def add_enums(parent, enums):
                 raise RuntimeError('Missing required decl field for enums')
             decl = d['decl']
             del d['decl']
-            parent.add_enum(decl, parentoptions=options, **d)
+            enum_node = parent.add_enum(decl, parentoptions=options, **d)
+            declast.add_type(enum_node.name)
 
 def add_functions(parent, functions):
     """ Add functions from list 'functions'.
@@ -818,7 +821,7 @@ def create_library_from_dictionary(node):
                 orig = def_types.get(copy_type, None)
                 if not orig:
                     raise RuntimeError(
-                        "No type for typedef {}".format(copy_type))
+                        "No type for typedef {} while defining {}".format(copy_type, key))
                 def_types[key] = typemap.Typedef(key)
                 def_types[key].update(def_types[copy_type]._to_dict())
 
@@ -830,6 +833,9 @@ def create_library_from_dictionary(node):
 
     clean_dictionary(node)
     library = LibraryNode(**node)
+
+    if 'enums' in node:
+        add_enums(library, node['enums'])
 
     if 'classes' in node:
         classes = node['classes']
@@ -854,9 +860,6 @@ def create_library_from_dictionary(node):
                 add_functions(clsnode, cls['methods'])
             elif 'functions' in cls:
                 add_functions(clsnode, cls['functions'])
-
-    if 'enums' in node:
-        add_enums(library, node['enums'])
 
     if 'functions' in node:
         add_functions(library, node['functions'])

@@ -119,7 +119,7 @@ def tokenize(s):
 
 
 def add_type(name):
-    """Add a user type (typedef, class) to the parser.
+    """Add a user type (typedef, enum, class) to the parser.
     """
     type_specifier.add(name)
 

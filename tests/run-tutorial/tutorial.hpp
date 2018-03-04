@@ -106,6 +106,8 @@ TypeID typefunc(TypeID arg);
 
 EnumTypeID enumfunc(EnumTypeID arg);
 
+Color colorfunc(Color arg);
+
 void getMinMax(int &min, int &max);
 
 const std::string& LastFunctionCalled();

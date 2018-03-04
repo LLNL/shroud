@@ -236,6 +236,7 @@ class ToDict(visitor.Visitor):
 
     def visit_EnumNode(self, node):
         d = dict(
+            name=node.name,
             ast=self.visit(node.ast),
             decl=node.decl,
             format=self.visit(node.fmtdict),

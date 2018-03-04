@@ -216,6 +216,12 @@ EnumTypeID enumfunc(EnumTypeID arg)
     }
 }
 
+Color colorfunc(Color arg)
+{
+    last_function_called = "colorfunc";
+    return RED;
+}
+
 void getMinMax(int &min, int &max)
 {
   min = -1;

@@ -73,6 +73,7 @@
                             "enum_upper": "DIRECTION", 
                             "namespace_scope": "tutorial::\tClass1::"
                         }, 
+                        "name": "DIRECTION", 
                         "options": {}
                     }
                 ], 
@@ -752,6 +753,7 @@
                     "enum_name": "Color", 
                     "enum_upper": "COLOR"
                 }, 
+                "name": "Color", 
                 "options": {
                     "bar": 4
                 }
@@ -1613,7 +1615,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 48, 
+                "_PTR_F_C_index": 49, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtl": {
@@ -1820,7 +1822,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 48, 
+                "_function_index": 49, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -2160,7 +2162,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 49, 
+                "_function_index": 50, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -2265,8 +2267,8 @@
             }, 
             {
                 "_PTR_C_CXX_index": 13, 
-                "_PTR_F_C_index": 49, 
-                "_function_index": 50, 
+                "_PTR_F_C_index": 50, 
+                "_function_index": 51, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -2375,7 +2377,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 38, 
+                "_function_index": 39, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -2454,7 +2456,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 39, 
+                "_function_index": 40, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -2526,8 +2528,8 @@
             }, 
             {
                 "_default_funcs": [
-                    38, 
-                    39
+                    39, 
+                    40
                 ], 
                 "_fmtargs": {
                     "arg1": {
@@ -2717,7 +2719,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 51, 
+                "_PTR_F_C_index": 52, 
                 "_cxx_overload": [
                     15, 
                     16
@@ -2845,7 +2847,7 @@
                         }
                     }
                 }, 
-                "_function_index": 51, 
+                "_function_index": 52, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -3075,7 +3077,7 @@
                         }
                     }
                 }, 
-                "_function_index": 40, 
+                "_function_index": 41, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -3155,7 +3157,7 @@
                         }
                     }
                 }, 
-                "_function_index": 41, 
+                "_function_index": 42, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -3264,7 +3266,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 42, 
+                "_function_index": 43, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -3324,7 +3326,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 43, 
+                "_function_index": 44, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -3474,7 +3476,7 @@
             }, 
             {
                 "_PTR_F_C_index": 19, 
-                "_function_index": 60, 
+                "_function_index": 61, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3530,7 +3532,7 @@
             }, 
             {
                 "_PTR_F_C_index": 19, 
-                "_function_index": 61, 
+                "_function_index": 62, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3634,7 +3636,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 52, 
+                "_PTR_F_C_index": 53, 
                 "_cxx_overload": [
                     20, 
                     21
@@ -3791,7 +3793,7 @@
                     20, 
                     21
                 ], 
-                "_function_index": 62, 
+                "_function_index": 63, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3871,7 +3873,7 @@
                     20, 
                     21
                 ], 
-                "_function_index": 63, 
+                "_function_index": 64, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3982,7 +3984,7 @@
                         }
                     }
                 }, 
-                "_function_index": 52, 
+                "_function_index": 53, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -4093,7 +4095,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 44, 
+                "_function_index": 45, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4205,7 +4207,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 45, 
+                "_function_index": 46, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4295,8 +4297,8 @@
                     23
                 ], 
                 "_default_funcs": [
-                    44, 
-                    45
+                    45, 
+                    46
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -4578,7 +4580,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 46, 
+                "_function_index": 47, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4713,7 +4715,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 47, 
+                "_function_index": 48, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4812,8 +4814,8 @@
                     23
                 ], 
                 "_default_funcs": [
-                    46, 
-                    47
+                    47, 
+                    48
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -5349,6 +5351,135 @@
             }, 
             {
                 "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "arg", 
+                            "cxx_decl": "tutorial::\tColor SHCXX_arg", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "tutorial::\tColor", 
+                            "cxx_val": "static_cast<tutorial::\tColor>(arg)", 
+                            "cxx_var": "SHCXX_arg"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg", 
+                            "f_var": "arg"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 1)", 
+                            "c_var_len": "Larg", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "tutorial::\tColor", 
+                            "cxx_var": "arg", 
+                            "lua_var": "SH_Lua_arg"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int arg", 
+                            "c_ptr": "", 
+                            "c_type": "int", 
+                            "c_var": "arg", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "tutorial::\tColor SH_arg", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "tutorial::\tColor", 
+                            "cxx_val": "static_cast<tutorial::\tColor>(arg)", 
+                            "cxx_var": "SH_arg", 
+                            "py_var": "SHPy_arg"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_rv_decl": "int SHC_rv", 
+                        "c_val": "static_cast<int>(SHCXX_rv)", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtl": {
+                        "c_var": "static_cast<int>(SHCXX_rv)", 
+                        "cxx_addr": "&", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_deref": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "_function_index": 26, 
+                "ast": {
+                    "attrs": {}, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "colorfunc", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "Color"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "Color"
+                    ]
+                }, 
+                "decl": "Color colorfunc(Color arg);", 
+                "declgen": "Color colorfunc(Color arg +intent(in)+value)", 
+                "format": {
+                    "C_call_code": "tutorial::\tColor SHCXX_rv =\t tutorial::\tcolorfunc(\tSHCXX_arg);", 
+                    "C_call_list": "SHCXX_arg", 
+                    "C_name": "TUT_colorfunc", 
+                    "C_post_call": "int SHC_rv = static_cast<int>(SHCXX_rv);", 
+                    "C_pre_call": "tutorial::\tColor SHCXX_arg = static_cast<tutorial::\tColor>(arg);", 
+                    "C_prototype": "int arg", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int", 
+                    "F_C_call": "c_colorfunc", 
+                    "F_C_name": "colorfunc", 
+                    "F_arg_c_call": "arg", 
+                    "F_arguments": "arg", 
+                    "F_call_code": "SHT_rv = c_colorfunc(arg)", 
+                    "F_name_function": "colorfunc", 
+                    "F_name_generic": "colorfunc", 
+                    "F_name_impl": "colorfunc", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "LUA_name": "colorfunc", 
+                    "LUA_name_impl": "l_colorfunc", 
+                    "PY_name_impl": "PY_colorfunc", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "tutorial::\tColor SHCXX_rv", 
+                    "function_name": "colorfunc", 
+                    "underscore_name": "colorfunc"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
                     "max": {
                         "fmtc": {
                             "c_const": "", 
@@ -5408,7 +5539,7 @@
                         }
                     }
                 }, 
-                "_function_index": 26, 
+                "_function_index": 27, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5542,7 +5673,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 27, 
+                "_function_index": 28, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5618,7 +5749,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 28, 
+                "_function_index": 29, 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -5688,7 +5819,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 29, 
+                "_function_index": 30, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5739,8 +5870,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 53, 
-                "_function_index": 30, 
+                "_PTR_F_C_index": 54, 
+                "_function_index": 31, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5799,7 +5930,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 30, 
+                "_PTR_C_CXX_index": 31, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5826,7 +5957,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 53, 
+                "_function_index": 54, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -5890,8 +6021,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 54, 
-                "_function_index": 31, 
+                "_PTR_F_C_index": 55, 
+                "_function_index": 32, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -5949,7 +6080,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 31, 
+                "_PTR_C_CXX_index": 32, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -5968,7 +6099,7 @@
                         }
                     }
                 }, 
-                "_function_index": 54, 
+                "_function_index": 55, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -6032,8 +6163,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 55, 
-                "_function_index": 32, 
+                "_PTR_F_C_index": 56, 
+                "_function_index": 33, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -6091,7 +6222,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 32, 
+                "_PTR_C_CXX_index": 33, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -6110,7 +6241,7 @@
                         }
                     }
                 }, 
-                "_function_index": 55, 
+                "_function_index": 56, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -6174,8 +6305,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 56, 
-                "_function_index": 33, 
+                "_PTR_F_C_index": 57, 
+                "_function_index": 34, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -6238,7 +6369,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 33, 
+                "_PTR_C_CXX_index": 34, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -6266,7 +6397,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 56, 
+                "_function_index": 57, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -6335,8 +6466,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 57, 
-                "_function_index": 34, 
+                "_PTR_F_C_index": 58, 
+                "_function_index": 35, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -6402,7 +6533,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 34, 
+                "_PTR_C_CXX_index": 35, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -6422,7 +6553,7 @@
                         }
                     }
                 }, 
-                "_function_index": 57, 
+                "_function_index": 58, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -6492,8 +6623,8 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 58, 
-                "_function_index": 35, 
+                "_PTR_F_C_index": 59, 
+                "_function_index": 36, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -6554,7 +6685,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 35, 
+                "_PTR_C_CXX_index": 36, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -6574,7 +6705,7 @@
                         }
                     }
                 }, 
-                "_function_index": 58, 
+                "_function_index": 59, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -6680,7 +6811,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 36, 
+                "_function_index": 37, 
                 "ast": {
                     "attrs": {}, 
                     "const": false, 
@@ -6778,7 +6909,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 59, 
+                "_PTR_F_C_index": 60, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
@@ -6804,7 +6935,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 37, 
+                "_function_index": 38, 
                 "ast": {
                     "attrs": {}, 
                     "const": true, 
@@ -6858,7 +6989,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 37, 
+                "_PTR_C_CXX_index": 38, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -6885,7 +7016,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 59, 
+                "_function_index": 60, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {}, 
@@ -7074,6 +7205,44 @@
                     ]
                 }
             }
+        }, 
+        "Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PY_format": "i", 
+            "c_to_cxx": "static_cast<tutorial::\tColor>({c_var})", 
+            "c_type": "int", 
+            "cxx_to_c": "static_cast<int>({cxx_var})", 
+            "cxx_type": "tutorial::\tColor", 
+            "f_cast": "int({f_var}, C_INT)", 
+            "f_kind": "C_INT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            }, 
+            "f_type": "integer(C_INT)"
+        }, 
+        "DIRECTION": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PY_format": "i", 
+            "c_to_cxx": "static_cast<tutorial::\tClass1::DIRECTION>({c_var})", 
+            "c_type": "int", 
+            "cxx_to_c": "static_cast<int>({cxx_var})", 
+            "cxx_type": "tutorial::\tClass1::DIRECTION", 
+            "f_cast": "int({f_var}, C_INT)", 
+            "f_kind": "C_INT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            }, 
+            "f_type": "integer(C_INT)"
         }, 
         "EnumTypeID": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 

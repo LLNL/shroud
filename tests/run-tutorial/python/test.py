@@ -70,6 +70,9 @@ class Tutorial(unittest.TestCase):
         self.assertEqual(1, tutorial.BLUE)
         self.assertEqual(2, tutorial.WHITE)
 
+        # pass and return enumeration
+        self.assertEqual(tutorial.RED, tutorial.colorfunc(tutorial.BLUE))
+
     def test_enum_Direction(self):
         self.assertEqual(2, tutorial.Class1.UP)
         self.assertEqual(3, tutorial.Class1.DOWN)

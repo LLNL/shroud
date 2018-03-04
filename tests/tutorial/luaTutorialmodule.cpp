@@ -431,6 +431,18 @@ static int l_enumfunc(lua_State *L)
     // splicer end function.enumfunc
 }
 
+// Color colorfunc(Color arg +intent(in)+value)
+static int l_colorfunc(lua_State *L)
+{
+    // splicer begin function.colorfunc
+    tutorial::Color arg = static_cast<tutorial::
+        Color>(lua_tointeger(L, 1));
+    tutorial::Color SHCXX_rv = tutorial::colorfunc(arg);
+    lua_pushinteger(L, static_cast<int>(SHCXX_rv));
+    return 1;
+    // splicer end function.colorfunc
+}
+
 // const std::string & LastFunctionCalled() +len(30)
 static int l_last_function_called(lua_State *L)
 {
@@ -458,6 +470,7 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"overload1", l_overload1},
     {"typefunc", l_typefunc},
     {"enumfunc", l_enumfunc},
+    {"colorfunc", l_colorfunc},
     {"LastFunctionCalled", l_last_function_called},
     // splicer begin register
     // splicer end register

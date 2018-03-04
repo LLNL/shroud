@@ -619,6 +619,39 @@ PY_enumfunc(
 // splicer end function.enumfunc
 }
 
+static char PY_colorfunc__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_colorfunc(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// Color colorfunc(Color arg +intent(in)+value)
+// splicer begin function.colorfunc
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:colorfunc",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return NULL;
+
+    // post_parse
+    tutorial::Color SH_arg = static_cast<tutorial::Color>(arg);
+
+    tutorial::Color SHCXX_rv = tutorial::colorfunc(SH_arg);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.colorfunc
+}
+
 static char PY_getMinMax__doc__[] =
 "documentation"
 ;
@@ -855,6 +888,8 @@ static PyMethodDef PY_methods[] = {
     PY_typefunc__doc__},
 {"enumfunc", (PyCFunction)PY_enumfunc, METH_VARARGS|METH_KEYWORDS,
     PY_enumfunc__doc__},
+{"colorfunc", (PyCFunction)PY_colorfunc, METH_VARARGS|METH_KEYWORDS,
+    PY_colorfunc__doc__},
 {"getMinMax", (PyCFunction)PY_getMinMax, METH_NOARGS,
     PY_getMinMax__doc__},
 {"useclass", (PyCFunction)PY_useclass, METH_VARARGS|METH_KEYWORDS,

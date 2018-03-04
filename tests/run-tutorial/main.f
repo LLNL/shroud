@@ -84,6 +84,7 @@ contains
 
   subroutine test_enums
     ! test values of enumerations
+    integer(C_INT) rv_int
 
     call set_case_name("test_enums")
 
@@ -95,6 +96,9 @@ contains
     call assert_equals(3, class1_direction_down)
     call assert_equals(100, class1_direction_left)
     call assert_equals(101, class1_direction_right)
+
+    rv_int = colorfunc(color_BLUE)
+    call assert_true(rv_int .eq. color_RED)
 
   end subroutine test_enums
 
