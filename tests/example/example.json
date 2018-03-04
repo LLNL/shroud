@@ -8301,6 +8301,7 @@
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type", 
             "PY_PyObject_template": "{PY_prefix}{cxx_class}", 
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type", 
+            "PY_enum_member_getter_template": "{PY_prefix}{class_prefix}{enum_name}_{enum_member_name}", 
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}", 
             "PY_helper_filename_template": "py{library}helper.{PY_impl_filename_suffix}", 
             "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}", 

@@ -127,6 +127,8 @@ class Wrapp(util.WrapperMixin):
         self.enum_impl = []
         self.PyMethodBody = []
         self.PyMethodDef = []
+        self.PyGetSetBody = []
+        self.PyGetSetDef = []
 
     def wrap_library(self):
         newlibrary = self.newlibrary
@@ -229,6 +231,12 @@ class Wrapp(util.WrapperMixin):
         self._pop_splicer('enums')
 
     def wrap_enum(self, node, cls):
+        """Wrap an enumeration.
+        If module, use PyModule_AddIntConstant.
+        If class, create a descriptor.
+        Without a setter, it will be read-only.
+        """
+        options = node.options
         fmt_enum = node.fmtdict
         fmtmembers = node._fmtmembers
 
@@ -244,6 +252,29 @@ class Wrapp(util.WrapperMixin):
                 append_format(output,
                               '    PyModule_AddIntConstant(m, "{enum_member_name}",'
                               ' {namespace_scope}{enum_member_name});', fmt_id)
+        else:
+            for member in ast.members:
+                fmt_id = fmtmembers[member.name]
+                fmt_id.PY_enum_member_getter =  wformat(
+                    options.PY_enum_member_getter_template, fmt_id)
+                fmt_id.PY_enum_member_setter = 'NULL'  # read-only
+
+                append_format(self.PyGetSetBody,
+                              '\nstatic PyObject *'
+                              '{PY_enum_member_getter}('
+                              '{PY_PyObject} *SHROUD_UNUSED({PY_param_self}),'
+                              '\t void *SHROUD_UNUSED(closure))\n'
+                              '{{+\nstatic PyObject *rv = PyInt_FromLong('
+                              '{namespace_scope}{enum_member_name});\n'
+                              'Py_INCREF(rv);\nreturn rv;\n'
+                              '\n-}}', fmt_id)
+                
+                self.PyGetSetDef.append(
+                    wformat('{{"{enum_member_name}",\t '
+                            '(getter){PY_enum_member_getter},\t '
+                            '(setter){PY_enum_member_setter},\t '
+                            'NULL, '               # doc
+                            'NULL}},', fmt_id))    # closure
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
@@ -1233,6 +1264,18 @@ return 1;""", fmt)
         self._create_splicer('after_methods', output)
         self._pop_splicer('impl')
 
+        output.extend(self.PyGetSetBody)
+        if self.PyGetSetDef:
+            fmt_type['tp_getset'] = wformat('{PY_prefix}{cxx_class}_getset', fmt)
+            output.append(
+                wformat('\nstatic PyGetSetDef {tp_getset}[] = {{+', fmt_type))
+            output.extend(self.PyGetSetDef)
+            self._create_splicer('PyGetSetDef', output)
+            output.append('{NULL}            /* sentinel */')
+            output.append('-};')
+        else:
+            fmt_type['tp_getset'] = '0'
+
         fmt_type['tp_methods'] = wformat('{PY_prefix}{cxx_class}_methods', fmt)
         output.append(
             wformat('static PyMethodDef {tp_methods}[] = {{+', fmt_type))
@@ -1501,7 +1544,7 @@ typenames = [
     'getattro', 'setattro',
     'repr', 'hash', 'call', 'str',
     'init', 'alloc', 'new', 'free', 'del',
-    'richcompare'
+    'richcompare',
 ]
 
 
@@ -1631,7 +1674,7 @@ PyTypeObject {PY_PyTypeObject} = {{
         /* Attribute descriptor and subclassing stuff */
         {tp_methods},                             /* tp_methods */
         0,                              /* tp_members */
-        0,                             /* tp_getset */
+        {tp_getset},                             /* tp_getset */
         0,                              /* tp_base */
         0,                              /* tp_dict */
         (descrgetfunc)0,                /* tp_descr_get */

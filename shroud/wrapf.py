@@ -283,8 +283,7 @@ class Wrapf(util.WrapperMixin):
 
     def wrap_enum(self, cls, node):
         """Wrap an enumeration.
-        This largly echo the C++ code
-        For classes, it adds prefixes.
+        Create an integer parameter for each member.
         """
         options = node.options
         ast = node.ast

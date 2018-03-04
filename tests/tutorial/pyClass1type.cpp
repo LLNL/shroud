@@ -193,6 +193,55 @@ PY_Class1_tp_init(
 }
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods
+
+static PyObject *PY_class1_DIRECTION_UP(PY_Class1 *SHROUD_UNUSED(self),
+    void *SHROUD_UNUSED(closure))
+{
+    static PyObject *rv = PyInt_FromLong(tutorial::Class1::UP);
+    Py_INCREF(rv);
+    return rv;
+
+}
+
+static PyObject *PY_class1_DIRECTION_DOWN(PY_Class1 *SHROUD_UNUSED(self),
+    void *SHROUD_UNUSED(closure))
+{
+    static PyObject *rv = PyInt_FromLong(tutorial::Class1::DOWN);
+    Py_INCREF(rv);
+    return rv;
+
+}
+
+static PyObject *PY_class1_DIRECTION_LEFT(PY_Class1 *SHROUD_UNUSED(self),
+    void *SHROUD_UNUSED(closure))
+{
+    static PyObject *rv = PyInt_FromLong(tutorial::Class1::LEFT);
+    Py_INCREF(rv);
+    return rv;
+
+}
+
+static PyObject *PY_class1_DIRECTION_RIGHT(PY_Class1 *SHROUD_UNUSED(self),
+    void *SHROUD_UNUSED(closure))
+{
+    static PyObject *rv = PyInt_FromLong(tutorial::Class1::RIGHT);
+    Py_INCREF(rv);
+    return rv;
+
+}
+
+static PyGetSetDef PY_Class1_getset[] = {
+    {"UP", (getter)PY_class1_DIRECTION_UP, (setter)NULL, NULL, NULL},
+    {"DOWN", (getter)PY_class1_DIRECTION_DOWN, (setter)NULL,
+        NULL, NULL},
+    {"LEFT", (getter)PY_class1_DIRECTION_LEFT, (setter)NULL,
+        NULL, NULL},
+    {"RIGHT", (getter)PY_class1_DIRECTION_RIGHT, (setter)NULL,
+        NULL, NULL},
+    // splicer begin class.Class1.PyGetSetDef
+    // splicer end class.Class1.PyGetSetDef
+    {NULL}            /* sentinel */
+};
 static PyMethodDef PY_Class1_methods[] = {
     {"Method1", (PyCFunction)PY_class1_Method1, METH_NOARGS,
         PY_class1_Method1__doc__},
@@ -256,7 +305,7 @@ PyTypeObject PY_Class1_Type = {
         /* Attribute descriptor and subclassing stuff */
         PY_Class1_methods,                             /* tp_methods */
         0,                              /* tp_members */
-        0,                             /* tp_getset */
+        PY_Class1_getset,                             /* tp_getset */
         0,                              /* tp_base */
         0,                              /* tp_dict */
         (descrgetfunc)0,                /* tp_descr_get */

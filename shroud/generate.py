@@ -757,6 +757,8 @@ class Namify(object):
         fmt_enum.enum_name = ast.name
         fmt_enum.enum_lower = ast.name.lower()
         fmt_enum.enum_upper = ast.name.upper()
+        if fmt_enum.get('cxx_class', None):
+            fmt_enum.namespace_scope =  fmt_enum.namespace_scope + fmt_enum.cxx_class + '::'
 
         # format for each enum member
         fmtmembers = {}

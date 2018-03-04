@@ -65,10 +65,16 @@ class Tutorial(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
 
-    def test_enum_color(self):
+    def test_enum_Color(self):
         self.assertEqual(0, tutorial.RED)
         self.assertEqual(1, tutorial.BLUE)
         self.assertEqual(2, tutorial.WHITE)
+
+    def Xtest_enum_Direction(self):
+        self.assertEqual(2, tutorial.Class1.UP)
+        self.assertEqual(3, tutorial.Class1.DOWN)
+        self.assertEqual(100, tutorial.Class1.LEFT)
+        self.assertEqual(101, tutorial.Class1.RIGHT)
      
     # test routine A
     def testFunction1(self):
