@@ -88,6 +88,8 @@
             "YAML_type_filename": "default_library_types.yaml", 
             "c_temp": "SHT_", 
             "class_prefix": "", 
+            "class_scope": "", 
+            "cxx_class": "", 
             "function_suffix": "", 
             "library": "default_library", 
             "library_lower": "default_library", 

@@ -28,6 +28,7 @@
                     "PY_type_filename": "pyExClass1type.cpp", 
                     "class_lower": "exclass1", 
                     "class_prefix": "exclass1_", 
+                    "class_scope": "ExClass1::", 
                     "class_upper": "EXCLASS1", 
                     "cxx_class": "ExClass1"
                 }, 
@@ -1803,6 +1804,7 @@
                     "PY_type_filename": "pyExClass2type.cpp", 
                     "class_lower": "exclass2", 
                     "class_prefix": "exclass2_", 
+                    "class_scope": "ExClass2::", 
                     "class_upper": "EXCLASS2", 
                     "cxx_class": "ExClass2"
                 }, 
@@ -4255,6 +4257,7 @@
                     "LUA_userdata_var": "SH_this", 
                     "class_lower": "exclass3", 
                     "class_prefix": "exclass3_", 
+                    "class_scope": "ExClass3::", 
                     "class_upper": "EXCLASS3", 
                     "cxx_class": "ExClass3"
                 }, 
@@ -4421,6 +4424,8 @@
             "YAML_type_filename": "userlibrary_types.yaml", 
             "c_temp": "SHT_", 
             "class_prefix": "", 
+            "class_scope": "", 
+            "cxx_class": "", 
             "function_suffix": "", 
             "library": "UserLibrary", 
             "library_lower": "userlibrary", 

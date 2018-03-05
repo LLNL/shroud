@@ -598,7 +598,7 @@ return 1;""", fmt)
             fmt.PY_used_param_self = True
             if 'static' in ast.storage:
                 ml_flags.append('METH_STATIC')
-                fmt_func.PY_this_call = fmt_func.namespace_scope + fmt_func.cxx_class + '::'
+                fmt_func.PY_this_call = fmt_func.namespace_scope + fmt_func.class_scope
 
         if is_dtor:
             # Added in tp_del from write_tp_func.

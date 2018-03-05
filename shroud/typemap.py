@@ -944,15 +944,28 @@ def create_enum_typedef(node):
     """
     fmt_enum = node.fmtdict
     name = fmt_enum.enum_name
+
     typedef = Typedef.lookup(name)
     if typedef is None:
         inttypedef = Typedef.lookup('int')
         typedef = inttypedef.clone_as(name)
-        typedef.cxx_type = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
+        typedef.cxx_type = util.wformat('{namespace_scope}{class_scope}{enum_name}', fmt_enum)
         typedef.c_to_cxx = util.wformat(
             'static_cast<{namespace_scope}{enum_name}>({{c_var}})', fmt_enum)
         typedef.cxx_to_c = 'static_cast<int>({cxx_var})'
-        Typedef.register(name, typedef)
+        Typedef.register(fmt_enum.class_scope+name, typedef)
+
+    if fmt_enum.class_scope and False:
+        typedef = Typedef.lookup(name)
+        if typedef is None:
+            inttypedef = Typedef.lookup('int')
+            typedef = inttypedef.clone_as(name)
+            print("XXXXXXX", fmt_enum)
+            typedef.cxx_type = util.wformat('{namespace_scope}{class_scope}{enum_name}', fmt_enum)
+            typedef.c_to_cxx = util.wformat(
+                'static_cast<{namespace_scope}{enum_name}>({{c_var}})', fmt_enum)
+            typedef.cxx_to_c = 'static_cast<int>({cxx_var})'
+            Typedef.register(fmt_enum.class_scope+name, typedef)
 
 def create_class_typedef(cls):
     name = cls.name

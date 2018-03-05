@@ -124,6 +124,8 @@ public:
     enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 };
 
+Class1::DIRECTION directionFunc(Class1::DIRECTION arg);
+
 int useclass(const Class1 *arg);
 void getclass(const Class1 **arg);
 const Class1 * getclass2();

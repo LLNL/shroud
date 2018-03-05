@@ -99,6 +99,7 @@
                     "PY_type_filename": "pyClass1type.cpp", 
                     "class_lower": "class1", 
                     "class_prefix": "class1_", 
+                    "class_scope": "Class1::", 
                     "class_upper": "CLASS1", 
                     "cxx_class": "Class1"
                 }, 
@@ -573,6 +574,7 @@
                     "PY_type_filename": "pySingletontype.cpp", 
                     "class_lower": "singleton", 
                     "class_prefix": "singleton_", 
+                    "class_scope": "Singleton::", 
                     "class_upper": "SINGLETON", 
                     "cxx_class": "Singleton", 
                     "namespace_scope": ""
@@ -828,6 +830,8 @@
             "YAML_type_filename": "tutorial_types.yaml", 
             "c_temp": "SHT_", 
             "class_prefix": "", 
+            "class_scope": "", 
+            "cxx_class": "", 
             "function_suffix": "", 
             "library": "Tutorial", 
             "library_lower": "tutorial", 
@@ -7206,6 +7210,25 @@
                 }
             }
         }, 
+        "Class1::DIRECTION": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PY_format": "i", 
+            "c_to_cxx": "static_cast<tutorial::\tClass1::DIRECTION>({c_var})", 
+            "c_type": "int", 
+            "cxx_to_c": "static_cast<int>({cxx_var})", 
+            "cxx_type": "tutorial::\tClass1::Class1::DIRECTION", 
+            "f_cast": "int({f_var}, C_INT)", 
+            "f_kind": "C_INT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            }, 
+            "f_type": "integer(C_INT)"
+        }, 
         "Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
@@ -7216,25 +7239,6 @@
             "c_type": "int", 
             "cxx_to_c": "static_cast<int>({cxx_var})", 
             "cxx_type": "tutorial::\tColor", 
-            "f_cast": "int({f_var}, C_INT)", 
-            "f_kind": "C_INT", 
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            }, 
-            "f_type": "integer(C_INT)"
-        }, 
-        "DIRECTION": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromLong({c_var})", 
-            "PY_format": "i", 
-            "c_to_cxx": "static_cast<tutorial::\tClass1::DIRECTION>({c_var})", 
-            "c_type": "int", 
-            "cxx_to_c": "static_cast<int>({cxx_var})", 
-            "cxx_type": "tutorial::\tClass1::DIRECTION", 
             "f_cast": "int({f_var}, C_INT)", 
             "f_kind": "C_INT", 
             "f_module": {

@@ -14,6 +14,7 @@
                     "F_module_name": "class1_mod", 
                     "class_lower": "class1", 
                     "class_prefix": "class1_", 
+                    "class_scope": "Class1::", 
                     "class_upper": "CLASS1", 
                     "cxx_class": "Class1", 
                     "namespace_scope": "three::\t"
@@ -110,6 +111,7 @@
                     "F_module_name": "class2_mod", 
                     "class_lower": "class2", 
                     "class_prefix": "class2_", 
+                    "class_scope": "Class2::", 
                     "class_upper": "CLASS2", 
                     "cxx_class": "Class2", 
                     "namespace_scope": ""
@@ -366,6 +368,8 @@
             "YAML_type_filename": "default_library_types.yaml", 
             "c_temp": "SHT_", 
             "class_prefix": "", 
+            "class_scope": "", 
+            "cxx_class": "", 
             "function_suffix": "", 
             "library": "default_library", 
             "library_lower": "default_library", 

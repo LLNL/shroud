@@ -462,7 +462,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_func.c_ptr = ' *'
                 fmt_func.c_var = fmt_func.C_this
                 if is_static:
-                    fmt_func.CXX_this_call = fmt_func.namespace_scope + fmt_func.cxx_class + '::'
+                    fmt_func.CXX_this_call = fmt_func.namespace_scope + fmt_func.class_scope
                 else:
                     # 'this' argument
                     rvast = declast.create_this_arg(fmt_func.C_this, cls.name, is_const)

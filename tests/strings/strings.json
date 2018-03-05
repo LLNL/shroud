@@ -105,6 +105,8 @@
             "YAML_type_filename": "strings_types.yaml", 
             "c_temp": "SHT_", 
             "class_prefix": "", 
+            "class_scope": "", 
+            "cxx_class": "", 
             "function_suffix": "", 
             "library": "strings", 
             "library_lower": "strings", 

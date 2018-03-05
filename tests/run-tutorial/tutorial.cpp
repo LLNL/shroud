@@ -267,6 +267,12 @@ bool Class1::equivalent(Class1 const &obj2) const
   return m_flag == obj2.m_flag;
 }
 
+Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
+{
+    last_function_called = "directionFunc";
+    return Class1::RIGHT;
+}
+
 //----------------------------------------------------------------------
 // vector reference as argument.
 // arg+intent(in)

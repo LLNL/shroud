@@ -241,6 +241,8 @@ class LibraryNode(AstNode):
 
             CXX_this = 'SH_this',
             CXX_local = 'SHCXX_',
+            cxx_class='',     # Assume no class
+            class_scope='',
 
             F_C_prefix='c_',
             F_derived_member = 'voidptr',
@@ -395,6 +397,7 @@ class ClassNode(AstNode):
         self.fmtdict = util.Scope(
             parent = parent.fmtdict,
 
+            class_scope = self.name + '::',
             cxx_class = self.name,
             class_lower = self.name.lower(),
             class_upper = self.name.upper(),
@@ -671,6 +674,7 @@ class EnumNode(AstNode):
         self._fmtmembers = fmtmembers
 
         typemap.create_enum_typedef(self)
+        declast.add_type(self.name)
 
 ######################################################################
 
@@ -748,7 +752,6 @@ def add_enums(parent, enums):
             decl = d['decl']
             del d['decl']
             enum_node = parent.add_enum(decl, parentoptions=options, **d)
-            declast.add_type(enum_node.name)
 
 def add_functions(parent, functions):
     """ Add functions from list 'functions'.

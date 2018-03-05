@@ -198,6 +198,8 @@ functions:
   options:
     wrap_lua: False
 
+#- decl: Class1::DIRECTION directionFunc(Class1::DIRECTION arg);
+
 - decl: int useclass(const Class1 *arg1) 
   options:
     wrap_lua: False

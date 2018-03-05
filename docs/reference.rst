@@ -714,6 +714,10 @@ class_prefix
     Defaults to evaluation of *class_prefix_template*.
     Outside of a class, set to empty string.
 
+class_scope
+    Use with name resolution or blank if not in a class.
+    ``{cxx_class}::``
+
 C_prefix
     Prefix for C wrapper functions.
     The prefix helps to ensure unique global names.

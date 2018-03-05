@@ -21,6 +21,7 @@
                     "PY_type_filename": "pyNamestype.cpp", 
                     "class_lower": "names", 
                     "class_prefix": "names_", 
+                    "class_scope": "Names::", 
                     "class_upper": "NAMES", 
                     "cxx_class": "Names"
                 }, 
@@ -143,6 +144,7 @@
                     "PY_type_filename": "pyNames2type.cpp", 
                     "class_lower": "names2", 
                     "class_prefix": "names2_", 
+                    "class_scope": "Names2::", 
                     "class_upper": "NAMES2", 
                     "cxx_class": "Names2"
                 }, 
@@ -309,6 +311,8 @@
             "YAML_type_filename": "testnames_types.yaml", 
             "c_temp": "SHT_", 
             "class_prefix": "", 
+            "class_scope": "", 
+            "cxx_class": "", 
             "function_suffix": "", 
             "library": "testnames", 
             "library_lower": "testnames", 
