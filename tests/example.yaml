@@ -158,7 +158,9 @@ classes:
       format:
          F_string_result_as_arg: name
 
-    - decl: ExClass2 *getRoot()
+# XXX deal with forward declare
+#    - decl: ExClass2 *getRoot()
+    - decl: void *getRoot()
 
     - decl: int  getValue(int value)
       format:

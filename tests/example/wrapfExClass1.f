@@ -392,15 +392,15 @@ contains
         ! splicer end class.ExClass1.method.get_name_arg
     end subroutine exclass1_get_name_arg
 
-    ! ExClass2 * getRoot()
+    ! void * getRoot()
     ! function_index=8
     function exclass1_get_root(obj) &
             result(SHT_rv)
-        use exclass2_mod, only : exclass2
+        use iso_c_binding, only : C_PTR
         class(exclass1) :: obj
-        type(exclass2) :: SHT_rv
+        type(C_PTR) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_root
-        SHT_rv%voidptr = c_exclass1_get_root(obj%voidptr)
+        SHT_rv = c_exclass1_get_root(obj%voidptr)
         ! splicer end class.ExClass1.method.get_root
     end function exclass1_get_root
 

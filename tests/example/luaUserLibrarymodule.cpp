@@ -168,13 +168,13 @@ static int l_exclass1_get_name_arg(lua_State *L)
     // splicer end class.ExClass1.method.getNameArg
 }
 
-// ExClass2 * getRoot()
+// void * getRoot()
 static int l_exclass1_get_root(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getRoot
     l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
         L, 1, "ExClass1.metatable");
-    example::nested::ExClass2 * SHCXX_rv = SH_this->self->getRoot();
+    void * SHCXX_rv = SH_this->self->getRoot();
     PUSH;
     return 1;
     // splicer end class.ExClass1.method.getRoot

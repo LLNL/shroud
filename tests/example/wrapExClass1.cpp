@@ -270,16 +270,14 @@ void AA_exclass1_get_name_arg_bufferify(const AA_exclass1 * self,
 // splicer end class.ExClass1.method.get_name_arg_bufferify
 }
 
-// ExClass2 * getRoot()
+// void * getRoot()
 // function_index=8
-AA_exclass2 * AA_exclass1_get_root(AA_exclass1 * self)
+void * AA_exclass1_get_root(AA_exclass1 * self)
 {
 // splicer begin class.ExClass1.method.get_root
     example::nested::ExClass1 *SH_this = static_cast<example::nested::
         ExClass1 *>(static_cast<void *>(self));
-    example::nested::ExClass2 * SHCXX_rv = SH_this->getRoot();
-    AA_exclass2 * SHC_rv = static_cast<AA_exclass2 *>(
-        static_cast<void *>(SHCXX_rv));
+    void * SHC_rv = SH_this->getRoot();
     return SHC_rv;
 // splicer end class.ExClass1.method.get_root
 }

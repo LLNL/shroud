@@ -250,13 +250,12 @@ PP_exclass1_getRoot(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// ExClass2 * getRoot()
+// void * getRoot()
 // splicer begin class.ExClass1.method.get_root
-    example::nested::ExClass2 * SHCXX_rv = self->obj->getRoot();
+    void * SHC_rv = self->obj->getRoot();
 
     // post_call
-    PP_ExClass2 * SHTPy_rv = PyObject_New(PP_ExClass2, &PP_ExClass2_Type);
-    SHTPy_rv->obj = SHCXX_rv;
+    PyObject * SHTPy_rv = PyCapsule_New(SHC_rv, NULL, NULL);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass1.method.get_root

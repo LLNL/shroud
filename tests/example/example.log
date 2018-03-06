@@ -16,7 +16,7 @@ C method const string & getNameErrorCheck() const
 C method void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_rv)) const
 C method const string & getNameArg() const
 C method void getNameArg(string & name +intent(out)+len(Nname)) const
-C method ExClass2 * getRoot()
+C method void * getRoot()
 C method int getValue(int value +intent(in)+value)
 C method long getValue(long value +intent(in)+value)
 C method void * getAddr()
@@ -94,7 +94,7 @@ C-interface method void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_
 C-interface method const string & getNameArg() const
 C-interface method void getNameArg(string & name +intent(out)+len(Nname)) const
 Fortran method void getNameArg(string & name +intent(out)+len(Nname)) const
-C-interface, Fortran method ExClass2 * getRoot()
+C-interface, Fortran method void * getRoot()
 C-interface, Fortran method int getValue(int value +intent(in)+value)
 C-interface, Fortran method long getValue(long value +intent(in)+value)
 C-interface, Fortran method void * getAddr()
@@ -167,7 +167,7 @@ Python method const string & getName() const +len(aa_exclass1_get_name_length({F
 Python method int GetNameLength() const
 Python method const string & getNameErrorCheck() const
 Python method const string & getNameArg() const
-Python method ExClass2 * getRoot()
+Python method void * getRoot()
 Python method int getValue(int value +intent(in)+value)
 Python method long getValue(long value +intent(in)+value)
 Python method void * getAddr()
@@ -216,7 +216,7 @@ Lua method const string & getName() const +len(aa_exclass1_get_name_length({F_th
 Lua method int GetNameLength() const
 Lua method const string & getNameErrorCheck() const
 Lua method const string & getNameArg() const
-Lua method ExClass2 * getRoot()
+Lua method void * getRoot()
 Lua method int getValue(int value +intent(in)+value)
 Lua method long getValue(long value +intent(in)+value)
 Lua method void * getAddr()

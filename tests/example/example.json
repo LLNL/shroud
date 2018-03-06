@@ -1184,26 +1184,24 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
-                                "c_rv_decl": "AA_exclass2 * SHC_rv", 
-                                "c_val": "\tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_deref": "->", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHC_rv"
                             }, 
                             "fmtl": {
-                                "c_var": "\tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
+                                "c_var": "SHCXX_rv", 
                                 "cxx_addr": "", 
                                 "cxx_deref": "->", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtpy": {
-                                "PyObject": "PP_ExClass2", 
-                                "PyTypeObject": "PP_ExClass2_Type", 
-                                "c_var": "SHCXX_rv", 
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_deref": "->", 
-                                "cxx_var": "SHCXX_rv", 
+                                "cxx_var": "SHC_rv", 
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
@@ -1224,25 +1222,24 @@
                             "func_const": false, 
                             "params": [], 
                             "specifier": [
-                                "ExClass2"
+                                "void"
                             ]
                         }, 
-                        "decl": "ExClass2 *getRoot()", 
-                        "declgen": "ExClass2 * getRoot()", 
+                        "decl": "void *getRoot()", 
+                        "declgen": "void * getRoot()", 
                         "format": {
-                            "C_call_code": "example::nested::\tExClass2 * SHCXX_rv =\t SH_this->getRoot(\t);", 
+                            "C_call_code": "void * SHC_rv =\t SH_this->getRoot(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_root", 
-                            "C_post_call": "AA_exclass2 * SHC_rv = \tstatic_cast<AA_exclass2 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                             "C_pre_call": "example::nested::\tExClass1 *SH_this = \tstatic_cast<example::nested::\tExClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass2 *", 
+                            "C_return_type": "void *", 
                             "F_C_call": "c_exclass1_get_root", 
                             "F_C_name": "c_exclass1_get_root", 
                             "F_arg_c_call": "obj%voidptr", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv%voidptr = c_exclass1_get_root(obj%voidptr)", 
+                            "F_call_code": "SHT_rv = c_exclass1_get_root(obj%voidptr)", 
                             "F_name_function": "get_root", 
                             "F_name_generic": "get_root", 
                             "F_name_impl": "exclass1_get_root", 
@@ -1254,7 +1251,7 @@
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "cxx_rv_decl": "example::nested::\tExClass2 * SHCXX_rv", 
+                            "cxx_rv_decl": "void * SHC_rv", 
                             "function_name": "getRoot", 
                             "underscore_name": "get_root"
                         }, 

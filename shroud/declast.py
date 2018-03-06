@@ -49,6 +49,7 @@ import copy
 import re
 
 from . import typemap
+from . import util
 
 Token = collections.namedtuple('Token', ['typ', 'value', 'line', 'column'])
 
@@ -59,7 +60,10 @@ type_specifier = { 'void', 'bool', 'char', 'short', 'int', 'long', 'float', 'dou
                    'string', 'vector'}
 type_qualifier = { 'const', 'volatile' }
 storage_class = { 'auto', 'register', 'static', 'extern', 'typedef' }
-namespace = { 'std' }
+
+global_symtab = util.Scope(parent=None)
+global_symtab.std = util.Scope(parent=None, string=True, vector=True)
+current_symtab = global_symtab
 
 token_specification = [
     ('REAL',      r'((((\d+[.]\d*)|(\d*[.]\d+))([Ee][+-]?\d+)?)|(\d+[Ee][+-]?\d+))'),
@@ -305,11 +309,12 @@ class Parser(RecursiveDescent):
 
         while more:
             # if self.token.type = 'ID' and  typedef-name
-            if self.token.typ == 'ID' and self.token.value in namespace:
+            if self.token.typ == 'ID' and self.token.value in current_symtab:
                 node.specifier.append(self.nested_namespace())
                 if self.have('LT'):
                     node.attrs['template'] = self.nested_namespace()
                     self.mustbe('GT')
+                more = False
             elif self.token.typ == 'TYPE_SPECIFIER':
                 node.specifier.append(self.token.value)
                 self.info('type-specifier:', self.token.value)
@@ -325,6 +330,9 @@ class Parser(RecursiveDescent):
                 self.next()
             else:
                 more= False
+        if not node.specifier:
+            self.error_msg("Missing type-specifier")
+            
         self.exit('declaration_specifier', need)
         return need
 
