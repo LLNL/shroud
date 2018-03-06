@@ -302,6 +302,9 @@ classes:
        # Need to fix fmt.cxx_deref
        wrap_lua: False
 
+#  - decl: Class1::DIRECTION directionFunc(Class1::DIRECTION arg);
+
+
 ##########
 
 - name: Singleton

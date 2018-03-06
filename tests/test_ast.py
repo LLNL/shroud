@@ -41,12 +41,16 @@
 from __future__ import print_function
 
 from shroud import ast
+from shroud import declast
 from shroud import generate
 
 import unittest
 
 class CheckAst(unittest.TestCase):
 #    maxDiff = None
+
+    def setUp(self):
+        declast.reset_type_specifiers()
 
     def test_a_library1(self):
         """Test LibraryNode"""
@@ -268,3 +272,7 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(len(cls.enums), 0)
         cls.add_enum('enum Color{RED=1,BLUE,WHITE}')
         self.assertEqual(len(cls.enums), 1)
+
+        # parse functions which use the enum
+#        library.add_function('Class1::DIRECTION directionFunc(Class1::DIRECTION arg);')
+

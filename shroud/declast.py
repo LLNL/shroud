@@ -117,6 +117,13 @@ def tokenize(s):
     if pos != len(s):
         raise RuntimeError('Unexpected character %r on line %d' %(s[pos], line))
 
+def reset_type_specifiers():
+    global type_specifier
+    type_specifier = { 'void', 'bool', 'char', 'short', 'int', 'long', 'float', 'double',
+                   'signed', 'unsigned',
+                   'MPI_Comm',
+                   'string', 'vector'}
+
 
 def add_type(name):
     """Add a user type (typedef, enum, class) to the parser.

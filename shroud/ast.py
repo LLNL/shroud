@@ -380,6 +380,10 @@ class ClassNode(AstNode):
 
         self.default_format(parent, format, kwargs)
 
+        # add to parser
+        # XXX ability to forward declare types?
+        declast.add_type(name)
+
     def default_format(self, parent, format, kwargs):
         """Set format dictionary."""
 
@@ -853,7 +857,7 @@ def create_library_from_dictionary(node):
             if 'name' not in cls:
                 raise TypeError("class does not define name")
             clean_dictionary(cls)
-            declast.add_type(cls['name'])
+#            declast.add_type(cls['name'])
 
         for cls in classes:
             clsnode = library.add_class(**cls)

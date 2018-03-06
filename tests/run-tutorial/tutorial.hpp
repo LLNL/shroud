@@ -122,8 +122,11 @@ public:
     bool equivalent(Class1 const &obj2) const;
 
     enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
+
+    DIRECTION directionFunc(Class1::DIRECTION arg);
 };
 
+// Note that this function has the same name as a function in Class1
 Class1::DIRECTION directionFunc(Class1::DIRECTION arg);
 
 int useclass(const Class1 *arg);

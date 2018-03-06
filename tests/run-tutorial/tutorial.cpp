@@ -267,6 +267,12 @@ bool Class1::equivalent(Class1 const &obj2) const
   return m_flag == obj2.m_flag;
 }
 
+Class1::DIRECTION Class1::directionFunc(Class1::DIRECTION arg)
+{
+    last_function_called = "Class1::directionFunc";
+    return Class1::LEFT;
+}
+
 Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
 {
     last_function_called = "directionFunc";
