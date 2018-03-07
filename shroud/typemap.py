@@ -1082,3 +1082,85 @@ def lookup_c_statements(arg):
             cxx_T, c_statements)
         arg_typedef = Typedef.lookup(cxx_T)
     return arg_typedef, c_statements
+
+######################################################################
+
+class Namespace(object):
+    """Create a namespace.
+    """
+    def __init__(self, name, parent=None):
+        self.name = name
+        self.parent = parent
+        if parent:
+            self.symtab = util.Scope(parent.symtab)
+            self.scope = parent.scope + name + '::'
+        else:
+            # global namespace
+            self.symtab = util.Scope(None)
+            self.scope = ''
+        self.using = []   # result of 'using namespace XXX'
+
+    def add_enum(self, name, value):
+        """Add an enum into the namespace.
+        """
+        pass
+        # create_enum_typedef
+
+    def add_class(self, name, value):
+        """Add a class into the namespace.
+        """
+        pass
+        # create_class_typedef
+
+    def add_namespace(self, name):
+        """Add a nested namespace.
+        Return existing namespace or create a new one.
+        """
+        if self.symtab.inlocal(name):
+            ns = self.symtab.get(name)
+        else:
+            ns = Namespace(name, self)
+            setattr(self.symtab, name, ns)
+        return ns
+
+    def add_typedef(self, name):
+        """ XXX only add True for now..."""
+        if self.symtab.inlocal(name):
+            raise RuntimeError("{} alread exists in namespace {}".format(name, self.name))
+        else:
+            setattr(self.symtab, name, True)
+
+    def qualified_lookup(self, name):
+        """Lookup name in this namespace only.
+        """
+        if self.symtab.inlocal(name):
+            return self.symtab.get(name)
+        return None
+
+    def unqualified_lookup(self, name):
+        """Lookup for name going up parents if necessary."""
+        item = self.symtab.get(name, None)
+        if item is not None:
+            return item
+        for ns in self.using:
+            item = ns.unqualified_lookup(name)
+            if item is not None:
+                return item
+
+    def using_directive(self, name):
+        """Implement 'using namespace XXX'
+        """
+        ns = self.qualified_lookup(name)
+        if ns is None:
+            raise RuntimeError("{} not found in namespace".format(name))
+        if ns not in self.using:
+            self.using.append(ns)
+
+
+def create_std_namespace(ns):
+    """Create the std namespace with the types we care about.
+    """
+    std = ns.add_namespace('std')
+    std.add_typedef('string')
+    std.add_typedef('vector')
+    return std

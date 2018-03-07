@@ -221,8 +221,6 @@ class CheckParse(unittest.TestCase):
             ]
         })
 
-
-
     def test_declaration_specifier_error(self):
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("none var1")

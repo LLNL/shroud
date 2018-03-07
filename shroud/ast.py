@@ -124,6 +124,10 @@ class LibraryNode(AstNode):
 
         self.default_format(format, kwargs)
 
+        # add to symbol table
+        self.ns = typemap.Namespace(None)
+        typemap.create_std_namespace(self.ns)
+
     def default_options(self):
         """default options."""
         def_options = util.Scope(
@@ -278,6 +282,7 @@ class LibraryNode(AstNode):
             C_post_call = '',
             function_suffix = '',   # assume no suffix
             namespace_scope = '',
+#            ns_scope = '',    # new
         )
 
         if self.namespace:
@@ -329,6 +334,13 @@ class LibraryNode(AstNode):
         self.eval_template('F_module_name', '_library')
         self.eval_template('F_impl_filename', '_library')
 
+    def add_namespace(self, name, parentoptions=None, **kwargs):
+        """Add an namespace
+        """
+        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
+                             **kwargs)
+        return node
+
     def add_enum(self, decl, parentoptions=None, **kwargs):
         """Add an enumeration.
         """
@@ -351,6 +363,79 @@ class LibraryNode(AstNode):
         clsnode = ClassNode(name, self, **kwargs)
         self.classes.append(clsnode)
         return clsnode
+
+######################################################################
+
+class NamespaceNode(AstNode):
+    def __init__(self, name, parent,
+                 format=None,
+                 options=None,
+                 **kwargs):
+        """Create NamespaceNode.
+
+        parent may be LibraryNode or NamespaceNode.
+        """
+        # From arguments
+        self.name = name
+        self.parent = parent
+
+        # Namespaces do not own enums, functions or classes directly.
+        # Find their owner up the parent chain.
+        owner = parent
+        while owner:
+            if isinstance(owner, NamespaceNode):
+                # skip over nested namespaces
+                owner = owner.parent
+            self.enums = owner.enums
+            self.functions = owner.functions
+            self.classes = owner.classes
+            break
+
+        self.options = util.Scope(parent=parent.options)
+        if options:
+            self.options.update(options, replace=True)
+
+        self.default_format(parent, format, kwargs)
+
+        # add to symbol table
+        self.ns = parent.ns.add_namespace(name)
+
+    def default_format(self, parent, format, kwargs):
+        """Set format dictionary."""
+
+        self.fmtdict = util.Scope(
+            parent = parent.fmtdict,
+
+            ns_scope = self.name + '::',
+#            ns_scope = parent.fmtdict.ns_scope + self.name + '::',
+        )
+
+        fmt_class = self.fmtdict
+        if format:
+            self.fmtdict.update(format, replace=True)
+
+    def add_namespace(self, name, parentoptions=None, **kwargs):
+        """Add an namespace
+        """
+        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
+                             **kwargs)
+        return node
+
+    def add_enum(self, decl, parentoptions=None, **kwargs):
+        """Add an enumeration.
+        """
+        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
+                        **kwargs)
+        self.enums.append(node)
+        return node
+
+    def add_function(self, decl, parentoptions=None, **kwargs):
+        """Add a function.
+        """
+        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
+                               **kwargs)
+        self.functions.append(fcnnode)
+        return fcnnode
 
 ######################################################################
 

@@ -265,7 +265,23 @@ class CheckAst(unittest.TestCase):
         library.add_enum('enum Color{RED=1,BLUE,WHITE}')
         self.assertEqual(len(library.enums), 1)
 
+        # parse functions which use the enum
+        library.add_function('Color directionFunc(Color arg);')
+
     def test_e_enum2(self):
+        """Add an enum to a namespace"""
+        library = ast.LibraryNode()
+        ns = library.add_namespace('ns')
+        self.assertEqual(len(library.enums), 0)
+        self.assertEqual('ns::', ns.fmtdict.ns_scope)
+
+        ns.add_enum('enum Color{RED=1,BLUE,WHITE}')
+        self.assertEqual(len(library.enums), 1)
+
+        # parse global function which use the enum
+#        library.add_function('ns::Color directionFunc(ns::Color arg);')
+
+    def test_e_enum3(self):
         """Add an enum to a class"""
         library = ast.LibraryNode()
         cls = library.add_class('Class1')
