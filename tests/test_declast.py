@@ -167,6 +167,62 @@ class CheckParse(unittest.TestCase):
         s = r.gen_arg_as_c()
         self.assertEqual("char * var1", s)
 
+    def test_type_vector(self):
+        """Test vector declarations
+        """
+        r = declast.check_decl("std::vector<int> var1")
+        s = r.gen_decl()
+        self.assertEqual("std::vector<int> var1", s)
+        self.assertEqual(todict.to_dict(r),{
+            "attrs": {
+                "template": "int"
+            },
+            "const": False,
+            "declarator": {
+                "name": "var1",
+                "pointer": []
+            },
+            "specifier": [
+                "std::vector"
+            ]
+        })
+
+        r = declast.check_decl("std::vector<long long> var1")
+        s = r.gen_decl()
+        self.assertEqual("std::vector<long long> var1", s)
+        self.assertEqual(todict.to_dict(r),{
+            "attrs": {
+                "template": "long long"
+            },
+            "const": False,
+            "declarator": {
+                "name": "var1",
+                "pointer": []
+            },
+            "specifier": [
+                "std::vector"
+            ]
+        })
+
+        r = declast.check_decl("std::vector<std::string> var1")
+        s = r.gen_decl()
+        self.assertEqual("std::vector<std::string> var1", s)
+        self.assertEqual(todict.to_dict(r),{
+            "attrs": {
+                "template": "std::string"
+            },
+            "const": False,
+            "declarator": {
+                "name": "var1",
+                "pointer": []
+            },
+            "specifier": [
+                "std::vector"
+            ]
+        })
+
+
+
     def test_declaration_specifier_error(self):
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("none var1")

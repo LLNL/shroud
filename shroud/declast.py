@@ -244,27 +244,6 @@ class Parser(RecursiveDescent):
         self.exit('parameter_list', str(params))
         return params
 
-    def old_nested_namespace(self):
-        self.enter('nested_namespace')
-        nested = [ self.token.value ]
-        self.next()
-        while self.have('NAMESPACE'):
-            if self.token.typ == 'ID':
-                nested.append(self.token.value)
-                self.next()
-            elif self.token.typ == 'TYPE_SPECIFIER':
-                # This is a bit of a kludge to support both
-                # std::string and string
-                # As if "using std::string"
-                nested.append(self.token.value)
-                self.next()
-            else:
-                raise self.error_msg("Expected ID after namespace {}".
-                                     format('::'.join(nested)))
-        qualified_id = '::'.join(nested)
-        self.exit('nested_namespace', qualified_id)
-        return qualified_id
-
     def nested_namespace(self, scope=None):
         """Found start of namespace.
 
@@ -286,7 +265,7 @@ class Parser(RecursiveDescent):
         self.exit('nested_namespace', qualified_id)
         return qualified_id
 
-    def declaration_specifier(self, node):
+    def class_declaration_specifier(self, node):
         """
         Set attributes on node corresponding to next token
         node - Declaration node.
@@ -299,7 +278,7 @@ class Parser(RecursiveDescent):
 
         Returns True if need declarator after, else False (i.e. ctor or dtor)
         """
-        self.enter('declaration_specifier')
+        self.enter('class_declaration_specifier')
         need = True
         more = True
         if self.have('TILDE'):
@@ -325,6 +304,22 @@ class Parser(RecursiveDescent):
                 more = False
                 need = False
 
+        if more:
+            self.declaration_specifier(node)
+        self.exit('class_declaration_specifier', need)
+        return need
+
+    def declaration_specifier(self, node):
+        """
+        Set attributes on node corresponding to next token
+        node - Declaration node.
+        <declaration-specifier> ::= <storage-class-specifier>
+                                  | <type-specifier>
+                                  | <type-qualifier>
+                                  | (ns_name :: )+ name
+                                  | :: (ns_name :: )+ name    # XXX - todo
+        """
+        more = True
         while more:
             # if self.token.type = 'ID' and  typedef-name
             if self.token.typ == 'ID':
@@ -332,7 +327,9 @@ class Parser(RecursiveDescent):
                 if symbol:
                     node.specifier.append(self.nested_namespace(symbol))
                     if self.have('LT'):
-                        node.attrs['template'] = self.old_nested_namespace()
+                        temp = Declaration()
+                        self.declaration_specifier(temp)
+                        node.attrs['template'] = str(temp)
                         self.mustbe('GT')
                 more = False
             elif self.token.typ == 'TYPE_SPECIFIER':
@@ -353,8 +350,8 @@ class Parser(RecursiveDescent):
         if not node.specifier:
             self.error_msg("Expected TYPE_SPECIFIER, found '{}'".format(self.token.value))
             
-        self.exit('declaration_specifier', need)
-        return need
+        self.exit('declaration_specifier')
+        return
 
     def decl_statement(self):
         """Check for optional semicolon and stray stuff at the end of line.
@@ -375,7 +372,7 @@ class Parser(RecursiveDescent):
         """
         self.enter('declaration')
         node = Declaration()
-        if self.declaration_specifier(node):
+        if self.class_declaration_specifier(node):
             node.declarator = self.declarator()
 
         if self.token.typ == 'LPAREN':     # peek
@@ -753,8 +750,8 @@ class Declaration(Node):
             out.append(' '.join(self.specifier))
         else:
             out.append('int')
-        out.append(' ')
         if self.declarator:
+            out.append(' ')
             out.append(str(self.declarator))
         if self.params is not None:
             out.append('(')
