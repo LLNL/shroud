@@ -56,12 +56,12 @@ Token = collections.namedtuple('Token', ['typ', 'value', 'line', 'column'])
 # https://docs.python.org/3.2/library/re.html#writing-a-tokenizer
 type_specifier = { 'void', 'bool', 'char', 'short', 'int', 'long', 'float', 'double',
                    'signed', 'unsigned',
-                   'MPI_Comm',
-                   'string', 'vector'}
+                   'MPI_Comm'}
 type_qualifier = { 'const', 'volatile' }
 storage_class = { 'auto', 'register', 'static', 'extern', 'typedef' }
 
-global_symtab = util.Scope(parent=None)
+# simulate 'using namespace std'
+global_symtab = util.Scope(parent=None, string=True, vector=True)
 global_symtab.std = util.Scope(parent=None, string=True, vector=True)
 current_symtab = global_symtab
 
@@ -125,8 +125,7 @@ def reset_type_specifiers():
     global type_specifier
     type_specifier = { 'void', 'bool', 'char', 'short', 'int', 'long', 'float', 'double',
                    'signed', 'unsigned',
-                   'MPI_Comm',
-                   'string', 'vector'}
+                   'MPI_Comm'}
 
 
 def add_type(name):
@@ -138,7 +137,8 @@ def add_typemap():
     """Add all types from the typemap to the parser.
     """
     for name in typemap.Typedef._typedict.keys():
-        type_specifier.add(name)
+        if name not in { 'string', 'vector'}:
+            type_specifier.add(name)
 
 #indent = 0
 #def trace(name, indent=0):
@@ -244,11 +244,7 @@ class Parser(RecursiveDescent):
         self.exit('parameter_list', str(params))
         return params
 
-    def nested_namespace(self):
-        """Found start of namespace.
-
-        <nested-namespace> ::= { namespace :: }* identifier
-        """
+    def old_nested_namespace(self):
         self.enter('nested_namespace')
         nested = [ self.token.value ]
         self.next()
@@ -263,7 +259,29 @@ class Parser(RecursiveDescent):
                 nested.append(self.token.value)
                 self.next()
             else:
-                raise self.error_msg("Error in namespace")
+                raise self.error_msg("Expected ID after namespace {}".
+                                     format('::'.join(nested)))
+        qualified_id = '::'.join(nested)
+        self.exit('nested_namespace', qualified_id)
+        return qualified_id
+
+    def nested_namespace(self, scope=None):
+        """Found start of namespace.
+
+        <nested-namespace> ::= { namespace :: }* identifier
+        """
+        self.enter('nested_namespace')
+        nested = [ self.token.value ]
+        self.next()
+        while self.have('NAMESPACE'):
+            # make sure nested scope is a namespaceNode
+            tok = self.mustbe('ID')
+            name = tok.value
+            if not scope.inlocal(name):  # qualified lookup
+                self.error_msg("Symbol '{}' is not in namespace '{}'".
+                               format(name, nested[-1]))
+            scope = scope.get(name)
+            nested.append(name)
         qualified_id = '::'.join(nested)
         self.exit('nested_namespace', qualified_id)
         return qualified_id
@@ -309,11 +327,13 @@ class Parser(RecursiveDescent):
 
         while more:
             # if self.token.type = 'ID' and  typedef-name
-            if self.token.typ == 'ID' and self.token.value in current_symtab:
-                node.specifier.append(self.nested_namespace())
-                if self.have('LT'):
-                    node.attrs['template'] = self.nested_namespace()
-                    self.mustbe('GT')
+            if self.token.typ == 'ID':
+                symbol = current_symtab.get(self.token.value, None)  # unqualified name lookup
+                if symbol:
+                    node.specifier.append(self.nested_namespace(symbol))
+                    if self.have('LT'):
+                        node.attrs['template'] = self.old_nested_namespace()
+                        self.mustbe('GT')
                 more = False
             elif self.token.typ == 'TYPE_SPECIFIER':
                 node.specifier.append(self.token.value)
@@ -331,7 +351,7 @@ class Parser(RecursiveDescent):
             else:
                 more= False
         if not node.specifier:
-            self.error_msg("Missing type-specifier")
+            self.error_msg("Expected TYPE_SPECIFIER, found '{}'".format(self.token.value))
             
         self.exit('declaration_specifier', need)
         return need

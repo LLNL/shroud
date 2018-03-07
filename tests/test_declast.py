@@ -167,6 +167,19 @@ class CheckParse(unittest.TestCase):
         s = r.gen_arg_as_c()
         self.assertEqual("char * var1", s)
 
+    def test_declaration_specifier_error(self):
+        with self.assertRaises(RuntimeError) as context:
+            declast.check_decl("none var1")
+        self.assertTrue("Expected TYPE_SPECIFIER, found 'none'" in str(context.exception))
+
+        with self.assertRaises(RuntimeError) as context:
+            declast.check_decl("std::int var1")
+        self.assertTrue('Expected ID, found TYPE_SPECIFIER' in str(context.exception))
+
+        with self.assertRaises(RuntimeError) as context:
+            declast.check_decl("std::none var1")
+        self.assertTrue("Symbol 'none' is not in namespace 'std'" in str(context.exception))
+
     def test_type_other(self):
         """Test size_t declarations
         """
