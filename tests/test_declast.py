@@ -1059,7 +1059,7 @@ class CheckExpr(unittest.TestCase):
 class CheckEnum(unittest.TestCase):
 
     def setUp(self):
-        declast.create_global_namespace()
+        library = ast.LibraryNode()
 
     def test_enum1(self):
         r = declast.check_enum('enum Color{RED=1,BLUE,WHITE}')
@@ -1077,6 +1077,7 @@ class CheckEnum(unittest.TestCase):
         # enum trailing comma
         r = declast.check_enum('enum Color{RED=1,BLUE,WHITE,}')
         self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))
+
                          
 if __name__ == '__main__':
     unittest.main()

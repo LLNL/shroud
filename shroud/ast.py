@@ -124,14 +124,21 @@ class LibraryNode(AstNode):
 
         self.default_format(format, kwargs)
 
-        self.ns = declast.create_global_namespace()
-
         # namespace
         self.scope = ''
         self.symbols = {}
         self.using = []
+        declast.global_namespace = self
+        self.create_std_names()
 
 ##### namespace behavior
+
+    def create_std_names(self):
+        """Add standard types to the Library."""
+        self.add_typedef('size_t')
+        self.add_typedef('MPI_Comm')
+        create_std_namespace(self)   # add 'std::' to library
+        self.using_directive('std')
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
@@ -398,6 +405,12 @@ class LibraryNode(AstNode):
         self.symbols[name] = node
         return node
 
+    def add_class_forward(self, name):
+        """Forward declare a class."""
+        node = ClassForwardNode(name, self)
+        self.symbols[name] = node
+        return node
+
     def add_typedef(self, name):
         """Add a typedef.
         """
@@ -442,7 +455,6 @@ class NamespaceNode(AstNode):
         self.scope = self.parent.scope + self.name + '::'
         self.symbols = {}
         self.using = []
-        self.ns = parent.ns.add_namespace(name)
 
 ##### namespace behavior
 
@@ -493,6 +505,12 @@ class NamespaceNode(AstNode):
         """
         node = ClassNode(name, self, **kwargs)
         self.classes.append(node)
+        self.symbols[name] = node
+        return node
+
+    def add_class_forward(self, name):
+        """Forward declare a class."""
+        node = ClassForwardNode(name, self)
         self.symbols[name] = node
         return node
 
@@ -562,8 +580,6 @@ class ClassNode(AstNode):
         self.scope = self.typename + '::'
         self.symbols = {}
         typemap.create_class_typedef(self)
-        self.ns = parent.ns
-        self.ns.add_class(self)
 
 ##### namespace behavior
 
@@ -573,7 +589,11 @@ class ClassNode(AstNode):
         """
         return self.symbols.get(name, None)
 
-    # No unqualified lookup on class
+    def unqualified_lookup(self, name):
+        """Look for name in class or its parent."""
+        if name in self.symbols:
+            return self.symbols[name]
+        return self.parent.unqualified_lookup(name)
 
 #####
 
@@ -639,6 +659,22 @@ class ClassNode(AstNode):
                                **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
+
+######################################################################
+
+class ClassForwardNode(AstNode):
+    """Forward declare a class.
+    Used to compute scope.
+    """
+    def __init__(self, name, parent):
+        # From arguments
+        self.name = name
+        self.parent = parent
+
+        # add to namespace
+        self.typename = self.parent.scope + self.name
+        self.scope = self.typename + '::'
+
 
 ######################################################################
 
@@ -723,6 +759,7 @@ class FunctionNode(AstNode):
 
         self.decl = decl
         ast = declast.check_decl(decl,
+                                 namespace=parent,
                                  current_class=cls_name,
                                  template_types=template_types)
         self.ast = ast
@@ -876,9 +913,9 @@ class EnumNode(AstNode):
         self._fmtmembers = fmtmembers
 
         # Add to namespace
-        parent.ns.add_enum(self)
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
+        typemap.create_enum_typedef(self)
         # also 'enum class foo' will alter scope
 
 ######################################################################
@@ -1088,7 +1125,7 @@ def create_library_from_dictionary(node):
             if 'name' not in cls:
                 raise TypeError("class does not define name")
             clean_dictionary(cls)
-            declast.global_namespace.forward_declare_class(cls['name'])
+            library.add_class_forward(cls['name'])
 
         for cls in classes:
             clsnode = library.add_class(**cls)

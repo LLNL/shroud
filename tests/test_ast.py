@@ -62,34 +62,9 @@ class Namespace(unittest.TestCase):
         typ = lib.unqualified_lookup('foo')
         self.assertTrue(typ)
 
-        std = ast.create_std_namespace(lib)
+        std = lib.unqualified_lookup('std')
+        self.assertIsNotNone(std)
         self.assertEqual('std::', std.scope)
-
-        # std::foo
-        typ = std.qualified_lookup('foo')
-        self.assertFalse(typ)
-
-        # namespace std { foo var; }
-        node = std.unqualified_lookup('foo')
-        self.assertTrue(node)
-        self.assertEqual('foo', node.typename)
-        # namespace std { string var; }
-        node = std.unqualified_lookup('string')
-        self.assertTrue(node)
-        self.assertEqual('std::string', node.typename)
-        # string var;
-        typ = lib.unqualified_lookup('string')
-        self.assertFalse(typ)
-
-        # using namespace std;
-        # string var;
-        lib.using_directive('std')
-        node = lib.unqualified_lookup('string')
-        self.assertTrue(node)
-        self.assertEqual('std::string', node.typename)
-
-        lib.using_directive('std')
-        self.assertEqual(1, len(lib.using))
 
         # Non existent names
         node = lib.unqualified_lookup('Nonexistent')
@@ -174,6 +149,16 @@ class Namespace(unittest.TestCase):
         enumx = ns2.add_enum('enum Enumx {}')
         self.assertEqual(class1, ns2.qualified_lookup('Class1'))
         self.assertEqual(enumx, ns2.qualified_lookup('Enumx'))
+
+        # from ns1, try to lookup Enumx
+        node = ns1.unqualified_lookup('Enumx')
+        self.assertIsNone(node)
+        # 'using namespace ns2'
+        self.assertEqual(0, len(ns1.using))
+        node = ns1.using_directive('ns2')
+        self.assertEqual(1, len(ns1.using))
+        self.assertEqual(None, ns1.qualified_lookup('Enumx'))
+        self.assertEqual(enumx, ns1.unqualified_lookup('Enumx'))
 
 
 class CheckAst(unittest.TestCase):

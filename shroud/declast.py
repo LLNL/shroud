@@ -63,23 +63,6 @@ storage_class = { 'auto', 'register', 'static', 'extern', 'typedef' }
 # Just to avoid passing it into each call to check_decl
 global_namespace = None
 
-def create_global_namespace():
-    """Setup global namespace
-    with std namespace and 'using namespace std'.
-    """
-    ns = typemap.Namespace(None)
-
-    # add standard types
-    ns.add_typedef('size_t')
-    ns.add_typedef('MPI_Comm')
-
-    typemap.create_std_namespace(ns)
-    ns.using_directive('std')
-    global global_namespace
-    global_namespace = ns
-    return ns
-
-
 token_specification = [
     ('REAL',      r'((((\d+[.]\d*)|(\d*[.]\d+))([Ee][+-]?\d+)?)|(\d+[Ee][+-]?\d+))'),
     ('INTEGER',   r'\d+'),
@@ -210,7 +193,7 @@ class Parser(RecursiveDescent):
     An abstract-declarator is a declarator without an identifier,
     consisting of one or more pointer, array, or function modifiers.
 
-    namespace = Typedef.Namespace instance
+    namespace - An ast.AstNode subclass.
     """
     def __init__(self, decl, namespace, current_class=None, trace=False):
         self.decl = decl          # declaration to parse
@@ -1019,7 +1002,7 @@ class Declaration(Node):
 def check_decl(decl, namespace=None, current_class=None, template_types=[],trace=False):
     """ parse expr as a declaration, return list/dict result.
 
-    namespace - Typedef.Namespace instance
+    namespace - An ast.AstNode subclass.
     """
     if not namespace:
         # grab global namespace if not passed in.

@@ -111,7 +111,7 @@ class VerifyAttrs(object):
             #    - double
             if argtype not in node.cxx_template:
                 raise RuntimeError("No such type %s: %s" % (
-                        argtype, arg.gen_decl()))
+                        argtype, node.decl))
 
         is_ptr = arg.is_indirect()
         attrs = arg.attrs
