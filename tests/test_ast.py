@@ -49,9 +49,6 @@ import unittest
 class CheckAst(unittest.TestCase):
 #    maxDiff = None
 
-    def setUp(self):
-        declast.reset_type_specifiers()
-
     def test_a_library1(self):
         """Test LibraryNode"""
         library = ast.LibraryNode()

@@ -463,9 +463,10 @@ class ClassNode(AstNode):
 
         self.default_format(parent, format, kwargs)
 
-        # add to parser
-        # XXX ability to forward declare types?
-        declast.add_type(name)
+        # add to namespace
+        typemap.create_class_typedef(self)
+        self.ns = parent.ns
+        self.ns.add_class(name, self)
 
     def default_format(self, parent, format, kwargs):
         """Set format dictionary."""
@@ -760,8 +761,8 @@ class EnumNode(AstNode):
             fmtmembers[member.name] = fmt
         self._fmtmembers = fmtmembers
 
-        typemap.create_enum_typedef(self)
-        declast.add_type(self.name)
+        # Add to namespace
+        parent.ns.add_enum(self)
 
 ######################################################################
 
@@ -890,6 +891,9 @@ def create_library_from_dictionary(node):
     if 'copyright' in node:
         clean_list(node['copyright'])
 
+    clean_dictionary(node)
+    library = LibraryNode(**node)
+
     if 'types' in node:
         types_dict = node['types']
         if not isinstance(types_dict, dict):
@@ -898,7 +902,6 @@ def create_library_from_dictionary(node):
         for key, value in types_dict.items():
             if not isinstance(value, dict):
                 raise TypeError("types '%s' must be a dictionary" % key)
-            declast.add_type(key)   # Add to parser
 
             if 'base' in value:
                 base = value['base']
@@ -920,9 +923,7 @@ def create_library_from_dictionary(node):
             else:
                 def_types[key] = typemap.Typedef(key, **value)
             typemap.typedef_shadow_defaults(def_types[key])
-
-    clean_dictionary(node)
-    library = LibraryNode(**node)
+            declast.global_namespace.add_typedef(key)  # Add to namespace
 
     if 'enums' in node:
         add_enums(library, node['enums'])
@@ -940,7 +941,7 @@ def create_library_from_dictionary(node):
             if 'name' not in cls:
                 raise TypeError("class does not define name")
             clean_dictionary(cls)
-#            declast.add_type(cls['name'])
+            declast.global_namespace.forward_declare_class(cls['name'])
 
         for cls in classes:
             clsnode = library.add_class(**cls)

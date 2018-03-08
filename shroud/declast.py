@@ -55,8 +55,7 @@ Token = collections.namedtuple('Token', ['typ', 'value', 'line', 'column'])
 
 # https://docs.python.org/3.2/library/re.html#writing-a-tokenizer
 type_specifier = { 'void', 'bool', 'char', 'short', 'int', 'long', 'float', 'double',
-                   'signed', 'unsigned',
-                   'MPI_Comm'}
+                   'signed', 'unsigned'}
 type_qualifier = { 'const', 'volatile' }
 storage_class = { 'auto', 'register', 'static', 'extern', 'typedef' }
 
@@ -69,6 +68,11 @@ def create_global_namespace():
     with std namespace and 'using namespace std'.
     """
     ns = typemap.Namespace(None)
+
+    # add standard types
+    ns.add_typedef('size_t')
+    ns.add_typedef('MPI_Comm')
+
     typemap.create_std_namespace(ns)
     ns.using_directive('std')
     global global_namespace
@@ -131,25 +135,6 @@ def tokenize(s):
         mo = get_token(s, pos)
     if pos != len(s):
         raise RuntimeError('Unexpected character %r on line %d' %(s[pos], line))
-
-def reset_type_specifiers():
-    global type_specifier
-    type_specifier = { 'void', 'bool', 'char', 'short', 'int', 'long', 'float', 'double',
-                   'signed', 'unsigned',
-                   'MPI_Comm'}
-
-
-def add_type(name):
-    """Add a user type (typedef, enum, class) to the parser.
-    """
-    type_specifier.add(name)
-
-def add_typemap():
-    """Add all types from the typemap to the parser.
-    """
-    for name in typemap.Typedef._typedict.keys():
-        if name not in { 'string', 'vector'}:
-            type_specifier.add(name)
 
 #indent = 0
 #def trace(name, indent=0):

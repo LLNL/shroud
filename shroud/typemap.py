@@ -1103,16 +1103,31 @@ class Namespace(object):
     def __str__(self):
         return str(self.symtab)
 
-    def add_enum(self, name, value):
+    def add_enum(self, node):
         """Add an enum into the namespace.
         """
-        pass
-        # create_enum_typedef
+        name = node.name
+        if self.symtab.inlocal(name):
+            raise RuntimeError("{} alread exists in namespace {}".format(name, self.name))
+        setattr(self.symtab, name, True)
+        create_enum_typedef(node)
+
+    def forward_declare_class(self, name):
+        """Forward declare a class.
+        If the name already exists, do nothing.
+        """
+        if not self.symtab.inlocal(name):
+            setattr(self.symtab, name, True)
 
     def add_class(self, name, value):
         """Add a class into the namespace.
         """
-        pass
+        if self.symtab.inlocal(name):
+            cls = getattr(self.symtab, name)
+            # If True, then it was forward declared
+            if cls is not True:
+                raise RuntimeError("{} alread exists in namespace {}".format(name, self.name))
+        setattr(self.symtab, name, True)
         # create_class_typedef
 
     def add_namespace(self, name):
@@ -1130,8 +1145,7 @@ class Namespace(object):
         """ XXX only add True for now..."""
         if self.symtab.inlocal(name):
             raise RuntimeError("{} alread exists in namespace {}".format(name, self.name))
-        else:
-            setattr(self.symtab, name, True)
+        setattr(self.symtab, name, True)
 
     def qualified_lookup(self, name):
         """Lookup name in this namespace only.

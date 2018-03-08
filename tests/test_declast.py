@@ -56,17 +56,10 @@ class CheckParse(unittest.TestCase):
 
     def setUp(self):
         typemap.initialize()
-        declast.add_typemap()
-        declast.create_global_namespace()  # also done in LibraryNode
+#        declast.create_global_namespace()  # also done in LibraryNode
 
-        library = ast.LibraryNode()
-
-        # Create a Typemap for 'Class1'
-        cls = ast.ClassNode('Class1', parent=library)
-        cls.fmtdict.C_prefix = 'CC_'
-        cls.fmtdict.F_module_name = 'moder'
-        cls.options.F_name_instance_get = 'get'
-        typemap.create_class_typedef(cls)
+        library = ast.LibraryNode(library='cc')
+        library.add_class('Class1')
 
     # types
     def test_type_int(self):

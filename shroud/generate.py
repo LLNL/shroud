@@ -62,9 +62,6 @@ class VerifyAttrs(object):
         newlibrary = self.newlibrary
 
         for cls in newlibrary.classes:
-            typemap.create_class_typedef(cls)
-
-        for cls in newlibrary.classes:
             for func in cls.functions:
                 self.check_fcn_attrs(func)
 
