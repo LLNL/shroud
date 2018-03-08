@@ -60,6 +60,7 @@ test_cases = (
     test_util.UtilCase,
     test_util.ScopeCase,
     test_typemap.NameSpace,
+    test_ast.Namespace,
     test_declast.CheckParse,
     test_declast.CheckExpr,
     test_declast.CheckEnum,

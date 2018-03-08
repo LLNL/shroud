@@ -43,8 +43,138 @@ from __future__ import print_function
 from shroud import ast
 from shroud import declast
 from shroud import generate
+from shroud import typemap  # 
 
 import unittest
+
+class Namespace(unittest.TestCase):
+    def test_ns1(self):
+        lib = ast.LibraryNode(None)
+        self.assertEqual('', lib.scope)
+
+        # typedef foo;
+        # foo var;
+        typfoo = lib.add_typedef('foo')
+        node = lib.qualified_lookup('foo')
+        self.assertEqual(typfoo, node)
+        self.assertEqual('foo', node.typename)
+
+        typ = lib.unqualified_lookup('foo')
+        self.assertTrue(typ)
+
+        std = ast.create_std_namespace(lib)
+        self.assertEqual('std::', std.scope)
+
+        # std::foo
+        typ = std.qualified_lookup('foo')
+        self.assertFalse(typ)
+
+        # namespace std { foo var; }
+        node = std.unqualified_lookup('foo')
+        self.assertTrue(node)
+        self.assertEqual('foo', node.typename)
+        # namespace std { string var; }
+        node = std.unqualified_lookup('string')
+        self.assertTrue(node)
+        self.assertEqual('std::string', node.typename)
+        # string var;
+        typ = lib.unqualified_lookup('string')
+        self.assertFalse(typ)
+
+        # using namespace std;
+        # string var;
+        lib.using_directive('std')
+        node = lib.unqualified_lookup('string')
+        self.assertTrue(node)
+        self.assertEqual('std::string', node.typename)
+
+        lib.using_directive('std')
+        self.assertEqual(1, len(lib.using))
+
+        # Non existent names
+        node = lib.unqualified_lookup('Nonexistent')
+        self.assertIsNone(node)
+
+    def test_ns2_class(self):
+        # test class
+        lib = ast.LibraryNode(None)
+        class1 = lib.add_class('Class1')
+        self.assertEqual('Class1', class1.typename)
+
+        node = lib.qualified_lookup('Class1')
+        self.assertEqual(class1, node)
+
+        ns = lib.add_namespace('ns1')
+        class2 = ns.add_class('Class2')
+        self.assertEqual('ns1::Class2', class2.typename)
+        self.assertEqual('ns1::Class2::', class2.scope)
+
+        node = ns.unqualified_lookup('Class1')
+        self.assertEqual(class1, node)
+        node = ns.unqualified_lookup('Class2')
+        self.assertEqual(class2, node)
+
+        # look for Class2 in lib
+        node = lib.unqualified_lookup('Class2')
+        self.assertIsNone(node)
+
+        # using namespace ns1
+        lib.using_directive('ns1')
+        node = lib.unqualified_lookup('Class2')
+        self.assertEqual(class2, node)
+
+    def test_ns3_enum(self):
+        # test enum
+        typemap.initialize()
+        lib = ast.LibraryNode(None)
+        enum1 = lib.add_enum('enum Enum1 {}')
+        self.assertEqual('Enum1', enum1.typename)
+        self.assertEqual('Enum1::', enum1.scope)
+
+        node = lib.qualified_lookup('Enum1')
+        self.assertEqual(enum1, node)
+
+        ns = lib.add_namespace('ns1')
+        enum2 = ns.add_enum('enum Enum2 {}')
+        self.assertEqual('ns1::Enum2', enum2.typename)
+        self.assertEqual('ns1::Enum2::', enum2.scope)
+
+        node = ns.unqualified_lookup('Enum1')
+        self.assertEqual(enum1, node)
+        node = ns.unqualified_lookup('Enum2')
+        self.assertEqual(enum2, node)
+
+        # look for Enum2 in lib
+        node = lib.unqualified_lookup('Enum2')
+        self.assertIsNone(node)
+
+        # using namespace ns1
+        lib.using_directive('ns1')
+        node = lib.unqualified_lookup('Enum2')
+        self.assertEqual(enum2, node)
+
+        # Add enum to class
+        class1 = ns.add_class('Class1')
+        enum3 = class1.add_enum('enum Enum3 {}')
+        self.assertEqual('ns1::Class1::Enum3', enum3.typename)
+        self.assertEqual('ns1::Class1::Enum3::', enum3.scope)
+        node =  class1.qualified_lookup('Enum3')
+        self.assertEqual(enum3, node)
+
+    def test_ns4_namespace(self):
+        # nested namespace
+        lib = ast.LibraryNode(None)
+        ns1 = lib.add_namespace('ns1')
+        self.assertEqual(ns1, lib.qualified_lookup('ns1'))
+
+        ns2 = ns1.add_namespace('ns2')
+        self.assertEqual(ns2, ns1.qualified_lookup('ns2'))
+
+        class1 = ns2.add_class('Class1')
+        enumx = ns2.add_enum('enum Enumx {}')
+        self.assertEqual(class1, ns2.qualified_lookup('Class1'))
+        self.assertEqual(enumx, ns2.qualified_lookup('Enumx'))
+
 
 class CheckAst(unittest.TestCase):
 #    maxDiff = None

@@ -1091,6 +1091,9 @@ class Namespace(object):
     def __str__(self):
         return str(self.symtab)
 
+    def get_scope(self):
+        return self.scope
+
     def add_enum(self, node):
         """Add an enum into the namespace.
         """

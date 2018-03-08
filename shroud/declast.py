@@ -263,7 +263,7 @@ class Parser(RecursiveDescent):
             namespace = ns
         qualified_id = '::'.join(nested)
         self.exit('nested_namespace', qualified_id)
-        return qualified_id
+        return namespace, qualified_id
 
     def class_declaration_specifier(self, node):
         """
@@ -325,7 +325,8 @@ class Parser(RecursiveDescent):
             if self.token.typ == 'ID':
                 ns = self.namespace.unqualified_lookup(self.token.value)
                 if ns:
-                    node.specifier.append(self.nested_namespace(ns))
+                    ns, ns_name = self.nested_namespace(ns)
+                    node.specifier.append(ns_name)
                     if self.have('LT'):
                         temp = Declaration()
                         self.declaration_specifier(temp)

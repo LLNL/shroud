@@ -126,6 +126,39 @@ class LibraryNode(AstNode):
 
         self.ns = declast.create_global_namespace()
 
+        # namespace
+        self.scope = ''
+        self.symbols = {}
+        self.using = []
+
+##### namespace behavior
+
+    def qualified_lookup(self, name):
+        """Look for symbols within class.
+        """
+        return self.symbols.get(name, None)
+
+    def unqualified_lookup(self, name):
+        """Look for symbols within library (global namespace). """
+        if name in self.symbols:
+            return self.symbols[name]
+        for ns in self.using:
+            item = ns.qualified_lookup(name)
+            if item is not None:
+                return item
+        return None
+
+    def using_directive(self, name):
+        """Implement 'using namespace <name>'
+        """
+        ns = self.unqualified_lookup(name)
+        if ns is None:
+            raise RuntimeError("{} not found in namespace".format(name))
+        if ns not in self.using:
+            self.using.append(ns)
+
+#####
+
     def default_options(self):
         """default options."""
         def_options = util.Scope(
@@ -337,6 +370,7 @@ class LibraryNode(AstNode):
         """
         node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
                              **kwargs)
+        self.symbols[name] = node
         return node
 
     def add_enum(self, decl, parentoptions=None, **kwargs):
@@ -345,6 +379,7 @@ class LibraryNode(AstNode):
         node = EnumNode(decl, parent=self, parentoptions=parentoptions,
                         **kwargs)
         self.enums.append(node)
+        self.symbols[node.name] = node
         return node
 
     def add_function(self, decl, parentoptions=None, **kwargs):
@@ -358,9 +393,17 @@ class LibraryNode(AstNode):
     def add_class(self, name, **kwargs):
         """Add a class.
         """
-        clsnode = ClassNode(name, self, **kwargs)
-        self.classes.append(clsnode)
-        return clsnode
+        node = ClassNode(name, self, **kwargs)
+        self.classes.append(node)
+        self.symbols[name] = node
+        return node
+
+    def add_typedef(self, name):
+        """Add a typedef.
+        """
+        node = TypedefNode(name, parent=self)
+        self.symbols[name] = node
+        return node
 
 ######################################################################
 
@@ -396,7 +439,39 @@ class NamespaceNode(AstNode):
         self.default_format(parent, format, kwargs)
 
         # add to symbol table
+        self.scope = self.parent.scope + self.name + '::'
+        self.symbols = {}
+        self.using = []
         self.ns = parent.ns.add_namespace(name)
+
+##### namespace behavior
+
+    def qualified_lookup(self, name):
+        """Look for symbols within class.
+        -- Only enums
+        """
+        return self.symbols.get(name, None)
+
+    def unqualified_lookup(self, name):
+        """Look for symbols within library (global namespace)."""
+        if name in self.symbols:
+            return self.symbols[name]
+        for ns in self.using:
+            item = ns.unqualified_lookup(name)
+            if item is not None:
+                return item
+        return self.parent.unqualified_lookup(name)
+
+    def using_directive(self, name):
+        """Implement 'using namespace <name>'
+        """
+        ns = self.unqualified_lookup(name)
+        if ns is None:
+            raise RuntimeError("{} not found in namespace".format(name))
+        if ns not in self.using:
+            self.using.append(ns)
+
+#####
 
     def default_format(self, parent, format, kwargs):
         """Set format dictionary."""
@@ -411,12 +486,22 @@ class NamespaceNode(AstNode):
         fmt_class = self.fmtdict
         if format:
             self.fmtdict.update(format, replace=True)
+#####
+
+    def add_class(self, name, **kwargs):
+        """Add a class.
+        """
+        node = ClassNode(name, self, **kwargs)
+        self.classes.append(node)
+        self.symbols[name] = node
+        return node
 
     def add_namespace(self, name, parentoptions=None, **kwargs):
         """Add an namespace
         """
         node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
                              **kwargs)
+        self.symbols[name] = node
         return node
 
     def add_enum(self, decl, parentoptions=None, **kwargs):
@@ -425,6 +510,7 @@ class NamespaceNode(AstNode):
         node = EnumNode(decl, parent=self, parentoptions=parentoptions,
                         **kwargs)
         self.enums.append(node)
+        self.symbols[node.name] = node
         return node
 
     def add_function(self, decl, parentoptions=None, **kwargs):
@@ -434,6 +520,13 @@ class NamespaceNode(AstNode):
                                **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
+
+    def add_typedef(self, name):
+        """Add a typedef.
+        """
+        node = TypedefNode(name, parent=self)
+        self.symbols[name] = node
+        return node
 
 ######################################################################
 
@@ -448,6 +541,7 @@ class ClassNode(AstNode):
         """
         # From arguments
         self.name = name
+        self.parent = parent
         self.cxx_header = cxx_header
         self.namespace = namespace
 
@@ -464,16 +558,24 @@ class ClassNode(AstNode):
         self.default_format(parent, format, kwargs)
 
         # add to namespace
+        self.typename = self.parent.scope + self.name
+        self.scope = self.typename + '::'
         self.symbols = {}
         typemap.create_class_typedef(self)
         self.ns = parent.ns
         self.ns.add_class(self)
+
+##### namespace behavior
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
         -- Only enums
         """
         return self.symbols.get(name, None)
+
+    # No unqualified lookup on class
+
+#####
 
     def default_format(self, parent, format, kwargs):
         """Set format dictionary."""
@@ -725,6 +827,10 @@ class EnumNode(AstNode):
                  parentoptions=None,
                  options=None,
                  **kwargs):
+
+        # From arguments
+        self.parent = parent
+
         self.options = util.Scope(parent=parentoptions or parent.options)
         if options:
             self.options.update(options, replace=True)
@@ -771,7 +877,40 @@ class EnumNode(AstNode):
 
         # Add to namespace
         parent.ns.add_enum(self)
+        self.typename = self.parent.scope + self.name
+        self.scope = self.typename + '::'
+        # also 'enum class foo' will alter scope
 
+######################################################################
+
+class TypedefNode(AstNode):
+    """
+    Used for namespace resolution
+    """
+    def __init__(self, name, parent):
+
+        # From arguments
+        self.name = name
+        self.parent = parent
+
+        # Add to namespace
+        self.typename = self.parent.scope + self.name
+
+    def get_typename(self):
+        return self.typename
+
+######################################################################
+
+def create_std_namespace(glb):
+    """Create the std namespace and add the types we care about.
+    """
+    std = glb.add_namespace('std')
+    std.add_typedef('string')
+    std.add_typedef('vector')
+    return std
+
+######################################################################
+# Parse yaml file
 ######################################################################
 
 def clean_dictionary(dd):
