@@ -60,10 +60,21 @@ type_specifier = { 'void', 'bool', 'char', 'short', 'int', 'long', 'float', 'dou
 type_qualifier = { 'const', 'volatile' }
 storage_class = { 'auto', 'register', 'static', 'extern', 'typedef' }
 
-# simulate 'using namespace std'
-global_symtab = util.Scope(parent=None, string=True, vector=True)
-global_symtab.std = util.Scope(parent=None, string=True, vector=True)
-current_symtab = global_symtab
+
+# Just to avoid passing it into each call to check_decl
+global_namespace = None
+
+def create_global_namespace():
+    """Setup global namespace
+    with std namespace and 'using namespace std'.
+    """
+    ns = typemap.Namespace(None)
+    typemap.create_std_namespace(ns)
+    ns.using_directive('std')
+    global global_namespace
+    global_namespace = ns
+    return ns
+
 
 token_specification = [
     ('REAL',      r'((((\d+[.]\d*)|(\d*[.]\d+))([Ee][+-]?\d+)?)|(\d+[Ee][+-]?\d+))'),
@@ -213,9 +224,12 @@ class Parser(RecursiveDescent):
 
     An abstract-declarator is a declarator without an identifier,
     consisting of one or more pointer, array, or function modifiers.
+
+    namespace = Typedef.Namespace instance
     """
-    def __init__(self, decl, current_class=None, trace=False):
+    def __init__(self, decl, namespace, current_class=None, trace=False):
         self.decl = decl          # declaration to parse
+        self.namespace = namespace
         self.current_class = current_class
         self.trace = trace
         self.indent = 0
@@ -244,7 +258,7 @@ class Parser(RecursiveDescent):
         self.exit('parameter_list', str(params))
         return params
 
-    def nested_namespace(self, scope=None):
+    def nested_namespace(self, namespace):
         """Found start of namespace.
 
         <nested-namespace> ::= { namespace :: }* identifier
@@ -256,11 +270,12 @@ class Parser(RecursiveDescent):
             # make sure nested scope is a namespaceNode
             tok = self.mustbe('ID')
             name = tok.value
-            if not scope.inlocal(name):  # qualified lookup
+            ns = namespace.qualified_lookup(name)
+            if not ns:
                 self.error_msg("Symbol '{}' is not in namespace '{}'".
                                format(name, nested[-1]))
-            scope = scope.get(name)
             nested.append(name)
+            namespace = ns
         qualified_id = '::'.join(nested)
         self.exit('nested_namespace', qualified_id)
         return qualified_id
@@ -323,9 +338,9 @@ class Parser(RecursiveDescent):
         while more:
             # if self.token.type = 'ID' and  typedef-name
             if self.token.typ == 'ID':
-                symbol = current_symtab.get(self.token.value, None)  # unqualified name lookup
-                if symbol:
-                    node.specifier.append(self.nested_namespace(symbol))
+                ns = self.namespace.unqualified_lookup(self.token.value)
+                if ns:
+                    node.specifier.append(self.nested_namespace(ns))
                     if self.have('LT'):
                         temp = Declaration()
                         self.declaration_specifier(temp)
@@ -1015,9 +1030,14 @@ class Declaration(Node):
         return ''.join(decl)
 
 
-def check_decl(decl, current_class=None, template_types=[],trace=False):
+def check_decl(decl, namespace=None, current_class=None, template_types=[],trace=False):
     """ parse expr as a declaration, return list/dict result.
+
+    namespace - Typedef.Namespace instance
     """
+    if not namespace:
+        # grab global namespace if not passed in.
+        namespace = global_namespace
     if template_types or current_class:
         global type_specifier
         old_types = type_specifier
@@ -1025,10 +1045,10 @@ def check_decl(decl, current_class=None, template_types=[],trace=False):
         type_specifier.update(template_types)
         if current_class:
             type_specifier.add(current_class)
-        a = Parser(decl,current_class=current_class,trace=trace).decl_statement()
+        a = Parser(decl,namespace,current_class,trace).decl_statement()
         type_specifier = old_types
     else:
-        a = Parser(decl,current_class=current_class,trace=trace).decl_statement()
+        a = Parser(decl,namespace,current_class,trace).decl_statement()
     return a
 
 

@@ -57,6 +57,7 @@ class CheckParse(unittest.TestCase):
     def setUp(self):
         typemap.initialize()
         declast.add_typemap()
+        declast.create_global_namespace()  # also done in LibraryNode
 
         library = ast.LibraryNode()
 
@@ -978,6 +979,8 @@ class CheckParse(unittest.TestCase):
 
 
 class CheckExpr(unittest.TestCase):
+    # No need for namespace
+
     def test_identifier1(self):
         r = declast.check_expr('id')
         self.assertEqual('id', todict.print_node(r))
@@ -1061,6 +1064,10 @@ class CheckExpr(unittest.TestCase):
 
 
 class CheckEnum(unittest.TestCase):
+
+    def setUp(self):
+        declast.create_global_namespace()
+
     def test_enum1(self):
         r = declast.check_enum('enum Color{RED=1,BLUE,WHITE}')
         self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))

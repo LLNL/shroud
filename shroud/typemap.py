@@ -1100,6 +1100,9 @@ class Namespace(object):
             self.scope = ''
         self.using = []   # result of 'using namespace XXX'
 
+    def __str__(self):
+        return str(self.symtab)
+
     def add_enum(self, name, value):
         """Add an enum into the namespace.
         """
@@ -1148,9 +1151,9 @@ class Namespace(object):
                 return item
 
     def using_directive(self, name):
-        """Implement 'using namespace XXX'
+        """Implement 'using namespace <name>'
         """
-        ns = self.qualified_lookup(name)
+        ns = self.unqualified_lookup(name)
         if ns is None:
             raise RuntimeError("{} not found in namespace".format(name))
         if ns not in self.using:

@@ -124,9 +124,7 @@ class LibraryNode(AstNode):
 
         self.default_format(format, kwargs)
 
-        # add to symbol table
-        self.ns = typemap.Namespace(None)
-        typemap.create_std_namespace(self.ns)
+        self.ns = declast.create_global_namespace()
 
     def default_options(self):
         """default options."""
