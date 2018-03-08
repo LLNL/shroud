@@ -464,9 +464,16 @@ class ClassNode(AstNode):
         self.default_format(parent, format, kwargs)
 
         # add to namespace
+        self.symbols = {}
         typemap.create_class_typedef(self)
         self.ns = parent.ns
-        self.ns.add_class(name, self)
+        self.ns.add_class(self)
+
+    def qualified_lookup(self, name):
+        """Look for symbols within class.
+        -- Only enums
+        """
+        return self.symbols.get(name, None)
 
     def default_format(self, parent, format, kwargs):
         """Set format dictionary."""
@@ -520,6 +527,7 @@ class ClassNode(AstNode):
         node = EnumNode(decl, parent=self, parentoptions=parentoptions,
                         **kwargs)
         self.enums.append(node)
+        self.symbols[node.name] = node
         return node
 
     def add_function(self, decl, parentoptions=None, **kwargs):
@@ -739,7 +747,7 @@ class EnumNode(AstNode):
         fmt_enum.enum_name = ast.name
         fmt_enum.enum_lower = ast.name.lower()
         fmt_enum.enum_upper = ast.name.upper()
-        if fmt_enum.get('cxx_class', None):
+        if fmt_enum.cxx_class:
             fmt_enum.namespace_scope =  fmt_enum.namespace_scope + fmt_enum.cxx_class + '::'
 
         # format for each enum member

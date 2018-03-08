@@ -276,16 +276,17 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(len(library.enums), 1)
 
         # parse global function which use the enum
-#        library.add_function('ns::Color directionFunc(ns::Color arg);')
+        library.add_function('ns::Color directionFunc(ns::Color arg);')
 
     def test_e_enum3(self):
         """Add an enum to a class"""
         library = ast.LibraryNode()
         cls = library.add_class('Class1')
         self.assertEqual(len(cls.enums), 0)
-        cls.add_enum('enum Color{RED=1,BLUE,WHITE}')
+        cls.add_enum('enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };')
         self.assertEqual(len(cls.enums), 1)
+        cls.add_function('DIRECTION directionFunc(DIRECTION arg);')
 
         # parse functions which use the enum
-#        library.add_function('Class1::DIRECTION directionFunc(Class1::DIRECTION arg);')
+        library.add_function('Class1::DIRECTION directionFunc(Class1::DIRECTION arg);')
 

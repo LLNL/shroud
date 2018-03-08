@@ -7219,7 +7219,7 @@
             "c_to_cxx": "static_cast<tutorial::\tClass1::DIRECTION>({c_var})", 
             "c_type": "int", 
             "cxx_to_c": "static_cast<int>({cxx_var})", 
-            "cxx_type": "tutorial::\tClass1::Class1::DIRECTION", 
+            "cxx_type": "tutorial::\tClass1::DIRECTION", 
             "f_cast": "int({f_var}, C_INT)", 
             "f_kind": "C_INT", 
             "f_module": {
