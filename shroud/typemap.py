@@ -806,8 +806,8 @@ def initialize():
 
 #
             # custom code for templates
-            c_templates=dict(
-                string=dict(
+            c_templates={
+                'std::string': dict(
                     intent_in_buf=dict(
                         buf_args = [ 'size', 'len' ],
                         c_helper='ShroudLenTrim',
@@ -888,7 +888,7 @@ def initialize():
 #                        ],
 #                    ),
                 ),
-            ),
+            },
 #
 
 
@@ -924,10 +924,15 @@ def initialize():
             ),
         )
 
+    # rename to actual types.
+    # It is not possible to do dict(std::string=...)
+    def_types['std::string'] = def_types['string']
+    del def_types['string']
+    def_types['std::vector'] = def_types['vector']
+    del def_types['vector']
+
     # aliases
     def_types_alias = dict()
-    def_types_alias['std::string'] = 'string'
-    def_types_alias['std::vector'] = 'vector'
     def_types_alias['integer(C_INT)'] = 'int'
     def_types_alias['integer(C_LONG)'] = 'long'
     def_types_alias['integer(C_LONG_LONG)'] = 'long_long'

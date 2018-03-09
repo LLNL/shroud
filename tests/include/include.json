@@ -495,9 +495,7 @@
         "integer(C_LONG)": "long", 
         "integer(C_LONG_LONG)": "long_long", 
         "real(C_DOUBLE)": "double", 
-        "real(C_FLOAT)": "float", 
-        "std::string": "string", 
-        "std::vector": "vector"
+        "real(C_FLOAT)": "float"
     }, 
     "types": {
         "Class1": {
@@ -928,7 +926,7 @@
             }, 
             "f_type": "integer(C_SIZE_T)"
         }, 
-        "string": {
+        "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
@@ -1056,56 +1054,7 @@
                 }
             }
         }, 
-        "stringout": {
-            "base": "string", 
-            "c_statements": {
-                "intent_out_buf": {
-                    "buf_args": [
-                        "lenout"
-                    ], 
-                    "c_helper": "copy_string", 
-                    "cxx_local_var": "scalar", 
-                    "post_call": [
-                        " post_call intent_out_buf"
-                    ], 
-                    "pre_call": [
-                        "std::string * {cxx_var};"
-                    ]
-                }, 
-                "result_buf": {
-                    "buf_args": [
-                        "lenout"
-                    ], 
-                    "c_helper": "copy_string", 
-                    "post_call": [
-                        "*{c_var} = {cxx_addr}{cxx_var};", 
-                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
-                    ]
-                }
-            }, 
-            "c_type": "void", 
-            "cxx_header": "<string>", 
-            "cxx_to_c": "static_cast<void *>({cxx_var})", 
-            "cxx_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
-            }, 
-            "f_c_type": "type(C_PTR)", 
-            "f_statements": {
-                "result_buf": {
-                    "f_helper": "copy_string", 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})", 
-                        "call SHROUD_string_copy_and_free({f_cptr}, {f_var})"
-                    ]
-                }
-            }, 
-            "f_type": "type(C_PTR)YY"
-        }, 
-        "vector": {
+        "std::vector": {
             "base": "vector", 
             "c_statements": {
                 "intent_in_buf": {
@@ -1159,7 +1108,7 @@
                 }
             }, 
             "c_templates": {
-                "string": {
+                "std::string": {
                     "intent_in_buf": {
                         "buf_args": [
                             "size", 
@@ -1242,6 +1191,55 @@
             }, 
             "cxx_header": "<vector>", 
             "cxx_type": "std::vector<{cxx_T}>"
+        }, 
+        "stringout": {
+            "base": "string", 
+            "c_statements": {
+                "intent_out_buf": {
+                    "buf_args": [
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        " post_call intent_out_buf"
+                    ], 
+                    "pre_call": [
+                        "std::string * {cxx_var};"
+                    ]
+                }, 
+                "result_buf": {
+                    "buf_args": [
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "post_call": [
+                        "*{c_var} = {cxx_addr}{cxx_var};", 
+                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
+                    ]
+                }
+            }, 
+            "c_type": "void", 
+            "cxx_header": "<string>", 
+            "cxx_to_c": "static_cast<void *>({cxx_var})", 
+            "cxx_type": "std::string", 
+            "f_c_module": {
+                "iso_c_binding": [
+                    "C_PTR"
+                ]
+            }, 
+            "f_c_type": "type(C_PTR)", 
+            "f_statements": {
+                "result_buf": {
+                    "f_helper": "copy_string", 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})", 
+                        "call SHROUD_string_copy_and_free({f_cptr}, {f_var})"
+                    ]
+                }
+            }, 
+            "f_type": "type(C_PTR)YY"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 
