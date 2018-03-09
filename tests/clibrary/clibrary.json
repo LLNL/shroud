@@ -118,7 +118,9 @@
             {
                 "_function_index": 0, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "Function1", 
@@ -232,7 +234,9 @@
                 }, 
                 "_function_index": 1, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "double"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "Function2", 
@@ -243,6 +247,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "double", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -257,6 +262,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -395,7 +401,9 @@
                 }, 
                 "_function_index": 2, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "Sum", 
@@ -406,6 +414,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "implied": "size(values)", 
                                 "intent": "in", 
                                 "value": true
@@ -421,6 +430,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "value": false
@@ -441,6 +451,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "intent": "out", 
                                 "value": false
                             }, 
@@ -540,7 +551,9 @@
                 }, 
                 "_function_index": 3, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "bool"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "Function3", 
@@ -551,6 +564,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "bool", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -687,7 +701,9 @@
                 }, 
                 "_function_index": 4, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "Function3b", 
@@ -698,6 +714,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "bool", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -712,6 +729,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "bool", 
                                 "intent": "out", 
                                 "value": false
                             }, 
@@ -731,6 +749,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "bool", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -847,7 +866,9 @@
                 }, 
                 "_function_index": 5, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "char"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "Function4a", 
@@ -865,6 +886,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -884,6 +906,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -996,7 +1019,9 @@
                 "_function_index": 10, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "Function4a", 
@@ -1009,6 +1034,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Larg1", 
                                 "value": false
@@ -1029,6 +1055,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Larg2", 
                                 "value": false
@@ -1050,6 +1077,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
@@ -1188,7 +1216,9 @@
                 }, 
                 "_function_index": 6, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "intargs", 
@@ -1199,6 +1229,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -1213,6 +1244,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -1232,6 +1264,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "intent": "out", 
                                 "value": false
                             }, 
@@ -1376,7 +1409,9 @@
                 }, 
                 "_function_index": 7, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "cos_doubles", 
@@ -1387,6 +1422,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "double", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "value": false
@@ -1407,6 +1443,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "double", 
                                 "allocatable": "mold=in", 
                                 "intent": "out", 
                                 "value": false
@@ -1427,6 +1464,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "implied": "size(in)", 
                                 "intent": "in", 
                                 "value": true
@@ -1571,7 +1609,9 @@
                 }, 
                 "_function_index": 8, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "truncate_to_int", 
@@ -1582,6 +1622,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "double", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "value": false
@@ -1602,6 +1643,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "allocatable": "mold=in", 
                                 "intent": "out", 
                                 "value": false
@@ -1622,6 +1664,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "implied": "size(in)", 
                                 "intent": "in", 
                                 "value": true
@@ -1736,7 +1779,9 @@
                 }, 
                 "_function_index": 9, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "increment", 
@@ -1747,6 +1792,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "dimension": ":", 
                                 "intent": "inout", 
                                 "value": false
@@ -1767,6 +1813,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "implied": "size(array)", 
                                 "intent": "in", 
                                 "value": true

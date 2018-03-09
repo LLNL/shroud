@@ -39,7 +39,9 @@
                         }, 
                         "_function_index": 0, 
                         "ast": {
-                            "attrs": {}, 
+                            "attrs": {
+                                "_typename": "void"
+                            }, 
                             "const": false, 
                             "declarator": {
                                 "name": "method1", 
@@ -50,6 +52,7 @@
                             "params": [
                                 {
                                     "attrs": {
+                                        "_typename": "CustomType", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -138,7 +141,9 @@
                         }, 
                         "_function_index": 1, 
                         "ast": {
-                            "attrs": {}, 
+                            "attrs": {
+                                "_typename": "void"
+                            }, 
                             "const": false, 
                             "declarator": {
                                 "name": "method1", 
@@ -149,6 +154,7 @@
                             "params": [
                                 {
                                     "attrs": {
+                                        "_typename": "MPI_Comm", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -214,7 +220,9 @@
                         }, 
                         "_function_index": 2, 
                         "ast": {
-                            "attrs": {}, 
+                            "attrs": {
+                                "_typename": "void"
+                            }, 
                             "const": false, 
                             "declarator": {
                                 "name": "method2", 
@@ -225,6 +233,7 @@
                             "params": [
                                 {
                                     "attrs": {
+                                        "_typename": "Class1", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -381,7 +390,9 @@
             {
                 "_function_index": 3, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "function1", 

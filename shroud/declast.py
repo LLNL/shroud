@@ -249,8 +249,7 @@ class Parser(RecursiveDescent):
         return namespace, qualified_id
 
     def class_declaration_specifier(self, node):
-        """
-        Set attributes on node corresponding to next token
+        """Set attributes on node corresponding to next token
         node - Declaration node.
         <declaration-specifier> ::= <storage-class-specifier>
                                   | <type-specifier>
@@ -260,6 +259,9 @@ class Parser(RecursiveDescent):
                                   | ~ <current_class>
 
         Returns True if need declarator after, else False (i.e. ctor or dtor)
+
+        Set _typename, the fully qualified name.  Used to look up
+        times in Typedef and in generated code.
         """
         self.enter('class_declaration_specifier')
         need = True
@@ -271,6 +273,7 @@ class Parser(RecursiveDescent):
                 node.specifier.append(specifier)
                 node.fattrs['_name'] = 'dtor'
                 node.fattrs['_destructor'] = True
+                node.attrs['_typename'] = self.namespace.typename
                 more = False
                 need = False
             else:
@@ -284,6 +287,7 @@ class Parser(RecursiveDescent):
                 self.info('constructor')
                 node.fattrs['_name'] = 'ctor'
                 node.fattrs['_constructor'] = True
+                node.attrs['_typename'] = self.namespace.typename
                 more = False
                 need = False
 
@@ -302,10 +306,12 @@ class Parser(RecursiveDescent):
                                   | (ns_name :: )+ name
                                   | :: (ns_name :: )+ name    # XXX - todo
         """
+        found_type = False
         more = True
         while more:
             # if self.token.type = 'ID' and  typedef-name
             if self.token.typ == 'ID':
+                # Find typedef'd names and namespaces
                 ns = self.namespace.unqualified_lookup(self.token.value)
                 if ns:
                     ns, ns_name = self.nested_namespace(ns)
@@ -315,6 +321,9 @@ class Parser(RecursiveDescent):
                         self.declaration_specifier(temp)
                         node.attrs['template'] = str(temp)
                         self.mustbe('GT')
+                    # Save fully resolved typename
+                    node.attrs['_typename'] = ns.typename
+                    found_type = True
                 more = False
             elif self.token.typ == 'TYPE_SPECIFIER':
                 node.specifier.append(self.token.value)
@@ -333,7 +342,9 @@ class Parser(RecursiveDescent):
                 more= False
         if not node.specifier:
             self.error_msg("Expected TYPE_SPECIFIER, found '{}'".format(self.token.value))
-            
+        if not found_type:
+            # XXX - standardize types like 'unsigned' as 'unsigned_int'
+            node.attrs['_typename'] = '_'.join(node.specifier)
         self.exit('declaration_specifier')
         return
 
@@ -573,7 +584,7 @@ class Declaration(Node):
         self.params     = None   # None=No parameters, []=empty parameters list
         self.array      = None
         self.init       = None   # initial value
-        self.attrs      = {}     # declarator attributes
+        self.attrs      = {}     # Declaration attributes
 
         self.func_const = False
         self.fattrs     = {}     # function attributes
@@ -605,16 +616,13 @@ class Declaration(Node):
 
     def get_type(self):
         """Return type.
-        Mulitple specifies are joined by an underscore. i.e. long_long
+        Multiple specifies are joined by an underscore. i.e. long_long
         """
-        if self.specifier:
-            typ = '_'.join(self.specifier)
-        else:
-            typ = 'int'
-        return typ
+        return self.attrs['_typename']
 
     def set_type(self, typ):
         self.specifier = typ.split()
+        self.attrs['_typename'] = typ
 
     typename = property(get_type, set_type, None, "Declaration type")
 
@@ -701,6 +709,7 @@ class Declaration(Node):
     def _set_to_void(self):
         """Change function to void"""
         self.specifier = ['void']
+        self.attrs['_typename'] = 'void'
         self.const = False
         self.declarator.pointer = []
 
@@ -1031,11 +1040,11 @@ def create_this_arg(name, typ, const=True):
     arg.declarator.name = name
     arg.declarator.pointer = [ Ptr('*') ]
     arg.specifier = [ typ ]
+    arg.attrs['_typename'] = typ
     return arg
 
 def create_voidstarstar(typ, name, const=False):
-    """Create a Declaration for an argument for the argument
-    as 'typ **name'.
+    """Create a Declaration for an argument as 'typ **name'.
     """
     arg = Declaration()
     arg.const = const
@@ -1043,6 +1052,7 @@ def create_voidstarstar(typ, name, const=False):
     arg.declarator.name = name
     arg.declarator.pointer = [ Ptr('*'), Ptr('*') ]
     arg.specifier = [ typ ]
+    arg.attrs['_typename'] = typ
     return arg
 
 

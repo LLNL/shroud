@@ -54,9 +54,10 @@ class Namespace(unittest.TestCase):
 
         # typedef foo;
         # foo var;
-        typfoo = lib.add_typedef('foo')
+        typefoo = lib.add_typedef('foo')
+        self.assertEqual('foo', typefoo.typename)
         node = lib.qualified_lookup('foo')
-        self.assertEqual(typfoo, node)
+        self.assertEqual(typefoo, node)
         self.assertEqual('foo', node.typename)
 
         typ = lib.unqualified_lookup('foo')
@@ -75,11 +76,14 @@ class Namespace(unittest.TestCase):
         lib = ast.LibraryNode(None)
         class1 = lib.add_class('Class1')
         self.assertEqual('Class1', class1.typename)
+        self.assertEqual('Class1::', class1.scope)
 
         node = lib.qualified_lookup('Class1')
         self.assertEqual(class1, node)
 
         ns = lib.add_namespace('ns1')
+        self.assertEqual('ns1::', ns.scope)
+
         class2 = ns.add_class('Class2')
         self.assertEqual('ns1::Class2', class2.typename)
         self.assertEqual('ns1::Class2::', class2.scope)
@@ -140,9 +144,11 @@ class Namespace(unittest.TestCase):
         # nested namespace
         lib = ast.LibraryNode(None)
         ns1 = lib.add_namespace('ns1')
+        self.assertEqual('ns1::', ns1.scope)
         self.assertEqual(ns1, lib.qualified_lookup('ns1'))
 
         ns2 = ns1.add_namespace('ns2')
+        self.assertEqual('ns1::ns2::', ns2.scope)
         self.assertEqual(ns2, ns1.qualified_lookup('ns2'))
 
         class1 = ns2.add_class('Class1')

@@ -147,7 +147,9 @@
                 }, 
                 "_function_index": 0, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "passChar", 
@@ -158,6 +160,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char_scalar", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -224,7 +227,9 @@
                 }, 
                 "_function_index": 1, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "char_scalar"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "returnChar", 
@@ -298,7 +303,9 @@
                 "_function_index": 29, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "returnChar", 
@@ -310,6 +317,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "char_scalar", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
@@ -385,7 +393,9 @@
                 }, 
                 "_function_index": 2, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "passCharPtr", 
@@ -396,6 +406,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "out", 
                                 "value": false
                             }, 
@@ -415,6 +426,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -505,7 +517,9 @@
                 "_function_index": 30, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "passCharPtr", 
@@ -516,6 +530,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "Ndest", 
                                 "value": false
@@ -536,6 +551,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Lsrc", 
                                 "value": false
@@ -619,7 +635,9 @@
                 }, 
                 "_function_index": 3, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "passCharPtrInOut", 
@@ -630,6 +648,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -704,7 +723,9 @@
                 "_function_index": 31, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "passCharPtrInOut", 
@@ -715,6 +736,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "inout", 
                                 "len": "Ns", 
                                 "len_trim": "Ls", 
@@ -787,7 +809,9 @@
                 }, 
                 "_function_index": 4, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "char"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getCharPtr1", 
@@ -865,7 +889,9 @@
                 "_function_index": 32, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getCharPtr1", 
@@ -879,6 +905,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
@@ -949,7 +976,9 @@
                 }, 
                 "_function_index": 5, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "char"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getCharPtr2", 
@@ -1031,7 +1060,9 @@
                 "_function_index": 33, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getCharPtr2", 
@@ -1045,6 +1076,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
@@ -1114,7 +1146,9 @@
                 }, 
                 "_function_index": 6, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "char"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getCharPtr3", 
@@ -1187,7 +1221,9 @@
                 "_function_index": 34, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getCharPtr3", 
@@ -1199,6 +1235,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
@@ -1255,7 +1292,9 @@
                 "_function_index": 35, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getCharPtr3", 
@@ -1267,6 +1306,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
@@ -1331,7 +1371,9 @@
                 }, 
                 "_function_index": 7, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringLen", 
@@ -1402,7 +1444,9 @@
                 "_function_index": 36, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringLen", 
@@ -1416,6 +1460,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
@@ -1480,7 +1525,9 @@
                 }, 
                 "_function_index": 8, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringAsArg", 
@@ -1541,7 +1588,9 @@
                 "_function_index": 37, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringAsArg", 
@@ -1553,6 +1602,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
@@ -1610,7 +1660,9 @@
                 "_function_index": 38, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringAsArg", 
@@ -1622,6 +1674,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
@@ -1685,7 +1738,9 @@
                 }, 
                 "_function_index": 9, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringAlloc", 
@@ -1753,7 +1808,9 @@
                 "_function_index": 39, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringAlloc", 
@@ -1767,6 +1824,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "stringout", 
                                 "intent": "out", 
                                 "lenout": "NSHF_rv"
                             }, 
@@ -1839,7 +1897,9 @@
                 }, 
                 "_function_index": 10, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringRefPure", 
@@ -1918,7 +1978,9 @@
                 "_function_index": 40, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefPure", 
@@ -1932,6 +1994,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
@@ -2005,7 +2068,9 @@
                 }, 
                 "_function_index": 11, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringRefLen", 
@@ -2090,7 +2155,9 @@
                 "_function_index": 41, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefLen", 
@@ -2104,6 +2171,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
@@ -2176,7 +2244,9 @@
                 }, 
                 "_function_index": 12, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringRefAsArg", 
@@ -2252,7 +2322,9 @@
                 "_function_index": 42, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefAsArg", 
@@ -2264,6 +2336,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
@@ -2321,7 +2394,9 @@
                 "_function_index": 43, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefAsArg", 
@@ -2333,6 +2408,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
@@ -2405,7 +2481,9 @@
                 }, 
                 "_function_index": 13, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringRefLenEmpty", 
@@ -2490,7 +2568,9 @@
                 "_function_index": 44, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefLenEmpty", 
@@ -2504,6 +2584,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
@@ -2576,7 +2657,9 @@
                 }, 
                 "_function_index": 14, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringRefAlloc", 
@@ -2657,7 +2740,9 @@
                 "_function_index": 45, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefAlloc", 
@@ -2671,6 +2756,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "stringout", 
                                 "intent": "out", 
                                 "lenout": "NSHF_rv"
                             }, 
@@ -2744,7 +2830,9 @@
                 }, 
                 "_function_index": 15, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringPtrLen", 
@@ -2828,7 +2916,9 @@
                 "_function_index": 46, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrLen", 
@@ -2842,6 +2932,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
@@ -2915,7 +3006,9 @@
                 }, 
                 "_function_index": 16, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringPtrAlloc", 
@@ -2996,7 +3089,9 @@
                 "_function_index": 47, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrAlloc", 
@@ -3010,6 +3105,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "stringout", 
                                 "intent": "out", 
                                 "lenout": "NSHF_rv"
                             }, 
@@ -3083,7 +3179,9 @@
                 }, 
                 "_function_index": 17, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string"
+                    }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringPtrOwnsAlloc", 
@@ -3164,7 +3262,9 @@
                 "_function_index": 48, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrOwnsAlloc", 
@@ -3178,6 +3278,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "stringout", 
                                 "intent": "out", 
                                 "lenout": "NSHF_rv"
                             }, 
@@ -3257,7 +3358,9 @@
                 }, 
                 "_function_index": 18, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "acceptStringConstReference", 
@@ -3268,6 +3371,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -3342,7 +3446,9 @@
                 "_function_index": 49, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "acceptStringConstReference", 
@@ -3353,6 +3459,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "len_trim": "Larg1", 
                                 "value": false
@@ -3434,7 +3541,9 @@
                 }, 
                 "_function_index": 19, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "acceptStringReferenceOut", 
@@ -3445,6 +3554,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "value": false
                             }, 
@@ -3520,7 +3630,9 @@
                 "_function_index": 50, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "acceptStringReferenceOut", 
@@ -3531,6 +3643,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "Narg1", 
                                 "value": false
@@ -3613,7 +3726,9 @@
                 }, 
                 "_function_index": 20, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "acceptStringReference", 
@@ -3624,6 +3739,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "std::string", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -3700,7 +3816,9 @@
                 "_function_index": 51, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "acceptStringReference", 
@@ -3711,6 +3829,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "std::string", 
                                 "intent": "inout", 
                                 "len": "Narg1", 
                                 "len_trim": "Larg1", 
@@ -3794,7 +3913,9 @@
                 }, 
                 "_function_index": 21, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "acceptStringPointer", 
@@ -3805,6 +3926,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "std::string", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -3880,7 +4002,9 @@
                 "_function_index": 52, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "acceptStringPointer", 
@@ -3891,6 +4015,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "std::string", 
                                 "intent": "inout", 
                                 "len": "Narg1", 
                                 "len_trim": "Larg1", 
@@ -3981,7 +4106,9 @@
                 }, 
                 "_function_index": 22, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "returnStrings", 
@@ -3992,6 +4119,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "std::string", 
                                 "intent": "out"
                             }, 
                             "const": false, 
@@ -4010,6 +4138,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "std::string", 
                                 "intent": "out"
                             }, 
                             "const": false, 
@@ -4049,7 +4178,9 @@
             {
                 "_function_index": 23, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "char"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "returnMany", 
@@ -4060,6 +4191,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "intent": "out"
                             }, 
                             "const": false, 
@@ -4125,7 +4257,9 @@
                 }, 
                 "_function_index": 24, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "explicit1", 
@@ -4136,6 +4270,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "AAlen", 
                                 "value": false
@@ -4207,7 +4342,9 @@
                 "_function_index": 53, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "explicit1", 
@@ -4218,6 +4355,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "AAlen", 
                                 "value": false
@@ -4282,7 +4420,9 @@
                 }, 
                 "_function_index": 25, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "explicit2", 
@@ -4293,6 +4433,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "AAtrim", 
                                 "value": false
@@ -4365,7 +4506,9 @@
                 "_function_index": 54, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "explicit2", 
@@ -4376,6 +4519,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "AAtrim", 
                                 "value": false
@@ -4456,7 +4600,9 @@
                 }, 
                 "_function_index": 26, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "CpassChar", 
@@ -4467,6 +4613,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char_scalar", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -4535,7 +4682,9 @@
                 }, 
                 "_function_index": 27, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "char_scalar"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "CreturnChar", 
@@ -4611,7 +4760,9 @@
                 "_function_index": 55, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "CreturnChar", 
@@ -4623,6 +4774,7 @@
                         {
                             "attrs": {
                                 "_is_result": true, 
+                                "_typename": "char_scalar", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
@@ -4699,7 +4851,9 @@
                 }, 
                 "_function_index": 28, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "CpassCharPtr", 
@@ -4710,6 +4864,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "out", 
                                 "value": false
                             }, 
@@ -4729,6 +4884,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -4820,7 +4976,9 @@
                 "_function_index": 56, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "CpassCharPtr", 
@@ -4831,6 +4989,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "Ndest", 
                                 "value": false
@@ -4851,6 +5010,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Lsrc", 
                                 "value": false

@@ -87,6 +87,8 @@ class VerifyAttrs(object):
         argname = arg.name
 
         for attr in arg.attrs:
+            if attr[0] == '_': # internal attribute
+                continue
             if attr not in [
                     'allocatable',
                     'dimension',

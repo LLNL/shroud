@@ -58,8 +58,8 @@ class CheckParse(unittest.TestCase):
         typemap.initialize()
 #        declast.create_global_namespace()  # also done in LibraryNode
 
-        library = ast.LibraryNode(library='cc')
-        library.add_class('Class1')
+        self.library = ast.LibraryNode(library='cc')
+        self.class1 = self.library.add_class('Class1')
 
     # types
     def test_type_int(self):
@@ -169,6 +169,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("std::vector<int> var1", s)
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
+                "_typename": "std::vector",
                 "template": "int"
             },
             "const": False,
@@ -186,6 +187,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("std::vector<long long> var1", s)
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
+                "_typename": "std::vector",
                 "template": "long long"
             },
             "const": False,
@@ -203,6 +205,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("std::vector<std::string> var1", s)
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
+                "_typename": "std::vector",
                 "template": "std::string"
             },
             "const": False,
@@ -294,7 +297,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int ( * func)(int)", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {}, 
+            "attrs": {
+                "_typename": "int",
+            },
             "const": False, 
             "declarator": {
                 "func": {
@@ -312,7 +317,9 @@ class CheckParse(unittest.TestCase):
             "func_const": False, 
             "params": [
                 {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "int",
+                    },
                     "const": False, 
                     "declarator": {
                         "pointer": []
@@ -362,7 +369,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void foo", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {}, 
+            "attrs": {
+                "_typename": "void",
+            },
             "const": False, 
             "declarator": {
                 "name": "foo", 
@@ -383,6 +392,7 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
+                "_typename": "void",
                 "alias": "junk"
             }, 
             "const": False, 
@@ -404,7 +414,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void foo()", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {}, 
+            "attrs": {
+                "_typename": "void",
+            },
             "const": False, 
             "declarator": {
                 "name": "foo", 
@@ -431,7 +443,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void * foo() const", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {}, 
+            "attrs": {
+                "_typename": "void",
+            },
             "const": False, 
             "declarator": {
                 "name": "foo", 
@@ -462,7 +476,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void foo(int arg1)", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {}, 
+            "attrs": {
+                "_typename": "void",
+            },
             "const": False, 
             "declarator": {
                 "name": "foo", 
@@ -472,7 +488,9 @@ class CheckParse(unittest.TestCase):
             "func_const": False, 
             "params": [
                 {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "int",
+                    },
                     "const": False, 
                     "declarator": {
                         "name": "arg1", 
@@ -497,7 +515,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void foo(int arg1, double arg2)", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {}, 
+            "attrs": {
+                "_typename": "void",
+            },
             "const": False, 
             "declarator": {
                 "name": "foo", 
@@ -507,7 +527,9 @@ class CheckParse(unittest.TestCase):
             "func_const": False, 
             "params": [
                 {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "int",
+                    },
                     "const": False, 
                     "declarator": {
                         "name": "arg1", 
@@ -518,7 +540,9 @@ class CheckParse(unittest.TestCase):
                     ], 
                 }, 
                 {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "double",
+                    },
                     "const": False, 
                     "declarator": {
                         "name": "arg2", 
@@ -547,7 +571,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("const std::string & getName() const", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {}, 
+            "attrs": {
+                "_typename": "std::string",
+            },
             "const": True, 
             "declarator": {
                 "name": "getName", 
@@ -581,7 +607,8 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
-            }, 
+                "_typename": "void",
+            },
             "const": True, 
             "declarator": {
                 "name": "foo", 
@@ -595,6 +622,7 @@ class CheckParse(unittest.TestCase):
             "params": [
                 {
                     "attrs": {
+                        "_typename": "int",
                         "in": True
                     }, 
                     "const": False, 
@@ -608,6 +636,7 @@ class CheckParse(unittest.TestCase):
                 }, 
                 {
                     "attrs": {
+                        "_typename": "double",
                         "out": True
                     }, 
                     "const": False, 
@@ -629,13 +658,15 @@ class CheckParse(unittest.TestCase):
     def test_decl09a(self):
         """Test constructor
         """
-        r = declast.check_decl("Class1()",current_class='Class1')
+        r = declast.check_decl("Class1()",namespace=self.class1,current_class='Class1')
 
         s = r.gen_decl()
         self.assertEqual("Class1()", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {},
+            "attrs": {
+                "_typename": "Class1",
+            },
             "const": False,
             "fattrs": {
                 "_constructor": True,
@@ -657,13 +688,16 @@ class CheckParse(unittest.TestCase):
     def test_decl09b(self):
         """Test constructor +name
         """
-        r = declast.check_decl("Class1() +name(new)",current_class='Class1')
+        r = declast.check_decl("Class1() +name(new)",namespace=self.class1,
+                               current_class='Class1')
 
         s = r.gen_decl()
         self.assertEqual("Class1() +name(new)", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {},
+            "attrs": {
+                "_typename": "Class1",
+            },
             "const": False,
             "fattrs": {
                 "_constructor": True,
@@ -686,13 +720,15 @@ class CheckParse(unittest.TestCase):
     def test_decl09c(self):
         """Test destructor
         """
-        r = declast.check_decl("~Class1()",current_class='Class1')
+        r = declast.check_decl("~Class1()",namespace=self.class1,current_class='Class1')
 
         s = r.gen_decl()
         self.assertEqual("~Class1()", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {},
+            "attrs": {
+                "_typename": "Class1",
+            },
             "const": False,
             "fattrs": {
                 "_destructor": True,
@@ -720,7 +756,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("Class1 * make()", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {},
+            "attrs": {
+                "_typename": "Class1",
+            },
             "const": False,
             "declarator": {
                 "name": "make",
@@ -755,7 +793,9 @@ class CheckParse(unittest.TestCase):
                          "bool arg4=true)", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {}, 
+            "attrs": {
+                "_typename": "void",
+            }, 
             "const": False, 
             "declarator": {
                 "name": "name", 
@@ -765,7 +805,9 @@ class CheckParse(unittest.TestCase):
             "func_const": False, 
             "params": [
                 {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "int",
+                    }, 
                     "const": False, 
                     "declarator": {
                         "name": "arg1", 
@@ -777,7 +819,9 @@ class CheckParse(unittest.TestCase):
                     ], 
                 }, 
                 {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "double",
+                    },
                     "const": False, 
                     "declarator": {
                         "name": "arg2", 
@@ -789,7 +833,9 @@ class CheckParse(unittest.TestCase):
                     ], 
                 }, 
                 {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string",
+                    },
                     "const": False, 
                     "declarator": {
                         "name": "arg3", 
@@ -801,7 +847,9 @@ class CheckParse(unittest.TestCase):
                     ], 
                 }, 
                 {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "bool",
+                    },
                     "const": False, 
                     "declarator": {
                         "name": "arg4", 
@@ -828,7 +876,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void decl11(ArgType arg)", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {}, 
+            "attrs": {
+                "_typename": "void",
+            },
             "const": False, 
             "declarator": {
                 "name": "decl11", 
@@ -838,7 +888,9 @@ class CheckParse(unittest.TestCase):
             "func_const": False, 
             "params": [
                 {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "ArgType",
+                    }, 
                     "const": False, 
                     "declarator": {
                         "name": "arg", 
@@ -865,7 +917,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void decl12(std::vector<std::string> arg1, string arg2)", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {}, 
+            "attrs": {
+                "_typename": "void",
+            },
             "const": False, 
             "declarator": {
                 "name": "decl12", 
@@ -876,7 +930,8 @@ class CheckParse(unittest.TestCase):
             "params": [
                 {
                     "attrs": {
-                        "template": "std::string"
+                        "_typename": "std::vector",
+                        "template": "std::string",
                     }, 
                     "const": False, 
                     "declarator": {
@@ -888,7 +943,9 @@ class CheckParse(unittest.TestCase):
                     ], 
                 }, 
                 {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "std::string",
+                    },
                     "const": False, 
                     "declarator": {
                         "name": "arg2", 
