@@ -391,7 +391,6 @@ class CheckAst(unittest.TestCase):
         library = ast.LibraryNode()
         ns = library.add_namespace('ns')
         self.assertEqual(len(library.enums), 0)
-        self.assertEqual('ns::', ns.fmtdict.ns_scope)
 
         ns.add_enum('enum Color{RED=1,BLUE,WHITE}')
         self.assertEqual(len(library.enums), 1)

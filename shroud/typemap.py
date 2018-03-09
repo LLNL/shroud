@@ -1075,4 +1075,3 @@ def lookup_c_statements(arg):
             cxx_T, c_statements)
         arg_typedef = Typedef.lookup(cxx_T)
     return arg_typedef, c_statements
-

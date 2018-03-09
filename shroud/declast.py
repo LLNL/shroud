@@ -49,7 +49,6 @@ import copy
 import re
 
 from . import typemap
-from . import util
 
 Token = collections.namedtuple('Token', ['typ', 'value', 'line', 'column'])
 

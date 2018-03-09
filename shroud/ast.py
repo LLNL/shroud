@@ -320,7 +320,6 @@ class LibraryNode(AstNode):
             C_post_call = '',
             function_suffix = '',   # assume no suffix
             namespace_scope = '',
-#            ns_scope = '',    # new
         )
 
         if self.namespace:
@@ -490,9 +489,6 @@ class NamespaceNode(AstNode):
 
         self.fmtdict = util.Scope(
             parent = parent.fmtdict,
-
-            ns_scope = self.name + '::',
-#            ns_scope = parent.fmtdict.ns_scope + self.name + '::',
         )
 
         fmt_class = self.fmtdict

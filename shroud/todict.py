@@ -207,6 +207,12 @@ class ToDict(visitor.Visitor):
                 d[key] = self.visit(value)
         return d
 
+    def visit_ClassForwardNode(self, node):
+        d = dict(
+            name=node.name,
+        )
+        return d
+
     def visit_FunctionNode(self, node):
         d = dict(
             ast=self.visit(node.ast),
@@ -246,6 +252,14 @@ class ToDict(visitor.Visitor):
             value = getattr(node, key)
             if value:
                 d[key] = self.visit(value)
+        return d
+
+    def visit_NamespaceNode(self, node):
+        d = dict(
+            name=node.name,
+            format=self.visit(node.fmtdict),
+            options=self.visit(node.options),
+        )
         return d
 
 
