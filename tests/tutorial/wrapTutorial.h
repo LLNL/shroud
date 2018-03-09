@@ -58,6 +58,13 @@
 extern "C" {
 #endif
 
+//  Color
+enum TUT_Color {
+    RED,
+    BLUE,
+    WHITE
+};
+
 // declaration of shadow types
 struct s_TUT_class1;
 typedef struct s_TUT_class1 TUT_class1;

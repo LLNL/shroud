@@ -53,13 +53,6 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-//  Color
-enum TES_Color {
-    RED,
-    BLUE,
-    WHITE
-};
-
 // void function1()
 // function_index=2
 void YYY_TES_function1()

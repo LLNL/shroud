@@ -744,10 +744,12 @@ describe how to convert between C and C++::
     types:
       EnumTypeID:
         typedef  : int
-        cxx_type : EnumTypeID
-        c_to_cxx : static_cast<EnumTypeID>({c_var})
+        cxx_type : tutorial::EnumTypeID
+        c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
         cxx_to_c : static_cast<int>({cxx_var})
 
+The typename must be fully qualified
+(use ``tutorial::EnumTypeId`` instead of ``EnumTypeId``).
 The C argument is explicitly converted to a C++ type, then the
 return type is explicitly converted to a C type in the generated wrapper::
 
@@ -762,13 +764,27 @@ Without the explicit conversion you're likely to get an error such as::
 
   error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
 
-.. note:: Currently only the ``typedef`` is supported. There is no support
-          for adding the enumeration values for C and Fortran.
+A enum can also be fully defined to Python::
 
-          Fortran's ``ENUM, BIND(C)`` provides a way of matching 
-          the size and values of enumerations.  However, it doesn't
-          seem to buy you too much in this case.  Defining enumeration
-          values as ``INTEGER, PARAMETER`` seems more straightforward.
+    enums:
+    - decl: |
+          enum Color {
+            RED,
+            BLUE,
+            WHITE
+          };
+
+In this case the type is implicitly defined so there is no need to add 
+it to the *types* list.  Integer parameters are created for each value::
+
+    >>> tutorial.RED
+    0
+    >>> type(tutorial.RED)
+    <type 'int'>
+
+.. note:: This isn't fully equivelent to C's enumerations since you can
+          assign to them as well.
+
 
 Structure
 ^^^^^^^^^

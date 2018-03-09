@@ -56,6 +56,14 @@
 extern "C" {
 #endif
 
+//  DIRECTION
+enum TUT_class1_DIRECTION {
+    UP = 2,
+    DOWN,
+    LEFT = 100,
+    RIGHT
+};
+
 // declaration of shadow types
 struct s_TUT_class1;
 typedef struct s_TUT_class1 TUT_class1;

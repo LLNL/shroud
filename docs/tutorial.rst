@@ -768,16 +768,19 @@ describe how to convert between C and C++::
     types:
       EnumTypeID:
         typedef  : int
-        cxx_type : EnumTypeID
-        c_to_cxx : static_cast<EnumTypeID>({c_var})
+        cxx_type : tutorial::EnumTypeID
+        c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
         cxx_to_c : static_cast<int>({cxx_var})
 
+The typename must be fully qualified
+(use ``tutorial::EnumTypeId`` instead of ``EnumTypeId``).
 The C argument is explicitly converted to a C++ type, then the
 return type is explicitly converted to a C type in the generated wrapper::
 
   int TUT_enumfunc(int arg)
   {
-    EnumTypeID SHCXX_rv = enumfunc(static_cast<EnumTypeID>(arg));
+    tutorial::EnumTypeID SHCXX_arg = static_cast<tutorial::EnumTypeID>(arg);
+    tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SHCXX_arg);
     int SHC_rv = static_cast<int>(SHCXX_rv);
     return SHC_rv;
   }
@@ -786,10 +789,36 @@ Without the explicit conversion you're likely to get an error such as::
 
   error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
 
-.. note:: Currently only the ``typedef`` is supported. There is no support
-          for adding the enumeration values for C and Fortran.
+A enum can also be fully defined to Fortran::
 
-          Fortran's ``ENUM, BIND(C)`` provides a way of matching 
+    enums:
+    - decl: |
+          enum Color {
+            RED,
+            BLUE,
+            WHITE
+          };
+
+In this case the type is implicitly defined so there is no need to add
+it to the *types* list.  The C header duplicates the enumeration, but
+within an ``extern "C"`` block::
+
+    //  Color
+    enum TUT_Color {
+        RED,
+        BLUE,
+        WHITE
+    };
+
+Fortran creates integer parameters for each value::
+
+    !  Color
+    integer(C_INT), parameter :: color_red = 0
+    integer(C_INT), parameter :: color_blue = 1
+    integer(C_INT), parameter :: color_white = 2
+
+
+.. note:: Fortran's ``ENUM, BIND(C)`` provides a way of matching 
           the size and values of enumerations.  However, it doesn't
           seem to buy you too much in this case.  Defining enumeration
           values as ``INTEGER, PARAMETER`` seems more straightforward.

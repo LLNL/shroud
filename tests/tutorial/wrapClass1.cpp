@@ -51,14 +51,6 @@ extern "C" {
 // splicer begin class.Class1.C_definitions
 // splicer end class.Class1.C_definitions
 
-//  DIRECTION
-enum TUT_class1_DIRECTION {
-    UP = 2,
-    DOWN,
-    LEFT = 100,
-    RIGHT
-};
-
 // Class1() +name(new)
 // function_index=0
 TUT_class1 * TUT_class1_new_default()

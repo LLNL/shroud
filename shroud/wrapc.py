@@ -173,6 +173,9 @@ class Wrapc(util.WrapperMixin):
                     'extern "C" {',
                     '#endif'
                     ])
+        if self.enum_impl:
+            write_file = True
+            output.extend(self.enum_impl)
         if self.header_forward:
             output.extend([
                 '',
@@ -269,9 +272,6 @@ class Wrapc(util.WrapperMixin):
         output.append('')
         if self._create_splicer('C_definitions', output):
             write_file = True
-        if self.enum_impl:
-            write_file = True
-            output.extend(self.enum_impl)
         if self.impl:
             write_file = True
             output.extend(self.impl)
