@@ -77,6 +77,7 @@ module tutorial_mod
         procedure :: delete => class1_delete
         procedure :: method1 => class1_method1
         procedure :: equivalent => class1_equivalent
+        procedure :: direction_func => class1_direction_func
         procedure :: get_instance => class1_get_instance
         procedure :: set_instance => class1_set_instance
         procedure :: associated => class1_associated
@@ -165,6 +166,16 @@ module tutorial_mod
             type(C_PTR), value, intent(IN) :: obj2
             logical(C_BOOL) :: SHT_rv
         end function c_class1_equivalent
+
+        function c_class1_direction_func(self, arg) &
+                result(SHT_rv) &
+                bind(C, name="TUT_class1_direction_func")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), value, intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: arg
+            integer(C_INT) :: SHT_rv
+        end function c_class1_direction_func
 
         ! splicer begin class.Class1.additional_interfaces
         ! splicer end class.Class1.additional_interfaces
@@ -473,6 +484,15 @@ module tutorial_mod
             integer(C_INT), intent(OUT) :: max
         end subroutine get_min_max
 
+        function direction_func(arg) &
+                result(SHT_rv) &
+                bind(C, name="TUT_direction_func")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg
+            integer(C_INT) :: SHT_rv
+        end function direction_func
+
         function c_useclass(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TUT_useclass")
@@ -699,6 +719,19 @@ contains
         ! splicer end class.Class1.method.equivalent
     end function class1_equivalent
 
+    ! DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+    ! function_index=5
+    function class1_direction_func(obj, arg) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(class1) :: obj
+        integer(C_INT), value, intent(IN) :: arg
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Class1.method.direction_func
+        SHT_rv = c_class1_direction_func(obj%voidptr, arg)
+        ! splicer end class.Class1.method.direction_func
+    end function class1_direction_func
+
     function class1_get_instance(obj) result (voidptr)
         use iso_c_binding, only: C_PTR
         class(class1), intent(IN) :: obj
@@ -724,7 +757,7 @@ contains
     ! splicer end class.Class1.additional_functions
 
     ! Singleton & getReference()
-    ! function_index=5
+    ! function_index=6
     function singleton_get_reference() &
             result(SHT_rv)
         type(singleton) :: SHT_rv
@@ -758,7 +791,7 @@ contains
     ! splicer end class.Singleton.additional_functions
 
     ! void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-    ! function_index=8
+    ! function_index=9
     subroutine sum(values, result)
         use iso_c_binding, only : C_INT, C_SIZE_T
         integer(C_SIZE_T) :: len
@@ -771,7 +804,7 @@ contains
     end subroutine sum
 
     ! bool Function3(bool arg +intent(in)+value)
-    ! function_index=10
+    ! function_index=11
     function function3(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -785,7 +818,7 @@ contains
     end function function3
 
     ! void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-    ! function_index=11
+    ! function_index=12
     subroutine function3b(arg1, arg2, arg3)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg1
@@ -805,7 +838,7 @@ contains
 
     ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)
     ! arg_to_buffer
-    ! function_index=12
+    ! function_index=13
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
@@ -821,7 +854,7 @@ contains
 
     ! void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=51
+    ! function_index=53
     subroutine function4b(arg1, arg2, output)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: arg1
@@ -836,7 +869,7 @@ contains
 
     ! double Function5()
     ! has_default_arg
-    ! function_index=39
+    ! function_index=41
     function function5() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -848,7 +881,7 @@ contains
 
     ! double Function5(double arg1=3.1415 +intent(in)+value)
     ! has_default_arg
-    ! function_index=40
+    ! function_index=42
     function function5_arg1(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -860,7 +893,7 @@ contains
     end function function5_arg1
 
     ! double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
-    ! function_index=14
+    ! function_index=15
     function function5_arg1_arg2(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_DOUBLE
@@ -876,7 +909,7 @@ contains
 
     ! void Function6(const std::string & name +intent(in))
     ! arg_to_buffer
-    ! function_index=15
+    ! function_index=16
     subroutine function6_from_name(name)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: name
@@ -887,7 +920,7 @@ contains
     end subroutine function6_from_name
 
     ! void Function6(int indx +intent(in)+value)
-    ! function_index=16
+    ! function_index=17
     subroutine function6_from_index(indx)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: indx
@@ -898,7 +931,7 @@ contains
 
     ! void Function7(int arg +intent(in)+value)
     ! cxx_template
-    ! function_index=41
+    ! function_index=43
     subroutine function7_int(arg)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: arg
@@ -909,7 +942,7 @@ contains
 
     ! void Function7(double arg +intent(in)+value)
     ! cxx_template
-    ! function_index=42
+    ! function_index=44
     subroutine function7_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
@@ -920,7 +953,7 @@ contains
 
     ! int Function8()
     ! cxx_template
-    ! function_index=43
+    ! function_index=45
     function function8_int() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -932,7 +965,7 @@ contains
 
     ! double Function8()
     ! cxx_template
-    ! function_index=44
+    ! function_index=46
     function function8_double() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -944,7 +977,7 @@ contains
 
     ! void Function9(float arg +intent(in)+value)
     ! fortran_generic
-    ! function_index=61
+    ! function_index=63
     subroutine function9_float(arg)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
         real(C_FLOAT), value, intent(IN) :: arg
@@ -955,7 +988,7 @@ contains
 
     ! void Function9(double arg +intent(in)+value)
     ! fortran_generic
-    ! function_index=62
+    ! function_index=64
     subroutine function9_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
@@ -965,7 +998,7 @@ contains
     end subroutine function9_double
 
     ! void Function10()
-    ! function_index=20
+    ! function_index=21
     subroutine function10_0()
         ! splicer begin function.function10_0
         call c_function10_0()
@@ -974,7 +1007,7 @@ contains
 
     ! void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    ! function_index=63
+    ! function_index=65
     subroutine function10_1_float(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT, C_INT
         character(*), intent(IN) :: name
@@ -987,7 +1020,7 @@ contains
 
     ! void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    ! function_index=64
+    ! function_index=66
     subroutine function10_1_double(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
         character(*), intent(IN) :: name
@@ -1000,7 +1033,7 @@ contains
 
     ! int overload1(int num +intent(in)+value)
     ! has_default_arg
-    ! function_index=45
+    ! function_index=47
     function overload1_num(num) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1013,7 +1046,7 @@ contains
 
     ! int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
-    ! function_index=46
+    ! function_index=48
     function overload1_num_offset(num, offset) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1026,7 +1059,7 @@ contains
     end function overload1_num_offset
 
     ! int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-    ! function_index=22
+    ! function_index=23
     function overload1_num_offset_stride(num, offset, stride) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1041,7 +1074,7 @@ contains
 
     ! int overload1(double type +intent(in)+value, int num +intent(in)+value)
     ! has_default_arg
-    ! function_index=47
+    ! function_index=49
     function overload1_3(type, num) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1055,7 +1088,7 @@ contains
 
     ! int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
-    ! function_index=48
+    ! function_index=50
     function overload1_4(type, num, offset) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1069,7 +1102,7 @@ contains
     end function overload1_4
 
     ! int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-    ! function_index=23
+    ! function_index=24
     function overload1_5(type, num, offset, stride) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1084,7 +1117,7 @@ contains
     end function overload1_5
 
     ! int useclass(const Class1 * arg1 +intent(in)+value)
-    ! function_index=28
+    ! function_index=30
     function useclass(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1096,7 +1129,7 @@ contains
     end function useclass
 
     ! const Class1 * getclass2()
-    ! function_index=29
+    ! function_index=31
     function getclass2() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -1106,7 +1139,7 @@ contains
     end function getclass2
 
     ! Class1 * getclass3()
-    ! function_index=30
+    ! function_index=32
     function getclass3() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -1117,7 +1150,7 @@ contains
 
     ! int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
     ! arg_to_buffer
-    ! function_index=31
+    ! function_index=33
     function vector_sum(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
@@ -1130,7 +1163,7 @@ contains
 
     ! void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))
     ! arg_to_buffer
-    ! function_index=32
+    ! function_index=34
     subroutine vector_iota(arg)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), intent(OUT) :: arg(:)
@@ -1141,7 +1174,7 @@ contains
 
     ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
     ! arg_to_buffer
-    ! function_index=33
+    ! function_index=35
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), intent(INOUT) :: arg(:)
@@ -1152,7 +1185,7 @@ contains
 
     ! int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
     ! arg_to_buffer
-    ! function_index=34
+    ! function_index=36
     !>
     !! \brief count number of underscore in vector of strings
     !!
@@ -1170,7 +1203,7 @@ contains
 
     ! void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))
     ! arg_to_buffer
-    ! function_index=35
+    ! function_index=37
     !>
     !! \brief Fill in arg with some animal names
     !!
@@ -1190,7 +1223,7 @@ contains
 
     ! void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))
     ! arg_to_buffer
-    ! function_index=36
+    ! function_index=38
     !>
     !! \brief append '-like' to names.
     !!
@@ -1206,7 +1239,7 @@ contains
 
     ! const std::string & LastFunctionCalled() +len(30)
     ! arg_to_buffer
-    ! function_index=38
+    ! function_index=40
     function last_function_called() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT

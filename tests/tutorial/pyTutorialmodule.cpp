@@ -677,6 +677,41 @@ PY_getMinMax(
 // splicer end function.get_min_max
 }
 
+static char PY_directionFunc__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_directionFunc(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
+// splicer begin function.direction_func
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:directionFunc",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return NULL;
+
+    // post_parse
+    tutorial::Class1::DIRECTION SH_arg = static_cast<tutorial::
+        Class1::DIRECTION>(arg);
+
+    tutorial::Class1::DIRECTION SHCXX_rv = tutorial::
+        directionFunc(SH_arg);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.direction_func
+}
+
 static char PY_useclass__doc__[] =
 "documentation"
 ;
@@ -892,6 +927,8 @@ static PyMethodDef PY_methods[] = {
     PY_colorfunc__doc__},
 {"getMinMax", (PyCFunction)PY_getMinMax, METH_NOARGS,
     PY_getMinMax__doc__},
+{"directionFunc", (PyCFunction)PY_directionFunc,
+    METH_VARARGS|METH_KEYWORDS, PY_directionFunc__doc__},
 {"useclass", (PyCFunction)PY_useclass, METH_VARARGS|METH_KEYWORDS,
     PY_useclass__doc__},
 {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,

@@ -74,10 +74,18 @@ class Tutorial(unittest.TestCase):
         self.assertEqual(tutorial.RED, tutorial.colorfunc(tutorial.BLUE))
 
     def test_enum_Direction(self):
+        # enum values
         self.assertEqual(2, tutorial.Class1.UP)
         self.assertEqual(3, tutorial.Class1.DOWN)
         self.assertEqual(100, tutorial.Class1.LEFT)
         self.assertEqual(101, tutorial.Class1.RIGHT)
+
+        obj = tutorial.Class1()
+        # class method with enums
+        self.assertEqual(tutorial.Class1.LEFT, obj.directionFunc(tutorial.Class1.LEFT))
+
+        # module method with enums
+        self.assertEqual(tutorial.Class1.RIGHT, tutorial.directionFunc(tutorial.Class1.LEFT))
      
     # test routine A
     def testFunction1(self):

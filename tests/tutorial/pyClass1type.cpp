@@ -158,6 +158,41 @@ PY_class1_equivalent(
 // splicer end class.Class1.method.equivalent
 }
 
+static char PY_class1_directionFunc__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_class1_directionFunc(
+  PY_Class1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// splicer begin class.Class1.method.direction_func
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:directionFunc",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return NULL;
+
+    // post_parse
+    tutorial::Class1::DIRECTION SH_arg = static_cast<tutorial::
+        Class1::DIRECTION>(arg);
+
+    tutorial::
+        Class1::DIRECTION SHCXX_rv = self->obj->directionFunc(SH_arg);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end class.Class1.method.direction_func
+}
+
 static int
 PY_Class1_tp_init(
   PY_Class1 *self,
@@ -198,6 +233,8 @@ static PyMethodDef PY_Class1_methods[] = {
         PY_class1_Method1__doc__},
     {"equivalent", (PyCFunction)PY_class1_equivalent,
         METH_VARARGS|METH_KEYWORDS, PY_class1_equivalent__doc__},
+    {"directionFunc", (PyCFunction)PY_class1_directionFunc,
+        METH_VARARGS|METH_KEYWORDS, PY_class1_directionFunc__doc__},
     // splicer begin class.Class1.PyMethodDef
     // splicer end class.Class1.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

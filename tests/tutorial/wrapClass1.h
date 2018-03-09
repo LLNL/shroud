@@ -74,6 +74,8 @@ int TUT_class1_method1(TUT_class1 * self);
 bool TUT_class1_equivalent(const TUT_class1 * self,
     const TUT_class1 * obj2);
 
+int TUT_class1_direction_func(TUT_class1 * self, int arg);
+
 #ifdef __cplusplus
 }
 #endif

@@ -130,4 +130,20 @@ bool TUT_class1_equivalent(const TUT_class1 * self,
 // splicer end class.Class1.method.equivalent
 }
 
+// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// function_index=5
+int TUT_class1_direction_func(TUT_class1 * self, int arg)
+{
+// splicer begin class.Class1.method.direction_func
+    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
+        static_cast<void *>(self));
+    tutorial::Class1::DIRECTION SHCXX_arg = static_cast<tutorial::
+        Class1::DIRECTION>(arg);
+    tutorial::Class1::DIRECTION SHCXX_rv = SH_this->directionFunc(
+        SHCXX_arg);
+    int SHC_rv = static_cast<int>(SHCXX_rv);
+    return SHC_rv;
+// splicer end class.Class1.method.direction_func
+}
+
 }  // extern "C"

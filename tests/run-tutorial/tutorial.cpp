@@ -273,6 +273,7 @@ Class1::DIRECTION Class1::directionFunc(Class1::DIRECTION arg)
     return Class1::LEFT;
 }
 
+// This method is not in the class but uses the class enum
 Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
 {
     last_function_called = "directionFunc";

@@ -121,12 +121,28 @@ static int l_class1_method1(lua_State *L)
     // splicer end class.Class1.method.Method1
 }
 
+// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+static int l_class1_direction_func(lua_State *L)
+{
+    // splicer begin class.Class1.method.directionFunc
+    tutorial::Class1::DIRECTION arg = static_cast<tutorial::
+        Class1::DIRECTION>(lua_tointeger(L, 1));
+    l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
+        L, 1, "Class1.metatable");
+    tutorial::
+        Class1::DIRECTION SHCXX_rv = SH_this->self->directionFunc(arg);
+    lua_pushinteger(L, static_cast<int>(SHCXX_rv));
+    return 1;
+    // splicer end class.Class1.method.directionFunc
+}
+
 // splicer begin class.Class1.additional_functions
 // splicer end class.Class1.additional_functions
 
 static const struct luaL_Reg l_Class1_Reg [] = {
     {"__gc", l_class1_delete},
     {"Method1", l_class1_method1},
+    {"directionFunc", l_class1_direction_func},
     // splicer begin class.Class1.register
     // splicer end class.Class1.register
     {NULL, NULL}   /*sentinel */
@@ -443,6 +459,18 @@ static int l_colorfunc(lua_State *L)
     // splicer end function.colorfunc
 }
 
+// Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
+static int l_direction_func(lua_State *L)
+{
+    // splicer begin function.directionFunc
+    tutorial::Class1::DIRECTION arg = static_cast<tutorial::
+        Class1::DIRECTION>(lua_tointeger(L, 1));
+    tutorial::Class1::DIRECTION SHCXX_rv = tutorial::directionFunc(arg);
+    lua_pushinteger(L, static_cast<int>(SHCXX_rv));
+    return 1;
+    // splicer end function.directionFunc
+}
+
 // const std::string & LastFunctionCalled() +len(30)
 static int l_last_function_called(lua_State *L)
 {
@@ -471,6 +499,7 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"typefunc", l_typefunc},
     {"enumfunc", l_enumfunc},
     {"colorfunc", l_colorfunc},
+    {"directionFunc", l_direction_func},
     {"LastFunctionCalled", l_last_function_called},
     // splicer begin register
     // splicer end register

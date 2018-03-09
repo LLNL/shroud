@@ -255,6 +255,7 @@ contains
 
   subroutine test_class1
     integer iflag
+    integer direction
     type(class1) obj0, obj1
     type(class1) obj0a
     type(c_ptr) ptr
@@ -281,6 +282,14 @@ contains
 
     call assert_true(obj0%equivalent(obj0))
     call assert_false(obj0%equivalent(obj1))
+
+    direction = -1
+    direction = obj0%direction_func(class1_direction_left)
+    call assert_equals(class1_direction_left, direction, "obj0.directionFunc")
+
+    direction = -1
+    direction = direction_func(class1_direction_left)
+    call assert_equals(class1_direction_right, direction, "directionFunc")
 
     ! use class assigns global_class1 returned by getclass
     iflag = useclass(obj0)
