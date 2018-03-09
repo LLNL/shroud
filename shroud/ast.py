@@ -371,11 +371,17 @@ class LibraryNode(AstNode):
         self.eval_template('F_module_name', '_library')
         self.eval_template('F_impl_filename', '_library')
 
-    def add_namespace(self, name, parentoptions=None, **kwargs):
-        """Add an namespace
+    def add_class(self, name, **kwargs):
+        """Add a class.
         """
-        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
-                             **kwargs)
+        node = ClassNode(name, self, **kwargs)
+        self.classes.append(node)
+        self.symbols[name] = node
+        return node
+
+    def add_class_forward(self, name):
+        """Forward declare a class."""
+        node = ClassForwardNode(name, self)
         self.symbols[name] = node
         return node
 
@@ -396,17 +402,11 @@ class LibraryNode(AstNode):
         self.functions.append(fcnnode)
         return fcnnode
 
-    def add_class(self, name, **kwargs):
-        """Add a class.
+    def add_namespace(self, name, parentoptions=None, **kwargs):
+        """Add an namespace
         """
-        node = ClassNode(name, self, **kwargs)
-        self.classes.append(node)
-        self.symbols[name] = node
-        return node
-
-    def add_class_forward(self, name):
-        """Forward declare a class."""
-        node = ClassForwardNode(name, self)
+        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
+                             **kwargs)
         self.symbols[name] = node
         return node
 
@@ -510,14 +510,6 @@ class NamespaceNode(AstNode):
         self.symbols[name] = node
         return node
 
-    def add_namespace(self, name, parentoptions=None, **kwargs):
-        """Add an namespace
-        """
-        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
-                             **kwargs)
-        self.symbols[name] = node
-        return node
-
     def add_enum(self, decl, parentoptions=None, **kwargs):
         """Add an enumeration.
         """
@@ -534,6 +526,14 @@ class NamespaceNode(AstNode):
                                **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
+
+    def add_namespace(self, name, parentoptions=None, **kwargs):
+        """Add an namespace
+        """
+        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
+                             **kwargs)
+        self.symbols[name] = node
+        return node
 
     def add_typedef(self, name):
         """Add a typedef.
