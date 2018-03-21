@@ -49,14 +49,14 @@
 #ifndef WRAPSTRINGS_H
 #define WRAPSTRINGS_H
 
+#include <stddef.h>
+
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// declaration of wrapped types
 
 // splicer begin C_declarations
 // splicer end C_declarations
@@ -88,29 +88,50 @@ const char * STR_get_char_ptr3();
 
 void STR_get_char_ptr3_bufferify(char * output, int Noutput);
 
-const char * STR_get_string1();
+void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv);
 
-void STR_get_string1_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_const_string_as_arg_bufferify(char * output, int Noutput);
 
-const char * STR_get_string2();
+void STR_get_const_string_alloc_bufferify(const void * * SHF_rv,
+    size_t *NSHF_rv);
 
-void STR_get_string2_bufferify(char * SHF_rv, int NSHF_rv);
+const char * STR_get_const_string_ref_pure();
 
-const char * STR_get_string3();
+void STR_get_const_string_ref_pure_bufferify(char * SHF_rv,
+    int NSHF_rv);
 
-void STR_get_string3_bufferify(char * output, int Noutput);
+const char * STR_get_const_string_ref_len();
 
-const char * STR_get_string2_empty();
+void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv);
 
-void STR_get_string2_empty_bufferify(char * SHF_rv, int NSHF_rv);
+const char * STR_get_const_string_ref_as_arg();
 
-void STR_get_string5_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_const_string_ref_as_arg_bufferify(char * output,
+    int Noutput);
 
-void STR_get_string6_bufferify(char * output, int Noutput);
+const char * STR_get_const_string_ref_len_empty();
 
-const char * STR_get_string7();
+void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
+    int NSHF_rv);
 
-void STR_get_string7_bufferify(char * SHF_rv, int NSHF_rv);
+const char * STR_get_const_string_ref_alloc();
+
+void STR_get_const_string_ref_alloc_bufferify(const void * * SHF_rv,
+    size_t *NSHF_rv);
+
+const char * STR_get_const_string_ptr_len();
+
+void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv);
+
+const char * STR_get_const_string_ptr_alloc();
+
+void STR_get_const_string_ptr_alloc_bufferify(const void * * SHF_rv,
+    size_t *NSHF_rv);
+
+const char * STR_get_const_string_ptr_owns_alloc();
+
+void STR_get_const_string_ptr_owns_alloc_bufferify(
+    const void * * SHF_rv, size_t *NSHF_rv);
 
 void STR_accept_string_const_reference(const char * arg1);
 

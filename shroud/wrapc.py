@@ -83,6 +83,7 @@ class Wrapc(util.WrapperMixin):
         self.header_impl_include = {}
         self.header_proto_c = []
         self.impl = []
+        self.enum_impl = []
         self.c_helper = {}
 
     def wrap_library(self):
@@ -111,11 +112,19 @@ class Wrapc(util.WrapperMixin):
         if cls:
             self.wrap_class(cls)
         else:
+            self.wrap_enums(library)
             self.wrap_functions(library)
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
         self.write_header(library, cls, c_header)
         self.write_impl(library, cls, c_header, c_impl)
+
+    def wrap_enums(self, node):
+        """Wrap all enums in a splicer block"""
+        self._push_splicer('enum')
+        for node in node.enums:
+            self.wrap_enum(None, node)
+        self._pop_splicer('enum')
 
     def wrap_functions(self, library):
         # worker function for write_file
@@ -164,17 +173,20 @@ class Wrapc(util.WrapperMixin):
                     'extern "C" {',
                     '#endif'
                     ])
-        output.extend([
-                '',
-                '// declaration of wrapped types'
-                ])
-        names = sorted(self.header_forward.keys())
-        for name in names:
+        if self.enum_impl:
             write_file = True
-            output.append(
-                'struct s_{C_type_name};\n'
-                'typedef struct s_{C_type_name} {C_type_name};'.
-                format(C_type_name=name))
+            output.extend(self.enum_impl)
+        if self.header_forward:
+            output.extend([
+                '',
+                '// declaration of shadow types'
+            ])
+            for name in sorted(self.header_forward.keys()):
+                write_file = True
+                output.append(
+                    'struct s_{C_type_name};\n'
+                    'typedef struct s_{C_type_name} {C_type_name};'.
+                    format(C_type_name=name))
         output.append('')
         if self._create_splicer('C_declarations', output):
             write_file = True
@@ -252,7 +264,6 @@ class Wrapc(util.WrapperMixin):
             write_file = True
             output.extend(helper_source)
 
-        self.namespace(library, cls, 'begin', output)
         if self.language == 'c++':
             output.append('')
             if self._create_splicer('CXX_definitions', output):
@@ -268,7 +279,6 @@ class Wrapc(util.WrapperMixin):
         if self.language == 'c++':
             output.append('')
             output.append('}  // extern "C"')
-        self.namespace(library, cls, 'end', output)
 
         if cls and cls.cpp_if:
             output.append('#endif  // ' + node.cpp_if)
@@ -291,10 +301,38 @@ class Wrapc(util.WrapperMixin):
         # create a forward declaration for this type
         self.header_forward[cname] = True
 
+        self.wrap_enums(node)
+
         self._push_splicer('method')
         for method in node.functions:
             self.wrap_function(node, method)
         self._pop_splicer('method')
+
+    def wrap_enum(self, cls, node):
+        """Wrap an enumeration.
+        This largly echo the C++ code
+        For classes, it adds prefixes.
+        """
+        options = node.options
+        ast = node.ast
+        output = self.enum_impl
+
+        node.eval_template('C_enum')
+        fmt_enum = node.fmtdict
+        fmtmembers = node._fmtmembers
+
+        output.append('')
+        append_format(output, '//  {enum_name}', fmt_enum)
+        append_format(output, 'enum {C_enum} {{+', fmt_enum)
+        for member in ast.members:
+            fmt_id = fmtmembers[member.name]
+            fmt_id.C_enum_member = wformat(options.C_enum_member_template, fmt_id)
+            if member.value is not None:
+                append_format(output, '{C_enum_member} = {cxx_value},', fmt_id)
+            else:
+                append_format(output, '{C_enum_member},', fmt_id)
+        output[-1] = output[-1][:-1]        # Avoid trailing comma for older compilers
+        append_format(output, '-}};', fmt_enum)
 
     def wrap_function(self, cls, node):
         """
@@ -352,6 +390,8 @@ class Wrapc(util.WrapperMixin):
         result_is_const = ast.const
         is_ctor = CXX_result.fattrs.get('_constructor', False)
         is_dtor = CXX_result.fattrs.get('_destructor', False)
+        is_static = False
+        is_allocatable = CXX_result.fattrs.get('allocatable', False)
         is_const = ast.func_const
 
         # C++ functions which return 'this',
@@ -384,49 +424,59 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
             if result_typedef.cxx_to_c is None:
                 # C and C++ are compatible
-                fmt_result.c_var = wformat('{C_local}{C_result}', fmt_result)
+                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.c_var
             else:
-                fmt_result.c_var = wformat('{C_local}{C_result}', fmt_result)
-                fmt_result.cxx_var = wformat('{CXX_local}{C_result}', fmt_result)
+                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
+                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True)
-            if CXX_result.is_pointer():
+            if is_ctor or CXX_result.is_pointer():
+                # The C wrapper always creates a pointer to the new in the ctor
                 fmt_result.cxx_deref = '->'
+                fmt_result.cxx_addr = ''
             else:
                 fmt_result.cxx_deref = '.'
+                fmt_result.cxx_addr = '&'
             fmt_pattern = fmt_result
 
-        proto_list = []
-        call_list = []
-        if cls:
-            need_wrapper = True
-            # object pointer
-            rvast = declast.create_this_arg(fmt_func.C_this, cls.name, is_const)
-            if not is_ctor:
-                arg = rvast.gen_arg_as_c(continuation=True)
-                proto_list.append(arg)
+        proto_list = []  # arguments for wrapper prototype
+        call_list = []   # arguments to call function
 
         # indicate which argument contains function result, usually none
         result_arg = None
         pre_call = []      # list of temporary variable declarations
+        call_code = []
         post_call = []
 
-        if cls and not is_ctor:
-            if is_const:
-                fmt_func.c_const = 'const '
+        if cls:
+            need_wrapper = True
+            is_static = 'static' in ast.storage
+            if is_ctor:
+                pass
             else:
-                fmt_func.c_const = ''
-            fmt_func.c_ptr = ' *'
-            fmt_func.c_var = fmt_func.C_this
-            # LHS is class' cxx_to_c
-            cls_typedef = typemap.Typedef.lookup(cls.name)
-            if cls_typedef.c_to_cxx is None:
-                # This should be set in typemap.typedef_wrapped_defaults
-                raise RuntimeError("Wappped class does not have c_to_cxx set")
-            append_format(pre_call, 
-                          '{c_const}{cxx_class} *{CXX_this} = ' +
-                          cls_typedef.c_to_cxx + ';', fmt_func)
+                if is_const:
+                    fmt_func.c_const = 'const '
+                else:
+                    fmt_func.c_const = ''
+                fmt_func.c_ptr = ' *'
+                fmt_func.c_var = fmt_func.C_this
+                if is_static:
+                    fmt_func.CXX_this_call = fmt_func.namespace_scope + fmt_func.class_scope
+                else:
+                    # 'this' argument
+                    rvast = declast.create_this_arg(fmt_func.C_this, cls.name, is_const)
+                    arg = rvast.gen_arg_as_c(continuation=True)
+                    proto_list.append(arg)
+
+                    # LHS is class' cxx_to_c
+                    cls_typedef = typemap.Typedef.lookup(cls.name)
+                    if cls_typedef.c_to_cxx is None:
+                        # This should be set in typemap.typedef_shadow_defaults
+                        raise RuntimeError("Wappped class does not have c_to_cxx set")
+                    append_format(pre_call, 
+                                  '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
+                                  cls_typedef.c_to_cxx + ';', fmt_func)
 
 #    c_var      - argument to C function  (wrapper function)
 #    c_var_trim - variable with trimmed length of c_var
@@ -453,9 +503,11 @@ class Wrapc(util.WrapperMixin):
             if arg.is_pointer():
                 fmt_arg.c_ptr = ' *'
                 fmt_arg.cxx_deref = '->'
+#                fmt_arg.cxx_addr = ''
             else:
                 fmt_arg.c_ptr = ''
                 fmt_arg.cxx_deref = '.'
+#                fmt_arg.cxx_addr = '&'
             fmt_arg.cxx_type = arg_typedef.cxx_type
             cxx_local_var = ''
 
@@ -466,9 +518,9 @@ class Wrapc(util.WrapperMixin):
 
                 # Note that result_type is void, so use arg_typedef.
                 if arg_typedef.cxx_to_c is None:
-                    fmt_arg.cxx_var = wformat('{C_local}{C_result}', fmt_func)
+                    fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
                 else:
-                    fmt_arg.cxx_var = wformat('{CXX_local}{C_result}', fmt_func)
+                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
                 # Set cxx_var for C_finalize which evalutes in fmt_result context
                 fmt_result.cxx_var = fmt_arg.cxx_var
                 fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
@@ -480,15 +532,24 @@ class Wrapc(util.WrapperMixin):
                 need_wrapper = True
                 if CXX_result.is_pointer():
                     fmt_arg.cxx_deref = '->'
+                    fmt_arg.cxx_addr = ''
                 else:
                     fmt_arg.cxx_deref = '.'
+                    fmt_arg.cxx_addr = '&'
+
+                if is_allocatable:
+                    if not CXX_result.is_indirect():
+                        # An intermediate string * is allocated
+                        # to save std::string result.
+                        fmt_arg.cxx_addr = ''
+                        fmt_arg.cxx_deref = '->'
             else:
                 arg_call = arg
                 if arg_typedef.c_to_cxx is None:
                     fmt_arg.cxx_var = fmt_arg.c_var      # compatible
                 else:
                     # convert C argument to C++
-                    fmt_arg.cxx_var = wformat('{CXX_local}{c_var}', fmt_arg)
+                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
                     fmt_arg.cxx_val = wformat(arg_typedef.c_to_cxx, fmt_arg)
                     fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                         name=fmt_arg.cxx_var, params=None, as_ptr=True, continuation=True)
@@ -520,6 +581,7 @@ class Wrapc(util.WrapperMixin):
                 elif buf_arg == 'lenout':
                     fmt_arg.c_var_len = c_attrs['lenout']
                     append_format(proto_list, 'size_t *{c_var_len}', fmt_arg)
+                    self.header_typedef_include['<stddef.h>'] = True
                 else:
                     raise RuntimeError("wrap_function: unhandled case {}"
                                        .format(buf_arg))
@@ -531,7 +593,7 @@ class Wrapc(util.WrapperMixin):
             if 'cxx_local_var' in intent_blk:
                 cxx_local_var = intent_blk['cxx_local_var']
                 fmt_arg.cxx_var = fmt_arg.C_argument + fmt_arg.c_var
-#                    fmt_arg.cxx_var = wformat('{CXX_local}{c_var}', fmt_arg)
+#                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
 # This uses C_local or CXX_local for arguments.
 #                if 'cxx_T' in fmt_arg:
 #                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_arg.c_var
@@ -625,8 +687,8 @@ class Wrapc(util.WrapperMixin):
         # generate the C body
         C_return_code = 'return;'
         if is_ctor:
-            fmt_func.C_call_code = wformat('{cxx_rv_decl} = new {cxx_class}'
-                                           '({C_call_list});', fmt_func)
+            append_format(call_code, '{cxx_rv_decl} = new {namespace_scope}'
+                          '{cxx_class}({C_call_list});', fmt_func)
             if result_typedef.cxx_to_c is not None:
                 fmt_func.c_rv_decl = CXX_result.gen_arg_as_c(
                     name=fmt_result.c_var, params=None, continuation=True)
@@ -634,22 +696,15 @@ class Wrapc(util.WrapperMixin):
             append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:
-            fmt_func.C_call_code = 'delete %s;' % fmt_func.CXX_this
+            append_format(call_code, 'delete {CXX_this};', fmt_func)
         elif CXX_subprogram == 'subroutine':
-            fmt_func.C_call_code = wformat(
-                '{CXX_this_call}{function_name}'
-                '{CXX_template}(\t{C_call_list});',
-                fmt_func)
+            append_format(call_code, '{CXX_this_call}{function_name}'
+                          '{CXX_template}(\t{C_call_list});', fmt_func)
         else:
-            fmt_func.C_call_code = wformat(
-                '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'
-                '{CXX_template}(\t{C_call_list});',
-                fmt_func)
+            added_call_code = False
 
             if result_arg is None:
                 # The result is not passed back in an argument
-                c_statements = result_typedef.c_statements
-                intent_blk = c_statements.get('result', {})
                 if self.language == 'c':
                     pass
                 elif result_typedef.cxx_to_c is not None:
@@ -660,6 +715,8 @@ class Wrapc(util.WrapperMixin):
                     fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
                     append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
 
+                c_statements = result_typedef.c_statements
+                intent_blk = c_statements.get('result' + generated_suffix, {})
                 cmd_list = intent_blk.get('post_call', [])
                 for cmd in cmd_list:
                     append_format(post_call, cmd, fmt_result)
@@ -667,6 +724,20 @@ class Wrapc(util.WrapperMixin):
                 if 'c_helper' in intent_blk:
                     for helper in intent_blk['c_helper'].split():
                         self.c_helper[helper] = True
+            elif is_allocatable:
+                if not CXX_node.ast.is_indirect():
+                    # Allocate intermediate string before calling function
+                    fmt_arg = fmtargs[result_arg.name]['fmtc']
+                    append_format(call_code, # no const
+                                  'std::string * {cxx_var} = new std::string;\n'
+                                  '*{cxx_var} = {CXX_this_call}{function_name}{CXX_template}'
+                                  '(\t{C_call_list});', fmt_arg)
+                    added_call_code = True
+
+            if not added_call_code:
+                append_format(call_code, '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'
+                              '{CXX_template}(\t{C_call_list});', fmt_func)
+
 
             if subprogram == 'function':
                 # Note: A C function may be converted into a Fortran subroutine
@@ -691,6 +762,7 @@ class Wrapc(util.WrapperMixin):
 
         if pre_call:
             fmt_func.C_pre_call = '\n'.join(pre_call)
+        fmt_func.C_call_code = '\n'.join(call_code)
         if post_call:
             fmt_func.C_post_call = '\n'.join(post_call)
 
@@ -705,7 +777,7 @@ class Wrapc(util.WrapperMixin):
             # copy-out values, clean up
             C_code = [1]
             C_code.extend(pre_call)
-            C_code.append(fmt_func.C_call_code)
+            C_code.extend(call_code)
             C_code.extend(post_call_pattern)
             C_code.extend(post_call)
             C_code.append(fmt_func.C_return_code)

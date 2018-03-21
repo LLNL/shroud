@@ -56,16 +56,20 @@ const char * getCharPtr1();
 const char * getCharPtr2();
 const char * getCharPtr3();
 
-const std::string& getString1();
-const std::string& getString2();
-const std::string& getString3();
-const std::string& getString2_empty();
-
 const std::string getString4();
-const std::string getString5();
-const std::string getString6();
+const std::string getConstStringLen();
+const std::string getConstStringAsArg();
+const std::string getConstStringAlloc();
 
-std::string * getString7();
+const std::string& getConstStringRefPure();
+const std::string& getConstStringRefLen();
+const std::string& getConstStringRefAsArg();
+const std::string& getConstStringRefLenEmpty();
+const std::string& getConstStringRefAlloc();
+
+const std::string * getConstStringPtrLen();
+const std::string * getConstStringPtrAlloc();
+const std::string * getConstStringPtrOwnsAlloc();
 
 void acceptName_instance(std::string arg1);
 

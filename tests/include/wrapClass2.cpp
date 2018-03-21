@@ -58,7 +58,8 @@ void DEF_class2_method1(DEF_class2 * self, MPI_Fint comm)
 void DEF_class2_method2(DEF_class2 * self, DEF_class1 * c2)
 {
     Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));
-    Class1 * SHCXX_c2 = static_cast<Class1 *>(static_cast<void *>(c2));
+    three::Class1 * SHCXX_c2 = static_cast<three::Class1 *>(
+        static_cast<void *>(c2));
     SH_this->method2(SHCXX_c2);
     return;
 }

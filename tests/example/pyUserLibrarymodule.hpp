@@ -45,12 +45,17 @@
 // splicer begin header.include
 // splicer end header.include
 
-namespace example {
-namespace nested {
-
 // forward declare classes
-class ExClass1;
-class ExClass2;
+namespace example {
+    namespace nested {
+        class ExClass1;
+    }
+}
+namespace example {
+    namespace nested {
+        class ExClass2;
+    }
+}
 
 extern PyTypeObject PP_ExClass1_Type;
 extern PyTypeObject PP_ExClass2_Type;
@@ -61,9 +66,9 @@ extern PyTypeObject PP_ExClass2_Type;
 // helper functions
 extern const char *PY_ExClass1_capsule_name;
 extern const char *PY_ExClass2_capsule_name;
-PyObject *PP_ExClass1_to_Object(ExClass1 *addr);
+PyObject *PP_ExClass1_to_Object(example::nested::ExClass1 *addr);
 int PP_ExClass1_from_Object(PyObject *obj, void **addr);
-PyObject *PP_ExClass2_to_Object(ExClass2 *addr);
+PyObject *PP_ExClass2_to_Object(example::nested::ExClass2 *addr);
 int PP_ExClass2_from_Object(PyObject *obj, void **addr);
 
 // splicer begin class.ExClass1.C_declaration
@@ -71,7 +76,7 @@ int PP_ExClass2_from_Object(PyObject *obj, void **addr);
 
 typedef struct {
 PyObject_HEAD
-    ExClass1 * obj;
+    example::nested::ExClass1 * obj;
     // splicer begin class.ExClass1.C_object
     // splicer end class.ExClass1.C_object
 } PP_ExClass1;
@@ -80,22 +85,17 @@ PyObject_HEAD
 
 typedef struct {
 PyObject_HEAD
-    ExClass2 * obj;
+    example::nested::ExClass2 * obj;
     // splicer begin class.ExClass2.C_object
     // splicer end class.ExClass2.C_object
 } PP_ExClass2;
 
 extern PyObject *PP_error_obj;
 
-extern "C" {
 #if PY_MAJOR_VERSION >= 3
-PyMODINIT_FUNC PyInit_userlibrary(void);
+extern "C" PyMODINIT_FUNC PyInit_userlibrary(void);
 #else
-PyMODINIT_FUNC inituserlibrary(void);
+extern "C" PyMODINIT_FUNC inituserlibrary(void);
 #endif
-}   // extern "C"
 
-
-}  // namespace nested
-}  // namespace example
 #endif  /* PYUSERLIBRARYMODULE_HPP */

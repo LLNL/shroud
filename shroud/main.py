@@ -259,7 +259,6 @@ def main_with_args(args):
 #    print(all)
 
     def_types, def_types_alias = typemap.initialize()
-    declast.add_typemap()
 
     # Write out native types as YAML if requested
     if config.yaml_types:

@@ -768,16 +768,19 @@ describe how to convert between C and C++::
     types:
       EnumTypeID:
         typedef  : int
-        cxx_type : EnumTypeID
-        c_to_cxx : static_cast<EnumTypeID>({c_var})
+        cxx_type : tutorial::EnumTypeID
+        c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
         cxx_to_c : static_cast<int>({cxx_var})
 
+The typename must be fully qualified
+(use ``tutorial::EnumTypeId`` instead of ``EnumTypeId``).
 The C argument is explicitly converted to a C++ type, then the
 return type is explicitly converted to a C type in the generated wrapper::
 
   int TUT_enumfunc(int arg)
   {
-    EnumTypeID SHCXX_rv = enumfunc(static_cast<EnumTypeID>(arg));
+    tutorial::EnumTypeID SHCXX_arg = static_cast<tutorial::EnumTypeID>(arg);
+    tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SHCXX_arg);
     int SHC_rv = static_cast<int>(SHCXX_rv);
     return SHC_rv;
   }
@@ -786,10 +789,36 @@ Without the explicit conversion you're likely to get an error such as::
 
   error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
 
-.. note:: Currently only the ``typedef`` is supported. There is no support
-          for adding the enumeration values for C and Fortran.
+A enum can also be fully defined to Fortran::
 
-          Fortran's ``ENUM, BIND(C)`` provides a way of matching 
+    enums:
+    - decl: |
+          enum Color {
+            RED,
+            BLUE,
+            WHITE
+          };
+
+In this case the type is implicitly defined so there is no need to add
+it to the *types* list.  The C header duplicates the enumeration, but
+within an ``extern "C"`` block::
+
+    //  Color
+    enum TUT_Color {
+        RED,
+        BLUE,
+        WHITE
+    };
+
+Fortran creates integer parameters for each value::
+
+    !  Color
+    integer(C_INT), parameter :: color_red = 0
+    integer(C_INT), parameter :: color_blue = 1
+    integer(C_INT), parameter :: color_white = 2
+
+
+.. note:: Fortran's ``ENUM, BIND(C)`` provides a way of matching 
           the size and values of enumerations.  However, it doesn't
           seem to buy you too much in this case.  Defining enumeration
           values as ``INTEGER, PARAMETER`` seems more straightforward.
@@ -901,3 +930,43 @@ And the Fortran version::
     cptr = class1_new()
     call cptr%method1
 
+Class static methods
+^^^^^^^^^^^^^^^^^^^^
+
+Class static methods are supported using the ``NOPASS`` keyword in Fortran.
+To wrap the method::
+
+    class Singleton {
+        static Singleton& getReference();
+    }
+
+Use the YAML input::
+
+    - name: Singleton
+      functions:
+      - decl: static Singleton& getReference()
+
+This produces the C code::
+
+    TUT_singleton * TUT_singleton_get_reference()
+    {
+        Singleton & SHCXX_rv = Singleton::getReference();
+        TUT_singleton * SHC_rv = static_cast<TUT_singleton *>(
+            static_cast<void *>(&SHCXX_rv));
+        return SHC_rv;
+    }
+
+The derived type has a function with the ``NOPASS`` keyword::
+
+    type singleton
+        type(C_PTR), private :: voidptr
+    contains
+        procedure, nopass :: get_reference => singleton_get_reference
+    end type singleton
+
+Called from Fortran as::
+
+    type(singleton) obj0
+    obj0 = obj0%get_reference()
+
+Note that obj0 is not assigned a value before the function ``get_reference`` is called.

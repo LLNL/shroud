@@ -96,7 +96,7 @@ types:
   # This example is pulled from spio
   # DataGroup is a type which is provided by another shroud wrapped library
   DataGroup:
-    base: wrapped
+    base: shadow
     cxx_header: sidre/Group.hpp
     cxx_type: axom::sidre::Group
     c_header: sidre/wrapGroup.h
@@ -158,7 +158,9 @@ classes:
       format:
          F_string_result_as_arg: name
 
-    - decl: ExClass2 *getRoot()
+# XXX deal with forward declare
+#    - decl: ExClass2 *getRoot()
+    - decl: void *getRoot()
 
     - decl: int  getValue(int value)
       format:
@@ -378,10 +380,6 @@ functions:
       brief: Test multidimensional arrays with allocatable
     options:
        F_standard: 2008
-
-  # function with allocatable character result
-  - decl: const std::string& getString2() +allocatable
-
 
 
 ######################################################################

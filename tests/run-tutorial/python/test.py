@@ -64,6 +64,28 @@ class Tutorial(unittest.TestCase):
         print("FooTest:tearDown_:begin")
         ## do something...
         print("FooTest:tearDown_:end")
+
+    def test_enum_Color(self):
+        self.assertEqual(0, tutorial.RED)
+        self.assertEqual(1, tutorial.BLUE)
+        self.assertEqual(2, tutorial.WHITE)
+
+        # pass and return enumeration
+        self.assertEqual(tutorial.RED, tutorial.colorfunc(tutorial.BLUE))
+
+    def test_enum_Direction(self):
+        # enum values
+        self.assertEqual(2, tutorial.Class1.UP)
+        self.assertEqual(3, tutorial.Class1.DOWN)
+        self.assertEqual(100, tutorial.Class1.LEFT)
+        self.assertEqual(101, tutorial.Class1.RIGHT)
+
+        obj = tutorial.Class1()
+        # class method with enums
+        self.assertEqual(tutorial.Class1.LEFT, obj.directionFunc(tutorial.Class1.LEFT))
+
+        # module method with enums
+        self.assertEqual(tutorial.Class1.RIGHT, tutorial.directionFunc(tutorial.Class1.LEFT))
      
     # test routine A
     def testFunction1(self):
@@ -194,6 +216,12 @@ class Tutorial(unittest.TestCase):
         obj0 = tutorial.Class1()
         self.assertRaises(TypeError, tutorial.useclass(obj0))
 
+    def test_singleton(self):
+        # it'd be cool if obj0 is obj1
+        obj0 = tutorial.Singleton.getReference()
+        obj1 = tutorial.Singleton.getReference()
+
+        obj2 = obj0.getReference()
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

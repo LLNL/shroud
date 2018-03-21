@@ -62,6 +62,7 @@ program tester
 
   call init_fruit
 
+  call test_enums
   call test_functions
 
   call test_vector
@@ -69,6 +70,7 @@ program tester
   call test_callback
 
   call test_class1
+  call test_singleton
 
   call fruit_summary
   call fruit_finalize
@@ -79,6 +81,26 @@ program tester
   endif
 
 contains
+
+  subroutine test_enums
+    ! test values of enumerations
+    integer(C_INT) rv_int
+
+    call set_case_name("test_enums")
+
+    call assert_equals(0, color_red)
+    call assert_equals(1, color_blue)
+    call assert_equals(2, color_white)
+
+    call assert_equals(2, class1_direction_up)
+    call assert_equals(3, class1_direction_down)
+    call assert_equals(100, class1_direction_left)
+    call assert_equals(101, class1_direction_right)
+
+    rv_int = colorfunc(color_BLUE)
+    call assert_true(rv_int .eq. color_RED)
+
+  end subroutine test_enums
 
   subroutine test_functions
 
@@ -112,9 +134,6 @@ contains
 
     call function4b("dog", "cat", rv_char)
     call assert_true( rv_char == "dogcat")
-
-! work-in-progress   allocatable function
-!    call assert_true( function4c("dog", "cat") == "dogcat")
 
     call assert_equals(function5(), 13.1415d0)
     call assert_equals(function5(1.d0), 11.d0)
@@ -236,6 +255,7 @@ contains
 
   subroutine test_class1
     integer iflag
+    integer direction
     type(class1) obj0, obj1
     type(class1) obj0a
     type(c_ptr) ptr
@@ -263,6 +283,14 @@ contains
     call assert_true(obj0%equivalent(obj0))
     call assert_false(obj0%equivalent(obj1))
 
+    direction = -1
+    direction = obj0%direction_func(class1_direction_left)
+    call assert_equals(class1_direction_left, direction, "obj0.directionFunc")
+
+    direction = -1
+    direction = direction_func(class1_direction_left)
+    call assert_equals(class1_direction_right, direction, "directionFunc")
+
     ! use class assigns global_class1 returned by getclass
     iflag = useclass(obj0)
     call assert_equals(iflag, 0, "useclass")
@@ -282,5 +310,17 @@ contains
 
     ! obj0a has a dangling reference to a deleted object
   end subroutine test_class1
+
+  subroutine test_singleton
+    type(singleton) obj0, obj1
+
+    call set_case_name("test_singleton")
+
+    obj0 = obj0%get_reference()
+    obj1 = obj1%get_reference()
+
+    call assert_true(obj0 .eq. obj1, "obj0 .eq obj1")
+
+  end subroutine test_singleton
 
 end program tester

@@ -34,3 +34,14 @@ which is wrapped by the corresponding yaml file
 (i.e. tests/tutorial.yaml wraps run/tutorial)
 
 test/default.mk has compiler flags
+
+
+file dependency
+---------------
+
+main.py
+wrapX.py  generate.py
+declast.py
+ast.py    typemap.py
+todict.py
+util.py visitor.py  whelpers.py  # no dependencies

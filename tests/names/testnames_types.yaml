@@ -44,7 +44,7 @@
 types:
 
   Names:
-    base: wrapped
+    base: shadow
     cxx_type: Names
     c_type: TES_names
     f_derived_type: FNames
@@ -54,7 +54,7 @@ types:
       - names
 
   Names2:
-    base: wrapped
+    base: shadow
     cxx_type: Names2
     c_type: TES_names2
     f_derived_type: names2

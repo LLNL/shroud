@@ -43,10 +43,6 @@ Convert some data structures into a dictionary.
 Useful for debugging and seralizing instances as json.
 """
 
-from . import ast
-from . import declast
-from . import typemap
-from . import util
 from . import visitor
 
 class ToDict(visitor.Visitor):
@@ -135,9 +131,24 @@ class ToDict(visitor.Visitor):
 
     def visit_Constant(self, node):
         d = dict(
-            value = node.value
+            constant = node.value
         )
         return d
+
+    def visit_EnumValue(self, node):
+        if node.value is None:
+            d = dict(name=node.name)
+        else:
+            d = dict(name=node.name, value=self.visit(node.value))
+        return d
+
+    def visit_Enum(self, node):
+        d = dict(
+            name=node.name,
+            members=self.visit(node.members)
+        )
+        return d
+        
 
 ######################################################################
 
@@ -173,7 +184,7 @@ class ToDict(visitor.Visitor):
             value = getattr(node, key)
             if value:
                 d[key] = value
-        for key in [ 'classes', 'functions' ]:
+        for key in [ 'classes', 'enums', 'functions' ]:
             value = getattr(node, key)
             if value:
                 d[key] = self.visit(value)
@@ -190,7 +201,16 @@ class ToDict(visitor.Visitor):
             value = getattr(node, key)
             if value:
                 d[key] = value
-        d['methods'] = self.visit(node.functions)
+        for key in [ 'enums', 'functions' ]:
+            value = getattr(node, key)
+            if value:
+                d[key] = self.visit(value)
+        return d
+
+    def visit_ClassForwardNode(self, node):
+        d = dict(
+            name=node.name,
+        )
         return d
 
     def visit_FunctionNode(self, node):
@@ -220,6 +240,28 @@ class ToDict(visitor.Visitor):
                 d[key] = value
         return d
 
+    def visit_EnumNode(self, node):
+        d = dict(
+            name=node.name,
+            ast=self.visit(node.ast),
+            decl=node.decl,
+            format=self.visit(node.fmtdict),
+            options=self.visit(node.options),
+        )
+        for key in [ '_fmtmembers' ]:
+            value = getattr(node, key)
+            if value:
+                d[key] = self.visit(value)
+        return d
+
+    def visit_NamespaceNode(self, node):
+        d = dict(
+            name=node.name,
+            format=self.visit(node.fmtdict),
+            options=self.visit(node.options),
+        )
+        return d
+
 
 def to_dict(node):
     """Convert node to a dictionary.
@@ -231,6 +273,9 @@ def to_dict(node):
 ######################################################################
 
 class PrintNode(visitor.Visitor):
+    """Unparse Nodes.
+    Create a string from Nodes.
+    """
 
     def param_list(self, node):
         n = [node.name, '(']
@@ -240,13 +285,23 @@ class PrintNode(visitor.Visitor):
             n[-1] = ')'
         return ''.join(n)
 
+    def comma_list(self, lst):
+        if not lst:
+            return ''
+        n = []
+        for item in lst:
+            n.append(self.visit(item))
+            n.append(', ')
+        n.pop()
+        return ''.join(n)
+
     def visit_Identifier(self, node):
         if node.args == None:
             return node.name
         elif node.args:
             return self.param_list(node)
         else:
-            return node.name+ '()'
+            return node.name + '()'
 
     def visit_BinaryOp(self, node):
         return self.visit(node.left) + node.op + self.visit(node.right)
@@ -259,6 +314,16 @@ class PrintNode(visitor.Visitor):
 
     def visit_Constant(self, node):
         return node.value
+
+    def visit_EnumValue(self, node):
+        if node.value is None:
+            return node.name
+        else:
+            return '{} = {}'.format(node.name, self.visit(node.value))
+
+    def visit_Enum(self, node):
+        values = ''
+        return 'enum {} {{ {} }};'.format(node.name, self.comma_list(node.members))
 
 
 def print_node(node):

@@ -306,6 +306,14 @@ Option Templates
 Templates are set in options then expanded to assign to the format 
 dictionary.
 
+C_enum_template
+    Name of enumeration in C wrapper.
+    ``{C_prefix}{class_prefix}{enum_name}``
+
+C_enum_member_template
+    Name of enumeration member in C wrapper.
+    ``{enum_member_name}``
+
 C_header_filename_class_template
     ``wrap{cxx_class}.{C_header_filename_suffix}``
 
@@ -352,6 +360,12 @@ F_abstract_interface_subprogram_template
    function pointer.
    Defaults to ``arg{index}`` where *index* is the 0-based argument index.
    see :ref:`TypesAnchor_Function_Pointers`.
+
+F_enum_member_template
+    Name of enumeration member in Fortran wrapper.
+    ``{class_prefix}{enum_lower}_{enum_member_lower}``
+    Note that there is not F_enum_template since only the members are 
+    in the Fortran code, not the enum itself.
 
 F_name_generic_template
     ``{underscore_name}``
@@ -624,6 +638,28 @@ stdlib
 YAML_type_filename
     Output filename for type maps for classes.
 
+Enumeration
+^^^^^^^^^^^
+
+enum_lower
+
+enum_name
+
+enum_upper
+
+enum_member_lower
+
+enum_member_name
+
+enum_member_upper
+
+cxx_value
+    Value of enum from YAML file.
+
+evalue
+    Evalued value of enumeration.
+    If the enum do not have an explict value, it is the previous value plus one.
+
 Class
 ^^^^^
 
@@ -677,6 +713,10 @@ class_prefix
     Variable which may be used in creating function names.
     Defaults to evaluation of *class_prefix_template*.
     Outside of a class, set to empty string.
+
+class_scope
+    Use with name resolution or blank if not in a class.
+    ``{cxx_class}::``
 
 C_prefix
     Prefix for C wrapper functions.
@@ -855,6 +895,10 @@ c_var_trim
     Function argument generated from the *len_trim* annotation.
     Used with char/string arguments.
     Set from option **C_var_trim_template**.
+
+cxx_addr
+    Syntax to take address of argument.
+    ``&`` or blank.
 
 cxx_deref
     Syntax to dereference argument.

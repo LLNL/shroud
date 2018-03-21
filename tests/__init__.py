@@ -49,6 +49,7 @@ import unittest
 from . import test_ast
 from . import test_declast
 from . import test_generate
+#from . import test_typemap
 from . import test_util
 from . import test_wrapf
 from . import test_wrapp
@@ -58,8 +59,10 @@ from . import test_wrapp
 test_cases = (
     test_util.UtilCase,
     test_util.ScopeCase,
+    test_ast.Namespace,
     test_declast.CheckParse,
     test_declast.CheckExpr,
+    test_declast.CheckEnum,
     test_ast.CheckAst,
     test_generate.CheckImplied,
     test_wrapf.CheckAllocatable,

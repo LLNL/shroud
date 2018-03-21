@@ -86,24 +86,28 @@ class Tutorial(unittest.TestCase):
         self.assertEqual(static_char, strings.getCharPtr2())
         self.assertEqual(static_char, strings.getCharPtr3())
 
-    def testgetString1(self):
+    def testgetConstString(self):
+        """return std::string"""
+        self.assertEqual(static_str, strings.getConstStringLen())
+        self.assertEqual(static_str, strings.getConstStringAsArg())
+        self.assertEqual('getConstStringAlloc', strings.getConstStringAlloc())
+
+    def testgetConstStringRef(self):
         """return std::string reference"""
         # The variations are useful for the Fortran API,
         # but really no difference in the Python API.
-        self.assertEqual(static_str, strings.getString1())
-        self.assertEqual(static_str, strings.getString2())
-        self.assertEqual(static_str, strings.getString3())
+        self.assertEqual(static_str, strings.getConstStringRefPure())
+        self.assertEqual(static_str, strings.getConstStringRefLen())
+        self.assertEqual(static_str, strings.getConstStringRefAsArg())
 
-        self.assertEqual('', strings.getString2_empty())
+        self.assertEqual('', strings.getConstStringRefLenEmpty())
+        self.assertEqual(static_str, strings.getConstStringRefAlloc())
 
-    def testgetString5(self):
-        """return std::string"""
-        self.assertEqual(static_str, strings.getString5())
-        self.assertEqual(static_str, strings.getString6())
-
-    def testgetString7(self):
+    def testgetConstStringPtr(self):
         """return std::string pointer"""
-        self.assertEqual('Hello', strings.getString7())
+        self.assertEqual('getConstStringPtrLen', strings.getConstStringPtrLen())
+        self.assertEqual(static_str, strings.getConstStringPtrAlloc())
+        self.assertEqual('getConstStringPtrOwnsAlloc', strings.getConstStringPtrOwnsAlloc())
 
     def testacceptStringConstReference(self):
         self.assertEqual(None, strings.acceptStringConstReference('cat'))

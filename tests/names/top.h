@@ -56,7 +56,12 @@
 extern "C" {
 #endif
 
-// declaration of wrapped types
+//  Color
+enum TES_Color {
+    RED,
+    BLUE,
+    WHITE
+};
 
 // splicer begin C_declarations
 // splicer end C_declarations

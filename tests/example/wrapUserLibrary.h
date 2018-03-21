@@ -59,7 +59,7 @@
 extern "C" {
 #endif
 
-// declaration of wrapped types
+// declaration of shadow types
 struct s_SIDRE_group;
 typedef struct s_SIDRE_group SIDRE_group;
 
@@ -125,10 +125,6 @@ int AA_verylongfunctionname2(int verylongname1, int verylongname2,
     int verylongname9, int verylongname10);
 
 void AA_cos_doubles(double * in, double * out, int sizein);
-
-const char * AA_get_string2();
-
-void AA_get_string2_bufferify(void * * SHF_rv, size_t *NSHF_rv);
 
 #ifdef __cplusplus
 }

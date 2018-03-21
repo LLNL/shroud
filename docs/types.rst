@@ -898,7 +898,7 @@ Shroud will generate a type map for this class as::
 
     types:
       Class1:
-        base: wrapped
+        base: shadow
         c_type: TUT_class1
         cxx_type: Class1
         c_to_cxx: \tstatic_cast<{c_const}Class1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))

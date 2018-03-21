@@ -56,14 +56,25 @@ options:
 types:
   TypeID:
     typedef  : int
-    cxx_type : TypeID
+    cxx_type : tutorial::TypeID
 
   EnumTypeID:
     typedef  : int
-    cxx_type : EnumTypeID
-    c_to_cxx : static_cast<EnumTypeID>({c_var})
+    cxx_type : tutorial::EnumTypeID
+    c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
+enums:
+- decl: |
+      enum Color {
+        RED,
+        BLUE,
+        WHITE
+      };
+  options:
+     bar: 4
+  format:
+     baz: 4  
 
 functions:
 - decl: void Function1()
@@ -99,11 +110,6 @@ functions:
     const std::string& arg2 )
   format:
     F_string_result_as_arg: output
-
-# work-in-progress   allocatable function
-#- decl: const std::string& Function4c(
-#    const std::string& arg1,
-#    const std::string& arg2 ) +allocatable
 
 - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
   default_arg_suffix:
@@ -184,12 +190,15 @@ functions:
 # TypeID and DataTypeId must be define in types
 - decl: TypeID typefunc(TypeID arg)
 - decl: EnumTypeID enumfunc(EnumTypeID arg)
+- decl: Color colorfunc(Color arg);
 
 - decl: void getMinMax(int &min +intent(out), int &max +intent(out))
   doxygen:
      brief: Pass in reference to scalar
   options:
     wrap_lua: False
+
+- decl: Class1::DIRECTION directionFunc(Class1::DIRECTION arg);
 
 - decl: int useclass(const Class1 *arg1) 
   options:
@@ -269,6 +278,10 @@ functions:
 
 classes:
 - name: Class1
+
+  enums:
+  - decl: enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
+
   methods:
   - decl: Class1()         +name(new)
     format:
@@ -289,6 +302,18 @@ classes:
        # Need to fix fmt.cxx_deref
        wrap_lua: False
 
+  - decl: DIRECTION directionFunc(DIRECTION arg);
+
+
+##########
+
+- name: Singleton
+  namespace: -none-
+  options:
+    wrap_lua: false
+  functions:
+#  - decl: static Singleton* instancePtr()
+  - decl: static Singleton& getReference()
 
 
 ##################################################

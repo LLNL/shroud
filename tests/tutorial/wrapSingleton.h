@@ -1,4 +1,4 @@
-// wrapNames2.hh
+// wrapSingleton.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
@@ -41,30 +41,32 @@
 //
 // #######################################################################
 /**
- * \file wrapNames2.hh
- * \brief Shroud generated wrapper for Names2 class
+ * \file wrapSingleton.h
+ * \brief Shroud generated wrapper for Singleton class
  */
 // For C users and C++ implementation
 
-#ifndef WRAPNAMES2_HH
-#define WRAPNAMES2_HH
+#ifndef WRAPSINGLETON_H
+#define WRAPSINGLETON_H
 
-// splicer begin class.Names2.CXX_declarations
-// splicer end class.Names2.CXX_declarations
+// splicer begin class.Singleton.CXX_declarations
+// splicer end class.Singleton.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 // declaration of shadow types
-struct s_TES_names2;
-typedef struct s_TES_names2 TES_names2;
+struct s_TUT_singleton;
+typedef struct s_TUT_singleton TUT_singleton;
 
-// splicer begin class.Names2.C_declarations
-// splicer end class.Names2.C_declarations
+// splicer begin class.Singleton.C_declarations
+// splicer end class.Singleton.C_declarations
+
+TUT_singleton * TUT_singleton_get_reference();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // WRAPNAMES2_HH
+#endif  // WRAPSINGLETON_H

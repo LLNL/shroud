@@ -54,8 +54,6 @@
 extern "C" {
 #endif
 
-// declaration of wrapped types
-
 
 void DEF_function1();
 

@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Support class static methods.
+- Ability to define enum values.
+
+### Changed
+- base name 'wrapped' changed to 'shadow'.  This may appear in YAML file.
+- Change generated code to prefix symbols with the namespace, `outer::function()`,
+  instead of adding namespace statements, `namespace outer { }`.
+  Types also require namespaces in `cxx_type` and `c_to_cxx` entries.
+  The wrappers use the namespace but do not add to it.
 
 ## v0.8.0 - 2018-02-26
 ### Added

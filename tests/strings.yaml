@@ -102,31 +102,6 @@ functions:
     F_string_result_as_arg: output
 
 ########################################
-# return std::string reference
-
-- decl: const string& getString1()  +pure
-#  C_error_pattern: C_invalid_name
-  doxygen:
-    brief: return a 'const string&' as character(*)
-
-- decl: const string& getString2() +len=30
-  C_error_pattern: C_invalid_name
-  doxygen:
-    brief: return 'const string&' with fixed size (len=30)
-
-- decl: const string& getString3() # +pure
-  C_error_pattern: C_invalid_name
-  doxygen:
-    brief: return a 'const string&' as argument
-  format:
-    F_string_result_as_arg: output
-
-- decl: const string& getString2_empty() +len=30
-  C_error_pattern: C_invalid_name
-  doxygen:
-    brief: Test returning empty string reference
-
-########################################
 # return std::string
 
 # This tries to call a C wrapper which is not created
@@ -135,22 +110,51 @@ functions:
 #  doxygen:
 #    brief: return a 'const string' as argument
 
-- decl: const string getString5() +len=30 # +pure
+- decl: const string getConstStringLen() +len=30 # +pure
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
 
-- decl: const string getString6() # +pure
+- decl: const string getConstStringAsArg() # +pure
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
   format:
     F_string_result_as_arg: output
 
+- decl: const std::string getConstStringAlloc() +allocatable
+
+########################################
+# return std::string reference
+
+- decl: const string& getConstStringRefPure()  +pure
+#  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const string&' as character(*)
+
+- decl: const string& getConstStringRefLen() +len=30
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return 'const string&' with fixed size (len=30)
+
+- decl: const string& getConstStringRefAsArg()
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const string&' as argument
+  format:
+    F_string_result_as_arg: output
+
+- decl: const string& getConstStringRefLenEmpty() +len=30
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: Test returning empty string reference
+
+- decl: const std::string& getConstStringRefAlloc() +allocatable
+
 ########################################
 # return std::string pointer
 
-- decl: const string * getString7() +len=30
+- decl: const string * getConstStringPtrLen() +len=30
 #  C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string *' as character(*)
@@ -159,6 +163,10 @@ functions:
       created by the C++ library.
   format:
     C_finalize_buf: delete {cxx_var};
+
+- decl: const std::string * getConstStringPtrAlloc() +allocatable
+
+- decl: const std::string * getConstStringPtrOwnsAlloc() +allocatable
 
 ########################################
 

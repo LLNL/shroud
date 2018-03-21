@@ -107,6 +107,7 @@ class Wrapf(util.WrapperMixin):
     def _begin_output_file(self):
         """Start a new class for output"""
         self.use_stmts = []
+        self.enum_impl = []
         self.f_type_decl = []
         self.c_interface = []
         self.abstract_interface = []
@@ -159,15 +160,19 @@ class Wrapf(util.WrapperMixin):
                 self._push_splicer('class')
         self._pop_splicer('class')
 
-        if newlibrary.functions:
+        if newlibrary.functions or newlibrary.enums:
             self._begin_class()  # clear out old class info
             if options.F_module_per_class:
                 self._begin_output_file()
             newlibrary.F_module_dependencies = []
+
+            self.wrap_enums(newlibrary)
+
             self._push_splicer('function')
             for node in newlibrary.functions:
                 self.wrap_function(None, node)
             self._pop_splicer('function')
+
             self.c_interface.append('')
             self._create_splicer('additional_interfaces', self.c_interface)
             self.impl.append('')
@@ -199,10 +204,14 @@ class Wrapf(util.WrapperMixin):
         # wrap methods
         self._push_splicer(fmt_class.cxx_class)
         self._create_splicer('module_use', self.use_stmts)
+
+        self.wrap_enums(node)
+
         self._push_splicer('method')
         for method in node.functions:
             self.wrap_function(node, method)
         self._pop_splicer('method')
+
         self.write_object_get_set(node, fmt_class)
         self.impl.append('')
         self._create_splicer('additional_functions', self.impl)
@@ -264,6 +273,33 @@ class Wrapf(util.WrapperMixin):
                 '(a%{F_derived_member}, b%{F_derived_member})',
                 fmt_class))
 #        self.overload_compare(fmt_class, '/=', fmt_class.class_lower + '_ne', None)
+
+    def wrap_enums(self, node):
+        """Wrap all enums in a splicer block"""
+        self._push_splicer('enum')
+        for node in node.enums:
+            self.wrap_enum(None, node)
+        self._pop_splicer('enum')
+
+    def wrap_enum(self, cls, node):
+        """Wrap an enumeration.
+        Create an integer parameter for each member.
+        """
+        options = node.options
+        ast = node.ast
+        output = self.enum_impl
+
+        fmt_enum = node.fmtdict
+        fmtmembers = node._fmtmembers
+
+        output.append('')
+        append_format(output, '!  {enum_name}', fmt_enum)
+        for member in ast.members:
+            fmt_id = fmtmembers[member.name]
+            fmt_id.F_enum_member = wformat(options.F_enum_member_template, fmt_id)
+            append_format(output, 'integer(C_INT), parameter :: {F_enum_member} = {evalue}', 
+                          fmt_id)
+        self.set_f_module(self.module_use, 'iso_c_binding', 'C_INT')
 
     def write_object_get_set(self, node, fmt_class):
         """Write get and set methods for instance pointer.
@@ -552,6 +588,7 @@ class Wrapf(util.WrapperMixin):
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
+        is_static = False
         is_allocatable = ast.fattrs.get('allocatable', False)
         func_is_const = ast.func_const
         subprogram = ast.get_subprogram()
@@ -585,8 +622,11 @@ class Wrapf(util.WrapperMixin):
             fmt.F_C_result_clause = '\fresult(%s)' % fmt.F_result
 
         if cls:
-            # Add 'this' argument
-            if not is_ctor:
+            is_static = 'static' in ast.storage
+            if is_ctor or is_static:
+                pass
+            else:
+                # Add 'this' argument
                 arg_c_names.append(fmt.C_this)
                 arg_c_decl.append(
                     'type(C_PTR), value, intent(IN) :: ' + fmt.C_this)
@@ -791,6 +831,7 @@ class Wrapf(util.WrapperMixin):
         is_ctor = ast.fattrs.get('_constructor', False)
         is_dtor = ast.fattrs.get('_destructor', False)
         is_pure = ast.fattrs.get('pure', False)
+        is_static = False
         is_allocatable = ast.fattrs.get('allocatable', False)
         subprogram = ast.get_subprogram()
         c_subprogram = C_node.ast.get_subprogram()
@@ -842,8 +883,11 @@ class Wrapf(util.WrapperMixin):
 
         if cls:
             need_wrapper = True
-            # Add 'this' argument
-            if not is_ctor:
+            is_static = 'static' in ast.storage
+            if is_ctor or is_static:
+                pass
+            else:
+                # Add 'this' argument
                 # could use {f_to_c} but I'd rather not hide the shadow class
                 arg_c_call.append(wformat('{F_this}%{F_derived_member}', fmt_func))
                 arg_f_names.append(fmt_func.F_this)
@@ -926,6 +970,7 @@ class Wrapf(util.WrapperMixin):
                     fmt_arg.f_cptr = 'SHP_' + arg_name
                     append_format(arg_f_decl, 'type(C_PTR) :: {f_cptr}',
                                   fmt_arg)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
 
             arg_type = f_arg.typename
             arg_typedef = typemap.Typedef.lookup(arg_type)
@@ -1070,10 +1115,14 @@ class Wrapf(util.WrapperMixin):
                 gname = fmt_func.F_name_impl
                 self.f_function_generic.setdefault(
                     fmt_func.class_prefix + fmt_func.F_name_generic, []).append(gname)
-        if cls and not is_ctor:
+        if cls:
             # Add procedure to derived type
-            self.type_bound_part.append('procedure :: %s => %s' % (
-                fmt_func.F_name_function, fmt_func.F_name_impl))
+            if is_static:
+                self.type_bound_part.append('procedure, nopass :: %s => %s' % (
+                    fmt_func.F_name_function, fmt_func.F_name_impl))
+            elif not is_ctor:
+                self.type_bound_part.append('procedure :: %s => %s' % (
+                    fmt_func.F_name_function, fmt_func.F_name_impl))
 
         # body of function
         # XXX sname = fmt_func.F_name_impl
@@ -1177,6 +1226,8 @@ class Wrapf(util.WrapperMixin):
         output.append('')
         if cls is None:
             self._create_splicer('module_top', output)
+
+        output.extend(self.enum_impl)
 
         # XXX output.append('! splicer push class')
         output.extend(self.f_type_decl)

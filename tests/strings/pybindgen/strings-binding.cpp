@@ -102,6 +102,19 @@ PyObject * _wrap_strings_returnStrings();
 
 
 PyObject *
+_wrap_strings_getConstStringAlloc()
+{
+    PyObject *py_retval;
+    std::string retval;
+
+    retval = getConstStringAlloc();
+    py_retval = Py_BuildValue((char *) "s#", (retval).c_str(), (retval).size());
+    return py_retval;
+}
+PyObject * _wrap_strings_getConstStringAlloc();
+
+
+PyObject *
 _wrap_strings_passChar(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
@@ -131,10 +144,25 @@ _wrap_strings_returnChar()
 }
 PyObject * _wrap_strings_returnChar();
 
+
+PyObject *
+_wrap_strings_getConstStringRefAlloc()
+{
+    PyObject *py_retval;
+    std::string const retval;
+
+    retval = getConstStringRefAlloc();
+    py_retval = Py_BuildValue((char *) "s#", (retval).c_str(), (retval).size());
+    return py_retval;
+}
+PyObject * _wrap_strings_getConstStringRefAlloc();
+
 static PyMethodDef strings_functions[] = {
     {(char *) "returnStrings", (PyCFunction) _wrap_strings_returnStrings, METH_NOARGS, "returnStrings(arg1, arg2)\n\ntype: arg1: std::string &\ntype: arg2: std::string &" },
+    {(char *) "getConstStringAlloc", (PyCFunction) _wrap_strings_getConstStringAlloc, METH_NOARGS, "getConstStringAlloc()\n\n" },
     {(char *) "passChar", (PyCFunction) _wrap_strings_passChar, METH_KEYWORDS|METH_VARARGS, "passChar(status)\n\ntype: status: char" },
     {(char *) "returnChar", (PyCFunction) _wrap_strings_returnChar, METH_NOARGS, "returnChar()\n\n" },
+    {(char *) "getConstStringRefAlloc", (PyCFunction) _wrap_strings_getConstStringRefAlloc, METH_NOARGS, "getConstStringRefAlloc()\n\n" },
     {NULL, NULL, 0, NULL}
 };
 #if PY_VERSION_HEX >= 0x03000000

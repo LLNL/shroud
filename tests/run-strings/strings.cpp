@@ -100,45 +100,73 @@ const char * getCharPtr3()
 
 //----------------------------------------
 
-const std::string& getString1()
+const std::string& getConstStringRefPure()
 {
     return static_str;
 }
 
-const std::string& getString2()
+const std::string& getConstStringRefLen()
 {
     return static_str;
 }
 
-const std::string& getString3()
+const std::string& getConstStringRefAsArg()
 {
     return static_str;
 }
 
-const std::string& getString2_empty()
+const std::string& getConstStringRefLenEmpty()
 {
     return static_str_empty;
 }
+
+const std::string& getConstStringRefAlloc()
+{
+    return static_str;
+}
+
+// -----
 
 const std::string getString4()
 {
     return static_str;
 }
 
-const std::string getString5()
+const std::string getConstStringLen()
 {
     return static_str;
 }
 
-const std::string getString6()
+const std::string getConstStringAsArg()
 {
     return static_str;
 }
 
-std::string * getString7()
+const std::string getConstStringAlloc()
 {
-    // Caller is responsible to free string
-    std::string * rv = new std::string("Hello");
+    return std::string("getConstStringAlloc");
+}
+
+// -----
+
+const std::string * getConstStringPtrLen()
+{
+    // caller_owns_return = True
+    // C_finalize_buf: delete {cxx_var};
+    std::string * rv = new std::string("getConstStringPtrLen");
+    return rv;
+}
+
+const std::string * getConstStringPtrAlloc()
+{
+    // caller_owns_return = False
+    return &static_str;
+}
+
+const std::string * getConstStringPtrOwnsAlloc()
+{
+    // caller_owns_return = True
+    std::string * rv = new std::string("getConstStringPtrOwnsAlloc");
     return rv;
 }
 
@@ -161,19 +189,19 @@ void acceptStringReference(std::string & arg1)
 
 void acceptStringPointer(std::string * arg1)
 {
-  arg1->append("dog");
+    arg1->append("dog");
 }
 
 void returnStrings(std::string & arg1, std::string & arg2)
 {
-  arg1 = "up";
-  arg2 = "down";
+    arg1 = "up";
+    arg2 = "down";
 }
 
 char returnMany(int * arg1)
 {
-  *arg1 = 100;
-  return 'a';
+    *arg1 = 100;
+    return 'a';
 }
 
 //----------------------------------------
@@ -181,12 +209,12 @@ char returnMany(int * arg1)
 char *keep_explicit1;
 void explicit1(char * name)
 {
-  keep_explicit1 = name;
+    keep_explicit1 = name;
 }
 
 void explicit2(char * name)
 {
-  *name = 'a';
+    *name = 'a';
 }
 
 //----------------------------------------

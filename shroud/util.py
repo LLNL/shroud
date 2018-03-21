@@ -53,8 +53,9 @@ def wformat(template, dct):
     try:
         return fmt.vformat(template, None, dct)
     except AttributeError as e:
-        print(e)
-        raise SystemExit('Error with template: ' + template)
+#        raise
+        # use %r to avoid expanding tabs
+        raise SystemExit('Error with template: ' + '%r'%template)
 
 
 def append_format(lst, template, dct):
@@ -226,7 +227,7 @@ class WrapperMixin(object):
 
 #####
 
-    def namespace(self, library, cls, position, output):
+    def namespace(self, library, cls, position, output, comment=True):
         if cls and cls.namespace:
             namespace = cls.namespace
             if namespace.startswith('-'):
@@ -235,15 +236,19 @@ class WrapperMixin(object):
             namespace = library.namespace
         if not namespace:
             return
-        output.append('')
         if position == 'begin':
             for name in namespace.split():
                 output.append('namespace %s {' % name)
+                output.append(1)
         else:
             lst = namespace.split()
             lst.reverse()
             for name in lst:
-                output.append('}  // namespace %s' % name)
+                output.append(-1)
+                if comment:
+                    output.append('}  // namespace %s' % name)
+                else:
+                    output.append('}')
 
     def write_headers(self, headers, output):
         for header in sorted(headers):
@@ -416,7 +421,7 @@ class WrapperMixin(object):
 
 class Scope(object):
     """
-    Create a scoped namespace.
+    Create a scoped dictionary-like object.
     If item is not found, look in parent.
     A replacement for a dictionary to allow obj.name syntax.
     It will automatically look in __parent for attribute if not found to allow

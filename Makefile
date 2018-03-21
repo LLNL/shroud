@@ -126,6 +126,12 @@ tutorial strings clibrary : testdirs
 	    -f $(top)/tests/run-$@/Makefile \
 	    top=$(top) $@
 
+tutorial-cpp : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run-tutorial \
+	    -f $(top)/tests/run-tutorial/Makefile \
+	    top=$(top) maincpp
+
 # Run the Fortran tests
 test-fortran : fortran
 	$(tempdir)/run-tutorial/tutorial

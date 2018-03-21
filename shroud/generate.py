@@ -47,7 +47,7 @@ from . import ast
 from . import declast
 from . import todict
 from . import typemap
-
+from . import util
 
 class VerifyAttrs(object):
     """
@@ -60,9 +60,6 @@ class VerifyAttrs(object):
 
     def verify_attrs(self):
         newlibrary = self.newlibrary
-
-        for cls in newlibrary.classes:
-            typemap.create_class_typedef(cls)
 
         for cls in newlibrary.classes:
             for func in cls.functions:
@@ -90,6 +87,8 @@ class VerifyAttrs(object):
         argname = arg.name
 
         for attr in arg.attrs:
+            if attr[0] == '_': # internal attribute
+                continue
             if attr not in [
                     'allocatable',
                     'dimension',
@@ -114,7 +113,7 @@ class VerifyAttrs(object):
             #    - double
             if argtype not in node.cxx_template:
                 raise RuntimeError("No such type %s: %s" % (
-                        argtype, arg.gen_decl()))
+                        argtype, node.decl))
 
         is_ptr = arg.is_indirect()
         attrs = arg.attrs
@@ -505,7 +504,7 @@ class GenFunctions(object):
         ast = node.ast
         result_type = ast.typename
         result_typedef = typemap.Typedef.lookup(result_type)
-        # wrapped classes have not been added yet.
+        # shadow classes have not been added yet.
         # Only care about string here.
         attrs = ast.attrs
         result_is_ptr = ast.is_indirect()
@@ -617,7 +616,8 @@ class GenFunctions(object):
             # Add additional argument to hold result
             ast = C_new.ast
             if ast.fattrs.get('allocatable', False):
-                result_as_string = ast.result_as_voidstarstar('stringout', result_name)
+                result_as_string = ast.result_as_voidstarstar(
+                    'stringout', result_name, const=ast.const)
                 attrs = result_as_string.attrs
                 attrs['lenout'] = options.C_var_len_template.format(c_var=result_name)
             else:
@@ -705,7 +705,7 @@ class GenFunctions(object):
             typedef = typemap.Typedef.lookup(argtype)
             if typedef is None:
                 raise RuntimeError("%s not defined" % argtype)
-            if typedef.base == 'wrapped':
+            if typedef.base == 'shadow':
                 used_types[argtype] = typedef
 
     def gen_functions_decl(self, functions):
@@ -732,6 +732,7 @@ class Namify(object):
         self.config = config
 
     def name_library(self):
+        """entry pointer for class"""
         self.name_language(self.name_function_c)
         self.name_language(self.name_function_fortran)
 
@@ -743,8 +744,6 @@ class Namify(object):
 
             options = cls.options
             fmt_class = cls.fmtdict
-            if 'F_this' in options:
-                fmt_class.F_this = options.F_this
 
         for func in newlibrary.functions:
             handler(None, func)
@@ -759,9 +758,6 @@ class Namify(object):
         node.eval_template('F_C_name')
         fmt_func.F_C_name = fmt_func.F_C_name.lower()
 
-        if 'C_this' in options:
-            fmt_func.C_this = options.C_this
-
     def name_function_fortran(self, cls, node):
         """ Must process C functions to generate their names.
         """
@@ -773,11 +769,6 @@ class Namify(object):
         node.eval_template('F_name_impl')
         node.eval_template('F_name_function')
         node.eval_template('F_name_generic')
-
-        if 'F_this' in options:
-            fmt_func.F_this = options.F_this
-        if 'F_result' in options:
-            fmt_func.F_result = options.F_result
 
 
 def generate_functions(library, config):

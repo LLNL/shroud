@@ -55,11 +55,9 @@
 extern "C" {
 #endif
 
-// declaration of wrapped types
+// declaration of shadow types
 struct s_AA_exclass1;
 typedef struct s_AA_exclass1 AA_exclass1;
-struct s_AA_exclass2;
-typedef struct s_AA_exclass2 AA_exclass2;
 
 // splicer begin class.ExClass1.C_declarations
 // splicer end class.ExClass1.C_declarations
@@ -92,7 +90,7 @@ const char * AA_exclass1_get_name_arg(const AA_exclass1 * self);
 void AA_exclass1_get_name_arg_bufferify(const AA_exclass1 * self,
     char * name, int Nname);
 
-AA_exclass2 * AA_exclass1_get_root(AA_exclass1 * self);
+void * AA_exclass1_get_root(AA_exclass1 * self);
 
 int AA_exclass1_get_value_from_int(AA_exclass1 * self, int value);
 

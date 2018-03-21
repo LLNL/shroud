@@ -1,6 +1,7 @@
 Read yaml strings.yaml
-Skipping std::string, unable to create C wrapper for function returning getString5 instance (must return a pointer or reference).
-Skipping std::string, unable to create C wrapper for function returning getString6 instance (must return a pointer or reference).
+Skipping std::string, unable to create C wrapper for function returning getConstStringLen instance (must return a pointer or reference).
+Skipping std::string, unable to create C wrapper for function returning getConstStringAsArg instance (must return a pointer or reference).
+Skipping std::string, unable to create C wrapper for function returning getConstStringAlloc instance (must return a pointer or reference).
 C function void passChar(char_scalar status +intent(in)+value)
 C function char_scalar returnChar()
 C function void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))
@@ -14,18 +15,25 @@ C function const char * getCharPtr2() +len(30)
 C function void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function const char * getCharPtr3()
 C function void getCharPtr3(char * output +intent(out)+len(Noutput))
-C function const string & getString1() +pure
-C function void getString1(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
-C function const string & getString2() +len(30)
-C function void getString2(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-C function const string & getString3()
-C function void getString3(string & output +intent(out)+len(Noutput))
-C function const string & getString2_empty() +len(30)
-C function void getString2_empty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-C function void getString5(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-C function void getString6(string * output +intent(out)+len(Noutput))
-C function const string * getString7() +len(30)
-C function void getString7(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C function void getConstStringLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C function void getConstStringAsArg(string * output +intent(out)+len(Noutput))
+C function void getConstStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C function const string & getConstStringRefPure() +pure
+C function void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
+C function const string & getConstStringRefLen() +len(30)
+C function void getConstStringRefLen(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C function const string & getConstStringRefAsArg()
+C function void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))
+C function const string & getConstStringRefLenEmpty() +len(30)
+C function void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C function const std::string & getConstStringRefAlloc() +allocatable
+C function void getConstStringRefAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C function const string * getConstStringPtrLen() +len(30)
+C function void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C function const std::string * getConstStringPtrAlloc() +allocatable
+C function void getConstStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C function const std::string * getConstStringPtrOwnsAlloc() +allocatable
+C function void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 C function void acceptStringConstReference(const std::string & arg1 +intent(in))
 C function void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))
 C function void acceptStringReferenceOut(std::string & arg1 +intent(out))
@@ -59,21 +67,29 @@ C-interface function void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +
 C-interface function const char * getCharPtr3()
 C-interface function void getCharPtr3(char * output +intent(out)+len(Noutput))
 Fortran function void getCharPtr3(char * output +intent(out)+len(Noutput))
-C-interface, Fortran function const string & getString1() +pure
-C-interface function void getString1(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
-C-interface, Fortran function const string & getString2() +len(30)
-C-interface function void getString2(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-C-interface function const string & getString3()
-C-interface function void getString3(string & output +intent(out)+len(Noutput))
-Fortran function void getString3(string & output +intent(out)+len(Noutput))
-C-interface, Fortran function const string & getString2_empty() +len(30)
-C-interface function void getString2_empty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-Fortran function const string getString5() +len(30)
-C-interface function void getString5(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-C-interface function void getString6(string * output +intent(out)+len(Noutput))
-Fortran function void getString6(string * output +intent(out)+len(Noutput))
-C-interface, Fortran function const string * getString7() +len(30)
-C-interface function void getString7(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+Fortran function const string getConstStringLen() +len(30)
+C-interface function void getConstStringLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C-interface function void getConstStringAsArg(string * output +intent(out)+len(Noutput))
+Fortran function void getConstStringAsArg(string * output +intent(out)+len(Noutput))
+Fortran function const std::string getConstStringAlloc() +allocatable
+C-interface function void getConstStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C-interface, Fortran function const string & getConstStringRefPure() +pure
+C-interface function void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
+C-interface, Fortran function const string & getConstStringRefLen() +len(30)
+C-interface function void getConstStringRefLen(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C-interface function const string & getConstStringRefAsArg()
+C-interface function void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))
+Fortran function void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))
+C-interface, Fortran function const string & getConstStringRefLenEmpty() +len(30)
+C-interface function void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C-interface, Fortran function const std::string & getConstStringRefAlloc() +allocatable
+C-interface function void getConstStringRefAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C-interface, Fortran function const string * getConstStringPtrLen() +len(30)
+C-interface function void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C-interface, Fortran function const std::string * getConstStringPtrAlloc() +allocatable
+C-interface function void getConstStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C-interface, Fortran function const std::string * getConstStringPtrOwnsAlloc() +allocatable
+C-interface function void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 C-interface, Fortran function void acceptStringConstReference(const std::string & arg1 +intent(in))
 C-interface function void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))
 C-interface, Fortran function void acceptStringReferenceOut(std::string & arg1 +intent(out))
@@ -98,13 +114,17 @@ Python function void passCharPtrInOut(char * s +intent(inout))
 Python function const char * getCharPtr1() +pure
 Python function const char * getCharPtr2() +len(30)
 Python function const char * getCharPtr3()
-Python function const string & getString1() +pure
-Python function const string & getString2() +len(30)
-Python function const string & getString3()
-Python function const string & getString2_empty() +len(30)
-Python function const string getString5() +len(30)
-Python function const string getString6()
-Python function const string * getString7() +len(30)
+Python function const string getConstStringLen() +len(30)
+Python function const string getConstStringAsArg()
+Python function const std::string getConstStringAlloc() +allocatable
+Python function const string & getConstStringRefPure() +pure
+Python function const string & getConstStringRefLen() +len(30)
+Python function const string & getConstStringRefAsArg()
+Python function const string & getConstStringRefLenEmpty() +len(30)
+Python function const std::string & getConstStringRefAlloc() +allocatable
+Python function const string * getConstStringPtrLen() +len(30)
+Python function const std::string * getConstStringPtrAlloc() +allocatable
+Python function const std::string * getConstStringPtrOwnsAlloc() +allocatable
 Python function void acceptStringConstReference(const std::string & arg1 +intent(in))
 Python function void acceptStringReferenceOut(std::string & arg1 +intent(out))
 Python function void acceptStringReference(std::string & arg1 +intent(inout))

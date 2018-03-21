@@ -167,7 +167,7 @@ class Typedef(object):
 
     def __export_yaml__(self, indent, output):
         """Write out a subset of a wrapped type.
-        Other fields are set with typedef_wrapped_defaults.
+        Other fields are set with typedef_shadow_defaults.
         """
         util.as_yaml(self, [
             'base',
@@ -706,9 +706,12 @@ def initialize():
                     # pass address of string and length back to Fortran
                     buf_args = [ 'lenout' ],
                     c_helper='copy_string',
+                    # Copy address of result into c_var and save length.
+                    # When returning a std::string (and not a reference or pointer)
+                    # an intermediate object is created to save the results
+                    # which will be passed to copy_string
                     post_call=[
-#                        '*{c_var} = static_cast<void *>({cxx_var});',
-                        '*{c_var} = {cxx_var};',
+                        '*{c_var} = {cxx_addr}{cxx_var};',
                         '*{c_var_len} = {cxx_var}{cxx_deref}size();',
                     ],
                 ),
@@ -803,8 +806,8 @@ def initialize():
 
 #
             # custom code for templates
-            c_templates=dict(
-                string=dict(
+            c_templates={
+                'std::string': dict(
                     intent_in_buf=dict(
                         buf_args = [ 'size', 'len' ],
                         c_helper='ShroudLenTrim',
@@ -885,7 +888,7 @@ def initialize():
 #                        ],
 #                    ),
                 ),
-            ),
+            },
 #
 
 
@@ -921,10 +924,15 @@ def initialize():
             ),
         )
 
+    # rename to actual types.
+    # It is not possible to do dict(std::string=...)
+    def_types['std::string'] = def_types['string']
+    del def_types['string']
+    def_types['std::vector'] = def_types['vector']
+    del def_types['vector']
+
     # aliases
     def_types_alias = dict()
-    def_types_alias['std::string'] = 'string'
-    def_types_alias['std::vector'] = 'vector'
     def_types_alias['integer(C_INT)'] = 'int'
     def_types_alias['integer(C_LONG)'] = 'long'
     def_types_alias['integer(C_LONG_LONG)'] = 'long_long'
@@ -935,6 +943,22 @@ def initialize():
 
     return def_types, def_types_alias
 
+
+def create_enum_typedef(node):
+    """Create a typedef similar to an int.
+    """
+    fmt_enum = node.fmtdict
+    name = fmt_enum.enum_name
+
+    typedef = Typedef.lookup(name)
+    if typedef is None:
+        inttypedef = Typedef.lookup('int')
+        typedef = inttypedef.clone_as(name)
+        typedef.cxx_type = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
+        typedef.c_to_cxx = util.wformat(
+            'static_cast<{namespace_scope}{enum_name}>({{c_var}})', fmt_enum)
+        typedef.cxx_to_c = 'static_cast<int>({cxx_var})'
+        Typedef.register(fmt_enum.class_scope+name, typedef)
 
 def create_class_typedef(cls):
     name = cls.name
@@ -947,30 +971,30 @@ def create_class_typedef(cls):
         cname = fmt_class.C_prefix + unname
         typedef = Typedef(
             name,
-            base='wrapped',
-            cxx_type=name,
+            base='shadow',
+            cxx_type=fmt_class.namespace_scope + name,
             c_type=cname,
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[unname]},
             f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
             )
-        typedef_wrapped_defaults(typedef)
+        typedef_shadow_defaults(typedef)
         Typedef.register(name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
 
 
-def typedef_wrapped_defaults(typedef):
+def typedef_shadow_defaults(typedef):
     """Add some defaults to typedef.
     When dumping typedefs to a file, only a subset is written
     since the rest are boilerplate.  This function restores
     the boilerplate.
     """
-    if typedef.base != 'wrapped':
+    if typedef.base != 'shadow':
         return
 
     typedef.cxx_to_c=('\tstatic_cast<{c_const}%s *>('
-                      '\tstatic_cast<{c_const}void *>(\t{cxx_var}))' %
+                      '\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))' %
                       typedef.c_type)
 
     # opaque pointer -> void pointer -> class instance pointer
@@ -1016,7 +1040,7 @@ def typedef_wrapped_defaults(typedef):
             post_call=[
                 ('{PyObject} * {py_var} = '
                  'PyObject_New({PyObject}, &{PyTypeObject});'),
-                '{py_var}->{PY_obj} = {cxx_var};',
+                '{py_var}->{PY_obj} = {cxx_addr}{cxx_var};',
             ]
         ),
     )

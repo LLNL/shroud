@@ -58,7 +58,14 @@
 extern "C" {
 #endif
 
-// declaration of wrapped types
+//  Color
+enum TUT_Color {
+    RED,
+    BLUE,
+    WHITE
+};
+
+// declaration of shadow types
 struct s_TUT_class1;
 typedef struct s_TUT_class1 TUT_class1;
 
@@ -130,7 +137,11 @@ int TUT_typefunc(int arg);
 
 int TUT_enumfunc(int arg);
 
+int TUT_colorfunc(int arg);
+
 void TUT_get_min_max(int * min, int * max);
+
+int TUT_direction_func(int arg);
 
 int TUT_useclass(const TUT_class1 * arg1);
 

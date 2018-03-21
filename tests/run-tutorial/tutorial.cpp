@@ -95,12 +95,6 @@ const std::string& Function4b(const std::string& arg1, const std::string& arg2)
     return global_str;
 }
 
-const std::string Function4c(const std::string& arg1, const std::string& arg2)
-{
-    last_function_called = "Function4c";
-    return arg1 + arg2;
-}
-
 double Function5(double arg1, bool arg2)
 {
     last_function_called = "Function5";
@@ -222,6 +216,12 @@ EnumTypeID enumfunc(EnumTypeID arg)
     }
 }
 
+Color colorfunc(Color arg)
+{
+    last_function_called = "colorfunc";
+    return RED;
+}
+
 void getMinMax(int &min, int &max)
 {
   min = -1;
@@ -265,6 +265,19 @@ int Class1::Method1()
 bool Class1::equivalent(Class1 const &obj2) const
 {
   return m_flag == obj2.m_flag;
+}
+
+Class1::DIRECTION Class1::directionFunc(Class1::DIRECTION arg)
+{
+    last_function_called = "Class1::directionFunc";
+    return Class1::LEFT;
+}
+
+// This method is not in the class but uses the class enum
+Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
+{
+    last_function_called = "directionFunc";
+    return Class1::RIGHT;
 }
 
 //----------------------------------------------------------------------

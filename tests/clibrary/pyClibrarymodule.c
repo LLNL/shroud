@@ -541,8 +541,8 @@ initclibrary(void)
     PyObject *m = NULL;
     const char * error_name = "clibrary.Error";
 
-// splicer begin C_init_locals
-// splicer end C_init_locals
+    // splicer begin C_init_locals
+    // splicer end C_init_locals
 
 
     /* Create the module and add the functions */
@@ -550,8 +550,8 @@ initclibrary(void)
     m = PyModule_Create(&moduledef);
 #else
     m = Py_InitModule4("clibrary", PY_methods,
-                       PY__doc__,
-                       (PyObject*)NULL,PYTHON_API_VERSION);
+        PY__doc__,
+        (PyObject*)NULL,PYTHON_API_VERSION);
 #endif
     if (m == NULL)
         return RETVAL;
@@ -565,13 +565,12 @@ initclibrary(void)
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);
 
-// splicer begin C_init_body
-// splicer end C_init_body
+    // splicer begin C_init_body
+    // splicer end C_init_body
 
     /* Check for errors */
     if (PyErr_Occurred())
         Py_FatalError("can't initialize module clibrary");
     return RETVAL;
 }
-
 

@@ -49,9 +49,6 @@ extern "C" {
 #endif
 // splicer begin include
 // splicer end include
-
-namespace example {
-namespace nested {
 // splicer begin C_definition
 // splicer end C_definition
 
@@ -67,7 +64,7 @@ static int l_exclass1_ctor(lua_State *L)
     case 0:
         {
             l_ExClass1_Type * SH_this = (l_ExClass1_Type *) lua_newuserdata(L, sizeof(*SH_this));
-            SH_this->self = new ExClass1();
+            SH_this->self = new example::nested::ExClass1();
             /* Add the metatable to the stack. */
             luaL_getmetatable(L, "ExClass1.metatable");
             /* Set the metatable on the userdata. */
@@ -79,7 +76,7 @@ static int l_exclass1_ctor(lua_State *L)
         if (SH_itype1 == LUA_TSTRING) {
             const char * name = lua_tostring(L, 1);
             l_ExClass1_Type * SH_this = (l_ExClass1_Type *) lua_newuserdata(L, sizeof(*SH_this));
-            SH_this->self = new ExClass1(name);
+            SH_this->self = new example::nested::ExClass1(name);
             /* Add the metatable to the stack. */
             luaL_getmetatable(L, "ExClass1.metatable");
             /* Set the metatable on the userdata. */
@@ -171,13 +168,13 @@ static int l_exclass1_get_name_arg(lua_State *L)
     // splicer end class.ExClass1.method.getNameArg
 }
 
-// ExClass2 * getRoot()
+// void * getRoot()
 static int l_exclass1_get_root(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getRoot
     l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
         L, 1, "ExClass1.metatable");
-    ExClass2 * SHCXX_rv = SH_this->self->getRoot();
+    void * SHCXX_rv = SH_this->self->getRoot();
     PUSH;
     return 1;
     // splicer end class.ExClass1.method.getRoot
@@ -283,7 +280,7 @@ static int l_exclass2_ctor(lua_State *L)
     // splicer begin class.ExClass2.method.ctor
     const char * name = lua_tostring(L, 1);
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) lua_newuserdata(L, sizeof(*SH_this));
-    SH_this->self = new ExClass2(name);
+    SH_this->self = new example::nested::ExClass2(name);
     /* Add the metatable to the stack. */
     luaL_getmetatable(L, "ExClass2.metatable");
     /* Set the metatable on the userdata. */
@@ -368,12 +365,13 @@ static int l_exclass2_get_name_length(lua_State *L)
 static int l_exclass2_get_class1(lua_State *L)
 {
     // splicer begin class.ExClass2.method.get_class1
-    const ExClass1 * in = static_cast<ExClass1 *>(static_cast<void *>(
-        (l_ExClass2_Type *) luaL_checkudata(
-        L, 1, "ExClass2.metatable")));
+    const example::nested::ExClass1 * in = static_cast<example::nested::
+        ExClass1 *>(static_cast<void *>((l_ExClass2_Type *)
+        luaL_checkudata(L, 1, "ExClass2.metatable")));
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
         L, 1, "ExClass2.metatable");
-    ExClass1 * SHCXX_rv = SH_this->self->get_class1(in);
+    example::nested::
+        ExClass1 * SHCXX_rv = SH_this->self->get_class1(in);
     PUSH;
     return 1;
     // splicer end class.ExClass2.method.get_class1
@@ -489,7 +487,7 @@ static const struct luaL_Reg l_ExClass3_Reg [] = {
 static int l_local_function1(lua_State *)
 {
     // splicer begin function.local_function1
-    local_function1();
+    example::nested::local_function1();
     return 0;
     // splicer end function.local_function1
 }
@@ -499,7 +497,7 @@ static int l_is_name_valid(lua_State *L)
 {
     // splicer begin function.isNameValid
     const char * name = lua_tostring(L, 1);
-    bool SHCXX_rv = isNameValid(name);
+    bool SHCXX_rv = example::nested::isNameValid(name);
     lua_pushboolean(L, SHCXX_rv);
     return 1;
     // splicer end function.isNameValid
@@ -509,7 +507,7 @@ static int l_is_name_valid(lua_State *L)
 static int l_is_initialized(lua_State *L)
 {
     // splicer begin function.isInitialized
-    bool SHCXX_rv = isInitialized();
+    bool SHCXX_rv = example::nested::isInitialized();
     lua_pushboolean(L, SHCXX_rv);
     return 1;
     // splicer end function.isInitialized
@@ -522,7 +520,7 @@ static int l_check_bool(lua_State *L)
     bool arg1 = lua_toboolean(L, 1);
     bool * arg2;
     bool * arg3 = lua_toboolean(L, 2);
-    checkBool(arg1, arg2, arg3);
+    example::nested::checkBool(arg1, arg2, arg3);
     lua_pushboolean(L, arg2);
     lua_pushboolean(L, lua_toboolean(L, 2));
     return 0;
@@ -542,7 +540,7 @@ static int l_test_names(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TSTRING) {
             const char * name = lua_tostring(L, 1);
-            test_names(name);
+            example::nested::test_names(name);
             SH_nresult = 0;
         }
         else {
@@ -554,7 +552,7 @@ static int l_test_names(lua_State *L)
             SH_itype2 == LUA_TNUMBER) {
             const char * name = lua_tostring(L, 1);
             int flag = lua_tointeger(L, 2);
-            test_names(name, flag);
+            example::nested::test_names(name, flag);
             SH_nresult = 0;
         }
         else {
@@ -580,14 +578,14 @@ static int l_testoptional(lua_State *L)
     switch (SH_nargs) {
     case 0:
         {
-            testoptional();
+            example::nested::testoptional();
             SH_nresult = 0;
         }
         break;
     case 1:
         if (SH_itype1 == LUA_TNUMBER) {
             int i = lua_tointeger(L, 1);
-            testoptional(i);
+            example::nested::testoptional(i);
             SH_nresult = 0;
         }
         else {
@@ -599,7 +597,7 @@ static int l_testoptional(lua_State *L)
             SH_itype2 == LUA_TNUMBER) {
             int i = lua_tointeger(L, 1);
             long j = lua_tointeger(L, 2);
-            testoptional(i, j);
+            example::nested::testoptional(i, j);
             SH_nresult = 0;
         }
         else {
@@ -618,7 +616,7 @@ static int l_testoptional(lua_State *L)
 static int l_test_size_t(lua_State *L)
 {
     // splicer begin function.test_size_t
-    size_t SHCXX_rv = test_size_t();
+    size_t SHCXX_rv = example::nested::test_size_t();
     lua_pushinteger(L, SHCXX_rv);
     return 1;
     // splicer end function.test_size_t
@@ -629,7 +627,7 @@ static int l_testmpi(lua_State *L)
 {
     // splicer begin function.testmpi
     MPI_Comm comm = MPI_Comm_f2c(POP);
-    testmpi(comm);
+    example::nested::testmpi(comm);
     return 0;
     // splicer end function.testmpi
 }
@@ -641,7 +639,7 @@ static int l_testgroup1(lua_State *L)
     axom::sidre::Group * grp = static_cast<axom::sidre::Group *>(
         static_cast<void *>((XXLUA_userdata_type *) luaL_checkudata(
         L, 1, "XXLUA_metadata")));
-    testgroup1(grp);
+    example::nested::testgroup1(grp);
     return 0;
     // splicer end function.testgroup1
 }
@@ -653,7 +651,7 @@ static int l_testgroup2(lua_State *L)
     const axom::sidre::Group * grp = static_cast<axom::sidre::Group *>(
         static_cast<void *>((XXLUA_userdata_type *) luaL_checkudata(
         L, 1, "XXLUA_metadata")));
-    testgroup2(grp);
+    example::nested::testgroup2(grp);
     return 0;
     // splicer end function.testgroup2
 }
@@ -663,7 +661,7 @@ static int l_func_ptr1(lua_State *L)
 {
     // splicer begin function.FuncPtr1
     void ( * get)() = POP;
-    FuncPtr1(get);
+    example::nested::FuncPtr1(get);
     return 0;
     // splicer end function.FuncPtr1
 }
@@ -673,7 +671,7 @@ static int l_func_ptr2(lua_State *L)
 {
     // splicer begin function.FuncPtr2
     double * ( * get)() = lua_tonumber(L, 1);
-    FuncPtr2(get);
+    example::nested::FuncPtr2(get);
     return 0;
     // splicer end function.FuncPtr2
 }
@@ -683,7 +681,7 @@ static int l_func_ptr3(lua_State *L)
 {
     // splicer begin function.FuncPtr3
     double ( * get)(int i, int) = lua_tonumber(L, 1);
-    FuncPtr3(get);
+    example::nested::FuncPtr3(get);
     return 0;
     // splicer end function.FuncPtr3
 }
@@ -696,7 +694,7 @@ static int l_func_ptr5(lua_State *L)
         int verylongname3, int verylongname4, int verylongname5,
         int verylongname6, int verylongname7, int verylongname8,
         int verylongname9, int verylongname10) = POP;
-    FuncPtr5(get);
+    example::nested::FuncPtr5(get);
     return 0;
     // splicer end function.FuncPtr5
 }
@@ -715,9 +713,9 @@ static int l_verylongfunctionname1(lua_State *L)
     int * verylongname8 = lua_tointeger(L, 8);
     int * verylongname9 = lua_tointeger(L, 9);
     int * verylongname10 = lua_tointeger(L, 10);
-    verylongfunctionname1(verylongname1, verylongname2, verylongname3,
-        verylongname4, verylongname5, verylongname6, verylongname7,
-        verylongname8, verylongname9, verylongname10);
+    example::nested::verylongfunctionname1(verylongname1, verylongname2,
+        verylongname3, verylongname4, verylongname5, verylongname6,
+        verylongname7, verylongname8, verylongname9, verylongname10);
     lua_pushinteger(L, lua_tointeger(L, 1));
     lua_pushinteger(L, lua_tointeger(L, 2));
     lua_pushinteger(L, lua_tointeger(L, 3));
@@ -746,9 +744,10 @@ static int l_verylongfunctionname2(lua_State *L)
     int verylongname8 = lua_tointeger(L, 8);
     int verylongname9 = lua_tointeger(L, 9);
     int verylongname10 = lua_tointeger(L, 10);
-    int SHCXX_rv = verylongfunctionname2(verylongname1, verylongname2,
-        verylongname3, verylongname4, verylongname5, verylongname6,
-        verylongname7, verylongname8, verylongname9, verylongname10);
+    int SHCXX_rv = example::nested::verylongfunctionname2(verylongname1,
+        verylongname2, verylongname3, verylongname4, verylongname5,
+        verylongname6, verylongname7, verylongname8, verylongname9,
+        verylongname10);
     lua_pushinteger(L, SHCXX_rv);
     return 1;
     // splicer end function.verylongfunctionname2
@@ -761,20 +760,10 @@ static int l_cos_doubles(lua_State *L)
     double * in = lua_tonumber(L, 1);
     double * out;
     int sizein = lua_tointeger(L, 2);
-    cos_doubles(in, out, sizein);
+    example::nested::cos_doubles(in, out, sizein);
     lua_pushnumber(L, out);
     return 0;
     // splicer end function.cos_doubles
-}
-
-// const std::string & getString2() +allocatable
-static int l_get_string2(lua_State *L)
-{
-    // splicer begin function.getString2
-    const std::string & SHCXX_rv = getString2();
-    lua_pushstring(L, SHCXX_rv.c_str());
-    return 1;
-    // splicer end function.getString2
 }
 
 // splicer begin additional_functions
@@ -800,7 +789,6 @@ static const struct luaL_Reg l_UserLibrary_Reg [] = {
     {"verylongfunctionname1", l_verylongfunctionname1},
     {"verylongfunctionname2", l_verylongfunctionname2},
     {"cos_doubles", l_cos_doubles},
-    {"getString2", l_get_string2},
     // splicer begin register
     // splicer end register
     {NULL, NULL}   /*sentinel */
@@ -881,6 +869,3 @@ int luaopen_userlibrary(lua_State *L) {
 #ifdef __cplusplus
 }
 #endif
-
-}  // namespace nested
-}  // namespace example

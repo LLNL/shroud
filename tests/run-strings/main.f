@@ -124,6 +124,7 @@ contains
   subroutine test_functions
 
     character(30) str
+    character(30), parameter :: static_str = "dog                         "
 
     call set_case_name("test_functions")
 
@@ -145,50 +146,67 @@ contains
  
 !--------------------------------------------------
 
+    ! character(30) function
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_len()
+    call assert_true(str == static_str, "getConstStringLen")
+
+    ! string_result_as_arg
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call get_const_string_as_arg(str)
+    call assert_true(str == static_str, "getConstStringAsArg")
+
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_alloc()
+    call assert_true(str == "getConstStringAlloc", "getConstStringAlloc")
+ 
+!--------------------------------------------------
+
     ! problem with pgi
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string1()
-    call assert_true( str == "dog")
+    str = get_const_string_ref_pure()
+    call assert_true( str == static_str, "getConstStringRefPure")
 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string2()
-    call assert_true( str == "dog")
+    str = get_const_string_ref_len()
+    call assert_true( str == static_str, "getConstStringRefLen")
 
     ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_string3(str)
-    call assert_true( str == "dog")
+    call get_const_string_ref_as_arg(str)
+    call assert_true( str == static_str, "getConstStringRefAsArg")
  
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string2_empty()
-    call assert_true( str == " ")
+    str = get_const_string_ref_len_empty()
+    call assert_true( str == " ", "getConstStringRefLenEmpty")
+
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_ref_alloc()
+    call assert_true( str == static_str, "getConstStringRefAlloc")
 
 !--------------------------------------------------
 
-    ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string5()
-    call assert_true( str == "dog")
+    str = get_const_string_ptr_len()
+    call assert_true(str == "getConstStringPtrLen", "getConstStringPtrLen")
 
     ! string_result_as_arg
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_string6(str)
-    call assert_true( str == "dog")
  
-!--------------------------------------------------
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_ptr_alloc()
+    call assert_true( str == static_str, "getConstStringPtrAlloc")
 
-    ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_string7()
-    call assert_true( str == "Hello")
- 
+    str = get_const_string_ptr_owns_alloc()
+    call assert_true( str == "getConstStringPtrOwnsAlloc", "getConstStringPtrOwnsAlloc")
+
 !--------------------------------------------------
 
     call accept_string_const_reference("cat")
-!    call assert_true( rv_char == "dog")
+!    check global_str == "cat"
 
     str = " "
     call accept_string_reference_out(str)

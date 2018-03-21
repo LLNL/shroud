@@ -204,151 +204,235 @@ PY_getCharPtr3(
 // splicer end function.get_char_ptr3
 }
 
-static char PY_getString1__doc__[] =
+static char PY_getConstStringLen__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_getString1(
+PY_getConstStringLen(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getString1() +pure
-// splicer begin function.get_string1
-    const std::string & SHCXX_rv = getString1();
+// const string getConstStringLen() +len(30)
+// splicer begin function.get_const_string_len
+    const std::string SHCXX_rv = getConstStringLen();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_string1
+// splicer end function.get_const_string_len
 }
 
-static char PY_getString2__doc__[] =
+static char PY_getConstStringAsArg__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_getString2(
+PY_getConstStringAsArg(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getString2() +len(30)
-// splicer begin function.get_string2
-    const std::string & SHCXX_rv = getString2();
+// const string getConstStringAsArg()
+// splicer begin function.get_const_string_as_arg
+    const std::string SHCXX_rv = getConstStringAsArg();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_string2
+// splicer end function.get_const_string_as_arg
 }
 
-static char PY_getString3__doc__[] =
+static char PY_getConstStringAlloc__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_getString3(
+PY_getConstStringAlloc(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getString3()
-// splicer begin function.get_string3
-    const std::string & SHCXX_rv = getString3();
+// const std::string getConstStringAlloc() +allocatable
+// splicer begin function.get_const_string_alloc
+    const std::string SHCXX_rv = getConstStringAlloc();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_string3
+// splicer end function.get_const_string_alloc
 }
 
-static char PY_getString2_empty__doc__[] =
+static char PY_getConstStringRefPure__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_getString2_empty(
+PY_getConstStringRefPure(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getString2_empty() +len(30)
-// splicer begin function.get_string2_empty
-    const std::string & SHCXX_rv = getString2_empty();
+// const string & getConstStringRefPure() +pure
+// splicer begin function.get_const_string_ref_pure
+    const std::string & SHCXX_rv = getConstStringRefPure();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_string2_empty
+// splicer end function.get_const_string_ref_pure
 }
 
-static char PY_getString5__doc__[] =
+static char PY_getConstStringRefLen__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_getString5(
+PY_getConstStringRefLen(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string getString5() +len(30)
-// splicer begin function.get_string5
-    const std::string SHCXX_rv = getString5();
+// const string & getConstStringRefLen() +len(30)
+// splicer begin function.get_const_string_ref_len
+    const std::string & SHCXX_rv = getConstStringRefLen();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_string5
+// splicer end function.get_const_string_ref_len
 }
 
-static char PY_getString6__doc__[] =
+static char PY_getConstStringRefAsArg__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_getString6(
+PY_getConstStringRefAsArg(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string getString6()
-// splicer begin function.get_string6
-    const std::string SHCXX_rv = getString6();
+// const string & getConstStringRefAsArg()
+// splicer begin function.get_const_string_ref_as_arg
+    const std::string & SHCXX_rv = getConstStringRefAsArg();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_string6
+// splicer end function.get_const_string_ref_as_arg
 }
 
-static char PY_getString7__doc__[] =
+static char PY_getConstStringRefLenEmpty__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_getString7(
+PY_getConstStringRefLenEmpty(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string * getString7() +len(30)
-// splicer begin function.get_string7
-    const std::string * SHCXX_rv = getString7();
+// const string & getConstStringRefLenEmpty() +len(30)
+// splicer begin function.get_const_string_ref_len_empty
+    const std::string & SHCXX_rv = getConstStringRefLenEmpty();
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_const_string_ref_len_empty
+}
+
+static char PY_getConstStringRefAlloc__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getConstStringRefAlloc(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// const std::string & getConstStringRefAlloc() +allocatable
+// splicer begin function.get_const_string_ref_alloc
+    const std::string & SHCXX_rv = getConstStringRefAlloc();
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_const_string_ref_alloc
+}
+
+static char PY_getConstStringPtrLen__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getConstStringPtrLen(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// const string * getConstStringPtrLen() +len(30)
+// splicer begin function.get_const_string_ptr_len
+    const std::string * SHCXX_rv = getConstStringPtrLen();
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.get_string7
+// splicer end function.get_const_string_ptr_len
+}
+
+static char PY_getConstStringPtrAlloc__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getConstStringPtrAlloc(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// const std::string * getConstStringPtrAlloc() +allocatable
+// splicer begin function.get_const_string_ptr_alloc
+    const std::string * SHCXX_rv = getConstStringPtrAlloc();
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_const_string_ptr_alloc
+}
+
+static char PY_getConstStringPtrOwnsAlloc__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getConstStringPtrOwnsAlloc(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// const std::string * getConstStringPtrOwnsAlloc() +allocatable
+// splicer begin function.get_const_string_ptr_owns_alloc
+    const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_const_string_ptr_owns_alloc
 }
 
 static char PY_acceptStringConstReference__doc__[] =
@@ -584,20 +668,29 @@ static PyMethodDef PY_methods[] = {
     PY_getCharPtr2__doc__},
 {"getCharPtr3", (PyCFunction)PY_getCharPtr3, METH_NOARGS,
     PY_getCharPtr3__doc__},
-{"getString1", (PyCFunction)PY_getString1, METH_NOARGS,
-    PY_getString1__doc__},
-{"getString2", (PyCFunction)PY_getString2, METH_NOARGS,
-    PY_getString2__doc__},
-{"getString3", (PyCFunction)PY_getString3, METH_NOARGS,
-    PY_getString3__doc__},
-{"getString2_empty", (PyCFunction)PY_getString2_empty, METH_NOARGS,
-    PY_getString2_empty__doc__},
-{"getString5", (PyCFunction)PY_getString5, METH_NOARGS,
-    PY_getString5__doc__},
-{"getString6", (PyCFunction)PY_getString6, METH_NOARGS,
-    PY_getString6__doc__},
-{"getString7", (PyCFunction)PY_getString7, METH_NOARGS,
-    PY_getString7__doc__},
+{"getConstStringLen", (PyCFunction)PY_getConstStringLen, METH_NOARGS,
+    PY_getConstStringLen__doc__},
+{"getConstStringAsArg", (PyCFunction)PY_getConstStringAsArg,
+    METH_NOARGS, PY_getConstStringAsArg__doc__},
+{"getConstStringAlloc", (PyCFunction)PY_getConstStringAlloc,
+    METH_NOARGS, PY_getConstStringAlloc__doc__},
+{"getConstStringRefPure", (PyCFunction)PY_getConstStringRefPure,
+    METH_NOARGS, PY_getConstStringRefPure__doc__},
+{"getConstStringRefLen", (PyCFunction)PY_getConstStringRefLen,
+    METH_NOARGS, PY_getConstStringRefLen__doc__},
+{"getConstStringRefAsArg", (PyCFunction)PY_getConstStringRefAsArg,
+    METH_NOARGS, PY_getConstStringRefAsArg__doc__},
+{"getConstStringRefLenEmpty", (PyCFunction)PY_getConstStringRefLenEmpty,
+    METH_NOARGS, PY_getConstStringRefLenEmpty__doc__},
+{"getConstStringRefAlloc", (PyCFunction)PY_getConstStringRefAlloc,
+    METH_NOARGS, PY_getConstStringRefAlloc__doc__},
+{"getConstStringPtrLen", (PyCFunction)PY_getConstStringPtrLen,
+    METH_NOARGS, PY_getConstStringPtrLen__doc__},
+{"getConstStringPtrAlloc", (PyCFunction)PY_getConstStringPtrAlloc,
+    METH_NOARGS, PY_getConstStringPtrAlloc__doc__},
+{"getConstStringPtrOwnsAlloc",
+    (PyCFunction)PY_getConstStringPtrOwnsAlloc, METH_NOARGS,
+    PY_getConstStringPtrOwnsAlloc__doc__},
 {"acceptStringConstReference",
     (PyCFunction)PY_acceptStringConstReference,
     METH_VARARGS|METH_KEYWORDS, PY_acceptStringConstReference__doc__},
@@ -667,8 +760,7 @@ static struct PyModuleDef moduledef = {
 #define INITERROR return
 #endif
 
-extern "C" {
-PyMODINIT_FUNC
+extern "C" PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
 PyInit_strings(void)
 #else
@@ -678,8 +770,8 @@ initstrings(void)
     PyObject *m = NULL;
     const char * error_name = "strings.Error";
 
-// splicer begin C_init_locals
-// splicer end C_init_locals
+    // splicer begin C_init_locals
+    // splicer end C_init_locals
 
 
     /* Create the module and add the functions */
@@ -687,8 +779,8 @@ initstrings(void)
     m = PyModule_Create(&moduledef);
 #else
     m = Py_InitModule4("strings", PY_methods,
-                       PY__doc__,
-                       (PyObject*)NULL,PYTHON_API_VERSION);
+        PY__doc__,
+        (PyObject*)NULL,PYTHON_API_VERSION);
 #endif
     if (m == NULL)
         return RETVAL;
@@ -701,14 +793,12 @@ initstrings(void)
     st->error = PY_error_obj;
     PyModule_AddObject(m, "Error", st->error);
 
-// splicer begin C_init_body
-// splicer end C_init_body
+    // splicer begin C_init_body
+    // splicer end C_init_body
 
     /* Check for errors */
     if (PyErr_Occurred())
         Py_FatalError("can't initialize module strings");
     return RETVAL;
 }
-}   // extern "C"
-
 

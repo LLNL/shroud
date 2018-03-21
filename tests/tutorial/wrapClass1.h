@@ -56,7 +56,15 @@
 extern "C" {
 #endif
 
-// declaration of wrapped types
+//  DIRECTION
+enum TUT_class1_DIRECTION {
+    UP = 2,
+    DOWN,
+    LEFT = 100,
+    RIGHT
+};
+
+// declaration of shadow types
 struct s_TUT_class1;
 typedef struct s_TUT_class1 TUT_class1;
 
@@ -73,6 +81,8 @@ int TUT_class1_method1(TUT_class1 * self);
 
 bool TUT_class1_equivalent(const TUT_class1 * self,
     const TUT_class1 * obj2);
+
+int TUT_class1_direction_func(TUT_class1 * self, int arg);
 
 #ifdef __cplusplus
 }

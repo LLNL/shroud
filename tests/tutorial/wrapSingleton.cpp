@@ -1,4 +1,4 @@
-// wrapNames2.hh
+// wrapSingleton.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
@@ -40,31 +40,27 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-/**
- * \file wrapNames2.hh
- * \brief Shroud generated wrapper for Names2 class
- */
-// For C users and C++ implementation
+#include "wrapSingleton.h"
+#include "tutorial.hpp"
 
-#ifndef WRAPNAMES2_HH
-#define WRAPNAMES2_HH
+// splicer begin class.Singleton.CXX_definitions
+// splicer end class.Singleton.CXX_definitions
 
-// splicer begin class.Names2.CXX_declarations
-// splicer end class.Names2.CXX_declarations
-
-#ifdef __cplusplus
 extern "C" {
-#endif
 
-// declaration of shadow types
-struct s_TES_names2;
-typedef struct s_TES_names2 TES_names2;
+// splicer begin class.Singleton.C_definitions
+// splicer end class.Singleton.C_definitions
 
-// splicer begin class.Names2.C_declarations
-// splicer end class.Names2.C_declarations
-
-#ifdef __cplusplus
+// Singleton & getReference()
+// function_index=6
+TUT_singleton * TUT_singleton_get_reference()
+{
+// splicer begin class.Singleton.method.get_reference
+    Singleton & SHCXX_rv = Singleton::getReference();
+    TUT_singleton * SHC_rv = static_cast<TUT_singleton *>(
+        static_cast<void *>(&SHCXX_rv));
+    return SHC_rv;
+// splicer end class.Singleton.method.get_reference
 }
-#endif
 
-#endif  // WRAPNAMES2_HH
+}  // extern "C"

@@ -41,12 +41,11 @@
 //
 // #######################################################################
 #include "pyTutorialmodule.hpp"
-
-namespace tutorial {
 const char *PY_Class1_capsule_name = "Class1";
+const char *PY_Singleton_capsule_name = "Singleton";
 
 
-PyObject *PP_Class1_to_Object(Class1 *addr)
+PyObject *PP_Class1_to_Object(tutorial::Class1 *addr)
 {
     // splicer begin class.Class1.helper.to_object
     PyObject *voidobj;
@@ -75,4 +74,31 @@ int PP_Class1_from_Object(PyObject *obj, void **addr)
     // splicer end class.Class1.helper.from_object
 }
 
-}  // namespace tutorial
+PyObject *PP_Singleton_to_Object(Singleton *addr)
+{
+    // splicer begin class.Singleton.helper.to_object
+    PyObject *voidobj;
+    PyObject *args;
+    PyObject *rv;
+
+    voidobj = PyCapsule_New(addr, PY_Singleton_capsule_name, NULL);
+    args = PyTuple_New(1);
+    PyTuple_SET_ITEM(args, 0, voidobj);
+    rv = PyObject_Call((PyObject *) &PY_Singleton_Type, args, NULL);
+    Py_DECREF(args);
+    return rv;
+    // splicer end class.Singleton.helper.to_object
+}
+
+int PP_Singleton_from_Object(PyObject *obj, void **addr)
+{
+    // splicer begin class.Singleton.helper.from_object
+    if (obj->ob_type != &PY_Singleton_Type) {
+        // raise exception
+        return 0;
+    }
+    PY_Singleton * self = (PY_Singleton *) obj;
+    *addr = self->obj;
+    return 1;
+    // splicer end class.Singleton.helper.from_object
+}

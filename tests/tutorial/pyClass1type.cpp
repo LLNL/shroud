@@ -56,8 +56,6 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-
-namespace tutorial {
 // splicer begin class.Class1.impl.C_definition
 // splicer end class.Class1.impl.C_definition
 // splicer begin class.Class1.impl.additional_methods
@@ -79,7 +77,7 @@ PY_Class1_tp_init_default(
 {
 // Class1() +name(new)
 // splicer begin class.Class1.method.new_default
-    self->obj = new Class1();
+    self->obj = new tutorial::Class1();
     return 0;
 // splicer end class.Class1.method.new_default
 }
@@ -101,7 +99,7 @@ PY_Class1_tp_init_flag(
         const_cast<char **>(SHT_kwlist), &flag))
         return -1;
 
-    self->obj = new Class1(flag);
+    self->obj = new tutorial::Class1(flag);
     return 0;
 // splicer end class.Class1.method.new_flag
 }
@@ -149,7 +147,7 @@ PY_class1_equivalent(
         return NULL;
 
     // post_parse
-    const Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : NULL;
+    const tutorial::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : NULL;
 
     bool SHC_rv = self->obj->equivalent(*obj2);
 
@@ -158,6 +156,41 @@ PY_class1_equivalent(
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.Class1.method.equivalent
+}
+
+static char PY_class1_directionFunc__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_class1_directionFunc(
+  PY_Class1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// splicer begin class.Class1.method.direction_func
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:directionFunc",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return NULL;
+
+    // post_parse
+    tutorial::Class1::DIRECTION SH_arg = static_cast<tutorial::
+        Class1::DIRECTION>(arg);
+
+    tutorial::
+        Class1::DIRECTION SHCXX_rv = self->obj->directionFunc(SH_arg);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end class.Class1.method.direction_func
 }
 
 static int
@@ -200,6 +233,8 @@ static PyMethodDef PY_Class1_methods[] = {
         PY_class1_Method1__doc__},
     {"equivalent", (PyCFunction)PY_class1_equivalent,
         METH_VARARGS|METH_KEYWORDS, PY_class1_equivalent__doc__},
+    {"directionFunc", (PyCFunction)PY_class1_directionFunc,
+        METH_VARARGS|METH_KEYWORDS, PY_class1_directionFunc__doc__},
     // splicer begin class.Class1.PyMethodDef
     // splicer end class.Class1.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
@@ -211,74 +246,72 @@ static char Class1__doc__[] =
 
 /* static */
 PyTypeObject PY_Class1_Type = {
-        PyVarObject_HEAD_INIT(NULL, 0)
-        "tutorial.Class1",                       /* tp_name */
-        sizeof(PY_Class1),         /* tp_basicsize */
-        0,                              /* tp_itemsize */
-        /* Methods to implement standard operations */
-        (destructor)0,                 /* tp_dealloc */
-        (printfunc)0,                   /* tp_print */
-        (getattrfunc)0,                 /* tp_getattr */
-        (setattrfunc)0,                 /* tp_setattr */
+    PyVarObject_HEAD_INIT(NULL, 0)
+    "tutorial.Class1",                       /* tp_name */
+    sizeof(PY_Class1),         /* tp_basicsize */
+     0,                              /* tp_itemsize */
+    /* Methods to implement standard operations */
+    (destructor) 0,                 /* tp_dealloc */
+    (printfunc) 0,                   /* tp_print */
+    (getattrfunc) 0,                 /* tp_getattr */
+    (setattrfunc) 0,                 /* tp_setattr */
 #if PY_MAJOR_VERSION >= 3
-        0,                               /* tp_reserved */
+     0,                               /* tp_reserved */
 #else
-        (cmpfunc)0,                     /* tp_compare */
+    (cmpfunc) 0,                     /* tp_compare */
 #endif
-        (reprfunc)0,                    /* tp_repr */
-        /* Method suites for standard classes */
-        0,                              /* tp_as_number */
-        0,                              /* tp_as_sequence */
-        0,                              /* tp_as_mapping */
-        /* More standard operations (here for binary compatibility) */
-        (hashfunc)0,                    /* tp_hash */
-        (ternaryfunc)0,                 /* tp_call */
-        (reprfunc)0,                    /* tp_str */
-        (getattrofunc)0,                /* tp_getattro */
-        (setattrofunc)0,                /* tp_setattro */
-        /* Functions to access object as input/output buffer */
-        0,                              /* tp_as_buffer */
-        /* Flags to define presence of optional/expanded features */
-        Py_TPFLAGS_DEFAULT,             /* tp_flags */
-        Class1__doc__,         /* tp_doc */
-        /* Assigned meaning in release 2.0 */
-        /* call function for all accessible objects */
-        (traverseproc)0,                /* tp_traverse */
-        /* delete references to contained objects */
-        (inquiry)0,                     /* tp_clear */
-        /* Assigned meaning in release 2.1 */
-        /* rich comparisons */
-        (richcmpfunc)0,                 /* tp_richcompare */
-        /* weak reference enabler */
-        0,                              /* tp_weaklistoffset */
-        /* Added in release 2.2 */
-        /* Iterators */
-        (getiterfunc)0,                 /* tp_iter */
-        (iternextfunc)0,                /* tp_iternext */
-        /* Attribute descriptor and subclassing stuff */
-        PY_Class1_methods,                             /* tp_methods */
-        0,                              /* tp_members */
-        0,                             /* tp_getset */
-        0,                              /* tp_base */
-        0,                              /* tp_dict */
-        (descrgetfunc)0,                /* tp_descr_get */
-        (descrsetfunc)0,                /* tp_descr_set */
-        0,                              /* tp_dictoffset */
-        (initproc)PY_Class1_tp_init,                   /* tp_init */
-        (allocfunc)0,                  /* tp_alloc */
-        (newfunc)0,                    /* tp_new */
-        (freefunc)0,                   /* tp_free */
-        (inquiry)0,                     /* tp_is_gc */
-        0,                              /* tp_bases */
-        0,                              /* tp_mro */
-        0,                              /* tp_cache */
-        0,                              /* tp_subclasses */
-        0,                              /* tp_weaklist */
-        (destructor)PY_Class1_tp_del,                 /* tp_del */
-        0,                              /* tp_version_tag */
+    (reprfunc) 0,                    /* tp_repr */
+    /* Method suites for standard classes */
+     0,                              /* tp_as_number */
+     0,                              /* tp_as_sequence */
+     0,                              /* tp_as_mapping */
+    /* More standard operations (here for binary compatibility) */
+    (hashfunc) 0,                    /* tp_hash */
+    (ternaryfunc) 0,                 /* tp_call */
+    (reprfunc) 0,                    /* tp_str */
+    (getattrofunc) 0,                /* tp_getattro */
+    (setattrofunc) 0,                /* tp_setattro */
+    /* Functions to access object as input/output buffer */
+     0,                              /* tp_as_buffer */
+    /* Flags to define presence of optional/expanded features */
+    Py_TPFLAGS_DEFAULT,             /* tp_flags */
+    Class1__doc__,         /* tp_doc */
+    /* Assigned meaning in release 2.0 */
+    /* call function for all accessible objects */
+    (traverseproc) 0,                /* tp_traverse */
+    /* delete references to contained objects */
+    (inquiry) 0,                     /* tp_clear */
+    /* Assigned meaning in release 2.1 */
+    /* rich comparisons */
+    (richcmpfunc) 0,                 /* tp_richcompare */
+    /* weak reference enabler */
+     0,                              /* tp_weaklistoffset */
+    /* Added in release 2.2 */
+    /* Iterators */
+    (getiterfunc) 0,                 /* tp_iter */
+    (iternextfunc) 0,                /* tp_iternext */
+    /* Attribute descriptor and subclassing stuff */
+    PY_Class1_methods,                             /* tp_methods */
+     0,                              /* tp_members */
+     0,                             /* tp_getset */
+     0,                              /* tp_base */
+     0,                              /* tp_dict */
+    (descrgetfunc) 0,                /* tp_descr_get */
+    (descrsetfunc) 0,                /* tp_descr_set */
+     0,                              /* tp_dictoffset */
+    (initproc)PY_Class1_tp_init,                   /* tp_init */
+    (allocfunc) 0,                  /* tp_alloc */
+    (newfunc) 0,                    /* tp_new */
+    (freefunc) 0,                   /* tp_free */
+    (inquiry) 0,                     /* tp_is_gc */
+     0,                              /* tp_bases */
+     0,                              /* tp_mro */
+     0,                              /* tp_cache */
+     0,                              /* tp_subclasses */
+     0,                              /* tp_weaklist */
+    (destructor)PY_Class1_tp_del,                 /* tp_del */
+     0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
-        (destructor)0,                  /* tp_finalize */
+    (destructor) 0,                  /* tp_finalize */
 #endif
 };
-
-}  // namespace tutorial

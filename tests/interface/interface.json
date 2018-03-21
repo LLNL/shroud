@@ -89,6 +89,8 @@
             "YAML_type_filename": "interface_types.yaml", 
             "c_temp": "SHT_", 
             "class_prefix": "", 
+            "class_scope": "", 
+            "cxx_class": "", 
             "function_suffix": "", 
             "library": "Interface", 
             "library_lower": "interface", 
@@ -100,7 +102,9 @@
             {
                 "_function_index": 0, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "Function1", 
@@ -171,13 +175,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
                 "_function_index": 1, 
                 "ast": {
-                    "attrs": {}, 
+                    "attrs": {
+                        "_typename": "double"
+                    }, 
                     "const": false, 
                     "declarator": {
                         "name": "Function2", 
@@ -188,6 +195,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_typename": "double", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -202,6 +210,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -248,6 +257,8 @@
         ], 
         "language": "c", 
         "options": {
+            "C_enum_member_template": "{enum_member_name}", 
+            "C_enum_template": "{C_prefix}{class_prefix}{enum_name}", 
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
@@ -260,6 +271,7 @@
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
+            "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}", 
@@ -307,9 +319,7 @@
         "integer(C_LONG)": "long", 
         "integer(C_LONG_LONG)": "long_long", 
         "real(C_DOUBLE)": "double", 
-        "real(C_FLOAT)": "float", 
-        "std::string": "string", 
-        "std::vector": "vector"
+        "real(C_FLOAT)": "float"
     }, 
     "types": {
         "MPI_Comm": {
@@ -616,7 +626,7 @@
             }, 
             "f_type": "integer(C_SIZE_T)"
         }, 
-        "string": {
+        "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
@@ -744,56 +754,7 @@
                 }
             }
         }, 
-        "stringout": {
-            "base": "string", 
-            "c_statements": {
-                "intent_out_buf": {
-                    "buf_args": [
-                        "lenout"
-                    ], 
-                    "c_helper": "copy_string", 
-                    "cxx_local_var": "scalar", 
-                    "post_call": [
-                        " post_call intent_out_buf"
-                    ], 
-                    "pre_call": [
-                        "std::string * {cxx_var};"
-                    ]
-                }, 
-                "result_buf": {
-                    "buf_args": [
-                        "lenout"
-                    ], 
-                    "c_helper": "copy_string", 
-                    "post_call": [
-                        "*{c_var} = {cxx_var};", 
-                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
-                    ]
-                }
-            }, 
-            "c_type": "void", 
-            "cxx_header": "<string>", 
-            "cxx_to_c": "static_cast<void *>({cxx_var})", 
-            "cxx_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
-            }, 
-            "f_c_type": "type(C_PTR)", 
-            "f_statements": {
-                "result_buf": {
-                    "f_helper": "copy_string", 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})", 
-                        "call SHROUD_string_copy_and_free({f_cptr}, {f_var})"
-                    ]
-                }
-            }, 
-            "f_type": "type(C_PTR)YY"
-        }, 
-        "vector": {
+        "std::vector": {
             "base": "vector", 
             "c_statements": {
                 "intent_in_buf": {
@@ -847,7 +808,7 @@
                 }
             }, 
             "c_templates": {
-                "string": {
+                "std::string": {
                     "intent_in_buf": {
                         "buf_args": [
                             "size", 
@@ -930,6 +891,55 @@
             }, 
             "cxx_header": "<vector>", 
             "cxx_type": "std::vector<{cxx_T}>"
+        }, 
+        "stringout": {
+            "base": "string", 
+            "c_statements": {
+                "intent_out_buf": {
+                    "buf_args": [
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        " post_call intent_out_buf"
+                    ], 
+                    "pre_call": [
+                        "std::string * {cxx_var};"
+                    ]
+                }, 
+                "result_buf": {
+                    "buf_args": [
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "post_call": [
+                        "*{c_var} = {cxx_addr}{cxx_var};", 
+                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
+                    ]
+                }
+            }, 
+            "c_type": "void", 
+            "cxx_header": "<string>", 
+            "cxx_to_c": "static_cast<void *>({cxx_var})", 
+            "cxx_type": "std::string", 
+            "f_c_module": {
+                "iso_c_binding": [
+                    "C_PTR"
+                ]
+            }, 
+            "f_c_type": "type(C_PTR)", 
+            "f_statements": {
+                "result_buf": {
+                    "f_helper": "copy_string", 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})", 
+                        "call SHROUD_string_copy_and_free({f_cptr}, {f_var})"
+                    ]
+                }
+            }, 
+            "f_type": "type(C_PTR)YY"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 
