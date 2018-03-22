@@ -439,6 +439,40 @@ class LibraryNode(AstNode, NamespaceMixin):
 
 ######################################################################
 
+class BlockNode(AstNode, NamespaceMixin):
+    """Create a Node to simulate a curly block.
+    A block can contain options, format, and declarations.
+    The declarations within a BlockNode inherit options of the block.
+    This makes it easier to change options for a group of functions.
+    Declarations are added to parent.
+
+    Blocks can be added to a LibraryNode, NamespaceNode or ClassNode.
+    """
+    def __init__(self, parent,
+                 format=None,
+                 options=None,
+                 **kwargs):
+        # From arguments
+        self.parent = parent
+
+        self.enums = parent.enums
+        self.functions = parent.functions
+        self.classes = parent.classes
+
+        self.options = util.Scope(parent=parent.options)
+        if options:
+            self.options.update(options, replace=True)
+
+        self.fmtdict = util.Scope(parent=parent.fmtdict)
+        if format:
+            self.fmtdict.update(format, replace=True)
+
+    def unqualified_lookup(self, name):
+        """Look for symbols within library (global namespace). """
+        return self.parent.unqualified_lookup(name)
+
+######################################################################
+
 class NamespaceNode(AstNode, NamespaceMixin):
     def __init__(self, name, parent,
                  format=None,
@@ -1038,6 +1072,11 @@ def add_declarations(parent, node):
                 del d['class']
                 cls = parent.add_class(name, **d)
                 add_declarations(cls, subnode)
+        elif 'block' in subnode:
+            d = copy.copy(subnode)
+            clean_dictionary(d)
+            blk = BlockNode(parent, **d)
+            add_declarations(blk, subnode)
         elif 'decl' in subnode:
             # copy before clean to avoid changing input dict
             d = copy.copy(subnode)
@@ -1046,7 +1085,7 @@ def add_declarations(parent, node):
             del d['decl']
             parent.add_declaration(decl, **d)
         else:
-            raise RuntimeError("Expected 'namespace', 'class' or 'decl'")
+            raise RuntimeError("Expected 'namespace', 'block', 'class' or 'decl'")
 
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.
