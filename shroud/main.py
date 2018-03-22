@@ -101,10 +101,9 @@ class TypeOut(util.WrapperMixin):
 
         write_file = False
         for cls in newlibrary.classes:
-            name = cls.name
             output.append('')
-            output.append('  {}:'.format(name))
-            def_types[name].__export_yaml__(2, output)
+            output.append('  {}:'.format(cls.name))
+            cls.typedef.__export_yaml__(2, output)
             write_file = True
 
             # yaml.dump does not make a nice output

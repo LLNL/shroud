@@ -193,9 +193,7 @@ class Wrapf(util.WrapperMixin):
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
-        name = node.name
-        unname = util.un_camel(name)
-        typedef = typemap.Typedef.lookup(name)
+        typedef = node.typedef
 
         fmt_class = node.fmtdict
 

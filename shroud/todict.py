@@ -195,6 +195,7 @@ class ToDict(visitor.Visitor):
             cxx_header=node.cxx_header,
             format = self.visit(node.fmtdict),
             name=node.name,
+            typedef_name=node.typedef_name,
             options=self.visit(node.options),
         )
         for key in ['namespace', 'python']:
@@ -243,6 +244,7 @@ class ToDict(visitor.Visitor):
     def visit_EnumNode(self, node):
         d = dict(
             name=node.name,
+            typedef_name=node.typedef_name,
             ast=self.visit(node.ast),
             decl=node.decl,
             format=self.visit(node.fmtdict),

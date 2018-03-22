@@ -290,8 +290,7 @@ class Wrapc(util.WrapperMixin):
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
-        name = node.name
-        typedef = typemap.Typedef.lookup(name)
+        typedef = node.typedef
         cname = typedef.c_type
 
         fmt_class = node.fmtdict
@@ -465,12 +464,12 @@ class Wrapc(util.WrapperMixin):
                     fmt_func.CXX_this_call = fmt_func.namespace_scope + fmt_func.class_scope
                 else:
                     # 'this' argument
-                    rvast = declast.create_this_arg(fmt_func.C_this, cls.name, is_const)
+                    rvast = declast.create_this_arg(fmt_func.C_this, cls.typedef_name, is_const)
                     arg = rvast.gen_arg_as_c(continuation=True)
                     proto_list.append(arg)
 
                     # LHS is class' cxx_to_c
-                    cls_typedef = typemap.Typedef.lookup(cls.name)
+                    cls_typedef = cls.typedef
                     if cls_typedef.c_to_cxx is None:
                         # This should be set in typemap.typedef_shadow_defaults
                         raise RuntimeError("Wappped class does not have c_to_cxx set")

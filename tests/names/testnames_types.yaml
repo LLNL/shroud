@@ -51,7 +51,7 @@ types:
     f_to_c: "{f_var}%get_instance()"
     f_module:
       name_module:
-      - names
+      - FNames
 
   Names2:
     base: shadow

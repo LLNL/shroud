@@ -127,7 +127,8 @@
                     "C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
                     "F_C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
                     "none": "foo"
-                }
+                }, 
+                "typedef_name": "Names"
             }, 
             {
                 "cxx_header": "", 
@@ -153,7 +154,8 @@
                     "cxx_class": "Names2"
                 }, 
                 "name": "Names2", 
-                "options": {}
+                "options": {}, 
+                "typedef_name": "Names2"
             }
         ], 
         "copyright": [
@@ -250,7 +252,8 @@
                 "name": "Color", 
                 "options": {
                     "bar": 4
-                }
+                }, 
+                "typedef_name": "Color"
             }
         ], 
         "format": {
@@ -968,7 +971,7 @@
             "f_derived_type": "FNames", 
             "f_module": {
                 "name_module": [
-                    "names"
+                    "FNames"
                 ]
             }, 
             "f_statements": {

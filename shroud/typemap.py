@@ -948,40 +948,46 @@ def create_enum_typedef(node):
     """Create a typedef similar to an int.
     """
     fmt_enum = node.fmtdict
-    name = fmt_enum.enum_name
+    cxx_name = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
+    type_name = cxx_name.replace('\t', '')
 
-    typedef = Typedef.lookup(name)
+    typedef = Typedef.lookup(type_name)
     if typedef is None:
         inttypedef = Typedef.lookup('int')
-        typedef = inttypedef.clone_as(name)
+        typedef = inttypedef.clone_as(type_name)
         typedef.cxx_type = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
         typedef.c_to_cxx = util.wformat(
             'static_cast<{namespace_scope}{enum_name}>({{c_var}})', fmt_enum)
         typedef.cxx_to_c = 'static_cast<int>({cxx_var})'
-        Typedef.register(fmt_enum.class_scope+name, typedef)
+        Typedef.register(type_name, typedef)
+        Typedef.register(fmt_enum.class_scope+fmt_enum.enum_name, typedef) # backwards compatible
+    return typedef
 
 def create_class_typedef(cls):
-    name = cls.name
     fmt_class = cls.fmtdict
+    cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
+    type_name = cxx_name.replace('\t', '')
 
-    typedef = Typedef.lookup(name)
+    typedef = Typedef.lookup(cxx_name)
     if typedef is None:
         # unname = util.un_camel(name)
-        unname = name.lower()
-        cname = fmt_class.C_prefix + unname
+        f_name = cls.name.lower()
+        c_name = fmt_class.C_prefix + f_name
         typedef = Typedef(
-            name,
+            type_name,
             base='shadow',
-            cxx_type=fmt_class.namespace_scope + name,
-            c_type=cname,
+            cxx_type=cxx_name,
+            c_type=c_name,
             f_derived_type=fmt_class.F_derived_name,
-            f_module={fmt_class.F_module_name:[unname]},
+            f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
             f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
             )
         typedef_shadow_defaults(typedef)
-        Typedef.register(name, typedef)
+        Typedef.register(type_name, typedef)
+        Typedef.register(cls.name, typedef)  # XXX backwards compatible
 
     fmt_class.C_type_name = typedef.c_type
+    return typedef
 
 
 def typedef_shadow_defaults(typedef):

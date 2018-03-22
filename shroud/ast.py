@@ -587,7 +587,8 @@ class ClassNode(AstNode, NamespaceMixin):
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
         self.symbols = {}
-        typemap.create_class_typedef(self)
+        self.typedef = typemap.create_class_typedef(self)
+        self.typedef_name = self.typedef.name
 
 ##### namespace behavior
 
@@ -916,7 +917,8 @@ class EnumNode(AstNode):
         # Add to namespace
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
-        typemap.create_enum_typedef(self)
+        self.typedef = typemap.create_enum_typedef(self)
+        self.typedef_name = self.typedef.name
         # also 'enum class foo' will alter scope
 
 ######################################################################

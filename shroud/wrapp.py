@@ -171,7 +171,7 @@ class Wrapp(util.WrapperMixin):
         for node in newlibrary.classes:
             if not node.options.wrap_python:
                 continue
-            typedef = typemap.Typedef.lookup(node.name)
+            typedef = node.typedef
             fmt = node.fmtdict
             typedef.PY_format = 'O'
 
