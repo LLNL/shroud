@@ -16,6 +16,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   instead of adding namespace statements, `namespace outer { }`.
   Types also require namespaces in `cxx_type` and `c_to_cxx` entries.
   The wrappers use the namespace but do not add to it.
+- Change format of YAML file to generalize declarations and provide
+  access to namespaces.
+  Old:
+      namespace: tutorial
+      functions:
+      - decl void bar()
+  New:
+      declarations:
+      - namespace: tutorial
+        declarations:
+        - decl: void bar()
 
 ## v0.8.0 - 2018-02-26
 ### Added
