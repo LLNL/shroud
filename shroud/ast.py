@@ -83,7 +83,71 @@ class AstNode(object):
 
 ######################################################################
 
-class LibraryNode(AstNode):
+class NamespaceMixin(object):
+    def add_class(self, name, **kwargs):
+        """Add a class.
+        """
+        node = ClassNode(name, self, **kwargs)
+        self.classes.append(node)
+        self.symbols[name] = node
+        return node
+
+    def add_class_forward(self, name):
+        """Forward declare a class."""
+        node = ClassForwardNode(name, self)
+        self.symbols[name] = node
+        return node
+
+    def add_declaration(self, decl, **kwargs):
+        """parse decl and add corresponding node.
+        decl - declaration
+        """
+        # parse declaration to find out what it is
+        ast = declast.check_decl(decl, namespace=self, current_class=None, 
+                                 template_types=[])
+        if isinstance(ast, declast.Declaration):
+            self.add_function(decl, ast=ast, **kwargs)
+        else:
+            raise RuntimeError("Error parsing " + decl)
+
+    def add_enum(self, decl, parentoptions=None, **kwargs):
+        """Add an enumeration.
+        """
+        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
+                        **kwargs)
+        self.enums.append(node)
+        self.symbols[node.name] = node
+        return node
+
+    def add_function(self, decl, parentoptions=None, ast=None, **kwargs):
+        """Add a function.
+
+        decl - C/C++ declaration of function
+        ast  - parsed declaration. None if not yet parsed.
+        """
+        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
+                               ast=ast, **kwargs)
+        self.functions.append(fcnnode)
+        return fcnnode
+
+    def add_namespace(self, name, parentoptions=None, **kwargs):
+        """Add an namespace
+        """
+        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
+                             **kwargs)
+        self.symbols[name] = node
+        return node
+
+    def add_typedef(self, name):
+        """Add a typedef.
+        """
+        node = TypedefNode(name, parent=self)
+        self.symbols[name] = node
+        return node
+
+######################################################################
+
+class LibraryNode(AstNode, NamespaceMixin):
     def __init__(self,
                  cxx_header='',
                  format=None,
@@ -371,55 +435,9 @@ class LibraryNode(AstNode):
         self.eval_template('F_module_name', '_library')
         self.eval_template('F_impl_filename', '_library')
 
-    def add_class(self, name, **kwargs):
-        """Add a class.
-        """
-        node = ClassNode(name, self, **kwargs)
-        self.classes.append(node)
-        self.symbols[name] = node
-        return node
-
-    def add_class_forward(self, name):
-        """Forward declare a class."""
-        node = ClassForwardNode(name, self)
-        self.symbols[name] = node
-        return node
-
-    def add_enum(self, decl, parentoptions=None, **kwargs):
-        """Add an enumeration.
-        """
-        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
-                        **kwargs)
-        self.enums.append(node)
-        self.symbols[node.name] = node
-        return node
-
-    def add_function(self, decl, parentoptions=None, **kwargs):
-        """Add a function.
-        """
-        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
-                               **kwargs)
-        self.functions.append(fcnnode)
-        return fcnnode
-
-    def add_namespace(self, name, parentoptions=None, **kwargs):
-        """Add an namespace
-        """
-        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
-                             **kwargs)
-        self.symbols[name] = node
-        return node
-
-    def add_typedef(self, name):
-        """Add a typedef.
-        """
-        node = TypedefNode(name, parent=self)
-        self.symbols[name] = node
-        return node
-
 ######################################################################
 
-class NamespaceNode(AstNode):
+class NamespaceNode(AstNode, NamespaceMixin):
     def __init__(self, name, parent,
                  format=None,
                  options=None,
@@ -494,53 +512,6 @@ class NamespaceNode(AstNode):
         fmt_class = self.fmtdict
         if format:
             self.fmtdict.update(format, replace=True)
-#####
-
-    def add_class(self, name, **kwargs):
-        """Add a class.
-        """
-        node = ClassNode(name, self, **kwargs)
-        self.classes.append(node)
-        self.symbols[name] = node
-        return node
-
-    def add_class_forward(self, name):
-        """Forward declare a class."""
-        node = ClassForwardNode(name, self)
-        self.symbols[name] = node
-        return node
-
-    def add_enum(self, decl, parentoptions=None, **kwargs):
-        """Add an enumeration.
-        """
-        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
-                        **kwargs)
-        self.enums.append(node)
-        self.symbols[node.name] = node
-        return node
-
-    def add_function(self, decl, parentoptions=None, **kwargs):
-        """Add a function.
-        """
-        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
-                               **kwargs)
-        self.functions.append(fcnnode)
-        return fcnnode
-
-    def add_namespace(self, name, parentoptions=None, **kwargs):
-        """Add an namespace
-        """
-        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
-                             **kwargs)
-        self.symbols[name] = node
-        return node
-
-    def add_typedef(self, name):
-        """Add a typedef.
-        """
-        node = TypedefNode(name, parent=self)
-        self.symbols[name] = node
-        return node
 
 ######################################################################
 
@@ -710,6 +681,7 @@ class FunctionNode(AstNode):
     def __init__(self, decl, parent,
                  format=None,
                  parentoptions=None,
+                 ast=None,
                  options=None,
                  **kwargs):
         self.options = util.Scope(parent=parentoptions or parent.options)
@@ -754,10 +726,11 @@ class FunctionNode(AstNode):
         template_types = self.cxx_template.keys()
 
         self.decl = decl
-        ast = declast.check_decl(decl,
-                                 namespace=parent,
-                                 current_class=cls_name,
-                                 template_types=template_types)
+        if ast is None:
+            ast = declast.check_decl(decl,
+                                     namespace=parent,
+                                     current_class=cls_name,
+                                     template_types=template_types)
         self.ast = ast
 
         # add any attributes from YAML files to the ast
@@ -1054,6 +1027,24 @@ def add_functions(parent, functions):
             del d['decl']
             parent.add_function(decl, parentoptions=options, **d)
 
+def add_declarations(parent, node):
+    if 'declarations' not in node:
+        return
+
+    for subnode in node['declarations']:
+        if 'namespace' in subnode:
+            ns = parent.add_namespace(subnode['namespace'])
+            add_declarations(ns, subnode)
+        elif 'decl' in subnode:
+            # copy before clean to avoid changing input dict
+            d = copy.copy(subnode)
+            clean_dictionary(d)
+            decl = d['decl']
+            del d['decl']
+            parent.add_declaration(decl, **d)
+        else:
+            raise RuntimeError("Expected 'namespace' or 'decl'")
+
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.
     Typically, node is defined via YAML.
@@ -1134,5 +1125,7 @@ def create_library_from_dictionary(node):
 
     if 'functions' in node:
         add_functions(library, node['functions'])
+
+    add_declarations(library, node)
 
     return library
