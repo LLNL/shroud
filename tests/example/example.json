@@ -30,7 +30,8 @@
                     "class_prefix": "exclass1_", 
                     "class_scope": "ExClass1::", 
                     "class_upper": "EXCLASS1", 
-                    "cxx_class": "ExClass1"
+                    "cxx_class": "ExClass1", 
+                    "namespace_scope": "example::nested::\t"
                 }, 
                 "functions": [
                     {
@@ -66,7 +67,7 @@
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
-                                "_typename": "ExClass1"
+                                "_typename": "example::nested::ExClass1"
                             }, 
                             "const": false, 
                             "fattrs": {
@@ -182,7 +183,7 @@
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
-                                "_typename": "ExClass1"
+                                "_typename": "example::nested::ExClass1"
                             }, 
                             "const": false, 
                             "fattrs": {
@@ -291,7 +292,7 @@
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
-                                "_typename": "ExClass1"
+                                "_typename": "example::nested::ExClass1"
                             }, 
                             "const": false, 
                             "fattrs": {
@@ -361,7 +362,7 @@
                         "_function_index": 2, 
                         "ast": {
                             "attrs": {
-                                "_typename": "ExClass1"
+                                "_typename": "example::nested::ExClass1"
                             }, 
                             "const": false, 
                             "fattrs": {
@@ -1814,6 +1815,7 @@
                     }
                 ], 
                 "name": "ExClass1", 
+                "namespace": "example nested", 
                 "options": {}, 
                 "python": {
                     "type": [
@@ -1852,7 +1854,8 @@
                     "class_prefix": "exclass2_", 
                     "class_scope": "ExClass2::", 
                     "class_upper": "EXCLASS2", 
-                    "cxx_class": "ExClass2"
+                    "cxx_class": "ExClass2", 
+                    "namespace_scope": "example::nested::\t"
                 }, 
                 "functions": [
                     {
@@ -1919,7 +1922,7 @@
                         "_function_index": 19, 
                         "ast": {
                             "attrs": {
-                                "_typename": "ExClass2"
+                                "_typename": "example::nested::ExClass2"
                             }, 
                             "const": false, 
                             "fattrs": {
@@ -2023,7 +2026,7 @@
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
-                                "_typename": "ExClass2"
+                                "_typename": "example::nested::ExClass2"
                             }, 
                             "const": false, 
                             "fattrs": {
@@ -2091,7 +2094,7 @@
                         "_function_index": 20, 
                         "ast": {
                             "attrs": {
-                                "_typename": "ExClass2"
+                                "_typename": "example::nested::ExClass2"
                             }, 
                             "const": false, 
                             "fattrs": {
@@ -3000,7 +3003,7 @@
                         "_function_index": 26, 
                         "ast": {
                             "attrs": {
-                                "_typename": "ExClass1"
+                                "_typename": "example::nested::ExClass1"
                             }, 
                             "const": false, 
                             "declarator": {
@@ -3017,7 +3020,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "ExClass1", 
+                                        "_typename": "example::nested::ExClass1", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -4341,6 +4344,7 @@
                     }
                 ], 
                 "name": "ExClass2", 
+                "namespace": "example nested", 
                 "options": {}, 
                 "python": {
                     "type": [
@@ -4385,7 +4389,8 @@
                     "class_prefix": "exclass3_", 
                     "class_scope": "ExClass3::", 
                     "class_upper": "EXCLASS3", 
-                    "cxx_class": "ExClass3"
+                    "cxx_class": "ExClass3", 
+                    "namespace_scope": "example::nested::\t"
                 }, 
                 "functions": [
                     {
@@ -4437,6 +4442,7 @@
                     }
                 ], 
                 "name": "ExClass3", 
+                "namespace": "example nested", 
                 "options": {
                     "wrap_python": false
                 }, 

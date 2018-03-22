@@ -40,7 +40,6 @@ copyright:
 - '#######################################################################'
 
 library: UserLibrary
-namespace: example nested
 
 splicer:
   f:
@@ -107,279 +106,283 @@ types:
       sidre_mod: [ group ]
     PY_PyTypeObject: FillInTypeForGroup
 
-classes:
-  - name: ExClass1
-    cxx_header: ExClass1.hpp
-    # include files to add to module
+declarations:
+- namespace: example
+  declarations:
+  - namespace: nested
+    declarations:
 
-    python:
-      type: [ init, repr, richcompare ]
+    - class: ExClass1
+      cxx_header: ExClass1.hpp
+      # include files to add to module
 
-    methods:
-    # overloaded constructor
-    - decl: ExClass1()
-    - decl: ExClass1( const string *name )
-      doxygen:
-        brief:  constructor
-        description: |
-           longer description
-           usually multiple lines
-        return: return new instance
+      python:
+        type: [ init, repr, richcompare ]
 
-    - decl: ~ExClass1()
+      declarations:
+      # overloaded constructor
+      - decl: ExClass1()
+      - decl: ExClass1( const string *name )
+        doxygen:
+          brief:  constructor
+          description: |
+             longer description
+             usually multiple lines
+          return: return new instance
+
+      - decl: ~ExClass1()
+        format:
+          F_name_function: delete
+        doxygen:
+          brief: destructor
+          description:
+             longer description
+             joined with previous line
+
+      - decl: int incrementCount(int incr)
+
+      - decl: const string& getName() const
+        fattrs:
+          len: aa_exclass1_get_name_length({F_this}%{F_derived_member})
+        C_error_pattern: C_invalid_name
+        PY_error_pattern: PY_invalid_name
+
+      - decl: int GetNameLength() const
+        doxygen:
+          brief: helper function for Fortran to get length of name.
+        format:
+          C_code: |
+            {C_pre_call}
+            return {CXX_this}->getName().length();
+
+      - decl: const string& getNameErrorCheck() const
+
+      - decl: const string& getNameArg() const
+      # This function will convert the return value into a argument
+        format:
+           F_string_result_as_arg: name
+
+    # XXX deal with forward declare
+    #    - decl: ExClass2 *getRoot()
+      - decl: void *getRoot()
+
+      - decl: int  getValue(int value)
+        format:
+          function_suffix: _from_int
+      - decl: long getValue(long value)
+
+      - decl: void *getAddr()
+      - decl: bool hasAddr(bool in)
+
+      - decl: void SplicerSpecial()
+
+    ######################################################################
+    - class: ExClass2
+      cxx_header: ExClass2.hpp
+      python:
+        type: [dealloc, print, compare, getattr, setattr,
+               getattro, setattro,
+               repr, hash, call, str,
+               init, alloc, new, free, del]
+
+      declarations:
+      - decl: ExClass2(const string *name)
+        doxygen:
+          brief:  constructor
+
+        # test annotating arguments
+        attrs:
+          name:
+            len_trim: trim_name
+
+      - decl: ~ExClass2()
+        format:
+          F_name_function: delete
+        doxygen:
+          brief: destructor
+
+      - decl: const string& getName() const
+        # test annotating result
+        fattrs:
+          len: aa_exclass2_get_name_length({F_this}%{F_derived_member})
+
+    # test variations of const for result and method
+      - decl: const string& getName2()
+      - decl:       string& getName3() const
+      - decl:       string& getName4()
+
+    #   This function does not actually exist in the wrapped libray
+      - decl: int GetNameLength() const
+        doxygen:
+          brief: helper function for Fortran
+        format:
+          C_code: |
+            {C_pre_call}
+            return {CXX_this}->getName().length();
+
+      # test forward declarations
+      - decl: ExClass1 *get_class1(const ExClass1 *in)
+
+      # typedefs that require modules
+      - decl: void* declare(TypeID type, SidreLength len = 1)
+        # by returning this,the C++ function allows chaining.
+        # make them subroutines in Fortran.
+        return_this: True
+        fortran_generic:
+          len:
+          -  int
+          -  long
+
+      # void function
+      - decl: void destroyall()
+
+      # return typedef'd type
+      - decl: TypeID getTypeID() const
+
+    #           template<typename ValueType>
+      - decl: void setValue(ValueType value)
+        cxx_template:
+          ValueType:
+          - int
+          - long
+          - float
+          - double
+
+    #           template<typename ValueType>
+      - decl: ValueType getValue()
+        cxx_template:
+          ValueType:
+          - int
+    #        - long
+    #        - float
+          - double
+
+    - class: ExClass3
+      options:
+        wrap_python: False
+      cpp_if: ifdef USE_CLASS3
+      declarations:
+      - decl: void exfunc()
+
+    ########################################
+    - decl: void local_function1()
+
+    # override the C code.
+    - decl: bool isNameValid(const std::string& name)
       format:
-        F_name_function: delete
-      doxygen:
-        brief: destructor
-        description:
-           longer description
-           joined with previous line
+        C_code:  "return name != NULL;"
+        F_code:  rv = name .ne. " "
 
-    - decl: int incrementCount(int incr)
+    # return bool, no arguments.
+    # This needs to generate a Fortran wrapper to convert the bool to logical
+    - decl: bool isInitialized()
 
-    - decl: const string& getName() const
-      fattrs:
-        len: aa_exclass1_get_name_length({F_this}%{F_derived_member})
-      C_error_pattern: C_invalid_name
-      PY_error_pattern: PY_invalid_name
+    # check intent with bool
+    - decl: void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))
 
-    - decl: int GetNameLength() const
-      doxygen:
-        brief: helper function for Fortran to get length of name.
+    # overrides which each accept a string.
+    # Test the name of generated 'bufferify' functions
+    - decl: void test_names(const std::string &name)
+      # explicitly set suffix, otherwise it defaults to _0
       format:
-        C_code: |
-          {C_pre_call}
-          return {CXX_this}->getName().length();
-
-    - decl: const string& getNameErrorCheck() const
-
-    - decl: const string& getNameArg() const
-    # This function will convert the return value into a argument
+        function_suffix:
+    - decl: void test_names(const std::string &name, int flag)
       format:
-         F_string_result_as_arg: name
+        function_suffix: _flag
 
-# XXX deal with forward declare
-#    - decl: ExClass2 *getRoot()
-    - decl: void *getRoot()
+    - decl: void testoptional(int i = 1, long j=2)
 
-    - decl: int  getValue(int value)
-      format:
-        function_suffix: _from_int
-    - decl: long getValue(long value)
+    # test cxx_template, fortran_generic, overload
+    #  - decl: void Function10()
+    #  - decl: void Function10(ArgType arg1, std::string &name, double arg2 = 0)
+    #    options:
+    #      F_string_len_trim: True
+    #    cxx_template:
+    #      ArgType:
+    #      - int
+    #      - double
+    #    fortran_generic:
+    #       arg2:
+    #       - float
+    #       - double
 
-    - decl: void *getAddr()
-    - decl: bool hasAddr(bool in)
+    - decl: size_t test_size_t()
+    - decl: void testmpi(MPI_Comm comm)
+      cpp_if: ifdef HAVE_MPI
 
-    - decl: void SplicerSpecial()
+    - decl: void testgroup1(DataGroup * grp)
+    - decl: void testgroup2(const DataGroup * grp)
 
-  ######################################################################
-  - name: ExClass2
-    cxx_header: ExClass2.hpp
-    python:
-      type: [dealloc, print, compare, getattr, setattr,
-             getattro, setattro,
-             repr, hash, call, str,
-             init, alloc, new, free, del]
-
-    methods:
-    - decl: ExClass2(const string *name)
+    # function pointers
+    - decl: void FuncPtr1(void (*get)());
       doxygen:
-        brief:  constructor
-
-      # test annotating arguments
-      attrs:
-        name:
-          len_trim: trim_name
-
-    - decl: ~ExClass2()
-      format:
-        F_name_function: delete
+        brief: subroutine
+    - decl: void FuncPtr2(double * (*get)());
       doxygen:
-        brief: destructor
-
-    - decl: const string& getName() const
-      # test annotating result
-      fattrs:
-        len: aa_exclass2_get_name_length({F_this}%{F_derived_member})
-
-# test variations of const for result and method
-    - decl: const string& getName2()
-    - decl:       string& getName3() const
-    - decl:       string& getName4()
-
-#   This function does not actually exist in the wrapped libray
-    - decl: int GetNameLength() const
+        brief: return a pointer
+    - decl: void FuncPtr3(double (*get)(int i, int));
       doxygen:
-        brief: helper function for Fortran
-      format:
-        C_code: |
-          {C_pre_call}
-          return {CXX_this}->getName().length();
+        brief: abstract argument
+      options:
+        F_force_wrapper: True
+    - decl: void FuncPtr4(double (*get)(double, int));
+      doxygen:
+        brief: abstract argument
+      options:
+        wrap_lua: False
+        wrap_python: False
+        F_force_wrapper: True
+        F_abstract_interface_subprogram_template: custom_funptr
+        F_abstract_interface_argument_template: XX{index}arg
+    - decl: void FuncPtr5(void (*get)(int verylongname1, 
+                                      int verylongname2, 
+                                      int verylongname3, 
+                                      int verylongname4, 
+                                      int verylongname5, 
+                                      int verylongname6, 
+                                      int verylongname7, 
+                                      int verylongname8, 
+                                      int verylongname9, 
+                                      int verylongname10))
 
-    # test forward declarations
-    - decl: ExClass1 *get_class1(const ExClass1 *in)
+    - decl: void verylongfunctionname1(int *verylongname1 +intent(inout), 
+                                       int *verylongname2 +intent(inout), 
+                                       int *verylongname3 +intent(inout), 
+                                       int *verylongname4 +intent(inout), 
+                                       int *verylongname5 +intent(inout), 
+                                       int *verylongname6 +intent(inout), 
+                                       int *verylongname7 +intent(inout), 
+                                       int *verylongname8 +intent(inout), 
+                                       int *verylongname9 +intent(inout), 
+                                       int *verylongname10 +intent(inout))
+      options:
+        # Force wrapper to test interface line lengths
+        F_force_wrapper: True
 
-    # typedefs that require modules
-    - decl: void* declare(TypeID type, SidreLength len = 1)
-      # by returning this,the C++ function allows chaining.
-      # make them subroutines in Fortran.
-      return_this: True
-      fortran_generic:
-        len:
-        -  int
-        -  long
+    - decl: int verylongfunctionname2(int verylongname1, 
+                                      int verylongname2, 
+                                      int verylongname3, 
+                                      int verylongname4, 
+                                      int verylongname5, 
+                                      int verylongname6, 
+                                      int verylongname7, 
+                                      int verylongname8, 
+                                      int verylongname9, 
+                                      int verylongname10)
+      options:
+        # Force wrapper to test interface line lengths
+        F_force_wrapper: True
+        F_line_length: 0
+        C_line_length: 0
 
-    # void function
-    - decl: void destroyall()
-
-    # return typedef'd type
-    - decl: TypeID getTypeID() const
-
-#           template<typename ValueType>
-    - decl: void setValue(ValueType value)
-      cxx_template:
-        ValueType:
-        - int
-        - long
-        - float
-        - double
-
-#           template<typename ValueType>
-    - decl: ValueType getValue()
-      cxx_template:
-        ValueType:
-        - int
-#        - long
-#        - float
-        - double
-
-  - name: ExClass3
-    options:
-      wrap_python: False
-    cpp_if: ifdef USE_CLASS3
-    functions:
-    # default ctor and dtor will not be automatically wrapped
-    - decl: void exfunc()
-
-functions:
-  - decl: void local_function1()
-
-  # override the C code.
-  -  decl: bool isNameValid(const std::string& name)
-     format:
-       C_code:  "return name != NULL;"
-       F_code:  rv = name .ne. " "
-
-  # return bool, no arguments.
-  # This needs to generate a Fortran wrapper to convert the bool to logical
-  -  decl: bool isInitialized()
-
-  # check intent with bool
-  -  decl: void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))
-
-  # overrides which each accept a string.
-  # Test the name of generated 'bufferify' functions
-  -  decl: void test_names(const std::string &name)
-     # explicitly set suffix, otherwise it defaults to _0
-     format:
-       function_suffix:
-  -  decl: void test_names(const std::string &name, int flag)
-     format:
-       function_suffix: _flag
-
-  - decl: void testoptional(int i = 1, long j=2)
-
-# test cxx_template, fortran_generic, overload
-#  - decl: void Function10()
-#  - decl: void Function10(ArgType arg1, std::string &name, double arg2 = 0)
-#    options:
-#      F_string_len_trim: True
-#    cxx_template:
-#      ArgType:
-#      - int
-#      - double
-#    fortran_generic:
-#       arg2:
-#       - float
-#       - double
-
-  - decl: size_t test_size_t()
-  - decl: void testmpi(MPI_Comm comm)
-    cpp_if: ifdef HAVE_MPI
-
-  - decl: void testgroup1(DataGroup * grp)
-  - decl: void testgroup2(const DataGroup * grp)
-
-# function pointers
-  - decl: void FuncPtr1(void (*get)());
-    doxygen:
-      brief: subroutine
-  - decl: void FuncPtr2(double * (*get)());
-    doxygen:
-      brief: return a pointer
-  - decl: void FuncPtr3(double (*get)(int i, int));
-    doxygen:
-      brief: abstract argument
-    options:
-      F_force_wrapper: True
-  - decl: void FuncPtr4(double (*get)(double, int));
-    doxygen:
-      brief: abstract argument
-    options:
-      wrap_lua: False
-      wrap_python: False
-      F_force_wrapper: True
-      F_abstract_interface_subprogram_template: custom_funptr
-      F_abstract_interface_argument_template: XX{index}arg
-  - decl: void FuncPtr5(void (*get)(int verylongname1, 
-                                    int verylongname2, 
-                                    int verylongname3, 
-                                    int verylongname4, 
-                                    int verylongname5, 
-                                    int verylongname6, 
-                                    int verylongname7, 
-                                    int verylongname8, 
-                                    int verylongname9, 
-                                    int verylongname10))
-
-  - decl: void verylongfunctionname1(int *verylongname1 +intent(inout), 
-                                     int *verylongname2 +intent(inout), 
-                                     int *verylongname3 +intent(inout), 
-                                     int *verylongname4 +intent(inout), 
-                                     int *verylongname5 +intent(inout), 
-                                     int *verylongname6 +intent(inout), 
-                                     int *verylongname7 +intent(inout), 
-                                     int *verylongname8 +intent(inout), 
-                                     int *verylongname9 +intent(inout), 
-                                     int *verylongname10 +intent(inout))
-    options:
-      # Force wrapper to test interface line lengths
-      F_force_wrapper: True
-
-  - decl: int verylongfunctionname2(int verylongname1, 
-                                    int verylongname2, 
-                                    int verylongname3, 
-                                    int verylongname4, 
-                                    int verylongname5, 
-                                    int verylongname6, 
-                                    int verylongname7, 
-                                    int verylongname8, 
-                                    int verylongname9, 
-                                    int verylongname10)
-    options:
-      # Force wrapper to test interface line lengths
-      F_force_wrapper: True
-      F_line_length: 0
-      C_line_length: 0
-
-  - decl: void cos_doubles(
-             double * in   +intent(in)  +dimension(:,:),
-             double * out  +intent(out) +dimension(:,:)+allocatable(mold=in),
-             int      sizein +implied(size(in)))
-    doxygen:
-      brief: Test multidimensional arrays with allocatable
-    options:
-       F_standard: 2008
+    - decl: void cos_doubles(
+               double * in   +intent(in)  +dimension(:,:),
+               double * out  +intent(out) +dimension(:,:)+allocatable(mold=in),
+               int      sizein +implied(size(in)))
+      doxygen:
+        brief: Test multidimensional arrays with allocatable
+      options:
+         F_standard: 2008
 
 
 ######################################################################
@@ -393,5 +396,4 @@ patterns:
             PyErr_SetString(PyExc_KeyError, "XXX need value of name");
             return NULL;
         }}
-
 

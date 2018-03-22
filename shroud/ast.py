@@ -1069,24 +1069,39 @@ def add_declarations(parent, node, namespace):
         if 'namespace' in subnode:
             name = subnode['namespace']
             namespace.append(name)
-            if isinstance(parent, LibraryNode):
-                parent.namespace = ' '.join(namespace)
-                parent.fmtdict.namespace_scope = '::'.join(namespace) + '::\t'
-                parent.fmtdict.CXX_this_call = parent.fmtdict.namespace_scope
+
+            owner = parent
+            while owner:
+                if isinstance(owner, NamespaceNode):
+                    # skip over nested namespaces
+                    owner = owner.parent
+                    continue
+                break
+            if isinstance(owner, LibraryNode):
+                if not owner.functions:
+                    # kludge to only update Library's namespace until
+                    # functions are added.
+                    owner.namespace = ' '.join(namespace)
+                    owner.fmtdict.namespace_scope = '::'.join(namespace) + '::\t'
+                    owner.fmtdict.CXX_this_call = owner.fmtdict.namespace_scope
+
             ns = parent.add_namespace(name)
             add_declarations(ns, subnode, namespace)
             namespace.pop()
+        elif 'forward' in subnode:
+            name = subnode['forward']
+            parent.add_class_forward(name)
         elif 'class' in subnode:
             name = subnode['class']
-            if 'declarations' not in subnode:
-                parent.add_class_forward(name)
-            else:
-                d = copy.copy(subnode)
-                clean_dictionary(d)
-                del d['class']
+            d = copy.copy(subnode)
+            clean_dictionary(d)
+            del d['class']
+            if namespace:
                 d['namespace'] = ' '.join(namespace)
-                cls = parent.add_class(name, **d)
-                add_declarations(cls, subnode, namespace)
+            else:
+                d['namespace'] = '-none-'
+            cls = parent.add_class(name, **d)
+            add_declarations(cls, subnode, namespace)
         elif 'block' in subnode:
             d = copy.copy(subnode)
             clean_dictionary(d)
@@ -1100,6 +1115,7 @@ def add_declarations(parent, node, namespace):
             del d['decl']
             parent.add_declaration(decl, **d)
         else:
+            print(subnode)
             raise RuntimeError("Expected 'namespace', 'block', 'class' or 'decl'")
 
 def create_library_from_dictionary(node):

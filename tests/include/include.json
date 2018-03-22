@@ -234,7 +234,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "Class1", 
+                                        "_typename": "three::Class1", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -249,7 +249,7 @@
                                         ]
                                     }, 
                                     "specifier": [
-                                        "Class1"
+                                        "three::Class1"
                                     ]
                                 }
                             ], 
@@ -257,8 +257,8 @@
                                 "void"
                             ]
                         }, 
-                        "decl": "void method2(Class1 * c2)", 
-                        "declgen": "void method2(Class1 * c2 +intent(in)+value)", 
+                        "decl": "void method2(three::Class1 * c2)", 
+                        "declgen": "void method2(three::Class1 * c2 +intent(in)+value)", 
                         "format": {
                             "C_call_code": "SH_this->method2(\tSHCXX_c2);", 
                             "C_call_list": "SHCXX_c2", 
@@ -286,7 +286,7 @@
                     }
                 ], 
                 "name": "Class2", 
-                "namespace": "-no namespace", 
+                "namespace": "-none-", 
                 "options": {}, 
                 "typedef_name": "Class2"
             }

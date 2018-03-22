@@ -50,7 +50,7 @@ options:
   debug: True
   wrap_python: True
 
-functions:
+declarations:
 
 - decl: void passChar(char status)
   doxygen:

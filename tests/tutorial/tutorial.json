@@ -102,7 +102,8 @@
                     "class_prefix": "class1_", 
                     "class_scope": "Class1::", 
                     "class_upper": "CLASS1", 
-                    "cxx_class": "Class1"
+                    "cxx_class": "Class1", 
+                    "namespace_scope": "tutorial::\t"
                 }, 
                 "functions": [
                     {
@@ -138,7 +139,7 @@
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
-                                "_typename": "Class1"
+                                "_typename": "tutorial::Class1"
                             }, 
                             "const": false, 
                             "fattrs": {
@@ -258,7 +259,7 @@
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
-                                "_typename": "Class1"
+                                "_typename": "tutorial::Class1"
                             }, 
                             "const": false, 
                             "fattrs": {
@@ -324,7 +325,7 @@
                         "_function_index": 2, 
                         "ast": {
                             "attrs": {
-                                "_typename": "Class1"
+                                "_typename": "tutorial::Class1"
                             }, 
                             "const": false, 
                             "fattrs": {
@@ -637,7 +638,7 @@
                         "_function_index": 5, 
                         "ast": {
                             "attrs": {
-                                "_typename": "Class1::DIRECTION"
+                                "_typename": "tutorial::Class1::DIRECTION"
                             }, 
                             "const": false, 
                             "declarator": {
@@ -649,7 +650,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "Class1::DIRECTION", 
+                                        "_typename": "tutorial::Class1::DIRECTION", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -702,6 +703,7 @@
                     }
                 ], 
                 "name": "Class1", 
+                "namespace": "tutorial", 
                 "options": {}, 
                 "typedef_name": "tutorial::Class1"
             }, 
@@ -5714,7 +5716,7 @@
                 "_function_index": 27, 
                 "ast": {
                     "attrs": {
-                        "_typename": "Color"
+                        "_typename": "tutorial::Color"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -5726,7 +5728,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "Color", 
+                                "_typename": "tutorial::Color", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -5995,7 +5997,7 @@
                 "_function_index": 29, 
                 "ast": {
                     "attrs": {
-                        "_typename": "Class1::DIRECTION"
+                        "_typename": "tutorial::Class1::DIRECTION"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -6007,7 +6009,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "Class1::DIRECTION", 
+                                "_typename": "tutorial::Class1::DIRECTION", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -6121,7 +6123,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "Class1", 
+                                "_typename": "tutorial::Class1", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -6188,7 +6190,7 @@
                 "_function_index": 31, 
                 "ast": {
                     "attrs": {
-                        "_typename": "Class1"
+                        "_typename": "tutorial::Class1"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -6260,7 +6262,7 @@
                 "_function_index": 32, 
                 "ast": {
                     "attrs": {
-                        "_typename": "Class1"
+                        "_typename": "tutorial::Class1"
                     }, 
                     "const": false, 
                     "declarator": {
