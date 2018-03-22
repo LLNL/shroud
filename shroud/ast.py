@@ -517,7 +517,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
 ######################################################################
 
-class ClassNode(AstNode):
+class ClassNode(AstNode, NamespaceMixin):
     def __init__(self, name, parent,
                  cxx_header='',
                  format=None,
@@ -612,22 +612,9 @@ class ClassNode(AstNode):
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
 
-    def add_enum(self, decl, parentoptions=None, **kwargs):
-        """Add an enumeration.
-        """
-        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
-                        **kwargs)
-        self.enums.append(node)
-        self.symbols[node.name] = node
-        return node
-
-    def add_function(self, decl, parentoptions=None, **kwargs):
-        """Add a function.
-        """
-        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
-                               **kwargs)
-        self.functions.append(fcnnode)
-        return fcnnode
+    def add_namespace(self, **kwargs):
+        """Replace method inherited from NamespaceMixin."""
+        raise RuntimeError("Cannot add a namespace to a class")
 
 ######################################################################
 
@@ -1041,6 +1028,16 @@ def add_declarations(parent, node):
         if 'namespace' in subnode:
             ns = parent.add_namespace(subnode['namespace'])
             add_declarations(ns, subnode)
+        elif 'class' in subnode:
+            name = subnode['class']
+            if 'declarations' not in subnode:
+                parent.add_class_forward(name)
+            else:
+                d = copy.copy(subnode)
+                clean_dictionary(d)
+                del d['class']
+                cls = parent.add_class(name, **d)
+                add_declarations(cls, subnode)
         elif 'decl' in subnode:
             # copy before clean to avoid changing input dict
             d = copy.copy(subnode)
@@ -1049,7 +1046,7 @@ def add_declarations(parent, node):
             del d['decl']
             parent.add_declaration(decl, **d)
         else:
-            raise RuntimeError("Expected 'namespace' or 'decl'")
+            raise RuntimeError("Expected 'namespace', 'class' or 'decl'")
 
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.
