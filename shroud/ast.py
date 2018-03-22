@@ -1054,14 +1054,21 @@ def add_functions(parent, functions):
             del d['decl']
             parent.add_function(decl, parentoptions=options, **d)
 
-def add_declarations(parent, node):
+def add_declarations(parent, node, namespace):
     if 'declarations' not in node:
         return
 
     for subnode in node['declarations']:
         if 'namespace' in subnode:
-            ns = parent.add_namespace(subnode['namespace'])
-            add_declarations(ns, subnode)
+            name = subnode['namespace']
+            namespace.append(name)
+            if isinstance(parent, LibraryNode):
+                parent.namespace = ' '.join(namespace)
+                parent.fmtdict.namespace_scope = '::'.join(namespace) + '::\t'
+                parent.fmtdict.CXX_this_call = parent.fmtdict.namespace_scope
+            ns = parent.add_namespace(name)
+            add_declarations(ns, subnode, namespace)
+            namespace.pop()
         elif 'class' in subnode:
             name = subnode['class']
             if 'declarations' not in subnode:
@@ -1070,13 +1077,14 @@ def add_declarations(parent, node):
                 d = copy.copy(subnode)
                 clean_dictionary(d)
                 del d['class']
+                d['namespace'] = ' '.join(namespace)
                 cls = parent.add_class(name, **d)
-                add_declarations(cls, subnode)
+                add_declarations(cls, subnode, namespace)
         elif 'block' in subnode:
             d = copy.copy(subnode)
             clean_dictionary(d)
             blk = BlockNode(parent, **d)
-            add_declarations(blk, subnode)
+            add_declarations(blk, subnode, namespace)
         elif 'decl' in subnode:
             # copy before clean to avoid changing input dict
             d = copy.copy(subnode)
@@ -1100,6 +1108,9 @@ def create_library_from_dictionary(node):
     Do some checking on the input.
     Every class must have a name.
     """
+
+    # Emulate namespace field in library and class
+    namespace = []
 
     if 'copyright' in node:
         clean_list(node['copyright'])
@@ -1168,6 +1179,6 @@ def create_library_from_dictionary(node):
     if 'functions' in node:
         add_functions(library, node['functions'])
 
-    add_declarations(library, node)
+    add_declarations(library, node, namespace)
 
     return library
