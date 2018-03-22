@@ -1119,7 +1119,7 @@ class CheckEnum(unittest.TestCase):
         library = ast.LibraryNode()
 
     def test_enum1(self):
-        r = declast.check_enum('enum Color{RED=1,BLUE,WHITE}')
+        r = declast.check_decl('enum Color{RED=1,BLUE,WHITE}')
         self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))
         self.assertEqual(todict.to_dict(r),{
             'name': 'Color',
@@ -1132,7 +1132,7 @@ class CheckEnum(unittest.TestCase):
                          
     def test_enum2(self):
         # enum trailing comma
-        r = declast.check_enum('enum Color{RED=1,BLUE,WHITE,}')
+        r = declast.check_decl('enum Color{RED=1,BLUE,WHITE,}')
         self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))
 
                          

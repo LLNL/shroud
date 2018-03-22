@@ -107,14 +107,16 @@ class NamespaceMixin(object):
                                  template_types=[])
         if isinstance(ast, declast.Declaration):
             self.add_function(decl, ast=ast, **kwargs)
+        elif isinstance(ast, declast.Enum):
+            self.add_enum(decl, ast=ast, **kwargs)
         else:
             raise RuntimeError("Error parsing " + decl)
 
-    def add_enum(self, decl, parentoptions=None, **kwargs):
+    def add_enum(self, decl, parentoptions=None, ast=None, **kwargs):
         """Add an enumeration.
         """
         node = EnumNode(decl, parent=self, parentoptions=parentoptions,
-                        **kwargs)
+                        ast=ast, **kwargs)
         self.enums.append(node)
         self.symbols[node.name] = node
         return node
@@ -831,6 +833,7 @@ class EnumNode(AstNode):
     def __init__(self, decl, parent,
                  format=None,
                  parentoptions=None,
+                 ast=None,
                  options=None,
                  **kwargs):
 
@@ -850,7 +853,10 @@ class EnumNode(AstNode):
             raise RuntimeError("EnumNode missing decl")
 
         self.decl = decl
-        ast = declast.check_enum(decl)
+        if ast is None:
+            ast = declast.check_decl(decl)
+            if not isinstance(ast, declast.Enum):
+                raise RuntimeError("Declaration is not an enumeration: " + decl)
         self.ast = ast
         self.name = ast.name
 

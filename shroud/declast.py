@@ -184,8 +184,130 @@ class RecursiveDescent(object):
         if self.trace:
             print(' ' * self.indent, *args)
 
+######################################################################
 
-class Parser(RecursiveDescent):
+# For each operator, a (precedence, associativity) pair.
+OpInfo = collections.namedtuple('OpInfo', 'prec assoc')
+
+OPINFO_MAP = {
+    '+':    OpInfo(1, 'LEFT'),
+    '-':    OpInfo(1, 'LEFT'),
+    '*':    OpInfo(2, 'LEFT'),
+    '/':    OpInfo(2, 'LEFT'),
+#    '^':    OpInfo(3, 'RIGHT'),
+}
+
+class ExprParser(RecursiveDescent):
+    """
+    Parse implied attribute expressions.
+    Expand functions into Fortran or Python.
+
+    Examples:
+      size(var)
+    """
+
+    def __init__(self, expr, trace=False):
+        self.decl = expr
+        self.expr = expr
+        self.trace = trace
+        self.indent = 0
+        self.token = None
+        self.tokenizer = tokenize(expr)
+        self.next()  # load first token
+
+    def expression(self, min_prec=0):
+        """Parse expressions.
+        Preserves precedence and associativity.
+
+        https://eli.thegreenplace.net/2012/08/02/parsing-expressions-by-precedence-climbing
+        """
+        self.enter('expression')
+        atom_lhs = self.primary()
+
+        while True:
+            op = self.token.value
+            if (op not in OPINFO_MAP
+                or OPINFO_MAP[op].prec < min_prec):
+                break
+
+            # Inside this loop the current token is a binary operator
+
+            # Get the operator's precedence and associativity, and compute a
+            # minimal precedence for the recursive call
+            prec, assoc = OPINFO_MAP[op]
+            next_min_prec = prec + 1 if assoc == 'LEFT' else prec
+
+            # Consume the current token and prepare the next one for the
+            # recursive call
+            self.next()
+            atom_rhs = self.expression(next_min_prec)
+
+            # Update lhs with the new value
+            atom_lhs = BinaryOp(atom_lhs, op, atom_rhs)
+
+        self.exit('expression')
+        return atom_lhs
+
+    def primary(self):
+        self.enter('primary')
+        if self.peek('ID'):
+            node = self.identifier()
+        elif self.token.typ in ['REAL', 'INTEGER']:
+            self.enter('constant')
+            node = Constant(self.token.value)
+            self.next()
+        elif self.have('LPAREN'):
+            node = ParenExpr(self.expression())
+            self.mustbe('RPAREN')
+        elif self.token.typ in ['PLUS', 'MINUS']:
+            self.enter('unary')
+            value = self.token.value
+            self.next()
+            node = UnaryOp(value, self.primary())
+        else:
+            self.error_msg("Unexpected token {} in primary", self.token.value)
+        self.exit('primary')
+        return node
+
+    def identifier(self):
+        """
+        <expr> ::= name '(' arglist ')'
+        """
+        self.enter('identifier')
+        name = self.mustbe('ID').value
+        if self.peek('LPAREN'):
+            args = self.argument_list()
+            node = Identifier(name, args)
+        else:
+            node = Identifier(name)
+        self.exit('identifier')
+        return node
+
+    def argument_list(self):
+        """
+        <argument-list> ::= '(' <name>?  [ , <name ]* ')'
+
+        """
+        self.enter('argument_list')
+        params = []
+        self.next()  # consume LPAREN peeked at in caller
+        while self.token.typ != 'RPAREN':
+            node = self.identifier()
+            params.append(node)
+            if not self.have('COMMA'):
+                break
+        self.mustbe('RPAREN')
+        self.exit('argument_list', str(params))
+        return params
+
+
+def check_expr(expr, trace=False):
+    a = ExprParser(expr, trace=trace).expression()
+    return a
+
+######################################################################
+
+class Parser(ExprParser):
     """
     Parse a C/C++ declaration with Shroud annotations.
 
@@ -350,7 +472,10 @@ class Parser(RecursiveDescent):
     def decl_statement(self):
         """Check for optional semicolon and stray stuff at the end of line.
         """
-        node = self.declaration()
+        if self.token.typ == 'ENUM':
+            node = self.enum_statement()
+        else:
+            node = self.declaration()
         self.have('SEMICOLON')
         self.mustbe('EOF')
         return node
@@ -488,9 +613,59 @@ class Parser(RecursiveDescent):
                 attrs[name] = True
         self.exit('attribute', attrs)
 
+    def enum_statement(self):
+        self.enter('enum_statement')
+        self.mustbe('ENUM')
+        name = self.mustbe('ID')
+        self.mustbe('LCURLY')
+        node = Enum(name.value)
+        members = node.members
+        while self.token.typ != 'RCURLY':
+            name = self.mustbe('ID')
+            if self.have('EQUALS'):
+                value = self.expression()
+            else:
+                value = None
+            members.append(EnumValue(name.value, value))
+            if not self.have('COMMA'):
+                break
+        self.mustbe('RCURLY')
+        self.exit('enum_statement', str(members))
+        return node
+
+######################################################################
 
 class Node(object):
     pass
+
+
+class Identifier(Node):
+    def __init__(self, name, args=None):
+        self.name = name
+        self.args = args
+
+
+class BinaryOp(Node):
+    def __init__(self, left, op, right):
+        self.left = left
+        self.op = op
+        self.right = right
+
+
+class UnaryOp(Node):
+    def __init__(self, op, node):
+        self.op = op
+        self.node = node
+
+
+class ParenExpr(Node):
+    def __init__(self, node):
+        self.node = node
+
+
+class Constant(Node):
+    def __init__(self, value):
+        self.value = value
 
 
 class Ptr(Node):
@@ -1006,6 +1181,20 @@ class Declaration(Node):
 
         return ''.join(decl)
 
+class Enum(Node):
+    """An enumeration statement.
+    enum Color { RED, BLUE, WHITE }
+    """
+    def __init__(self, name):
+        self.name = name
+        self.members = []
+
+class EnumValue(Node):
+    """A single name in an enum statment with optional value"""
+    def __init__(self, name, value=None):
+        self.name = name
+        self.value = value
+
 
 def check_decl(decl, namespace=None, current_class=None, template_types=[],trace=False):
     """ parse expr as a declaration, return list/dict result.
@@ -1053,197 +1242,3 @@ def create_voidstarstar(typ, name, const=False):
     arg.specifier = [ typ ]
     arg.attrs['_typename'] = typ
     return arg
-
-
-######################################################################
-
-class Identifier(Node):
-    def __init__(self, name, args=None):
-        self.name = name
-        self.args = args
-
-
-class BinaryOp(Node):
-    def __init__(self, left, op, right):
-        self.left = left
-        self.op = op
-        self.right = right
-
-
-class UnaryOp(Node):
-    def __init__(self, op, node):
-        self.op = op
-        self.node = node
-
-
-class ParenExpr(Node):
-    def __init__(self, node):
-        self.node = node
-
-
-class Constant(Node):
-    def __init__(self, value):
-        self.value = value
-
-
-# For each operator, a (precedence, associativity) pair.
-OpInfo = collections.namedtuple('OpInfo', 'prec assoc')
-
-OPINFO_MAP = {
-    '+':    OpInfo(1, 'LEFT'),
-    '-':    OpInfo(1, 'LEFT'),
-    '*':    OpInfo(2, 'LEFT'),
-    '/':    OpInfo(2, 'LEFT'),
-#    '^':    OpInfo(3, 'RIGHT'),
-}
-
-class ExprParser(RecursiveDescent):
-    """
-    Parse implied attribute expressions.
-    Expand functions into Fortran or Python.
-
-    Examples:
-      size(var)
-    """
-
-    def __init__(self, expr, trace=False):
-        self.decl = expr
-        self.expr = expr
-        self.trace = trace
-        self.indent = 0
-        self.token = None
-        self.tokenizer = tokenize(expr)
-        self.next()  # load first token
-
-    def expression(self, min_prec=0):
-        """Parse expressions.
-        Preserves precedence and associativity.
-
-        https://eli.thegreenplace.net/2012/08/02/parsing-expressions-by-precedence-climbing
-        """
-        self.enter('expression')
-        atom_lhs = self.primary()
-
-        while True:
-            op = self.token.value
-            if (op not in OPINFO_MAP
-                or OPINFO_MAP[op].prec < min_prec):
-                break
-
-            # Inside this loop the current token is a binary operator
-
-            # Get the operator's precedence and associativity, and compute a
-            # minimal precedence for the recursive call
-            prec, assoc = OPINFO_MAP[op]
-            next_min_prec = prec + 1 if assoc == 'LEFT' else prec
-
-            # Consume the current token and prepare the next one for the
-            # recursive call
-            self.next()
-            atom_rhs = self.expression(next_min_prec)
-
-            # Update lhs with the new value
-            atom_lhs = BinaryOp(atom_lhs, op, atom_rhs)
-
-        self.exit('expression')
-        return atom_lhs
-
-    def primary(self):
-        self.enter('primary')
-        if self.peek('ID'):
-            node = self.identifier()
-        elif self.token.typ in ['REAL', 'INTEGER']:
-            self.enter('constant')
-            node = Constant(self.token.value)
-            self.next()
-        elif self.have('LPAREN'):
-            node = ParenExpr(self.expression())
-            self.mustbe('RPAREN')
-        elif self.token.typ in ['PLUS', 'MINUS']:
-            self.enter('unary')
-            value = self.token.value
-            self.next()
-            node = UnaryOp(value, self.primary())
-        else:
-            self.error_msg("Unexpected token {} in primary", self.token.value)
-        self.exit('primary')
-        return node
-
-    def identifier(self):
-        """
-        <expr> ::= name '(' arglist ')'
-        """
-        self.enter('identifier')
-        name = self.mustbe('ID').value
-        if self.peek('LPAREN'):
-            args = self.argument_list()
-            node = Identifier(name, args)
-        else:
-            node = Identifier(name)
-        self.exit('identifier')
-        return node
-
-    def argument_list(self):
-        """
-        <argument-list> ::= '(' <name>?  [ , <name ]* ')'
-
-        """
-        self.enter('argument_list')
-        params = []
-        self.next()  # consume LPAREN peeked at in caller
-        while self.token.typ != 'RPAREN':
-            node = self.identifier()
-            params.append(node)
-            if not self.have('COMMA'):
-                break
-        self.mustbe('RPAREN')
-        self.exit('argument_list', str(params))
-        return params
-
-
-def check_expr(expr, trace=False):
-    a = ExprParser(expr, trace=trace).expression()
-    return a
-
-######################################################################
-
-class Enum(Node):
-    """An enumeration statement.
-    enum Color { RED, BLUE, WHITE }
-    """
-    def __init__(self, name):
-        self.name = name
-        self.members = []
-
-class EnumValue(Node):
-    """A single name in an enum statment with optional value"""
-    def __init__(self, name, value=None):
-        self.name = name
-        self.value = value
-
-class EnumParser(ExprParser):
-    def enum_statement(self):
-        self.enter('enum_statement')
-        self.mustbe('ENUM')
-        name = self.mustbe('ID')
-        self.mustbe('LCURLY')
-        node = Enum(name.value)
-        members = node.members
-        while self.token.typ != 'RCURLY':
-            name = self.mustbe('ID')
-            if self.have('EQUALS'):
-                value = self.expression()
-            else:
-                value = None
-            members.append(EnumValue(name.value, value))
-            if not self.have('COMMA'):
-                break
-        self.mustbe('RCURLY')
-        self.have('SEMICOLON')
-        self.mustbe('EOF')
-        self.exit('enum_statement', str(members))
-        return node
-
-def check_enum(enum, trace=False):
-    a = EnumParser(enum, trace=trace).enum_statement()
-    return a
