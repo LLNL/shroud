@@ -103,8 +103,13 @@ class NamespaceMixin(object):
         decl - declaration
         """
         # parse declaration to find out what it is
-        ast = declast.check_decl(decl, namespace=self, current_class=None, 
-                                 template_types=[])
+        if isinstance(self, ClassNode):
+            cls_name = self.name
+        else:
+            cls_name = None
+        ast = declast.check_decl(decl, namespace=self,
+                                 current_class=cls_name,
+                                 template_types=kwargs.get('cxx_template', {}).keys())
         if isinstance(ast, declast.Declaration):
             self.add_function(decl, ast=ast, **kwargs)
         elif isinstance(ast, declast.Enum):
@@ -741,15 +746,15 @@ class FunctionNode(AstNode):
         if not decl:
             raise RuntimeError("FunctionNode missing decl")
 
-        # parse decl and add to dictionary
-        if isinstance(parent,ClassNode):
-            cls_name = parent.name
-        else:
-            cls_name = None
-        template_types = self.cxx_template.keys()
-
         self.decl = decl
         if ast is None:
+            # parse decl and add to dictionary
+            if isinstance(parent, ClassNode):
+                cls_name = parent.name
+            else:
+                cls_name = None
+            template_types = self.cxx_template.keys()
+
             ast = declast.check_decl(decl,
                                      namespace=parent,
                                      current_class=cls_name,
@@ -769,7 +774,7 @@ class FunctionNode(AstNode):
                                     
         if ast.params is None:
             # 'void foo' instead of 'void foo()'
-            raise RuntimeError("Missing arguments:", ast.gen_decl())
+            raise RuntimeError("Missing arguments to function:", ast.gen_decl())
 
         fmt_func = self.fmtdict
         fmt_func.function_name = ast.name
