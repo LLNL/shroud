@@ -427,12 +427,13 @@ class Parser(ExprParser):
                                   | (ns_name :: )+ name
                                   | :: (ns_name :: )+ name    # XXX - todo
         """
+        self.enter('declaration_specifier')
         found_type = False
         more = True
         while more:
             # if self.token.type = 'ID' and  typedef-name
-            if self.token.typ == 'ID':
-                # Find typedef'd names and namespaces
+            if not found_type and self.token.typ == 'ID':
+                # Find typedef'd names, classes and namespaces
                 ns = self.namespace.unqualified_lookup(self.token.value)
                 if ns:
                     ns, ns_name = self.nested_namespace(ns)
@@ -1052,7 +1053,7 @@ class Declaration(Node):
             typename = self.typename
             typedef = typemap.Typedef.lookup(typename)
         if typedef is None:
-            raise RuntimeError("No such type: {}".format(typename))
+            raise RuntimeError("gen_arg_as_lang: No such type: {}".format(typename))
 
         typ = getattr(typedef, lang)
         decl.append(typ)
