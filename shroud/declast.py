@@ -316,10 +316,9 @@ class Parser(ExprParser):
 
     namespace - An ast.AstNode subclass.
     """
-    def __init__(self, decl, namespace, current_class=None, trace=False):
+    def __init__(self, decl, namespace, trace=False):
         self.decl = decl          # declaration to parse
         self.namespace = namespace
-        self.current_class = current_class
         self.trace = trace
         self.indent = 0
         self.token = None
@@ -369,54 +368,6 @@ class Parser(ExprParser):
         self.exit('nested_namespace', qualified_id)
         return namespace, qualified_id
 
-    def class_declaration_specifier(self, node):
-        """Set attributes on node corresponding to next token
-        node - Declaration node.
-        <declaration-specifier> ::= <storage-class-specifier>
-                                  | <type-specifier>
-                                  | <type-qualifier>
-                                  | { nested-namespace } [ < { nested-namespace } > }?
-                                  | <current_class>       # constructor
-                                  | ~ <current_class>
-
-        Returns True if need declarator after, else False (i.e. ctor or dtor)
-
-        Set _typename, the fully qualified name.  Used to look up
-        times in Typedef and in generated code.
-        """
-        self.enter('class_declaration_specifier')
-        need = True
-        more = True
-        if self.have('TILDE'):
-            specifier = self.mustbe('TYPE_SPECIFIER').value
-            if specifier == self.current_class:
-                self.info('destructor')
-                node.specifier.append(specifier)
-                node.fattrs['_name'] = 'dtor'
-                node.fattrs['_destructor'] = True
-                node.attrs['_typename'] = self.namespace.typename
-                more = False
-                need = False
-            else:
-                raise RuntimeError("Expected destructor")
-        elif self.token.typ == 'TYPE_SPECIFIER' and self.token.value == self.current_class:
-            # class constructor
-            self.info('type-specifier0:', self.token.value)
-            node.specifier.append(self.token.value)
-            self.next()
-            if self.token.typ == 'LPAREN':
-                self.info('constructor')
-                node.fattrs['_name'] = 'ctor'
-                node.fattrs['_constructor'] = True
-                node.attrs['_typename'] = self.namespace.typename
-                more = False
-                need = False
-
-        if more:
-            self.declaration_specifier(node)
-        self.exit('class_declaration_specifier', need)
-        return need
-
     def declaration_specifier(self, node):
         """
         Set attributes on node corresponding to next token
@@ -426,10 +377,28 @@ class Parser(ExprParser):
                                   | <type-qualifier>
                                   | (ns_name :: )+ name
                                   | :: (ns_name :: )+ name    # XXX - todo
+                                  | ~ ID
         """
         self.enter('declaration_specifier')
         found_type = False
         more = True
+
+        # destructor
+        if self.have('TILDE'):
+            if not self.namespace.is_class:
+                raise RuntimeError("Destructor is not in a class")
+            tok = self.mustbe('ID')
+            if tok.value != self.namespace.name:
+                raise RuntimeError("Expected class-name after ~")
+            node.specifier.append(tok.value)
+            #  class Class1 { ~Class1(); }
+            self.info('destructor', self.namespace.typename)
+            node.fattrs['_name'] = 'dtor'
+            node.fattrs['_destructor'] = True
+            node.attrs['_typename'] = self.namespace.typename
+            found_type = True
+            more = False
+
         while more:
             # if self.token.type = 'ID' and  typedef-name
             if not found_type and self.token.typ == 'ID':
@@ -438,7 +407,15 @@ class Parser(ExprParser):
                 if ns:
                     ns, ns_name = self.nested_namespace(ns)
                     node.specifier.append(ns_name)
-                    if self.have('LT'):
+                    if self.namespace.is_class and \
+                       self.namespace is ns and \
+                       self.token.typ == 'LPAREN':
+                        #  class Class1 { Class1(); }
+                        self.info('constructor')
+                        node.fattrs['_name'] = 'ctor'
+                        node.fattrs['_constructor'] = True
+                        more = False
+                    elif self.have('LT'):
                         temp = Declaration()
                         self.declaration_specifier(temp)
                         node.attrs['template'] = str(temp)
@@ -446,7 +423,8 @@ class Parser(ExprParser):
                     # Save fully resolved typename
                     node.attrs['_typename'] = ns.typename
                     found_type = True
-                more = False
+                else:
+                    more = False
             elif self.token.typ == 'TYPE_SPECIFIER':
                 node.specifier.append(self.token.value)
                 self.info('type-specifier:', self.token.value)
@@ -492,7 +470,13 @@ class Parser(ExprParser):
         """
         self.enter('declaration')
         node = Declaration()
-        if self.class_declaration_specifier(node):
+        self.declaration_specifier(node)
+
+        if '_destructor' in node.fattrs:
+            pass
+        elif '_constructor' in node.fattrs:
+            pass
+        else:
             node.declarator = self.declarator()
 
         if self.token.typ == 'LPAREN':     # peek
@@ -535,6 +519,9 @@ class Parser(ExprParser):
             self.next()
             node.func = self.declarator()
             self.mustbe('RPAREN')
+        else:
+            if not node.pointer:
+                node = None
 
         self.exit('declarator', str(node))
         return node
@@ -1197,7 +1184,7 @@ class EnumValue(Node):
         self.value = value
 
 
-def check_decl(decl, namespace=None, current_class=None, template_types=[],trace=False):
+def check_decl(decl, namespace=None, template_types=[], trace=False):
     """ parse expr as a declaration, return list/dict result.
 
     namespace - An ast.AstNode subclass.
@@ -1205,17 +1192,15 @@ def check_decl(decl, namespace=None, current_class=None, template_types=[],trace
     if not namespace:
         # grab global namespace if not passed in.
         namespace = global_namespace
-    if template_types or current_class:
+    if template_types:
         global type_specifier
         old_types = type_specifier
         type_specifier = set(old_types)
         type_specifier.update(template_types)
-        if current_class:
-            type_specifier.add(current_class)
-        a = Parser(decl,namespace,current_class,trace).decl_statement()
+        a = Parser(decl,namespace,trace).decl_statement()
         type_specifier = old_types
     else:
-        a = Parser(decl,namespace,current_class,trace).decl_statement()
+        a = Parser(decl,namespace,trace).decl_statement()
     return a
 
 

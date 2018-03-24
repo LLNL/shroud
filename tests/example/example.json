@@ -6605,9 +6605,6 @@
                                         "value": true
                                     }, 
                                     "const": false, 
-                                    "declarator": {
-                                        "pointer": []
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ]
@@ -6712,9 +6709,6 @@
                                         "value": true
                                     }, 
                                     "const": false, 
-                                    "declarator": {
-                                        "pointer": []
-                                    }, 
                                     "specifier": [
                                         "double"
                                     ]
@@ -6725,9 +6719,6 @@
                                         "value": true
                                     }, 
                                     "const": false, 
-                                    "declarator": {
-                                        "pointer": []
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ]

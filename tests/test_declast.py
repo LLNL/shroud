@@ -321,9 +321,6 @@ class CheckParse(unittest.TestCase):
                         "_typename": "int",
                     },
                     "const": False, 
-                    "declarator": {
-                        "pointer": []
-                    }, 
                     "specifier": [
                         "int"
                     ]
@@ -658,7 +655,7 @@ class CheckParse(unittest.TestCase):
     def test_decl09a(self):
         """Test constructor
         """
-        r = declast.check_decl("Class1()",namespace=self.class1,current_class='Class1')
+        r = declast.check_decl("Class1()",namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("Class1()", s)
@@ -688,8 +685,7 @@ class CheckParse(unittest.TestCase):
     def test_decl09b(self):
         """Test constructor +name
         """
-        r = declast.check_decl("Class1() +name(new)",namespace=self.class1,
-                               current_class='Class1')
+        r = declast.check_decl("Class1() +name(new)",namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("Class1() +name(new)", s)
@@ -720,7 +716,7 @@ class CheckParse(unittest.TestCase):
     def test_decl09c(self):
         """Test destructor
         """
-        r = declast.check_decl("~Class1()",namespace=self.class1,current_class='Class1')
+        r = declast.check_decl("~Class1()",namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("~Class1()", s)
@@ -750,7 +746,7 @@ class CheckParse(unittest.TestCase):
     def test_decl09d(self):
         """Return pointer to Class instance
         """
-        r = declast.check_decl("Class1 * make()",current_class='Class1')
+        r = declast.check_decl("Class1 * make()",namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("Class1 * make()", s)

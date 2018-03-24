@@ -508,7 +508,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "Class1", 
+                                        "_typename": "tutorial::Class1", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -7341,9 +7341,6 @@
                                         "value": true
                                     }, 
                                     "const": false, 
-                                    "declarator": {
-                                        "pointer": []
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ]

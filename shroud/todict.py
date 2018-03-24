@@ -195,6 +195,7 @@ class ToDict(visitor.Visitor):
             cxx_header=node.cxx_header,
             format = self.visit(node.fmtdict),
             name=node.name,
+#            typename=node.typename,
             typedef_name=node.typedef_name,
             options=self.visit(node.options),
         )

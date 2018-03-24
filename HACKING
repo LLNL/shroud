@@ -41,7 +41,8 @@ file dependency
 
 main.py
 wrapX.py  generate.py
+ast.py
 declast.py
-ast.py    typemap.py
+typemap.py
 todict.py
 util.py visitor.py  whelpers.py  # no dependencies

@@ -51,6 +51,7 @@ from . import todict
 from . import typemap
 
 class AstNode(object):
+    is_class = False
     def option_to_fmt(self, fmtdict):
         """Set fmt based on options dictionary.
         """
@@ -108,7 +109,6 @@ class NamespaceMixin(object):
         else:
             cls_name = None
         ast = declast.check_decl(decl, namespace=self,
-                                 current_class=cls_name,
                                  template_types=kwargs.get('cxx_template', {}).keys())
         if isinstance(ast, declast.Declaration):
             self.add_function(decl, ast=ast, **kwargs)
@@ -557,6 +557,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
 ######################################################################
 
 class ClassNode(AstNode, NamespaceMixin):
+    is_class = True
     def __init__(self, name, parent,
                  cxx_header='',
                  format=None,
@@ -586,7 +587,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.scope = self.typename + '::'
         self.symbols = {}
         self.typedef = typemap.create_class_typedef(self)
-        self.typedef_name = self.typedef.name
+        self.typedef_name = self.typedef.name   # fully qualified name
 
 ##### namespace behavior
 
@@ -749,7 +750,6 @@ class FunctionNode(AstNode):
 
             ast = declast.check_decl(decl,
                                      namespace=parent,
-                                     current_class=cls_name,
                                      template_types=template_types)
         self.ast = ast
 
