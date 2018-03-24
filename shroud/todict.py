@@ -180,7 +180,7 @@ class ToDict(visitor.Visitor):
         )
 
         for key in [ 'copyright', 'cxx_header',
-                     'language', 'namespace' ]:
+                     'language' ]:
             value = getattr(node, key)
             if value:
                 d[key] = value
@@ -198,7 +198,7 @@ class ToDict(visitor.Visitor):
             typedef_name=node.typedef_name,
             options=self.visit(node.options),
         )
-        for key in ['namespace', 'python']:
+        for key in ['python']:
             value = getattr(node, key)
             if value:
                 d[key] = value

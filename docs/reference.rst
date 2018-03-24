@@ -116,10 +116,6 @@ library
   Defaults to *default_library*.
   Each YAML file is intended to wrap a single library.
 
-namespace
-  Blank delimited list of namespaces for **cxx_header**.
-  The namespaces will be nested.
-
 options
    Dictionary of option fields for the library.
    Described in `Options`_
@@ -164,12 +160,6 @@ options
    Options fields for the class.
    Creates scope within library.
    Described in `Options`_
-
-namespace
-  Blank delimited list of namespaces for **cxx_header**.
-  The namespaces will be nested.
-  If not defined then the global *namespace* will be used.
-  If it starts with a ``-`` then no namespace will be used.
 
 
 Function Fields
@@ -603,7 +593,7 @@ LUA_state_var
     Name of argument in Lua wrapper functions for lua_State pointer.
 
 namespace_scope
-    The values in field **namespace** delimited with ``::``.
+    The current namespace delimited with ``::`` and a trailing ``::``.
 
 PY_header_filename_suffix
    Suffix added to Python header files.

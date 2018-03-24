@@ -160,7 +160,6 @@ class LibraryNode(AstNode, NamespaceMixin):
                  format=None,
                  language='c++',
                  library='default_library',
-                 namespace='',
                  options=None,
                  **kwargs):
         """Create LibraryNode.
@@ -177,7 +176,6 @@ class LibraryNode(AstNode, NamespaceMixin):
         if self.language not in ['c', 'c++']:
             raise RuntimeError("language must be 'c' or 'c++'")
         self.library = library
-        self.namespace = namespace
 
         self.classes = []
         self.enums = []
@@ -373,9 +371,11 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             LUA_prefix = 'l_',
             LUA_state_var = 'L',
+            LUA_this_call = '',
 
             PY_prefix = 'PY_',
             PY_module_name = self.library.lower(),
+            PY_this_call = '',
 
             library = self.library,
             library_lower = self.library.lower(),
@@ -392,11 +392,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             function_suffix = '',   # assume no suffix
             namespace_scope = '',
         )
-
-        if self.namespace:
-            fmt_library.namespace_scope = (
-                '::'.join(self.namespace.split()) + '::\t')
-            fmt_library.CXX_this_call = fmt_library.namespace_scope
 
         fmt_library.F_filename_suffix = 'f'
 
@@ -550,9 +545,14 @@ class NamespaceNode(AstNode, NamespaceMixin):
             parent = parent.fmtdict,
         )
 
-        fmt_class = self.fmtdict
+        fmt_ns = self.fmtdict
+        fmt_ns.namespace_scope = parent.fmtdict.namespace_scope + self.name + '::\t'
+        fmt_ns.CXX_this_call = fmt_ns.namespace_scope
+        fmt_ns.LUA_this_call = fmt_ns.namespace_scope
+        fmt_ns.PY_this_call = fmt_ns.namespace_scope
+
         if format:
-            self.fmtdict.update(format, replace=True)
+            fmt_ns.update(format, replace=True)
 
 ######################################################################
 
@@ -560,7 +560,6 @@ class ClassNode(AstNode, NamespaceMixin):
     def __init__(self, name, parent,
                  cxx_header='',
                  format=None,
-                 namespace='',
                  options=None,
                  **kwargs):
         """Create ClassNode.
@@ -569,7 +568,6 @@ class ClassNode(AstNode, NamespaceMixin):
         self.name = name
         self.parent = parent
         self.cxx_header = cxx_header
-        self.namespace = namespace
 
         self.enums = []
         self.functions = []
@@ -632,15 +630,8 @@ class ClassNode(AstNode, NamespaceMixin):
         )
 
         fmt_class = self.fmtdict
-        if self.namespace:
-            if self.namespace.startswith('-'):
-                fmt_class.namespace_scope = ''
-            else:
-                fmt_class.namespace_scope = (
-                    '::'.join(self.namespace.split()) + '::\t')
-
         if format:
-            self.fmtdict.update(format, replace=True)
+            fmt_class.update(format, replace=True)
 
         self.eval_template('class_prefix')
 
@@ -1061,33 +1052,15 @@ def add_functions(parent, functions):
             del d['decl']
             parent.add_function(decl, parentoptions=options, **d)
 
-def add_declarations(parent, node, namespace):
+def add_declarations(parent, node):
     if 'declarations' not in node:
         return
 
     for subnode in node['declarations']:
         if 'namespace' in subnode:
             name = subnode['namespace']
-            namespace.append(name)
-
-            owner = parent
-            while owner:
-                if isinstance(owner, NamespaceNode):
-                    # skip over nested namespaces
-                    owner = owner.parent
-                    continue
-                break
-            if isinstance(owner, LibraryNode):
-                if not owner.functions:
-                    # kludge to only update Library's namespace until
-                    # functions are added.
-                    owner.namespace = ' '.join(namespace)
-                    owner.fmtdict.namespace_scope = '::'.join(namespace) + '::\t'
-                    owner.fmtdict.CXX_this_call = owner.fmtdict.namespace_scope
-
             ns = parent.add_namespace(name)
-            add_declarations(ns, subnode, namespace)
-            namespace.pop()
+            add_declarations(ns, subnode)
         elif 'forward' in subnode:
             name = subnode['forward']
             parent.add_class_forward(name)
@@ -1096,17 +1069,13 @@ def add_declarations(parent, node, namespace):
             d = copy.copy(subnode)
             clean_dictionary(d)
             del d['class']
-            if namespace:
-                d['namespace'] = ' '.join(namespace)
-            else:
-                d['namespace'] = '-none-'
             cls = parent.add_class(name, **d)
-            add_declarations(cls, subnode, namespace)
+            add_declarations(cls, subnode)
         elif 'block' in subnode:
             d = copy.copy(subnode)
             clean_dictionary(d)
             blk = BlockNode(parent, **d)
-            add_declarations(blk, subnode, namespace)
+            add_declarations(blk, subnode)
         elif 'decl' in subnode:
             # copy before clean to avoid changing input dict
             d = copy.copy(subnode)
@@ -1131,9 +1100,6 @@ def create_library_from_dictionary(node):
     Do some checking on the input.
     Every class must have a name.
     """
-
-    # Emulate namespace field in library and class
-    namespace = []
 
     if 'copyright' in node:
         clean_list(node['copyright'])
@@ -1202,6 +1168,6 @@ def create_library_from_dictionary(node):
     if 'functions' in node:
         add_functions(library, node['functions'])
 
-    add_declarations(library, node, namespace)
+    add_declarations(library, node)
 
     return library

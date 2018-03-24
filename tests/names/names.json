@@ -23,8 +23,7 @@
                     "class_prefix": "names_", 
                     "class_scope": "Names::", 
                     "class_upper": "NAMES", 
-                    "cxx_class": "Names", 
-                    "namespace_scope": ""
+                    "cxx_class": "Names"
                 }, 
                 "functions": [
                     {
@@ -124,7 +123,6 @@
                     }
                 ], 
                 "name": "Names", 
-                "namespace": "-none-", 
                 "options": {
                     "C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
                     "F_C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
@@ -153,11 +151,9 @@
                     "class_prefix": "names2_", 
                     "class_scope": "Names2::", 
                     "class_upper": "NAMES2", 
-                    "cxx_class": "Names2", 
-                    "namespace_scope": ""
+                    "cxx_class": "Names2"
                 }, 
                 "name": "Names2", 
-                "namespace": "-none-", 
                 "options": {}, 
                 "typedef_name": "Names2"
             }
@@ -300,6 +296,7 @@
             "LUA_prefix": "l_", 
             "LUA_result": "rv", 
             "LUA_state_var": "L", 
+            "LUA_this_call": "", 
             "PY_PyObject": "PyObject", 
             "PY_extern_C_begin": "extern \"C\" ", 
             "PY_header_filename": "pytestnamesmodule.hpp", 

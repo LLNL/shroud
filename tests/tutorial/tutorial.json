@@ -102,8 +102,7 @@
                     "class_prefix": "class1_", 
                     "class_scope": "Class1::", 
                     "class_upper": "CLASS1", 
-                    "cxx_class": "Class1", 
-                    "namespace_scope": "tutorial::\t"
+                    "cxx_class": "Class1"
                 }, 
                 "functions": [
                     {
@@ -703,7 +702,6 @@
                     }
                 ], 
                 "name": "Class1", 
-                "namespace": "tutorial", 
                 "options": {}, 
                 "typedef_name": "tutorial::Class1"
             }, 
@@ -726,8 +724,7 @@
                     "class_prefix": "singleton_", 
                     "class_scope": "Singleton::", 
                     "class_upper": "SINGLETON", 
-                    "cxx_class": "Singleton", 
-                    "namespace_scope": ""
+                    "cxx_class": "Singleton"
                 }, 
                 "functions": [
                     {
@@ -809,7 +806,6 @@
                     }
                 ], 
                 "name": "Singleton", 
-                "namespace": "-none-", 
                 "options": {
                     "wrap_lua": false
                 }, 
@@ -919,7 +915,7 @@
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
-            "CXX_this_call": "tutorial::\t", 
+            "CXX_this_call": "", 
             "C_argument": "SH_", 
             "C_bufferify_suffix": "_bufferify", 
             "C_custom_return_type": "", 
@@ -959,7 +955,7 @@
             "LUA_prefix": "l_", 
             "LUA_result": "rv", 
             "LUA_state_var": "L", 
-            "LUA_this_call": "tutorial::\t", 
+            "LUA_this_call": "", 
             "LUA_used_param_state": false, 
             "LUA_userdata_type": "XXLUA_userdata_type", 
             "PY_PyObject": "PyObject", 
@@ -977,7 +973,7 @@
             "PY_param_self": "self", 
             "PY_prefix": "PY_", 
             "PY_result": "SHTPy_rv", 
-            "PY_this_call": "tutorial::\t", 
+            "PY_this_call": "", 
             "PY_used_param_args": false, 
             "PY_used_param_kwds": false, 
             "PY_used_param_self": false, 
@@ -990,7 +986,7 @@
             "library": "Tutorial", 
             "library_lower": "tutorial", 
             "library_upper": "TUTORIAL", 
-            "namespace_scope": "tutorial::\t", 
+            "namespace_scope": "", 
             "stdlib": "std::"
         }, 
         "functions": [
@@ -7569,7 +7565,6 @@
             }
         ], 
         "language": "c++", 
-        "namespace": "tutorial", 
         "options": {
             "C_enum_member_template": "{enum_member_name}", 
             "C_enum_template": "{C_prefix}{class_prefix}{enum_name}", 

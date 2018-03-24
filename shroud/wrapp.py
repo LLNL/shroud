@@ -156,7 +156,6 @@ class Wrapp(util.WrapperMixin):
         fmt_library.PY_used_param_self = False
         fmt_library.PY_used_param_args = False
         fmt_library.PY_used_param_kwds = False
-        fmt_library.PY_this_call = fmt_library.namespace_scope
 
         # Variables to accumulate output lines
         self.py_type_object_creation = []

@@ -80,7 +80,6 @@ class Wrapl(util.WrapperMixin):
         # Some kludges, need to compute correct value in wrapl.py
         fmt_library.LUA_metadata = 'XXLUA_metadata'
         fmt_library.LUA_userdata_type = 'XXLUA_userdata_type'
-        fmt_library.LUA_this_call = fmt_library.namespace_scope
 
         # Variables to accumulate output lines
         self.luaL_Reg_module = []

@@ -228,20 +228,19 @@ class WrapperMixin(object):
 #####
 
     def namespace(self, library, cls, position, output, comment=True):
-        if cls and cls.namespace:
-            namespace = cls.namespace
-            if namespace.startswith('-'):
-                return
+        if cls:
+            namespace = cls.typedef_name.split('::')
+            namespace.pop()  # remove class name
         else:
-            namespace = library.namespace
+            namespace = []
         if not namespace:
             return
         if position == 'begin':
-            for name in namespace.split():
+            for name in namespace:
                 output.append('namespace %s {' % name)
                 output.append(1)
         else:
-            lst = namespace.split()
+            lst = namespace
             lst.reverse()
             for name in lst:
                 output.append(-1)

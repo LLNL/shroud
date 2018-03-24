@@ -16,8 +16,7 @@
                     "class_prefix": "class1_", 
                     "class_scope": "Class1::", 
                     "class_upper": "CLASS1", 
-                    "cxx_class": "Class1", 
-                    "namespace_scope": "three::\t"
+                    "cxx_class": "Class1"
                 }, 
                 "functions": [
                     {
@@ -99,7 +98,6 @@
                     }
                 ], 
                 "name": "Class1", 
-                "namespace": "three", 
                 "options": {}, 
                 "typedef_name": "three::Class1"
             }, 
@@ -117,8 +115,7 @@
                     "class_prefix": "class2_", 
                     "class_scope": "Class2::", 
                     "class_upper": "CLASS2", 
-                    "cxx_class": "Class2", 
-                    "namespace_scope": ""
+                    "cxx_class": "Class2"
                 }, 
                 "functions": [
                     {
@@ -286,7 +283,6 @@
                     }
                 ], 
                 "name": "Class2", 
-                "namespace": "-none-", 
                 "options": {}, 
                 "typedef_name": "Class2"
             }
@@ -338,7 +334,7 @@
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
-            "CXX_this_call": "one::two::\t", 
+            "CXX_this_call": "", 
             "C_argument": "SH_", 
             "C_bufferify_suffix": "_bufferify", 
             "C_custom_return_type": "", 
@@ -373,9 +369,11 @@
             "LUA_prefix": "l_", 
             "LUA_result": "rv", 
             "LUA_state_var": "L", 
+            "LUA_this_call": "", 
             "PY_module_name": "default_library", 
             "PY_prefix": "PY_", 
             "PY_result": "SHTPy_rv", 
+            "PY_this_call": "", 
             "YAML_type_filename": "default_library_types.yaml", 
             "c_temp": "SHT_", 
             "class_prefix": "", 
@@ -385,7 +383,7 @@
             "library": "default_library", 
             "library_lower": "default_library", 
             "library_upper": "DEFAULT_LIBRARY", 
-            "namespace_scope": "one::two::\t", 
+            "namespace_scope": "", 
             "stdlib": "std::"
         }, 
         "functions": [
@@ -410,7 +408,7 @@
                 "decl": "void function1()", 
                 "declgen": "void function1()", 
                 "format": {
-                    "C_call_code": "one::two::\tfunction1(\t);", 
+                    "C_call_code": "one::\ttwo::\tfunction1(\t);", 
                     "C_call_list": "", 
                     "C_name": "DEF_function1", 
                     "C_prototype": "", 
@@ -433,7 +431,6 @@
             }
         ], 
         "language": "c++", 
-        "namespace": "one two", 
         "options": {
             "C_enum_member_template": "{enum_member_name}", 
             "C_enum_template": "{C_prefix}{class_prefix}{enum_name}", 
