@@ -69,12 +69,12 @@ explicitly by setting variables in the format of the global or class scope::
       C_impl_filename: top.cpp
       F_impl_filename: top.f
 
-    classes:
-      - name: Names
-        format:
-          C_header_filename: foo.h
-          C_impl_filename: foo.cpp
-          F_impl_filename: foo.f
+    declarations:
+    - class: Names
+      format:
+        C_header_filename: foo.h
+        C_impl_filename: foo.cpp
+        F_impl_filename: foo.f
  
 
 The default file names are controlled by global options.
@@ -127,24 +127,26 @@ be desirable to rename the Fortran wrapper to something more specific.
 The name of the Fortran implementation wrapper can be changed
 by setting *F_name_impl*::
 
-  library: library
-  namespace: library
+    library: library
 
-  function:
-  -  decl: void initialize
-     format:
-       F_name_impl: library_initialize
+    declarations:
+    - namespace: library
+      declarations:
+      - decl: void initialize
+        format:
+          F_name_impl: library_initialize
 
 To rename all functions, set the template in the toplevel *options*::     
 
     library: library
-    namespace: library
 
     options:
       F_name_impl_template: "{library}_{underscore_name}{function_suffix}"
 
-    function:
-    -  decl: void initialize
+    declarations:
+    - namespace: library
+      declarations:
+      - decl: void initialize
 
 
 How Functions are Wrapped
@@ -279,14 +281,14 @@ Fortran array but you need the length first to make sure there is
 enough room.  You can create a Fortran wrapper to get the length
 without adding to the C++ library::
 
-    classes:
-      - name: ExClass1
-        methods:
-          - decl: int GetNameLength() const
-            format:
-              C_code: |
-                {C_pre_call}
-                return {CXX_this}->getName().length();
+    declarations:
+    - class: ExClass1
+      declarations:
+      - decl: int GetNameLength() const
+        format:
+          C_code: |
+            {C_pre_call}
+            return {CXX_this}->getName().length();
 
 The generated C wrapper will use the *C_code* provided for the body::
 
@@ -334,9 +336,9 @@ To include a file in the implementation list it in the global or class options::
 
     cxx_header: global_header.hpp
 
-    classes:
-    -  name: Class1
-       cxx_header: class_header.hpp
+    declarations:
+    - class: Class1
+      cxx_header: class_header.hpp
 
     types:
        CustomType:
@@ -358,17 +360,17 @@ Namespace
 Each library or class can be associated with a namespace::
 
     namespace one {
-    namespace two {
-       void function();
+      namespace two {
+         void function();
 
-       namespace three {
-         class Class1 {
+         namespace three {
+           class Class1 {
+           };
+         }
+
+         class Class2 {
          };
-       }
-
-       class Class2 {
-       };
-    } // namespace two
+      } // namespace two
     } // namespace one
 
     class Class3 {
@@ -376,18 +378,18 @@ Each library or class can be associated with a namespace::
 
 The YAML file would look like::
 
-    namespace: one two
+    declarations:
+    - namespace: one
+      declarations:
+      - namespace: two
+        declarations:
+        - decl: void function();
+        - namespace: three
+          declarations:
+          - class: Class1
+        - class: Class2
+    - class: Class3
 
-    classes:
-    -  Class1
-       namespace: one two three
-    -  Class2
-    -  Class3
-       namespace: -none
-
-If a namespace starts with a ``-``, then it will be ignored.  This
-allows a library to have a default namespace but have a class have no
-namespace.
 
 Local Variable
 ^^^^^^^^^^^^^^
@@ -427,9 +429,9 @@ To address the issue of semantic differences between Fortran and C++,
 code template which is inserted at a specific point in the wrapper.
 They are defined in the input YAML file::
 
-   functions:
-     - decl: const string& getString2+len=30()
-       C_error_pattern: C_invalid_name
+   declarations:
+   - decl: const string& getString2+len=30()
+     C_error_pattern: C_invalid_name
 
     patterns:
         C_invalid_name: |

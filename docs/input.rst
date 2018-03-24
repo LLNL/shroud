@@ -54,12 +54,11 @@ separated by a colon::
         typedef  : int
         cxx_type : TypeID
     
-    functions:
+    declarations:
     - decl: void Function1
 
-    classes:
-    - name: Class1
-      functions:
+    - class: Class1
+      declarations:
       - decl: void Method1()
 
 Shroud use curly braces for format strings.
@@ -122,11 +121,10 @@ controls the default value of *C_name*::
 
     library: testnames
 
-    classes:
-      - name: Names
+    declarations:
+      - class: Names
         cxx_header: names.hpp
-        namespace: work
-        functions:
+        declarations:
         -  decl: void method1
 
 Annotations
@@ -167,13 +165,13 @@ This allows the user to modify behavior for all functions or just a single one::
       option_b = false
       option_c = false
 
-    classes:
-    - name: class1
+    declarations:
+    - class: class1
       options:
     #    option_a = false     # inherited
          option_b = true
     #    option_c = false     # inherited
-      functions:
+      declarations:
       - decl: void function1
         options:
     #     option_a = false    # inherited
