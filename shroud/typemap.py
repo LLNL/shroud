@@ -960,7 +960,6 @@ def create_enum_typedef(node):
             'static_cast<{namespace_scope}{enum_name}>({{c_var}})', fmt_enum)
         typedef.cxx_to_c = 'static_cast<int>({cxx_var})'
         Typedef.register(type_name, typedef)
-        Typedef.register(fmt_enum.class_scope+fmt_enum.enum_name, typedef) # backwards compatible
     return typedef
 
 def create_class_typedef(cls):
@@ -984,7 +983,6 @@ def create_class_typedef(cls):
             )
         typedef_shadow_defaults(typedef)
         Typedef.register(type_name, typedef)
-        Typedef.register(cls.name, typedef)  # XXX backwards compatible
 
     fmt_class.C_type_name = typedef.c_type
     return typedef
