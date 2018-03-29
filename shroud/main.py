@@ -97,23 +97,12 @@ class TypeOut(util.WrapperMixin):
             'types:',
         ]
 
-        def_types, def_types_alias = typemap.Typedef.get_global_types()
-
         write_file = False
         for cls in newlibrary.classes:
             output.append('')
             output.append('  {}:'.format(cls.name))
             cls.typedef.__export_yaml__(2, output)
             write_file = True
-
-            # yaml.dump does not make a nice output
-            # line = yaml.dump(def_types[cls['name']],
-            #                  default_flow_style=False)
-
-        # debug prints
-        # name = 'bool'
-        # output.append('  {}:'.format(name))
-        # def_types[name].__as_yaml__(2, output)
 
         if write_file:
             self.write_output_file(fname, self.config.yaml_dir, output)

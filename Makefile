@@ -110,6 +110,7 @@ TESTDIRS = \
     $(tempdir)/run-tutorial/..\
     $(tempdir)/run-tutorial/python/.. \
     $(tempdir)/run-tutorial/lua/.. \
+    $(tempdir)/run-forward/.. \
     $(tempdir)/run-strings/.. \
     $(tempdir)/run-strings/python/.. \
     $(tempdir)/run-clibrary/.. \
@@ -120,7 +121,7 @@ testdirs : $(TESTDIRS)
 fortran : tutorial strings clibrary
 
 # Compile the generated Fortran wrapper
-tutorial strings clibrary : testdirs
+tutorial forward strings clibrary : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-$@ \
 	    -f $(top)/tests/run-$@/Makefile \

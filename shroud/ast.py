@@ -95,7 +95,7 @@ class NamespaceMixin(object):
 
     def add_class_forward(self, name):
         """Forward declare a class."""
-        node = ClassForwardNode(name, self)
+        node = ClassNode(name, self)
         self.symbols[name] = node
         return node
 
@@ -662,7 +662,6 @@ class ClassForwardNode(AstNode):
         # add to namespace
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
-
 
 ######################################################################
 
