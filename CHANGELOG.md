@@ -36,6 +36,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
         declarations:
         - decl: void bar()
 
+  Old:
+      types:
+        CustomType:
+           typedef: int
+  New:
+      declarations:
+      - typedef: CustomType
+        fields:
+          typedef: int
+  
+
 ## v0.8.0 - 2018-02-26
 ### Added
 - Support for function pointer arguments.

@@ -9104,9 +9104,6 @@
             }, 
             "f_type": "integer(C_LONG_LONG)"
         }, 
-        "other": {
-            "cxx_type": "junk"
-        }, 
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 

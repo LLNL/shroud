@@ -52,20 +52,21 @@ options:
   wrap_lua: True
 
 
-types:
-  TypeID:
-    typedef  : int
-    cxx_type : tutorial::TypeID
-
-  EnumTypeID:
-    typedef  : int
-    cxx_type : tutorial::EnumTypeID
-    c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
-    cxx_to_c : static_cast<int>({cxx_var})
-
 declarations:
 - namespace: tutorial
   declarations:
+
+  - typedef: TypeID
+    fields:
+      typedef  : int
+      cxx_type : tutorial::TypeID
+
+  - typedef: EnumTypeID
+    fields:
+      typedef  : int
+      cxx_type : tutorial::EnumTypeID
+      c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
+      cxx_to_c : static_cast<int>({cxx_var})
 
   - decl: |
         enum Color {

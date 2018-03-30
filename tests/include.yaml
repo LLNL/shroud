@@ -50,13 +50,13 @@ cxx_header: global_header.hpp
 options:
   show_splicer_comments: false
 
-types:
-   CustomType:
+declarations:
+- typedef: CustomType
+  fields:
       typedef : int
       c_header : type_header.h
       cxx_header : type_header.hpp
 
-declarations:
 - namespace: one
   declarations:
   - namespace: two

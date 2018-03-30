@@ -1094,6 +1094,21 @@ def add_declarations(parent, node):
             # Pull off final part of key
             parts = key.split('::')
             parent.add_typedef(parts[-1])   # Add to namespace
+
+        elif 'typedef' in subnode:
+            key = subnode['typedef']
+            value = subnode['fields']
+            copy_type = value['typedef']
+            def_types, def_types_alias = typemap.Typedef.get_global_types()
+            orig = def_types.get(copy_type, None)
+            if not orig:
+                raise RuntimeError(
+                    "No type for typedef {} while defining {}".format(copy_type, key))
+            typedef = orig.clone_as(copy_type)
+            typedef.name = parent.scope + key
+            typedef.update(value)
+            typemap.Typedef.register(typedef.name, typedef)
+            parent.add_typedef(key)   # Add to namespace
         else:
             print(subnode)
             raise RuntimeError("Expected 'namespace', 'block', 'class' or 'decl'")

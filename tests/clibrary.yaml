@@ -54,20 +54,20 @@ options:
   wrap_python: True
   wrap_lua: False
 
+declarations:
 
-types:
-  TypeID:
+- typedef: TypeID
+  fields:
     typedef  : int
     cxx_type : TypeID
 
-  EnumTypeID:
+- typedef: EnumTypeID
+  fields:
     typedef  : int
     cxx_type : EnumTypeID
     c_to_cxx : static_cast<EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
-
-declarations:
 - decl: void Function1()
 - decl: double Function2(double arg1, int arg2)
 - decl: void Sum(int len +implied(size(values)),

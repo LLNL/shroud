@@ -64,14 +64,10 @@ options:
   wrap_python: True
   wrap_lua: True
 
-types:
-  other:
-    cxx_type: junk
+declarations:
 
-#  string:
-#    cxx_to_c : "isNameValid({cxx_var}) ? {cxx_var}.c_str() : NULL"
-
-  SidreLength:
+- typedef: SidreLength
+  fields:
     typedef  : long
 # defined in SidreTypes.hpp
     c_header : sidre/SidreTypes.h
@@ -83,7 +79,8 @@ types:
 #      iso_c_binding:
 #      - C_LONG
 
-  TypeID:
+- typedef: TypeID
+  fields:
     typedef : int
     # enum for types
     c_header : sidre/SidreTypes.h
@@ -92,7 +89,6 @@ types:
     cxx_to_c : static_cast<int>({cxx_var})
     c_to_cxx :  getTypeID({c_var})
 
-declarations:
 - namespace: axom
   declarations:
   - namespace: sidre
