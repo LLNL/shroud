@@ -632,7 +632,7 @@ static int l_testmpi(lua_State *L)
     // splicer end function.testmpi
 }
 
-// void testgroup1(DataGroup * grp +intent(in)+value)
+// void testgroup1(axom::sidre::Group * grp +intent(in)+value)
 static int l_testgroup1(lua_State *L)
 {
     // splicer begin function.testgroup1
@@ -644,7 +644,7 @@ static int l_testgroup1(lua_State *L)
     // splicer end function.testgroup1
 }
 
-// void testgroup2(const DataGroup * grp +intent(in)+value)
+// void testgroup2(const axom::sidre::Group * grp +intent(in)+value)
 static int l_testgroup2(lua_State *L)
 {
     // splicer begin function.testgroup2

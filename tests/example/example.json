@@ -6117,7 +6117,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "DataGroup", 
+                                "_typename": "axom::sidre::Group", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -6132,7 +6132,7 @@
                                 ]
                             }, 
                             "specifier": [
-                                "DataGroup"
+                                "axom::sidre::Group"
                             ]
                         }
                     ], 
@@ -6140,8 +6140,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "void testgroup1(DataGroup * grp)", 
-                "declgen": "void testgroup1(DataGroup * grp +intent(in)+value)", 
+                "decl": "void testgroup1(axom::sidre::Group * grp)", 
+                "declgen": "void testgroup1(axom::sidre::Group * grp +intent(in)+value)", 
                 "format": {
                     "C_call_code": "example::\tnested::\ttestgroup1(\tSHCXX_grp);", 
                     "C_call_list": "SHCXX_grp", 
@@ -6226,7 +6226,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "DataGroup", 
+                                "_typename": "axom::sidre::Group", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -6241,7 +6241,7 @@
                                 ]
                             }, 
                             "specifier": [
-                                "DataGroup"
+                                "axom::sidre::Group"
                             ]
                         }
                     ], 
@@ -6249,8 +6249,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "void testgroup2(const DataGroup * grp)", 
-                "declgen": "void testgroup2(const DataGroup * grp +intent(in)+value)", 
+                "decl": "void testgroup2(const axom::sidre::Group * grp)", 
+                "declgen": "void testgroup2(const axom::sidre::Group * grp +intent(in)+value)", 
                 "format": {
                     "C_call_code": "example::\tnested::\ttestgroup2(\tSHCXX_grp);", 
                     "C_call_list": "SHCXX_grp", 
@@ -8557,61 +8557,6 @@
         "real(C_FLOAT)": "float"
     }, 
     "types": {
-        "DataGroup": {
-            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
-            "LUA_type": "LUA_TUSERDATA", 
-            "PY_PyTypeObject": "FillInTypeForGroup", 
-            "base": "shadow", 
-            "c_header": "sidre/wrapGroup.h", 
-            "c_to_cxx": "\tstatic_cast<{c_const}axom::sidre::Group *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
-            "c_type": "SIDRE_group", 
-            "cxx_header": "sidre/Group.hpp", 
-            "cxx_to_c": "\tstatic_cast<{c_const}SIDRE_group *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
-            "cxx_type": "axom::sidre::Group", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
-            }, 
-            "f_c_type": "type(C_PTR)", 
-            "f_derived_type": "datagroup", 
-            "f_module": {
-                "sidre_mod": [
-                    "group"
-                ]
-            }, 
-            "f_statements": {
-                "result": {
-                    "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
-                    ], 
-                    "need_wrapper": true
-                }
-            }, 
-            "f_to_c": "{f_var}%get_instance()", 
-            "f_type": "type(datagroup)", 
-            "forward": "axom::sidre::Group", 
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer", 
-                    "post_parse": [
-                        "{c_const}axom::sidre::Group * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                }, 
-                "intent_inout": {
-                    "cxx_local_var": "pointer", 
-                    "post_parse": [
-                        "{c_const}axom::sidre::Group * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                }, 
-                "intent_out": {
-                    "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                }
-            }
-        }, 
         "MPI_Comm": {
             "c_header": "mpi.h", 
             "c_to_cxx": "MPI_Comm_f2c({c_var})", 
@@ -8667,6 +8612,61 @@
             }, 
             "f_type": "integer(C_INT)", 
             "typedef": "int"
+        }, 
+        "axom::sidre::Group": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_type": "LUA_TUSERDATA", 
+            "PY_PyTypeObject": "FillInTypeForGroup", 
+            "base": "shadow", 
+            "c_header": "sidre/wrapGroup.h", 
+            "c_to_cxx": "\tstatic_cast<{c_const}axom::sidre::Group *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_type": "SIDRE_group", 
+            "cxx_header": "sidre/Group.hpp", 
+            "cxx_to_c": "\tstatic_cast<{c_const}SIDRE_group *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
+            "cxx_type": "axom::sidre::Group", 
+            "f_c_module": {
+                "iso_c_binding": [
+                    "C_PTR"
+                ]
+            }, 
+            "f_c_type": "type(C_PTR)", 
+            "f_derived_type": "datagroup", 
+            "f_module": {
+                "sidre_mod": [
+                    "group"
+                ]
+            }, 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
+            "f_to_c": "{f_var}%get_instance()", 
+            "f_type": "type(datagroup)", 
+            "forward": "axom::sidre::Group", 
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}axom::sidre::Group * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_inout": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}axom::sidre::Group * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
         }, 
         "bool": {
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})", 

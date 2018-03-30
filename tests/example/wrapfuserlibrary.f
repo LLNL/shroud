@@ -428,7 +428,7 @@ contains
         ! splicer end function.testoptional_2
     end subroutine testoptional_2
 
-    ! void testgroup1(DataGroup * grp +intent(in)+value)
+    ! void testgroup1(axom::sidre::Group * grp +intent(in)+value)
     ! function_index=58
     subroutine testgroup1(grp)
         use sidre_mod, only : group
@@ -438,7 +438,7 @@ contains
         ! splicer end function.testgroup1
     end subroutine testgroup1
 
-    ! void testgroup2(const DataGroup * grp +intent(in)+value)
+    ! void testgroup2(const axom::sidre::Group * grp +intent(in)+value)
     ! function_index=59
     subroutine testgroup2(grp)
         use sidre_mod, only : group

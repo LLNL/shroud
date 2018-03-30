@@ -327,7 +327,7 @@ PP_testgroup1(
   PyObject *args,
   PyObject *kwds)
 {
-// void testgroup1(DataGroup * grp +intent(in)+value)
+// void testgroup1(axom::sidre::Group * grp +intent(in)+value)
 // splicer begin function.testgroup1
     PyObject * SHPy_grp;
     const char *SHT_kwlist[] = {
@@ -357,7 +357,7 @@ PP_testgroup2(
   PyObject *args,
   PyObject *kwds)
 {
-// void testgroup2(const DataGroup * grp +intent(in)+value)
+// void testgroup2(const axom::sidre::Group * grp +intent(in)+value)
 // splicer begin function.testgroup2
     PyObject * SHPy_grp;
     const char *SHT_kwlist[] = {
