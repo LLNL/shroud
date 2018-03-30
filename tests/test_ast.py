@@ -214,6 +214,7 @@ class CheckAst(unittest.TestCase):
 
     def test_b_function2(self):
         """Test options with function"""
+        # Simulate YAML
         node = dict(
             options={
                 'testa': 'a',
@@ -223,7 +224,7 @@ class CheckAst(unittest.TestCase):
                 'fmt1': 'f1',
                 'fmt2': 'f2',
             },
-            functions=[
+            declarations=[
                 {
                     'decl': 'void func1()',
                     'options': {
@@ -233,6 +234,7 @@ class CheckAst(unittest.TestCase):
                         'fmt3': 'f3',
                     },
                 },{
+                    'block': True,
                     'options': {
                         'testb': 'bb',
                         'testd': 'd',
@@ -243,11 +245,14 @@ class CheckAst(unittest.TestCase):
 #                        'fmt4': 'f4',
 #                        'fmt5': 'f5',
 #                    },
-                },{
-                    'decl': 'void func2()',
-                    'options': {
-                        'teste': 'ee',
-                    }
+                    'declarations': [
+                        {
+                            'decl': 'void func2()',
+                            'options': {
+                                'teste': 'ee',
+                            },
+                        },
+                    ],
                 },
             ],
         )
@@ -313,19 +318,20 @@ class CheckAst(unittest.TestCase):
 
     def test_c_class2(self):
         """Test class options"""
+        # Simulate YAML
         node = dict(
             options={
                 'testa': 'a',
                 'testb': 'b',
                 'testc': 'c',
             },
-            classes=[
+            declarations=[
                 {
-                    'name': 'Class1',
+                    'class': 'Class1',
                     'options': {
                         'testb': 'bb',
                     },
-                    'methods': [
+                    'declarations': [
                         {
                             'decl': 'void c1func1()',
                             'options': {
