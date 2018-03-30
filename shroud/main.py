@@ -116,10 +116,11 @@ class TypeOut(util.WrapperMixin):
                     splitup(nxt, output)
                     output.append(-1)
                 elif isinstance(nxt, typemap.Typedef):
-                    output.append('@- type: ' + name)
-                    output.append(1)
+#                    output.append('@- type: ' + name)
+                    output.append('@- type:')
+                    output.append(2)
                     nxt.__export_yaml__(0, output)
-                    output.append(-1)
+                    output.append(-2)
                 else:
                     raise RuntimeError("Unexpected clss in splitup")
 

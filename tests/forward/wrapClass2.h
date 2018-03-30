@@ -1,7 +1,7 @@
 // wrapClass2.h
 // This is generated code, do not edit
 // #######################################################################
-// Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2018, Lawrence Livermore National Security, LLC.
 // Produced at the Lawrence Livermore National Laboratory
 //
 // LLNL-CODE-738041.
@@ -57,15 +57,19 @@ extern "C" {
 #endif
 
 // declaration of shadow types
-struct s_FOR_class1;
-typedef struct s_FOR_class1 FOR_class1;
 struct s_FOR_class2;
 typedef struct s_FOR_class2 FOR_class2;
+struct s_TUT_class1;
+typedef struct s_TUT_class1 TUT_class1;
 
 // splicer begin class.Class2.C_declarations
 // splicer end class.Class2.C_declarations
 
-void FOR_class2_func1(FOR_class2 * self, FOR_class1 * arg);
+FOR_class2 * FOR_class2_ctor();
+
+void FOR_class2_dtor(FOR_class2 * self);
+
+void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg);
 
 #ifdef __cplusplus
 }

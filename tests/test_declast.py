@@ -221,7 +221,7 @@ class CheckParse(unittest.TestCase):
     def test_declaration_specifier_error(self):
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("none var1")
-        self.assertTrue("Expected TYPE_SPECIFIER, found 'none'" in str(context.exception))
+        self.assertTrue("Expected TYPE_SPECIFIER, found ID 'none'" in str(context.exception))
 
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("std::int var1")

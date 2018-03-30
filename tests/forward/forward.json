@@ -32,16 +32,136 @@
                 }, 
                 "functions": [
                     {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_val": "\tstatic_cast<FOR_class2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
+                                "c_var": "SHC_rv", 
+                                "cxx_addr": "", 
+                                "cxx_deref": "->", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtl": {
+                                "c_var": "\tstatic_cast<FOR_class2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
+                                "cxx_addr": "", 
+                                "cxx_deref": "->", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PY_Class2", 
+                                "PyTypeObject": "PY_Class2_Type", 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_addr": "&", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv", 
+                                "py_var": "SHTPy_rv"
+                            }
+                        }, 
+                        "_function_index": 0, 
+                        "ast": {
+                            "attrs": {
+                                "_typename": "tutorial::Class2"
+                            }, 
+                            "const": false, 
+                            "fattrs": {
+                                "_constructor": true, 
+                                "_name": "ctor"
+                            }, 
+                            "func_const": false, 
+                            "params": [], 
+                            "specifier": [
+                                "Class2"
+                            ]
+                        }, 
+                        "decl": "Class2()", 
+                        "declgen": "Class2()", 
+                        "format": {
+                            "C_call_code": "tutorial::\tClass2 * SHCXX_rv = new tutorial::\tClass2();", 
+                            "C_call_list": "", 
+                            "C_name": "FOR_class2_ctor", 
+                            "C_post_call": "FOR_class2 * SHC_rv = \tstatic_cast<FOR_class2 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
+                            "C_prototype": "", 
+                            "C_return_code": "return SHC_rv;", 
+                            "C_return_type": "FOR_class2 *", 
+                            "F_C_call": "c_class2_ctor", 
+                            "F_C_name": "c_class2_ctor", 
+                            "F_arg_c_call": "", 
+                            "F_arguments": "", 
+                            "F_call_code": "SHT_rv%voidptr = c_class2_ctor()", 
+                            "F_name_function": "ctor", 
+                            "F_name_generic": "ctor", 
+                            "F_name_impl": "class2_ctor", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
+                            "F_subprogram": "function", 
+                            "LUA_name": "ctor", 
+                            "LUA_name_impl": "l_class2_ctor", 
+                            "PY_name_impl": "PY_Class2_tp_init", 
+                            "PY_type_impl": "PY_Class2_tp_init", 
+                            "PY_type_method": "tp_init", 
+                            "c_const": "", 
+                            "c_rv_decl": "FOR_class2 * SHC_rv", 
+                            "cxx_rv_decl": "tutorial::\tClass2 * SHCXX_rv", 
+                            "function_name": "ctor", 
+                            "underscore_name": "ctor"
+                        }, 
+                        "options": {}
+                    }, 
+                    {
+                        "_function_index": 1, 
+                        "ast": {
+                            "attrs": {
+                                "_typename": "tutorial::Class2"
+                            }, 
+                            "const": false, 
+                            "fattrs": {
+                                "_destructor": true, 
+                                "_name": "dtor"
+                            }, 
+                            "func_const": false, 
+                            "params": [], 
+                            "specifier": [
+                                "Class2"
+                            ]
+                        }, 
+                        "decl": "~Class2()", 
+                        "declgen": "~Class2()", 
+                        "format": {
+                            "C_call_code": "delete SH_this;", 
+                            "C_call_list": "", 
+                            "C_name": "FOR_class2_dtor", 
+                            "C_pre_call": "tutorial::\tClass2 *SH_this = \tstatic_cast<tutorial::\tClass2 *>(\tstatic_cast<void *>(\tself));", 
+                            "C_prototype": "FOR_class2 * self", 
+                            "C_return_code": "return;", 
+                            "C_return_type": "void", 
+                            "F_C_call": "c_class2_dtor", 
+                            "F_C_name": "c_class2_dtor", 
+                            "F_arg_c_call": "obj%voidptr", 
+                            "F_arguments": "obj", 
+                            "F_call_code": "call c_class2_dtor(obj%voidptr)", 
+                            "F_name_function": "dtor", 
+                            "F_name_generic": "dtor", 
+                            "F_name_impl": "class2_dtor", 
+                            "F_subprogram": "subroutine", 
+                            "LUA_name": "dtor", 
+                            "LUA_name_impl": "l_class2_dtor", 
+                            "c_const": "", 
+                            "c_ptr": " *", 
+                            "c_var": "self", 
+                            "function_name": "dtor", 
+                            "underscore_name": "dtor"
+                        }, 
+                        "options": {}
+                    }, 
+                    {
                         "_fmtargs": {
                             "arg": {
                                 "fmtc": {
                                     "c_const": "", 
                                     "c_ptr": " *", 
                                     "c_var": "arg", 
-                                    "cxx_decl": "tutorial::\tClass1 * SHCXX_arg", 
+                                    "cxx_decl": "tutorial::Class1 * SHCXX_arg", 
                                     "cxx_deref": "->", 
-                                    "cxx_type": "tutorial::\tClass1", 
-                                    "cxx_val": "\tstatic_cast<tutorial::\tClass1 *>(\tstatic_cast<void *>(\targ))", 
+                                    "cxx_type": "tutorial::Class1", 
+                                    "cxx_val": "\tstatic_cast<tutorial::Class1 *>(\tstatic_cast<void *>(\targ))", 
                                     "cxx_var": "SHCXX_arg"
                                 }, 
                                 "fmtf": {
@@ -54,26 +174,26 @@
                                     "c_var": "\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")", 
                                     "c_var_len": "Larg", 
                                     "cxx_deref": "->", 
-                                    "cxx_type": "tutorial::\tClass1", 
+                                    "cxx_type": "tutorial::Class1", 
                                     "cxx_var": "arg", 
                                     "lua_var": "SH_Lua_arg"
                                 }, 
                                 "fmtpy": {
                                     "c_const": "", 
-                                    "c_decl": "FOR_class1 arg", 
+                                    "c_decl": "TUT_class1 arg", 
                                     "c_ptr": " *", 
-                                    "c_type": "FOR_class1", 
+                                    "c_type": "TUT_class1", 
                                     "c_var": "arg", 
                                     "cxx_addr": "", 
-                                    "cxx_decl": "tutorial::\tClass1 arg", 
+                                    "cxx_decl": "tutorial::Class1 arg", 
                                     "cxx_deref": "->", 
-                                    "cxx_type": "tutorial::\tClass1", 
+                                    "cxx_type": "tutorial::Class1", 
                                     "cxx_var": "SH_arg", 
                                     "py_var": "SHPy_arg"
                                 }
                             }
                         }, 
-                        "_function_index": 0, 
+                        "_function_index": 2, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -117,8 +237,8 @@
                             "C_call_code": "SH_this->func1(\tSHCXX_arg);", 
                             "C_call_list": "SHCXX_arg", 
                             "C_name": "FOR_class2_func1", 
-                            "C_pre_call": "tutorial::\tClass2 *SH_this = \tstatic_cast<tutorial::\tClass2 *>(\tstatic_cast<void *>(\tself));\ntutorial::\tClass1 * SHCXX_arg = \tstatic_cast<tutorial::\tClass1 *>(\tstatic_cast<void *>(\targ));", 
-                            "C_prototype": "FOR_class2 * self,\t FOR_class1 * arg", 
+                            "C_pre_call": "tutorial::\tClass2 *SH_this = \tstatic_cast<tutorial::\tClass2 *>(\tstatic_cast<void *>(\tself));\ntutorial::Class1 * SHCXX_arg = \tstatic_cast<tutorial::Class1 *>(\tstatic_cast<void *>(\targ));", 
+                            "C_prototype": "FOR_class2 * self,\t TUT_class1 * arg", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_call": "c_class2_func1", 
@@ -149,7 +269,7 @@
         ], 
         "copyright": [
             "#######################################################################", 
-            "Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.", 
+            "Copyright (c) 2018, Lawrence Livermore National Security, LLC.", 
             "Produced at the Lawrence Livermore National Laboratory", 
             "", 
             "LLNL-CODE-738041.", 
@@ -958,10 +1078,10 @@
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "shadow", 
-            "c_to_cxx": "\tstatic_cast<{c_const}tutorial::\tClass1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
-            "c_type": "FOR_class1", 
-            "cxx_to_c": "\tstatic_cast<{c_const}FOR_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
-            "cxx_type": "tutorial::\tClass1", 
+            "c_to_cxx": "\tstatic_cast<{c_const}tutorial::Class1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_type": "TUT_class1", 
+            "cxx_to_c": "\tstatic_cast<{c_const}TUT_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
+            "cxx_type": "tutorial::Class1", 
             "f_c_module": {
                 "iso_c_binding": [
                     "C_PTR"
@@ -970,7 +1090,7 @@
             "f_c_type": "type(C_PTR)", 
             "f_derived_type": "class1", 
             "f_module": {
-                "forward_mod": [
+                "tutorial_mod": [
                     "class1"
                 ]
             }, 
@@ -984,18 +1104,18 @@
             }, 
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(class1)", 
-            "forward": "tutorial::\tClass1", 
+            "forward": "tutorial::Class1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}tutorial::\tClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}tutorial::\tClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {

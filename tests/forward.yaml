@@ -43,7 +43,7 @@ copyright:
 # Add a class to the tutorial demo in a separate file
 
 library: forward
-cxx_header: forward.hpp
+cxx_header: tutorial.hpp
 
 options:
   debug: True
@@ -54,22 +54,15 @@ options:
 declarations:
 - namespace: tutorial
   declarations:
-  - forward: Class1
-
-# F_derived_name
-# F_module_name
-
-#types:
-#  Group:
-#    base: wrapped
-#    cxx_header: sidre/Group.hpp
-#    cxx_type: axom::sidre::Group
-#    f_derived_type: SidreGroup
-#    f_module:
-#      axom_sidre: [ SidreGroup ]
-#    c_type: SIDRE_group
-#    c_header: sidre/wrapGroup.h
-#    f_to_c: '{f_var}%get_instance()'
+  - type:
+      base: shadow
+      cxx_type: tutorial::Class1
+      c_type: TUT_class1
+      f_derived_type: class1
+      f_to_c: "{f_var}%get_instance()"
+      f_module:
+        tutorial_mod:
+        - class1
 
   - class: Class2
     declarations:

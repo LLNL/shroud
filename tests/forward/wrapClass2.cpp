@@ -1,7 +1,7 @@
 // wrapClass2.cpp
 // This is generated code, do not edit
 // #######################################################################
-// Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2018, Lawrence Livermore National Security, LLC.
 // Produced at the Lawrence Livermore National Laboratory
 //
 // LLNL-CODE-738041.
@@ -51,9 +51,33 @@ extern "C" {
 // splicer begin class.Class2.C_definitions
 // splicer end class.Class2.C_definitions
 
-// void func1(Class1 * arg +intent(in)+value)
+// Class2()
 // function_index=0
-void FOR_class2_func1(FOR_class2 * self, FOR_class1 * arg)
+FOR_class2 * FOR_class2_ctor()
+{
+// splicer begin class.Class2.method.ctor
+    tutorial::Class2 * SHCXX_rv = new tutorial::Class2();
+    FOR_class2 * SHC_rv = static_cast<FOR_class2 *>(static_cast<void *>(
+        SHCXX_rv));
+    return SHC_rv;
+// splicer end class.Class2.method.ctor
+}
+
+// ~Class2()
+// function_index=1
+void FOR_class2_dtor(FOR_class2 * self)
+{
+// splicer begin class.Class2.method.dtor
+    tutorial::Class2 *SH_this = static_cast<tutorial::Class2 *>(
+        static_cast<void *>(self));
+    delete SH_this;
+    return;
+// splicer end class.Class2.method.dtor
+}
+
+// void func1(Class1 * arg +intent(in)+value)
+// function_index=2
+void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg)
 {
 // splicer begin class.Class2.method.func1
     tutorial::Class2 *SH_this = static_cast<tutorial::Class2 *>(

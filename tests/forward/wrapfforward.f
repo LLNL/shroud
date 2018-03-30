@@ -1,7 +1,7 @@
 ! wrapfforward.f
 ! This is generated code, do not edit
 ! #######################################################################
-! Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+! Copyright (c) 2018, Lawrence Livermore National Security, LLC.
 ! Produced at the Lawrence Livermore National Laboratory
 !
 ! LLNL-CODE-738041.
@@ -63,6 +63,7 @@ module forward_mod
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains
+        procedure :: dtor => class2_dtor
         procedure :: func1 => class2_func1
         procedure :: get_instance => class2_get_instance
         procedure :: set_instance => class2_set_instance
@@ -81,6 +82,21 @@ module forward_mod
 
     interface
 
+        function c_class2_ctor() &
+                result(SHT_rv) &
+                bind(C, name="FOR_class2_ctor")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) :: SHT_rv
+        end function c_class2_ctor
+
+        subroutine c_class2_dtor(self) &
+                bind(C, name="FOR_class2_dtor")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), value, intent(IN) :: self
+        end subroutine c_class2_dtor
+
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_class2_func1")
             use iso_c_binding, only : C_PTR
@@ -95,9 +111,31 @@ module forward_mod
 
 contains
 
-    ! void func1(Class1 * arg +intent(in)+value)
+    ! Class2()
     ! function_index=0
+    function class2_ctor() &
+            result(SHT_rv)
+        type(class2) :: SHT_rv
+        ! splicer begin class.Class2.method.ctor
+        SHT_rv%voidptr = c_class2_ctor()
+        ! splicer end class.Class2.method.ctor
+    end function class2_ctor
+
+    ! ~Class2()
+    ! function_index=1
+    subroutine class2_dtor(obj)
+        use iso_c_binding, only : C_NULL_PTR
+        class(class2) :: obj
+        ! splicer begin class.Class2.method.dtor
+        call c_class2_dtor(obj%voidptr)
+        obj%voidptr = C_NULL_PTR
+        ! splicer end class.Class2.method.dtor
+    end subroutine class2_dtor
+
+    ! void func1(Class1 * arg +intent(in)+value)
+    ! function_index=2
     subroutine class2_func1(obj, arg)
+        use tutorial_mod, only : class1
         class(class2) :: obj
         type(class1), value, intent(IN) :: arg
         ! splicer begin class.Class2.method.func1

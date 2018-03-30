@@ -1,7 +1,7 @@
 // pyClass2type.cpp
 // This is generated code, do not edit
 // #######################################################################
-// Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2018, Lawrence Livermore National Security, LLC.
 // Produced at the Lawrence Livermore National Laboratory
 //
 // LLNL-CODE-738041.
@@ -69,6 +69,19 @@ PY_Class2_tp_del (PY_Class2 *self)
 // splicer end class.Class2.type.del
 }
 
+static int
+PY_Class2_tp_init(
+  PY_Class2 *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// Class2()
+// splicer begin class.Class2.method.ctor
+    self->obj = new tutorial::Class2();
+    return 0;
+// splicer end class.Class2.method.ctor
+}
+
 static char PY_class2_func1__doc__[] =
 "documentation"
 ;
@@ -81,7 +94,7 @@ PY_class2_func1(
 {
 // void func1(Class1 * arg +intent(in)+value)
 // splicer begin class.Class2.method.func1
-    FOR_class1 arg;
+    TUT_class1 arg;
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
@@ -166,7 +179,7 @@ PyTypeObject PY_Class2_Type = {
     (descrgetfunc) 0,                /* tp_descr_get */
     (descrsetfunc) 0,                /* tp_descr_set */
      0,                              /* tp_dictoffset */
-    (initproc)0,                   /* tp_init */
+    (initproc)PY_Class2_tp_init,                   /* tp_init */
     (allocfunc) 0,                  /* tp_alloc */
     (newfunc) 0,                    /* tp_new */
     (freefunc) 0,                   /* tp_free */

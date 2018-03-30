@@ -1,7 +1,7 @@
 // luaforwardmodule.cpp
 // This is generated code, do not edit
 // #######################################################################
-// Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2018, Lawrence Livermore National Security, LLC.
 // Produced at the Lawrence Livermore National Laboratory
 //
 // LLNL-CODE-738041.
@@ -54,6 +54,32 @@ extern "C" {
 // splicer begin C_definition
 // splicer end C_definition
 
+// Class2()
+static int l_class2_ctor(lua_State *L)
+{
+    // splicer begin class.Class2.method.ctor
+    l_Class2_Type * SH_this = (l_Class2_Type *) lua_newuserdata(L, sizeof(*SH_this));
+    SH_this->self = new tutorial::Class2();
+    /* Add the metatable to the stack. */
+    luaL_getmetatable(L, "Class2.metatable");
+    /* Set the metatable on the userdata. */
+    lua_setmetatable(L, -2);
+    return 1;
+    // splicer end class.Class2.method.ctor
+}
+
+// ~Class2()
+static int l_class2_dtor(lua_State *L)
+{
+    // splicer begin class.Class2.method.__gc
+    l_Class2_Type * SH_this = (l_Class2_Type *) luaL_checkudata(
+        L, 1, "Class2.metatable");
+    delete SH_this->self;
+    SH_this->self = NULL;
+    return 0;
+    // splicer end class.Class2.method.__gc
+}
+
 // void func1(Class1 * arg +intent(in)+value)
 static int l_class2_func1(lua_State *L)
 {
@@ -72,6 +98,7 @@ static int l_class2_func1(lua_State *L)
 // splicer end class.Class2.additional_functions
 
 static const struct luaL_Reg l_Class2_Reg [] = {
+    {"__gc", l_class2_dtor},
     {"func1", l_class2_func1},
     // splicer begin class.Class2.register
     // splicer end class.Class2.register
@@ -82,6 +109,7 @@ static const struct luaL_Reg l_Class2_Reg [] = {
 // splicer end additional_functions
 
 static const struct luaL_Reg l_forward_Reg [] = {
+    {"Class2", l_class2_ctor},
     // splicer begin register
     // splicer end register
     {NULL, NULL}   /*sentinel */

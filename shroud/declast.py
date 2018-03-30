@@ -441,7 +441,8 @@ class Parser(ExprParser):
             else:
                 more= False
         if not node.specifier:
-            self.error_msg("Expected TYPE_SPECIFIER, found '{}'".format(self.token.value))
+            self.error_msg("Expected TYPE_SPECIFIER, found {} '{}'".format(
+                self.token.typ, self.token.value))
         if not found_type:
             # XXX - standardize types like 'unsigned' as 'unsigned_int'
             node.attrs['_typename'] = '_'.join(node.specifier)

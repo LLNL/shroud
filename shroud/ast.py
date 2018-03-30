@@ -1082,6 +1082,18 @@ def add_declarations(parent, node):
             decl = d['decl']
             del d['decl']
             parent.add_declaration(decl, **d)
+        elif 'type' in subnode:
+            type_dict = subnode['type']
+            if not isinstance(type_dict, dict):
+                raise TypeError("type must be a dictionary")
+            key = type_dict['cxx_type']
+            typedef = typemap.Typedef(key, **type_dict)
+            typemap.typedef_shadow_defaults(typedef)
+            typemap.Typedef.register(key, typedef)
+
+            # Pull off final part of key
+            parts = key.split('::')
+            parent.add_typedef(parts[-1])   # Add to namespace
         else:
             print(subnode)
             raise RuntimeError("Expected 'namespace', 'block', 'class' or 'decl'")
