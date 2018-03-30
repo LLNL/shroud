@@ -105,7 +105,7 @@ int YYY_TES_function4(const char * rv)
 }
 
 // int function4(const std::string & rv +intent(in)+len_trim(Lrv))
-// function_index=8
+// function_index=9
 int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 {
 // splicer begin function.function4_bufferify
@@ -123,6 +123,16 @@ void YYY_TES_fiveplus()
     fiveplus();
     return;
 // splicer end function.fiveplus
+}
+
+// void init_ns1()
+// function_index=8
+void TES_init_ns1()
+{
+// splicer begin function.init_ns1
+    ns1::init_ns1();
+    return;
+// splicer end function.init_ns1
 }
 
 }  // extern "C"

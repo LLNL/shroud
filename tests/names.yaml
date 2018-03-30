@@ -131,6 +131,12 @@ declarations:
 
   - decl: void function5() +name(fiveplus)
 
+- namespace: ns1
+  options:
+    # test options in namespace
+    F_name_impl_template: "{library_lower}_{class_prefix}{underscore_name}{function_suffix}"
+  declarations:
+  - decl: void init_ns1()
 
 # Test explicit splicers
 # class Name2 has no methods by default it would not be written.

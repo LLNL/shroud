@@ -604,7 +604,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 8, 
+                "_PTR_F_C_index": 9, 
                 "_fmtargs": {
                     "rv": {
                         "fmtc": {
@@ -740,7 +740,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 8, 
+                "_function_index": 9, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -846,6 +846,49 @@
                     "c_const": "", 
                     "function_name": "fiveplus", 
                     "underscore_name": "fiveplus"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_function_index": 8, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "init_ns1", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void init_ns1()", 
+                "declgen": "void init_ns1()", 
+                "format": {
+                    "C_call_code": "ns1::\tinit_ns1(\t);", 
+                    "C_call_list": "", 
+                    "C_name": "TES_init_ns1", 
+                    "C_prototype": "", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_init_ns1", 
+                    "F_C_name": "c_init_ns1", 
+                    "F_arg_c_call": "", 
+                    "F_arguments": "", 
+                    "F_call_code": "call c_init_ns1()", 
+                    "F_name_function": "init_ns1", 
+                    "F_name_generic": "init_ns1", 
+                    "F_name_impl": "testnames_init_ns1", 
+                    "F_subprogram": "subroutine", 
+                    "PY_name_impl": "PY_init_ns1", 
+                    "c_const": "", 
+                    "function_name": "init_ns1", 
+                    "underscore_name": "init_ns1"
                 }, 
                 "options": {}
             }

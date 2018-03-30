@@ -191,6 +191,23 @@ PY_fiveplus(
 // splicer end function.fiveplus
 }
 
+static char PY_init_ns1__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_init_ns1(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// void init_ns1()
+// splicer begin function.init_ns1
+    ns1::init_ns1();
+    Py_RETURN_NONE;
+// splicer end function.init_ns1
+}
+
 static char PY_function3a__doc__[] =
 "documentation"
 ;
@@ -236,6 +253,7 @@ static PyMethodDef PY_methods[] = {
 {"function4", (PyCFunction)PY_function4, METH_VARARGS|METH_KEYWORDS,
     PY_function4__doc__},
 {"fiveplus", (PyCFunction)PY_fiveplus, METH_NOARGS, PY_fiveplus__doc__},
+{"init_ns1", (PyCFunction)PY_init_ns1, METH_NOARGS, PY_init_ns1__doc__},
 {"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS,
     PY_function3a__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

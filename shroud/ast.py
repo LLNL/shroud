@@ -964,7 +964,10 @@ def add_declarations(parent, node):
     for subnode in node['declarations']:
         if 'namespace' in subnode:
             name = subnode['namespace']
-            ns = parent.add_namespace(name)
+            d = copy.copy(subnode)
+            clean_dictionary(d)
+            del d['namespace']
+            ns = parent.add_namespace(name, **d)
             add_declarations(ns, subnode)
         elif 'class' in subnode:
             name = subnode['class']
@@ -987,16 +990,17 @@ def add_declarations(parent, node):
             parent.add_declaration(decl, **d)
         elif 'forward' in subnode:
             key = subnode['forward']
-            value = subnode['fields']
-            if not isinstance(value, dict):
-                raise TypeError("fields must be a dictionary")
-            fullname = parent.scope + key
-            typedef = typemap.Typedef(fullname, **value)
-            if 'cxx_type' not in value:
-                typedef.cxx_type = fullname
-            typemap.typedef_shadow_defaults(typedef)
-            typemap.Typedef.register(typedef.name, typedef)
             parent.add_typedef(key)
+            if 'fields' in subnode:
+                value = subnode['fields']
+                if not isinstance(value, dict):
+                    raise TypeError("fields must be a dictionary")
+                fullname = parent.scope + key
+                typedef = typemap.Typedef(fullname, **value)
+                if 'cxx_type' not in value:
+                    typedef.cxx_type = fullname
+                    typemap.typedef_shadow_defaults(typedef)
+                    typemap.Typedef.register(typedef.name, typedef)
         elif 'typedef' in subnode:
             key = subnode['typedef']
             value = subnode['fields']
@@ -1013,7 +1017,7 @@ def add_declarations(parent, node):
             parent.add_typedef(key)   # Add to namespace
         else:
             print(subnode)
-            raise RuntimeError("Expected 'block', 'class', 'decl', 'forward', 'namespace' or 'typedef'")
+            raise RuntimeError("Expected 'block', 'class', 'decl', 'forward', 'namespace' or 'typedef' found {}".format(sorted(subnode.keys())))
 
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.

@@ -110,6 +110,11 @@ module top_module
             implicit none
         end subroutine yyy_tes_fiveplus
 
+        subroutine c_init_ns1() &
+                bind(C, name="TES_init_ns1")
+            implicit none
+        end subroutine c_init_ns1
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -178,6 +183,14 @@ contains
         call yyy_tes_fiveplus()
         ! splicer end function.fiveplus
     end subroutine testnames_fiveplus
+
+    ! void init_ns1()
+    ! function_index=8
+    subroutine testnames_init_ns1()
+        ! splicer begin function.init_ns1
+        call c_init_ns1()
+        ! splicer end function.init_ns1
+    end subroutine testnames_init_ns1
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
