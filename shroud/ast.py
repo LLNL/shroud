@@ -997,10 +997,11 @@ def add_declarations(parent, node):
                     raise TypeError("fields must be a dictionary")
                 fullname = parent.scope + key
                 typedef = typemap.Typedef(fullname, **value)
+                typedef.base = 'shadow'
                 if 'cxx_type' not in value:
                     typedef.cxx_type = fullname
-                    typemap.typedef_shadow_defaults(typedef)
-                    typemap.Typedef.register(typedef.name, typedef)
+                typemap.typedef_shadow_defaults(typedef)
+                typemap.Typedef.register(typedef.name, typedef)
         elif 'typedef' in subnode:
             key = subnode['typedef']
             value = subnode['fields']

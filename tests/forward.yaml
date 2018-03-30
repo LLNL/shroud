@@ -56,7 +56,6 @@ declarations:
   declarations:
   - forward: Class1
     fields:
-      base: shadow
       c_type: TUT_class1
       f_derived_type: class1
       f_to_c: "{f_var}%get_instance()"
