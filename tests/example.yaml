@@ -93,12 +93,13 @@ declarations:
   declarations:
   - namespace: sidre
     declarations:
-    - type:
+    - forward: Group
+      fields:
         # This example is pulled from spio
         # DataGroup is a type which is provided by another shroud wrapped library
         base: shadow
         cxx_header: sidre/Group.hpp
-        cxx_type: axom::sidre::Group
+#        cxx_type: axom::sidre::Group
         c_header: sidre/wrapGroup.h
         c_type: SIDRE_group
         f_derived_type: datagroup

@@ -44,7 +44,8 @@
 declarations:
   - namespace: tutorial
     declarations: tutorial
-    - type:
+    - type: Class2
+      fields:
         base: shadow
         cxx_type: tutorial::Class2
         c_type: FOR_class2

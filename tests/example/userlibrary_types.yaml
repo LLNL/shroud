@@ -45,7 +45,8 @@ declarations:
     declarations: example
     - namespace: nested
       declarations: nested
-      - type:
+      - type: ExClass1
+        fields:
           base: shadow
           cxx_type: example::nested::ExClass1
           c_type: AA_exclass1
@@ -54,7 +55,8 @@ declarations:
           f_module:
             exclass1_mod:
             - exclass1
-      - type:
+      - type: ExClass2
+        fields:
           base: shadow
           cxx_type: example::nested::ExClass2
           c_type: AA_exclass2
@@ -63,7 +65,8 @@ declarations:
           f_module:
             exclass2_mod:
             - exclass2
-      - type:
+      - type: ExClass3
+        fields:
           base: shadow
           cxx_type: example::nested::ExClass3
           c_type: AA_exclass3

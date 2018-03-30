@@ -116,9 +116,10 @@ class TypeOut(util.WrapperMixin):
                     splitup(nxt, output)
                     output.append(-1)
                 elif isinstance(nxt, typemap.Typedef):
-#                    output.append('@- type: ' + name)
-                    output.append('@- type:')
-                    output.append(2)
+                    output.append('@- type: ' + name)
+                    output.append(1)
+                    output.append('fields:')
+                    output.append(1)
                     nxt.__export_yaml__(0, output)
                     output.append(-2)
                 else:

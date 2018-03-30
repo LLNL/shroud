@@ -93,12 +93,6 @@ class NamespaceMixin(object):
         self.symbols[name] = node
         return node
 
-    def add_class_forward(self, name):
-        """Forward declare a class."""
-        node = ClassNode(name, self)
-        self.symbols[name] = node
-        return node
-
     def add_declaration(self, decl, **kwargs):
         """parse decl and add corresponding node.
         decl - declaration
@@ -650,21 +644,6 @@ class ClassNode(AstNode, NamespaceMixin):
 
 ######################################################################
 
-class ClassForwardNode(AstNode):
-    """Forward declare a class.
-    Used to compute scope.
-    """
-    def __init__(self, name, parent):
-        # From arguments
-        self.name = name
-        self.parent = parent
-
-        # add to namespace
-        self.typename = self.parent.scope + self.name
-        self.scope = self.typename + '::'
-
-######################################################################
-
 class FunctionNode(AstNode):
     """
 
@@ -987,9 +966,6 @@ def add_declarations(parent, node):
             name = subnode['namespace']
             ns = parent.add_namespace(name)
             add_declarations(ns, subnode)
-        elif 'forward' in subnode:
-            name = subnode['forward']
-            parent.add_class_forward(name)
         elif 'class' in subnode:
             name = subnode['class']
             d = copy.copy(subnode)
@@ -1009,19 +985,18 @@ def add_declarations(parent, node):
             decl = d['decl']
             del d['decl']
             parent.add_declaration(decl, **d)
-        elif 'type' in subnode:
-            type_dict = subnode['type']
-            if not isinstance(type_dict, dict):
-                raise TypeError("type must be a dictionary")
-            key = type_dict['cxx_type']
-            typedef = typemap.Typedef(key, **type_dict)
+        elif 'forward' in subnode:
+            key = subnode['forward']
+            value = subnode['fields']
+            if not isinstance(value, dict):
+                raise TypeError("fields must be a dictionary")
+            fullname = parent.scope + key
+            typedef = typemap.Typedef(fullname, **value)
+            if 'cxx_type' not in value:
+                typedef.cxx_type = fullname
             typemap.typedef_shadow_defaults(typedef)
-            typemap.Typedef.register(key, typedef)
-
-            # Pull off final part of key
-            parts = key.split('::')
-            parent.add_typedef(parts[-1])   # Add to namespace
-
+            typemap.Typedef.register(typedef.name, typedef)
+            parent.add_typedef(key)
         elif 'typedef' in subnode:
             key = subnode['typedef']
             value = subnode['fields']
@@ -1038,7 +1013,7 @@ def add_declarations(parent, node):
             parent.add_typedef(key)   # Add to namespace
         else:
             print(subnode)
-            raise RuntimeError("Expected 'namespace', 'block', 'class' or 'decl'")
+            raise RuntimeError("Expected 'block', 'class', 'decl', 'forward', 'namespace' or 'typedef'")
 
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.
