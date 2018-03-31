@@ -288,18 +288,14 @@ PP_test_size_t(
 // splicer end function.test_size_t
 }
 
-static char PP_testmpi__doc__[] =
-"documentation"
-;
-
 static PyObject *
-PP_testmpi(
+PP_testmpi_mpi(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
 // void testmpi(MPI_Comm comm +intent(in)+value)
-// splicer begin function.testmpi
+// splicer begin function.testmpi_mpi
     MPI_Fint comm;
     const char *SHT_kwlist[] = {
         "comm",
@@ -314,7 +310,20 @@ PP_testmpi(
 
     example::nested::testmpi(SH_comm);
     Py_RETURN_NONE;
-// splicer end function.testmpi
+// splicer end function.testmpi_mpi
+}
+
+static PyObject *
+PP_testmpi_serial(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// void testmpi()
+// splicer begin function.testmpi_serial
+    example::nested::testmpi();
+    Py_RETURN_NONE;
+// splicer end function.testmpi_serial
 }
 
 static char PP_testgroup1__doc__[] =
@@ -690,6 +699,44 @@ PP_test_names(
     return NULL;
 // splicer end function.test_names
 }
+
+static char PP_testmpi__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_testmpi(
+  PyObject *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.testmpi
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    PyObject *rvobj;
+    if (SHT_nargs == 1) {
+        rvobj = PP_testmpi_mpi(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 0) {
+        rvobj = PP_testmpi_serial(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return NULL;
+// splicer end function.testmpi
+}
 static PyMethodDef PP_methods[] = {
 {"local_function1", (PyCFunction)PP_local_function1, METH_NOARGS,
     PP_local_function1__doc__},
@@ -703,8 +750,6 @@ static PyMethodDef PP_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PP_testoptional_2__doc__},
 {"test_size_t", (PyCFunction)PP_test_size_t, METH_NOARGS,
     PP_test_size_t__doc__},
-{"testmpi", (PyCFunction)PP_testmpi, METH_VARARGS|METH_KEYWORDS,
-    PP_testmpi__doc__},
 {"testgroup1", (PyCFunction)PP_testgroup1, METH_VARARGS|METH_KEYWORDS,
     PP_testgroup1__doc__},
 {"testgroup2", (PyCFunction)PP_testgroup2, METH_VARARGS|METH_KEYWORDS,
@@ -725,6 +770,8 @@ static PyMethodDef PP_methods[] = {
     PP_cos_doubles__doc__},
 {"test_names", (PyCFunction)PP_test_names, METH_VARARGS|METH_KEYWORDS,
     PP_test_names__doc__},
+{"testmpi", (PyCFunction)PP_testmpi, METH_VARARGS|METH_KEYWORDS,
+    PP_testmpi__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

@@ -308,8 +308,17 @@ declarations:
     #       - double
 
     - decl: size_t test_size_t()
+
+
+    # test overloaded, cpp_if    
     - decl: void testmpi(MPI_Comm comm)
+      format:
+        function_suffix: _mpi
       cpp_if: ifdef HAVE_MPI
+    - decl: void testmpi()
+      format:
+        function_suffix: _serial
+      cpp_if: ifndef HAVE_MPI
 
     - decl: void testgroup1(axom::sidre::Group * grp)
     - decl: void testgroup2(const axom::sidre::Group * grp)

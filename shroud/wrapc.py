@@ -809,7 +809,7 @@ class Wrapc(util.WrapperMixin):
                                  fmt_func.function_suffix, impl, C_code)
             impl.append('}')
             if node.cpp_if:
-                self.impl.append('#endif  // ' + node.cpp_if)
+                impl.append('#endif  // ' + node.cpp_if)
         else:
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node.ast.name

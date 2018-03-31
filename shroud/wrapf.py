@@ -496,8 +496,12 @@ class Wrapf(util.WrapperMixin):
                 iface.append('')
                 iface.append('interface ' + key)
                 iface.append(1)
-                for genname in generics:
-                    iface.append('module procedure ' + genname)
+                for node in generics:
+                    if node.cpp_if:
+                        iface.append('#' + node.cpp_if)
+                    iface.append('module procedure ' + node.fmtdict.F_name_impl)
+                    if node.cpp_if:
+                        iface.append('#endif')
                 iface.append(-1)
                 iface.append('end interface ' + key)
                 self._pop_splicer(key)
@@ -732,6 +736,8 @@ class Wrapf(util.WrapperMixin):
         c_interface = self.c_interface
         c_interface.append('')
 
+        if node.cpp_if:
+            c_interface.append('#' + node.cpp_if)
         c_interface.append(
             wformat('\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}'
                     '(\t{F_C_arguments}){F_C_result_clause}'
@@ -744,6 +750,8 @@ class Wrapf(util.WrapperMixin):
         c_interface.extend(arg_c_decl)
         c_interface.append(-1)
         c_interface.append(wformat('end {F_C_subprogram} {F_C_name}', fmt))
+        if node.cpp_if:
+            c_interface.append('#endif  // ' + node.cpp_if)
 
     def attr_allocatable(self, allocatable, node, arg, pre_call):
         """Add the allocatable attribute to the pre_call block.
@@ -1110,9 +1118,8 @@ class Wrapf(util.WrapperMixin):
                 self.f_type_generic.setdefault(
                     fmt_func.F_name_generic, []).append(gname)
             else:
-                gname = fmt_func.F_name_impl
                 self.f_function_generic.setdefault(
-                    fmt_func.class_prefix + fmt_func.F_name_generic, []).append(gname)
+                    fmt_func.class_prefix + fmt_func.F_name_generic, []).append(node)
         if cls:
             # Add procedure to derived type
             if is_static:
@@ -1171,6 +1178,8 @@ class Wrapf(util.WrapperMixin):
         if need_wrapper:
             impl = self.impl
             impl.append('')
+            if node.cpp_if:
+                impl.append('#' + node.cpp_if)
             if options.debug:
                 impl.append('! %s' % node.declgen)
                 if generated:
@@ -1190,6 +1199,8 @@ class Wrapf(util.WrapperMixin):
             impl.extend(post_call)
             impl.append(-1)
             impl.append(wformat('end {F_subprogram} {F_name_impl}', fmt_func))
+            if node.cpp_if:
+                impl.append('#endif  // ' + node.cpp_if)
         else:
             fmt_func.F_C_name = fmt_func.F_name_impl
 

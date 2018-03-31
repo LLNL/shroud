@@ -203,12 +203,21 @@ module userlibrary_mod
             integer(C_SIZE_T) :: SHT_rv
         end function test_size_t
 
-        subroutine testmpi(comm) &
-                bind(C, name="AA_testmpi")
+#ifdef HAVE_MPI
+        subroutine c_testmpi_mpi(comm) &
+                bind(C, name="AA_testmpi_mpi")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: comm
-        end subroutine testmpi
+        end subroutine c_testmpi_mpi
+#endif  // ifdef HAVE_MPI
+
+#ifndef HAVE_MPI
+        subroutine c_testmpi_serial() &
+                bind(C, name="AA_testmpi_serial")
+            implicit none
+        end subroutine c_testmpi_serial
+#endif  // ifndef HAVE_MPI
 
         subroutine c_testgroup1(grp) &
                 bind(C, name="AA_testgroup1")
@@ -322,6 +331,15 @@ module userlibrary_mod
         module procedure test_names_flag
     end interface test_names
 
+    interface testmpi
+#ifdef HAVE_MPI
+        module procedure testmpi_mpi
+#endif
+#ifndef HAVE_MPI
+        module procedure testmpi_serial
+#endif
+    end interface testmpi
+
     interface testoptional
         module procedure testoptional_0
         module procedure testoptional_1
@@ -399,7 +417,7 @@ contains
 
     ! void testoptional()
     ! has_default_arg
-    ! function_index=68
+    ! function_index=69
     subroutine testoptional_0()
         ! splicer begin function.testoptional_0
         call c_testoptional_0()
@@ -408,7 +426,7 @@ contains
 
     ! void testoptional(int i=1 +intent(in)+value)
     ! has_default_arg
-    ! function_index=69
+    ! function_index=70
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -428,8 +446,29 @@ contains
         ! splicer end function.testoptional_2
     end subroutine testoptional_2
 
-    ! void testgroup1(axom::sidre::Group * grp +intent(in)+value)
+#ifdef HAVE_MPI
+    ! void testmpi(MPI_Comm comm +intent(in)+value)
+    ! function_index=57
+    subroutine testmpi_mpi(comm)
+        integer, value, intent(IN) :: comm
+        ! splicer begin function.testmpi_mpi
+        call c_testmpi_mpi(comm)
+        ! splicer end function.testmpi_mpi
+    end subroutine testmpi_mpi
+#endif  // ifdef HAVE_MPI
+
+#ifndef HAVE_MPI
+    ! void testmpi()
     ! function_index=58
+    subroutine testmpi_serial()
+        ! splicer begin function.testmpi_serial
+        call c_testmpi_serial()
+        ! splicer end function.testmpi_serial
+    end subroutine testmpi_serial
+#endif  // ifndef HAVE_MPI
+
+    ! void testgroup1(axom::sidre::Group * grp +intent(in)+value)
+    ! function_index=59
     subroutine testgroup1(grp)
         use sidre_mod, only : group
         type(datagroup), value, intent(IN) :: grp
@@ -439,7 +478,7 @@ contains
     end subroutine testgroup1
 
     ! void testgroup2(const axom::sidre::Group * grp +intent(in)+value)
-    ! function_index=59
+    ! function_index=60
     subroutine testgroup2(grp)
         use sidre_mod, only : group
         type(datagroup), value, intent(IN) :: grp
@@ -449,7 +488,7 @@ contains
     end subroutine testgroup2
 
     ! void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
-    ! function_index=62
+    ! function_index=63
     !>
     !! \brief abstract argument
     !!
@@ -462,7 +501,7 @@ contains
     end subroutine func_ptr3
 
     ! void FuncPtr4(double ( * get) +intent(in)+value(double +value, int +value))
-    ! function_index=63
+    ! function_index=64
     !>
     !! \brief abstract argument
     !!
@@ -475,7 +514,7 @@ contains
     end subroutine func_ptr4
 
     ! void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
-    ! function_index=65
+    ! function_index=66
     subroutine verylongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
@@ -498,7 +537,7 @@ contains
     end subroutine verylongfunctionname1
 
     ! int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-    ! function_index=66
+    ! function_index=67
     function verylongfunctionname2(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10) &
@@ -523,7 +562,7 @@ contains
     end function verylongfunctionname2
 
     ! void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
-    ! function_index=67
+    ! function_index=68
     !>
     !! \brief Test multidimensional arrays with allocatable
     !!

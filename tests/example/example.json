@@ -4609,7 +4609,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 70, 
+                "_PTR_F_C_index": 71, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4764,7 +4764,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 70, 
+                "_function_index": 71, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -5121,7 +5121,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 71, 
+                "_PTR_F_C_index": 72, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -5252,7 +5252,7 @@
                         }
                     }
                 }, 
-                "_function_index": 71, 
+                "_function_index": 72, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -5317,7 +5317,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 72, 
+                "_PTR_F_C_index": 73, 
                 "_cxx_overload": [
                     53, 
                     54
@@ -5508,7 +5508,7 @@
                         }
                     }
                 }, 
-                "_function_index": 72, 
+                "_function_index": 73, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -5588,7 +5588,7 @@
                 }
             }, 
             {
-                "_function_index": 68, 
+                "_function_index": 69, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5654,7 +5654,7 @@
                         }
                     }
                 }, 
-                "_function_index": 69, 
+                "_function_index": 70, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5722,8 +5722,8 @@
             }, 
             {
                 "_default_funcs": [
-                    68, 
-                    69
+                    69, 
+                    70
                 ], 
                 "_fmtargs": {
                     "i": {
@@ -5956,6 +5956,10 @@
                 "options": {}
             }, 
             {
+                "_cxx_overload": [
+                    57, 
+                    58
+                ], 
                 "_fmtargs": {
                     "comm": {
                         "fmtc": {
@@ -5999,6 +6003,7 @@
                     }
                 }, 
                 "_function_index": 57, 
+                "_overloaded": true, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6036,25 +6041,75 @@
                 "format": {
                     "C_call_code": "example::\tnested::\ttestmpi(\tSHCXX_comm);", 
                     "C_call_list": "SHCXX_comm", 
-                    "C_name": "AA_testmpi", 
+                    "C_name": "AA_testmpi_mpi", 
                     "C_pre_call": "MPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);", 
                     "C_prototype": "MPI_Fint comm", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_call": "c_testmpi", 
-                    "F_C_name": "testmpi", 
+                    "F_C_call": "c_testmpi_mpi", 
+                    "F_C_name": "c_testmpi_mpi", 
                     "F_arg_c_call": "comm", 
                     "F_arguments": "comm", 
-                    "F_call_code": "call c_testmpi(comm)", 
-                    "F_name_function": "testmpi", 
+                    "F_call_code": "call c_testmpi_mpi(comm)", 
+                    "F_name_function": "testmpi_mpi", 
                     "F_name_generic": "testmpi", 
-                    "F_name_impl": "testmpi", 
+                    "F_name_impl": "testmpi_mpi", 
                     "F_subprogram": "subroutine", 
                     "LUA_name": "testmpi", 
                     "LUA_name_impl": "l_testmpi", 
-                    "PY_name_impl": "PP_testmpi", 
+                    "PY_name_impl": "PP_testmpi_mpi", 
                     "c_const": "", 
                     "function_name": "testmpi", 
+                    "function_suffix": "_mpi", 
+                    "underscore_name": "testmpi"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_cxx_overload": [
+                    57, 
+                    58
+                ], 
+                "_function_index": 58, 
+                "_overloaded": true, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "testmpi", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void testmpi()", 
+                "declgen": "void testmpi()", 
+                "format": {
+                    "C_call_code": "example::\tnested::\ttestmpi(\t);", 
+                    "C_call_list": "", 
+                    "C_name": "AA_testmpi_serial", 
+                    "C_prototype": "", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_testmpi_serial", 
+                    "F_C_name": "c_testmpi_serial", 
+                    "F_arg_c_call": "", 
+                    "F_arguments": "", 
+                    "F_call_code": "call c_testmpi_serial()", 
+                    "F_name_function": "testmpi_serial", 
+                    "F_name_generic": "testmpi", 
+                    "F_name_impl": "testmpi_serial", 
+                    "F_subprogram": "subroutine", 
+                    "PY_name_impl": "PP_testmpi_serial", 
+                    "c_const": "", 
+                    "function_name": "testmpi", 
+                    "function_suffix": "_serial", 
                     "underscore_name": "testmpi"
                 }, 
                 "options": {}
@@ -6102,7 +6157,7 @@
                         }
                     }
                 }, 
-                "_function_index": 58, 
+                "_function_index": 59, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6211,7 +6266,7 @@
                         }
                     }
                 }, 
-                "_function_index": 59, 
+                "_function_index": 60, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6317,7 +6372,7 @@
                         }
                     }
                 }, 
-                "_function_index": 60, 
+                "_function_index": 61, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6431,7 +6486,7 @@
                         }
                     }
                 }, 
-                "_function_index": 61, 
+                "_function_index": 62, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6550,7 +6605,7 @@
                         }
                     }
                 }, 
-                "_function_index": 62, 
+                "_function_index": 63, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6668,7 +6723,7 @@
                         }
                     }
                 }, 
-                "_function_index": 63, 
+                "_function_index": 64, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6806,7 +6861,7 @@
                         }
                     }
                 }, 
-                "_function_index": 64, 
+                "_function_index": 65, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7411,7 +7466,7 @@
                         }
                     }
                 }, 
-                "_function_index": 65, 
+                "_function_index": 66, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -8054,7 +8109,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 66, 
+                "_function_index": 67, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -8380,7 +8435,7 @@
                         }
                     }
                 }, 
-                "_function_index": 67, 
+                "_function_index": 68, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"

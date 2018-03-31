@@ -623,12 +623,35 @@ static int l_test_size_t(lua_State *L)
 }
 
 // void testmpi(MPI_Comm comm +intent(in)+value)
+// void testmpi()
 static int l_testmpi(lua_State *L)
 {
     // splicer begin function.testmpi
-    MPI_Comm comm = MPI_Comm_f2c(POP);
-    example::nested::testmpi(comm);
-    return 0;
+    int SH_nresult = 0;
+    int SH_nargs = lua_gettop(L);
+    int SH_itype1 = lua_type(L, 1);
+    switch (SH_nargs) {
+    case 0:
+        {
+            example::nested::testmpi();
+            SH_nresult = 0;
+        }
+        break;
+    case 1:
+        if (SH_itype1 == LUA_TNONE) {
+            MPI_Comm comm = MPI_Comm_f2c(POP);
+            example::nested::testmpi(comm);
+            SH_nresult = 0;
+        }
+        else {
+            luaL_error(L, "error with arguments");
+        }
+        break;
+    default:
+        luaL_error(L, "error with arguments");
+        break;
+    }
+    return SH_nresult;
     // splicer end function.testmpi
 }
 
