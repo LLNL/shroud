@@ -235,16 +235,28 @@ class Wrapf(util.WrapperMixin):
         # Look for generics
         # splicer to extend generic
         self._push_splicer('generic')
+        f_type_decl = self.f_type_decl
         for key in sorted(self.f_type_generic.keys()):
             methods = self.f_type_generic[key]
             if len(methods) > 1:
-                self.f_type_decl.append('generic :: %s => &' % key)
-                self.f_type_decl.append(1)
+                f_type_decl.append('generic :: %s => &' % key)
+                f_type_decl.append(1)
                 self._create_splicer(key, self.f_type_decl)
-                for genname in methods[:-1]:
-                    self.f_type_decl.append(genname + ',  &')
-                self.f_type_decl.append(methods[-1])
-                self.f_type_decl.append(-1)
+                for node in methods[:-1]:
+                    if node.cpp_if:
+                        f_type_decl.append('#' + node.cpp_if)
+                    f_type_decl.append(node.fmtdict.F_name_function + ',  &')
+                    if node.cpp_if:
+                        f_type_decl.append('#endif')
+
+                node = methods[-1]
+                if node.cpp_if:
+                    f_type_decl.append('#' + node.cpp_if)
+                f_type_decl.append(node.fmtdict.F_name_function)
+                if node.cpp_if:
+                    f_type_decl.append('#endif')
+
+                f_type_decl.append(-1)
         self._pop_splicer('generic')
 
         self._create_splicer('type_bound_procedure_part', self.f_type_decl)
@@ -1114,9 +1126,8 @@ class Wrapf(util.WrapperMixin):
             # then do not set up generic since only the
             # return type may be different (ex. getValue<T>())
             if cls and not is_ctor:
-                gname = fmt_func.F_name_function
                 self.f_type_generic.setdefault(
-                    fmt_func.F_name_generic, []).append(gname)
+                    fmt_func.F_name_generic, []).append(node)
             else:
                 self.f_function_generic.setdefault(
                     fmt_func.class_prefix + fmt_func.F_name_generic, []).append(node)

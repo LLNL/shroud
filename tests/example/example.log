@@ -52,6 +52,7 @@ Close wrapExClass2.h
 Close wrapExClass2.cpp
 class ExClass3
 C method void exfunc()
+C method void exfunc(int flag +intent(in)+value)
 Close wrapExClass3.h
 Close wrapExClass3.cpp
 C function void local_function1()
@@ -133,6 +134,7 @@ C-interface, Fortran method double getValue()
 Close wrapfExClass2.f
 class ExClass3
 C-interface, Fortran method void exfunc()
+C-interface, Fortran method void exfunc(int flag +intent(in)+value)
 Close wrapfExClass3.f
 C-interface, Fortran function void local_function1()
 C-interface, Fortran function bool isNameValid(const std::string & name +intent(in))
@@ -238,6 +240,7 @@ Lua method void * declare(TypeID type +intent(in)+value, SidreLength len=1 +inte
 Lua method void destroyall()
 Lua method TypeID getTypeID() const
 Lua method void exfunc()
+Lua method void exfunc(int flag +intent(in)+value)
 Lua function void local_function1()
 Lua function bool isNameValid(const std::string & name +intent(in))
 Lua function bool isInitialized()

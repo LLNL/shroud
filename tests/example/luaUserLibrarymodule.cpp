@@ -463,13 +463,39 @@ static const struct luaL_Reg l_ExClass2_Reg [] = {
 };
 
 // void exfunc()
+// void exfunc(int flag +intent(in)+value)
 static int l_exclass3_exfunc(lua_State *L)
 {
     // splicer begin class.ExClass3.method.exfunc
-    l_ExClass3_Type * SH_this = (l_ExClass3_Type *) luaL_checkudata(
-        L, 1, "ExClass3.metatable");
-    SH_this->self->exfunc();
-    return 0;
+    int SH_nresult = 0;
+    int SH_nargs = lua_gettop(L);
+    int SH_itype1 = lua_type(L, 1);
+    switch (SH_nargs) {
+    case 0:
+        {
+            l_ExClass3_Type * SH_this = (l_ExClass3_Type *)
+                luaL_checkudata(L, 1, "ExClass3.metatable");
+            SH_this->self->exfunc();
+            SH_nresult = 0;
+        }
+        break;
+    case 1:
+        if (SH_itype1 == LUA_TNUMBER) {
+            int flag = lua_tointeger(L, 1);
+            l_ExClass3_Type * SH_this = (l_ExClass3_Type *)
+                luaL_checkudata(L, 1, "ExClass3.metatable");
+            SH_this->self->exfunc(flag);
+            SH_nresult = 0;
+        }
+        else {
+            luaL_error(L, "error with arguments");
+        }
+        break;
+    default:
+        luaL_error(L, "error with arguments");
+        break;
+    }
+    return SH_nresult;
     // splicer end class.ExClass3.method.exfunc
 }
 

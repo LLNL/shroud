@@ -263,7 +263,11 @@ declarations:
         wrap_python: False
       cpp_if: ifdef USE_CLASS3
       declarations:
+      # test class, overloaded, cpp_if
       - decl: void exfunc()
+        cpp_if: ifdef USE_CLASS3_A
+      - decl: void exfunc(int flag)
+        cpp_if: ifndef USE_CLASS3_A
 
     ########################################
     - decl: void local_function1()
@@ -310,7 +314,7 @@ declarations:
     - decl: size_t test_size_t()
 
 
-    # test overloaded, cpp_if    
+    # test non-class, overloaded, cpp_if    
     - decl: void testmpi(MPI_Comm comm)
       format:
         function_suffix: _mpi

@@ -52,15 +52,31 @@ extern "C" {
 
 // void exfunc()
 // function_index=48
-void AA_exclass3_exfunc(AA_exclass3 * self)
+#ifdef USE_CLASS3_A
+void AA_exclass3_exfunc_0(AA_exclass3 * self)
 {
-// splicer begin class.ExClass3.method.exfunc
+// splicer begin class.ExClass3.method.exfunc_0
     example::nested::ExClass3 *SH_this = static_cast<example::nested::
         ExClass3 *>(static_cast<void *>(self));
     SH_this->exfunc();
     return;
-// splicer end class.ExClass3.method.exfunc
+// splicer end class.ExClass3.method.exfunc_0
 }
+#endif  // ifdef USE_CLASS3_A
+
+// void exfunc(int flag +intent(in)+value)
+// function_index=49
+#ifndef USE_CLASS3_A
+void AA_exclass3_exfunc_1(AA_exclass3 * self, int flag)
+{
+// splicer begin class.ExClass3.method.exfunc_1
+    example::nested::ExClass3 *SH_this = static_cast<example::nested::
+        ExClass3 *>(static_cast<void *>(self));
+    SH_this->exfunc(flag);
+    return;
+// splicer end class.ExClass3.method.exfunc_1
+}
+#endif  // ifndef USE_CLASS3_A
 
 }  // extern "C"
 #endif  // ifdef USE_CLASS3
