@@ -98,18 +98,38 @@ class NamespaceMixin(object):
         decl - declaration
         """
         # parse declaration to find out what it is
-        if isinstance(self, ClassNode):
-            cls_name = self.name
-        else:
-            cls_name = None
         ast = declast.check_decl(decl, namespace=self,
                                  template_types=kwargs.get('cxx_template', {}).keys())
         if isinstance(ast, declast.Declaration):
-            self.add_function(decl, ast=ast, **kwargs)
+            if 'typedef' in ast.storage:
+                typedef = self.create_typedef(ast, **kwargs)
+                self.add_typedef(ast.declarator.name)
+            else:
+                self.add_function(decl, ast=ast, **kwargs)
         elif isinstance(ast, declast.Enum):
             self.add_enum(decl, ast=ast, **kwargs)
         else:
             raise RuntimeError("Error parsing " + decl)
+
+    def create_typedef(self, ast, **kwargs):
+        """Create a typedef from a Declarator.
+        """
+        key = ast.declarator.name
+        copy_type = ast.attrs['_typename']
+        def_types, def_types_alias = typemap.Typedef.get_global_types()
+        orig = def_types.get(copy_type, None)
+        if not orig:
+            raise RuntimeError(
+                "No type for typedef {} while defining {}".format(copy_type, key))
+        typedef = orig.clone_as(copy_type)
+        typedef.name = self.scope + key
+        typedef.typedef = copy_type
+        typedef.cxx_type = typedef.name
+        if 'fields' in kwargs:
+            fields = kwargs['fields']
+            typedef.update(fields)
+        typemap.Typedef.register(typedef.name, typedef)
+        return typedef
 
     def add_enum(self, decl, parentoptions=None, ast=None, **kwargs):
         """Add an enumeration.
@@ -720,10 +740,6 @@ class FunctionNode(AstNode):
         self.decl = decl
         if ast is None:
             # parse decl and add to dictionary
-            if isinstance(parent, ClassNode):
-                cls_name = parent.name
-            else:
-                cls_name = None
             template_types = self.cxx_template.keys()
 
             ast = declast.check_decl(decl,
@@ -1012,22 +1028,6 @@ def add_declarations(parent, node):
                 raise RuntimeError(
                     "No type {}".format(key))
             typedef.update(value)
-        elif 'typedef' in subnode:
-            key = subnode['typedef']
-            value = subnode['fields']
-            copy_type = value['typedef']
-            def_types, def_types_alias = typemap.Typedef.get_global_types()
-            orig = def_types.get(copy_type, None)
-            if not orig:
-                raise RuntimeError(
-                    "No type for typedef {} while defining {}".format(copy_type, key))
-            typedef = orig.clone_as(copy_type)
-            typedef.update(value)
-            typedef.name = parent.scope + key
-            if 'cxx_type' not in value:
-                typedef.cxx_type = typedef.name
-            typemap.Typedef.register(typedef.name, typedef)
-            parent.add_typedef(key)   # Add to namespace
         else:
             print(subnode)
             raise RuntimeError("Expected 'block', 'class', 'decl', 'forward', 'namespace' or 'typedef' found {}".format(sorted(subnode.keys())))

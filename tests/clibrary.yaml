@@ -56,15 +56,10 @@ options:
 
 declarations:
 
-- typedef: TypeID
-  fields:
-    typedef  : int
-    cxx_type : TypeID
+- decl: typedef int TypeID;
 
-- typedef: EnumTypeID
+- decl: typedef int EnumTypeID
   fields:
-    typedef  : int
-    cxx_type : EnumTypeID
     c_to_cxx : static_cast<EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 

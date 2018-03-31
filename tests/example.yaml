@@ -70,28 +70,24 @@ declarations:
   fields:
     cpp_if: ifdef USE_MPI
 
-- typedef: SidreLength
+- decl: typedef long SidreLength
   fields:
-    typedef  : long
 # defined in SidreTypes.hpp
     c_header : sidre/SidreTypes.h
     c_type   : SIDRE_SidreLength
-    cxx_type : SidreLength
 #    f_type   : integer(C_LONG)
 ##    f_module : iso_c_binding:C_LONG
 #    f_module : 
 #      iso_c_binding:
 #      - C_LONG
 
-- typedef: TypeID
+- decl: typedef int TypeID
   fields:
-    typedef : int
     # enum for types
     c_header : sidre/SidreTypes.h
     cxx_header : sidre/SidreWrapperHelpers.hpp
-    cxx_type: TypeID
     cxx_to_c : static_cast<int>({cxx_var})
-    c_to_cxx :  getTypeID({c_var})
+    c_to_cxx : getTypeID({c_var})
 
 - namespace: axom
   declarations:

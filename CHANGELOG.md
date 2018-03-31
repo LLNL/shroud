@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Support class static methods.
 - Ability to define enum values.
+- Add typedef as a declaration.
+
+      - decl: typedef int TYP
 
 ### Changed
 - base name 'wrapped' changed to 'shadow'.  This may appear in YAML file.

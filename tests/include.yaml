@@ -51,9 +51,8 @@ options:
   show_splicer_comments: false
 
 declarations:
-- typedef: CustomType
+- decl: typedef int CustomType
   fields:
-      typedef : int
       c_header : type_header.h
       cxx_header : type_header.hpp
 

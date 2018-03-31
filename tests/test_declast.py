@@ -1111,13 +1111,13 @@ class CheckExpr(unittest.TestCase):
 
 class CheckTypedef(unittest.TestCase):
 
-    def setUp(self):
+    def XXXsetUp(self):
         library = ast.LibraryNode()
 
-    def test_typedef1xo(self):
+    def test_typedef1(self):
         r = declast.check_decl('typedef int TypeID;')
         self.assertEqual('typedef int TypeID', r.gen_decl())
-        self.assertEqual(todict.to_dict(r),{
+        self.assertDictEqual(todict.to_dict(r),{
             "attrs": {
                 "_typename": "int"
             }, 
@@ -1134,10 +1134,21 @@ class CheckTypedef(unittest.TestCase):
             ]
         })
 
+    def test_typedef2(self):
+        library = ast.LibraryNode()
+        library.add_declaration('typedef int TD2;')
+        self.assertIn('TD2', library.symbols)
+
+        typedef = typemap.Typedef.lookup('TD2')
+        self.assertIsNotNone(typedef)
+        self.assertEqual('TD2', typedef.name)
+        self.assertEqual('TD2', typedef.cxx_type)
+        self.assertEqual('int', typedef.typedef)
+
 
 class CheckEnum(unittest.TestCase):
 
-    def setUp(self):
+    def XXXsetUp(self):
         library = ast.LibraryNode()
 
     def test_enum1(self):

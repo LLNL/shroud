@@ -56,15 +56,10 @@ declarations:
 - namespace: tutorial
   declarations:
 
-  - typedef: TypeID
-    fields:
-      typedef  : int
-      cxx_type : tutorial::TypeID
+  - decl: typedef int TypeID;
 
-  - typedef: EnumTypeID
+  - decl: typedef int EnumTypeID
     fields:
-      typedef  : int
-      cxx_type : tutorial::EnumTypeID
       c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
       cxx_to_c : static_cast<int>({cxx_var})
 
