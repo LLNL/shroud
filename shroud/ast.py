@@ -114,6 +114,11 @@ class NamespaceMixin(object):
     def create_typedef(self, ast, **kwargs):
         """Create a typedef from a Declarator.
         """
+        if ast.declarator.pointer:
+            raise NotImplementedError("Pointers not supported in typedef")
+        if ast.declarator.func:
+            raise NotImplementedError("Function pointers not supported in typedef")
+
         key = ast.declarator.name
         copy_type = ast.attrs['_typename']
         def_types, def_types_alias = typemap.Typedef.get_global_types()

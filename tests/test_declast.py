@@ -1145,6 +1145,23 @@ class CheckTypedef(unittest.TestCase):
         self.assertEqual('TD2', typedef.cxx_type)
         self.assertEqual('int', typedef.typedef)
 
+    def test_typedef_errors(self):
+        with self.assertRaises(RuntimeError) as context:
+            r = declast.check_decl('typedef none TypeID;')
+        self.assertTrue("Expected TYPE_SPECIFIER, found ID 'none'"
+                        in str(context.exception))
+
+        library = ast.LibraryNode()
+        with self.assertRaises(NotImplementedError) as context:
+            library.add_declaration('typedef int * TD2;')
+        self.assertTrue("Pointers not supported in typedef"
+                        in str(context.exception))
+
+        with self.assertRaises(NotImplementedError) as context:
+            library.add_declaration('typedef int(*func)();')
+        self.assertTrue("Function pointers not supported in typedef"
+                        in str(context.exception))
+
 
 class CheckEnum(unittest.TestCase):
 
