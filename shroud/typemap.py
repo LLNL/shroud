@@ -56,6 +56,8 @@ class Typedef(object):
         ('forward', None),        # Forward declaration
         ('typedef', None),        # Initialize from existing type
 
+        ('cpp_if', None),         # C preprocessor test for c_header
+
         ('cxx_type', None),       # Name of type in C++
         ('cxx_to_c', None),       # Expression to convert from C++ to C
                                   # None implies {cxx_var} i.e. no conversion
@@ -268,7 +270,7 @@ def initialize():
             'size_t',
             c_type='size_t',
             cxx_type='size_t',
-            c_header='stdlib.h',
+            c_header='<stddef.h>',
             f_cast='int({f_var}, C_SIZE_T)',
             f_type='integer(C_SIZE_T)',
             f_kind='C_SIZE_T',

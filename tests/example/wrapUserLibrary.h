@@ -48,9 +48,11 @@
 #ifndef WRAPUSERLIBRARY_H
 #define WRAPUSERLIBRARY_H
 
+#include <stddef.h>
+#ifdef USE_MPI
 #include "mpi.h"
+#endif
 #include "sidre/wrapGroup.h"
-#include "stdlib.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations

@@ -256,6 +256,38 @@ class WrapperMixin(object):
             else:
                 output.append('#include "%s"' % header)
 
+    def write_headers_nodes(self, lang_header, types, output):
+        """Write out headers required by types
+
+        types - dictionary[typedef.name] = typedef
+        """
+        # find which headers are required and who requires them
+        headers = {}
+        for typ in types.values():
+            hdr = getattr(typ, lang_header)
+            if hdr:
+                headers.setdefault(hdr, []).append(typ)
+
+        for hdr in sorted(headers):
+            if len(headers[hdr]) == 1:
+                # Only one type uses the include, check for if_cpp
+                typedef = headers[hdr][0]
+                if typedef.cpp_if:
+                    output.append('#' + typedef.cpp_if)
+                if hdr[0] == '<':
+                    output.append('#include %s' % hdr)
+                else:
+                    output.append('#include "%s"' % hdr)
+                if typedef.cpp_if:
+                    output.append('#endif')
+            else:
+                # XXX - unclear how to mix header and cpp_if
+                # so always include the file
+                if hdr[0] == '<':
+                    output.append('#include %s' % hdr)
+                else:
+                    output.append('#include "%s"' % hdr)
+
 #####
 
     def write_output_file(self, fname, directory, output, spaces='    '):

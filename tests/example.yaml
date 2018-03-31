@@ -66,6 +66,10 @@ options:
 
 declarations:
 
+- type: MPI_Comm
+  fields:
+    cpp_if: ifdef USE_MPI
+
 - typedef: SidreLength
   fields:
     typedef  : long

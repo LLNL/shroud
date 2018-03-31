@@ -747,7 +747,7 @@
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PY_ctor": "PyInt_FromSize_t({c_var})", 
-            "c_header": "stdlib.h", 
+            "c_header": "<stddef.h>", 
             "c_type": "size_t", 
             "cxx_type": "size_t", 
             "f_cast": "int({f_var}, C_SIZE_T)", 

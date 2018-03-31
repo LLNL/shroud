@@ -78,7 +78,7 @@ class Wrapc(util.WrapperMixin):
         # forward declarations of C++ class as opaque C struct.
         self.header_forward = {}
         # include files required by typedefs
-        self.header_typedef_include = {}
+        self.header_typedef_nodes = {}
         # headers needed by implementation, i.e. helper functions
         self.header_impl_include = {}
         self.header_proto_c = []
@@ -157,11 +157,10 @@ class Wrapc(util.WrapperMixin):
             output.append('#' + node.cpp_if)
 
         # headers required by typedefs
-        if self.header_typedef_include:
+        if self.header_typedef_nodes:
             # output.append('// header_typedef_include')
             output.append('')
-            headers = self.header_typedef_include.keys()
-            self.write_headers(headers, output)
+            self.write_headers_nodes('c_header', self.header_typedef_nodes, output)
 
         if self.language == 'c++':
             output.append('')
@@ -401,7 +400,7 @@ class Wrapc(util.WrapperMixin):
 
         if result_typedef.c_header:
             # include any dependent header in generated header
-            self.header_typedef_include[result_typedef.c_header] = True
+            self.header_typedef_nodes[result_typedef.name] = result_typedef
         if result_typedef.cxx_header:
             # include any dependent header in generated source
             self.header_impl_include[result_typedef.cxx_header] = True
@@ -580,7 +579,8 @@ class Wrapc(util.WrapperMixin):
                 elif buf_arg == 'lenout':
                     fmt_arg.c_var_len = c_attrs['lenout']
                     append_format(proto_list, 'size_t *{c_var_len}', fmt_arg)
-                    self.header_typedef_include['<stddef.h>'] = True
+                    self.header_typedef_nodes['size_t'] = \
+                        typemap.Typedef.lookup('size_t')
                 else:
                     raise RuntimeError("wrap_function: unhandled case {}"
                                        .format(buf_arg))
@@ -650,7 +650,7 @@ class Wrapc(util.WrapperMixin):
 
             if arg_typedef.c_header:
                 # include any dependent header in generated header
-                self.header_typedef_include[arg_typedef.c_header] = True
+                self.header_typedef_nodes[arg_typedef.name] = arg_typedef
             if arg_typedef.cxx_header:
                 # include any dependent header in generated source
                 self.header_impl_include[arg_typedef.cxx_header] = True

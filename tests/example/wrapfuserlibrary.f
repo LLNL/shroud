@@ -210,14 +210,14 @@ module userlibrary_mod
             implicit none
             integer(C_INT), value, intent(IN) :: comm
         end subroutine c_testmpi_mpi
-#endif  // ifdef HAVE_MPI
+#endif
 
 #ifndef HAVE_MPI
         subroutine c_testmpi_serial() &
                 bind(C, name="AA_testmpi_serial")
             implicit none
         end subroutine c_testmpi_serial
-#endif  // ifndef HAVE_MPI
+#endif
 
         subroutine c_testgroup1(grp) &
                 bind(C, name="AA_testgroup1")
@@ -455,7 +455,7 @@ contains
         call c_testmpi_mpi(comm)
         ! splicer end function.testmpi_mpi
     end subroutine testmpi_mpi
-#endif  // ifdef HAVE_MPI
+#endif
 
 #ifndef HAVE_MPI
     ! void testmpi()
@@ -465,7 +465,7 @@ contains
         call c_testmpi_serial()
         ! splicer end function.testmpi_serial
     end subroutine testmpi_serial
-#endif  // ifndef HAVE_MPI
+#endif
 
     ! void testgroup1(axom::sidre::Group * grp +intent(in)+value)
     ! function_index=60

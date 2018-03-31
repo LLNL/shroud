@@ -763,7 +763,7 @@ class Wrapf(util.WrapperMixin):
         c_interface.append(-1)
         c_interface.append(wformat('end {F_C_subprogram} {F_C_name}', fmt))
         if node.cpp_if:
-            c_interface.append('#endif  // ' + node.cpp_if)
+            c_interface.append('#endif')
 
     def attr_allocatable(self, allocatable, node, arg, pre_call):
         """Add the allocatable attribute to the pre_call block.
@@ -1211,7 +1211,7 @@ class Wrapf(util.WrapperMixin):
             impl.append(-1)
             impl.append(wformat('end {F_subprogram} {F_name_impl}', fmt_func))
             if node.cpp_if:
-                impl.append('#endif  // ' + node.cpp_if)
+                impl.append('#endif')
         else:
             fmt_func.F_C_name = fmt_func.F_name_impl
 

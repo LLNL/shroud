@@ -94,7 +94,7 @@ module exclass3_mod
             implicit none
             type(C_PTR), value, intent(IN) :: self
         end subroutine c_exclass3_exfunc_0
-#endif  // ifdef USE_CLASS3_A
+#endif
 
 #ifndef USE_CLASS3_A
         subroutine c_exclass3_exfunc_1(self, flag) &
@@ -104,7 +104,7 @@ module exclass3_mod
             type(C_PTR), value, intent(IN) :: self
             integer(C_INT), value, intent(IN) :: flag
         end subroutine c_exclass3_exfunc_1
-#endif  // ifndef USE_CLASS3_A
+#endif
 
         ! splicer begin class.ExClass3.additional_interfaces
         ! splicer end class.ExClass3.additional_interfaces
@@ -121,7 +121,7 @@ contains
         call c_exclass3_exfunc_0(obj%voidptr)
         ! splicer end class.ExClass3.method.exfunc_0
     end subroutine exclass3_exfunc_0
-#endif  // ifdef USE_CLASS3_A
+#endif
 
 #ifndef USE_CLASS3_A
     ! void exfunc(int flag +intent(in)+value)
@@ -134,7 +134,7 @@ contains
         call c_exclass3_exfunc_1(obj%voidptr, flag)
         ! splicer end class.ExClass3.method.exfunc_1
     end subroutine exclass3_exfunc_1
-#endif  // ifndef USE_CLASS3_A
+#endif
 
     function exclass3_yadda(obj) result (voidptr)
         use iso_c_binding, only: C_PTR

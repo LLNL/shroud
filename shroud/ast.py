@@ -1002,6 +1002,16 @@ def add_declarations(parent, node):
                     typedef.cxx_type = fullname
                 typemap.typedef_shadow_defaults(typedef)
                 typemap.Typedef.register(typedef.name, typedef)
+        elif 'type' in subnode:
+            # Update fields for a type. For example, set cpp_if
+            key = subnode['type']
+            value = subnode['fields']
+            def_types, def_types_alias = typemap.Typedef.get_global_types()
+            typedef = def_types.get(key, None)
+            if not typedef:
+                raise RuntimeError(
+                    "No type {}".format(key))
+            typedef.update(value)
         elif 'typedef' in subnode:
             key = subnode['typedef']
             value = subnode['fields']
