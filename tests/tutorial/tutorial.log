@@ -12,7 +12,7 @@ C method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 Close wrapClass1.h
 Close wrapClass1.cpp
 class Singleton
-C method Singleton & getReference()
+C method static Singleton & getReference()
 Close wrapSingleton.h
 Close wrapSingleton.cpp
 C function void Function1()
@@ -71,7 +71,7 @@ C-interface, Fortran method int Method1()
 C-interface, Fortran method bool equivalent(const Class1 & obj2 +intent(in)+value) const
 C-interface, Fortran method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 class Singleton
-C-interface, Fortran method Singleton & getReference()
+C-interface, Fortran method static Singleton & getReference()
 C-interface, Fortran function void Function1()
 C-interface, Fortran function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C-interface, Fortran function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
@@ -140,7 +140,7 @@ Python method bool equivalent(const Class1 & obj2 +intent(in)+value) const
 Python method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 Close pyClass1type.cpp
 class Singleton
-Python method Singleton & getReference()
+Python method static Singleton & getReference()
 Close pySingletontype.cpp
 Python function void Function1()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)

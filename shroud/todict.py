@@ -328,6 +328,7 @@ class PrintNode(visitor.Visitor):
         values = ''
         return 'enum {} {{ {} }};'.format(node.name, self.comma_list(node.members))
 
+    # XXX - Add Declaration nodes, similar to gen_decl
 
 def print_node(node):
     """Convert node to original string.

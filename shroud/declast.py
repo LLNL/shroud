@@ -740,7 +740,7 @@ class Declaration(Node):
     """
     def __init__(self):
         self.specifier  = []    # int, long, ...
-        self.storage    = []    # static, ...
+        self.storage    = []    # static, tyedef, ...
         self.const      = False
         self.volatile   = False
         self.declarator = None
@@ -902,6 +902,9 @@ class Declaration(Node):
             out.append('volatile ')
         if '_destructor' in self.fattrs:
             out.append('~')
+        if self.storage:
+            out.append(' '.join(self.storage))
+            out.append(' ')
         if self.specifier:
             out.append(' '.join(self.specifier))
         else:
@@ -948,6 +951,9 @@ class Declaration(Node):
 
         if '_destructor' in self.fattrs:
             decl.append('~')
+        if self.storage:
+            decl.append(' '.join(self.storage))
+            decl.append(' ')
         decl.append(' '.join(self.specifier))
         if 'template' in self.attrs:
             decl.append('<')

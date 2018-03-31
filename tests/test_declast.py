@@ -1109,6 +1109,32 @@ class CheckExpr(unittest.TestCase):
         self.assertEqual(e, todict.print_node(r))
 
 
+class CheckTypedef(unittest.TestCase):
+
+    def setUp(self):
+        library = ast.LibraryNode()
+
+    def test_typedef1xo(self):
+        r = declast.check_decl('typedef int TypeID;')
+        self.assertEqual('typedef int TypeID', r.gen_decl())
+        self.assertEqual(todict.to_dict(r),{
+            "attrs": {
+                "_typename": "int"
+            }, 
+            "const": False, 
+            "declarator": {
+                "name": "TypeID", 
+                "pointer": []
+            }, 
+            "specifier": [
+                "int"
+            ], 
+            "storage": [
+                "typedef"
+            ]
+        })
+
+
 class CheckEnum(unittest.TestCase):
 
     def setUp(self):

@@ -773,7 +773,7 @@
                             ]
                         }, 
                         "decl": "static Singleton& getReference()", 
-                        "declgen": "Singleton & getReference()", 
+                        "declgen": "static Singleton & getReference()", 
                         "format": {
                             "CXX_this_call": "Singleton::", 
                             "C_call_code": "Singleton & SHCXX_rv =\t Singleton::getReference(\t);", 

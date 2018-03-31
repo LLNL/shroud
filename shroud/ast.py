@@ -140,7 +140,7 @@ class NamespaceMixin(object):
         return node
 
     def add_typedef(self, name):
-        """Add a typedef.
+        """Add a typedef to the symbol table.
         """
         node = TypedefNode(name, parent=self)
         self.symbols[name] = node
