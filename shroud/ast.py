@@ -1051,7 +1051,13 @@ def create_library_from_dictionary(node):
 
     clean_dictionary(node)
     library = LibraryNode(**node)
+    ns = library
 
-    add_declarations(library, node)
+    # Create default namespace
+    if 'namespace' in node:
+        for name in node['namespace'].split():
+            ns = ns.add_namespace(name)
+
+    add_declarations(ns, node)
 
     return library
