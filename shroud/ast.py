@@ -1012,8 +1012,10 @@ def add_declarations(parent, node):
                 raise RuntimeError(
                     "No type for typedef {} while defining {}".format(copy_type, key))
             typedef = orig.clone_as(copy_type)
-            typedef.name = parent.scope + key
             typedef.update(value)
+            typedef.name = parent.scope + key
+            if 'cxx_type' not in value:
+                typedef.cxx_type = typedef.name
             typemap.Typedef.register(typedef.name, typedef)
             parent.add_typedef(key)   # Add to namespace
         else:

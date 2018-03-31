@@ -27,7 +27,7 @@
                                     "c_ptr": "", 
                                     "c_var": "arg1", 
                                     "cxx_deref": ".", 
-                                    "cxx_type": "int", 
+                                    "cxx_type": "CustomType", 
                                     "cxx_var": "arg1"
                                 }, 
                                 "fmtf": {
@@ -558,7 +558,7 @@
             "c_header": "type_header.h", 
             "c_type": "int", 
             "cxx_header": "type_header.hpp", 
-            "cxx_type": "int", 
+            "cxx_type": "CustomType", 
             "f_cast": "int({f_var}, C_INT)", 
             "f_kind": "C_INT", 
             "f_module": {
