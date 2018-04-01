@@ -1015,13 +1015,6 @@ def add_declarations(parent, node):
             del d['namespace']
             ns = parent.add_namespace(name, **d)
             add_declarations(ns, subnode)
-        elif 'xxxclass' in subnode:
-            name = subnode['class']
-            d = copy.copy(subnode)
-            clean_dictionary(d)
-            del d['class']
-            cls = parent.add_class(name, **d)
-            add_declarations(cls, subnode)
         elif 'block' in subnode:
             d = copy.copy(subnode)
             clean_dictionary(d)
@@ -1035,20 +1028,6 @@ def add_declarations(parent, node):
             del d['decl']
             declnode = parent.add_declaration(decl, **d)
             add_declarations(declnode, subnode)
-        elif 'forward' in subnode:
-            key = subnode['forward']
-            parent.add_typedef(key)
-            if 'fields' in subnode:
-                value = subnode['fields']
-                if not isinstance(value, dict):
-                    raise TypeError("fields must be a dictionary")
-                fullname = parent.scope + key
-                typedef = typemap.Typedef(fullname, **value)
-                typedef.base = 'shadow'
-                if 'cxx_type' not in value:
-                    typedef.cxx_type = fullname
-                typemap.typedef_shadow_defaults(typedef)
-                typemap.Typedef.register(typedef.name, typedef)
         elif 'type' in subnode:
             # Update fields for a type. For example, set cpp_if
             key = subnode['type']

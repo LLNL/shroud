@@ -54,7 +54,7 @@ options:
 namespace: tutorial
 
 declarations:
-- forward: Class1
+- decl: class Class1
   fields:
     c_type: TUT_class1
     f_derived_type: class1

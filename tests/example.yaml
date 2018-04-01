@@ -93,7 +93,7 @@ declarations:
   declarations:
   - namespace: sidre
     declarations:
-    - forward: Group
+    - decl: class Group
       fields:
         # This example is pulled from spio
         # DataGroup is a type which is provided by another shroud wrapped library

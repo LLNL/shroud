@@ -327,7 +327,7 @@ class CheckAst(unittest.TestCase):
             },
             declarations=[
                 {
-                    'class': 'Class1',
+                    'decl': 'class Class1',
                     'options': {
                         'testb': 'bb',
                     },
