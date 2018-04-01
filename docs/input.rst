@@ -72,6 +72,20 @@ The above YAML file represent the source file::
         void Method1();
     }
 
+A ``block`` can be used to group a collection of ``decl`` entires.
+Any ``option`` or ``format`` fields will apply to all declarations in
+the group::
+
+    declarations:
+    - block: True
+      options:
+        F_name_impl_template: {library}_{undescore_name}
+      format:
+        F_impl_filename: localfile.f
+      declarations:
+      - decl: void func1()
+      - decl: void func2()
+
 Shroud use curly braces for format strings.
 If a string starts with a curly brace YAML
 will interpret it as a map/dictionary instead of as part of the
