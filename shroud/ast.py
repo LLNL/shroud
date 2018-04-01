@@ -103,33 +103,36 @@ class NamespaceMixin(object):
         if isinstance(ast, declast.Declaration):
             if 'typedef' in ast.storage:
                 typedef = self.create_typedef(ast, **kwargs)
-                self.add_typedef(ast.declarator.name)
+                node = self.add_typedef(ast.declarator.name)
             else:
-                self.add_function(decl, ast=ast, **kwargs)
+                node = self.add_function(decl, ast=ast, **kwargs)
         elif isinstance(ast, declast.CXXClass):
-            self.create_class_type(ast, **kwargs)
-            self.add_class(ast.name, **kwargs)
+            node = self.create_class_type(ast, **kwargs)
+            if 'declarations' in kwargs:
+                node = self.add_class(ast.name, **kwargs)
         elif isinstance(ast, declast.Enum):
-            self.add_enum(decl, ast=ast, **kwargs)
+            node = self.add_enum(decl, ast=ast, **kwargs)
         else:
             raise RuntimeError("add_declaration: Error parsing '{}'".format(decl))
+        return node
 
     def create_class_type(self, ast, **kwargs):
         """Add a typedef for a class.
         """
         key = ast.name
         self.add_typedef(key)
+        fullname = self.scope + key
+        typedef = typemap.Typedef(fullname,
+                                  base='shadow',
+                                  cxx_type=fullname)
         if 'fields' in kwargs:
             value = kwargs['fields']
             if not isinstance(value, dict):
                 raise TypeError("fields must be a dictionary")
-            fullname = self.scope + key
-            typedef = typemap.Typedef(fullname, **value)
-            typedef.base = 'shadow'
-            if 'cxx_type' not in value:
-                typedef.cxx_type = fullname
-            typemap.typedef_shadow_defaults(typedef)
-            typemap.Typedef.register(typedef.name, typedef)
+            typedef.update(value)
+        typemap.typedef_shadow_defaults(typedef)
+        typemap.Typedef.register(typedef.name, typedef)
+        return typedef
 
     def create_typedef(self, ast, **kwargs):
         """Create a typedef from a Declarator.
@@ -1028,7 +1031,8 @@ def add_declarations(parent, node):
             clean_dictionary(d)
             decl = d['decl']
             del d['decl']
-            parent.add_declaration(decl, **d)
+            declnode = parent.add_declaration(decl, **d)
+            add_declarations(declnode, subnode)
         elif 'forward' in subnode:
             key = subnode['forward']
             parent.add_typedef(key)

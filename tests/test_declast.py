@@ -1200,10 +1200,11 @@ class CheckClass(unittest.TestCase):
         })
                          
     def test_class2(self):
-        """Add a class to a library"""
+        """Forward declare class in a library"""
         library = ast.LibraryNode()
         library.add_declaration('class Class1;')
         self.assertIn('Class1', library.symbols)
+        self.assertIsInstance(library.symbols['Class1'], ast.TypedefNode)
 
         typedef = typemap.Typedef.lookup('Class1')
         self.assertIsNotNone(typedef)
@@ -1211,17 +1212,28 @@ class CheckClass(unittest.TestCase):
         self.assertEqual('Class1', typedef.cxx_type)
         self.assertEqual('shadow', typedef.base)
                          
+    def test_class2_node(self):
+        """Add a class with declarations to a library"""
+        library = ast.LibraryNode()
+        library.add_declaration('class Class1;',
+                                declarations=[ dict(decl='void func1()')])
+        self.assertIn('Class1', library.symbols)
+        sym = library.symbols['Class1']
+        self.assertIsInstance(sym, ast.ClassNode)
+        self.assertIs(sym, library.classes[0])
+
     def test_class_in_namespace(self):
-        """Add a class to a namespace"""
+        """Forward declare a class in a namespace"""
         library = ast.LibraryNode()
         ns = library.add_namespace('ns')
         ns.add_declaration('class Class2;')
         self.assertIn('Class2', ns.symbols)
+        self.assertIsInstance(ns.symbols['Class2'], ast.TypedefNode)
 
         typedef = typemap.Typedef.lookup('ns::Class2')
         self.assertIsNotNone(typedef)
         self.assertEqual('ns::Class2', typedef.name)
-        self.assertEqual('ns::\tClass2', typedef.cxx_type)
+        self.assertEqual('ns::Class2', typedef.cxx_type)
 
 
 if __name__ == '__main__':
