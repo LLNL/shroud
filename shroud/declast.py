@@ -110,7 +110,7 @@ def tokenize(s):
                     typ = 'TYPE_QUALIFIER'
                 elif val in storage_class:
                     typ = 'STORAGE_CLASS'
-                elif val in ['enum', 'struct']:
+                elif val in ['class', 'enum', 'struct']:
                     typ = val.upper()
             yield Token(typ, val, line, mo.start()-line_start)
         pos = mo.end()
@@ -452,7 +452,9 @@ class Parser(ExprParser):
     def decl_statement(self):
         """Check for optional semicolon and stray stuff at the end of line.
         """
-        if self.token.typ == 'ENUM':
+        if self.token.typ == 'CLASS':
+            node = self.class_statement()
+        elif self.token.typ == 'ENUM':
             node = self.enum_statement()
         else:
             node = self.declaration()
@@ -601,6 +603,16 @@ class Parser(ExprParser):
             else:
                 attrs[name] = True
         self.exit('attribute', attrs)
+
+    def class_statement(self):
+        """  class ID
+        """
+        self.enter('class_statement')
+        self.mustbe('CLASS')
+        name = self.mustbe('ID')
+        node = CXXClass(name.value)
+        self.exit('class_statement')
+        return node
 
     def enum_statement(self):
         self.enter('enum_statement')
@@ -1175,6 +1187,13 @@ class Declaration(Node):
             decl.append('(:)')
 
         return ''.join(decl)
+
+class CXXClass(Node):
+    """An C++ class statement.
+    """
+    def __init__(self, name):
+        self.name = name
+
 
 class Enum(Node):
     """An enumeration statement.

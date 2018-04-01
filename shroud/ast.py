@@ -106,10 +106,30 @@ class NamespaceMixin(object):
                 self.add_typedef(ast.declarator.name)
             else:
                 self.add_function(decl, ast=ast, **kwargs)
+        elif isinstance(ast, declast.CXXClass):
+            self.create_class_type(ast, **kwargs)
+            self.add_class(ast.name, **kwargs)
         elif isinstance(ast, declast.Enum):
             self.add_enum(decl, ast=ast, **kwargs)
         else:
-            raise RuntimeError("Error parsing " + decl)
+            raise RuntimeError("add_declaration: Error parsing '{}'".format(decl))
+
+    def create_class_type(self, ast, **kwargs):
+        """Add a typedef for a class.
+        """
+        key = ast.name
+        self.add_typedef(key)
+        if 'fields' in kwargs:
+            value = kwargs['fields']
+            if not isinstance(value, dict):
+                raise TypeError("fields must be a dictionary")
+            fullname = self.scope + key
+            typedef = typemap.Typedef(fullname, **value)
+            typedef.base = 'shadow'
+            if 'cxx_type' not in value:
+                typedef.cxx_type = fullname
+            typemap.typedef_shadow_defaults(typedef)
+            typemap.Typedef.register(typedef.name, typedef)
 
     def create_typedef(self, ast, **kwargs):
         """Create a typedef from a Declarator.

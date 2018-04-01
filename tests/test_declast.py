@@ -1185,6 +1185,44 @@ class CheckEnum(unittest.TestCase):
         r = declast.check_decl('enum Color{RED=1,BLUE,WHITE,}')
         self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))
 
+
+class CheckClass(unittest.TestCase):
+
+    def XXXsetUp(self):
+        library = ast.LibraryNode()
+
+    def test_class1(self):
+        r = declast.check_decl('class Class1')
+        self.assertIsInstance(r, declast.CXXClass)
+        self.assertEqual('class Class1;', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            'name': 'Class1',
+        })
                          
+    def test_class2(self):
+        """Add a class to a library"""
+        library = ast.LibraryNode()
+        library.add_declaration('class Class1;')
+        self.assertIn('Class1', library.symbols)
+
+        typedef = typemap.Typedef.lookup('Class1')
+        self.assertIsNotNone(typedef)
+        self.assertEqual('Class1', typedef.name)
+        self.assertEqual('Class1', typedef.cxx_type)
+        self.assertEqual('shadow', typedef.base)
+                         
+    def test_class_in_namespace(self):
+        """Add a class to a namespace"""
+        library = ast.LibraryNode()
+        ns = library.add_namespace('ns')
+        ns.add_declaration('class Class2;')
+        self.assertIn('Class2', ns.symbols)
+
+        typedef = typemap.Typedef.lookup('ns::Class2')
+        self.assertIsNotNone(typedef)
+        self.assertEqual('ns::Class2', typedef.name)
+        self.assertEqual('ns::\tClass2', typedef.cxx_type)
+
+
 if __name__ == '__main__':
     unittest.main()

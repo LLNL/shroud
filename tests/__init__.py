@@ -64,6 +64,7 @@ test_cases = (
     test_declast.CheckExpr,
     test_declast.CheckTypedef,
     test_declast.CheckEnum,
+    test_declast.CheckClass,
     test_ast.CheckAst,
     test_generate.CheckImplied,
     test_wrapf.CheckAllocatable,
