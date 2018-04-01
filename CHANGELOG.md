@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   The wrappers use the namespace but do not add to it.
 - Change format of YAML file to generalize declarations and provide
   access to namespaces.
-
+```
      # Old
      functions:
      - decl: void foo()
@@ -51,6 +51,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
      - typedef: CustomType
        fields:
          typedef: int
+```
 
 ## v0.8.0 - 2018-02-26
 ### Added
