@@ -1109,6 +1109,16 @@ class CheckExpr(unittest.TestCase):
         self.assertEqual(e, todict.print_node(r))
 
 
+class CheckNamespace(unittest.TestCase):
+    def test_decl_namespace(self):
+        """Parse a namespace"""
+        r = declast.check_decl('namespace ns1')
+        self.assertEqual('namespace ns1', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            'name': 'ns1',
+        })
+
+
 class CheckTypedef(unittest.TestCase):
 
     def XXXsetUp(self):

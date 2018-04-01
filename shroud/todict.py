@@ -138,6 +138,9 @@ class ToDict(visitor.Visitor):
     def visit_CXXClass(self, node):
         return dict(name=node.name)
 
+    def visit_Namespace(self, node):
+        return dict(name=node.name)
+
     def visit_EnumValue(self, node):
         if node.value is None:
             d = dict(name=node.name)
@@ -323,6 +326,9 @@ class PrintNode(visitor.Visitor):
 
     def visit_CXXClass(self, node):
         return 'class {};'.format(node.name)
+
+    def visit_Namespace(self, node):
+        return 'namespace {}'.format(node.name)
 
     def visit_EnumValue(self, node):
         if node.value is None:

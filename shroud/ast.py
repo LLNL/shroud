@@ -111,6 +111,8 @@ class NamespaceMixin(object):
                 node = self.add_class(ast.name, **kwargs)
             else:
                 node = self.create_class_type(ast.name, **kwargs)
+        elif isinstance(ast, declast.Namespace):
+            node = self.add_namespace(ast.name, **kwargs)
         elif isinstance(ast, declast.Enum):
             node = self.add_enum(decl, ast=ast, **kwargs)
         else:

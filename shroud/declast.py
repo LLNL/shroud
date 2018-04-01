@@ -110,7 +110,7 @@ def tokenize(s):
                     typ = 'TYPE_QUALIFIER'
                 elif val in storage_class:
                     typ = 'STORAGE_CLASS'
-                elif val in ['class', 'enum', 'struct']:
+                elif val in ['class', 'enum', 'namespace', 'struct']:
                     typ = val.upper()
             yield Token(typ, val, line, mo.start()-line_start)
         pos = mo.end()
@@ -456,6 +456,8 @@ class Parser(ExprParser):
             node = self.class_statement()
         elif self.token.typ == 'ENUM':
             node = self.enum_statement()
+        elif self.token.typ == 'NAMESPACE':
+            node = self.namespace_statement()
         else:
             node = self.declaration()
         self.have('SEMICOLON')
@@ -612,6 +614,16 @@ class Parser(ExprParser):
         name = self.mustbe('ID')
         node = CXXClass(name.value)
         self.exit('class_statement')
+        return node
+
+    def namespace_statement(self):
+        """  namespace ID
+        """
+        self.enter('namespace_statement')
+        self.mustbe('NAMESPACE')
+        name = self.mustbe('ID')
+        node = Namespace(name.value)
+        self.exit('namespace_statement')
         return node
 
     def enum_statement(self):
@@ -1190,6 +1202,13 @@ class Declaration(Node):
 
 class CXXClass(Node):
     """An C++ class statement.
+    """
+    def __init__(self, name):
+        self.name = name
+
+
+class Namespace(Node):
+    """An C++ namespace statement.
     """
     def __init__(self, name):
         self.name = name

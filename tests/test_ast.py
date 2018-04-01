@@ -166,6 +166,10 @@ class Namespace(unittest.TestCase):
         self.assertEqual(None, ns1.qualified_lookup('Enumx'))
         self.assertEqual(enumx, ns1.unqualified_lookup('Enumx'))
 
+    def test_declare_namespace(self):
+        lib = ast.LibraryNode(None)
+        ns = lib.add_declaration('namespace ns')
+
 
 class CheckAst(unittest.TestCase):
 #    maxDiff = None
