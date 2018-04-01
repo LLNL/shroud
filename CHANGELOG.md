@@ -9,13 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Support class static methods.
 - Add enum as a declaration.
-
+```
      - decl: enum color { RED, GREEN, BLUE }
-
+```
 - Add typedef as a declaration.
-
+```
       - decl: typedef int TYP
-
+```
 ### Changed
 - base name 'wrapped' changed to 'shadow'.  This may appear in YAML file.
 - Change generated code to prefix symbols with the namespace, `outer::function()`,
