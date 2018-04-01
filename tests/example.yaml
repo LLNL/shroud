@@ -89,9 +89,9 @@ declarations:
     cxx_to_c : static_cast<int>({cxx_var})
     c_to_cxx : getTypeID({c_var})
 
-- namespace: axom
+- decl: namespace axom
   declarations:
-  - namespace: sidre
+  - decl: namespace sidre
     declarations:
     - decl: class Group
       fields:
@@ -108,9 +108,9 @@ declarations:
         PY_PyTypeObject: FillInTypeForGroup
 
 
-- namespace: example
+- decl: namespace example
   declarations:
-  - namespace: nested
+  - decl: namespace nested
     declarations:
 
     - decl: class ExClass1

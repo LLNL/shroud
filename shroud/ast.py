@@ -1010,14 +1010,7 @@ def add_declarations(parent, node):
         return
 
     for subnode in node['declarations']:
-        if 'namespace' in subnode:
-            name = subnode['namespace']
-            d = copy.copy(subnode)
-            clean_dictionary(d)
-            del d['namespace']
-            ns = parent.add_namespace(name, **d)
-            add_declarations(ns, subnode)
-        elif 'block' in subnode:
+        if 'block' in subnode:
             d = copy.copy(subnode)
             clean_dictionary(d)
             blk = BlockNode(parent, **d)

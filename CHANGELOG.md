@@ -35,7 +35,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
       - decl: void bar()
   New:
       declarations:
-      - namespace: tutorial
+      - decl: namespace tutorial
         declarations:
         - decl: void bar()
 

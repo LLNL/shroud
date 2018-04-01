@@ -130,7 +130,7 @@ by setting *F_name_impl*::
     library: library
 
     declarations:
-    - namespace: library
+    - decl: namespace library
       declarations:
       - decl: void initialize
         format:
@@ -144,7 +144,7 @@ To rename all functions, set the template in the toplevel *options*::
       F_name_impl_template: "{library}_{underscore_name}{function_suffix}"
 
     declarations:
-    - namespace: library
+    - decl: namespace library
       declarations:
       - decl: void initialize
 
@@ -377,16 +377,29 @@ Each library or class can be associated with a namespace::
 The YAML file would look like::
 
     declarations:
-    - namespace: one
+    - decl: namespace one
       declarations:
-      - namespace: two
+      - decl: namespace two
         declarations:
         - decl: void function();
-        - namespace: three
+        - decl: namespace three
           declarations:
           - class: Class1
         - class: Class2
     - class: Class3
+
+If only one set of namespaces are used in a file, the ``namespace``
+field can be used at the global level to avoid excessive indenting.
+For example, if *Class3* was not wrapped then the file could be
+written as::
+
+    namespace: one two
+    declarations:
+    - decl: void function();
+    - decl: namespace three
+      declarations:
+      - class: Class1
+    - class: Class2
 
 
 Local Variable

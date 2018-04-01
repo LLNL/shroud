@@ -53,7 +53,7 @@ options:
 
 
 declarations:
-- namespace: tutorial
+- decl: namespace tutorial
   declarations:
 
   - decl: typedef int TypeID;

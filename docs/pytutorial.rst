@@ -70,7 +70,7 @@ This is wrapped using a YAML input file ``tutorial.yaml``::
     debug: True
 
   declarations:
-  - namespace: tutorial
+  - decl: namespace tutorial
     declarations:
     - decl: void Function1()
 

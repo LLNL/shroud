@@ -59,7 +59,7 @@ This is wrapped using a YAML input file ``tutorial.yaml``::
     cxx_header: tutorial.hpp
 
     declarations:
-    - namespace: tutorial
+    - decl: namespace tutorial
       declarations:
       - decl: void Function1()
 

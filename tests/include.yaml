@@ -56,12 +56,12 @@ declarations:
       c_header : type_header.h
       cxx_header : type_header.hpp
 
-- namespace: one
+- decl: namespace one
   declarations:
-  - namespace: two
+  - decl: namespace two
     declarations:
     - decl: void function1()
-- namespace: three
+- decl: namespace three
   declarations:
   - decl: class Class1
     cxx_header: class_header.hpp

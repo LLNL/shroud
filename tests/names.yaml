@@ -132,7 +132,7 @@ declarations:
 
   - decl: void function5() +name(fiveplus)
 
-- namespace: ns1
+- decl: namespace ns1
   options:
     # test options in namespace
     F_name_impl_template: "{library_lower}_{class_prefix}{underscore_name}{function_suffix}"
