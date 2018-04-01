@@ -107,19 +107,19 @@ class NamespaceMixin(object):
             else:
                 node = self.add_function(decl, ast=ast, **kwargs)
         elif isinstance(ast, declast.CXXClass):
-            node = self.create_class_type(ast, **kwargs)
             if 'declarations' in kwargs:
                 node = self.add_class(ast.name, **kwargs)
+            else:
+                node = self.create_class_type(ast.name, **kwargs)
         elif isinstance(ast, declast.Enum):
             node = self.add_enum(decl, ast=ast, **kwargs)
         else:
             raise RuntimeError("add_declaration: Error parsing '{}'".format(decl))
         return node
 
-    def create_class_type(self, ast, **kwargs):
+    def create_class_type(self, key, **kwargs):
         """Add a typedef for a class.
         """
-        key = ast.name
         self.add_typedef(key)
         fullname = self.scope + key
         typedef = typemap.Typedef(fullname,
@@ -1004,6 +1004,8 @@ def clean_list(lst):
 def add_declarations(parent, node):
     if 'declarations' not in node:
         return
+    if not node['declarations']:
+        return
 
     for subnode in node['declarations']:
         if 'namespace' in subnode:
@@ -1013,7 +1015,7 @@ def add_declarations(parent, node):
             del d['namespace']
             ns = parent.add_namespace(name, **d)
             add_declarations(ns, subnode)
-        elif 'class' in subnode:
+        elif 'xxxclass' in subnode:
             name = subnode['class']
             d = copy.copy(subnode)
             clean_dictionary(d)

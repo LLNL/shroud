@@ -63,12 +63,12 @@ declarations:
     - decl: void function1()
 - namespace: three
   declarations:
-  - class: Class1
+  - decl: class Class1
     cxx_header: class_header.hpp
     declarations:
     - decl: void method1(CustomType arg1)
 
-- class: Class2
+- decl: class Class2
 #  cxx_header: no header, will use global.cxx_header
   declarations:
            # do not use CustomType to avoid header file

@@ -197,7 +197,7 @@ declarations:
   
 ##################################################
   
-  - class: Class1
+  - decl: class Class1
     declarations:
     - decl: Class1()         +name(new)
       format:
@@ -301,7 +301,7 @@ declarations:
 
 ##########
   
-- class: Singleton
+- decl: class Singleton
   options:
     wrap_lua: false
   declarations:

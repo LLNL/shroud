@@ -77,7 +77,7 @@ declarations:
 
 
 
-- class: Names
+- decl: class Names
   options:
     none: foo
     C_name_template: XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}
@@ -100,7 +100,8 @@ declarations:
       F_this:  obj2
 
 # test file suffix
-- class: Names2
+- decl: class Names2
+  declarations: []
 
 - block: True
   options:

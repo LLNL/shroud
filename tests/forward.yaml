@@ -63,7 +63,7 @@ declarations:
       tutorial_mod:
       - class1
 
-- class: Class2
+- decl: class Class2
   declarations:
   - decl: Class2()
   - decl: ~Class2()
