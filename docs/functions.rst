@@ -70,7 +70,7 @@ explicitly by setting variables in the format of the global or class scope::
       F_impl_filename: top.f
 
     declarations:
-    - class: Names
+    - decl: class Names
       format:
         C_header_filename: foo.h
         C_impl_filename: foo.cpp
@@ -282,7 +282,7 @@ enough room.  You can create a Fortran wrapper to get the length
 without adding to the C++ library::
 
     declarations:
-    - class: ExClass1
+    - decl: class ExClass1
       declarations:
       - decl: int GetNameLength() const
         format:
@@ -337,14 +337,12 @@ To include a file in the implementation list it in the global or class options::
     cxx_header: global_header.hpp
 
     declarations:
-    - class: Class1
+    - decl: class Class1
       cxx_header: class_header.hpp
 
-    types:
-       CustomType:
-          typedef: int
-          c_header:  type_header.h
-          cxx_header : type_header.hpp
+    - decl: typedef int CustomType
+        c_header:  type_header.h
+        cxx_header : type_header.hpp
 
 
 The *c_header* field will be added to the header file of contains functions

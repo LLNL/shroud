@@ -725,19 +725,17 @@ use of a type::
 
 Shroud must be told about user defined types in the YAML file::
 
-  types:
-    TypeID:
-      typedef  : int
-      cxx_type : TypeID
+    declarations:
+    - decl: typedef int TypeID;
 
 This will map the C++ type ``TypeID`` to the predefined type ``int``.
 The C wrapper will use ``int``::
 
-  int TUT_typefunc(int arg)
-  {
-    tutorial::TypeID SHC_rv = tutorial::typefunc(arg);
-    return SHC_rv;
-  }
+    int TUT_typefunc(int arg)
+    {
+        tutorial::TypeID SHC_rv = tutorial::typefunc(arg);
+        return SHC_rv;
+    }
 
 Enumerations
 ^^^^^^^^^^^^
@@ -764,10 +762,9 @@ C.  For C and Fortran the type can be describe as an ``int``
 similar to how the ``typedef`` is defined. But in addition we
 describe how to convert between C and C++::
 
-    types:
-      EnumTypeID:
-        typedef  : int
-        cxx_type : tutorial::EnumTypeID
+    declarations:
+    - decl: typedef int EnumTypeID
+      fields:
         c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
         cxx_to_c : static_cast<int>({cxx_var})
 
@@ -778,19 +775,19 @@ return type is explicitly converted to a C type in the generated wrapper::
 
   int TUT_enumfunc(int arg)
   {
-    tutorial::EnumTypeID SHCXX_arg = static_cast<tutorial::EnumTypeID>(arg);
-    tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
-    return SHC_rv;
+      tutorial::EnumTypeID SHCXX_arg = static_cast<tutorial::EnumTypeID>(arg);
+      tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SHCXX_arg);
+      int SHC_rv = static_cast<int>(SHCXX_rv);
+      return SHC_rv;
   }
 
 Without the explicit conversion you're likely to get an error such as::
 
-  error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
+    error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
 
 A enum can also be fully defined to Fortran::
 
-    enums:
+    declarations:
     - decl: |
           enum Color {
             RED,
@@ -846,7 +843,7 @@ Now we'll add a simple class to the library::
 To wrap the class add the lines to the YAML file::
 
     declarations:
-    - class: Class1
+    - decl: class Class1
       declarations:
       - decl: Class1()  +name(new)
       - decl: ~Class1() +name(delete)
@@ -943,7 +940,7 @@ To wrap the method::
 
 Use the YAML input::
 
-    - class: Singleton
+    - decl: class Singleton
       declarations:
       - decl: static Singleton& getReference()
 

@@ -49,17 +49,28 @@ separated by a colon::
 
     library: Tutorial
 
-    types:
-      TypeID:
-        typedef  : int
-        cxx_type : TypeID
-    
     declarations:
-    - decl: void Function1
+    - decl: typedef int TypeID
 
-    - class: Class1
+    - decl: void Function1()
+
+    - decl: class Class1
       declarations:
       - decl: void Method1()
+
+Each ``decl`` entry corresponds to a line of C or C++ code.  The top
+level ``declarations`` field represents the source file while nested
+``declarations`` fields corresponds to curly brace blocks.
+The above YAML file represent the source file::
+
+    typedef int TypeID;
+
+    void Function1();
+
+    class Class1
+    {
+        void Method1();
+    }
 
 Shroud use curly braces for format strings.
 If a string starts with a curly brace YAML
@@ -122,7 +133,7 @@ controls the default value of *C_name*::
     library: testnames
 
     declarations:
-      - class: Names
+      - decl: class Names
         cxx_header: names.hpp
         declarations:
         -  decl: void method1
@@ -202,8 +213,3 @@ a brace character in the literal text, it can be escaped by doubling:
 .. [Python_Format] https://docs.python.org/2/library/string.html#format-string-syntax
 
 .. [yaml] `yaml.org <http://yaml.org/>`_
-
-
-
-
-

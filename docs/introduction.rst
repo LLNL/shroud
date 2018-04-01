@@ -41,7 +41,7 @@
 Introduction
 ============
 
-Shroud is a tool for exposing a C++ API to Fortran.
+Shroud is a tool for exposing a C or C++ API to Fortran.
 It does this by using C as the lingua franca.
 C++ can communicate with C via a common heritage and the ``extern "C"`` keyword.
 Fortran uses the interoperability with C features introduced in Fortran 2003

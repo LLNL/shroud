@@ -96,15 +96,15 @@ The numeric types usually require no conversion.
 In this case the type map is mainly used to generate declaration code 
 for wrappers::
 
-    types:
-      int:
+    type: int
+    fields:
         c_type: int 
         cxx_type: int
         f_type: integer(C_INT)
         f_kind: C_INT
         f_module:
-          iso_c_binding:
-          - C_INT
+            iso_c_binding:
+            - C_INT
         f_cast: int({f_var}, C_INT)
 
 One case where a conversion is required is when the Fortran argument
@@ -126,8 +126,8 @@ awkwardness of requiring the Fortran user to passing in
 
 The type map is defined as::
 
-    types:
-      bool:
+    type: bool
+    fields:
         c_type: bool 
         cxx_type: bool 
         f_type: logical 
@@ -272,8 +272,8 @@ Char
 
 The type map::
 
-    types:
-        char:
+        type: char
+        fields:
             base: string
             cxx_type: char
             c_type: char
@@ -452,8 +452,8 @@ std::string
 The ``std::string`` type map is very similar to ``char`` but provides some
 additional sections to convert between ``char *`` and ``std::string``::
 
-    types:
-        string:
+        type: string
+        fields:
             base: string
             cxx_type: std::string
             cxx_header: <string>
@@ -788,8 +788,8 @@ a non-native type.  MPI provides a Fortran interface and the ability
 to convert MPI_comm between Fortran and C. The type map tells Shroud
 how to use these routines::
 
-    types:
-        MPI_Comm:
+        type: MPI_Comm
+        fields:
             cxx_type: MPI_Comm
             c_header: mpi.h
             c_type: MPI_Fint
@@ -892,12 +892,12 @@ pointer to C++ and back to C.
 The class example from the tutorial is::
 
     declarations:
-    - class: Class1
+    - decl: class Class1
 
 Shroud will generate a type map for this class as::
 
-    types:
-      Class1:
+    type: Class1
+    fields:
         base: shadow
         c_type: TUT_class1
         cxx_type: Class1
@@ -916,6 +916,34 @@ Shroud will generate a type map for this class as::
         f_return_code: {F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})
         f_to_c: {f_var}%get_instance()
         forward: Class1
+
+Methods are added to a class with a ``declarations`` field::
+
+    declarations:
+    - decl: class Class1
+      declarations:
+      - decl: void func()
+
+corresponds to the C++ code::
+
+    class Class1
+    {
+       void func();
+    }
+
+A class will be forward declared when the ``declarations`` field is
+not provided.  When the class is not defined later in the file, it may
+be necessary to provide the conversion fields to complete the type::
+
+    declarations:
+    - decl: class Class1
+      fields:
+        c_type: TUT_class1
+        f_derived_type: class1
+        f_to_c: "{f_var}%get_instance()"
+        f_module:
+          tutorial_mod:
+          - class1
 
 
 The type map will be written to a file to allow its used by other
