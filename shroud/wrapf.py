@@ -234,30 +234,38 @@ class Wrapf(util.WrapperMixin):
 
         # Look for generics
         # splicer to extend generic
-        self._push_splicer('generic')
+#        self._push_splicer('generic')
         f_type_decl = self.f_type_decl
         for key in sorted(self.f_type_generic.keys()):
             methods = self.f_type_generic[key]
             if len(methods) > 1:
-                f_type_decl.append('generic :: %s => &' % key)
-                f_type_decl.append(1)
-                self._create_splicer(key, self.f_type_decl)
-                for node in methods[:-1]:
-                    if node.cpp_if:
-                        f_type_decl.append('#' + node.cpp_if)
-                    f_type_decl.append(node.fmtdict.F_name_function + ',  &')
-                    if node.cpp_if:
-                        f_type_decl.append('#endif')
 
-                node = methods[-1]
-                if node.cpp_if:
-                    f_type_decl.append('#' + node.cpp_if)
-                f_type_decl.append(node.fmtdict.F_name_function)
-                if node.cpp_if:
-                    f_type_decl.append('#endif')
+                # Look for any cpp_if declarations
+                any_cpp_if = False
+                for node in methods:
+                    if node.cpp_if:
+                        any_cpp_if = True
+                        break
 
-                f_type_decl.append(-1)
-        self._pop_splicer('generic')
+                if any_cpp_if:
+                    # If using cpp, add a generic line for each function
+                    # to avoid conditional/continuation problems.
+                    for node in methods:
+                        if node.cpp_if:
+                            f_type_decl.append('#' + node.cpp_if)
+                        f_type_decl.append('generic :: {} => {}'.format(
+                            key, node.fmtdict.F_name_function))
+                        if node.cpp_if:
+                            f_type_decl.append('#endif')
+                else:
+                    parts = [ 'generic :: ', key, ' => ' ]
+                    for node in methods:
+                        parts.append(node.fmtdict.F_name_function)
+                        parts.append(', ')
+                    del parts[-1]
+                    f_type_decl.append('\t'.join(parts))
+#                    self._create_splicer(key, self.f_type_decl)
+#        self._pop_splicer('generic')
 
         self._create_splicer('type_bound_procedure_part', self.f_type_decl)
         self.f_type_decl.extend([

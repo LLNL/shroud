@@ -77,11 +77,7 @@ module exclass1_mod
         procedure :: splicer_special => exclass1_splicer_special
         procedure :: yadda => exclass1_yadda
         procedure :: associated => exclass1_associated
-        generic :: get_value => &
-            ! splicer begin class.ExClass1.generic.get_value
-            ! splicer end class.ExClass1.generic.get_value
-            get_value_from_int,  &
-            get_value_1
+        generic :: get_value => get_value_from_int, get_value_1
         ! splicer begin class.ExClass1.type_bound_procedure_part
           type bound procedure part 1
         ! splicer end class.ExClass1.type_bound_procedure_part

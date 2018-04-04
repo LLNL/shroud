@@ -897,8 +897,8 @@ class EnumNode(AstNode):
         self.decl = decl
         if ast is None:
             ast = declast.check_decl(decl)
-            if not isinstance(ast, declast.Enum):
-                raise RuntimeError("Declaration is not an enumeration: " + decl)
+        if not isinstance(ast, declast.Enum):
+            raise RuntimeError("Declaration is not an enumeration: " + decl)
         self.ast = ast
         self.name = ast.name
 

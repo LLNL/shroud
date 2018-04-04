@@ -64,14 +64,11 @@ module exclass3_mod
         procedure :: exfunc_1 => exclass3_exfunc_1
         procedure :: yadda => exclass3_yadda
         procedure :: associated => exclass3_associated
-        generic :: exfunc => &
-            ! splicer begin class.ExClass3.generic.exfunc
-            ! splicer end class.ExClass3.generic.exfunc
 #ifdef USE_CLASS3_A
-            exfunc_0,  &
+        generic :: exfunc => exfunc_0
 #endif
 #ifndef USE_CLASS3_A
-            exfunc_1
+        generic :: exfunc => exfunc_1
 #endif
         ! splicer begin class.ExClass3.type_bound_procedure_part
         ! splicer end class.ExClass3.type_bound_procedure_part
