@@ -63,7 +63,7 @@ format:
   F_impl_filename: top.f
   LUA_module_name: lua_module_name
 
-enums:
+declarations:
 - decl: |
       enum Color {
         RED,
@@ -77,37 +77,38 @@ enums:
 
 
 
-classes:
-  - name: Names
-    options:
-      none: foo
-      C_name_template: XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}
-      F_C_name_template: XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}
-    format:
-      C_header_filename: foo.h
-      C_impl_filename: foo.cpp
-      F_module_name: name_module
-      F_impl_filename: foo.f
-      F_derived_name: FNames
+- decl: class Names
+  options:
+    none: foo
+    C_name_template: XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}
+    F_C_name_template: XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}
+  format:
+    C_header_filename: foo.h
+    C_impl_filename: foo.cpp
+    F_module_name: name_module
+    F_impl_filename: foo.f
+    F_derived_name: FNames
 
-    methods:
-    -  decl: void method1()
-       format:
-         F_name_function: type_method1
-    -  decl: void method2()
-       format:
-         C_this: self2
-         CXX_this: SH_this2
-         F_this:  obj2
+  declarations:
+  - decl: void method1()
+    format:
+      F_name_function: type_method1
+  - decl: void method2()
+    format:
+      C_this: self2
+      CXX_this: SH_this2
+      F_this:  obj2
 
 # test file suffix
-  - name: Names2
+- decl: class Names2
+  declarations: []
 
-functions:
-  - options:
-       C_name_template: YYY_{C_prefix}{underscore_name}{function_suffix}
-       F_C_name_template: YYY_{C_prefix}{underscore_name}{function_suffix}
-       F_name_impl_template: "{library}_{class_prefix}{underscore_name}{function_suffix}"
+- block: True
+  options:
+    C_name_template: YYY_{C_prefix}{underscore_name}{function_suffix}
+    F_C_name_template: YYY_{C_prefix}{underscore_name}{function_suffix}
+    F_name_impl_template: "{library}_{class_prefix}{underscore_name}{function_suffix}"
+  declarations:
   - decl: void function1()
   - decl: void function2()
     format:
@@ -131,6 +132,12 @@ functions:
 
   - decl: void function5() +name(fiveplus)
 
+- decl: namespace ns1
+  options:
+    # test options in namespace
+    F_name_impl_template: "{library_lower}_{class_prefix}{underscore_name}{function_suffix}"
+  declarations:
+  - decl: void init_ns1()
 
 # Test explicit splicers
 # class Name2 has no methods by default it would not be written.

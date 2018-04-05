@@ -49,18 +49,19 @@ Functions
 
 The simplest item to wrap is a function in the file ``tutorial.hpp``::
 
-   namespace tutorial {
-     void Function1(void);
-   }
+    namespace tutorial {
+      void Function1(void);
+    }
 
 This is wrapped using a YAML input file ``tutorial.yaml``::
 
-  library: Tutorial
-  cxx_header: tutorial.hpp
-  namespace: tutorial
+    library: Tutorial
+    cxx_header: tutorial.hpp
 
-  functions:
-  - decl: void Function1()
+    declarations:
+    - decl: namespace tutorial
+      declarations:
+      - decl: void Function1()
 
 .. XXX support (void)?
 
@@ -84,15 +85,13 @@ The generated C function in file ``wrapTutorial.cpp`` is::
     #include "tutorial.hpp"
 
     extern "C" {
-    namespace tutorial {
 
     void TUT_function1()
     {
-        Function1();
+        tutorial::Function1();
         return;
     }
 
-    }  // namespace tutorial
     }  // extern "C"
 
 To help control the scope of C names, all externals add a prefix.
@@ -157,7 +156,7 @@ To wrap ``Function2``::
 
 Add the declaration to the YAML file::
 
-    functions:
+    declarations:
     - decl: double Function2(double arg1, int arg2)
 
 The arguments are added to the interface for the C routine using the
@@ -195,7 +194,7 @@ A simple C++ function which accepts and returns a ``bool`` argument::
 
 Added to the YAML file as before::
 
-    functions:
+    declarations:
     - decl: bool Function3(bool arg)
 
 
@@ -323,7 +322,7 @@ C++ routine::
 
 YAML input::
 
-    functions
+    declarations:
     - decl: const std::string Function4a(
         const std::string& arg1,
         const std::string& arg2 ) +len(30)
@@ -361,7 +360,7 @@ computed using ``len``::
     {
         const std::string SH_arg1(arg1, Larg1);
         const std::string SH_arg2(arg2, Larg2);
-        const std::string SHT_rv = Function4a(SH_arg1, SH_arg2);
+        const std::string SHT_rv = tutorial::Function4a(SH_arg1, SH_arg2);
         if (SHT_rv.empty()) {
             std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
@@ -406,7 +405,7 @@ called by the original name.
 Creating a wrapper for each possible way of calling the C++ function
 allows C++ to provide the default values::
 
-    functions:
+    declarations:
     - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
       default_arg_suffix:
       -  
@@ -421,19 +420,19 @@ C wrappers::
 
     double TUT_function5()
     {
-        double SHC_rv = Function5();
+        double SHC_rv = tutorial::Function5();
         return SHC_rv;
     }
     
     double TUT_function5_arg1(double arg1)
     {
-        double SHC_rv = Function5(arg1);
+        double SHC_rv = tutorial::Function5(arg1);
         return SHC_rv;
     }
     
     double TUT_function5_arg1_arg2(double arg1, bool arg2)
     {
-        double SHC_rv = Function5(arg1, arg2);
+        double SHC_rv = tutorial::Function5(arg1, arg2);
         return SHC_rv;
     }
 
@@ -511,7 +510,7 @@ C++::
 By default the names are mangled by adding an index to the end. This
 can be controlled by setting **function_suffix** in the YAML file::
 
-  functions:
+  declarations:
   - decl: void Function6(const std::string& name)
     function_suffix: _from_name
   - decl: void Function6(int indx)
@@ -522,13 +521,13 @@ The generated C wrappers uses the mangled name::
     void TUT_function6_from_name(const char * name)
     {
         const std::string SH_name(name);
-        Function6(SH_name);
+        tutorial::Function6(SH_name);
         return;
     }
 
     void TUT_function6_from_index(int indx)
     {
-        Function6(indx);
+        tutorial::Function6(indx);
         return;
     }
 
@@ -593,13 +592,13 @@ C wrapper::
 
     void TUT_function7_int(int arg)
     {
-        Function7<int>(arg);
+        tutorial::Function7<int>(arg);
         return;
     }
     
     void TUT_function7_double(double arg)
     {
-        Function7<double>(arg);
+        tutorial::Function7<double>(arg);
         return;
     }
 
@@ -636,13 +635,13 @@ C wrapper::
 
     int TUT_function8_int()
     {
-        int SHC_rv = Function8<int>();
+        int SHC_rv = tutorial::Function8<int>();
         return SHC_rv;
     }
 
     double TUT_function8_double()
     {
-        double SHC_rv = Function8<double>();
+        double SHC_rv = tutorial::Function8<double>();
         return SHC_rv;
     }
 
@@ -680,7 +679,7 @@ This will generate only one C wrapper which accepts a double::
 
   void TUT_function9(double arg)
   {
-      Function9(arg);
+      tutorial::Function9(arg);
       return;
   }
 
@@ -726,19 +725,17 @@ use of a type::
 
 Shroud must be told about user defined types in the YAML file::
 
-  types:
-    TypeID:
-      typedef  : int
-      cxx_type : TypeID
+    declarations:
+    - decl: typedef int TypeID;
 
 This will map the C++ type ``TypeID`` to the predefined type ``int``.
 The C wrapper will use ``int``::
 
-  int TUT_typefunc(int arg)
-  {
-    int SHC_rv = typefunc(arg);
-    return SHC_rv;
-  }
+    int TUT_typefunc(int arg)
+    {
+        tutorial::TypeID SHC_rv = tutorial::typefunc(arg);
+        return SHC_rv;
+    }
 
 Enumerations
 ^^^^^^^^^^^^
@@ -765,10 +762,9 @@ C.  For C and Fortran the type can be describe as an ``int``
 similar to how the ``typedef`` is defined. But in addition we
 describe how to convert between C and C++::
 
-    types:
-      EnumTypeID:
-        typedef  : int
-        cxx_type : tutorial::EnumTypeID
+    declarations:
+    - decl: typedef int EnumTypeID
+      fields:
         c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
         cxx_to_c : static_cast<int>({cxx_var})
 
@@ -779,19 +775,19 @@ return type is explicitly converted to a C type in the generated wrapper::
 
   int TUT_enumfunc(int arg)
   {
-    tutorial::EnumTypeID SHCXX_arg = static_cast<tutorial::EnumTypeID>(arg);
-    tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
-    return SHC_rv;
+      tutorial::EnumTypeID SHCXX_arg = static_cast<tutorial::EnumTypeID>(arg);
+      tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SHCXX_arg);
+      int SHC_rv = static_cast<int>(SHCXX_rv);
+      return SHC_rv;
   }
 
 Without the explicit conversion you're likely to get an error such as::
 
-  error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
+    error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
 
 A enum can also be fully defined to Fortran::
 
-    enums:
+    declarations:
     - decl: |
           enum Color {
             RED,
@@ -846,9 +842,9 @@ Now we'll add a simple class to the library::
 
 To wrap the class add the lines to the YAML file::
 
-    classes:
-    - name: Class1
-      functions:
+    declarations:
+    - decl: class Class1
+      declarations:
       - decl: Class1()  +name(new)
       - decl: ~Class1() +name(delete)
       - decl: void Method1()
@@ -868,7 +864,7 @@ pointers for every instance::
 
     TUT_class1 * TUT_class1_new()
     {
-        Class1 * SHCXX_rv = new Class1();
+        tutorial::Class1 * SHCXX_rv = new Class1();
         TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(
             static_cast<void *>(SHCXX_rv));
         return SHC_rv;
@@ -876,14 +872,16 @@ pointers for every instance::
 
     void TUT_class1_delete(TUT_class1 * self)
     {
-        Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
+        tutorial::Class1 *SH_this = 
+            static_cast<tutorial::Class1 *>(static_cast<void *>(self));
         delete SH_this;
         return;
     }
 
     void TUT_class1_method1(TUT_class1 * self)
     {
-        Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
+        tutorial::Class1 *SH_this =
+            static_cast<tutorial::Class1 *>(static_cast<void *>(self));
         SH_this->Method1();
         return;
     }
@@ -942,8 +940,8 @@ To wrap the method::
 
 Use the YAML input::
 
-    - name: Singleton
-      functions:
+    - decl: class Singleton
+      declarations:
       - decl: static Singleton& getReference()
 
 This produces the C code::

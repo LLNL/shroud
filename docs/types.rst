@@ -96,15 +96,15 @@ The numeric types usually require no conversion.
 In this case the type map is mainly used to generate declaration code 
 for wrappers::
 
-    types:
-      int:
+    type: int
+    fields:
         c_type: int 
         cxx_type: int
         f_type: integer(C_INT)
         f_kind: C_INT
         f_module:
-          iso_c_binding:
-          - C_INT
+            iso_c_binding:
+            - C_INT
         f_cast: int({f_var}, C_INT)
 
 One case where a conversion is required is when the Fortran argument
@@ -126,8 +126,8 @@ awkwardness of requiring the Fortran user to passing in
 
 The type map is defined as::
 
-    types:
-      bool:
+    type: bool
+    fields:
         c_type: bool 
         cxx_type: bool 
         f_type: logical 
@@ -272,8 +272,8 @@ Char
 
 The type map::
 
-    types:
-        char:
+        type: char
+        fields:
             base: string
             cxx_type: char
             c_type: char
@@ -452,8 +452,8 @@ std::string
 The ``std::string`` type map is very similar to ``char`` but provides some
 additional sections to convert between ``char *`` and ``std::string``::
 
-    types:
-        string:
+        type: string
+        fields:
             base: string
             cxx_type: std::string
             cxx_header: <string>
@@ -753,14 +753,14 @@ The C wrapper then creates a ``std::vector``::
     int TUT_vector_sum_bufferify(const int * arg, long Sarg)
     {
         const std::vector<int> SH_arg(arg, arg + Sarg);
-        int SHC_rv = vector_sum(SH_arg);
+        int SHC_rv = tutorial::vector_sum(SH_arg);
         return SHC_rv;
     }
     
     void TUT_vector_iota_bufferify(int * arg, long Sarg)
     {
         std::vector<int> SH_arg(Sarg);
-        vector_iota(SH_arg);
+        tutorial::vector_iota(SH_arg);
         {
             std::vector<int>::size_type
                 SHT_i = 0,
@@ -788,8 +788,8 @@ a non-native type.  MPI provides a Fortran interface and the ability
 to convert MPI_comm between Fortran and C. The type map tells Shroud
 how to use these routines::
 
-    types:
-        MPI_Comm:
+        type: MPI_Comm
+        fields:
             cxx_type: MPI_Comm
             c_header: mpi.h
             c_type: MPI_Fint
@@ -827,8 +827,8 @@ directly from Fortran.
 
 The function is wrapped as usual::
 
-    functions:
-    -  decl: int callback1(int in, int (*incr)(int));
+    declarations:
+    - decl: int callback1(int in, int (*incr)(int));
 
 The main addition is the creation of an abstract interface in Fortran::
 
@@ -891,13 +891,13 @@ pointer to C++ and back to C.
 
 The class example from the tutorial is::
 
-    classes:
-     - name: Class1
+    declarations:
+    - decl: class Class1
 
 Shroud will generate a type map for this class as::
 
-    types:
-      Class1:
+    type: Class1
+    fields:
         base: shadow
         c_type: TUT_class1
         cxx_type: Class1
@@ -916,6 +916,34 @@ Shroud will generate a type map for this class as::
         f_return_code: {F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call_tab})
         f_to_c: {f_var}%get_instance()
         forward: Class1
+
+Methods are added to a class with a ``declarations`` field::
+
+    declarations:
+    - decl: class Class1
+      declarations:
+      - decl: void func()
+
+corresponds to the C++ code::
+
+    class Class1
+    {
+       void func();
+    }
+
+A class will be forward declared when the ``declarations`` field is
+not provided.  When the class is not defined later in the file, it may
+be necessary to provide the conversion fields to complete the type::
+
+    declarations:
+    - decl: class Class1
+      fields:
+        c_type: TUT_class1
+        f_derived_type: class1
+        f_to_c: "{f_var}%get_instance()"
+        f_module:
+          tutorial_mod:
+          - class1
 
 
 The type map will be written to a file to allow its used by other
@@ -956,24 +984,23 @@ version of wrapped functions.
 For example, a function which returns a new string will have to 
 ``delete`` it before the C wrapper returns::
 
-    std::string * getString7()
+    std::string * getConstStringPtrLen()
     {
-        // Caller is responsible to free string
-        std::string * rv = new std::string("Hello");
+        std::string * rv = new std::string("getConstStringPtrLen");
         return rv;
     }
 
 Wrapped as::
 
-    - decl: const string * getString7+len=30()
+    - decl: const string * getConstStringPtrLen+len=30()
       format:
-        C_finalize_buf: delete {C_result};
+        C_finalize_buf: delete {cxx_var};
 
 The C buffer version of the wrapper is::
 
-    void STR_get_string7_bufferify(char * SHF_rv, int NSHF_rv)
+    void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
     {
-        const std::string * SHCXX_rv = getString7();
+        const std::string * SHCXX_rv = getConstStringPtrLen();
         if (SHCXX_rv->empty()) {
             std::memset(SHF_rv, ' ', NSHF_rv);
         } else {
@@ -990,9 +1017,9 @@ The unbuffer version of the function cannot ``destroy`` the string since
 only a pointer to the contents of the string is returned.  It would
 leak memory when called::
 
-    const char * STR_get_string7()
+    const char * STR_get_const_string_ptr_len()
     {
-        const std::string * SHCXX_rv = getString7();
+        const std::string * SHCXX_rv = getConstStringPtrLen();
         const char * SHC_rv = SHCXX_rv->c_str();
         return SHC_rv;
     }

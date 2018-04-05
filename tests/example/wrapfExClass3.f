@@ -60,9 +60,16 @@ module exclass3_mod
         ! splicer begin class.ExClass3.component_part
         ! splicer end class.ExClass3.component_part
     contains
-        procedure :: exfunc => exclass3_exfunc
+        procedure :: exfunc_0 => exclass3_exfunc_0
+        procedure :: exfunc_1 => exclass3_exfunc_1
         procedure :: yadda => exclass3_yadda
         procedure :: associated => exclass3_associated
+#ifdef USE_CLASS3_A
+        generic :: exfunc => exfunc_0
+#endif
+#ifndef USE_CLASS3_A
+        generic :: exfunc => exfunc_1
+#endif
         ! splicer begin class.ExClass3.type_bound_procedure_part
         ! splicer end class.ExClass3.type_bound_procedure_part
     end type exclass3
@@ -77,12 +84,24 @@ module exclass3_mod
 
     interface
 
-        subroutine c_exclass3_exfunc(self) &
-                bind(C, name="AA_exclass3_exfunc")
+#ifdef USE_CLASS3_A
+        subroutine c_exclass3_exfunc_0(self) &
+                bind(C, name="AA_exclass3_exfunc_0")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: self
-        end subroutine c_exclass3_exfunc
+        end subroutine c_exclass3_exfunc_0
+#endif
+
+#ifndef USE_CLASS3_A
+        subroutine c_exclass3_exfunc_1(self, flag) &
+                bind(C, name="AA_exclass3_exfunc_1")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), value, intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: flag
+        end subroutine c_exclass3_exfunc_1
+#endif
 
         ! splicer begin class.ExClass3.additional_interfaces
         ! splicer end class.ExClass3.additional_interfaces
@@ -90,14 +109,29 @@ module exclass3_mod
 
 contains
 
+#ifdef USE_CLASS3_A
     ! void exfunc()
     ! function_index=48
-    subroutine exclass3_exfunc(obj)
+    subroutine exclass3_exfunc_0(obj)
         class(exclass3) :: obj
-        ! splicer begin class.ExClass3.method.exfunc
-        call c_exclass3_exfunc(obj%voidptr)
-        ! splicer end class.ExClass3.method.exfunc
-    end subroutine exclass3_exfunc
+        ! splicer begin class.ExClass3.method.exfunc_0
+        call c_exclass3_exfunc_0(obj%voidptr)
+        ! splicer end class.ExClass3.method.exfunc_0
+    end subroutine exclass3_exfunc_0
+#endif
+
+#ifndef USE_CLASS3_A
+    ! void exfunc(int flag +intent(in)+value)
+    ! function_index=49
+    subroutine exclass3_exfunc_1(obj, flag)
+        use iso_c_binding, only : C_INT
+        class(exclass3) :: obj
+        integer(C_INT), value, intent(IN) :: flag
+        ! splicer begin class.ExClass3.method.exfunc_1
+        call c_exclass3_exfunc_1(obj%voidptr, flag)
+        ! splicer end class.ExClass3.method.exfunc_1
+    end subroutine exclass3_exfunc_1
+#endif
 
     function exclass3_yadda(obj) result (voidptr)
         use iso_c_binding, only: C_PTR

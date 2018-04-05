@@ -49,18 +49,42 @@ separated by a colon::
 
     library: Tutorial
 
-    types:
-      TypeID:
-        typedef  : int
-        cxx_type : TypeID
-    
-    functions:
-    - decl: void Function1
+    declarations:
+    - decl: typedef int TypeID
 
-    classes:
-    - name: Class1
-      functions:
+    - decl: void Function1()
+
+    - decl: class Class1
+      declarations:
       - decl: void Method1()
+
+Each ``decl`` entry corresponds to a line of C or C++ code.  The top
+level ``declarations`` field represents the source file while nested
+``declarations`` fields corresponds to curly brace blocks.
+The above YAML file represent the source file::
+
+    typedef int TypeID;
+
+    void Function1();
+
+    class Class1
+    {
+        void Method1();
+    }
+
+A ``block`` can be used to group a collection of ``decl`` entires.
+Any ``option`` or ``format`` fields will apply to all declarations in
+the group::
+
+    declarations:
+    - block: True
+      options:
+        F_name_impl_template: {library}_{undescore_name}
+      format:
+        F_impl_filename: localfile.f
+      declarations:
+      - decl: void func1()
+      - decl: void func2()
 
 Shroud use curly braces for format strings.
 If a string starts with a curly brace YAML
@@ -122,11 +146,10 @@ controls the default value of *C_name*::
 
     library: testnames
 
-    classes:
-      - name: Names
+    declarations:
+      - decl: class Names
         cxx_header: names.hpp
-        namespace: work
-        functions:
+        declarations:
         -  decl: void method1
 
 Annotations
@@ -167,13 +190,13 @@ This allows the user to modify behavior for all functions or just a single one::
       option_b = false
       option_c = false
 
-    classes:
-    - name: class1
+    declarations:
+    - class: class1
       options:
     #    option_a = false     # inherited
          option_b = true
     #    option_c = false     # inherited
-      functions:
+      declarations:
       - decl: void function1
         options:
     #     option_a = false    # inherited
@@ -204,8 +227,3 @@ a brace character in the literal text, it can be escaped by doubling:
 .. [Python_Format] https://docs.python.org/2/library/string.html#format-string-syntax
 
 .. [yaml] `yaml.org <http://yaml.org/>`_
-
-
-
-
-

@@ -166,6 +166,10 @@ class Namespace(unittest.TestCase):
         self.assertEqual(None, ns1.qualified_lookup('Enumx'))
         self.assertEqual(enumx, ns1.unqualified_lookup('Enumx'))
 
+    def test_declare_namespace(self):
+        lib = ast.LibraryNode(None)
+        ns = lib.add_declaration('namespace ns')
+
 
 class CheckAst(unittest.TestCase):
 #    maxDiff = None
@@ -214,6 +218,7 @@ class CheckAst(unittest.TestCase):
 
     def test_b_function2(self):
         """Test options with function"""
+        # Simulate YAML
         node = dict(
             options={
                 'testa': 'a',
@@ -223,7 +228,7 @@ class CheckAst(unittest.TestCase):
                 'fmt1': 'f1',
                 'fmt2': 'f2',
             },
-            functions=[
+            declarations=[
                 {
                     'decl': 'void func1()',
                     'options': {
@@ -233,6 +238,7 @@ class CheckAst(unittest.TestCase):
                         'fmt3': 'f3',
                     },
                 },{
+                    'block': True,
                     'options': {
                         'testb': 'bb',
                         'testd': 'd',
@@ -243,11 +249,14 @@ class CheckAst(unittest.TestCase):
 #                        'fmt4': 'f4',
 #                        'fmt5': 'f5',
 #                    },
-                },{
-                    'decl': 'void func2()',
-                    'options': {
-                        'teste': 'ee',
-                    }
+                    'declarations': [
+                        {
+                            'decl': 'void func2()',
+                            'options': {
+                                'teste': 'ee',
+                            },
+                        },
+                    ],
                 },
             ],
         )
@@ -313,19 +322,20 @@ class CheckAst(unittest.TestCase):
 
     def test_c_class2(self):
         """Test class options"""
+        # Simulate YAML
         node = dict(
             options={
                 'testa': 'a',
                 'testb': 'b',
                 'testc': 'c',
             },
-            classes=[
+            declarations=[
                 {
-                    'name': 'Class1',
+                    'decl': 'class Class1',
                     'options': {
                         'testb': 'bb',
                     },
-                    'methods': [
+                    'declarations': [
                         {
                             'decl': 'void c1func1()',
                             'options': {
@@ -410,3 +420,14 @@ class CheckAst(unittest.TestCase):
         # parse functions which use the enum
         library.add_function('Class1::DIRECTION directionFunc(Class1::DIRECTION arg);')
 
+    def test_e_enum4(self):
+        """enum errors"""
+        library = ast.LibraryNode()
+        with self.assertRaises(RuntimeError) as context:
+            library.add_enum('void func1()')
+        self.assertTrue("Declaration is not an enumeration" in str(context.exception))
+
+        cls = library.add_class('Class1')
+        with self.assertRaises(RuntimeError) as context:
+            cls.add_enum('void func()')
+        self.assertTrue("Declaration is not an enumeration" in str(context.exception))

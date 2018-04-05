@@ -78,7 +78,7 @@ class Wrapc(util.WrapperMixin):
         # forward declarations of C++ class as opaque C struct.
         self.header_forward = {}
         # include files required by typedefs
-        self.header_typedef_include = {}
+        self.header_typedef_nodes = {}
         # headers needed by implementation, i.e. helper functions
         self.header_impl_include = {}
         self.header_proto_c = []
@@ -157,11 +157,10 @@ class Wrapc(util.WrapperMixin):
             output.append('#' + node.cpp_if)
 
         # headers required by typedefs
-        if self.header_typedef_include:
+        if self.header_typedef_nodes:
             # output.append('// header_typedef_include')
             output.append('')
-            headers = self.header_typedef_include.keys()
-            self.write_headers(headers, output)
+            self.write_headers_nodes('c_header', self.header_typedef_nodes, output)
 
         if self.language == 'c++':
             output.append('')
@@ -290,8 +289,7 @@ class Wrapc(util.WrapperMixin):
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
-        name = node.name
-        typedef = typemap.Typedef.lookup(name)
+        typedef = node.typedef
         cname = typedef.c_type
 
         fmt_class = node.fmtdict
@@ -402,7 +400,7 @@ class Wrapc(util.WrapperMixin):
 
         if result_typedef.c_header:
             # include any dependent header in generated header
-            self.header_typedef_include[result_typedef.c_header] = True
+            self.header_typedef_nodes[result_typedef.name] = result_typedef
         if result_typedef.cxx_header:
             # include any dependent header in generated source
             self.header_impl_include[result_typedef.cxx_header] = True
@@ -465,12 +463,12 @@ class Wrapc(util.WrapperMixin):
                     fmt_func.CXX_this_call = fmt_func.namespace_scope + fmt_func.class_scope
                 else:
                     # 'this' argument
-                    rvast = declast.create_this_arg(fmt_func.C_this, cls.name, is_const)
+                    rvast = declast.create_this_arg(fmt_func.C_this, cls.typedef_name, is_const)
                     arg = rvast.gen_arg_as_c(continuation=True)
                     proto_list.append(arg)
 
                     # LHS is class' cxx_to_c
-                    cls_typedef = typemap.Typedef.lookup(cls.name)
+                    cls_typedef = cls.typedef
                     if cls_typedef.c_to_cxx is None:
                         # This should be set in typemap.typedef_shadow_defaults
                         raise RuntimeError("Wappped class does not have c_to_cxx set")
@@ -581,7 +579,8 @@ class Wrapc(util.WrapperMixin):
                 elif buf_arg == 'lenout':
                     fmt_arg.c_var_len = c_attrs['lenout']
                     append_format(proto_list, 'size_t *{c_var_len}', fmt_arg)
-                    self.header_typedef_include['<stddef.h>'] = True
+                    self.header_typedef_nodes['size_t'] = \
+                        typemap.Typedef.lookup('size_t')
                 else:
                     raise RuntimeError("wrap_function: unhandled case {}"
                                        .format(buf_arg))
@@ -651,7 +650,7 @@ class Wrapc(util.WrapperMixin):
 
             if arg_typedef.c_header:
                 # include any dependent header in generated header
-                self.header_typedef_include[arg_typedef.c_header] = True
+                self.header_typedef_nodes[arg_typedef.name] = arg_typedef
             if arg_typedef.cxx_header:
                 # include any dependent header in generated source
                 self.header_impl_include[arg_typedef.cxx_header] = True
@@ -810,7 +809,7 @@ class Wrapc(util.WrapperMixin):
                                  fmt_func.function_suffix, impl, C_code)
             impl.append('}')
             if node.cpp_if:
-                self.impl.append('#endif  // ' + node.cpp_if)
+                impl.append('#endif  // ' + node.cpp_if)
         else:
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node.ast.name

@@ -69,12 +69,12 @@ explicitly by setting variables in the format of the global or class scope::
       C_impl_filename: top.cpp
       F_impl_filename: top.f
 
-    classes:
-      - name: Names
-        format:
-          C_header_filename: foo.h
-          C_impl_filename: foo.cpp
-          F_impl_filename: foo.f
+    declarations:
+    - decl: class Names
+      format:
+        C_header_filename: foo.h
+        C_impl_filename: foo.cpp
+        F_impl_filename: foo.f
  
 
 The default file names are controlled by global options.
@@ -127,24 +127,26 @@ be desirable to rename the Fortran wrapper to something more specific.
 The name of the Fortran implementation wrapper can be changed
 by setting *F_name_impl*::
 
-  library: library
-  namespace: library
+    library: library
 
-  function:
-  -  decl: void initialize
-     format:
-       F_name_impl: library_initialize
+    declarations:
+    - decl: namespace library
+      declarations:
+      - decl: void initialize
+        format:
+          F_name_impl: library_initialize
 
 To rename all functions, set the template in the toplevel *options*::     
 
     library: library
-    namespace: library
 
     options:
       F_name_impl_template: "{library}_{underscore_name}{function_suffix}"
 
-    function:
-    -  decl: void initialize
+    declarations:
+    - decl: namespace library
+      declarations:
+      - decl: void initialize
 
 
 How Functions are Wrapped
@@ -279,14 +281,14 @@ Fortran array but you need the length first to make sure there is
 enough room.  You can create a Fortran wrapper to get the length
 without adding to the C++ library::
 
-    classes:
-      - name: ExClass1
-        methods:
-          - decl: int GetNameLength() const
-            format:
-              C_code: |
-                {C_pre_call}
-                return {CXX_this}->getName().length();
+    declarations:
+    - decl: class ExClass1
+      declarations:
+      - decl: int GetNameLength() const
+        format:
+          C_code: |
+            {C_pre_call}
+            return {CXX_this}->getName().length();
 
 The generated C wrapper will use the *C_code* provided for the body::
 
@@ -334,15 +336,13 @@ To include a file in the implementation list it in the global or class options::
 
     cxx_header: global_header.hpp
 
-    classes:
-    -  name: Class1
-       cxx_header: class_header.hpp
+    declarations:
+    - decl: class Class1
+      cxx_header: class_header.hpp
 
-    types:
-       CustomType:
-          typedef: int
-          c_header:  type_header.h
-          cxx_header : type_header.hpp
+    - decl: typedef int CustomType
+        c_header:  type_header.h
+        cxx_header : type_header.hpp
 
 
 The *c_header* field will be added to the header file of contains functions
@@ -358,17 +358,17 @@ Namespace
 Each library or class can be associated with a namespace::
 
     namespace one {
-    namespace two {
-       void function();
+      namespace two {
+         void function();
 
-       namespace three {
-         class Class1 {
+         namespace three {
+           class Class1 {
+           };
+         }
+
+         class Class2 {
          };
-       }
-
-       class Class2 {
-       };
-    } // namespace two
+      } // namespace two
     } // namespace one
 
     class Class3 {
@@ -376,18 +376,31 @@ Each library or class can be associated with a namespace::
 
 The YAML file would look like::
 
+    declarations:
+    - decl: namespace one
+      declarations:
+      - decl: namespace two
+        declarations:
+        - decl: void function();
+        - decl: namespace three
+          declarations:
+          - class: Class1
+        - class: Class2
+    - class: Class3
+
+If only one set of namespaces are used in a file, the ``namespace``
+field can be used at the global level to avoid excessive indenting.
+For example, if *Class3* was not wrapped then the file could be
+written as::
+
     namespace: one two
+    declarations:
+    - decl: void function();
+    - decl: namespace three
+      declarations:
+      - class: Class1
+    - class: Class2
 
-    classes:
-    -  Class1
-       namespace: one two three
-    -  Class2
-    -  Class3
-       namespace: -none
-
-If a namespace starts with a ``-``, then it will be ignored.  This
-allows a library to have a default namespace but have a class have no
-namespace.
 
 Local Variable
 ^^^^^^^^^^^^^^
@@ -427,9 +440,9 @@ To address the issue of semantic differences between Fortran and C++,
 code template which is inserted at a specific point in the wrapper.
 They are defined in the input YAML file::
 
-   functions:
-     - decl: const string& getString2+len=30()
-       C_error_pattern: C_invalid_name
+   declarations:
+   - decl: const string& getString2+len=30()
+     C_error_pattern: C_invalid_name
 
     patterns:
         C_invalid_name: |
@@ -585,6 +598,79 @@ C implementation::
 The splicer comments can be eliminated by setting the option
 **show_splicer_comments** to false. This may be useful to 
 eliminate the clutter of the splicer comments.
+
+C Preprocessor
+--------------
+
+It is possible to add C preprocessor conditional compilation
+directives to the generated source.  For example, if a function should
+only be wrapped if ``USE_MPI`` is defined the ``cpp_if`` field can be
+used::
+
+    - decl: void testmpi(MPI_Comm comm)
+      format:
+        function_suffix: _mpi
+      cpp_if: ifdef HAVE_MPI
+    - decl: void testmpi()
+      format:
+        function_suffix: _serial
+      cpp_if: ifndef HAVE_MPI
+
+The function wrappers will be created within ``#ifdef``/``#endif``
+directives.  This includes the C wrapper, the Fortran interface and
+the Fortran wrapper.  The generated Fortran interface will be::
+
+        interface testmpi
+    #ifdef HAVE_MPI
+            module procedure testmpi_mpi
+    #endif
+    #ifndef HAVE_MPI
+            module procedure testmpi_serial
+    #endif
+        end interface testmpi
+
+Class generic type-bound function will also insert conditional
+compilation directives::
+
+    - decl: class ExClass3
+      cpp_if: ifdef USE_CLASS3
+      declarations:
+      - decl: void exfunc()
+        cpp_if: ifdef USE_CLASS3_A
+      - decl: void exfunc(int flag)
+        cpp_if: ifndef USE_CLASS3_A
+
+The generated type will be::
+
+        type exclass3
+            type(C_PTR), private :: voidptr
+        contains
+            procedure :: exfunc_0 => exclass3_exfunc_0
+            procedure :: exfunc_1 => exclass3_exfunc_1
+    #ifdef USE_CLASS3_A
+            generic :: exfunc => exfunc_0
+    #endif
+    #ifndef USE_CLASS3_A
+            generic :: exfunc => exfunc_1
+    #endif
+        end type exclass3
+
+A ``cpp_if`` field in a class will add a conditional directive around
+the entire class.
+
+Finally, ``cpp_if`` can be used with types. This would be required in
+the first example since ``mpi.h`` should only be included when
+``USE_MPI`` is defined::
+
+    - type: MPI_Comm
+      fields:
+        cpp_if: ifdef USE_MPI
+
+
+When using ``cpp_if``, it is useful to set the option
+``F_filename_suffix`` to ``F``. This will cause most compilers to
+process the Fortran souce with ``cpp`` before compilation.
+
 
 Debugging
 ---------

@@ -110,8 +110,6 @@ Color colorfunc(Color arg);
 
 void getMinMax(int &min, int &max);
 
-const std::string& LastFunctionCalled();
-
 class Class1
 {
 public:
@@ -143,6 +141,8 @@ void vector_string_fill(std::vector< std::string > &arg);
 void vector_string_append(std::vector< std::string > &arg);
 
 int callback1(int in, int (*incr)(int));
+
+const std::string& LastFunctionCalled();
 
 } /* end namespace tutorial */
 

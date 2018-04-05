@@ -228,20 +228,19 @@ class WrapperMixin(object):
 #####
 
     def namespace(self, library, cls, position, output, comment=True):
-        if cls and cls.namespace:
-            namespace = cls.namespace
-            if namespace.startswith('-'):
-                return
+        if cls:
+            namespace = cls.typedef_name.split('::')
+            namespace.pop()  # remove class name
         else:
-            namespace = library.namespace
+            namespace = []
         if not namespace:
             return
         if position == 'begin':
-            for name in namespace.split():
+            for name in namespace:
                 output.append('namespace %s {' % name)
                 output.append(1)
         else:
-            lst = namespace.split()
+            lst = namespace
             lst.reverse()
             for name in lst:
                 output.append(-1)
@@ -257,9 +256,41 @@ class WrapperMixin(object):
             else:
                 output.append('#include "%s"' % header)
 
+    def write_headers_nodes(self, lang_header, types, output):
+        """Write out headers required by types
+
+        types - dictionary[typedef.name] = typedef
+        """
+        # find which headers are required and who requires them
+        headers = {}
+        for typ in types.values():
+            hdr = getattr(typ, lang_header)
+            if hdr:
+                headers.setdefault(hdr, []).append(typ)
+
+        for hdr in sorted(headers):
+            if len(headers[hdr]) == 1:
+                # Only one type uses the include, check for if_cpp
+                typedef = headers[hdr][0]
+                if typedef.cpp_if:
+                    output.append('#' + typedef.cpp_if)
+                if hdr[0] == '<':
+                    output.append('#include %s' % hdr)
+                else:
+                    output.append('#include "%s"' % hdr)
+                if typedef.cpp_if:
+                    output.append('#endif')
+            else:
+                # XXX - unclear how to mix header and cpp_if
+                # so always include the file
+                if hdr[0] == '<':
+                    output.append('#include %s' % hdr)
+                else:
+                    output.append('#include "%s"' % hdr)
+
 #####
 
-    def write_output_file(self, fname, directory, output):
+    def write_output_file(self, fname, directory, output, spaces='    '):
         """
         fname  - file name
         directory - output directory
@@ -270,7 +301,7 @@ class WrapperMixin(object):
         fp.write(self.comment + ' This is generated code, do not edit\n')
         self.write_copyright(fp)
         self.indent = 0
-        self.write_lines(fp, output)
+        self.write_lines(fp, output, spaces)
         fp.close()
         self.log.write("Close %s\n" % fname)
         print("Wrote", fname)
@@ -286,14 +317,14 @@ class WrapperMixin(object):
                 # convert None to blank line
                 fp.write(self.comment + '\n')
 
-    def write_continue(self, fp, line):
+    def write_continue(self, fp, line, spaces='    '):
         """
         If the line starts with \r, then double the indent.
         Helpful for Fortran declarations.
         """
         linelen = self.linelen
         indent = 1
-        subline = '    ' * self.indent
+        subline = spaces * self.indent
         nparts = 0
 
         if line[0] == '\r':
@@ -335,7 +366,7 @@ class WrapperMixin(object):
                     dump = True
             if dump:
                 fp.write(subline + self.cont + '\n')
-                subline = '    ' * (self.indent + indent)
+                subline = spaces * (self.indent + indent)
                 nparts = 0
                 part = part.lstrip()
                 if not part:
@@ -345,7 +376,7 @@ class WrapperMixin(object):
                 nparts += 1
         fp.write(subline + '\n')
 
-    def write_lines(self, fp, lines):
+    def write_lines(self, fp, lines, spaces='    '):
         """ Write lines with indention and newlines.
         """
         for line in lines:
@@ -359,6 +390,10 @@ class WrapperMixin(object):
                         # preprocessing directives work better in column 1
                         fp.write(subline)
                         fp.write('\n')
+                    elif subline[0] == '@':
+                        # literal line with indent
+                        # For example, "@-" to avoid treating the "-" as deindent.
+                        self.write_continue(fp, subline[1:], spaces)
                     elif subline[0] == '0':
                         # line start in column 1 (like labels)
                         fp.write(subline[1:])
@@ -367,18 +402,18 @@ class WrapperMixin(object):
                         self.indent += 1
                         if subline[-1] == '-':
                             # indent a single line
-                            self.write_continue(fp, subline[1:-1])
+                            self.write_continue(fp, subline[1:-1], spaces)
                             self.indent -= 1
                         else:
-                            self.write_continue(fp, subline[1:])
+                            self.write_continue(fp, subline[1:], spaces)
                     elif subline[-1] == '+':
-                        self.write_continue(fp, subline[:-1])
+                        self.write_continue(fp, subline[:-1], spaces)
                         self.indent += 1
                     else:
                         while subline[0] == '-':
                             self.indent -= 1
                             subline = subline[1:]
-                        self.write_continue(fp, subline)
+                        self.write_continue(fp, subline, spaces)
 
     def write_doxygen_file(self, output, fname, library, cls):
         """ Write a doxygen comment block for a file.

@@ -110,7 +110,7 @@ def tokenize(s):
                     typ = 'TYPE_QUALIFIER'
                 elif val in storage_class:
                     typ = 'STORAGE_CLASS'
-                elif val in ['enum', 'struct']:
+                elif val in ['class', 'enum', 'namespace', 'struct']:
                     typ = val.upper()
             yield Token(typ, val, line, mo.start()-line_start)
         pos = mo.end()
@@ -184,8 +184,130 @@ class RecursiveDescent(object):
         if self.trace:
             print(' ' * self.indent, *args)
 
+######################################################################
 
-class Parser(RecursiveDescent):
+# For each operator, a (precedence, associativity) pair.
+OpInfo = collections.namedtuple('OpInfo', 'prec assoc')
+
+OPINFO_MAP = {
+    '+':    OpInfo(1, 'LEFT'),
+    '-':    OpInfo(1, 'LEFT'),
+    '*':    OpInfo(2, 'LEFT'),
+    '/':    OpInfo(2, 'LEFT'),
+#    '^':    OpInfo(3, 'RIGHT'),
+}
+
+class ExprParser(RecursiveDescent):
+    """
+    Parse implied attribute expressions.
+    Expand functions into Fortran or Python.
+
+    Examples:
+      size(var)
+    """
+
+    def __init__(self, expr, trace=False):
+        self.decl = expr
+        self.expr = expr
+        self.trace = trace
+        self.indent = 0
+        self.token = None
+        self.tokenizer = tokenize(expr)
+        self.next()  # load first token
+
+    def expression(self, min_prec=0):
+        """Parse expressions.
+        Preserves precedence and associativity.
+
+        https://eli.thegreenplace.net/2012/08/02/parsing-expressions-by-precedence-climbing
+        """
+        self.enter('expression')
+        atom_lhs = self.primary()
+
+        while True:
+            op = self.token.value
+            if (op not in OPINFO_MAP
+                or OPINFO_MAP[op].prec < min_prec):
+                break
+
+            # Inside this loop the current token is a binary operator
+
+            # Get the operator's precedence and associativity, and compute a
+            # minimal precedence for the recursive call
+            prec, assoc = OPINFO_MAP[op]
+            next_min_prec = prec + 1 if assoc == 'LEFT' else prec
+
+            # Consume the current token and prepare the next one for the
+            # recursive call
+            self.next()
+            atom_rhs = self.expression(next_min_prec)
+
+            # Update lhs with the new value
+            atom_lhs = BinaryOp(atom_lhs, op, atom_rhs)
+
+        self.exit('expression')
+        return atom_lhs
+
+    def primary(self):
+        self.enter('primary')
+        if self.peek('ID'):
+            node = self.identifier()
+        elif self.token.typ in ['REAL', 'INTEGER']:
+            self.enter('constant')
+            node = Constant(self.token.value)
+            self.next()
+        elif self.have('LPAREN'):
+            node = ParenExpr(self.expression())
+            self.mustbe('RPAREN')
+        elif self.token.typ in ['PLUS', 'MINUS']:
+            self.enter('unary')
+            value = self.token.value
+            self.next()
+            node = UnaryOp(value, self.primary())
+        else:
+            self.error_msg("Unexpected token {} in primary", self.token.value)
+        self.exit('primary')
+        return node
+
+    def identifier(self):
+        """
+        <expr> ::= name '(' arglist ')'
+        """
+        self.enter('identifier')
+        name = self.mustbe('ID').value
+        if self.peek('LPAREN'):
+            args = self.argument_list()
+            node = Identifier(name, args)
+        else:
+            node = Identifier(name)
+        self.exit('identifier')
+        return node
+
+    def argument_list(self):
+        """
+        <argument-list> ::= '(' <name>?  [ , <name ]* ')'
+
+        """
+        self.enter('argument_list')
+        params = []
+        self.next()  # consume LPAREN peeked at in caller
+        while self.token.typ != 'RPAREN':
+            node = self.identifier()
+            params.append(node)
+            if not self.have('COMMA'):
+                break
+        self.mustbe('RPAREN')
+        self.exit('argument_list', str(params))
+        return params
+
+
+def check_expr(expr, trace=False):
+    a = ExprParser(expr, trace=trace).expression()
+    return a
+
+######################################################################
+
+class Parser(ExprParser):
     """
     Parse a C/C++ declaration with Shroud annotations.
 
@@ -194,10 +316,9 @@ class Parser(RecursiveDescent):
 
     namespace - An ast.AstNode subclass.
     """
-    def __init__(self, decl, namespace, current_class=None, trace=False):
+    def __init__(self, decl, namespace, trace=False):
         self.decl = decl          # declaration to parse
         self.namespace = namespace
-        self.current_class = current_class
         self.trace = trace
         self.indent = 0
         self.token = None
@@ -247,54 +368,6 @@ class Parser(RecursiveDescent):
         self.exit('nested_namespace', qualified_id)
         return namespace, qualified_id
 
-    def class_declaration_specifier(self, node):
-        """Set attributes on node corresponding to next token
-        node - Declaration node.
-        <declaration-specifier> ::= <storage-class-specifier>
-                                  | <type-specifier>
-                                  | <type-qualifier>
-                                  | { nested-namespace } [ < { nested-namespace } > }?
-                                  | <current_class>       # constructor
-                                  | ~ <current_class>
-
-        Returns True if need declarator after, else False (i.e. ctor or dtor)
-
-        Set _typename, the fully qualified name.  Used to look up
-        times in Typedef and in generated code.
-        """
-        self.enter('class_declaration_specifier')
-        need = True
-        more = True
-        if self.have('TILDE'):
-            specifier = self.mustbe('TYPE_SPECIFIER').value
-            if specifier == self.current_class:
-                self.info('destructor')
-                node.specifier.append(specifier)
-                node.fattrs['_name'] = 'dtor'
-                node.fattrs['_destructor'] = True
-                node.attrs['_typename'] = self.namespace.typename
-                more = False
-                need = False
-            else:
-                raise RuntimeError("Expected destructor")
-        elif self.token.typ == 'TYPE_SPECIFIER' and self.token.value == self.current_class:
-            # class constructor
-            self.info('type-specifier0:', self.token.value)
-            node.specifier.append(self.token.value)
-            self.next()
-            if self.token.typ == 'LPAREN':
-                self.info('constructor')
-                node.fattrs['_name'] = 'ctor'
-                node.fattrs['_constructor'] = True
-                node.attrs['_typename'] = self.namespace.typename
-                more = False
-                need = False
-
-        if more:
-            self.declaration_specifier(node)
-        self.exit('class_declaration_specifier', need)
-        return need
-
     def declaration_specifier(self, node):
         """
         Set attributes on node corresponding to next token
@@ -304,18 +377,45 @@ class Parser(RecursiveDescent):
                                   | <type-qualifier>
                                   | (ns_name :: )+ name
                                   | :: (ns_name :: )+ name    # XXX - todo
+                                  | ~ ID
         """
+        self.enter('declaration_specifier')
         found_type = False
         more = True
+
+        # destructor
+        if self.have('TILDE'):
+            if not self.namespace.is_class:
+                raise RuntimeError("Destructor is not in a class")
+            tok = self.mustbe('ID')
+            if tok.value != self.namespace.name:
+                raise RuntimeError("Expected class-name after ~")
+            node.specifier.append(tok.value)
+            #  class Class1 { ~Class1(); }
+            self.info('destructor', self.namespace.typename)
+            node.fattrs['_name'] = 'dtor'
+            node.fattrs['_destructor'] = True
+            node.attrs['_typename'] = self.namespace.typename
+            found_type = True
+            more = False
+
         while more:
             # if self.token.type = 'ID' and  typedef-name
-            if self.token.typ == 'ID':
-                # Find typedef'd names and namespaces
+            if not found_type and self.token.typ == 'ID':
+                # Find typedef'd names, classes and namespaces
                 ns = self.namespace.unqualified_lookup(self.token.value)
                 if ns:
                     ns, ns_name = self.nested_namespace(ns)
                     node.specifier.append(ns_name)
-                    if self.have('LT'):
+                    if self.namespace.is_class and \
+                       self.namespace is ns and \
+                       self.token.typ == 'LPAREN':
+                        #  class Class1 { Class1(); }
+                        self.info('constructor')
+                        node.fattrs['_name'] = 'ctor'
+                        node.fattrs['_constructor'] = True
+                        more = False
+                    elif self.have('LT'):
                         temp = Declaration()
                         self.declaration_specifier(temp)
                         node.attrs['template'] = str(temp)
@@ -323,7 +423,8 @@ class Parser(RecursiveDescent):
                     # Save fully resolved typename
                     node.attrs['_typename'] = ns.typename
                     found_type = True
-                more = False
+                else:
+                    more = False
             elif self.token.typ == 'TYPE_SPECIFIER':
                 node.specifier.append(self.token.value)
                 self.info('type-specifier:', self.token.value)
@@ -340,7 +441,8 @@ class Parser(RecursiveDescent):
             else:
                 more= False
         if not node.specifier:
-            self.error_msg("Expected TYPE_SPECIFIER, found '{}'".format(self.token.value))
+            self.error_msg("Expected TYPE_SPECIFIER, found {} '{}'".format(
+                self.token.typ, self.token.value))
         if not found_type:
             # XXX - standardize types like 'unsigned' as 'unsigned_int'
             node.attrs['_typename'] = '_'.join(node.specifier)
@@ -350,7 +452,14 @@ class Parser(RecursiveDescent):
     def decl_statement(self):
         """Check for optional semicolon and stray stuff at the end of line.
         """
-        node = self.declaration()
+        if self.token.typ == 'CLASS':
+            node = self.class_statement()
+        elif self.token.typ == 'ENUM':
+            node = self.enum_statement()
+        elif self.token.typ == 'NAMESPACE':
+            node = self.namespace_statement()
+        else:
+            node = self.declaration()
         self.have('SEMICOLON')
         self.mustbe('EOF')
         return node
@@ -366,7 +475,13 @@ class Parser(RecursiveDescent):
         """
         self.enter('declaration')
         node = Declaration()
-        if self.class_declaration_specifier(node):
+        self.declaration_specifier(node)
+
+        if '_destructor' in node.fattrs:
+            pass
+        elif '_constructor' in node.fattrs:
+            pass
+        else:
             node.declarator = self.declarator()
 
         if self.token.typ == 'LPAREN':     # peek
@@ -409,6 +524,9 @@ class Parser(RecursiveDescent):
             self.next()
             node.func = self.declarator()
             self.mustbe('RPAREN')
+        else:
+            if not node.pointer:
+                node = None
 
         self.exit('declarator', str(node))
         return node
@@ -488,9 +606,79 @@ class Parser(RecursiveDescent):
                 attrs[name] = True
         self.exit('attribute', attrs)
 
+    def class_statement(self):
+        """  class ID
+        """
+        self.enter('class_statement')
+        self.mustbe('CLASS')
+        name = self.mustbe('ID')
+        node = CXXClass(name.value)
+        self.exit('class_statement')
+        return node
+
+    def namespace_statement(self):
+        """  namespace ID
+        """
+        self.enter('namespace_statement')
+        self.mustbe('NAMESPACE')
+        name = self.mustbe('ID')
+        node = Namespace(name.value)
+        self.exit('namespace_statement')
+        return node
+
+    def enum_statement(self):
+        self.enter('enum_statement')
+        self.mustbe('ENUM')
+        name = self.mustbe('ID')
+        self.mustbe('LCURLY')
+        node = Enum(name.value)
+        members = node.members
+        while self.token.typ != 'RCURLY':
+            name = self.mustbe('ID')
+            if self.have('EQUALS'):
+                value = self.expression()
+            else:
+                value = None
+            members.append(EnumValue(name.value, value))
+            if not self.have('COMMA'):
+                break
+        self.mustbe('RCURLY')
+        self.exit('enum_statement', str(members))
+        return node
+
+######################################################################
 
 class Node(object):
     pass
+
+
+class Identifier(Node):
+    def __init__(self, name, args=None):
+        self.name = name
+        self.args = args
+
+
+class BinaryOp(Node):
+    def __init__(self, left, op, right):
+        self.left = left
+        self.op = op
+        self.right = right
+
+
+class UnaryOp(Node):
+    def __init__(self, op, node):
+        self.op = op
+        self.node = node
+
+
+class ParenExpr(Node):
+    def __init__(self, node):
+        self.node = node
+
+
+class Constant(Node):
+    def __init__(self, value):
+        self.value = value
 
 
 class Ptr(Node):
@@ -576,7 +764,7 @@ class Declaration(Node):
     """
     def __init__(self):
         self.specifier  = []    # int, long, ...
-        self.storage    = []    # static, ...
+        self.storage    = []    # static, tyedef, ...
         self.const      = False
         self.volatile   = False
         self.declarator = None
@@ -738,6 +926,9 @@ class Declaration(Node):
             out.append('volatile ')
         if '_destructor' in self.fattrs:
             out.append('~')
+        if self.storage:
+            out.append(' '.join(self.storage))
+            out.append(' ')
         if self.specifier:
             out.append(' '.join(self.specifier))
         else:
@@ -784,6 +975,9 @@ class Declaration(Node):
 
         if '_destructor' in self.fattrs:
             decl.append('~')
+        if self.storage:
+            decl.append(' '.join(self.storage))
+            decl.append(' ')
         decl.append(' '.join(self.specifier))
         if 'template' in self.attrs:
             decl.append('<')
@@ -877,7 +1071,7 @@ class Declaration(Node):
             typename = self.typename
             typedef = typemap.Typedef.lookup(typename)
         if typedef is None:
-            raise RuntimeError("No such type: {}".format(typename))
+            raise RuntimeError("gen_arg_as_lang: No such type: {}".format(typename))
 
         typ = getattr(typedef, lang)
         decl.append(typ)
@@ -1006,8 +1200,36 @@ class Declaration(Node):
 
         return ''.join(decl)
 
+class CXXClass(Node):
+    """An C++ class statement.
+    """
+    def __init__(self, name):
+        self.name = name
 
-def check_decl(decl, namespace=None, current_class=None, template_types=[],trace=False):
+
+class Namespace(Node):
+    """An C++ namespace statement.
+    """
+    def __init__(self, name):
+        self.name = name
+
+
+class Enum(Node):
+    """An enumeration statement.
+    enum Color { RED, BLUE, WHITE }
+    """
+    def __init__(self, name):
+        self.name = name
+        self.members = []
+
+class EnumValue(Node):
+    """A single name in an enum statment with optional value"""
+    def __init__(self, name, value=None):
+        self.name = name
+        self.value = value
+
+
+def check_decl(decl, namespace=None, template_types=[], trace=False):
     """ parse expr as a declaration, return list/dict result.
 
     namespace - An ast.AstNode subclass.
@@ -1015,17 +1237,15 @@ def check_decl(decl, namespace=None, current_class=None, template_types=[],trace
     if not namespace:
         # grab global namespace if not passed in.
         namespace = global_namespace
-    if template_types or current_class:
+    if template_types:
         global type_specifier
         old_types = type_specifier
         type_specifier = set(old_types)
         type_specifier.update(template_types)
-        if current_class:
-            type_specifier.add(current_class)
-        a = Parser(decl,namespace,current_class,trace).decl_statement()
+        a = Parser(decl,namespace,trace).decl_statement()
         type_specifier = old_types
     else:
-        a = Parser(decl,namespace,current_class,trace).decl_statement()
+        a = Parser(decl,namespace,trace).decl_statement()
     return a
 
 
@@ -1053,197 +1273,3 @@ def create_voidstarstar(typ, name, const=False):
     arg.specifier = [ typ ]
     arg.attrs['_typename'] = typ
     return arg
-
-
-######################################################################
-
-class Identifier(Node):
-    def __init__(self, name, args=None):
-        self.name = name
-        self.args = args
-
-
-class BinaryOp(Node):
-    def __init__(self, left, op, right):
-        self.left = left
-        self.op = op
-        self.right = right
-
-
-class UnaryOp(Node):
-    def __init__(self, op, node):
-        self.op = op
-        self.node = node
-
-
-class ParenExpr(Node):
-    def __init__(self, node):
-        self.node = node
-
-
-class Constant(Node):
-    def __init__(self, value):
-        self.value = value
-
-
-# For each operator, a (precedence, associativity) pair.
-OpInfo = collections.namedtuple('OpInfo', 'prec assoc')
-
-OPINFO_MAP = {
-    '+':    OpInfo(1, 'LEFT'),
-    '-':    OpInfo(1, 'LEFT'),
-    '*':    OpInfo(2, 'LEFT'),
-    '/':    OpInfo(2, 'LEFT'),
-#    '^':    OpInfo(3, 'RIGHT'),
-}
-
-class ExprParser(RecursiveDescent):
-    """
-    Parse implied attribute expressions.
-    Expand functions into Fortran or Python.
-
-    Examples:
-      size(var)
-    """
-
-    def __init__(self, expr, trace=False):
-        self.decl = expr
-        self.expr = expr
-        self.trace = trace
-        self.indent = 0
-        self.token = None
-        self.tokenizer = tokenize(expr)
-        self.next()  # load first token
-
-    def expression(self, min_prec=0):
-        """Parse expressions.
-        Preserves precedence and associativity.
-
-        https://eli.thegreenplace.net/2012/08/02/parsing-expressions-by-precedence-climbing
-        """
-        self.enter('expression')
-        atom_lhs = self.primary()
-
-        while True:
-            op = self.token.value
-            if (op not in OPINFO_MAP
-                or OPINFO_MAP[op].prec < min_prec):
-                break
-
-            # Inside this loop the current token is a binary operator
-
-            # Get the operator's precedence and associativity, and compute a
-            # minimal precedence for the recursive call
-            prec, assoc = OPINFO_MAP[op]
-            next_min_prec = prec + 1 if assoc == 'LEFT' else prec
-
-            # Consume the current token and prepare the next one for the
-            # recursive call
-            self.next()
-            atom_rhs = self.expression(next_min_prec)
-
-            # Update lhs with the new value
-            atom_lhs = BinaryOp(atom_lhs, op, atom_rhs)
-
-        self.exit('expression')
-        return atom_lhs
-
-    def primary(self):
-        self.enter('primary')
-        if self.peek('ID'):
-            node = self.identifier()
-        elif self.token.typ in ['REAL', 'INTEGER']:
-            self.enter('constant')
-            node = Constant(self.token.value)
-            self.next()
-        elif self.have('LPAREN'):
-            node = ParenExpr(self.expression())
-            self.mustbe('RPAREN')
-        elif self.token.typ in ['PLUS', 'MINUS']:
-            self.enter('unary')
-            value = self.token.value
-            self.next()
-            node = UnaryOp(value, self.primary())
-        else:
-            self.error_msg("Unexpected token {} in primary", self.token.value)
-        self.exit('primary')
-        return node
-
-    def identifier(self):
-        """
-        <expr> ::= name '(' arglist ')'
-        """
-        self.enter('identifier')
-        name = self.mustbe('ID').value
-        if self.peek('LPAREN'):
-            args = self.argument_list()
-            node = Identifier(name, args)
-        else:
-            node = Identifier(name)
-        self.exit('identifier')
-        return node
-
-    def argument_list(self):
-        """
-        <argument-list> ::= '(' <name>?  [ , <name ]* ')'
-
-        """
-        self.enter('argument_list')
-        params = []
-        self.next()  # consume LPAREN peeked at in caller
-        while self.token.typ != 'RPAREN':
-            node = self.identifier()
-            params.append(node)
-            if not self.have('COMMA'):
-                break
-        self.mustbe('RPAREN')
-        self.exit('argument_list', str(params))
-        return params
-
-
-def check_expr(expr, trace=False):
-    a = ExprParser(expr, trace=trace).expression()
-    return a
-
-######################################################################
-
-class Enum(Node):
-    """An enumeration statement.
-    enum Color { RED, BLUE, WHITE }
-    """
-    def __init__(self, name):
-        self.name = name
-        self.members = []
-
-class EnumValue(Node):
-    """A single name in an enum statment with optional value"""
-    def __init__(self, name, value=None):
-        self.name = name
-        self.value = value
-
-class EnumParser(ExprParser):
-    def enum_statement(self):
-        self.enter('enum_statement')
-        self.mustbe('ENUM')
-        name = self.mustbe('ID')
-        self.mustbe('LCURLY')
-        node = Enum(name.value)
-        members = node.members
-        while self.token.typ != 'RCURLY':
-            name = self.mustbe('ID')
-            if self.have('EQUALS'):
-                value = self.expression()
-            else:
-                value = None
-            members.append(EnumValue(name.value, value))
-            if not self.have('COMMA'):
-                break
-        self.mustbe('RCURLY')
-        self.have('SEMICOLON')
-        self.mustbe('EOF')
-        self.exit('enum_statement', str(members))
-        return node
-
-def check_enum(enum, trace=False):
-    a = EnumParser(enum, trace=trace).enum_statement()
-    return a

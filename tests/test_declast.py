@@ -221,7 +221,7 @@ class CheckParse(unittest.TestCase):
     def test_declaration_specifier_error(self):
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("none var1")
-        self.assertTrue("Expected TYPE_SPECIFIER, found 'none'" in str(context.exception))
+        self.assertTrue("Expected TYPE_SPECIFIER, found ID 'none'" in str(context.exception))
 
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("std::int var1")
@@ -321,9 +321,6 @@ class CheckParse(unittest.TestCase):
                         "_typename": "int",
                     },
                     "const": False, 
-                    "declarator": {
-                        "pointer": []
-                    }, 
                     "specifier": [
                         "int"
                     ]
@@ -658,7 +655,7 @@ class CheckParse(unittest.TestCase):
     def test_decl09a(self):
         """Test constructor
         """
-        r = declast.check_decl("Class1()",namespace=self.class1,current_class='Class1')
+        r = declast.check_decl("Class1()",namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("Class1()", s)
@@ -688,8 +685,7 @@ class CheckParse(unittest.TestCase):
     def test_decl09b(self):
         """Test constructor +name
         """
-        r = declast.check_decl("Class1() +name(new)",namespace=self.class1,
-                               current_class='Class1')
+        r = declast.check_decl("Class1() +name(new)",namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("Class1() +name(new)", s)
@@ -720,7 +716,7 @@ class CheckParse(unittest.TestCase):
     def test_decl09c(self):
         """Test destructor
         """
-        r = declast.check_decl("~Class1()",namespace=self.class1,current_class='Class1')
+        r = declast.check_decl("~Class1()",namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("~Class1()", s)
@@ -750,7 +746,7 @@ class CheckParse(unittest.TestCase):
     def test_decl09d(self):
         """Return pointer to Class instance
         """
-        r = declast.check_decl("Class1 * make()",current_class='Class1')
+        r = declast.check_decl("Class1 * make()",namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("Class1 * make()", s)
@@ -1113,13 +1109,77 @@ class CheckExpr(unittest.TestCase):
         self.assertEqual(e, todict.print_node(r))
 
 
+class CheckNamespace(unittest.TestCase):
+    def test_decl_namespace(self):
+        """Parse a namespace"""
+        r = declast.check_decl('namespace ns1')
+        self.assertEqual('namespace ns1', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            'name': 'ns1',
+        })
+
+
+class CheckTypedef(unittest.TestCase):
+
+    def XXXsetUp(self):
+        library = ast.LibraryNode()
+
+    def test_typedef1(self):
+        r = declast.check_decl('typedef int TypeID;')
+        self.assertEqual('typedef int TypeID', r.gen_decl())
+        self.assertDictEqual(todict.to_dict(r),{
+            "attrs": {
+                "_typename": "int"
+            }, 
+            "const": False, 
+            "declarator": {
+                "name": "TypeID", 
+                "pointer": []
+            }, 
+            "specifier": [
+                "int"
+            ], 
+            "storage": [
+                "typedef"
+            ]
+        })
+
+    def test_typedef2(self):
+        library = ast.LibraryNode()
+        library.add_declaration('typedef int TD2;')
+        self.assertIn('TD2', library.symbols)
+
+        typedef = typemap.Typedef.lookup('TD2')
+        self.assertIsNotNone(typedef)
+        self.assertEqual('TD2', typedef.name)
+        self.assertEqual('TD2', typedef.cxx_type)
+        self.assertEqual('int', typedef.typedef)
+
+    def test_typedef_errors(self):
+        with self.assertRaises(RuntimeError) as context:
+            r = declast.check_decl('typedef none TypeID;')
+        self.assertTrue("Expected TYPE_SPECIFIER, found ID 'none'"
+                        in str(context.exception))
+
+        library = ast.LibraryNode()
+        with self.assertRaises(NotImplementedError) as context:
+            library.add_declaration('typedef int * TD2;')
+        self.assertTrue("Pointers not supported in typedef"
+                        in str(context.exception))
+
+        with self.assertRaises(NotImplementedError) as context:
+            library.add_declaration('typedef int(*func)();')
+        self.assertTrue("Function pointers not supported in typedef"
+                        in str(context.exception))
+
+
 class CheckEnum(unittest.TestCase):
 
-    def setUp(self):
+    def XXXsetUp(self):
         library = ast.LibraryNode()
 
     def test_enum1(self):
-        r = declast.check_enum('enum Color{RED=1,BLUE,WHITE}')
+        r = declast.check_decl('enum Color{RED=1,BLUE,WHITE}')
         self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))
         self.assertEqual(todict.to_dict(r),{
             'name': 'Color',
@@ -1132,9 +1192,59 @@ class CheckEnum(unittest.TestCase):
                          
     def test_enum2(self):
         # enum trailing comma
-        r = declast.check_enum('enum Color{RED=1,BLUE,WHITE,}')
+        r = declast.check_decl('enum Color{RED=1,BLUE,WHITE,}')
         self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))
 
+
+class CheckClass(unittest.TestCase):
+
+    def XXXsetUp(self):
+        library = ast.LibraryNode()
+
+    def test_class1(self):
+        r = declast.check_decl('class Class1')
+        self.assertIsInstance(r, declast.CXXClass)
+        self.assertEqual('class Class1;', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            'name': 'Class1',
+        })
                          
+    def test_class2(self):
+        """Forward declare class in a library"""
+        library = ast.LibraryNode()
+        library.add_declaration('class Class1;')
+        self.assertIn('Class1', library.symbols)
+        self.assertIsInstance(library.symbols['Class1'], ast.TypedefNode)
+
+        typedef = typemap.Typedef.lookup('Class1')
+        self.assertIsNotNone(typedef)
+        self.assertEqual('Class1', typedef.name)
+        self.assertEqual('Class1', typedef.cxx_type)
+        self.assertEqual('shadow', typedef.base)
+                         
+    def test_class2_node(self):
+        """Add a class with declarations to a library"""
+        library = ast.LibraryNode()
+        library.add_declaration('class Class1;',
+                                declarations=[ dict(decl='void func1()')])
+        self.assertIn('Class1', library.symbols)
+        sym = library.symbols['Class1']
+        self.assertIsInstance(sym, ast.ClassNode)
+        self.assertIs(sym, library.classes[0])
+
+    def test_class_in_namespace(self):
+        """Forward declare a class in a namespace"""
+        library = ast.LibraryNode()
+        ns = library.add_namespace('ns')
+        ns.add_declaration('class Class2;')
+        self.assertIn('Class2', ns.symbols)
+        self.assertIsInstance(ns.symbols['Class2'], ast.TypedefNode)
+
+        typedef = typemap.Typedef.lookup('ns::Class2')
+        self.assertIsNotNone(typedef)
+        self.assertEqual('ns::Class2', typedef.name)
+        self.assertEqual('ns::Class2', typedef.cxx_type)
+
+
 if __name__ == '__main__':
     unittest.main()

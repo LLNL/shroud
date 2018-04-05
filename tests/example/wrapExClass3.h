@@ -63,7 +63,13 @@ typedef struct s_AA_exclass3 AA_exclass3;
 // splicer begin class.ExClass3.C_declarations
 // splicer end class.ExClass3.C_declarations
 
-void AA_exclass3_exfunc(AA_exclass3 * self);
+#ifdef USE_CLASS3_A
+void AA_exclass3_exfunc_0(AA_exclass3 * self);
+#endif
+
+#ifndef USE_CLASS3_A
+void AA_exclass3_exfunc_1(AA_exclass3 * self, int flag);
+#endif
 
 #ifdef __cplusplus
 }

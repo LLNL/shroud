@@ -51,6 +51,7 @@ from . import todict
 from . import typemap
 
 class AstNode(object):
+    is_class = False
     def option_to_fmt(self, fmtdict):
         """Set fmt based on options dictionary.
         """
@@ -83,13 +84,126 @@ class AstNode(object):
 
 ######################################################################
 
-class LibraryNode(AstNode):
+class NamespaceMixin(object):
+    def add_class(self, name, **kwargs):
+        """Add a class.
+        """
+        node = ClassNode(name, self, **kwargs)
+        self.classes.append(node)
+        self.symbols[name] = node
+        return node
+
+    def add_declaration(self, decl, **kwargs):
+        """parse decl and add corresponding node.
+        decl - declaration
+        """
+        # parse declaration to find out what it is
+        ast = declast.check_decl(decl, namespace=self,
+                                 template_types=kwargs.get('cxx_template', {}).keys())
+        if isinstance(ast, declast.Declaration):
+            if 'typedef' in ast.storage:
+                typedef = self.create_typedef(ast, **kwargs)
+                node = self.add_typedef(ast.declarator.name)
+            else:
+                node = self.add_function(decl, ast=ast, **kwargs)
+        elif isinstance(ast, declast.CXXClass):
+            if 'declarations' in kwargs:
+                node = self.add_class(ast.name, **kwargs)
+            else:
+                node = self.create_class_type(ast.name, **kwargs)
+        elif isinstance(ast, declast.Namespace):
+            node = self.add_namespace(ast.name, **kwargs)
+        elif isinstance(ast, declast.Enum):
+            node = self.add_enum(decl, ast=ast, **kwargs)
+        else:
+            raise RuntimeError("add_declaration: Error parsing '{}'".format(decl))
+        return node
+
+    def create_class_type(self, key, **kwargs):
+        """Add a typedef for a class.
+        """
+        self.add_typedef(key)
+        fullname = self.scope + key
+        typedef = typemap.Typedef(fullname,
+                                  base='shadow',
+                                  cxx_type=fullname)
+        if 'fields' in kwargs:
+            value = kwargs['fields']
+            if not isinstance(value, dict):
+                raise TypeError("fields must be a dictionary")
+            typedef.update(value)
+        typemap.typedef_shadow_defaults(typedef)
+        typemap.Typedef.register(typedef.name, typedef)
+        return typedef
+
+    def create_typedef(self, ast, **kwargs):
+        """Create a typedef from a Declarator.
+        """
+        if ast.declarator.pointer:
+            raise NotImplementedError("Pointers not supported in typedef")
+        if ast.declarator.func:
+            raise NotImplementedError("Function pointers not supported in typedef")
+
+        key = ast.declarator.name
+        copy_type = ast.attrs['_typename']
+        def_types, def_types_alias = typemap.Typedef.get_global_types()
+        orig = def_types.get(copy_type, None)
+        if not orig:
+            raise RuntimeError(
+                "No type for typedef {} while defining {}".format(copy_type, key))
+        typedef = orig.clone_as(copy_type)
+        typedef.name = self.scope + key
+        typedef.typedef = copy_type
+        typedef.cxx_type = typedef.name
+        if 'fields' in kwargs:
+            fields = kwargs['fields']
+            typedef.update(fields)
+        typemap.Typedef.register(typedef.name, typedef)
+        return typedef
+
+    def add_enum(self, decl, parentoptions=None, ast=None, **kwargs):
+        """Add an enumeration.
+        """
+        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
+                        ast=ast, **kwargs)
+        self.enums.append(node)
+        self.symbols[node.name] = node
+        return node
+
+    def add_function(self, decl, parentoptions=None, ast=None, **kwargs):
+        """Add a function.
+
+        decl - C/C++ declaration of function
+        ast  - parsed declaration. None if not yet parsed.
+        """
+        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
+                               ast=ast, **kwargs)
+        self.functions.append(fcnnode)
+        return fcnnode
+
+    def add_namespace(self, name, parentoptions=None, **kwargs):
+        """Add an namespace
+        """
+        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
+                             **kwargs)
+        self.symbols[name] = node
+        return node
+
+    def add_typedef(self, name):
+        """Add a typedef to the symbol table.
+        """
+        node = TypedefNode(name, parent=self)
+        self.symbols[name] = node
+        return node
+
+######################################################################
+
+class LibraryNode(AstNode, NamespaceMixin):
     def __init__(self,
                  cxx_header='',
                  format=None,
                  language='c++',
                  library='default_library',
-                 namespace='',
                  options=None,
                  **kwargs):
         """Create LibraryNode.
@@ -106,7 +220,6 @@ class LibraryNode(AstNode):
         if self.language not in ['c', 'c++']:
             raise RuntimeError("language must be 'c' or 'c++'")
         self.library = library
-        self.namespace = namespace
 
         self.classes = []
         self.enums = []
@@ -302,9 +415,11 @@ class LibraryNode(AstNode):
 
             LUA_prefix = 'l_',
             LUA_state_var = 'L',
+            LUA_this_call = '',
 
             PY_prefix = 'PY_',
             PY_module_name = self.library.lower(),
+            PY_this_call = '',
 
             library = self.library,
             library_lower = self.library.lower(),
@@ -321,11 +436,6 @@ class LibraryNode(AstNode):
             function_suffix = '',   # assume no suffix
             namespace_scope = '',
         )
-
-        if self.namespace:
-            fmt_library.namespace_scope = (
-                '::'.join(self.namespace.split()) + '::\t')
-            fmt_library.CXX_this_call = fmt_library.namespace_scope
 
         fmt_library.F_filename_suffix = 'f'
 
@@ -371,55 +481,43 @@ class LibraryNode(AstNode):
         self.eval_template('F_module_name', '_library')
         self.eval_template('F_impl_filename', '_library')
 
-    def add_class(self, name, **kwargs):
-        """Add a class.
-        """
-        node = ClassNode(name, self, **kwargs)
-        self.classes.append(node)
-        self.symbols[name] = node
-        return node
+######################################################################
 
-    def add_class_forward(self, name):
-        """Forward declare a class."""
-        node = ClassForwardNode(name, self)
-        self.symbols[name] = node
-        return node
+class BlockNode(AstNode, NamespaceMixin):
+    """Create a Node to simulate a curly block.
+    A block can contain options, format, and declarations.
+    The declarations within a BlockNode inherit options of the block.
+    This makes it easier to change options for a group of functions.
+    Declarations are added to parent.
 
-    def add_enum(self, decl, parentoptions=None, **kwargs):
-        """Add an enumeration.
-        """
-        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
-                        **kwargs)
-        self.enums.append(node)
-        self.symbols[node.name] = node
-        return node
+    Blocks can be added to a LibraryNode, NamespaceNode or ClassNode.
+    """
+    def __init__(self, parent,
+                 format=None,
+                 options=None,
+                 **kwargs):
+        # From arguments
+        self.parent = parent
 
-    def add_function(self, decl, parentoptions=None, **kwargs):
-        """Add a function.
-        """
-        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
-                               **kwargs)
-        self.functions.append(fcnnode)
-        return fcnnode
+        self.enums = parent.enums
+        self.functions = parent.functions
+        self.classes = parent.classes
 
-    def add_namespace(self, name, parentoptions=None, **kwargs):
-        """Add an namespace
-        """
-        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
-                             **kwargs)
-        self.symbols[name] = node
-        return node
+        self.options = util.Scope(parent=parent.options)
+        if options:
+            self.options.update(options, replace=True)
 
-    def add_typedef(self, name):
-        """Add a typedef.
-        """
-        node = TypedefNode(name, parent=self)
-        self.symbols[name] = node
-        return node
+        self.fmtdict = util.Scope(parent=parent.fmtdict)
+        if format:
+            self.fmtdict.update(format, replace=True)
+
+    def unqualified_lookup(self, name):
+        """Look for symbols within library (global namespace). """
+        return self.parent.unqualified_lookup(name)
 
 ######################################################################
 
-class NamespaceNode(AstNode):
+class NamespaceNode(AstNode, NamespaceMixin):
     def __init__(self, name, parent,
                  format=None,
                  options=None,
@@ -491,64 +589,22 @@ class NamespaceNode(AstNode):
             parent = parent.fmtdict,
         )
 
-        fmt_class = self.fmtdict
+        fmt_ns = self.fmtdict
+        fmt_ns.namespace_scope = parent.fmtdict.namespace_scope + self.name + '::\t'
+        fmt_ns.CXX_this_call = fmt_ns.namespace_scope
+        fmt_ns.LUA_this_call = fmt_ns.namespace_scope
+        fmt_ns.PY_this_call = fmt_ns.namespace_scope
+
         if format:
-            self.fmtdict.update(format, replace=True)
-#####
-
-    def add_class(self, name, **kwargs):
-        """Add a class.
-        """
-        node = ClassNode(name, self, **kwargs)
-        self.classes.append(node)
-        self.symbols[name] = node
-        return node
-
-    def add_class_forward(self, name):
-        """Forward declare a class."""
-        node = ClassForwardNode(name, self)
-        self.symbols[name] = node
-        return node
-
-    def add_enum(self, decl, parentoptions=None, **kwargs):
-        """Add an enumeration.
-        """
-        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
-                        **kwargs)
-        self.enums.append(node)
-        self.symbols[node.name] = node
-        return node
-
-    def add_function(self, decl, parentoptions=None, **kwargs):
-        """Add a function.
-        """
-        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
-                               **kwargs)
-        self.functions.append(fcnnode)
-        return fcnnode
-
-    def add_namespace(self, name, parentoptions=None, **kwargs):
-        """Add an namespace
-        """
-        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
-                             **kwargs)
-        self.symbols[name] = node
-        return node
-
-    def add_typedef(self, name):
-        """Add a typedef.
-        """
-        node = TypedefNode(name, parent=self)
-        self.symbols[name] = node
-        return node
+            fmt_ns.update(format, replace=True)
 
 ######################################################################
 
-class ClassNode(AstNode):
+class ClassNode(AstNode, NamespaceMixin):
+    is_class = True
     def __init__(self, name, parent,
                  cxx_header='',
                  format=None,
-                 namespace='',
                  options=None,
                  **kwargs):
         """Create ClassNode.
@@ -557,7 +613,6 @@ class ClassNode(AstNode):
         self.name = name
         self.parent = parent
         self.cxx_header = cxx_header
-        self.namespace = namespace
 
         self.enums = []
         self.functions = []
@@ -575,7 +630,8 @@ class ClassNode(AstNode):
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
         self.symbols = {}
-        typemap.create_class_typedef(self)
+        self.typedef = typemap.create_class_typedef(self)
+        self.typedef_name = self.typedef.name   # fully qualified name
 
 ##### namespace behavior
 
@@ -619,15 +675,8 @@ class ClassNode(AstNode):
         )
 
         fmt_class = self.fmtdict
-        if self.namespace:
-            if self.namespace.startswith('-'):
-                fmt_class.namespace_scope = ''
-            else:
-                fmt_class.namespace_scope = (
-                    '::'.join(self.namespace.split()) + '::\t')
-
         if format:
-            self.fmtdict.update(format, replace=True)
+            fmt_class.update(format, replace=True)
 
         self.eval_template('class_prefix')
 
@@ -639,38 +688,9 @@ class ClassNode(AstNode):
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
 
-    def add_enum(self, decl, parentoptions=None, **kwargs):
-        """Add an enumeration.
-        """
-        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
-                        **kwargs)
-        self.enums.append(node)
-        self.symbols[node.name] = node
-        return node
-
-    def add_function(self, decl, parentoptions=None, **kwargs):
-        """Add a function.
-        """
-        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
-                               **kwargs)
-        self.functions.append(fcnnode)
-        return fcnnode
-
-######################################################################
-
-class ClassForwardNode(AstNode):
-    """Forward declare a class.
-    Used to compute scope.
-    """
-    def __init__(self, name, parent):
-        # From arguments
-        self.name = name
-        self.parent = parent
-
-        # add to namespace
-        self.typename = self.parent.scope + self.name
-        self.scope = self.typename + '::'
-
+    def add_namespace(self, **kwargs):
+        """Replace method inherited from NamespaceMixin."""
+        raise RuntimeError("Cannot add a namespace to a class")
 
 ######################################################################
 
@@ -710,6 +730,7 @@ class FunctionNode(AstNode):
     def __init__(self, decl, parent,
                  format=None,
                  parentoptions=None,
+                 ast=None,
                  options=None,
                  **kwargs):
         self.options = util.Scope(parent=parentoptions or parent.options)
@@ -746,18 +767,14 @@ class FunctionNode(AstNode):
         if not decl:
             raise RuntimeError("FunctionNode missing decl")
 
-        # parse decl and add to dictionary
-        if isinstance(parent,ClassNode):
-            cls_name = parent.name
-        else:
-            cls_name = None
-        template_types = self.cxx_template.keys()
-
         self.decl = decl
-        ast = declast.check_decl(decl,
-                                 namespace=parent,
-                                 current_class=cls_name,
-                                 template_types=template_types)
+        if ast is None:
+            # parse decl and add to dictionary
+            template_types = self.cxx_template.keys()
+
+            ast = declast.check_decl(decl,
+                                     namespace=parent,
+                                     template_types=template_types)
         self.ast = ast
 
         # add any attributes from YAML files to the ast
@@ -773,7 +790,7 @@ class FunctionNode(AstNode):
                                     
         if ast.params is None:
             # 'void foo' instead of 'void foo()'
-            raise RuntimeError("Missing arguments:", ast.gen_decl())
+            raise RuntimeError("Missing arguments to function:", ast.gen_decl())
 
         fmt_func = self.fmtdict
         fmt_func.function_name = ast.name
@@ -858,6 +875,7 @@ class EnumNode(AstNode):
     def __init__(self, decl, parent,
                  format=None,
                  parentoptions=None,
+                 ast=None,
                  options=None,
                  **kwargs):
 
@@ -877,7 +895,10 @@ class EnumNode(AstNode):
             raise RuntimeError("EnumNode missing decl")
 
         self.decl = decl
-        ast = declast.check_enum(decl)
+        if ast is None:
+            ast = declast.check_decl(decl)
+        if not isinstance(ast, declast.Enum):
+            raise RuntimeError("Declaration is not an enumeration: " + decl)
         self.ast = ast
         self.name = ast.name
 
@@ -911,7 +932,8 @@ class EnumNode(AstNode):
         # Add to namespace
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
-        typemap.create_enum_typedef(self)
+        self.typedef = typemap.create_enum_typedef(self)
+        self.typedef_name = self.typedef.name
         # also 'enum class foo' will alter scope
 
 ######################################################################
@@ -981,78 +1003,39 @@ def clean_list(lst):
         if line is None:
             lst[i] = ''
 
-def is_options_only(node):
-    """Detect an options only node.
+def add_declarations(parent, node):
+    if 'declarations' not in node:
+        return
+    if not node['declarations']:
+        return
 
-    functions:
-    - options:
-         a = b
-    - decl:
-      options:
-
-    Return True if node only has options.
-    """
-    if len(node) != 1:
-        return False
-    if 'options' not in node:
-        return False
-    if not isinstance(node['options'], dict):
-        raise TypeError("options must be a dictionary")
-    return True
-
-def add_enums(parent, enums):
-    """ Add enums from list 'enums'.
-    Used with class methods and functions.
-    """
-    if not isinstance(enums, list):
-        raise TypeError("enums must be a list")
-
-    options = parent.options
-    for node in enums:
-        if is_options_only(node):
-            options = util.Scope(options, **node['options'])
-        else:
-            # copy before clean to avoid changing input dict
-            d = copy.copy(node)
+    for subnode in node['declarations']:
+        if 'block' in subnode:
+            d = copy.copy(subnode)
             clean_dictionary(d)
-            if 'decl' not in d:
-                raise RuntimeError('Missing required decl field for enums')
+            blk = BlockNode(parent, **d)
+            add_declarations(blk, subnode)
+        elif 'decl' in subnode:
+            # copy before clean to avoid changing input dict
+            d = copy.copy(subnode)
+            clean_dictionary(d)
             decl = d['decl']
             del d['decl']
-            enum_node = parent.add_enum(decl, parentoptions=options, **d)
-
-def add_functions(parent, functions):
-    """ Add functions from list 'functions'.
-    Look for 'options' only entries.
-
-    functions = [
-      {
-        'options': 
-      },{
-        'decl': 'void func1()'
-      },{
-        'decl': 'void func2()'
-      }
-    ]
-
-    Used with class methods and functions.
-    """
-    if not isinstance(functions, list):
-        raise TypeError("functions must be a list")
-
-    options = parent.options
-    for node in functions:
-        if is_options_only(node):
-            options = util.Scope(options, **node['options'])
+            declnode = parent.add_declaration(decl, **d)
+            add_declarations(declnode, subnode)
+        elif 'type' in subnode:
+            # Update fields for a type. For example, set cpp_if
+            key = subnode['type']
+            value = subnode['fields']
+            def_types, def_types_alias = typemap.Typedef.get_global_types()
+            typedef = def_types.get(key, None)
+            if not typedef:
+                raise RuntimeError(
+                    "No type {}".format(key))
+            typedef.update(value)
         else:
-            # copy before clean to avoid changing input dict
-            d = copy.copy(node)
-            clean_dictionary(d)
-            if 'decl' not in d:
-                raise RuntimeError('Missing required dict fields for function')
-            decl = d['decl']
-            del d['decl']
-            parent.add_function(decl, parentoptions=options, **d)
+            print(subnode)
+            raise RuntimeError("Expected 'block', 'class', 'decl', 'forward', 'namespace' or 'typedef' found {}".format(sorted(subnode.keys())))
 
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.
@@ -1073,66 +1056,13 @@ def create_library_from_dictionary(node):
 
     clean_dictionary(node)
     library = LibraryNode(**node)
+    ns = library
 
-    if 'types' in node:
-        types_dict = node['types']
-        if not isinstance(types_dict, dict):
-            raise TypeError("types must be a dictionary")
-        def_types, def_types_alias = typemap.Typedef.get_global_types()
-        for key, value in types_dict.items():
-            if not isinstance(value, dict):
-                raise TypeError("types '%s' must be a dictionary" % key)
+    # Create default namespace
+    if 'namespace' in node:
+        for name in node['namespace'].split():
+            ns = ns.add_namespace(name)
 
-            if 'base' in value:
-                base = value['base']
-                if base not in ['string', 'vector', 'shadow']:
-                    raise RuntimeError("Unknown base type {} for type {}"
-                                       .format(value['base'], key))
-
-            if 'typedef' in value:
-                copy_type = value['typedef']
-                orig = def_types.get(copy_type, None)
-                if not orig:
-                    raise RuntimeError(
-                        "No type for typedef {} while defining {}".format(copy_type, key))
-                def_types[key] = typemap.Typedef(key)
-                def_types[key].update(def_types[copy_type]._to_dict())
-
-            if key in def_types:
-                def_types[key].update(value)
-            else:
-                def_types[key] = typemap.Typedef(key, **value)
-            typemap.typedef_shadow_defaults(def_types[key])
-            declast.global_namespace.add_typedef(key)  # Add to namespace
-
-    if 'enums' in node:
-        add_enums(library, node['enums'])
-
-    if 'classes' in node:
-        classes = node['classes']
-        if not isinstance(classes, list):
-            raise TypeError("classes must be a list")
-
-        # Add all class types to parser first
-        # Emulate forward declarations of classes.
-        for cls in classes:
-            if not isinstance(cls, dict):
-                raise TypeError("classes[n] must be a dictionary")
-            if 'name' not in cls:
-                raise TypeError("class does not define name")
-            clean_dictionary(cls)
-            library.add_class_forward(cls['name'])
-
-        for cls in classes:
-            clsnode = library.add_class(**cls)
-            if 'enums' in cls:
-                add_enums(clsnode, cls['enums'])
-            if 'methods' in cls:
-                add_functions(clsnode, cls['methods'])
-            elif 'functions' in cls:
-                add_functions(clsnode, cls['functions'])
-
-    if 'functions' in node:
-        add_functions(library, node['functions'])
+    add_declarations(ns, node)
 
     return library

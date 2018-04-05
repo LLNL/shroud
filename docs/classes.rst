@@ -60,9 +60,9 @@ Now we'll add a simple class to the library::
 
 To wrap the class add the lines to the YAML file::
 
-    classes:
-    - name: Class1
-      functions:
+    declarations:
+    - class: Class1
+      declarations:
       - decl: Class1 new()  +name(new)
       - decl: ~Class1()  +name(delete)
       - decl: void Method1()

@@ -54,20 +54,15 @@ options:
   wrap_python: True
   wrap_lua: False
 
+declarations:
 
-types:
-  TypeID:
-    typedef  : int
-    cxx_type : TypeID
+- decl: typedef int TypeID;
 
-  EnumTypeID:
-    typedef  : int
-    cxx_type : EnumTypeID
+- decl: typedef int EnumTypeID
+  fields:
     c_to_cxx : static_cast<EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
-
-functions:
 - decl: void Function1()
 - decl: double Function2(double arg1, int arg2)
 - decl: void Sum(int len +implied(size(values)),
@@ -224,34 +219,34 @@ functions:
 ##-     brief: append '-like' to names.
 ##-
 
--  decl: void  intargs(const int argin      +intent(in),
-                             int * arginout +intent(inout),
-                             int * argout   +intent(out))
+- decl: void  intargs(const int argin      +intent(in),
+                            int * arginout +intent(inout),
+                            int * argout   +intent(out))
 
--  decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
-                          double * out    +intent(out) +allocatable(mold=in),
-                          int      sizein +implied(size(in)))
-   doxygen:
-     brief: compute cos of IN and save in OUT
-     description:
-       allocate OUT same type as IN
-       implied size of array
+- decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
+                         double * out    +intent(out) +allocatable(mold=in),
+                         int      sizein +implied(size(in)))
+  doxygen:
+    brief: compute cos of IN and save in OUT
+    description:
+      allocate OUT same type as IN
+      implied size of array
 
--  decl: void truncate_to_int(double * in     +intent(in)  +dimension(:),
-                              int *    out    +intent(out) +allocatable(mold=in),
-                              int      sizein +implied(size(in)))
-   doxygen:
-     brief: truncate IN argument and save in OUT
-     description: |
-       allocate OUT different type as IN
-       implied size of array
+- decl: void truncate_to_int(double * in     +intent(in)  +dimension(:),
+                             int *    out    +intent(out) +allocatable(mold=in),
+                             int      sizein +implied(size(in)))
+  doxygen:
+    brief: truncate IN argument and save in OUT
+    description: |
+      allocate OUT different type as IN
+      implied size of array
 
--  decl: void increment(int * array  +intent(inout)  +dimension(:),
-                        int   sizein +implied(size(array)))
-   doxygen:
-     brief: 
-     description: |
-       array with intent(INOUT)
+- decl: void increment(int * array  +intent(inout)  +dimension(:),
+                       int   sizein +implied(size(array)))
+  doxygen:
+    brief: 
+    description: |
+      array with intent(INOUT)
 
  
 ##-##################################################
@@ -261,9 +256,8 @@ functions:
 ##-
 ##-##################################################
 ##-
-##-classes:
-##-- name: Class1
-##-  methods:
-##-  - decl: Class1 *new()  +constructor
-##-  - decl: void delete()  +destructor
+##-- class: Class1
+##-  declarations:
+##-  - decl: Class1()  +name(new)
+##-  - decl: ~Class1() +name(delete)
 ##-  - decl: void Method1()

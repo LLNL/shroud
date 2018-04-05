@@ -112,7 +112,7 @@ class VerifyAttrs(object):
             #    - int
             #    - double
             if argtype not in node.cxx_template:
-                raise RuntimeError("No such type %s: %s" % (
+                raise RuntimeError("check_arg_attrs: No such type %s: %s" % (
                         argtype, node.decl))
 
         is_ptr = arg.is_indirect()
@@ -209,7 +209,7 @@ class VerifyAttrs(object):
                         arg.gen_decl()))
             typedef = typemap.Typedef.lookup(temp)
             if typedef is None:
-                raise RuntimeError("No such type %s for template: %s" % (
+                raise RuntimeError("check_arg_attr: No such type %s for template: %s" % (
                         temp, arg.gen_decl()))
         elif temp is not None:
             raise RuntimeError("Type '%s' may not supply template argument: %s" % (

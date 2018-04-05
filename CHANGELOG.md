@@ -8,14 +8,50 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Support class static methods.
-- Ability to define enum values.
-
+- Add enum as a declaration.
+```
+     - decl: enum color { RED, GREEN, BLUE }
+```
+- Add typedef as a declaration.
+```
+      - decl: typedef int TYP
+```
 ### Changed
 - base name 'wrapped' changed to 'shadow'.  This may appear in YAML file.
 - Change generated code to prefix symbols with the namespace, `outer::function()`,
   instead of adding namespace statements, `namespace outer { }`.
   Types also require namespaces in `cxx_type` and `c_to_cxx` entries.
   The wrappers use the namespace but do not add to it.
+- Change format of YAML file to generalize declarations and provide
+  access to namespaces.
+```
+     # Old
+     functions:
+     - decl: void foo()
+     # New
+     declarations:
+     - decl: void foo()
+
+     # Old
+     namespace: tutorial
+     functions:
+     - decl: void bar()
+     # New
+     declarations:
+     - decl: namespace tutorial
+       declarations:
+       - decl: void bar()
+
+     # Old
+     types:
+       CustomType:
+          typedef: int
+     # New
+     declarations:
+     - typedef: CustomType
+       fields:
+         typedef: int
+```
 
 ## v0.8.0 - 2018-02-26
 ### Added

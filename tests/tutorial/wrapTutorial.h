@@ -49,7 +49,7 @@
 #ifndef WRAPTUTORIAL_H
 #define WRAPTUTORIAL_H
 
-#include "stdlib.h"
+#include <stddef.h>
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations

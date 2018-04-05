@@ -756,7 +756,7 @@ contains
     ! splicer begin class.Class1.additional_functions
     ! splicer end class.Class1.additional_functions
 
-    ! Singleton & getReference()
+    ! static Singleton & getReference()
     ! function_index=6
     function singleton_get_reference() &
             result(SHT_rv)

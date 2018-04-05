@@ -62,7 +62,6 @@ This is wrapped using a YAML input file ``tutorial.yaml``::
 
   library: Tutorial
   cxx_header: tutorial.hpp
-  namespace: tutorial
 
   options:
     wrap_fortran: False
@@ -70,8 +69,10 @@ This is wrapped using a YAML input file ``tutorial.yaml``::
     wrap_python: True
     debug: True
 
-  functions:
-  - decl: void Function1()
+  declarations:
+  - decl: namespace tutorial
+    declarations:
+    - decl: void Function1()
 
 .. XXX support (void)?
 
@@ -103,7 +104,7 @@ The generated C function in file ``pyTutorialmodule.cpp`` is::
       PyObject *SHROUD_UNUSED(args),
       PyObject *SHROUD_UNUSED(kwds))
     {
-        Function1();
+        tutorial::Function1();
         Py_RETURN_NONE;
     }
 
@@ -139,8 +140,8 @@ Some additional boiler plate is created for the function::
 
 Finally the module creation function is added at the end of the file::
 
-    PyMODINIT_FUNC
-    #ifdef IS_PY3K
+    extern "C" PyMODINIT_FUNC
+    #ifdef PY_MAJOR_VERSION >= 3
     PyInit_tutorial(void)
     #else
     inittutorial(void)
@@ -150,7 +151,7 @@ Finally the module creation function is added at the end of the file::
         const char * error_name = "tutorial.Error";
     
         /* Create the module and add the functions */
-    #ifdef IS_PY3K
+    #if PY_MAJOR_VERSION >= 3
         m = PyModule_Create(&moduledef);
     #else
         m = Py_InitModule4("tutorial", PY_methods,
@@ -191,7 +192,7 @@ To wrap ``Function2``::
 
 Add the declaration to the YAML file::
 
-    functions:
+    declarations:
     - decl: double Function2(double arg1, int arg2)
 
 Local variables are created for the argument values.
@@ -215,7 +216,7 @@ The generated function is::
             const_cast<char **>(SHT_kwlist), &arg1, &arg2))
             return NULL;
     
-        double SHC_rv = Function2(arg1, arg2);
+        double SHC_rv = tutorial::Function2(arg1, arg2);
     
         // post_call
         PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
@@ -244,7 +245,7 @@ A simple C++ function which accepts and returns a ``bool`` argument::
 
 Added to the YAML file as before::
 
-    functions:
+    declarations:
     - decl: bool Function3(bool arg)
 
 This will produce the wrapper::
@@ -267,7 +268,7 @@ This will produce the wrapper::
         // pre_call
         bool arg = PyObject_IsTrue(SHPy_arg);
     
-        bool SHC_rv = Function3(arg);
+        bool SHC_rv = tutorial::Function3(arg);
     
         // post_call
         PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
@@ -349,7 +350,7 @@ this value to the C wrapper::
             int result;  // intent(out)
             int len = PyArray_SIZE(SHPy_values);
     
-            Sum(len, values, &result);
+            tutorial::Sum(len, values, &result);
     
             // post_call
             PyObject * SHPy_result = PyInt_FromLong(result);
@@ -383,7 +384,7 @@ C++ routine::
 
 YAML input::
 
-    functions
+    declarations:
     - decl: const std::string Function4a+len(30)(
         const std::string& arg1,
         const std::string& arg2 )
@@ -427,7 +428,7 @@ The wrapped function is::
         const std::string SH_arg1(arg1);
         const std::string SH_arg2(arg2);
     
-        const std::string SHCXX_rv = Function4a(SH_arg1, SH_arg2);
+        const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
     
         // post_call
         PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
@@ -460,7 +461,7 @@ checks the number of arguments, then calls the function appropriately::
 
 Describe the function in YAML::
 
-    functions:
+    declarations:
     - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
       default_arg_suffix:
       -  
@@ -496,17 +497,17 @@ C wrappers::
             return NULL;
         switch (SH_nargs) {
         case 0:
-            SHC_rv = Function5();
+            SHC_rv = tutorial::Function5();
             break;
         case 1:
-            SHC_rv = Function5(arg1);
+            SHC_rv = tutorial::Function5(arg1);
             break;
         case 2:
             {
                 // pre_call
                 bool arg2 = PyObject_IsTrue(SHPy_arg2);
     
-                SHC_rv = Function5(arg1, arg2);
+                SHC_rv = tutorial::Function5(arg1, arg2);
                 break;
             }
         }
@@ -548,7 +549,7 @@ C++::
 By default the names are mangled by adding an index to the end. This
 can be controlled by setting **function_suffix** in the YAML file::
 
-  functions:
+  declarations:
   - decl: void Function6(const std::string& name)
     function_suffix: _from_name
   - decl: void Function6(int indx)
@@ -559,13 +560,13 @@ The generated C wrappers uses the mangled name::
     void TUT_function6_from_name(const char * name)
     {
         const std::string SH_name(name);
-        Function6(SH_name);
+        tutorial::Function6(SH_name);
         return;
     }
 
     void TUT_function6_from_index(int indx)
     {
-        Function6(indx);
+        tutorial::Function6(indx);
         return;
     }
 
@@ -702,19 +703,17 @@ use of a type::
 
 Shroud must be told about user defined types in the YAML file::
 
-  types:
-    TypeID:
-      typedef  : int
-      cxx_type : TypeID
+    declarations:
+    - decl: typedef int TypeID;
 
 This will map the C++ type ``TypeID`` to the predefined type ``int``.
 The C wrapper will use ``int``::
 
-  int TUT_typefunc(int arg)
-  {
-    int SHT_rv = typefunc(arg);
-    return SHT_rv;
-  }
+    int TUT_typefunc(int arg)
+    {
+        int SHT_rv = typefunc(arg);
+        return SHT_rv;
+    }
 
 Enumerations
 ^^^^^^^^^^^^
@@ -741,10 +740,9 @@ C.  For C and Fortran the type can be describe as an ``int``
 similar to how the ``typedef`` is defined. But in addition we
 describe how to convert between C and C++::
 
-    types:
-      EnumTypeID:
-        typedef  : int
-        cxx_type : tutorial::EnumTypeID
+    declarations:
+    - decl: typedef int EnumTypeID
+      fields:
         c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
         cxx_to_c : static_cast<int>({cxx_var})
 
@@ -753,20 +751,20 @@ The typename must be fully qualified
 The C argument is explicitly converted to a C++ type, then the
 return type is explicitly converted to a C type in the generated wrapper::
 
-  int TUT_enumfunc(int arg)
-  {
-    EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));
-    int XSHT_rv = static_cast<int>(SHT_rv);
-    return XSHT_rv;
-  }
+    int TUT_enumfunc(int arg)
+    {
+        EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));
+        int XSHT_rv = static_cast<int>(SHT_rv);
+        return XSHT_rv;
+    }
 
 Without the explicit conversion you're likely to get an error such as::
 
-  error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
+    error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
 
 A enum can also be fully defined to Python::
 
-    enums:
+    declarations:
     - decl: |
           enum Color {
             RED,
@@ -809,9 +807,9 @@ Now we'll add a simple class to the library::
 
 To wrap the class add the lines to the YAML file::
 
-    classes:
-    - name: Class1
-      functions:
+    declarations:
+    - decl: class Class1
+      declarations:
       - decl: Class1()  +name(new)
       - decl: ~Class1() +name(delete)
       - decl: void Method1()
@@ -916,8 +914,8 @@ To wrap the method::
 
 Use the YAML input::
 
-    - name: Singleton
-      functions:
+    - decl: class Singleton
+      declarations:
       - decl: static Singleton& getReference()
 
 This adds the ``METH_STATIC`` flags into the PyMethodsDef description

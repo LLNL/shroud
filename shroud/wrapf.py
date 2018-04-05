@@ -193,9 +193,7 @@ class Wrapf(util.WrapperMixin):
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
-        name = node.name
-        unname = util.un_camel(name)
-        typedef = typemap.Typedef.lookup(name)
+        typedef = node.typedef
 
         fmt_class = node.fmtdict
 
@@ -236,18 +234,38 @@ class Wrapf(util.WrapperMixin):
 
         # Look for generics
         # splicer to extend generic
-        self._push_splicer('generic')
+#        self._push_splicer('generic')
+        f_type_decl = self.f_type_decl
         for key in sorted(self.f_type_generic.keys()):
             methods = self.f_type_generic[key]
             if len(methods) > 1:
-                self.f_type_decl.append('generic :: %s => &' % key)
-                self.f_type_decl.append(1)
-                self._create_splicer(key, self.f_type_decl)
-                for genname in methods[:-1]:
-                    self.f_type_decl.append(genname + ',  &')
-                self.f_type_decl.append(methods[-1])
-                self.f_type_decl.append(-1)
-        self._pop_splicer('generic')
+
+                # Look for any cpp_if declarations
+                any_cpp_if = False
+                for node in methods:
+                    if node.cpp_if:
+                        any_cpp_if = True
+                        break
+
+                if any_cpp_if:
+                    # If using cpp, add a generic line for each function
+                    # to avoid conditional/continuation problems.
+                    for node in methods:
+                        if node.cpp_if:
+                            f_type_decl.append('#' + node.cpp_if)
+                        f_type_decl.append('generic :: {} => {}'.format(
+                            key, node.fmtdict.F_name_function))
+                        if node.cpp_if:
+                            f_type_decl.append('#endif')
+                else:
+                    parts = [ 'generic :: ', key, ' => ' ]
+                    for node in methods:
+                        parts.append(node.fmtdict.F_name_function)
+                        parts.append(', ')
+                    del parts[-1]
+                    f_type_decl.append('\t'.join(parts))
+#                    self._create_splicer(key, self.f_type_decl)
+#        self._pop_splicer('generic')
 
         self._create_splicer('type_bound_procedure_part', self.f_type_decl)
         self.f_type_decl.extend([
@@ -498,8 +516,12 @@ class Wrapf(util.WrapperMixin):
                 iface.append('')
                 iface.append('interface ' + key)
                 iface.append(1)
-                for genname in generics:
-                    iface.append('module procedure ' + genname)
+                for node in generics:
+                    if node.cpp_if:
+                        iface.append('#' + node.cpp_if)
+                    iface.append('module procedure ' + node.fmtdict.F_name_impl)
+                    if node.cpp_if:
+                        iface.append('#endif')
                 iface.append(-1)
                 iface.append('end interface ' + key)
                 self._pop_splicer(key)
@@ -734,6 +756,8 @@ class Wrapf(util.WrapperMixin):
         c_interface = self.c_interface
         c_interface.append('')
 
+        if node.cpp_if:
+            c_interface.append('#' + node.cpp_if)
         c_interface.append(
             wformat('\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}'
                     '(\t{F_C_arguments}){F_C_result_clause}'
@@ -746,6 +770,8 @@ class Wrapf(util.WrapperMixin):
         c_interface.extend(arg_c_decl)
         c_interface.append(-1)
         c_interface.append(wformat('end {F_C_subprogram} {F_C_name}', fmt))
+        if node.cpp_if:
+            c_interface.append('#endif')
 
     def attr_allocatable(self, allocatable, node, arg, pre_call):
         """Add the allocatable attribute to the pre_call block.
@@ -1108,13 +1134,11 @@ class Wrapf(util.WrapperMixin):
             # then do not set up generic since only the
             # return type may be different (ex. getValue<T>())
             if cls and not is_ctor:
-                gname = fmt_func.F_name_function
                 self.f_type_generic.setdefault(
-                    fmt_func.F_name_generic, []).append(gname)
+                    fmt_func.F_name_generic, []).append(node)
             else:
-                gname = fmt_func.F_name_impl
                 self.f_function_generic.setdefault(
-                    fmt_func.class_prefix + fmt_func.F_name_generic, []).append(gname)
+                    fmt_func.class_prefix + fmt_func.F_name_generic, []).append(node)
         if cls:
             # Add procedure to derived type
             if is_static:
@@ -1173,6 +1197,8 @@ class Wrapf(util.WrapperMixin):
         if need_wrapper:
             impl = self.impl
             impl.append('')
+            if node.cpp_if:
+                impl.append('#' + node.cpp_if)
             if options.debug:
                 impl.append('! %s' % node.declgen)
                 if generated:
@@ -1192,6 +1218,8 @@ class Wrapf(util.WrapperMixin):
             impl.extend(post_call)
             impl.append(-1)
             impl.append(wformat('end {F_subprogram} {F_name_impl}', fmt_func))
+            if node.cpp_if:
+                impl.append('#endif')
         else:
             fmt_func.F_C_name = fmt_func.F_name_impl
 

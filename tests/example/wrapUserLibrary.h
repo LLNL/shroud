@@ -48,9 +48,11 @@
 #ifndef WRAPUSERLIBRARY_H
 #define WRAPUSERLIBRARY_H
 
+#include <stddef.h>
+#ifdef USE_MPI
 #include "mpi.h"
+#endif
 #include "sidre/wrapGroup.h"
-#include "stdlib.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
@@ -94,7 +96,11 @@ void AA_testoptional_2(int i, long j);
 size_t AA_test_size_t();
 
 #ifdef HAVE_MPI
-void AA_testmpi(MPI_Fint comm);
+void AA_testmpi_mpi(MPI_Fint comm);
+#endif
+
+#ifndef HAVE_MPI
+void AA_testmpi_serial();
 #endif
 
 void AA_testgroup1(SIDRE_group * grp);

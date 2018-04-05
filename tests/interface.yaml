@@ -50,6 +50,6 @@ language: c
 options:
   debug: True
 
-functions:
+declarations:
 - decl: void Function1()
 - decl: double Function2(double arg1, int arg2)

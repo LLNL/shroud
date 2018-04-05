@@ -80,6 +80,8 @@ int YYY_TES_function4_bufferify(const char * rv, int Lrv);
 
 void YYY_TES_fiveplus();
 
+void TES_init_ns1();
+
 #ifdef __cplusplus
 }
 #endif

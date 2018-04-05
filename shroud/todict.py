@@ -135,6 +135,12 @@ class ToDict(visitor.Visitor):
         )
         return d
 
+    def visit_CXXClass(self, node):
+        return dict(name=node.name)
+
+    def visit_Namespace(self, node):
+        return dict(name=node.name)
+
     def visit_EnumValue(self, node):
         if node.value is None:
             d = dict(name=node.name)
@@ -180,7 +186,7 @@ class ToDict(visitor.Visitor):
         )
 
         for key in [ 'copyright', 'cxx_header',
-                     'language', 'namespace' ]:
+                     'language' ]:
             value = getattr(node, key)
             if value:
                 d[key] = value
@@ -195,9 +201,11 @@ class ToDict(visitor.Visitor):
             cxx_header=node.cxx_header,
             format = self.visit(node.fmtdict),
             name=node.name,
+#            typename=node.typename,
+            typedef_name=node.typedef_name,
             options=self.visit(node.options),
         )
-        for key in ['namespace', 'python']:
+        for key in ['python']:
             value = getattr(node, key)
             if value:
                 d[key] = value
@@ -243,6 +251,7 @@ class ToDict(visitor.Visitor):
     def visit_EnumNode(self, node):
         d = dict(
             name=node.name,
+            typedef_name=node.typedef_name,
             ast=self.visit(node.ast),
             decl=node.decl,
             format=self.visit(node.fmtdict),
@@ -315,6 +324,12 @@ class PrintNode(visitor.Visitor):
     def visit_Constant(self, node):
         return node.value
 
+    def visit_CXXClass(self, node):
+        return 'class {};'.format(node.name)
+
+    def visit_Namespace(self, node):
+        return 'namespace {}'.format(node.name)
+
     def visit_EnumValue(self, node):
         if node.value is None:
             return node.name
@@ -325,6 +340,7 @@ class PrintNode(visitor.Visitor):
         values = ''
         return 'enum {} {{ {} }};'.format(node.name, self.comma_list(node.members))
 
+    # XXX - Add Declaration nodes, similar to gen_decl
 
 def print_node(node):
     """Convert node to original string.

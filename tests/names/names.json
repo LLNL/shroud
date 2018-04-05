@@ -127,7 +127,8 @@
                     "C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
                     "F_C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
                     "none": "foo"
-                }
+                }, 
+                "typedef_name": "Names"
             }, 
             {
                 "cxx_header": "", 
@@ -153,7 +154,8 @@
                     "cxx_class": "Names2"
                 }, 
                 "name": "Names2", 
-                "options": {}
+                "options": {}, 
+                "typedef_name": "Names2"
             }
         ], 
         "copyright": [
@@ -250,7 +252,8 @@
                 "name": "Color", 
                 "options": {
                     "bar": 4
-                }
+                }, 
+                "typedef_name": "Color"
             }
         ], 
         "format": {
@@ -293,6 +296,7 @@
             "LUA_prefix": "l_", 
             "LUA_result": "rv", 
             "LUA_state_var": "L", 
+            "LUA_this_call": "", 
             "PY_PyObject": "PyObject", 
             "PY_extern_C_begin": "extern \"C\" ", 
             "PY_header_filename": "pytestnamesmodule.hpp", 
@@ -600,7 +604,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 8, 
+                "_PTR_F_C_index": 9, 
                 "_fmtargs": {
                     "rv": {
                         "fmtc": {
@@ -736,7 +740,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 8, 
+                "_function_index": 9, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -842,6 +846,49 @@
                     "c_const": "", 
                     "function_name": "fiveplus", 
                     "underscore_name": "fiveplus"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_function_index": 8, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "init_ns1", 
+                        "pointer": []
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void init_ns1()", 
+                "declgen": "void init_ns1()", 
+                "format": {
+                    "C_call_code": "ns1::\tinit_ns1(\t);", 
+                    "C_call_list": "", 
+                    "C_name": "TES_init_ns1", 
+                    "C_prototype": "", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_call": "c_init_ns1", 
+                    "F_C_name": "c_init_ns1", 
+                    "F_arg_c_call": "", 
+                    "F_arguments": "", 
+                    "F_call_code": "call c_init_ns1()", 
+                    "F_name_function": "init_ns1", 
+                    "F_name_generic": "init_ns1", 
+                    "F_name_impl": "testnames_init_ns1", 
+                    "F_subprogram": "subroutine", 
+                    "PY_name_impl": "PY_init_ns1", 
+                    "c_const": "", 
+                    "function_name": "init_ns1", 
+                    "underscore_name": "init_ns1"
                 }, 
                 "options": {}
             }
@@ -968,7 +1015,7 @@
             "f_derived_type": "FNames", 
             "f_module": {
                 "name_module": [
-                    "names"
+                    "FNames"
                 ]
             }, 
             "f_statements": {
@@ -1336,7 +1383,7 @@
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PY_ctor": "PyInt_FromSize_t({c_var})", 
-            "c_header": "stdlib.h", 
+            "c_header": "<stddef.h>", 
             "c_type": "size_t", 
             "cxx_type": "size_t", 
             "f_cast": "int({f_var}, C_SIZE_T)", 

@@ -52,7 +52,7 @@ extern "C" {
 // splicer end C_definitions
 
 // void local_function1()
-// function_index=49
+// function_index=50
 void AA_local_function1()
 {
 // splicer begin function.local_function1
@@ -62,7 +62,7 @@ void AA_local_function1()
 }
 
 // bool isNameValid(const std::string & name +intent(in))
-// function_index=50
+// function_index=51
 bool AA_is_name_valid(const char * name)
 {
 // splicer begin function.is_name_valid
@@ -71,7 +71,7 @@ bool AA_is_name_valid(const char * name)
 }
 
 // bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=70
+// function_index=72
 bool AA_is_name_valid_bufferify(const char * name, int Lname)
 {
 // splicer begin function.is_name_valid_bufferify
@@ -80,7 +80,7 @@ bool AA_is_name_valid_bufferify(const char * name, int Lname)
 }
 
 // bool isInitialized()
-// function_index=51
+// function_index=52
 bool AA_is_initialized()
 {
 // splicer begin function.is_initialized
@@ -90,7 +90,7 @@ bool AA_is_initialized()
 }
 
 // void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-// function_index=52
+// function_index=53
 void AA_check_bool(bool arg1, bool * arg2, bool * arg3)
 {
 // splicer begin function.check_bool
@@ -100,7 +100,7 @@ void AA_check_bool(bool arg1, bool * arg2, bool * arg3)
 }
 
 // void test_names(const std::string & name +intent(in))
-// function_index=53
+// function_index=54
 void AA_test_names(const char * name)
 {
 // splicer begin function.test_names
@@ -111,7 +111,7 @@ void AA_test_names(const char * name)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=71
+// function_index=73
 void AA_test_names_bufferify(const char * name, int Lname)
 {
 // splicer begin function.test_names_bufferify
@@ -122,7 +122,7 @@ void AA_test_names_bufferify(const char * name, int Lname)
 }
 
 // void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
-// function_index=54
+// function_index=55
 void AA_test_names_flag(const char * name, int flag)
 {
 // splicer begin function.test_names_flag
@@ -133,7 +133,7 @@ void AA_test_names_flag(const char * name, int flag)
 }
 
 // void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)
-// function_index=72
+// function_index=74
 void AA_test_names_flag_bufferify(const char * name, int Lname,
     int flag)
 {
@@ -145,7 +145,7 @@ void AA_test_names_flag_bufferify(const char * name, int Lname,
 }
 
 // void testoptional()
-// function_index=68
+// function_index=70
 void AA_testoptional_0()
 {
 // splicer begin function.testoptional_0
@@ -155,7 +155,7 @@ void AA_testoptional_0()
 }
 
 // void testoptional(int i=1 +intent(in)+value)
-// function_index=69
+// function_index=71
 void AA_testoptional_1(int i)
 {
 // splicer begin function.testoptional_1
@@ -165,7 +165,7 @@ void AA_testoptional_1(int i)
 }
 
 // void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
-// function_index=55
+// function_index=56
 void AA_testoptional_2(int i, long j)
 {
 // splicer begin function.testoptional_2
@@ -175,7 +175,7 @@ void AA_testoptional_2(int i, long j)
 }
 
 // size_t test_size_t()
-// function_index=56
+// function_index=57
 size_t AA_test_size_t()
 {
 // splicer begin function.test_size_t
@@ -185,20 +185,32 @@ size_t AA_test_size_t()
 }
 
 // void testmpi(MPI_Comm comm +intent(in)+value)
-// function_index=57
+// function_index=58
 #ifdef HAVE_MPI
-void AA_testmpi(MPI_Fint comm)
+void AA_testmpi_mpi(MPI_Fint comm)
 {
-// splicer begin function.testmpi
+// splicer begin function.testmpi_mpi
     MPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);
     example::nested::testmpi(SHCXX_comm);
     return;
-// splicer end function.testmpi
+// splicer end function.testmpi_mpi
 }
 #endif  // ifdef HAVE_MPI
 
-// void testgroup1(DataGroup * grp +intent(in)+value)
-// function_index=58
+// void testmpi()
+// function_index=59
+#ifndef HAVE_MPI
+void AA_testmpi_serial()
+{
+// splicer begin function.testmpi_serial
+    example::nested::testmpi();
+    return;
+// splicer end function.testmpi_serial
+}
+#endif  // ifndef HAVE_MPI
+
+// void testgroup1(axom::sidre::Group * grp +intent(in)+value)
+// function_index=60
 void AA_testgroup1(SIDRE_group * grp)
 {
 // splicer begin function.testgroup1
@@ -209,8 +221,8 @@ void AA_testgroup1(SIDRE_group * grp)
 // splicer end function.testgroup1
 }
 
-// void testgroup2(const DataGroup * grp +intent(in)+value)
-// function_index=59
+// void testgroup2(const axom::sidre::Group * grp +intent(in)+value)
+// function_index=61
 void AA_testgroup2(const SIDRE_group * grp)
 {
 // splicer begin function.testgroup2
@@ -223,7 +235,7 @@ void AA_testgroup2(const SIDRE_group * grp)
 }
 
 // void FuncPtr1(void ( * get) +intent(in)+value())
-// function_index=60
+// function_index=62
 /**
  * \brief subroutine
  *
@@ -237,7 +249,7 @@ void AA_func_ptr1(void ( * get)())
 }
 
 // void FuncPtr2(double * ( * get) +intent(in)())
-// function_index=61
+// function_index=63
 /**
  * \brief return a pointer
  *
@@ -251,7 +263,7 @@ void AA_func_ptr2(double * ( * get)())
 }
 
 // void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
-// function_index=62
+// function_index=64
 /**
  * \brief abstract argument
  *
@@ -265,7 +277,7 @@ void AA_func_ptr3(double ( * get)(int i, int))
 }
 
 // void FuncPtr4(double ( * get) +intent(in)+value(double +value, int +value))
-// function_index=63
+// function_index=65
 /**
  * \brief abstract argument
  *
@@ -279,7 +291,7 @@ void AA_func_ptr4(double ( * get)(double, int))
 }
 
 // void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
-// function_index=64
+// function_index=66
 void AA_func_ptr5(void ( * get)(int verylongname1, int verylongname2,
     int verylongname3, int verylongname4, int verylongname5,
     int verylongname6, int verylongname7, int verylongname8,
@@ -292,7 +304,7 @@ void AA_func_ptr5(void ( * get)(int verylongname1, int verylongname2,
 }
 
 // void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
-// function_index=65
+// function_index=67
 void AA_verylongfunctionname1(int * verylongname1, int * verylongname2,
     int * verylongname3, int * verylongname4, int * verylongname5,
     int * verylongname6, int * verylongname7, int * verylongname8,
@@ -307,7 +319,7 @@ void AA_verylongfunctionname1(int * verylongname1, int * verylongname2,
 }
 
 // int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-// function_index=66
+// function_index=68
 int AA_verylongfunctionname2(int verylongname1, int verylongname2,
     int verylongname3, int verylongname4, int verylongname5,
     int verylongname6, int verylongname7, int verylongname8,
@@ -323,7 +335,7 @@ int AA_verylongfunctionname2(int verylongname1, int verylongname2,
 }
 
 // void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
-// function_index=67
+// function_index=69
 /**
  * \brief Test multidimensional arrays with allocatable
  *

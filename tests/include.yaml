@@ -46,32 +46,33 @@ copyright:
 
 
 cxx_header: global_header.hpp
-namespace: one two
 
 options:
   show_splicer_comments: false
 
-types:
-   CustomType:
-      typedef : int
+declarations:
+- decl: typedef int CustomType
+  fields:
       c_header : type_header.h
       cxx_header : type_header.hpp
 
-classes:
-  - name: Class1
+- decl: namespace one
+  declarations:
+  - decl: namespace two
+    declarations:
+    - decl: void function1()
+- decl: namespace three
+  declarations:
+  - decl: class Class1
     cxx_header: class_header.hpp
-    namespace: three
-    methods:
-    -  decl: void method1(CustomType arg1)
+    declarations:
+    - decl: void method1(CustomType arg1)
 
-  - name: Class2
-#    cxx_header: no header, will use global.cxx_header
-    namespace: -no namespace
-    methods:
-             # do not use CustomType to avoid header file
-    -  decl: void method1(MPI_Comm comm)
-             # Use another class in the file
-    -  decl: void method2(Class1 * c2)
+- decl: class Class2
+#  cxx_header: no header, will use global.cxx_header
+  declarations:
+           # do not use CustomType to avoid header file
+  - decl: void method1(MPI_Comm comm)
+           # Use another class in the file
+  - decl: void method2(three::Class1 * c2)
 
-functions:
--  decl: void function1()
