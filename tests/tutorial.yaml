@@ -72,7 +72,13 @@ declarations:
     options:
        bar: 4
     format:
-       baz: 4  
+       baz: 4
+
+  - decl: |
+      struct struct1 {
+        int i;
+        double d;
+      };
 
   - decl: void Function1()
   - decl: double Function2(double arg1, int arg2)

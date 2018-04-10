@@ -989,6 +989,31 @@ def create_class_typedef(cls):
     fmt_class.C_type_name = typedef.c_type
     return typedef
 
+def create_struct_typedef(cls):
+    fmt_class = cls.fmtdict
+    cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
+    type_name = cxx_name.replace('\t', '')
+
+    typedef = Typedef.lookup(cxx_name)
+    if typedef is None:
+        # unname = util.un_camel(name)
+        f_name = cls.name.lower()
+        c_name = fmt_class.C_prefix + f_name
+        typedef = Typedef(
+            type_name,
+            base='shadow',
+            cxx_type=cxx_name,
+            c_type=c_name,
+            f_derived_type=fmt_class.F_derived_name,
+            f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
+#            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
+            )
+        typedef_shadow_defaults(typedef)
+        Typedef.register(type_name, typedef)
+
+    fmt_class.C_type_name = typedef.c_type
+    return typedef
+
 
 def typedef_shadow_defaults(typedef):
     """Add some defaults to typedef.

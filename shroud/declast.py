@@ -1247,7 +1247,7 @@ class EnumValue(Node):
 
 class Struct(Node):
     """An struct statement.
-    struct name { int i; double d };
+    struct name { int i; double d; };
     """
     def __init__(self, name):
         self.name = name
