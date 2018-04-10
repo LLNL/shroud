@@ -83,11 +83,16 @@ def generate(fp):
     class1.add_enum('DIRECTION', ['UP', 'DOWN', 'LEFT', 'RIGHT'])
 #    class1.add_function('AcceptEnum', None, [param('MyEnum_e', 'value')])
 
+    class1.add_instance_attribute('m_flag', 'int')
     class1.add_constructor([param('int', 'flag')])
     class1.add_constructor([])
     class1.add_method('Method1', None, [])
 
-    sclass = namespace.add_class("Singleton", is_singleton=True)
+    struct = namespace.add_struct('struct1')
+    struct.add_instance_attribute('i', 'int')
+    struct.add_instance_attribute('d', 'double')
+
+    sclass = mod.add_class("Singleton", is_singleton=True)
     sclass.add_method("instancePtr", retval("Singleton*", caller_owns_return=True), [],
                       is_static=True)
 
