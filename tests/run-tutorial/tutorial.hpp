@@ -64,6 +64,12 @@ enum Color {
 
 typedef int TypeID;
 
+struct struct1 {
+  int i;
+  double d;
+};
+
+
 void Function1();
 
 double Function2(double arg1, int arg2);
@@ -141,6 +147,10 @@ void vector_string_fill(std::vector< std::string > &arg);
 void vector_string_append(std::vector< std::string > &arg);
 
 int callback1(int in, int (*incr)(int));
+
+struct1 returnStruct(int i, double d);
+struct1 *returnStructPtr(int i, double d);
+void freeStruct(struct1 *arg1);
 
 const std::string& LastFunctionCalled();
 

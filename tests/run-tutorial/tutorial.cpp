@@ -366,6 +366,29 @@ int callback1(int in, int (*incr)(int))
 
 //----------------------------------------------------------------------
 
+struct1 returnStruct(int i, double d)
+{
+  struct1 s;
+  s.i = i;
+  s.d = d;
+  return s;
+}
+
+struct1 *returnStructPtr(int i, double d)
+{
+  struct1 *s = new struct1;
+  s->i = i;
+  s->d = d;
+  return s;
+}
+
+void freeStruct(struct1 *arg1)
+{
+  delete arg1;
+}
+
+//----------------------------------------------------------------------
+
 const std::string& LastFunctionCalled()
 {
     return last_function_called;
