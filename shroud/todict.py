@@ -154,6 +154,13 @@ class ToDict(visitor.Visitor):
             members=self.visit(node.members)
         )
         return d
+
+    def visit_Struct(self, node):
+        d = dict(
+            name=node.name,
+            members=self.visit(node.members)
+        )
+        return d
         
 
 ######################################################################
@@ -304,6 +311,15 @@ class PrintNode(visitor.Visitor):
         n.pop()
         return ''.join(n)
 
+    def stmt_list(self, lst):
+        if not lst:
+            return ''
+        n = []
+        for item in lst:
+            n.append(self.visit(item))
+            n.append(';')
+        return ''.join(n)
+
     def visit_Identifier(self, node):
         if node.args == None:
             return node.name
@@ -330,6 +346,9 @@ class PrintNode(visitor.Visitor):
     def visit_Namespace(self, node):
         return 'namespace {}'.format(node.name)
 
+    def visit_Declaration(self, node):
+        return str(node)
+
     def visit_EnumValue(self, node):
         if node.value is None:
             return node.name
@@ -337,8 +356,10 @@ class PrintNode(visitor.Visitor):
             return '{} = {}'.format(node.name, self.visit(node.value))
 
     def visit_Enum(self, node):
-        values = ''
         return 'enum {} {{ {} }};'.format(node.name, self.comma_list(node.members))
+
+    def visit_Struct(self, node):
+        return 'struct {} {{ {} }};'.format(node.name, self.stmt_list(node.members))
 
     # XXX - Add Declaration nodes, similar to gen_decl
 

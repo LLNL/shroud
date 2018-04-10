@@ -1196,6 +1196,43 @@ class CheckEnum(unittest.TestCase):
         self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))
 
 
+class CheckStruct(unittest.TestCase):
+    def test_struct1(self):
+        r = declast.check_decl('struct struct1 { int i; double d; };')
+        self.assertEqual('struct struct1 { int i;double d; };', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            "members": [
+                {
+                    "attrs": {
+                        "_typename": "int"
+                    },
+                    "const": False,
+                    "declarator": {
+                        "name": "i",
+                        "pointer": []
+                    },
+                    "specifier": [
+                        "int"
+                    ]
+                },
+                {
+                    "attrs": {
+                        "_typename": "double"
+                    },
+                    "const": False,
+                    "declarator": {
+                        "name": "d",
+                        "pointer": []
+                    },
+                    "specifier": [
+                    "double"
+                    ]
+                }
+            ],
+            "name": "struct1"
+        })
+
+
 class CheckClass(unittest.TestCase):
 
     def XXXsetUp(self):

@@ -456,6 +456,8 @@ class Parser(ExprParser):
             node = self.class_statement()
         elif self.token.typ == 'ENUM':
             node = self.enum_statement()
+        elif self.token.typ == 'STRUCT':
+            node = self.struct_statement()
         elif self.token.typ == 'NAMESPACE':
             node = self.namespace_statement()
         else:
@@ -644,6 +646,20 @@ class Parser(ExprParser):
                 break
         self.mustbe('RCURLY')
         self.exit('enum_statement', str(members))
+        return node
+
+    def struct_statement(self):
+        self.enter('struct_statement')
+        self.mustbe('STRUCT')
+        name = self.mustbe('ID')
+        self.mustbe('LCURLY')
+        node = Struct(name.value)
+        members = node.members
+        while self.token.typ != 'RCURLY':
+            members.append( self.declaration())
+            self.mustbe('SEMICOLON')
+        self.mustbe('RCURLY')
+        self.exit('struct_statement')
         return node
 
 ######################################################################
@@ -1227,6 +1243,15 @@ class EnumValue(Node):
     def __init__(self, name, value=None):
         self.name = name
         self.value = value
+
+
+class Struct(Node):
+    """An struct statement.
+    struct name { int i; double d };
+    """
+    def __init__(self, name):
+        self.name = name
+        self.members = []
 
 
 def check_decl(decl, namespace=None, template_types=[], trace=False):
