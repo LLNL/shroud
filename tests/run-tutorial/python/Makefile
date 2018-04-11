@@ -55,6 +55,7 @@ VPATH = \
 OBJS = \
     tutorial.o \
     pyTutorialmodule.o \
+    pystruct1type.o \
     pyClass1type.o \
     pySingletontype.o \
     pyTutorialhelper.o

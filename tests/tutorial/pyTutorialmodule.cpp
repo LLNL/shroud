@@ -1021,6 +1021,15 @@ inittutorial(void)
 
     import_array();
 
+    // struct1
+    PY_struct1_Type.tp_new   = PyType_GenericNew;
+    PY_struct1_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_struct1_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_struct1_Type);
+    PyModule_AddObject(m, "struct1", (PyObject *)&PY_struct1_Type);
+
+
     // Class1
     PY_Class1_Type.tp_new   = PyType_GenericNew;
     PY_Class1_Type.tp_alloc = PyType_GenericAlloc;

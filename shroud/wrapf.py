@@ -151,7 +151,10 @@ class Wrapf(util.WrapperMixin):
             name = node.name
             # how to decide module name, module per class
 #            module_name = node.options.setdefault('module_name', name.lower())
-            self.wrap_class(node)
+            if node.as_struct:
+                self.wrap_struct(node)
+            else:
+                self.wrap_class(node)
             if options.F_module_per_class:
                 self._pop_splicer('class')
                 self._end_output_file()
@@ -190,6 +193,11 @@ class Wrapf(util.WrapperMixin):
             self.write_module(newlibrary, None)
 
         self.write_c_helper()
+
+    def wrap_struct(self, node):
+        """A struct must be bind(C)-able. i.e. all POD.
+        """
+        pass
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))

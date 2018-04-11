@@ -198,8 +198,11 @@ class NamespaceMixin(object):
         A struct is exactly like a class to the C++ compiler.
         From the YAML, a struct is a single ast and a class is broken into parts.
         """
-        node = StructNode(decl, self, ast=ast, **kwargs)
-#        self.structs.append(node)
+        name = ast.name
+        node = ClassNode(name, self, as_struct=True, **kwargs)
+        for member in ast.members:
+            node.add_variable(str(member), member)
+        self.classes.append(node)
         self.symbols[node.name] = node
         return node
 
@@ -633,6 +636,7 @@ class ClassNode(AstNode, NamespaceMixin):
                  cxx_header='',
                  format=None,
                  options=None,
+                 as_struct=False,
                  **kwargs):
         """Create ClassNode.
         """
@@ -644,6 +648,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.enums = []
         self.functions = []
         self.variables = []
+        self.as_struct = as_struct   # if True, treat as struct, else as shadow class
 
         self.python = kwargs.get('python', {})
         self.cpp_if = kwargs.get('cpp_if', None)
@@ -658,7 +663,10 @@ class ClassNode(AstNode, NamespaceMixin):
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
         self.symbols = {}
-        self.typedef = typemap.create_class_typedef(self)
+        if as_struct:
+            self.typedef = typemap.create_struct_typedef(self)
+        else:
+            self.typedef = typemap.create_class_typedef(self)
         self.typedef_name = self.typedef.name   # fully qualified name
 
 ##### namespace behavior
@@ -962,79 +970,6 @@ class EnumNode(AstNode):
         self.typedef = typemap.create_enum_typedef(self)
         self.typedef_name = self.typedef.name
         # also 'enum class foo' will alter scope
-
-######################################################################
-
-class StructNode(AstNode):
-    """
-        - decl: |
-              struct name {
-                int i;
-                double d;
-              };
-          options:
-             bar: 4
-          format:
-             baz: 4  
-    """
-    def __init__(self, decl, parent,
-                 format=None,
-                 parentoptions=None,
-                 ast=None,
-                 options=None,
-                 **kwargs):
-
-        # From arguments
-        self.parent = parent
-
-        self.options = util.Scope(parent=parentoptions or parent.options)
-        if options:
-            self.options.update(options, replace=True)
-
-#        self.default_format(parent, format, kwargs)
-        self.fmtdict = util.Scope(
-            parent = parent.fmtdict,
-        )
-
-        if not decl:
-            raise RuntimeError("StructNode missing decl")
-
-        self.decl = decl
-        if ast is None:
-            ast = declast.check_decl(decl)
-        if not isinstance(ast, declast.Struct):
-            raise RuntimeError("Declaration is not a structure: " + decl)
-        self.ast = ast
-        self.name = ast.name
-
-        # format for struct
-        fmt_struct = self.fmtdict
-
-        # Treat similar to class
-#        fmt_struct.class_scope = self.name + '::'
-        fmt_struct.struct_name = ast.name
-        fmt_struct.struct_lower = ast.name.lower()
-        fmt_struct.struct_upper = ast.name.upper()
-        fmt_struct.F_derived_name = self.name.lower(),
-        if fmt_struct.cxx_class:
-            fmt_struct.namespace_scope =  fmt_struct.namespace_scope + fmt_struct.cxx_class + '::'
-
-        # format for each struct member
-        fmtmembers = {}
-        evalue = 0
-        for member in ast.members:
-            fmt = util.Scope(parent=fmt_struct)
-#            fmt.struct_member_name = member.name
-#            fmt.struct_member_lower = member.name.lower()
-#            fmt.struct_member_upper = member.name.upper()
-            fmtmembers[member.name] = fmt
-        self._fmtmembers = fmtmembers
-
-        # Add to namespace
-        self.typename = self.parent.scope + self.name
-        self.scope = self.typename + '::'
-        self.typedef = typemap.create_struct_typedef(self)
-        self.typedef_name = self.typedef.name
 
 ######################################################################
 

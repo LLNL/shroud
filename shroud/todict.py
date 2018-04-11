@@ -212,7 +212,7 @@ class ToDict(visitor.Visitor):
             typedef_name=node.typedef_name,
             options=self.visit(node.options),
         )
-        for key in ['python']:
+        for key in ['as_struct', 'python']:
             value = getattr(node, key)
             if value:
                 d[key] = value

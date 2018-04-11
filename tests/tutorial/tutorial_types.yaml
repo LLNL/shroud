@@ -64,3 +64,12 @@ declarations:
         f_module:
           tutorial_mod:
           - class1
+    - type: struct1
+      fields:
+        base: shadow
+        cxx_type: tutorial::struct1
+        c_type: TUT_struct1
+        f_derived_type: struct1
+        f_module:
+          tutorial_mod:
+          - struct1

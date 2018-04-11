@@ -2,6 +2,8 @@ Read yaml tutorial.yaml
 Skipping std::string, unable to create C wrapper for function returning Function4a instance (must return a pointer or reference).
 Read splicer ftutorialsplicer.f
 Close tutorial_types.yaml
+class struct1
+Close wrapstruct1.h
 class Class1
 C method Class1() +name(new)
 C method Class1(int flag +intent(in)+value) +name(new)
@@ -131,6 +133,8 @@ C-interface, Fortran function int callback1(int in +intent(in)+value, int ( * in
 C-interface, Fortran function const std::string & LastFunctionCalled() +len(30)
 C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapftutorial.f
+class struct1
+Close pystruct1type.cpp
 class Class1
 Python method Class1() +name(new)
 Python method Class1(int flag +intent(in)+value) +name(new)

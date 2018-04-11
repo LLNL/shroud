@@ -1,4 +1,5 @@
 Wrote tutorial_types.yaml
+Wrote wrapstruct1.h
 Wrote wrapClass1.h
 Wrote wrapClass1.cpp
 Wrote wrapSingleton.h
@@ -6,6 +7,7 @@ Wrote wrapSingleton.cpp
 Wrote wrapTutorial.h
 Wrote wrapTutorial.cpp
 Wrote wrapftutorial.f
+Wrote pystruct1type.cpp
 Wrote pyClass1type.cpp
 Wrote pySingletontype.cpp
 Wrote pyTutorialmodule.hpp
