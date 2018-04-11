@@ -165,31 +165,28 @@ class NamespaceMixin(object):
         typemap.Typedef.register(typedef.name, typedef)
         return typedef
 
-    def add_enum(self, decl, parentoptions=None, ast=None, **kwargs):
+    def add_enum(self, decl, ast=None, **kwargs):
         """Add an enumeration.
         """
-        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
-                        ast=ast, **kwargs)
+        node = EnumNode(decl, parent=self, ast=ast, **kwargs)
         self.enums.append(node)
         self.symbols[node.name] = node
         return node
 
-    def add_function(self, decl, parentoptions=None, ast=None, **kwargs):
+    def add_function(self, decl, ast=None, **kwargs):
         """Add a function.
 
         decl - C/C++ declaration of function
         ast  - parsed declaration. None if not yet parsed.
         """
-        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
-                               ast=ast, **kwargs)
+        fcnnode = FunctionNode(decl, parent=self, ast=ast, **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
 
-    def add_namespace(self, name, parentoptions=None, **kwargs):
+    def add_namespace(self, name, **kwargs):
         """Add an namespace
         """
-        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
-                             **kwargs)
+        node = NamespaceNode(name, parent=self, **kwargs)
         self.symbols[name] = node
         return node
 
@@ -765,11 +762,10 @@ class FunctionNode(AstNode):
     """
     def __init__(self, decl, parent,
                  format=None,
-                 parentoptions=None,
                  ast=None,
                  options=None,
                  **kwargs):
-        self.options = util.Scope(parent=parentoptions or parent.options)
+        self.options = util.Scope(parent.options)
         if options:
             self.options.update(options, replace=True)
 
@@ -909,7 +905,6 @@ class EnumNode(AstNode):
     """
     def __init__(self, decl, parent,
                  format=None,
-                 parentoptions=None,
                  ast=None,
                  options=None,
                  **kwargs):
@@ -917,7 +912,7 @@ class EnumNode(AstNode):
         # From arguments
         self.parent = parent
 
-        self.options = util.Scope(parent=parentoptions or parent.options)
+        self.options = util.Scope(parent.options)
         if options:
             self.options.update(options, replace=True)
 

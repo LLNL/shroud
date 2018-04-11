@@ -275,12 +275,10 @@ class GenFunctions(object):
 
         if not found_ctor:
             added.append(ast.FunctionNode(
-                '{}()'.format(cls.name),
-                parent=cls, parentoptions=cls.options))
+                '{}()'.format(cls.name), parent=cls))
         if not found_dtor:
             added.append(ast.FunctionNode(
-                '~{}()'.format(cls.name),
-                parent=cls, parentoptions=cls.options))
+                '~{}()'.format(cls.name), parent=cls))
 
         return added
 
