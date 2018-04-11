@@ -196,8 +196,35 @@ class Wrapf(util.WrapperMixin):
 
     def wrap_struct(self, node):
         """A struct must be bind(C)-able. i.e. all POD.
+        No methods.
         """
-        pass
+        self.log.write("class {1.name}\n".format(self, node))
+        typedef = node.typedef
+
+        fmt_class = node.fmtdict
+
+        fmt_class.F_derived_name = typedef.f_derived_type
+
+        # type declaration
+        output = self.f_type_decl
+        output.append('')
+        self._push_splicer(fmt_class.cxx_class)
+        output.extend([
+                '',
+                wformat('type, bind(C) :: {F_derived_name}', fmt_class),
+                1,
+                ])
+        for var in node.variables:
+            ast = var.ast
+            result_type = ast.typename
+            typedef = typemap.Typedef.lookup(result_type)
+            output.append(ast.gen_arg_as_fortran(var))
+            self.update_f_module(self.module_use, typedef.f_module)
+        output.extend([
+                 -1,
+                 wformat('end type {F_derived_name}', fmt_class),
+                 ])
+        self._pop_splicer(fmt_class.cxx_class)
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))

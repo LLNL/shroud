@@ -47,7 +47,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module tutorial_mod
-    use iso_c_binding, only : C_INT, C_PTR
+    use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -65,6 +65,12 @@ module tutorial_mod
     integer(C_INT), parameter :: color_red = 0
     integer(C_INT), parameter :: color_blue = 1
     integer(C_INT), parameter :: color_white = 2
+
+
+    type, bind(C) :: struct1
+        integer(C_INT) :: i
+        real(C_DOUBLE) :: d
+    end type struct1
 
     ! splicer begin class.Class1.module_top
     ! splicer end class.Class1.module_top
