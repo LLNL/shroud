@@ -53,6 +53,7 @@ options:
 
 
 declarations:
+- decl: extern int global_flag;
 - decl: namespace tutorial
   declarations:
 
@@ -80,7 +81,7 @@ declarations:
         double d;
       };
 
-  - decl: extern int global_flag;
+  - decl: extern int tutorial_flag;
 
   - decl: void Function1()
   - decl: double Function2(double arg1, int arg2)

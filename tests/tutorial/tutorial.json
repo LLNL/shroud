@@ -7639,6 +7639,15 @@
                 }, 
                 "name": "global_flag", 
                 "options": {}
+            }, 
+            {
+                "format": {
+                    "var_lower": "tutorial_flag", 
+                    "var_name": "tutorial_flag", 
+                    "var_upper": "TUTORIAL_FLAG"
+                }, 
+                "name": "tutorial_flag", 
+                "options": {}
             }
         ]
     }, 

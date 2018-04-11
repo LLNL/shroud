@@ -47,6 +47,8 @@
 #include <string>
 #include <vector>
 
+extern int global_flag;
+
 namespace tutorial
 {
 
@@ -69,7 +71,7 @@ struct struct1 {
   double d;
 };
 
-extern int global_flag;
+extern int tutorial_flag;
 
 void Function1();
 

@@ -43,10 +43,12 @@
 
 #include "tutorial.hpp"
 
+int global_flag;
+
 namespace tutorial
 {
 
-int global_flag;
+int tutorial_flag;
 
 static std::string last_function_called;
 
