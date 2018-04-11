@@ -520,21 +520,24 @@ class Wrapf(util.WrapperMixin):
             for oname in only:
                 module[oname] = True
 
-    def sort_module_info(self, modules, module_name):
+    def sort_module_info(self, modules, module_name, imports=None):
         """Return USE statements based on modules.
-        Skip module_name.  Usually the current module.
+        Save any names which must be imported in imports to be used with
+        interface blocks.
         """
         arg_f_use = []
         for mname in sorted(modules):
-            if mname == module_name:
-                continue
             only = modules[mname]
-            if only:
-                snames = sorted(only.keys())
-                arg_f_use.append('use %s, only : %s' % (
-                        mname, ', '.join(snames)))
+            if mname == module_name:
+                if imports is not None:
+                    imports.update(only)
             else:
-                arg_f_use.append('use %s' % mname)
+                if only:
+                    snames = sorted(only.keys())
+                    arg_f_use.append('use %s, only : %s' % (
+                        mname, ', '.join(snames)))
+                else:
+                    arg_f_use.append('use %s' % mname)
         return arg_f_use
 
     def dump_generic_interfaces(self):
@@ -786,7 +789,7 @@ class Wrapf(util.WrapperMixin):
                                      result_typedef.f_c_module or
                                      result_typedef.f_module)
 
-        arg_f_use = self.sort_module_info(modules, None)
+        arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name, imports)
 
         c_interface = self.c_interface
         c_interface.append('')

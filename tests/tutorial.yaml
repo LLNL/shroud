@@ -306,6 +306,21 @@ declarations:
       wrap_python: False
   
 ##################################################
+
+#  - decl: struct1 returnStruct(int i, double d);
+#    options:
+#      wrap_lua: False
+#      wrap_python: False
+#  - decl: struct1 *returnStructPtr(int i, double d);
+#    options:
+#      wrap_lua: False
+#      wrap_python: False
+#  - decl: void freeStruct(struct1 *arg1);
+#    options:
+#      wrap_lua: False
+#      wrap_python: False
+
+##################################################
 # Used with testing
   - decl: const std::string& LastFunctionCalled() +len(30)
 

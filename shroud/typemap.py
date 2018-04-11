@@ -1009,6 +1009,12 @@ def create_struct_typedef(cls):
 #            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
             )
         typedef_shadow_defaults(typedef)
+
+        # struct specific overrides from shadow
+        typedef.f_c_type = typedef.f_type
+        typedef.f_c_module = None
+        typedef.f_statements = {}
+
         Typedef.register(type_name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
