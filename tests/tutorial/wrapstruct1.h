@@ -56,8 +56,11 @@
 extern "C" {
 #endif
 
-// declaration of shadow types
-struct s_TUT_struct1;
+
+struct s_TUT_struct1 {
+    int i;
+    double d;
+};
 typedef struct s_TUT_struct1 TUT_struct1;
 
 // splicer begin class.struct1.C_declarations

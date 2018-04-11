@@ -218,7 +218,7 @@ class Wrapf(util.WrapperMixin):
             ast = var.ast
             result_type = ast.typename
             typedef = typemap.Typedef.lookup(result_type)
-            output.append(ast.gen_arg_as_fortran(var))
+            output.append(ast.gen_arg_as_fortran())
             self.update_f_module(self.module_use, typedef.f_module)
         output.extend([
                  -1,

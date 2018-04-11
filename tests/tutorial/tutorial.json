@@ -6,7 +6,6 @@
                 "as_struct": true, 
                 "cxx_header": "", 
                 "format": {
-                    "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapstruct1.h", 
                     "C_impl_filename": "wrapstruct1.cpp", 
                     "C_type_name": "TUT_struct1", 

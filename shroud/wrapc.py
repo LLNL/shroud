@@ -84,6 +84,7 @@ class Wrapc(util.WrapperMixin):
         self.header_proto_c = []
         self.impl = []
         self.enum_impl = []
+        self.struct_impl = []
         self.c_helper = {}
 
     def wrap_library(self):
@@ -110,7 +111,10 @@ class Wrapc(util.WrapperMixin):
         fmt = node.fmtdict
         self._begin_output_file()
         if cls:
-            self.wrap_class(cls)
+            if cls.as_struct:
+                self.wrap_struct(cls)
+            else:
+                self.wrap_class(cls)
         else:
             self.wrap_enums(library)
             self.wrap_functions(library)
@@ -175,6 +179,11 @@ class Wrapc(util.WrapperMixin):
         if self.enum_impl:
             write_file = True
             output.extend(self.enum_impl)
+
+        if self.struct_impl:
+            write_file = True
+            output.extend(self.struct_impl)
+
         if self.header_forward:
             output.extend([
                 '',
@@ -286,6 +295,32 @@ class Wrapc(util.WrapperMixin):
             self.config.cfiles.append(
                 os.path.join(self.config.c_fortran_dir, fname))
             self.write_output_file(fname, self.config.c_fortran_dir, output)
+
+    def wrap_struct(self, node):
+        """A C++ struct must all POD.
+        Only need to wrap if in a namespace.
+        """
+        self.log.write("class {1.name}\n".format(self, node))
+        typedef = node.typedef
+        cname = typedef.c_type
+
+        output = self.struct_impl
+        output.append('')
+        output.extend([
+            '',
+            'struct s_{C_type_name} {{'.format(C_type_name=cname),
+            1,
+        ])
+        for var in node.variables:
+            ast = var.ast
+            result_type = ast.typename
+            typedef = typemap.Typedef.lookup(result_type)
+            output.append(ast.gen_arg_as_c() + ';')
+        output.extend([
+            -1,
+            '};',
+            'typedef struct s_{C_type_name} {C_type_name};'.format(C_type_name=cname),
+        ])
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
