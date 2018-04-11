@@ -274,6 +274,12 @@ contains
     str1%d = 3.0_C_DOUBLE
     rvd = accept_struct_in_ptr(str1)
     call assert_equals(6.0_C_DOUBLE, rvd, "accept_struct_in_ptr")
+
+    str1%i = 0
+    str1%d = 0.0
+    call accept_struct_out_ptr(str1, 4_C_INT, 4.5_C_DOUBLE)
+    call assert_equals(4_C_INT,      str1%i, "accept_struct_out_ptr i field")
+    call assert_equals(4.5_C_DOUBLE, str1%d, "accept_struct_out_ptr d field")
   end subroutine test_struct1
 
   subroutine test_class1

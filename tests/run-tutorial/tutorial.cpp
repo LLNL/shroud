@@ -401,6 +401,13 @@ double acceptStructInPtr(struct1 *arg)
   return arg->i + arg->d;
 }
 
+void acceptStructOutPtr(struct1 *arg, int i, double d)
+{
+  arg->i = i;
+  arg->d = d;
+  return;
+}
+
 
 //----------------------------------------------------------------------
 

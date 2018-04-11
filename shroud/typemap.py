@@ -1123,6 +1123,17 @@ def typedef_struct_defaults(typedef):
                 '{cxx_var}.c = {c_ptr}{c_var};',
             ],
         ),
+        intent_out=dict(
+            c_helper=helper,
+            cxx_local_var='union',
+            pre_call=[
+                # Create union and assign to C type
+                '%s {cxx_var};' % helper,
+            ],
+            post_call=[
+                '{c_ptr}{c_var} = {cxx_var}.c;',
+            ],
+        ),
         result=dict(
             c_helper=helper,
             return_code=[

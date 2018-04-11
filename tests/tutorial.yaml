@@ -328,6 +328,10 @@ declarations:
     options:
       wrap_lua: False
       wrap_python: False
+  - decl: void acceptStructOutPtr(struct1 *arg +intent(out), int i, double d)
+    options:
+      wrap_lua: False
+      wrap_python: False
 
 ##################################################
 # Used with testing

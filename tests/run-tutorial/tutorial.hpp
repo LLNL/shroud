@@ -156,6 +156,7 @@ struct1 *returnStructPtr(int i, double d);
 void freeStruct(struct1 *arg1);
 double acceptStructIn(struct1 arg);
 double acceptStructInPtr(struct1 *arg);
+void acceptStructOutPtr(struct1 *arg, int i, double d);
 
 const std::string& LastFunctionCalled();
 
