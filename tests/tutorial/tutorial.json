@@ -8530,14 +8530,12 @@
             "c_type": "TUT_struct1", 
             "cxx_to_c": "\tstatic_cast<{c_const}TUT_struct1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
             "cxx_type": "tutorial::\tstruct1", 
-            "f_c_type": "type(struct1)", 
             "f_derived_type": "struct1", 
             "f_module": {
                 "tutorial_mod": [
                     "struct1"
                 ]
             }, 
-            "f_statements": {}, 
             "f_type": "type(struct1)", 
             "forward": "tutorial::\tstruct1", 
             "py_statements": {

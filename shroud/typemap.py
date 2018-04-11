@@ -989,38 +989,6 @@ def create_class_typedef(cls):
     fmt_class.C_type_name = typedef.c_type
     return typedef
 
-def create_struct_typedef(cls):
-    fmt_class = cls.fmtdict
-    cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
-    type_name = cxx_name.replace('\t', '')
-
-    typedef = Typedef.lookup(cxx_name)
-    if typedef is None:
-        # unname = util.un_camel(name)
-        f_name = cls.name.lower()
-        c_name = fmt_class.C_prefix + f_name
-        typedef = Typedef(
-            type_name,
-            base='shadow',
-            cxx_type=cxx_name,
-            c_type=c_name,
-            f_derived_type=fmt_class.F_derived_name,
-            f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
-#            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
-            )
-        typedef_shadow_defaults(typedef)
-
-        # struct specific overrides from shadow
-        typedef.f_c_type = typedef.f_type
-        typedef.f_c_module = None
-        typedef.f_statements = {}
-
-        Typedef.register(type_name, typedef)
-
-    fmt_class.C_type_name = typedef.c_type
-    return typedef
-
-
 def typedef_shadow_defaults(typedef):
     """Add some defaults to typedef.
     When dumping typedefs to a file, only a subset is written
@@ -1057,6 +1025,91 @@ def typedef_shadow_defaults(typedef):
             )
         )
     typedef.f_c_module={ 'iso_c_binding': ['C_PTR']}
+
+    typedef.py_statements=dict(
+        intent_in=dict(
+            cxx_local_var='pointer',
+            post_parse=[
+                '{c_const}%s * {cxx_var} = '
+                '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,
+            ],
+        ),
+        intent_inout=dict(
+            cxx_local_var='pointer',
+            post_parse=[
+                '{c_const}%s * {cxx_var} = '
+                '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,
+            ],
+        ),
+        intent_out=dict(
+            post_call=[
+                ('{PyObject} * {py_var} = '
+                 'PyObject_New({PyObject}, &{PyTypeObject});'),
+                '{py_var}->{PY_obj} = {cxx_addr}{cxx_var};',
+            ]
+        ),
+    )
+#    if not typedef.PY_PyTypeObject:
+#        typedef.PY_PyTypeObject='UUU'
+    # typedef.PY_ctor='PyObject_New({PyObject}, &{PyTypeObject})'
+
+    typedef.LUA_type='LUA_TUSERDATA'
+    typedef.LUA_pop=('\t({LUA_userdata_type} *)\t luaL_checkudata'
+                     '(\t{LUA_state_var}, 1, "{LUA_metadata}")')
+    # typedef.LUA_push=None  # XXX create a userdata object with metatable
+    # typedef.LUA_statements={}
+
+    # allow forward declarations to avoid recursive headers
+    typedef.forward=typedef.cxx_type
+
+
+def create_struct_typedef(cls):
+    fmt_class = cls.fmtdict
+    cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
+    type_name = cxx_name.replace('\t', '')
+
+    typedef = Typedef.lookup(cxx_name)
+    if typedef is None:
+        # unname = util.un_camel(name)
+        f_name = cls.name.lower()
+        c_name = fmt_class.C_prefix + f_name
+        typedef = Typedef(
+            type_name,
+            base='shadow',
+            cxx_type=cxx_name,
+            c_type=c_name,
+            f_derived_type=fmt_class.F_derived_name,
+            f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
+            )
+        typedef_struct_defaults(typedef)
+        Typedef.register(type_name, typedef)
+
+    fmt_class.C_type_name = typedef.c_type
+    return typedef
+
+
+def typedef_struct_defaults(typedef):
+    """Add some defaults to typedef.
+    When dumping typedefs to a file, only a subset is written
+    since the rest are boilerplate.  This function restores
+    the boilerplate.
+    """
+    if typedef.base != 'shadow':
+        return
+
+    typedef.cxx_to_c=('\tstatic_cast<{c_const}%s *>('
+                      '\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))' %
+                      typedef.c_type)
+
+    # opaque pointer -> void pointer -> class instance pointer
+    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s *>('
+                      '\tstatic_cast<{c_const}void *>(\t{c_var}))' %
+                      typedef.cxx_type)
+
+    typedef.f_type='type(%s)' % typedef.f_derived_type
+
+    # XXX module name may not conflict with type name
+#    typedef.f_module={fmt_class.F_module_name:[unname]}
 
     typedef.py_statements=dict(
         intent_in=dict(
