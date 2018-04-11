@@ -307,10 +307,10 @@ declarations:
   
 ##################################################
 
-#  - decl: struct1 returnStruct(int i, double d);
-#    options:
-#      wrap_lua: False
-#      wrap_python: False
+  - decl: struct1 returnStruct(int i, double d);
+    options:
+      wrap_lua: False
+      wrap_python: False
 #  - decl: struct1 *returnStructPtr(int i, double d);
 #    options:
 #      wrap_lua: False

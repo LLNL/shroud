@@ -50,6 +50,7 @@
 #define WRAPTUTORIAL_H
 
 #include <stddef.h>
+#include "wrapstruct1.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
@@ -68,6 +69,8 @@ enum TUT_Color {
 // declaration of shadow types
 struct s_TUT_class1;
 typedef struct s_TUT_class1 TUT_class1;
+struct s_TUT_struct1;
+typedef struct s_TUT_struct1 TUT_struct1;
 
 // splicer begin C_declarations
 // splicer end C_declarations
@@ -164,6 +167,8 @@ void TUT_vector_string_append_bufferify(char * arg, long Sarg,
     int Narg);
 
 int TUT_callback1(int in, int ( * incr)(int));
+
+TUT_struct1 TUT_return_struct(int i, double d);
 
 const char * TUT_last_function_called();
 

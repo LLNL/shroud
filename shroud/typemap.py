@@ -42,6 +42,7 @@ Create and manage typemaps used to convert between languages.
 """
 
 from . import util
+from . import whelpers
 
 class Typedef(object):
     """ Collect fields for an argument.
@@ -71,6 +72,7 @@ class Typedef(object):
         ('c_statements', {}),
         ('c_templates', {}),      # c_statements for cxx_T
         ('c_return_code', None),
+        ('c_union', None),        # Union of C++ and C type (used with structs and complex)
 
         ('f_c_args', None),       # List of argument names to F_C routine
         ('f_c_argdecl', None),    # List of declarations to F_C routine
@@ -1078,6 +1080,7 @@ def create_struct_typedef(cls):
             base='shadow',
             cxx_type=cxx_name,
             c_type=c_name,
+            c_header=fmt_class.C_header_filename,
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
             )
@@ -1097,19 +1100,27 @@ def typedef_struct_defaults(typedef):
     if typedef.base != 'shadow':
         return
 
-    typedef.cxx_to_c=('\tstatic_cast<{c_const}%s *>('
-                      '\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))' %
-                      typedef.c_type)
+    helper = whelpers.add_union_helper(typedef.cxx_type, typedef.c_type)
 
-    # opaque pointer -> void pointer -> class instance pointer
-    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s *>('
-                      '\tstatic_cast<{c_const}void *>(\t{c_var}))' %
-                      typedef.cxx_type)
+    typedef.c_union = helper
+
+    # To convert, extract correct field from union
+#    typedef.cxx_to_c='\t{cxx_addr}{cxx_var}.cxx'
+#    typedef.c_to_cxx='\t{cxx_addr}{cxx_var}.c'
 
     typedef.f_type='type(%s)' % typedef.f_derived_type
 
     # XXX module name may not conflict with type name
 #    typedef.f_module={fmt_class.F_module_name:[unname]}
+
+    typedef.c_statements=dict(
+        result=dict(
+          c_helper=helper,
+          return_code=[
+              'return {cxx_var}.c;'
+          ],
+        ),
+    )
 
     typedef.py_statements=dict(
         intent_in=dict(

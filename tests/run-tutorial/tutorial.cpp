@@ -372,9 +372,7 @@ int callback1(int in, int (*incr)(int))
 
 struct1 returnStruct(int i, double d)
 {
-  struct1 s;
-  s.i = i;
-  s.d = d;
+  struct1 s = {i, d};
   return s;
 }
 

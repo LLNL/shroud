@@ -69,6 +69,7 @@ program tester
 
   call test_callback
 
+  call test_struct1
   call test_class1
   call test_singleton
 
@@ -248,10 +249,21 @@ contains
        end function incr2
     end interface
 
+    call set_case_name("test_callback")
+
     irv = callback1(2, incr2)
     call assert_true(irv == 22)
 
   end subroutine test_callback
+
+  subroutine test_struct1
+    type(struct1) str1
+
+    call set_case_name("test_struct")
+    str1 = return_struct(1_C_INT, 2.5_C_DOUBLE)
+    call assert_equals(1_C_INT,      str1%i, "i field")
+    call assert_equals(2.5_C_DOUBLE, str1%d, "d field")
+  end subroutine test_struct1
 
   subroutine test_class1
     integer iflag

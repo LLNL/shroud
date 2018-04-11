@@ -67,6 +67,40 @@ f_var
 All of the fields are defined in the references section and will only be used
 by example in this section.
 
+Type Maps
+---------
+
+Typemaps provide information used to process types::
+
+    c_statements:
+        intent_in:
+        intent_out:
+        intent_inout:
+        result:
+
+        intent_in_buf:
+        intent_out_buf:
+        intent_inout_buf:
+
+buf_args
+  len, len_trim, size
+
+cxx_header
+
+cxx_local_var
+
+pre_call = []
+
+post_call = []
+
+return_code = []
+
+f_statements
+
+need_wrapper
+f_helper
+call = []
+
 
 Types
 -----

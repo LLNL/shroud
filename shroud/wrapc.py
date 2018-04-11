@@ -462,8 +462,11 @@ class Wrapc(util.WrapperMixin):
             else:
                 fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
-            fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
-                name=fmt_result.cxx_var, params=None, continuation=True)
+            if result_typedef.c_union:
+                fmt_func.cxx_rv_decl = result_typedef.c_union + ' ' + fmt_result.cxx_var
+            else:
+                fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
+                    name=fmt_result.cxx_var, params=None, continuation=True)
             if is_ctor or CXX_result.is_pointer():
                 # The C wrapper always creates a pointer to the new in the ctor
                 fmt_result.cxx_deref = '->'
@@ -481,6 +484,7 @@ class Wrapc(util.WrapperMixin):
         pre_call = []      # list of temporary variable declarations
         call_code = []
         post_call = []
+        return_code = []
 
         if cls:
             need_wrapper = True
@@ -754,6 +758,9 @@ class Wrapc(util.WrapperMixin):
                 cmd_list = intent_blk.get('post_call', [])
                 for cmd in cmd_list:
                     append_format(post_call, cmd, fmt_result)
+                cmd_list = intent_blk.get('return_code', [])
+                for cmd in cmd_list:
+                    append_format(return_code, cmd, fmt_result)
                 # XXX release rv if necessary
                 if 'c_helper' in intent_blk:
                     for helper in intent_blk['c_helper'].split():
@@ -769,7 +776,12 @@ class Wrapc(util.WrapperMixin):
                     added_call_code = True
 
             if not added_call_code:
-                append_format(call_code, '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'
+                if result_typedef.c_union:
+                    # Call function within {}'s to assign to first field of union.
+                    append_format(call_code, '{cxx_rv_decl} =\t {{{CXX_this_call}{function_name}'
+                              '{CXX_template}(\t{C_call_list})}};', fmt_func)
+                else:
+                    append_format(call_code, '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'
                               '{CXX_template}(\t{C_call_list});', fmt_func)
 
 
@@ -791,6 +803,8 @@ class Wrapc(util.WrapperMixin):
         if fmt_func.inlocal('C_return_code'):
             need_wrapper = True
             C_return_code = wformat(fmt_func.C_return_code, fmt_func)
+        elif return_code:
+            fmt_func.C_return_code = '\n'.join(return_code)
         else:
             fmt_func.C_return_code = C_return_code
 
