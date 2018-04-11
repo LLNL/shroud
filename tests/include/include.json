@@ -202,7 +202,7 @@
                             "c2": {
                                 "fmtc": {
                                     "c_const": "", 
-                                    "c_ptr": " *", 
+                                    "c_ptr": "*", 
                                     "c_var": "c2", 
                                     "cxx_decl": "three::\tClass1 * SHCXX_c2", 
                                     "cxx_deref": "->", 

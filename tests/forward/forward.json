@@ -156,7 +156,7 @@
                             "arg": {
                                 "fmtc": {
                                     "c_const": "", 
-                                    "c_ptr": " *", 
+                                    "c_ptr": "*", 
                                     "c_var": "arg", 
                                     "cxx_decl": "tutorial::Class1 * SHCXX_arg", 
                                     "cxx_deref": "->", 

@@ -538,7 +538,7 @@ class Wrapc(util.WrapperMixin):
             else:
                 fmt_arg.c_const = ''
             if arg.is_pointer():
-                fmt_arg.c_ptr = ' *'
+                fmt_arg.c_ptr = '*'
                 fmt_arg.cxx_deref = '->'
 #                fmt_arg.cxx_addr = ''
             else:

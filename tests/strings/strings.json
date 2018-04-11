@@ -279,7 +279,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -374,7 +374,7 @@
                     "dest": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "dest", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -384,7 +384,7 @@
                     "src": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "src", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -487,7 +487,7 @@
                     "dest": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
                             "cxx_deref": "->", 
@@ -502,7 +502,7 @@
                     "src": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
                             "cxx_deref": "->", 
@@ -611,7 +611,7 @@
                     "s": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "s", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -707,7 +707,7 @@
                     "s": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "s", 
                             "c_var_len": "Ns", 
                             "c_var_trim": "Ls", 
@@ -869,7 +869,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -1036,7 +1036,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -1197,7 +1197,7 @@
                     "output": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "", 
@@ -1420,7 +1420,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -1564,7 +1564,7 @@
                     "output": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "&", 
@@ -1782,7 +1782,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -2714,7 +2714,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -2892,7 +2892,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -3063,7 +3063,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -3236,7 +3236,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -3889,7 +3889,7 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
@@ -3986,7 +3986,7 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "c_var_trim": "Larg1", 
@@ -4235,7 +4235,7 @@
                     "name": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "name", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -4327,7 +4327,7 @@
                     "name": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "name", 
                             "c_var_trim": "AAlen", 
                             "cxx_deref": "->", 
@@ -4411,7 +4411,7 @@
                     "name": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "name", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -4491,7 +4491,7 @@
                     "name": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "name", 
                             "c_var_len": "AAtrim", 
                             "cxx_deref": "->", 
@@ -4736,7 +4736,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -4832,7 +4832,7 @@
                     "dest": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "dest", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -4842,7 +4842,7 @@
                     "src": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "src", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -4946,7 +4946,7 @@
                     "dest": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
                             "cxx_deref": "->", 
@@ -4961,7 +4961,7 @@
                     "src": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
                             "cxx_deref": "->", 

@@ -1309,7 +1309,7 @@
                     "result": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "result", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
@@ -1338,7 +1338,7 @@
                     "values": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "values", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
@@ -1727,7 +1727,7 @@
                     "arg2": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg2", 
                             "cxx_deref": "->", 
                             "cxx_type": "bool", 
@@ -1741,7 +1741,7 @@
                     "arg3": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg3", 
                             "cxx_deref": "->", 
                             "cxx_type": "bool", 
@@ -2013,7 +2013,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -6122,7 +6122,7 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg1", 
                             "cxx_decl": "const tutorial::\tClass1 * SHCXX_arg1", 
                             "cxx_deref": "->", 
@@ -7656,7 +7656,7 @@
                     "arg": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg", 
                             "cxx_deref": "->", 
                             "cxx_type": "tutorial::\tstruct1", 
@@ -7720,7 +7720,7 @@
                     "C_call_code": "double SHC_rv =\t tutorial::\tacceptStructInPtr(\t&SH_arg.cxx);", 
                     "C_call_list": "&SH_arg.cxx", 
                     "C_name": "TUT_accept_struct_in_ptr", 
-                    "C_pre_call": "SH_union_0_t SH_arg;\nSH_arg.c =  *arg;", 
+                    "C_pre_call": "SH_union_0_t SH_arg;\nSH_arg.c = *arg;", 
                     "C_prototype": "TUT_struct1 * arg", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "double", 
@@ -7749,7 +7749,7 @@
                     "arg": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg", 
                             "cxx_deref": "->", 
                             "cxx_type": "tutorial::\tstruct1", 
@@ -7863,7 +7863,7 @@
                     "C_call_code": "tutorial::\tacceptStructOutPtr(\t&SH_arg.cxx,\t i,\t d);", 
                     "C_call_list": "&SH_arg.cxx,\t i,\t d", 
                     "C_name": "TUT_accept_struct_out_ptr", 
-                    "C_post_call": " *arg = SH_arg.c;", 
+                    "C_post_call": "*arg = SH_arg.c;", 
                     "C_pre_call": "SH_union_0_t SH_arg;", 
                     "C_prototype": "TUT_struct1 * arg,\t int i,\t double d", 
                     "C_return_code": "return;", 
@@ -7891,7 +7891,7 @@
                     "arg": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg", 
                             "cxx_deref": "->", 
                             "cxx_type": "tutorial::\tstruct1", 
@@ -7947,8 +7947,8 @@
                     "C_call_code": "tutorial::\tacceptStructInOutPtr(\t&SH_arg.cxx);", 
                     "C_call_list": "&SH_arg.cxx", 
                     "C_name": "TUT_accept_struct_in_out_ptr", 
-                    "C_post_call": " *arg = SH_arg.c;", 
-                    "C_pre_call": "SH_union_0_t SH_arg;\nSH_arg.c =  *arg;", 
+                    "C_post_call": "*arg = SH_arg.c;", 
+                    "C_pre_call": "SH_union_0_t SH_arg;\nSH_arg.c = *arg;", 
                     "C_prototype": "TUT_struct1 * arg", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 

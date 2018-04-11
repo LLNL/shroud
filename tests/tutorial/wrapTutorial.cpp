@@ -678,7 +678,7 @@ double TUT_accept_struct_in_ptr(TUT_struct1 * arg)
 {
 // splicer begin function.accept_struct_in_ptr
     SH_union_0_t SH_arg;
-    SH_arg.c =  *arg;
+    SH_arg.c = *arg;
     double SHC_rv = tutorial::acceptStructInPtr(&SH_arg.cxx);
     return SHC_rv;
 // splicer end function.accept_struct_in_ptr
@@ -691,7 +691,7 @@ void TUT_accept_struct_out_ptr(TUT_struct1 * arg, int i, double d)
 // splicer begin function.accept_struct_out_ptr
     SH_union_0_t SH_arg;
     tutorial::acceptStructOutPtr(&SH_arg.cxx, i, d);
-     *arg = SH_arg.c;
+    *arg = SH_arg.c;
     return;
 // splicer end function.accept_struct_out_ptr
 }
@@ -702,9 +702,9 @@ void TUT_accept_struct_in_out_ptr(TUT_struct1 * arg)
 {
 // splicer begin function.accept_struct_in_out_ptr
     SH_union_0_t SH_arg;
-    SH_arg.c =  *arg;
+    SH_arg.c = *arg;
     tutorial::acceptStructInOutPtr(&SH_arg.cxx);
-     *arg = SH_arg.c;
+    *arg = SH_arg.c;
     return;
 // splicer end function.accept_struct_in_out_ptr
 }
