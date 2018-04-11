@@ -681,6 +681,11 @@ class Wrapc(util.WrapperMixin):
                         call_list.append(fmt_arg.cxx_var)
                     else:
                         call_list.append('*' + fmt_arg.cxx_var)
+                elif cxx_local_var == 'union':
+                    if arg.is_pointer():
+                        call_list.append(fmt_arg.cxx_var + 'KKK')
+                    else:
+                        call_list.append(fmt_arg.cxx_var + '.cxx')
                 elif arg.is_reference():
                     # reference to scalar  i.e. double &max
                     call_list.append('*' + fmt_arg.cxx_var)

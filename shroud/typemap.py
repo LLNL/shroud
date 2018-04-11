@@ -1114,11 +1114,20 @@ def typedef_struct_defaults(typedef):
 #    typedef.f_module={fmt_class.F_module_name:[unname]}
 
     typedef.c_statements=dict(
+        intent_in=dict(
+            c_helper=helper,
+            cxx_local_var='union',
+            pre_call=[
+                # Create union and assign to C type
+                '%s {cxx_var};' % helper,
+                '{cxx_var}.c = {c_var};',
+            ],
+        ),
         result=dict(
-          c_helper=helper,
-          return_code=[
-              'return {cxx_var}.c;'
-          ],
+            c_helper=helper,
+            return_code=[
+                'return {cxx_var}.c;'
+            ],
         ),
     )
 

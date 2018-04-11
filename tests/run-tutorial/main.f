@@ -258,11 +258,17 @@ contains
 
   subroutine test_struct1
     type(struct1) str1
+    real(C_DOUBLE) rvd
 
     call set_case_name("test_struct")
     str1 = return_struct(1_C_INT, 2.5_C_DOUBLE)
-    call assert_equals(1_C_INT,      str1%i, "i field")
-    call assert_equals(2.5_C_DOUBLE, str1%d, "d field")
+    call assert_equals(1_C_INT,      str1%i, "return_struct i field")
+    call assert_equals(2.5_C_DOUBLE, str1%d, "return_struct d field")
+
+    str1%i = 2_C_INT
+    str1%d = 2.0_C_DOUBLE
+    rvd = accept_struct_in(str1)
+    call assert_equals(4.0_C_DOUBLE, rvd, "accept_struct_in")
   end subroutine test_struct1
 
   subroutine test_class1

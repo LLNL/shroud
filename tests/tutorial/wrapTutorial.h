@@ -170,6 +170,8 @@ int TUT_callback1(int in, int ( * incr)(int));
 
 TUT_struct1 TUT_return_struct(int i, double d);
 
+double TUT_accept_struct_in(TUT_struct1 arg);
+
 const char * TUT_last_function_called();
 
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv);

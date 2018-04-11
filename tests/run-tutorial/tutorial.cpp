@@ -389,6 +389,13 @@ void freeStruct(struct1 *arg1)
   delete arg1;
 }
 
+// return sum of fields as a check
+double acceptStructIn(struct1 arg)
+{
+  return arg.i + arg.d;
+}
+
+
 //----------------------------------------------------------------------
 
 const std::string& LastFunctionCalled()

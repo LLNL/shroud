@@ -320,6 +320,11 @@ declarations:
 #      wrap_lua: False
 #      wrap_python: False
 
+  - decl: double acceptStructIn(struct1 arg)
+    options:
+      wrap_lua: False
+      wrap_python: False
+
 ##################################################
 # Used with testing
   - decl: const std::string& LastFunctionCalled() +len(30)
