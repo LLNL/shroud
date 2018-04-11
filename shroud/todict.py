@@ -197,7 +197,7 @@ class ToDict(visitor.Visitor):
             value = getattr(node, key)
             if value:
                 d[key] = value
-        for key in [ 'classes', 'enums', 'functions' ]:
+        for key in [ 'classes', 'enums', 'functions', 'variables' ]:
             value = getattr(node, key)
             if value:
                 d[key] = self.visit(value)
@@ -216,16 +216,10 @@ class ToDict(visitor.Visitor):
             value = getattr(node, key)
             if value:
                 d[key] = value
-        for key in [ 'enums', 'functions' ]:
+        for key in [ 'enums', 'functions', 'variables' ]:
             value = getattr(node, key)
             if value:
                 d[key] = self.visit(value)
-        return d
-
-    def visit_ClassForwardNode(self, node):
-        d = dict(
-            name=node.name,
-        )
         return d
 
     def visit_FunctionNode(self, node):
@@ -271,6 +265,14 @@ class ToDict(visitor.Visitor):
         return d
 
     def visit_NamespaceNode(self, node):
+        d = dict(
+            name=node.name,
+            format=self.visit(node.fmtdict),
+            options=self.visit(node.options),
+        )
+        return d
+
+    def visit_VariableNode(self, node):
         d = dict(
             name=node.name,
             format=self.visit(node.fmtdict),

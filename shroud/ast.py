@@ -104,6 +104,8 @@ class NamespaceMixin(object):
             if 'typedef' in ast.storage:
                 typedef = self.create_typedef(ast, **kwargs)
                 node = self.add_typedef(ast.declarator.name)
+            elif ast.params is None:
+                node = self.add_variable(decl, ast=ast, **kwargs)
             else:
                 node = self.add_function(decl, ast=ast, **kwargs)
         elif isinstance(ast, declast.CXXClass):
@@ -208,6 +210,16 @@ class NamespaceMixin(object):
         self.symbols[name] = node
         return node
 
+    def add_variable(self, decl, ast=None, **kwargs):
+        """Add a variable or class member.
+
+        decl - C/C++ declaration of function
+        ast  - parsed declaration. None if not yet parsed.
+        """
+        node = VariableNode(decl, parent=self, ast=ast, **kwargs)
+        self.variables.append(node)
+        return node
+
 ######################################################################
 
 class LibraryNode(AstNode, NamespaceMixin):
@@ -236,6 +248,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.classes = []
         self.enums = []
         self.functions = []
+        self.variables = []
         # Each is given a _function_index when created.
         self.function_index = []
         self.options = self.default_options()
@@ -514,6 +527,7 @@ class BlockNode(AstNode, NamespaceMixin):
         self.enums = parent.enums
         self.functions = parent.functions
         self.classes = parent.classes
+        self.variables = parent.variables
 
         self.options = util.Scope(parent=parent.options)
         if options:
@@ -552,6 +566,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
             self.enums = owner.enums
             self.functions = owner.functions
             self.classes = owner.classes
+            self.variables = owner.variables
             break
 
         self.options = util.Scope(parent=parent.options)
@@ -628,6 +643,7 @@ class ClassNode(AstNode, NamespaceMixin):
 
         self.enums = []
         self.functions = []
+        self.variables = []
 
         self.python = kwargs.get('python', {})
         self.cpp_if = kwargs.get('cpp_if', None)
@@ -1037,6 +1053,63 @@ class TypedefNode(AstNode):
 
     def get_typename(self):
         return self.typename
+
+######################################################################
+
+class VariableNode(AstNode):
+    """
+        - decl: int var
+          options:
+             bar: 4
+          format:
+             baz: 4  
+    """
+    def __init__(self, decl, parent,
+                 format=None,
+                 ast=None,
+                 options=None,
+                 **kwargs):
+
+        # From arguments
+        self.parent = parent
+
+        self.options = util.Scope(parent=parent.options)
+        if options:
+            self.options.update(options, replace=True)
+
+#        self.default_format(parent, format, kwargs)
+        self.fmtdict = util.Scope(
+            parent = parent.fmtdict,
+        )
+
+        if not decl:
+            raise RuntimeError("VariableNode missing decl")
+
+        self.decl = decl
+        if ast is None:
+            ast = declast.check_decl(decl)
+        if not isinstance(ast, declast.Declaration):
+            raise RuntimeError("Declaration is not a structure: " + decl)
+        if ast.params is not None:
+            # 'void foo()' instead of 'void foo'
+            raise RuntimeError("Arguments given to variable:", ast.gen_decl())
+        self.ast = ast
+        self.name = ast.name
+
+        # format for struct
+        fmt_var = self.fmtdict
+
+        # Treat similar to class
+#        fmt_struct.class_scope = self.name + '::'
+        fmt_var.var_name = ast.name
+        fmt_var.var_lower = ast.name.lower()
+        fmt_var.var_upper = ast.name.upper()
+
+        # Add to namespace
+#        self.typename = self.parent.scope + self.name
+#        self.scope = self.typename + '::'
+#        self.typedef = typemap.create_struct_typedef(self)
+#        self.typedef_name = self.typedef.name
 
 ######################################################################
 

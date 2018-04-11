@@ -703,7 +703,18 @@
                 ], 
                 "name": "Class1", 
                 "options": {}, 
-                "typedef_name": "tutorial::Class1"
+                "typedef_name": "tutorial::Class1", 
+                "variables": [
+                    {
+                        "format": {
+                            "var_lower": "m_flag", 
+                            "var_name": "m_flag", 
+                            "var_upper": "M_FLAG"
+                        }, 
+                        "name": "m_flag", 
+                        "options": {}
+                    }
+                ]
             }, 
             {
                 "cxx_header": "", 
@@ -7618,7 +7629,18 @@
             "wrap_fortran": true, 
             "wrap_lua": true, 
             "wrap_python": true
-        }
+        }, 
+        "variables": [
+            {
+                "format": {
+                    "var_lower": "global_flag", 
+                    "var_name": "global_flag", 
+                    "var_upper": "GLOBAL_FLAG"
+                }, 
+                "name": "global_flag", 
+                "options": {}
+            }
+        ]
     }, 
     "typealias": {
         "integer(C_INT)": "int", 

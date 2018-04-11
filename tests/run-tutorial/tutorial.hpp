@@ -69,6 +69,7 @@ struct struct1 {
   double d;
 };
 
+extern int global_flag;
 
 void Function1();
 

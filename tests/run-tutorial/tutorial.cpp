@@ -46,6 +46,8 @@
 namespace tutorial
 {
 
+int global_flag;
+
 static std::string last_function_called;
 
 // These variables exist to avoid warning errors
