@@ -395,6 +395,12 @@ double acceptStructIn(struct1 arg)
   return arg.i + arg.d;
 }
 
+// return sum of fields as a check
+double acceptStructInPtr(struct1 *arg)
+{
+  return arg->i + arg->d;
+}
+
 
 //----------------------------------------------------------------------
 

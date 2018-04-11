@@ -269,6 +269,11 @@ contains
     str1%d = 2.0_C_DOUBLE
     rvd = accept_struct_in(str1)
     call assert_equals(4.0_C_DOUBLE, rvd, "accept_struct_in")
+
+    str1%i = 3_C_INT
+    str1%d = 3.0_C_DOUBLE
+    rvd = accept_struct_in_ptr(str1)
+    call assert_equals(6.0_C_DOUBLE, rvd, "accept_struct_in_ptr")
   end subroutine test_struct1
 
   subroutine test_class1

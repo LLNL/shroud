@@ -63,6 +63,7 @@ C function void vector_string_append(std::vector<std::string> & arg +dimension(:
 C function int callback1(int in +intent(in)+value, int ( * incr) +intent(in)+value(int +value))
 C function struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
 C function double acceptStructIn(struct1 arg +intent(in)+value)
+C function double acceptStructInPtr(struct1 * arg +intent(in))
 C function const std::string & LastFunctionCalled() +len(30)
 C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapTutorial.h
@@ -135,6 +136,7 @@ C-interface function void vector_string_append(std::vector<std::string> & arg +d
 C-interface, Fortran function int callback1(int in +intent(in)+value, int ( * incr) +intent(in)+value(int +value))
 C-interface, Fortran function struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
 C-interface, Fortran function double acceptStructIn(struct1 arg +intent(in)+value)
+C-interface, Fortran function double acceptStructInPtr(struct1 * arg +intent(in))
 C-interface, Fortran function const std::string & LastFunctionCalled() +len(30)
 C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapftutorial.f

@@ -1120,7 +1120,7 @@ def typedef_struct_defaults(typedef):
             pre_call=[
                 # Create union and assign to C type
                 '%s {cxx_var};' % helper,
-                '{cxx_var}.c = {c_var};',
+                '{cxx_var}.c = {c_ptr}{c_var};',
             ],
         ),
         result=dict(
