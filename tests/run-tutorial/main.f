@@ -280,6 +280,13 @@ contains
     call accept_struct_out_ptr(str1, 4_C_INT, 4.5_C_DOUBLE)
     call assert_equals(4_C_INT,      str1%i, "accept_struct_out_ptr i field")
     call assert_equals(4.5_C_DOUBLE, str1%d, "accept_struct_out_ptr d field")
+
+    str1%i = 4_C_INT
+    str1%d = 4.0_C_DOUBLE
+    call accept_struct_in_out_ptr(str1)
+    call assert_equals(5_C_INT,      str1%i, "accept_struct_in_out_ptr i field")
+    call assert_equals(5.0_C_DOUBLE, str1%d, "accept_struct_in_out_ptr d field")
+
   end subroutine test_struct1
 
   subroutine test_class1

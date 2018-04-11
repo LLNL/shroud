@@ -408,6 +408,12 @@ void acceptStructOutPtr(struct1 *arg, int i, double d)
   return;
 }
 
+void acceptStructInOutPtr(struct1 *arg)
+{
+  arg->i += 1;
+  arg->d += 1.0;
+  return;
+}
 
 //----------------------------------------------------------------------
 

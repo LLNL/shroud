@@ -176,6 +176,8 @@ double TUT_accept_struct_in_ptr(TUT_struct1 * arg);
 
 void TUT_accept_struct_out_ptr(TUT_struct1 * arg, int i, double d);
 
+void TUT_accept_struct_in_out_ptr(TUT_struct1 * arg);
+
 const char * TUT_last_function_called();
 
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv);
