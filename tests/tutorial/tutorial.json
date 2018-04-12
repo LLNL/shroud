@@ -9056,7 +9056,7 @@
             "PY_PyTypeObject": "PY_struct1_Type", 
             "PY_from_object": "PP_struct1_from_Object", 
             "PY_to_object": "PP_struct1_to_Object", 
-            "base": "shadow", 
+            "base": "struct", 
             "c_header": "wrapstruct1.h", 
             "c_statements": {
                 "intent_in": {

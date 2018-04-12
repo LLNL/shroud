@@ -1077,7 +1077,7 @@ def create_struct_typedef(cls):
         c_name = fmt_class.C_prefix + f_name
         typedef = Typedef(
             type_name,
-            base='shadow',
+            base='struct',
             cxx_type=cxx_name,
             c_type=c_name,
             c_header=fmt_class.C_header_filename,
@@ -1097,7 +1097,7 @@ def typedef_struct_defaults(typedef):
     since the rest are boilerplate.  This function restores
     the boilerplate.
     """
-    if typedef.base != 'shadow':
+    if typedef.base != 'struct':
         return
 
     helper = whelpers.add_union_helper(typedef.cxx_type, typedef.c_type)

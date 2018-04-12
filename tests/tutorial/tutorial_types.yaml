@@ -66,7 +66,7 @@ declarations:
           - class1
     - type: struct1
       fields:
-        base: shadow
+        base: struct
         cxx_type: tutorial::struct1
         c_type: TUT_struct1
         c_header: wrapstruct1.h
