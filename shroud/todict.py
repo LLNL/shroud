@@ -90,12 +90,7 @@ class ToDict(visitor.Visitor):
             d['storage'] = node.storage
         if node.params is not None:
             d['params'] = self.visit(node.params)
-            d['fattrs'] = node.fattrs
             d['func_const'] = node.func_const
-        else:
-            if node.fattrs:
-                raise RuntimeError("fattrs is not empty for non-function: {}\n{}"
-                                   .format(str(node), str(node.fattrs)))
         if node.init is not None:
             d['init'] = node.init
         return d

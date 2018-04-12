@@ -194,14 +194,12 @@
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
-                                "_typename": "tutorial::Class1"
-                            }, 
-                            "const": false, 
-                            "fattrs": {
                                 "_constructor": true, 
                                 "_name": "ctor", 
+                                "_typename": "tutorial::Class1", 
                                 "name": "new"
                             }, 
+                            "const": false, 
                             "func_const": false, 
                             "params": [], 
                             "specifier": [
@@ -314,14 +312,12 @@
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
-                                "_typename": "tutorial::Class1"
-                            }, 
-                            "const": false, 
-                            "fattrs": {
                                 "_constructor": true, 
                                 "_name": "ctor", 
+                                "_typename": "tutorial::Class1", 
                                 "name": "new"
                             }, 
+                            "const": false, 
                             "func_const": false, 
                             "params": [
                                 {
@@ -380,14 +376,12 @@
                         "_function_index": 2, 
                         "ast": {
                             "attrs": {
-                                "_typename": "tutorial::Class1"
-                            }, 
-                            "const": false, 
-                            "fattrs": {
                                 "_destructor": true, 
                                 "_name": "dtor", 
+                                "_typename": "tutorial::Class1", 
                                 "name": "delete"
                             }, 
+                            "const": false, 
                             "func_const": false, 
                             "params": [], 
                             "specifier": [
@@ -457,7 +451,6 @@
                                 "name": "Method1", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
                             "func_const": false, 
                             "params": [], 
                             "specifier": [
@@ -559,7 +552,6 @@
                                 "name": "equivalent", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
                             "func_const": true, 
                             "params": [
                                 {
@@ -700,7 +692,6 @@
                                 "name": "directionFunc", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
                             "func_const": false, 
                             "params": [
                                 {
@@ -831,7 +822,6 @@
                                     }
                                 ]
                             }, 
-                            "fattrs": {}, 
                             "func_const": false, 
                             "params": [], 
                             "specifier": [
@@ -1071,7 +1061,6 @@
                         "name": "Function1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -1215,7 +1204,6 @@
                         "name": "Function2", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1384,7 +1372,6 @@
                         "name": "Sum", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1535,7 +1522,6 @@
                         "name": "TypeLongLong", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1663,7 +1649,6 @@
                         "name": "Function3", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1770,7 +1755,6 @@
                         "name": "Function3b", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1900,7 +1884,6 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -2031,15 +2014,13 @@
                 "_function_index": 14, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "len": "30"
                     }, 
                     "const": true, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [
@@ -2173,15 +2154,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": "30"
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [
@@ -2387,7 +2366,6 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -2529,7 +2507,6 @@
                         "name": "Function4b", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -2640,7 +2617,6 @@
                         "name": "Function4b", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -2755,7 +2731,6 @@
                         "name": "Function5", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -2836,7 +2811,6 @@
                         "name": "Function5", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3018,7 +2992,6 @@
                         "name": "Function5", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3145,7 +3118,6 @@
                         "name": "Function6", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3237,7 +3209,6 @@
                         "name": "Function6", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3344,7 +3315,6 @@
                         "name": "Function6", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3405,7 +3375,6 @@
                         "name": "Function7", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3476,7 +3445,6 @@
                         "name": "Function7", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3559,7 +3527,6 @@
                         "name": "Function7", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3625,7 +3592,6 @@
                         "name": "Function8", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -3673,7 +3639,6 @@
                         "name": "Function8", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -3735,7 +3700,6 @@
                         "name": "Function8", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -3826,7 +3790,6 @@
                         "name": "Function9", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3890,7 +3853,6 @@
                         "name": "Function9", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3949,7 +3911,6 @@
                         "name": "Function9", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4010,7 +3971,6 @@
                         "name": "Function10", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -4130,7 +4090,6 @@
                         "name": "Function10", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4219,7 +4178,6 @@
                         "name": "Function10", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4303,7 +4261,6 @@
                         "name": "Function10", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4418,7 +4375,6 @@
                         "name": "Function10", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4533,7 +4489,6 @@
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4648,7 +4603,6 @@
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4885,7 +4839,6 @@
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -5030,7 +4983,6 @@
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -5169,7 +5121,6 @@
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -5453,7 +5404,6 @@
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -5624,7 +5574,6 @@
                         "name": "typefunc", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -5754,7 +5703,6 @@
                         "name": "enumfunc", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -5886,7 +5834,6 @@
                         "name": "colorfunc", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6011,7 +5958,6 @@
                         "name": "getMinMax", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6167,7 +6113,6 @@
                         "name": "directionFunc", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6281,7 +6226,6 @@
                         "name": "useclass", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6365,7 +6309,6 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -6437,7 +6380,6 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -6486,7 +6428,6 @@
                         "name": "vector_sum", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6576,7 +6517,6 @@
                         "name": "vector_sum", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6643,7 +6583,6 @@
                         "name": "vector_iota", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6724,7 +6663,6 @@
                         "name": "vector_iota", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6791,7 +6729,6 @@
                         "name": "vector_increment", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6872,7 +6809,6 @@
                         "name": "vector_increment", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -6939,7 +6875,6 @@
                         "name": "vector_string_count", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -7034,7 +6969,6 @@
                         "name": "vector_string_count", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -7106,7 +7040,6 @@
                         "name": "vector_string_fill", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -7196,7 +7129,6 @@
                         "name": "vector_string_fill", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -7269,7 +7201,6 @@
                         "name": "vector_string_append", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -7354,7 +7285,6 @@
                         "name": "vector_string_append", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -7462,7 +7392,6 @@
                         "name": "callback1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -7499,7 +7428,6 @@
                                 }, 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
                             "func_const": false, 
                             "params": [
                                 {
@@ -7523,7 +7451,7 @@
                     ]
                 }, 
                 "decl": "int callback1(int in, int (*incr)(int));", 
-                "declgen": "int callback1(int in +intent(in)+value, int ( * incr) +intent(in)+value(int +value))", 
+                "declgen": "int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)", 
                 "format": {
                     "C_call_code": "int SHC_rv =\t tutorial::\tcallback1(\tin,\t incr);", 
                     "C_call_list": "in,\t incr", 
@@ -7600,7 +7528,6 @@
                         "name": "returnStruct", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -7723,7 +7650,6 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -7828,7 +7754,6 @@
                         "name": "acceptStructIn", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -7918,7 +7843,6 @@
                         "name": "acceptStructInPtr", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -8033,7 +7957,6 @@
                         "name": "acceptStructOutPtr", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -8148,7 +8071,6 @@
                         "name": "acceptStructInOutPtr", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -8234,7 +8156,8 @@
                 "_function_index": 47, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "len": "30"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -8245,9 +8168,6 @@
                                 "ptr": "&"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -8318,15 +8238,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": "30"
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "LastFunctionCalled", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [

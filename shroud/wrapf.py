@@ -645,11 +645,11 @@ class Wrapf(util.WrapperMixin):
 
         ast = node.ast
         result_type = ast.typename
-        is_ctor = ast.fattrs.get('_constructor', False)
-        is_dtor = ast.fattrs.get('_destructor', False)
-        is_pure = ast.fattrs.get('pure', False)
+        is_ctor = ast.attrs.get('_constructor', False)
+        is_dtor = ast.attrs.get('_destructor', False)
+        is_pure = ast.attrs.get('pure', False)
         is_static = False
-        is_allocatable = ast.fattrs.get('allocatable', False)
+        is_allocatable = ast.attrs.get('allocatable', False)
         func_is_const = ast.func_const
         subprogram = ast.get_subprogram()
 
@@ -905,11 +905,11 @@ class Wrapf(util.WrapperMixin):
         # Fortran return type
         ast = node.ast
         result_type = ast.typename
-        is_ctor = ast.fattrs.get('_constructor', False)
-        is_dtor = ast.fattrs.get('_destructor', False)
-        is_pure = ast.fattrs.get('pure', False)
+        is_ctor = ast.attrs.get('_constructor', False)
+        is_dtor = ast.attrs.get('_destructor', False)
+        is_pure = ast.attrs.get('pure', False)
         is_static = False
-        is_allocatable = ast.fattrs.get('allocatable', False)
+        is_allocatable = ast.attrs.get('allocatable', False)
         subprogram = ast.get_subprogram()
         c_subprogram = C_node.ast.get_subprogram()
 
@@ -1177,7 +1177,7 @@ class Wrapf(util.WrapperMixin):
                                   fmt_func)
                 else:
                     # special case returning a string
-                    rvlen = ast.fattrs.get('len', None)
+                    rvlen = ast.attrs.get('len', None)
                     if rvlen is None:
                         rvlen = wformat(
                             'strlen_ptr(\t{F_C_call}(\t{F_arg_c_call}))',

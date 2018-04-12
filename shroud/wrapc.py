@@ -422,10 +422,10 @@ class Wrapc(util.WrapperMixin):
 
         result_typedef = typemap.Typedef.lookup(result_type)
         result_is_const = ast.const
-        is_ctor = CXX_result.fattrs.get('_constructor', False)
-        is_dtor = CXX_result.fattrs.get('_destructor', False)
+        is_ctor = CXX_result.attrs.get('_constructor', False)
+        is_dtor = CXX_result.attrs.get('_destructor', False)
         is_static = False
-        is_allocatable = CXX_result.fattrs.get('allocatable', False)
+        is_allocatable = CXX_result.attrs.get('allocatable', False)
         is_pointer = CXX_result.is_pointer()
         is_const = ast.func_const
         is_union_scalar = False

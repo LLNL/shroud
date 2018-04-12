@@ -157,7 +157,6 @@
                         "name": "passChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -237,7 +236,6 @@
                         "name": "returnChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -313,7 +311,6 @@
                         "name": "returnChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -403,7 +400,6 @@
                         "name": "passCharPtr", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -527,7 +523,6 @@
                         "name": "passCharPtr", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -645,7 +640,6 @@
                         "name": "passCharPtrInOut", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -733,7 +727,6 @@
                         "name": "passCharPtrInOut", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -812,7 +805,8 @@
                 "_function_index": 4, 
                 "ast": {
                     "attrs": {
-                        "_typename": "char"
+                        "_typename": "char", 
+                        "pure": true
                     }, 
                     "const": true, 
                     "declarator": {
@@ -823,9 +817,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "pure": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -892,15 +883,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "pure": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getCharPtr1", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "pure": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -909,7 +898,8 @@
                                 "_is_result": true, 
                                 "_typename": "char", 
                                 "intent": "out", 
-                                "len": "NSHF_rv"
+                                "len": "NSHF_rv", 
+                                "pure": true
                             }, 
                             "const": false, 
                             "declarator": {
@@ -931,7 +921,7 @@
                     ]
                 }, 
                 "decl": "const char * getCharPtr1()  +pure", 
-                "declgen": "void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
+                "declgen": "void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure", 
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 }, 
@@ -979,7 +969,8 @@
                 "_function_index": 5, 
                 "ast": {
                     "attrs": {
-                        "_typename": "char"
+                        "_typename": "char", 
+                        "len": "30"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -990,9 +981,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -1063,15 +1051,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": "30"
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getCharPtr2", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [
@@ -1161,7 +1147,6 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -1231,7 +1216,6 @@
                         "name": "getCharPtr3", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1302,7 +1286,6 @@
                         "name": "getCharPtr3", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1374,15 +1357,13 @@
                 "_function_index": 7, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "len": 30
                     }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringLen", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -1447,15 +1428,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": 30
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringLen", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [
@@ -1535,7 +1514,6 @@
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -1598,7 +1576,6 @@
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1670,7 +1647,6 @@
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1741,15 +1717,13 @@
                 "_function_index": 9, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "allocatable": true
                     }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringAlloc", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -1811,15 +1785,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "allocatable": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringAlloc", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -1900,7 +1872,8 @@
                 "_function_index": 10, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "pure": true
                     }, 
                     "const": true, 
                     "declarator": {
@@ -1911,9 +1884,6 @@
                                 "ptr": "&"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "pure": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -1981,15 +1951,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "pure": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefPure", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "pure": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -1998,7 +1966,8 @@
                                 "_is_result": true, 
                                 "_typename": "std::string", 
                                 "intent": "out", 
-                                "len": "NSHF_rv"
+                                "len": "NSHF_rv", 
+                                "pure": true
                             }, 
                             "const": false, 
                             "declarator": {
@@ -2020,7 +1989,7 @@
                     ]
                 }, 
                 "decl": "const string& getConstStringRefPure()  +pure", 
-                "declgen": "void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
+                "declgen": "void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure", 
                 "doxygen": {
                     "brief": "return a 'const string&' as character(*)"
                 }, 
@@ -2071,7 +2040,8 @@
                 "_function_index": 11, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "len": 30
                     }, 
                     "const": true, 
                     "declarator": {
@@ -2082,9 +2052,6 @@
                                 "ptr": "&"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -2158,15 +2125,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": 30
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefLen", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [
@@ -2259,7 +2224,6 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -2332,7 +2296,6 @@
                         "name": "getConstStringRefAsArg", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -2404,7 +2367,6 @@
                         "name": "getConstStringRefAsArg", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -2484,7 +2446,8 @@
                 "_function_index": 13, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "len": 30
                     }, 
                     "const": true, 
                     "declarator": {
@@ -2495,9 +2458,6 @@
                                 "ptr": "&"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -2571,15 +2531,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": 30
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefLenEmpty", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [
@@ -2660,7 +2618,8 @@
                 "_function_index": 14, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "allocatable": true
                     }, 
                     "const": true, 
                     "declarator": {
@@ -2671,9 +2630,6 @@
                                 "ptr": "&"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -2743,15 +2699,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "allocatable": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefAlloc", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -2833,7 +2787,8 @@
                 "_function_index": 15, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "len": 30
                     }, 
                     "const": true, 
                     "declarator": {
@@ -2844,9 +2799,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -2919,15 +2871,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": 30
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrLen", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [
@@ -3009,7 +2959,8 @@
                 "_function_index": 16, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "allocatable": true
                     }, 
                     "const": true, 
                     "declarator": {
@@ -3020,9 +2971,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -3092,15 +3040,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "allocatable": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrAlloc", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -3182,7 +3128,8 @@
                 "_function_index": 17, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "allocatable": true
                     }, 
                     "const": true, 
                     "declarator": {
@@ -3193,9 +3140,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -3265,15 +3209,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "allocatable": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrOwnsAlloc", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -3368,7 +3310,6 @@
                         "name": "acceptStringConstReference", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3456,7 +3397,6 @@
                         "name": "acceptStringConstReference", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3551,7 +3491,6 @@
                         "name": "acceptStringReferenceOut", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3640,7 +3579,6 @@
                         "name": "acceptStringReferenceOut", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3736,7 +3674,6 @@
                         "name": "acceptStringReference", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3826,7 +3763,6 @@
                         "name": "acceptStringReference", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3923,7 +3859,6 @@
                         "name": "acceptStringPointer", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4012,7 +3947,6 @@
                         "name": "acceptStringPointer", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4116,7 +4050,6 @@
                         "name": "returnStrings", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4188,7 +4121,6 @@
                         "name": "returnMany", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4267,7 +4199,6 @@
                         "name": "explicit1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4352,7 +4283,6 @@
                         "name": "explicit1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4430,7 +4360,6 @@
                         "name": "explicit2", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4516,7 +4445,6 @@
                         "name": "explicit2", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4610,7 +4538,6 @@
                         "name": "CpassChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4692,7 +4619,6 @@
                         "name": "CreturnChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -4770,7 +4696,6 @@
                         "name": "CreturnChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4861,7 +4786,6 @@
                         "name": "CpassCharPtr", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4986,7 +4910,6 @@
                         "name": "CpassCharPtr", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {

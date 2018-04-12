@@ -46,7 +46,6 @@
                                 "name": "method1", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
                             "func_const": false, 
                             "params": [
                                 {
@@ -147,7 +146,6 @@
                                 "name": "method1", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
                             "func_const": false, 
                             "params": [
                                 {
@@ -226,7 +224,6 @@
                                 "name": "method2", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
                             "func_const": false, 
                             "params": [
                                 {
@@ -399,7 +396,6 @@
                         "name": "function1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [

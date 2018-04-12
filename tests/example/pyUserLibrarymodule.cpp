@@ -396,7 +396,7 @@ PP_FuncPtr1(
   PyObject *args,
   PyObject *kwds)
 {
-// void FuncPtr1(void ( * get) +intent(in)+value())
+// void FuncPtr1(void ( * get)() +intent(in)+value)
 // splicer begin function.func_ptr1
     void ( * get)();
     const char *SHT_kwlist[] = {
@@ -422,7 +422,7 @@ PP_FuncPtr2(
   PyObject *args,
   PyObject *kwds)
 {
-// void FuncPtr2(double * ( * get) +intent(in)())
+// void FuncPtr2(double * ( * get)() +intent(in))
 // splicer begin function.func_ptr2
     double * ( * get)();
     const char *SHT_kwlist[] = {
@@ -448,7 +448,7 @@ PP_FuncPtr3(
   PyObject *args,
   PyObject *kwds)
 {
-// void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
+// void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
 // splicer begin function.func_ptr3
     double ( * get)(int i, int);
     const char *SHT_kwlist[] = {
@@ -474,7 +474,7 @@ PP_FuncPtr5(
   PyObject *args,
   PyObject *kwds)
 {
-// void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
+// void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)
 // splicer begin function.func_ptr5
     void ( * get)(int verylongname1, int verylongname2,
         int verylongname3, int verylongname4, int verylongname5,

@@ -212,7 +212,7 @@ const char * STR_get_char_ptr1()
 // splicer end function.get_char_ptr1
 }
 
-// void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure
+// void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure
 // function_index=32
 /**
  * \brief return a 'const char *' as character(*)
@@ -364,7 +364,7 @@ const char * STR_get_const_string_ref_pure()
 // splicer end function.get_const_string_ref_pure
 }
 
-// void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
+// void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure
 // function_index=40
 /**
  * \brief return a 'const string&' as character(*)

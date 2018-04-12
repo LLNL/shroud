@@ -393,8 +393,8 @@ class Parser(ExprParser):
             node.specifier.append(tok.value)
             #  class Class1 { ~Class1(); }
             self.info('destructor', self.namespace.typename)
-            node.fattrs['_name'] = 'dtor'
-            node.fattrs['_destructor'] = True
+            node.attrs['_name'] = 'dtor'
+            node.attrs['_destructor'] = True
             node.attrs['_typename'] = self.namespace.typename
             found_type = True
             more = False
@@ -412,8 +412,8 @@ class Parser(ExprParser):
                        self.token.typ == 'LPAREN':
                         #  class Class1 { Class1(); }
                         self.info('constructor')
-                        node.fattrs['_name'] = 'ctor'
-                        node.fattrs['_constructor'] = True
+                        node.attrs['_name'] = 'ctor'
+                        node.attrs['_constructor'] = True
                         more = False
                     elif self.have('LT'):
                         temp = Declaration()
@@ -479,9 +479,9 @@ class Parser(ExprParser):
         node = Declaration()
         self.declaration_specifier(node)
 
-        if '_destructor' in node.fattrs:
+        if '_destructor' in node.attrs:
             pass
-        elif '_constructor' in node.fattrs:
+        elif '_constructor' in node.attrs:
             pass
         else:
             node.declarator = self.declarator()
@@ -498,7 +498,7 @@ class Parser(ExprParser):
                     raise RuntimeError(
                         "'{}' unexpected after function declaration"
                         .format(self.token.value))
-            self.attribute(node.fattrs)   # function attributes
+            self.attribute(node.attrs)   # function attributes
 #        elif self.token.typ == 'LBRACKET':
 #            node.array  = self.constant_expression()
         else:
@@ -794,13 +794,12 @@ class Declaration(Node):
         self.attrs      = {}     # Declaration attributes
 
         self.func_const = False
-        self.fattrs     = {}     # function attributes
 
     def get_name(self):
         """Get name from declarator
         ctor and dtor should have _name set
         """
-        name = self.fattrs.get('name', None) or self.fattrs.get('_name', None)
+        name = self.attrs.get('name', None) or self.attrs.get('_name', None)
         if name is not None:
             return name
         if self.declarator is None:
@@ -944,7 +943,7 @@ class Declaration(Node):
             out.append('const ')
         if self.volatile:
             out.append('volatile ')
-        if '_destructor' in self.fattrs:
+        if '_destructor' in self.attrs:
             out.append('~')
         if self.storage:
             out.append(' '.join(self.storage))
@@ -993,7 +992,7 @@ class Declaration(Node):
         if self.const:
             decl.append('const ')
 
-        if '_destructor' in self.fattrs:
+        if '_destructor' in self.attrs:
             decl.append('~')
         if self.storage:
             decl.append(' '.join(self.storage))
@@ -1010,8 +1009,8 @@ class Declaration(Node):
         if self.init is not None:
             decl.append('=')
             decl.append(str(self.init))
-        if use_attrs:
-            self.gen_attrs(self.attrs, decl)
+#        if use_attrs:
+#            self.gen_attrs(self.attrs, decl)
 
         params = kwargs.get('params', self.params)
         if params is not None:
@@ -1024,8 +1023,8 @@ class Declaration(Node):
             decl.append(')')
             if self.func_const:
                 decl.append(' const')
-            if use_attrs:
-                self.gen_attrs(self.fattrs, decl)
+        if use_attrs:
+            self.gen_attrs(self.attrs, decl)
 
     _skip_annotations = ['template']
 

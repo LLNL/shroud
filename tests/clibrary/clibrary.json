@@ -128,7 +128,6 @@
                         "name": "Function1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -244,7 +243,6 @@
                         "name": "Function2", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -411,7 +409,6 @@
                         "name": "Sum", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -561,7 +558,6 @@
                         "name": "Function3", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -711,7 +707,6 @@
                         "name": "Function3b", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -869,7 +864,8 @@
                 "_function_index": 5, 
                 "ast": {
                     "attrs": {
-                        "_typename": "char"
+                        "_typename": "char", 
+                        "len": "30"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -880,9 +876,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [
@@ -1022,15 +1015,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": "30"
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [
@@ -1226,7 +1217,6 @@
                         "name": "intargs", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1419,7 +1409,6 @@
                         "name": "cos_doubles", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1619,7 +1608,6 @@
                         "name": "truncate_to_int", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1789,7 +1777,6 @@
                         "name": "increment", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {

@@ -37,7 +37,6 @@
                                 "name": "method1", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
                             "func_const": false, 
                             "params": [], 
                             "specifier": [
@@ -83,7 +82,6 @@
                                 "name": "method2", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
                             "func_const": false, 
                             "params": [], 
                             "specifier": [
@@ -341,7 +339,6 @@
                         "name": "function1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -384,7 +381,6 @@
                         "name": "function2", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -461,7 +457,6 @@
                         "name": "function3a", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -555,7 +550,6 @@
                         "name": "function3a", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -658,7 +652,6 @@
                         "name": "function4", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -752,7 +745,6 @@
                         "name": "function4", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -809,15 +801,13 @@
                 "_function_index": 7, 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "name": "fiveplus"
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "function5", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "name": "fiveplus"
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -861,7 +851,6 @@
                         "name": "init_ns1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [

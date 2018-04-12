@@ -113,7 +113,6 @@
                         "name": "Function1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -193,7 +192,6 @@
                         "name": "Function2", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {

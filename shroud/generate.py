@@ -264,7 +264,7 @@ class GenFunctions(object):
         found_ctor = False
         found_dtor = False
         for node in cls.functions:
-            fattrs = node.ast.fattrs
+            fattrs = node.ast.attrs
             found_ctor = found_ctor or fattrs.get('_constructor', False)
             found_dtor = found_dtor or fattrs.get('_destructor', False)
             
@@ -540,7 +540,7 @@ class GenFunctions(object):
 
         has_string_result = False
         result_as_arg = ''  # only applies to string functions
-        is_pure = ast.fattrs.get('pure', False)
+        is_pure = ast.attrs.get('pure', False)
         if result_typedef.base == 'vector':
             raise NotImplemented("vector result")
         elif result_typedef.base == 'string':
@@ -613,7 +613,7 @@ class GenFunctions(object):
         if has_string_result:
             # Add additional argument to hold result
             ast = C_new.ast
-            if ast.fattrs.get('allocatable', False):
+            if ast.attrs.get('allocatable', False):
                 result_as_string = ast.result_as_voidstarstar(
                     'stringout', result_name, const=ast.const)
                 attrs = result_as_string.attrs

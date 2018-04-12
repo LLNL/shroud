@@ -650,7 +650,7 @@ void TUT_vector_string_append_bufferify(char * arg, long Sarg, int Narg)
 // splicer end function.vector_string_append_bufferify
 }
 
-// int callback1(int in +intent(in)+value, int ( * incr) +intent(in)+value(int +value))
+// int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)
 // function_index=40
 int TUT_callback1(int in, int ( * incr)(int))
 {

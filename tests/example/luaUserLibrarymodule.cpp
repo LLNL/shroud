@@ -705,7 +705,7 @@ static int l_testgroup2(lua_State *L)
     // splicer end function.testgroup2
 }
 
-// void FuncPtr1(void ( * get) +intent(in)+value())
+// void FuncPtr1(void ( * get)() +intent(in)+value)
 static int l_func_ptr1(lua_State *L)
 {
     // splicer begin function.FuncPtr1
@@ -715,7 +715,7 @@ static int l_func_ptr1(lua_State *L)
     // splicer end function.FuncPtr1
 }
 
-// void FuncPtr2(double * ( * get) +intent(in)())
+// void FuncPtr2(double * ( * get)() +intent(in))
 static int l_func_ptr2(lua_State *L)
 {
     // splicer begin function.FuncPtr2
@@ -725,7 +725,7 @@ static int l_func_ptr2(lua_State *L)
     // splicer end function.FuncPtr2
 }
 
-// void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
+// void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
 static int l_func_ptr3(lua_State *L)
 {
     // splicer begin function.FuncPtr3
@@ -735,7 +735,7 @@ static int l_func_ptr3(lua_State *L)
     // splicer end function.FuncPtr3
 }
 
-// void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
+// void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)
 static int l_func_ptr5(lua_State *L)
 {
     // splicer begin function.FuncPtr5

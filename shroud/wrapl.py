@@ -224,8 +224,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             CXX_subprogram = 'subroutine'
 
         # XXX       result_typedef = typemap.Typedef.lookup(result_type)
-        is_ctor = ast.fattrs.get('_constructor', False)
-        is_dtor = ast.fattrs.get('_destructor', False)
+        is_ctor = ast.attrs.get('_constructor', False)
+        is_dtor = ast.attrs.get('_destructor', False)
         if is_dtor:
             CXX_subprogram = 'subroutine'
             fmt.LUA_name = '__gc'
@@ -427,8 +427,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         ast = node.ast
         CXX_subprogram = ast.get_subprogram()
         result_type = ast.typename
-        is_ctor = ast.fattrs.get('_constructor', False)
-        is_dtor = ast.fattrs.get('_destructor', False)
+        is_ctor = ast.attrs.get('_constructor', False)
+        is_dtor = ast.attrs.get('_destructor', False)
 
         if is_dtor or node.return_this:
             result_type = 'void'

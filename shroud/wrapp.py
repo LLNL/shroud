@@ -625,8 +625,8 @@ return 1;""", fmt)
         ast = node.ast
         CXX_subprogram = ast.get_subprogram()
         result_type = ast.typename
-        is_ctor = ast.fattrs.get('_constructor', False)
-        is_dtor = ast.fattrs.get('_destructor', False)
+        is_ctor = ast.attrs.get('_constructor', False)
+        is_dtor = ast.attrs.get('_destructor', False)
 #        is_const = ast.const
         ml_flags = []
 
@@ -1338,7 +1338,7 @@ return 1;""", fmt)
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
 
-            is_ctor = node.ast.fattrs.get('_constructor', False)
+            is_ctor = node.ast.attrs.get('_constructor', False)
 
             body = []
             body.append(1)

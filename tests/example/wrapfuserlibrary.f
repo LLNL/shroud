@@ -487,7 +487,7 @@ contains
         ! splicer end function.testgroup2
     end subroutine testgroup2
 
-    ! void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
+    ! void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
     ! function_index=64
     !>
     !! \brief abstract argument
@@ -500,7 +500,7 @@ contains
         ! splicer end function.func_ptr3
     end subroutine func_ptr3
 
-    ! void FuncPtr4(double ( * get) +intent(in)+value(double +value, int +value))
+    ! void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)
     ! function_index=65
     !>
     !! \brief abstract argument

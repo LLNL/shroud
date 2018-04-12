@@ -316,7 +316,6 @@ class CheckParse(unittest.TestCase):
                 }, 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {
@@ -422,7 +421,6 @@ class CheckParse(unittest.TestCase):
                 "name": "foo", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [], 
             "specifier": [
@@ -456,7 +454,6 @@ class CheckParse(unittest.TestCase):
                     }
                 ]
             }, 
-            "fattrs": {}, 
             "func_const": True, 
             "params": [], 
             "specifier": [
@@ -484,7 +481,6 @@ class CheckParse(unittest.TestCase):
                 "name": "foo", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {
@@ -523,7 +519,6 @@ class CheckParse(unittest.TestCase):
                 "name": "foo", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {
@@ -584,7 +579,6 @@ class CheckParse(unittest.TestCase):
                     }
                 ]
             }, 
-            "fattrs": {}, 
             "func_const": True, 
             "params": [], 
             "specifier": [
@@ -608,15 +602,13 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
                 "_typename": "void",
+                "attr2": "True",
+                "len": 30
             },
             "const": True, 
             "declarator": {
                 "name": "foo", 
                 "pointer": []
-            }, 
-            "fattrs": {
-                "attr2": "True",
-                "len": 30
             }, 
             "func_const": False, 
             "params": [
@@ -665,13 +657,11 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
+                "_constructor": True,
+                "_name": "ctor",
                 "_typename": "Class1",
             },
             "const": False,
-            "fattrs": {
-                "_constructor": True,
-                "_name": "ctor",
-            },
             "func_const": False,
             "params": [],
             "specifier": [
@@ -695,14 +685,12 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
-                "_typename": "Class1",
-            },
-            "const": False,
-            "fattrs": {
                 "_constructor": True,
                 "_name": "ctor",
+                "_typename": "Class1",
                 "name": "new",
             },
+            "const": False,
             "func_const": False,
             "params": [],
             "specifier": [
@@ -726,13 +714,11 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
+                "_destructor": True,
+                "_name": "dtor",
                 "_typename": "Class1",
             },
             "const": False,
-            "fattrs": {
-                "_destructor": True,
-                "_name": "dtor",
-            },
             "func_const": False,
             "params": [],
             "specifier": [
@@ -768,7 +754,6 @@ class CheckParse(unittest.TestCase):
                     }
             ]
             },
-            "fattrs": {},
             "func_const": False,
             "params": [],
             "specifier": [
@@ -800,7 +785,6 @@ class CheckParse(unittest.TestCase):
                 "name": "name", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {
@@ -883,7 +867,6 @@ class CheckParse(unittest.TestCase):
                 "name": "decl11", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {
@@ -924,7 +907,6 @@ class CheckParse(unittest.TestCase):
                 "name": "decl12", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {

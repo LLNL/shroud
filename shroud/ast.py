@@ -824,7 +824,7 @@ class FunctionNode(AstNode):
                 if name in attrs:
                     arg.attrs.update(attrs[name])
         if 'fattrs' in kwargs:
-            ast.fattrs.update(kwargs['fattrs'])
+            ast.attrs.update(kwargs['fattrs'])
         # XXX - waring about unused fields in attrs
                                     
         if ast.params is None:

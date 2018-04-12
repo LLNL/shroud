@@ -59,13 +59,11 @@
                         "_function_index": 0, 
                         "ast": {
                             "attrs": {
+                                "_constructor": true, 
+                                "_name": "ctor", 
                                 "_typename": "tutorial::Class2"
                             }, 
                             "const": false, 
-                            "fattrs": {
-                                "_constructor": true, 
-                                "_name": "ctor"
-                            }, 
                             "func_const": false, 
                             "params": [], 
                             "specifier": [
@@ -109,13 +107,11 @@
                         "_function_index": 1, 
                         "ast": {
                             "attrs": {
+                                "_destructor": true, 
+                                "_name": "dtor", 
                                 "_typename": "tutorial::Class2"
                             }, 
                             "const": false, 
-                            "fattrs": {
-                                "_destructor": true, 
-                                "_name": "dtor"
-                            }, 
                             "func_const": false, 
                             "params": [], 
                             "specifier": [
@@ -203,7 +199,6 @@
                                 "name": "func1", 
                                 "pointer": []
                             }, 
-                            "fattrs": {}, 
                             "func_const": false, 
                             "params": [
                                 {
