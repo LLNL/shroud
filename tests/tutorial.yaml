@@ -103,6 +103,12 @@ declarations:
       # check out arguments
       wrap_python: False
       wrap_lua: False
+
+  - decl: int * ReturnIntPtr(int *len+intent(out))
+    options:
+      # check out arguments
+      wrap_python: False
+      wrap_lua: False
   
   - decl: const std::string Function4a(
       const std::string& arg1,

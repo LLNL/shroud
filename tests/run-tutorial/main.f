@@ -106,7 +106,8 @@ contains
   subroutine test_functions
 
     integer(C_LONG_LONG) :: rv_ll
-    integer(C_INT) :: minout, maxout
+    integer(C_INT) :: minout, maxout, lenp
+    integer(C_INT), pointer :: intp
 
     call set_case_name("test_functions")
 
@@ -130,6 +131,12 @@ contains
     call function3b(.false., rv_logical, wrk_logical)
     call assert_true(rv_logical)
     call assert_true(wrk_logical)
+
+    nullify(intp)
+    intp => return_int_ptr(lenp)
+    call assert_true(associated(intp))
+!    call assert_true(1, size(intp))
+    call assert_equals(1, intp)
 
     call assert_true( function4a("dog", "cat") == "dogcat")
 

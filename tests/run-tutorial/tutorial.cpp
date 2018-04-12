@@ -86,6 +86,15 @@ void Function3b(const bool arg1, bool *arg2, bool *arg3)
     return;
 }
 
+
+// Return a pointer to an existing, static array
+int * ReturnIntPtr(int *len)
+{
+  static int buffer[] = { 1, 2, 3, 4, 5, 6, 7 };
+  *len = sizeof buffer / sizeof buffer[1];
+  return buffer;
+}
+
 const std::string Function4a(const std::string& arg1, const std::string& arg2)
 {
     last_function_called = "Function4a";

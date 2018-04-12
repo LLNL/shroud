@@ -228,6 +228,42 @@ wrapper does the type conversion necessary to make it easier to use
 within an existing Fortran application.
 
 
+Pointer Functions
+-----------------
+
+Functions which return a pointer will create a Fortran wrapper with
+the ``POINTER`` attribute::
+
+    - decl: int * ReturnIntPtr()
+
+Creates the Fortran wrapper::
+
+    interface
+        function c_return_int_ptr() &
+                result(SHT_rv) &
+                bind(C, name="TUT_return_int_ptr")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr
+    end interface
+
+    function return_int_ptr() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), pointer :: SHT_rv
+        type(C_PTR) :: SHT_ptr
+        SHT_ptr = c_return_int_ptr()
+        call c_f_pointer(SHT_ptr, SHT_rv)
+    end function return_int_ptr
+
+It can be used as::
+
+    integer(C_INT), pointer :: intp
+
+    intp => return_int_ptr()
+
+
 Pointer arguments
 -----------------
 
