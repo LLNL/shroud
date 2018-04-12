@@ -57,7 +57,7 @@ static std::string global_str;
 static int global_int;
 static double global_double;
 static const Class1 *global_class1;
-
+static struct1 global_struct1;
 
 
 void Function1()
@@ -247,13 +247,13 @@ void getclass(const Class1 **arg)
 
 const Class1 * getclass2()
 {
-    last_function_called = "getclass";
+    last_function_called = "getclass2";
     return global_class1;
 }
 
 Class1 * getclass3()
 {
-    last_function_called = "getclass";
+    last_function_called = "getclass3";
     return const_cast<Class1 *>(global_class1);
 }
 
@@ -377,6 +377,13 @@ struct1 returnStruct(int i, double d)
 }
 
 struct1 *returnStructPtr(int i, double d)
+{
+  global_struct1.i = i;
+  global_struct1.d = d;
+  return &global_struct1;
+}
+
+struct1 *returnStructPtrNew(int i, double d)
 {
   struct1 *s = new struct1;
   s->i = i;

@@ -315,6 +315,10 @@ declarations:
 #    options:
 #      wrap_lua: False
 #      wrap_python: False
+#  - decl: struct1 *returnStructPtrNew(int i, double d);
+#    options:
+#      wrap_lua: False
+#      wrap_python: False
 #  - decl: void freeStruct(struct1 *arg1);
 #    options:
 #      wrap_lua: False
