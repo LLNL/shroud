@@ -745,8 +745,12 @@ class Declarator(Node):
         Replace name with value from kwargs.
         name=None will skip appending any existing name.
         """
-        for ptr in self.pointer:
-            ptr.gen_decl_work(decl, **kwargs)
+        if kwargs.get('force_ptr', False):
+            # Force to be a pointer
+            decl.append(' *')
+        else:
+            for ptr in self.pointer:
+                ptr.gen_decl_work(decl, **kwargs)
         if self.func:
             decl.append(' (')
             self.func.gen_decl_work(decl, **kwargs)
@@ -1069,6 +1073,8 @@ class Declaration(Node):
         continuation = True - insert tabs to aid continuations
         asgn_value = If True, make sure the value can be assigned
                      by removing const.
+        as_ptr - Change reference to pointer
+        force_ptr - Change a scalar into a pointer
 
         If a templated type, assume std::vector.
         The C argument will be a pointer to the template type.
@@ -1172,11 +1178,13 @@ class Declaration(Node):
             decl.append('(*)')
         return ''.join(decl)
 
-    def gen_arg_as_fortran(self, local=False, **kwargs):
+    def gen_arg_as_fortran(self, local=False, attributes=[], **kwargs):
         """Geneate declaration for Fortran variable.
 
         If local==True, this is a local variable, skip attributes
           OPTIONAL, VALUE, and INTENT
+        attributes - list of literal Fortran attributes to add to declaration.
+                     i.e. [ 'pointer' ]
         """
         t = []
         typedef = typemap.Typedef.lookup(self.typename)
@@ -1197,6 +1205,7 @@ class Declaration(Node):
         allocatable = attrs.get('allocatable', False)
         if allocatable:
             t.append('allocatable')
+        t.extend(attributes)
 
         decl = []
         decl.append(', '.join(t))

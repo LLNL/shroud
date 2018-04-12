@@ -85,6 +85,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(      "int var1", r.gen_arg_as_c(asgn_value=True))
         self.assertEqual("const int var1", r.gen_arg_as_cxx())
         self.assertEqual(      "int var1", r.gen_arg_as_cxx(asgn_value=True))
+        self.assertEqual(    "int * var1", r.gen_arg_as_cxx(asgn_value=True, force_ptr=True))
 
         r = declast.check_decl("int const var1")
         s = r.gen_decl()
@@ -96,6 +97,8 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int * var1", r.gen_arg_as_c())
         self.assertEqual("int * var1", r.gen_arg_as_cxx())
         self.assertEqual("integer(C_INT) :: var1(:)", r.gen_arg_as_fortran())
+        self.assertEqual("integer(C_INT), pointer :: var1(:)",
+                         r.gen_arg_as_fortran(attributes=['pointer']))
         self.assertEqual("integer(C_INT) :: var1(*)", r.bind_c())
 
         r = declast.check_decl("const int * var1")

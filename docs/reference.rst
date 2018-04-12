@@ -266,6 +266,17 @@ F_string_len_trim
   copying the string in the Fortran wrapper.
   Defaults to *true*.
 
+F_return_fortran_pointer
+  Use ``c_f_pointer`` in the Fortran wrapper to return 
+  a Fortran pointer instead of a ``type(C_PTR)``
+  in routines which return a pointer
+  It does not apply to ``char *``, ``void *``, and routines which return
+  a pointer to a class instance.
+  Defaults to *true*.
+
+.. XXX how to decide length of pointer
+
+
 .. bufferify
 
 show_splicer_comments
@@ -550,10 +561,17 @@ F_impl_filename
     If option *F_module_per_class* is false, then all derived types
     generated for each class will also be in this file.
 
+F_pointer
+    The name of Fortran wrapper local variable to save result of a 
+    function which returns a pointer.
+    The pointer is then set in ``F_result`` using ``c_f_pointer``.
+    It must not be the same as any of the routines arguments.
+    It defaults to *SHT_ptr*
+
 F_result
     The name of the Fortran wrapper's result variable.
     It must not be the same as any of the routines arguments.
-    It defaults to *SH_rv*  (Shroud return value).
+    It defaults to *SHT_rv*  (Shroud temporary return value).
 
 F_string_result_as_arg
     The name of the output argument.

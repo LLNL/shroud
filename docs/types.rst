@@ -93,8 +93,6 @@ pre_call = []
 
 post_call = []
 
-return_code = []
-
 f_statements
 
 need_wrapper

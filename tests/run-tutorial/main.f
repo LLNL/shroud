@@ -258,12 +258,16 @@ contains
 
   subroutine test_struct1
     type(struct1) str1
+    type(struct1), pointer :: str2
     real(C_DOUBLE) rvd
 
     call set_case_name("test_struct")
+
     str1 = return_struct(1_C_INT, 2.5_C_DOUBLE)
     call assert_equals(1_C_INT,      str1%i, "return_struct i field")
     call assert_equals(2.5_C_DOUBLE, str1%d, "return_struct d field")
+
+    str2 => return_struct_ptr(8_C_INT, 8.5_C_DOUBLE)
 
     str1%i = 2_C_INT
     str1%d = 2.0_C_DOUBLE

@@ -424,8 +424,9 @@ Format variable which control names are
 * CXX_this
 * C_result
 
-* F_result
-* F_this
+* F_pointer - ``SHT_pointer``
+* F_result - ``SHT_rv``  (return value)
+* F_this - ``obj``
 
 * LUA_result
 

@@ -667,6 +667,15 @@ class Wrapf(util.WrapperMixin):
 
         result_typedef = typemap.Typedef.lookup(result_type)
 
+        result_attributes = []
+        is_pointer = False
+        if options.F_return_fortran_pointer and ast.is_pointer() \
+           and result_typedef.cxx_type != 'void' \
+           and result_typedef.base != 'string' \
+           and result_typedef.base != 'shadow':
+            result_attributes.append('pointer')
+            is_pointer = True
+
         arg_c_names = []  # argument names for functions
         arg_c_decl = []   # declaraion of argument names
         modules = {}   # indexed as [module][variable]
@@ -784,7 +793,11 @@ class Wrapf(util.WrapperMixin):
             else:
                 # XXX - make sure ptr is set to avoid VALUE
                 rvast = declast.create_this_arg(fmt.F_result, result_type, False)
-                arg_c_decl.append(rvast.bind_c())
+                if is_pointer:
+                    arg_c_decl.append('type(C_PTR) %s' % fmt.F_result)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
+                else:
+                    arg_c_decl.append(rvast.bind_c())
                 self.update_f_module(modules,
                                      result_typedef.f_c_module or
                                      result_typedef.f_module)
@@ -928,6 +941,20 @@ class Wrapf(util.WrapperMixin):
         result_generated_suffix = ''
         if is_pure:
             result_generated_suffix = '_pure'
+
+        result_attributes = []
+        is_pointer = False
+        if options.F_return_fortran_pointer and ast.is_pointer() \
+           and result_typedef.cxx_type != 'void' \
+           and result_typedef.base != 'string' \
+           and result_typedef.base != 'shadow':
+            # XXX is_indirect?
+            # Change a C++ pointer into a Fortran pointer
+            # return 'void *' as 'type(C_PTR)'
+            # 'shadow' assigns pointer to type(C_PTR) in a derived type
+            result_attributes.append('pointer')
+            is_pointer = True
+            need_wrapper = True
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
@@ -1164,7 +1191,11 @@ class Wrapf(util.WrapperMixin):
                     arg_f_decl.append(line1)
                 self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
             else:
-                arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
+                arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result,
+                                                         attributes=result_attributes))
+                if is_pointer:
+                    arg_f_decl.append('type(C_PTR) :: ' + fmt_func.F_pointer)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             self.update_f_module(modules, result_typedef.f_module)
 
         if not node._CXX_return_templated:
@@ -1206,8 +1237,12 @@ class Wrapf(util.WrapperMixin):
             elif c_subprogram == 'function':
                 f_statements = result_typedef.f_statements
                 intent_blk = f_statements.get('result' + result_generated_suffix,{})
-                cmd_list = intent_blk.get('call', [
-                        '{F_result} = {F_C_call}({F_arg_c_call})'])
+                if 'call' in intent_blk:
+                    cmd_list = intent_blk['call']
+                elif is_pointer:
+                    cmd_list = [ '{F_pointer} = {F_C_call}({F_arg_c_call})']
+                else:
+                    cmd_list = [ '{F_result} = {F_C_call}({F_arg_c_call})']
 #                for cmd in cmd_list:  # only allow a single statment for now
 #                    append_format(pre_call, cmd, fmt_arg)
                 fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
@@ -1229,6 +1264,9 @@ class Wrapf(util.WrapperMixin):
                 F_code.append(wformat(
                     '{F_this}%{F_derived_member} = C_NULL_PTR', fmt_func))
                 self.set_f_module(modules, 'iso_c_binding', 'C_NULL_PTR')
+            elif is_pointer:
+                F_code.append(wformat('call c_f_pointer({F_pointer}, {F_result})', fmt_func))
+                self.set_f_module(modules, 'iso_c_binding', 'c_f_pointer')
 
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)
 

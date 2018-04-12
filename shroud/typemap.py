@@ -1104,6 +1104,16 @@ def typedef_struct_defaults(typedef):
 
     typedef.c_union = helper
 
+    # C++ pointer -> void pointer -> C pointer
+    typedef.cxx_to_c=('\tstatic_cast<{c_const}%s *>('
+                      '\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))' %
+                      typedef.c_type)
+
+    # C pointer -> void pointer -> C++ pointer
+    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s *>('
+                      '\tstatic_cast<{c_const}void *>(\t{c_var}))' %
+                      typedef.cxx_type)
+
     # To convert, extract correct field from union
 #    typedef.cxx_to_c='\t{cxx_addr}{cxx_var}.cxx'
 #    typedef.c_to_cxx='\t{cxx_addr}{cxx_var}.c'
@@ -1114,41 +1124,8 @@ def typedef_struct_defaults(typedef):
 #    typedef.f_module={fmt_class.F_module_name:[unname]}
 
     typedef.c_statements=dict(
-        intent_in=dict(
-            c_helper=helper,
-            cxx_local_var='union',
-            pre_call=[
-                # Create union and assign to C type
-                '%s {cxx_var};' % helper,
-                '{cxx_var}.c = {c_ptr}{c_var};',
-            ],
-        ),
-        intent_out=dict(
-            c_helper=helper,
-            cxx_local_var='union',
-            pre_call=[
-                '%s {cxx_var};' % helper,
-            ],
-            post_call=[
-                '{c_ptr}{c_var} = {cxx_var}.c;',
-            ],
-        ),
-        intent_inout=dict(
-            c_helper=helper,
-            cxx_local_var='union',
-            pre_call=[
-                '%s {cxx_var};' % helper,
-                '{cxx_var}.c = {c_ptr}{c_var};',
-            ],
-            post_call=[
-                '{c_ptr}{c_var} = {cxx_var}.c;',
-            ],
-        ),
         result=dict(
             c_helper=helper,
-            return_code=[
-                'return {cxx_var}.c;'
-            ],
         ),
     )
 

@@ -1009,6 +1009,7 @@
             "F_name_associated": "associated", 
             "F_name_instance_get": "get_instance", 
             "F_name_instance_set": "set_instance", 
+            "F_pointer": "SHT_ptr", 
             "F_pure_clause": "", 
             "F_result": "SHT_rv", 
             "F_result_clause": "", 
@@ -1860,7 +1861,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 56, 
+                "_PTR_F_C_index": 57, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtl": {
@@ -2071,7 +2072,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 56, 
+                "_function_index": 57, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -2420,7 +2421,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 57, 
+                "_function_index": 58, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -2530,8 +2531,8 @@
             }, 
             {
                 "_PTR_C_CXX_index": 14, 
-                "_PTR_F_C_index": 57, 
-                "_function_index": 58, 
+                "_PTR_F_C_index": 58, 
+                "_function_index": 59, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -2645,7 +2646,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 46, 
+                "_function_index": 47, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -2726,7 +2727,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 47, 
+                "_function_index": 48, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -2801,8 +2802,8 @@
             }, 
             {
                 "_default_funcs": [
-                    46, 
-                    47
+                    47, 
+                    48
                 ], 
                 "_fmtargs": {
                     "arg1": {
@@ -2996,7 +2997,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 59, 
+                "_PTR_F_C_index": 60, 
                 "_cxx_overload": [
                     16, 
                     17
@@ -3127,7 +3128,7 @@
                         }
                     }
                 }, 
-                "_function_index": 59, 
+                "_function_index": 60, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -3366,7 +3367,7 @@
                         }
                     }
                 }, 
-                "_function_index": 48, 
+                "_function_index": 49, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -3449,7 +3450,7 @@
                         }
                     }
                 }, 
-                "_function_index": 49, 
+                "_function_index": 50, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -3563,7 +3564,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 50, 
+                "_function_index": 51, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -3625,7 +3626,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 51, 
+                "_function_index": 52, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -3780,7 +3781,7 @@
             }, 
             {
                 "_PTR_F_C_index": 20, 
-                "_function_index": 68, 
+                "_function_index": 69, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3839,7 +3840,7 @@
             }, 
             {
                 "_PTR_F_C_index": 20, 
-                "_function_index": 69, 
+                "_function_index": 70, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -3948,7 +3949,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 60, 
+                "_PTR_F_C_index": 61, 
                 "_cxx_overload": [
                     21, 
                     22
@@ -4109,7 +4110,7 @@
                     21, 
                     22
                 ], 
-                "_function_index": 70, 
+                "_function_index": 71, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -4193,7 +4194,7 @@
                     21, 
                     22
                 ], 
-                "_function_index": 71, 
+                "_function_index": 72, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -4308,7 +4309,7 @@
                         }
                     }
                 }, 
-                "_function_index": 60, 
+                "_function_index": 61, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -4423,7 +4424,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 52, 
+                "_function_index": 53, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4538,7 +4539,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 53, 
+                "_function_index": 54, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4632,8 +4633,8 @@
                     24
                 ], 
                 "_default_funcs": [
-                    52, 
-                    53
+                    53, 
+                    54
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -4920,7 +4921,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 54, 
+                "_function_index": 55, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5059,7 +5060,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 55, 
+                "_function_index": 56, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5163,8 +5164,8 @@
                     24
                 ], 
                 "_default_funcs": [
-                    54, 
-                    55
+                    55, 
+                    56
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -6377,7 +6378,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 61, 
+                "_PTR_F_C_index": 62, 
                 "_function_index": 33, 
                 "ast": {
                     "attrs": {
@@ -6467,7 +6468,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 61, 
+                "_function_index": 62, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -6534,7 +6535,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 62, 
+                "_PTR_F_C_index": 63, 
                 "_function_index": 34, 
                 "ast": {
                     "attrs": {
@@ -6615,7 +6616,7 @@
                         }
                     }
                 }, 
-                "_function_index": 62, 
+                "_function_index": 63, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -6682,7 +6683,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 63, 
+                "_PTR_F_C_index": 64, 
                 "_function_index": 35, 
                 "ast": {
                     "attrs": {
@@ -6763,7 +6764,7 @@
                         }
                     }
                 }, 
-                "_function_index": 63, 
+                "_function_index": 64, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -6830,7 +6831,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 64, 
+                "_PTR_F_C_index": 65, 
                 "_function_index": 36, 
                 "ast": {
                     "attrs": {
@@ -6925,7 +6926,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 64, 
+                "_function_index": 65, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -6997,7 +6998,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 65, 
+                "_PTR_F_C_index": 66, 
                 "_function_index": 37, 
                 "ast": {
                     "attrs": {
@@ -7087,7 +7088,7 @@
                         }
                     }
                 }, 
-                "_function_index": 65, 
+                "_function_index": 66, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -7160,7 +7161,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 66, 
+                "_PTR_F_C_index": 67, 
                 "_function_index": 38, 
                 "ast": {
                     "attrs": {
@@ -7245,7 +7246,7 @@
                         }
                     }
                 }, 
-                "_function_index": 66, 
+                "_function_index": 67, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -7571,14 +7572,140 @@
             }, 
             {
                 "_fmtargs": {
+                    "d": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "d", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "d"
+                        }, 
+                        "fmtf": {
+                            "c_var": "d", 
+                            "f_var": "d"
+                        }
+                    }, 
+                    "i": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_ptr": "", 
+                            "c_var": "i", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "i"
+                        }, 
+                        "fmtf": {
+                            "c_var": "i", 
+                            "f_var": "i"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_rv_decl": "TUT_struct1 * SHC_rv", 
+                        "c_val": "\tstatic_cast<TUT_struct1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_deref": "->", 
+                        "cxx_var": "SHCXX_rv"
+                    }
+                }, 
+                "_function_index": 41, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "tutorial::struct1"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "returnStructPtr", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "fattrs": {}, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "i", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "_typename": "double", 
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "d", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "struct1"
+                    ]
+                }, 
+                "decl": "struct1 *returnStructPtr(int i, double d);", 
+                "declgen": "struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)", 
+                "format": {
+                    "C_call_code": "tutorial::\tstruct1 * SHCXX_rv =\t tutorial::\treturnStructPtr(\ti,\t d);", 
+                    "C_call_list": "i,\t d", 
+                    "C_name": "TUT_return_struct_ptr", 
+                    "C_post_call": "TUT_struct1 * SHC_rv = \tstatic_cast<TUT_struct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
+                    "C_prototype": "int i,\t double d", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "TUT_struct1 *", 
+                    "F_C_call": "c_return_struct_ptr", 
+                    "F_C_name": "c_return_struct_ptr", 
+                    "F_arg_c_call": "i,\t d", 
+                    "F_arguments": "i,\t d", 
+                    "F_call_code": "SHT_ptr = c_return_struct_ptr(i,\t d)", 
+                    "F_name_function": "return_struct_ptr", 
+                    "F_name_generic": "return_struct_ptr", 
+                    "F_name_impl": "return_struct_ptr", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "tutorial::\tstruct1 * SHCXX_rv", 
+                    "function_name": "returnStructPtr", 
+                    "underscore_name": "return_struct_ptr"
+                }, 
+                "options": {
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_fmtargs": {
                     "arg": {
                         "fmtc": {
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg", 
+                            "cxx_decl": "tutorial::\tstruct1 * SHCXX_arg", 
                             "cxx_deref": ".", 
                             "cxx_type": "tutorial::\tstruct1", 
-                            "cxx_var": "SH_arg"
+                            "cxx_val": "\tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\t&arg))", 
+                            "cxx_var": "SHCXX_arg"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -7594,7 +7721,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 41, 
+                "_function_index": 42, 
                 "ast": {
                     "attrs": {
                         "_typename": "double"
@@ -7630,10 +7757,10 @@
                 "decl": "double acceptStructIn(struct1 arg)", 
                 "declgen": "double acceptStructIn(struct1 arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t tutorial::\tacceptStructIn(\tSH_arg.cxx);", 
-                    "C_call_list": "SH_arg.cxx", 
+                    "C_call_code": "double SHC_rv =\t tutorial::\tacceptStructIn(\t*SHCXX_arg);", 
+                    "C_call_list": "*SHCXX_arg", 
                     "C_name": "TUT_accept_struct_in", 
-                    "C_pre_call": "SH_union_0_t SH_arg;\nSH_arg.c = arg;", 
+                    "C_pre_call": "tutorial::\tstruct1 * SHCXX_arg = \tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\t&arg));", 
                     "C_prototype": "TUT_struct1 arg", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "double", 
@@ -7664,9 +7791,11 @@
                             "c_const": "", 
                             "c_ptr": "*", 
                             "c_var": "arg", 
+                            "cxx_decl": "tutorial::\tstruct1 * SHCXX_arg", 
                             "cxx_deref": "->", 
                             "cxx_type": "tutorial::\tstruct1", 
-                            "cxx_var": "SH_arg"
+                            "cxx_val": "\tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ))", 
+                            "cxx_var": "SHCXX_arg"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -7682,7 +7811,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 42, 
+                "_function_index": 43, 
                 "ast": {
                     "attrs": {
                         "_typename": "double"
@@ -7723,10 +7852,10 @@
                 "decl": "double acceptStructInPtr(struct1 *arg+intent(in))", 
                 "declgen": "double acceptStructInPtr(struct1 * arg +intent(in))", 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t tutorial::\tacceptStructInPtr(\t&SH_arg.cxx);", 
-                    "C_call_list": "&SH_arg.cxx", 
+                    "C_call_code": "double SHC_rv =\t tutorial::\tacceptStructInPtr(\tSHCXX_arg);", 
+                    "C_call_list": "SHCXX_arg", 
                     "C_name": "TUT_accept_struct_in_ptr", 
-                    "C_pre_call": "SH_union_0_t SH_arg;\nSH_arg.c = *arg;", 
+                    "C_pre_call": "tutorial::\tstruct1 * SHCXX_arg = \tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ));", 
                     "C_prototype": "TUT_struct1 * arg", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "double", 
@@ -7757,9 +7886,11 @@
                             "c_const": "", 
                             "c_ptr": "*", 
                             "c_var": "arg", 
+                            "cxx_decl": "tutorial::\tstruct1 * SHCXX_arg", 
                             "cxx_deref": "->", 
                             "cxx_type": "tutorial::\tstruct1", 
-                            "cxx_var": "SH_arg"
+                            "cxx_val": "\tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ))", 
+                            "cxx_var": "SHCXX_arg"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -7795,7 +7926,7 @@
                         }
                     }
                 }, 
-                "_function_index": 43, 
+                "_function_index": 44, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7866,11 +7997,10 @@
                 "decl": "void acceptStructOutPtr(struct1 *arg +intent(out), int i, double d)", 
                 "declgen": "void acceptStructOutPtr(struct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "tutorial::\tacceptStructOutPtr(\t&SH_arg.cxx,\t i,\t d);", 
-                    "C_call_list": "&SH_arg.cxx,\t i,\t d", 
+                    "C_call_code": "tutorial::\tacceptStructOutPtr(\tSHCXX_arg,\t i,\t d);", 
+                    "C_call_list": "SHCXX_arg,\t i,\t d", 
                     "C_name": "TUT_accept_struct_out_ptr", 
-                    "C_post_call": "*arg = SH_arg.c;", 
-                    "C_pre_call": "SH_union_0_t SH_arg;", 
+                    "C_pre_call": "tutorial::\tstruct1 * SHCXX_arg = \tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ));", 
                     "C_prototype": "TUT_struct1 * arg,\t int i,\t double d", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -7899,9 +8029,11 @@
                             "c_const": "", 
                             "c_ptr": "*", 
                             "c_var": "arg", 
+                            "cxx_decl": "tutorial::\tstruct1 * SHCXX_arg", 
                             "cxx_deref": "->", 
                             "cxx_type": "tutorial::\tstruct1", 
-                            "cxx_var": "SH_arg"
+                            "cxx_val": "\tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ))", 
+                            "cxx_var": "SHCXX_arg"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -7909,7 +8041,7 @@
                         }
                     }
                 }, 
-                "_function_index": 44, 
+                "_function_index": 45, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7950,11 +8082,10 @@
                 "decl": "void acceptStructInOutPtr(struct1 *arg +intent(inout))", 
                 "declgen": "void acceptStructInOutPtr(struct1 * arg +intent(inout))", 
                 "format": {
-                    "C_call_code": "tutorial::\tacceptStructInOutPtr(\t&SH_arg.cxx);", 
-                    "C_call_list": "&SH_arg.cxx", 
+                    "C_call_code": "tutorial::\tacceptStructInOutPtr(\tSHCXX_arg);", 
+                    "C_call_list": "SHCXX_arg", 
                     "C_name": "TUT_accept_struct_in_out_ptr", 
-                    "C_post_call": "*arg = SH_arg.c;", 
-                    "C_pre_call": "SH_union_0_t SH_arg;\nSH_arg.c = *arg;", 
+                    "C_pre_call": "tutorial::\tstruct1 * SHCXX_arg = \tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ));", 
                     "C_prototype": "TUT_struct1 * arg", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -7977,7 +8108,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 67, 
+                "_PTR_F_C_index": 68, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
@@ -8003,7 +8134,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 45, 
+                "_function_index": 46, 
                 "ast": {
                     "attrs": {
                         "_typename": "std::string"
@@ -8059,7 +8190,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 45, 
+                "_PTR_C_CXX_index": 46, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -8086,7 +8217,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 67, 
+                "_function_index": 68, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -8180,6 +8311,7 @@
             "F_name_function_template": "{underscore_name}{function_suffix}", 
             "F_name_generic_template": "{underscore_name}", 
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}", 
+            "F_return_fortran_pointer": true, 
             "F_standard": 2003, 
             "F_string_len_trim": true, 
             "LUA_class_reg_template": "{LUA_prefix}{cxx_class}_Reg", 
@@ -9059,44 +9191,14 @@
             "base": "struct", 
             "c_header": "wrapstruct1.h", 
             "c_statements": {
-                "intent_in": {
-                    "c_helper": "SH_union_0_t", 
-                    "cxx_local_var": "union", 
-                    "pre_call": [
-                        "SH_union_0_t {cxx_var};", 
-                        "{cxx_var}.c = {c_ptr}{c_var};"
-                    ]
-                }, 
-                "intent_inout": {
-                    "c_helper": "SH_union_0_t", 
-                    "cxx_local_var": "union", 
-                    "post_call": [
-                        "{c_ptr}{c_var} = {cxx_var}.c;"
-                    ], 
-                    "pre_call": [
-                        "SH_union_0_t {cxx_var};", 
-                        "{cxx_var}.c = {c_ptr}{c_var};"
-                    ]
-                }, 
-                "intent_out": {
-                    "c_helper": "SH_union_0_t", 
-                    "cxx_local_var": "union", 
-                    "post_call": [
-                        "{c_ptr}{c_var} = {cxx_var}.c;"
-                    ], 
-                    "pre_call": [
-                        "SH_union_0_t {cxx_var};"
-                    ]
-                }, 
                 "result": {
-                    "c_helper": "SH_union_0_t", 
-                    "return_code": [
-                        "return {cxx_var}.c;"
-                    ]
+                    "c_helper": "SH_union_0_t"
                 }
             }, 
+            "c_to_cxx": "\tstatic_cast<{c_const}tutorial::\tstruct1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TUT_struct1", 
             "c_union": "SH_union_0_t", 
+            "cxx_to_c": "\tstatic_cast<{c_const}TUT_struct1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
             "cxx_type": "tutorial::\tstruct1", 
             "f_derived_type": "struct1", 
             "f_module": {

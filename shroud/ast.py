@@ -315,6 +315,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_module_per_class=True,
             F_string_len_trim=True,
             F_force_wrapper=False,
+            F_return_fortran_pointer=True,
             F_standard=2003,
 
             wrap_c=True,
@@ -435,6 +436,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_instance_get = 'get_instance',
             F_name_instance_set = 'set_instance',
             F_result = 'SHT_rv',
+            F_pointer = 'SHT_ptr',
             F_this = 'obj',
 
             C_string_result_as_arg = 'SHF_rv',

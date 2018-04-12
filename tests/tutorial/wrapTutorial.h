@@ -170,6 +170,8 @@ int TUT_callback1(int in, int ( * incr)(int));
 
 TUT_struct1 TUT_return_struct(int i, double d);
 
+TUT_struct1 * TUT_return_struct_ptr(int i, double d);
+
 double TUT_accept_struct_in(TUT_struct1 arg);
 
 double TUT_accept_struct_in_ptr(TUT_struct1 * arg);
