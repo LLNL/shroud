@@ -305,6 +305,9 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});
 
         self.wrap_enums(node)
 
+        for var in node.variables:
+            self.wrap_class_variable(var)
+
         # wrap methods
         self.tp_init_default = '0'
         self._push_splicer('method')
@@ -375,6 +378,40 @@ return 1;""", fmt)
         self.py_helper_functions.append('}')
 
         self._pop_splicer('helper')
+
+    def wrap_class_variable(self, node):
+        """Wrap a VariableNode in a class with descriptors.
+        """
+        options = node.options
+        fmt_var = node.fmtdict
+        fmt_var.PY_getter =  wformat(options.PY_member_getter_template, fmt_var)
+        fmt_var.PY_setter = 'NULL'  # read-only
+
+        fmt = util.Scope(fmt_var)
+        fmt.c_var = wformat('{PY_param_self}->{PY_obj}->{variable_name}', fmt_var)
+
+        typedef = typemap.Typedef.lookup(node.ast.typename)
+
+        if typedef.PY_ctor:
+            fmt.ctor = wformat('PyObject * rv = ' + typedef.PY_ctor + ';', fmt)
+        else:
+            fmt.ctor = 'UUU'
+
+        append_format(self.PyGetSetBody,
+            '\nstatic PyObject *'
+            '{PY_getter}('
+            '{PY_PyObject} *{PY_param_self},'
+            '\t void *SHROUD_UNUSED(closure))\n'
+            '{{+\n{ctor}\nreturn rv;'
+            '\n-}}', fmt)
+        
+        self.PyGetSetDef.append(
+            # XXX - the (char *) only needed for C++
+            wformat('{{(char *)"{variable_name}",\t '
+                    '(getter){PY_getter},\t '
+                    '(setter){PY_setter},\t '
+                    'NULL, '                # doc
+                    'NULL}},', fmt_var))    # closure
 
     def allocatable_blk(self, allocatable, node, arg, fmt_arg):
         """Allocate NumPy Array.

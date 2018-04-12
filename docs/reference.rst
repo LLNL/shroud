@@ -436,11 +436,19 @@ PY_PyTypeObject_template
 PY_PyObject_template
     ``{PY_prefix}{cxx_class}``
 
-PY_type_filename_template
-    ``py{cxx_class}type.{PY_impl_filename_suffix}``
+PY_member_getter_template
+    Name of descriptor getter method for a class variable.
+    ``{PY_prefix}{cxx_class}_{variable_name}_getter``
+
+PY_member_setter_template
+    Name of descriptor setter method for a class variable.
+    ``{PY_prefix}{cxx_class}_{variable_name}_setter``
 
 PY_name_impl_template
     ``{PY_prefix}{class_prefix}{function_name}{function_suffix}``
+
+PY_type_filename_template
+    ``py{cxx_class}type.{PY_impl_filename_suffix}``
 
 PY_type_impl_template
     Names of functions for type methods such as ``tp_init``.

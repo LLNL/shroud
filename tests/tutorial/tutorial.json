@@ -36,18 +36,22 @@
                 "variables": [
                     {
                         "format": {
-                            "var_lower": "i", 
-                            "var_name": "i", 
-                            "var_upper": "I"
+                            "PY_getter": "PY_struct1_i_getter", 
+                            "PY_setter": "NULL", 
+                            "variable_lower": "i", 
+                            "variable_name": "i", 
+                            "variable_upper": "I"
                         }, 
                         "name": "i", 
                         "options": {}
                     }, 
                     {
                         "format": {
-                            "var_lower": "d", 
-                            "var_name": "d", 
-                            "var_upper": "D"
+                            "PY_getter": "PY_struct1_d_getter", 
+                            "PY_setter": "NULL", 
+                            "variable_lower": "d", 
+                            "variable_name": "d", 
+                            "variable_upper": "D"
                         }, 
                         "name": "d", 
                         "options": {}
@@ -759,9 +763,11 @@
                 "variables": [
                     {
                         "format": {
-                            "var_lower": "m_flag", 
-                            "var_name": "m_flag", 
-                            "var_upper": "M_FLAG"
+                            "PY_getter": "PY_Class1_m_flag_getter", 
+                            "PY_setter": "NULL", 
+                            "variable_lower": "m_flag", 
+                            "variable_name": "m_flag", 
+                            "variable_upper": "M_FLAG"
                         }, 
                         "name": "m_flag", 
                         "options": {}
@@ -8191,6 +8197,8 @@
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type", 
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}", 
             "PY_helper_filename_template": "py{library}helper.{PY_impl_filename_suffix}", 
+            "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter", 
+            "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter", 
             "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}", 
             "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}", 
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 
@@ -8208,18 +8216,18 @@
         "variables": [
             {
                 "format": {
-                    "var_lower": "global_flag", 
-                    "var_name": "global_flag", 
-                    "var_upper": "GLOBAL_FLAG"
+                    "variable_lower": "global_flag", 
+                    "variable_name": "global_flag", 
+                    "variable_upper": "GLOBAL_FLAG"
                 }, 
                 "name": "global_flag", 
                 "options": {}
             }, 
             {
                 "format": {
-                    "var_lower": "tutorial_flag", 
-                    "var_name": "tutorial_flag", 
-                    "var_upper": "TUTORIAL_FLAG"
+                    "variable_lower": "tutorial_flag", 
+                    "variable_name": "tutorial_flag", 
+                    "variable_upper": "TUTORIAL_FLAG"
                 }, 
                 "name": "tutorial_flag", 
                 "options": {}

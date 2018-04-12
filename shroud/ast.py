@@ -396,7 +396,12 @@ class LibraryNode(AstNode, NamespaceMixin):
             # names for type methods (tp_init)
             PY_type_impl_template=(
                 '{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}'),
+            PY_member_getter_template=(
+                '{PY_prefix}{cxx_class}_{variable_name}_getter'),
+            PY_member_setter_template=(
+                '{PY_prefix}{cxx_class}_{variable_name}_setter'),
             )
+
         return def_options
 
     def default_format(self, format, kwargs):
@@ -1031,9 +1036,9 @@ class VariableNode(AstNode):
 
         # Treat similar to class
 #        fmt_struct.class_scope = self.name + '::'
-        fmt_var.var_name = ast.name
-        fmt_var.var_lower = ast.name.lower()
-        fmt_var.var_upper = ast.name.upper()
+        fmt_var.variable_name = ast.name
+        fmt_var.variable_lower = ast.name.lower()
+        fmt_var.variable_upper = ast.name.upper()
 
         # Add to namespace
 #        self.typename = self.parent.scope + self.name

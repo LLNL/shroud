@@ -228,6 +228,21 @@ PY_Class1_tp_init(
 }
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods
+
+static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
+    void *SHROUD_UNUSED(closure))
+{
+    PyObject * rv = PyInt_FromLong(self->obj->m_flag);
+    return rv;
+}
+
+static PyGetSetDef PY_Class1_getset[] = {
+    {(char *)"m_flag", (getter)PY_Class1_m_flag_getter, (setter)NULL,
+        NULL, NULL},
+    // splicer begin class.Class1.PyGetSetDef
+    // splicer end class.Class1.PyGetSetDef
+    {NULL}            /* sentinel */
+};
 static PyMethodDef PY_Class1_methods[] = {
     {"Method1", (PyCFunction)PY_class1_Method1, METH_NOARGS,
         PY_class1_Method1__doc__},
@@ -293,7 +308,7 @@ PyTypeObject PY_Class1_Type = {
     /* Attribute descriptor and subclassing stuff */
     PY_Class1_methods,                             /* tp_methods */
      0,                              /* tp_members */
-     0,                             /* tp_getset */
+    PY_Class1_getset,                             /* tp_getset */
      0,                              /* tp_base */
      0,                              /* tp_dict */
     (descrgetfunc) 0,                /* tp_descr_get */

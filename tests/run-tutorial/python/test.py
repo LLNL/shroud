@@ -182,11 +182,13 @@ class Tutorial(unittest.TestCase):
     def test_class1_create1(self):
         obj = tutorial.Class1()
         self.assertTrue(isinstance(obj, tutorial.Class1))
+        self.assertEqual(0, obj.m_flag)
         del obj
 
     def test_class1_create2(self):
         obj = tutorial.Class1(1)
         self.assertTrue(isinstance(obj, tutorial.Class1))
+        self.assertEqual(1, obj.m_flag)
         del obj
 
     def test_class1_method1(self):

@@ -5110,6 +5110,8 @@
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type", 
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}", 
             "PY_helper_filename_template": "py{library}helper.{PY_impl_filename_suffix}", 
+            "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter", 
+            "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter", 
             "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}", 
             "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}", 
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 

@@ -70,6 +70,30 @@ PY_struct1_tp_del (PY_struct1 *self)
 }
 // splicer begin class.struct1.impl.after_methods
 // splicer end class.struct1.impl.after_methods
+
+static PyObject *PY_struct1_i_getter(PY_struct1 *self,
+    void *SHROUD_UNUSED(closure))
+{
+    PyObject * rv = PyInt_FromLong(self->obj->i);
+    return rv;
+}
+
+static PyObject *PY_struct1_d_getter(PY_struct1 *self,
+    void *SHROUD_UNUSED(closure))
+{
+    PyObject * rv = PyFloat_FromDouble(self->obj->d);
+    return rv;
+}
+
+static PyGetSetDef PY_struct1_getset[] = {
+    {(char *)"i", (getter)PY_struct1_i_getter, (setter)NULL,
+        NULL, NULL},
+    {(char *)"d", (getter)PY_struct1_d_getter, (setter)NULL,
+        NULL, NULL},
+    // splicer begin class.struct1.PyGetSetDef
+    // splicer end class.struct1.PyGetSetDef
+    {NULL}            /* sentinel */
+};
 static PyMethodDef PY_struct1_methods[] = {
     // splicer begin class.struct1.PyMethodDef
     // splicer end class.struct1.PyMethodDef
@@ -129,7 +153,7 @@ PyTypeObject PY_struct1_Type = {
     /* Attribute descriptor and subclassing stuff */
     PY_struct1_methods,                             /* tp_methods */
      0,                              /* tp_members */
-     0,                             /* tp_getset */
+    PY_struct1_getset,                             /* tp_getset */
      0,                              /* tp_base */
      0,                              /* tp_dict */
     (descrgetfunc) 0,                /* tp_descr_get */
