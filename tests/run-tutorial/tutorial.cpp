@@ -87,6 +87,12 @@ void Function3b(const bool arg1, bool *arg2, bool *arg3)
 }
 
 
+int * ReturnIntPtr()
+{
+  static int buffer = 1;
+  return &buffer;
+}
+
 // Return a pointer to an existing, static array
 int * ReturnIntPtrDim(int *len)
 {

@@ -104,10 +104,20 @@ class Tutorial(unittest.TestCase):
         # if 0:    is legal
         self.assertRaises(TypeError, tutorial.Function3, 0)
 
+    def testReturnIntPtr(self):
+        "Return pointer to int scalar"
+        rv = tutorial.ReturnIntPtr()
+        self.assertTrue(isinstance(rv, np.ndarray))
+        self.assertEqual('int32', rv.dtype.name)
+        self.assertEqual(1, rv.size)
+        self.assertEqual(1, rv)
+
     def testReturnIntPtrDim(self):
+        "Return pointer to int array"
         rv = tutorial.ReturnIntPtrDim()
         self.assertTrue(isinstance(rv, np.ndarray))
         self.assertEqual('int32', rv.dtype.name)
+        self.assertEqual(7, rv.size)
         self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7])))
 
     def testFunction4a(self):

@@ -107,7 +107,7 @@ contains
 
     integer(C_LONG_LONG) :: rv_ll
     integer(C_INT) :: minout, maxout
-    integer(C_INT), pointer :: intp(:)
+    integer(C_INT), pointer :: intp, intp1(:)
 
     call set_case_name("test_functions")
 
@@ -133,10 +133,15 @@ contains
     call assert_true(wrk_logical)
 
     nullify(intp)
-    intp => return_int_ptr_dim()
+    intp => return_int_ptr()
     call assert_true(associated(intp))
-    call assert_equals(7 , size(intp))
-    call assert_true( all(intp == [1,2,3,4,5,6,7]), "return_int_ptr value")
+    call assert_equals(1, intp, "return_int_ptr value")
+
+    nullify(intp1)
+    intp1 => return_int_ptr_dim()
+    call assert_true(associated(intp1))
+    call assert_equals(7 , size(intp1))
+    call assert_true( all(intp1 == [1,2,3,4,5,6,7]), "return_int_ptr_dim value")
 
     call assert_true( function4a("dog", "cat") == "dogcat")
 

@@ -551,16 +551,18 @@ return 1;""", fmt)
             # Create array for shape.
             # Cannot use dimension directly since it may be the wrong type.
             if dim:
+                fmt.npy_ndims = '1'
                 fmt.npy_dims = 'SHD_' + ast.name
                 fmt.pointer_shape = dim
                 append_format(
                     post_call, 'npy_intp {npy_dims}[1] = {{ {pointer_shape} }};', fmt)
             else:
+                fmt.npy_ndims = '0'
                 fmt.npy_dims = 'NULL'
             append_format(
                 post_call,
                 '{PyObject} * {py_var} = '
-                'PyArray_SimpleNewFromData(1, {npy_dims}, {numpy_type}, {cxx_var});',
+                'PyArray_SimpleNewFromData({npy_ndims}, {npy_dims}, {numpy_type}, {cxx_var});',
                 fmt)
             format = 'O'
             vargs = fmt.py_var
