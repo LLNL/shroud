@@ -89,6 +89,8 @@ void TUT_function3b(const bool arg1, bool * arg2, bool * arg3);
 
 int * TUT_return_int_ptr();
 
+int * TUT_return_int_ptr_scalar();
+
 int * TUT_return_int_ptr_dim(int * len);
 
 void TUT_function4a_bufferify(const char * arg1, int Larg1,

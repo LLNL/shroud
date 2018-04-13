@@ -108,6 +108,10 @@ declarations:
     options:
       wrap_lua: False
 
+  - decl: int * ReturnIntPtrScalar()
+    options:
+      wrap_lua: False
+
   - decl: int * ReturnIntPtrDim(int *len+intent(out)+hidden) +dimension(len)
     options:
       wrap_lua: False

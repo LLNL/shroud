@@ -81,6 +81,7 @@ bool Function3(bool arg);
 void Function3b(const bool arg1, bool *arg2, bool *arg3);
 
 int * ReturnIntPtr();
+int * ReturnIntPtrScalar();
 int * ReturnIntPtrDim(int *len);
 
 const std::string  Function4a(const std::string& arg1, const std::string& arg2);

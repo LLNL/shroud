@@ -93,6 +93,12 @@ int * ReturnIntPtr()
   return &buffer;
 }
 
+int * ReturnIntPtrScalar()
+{
+  static int buffer = 10;
+  return &buffer;
+}
+
 // Return a pointer to an existing, static array
 int * ReturnIntPtrDim(int *len)
 {
