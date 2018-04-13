@@ -222,11 +222,6 @@ return_this
 Options
 -------
 
-debug
-  Print additional comments in generated files that may 
-  be useful for debugging.
-  Defaults to *false*.
-
 C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
    Defaults to *false*.
@@ -237,6 +232,14 @@ C_line_length
   to break lines.
   A value of 0 will give the shortest possible lines.
   Defaults to 72.
+
+debug
+  Print additional comments in generated files that may 
+  be useful for debugging.
+  Defaults to *false*.
+
+doxygen
+  If True, create doxygen comments.
 
 F_line_length
   Control length of output line for generated Fortran.
@@ -276,6 +279,13 @@ F_return_fortran_pointer
 
 .. XXX how to decide length of pointer
 
+
+return_scalar_pointer
+  Determins how to treat a function which returns a pointer to a scalar
+  (it does not have the *dimension* attribute).
+  **scalar** return as a scalar or **pointer** to return as a pointer.
+  For Python, **pointer** will return a NumPy scalar.
+  Defaults to *pointer*.
 
 .. bufferify
 

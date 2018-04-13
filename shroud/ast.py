@@ -324,6 +324,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             wrap_lua=False,
 
             doxygen=True,       # create doxygen comments
+            return_scalar_pointer='pointer',
             show_splicer_comments=True,
 
             # blank for functions, set in classes.

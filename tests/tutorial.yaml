@@ -106,10 +106,12 @@ declarations:
 
   - decl: int * ReturnIntPtr()
     options:
+      return_scalar_pointer: pointer
       wrap_lua: False
 
   - decl: int * ReturnIntPtrScalar()
     options:
+      return_scalar_pointer: scalar
       wrap_lua: False
 
   - decl: int * ReturnIntPtrDim(int *len+intent(out)+hidden) +dimension(len)
