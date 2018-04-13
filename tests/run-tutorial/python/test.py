@@ -42,6 +42,7 @@
 #
 from __future__ import print_function
 
+import numpy as np
 import unittest
 import tutorial
 
@@ -102,6 +103,12 @@ class Tutorial(unittest.TestCase):
         # Should any object which resolved to True or False be accepted?
         # if 0:    is legal
         self.assertRaises(TypeError, tutorial.Function3, 0)
+
+    def testReturnIntPtr(self):
+        rv = tutorial.ReturnIntPtr()
+        self.assertTrue(isinstance(rv, np.ndarray))
+        self.assertEqual('int32', rv.dtype.name)
+        self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7])))
 
     def testFunction4a(self):
         rv_char = tutorial.Function4a("dog", "cat")

@@ -166,6 +166,7 @@ Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent
 Python function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 Python function long long TypeLongLong(long long arg1 +intent(in)+value)
 Python function bool Function3(bool arg +intent(in)+value)
+Python function int * ReturnIntPtr(int * len +hidden+intent(out)) +dimension(len)
 Python function const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)
 Python function const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
 Python function double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)

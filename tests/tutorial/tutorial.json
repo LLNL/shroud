@@ -1858,6 +1858,19 @@
                         "fmtf": {
                             "c_var": "len", 
                             "f_var": "len"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int len", 
+                            "c_ptr": " *", 
+                            "c_type": "int", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_decl": "int len", 
+                            "cxx_deref": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len", 
+                            "py_var": "SHPy_len"
                         }
                     }
                 }, 
@@ -1867,6 +1880,18 @@
                         "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHC_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_deref": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "npy_dims": "SHD_ReturnIntPtr", 
+                        "numpy_type": "NPY_INT", 
+                        "pointer_shape": "len", 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 13, 
@@ -1932,6 +1957,7 @@
                     "F_name_impl": "return_int_ptr", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
+                    "PY_name_impl": "PY_ReturnIntPtr", 
                     "c_const": "", 
                     "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtr", 
@@ -1939,8 +1965,7 @@
                     "underscore_name": "return_int_ptr"
                 }, 
                 "options": {
-                    "wrap_lua": false, 
-                    "wrap_python": false
+                    "wrap_lua": false
                 }
             }, 
             {

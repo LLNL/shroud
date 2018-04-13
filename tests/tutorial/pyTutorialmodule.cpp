@@ -231,6 +231,31 @@ PY_Function3(
 // splicer end function.function3
 }
 
+static char PY_ReturnIntPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ReturnIntPtr(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int * ReturnIntPtr(int * len +hidden+intent(out)) +dimension(len)
+// splicer begin function.return_int_ptr
+    // pre_call
+    int len;  // intent(out)
+
+    int * SHC_rv = tutorial::ReturnIntPtr(&len);
+
+    // post_call
+    npy_intp SHD_ReturnIntPtr[1] = { len };
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_ReturnIntPtr, NPY_INT, SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr
+}
+
 static char PY_Function4a__doc__[] =
 "documentation"
 ;
@@ -911,6 +936,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_TypeLongLong__doc__},
 {"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,
     PY_Function3__doc__},
+{"ReturnIntPtr", (PyCFunction)PY_ReturnIntPtr, METH_NOARGS,
+    PY_ReturnIntPtr__doc__},
 {"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,
     PY_Function4a__doc__},
 {"Function4b", (PyCFunction)PY_Function4b, METH_VARARGS|METH_KEYWORDS,

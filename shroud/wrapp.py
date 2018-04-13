@@ -50,6 +50,7 @@ SHPy_   Python object which corresponds to the argument
 SHTPy_  A temporary object, usually from PyArg_Parse
         to be converted to SHPy_ object.
 SHDPy_  PyArray_Descr object
+SHD_    npy_intp array for shape
 
 """
 from __future__ import print_function
@@ -523,10 +524,12 @@ return 1;""", fmt)
             fmt.pre_call_intent = py_implied(implied, node)
             append_format(pre_call, '{cxx_decl} = {pre_call_intent};', fmt)
 
-    def intent_out(self, typedef, intent_blk, fmt, post_call):
+    def intent_out(self, mode, ast, typedef, intent_blk, fmt, post_call):
         """Add code for post-call.
         Create PyObject from C++ value to return.
 
+        mode - 'arg' or 'result'  # temporary hack
+        ast - Abstract Syntax Tree of argument or result
         typedef - typedef of C++ variable.
         fmt - format dictionary
         post_call   - always called to construct objects
@@ -537,7 +540,33 @@ return 1;""", fmt)
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        if 'post_call' in intent_blk:
+        if mode == 'result' \
+           and ast.is_pointer() \
+           and typedef.cxx_type != 'void' \
+           and typedef.base != 'string' \
+           and typedef.base != 'shadow':
+            # Create a 1-d array from pointer
+            fmt.numpy_type = c_to_numpy[typedef.name]
+            dim = ast.attrs.get('dimension', None)
+            # Create array for shape.
+            # Cannot use dimension directly since it may be the wrong type.
+            if dim:
+                fmt.npy_dims = 'SHD_' + ast.name
+                fmt.pointer_shape = dim
+                append_format(
+                    post_call, 'npy_intp {npy_dims}[1] = {{ {pointer_shape} }};', fmt)
+            else:
+                fmt.npy_dims = 'NULL'
+            append_format(
+                post_call,
+                '{PyObject} * {py_var} = '
+                'PyArray_SimpleNewFromData(1, {npy_dims}, {numpy_type}, {cxx_var});',
+                fmt)
+            format = 'O'
+            vargs = fmt.py_var
+            ctor = None
+            ctorvar = fmt.py_var
+        elif 'post_call' in intent_blk:
             cmd_list = intent_blk['post_call']
             # If post_call is None, the Object has already been created
             if cmd_list is not None:
@@ -772,6 +801,7 @@ return 1;""", fmt)
                 local_var = 'scalar'
 
             allocatable = attrs.get('allocatable', False)
+            hidden = attrs.get('hidden', False)
             implied = attrs.get('implied', False)
             intent = attrs['intent']
             if implied:
@@ -859,9 +889,10 @@ return 1;""", fmt)
                                       '{cxx_decl};  // intent(out)',
                                       fmt_arg)
 
-                # output variable must be a pointer
-                build_tuples.append(self.intent_out(
-                    arg_typedef, intent_blk, fmt_arg, post_call))
+                if not hidden:
+                    # output variable must be a pointer
+                    build_tuples.append(self.intent_out(
+                        'arg', arg, arg_typedef, intent_blk, fmt_arg, post_call))
 
             # Code to convert parsed values (C or Python) to C++.
             cmd_list = intent_blk.get('decl', [])
@@ -906,6 +937,7 @@ return 1;""", fmt)
                 cxx_call_list.append(pass_var)
             else:
                 raise RuntimeError("unexpected value of local_var")
+        # end for arg in args:
 
         # Add implied argument initialization to pre_call code
         for arg in arg_implied:
@@ -1049,7 +1081,7 @@ return 1;""", fmt)
         if CXX_subprogram == 'function':
             # XXX - wrapc uses result instead of intent_out
             result_blk = result_typedef.py_statements.get('intent_out', {})
-            ttt = self.intent_out(result_typedef, result_blk,
+            ttt = self.intent_out('result', ast, result_typedef, result_blk,
                                   fmt_result, post_call)
             # Add result to front of result tuple
             build_tuples.insert(0, ttt)
