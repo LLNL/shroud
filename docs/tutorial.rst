@@ -234,7 +234,7 @@ Pointer Functions
 Functions which return a pointer will create a Fortran wrapper with
 the ``POINTER`` attribute::
 
-    - decl: int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)
+    - decl: int * ReturnIntPtrDim(int *len+intent(out)+hidden) +dimension(len)
 
 The C++ routine returns a pointer to an array and the length of the array
 in argument ``len``.  The Fortran API does not need to pass the argument
@@ -244,25 +244,25 @@ but still passed to the C API.
 The Fortran wrappers::
 
     interface
-        function c_return_int_ptr(len) &
+        function c_return_int_ptr_dim(len) &
                 result(SHT_rv) &
-                bind(C, name="TUT_return_int_ptr")
+                bind(C, name="TUT_return_int_ptr_dim")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
-        end function c_return_int_ptr
+        end function c_return_int_ptr_dim
     end interface
 
-    function return_int_ptr() &
+    function return_int_ptr_dim() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr(len)
+        SHT_ptr = c_return_int_ptr_dim(len)
         call c_f_pointer(SHT_ptr, SHT_rv, [len])
-    end function return_int_ptr
+    end function return_int_ptr_dim
 
 It can be used as::
 

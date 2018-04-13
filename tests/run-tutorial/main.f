@@ -133,7 +133,7 @@ contains
     call assert_true(wrk_logical)
 
     nullify(intp)
-    intp => return_int_ptr()
+    intp => return_int_ptr_dim()
     call assert_true(associated(intp))
     call assert_equals(7 , size(intp))
     call assert_true( all(intp == [1,2,3,4,5,6,7]), "return_int_ptr value")

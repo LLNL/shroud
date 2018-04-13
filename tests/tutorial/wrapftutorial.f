@@ -248,14 +248,14 @@ module tutorial_mod
             logical(C_BOOL), intent(INOUT) :: arg3
         end subroutine c_function3b
 
-        function c_return_int_ptr(len) &
+        function c_return_int_ptr_dim(len) &
                 result(SHT_rv) &
-                bind(C, name="TUT_return_int_ptr")
+                bind(C, name="TUT_return_int_ptr_dim")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
-        end function c_return_int_ptr
+        end function c_return_int_ptr_dim
 
         subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, &
                 SHF_rv, NSHF_rv) &
@@ -910,19 +910,19 @@ contains
         arg3 = SH_arg3  ! coerce to logical
     end subroutine function3b
 
-    ! int * ReturnIntPtr(int * len +hidden+intent(out)) +dimension(len)
+    ! int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
     ! function_index=13
-    function return_int_ptr() &
+    function return_int_ptr_dim() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         type(C_PTR) :: SHT_ptr
-        ! splicer begin function.return_int_ptr
-        SHT_ptr = c_return_int_ptr(len)
+        ! splicer begin function.return_int_ptr_dim
+        SHT_ptr = c_return_int_ptr_dim(len)
         call c_f_pointer(SHT_ptr, SHT_rv, [len])
-        ! splicer end function.return_int_ptr
-    end function return_int_ptr
+        ! splicer end function.return_int_ptr_dim
+    end function return_int_ptr_dim
 
     ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)
     ! arg_to_buffer

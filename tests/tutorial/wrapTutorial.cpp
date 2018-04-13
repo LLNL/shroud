@@ -145,14 +145,14 @@ void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
 // splicer end function.function3b
 }
 
-// int * ReturnIntPtr(int * len +hidden+intent(out)) +dimension(len)
+// int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
 // function_index=13
-int * TUT_return_int_ptr(int * len)
+int * TUT_return_int_ptr_dim(int * len)
 {
-// splicer begin function.return_int_ptr
-    int * SHC_rv = tutorial::ReturnIntPtr(len);
+// splicer begin function.return_int_ptr_dim
+    int * SHC_rv = tutorial::ReturnIntPtrDim(len);
     return SHC_rv;
-// splicer end function.return_int_ptr
+// splicer end function.return_int_ptr_dim
 }
 
 // void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)

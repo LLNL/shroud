@@ -104,8 +104,8 @@ class Tutorial(unittest.TestCase):
         # if 0:    is legal
         self.assertRaises(TypeError, tutorial.Function3, 0)
 
-    def testReturnIntPtr(self):
-        rv = tutorial.ReturnIntPtr()
+    def testReturnIntPtrDim(self):
+        rv = tutorial.ReturnIntPtrDim()
         self.assertTrue(isinstance(rv, np.ndarray))
         self.assertEqual('int32', rv.dtype.name)
         self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7])))

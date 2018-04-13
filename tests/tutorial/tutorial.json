@@ -1888,7 +1888,7 @@
                         "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHC_rv", 
-                        "npy_dims": "SHD_ReturnIntPtr", 
+                        "npy_dims": "SHD_ReturnIntPtrDim", 
                         "numpy_type": "NPY_INT", 
                         "pointer_shape": "len", 
                         "py_var": "SHTPy_rv"
@@ -1902,7 +1902,7 @@
                     }, 
                     "const": false, 
                     "declarator": {
-                        "name": "ReturnIntPtr", 
+                        "name": "ReturnIntPtrDim", 
                         "pointer": [
                             {
                                 "const": false, 
@@ -1938,31 +1938,31 @@
                         "int"
                     ]
                 }, 
-                "decl": "int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)", 
-                "declgen": "int * ReturnIntPtr(int * len +hidden+intent(out)) +dimension(len)", 
+                "decl": "int * ReturnIntPtrDim(int *len+intent(out)+hidden) +dimension(len)", 
+                "declgen": "int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)", 
                 "format": {
-                    "C_call_code": "int * SHC_rv =\t tutorial::\tReturnIntPtr(\tlen);", 
+                    "C_call_code": "int * SHC_rv =\t tutorial::\tReturnIntPtrDim(\tlen);", 
                     "C_call_list": "len", 
-                    "C_name": "TUT_return_int_ptr", 
+                    "C_name": "TUT_return_int_ptr_dim", 
                     "C_prototype": "int * len", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int *", 
-                    "F_C_call": "c_return_int_ptr", 
-                    "F_C_name": "c_return_int_ptr", 
+                    "F_C_call": "c_return_int_ptr_dim", 
+                    "F_C_name": "c_return_int_ptr_dim", 
                     "F_arg_c_call": "len", 
                     "F_arguments": "", 
-                    "F_call_code": "SHT_ptr = c_return_int_ptr(len)", 
-                    "F_name_function": "return_int_ptr", 
-                    "F_name_generic": "return_int_ptr", 
-                    "F_name_impl": "return_int_ptr", 
+                    "F_call_code": "SHT_ptr = c_return_int_ptr_dim(len)", 
+                    "F_name_function": "return_int_ptr_dim", 
+                    "F_name_generic": "return_int_ptr_dim", 
+                    "F_name_impl": "return_int_ptr_dim", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
-                    "PY_name_impl": "PY_ReturnIntPtr", 
+                    "PY_name_impl": "PY_ReturnIntPtrDim", 
                     "c_const": "", 
                     "cxx_rv_decl": "int * SHC_rv", 
-                    "function_name": "ReturnIntPtr", 
+                    "function_name": "ReturnIntPtrDim", 
                     "pointer_shape": "len", 
-                    "underscore_name": "return_int_ptr"
+                    "underscore_name": "return_int_ptr_dim"
                 }, 
                 "options": {
                     "wrap_lua": false
