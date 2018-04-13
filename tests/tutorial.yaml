@@ -104,7 +104,7 @@ declarations:
       wrap_python: False
       wrap_lua: False
 
-  - decl: int * ReturnIntPtr(int *len+intent(out))
+  - decl: int * ReturnIntPtr(int *len+intent(out)) +dimension(len)
     options:
       # check out arguments
       wrap_python: False

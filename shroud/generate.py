@@ -75,6 +75,21 @@ class VerifyAttrs(object):
 
         ast = node.ast
         node._has_found_default = False
+
+        for attr in node.ast.attrs:
+            if attr[0] == '_': # internal attribute
+                continue
+            if attr not in [
+                    'allocatable',
+                    'dimension',
+                    'len', # 'len_trim', 'size',
+                    'name',
+                    'pure',
+                    ]:
+                raise RuntimeError(
+                    "Illegal attribute '{}' for function {} in {}"
+                    .format(attr, node.ast.name, node.decl))
+
         for arg in ast.params:
             self.check_arg_attrs(node, arg)
 

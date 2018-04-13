@@ -1872,7 +1872,8 @@
                 "_function_index": 13, 
                 "ast": {
                     "attrs": {
-                        "_typename": "int"
+                        "_typename": "int", 
+                        "dimension": "len"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -1911,8 +1912,8 @@
                         "int"
                     ]
                 }, 
-                "decl": "int * ReturnIntPtr(int *len+intent(out))", 
-                "declgen": "int * ReturnIntPtr(int * len +intent(out))", 
+                "decl": "int * ReturnIntPtr(int *len+intent(out)) +dimension(len)", 
+                "declgen": "int * ReturnIntPtr(int * len +intent(out)) +dimension(len)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t tutorial::\tReturnIntPtr(\tlen);", 
                     "C_call_list": "len", 
@@ -1933,6 +1934,7 @@
                     "c_const": "", 
                     "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtr", 
+                    "pointer_shape": "len", 
                     "underscore_name": "return_int_ptr"
                 }, 
                 "options": {

@@ -1177,11 +1177,13 @@ class Declaration(Node):
             decl.append('(*)')
         return ''.join(decl)
 
-    def gen_arg_as_fortran(self, local=False, attributes=[], **kwargs):
+    def gen_arg_as_fortran(self, local=False, is_pointer=False,
+                           attributes=[], **kwargs):
         """Geneate declaration for Fortran variable.
 
         If local==True, this is a local variable, skip attributes
           OPTIONAL, VALUE, and INTENT
+        is_pointer - True/False - have POINTER attribute
         attributes - list of literal Fortran attributes to add to declaration.
                      i.e. [ 'pointer' ]
         """
@@ -1204,6 +1206,8 @@ class Declaration(Node):
         allocatable = attrs.get('allocatable', False)
         if allocatable:
             t.append('allocatable')
+        if is_pointer:
+            t.append('pointer')
         t.extend(attributes)
 
         decl = []
@@ -1217,7 +1221,10 @@ class Declaration(Node):
 
         dimension = attrs.get('dimension', '')
         if dimension:
-            decl.append('(' + dimension + ')')
+            if is_pointer:
+                decl.append('(:)')  # XXX - 1d only
+            else:
+                decl.append('(' + dimension + ')')
         elif allocatable:
             # Assume 1-d.
             decl.append('(:)')

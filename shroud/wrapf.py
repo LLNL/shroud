@@ -1192,7 +1192,7 @@ class Wrapf(util.WrapperMixin):
                 self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
             else:
                 arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result,
-                                                         attributes=result_attributes))
+                                                         is_pointer=is_pointer))
                 if is_pointer:
                     arg_f_decl.append('type(C_PTR) :: ' + fmt_func.F_pointer)
                     self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
@@ -1265,7 +1265,13 @@ class Wrapf(util.WrapperMixin):
                     '{F_this}%{F_derived_member} = C_NULL_PTR', fmt_func))
                 self.set_f_module(modules, 'iso_c_binding', 'C_NULL_PTR')
             elif is_pointer:
-                F_code.append(wformat('call c_f_pointer({F_pointer}, {F_result})', fmt_func))
+                dim = ast.attrs.get('dimension', None)
+                if dim:
+                    fmt_func.pointer_shape = dim
+                    F_code.append(wformat('call c_f_pointer({F_pointer}, {F_result}, '
+                                          '[{pointer_shape}])', fmt_func))
+                else:
+                    F_code.append(wformat('call c_f_pointer({F_pointer}, {F_result})', fmt_func))
                 self.set_f_module(modules, 'iso_c_binding', 'c_f_pointer')
 
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)

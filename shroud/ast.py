@@ -742,6 +742,9 @@ class FunctionNode(AstNode):
         ArgType:
         - int
         - double
+      fattrs:     # function attributes
+      attrs:
+        arg1:     # argument attributes
 
 
     _fmtfunc = Scope()
