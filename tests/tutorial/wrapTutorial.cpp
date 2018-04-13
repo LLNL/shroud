@@ -145,7 +145,7 @@ void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
 // splicer end function.function3b
 }
 
-// int * ReturnIntPtr(int * len +intent(out)) +dimension(len)
+// int * ReturnIntPtr(int * len +hidden+intent(out)) +dimension(len)
 // function_index=13
 int * TUT_return_int_ptr(int * len)
 {

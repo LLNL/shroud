@@ -910,12 +910,12 @@ contains
         arg3 = SH_arg3  ! coerce to logical
     end subroutine function3b
 
-    ! int * ReturnIntPtr(int * len +intent(out)) +dimension(len)
+    ! int * ReturnIntPtr(int * len +hidden+intent(out)) +dimension(len)
     ! function_index=13
-    function return_int_ptr(len) &
+    function return_int_ptr() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        integer(C_INT), intent(OUT) :: len
+        integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_int_ptr

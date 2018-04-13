@@ -82,7 +82,7 @@ class VerifyAttrs(object):
             if attr not in [
                     'allocatable',
                     'dimension',
-                    'len', # 'len_trim', 'size',
+                    'len',
                     'name',
                     'pure',
                     ]:
@@ -107,7 +107,8 @@ class VerifyAttrs(object):
             if attr not in [
                     'allocatable',
                     'dimension',
-                    'implied',
+                    'hidden',  # omitted in Fortran API, returned from C++
+                    'implied', # omitted in Fortran API, value passed to C++
                     'intent',
                     'len', 'len_trim', 'size',
                     'template',

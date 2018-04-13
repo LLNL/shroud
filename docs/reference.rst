@@ -1288,11 +1288,23 @@ name
    Name of the method.
    Useful for constructor and destructor methods which have no names.
 
+hidden
+   The argument will not appear in the Fortran API.
+   But it will be passed to the C wrapper.
+   This allows the value to be used in the wrapper.
+   For example, setting the shape of a pointer function::
+
+      int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)
+
+.. assumed intent(out)
+   
 implied
    Used to compute value of argument to C++ based on argument
    to Fortran or Python wrapper.  Useful with array sizes::
 
-       Sum(int * array +intent(in), int len +implied(size(array))
+      int Sum(int * array +intent(in), int len +implied(size(array))
+
+.. assumed intent(in)
 
 intent
    Valid valid values are ``in``, ``out``, ``inout``.

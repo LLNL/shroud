@@ -234,16 +234,22 @@ Pointer Functions
 Functions which return a pointer will create a Fortran wrapper with
 the ``POINTER`` attribute::
 
-    - decl: int * ReturnIntPtr()
+    - decl: int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)
 
-Creates the Fortran wrapper::
+The C++ routine returns a pointer to an array and the length of the array
+in argument ``len``.  The Fortran API does not need to pass the argument
+since the returned pointer will know its length.
+The *hidden* attribute will cause ``len`` to be omitted from the Fortran API,
+but still passed to the C API.
+The Fortran wrappers::
 
     interface
-        function c_return_int_ptr() &
+        function c_return_int_ptr(len) &
                 result(SHT_rv) &
                 bind(C, name="TUT_return_int_ptr")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
+            integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
         end function c_return_int_ptr
     end interface
@@ -251,15 +257,16 @@ Creates the Fortran wrapper::
     function return_int_ptr() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        integer(C_INT), pointer :: SHT_rv
+        integer(C_INT) :: len
+        integer(C_INT), pointer :: SHT_rv(:)
         type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr()
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        SHT_ptr = c_return_int_ptr(len)
+        call c_f_pointer(SHT_ptr, SHT_rv, [len])
     end function return_int_ptr
 
 It can be used as::
 
-    integer(C_INT), pointer :: intp
+    integer(C_INT), pointer :: intp(:)
 
     intp => return_int_ptr()
 

@@ -1009,6 +1009,7 @@ class Wrapf(util.WrapperMixin):
             c_attrs = c_arg.attrs
             allocatable = c_attrs.get('allocatable', False)
             implied = c_attrs.get('implied', False)
+            hidden = c_attrs.get('hidden', False)
             intent = c_attrs['intent']
             allocatable_result = False  # XXX - kludgeish
 
@@ -1046,9 +1047,10 @@ class Wrapf(util.WrapperMixin):
                     # function pointers are pass thru without any change
                     arg_c_call.append(f_arg.name)
                     continue
-                elif implied:
-                    # An implied argument is not passed into Fortran
-                    # it is computed then passed to C++
+                elif hidden or implied:
+                    # Argument is not passed into Fortran.
+                    # hidden value is returned from C++.
+                    # implied is computed then passed to C++
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True))
                 else:
                     arg_f_decl.append(f_arg.gen_arg_as_fortran())

@@ -106,7 +106,7 @@ contains
   subroutine test_functions
 
     integer(C_LONG_LONG) :: rv_ll
-    integer(C_INT) :: minout, maxout, lenp
+    integer(C_INT) :: minout, maxout
     integer(C_INT), pointer :: intp(:)
 
     call set_case_name("test_functions")
@@ -133,7 +133,7 @@ contains
     call assert_true(wrk_logical)
 
     nullify(intp)
-    intp => return_int_ptr(lenp)
+    intp => return_int_ptr()
     call assert_true(associated(intp))
     call assert_equals(7 , size(intp))
     call assert_true( all(intp == [1,2,3,4,5,6,7]), "return_int_ptr value")
