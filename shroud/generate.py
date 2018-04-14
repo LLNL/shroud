@@ -877,6 +877,7 @@ class Preprocess(object):
         # Decide if the function should return a pointer
         result_typedef = node.CXX_result_typedef
         as_pointer = False
+        as_scalar = False
         if options.F_return_fortran_pointer and ast.is_pointer() \
            and result_typedef.cxx_type != 'void' \
            and result_typedef.base != 'string' \
@@ -890,7 +891,10 @@ class Preprocess(object):
                 as_pointer = True
             elif options.return_scalar_pointer == 'pointer':
                 as_pointer = True
+            else:
+                as_scalar = True
         node.return_as_pointer = as_pointer
+        node.return_ptr_as_scalar = as_scalar
 
 
 def generate_functions(library, config):

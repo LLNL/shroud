@@ -267,7 +267,7 @@ PY_ReturnIntPtrScalar(
     int * SHC_rv = tutorial::ReturnIntPtrScalar();
 
     // post_call
-    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(*SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_int_ptr_scalar

@@ -748,6 +748,8 @@ class Declarator(Node):
         if kwargs.get('force_ptr', False):
             # Force to be a pointer
             decl.append(' *')
+        elif kwargs.get('as_scalar', False):
+            pass  # Do not print pointer
         else:
             for ptr in self.pointer:
                 ptr.gen_decl_work(decl, **kwargs)
@@ -1078,6 +1080,7 @@ class Declaration(Node):
                      by removing const.
         as_ptr - Change reference to pointer
         force_ptr - Change a scalar into a pointer
+        as_scalar - Do not print Ptr
 
         If a templated type, assume std::vector.
         The C argument will be a pointer to the template type.
@@ -1111,7 +1114,7 @@ class Declaration(Node):
             declarator = self.declarator
 
         if asgn_value and const_index is not None and not self.is_indirect():
-            # Remove 'const' do the variable can be assigned to.
+            # Remove 'const' so the variable can be assigned to.
             decl[const_index] = ''
 
         if lang == 'c_type':

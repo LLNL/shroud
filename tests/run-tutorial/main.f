@@ -137,6 +137,9 @@ contains
     call assert_true(associated(intp))
     call assert_equals(1, intp, "return_int_ptr value")
 
+    rv_int = return_int_ptr_scalar()
+    call assert_equals(10, rv_int, "return_int_ptr_scalar value")
+
     nullify(intp1)
     intp1 => return_int_ptr_dim()
     call assert_true(associated(intp1))

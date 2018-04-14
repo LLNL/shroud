@@ -462,11 +462,13 @@ class Wrapc(util.WrapperMixin):
             else:
                 fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+
             if is_union_scalar:
                 fmt_func.cxx_rv_decl = result_typedef.c_union + ' ' + fmt_result.cxx_var
             else:
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                     name=fmt_result.cxx_var, params=None, continuation=True)
+
             if is_ctor or is_pointer:
                 # The C wrapper always creates a pointer to the new in the ctor
                 fmt_result.cxx_deref = '->'
@@ -724,11 +726,16 @@ class Wrapc(util.WrapperMixin):
         fmt_func.C_prototype = options.get('C_prototype', ',\t '.join(proto_list))
 
         if node.return_this:
+            is_pointer = False
             fmt_func.C_return_type = 'void'
         elif is_dtor:
+            is_pointer = False
             fmt_func.C_return_type = 'void'
         elif fmt_func.C_custom_return_type:
             pass # fmt_func.C_return_type = fmt_func.C_return_type
+        elif node.return_ptr_as_scalar:
+            fmt_func.C_return_type = ast.gen_arg_as_c(
+                name=None, as_scalar=True, params=None, continuation=True)
         else:
             fmt_func.C_return_type = ast.gen_arg_as_c(
                 name=None, params=None, continuation=True)
@@ -826,6 +833,9 @@ class Wrapc(util.WrapperMixin):
             C_return_code = wformat(fmt_func.C_return_code, fmt_func)
         elif is_union_scalar:
             fmt_func.C_return_code = wformat('return {cxx_var}.c;', fmt_result)
+        elif node.return_ptr_as_scalar:
+            # dereference pointer to return scalar
+            fmt_func.C_return_code = wformat('return *{cxx_var};', fmt_result)
         else:
             fmt_func.C_return_code = C_return_code
 

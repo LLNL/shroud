@@ -157,11 +157,11 @@ int * TUT_return_int_ptr()
 
 // int * ReturnIntPtrScalar()
 // function_index=15
-int * TUT_return_int_ptr_scalar()
+int TUT_return_int_ptr_scalar()
 {
 // splicer begin function.return_int_ptr_scalar
     int * SHC_rv = tutorial::ReturnIntPtrScalar();
-    return SHC_rv;
+    return *SHC_rv;
 // splicer end function.return_int_ptr_scalar
 }
 

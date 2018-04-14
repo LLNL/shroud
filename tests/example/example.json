@@ -55,6 +55,7 @@
                             "fmtpy": {
                                 "PyObject": "PP_ExClass1", 
                                 "PyTypeObject": "PP_ExClass1_Type", 
+                                "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -169,6 +170,7 @@
                             "fmtpy": {
                                 "PyObject": "PP_ExClass1", 
                                 "PyTypeObject": "PP_ExClass1_Type", 
+                                "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -455,6 +457,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -548,6 +551,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -726,6 +730,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -805,6 +810,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -980,6 +986,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -1212,6 +1219,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "*", 
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_deref": "->", 
@@ -1332,6 +1340,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -1465,6 +1474,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -1553,6 +1563,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "*", 
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_deref": "->", 
@@ -1670,6 +1681,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": "PyBool_Type", 
+                                "c_ptr": "", 
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -1884,6 +1896,7 @@
                             "fmtpy": {
                                 "PyObject": "PP_ExClass2", 
                                 "PyTypeObject": "PP_ExClass2_Type", 
+                                "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -2125,6 +2138,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -2303,6 +2317,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -2479,6 +2494,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -2655,6 +2671,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -2828,6 +2845,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -2917,7 +2935,7 @@
                                 "fmtpy": {
                                     "c_const": "const ", 
                                     "c_decl": "AA_exclass1 in", 
-                                    "c_ptr": " *", 
+                                    "c_ptr": "", 
                                     "c_type": "AA_exclass1", 
                                     "c_var": "in", 
                                     "cxx_addr": "", 
@@ -2948,6 +2966,7 @@
                             "fmtpy": {
                                 "PyObject": "PP_ExClass1", 
                                 "PyTypeObject": "PP_ExClass1_Type", 
+                                "c_ptr": "*", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "", 
                                 "cxx_deref": "->", 
@@ -3664,6 +3683,7 @@
                             "fmtpy": {
                                 "PyObject": "PyObject", 
                                 "PyTypeObject": null, 
+                                "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
@@ -4699,6 +4719,7 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": "PyBool_Type", 
+                        "c_ptr": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
@@ -4883,6 +4904,7 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": "PyBool_Type", 
+                        "c_ptr": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
@@ -5003,7 +5025,7 @@
                             "PyTypeObject": "PyBool_Type", 
                             "c_const": "", 
                             "c_decl": "bool arg2", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "bool", 
                             "c_var": "arg2", 
                             "cxx_addr": "", 
@@ -5042,7 +5064,7 @@
                             "PyTypeObject": "PyBool_Type", 
                             "c_const": "", 
                             "c_decl": "bool arg3", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "bool", 
                             "c_var": "arg3", 
                             "cxx_addr": "", 
@@ -5929,6 +5951,7 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
@@ -6168,7 +6191,7 @@
                         "fmtpy": {
                             "c_const": "", 
                             "c_decl": "SIDRE_group grp", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "SIDRE_group", 
                             "c_var": "grp", 
                             "cxx_addr": "", 
@@ -6276,7 +6299,7 @@
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_decl": "SIDRE_group grp", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "SIDRE_group", 
                             "c_var": "grp", 
                             "cxx_addr": "", 
@@ -7115,7 +7138,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int verylongname1", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "verylongname1", 
                             "cxx_addr": "", 
@@ -7154,7 +7177,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int verylongname10", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "verylongname10", 
                             "cxx_addr": "", 
@@ -7193,7 +7216,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int verylongname2", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "verylongname2", 
                             "cxx_addr": "", 
@@ -7232,7 +7255,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int verylongname3", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "verylongname3", 
                             "cxx_addr": "", 
@@ -7271,7 +7294,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int verylongname4", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "verylongname4", 
                             "cxx_addr": "", 
@@ -7310,7 +7333,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int verylongname5", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "verylongname5", 
                             "cxx_addr": "", 
@@ -7349,7 +7372,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int verylongname6", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "verylongname6", 
                             "cxx_addr": "", 
@@ -7388,7 +7411,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int verylongname7", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "verylongname7", 
                             "cxx_addr": "", 
@@ -7427,7 +7450,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int verylongname8", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "verylongname8", 
                             "cxx_addr": "", 
@@ -7466,7 +7489,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int verylongname9", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "verylongname9", 
                             "cxx_addr": "", 
@@ -8113,6 +8136,7 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
@@ -8645,7 +8669,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "l", 
             "c_header": "sidre/SidreTypes.h", 
             "c_type": "SIDRE_SidreLength", 
@@ -8664,7 +8688,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
             "c_header": "sidre/SidreTypes.h", 
             "c_to_cxx": "getTypeID({c_var})", 
@@ -8786,7 +8810,7 @@
                 }, 
                 "intent_inout": {
                     "post_call": [
-                        "{py_var} = PyBool_FromLong({c_var});"
+                        "{py_var} = PyBool_FromLong({c_ptr}{c_var});"
                     ], 
                     "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
@@ -8929,7 +8953,7 @@
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyFloat_FromDouble({c_var})", 
+            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
             "PY_format": "d", 
             "c_type": "double", 
             "cxx_type": "double", 
@@ -9110,7 +9134,7 @@
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyFloat_FromDouble({c_var})", 
+            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
             "PY_format": "f", 
             "c_type": "float", 
             "cxx_type": "float", 
@@ -9127,7 +9151,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
             "c_type": "int", 
             "cxx_type": "int", 
@@ -9144,7 +9168,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "l", 
             "c_type": "long", 
             "cxx_type": "long", 
@@ -9177,7 +9201,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromSize_t({c_var})", 
+            "PY_ctor": "PyInt_FromSize_t({c_ptr}{c_var})", 
             "c_header": "<stddef.h>", 
             "c_type": "size_t", 
             "cxx_type": "size_t", 

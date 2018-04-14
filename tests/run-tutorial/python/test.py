@@ -112,6 +112,12 @@ class Tutorial(unittest.TestCase):
         self.assertEqual(1, rv.size)
         self.assertEqual(1, rv)
 
+    def testReturnIntPtrScalr(self):
+        "Return pointer as int scalar"
+        rv = tutorial.ReturnIntPtrScalar()
+        self.assertTrue(isinstance(rv, int))
+        self.assertEqual(10, rv)
+
     def testReturnIntPtrDim(self):
         "Return pointer to int array"
         rv = tutorial.ReturnIntPtrDim()

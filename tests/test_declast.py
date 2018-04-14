@@ -103,6 +103,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("int * var1 +dimension(:)", s)
         self.assertEqual("int * var1", r.gen_arg_as_c())
+        self.assertEqual("int var1", r.gen_arg_as_c(as_scalar=True))
         self.assertEqual("int * var1", r.gen_arg_as_cxx())
         self.assertEqual("integer(C_INT) :: var1(:)", r.gen_arg_as_fortran())
         self.assertEqual("integer(C_INT), pointer :: var1(:)",

@@ -390,6 +390,7 @@ return 1;""", fmt)
 
         fmt = util.Scope(fmt_var)
         fmt.c_var = wformat('{PY_param_self}->{PY_obj}->{variable_name}', fmt_var)
+        fmt.c_ptr = ''  # XXX needed for PY_ctor
 
         typedef = typemap.Typedef.lookup(node.ast.typename)
 
@@ -695,9 +696,11 @@ return 1;""", fmt)
             fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True)
             if CXX_result.is_pointer():
+                fmt_result.c_ptr = '*'
                 fmt_result.cxx_addr = ''
                 fmt_result.cxx_deref = '->'
             else:
+                fmt_result.c_ptr = ''
                 fmt_result.cxx_addr = '&'
                 fmt_result.cxx_deref = '.'
             fmt_result.c_var = fmt_result.cxx_var
@@ -789,6 +792,9 @@ return 1;""", fmt)
                 local_var = 'pointer'
             else:
                 # non-strings should be scalars
+                fmt_arg.c_ptr = ''
+#                fmt_arg.cxx_addr = '&'
+#                fmt_arg.cxx_deref = '.'
                 fmt_arg.c_decl = wformat('{c_type} {c_var}', fmt_arg)
                 fmt_arg.cxx_decl = wformat('{cxx_type} {cxx_var}', fmt_arg)
                 local_var = 'scalar'
