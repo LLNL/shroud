@@ -100,6 +100,7 @@ class Typedef(object):
         ('PY_to_object', None),   # PyBuild - object'=converter(address)
         ('PY_from_object', None), # PyArg_Parse - status=converter(object, address);
         ('PY_build_arg', None),   # argument for Py_BuildValue
+        ('PYN_typenum', None),    # NumPy typenum enumeration
         ('py_statements', {}),
 
         # Lua
@@ -236,6 +237,7 @@ def initialize():
             f_module=dict(iso_c_binding=['C_INT']),
             PY_format='i',
             PY_ctor='PyInt_FromLong({c_ptr}{c_var})',
+            PYN_typenum='NPY_INT',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -250,6 +252,7 @@ def initialize():
             f_module=dict(iso_c_binding=['C_LONG']),
             PY_format='l',
             PY_ctor='PyInt_FromLong({c_ptr}{c_var})',
+            PYN_typenum='NPY_LONG',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -264,6 +267,7 @@ def initialize():
             f_module=dict(iso_c_binding=['C_LONG_LONG']),
             PY_format='L',
 #            PY_ctor='PyInt_FromLong({c_ptr}{c_var})',
+            PYN_typenum='NPY_LONGLONG',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -293,6 +297,7 @@ def initialize():
             f_module=dict(iso_c_binding=['C_FLOAT']),
             PY_format='f',
             PY_ctor='PyFloat_FromDouble({c_ptr}{c_var})',
+            PYN_typenum='NPY_FLOAT',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
@@ -307,6 +312,7 @@ def initialize():
             f_module=dict(iso_c_binding=['C_DOUBLE']),
             PY_format='d',
             PY_ctor='PyFloat_FromDouble({c_ptr}{c_var})',
+            PYN_typenum='NPY_DOUBLE',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
@@ -378,6 +384,7 @@ def initialize():
 # from Py_BuildValue.
 #            PY_ctor='PyBool_FromLong({c_var})',
             PY_PyTypeObject='PyBool_Type',
+            PYN_typenum='NPY_BOOL',
 
             LUA_type='LUA_TBOOLEAN',
             LUA_pop='lua_toboolean({LUA_state_var}, {LUA_index})',

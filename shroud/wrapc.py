@@ -726,10 +726,8 @@ class Wrapc(util.WrapperMixin):
         fmt_func.C_prototype = options.get('C_prototype', ',\t '.join(proto_list))
 
         if node.return_this:
-            is_pointer = False
             fmt_func.C_return_type = 'void'
         elif is_dtor:
-            is_pointer = False
             fmt_func.C_return_type = 'void'
         elif fmt_func.C_custom_return_type:
             pass # fmt_func.C_return_type = fmt_func.C_return_type

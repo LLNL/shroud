@@ -75,28 +75,6 @@ from .util import wformat, append_format
 BuildTuple = collections.namedtuple(
     'BuildTuple', 'format vargs ctor ctorvar')
 
-# map c types to numpy types
-c_to_numpy = dict(
-#    'NPY_BOOL',
-#    'NPY_BYTE',
-#    'NPY_UBYTE',
-#    'NPY_SHORT',
-#    'NPY_USHORT',
-    int='NPY_INT',
-#    'NPY_UINT',
-    long='NPY_LONG',
-#    'NPY_ULONG',
-#    'NPY_LONGLONG',
-#    'NPY_ULONGLONG',
-    float='NPY_FLOAT',
-    double='NPY_DOUBLE',
-#    'NPY_LONGDOUBLE',
-#    'NPY_CFLOAT',
-#    'NPY_CDOUBLE',
-#    'NPY_CLONGDOUBLE',
-#    'NPY_OBJECT',
-)
-
 
 class Wrapp(util.WrapperMixin):
     """Generate Python bindings.
@@ -421,7 +399,6 @@ return 1;""", fmt)
         """
         self.need_numpy = True
         fmt_arg.py_type = 'PyObject'
-        fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
 
         allocargs, descr_code = attr_allocatable(self.language, allocatable, node, arg)
 
@@ -464,7 +441,6 @@ return 1;""", fmt)
         self.need_numpy = True
         fmt_arg.pytmp_var = 'SHTPy_' + fmt_arg.c_var
         fmt_arg.py_type = 'PyObject'
-        fmt_arg.numpy_type = c_to_numpy[fmt_arg.c_type]
         intent = arg.attrs['intent']
         if intent == 'in':
             fmt_arg.numpy_intent = 'NPY_ARRAY_IN_ARRAY'
@@ -543,7 +519,6 @@ return 1;""", fmt)
 
         if node and node.return_pointer_as == 'pointer':
             # Create a 1-d array from pointer
-            fmt.numpy_type = c_to_numpy[typedef.name]
             dim = ast.attrs.get('dimension', None)
             # Create array for shape.
             # Cannot use dimension directly since it may be the wrong type.
@@ -705,6 +680,7 @@ return 1;""", fmt)
                 fmt_result.cxx_deref = '.'
             fmt_result.c_var = fmt_result.cxx_var
             fmt_result.py_var = fmt.PY_result
+            fmt_result.numpy_type = result_typedef.PYN_typenum
 #            fmt_pattern = fmt_result
 
         PY_code = []
@@ -752,6 +728,7 @@ return 1;""", fmt)
             fmt_arg.py_var = 'SHPy_' + arg_name
 
             arg_typedef = typemap.Typedef.lookup(arg.typename)
+            fmt_arg.numpy_type = arg_typedef.PYN_typenum
             # Add formats used by py_statements
             fmt_arg.c_type = arg_typedef.c_type
             fmt_arg.cxx_type = arg_typedef.cxx_type
@@ -1922,10 +1899,11 @@ def attr_allocatable(language, allocatable, node, arg):
 
         # Create Descr if types are different
         if arg.typename != moldarg.typename:
+            arg_typedef = typemap.Typedef.lookup(arg.typename)
             descr = 'SHDPy_' + arg.name
             descr_code = ('PyArray_Descr * {} = '
                           'PyArray_DescrFromType({});\n'
-                          .format(descr, c_to_numpy[arg.typename]))
+                          .format(descr, arg_typedef.PYN_typenum))
 
     return (prototype, order, descr, subok), descr_code
 

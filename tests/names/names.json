@@ -442,6 +442,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "i", 
+                            "numpy_type": "NPY_INT", 
                             "py_var": "SHPy_i"
                         }
                     }
@@ -535,6 +536,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "long", 
                             "cxx_var": "i", 
+                            "numpy_type": "NPY_LONG", 
                             "py_var": "SHPy_i"
                         }
                     }
@@ -621,6 +623,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_rv", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_rv"
                         }
                     }
@@ -640,6 +643,7 @@
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_INT", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -959,6 +963,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT", 
             "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
             "c_to_cxx": "static_cast<Color>({c_var})", 
@@ -1105,6 +1110,7 @@
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushboolean({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TBOOLEAN", 
+            "PYN_typenum": "NPY_BOOL", 
             "PY_PyTypeObject": "PyBool_Type", 
             "c_type": "bool", 
             "cxx_type": "bool", 
@@ -1293,6 +1299,7 @@
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_DOUBLE", 
             "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
             "PY_format": "d", 
             "c_type": "double", 
@@ -1310,6 +1317,7 @@
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_FLOAT", 
             "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
             "PY_format": "f", 
             "c_type": "float", 
@@ -1327,6 +1335,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT", 
             "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
             "c_type": "int", 
@@ -1344,6 +1353,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONG", 
             "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "l", 
             "c_type": "long", 
@@ -1361,6 +1371,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONGLONG", 
             "PY_format": "L", 
             "c_type": "long long", 
             "cxx_type": "long long", 
