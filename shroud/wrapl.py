@@ -426,14 +426,11 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         CXX_subprogram = node.CXX_subprogram
         result_type = node.CXX_return_type
+        result_typedef = node.CXX_result_typedef
         ast = node.ast
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
 
-        result_typedef = typemap.Typedef.lookup(result_type)
-
-        if result_typedef is not node.CXX_result_typedef:
-            raise RuntimeError("AAAA - wrapl")
 
         #        is_const = ast.const
         # XXX        if is_ctor:   # or is_dtor:

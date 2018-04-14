@@ -655,6 +655,7 @@ return 1;""", fmt)
 
         CXX_subprogram = node.CXX_subprogram
         result_type = node.CXX_return_type
+        result_typedef = node.CXX_result_typedef
         ast = node.ast
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
@@ -679,11 +680,6 @@ return 1;""", fmt)
         else:
             node.eval_template('PY_name_impl')
             fmt.PY_error_return = 'NULL'
-
-        result_typedef = typemap.Typedef.lookup(result_type)
-
-        if result_typedef is not node.CXX_result_typedef:
-            raise RuntimeError("AAAA - wrapp")
 
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.

@@ -416,11 +416,11 @@ class Wrapc(util.WrapperMixin):
         ast = node.ast
         result_type = node.CXX_return_type
         C_subprogram = node.C_subprogram
+        result_typedef = node.CXX_result_typedef
         generated_suffix = ''
         if node._generated == 'arg_to_buffer':
             generated_suffix = '_buf'
 
-        result_typedef = typemap.Typedef.lookup(result_type)
         result_is_const = ast.const
         is_ctor = CXX_ast.attrs.get('_constructor', False)
         is_dtor = CXX_ast.attrs.get('_destructor', False)
@@ -429,9 +429,6 @@ class Wrapc(util.WrapperMixin):
         is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
         is_union_scalar = False
-
-        if result_typedef is not node.CXX_result_typedef:
-            raise RuntimeError("AAAA - wrapc")
 
         if result_typedef.c_header:
             # include any dependent header in generated header

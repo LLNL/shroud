@@ -646,6 +646,7 @@ class Wrapf(util.WrapperMixin):
         ast = node.ast
         result_type = node.C_return_type
         subprogram = node.C_subprogram
+        result_typedef = node.C_result_typedef
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
         is_pure = ast.attrs.get('pure', False)
@@ -657,11 +658,6 @@ class Wrapf(util.WrapperMixin):
             generated_suffix = '_buf'
         else:
             generated_suffix = ''
-
-        result_typedef = typemap.Typedef.lookup(result_type)
-
-        if result_typedef is not node.C_result_typedef:
-            raise RuntimeError("AAAAB - wrapf")
 
         is_pointer = False
         if options.F_return_fortran_pointer and ast.is_pointer() \
@@ -902,6 +898,7 @@ class Wrapf(util.WrapperMixin):
         result_type = node.F_return_type
         subprogram = node.F_subprogram
         C_subprogram = C_node.C_subprogram
+        result_typedef = node.F_result_typedef
         ast = node.ast
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
@@ -921,10 +918,6 @@ class Wrapf(util.WrapperMixin):
             # Maybe parse result_type instead of copy.
             ast = copy.deepcopy(node.ast)
             ast.typename = result_type
-
-        result_typedef = typemap.Typedef.lookup(result_type)
-        if result_typedef is not node.F_result_typedef:
-            raise RuntimeError("AAAA - wrapf")
 
         result_generated_suffix = ''
         if is_pure:
