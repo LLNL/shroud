@@ -874,7 +874,23 @@ class Preprocess(object):
 #            raise RuntimeError("Unknown type {} in {}",
 #                               CXX_result_type, fmt_func.function_name)
 
+        # Decide if the function should return a pointer
+        result_typedef = node.CXX_result_typedef
+        as_pointer = False
+        if options.F_return_fortran_pointer and ast.is_pointer() \
+           and result_typedef.cxx_type != 'void' \
+           and result_typedef.base != 'string' \
+           and result_typedef.base != 'shadow':
+            # XXX is_indirect?
+            # Change a C++ pointer into a Fortran pointer
+            # return 'void *' as 'type(C_PTR)'
+            # 'shadow' assigns pointer to type(C_PTR) in a derived type
 
+            if 'dimension' in ast.attrs:
+                as_pointer = True
+            elif options.return_scalar_pointer == 'pointer':
+                as_pointer = True
+        node.return_as_pointer = as_pointer
 
 
 def generate_functions(library, config):

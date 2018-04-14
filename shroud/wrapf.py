@@ -648,22 +648,13 @@ class Wrapf(util.WrapperMixin):
         subprogram = node.C_subprogram
         result_typedef = node.C_result_typedef
         generated_suffix = node.generated_suffix
+        is_pointer = node.return_as_pointer
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
         is_pure = ast.attrs.get('pure', False)
         is_static = False
         is_allocatable = ast.attrs.get('allocatable', False)
         func_is_const = ast.func_const
-
-        is_pointer = False
-        if options.F_return_fortran_pointer and ast.is_pointer() \
-           and result_typedef.cxx_type != 'void' \
-           and result_typedef.base != 'string' \
-           and result_typedef.base != 'shadow':
-            if 'dimension' in ast.attrs:
-                is_pointer = True
-            elif options.return_scalar_pointer == 'pointer':
-                is_pointer = True
 
         arg_c_names = []  # argument names for functions
         arg_c_decl = []   # declaraion of argument names
@@ -915,22 +906,9 @@ class Wrapf(util.WrapperMixin):
         if is_pure:
             result_generated_suffix = '_pure'
 
-        is_pointer = False
-        if options.F_return_fortran_pointer and ast.is_pointer() \
-           and result_typedef.cxx_type != 'void' \
-           and result_typedef.base != 'string' \
-           and result_typedef.base != 'shadow':
-            # XXX is_indirect?
-            # Change a C++ pointer into a Fortran pointer
-            # return 'void *' as 'type(C_PTR)'
-            # 'shadow' assigns pointer to type(C_PTR) in a derived type
-
-            if 'dimension' in ast.attrs:
-                is_pointer = True
-                need_wrapper = True
-            elif options.return_scalar_pointer == 'pointer':
-                is_pointer = True
-                need_wrapper = True
+        is_pointer = node.return_as_pointer
+        if is_pointer:
+            need_wrapper= True
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper

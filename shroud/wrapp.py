@@ -524,11 +524,11 @@ return 1;""", fmt)
             fmt.pre_call_intent = py_implied(implied, node)
             append_format(pre_call, '{cxx_decl} = {pre_call_intent};', fmt)
 
-    def intent_out(self, mode, ast, typedef, intent_blk, fmt, post_call):
+    def intent_out(self, node, ast, typedef, intent_blk, fmt, post_call):
         """Add code for post-call.
         Create PyObject from C++ value to return.
 
-        mode - 'arg' or 'result'  # temporary hack
+        node - FunctionNode.  None if argument
         ast - Abstract Syntax Tree of argument or result
         typedef - typedef of C++ variable.
         fmt - format dictionary
@@ -540,11 +540,7 @@ return 1;""", fmt)
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        if mode == 'result' \
-           and ast.is_pointer() \
-           and typedef.cxx_type != 'void' \
-           and typedef.base != 'string' \
-           and typedef.base != 'shadow':
+        if node and node.return_as_pointer:
             # Create a 1-d array from pointer
             fmt.numpy_type = c_to_numpy[typedef.name]
             dim = ast.attrs.get('dimension', None)
@@ -889,7 +885,7 @@ return 1;""", fmt)
                 if not hidden:
                     # output variable must be a pointer
                     build_tuples.append(self.intent_out(
-                        'arg', arg, arg_typedef, intent_blk, fmt_arg, post_call))
+                        None, arg, arg_typedef, intent_blk, fmt_arg, post_call))
 
             # Code to convert parsed values (C or Python) to C++.
             cmd_list = intent_blk.get('decl', [])
@@ -1078,7 +1074,7 @@ return 1;""", fmt)
         if CXX_subprogram == 'function':
             # XXX - wrapc uses result instead of intent_out
             result_blk = result_typedef.py_statements.get('intent_out', {})
-            ttt = self.intent_out('result', ast, result_typedef, result_blk,
+            ttt = self.intent_out(node, ast, result_typedef, result_blk,
                                   fmt_result, post_call)
             # Add result to front of result tuple
             build_tuples.insert(0, ttt)
