@@ -424,15 +424,11 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 #        node.eval_template('LUA_name')
 #        node.eval_template('LUA_name_impl')
 
+        CXX_subprogram = node.CXX_subprogram
+        result_type = node.CXX_return_type
         ast = node.ast
-        CXX_subprogram = ast.get_subprogram()
-        result_type = ast.typename
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
-
-        if is_dtor or node.return_this:
-            result_type = 'void'
-            CXX_subprogram = 'subroutine'
 
         result_typedef = typemap.Typedef.lookup(result_type)
 

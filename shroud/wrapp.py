@@ -653,9 +653,9 @@ return 1;""", fmt)
         fmt = util.Scope(fmt_func)
         fmt.PY_doc_string = 'documentation'
 
+        CXX_subprogram = node.CXX_subprogram
+        result_type = node.CXX_return_type
         ast = node.ast
-        CXX_subprogram = ast.get_subprogram()
-        result_type = ast.typename
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
 #        is_const = ast.const
@@ -679,10 +679,6 @@ return 1;""", fmt)
         else:
             node.eval_template('PY_name_impl')
             fmt.PY_error_return = 'NULL'
-
-        if node.return_this:
-            result_type = 'void'
-            CXX_subprogram = 'subroutine'
 
         result_typedef = typemap.Typedef.lookup(result_type)
 

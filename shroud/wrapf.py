@@ -644,26 +644,19 @@ class Wrapf(util.WrapperMixin):
         fmt = util.Scope(fmt_func)
 
         ast = node.ast
-        result_type = ast.typename
+        result_type = node.C_return_type
+        subprogram = node.C_subprogram
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
         is_pure = ast.attrs.get('pure', False)
         is_static = False
         is_allocatable = ast.attrs.get('allocatable', False)
         func_is_const = ast.func_const
-        subprogram = ast.get_subprogram()
 
         if node._generated == 'arg_to_buffer':
             generated_suffix = '_buf'
         else:
             generated_suffix = ''
-
-        if is_dtor or node.return_this:
-            result_type = 'void'
-            subprogram = 'subroutine'
-        elif fmt_func.C_custom_return_type:
-            result_type = fmt_func.C_custom_return_type
-            subprogram = 'function'
 
         result_typedef = typemap.Typedef.lookup(result_type)
 
@@ -908,33 +901,26 @@ class Wrapf(util.WrapperMixin):
         fmtargs = C_node._fmtargs
 
         # Fortran return type
+        result_type = node.F_return_type
+        subprogram = node.F_subprogram
+        C_subprogram = C_node.C_subprogram
         ast = node.ast
-        result_type = ast.typename
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
         is_pure = ast.attrs.get('pure', False)
         is_static = False
         is_allocatable = ast.attrs.get('allocatable', False)
-        subprogram = ast.get_subprogram()
-        c_subprogram = C_node.ast.get_subprogram()
 
         if C_node._generated == 'arg_to_buffer':
             generated_suffix = '_buf'
         else:
             generated_suffix = ''
 
-        if is_dtor or node.return_this:
-            result_type = 'void'
-            subprogram = 'subroutine'
-            c_subprogram = 'subroutine'
-        elif fmt_func.C_custom_return_type:
+        if fmt_func.C_custom_return_type:
             # User has changed the return type of the C function
             # TODO: probably needs to be more clever about
             # setting pointer or reference fields too.
             # Maybe parse result_type instead of copy.
-            result_type = fmt_func.C_custom_return_type
-            subprogram = 'function'
-            c_subprogram = 'function'
             ast = copy.deepcopy(node.ast)
             ast.typename = result_type
 
@@ -1249,7 +1235,7 @@ class Wrapf(util.WrapperMixin):
                     '{F_result}%{F_derived_member} = '
                     '{F_C_call}({F_arg_c_call})', fmt_func)
                 F_code.append(fmt_func.F_call_code)
-            elif c_subprogram == 'function':
+            elif C_subprogram == 'function':
                 f_statements = result_typedef.f_statements
                 intent_blk = f_statements.get('result' + result_generated_suffix,{})
                 if 'call' in intent_blk:

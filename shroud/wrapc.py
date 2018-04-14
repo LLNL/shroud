@@ -409,42 +409,31 @@ class Wrapc(util.WrapperMixin):
             CXX_node = self.newlibrary.function_index[CXX_node._PTR_C_CXX_index]
             if CXX_node._generated:
                 generated.append(CXX_node._generated)
-        CXX_result = CXX_node.ast
-        CXX_subprogram = CXX_node.ast.get_subprogram()
+        CXX_ast = CXX_node.ast
+        CXX_subprogram = CXX_node.CXX_subprogram
 
         # C return type
         ast = node.ast
-        result_type = ast.typename
-        subprogram = ast.get_subprogram()
+        result_type = node.CXX_return_type
+        C_subprogram = node.C_subprogram
         generated_suffix = ''
         if node._generated == 'arg_to_buffer':
             generated_suffix = '_buf'
 
         result_typedef = typemap.Typedef.lookup(result_type)
         result_is_const = ast.const
-        is_ctor = CXX_result.attrs.get('_constructor', False)
-        is_dtor = CXX_result.attrs.get('_destructor', False)
+        is_ctor = CXX_ast.attrs.get('_constructor', False)
+        is_dtor = CXX_ast.attrs.get('_destructor', False)
         is_static = False
-        is_allocatable = CXX_result.attrs.get('allocatable', False)
-        is_pointer = CXX_result.is_pointer()
+        is_allocatable = CXX_ast.attrs.get('allocatable', False)
+        is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
         is_union_scalar = False
 
-        # C++ functions which return 'this',
-        # are easier to call from Fortran if they are subroutines.
-        # There is no way to chain in Fortran:  obj->doA()->doB();
-        if node.return_this or is_dtor:
-            CXX_subprogram = 'subroutine'
-            subprogram = 'subroutine'
-            result_type = 'void'
-            
-        if fmt_func.C_custom_return_type:
-            subprogram = 'function'
-
         if result_type != node.CXX_return_type:
             raise RuntimeError("AAAA - wrapc {}  {}  {}".format(ast.name, result_type, node.CXX_return_type))
-        if subprogram != node.C_subprogram:
-            raise RuntimeError("AAAA2 - wrapc {}  {}  {}".format(ast.name, subprogram, node.C_subprogram))
+        if C_subprogram != node.C_subprogram:
+            raise RuntimeError("AAAA2 - wrapc {}  {}  {}".format(ast.name, C_subprogram, node.C_subprogram))
         if CXX_subprogram != CXX_node.CXX_subprogram:
             raise RuntimeError("AAAA3 - wrapc {}  {}  {}  {}".
                                format(ast.name, CXX_subprogram, CXX_node.CXX_subprogram, result_type))
@@ -485,7 +474,7 @@ class Wrapc(util.WrapperMixin):
             if is_union_scalar:
                 fmt_func.cxx_rv_decl = result_typedef.c_union + ' ' + fmt_result.cxx_var
             else:
-                fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
+                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                     name=fmt_result.cxx_var, params=None, continuation=True)
             if is_ctor or is_pointer:
                 # The C wrapper always creates a pointer to the new in the ctor
@@ -583,7 +572,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
                 # Set cxx_var for C_finalize which evalutes in fmt_result context
                 fmt_result.cxx_var = fmt_arg.cxx_var
-                fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
+                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                     name=fmt_arg.cxx_var, params=None, continuation=True)
 
                 fmt_pattern = fmt_arg
@@ -598,7 +587,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_addr = '&'
 
                 if is_allocatable:
-                    if not CXX_result.is_indirect():
+                    if not CXX_ast.is_indirect():
                         # An intermediate string * is allocated
                         # to save std::string result.
                         fmt_arg.cxx_addr = ''
@@ -770,7 +759,7 @@ class Wrapc(util.WrapperMixin):
             append_format(call_code, '{cxx_rv_decl} = new {namespace_scope}'
                           '{cxx_class}({C_call_list});', fmt_func)
             if result_typedef.cxx_to_c is not None:
-                fmt_func.c_rv_decl = CXX_result.gen_arg_as_c(
+                fmt_func.c_rv_decl = CXX_ast.gen_arg_as_c(
                     name=fmt_result.c_var, params=None, continuation=True)
                 fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
             append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
@@ -792,7 +781,7 @@ class Wrapc(util.WrapperMixin):
                 elif result_typedef.cxx_to_c is not None:
                     # Make intermediate c_var value if a conversion
                     # is required i.e. not the same as cxx_var.
-                    fmt_result.c_rv_decl = CXX_result.gen_arg_as_c(
+                    fmt_result.c_rv_decl = CXX_ast.gen_arg_as_c(
                         name=fmt_result.c_var, params=None, continuation=True)
                     fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
                     append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
@@ -826,7 +815,7 @@ class Wrapc(util.WrapperMixin):
                               '{CXX_template}(\t{C_call_list});', fmt_func)
 
 
-            if subprogram == 'function':
+            if C_subprogram == 'function':
                 # Note: A C function may be converted into a Fortran subroutine
                 # subprogram when the result is returned in an argument.
                 C_return_code = wformat('return {c_var};', fmt_result)
