@@ -236,9 +236,20 @@ static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     return rv;
 }
 
+static int PY_Class1_m_flag_setter(PY_Class1 *self, PyObject *value,
+    void *SHROUD_UNUSED(closure))
+{
+    int rv = PyInt_AsLong(value);
+    if (PyErr_Occurred()) {
+        return -1;
+    }
+    self->obj->m_flag = rv;
+    return 0;
+}
+
 static PyGetSetDef PY_Class1_getset[] = {
-    {(char *)"m_flag", (getter)PY_Class1_m_flag_getter, (setter)NULL,
-        NULL, NULL},
+    {(char *)"m_flag", (getter)PY_Class1_m_flag_getter,
+        (setter)PY_Class1_m_flag_setter, NULL, NULL},
     // splicer begin class.Class1.PyGetSetDef
     // splicer end class.Class1.PyGetSetDef
     {NULL}            /* sentinel */

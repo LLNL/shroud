@@ -97,6 +97,7 @@ class Typedef(object):
         ('PY_PyObject', None),    # typedef name of PyObject instance
         ('PY_ctor', None),        # expression to create object.
                                   # ex. PyBool_FromLong({rv})
+        ('PY_get', None),         # expression to create type from PyObject.
         ('PY_to_object', None),   # PyBuild - object'=converter(address)
         ('PY_from_object', None), # PyArg_Parse - status=converter(object, address);
         ('PY_build_arg', None),   # argument for Py_BuildValue
@@ -237,6 +238,7 @@ def initialize():
             f_module=dict(iso_c_binding=['C_INT']),
             PY_format='i',
             PY_ctor='PyInt_FromLong({c_ptr}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
             PYN_typenum='NPY_INT',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
@@ -252,6 +254,7 @@ def initialize():
             f_module=dict(iso_c_binding=['C_LONG']),
             PY_format='l',
             PY_ctor='PyInt_FromLong({c_ptr}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
             PYN_typenum='NPY_LONG',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
@@ -297,6 +300,7 @@ def initialize():
             f_module=dict(iso_c_binding=['C_FLOAT']),
             PY_format='f',
             PY_ctor='PyFloat_FromDouble({c_ptr}{c_var})',
+            PY_get='PyFloat_AsDouble({py_var})',
             PYN_typenum='NPY_FLOAT',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',
@@ -312,6 +316,7 @@ def initialize():
             f_module=dict(iso_c_binding=['C_DOUBLE']),
             PY_format='d',
             PY_ctor='PyFloat_FromDouble({c_ptr}{c_var})',
+            PY_get='PyFloat_AsDouble({py_var})',
             PYN_typenum='NPY_DOUBLE',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',

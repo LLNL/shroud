@@ -206,6 +206,12 @@ class Tutorial(unittest.TestCase):
         obj = tutorial.Class1()
         self.assertTrue(isinstance(obj, tutorial.Class1))
         self.assertEqual(0, obj.m_flag)
+        obj.m_flag = 4
+        self.assertEqual(4, obj.m_flag)
+        obj.m_flag = -1
+        self.assertEqual(-1, obj.m_flag)
+        with self.assertRaises(TypeError) as context:
+            obj.m_flag = "dog"
         del obj
 
     def test_class1_create2(self):

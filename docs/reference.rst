@@ -1234,7 +1234,12 @@ PY_PyObject
 
 PY_ctor
     Expression to create object.
-    ex. PyBool_FromLong({rv})
+    ex. ``PyInt_FromLong({rv})``
+    Defaults to *None*.
+
+PY_get
+    Expression to get value from an object.
+    ex. ``PyInt_AsLong({py_var})``
     Defaults to *None*.
 
 PY_to_object
@@ -1272,6 +1277,10 @@ py_statement
            This is the case when C and C++ are not directly compatible.
            Usually a C++ constructor or cast is involved.
 
+PYN_typenum
+    NumPy type number.
+    ex. ``NPY_INT``
+    Defaults to *None*.
 
 Annotations
 -----------

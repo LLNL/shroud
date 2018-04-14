@@ -37,7 +37,7 @@
                     {
                         "format": {
                             "PY_getter": "PY_struct1_i_getter", 
-                            "PY_setter": "NULL", 
+                            "PY_setter": "PY_struct1_i_setter", 
                             "variable_lower": "i", 
                             "variable_name": "i", 
                             "variable_upper": "I"
@@ -48,7 +48,7 @@
                     {
                         "format": {
                             "PY_getter": "PY_struct1_d_getter", 
-                            "PY_setter": "NULL", 
+                            "PY_setter": "PY_struct1_d_setter", 
                             "variable_lower": "d", 
                             "variable_name": "d", 
                             "variable_upper": "D"
@@ -824,7 +824,7 @@
                     {
                         "format": {
                             "PY_getter": "PY_Class1_m_flag_getter", 
-                            "PY_setter": "NULL", 
+                            "PY_setter": "PY_Class1_m_flag_setter", 
                             "variable_lower": "m_flag", 
                             "variable_name": "m_flag", 
                             "variable_upper": "M_FLAG"
@@ -8964,6 +8964,7 @@
             "PYN_typenum": "NPY_DOUBLE", 
             "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
             "PY_format": "d", 
+            "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "double", 
             "cxx_type": "double", 
             "f_cast": "real({f_var}, C_DOUBLE)", 
@@ -8982,6 +8983,7 @@
             "PYN_typenum": "NPY_FLOAT", 
             "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
             "PY_format": "f", 
+            "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "float", 
             "cxx_type": "float", 
             "f_cast": "real({f_var}, C_FLOAT)", 
@@ -9000,6 +9002,7 @@
             "PYN_typenum": "NPY_INT", 
             "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "int", 
             "cxx_type": "int", 
             "f_cast": "int({f_var}, C_INT)", 
@@ -9018,6 +9021,7 @@
             "PYN_typenum": "NPY_LONG", 
             "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "l", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "long", 
             "cxx_type": "long", 
             "f_cast": "int({f_var}, C_LONG)", 
@@ -9441,6 +9445,7 @@
             "PYN_typenum": "NPY_INT", 
             "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_to_cxx": "static_cast<tutorial::\tClass1::DIRECTION>({c_var})", 
             "c_type": "int", 
             "cxx_to_c": "static_cast<int>({cxx_var})", 
@@ -9461,6 +9466,7 @@
             "PYN_typenum": "NPY_INT", 
             "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_to_cxx": "static_cast<tutorial::\tColor>({c_var})", 
             "c_type": "int", 
             "cxx_to_c": "static_cast<int>({cxx_var})", 
@@ -9481,6 +9487,7 @@
             "PYN_typenum": "NPY_INT", 
             "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_to_cxx": "static_cast<tutorial::EnumTypeID>({c_var})", 
             "c_type": "int", 
             "cxx_to_c": "static_cast<int>({cxx_var})", 
@@ -9502,6 +9509,7 @@
             "PYN_typenum": "NPY_INT", 
             "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "int", 
             "cxx_type": "tutorial::TypeID", 
             "f_cast": "int({f_var}, C_INT)", 

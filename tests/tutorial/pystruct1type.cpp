@@ -78,6 +78,17 @@ static PyObject *PY_struct1_i_getter(PY_struct1 *self,
     return rv;
 }
 
+static int PY_struct1_i_setter(PY_struct1 *self, PyObject *value,
+    void *SHROUD_UNUSED(closure))
+{
+    int rv = PyInt_AsLong(value);
+    if (PyErr_Occurred()) {
+        return -1;
+    }
+    self->obj->i = rv;
+    return 0;
+}
+
 static PyObject *PY_struct1_d_getter(PY_struct1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -85,11 +96,22 @@ static PyObject *PY_struct1_d_getter(PY_struct1 *self,
     return rv;
 }
 
+static int PY_struct1_d_setter(PY_struct1 *self, PyObject *value,
+    void *SHROUD_UNUSED(closure))
+{
+    double rv = PyFloat_AsDouble(value);
+    if (PyErr_Occurred()) {
+        return -1;
+    }
+    self->obj->d = rv;
+    return 0;
+}
+
 static PyGetSetDef PY_struct1_getset[] = {
-    {(char *)"i", (getter)PY_struct1_i_getter, (setter)NULL,
-        NULL, NULL},
-    {(char *)"d", (getter)PY_struct1_d_getter, (setter)NULL,
-        NULL, NULL},
+    {(char *)"i", (getter)PY_struct1_i_getter,
+        (setter)PY_struct1_i_setter, NULL, NULL},
+    {(char *)"d", (getter)PY_struct1_d_getter,
+        (setter)PY_struct1_d_setter, NULL, NULL},
     // splicer begin class.struct1.PyGetSetDef
     // splicer end class.struct1.PyGetSetDef
     {NULL}            /* sentinel */

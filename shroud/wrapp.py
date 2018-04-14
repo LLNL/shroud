@@ -364,27 +364,45 @@ return 1;""", fmt)
         options = node.options
         fmt_var = node.fmtdict
         fmt_var.PY_getter =  wformat(options.PY_member_getter_template, fmt_var)
-        fmt_var.PY_setter = 'NULL'  # read-only
+        fmt_var.PY_setter =  wformat(options.PY_member_setter_template, fmt_var)
+#        fmt_var.PY_setter = 'NULL'  # read-only
 
         fmt = util.Scope(fmt_var)
         fmt.c_var = wformat('{PY_param_self}->{PY_obj}->{variable_name}', fmt_var)
         fmt.c_ptr = ''  # XXX needed for PY_ctor
+        fmt.py_var = 'value'  # Used with PY_get
 
         typedef = typemap.Typedef.lookup(node.ast.typename)
 
         if typedef.PY_ctor:
-            fmt.ctor = wformat('PyObject * rv = ' + typedef.PY_ctor + ';', fmt)
+            fmt.ctor = wformat(typedef.PY_ctor, fmt)
         else:
-            fmt.ctor = 'UUU'
+            fmt.ctor = 'UUUctor'
+        fmt.cxx_decl = node.ast.gen_arg_as_cxx(name='rv')
 
-        append_format(self.PyGetSetBody,
-            '\nstatic PyObject *'
-            '{PY_getter}('
+        output = self.PyGetSetBody
+        append_format(output,
+            '\nstatic PyObject *{PY_getter}('
             '{PY_PyObject} *{PY_param_self},'
             '\t void *SHROUD_UNUSED(closure))\n'
-            '{{+\n{ctor}\nreturn rv;'
+            '{{+\nPyObject * rv = {ctor};\nreturn rv;'
             '\n-}}', fmt)
         
+        if typedef.PY_get:
+            fmt.get = wformat(typedef.PY_get, fmt)
+        else:
+            fmt.get = 'UUUget'
+
+        append_format(output,
+            '\nstatic int {PY_setter}('
+            '{PY_PyObject} *{PY_param_self}, PyObject *{py_var},'
+                      '\t void *SHROUD_UNUSED(closure))\n{{+\n'
+                      '{cxx_decl} = {get};', fmt)
+        output.append('if (PyErr_Occurred()) {\n+return -1;-\n}')
+        # XXX - allow user to add error checks on value
+        output.append(fmt.c_var + ' = rv;')
+        output.append('return 0;\n-}')
+
         self.PyGetSetDef.append(
             # XXX - the (char *) only needed for C++
             wformat('{{(char *)"{variable_name}",\t '
