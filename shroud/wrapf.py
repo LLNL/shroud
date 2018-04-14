@@ -660,10 +660,8 @@ class Wrapf(util.WrapperMixin):
 
         result_typedef = typemap.Typedef.lookup(result_type)
 
-        if result_type != node.C_return_type:
-            raise RuntimeError("AAAA1 - wrapf {}  {}  {}".format(ast.name, result_type, node.C_return_type))
-        if subprogram != node.C_subprogram:
-            raise RuntimeError("AAAA2 - wrapf {}  {}  {}".format(ast.name, subprogram, node.C_subprogram))
+        if result_typedef is not node.C_result_typedef:
+            raise RuntimeError("AAAAB - wrapf")
 
         is_pointer = False
         if options.F_return_fortran_pointer and ast.is_pointer() \
@@ -924,15 +922,9 @@ class Wrapf(util.WrapperMixin):
             ast = copy.deepcopy(node.ast)
             ast.typename = result_type
 
-        if result_type != node.F_return_type:
-            raise RuntimeError("AAAA - wrapf {}  {}  {}".format(ast.name, result_type, node.F_return_type))
-        if subprogram != node.F_subprogram:
-            raise RuntimeError("AAAA1 - wrapf")
-
         result_typedef = typemap.Typedef.lookup(result_type)
-        if not result_typedef:
-            raise RuntimeError("Unknown type {} in {}",
-                               result_type, fmt_func.function_name)
+        if result_typedef is not node.F_result_typedef:
+            raise RuntimeError("AAAA - wrapf")
 
         result_generated_suffix = ''
         if is_pure:

@@ -430,13 +430,9 @@ class Wrapc(util.WrapperMixin):
         is_const = ast.func_const
         is_union_scalar = False
 
-        if result_type != node.CXX_return_type:
-            raise RuntimeError("AAAA - wrapc {}  {}  {}".format(ast.name, result_type, node.CXX_return_type))
-        if C_subprogram != node.C_subprogram:
-            raise RuntimeError("AAAA2 - wrapc {}  {}  {}".format(ast.name, C_subprogram, node.C_subprogram))
-        if CXX_subprogram != CXX_node.CXX_subprogram:
-            raise RuntimeError("AAAA3 - wrapc {}  {}  {}  {}".
-                               format(ast.name, CXX_subprogram, CXX_node.CXX_subprogram, result_type))
+        if result_typedef is not node.CXX_result_typedef:
+            raise RuntimeError("AAAA - wrapc")
+
         if result_typedef.c_header:
             # include any dependent header in generated header
             self.header_typedef_nodes[result_typedef.name] = result_typedef

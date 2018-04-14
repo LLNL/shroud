@@ -848,11 +848,6 @@ class Preprocess(object):
         node.CXX_subprogram = subprogram
         is_dtor = ast.attrs.get('_destructor', False)
 
-        result_typedef = typemap.Typedef.lookup(CXX_result_type)
-        if not result_typedef:
-            raise RuntimeError("Unknown type {} in {}",
-                               CXX_result_type, fmt_func.function_name)
-
         if node.return_this or is_dtor:
             CXX_result_type = 'void'
             C_result_type = 'void'
@@ -870,6 +865,15 @@ class Preprocess(object):
         node.CXX_return_type = CXX_result_type
         node.C_return_type = C_result_type
         node.F_return_type = F_result_type
+
+        node.CXX_result_typedef = typemap.Typedef.lookup(CXX_result_type)
+        node.C_result_typedef = typemap.Typedef.lookup(C_result_type)
+        node.F_result_typedef = typemap.Typedef.lookup(F_result_type)
+#        if not result_typedef:
+#            raise RuntimeError("Unknown type {} in {}",
+#                               CXX_result_type, fmt_func.function_name)
+
+
 
 
 def generate_functions(library, config):
