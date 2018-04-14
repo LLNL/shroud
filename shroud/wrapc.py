@@ -733,7 +733,7 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = 'void'
         elif fmt_func.C_custom_return_type:
             pass # fmt_func.C_return_type = fmt_func.C_return_type
-        elif node.return_ptr_as_scalar:
+        elif node.return_pointer_as == 'scalar':
             fmt_func.C_return_type = ast.gen_arg_as_c(
                 name=None, as_scalar=True, params=None, continuation=True)
         else:
@@ -833,7 +833,7 @@ class Wrapc(util.WrapperMixin):
             C_return_code = wformat(fmt_func.C_return_code, fmt_func)
         elif is_union_scalar:
             fmt_func.C_return_code = wformat('return {cxx_var}.c;', fmt_result)
-        elif node.return_ptr_as_scalar:
+        elif node.return_pointer_as == 'scalar':
             # dereference pointer to return scalar
             fmt_func.C_return_code = wformat('return *{cxx_var};', fmt_result)
         else:

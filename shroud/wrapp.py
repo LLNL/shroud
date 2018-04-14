@@ -541,7 +541,7 @@ return 1;""", fmt)
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        if node and node.return_as_pointer:
+        if node and node.return_pointer_as == 'pointer':
             # Create a 1-d array from pointer
             fmt.numpy_type = c_to_numpy[typedef.name]
             dim = ast.attrs.get('dimension', None)

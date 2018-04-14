@@ -247,10 +247,12 @@ class ToDict(visitor.Visitor):
             if value:
                 d[key] = value
         for key in [
-#            'return_as_pointer', 'return_ptr_as_scalar',
+#            'return_pointer_as',
         ]:
             if hasattr(node, key):
-                d[key] = getattr(node, key)
+                value = getattr(node, key)
+                if value:
+                    d[key] = getattr(node, key)
         return d
 
     def visit_EnumNode(self, node):

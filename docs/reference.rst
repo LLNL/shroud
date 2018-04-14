@@ -281,7 +281,7 @@ F_return_fortran_pointer
 
 
 return_scalar_pointer
-  Determins how to treat a function which returns a pointer to a scalar
+  Determines how to treat a function which returns a pointer to a scalar
   (it does not have the *dimension* attribute).
   **scalar** return as a scalar or **pointer** to return as a pointer.
   This option does not effect the C wrapper.
@@ -803,7 +803,7 @@ C_return_code
     Code used to return from C wrapper.
 
 C_return_type
-    Return type of the function.
+    Return type of the C wrapper function.
     If the **return_this** field is true, then set to ``void``.
     If the **C_return_type** format is set, use its value.
     Otherwise set to function's return type.

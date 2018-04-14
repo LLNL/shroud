@@ -876,8 +876,7 @@ class Preprocess(object):
 
         # Decide if the function should return a pointer
         result_typedef = node.CXX_result_typedef
-        as_pointer = False
-        as_scalar = False
+        return_pointer_as = None
         if options.F_return_fortran_pointer and ast.is_pointer() \
            and result_typedef.cxx_type != 'void' \
            and result_typedef.base != 'string' \
@@ -888,13 +887,12 @@ class Preprocess(object):
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
 
             if 'dimension' in ast.attrs:
-                as_pointer = True
+                return_pointer_as = 'pointer'
             elif options.return_scalar_pointer == 'pointer':
-                as_pointer = True
+                return_pointer_as = 'pointer'
             else:
-                as_scalar = True
-        node.return_as_pointer = as_pointer
-        node.return_ptr_as_scalar = as_scalar
+                return_pointer_as = 'scalar'
+        node.return_pointer_as = return_pointer_as
 
 
 def generate_functions(library, config):
