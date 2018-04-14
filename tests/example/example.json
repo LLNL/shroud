@@ -563,7 +563,7 @@
                             }, 
                             "const": true, 
                             "declarator": {
-                                "name": "getName", 
+                                "name": "getNameErrorPattern", 
                                 "pointer": [
                                     {
                                         "const": false, 
@@ -577,38 +577,38 @@
                                 "string"
                             ]
                         }, 
-                        "decl": "const string& getName() const", 
-                        "declgen": "const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
+                        "decl": "const string& getNameErrorPattern() const", 
+                        "declgen": "const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
-                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorPattern(\t);", 
                             "C_call_list": "", 
-                            "C_name": "AA_exclass1_get_name", 
+                            "C_name": "AA_exclass1_get_name_error_pattern", 
                             "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
                             "C_post_call_pattern": "// C_error_pattern\nif (! isNameValid(SHCXX_rv)) {\n    return NULL;\n}\n", 
                             "C_pre_call": "const example::\tnested::\tExClass1 *SH_this = \tstatic_cast<const example::\tnested::\tExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "const char *", 
-                            "F_C_call": "c_exclass1_get_name_bufferify", 
-                            "F_C_name": "c_exclass1_get_name", 
+                            "F_C_call": "c_exclass1_get_name_error_pattern_bufferify", 
+                            "F_C_name": "c_exclass1_get_name_error_pattern", 
                             "F_arg_c_call": "obj%voidptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass1_get_name_bufferify(obj%voidptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
-                            "F_name_function": "get_name", 
-                            "F_name_generic": "get_name", 
-                            "F_name_impl": "exclass1_get_name", 
+                            "F_call_code": "call c_exclass1_get_name_error_pattern_bufferify(obj%voidptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_name_function": "get_name_error_pattern", 
+                            "F_name_generic": "get_name_error_pattern", 
+                            "F_name_impl": "exclass1_get_name_error_pattern", 
                             "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
-                            "LUA_name": "getName", 
-                            "LUA_name_impl": "l_exclass1_get_name", 
-                            "PY_name_impl": "PP_exclass1_getName", 
+                            "LUA_name": "getNameErrorPattern", 
+                            "LUA_name_impl": "l_exclass1_get_name_error_pattern", 
+                            "PY_name_impl": "PP_exclass1_getNameErrorPattern", 
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
                             "c_var_len": "aa_exclass1_get_name_length(obj%voidptr)", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
-                            "function_name": "getName", 
-                            "underscore_name": "get_name"
+                            "function_name": "getNameErrorPattern", 
+                            "underscore_name": "get_name_error_pattern"
                         }, 
                         "options": {}
                     }, 
@@ -651,7 +651,7 @@
                             }, 
                             "const": false, 
                             "declarator": {
-                                "name": "getName", 
+                                "name": "getNameErrorPattern", 
                                 "pointer": []
                             }, 
                             "func_const": true, 
@@ -682,25 +682,25 @@
                                 "void"
                             ]
                         }, 
-                        "decl": "const string& getName() const", 
-                        "declgen": "void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
+                        "decl": "const string& getNameErrorPattern() const", 
+                        "declgen": "void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
-                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
+                            "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorPattern(\t);", 
                             "C_call_list": "", 
-                            "C_name": "AA_exclass1_get_name_bufferify", 
+                            "C_name": "AA_exclass1_get_name_error_pattern_bufferify", 
                             "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
                             "C_pre_call": "const example::\tnested::\tExClass1 *SH_this = \tstatic_cast<const example::\tnested::\tExClass1 *>(\tstatic_cast<const void *>(\tself));", 
                             "C_prototype": "const AA_exclass1 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
-                            "F_C_name": "c_exclass1_get_name_bufferify", 
+                            "F_C_name": "c_exclass1_get_name_error_pattern_bufferify", 
                             "c_const": "const ", 
                             "c_ptr": " *", 
                             "c_var": "self", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
-                            "function_name": "getName", 
+                            "function_name": "getNameErrorPattern", 
                             "function_suffix": "_bufferify", 
-                            "underscore_name": "get_name"
+                            "underscore_name": "get_name_error_pattern"
                         }, 
                         "options": {
                             "wrap_c": true, 

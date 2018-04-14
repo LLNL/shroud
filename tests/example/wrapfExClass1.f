@@ -65,7 +65,7 @@ module exclass1_mod
     contains
         procedure :: delete => exclass1_dtor
         procedure :: increment_count => exclass1_increment_count
-        procedure :: get_name => exclass1_get_name
+        procedure :: get_name_error_pattern => exclass1_get_name_error_pattern
         procedure :: get_name_length => exclass1_get_name_length
         procedure :: get_name_error_check => exclass1_get_name_error_check
         procedure :: get_name_arg => exclass1_get_name_arg
@@ -137,23 +137,24 @@ module exclass1_mod
             integer(C_INT) :: SHT_rv
         end function c_exclass1_increment_count
 
-        pure function c_exclass1_get_name(self) &
+        pure function c_exclass1_get_name_error_pattern(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_exclass1_get_name")
+                bind(C, name="AA_exclass1_get_name_error_pattern")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: self
             type(C_PTR) SHT_rv
-        end function c_exclass1_get_name
+        end function c_exclass1_get_name_error_pattern
 
-        subroutine c_exclass1_get_name_bufferify(self, SHF_rv, NSHF_rv) &
-                bind(C, name="AA_exclass1_get_name_bufferify")
+        subroutine c_exclass1_get_name_error_pattern_bufferify(self, &
+                SHF_rv, NSHF_rv) &
+                bind(C, name="AA_exclass1_get_name_error_pattern_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: self
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_exclass1_get_name_bufferify
+        end subroutine c_exclass1_get_name_error_pattern_bufferify
 
         pure function c_exclass1_get_name_length(self) &
                 result(SHT_rv) &
@@ -328,20 +329,20 @@ contains
         ! splicer end class.ExClass1.method.increment_count
     end function exclass1_increment_count
 
-    ! const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
+    ! const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
     ! arg_to_buffer
     ! function_index=4
-    function exclass1_get_name(obj) &
+    function exclass1_get_name_error_pattern(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT
         class(exclass1) :: obj
         character(kind=C_CHAR, &
             len=aa_exclass1_get_name_length(obj%voidptr)) :: SHT_rv
-        ! splicer begin class.ExClass1.method.get_name
-        call c_exclass1_get_name_bufferify(obj%voidptr, SHT_rv, &
-            len(SHT_rv, kind=C_INT))
-        ! splicer end class.ExClass1.method.get_name
-    end function exclass1_get_name
+        ! splicer begin class.ExClass1.method.get_name_error_pattern
+        call c_exclass1_get_name_error_pattern_bufferify(obj%voidptr, &
+            SHT_rv, len(SHT_rv, kind=C_INT))
+        ! splicer end class.ExClass1.method.get_name_error_pattern
+    end function exclass1_get_name_error_pattern
 
     ! int GetNameLength() const
     ! function_index=5

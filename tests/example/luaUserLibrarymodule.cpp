@@ -120,16 +120,16 @@ static int l_exclass1_increment_count(lua_State *L)
     // splicer end class.ExClass1.method.incrementCount
 }
 
-// const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-static int l_exclass1_get_name(lua_State *L)
+// const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
+static int l_exclass1_get_name_error_pattern(lua_State *L)
 {
-    // splicer begin class.ExClass1.method.getName
+    // splicer begin class.ExClass1.method.getNameErrorPattern
     l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
         L, 1, "ExClass1.metatable");
-    const std::string & SHCXX_rv = SH_this->self->getName();
+    const std::string & SHCXX_rv = SH_this->self->getNameErrorPattern();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
-    // splicer end class.ExClass1.method.getName
+    // splicer end class.ExClass1.method.getNameErrorPattern
 }
 
 // int GetNameLength() const
@@ -260,7 +260,7 @@ static int l_exclass1_splicer_special(lua_State *L)
 static const struct luaL_Reg l_ExClass1_Reg [] = {
     {"__gc", l_exclass1_dtor},
     {"incrementCount", l_exclass1_increment_count},
-    {"getName", l_exclass1_get_name},
+    {"getNameErrorPattern", l_exclass1_get_name_error_pattern},
     {"GetNameLength", l_exclass1_get_name_length},
     {"getNameErrorCheck", l_exclass1_get_name_error_check},
     {"getNameArg", l_exclass1_get_name_arg},
