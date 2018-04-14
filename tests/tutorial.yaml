@@ -241,6 +241,14 @@ declarations:
       options:
          # Need to fix fmt.cxx_deref
          wrap_lua: False
+
+    - decl: Class1 * returnThis();
+      return_this: True
+      doxygen:
+         brief: Return pointer to 'this' to allow chaining calls
+      options:
+         wrap_python: False
+         wrap_lua: False
   
     - decl: enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
   

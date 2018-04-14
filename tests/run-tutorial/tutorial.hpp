@@ -131,6 +131,7 @@ public:
     Class1(int flag) : m_flag(flag) {};
     int Method1();
     bool equivalent(Class1 const &obj2) const;
+    Class1 * returnThis();
 
     enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 

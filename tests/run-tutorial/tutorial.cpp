@@ -289,7 +289,13 @@ int Class1::Method1()
 
 bool Class1::equivalent(Class1 const &obj2) const
 {
-  return m_flag == obj2.m_flag;
+    return m_flag == obj2.m_flag;
+}
+
+Class1 * Class1::returnThis()
+{
+    last_function_called = "returnThis";
+    return this;
 }
 
 Class1::DIRECTION Class1::directionFunc(Class1::DIRECTION arg)

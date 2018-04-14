@@ -10,6 +10,7 @@ C method Class1(int flag +intent(in)+value) +name(new)
 C method ~Class1() +name(delete)
 C method int Method1()
 C method bool equivalent(const Class1 & obj2 +intent(in)+value) const
+C method Class1 * returnThis()
 C method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 Close wrapClass1.h
 Close wrapClass1.cpp
@@ -81,6 +82,7 @@ C-interface, Fortran method Class1(int flag +intent(in)+value) +name(new)
 C-interface, Fortran method ~Class1() +name(delete)
 C-interface, Fortran method int Method1()
 C-interface, Fortran method bool equivalent(const Class1 & obj2 +intent(in)+value) const
+C-interface, Fortran method Class1 * returnThis()
 C-interface, Fortran method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 class Singleton
 C-interface, Fortran method static Singleton & getReference()

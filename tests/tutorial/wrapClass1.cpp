@@ -122,8 +122,24 @@ bool TUT_class1_equivalent(const TUT_class1 * self,
 // splicer end class.Class1.method.equivalent
 }
 
-// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// Class1 * returnThis()
 // function_index=5
+/**
+ * \brief Return pointer to 'this' to allow chaining calls
+ *
+ */
+void TUT_class1_return_this(TUT_class1 * self)
+{
+// splicer begin class.Class1.method.return_this
+    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
+        static_cast<void *>(self));
+    SH_this->returnThis();
+    return;
+// splicer end class.Class1.method.return_this
+}
+
+// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// function_index=6
 int TUT_class1_direction_func(TUT_class1 * self, int arg)
 {
 // splicer begin class.Class1.method.direction_func

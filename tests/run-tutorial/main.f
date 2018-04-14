@@ -335,6 +335,8 @@ contains
     call assert_true(obj0%equivalent(obj0))
     call assert_false(obj0%equivalent(obj1))
 
+    call obj0%return_this()
+
     direction = -1
     direction = obj0%direction_func(class1_direction_left)
     call assert_equals(class1_direction_left, direction, "obj0.directionFunc")
