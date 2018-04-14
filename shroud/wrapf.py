@@ -647,17 +647,13 @@ class Wrapf(util.WrapperMixin):
         result_type = node.C_return_type
         subprogram = node.C_subprogram
         result_typedef = node.C_result_typedef
+        generated_suffix = node.generated_suffix
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
         is_pure = ast.attrs.get('pure', False)
         is_static = False
         is_allocatable = ast.attrs.get('allocatable', False)
         func_is_const = ast.func_const
-
-        if node._generated == 'arg_to_buffer':
-            generated_suffix = '_buf'
-        else:
-            generated_suffix = ''
 
         is_pointer = False
         if options.F_return_fortran_pointer and ast.is_pointer() \
@@ -897,19 +893,15 @@ class Wrapf(util.WrapperMixin):
         # Fortran return type
         result_type = node.F_return_type
         subprogram = node.F_subprogram
-        C_subprogram = C_node.C_subprogram
         result_typedef = node.F_result_typedef
+        C_subprogram = C_node.C_subprogram
+        generated_suffix = C_node.generated_suffix
         ast = node.ast
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
         is_pure = ast.attrs.get('pure', False)
         is_static = False
         is_allocatable = ast.attrs.get('allocatable', False)
-
-        if C_node._generated == 'arg_to_buffer':
-            generated_suffix = '_buf'
-        else:
-            generated_suffix = ''
 
         if fmt_func.C_custom_return_type:
             # User has changed the return type of the C function

@@ -815,6 +815,10 @@ class FunctionNode(AstNode):
         self.C_return_type = '--none--'
         self.F_return_type = '--none--'
 
+        # Used with c_statements to find correct intent block
+        # possible values are '', '_buf'
+        self.generated_suffix = ''
+
         if not decl:
             raise RuntimeError("FunctionNode missing decl")
 

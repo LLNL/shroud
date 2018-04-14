@@ -417,9 +417,7 @@ class Wrapc(util.WrapperMixin):
         result_type = node.CXX_return_type
         C_subprogram = node.C_subprogram
         result_typedef = node.CXX_result_typedef
-        generated_suffix = ''
-        if node._generated == 'arg_to_buffer':
-            generated_suffix = '_buf'
+        generated_suffix = node.generated_suffix
 
         result_is_const = ast.const
         is_ctor = CXX_ast.attrs.get('_constructor', False)
