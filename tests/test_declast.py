@@ -67,10 +67,14 @@ class CheckParse(unittest.TestCase):
         Combinations of const and pointer.
         """
         r = declast.check_decl("int")
+        self.assertIsNone(r.get_subprogram())
+        self.assertEqual(0, r.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int", s)
 
         r = declast.check_decl("int var1")
+        self.assertIsNone(r.get_subprogram())
+        self.assertEqual(0, r.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int var1", s)
         s = r.bind_c()
@@ -79,6 +83,8 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("integer(C_INT) :: var1", s)
 
         r = declast.check_decl("const int var1")
+        self.assertIsNone(r.get_subprogram())
+        self.assertEqual(0, r.is_pointer())
         s = r.gen_decl()
         self.assertEqual("const int var1", s)
         self.assertEqual("const int var1", r.gen_arg_as_c())
@@ -92,6 +98,8 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("const int var1", s)
 
         r = declast.check_decl("int *var1 +dimension(:)")
+        self.assertIsNone(r.get_subprogram())
+        self.assertEqual(1, r.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int * var1 +dimension(:)", s)
         self.assertEqual("int * var1", r.gen_arg_as_c())
@@ -566,6 +574,9 @@ class CheckParse(unittest.TestCase):
 
         s = r.gen_decl()
         self.assertEqual("const std::string & getName() const", s)
+        self.assertFalse(r.is_pointer())
+        self.assertTrue(r.is_reference())
+        self.assertTrue(r.is_indirect())
 
         self.assertEqual(todict.to_dict(r),{
             "attrs": {

@@ -667,14 +667,20 @@ class Wrapf(util.WrapperMixin):
 
         result_typedef = typemap.Typedef.lookup(result_type)
 
-        result_attributes = []
+        if result_type != node.C_return_type:
+            raise RuntimeError("AAAA1 - wrapf {}  {}  {}".format(ast.name, result_type, node.C_return_type))
+        if subprogram != node.C_subprogram:
+            raise RuntimeError("AAAA2 - wrapf {}  {}  {}".format(ast.name, subprogram, node.C_subprogram))
+
         is_pointer = False
         if options.F_return_fortran_pointer and ast.is_pointer() \
            and result_typedef.cxx_type != 'void' \
            and result_typedef.base != 'string' \
            and result_typedef.base != 'shadow':
-            result_attributes.append('pointer')
-            is_pointer = True
+            if 'dimension' in ast.attrs:
+                is_pointer = True
+            elif options.return_scalar_pointer == 'pointer':
+                is_pointer = True
 
         arg_c_names = []  # argument names for functions
         arg_c_decl = []   # declaraion of argument names
@@ -683,7 +689,6 @@ class Wrapf(util.WrapperMixin):
 
         # find subprogram type
         # compute first to get order of arguments correct.
-        # Add
         if subprogram == 'subroutine':
             fmt.F_C_subprogram = 'subroutine'
         else:
@@ -933,6 +938,11 @@ class Wrapf(util.WrapperMixin):
             ast = copy.deepcopy(node.ast)
             ast.typename = result_type
 
+        if result_type != node.F_return_type:
+            raise RuntimeError("AAAA - wrapf {}  {}  {}".format(ast.name, result_type, node.F_return_type))
+        if subprogram != node.F_subprogram:
+            raise RuntimeError("AAAA1 - wrapf")
+
         result_typedef = typemap.Typedef.lookup(result_type)
         if not result_typedef:
             raise RuntimeError("Unknown type {} in {}",
@@ -942,7 +952,6 @@ class Wrapf(util.WrapperMixin):
         if is_pure:
             result_generated_suffix = '_pure'
 
-        result_attributes = []
         is_pointer = False
         if options.F_return_fortran_pointer and ast.is_pointer() \
            and result_typedef.cxx_type != 'void' \
@@ -952,9 +961,13 @@ class Wrapf(util.WrapperMixin):
             # Change a C++ pointer into a Fortran pointer
             # return 'void *' as 'type(C_PTR)'
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
-            result_attributes.append('pointer')
-            is_pointer = True
-            need_wrapper = True
+
+            if 'dimension' in ast.attrs:
+                is_pointer = True
+                need_wrapper = True
+            elif options.return_scalar_pointer == 'pointer':
+                is_pointer = True
+                need_wrapper = True
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper

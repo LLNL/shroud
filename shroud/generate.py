@@ -370,6 +370,12 @@ class GenFunctions(object):
 
     def template_function(self, node, ordered_functions):
         """ Create overloaded functions for each templated argument.
+
+        - decl: void Function7(ArgType arg)
+          cxx_template:
+            ArgType:
+            - int
+            - double
         """
         if len(node.cxx_template) != 1:
             # In the future it may be useful to have multiple templates
@@ -409,6 +415,12 @@ class GenFunctions(object):
 
     def generic_function(self, node, ordered_functions):
         """ Create overloaded functions for each generic method.
+
+        - decl: void Function9(double arg)
+          fortran_generic:
+            arg:
+            - float
+            - double
         """
         if len(node.fortran_generic) != 1:
             # In the future it may be useful to have multiple generic arguments
@@ -746,7 +758,7 @@ class Namify(object):
         self.config = config
 
     def name_library(self):
-        """entry pointer for class"""
+        """entry pointer for library"""
         self.name_language(self.name_function_c)
         self.name_language(self.name_function_fortran)
 
@@ -785,10 +797,86 @@ class Namify(object):
         node.eval_template('F_name_generic')
 
 
+class Preprocess(object):
+    """Compute some state for functions."""
+    def __init__(self, newlibrary, config):
+        self.newlibrary = newlibrary
+        self.config = config
+
+    def process_library(self):
+        """entry pointer for library"""
+        newlibrary = self.newlibrary
+        for cls in newlibrary.classes:
+            for func in cls.functions:
+                self.process_function(cls, func)
+
+        for func in newlibrary.functions:
+            self.process_function(None, func)
+
+    def process_function(self, cls, node):
+        options = node.options
+
+        # Any nodes with cxx_template have been replaced with nodes
+        # that have the template expanded.
+        if not node.cxx_template:
+            self.process_xxx(cls, node)
+    
+    def process_xxx(self, cls, node):
+        """Compute information common to all wrapper language.
+
+        Compute subprogram.  This may be different for each language.
+        CXX_subprogram - The C++ function being wrapped.
+        C_subprogram - functions will be converted to subroutines for
+            return_this and destructors.
+            A subroutine can be converted to a function by C_return_type.
+
+        return_this = True for C++ functions which return 'this',
+        are easier to call from Fortran if they are subroutines.
+        There is no way to chain in Fortran:  obj->doA()->doB();
+
+#        Lookup up typedef for result and arguments
+        """
+
+        options = node.options
+        fmt_func = node.fmtdict
+
+        ast = node.ast
+        CXX_result_type = ast.typename
+        C_result_type = CXX_result_type
+        F_result_type = CXX_result_type
+        subprogram = ast.get_subprogram()
+        node.CXX_subprogram = subprogram
+        is_dtor = ast.attrs.get('_destructor', False)
+
+        result_typedef = typemap.Typedef.lookup(CXX_result_type)
+        if not result_typedef:
+            raise RuntimeError("Unknown type {} in {}",
+                               CXX_result_type, fmt_func.function_name)
+
+        if node.return_this or is_dtor:
+            CXX_result_type = 'void'
+            C_result_type = 'void'
+            F_result_type = 'void'
+            node.CXX_subprogram = 'subroutine'
+            subprogram = 'subroutine'
+        elif fmt_func.C_custom_return_type:
+            C_result_type = fmt_func.C_custom_return_type
+            F_result_type = fmt_func.C_custom_return_type
+            subprogram = 'function'
+
+        node.C_subprogram = subprogram
+        node.F_subprogram = subprogram
+
+        node.CXX_return_type = CXX_result_type
+        node.C_return_type = C_result_type
+        node.F_return_type = F_result_type
+
+
 def generate_functions(library, config):
     VerifyAttrs(library, config).verify_attrs()
     GenFunctions(library, config).gen_library()
     Namify(library, config).name_library()
+    Preprocess(library, config).process_library()
 
 ######################################################################
 

@@ -878,7 +878,11 @@ class Declaration(Node):
         return True
 
     def get_subprogram(self):
-        """Return Fortran subprogram - subroutine or function"""
+        """Return Fortran subprogram - subroutine or function.
+        Return None for variable declarations.
+        """
+        if self.params is None:
+            return None
         if self.typename != 'void':
             return 'function'
         if self.is_pointer():

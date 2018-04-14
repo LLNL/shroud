@@ -686,6 +686,11 @@ return 1;""", fmt)
 
         result_typedef = typemap.Typedef.lookup(result_type)
 
+        if result_type != node.CXX_return_type:
+            raise RuntimeError("AAAA - wrapp {}  {}  {}".format(ast.name, result_type, node.C_return_type))
+        if CXX_subprogram != node.CXX_subprogram:
+            raise RuntimeError("AAAA2 - wrapp {}  {}  {}".format(ast.name, CXX_subprogram, node.CXX_subprogram))
+
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.
 # This has been replaced by gen_arg methods, but not sure about const.

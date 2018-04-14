@@ -1912,7 +1912,6 @@
                     "underscore_name": "return_int_ptr"
                 }, 
                 "options": {
-                    "return_scalar_pointer": "pointer", 
                     "wrap_lua": false
                 }
             }, 
@@ -1984,7 +1983,6 @@
                     "underscore_name": "return_int_ptr_scalar"
                 }, 
                 "options": {
-                    "return_scalar_pointer": "scalar", 
                     "wrap_lua": false
                 }
             }, 

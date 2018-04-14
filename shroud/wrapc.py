@@ -435,7 +435,19 @@ class Wrapc(util.WrapperMixin):
         # There is no way to chain in Fortran:  obj->doA()->doB();
         if node.return_this or is_dtor:
             CXX_subprogram = 'subroutine'
+            subprogram = 'subroutine'
+            result_type = 'void'
+            
+        if fmt_func.C_custom_return_type:
+            subprogram = 'function'
 
+        if result_type != node.CXX_return_type:
+            raise RuntimeError("AAAA - wrapc {}  {}  {}".format(ast.name, result_type, node.CXX_return_type))
+        if subprogram != node.C_subprogram:
+            raise RuntimeError("AAAA2 - wrapc {}  {}  {}".format(ast.name, subprogram, node.C_subprogram))
+        if CXX_subprogram != CXX_node.CXX_subprogram:
+            raise RuntimeError("AAAA3 - wrapc {}  {}  {}  {}".
+                               format(ast.name, CXX_subprogram, CXX_node.CXX_subprogram, result_type))
         if result_typedef.c_header:
             # include any dependent header in generated header
             self.header_typedef_nodes[result_typedef.name] = result_typedef
@@ -736,7 +748,7 @@ class Wrapc(util.WrapperMixin):
         elif is_dtor:
             fmt_func.C_return_type = 'void'
         elif fmt_func.C_custom_return_type:
-            pass
+            pass # fmt_func.C_return_type = fmt_func.C_return_type
         else:
             fmt_func.C_return_type = ast.gen_arg_as_c(
                 name=None, params=None, continuation=True)
