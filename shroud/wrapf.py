@@ -648,7 +648,7 @@ class Wrapf(util.WrapperMixin):
         subprogram = node.C_subprogram
         result_typedef = node.C_result_typedef
         generated_suffix = node.generated_suffix
-        is_pointer = node.return_as_pointer
+        return_as_pointer = node.return_as_pointer
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
         is_pure = ast.attrs.get('pure', False)
@@ -772,7 +772,7 @@ class Wrapf(util.WrapperMixin):
             else:
                 # XXX - make sure ptr is set to avoid VALUE
                 rvast = declast.create_this_arg(fmt.F_result, result_type, False)
-                if is_pointer:
+                if return_as_pointer:
                     arg_c_decl.append('type(C_PTR) %s' % fmt.F_result)
                     self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
                 else:
@@ -906,8 +906,8 @@ class Wrapf(util.WrapperMixin):
         if is_pure:
             result_generated_suffix = '_pure'
 
-        is_pointer = node.return_as_pointer
-        if is_pointer:
+        return_as_pointer = node.return_as_pointer
+        if return_as_pointer:
             need_wrapper= True
 
         # this catches stuff like a bool to logical conversion which
@@ -1148,8 +1148,8 @@ class Wrapf(util.WrapperMixin):
                 self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
             else:
                 arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result,
-                                                         is_pointer=is_pointer))
-                if is_pointer:
+                                                         is_pointer=return_as_pointer))
+                if return_as_pointer:
                     arg_f_decl.append('type(C_PTR) :: ' + fmt_func.F_pointer)
                     self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             self.update_f_module(modules, result_typedef.f_module)
@@ -1195,7 +1195,7 @@ class Wrapf(util.WrapperMixin):
                 intent_blk = f_statements.get('result' + result_generated_suffix,{})
                 if 'call' in intent_blk:
                     cmd_list = intent_blk['call']
-                elif is_pointer:
+                elif return_as_pointer:
                     cmd_list = [ '{F_pointer} = {F_C_call}({F_arg_c_call})']
                 else:
                     cmd_list = [ '{F_result} = {F_C_call}({F_arg_c_call})']
@@ -1217,10 +1217,12 @@ class Wrapf(util.WrapperMixin):
 #                # adjust return value or cleanup
 #                append_format(F_code, result_typedef.f_post_call, fmt_func)
             if is_dtor:
+                # Put C pointer into shadow class
                 F_code.append(wformat(
                     '{F_this}%{F_derived_member} = C_NULL_PTR', fmt_func))
                 self.set_f_module(modules, 'iso_c_binding', 'C_NULL_PTR')
-            elif is_pointer:
+            elif return_as_pointer:
+                # Put C pointer into Fortran pointer
                 dim = ast.attrs.get('dimension', None)
                 if dim:
                     fmt_func.pointer_shape = dim
