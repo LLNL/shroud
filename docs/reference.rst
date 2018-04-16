@@ -1277,6 +1277,11 @@ py_statement
            This is the case when C and C++ are not directly compatible.
            Usually a C++ constructor or cast is involved.
 
+PYN_descr
+    Name of ``PyArray_Descr`` variable which describe type.
+    Used with structs.
+    Defaults to *None*.
+
 PYN_typenum
     NumPy type number.
     ex. ``NPY_INT``

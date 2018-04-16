@@ -19,11 +19,8 @@
                     "LUA_userdata_var": "SH_this", 
                     "PY_PyObject": "PY_struct1", 
                     "PY_PyTypeObject": "PY_struct1_Type", 
-                    "PY_capsule_name": "PY_struct1_capsule_name", 
                     "PY_from_object_func": "PP_struct1_from_Object", 
-                    "PY_this_call": "self->obj->", 
                     "PY_to_object_func": "PP_struct1_to_Object", 
-                    "PY_type_filename": "pystruct1type.cpp", 
                     "class_lower": "struct1", 
                     "class_prefix": "struct1_", 
                     "class_scope": "struct1::", 
@@ -35,9 +32,20 @@
                 "typedef_name": "tutorial::struct1", 
                 "variables": [
                     {
+                        "ast": {
+                            "attrs": {
+                                "_typename": "int"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "i", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
                         "format": {
-                            "PY_getter": "PY_struct1_i_getter", 
-                            "PY_setter": "PY_struct1_i_setter", 
                             "variable_lower": "i", 
                             "variable_name": "i", 
                             "variable_upper": "I"
@@ -46,9 +54,20 @@
                         "options": {}
                     }, 
                     {
+                        "ast": {
+                            "attrs": {
+                                "_typename": "double"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "d", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "double"
+                            ]
+                        }, 
                         "format": {
-                            "PY_getter": "PY_struct1_d_getter", 
-                            "PY_setter": "PY_struct1_d_setter", 
                             "variable_lower": "d", 
                             "variable_name": "d", 
                             "variable_upper": "D"
@@ -822,6 +841,19 @@
                 "typedef_name": "tutorial::Class1", 
                 "variables": [
                     {
+                        "ast": {
+                            "attrs": {
+                                "_typename": "int"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "m_flag", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
                         "format": {
                             "PY_getter": "PY_Class1_m_flag_getter", 
                             "PY_setter": "PY_Class1_m_flag_setter", 
@@ -7913,6 +7945,20 @@
                         "fmtf": {
                             "c_var": "d", 
                             "f_var": "d"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "double d", 
+                            "c_ptr": "", 
+                            "c_type": "double", 
+                            "c_var": "d", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "double d", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "d", 
+                            "numpy_type": "NPY_DOUBLE", 
+                            "py_var": "SHPy_d"
                         }
                     }, 
                     "i": {
@@ -7927,6 +7973,20 @@
                         "fmtf": {
                             "c_var": "i", 
                             "f_var": "i"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int i", 
+                            "c_ptr": "", 
+                            "c_type": "int", 
+                            "c_var": "i", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "int i", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "i", 
+                            "numpy_type": "NPY_INT", 
+                            "py_var": "SHPy_i"
                         }
                     }
                 }, 
@@ -7938,6 +7998,20 @@
                         "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHCXX_rv"
+                    }, 
+                    "fmtpy": {
+                        "PYN_descr": "dtype_mmm", 
+                        "PyObject": "PY_struct1", 
+                        "PyTypeObject": "PY_struct1_Type", 
+                        "c_ptr": "*", 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_addr": "", 
+                        "cxx_deref": "->", 
+                        "cxx_var": "SHCXX_rv", 
+                        "npy_dims": "NULL", 
+                        "npy_ndims": "0", 
+                        "numpy_type": null, 
+                        "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 45, 
@@ -8012,14 +8086,14 @@
                     "F_name_impl": "return_struct_ptr", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
+                    "PY_name_impl": "PY_returnStructPtr", 
                     "c_const": "", 
                     "cxx_rv_decl": "tutorial::\tstruct1 * SHCXX_rv", 
                     "function_name": "returnStructPtr", 
                     "underscore_name": "return_struct_ptr"
                 }, 
                 "options": {
-                    "wrap_lua": false, 
-                    "wrap_python": false
+                    "wrap_lua": false
                 }
             }, 
             {
@@ -8670,6 +8744,22 @@
         }, 
         "variables": [
             {
+                "ast": {
+                    "attrs": {
+                        "_typename": "int"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "global_flag", 
+                        "pointer": []
+                    }, 
+                    "specifier": [
+                        "int"
+                    ], 
+                    "storage": [
+                        "extern"
+                    ]
+                }, 
                 "format": {
                     "variable_lower": "global_flag", 
                     "variable_name": "global_flag", 
@@ -8679,6 +8769,22 @@
                 "options": {}
             }, 
             {
+                "ast": {
+                    "attrs": {
+                        "_typename": "int"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "tutorial_flag", 
+                        "pointer": []
+                    }, 
+                    "specifier": [
+                        "int"
+                    ], 
+                    "storage": [
+                        "extern"
+                    ]
+                }, 
                 "format": {
                     "variable_lower": "tutorial_flag", 
                     "variable_name": "tutorial_flag", 
@@ -9525,6 +9631,7 @@
         "tutorial::struct1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
+            "PYN_descr": "dtype_mmm", 
             "PY_PyObject": "PY_struct1", 
             "PY_PyTypeObject": "PY_struct1_Type", 
             "PY_from_object": "PP_struct1_from_Object", 

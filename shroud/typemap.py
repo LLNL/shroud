@@ -102,6 +102,7 @@ class Typedef(object):
         ('PY_from_object', None), # PyArg_Parse - status=converter(object, address);
         ('PY_build_arg', None),   # argument for Py_BuildValue
         ('PYN_typenum', None),    # NumPy typenum enumeration
+        ('PYN_descr', None),      # Name of PyArray_Descr variable to describe type (for structs)
         ('py_statements', {}),
 
         # Lua
@@ -1141,6 +1142,8 @@ def typedef_struct_defaults(typedef):
         ),
     )
 
+#    typedef.PYN_typenum='NPY_VOID'
+    typedef.PYN_descr='dtype_mmm'
     typedef.py_statements=dict(
         intent_in=dict(
             cxx_local_var='pointer',

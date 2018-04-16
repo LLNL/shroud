@@ -154,8 +154,6 @@ C-interface, Fortran function void acceptStructInOutPtr(struct1 * arg +intent(in
 C-interface, Fortran function const std::string & LastFunctionCalled() +len(30)
 C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapftutorial.f
-class struct1
-Close pystruct1type.cpp
 class Class1
 Python method Class1() +name(new)
 Python method Class1(int flag +intent(in)+value) +name(new)
@@ -192,6 +190,7 @@ Python function void getMinMax(int & min +intent(out), int & max +intent(out))
 Python function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
 Python function int useclass(const Class1 * arg1 +intent(in)+value)
 Python function Class1 * getclass3()
+Python function struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
 Python function const std::string & LastFunctionCalled() +len(30)
 Close pyTutorialmodule.hpp
 Close pyTutorialmodule.cpp

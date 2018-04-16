@@ -281,6 +281,7 @@ class ToDict(visitor.Visitor):
     def visit_VariableNode(self, node):
         d = dict(
             name=node.name,
+            ast=self.visit(node.ast),
             format=self.visit(node.fmtdict),
             options=self.visit(node.options),
         )

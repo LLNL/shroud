@@ -107,7 +107,7 @@ class Tutorial(unittest.TestCase):
     def testReturnIntPtr(self):
         "Return pointer to int scalar"
         rv = tutorial.ReturnIntPtr()
-        self.assertTrue(isinstance(rv, np.ndarray))
+        self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(1, rv.size)
         self.assertEqual(1, rv)
@@ -115,13 +115,13 @@ class Tutorial(unittest.TestCase):
     def testReturnIntPtrScalr(self):
         "Return pointer as int scalar"
         rv = tutorial.ReturnIntPtrScalar()
-        self.assertTrue(isinstance(rv, int))
+        self.assertIsInstance(rv, int)
         self.assertEqual(10, rv)
 
     def testReturnIntPtrDim(self):
         "Return pointer to int array"
         rv = tutorial.ReturnIntPtrDim()
-        self.assertTrue(isinstance(rv, np.ndarray))
+        self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(7, rv.size)
         self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7])))
@@ -204,7 +204,7 @@ class Tutorial(unittest.TestCase):
 
     def test_class1_create1(self):
         obj = tutorial.Class1()
-        self.assertTrue(isinstance(obj, tutorial.Class1))
+        self.assertIsInstance(obj, tutorial.Class1)
         self.assertEqual(0, obj.m_flag)
         obj.m_flag = 4
         self.assertEqual(4, obj.m_flag)
@@ -216,7 +216,7 @@ class Tutorial(unittest.TestCase):
 
     def test_class1_create2(self):
         obj = tutorial.Class1(1)
-        self.assertTrue(isinstance(obj, tutorial.Class1))
+        self.assertIsInstance(obj, tutorial.Class1)
         self.assertEqual(1, obj.m_flag)
         del obj
 
@@ -240,12 +240,22 @@ class Tutorial(unittest.TestCase):
         # getclass2 is const, not wrapped yet
 
         obj0a = tutorial.getclass3()
-        self.assertTrue(isinstance(obj0a, tutorial.Class1))
+        self.assertIsInstance(obj0a, tutorial.Class1)
 
     def test_class1_useclass_error(self):
         """Pass illegal argument to useclass"""
         obj0 = tutorial.Class1()
         self.assertRaises(TypeError, tutorial.useclass(obj0))
+
+    def test_returnStructPtr(self):
+        rv = tutorial.returnStructPtr(1,1.1)
+        self.assertIsInstance(rv, np.ndarray)
+        dtype = rv.dtype
+        self.assertEqual(dtype.names, ('i', 'd'))
+        self.assertEqual(dtype.char, 'V')
+        self.assertEqual(0, rv.ndim)
+        self.assertEqual(1, rv['i'])
+        self.assertEqual(1.1, rv['d'])
 
     def test_singleton(self):
         # it'd be cool if obj0 is obj1

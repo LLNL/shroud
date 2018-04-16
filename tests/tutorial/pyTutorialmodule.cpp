@@ -63,6 +63,7 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+PyArray_Descr *dtype_mmm;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -834,6 +835,40 @@ PY_getclass3(
 // splicer end function.getclass3
 }
 
+static char PY_returnStructPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnStructPtr(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
+// splicer begin function.return_struct_ptr
+    int i;
+    double d;
+    const char *SHT_kwlist[] = {
+        "i",
+        "d",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr",
+        const_cast<char **>(SHT_kwlist), &i, &d))
+        return NULL;
+
+    tutorial::struct1 * SHCXX_rv = tutorial::returnStructPtr(i, d);
+
+    // post_call
+    Py_INCREF(dtype_mmm);
+    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, dtype_mmm,
+        0, NULL, NULL, SHCXX_rv, 0, NULL);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_struct_ptr
+}
+
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;
@@ -1006,6 +1041,8 @@ static PyMethodDef PY_methods[] = {
     PY_useclass__doc__},
 {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,
     PY_getclass3__doc__},
+{"returnStructPtr", (PyCFunction)PY_returnStructPtr,
+    METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr__doc__},
 {"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,
     PY_LastFunctionCalled__doc__},
 {"Function10", (PyCFunction)PY_Function10, METH_VARARGS|METH_KEYWORDS,
@@ -1016,6 +1053,35 @@ static PyMethodDef PY_methods[] = {
     PY_overload1__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
+
+// Create PyArray_Descr
+PyArray_Descr *mmm() {
+    int ierr;
+    PyObject *obj;
+    PyObject * lnames = PyList_New(2);
+    PyObject * ldescr = PyList_New(2);
+    // i
+    obj = PyString_FromString("i");
+    PyList_SET_ITEM(lnames, 0, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
+    PyList_SET_ITEM(ldescr, 0, obj);
+    // d
+    obj = PyString_FromString("d");
+    PyList_SET_ITEM(lnames, 1, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
+    PyList_SET_ITEM(ldescr, 1, obj);
+
+    PyObject * descr = PyDict_New();
+    if (descr == NULL) return NULL;
+    ierr = PyDict_SetItemString(descr, "names", lnames);
+    if (ierr == -1) return NULL;
+    ierr = PyDict_SetItemString(descr, "formats", ldescr);
+    if (ierr == -1) return NULL;
+    if (ierr == -1) return NULL;
+    PyArray_Descr *dtype;
+    ierr = PyArray_DescrAlignConverter(descr, &dtype);
+    return dtype;
+}
 
 /*
  * inittutorial - Initialization function for the module
@@ -1094,15 +1160,6 @@ inittutorial(void)
 
     import_array();
 
-    // struct1
-    PY_struct1_Type.tp_new   = PyType_GenericNew;
-    PY_struct1_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_struct1_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_struct1_Type);
-    PyModule_AddObject(m, "struct1", (PyObject *)&PY_struct1_Type);
-
-
     // Class1
     PY_Class1_Type.tp_new   = PyType_GenericNew;
     PY_Class1_Type.tp_alloc = PyType_GenericAlloc;
@@ -1141,6 +1198,10 @@ inittutorial(void)
     PyModule_AddIntConstant(m, "RED", tutorial::RED);
     PyModule_AddIntConstant(m, "BLUE", tutorial::BLUE);
     PyModule_AddIntConstant(m, "WHITE", tutorial::WHITE);
+
+    // Define PyArray_Descr for structs
+    dtype_mmm = mmm();
+    PyModule_AddObject(m, "mmm", (PyObject *) dtype_mmm);
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

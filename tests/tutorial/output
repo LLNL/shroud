@@ -7,7 +7,6 @@ Wrote wrapSingleton.cpp
 Wrote wrapTutorial.h
 Wrote wrapTutorial.cpp
 Wrote wrapftutorial.f
-Wrote pystruct1type.cpp
 Wrote pyClass1type.cpp
 Wrote pySingletontype.cpp
 Wrote pyTutorialmodule.hpp

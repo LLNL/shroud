@@ -92,6 +92,10 @@ class Wrapp(util.WrapperMixin):
         self.linelen = newlibrary.options.C_line_length
         self.need_numpy = False
         self.enum_impl = []
+        self.arraydescr = []   # Create PyArray_Descr for struct
+        self.decl_arraydescr = []
+        self.define_arraydescr = []
+        self.call_arraydescr = []
 
     def XXX_begin_output_file(self):
         """Start a new class for output"""
@@ -176,8 +180,11 @@ class Wrapp(util.WrapperMixin):
             name = node.name
             self.reset_file()
             self._push_splicer(name)
-            self.wrap_class(node)
-            self.write_extension_type(newlibrary, node)
+            if node.as_struct:
+                self.create_arraydescr(node)
+            else:
+                self.wrap_class(node)
+                self.write_extension_type(newlibrary, node)
             self._pop_splicer(name)
         self._pop_splicer('class')
 
@@ -357,6 +364,74 @@ return 1;""", fmt)
         self.py_helper_functions.append('}')
 
         self._pop_splicer('helper')
+
+    def create_arraydescr(self, node):
+        """Create a NumPy PyArray_Descr for a struct.
+        Install into module.
+
+        struct {
+          int ifield;
+          double dfield;
+        };
+
+        numpy.dtype(
+          {'names': ['ifield', 'dfield'],
+           'formats': [np.int32, np.float64]},
+           'offsets':[0,8],
+           'itemsize':12},
+          align=True)
+        """
+        fmt = dict(
+        )
+
+        self.need_numpy = True
+        self.decl_arraydescr.append('extern PyArray_Descr *dtype_mmm;')
+        self.define_arraydescr.append('PyArray_Descr *dtype_mmm;')
+        self.call_arraydescr.append(
+            'dtype_mmm = mmm();\n'
+            'PyModule_AddObject(m, "mmm", (PyObject *) dtype_mmm);'
+        )
+        output = self.arraydescr
+        output.append('')
+        output.append('// Create PyArray_Descr')
+        output.append('PyArray_Descr *mmm() {')
+        output.append(1)
+        output.append('int ierr;')
+        output.append('PyObject *obj;')
+
+        nvars = len(node.variables)
+        output.append('PyObject * lnames = PyList_New({});'.format(nvars))
+        output.append('PyObject * ldescr = PyList_New({});'.format(nvars))
+
+        for i, var in enumerate(node.variables):
+            ast = var.ast
+            output.append('// ' + var.ast.name)
+            output.append('obj = PyString_FromString("{}");'.format(ast.name))
+            output.append('PyList_SET_ITEM(lnames, {}, obj);'.format(i))
+
+            typedef = typemap.Typedef.lookup(ast.typename)
+            output.append('obj = (PyObject *) PyArray_DescrFromType({});'.format(typedef.PYN_typenum))
+            output.append('PyList_SET_ITEM(ldescr, {}, obj);'.format(i))
+
+        output.append('')
+        output.append(
+            'PyObject * descr = PyDict_New();\n'
+            'if (descr == NULL) return NULL;\n'
+            'ierr = PyDict_SetItemString(descr, "names", lnames);\n'
+            'if (ierr == -1) return NULL;\n'
+            'ierr = PyDict_SetItemString(descr, "formats", ldescr);\n'
+            'if (ierr == -1) return NULL;\n'
+#            'Py_INCREF(Py_True);\n',
+#            'ierr = PyDict_SetItemString(descr, "aligned", Py_True);\n'
+            'if (ierr == -1) return NULL;\n'
+            'PyArray_Descr *dtype;\n'
+            'ierr = PyArray_DescrAlignConverter(descr, &dtype);\n'
+            'return dtype;'
+        )
+#    int PyArray_RegisterDataType(descr)
+
+        output.append(-1)
+        output.append('}')
 
     def wrap_class_variable(self, node):
         """Wrap a VariableNode in a class with descriptors.
@@ -549,11 +624,21 @@ return 1;""", fmt)
             else:
                 fmt.npy_ndims = '0'
                 fmt.npy_dims = 'NULL'
-            append_format(
-                post_call,
-                '{PyObject} * {py_var} = '
-                'PyArray_SimpleNewFromData({npy_ndims}, {npy_dims}, {numpy_type}, {cxx_var});',
-                fmt)
+            if typedef.PYN_descr:
+                fmt.PYN_descr = typedef.PYN_descr
+                append_format(
+                    post_call,
+                    'Py_INCREF({PYN_descr});\n'
+                    'PyObject * {py_var} = '
+                    'PyArray_NewFromDescr(&PyArray_Type, {PYN_descr},\t'
+                    ' {npy_ndims}, {npy_dims}, \tNULL, {cxx_var}, 0, NULL);',
+                    fmt)
+            else:
+                append_format(
+                    post_call,
+                    'PyObject * {py_var} = '
+                    'PyArray_SimpleNewFromData({npy_ndims}, {npy_dims}, {numpy_type}, {cxx_var});',
+                    fmt)
             format = 'O'
             vargs = fmt.py_var
             ctor = None
@@ -1286,6 +1371,9 @@ return 1;""", fmt)
         output = []
 
         output.append(wformat('#include "{PY_header_filename}"', fmt))
+#        if self.need_numpy:
+#            output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
+#            output.append('#include "numpy/arrayobject.h"')
         self._push_splicer('impl')
 
         # Use headers from class if they exist or else library
@@ -1446,6 +1534,7 @@ return 1;""", fmt)
         self._push_splicer('header')
         self._create_splicer('include', output)
 
+#        output.extend(self.define_arraydescr)
         # forward declare classes for helpers
         blank = True
         for cls in node.classes:
@@ -1507,6 +1596,7 @@ extern PyObject *{PY_prefix}error_obj;
         self._create_splicer('C_definition', output)
 
         output.append(wformat('PyObject *{PY_prefix}error_obj;', fmt))
+        output.extend(self.define_arraydescr)
 
         self._create_splicer('additional_functions', output)
         output.extend(self.PyMethodBody)
@@ -1520,6 +1610,8 @@ extern PyObject *{PY_prefix}error_obj;
         output.append(
             '};')
 
+        output.extend(self.arraydescr)
+
         output.append(wformat(module_begin, fmt))
         self._create_splicer('C_init_locals', output)
         output.append(wformat(module_middle, fmt))
@@ -1527,6 +1619,10 @@ extern PyObject *{PY_prefix}error_obj;
             output.append('import_array();')
         output.extend(self.py_type_object_creation)
         output.extend(self.enum_impl)
+        if self.call_arraydescr:
+            output.append('')
+            output.append('// Define PyArray_Descr for structs')
+            output.extend(self.call_arraydescr)
         output.append(wformat(module_middle2, fmt))
         self._create_splicer('C_init_body', output)
         output.append(wformat(module_end, fmt))

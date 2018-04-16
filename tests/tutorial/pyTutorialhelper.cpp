@@ -41,39 +41,9 @@
 //
 // #######################################################################
 #include "pyTutorialmodule.hpp"
-const char *PY_struct1_capsule_name = "struct1";
 const char *PY_Class1_capsule_name = "Class1";
 const char *PY_Singleton_capsule_name = "Singleton";
 
-
-PyObject *PP_struct1_to_Object(tutorial::struct1 *addr)
-{
-    // splicer begin class.struct1.helper.to_object
-    PyObject *voidobj;
-    PyObject *args;
-    PyObject *rv;
-
-    voidobj = PyCapsule_New(addr, PY_struct1_capsule_name, NULL);
-    args = PyTuple_New(1);
-    PyTuple_SET_ITEM(args, 0, voidobj);
-    rv = PyObject_Call((PyObject *) &PY_struct1_Type, args, NULL);
-    Py_DECREF(args);
-    return rv;
-    // splicer end class.struct1.helper.to_object
-}
-
-int PP_struct1_from_Object(PyObject *obj, void **addr)
-{
-    // splicer begin class.struct1.helper.from_object
-    if (obj->ob_type != &PY_struct1_Type) {
-        // raise exception
-        return 0;
-    }
-    PY_struct1 * self = (PY_struct1 *) obj;
-    *addr = self->obj;
-    return 1;
-    // splicer end class.struct1.helper.from_object
-}
 
 PyObject *PP_Class1_to_Object(tutorial::Class1 *addr)
 {
