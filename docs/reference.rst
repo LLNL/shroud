@@ -469,6 +469,22 @@ PY_member_setter_template
 PY_name_impl_template
     ``{PY_prefix}{class_prefix}{function_name}{function_suffix}``
 
+PY_struct_array_descr_create_template
+    Name of C/C++ function to create a ``PyArray_Descr`` pointer for a structure.
+    ``{PY_prefix}{cxx_class}_create_array_descr``
+
+PY_struct_array_descr_variable_template
+    Name of C/C++ variable which is a pointer to a ``PyArray_Descr``
+    variable for a structure.
+    ``{PY_prefix}{cxx_class}_array_descr``
+
+PY_struct_array_descr_name_template
+    Name of Python variable which is a ``numpy.dtype`` for a struct.
+    Can be used to create instances of a C/C++ struct from Python.
+    ``np.array((1,3.14), dtype=tutorial.struct1_dtype)``
+    ``{cxx_class}_dtype``
+
+
 PY_type_filename_template
     ``py{cxx_class}type.{PY_impl_filename_suffix}``
 

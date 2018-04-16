@@ -381,20 +381,25 @@ return 1;""", fmt)
            'itemsize':12},
           align=True)
         """
-        fmt = dict(
-        )
+        fmt = node.fmtdict
 
         self.need_numpy = True
-        self.decl_arraydescr.append('extern PyArray_Descr *dtype_mmm;')
-        self.define_arraydescr.append('PyArray_Descr *dtype_mmm;')
-        self.call_arraydescr.append(
-            'dtype_mmm = mmm();\n'
-            'PyModule_AddObject(m, "mmm", (PyObject *) dtype_mmm);'
-        )
+
+        self.decl_arraydescr.append(
+            wformat('extern PyArray_Descr *{PY_struct_array_descr_variable};', fmt))
+        self.define_arraydescr.append(
+            wformat('PyArray_Descr *{PY_struct_array_descr_variable};', fmt))
+        append_format(
+            self.call_arraydescr,
+            '{PY_struct_array_descr_variable} = {PY_struct_array_descr_create}();\n'
+            'PyModule_AddObject(m, "{PY_struct_array_descr_name}",'
+            ' \t(PyObject *) {PY_struct_array_descr_variable});',
+            fmt)
         output = self.arraydescr
         output.append('')
-        output.append('// Create PyArray_Descr')
-        output.append('PyArray_Descr *mmm() {')
+        append_format(output, '// Create PyArray_Descr for {cxx_class}', fmt)
+        append_format(output, 'PyArray_Descr *{PY_struct_array_descr_create}()', fmt)
+        output.append('{')
         output.append(1)
         output.append('int ierr;')
         output.append('PyObject *obj;')
@@ -630,7 +635,7 @@ return 1;""", fmt)
                     post_call,
                     'Py_INCREF({PYN_descr});\n'
                     'PyObject * {py_var} = '
-                    'PyArray_NewFromDescr(&PyArray_Type, {PYN_descr},\t'
+                    'PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t'
                     ' {npy_ndims}, {npy_dims}, \tNULL, {cxx_var}, 0, NULL);',
                     fmt)
             else:

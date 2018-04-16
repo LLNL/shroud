@@ -1096,7 +1096,8 @@ def create_struct_typedef(cls):
             c_header=fmt_class.C_header_filename,
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
-            )
+            PYN_descr=fmt_class.PY_struct_array_descr_variable,
+        )
         typedef_struct_defaults(typedef)
         Typedef.register(type_name, typedef)
 
@@ -1143,7 +1144,6 @@ def typedef_struct_defaults(typedef):
     )
 
 #    typedef.PYN_typenum='NPY_VOID'
-    typedef.PYN_descr='dtype_mmm'
     typedef.py_statements=dict(
         intent_in=dict(
             cxx_local_var='pointer',

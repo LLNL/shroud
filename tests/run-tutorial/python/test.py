@@ -256,6 +256,7 @@ class Tutorial(unittest.TestCase):
         self.assertEqual(0, rv.ndim)
         self.assertEqual(1, rv['ifield'])
         self.assertEqual(1.1, rv['dfield'])
+        self.assertIs(dtype, tutorial.struct1_dtype)
 
     def test_singleton(self):
         # it'd be cool if obj0 is obj1

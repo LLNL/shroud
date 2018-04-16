@@ -402,6 +402,12 @@ class LibraryNode(AstNode, NamespaceMixin):
                 '{PY_prefix}{cxx_class}_{variable_name}_getter'),
             PY_member_setter_template=(
                 '{PY_prefix}{cxx_class}_{variable_name}_setter'),
+            PY_struct_array_descr_create_template=(
+                '{PY_prefix}{cxx_class}_create_array_descr'),
+            PY_struct_array_descr_variable_template=(
+                '{PY_prefix}{cxx_class}_array_descr'),
+            PY_struct_array_descr_name_template=(
+                '{cxx_class}_dtype'),
             )
 
         return def_options
@@ -728,6 +734,12 @@ class ClassNode(AstNode, NamespaceMixin):
         if self.options.F_module_per_class:
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
+
+        # As PyArray_Descr
+        if self.as_struct:
+            self.eval_template('PY_struct_array_descr_create')
+            self.eval_template('PY_struct_array_descr_variable')
+            self.eval_template('PY_struct_array_descr_name')
 
     def add_namespace(self, **kwargs):
         """Replace method inherited from NamespaceMixin."""

@@ -63,7 +63,7 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
-PyArray_Descr *dtype_mmm;
+PyArray_Descr *PY_struct1_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -861,9 +861,9 @@ PY_returnStructPtr(
     tutorial::struct1 * SHCXX_rv = tutorial::returnStructPtr(i, d);
 
     // post_call
-    Py_INCREF(dtype_mmm);
-    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, dtype_mmm,
-        0, NULL, NULL, SHCXX_rv, 0, NULL);
+    Py_INCREF(PY_struct1_array_descr);
+    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
+        PY_struct1_array_descr, 0, NULL, NULL, SHCXX_rv, 0, NULL);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_struct_ptr
@@ -1054,8 +1054,9 @@ static PyMethodDef PY_methods[] = {
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
-// Create PyArray_Descr
-PyArray_Descr *mmm() {
+// Create PyArray_Descr for struct1
+PyArray_Descr *PY_struct1_create_array_descr()
+{
     int ierr;
     PyObject *obj;
     PyObject * lnames = PyList_New(2);
@@ -1200,8 +1201,9 @@ inittutorial(void)
     PyModule_AddIntConstant(m, "WHITE", tutorial::WHITE);
 
     // Define PyArray_Descr for structs
-    dtype_mmm = mmm();
-    PyModule_AddObject(m, "mmm", (PyObject *) dtype_mmm);
+    PY_struct1_array_descr = PY_struct1_create_array_descr();
+    PyModule_AddObject(m, "struct1_dtype", 
+        (PyObject *) PY_struct1_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
