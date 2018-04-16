@@ -58,8 +58,8 @@ extern "C" {
 
 
 struct s_TUT_struct1 {
-    int i;
-    double d;
+    int ifield;
+    double dfield;
 };
 typedef struct s_TUT_struct1 TUT_struct1;
 

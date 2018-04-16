@@ -38,7 +38,7 @@
                             }, 
                             "const": false, 
                             "declarator": {
-                                "name": "i", 
+                                "name": "ifield", 
                                 "pointer": []
                             }, 
                             "specifier": [
@@ -46,11 +46,11 @@
                             ]
                         }, 
                         "format": {
-                            "variable_lower": "i", 
-                            "variable_name": "i", 
-                            "variable_upper": "I"
+                            "variable_lower": "ifield", 
+                            "variable_name": "ifield", 
+                            "variable_upper": "IFIELD"
                         }, 
-                        "name": "i", 
+                        "name": "ifield", 
                         "options": {}
                     }, 
                     {
@@ -60,7 +60,7 @@
                             }, 
                             "const": false, 
                             "declarator": {
-                                "name": "d", 
+                                "name": "dfield", 
                                 "pointer": []
                             }, 
                             "specifier": [
@@ -68,11 +68,11 @@
                             ]
                         }, 
                         "format": {
-                            "variable_lower": "d", 
-                            "variable_name": "d", 
-                            "variable_upper": "D"
+                            "variable_lower": "dfield", 
+                            "variable_name": "dfield", 
+                            "variable_upper": "DFIELD"
                         }, 
-                        "name": "d", 
+                        "name": "dfield", 
                         "options": {}
                     }
                 ]

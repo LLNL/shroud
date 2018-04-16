@@ -68,8 +68,8 @@ module tutorial_mod
 
 
     type, bind(C) :: struct1
-        integer(C_INT) :: i
-        real(C_DOUBLE) :: d
+        integer(C_INT) :: ifield
+        real(C_DOUBLE) :: dfield
     end type struct1
 
     ! splicer begin class.Class1.module_top

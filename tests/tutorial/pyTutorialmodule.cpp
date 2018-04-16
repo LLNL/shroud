@@ -1060,13 +1060,13 @@ PyArray_Descr *mmm() {
     PyObject *obj;
     PyObject * lnames = PyList_New(2);
     PyObject * ldescr = PyList_New(2);
-    // i
-    obj = PyString_FromString("i");
+    // ifield
+    obj = PyString_FromString("ifield");
     PyList_SET_ITEM(lnames, 0, obj);
     obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
     PyList_SET_ITEM(ldescr, 0, obj);
-    // d
-    obj = PyString_FromString("d");
+    // dfield
+    obj = PyString_FromString("dfield");
     PyList_SET_ITEM(lnames, 1, obj);
     obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
     PyList_SET_ITEM(ldescr, 1, obj);

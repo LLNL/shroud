@@ -279,32 +279,32 @@ contains
     call set_case_name("test_struct")
 
     str1 = return_struct(1_C_INT, 2.5_C_DOUBLE)
-    call assert_equals(1_C_INT,      str1%i, "return_struct i field")
-    call assert_equals(2.5_C_DOUBLE, str1%d, "return_struct d field")
+    call assert_equals(1_C_INT,      str1%ifield, "return_struct i field")
+    call assert_equals(2.5_C_DOUBLE, str1%dfield, "return_struct d field")
 
     str2 => return_struct_ptr(8_C_INT, 8.5_C_DOUBLE)
 
-    str1%i = 2_C_INT
-    str1%d = 2.0_C_DOUBLE
+    str1%ifield = 2_C_INT
+    str1%dfield = 2.0_C_DOUBLE
     rvd = accept_struct_in(str1)
     call assert_equals(4.0_C_DOUBLE, rvd, "accept_struct_in")
 
-    str1%i = 3_C_INT
-    str1%d = 3.0_C_DOUBLE
+    str1%ifield = 3_C_INT
+    str1%dfield = 3.0_C_DOUBLE
     rvd = accept_struct_in_ptr(str1)
     call assert_equals(6.0_C_DOUBLE, rvd, "accept_struct_in_ptr")
 
-    str1%i = 0
-    str1%d = 0.0
+    str1%ifield = 0
+    str1%dfield = 0.0
     call accept_struct_out_ptr(str1, 4_C_INT, 4.5_C_DOUBLE)
-    call assert_equals(4_C_INT,      str1%i, "accept_struct_out_ptr i field")
-    call assert_equals(4.5_C_DOUBLE, str1%d, "accept_struct_out_ptr d field")
+    call assert_equals(4_C_INT,      str1%ifield, "accept_struct_out_ptr i field")
+    call assert_equals(4.5_C_DOUBLE, str1%dfield, "accept_struct_out_ptr d field")
 
-    str1%i = 4_C_INT
-    str1%d = 4.0_C_DOUBLE
+    str1%ifield = 4_C_INT
+    str1%dfield = 4.0_C_DOUBLE
     call accept_struct_in_out_ptr(str1)
-    call assert_equals(5_C_INT,      str1%i, "accept_struct_in_out_ptr i field")
-    call assert_equals(5.0_C_DOUBLE, str1%d, "accept_struct_in_out_ptr d field")
+    call assert_equals(5_C_INT,      str1%ifield, "accept_struct_in_out_ptr i field")
+    call assert_equals(5.0_C_DOUBLE, str1%dfield, "accept_struct_in_out_ptr d field")
 
   end subroutine test_struct1
 

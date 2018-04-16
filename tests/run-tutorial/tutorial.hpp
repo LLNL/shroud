@@ -67,8 +67,8 @@ enum Color {
 typedef int TypeID;
 
 struct struct1 {
-  int i;
-  double d;
+  int ifield;
+  double dfield;
 };
 
 extern int tutorial_flag;

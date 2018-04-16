@@ -77,8 +77,8 @@ declarations:
 
   - decl: |
       struct struct1 {
-        int i;
-        double d;
+        int ifield;
+        double dfield;
       };
 
   - decl: extern int tutorial_flag;

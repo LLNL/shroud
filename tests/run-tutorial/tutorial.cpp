@@ -405,16 +405,16 @@ struct1 returnStruct(int i, double d)
 
 struct1 *returnStructPtr(int i, double d)
 {
-  global_struct1.i = i;
-  global_struct1.d = d;
+  global_struct1.ifield = i;
+  global_struct1.dfield = d;
   return &global_struct1;
 }
 
 struct1 *returnStructPtrNew(int i, double d)
 {
   struct1 *s = new struct1;
-  s->i = i;
-  s->d = d;
+  s->ifield = i;
+  s->dfield = d;
   return s;
 }
 
@@ -426,26 +426,26 @@ void freeStruct(struct1 *arg1)
 // return sum of fields as a check
 double acceptStructIn(struct1 arg)
 {
-  return arg.i + arg.d;
+  return arg.ifield + arg.dfield;
 }
 
 // return sum of fields as a check
 double acceptStructInPtr(struct1 *arg)
 {
-  return arg->i + arg->d;
+  return arg->ifield + arg->dfield;
 }
 
 void acceptStructOutPtr(struct1 *arg, int i, double d)
 {
-  arg->i = i;
-  arg->d = d;
+  arg->ifield = i;
+  arg->dfield = d;
   return;
 }
 
 void acceptStructInOutPtr(struct1 *arg)
 {
-  arg->i += 1;
-  arg->d += 1.0;
+  arg->ifield += 1;
+  arg->dfield += 1.0;
   return;
 }
 
