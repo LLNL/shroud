@@ -865,7 +865,85 @@ Fortran creates integer parameters for each value::
 Structure
 ^^^^^^^^^
 
-TODO
+A structure in C++ can be mapped directly to a Fortran derived type using the 
+``bind(C)`` attribute provided by Fortran 2003. For example, the C++ code::
+
+    struct struct1 {
+      int ifield;
+      double dfield;
+    };
+
+can be defined to Shroud with the YAML input::
+
+    - decl: |
+        struct struct1 {
+          int ifield;
+          double dfield;
+        };
+
+This will generate a C struct which is compatible with C++::
+
+    struct s_TUT_struct1 {
+        int ifield;
+        double dfield;
+    };
+    typedef struct s_TUT_struct1 TUT_struct1;
+
+A C++ struct is compatible with C; however, its name may not be accessible to
+C since it may be defined within a namespace.  By creating an identical struct in the 
+C wrapper, we're guaranteed visibility for the C API.
+
+.. note:: All fields must be defined in the YAML file in order to ensure that
+          ``sizeof`` operator will return the same value for the C and C++ structs.
+
+This will generate a Fortran derived type which is compatible with C++::
+
+    type, bind(C) :: struct1
+        integer(C_INT) :: ifield
+        real(C_DOUBLE) :: dfield
+    end type struct1
+
+A function which returns a struct value can have its value copied into a
+Fortran variable where the fields can be accessed directly by Fortran.
+A C++ function which initialized a struct can be written as:: 
+
+    - decl: struct1 returnStruct(int i, double d);
+
+The C wrapper creates a union type of the C and C++ types which is
+used to instead of a type cast::
+
+    typedef union {
+      tutorial::struct1 cxx;
+      TUT_struct1 c;
+    } SH_union_0_t;
+    
+    TUT_struct1 TUT_return_struct(int i, double d)
+    {
+        SH_union_0_t SHC_rv = {tutorial::returnStruct(i, d)};
+        return SHC_rv.c;
+    }
+
+This function can be called directly by Fortran using the generated
+interface::
+
+        function return_struct(i, d) &
+                result(SHT_rv) &
+                bind(C, name="TUT_return_struct")
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            import :: struct1
+            implicit none
+            integer(C_INT), value, intent(IN) :: i
+            real(C_DOUBLE), value, intent(IN) :: d
+            type(struct1) :: SHT_rv
+        end function return_struct
+
+To use the function::
+
+    type(struct1) var
+
+    var = return_struct(1, 2.5)
+    print *, var%ifield, var%dfield
+
 
 Classes
 -------

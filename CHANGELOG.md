@@ -6,8 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-- Create a PyArray_Descr for C/C++ structs in Python wrapper.
-  Use NumPy to unpack fields of struct.
+- Add support for C++ structs.
+  Fortran creates a derived type with ``bind(C)``.
+  Python uses NumPy to unpack fields of struct.
+- Wrap member variables in classes.
+  In Python, create a descriptor for each member.
 
 ## v0.9.0 - 2018-04-04
 ### Added

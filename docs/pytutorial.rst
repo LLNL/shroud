@@ -735,34 +735,7 @@ For example::
 
   } /* end namespace tutorial */
 
-This enumeration is within a namespace so it is not available to
-C.  For C and Fortran the type can be describe as an ``int``
-similar to how the ``typedef`` is defined. But in addition we
-describe how to convert between C and C++::
-
-    declarations:
-    - decl: typedef int EnumTypeID
-      fields:
-        c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
-        cxx_to_c : static_cast<int>({cxx_var})
-
-The typename must be fully qualified
-(use ``tutorial::EnumTypeId`` instead of ``EnumTypeId``).
-The C argument is explicitly converted to a C++ type, then the
-return type is explicitly converted to a C type in the generated wrapper::
-
-    int TUT_enumfunc(int arg)
-    {
-        EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));
-        int XSHT_rv = static_cast<int>(SHT_rv);
-        return XSHT_rv;
-    }
-
-Without the explicit conversion you're likely to get an error such as::
-
-    error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
-
-A enum can also be fully defined to Python::
+The enum is defined in the YAML as::
 
     declarations:
     - decl: |
@@ -772,22 +745,71 @@ A enum can also be fully defined to Python::
             WHITE
           };
 
-In this case the type is implicitly defined so there is no need to add 
-it to the *types* list.  Integer parameters are created for each value::
+Integer parameters are created for each value::
 
     >>> tutorial.RED
     0
     >>> type(tutorial.RED)
     <type 'int'>
 
-.. note:: This isn't fully equivelent to C's enumerations since you can
+.. note:: This isn't fully equivalent to C's enumerations since you can
           assign to them as well.
 
 
 Structure
 ^^^^^^^^^
 
-TODO
+Structures in C++ are accessed using Numpy.
+For example, the C++ code::
+
+    struct struct1 {
+      int ifield;
+      double dfield;
+    };
+
+can be defined to Shroud with the YAML input::
+
+    - decl: |
+        struct struct1 {
+          int ifield;
+          double dfield;
+        };
+
+This will add a varible to the module which can be used to create
+instances of the struct::
+
+    >>> import tutorial
+    >>> type(tutorial.struct1_dtype)
+    <type 'numpy.dtype'>
+    >>> tutorial.struct1_dtype
+    dtype({'names':['ifield','dfield'], 'formats':['<i4','<f8'], 'offsets':[0,8], 'itemsize':16}, align=True)
+
+    >>> import numpy as np
+    >>> val = np.array((1, 2.5), dtype=tutorial.struct1_dtype)
+    >>> val
+    array((1,  2.5), 
+          dtype={'names':['ifield','dfield'], 'formats':['<i4','<f8'], 'offsets':[0,8], 'itemsize':16, 'aligned':True})
+
+.. note:: All fields must be defined in the YAML file in order to ensure that
+          C++'s ``sizeof`` and NumPy's ``itemsize`` are the same.
+
+
+A function which returns a struct value will create a NumPy scalar using the dtype.
+A C++ function which initialized a struct can be written as:: 
+
+    - decl: struct1 returnStruct(int i, double d);
+
+To use the function::
+
+    >>> val = tutorial.returnStruct(1, 2.5)
+    >>> val
+    array((1,  2.5), 
+          dtype={'names':['ifield','dfield'], 'formats':['<i4','<f8'], 'offsets':[0,8], 'itemsize':16, 'aligned':True})
+    >>> val['ifield']
+    array(1, dtype=int32)
+    >>> val['dfield']
+    array(2.5)
+
 
 Classes
 -------
