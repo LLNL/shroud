@@ -835,6 +835,41 @@ PY_getclass3(
 // splicer end function.getclass3
 }
 
+static char PY_returnStruct__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnStruct(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
+// splicer begin function.return_struct
+    int i;
+    double d;
+    const char *SHT_kwlist[] = {
+        "i",
+        "d",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStruct",
+        const_cast<char **>(SHT_kwlist), &i, &d))
+        return NULL;
+
+    tutorial::struct1 * SHC_rv = new tutorial::struct1;
+    *SHC_rv = tutorial::returnStruct(i, d);
+
+    // post_call
+    Py_INCREF(PY_struct1_array_descr);
+    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
+        PY_struct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_struct
+}
+
 static char PY_returnStructPtr__doc__[] =
 "documentation"
 ;
@@ -1041,6 +1076,8 @@ static PyMethodDef PY_methods[] = {
     PY_useclass__doc__},
 {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,
     PY_getclass3__doc__},
+{"returnStruct", (PyCFunction)PY_returnStruct,
+    METH_VARARGS|METH_KEYWORDS, PY_returnStruct__doc__},
 {"returnStructPtr", (PyCFunction)PY_returnStructPtr,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr__doc__},
 {"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,

@@ -190,6 +190,7 @@ Python function void getMinMax(int & min +intent(out), int & max +intent(out))
 Python function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
 Python function int useclass(const Class1 * arg1 +intent(in)+value)
 Python function Class1 * getclass3()
+Python function struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
 Python function struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
 Python function const std::string & LastFunctionCalled() +len(30)
 Close pyTutorialmodule.hpp

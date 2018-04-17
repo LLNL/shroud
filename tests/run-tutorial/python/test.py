@@ -247,6 +247,17 @@ class Tutorial(unittest.TestCase):
         obj0 = tutorial.Class1()
         self.assertRaises(TypeError, tutorial.useclass(obj0))
 
+    def test_returnStruct(self):
+        rv = tutorial.returnStructPtr(2,2.1)
+        self.assertIsInstance(rv, np.ndarray)
+        dtype = rv.dtype
+        self.assertEqual(dtype.names, ('ifield', 'dfield'))
+        self.assertEqual(dtype.char, 'V')
+        self.assertEqual(0, rv.ndim)
+        self.assertEqual(2, rv['ifield'])
+        self.assertEqual(2.1, rv['dfield'])
+        self.assertIs(dtype, tutorial.struct1_dtype)
+
     def test_returnStructPtr(self):
         rv = tutorial.returnStructPtr(1,1.1)
         self.assertIsInstance(rv, np.ndarray)

@@ -769,7 +769,8 @@ class Wrapc(util.WrapperMixin):
             added_call_code = False
 
             if result_arg is None:
-                # The result is not passed back in an argument
+                # Return result from function
+                # (It was not passed back in an argument)
                 if self.language == 'c':
                     pass
                 elif is_union_scalar:

@@ -599,11 +599,11 @@ return 1;""", fmt)
             fmt.pre_call_intent = py_implied(implied, node)
             append_format(pre_call, '{cxx_decl} = {pre_call_intent};', fmt)
 
-    def intent_out(self, node, ast, typedef, intent_blk, fmt, post_call):
+    def intent_out(self, return_pointer_as, ast, typedef, intent_blk, fmt, post_call):
         """Add code for post-call.
         Create PyObject from C++ value to return.
 
-        node - FunctionNode.  None if argument
+        return_pointer_as  - None, 'pointer', 'scalar'
         ast - Abstract Syntax Tree of argument or result
         typedef - typedef of C++ variable.
         fmt - format dictionary
@@ -615,7 +615,7 @@ return 1;""", fmt)
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        if node and node.return_pointer_as == 'pointer':
+        if return_pointer_as == 'pointer':
             # Create a 1-d array from pointer
             dim = ast.attrs.get('dimension', None)
             # Create array for shape.
@@ -718,6 +718,14 @@ return 1;""", fmt)
         fmt.PY_error_return - 'NULL' for all wrappers except constructors
                               which are called via tp_init and require -1.
         """
+
+        # need_rv - need Return Value declaration.
+        #           The simplest case is to assign to rv as part of calling function.
+        #           When default arguments are present, a switch statement is create
+        #           so set need_rv = True to declare variable once, then call several time
+        # need_malloc - Result is a scalar but we need to put it into a NumPy array,
+        #           so allocate memory.
+
         options = node.options
         if not options.wrap_python:
             return
@@ -741,6 +749,9 @@ return 1;""", fmt)
         is_dtor = ast.attrs.get('_destructor', False)
 #        is_const = ast.const
         ml_flags = []
+        is_struct_scalar = False
+        need_malloc = False
+        result_return_pointer_as = node.return_pointer_as
 
         if cls:
             fmt.PY_used_param_self = True
@@ -771,13 +782,28 @@ return 1;""", fmt)
         if CXX_subprogram == 'function':
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault('fmtpy', util.Scope(fmt)) # fmt_func
-            if result_typedef.cxx_to_c is None:
+
+            CXX_result = ast
+            if result_typedef.base == 'struct' and not CXX_result.is_pointer():
+                # Allocate variable to the type returned by the function.
+                # No need to convert to C.
+                is_struct_scalar = True
+                result_return_pointer_as = 'pointer'
+                fmt_result.cxx_var = wformat('{C_local}{C_result}', fmt_result)
+            elif result_typedef.cxx_to_c is None:
                 fmt_result.cxx_var = wformat('{C_local}{C_result}', fmt_result)
             else:
                 fmt_result.cxx_var = wformat('{CXX_local}{C_result}', fmt_result)
-            CXX_result = ast
-            fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
-                name=fmt_result.cxx_var, params=None, continuation=True)
+
+            if is_struct_scalar:
+                # Force result to be a pointer to a struct
+                need_malloc = True
+                fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
+                    name=fmt_result.cxx_var, force_ptr=True, params=None, continuation=True)
+            else:
+                fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
+                    name=fmt_result.cxx_var, params=None, continuation=True)
+
             if CXX_result.is_pointer():
                 fmt_result.c_ptr = '*'
                 fmt_result.cxx_addr = ''
@@ -1064,8 +1090,8 @@ return 1;""", fmt)
             (len(cxx_call_list), len(post_parse), len(pre_call),
              ',\t '.join(cxx_call_list)))
 
-        # If multiple calls, declare return value once
-        # Else delare on call line.
+        # If multiple calls (because of default argument values),
+        # declare return value once; else delare on call line.
         if found_default:
             if CXX_subprogram == 'function':
                 fmt.PY_rv_asgn = fmt_result.cxx_var + ' = '
@@ -1123,15 +1149,27 @@ return 1;""", fmt)
                 append_format(PY_code, 'self->{PY_obj} = new {namespace_scope}'
                               '{cxx_class}({PY_call_list});', fmt)
             elif CXX_subprogram == 'subroutine':
-                line = wformat(
-                    '{PY_this_call}{function_name}({PY_call_list});', fmt)
-                PY_code.append(line)
+                append_format(PY_code, '{PY_this_call}{function_name}({PY_call_list});', fmt)
+            elif need_malloc:
+                # Allocate space for scalar returned by function.
+                # This allows NumPy to pointer to the memory.
+                need_rv = True
+                fmt.cxx_type = result_typedef.cxx_type
+                if self.language == 'c':
+                    append_format(PY_code,
+                                  '{C_rv_decl} = malloc(sizeof({cxx_type}));',
+                                  fmt)
+                else:
+                    append_format(PY_code,
+                                  '{C_rv_decl} = new {cxx_type};',
+                                  fmt)
+                append_format(PY_code,
+                              '*{cxx_var} = {PY_this_call}{function_name}({PY_call_list});',
+                              fmt_result)
             else:
                 need_rv = True
-                line = wformat(
-                    '{PY_rv_asgn}{PY_this_call}{function_name}({PY_call_list});',
-                    fmt)
-                PY_code.append(line)
+                append_format(PY_code,
+                              '{PY_rv_asgn}{PY_this_call}{function_name}({PY_call_list});', fmt)
 
             if node.PY_error_pattern:
                 lfmt = util.Scope(fmt)
@@ -1165,8 +1203,8 @@ return 1;""", fmt)
         if CXX_subprogram == 'function':
             # XXX - wrapc uses result instead of intent_out
             result_blk = result_typedef.py_statements.get('intent_out', {})
-            ttt = self.intent_out(node, ast, result_typedef, result_blk,
-                                  fmt_result, post_call)
+            ttt = self.intent_out(result_return_pointer_as, ast, result_typedef,
+                                  result_blk, fmt_result, post_call)
             # Add result to front of result tuple
             build_tuples.insert(0, ttt)
 
