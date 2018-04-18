@@ -1093,7 +1093,6 @@ def create_struct_typedef(cls):
             base='struct',
             cxx_type=cxx_name,
             c_type=c_name,
-            c_header=fmt_class.C_header_filename,
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
             PYN_descr=fmt_class.PY_struct_array_descr_variable,

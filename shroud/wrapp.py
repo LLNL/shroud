@@ -437,6 +437,8 @@ return 1;""", fmt)
                 'PyList_SET_ITEM(ldescr, {}, obj);'.format(i),
             ])
 
+            # XXX - add offset and itemsize to be explicit?
+
         output.extend([
             'obj = NULL;',
             '',

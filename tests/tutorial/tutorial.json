@@ -9819,7 +9819,6 @@
             "PY_from_object": "PP_struct1_from_Object", 
             "PY_to_object": "PP_struct1_to_Object", 
             "base": "struct", 
-            "c_header": "wrapstruct1.h", 
             "c_statements": {
                 "result": {
                     "c_helper": "SH_union_0_t"

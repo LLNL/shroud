@@ -90,30 +90,37 @@ class Wrapc(util.WrapperMixin):
     def wrap_library(self):
         newlibrary = self.newlibrary
         fmt_library = newlibrary.fmtdict
+        structs = []
 
         self._push_splicer('class')
         for node in newlibrary.classes:
             if not node.options.wrap_c:
                 continue
+            if node.as_struct:
+                structs.append(node)
+                continue
             self._push_splicer(node.name)
-            self.write_file(newlibrary, node)
+            self.write_file(newlibrary, node, None)
             self._pop_splicer(node.name)
         self._pop_splicer('class')
 
         if self.newlibrary.functions:
-            self.write_file(newlibrary, None)
+            self.write_file(newlibrary, None, structs)
 
-    def write_file(self, library, cls):
+    def write_file(self, library, cls, structs):
         """Write a file for the library and its functions or
         a class and its methods.
         """
         node = cls or library
         fmt = node.fmtdict
         self._begin_output_file()
+
+        if structs:
+            for struct in structs:
+                self.wrap_struct(struct)
+
         if cls:
-            if cls.as_struct:
-                self.wrap_struct(cls)
-            else:
+            if not cls.as_struct:
                 self.wrap_class(cls)
         else:
             self.wrap_enums(library)
@@ -300,6 +307,7 @@ class Wrapc(util.WrapperMixin):
         """Create a C copy of struct.
         A C++ struct must all POD.
         XXX - Only need to wrap if in a namespace.
+        XXX - no need to wrap C structs
         """
         self.log.write("class {1.name}\n".format(self, node))
         typedef = node.typedef
@@ -322,6 +330,17 @@ class Wrapc(util.WrapperMixin):
             '};',
             'typedef struct s_{C_type_name} {C_type_name};'.format(C_type_name=cname),
         ])
+
+        # Add a sanity check on sizes of structs
+        if False:
+            # XXX - add this to compiled code somewhere
+            typedef = node.typedef
+            output.extend([
+                '',
+                '0#if sizeof {} != sizeof {}'.format(typedef.name, typedef.c_type),
+                '0#error Sizeof {} and {} do not match'.format(typedef.name, typedef.c_type),
+                '0#endif',
+            ])
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))

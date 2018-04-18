@@ -50,7 +50,6 @@
 #define WRAPTUTORIAL_H
 
 #include <stddef.h>
-#include "wrapstruct1.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
@@ -65,6 +64,13 @@ enum TUT_Color {
     BLUE,
     WHITE
 };
+
+
+struct s_TUT_struct1 {
+    int ifield;
+    double dfield;
+};
+typedef struct s_TUT_struct1 TUT_struct1;
 
 // declaration of shadow types
 struct s_TUT_class1;
