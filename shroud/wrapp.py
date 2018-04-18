@@ -404,38 +404,81 @@ return 1;""", fmt)
         append_format(output, 'PyArray_Descr *{PY_struct_array_descr_create}()', fmt)
         output.append('{')
         output.append(1)
-        output.append('int ierr;')
-        output.append('PyObject *obj;')
 
         nvars = len(node.variables)
-        output.append('PyObject * lnames = PyList_New({});'.format(nvars))
-        output.append('PyObject * ldescr = PyList_New({});'.format(nvars))
+        output.extend([
+            'int ierr;',
+            'PyObject *obj = NULL;',
+            'PyObject * lnames = NULL;',
+            'PyObject * ldescr = NULL;',
+            'PyObject * dict = NULL;',
+            'PyArray_Descr *dtype = NULL;',
+            '',
+            'lnames = PyList_New({});'.format(nvars),
+            'if (lnames == NULL) goto fail;',
+            'ldescr = PyList_New({});'.format(nvars),
+            'if (ldescr == NULL) goto fail;',
+            ])
 
         for i, var in enumerate(node.variables):
             ast = var.ast
-            output.append('// ' + var.ast.name)
-            output.append('obj = PyString_FromString("{}");'.format(ast.name))
-            output.append('PyList_SET_ITEM(lnames, {}, obj);'.format(i))
+            output.extend([
+                '',
+                '// ' + var.ast.name,
+                'obj = PyString_FromString("{}");'.format(ast.name),
+                'if (obj == NULL) goto fail;',
+                'PyList_SET_ITEM(lnames, {}, obj);'.format(i),
+            ])
 
             typedef = typemap.Typedef.lookup(ast.typename)
-            output.append('obj = (PyObject *) PyArray_DescrFromType({});'.format(typedef.PYN_typenum))
-            output.append('PyList_SET_ITEM(ldescr, {}, obj);'.format(i))
+            output.extend([
+                'obj = (PyObject *) PyArray_DescrFromType({});'.format(typedef.PYN_typenum),
+                'if (obj == NULL) goto fail;',
+                'PyList_SET_ITEM(ldescr, {}, obj);'.format(i),
+            ])
 
-        output.append('')
-        output.append(
-            'PyObject * descr = PyDict_New();\n'
-            'if (descr == NULL) return NULL;\n'
-            'ierr = PyDict_SetItemString(descr, "names", lnames);\n'
-            'if (ierr == -1) return NULL;\n'
-            'ierr = PyDict_SetItemString(descr, "formats", ldescr);\n'
-            'if (ierr == -1) return NULL;\n'
-#            'Py_INCREF(Py_True);\n',
-#            'ierr = PyDict_SetItemString(descr, "aligned", Py_True);\n'
-            'if (ierr == -1) return NULL;\n'
-            'PyArray_Descr *dtype;\n'
-            'ierr = PyArray_DescrAlignConverter(descr, &dtype);\n'
-            'return dtype;'
-        )
+        output.extend([
+            'obj = NULL;',
+            '',
+            'dict = PyDict_New();',
+            'if (dict == NULL) goto fail;',
+            'ierr = PyDict_SetItemString(dict, "names", lnames);',
+            'if (ierr == -1) goto fail;',
+            'lnames = NULL;',
+
+            'ierr = PyDict_SetItemString(dict, "formats", ldescr);',
+            'if (ierr == -1) goto fail;',
+            'ldescr = NULL;',
+
+#            'Py_INCREF(Py_True);',
+#            'ierr = PyDict_SetItemString(descr, "aligned", Py_True);',
+#            'if (ierr == -1) goto fail;',
+            'ierr = PyArray_DescrAlignConverter(dict, &dtype);',
+            'if (ierr == 0) goto fail;',
+            'return dtype;',
+        ])
+        output.extend([
+            '0fail:',
+
+            'Py_XDECREF(obj);',
+            'if (lnames != NULL) {+',
+            'for (int i=0; i < {}; i++) {{+'.format(nvars),
+            'Py_XDECREF(PyList_GET_ITEM(lnames, i));',
+            '-}',
+            'Py_DECREF(lnames);',
+            '-}',
+
+            'if (ldescr != NULL) {+',
+            'for (int i=0; i < {}; i++) {{+'.format(nvars),
+            'Py_XDECREF(PyList_GET_ITEM(ldescr, i));',
+            '-}',
+            'Py_DECREF(ldescr);',
+            '-}',
+
+            'Py_XDECREF(dict);',
+            'Py_XDECREF(dtype);',
+            'return NULL;'
+        ])
 #    int PyArray_RegisterDataType(descr)
 
         output.append(-1)
