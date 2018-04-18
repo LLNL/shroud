@@ -51,6 +51,7 @@ SHTPy_  A temporary object, usually from PyArg_Parse
         to be converted to SHPy_ object.
 SHDPy_  PyArray_Descr object
 SHD_    npy_intp array for shape
+SHC_    PyCapsule owner of memory of NumPy array.  Used to deallocate memory.
 
 """
 from __future__ import print_function
@@ -148,6 +149,8 @@ class Wrapp(util.WrapperMixin):
         self.py_helper_declaration = []
         self.py_helper_prototypes = []
         self.py_helper_functions = []
+        # reserved the 0 slot of capsule_order
+        #self.add_capsule_helper('--none--', [ '// not yet implemented' ])
 
         # preprocess all classes first to allow them to reference each other
         for node in newlibrary.classes:
@@ -599,11 +602,14 @@ return 1;""", fmt)
             fmt.pre_call_intent = py_implied(implied, node)
             append_format(pre_call, '{cxx_decl} = {pre_call_intent};', fmt)
 
-    def intent_out(self, return_pointer_as, ast, typedef, intent_blk, fmt, post_call):
+    def intent_out(self, return_pointer_as, capsule_order,
+                   ast, typedef, intent_blk, fmt, post_call):
         """Add code for post-call.
         Create PyObject from C++ value to return.
 
         return_pointer_as  - None, 'pointer', 'scalar'
+        capsule_order - index into capsule_order of code to free memory.
+                        None = do not release memory.
         ast - Abstract Syntax Tree of argument or result
         typedef - typedef of C++ variable.
         fmt - format dictionary
@@ -644,6 +650,23 @@ return 1;""", fmt)
                     'PyObject * {py_var} = '
                     'PyArray_SimpleNewFromData({npy_ndims}, {npy_dims}, {numpy_type}, {cxx_var});',
                     fmt)
+
+            if capsule_order is not None:
+                # If NumPy owns the memory, add a way to delete it
+                # by creating a capsule base object.
+                fmt.py_capsule = 'SHC_' + fmt.c_var
+                context = do_cast(self.language, 'const', 'char *',
+                                  'xxxxorder[{}]'.format(capsule_order))
+                append_format(
+                    post_call,
+                    'extern void xxxx(PyObject *cap);\n'
+                    'extern const char * xxxxorder[];\n'
+                    'PyObject * {py_capsule} = '
+                    'PyCapsule_New({cxx_var}, "XXX", xxxx);\n'
+                    'PyCapsule_SetContext({py_capsule}, ' + context + ');\n'
+                    'PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});',  # 0=ok, -1=error
+                    fmt)
+
             format = 'O'
             vargs = fmt.py_var
             ctor = None
@@ -1002,7 +1025,7 @@ return 1;""", fmt)
                 if not hidden:
                     # output variable must be a pointer
                     build_tuples.append(self.intent_out(
-                        None, arg, arg_typedef, intent_blk, fmt_arg, post_call))
+                        None, None, arg, arg_typedef, intent_blk, fmt_arg, post_call))
 
             # Code to convert parsed values (C or Python) to C++.
             cmd_list = intent_blk.get('decl', [])
@@ -1145,6 +1168,7 @@ return 1;""", fmt)
             if options.debug and need_blank:
                 PY_code.append('')
 
+            capsule_order = None
             if is_ctor:
                 append_format(PY_code, 'self->{PY_obj} = new {namespace_scope}'
                               '{cxx_class}({PY_call_list});', fmt)
@@ -1155,14 +1179,22 @@ return 1;""", fmt)
                 # This allows NumPy to pointer to the memory.
                 need_rv = True
                 fmt.cxx_type = result_typedef.cxx_type
+                capsule_type = CXX_result.gen_arg_as_cxx(
+                    name=None, force_ptr=True, params=None, continuation=True)
                 if self.language == 'c':
                     append_format(PY_code,
                                   '{C_rv_decl} = malloc(sizeof({cxx_type}));',
                                   fmt)
+                    del_lines = [ 'free(ptr);' ]
                 else:
                     append_format(PY_code,
                                   '{C_rv_decl} = new {cxx_type};',
                                   fmt)
+                    del_lines = [
+                        '{} cxx_ptr = static_cast<{}>(ptr);'.format(capsule_type, capsule_type),
+                        'delete cxx_ptr;',
+                    ]
+                capsule_order = self.add_capsule_helper(capsule_type, del_lines)
                 append_format(PY_code,
                               '*{cxx_var} = {PY_this_call}{function_name}({PY_call_list});',
                               fmt_result)
@@ -1203,7 +1235,7 @@ return 1;""", fmt)
         if CXX_subprogram == 'function':
             # XXX - wrapc uses result instead of intent_out
             result_blk = result_typedef.py_statements.get('intent_out', {})
-            ttt = self.intent_out(result_return_pointer_as, ast, result_typedef,
+            ttt = self.intent_out(result_return_pointer_as, capsule_order, ast, result_typedef,
                                   result_blk, fmt_result, post_call)
             # Add result to front of result tuple
             build_tuples.insert(0, ttt)
@@ -1677,11 +1709,75 @@ extern PyObject *{PY_prefix}error_obj;
         fmt = node.fmtdict
         output = []
         output.append(wformat('#include "{PY_header_filename}"', fmt))
+        if self.capsule_order:
+            # header file may be needed to fully qualify types capsule destructors
+            for include in node.cxx_header.split():
+                output.append('#include "%s"' % include)
+            output.append('')
         output.extend(self.py_helper_definition)
         output.append('')
         output.extend(self.py_helper_functions)
+        if self.capsule_order:
+            self.write_capsule_helper(output, fmt)
         self.write_output_file(
             fmt.PY_helper_filename, self.config.python_dir, output)
+
+    def write_capsule_helper(self, output, fmt):
+        """Write a function used to delete memory when a
+        NumPy array is deleted.
+
+        Create a global variable of of context pointer used
+        to switch to case used to release memory.
+        """
+
+        output.append('')
+        output.append('// Code used to release arrays for NumPy objects')
+        output.append('// via a Capsule base object with a destructor.')
+        output.append('// Context strings')
+        output.append('const char * xxxxorder[] = {+')
+        for name in self.capsule_order:
+            output.append('"{}",'.format(name))
+        output.append('NULL')
+        output.append('-};')
+
+        append_format(
+            output,
+            '\n// destructor function for PyCapsule\n'
+            'void xxxx(PyObject *cap)\n'
+            '{{+\n'
+#            'const char* name = PyCapsule_GetName(cap);\n'
+            'void *ptr = PyCapsule_GetPointer(cap, "XXX");'
+            ,fmt)
+
+        output.append('const char * context = '
+                      + do_cast(self.language, 'static', 'const char *', 'PyCapsule_GetContext(cap)')
+                      + ';')
+
+        start = 'if'
+        for i, name in enumerate(self.capsule_order):
+            output.append(start + ' (context == xxxxorder[{}]) {{'.format(i))
+            output.append(1)
+            for line in self.capsule_helpers[name][1]:
+                output.append(line)
+            output.append(-1)
+            start = '} else if '
+        output.append('} else {+')
+        output.append('// no such destructor')
+        output.append('-}')
+
+        output.append('-}')
+
+    capsule_helpers = {}
+    capsule_order = []
+    def add_capsule_helper(self, name, lines):
+        """Add unique names to capsule_helpers.
+        Return index of name.
+        """
+        name = name.replace('\t', '')
+        if name not in self.capsule_helpers:
+            self.capsule_helpers[name] = (str(len(self.capsule_helpers)), lines)
+            self.capsule_order.append(name)
+        return self.capsule_helpers[name][0]
 
     def not_implemented_error(self, msg, ret):
         '''A standard splicer for unimplemented code

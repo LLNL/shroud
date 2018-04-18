@@ -7897,6 +7897,7 @@
                         "npy_dims": "NULL", 
                         "npy_ndims": "0", 
                         "numpy_type": null, 
+                        "py_capsule": "SHC_SHC_rv", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
