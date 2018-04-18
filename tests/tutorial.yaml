@@ -118,6 +118,10 @@ declarations:
     options:
       wrap_lua: False
   
+  - decl: int * ReturnIntPtrDimNew(int *len+intent(out)+hidden) +dimension(len)
+    options:
+      wrap_lua: False
+  
   - decl: const std::string Function4a(
       const std::string& arg1,
       const std::string& arg2 ) +len(30)

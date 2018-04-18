@@ -126,6 +126,14 @@ class Tutorial(unittest.TestCase):
         self.assertEqual(7, rv.size)
         self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7])))
 
+    def testReturnIntPtrDimNew(self):
+        "Return pointer to a new int array"
+        rv = tutorial.ReturnIntPtrDimNew()
+        self.assertIsInstance(rv, np.ndarray)
+        self.assertEqual('int32', rv.dtype.name)
+        self.assertEqual(5, rv.size)
+        self.assertTrue(all(np.equal(rv, [0,1,2,3,4])))
+
     def testFunction4a(self):
         rv_char = tutorial.Function4a("dog", "cat")
         self.assertEqual(rv_char, "dogcat")

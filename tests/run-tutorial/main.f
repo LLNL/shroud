@@ -146,6 +146,13 @@ contains
     call assert_equals(7 , size(intp1))
     call assert_true( all(intp1 == [1,2,3,4,5,6,7]), "return_int_ptr_dim value")
 
+    ! XXX - how to delete c++ array
+    nullify(intp1)
+    intp1 => return_int_ptr_dim_new()
+    call assert_true(associated(intp1))
+    call assert_equals(5 , size(intp1))
+    call assert_true( all(intp1 == [0,1,2,3,4]), "return_int_ptr_dim_new value")
+
     call assert_true( function4a("dog", "cat") == "dogcat")
 
     call function4b("dog", "cat", rv_char)

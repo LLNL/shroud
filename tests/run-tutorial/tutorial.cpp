@@ -107,6 +107,17 @@ int * ReturnIntPtrDim(int *len)
   return buffer;
 }
 
+// Return a pointer to a new array
+int * ReturnIntPtrDimNew(int *len)
+{
+  int *buffer = new int[5];
+  for (int i=0; i < 5; i++) {
+    buffer[i] = i;
+  }
+  *len = 5;
+  return buffer;
+}
+
 const std::string Function4a(const std::string& arg1, const std::string& arg2)
 {
     last_function_called = "Function4a";

@@ -93,6 +93,8 @@ int TUT_return_int_ptr_scalar();
 
 int * TUT_return_int_ptr_dim(int * len);
 
+int * TUT_return_int_ptr_dim_new(int * len);
+
 void TUT_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
 

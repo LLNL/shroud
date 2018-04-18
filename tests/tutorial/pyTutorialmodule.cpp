@@ -299,6 +299,31 @@ PY_ReturnIntPtrDim(
 // splicer end function.return_int_ptr_dim
 }
 
+static char PY_ReturnIntPtrDimNew__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ReturnIntPtrDimNew(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
+// splicer begin function.return_int_ptr_dim_new
+    // pre_call
+    int len;  // intent(out)
+
+    int * SHC_rv = tutorial::ReturnIntPtrDimNew(&len);
+
+    // post_call
+    npy_intp SHD_ReturnIntPtrDimNew[1] = { len };
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_ReturnIntPtrDimNew, NPY_INT, SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr_dim_new
+}
+
 static char PY_Function4a__doc__[] =
 "documentation"
 ;
@@ -1059,6 +1084,8 @@ static PyMethodDef PY_methods[] = {
     PY_ReturnIntPtrScalar__doc__},
 {"ReturnIntPtrDim", (PyCFunction)PY_ReturnIntPtrDim, METH_NOARGS,
     PY_ReturnIntPtrDim__doc__},
+{"ReturnIntPtrDimNew", (PyCFunction)PY_ReturnIntPtrDimNew, METH_NOARGS,
+    PY_ReturnIntPtrDimNew__doc__},
 {"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,
     PY_Function4a__doc__},
 {"Function4b", (PyCFunction)PY_Function4b, METH_VARARGS|METH_KEYWORDS,
