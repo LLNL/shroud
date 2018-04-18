@@ -890,10 +890,10 @@ PY_returnStruct(
     Py_INCREF(PY_struct1_array_descr);
     PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
         PY_struct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
-    extern void xxxx(PyObject *cap);
-    extern const char * xxxxorder[];
-    PyObject * SHC_SHC_rv = PyCapsule_New(SHC_rv, "XXX", xxxx);
-    PyCapsule_SetContext(SHC_SHC_rv, const_cast<char *>(xxxxorder[0]));
+    PyObject * SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
+        PY_array_destructor_function);
+    PyCapsule_SetContext(SHC_SHC_rv, const_cast<char *>
+        (PY_array_destructor_context[0]));
     PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_SHC_rv);
 
     return (PyObject *) SHTPy_rv;

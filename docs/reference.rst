@@ -469,6 +469,20 @@ PY_member_setter_template
 PY_name_impl_template
     ``{PY_prefix}{class_prefix}{function_name}{function_suffix}``
 
+PY_numpy_array_capsule_name_template
+    Name of ``PyCapsule object`` used as base object of NumPy arrays.
+    Used to make sure a valid capsule is passed to *PY_numpy_array_dtor_function*.
+    ``{PY_prefix}array_dtor``
+
+PY_numpy_array_dtor_context_template
+    Name of ``const char * []`` array used as the *context* field
+    for *PY_numpy_array_dtor_function*.
+    ``{PY_prefix}array_destructor_context``
+
+PY_numpy_array_dtor_function_template
+    Name of *destructor* in ``PyCapsule`` base object of NumPy arrays.
+    ``{PY_prefix}array_destructor_function``
+
 PY_struct_array_descr_create_template
     Name of C/C++ function to create a ``PyArray_Descr`` pointer for a structure.
     ``{PY_prefix}{cxx_class}_create_array_descr``

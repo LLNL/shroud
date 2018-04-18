@@ -408,6 +408,13 @@ class LibraryNode(AstNode, NamespaceMixin):
                 '{PY_prefix}{cxx_class}_array_descr'),
             PY_struct_array_descr_name_template=(
                 '{cxx_class}_dtype'),
+            PY_numpy_array_capsule_name_template=(
+                '{PY_prefix}array_dtor'),
+            PY_numpy_array_dtor_context_template=(
+                '{PY_prefix}array_destructor_context'),
+            PY_numpy_array_dtor_function_template=(
+                '{PY_prefix}array_destructor_function'),
+
             )
 
         return def_options
@@ -519,6 +526,11 @@ class LibraryNode(AstNode, NamespaceMixin):
         # just functions.
         self.eval_template('F_module_name', '_library')
         self.eval_template('F_impl_filename', '_library')
+
+        self.eval_template('PY_numpy_array_capsule_name')
+        self.eval_template('PY_numpy_array_dtor_context')
+        self.eval_template('PY_numpy_array_dtor_function')
+
 
 ######################################################################
 

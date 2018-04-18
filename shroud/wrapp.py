@@ -200,9 +200,9 @@ class Wrapp(util.WrapperMixin):
             self.wrap_functions(None, newlibrary.functions)
             self._pop_splicer('function')
 
+        self.write_helper()
         self.write_header(newlibrary)
         self.write_module(newlibrary)
-        self.write_helper()
 
     def wrap_enums(self, cls):
         """Wrap enums for library or cls
@@ -656,13 +656,13 @@ return 1;""", fmt)
                 # by creating a capsule base object.
                 fmt.py_capsule = 'SHC_' + fmt.c_var
                 context = do_cast(self.language, 'const', 'char *',
-                                  'xxxxorder[{}]'.format(capsule_order))
+                                  '{}[{}]'.format(
+                                      fmt.PY_numpy_array_dtor_context, capsule_order))
                 append_format(
                     post_call,
-                    'extern void xxxx(PyObject *cap);\n'
-                    'extern const char * xxxxorder[];\n'
                     'PyObject * {py_capsule} = '
-                    'PyCapsule_New({cxx_var}, "XXX", xxxx);\n'
+                    'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
+                    '\t{PY_numpy_array_dtor_function});\n'
                     'PyCapsule_SetContext({py_capsule}, ' + context + ');\n'
                     'PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});',  # 0=ok, -1=error
                     fmt)
@@ -1730,11 +1730,16 @@ extern PyObject *{PY_prefix}error_obj;
         to switch to case used to release memory.
         """
 
+        append_format(self.py_helper_declaration,
+                      'extern const char * {PY_numpy_array_dtor_context}[];', fmt)
+        append_format(self.py_helper_declaration,
+                      'extern void {PY_numpy_array_dtor_function}(PyObject *cap);', fmt)
+
         output.append('')
         output.append('// Code used to release arrays for NumPy objects')
         output.append('// via a Capsule base object with a destructor.')
         output.append('// Context strings')
-        output.append('const char * xxxxorder[] = {+')
+        append_format(output, 'const char * {PY_numpy_array_dtor_context}[] = {{+', fmt)
         for name in self.capsule_order:
             output.append('"{}",'.format(name))
         output.append('NULL')
@@ -1743,10 +1748,10 @@ extern PyObject *{PY_prefix}error_obj;
         append_format(
             output,
             '\n// destructor function for PyCapsule\n'
-            'void xxxx(PyObject *cap)\n'
+            'void {PY_numpy_array_dtor_function}(PyObject *cap)\n'
             '{{+\n'
 #            'const char* name = PyCapsule_GetName(cap);\n'
-            'void *ptr = PyCapsule_GetPointer(cap, "XXX");'
+            'void *ptr = PyCapsule_GetPointer(cap, "{PY_numpy_array_capsule_name}");'
             ,fmt)
 
         output.append('const char * context = '
@@ -1755,7 +1760,8 @@ extern PyObject *{PY_prefix}error_obj;
 
         start = 'if'
         for i, name in enumerate(self.capsule_order):
-            output.append(start + ' (context == xxxxorder[{}]) {{'.format(i))
+            output.append(start + ' (context == {}[{}]) {{'.format(
+                fmt.PY_numpy_array_dtor_context, i))
             output.append(1)
             for line in self.capsule_helpers[name][1]:
                 output.append(line)

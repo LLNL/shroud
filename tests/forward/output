@@ -3,8 +3,8 @@ Wrote wrapClass2.h
 Wrote wrapClass2.cpp
 Wrote wrapfforward.f
 Wrote pyClass2type.cpp
+Wrote pyforwardhelper.cpp
 Wrote pyforwardmodule.hpp
 Wrote pyforwardmodule.cpp
-Wrote pyforwardhelper.cpp
 Wrote luaforwardmodule.hpp
 Wrote luaforwardmodule.cpp

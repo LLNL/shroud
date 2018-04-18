@@ -196,9 +196,9 @@ Python function Class1 * getclass3()
 Python function struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
 Python function struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
 Python function const std::string & LastFunctionCalled() +len(30)
+Close pyTutorialhelper.cpp
 Close pyTutorialmodule.hpp
 Close pyTutorialmodule.cpp
-Close pyTutorialhelper.cpp
 Lua method Class1() +name(new)
 Lua method Class1(int flag +intent(in)+value) +name(new)
 Lua method ~Class1() +name(delete)

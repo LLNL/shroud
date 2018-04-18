@@ -1,6 +1,6 @@
 Wrote wrapstrings.h
 Wrote wrapstrings.cpp
 Wrote wrapfstrings.f
+Wrote pystringshelper.cpp
 Wrote pystringsmodule.hpp
 Wrote pystringsmodule.cpp
-Wrote pystringshelper.cpp

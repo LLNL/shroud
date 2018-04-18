@@ -108,18 +108,18 @@ int PP_Singleton_from_Object(PyObject *obj, void **addr)
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
-const char * xxxxorder[] = {
+const char * PY_array_destructor_context[] = {
     "tutorial::struct1 *",
     NULL
 };
 
 // destructor function for PyCapsule
-void xxxx(PyObject *cap)
+void PY_array_destructor_function(PyObject *cap)
 {
-    void *ptr = PyCapsule_GetPointer(cap, "XXX");
+    void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
     const char * context = static_cast<const char *>
         (PyCapsule_GetContext(cap));
-    if (context == xxxxorder[0]) {
+    if (context == PY_array_destructor_context[0]) {
         tutorial::struct1 * cxx_ptr = static_cast<tutorial::
             struct1 *>(ptr);
         delete cxx_ptr;
