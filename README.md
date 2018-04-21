@@ -1,13 +1,20 @@
 # Shroud: A program to generate wrappers for language bindings.
 
+**Shroud** is a tool for creating a Fortran or Python interface to a C
+or C++ library.  It can also create a C API for a C++ library.
+
+The user creates a YAML file with the C/C++ declarations to be wrapped
+along with some annotations to provide semantic information and code
+generation options.  **Shroud** produces a wrapper for the library.
+The generated code is high-readable and intended to be similar to code
+that would be hand-written to create the bindings.
+
 verb
 1. wrap or dress (a body) in a shroud for burial.
 2. cover or envelop so as to conceal from view.
 
 [![Build Status](https://travis-ci.org/LLNL/shroud.svg?branch=develop)](https://travis-ci.org/LLNL/shroud)
 [![Documentation Status](https://readthedocs.org/projects/shroud/badge/?version=develop)](http://shroud.readthedocs.io/en/latest/?badge=develop)
-
-Create Fortran bindings for a C or C++ Library.
 
 ## Documentation
 
@@ -26,6 +33,10 @@ shroud-users@llnl.gov
 ## C++ to C to Fortran
 
 The generated Fortran requires a Fortran 2003 compiler.
+
+## C++ or C to Python
+
+The generated Python requires Python 2.7 or 3.4+.
 
 ## Release
 

@@ -345,8 +345,8 @@ this value to the C wrapper::
           map to Fortran directly and require ``type(C_PTR)``.
 
 
-Character
-^^^^^^^^^
+String
+^^^^^^
 
 Character variables have significant differences between C and
 Fortran.  The Fortran interoperability with C feature treats a
@@ -445,6 +445,21 @@ Each function with default value arguments will create a C and Fortran
 wrapper for each possible prototype.  For Fortran, these functions
 are then wrapped in a generic statement which allows them to be
 called by the original name.
+A header files contains::
+
+    double Function5(double arg1 = 3.1415, bool arg2 = true)
+
+and the function is defined as::
+
+    double Function5(double arg1, bool arg2)
+    {
+        if (arg2) {
+            return arg1 + 10.0;
+        } else {
+            return arg1;
+        }
+     }
+
 Creating a wrapper for each possible way of calling the C++ function
 allows C++ to provide the default values::
 
@@ -1038,12 +1053,14 @@ And the subroutines::
 
 The C++ code to call the function::
 
+    #include <tutorial.hpp>
     tutorial::Class1 *cptr = new tutorial::Class1();
 
     cptr->Method1();
 
 And the Fortran version::
 
+    use tutorial_mod
     type(class1) cptr
 
     cptr = class1_new()

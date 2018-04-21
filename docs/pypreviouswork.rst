@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
+.. Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
 .. Produced at the Lawrence Livermore National Laboratory 
 ..
 .. LLNL-CODE-738041.
@@ -38,50 +38,42 @@
 ..
 .. #######################################################################
 
-.. shroud documentation master file, created by
-   sphinx-quickstart on Sat Jul 11 12:50:59 2015.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Python Previous Work
+====================
 
-Shroud
-======
-
-**Shroud** is a tool for creating a Fortran or Python interface to a C
-or C++ library.  It can also create a C API for a C++ library.
-
-The user creates a YAML file with the C/C++ declarations to be wrapped
-along with some annotations to provide semantic information and code
-generation options.  **Shroud** produces a wrapper for the library.
-The generated code is high-readable and intended to be similar to code
-that would be hand-written to create the bindings.
-
-*verb*
-    1. wrap or dress (a body) in a shroud for burial.
-    2. cover or envelop so as to conceal from view.
+There a several available tools to creating a Python interface to a C or C++ library.
 
 
-Contents
+SWIG
+-----
 
-.. toctree::
-   :maxdepth: 1
-
-   introduction
-   installing
-   tutorial
-   pytutorial
-   input
-   types
-   functions
-   reference
-   previouswork
-   pypreviouswork
-   futurework
+* `home <http://www.swig.org/>`_
 
 
-Indices and tables
-==================
+PyBindgen
+---------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+* `source <https://github.com/gjcarneiro/pybindgen>`_
+* `docs <http://pybindgen.readthedocs.io/en/latest/>`_
 
+Cython
+------
+
+* `home <cython.org>`_
+* `docs <https://cython.readthedocs.io/en/latest/>`_
+
+
+SIP
+---
+
+* `SIP <https://www.riverbankcomputing.com/software/sip/intro>`_
+
+Boost Python
+------------
+
+* `docs <https://www.boost.org/doc/libs/1_66_0/libs/python/doc/html/index.html>`_
+
+Links
+-----
+
+  * `Interfacing with C - Scipy lecture notes <https://www.scipy-lectures.org/advanced/interfacing_with_c/interfacing_with_c.html>`_

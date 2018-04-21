@@ -38,10 +38,10 @@
 ..
 .. #######################################################################
 
-Previous Work
-=============
+Fortran Previous Work
+=====================
 
-Communicating between language has a long history similar work.
+Communicating between languages has a long history similar work.
 
 Babel
 -----

@@ -138,11 +138,12 @@ Customizing Behavior in the YAML file
 Fields
 ^^^^^^
 
-A field only applies to the type, class or function to which it belongs.
+A field only applies to the type, enumeration, function, structure or class
+to which it belongs.
 It is not inherited.
-For example, *C_name* is a field which is used to explicitly name
-a single C wrapper function.  While *C_name_template* is an option which
-controls the default value of *C_name*::
+For example, *cxx_header* is a field which is used define the header file
+for class *Names*.  Likewise, setting *library* within a class does not change
+the library name.
 
     library: testnames
 
@@ -208,7 +209,9 @@ Format
 
 A format dictionary contains strings which can be inserted into
 generated code.  Generated filenames are also entries in the format
-dictionary.
+dictionary.  Format dictionaries are also scoped like options.
+For example, setting a format in a class also effects all of the 
+functions within the class.
 
 How code is formatted
 ---------------------
