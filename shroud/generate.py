@@ -381,6 +381,8 @@ class GenFunctions(object):
             # In the future it may be useful to have multiple templates
             # That the would start creating more permutations
             raise NotImplementedError("Only one cxx_templated type for now")
+        oldoptions = node.options
+
         for typename, types in node.cxx_template.items():
             for type in types:
                 new = node.clone()
@@ -392,10 +394,10 @@ class GenFunctions(object):
                 fmt.function_suffix = fmt.function_suffix + '_' + type
                 new.cxx_template = {}
                 options = new.options
-                options.wrap_c = True
-                options.wrap_fortran = True
-                options.wrap_python = False
-                options.wrap_lua = False
+                options.wrap_c = oldoptions.wrap_c
+                options.wrap_fortran = oldoptions.wrap_fortran
+                options.wrap_python = oldoptions.wrap_python
+                options.wrap_lua = oldoptions.wrap_lua
                 # Convert typename to type
                 fmt.CXX_template = '<{}>'.format(type)
                 if new.ast.typename == typename:

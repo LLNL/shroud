@@ -429,6 +429,222 @@ PP_exclass2_getTypeID(
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_type_id
 }
+
+static PyObject *
+PP_exclass2_setValue_int(
+  PP_ExClass2 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// void setValue(int value +intent(in)+value)
+// splicer begin class.ExClass2.method.set_value_int
+    int value;
+    const char *SHT_kwlist[] = {
+        "value",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:setValue",
+        const_cast<char **>(SHT_kwlist), &value))
+        return NULL;
+
+    self->obj->setValue(value);
+    Py_RETURN_NONE;
+// splicer end class.ExClass2.method.set_value_int
+}
+
+static PyObject *
+PP_exclass2_setValue_long(
+  PP_ExClass2 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// void setValue(long value +intent(in)+value)
+// splicer begin class.ExClass2.method.set_value_long
+    long value;
+    const char *SHT_kwlist[] = {
+        "value",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:setValue",
+        const_cast<char **>(SHT_kwlist), &value))
+        return NULL;
+
+    self->obj->setValue(value);
+    Py_RETURN_NONE;
+// splicer end class.ExClass2.method.set_value_long
+}
+
+static PyObject *
+PP_exclass2_setValue_float(
+  PP_ExClass2 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// void setValue(float value +intent(in)+value)
+// splicer begin class.ExClass2.method.set_value_float
+    float value;
+    const char *SHT_kwlist[] = {
+        "value",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "f:setValue",
+        const_cast<char **>(SHT_kwlist), &value))
+        return NULL;
+
+    self->obj->setValue(value);
+    Py_RETURN_NONE;
+// splicer end class.ExClass2.method.set_value_float
+}
+
+static PyObject *
+PP_exclass2_setValue_double(
+  PP_ExClass2 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// void setValue(double value +intent(in)+value)
+// splicer begin class.ExClass2.method.set_value_double
+    double value;
+    const char *SHT_kwlist[] = {
+        "value",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:setValue",
+        const_cast<char **>(SHT_kwlist), &value))
+        return NULL;
+
+    self->obj->setValue(value);
+    Py_RETURN_NONE;
+// splicer end class.ExClass2.method.set_value_double
+}
+
+static PyObject *
+PP_exclass2_getValue_int(
+  PP_ExClass2 *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int getValue()
+// splicer begin class.ExClass2.method.get_value_int
+    int SHC_rv = self->obj->getValue();
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end class.ExClass2.method.get_value_int
+}
+
+static PyObject *
+PP_exclass2_getValue_double(
+  PP_ExClass2 *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// double getValue()
+// splicer begin class.ExClass2.method.get_value_double
+    double SHC_rv = self->obj->getValue();
+
+    // post_call
+    PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end class.ExClass2.method.get_value_double
+}
+
+static char PP_exclass2_getValue__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_exclass2_getValue(
+  PP_ExClass2 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin class.ExClass2.method.get_value
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    PyObject *rvobj;
+    if (SHT_nargs == 0) {
+        rvobj = PP_exclass2_getValue_int(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 0) {
+        rvobj = PP_exclass2_getValue_double(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return NULL;
+// splicer end class.ExClass2.method.get_value
+}
+
+static char PP_exclass2_setValue__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_exclass2_setValue(
+  PP_ExClass2 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin class.ExClass2.method.set_value
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    PyObject *rvobj;
+    if (SHT_nargs == 1) {
+        rvobj = PP_exclass2_setValue_int(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 1) {
+        rvobj = PP_exclass2_setValue_long(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 1) {
+        rvobj = PP_exclass2_setValue_float(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 1) {
+        rvobj = PP_exclass2_setValue_double(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return NULL;
+// splicer end class.ExClass2.method.set_value
+}
 // splicer begin class.ExClass2.impl.after_methods
 // splicer end class.ExClass2.impl.after_methods
 static PyMethodDef PP_ExClass2_methods[] = {
@@ -450,6 +666,10 @@ static PyMethodDef PP_ExClass2_methods[] = {
         PP_exclass2_destroyall__doc__},
     {"getTypeID", (PyCFunction)PP_exclass2_getTypeID, METH_NOARGS,
         PP_exclass2_getTypeID__doc__},
+    {"getValue", (PyCFunction)PP_exclass2_getValue,
+        METH_VARARGS|METH_KEYWORDS, PP_exclass2_getValue__doc__},
+    {"setValue", (PyCFunction)PP_exclass2_setValue,
+        METH_VARARGS|METH_KEYWORDS, PP_exclass2_setValue__doc__},
     // splicer begin class.ExClass2.PyMethodDef
     // splicer end class.ExClass2.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

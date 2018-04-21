@@ -3867,6 +3867,30 @@
                         "fmtf": {
                             "c_var": "arg", 
                             "f_var": "arg"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tointeger(L, 1)", 
+                            "c_var_len": "Larg", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "arg", 
+                            "lua_var": "SH_Lua_arg"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int arg", 
+                            "c_ptr": "", 
+                            "c_type": "int", 
+                            "c_var": "arg", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "int arg", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "arg", 
+                            "numpy_type": "NPY_INT", 
+                            "py_var": "SHPy_arg"
                         }
                     }
                 }, 
@@ -3923,6 +3947,9 @@
                     "F_name_generic": "function7", 
                     "F_name_impl": "function7_int", 
                     "F_subprogram": "subroutine", 
+                    "LUA_name": "Function7", 
+                    "LUA_name_impl": "l_function7", 
+                    "PY_name_impl": "PY_Function7_int", 
                     "c_const": "", 
                     "function_name": "Function7", 
                     "function_suffix": "_int", 
@@ -3931,8 +3958,8 @@
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
+                    "wrap_lua": true, 
+                    "wrap_python": true
                 }
             }, 
             {
@@ -3949,6 +3976,30 @@
                         "fmtf": {
                             "c_var": "arg", 
                             "f_var": "arg"
+                        }, 
+                        "fmtl": {
+                            "LUA_index": 1, 
+                            "c_ptr": "", 
+                            "c_var": "lua_tonumber(L, 1)", 
+                            "c_var_len": "Larg", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "arg", 
+                            "lua_var": "SH_Lua_arg"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "double arg", 
+                            "c_ptr": "", 
+                            "c_type": "double", 
+                            "c_var": "arg", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "double arg", 
+                            "cxx_deref": ".", 
+                            "cxx_type": "double", 
+                            "cxx_var": "arg", 
+                            "numpy_type": "NPY_DOUBLE", 
+                            "py_var": "SHPy_arg"
                         }
                     }
                 }, 
@@ -4005,6 +4056,7 @@
                     "F_name_generic": "function7", 
                     "F_name_impl": "function7_double", 
                     "F_subprogram": "subroutine", 
+                    "PY_name_impl": "PY_Function7_double", 
                     "c_const": "", 
                     "function_name": "Function7", 
                     "function_suffix": "_double", 
@@ -4013,8 +4065,8 @@
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
+                    "wrap_lua": true, 
+                    "wrap_python": true
                 }
             }, 
             {

@@ -495,6 +495,50 @@ PY_Function6_from_index(
 // splicer end function.function6_from_index
 }
 
+static PyObject *
+PY_Function7_int(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void Function7(int arg +intent(in)+value)
+// splicer begin function.function7_int
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function7",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return NULL;
+
+    tutorial::Function7(arg);
+    Py_RETURN_NONE;
+// splicer end function.function7_int
+}
+
+static PyObject *
+PY_Function7_double(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void Function7(double arg +intent(in)+value)
+// splicer begin function.function7_double
+    double arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function7",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return NULL;
+
+    tutorial::Function7(arg);
+    Py_RETURN_NONE;
+// splicer end function.function7_double
+}
+
 static char PY_Function9__doc__[] =
 "documentation"
 ;
@@ -993,6 +1037,44 @@ PY_Function10(
 // splicer end function.function10
 }
 
+static char PY_Function7__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_Function7(
+  PyObject *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.function7
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    PyObject *rvobj;
+    if (SHT_nargs == 1) {
+        rvobj = PY_Function7_int(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 1) {
+        rvobj = PY_Function7_double(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return NULL;
+// splicer end function.function7
+}
+
 static char PY_Function6__doc__[] =
 "documentation"
 ;
@@ -1116,6 +1198,8 @@ static PyMethodDef PY_methods[] = {
     PY_LastFunctionCalled__doc__},
 {"Function10", (PyCFunction)PY_Function10, METH_VARARGS|METH_KEYWORDS,
     PY_Function10__doc__},
+{"Function7", (PyCFunction)PY_Function7, METH_VARARGS|METH_KEYWORDS,
+    PY_Function7__doc__},
 {"Function6", (PyCFunction)PY_Function6, METH_VARARGS|METH_KEYWORDS,
     PY_Function6__doc__},
 {"overload1", (PyCFunction)PY_overload1, METH_VARARGS|METH_KEYWORDS,

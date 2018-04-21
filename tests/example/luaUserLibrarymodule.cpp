@@ -443,6 +443,90 @@ static int l_exclass2_get_type_id(lua_State *L)
     // splicer end class.ExClass2.method.getTypeID
 }
 
+// void setValue(int value +intent(in)+value)
+// void setValue(long value +intent(in)+value)
+// void setValue(float value +intent(in)+value)
+// void setValue(double value +intent(in)+value)
+static int l_exclass2_set_value(lua_State *L)
+{
+    // splicer begin class.ExClass2.method.setValue
+    int SH_nresult = 0;
+    int SH_nargs = lua_gettop(L);
+    int SH_itype1 = lua_type(L, 1);
+    switch (SH_nargs) {
+    case 1:
+        if (SH_itype1 == LUA_TNUMBER) {
+            int value = lua_tointeger(L, 1);
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            SH_this->self->setValue(value);
+            SH_nresult = 0;
+        }
+        else if (SH_itype1 == LUA_TNUMBER) {
+            long value = lua_tointeger(L, 1);
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            SH_this->self->setValue(value);
+            SH_nresult = 0;
+        }
+        else if (SH_itype1 == LUA_TNUMBER) {
+            float value = lua_tonumber(L, 1);
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            SH_this->self->setValue(value);
+            SH_nresult = 0;
+        }
+        else if (SH_itype1 == LUA_TNUMBER) {
+            double value = lua_tonumber(L, 1);
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            SH_this->self->setValue(value);
+            SH_nresult = 0;
+        }
+        else {
+            luaL_error(L, "error with arguments");
+        }
+        break;
+    default:
+        luaL_error(L, "error with arguments");
+        break;
+    }
+    return SH_nresult;
+    // splicer end class.ExClass2.method.setValue
+}
+
+// int getValue()
+// double getValue()
+static int l_exclass2_get_value(lua_State *L)
+{
+    // splicer begin class.ExClass2.method.getValue
+    int SH_nresult = 0;
+    int SH_nargs = lua_gettop(L);
+    switch (SH_nargs) {
+    case 0:
+        {
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            int SHCXX_rv = SH_this->self->getValue();
+            lua_pushinteger(L, SHCXX_rv);
+            SH_nresult = 1;
+        }
+        {
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            double SHCXX_rv = SH_this->self->getValue();
+            lua_pushnumber(L, SHCXX_rv);
+            SH_nresult = 1;
+        }
+        break;
+    default:
+        luaL_error(L, "error with arguments");
+        break;
+    }
+    return SH_nresult;
+    // splicer end class.ExClass2.method.getValue
+}
+
 // splicer begin class.ExClass2.additional_functions
 // splicer end class.ExClass2.additional_functions
 
@@ -457,6 +541,8 @@ static const struct luaL_Reg l_ExClass2_Reg [] = {
     {"declare", l_exclass2_declare},
     {"destroyall", l_exclass2_destroyall},
     {"getTypeID", l_exclass2_get_type_id},
+    {"setValue", l_exclass2_set_value},
+    {"getValue", l_exclass2_get_value},
     // splicer begin class.ExClass2.register
     // splicer end class.ExClass2.register
     {NULL, NULL}   /*sentinel */

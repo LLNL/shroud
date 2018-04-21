@@ -643,27 +643,12 @@ YAML::
         - int
         - double
 
-C wrapper::
+This will create a Python wrapper for each value of *ArgType*, ``int``
+and ``double`` and then a single which will call the other two in
+sucession looking for input arguments which match.
+This is similar to ``Function6``.
 
-    void TUT_function7_int(int arg)
-    {
-        Function7<int>(arg);
-        return;
-    }
-    
-    void TUT_function7_double(double arg)
-    {
-        Function7<double>(arg);
-        return;
-    }
-
-The Fortran wrapper will also generate an interface block::
-
-    interface function7
-        module procedure function7_int
-        module procedure function7_double
-    end interface function7
-
+.. note:: fix RetType for Python
 
 Likewise, the return type can be templated but in this case no
 interface block will be generated since generic function cannot vary

@@ -757,8 +757,6 @@ return 1;""", fmt)
         for function in functions:
             flist = overloaded_methods. \
                 setdefault(function.ast.name, [])
-            if not function._cxx_overload:
-                continue
             if not function.options.wrap_python:
                 continue
             flist.append(function)

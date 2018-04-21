@@ -160,6 +160,9 @@ declarations:
       RetType:
       - int
       - double
+    options:
+       wrap_lua: False
+       wrap_python: False
   
   - decl: void Function9(double arg)
     fortran_generic:

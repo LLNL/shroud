@@ -293,6 +293,38 @@ static int l_function6(lua_State *L)
     // splicer end function.Function6
 }
 
+// void Function7(int arg +intent(in)+value)
+// void Function7(double arg +intent(in)+value)
+static int l_function7(lua_State *L)
+{
+    // splicer begin function.Function7
+    int SH_nresult = 0;
+    int SH_nargs = lua_gettop(L);
+    int SH_itype1 = lua_type(L, 1);
+    switch (SH_nargs) {
+    case 1:
+        if (SH_itype1 == LUA_TNUMBER) {
+            int arg = lua_tointeger(L, 1);
+            tutorial::Function7(arg);
+            SH_nresult = 0;
+        }
+        else if (SH_itype1 == LUA_TNUMBER) {
+            double arg = lua_tonumber(L, 1);
+            tutorial::Function7(arg);
+            SH_nresult = 0;
+        }
+        else {
+            luaL_error(L, "error with arguments");
+        }
+        break;
+    default:
+        luaL_error(L, "error with arguments");
+        break;
+    }
+    return SH_nresult;
+    // splicer end function.Function7
+}
+
 // void Function9(double arg +intent(in)+value)
 static int l_function9(lua_State *L)
 {
@@ -502,6 +534,7 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"Function4b", l_function4b},
     {"Function5", l_function5},
     {"Function6", l_function6},
+    {"Function7", l_function7},
     {"Function9", l_function9},
     {"Function10", l_function10},
     {"overload1", l_overload1},

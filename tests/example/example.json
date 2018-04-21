@@ -3838,6 +3838,30 @@
                                 "fmtf": {
                                     "c_var": "value", 
                                     "f_var": "value"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": "", 
+                                    "c_var": "lua_tointeger(L, 1)", 
+                                    "c_var_len": "Lvalue", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "int", 
+                                    "cxx_var": "value", 
+                                    "lua_var": "SH_Lua_value"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_decl": "int value", 
+                                    "c_ptr": "", 
+                                    "c_type": "int", 
+                                    "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_decl": "int value", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "int", 
+                                    "cxx_var": "value", 
+                                    "numpy_type": "NPY_INT", 
+                                    "py_var": "SHPy_value"
                                 }
                             }
                         }, 
@@ -3895,6 +3919,9 @@
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_int", 
                             "F_subprogram": "subroutine", 
+                            "LUA_name": "setValue", 
+                            "LUA_name_impl": "l_exclass2_set_value", 
+                            "PY_name_impl": "PP_exclass2_setValue_int", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
@@ -3905,8 +3932,8 @@
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
-                            "wrap_lua": false, 
-                            "wrap_python": false
+                            "wrap_lua": true, 
+                            "wrap_python": true
                         }
                     }, 
                     {
@@ -3923,6 +3950,30 @@
                                 "fmtf": {
                                     "c_var": "value", 
                                     "f_var": "value"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": "", 
+                                    "c_var": "lua_tointeger(L, 1)", 
+                                    "c_var_len": "Lvalue", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "long", 
+                                    "cxx_var": "value", 
+                                    "lua_var": "SH_Lua_value"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_decl": "long value", 
+                                    "c_ptr": "", 
+                                    "c_type": "long", 
+                                    "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_decl": "long value", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "long", 
+                                    "cxx_var": "value", 
+                                    "numpy_type": "NPY_LONG", 
+                                    "py_var": "SHPy_value"
                                 }
                             }
                         }, 
@@ -3980,6 +4031,7 @@
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_long", 
                             "F_subprogram": "subroutine", 
+                            "PY_name_impl": "PP_exclass2_setValue_long", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
@@ -3990,8 +4042,8 @@
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
-                            "wrap_lua": false, 
-                            "wrap_python": false
+                            "wrap_lua": true, 
+                            "wrap_python": true
                         }
                     }, 
                     {
@@ -4008,6 +4060,30 @@
                                 "fmtf": {
                                     "c_var": "value", 
                                     "f_var": "value"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": "", 
+                                    "c_var": "lua_tonumber(L, 1)", 
+                                    "c_var_len": "Lvalue", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "float", 
+                                    "cxx_var": "value", 
+                                    "lua_var": "SH_Lua_value"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_decl": "float value", 
+                                    "c_ptr": "", 
+                                    "c_type": "float", 
+                                    "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_decl": "float value", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "float", 
+                                    "cxx_var": "value", 
+                                    "numpy_type": "NPY_FLOAT", 
+                                    "py_var": "SHPy_value"
                                 }
                             }
                         }, 
@@ -4065,6 +4141,7 @@
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_float", 
                             "F_subprogram": "subroutine", 
+                            "PY_name_impl": "PP_exclass2_setValue_float", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
@@ -4075,8 +4152,8 @@
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
-                            "wrap_lua": false, 
-                            "wrap_python": false
+                            "wrap_lua": true, 
+                            "wrap_python": true
                         }
                     }, 
                     {
@@ -4093,6 +4170,30 @@
                                 "fmtf": {
                                     "c_var": "value", 
                                     "f_var": "value"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_ptr": "", 
+                                    "c_var": "lua_tonumber(L, 1)", 
+                                    "c_var_len": "Lvalue", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "double", 
+                                    "cxx_var": "value", 
+                                    "lua_var": "SH_Lua_value"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_decl": "double value", 
+                                    "c_ptr": "", 
+                                    "c_type": "double", 
+                                    "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_decl": "double value", 
+                                    "cxx_deref": ".", 
+                                    "cxx_type": "double", 
+                                    "cxx_var": "value", 
+                                    "numpy_type": "NPY_DOUBLE", 
+                                    "py_var": "SHPy_value"
                                 }
                             }
                         }, 
@@ -4150,6 +4251,7 @@
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_double", 
                             "F_subprogram": "subroutine", 
+                            "PY_name_impl": "PP_exclass2_setValue_double", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
@@ -4160,8 +4262,8 @@
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
-                            "wrap_lua": false, 
-                            "wrap_python": false
+                            "wrap_lua": true, 
+                            "wrap_python": true
                         }
                     }, 
                     {
@@ -4209,6 +4311,23 @@
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHC_rv"
+                            }, 
+                            "fmtl": {
+                                "c_var": "SHCXX_rv", 
+                                "cxx_addr": "&", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_ptr": "", 
+                                "c_var": "SHC_rv", 
+                                "cxx_addr": "&", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHC_rv", 
+                                "numpy_type": "NPY_INT", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 37, 
@@ -4250,6 +4369,9 @@
                             "F_name_impl": "exclass2_get_value_int", 
                             "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "LUA_name": "getValue", 
+                            "LUA_name_impl": "l_exclass2_get_value", 
+                            "PY_name_impl": "PP_exclass2_getValue_int", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
@@ -4261,8 +4383,8 @@
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
-                            "wrap_lua": false, 
-                            "wrap_python": false
+                            "wrap_lua": true, 
+                            "wrap_python": true
                         }
                     }, 
                     {
@@ -4273,6 +4395,23 @@
                                 "cxx_addr": "&", 
                                 "cxx_deref": ".", 
                                 "cxx_var": "SHC_rv"
+                            }, 
+                            "fmtl": {
+                                "c_var": "SHCXX_rv", 
+                                "cxx_addr": "&", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHCXX_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PyObject", 
+                                "PyTypeObject": null, 
+                                "c_ptr": "", 
+                                "c_var": "SHC_rv", 
+                                "cxx_addr": "&", 
+                                "cxx_deref": ".", 
+                                "cxx_var": "SHC_rv", 
+                                "numpy_type": "NPY_DOUBLE", 
+                                "py_var": "SHTPy_rv"
                             }
                         }, 
                         "_function_index": 38, 
@@ -4314,6 +4453,7 @@
                             "F_name_impl": "exclass2_get_value_double", 
                             "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
+                            "PY_name_impl": "PP_exclass2_getValue_double", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
@@ -4325,8 +4465,8 @@
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
-                            "wrap_lua": false, 
-                            "wrap_python": false
+                            "wrap_lua": true, 
+                            "wrap_python": true
                         }
                     }
                 ], 
