@@ -933,7 +933,7 @@ Shroud will generate a type map for this class as::
         base: shadow
         c_type: TUT_class1
         cxx_type: Class1
-        c_to_cxx: \tstatic_cast<{c_const}Class1{c_deref}>(\tstatic_cast<{c_const}void *>(\t{c_var}))
+        c_to_cxx: \tstatic_cast<{c_const}Class1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))
         cxx_to_c: \tstatic_cast<{c_const}TUT_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))
 
         f_type: type(class1)
