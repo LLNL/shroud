@@ -311,6 +311,8 @@ class GenFunctions(object):
         class member variables.
         """
         ast = var.ast
+        typedef = typemap.Typedef.lookup(ast.typename)
+
         fmt = util.Scope(var.fmtdict)
         fmt.field = ast.name
 
@@ -321,7 +323,6 @@ class GenFunctions(object):
 
         # getter
         funcname = 'get' + ast.name.capitalize()
-        typedef = typemap.Typedef.lookup(ast.typename)
         argdecl = ast.gen_arg_as_c(name=funcname, continuation=True)
         decl = '{}()'.format(argdecl)
         field = wformat('{CXX_this}->{field}', fmt)
@@ -337,6 +338,31 @@ class GenFunctions(object):
         )
 
         cls.add_function(decl, format=format, options=options)
+
+        # setter
+        funcname = 'set' + ast.name.capitalize()
+        argdecl = ast.gen_arg_as_c(name='val', continuation=True)
+        decl = 'void {}({})'.format(funcname, argdecl)
+        field = wformat('{CXX_this}->{field}', fmt)
+        if typedef.c_to_cxx is None:
+            val = 'val'
+        else:
+            fmt.c_var = 'val'
+            val = wformat(typedef.c_to_cxx, fmt)
+        set_val = '{} = {};'.format(field, val)
+
+        attrs=dict(
+            val=dict(
+                intent='in',
+                value=True,  # XXX - what about pointer variables?
+            )
+        )
+
+        format=dict(
+            C_code='{C_pre_call}\n' + set_val + '\nreturn;',
+        )
+
+        cls.add_function(decl, attrs=attrs, format=format, options=options)
 
     def define_function_suffix(self, functions):
         """

@@ -316,7 +316,7 @@ contains
   end subroutine test_struct1
 
   subroutine test_class1
-    integer iflag, mflag
+    integer iflag, mtest
     integer direction
     type(class1) obj0, obj1
     type(class1) obj0a
@@ -329,8 +329,12 @@ contains
     ptr = obj0%get_instance()
     call assert_true(c_associated(ptr), "class1_new obj0")
 
-    mflag = obj0%get_m_flag()
-    call assert_equals(0, mflag)
+    mtest = obj0%get_m_test()
+    call assert_equals(0, mtest)
+
+    call obj0%set_m_test(4)
+    mtest = obj0%get_m_test()
+    call assert_equals(4, mtest)
 
     obj1 = class1_new(1)
     ptr = obj1%get_instance()

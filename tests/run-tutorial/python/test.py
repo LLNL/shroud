@@ -214,11 +214,12 @@ class Tutorial(unittest.TestCase):
     def test_class1_create1(self):
         obj = tutorial.Class1()
         self.assertIsInstance(obj, tutorial.Class1)
-        self.assertEqual(0, obj.m_flag)
-        obj.m_flag = 4
-        self.assertEqual(4, obj.m_flag)
-        obj.m_flag = -1
-        self.assertEqual(-1, obj.m_flag)
+        self.assertEqual(0, obj.m_test)
+        obj.m_test = 4
+        self.assertEqual(4, obj.m_test)
+        # test -1 since PyInt_AsLong returns -1 on error
+        obj.m_test = -1
+        self.assertEqual(-1, obj.m_test)
         with self.assertRaises(TypeError) as context:
             obj.m_flag = "dog"
         del obj
