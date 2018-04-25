@@ -824,10 +824,11 @@ return 1;""", fmt)
         result_return_pointer_as = node.return_pointer_as
 
         if cls:
-            fmt.PY_used_param_self = True
             if 'static' in ast.storage:
                 ml_flags.append('METH_STATIC')
                 fmt_func.PY_this_call = fmt_func.namespace_scope + fmt_func.class_scope
+            else:
+                fmt.PY_used_param_self = True
 
         if is_dtor:
             # Added in tp_del from write_tp_func.

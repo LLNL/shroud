@@ -75,7 +75,7 @@ static char PY_singleton_getReference__doc__[] =
 
 static PyObject *
 PY_singleton_getReference(
-  PY_Singleton *self,
+  PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
