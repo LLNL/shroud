@@ -932,8 +932,9 @@ Argument
 c_const
     ``const`` if argument has the *const* attribute.
 
-c_ptr
-    `` * `` if argument is a pointer.
+c_deref
+    Used to dereference *c_var*.
+    ``*`` if it is a pointer, else blank.
 
 c_var
     The C name of the argument.

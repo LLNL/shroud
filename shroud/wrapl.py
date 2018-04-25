@@ -508,10 +508,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_arg.lua_var = 'SH_Lua_' + arg_name
             fmt_arg.c_var_len = 'L' + arg_name
             if arg.is_pointer():
-                fmt_arg.c_ptr = ' *'
+                fmt_arg.c_deref = ' *'
                 fmt_arg.cxx_member = '->'
             else:
-                fmt_arg.c_ptr = ''
+                fmt_arg.c_deref = ''
                 fmt_arg.cxx_member = '.'
             attrs = arg.attrs
 

@@ -64,7 +64,7 @@
                             "F_subprogram": "subroutine", 
                             "PY_name_impl": "PY_names_method1", 
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_deref": " *", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -112,7 +112,7 @@
                             "F_this": "obj2", 
                             "PY_name_impl": "PY_names_method2", 
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_deref": " *", 
                             "c_var": "self2", 
                             "function_name": "method2", 
                             "underscore_name": "method2"
@@ -424,7 +424,7 @@
                     "i": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_var": "i", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -437,7 +437,7 @@
                         "fmtpy": {
                             "c_const": "", 
                             "c_decl": "int i", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_type": "int", 
                             "c_var": "i", 
                             "cxx_addr": "&", 
@@ -518,7 +518,7 @@
                     "i": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_var": "i", 
                             "cxx_member": ".", 
                             "cxx_type": "long", 
@@ -531,7 +531,7 @@
                         "fmtpy": {
                             "c_const": "", 
                             "c_decl": "long i", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_type": "long", 
                             "c_var": "i", 
                             "cxx_addr": "&", 
@@ -609,7 +609,7 @@
                     "rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_var": "rv", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
@@ -618,7 +618,7 @@
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_decl": "const char * rv", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_type": "char", 
                             "c_var": "rv", 
                             "cxx_addr": "&", 
@@ -641,7 +641,7 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
-                        "c_ptr": "", 
+                        "c_deref": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
@@ -721,7 +721,7 @@
                     "rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_var": "rv", 
                             "c_var_trim": "Lrv", 
                             "cxx_member": ".", 
@@ -973,7 +973,7 @@
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_INT", 
-            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "i", 
             "PY_get": "PyInt_AsLong({py_var})", 
             "c_to_cxx": "static_cast<Color>({c_var})", 
@@ -1166,7 +1166,7 @@
                 }, 
                 "intent_inout": {
                     "post_call": [
-                        "{py_var} = PyBool_FromLong({c_ptr}{c_var});"
+                        "{py_var} = PyBool_FromLong({c_deref}{c_var});"
                     ], 
                     "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
@@ -1310,7 +1310,7 @@
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_DOUBLE", 
-            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
+            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})", 
             "PY_format": "d", 
             "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "double", 
@@ -1329,7 +1329,7 @@
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_FLOAT", 
-            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
+            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})", 
             "PY_format": "f", 
             "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "float", 
@@ -1348,7 +1348,7 @@
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_INT", 
-            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "i", 
             "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "int", 
@@ -1367,7 +1367,7 @@
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_LONG", 
-            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "l", 
             "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "long", 
@@ -1402,7 +1402,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromSize_t({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})", 
             "c_header": "<stddef.h>", 
             "c_type": "size_t", 
             "cxx_type": "size_t", 

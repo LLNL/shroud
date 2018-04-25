@@ -496,7 +496,7 @@ return 1;""", fmt)
 
         fmt = util.Scope(fmt_var)
         fmt.c_var = wformat('{PY_param_self}->{PY_obj}->{field_name}', fmt_var)
-        fmt.c_ptr = ''  # XXX needed for PY_ctor
+        fmt.c_deref = ''  # XXX needed for PY_ctor
         fmt.py_var = 'value'  # Used with PY_get
 
         ast = node.ast
@@ -876,11 +876,11 @@ return 1;""", fmt)
                     name=fmt_result.cxx_var, params=None, continuation=True)
 
             if CXX_result.is_pointer():
-                fmt_result.c_ptr = '*'
+                fmt_result.c_deref = '*'
                 fmt_result.cxx_addr = ''
                 fmt_result.cxx_member = '->'
             else:
-                fmt_result.c_ptr = ''
+                fmt_result.c_deref = ''
                 fmt_result.cxx_addr = '&'
                 fmt_result.cxx_member = '.'
             fmt_result.c_var = fmt_result.cxx_var
@@ -942,11 +942,11 @@ return 1;""", fmt)
             else:
                 fmt_arg.c_const = ''
             if arg.is_pointer():
-                fmt_arg.c_ptr = ' *'
+                fmt_arg.c_deref = '*'
                 fmt_arg.cxx_addr = ''
                 fmt_arg.cxx_member = '->'
             else:
-                fmt_arg.c_ptr = ''
+                fmt_arg.c_deref = ''
                 fmt_arg.cxx_addr = '&'
                 fmt_arg.cxx_member = '.'
             attrs = arg.attrs
@@ -974,7 +974,7 @@ return 1;""", fmt)
                 local_var = 'pointer'
             else:
                 # non-strings should be scalars
-                fmt_arg.c_ptr = ''
+                fmt_arg.c_deref = ''
 #                fmt_arg.cxx_addr = '&'
 #                fmt_arg.cxx_member = '.'
                 fmt_arg.c_decl = wformat('{c_type} {c_var}', fmt_arg)

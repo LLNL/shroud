@@ -517,7 +517,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_func.c_const = 'const '
                 else:
                     fmt_func.c_const = ''
-                fmt_func.c_ptr = ' *'
+                fmt_func.c_deref = '*'
                 fmt_func.c_var = fmt_func.C_this
                 if is_static:
                     fmt_func.CXX_this_call = fmt_func.namespace_scope + fmt_func.class_scope
@@ -560,11 +560,11 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_const = ''
             arg_is_union_scalar = False
             if arg.is_pointer():
-                fmt_arg.c_ptr = '*'
+                fmt_arg.c_deref = '*'
                 fmt_arg.cxx_member = '->'
 #                fmt_arg.cxx_addr = ''
             else:
-                fmt_arg.c_ptr = ''
+                fmt_arg.c_deref = ''
                 fmt_arg.cxx_member = '.'
 #                fmt_arg.cxx_addr = '&'
                 if arg_typedef.c_union:
