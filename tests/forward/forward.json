@@ -37,13 +37,13 @@
                                 "c_val": "\tstatic_cast<FOR_class2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
-                                "cxx_deref": "->", 
+                                "cxx_member": "->", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "\tstatic_cast<FOR_class2 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                                 "cxx_addr": "", 
-                                "cxx_deref": "->", 
+                                "cxx_member": "->", 
                                 "cxx_var": "SHCXX_rv"
                             }, 
                             "fmtpy": {
@@ -52,7 +52,7 @@
                                 "c_ptr": "", 
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
-                                "cxx_deref": ".", 
+                                "cxx_member": ".", 
                                 "cxx_var": "SHCXX_rv", 
                                 "numpy_type": null, 
                                 "py_var": "SHTPy_rv"
@@ -157,7 +157,7 @@
                                     "c_ptr": "*", 
                                     "c_var": "arg", 
                                     "cxx_decl": "tutorial::Class1 * SHCXX_arg", 
-                                    "cxx_deref": "->", 
+                                    "cxx_member": "->", 
                                     "cxx_type": "tutorial::Class1", 
                                     "cxx_val": "\tstatic_cast<tutorial::Class1 *>(\tstatic_cast<void *>(\targ))", 
                                     "cxx_var": "SHCXX_arg"
@@ -171,7 +171,7 @@
                                     "c_ptr": " *", 
                                     "c_var": "\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")", 
                                     "c_var_len": "Larg", 
-                                    "cxx_deref": "->", 
+                                    "cxx_member": "->", 
                                     "cxx_type": "tutorial::Class1", 
                                     "cxx_var": "arg", 
                                     "lua_var": "SH_Lua_arg"
@@ -184,7 +184,7 @@
                                     "c_var": "arg", 
                                     "cxx_addr": "", 
                                     "cxx_decl": "tutorial::Class1 arg", 
-                                    "cxx_deref": "->", 
+                                    "cxx_member": "->", 
                                     "cxx_type": "tutorial::Class1", 
                                     "cxx_var": "SH_arg", 
                                     "numpy_type": null, 
@@ -785,8 +785,8 @@
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
-            "PY_build_arg": "{cxx_var}{cxx_deref}c_str()", 
-            "PY_ctor": "PyString_FromString({cxx_var}{cxx_deref}c_str())", 
+            "PY_build_arg": "{cxx_var}{cxx_member}c_str()", 
+            "PY_ctor": "PyString_FromString({cxx_var}{cxx_member}c_str())", 
             "PY_format": "s", 
             "base": "string", 
             "c_statements": {
@@ -809,7 +809,7 @@
                     "cxx_header": "<cstring>", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
+                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var});"
@@ -823,7 +823,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_deref}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var}({c_var}, {c_var_trim});"
@@ -833,7 +833,7 @@
                     "cxx_header": "<cstring>", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
+                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "{c_const}std::string {cxx_var};"
@@ -846,7 +846,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var};"
@@ -859,17 +859,17 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cxx_var}{cxx_deref}empty()) {{", 
+                        "if ({cxx_var}{cxx_member}empty()) {{", 
                         "    {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());", 
+                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());", 
                         "}}"
                     ]
                 }
             }, 
             "c_type": "char", 
             "cxx_header": "<string>", 
-            "cxx_to_c": "{cxx_var}{cxx_deref}c_str()", 
+            "cxx_to_c": "{cxx_var}{cxx_member}c_str()", 
             "cxx_type": "std::string", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -1070,7 +1070,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "*{c_var} = {cxx_addr}{cxx_var};", 
-                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
+                        "*{c_var_len} = {cxx_var}{cxx_member}size();"
                     ]
                 }
             }, 

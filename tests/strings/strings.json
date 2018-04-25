@@ -127,7 +127,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "status", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status"
                         }, 
@@ -143,7 +143,7 @@
                             "c_var": "status", 
                             "cxx_addr": "&", 
                             "cxx_decl": "char status", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status", 
                             "numpy_type": null, 
@@ -217,7 +217,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
@@ -226,7 +226,7 @@
                         "c_ptr": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHC_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -288,7 +288,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
                         }, 
@@ -302,7 +302,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
@@ -380,7 +380,7 @@
                             "c_const": "", 
                             "c_ptr": "*", 
                             "c_var": "dest", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "dest"
                         }
@@ -390,7 +390,7 @@
                             "c_const": "const ", 
                             "c_ptr": "*", 
                             "c_var": "src", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "src"
                         }
@@ -493,7 +493,7 @@
                             "c_ptr": "*", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_dest"
                         }, 
@@ -508,7 +508,7 @@
                             "c_ptr": "*", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_src"
                         }, 
@@ -615,7 +615,7 @@
                             "c_const": "", 
                             "c_ptr": "*", 
                             "c_var": "s", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "s"
                         }, 
@@ -629,7 +629,7 @@
                             "c_var": "s", 
                             "cxx_addr": "", 
                             "cxx_decl": "char * s", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "s", 
                             "numpy_type": null, 
@@ -713,7 +713,7 @@
                             "c_var": "s", 
                             "c_var_len": "Ns", 
                             "c_var_trim": "Ls", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_s"
                         }, 
@@ -796,7 +796,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
@@ -805,7 +805,7 @@
                         "c_ptr": "*", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHC_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -874,7 +874,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
                         }
@@ -884,7 +884,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
@@ -962,7 +962,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
@@ -971,7 +971,7 @@
                         "c_ptr": "*", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHC_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -1040,7 +1040,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
                         }, 
@@ -1054,7 +1054,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
@@ -1130,7 +1130,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
@@ -1139,7 +1139,7 @@
                         "c_ptr": "*", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHC_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -1200,7 +1200,7 @@
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
                         }, 
@@ -1214,7 +1214,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
@@ -1363,7 +1363,7 @@
                         "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -1421,7 +1421,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
@@ -1435,7 +1435,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -1515,7 +1515,7 @@
                         "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -1564,7 +1564,7 @@
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "&", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
@@ -1578,7 +1578,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -1727,7 +1727,7 @@
                         "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -1780,7 +1780,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
@@ -1796,7 +1796,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -1875,7 +1875,7 @@
                         "c_val": "SHCXX_rv.c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -1884,7 +1884,7 @@
                         "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -1954,7 +1954,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }
@@ -1964,7 +1964,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -2045,7 +2045,7 @@
                         "c_val": "SHCXX_rv.c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -2054,7 +2054,7 @@
                         "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -2126,7 +2126,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
@@ -2140,7 +2140,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -2219,7 +2219,7 @@
                         "c_val": "SHCXX_rv.c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -2228,7 +2228,7 @@
                         "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -2292,7 +2292,7 @@
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "&", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
@@ -2306,7 +2306,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -2455,7 +2455,7 @@
                         "c_val": "SHCXX_rv.c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -2464,7 +2464,7 @@
                         "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -2536,7 +2536,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
@@ -2550,7 +2550,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -2629,7 +2629,7 @@
                         "c_val": "SHCXX_rv.c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -2638,7 +2638,7 @@
                         "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -2704,7 +2704,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
@@ -2720,7 +2720,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -2800,7 +2800,7 @@
                         "c_val": "SHCXX_rv->c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -2809,7 +2809,7 @@
                         "c_ptr": "*", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHCXX_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -2880,7 +2880,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
@@ -2894,7 +2894,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -2974,7 +2974,7 @@
                         "c_val": "SHCXX_rv->c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -2983,7 +2983,7 @@
                         "c_ptr": "*", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHCXX_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -3049,7 +3049,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
@@ -3065,7 +3065,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -3145,7 +3145,7 @@
                         "c_val": "SHCXX_rv->c_str()", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHCXX_rv"
                     }, 
                     "fmtpy": {
@@ -3154,7 +3154,7 @@
                         "c_ptr": "*", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHCXX_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -3220,7 +3220,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
@@ -3236,7 +3236,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_deref": "->", 
+                        "cxx_member": "->", 
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
@@ -3316,7 +3316,7 @@
                             "c_const": "const ", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -3328,7 +3328,7 @@
                             "c_var": "arg1", 
                             "cxx_addr": "&", 
                             "cxx_decl": "const std::string & arg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
                             "numpy_type": null, 
@@ -3412,7 +3412,7 @@
                             "c_ptr": "", 
                             "c_var": "arg1", 
                             "c_var_trim": "Larg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -3496,7 +3496,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -3510,7 +3510,7 @@
                             "c_var": "arg1", 
                             "cxx_addr": "&", 
                             "cxx_decl": "std::string & arg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
                             "numpy_type": null, 
@@ -3595,7 +3595,7 @@
                             "c_ptr": "", 
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -3680,7 +3680,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "arg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -3694,7 +3694,7 @@
                             "c_var": "arg1", 
                             "cxx_addr": "&", 
                             "cxx_decl": "std::string & arg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
                             "numpy_type": null, 
@@ -3780,7 +3780,7 @@
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "c_var_trim": "Larg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -3866,7 +3866,7 @@
                             "c_const": "", 
                             "c_ptr": "*", 
                             "c_var": "arg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -3880,7 +3880,7 @@
                             "c_var": "arg1", 
                             "cxx_addr": "", 
                             "cxx_decl": "std::string * arg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
                             "numpy_type": null, 
@@ -3965,7 +3965,7 @@
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "c_var_trim": "Larg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
                         }, 
@@ -4055,7 +4055,7 @@
                             "c_var": "arg1", 
                             "cxx_addr": "&", 
                             "cxx_decl": "std::string & arg1", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
                             "numpy_type": null, 
@@ -4073,7 +4073,7 @@
                             "c_var": "arg2", 
                             "cxx_addr": "&", 
                             "cxx_decl": "std::string & arg2", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg2", 
                             "numpy_type": null, 
@@ -4211,7 +4211,7 @@
                             "c_const": "", 
                             "c_ptr": "*", 
                             "c_var": "name", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name"
                         }, 
@@ -4223,7 +4223,7 @@
                             "c_var": "name", 
                             "cxx_addr": "", 
                             "cxx_decl": "char * name", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name", 
                             "numpy_type": null, 
@@ -4304,7 +4304,7 @@
                             "c_ptr": "*", 
                             "c_var": "name", 
                             "c_var_trim": "AAlen", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_name"
                         }, 
@@ -4386,7 +4386,7 @@
                             "c_const": "", 
                             "c_ptr": "*", 
                             "c_var": "name", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name"
                         }
@@ -4466,7 +4466,7 @@
                             "c_ptr": "*", 
                             "c_var": "name", 
                             "c_var_len": "AAtrim", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_name"
                         }, 
@@ -4547,7 +4547,7 @@
                             "c_const": "", 
                             "c_ptr": "", 
                             "c_var": "status", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status"
                         }, 
@@ -4563,7 +4563,7 @@
                             "c_var": "status", 
                             "cxx_addr": "&", 
                             "cxx_decl": "char status", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status", 
                             "numpy_type": null, 
@@ -4639,7 +4639,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
@@ -4648,7 +4648,7 @@
                         "c_ptr": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHC_rv", 
                         "numpy_type": null, 
                         "py_var": "SHTPy_rv"
@@ -4712,7 +4712,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
                         }, 
@@ -4726,7 +4726,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
@@ -4805,7 +4805,7 @@
                             "c_const": "", 
                             "c_ptr": "*", 
                             "c_var": "dest", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "dest"
                         }
@@ -4815,7 +4815,7 @@
                             "c_const": "const ", 
                             "c_ptr": "*", 
                             "c_var": "src", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "src"
                         }
@@ -4919,7 +4919,7 @@
                             "c_ptr": "*", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_dest"
                         }, 
@@ -4934,7 +4934,7 @@
                             "c_ptr": "*", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
-                            "cxx_deref": "->", 
+                            "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_src"
                         }, 
@@ -5430,8 +5430,8 @@
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
-            "PY_build_arg": "{cxx_var}{cxx_deref}c_str()", 
-            "PY_ctor": "PyString_FromString({cxx_var}{cxx_deref}c_str())", 
+            "PY_build_arg": "{cxx_var}{cxx_member}c_str()", 
+            "PY_ctor": "PyString_FromString({cxx_var}{cxx_member}c_str())", 
             "PY_format": "s", 
             "base": "string", 
             "c_statements": {
@@ -5454,7 +5454,7 @@
                     "cxx_header": "<cstring>", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
+                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var});"
@@ -5468,7 +5468,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_deref}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var}({c_var}, {c_var_trim});"
@@ -5478,7 +5478,7 @@
                     "cxx_header": "<cstring>", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
+                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "{c_const}std::string {cxx_var};"
@@ -5491,7 +5491,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var};"
@@ -5504,17 +5504,17 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cxx_var}{cxx_deref}empty()) {{", 
+                        "if ({cxx_var}{cxx_member}empty()) {{", 
                         "    {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());", 
+                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());", 
                         "}}"
                     ]
                 }
             }, 
             "c_type": "char", 
             "cxx_header": "<string>", 
-            "cxx_to_c": "{cxx_var}{cxx_deref}c_str()", 
+            "cxx_to_c": "{cxx_var}{cxx_member}c_str()", 
             "cxx_type": "std::string", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -5715,7 +5715,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "*{c_var} = {cxx_addr}{cxx_var};", 
-                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
+                        "*{c_var_len} = {cxx_var}{cxx_member}size();"
                     ]
                 }
             }, 

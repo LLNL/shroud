@@ -878,11 +878,11 @@ return 1;""", fmt)
             if CXX_result.is_pointer():
                 fmt_result.c_ptr = '*'
                 fmt_result.cxx_addr = ''
-                fmt_result.cxx_deref = '->'
+                fmt_result.cxx_member = '->'
             else:
                 fmt_result.c_ptr = ''
                 fmt_result.cxx_addr = '&'
-                fmt_result.cxx_deref = '.'
+                fmt_result.cxx_member = '.'
             fmt_result.c_var = fmt_result.cxx_var
             fmt_result.py_var = fmt.PY_result
             fmt_result.numpy_type = result_typedef.PYN_typenum
@@ -944,11 +944,11 @@ return 1;""", fmt)
             if arg.is_pointer():
                 fmt_arg.c_ptr = ' *'
                 fmt_arg.cxx_addr = ''
-                fmt_arg.cxx_deref = '->'
+                fmt_arg.cxx_member = '->'
             else:
                 fmt_arg.c_ptr = ''
                 fmt_arg.cxx_addr = '&'
-                fmt_arg.cxx_deref = '.'
+                fmt_arg.cxx_member = '.'
             attrs = arg.attrs
 
             dimension = arg.attrs.get('dimension', False)
@@ -976,7 +976,7 @@ return 1;""", fmt)
                 # non-strings should be scalars
                 fmt_arg.c_ptr = ''
 #                fmt_arg.cxx_addr = '&'
-#                fmt_arg.cxx_deref = '.'
+#                fmt_arg.cxx_member = '.'
                 fmt_arg.c_decl = wformat('{c_type} {c_var}', fmt_arg)
                 fmt_arg.cxx_decl = wformat('{cxx_type} {cxx_var}', fmt_arg)
                 local_var = 'scalar'
@@ -1005,11 +1005,11 @@ return 1;""", fmt)
                     fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
                 local_var = cxx_local_var
                 pass_var = fmt_arg.cxx_var
-                # cxx_deref used with typedef fields like PY_ctor.
+                # cxx_member used with typedef fields like PY_ctor.
                 if cxx_local_var == 'scalar':
-                    fmt_arg.cxx_deref = '.'
+                    fmt_arg.cxx_member = '.'
                 elif cxx_local_var == 'pointer':
-                    fmt_arg.cxx_deref = '->'
+                    fmt_arg.cxx_member = '->'
 
             if implied:
                 pass

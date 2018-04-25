@@ -490,10 +490,10 @@ class Wrapc(util.WrapperMixin):
 
             if is_ctor or is_pointer:
                 # The C wrapper always creates a pointer to the new in the ctor
-                fmt_result.cxx_deref = '->'
+                fmt_result.cxx_member = '->'
                 fmt_result.cxx_addr = ''
             else:
-                fmt_result.cxx_deref = '.'
+                fmt_result.cxx_member = '.'
                 fmt_result.cxx_addr = '&'
             fmt_pattern = fmt_result
 
@@ -561,11 +561,11 @@ class Wrapc(util.WrapperMixin):
             arg_is_union_scalar = False
             if arg.is_pointer():
                 fmt_arg.c_ptr = '*'
-                fmt_arg.cxx_deref = '->'
+                fmt_arg.cxx_member = '->'
 #                fmt_arg.cxx_addr = ''
             else:
                 fmt_arg.c_ptr = ''
-                fmt_arg.cxx_deref = '.'
+                fmt_arg.cxx_member = '.'
 #                fmt_arg.cxx_addr = '&'
                 if arg_typedef.c_union:
                     arg_is_union_scalar = True
@@ -592,10 +592,10 @@ class Wrapc(util.WrapperMixin):
                 stmts = 'result' + generated_suffix
                 need_wrapper = True
                 if is_pointer:
-                    fmt_arg.cxx_deref = '->'
+                    fmt_arg.cxx_member = '->'
                     fmt_arg.cxx_addr = ''
                 else:
-                    fmt_arg.cxx_deref = '.'
+                    fmt_arg.cxx_member = '.'
                     fmt_arg.cxx_addr = '&'
 
                 if is_allocatable:
@@ -603,7 +603,7 @@ class Wrapc(util.WrapperMixin):
                         # An intermediate string * is allocated
                         # to save std::string result.
                         fmt_arg.cxx_addr = ''
-                        fmt_arg.cxx_deref = '->'
+                        fmt_arg.cxx_member = '->'
             else:
                 arg_call = arg
                 if arg_is_union_scalar:
@@ -680,9 +680,9 @@ class Wrapc(util.WrapperMixin):
 #                else:
 #                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_arg.c_var
             if cxx_local_var == 'scalar':
-                fmt_arg.cxx_deref = '.'
+                fmt_arg.cxx_member = '.'
             elif cxx_local_var == 'pointer':
-                fmt_arg.cxx_deref = '->'
+                fmt_arg.cxx_member = '->'
 
             # Add code for intent of argument
             # pre_call.append('// intent=%s' % intent)
