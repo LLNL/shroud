@@ -932,8 +932,9 @@ Argument
 c_const
     ``const`` if argument has the *const* attribute.
 
-c_ptr
-    `` * `` if argument is a pointer.
+c_deref
+    Used to dereference *c_var*.
+    ``*`` if it is a pointer, else blank.
 
 c_var
     The C name of the argument.
@@ -957,8 +958,8 @@ cxx_addr
     Syntax to take address of argument.
     ``&`` or blank.
 
-cxx_deref
-    Syntax to dereference argument.
+cxx_member
+    Syntax to access members of *cxx_var*.
     If *cxx_local_var* is *object*, then set to ``.``;
     if *pointer*, then set to ``->``.
 
@@ -1245,7 +1246,7 @@ result_as_arg
 PY_build_arg
     Argument for Py_BuildValue.  Defaults to *{cxx_var}*.
     This field can be used to turn the argument into an expression such as
-    *(int) {cxx_var}*  or *{cxx_var}{cxx_deref}c_str()*
+    *(int) {cxx_var}*  or *{cxx_var}{cxx_member}c_str()*
     *PY_format* is used as the format:: 
 
        Py_BuildValue("{PY_format}", {PY_build_arg});

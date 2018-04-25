@@ -64,7 +64,7 @@
                             "F_subprogram": "subroutine", 
                             "PY_name_impl": "PY_names_method1", 
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_deref": " *", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -112,7 +112,7 @@
                             "F_this": "obj2", 
                             "PY_name_impl": "PY_names_method2", 
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_deref": " *", 
                             "c_var": "self2", 
                             "function_name": "method2", 
                             "underscore_name": "method2"
@@ -424,9 +424,9 @@
                     "i": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_var": "i", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "i"
                         }, 
@@ -437,12 +437,12 @@
                         "fmtpy": {
                             "c_const": "", 
                             "c_decl": "int i", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_type": "int", 
                             "c_var": "i", 
                             "cxx_addr": "&", 
                             "cxx_decl": "int i", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "i", 
                             "numpy_type": "NPY_INT", 
@@ -518,9 +518,9 @@
                     "i": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_var": "i", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "long", 
                             "cxx_var": "i"
                         }, 
@@ -531,12 +531,12 @@
                         "fmtpy": {
                             "c_const": "", 
                             "c_decl": "long i", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_type": "long", 
                             "c_var": "i", 
                             "cxx_addr": "&", 
                             "cxx_decl": "long i", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "long", 
                             "cxx_var": "i", 
                             "numpy_type": "NPY_LONG", 
@@ -609,21 +609,21 @@
                     "rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_var": "rv", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "ARG_rv"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_decl": "const char * rv", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_type": "char", 
                             "c_var": "rv", 
                             "cxx_addr": "&", 
                             "cxx_decl": "const std::string & rv", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_rv", 
                             "numpy_type": null, 
@@ -635,16 +635,16 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHC_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
-                        "c_ptr": "", 
+                        "c_deref": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHC_rv", 
                         "numpy_type": "NPY_INT", 
                         "py_var": "SHTPy_rv"
@@ -721,10 +721,10 @@
                     "rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": "", 
+                            "c_deref": "", 
                             "c_var": "rv", 
                             "c_var_trim": "Lrv", 
-                            "cxx_deref": ".", 
+                            "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "ARG_rv"
                         }, 
@@ -738,7 +738,7 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
-                        "cxx_deref": ".", 
+                        "cxx_member": ".", 
                         "cxx_var": "SHC_rv"
                     }
                 }, 
@@ -973,7 +973,7 @@
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_INT", 
-            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "i", 
             "PY_get": "PyInt_AsLong({py_var})", 
             "c_to_cxx": "static_cast<Color>({c_var})", 
@@ -1166,7 +1166,7 @@
                 }, 
                 "intent_inout": {
                     "post_call": [
-                        "{py_var} = PyBool_FromLong({c_ptr}{c_var});"
+                        "{py_var} = PyBool_FromLong({c_deref}{c_var});"
                     ], 
                     "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
@@ -1310,7 +1310,7 @@
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_DOUBLE", 
-            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
+            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})", 
             "PY_format": "d", 
             "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "double", 
@@ -1329,7 +1329,7 @@
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_FLOAT", 
-            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
+            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})", 
             "PY_format": "f", 
             "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "float", 
@@ -1348,7 +1348,7 @@
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_INT", 
-            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "i", 
             "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "int", 
@@ -1367,7 +1367,7 @@
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_LONG", 
-            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "l", 
             "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "long", 
@@ -1402,7 +1402,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromSize_t({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})", 
             "c_header": "<stddef.h>", 
             "c_type": "size_t", 
             "cxx_type": "size_t", 
@@ -1419,8 +1419,8 @@
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
-            "PY_build_arg": "{cxx_var}{cxx_deref}c_str()", 
-            "PY_ctor": "PyString_FromString({cxx_var}{cxx_deref}c_str())", 
+            "PY_build_arg": "{cxx_var}{cxx_member}c_str()", 
+            "PY_ctor": "PyString_FromString({cxx_var}{cxx_member}c_str())", 
             "PY_format": "s", 
             "base": "string", 
             "c_statements": {
@@ -1443,7 +1443,7 @@
                     "cxx_header": "<cstring>", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
+                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var});"
@@ -1457,7 +1457,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_deref}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var}({c_var}, {c_var_trim});"
@@ -1467,7 +1467,7 @@
                     "cxx_header": "<cstring>", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
+                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "{c_const}std::string {cxx_var};"
@@ -1480,7 +1480,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var};"
@@ -1493,17 +1493,17 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cxx_var}{cxx_deref}empty()) {{", 
+                        "if ({cxx_var}{cxx_member}empty()) {{", 
                         "    {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());", 
+                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());", 
                         "}}"
                     ]
                 }
             }, 
             "c_type": "char", 
             "cxx_header": "<string>", 
-            "cxx_to_c": "{cxx_var}{cxx_deref}c_str()", 
+            "cxx_to_c": "{cxx_var}{cxx_member}c_str()", 
             "cxx_type": "std::string", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -1704,7 +1704,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "*{c_var} = {cxx_addr}{cxx_var};", 
-                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
+                        "*{c_var_len} = {cxx_var}{cxx_member}size();"
                     ]
                 }
             }, 

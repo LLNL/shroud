@@ -238,7 +238,7 @@ def initialize():
             f_kind='C_INT',
             f_module=dict(iso_c_binding=['C_INT']),
             PY_format='i',
-            PY_ctor='PyInt_FromLong({c_ptr}{c_var})',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
             PY_get='PyInt_AsLong({py_var})',
             PYN_typenum='NPY_INT',
             LUA_type='LUA_TNUMBER',
@@ -254,7 +254,7 @@ def initialize():
             f_kind='C_LONG',
             f_module=dict(iso_c_binding=['C_LONG']),
             PY_format='l',
-            PY_ctor='PyInt_FromLong({c_ptr}{c_var})',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
             PY_get='PyInt_AsLong({py_var})',
             PYN_typenum='NPY_LONG',
             LUA_type='LUA_TNUMBER',
@@ -270,7 +270,7 @@ def initialize():
             f_kind='C_LONG_LONG',
             f_module=dict(iso_c_binding=['C_LONG_LONG']),
             PY_format='L',
-#            PY_ctor='PyInt_FromLong({c_ptr}{c_var})',
+#            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
             PYN_typenum='NPY_LONGLONG',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
@@ -285,7 +285,7 @@ def initialize():
             f_type='integer(C_SIZE_T)',
             f_kind='C_SIZE_T',
             f_module=dict(iso_c_binding=['C_SIZE_T']),
-            PY_ctor='PyInt_FromSize_t({c_ptr}{c_var})',
+            PY_ctor='PyInt_FromSize_t({c_deref}{c_var})',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -300,7 +300,7 @@ def initialize():
             f_kind='C_FLOAT',
             f_module=dict(iso_c_binding=['C_FLOAT']),
             PY_format='f',
-            PY_ctor='PyFloat_FromDouble({c_ptr}{c_var})',
+            PY_ctor='PyFloat_FromDouble({c_deref}{c_var})',
             PY_get='PyFloat_AsDouble({py_var})',
             PYN_typenum='NPY_FLOAT',
             LUA_type='LUA_TNUMBER',
@@ -316,7 +316,7 @@ def initialize():
             f_kind='C_DOUBLE',
             f_module=dict(iso_c_binding=['C_DOUBLE']),
             PY_format='d',
-            PY_ctor='PyFloat_FromDouble({c_ptr}{c_var})',
+            PY_ctor='PyFloat_FromDouble({c_deref}{c_var})',
             PY_get='PyFloat_AsDouble({py_var})',
             PYN_typenum='NPY_DOUBLE',
             LUA_type='LUA_TNUMBER',
@@ -374,7 +374,7 @@ def initialize():
                     ],
                     # py_var is already declared for inout
                     post_call=[
-                        '{py_var} = PyBool_FromLong({c_ptr}{c_var});',
+                        '{py_var} = PyBool_FromLong({c_deref}{c_var});',
                     ],
                 ),
                 intent_out=dict(
@@ -527,7 +527,7 @@ def initialize():
             'string',
             cxx_type='std::string',
             cxx_header='<string>',
-            cxx_to_c='{cxx_var}{cxx_deref}c_str()',  # cxx_deref is . or ->
+            cxx_to_c='{cxx_var}{cxx_member}c_str()',  # cxx_member is . or ->
 
             c_type='char',    # XXX - char *
 
@@ -549,7 +549,7 @@ def initialize():
                         ],
                     post_call=[
                         # This may overwrite c_var if cxx_val is too long
-                        'strcpy({c_var}, {cxx_var}{cxx_deref}c_str());'
+                        'strcpy({c_var}, {cxx_var}{cxx_member}c_str());'
                     ],
                 ),
                 intent_inout=dict(
@@ -560,7 +560,7 @@ def initialize():
                         ],
                     post_call=[
                         # This may overwrite c_var if cxx_val is too long
-                        'strcpy({c_var}, {cxx_var}{cxx_deref}c_str());'
+                        'strcpy({c_var}, {cxx_var}{cxx_member}c_str());'
                     ],
                 ),
                 intent_in_buf=dict(
@@ -579,7 +579,7 @@ def initialize():
                         'std::string {cxx_var};'
                     ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());'
+                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());'
                     ],
                 ),
                 intent_inout_buf=dict(
@@ -591,7 +591,7 @@ def initialize():
                     ],
                     post_call=[
                         'ShroudStrCopy({c_var}, {c_var_len},'
-                        '\t {cxx_var}{cxx_deref}c_str());'
+                        '\t {cxx_var}{cxx_member}c_str());'
                     ],
                 ),
                 result_buf=dict(
@@ -599,10 +599,10 @@ def initialize():
                     cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
                     post_call=[
-                        'if ({cxx_var}{cxx_deref}empty()) {{',
+                        'if ({cxx_var}{cxx_member}empty()) {{',
                         '    {stdlib}memset({c_var}, \' \', {c_var_len});',
                         '}} else {{',
-                        '    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());',
+                        '    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());',
                         '}}',
                     ],
                 ),
@@ -644,8 +644,8 @@ def initialize():
                 ),
             ),
             PY_format='s',
-            PY_ctor='PyString_FromString({cxx_var}{cxx_deref}c_str())',
-            PY_build_arg='{cxx_var}{cxx_deref}c_str()',
+            PY_ctor='PyString_FromString({cxx_var}{cxx_member}c_str())',
+            PY_build_arg='{cxx_var}{cxx_member}c_str()',
 
             LUA_type='LUA_TSTRING',
             LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
@@ -686,7 +686,7 @@ def initialize():
 #--                        ],
 #--                    post_call=[
 #--                        # This may overwrite c_var if cxx_val is too long
-#--                        'strcpy({c_var}, {cxx_var}{cxx_deref}c_str());'
+#--                        'strcpy({c_var}, {cxx_var}{cxx_member}c_str());'
 #--                    ],
 #--                ),
 #--                intent_inout=dict(
@@ -697,7 +697,7 @@ def initialize():
 #--                        ],
 #--                    post_call=[
 #--                        # This may overwrite c_var if cxx_val is too long
-#--                        'strcpy({c_var}, {cxx_var}{cxx_deref}c_str());'
+#--                        'strcpy({c_var}, {cxx_var}{cxx_member}c_str());'
 #--                    ],
 #--                ),
 #--                intent_in_buf=dict(
@@ -729,7 +729,7 @@ def initialize():
                     # which will be passed to copy_string
                     post_call=[
                         '*{c_var} = {cxx_addr}{cxx_var};',
-                        '*{c_var_len} = {cxx_var}{cxx_deref}size();',
+                        '*{c_var_len} = {cxx_var}{cxx_member}size();',
                     ],
                 ),
             ),
@@ -815,7 +815,7 @@ def initialize():
 #                        'if ({cxx_var}.empty()) {{',
 #                        '  std::memset({c_var}, \' \', {c_var_len});',
 #                        '}} else {{',
-#                        '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());',
+#                        '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());',
 #                        '}}',
 #                    ],
 #                ),
@@ -900,7 +900,7 @@ def initialize():
 #                            'if ({cxx_var}.empty()) {{',
 #                            '  std::memset({c_var}, \' \', {c_var_len});',
 #                            '}} else {{',
-#                            '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());',
+#                            '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());',
 #                            '}}',
 #                        ],
 #                    ),

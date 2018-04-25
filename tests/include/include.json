@@ -24,9 +24,9 @@
                             "arg1": {
                                 "fmtc": {
                                     "c_const": "", 
-                                    "c_ptr": "", 
+                                    "c_deref": "", 
                                     "c_var": "arg1", 
-                                    "cxx_deref": ".", 
+                                    "cxx_member": ".", 
                                     "cxx_type": "CustomType", 
                                     "cxx_var": "arg1"
                                 }, 
@@ -88,7 +88,7 @@
                             "F_name_impl": "class1_method1", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_deref": " *", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -122,10 +122,10 @@
                             "comm": {
                                 "fmtc": {
                                     "c_const": "", 
-                                    "c_ptr": "", 
+                                    "c_deref": "", 
                                     "c_var": "comm", 
                                     "cxx_decl": "MPI_Comm SHCXX_comm", 
-                                    "cxx_deref": ".", 
+                                    "cxx_member": ".", 
                                     "cxx_type": "MPI_Comm", 
                                     "cxx_val": "MPI_Comm_f2c(comm)", 
                                     "cxx_var": "SHCXX_comm"
@@ -188,7 +188,7 @@
                             "F_name_impl": "class2_method1", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_deref": " *", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -200,10 +200,10 @@
                             "c2": {
                                 "fmtc": {
                                     "c_const": "", 
-                                    "c_ptr": "*", 
+                                    "c_deref": "*", 
                                     "c_var": "c2", 
                                     "cxx_decl": "three::\tClass1 * SHCXX_c2", 
-                                    "cxx_deref": "->", 
+                                    "cxx_member": "->", 
                                     "cxx_type": "three::\tClass1", 
                                     "cxx_val": "\tstatic_cast<three::\tClass1 *>(\tstatic_cast<void *>(\tc2))", 
                                     "cxx_var": "SHCXX_c2"
@@ -271,7 +271,7 @@
                             "F_name_impl": "class2_method2", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_deref": " *", 
                             "c_var": "self", 
                             "function_name": "method2", 
                             "underscore_name": "method2"
@@ -564,7 +564,7 @@
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_INT", 
-            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "i", 
             "PY_get": "PyInt_AsLong({py_var})", 
             "c_header": "type_header.h", 
@@ -646,7 +646,7 @@
                 }, 
                 "intent_inout": {
                     "post_call": [
-                        "{py_var} = PyBool_FromLong({c_ptr}{c_var});"
+                        "{py_var} = PyBool_FromLong({c_deref}{c_var});"
                     ], 
                     "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
@@ -790,7 +790,7 @@
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_DOUBLE", 
-            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
+            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})", 
             "PY_format": "d", 
             "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "double", 
@@ -809,7 +809,7 @@
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_FLOAT", 
-            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
+            "PY_ctor": "PyFloat_FromDouble({c_deref}{c_var})", 
             "PY_format": "f", 
             "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "float", 
@@ -828,7 +828,7 @@
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_INT", 
-            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "i", 
             "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "int", 
@@ -847,7 +847,7 @@
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
             "PYN_typenum": "NPY_LONG", 
-            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "l", 
             "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "long", 
@@ -882,7 +882,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromSize_t({c_ptr}{c_var})", 
+            "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})", 
             "c_header": "<stddef.h>", 
             "c_type": "size_t", 
             "cxx_type": "size_t", 
@@ -899,8 +899,8 @@
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TSTRING", 
-            "PY_build_arg": "{cxx_var}{cxx_deref}c_str()", 
-            "PY_ctor": "PyString_FromString({cxx_var}{cxx_deref}c_str())", 
+            "PY_build_arg": "{cxx_var}{cxx_member}c_str()", 
+            "PY_ctor": "PyString_FromString({cxx_var}{cxx_member}c_str())", 
             "PY_format": "s", 
             "base": "string", 
             "c_statements": {
@@ -923,7 +923,7 @@
                     "cxx_header": "<cstring>", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
+                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "{c_const}std::string {cxx_var}({c_var});"
@@ -937,7 +937,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_deref}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var}({c_var}, {c_var_trim});"
@@ -947,7 +947,7 @@
                     "cxx_header": "<cstring>", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "strcpy({c_var}, {cxx_var}{cxx_deref}c_str());"
+                        "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "{c_const}std::string {cxx_var};"
@@ -960,7 +960,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var};"
@@ -973,17 +973,17 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cxx_var}{cxx_deref}empty()) {{", 
+                        "if ({cxx_var}{cxx_member}empty()) {{", 
                         "    {stdlib}memset({c_var}, ' ', {c_var_len});", 
                         "}} else {{", 
-                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_deref}c_str());", 
+                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());", 
                         "}}"
                     ]
                 }
             }, 
             "c_type": "char", 
             "cxx_header": "<string>", 
-            "cxx_to_c": "{cxx_var}{cxx_deref}c_str()", 
+            "cxx_to_c": "{cxx_var}{cxx_member}c_str()", 
             "cxx_type": "std::string", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -1184,7 +1184,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "*{c_var} = {cxx_addr}{cxx_var};", 
-                        "*{c_var_len} = {cxx_var}{cxx_deref}size();"
+                        "*{c_var_len} = {cxx_var}{cxx_member}size();"
                     ]
                 }
             }, 

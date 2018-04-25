@@ -454,10 +454,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_result = fmt_result0.setdefault('fmtl', util.Scope(fmt))
             fmt_result.cxx_var = wformat('{CXX_local}{LUA_result}', fmt_result)
             if is_ctor or ast.is_pointer():
-                fmt_result.cxx_deref = '->'
+                fmt_result.cxx_member = '->'
                 fmt_result.cxx_addr = ''
             else:
-                fmt_result.cxx_deref = '.'
+                fmt_result.cxx_member = '.'
                 fmt_result.cxx_addr = '&'
             if result_typedef.cxx_to_c:
                 fmt_result.c_var = wformat(result_typedef.cxx_to_c, fmt_result)  # if C++
@@ -508,11 +508,11 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_arg.lua_var = 'SH_Lua_' + arg_name
             fmt_arg.c_var_len = 'L' + arg_name
             if arg.is_pointer():
-                fmt_arg.c_ptr = ' *'
-                fmt_arg.cxx_deref = '->'
+                fmt_arg.c_deref = ' *'
+                fmt_arg.cxx_member = '->'
             else:
-                fmt_arg.c_ptr = ''
-                fmt_arg.cxx_deref = '.'
+                fmt_arg.c_deref = ''
+                fmt_arg.cxx_member = '.'
             attrs = arg.attrs
 
             lua_pop = None

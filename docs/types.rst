@@ -489,7 +489,7 @@ additional sections to convert between ``char *`` and ``std::string``::
             base: string
             cxx_type: std::string
             cxx_header: <string>
-            cxx_to_c: {cxx_var}.c_str()
+            cxx_to_c: {cxx_var}{cxx_member}c_str()
             c_type: char
     
             c_statements:
@@ -933,7 +933,7 @@ Shroud will generate a type map for this class as::
         base: shadow
         c_type: TUT_class1
         cxx_type: Class1
-        c_to_cxx: \tstatic_cast<{c_const}Class1{c_ptr}>(\tstatic_cast<{c_const}void *>(\t{c_var}))
+        c_to_cxx: \tstatic_cast<{c_const}Class1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))
         cxx_to_c: \tstatic_cast<{c_const}TUT_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_var}))
 
         f_type: type(class1)
