@@ -154,4 +154,15 @@ int TUT_class1_direction_func(TUT_class1 * self, int arg)
 // splicer end class.Class1.method.direction_func
 }
 
+// int getM_flag()
+// function_index=7
+int TUT_class1_get_m_flag(TUT_class1 * self)
+{
+// splicer begin class.Class1.method.get_m_flag
+    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
+        static_cast<void *>(self));
+    return SH_this->m_flag;
+// splicer end class.Class1.method.get_m_flag
+}
+
 }  // extern "C"

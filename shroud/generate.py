@@ -49,6 +49,8 @@ from . import todict
 from . import typemap
 from . import util
 
+wformat = util.wformat
+
 class VerifyAttrs(object):
     """
     Check attributes and set some defaults.
@@ -255,6 +257,9 @@ class GenFunctions(object):
 
         for cls in newlibrary.classes:
 #            added = self.default_ctor_and_dtor(cls)
+            if not cls.as_struct:
+                for var in cls.variables:
+                    self.add_var_getter_setter(cls, var)
             cls.functions = self.define_function_suffix(cls.functions)
         newlibrary.functions = self.define_function_suffix(newlibrary.functions)
 
@@ -270,7 +275,7 @@ class GenFunctions(object):
 #        node.fmtdict.function_index = str(len(ilist)) # debugging
         ilist.append(node)
 
-    def default_ctor_and_dtor(self, cls):
+    def XXX_default_ctor_and_dtor(self, cls):
         """Wrap default constructor and destructor.
 
         Needed when the ctor or dtor is not explicily in the input.
@@ -297,6 +302,41 @@ class GenFunctions(object):
                 '~{}()'.format(cls.name), parent=cls))
 
         return added
+
+    def add_var_getter_setter(self, cls, var):
+        """Create getter/setter functions for class variables.
+        This allows wrappers to access class members.
+
+        Do not wrap for Python since descriptors are created for 
+        class member variables.
+        """
+        ast = var.ast
+        fmt = util.Scope(var.fmtdict)
+        fmt.field = ast.name
+
+        options=dict(
+            wrap_lua=False,
+            wrap_python=False,
+        )
+
+        # getter
+        funcname = 'get' + ast.name.capitalize()
+        typedef = typemap.Typedef.lookup(ast.typename)
+        argdecl = ast.gen_arg_as_c(name=funcname, continuation=True)
+        decl = '{}()'.format(argdecl)
+        field = wformat('{CXX_this}->{field}', fmt)
+        if typedef.cxx_to_c is None:
+            val = field
+        else:
+            fmt.cxx_var = field
+            val = wformat(typedef.cxx_to_c, fmt)
+        return_val = 'return ' + val + ';'
+
+        format=dict(
+            C_code='{C_pre_call}\n' + return_val,
+        )
+
+        cls.add_function(decl, format=format, options=options)
 
     def define_function_suffix(self, functions):
         """

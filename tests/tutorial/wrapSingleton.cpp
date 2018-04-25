@@ -52,7 +52,7 @@ extern "C" {
 // splicer end class.Singleton.C_definitions
 
 // static Singleton & getReference()
-// function_index=7
+// function_index=8
 TUT_singleton * TUT_singleton_get_reference()
 {
 // splicer begin class.Singleton.method.get_reference

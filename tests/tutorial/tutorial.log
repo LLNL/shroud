@@ -10,6 +10,7 @@ C method int Method1()
 C method bool equivalent(const Class1 & obj2 +intent(in)+value) const
 C method Class1 * returnThis()
 C method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+C method int getM_flag()
 Close wrapClass1.h
 Close wrapClass1.cpp
 class Singleton
@@ -84,6 +85,7 @@ C-interface, Fortran method int Method1()
 C-interface, Fortran method bool equivalent(const Class1 & obj2 +intent(in)+value) const
 C-interface, Fortran method Class1 * returnThis()
 C-interface, Fortran method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+C-interface, Fortran method int getM_flag()
 class Singleton
 C-interface, Fortran method static Singleton & getReference()
 C-interface, Fortran function void Function1()

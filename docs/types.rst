@@ -995,6 +995,13 @@ to the YAML file to avoid wrapping ``private`` constructors.
 
 ..  chained function calls
 
+Member Variables
+^^^^^^^^^^^^^^^^
+
+For each member variable of a C++ class a C and Fortran wrapper
+function will be created to get or set the value.  The Python wrapper
+will create a descriptor.
+
 
 Memory Management
 -----------------
