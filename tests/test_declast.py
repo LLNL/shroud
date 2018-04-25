@@ -136,6 +136,23 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("long long var2", s)
 
+        # test attributes
+        r = declast.check_decl("int ivar +readonly")
+        self.assertEqual(todict.to_dict(r),{
+            "attrs": {
+                "_typename": "int",
+                "readonly": True
+            },
+            "const": False,
+            "declarator": {
+                "name": "ivar",
+                "pointer": []
+            },
+            "specifier": [
+                "int"
+            ]
+        })
+
     def test_type_string(self):
         """Test string declarations
         """

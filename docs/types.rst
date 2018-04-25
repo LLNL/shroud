@@ -1000,7 +1000,30 @@ Member Variables
 
 For each member variable of a C++ class a C and Fortran wrapper
 function will be created to get or set the value.  The Python wrapper
-will create a descriptor.
+will create a descriptor::
+
+    class Class1
+    {
+    public:
+       int m_flag;
+       int m_test;
+    }
+
+Is added to the YAML file as::
+
+    - decl: class Class1
+      declarations:
+      - decl: int m_flag +readonly;
+      - decl: int m_test;
+
+The *readonly* attribute will not write the setter function or descriptor.
+Python will report::
+
+    >>> obj = tutorial.Class1()
+    >>> obj.m_flag =1
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    AttributeError: attribute 'm_flag' of 'tutorial.Class1' objects is not writable
 
 
 Memory Management

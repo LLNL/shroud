@@ -64,11 +64,25 @@ class VerifyAttrs(object):
         newlibrary = self.newlibrary
 
         for cls in newlibrary.classes:
+            if not cls.as_struct:
+                for var in cls.variables:
+                    self.check_var_attrs(cls, var)
             for func in cls.functions:
                 self.check_fcn_attrs(func)
 
         for func in newlibrary.functions:
             self.check_fcn_attrs(func)
+
+    def check_var_attrs(self, cls, node):
+        for attr in node.ast.attrs:
+            if attr[0] == '_': # internal attribute
+                continue
+            if attr not in [
+                    'readonly',
+                    ]:
+                raise RuntimeError(
+                    "Illegal attribute '{}' for variable {} in {}"
+                    .format(attr, node.ast.name, node.decl))
 
     def check_fcn_attrs(self, node):
         options = node.options
@@ -340,6 +354,8 @@ class GenFunctions(object):
         cls.add_function(decl, format=format, options=options)
 
         # setter
+        if ast.attrs.get('readonly', False):
+            return
         funcname = 'set' + ast.name.capitalize()
         argdecl = ast.gen_arg_as_c(name='val', continuation=True)
         decl = 'void {}({})'.format(funcname, argdecl)

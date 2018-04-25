@@ -220,8 +220,12 @@ class Tutorial(unittest.TestCase):
         # test -1 since PyInt_AsLong returns -1 on error
         obj.m_test = -1
         self.assertEqual(-1, obj.m_test)
+        with self.assertRaises(AttributeError) as context:
+            obj.m_flag = 1
+        self.assertTrue("is not writable" in str(context.exception))
         with self.assertRaises(TypeError) as context:
-            obj.m_flag = "dog"
+            obj.m_test = "dog"
+        self.assertTrue("an integer is required" in str(context.exception))
         del obj
 
     def test_class1_create2(self):
@@ -280,7 +284,7 @@ class Tutorial(unittest.TestCase):
         self.assertIs(dtype, tutorial.struct1_dtype)
 
     def test_singleton(self):
-        # it'd be cool if obj0 is obj1
+        # XXX - it'd be cool if obj0 is obj1
         obj0 = tutorial.Singleton.getReference()
         obj1 = tutorial.Singleton.getReference()
 

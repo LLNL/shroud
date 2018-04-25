@@ -229,7 +229,7 @@ declarations:
   
   - decl: class Class1
     declarations:
-    - decl: int m_flag;
+    - decl: int m_flag +readonly;
     - decl: int m_test;
     - decl: Class1()         +name(new)
       format:

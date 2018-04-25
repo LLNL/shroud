@@ -88,8 +88,6 @@ int TUT_class1_direction_func(TUT_class1 * self, int arg);
 
 int TUT_class1_get_m_flag(TUT_class1 * self);
 
-void TUT_class1_set_m_flag(TUT_class1 * self, int val);
-
 int TUT_class1_get_m_test(TUT_class1 * self);
 
 void TUT_class1_set_m_test(TUT_class1 * self, int val);
