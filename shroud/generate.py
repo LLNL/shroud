@@ -49,6 +49,8 @@ from . import todict
 from . import typemap
 from . import util
 
+wformat = util.wformat
+
 class VerifyAttrs(object):
     """
     Check attributes and set some defaults.
@@ -62,11 +64,26 @@ class VerifyAttrs(object):
         newlibrary = self.newlibrary
 
         for cls in newlibrary.classes:
+            if not cls.as_struct:
+                for var in cls.variables:
+                    self.check_var_attrs(cls, var)
             for func in cls.functions:
                 self.check_fcn_attrs(func)
 
         for func in newlibrary.functions:
             self.check_fcn_attrs(func)
+
+    def check_var_attrs(self, cls, node):
+        for attr in node.ast.attrs:
+            if attr[0] == '_': # internal attribute
+                continue
+            if attr not in [
+                    'name',
+                    'readonly',
+                    ]:
+                raise RuntimeError(
+                    "Illegal attribute '{}' for variable {} in {}"
+                    .format(attr, node.ast.name, node.decl))
 
     def check_fcn_attrs(self, node):
         options = node.options
@@ -75,6 +92,21 @@ class VerifyAttrs(object):
 
         ast = node.ast
         node._has_found_default = False
+
+        for attr in node.ast.attrs:
+            if attr[0] == '_': # internal attribute
+                continue
+            if attr not in [
+                    'allocatable',
+                    'dimension',
+                    'len',
+                    'name',
+                    'pure',
+                    ]:
+                raise RuntimeError(
+                    "Illegal attribute '{}' for function {} in {}"
+                    .format(attr, node.ast.name, node.decl))
+
         for arg in ast.params:
             self.check_arg_attrs(node, arg)
 
@@ -92,7 +124,8 @@ class VerifyAttrs(object):
             if attr not in [
                     'allocatable',
                     'dimension',
-                    'implied',
+                    'hidden',  # omitted in Fortran API, returned from C++
+                    'implied', # omitted in Fortran API, value passed to C++
                     'intent',
                     'len', 'len_trim', 'size',
                     'template',
@@ -239,6 +272,9 @@ class GenFunctions(object):
 
         for cls in newlibrary.classes:
 #            added = self.default_ctor_and_dtor(cls)
+            if not cls.as_struct:
+                for var in cls.variables:
+                    self.add_var_getter_setter(cls, var)
             cls.functions = self.define_function_suffix(cls.functions)
         newlibrary.functions = self.define_function_suffix(newlibrary.functions)
 
@@ -254,7 +290,7 @@ class GenFunctions(object):
 #        node.fmtdict.function_index = str(len(ilist)) # debugging
         ilist.append(node)
 
-    def default_ctor_and_dtor(self, cls):
+    def XXX_default_ctor_and_dtor(self, cls):
         """Wrap default constructor and destructor.
 
         Needed when the ctor or dtor is not explicily in the input.
@@ -264,7 +300,7 @@ class GenFunctions(object):
         found_ctor = False
         found_dtor = False
         for node in cls.functions:
-            fattrs = node.ast.fattrs
+            fattrs = node.ast.attrs
             found_ctor = found_ctor or fattrs.get('_constructor', False)
             found_dtor = found_dtor or fattrs.get('_destructor', False)
             
@@ -275,14 +311,75 @@ class GenFunctions(object):
 
         if not found_ctor:
             added.append(ast.FunctionNode(
-                '{}()'.format(cls.name),
-                parent=cls, parentoptions=cls.options))
+                '{}()'.format(cls.name), parent=cls))
         if not found_dtor:
             added.append(ast.FunctionNode(
-                '~{}()'.format(cls.name),
-                parent=cls, parentoptions=cls.options))
+                '~{}()'.format(cls.name), parent=cls))
 
         return added
+
+    def add_var_getter_setter(self, cls, var):
+        """Create getter/setter functions for class variables.
+        This allows wrappers to access class members.
+
+        Do not wrap for Python since descriptors are created for 
+        class member variables.
+        """
+        ast = var.ast
+        typedef = typemap.Typedef.lookup(ast.typename)
+        fieldname = ast.name  # attrs.get('name', ast.name)
+
+        fmt = util.Scope(var.fmtdict)
+
+        options=dict(
+            wrap_lua=False,
+            wrap_python=False,
+        )
+
+        # getter
+        funcname = 'get' + fieldname.capitalize()
+        argdecl = ast.gen_arg_as_c(name=funcname, continuation=True)
+        decl = '{}()'.format(argdecl)
+        field = wformat('{CXX_this}->{field_name}', fmt)
+        if typedef.cxx_to_c is None:
+            val = field
+        else:
+            fmt.cxx_var = field
+            val = wformat(typedef.cxx_to_c, fmt)
+        return_val = 'return ' + val + ';'
+
+        format=dict(
+            C_code='{C_pre_call}\n' + return_val,
+        )
+
+        cls.add_function(decl, format=format, options=options)
+
+        # setter
+        if ast.attrs.get('readonly', False):
+            return
+        funcname = 'set' + ast.name.capitalize()
+        argdecl = ast.gen_arg_as_c(name='val', continuation=True)
+        decl = 'void {}({})'.format(funcname, argdecl)
+        field = wformat('{CXX_this}->{field_name}', fmt)
+        if typedef.c_to_cxx is None:
+            val = 'val'
+        else:
+            fmt.c_var = 'val'
+            val = wformat(typedef.c_to_cxx, fmt)
+        set_val = '{} = {};'.format(field, val)
+
+        attrs=dict(
+            val=dict(
+                intent='in',
+                value=True,  # XXX - what about pointer variables?
+            )
+        )
+
+        format=dict(
+            C_code='{C_pre_call}\n' + set_val + '\nreturn;',
+        )
+
+        cls.add_function(decl, attrs=attrs, format=format, options=options)
 
     def define_function_suffix(self, functions):
         """
@@ -356,11 +453,19 @@ class GenFunctions(object):
 
     def template_function(self, node, ordered_functions):
         """ Create overloaded functions for each templated argument.
+
+        - decl: void Function7(ArgType arg)
+          cxx_template:
+            ArgType:
+            - int
+            - double
         """
         if len(node.cxx_template) != 1:
             # In the future it may be useful to have multiple templates
             # That the would start creating more permutations
             raise NotImplementedError("Only one cxx_templated type for now")
+        oldoptions = node.options
+
         for typename, types in node.cxx_template.items():
             for type in types:
                 new = node.clone()
@@ -372,10 +477,10 @@ class GenFunctions(object):
                 fmt.function_suffix = fmt.function_suffix + '_' + type
                 new.cxx_template = {}
                 options = new.options
-                options.wrap_c = True
-                options.wrap_fortran = True
-                options.wrap_python = False
-                options.wrap_lua = False
+                options.wrap_c = oldoptions.wrap_c
+                options.wrap_fortran = oldoptions.wrap_fortran
+                options.wrap_python = oldoptions.wrap_python
+                options.wrap_lua = oldoptions.wrap_lua
                 # Convert typename to type
                 fmt.CXX_template = '<{}>'.format(type)
                 if new.ast.typename == typename:
@@ -395,6 +500,12 @@ class GenFunctions(object):
 
     def generic_function(self, node, ordered_functions):
         """ Create overloaded functions for each generic method.
+
+        - decl: void Function9(double arg)
+          fortran_generic:
+            arg:
+            - float
+            - double
         """
         if len(node.fortran_generic) != 1:
             # In the future it may be useful to have multiple generic arguments
@@ -542,7 +653,7 @@ class GenFunctions(object):
 
         has_string_result = False
         result_as_arg = ''  # only applies to string functions
-        is_pure = ast.fattrs.get('pure', False)
+        is_pure = ast.attrs.get('pure', False)
         if result_typedef.base == 'vector':
             raise NotImplemented("vector result")
         elif result_typedef.base == 'string':
@@ -568,6 +679,7 @@ class GenFunctions(object):
         self.append_function_index(C_new)
 
         C_new._generated = 'arg_to_buffer'
+        C_new.generated_suffix = '_buf'  # used to lookup c_statements
         fmt = C_new.fmtdict
         fmt.function_suffix = fmt.function_suffix + fmt.C_bufferify_suffix
 
@@ -615,7 +727,7 @@ class GenFunctions(object):
         if has_string_result:
             # Add additional argument to hold result
             ast = C_new.ast
-            if ast.fattrs.get('allocatable', False):
+            if ast.attrs.get('allocatable', False):
                 result_as_string = ast.result_as_voidstarstar(
                     'stringout', result_name, const=ast.const)
                 attrs = result_as_string.attrs
@@ -732,7 +844,7 @@ class Namify(object):
         self.config = config
 
     def name_library(self):
-        """entry pointer for class"""
+        """entry pointer for library"""
         self.name_language(self.name_function_c)
         self.name_language(self.name_function_fortran)
 
@@ -771,10 +883,108 @@ class Namify(object):
         node.eval_template('F_name_generic')
 
 
+class Preprocess(object):
+    """Compute some state for functions."""
+    def __init__(self, newlibrary, config):
+        self.newlibrary = newlibrary
+        self.config = config
+
+    def process_library(self):
+        """entry pointer for library"""
+        newlibrary = self.newlibrary
+        for cls in newlibrary.classes:
+            for func in cls.functions:
+                self.process_function(cls, func)
+
+        for func in newlibrary.functions:
+            self.process_function(None, func)
+
+    def process_function(self, cls, node):
+        options = node.options
+
+        # Any nodes with cxx_template have been replaced with nodes
+        # that have the template expanded.
+        if not node.cxx_template:
+            self.process_xxx(cls, node)
+    
+    def process_xxx(self, cls, node):
+        """Compute information common to all wrapper language.
+
+        Compute subprogram.  This may be different for each language.
+        CXX_subprogram - The C++ function being wrapped.
+        C_subprogram - functions will be converted to subroutines for
+            return_this and destructors.
+            A subroutine can be converted to a function by C_return_type.
+
+        return_this = True for C++ functions which return 'this',
+        are easier to call from Fortran if they are subroutines.
+        There is no way to chain in Fortran:  obj->doA()->doB();
+
+#        Lookup up typedef for result and arguments
+        """
+
+        options = node.options
+        fmt_func = node.fmtdict
+
+        ast = node.ast
+        CXX_result_type = ast.typename
+        C_result_type = CXX_result_type
+        F_result_type = CXX_result_type
+        subprogram = ast.get_subprogram()
+        node.CXX_subprogram = subprogram
+        is_dtor = ast.attrs.get('_destructor', False)
+
+        if node.return_this or is_dtor:
+            CXX_result_type = 'void'
+            C_result_type = 'void'
+            F_result_type = 'void'
+            node.CXX_subprogram = 'subroutine'
+            subprogram = 'subroutine'
+        elif fmt_func.C_custom_return_type:
+            C_result_type = fmt_func.C_custom_return_type
+            F_result_type = fmt_func.C_custom_return_type
+            subprogram = 'function'
+
+        node.C_subprogram = subprogram
+        node.F_subprogram = subprogram
+
+        node.CXX_return_type = CXX_result_type
+        node.C_return_type = C_result_type
+        node.F_return_type = F_result_type
+
+        node.CXX_result_typedef = typemap.Typedef.lookup(CXX_result_type)
+        node.C_result_typedef = typemap.Typedef.lookup(C_result_type)
+        node.F_result_typedef = typemap.Typedef.lookup(F_result_type)
+#        if not result_typedef:
+#            raise RuntimeError("Unknown type {} in {}",
+#                               CXX_result_type, fmt_func.function_name)
+
+        # Decide if the function should return a pointer
+        result_typedef = node.CXX_result_typedef
+        return_pointer_as = None
+        if options.F_return_fortran_pointer and ast.is_pointer() \
+           and result_typedef.cxx_type != 'void' \
+           and result_typedef.base != 'string' \
+           and result_typedef.base != 'shadow':
+            # XXX is_indirect?
+            # Change a C++ pointer into a Fortran pointer
+            # return 'void *' as 'type(C_PTR)'
+            # 'shadow' assigns pointer to type(C_PTR) in a derived type
+
+            if 'dimension' in ast.attrs:
+                return_pointer_as = 'pointer'
+            elif options.return_scalar_pointer == 'pointer':
+                return_pointer_as = 'pointer'
+            else:
+                return_pointer_as = 'scalar'
+        node.return_pointer_as = return_pointer_as
+
+
 def generate_functions(library, config):
     VerifyAttrs(library, config).verify_attrs()
     GenFunctions(library, config).gen_library()
     Namify(library, config).name_library()
+    Preprocess(library, config).process_library()
 
 ######################################################################
 

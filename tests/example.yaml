@@ -142,7 +142,7 @@ declarations:
 
       - decl: int incrementCount(int incr)
 
-      - decl: const string& getName() const
+      - decl: const string& getNameErrorPattern() const
         fattrs:
           len: aa_exclass1_get_name_length({F_this}%{F_derived_member})
         C_error_pattern: C_invalid_name

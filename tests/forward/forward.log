@@ -16,9 +16,9 @@ Python method Class2()
 Python method ~Class2()
 Python method void func1(Class1 * arg +intent(in)+value)
 Close pyClass2type.cpp
+Close pyforwardhelper.cpp
 Close pyforwardmodule.hpp
 Close pyforwardmodule.cpp
-Close pyforwardhelper.cpp
 Lua method Class2()
 Lua method ~Class2()
 Lua method void func1(Class1 * arg +intent(in)+value)

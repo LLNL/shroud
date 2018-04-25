@@ -65,9 +65,18 @@ enum TUT_Color {
     WHITE
 };
 
+
+struct s_TUT_struct1 {
+    int ifield;
+    double dfield;
+};
+typedef struct s_TUT_struct1 TUT_struct1;
+
 // declaration of shadow types
 struct s_TUT_class1;
 typedef struct s_TUT_class1 TUT_class1;
+struct s_TUT_struct1;
+typedef struct s_TUT_struct1 TUT_struct1;
 
 // splicer begin C_declarations
 // splicer end C_declarations
@@ -83,6 +92,14 @@ long long TUT_type_long_long(long long arg1);
 bool TUT_function3(bool arg);
 
 void TUT_function3b(const bool arg1, bool * arg2, bool * arg3);
+
+int * TUT_return_int_ptr();
+
+int TUT_return_int_ptr_scalar();
+
+int * TUT_return_int_ptr_dim(int * len);
+
+int * TUT_return_int_ptr_dim_new(int * len);
 
 void TUT_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
@@ -164,6 +181,18 @@ void TUT_vector_string_append_bufferify(char * arg, long Sarg,
     int Narg);
 
 int TUT_callback1(int in, int ( * incr)(int));
+
+TUT_struct1 TUT_return_struct(int i, double d);
+
+TUT_struct1 * TUT_return_struct_ptr(int i, double d);
+
+double TUT_accept_struct_in(TUT_struct1 arg);
+
+double TUT_accept_struct_in_ptr(TUT_struct1 * arg);
+
+void TUT_accept_struct_out_ptr(TUT_struct1 * arg, int i, double d);
+
+void TUT_accept_struct_in_out_ptr(TUT_struct1 * arg);
 
 const char * TUT_last_function_called();
 

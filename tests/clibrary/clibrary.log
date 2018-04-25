@@ -34,6 +34,6 @@ Python function void intargs(const int argin +intent(in)+value, int * arginout +
 Python function void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Python function void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Python function void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+Close pyClibraryhelper.c
 Close pyClibrarymodule.h
 Close pyClibrarymodule.c
-Close pyClibraryhelper.c

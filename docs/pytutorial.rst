@@ -316,7 +316,7 @@ by the *len* argument.
 
 The *len* argument defines the ``implied`` attribute.  This argument
 is not part of the Python API since its presence is *implied* from the
-expression ``size(values)``. This uses the NumPy
+expression ``size(values)``. This uses NumPy
 to compute the total number of elements in the array.  It then passes
 this value to the C wrapper::
 
@@ -367,11 +367,12 @@ this value to the C wrapper::
     }
 
 
-Character
-^^^^^^^^^
+String
+^^^^^^
 
-C++ ``std::string`` variables must be created from the NULL-terminated
-strings returned by ``PyArg_ParseTupleAndKeywords``.
+A Python ``str`` type is similar to a C++ ``std::string``.
+A C++ ``std::string`` variable is created from the NULL-terminated
+string returned by ``PyArg_ParseTupleAndKeywords``.
 
 C++ routine::
 
@@ -448,7 +449,12 @@ Default Value Arguments
 ------------------------
 
 Each function with default value arguments will create a wrapper which
-checks the number of arguments, then calls the function appropriately::
+checks the number of arguments, then calls the function appropriately.
+A header file contains::
+
+    double Function5(double arg1 = 3.1415, bool arg2 = true)
+
+and the function is defined as::
 
     double Function5(double arg1, bool arg2)
     {
@@ -470,7 +476,8 @@ Describe the function in YAML::
 
 The *default_arg_suffix* provides a list of values of
 *function_suffix* for each possible set of arguments for the function.
-In this case 0, 1, or 2 arguments.
+In this case 0, 1, or 2 arguments. For Python, *default_arg_suffix* is ignored
+since only one function is created.
 
 C wrappers::
 
@@ -536,10 +543,9 @@ Python usage::
 Overloaded Functions
 --------------------
 
-C++ allows function names to be overloaded.  Fortran supports this
-by using a ``generic`` interface.  The C and Fortran wrappers will
-generated a wrapper for each C++ function but must mangle the name to
-distinguish the names.
+C++ allows function names to be overloaded.  Python supports this 
+directly since it is not strongly typed.  The Python wrapper will attempt to 
+call each overload until it finds one which matches the arguments.
 
 C++::
 
@@ -555,36 +561,47 @@ can be controlled by setting **function_suffix** in the YAML file::
   - decl: void Function6(int indx)
     function_suffix: _from_index
 
-The generated C wrappers uses the mangled name::
+Each overloaded function is wrapped as usual but are not added to the Python module.
+Instead, an additional function is created::
 
-    void TUT_function6_from_name(const char * name)
+    static PyObject *
+    PY_Function6(
+      PyObject *self,
+      PyObject *args,
+      PyObject *kwds)
     {
-        const std::string SH_name(name);
-        tutorial::Function6(SH_name);
-        return;
+        Py_ssize_t SHT_nargs = 0;
+        if (args != NULL) SHT_nargs += PyTuple_Size(args);
+        if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+        PyObject *rvobj;
+        if (SHT_nargs == 1) {
+            rvobj = PY_Function6_from_name(self, args, kwds);
+            if (!PyErr_Occurred()) {
+                return rvobj;
+            } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+                return rvobj;
+            }
+            PyErr_Clear();
+        }
+        if (SHT_nargs == 1) {
+            rvobj = PY_Function6_from_index(self, args, kwds);
+            if (!PyErr_Occurred()) {
+                return rvobj;
+            } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+                return rvobj;
+            }
+            PyErr_Clear();
+        }
+        PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+        return NULL;
     }
-
-    void TUT_function6_from_index(int indx)
-    {
-        tutorial::Function6(indx);
-        return;
-    }
-
-The generated Fortran creates routines with the same mangled names but
-also creates a generic interface block to allow them to be called by
-the overloaded name::
-
-    interface function6
-        module procedure function6_from_name
-        module procedure function6_from_index
-    end interface function6
 
 They can be used as::
 
-  call function6_from_name("name")
-  call function6_from_index(1)
-  call function6("name")
-  call function6(1)
+        import tutorial
+        tutorial.Function6("name")
+        tutorial.Function6(1)
+
 
 Optional arguments and overloaded functions
 -------------------------------------------
@@ -598,18 +615,17 @@ Overloaded function that have optional arguments can also be wrapped::
 
 These routines can then be called as::
 
-    rv = overload1(10)
-    rv = overload1(1d0, 10)
+    rv = tutorial.overload1(10)
+    rv = tutorial.overload1(1., 10)
 
-    rv = overload1(10, 11, 12)
-    rv = overload1(1d0, 10, 11, 12)
+    rv = tutorial.overload1(10, 11, 12)
+    rv = tutorial.overload1(1., 10, 11, 12)
 
 Templates
 ---------
 
 C++ template are handled by creating a wrapper for each instantiation 
 of the function defined by the **cxx_template** field.
-The C and Fortran names are mangled by adding a type suffix to the function name.
 
 C++::
 
@@ -627,27 +643,12 @@ YAML::
         - int
         - double
 
-C wrapper::
+This will create a Python wrapper for each value of *ArgType*, ``int``
+and ``double`` and then a single which will call the other two in
+sucession looking for input arguments which match.
+This is similar to ``Function6``.
 
-    void TUT_function7_int(int arg)
-    {
-        Function7<int>(arg);
-        return;
-    }
-    
-    void TUT_function7_double(double arg)
-    {
-        Function7<double>(arg);
-        return;
-    }
-
-The Fortran wrapper will also generate an interface block::
-
-    interface function7
-        module procedure function7_int
-        module procedure function7_double
-    end interface function7
-
+.. note:: fix RetType for Python
 
 Likewise, the return type can be templated but in this case no
 interface block will be generated since generic function cannot vary
@@ -735,34 +736,7 @@ For example::
 
   } /* end namespace tutorial */
 
-This enumeration is within a namespace so it is not available to
-C.  For C and Fortran the type can be describe as an ``int``
-similar to how the ``typedef`` is defined. But in addition we
-describe how to convert between C and C++::
-
-    declarations:
-    - decl: typedef int EnumTypeID
-      fields:
-        c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
-        cxx_to_c : static_cast<int>({cxx_var})
-
-The typename must be fully qualified
-(use ``tutorial::EnumTypeId`` instead of ``EnumTypeId``).
-The C argument is explicitly converted to a C++ type, then the
-return type is explicitly converted to a C type in the generated wrapper::
-
-    int TUT_enumfunc(int arg)
-    {
-        EnumTypeID SHT_rv = enumfunc(static_cast<EnumTypeID>(arg));
-        int XSHT_rv = static_cast<int>(SHT_rv);
-        return XSHT_rv;
-    }
-
-Without the explicit conversion you're likely to get an error such as::
-
-    error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
-
-A enum can also be fully defined to Python::
+The enum is defined in the YAML as::
 
     declarations:
     - decl: |
@@ -772,30 +746,77 @@ A enum can also be fully defined to Python::
             WHITE
           };
 
-In this case the type is implicitly defined so there is no need to add 
-it to the *types* list.  Integer parameters are created for each value::
+Integer parameters are created for each value::
 
     >>> tutorial.RED
     0
     >>> type(tutorial.RED)
     <type 'int'>
 
-.. note:: This isn't fully equivelent to C's enumerations since you can
+.. note:: This isn't fully equivalent to C's enumerations since you can
           assign to them as well.
 
 
 Structure
 ^^^^^^^^^
 
-TODO
+Structures in C++ are accessed using Numpy.
+For example, the C++ code::
+
+    struct struct1 {
+      int ifield;
+      double dfield;
+    };
+
+can be defined to Shroud with the YAML input::
+
+    - decl: |
+        struct struct1 {
+          int ifield;
+          double dfield;
+        };
+
+This will add a varible to the module which can be used to create
+instances of the struct::
+
+    >>> import tutorial
+    >>> type(tutorial.struct1_dtype)
+    <type 'numpy.dtype'>
+    >>> tutorial.struct1_dtype
+    dtype({'names':['ifield','dfield'], 'formats':['<i4','<f8'], 'offsets':[0,8], 'itemsize':16}, align=True)
+
+    >>> import numpy as np
+    >>> val = np.array((1, 2.5), dtype=tutorial.struct1_dtype)
+    >>> val
+    array((1,  2.5), 
+          dtype={'names':['ifield','dfield'], 'formats':['<i4','<f8'], 'offsets':[0,8], 'itemsize':16, 'aligned':True})
+
+.. note:: All fields must be defined in the YAML file in order to ensure that
+          C++'s ``sizeof`` and NumPy's ``itemsize`` are the same.
+
+
+A function which returns a struct value will create a NumPy scalar using the dtype.
+A C++ function which initialized a struct can be written as:: 
+
+    - decl: struct1 returnStruct(int i, double d);
+
+To use the function::
+
+    >>> val = tutorial.returnStruct(1, 2.5)
+    >>> val
+    array((1,  2.5), 
+          dtype={'names':['ifield','dfield'], 'formats':['<i4','<f8'], 'offsets':[0,8], 'itemsize':16, 'aligned':True})
+    >>> val['ifield']
+    array(1, dtype=int32)
+    >>> val['dfield']
+    array(2.5)
+
 
 Classes
 -------
 
 Each class is wrapped in an extension type which holds a
-pointer to an C++ instance of the class.  Class
-methods are wrapped using Fortran's type-bound procedures.  This makes
-Fortran usage very similar to C++.
+pointer to an C++ instance of the class.
 
 Now we'll add a simple class to the library::
 
@@ -815,9 +836,8 @@ To wrap the class add the lines to the YAML file::
       - decl: void Method1()
 
 The constructor and destructor have no method name associated with
-them.  They default to **ctor** and **dtor**.  The names can be
-overridden by supplying the **+name** annotation.  These declarations
-will create wrappers over the ``new`` and ``delete`` C++ keywords.
+them. The constructor is called by the ``tp_init`` method of the type
+and the destructor is called by ``tp_del``.
 
 The file ``pyTutorialmodule.hpp`` will have a struct for the class::
 
@@ -835,72 +855,18 @@ And the class is defined in the module initialization function::
     Py_INCREF(&PY_Class1_Type);
     PyModule_AddObject(m, "Class1", (PyObject *)&PY_Class1_Type);
 
-old::
-
-    TUT_class1 * TUT_class1_new()
-    {
-        Class1 *SHT_rv = new Class1();
-        return static_cast<TUT_class1 *>(static_cast<void *>(SHT_rv));
-    }
-
-    void TUT_class1_delete(TUT_class1 * self)
-    {
-        Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
-        delete SH_this;
-        return;
-    }
-
-    static PyObject *
-    PY_class1_Method1(
-      PY_Class1 *self,
-      PyObject *SHROUD_UNUSED(args),
-      PyObject *SHROUD_UNUSED(kwds))
-    {
-        self->obj->Method1();
-        Py_RETURN_NONE;
-    }
-
-For Fortran a derived type is created::
-
-    type class1
-        type(C_PTR) voidptr
-    contains
-        procedure :: method1 => class1_method1
-    end type class1
-
-And the subroutines::
-
-    function class1_new() &
-            result(SHT_rv)
-        type(class1) :: SHT_rv
-        SHT_rv%voidptr = c_class1_new()
-    end function class1_new
-    
-    subroutine class1_delete(obj)
-        use iso_c_binding, only : C_NULL_PTR
-        class(class1) :: obj
-        call c_class1_delete(obj%voidptr)
-        obj%voidptr = C_NULL_PTR
-    end subroutine class1_delete
-
-    subroutine class1_method1(obj)
-        class(class1) :: obj
-        call c_class1_method1(obj%voidptr)
-    end subroutine class1_method1
-
 
 The C++ code to call the function::
 
+    #include <tutorial.hpp>
     tutorial::Class1 *cptr = new tutorial::Class1();
-
     cptr->Method1();
 
-And the Fortran version::
+And the Python version::
 
-    type(class1) cptr
-
-    cptr = class1_new()
-    call cptr%method1
+    import tutorial
+    cptr = tutoral.Class1()
+    cptr.method1()
 
 Class static methods
 ^^^^^^^^^^^^^^^^^^^^

@@ -84,33 +84,44 @@ class Wrapc(util.WrapperMixin):
         self.header_proto_c = []
         self.impl = []
         self.enum_impl = []
+        self.struct_impl = []
         self.c_helper = {}
 
     def wrap_library(self):
         newlibrary = self.newlibrary
         fmt_library = newlibrary.fmtdict
+        structs = []
 
         self._push_splicer('class')
         for node in newlibrary.classes:
             if not node.options.wrap_c:
                 continue
+            if node.as_struct:
+                structs.append(node)
+                continue
             self._push_splicer(node.name)
-            self.write_file(newlibrary, node)
+            self.write_file(newlibrary, node, None)
             self._pop_splicer(node.name)
         self._pop_splicer('class')
 
         if self.newlibrary.functions:
-            self.write_file(newlibrary, None)
+            self.write_file(newlibrary, None, structs)
 
-    def write_file(self, library, cls):
+    def write_file(self, library, cls, structs):
         """Write a file for the library and its functions or
         a class and its methods.
         """
         node = cls or library
         fmt = node.fmtdict
         self._begin_output_file()
+
+        if structs:
+            for struct in structs:
+                self.wrap_struct(struct)
+
         if cls:
-            self.wrap_class(cls)
+            if not cls.as_struct:
+                self.wrap_class(cls)
         else:
             self.wrap_enums(library)
             self.wrap_functions(library)
@@ -175,6 +186,11 @@ class Wrapc(util.WrapperMixin):
         if self.enum_impl:
             write_file = True
             output.extend(self.enum_impl)
+
+        if self.struct_impl:
+            write_file = True
+            output.extend(self.struct_impl)
+
         if self.header_forward:
             output.extend([
                 '',
@@ -287,6 +303,45 @@ class Wrapc(util.WrapperMixin):
                 os.path.join(self.config.c_fortran_dir, fname))
             self.write_output_file(fname, self.config.c_fortran_dir, output)
 
+    def wrap_struct(self, node):
+        """Create a C copy of struct.
+        A C++ struct must all POD.
+        XXX - Only need to wrap if in a namespace.
+        XXX - no need to wrap C structs
+        """
+        self.log.write("class {1.name}\n".format(self, node))
+        typedef = node.typedef
+        cname = typedef.c_type
+
+        output = self.struct_impl
+        output.append('')
+        output.extend([
+            '',
+            'struct s_{C_type_name} {{'.format(C_type_name=cname),
+            1,
+        ])
+        for var in node.variables:
+            ast = var.ast
+            result_type = ast.typename
+            typedef = typemap.Typedef.lookup(result_type)
+            output.append(ast.gen_arg_as_c() + ';')
+        output.extend([
+            -1,
+            '};',
+            'typedef struct s_{C_type_name} {C_type_name};'.format(C_type_name=cname),
+        ])
+
+        # Add a sanity check on sizes of structs
+        if False:
+            # XXX - add this to compiled code somewhere
+            typedef = node.typedef
+            output.extend([
+                '',
+                '0#if sizeof {} != sizeof {}'.format(typedef.name, typedef.c_type),
+                '0#error Sizeof {} and {} do not match'.format(typedef.name, typedef.c_type),
+                '0#endif',
+            ])
+
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
         typedef = node.typedef
@@ -373,30 +428,24 @@ class Wrapc(util.WrapperMixin):
             CXX_node = self.newlibrary.function_index[CXX_node._PTR_C_CXX_index]
             if CXX_node._generated:
                 generated.append(CXX_node._generated)
-        CXX_result = CXX_node.ast
-        CXX_subprogram = CXX_node.ast.get_subprogram()
+        CXX_ast = CXX_node.ast
+        CXX_subprogram = CXX_node.CXX_subprogram
 
         # C return type
         ast = node.ast
-        result_type = ast.typename
-        subprogram = ast.get_subprogram()
-        generated_suffix = ''
-        if node._generated == 'arg_to_buffer':
-            generated_suffix = '_buf'
+        result_type = node.CXX_return_type
+        C_subprogram = node.C_subprogram
+        result_typedef = node.CXX_result_typedef
+        generated_suffix = node.generated_suffix
 
-        result_typedef = typemap.Typedef.lookup(result_type)
         result_is_const = ast.const
-        is_ctor = CXX_result.fattrs.get('_constructor', False)
-        is_dtor = CXX_result.fattrs.get('_destructor', False)
+        is_ctor = CXX_ast.attrs.get('_constructor', False)
+        is_dtor = CXX_ast.attrs.get('_destructor', False)
         is_static = False
-        is_allocatable = CXX_result.fattrs.get('allocatable', False)
+        is_allocatable = CXX_ast.attrs.get('allocatable', False)
+        is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
-
-        # C++ functions which return 'this',
-        # are easier to call from Fortran if they are subroutines.
-        # There is no way to chain in Fortran:  obj->doA()->doB();
-        if node.return_this or is_dtor:
-            CXX_subprogram = 'subroutine'
+        is_union_scalar = False
 
         if result_typedef.c_header:
             # include any dependent header in generated header
@@ -420,16 +469,26 @@ class Wrapc(util.WrapperMixin):
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
-            if result_typedef.cxx_to_c is None:
+            if result_typedef.c_union and not is_pointer:
+                # 'convert' via fields of a union
+                is_union_scalar = True
+                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
+                fmt_result.cxx_var = fmt_result.c_var
+            elif result_typedef.cxx_to_c is None:
                 # C and C++ are compatible
                 fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.c_var
             else:
                 fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
-            fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
-                name=fmt_result.cxx_var, params=None, continuation=True)
-            if is_ctor or CXX_result.is_pointer():
+
+            if is_union_scalar:
+                fmt_func.cxx_rv_decl = result_typedef.c_union + ' ' + fmt_result.cxx_var
+            else:
+                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
+                    name=fmt_result.cxx_var, params=None, continuation=True)
+
+            if is_ctor or is_pointer:
                 # The C wrapper always creates a pointer to the new in the ctor
                 fmt_result.cxx_deref = '->'
                 fmt_result.cxx_addr = ''
@@ -446,6 +505,7 @@ class Wrapc(util.WrapperMixin):
         pre_call = []      # list of temporary variable declarations
         call_code = []
         post_call = []
+        return_code = []
 
         if cls:
             need_wrapper = True
@@ -498,14 +558,17 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_const = 'const '
             else:
                 fmt_arg.c_const = ''
+            arg_is_union_scalar = False
             if arg.is_pointer():
-                fmt_arg.c_ptr = ' *'
+                fmt_arg.c_ptr = '*'
                 fmt_arg.cxx_deref = '->'
 #                fmt_arg.cxx_addr = ''
             else:
                 fmt_arg.c_ptr = ''
                 fmt_arg.cxx_deref = '.'
 #                fmt_arg.cxx_addr = '&'
+                if arg_typedef.c_union:
+                    arg_is_union_scalar = True
             fmt_arg.cxx_type = arg_typedef.cxx_type
             cxx_local_var = ''
 
@@ -521,14 +584,14 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
                 # Set cxx_var for C_finalize which evalutes in fmt_result context
                 fmt_result.cxx_var = fmt_arg.cxx_var
-                fmt_func.cxx_rv_decl = CXX_result.gen_arg_as_cxx(
+                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                     name=fmt_arg.cxx_var, params=None, continuation=True)
 
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 stmts = 'result' + generated_suffix
                 need_wrapper = True
-                if CXX_result.is_pointer():
+                if is_pointer:
                     fmt_arg.cxx_deref = '->'
                     fmt_arg.cxx_addr = ''
                 else:
@@ -536,14 +599,30 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_addr = '&'
 
                 if is_allocatable:
-                    if not CXX_result.is_indirect():
+                    if not CXX_ast.is_indirect():
                         # An intermediate string * is allocated
                         # to save std::string result.
                         fmt_arg.cxx_addr = ''
                         fmt_arg.cxx_deref = '->'
             else:
                 arg_call = arg
-                if arg_typedef.c_to_cxx is None:
+                if arg_is_union_scalar:
+                    # Argument is passed from Fortran to C by value.
+                    # Take address of argument and pass to C++.
+                    # It is dereferenced when passed to C++ to pass the value.
+                    #  tutorial::struct1 * SHCXX_arg = 
+                    #    static_cast<tutorial::struct1 *>(static_cast<void *>(&arg));
+
+                    tmp = fmt_arg.c_var
+                    fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+                    fmt_arg.c_var = '&' + tmp
+                    fmt_arg.cxx_val = wformat(arg_typedef.c_to_cxx, fmt_arg)
+                    fmt_arg.c_var = tmp
+                    fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
+                        name=fmt_arg.cxx_var, params=None,
+                        as_ptr=True, force_ptr=True, continuation=True)
+                    append_format(pre_call, '{cxx_decl} = {cxx_val};', fmt_arg)
+                elif arg_typedef.c_to_cxx is None:
                     fmt_arg.cxx_var = fmt_arg.c_var      # compatible
                 else:
                     # convert C argument to C++
@@ -632,7 +711,10 @@ class Wrapc(util.WrapperMixin):
             if arg_call:
                 # Collect arguments to pass to wrapped function.
                 # Skips result_as_arg argument.
-                if cxx_local_var == 'scalar':
+                if arg_is_union_scalar:
+                    # Pass by value
+                    call_list.append('*' + fmt_arg.cxx_var)
+                elif cxx_local_var == 'scalar':
                     if arg.is_pointer():
                         call_list.append('&' + fmt_arg.cxx_var)
                     else:
@@ -667,7 +749,10 @@ class Wrapc(util.WrapperMixin):
         elif is_dtor:
             fmt_func.C_return_type = 'void'
         elif fmt_func.C_custom_return_type:
-            pass
+            pass # fmt_func.C_return_type = fmt_func.C_return_type
+        elif node.return_pointer_as == 'scalar':
+            fmt_func.C_return_type = ast.gen_arg_as_c(
+                name=None, as_scalar=True, params=None, continuation=True)
         else:
             fmt_func.C_return_type = ast.gen_arg_as_c(
                 name=None, params=None, continuation=True)
@@ -689,7 +774,7 @@ class Wrapc(util.WrapperMixin):
             append_format(call_code, '{cxx_rv_decl} = new {namespace_scope}'
                           '{cxx_class}({C_call_list});', fmt_func)
             if result_typedef.cxx_to_c is not None:
-                fmt_func.c_rv_decl = CXX_result.gen_arg_as_c(
+                fmt_func.c_rv_decl = CXX_ast.gen_arg_as_c(
                     name=fmt_result.c_var, params=None, continuation=True)
                 fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
             append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
@@ -703,13 +788,16 @@ class Wrapc(util.WrapperMixin):
             added_call_code = False
 
             if result_arg is None:
-                # The result is not passed back in an argument
+                # Return result from function
+                # (It was not passed back in an argument)
                 if self.language == 'c':
+                    pass
+                elif is_union_scalar:
                     pass
                 elif result_typedef.cxx_to_c is not None:
                     # Make intermediate c_var value if a conversion
                     # is required i.e. not the same as cxx_var.
-                    fmt_result.c_rv_decl = CXX_result.gen_arg_as_c(
+                    fmt_result.c_rv_decl = CXX_ast.gen_arg_as_c(
                         name=fmt_result.c_var, params=None, continuation=True)
                     fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
                     append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
@@ -734,11 +822,16 @@ class Wrapc(util.WrapperMixin):
                     added_call_code = True
 
             if not added_call_code:
-                append_format(call_code, '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'
+                if is_union_scalar:
+                    # Call function within {}'s to assign to first field of union.
+                    append_format(call_code, '{cxx_rv_decl} =\t {{{CXX_this_call}{function_name}'
+                              '{CXX_template}(\t{C_call_list})}};', fmt_func)
+                else:
+                    append_format(call_code, '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'
                               '{CXX_template}(\t{C_call_list});', fmt_func)
 
 
-            if subprogram == 'function':
+            if C_subprogram == 'function':
                 # Note: A C function may be converted into a Fortran subroutine
                 # subprogram when the result is returned in an argument.
                 C_return_code = wformat('return {c_var};', fmt_result)
@@ -756,6 +849,11 @@ class Wrapc(util.WrapperMixin):
         if fmt_func.inlocal('C_return_code'):
             need_wrapper = True
             C_return_code = wformat(fmt_func.C_return_code, fmt_func)
+        elif is_union_scalar:
+            fmt_func.C_return_code = wformat('return {cxx_var}.c;', fmt_result)
+        elif node.return_pointer_as == 'scalar':
+            # dereference pointer to return scalar
+            fmt_func.C_return_code = wformat('return *{cxx_var};', fmt_result)
         else:
             fmt_func.C_return_code = C_return_code
 

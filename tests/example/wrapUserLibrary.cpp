@@ -234,7 +234,7 @@ void AA_testgroup2(const SIDRE_group * grp)
 // splicer end function.testgroup2
 }
 
-// void FuncPtr1(void ( * get) +intent(in)+value())
+// void FuncPtr1(void ( * get)() +intent(in)+value)
 // function_index=62
 /**
  * \brief subroutine
@@ -248,7 +248,7 @@ void AA_func_ptr1(void ( * get)())
 // splicer end function.func_ptr1
 }
 
-// void FuncPtr2(double * ( * get) +intent(in)())
+// void FuncPtr2(double * ( * get)() +intent(in))
 // function_index=63
 /**
  * \brief return a pointer
@@ -262,7 +262,7 @@ void AA_func_ptr2(double * ( * get)())
 // splicer end function.func_ptr2
 }
 
-// void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
+// void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
 // function_index=64
 /**
  * \brief abstract argument
@@ -276,7 +276,7 @@ void AA_func_ptr3(double ( * get)(int i, int))
 // splicer end function.func_ptr3
 }
 
-// void FuncPtr4(double ( * get) +intent(in)+value(double +value, int +value))
+// void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)
 // function_index=65
 /**
  * \brief abstract argument
@@ -290,7 +290,7 @@ void AA_func_ptr4(double ( * get)(double, int))
 // splicer end function.func_ptr4
 }
 
-// void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
+// void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)
 // function_index=66
 void AA_func_ptr5(void ( * get)(int verylongname1, int verylongname2,
     int verylongname3, int verylongname4, int verylongname5,

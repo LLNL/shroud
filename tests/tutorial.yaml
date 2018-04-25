@@ -53,6 +53,7 @@ options:
 
 
 declarations:
+- decl: extern int global_flag;
 - decl: namespace tutorial
   declarations:
 
@@ -72,7 +73,15 @@ declarations:
     options:
        bar: 4
     format:
-       baz: 4  
+       baz: 4
+
+  - decl: |
+      struct struct1 {
+        int ifield;
+        double dfield;
+      };
+
+  - decl: extern int tutorial_flag;
 
   - decl: void Function1()
   - decl: double Function2(double arg1, int arg2)
@@ -93,6 +102,24 @@ declarations:
     options:
       # check out arguments
       wrap_python: False
+      wrap_lua: False
+
+  - decl: int * ReturnIntPtr()
+    options:
+      return_scalar_pointer: pointer
+      wrap_lua: False
+
+  - decl: int * ReturnIntPtrScalar()
+    options:
+      return_scalar_pointer: scalar
+      wrap_lua: False
+
+  - decl: int * ReturnIntPtrDim(int *len+intent(out)+hidden) +dimension(len)
+    options:
+      wrap_lua: False
+  
+  - decl: int * ReturnIntPtrDimNew(int *len+intent(out)+hidden) +dimension(len)
+    options:
       wrap_lua: False
   
   - decl: const std::string Function4a(
@@ -133,6 +160,9 @@ declarations:
       RetType:
       - int
       - double
+    options:
+       wrap_lua: False
+       wrap_python: False
   
   - decl: void Function9(double arg)
     fortran_generic:
@@ -199,6 +229,8 @@ declarations:
   
   - decl: class Class1
     declarations:
+    - decl: int m_flag +readonly;
+    - decl: int m_test +name(test);
     - decl: Class1()         +name(new)
       format:
         function_suffix: _default
@@ -216,6 +248,14 @@ declarations:
          brief: Pass in reference to instance
       options:
          # Need to fix fmt.cxx_deref
+         wrap_lua: False
+
+    - decl: Class1 * returnThis();
+      return_this: True
+      doxygen:
+         brief: Return pointer to 'this' to allow chaining calls
+      options:
+         wrap_python: False
          wrap_lua: False
   
     - decl: enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
@@ -295,6 +335,40 @@ declarations:
       wrap_lua: False
       wrap_python: False
   
+##################################################
+
+  - decl: struct1 returnStruct(int i, double d);
+    options:
+      wrap_lua: False
+  - decl: struct1 *returnStructPtr(int i, double d);
+    options:
+      wrap_lua: False
+#  - decl: struct1 *returnStructPtrNew(int i, double d);
+#    options:
+#      wrap_lua: False
+#      wrap_python: False
+#  - decl: void freeStruct(struct1 *arg1);
+#    options:
+#      wrap_lua: False
+#      wrap_python: False
+
+  - decl: double acceptStructIn(struct1 arg)
+    options:
+      wrap_lua: False
+      wrap_python: False
+  - decl: double acceptStructInPtr(struct1 *arg+intent(in))
+    options:
+      wrap_lua: False
+      wrap_python: False
+  - decl: void acceptStructOutPtr(struct1 *arg +intent(out), int i, double d)
+    options:
+      wrap_lua: False
+      wrap_python: False
+  - decl: void acceptStructInOutPtr(struct1 *arg +intent(inout))
+    options:
+      wrap_lua: False
+      wrap_python: False
+
 ##################################################
 # Used with testing
   - decl: const std::string& LastFunctionCalled() +len(30)

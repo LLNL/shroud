@@ -151,7 +151,10 @@ class Wrapf(util.WrapperMixin):
             name = node.name
             # how to decide module name, module per class
 #            module_name = node.options.setdefault('module_name', name.lower())
-            self.wrap_class(node)
+            if node.as_struct:
+                self.wrap_struct(node)
+            else:
+                self.wrap_class(node)
             if options.F_module_per_class:
                 self._pop_splicer('class')
                 self._end_output_file()
@@ -190,6 +193,38 @@ class Wrapf(util.WrapperMixin):
             self.write_module(newlibrary, None)
 
         self.write_c_helper()
+
+    def wrap_struct(self, node):
+        """A struct must be bind(C)-able. i.e. all POD.
+        No methods.
+        """
+        self.log.write("class {1.name}\n".format(self, node))
+        typedef = node.typedef
+
+        fmt_class = node.fmtdict
+
+        fmt_class.F_derived_name = typedef.f_derived_type
+
+        # type declaration
+        output = self.f_type_decl
+        output.append('')
+        self._push_splicer(fmt_class.cxx_class)
+        output.extend([
+                '',
+                wformat('type, bind(C) :: {F_derived_name}', fmt_class),
+                1,
+                ])
+        for var in node.variables:
+            ast = var.ast
+            result_type = ast.typename
+            typedef = typemap.Typedef.lookup(result_type)
+            output.append(ast.gen_arg_as_fortran())
+            self.update_f_module(self.module_use, typedef.f_module)
+        output.extend([
+                 -1,
+                 wformat('end type {F_derived_name}', fmt_class),
+                 ])
+        self._pop_splicer(fmt_class.cxx_class)
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
@@ -485,21 +520,24 @@ class Wrapf(util.WrapperMixin):
             for oname in only:
                 module[oname] = True
 
-    def sort_module_info(self, modules, module_name):
+    def sort_module_info(self, modules, module_name, imports=None):
         """Return USE statements based on modules.
-        Skip module_name.  Usually the current module.
+        Save any names which must be imported in imports to be used with
+        interface blocks.
         """
         arg_f_use = []
         for mname in sorted(modules):
-            if mname == module_name:
-                continue
             only = modules[mname]
-            if only:
-                snames = sorted(only.keys())
-                arg_f_use.append('use %s, only : %s' % (
-                        mname, ', '.join(snames)))
+            if mname == module_name:
+                if imports is not None:
+                    imports.update(only)
             else:
-                arg_f_use.append('use %s' % mname)
+                if only:
+                    snames = sorted(only.keys())
+                    arg_f_use.append('use %s, only : %s' % (
+                        mname, ', '.join(snames)))
+                else:
+                    arg_f_use.append('use %s' % mname)
         return arg_f_use
 
     def dump_generic_interfaces(self):
@@ -606,28 +644,17 @@ class Wrapf(util.WrapperMixin):
         fmt = util.Scope(fmt_func)
 
         ast = node.ast
-        result_type = ast.typename
-        is_ctor = ast.fattrs.get('_constructor', False)
-        is_dtor = ast.fattrs.get('_destructor', False)
-        is_pure = ast.fattrs.get('pure', False)
+        result_type = node.C_return_type
+        subprogram = node.C_subprogram
+        result_typedef = node.C_result_typedef
+        generated_suffix = node.generated_suffix
+        return_pointer_as = node.return_pointer_as
+        is_ctor = ast.attrs.get('_constructor', False)
+        is_dtor = ast.attrs.get('_destructor', False)
+        is_pure = ast.attrs.get('pure', False)
         is_static = False
-        is_allocatable = ast.fattrs.get('allocatable', False)
+        is_allocatable = ast.attrs.get('allocatable', False)
         func_is_const = ast.func_const
-        subprogram = ast.get_subprogram()
-
-        if node._generated == 'arg_to_buffer':
-            generated_suffix = '_buf'
-        else:
-            generated_suffix = ''
-
-        if is_dtor or node.return_this:
-            result_type = 'void'
-            subprogram = 'subroutine'
-        elif fmt_func.C_custom_return_type:
-            result_type = fmt_func.C_custom_return_type
-            subprogram = 'function'
-
-        result_typedef = typemap.Typedef.lookup(result_type)
 
         arg_c_names = []  # argument names for functions
         arg_c_decl = []   # declaraion of argument names
@@ -636,7 +663,6 @@ class Wrapf(util.WrapperMixin):
 
         # find subprogram type
         # compute first to get order of arguments correct.
-        # Add
         if subprogram == 'subroutine':
             fmt.F_C_subprogram = 'subroutine'
         else:
@@ -746,12 +772,16 @@ class Wrapf(util.WrapperMixin):
             else:
                 # XXX - make sure ptr is set to avoid VALUE
                 rvast = declast.create_this_arg(fmt.F_result, result_type, False)
-                arg_c_decl.append(rvast.bind_c())
+                if return_pointer_as == 'pointer':
+                    arg_c_decl.append('type(C_PTR) %s' % fmt.F_result)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
+                else:
+                    arg_c_decl.append(rvast.bind_c())
                 self.update_f_module(modules,
                                      result_typedef.f_c_module or
                                      result_typedef.f_module)
 
-        arg_f_use = self.sort_module_info(modules, None)
+        arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name, imports)
 
         c_interface = self.c_interface
         c_interface.append('')
@@ -852,44 +882,31 @@ class Wrapf(util.WrapperMixin):
         fmtargs = C_node._fmtargs
 
         # Fortran return type
+        result_type = node.F_return_type
+        subprogram = node.F_subprogram
+        result_typedef = node.F_result_typedef
+        C_subprogram = C_node.C_subprogram
+        generated_suffix = C_node.generated_suffix
         ast = node.ast
-        result_type = ast.typename
-        is_ctor = ast.fattrs.get('_constructor', False)
-        is_dtor = ast.fattrs.get('_destructor', False)
-        is_pure = ast.fattrs.get('pure', False)
+        is_ctor = ast.attrs.get('_constructor', False)
+        is_dtor = ast.attrs.get('_destructor', False)
+        is_pure = ast.attrs.get('pure', False)
         is_static = False
-        is_allocatable = ast.fattrs.get('allocatable', False)
-        subprogram = ast.get_subprogram()
-        c_subprogram = C_node.ast.get_subprogram()
+        is_allocatable = ast.attrs.get('allocatable', False)
 
-        if C_node._generated == 'arg_to_buffer':
-            generated_suffix = '_buf'
-        else:
-            generated_suffix = ''
-
-        if is_dtor or node.return_this:
-            result_type = 'void'
-            subprogram = 'subroutine'
-            c_subprogram = 'subroutine'
-        elif fmt_func.C_custom_return_type:
+        if fmt_func.C_custom_return_type:
             # User has changed the return type of the C function
             # TODO: probably needs to be more clever about
             # setting pointer or reference fields too.
             # Maybe parse result_type instead of copy.
-            result_type = fmt_func.C_custom_return_type
-            subprogram = 'function'
-            c_subprogram = 'function'
             ast = copy.deepcopy(node.ast)
             ast.typename = result_type
-
-        result_typedef = typemap.Typedef.lookup(result_type)
-        if not result_typedef:
-            raise RuntimeError("Unknown type {} in {}",
-                               result_type, fmt_func.function_name)
 
         result_generated_suffix = ''
         if is_pure:
             result_generated_suffix = '_pure'
+
+        return_pointer_as = node.return_pointer_as
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
@@ -944,6 +961,7 @@ class Wrapf(util.WrapperMixin):
             c_attrs = c_arg.attrs
             allocatable = c_attrs.get('allocatable', False)
             implied = c_attrs.get('implied', False)
+            hidden = c_attrs.get('hidden', False)
             intent = c_attrs['intent']
             allocatable_result = False  # XXX - kludgeish
 
@@ -981,9 +999,10 @@ class Wrapf(util.WrapperMixin):
                     # function pointers are pass thru without any change
                     arg_c_call.append(f_arg.name)
                     continue
-                elif implied:
-                    # An implied argument is not passed into Fortran
-                    # it is computed then passed to C++
+                elif hidden or implied:
+                    # Argument is not passed into Fortran.
+                    # hidden value is returned from C++.
+                    # implied is computed then passed to C++
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True))
                 else:
                     arg_f_decl.append(f_arg.gen_arg_as_fortran())
@@ -1112,7 +1131,7 @@ class Wrapf(util.WrapperMixin):
                                   fmt_func)
                 else:
                     # special case returning a string
-                    rvlen = ast.fattrs.get('len', None)
+                    rvlen = ast.attrs.get('len', None)
                     if rvlen is None:
                         rvlen = wformat(
                             'strlen_ptr(\t{F_C_call}(\t{F_arg_c_call}))',
@@ -1125,8 +1144,15 @@ class Wrapf(util.WrapperMixin):
                         fmt_func)
                     arg_f_decl.append(line1)
                 self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
+            elif return_pointer_as == 'pointer':
+                need_wrapper= True
+                arg_f_decl.append(ast.gen_arg_as_fortran(
+                    name=fmt_func.F_result, is_pointer=True))
+                arg_f_decl.append('type(C_PTR) :: ' + fmt_func.F_pointer)
+                self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             else:
                 arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
+
             self.update_f_module(modules, result_typedef.f_module)
 
         if not node._CXX_return_templated:
@@ -1165,11 +1191,15 @@ class Wrapf(util.WrapperMixin):
                     '{F_result}%{F_derived_member} = '
                     '{F_C_call}({F_arg_c_call})', fmt_func)
                 F_code.append(fmt_func.F_call_code)
-            elif c_subprogram == 'function':
+            elif C_subprogram == 'function':
                 f_statements = result_typedef.f_statements
                 intent_blk = f_statements.get('result' + result_generated_suffix,{})
-                cmd_list = intent_blk.get('call', [
-                        '{F_result} = {F_C_call}({F_arg_c_call})'])
+                if 'call' in intent_blk:
+                    cmd_list = intent_blk['call']
+                elif return_pointer_as == 'pointer':
+                    cmd_list = [ '{F_pointer} = {F_C_call}({F_arg_c_call})']
+                else:
+                    cmd_list = [ '{F_result} = {F_C_call}({F_arg_c_call})']
 #                for cmd in cmd_list:  # only allow a single statment for now
 #                    append_format(pre_call, cmd, fmt_arg)
                 fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
@@ -1188,9 +1218,20 @@ class Wrapf(util.WrapperMixin):
 #                # adjust return value or cleanup
 #                append_format(F_code, result_typedef.f_post_call, fmt_func)
             if is_dtor:
+                # Put C pointer into shadow class
                 F_code.append(wformat(
                     '{F_this}%{F_derived_member} = C_NULL_PTR', fmt_func))
                 self.set_f_module(modules, 'iso_c_binding', 'C_NULL_PTR')
+            elif return_pointer_as == 'pointer':
+                # Put C pointer into Fortran pointer
+                dim = ast.attrs.get('dimension', None)
+                if dim:
+                    fmt_func.pointer_shape = dim
+                    F_code.append(wformat('call c_f_pointer({F_pointer}, {F_result}, '
+                                          '[{pointer_shape}])', fmt_func))
+                else:
+                    F_code.append(wformat('call c_f_pointer({F_pointer}, {F_result})', fmt_func))
+                self.set_f_module(modules, 'iso_c_binding', 'c_f_pointer')
 
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)
 

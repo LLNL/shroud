@@ -122,8 +122,24 @@ bool TUT_class1_equivalent(const TUT_class1 * self,
 // splicer end class.Class1.method.equivalent
 }
 
-// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// Class1 * returnThis()
 // function_index=5
+/**
+ * \brief Return pointer to 'this' to allow chaining calls
+ *
+ */
+void TUT_class1_return_this(TUT_class1 * self)
+{
+// splicer begin class.Class1.method.return_this
+    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
+        static_cast<void *>(self));
+    SH_this->returnThis();
+    return;
+// splicer end class.Class1.method.return_this
+}
+
+// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// function_index=6
 int TUT_class1_direction_func(TUT_class1 * self, int arg)
 {
 // splicer begin class.Class1.method.direction_func
@@ -136,6 +152,40 @@ int TUT_class1_direction_func(TUT_class1 * self, int arg)
     int SHC_rv = static_cast<int>(SHCXX_rv);
     return SHC_rv;
 // splicer end class.Class1.method.direction_func
+}
+
+// int getM_flag()
+// function_index=7
+int TUT_class1_get_m_flag(TUT_class1 * self)
+{
+// splicer begin class.Class1.method.get_m_flag
+    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
+        static_cast<void *>(self));
+    return SH_this->m_flag;
+// splicer end class.Class1.method.get_m_flag
+}
+
+// int getTest()
+// function_index=8
+int TUT_class1_get_test(TUT_class1 * self)
+{
+// splicer begin class.Class1.method.get_test
+    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
+        static_cast<void *>(self));
+    return SH_this->m_test;
+// splicer end class.Class1.method.get_test
+}
+
+// void setTest(int val +intent(in)+value)
+// function_index=9
+void TUT_class1_set_test(TUT_class1 * self, int val)
+{
+// splicer begin class.Class1.method.set_test
+    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
+        static_cast<void *>(self));
+    SH_this->m_test = val;
+    return;
+// splicer end class.Class1.method.set_test
 }
 
 }  // extern "C"

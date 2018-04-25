@@ -1,4 +1,4 @@
-.. Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
+.. Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
 .. Produced at the Lawrence Livermore National Laboratory 
 ..
 .. LLNL-CODE-738041.
@@ -38,50 +38,47 @@
 ..
 .. #######################################################################
 
-.. shroud documentation master file, created by
-   sphinx-quickstart on Sat Jul 11 12:50:59 2015.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Python Previous Work
+====================
 
-Shroud
-======
-
-**Shroud** is a tool for creating a Fortran or Python interface to a C
-or C++ library.  It can also create a C API for a C++ library.
-
-The user creates a YAML file with the C/C++ declarations to be wrapped
-along with some annotations to provide semantic information and code
-generation options.  **Shroud** produces a wrapper for the library.
-The generated code is highly-readable and intended to be similar to code
-that would be hand-written to create the bindings.
-
-*verb*
-    1. wrap or dress (a body) in a shroud for burial.
-    2. cover or envelop so as to conceal from view.
+There a several available tools to creating a Python interface to a C or C++ library.
 
 
-Contents
+SWIG
+-----
 
-.. toctree::
-   :maxdepth: 1
-
-   introduction
-   installing
-   tutorial
-   pytutorial
-   input
-   types
-   functions
-   reference
-   previouswork
-   pypreviouswork
-   futurework
+* http://www.swig.org/
 
 
-Indices and tables
-==================
+PyBindgen
+---------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+* https://github.com/gjcarneiro/pybindgen
+* http://pybindgen.readthedocs.io/en/latest/
 
+Cython
+------
+
+* http://cython.org
+* https://cython.readthedocs.io/en/latest/
+
+SIP
+---
+
+* https://www.riverbankcomputing.com/software/sip/intro
+
+Boost Python
+------------
+
+* https://www.boost.org/doc/libs/1_66_0/libs/python/doc/html/index.html
+
+Pybind11
+--------
+
+* https://github.com/pybind/pybind11
+* https://pybind11.readthedocs.io/en/stable/
+
+Links
+-----
+
+  * `Interfacing with C - Scipy lecture notes <https://www.scipy-lectures.org/advanced/interfacing_with_c/interfacing_with_c.html>`_

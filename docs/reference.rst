@@ -222,11 +222,6 @@ return_this
 Options
 -------
 
-debug
-  Print additional comments in generated files that may 
-  be useful for debugging.
-  Defaults to *false*.
-
 C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
    Defaults to *false*.
@@ -237,6 +232,14 @@ C_line_length
   to break lines.
   A value of 0 will give the shortest possible lines.
   Defaults to 72.
+
+debug
+  Print additional comments in generated files that may 
+  be useful for debugging.
+  Defaults to *false*.
+
+doxygen
+  If True, create doxygen comments.
 
 F_line_length
   Control length of output line for generated Fortran.
@@ -265,6 +268,25 @@ F_string_len_trim
   creating a ``NULL`` terminated string using ``trim``.  This avoids
   copying the string in the Fortran wrapper.
   Defaults to *true*.
+
+F_return_fortran_pointer
+  Use ``c_f_pointer`` in the Fortran wrapper to return 
+  a Fortran pointer instead of a ``type(C_PTR)``
+  in routines which return a pointer
+  It does not apply to ``char *``, ``void *``, and routines which return
+  a pointer to a class instance.
+  Defaults to *true*.
+
+.. XXX how to decide length of pointer
+
+
+return_scalar_pointer
+  Determines how to treat a function which returns a pointer to a scalar
+  (it does not have the *dimension* attribute).
+  **scalar** return as a scalar or **pointer** to return as a pointer.
+  This option does not effect the C wrapper.
+  For Python, **pointer** will return a NumPy scalar.
+  Defaults to *pointer*.
 
 .. bufferify
 
@@ -436,11 +458,49 @@ PY_PyTypeObject_template
 PY_PyObject_template
     ``{PY_prefix}{cxx_class}``
 
-PY_type_filename_template
-    ``py{cxx_class}type.{PY_impl_filename_suffix}``
+PY_member_getter_template
+    Name of descriptor getter method for a class variable.
+    ``{PY_prefix}{cxx_class}_{variable_name}_getter``
+
+PY_member_setter_template
+    Name of descriptor setter method for a class variable.
+    ``{PY_prefix}{cxx_class}_{variable_name}_setter``
 
 PY_name_impl_template
     ``{PY_prefix}{class_prefix}{function_name}{function_suffix}``
+
+PY_numpy_array_capsule_name_template
+    Name of ``PyCapsule object`` used as base object of NumPy arrays.
+    Used to make sure a valid capsule is passed to *PY_numpy_array_dtor_function*.
+    ``{PY_prefix}array_dtor``
+
+PY_numpy_array_dtor_context_template
+    Name of ``const char * []`` array used as the *context* field
+    for *PY_numpy_array_dtor_function*.
+    ``{PY_prefix}array_destructor_context``
+
+PY_numpy_array_dtor_function_template
+    Name of *destructor* in ``PyCapsule`` base object of NumPy arrays.
+    ``{PY_prefix}array_destructor_function``
+
+PY_struct_array_descr_create_template
+    Name of C/C++ function to create a ``PyArray_Descr`` pointer for a structure.
+    ``{PY_prefix}{cxx_class}_create_array_descr``
+
+PY_struct_array_descr_variable_template
+    Name of C/C++ variable which is a pointer to a ``PyArray_Descr``
+    variable for a structure.
+    ``{PY_prefix}{cxx_class}_array_descr``
+
+PY_struct_array_descr_name_template
+    Name of Python variable which is a ``numpy.dtype`` for a struct.
+    Can be used to create instances of a C/C++ struct from Python.
+    ``np.array((1,3.14), dtype=tutorial.struct1_dtype)``
+    ``{cxx_class}_dtype``
+
+
+PY_type_filename_template
+    ``py{cxx_class}type.{PY_impl_filename_suffix}``
 
 PY_type_impl_template
     Names of functions for type methods such as ``tp_init``.
@@ -542,10 +602,17 @@ F_impl_filename
     If option *F_module_per_class* is false, then all derived types
     generated for each class will also be in this file.
 
+F_pointer
+    The name of Fortran wrapper local variable to save result of a 
+    function which returns a pointer.
+    The pointer is then set in ``F_result`` using ``c_f_pointer``.
+    It must not be the same as any of the routines arguments.
+    It defaults to *SHT_ptr*
+
 F_result
     The name of the Fortran wrapper's result variable.
     It must not be the same as any of the routines arguments.
-    It defaults to *SH_rv*  (Shroud return value).
+    It defaults to *SHT_rv*  (Shroud temporary return value).
 
 F_string_result_as_arg
     The name of the output argument.
@@ -766,7 +833,7 @@ C_return_code
     Code used to return from C wrapper.
 
 C_return_type
-    Return type of the function.
+    Return type of the C wrapper function.
     If the **return_this** field is true, then set to ``void``.
     If the **C_return_type** format is set, use its value.
     Otherwise set to function's return type.
@@ -1197,7 +1264,12 @@ PY_PyObject
 
 PY_ctor
     Expression to create object.
-    ex. PyBool_FromLong({rv})
+    ex. ``PyInt_FromLong({rv})``
+    Defaults to *None*.
+
+PY_get
+    Expression to get value from an object.
+    ex. ``PyInt_AsLong({py_var})``
     Defaults to *None*.
 
 PY_to_object
@@ -1235,6 +1307,15 @@ py_statement
            This is the case when C and C++ are not directly compatible.
            Usually a C++ constructor or cast is involved.
 
+PYN_descr
+    Name of ``PyArray_Descr`` variable which describe type.
+    Used with structs.
+    Defaults to *None*.
+
+PYN_typenum
+    NumPy type number.
+    ex. ``NPY_INT``
+    Defaults to *None*.
 
 Annotations
 -----------
@@ -1262,11 +1343,23 @@ name
    Name of the method.
    Useful for constructor and destructor methods which have no names.
 
+hidden
+   The argument will not appear in the Fortran API.
+   But it will be passed to the C wrapper.
+   This allows the value to be used in the C wrapper.
+   For example, setting the shape of a pointer function::
+
+      int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)
+
+.. assumed intent(out)
+   
 implied
    Used to compute value of argument to C++ based on argument
    to Fortran or Python wrapper.  Useful with array sizes::
 
-       Sum(int * array +intent(in), int len +implied(size(array))
+      int Sum(int * array +intent(in), int len +implied(size(array))
+
+.. assumed intent(in)
 
 intent
    Valid valid values are ``in``, ``out``, ``inout``.

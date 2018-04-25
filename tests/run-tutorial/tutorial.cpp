@@ -43,8 +43,12 @@
 
 #include "tutorial.hpp"
 
+int global_flag;
+
 namespace tutorial
 {
+
+int tutorial_flag;
 
 static std::string last_function_called;
 
@@ -53,7 +57,7 @@ static std::string global_str;
 static int global_int;
 static double global_double;
 static const Class1 *global_class1;
-
+static struct1 global_struct1;
 
 
 void Function1()
@@ -80,6 +84,38 @@ void Function3b(const bool arg1, bool *arg2, bool *arg3)
     *arg2 = ! arg1;
     *arg3 = ! *arg3;
     return;
+}
+
+
+int * ReturnIntPtr()
+{
+  static int buffer = 1;
+  return &buffer;
+}
+
+int * ReturnIntPtrScalar()
+{
+  static int buffer = 10;
+  return &buffer;
+}
+
+// Return a pointer to an existing, static array
+int * ReturnIntPtrDim(int *len)
+{
+  static int buffer[] = { 1, 2, 3, 4, 5, 6, 7 };
+  *len = sizeof buffer / sizeof buffer[1];
+  return buffer;
+}
+
+// Return a pointer to a new array
+int * ReturnIntPtrDimNew(int *len)
+{
+  int *buffer = new int[5];
+  for (int i=0; i < 5; i++) {
+    buffer[i] = i;
+  }
+  *len = 5;
+  return buffer;
 }
 
 const std::string Function4a(const std::string& arg1, const std::string& arg2)
@@ -243,13 +279,13 @@ void getclass(const Class1 **arg)
 
 const Class1 * getclass2()
 {
-    last_function_called = "getclass";
+    last_function_called = "getclass2";
     return global_class1;
 }
 
 Class1 * getclass3()
 {
-    last_function_called = "getclass";
+    last_function_called = "getclass3";
     return const_cast<Class1 *>(global_class1);
 }
 
@@ -264,7 +300,13 @@ int Class1::Method1()
 
 bool Class1::equivalent(Class1 const &obj2) const
 {
-  return m_flag == obj2.m_flag;
+    return m_flag == obj2.m_flag;
+}
+
+Class1 * Class1::returnThis()
+{
+    last_function_called = "returnThis";
+    return this;
 }
 
 Class1::DIRECTION Class1::directionFunc(Class1::DIRECTION arg)
@@ -362,6 +404,60 @@ void vector_string_append(std::vector< std::string > &arg)
 int callback1(int in, int (*incr)(int))
 {
   return incr(in);
+}
+
+//----------------------------------------------------------------------
+
+struct1 returnStruct(int i, double d)
+{
+  struct1 s = {i, d};
+  return s;
+}
+
+struct1 *returnStructPtr(int i, double d)
+{
+  global_struct1.ifield = i;
+  global_struct1.dfield = d;
+  return &global_struct1;
+}
+
+struct1 *returnStructPtrNew(int i, double d)
+{
+  struct1 *s = new struct1;
+  s->ifield = i;
+  s->dfield = d;
+  return s;
+}
+
+void freeStruct(struct1 *arg1)
+{
+  delete arg1;
+}
+
+// return sum of fields as a check
+double acceptStructIn(struct1 arg)
+{
+  return arg.ifield + arg.dfield;
+}
+
+// return sum of fields as a check
+double acceptStructInPtr(struct1 *arg)
+{
+  return arg->ifield + arg->dfield;
+}
+
+void acceptStructOutPtr(struct1 *arg, int i, double d)
+{
+  arg->ifield = i;
+  arg->dfield = d;
+  return;
+}
+
+void acceptStructInOutPtr(struct1 *arg)
+{
+  arg->ifield += 1;
+  arg->dfield += 1.0;
+  return;
 }
 
 //----------------------------------------------------------------------

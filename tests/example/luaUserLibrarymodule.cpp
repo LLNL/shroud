@@ -120,16 +120,16 @@ static int l_exclass1_increment_count(lua_State *L)
     // splicer end class.ExClass1.method.incrementCount
 }
 
-// const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-static int l_exclass1_get_name(lua_State *L)
+// const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
+static int l_exclass1_get_name_error_pattern(lua_State *L)
 {
-    // splicer begin class.ExClass1.method.getName
+    // splicer begin class.ExClass1.method.getNameErrorPattern
     l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
         L, 1, "ExClass1.metatable");
-    const std::string & SHCXX_rv = SH_this->self->getName();
+    const std::string & SHCXX_rv = SH_this->self->getNameErrorPattern();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
-    // splicer end class.ExClass1.method.getName
+    // splicer end class.ExClass1.method.getNameErrorPattern
 }
 
 // int GetNameLength() const
@@ -260,7 +260,7 @@ static int l_exclass1_splicer_special(lua_State *L)
 static const struct luaL_Reg l_ExClass1_Reg [] = {
     {"__gc", l_exclass1_dtor},
     {"incrementCount", l_exclass1_increment_count},
-    {"getName", l_exclass1_get_name},
+    {"getNameErrorPattern", l_exclass1_get_name_error_pattern},
     {"GetNameLength", l_exclass1_get_name_length},
     {"getNameErrorCheck", l_exclass1_get_name_error_check},
     {"getNameArg", l_exclass1_get_name_arg},
@@ -443,6 +443,90 @@ static int l_exclass2_get_type_id(lua_State *L)
     // splicer end class.ExClass2.method.getTypeID
 }
 
+// void setValue(int value +intent(in)+value)
+// void setValue(long value +intent(in)+value)
+// void setValue(float value +intent(in)+value)
+// void setValue(double value +intent(in)+value)
+static int l_exclass2_set_value(lua_State *L)
+{
+    // splicer begin class.ExClass2.method.setValue
+    int SH_nresult = 0;
+    int SH_nargs = lua_gettop(L);
+    int SH_itype1 = lua_type(L, 1);
+    switch (SH_nargs) {
+    case 1:
+        if (SH_itype1 == LUA_TNUMBER) {
+            int value = lua_tointeger(L, 1);
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            SH_this->self->setValue(value);
+            SH_nresult = 0;
+        }
+        else if (SH_itype1 == LUA_TNUMBER) {
+            long value = lua_tointeger(L, 1);
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            SH_this->self->setValue(value);
+            SH_nresult = 0;
+        }
+        else if (SH_itype1 == LUA_TNUMBER) {
+            float value = lua_tonumber(L, 1);
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            SH_this->self->setValue(value);
+            SH_nresult = 0;
+        }
+        else if (SH_itype1 == LUA_TNUMBER) {
+            double value = lua_tonumber(L, 1);
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            SH_this->self->setValue(value);
+            SH_nresult = 0;
+        }
+        else {
+            luaL_error(L, "error with arguments");
+        }
+        break;
+    default:
+        luaL_error(L, "error with arguments");
+        break;
+    }
+    return SH_nresult;
+    // splicer end class.ExClass2.method.setValue
+}
+
+// int getValue()
+// double getValue()
+static int l_exclass2_get_value(lua_State *L)
+{
+    // splicer begin class.ExClass2.method.getValue
+    int SH_nresult = 0;
+    int SH_nargs = lua_gettop(L);
+    switch (SH_nargs) {
+    case 0:
+        {
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            int SHCXX_rv = SH_this->self->getValue();
+            lua_pushinteger(L, SHCXX_rv);
+            SH_nresult = 1;
+        }
+        {
+            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
+                luaL_checkudata(L, 1, "ExClass2.metatable");
+            double SHCXX_rv = SH_this->self->getValue();
+            lua_pushnumber(L, SHCXX_rv);
+            SH_nresult = 1;
+        }
+        break;
+    default:
+        luaL_error(L, "error with arguments");
+        break;
+    }
+    return SH_nresult;
+    // splicer end class.ExClass2.method.getValue
+}
+
 // splicer begin class.ExClass2.additional_functions
 // splicer end class.ExClass2.additional_functions
 
@@ -457,6 +541,8 @@ static const struct luaL_Reg l_ExClass2_Reg [] = {
     {"declare", l_exclass2_declare},
     {"destroyall", l_exclass2_destroyall},
     {"getTypeID", l_exclass2_get_type_id},
+    {"setValue", l_exclass2_set_value},
+    {"getValue", l_exclass2_get_value},
     // splicer begin class.ExClass2.register
     // splicer end class.ExClass2.register
     {NULL, NULL}   /*sentinel */
@@ -705,7 +791,7 @@ static int l_testgroup2(lua_State *L)
     // splicer end function.testgroup2
 }
 
-// void FuncPtr1(void ( * get) +intent(in)+value())
+// void FuncPtr1(void ( * get)() +intent(in)+value)
 static int l_func_ptr1(lua_State *L)
 {
     // splicer begin function.FuncPtr1
@@ -715,7 +801,7 @@ static int l_func_ptr1(lua_State *L)
     // splicer end function.FuncPtr1
 }
 
-// void FuncPtr2(double * ( * get) +intent(in)())
+// void FuncPtr2(double * ( * get)() +intent(in))
 static int l_func_ptr2(lua_State *L)
 {
     // splicer begin function.FuncPtr2
@@ -725,7 +811,7 @@ static int l_func_ptr2(lua_State *L)
     // splicer end function.FuncPtr2
 }
 
-// void FuncPtr3(double ( * get) +intent(in)+value(int i +value, int +value))
+// void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
 static int l_func_ptr3(lua_State *L)
 {
     // splicer begin function.FuncPtr3
@@ -735,7 +821,7 @@ static int l_func_ptr3(lua_State *L)
     // splicer end function.FuncPtr3
 }
 
-// void FuncPtr5(void ( * get) +intent(in)+value(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value))
+// void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)
 static int l_func_ptr5(lua_State *L)
 {
     // splicer begin function.FuncPtr5

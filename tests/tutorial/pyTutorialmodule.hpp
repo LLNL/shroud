@@ -48,6 +48,9 @@
 
 // forward declare classes
 namespace tutorial {
+    class struct1;
+}
+namespace tutorial {
     class Class1;
 }
 class Singleton;
@@ -61,6 +64,8 @@ extern PyTypeObject PY_Singleton_Type;
 // helper functions
 extern const char *PY_Class1_capsule_name;
 extern const char *PY_Singleton_capsule_name;
+extern const char * PY_array_destructor_context[];
+extern void PY_array_destructor_function(PyObject *cap);
 PyObject *PP_Class1_to_Object(tutorial::Class1 *addr);
 int PP_Class1_from_Object(PyObject *obj, void **addr);
 PyObject *PP_Singleton_to_Object(Singleton *addr);

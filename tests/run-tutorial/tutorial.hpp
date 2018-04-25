@@ -47,6 +47,8 @@
 #include <string>
 #include <vector>
 
+extern int global_flag;
+
 namespace tutorial
 {
 
@@ -64,12 +66,24 @@ enum Color {
 
 typedef int TypeID;
 
+struct struct1 {
+  int ifield;
+  double dfield;
+};
+
+extern int tutorial_flag;
+
 void Function1();
 
 double Function2(double arg1, int arg2);
 
 bool Function3(bool arg);
 void Function3b(const bool arg1, bool *arg2, bool *arg3);
+
+int * ReturnIntPtr();
+int * ReturnIntPtrScalar();
+int * ReturnIntPtrDim(int *len);
+int * ReturnIntPtrDimNew(int *len);
 
 const std::string  Function4a(const std::string& arg1, const std::string& arg2);
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);
@@ -114,10 +128,12 @@ class Class1
 {
 public:
     int m_flag;
-    Class1()         : m_flag(0)    {};
-    Class1(int flag) : m_flag(flag) {};
+    int m_test;
+    Class1()         : m_flag(0), m_test(0)    {};
+    Class1(int flag) : m_flag(flag), m_test(0) {};
     int Method1();
     bool equivalent(Class1 const &obj2) const;
+    Class1 * returnThis();
 
     enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 
@@ -141,6 +157,15 @@ void vector_string_fill(std::vector< std::string > &arg);
 void vector_string_append(std::vector< std::string > &arg);
 
 int callback1(int in, int (*incr)(int));
+
+struct1 returnStruct(int i, double d);
+struct1 *returnStructPtr(int i, double d);
+struct1 *returnStructPtrNew(int i, double d);
+void freeStruct(struct1 *arg1);
+double acceptStructIn(struct1 arg);
+double acceptStructInPtr(struct1 *arg);
+void acceptStructOutPtr(struct1 *arg, int i, double d);
+void acceptStructInOutPtr(struct1 *arg);
 
 const std::string& LastFunctionCalled();
 

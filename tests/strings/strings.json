@@ -73,6 +73,7 @@
             "F_name_associated": "associated", 
             "F_name_instance_get": "get_instance", 
             "F_name_instance_set": "set_instance", 
+            "F_pointer": "SHT_ptr", 
             "F_pure_clause": "", 
             "F_result": "SHT_rv", 
             "F_result_clause": "", 
@@ -93,6 +94,9 @@
             "PY_library_doc": "library documentation", 
             "PY_module_filename": "pystringsmodule.cpp", 
             "PY_module_name": "strings", 
+            "PY_numpy_array_capsule_name": "PY_array_dtor", 
+            "PY_numpy_array_dtor_context": "PY_array_destructor_context", 
+            "PY_numpy_array_dtor_function": "PY_array_destructor_function", 
             "PY_obj": "obj", 
             "PY_param_args": "args", 
             "PY_param_kwds": "kwds", 
@@ -142,6 +146,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_status"
                         }
                     }
@@ -156,7 +161,6 @@
                         "name": "passChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -219,10 +223,12 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -236,7 +242,6 @@
                         "name": "returnChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -279,7 +284,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -312,7 +317,6 @@
                         "name": "returnChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -374,7 +378,7 @@
                     "dest": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "dest", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -384,7 +388,7 @@
                     "src": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "src", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -402,7 +406,6 @@
                         "name": "passCharPtr", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -487,7 +490,7 @@
                     "dest": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
                             "cxx_deref": "->", 
@@ -502,7 +505,7 @@
                     "src": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
                             "cxx_deref": "->", 
@@ -526,7 +529,6 @@
                         "name": "passCharPtr", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -611,7 +613,7 @@
                     "s": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "s", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -630,6 +632,7 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "s", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_s"
                         }
                     }
@@ -644,7 +647,6 @@
                         "name": "passCharPtrInOut", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -707,7 +709,7 @@
                     "s": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "s", 
                             "c_var_len": "Ns", 
                             "c_var_trim": "Ls", 
@@ -732,7 +734,6 @@
                         "name": "passCharPtrInOut", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -801,17 +802,20 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "*", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHC_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 4, 
                 "ast": {
                     "attrs": {
-                        "_typename": "char"
+                        "_typename": "char", 
+                        "pure": true
                     }, 
                     "const": true, 
                     "declarator": {
@@ -822,9 +826,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "pure": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -869,7 +870,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -891,15 +892,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "pure": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getCharPtr1", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "pure": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -908,7 +907,8 @@
                                 "_is_result": true, 
                                 "_typename": "char", 
                                 "intent": "out", 
-                                "len": "NSHF_rv"
+                                "len": "NSHF_rv", 
+                                "pure": true
                             }, 
                             "const": false, 
                             "declarator": {
@@ -930,7 +930,7 @@
                     ]
                 }, 
                 "decl": "const char * getCharPtr1()  +pure", 
-                "declgen": "void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
+                "declgen": "void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure", 
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 }, 
@@ -968,17 +968,20 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "*", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHC_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 5, 
                 "ast": {
                     "attrs": {
-                        "_typename": "char"
+                        "_typename": "char", 
+                        "len": "30"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -989,9 +992,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -1036,7 +1036,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -1062,15 +1062,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": "30"
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getCharPtr2", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [
@@ -1138,10 +1136,12 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "*", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHC_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -1160,7 +1160,6 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -1197,7 +1196,7 @@
                     "output": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "", 
@@ -1230,7 +1229,6 @@
                         "name": "getCharPtr3", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1301,7 +1299,6 @@
                         "name": "getCharPtr3", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1363,25 +1360,25 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 7, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "len": 30
                     }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringLen", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -1420,7 +1417,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -1446,15 +1443,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": 30
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringLen", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [
@@ -1517,10 +1512,12 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -1534,7 +1531,6 @@
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -1564,7 +1560,7 @@
                     "output": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "&", 
@@ -1597,7 +1593,6 @@
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1669,7 +1664,6 @@
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1730,25 +1724,25 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 9, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "allocatable": true
                     }, 
                     "const": true, 
                     "declarator": {
                         "name": "getConstStringAlloc", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -1782,7 +1776,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -1810,15 +1804,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "allocatable": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringAlloc", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -1889,17 +1881,20 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 10, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "pure": true
                     }, 
                     "const": true, 
                     "declarator": {
@@ -1910,9 +1905,6 @@
                                 "ptr": "&"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "pure": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -1980,15 +1972,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "pure": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefPure", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "pure": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -1997,7 +1987,8 @@
                                 "_is_result": true, 
                                 "_typename": "std::string", 
                                 "intent": "out", 
-                                "len": "NSHF_rv"
+                                "len": "NSHF_rv", 
+                                "pure": true
                             }, 
                             "const": false, 
                             "declarator": {
@@ -2019,7 +2010,7 @@
                     ]
                 }, 
                 "decl": "const string& getConstStringRefPure()  +pure", 
-                "declgen": "void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure", 
+                "declgen": "void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure", 
                 "doxygen": {
                     "brief": "return a 'const string&' as character(*)"
                 }, 
@@ -2060,17 +2051,20 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 11, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "len": 30
                     }, 
                     "const": true, 
                     "declarator": {
@@ -2081,9 +2075,6 @@
                                 "ptr": "&"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -2157,15 +2148,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": 30
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefLen", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [
@@ -2236,10 +2225,12 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -2258,7 +2249,6 @@
                             }
                         ]
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -2331,7 +2321,6 @@
                         "name": "getConstStringRefAsArg", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -2403,7 +2392,6 @@
                         "name": "getConstStringRefAsArg", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -2473,17 +2461,20 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 13, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "len": 30
                     }, 
                     "const": true, 
                     "declarator": {
@@ -2494,9 +2485,6 @@
                                 "ptr": "&"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -2570,15 +2558,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": 30
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefLenEmpty", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [
@@ -2649,17 +2635,20 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 14, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "allocatable": true
                     }, 
                     "const": true, 
                     "declarator": {
@@ -2670,9 +2659,6 @@
                                 "ptr": "&"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -2714,7 +2700,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -2742,15 +2728,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "allocatable": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringRefAlloc", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -2822,17 +2806,20 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "*", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 15, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "len": 30
                     }, 
                     "const": true, 
                     "declarator": {
@@ -2843,9 +2830,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -2892,7 +2876,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -2918,15 +2902,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": 30
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrLen", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": 30
                     }, 
                     "func_const": false, 
                     "params": [
@@ -2998,17 +2980,20 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "*", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 16, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "allocatable": true
                     }, 
                     "const": true, 
                     "declarator": {
@@ -3019,9 +3004,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -3063,7 +3045,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -3091,15 +3073,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "allocatable": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrAlloc", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -3171,17 +3151,20 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "*", 
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 17, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "allocatable": true
                     }, 
                     "const": true, 
                     "declarator": {
@@ -3192,9 +3175,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [], 
@@ -3236,7 +3216,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -3264,15 +3244,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "allocatable": true
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrOwnsAlloc", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "allocatable": true
                     }, 
                     "func_const": false, 
                     "params": [
@@ -3353,6 +3331,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_arg1"
                         }
                     }
@@ -3367,7 +3346,6 @@
                         "name": "acceptStringConstReference", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3455,7 +3433,6 @@
                         "name": "acceptStringConstReference", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3536,6 +3513,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_arg1"
                         }
                     }
@@ -3550,7 +3528,6 @@
                         "name": "acceptStringReferenceOut", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3639,7 +3616,6 @@
                         "name": "acceptStringReferenceOut", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3721,6 +3697,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_arg1"
                         }
                     }
@@ -3735,7 +3712,6 @@
                         "name": "acceptStringReference", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3825,7 +3801,6 @@
                         "name": "acceptStringReference", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3889,7 +3864,7 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg1", 
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
@@ -3908,6 +3883,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_arg1"
                         }
                     }
@@ -3922,7 +3898,6 @@
                         "name": "acceptStringPointer", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -3986,7 +3961,7 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "c_var_trim": "Larg1", 
@@ -4011,7 +3986,6 @@
                         "name": "acceptStringPointer", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4084,6 +4058,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_arg1"
                         }
                     }, 
@@ -4101,6 +4076,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg2", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_arg2"
                         }
                     }
@@ -4115,7 +4091,6 @@
                         "name": "returnStrings", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4187,7 +4162,6 @@
                         "name": "returnMany", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4235,7 +4209,7 @@
                     "name": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "name", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -4252,6 +4226,7 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_name"
                         }
                     }
@@ -4266,7 +4241,6 @@
                         "name": "explicit1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4327,7 +4301,7 @@
                     "name": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "name", 
                             "c_var_trim": "AAlen", 
                             "cxx_deref": "->", 
@@ -4351,7 +4325,6 @@
                         "name": "explicit1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4411,7 +4384,7 @@
                     "name": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "name", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -4429,7 +4402,6 @@
                         "name": "explicit2", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4491,7 +4463,7 @@
                     "name": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "name", 
                             "c_var_len": "AAtrim", 
                             "cxx_deref": "->", 
@@ -4515,7 +4487,6 @@
                         "name": "explicit2", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4595,6 +4566,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_status"
                         }
                     }
@@ -4609,7 +4581,6 @@
                         "name": "CpassChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4674,10 +4645,12 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -4691,7 +4664,6 @@
                         "name": "CreturnChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -4736,7 +4708,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -4769,7 +4741,6 @@
                         "name": "CreturnChar", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4832,7 +4803,7 @@
                     "dest": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "dest", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -4842,7 +4813,7 @@
                     "src": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "src", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -4860,7 +4831,6 @@
                         "name": "CpassCharPtr", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -4946,7 +4916,7 @@
                     "dest": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
                             "cxx_deref": "->", 
@@ -4961,7 +4931,7 @@
                     "src": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
                             "cxx_deref": "->", 
@@ -4985,7 +4955,6 @@
                         "name": "CpassCharPtr", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -5093,6 +5062,7 @@
             "F_name_function_template": "{underscore_name}{function_suffix}", 
             "F_name_generic_template": "{underscore_name}", 
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}", 
+            "F_return_fortran_pointer": true, 
             "F_standard": 2003, 
             "F_string_len_trim": true, 
             "LUA_class_reg_template": "{LUA_prefix}{cxx_class}_Reg", 
@@ -5110,14 +5080,23 @@
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type", 
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}", 
             "PY_helper_filename_template": "py{library}helper.{PY_impl_filename_suffix}", 
+            "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter", 
+            "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter", 
             "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}", 
             "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}", 
+            "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor", 
+            "PY_numpy_array_dtor_context_template": "{PY_prefix}array_destructor_context", 
+            "PY_numpy_array_dtor_function_template": "{PY_prefix}array_destructor_function", 
+            "PY_struct_array_descr_create_template": "{PY_prefix}{cxx_class}_create_array_descr", 
+            "PY_struct_array_descr_name_template": "{cxx_class}_dtype", 
+            "PY_struct_array_descr_variable_template": "{PY_prefix}{cxx_class}_array_descr", 
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}", 
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
             "doxygen": true, 
+            "return_scalar_pointer": "pointer", 
             "show_splicer_comments": true, 
             "wrap_c": true, 
             "wrap_fortran": true, 
@@ -5152,6 +5131,7 @@
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushboolean({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TBOOLEAN", 
+            "PYN_typenum": "NPY_BOOL", 
             "PY_PyTypeObject": "PyBool_Type", 
             "c_type": "bool", 
             "cxx_type": "bool", 
@@ -5197,7 +5177,7 @@
                 }, 
                 "intent_inout": {
                     "post_call": [
-                        "{py_var} = PyBool_FromLong({c_var});"
+                        "{py_var} = PyBool_FromLong({c_ptr}{c_var});"
                     ], 
                     "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
@@ -5340,8 +5320,10 @@
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyFloat_FromDouble({c_var})", 
+            "PYN_typenum": "NPY_DOUBLE", 
+            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
             "PY_format": "d", 
+            "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "double", 
             "cxx_type": "double", 
             "f_cast": "real({f_var}, C_DOUBLE)", 
@@ -5357,8 +5339,10 @@
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyFloat_FromDouble({c_var})", 
+            "PYN_typenum": "NPY_FLOAT", 
+            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
             "PY_format": "f", 
+            "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "float", 
             "cxx_type": "float", 
             "f_cast": "real({f_var}, C_FLOAT)", 
@@ -5374,8 +5358,10 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PYN_typenum": "NPY_INT", 
+            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "int", 
             "cxx_type": "int", 
             "f_cast": "int({f_var}, C_INT)", 
@@ -5391,8 +5377,10 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PYN_typenum": "NPY_LONG", 
+            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "l", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "long", 
             "cxx_type": "long", 
             "f_cast": "int({f_var}, C_LONG)", 
@@ -5408,6 +5396,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONGLONG", 
             "PY_format": "L", 
             "c_type": "long long", 
             "cxx_type": "long long", 
@@ -5424,7 +5413,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromSize_t({c_var})", 
+            "PY_ctor": "PyInt_FromSize_t({c_ptr}{c_var})", 
             "c_header": "<stddef.h>", 
             "c_type": "size_t", 
             "cxx_type": "size_t", 

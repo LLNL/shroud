@@ -228,6 +228,49 @@ wrapper does the type conversion necessary to make it easier to use
 within an existing Fortran application.
 
 
+Pointer Functions
+-----------------
+
+Functions which return a pointer will create a Fortran wrapper with
+the ``POINTER`` attribute::
+
+    - decl: int * ReturnIntPtrDim(int *len+intent(out)+hidden) +dimension(len)
+
+The C++ routine returns a pointer to an array and the length of the array
+in argument ``len``.  The Fortran API does not need to pass the argument
+since the returned pointer will know its length.
+The *hidden* attribute will cause ``len`` to be omitted from the Fortran API,
+but still passed to the C API.
+The Fortran wrappers::
+
+    interface
+        function c_return_int_ptr_dim(len) &
+                result(SHT_rv) &
+                bind(C, name="TUT_return_int_ptr_dim")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), intent(OUT) :: len
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_dim
+    end interface
+
+    function return_int_ptr_dim() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT) :: len
+        integer(C_INT), pointer :: SHT_rv(:)
+        type(C_PTR) :: SHT_ptr
+        SHT_ptr = c_return_int_ptr_dim(len)
+        call c_f_pointer(SHT_ptr, SHT_rv, [len])
+    end function return_int_ptr_dim
+
+It can be used as::
+
+    integer(C_INT), pointer :: intp(:)
+
+    intp => return_int_ptr()
+
+
 Pointer arguments
 -----------------
 
@@ -302,8 +345,8 @@ this value to the C wrapper::
           map to Fortran directly and require ``type(C_PTR)``.
 
 
-Character
-^^^^^^^^^
+String
+^^^^^^
 
 Character variables have significant differences between C and
 Fortran.  The Fortran interoperability with C feature treats a
@@ -402,6 +445,21 @@ Each function with default value arguments will create a C and Fortran
 wrapper for each possible prototype.  For Fortran, these functions
 are then wrapped in a generic statement which allows them to be
 called by the original name.
+A header files contains::
+
+    double Function5(double arg1 = 3.1415, bool arg2 = true)
+
+and the function is defined as::
+
+    double Function5(double arg1, bool arg2)
+    {
+        if (arg2) {
+            return arg1 + 10.0;
+        } else {
+            return arg1;
+        }
+     }
+
 Creating a wrapper for each possible way of calling the C++ function
 allows C++ to provide the default values::
 
@@ -822,7 +880,85 @@ Fortran creates integer parameters for each value::
 Structure
 ^^^^^^^^^
 
-TODO
+A structure in C++ can be mapped directly to a Fortran derived type using the 
+``bind(C)`` attribute provided by Fortran 2003. For example, the C++ code::
+
+    struct struct1 {
+      int ifield;
+      double dfield;
+    };
+
+can be defined to Shroud with the YAML input::
+
+    - decl: |
+        struct struct1 {
+          int ifield;
+          double dfield;
+        };
+
+This will generate a C struct which is compatible with C++::
+
+    struct s_TUT_struct1 {
+        int ifield;
+        double dfield;
+    };
+    typedef struct s_TUT_struct1 TUT_struct1;
+
+A C++ struct is compatible with C; however, its name may not be accessible to
+C since it may be defined within a namespace.  By creating an identical struct in the 
+C wrapper, we're guaranteed visibility for the C API.
+
+.. note:: All fields must be defined in the YAML file in order to ensure that
+          ``sizeof`` operator will return the same value for the C and C++ structs.
+
+This will generate a Fortran derived type which is compatible with C++::
+
+    type, bind(C) :: struct1
+        integer(C_INT) :: ifield
+        real(C_DOUBLE) :: dfield
+    end type struct1
+
+A function which returns a struct value can have its value copied into a
+Fortran variable where the fields can be accessed directly by Fortran.
+A C++ function which initialized a struct can be written as:: 
+
+    - decl: struct1 returnStruct(int i, double d);
+
+The C wrapper creates a union type of the C and C++ types which is
+used instead of a type cast::
+
+    typedef union {
+      tutorial::struct1 cxx;
+      TUT_struct1 c;
+    } SH_union_0_t;
+    
+    TUT_struct1 TUT_return_struct(int i, double d)
+    {
+        SH_union_0_t SHC_rv = {tutorial::returnStruct(i, d)};
+        return SHC_rv.c;
+    }
+
+This function can be called directly by Fortran using the generated
+interface::
+
+        function return_struct(i, d) &
+                result(SHT_rv) &
+                bind(C, name="TUT_return_struct")
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            import :: struct1
+            implicit none
+            integer(C_INT), value, intent(IN) :: i
+            real(C_DOUBLE), value, intent(IN) :: d
+            type(struct1) :: SHT_rv
+        end function return_struct
+
+To use the function::
+
+    type(struct1) var
+
+    var = return_struct(1, 2.5)
+    print *, var%ifield, var%dfield
+
 
 Classes
 -------
@@ -917,12 +1053,14 @@ And the subroutines::
 
 The C++ code to call the function::
 
+    #include <tutorial.hpp>
     tutorial::Class1 *cptr = new tutorial::Class1();
 
     cptr->Method1();
 
 And the Fortran version::
 
+    use tutorial_mod
     type(class1) cptr
 
     cptr = class1_new()

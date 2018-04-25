@@ -151,19 +151,19 @@ PP_exclass1_incrementCount(
 // splicer end class.ExClass1.method.increment_count
 }
 
-static char PP_exclass1_getName__doc__[] =
+static char PP_exclass1_getNameErrorPattern__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getName(
+PP_exclass1_getNameErrorPattern(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-// splicer begin class.ExClass1.method.get_name
-    const std::string & SHCXX_rv = self->obj->getName();
+// const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
+// splicer begin class.ExClass1.method.get_name_error_pattern
+    const std::string & SHCXX_rv = self->obj->getNameErrorPattern();
     if (! isNameValid(rv)) {
         PyErr_SetString(PyExc_KeyError, "XXX need value of name");
         return NULL;
@@ -174,7 +174,7 @@ PP_exclass1_getName(
     PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass1.method.get_name
+// splicer end class.ExClass1.method.get_name_error_pattern
 }
 
 static char PP_exclass1_GetNameLength__doc__[] =
@@ -460,8 +460,9 @@ PP_ExClass1_tp_init(
 static PyMethodDef PP_ExClass1_methods[] = {
     {"incrementCount", (PyCFunction)PP_exclass1_incrementCount,
         METH_VARARGS|METH_KEYWORDS, PP_exclass1_incrementCount__doc__},
-    {"getName", (PyCFunction)PP_exclass1_getName, METH_NOARGS,
-        PP_exclass1_getName__doc__},
+    {"getNameErrorPattern",
+        (PyCFunction)PP_exclass1_getNameErrorPattern, METH_NOARGS,
+        PP_exclass1_getNameErrorPattern__doc__},
     {"GetNameLength", (PyCFunction)PP_exclass1_GetNameLength,
         METH_NOARGS, PP_exclass1_GetNameLength__doc__},
     {"getNameErrorCheck", (PyCFunction)PP_exclass1_getNameErrorCheck,

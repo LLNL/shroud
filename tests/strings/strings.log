@@ -10,7 +10,7 @@ C function void passCharPtr(char * dest +intent(out)+len(Ndest), const char * sr
 C function void passCharPtrInOut(char * s +intent(inout))
 C function void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))
 C function const char * getCharPtr1() +pure
-C function void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure
+C function void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure
 C function const char * getCharPtr2() +len(30)
 C function void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function const char * getCharPtr3()
@@ -19,7 +19,7 @@ C function void getConstStringLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +le
 C function void getConstStringAsArg(string * output +intent(out)+len(Noutput))
 C function void getConstStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 C function const string & getConstStringRefPure() +pure
-C function void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
+C function void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure
 C function const string & getConstStringRefLen() +len(30)
 C function void getConstStringRefLen(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function const string & getConstStringRefAsArg()
@@ -61,7 +61,7 @@ C-interface function void passCharPtr(char * dest +intent(out)+len(Ndest), const
 C-interface, Fortran function void passCharPtrInOut(char * s +intent(inout))
 C-interface function void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))
 C-interface, Fortran function const char * getCharPtr1() +pure
-C-interface function void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)) +pure
+C-interface function void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure
 C-interface, Fortran function const char * getCharPtr2() +len(30)
 C-interface function void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C-interface function const char * getCharPtr3()
@@ -74,7 +74,7 @@ Fortran function void getConstStringAsArg(string * output +intent(out)+len(Noutp
 Fortran function const std::string getConstStringAlloc() +allocatable
 C-interface function void getConstStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
 C-interface, Fortran function const string & getConstStringRefPure() +pure
-C-interface function void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)) +pure
+C-interface function void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure
 C-interface, Fortran function const string & getConstStringRefLen() +len(30)
 C-interface function void getConstStringRefLen(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C-interface function const string & getConstStringRefAsArg()
@@ -133,6 +133,6 @@ Python function void returnStrings(std::string & arg1 +intent(out), std::string 
 Python function void explicit1(char * name +intent(in)+len_trim(AAlen))
 Python function void CpassChar(char_scalar status +intent(in)+value)
 Python function char_scalar CreturnChar()
+Close pystringshelper.cpp
 Close pystringsmodule.hpp
 Close pystringsmodule.cpp
-Close pystringshelper.cpp

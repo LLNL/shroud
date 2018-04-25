@@ -104,6 +104,8 @@ class NamespaceMixin(object):
             if 'typedef' in ast.storage:
                 typedef = self.create_typedef(ast, **kwargs)
                 node = self.add_typedef(ast.declarator.name)
+            elif ast.params is None:
+                node = self.add_variable(decl, ast=ast, **kwargs)
             else:
                 node = self.add_function(decl, ast=ast, **kwargs)
         elif isinstance(ast, declast.CXXClass):
@@ -115,6 +117,8 @@ class NamespaceMixin(object):
             node = self.add_namespace(ast.name, **kwargs)
         elif isinstance(ast, declast.Enum):
             node = self.add_enum(decl, ast=ast, **kwargs)
+        elif isinstance(ast, declast.Struct):
+            node = self.add_struct(decl, ast=ast, **kwargs)
         else:
             raise RuntimeError("add_declaration: Error parsing '{}'".format(decl))
         return node
@@ -161,32 +165,42 @@ class NamespaceMixin(object):
         typemap.Typedef.register(typedef.name, typedef)
         return typedef
 
-    def add_enum(self, decl, parentoptions=None, ast=None, **kwargs):
+    def add_enum(self, decl, ast=None, **kwargs):
         """Add an enumeration.
         """
-        node = EnumNode(decl, parent=self, parentoptions=parentoptions,
-                        ast=ast, **kwargs)
+        node = EnumNode(decl, parent=self, ast=ast, **kwargs)
         self.enums.append(node)
         self.symbols[node.name] = node
         return node
 
-    def add_function(self, decl, parentoptions=None, ast=None, **kwargs):
+    def add_function(self, decl, ast=None, **kwargs):
         """Add a function.
 
         decl - C/C++ declaration of function
         ast  - parsed declaration. None if not yet parsed.
         """
-        fcnnode = FunctionNode(decl, parent=self, parentoptions=parentoptions,
-                               ast=ast, **kwargs)
+        fcnnode = FunctionNode(decl, parent=self, ast=ast, **kwargs)
         self.functions.append(fcnnode)
         return fcnnode
 
-    def add_namespace(self, name, parentoptions=None, **kwargs):
+    def add_namespace(self, name, **kwargs):
         """Add an namespace
         """
-        node = NamespaceNode(name, parent=self, parentoptions=parentoptions,
-                             **kwargs)
+        node = NamespaceNode(name, parent=self, **kwargs)
         self.symbols[name] = node
+        return node
+
+    def add_struct(self, decl, ast=None, **kwargs):
+        """Add a struct.
+        A struct is exactly like a class to the C++ compiler.
+        From the YAML, a struct is a single ast and a class is broken into parts.
+        """
+        name = ast.name
+        node = ClassNode(name, self, as_struct=True, **kwargs)
+        for member in ast.members:
+            node.add_variable(str(member), member)
+        self.classes.append(node)
+        self.symbols[node.name] = node
         return node
 
     def add_typedef(self, name):
@@ -194,6 +208,16 @@ class NamespaceMixin(object):
         """
         node = TypedefNode(name, parent=self)
         self.symbols[name] = node
+        return node
+
+    def add_variable(self, decl, ast=None, **kwargs):
+        """Add a variable or class member.
+
+        decl - C/C++ declaration of function
+        ast  - parsed declaration. None if not yet parsed.
+        """
+        node = VariableNode(decl, parent=self, ast=ast, **kwargs)
+        self.variables.append(node)
         return node
 
 ######################################################################
@@ -224,6 +248,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.classes = []
         self.enums = []
         self.functions = []
+        self.variables = []
         # Each is given a _function_index when created.
         self.function_index = []
         self.options = self.default_options()
@@ -290,6 +315,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_module_per_class=True,
             F_string_len_trim=True,
             F_force_wrapper=False,
+            F_return_fortran_pointer=True,
             F_standard=2003,
 
             wrap_c=True,
@@ -298,6 +324,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             wrap_lua=False,
 
             doxygen=True,       # create doxygen comments
+            return_scalar_pointer='pointer',
             show_splicer_comments=True,
 
             # blank for functions, set in classes.
@@ -371,7 +398,25 @@ class LibraryNode(AstNode, NamespaceMixin):
             # names for type methods (tp_init)
             PY_type_impl_template=(
                 '{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}'),
+            PY_member_getter_template=(
+                '{PY_prefix}{cxx_class}_{variable_name}_getter'),
+            PY_member_setter_template=(
+                '{PY_prefix}{cxx_class}_{variable_name}_setter'),
+            PY_struct_array_descr_create_template=(
+                '{PY_prefix}{cxx_class}_create_array_descr'),
+            PY_struct_array_descr_variable_template=(
+                '{PY_prefix}{cxx_class}_array_descr'),
+            PY_struct_array_descr_name_template=(
+                '{cxx_class}_dtype'),
+            PY_numpy_array_capsule_name_template=(
+                '{PY_prefix}array_dtor'),
+            PY_numpy_array_dtor_context_template=(
+                '{PY_prefix}array_destructor_context'),
+            PY_numpy_array_dtor_function_template=(
+                '{PY_prefix}array_destructor_function'),
+
             )
+
         return def_options
 
     def default_format(self, format, kwargs):
@@ -405,6 +450,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_instance_get = 'get_instance',
             F_name_instance_set = 'set_instance',
             F_result = 'SHT_rv',
+            F_pointer = 'SHT_ptr',
             F_this = 'obj',
 
             C_string_result_as_arg = 'SHF_rv',
@@ -481,6 +527,11 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.eval_template('F_module_name', '_library')
         self.eval_template('F_impl_filename', '_library')
 
+        self.eval_template('PY_numpy_array_capsule_name')
+        self.eval_template('PY_numpy_array_dtor_context')
+        self.eval_template('PY_numpy_array_dtor_function')
+
+
 ######################################################################
 
 class BlockNode(AstNode, NamespaceMixin):
@@ -502,6 +553,7 @@ class BlockNode(AstNode, NamespaceMixin):
         self.enums = parent.enums
         self.functions = parent.functions
         self.classes = parent.classes
+        self.variables = parent.variables
 
         self.options = util.Scope(parent=parent.options)
         if options:
@@ -540,6 +592,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
             self.enums = owner.enums
             self.functions = owner.functions
             self.classes = owner.classes
+            self.variables = owner.variables
             break
 
         self.options = util.Scope(parent=parent.options)
@@ -606,6 +659,7 @@ class ClassNode(AstNode, NamespaceMixin):
                  cxx_header='',
                  format=None,
                  options=None,
+                 as_struct=False,
                  **kwargs):
         """Create ClassNode.
         """
@@ -616,6 +670,8 @@ class ClassNode(AstNode, NamespaceMixin):
 
         self.enums = []
         self.functions = []
+        self.variables = []
+        self.as_struct = as_struct   # if True, treat as struct, else as shadow class
 
         self.python = kwargs.get('python', {})
         self.cpp_if = kwargs.get('cpp_if', None)
@@ -630,7 +686,10 @@ class ClassNode(AstNode, NamespaceMixin):
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
         self.symbols = {}
-        self.typedef = typemap.create_class_typedef(self)
+        if as_struct:
+            self.typedef = typemap.create_struct_typedef(self)
+        else:
+            self.typedef = typemap.create_class_typedef(self)
         self.typedef_name = self.typedef.name   # fully qualified name
 
 ##### namespace behavior
@@ -688,6 +747,12 @@ class ClassNode(AstNode, NamespaceMixin):
             self.eval_template('F_module_name', '_class')
             self.eval_template('F_impl_filename', '_class')
 
+        # As PyArray_Descr
+        if self.as_struct:
+            self.eval_template('PY_struct_array_descr_create')
+            self.eval_template('PY_struct_array_descr_variable')
+            self.eval_template('PY_struct_array_descr_name')
+
     def add_namespace(self, **kwargs):
         """Replace method inherited from NamespaceMixin."""
         raise RuntimeError("Cannot add a namespace to a class")
@@ -702,6 +767,9 @@ class FunctionNode(AstNode):
         ArgType:
         - int
         - double
+      fattrs:     # function attributes
+      attrs:
+        arg1:     # argument attributes
 
 
     _fmtfunc = Scope()
@@ -729,11 +797,10 @@ class FunctionNode(AstNode):
     """
     def __init__(self, decl, parent,
                  format=None,
-                 parentoptions=None,
                  ast=None,
                  options=None,
                  **kwargs):
-        self.options = util.Scope(parent=parentoptions or parent.options)
+        self.options = util.Scope(parent.options)
         if options:
             self.options.update(options, replace=True)
 
@@ -764,6 +831,18 @@ class FunctionNode(AstNode):
         self.fortran_generic = kwargs.get('fortran_generic', {})
         self.return_this = kwargs.get('return_this', False)
 
+        # Generated by Preprocess
+        self.CXX_subprogram = '--none--'
+        self.C_subprogram = '--none--'
+        self.F_subprogram = '--none--'
+        self.CXX_return_type = '--none--'
+        self.C_return_type = '--none--'
+        self.F_return_type = '--none--'
+
+        # Used with c_statements to find correct intent block
+        # possible values are '', '_buf'
+        self.generated_suffix = ''
+
         if not decl:
             raise RuntimeError("FunctionNode missing decl")
 
@@ -785,7 +864,7 @@ class FunctionNode(AstNode):
                 if name in attrs:
                     arg.attrs.update(attrs[name])
         if 'fattrs' in kwargs:
-            ast.fattrs.update(kwargs['fattrs'])
+            ast.attrs.update(kwargs['fattrs'])
         # XXX - waring about unused fields in attrs
                                     
         if ast.params is None:
@@ -855,7 +934,6 @@ class FunctionNode(AstNode):
 
 class EnumNode(AstNode):
     """
-        enums:
         - decl: |
               enum Color {
                 RED,
@@ -874,7 +952,6 @@ class EnumNode(AstNode):
     """
     def __init__(self, decl, parent,
                  format=None,
-                 parentoptions=None,
                  ast=None,
                  options=None,
                  **kwargs):
@@ -882,7 +959,7 @@ class EnumNode(AstNode):
         # From arguments
         self.parent = parent
 
-        self.options = util.Scope(parent=parentoptions or parent.options)
+        self.options = util.Scope(parent.options)
         if options:
             self.options.update(options, replace=True)
 
@@ -953,6 +1030,64 @@ class TypedefNode(AstNode):
 
     def get_typename(self):
         return self.typename
+
+######################################################################
+
+class VariableNode(AstNode):
+    """
+        - decl: int var
+          options:
+             bar: 4
+          format:
+             baz: 4  
+    """
+    def __init__(self, decl, parent,
+                 format=None,
+                 ast=None,
+                 options=None,
+                 **kwargs):
+
+        # From arguments
+        self.parent = parent
+
+        self.options = util.Scope(parent=parent.options)
+        if options:
+            self.options.update(options, replace=True)
+
+#        self.default_format(parent, format, kwargs)
+        self.fmtdict = util.Scope(
+            parent = parent.fmtdict,
+        )
+
+        if not decl:
+            raise RuntimeError("VariableNode missing decl")
+
+        self.decl = decl
+        if ast is None:
+            ast = declast.check_decl(decl)
+        if not isinstance(ast, declast.Declaration):
+            raise RuntimeError("Declaration is not a structure: " + decl)
+        if ast.params is not None:
+            # 'void foo()' instead of 'void foo'
+            raise RuntimeError("Arguments given to variable:", ast.gen_decl())
+        self.ast = ast
+        self.name = ast.name
+
+        # format for struct
+        fmt_var = self.fmtdict
+
+        # Treat similar to class
+#        fmt_struct.class_scope = self.name + '::'
+        fmt_var.field_name = ast.get_name(use_attr=False)
+        fmt_var.variable_name = ast.name
+        fmt_var.variable_lower = fmt_var.variable_name.lower()
+        fmt_var.variable_upper = fmt_var.variable_name.upper()
+
+        # Add to namespace
+#        self.typename = self.parent.scope + self.name
+#        self.scope = self.typename + '::'
+#        self.typedef = typemap.create_struct_typedef(self)
+#        self.typedef_name = self.typedef.name
 
 ######################################################################
 

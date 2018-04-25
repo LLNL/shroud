@@ -46,6 +46,6 @@ Python function void function3a(long i +intent(in)+value)
 Python function int function4(const std::string & rv +intent(in))
 Python function void function5() +name(fiveplus)
 Python function void init_ns1()
+Close pytestnameshelper.cpp
 Close pytestnamesmodule.hpp
 Close pytestnamesmodule.cpp
-Close pytestnameshelper.cpp

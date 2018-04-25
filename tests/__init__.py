@@ -65,6 +65,7 @@ test_cases = (
     test_declast.CheckNamespace,
     test_declast.CheckTypedef,
     test_declast.CheckEnum,
+    test_declast.CheckStruct,
     test_declast.CheckClass,
     test_ast.CheckAst,
     test_generate.CheckImplied,

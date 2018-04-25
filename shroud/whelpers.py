@@ -134,6 +134,33 @@ extern "C" {
 #               The functions should be file static.
 #               Used if c_source or cxx_source is not defined.
 
+num_union_helpers = 0
+def add_union_helper(cxx, c, num=0):
+    """A union helper is used to convert between a struct in C and C++.
+    The structs are identical but the names are different. For example,
+    the C++ version is in a namespace.
+
+    Make the C++ struct first in the union to make it possible to assign
+      name var = { cpp_func() };
+    Assigns to var.cxx.
+
+    The struct are named sequentially to generate unique names.
+    """
+    global num_union_helpers
+    name = 'SH_union_{}_t'.format(num_union_helpers)
+    num_union_helpers += 1
+    if name in CHelpers:
+        raise RuntimeError("{} already exists in CHelpers".format(name))
+    helper = dict(cxx_source="""
+typedef union {{
+  {cxx} cxx;
+  {c} c;
+}} {name};
+""".format(name=name, cxx=cxx, c=c))
+    CHelpers[name] = helper
+    return name
+                
+
 CHelpers = dict(
     ShroudStrCopy=dict(
         c_header='<string.h>',

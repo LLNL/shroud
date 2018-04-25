@@ -73,6 +73,7 @@
             "F_name_associated": "associated", 
             "F_name_instance_get": "get_instance", 
             "F_name_instance_set": "set_instance", 
+            "F_pointer": "SHT_ptr", 
             "F_pure_clause": "", 
             "F_result": "SHT_rv", 
             "F_result_clause": "", 
@@ -93,6 +94,9 @@
             "PY_library_doc": "library documentation", 
             "PY_module_filename": "pyClibrarymodule.c", 
             "PY_module_name": "clibrary", 
+            "PY_numpy_array_capsule_name": "PY_array_dtor", 
+            "PY_numpy_array_dtor_context": "PY_array_destructor_context", 
+            "PY_numpy_array_dtor_function": "PY_array_destructor_function", 
             "PY_obj": "obj", 
             "PY_param_args": "args", 
             "PY_param_kwds": "kwds", 
@@ -127,7 +131,6 @@
                         "name": "Function1", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [], 
                     "specifier": [
@@ -185,6 +188,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "arg1", 
+                            "numpy_type": "NPY_DOUBLE", 
                             "py_var": "SHPy_arg1"
                         }
                     }, 
@@ -212,6 +216,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "arg2", 
+                            "numpy_type": "NPY_INT", 
                             "py_var": "SHPy_arg2"
                         }
                     }
@@ -226,10 +231,12 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_DOUBLE", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -243,7 +250,6 @@
                         "name": "Function2", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -335,6 +341,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "len", 
+                            "numpy_type": "NPY_INT", 
                             "pre_call_intent": "PyArray_SIZE(SHPy_values)", 
                             "py_var": "SHPy_len"
                         }
@@ -342,7 +349,7 @@
                     "result": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "result", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
@@ -357,7 +364,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int result", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "result", 
                             "cxx_addr": "", 
@@ -365,13 +372,14 @@
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "result", 
+                            "numpy_type": "NPY_INT", 
                             "py_var": "SHPy_result"
                         }
                     }, 
                     "values": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "values", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
@@ -410,7 +418,6 @@
                         "name": "Sum", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -528,6 +535,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg", 
+                            "numpy_type": "NPY_BOOL", 
                             "py_type": "PyObject", 
                             "py_var": "SHPy_arg"
                         }
@@ -543,10 +551,12 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": "PyBool_Type", 
+                        "c_ptr": "", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_deref": ".", 
                         "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_BOOL", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -560,7 +570,6 @@
                         "name": "Function3", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -636,6 +645,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg1", 
+                            "numpy_type": "NPY_BOOL", 
                             "py_type": "PyObject", 
                             "py_var": "SHPy_arg1"
                         }
@@ -643,7 +653,7 @@
                     "arg2": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg2", 
                             "cxx_deref": "->", 
                             "cxx_type": "bool", 
@@ -658,7 +668,7 @@
                             "PyTypeObject": "PyBool_Type", 
                             "c_const": "", 
                             "c_decl": "bool arg2", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "bool", 
                             "c_var": "arg2", 
                             "cxx_addr": "", 
@@ -666,13 +676,14 @@
                             "cxx_deref": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg2", 
+                            "numpy_type": "NPY_BOOL", 
                             "py_var": "SHPy_arg2"
                         }
                     }, 
                     "arg3": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg3", 
                             "cxx_deref": "->", 
                             "cxx_type": "bool", 
@@ -687,7 +698,7 @@
                             "PyTypeObject": "PyBool_Type", 
                             "c_const": "", 
                             "c_decl": "bool arg3", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "bool", 
                             "c_var": "arg3", 
                             "cxx_addr": "", 
@@ -695,6 +706,7 @@
                             "cxx_deref": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg3", 
+                            "numpy_type": "NPY_BOOL", 
                             "py_type": "PyObject", 
                             "py_var": "SHPy_arg3"
                         }
@@ -710,7 +722,6 @@
                         "name": "Function3b", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -804,7 +815,7 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg1", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -821,13 +832,14 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "arg1", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_arg1"
                         }
                     }, 
                     "arg2": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg2", 
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
@@ -844,6 +856,7 @@
                             "cxx_deref": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "arg2", 
+                            "numpy_type": null, 
                             "py_var": "SHPy_arg2"
                         }
                     }
@@ -858,17 +871,20 @@
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
+                        "c_ptr": "*", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_deref": "->", 
                         "cxx_var": "SHC_rv", 
+                        "numpy_type": null, 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 5, 
                 "ast": {
                     "attrs": {
-                        "_typename": "char"
+                        "_typename": "char", 
+                        "len": "30"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -879,9 +895,6 @@
                                 "ptr": "*"
                             }
                         ]
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [
@@ -965,7 +978,7 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -981,7 +994,7 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg1", 
                             "c_var_trim": "Larg1", 
                             "cxx_deref": "->", 
@@ -996,7 +1009,7 @@
                     "arg2": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arg2", 
                             "c_var_trim": "Larg2", 
                             "cxx_deref": "->", 
@@ -1021,15 +1034,13 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "len": "30"
                     }, 
                     "const": false, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": []
-                    }, 
-                    "fattrs": {
-                        "len": "30"
                     }, 
                     "func_const": false, 
                     "params": [
@@ -1153,13 +1164,14 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "argin", 
+                            "numpy_type": "NPY_INT", 
                             "py_var": "SHPy_argin"
                         }
                     }, 
                     "arginout": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "arginout", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
@@ -1174,7 +1186,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int arginout", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "arginout", 
                             "cxx_addr": "", 
@@ -1182,13 +1194,14 @@
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "arginout", 
+                            "numpy_type": "NPY_INT", 
                             "py_var": "SHPy_arginout"
                         }
                     }, 
                     "argout": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "argout", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
@@ -1203,7 +1216,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int argout", 
-                            "c_ptr": " *", 
+                            "c_ptr": "", 
                             "c_type": "int", 
                             "c_var": "argout", 
                             "cxx_addr": "", 
@@ -1211,6 +1224,7 @@
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "argout", 
+                            "numpy_type": "NPY_INT", 
                             "py_var": "SHPy_argout"
                         }
                     }
@@ -1225,7 +1239,6 @@
                         "name": "intargs", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1318,7 +1331,7 @@
                     "in": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "in", 
                             "cxx_deref": "->", 
                             "cxx_type": "double", 
@@ -1349,7 +1362,7 @@
                     "out": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "out", 
                             "cxx_deref": "->", 
                             "cxx_type": "double", 
@@ -1403,6 +1416,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "sizein", 
+                            "numpy_type": "NPY_INT", 
                             "pre_call_intent": "PyArray_SIZE(SHPy_in)", 
                             "py_var": "SHPy_sizein"
                         }
@@ -1418,7 +1432,6 @@
                         "name": "cos_doubles", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1518,7 +1531,7 @@
                     "in": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "in", 
                             "cxx_deref": "->", 
                             "cxx_type": "double", 
@@ -1549,7 +1562,7 @@
                     "out": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "out", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
@@ -1603,6 +1616,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "sizein", 
+                            "numpy_type": "NPY_INT", 
                             "pre_call_intent": "PyArray_SIZE(SHPy_in)", 
                             "py_var": "SHPy_sizein"
                         }
@@ -1618,7 +1632,6 @@
                         "name": "truncate_to_int", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1718,7 +1731,7 @@
                     "array": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_ptr": " *", 
+                            "c_ptr": "*", 
                             "c_var": "array", 
                             "cxx_deref": "->", 
                             "cxx_type": "int", 
@@ -1773,6 +1786,7 @@
                             "cxx_deref": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "sizein", 
+                            "numpy_type": "NPY_INT", 
                             "pre_call_intent": "PyArray_SIZE(SHPy_array)", 
                             "py_var": "SHPy_sizein"
                         }
@@ -1788,7 +1802,6 @@
                         "name": "increment", 
                         "pointer": []
                     }, 
-                    "fattrs": {}, 
                     "func_const": false, 
                     "params": [
                         {
@@ -1890,6 +1903,7 @@
             "F_name_function_template": "{underscore_name}{function_suffix}", 
             "F_name_generic_template": "{underscore_name}", 
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}", 
+            "F_return_fortran_pointer": true, 
             "F_standard": 2003, 
             "F_string_len_trim": true, 
             "LUA_class_reg_template": "{LUA_prefix}{cxx_class}_Reg", 
@@ -1907,14 +1921,23 @@
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type", 
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}", 
             "PY_helper_filename_template": "py{library}helper.{PY_impl_filename_suffix}", 
+            "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter", 
+            "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter", 
             "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}", 
             "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}", 
+            "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor", 
+            "PY_numpy_array_dtor_context_template": "{PY_prefix}array_destructor_context", 
+            "PY_numpy_array_dtor_function_template": "{PY_prefix}array_destructor_function", 
+            "PY_struct_array_descr_create_template": "{PY_prefix}{cxx_class}_create_array_descr", 
+            "PY_struct_array_descr_name_template": "{cxx_class}_dtype", 
+            "PY_struct_array_descr_variable_template": "{PY_prefix}{cxx_class}_array_descr", 
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}", 
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
             "doxygen": true, 
+            "return_scalar_pointer": "pointer", 
             "show_splicer_comments": true, 
             "wrap_c": true, 
             "wrap_fortran": true, 
@@ -1934,8 +1957,10 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PYN_typenum": "NPY_INT", 
+            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_to_cxx": "static_cast<EnumTypeID>({c_var})", 
             "c_type": "int", 
             "cxx_to_c": "static_cast<int>({cxx_var})", 
@@ -1969,8 +1994,10 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PYN_typenum": "NPY_INT", 
+            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "int", 
             "cxx_type": "TypeID", 
             "f_cast": "int({f_var}, C_INT)", 
@@ -1987,6 +2014,7 @@
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushboolean({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TBOOLEAN", 
+            "PYN_typenum": "NPY_BOOL", 
             "PY_PyTypeObject": "PyBool_Type", 
             "c_type": "bool", 
             "cxx_type": "bool", 
@@ -2032,7 +2060,7 @@
                 }, 
                 "intent_inout": {
                     "post_call": [
-                        "{py_var} = PyBool_FromLong({c_var});"
+                        "{py_var} = PyBool_FromLong({c_ptr}{c_var});"
                     ], 
                     "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
@@ -2175,8 +2203,10 @@
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyFloat_FromDouble({c_var})", 
+            "PYN_typenum": "NPY_DOUBLE", 
+            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
             "PY_format": "d", 
+            "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "double", 
             "cxx_type": "double", 
             "f_cast": "real({f_var}, C_DOUBLE)", 
@@ -2192,8 +2222,10 @@
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyFloat_FromDouble({c_var})", 
+            "PYN_typenum": "NPY_FLOAT", 
+            "PY_ctor": "PyFloat_FromDouble({c_ptr}{c_var})", 
             "PY_format": "f", 
+            "PY_get": "PyFloat_AsDouble({py_var})", 
             "c_type": "float", 
             "cxx_type": "float", 
             "f_cast": "real({f_var}, C_FLOAT)", 
@@ -2209,8 +2241,10 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PYN_typenum": "NPY_INT", 
+            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "int", 
             "cxx_type": "int", 
             "f_cast": "int({f_var}, C_INT)", 
@@ -2226,8 +2260,10 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromLong({c_var})", 
+            "PYN_typenum": "NPY_LONG", 
+            "PY_ctor": "PyInt_FromLong({c_ptr}{c_var})", 
             "PY_format": "l", 
+            "PY_get": "PyInt_AsLong({py_var})", 
             "c_type": "long", 
             "cxx_type": "long", 
             "f_cast": "int({f_var}, C_LONG)", 
@@ -2243,6 +2279,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONGLONG", 
             "PY_format": "L", 
             "c_type": "long long", 
             "cxx_type": "long long", 
@@ -2259,7 +2296,7 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
             "LUA_type": "LUA_TNUMBER", 
-            "PY_ctor": "PyInt_FromSize_t({c_var})", 
+            "PY_ctor": "PyInt_FromSize_t({c_ptr}{c_var})", 
             "c_header": "<stddef.h>", 
             "c_type": "size_t", 
             "cxx_type": "size_t", 

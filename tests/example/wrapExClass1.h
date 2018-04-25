@@ -73,10 +73,11 @@ void AA_exclass1_dtor(AA_exclass1 * self);
 
 int AA_exclass1_increment_count(AA_exclass1 * self, int incr);
 
-const char * AA_exclass1_get_name(const AA_exclass1 * self);
+const char * AA_exclass1_get_name_error_pattern(
+    const AA_exclass1 * self);
 
-void AA_exclass1_get_name_bufferify(const AA_exclass1 * self,
-    char * SHF_rv, int NSHF_rv);
+void AA_exclass1_get_name_error_pattern_bufferify(
+    const AA_exclass1 * self, char * SHF_rv, int NSHF_rv);
 
 int AA_exclass1_get_name_length(const AA_exclass1 * self);
 

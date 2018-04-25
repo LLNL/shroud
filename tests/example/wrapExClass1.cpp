@@ -149,15 +149,16 @@ int AA_exclass1_increment_count(AA_exclass1 * self, int incr)
 // splicer end class.ExClass1.method.increment_count
 }
 
-// const string & getName() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
+// const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 // function_index=4
-const char * AA_exclass1_get_name(const AA_exclass1 * self)
+const char * AA_exclass1_get_name_error_pattern(
+    const AA_exclass1 * self)
 {
-// splicer begin class.ExClass1.method.get_name
+// splicer begin class.ExClass1.method.get_name_error_pattern
     const example::nested::ExClass1 *SH_this = 
         static_cast<const example::nested::ExClass1 *>(
         static_cast<const void *>(self));
-    const std::string & SHCXX_rv = SH_this->getName();
+    const std::string & SHCXX_rv = SH_this->getNameErrorPattern();
     // C_error_pattern
     if (! isNameValid(SHCXX_rv)) {
         return NULL;
@@ -165,26 +166,26 @@ const char * AA_exclass1_get_name(const AA_exclass1 * self)
 
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-// splicer end class.ExClass1.method.get_name
+// splicer end class.ExClass1.method.get_name_error_pattern
 }
 
-// void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
+// void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 // function_index=15
-void AA_exclass1_get_name_bufferify(const AA_exclass1 * self,
-    char * SHF_rv, int NSHF_rv)
+void AA_exclass1_get_name_error_pattern_bufferify(
+    const AA_exclass1 * self, char * SHF_rv, int NSHF_rv)
 {
-// splicer begin class.ExClass1.method.get_name_bufferify
+// splicer begin class.ExClass1.method.get_name_error_pattern_bufferify
     const example::nested::ExClass1 *SH_this = 
         static_cast<const example::nested::ExClass1 *>(
         static_cast<const void *>(self));
-    const std::string & SHCXX_rv = SH_this->getName();
+    const std::string & SHCXX_rv = SH_this->getNameErrorPattern();
     if (SHCXX_rv.empty()) {
         std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
     }
     return;
-// splicer end class.ExClass1.method.get_name_bufferify
+// splicer end class.ExClass1.method.get_name_error_pattern_bufferify
 }
 
 // int GetNameLength() const

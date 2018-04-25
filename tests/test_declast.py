@@ -67,10 +67,14 @@ class CheckParse(unittest.TestCase):
         Combinations of const and pointer.
         """
         r = declast.check_decl("int")
+        self.assertIsNone(r.get_subprogram())
+        self.assertEqual(0, r.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int", s)
 
         r = declast.check_decl("int var1")
+        self.assertIsNone(r.get_subprogram())
+        self.assertEqual(0, r.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int var1", s)
         s = r.bind_c()
@@ -79,23 +83,33 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("integer(C_INT) :: var1", s)
 
         r = declast.check_decl("const int var1")
+        self.assertIsNone(r.get_subprogram())
+        self.assertEqual(0, r.is_pointer())
         s = r.gen_decl()
         self.assertEqual("const int var1", s)
         self.assertEqual("const int var1", r.gen_arg_as_c())
         self.assertEqual(      "int var1", r.gen_arg_as_c(asgn_value=True))
         self.assertEqual("const int var1", r.gen_arg_as_cxx())
         self.assertEqual(      "int var1", r.gen_arg_as_cxx(asgn_value=True))
+        self.assertEqual(    "int * var1", r.gen_arg_as_cxx(asgn_value=True, force_ptr=True))
 
         r = declast.check_decl("int const var1")
         s = r.gen_decl()
         self.assertEqual("const int var1", s)
 
         r = declast.check_decl("int *var1 +dimension(:)")
+        self.assertIsNone(r.get_subprogram())
+        self.assertEqual(1, r.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int * var1 +dimension(:)", s)
         self.assertEqual("int * var1", r.gen_arg_as_c())
+        self.assertEqual("int var1", r.gen_arg_as_c(as_scalar=True))
         self.assertEqual("int * var1", r.gen_arg_as_cxx())
         self.assertEqual("integer(C_INT) :: var1(:)", r.gen_arg_as_fortran())
+        self.assertEqual("integer(C_INT), pointer :: var1(:)",
+                         r.gen_arg_as_fortran(attributes=['pointer']))
+        self.assertEqual("integer(C_INT), pointer :: var1(:)",
+                         r.gen_arg_as_fortran(is_pointer=True))
         self.assertEqual("integer(C_INT) :: var1(*)", r.bind_c())
 
         r = declast.check_decl("const int * var1")
@@ -121,6 +135,24 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("long long var2")
         s = r.gen_decl()
         self.assertEqual("long long var2", s)
+
+        # test attributes
+        r = declast.check_decl("int m_ivar +readonly +name(ivar)")
+        self.assertEqual(todict.to_dict(r),{
+            "attrs": {
+                "_typename": "int",
+                "name": "ivar",
+                "readonly": True,
+            },
+            "const": False,
+            "declarator": {
+                "name": "m_ivar",
+                "pointer": [],
+            },
+            "specifier": [
+                "int"
+            ]
+        })
 
     def test_type_string(self):
         """Test string declarations
@@ -313,7 +345,6 @@ class CheckParse(unittest.TestCase):
                 }, 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {
@@ -419,7 +450,6 @@ class CheckParse(unittest.TestCase):
                 "name": "foo", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [], 
             "specifier": [
@@ -453,7 +483,6 @@ class CheckParse(unittest.TestCase):
                     }
                 ]
             }, 
-            "fattrs": {}, 
             "func_const": True, 
             "params": [], 
             "specifier": [
@@ -481,7 +510,6 @@ class CheckParse(unittest.TestCase):
                 "name": "foo", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {
@@ -520,7 +548,6 @@ class CheckParse(unittest.TestCase):
                 "name": "foo", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {
@@ -566,6 +593,9 @@ class CheckParse(unittest.TestCase):
 
         s = r.gen_decl()
         self.assertEqual("const std::string & getName() const", s)
+        self.assertFalse(r.is_pointer())
+        self.assertTrue(r.is_reference())
+        self.assertTrue(r.is_indirect())
 
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
@@ -581,7 +611,6 @@ class CheckParse(unittest.TestCase):
                     }
                 ]
             }, 
-            "fattrs": {}, 
             "func_const": True, 
             "params": [], 
             "specifier": [
@@ -605,15 +634,13 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
                 "_typename": "void",
+                "attr2": "True",
+                "len": 30
             },
             "const": True, 
             "declarator": {
                 "name": "foo", 
                 "pointer": []
-            }, 
-            "fattrs": {
-                "attr2": "True",
-                "len": 30
             }, 
             "func_const": False, 
             "params": [
@@ -662,13 +689,11 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
+                "_constructor": True,
+                "_name": "ctor",
                 "_typename": "Class1",
             },
             "const": False,
-            "fattrs": {
-                "_constructor": True,
-                "_name": "ctor",
-            },
             "func_const": False,
             "params": [],
             "specifier": [
@@ -692,14 +717,12 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
-                "_typename": "Class1",
-            },
-            "const": False,
-            "fattrs": {
                 "_constructor": True,
                 "_name": "ctor",
+                "_typename": "Class1",
                 "name": "new",
             },
+            "const": False,
             "func_const": False,
             "params": [],
             "specifier": [
@@ -723,13 +746,11 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
+                "_destructor": True,
+                "_name": "dtor",
                 "_typename": "Class1",
             },
             "const": False,
-            "fattrs": {
-                "_destructor": True,
-                "_name": "dtor",
-            },
             "func_const": False,
             "params": [],
             "specifier": [
@@ -765,7 +786,6 @@ class CheckParse(unittest.TestCase):
                     }
             ]
             },
-            "fattrs": {},
             "func_const": False,
             "params": [],
             "specifier": [
@@ -797,7 +817,6 @@ class CheckParse(unittest.TestCase):
                 "name": "name", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {
@@ -880,7 +899,6 @@ class CheckParse(unittest.TestCase):
                 "name": "decl11", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {
@@ -921,7 +939,6 @@ class CheckParse(unittest.TestCase):
                 "name": "decl12", 
                 "pointer": []
             }, 
-            "fattrs": {}, 
             "func_const": False, 
             "params": [
                 {
@@ -1194,6 +1211,43 @@ class CheckEnum(unittest.TestCase):
         # enum trailing comma
         r = declast.check_decl('enum Color{RED=1,BLUE,WHITE,}')
         self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))
+
+
+class CheckStruct(unittest.TestCase):
+    def test_struct1(self):
+        r = declast.check_decl('struct struct1 { int i; double d; };')
+        self.assertEqual('struct struct1 { int i;double d; };', todict.print_node(r))
+        self.assertEqual(todict.to_dict(r),{
+            "members": [
+                {
+                    "attrs": {
+                        "_typename": "int"
+                    },
+                    "const": False,
+                    "declarator": {
+                        "name": "i",
+                        "pointer": []
+                    },
+                    "specifier": [
+                        "int"
+                    ]
+                },
+                {
+                    "attrs": {
+                        "_typename": "double"
+                    },
+                    "const": False,
+                    "declarator": {
+                        "name": "d",
+                        "pointer": []
+                    },
+                    "specifier": [
+                    "double"
+                    ]
+                }
+            ],
+            "name": "struct1"
+        })
 
 
 class CheckClass(unittest.TestCase):

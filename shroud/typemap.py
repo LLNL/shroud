@@ -42,6 +42,7 @@ Create and manage typemaps used to convert between languages.
 """
 
 from . import util
+from . import whelpers
 
 class Typedef(object):
     """ Collect fields for an argument.
@@ -71,6 +72,7 @@ class Typedef(object):
         ('c_statements', {}),
         ('c_templates', {}),      # c_statements for cxx_T
         ('c_return_code', None),
+        ('c_union', None),        # Union of C++ and C type (used with structs and complex)
 
         ('f_c_args', None),       # List of argument names to F_C routine
         ('f_c_argdecl', None),    # List of declarations to F_C routine
@@ -95,9 +97,12 @@ class Typedef(object):
         ('PY_PyObject', None),    # typedef name of PyObject instance
         ('PY_ctor', None),        # expression to create object.
                                   # ex. PyBool_FromLong({rv})
+        ('PY_get', None),         # expression to create type from PyObject.
         ('PY_to_object', None),   # PyBuild - object'=converter(address)
         ('PY_from_object', None), # PyArg_Parse - status=converter(object, address);
         ('PY_build_arg', None),   # argument for Py_BuildValue
+        ('PYN_typenum', None),    # NumPy typenum enumeration
+        ('PYN_descr', None),      # Name of PyArray_Descr variable to describe type (for structs)
         ('py_statements', {}),
 
         # Lua
@@ -233,7 +238,9 @@ def initialize():
             f_kind='C_INT',
             f_module=dict(iso_c_binding=['C_INT']),
             PY_format='i',
-            PY_ctor='PyInt_FromLong({c_var})',
+            PY_ctor='PyInt_FromLong({c_ptr}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_INT',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -247,7 +254,9 @@ def initialize():
             f_kind='C_LONG',
             f_module=dict(iso_c_binding=['C_LONG']),
             PY_format='l',
-            PY_ctor='PyInt_FromLong({c_var})',
+            PY_ctor='PyInt_FromLong({c_ptr}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_LONG',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -261,7 +270,8 @@ def initialize():
             f_kind='C_LONG_LONG',
             f_module=dict(iso_c_binding=['C_LONG_LONG']),
             PY_format='L',
-#            PY_ctor='PyInt_FromLong({c_var})',
+#            PY_ctor='PyInt_FromLong({c_ptr}{c_var})',
+            PYN_typenum='NPY_LONGLONG',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -275,7 +285,7 @@ def initialize():
             f_type='integer(C_SIZE_T)',
             f_kind='C_SIZE_T',
             f_module=dict(iso_c_binding=['C_SIZE_T']),
-            PY_ctor='PyInt_FromSize_t({c_var})',
+            PY_ctor='PyInt_FromSize_t({c_ptr}{c_var})',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -290,7 +300,9 @@ def initialize():
             f_kind='C_FLOAT',
             f_module=dict(iso_c_binding=['C_FLOAT']),
             PY_format='f',
-            PY_ctor='PyFloat_FromDouble({c_var})',
+            PY_ctor='PyFloat_FromDouble({c_ptr}{c_var})',
+            PY_get='PyFloat_AsDouble({py_var})',
+            PYN_typenum='NPY_FLOAT',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
@@ -304,7 +316,9 @@ def initialize():
             f_kind='C_DOUBLE',
             f_module=dict(iso_c_binding=['C_DOUBLE']),
             PY_format='d',
-            PY_ctor='PyFloat_FromDouble({c_var})',
+            PY_ctor='PyFloat_FromDouble({c_ptr}{c_var})',
+            PY_get='PyFloat_AsDouble({py_var})',
+            PYN_typenum='NPY_DOUBLE',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
@@ -360,7 +374,7 @@ def initialize():
                     ],
                     # py_var is already declared for inout
                     post_call=[
-                        '{py_var} = PyBool_FromLong({c_var});',
+                        '{py_var} = PyBool_FromLong({c_ptr}{c_var});',
                     ],
                 ),
                 intent_out=dict(
@@ -376,6 +390,7 @@ def initialize():
 # from Py_BuildValue.
 #            PY_ctor='PyBool_FromLong({c_var})',
             PY_PyTypeObject='PyBool_Type',
+            PYN_typenum='NPY_BOOL',
 
             LUA_type='LUA_TBOOLEAN',
             LUA_pop='lua_toboolean({LUA_state_var}, {LUA_index})',
@@ -989,7 +1004,6 @@ def create_class_typedef(cls):
     fmt_class.C_type_name = typedef.c_type
     return typedef
 
-
 def typedef_shadow_defaults(typedef):
     """Add some defaults to typedef.
     When dumping typedefs to a file, only a subset is written
@@ -1027,6 +1041,108 @@ def typedef_shadow_defaults(typedef):
         )
     typedef.f_c_module={ 'iso_c_binding': ['C_PTR']}
 
+    typedef.py_statements=dict(
+        intent_in=dict(
+            cxx_local_var='pointer',
+            post_parse=[
+                '{c_const}%s * {cxx_var} = '
+                '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,
+            ],
+        ),
+        intent_inout=dict(
+            cxx_local_var='pointer',
+            post_parse=[
+                '{c_const}%s * {cxx_var} = '
+                '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,
+            ],
+        ),
+        intent_out=dict(
+            post_call=[
+                ('{PyObject} * {py_var} = '
+                 'PyObject_New({PyObject}, &{PyTypeObject});'),
+                '{py_var}->{PY_obj} = {cxx_addr}{cxx_var};',
+            ]
+        ),
+    )
+#    if not typedef.PY_PyTypeObject:
+#        typedef.PY_PyTypeObject='UUU'
+    # typedef.PY_ctor='PyObject_New({PyObject}, &{PyTypeObject})'
+
+    typedef.LUA_type='LUA_TUSERDATA'
+    typedef.LUA_pop=('\t({LUA_userdata_type} *)\t luaL_checkudata'
+                     '(\t{LUA_state_var}, 1, "{LUA_metadata}")')
+    # typedef.LUA_push=None  # XXX create a userdata object with metatable
+    # typedef.LUA_statements={}
+
+    # allow forward declarations to avoid recursive headers
+    typedef.forward=typedef.cxx_type
+
+
+def create_struct_typedef(cls):
+    fmt_class = cls.fmtdict
+    cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
+    type_name = cxx_name.replace('\t', '')
+
+    typedef = Typedef.lookup(cxx_name)
+    if typedef is None:
+        # unname = util.un_camel(name)
+        f_name = cls.name.lower()
+        c_name = fmt_class.C_prefix + f_name
+        typedef = Typedef(
+            type_name,
+            base='struct',
+            cxx_type=cxx_name,
+            c_type=c_name,
+            f_derived_type=fmt_class.F_derived_name,
+            f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
+            PYN_descr=fmt_class.PY_struct_array_descr_variable,
+        )
+        typedef_struct_defaults(typedef)
+        Typedef.register(type_name, typedef)
+
+    fmt_class.C_type_name = typedef.c_type
+    return typedef
+
+
+def typedef_struct_defaults(typedef):
+    """Add some defaults to typedef.
+    When dumping typedefs to a file, only a subset is written
+    since the rest are boilerplate.  This function restores
+    the boilerplate.
+    """
+    if typedef.base != 'struct':
+        return
+
+    helper = whelpers.add_union_helper(typedef.cxx_type, typedef.c_type)
+
+    typedef.c_union = helper
+
+    # C++ pointer -> void pointer -> C pointer
+    typedef.cxx_to_c=('\tstatic_cast<{c_const}%s *>('
+                      '\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))' %
+                      typedef.c_type)
+
+    # C pointer -> void pointer -> C++ pointer
+    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s *>('
+                      '\tstatic_cast<{c_const}void *>(\t{c_var}))' %
+                      typedef.cxx_type)
+
+    # To convert, extract correct field from union
+#    typedef.cxx_to_c='\t{cxx_addr}{cxx_var}.cxx'
+#    typedef.c_to_cxx='\t{cxx_addr}{cxx_var}.c'
+
+    typedef.f_type='type(%s)' % typedef.f_derived_type
+
+    # XXX module name may not conflict with type name
+#    typedef.f_module={fmt_class.F_module_name:[unname]}
+
+    typedef.c_statements=dict(
+        result=dict(
+            c_helper=helper,
+        ),
+    )
+
+#    typedef.PYN_typenum='NPY_VOID'
     typedef.py_statements=dict(
         intent_in=dict(
             cxx_local_var='pointer',

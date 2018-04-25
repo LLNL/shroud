@@ -82,7 +82,15 @@ int TUT_class1_method1(TUT_class1 * self);
 bool TUT_class1_equivalent(const TUT_class1 * self,
     const TUT_class1 * obj2);
 
+void TUT_class1_return_this(TUT_class1 * self);
+
 int TUT_class1_direction_func(TUT_class1 * self, int arg);
+
+int TUT_class1_get_m_flag(TUT_class1 * self);
+
+int TUT_class1_get_test(TUT_class1 * self);
+
+void TUT_class1_set_test(TUT_class1 * self, int val);
 
 #ifdef __cplusplus
 }

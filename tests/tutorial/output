@@ -8,8 +8,8 @@ Wrote wrapTutorial.cpp
 Wrote wrapftutorial.f
 Wrote pyClass1type.cpp
 Wrote pySingletontype.cpp
+Wrote pyTutorialhelper.cpp
 Wrote pyTutorialmodule.hpp
 Wrote pyTutorialmodule.cpp
-Wrote pyTutorialhelper.cpp
 Wrote luaTutorialmodule.hpp
 Wrote luaTutorialmodule.cpp

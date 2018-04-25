@@ -10,6 +10,6 @@ Wrote wrapfNames2.F
 Wrote top.f
 Wrote pyNamestype.cpp
 Wrote pyNames2type.cpp
+Wrote pytestnameshelper.cpp
 Wrote pytestnamesmodule.hpp
 Wrote pytestnamesmodule.cpp
-Wrote pytestnameshelper.cpp

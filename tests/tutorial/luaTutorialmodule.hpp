@@ -47,6 +47,14 @@ extern "C" {
 #endif
 #include "tutorial.hpp"
 #include "lua.h"
+// splicer begin class.struct1.C_declaration
+// splicer end class.struct1.C_declaration
+
+typedef struct {
+    tutorial::struct1 * self;
+    // splicer begin class.struct1.C_object
+    // splicer end class.struct1.C_object
+} l_struct1_Type;
 // splicer begin class.Class1.C_declaration
 // splicer end class.Class1.C_declaration
 

@@ -42,6 +42,7 @@
 #
 from __future__ import print_function
 
+import numpy as np
 import unittest
 import tutorial
 
@@ -103,6 +104,36 @@ class Tutorial(unittest.TestCase):
         # if 0:    is legal
         self.assertRaises(TypeError, tutorial.Function3, 0)
 
+    def testReturnIntPtr(self):
+        "Return pointer to int scalar"
+        rv = tutorial.ReturnIntPtr()
+        self.assertIsInstance(rv, np.ndarray)
+        self.assertEqual('int32', rv.dtype.name)
+        self.assertEqual(1, rv.size)
+        self.assertEqual(1, rv)
+
+    def testReturnIntPtrScalr(self):
+        "Return pointer as int scalar"
+        rv = tutorial.ReturnIntPtrScalar()
+        self.assertIsInstance(rv, int)
+        self.assertEqual(10, rv)
+
+    def testReturnIntPtrDim(self):
+        "Return pointer to int array"
+        rv = tutorial.ReturnIntPtrDim()
+        self.assertIsInstance(rv, np.ndarray)
+        self.assertEqual('int32', rv.dtype.name)
+        self.assertEqual(7, rv.size)
+        self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7])))
+
+    def testReturnIntPtrDimNew(self):
+        "Return pointer to a new int array"
+        rv = tutorial.ReturnIntPtrDimNew()
+        self.assertIsInstance(rv, np.ndarray)
+        self.assertEqual('int32', rv.dtype.name)
+        self.assertEqual(5, rv.size)
+        self.assertTrue(all(np.equal(rv, [0,1,2,3,4])))
+
     def testFunction4a(self):
         rv_char = tutorial.Function4a("dog", "cat")
         self.assertEqual(rv_char, "dogcat")
@@ -129,17 +160,18 @@ class Tutorial(unittest.TestCase):
 
         self.assertRaises(TypeError, tutorial.Function6, 1.0)
 
-    def XXX_test_Function7_8(self):
+    def test_Function7_8(self):
+        """Test cxx_template"""
         tutorial.Function7(1)
         self.assertEqual(tutorial.LastFunctionCalled(), "Function7<int>")
         tutorial.Function7(10.0)
         self.assertEqual(tutorial.LastFunctionCalled(), "Function7<double>")
 
         # return values set by calls to function7
-        rv = tutorial.Function8_int()
-        self.assertEqual(rv, 1)
-        rv = tutorial.Function8_double()
-        self.assertEqual(rv, 10.0)
+        #rv = tutorial.Function8_int()
+        #self.assertEqual(rv, 1)
+        #rv = tutorial.Function8_double()
+        #self.assertEqual(rv, 10.0)
 
     def test_Function9(self):
         # This has fortran_generic attribute but you get that for free in Python
@@ -181,12 +213,25 @@ class Tutorial(unittest.TestCase):
 
     def test_class1_create1(self):
         obj = tutorial.Class1()
-        self.assertTrue(isinstance(obj, tutorial.Class1))
+        self.assertIsInstance(obj, tutorial.Class1)
+        self.assertEqual(0, obj.test)
+        obj.test = 4
+        self.assertEqual(4, obj.test)
+        # test -1 since PyInt_AsLong returns -1 on error
+        obj.test = -1
+        self.assertEqual(-1, obj.test)
+        with self.assertRaises(AttributeError) as context:
+            obj.m_flag = 1
+        self.assertTrue("is not writable" in str(context.exception))
+        with self.assertRaises(TypeError) as context:
+            obj.test = "dog"
+        self.assertTrue("an integer is required" in str(context.exception))
         del obj
 
     def test_class1_create2(self):
         obj = tutorial.Class1(1)
-        self.assertTrue(isinstance(obj, tutorial.Class1))
+        self.assertIsInstance(obj, tutorial.Class1)
+        self.assertEqual(1, obj.m_flag)
         del obj
 
     def test_class1_method1(self):
@@ -209,15 +254,37 @@ class Tutorial(unittest.TestCase):
         # getclass2 is const, not wrapped yet
 
         obj0a = tutorial.getclass3()
-        self.assertTrue(isinstance(obj0a, tutorial.Class1))
+        self.assertIsInstance(obj0a, tutorial.Class1)
 
     def test_class1_useclass_error(self):
         """Pass illegal argument to useclass"""
         obj0 = tutorial.Class1()
         self.assertRaises(TypeError, tutorial.useclass(obj0))
 
+    def test_returnStruct(self):
+        rv = tutorial.returnStructPtr(2,2.1)
+        self.assertIsInstance(rv, np.ndarray)
+        dtype = rv.dtype
+        self.assertEqual(dtype.names, ('ifield', 'dfield'))
+        self.assertEqual(dtype.char, 'V')
+        self.assertEqual(0, rv.ndim)
+        self.assertEqual(2, rv['ifield'])
+        self.assertEqual(2.1, rv['dfield'])
+        self.assertIs(dtype, tutorial.struct1_dtype)
+
+    def test_returnStructPtr(self):
+        rv = tutorial.returnStructPtr(1,1.1)
+        self.assertIsInstance(rv, np.ndarray)
+        dtype = rv.dtype
+        self.assertEqual(dtype.names, ('ifield', 'dfield'))
+        self.assertEqual(dtype.char, 'V')
+        self.assertEqual(0, rv.ndim)
+        self.assertEqual(1, rv['ifield'])
+        self.assertEqual(1.1, rv['dfield'])
+        self.assertIs(dtype, tutorial.struct1_dtype)
+
     def test_singleton(self):
-        # it'd be cool if obj0 is obj1
+        # XXX - it'd be cool if obj0 is obj1
         obj0 = tutorial.Singleton.getReference()
         obj1 = tutorial.Singleton.getReference()
 

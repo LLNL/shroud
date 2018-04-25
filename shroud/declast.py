@@ -393,8 +393,8 @@ class Parser(ExprParser):
             node.specifier.append(tok.value)
             #  class Class1 { ~Class1(); }
             self.info('destructor', self.namespace.typename)
-            node.fattrs['_name'] = 'dtor'
-            node.fattrs['_destructor'] = True
+            node.attrs['_name'] = 'dtor'
+            node.attrs['_destructor'] = True
             node.attrs['_typename'] = self.namespace.typename
             found_type = True
             more = False
@@ -412,8 +412,8 @@ class Parser(ExprParser):
                        self.token.typ == 'LPAREN':
                         #  class Class1 { Class1(); }
                         self.info('constructor')
-                        node.fattrs['_name'] = 'ctor'
-                        node.fattrs['_constructor'] = True
+                        node.attrs['_name'] = 'ctor'
+                        node.attrs['_constructor'] = True
                         more = False
                     elif self.have('LT'):
                         temp = Declaration()
@@ -456,6 +456,8 @@ class Parser(ExprParser):
             node = self.class_statement()
         elif self.token.typ == 'ENUM':
             node = self.enum_statement()
+        elif self.token.typ == 'STRUCT':
+            node = self.struct_statement()
         elif self.token.typ == 'NAMESPACE':
             node = self.namespace_statement()
         else:
@@ -477,9 +479,9 @@ class Parser(ExprParser):
         node = Declaration()
         self.declaration_specifier(node)
 
-        if '_destructor' in node.fattrs:
+        if '_destructor' in node.attrs:
             pass
-        elif '_constructor' in node.fattrs:
+        elif '_constructor' in node.attrs:
             pass
         else:
             node.declarator = self.declarator()
@@ -496,7 +498,7 @@ class Parser(ExprParser):
                     raise RuntimeError(
                         "'{}' unexpected after function declaration"
                         .format(self.token.value))
-            self.attribute(node.fattrs)   # function attributes
+            self.attribute(node.attrs)   # function attributes
 #        elif self.token.typ == 'LBRACKET':
 #            node.array  = self.constant_expression()
         else:
@@ -646,6 +648,20 @@ class Parser(ExprParser):
         self.exit('enum_statement', str(members))
         return node
 
+    def struct_statement(self):
+        self.enter('struct_statement')
+        self.mustbe('STRUCT')
+        name = self.mustbe('ID')
+        self.mustbe('LCURLY')
+        node = Struct(name.value)
+        members = node.members
+        while self.token.typ != 'RCURLY':
+            members.append( self.declaration())
+            self.mustbe('SEMICOLON')
+        self.mustbe('RCURLY')
+        self.exit('struct_statement')
+        return node
+
 ######################################################################
 
 class Node(object):
@@ -729,8 +745,14 @@ class Declarator(Node):
         Replace name with value from kwargs.
         name=None will skip appending any existing name.
         """
-        for ptr in self.pointer:
-            ptr.gen_decl_work(decl, **kwargs)
+        if kwargs.get('force_ptr', False):
+            # Force to be a pointer
+            decl.append(' *')
+        elif kwargs.get('as_scalar', False):
+            pass  # Do not print pointer
+        else:
+            for ptr in self.pointer:
+                ptr.gen_decl_work(decl, **kwargs)
         if self.func:
             decl.append(' (')
             self.func.gen_decl_work(decl, **kwargs)
@@ -774,15 +796,16 @@ class Declaration(Node):
         self.attrs      = {}     # Declaration attributes
 
         self.func_const = False
-        self.fattrs     = {}     # function attributes
 
-    def get_name(self):
+    def get_name(self, use_attr=True):
         """Get name from declarator
+        use_attr - True, check attr for name
         ctor and dtor should have _name set
         """
-        name = self.fattrs.get('name', None) or self.fattrs.get('_name', None)
-        if name is not None:
-            return name
+        if use_attr:
+            name = self.attrs.get('name', None) or self.attrs.get('_name', None)
+            if name is not None:
+                return name
         if self.declarator is None:
             # abstract declarator
             return None
@@ -859,7 +882,11 @@ class Declaration(Node):
         return True
 
     def get_subprogram(self):
-        """Return Fortran subprogram - subroutine or function"""
+        """Return Fortran subprogram - subroutine or function.
+        Return None for variable declarations.
+        """
+        if self.params is None:
+            return None
         if self.typename != 'void':
             return 'function'
         if self.is_pointer():
@@ -924,7 +951,7 @@ class Declaration(Node):
             out.append('const ')
         if self.volatile:
             out.append('volatile ')
-        if '_destructor' in self.fattrs:
+        if '_destructor' in self.attrs:
             out.append('~')
         if self.storage:
             out.append(' '.join(self.storage))
@@ -973,7 +1000,7 @@ class Declaration(Node):
         if self.const:
             decl.append('const ')
 
-        if '_destructor' in self.fattrs:
+        if '_destructor' in self.attrs:
             decl.append('~')
         if self.storage:
             decl.append(' '.join(self.storage))
@@ -990,8 +1017,8 @@ class Declaration(Node):
         if self.init is not None:
             decl.append('=')
             decl.append(str(self.init))
-        if use_attrs:
-            self.gen_attrs(self.attrs, decl)
+#        if use_attrs:
+#            self.gen_attrs(self.attrs, decl)
 
         params = kwargs.get('params', self.params)
         if params is not None:
@@ -1004,8 +1031,8 @@ class Declaration(Node):
             decl.append(')')
             if self.func_const:
                 decl.append(' const')
-            if use_attrs:
-                self.gen_attrs(self.fattrs, decl)
+        if use_attrs:
+            self.gen_attrs(self.attrs, decl)
 
     _skip_annotations = ['template']
 
@@ -1053,6 +1080,9 @@ class Declaration(Node):
         continuation = True - insert tabs to aid continuations
         asgn_value = If True, make sure the value can be assigned
                      by removing const.
+        as_ptr - Change reference to pointer
+        force_ptr - Change a scalar into a pointer
+        as_scalar - Do not print Ptr
 
         If a templated type, assume std::vector.
         The C argument will be a pointer to the template type.
@@ -1086,7 +1116,7 @@ class Declaration(Node):
             declarator = self.declarator
 
         if asgn_value and const_index is not None and not self.is_indirect():
-            # Remove 'const' do the variable can be assigned to.
+            # Remove 'const' so the variable can be assigned to.
             decl[const_index] = ''
 
         if lang == 'c_type':
@@ -1156,11 +1186,15 @@ class Declaration(Node):
             decl.append('(*)')
         return ''.join(decl)
 
-    def gen_arg_as_fortran(self, local=False, **kwargs):
+    def gen_arg_as_fortran(self, local=False, is_pointer=False,
+                           attributes=[], **kwargs):
         """Geneate declaration for Fortran variable.
 
         If local==True, this is a local variable, skip attributes
           OPTIONAL, VALUE, and INTENT
+        is_pointer - True/False - have POINTER attribute
+        attributes - list of literal Fortran attributes to add to declaration.
+                     i.e. [ 'pointer' ]
         """
         t = []
         typedef = typemap.Typedef.lookup(self.typename)
@@ -1181,6 +1215,9 @@ class Declaration(Node):
         allocatable = attrs.get('allocatable', False)
         if allocatable:
             t.append('allocatable')
+        if is_pointer:
+            t.append('pointer')
+        t.extend(attributes)
 
         decl = []
         decl.append(', '.join(t))
@@ -1193,7 +1230,10 @@ class Declaration(Node):
 
         dimension = attrs.get('dimension', '')
         if dimension:
-            decl.append('(' + dimension + ')')
+            if is_pointer:
+                decl.append('(:)')  # XXX - 1d only
+            else:
+                decl.append('(' + dimension + ')')
         elif allocatable:
             # Assume 1-d.
             decl.append('(:)')
@@ -1227,6 +1267,15 @@ class EnumValue(Node):
     def __init__(self, name, value=None):
         self.name = name
         self.value = value
+
+
+class Struct(Node):
+    """An struct statement.
+    struct name { int i; double d; };
+    """
+    def __init__(self, name):
+        self.name = name
+        self.members = []
 
 
 def check_decl(decl, namespace=None, template_types=[], trace=False):

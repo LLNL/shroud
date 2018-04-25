@@ -67,6 +67,38 @@ f_var
 All of the fields are defined in the references section and will only be used
 by example in this section.
 
+Type Maps
+---------
+
+Typemaps provide information used to process types::
+
+    c_statements:
+        intent_in:
+        intent_out:
+        intent_inout:
+        result:
+
+        intent_in_buf:
+        intent_out_buf:
+        intent_inout_buf:
+
+buf_args
+  len, len_trim, size
+
+cxx_header
+
+cxx_local_var
+
+pre_call = []
+
+post_call = []
+
+f_statements
+
+need_wrapper
+f_helper
+call = []
+
 
 Types
 -----
@@ -963,6 +995,39 @@ to the YAML file to avoid wrapping ``private`` constructors.
 
 ..  chained function calls
 
+Member Variables
+^^^^^^^^^^^^^^^^
+
+For each member variable of a C++ class a C and Fortran wrapper
+function will be created to get or set the value.  The Python wrapper
+will create a descriptor::
+
+    class Class1
+    {
+    public:
+       int m_flag;
+       int m_test;
+    }
+
+It is added to the YAML file as::
+
+    - decl: class Class1
+      declarations:
+      - decl: int m_flag +readonly;
+      - decl: int m_test +name(test);
+
+The *readonly* attribute will not write the setter function or descriptor.
+Python will report::
+
+    >>> obj = tutorial.Class1()
+    >>> obj.m_flag =1
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    AttributeError: attribute 'm_flag' of 'tutorial.Class1' objects is not writable
+
+The *name* attribute will change the name of generated functions and
+descriptors.  This is helpful when using a naming convention like
+``m_test`` and you do not want ``m_`` to be used in the wrappers.
 
 Memory Management
 -----------------

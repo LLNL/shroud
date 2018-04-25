@@ -69,6 +69,7 @@ program tester
 
   call test_callback
 
+  call test_struct1
   call test_class1
   call test_singleton
 
@@ -106,6 +107,7 @@ contains
 
     integer(C_LONG_LONG) :: rv_ll
     integer(C_INT) :: minout, maxout
+    integer(C_INT), pointer :: intp, intp1(:)
 
     call set_case_name("test_functions")
 
@@ -129,6 +131,27 @@ contains
     call function3b(.false., rv_logical, wrk_logical)
     call assert_true(rv_logical)
     call assert_true(wrk_logical)
+
+    nullify(intp)
+    intp => return_int_ptr()
+    call assert_true(associated(intp))
+    call assert_equals(1, intp, "return_int_ptr value")
+
+    rv_int = return_int_ptr_scalar()
+    call assert_equals(10, rv_int, "return_int_ptr_scalar value")
+
+    nullify(intp1)
+    intp1 => return_int_ptr_dim()
+    call assert_true(associated(intp1))
+    call assert_equals(7 , size(intp1))
+    call assert_true( all(intp1 == [1,2,3,4,5,6,7]), "return_int_ptr_dim value")
+
+    ! XXX - how to delete c++ array
+    nullify(intp1)
+    intp1 => return_int_ptr_dim_new()
+    call assert_true(associated(intp1))
+    call assert_equals(5 , size(intp1))
+    call assert_true( all(intp1 == [0,1,2,3,4]), "return_int_ptr_dim_new value")
 
     call assert_true( function4a("dog", "cat") == "dogcat")
 
@@ -248,13 +271,52 @@ contains
        end function incr2
     end interface
 
+    call set_case_name("test_callback")
+
     irv = callback1(2, incr2)
     call assert_true(irv == 22)
 
   end subroutine test_callback
 
+  subroutine test_struct1
+    type(struct1) str1
+    type(struct1), pointer :: str2
+    real(C_DOUBLE) rvd
+
+    call set_case_name("test_struct")
+
+    str1 = return_struct(1_C_INT, 2.5_C_DOUBLE)
+    call assert_equals(1_C_INT,      str1%ifield, "return_struct i field")
+    call assert_equals(2.5_C_DOUBLE, str1%dfield, "return_struct d field")
+
+    str2 => return_struct_ptr(8_C_INT, 8.5_C_DOUBLE)
+
+    str1%ifield = 2_C_INT
+    str1%dfield = 2.0_C_DOUBLE
+    rvd = accept_struct_in(str1)
+    call assert_equals(4.0_C_DOUBLE, rvd, "accept_struct_in")
+
+    str1%ifield = 3_C_INT
+    str1%dfield = 3.0_C_DOUBLE
+    rvd = accept_struct_in_ptr(str1)
+    call assert_equals(6.0_C_DOUBLE, rvd, "accept_struct_in_ptr")
+
+    str1%ifield = 0
+    str1%dfield = 0.0
+    call accept_struct_out_ptr(str1, 4_C_INT, 4.5_C_DOUBLE)
+    call assert_equals(4_C_INT,      str1%ifield, "accept_struct_out_ptr i field")
+    call assert_equals(4.5_C_DOUBLE, str1%dfield, "accept_struct_out_ptr d field")
+
+    str1%ifield = 4_C_INT
+    str1%dfield = 4.0_C_DOUBLE
+    call accept_struct_in_out_ptr(str1)
+    call assert_equals(5_C_INT,      str1%ifield, "accept_struct_in_out_ptr i field")
+    call assert_equals(5.0_C_DOUBLE, str1%dfield, "accept_struct_in_out_ptr d field")
+
+  end subroutine test_struct1
+
   subroutine test_class1
-    integer iflag
+    integer iflag, mtest
     integer direction
     type(class1) obj0, obj1
     type(class1) obj0a
@@ -266,6 +328,13 @@ contains
     obj0 = class1_new()
     ptr = obj0%get_instance()
     call assert_true(c_associated(ptr), "class1_new obj0")
+
+    mtest = obj0%get_test()
+    call assert_equals(0, mtest)
+
+    call obj0%set_test(4)
+    mtest = obj0%get_test()
+    call assert_equals(4, mtest)
 
     obj1 = class1_new(1)
     ptr = obj1%get_instance()
@@ -282,6 +351,8 @@ contains
 
     call assert_true(obj0%equivalent(obj0))
     call assert_false(obj0%equivalent(obj1))
+
+    call obj0%return_this()
 
     direction = -1
     direction = obj0%direction_func(class1_direction_left)

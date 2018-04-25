@@ -63,6 +63,7 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+PyArray_Descr *PY_struct1_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -229,6 +230,98 @@ PY_Function3(
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function3
+}
+
+static char PY_ReturnIntPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ReturnIntPtr(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int * ReturnIntPtr()
+// splicer begin function.return_int_ptr
+    int * SHC_rv = tutorial::ReturnIntPtr();
+
+    // post_call
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr
+}
+
+static char PY_ReturnIntPtrScalar__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ReturnIntPtrScalar(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int * ReturnIntPtrScalar()
+// splicer begin function.return_int_ptr_scalar
+    int * SHC_rv = tutorial::ReturnIntPtrScalar();
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(*SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr_scalar
+}
+
+static char PY_ReturnIntPtrDim__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ReturnIntPtrDim(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
+// splicer begin function.return_int_ptr_dim
+    // pre_call
+    int len;  // intent(out)
+
+    int * SHC_rv = tutorial::ReturnIntPtrDim(&len);
+
+    // post_call
+    npy_intp SHD_ReturnIntPtrDim[1] = { len };
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_ReturnIntPtrDim, NPY_INT, SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr_dim
+}
+
+static char PY_ReturnIntPtrDimNew__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ReturnIntPtrDimNew(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
+// splicer begin function.return_int_ptr_dim_new
+    // pre_call
+    int len;  // intent(out)
+
+    int * SHC_rv = tutorial::ReturnIntPtrDimNew(&len);
+
+    // post_call
+    npy_intp SHD_ReturnIntPtrDimNew[1] = { len };
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_ReturnIntPtrDimNew, NPY_INT, SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr_dim_new
 }
 
 static char PY_Function4a__doc__[] =
@@ -400,6 +493,50 @@ PY_Function6_from_index(
     tutorial::Function6(indx);
     Py_RETURN_NONE;
 // splicer end function.function6_from_index
+}
+
+static PyObject *
+PY_Function7_int(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void Function7(int arg +intent(in)+value)
+// splicer begin function.function7_int
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function7",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return NULL;
+
+    tutorial::Function7(arg);
+    Py_RETURN_NONE;
+// splicer end function.function7_int
+}
+
+static PyObject *
+PY_Function7_double(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void Function7(double arg +intent(in)+value)
+// splicer begin function.function7_double
+    double arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function7",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return NULL;
+
+    tutorial::Function7(arg);
+    Py_RETURN_NONE;
+// splicer end function.function7_double
 }
 
 static char PY_Function9__doc__[] =
@@ -767,6 +904,80 @@ PY_getclass3(
 // splicer end function.getclass3
 }
 
+static char PY_returnStruct__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnStruct(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
+// splicer begin function.return_struct
+    int i;
+    double d;
+    const char *SHT_kwlist[] = {
+        "i",
+        "d",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStruct",
+        const_cast<char **>(SHT_kwlist), &i, &d))
+        return NULL;
+
+    tutorial::struct1 * SHC_rv = new tutorial::struct1;
+    *SHC_rv = tutorial::returnStruct(i, d);
+
+    // post_call
+    Py_INCREF(PY_struct1_array_descr);
+    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
+        PY_struct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+    PyObject * SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
+        PY_array_destructor_function);
+    PyCapsule_SetContext(SHC_SHC_rv, const_cast<char *>
+        (PY_array_destructor_context[0]));
+    PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_struct
+}
+
+static char PY_returnStructPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnStructPtr(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
+// splicer begin function.return_struct_ptr
+    int i;
+    double d;
+    const char *SHT_kwlist[] = {
+        "i",
+        "d",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr",
+        const_cast<char **>(SHT_kwlist), &i, &d))
+        return NULL;
+
+    tutorial::struct1 * SHCXX_rv = tutorial::returnStructPtr(i, d);
+
+    // post_call
+    Py_INCREF(PY_struct1_array_descr);
+    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
+        PY_struct1_array_descr, 0, NULL, NULL, SHCXX_rv, 0, NULL);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_struct_ptr
+}
+
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;
@@ -824,6 +1035,44 @@ PY_Function10(
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
 // splicer end function.function10
+}
+
+static char PY_Function7__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_Function7(
+  PyObject *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.function7
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    PyObject *rvobj;
+    if (SHT_nargs == 1) {
+        rvobj = PY_Function7_int(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 1) {
+        rvobj = PY_Function7_double(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return NULL;
+// splicer end function.function7
 }
 
 static char PY_Function6__doc__[] =
@@ -911,6 +1160,14 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_TypeLongLong__doc__},
 {"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,
     PY_Function3__doc__},
+{"ReturnIntPtr", (PyCFunction)PY_ReturnIntPtr, METH_NOARGS,
+    PY_ReturnIntPtr__doc__},
+{"ReturnIntPtrScalar", (PyCFunction)PY_ReturnIntPtrScalar, METH_NOARGS,
+    PY_ReturnIntPtrScalar__doc__},
+{"ReturnIntPtrDim", (PyCFunction)PY_ReturnIntPtrDim, METH_NOARGS,
+    PY_ReturnIntPtrDim__doc__},
+{"ReturnIntPtrDimNew", (PyCFunction)PY_ReturnIntPtrDimNew, METH_NOARGS,
+    PY_ReturnIntPtrDimNew__doc__},
 {"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,
     PY_Function4a__doc__},
 {"Function4b", (PyCFunction)PY_Function4b, METH_VARARGS|METH_KEYWORDS,
@@ -933,16 +1190,84 @@ static PyMethodDef PY_methods[] = {
     PY_useclass__doc__},
 {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,
     PY_getclass3__doc__},
+{"returnStruct", (PyCFunction)PY_returnStruct,
+    METH_VARARGS|METH_KEYWORDS, PY_returnStruct__doc__},
+{"returnStructPtr", (PyCFunction)PY_returnStructPtr,
+    METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr__doc__},
 {"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,
     PY_LastFunctionCalled__doc__},
 {"Function10", (PyCFunction)PY_Function10, METH_VARARGS|METH_KEYWORDS,
     PY_Function10__doc__},
+{"Function7", (PyCFunction)PY_Function7, METH_VARARGS|METH_KEYWORDS,
+    PY_Function7__doc__},
 {"Function6", (PyCFunction)PY_Function6, METH_VARARGS|METH_KEYWORDS,
     PY_Function6__doc__},
 {"overload1", (PyCFunction)PY_overload1, METH_VARARGS|METH_KEYWORDS,
     PY_overload1__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
+
+// Create PyArray_Descr for struct1
+PyArray_Descr *PY_struct1_create_array_descr()
+{
+    int ierr;
+    PyObject *obj = NULL;
+    PyObject * lnames = NULL;
+    PyObject * ldescr = NULL;
+    PyObject * dict = NULL;
+    PyArray_Descr *dtype = NULL;
+
+    lnames = PyList_New(2);
+    if (lnames == NULL) goto fail;
+    ldescr = PyList_New(2);
+    if (ldescr == NULL) goto fail;
+
+    // ifield
+    obj = PyString_FromString("ifield");
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(lnames, 0, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(ldescr, 0, obj);
+
+    // dfield
+    obj = PyString_FromString("dfield");
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(lnames, 1, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(ldescr, 1, obj);
+    obj = NULL;
+
+    dict = PyDict_New();
+    if (dict == NULL) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = NULL;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = NULL;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != NULL) {
+        for (int i=0; i < 2; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != NULL) {
+        for (int i=0; i < 2; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return NULL;
+}
 
 /*
  * inittutorial - Initialization function for the module
@@ -1059,6 +1384,11 @@ inittutorial(void)
     PyModule_AddIntConstant(m, "RED", tutorial::RED);
     PyModule_AddIntConstant(m, "BLUE", tutorial::BLUE);
     PyModule_AddIntConstant(m, "WHITE", tutorial::WHITE);
+
+    // Define PyArray_Descr for structs
+    PY_struct1_array_descr = PY_struct1_create_array_descr();
+    PyModule_AddObject(m, "struct1_dtype", 
+        (PyObject *) PY_struct1_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
