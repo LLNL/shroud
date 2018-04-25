@@ -137,16 +137,17 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("long long var2", s)
 
         # test attributes
-        r = declast.check_decl("int ivar +readonly")
+        r = declast.check_decl("int m_ivar +readonly +name(ivar)")
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
                 "_typename": "int",
-                "readonly": True
+                "name": "ivar",
+                "readonly": True,
             },
             "const": False,
             "declarator": {
-                "name": "ivar",
-                "pointer": []
+                "name": "m_ivar",
+                "pointer": [],
             },
             "specifier": [
                 "int"

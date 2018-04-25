@@ -1078,9 +1078,10 @@ class VariableNode(AstNode):
 
         # Treat similar to class
 #        fmt_struct.class_scope = self.name + '::'
+        fmt_var.field_name = ast.get_name(use_attr=False)
         fmt_var.variable_name = ast.name
-        fmt_var.variable_lower = ast.name.lower()
-        fmt_var.variable_upper = ast.name.upper()
+        fmt_var.variable_lower = fmt_var.variable_name.lower()
+        fmt_var.variable_upper = fmt_var.variable_name.upper()
 
         # Add to namespace
 #        self.typename = self.parent.scope + self.name

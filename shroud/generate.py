@@ -78,6 +78,7 @@ class VerifyAttrs(object):
             if attr[0] == '_': # internal attribute
                 continue
             if attr not in [
+                    'name',
                     'readonly',
                     ]:
                 raise RuntimeError(
@@ -326,9 +327,9 @@ class GenFunctions(object):
         """
         ast = var.ast
         typedef = typemap.Typedef.lookup(ast.typename)
+        fieldname = ast.name  # attrs.get('name', ast.name)
 
         fmt = util.Scope(var.fmtdict)
-        fmt.field = ast.name
 
         options=dict(
             wrap_lua=False,
@@ -336,10 +337,10 @@ class GenFunctions(object):
         )
 
         # getter
-        funcname = 'get' + ast.name.capitalize()
+        funcname = 'get' + fieldname.capitalize()
         argdecl = ast.gen_arg_as_c(name=funcname, continuation=True)
         decl = '{}()'.format(argdecl)
-        field = wformat('{CXX_this}->{field}', fmt)
+        field = wformat('{CXX_this}->{field_name}', fmt)
         if typedef.cxx_to_c is None:
             val = field
         else:
@@ -359,7 +360,7 @@ class GenFunctions(object):
         funcname = 'set' + ast.name.capitalize()
         argdecl = ast.gen_arg_as_c(name='val', continuation=True)
         decl = 'void {}({})'.format(funcname, argdecl)
-        field = wformat('{CXX_this}->{field}', fmt)
+        field = wformat('{CXX_this}->{field_name}', fmt)
         if typedef.c_to_cxx is None:
             val = 'val'
         else:

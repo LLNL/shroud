@@ -329,11 +329,11 @@ contains
     ptr = obj0%get_instance()
     call assert_true(c_associated(ptr), "class1_new obj0")
 
-    mtest = obj0%get_m_test()
+    mtest = obj0%get_test()
     call assert_equals(0, mtest)
 
-    call obj0%set_m_test(4)
-    mtest = obj0%get_m_test()
+    call obj0%set_test(4)
+    mtest = obj0%get_test()
     call assert_equals(4, mtest)
 
     obj1 = class1_new(1)

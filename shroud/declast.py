@@ -797,13 +797,15 @@ class Declaration(Node):
 
         self.func_const = False
 
-    def get_name(self):
+    def get_name(self, use_attr=True):
         """Get name from declarator
+        use_attr - True, check attr for name
         ctor and dtor should have _name set
         """
-        name = self.attrs.get('name', None) or self.attrs.get('_name', None)
-        if name is not None:
-            return name
+        if use_attr:
+            name = self.attrs.get('name', None) or self.attrs.get('_name', None)
+            if name is not None:
+                return name
         if self.declarator is None:
             # abstract declarator
             return None

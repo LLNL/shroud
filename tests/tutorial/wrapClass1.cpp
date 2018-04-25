@@ -165,27 +165,27 @@ int TUT_class1_get_m_flag(TUT_class1 * self)
 // splicer end class.Class1.method.get_m_flag
 }
 
-// int getM_test()
+// int getTest()
 // function_index=8
-int TUT_class1_get_m_test(TUT_class1 * self)
+int TUT_class1_get_test(TUT_class1 * self)
 {
-// splicer begin class.Class1.method.get_m_test
+// splicer begin class.Class1.method.get_test
     tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
         static_cast<void *>(self));
     return SH_this->m_test;
-// splicer end class.Class1.method.get_m_test
+// splicer end class.Class1.method.get_test
 }
 
-// void setM_test(int val +intent(in)+value)
+// void setTest(int val +intent(in)+value)
 // function_index=9
-void TUT_class1_set_m_test(TUT_class1 * self, int val)
+void TUT_class1_set_test(TUT_class1 * self, int val)
 {
-// splicer begin class.Class1.method.set_m_test
+// splicer begin class.Class1.method.set_test
     tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
         static_cast<void *>(self));
     SH_this->m_test = val;
     return;
-// splicer end class.Class1.method.set_m_test
+// splicer end class.Class1.method.set_test
 }
 
 }  // extern "C"

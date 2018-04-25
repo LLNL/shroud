@@ -49,6 +49,7 @@
                             ]
                         }, 
                         "format": {
+                            "field_name": "ifield", 
                             "variable_lower": "ifield", 
                             "variable_name": "ifield", 
                             "variable_upper": "IFIELD"
@@ -71,6 +72,7 @@
                             ]
                         }, 
                         "format": {
+                            "field_name": "dfield", 
                             "variable_lower": "dfield", 
                             "variable_name": "dfield", 
                             "variable_upper": "DFIELD"
@@ -912,7 +914,7 @@
                             }, 
                             "const": false, 
                             "declarator": {
-                                "name": "getM_test", 
+                                "name": "getTest", 
                                 "pointer": []
                             }, 
                             "func_const": false, 
@@ -921,33 +923,33 @@
                                 "int"
                             ]
                         }, 
-                        "decl": "int getM_test()", 
-                        "declgen": "int getM_test()", 
+                        "decl": "int getTest()", 
+                        "declgen": "int getTest()", 
                         "format": {
-                            "C_call_code": "int SHC_rv =\t SH_this->getM_test(\t);", 
+                            "C_call_code": "int SHC_rv =\t SH_this->getTest(\t);", 
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn SH_this->m_test;", 
-                            "C_name": "TUT_class1_get_m_test", 
+                            "C_name": "TUT_class1_get_test", 
                             "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "TUT_class1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
-                            "F_C_call": "c_class1_get_m_test", 
-                            "F_C_name": "c_class1_get_m_test", 
+                            "F_C_call": "c_class1_get_test", 
+                            "F_C_name": "c_class1_get_test", 
                             "F_arg_c_call": "obj%voidptr", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_class1_get_m_test(obj%voidptr)", 
-                            "F_name_function": "get_m_test", 
-                            "F_name_generic": "get_m_test", 
-                            "F_name_impl": "class1_get_m_test", 
+                            "F_call_code": "SHT_rv = c_class1_get_test(obj%voidptr)", 
+                            "F_name_function": "get_test", 
+                            "F_name_generic": "get_test", 
+                            "F_name_impl": "class1_get_test", 
                             "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
                             "cxx_rv_decl": "int SHC_rv", 
-                            "function_name": "getM_test", 
-                            "underscore_name": "get_m_test"
+                            "function_name": "getTest", 
+                            "underscore_name": "get_test"
                         }, 
                         "options": {
                             "wrap_lua": false, 
@@ -978,7 +980,7 @@
                             }, 
                             "const": false, 
                             "declarator": {
-                                "name": "setM_test", 
+                                "name": "setTest", 
                                 "pointer": []
                             }, 
                             "func_const": false, 
@@ -1003,31 +1005,31 @@
                                 "void"
                             ]
                         }, 
-                        "decl": "void setM_test(int val)", 
-                        "declgen": "void setM_test(int val +intent(in)+value)", 
+                        "decl": "void setTest(int val)", 
+                        "declgen": "void setTest(int val +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "SH_this->setM_test(\tval);", 
+                            "C_call_code": "SH_this->setTest(\tval);", 
                             "C_call_list": "val", 
                             "C_code": "{C_pre_call}\nSH_this->m_test = val;\nreturn;", 
-                            "C_name": "TUT_class1_set_m_test", 
+                            "C_name": "TUT_class1_set_test", 
                             "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(\tstatic_cast<void *>(\tself));", 
                             "C_prototype": "TUT_class1 * self,\t int val", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
-                            "F_C_call": "c_class1_set_m_test", 
-                            "F_C_name": "c_class1_set_m_test", 
+                            "F_C_call": "c_class1_set_test", 
+                            "F_C_name": "c_class1_set_test", 
                             "F_arg_c_call": "obj%voidptr,\t val", 
                             "F_arguments": "obj,\t val", 
-                            "F_call_code": "call c_class1_set_m_test(obj%voidptr,\t val)", 
-                            "F_name_function": "set_m_test", 
-                            "F_name_generic": "set_m_test", 
-                            "F_name_impl": "class1_set_m_test", 
+                            "F_call_code": "call c_class1_set_test(obj%voidptr,\t val)", 
+                            "F_name_function": "set_test", 
+                            "F_name_generic": "set_test", 
+                            "F_name_impl": "class1_set_test", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
                             "c_ptr": " *", 
                             "c_var": "self", 
-                            "function_name": "setM_test", 
-                            "underscore_name": "set_m_test"
+                            "function_name": "setTest", 
+                            "underscore_name": "set_test"
                         }, 
                         "options": {
                             "wrap_lua": false, 
@@ -1057,6 +1059,7 @@
                         "format": {
                             "PY_getter": "PY_Class1_m_flag_getter", 
                             "PY_setter": "NULL", 
+                            "field_name": "m_flag", 
                             "variable_lower": "m_flag", 
                             "variable_name": "m_flag", 
                             "variable_upper": "M_FLAG"
@@ -1067,7 +1070,8 @@
                     {
                         "ast": {
                             "attrs": {
-                                "_typename": "int"
+                                "_typename": "int", 
+                                "name": "test"
                             }, 
                             "const": false, 
                             "declarator": {
@@ -1079,13 +1083,14 @@
                             ]
                         }, 
                         "format": {
-                            "PY_getter": "PY_Class1_m_test_getter", 
-                            "PY_setter": "PY_Class1_m_test_setter", 
-                            "variable_lower": "m_test", 
-                            "variable_name": "m_test", 
-                            "variable_upper": "M_TEST"
+                            "PY_getter": "PY_Class1_test_getter", 
+                            "PY_setter": "PY_Class1_test_setter", 
+                            "field_name": "m_test", 
+                            "variable_lower": "test", 
+                            "variable_name": "test", 
+                            "variable_upper": "TEST"
                         }, 
-                        "name": "m_test", 
+                        "name": "test", 
                         "options": {}
                     }
                 ]
@@ -9216,6 +9221,7 @@
                     ]
                 }, 
                 "format": {
+                    "field_name": "global_flag", 
                     "variable_lower": "global_flag", 
                     "variable_name": "global_flag", 
                     "variable_upper": "GLOBAL_FLAG"
@@ -9241,6 +9247,7 @@
                     ]
                 }, 
                 "format": {
+                    "field_name": "tutorial_flag", 
                     "variable_lower": "tutorial_flag", 
                     "variable_name": "tutorial_flag", 
                     "variable_upper": "TUTORIAL_FLAG"

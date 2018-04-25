@@ -495,7 +495,7 @@ return 1;""", fmt)
         fmt_var.PY_setter = 'NULL'  # readonly
 
         fmt = util.Scope(fmt_var)
-        fmt.c_var = wformat('{PY_param_self}->{PY_obj}->{variable_name}', fmt_var)
+        fmt.c_var = wformat('{PY_param_self}->{PY_obj}->{field_name}', fmt_var)
         fmt.c_ptr = ''  # XXX needed for PY_ctor
         fmt.py_var = 'value'  # Used with PY_get
 

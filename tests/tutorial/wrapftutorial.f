@@ -86,8 +86,8 @@ module tutorial_mod
         procedure :: return_this => class1_return_this
         procedure :: direction_func => class1_direction_func
         procedure :: get_m_flag => class1_get_m_flag
-        procedure :: get_m_test => class1_get_m_test
-        procedure :: set_m_test => class1_set_m_test
+        procedure :: get_test => class1_get_test
+        procedure :: set_test => class1_set_test
         procedure :: get_instance => class1_get_instance
         procedure :: set_instance => class1_set_instance
         procedure :: associated => class1_associated
@@ -203,22 +203,22 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function c_class1_get_m_flag
 
-        function c_class1_get_m_test(self) &
+        function c_class1_get_test(self) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_get_m_test")
+                bind(C, name="TUT_class1_get_test")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: self
             integer(C_INT) :: SHT_rv
-        end function c_class1_get_m_test
+        end function c_class1_get_test
 
-        subroutine c_class1_set_m_test(self, val) &
-                bind(C, name="TUT_class1_set_m_test")
+        subroutine c_class1_set_test(self, val) &
+                bind(C, name="TUT_class1_set_test")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: self
             integer(C_INT), value, intent(IN) :: val
-        end subroutine c_class1_set_m_test
+        end subroutine c_class1_set_test
 
         ! splicer begin class.Class1.additional_interfaces
         ! splicer end class.Class1.additional_interfaces
@@ -893,28 +893,28 @@ contains
         ! splicer end class.Class1.method.get_m_flag
     end function class1_get_m_flag
 
-    ! int getM_test()
+    ! int getTest()
     ! function_index=8
-    function class1_get_m_test(obj) &
+    function class1_get_test(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         class(class1) :: obj
         integer(C_INT) :: SHT_rv
-        ! splicer begin class.Class1.method.get_m_test
-        SHT_rv = c_class1_get_m_test(obj%voidptr)
-        ! splicer end class.Class1.method.get_m_test
-    end function class1_get_m_test
+        ! splicer begin class.Class1.method.get_test
+        SHT_rv = c_class1_get_test(obj%voidptr)
+        ! splicer end class.Class1.method.get_test
+    end function class1_get_test
 
-    ! void setM_test(int val +intent(in)+value)
+    ! void setTest(int val +intent(in)+value)
     ! function_index=9
-    subroutine class1_set_m_test(obj, val)
+    subroutine class1_set_test(obj, val)
         use iso_c_binding, only : C_INT
         class(class1) :: obj
         integer(C_INT), value, intent(IN) :: val
-        ! splicer begin class.Class1.method.set_m_test
-        call c_class1_set_m_test(obj%voidptr, val)
-        ! splicer end class.Class1.method.set_m_test
-    end subroutine class1_set_m_test
+        ! splicer begin class.Class1.method.set_test
+        call c_class1_set_test(obj%voidptr, val)
+        ! splicer end class.Class1.method.set_test
+    end subroutine class1_set_test
 
     function class1_get_instance(obj) result (voidptr)
         use iso_c_binding, only: C_PTR

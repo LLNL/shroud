@@ -1014,7 +1014,7 @@ Is added to the YAML file as::
     - decl: class Class1
       declarations:
       - decl: int m_flag +readonly;
-      - decl: int m_test;
+      - decl: int m_test +name(test);
 
 The *readonly* attribute will not write the setter function or descriptor.
 Python will report::
@@ -1025,6 +1025,9 @@ Python will report::
       File "<stdin>", line 1, in <module>
     AttributeError: attribute 'm_flag' of 'tutorial.Class1' objects is not writable
 
+The *name* attribute will change the name of generated functions and
+descriptors.  This is helpful when using a naming convention like
+``m_test`` and you do not want ``m_`` to be used in the wrappers.
 
 Memory Management
 -----------------
