@@ -47,31 +47,36 @@ There a several available tools to creating a Python interface to a C or C++ lib
 SWIG
 -----
 
-* `home <http://www.swig.org/>`_
+* http://www.swig.org/
 
 
 PyBindgen
 ---------
 
-* `source <https://github.com/gjcarneiro/pybindgen>`_
-* `docs <http://pybindgen.readthedocs.io/en/latest/>`_
+* https://github.com/gjcarneiro/pybindgen
+* http://pybindgen.readthedocs.io/en/latest/
 
 Cython
 ------
 
-* `home <cython.org>`_
-* `docs <https://cython.readthedocs.io/en/latest/>`_
-
+* http://cython.org
+* https://cython.readthedocs.io/en/latest/
 
 SIP
 ---
 
-* `SIP <https://www.riverbankcomputing.com/software/sip/intro>`_
+* https://www.riverbankcomputing.com/software/sip/intro
 
 Boost Python
 ------------
 
-* `docs <https://www.boost.org/doc/libs/1_66_0/libs/python/doc/html/index.html>`_
+* https://www.boost.org/doc/libs/1_66_0/libs/python/doc/html/index.html
+
+Pybind11
+--------
+
+* https://github.com/pybind/pybind11
+* https://pybind11.readthedocs.io/en/stable/
 
 Links
 -----

@@ -562,7 +562,7 @@ can be controlled by setting **function_suffix** in the YAML file::
     function_suffix: _from_index
 
 Each overloaded function is wrapped as usual but are not added to the Python module.
-Instead, an additional function is create::
+Instead, an additional function is created::
 
     static PyObject *
     PY_Function6(

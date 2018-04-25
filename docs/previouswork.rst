@@ -41,7 +41,7 @@
 Fortran Previous Work
 =====================
 
-Communicating between languages has a long history similar work.
+Communicating between languages has a long history of similar work.
 
 Babel
 -----

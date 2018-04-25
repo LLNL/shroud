@@ -1009,7 +1009,7 @@ will create a descriptor::
        int m_test;
     }
 
-Is added to the YAML file as::
+It is added to the YAML file as::
 
     - decl: class Class1
       declarations:

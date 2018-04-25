@@ -925,7 +925,7 @@ A C++ function which initialized a struct can be written as::
     - decl: struct1 returnStruct(int i, double d);
 
 The C wrapper creates a union type of the C and C++ types which is
-used to instead of a type cast::
+used instead of a type cast::
 
     typedef union {
       tutorial::struct1 cxx;

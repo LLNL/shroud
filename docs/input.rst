@@ -141,7 +141,7 @@ Fields
 A field only applies to the type, enumeration, function, structure or class
 to which it belongs.
 It is not inherited.
-For example, *cxx_header* is a field which is used define the header file
+For example, *cxx_header* is a field which is used to define the header file
 for class *Names*.  Likewise, setting *library* within a class does not change
 the library name.
 

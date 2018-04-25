@@ -52,7 +52,7 @@ or C++ library.  It can also create a C API for a C++ library.
 The user creates a YAML file with the C/C++ declarations to be wrapped
 along with some annotations to provide semantic information and code
 generation options.  **Shroud** produces a wrapper for the library.
-The generated code is high-readable and intended to be similar to code
+The generated code is highly-readable and intended to be similar to code
 that would be hand-written to create the bindings.
 
 *verb*
