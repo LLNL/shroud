@@ -1346,7 +1346,7 @@ name
 hidden
    The argument will not appear in the Fortran API.
    But it will be passed to the C wrapper.
-   This allows the value to be used in the wrapper.
+   This allows the value to be used in the C wrapper.
    For example, setting the shape of a pointer function::
 
       int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)

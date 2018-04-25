@@ -860,12 +860,11 @@ The C++ code to call the function::
 
     #include <tutorial.hpp>
     tutorial::Class1 *cptr = new tutorial::Class1();
-
     cptr->Method1();
 
 And the Python version::
-    import tutorial
 
+    import tutorial
     cptr = tutoral.Class1()
     cptr.method1()
 

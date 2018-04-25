@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Wrap member variables in classes.
   Fortran and C create getter and setter functions.
   In Python, create a descriptor for each member.
+- Allow C++ functions which return pointer to
+  create a wrapper with the POINTER attribute.
+  See option **return_scalar_pointer**.
 
 ## v0.9.0 - 2018-04-04
 ### Added
