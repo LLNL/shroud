@@ -605,6 +605,7 @@ class Wrapc(util.WrapperMixin):
                         fmt_arg.cxx_addr = ''
                         fmt_arg.cxx_member = '->'
             else:
+                # Argument is the result of the function.
                 arg_call = arg
                 if arg_is_union_scalar:
                     # Argument is passed from Fortran to C by value.
@@ -649,6 +650,12 @@ class Wrapc(util.WrapperMixin):
                 if buf_arg == 'size':
                     fmt_arg.c_var_size = c_attrs['size']
                     append_format(proto_list, 'long {c_var_size}', fmt_arg)
+                elif buf_arg == 'address':
+                    fmt_arg.c_var_address = c_attrs['address']
+                    append_format(proto_list, 'void **{c_var_address}', fmt_arg)
+                elif buf_arg == 'capsule':
+                    fmt_arg.c_var_capsule = c_attrs['capsule']
+                    append_format(proto_list, 'capulse_struct *{c_var_capsule}', fmt_arg)
                 elif buf_arg == 'len_trim':
                     fmt_arg.c_var_trim = c_attrs['len_trim']
                     append_format(proto_list, 'int {c_var_trim}', fmt_arg)

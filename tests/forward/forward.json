@@ -142,7 +142,7 @@
                             "LUA_name": "dtor", 
                             "LUA_name_impl": "l_class2_dtor", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_var": "self", 
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
@@ -252,7 +252,7 @@
                             "LUA_name_impl": "l_class2_func1", 
                             "PY_name_impl": "PY_class2_func1", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_var": "self", 
                             "function_name": "func1", 
                             "underscore_name": "func1"
@@ -400,6 +400,8 @@
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "C_var_address_template": "A{c_var}", 
+            "C_var_capsule_template": "C{c_var}", 
             "C_var_len_template": "N{c_var}", 
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 

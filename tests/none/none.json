@@ -113,6 +113,8 @@
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "C_var_address_template": "A{c_var}", 
+            "C_var_capsule_template": "C{c_var}", 
             "C_var_len_template": "N{c_var}", 
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 

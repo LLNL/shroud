@@ -64,7 +64,7 @@
                             "F_subprogram": "subroutine", 
                             "PY_name_impl": "PY_names_method1", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -112,7 +112,7 @@
                             "F_this": "obj2", 
                             "PY_name_impl": "PY_names_method2", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_var": "self2", 
                             "function_name": "method2", 
                             "underscore_name": "method2"
@@ -901,6 +901,8 @@
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "C_var_address_template": "A{c_var}", 
+            "C_var_capsule_template": "C{c_var}", 
             "C_var_len_template": "N{c_var}", 
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 

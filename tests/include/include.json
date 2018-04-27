@@ -88,7 +88,7 @@
                             "F_name_impl": "class1_method1", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -188,7 +188,7 @@
                             "F_name_impl": "class2_method1", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -271,7 +271,7 @@
                             "F_name_impl": "class2_method2", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_var": "self", 
                             "function_name": "method2", 
                             "underscore_name": "method2"
@@ -440,6 +440,8 @@
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "C_var_address_template": "A{c_var}", 
+            "C_var_capsule_template": "C{c_var}", 
             "C_var_len_template": "N{c_var}", 
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 

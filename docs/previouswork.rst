@@ -85,6 +85,10 @@ http://trilinos.org/
 
 Trilonos wraps C++ with C, then the Fortran over the C.  Described in the book Scientific Software Design. http://www.amazon.com/Scientific-Software-Design-The-Object-Oriented/dp/0521888131
 
+  * `On the object-oriented design of reference-counted shadow objects <https://dl.acm.org/citation.cfm?doid=1985782.1985786>`_ Karla Morris, Damian W.I. Rouson, Jim Xia
+  * `This Isn't Your Parents' Fortran: Managing C++ Objects with Modern Fortran <http://ieeexplore.ieee.org/document/6159199>`_ Damian Rouson, Karla Morris, Jim Xia
+
+
 Directory packages/ForTrilinos/src/skeleton has a basic template which must be edited to create a wrapper for a class.
 
 
@@ -151,4 +155,3 @@ Links
   * `Generating C Interfaces <http://fortranwiki.org/fortran/show/Generating+C+Interfaces>`_
   * `Shadow-object interface between Fortran95 and C++ <http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=753048>`_  Mark G. Gray, Randy M. Roberts, and Tom M. Evans
   * `Generate C interface from C++ source code using Clang libtooling <http://samanbarghi.com/blog/2016/12/06/generate-c-interface-from-c-source-code-using-clang-libtooling/>`_
-  * `This Isn't Your Parents' Fortran: Managing C++ Objects with Modern Fortran <http://ieeexplore.ieee.org/document/6159199>`_ Damian Rouson, Karla Morris, Jim Xia

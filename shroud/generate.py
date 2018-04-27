@@ -123,6 +123,7 @@ class VerifyAttrs(object):
                 continue
             if attr not in [
                     'allocatable',
+                    'capsule',
                     'dimension',
                     'hidden',  # omitted in Fortran API, returned from C++
                     'implied', # omitted in Fortran API, value passed to C++
@@ -224,6 +225,9 @@ class VerifyAttrs(object):
 
         # compute argument names for some attributes
         # XXX make sure they don't conflict with other names
+        capsule_name = attrs.get('size', False)
+        if capsule_name is True:
+            attrs['capsule'] = options.C_var_capsule_template.format(c_var=argname)
         len_name = attrs.get('len', False)
         if len_name is True:
             attrs['len'] = options.C_var_len_template.format(c_var=argname)
@@ -251,6 +255,7 @@ class VerifyAttrs(object):
         if arg.is_function_pointer():
             for arg1 in arg.params:
                 self.check_arg_attrs(None, arg1)
+
 
 class GenFunctions(object):
     """
@@ -714,6 +719,12 @@ class GenFunctions(object):
                     continue
                 if buf_arg == 'size':
                     attrs['size'] = options.C_var_size_template.format(
+                        c_var=arg.name)
+                elif buf_arg == 'capsule':
+                    attrs['capsule'] = options.C_var_capsule_template.format(
+                        c_var=arg.name)
+                elif buf_arg == 'address':
+                    attrs['address'] = options.C_var_address_template.format(
                         c_var=arg.name)
                 elif buf_arg == 'len_trim':
                     attrs['len_trim'] = options.C_var_trim_template.format(
