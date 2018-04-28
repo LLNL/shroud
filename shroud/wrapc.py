@@ -675,7 +675,7 @@ class Wrapc(util.WrapperMixin):
                     append_format(proto_list, 'long {c_var_size}', fmt_arg)
                 elif buf_arg == 'capsule':
                     fmt_arg.c_var_capsule = c_attrs['capsule']
-                    append_format(proto_list, 'capulse_struct *{c_var_capsule}', fmt_arg)
+                    append_format(proto_list, '{C_capsule_data_type} *{c_var_capsule}', fmt_arg)
                 elif buf_arg == 'context':
                     fmt_arg.c_var_context = c_attrs['context']
                     append_format(proto_list, '{c_context_type} *{c_var_context}', fmt_arg)

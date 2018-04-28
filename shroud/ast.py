@@ -458,6 +458,10 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_string_result_as_arg = 'SHF_rv',
             F_string_result_as_arg = '',
 
+            C_capsule_data_type='SHROUD_capsule_data',
+            F_capsule_data_type='SHROUD_capsule_data',
+            F_capsule_type='SHROUD_capsule',
+
             PY_result = 'SHTPy_rv',      # Create PyObject for result
             LUA_result = 'rv',
 

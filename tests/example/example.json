@@ -4718,6 +4718,7 @@
             "CXX_this_call": "", 
             "C_argument": "SH_", 
             "C_bufferify_suffix": "_bufferify", 
+            "C_capsule_data_type": "SHROUD_capsule_data", 
             "C_custom_return_type": "", 
             "C_header_filename": "wrapUserLibrary.h", 
             "C_header_filename_suffix": "h", 
@@ -4733,6 +4734,8 @@
             "F_C_prefix": "c_", 
             "F_C_pure_clause": "", 
             "F_C_result_clause": "", 
+            "F_capsule_data_type": "SHROUD_capsule_data", 
+            "F_capsule_type": "SHROUD_capsule", 
             "F_derived_member": "voidptr", 
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapfuserlibrary.f", 
@@ -9587,7 +9590,7 @@
                         "capsule", 
                         "context"
                     ], 
-                    "c_helper": "vector_context vector_copy_{cxx_T}", 
+                    "c_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
                     "cxx_local_var": "pointer", 
                     "post_call": [
                         "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
@@ -9741,7 +9744,7 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "AAAintent_out_buf": {
-                    "f_helper": "vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"

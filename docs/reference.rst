@@ -527,6 +527,10 @@ C_bufferify_suffix
   with explicit lengths.
   Defaults to *_bufferify*
 
+C_capsule_data_type
+    Name of struct used to share memory information with Fortran.
+    Defaults to *SHROUD_capsule_data*.
+
 C_header_filename
     Name of generated header file for the library.
     Defaulted from expansion of option *C_header_filename_library_template*.
@@ -579,6 +583,15 @@ CXX_this
 F_C_prefix
     Prefix added to name of generated Fortran interface for C routines.
     Defaults to **c_**.
+
+F_capsule_data_type
+    Name of derived type used to share memory information with C or C++.
+    Defaults to *SHROUD_capsule_data*.
+
+F_capsule_type
+    Name of derived type used to release memory allocated by C or C++.
+    Defaults to *SHROUD_capsule*.
+    Contains a *F_capsule_data_type*.
 
 F_derived_member
     The name of the member of the Fortran derived type which

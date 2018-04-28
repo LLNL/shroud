@@ -739,14 +739,17 @@ class Wrapf(util.WrapperMixin):
                 elif buf_arg == 'capsule':
                     arg_c_names.append(buf_arg_name)
                     arg_c_decl.append(
-                        'type(capsule_struct), intent(INOUT) :: %s' % buf_arg_name)
+                        'type(%s), intent(INOUT) :: %s' % (
+                            fmt.F_capsule_data_type, buf_arg_name))
 #                    self.set_f_module(modules, 'iso_c_binding', 'capsule_struct')
+                    imports[fmt.F_capsule_data_type] = True
                 elif buf_arg == 'context':
                     arg_c_names.append(buf_arg_name)
                     arg_c_decl.append(
                         'type(%s), intent(INOUT) :: %s' %
                         (fmt.f_context_type, buf_arg_name))
 #                    self.set_f_module(modules, 'iso_c_binding', fmt.f_context_type)
+                    imports[fmt.f_context_type] = True
                 elif buf_arg == 'len_trim':
                     arg_c_names.append(buf_arg_name)
                     arg_c_decl.append(
@@ -1086,8 +1089,9 @@ class Wrapf(util.WrapperMixin):
                 elif buf_arg == 'capsule':
                     fmt_arg.c_var_capsule = c_attrs['capsule']
                     append_format(arg_f_decl,
-                                  'type(capsule_struct) :: {c_var_capsule}', fmt_arg)
-                    arg_c_call.append(fmt_arg.c_var_capsule)
+                                  'type({F_capsule_type}) :: {c_var_capsule}', fmt_arg)
+                    # Pass F_capsule_data_type field to C++.
+                    arg_c_call.append(fmt_arg.c_var_capsule + '%mem')
                 elif buf_arg == 'context':
                     fmt_arg.c_var_context = c_attrs['context']
                     append_format(arg_f_decl,

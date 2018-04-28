@@ -273,6 +273,7 @@ class GenFunctions(object):
         """Entry routine to generate functions for a library.
         """
         newlibrary = self.newlibrary
+        whelpers.add_capsule_helper(newlibrary.fmtdict)
 
         self.function_index = newlibrary.function_index
 
@@ -655,12 +656,13 @@ class GenFunctions(object):
                     arg.typename = 'char_scalar'
             elif typedef.base == 'vector':
                 has_implied_arg = True
-                # Create helpers for vector template
+                # Create helpers for vector template.
                 cxx_T = arg.attrs['template']
                 template_typedef = typemap.Typedef.lookup(cxx_T)
                 whelpers.add_vector_copy_helper(dict(
                     cxx_T = cxx_T,
                     f_kind = template_typedef.f_kind,
+                    C_capsule_data_type = fmt.C_capsule_data_type,
                 ))
 
         has_string_result = False

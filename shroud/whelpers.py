@@ -164,6 +164,41 @@ typedef union {{
     CHelpers[name] = helper
     return name
 
+def add_capsule_helper(fmt):
+    """Share info with C++ to allow Fortran to release memory.
+    """
+    name = 'capsule_data'
+    if name not in FHelpers:
+        helper = dict(
+            derived_type=wformat("""type, bind(C) :: {F_capsule_data_type}+
+type(C_PTR) :: addr     ! address of C++ memory
+integer(C_INT) :: idtor ! index of destructor
+-end type {F_capsule_data_type}
+
+type {F_capsule_type}+
+private
+type({F_capsule_data_type}) :: mem
+-contains
++!final :: delete_capsule
+-end {F_capsule_type}""", fmt),
+            private=['SHROUD_capsule_data'],
+            modules = dict(
+                iso_c_binding=['C_PTR', 'C_INT' ],
+            )
+        )
+        FHelpers[name] = helper
+
+    if name not in CHelpers:
+        helper = dict(
+            h_source=wformat("""
+struct s_{C_capsule_data_type} {{
+  void *addr;     /* address of C++ memory */
+  int idtor;      /* index of destructor */
+}};
+typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""", fmt),
+        )
+        CHelpers[name] = helper
+
 def add_vector_copy_helper(fmt):
     """Create function to copy contents of a vector.
     """
@@ -171,7 +206,7 @@ def add_vector_copy_helper(fmt):
     if name not in CHelpers:
         helper = dict(
             cxx_source=wformat("""
-void SHROUD_vector_copy_{cxx_T}(capsule_struct *cap, \t{cxx_T} *c_var, \tsize_t c_var_size)
+void SHROUD_vector_copy_{cxx_T}({C_capsule_data_type} *cap, \t{cxx_T} *c_var, \tsize_t c_var_size)
 {{+
 std::vector<{cxx_T}> *cxx_var = \tstatic_cast< std::vector<{cxx_T}> >\t(cap->addr);
 std::vector<{cxx_T}>::size_type+
@@ -181,8 +216,7 @@ n = c_var_size;
 for(; i < n; ++i) {{+
 c_var[i] = cxx_var[i];
 -}}
--}}
-""", fmt))
+-}}""", fmt))
         CHelpers[name] = helper
     if name not in FHelpers:
         helper = dict(

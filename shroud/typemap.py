@@ -771,7 +771,7 @@ def initialize():
                 AAAintent_out_buf=dict(
                     buf_args = [ 'capsule', 'context' ],
                     cxx_local_var='pointer',
-                    c_helper='vector_context vector_copy_{cxx_T}',
+                    c_helper='capsule_data vector_context vector_copy_{cxx_T}',
                     pre_call=[
                         '{c_const}std::vector<{cxx_T}>'
                         '\t *{cxx_var} = new std::vector<{cxx_T}>;',
@@ -839,7 +839,7 @@ def initialize():
 
             f_statements=dict(
                 AAAintent_out_buf=dict(
-                    f_helper='vector_context vector_copy_{cxx_T}',
+                    f_helper='capsule_data vector_context vector_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
                         'call SHROUD_vector_copy_{cxx_T}({c_var_capsule}, '
