@@ -567,9 +567,10 @@ class Wrapc(util.WrapperMixin):
             arg_typedef = typemap.Typedef.lookup(arg.typename)  # XXX - look up vector
             fmt_arg.update(arg_typedef.format)
 
-            arg_typedef, c_statements = typemap.lookup_c_statements(arg)
-            if 'template' in c_attrs:
+            if arg_typedef.base == 'vector':
                 fmt_arg.cxx_T = c_attrs['template']
+
+            arg_typedef, c_statements = typemap.lookup_c_statements(arg)
 
             fmt_arg.c_var = arg_name
 
@@ -728,7 +729,8 @@ class Wrapc(util.WrapperMixin):
                     append_format(post_call, cmd, fmt_arg)
 
             if 'c_helper' in intent_blk:
-                for helper in intent_blk['c_helper'].split():
+                c_helper = wformat(intent_blk['c_helper'], fmt_arg)
+                for helper in c_helper.split():
                     self.c_helper[helper] = True
 
             cxx_header = intent_blk.get(lang_header, None)

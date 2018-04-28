@@ -1228,24 +1228,25 @@ f_statement
         This is used when an assignment is needed to do a type coercion;
         for example, with logical types.
 
-..  XXX - maybe later.  For not in wrapping routines
-..         f_attr_len_trim = None,
-..         f_attr_len = None,
-..         f_attr_size = None,
-
     f_helper
         Blank delimited list of helper function names to add to generated Fortran code.
         These functions are defined in whelper.py.
         There is no current way to add additional functions.
 
         private
-           List of names which should be PRIVATE to the module
+           List of names which should be ``PRIVATE`` to the module
 
         interface
            Code to add to the non-executable part of the module.
 
         source
-           Code to add in the CONTAINS section of the module.
+           Code to add in the ``CONTAINS`` section of the module.
+
+    f_module
+        ``USE`` statements to add to Fortran wrapper.
+        A dictionary of list of ``ONLY`` names::
+
+            f_module=dict(iso_c_binding=['C_SIZE_T']),
 
 result_as_arg
     Override fields when result should be treated as an argument.

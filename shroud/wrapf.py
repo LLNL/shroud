@@ -1039,7 +1039,7 @@ class Wrapf(util.WrapperMixin):
             if implied:
                 f_intent_blk = self.attr_implied(node, f_arg, fmt_arg)
             else:
-#                f_statements = base_typedef.f_statements
+#                f_statements = base_typedef.f_statements  # new vector
                 f_statements = arg_typedef.f_statements
                 f_intent_blk = f_statements.get(f_stmts, {})
 
@@ -1111,6 +1111,9 @@ class Wrapf(util.WrapperMixin):
                                        .format(buf_arg))
 
             # Add code for intent of argument
+            if 'f_module' in f_intent_blk:
+                self.update_f_module(modules, f_intent_blk['f_module'])
+
             cmd_list = f_intent_blk.get('declare', [])
             if cmd_list:
                 need_wrapper = True
@@ -1131,7 +1134,8 @@ class Wrapf(util.WrapperMixin):
 
             # Find any helper routines needed
             if 'f_helper' in f_intent_blk:
-                for helper in f_intent_blk['f_helper'].split():
+                f_helper = wformat(f_intent_blk['f_helper'], fmt_arg)
+                for helper in f_helper.split():
                     self.f_helper[helper] = True
 
             if allocatable:

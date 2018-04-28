@@ -634,7 +634,7 @@
                         "capsule", 
                         "context"
                     ], 
-                    "c_helper": "vector_context", 
+                    "c_helper": "vector_context vector_copy_{cxx_T}", 
                     "cxx_local_var": "pointer", 
                     "post_call": [
                         "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
@@ -788,11 +788,15 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "AAAintent_out_buf": {
-                    "c_local_var": true, 
-                    "f_helper": "vector_context", 
+                    "f_helper": "vector_context vector_copy_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
                     "post_call": [
                         "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}, {f_var}, size({f_var},kind=C_SIZE_T))", 
-                        "call capsule_delete({c_var_capsule})"
+                        "!call SHROUD_capsule_delete({c_var_capsule})"
                     ]
                 }
             }, 

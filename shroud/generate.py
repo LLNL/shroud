@@ -48,6 +48,7 @@ from . import declast
 from . import todict
 from . import typemap
 from . import util
+from . import whelpers
 
 wformat = util.wformat
 
@@ -654,6 +655,13 @@ class GenFunctions(object):
                     arg.typename = 'char_scalar'
             elif typedef.base == 'vector':
                 has_implied_arg = True
+                # Create helpers for vector template
+                cxx_T = arg.attrs['template']
+                template_typedef = typemap.Typedef.lookup(cxx_T)
+                whelpers.add_vector_copy_helper(dict(
+                    cxx_T = cxx_T,
+                    f_kind = template_typedef.f_kind,
+                ))
 
         has_string_result = False
         result_as_arg = ''  # only applies to string functions

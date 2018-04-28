@@ -41,6 +41,9 @@
 Helper functions for C and Fortran wrappers.
 """
 
+from . import util
+
+wformat = util.wformat
 
 def find_all_helpers(mode, helpers, check=None):
     """Find all helper functions recursively.
@@ -160,7 +163,43 @@ typedef union {{
 """.format(name=name, cxx=cxx, c=c))
     CHelpers[name] = helper
     return name
-                
+
+def add_vector_copy_helper(fmt):
+    """Create function to copy contents of a vector.
+    """
+    name = wformat('vector_copy_{cxx_T}', fmt)
+    if name not in CHelpers:
+        helper = dict(
+            cxx_source=wformat("""
+void SHROUD_vector_copy_{cxx_T}(capsule_struct *cap, \t{cxx_T} *c_var, \tsize_t c_var_size)
+{{+
+std::vector<{cxx_T}> *cxx_var = \tstatic_cast< std::vector<{cxx_T}> >\t(cap->addr);
+std::vector<{cxx_T}>::size_type+
+i = 0,
+n = c_var_size;
+-n = std::min(cxx_var->size(), n);
+for(; i < n; ++i) {{+
+c_var[i] = cxx_var[i];
+-}}
+-}}
+""", fmt))
+        CHelpers[name] = helper
+    if name not in FHelpers:
+        helper = dict(
+# XXX when f_kind == C_SIZE_T
+            interface=wformat("""
+interface+
+subroutine SHROUD_vector_copy_{cxx_T}(cap, c_var, c_var_size)+
+use iso_c_binding, only : {f_kind}, C_SIZE_T
+type(capsule_struct) :: cap
+integer({f_kind}) :: c_var(*)
+integer(C_SIZE_T), value :: c_var_size
+-end subroutine SHROUD_vector_copy_{cxx_T}
+-end interface
+""", fmt),
+        )
+        FHelpers[name] = helper
+    return name
 
 CHelpers = dict(
     ShroudStrCopy=dict(
