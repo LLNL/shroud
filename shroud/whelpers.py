@@ -164,6 +164,42 @@ typedef union {{
     CHelpers[name] = helper
     return name
 
+def add_external_helpers(fmt):
+    """Create helper which have generated names.
+    Since the names are external, mangle with C_prefix to avoid
+    confict with other shroud wrapped libraries.
+    """
+
+    # Only used with std::string and thus C++
+    name = 'copy_string'
+    CHelpers[name] = dict(
+        cxx_header='<string>',
+# XXX - mangle name
+        source=wformat("""
+// Called by Fortran to deal with allocatable character
+void {C_prefix}ShroudStringCopyAndFree(void *cptr, char *str) {{+
+std::string * cxxstr = static_cast<std::string *>(cptr);
+
+strncpy(str, cxxstr->data(), cxxstr->size());
+// free the string?
+-}}
+""", fmt)
+    )
+
+    # Deal with allocatable character
+    FHelpers[name] = dict(
+        interface=wformat("""
+interface
+   subroutine SHROUD_string_copy_and_free(cptr, str) &
+     bind(c,name="{C_prefix}ShroudStringCopyAndFree")
+     use, intrinsic :: iso_c_binding, only : C_PTR, C_CHAR
+     type(C_PTR), value, intent(in) :: cptr
+     character(kind=C_CHAR) :: str(*)
+   end subroutine SHROUD_string_copy_and_free
+end interface""", fmt)
+        )
+    ##########
+
 def add_capsule_helper(fmt):
     """Share info with C++ to allow Fortran to release memory.
     """
@@ -280,23 +316,6 @@ int ShroudLenTrim(const char *s, int ls) {
 """
     ),
 
-    # Only used with std::string and thus C++
-    copy_string=dict(
-        cxx_header='<string>',
-        source="""
-// Called by Fortran to deal with allocatable character
-#ifdef __cplusplus
-extern "C"
-#endif
-void ShroudStringCopyAndFree(void *cptr, char *str) {
-    std::string * cxxstr = static_cast<std::string *>(cptr);
-
-    strncpy(str, cxxstr->data(), cxxstr->size());
-    // free the string?
-}
-"""
-    ),
-
     vector_context=dict(
         h_source="""
 struct s_SHROUD_vector_context {
@@ -387,19 +406,6 @@ interface
      integer(c_int) :: result
      type(c_ptr), value, intent(in) :: s
    end function strlen_ptr
-end interface"""
-        ),
-
-    # Deal with allocatable character
-    copy_string=dict(
-        interface="""
-interface
-   subroutine SHROUD_string_copy_and_free(cptr, str) &
-     bind(c,name="ShroudStringCopyAndFree")
-     use, intrinsic :: iso_c_binding, only : C_PTR, C_CHAR
-     type(C_PTR), value, intent(in) :: cptr
-     character(kind=C_CHAR) :: str(*)
-   end subroutine SHROUD_string_copy_and_free
 end interface"""
         ),
 

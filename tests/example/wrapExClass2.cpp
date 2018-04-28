@@ -45,6 +45,12 @@
 #include "ExClass2.hpp"
 #include "sidre/SidreWrapperHelpers.hpp"
 
+// splicer begin class.ExClass2.CXX_definitions
+// splicer end class.ExClass2.CXX_definitions
+
+extern "C" {
+
+
 // Copy s into a, blank fill to la characters
 // Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
@@ -55,12 +61,6 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    std::memcpy(a,s,nm);
    if(la > nm) std::memset(a+nm,' ',la-nm);
 }
-
-// splicer begin class.ExClass2.CXX_definitions
-// splicer end class.ExClass2.CXX_definitions
-
-extern "C" {
-
 // splicer begin class.ExClass2.C_definitions
 // splicer end class.ExClass2.C_definitions
 

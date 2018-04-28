@@ -273,6 +273,7 @@ class GenFunctions(object):
         """Entry routine to generate functions for a library.
         """
         newlibrary = self.newlibrary
+        whelpers.add_external_helpers(newlibrary.fmtdict)
         whelpers.add_capsule_helper(newlibrary.fmtdict)
 
         self.function_index = newlibrary.function_index

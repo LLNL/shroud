@@ -205,10 +205,6 @@ class Wrapc(util.WrapperMixin):
             output.append('')
             self.write_headers_nodes('c_header', self.header_typedef_nodes, output)
 
-        if self.helper_header:
-            write_file = True
-            output.extend(self.helper_header)
-
         if self.language == 'c++':
             output.append('')
             if self._create_splicer('CXX_declarations', output):
@@ -219,6 +215,11 @@ class Wrapc(util.WrapperMixin):
                     'extern "C" {',
                     '#endif'
                     ])
+
+        if self.helper_header:
+            write_file = True
+            output.extend(self.helper_header)
+
         if self.enum_impl:
             write_file = True
             output.extend(self.enum_impl)
@@ -290,16 +291,17 @@ class Wrapc(util.WrapperMixin):
             headers = self.header_impl_include.keys()
             self.write_headers(headers, output)
 
-        if self.helper_source:
-            write_file = True
-            output.extend(self.helper_source)
-
         if self.language == 'c++':
             output.append('')
             if self._create_splicer('CXX_definitions', output):
                 write_file = True
             output.append('\nextern "C" {')
         output.append('')
+
+        if self.helper_source:
+            write_file = True
+            output.extend(self.helper_source)
+
         if self._create_splicer('C_definitions', output):
             write_file = True
         if self.impl:

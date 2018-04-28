@@ -45,6 +45,12 @@
 #include <string>
 #include "tutorial.hpp"
 
+// splicer begin CXX_definitions
+// splicer end CXX_definitions
+
+extern "C" {
+
+
 typedef union {
   tutorial::struct1 cxx;
   TUT_struct1 c;
@@ -76,12 +82,6 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    std::memcpy(a,s,nm);
    if(la > nm) std::memset(a+nm,' ',la-nm);
 }
-
-// splicer begin CXX_definitions
-// splicer end CXX_definitions
-
-extern "C" {
-
 // splicer begin C_definitions
 // splicer end C_definitions
 

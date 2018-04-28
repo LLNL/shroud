@@ -462,7 +462,7 @@ module strings_mod
 
     interface
        subroutine SHROUD_string_copy_and_free(cptr, str) &
-         bind(c,name="ShroudStringCopyAndFree")
+         bind(c,name="STR_ShroudStringCopyAndFree")
          use, intrinsic :: iso_c_binding, only : C_PTR, C_CHAR
          type(C_PTR), value, intent(in) :: cptr
          character(kind=C_CHAR) :: str(*)

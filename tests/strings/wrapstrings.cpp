@@ -46,6 +46,12 @@
 #include <string>
 #include "strings.hpp"
 
+// splicer begin CXX_definitions
+// splicer end CXX_definitions
+
+extern "C" {
+
+
 // Copy s into a, blank fill to la characters
 // Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
@@ -58,21 +64,12 @@ static void ShroudStrCopy(char *a, int la, const char *s)
 }
 
 // Called by Fortran to deal with allocatable character
-#ifdef __cplusplus
-extern "C"
-#endif
-void ShroudStringCopyAndFree(void *cptr, char *str) {
+void STR_ShroudStringCopyAndFree(void *cptr, char *str) {
     std::string * cxxstr = static_cast<std::string *>(cptr);
 
     strncpy(str, cxxstr->data(), cxxstr->size());
     // free the string?
 }
-
-
-// splicer begin CXX_definitions
-// splicer end CXX_definitions
-
-extern "C" {
 
 // splicer begin C_definitions
 // splicer end C_definitions
