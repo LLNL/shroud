@@ -663,6 +663,7 @@ class Wrapf(util.WrapperMixin):
 
         # find subprogram type
         # compute first to get order of arguments correct.
+#YYYY
         if subprogram == 'subroutine':
             fmt.F_C_subprogram = 'subroutine'
         else:
@@ -684,6 +685,8 @@ class Wrapf(util.WrapperMixin):
         for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
+            arg_typedef = typemap.Typedef.lookup(arg.typename)
+            fmt.update(arg_typedef.format)
             arg_typedef, c_statements = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
             attrs = arg.attrs
@@ -738,6 +741,15 @@ class Wrapf(util.WrapperMixin):
                     arg_c_decl.append(
                         'integer(C_LONG), value, intent(IN) :: %s' % buf_arg_name)
                     self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
+                elif buf_arg == 'capsule':
+                    arg_c_decl.append(
+                        'type(capsule_struct), intent(INOUT) :: %s' % buf_arg_name)
+#                    self.set_f_module(modules, 'iso_c_binding', 'capsule_struct')
+                elif buf_arg == 'context':
+                    arg_c_decl.append(
+                        'type(%s), intent(INOUT) :: %s' %
+                        (fmt.f_context_type, buf_arg_name))
+#                    self.set_f_module(modules, 'iso_c_binding', fmt.f_context_type)
                 elif buf_arg == 'len_trim':
                     arg_c_names.append(buf_arg_name)
                     arg_c_decl.append(
@@ -1024,12 +1036,14 @@ class Wrapf(util.WrapperMixin):
                 # If a template, use its type
                 cxx_T = c_attrs['template']
                 arg_typedef = typemap.Typedef.lookup(cxx_T)
+                fmt_arg.cxx_T = cxx_T
 
             self.update_f_module(modules, arg_typedef.f_module)
 
             if implied:
                 f_intent_blk = self.attr_implied(node, f_arg, fmt_arg)
             else:
+#                f_statements = base_typedef.f_statements
                 f_statements = arg_typedef.f_statements
                 f_intent_blk = f_statements.get(f_stmts, {})
 
@@ -1037,6 +1051,7 @@ class Wrapf(util.WrapperMixin):
             # May have different types, like generic
             # or different attributes, like adding +len to string args
             arg_typedef = typemap.Typedef.lookup(c_arg.typename)
+            fmt_arg.update(arg_typedef.format)
             arg_typedef, c_statements = typemap.lookup_c_statements(c_arg)
             c_intent_blk = c_statements.get(c_stmts, {})
 
@@ -1071,6 +1086,17 @@ class Wrapf(util.WrapperMixin):
                 if buf_arg == 'size':
                     append_format(arg_c_call, 'size({f_var}, kind=C_LONG)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
+                elif buf_arg == 'capsule':
+                    fmt_arg.c_var_capsule = c_attrs['capsule']
+                    append_format(arg_f_decl,
+                                  'type(capsule_struct) :: {c_var_capsule}', fmt_arg)
+                    arg_c_call.append(fmt_arg.c_var_capsule)
+                elif buf_arg == 'context':
+                    fmt_arg.c_var_context = c_attrs['context']
+                    append_format(arg_f_decl,
+                                  'type({f_context_type}) :: {c_var_context}', fmt_arg)
+                    arg_c_call.append(fmt_arg.c_var_context)
+#                    self.set_f_module(modules, 'iso_c_binding', fmt.f_context_type)
                 elif buf_arg == 'len_trim':
                     append_format(arg_c_call, 'len_trim({f_var}, kind=C_INT)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
@@ -1264,6 +1290,36 @@ class Wrapf(util.WrapperMixin):
         else:
             fmt_func.F_C_name = fmt_func.F_name_impl
 
+    def gather_helper_code(self):
+        """Gather up all helpers requested and insert code into output.
+        """
+        # Insert any helper functions needed
+        # (They are duplicated in each module)
+        self.helper_derived_type = []
+        self.helper_source = []
+        private_names = []
+        self.private_lines = []
+        self.interface_lines = []
+
+        if self.f_helper:
+            helperdict = whelpers.find_all_helpers('f', self.f_helper)
+            helpers = sorted(self.f_helper)
+            for helper in helpers:
+                helper_info = helperdict[helper]
+                private_names.extend(helper_info.get('private', []))
+                lines = helper_info.get('derived_type', None)
+                if lines:
+                    self.helper_derived_type.append(lines)
+                lines = helper_info.get('interface', None)
+                if lines:
+                    self.interface_lines.append(lines)
+                lines = helper_info.get('source', None)
+                if lines:
+                    self.helper_source.append(lines)
+            if private_names:
+                self.private_lines.append('')
+                self.private_lines.append('private ' + ', '.join(private_names))
+
     def write_module(self, library, cls):
         """ Write Fortran wrapper module.
         """
@@ -1316,32 +1372,15 @@ class Wrapf(util.WrapperMixin):
 
         self.dump_abstract_interfaces()
         self.dump_generic_interfaces()
+        self.gather_helper_code()
 
+        output.extend(self.helper_derived_type)
         output.extend(self.abstract_interface)
         output.extend(self.c_interface)
         output.extend(self.generic_interface)
 
-        # Insert any helper functions needed
-        # (They are duplicated in each module)
-        helper_source = []
-        if self.f_helper:
-            helperdict = whelpers.find_all_helpers('f', self.f_helper)
-            helpers = sorted(self.f_helper)
-            private_names = []
-            interface_lines = []
-            for helper in helpers:
-                helper_info = helperdict[helper]
-                private_names.extend(helper_info.get('private', []))
-                lines = helper_info.get('interface', None)
-                if lines:
-                    interface_lines.append(lines)
-                lines = helper_info.get('source', None)
-                if lines:
-                    helper_source.append(lines)
-            if private_names:
-                output.append('')
-                output.append('private ' + ', '.join(private_names))
-            output.extend(interface_lines)
+        output.extend(self.private_lines)
+        output.extend(self.interface_lines)
 
         output.append(-1)
         output.append('')
@@ -1352,7 +1391,7 @@ class Wrapf(util.WrapperMixin):
 
         output.extend(self.operator_impl)
 
-        output.extend(helper_source)
+        output.extend(self.helper_source)
 
         output.append(-1)
         output.append('')

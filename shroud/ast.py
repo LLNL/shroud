@@ -344,8 +344,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_name_template=(
                 '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
 
-            C_var_address_template = 'A{c_var}',     # address argument
             C_var_capsule_template = 'C{c_var}',     # capsule argument
+            C_var_context_template = 'D{c_var}',     # context argument
             C_var_len_template = 'N{c_var}',         # argument for result of len(arg)
             C_var_trim_template = 'L{c_var}',        # argument for result of len_trim(arg)
             C_var_size_template = 'S{c_var}',        # argument for result of size(arg)

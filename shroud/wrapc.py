@@ -127,6 +127,7 @@ class Wrapc(util.WrapperMixin):
             self.wrap_functions(library)
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
+        self.gather_helper_code()
         self.write_header(library, cls, c_header)
         self.write_impl(library, cls, c_header, c_impl)
 
@@ -143,6 +144,35 @@ class Wrapc(util.WrapperMixin):
         for node in library.functions:
             self.wrap_function(None, node)
         self._pop_splicer('function')
+
+    def gather_helper_code(self):
+        """Gather up all helpers requested and insert code into output.
+        """
+        # Insert any helper functions needed
+        self.helper_source = helper_source = []
+        self.helper_header = helper_header = []
+        if self.c_helper:
+            helperdict = whelpers.find_all_helpers('c', self.c_helper)
+            helpers = sorted(self.c_helper)
+            if self.language == 'c':
+                lang_header = 'c_header'
+                lang_source = 'c_source'
+            else:
+                lang_header = 'cxx_header'
+                lang_source = 'cxx_source'
+            for helper in helpers:
+                helper_info = helperdict[helper]
+                if lang_header in helper_info:
+                    for include in helper_info[lang_header].split():
+                        self.header_impl_include[include] = True
+                if lang_source in helper_info:
+                    helper_source.append(helper_info[lang_source])
+                elif 'source' in helper_info:
+                    helper_source.append(helper_info['source'])
+
+                # header code using with C API  (like structs and typedefs)
+                if 'h_source' in helper_info:
+                    helper_header.append(helper_info['h_source'])
 
     def write_header(self, library, cls, fname):
         """ Write header file for a library node or a class node.
@@ -172,6 +202,10 @@ class Wrapc(util.WrapperMixin):
             # output.append('// header_typedef_include')
             output.append('')
             self.write_headers_nodes('c_header', self.header_typedef_nodes, output)
+
+        if self.helper_header:
+            write_file = True
+            output.extend(self.helper_header)
 
         if self.language == 'c++':
             output.append('')
@@ -239,27 +273,6 @@ class Wrapc(util.WrapperMixin):
         if cls and cls.cpp_if:
             output.append('#' + node.cpp_if)
 
-        # Insert any helper functions needed
-        helper_source = []
-        if self.c_helper:
-            helperdict = whelpers.find_all_helpers('c', self.c_helper)
-            helpers = sorted(self.c_helper)
-            if self.language == 'c':
-                lang_header = 'c_header'
-                lang_source = 'c_source'
-            else:
-                lang_header = 'cxx_header'
-                lang_source = 'cxx_source'
-            for helper in helpers:
-                helper_info = helperdict[helper]
-                if lang_header in helper_info:
-                    for include in helper_info[lang_header].split():
-                        self.header_impl_include[include] = True
-                if lang_source in helper_info:
-                    helper_source.append(helper_info[lang_source])
-                elif 'source' in helper_info:
-                    helper_source.append(helper_info['source'])
-
         output.append('#include "%s"' % hname)
 
         # Use headers from class if they exist or else library
@@ -275,9 +288,9 @@ class Wrapc(util.WrapperMixin):
             headers = self.header_impl_include.keys()
             self.write_headers(headers, output)
 
-        if helper_source:
+        if self.helper_source:
             write_file = True
-            output.extend(helper_source)
+            output.extend(self.helper_source)
 
         if self.language == 'c++':
             output.append('')
@@ -548,6 +561,10 @@ class Wrapc(util.WrapperMixin):
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault('fmtc', util.Scope(fmt_func))
             c_attrs = arg.attrs
+
+            arg_typedef = typemap.Typedef.lookup(arg.typename)  # XXX - look up vector
+            fmt_arg.update(arg_typedef.format)
+
             arg_typedef, c_statements = typemap.lookup_c_statements(arg)
             if 'template' in c_attrs:
                 fmt_arg.cxx_T = c_attrs['template']
@@ -572,6 +589,7 @@ class Wrapc(util.WrapperMixin):
             fmt_arg.cxx_type = arg_typedef.cxx_type
             cxx_local_var = ''
 
+            # vector<int> -> int *
             proto_list.append(arg.gen_arg_as_c(continuation=True))
 
             if c_attrs.get('_is_result', False):
@@ -650,12 +668,12 @@ class Wrapc(util.WrapperMixin):
                 if buf_arg == 'size':
                     fmt_arg.c_var_size = c_attrs['size']
                     append_format(proto_list, 'long {c_var_size}', fmt_arg)
-                elif buf_arg == 'address':
-                    fmt_arg.c_var_address = c_attrs['address']
-                    append_format(proto_list, 'void **{c_var_address}', fmt_arg)
                 elif buf_arg == 'capsule':
                     fmt_arg.c_var_capsule = c_attrs['capsule']
                     append_format(proto_list, 'capulse_struct *{c_var_capsule}', fmt_arg)
+                elif buf_arg == 'context':
+                    fmt_arg.c_var_context = c_attrs['context']
+                    append_format(proto_list, '{c_context_type} *{c_var_context}', fmt_arg)
                 elif buf_arg == 'len_trim':
                     fmt_arg.c_var_trim = c_attrs['len_trim']
                     append_format(proto_list, 'int {c_var_trim}', fmt_arg)

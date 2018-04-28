@@ -7232,16 +7232,21 @@
                     "arg": {
                         "fmtc": {
                             "c_const": "const ", 
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_deref": "", 
                             "c_var": "arg", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "int", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "f_context_type": "SHROUD_vector_context"
                         }, 
                         "fmtf": {
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_var": "arg", 
+                            "cxx_T": "int", 
+                            "f_context_type": "SHROUD_vector_context", 
                             "f_var": "arg"
                         }
                     }
@@ -7386,16 +7391,21 @@
                     "arg": {
                         "fmtc": {
                             "c_const": "", 
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_deref": "", 
                             "c_var": "arg", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "int", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "f_context_type": "SHROUD_vector_context"
                         }, 
                         "fmtf": {
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_var": "arg", 
+                            "cxx_T": "int", 
+                            "f_context_type": "SHROUD_vector_context", 
                             "f_var": "arg"
                         }
                     }
@@ -7532,16 +7542,21 @@
                     "arg": {
                         "fmtc": {
                             "c_const": "", 
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_deref": "", 
                             "c_var": "arg", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "int", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "f_context_type": "SHROUD_vector_context"
                         }, 
                         "fmtf": {
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_var": "arg", 
+                            "cxx_T": "int", 
+                            "f_context_type": "SHROUD_vector_context", 
                             "f_var": "arg"
                         }
                     }
@@ -7683,6 +7698,7 @@
                     "arg": {
                         "fmtc": {
                             "c_const": "const ", 
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_deref": "", 
                             "c_var": "arg", 
                             "c_var_len": "Narg", 
@@ -7690,10 +7706,14 @@
                             "cxx_T": "std::string", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "f_context_type": "SHROUD_vector_context"
                         }, 
                         "fmtf": {
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_var": "arg", 
+                            "cxx_T": "std::string", 
+                            "f_context_type": "SHROUD_vector_context", 
                             "f_var": "arg"
                         }
                     }
@@ -7851,6 +7871,7 @@
                     "arg": {
                         "fmtc": {
                             "c_const": "", 
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_deref": "", 
                             "c_var": "arg", 
                             "c_var_len": "Narg", 
@@ -7858,10 +7879,14 @@
                             "cxx_T": "std::string", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "f_context_type": "SHROUD_vector_context"
                         }, 
                         "fmtf": {
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_var": "arg", 
+                            "cxx_T": "std::string", 
+                            "f_context_type": "SHROUD_vector_context", 
                             "f_var": "arg"
                         }
                     }
@@ -8007,6 +8032,7 @@
                     "arg": {
                         "fmtc": {
                             "c_const": "", 
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_deref": "", 
                             "c_var": "arg", 
                             "c_var_len": "Narg", 
@@ -8014,10 +8040,14 @@
                             "cxx_T": "std::string", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "f_context_type": "SHROUD_vector_context"
                         }, 
                         "fmtf": {
+                            "c_context_type": "SHROUD_vector_context", 
                             "c_var": "arg", 
+                            "cxx_T": "std::string", 
+                            "f_context_type": "SHROUD_vector_context", 
                             "f_var": "arg"
                         }
                     }
@@ -9144,8 +9174,8 @@
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
-            "C_var_address_template": "A{c_var}", 
             "C_var_capsule_template": "C{c_var}", 
+            "C_var_context_template": "D{c_var}", 
             "C_var_len_template": "N{c_var}", 
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 
@@ -9768,6 +9798,23 @@
         "std::vector": {
             "base": "vector", 
             "c_statements": {
+                "AAAintent_out_buf": {
+                    "buf_args": [
+                        "capsule", 
+                        "context"
+                    ], 
+                    "c_helper": "vector_context", 
+                    "cxx_local_var": "pointer", 
+                    "post_call": [
+                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->size = {cxx_var}->size();"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;", 
+                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
+                        "{c_var_capsule}->index = 0;"
+                    ]
+                }, 
                 "intent_in_buf": {
                     "buf_args": [
                         "size"
@@ -9901,7 +9948,21 @@
                 }
             }, 
             "cxx_header": "<vector>", 
-            "cxx_type": "std::vector<{cxx_T}>"
+            "cxx_type": "std::vector<{cxx_T}>", 
+            "f_statements": {
+                "AAAintent_out": {
+                    "c_local_var": true, 
+                    "f_helper": "vector_context", 
+                    "post_call": [
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}, {f_var}, size({f_var},kind=C_SIZE_T))", 
+                        "call capsule_delete({c_var_capsule})"
+                    ]
+                }
+            }, 
+            "format": {
+                "c_context_type": "SHROUD_vector_context", 
+                "f_context_type": "SHROUD_vector_context"
+            }
         }, 
         "stringout": {
             "base": "string", 

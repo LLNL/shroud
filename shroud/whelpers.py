@@ -130,6 +130,7 @@ extern "C" {
 #               when wrapping a C++ library.
 # c_source    = language=c source.
 # cxx_source  = language=c++ source.
+# h_source    = code for include file. Must be compatible with language=c.
 # source      = Code inserted before any wrappers.
 #               The functions should be file static.
 #               Used if c_source or cxx_source is not defined.
@@ -222,7 +223,18 @@ void ShroudStringCopyAndFree(void *cptr, char *str) {
 }
 """
     ),
-    )
+
+    vector_context=dict(
+        h_source="""
+struct s_SHROUD_vector_context {
+  void *addr;     /* address of data in std::vector */
+  size_t size;    /* size of data in std::vector */
+};
+typedef struct s_SHROUD_vector_context SHROUD_vector_context;
+"""
+    ),
+
+    ) # end CHelpers
 
 #
 # Fortran helper functions which may be added to a module.
@@ -317,7 +329,23 @@ interface
    end subroutine SHROUD_string_copy_and_free
 end interface"""
         ),
-    )
+
+    # Create a derived type used to communicate with C wrapper.
+    # Should never be exposed to user.
+    vector_context=dict(
+        derived_type="""
+type, bind(C) :: SHROUD_vector_context
+  type(C_PTR) :: addr     ! address of data in std::vector
+  integer(C_SIZE_T) :: size  ! size of data in std::vector
+end type SHROUD_vector_context
+""",
+        private=['SHROUD_vector_context'],
+        modules = dict(
+            iso_c_binding=['C_PTR', 'C_SIZE_T' ],
+        )
+    ),
+
+    ) # end FHelpers
 
 
 # From fstr_mod.f

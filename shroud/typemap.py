@@ -55,6 +55,7 @@ class Typedef(object):
     _order = (
         ('base', 'unknown'),      # Base type: 'string'
         ('forward', None),        # Forward declaration
+        ('format', {}),           # Applied to Scope for variable.
         ('typedef', None),        # Initialize from existing type
 
         ('cpp_if', None),         # C preprocessor test for c_header
@@ -761,6 +762,11 @@ def initialize():
             cxx_header='<vector>',
 #            cxx_to_c='{cxx_var}.data()',  # C++11
 
+            format=dict(
+                c_context_type='SHROUD_vector_context',
+                f_context_type='SHROUD_vector_context',
+            ),
+
             c_statements=dict(
                 intent_in_buf=dict(
                     buf_args = [ 'size' ],
@@ -770,6 +776,26 @@ def initialize():
                          '{cxx_var}({c_var}, {c_var} + {c_var_size});')
                     ],
                 ),
+
+                # cxx_var is always a pointer to a vector
+                AAAintent_out_buf=dict(
+                    buf_args = [ 'capsule', 'context' ],
+                    cxx_local_var='pointer',
+                    c_helper='vector_context',
+                    pre_call=[
+                        '{c_const}std::vector<{cxx_T}>'
+                        '\t *{cxx_var} = new std::vector<{cxx_T}>;',
+                        # Return address of vector.
+                        '{c_var_capsule}->addr = static_cast<void *>({cxx_var});',
+                        '{c_var_capsule}->index = 0;',
+                    ],
+                    post_call=[
+                        # Return address and size of vector data.
+                        '{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
+                        '{c_var_context}->size = {cxx_var}->size();',
+                    ],
+                ),
+
                 intent_out_buf=dict(
                     buf_args = [ 'size' ],
                     cxx_local_var='scalar',
@@ -819,6 +845,18 @@ def initialize():
 #                        '}}',
 #                    ],
 #                ),
+            ),
+
+            f_statements=dict(
+                AAAintent_out=dict(  # XXX intent_out_buf?
+                    c_local_var=True,
+                    f_helper='vector_context',
+                    post_call=[
+                        'call SHROUD_vector_copy_{cxx_T}({c_var_capsule}, '
+                          '{f_var}, size({f_var},kind=C_SIZE_T))',
+                        'call capsule_delete({c_var_capsule})',
+                    ],
+                ),
             ),
 
 #

@@ -723,8 +723,8 @@ class GenFunctions(object):
                 elif buf_arg == 'capsule':
                     attrs['capsule'] = options.C_var_capsule_template.format(
                         c_var=arg.name)
-                elif buf_arg == 'address':
-                    attrs['address'] = options.C_var_address_template.format(
+                elif buf_arg == 'context':
+                    attrs['context'] = options.C_var_context_template.format(
                         c_var=arg.name)
                 elif buf_arg == 'len_trim':
                     attrs['len_trim'] = options.C_var_trim_template.format(
