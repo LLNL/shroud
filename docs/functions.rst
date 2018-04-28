@@ -225,7 +225,7 @@ be controlled directly by the input file::
       implicit none
 
       type {F_derived_name}
-        type(C_PTR) {F_derived_member}
+        type(C_PTR), private :: {F_derived_member} = C_NULL_PTR
       contains
         procedure :: {F_name_function} => {F_name_impl}
         generic :: {F_name_generic} => {F_name_function}, ...

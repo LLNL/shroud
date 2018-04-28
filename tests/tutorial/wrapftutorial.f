@@ -47,7 +47,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module tutorial_mod
-    use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR
+    use iso_c_binding, only : C_DOUBLE, C_INT, C_NULL_PTR, C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -76,7 +76,7 @@ module tutorial_mod
     ! splicer end class.Class1.module_top
 
     type class1
-        type(C_PTR), private :: voidptr
+        type(C_PTR), private :: voidptr = C_NULL_PTR
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -99,7 +99,7 @@ module tutorial_mod
     ! splicer end class.Singleton.module_top
 
     type singleton
-        type(C_PTR), private :: voidptr
+        type(C_PTR), private :: voidptr = C_NULL_PTR
         ! splicer begin class.Singleton.component_part
         ! splicer end class.Singleton.component_part
     contains

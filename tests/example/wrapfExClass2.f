@@ -46,7 +46,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module exclass2_mod
-    use iso_c_binding, only : C_PTR
+    use iso_c_binding, only : C_NULL_PTR, C_PTR
     ! splicer begin class.ExClass2.module_use
     ! splicer end class.ExClass2.module_use
     implicit none
@@ -57,7 +57,7 @@ module exclass2_mod
     ! splicer end class.ExClass2.module_top
 
     type exclass2
-        type(C_PTR), private :: voidptr
+        type(C_PTR), private :: voidptr = C_NULL_PTR
         ! splicer begin class.ExClass2.component_part
         ! splicer end class.ExClass2.component_part
     contains

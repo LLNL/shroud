@@ -45,13 +45,13 @@
 !! \brief Shroud generated wrapper for Class2 class
 !<
 module class2_mod
-    use iso_c_binding, only : C_PTR
+    use iso_c_binding, only : C_NULL_PTR, C_PTR
     implicit none
 
 
 
     type class2
-        type(C_PTR), private :: voidptr
+        type(C_PTR), private :: voidptr = C_NULL_PTR
     contains
         procedure :: method1 => class2_method1
         procedure :: method2 => class2_method2

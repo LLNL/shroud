@@ -47,7 +47,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module forward_mod
-    use iso_c_binding, only : C_PTR
+    use iso_c_binding, only : C_NULL_PTR, C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -59,7 +59,7 @@ module forward_mod
     ! splicer end class.Class2.module_top
 
     type class2
-        type(C_PTR), private :: voidptr
+        type(C_PTR), private :: voidptr = C_NULL_PTR
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains

@@ -43,7 +43,7 @@ Generate Fortran bindings for C++ code.
 module {F_module_name}
 
   type {F_derived_name}
-    type(C_PTR) {F_derived_member}
+    type(C_PTR), private :: {F_derived_member} = C_NULL_PTR
   contains
     procedure :: {F_name_function} => {F_name_impl}
     generic :: {F_name_generic} => {F_name_function}, ...
@@ -258,9 +258,9 @@ class Wrapf(util.WrapperMixin):
                 '',
                 wformat('type {F_derived_name}', fmt_class),
                 1,
-                wformat('type(C_PTR), private :: {F_derived_member}', fmt_class),
+                wformat('type(C_PTR), private :: {F_derived_member} = C_NULL_PTR', fmt_class),
                 ])
-        self.set_f_module(self.module_use, 'iso_c_binding', 'C_PTR')
+        self.set_f_module(self.module_use, 'iso_c_binding', 'C_PTR', 'C_NULL_PTR')
         self._create_splicer('component_part', self.f_type_decl)
         self.f_type_decl.extend([
                 -1, 'contains', 1,

@@ -47,7 +47,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module name_module
-    use iso_c_binding, only : C_PTR
+    use iso_c_binding, only : C_NULL_PTR, C_PTR
     ! splicer begin class.Names.module_use
     ! splicer end class.Names.module_use
     implicit none
@@ -57,7 +57,7 @@ module name_module
     ! splicer end class.Names.module_top
 
     type FNames
-        type(C_PTR), private :: voidptr
+        type(C_PTR), private :: voidptr = C_NULL_PTR
         ! splicer begin class.Names.component_part
         ! splicer end class.Names.component_part
     contains
