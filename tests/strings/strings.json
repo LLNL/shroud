@@ -5195,6 +5195,7 @@
             "c_statements": {
                 "intent_in_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim"
                     ], 
                     "c_header": "<stdlib.h> <string.h>", 
@@ -5211,6 +5212,7 @@
                 }, 
                 "intent_inout_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim", 
                         "len"
                     ], 
@@ -5230,6 +5232,7 @@
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<stdlib.h>", 
@@ -5246,6 +5249,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<string.h>", 
@@ -5290,6 +5294,7 @@
             "c_statements": {
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<string.h>", 
@@ -5438,6 +5443,7 @@
                 }, 
                 "intent_in_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -5457,6 +5463,7 @@
                 }, 
                 "intent_inout_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim", 
                         "len"
                     ], 
@@ -5481,6 +5488,7 @@
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
@@ -5494,6 +5502,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
@@ -5571,6 +5580,7 @@
                 }, 
                 "intent_in_buf": {
                     "buf_args": [
+                        "arg", 
                         "size"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -5580,6 +5590,7 @@
                 }, 
                 "intent_inout_buf": {
                     "buf_args": [
+                        "arg", 
                         "size"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -5600,6 +5611,7 @@
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "size"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -5623,6 +5635,7 @@
                 "std::string": {
                     "intent_in_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -5644,6 +5657,7 @@
                     }, 
                     "intent_inout_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -5677,6 +5691,7 @@
                     }, 
                     "intent_out_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -5723,6 +5738,7 @@
             "c_statements": {
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "lenout"
                     ], 
                     "c_helper": "copy_string", 
@@ -5736,6 +5752,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "lenout"
                     ], 
                     "c_helper": "copy_string", 

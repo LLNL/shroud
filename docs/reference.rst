@@ -1075,8 +1075,25 @@ c_statements
 
 
         buf_args
-           An array of arguments which will be added to the
-           bufferified version of a function.
+           An array of arguments which will be passed to the
+           C wrapper.
+           Useful with bufferified version of a function to pass 
+           additional information.
+           Defaults to *[ 'arg' ]*
+
+           arg
+              Argument from Fortran function
+
+           capsule
+              A struct which contains a pointer to data
+              and destructor index.
+
+           context
+              Additional information which is passed to or
+              returned from a function.
+              For example, used with ``std::vector`` to hold
+              address and size of data contained in the argument
+              in a form which may be used directly by Fortran.
 
            len
               Fortran intrinsic ``LEN``, of type *int*.

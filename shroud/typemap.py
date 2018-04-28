@@ -397,7 +397,7 @@ def initialize():
 
             c_statements=dict(
                 intent_in_buf=dict(
-                    buf_args = [ 'len_trim' ],
+                    buf_args = [ 'arg', 'len_trim' ],
                     cxx_local_var='pointer',
                     c_header='<stdlib.h> <string.h>',
                     cxx_header='<stdlib.h> <cstring>',
@@ -411,7 +411,7 @@ def initialize():
                         ],
                     ),
                 intent_out_buf=dict(
-                    buf_args = [ 'len' ],
+                    buf_args = [ 'arg', 'len' ],
                     cxx_local_var='pointer',
                     c_header='<stdlib.h>',
                     cxx_header='<stdlib.h>',
@@ -425,7 +425,7 @@ def initialize():
                         ],
                     ),
                 intent_inout_buf=dict(
-                    buf_args = [ 'len_trim', 'len' ],
+                    buf_args = [ 'arg', 'len_trim', 'len' ],
                     cxx_local_var='pointer',
                     c_helper='ShroudStrCopy',
                     c_header='<stdlib.h> <string.h>',
@@ -441,7 +441,7 @@ def initialize():
                         ],
                     ),
                 result_buf=dict(
-                    buf_args = [ 'len' ],
+                    buf_args = [ 'arg', 'len' ],
                     c_header='<string.h>',
                     cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
@@ -487,7 +487,7 @@ def initialize():
 
             c_statements=dict(
                 result_buf=dict(
-                    buf_args = [ 'len' ],
+                    buf_args = [ 'arg', 'len' ],
                     c_header='<string.h>',
                     cxx_header='<cstring>',
                     post_call=[
@@ -555,7 +555,7 @@ def initialize():
                     ],
                 ),
                 intent_in_buf=dict(
-                    buf_args = [ 'len_trim' ],
+                    buf_args = [ 'arg', 'len_trim' ],
                     cxx_local_var='scalar',
                     pre_call=[
                         ('{c_const}std::string '
@@ -563,7 +563,7 @@ def initialize():
                     ],
                 ),
                 intent_out_buf=dict(
-                    buf_args = [ 'len' ],
+                    buf_args = [ 'arg', 'len' ],
                     c_helper='ShroudStrCopy',
                     cxx_local_var='scalar',
                     pre_call=[
@@ -574,7 +574,7 @@ def initialize():
                     ],
                 ),
                 intent_inout_buf=dict(
-                    buf_args = [ 'len_trim', 'len' ],
+                    buf_args = [ 'arg', 'len_trim', 'len' ],
                     c_helper='ShroudStrCopy',
                     cxx_local_var='scalar',
                     pre_call=[
@@ -586,7 +586,7 @@ def initialize():
                     ],
                 ),
                 result_buf=dict(
-                    buf_args = [ 'len' ],
+                    buf_args = [ 'arg', 'len' ],
                     cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
                     post_call=[
@@ -692,7 +692,7 @@ def initialize():
 #--                    ],
 #--                ),
 #--                intent_in_buf=dict(
-#--                    buf_args = [ 'len_trim' ],
+#--                    buf_args = [ 'arg', 'len_trim' ],
 #--                    cxx_local_var='scalar',
 #--                    pre_call=[
 #--                        ('{c_const}std::string '
@@ -700,7 +700,7 @@ def initialize():
 #--                    ],
 #--                ),
                 intent_out_buf=dict(
-                    buf_args = [ 'lenout' ],
+                    buf_args = [ 'arg', 'lenout' ],
                     c_helper='copy_string',
                     cxx_local_var='scalar',
                     pre_call=[
@@ -712,7 +712,7 @@ def initialize():
                 ),
                 result_buf=dict(
                     # pass address of string and length back to Fortran
-                    buf_args = [ 'lenout' ],
+                    buf_args = [ 'arg', 'lenout' ],
                     c_helper='copy_string',
                     # Copy address of result into c_var and save length.
                     # When returning a std::string (and not a reference or pointer)
@@ -759,7 +759,7 @@ def initialize():
 
             c_statements=dict(
                 intent_in_buf=dict(
-                    buf_args = [ 'size' ],
+                    buf_args = [ 'arg', 'size' ],
                     cxx_local_var='scalar',
                     pre_call=[
                         ('{c_const}std::vector<{cxx_T}> '
@@ -787,7 +787,7 @@ def initialize():
                 ),
 
                 intent_out_buf=dict(
-                    buf_args = [ 'size' ],
+                    buf_args = [ 'arg', 'size' ],
                     cxx_local_var='scalar',
                     pre_call=[
                         '{c_const}std::vector<{cxx_T}>'
@@ -806,7 +806,7 @@ def initialize():
                     ],
                 ),
                 intent_inout_buf=dict(
-                    buf_args = [ 'size' ],
+                    buf_args = [ 'arg', 'size' ],
                     cxx_local_var='scalar',
                     pre_call=[
                         'std::vector<{cxx_T}> {cxx_var}('
@@ -825,7 +825,7 @@ def initialize():
                     ],
                 ),
 #                result_buf=dict(
-#                    buf_args = [ 'size' ],
+#                    buf_args = [ 'arg', 'size' ],
 #                    c_helper='ShroudStrCopy',
 #                    post_call=[
 #                        'if ({cxx_var}.empty()) {{',
@@ -854,7 +854,7 @@ def initialize():
             c_templates={
                 'std::string': dict(
                     intent_in_buf=dict(
-                        buf_args = [ 'size', 'len' ],
+                        buf_args = [ 'arg', 'size', 'len' ],
                         c_helper='ShroudLenTrim',
                         cxx_local_var='scalar',
                         pre_call=[
@@ -872,7 +872,7 @@ def initialize():
                         ],
                     ),
                     intent_out_buf=dict(
-                        buf_args = [ 'size', 'len' ],
+                        buf_args = [ 'arg', 'size', 'len' ],
                         c_helper='ShroudLenTrim',
                         cxx_local_var='scalar',
                         pre_call=[
@@ -893,7 +893,7 @@ def initialize():
                         ],
                     ),
                     intent_inout_buf=dict(
-                        buf_args = [ 'size', 'len' ],
+                        buf_args = [ 'arg', 'size', 'len' ],
                         cxx_local_var='scalar',
                         pre_call=[
                             'std::vector<{cxx_T}> {cxx_var};',

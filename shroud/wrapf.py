@@ -104,6 +104,8 @@ class Wrapf(util.WrapperMixin):
         self.doxygen_cont = '!!'
         self.doxygen_end = '!<'
 
+    _default_buf_args = ['arg']
+
     def _begin_output_file(self):
         """Start a new class for output"""
         self.use_stmts = []
@@ -697,23 +699,6 @@ class Wrapf(util.WrapperMixin):
             if intent != 'in':
                 args_all_in = False
 
-            # argument names
-            arg_c_names.append(arg.name)
-
-            # argument declarations
-            if attrs.get('_is_result', False) and is_allocatable:
-                arg_c_decl.append(
-                    'type(C_PTR), intent(OUT) :: {}'.format(
-                        arg.name))
-            elif arg.is_function_pointer():
-                absiface = self.add_abstract_interface(node, arg)
-                arg_c_decl.append(
-                    'procedure({}) :: {}'.format(
-                        absiface, arg.name))
-                imports[absiface] = True
-            else:
-                arg_c_decl.append(arg.bind_c())
-
             if attrs.get('_is_result', False):
                 c_stmts = 'result' + generated_suffix
             else:
@@ -722,7 +707,24 @@ class Wrapf(util.WrapperMixin):
             c_intent_blk = c_statements.get(c_stmts, {})
 
             # Add implied buffer arguments to prototype
-            for buf_arg in c_intent_blk.get('buf_args', []):
+            for buf_arg in c_intent_blk.get('buf_args', self._default_buf_args):
+                if buf_arg == 'arg':
+                    arg_c_names.append(arg.name)
+                    # argument declarations
+                    if attrs.get('_is_result', False) and is_allocatable:
+                        arg_c_decl.append(
+                            'type(C_PTR), intent(OUT) :: {}'.format(
+                                arg.name))
+                    elif arg.is_function_pointer():
+                        absiface = self.add_abstract_interface(node, arg)
+                        arg_c_decl.append(
+                            'procedure({}) :: {}'.format(
+                                absiface, arg.name))
+                        imports[absiface] = True
+                    else:
+                        arg_c_decl.append(arg.bind_c())
+                    continue
+
                 if buf_arg not in attrs:
                     raise RuntimeError("{} is missing from {} for {}"
                                        .format(buf_arg,
@@ -1055,25 +1057,27 @@ class Wrapf(util.WrapperMixin):
                 arg_f_decl.append('{} {}'.format(
                     arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
 
-            # Attributes   None=skip, True=use default, else use value
-            if allocatable_result:
-                arg_c_call.append(fmt_arg.f_cptr)
-            elif arg_typedef.f_args:
-                # TODO - Not sure if this is still needed.
-                need_wrapper = True
-                append_format(arg_c_call, arg_typedef.f_args, fmt_arg)
-            elif arg_typedef.f_to_c:
-                need_wrapper = True
-                append_format(arg_c_call, arg_typedef.f_to_c, fmt_arg)
-            elif f_arg and c_arg.typename != f_arg.typename:
-                need_wrapper = True
-                append_format(arg_c_call, arg_typedef.f_cast, fmt_arg)
-                self.update_f_module(modules, arg_typedef.f_module)
-            else:
-                arg_c_call.append(fmt_arg.c_var)
-
             # Add any buffer arguments
-            for buf_arg in c_intent_blk.get('buf_args', []):
+            for buf_arg in c_intent_blk.get('buf_args', self._default_buf_args):
+                if buf_arg == 'arg':
+                    # Attributes   None=skip, True=use default, else use value
+                    if allocatable_result:
+                        arg_c_call.append(fmt_arg.f_cptr)
+                    elif arg_typedef.f_args:
+                        # TODO - Not sure if this is still needed.
+                        need_wrapper = True
+                        append_format(arg_c_call, arg_typedef.f_args, fmt_arg)
+                    elif arg_typedef.f_to_c:
+                        need_wrapper = True
+                        append_format(arg_c_call, arg_typedef.f_to_c, fmt_arg)
+                    elif f_arg and c_arg.typename != f_arg.typename:
+                        need_wrapper = True
+                        append_format(arg_c_call, arg_typedef.f_cast, fmt_arg)
+                        self.update_f_module(modules, arg_typedef.f_module)
+                    else:
+                        arg_c_call.append(fmt_arg.c_var)
+                    continue
+
                 need_wrapper = True
                 buf_arg_name = c_attrs[buf_arg]
                 if buf_arg == 'size':

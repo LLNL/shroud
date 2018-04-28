@@ -73,6 +73,8 @@ class Wrapc(util.WrapperMixin):
         self.doxygen_cont = ' *'
         self.doxygen_end = ' */'
 
+    _default_buf_args = ['arg']
+
     def _begin_output_file(self):
         """Start a new class for output"""
         # forward declarations of C++ class as opaque C struct.
@@ -589,9 +591,6 @@ class Wrapc(util.WrapperMixin):
             fmt_arg.cxx_type = arg_typedef.cxx_type
             cxx_local_var = ''
 
-            # vector<int> -> int *
-            proto_list.append(arg.gen_arg_as_c(continuation=True))
-
             if c_attrs.get('_is_result', False):
                 arg_call = False
 
@@ -663,7 +662,12 @@ class Wrapc(util.WrapperMixin):
             intent_blk = c_statements.get(stmts, {})
 
             # Add implied buffer arguments to prototype
-            for buf_arg in intent_blk.get('buf_args', []):
+            for buf_arg in intent_blk.get('buf_args', self._default_buf_args):
+                if buf_arg == 'arg':
+                    # vector<int> -> int *
+                    proto_list.append(arg.gen_arg_as_c(continuation=True))
+                    continue
+
                 need_wrapper = True
                 if buf_arg == 'size':
                     fmt_arg.c_var_size = c_attrs['size']
