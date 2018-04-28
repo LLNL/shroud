@@ -75,8 +75,6 @@ class Typedef(object):
         ('c_return_code', None),
         ('c_union', None),        # Union of C++ and C type (used with structs and complex)
 
-        ('f_c_args', None),       # List of argument names to F_C routine
-        ('f_c_argdecl', None),    # List of declarations to F_C routine
         ('f_c_module', None),     # Fortran modules needed for interface  (dictionary)
 
         ('f_type', None),         # Name of type in Fortran -- integer(C_INT)

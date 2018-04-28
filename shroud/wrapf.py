@@ -698,11 +698,7 @@ class Wrapf(util.WrapperMixin):
                 args_all_in = False
 
             # argument names
-            if arg_typedef.f_c_args:
-                for argname in arg_typedef.f_c_args:
-                    arg_c_names.append(argname)
-            else:
-                arg_c_names.append(arg.name)
+            arg_c_names.append(arg.name)
 
             # argument declarations
             if attrs.get('_is_result', False) and is_allocatable:
@@ -715,9 +711,6 @@ class Wrapf(util.WrapperMixin):
                     'procedure({}) :: {}'.format(
                         absiface, arg.name))
                 imports[absiface] = True
-            elif arg_typedef.f_c_argdecl:
-                for argdecl in arg_typedef.f_c_argdecl:
-                    append_format(arg_c_decl, argdecl, fmt)
             else:
                 arg_c_decl.append(arg.bind_c())
 

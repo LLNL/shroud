@@ -1113,15 +1113,6 @@ c_templates
                intent_in_buf:
                - code to copy CHARACTER to vector<string>
 
-f_c_args
-    List of argument names to F_C routine.
-    Defaults to *None*.
-
-f_c_argdecl
-    List of declarations to F_C routine.
-    By default, only a single argument is passed for each dummy argument.
-    Defaults to *None*.
-
 f_c_module
     Fortran modules needed for type in the interface.
     A dictionary keyed on the module name with the value being a list of symbols.
