@@ -9289,13 +9289,6 @@
             }
         ]
     }, 
-    "typealias": {
-        "integer(C_INT)": "int", 
-        "integer(C_LONG)": "long", 
-        "integer(C_LONG_LONG)": "long_long", 
-        "real(C_DOUBLE)": "double", 
-        "real(C_FLOAT)": "float"
-    }, 
     "types": {
         "MPI_Comm": {
             "c_header": "mpi.h", 

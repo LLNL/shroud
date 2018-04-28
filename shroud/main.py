@@ -140,7 +140,7 @@ class TypeOut(util.WrapperMixin):
 def dump_jsonfile(logdir, basename, newlibrary):
     """Write a JSON file for debugging.
     """
-    def_types, def_types_alias = typemap.Typedef.get_global_types()
+    def_types = typemap.Typedef.get_global_types()
 
     jsonpath = os.path.join(logdir, basename + '.json')
     fp = open(jsonpath, 'w')
@@ -151,7 +151,6 @@ def dump_jsonfile(logdir, basename, newlibrary):
         "and is useful for debugging.",
         library = todict.to_dict(newlibrary),
         types = todict.to_dict(def_types),
-        typealias = def_types_alias,
 #            yaml = all,
     )
 
@@ -297,7 +296,7 @@ def main_with_args(args):
 
 #    print(all)
 
-    def_types, def_types_alias = typemap.initialize()
+    def_types = typemap.initialize()
 
     # Write out native types as YAML if requested
     if config.yaml_types:

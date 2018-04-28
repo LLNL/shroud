@@ -539,7 +539,6 @@ class GenFunctions(object):
                         # Convert any typedef to native type with f_type
                         argtype = arg.typename
                         typedef = typemap.Typedef.lookup(argtype)
-                        typedef = typemap.Typedef.lookup(typedef.f_type)
                         if not typedef.f_cast:
                             raise RuntimeError(
                                 "unable to cast type {} in fortran_generic"

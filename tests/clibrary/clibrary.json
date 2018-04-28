@@ -1947,13 +1947,6 @@
             "wrap_python": true
         }
     }, 
-    "typealias": {
-        "integer(C_INT)": "int", 
-        "integer(C_LONG)": "long", 
-        "integer(C_LONG_LONG)": "long_long", 
-        "real(C_DOUBLE)": "double", 
-        "real(C_FLOAT)": "float"
-    }, 
     "types": {
         "EnumTypeID": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 

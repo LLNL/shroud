@@ -191,15 +191,13 @@ class Typedef(object):
 
     ### Manage collection of typedefs
     _typedict = {}   # dictionary of registered types
-    _typealias = {}  # dictionary of registered type aliases
     @classmethod
-    def set_global_types(cls, typedict, typealias):
+    def set_global_types(cls, typedict):
         cls._typedict = typedict
-        cls._typealias = typealias
 
     @classmethod
     def get_global_types(cls):
-        return cls._typedict, cls._typealias
+        return cls._typedict
 
     @classmethod
     def register(cls, name, typedef):
@@ -209,14 +207,8 @@ class Typedef(object):
     @classmethod
     def lookup(cls, name):
         """Lookup name in registered types taking aliases into account."""
-        typedef = cls._typedict.get(cls._typealias.get(name,name), None)
+        typedef = cls._typedict.get(name)
         return typedef
-
-    @classmethod
-    def resolve_alias(cls, name):
-        """return typedef for alias.
-        """
-        return cls._typealias.get(name, name)
 
 
 def initialize():
@@ -986,17 +978,9 @@ def initialize():
     def_types['std::vector'] = def_types['vector']
     del def_types['vector']
 
-    # aliases
-    def_types_alias = dict()
-    def_types_alias['integer(C_INT)'] = 'int'
-    def_types_alias['integer(C_LONG)'] = 'long'
-    def_types_alias['integer(C_LONG_LONG)'] = 'long_long'
-    def_types_alias['real(C_FLOAT)'] = 'float'
-    def_types_alias['real(C_DOUBLE)'] = 'double'
+    Typedef.set_global_types(def_types)
 
-    Typedef.set_global_types(def_types, def_types_alias)
-
-    return def_types, def_types_alias
+    return def_types
 
 
 def create_enum_typedef(node):
@@ -1230,7 +1214,6 @@ def lookup_c_statements(arg):
     c_statements = arg_typedef.c_statements
     if 'template' in attrs:
         cxx_T = attrs['template']
-        cxx_T = Typedef.resolve_alias(cxx_T)
         c_statements = arg_typedef.c_templates.get(
             cxx_T, c_statements)
         arg_typedef = Typedef.lookup(cxx_T)

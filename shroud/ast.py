@@ -150,7 +150,7 @@ class NamespaceMixin(object):
 
         key = ast.declarator.name
         copy_type = ast.attrs['_typename']
-        def_types, def_types_alias = typemap.Typedef.get_global_types()
+        def_types = typemap.Typedef.get_global_types()
         orig = def_types.get(copy_type, None)
         if not orig:
             raise RuntimeError(
@@ -1164,7 +1164,7 @@ def add_declarations(parent, node):
             # Update fields for a type. For example, set cpp_if
             key = subnode['type']
             value = subnode['fields']
-            def_types, def_types_alias = typemap.Typedef.get_global_types()
+            def_types = typemap.Typedef.get_global_types()
             typedef = def_types.get(key, None)
             if not typedef:
                 raise RuntimeError(
