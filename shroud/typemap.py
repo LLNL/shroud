@@ -840,7 +840,7 @@ def initialize():
             ),
 
             f_statements=dict(
-                AAAintent_out=dict(  # XXX intent_out_buf?
+                AAAintent_out_buf=dict(
                     c_local_var=True,
                     f_helper='vector_context',
                     post_call=[

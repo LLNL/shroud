@@ -996,7 +996,7 @@ class Wrapf(util.WrapperMixin):
                     need_wrapper = True
             else:
                 c_stmts = 'intent_' + intent + generated_suffix
-                f_stmts = 'intent_' + intent
+                f_stmts = 'intent_' + intent + generated_suffix
 
             if is_f_arg:
                 # An argument to the C and Fortran function
