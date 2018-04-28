@@ -742,10 +742,12 @@ class Wrapf(util.WrapperMixin):
                         'integer(C_LONG), value, intent(IN) :: %s' % buf_arg_name)
                     self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
                 elif buf_arg == 'capsule':
+                    arg_c_names.append(buf_arg_name)
                     arg_c_decl.append(
                         'type(capsule_struct), intent(INOUT) :: %s' % buf_arg_name)
 #                    self.set_f_module(modules, 'iso_c_binding', 'capsule_struct')
                 elif buf_arg == 'context':
+                    arg_c_names.append(buf_arg_name)
                     arg_c_decl.append(
                         'type(%s), intent(INOUT) :: %s' %
                         (fmt.f_context_type, buf_arg_name))
@@ -927,9 +929,8 @@ class Wrapf(util.WrapperMixin):
             need_wrapper = True
 
         arg_c_call = []      # arguments to C function
-
-        arg_f_names = []
-        arg_f_decl = []
+        arg_f_names = []     # arguments in subprogram statement
+        arg_f_decl = []      # Fortran variable declarations
         modules = {}   # indexed as [module][variable]
 
         if subprogram == 'function':
@@ -1050,8 +1051,7 @@ class Wrapf(util.WrapperMixin):
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
-            arg_typedef = typemap.Typedef.lookup(c_arg.typename)
-            fmt_arg.update(arg_typedef.format)
+            fmt_arg.update(base_typedef.format)
             arg_typedef, c_statements = typemap.lookup_c_statements(c_arg)
             c_intent_blk = c_statements.get(c_stmts, {})
 
