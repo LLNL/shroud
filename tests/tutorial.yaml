@@ -315,6 +315,11 @@ declarations:
         The input will be copied in order to create the C++ argument
   
   - decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
+    options:
+      wrap_c: False
+      wrap_fortran: False
+      wrap_python: False
+      wrap_lua: False
     format:
       C_return_type: int
       C_return_code: return SH_arg.size();
@@ -325,6 +330,11 @@ declarations:
         an int with the number of items added to arg.
   
   - decl: void vector_string_append(std::vector< std::string > &arg+intent(inout))
+    options:
+      wrap_c: False
+      wrap_fortran: False
+      wrap_python: False
+      wrap_lua: False
     doxygen:
       brief: append '-like' to names.
   

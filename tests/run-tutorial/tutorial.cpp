@@ -338,11 +338,12 @@ int vector_sum(const std::vector<int> &arg)
 //----------------------------------------------------------------------
 // vector reference as argument.
 // arg+intent(out)
+// Start with empty vector and fill in values
 
 void vector_iota(std::vector<int> &arg)
 {
-  for(unsigned int i=0; i < arg.size(); i++) {
-    arg[i] = i + 1;
+  for(unsigned int i=0; i < 5; i++) {
+    arg.push_back(i + 1);
   }
   return;
 }

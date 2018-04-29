@@ -47,7 +47,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module tutorial_mod
-    use iso_c_binding, only : C_DOUBLE, C_INT, C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_DOUBLE, C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -120,6 +120,23 @@ module tutorial_mod
         module procedure class1_ne
         module procedure singleton_ne
     end interface
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_capsule_data
+
+    type SHROUD_capsule
+        private
+        type(SHROUD_capsule_data) :: mem
+    contains
+        !final :: delete_capsule
+    end type SHROUD_capsule
+
+    type, bind(C) :: SHROUD_vector_context
+      type(C_PTR) :: addr     ! address of data in std::vector
+      integer(C_SIZE_T) :: size  ! size of data in std::vector
+    end type SHROUD_vector_context
+
 
     abstract interface
 
@@ -605,12 +622,13 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function c_vector_sum_bufferify
 
-        subroutine c_vector_iota_bufferify(arg, Sarg) &
+        subroutine c_vector_iota_bufferify(Carg, Darg) &
                 bind(C, name="TUT_vector_iota_bufferify")
-            use iso_c_binding, only : C_INT, C_LONG
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_capsule_data, SHROUD_vector_context
             implicit none
-            integer(C_INT), intent(OUT) :: arg(*)
-            integer(C_LONG), value, intent(IN) :: Sarg
+            type(SHROUD_capsule_data), intent(INOUT) :: Carg
+            type(SHROUD_vector_context), intent(INOUT) :: Darg
         end subroutine c_vector_iota_bufferify
 
         subroutine c_vector_increment_bufferify(arg, Sarg) &
@@ -631,26 +649,6 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: Narg
             integer(C_INT) :: SHT_rv
         end function c_vector_string_count_bufferify
-
-        function c_vector_string_fill_bufferify(arg, Sarg, Narg) &
-                result(SHT_rv) &
-                bind(C, name="TUT_vector_string_fill_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT, C_LONG
-            implicit none
-            character(kind=C_CHAR), intent(OUT) :: arg(*)
-            integer(C_LONG), value, intent(IN) :: Sarg
-            integer(C_INT), value, intent(IN) :: Narg
-            integer(C_INT) :: SHT_rv
-        end function c_vector_string_fill_bufferify
-
-        subroutine c_vector_string_append_bufferify(arg, Sarg, Narg) &
-                bind(C, name="TUT_vector_string_append_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT, C_LONG
-            implicit none
-            character(kind=C_CHAR), intent(INOUT) :: arg(*)
-            integer(C_LONG), value, intent(IN) :: Sarg
-            integer(C_INT), value, intent(IN) :: Narg
-        end subroutine c_vector_string_append_bufferify
 
         function callback1(in, incr) &
                 result(SHT_rv) &
@@ -786,6 +784,18 @@ module tutorial_mod
         module procedure overload1_4
         module procedure overload1_5
     end interface overload1
+
+    interface
+        subroutine SHROUD_vector_copy_int(cap, c_var, c_var_size) &
+            bind(C, name="TUT_SHROUD_vector_copy_int")
+            use iso_c_binding, only : C_INT, C_SIZE_T
+            import SHROUD_capsule_data
+            type(SHROUD_capsule_data) :: cap
+            integer(C_INT) :: c_var(*)
+            integer(C_SIZE_T), value :: c_var_size
+        end subroutine SHROUD_vector_copy_int
+    end interface
+
 
 contains
 
@@ -1202,7 +1212,7 @@ contains
 
     ! void Function9(float arg +intent(in)+value)
     ! fortran_generic
-    ! function_index=77
+    ! function_index=75
     subroutine function9_float(arg)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
         real(C_FLOAT), value, intent(IN) :: arg
@@ -1213,7 +1223,7 @@ contains
 
     ! void Function9(double arg +intent(in)+value)
     ! fortran_generic
-    ! function_index=78
+    ! function_index=76
     subroutine function9_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
@@ -1232,7 +1242,7 @@ contains
 
     ! void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    ! function_index=79
+    ! function_index=77
     subroutine function10_1_float(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT, C_INT
         character(*), intent(IN) :: name
@@ -1245,7 +1255,7 @@ contains
 
     ! void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    ! function_index=80
+    ! function_index=78
     subroutine function10_1_double(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
         character(*), intent(IN) :: name
@@ -1390,11 +1400,15 @@ contains
     ! arg_to_buffer
     ! function_index=42
     subroutine vector_iota(arg)
-        use iso_c_binding, only : C_INT, C_LONG
+        use iso_c_binding, only : C_INT, C_SIZE_T
         integer(C_INT), intent(OUT) :: arg(:)
+        type(SHROUD_capsule) :: Carg
+        type(SHROUD_vector_context) :: Darg
         ! splicer begin function.vector_iota
-        call c_vector_iota_bufferify(arg, size(arg, kind=C_LONG))
+        call c_vector_iota_bufferify(Carg%mem, Darg)
         ! splicer end function.vector_iota
+        call SHROUD_vector_copy_int(Carg%mem, arg, size(arg,kind=C_SIZE_T))
+        !call SHROUD_capsule_delete(Carg)
     end subroutine vector_iota
 
     ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
@@ -1425,42 +1439,6 @@ contains
             size(arg, kind=C_LONG), len(arg, kind=C_INT))
         ! splicer end function.vector_string_count
     end function vector_string_count
-
-    ! void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))
-    ! arg_to_buffer
-    ! function_index=45
-    !>
-    !! \brief Fill in arg with some animal names
-    !!
-    !! The C++ function returns void. But the C and Fortran wrappers return
-    !! an int with the number of items added to arg.
-    !<
-    function vector_string_fill(arg) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_LONG
-        character(*), intent(OUT) :: arg(:)
-        integer(C_INT) :: SHT_rv
-        ! splicer begin function.vector_string_fill
-        SHT_rv = c_vector_string_fill_bufferify(arg, &
-            size(arg, kind=C_LONG), len(arg, kind=C_INT))
-        ! splicer end function.vector_string_fill
-    end function vector_string_fill
-
-    ! void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))
-    ! arg_to_buffer
-    ! function_index=46
-    !>
-    !! \brief append '-like' to names.
-    !!
-    !<
-    subroutine vector_string_append(arg)
-        use iso_c_binding, only : C_INT, C_LONG
-        character(*), intent(INOUT) :: arg(:)
-        ! splicer begin function.vector_string_append
-        call c_vector_string_append_bufferify(arg, &
-            size(arg, kind=C_LONG), len(arg, kind=C_INT))
-        ! splicer end function.vector_string_append
-    end subroutine vector_string_append
 
     ! struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
     ! function_index=49

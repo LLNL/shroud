@@ -207,8 +207,8 @@ def add_capsule_helper(fmt):
     if name not in FHelpers:
         helper = dict(
             derived_type=wformat("""type, bind(C) :: {F_capsule_data_type}+
-type(C_PTR) :: addr     ! address of C++ memory
-integer(C_INT) :: idtor ! index of destructor
+type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+integer(C_INT) :: idtor = 0       ! index of destructor
 -end type {F_capsule_data_type}
 
 type {F_capsule_type}+
@@ -216,10 +216,10 @@ private
 type({F_capsule_data_type}) :: mem
 -contains
 +!final :: delete_capsule
--end {F_capsule_type}""", fmt),
-            private=['SHROUD_capsule_data'],
+-end type {F_capsule_type}""", fmt),
+# cannot be declared with both PRIVATE and BIND(C) attributes
             modules = dict(
-                iso_c_binding=['C_PTR', 'C_INT' ],
+                iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_INT' ],
             )
         )
         FHelpers[name] = helper
@@ -242,15 +242,15 @@ def add_vector_copy_helper(fmt):
     if name not in CHelpers:
         helper = dict(
             cxx_source=wformat("""
-void SHROUD_vector_copy_{cxx_T}({C_capsule_data_type} *cap, \t{cxx_T} *c_var, \tsize_t c_var_size)
+void {C_prefix}SHROUD_vector_copy_{cxx_T}({C_capsule_data_type} *cap, \t{cxx_T} *c_var, \tsize_t c_var_size)
 {{+
-std::vector<{cxx_T}> *cxx_var = \tstatic_cast< std::vector<{cxx_T}> >\t(cap->addr);
+std::vector<{cxx_T}> *cxx_var = \treinterpret_cast<std::vector<{cxx_T}> *>\t(cap->addr);
 std::vector<{cxx_T}>::size_type+
 i = 0,
 n = c_var_size;
 -n = std::min(cxx_var->size(), n);
 for(; i < n; ++i) {{+
-c_var[i] = cxx_var[i];
+c_var[i] = (*cxx_var)[i];
 -}}
 -}}""", fmt))
         CHelpers[name] = helper
@@ -259,9 +259,11 @@ c_var[i] = cxx_var[i];
 # XXX when f_kind == C_SIZE_T
             interface=wformat("""
 interface+
-subroutine SHROUD_vector_copy_{cxx_T}(cap, c_var, c_var_size)+
+subroutine SHROUD_vector_copy_{cxx_T}(cap, c_var, c_var_size) &+
+bind(C, name="{C_prefix}SHROUD_vector_copy_{cxx_T}")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
-type(capsule_struct) :: cap
+import {C_capsule_data_type}
+type({C_capsule_data_type}) :: cap
 integer({f_kind}) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
 -end subroutine SHROUD_vector_copy_{cxx_T}
@@ -418,7 +420,6 @@ type, bind(C) :: SHROUD_vector_context
   integer(C_SIZE_T) :: size  ! size of data in std::vector
 end type SHROUD_vector_context
 """,
-        private=['SHROUD_vector_context'],
         modules = dict(
             iso_c_binding=['C_PTR', 'C_SIZE_T' ],
         )

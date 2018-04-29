@@ -82,6 +82,20 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    std::memcpy(a,s,nm);
    if(la > nm) std::memset(a+nm,' ',la-nm);
 }
+
+void TUT_SHROUD_vector_copy_int(SHROUD_capsule_data *cap, int *c_var, 
+    size_t c_var_size)
+{
+    std::vector<int> *cxx_var = reinterpret_cast<std::vector<int> *>
+        (cap->addr);
+    std::vector<int>::size_type
+        i = 0,
+        n = c_var_size;
+    n = std::min(cxx_var->size(), n);
+    for(; i < n; ++i) {
+        c_var[i] = (*cxx_var)[i];
+    }
+}
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -550,22 +564,18 @@ int TUT_vector_sum_bufferify(const int * arg, long Sarg)
 // splicer end function.vector_sum_bufferify
 }
 
-// void vector_iota(std::vector<int> & arg +dimension(:)+intent(out)+size(Sarg))
+// void vector_iota(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(out))
 // function_index=71
-void TUT_vector_iota_bufferify(int * arg, long Sarg)
+void TUT_vector_iota_bufferify(SHROUD_capsule_data *Carg,
+    SHROUD_vector_context *Darg)
 {
 // splicer begin function.vector_iota_bufferify
-    std::vector<int> SH_arg(Sarg);
-    tutorial::vector_iota(SH_arg);
-    {
-        std::vector<int>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-        SHT_n = std::min(SH_arg.size(), SHT_n);
-        for(; SHT_i < SHT_n; SHT_i++) {
-            arg[SHT_i] = SH_arg[SHT_i];
-        }
-    }
+    std::vector<int> *SH_arg = new std::vector<int>;
+    Carg->addr = static_cast<void *>(SH_arg);
+    Carg->idtor = 0;  // index of destructor
+    tutorial::vector_iota(*SH_arg);
+    Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->size = SH_arg->size();
     return;
 // splicer end function.vector_iota_bufferify
 }
@@ -614,70 +624,6 @@ int TUT_vector_string_count_bufferify(const char * arg, long Sarg,
     int SHC_rv = tutorial::vector_string_count(SH_arg);
     return SHC_rv;
 // splicer end function.vector_string_count_bufferify
-}
-
-// void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg))
-// function_index=74
-/**
- * \brief Fill in arg with some animal names
- *
- * The C++ function returns void. But the C and Fortran wrappers return
- * an int with the number of items added to arg.
- */
-int TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg)
-{
-// splicer begin function.vector_string_fill_bufferify
-    std::vector<std::string> SH_arg;
-    tutorial::vector_string_fill(SH_arg);
-    {
-        char * BBB = arg;
-        std::vector<std::string>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-        SHT_n = std::min(SH_arg.size(),SHT_n);
-        for(; SHT_i < SHT_n; SHT_i++) {
-            ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());
-            BBB += Narg;
-        }
-    }
-    return SH_arg.size();
-// splicer end function.vector_string_fill_bufferify
-}
-
-// void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))
-// function_index=75
-/**
- * \brief append '-like' to names.
- *
- */
-void TUT_vector_string_append_bufferify(char * arg, long Sarg, int Narg)
-{
-// splicer begin function.vector_string_append_bufferify
-    std::vector<std::string> SH_arg;
-    {
-        char * BBB = arg;
-        std::vector<std::string>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-        for(; SHT_i < SHT_n; SHT_i++) {
-            SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
-            BBB += Narg;
-        }
-    }
-    tutorial::vector_string_append(SH_arg);
-    {
-        char * BBB = arg;
-        std::vector<std::string>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-        SHT_n = std::min(SH_arg.size(),SHT_n);
-        for(; SHT_i < SHT_n; SHT_i++) {
-            ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());
-            BBB += Narg;
-        }
-    }
-    return;
-// splicer end function.vector_string_append_bufferify
 }
 
 // int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)
@@ -772,7 +718,7 @@ const char * TUT_last_function_called()
 }
 
 // void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-// function_index=76
+// function_index=74
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.last_function_called_bufferify

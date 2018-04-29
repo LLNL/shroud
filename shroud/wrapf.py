@@ -1042,8 +1042,8 @@ class Wrapf(util.WrapperMixin):
             if implied:
                 f_intent_blk = self.attr_implied(node, f_arg, fmt_arg)
             else:
-#                f_statements = base_typedef.f_statements  # new vector
-                f_statements = arg_typedef.f_statements
+                f_statements = base_typedef.f_statements  # AAA - new vector
+#                f_statements = arg_typedef.f_statements
                 f_intent_blk = f_statements.get(f_stmts, {})
 
             # Now C function arguments
@@ -1321,6 +1321,9 @@ class Wrapf(util.WrapperMixin):
                 lines = helper_info.get('source', None)
                 if lines:
                     self.helper_source.append(lines)
+                mods = helper_info.get('modules', None)
+                if mods:
+                    self.update_f_module(self.module_use, mods)
             if private_names:
                 self.private_lines.append('')
                 self.private_lines.append('private ' + ', '.join(private_names))
@@ -1335,6 +1338,7 @@ class Wrapf(util.WrapperMixin):
         module_name = fmt_node.F_module_name
 
         output = []
+        self.gather_helper_code()
 
         if options.doxygen:
             self.write_doxygen_file(output, fname, library, cls)
@@ -1377,7 +1381,6 @@ class Wrapf(util.WrapperMixin):
 
         self.dump_abstract_interfaces()
         self.dump_generic_interfaces()
-        self.gather_helper_code()
 
         output.extend(self.helper_derived_type)
         output.extend(self.abstract_interface)
