@@ -45,7 +45,6 @@
 #define TUTORIAL_HPP
 
 #include <string>
-#include <vector>
 
 extern int global_flag;
 
@@ -147,14 +146,6 @@ int useclass(const Class1 *arg);
 void getclass(const Class1 **arg);
 const Class1 * getclass2();
 Class1 * getclass3();
-
-int vector_sum(const std::vector<int> &arg);
-void vector_iota(std::vector<int> &arg);
-void vector_increment(std::vector<int> &arg);
-
-int vector_string_count(const std::vector< std::string > &arg);
-void vector_string_fill(std::vector< std::string > &arg);
-void vector_string_append(std::vector< std::string > &arg);
 
 int callback1(int in, int (*incr)(int));
 

@@ -80,14 +80,15 @@ class Wrapc(util.WrapperMixin):
         # forward declarations of C++ class as opaque C struct.
         self.header_forward = {}
         # include files required by typedefs
-        self.header_typedef_nodes = {}
+        self.header_typedef_nodes = {}  # [arg_typedef.name] = arg_typedef
         # headers needed by implementation, i.e. helper functions
-        self.header_impl_include = {}
+        self.header_impl_include = {} # header files in implementation file
         self.header_proto_c = []
         self.impl = []
         self.enum_impl = []
         self.struct_impl = []
         self.c_helper = {}
+        self.c_helper_include = {}  # include files in generated C header
 
     def wrap_library(self):
         newlibrary = self.newlibrary
@@ -173,6 +174,9 @@ class Wrapc(util.WrapperMixin):
                     helper_source.append(helper_info['source'])
 
                 # header code using with C API  (like structs and typedefs)
+                if 'h_header' in helper_info:
+                    for include in helper_info['h_header'].split():
+                        self.c_helper_include[include] = True
                 if 'h_source' in helper_info:
                     helper_header.append(helper_info['h_source'])
 
@@ -199,11 +203,9 @@ class Wrapc(util.WrapperMixin):
         if cls and cls.cpp_if:
             output.append('#' + node.cpp_if)
 
-        # headers required by typedefs
-        if self.header_typedef_nodes:
-            # output.append('// header_typedef_include')
-            output.append('')
-            self.write_headers_nodes('c_header', self.header_typedef_nodes, output)
+        # headers required by typedefs and helpers
+        self.write_headers_nodes('c_header', self.header_typedef_nodes,
+                                 self.c_helper_include.keys(), output)
 
         if self.language == 'c++':
             output.append('')

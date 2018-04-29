@@ -2593,7 +2593,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 65, 
+                "_PTR_F_C_index": 59, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtl": {
@@ -2806,7 +2806,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 65, 
+                "_function_index": 59, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -3156,7 +3156,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 66, 
+                "_function_index": 60, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -3265,8 +3265,8 @@
             }, 
             {
                 "_PTR_C_CXX_index": 22, 
-                "_PTR_F_C_index": 66, 
-                "_function_index": 67, 
+                "_PTR_F_C_index": 60, 
+                "_function_index": 61, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -3379,7 +3379,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 55, 
+                "_function_index": 49, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -3459,7 +3459,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 56, 
+                "_function_index": 50, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -3533,8 +3533,8 @@
             }, 
             {
                 "_default_funcs": [
-                    55, 
-                    56
+                    49, 
+                    50
                 ], 
                 "_fmtargs": {
                     "arg1": {
@@ -3731,7 +3731,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 68, 
+                "_PTR_F_C_index": 62, 
                 "_cxx_overload": [
                     24, 
                     25
@@ -3862,7 +3862,7 @@
                         }
                     }
                 }, 
-                "_function_index": 68, 
+                "_function_index": 62, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -4123,7 +4123,7 @@
                         }
                     }
                 }, 
-                "_function_index": 57, 
+                "_function_index": 51, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -4232,7 +4232,7 @@
                         }
                     }
                 }, 
-                "_function_index": 58, 
+                "_function_index": 52, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -4345,7 +4345,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 59, 
+                "_function_index": 53, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -4406,7 +4406,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 60, 
+                "_function_index": 54, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -4560,7 +4560,7 @@
             }, 
             {
                 "_PTR_F_C_index": 28, 
-                "_function_index": 75, 
+                "_function_index": 65, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -4618,7 +4618,7 @@
             }, 
             {
                 "_PTR_F_C_index": 28, 
-                "_function_index": 76, 
+                "_function_index": 66, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -4725,7 +4725,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 69, 
+                "_PTR_F_C_index": 63, 
                 "_cxx_overload": [
                     29, 
                     30
@@ -4887,7 +4887,7 @@
                     29, 
                     30
                 ], 
-                "_function_index": 77, 
+                "_function_index": 67, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -4970,7 +4970,7 @@
                     29, 
                     30
                 ], 
-                "_function_index": 78, 
+                "_function_index": 68, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -5084,7 +5084,7 @@
                         }
                     }
                 }, 
-                "_function_index": 69, 
+                "_function_index": 63, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -5198,7 +5198,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 61, 
+                "_function_index": 55, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5312,7 +5312,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 62, 
+                "_function_index": 56, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5405,8 +5405,8 @@
                     32
                 ], 
                 "_default_funcs": [
-                    61, 
-                    62
+                    55, 
+                    56
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -5697,7 +5697,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 63, 
+                "_function_index": 57, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5835,7 +5835,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 64, 
+                "_function_index": 58, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5938,8 +5938,8 @@
                     32
                 ], 
                 "_default_funcs": [
-                    63, 
-                    64
+                    57, 
+                    58
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -7168,754 +7168,6 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 70, 
-                "_function_index": 41, 
-                "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "vector_sum", 
-                        "pointer": []
-                    }, 
-                    "func_const": false, 
-                    "params": [
-                        {
-                            "attrs": {
-                                "_typename": "std::vector", 
-                                "dimension": ":", 
-                                "intent": "in", 
-                                "template": "int", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::vector"
-                            ]
-                        }
-                    ], 
-                    "specifier": [
-                        "int"
-                    ]
-                }, 
-                "decl": "int vector_sum(const std::vector<int> &arg)", 
-                "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))", 
-                "format": {
-                    "F_C_call": "c_vector_sum_bufferify", 
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG)", 
-                    "F_arguments": "arg", 
-                    "F_call_code": "SHT_rv = c_vector_sum_bufferify(arg,\t size(arg, kind=C_LONG))", 
-                    "F_name_function": "vector_sum", 
-                    "F_name_generic": "vector_sum", 
-                    "F_name_impl": "vector_sum", 
-                    "F_result_clause": "\fresult(SHT_rv)", 
-                    "F_subprogram": "function", 
-                    "function_name": "vector_sum", 
-                    "underscore_name": "vector_sum"
-                }, 
-                "options": {
-                    "wrap_c": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_PTR_C_CXX_index": 41, 
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_context_type": "SHROUD_vector_context", 
-                            "c_deref": "", 
-                            "c_var": "arg", 
-                            "c_var_size": "Sarg", 
-                            "cxx_T": "int", 
-                            "cxx_member": ".", 
-                            "cxx_type": "int", 
-                            "cxx_var": "SH_arg", 
-                            "f_context_type": "SHROUD_vector_context"
-                        }, 
-                        "fmtf": {
-                            "c_context_type": "SHROUD_vector_context", 
-                            "c_var": "arg", 
-                            "cxx_T": "int", 
-                            "f_context_type": "SHROUD_vector_context", 
-                            "f_var": "arg"
-                        }
-                    }
-                }, 
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_var": "SHC_rv", 
-                        "cxx_addr": "&", 
-                        "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
-                    }
-                }, 
-                "_function_index": 70, 
-                "_generated": "arg_to_buffer", 
-                "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "vector_sum", 
-                        "pointer": []
-                    }, 
-                    "func_const": false, 
-                    "params": [
-                        {
-                            "attrs": {
-                                "_typename": "std::vector", 
-                                "dimension": ":", 
-                                "intent": "in", 
-                                "size": "Sarg", 
-                                "template": "int", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::vector"
-                            ]
-                        }
-                    ], 
-                    "specifier": [
-                        "int"
-                    ]
-                }, 
-                "decl": "int vector_sum(const std::vector<int> &arg)", 
-                "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))", 
-                "format": {
-                    "C_call_code": "int SHC_rv =\t tutorial::\tvector_sum(\tSH_arg);", 
-                    "C_call_list": "SH_arg", 
-                    "C_name": "TUT_vector_sum_bufferify", 
-                    "C_pre_call": "const std::vector<int> SH_arg(arg, arg + Sarg);", 
-                    "C_prototype": "const int * arg,\t long Sarg", 
-                    "C_return_code": "return SHC_rv;", 
-                    "C_return_type": "int", 
-                    "F_C_name": "c_vector_sum_bufferify", 
-                    "c_const": "", 
-                    "cxx_rv_decl": "int SHC_rv", 
-                    "function_name": "vector_sum", 
-                    "function_suffix": "_bufferify", 
-                    "underscore_name": "vector_sum"
-                }, 
-                "options": {
-                    "wrap_c": true, 
-                    "wrap_fortran": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_PTR_F_C_index": 71, 
-                "_function_index": 42, 
-                "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "vector_iota", 
-                        "pointer": []
-                    }, 
-                    "func_const": false, 
-                    "params": [
-                        {
-                            "attrs": {
-                                "_typename": "std::vector", 
-                                "dimension": ":", 
-                                "intent": "out", 
-                                "template": "int", 
-                                "value": false
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::vector"
-                            ]
-                        }
-                    ], 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
-                "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
-                "declgen": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))", 
-                "format": {
-                    "F_C_call": "c_vector_iota_bufferify", 
-                    "F_arg_c_call": "Carg%mem,\t Darg", 
-                    "F_arguments": "arg", 
-                    "F_call_code": "call c_vector_iota_bufferify(Carg%mem,\t Darg)", 
-                    "F_name_function": "vector_iota", 
-                    "F_name_generic": "vector_iota", 
-                    "F_name_impl": "vector_iota", 
-                    "F_subprogram": "subroutine", 
-                    "function_name": "vector_iota", 
-                    "underscore_name": "vector_iota"
-                }, 
-                "options": {
-                    "wrap_c": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_PTR_C_CXX_index": 42, 
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_context_type": "SHROUD_vector_context", 
-                            "c_deref": "", 
-                            "c_var": "arg", 
-                            "c_var_capsule": "Carg", 
-                            "c_var_context": "Darg", 
-                            "cxx_T": "int", 
-                            "cxx_member": "->", 
-                            "cxx_type": "int", 
-                            "cxx_var": "SH_arg", 
-                            "f_context_type": "SHROUD_vector_context"
-                        }, 
-                        "fmtf": {
-                            "c_context_type": "SHROUD_vector_context", 
-                            "c_var": "arg", 
-                            "c_var_capsule": "Carg", 
-                            "c_var_context": "Darg", 
-                            "cxx_T": "int", 
-                            "f_context_type": "SHROUD_vector_context", 
-                            "f_var": "arg"
-                        }
-                    }
-                }, 
-                "_function_index": 71, 
-                "_generated": "arg_to_buffer", 
-                "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "vector_iota", 
-                        "pointer": []
-                    }, 
-                    "func_const": false, 
-                    "params": [
-                        {
-                            "attrs": {
-                                "_typename": "std::vector", 
-                                "capsule": "Carg", 
-                                "context": "Darg", 
-                                "dimension": ":", 
-                                "intent": "out", 
-                                "template": "int", 
-                                "value": false
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::vector"
-                            ]
-                        }
-                    ], 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
-                "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
-                "declgen": "void vector_iota(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(out))", 
-                "format": {
-                    "C_call_code": "tutorial::\tvector_iota(\t*SH_arg);", 
-                    "C_call_list": "*SH_arg", 
-                    "C_name": "TUT_vector_iota_bufferify", 
-                    "C_post_call": "Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->size = SH_arg->size();", 
-                    "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;\nCarg->addr = static_cast<void *>(SH_arg);\nCarg->idtor = 0;  // index of destructor", 
-                    "C_prototype": "SHROUD_capsule_data *Carg,\t SHROUD_vector_context *Darg", 
-                    "C_return_code": "return;", 
-                    "C_return_type": "void", 
-                    "F_C_name": "c_vector_iota_bufferify", 
-                    "c_const": "", 
-                    "function_name": "vector_iota", 
-                    "function_suffix": "_bufferify", 
-                    "underscore_name": "vector_iota"
-                }, 
-                "options": {
-                    "wrap_c": true, 
-                    "wrap_fortran": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_PTR_F_C_index": 72, 
-                "_function_index": 43, 
-                "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "vector_increment", 
-                        "pointer": []
-                    }, 
-                    "func_const": false, 
-                    "params": [
-                        {
-                            "attrs": {
-                                "_typename": "std::vector", 
-                                "dimension": ":", 
-                                "intent": "inout", 
-                                "template": "int", 
-                                "value": false
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::vector"
-                            ]
-                        }
-                    ], 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
-                "decl": "void vector_increment(std::vector<int> &arg)", 
-                "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))", 
-                "format": {
-                    "F_C_call": "c_vector_increment_bufferify", 
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG)", 
-                    "F_arguments": "arg", 
-                    "F_call_code": "call c_vector_increment_bufferify(arg,\t size(arg, kind=C_LONG))", 
-                    "F_name_function": "vector_increment", 
-                    "F_name_generic": "vector_increment", 
-                    "F_name_impl": "vector_increment", 
-                    "F_subprogram": "subroutine", 
-                    "function_name": "vector_increment", 
-                    "underscore_name": "vector_increment"
-                }, 
-                "options": {
-                    "wrap_c": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_PTR_C_CXX_index": 43, 
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "", 
-                            "c_context_type": "SHROUD_vector_context", 
-                            "c_deref": "", 
-                            "c_var": "arg", 
-                            "c_var_size": "Sarg", 
-                            "cxx_T": "int", 
-                            "cxx_member": ".", 
-                            "cxx_type": "int", 
-                            "cxx_var": "SH_arg", 
-                            "f_context_type": "SHROUD_vector_context"
-                        }, 
-                        "fmtf": {
-                            "c_context_type": "SHROUD_vector_context", 
-                            "c_var": "arg", 
-                            "cxx_T": "int", 
-                            "f_context_type": "SHROUD_vector_context", 
-                            "f_var": "arg"
-                        }
-                    }
-                }, 
-                "_function_index": 72, 
-                "_generated": "arg_to_buffer", 
-                "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "vector_increment", 
-                        "pointer": []
-                    }, 
-                    "func_const": false, 
-                    "params": [
-                        {
-                            "attrs": {
-                                "_typename": "std::vector", 
-                                "dimension": ":", 
-                                "intent": "inout", 
-                                "size": "Sarg", 
-                                "template": "int", 
-                                "value": false
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::vector"
-                            ]
-                        }
-                    ], 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
-                "decl": "void vector_increment(std::vector<int> &arg)", 
-                "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))", 
-                "format": {
-                    "C_call_code": "tutorial::\tvector_increment(\tSH_arg);", 
-                    "C_call_list": "SH_arg", 
-                    "C_name": "TUT_vector_increment_bufferify", 
-                    "C_post_call": "{+\nstd::vector<int>::size_type+\nSHT_i = 0,\nSHT_n = Sarg;\n-SHT_n = std::min(SH_arg.size(), SHT_n);\nfor(; SHT_i < SHT_n; SHT_i++) {+\narg[SHT_i] = SH_arg[SHT_i];\n-}\n-}", 
-                    "C_pre_call": "std::vector<int> SH_arg(\targ, arg + Sarg);", 
-                    "C_prototype": "int * arg,\t long Sarg", 
-                    "C_return_code": "return;", 
-                    "C_return_type": "void", 
-                    "F_C_name": "c_vector_increment_bufferify", 
-                    "c_const": "", 
-                    "function_name": "vector_increment", 
-                    "function_suffix": "_bufferify", 
-                    "underscore_name": "vector_increment"
-                }, 
-                "options": {
-                    "wrap_c": true, 
-                    "wrap_fortran": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_PTR_F_C_index": 73, 
-                "_function_index": 44, 
-                "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "vector_string_count", 
-                        "pointer": []
-                    }, 
-                    "func_const": false, 
-                    "params": [
-                        {
-                            "attrs": {
-                                "_typename": "std::vector", 
-                                "dimension": ":", 
-                                "intent": "in", 
-                                "template": "std::string", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::vector"
-                            ]
-                        }
-                    ], 
-                    "specifier": [
-                        "int"
-                    ]
-                }, 
-                "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))", 
-                "doxygen": {
-                    "brief": "count number of underscore in vector of strings", 
-                    "decription": "The input will be copied in order to create the C++ argument\n"
-                }, 
-                "format": {
-                    "F_C_call": "c_vector_string_count_bufferify", 
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t len(arg, kind=C_INT)", 
-                    "F_arguments": "arg", 
-                    "F_call_code": "SHT_rv = c_vector_string_count_bufferify(arg,\t size(arg, kind=C_LONG),\t len(arg, kind=C_INT))", 
-                    "F_name_function": "vector_string_count", 
-                    "F_name_generic": "vector_string_count", 
-                    "F_name_impl": "vector_string_count", 
-                    "F_result_clause": "\fresult(SHT_rv)", 
-                    "F_subprogram": "function", 
-                    "function_name": "vector_string_count", 
-                    "underscore_name": "vector_string_count"
-                }, 
-                "options": {
-                    "wrap_c": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_PTR_C_CXX_index": 44, 
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_context_type": "SHROUD_vector_context", 
-                            "c_deref": "", 
-                            "c_var": "arg", 
-                            "c_var_len": "Narg", 
-                            "c_var_size": "Sarg", 
-                            "cxx_T": "std::string", 
-                            "cxx_member": ".", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg", 
-                            "f_context_type": "SHROUD_vector_context"
-                        }, 
-                        "fmtf": {
-                            "c_context_type": "SHROUD_vector_context", 
-                            "c_var": "arg", 
-                            "cxx_T": "std::string", 
-                            "f_context_type": "SHROUD_vector_context", 
-                            "f_var": "arg"
-                        }
-                    }
-                }, 
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_var": "SHC_rv", 
-                        "cxx_addr": "&", 
-                        "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
-                    }
-                }, 
-                "_function_index": 73, 
-                "_generated": "arg_to_buffer", 
-                "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "vector_string_count", 
-                        "pointer": []
-                    }, 
-                    "func_const": false, 
-                    "params": [
-                        {
-                            "attrs": {
-                                "_typename": "std::vector", 
-                                "dimension": ":", 
-                                "intent": "in", 
-                                "len": "Narg", 
-                                "size": "Sarg", 
-                                "template": "std::string", 
-                                "value": false
-                            }, 
-                            "const": true, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::vector"
-                            ]
-                        }
-                    ], 
-                    "specifier": [
-                        "int"
-                    ]
-                }, 
-                "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))", 
-                "doxygen": {
-                    "brief": "count number of underscore in vector of strings", 
-                    "decription": "The input will be copied in order to create the C++ argument\n"
-                }, 
-                "format": {
-                    "C_call_code": "int SHC_rv =\t tutorial::\tvector_string_count(\tSH_arg);", 
-                    "C_call_list": "SH_arg", 
-                    "C_name": "TUT_vector_string_count_bufferify", 
-                    "C_pre_call": "std::vector<std::string> SH_arg;\n{\n      const char * BBB = arg;\n      std::vector<std::string>::size_type\n        SHT_i = 0,\n        SHT_n = Sarg;\n    for(; SHT_i < SHT_n; SHT_i++) {\n        SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));\n        BBB += Narg;\n    }\n}", 
-                    "C_prototype": "const char * arg,\t long Sarg,\t int Narg", 
-                    "C_return_code": "return SHC_rv;", 
-                    "C_return_type": "int", 
-                    "F_C_name": "c_vector_string_count_bufferify", 
-                    "c_const": "", 
-                    "cxx_rv_decl": "int SHC_rv", 
-                    "function_name": "vector_string_count", 
-                    "function_suffix": "_bufferify", 
-                    "underscore_name": "vector_string_count"
-                }, 
-                "options": {
-                    "wrap_c": true, 
-                    "wrap_fortran": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_function_index": 45, 
-                "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "vector_string_fill", 
-                        "pointer": []
-                    }, 
-                    "func_const": false, 
-                    "params": [
-                        {
-                            "attrs": {
-                                "_typename": "std::vector", 
-                                "intent": "out", 
-                                "template": "std::string"
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::vector"
-                            ]
-                        }
-                    ], 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
-                "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
-                "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out))", 
-                "doxygen": {
-                    "brief": "Fill in arg with some animal names", 
-                    "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
-                }, 
-                "format": {
-                    "C_custom_return_type": "int", 
-                    "C_return_code": "return SH_arg.size();", 
-                    "C_return_type": "int", 
-                    "function_name": "vector_string_fill", 
-                    "underscore_name": "vector_string_fill"
-                }, 
-                "options": {
-                    "wrap_c": false, 
-                    "wrap_fortran": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
-                "_function_index": 46, 
-                "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "vector_string_append", 
-                        "pointer": []
-                    }, 
-                    "func_const": false, 
-                    "params": [
-                        {
-                            "attrs": {
-                                "_typename": "std::vector", 
-                                "intent": "inout", 
-                                "template": "std::string"
-                            }, 
-                            "const": false, 
-                            "declarator": {
-                                "name": "arg", 
-                                "pointer": [
-                                    {
-                                        "const": false, 
-                                        "ptr": "&"
-                                    }
-                                ]
-                            }, 
-                            "specifier": [
-                                "std::vector"
-                            ]
-                        }
-                    ], 
-                    "specifier": [
-                        "void"
-                    ]
-                }, 
-                "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
-                "declgen": "void vector_string_append(std::vector<std::string> & arg +intent(inout))", 
-                "doxygen": {
-                    "brief": "append '-like' to names."
-                }, 
-                "format": {
-                    "function_name": "vector_string_append", 
-                    "underscore_name": "vector_string_append"
-                }, 
-                "options": {
-                    "wrap_c": false, 
-                    "wrap_fortran": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }
-            }, 
-            {
                 "_fmtargs": {
                     "in": {
                         "fmtc": {
@@ -7954,7 +7206,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 47, 
+                "_function_index": 41, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -8133,7 +7385,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 48, 
+                "_function_index": 42, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::struct1"
@@ -8292,7 +7544,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 49, 
+                "_function_index": 43, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::struct1"
@@ -8401,7 +7653,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 50, 
+                "_function_index": 44, 
                 "ast": {
                     "attrs": {
                         "_typename": "double"
@@ -8490,7 +7742,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 51, 
+                "_function_index": 45, 
                 "ast": {
                     "attrs": {
                         "_typename": "double"
@@ -8604,7 +7856,7 @@
                         }
                     }
                 }, 
-                "_function_index": 52, 
+                "_function_index": 46, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -8718,7 +7970,7 @@
                         }
                     }
                 }, 
-                "_function_index": 53, 
+                "_function_index": 47, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -8784,7 +8036,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 74, 
+                "_PTR_F_C_index": 64, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
@@ -8812,7 +8064,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 54, 
+                "_function_index": 48, 
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
@@ -8866,7 +8118,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 54, 
+                "_PTR_C_CXX_index": 48, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -8893,7 +8145,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 74, 
+                "_function_index": 64, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {

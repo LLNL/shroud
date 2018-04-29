@@ -256,29 +256,40 @@ class WrapperMixin(object):
             else:
                 output.append('#include "%s"' % header)
 
-    def write_headers_nodes(self, lang_header, types, output):
+    def write_headers_nodes(self, lang_header, types, hlist, output):
         """Write out headers required by types
 
         types - dictionary[typedef.name] = typedef
+        hlist - list of headers to include
+                From helper routines
+
+        headers[hdr] [ typedef, None, ... ]
+        None from helper files
         """
         # find which headers are required and who requires them
         headers = {}
-        for typ in types.values():
-            hdr = getattr(typ, lang_header)
-            if hdr:
-                headers.setdefault(hdr, []).append(typ)
+        for hdr in hlist:
+            headers.setdefault(hdr, []).append(None)
 
+        for typedef in types.values():
+            hdr = getattr(typedef, lang_header)
+            if hdr:
+                headers.setdefault(hdr, []).append(typedef)
+
+        if headers:
+            output.append('')
         for hdr in sorted(headers):
             if len(headers[hdr]) == 1:
                 # Only one type uses the include, check for if_cpp
+                # For example, add conditional around mpi.h
                 typedef = headers[hdr][0]
-                if typedef.cpp_if:
+                if typedef and typedef.cpp_if:
                     output.append('#' + typedef.cpp_if)
                 if hdr[0] == '<':
                     output.append('#include %s' % hdr)
                 else:
                     output.append('#include "%s"' % hdr)
-                if typedef.cpp_if:
+                if typedef and typedef.cpp_if:
                     output.append('#endif')
             else:
                 # XXX - unclear how to mix header and cpp_if

@@ -128,11 +128,13 @@ extern "C" {
 #
 # c_helpers = Dictionary of helpers needed by this helper
 # c_header    = Blank delimited list of header files to #include
-#               when wrapping a C library.
+#               in implementation file when wrapping a C library.
 # cxx_header  = Blank delimited list of header files to #include.
-#               when wrapping a C++ library.
+#               in implementation file when wrapping a C++ library.
 # c_source    = language=c source.
 # cxx_source  = language=c++ source.
+# h_header    = Blank delimited list of headers to #include in
+#               c wrapper header.
 # h_source    = code for include file. Must be compatible with language=c.
 # source      = Code inserted before any wrappers.
 #               The functions should be file static.
@@ -319,6 +321,7 @@ int ShroudLenTrim(const char *s, int ls) {
     ),
 
     vector_context=dict(
+        h_header='<stddef.h>',
         h_source="""
 struct s_SHROUD_vector_context {
   void *addr;     /* address of data in std::vector */

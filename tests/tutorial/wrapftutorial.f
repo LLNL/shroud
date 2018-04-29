@@ -47,7 +47,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module tutorial_mod
-    use iso_c_binding, only : C_DOUBLE, C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
+    use iso_c_binding, only : C_DOUBLE, C_INT, C_NULL_PTR, C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -120,23 +120,6 @@ module tutorial_mod
         module procedure class1_ne
         module procedure singleton_ne
     end interface
-    type, bind(C) :: SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
-
-    type SHROUD_capsule
-        private
-        type(SHROUD_capsule_data) :: mem
-    contains
-        !final :: delete_capsule
-    end type SHROUD_capsule
-
-    type, bind(C) :: SHROUD_vector_context
-      type(C_PTR) :: addr     ! address of data in std::vector
-      integer(C_SIZE_T) :: size  ! size of data in std::vector
-    end type SHROUD_vector_context
-
 
     abstract interface
 
@@ -612,44 +595,6 @@ module tutorial_mod
             type(C_PTR) :: SHT_rv
         end function c_getclass3
 
-        function c_vector_sum_bufferify(arg, Sarg) &
-                result(SHT_rv) &
-                bind(C, name="TUT_vector_sum_bufferify")
-            use iso_c_binding, only : C_INT, C_LONG
-            implicit none
-            integer(C_INT), intent(IN) :: arg(*)
-            integer(C_LONG), value, intent(IN) :: Sarg
-            integer(C_INT) :: SHT_rv
-        end function c_vector_sum_bufferify
-
-        subroutine c_vector_iota_bufferify(Carg, Darg) &
-                bind(C, name="TUT_vector_iota_bufferify")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data, SHROUD_vector_context
-            implicit none
-            type(SHROUD_capsule_data), intent(INOUT) :: Carg
-            type(SHROUD_vector_context), intent(INOUT) :: Darg
-        end subroutine c_vector_iota_bufferify
-
-        subroutine c_vector_increment_bufferify(arg, Sarg) &
-                bind(C, name="TUT_vector_increment_bufferify")
-            use iso_c_binding, only : C_INT, C_LONG
-            implicit none
-            integer(C_INT), intent(INOUT) :: arg(*)
-            integer(C_LONG), value, intent(IN) :: Sarg
-        end subroutine c_vector_increment_bufferify
-
-        function c_vector_string_count_bufferify(arg, Sarg, Narg) &
-                result(SHT_rv) &
-                bind(C, name="TUT_vector_string_count_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT, C_LONG
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: arg(*)
-            integer(C_LONG), value, intent(IN) :: Sarg
-            integer(C_INT), value, intent(IN) :: Narg
-            integer(C_INT) :: SHT_rv
-        end function c_vector_string_count_bufferify
-
         function callback1(in, incr) &
                 result(SHT_rv) &
                 bind(C, name="TUT_callback1")
@@ -784,18 +729,6 @@ module tutorial_mod
         module procedure overload1_4
         module procedure overload1_5
     end interface overload1
-
-    interface
-        subroutine SHROUD_vector_copy_int(cap, c_var, c_var_size) &
-            bind(C, name="TUT_SHROUD_vector_copy_int")
-            use iso_c_binding, only : C_INT, C_SIZE_T
-            import SHROUD_capsule_data
-            type(SHROUD_capsule_data) :: cap
-            integer(C_INT) :: c_var(*)
-            integer(C_SIZE_T), value :: c_var_size
-        end subroutine SHROUD_vector_copy_int
-    end interface
-
 
 contains
 
@@ -1089,7 +1022,7 @@ contains
 
     ! void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
     ! arg_to_buffer - arg_to_buffer
-    ! function_index=67
+    ! function_index=61
     subroutine function4b(arg1, arg2, output)
         use iso_c_binding, only : C_INT
         character(*), intent(IN) :: arg1
@@ -1104,7 +1037,7 @@ contains
 
     ! double Function5()
     ! has_default_arg
-    ! function_index=55
+    ! function_index=49
     function function5() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -1116,7 +1049,7 @@ contains
 
     ! double Function5(double arg1=3.1415 +intent(in)+value)
     ! has_default_arg
-    ! function_index=56
+    ! function_index=50
     function function5_arg1(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -1166,7 +1099,7 @@ contains
 
     ! void Function7(int arg +intent(in)+value)
     ! cxx_template
-    ! function_index=57
+    ! function_index=51
     subroutine function7_int(arg)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: arg
@@ -1177,7 +1110,7 @@ contains
 
     ! void Function7(double arg +intent(in)+value)
     ! cxx_template
-    ! function_index=58
+    ! function_index=52
     subroutine function7_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
@@ -1188,7 +1121,7 @@ contains
 
     ! int Function8()
     ! cxx_template
-    ! function_index=59
+    ! function_index=53
     function function8_int() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1200,7 +1133,7 @@ contains
 
     ! double Function8()
     ! cxx_template
-    ! function_index=60
+    ! function_index=54
     function function8_double() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -1212,7 +1145,7 @@ contains
 
     ! void Function9(float arg +intent(in)+value)
     ! fortran_generic
-    ! function_index=75
+    ! function_index=65
     subroutine function9_float(arg)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
         real(C_FLOAT), value, intent(IN) :: arg
@@ -1223,7 +1156,7 @@ contains
 
     ! void Function9(double arg +intent(in)+value)
     ! fortran_generic
-    ! function_index=76
+    ! function_index=66
     subroutine function9_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
@@ -1242,7 +1175,7 @@ contains
 
     ! void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    ! function_index=77
+    ! function_index=67
     subroutine function10_1_float(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT, C_INT
         character(*), intent(IN) :: name
@@ -1255,7 +1188,7 @@ contains
 
     ! void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    ! function_index=78
+    ! function_index=68
     subroutine function10_1_double(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
         character(*), intent(IN) :: name
@@ -1268,7 +1201,7 @@ contains
 
     ! int overload1(int num +intent(in)+value)
     ! has_default_arg
-    ! function_index=61
+    ! function_index=55
     function overload1_num(num) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1281,7 +1214,7 @@ contains
 
     ! int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
-    ! function_index=62
+    ! function_index=56
     function overload1_num_offset(num, offset) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1309,7 +1242,7 @@ contains
 
     ! int overload1(double type +intent(in)+value, int num +intent(in)+value)
     ! has_default_arg
-    ! function_index=63
+    ! function_index=57
     function overload1_3(type, num) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1323,7 +1256,7 @@ contains
 
     ! int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
-    ! function_index=64
+    ! function_index=58
     function overload1_4(type, num, offset) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1383,65 +1316,8 @@ contains
         ! splicer end function.getclass3
     end function getclass3
 
-    ! int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
-    ! arg_to_buffer
-    ! function_index=41
-    function vector_sum(arg) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_LONG
-        integer(C_INT), intent(IN) :: arg(:)
-        integer(C_INT) :: SHT_rv
-        ! splicer begin function.vector_sum
-        SHT_rv = c_vector_sum_bufferify(arg, size(arg, kind=C_LONG))
-        ! splicer end function.vector_sum
-    end function vector_sum
-
-    ! void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))
-    ! arg_to_buffer
-    ! function_index=42
-    subroutine vector_iota(arg)
-        use iso_c_binding, only : C_INT, C_SIZE_T
-        integer(C_INT), intent(OUT) :: arg(:)
-        type(SHROUD_capsule) :: Carg
-        type(SHROUD_vector_context) :: Darg
-        ! splicer begin function.vector_iota
-        call c_vector_iota_bufferify(Carg%mem, Darg)
-        ! splicer end function.vector_iota
-        call SHROUD_vector_copy_int(Carg%mem, arg, size(arg,kind=C_SIZE_T))
-        !call SHROUD_capsule_delete(Carg)
-    end subroutine vector_iota
-
-    ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
-    ! arg_to_buffer
-    ! function_index=43
-    subroutine vector_increment(arg)
-        use iso_c_binding, only : C_INT, C_LONG
-        integer(C_INT), intent(INOUT) :: arg(:)
-        ! splicer begin function.vector_increment
-        call c_vector_increment_bufferify(arg, size(arg, kind=C_LONG))
-        ! splicer end function.vector_increment
-    end subroutine vector_increment
-
-    ! int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
-    ! arg_to_buffer
-    ! function_index=44
-    !>
-    !! \brief count number of underscore in vector of strings
-    !!
-    !<
-    function vector_string_count(arg) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_LONG
-        character(*), intent(IN) :: arg(:)
-        integer(C_INT) :: SHT_rv
-        ! splicer begin function.vector_string_count
-        SHT_rv = c_vector_string_count_bufferify(arg, &
-            size(arg, kind=C_LONG), len(arg, kind=C_INT))
-        ! splicer end function.vector_string_count
-    end function vector_string_count
-
     ! struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
-    ! function_index=49
+    ! function_index=43
     function return_struct_ptr(i, d) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR, c_f_pointer
@@ -1457,7 +1333,7 @@ contains
 
     ! const std::string & LastFunctionCalled() +len(30)
     ! arg_to_buffer
-    ! function_index=54
+    ! function_index=48
     function last_function_called() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR, C_INT

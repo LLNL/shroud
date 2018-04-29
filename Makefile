@@ -110,6 +110,9 @@ TESTDIRS = \
     $(tempdir)/run-tutorial/..\
     $(tempdir)/run-tutorial/python/.. \
     $(tempdir)/run-tutorial/lua/.. \
+    $(tempdir)/run-vectors/..\
+    $(tempdir)/run-vectors/python/.. \
+    $(tempdir)/run-vectors/lua/.. \
     $(tempdir)/run-forward/.. \
     $(tempdir)/run-strings/.. \
     $(tempdir)/run-strings/python/.. \
@@ -118,10 +121,10 @@ TESTDIRS = \
 
 testdirs : $(TESTDIRS)
 
-fortran : tutorial strings clibrary
+fortran : tutorial vectors strings clibrary
 
 # Compile the generated Fortran wrapper
-tutorial forward strings clibrary : testdirs
+tutorial vectors forward strings clibrary : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-$@ \
 	    -f $(top)/tests/run-$@/Makefile \
@@ -136,6 +139,7 @@ tutorial-cpp : testdirs
 # Run the Fortran tests
 test-fortran : fortran
 	$(tempdir)/run-tutorial/tutorial
+	$(tempdir)/run-vectors/vectors
 	$(tempdir)/run-strings/strings
 	$(tempdir)/run-clibrary/clibrary
 
@@ -191,6 +195,7 @@ test-all : test-fortran test-python test-lua
 test-clean :
 	rm -rf $(tempdir)/test
 	rm -rf $(tempdir)/run-tutorial
+	rm -rf $(tempdir)/run-vectors
 	rm -rf $(tempdir)/run-strings
 	rm -rf $(tempdir)/run-clibrary
 
@@ -229,7 +234,7 @@ distclean:
 #	rm -rf .eggs
 
 .PHONY : virtualenv develop docs test testdirs
-.PHONY : fortran test-fortran tutorial strings
+.PHONY : fortran test-fortran tutorial vectors strings clibrary
 .PHONY : test-python
 .PHONY : py-tutorial test-python-tutorial
 .PHONY : py-strings  test-python-strings

@@ -58,19 +58,6 @@
 extern "C" {
 #endif
 
-struct s_SHROUD_capsule_data {
-  void *addr;     /* address of C++ memory */
-  int idtor;      /* index of destructor */
-};
-typedef struct s_SHROUD_capsule_data SHROUD_capsule_data;
-
-struct s_SHROUD_vector_context {
-  void *addr;     /* address of data in std::vector */
-  size_t size;    /* size of data in std::vector */
-};
-typedef struct s_SHROUD_vector_context SHROUD_vector_context;
-
-
 //  Color
 enum TUT_Color {
     RED,
@@ -178,16 +165,6 @@ int TUT_useclass(const TUT_class1 * arg1);
 const TUT_class1 * TUT_getclass2();
 
 TUT_class1 * TUT_getclass3();
-
-int TUT_vector_sum_bufferify(const int * arg, long Sarg);
-
-void TUT_vector_iota_bufferify(SHROUD_capsule_data *Carg,
-    SHROUD_vector_context *Darg);
-
-void TUT_vector_increment_bufferify(int * arg, long Sarg);
-
-int TUT_vector_string_count_bufferify(const char * arg, long Sarg,
-    int Narg);
 
 int TUT_callback1(int in, int ( * incr)(int));
 
