@@ -595,6 +595,11 @@ F_capsule_data_type
     Name of derived type used to share memory information with C or C++.
     Defaults to *SHROUD_capsule_data*.
 
+F_capsule_final_function
+    Name of function used was ``FINAL`` of *F_capsule_type*.
+    The function is used to release memory allocated by C or C++.
+    Defaults to *SHROUD_capsule_final*.
+
 F_capsule_type
     Name of derived type used to release memory allocated by C or C++.
     Defaults to *SHROUD_capsule*.

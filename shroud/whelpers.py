@@ -217,12 +217,25 @@ type {F_capsule_type}+
 private
 type({F_capsule_data_type}) :: mem
 -contains
-+!final :: delete_capsule
++final :: {F_capsule_final_function}
 -end type {F_capsule_type}""", fmt),
 # cannot be declared with both PRIVATE and BIND(C) attributes
             modules = dict(
                 iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_INT' ],
-            )
+            ),
+            source = wformat("""
+subroutine {F_capsule_final_function}(cap)+
+type({F_capsule_type}), intent(INOUT) :: cap
+interface+
+subroutine array_destructor(mem)\tbind(C, name="{C_memory_dtor_function}")+
+import {F_capsule_data_type}
+implicit none
+type({F_capsule_data_type}), intent(INOUT) :: mem      
+-end subroutine array_destructor
+-end interface
+call array_destructor(cap%mem)
+-end subroutine {F_capsule_final_function}
+            """, fmt),
         )
         FHelpers[name] = helper
 

@@ -870,7 +870,7 @@ def initialize():
                     post_call=[
                         'call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',
-                        '!call SHROUD_capsule_delete({c_var_capsule})',
+#                        'call {F_capsule_final_function}({c_var_capsule})', # called via FINAL
                     ],
                 ),
                 intent_inout_buf=dict(
@@ -879,7 +879,7 @@ def initialize():
                     post_call=[
                         'call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',
-                        '!call SHROUD_capsule_delete({c_var_capsule})',
+#                        'call {F_capsule_final_function}({c_var_capsule})', # called via FINAL
                     ],
                 ),
             ),

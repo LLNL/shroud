@@ -170,6 +170,7 @@ void VEC_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
         // Unexpected case in destructor
     }
     }
+    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

@@ -63,7 +63,7 @@ module vectors_mod
         private
         type(SHROUD_capsule_data) :: mem
     contains
-        !final :: delete_capsule
+        final :: SHROUD_capsule_final
     end type SHROUD_capsule
 
     type, bind(C) :: SHROUD_vector_context
@@ -158,7 +158,6 @@ contains
         call c_vector_iota_bufferify(Carg%mem, Darg)
         ! splicer end function.vector_iota
         call SHROUD_vector_copy_int(Carg%mem, arg, size(arg,kind=C_SIZE_T))
-        !call SHROUD_capsule_delete(Carg)
     end subroutine vector_iota
 
     ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
@@ -174,7 +173,6 @@ contains
             Carg%mem, Darg)
         ! splicer end function.vector_increment
         call SHROUD_vector_copy_int(Carg%mem, arg, size(arg,kind=C_SIZE_T))
-        !call SHROUD_capsule_delete(Carg)
     end subroutine vector_increment
 
     ! int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
@@ -197,5 +195,19 @@ contains
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
+
+    subroutine SHROUD_capsule_final(cap)
+        type(SHROUD_capsule), intent(INOUT) :: cap
+        interface
+            subroutine array_destructor(mem) &
+                bind(C, name="VEC_SHROUD_array_destructor_function")
+                import SHROUD_capsule_data
+                implicit none
+                type(SHROUD_capsule_data), intent(INOUT) :: mem      
+            end subroutine array_destructor
+        end interface
+        call array_destructor(cap%mem)
+    end subroutine SHROUD_capsule_final
+                
 
 end module vectors_mod

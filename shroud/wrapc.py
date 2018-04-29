@@ -991,6 +991,7 @@ class Wrapc(util.WrapperMixin):
             '// Unexpected case in destructor\n'
             '-}\n'
             '}\n'
+            'cap->idtor = 0;  // avoid deleting again\n'
             '-}'
         )
 

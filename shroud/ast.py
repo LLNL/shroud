@@ -463,6 +463,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_capsule_data_type='SHROUD_capsule_data',
             F_capsule_data_type='SHROUD_capsule_data',
             F_capsule_type='SHROUD_capsule',
+            F_capsule_final_function='SHROUD_capsule_final',
 
             PY_result = 'SHTPy_rv',      # Create PyObject for result
             LUA_result = 'rv',

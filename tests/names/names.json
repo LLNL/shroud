@@ -279,6 +279,7 @@
             "F_C_pure_clause": "", 
             "F_C_result_clause": "", 
             "F_capsule_data_type": "SHROUD_capsule_data", 
+            "F_capsule_final_function": "SHROUD_capsule_final", 
             "F_capsule_type": "SHROUD_capsule", 
             "F_derived_member": "voidptr", 
             "F_filename_suffix": "F", 
@@ -1749,8 +1750,7 @@
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))", 
-                        "!call SHROUD_capsule_delete({c_var_capsule})"
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }, 
                 "intent_out_buf": {
@@ -1761,8 +1761,7 @@
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))", 
-                        "!call SHROUD_capsule_delete({c_var_capsule})"
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }
             }, 
