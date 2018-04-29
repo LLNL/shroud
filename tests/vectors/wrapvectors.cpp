@@ -108,22 +108,18 @@ void VEC_vector_iota_bufferify(SHROUD_capsule_data *Carg,
 // splicer end function.vector_iota_bufferify
 }
 
-// void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))
+// void vector_increment(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(inout)+size(Sarg))
 // function_index=8
-void VEC_vector_increment_bufferify(int * arg, long Sarg)
+void VEC_vector_increment_bufferify(int * arg, long Sarg,
+    SHROUD_capsule_data *Carg, SHROUD_vector_context *Darg)
 {
 // splicer begin function.vector_increment_bufferify
-    std::vector<int> SH_arg(arg, arg + Sarg);
-    vector_increment(SH_arg);
-    {
-        std::vector<int>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-        SHT_n = std::min(SH_arg.size(), SHT_n);
-        for(; SHT_i < SHT_n; SHT_i++) {
-            arg[SHT_i] = SH_arg[SHT_i];
-        }
-    }
+    std::vector<int> *SH_arg = new std::vector<int>(arg, arg + Sarg);
+    Carg->addr = static_cast<void *>(SH_arg);
+    Carg->idtor = 0;  // index of destructor
+    vector_increment(*SH_arg);
+    Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->size = SH_arg->size();
     return;
 // splicer end function.vector_increment_bufferify
 }

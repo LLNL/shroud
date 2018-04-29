@@ -2447,6 +2447,27 @@
         "std::vector": {
             "base": "vector", 
             "c_statements": {
+                "AAAintent_inout_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "size"
+                    ], 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        "{{+", 
+                        "std::vector<{cxx_T}>::size_type+", 
+                        "{c_temp}i = 0,", 
+                        "{c_temp}n = {c_var_size};", 
+                        "-{c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
+                        "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+", 
+                        "{c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
+                        "-}}", 
+                        "-}}"
+                    ], 
+                    "pre_call": [
+                        "std::vector<{cxx_T}> {cxx_var}(\t{c_var}, {c_var} + {c_var_size});"
+                    ]
+                }, 
                 "AAAintent_out_buf": {
                     "buf_args": [
                         "arg", 
@@ -2481,22 +2502,19 @@
                 "intent_inout_buf": {
                     "buf_args": [
                         "arg", 
-                        "size"
+                        "size", 
+                        "capsule", 
+                        "context"
                     ], 
-                    "cxx_local_var": "scalar", 
+                    "cxx_local_var": "pointer", 
                     "post_call": [
-                        "{{+", 
-                        "std::vector<{cxx_T}>::size_type+", 
-                        "{c_temp}i = 0,", 
-                        "{c_temp}n = {c_var_size};", 
-                        "-{c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
-                        "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+", 
-                        "{c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
-                        "-}}", 
-                        "-}}"
+                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
-                        "std::vector<{cxx_T}> {cxx_var}(\t{c_var}, {c_var} + {c_var_size});"
+                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});", 
+                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
+                        "{c_var_capsule}->idtor = 0;  // index of destructor"
                     ]
                 }, 
                 "intent_out_buf": {
@@ -2605,6 +2623,18 @@
             "cxx_header": "<vector>", 
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
+                "intent_inout_buf": {
+                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))", 
+                        "!call SHROUD_capsule_delete({c_var_capsule})"
+                    ]
+                }, 
                 "intent_out_buf": {
                     "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
                     "f_module": {

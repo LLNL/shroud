@@ -806,6 +806,22 @@ def initialize():
                     ],
                 ),
                 intent_inout_buf=dict(
+                    buf_args = [ 'arg', 'size', 'capsule', 'context' ],
+                    cxx_local_var='pointer',
+                    pre_call=[
+                        'std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t('
+                        '\t{c_var}, {c_var} + {c_var_size});',
+                        # Return address of vector.
+                        '{c_var_capsule}->addr = static_cast<void *>({cxx_var});',
+                        '{c_var_capsule}->idtor = 0;  // index of destructor',
+                    ],
+                    post_call=[
+                        # Return address and size of vector data.
+                        '{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
+                        '{c_var_context}->size = {cxx_var}->size();',
+                    ],
+                ),
+                AAAintent_inout_buf=dict(
                     buf_args = [ 'arg', 'size' ],
                     cxx_local_var='scalar',
                     pre_call=[
@@ -839,6 +855,15 @@ def initialize():
 
             f_statements=dict(
                 intent_out_buf=dict(
+                    f_helper='capsule_data vector_context vector_copy_{cxx_T}',
+                    f_module=dict(iso_c_binding=['C_SIZE_T']),
+                    post_call=[
+                        'call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, '
+                          '{f_var}, size({f_var},kind=C_SIZE_T))',
+                        '!call SHROUD_capsule_delete({c_var_capsule})',
+                    ],
+                ),
+                intent_inout_buf=dict(
                     f_helper='capsule_data vector_context vector_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
