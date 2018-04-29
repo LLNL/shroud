@@ -58,6 +58,7 @@
             "C_impl_filename": "wrapvectors.cpp", 
             "C_impl_filename_suffix": "cpp", 
             "C_local": "SHC_", 
+            "C_memory_dtor_function": "VEC_SHROUD_array_destructor_function", 
             "C_post_call": "", 
             "C_pre_call": "", 
             "C_prefix": "VEC_", 
@@ -343,7 +344,8 @@
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "SH_arg", 
-                            "f_context_type": "SHROUD_vector_context"
+                            "f_context_type": "SHROUD_vector_context", 
+                            "idtor": "1"
                         }, 
                         "fmtf": {
                             "c_context_type": "SHROUD_vector_context", 
@@ -405,7 +407,7 @@
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_iota_bufferify", 
                     "C_post_call": "Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->size = SH_arg->size();", 
-                    "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;\nCarg->addr = static_cast<void *>(SH_arg);\nCarg->idtor = 0;  // index of destructor", 
+                    "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;\nCarg->addr = static_cast<void *>(SH_arg);\nCarg->idtor = 1;  // index of destructor", 
                     "C_prototype": "SHROUD_capsule_data *Carg,\t SHROUD_vector_context *Darg", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -871,6 +873,7 @@
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
+            "C_memory_dtor_function_template": "{C_prefix}SHROUD_array_destructor_function", 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "C_var_capsule_template": "C{c_var}", 
             "C_var_context_template": "D{c_var}", 
@@ -1448,6 +1451,11 @@
                         "context"
                     ], 
                     "cxx_local_var": "pointer", 
+                    "destructor": [
+                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
+                        "delete cxx_ptr;"
+                    ], 
+                    "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -1465,6 +1473,11 @@
                     ], 
                     "c_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
                     "cxx_local_var": "pointer", 
+                    "destructor": [
+                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
+                        "delete cxx_ptr;"
+                    ], 
+                    "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -1472,7 +1485,7 @@
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;", 
                         "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = 0;  // index of destructor"
+                        "{c_var_capsule}->idtor = {idtor};  // index of destructor"
                     ]
                 }
             }, 

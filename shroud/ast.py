@@ -343,6 +343,8 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             C_name_template=(
                 '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
+            C_memory_dtor_function_template=(
+                '{C_prefix}SHROUD_array_destructor_function'),
 
             C_var_capsule_template = 'C{c_var}',     # capsule argument
             C_var_context_template = 'D{c_var}',     # context argument
@@ -528,6 +530,9 @@ class LibraryNode(AstNode, NamespaceMixin):
         # default some format strings based on other format strings
         self.eval_template('C_header_filename', '_library')
         self.eval_template('C_impl_filename', '_library')
+
+        self.eval_template('C_memory_dtor_function')
+
         # All class/methods and functions may go into this file or
         # just functions.
         self.eval_template('F_module_name', '_library')

@@ -94,6 +94,8 @@ class Wrapc(util.WrapperMixin):
         newlibrary = self.newlibrary
         fmt_library = newlibrary.fmtdict
         structs = []
+        # reserved the 0 slot of capsule_order
+        self.add_capsule_helper('--none--', [ '// Nothing to delete' ])
 
         self._push_splicer('class')
         for node in newlibrary.classes:
@@ -128,6 +130,8 @@ class Wrapc(util.WrapperMixin):
         else:
             self.wrap_enums(library)
             self.wrap_functions(library)
+            self.write_capsule_helper(library)
+
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
         self.gather_helper_code()
@@ -718,6 +722,16 @@ class Wrapc(util.WrapperMixin):
             elif cxx_local_var == 'pointer':
                 fmt_arg.cxx_member = '->'
 
+            destructor_name = intent_blk.get('destructor_name', None)
+            if destructor_name:
+                destructor_name = wformat(destructor_name, fmt_arg)
+                if destructor_name not in self.capsule_helpers:
+                    cmd_list = intent_blk['destructor']
+                    del_lines = []
+                    for cmd in cmd_list:
+                        append_format(del_lines, cmd, fmt_arg)
+                    fmt_arg.idtor = self.add_capsule_helper(destructor_name, del_lines)
+
             # Add code for intent of argument
             # pre_call.append('// intent=%s' % intent)
             cmd_list = intent_blk.get('pre_call', [])
@@ -946,3 +960,48 @@ class Wrapc(util.WrapperMixin):
         else:
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node.ast.name
+
+    def write_capsule_helper(self, library):
+        """Write a function used to delete memory when C/C++
+        memory is deleted.
+        """
+        if len(self.capsule_order) == 1:
+            # Only the 0 slot has been added, so return
+            # since the function will be unused.
+            return
+
+        fmt = library.fmtdict
+        output = self.impl
+        append_format(output,
+                      '\n'
+                      '// function to release C++ allocated memory\n'
+                      'void {C_memory_dtor_function}\t({C_capsule_data_type} *cap)\n'
+                      '{{+\n'
+                      'void *ptr = cap->addr;\n'
+                      'switch (cap->idtor) {{'
+                      , fmt)
+
+        for i, name in enumerate(self.capsule_order):
+            output.append('case {}:\n{{+'.format(i))
+            output.extend(self.capsule_helpers[name][1])
+            output.append('-}')
+
+        output.append(
+            'default:\n{+\n'
+            '// Unexpected case in destructor\n'
+            '-}\n'
+            '}\n'
+            '-}'
+        )
+
+    capsule_helpers = {}
+    capsule_order = []
+    def add_capsule_helper(self, name, lines):
+        """Add unique names to capsule_helpers.
+        Return index of name.
+        """
+        if name not in self.capsule_helpers:
+            self.capsule_helpers[name] = (str(len(self.capsule_helpers)), lines)
+            self.capsule_order.append(name)
+        return self.capsule_helpers[name][0]
+

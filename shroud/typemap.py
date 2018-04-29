@@ -777,12 +777,17 @@ def initialize():
                         '\t *{cxx_var} = new std::vector<{cxx_T}>;',
                         # Return address of vector.
                         '{c_var_capsule}->addr = static_cast<void *>({cxx_var});',
-                        '{c_var_capsule}->idtor = 0;  // index of destructor',
+                        '{c_var_capsule}->idtor = {idtor};  // index of destructor',
                     ],
                     post_call=[
                         # Return address and size of vector data.
                         '{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
                         '{c_var_context}->size = {cxx_var}->size();',
+                    ],
+                    destructor_name='std_vector_{cxx_T}',
+                    destructor=[
+                        'std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);',
+                        'delete cxx_ptr;',
                     ],
                 ),
 
@@ -819,6 +824,11 @@ def initialize():
                         # Return address and size of vector data.
                         '{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
                         '{c_var_context}->size = {cxx_var}->size();',
+                    ],
+                    destructor_name='std_vector_{cxx_T}',
+                    destructor=[
+                        'std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);',
+                        'delete cxx_ptr;',
                     ],
                 ),
                 AAAintent_inout_buf=dict(

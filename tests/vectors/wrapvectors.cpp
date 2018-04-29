@@ -100,7 +100,7 @@ void VEC_vector_iota_bufferify(SHROUD_capsule_data *Carg,
 // splicer begin function.vector_iota_bufferify
     std::vector<int> *SH_arg = new std::vector<int>;
     Carg->addr = static_cast<void *>(SH_arg);
-    Carg->idtor = 0;  // index of destructor
+    Carg->idtor = 1;  // index of destructor
     vector_iota(*SH_arg);
     Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();
     Darg->size = SH_arg->size();
@@ -148,6 +148,28 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     int SHC_rv = vector_string_count(SH_arg);
     return SHC_rv;
 // splicer end function.vector_string_count_bufferify
+}
+
+// function to release C++ allocated memory
+void VEC_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
+{
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:
+    {
+        // Nothing to delete
+    }
+    case 1:
+    {
+        std::vector<int> *cxx_ptr = 
+            reinterpret_cast<std::vector<int> *>(ptr);
+        delete cxx_ptr;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+    }
+    }
 }
 
 }  // extern "C"

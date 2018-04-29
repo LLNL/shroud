@@ -338,6 +338,10 @@ C_impl_filename_class_template
 C_impl_filename_library_template
     ``wrap{library}.{C_impl_filename_suffix}``
 
+C_memory_dtor_function_template
+    Name of function used to delete memory allocated by C or C++.
+    defaults to ``{C_prefix}SHROUD_array_destructor_function``.
+
 C_name_template
     ``{C_prefix}{class_prefix}{underscore_name}{function_suffix}``
 
@@ -552,6 +556,9 @@ C_impl_filename_suffix:
 C_local
     Prefix for C compatible local variable.
     Defaults to *SHC_*.
+
+C_memory_dtor_function
+    Name of function used to delete memory allocated by C or C++.
 
 C_result
     The name of the C wrapper's result variable.
