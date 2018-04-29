@@ -146,6 +146,7 @@ int useclass(const Class1 *arg);
 void getclass(const Class1 **arg);
 const Class1 * getclass2();
 Class1 * getclass3();
+Class1 getClassNew(int flag);
 
 int callback1(int in, int (*incr)(int));
 

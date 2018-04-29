@@ -289,6 +289,14 @@ Class1 * getclass3()
     return const_cast<Class1 *>(global_class1);
 }
 
+/* Return class instance by value */
+Class1 getClassNew(int flag)
+{
+    Class1 node(flag);
+    last_function_called = "getClassNew";
+    return node;
+}
+
 //----------------------------------------------------------------------
 // class methods
 

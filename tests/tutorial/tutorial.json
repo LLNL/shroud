@@ -2595,7 +2595,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 59, 
+                "_PTR_F_C_index": 60, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtl": {
@@ -2808,7 +2808,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 59, 
+                "_function_index": 60, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -3158,7 +3158,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 60, 
+                "_function_index": 61, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -3267,8 +3267,8 @@
             }, 
             {
                 "_PTR_C_CXX_index": 22, 
-                "_PTR_F_C_index": 60, 
-                "_function_index": 61, 
+                "_PTR_F_C_index": 61, 
+                "_function_index": 62, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -3381,7 +3381,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 49, 
+                "_function_index": 50, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -3461,7 +3461,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 50, 
+                "_function_index": 51, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -3535,8 +3535,8 @@
             }, 
             {
                 "_default_funcs": [
-                    49, 
-                    50
+                    50, 
+                    51
                 ], 
                 "_fmtargs": {
                     "arg1": {
@@ -3733,7 +3733,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 62, 
+                "_PTR_F_C_index": 63, 
                 "_cxx_overload": [
                     24, 
                     25
@@ -3864,7 +3864,7 @@
                         }
                     }
                 }, 
-                "_function_index": 62, 
+                "_function_index": 63, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -4125,7 +4125,7 @@
                         }
                     }
                 }, 
-                "_function_index": 51, 
+                "_function_index": 52, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -4234,7 +4234,7 @@
                         }
                     }
                 }, 
-                "_function_index": 52, 
+                "_function_index": 53, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -4347,7 +4347,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 53, 
+                "_function_index": 54, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -4408,7 +4408,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 54, 
+                "_function_index": 55, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -4562,7 +4562,7 @@
             }, 
             {
                 "_PTR_F_C_index": 28, 
-                "_function_index": 65, 
+                "_function_index": 66, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -4620,7 +4620,7 @@
             }, 
             {
                 "_PTR_F_C_index": 28, 
-                "_function_index": 66, 
+                "_function_index": 67, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -4727,7 +4727,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 63, 
+                "_PTR_F_C_index": 64, 
                 "_cxx_overload": [
                     29, 
                     30
@@ -4889,7 +4889,7 @@
                     29, 
                     30
                 ], 
-                "_function_index": 67, 
+                "_function_index": 68, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -4972,7 +4972,7 @@
                     29, 
                     30
                 ], 
-                "_function_index": 68, 
+                "_function_index": 69, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -5086,7 +5086,7 @@
                         }
                     }
                 }, 
-                "_function_index": 63, 
+                "_function_index": 64, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -5200,7 +5200,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 55, 
+                "_function_index": 56, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5314,7 +5314,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 56, 
+                "_function_index": 57, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5407,8 +5407,8 @@
                     32
                 ], 
                 "_default_funcs": [
-                    55, 
-                    56
+                    56, 
+                    57
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -5699,7 +5699,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 57, 
+                "_function_index": 58, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5837,7 +5837,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 58, 
+                "_function_index": 59, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -5940,8 +5940,8 @@
                     32
                 ], 
                 "_default_funcs": [
-                    57, 
-                    58
+                    58, 
+                    59
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -7170,6 +7170,39 @@
                 }
             }, 
             {
+                "_function_index": 41, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "tutorial::Class1"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "getClassNew", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [], 
+                    "specifier": [
+                        "Class1"
+                    ]
+                }, 
+                "decl": "Class1 getClassNew()", 
+                "declgen": "Class1 getClassNew()", 
+                "doxygen": {
+                    "brief": "Return Class1 instance by value"
+                }, 
+                "format": {
+                    "function_name": "getClassNew", 
+                    "underscore_name": "get_class_new"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
                 "_fmtargs": {
                     "in": {
                         "fmtc": {
@@ -7208,7 +7241,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 41, 
+                "_function_index": 42, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -7387,7 +7420,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 42, 
+                "_function_index": 43, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::struct1"
@@ -7546,7 +7579,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 43, 
+                "_function_index": 44, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::struct1"
@@ -7655,7 +7688,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 44, 
+                "_function_index": 45, 
                 "ast": {
                     "attrs": {
                         "_typename": "double"
@@ -7744,7 +7777,7 @@
                         "cxx_var": "SHC_rv"
                     }
                 }, 
-                "_function_index": 45, 
+                "_function_index": 46, 
                 "ast": {
                     "attrs": {
                         "_typename": "double"
@@ -7858,7 +7891,7 @@
                         }
                     }
                 }, 
-                "_function_index": 46, 
+                "_function_index": 47, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7972,7 +8005,7 @@
                         }
                     }
                 }, 
-                "_function_index": 47, 
+                "_function_index": 48, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -8038,7 +8071,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 64, 
+                "_PTR_F_C_index": 65, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
@@ -8066,7 +8099,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 48, 
+                "_function_index": 49, 
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
@@ -8120,7 +8153,7 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 48, 
+                "_PTR_C_CXX_index": 49, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -8147,7 +8180,7 @@
                         "cxx_var": "SHCXX_rv"
                     }
                 }, 
-                "_function_index": 64, 
+                "_function_index": 65, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {

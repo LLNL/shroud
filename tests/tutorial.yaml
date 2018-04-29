@@ -287,6 +287,15 @@ declarations:
 #    wrap_python: False
       wrap_lua: False
   
+  - decl: Class1 getClassNew() 
+    doxygen:
+         brief: Return Class1 instance by value
+    options:
+      wrap_fortran: False
+      wrap_c: False
+      wrap_python: False
+      wrap_lua: False
+  
   
 ##################################################
   
