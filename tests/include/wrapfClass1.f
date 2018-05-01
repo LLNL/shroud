@@ -56,7 +56,7 @@ module class1_mod
 
 
     type class1
-        type(SHROUD_capsule_data), private :: voidptr
+        type(SHROUD_capsule_data), private :: cxxmem
     contains
         procedure :: method1 => class1_method1
         procedure :: get_instance => class1_get_instance
@@ -91,29 +91,29 @@ contains
         use iso_c_binding, only : C_INT
         class(class1) :: obj
         integer(C_INT), value, intent(IN) :: arg1
-        call c_class1_method1(obj%voidptr, arg1)
+        call c_class1_method1(obj%cxxmem, arg1)
     end subroutine class1_method1
 
-    function class1_get_instance(obj) result (voidptr)
+    function class1_get_instance(obj) result (cxxmem)
         use iso_c_binding, only: C_PTR
         class(class1), intent(IN) :: obj
-        type(C_PTR) :: voidptr
-        voidptr = obj%voidptr%addr
+        type(C_PTR) :: cxxmem
+        cxxmem = obj%cxxmem%addr
     end function class1_get_instance
 
-    subroutine class1_set_instance(obj, voidptr)
+    subroutine class1_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
         class(class1), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: voidptr
-        obj%voidptr%addr = voidptr
-        obj%voidptr%idtor = 0
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
     end subroutine class1_set_instance
 
     function class1_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(class1), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr%addr)
+        rv = c_associated(obj%cxxmem%addr)
     end function class1_associated
 
 
@@ -121,7 +121,7 @@ contains
         use iso_c_binding, only: c_associated
         type(class1), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -132,7 +132,7 @@ contains
         use iso_c_binding, only: c_associated
         type(class1), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.

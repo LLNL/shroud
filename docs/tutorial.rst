@@ -1032,9 +1032,8 @@ For Fortran a derived type is created::
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
 
-    type SHROUD_capsule
-        private
-        type(SHROUD_capsule_data) :: mem
+    type class1
+        type(SHROUD_capsule_data), private :: cxxmem
     contains
         procedure :: method1 => class1_method1
     end type class1
@@ -1044,13 +1043,13 @@ And the subroutines::
     function class1_new() &
             result(SHT_rv)
         type(class1) :: SHT_rv
-        SHT_rv%voidptr = c_class1_new_default()
+        SHT_rv%cxxmem = c_class1_new_default()
     end function class1_new
     
     subroutine class1_delete(obj)
         use iso_c_binding, only : C_NULL_PTR
         class(class1) :: obj
-        call c_class1_delete(obj%voidptr)
+        call c_class1_delete(obj%cxxmem)
     end subroutine class1_delete
 
     function class1_method1(obj) &
@@ -1058,7 +1057,7 @@ And the subroutines::
         use iso_c_binding, only : C_INT
         class(class1) :: obj
         integer(C_INT) :: SHT_rv
-        SHT_rv = c_class1_method1(obj%voidptr)
+        SHT_rv = c_class1_method1(obj%cxxmem)
     end function class1_method1
 
 The C++ code to call the function::
@@ -1105,7 +1104,7 @@ This produces the C code::
 The derived type has a function with the ``NOPASS`` keyword::
 
     type singleton
-        type(C_PTR), private :: voidptr
+        type(SHROUD_capsule_data), private :: cxxmem
     contains
         procedure, nopass :: get_reference => singleton_get_reference
     end type singleton

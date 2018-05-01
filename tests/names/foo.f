@@ -62,7 +62,7 @@ module name_module
     ! splicer end class.Names.module_top
 
     type FNames
-        type(SHROUD_capsule_data), private :: voidptr
+        type(SHROUD_capsule_data), private :: cxxmem
         ! splicer begin class.Names.component_part
         ! splicer end class.Names.component_part
     contains
@@ -110,7 +110,7 @@ contains
     subroutine names_method1(obj)
         class(FNames) :: obj
         ! splicer begin class.Names.method.type_method1
-        call xxx_tes_names_method1(obj%voidptr)
+        call xxx_tes_names_method1(obj%cxxmem)
         ! splicer end class.Names.method.type_method1
     end subroutine names_method1
 
@@ -119,30 +119,30 @@ contains
     subroutine names_method2(obj2)
         class(FNames) :: obj2
         ! splicer begin class.Names.method.method2
-        call xxx_tes_names_method2(obj2%voidptr)
+        call xxx_tes_names_method2(obj2%cxxmem)
         ! splicer end class.Names.method.method2
     end subroutine names_method2
 
-    function names_get_instance(obj) result (voidptr)
+    function names_get_instance(obj) result (cxxmem)
         use iso_c_binding, only: C_PTR
         class(FNames), intent(IN) :: obj
-        type(C_PTR) :: voidptr
-        voidptr = obj%voidptr%addr
+        type(C_PTR) :: cxxmem
+        cxxmem = obj%cxxmem%addr
     end function names_get_instance
 
-    subroutine names_set_instance(obj, voidptr)
+    subroutine names_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
         class(FNames), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: voidptr
-        obj%voidptr%addr = voidptr
-        obj%voidptr%idtor = 0
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
     end subroutine names_set_instance
 
     function names_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(FNames), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr%addr)
+        rv = c_associated(obj%cxxmem%addr)
     end function names_associated
 
     ! splicer begin class.Names.additional_functions
@@ -152,7 +152,7 @@ contains
         use iso_c_binding, only: c_associated
         type(FNames), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -163,7 +163,7 @@ contains
         use iso_c_binding, only: c_associated
         type(FNames), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.

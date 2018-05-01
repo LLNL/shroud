@@ -62,7 +62,7 @@ module names2_mod
     ! splicer end class.Names2.module_top
 
     type names2
-        type(SHROUD_capsule_data), private :: voidptr
+        type(SHROUD_capsule_data), private :: cxxmem
         ! splicer begin class.Names2.component_part
         ! splicer end class.Names2.component_part
     contains
@@ -89,26 +89,26 @@ module names2_mod
 
 contains
 
-    function names2_get_instance(obj) result (voidptr)
+    function names2_get_instance(obj) result (cxxmem)
         use iso_c_binding, only: C_PTR
         class(names2), intent(IN) :: obj
-        type(C_PTR) :: voidptr
-        voidptr = obj%voidptr%addr
+        type(C_PTR) :: cxxmem
+        cxxmem = obj%cxxmem%addr
     end function names2_get_instance
 
-    subroutine names2_set_instance(obj, voidptr)
+    subroutine names2_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
         class(names2), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: voidptr
-        obj%voidptr%addr = voidptr
-        obj%voidptr%idtor = 0
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
     end subroutine names2_set_instance
 
     function names2_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(names2), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr%addr)
+        rv = c_associated(obj%cxxmem%addr)
     end function names2_associated
 
     ! splicer begin class.Names2.additional_functions
@@ -118,7 +118,7 @@ contains
         use iso_c_binding, only: c_associated
         type(names2), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -129,7 +129,7 @@ contains
         use iso_c_binding, only: c_associated
         type(names2), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.

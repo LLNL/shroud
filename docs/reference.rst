@@ -609,7 +609,7 @@ F_derived_member
     The name of the member of the Fortran derived type which
     wraps a C++ class.  It will contain a ``type(C_PTR)`` which
     points to the C++ instance.
-    Defaults to *voidptr*.
+    Defaults to *cxxmem*.
 
 F_filename_suffix:
    Suffix added to Fortran files.

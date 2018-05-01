@@ -647,7 +647,7 @@ compilation directives::
 The generated type will be::
 
         type exclass3
-            type(C_PTR), private :: voidptr
+            type(SHROUD_capsule_data), private :: cxxmem
         contains
             procedure :: exfunc_0 => exclass3_exfunc_0
             procedure :: exfunc_1 => exclass3_exfunc_1

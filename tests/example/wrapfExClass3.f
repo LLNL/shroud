@@ -61,7 +61,7 @@ module exclass3_mod
     ! splicer end class.ExClass3.module_top
 
     type exclass3
-        type(SHROUD_capsule_data), private :: voidptr
+        type(SHROUD_capsule_data), private :: cxxmem
         ! splicer begin class.ExClass3.component_part
         ! splicer end class.ExClass3.component_part
     contains
@@ -121,7 +121,7 @@ contains
     subroutine exclass3_exfunc_0(obj)
         class(exclass3) :: obj
         ! splicer begin class.ExClass3.method.exfunc_0
-        call c_exclass3_exfunc_0(obj%voidptr)
+        call c_exclass3_exfunc_0(obj%cxxmem)
         ! splicer end class.ExClass3.method.exfunc_0
     end subroutine exclass3_exfunc_0
 #endif
@@ -134,23 +134,23 @@ contains
         class(exclass3) :: obj
         integer(C_INT), value, intent(IN) :: flag
         ! splicer begin class.ExClass3.method.exfunc_1
-        call c_exclass3_exfunc_1(obj%voidptr, flag)
+        call c_exclass3_exfunc_1(obj%cxxmem, flag)
         ! splicer end class.ExClass3.method.exfunc_1
     end subroutine exclass3_exfunc_1
 #endif
 
-    function exclass3_yadda(obj) result (voidptr)
+    function exclass3_yadda(obj) result (cxxmem)
         use iso_c_binding, only: C_PTR
         class(exclass3), intent(IN) :: obj
-        type(C_PTR) :: voidptr
-        voidptr = obj%voidptr%addr
+        type(C_PTR) :: cxxmem
+        cxxmem = obj%cxxmem%addr
     end function exclass3_yadda
 
     function exclass3_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(exclass3), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr%addr)
+        rv = c_associated(obj%cxxmem%addr)
     end function exclass3_associated
 
     ! splicer begin class.ExClass3.additional_functions
@@ -160,7 +160,7 @@ contains
         use iso_c_binding, only: c_associated
         type(exclass3), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -171,7 +171,7 @@ contains
         use iso_c_binding, only: c_associated
         type(exclass3), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.

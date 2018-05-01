@@ -81,7 +81,7 @@ module tutorial_mod
     ! splicer end class.Class1.module_top
 
     type class1
-        type(SHROUD_capsule_data), private :: voidptr
+        type(SHROUD_capsule_data), private :: cxxmem
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -104,7 +104,7 @@ module tutorial_mod
     ! splicer end class.Singleton.module_top
 
     type singleton
-        type(SHROUD_capsule_data), private :: voidptr
+        type(SHROUD_capsule_data), private :: cxxmem
         ! splicer begin class.Singleton.component_part
         ! splicer end class.Singleton.component_part
     contains
@@ -751,7 +751,7 @@ contains
             result(SHT_rv)
         type(class1) :: SHT_rv
         ! splicer begin class.Class1.method.new_default
-        SHT_rv%voidptr = c_class1_new_default()
+        SHT_rv%cxxmem = c_class1_new_default()
         ! splicer end class.Class1.method.new_default
     end function class1_new_default
 
@@ -763,7 +763,7 @@ contains
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
         ! splicer begin class.Class1.method.new_flag
-        SHT_rv%voidptr = c_class1_new_flag(flag)
+        SHT_rv%cxxmem = c_class1_new_flag(flag)
         ! splicer end class.Class1.method.new_flag
     end function class1_new_flag
 
@@ -772,7 +772,7 @@ contains
     subroutine class1_delete(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.delete
-        call c_class1_delete(obj%voidptr)
+        call c_class1_delete(obj%cxxmem)
         ! splicer end class.Class1.method.delete
     end subroutine class1_delete
 
@@ -788,7 +788,7 @@ contains
         class(class1) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.method1
-        SHT_rv = c_class1_method1(obj%voidptr)
+        SHT_rv = c_class1_method1(obj%cxxmem)
         ! splicer end class.Class1.method.method1
     end function class1_method1
 
@@ -805,7 +805,7 @@ contains
         type(class1), intent(IN) :: obj2
         logical :: SHT_rv
         ! splicer begin class.Class1.method.equivalent
-        SHT_rv = c_class1_equivalent(obj%voidptr, obj2%voidptr)
+        SHT_rv = c_class1_equivalent(obj%cxxmem, obj2%cxxmem)
         ! splicer end class.Class1.method.equivalent
     end function class1_equivalent
 
@@ -818,7 +818,7 @@ contains
     subroutine class1_return_this(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.return_this
-        call c_class1_return_this(obj%voidptr)
+        call c_class1_return_this(obj%cxxmem)
         ! splicer end class.Class1.method.return_this
     end subroutine class1_return_this
 
@@ -831,7 +831,7 @@ contains
         integer(C_INT), value, intent(IN) :: arg
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.direction_func
-        SHT_rv = c_class1_direction_func(obj%voidptr, arg)
+        SHT_rv = c_class1_direction_func(obj%cxxmem, arg)
         ! splicer end class.Class1.method.direction_func
     end function class1_direction_func
 
@@ -843,7 +843,7 @@ contains
         class(class1) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_m_flag
-        SHT_rv = c_class1_get_m_flag(obj%voidptr)
+        SHT_rv = c_class1_get_m_flag(obj%cxxmem)
         ! splicer end class.Class1.method.get_m_flag
     end function class1_get_m_flag
 
@@ -855,7 +855,7 @@ contains
         class(class1) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_test
-        SHT_rv = c_class1_get_test(obj%voidptr)
+        SHT_rv = c_class1_get_test(obj%cxxmem)
         ! splicer end class.Class1.method.get_test
     end function class1_get_test
 
@@ -866,30 +866,30 @@ contains
         class(class1) :: obj
         integer(C_INT), value, intent(IN) :: val
         ! splicer begin class.Class1.method.set_test
-        call c_class1_set_test(obj%voidptr, val)
+        call c_class1_set_test(obj%cxxmem, val)
         ! splicer end class.Class1.method.set_test
     end subroutine class1_set_test
 
-    function class1_get_instance(obj) result (voidptr)
+    function class1_get_instance(obj) result (cxxmem)
         use iso_c_binding, only: C_PTR
         class(class1), intent(IN) :: obj
-        type(C_PTR) :: voidptr
-        voidptr = obj%voidptr%addr
+        type(C_PTR) :: cxxmem
+        cxxmem = obj%cxxmem%addr
     end function class1_get_instance
 
-    subroutine class1_set_instance(obj, voidptr)
+    subroutine class1_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
         class(class1), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: voidptr
-        obj%voidptr%addr = voidptr
-        obj%voidptr%idtor = 0
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
     end subroutine class1_set_instance
 
     function class1_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(class1), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr%addr)
+        rv = c_associated(obj%cxxmem%addr)
     end function class1_associated
 
     ! splicer begin class.Class1.additional_functions
@@ -901,30 +901,30 @@ contains
             result(SHT_rv)
         type(singleton) :: SHT_rv
         ! splicer begin class.Singleton.method.get_reference
-        SHT_rv%voidptr = c_singleton_get_reference()
+        SHT_rv%cxxmem = c_singleton_get_reference()
         ! splicer end class.Singleton.method.get_reference
     end function singleton_get_reference
 
-    function singleton_get_instance(obj) result (voidptr)
+    function singleton_get_instance(obj) result (cxxmem)
         use iso_c_binding, only: C_PTR
         class(singleton), intent(IN) :: obj
-        type(C_PTR) :: voidptr
-        voidptr = obj%voidptr%addr
+        type(C_PTR) :: cxxmem
+        cxxmem = obj%cxxmem%addr
     end function singleton_get_instance
 
-    subroutine singleton_set_instance(obj, voidptr)
+    subroutine singleton_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
         class(singleton), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: voidptr
-        obj%voidptr%addr = voidptr
-        obj%voidptr%idtor = 0
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
     end subroutine singleton_set_instance
 
     function singleton_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(singleton), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr%addr)
+        rv = c_associated(obj%cxxmem%addr)
     end function singleton_associated
 
     ! splicer begin class.Singleton.additional_functions
@@ -1305,7 +1305,7 @@ contains
         type(class1), intent(IN) :: arg1
         integer(C_INT) :: SHT_rv
         ! splicer begin function.useclass
-        SHT_rv = c_useclass(arg1%voidptr)
+        SHT_rv = c_useclass(arg1%cxxmem)
         ! splicer end function.useclass
     end function useclass
 
@@ -1315,7 +1315,7 @@ contains
             result(SHT_rv)
         type(class1) :: SHT_rv
         ! splicer begin function.getclass2
-        SHT_rv%voidptr = c_getclass2()
+        SHT_rv%cxxmem = c_getclass2()
         ! splicer end function.getclass2
     end function getclass2
 
@@ -1325,7 +1325,7 @@ contains
             result(SHT_rv)
         type(class1) :: SHT_rv
         ! splicer begin function.getclass3
-        SHT_rv%voidptr = c_getclass3()
+        SHT_rv%cxxmem = c_getclass3()
         ! splicer end function.getclass3
     end function getclass3
 
@@ -1364,7 +1364,7 @@ contains
         use iso_c_binding, only: c_associated
         type(class1), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -1375,7 +1375,7 @@ contains
         use iso_c_binding, only: c_associated
         type(class1), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -1386,7 +1386,7 @@ contains
         use iso_c_binding, only: c_associated
         type(singleton), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -1397,7 +1397,7 @@ contains
         use iso_c_binding, only: c_associated
         type(singleton), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr%addr, b%voidptr%addr)) then
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.

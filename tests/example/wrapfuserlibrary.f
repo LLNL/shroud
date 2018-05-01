@@ -475,7 +475,7 @@ contains
         use sidre_mod, only : group
         type(datagroup), intent(IN) :: grp
         ! splicer begin function.testgroup1
-        call c_testgroup1(grp%voidptr)
+        call c_testgroup1(grp%cxxmem)
         ! splicer end function.testgroup1
     end subroutine testgroup1
 
@@ -485,7 +485,7 @@ contains
         use sidre_mod, only : group
         type(datagroup), intent(IN) :: grp
         ! splicer begin function.testgroup2
-        call c_testgroup2(grp%voidptr)
+        call c_testgroup2(grp%cxxmem)
         ! splicer end function.testgroup2
     end subroutine testgroup2
 
