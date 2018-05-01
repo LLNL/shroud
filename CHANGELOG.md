@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   create a wrapper with the POINTER attribute.
   See option **return_scalar_pointer**.
 
+- Add FINAL clauses to allow memory to be released when it goes out of scope.
+- Support returning a class instance.
+
 ## v0.9.0 - 2018-04-04
 ### Added
 - Support class static methods.

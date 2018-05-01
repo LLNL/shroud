@@ -375,18 +375,14 @@ class Wrapf(util.WrapperMixin):
             self.type_bound_part.append('procedure :: %s => %s' % (
                     fmt.F_name_function, fmt.F_name_impl))
 
-            impl.append('')
             append_format(
-                impl, 'function {F_name_impl}({F_this}) '
-                'result ({F_derived_member})', fmt)
-            impl.append(1)
-            impl.append('use iso_c_binding, only: C_PTR')
-            append_format(
-                impl, 'class({F_derived_name}), intent(IN) :: {F_this}', fmt)
-            append_format(impl, 'type(C_PTR) :: {F_derived_member}', fmt)
-            append_format(impl, '{F_derived_member} = {F_this}%{F_derived_member}%addr', fmt)
-            impl.append(-1)
-            append_format(impl, 'end function {F_name_impl}', fmt)
+                impl, """
+function {F_name_impl}({F_this}) result ({F_derived_member})+
+use iso_c_binding, only: C_PTR
+class({F_derived_name}), intent(IN) :: {F_this}
+type(C_PTR) :: {F_derived_member}
+{F_derived_member} = {F_this}%{F_derived_member}%addr
+-end function {F_name_impl}""", fmt)
 
         # set
         fmt.underscore_name = fmt_class.F_name_instance_set
@@ -397,22 +393,16 @@ class Wrapf(util.WrapperMixin):
             self.type_bound_part.append('procedure :: %s => %s' % (
                     fmt.F_name_function, fmt.F_name_impl))
 
-            impl.append('')
-            append_format(
-                impl, 'subroutine {F_name_impl}'
-                '({F_this}, {F_derived_member})', fmt)
-            impl.append(1)
-            impl.append('use iso_c_binding, only: C_PTR')
-            append_format(
-                impl, 'class({F_derived_name}), intent(INOUT) :: {F_this}',
-                fmt)
-            append_format(
-                impl, 'type(C_PTR), intent(IN) :: {F_derived_member}', fmt)
             # XXX - release existing pointer?
-            append_format(impl, '{F_this}%{F_derived_member}%addr = {F_derived_member}', fmt)
-            append_format(impl, '{F_this}%{F_derived_member}%idtor = 0', fmt)
-            impl.append(-1)
-            append_format(impl, 'end subroutine {F_name_impl}', fmt)
+            append_format(
+                impl, """
+subroutine {F_name_impl}({F_this}, {F_derived_member})+
+use iso_c_binding, only: C_PTR
+class({F_derived_name}), intent(INOUT) :: {F_this}
+type(C_PTR), intent(IN) :: {F_derived_member}
+{F_this}%{F_derived_member}%addr = {F_derived_member}
+{F_this}%{F_derived_member}%idtor = 0
+-end subroutine {F_name_impl}""", fmt)
 
         # associated
         fmt.underscore_name = fmt_class.F_name_associated
@@ -423,17 +413,14 @@ class Wrapf(util.WrapperMixin):
             self.type_bound_part.append('procedure :: %s => %s' % (
                     fmt.F_name_function, fmt.F_name_impl))
 
-            impl.append('')
             append_format(
-                impl, 'function {F_name_impl}({F_this}) result (rv)', fmt)
-            impl.append(1)
-            impl.append('use iso_c_binding, only: c_associated')
-            append_format(
-                impl, 'class({F_derived_name}), intent(IN) :: {F_this}', fmt)
-            impl.append('logical rv')
-            append_format(impl, 'rv = c_associated({F_this}%{F_derived_member}%addr)', fmt)
-            impl.append(-1)
-            append_format(impl, 'end function {F_name_impl}', fmt)
+                impl, """
+function {F_name_impl}({F_this}) result (rv)+
+use iso_c_binding, only: c_associated
+class({F_derived_name}), intent(IN) :: {F_this}
+logical rv
+rv = c_associated({F_this}%{F_derived_member}%addr)
+-end function {F_name_impl}""", fmt)
 
         # final
         fmt.underscore_name = fmt_class.F_name_final
@@ -471,24 +458,17 @@ call array_destructor({F_this}%{F_derived_member})
             return
 
         operator = self.operator_impl
-        operator.append('')
-        append_format(operator, 'function {procedure}(a,b) result (rv)', fmt)
-        operator.append(1)
-        operator.append('use iso_c_binding, only: c_associated')
-        append_format(operator,
-                      'type({F_derived_name}), intent(IN) ::a,b', fmt)
-        operator.append('logical :: rv')
-        append_format(operator, 'if ({predicate}) then', fmt)
-        operator.append(1)
-        operator.append('rv = .true.')
-        operator.append(-1)
-        operator.append('else')
-        operator.append(1)
-        operator.append('rv = .false.')
-        operator.append(-1)
-        operator.append('endif')
-        operator.append(-1)
-        append_format(operator, 'end function {procedure}', fmt)
+        append_format(operator, """
+function {procedure}(a,b) result (rv)+
+use iso_c_binding, only: c_associated
+type({F_derived_name}), intent(IN) ::a,b
+logical :: rv
+if ({predicate}) then+
+rv = .true.
+-else+
+rv = .false.
+-endif
+-end function {procedure}""", fmt)
 
     def wrap_function(self, cls, node):
         """

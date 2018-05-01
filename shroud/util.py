@@ -389,6 +389,12 @@ class WrapperMixin(object):
 
     def write_lines(self, fp, lines, spaces='    '):
         """ Write lines with indention and newlines.
+
+        #  preprocessor, start in column 1
+        @  literal line (ignore leading formating characters
+        0  start line in column 1
+        +  indent line
+        -  deindent line
         """
         for line in lines:
             if isinstance(line, int):
@@ -403,13 +409,15 @@ class WrapperMixin(object):
                         fp.write('\n')
                     elif subline[0] == '@':
                         # literal line with indent
-                        # For example, "@-" to avoid treating the "-" as deindent.
+                        # For example, "@-" to avoid treating the "-" as deindent
+                        # or "@0" to start line with a "0".
                         self.write_continue(fp, subline[1:], spaces)
                     elif subline[0] == '0':
                         # line start in column 1 (like labels)
                         fp.write(subline[1:])
                         fp.write('\n')
                     elif subline[0] == '+':
+                        #   +text[-]
                         self.indent += 1
                         if subline[-1] == '-':
                             # indent a single line
@@ -417,14 +425,16 @@ class WrapperMixin(object):
                             self.indent -= 1
                         else:
                             self.write_continue(fp, subline[1:], spaces)
-                    elif subline[-1] == '+':
-                        self.write_continue(fp, subline[:-1], spaces)
-                        self.indent += 1
                     else:
+                        # [-]*text[+]
                         while subline[0] == '-':
                             self.indent -= 1
                             subline = subline[1:]
-                        self.write_continue(fp, subline, spaces)
+                        if subline[-1] == '+':
+                            self.write_continue(fp, subline[:-1], spaces)
+                            self.indent += 1 
+                        else:
+                            self.write_continue(fp, subline, spaces)
 
     def write_doxygen_file(self, output, fname, library, cls):
         """ Write a doxygen comment block for a file.
