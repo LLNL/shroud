@@ -629,4 +629,32 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.last_function_called_bufferify
 }
 
+// function to release C++ allocated memory
+void TUT_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
+{
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:
+    {
+        // Nothing to delete
+    }
+    case 1:
+    {
+        tutorial::Class1 *cxx_ptr = 
+            reinterpret_cast<tutorial::Class1 *>(ptr);
+        delete cxx_ptr;
+    }
+    case 2:
+    {
+        Singleton *cxx_ptr = reinterpret_cast<Singleton *>(ptr);
+        delete cxx_ptr;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+    }
+    }
+    cap->idtor = 0;  // avoid deleting again
+}
+
 }  // extern "C"

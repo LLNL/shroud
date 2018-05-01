@@ -396,6 +396,16 @@ class Wrapc(util.WrapperMixin):
         # create a forward declaration for this type
         self.header_forward[cname] = True
 
+        # Create a capsule destructor for type
+        cxx_type = node.typedef.cxx_type
+        cxx_type = cxx_type.replace('\t', '')
+        del_lines=[
+            '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);'.format(
+                cxx_type=cxx_type) ,
+            'delete cxx_ptr;',
+        ]
+        node.typedef.idtor = self.add_capsule_helper(cxx_type, del_lines)
+
         self.wrap_enums(node)
 
         self._push_splicer('method')
@@ -1023,6 +1033,7 @@ class Wrapc(util.WrapperMixin):
             # since the function will be unused.
             return
 
+        self.c_helper['capsule_data_helper'] = True
         fmt = library.fmtdict
         output = self.impl
         append_format(output,

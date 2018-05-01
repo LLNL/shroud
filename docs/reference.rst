@@ -1273,6 +1273,11 @@ f_statement
 
             f_module=dict(iso_c_binding=['C_SIZE_T']),
 
+idtor
+    Index of ``capsule_data`` destructor in the function
+    *C_memory_dtor_function*.
+    Defaults to *0* indicating no destructor.
+
 result_as_arg
     Override fields when result should be treated as an argument.
     Defaults to *None*.

@@ -193,7 +193,6 @@ integer(C_INT) :: idtor = 0       ! index of destructor
         )
         FHelpers[name] = helper
 
-
     if name not in CHelpers:
         helper = dict(
             h_source=wformat("""

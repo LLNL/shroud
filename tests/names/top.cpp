@@ -135,4 +135,31 @@ void TES_init_ns1()
 // splicer end function.init_ns1
 }
 
+// function to release C++ allocated memory
+void TES_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
+{
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:
+    {
+        // Nothing to delete
+    }
+    case 1:
+    {
+        Names *cxx_ptr = reinterpret_cast<Names *>(ptr);
+        delete cxx_ptr;
+    }
+    case 2:
+    {
+        Names2 *cxx_ptr = reinterpret_cast<Names2 *>(ptr);
+        delete cxx_ptr;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+    }
+    }
+    cap->idtor = 0;  // avoid deleting again
+}
+
 }  // extern "C"

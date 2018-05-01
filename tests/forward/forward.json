@@ -1291,6 +1291,7 @@
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(class2)", 
             "forward": "tutorial::\tClass2", 
+            "idtor": "1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 

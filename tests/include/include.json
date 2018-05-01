@@ -552,6 +552,7 @@
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(class2)", 
             "forward": "Class2", 
+            "idtor": "2", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
@@ -1352,6 +1353,7 @@
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(class1)", 
             "forward": "three::\tClass1", 
+            "idtor": "1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 

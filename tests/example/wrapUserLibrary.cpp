@@ -347,4 +347,39 @@ void AA_cos_doubles(double * in, double * out, int sizein)
 // splicer end function.cos_doubles
 }
 
+// function to release C++ allocated memory
+void AA_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
+{
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:
+    {
+        // Nothing to delete
+    }
+    case 1:
+    {
+        example::nested::ExClass1 *cxx_ptr = 
+            reinterpret_cast<example::nested::ExClass1 *>(ptr);
+        delete cxx_ptr;
+    }
+    case 2:
+    {
+        example::nested::ExClass2 *cxx_ptr = 
+            reinterpret_cast<example::nested::ExClass2 *>(ptr);
+        delete cxx_ptr;
+    }
+    case 3:
+    {
+        example::nested::ExClass3 *cxx_ptr = 
+            reinterpret_cast<example::nested::ExClass3 *>(ptr);
+        delete cxx_ptr;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+    }
+    }
+    cap->idtor = 0;  // avoid deleting again
+}
+
 }  // extern "C"

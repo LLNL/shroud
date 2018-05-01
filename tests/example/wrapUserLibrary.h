@@ -61,6 +61,12 @@
 extern "C" {
 #endif
 
+struct s_SHROUD_capsule_data {
+  void *addr;     /* address of C++ memory */
+  int idtor;      /* index of destructor */
+};
+typedef struct s_SHROUD_capsule_data SHROUD_capsule_data;
+
 // declaration of shadow types
 struct s_SIDRE_group {
     void *addr;  /* address of C++ memory */

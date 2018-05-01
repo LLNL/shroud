@@ -53,4 +53,31 @@ void DEF_function1()
     return;
 }
 
+// function to release C++ allocated memory
+void DEF_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
+{
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:
+    {
+        // Nothing to delete
+    }
+    case 1:
+    {
+        three::Class1 *cxx_ptr = reinterpret_cast<three::Class1 *>(ptr);
+        delete cxx_ptr;
+    }
+    case 2:
+    {
+        Class2 *cxx_ptr = reinterpret_cast<Class2 *>(ptr);
+        delete cxx_ptr;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+    }
+    }
+    cap->idtor = 0;  // avoid deleting again
+}
+
 }  // extern "C"
