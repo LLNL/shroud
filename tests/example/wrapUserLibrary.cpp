@@ -355,28 +355,33 @@ void AA_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
     case 0:
     {
         // Nothing to delete
+        break;
     }
     case 1:
     {
         example::nested::ExClass1 *cxx_ptr = 
             reinterpret_cast<example::nested::ExClass1 *>(ptr);
         delete cxx_ptr;
+        break;
     }
     case 2:
     {
         example::nested::ExClass2 *cxx_ptr = 
             reinterpret_cast<example::nested::ExClass2 *>(ptr);
         delete cxx_ptr;
+        break;
     }
     case 3:
     {
         example::nested::ExClass3 *cxx_ptr = 
             reinterpret_cast<example::nested::ExClass3 *>(ptr);
         delete cxx_ptr;
+        break;
     }
     default:
     {
         // Unexpected case in destructor
+        break;
     }
     }
     cap->idtor = 0;  // avoid deleting again

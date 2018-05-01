@@ -435,6 +435,27 @@ class Wrapf(util.WrapperMixin):
             impl.append(-1)
             append_format(impl, 'end function {F_name_impl}', fmt)
 
+        # final
+        fmt.underscore_name = fmt_class.F_name_final
+        fmt.F_name_function = wformat(options.F_name_function_template, fmt)
+        fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
+
+        self.type_bound_part.append('final :: %s' % fmt.F_name_impl)
+
+        append_format(
+            impl, """
+subroutine {F_name_impl}({F_this})+
+type({F_derived_name}), intent(INOUT) :: {F_this}
+interface+
+subroutine array_destructor(mem)\t bind(C, name="{C_memory_dtor_function}")+
+import {F_capsule_data_type}
+implicit none
+type({F_capsule_data_type}), intent(INOUT) :: mem
+-end subroutine array_destructor
+-end interface
+call array_destructor({F_this}%{F_derived_member})
+-end subroutine {F_name_impl}""", fmt)
+
     def overload_compare(self, fmt_class, operator, procedure, predicate):
         """ Overload .eq. and .eq.
         """

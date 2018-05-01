@@ -71,6 +71,7 @@ module name_module
         procedure :: get_instance => names_get_instance
         procedure :: set_instance => names_set_instance
         procedure :: associated => names_associated
+        final :: names_final
         ! splicer begin class.Names.type_bound_procedure_part
         ! splicer end class.Names.type_bound_procedure_part
     end type FNames
@@ -144,6 +145,19 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function names_associated
+
+    subroutine names_final(obj)
+        type(FNames), intent(INOUT) :: obj
+        interface
+            subroutine array_destructor(mem) &
+                bind(C, name="TES_SHROUD_array_destructor_function")
+                import SHROUD_capsule_data
+                implicit none
+                type(SHROUD_capsule_data), intent(INOUT) :: mem
+            end subroutine array_destructor
+        end interface
+        call array_destructor(obj%cxxmem)
+    end subroutine names_final
 
     ! splicer begin class.Names.additional_functions
     ! splicer end class.Names.additional_functions

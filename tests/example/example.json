@@ -4818,6 +4818,7 @@
             "F_impl_filename": "wrapfuserlibrary.f", 
             "F_module_name": "userlibrary_mod", 
             "F_name_associated": "associated", 
+            "F_name_final": "final", 
             "F_name_instance_get": "yadda", 
             "F_name_instance_set": null, 
             "F_pointer": "SHT_ptr", 

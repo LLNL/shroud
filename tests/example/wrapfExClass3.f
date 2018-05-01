@@ -69,6 +69,7 @@ module exclass3_mod
         procedure :: exfunc_1 => exclass3_exfunc_1
         procedure :: yadda => exclass3_yadda
         procedure :: associated => exclass3_associated
+        final :: exclass3_final
 #ifdef USE_CLASS3_A
         generic :: exfunc => exfunc_0
 #endif
@@ -152,6 +153,19 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function exclass3_associated
+
+    subroutine exclass3_final(obj)
+        type(exclass3), intent(INOUT) :: obj
+        interface
+            subroutine array_destructor(mem) &
+                bind(C, name="AA_SHROUD_array_destructor_function")
+                import SHROUD_capsule_data
+                implicit none
+                type(SHROUD_capsule_data), intent(INOUT) :: mem
+            end subroutine array_destructor
+        end interface
+        call array_destructor(obj%cxxmem)
+    end subroutine exclass3_final
 
     ! splicer begin class.ExClass3.additional_functions
     ! splicer end class.ExClass3.additional_functions

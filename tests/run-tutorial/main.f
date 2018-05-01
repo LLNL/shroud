@@ -68,6 +68,7 @@ program tester
   call test_callback
 
   call test_struct1
+  call test_class1_final
   call test_class1
   call test_singleton
 
@@ -270,6 +271,20 @@ contains
     call assert_equals(5.0_C_DOUBLE, str1%dfield, "accept_struct_in_out_ptr d field")
 
   end subroutine test_struct1
+
+  ! Simple test of FINAL useful with debugger.
+  subroutine test_class1_final
+    type(class1) obj0
+
+    call set_case_name("test_class1_final")
+
+    ! Test generic constructor
+    obj0 = class1_new()
+
+    ! should call TUT_SHROUD_array_destructor_function as part of 
+    ! FINAL of capsule_data.
+
+  end subroutine test_class1_final
 
   subroutine test_class1
     integer iflag, mtest

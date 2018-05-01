@@ -772,6 +772,9 @@ F_name_associated
     Name of method to report if aa is associated.
     If the name is blank, no function is generated.
 
+F_name_final
+    Name of function used in ``FINAL`` for a class.
+
 F_name_instance_get
     Name of method to get ``type(C_PTR)`` instance pointer from wrapped class.
     Defaults to *get_instance*.

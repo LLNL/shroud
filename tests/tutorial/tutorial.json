@@ -1348,6 +1348,7 @@
             "F_impl_filename": "wrapftutorial.f", 
             "F_module_name": "tutorial_mod", 
             "F_name_associated": "associated", 
+            "F_name_final": "final", 
             "F_name_instance_get": "get_instance", 
             "F_name_instance_set": "set_instance", 
             "F_pointer": "SHT_ptr", 

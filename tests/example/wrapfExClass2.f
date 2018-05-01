@@ -87,6 +87,7 @@ module exclass2_mod
         procedure :: get_value_double => exclass2_get_value_double
         procedure :: yadda => exclass2_yadda
         procedure :: associated => exclass2_associated
+        final :: exclass2_final
         generic :: declare => declare_0_int, declare_0_long,  &
             declare_1_int, declare_1_long
         generic :: set_value => set_value_int, set_value_long,  &
@@ -613,6 +614,19 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function exclass2_associated
+
+    subroutine exclass2_final(obj)
+        type(exclass2), intent(INOUT) :: obj
+        interface
+            subroutine array_destructor(mem) &
+                bind(C, name="AA_SHROUD_array_destructor_function")
+                import SHROUD_capsule_data
+                implicit none
+                type(SHROUD_capsule_data), intent(INOUT) :: mem
+            end subroutine array_destructor
+        end interface
+        call array_destructor(obj%cxxmem)
+    end subroutine exclass2_final
 
     ! splicer begin class.ExClass2.additional_functions
     ! splicer end class.ExClass2.additional_functions

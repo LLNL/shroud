@@ -96,6 +96,7 @@ module tutorial_mod
         procedure :: get_instance => class1_get_instance
         procedure :: set_instance => class1_set_instance
         procedure :: associated => class1_associated
+        final :: class1_final
         ! splicer begin class.Class1.type_bound_procedure_part
         ! splicer end class.Class1.type_bound_procedure_part
     end type class1
@@ -112,6 +113,7 @@ module tutorial_mod
         procedure :: get_instance => singleton_get_instance
         procedure :: set_instance => singleton_set_instance
         procedure :: associated => singleton_associated
+        final :: singleton_final
         ! splicer begin class.Singleton.type_bound_procedure_part
         ! splicer end class.Singleton.type_bound_procedure_part
     end type singleton
@@ -892,6 +894,19 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function class1_associated
 
+    subroutine class1_final(obj)
+        type(class1), intent(INOUT) :: obj
+        interface
+            subroutine array_destructor(mem) &
+                bind(C, name="TUT_SHROUD_array_destructor_function")
+                import SHROUD_capsule_data
+                implicit none
+                type(SHROUD_capsule_data), intent(INOUT) :: mem
+            end subroutine array_destructor
+        end interface
+        call array_destructor(obj%cxxmem)
+    end subroutine class1_final
+
     ! splicer begin class.Class1.additional_functions
     ! splicer end class.Class1.additional_functions
 
@@ -926,6 +941,19 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function singleton_associated
+
+    subroutine singleton_final(obj)
+        type(singleton), intent(INOUT) :: obj
+        interface
+            subroutine array_destructor(mem) &
+                bind(C, name="TUT_SHROUD_array_destructor_function")
+                import SHROUD_capsule_data
+                implicit none
+                type(SHROUD_capsule_data), intent(INOUT) :: mem
+            end subroutine array_destructor
+        end interface
+        call array_destructor(obj%cxxmem)
+    end subroutine singleton_final
 
     ! splicer begin class.Singleton.additional_functions
     ! splicer end class.Singleton.additional_functions

@@ -453,6 +453,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_associated = 'associated',
             F_name_instance_get = 'get_instance',
             F_name_instance_set = 'set_instance',
+            F_name_final = 'final',
             F_result = 'SHT_rv',
             F_pointer = 'SHT_ptr',
             F_this = 'obj',

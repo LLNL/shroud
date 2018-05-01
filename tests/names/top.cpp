@@ -143,20 +143,24 @@ void TES_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
     case 0:
     {
         // Nothing to delete
+        break;
     }
     case 1:
     {
         Names *cxx_ptr = reinterpret_cast<Names *>(ptr);
         delete cxx_ptr;
+        break;
     }
     case 2:
     {
         Names2 *cxx_ptr = reinterpret_cast<Names2 *>(ptr);
         delete cxx_ptr;
+        break;
     }
     default:
     {
         // Unexpected case in destructor
+        break;
     }
     }
     cap->idtor = 0;  // avoid deleting again

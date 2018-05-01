@@ -62,6 +62,7 @@ module class1_mod
         procedure :: get_instance => class1_get_instance
         procedure :: set_instance => class1_set_instance
         procedure :: associated => class1_associated
+        final :: class1_final
     end type class1
 
     interface operator (.eq.)
@@ -115,6 +116,19 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function class1_associated
+
+    subroutine class1_final(obj)
+        type(class1), intent(INOUT) :: obj
+        interface
+            subroutine array_destructor(mem) &
+                bind(C, name="DEF_SHROUD_array_destructor_function")
+                import SHROUD_capsule_data
+                implicit none
+                type(SHROUD_capsule_data), intent(INOUT) :: mem
+            end subroutine array_destructor
+        end interface
+        call array_destructor(obj%cxxmem)
+    end subroutine class1_final
 
 
     function class1_eq(a,b) result (rv)

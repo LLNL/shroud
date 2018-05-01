@@ -82,6 +82,7 @@ module exclass1_mod
         procedure :: splicer_special => exclass1_splicer_special
         procedure :: yadda => exclass1_yadda
         procedure :: associated => exclass1_associated
+        final :: exclass1_final
         generic :: get_value => get_value_from_int, get_value_1
         ! splicer begin class.ExClass1.type_bound_procedure_part
           type bound procedure part 1
@@ -494,6 +495,19 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function exclass1_associated
+
+    subroutine exclass1_final(obj)
+        type(exclass1), intent(INOUT) :: obj
+        interface
+            subroutine array_destructor(mem) &
+                bind(C, name="AA_SHROUD_array_destructor_function")
+                import SHROUD_capsule_data
+                implicit none
+                type(SHROUD_capsule_data), intent(INOUT) :: mem
+            end subroutine array_destructor
+        end interface
+        call array_destructor(obj%cxxmem)
+    end subroutine exclass1_final
 
     ! splicer begin class.ExClass1.additional_functions
     ! splicer end class.ExClass1.additional_functions

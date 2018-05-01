@@ -1048,11 +1048,12 @@ class Wrapc(util.WrapperMixin):
         for i, name in enumerate(self.capsule_order):
             output.append('case {}:\n{{+'.format(i))
             output.extend(self.capsule_helpers[name][1])
-            output.append('-}')
+            output.append('break;\n-}')
 
         output.append(
             'default:\n{+\n'
             '// Unexpected case in destructor\n'
+            'break;\n'
             '-}\n'
             '}\n'
             'cap->idtor = 0;  // avoid deleting again\n'
