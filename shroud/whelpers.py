@@ -342,7 +342,6 @@ typedef struct s_SHROUD_vector_context SHROUD_vector_context;
 
 FHelpers = dict(
     fstr=dict(
-        f_helper=dict(fstr_ptr=True, fstr_arr=True),
         dependent_helpers=[ 'fstr_ptr', 'fstr_arr' ],
         private=['fstr'],
         interface="""
@@ -352,7 +351,6 @@ end interface""",
         ),
 
     fstr_ptr=dict(
-        f_helper=dict(strlen_ptr=True),
         dependent_helpers=[ 'strlen_ptr' ],
         private=['fstr_ptr'],
         source="""
@@ -371,7 +369,6 @@ end function fstr_ptr"""
         ),
 
     fstr_arr=dict(
-        f_helper=dict(strlen_arr=True),
         dependent_helpers=[ 'strlen_arr' ],
         private=['fstr_arr'],
         source="""

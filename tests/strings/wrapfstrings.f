@@ -459,7 +459,6 @@ module strings_mod
     end interface
 
     private strlen_ptr
-
     private fstr_ptr
 
     interface

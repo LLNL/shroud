@@ -1340,9 +1340,9 @@ class Wrapf(util.WrapperMixin):
             self.update_f_module(self.module_use, mods)
 
         if 'private' in helper_info:
-            private_names = helper_info['private']
-            self.private_lines.append('')
-            self.private_lines.append('private ' + ', '.join(private_names))
+            if not self.private_lines:
+                self.private_lines.append('')
+            self.private_lines.append('private ' + ', '.join(helper_info['private']))
 
     def gather_helper_code(self):
         """Gather up all helpers requested and insert code into output.
