@@ -1308,7 +1308,7 @@ class Wrapf(util.WrapperMixin):
             fmt_func.F_C_name = fmt_func.F_name_impl
 
     def _gather_helper_code(self, name, done):
-        """Add for for helper
+        """Add code from helpers.
 
         First recursively process dependent_helpers
         to add code in order.

@@ -45,34 +45,6 @@ from . import util
 
 wformat = util.wformat
 
-def find_all_helpers(mode, helpers, check=None):
-    """Find all helper functions recursively.
-    A helper function is required by some argument/result conversions.
-
-    Return helper dictionary used.
-    """
-    if mode =='c':
-        helpdict = CHelpers
-    elif mode == 'f':
-        helpdict = FHelpers
-    else:
-        raise RuntimeError("Unexpected mode in find_all_helpers")
-
-    if check is None:
-        # do all top level helpers
-        # Copy initial keys since helpers may change
-        keys = list(helpers.keys())
-        for check in keys:
-            for name in helpdict[check].get('f_helper', []):
-                find_all_helpers(mode, helpers, name)
-    else:
-        if check not in helpers:
-            helpers[check] = True
-            for name in helpdict[check].get('f_helper', []):
-                find_all_helpers(mode, helpers, name)
-
-    return helpdict
-
 def XXXwrite_helper_files(self, directory):
     """This library file is no longer needed.
 

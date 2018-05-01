@@ -152,37 +152,53 @@ class Wrapc(util.WrapperMixin):
             self.wrap_function(None, node)
         self._pop_splicer('function')
 
+    def _gather_helper_code(self, name, done):
+        """Add code from helpers.
+
+        First recursively process dependent_helpers
+        to add code in order.
+        """
+        if name in done:
+            return  # avoid recursion
+        done[name] = True
+
+        helper_info = whelpers.CHelpers[name]
+        if 'dependent_helpers' in helper_info:
+            for dep in helper_info['dependent_helpers']:
+                # check for recursion
+                self._gather_helper_code(dep, done)
+
+        if self.language == 'c':
+            lang_header = 'c_header'
+            lang_source = 'c_source'
+        else:
+            lang_header = 'cxx_header'
+            lang_source = 'cxx_source'
+
+        if lang_header in helper_info:
+            for include in helper_info[lang_header].split():
+                self.header_impl_include[include] = True
+        if lang_source in helper_info:
+            self.helper_source.append(helper_info[lang_source])
+        elif 'source' in helper_info:
+            self.helper_source.append(helper_info['source'])
+
+        # header code using with C API  (like structs and typedefs)
+        if 'h_header' in helper_info:
+            for include in helper_info['h_header'].split():
+                self.c_helper_include[include] = True
+        if 'h_source' in helper_info:
+            self.helper_header.append(helper_info['h_source'])
+
     def gather_helper_code(self):
         """Gather up all helpers requested and insert code into output.
         """
-        # Insert any helper functions needed
-        self.helper_source = helper_source = []
-        self.helper_header = helper_header = []
-        if self.c_helper:
-            helperdict = whelpers.find_all_helpers('c', self.c_helper)
-            helpers = sorted(self.c_helper)
-            if self.language == 'c':
-                lang_header = 'c_header'
-                lang_source = 'c_source'
-            else:
-                lang_header = 'cxx_header'
-                lang_source = 'cxx_source'
-            for helper in helpers:
-                helper_info = helperdict[helper]
-                if lang_header in helper_info:
-                    for include in helper_info[lang_header].split():
-                        self.header_impl_include[include] = True
-                if lang_source in helper_info:
-                    helper_source.append(helper_info[lang_source])
-                elif 'source' in helper_info:
-                    helper_source.append(helper_info['source'])
+        self.helper_source = []
+        self.helper_header = []
 
-                # header code using with C API  (like structs and typedefs)
-                if 'h_header' in helper_info:
-                    for include in helper_info['h_header'].split():
-                        self.c_helper_include[include] = True
-                if 'h_source' in helper_info:
-                    helper_header.append(helper_info['h_source'])
+        done = {}  # avoid duplicates
+        for name in sorted(self.c_helper.keys()):
+            self._gather_helper_code(name, done)
 
     def write_header(self, library, cls, fname):
         """ Write header file for a library node or a class node.
