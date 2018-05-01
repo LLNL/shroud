@@ -527,7 +527,7 @@
                 }, 
                 "result": {
                     "post_call": [
-                        "DEF_class2 {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                        "DEF_class2 {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};"
                     ]
                 }
             }, 
@@ -1328,7 +1328,7 @@
                 }, 
                 "result": {
                     "post_call": [
-                        "DEF_class1 {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                        "DEF_class1 {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};"
                     ]
                 }
             }, 

@@ -44,7 +44,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
@@ -163,7 +164,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
@@ -287,7 +289,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }
                         }, 
                         "_function_index": 14, 
@@ -456,7 +459,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -552,7 +556,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -658,7 +663,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }
                         }, 
                         "_function_index": 15, 
@@ -735,7 +741,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -817,7 +824,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -919,7 +927,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }
                         }, 
                         "_function_index": 16, 
@@ -997,7 +1006,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -1092,7 +1102,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }
                         }, 
                         "_function_index": 17, 
@@ -1234,7 +1245,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1360,7 +1372,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1499,7 +1512,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1590,7 +1604,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1713,7 +1728,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1934,7 +1950,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
@@ -2053,7 +2070,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }
                         }, 
                         "_function_index": 39, 
@@ -2179,7 +2197,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -2282,7 +2301,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }
                         }, 
                         "_function_index": 40, 
@@ -2362,7 +2382,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -2464,7 +2485,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }
                         }, 
                         "_function_index": 41, 
@@ -2543,7 +2565,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -2645,7 +2668,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }
                         }, 
                         "_function_index": 42, 
@@ -2724,7 +2748,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -2826,7 +2851,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }
                         }, 
                         "_function_index": 43, 
@@ -2902,7 +2928,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -3027,7 +3054,8 @@
                                 "cxx_addr": "", 
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                                 "cxx_member": "->", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
@@ -3756,7 +3784,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<int>(SHCXX_rv)", 
@@ -4379,7 +4408,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -4464,7 +4494,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -4964,7 +4995,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -5077,7 +5109,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 72, 
@@ -5151,7 +5184,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -6227,7 +6261,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -8495,7 +8530,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -9104,7 +9140,7 @@
                 }, 
                 "result": {
                     "post_call": [
-                        "SIDRE_group {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                        "SIDRE_group {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};"
                     ]
                 }
             }, 
@@ -9380,7 +9416,7 @@
                 }, 
                 "result": {
                     "post_call": [
-                        "AA_exclass1 {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                        "AA_exclass1 {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};"
                     ]
                 }
             }, 
@@ -9444,7 +9480,7 @@
                 }, 
                 "result": {
                     "post_call": [
-                        "AA_exclass2 {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                        "AA_exclass2 {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};"
                     ]
                 }
             }, 
@@ -9504,7 +9540,7 @@
                 }, 
                 "result": {
                     "post_call": [
-                        "AA_exclass3 {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                        "AA_exclass3 {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};"
                     ]
                 }
             }, 

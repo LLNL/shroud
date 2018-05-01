@@ -190,7 +190,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 1, 

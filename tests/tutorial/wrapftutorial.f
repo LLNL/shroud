@@ -610,6 +610,16 @@ module tutorial_mod
             type(SHROUD_capsule_data) :: SHT_rv
         end function c_getclass3
 
+        function c_get_class_new(flag) &
+                result(SHT_rv) &
+                bind(C, name="TUT_get_class_new")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: flag
+            type(SHROUD_capsule_data) :: SHT_rv
+        end function c_get_class_new
+
         function callback1(in, incr) &
                 result(SHT_rv) &
                 bind(C, name="TUT_callback1")
@@ -1356,6 +1366,22 @@ contains
         SHT_rv%cxxmem = c_getclass3()
         ! splicer end function.getclass3
     end function getclass3
+
+    ! Class1 getClassNew(int flag +intent(in)+value)
+    ! function_index=41
+    !>
+    !! \brief Return Class1 instance by value
+    !!
+    !<
+    function get_class_new(flag) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: flag
+        type(class1) :: SHT_rv
+        ! splicer begin function.get_class_new
+        SHT_rv%cxxmem = c_get_class_new(flag)
+        ! splicer end function.get_class_new
+    end function get_class_new
 
     ! struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
     ! function_index=44

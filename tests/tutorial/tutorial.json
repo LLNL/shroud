@@ -196,7 +196,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
@@ -319,7 +320,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
@@ -455,7 +457,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -567,7 +570,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtpy": {
                                 "PyObject": "PyObject", 
@@ -764,7 +768,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<int>(SHCXX_rv)", 
@@ -856,7 +861,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }
                         }, 
                         "_function_index": 7, 
@@ -915,7 +921,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHC_rv"
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
                             }
                         }, 
                         "_function_index": 8, 
@@ -1138,7 +1145,8 @@
                                 "cxx_addr": "&", 
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                 "cxx_member": ".", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtpy": {
                                 "PyObject": "PY_Singleton", 
@@ -1537,7 +1545,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -1868,7 +1877,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PY_format": "L", 
@@ -1996,7 +2006,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -2230,7 +2241,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -2303,7 +2315,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -2405,7 +2418,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -2533,7 +2547,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -2840,7 +2855,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 60, 
@@ -3032,7 +3048,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()", 
@@ -3197,7 +3214,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 61, 
@@ -3420,7 +3438,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 50, 
@@ -3501,7 +3520,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 51, 
@@ -3669,7 +3689,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -4400,7 +4421,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 54, 
@@ -4461,7 +4483,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 55, 
@@ -5262,7 +5285,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 56, 
@@ -5378,7 +5402,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 57, 
@@ -5604,7 +5629,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -5771,7 +5797,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 58, 
@@ -5912,7 +5939,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 59, 
@@ -6188,7 +6216,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -6369,7 +6398,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -6503,7 +6533,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "static_cast<int>(SHCXX_rv)", 
@@ -6639,7 +6670,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "static_cast<int>(SHCXX_rv)", 
@@ -6927,7 +6959,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "static_cast<int>(SHCXX_rv)", 
@@ -7050,7 +7083,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -7139,7 +7173,8 @@
                         "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<tutorial::\tClass1 *>\t(SHCXX_rv))", 
                         "cxx_member": "->", 
                         "cxx_type": "tutorial::\tClass1", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 39, 
@@ -7200,7 +7235,8 @@
                         "cxx_addr": "", 
                         "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                         "cxx_member": "->", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PyObject": "PY_Class1", 
@@ -7266,6 +7302,33 @@
                 }
             }, 
             {
+                "_fmtargs": {
+                    "flag": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "flag", 
+                            "cxx_member": ".", 
+                            "cxx_type": "int", 
+                            "cxx_var": "flag"
+                        }, 
+                        "fmtf": {
+                            "c_var": "flag", 
+                            "f_var": "flag"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "1"
+                    }
+                }, 
                 "_function_index": 41, 
                 "ast": {
                     "attrs": {
@@ -7277,23 +7340,57 @@
                         "pointer": []
                     }, 
                     "func_const": false, 
-                    "params": [], 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "flag", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
                     "specifier": [
                         "Class1"
                     ]
                 }, 
-                "decl": "Class1 getClassNew()", 
-                "declgen": "Class1 getClassNew()", 
+                "decl": "Class1 getClassNew(int flag)", 
+                "declgen": "Class1 getClassNew(int flag +intent(in)+value)", 
                 "doxygen": {
                     "brief": "Return Class1 instance by value"
                 }, 
                 "format": {
+                    "C_call_code": "*SHCXX_rv =\t tutorial::\tgetClassNew(\tflag);", 
+                    "C_call_list": "flag", 
+                    "C_name": "TUT_get_class_new", 
+                    "C_post_call": "TUT_class1 SHC_rv = { static_cast<void *>(SHCXX_rv), 1 };", 
+                    "C_pre_call": "tutorial::\tClass1 * SHCXX_rv = new tutorial::\tClass1;", 
+                    "C_prototype": "int flag", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "TUT_class1", 
+                    "F_C_call": "c_get_class_new", 
+                    "F_C_name": "c_get_class_new", 
+                    "F_arg_c_call": "flag", 
+                    "F_arguments": "flag", 
+                    "F_call_code": "SHT_rv%cxxmem = c_get_class_new(flag)", 
+                    "F_name_function": "get_class_new", 
+                    "F_name_generic": "get_class_new", 
+                    "F_name_impl": "get_class_new", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "*SHCXX_rv", 
                     "function_name": "getClassNew", 
                     "underscore_name": "get_class_new"
                 }, 
                 "options": {
-                    "wrap_c": false, 
-                    "wrap_fortran": false, 
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
@@ -7336,7 +7433,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 42, 
@@ -7502,7 +7600,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PYN_descr": "PY_struct1_array_descr", 
@@ -7664,7 +7763,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PYN_descr": "PY_struct1_array_descr", 
@@ -7788,7 +7888,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 45, 
@@ -7878,7 +7979,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 46, 
@@ -8187,7 +8289,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()", 
@@ -8286,7 +8389,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 65, 
@@ -8512,7 +8616,7 @@
                 }, 
                 "result": {
                     "post_call": [
-                        "TUT_singleton {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                        "TUT_singleton {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};"
                     ]
                 }
             }, 
@@ -9280,7 +9384,7 @@
                 }, 
                 "result": {
                     "post_call": [
-                        "TUT_class1 {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                        "TUT_class1 {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};"
                     ]
                 }
             }, 

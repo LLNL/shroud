@@ -497,6 +497,7 @@ class Wrapc(util.WrapperMixin):
         is_allocatable = CXX_ast.attrs.get('allocatable', False)
         is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
+        is_shadow_scalar = False
         is_union_scalar = False
 
         if result_typedef.c_header:
@@ -517,6 +518,7 @@ class Wrapc(util.WrapperMixin):
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
+            fmt_result.idtor = '0'  # no destructor
             if result_typedef.c_union and not is_pointer:
                 # 'convert' via fields of a union
                 # used with structs where casting will not work
@@ -532,7 +534,11 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
 
-            if is_union_scalar:
+            if result_typedef.base == 'shadow' and not CXX_ast.is_indirect() and not is_ctor:
+                is_shadow_scalar = True
+                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
+                    name=fmt_result.cxx_var, params=None, continuation=True, force_ptr=True)
+            elif is_union_scalar:
                 fmt_func.cxx_rv_decl = result_typedef.c_union + ' ' + fmt_result.cxx_var
             else:
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
@@ -587,6 +593,15 @@ class Wrapc(util.WrapperMixin):
                     append_format(pre_call, 
                                   '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
                                   cls_typedef.c_to_cxx + ';', fmt_func)
+
+        if is_shadow_scalar:
+            # Allocate a new instance, then assign pointer to dereferenced cxx_var.
+            append_format(pre_call,
+                          '{cxx_rv_decl} = new %s;' % result_typedef.cxx_type,
+                          fmt_func)
+            fmt_result.cxx_addr = ''
+            fmt_result.idtor = result_typedef.idtor
+            fmt_func.cxx_rv_decl = '*' + fmt_result.cxx_var
 
 #    c_var      - argument to C function  (wrapper function)
 #    c_var_trim - variable with trimmed length of c_var

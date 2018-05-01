@@ -173,6 +173,8 @@ TUT_class1 TUT_getclass2();
 
 TUT_class1 TUT_getclass3();
 
+TUT_class1 TUT_get_class_new(int flag);
+
 int TUT_callback1(int in, int ( * incr)(int));
 
 TUT_struct1 TUT_return_struct(int i, double d);

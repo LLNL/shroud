@@ -523,6 +523,22 @@ TUT_class1 TUT_getclass3()
 // splicer end function.getclass3
 }
 
+// Class1 getClassNew(int flag +intent(in)+value)
+// function_index=41
+/**
+ * \brief Return Class1 instance by value
+ *
+ */
+TUT_class1 TUT_get_class_new(int flag)
+{
+// splicer begin function.get_class_new
+    tutorial::Class1 * SHCXX_rv = new tutorial::Class1;
+    *SHCXX_rv = tutorial::getClassNew(flag);
+    TUT_class1 SHC_rv = { static_cast<void *>(SHCXX_rv), 1 };
+    return SHC_rv;
+// splicer end function.get_class_new
+}
+
 // int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)
 // function_index=42
 int TUT_callback1(int in, int ( * incr)(int))

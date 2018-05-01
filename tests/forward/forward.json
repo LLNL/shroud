@@ -38,7 +38,8 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
@@ -1204,7 +1205,7 @@
                 }, 
                 "result": {
                     "post_call": [
-                        "TUT_class1 {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                        "TUT_class1 {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};"
                     ]
                 }
             }, 
@@ -1266,7 +1267,7 @@
                 }, 
                 "result": {
                     "post_call": [
-                        "FOR_class2 {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                        "FOR_class2 {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};"
                     ]
                 }
             }, 

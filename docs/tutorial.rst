@@ -1040,7 +1040,7 @@ For Fortran a derived type is created::
 
 And the subroutines::
 
-    function class1_new() &
+    function class1_new_default() &
             result(SHT_rv)
         type(class1) :: SHT_rv
         SHT_rv%cxxmem = c_class1_new_default()

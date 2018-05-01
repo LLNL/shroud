@@ -1095,7 +1095,7 @@ def typedef_shadow_defaults(typedef):
         ),
         result=dict(
             post_call=[
-                '%s {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};' % typedef.c_type,
+                '%s {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};' % typedef.c_type,
             ]
         ),
     )

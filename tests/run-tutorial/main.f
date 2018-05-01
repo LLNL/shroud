@@ -69,6 +69,7 @@ program tester
 
   call test_struct1
   call test_class1_final
+  call test_class1_new_by_value
   call test_class1
   call test_singleton
 
@@ -283,8 +284,25 @@ contains
 
     ! should call TUT_SHROUD_array_destructor_function as part of 
     ! FINAL of capsule_data.
-
   end subroutine test_class1_final
+
+  subroutine test_class1_new_by_value
+    integer mflag
+    type(class1) obj0
+
+    call set_case_name("test_class1_new_by_value")
+
+    ! Return a new instance.
+    ! The C wrapper creates an instance then assigns function results into it.
+    ! idtor is set to cause it to be released when it goes out of scope.
+    obj0 = get_class_new(5)
+
+    mflag = obj0%get_m_flag()
+    call assert_equals(5, mflag)
+
+    ! should call TUT_SHROUD_array_destructor_function as part of 
+    ! FINAL of capsule_data.
+  end subroutine test_class1_new_by_value
 
   subroutine test_class1
     integer iflag, mtest
